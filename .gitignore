@@ -7,10 +7,11 @@
 
 # testing
 /coverage
+/src/__snapshots__
 
 # production
 /build
-/src/__snapshots__
+/dist
 
 # misc
 .DS_Store
