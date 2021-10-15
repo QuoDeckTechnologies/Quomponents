@@ -1,6 +1,6 @@
 {
     "name": "quomponents",
-    "description":"The library of react components being used in the QuoDeck product suite",
+    "description": "The library of react components being used in the QuoDeck product suite",
     "main": "dist/index.js",
     "version": "0.1.0",
     "private": false,
@@ -13,6 +13,14 @@
         "url": "https://github.com/arijitl/Quomponents.git"
     },
     "dependencies": {
+        "@emotion/react": "^11.4.1",
+        "@emotion/styled": "^11.3.0",
+        "@mui/icons-material": "^5.0.3",
+        "@mui/material": "^5.0.3",
+        "node-sass": "^6.0.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-scripts": "4.0.3",
         "react-test-renderer": "^17.0.2",
         "web-vitals": "^1.0.1"
     },
