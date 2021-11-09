@@ -1,17 +1,16 @@
 // src/components/Button.stories.js
 import React from "react";
 
-import FlipConfirm from "../components/FlipConfirm.react";
+import FlipConfirm from "../components/FlipConfirm/FlipConfirm.react";
 
 export default {
     title: "FlipConfirm Button",
     component: FlipConfirm,
     argTypes: {
         backgroundColor: { control: "color" },
-        textColor: { control: "color" },
-        variant: {
+        size: {
             control: "select",
-            options: ["tight", "compact", "normal", "relaxed", "wide"],
+            options: ["small", "medium", "large"],
         },
     },
 };
