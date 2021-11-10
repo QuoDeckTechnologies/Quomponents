@@ -3,8 +3,8 @@ $transition-easing: cubic-bezier(0.230, 1.000, 0.320, 1.000);
 $bounce-easing: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 $closed-width: 200px;
 $closed-height: 80px;
-$opened-width: 400px;
-$opened-height: 160px;
+$opened-width: 280px;
+$opened-height: 140px;
 
 .fc-btn.is-open~.description {
   opacity: 0;
@@ -56,7 +56,7 @@ $opened-height: 160px;
 }
 
 .fc-btn-back button {
-  padding: 12px 20px;
+  padding: 6px 12px;
   width: 30%;
   margin: 0 5px;
   font-size: 1em;

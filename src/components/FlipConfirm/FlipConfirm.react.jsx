@@ -1,6 +1,10 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
+
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 import "./FlipConfirm.scss";
 
 FlipConfirm.propTypes = {
@@ -9,6 +13,7 @@ FlipConfirm.propTypes = {
     confirmYes: PropTypes.string,
     confirmNo: PropTypes.string,
     backgroundColor: PropTypes.string,
+    iconBtn: PropTypes.bool,
     onClick: PropTypes.func,
 };
 
@@ -19,6 +24,7 @@ FlipConfirm.defaultProps = {
     confirmYes: "Yes",
     confirmNo: "No",
     backgroundColor: null,
+    iconBtn: false,
     onClick: null,
 };
 
@@ -70,7 +76,7 @@ export default function FlipConfirm(props) {
 
     const styles = {
         btnContainer: {
-            width: "400px",
+            width: "280px",
             margin: "0 auto",
         },
         btnFront: {
@@ -110,14 +116,27 @@ export default function FlipConfirm(props) {
                         {props.confirmNo}
                     </Button>
                 </div>
-                <Button
-                    {...props}
-                    className="fc-btn-front"
-                    onClick={frontClick}
-                    style={styles.btnFront}
-                >
-                    {props.label}
-                </Button>
+                {props.iconBtn && (
+                    <IconButton
+                        {...props}
+                        aria-label="delete"
+                        className="fc-btn-front"
+                        onClick={frontClick}
+                        style={styles.btnFront}
+                    >
+                        <DeleteIcon {...props} />
+                    </IconButton>
+                )}
+                {!props.iconBtn && (
+                    <Button
+                        {...props}
+                        className="fc-btn-front"
+                        onClick={frontClick}
+                        style={styles.btnFront}
+                    >
+                        {props.label}
+                    </Button>
+                )}
             </div>
         </div>
     );
