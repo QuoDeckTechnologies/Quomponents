@@ -13,8 +13,8 @@ export default {
         icon: {
             control: "radio",
             options: [true, false],
-        }
-    }
+        },
+    },
 };
 
 const Template = (args) => <Loader {...args} />;
@@ -36,5 +36,3 @@ icon.args = {
     color: "success",
     icon: true,
 };
-
-

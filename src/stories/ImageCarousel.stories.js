@@ -6,8 +6,7 @@ import ImageCarousel from "../components/ImageCarousel/ImageCarousel.react";
 export default {
     title: "Design System/Carousel/ImageCarousel",
     component: ImageCarousel,
-    argTypes: {
-    },
+    argTypes: {},
 };
 
 const Template = (args) => <ImageCarousel {...args} />;
@@ -20,6 +19,6 @@ Default.args = {
     carouselItems: [
         "/assets/images/defaults/default-carousel-1.jpg",
         "/assets/images/defaults/default-carousel-2.jpg",
-        "/assets/images/defaults/default-carousel-3.jpg"
-    ]
+        "/assets/images/defaults/default-carousel-3.jpg",
+    ],
 };
