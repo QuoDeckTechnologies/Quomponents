@@ -19,12 +19,12 @@ DataExporter.defaultProps = {
 }
 
 export default function DataExporter(props) {
-    
-    function exportData(event) {
+
+    function exportData() {
         let { data } = props;
         if (data.length > 0) {
-            const replacer = (key, value) => (value === null ? "" : value); // specify how you want to handle null values here
-            const header = Object.keys(data[0]);
+            let replacer = (key, value) => (value === null ? "" : value); // specify how you want to handle null values here
+            let header = Object.keys(data[0]);
             let csv = data.map((row) =>
                 header
                     .map((fieldName) =>
@@ -34,16 +34,17 @@ export default function DataExporter(props) {
             );
             csv.unshift(header.join(","));
             csv = csv.join("\r\n");
-            var hiddenElement = document.createElement("a");
-            hiddenElement.href = "data:text/csv;charset=utf-8,%EF%BB%BF" + encodeURIComponent(csv);
+            let hiddenElement = document.createElement("a");
+            hiddenElement.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
             hiddenElement.target = "_blank";
             hiddenElement.download = `exported_data_${Date.now()}.csv`;
             hiddenElement.click();
         }
     }
 
+    //--------------------------------------
     // Style Handlers
-    // ----------------------
+    // -------------------------------------
     const textColor =
         props.backgroundColor &&
         (fixTextColor(props.backgroundColor) ? "#000" : "#fff");
@@ -64,6 +65,7 @@ export default function DataExporter(props) {
             {props.iconBtn && (
                 <IconButton
                     {...props}
+                    id="export-icon-btn"
                     aria-label="export"
                     variant="contained"
                     onClick={exportData}
@@ -75,6 +77,7 @@ export default function DataExporter(props) {
             {!props.iconBtn && (
                 <Button
                     {...props}
+                    id="export-btn"
                     variant="contained"
                     endIcon={<FileDownloadOutlinedIcon />}
                     onClick={exportData}
@@ -86,8 +89,9 @@ export default function DataExporter(props) {
         </div>
     );
 
+    //--------------------------------------
     // Utility Functions
-    // ----------------------
+    // -------------------------------------
 
     function hexToRgb(hex) {
         var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
