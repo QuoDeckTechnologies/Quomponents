@@ -1,0 +1,43 @@
+$image-width: 100%;
+$image-height: auto;
+$white-color:#ffffff;
+$black-color:#000000;
+$position: absolute;
+
+
+.img-carousel{
+    width: $image-width;
+    height: $image-height;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+#btn-next-icon{
+    right: 16px;
+    position: $position;
+    transform: translate(0, -50%);
+    margin-top: -25%;
+    color: $black-color;
+    background-color:$white-color;
+    min-width: 25px;
+    height: 25px;
+    border-radius: 31px;
+    padding: 0;
+}
+
+#btn-prev-icon {
+    left: 16px;
+    position: $position;
+    transform: translate(0, -50%);
+    margin-top: -25%;
+    color: $black-color;
+    background-color: $white-color;
+    min-width: 25px;
+    height: 25px;
+    border-radius: 31px;
+    padding: 0;
+}
+
+#icon {
+    font-size: 0.8em;
+}
