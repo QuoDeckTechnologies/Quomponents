@@ -6,10 +6,6 @@ export default {
     component: DataExpoter,
     argTypes: {
         backgroundColor: { control: "color" },
-        fontSize: {
-            control: "select",
-            options: ["small", "medium", "large"],
-        },
         size: {
             control: "select",
             options: ["small", "medium", "large"],
@@ -25,7 +21,7 @@ const Template = (args) => <DataExpoter {...args} />;
 
 export const Default = Template.bind({});
 Default.parameters = {
-    controls: { exclude: ["fontSize", "iconBtn"] },
+    controls: { exclude: ["iconBtn"] },
 };
 Default.args = {
     label: "Export",
@@ -36,6 +32,7 @@ Default.args = {
 export const IconBtn = Template.bind({});
 IconBtn.parameters = { controls: { exclude: ["size", "iconBtn"] } };
 IconBtn.args = {
+    label: "",
     iconBtn: true,
     data: [{ id: 1, name: "Test User1" }, { id: 2, name: "Test User2" }]
 };
