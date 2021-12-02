@@ -1,6 +1,15 @@
 // src/components/Button.stories.js
 import React from "react";
-
+import {
+    Title,
+    Subtitle,
+    Description,
+    Primary,
+    ArgsTable,
+    Stories,
+    PRIMARY_STORY,
+  } from '@storybook/addon-docs';
+  
 import FlipConfirm from "../components/FlipConfirm/FlipConfirm.react";
 
 export default {
@@ -19,6 +28,20 @@ export default {
         iconBtn: {
             control: "radio",
             options: [true, false],
+        },
+    },
+    parameters: {
+        docs: {
+            page: () => (
+                <>
+                    <Title />
+                    <Subtitle />
+                    <Description />
+                    <Primary />
+                    <ArgsTable story={PRIMARY_STORY} />
+                    <Stories />
+                </>
+            ),
         },
     },
 };

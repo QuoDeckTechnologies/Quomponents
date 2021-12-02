@@ -8,6 +8,5 @@ export const parameters = {
     },
     docs: {
         inlineStories: false,
-        iframeHeight: "700px",
     },
 };
