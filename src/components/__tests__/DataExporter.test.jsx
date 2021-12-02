@@ -40,7 +40,7 @@ describe("DataExporter", () => {
             expect(component.exists()).toBe(true);
         });
 
-    it("should render correctly without throing an error if iconBtn props is undefined ",
+    it("should render correctly without throwing an error if iconBtn props is undefined ",
         () => {
             component.setProps({ iconBtn: undefined });
             expect(component.exists()).toBe(true);
