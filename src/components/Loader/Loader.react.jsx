@@ -1,5 +1,5 @@
-import * as React from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
+import * as React from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 import PropTypes from "prop-types";
 
 Loader.propTypes = {
@@ -17,25 +17,23 @@ Loader.defaultProps = {
 const styles = {
     btnContainer: {
         display: "flex",
-        flexDirection: 'column',
-        alignItems: 'center',
-    }
+        flexDirection: "column",
+        alignItems: "center",
+    },
 };
 
 export default function Loader(props) {
     return (
         <div style={styles.btnContainer}>
             {!props.icon && (
-                <img src="https://icons8.com/preloaders/preloaders/24/Blinking%20squares.gif"
-                 style={{ marginBottom: "10px" }} 
+                <img
+                    src="https://icons8.com/preloaders/preloaders/24/Blinking%20squares.gif"
+                    alt="Loading..."
+                    style={{ marginBottom: "10px" }}
                 />
             )}
             {props.icon && (
-                <CircularProgress
-                    color={props.color}
-                    sx={{ m: 2 }}
-
-                />
+                <CircularProgress color={props.color} sx={{ m: 2 }} />
             )}
             {props.label}
         </div>

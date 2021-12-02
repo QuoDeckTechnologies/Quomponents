@@ -1,0 +1,179 @@
+$primary-color:#337ab7;
+$secondary-color:#6c757d;
+$positive-color:#5cb85c;
+$warning-color:#f0ad4e;
+$negative-color:#d9534f;
+$info-color:#5bc0de;
+$white-color:#fff;
+
+button {
+    border-radius: 7px;
+    padding: 8px;
+    border: none;
+
+    &:hover {
+        opacity: 0.7;
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+}
+
+.primary {
+    background-color: $primary-color;
+    color: $white-color;
+    border: $primary-color;
+}
+
+.secondary {
+    background-color: $secondary-color;
+    color: $white-color;
+    border: $secondary-color;
+}
+
+.positive {
+    background-color: $positive-color;
+    color: $white-color;
+    border: $positive-color;
+}
+
+.warning {
+    background-color: $warning-color;
+    color: $white-color;
+    border: $warning-color;
+}
+
+.negative {
+    background-color: $negative-color;
+    color: $white-color;
+    border: $negative-color;
+}
+
+.info {
+    background-color: $info-color;
+    color: $white-color;
+    border: $info-color;
+}
+
+
+.default {
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+
+    &.big {
+        font-size: 1.2rem;
+    }
+
+    &.huge {
+        font-size: 1.4rem;
+    }
+
+    &.massive {
+        font-size: 1.7rem;
+    }
+
+    &.tiny {
+        font-size: 0.8rem;
+    }
+
+    &.normal {
+        font-size: 1rem;
+    }
+
+    &.fluid_button {
+        width: 100%
+    }
+}
+
+.circular {
+    border-radius: 50%;
+
+    &.default {
+        font-size: 1rem;
+        height: 50px;
+        width: 50px;
+    }
+
+    &.massive {
+        font-size: 1.7rem;
+        height: 100px;
+        width: 100px;
+    }
+
+    &.huge {
+        font-size: 1.4rem;
+        height: 75px;
+        width: 75px;
+    }
+
+    &.big {
+        font-size: 1.2rem;
+        height: 60px;
+        width: 60px;
+    }
+
+    &.normal {
+        font-size: 0.9rem;
+        height: 35px;
+        width: 35px;
+    }
+
+    &.tiny {
+        font-size: 0.8rem;
+        height: 30px;
+        width: 30px;
+    }
+}
+
+.icon-btn {
+    border: none;
+    background-color: transparent;
+
+    &.default {
+        font-size: 1rem;
+        color: #000
+    }
+
+    &.massive {
+        font-size: 1.7rem;
+    }
+
+    &.huge {
+        font-size: 1.4rem;
+    }
+
+    &.big {
+        font-size: 1.2rem;
+    }
+
+    &.normal {
+        font-size: 0.9rem;
+    }
+
+    &.tiny {
+        font-size: 0.8rem;
+    }
+
+    &.primary {
+        color: $primary-color;
+    }
+
+    &.secondary {
+        color: $secondary-color;
+    }
+
+    &.positive {
+        color:  $positive-color;
+    }
+
+    &.warning {
+        color: $warning-color;
+    }
+
+    &.negative {
+        color: $negative-color;
+    }
+
+    &.info {
+        color: $info-color;
+    }
+}
