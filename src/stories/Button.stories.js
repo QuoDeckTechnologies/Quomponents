@@ -97,10 +97,10 @@ const Template = (args) => (
     </div>
 );
 
-export const DefaultButton = Template.bind({});
+export const Default = Template.bind({});
 
-DefaultButton.args = {
-    name: "Button",
+Default.args = {
+    name: "Default Button",
     asEmphasis: "contained",
     isCircular: false,
 
@@ -143,213 +143,77 @@ DefaultButton.args = {
 export const IconOnlyButton = Template.bind({});
 
 IconOnlyButton.args = {
+    ...Default.args,
     name: "",
-    asEmphasis: "contained",
     isCircular: true,
-
-    asVariant: "primary",
-    asSize: "normal",
-    asFloated: "none",
-    asPadded: "normal",
-    asAligned: "center",
-
     withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
     withLabel: {
         format: "popover",
         content: "Click to share this...",
         textColor: "",
     },
-    withColor: {
-        backgroundColor: "",
-        accentColor: "",
-        textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
-    },
-    isDisabled: false,
-    isLoading: false,
-    isHidden: false,
-    isFluid: false,
 };
 
 export const FluidButton = Template.bind({});
 
 FluidButton.args = {
-    name: "Button",
-    asEmphasis: "contained",
-    isCircular: false,
-
-    asVariant: "primary",
-    asSize: "normal",
-    asFloated: "none",
-    asPadded: "normal",
-    asAligned: "center",
-
-    withLabel: {
-        format: "caption",
-        content: "Do not press this button repeatedly...",
-        textColor: "",
-    },
-    withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
-    withColor: {
-        backgroundColor: "",
-        accentColor: "",
-        textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
-    },
-    isDisabled: false,
-    isLoading: false,
-    isHidden: false,
+    ...Default.args,
+    name: "Fluid Button",
     isFluid: true,
 };
 
 export const LabelledButton = Template.bind({});
 
 LabelledButton.args = {
-    name: "Button",
-    asEmphasis: "contained",
-    isCircular: false,
-
-    asVariant: "primary",
-    asSize: "normal",
-    asFloated: "none",
-    asPadded: "normal",
-    asAligned: "center",
-
+    ...Default.args,
+    name: "Labelled Button",
     withLabel: {
         format: "label",
         content: "Press to Confirm...",
         textColor: "#000000",
     },
-    withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
-    withColor: {
-        backgroundColor: "",
-        accentColor: "",
-        textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
-    },
-    isDisabled: false,
-    isLoading: false,
-    isHidden: false,
-    isFluid: false,
 };
 
 export const LoadingButton = Template.bind({});
 
 LoadingButton.args = {
-    name: "Button",
-    asEmphasis: "contained",
-    isCircular: false,
-
-    asVariant: "primary",
-    asSize: "normal",
-    asFloated: "none",
-    asPadded: "normal",
-    asAligned: "center",
-
-    withColor: {
-        backgroundColor: "",
-        accentColor: "",
-        textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
-    },
-    isDisabled: false,
+    ...Default.args,
     isLoading: true,
-    isHidden: false,
-    isFluid: true,
 };
 
 export const ColoredButton = Template.bind({});
 
 ColoredButton.args = {
-    name: "Button",
-    asEmphasis: "contained",
-    isCircular: false,
-
-    asVariant: "primary",
-    asSize: "big",
-    asFloated: "none",
-    asPadded: "relaxed",
-    asAligned: "center",
-    withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
+    ...Default.args,
+    name: "Colored Button",
     withColor: {
         backgroundColor: "#ffc900",
         textColor: "#666666",
         hoverBackgroundColor: "#666666",
         hoverTextColor: "#ffc900",
     },
-    isDisabled: false,
-    isLoading: false,
-    isHidden: false,
-    isFluid: false,
 };
 
 export const AnimatedButton = Template.bind({});
 
 AnimatedButton.args = {
-    name: "Button",
-    asEmphasis: "contained",
-    isCircular: false,
-
-    asVariant: "primary",
-    asSize: "big",
-    asFloated: "none",
-    asPadded: "relaxed",
-    asAligned: "center",
-    withLabel: {
-        format: "caption",
-        content: "Do not press this button repeatedly...",
-        textColor: "#000000",
-    },
-    withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
+    ...Default.args,
+    name: "Animated Button",
     withAnimation: {
         animation: "collapse",
         duration: 0.5,
         delay: 0,
     },
-
-    isDisabled: false,
-    isLoading: false,
-    isHidden: false,
-    isFluid: false,
 };
 
 export const TranslatedButton = Template.bind({});
 
 TranslatedButton.args = {
-    name: "Button",
-    asEmphasis: "contained",
-    isCircular: false,
-
-    asVariant: "secondary",
-    asSize: "big",
-    asFloated: "none",
-    asPadded: "relaxed",
-    asAligned: "center",
-    withLabel: {
-        format: "caption",
-        content: "Do not press this button repeatedly...",
-        textColor: "#000000",
-    },
-    withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
-    withColor: {
-        backgroundColor: "",
-        accentColor: "",
-        textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
-    },
+    ...Default.args,
+    name: "Translated Button",
     withTranslation: {
         lang: "hi",
         tgt: "button",
         dictionary: dictionary,
     },
-
-    isDisabled: false,
-    isLoading: false,
-    isHidden: false,
-    isFluid: false,
 };

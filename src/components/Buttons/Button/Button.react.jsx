@@ -3,15 +3,13 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { default as MUIButton } from "@mui/material/Button";
 import { motion } from "framer-motion";
-
 import {
-    getQuommonClasses,
+    getQuommons,
     getTranslation,
-    getAnimation
+    getAnimation,
 } from "../../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
 import "../../../common/stylesheets/common.css";
 import "./Button.scss";
 import "../../../common/stylesheets/overrule.scss";
@@ -149,15 +147,13 @@ function getIcon(iconObj, position, iconOnly) {
     );
 }
 
-
-
 export default function Button(props) {
     const [hovered, setHovered] = useState(false);
 
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommonClasses(props);
+    let quommonClasses = getQuommons(props);
     if (props.isCircular)
         quommonClasses.childClasses += ` is-circular ${
             props.name === "" && props.withIcon ? "is-only-icon" : ""

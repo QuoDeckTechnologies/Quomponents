@@ -1,4 +1,4 @@
-export function getQuommonClasses(props) {
+export function getQuommons(props) {
     let parentArray = [""],
         childArray = [""];
 
