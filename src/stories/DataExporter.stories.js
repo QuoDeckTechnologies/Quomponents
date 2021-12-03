@@ -1,5 +1,5 @@
 import React from "react";
-import DataExpoter from "../components/DataExporter/DataExporter.react";
+import DataExpoter from "../components/Buttons/DataExporter/DataExporter.react";
 
 export default {
     title: "Design System/Buttons/DataExporter",

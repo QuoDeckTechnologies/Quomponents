@@ -125,8 +125,8 @@ DefaultButton.args = {
     },
     withAnimation: {
         animation: "zoom",
-        duration: 1,
-        delay: 1,
+        duration: 0.5,
+        delay: 0,
     },
     withTranslation: {
         lang: "",
@@ -306,9 +306,9 @@ AnimatedButton.args = {
     },
     withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
     withAnimation: {
-        animation: "slideDown",
-        duration: 1,
-        delay: 1,
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
     },
 
     isDisabled: false,

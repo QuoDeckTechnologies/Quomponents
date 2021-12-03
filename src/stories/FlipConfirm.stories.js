@@ -10,7 +10,7 @@ import {
     PRIMARY_STORY,
   } from '@storybook/addon-docs';
   
-import FlipConfirm from "../components/FlipConfirm/FlipConfirm.react";
+import FlipConfirm from "../components/Buttons/FlipConfirm/FlipConfirm.react";
 
 export default {
     title: "Design System/Buttons/FlipConfirm",
