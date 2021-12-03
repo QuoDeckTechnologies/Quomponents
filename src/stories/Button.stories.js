@@ -1,6 +1,20 @@
 import React from "react";
 import Button from "../components/Buttons/Button/Button.react";
 
+const dictionary = JSON.stringify({
+    en: {
+        loading: "Please wait...",
+        button: {
+            text: "Button",
+            label: "Do not press this repeatedly...",
+        },
+    },
+    hi: {
+        loading: "बस एक मिनट...",
+        button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+    },
+});
+
 export default {
     title: "Design System/Buttons/Button",
     component: Button,
@@ -48,6 +62,7 @@ export default {
         withLabel: {
             format: "label",
             content: "",
+            textColor: "",
         },
         withAnimation: {
             animation: "",
@@ -63,7 +78,6 @@ export default {
         isHidden: false,
         isDisabled: false,
         isFluid: false,
-        isPaged: false,
         isLoading: false,
 
         onClick: null,
@@ -77,7 +91,11 @@ export default {
     },
 };
 
-const Template = (args) => <Button {...args} />;
+const Template = (args) => (
+    <div style={{ width: "100%", textAlign: "center" }}>
+        <Button {...args} />
+    </div>
+);
 
 export const DefaultButton = Template.bind({});
 
@@ -95,6 +113,7 @@ DefaultButton.args = {
     withLabel: {
         format: "caption",
         content: "Do not press this button repeatedly...",
+        textColor: "#000000",
     },
     withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
     withColor: {
@@ -104,27 +123,21 @@ DefaultButton.args = {
         hoverBackgroundColor: "",
         hoverTextColor: "",
     },
+    withAnimation: {
+        animation: "zoom",
+        duration: 1,
+        delay: 1,
+    },
     withTranslation: {
         lang: "",
         tgt: "button",
-        dictionary: JSON.stringify({
-            en: {
-                button: {
-                    text: "Button",
-                    label: "Do not press this repeatedly...",
-                },
-            },
-            hi: {
-                button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
-            },
-        }),
+        dictionary: dictionary,
     },
 
     isDisabled: false,
     isLoading: false,
     isHidden: false,
     isFluid: false,
-    isPaged: false,
 };
 
 export const IconOnlyButton = Template.bind({});
@@ -144,6 +157,7 @@ IconOnlyButton.args = {
     withLabel: {
         format: "popover",
         content: "Click to share this...",
+        textColor: "",
     },
     withColor: {
         backgroundColor: "",
@@ -156,7 +170,6 @@ IconOnlyButton.args = {
     isLoading: false,
     isHidden: false,
     isFluid: false,
-    isPaged: false,
 };
 
 export const FluidButton = Template.bind({});
@@ -175,6 +188,7 @@ FluidButton.args = {
     withLabel: {
         format: "caption",
         content: "Do not press this button repeatedly...",
+        textColor: "",
     },
     withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
     withColor: {
@@ -188,7 +202,6 @@ FluidButton.args = {
     isLoading: false,
     isHidden: false,
     isFluid: true,
-    isPaged: false,
 };
 
 export const LabelledButton = Template.bind({});
@@ -207,6 +220,7 @@ LabelledButton.args = {
     withLabel: {
         format: "label",
         content: "Press to Confirm...",
+        textColor: "#000000",
     },
     withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
     withColor: {
@@ -220,7 +234,6 @@ LabelledButton.args = {
     isLoading: false,
     isHidden: false,
     isFluid: false,
-    isPaged: false,
 };
 
 export const LoadingButton = Template.bind({});
@@ -247,7 +260,6 @@ LoadingButton.args = {
     isLoading: true,
     isHidden: false,
     isFluid: true,
-    isPaged: false,
 };
 
 export const ColoredButton = Template.bind({});
@@ -273,8 +285,38 @@ ColoredButton.args = {
     isLoading: false,
     isHidden: false,
     isFluid: false,
-    isPaged: false,
 };
+
+export const AnimatedButton = Template.bind({});
+
+AnimatedButton.args = {
+    name: "Button",
+    asEmphasis: "contained",
+    isCircular: false,
+
+    asVariant: "primary",
+    asSize: "big",
+    asFloated: "none",
+    asPadded: "relaxed",
+    asAligned: "center",
+    withLabel: {
+        format: "caption",
+        content: "Do not press this button repeatedly...",
+        textColor: "#000000",
+    },
+    withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
+    withAnimation: {
+        animation: "slideDown",
+        duration: 1,
+        delay: 1,
+    },
+
+    isDisabled: false,
+    isLoading: false,
+    isHidden: false,
+    isFluid: false,
+};
+
 export const TranslatedButton = Template.bind({});
 
 TranslatedButton.args = {
@@ -290,6 +332,7 @@ TranslatedButton.args = {
     withLabel: {
         format: "caption",
         content: "Do not press this button repeatedly...",
+        textColor: "#000000",
     },
     withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
     withColor: {
@@ -302,22 +345,11 @@ TranslatedButton.args = {
     withTranslation: {
         lang: "hi",
         tgt: "button",
-        dictionary: JSON.stringify({
-            en: {
-                button: {
-                    text: "Button",
-                    label: "Do not press this repeatedly...",
-                },
-            },
-            hi: {
-                button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
-            },
-        }),
+        dictionary: dictionary,
     },
 
     isDisabled: false,
     isLoading: false,
     isHidden: false,
     isFluid: false,
-    isPaged: false,
 };

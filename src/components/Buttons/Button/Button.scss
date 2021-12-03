@@ -23,7 +23,7 @@
 
 .qui .qui-label {
     font-size: 1.25em;
-    margin-left: 10px;
+    margin-left: 5px;
     margin-bottom: 5px;
     font-weight: bold;
 }
@@ -31,6 +31,18 @@
 .qui .qui-caption {
     font-size: 0.85em;
     margin-top: 5px;
-    margin-left: 5px;
+    margin-left: 3px;
     font-style: italic;
+}
+
+.qui.is-loading .qui-icon {
+    display: none;
+}
+
+.qui .icon-loader {
+    margin-right: 10px;
+}
+
+.qui:not(.is-loading) .icon-loader {
+    display: none;
 }
