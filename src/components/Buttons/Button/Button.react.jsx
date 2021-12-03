@@ -15,14 +15,29 @@ import "./Button.scss";
 import "../../../common/stylesheets/overrule.scss";
 
 Button.propTypes = {
+    //=======================================
     // Component Specific props
     //=======================================
-    name: PropTypes.string, // Is optional if you only want an icon
-    asEmphasis: PropTypes.oneOf(["text", "contained", "outlined"]),
+
+    /**
+    Button Text has to be in content or passed as children to the component. Is optional if you only want an icon.
+    */
+    content: PropTypes.string,
+    /**
+    Set action emphasis in increasing order 
+    */
+    asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
+    /**
+    Use for rounded corners or circular icon button 
+    */
     isCircular: PropTypes.bool,
 
     // Quommon props
     //=======================================
+
+    /**
+    Use to define standard component type
+    */
     asVariant: PropTypes.oneOf([
         "primary",
         "secondary",
@@ -30,6 +45,9 @@ Button.propTypes = {
         "warning",
         "error",
     ]),
+    /**
+    Use to define component text size in increasing order
+    */
     asSize: PropTypes.oneOf([
         "tiny",
         "small",
@@ -38,10 +56,22 @@ Button.propTypes = {
         "huge",
         "massive",
     ]),
+    /**
+    Use to define component padding in increasing order
+    */
     asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+    /**
+    Use to float the component in parent container
+    */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+    /**
+    Use to align content within the component container
+    */
     asAligned: PropTypes.oneOf(["left", "right", "center"]),
 
+    /**
+    Use to override component colors and behavior
+    */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
@@ -49,16 +79,25 @@ Button.propTypes = {
         hoverBackgroundColor: PropTypes.string,
         hoverTextColor: PropTypes.string,
     }),
+    /**
+    Use to add an icon to the component
+    */
     withIcon: PropTypes.shape({
         icon: PropTypes.string,
         size: PropTypes.string,
         position: PropTypes.oneOf(["left", "right"]),
     }),
+    /**
+    Use to add a heading label, a footer caption or a title popover to the component
+    */
     withLabel: PropTypes.shape({
         format: PropTypes.oneOf(["label", "caption", "popover"]),
         content: PropTypes.string,
         textColor: PropTypes.string,
     }),
+    /**
+    Use to define the entry animation of the component
+    */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -72,18 +111,36 @@ Button.propTypes = {
         duration: PropTypes.number,
         delay: PropTypes.number,
     }),
+    /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
     withTranslation: PropTypes.shape({
         lang: PropTypes.string,
         tgt: PropTypes.string,
         dictionary: PropTypes.string,
     }),
 
+    /**
+    Use to show/hide the component
+    */
     isHidden: PropTypes.bool,
+    /**
+    Use to enable/disable the component
+    */
     isDisabled: PropTypes.bool,
+    /**
+    Use to toggle the component taking the full width of the parent container
+    */
     isFluid: PropTypes.bool,
+    /**
+    Use to toggle a loading state for the component
+    */
     isLoading: PropTypes.bool,
 
-    onClick: PropTypes.func,
+    /**
+    Button component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
@@ -147,6 +204,14 @@ function getIcon(iconObj, position, iconOnly) {
     );
 }
 
+/**
+## Notes
+- The design system used for this component is Material UI (@mui/material)
+- The animation system used for this component is Framer Motion (framer-motion)
+- Pass inline styles to the component to override any of the component css
+- Or add custom css in overrule.scss to override the component css
+- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
+**/
 export default function Button(props) {
     const [hovered, setHovered] = useState(false);
 
@@ -156,7 +221,7 @@ export default function Button(props) {
     let quommonClasses = getQuommons(props);
     if (props.isCircular)
         quommonClasses.childClasses += ` is-circular ${
-            props.name === "" && props.withIcon ? "is-only-icon" : ""
+            props.content === "" && props.withIcon ? "is-only-icon" : ""
         }`;
 
     //-------------------------------------------------------------------
@@ -167,41 +232,48 @@ export default function Button(props) {
     //-------------------------------------------------------------------
     // 3. Set the button text
     //-------------------------------------------------------------------
-    let buttonText = props.name
-        ? props.name
+    let buttonText = props.content
+        ? props.content
         : props.children
         ? props.children
         : "";
     let iconOnly = buttonText === "";
 
     //-------------------------------------------------------------------
-    // 4. Set the label/caption/popover text
+    // 4. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
-    let labelContent = props.withLabel;
+    let labelContent = Object.assign({}, props.withLabel);
     let labelStyle =
         labelContent && labelContent.textColor
             ? { color: labelContent.textColor }
             : {};
+    let loadingText = "Please Wait...";
 
     //-------------------------------------------------------------------
     // 5. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
-    let tObj = getTranslation(props.withTranslation);
-    if (tObj && props.name && props.name !== "") {
-        buttonText = tObj.text;
+    if (
+        props.withTranslation &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        let tObj = getTranslation(props.withTranslation);
+        if (tObj && props.content && props.content !== "") {
+            buttonText = tObj.text;
+        }
+        if (labelContent && tObj && tObj.label)
+            labelContent.content = tObj.label;
+        loadingText = getTranslation(props.withTranslation, "loading");
     }
-    if (labelContent && tObj && tObj.label) labelContent.content = tObj.label;
 
     //-------------------------------------------------------------------
-    // 6. Disable all text if loading is clicked
+    // 6. Provide loading text if loading is clicked
     //-------------------------------------------------------------------
-    buttonText = props.isLoading
-        ? getTranslation(props.withTranslation, "loading")
-        : buttonText;
+    buttonText = props.isLoading ? loadingText : buttonText;
     labelContent = props.isLoading ? "" : labelContent;
 
     //-------------------------------------------------------------------
-    // 7. Disable all text if loading is clicked
+    // 7. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
@@ -211,11 +283,6 @@ export default function Button(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            transition={{
-                delayChildren: props.withAnimation
-                    ? props.withAnimation.delay
-                    : 0,
-            }}
             className={`qui ${quommonClasses.parentClasses}`}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
@@ -229,7 +296,7 @@ export default function Button(props) {
                 title={getLabel(labelContent, "popover")}
                 disabled={props.isDisabled}
                 className={`qui-btn ${quommonClasses.childClasses}`}
-                style={colors}
+                style={Object.assign({}, colors, props.style)}
                 onClick={props.onClick}
             >
                 <i className="icon-loader fa fa-spinner fa-spin"></i>

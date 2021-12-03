@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 import "./FlipConfirm.scss";
 
@@ -124,7 +123,6 @@ export default function FlipConfirm(props) {
                         onClick={frontClick}
                         style={styles.btnFront}
                     >
-                        <DeleteIcon {...props} />
                     </IconButton>
                 )}
                 {!props.iconBtn && (

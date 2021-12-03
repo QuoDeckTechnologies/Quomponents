@@ -5,7 +5,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Button from "@mui/material/Button";
-import { ArrowForwardIos, ArrowBackIosNew } from "@mui/icons-material";
 
 // Import components
 import "./ImageCarousel.scss";
@@ -101,7 +100,6 @@ export default function ImageCarousel(props) {
                                                 handleNextClick(index)
                                             }
                                         >
-                                            <ArrowForwardIos id="icon" />
                                         </Button>
                                         <Button
                                             id="btn-prev-icon"
@@ -109,7 +107,6 @@ export default function ImageCarousel(props) {
                                                 handlePrevClick(index)
                                             }
                                         >
-                                            <ArrowBackIosNew id="icon" />
                                         </Button>
                                     </div>
                                 );

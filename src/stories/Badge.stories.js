@@ -1,6 +1,5 @@
 import React from "react";
 import Badges from "../components/Badges/Badges.react";
-import MailIcon from "@mui/icons-material/Mail";
 import { grey } from "@mui/material/colors";
 
 export default {
@@ -46,10 +45,7 @@ Icon.args = {
     alignvertical: "top",
     alignhorizontal: "right",
     content: (
-        <MailIcon
-            sx={{ color: grey[900] }}
-            onClick={() => console.log("Testing")}
-        />
+        <div></div>
     ),
 };
 

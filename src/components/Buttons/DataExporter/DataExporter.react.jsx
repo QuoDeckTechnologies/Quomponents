@@ -2,7 +2,6 @@
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 
 DataExporter.protoTypes = {
     label: PropTypes.string.isRequired,
@@ -71,7 +70,6 @@ export default function DataExporter(props) {
                     onClick={exportData}
                     style={styles.btnFront}
                 >
-                    <FileDownloadOutlinedIcon {...props} />
                 </IconButton>
             )}
             {!props.iconBtn && (
@@ -79,7 +77,6 @@ export default function DataExporter(props) {
                     {...props}
                     id="export-btn"
                     variant="contained"
-                    endIcon={<FileDownloadOutlinedIcon />}
                     onClick={exportData}
                     style={styles.btnFront}
                 >
