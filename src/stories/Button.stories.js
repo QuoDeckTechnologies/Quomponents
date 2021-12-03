@@ -10,6 +10,7 @@ export default {
             control: "select",
             options: ["text", "outlined", "contained"],
         },
+        isCircular: false,
 
         asVariant: {
             control: "select",
@@ -67,6 +68,13 @@ export default {
 
         onClick: null,
     },
+    parameters: {
+        docs: {
+            source: {
+                type: "code",
+            },
+        },
+    },
 };
 
 const Template = (args) => <Button {...args} />;
@@ -76,6 +84,7 @@ export const DefaultButton = Template.bind({});
 DefaultButton.args = {
     name: "Button",
     asEmphasis: "contained",
+    isCircular: false,
 
     asVariant: "primary",
     asSize: "normal",
@@ -96,7 +105,7 @@ DefaultButton.args = {
         hoverTextColor: "",
     },
     withTranslation: {
-        lang: "en",
+        lang: "",
         tgt: "button",
         dictionary: JSON.stringify({
             en: {
@@ -123,6 +132,7 @@ export const IconOnlyButton = Template.bind({});
 IconOnlyButton.args = {
     name: "",
     asEmphasis: "contained",
+    isCircular: true,
 
     asVariant: "primary",
     asSize: "normal",
@@ -131,6 +141,10 @@ IconOnlyButton.args = {
     asAligned: "center",
 
     withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
+    withLabel: {
+        format: "popover",
+        content: "Click to share this...",
+    },
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -150,6 +164,7 @@ export const FluidButton = Template.bind({});
 FluidButton.args = {
     name: "Button",
     asEmphasis: "contained",
+    isCircular: false,
 
     asVariant: "primary",
     asSize: "normal",
@@ -181,6 +196,7 @@ export const LabelledButton = Template.bind({});
 LabelledButton.args = {
     name: "Button",
     asEmphasis: "contained",
+    isCircular: false,
 
     asVariant: "primary",
     asSize: "normal",
@@ -203,7 +219,7 @@ LabelledButton.args = {
     isDisabled: false,
     isLoading: false,
     isHidden: false,
-    isFluid: true,
+    isFluid: false,
     isPaged: false,
 };
 
@@ -212,6 +228,7 @@ export const LoadingButton = Template.bind({});
 LoadingButton.args = {
     name: "Button",
     asEmphasis: "contained",
+    isCircular: false,
 
     asVariant: "primary",
     asSize: "normal",
@@ -233,11 +250,37 @@ LoadingButton.args = {
     isPaged: false,
 };
 
+export const ColoredButton = Template.bind({});
+
+ColoredButton.args = {
+    name: "Button",
+    asEmphasis: "contained",
+    isCircular: false,
+
+    asVariant: "primary",
+    asSize: "big",
+    asFloated: "none",
+    asPadded: "relaxed",
+    asAligned: "center",
+    withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
+    withColor: {
+        backgroundColor: "#ffc900",
+        textColor: "#666666",
+        hoverBackgroundColor: "#666666",
+        hoverTextColor: "#ffc900",
+    },
+    isDisabled: false,
+    isLoading: false,
+    isHidden: false,
+    isFluid: false,
+    isPaged: false,
+};
 export const TranslatedButton = Template.bind({});
 
 TranslatedButton.args = {
     name: "Button",
     asEmphasis: "contained",
+    isCircular: false,
 
     asVariant: "secondary",
     asSize: "big",

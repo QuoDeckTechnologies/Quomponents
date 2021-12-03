@@ -3,8 +3,22 @@
     cursor: pointer;
 }
 
-.qui .qui-btn:hover {
-    transform: scale(1.05);
+.qui .qui-btn.is-circular {
+    border-radius: 50px;
+}
+
+.qui .qui-btn.is-circular.is-only-icon {
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.qui .qui-btn.is-circular.is-only-icon.size-big,
+.qui .qui-btn.is-circular.is-only-icon.size-huge {
+    padding: 16px;
+}
+
+.qui .qui-btn.is-circular.is-only-icon.size-massive {
+    padding: 24px;
 }
 
 .qui .qui-label {

@@ -14,6 +14,7 @@ Button.propTypes = {
     //=======================================
     name: PropTypes.string, // Is optional if you only want an icon
     asEmphasis: PropTypes.oneOf(["text", "contained", "outlined"]),
+    isCircular: PropTypes.bool,
 
     // Quommon props
     //=======================================
@@ -76,6 +77,7 @@ Button.defaultProps = {
     // Component Specific props
     //=======================================
     asEmphasis: "contained",
+    isCircular: false,
 
     // Quommon props
     //=======================================
@@ -122,6 +124,18 @@ function getQuommonClasses(props) {
     };
 }
 
+function getColors(colors, hovered) {
+    return hovered
+        ? {
+              background: colors.hoverBackgroundColor,
+              color: colors.hoverTextColor,
+          }
+        : {
+              background: colors.backgroundColor,
+              color: colors.textColor,
+          };
+}
+
 function getTranslation(tObj) {
     let dict = tObj && tObj.dictionary ? JSON.parse(tObj.dictionary) : null;
     return dict && dict[tObj.lang] && dict[tObj.lang][tObj.tgt]
@@ -158,25 +172,18 @@ export default function Button(props) {
     const [hovered, setHovered] = useState(false);
 
     //-------------------------------------------------------------------
-    // 1. Set the common classes
+    // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommonClasses(props);
+    if (props.isCircular)
+        quommonClasses.childClasses += ` is-circular ${
+            props.name === "" && props.withIcon ? "is-only-icon" : ""
+        }`;
 
     //-------------------------------------------------------------------
     // 2. Set the component colors
     //-------------------------------------------------------------------
-    let colors = {};
-    if (props.withColor) {
-        colors = hovered
-            ? {
-                  background: props.withColor.hoverBackgroundColor,
-                  color: props.withColor.hoverTextColor,
-              }
-            : {
-                  background: props.withColor.backgroundColor,
-                  color: props.withColor.textColor,
-              };
-    }
+    let colors = props.withColor ? getColors(props.withColor, hovered) : {};
 
     //-------------------------------------------------------------------
     // 3. Set the button text and any label/caption/popover text
@@ -194,7 +201,7 @@ export default function Button(props) {
     // 4. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
     let tObj = getTranslation(props.withTranslation);
-    if (tObj) {
+    if (tObj && props.name != null && props.name !== "") {
         buttonText = tObj.text;
         if (labelContent) labelContent.content = tObj.label;
     }
