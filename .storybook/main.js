@@ -8,11 +8,12 @@ module.exports = {
         "@storybook/addon-essentials",
         "@storybook/preset-create-react-app",
         {
-            name: "@storybook/addon-storysource",
+            name: "@storybook/addon-docs",
             options: {
-                loaderOptions: {
-                    injectStoryParameters: false,
-                },
+                configureJSX: true,
+                babelOptions: {},
+                sourceLoaderOptions: null,
+                transcludeMarkdown: true,
             },
         },
     ],

@@ -99,7 +99,7 @@ export default {
         componentSubtitle: "Displays a basic button for general-purpose use",
         docs: {
             source: {
-                type: "code",
+                type: "auto",
             },
         },
     },
@@ -154,6 +154,8 @@ const AllVariantsTemplate = (args) => {
             asFloated: "inline",
             withLabel: null,
             withIcon: null,
+            withTranslation: null,
+            withColor: null,
         }),
     };
     return (

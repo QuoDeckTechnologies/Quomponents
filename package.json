@@ -1,97 +1,101 @@
 {
-    "name": "quomponents",
-    "description": "The library of react components being used in the QuoDeck product suite",
-    "main": "dist/index.js",
-    "version": "0.1.0",
-    "private": false,
-    "files": [
-        "dist",
-        "README.md"
+  "name": "quomponents",
+  "description": "The library of react components being used in the QuoDeck product suite",
+  "main": "dist/index.js",
+  "version": "0.1.0",
+  "private": false,
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arijitl/Quomponents.git"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@mui/material": "^5.2.1",
+    "framer-motion": "4.1.17",
+    "node-sass": "^6.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "react-slick": "^0.28.1",
+    "react-test-renderer": "^17.0.2",
+    "slick-carousel": "^1.8.1",
+    "web-vitals": "^1.0.1"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --setupFilesAfterEnv='<rootDir>/config/jest/setupEnzyme.js'",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
+    "clean": "rimraf dist",
+    "compile": "npm run clean && cross-env NODE_ENV=production babel src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__",
+    "chromatic": "npx chromatic --project-token=c349e143ef76",
+    "build-storybook-docs": "build-storybook  --docs"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
     ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/arijitl/Quomponents.git"
-    },
-    "dependencies": {
-        "@emotion/react": "^11.4.1",
-        "@emotion/styled": "^11.3.0",
-        "@fortawesome/fontawesome-free": "^5.15.4",
-        "@mui/material": "^5.2.1",
-        "framer-motion": "4.1.17",
-        "node-sass": "^6.0.1",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "react-scripts": "4.0.3",
-        "react-slick": "^0.28.1",
-        "react-test-renderer": "^17.0.2",
-        "slick-carousel": "^1.8.1",
-        "web-vitals": "^1.0.1"
-    },
-    "peerDependencies": {
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "react-scripts": "4.0.3"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test --setupFilesAfterEnv='<rootDir>/config/jest/setupEnzyme.js'",
-        "eject": "react-scripts eject",
-        "storybook": "start-storybook -p 6006 -s public",
-        "build-storybook": "build-storybook -s public",
-        "clean": "rimraf dist",
-        "compile": "npm run clean && cross-env NODE_ENV=production babel src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
         ],
-        "overrides": [
-            {
-                "files": [
-                    "**/*.stories.*"
-                ],
-                "rules": {
-                    "import/no-anonymous-default-export": "off"
-                }
-            }
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "@babel/cli": "^7.15.7",
-        "@babel/preset-env": "^7.15.8",
-        "@babel/preset-react": "^7.14.5",
-        "@storybook/addon-actions": "^6.3.12",
-        "@storybook/addon-essentials": "^6.3.12",
-        "@storybook/addon-links": "^6.3.12",
-        "@storybook/addon-storyshots": "^6.3.12",
-        "@storybook/addon-storysource": "^6.4.7",
-        "@storybook/addons": "^6.4.4",
-        "@storybook/node-logger": "^6.3.12",
-        "@storybook/preset-create-react-app": "^3.2.0",
-        "@storybook/react": "^6.3.12",
-        "@storybook/theming": "^6.4.4",
-        "@testing-library/jest-dom": "^5.11.4",
-        "@testing-library/react": "^11.1.0",
-        "@testing-library/user-event": "^12.1.10",
-        "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
-        "babel-loader": "8.1.0",
-        "cross-env": "^7.0.3",
-        "enzyme": "^3.11.0",
-        "enzyme-to-json": "^3.6.2",
-        "jest": "26.6.0"
-    }
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-docs": "^6.4.7",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/addon-storyshots": "^6.3.12",
+    "@storybook/addon-storysource": "^6.4.7",
+    "@storybook/addons": "^6.4.4",
+    "@storybook/node-logger": "^6.3.12",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.12",
+    "@storybook/theming": "^6.4.4",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
+    "babel-loader": "8.1.0",
+    "chromatic": "^6.1.0",
+    "cross-env": "^7.0.3",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
+    "jest": "26.6.0"
+  }
 }
