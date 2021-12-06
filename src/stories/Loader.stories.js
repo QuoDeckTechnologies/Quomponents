@@ -416,3 +416,39 @@ FluidContent.parameters = {
         },
     },
 };
+
+// varient stories
+export const Varient = Template.bind({});
+
+Varient.args = {
+    ...Default.args,
+    asVariant: "secondary",
+};
+
+Varient.parameters = {
+    docs: {
+        description: {
+            story: "5 variants are supported. Use as per purpose noted here.",
+        },
+    },
+};
+
+// Custome background-color stories
+export const ColoredLoader = Template.bind({});
+
+ColoredLoader.args = {
+    ...Default.args,
+    withColor: {
+        backgroundColor: "#db9f14",
+        textColor: "#666666",
+        hoverBackgroundColor: "#666666",
+        hoverTextColor: "#ffc900",
+    },
+};
+ColoredLoader.parameters = {
+    docs: {
+        description: {
+            story: "Use to override the standard background-colors of the button.",
+        },
+    },
+};
