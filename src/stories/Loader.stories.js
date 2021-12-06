@@ -418,14 +418,14 @@ FluidContent.parameters = {
 };
 
 // varient stories
-export const Varient = Template.bind({});
+export const VariantLoader = Template.bind({});
 
-Varient.args = {
+VariantLoader.args = {
     ...Default.args,
     asVariant: "secondary",
 };
 
-Varient.parameters = {
+VariantLoader.parameters = {
     docs: {
         description: {
             story: "5 variants are supported. Use as per purpose noted here.",
@@ -449,6 +449,57 @@ ColoredLoader.parameters = {
     docs: {
         description: {
             story: "Use to override the standard background-colors of the button.",
+        },
+    },
+};
+
+export const ImageOnlyLoader = Template.bind({});
+ImageOnlyLoader.args = {
+    ...Default.args,
+    content: {
+        image: "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
+        format: "caption",
+        text: "Did you know ? ",
+        thoughts: [
+            "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
+            "Virtual training takes 40-60% less time to complete than classroom training.",
+            "eLearning produces an 18% increase in employee engagement in the workplace.",
+            "eLearning courses consume 90% less energy than traditional learning.",
+            "IBM saved $200 million by adopting a virtual training program for its employees."
+        ]
+    },    
+};
+ImageOnlyLoader.parameters = {
+    docs: {
+        description: {
+            story:
+                "Any external image/gif link can be passed as a loading image",
+        },
+    },
+};
+
+
+export const IconOnlyLoader = Template.bind({});
+IconOnlyLoader.args = {
+    ...Default.args,
+    content: {
+        image: null,
+        format: "caption",
+        text: "Did you know ? ",
+        thoughts: [
+            "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
+            "Virtual training takes 40-60% less time to complete than classroom training.",
+            "eLearning produces an 18% increase in employee engagement in the workplace.",
+            "eLearning courses consume 90% less energy than traditional learning.",
+            "IBM saved $200 million by adopting a virtual training program for its employees."
+        ]
+    },    
+};
+IconOnlyLoader.parameters = {
+    docs: {
+        description: {
+            story:
+                "If image is null loader icon will be seen",
         },
     },
 };
