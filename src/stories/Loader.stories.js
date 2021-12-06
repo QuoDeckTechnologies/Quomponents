@@ -406,7 +406,7 @@ FluidContent.args = {
         dictionary: dictionary,
     },
     isHidden: false,
-    isFluid: false,
+    isFluid: true
 };
 
 FluidContent.parameters = {
