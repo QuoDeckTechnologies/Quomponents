@@ -198,7 +198,7 @@ export default function Loader(props) {
     }
     return (
         <div className={`qui qui-container theme-${props.isTheme}`}>
-            <div className={props.isHidden ? `qui is-hidden` : ``} style={styles.content}>
+            <div style={styles.content}>
                 {content.image !== null && (
                     <img src={content.image} />
                 )}
@@ -208,14 +208,16 @@ export default function Loader(props) {
                     )}
                 </div>
                 <br />
-                {text}
-                <motion.div
-                    key={`thought-${Math.random()}`}
-                    initial={animate.from}
-                    animate={animate.to}
-                >
-                    {thought}
-                </motion.div>
+                <div className={props.isHidden ? `qui is-hidden` : ``}>
+                    {text}
+                    <motion.div
+                        key={`thought-${Math.random()}`}
+                        initial={animate.from}
+                        animate={animate.to}
+                    >
+                        {thought}
+                    </motion.div>
+                </div>
             </div>
             <Box
                 sx={{
