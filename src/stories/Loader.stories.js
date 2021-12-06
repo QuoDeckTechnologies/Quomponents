@@ -142,6 +142,158 @@ Default.args = {
         hoverTextColor: "",
     },
     withAnimation: {
+        animation: "",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "loader",
+        dictionary: dictionary,
+    },
+    isHidden: false,
+    isFluid: false,
+};
+
+Default.parameters = {
+    docs: {
+        description: {
+            story: "Default loader for general purpose use",
+        },
+    },
+};
+
+
+
+export const TranslatedLoader = Template.bind({});
+TranslatedLoader.args = {
+    isTheme: "light",
+    content: {
+        image: "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
+        format: "caption",
+        text: "Did you know ? ",
+        thoughts: [
+            "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
+            "Virtual training takes 40-60% less time to complete than classroom training.",
+            "eLearning produces an 18% increase in employee engagement in the workplace.",
+            "eLearning courses consume 90% less energy than traditional learning.",
+            "IBM saved $200 million by adopting a virtual training program for its employees."
+        ]
+    },
+    asVariant: "primary",
+    asSize: "normal",
+    asFloated: "none",
+    asPadded: "normal",
+    asAligned: "center",
+    withIcon: { icon: "fa fa-spinner fa-spin", size: "", position: "left" },
+    withColor: {
+        backgroundColor: "",
+        accentColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+    },
+    withAnimation: {
+        animation: "",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "loader",
+        dictionary: dictionary,
+    },
+    isHidden: false,
+    isFluid: false,
+};
+
+TranslatedLoader.parameters = {
+    docs: {
+        description: {
+            story: "Translated loader for general purpose use",
+        },
+    },
+};
+
+export const DarkLoader = Template.bind({});
+DarkLoader.args = {
+    isTheme: "dark",
+    content: {
+        image: "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
+        format: "caption",
+        text: "Did you know ? ",
+        thoughts: [
+            "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
+            "Virtual training takes 40-60% less time to complete than classroom training.",
+            "eLearning produces an 18% increase in employee engagement in the workplace.",
+            "eLearning courses consume 90% less energy than traditional learning.",
+            "IBM saved $200 million by adopting a virtual training program for its employees."
+        ]
+    },
+    asVariant: "primary",
+    asSize: "normal",
+    asFloated: "none",
+    asPadded: "normal",
+    asAligned: "center",
+    withIcon: { icon: "fa fa-spinner fa-spin", size: "", position: "left" },
+    withColor: {
+        backgroundColor: "",
+        accentColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+    },
+    withAnimation: {
+        animation: "",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "loader",
+        dictionary: dictionary,
+    },
+    isHidden: false,
+    isFluid: false,
+};
+
+DarkLoader.parameters = {
+    docs: {
+        description: {
+            story: "Dark Themed loader for general purpose use",
+        },
+    },
+};
+
+export const Animated = Template.bind({});
+Animated.args = {
+    isTheme: "light",
+    content: {
+        image: "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
+        format: "caption",
+        text: "Did you know ? ",
+        thoughts: [
+            "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
+            "Virtual training takes 40-60% less time to complete than classroom training.",
+            "eLearning produces an 18% increase in employee engagement in the workplace.",
+            "eLearning courses consume 90% less energy than traditional learning.",
+            "IBM saved $200 million by adopting a virtual training program for its employees."
+        ]
+    },
+    asVariant: "primary",
+    asSize: "normal",
+    asFloated: "none",
+    asPadded: "normal",
+    asAligned: "center",
+    withIcon: { icon: "fa fa-spinner fa-spin", size: "", position: "left" },
+    withColor: {
+        backgroundColor: "",
+        accentColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+    },
+    withAnimation: {
         animation: "slideRight",
         duration: 0.5,
         delay: 0,
@@ -155,10 +307,112 @@ Default.args = {
     isFluid: false,
 };
 
-Default.parameters = {
+Animated.parameters = {
     docs: {
         description: {
-            story: "Default loader for general purpose use",
+            story: "Loader with animated thoughts",
+        },
+    },
+};
+
+
+export const HiddenContent = Template.bind({});
+HiddenContent.args = {
+    isTheme: "light",
+    content: {
+        image: "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
+        format: "caption",
+        text: "Did you know ? ",
+        thoughts: [
+            "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
+            "Virtual training takes 40-60% less time to complete than classroom training.",
+            "eLearning produces an 18% increase in employee engagement in the workplace.",
+            "eLearning courses consume 90% less energy than traditional learning.",
+            "IBM saved $200 million by adopting a virtual training program for its employees."
+        ]
+    },
+    asVariant: "primary",
+    asSize: "normal",
+    asFloated: "none",
+    asPadded: "normal",
+    asAligned: "center",
+    withIcon: { icon: "fa fa-spinner fa-spin", size: "", position: "left" },
+    withColor: {
+        backgroundColor: "",
+        accentColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+    },
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "loader",
+        dictionary: dictionary,
+    },
+    isHidden: true,
+    isFluid: false,
+};
+
+HiddenContent.parameters = {
+    docs: {
+        description: {
+            story: "Loader with hidden text and thoughts",
+        },
+    },
+};
+
+
+export const FluidContent = Template.bind({});
+FluidContent.args = {
+    isTheme: "light",
+    content: {
+        image: "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
+        format: "caption",
+        text: "Did you know ? ",
+        thoughts: [
+            "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
+            "Virtual training takes 40-60% less time to complete than classroom training.",
+            "eLearning produces an 18% increase in employee engagement in the workplace.",
+            "eLearning courses consume 90% less energy than traditional learning.",
+            "IBM saved $200 million by adopting a virtual training program for its employees."
+        ]
+    },
+    asVariant: "primary",
+    asSize: "normal",
+    asFloated: "none",
+    asPadded: "normal",
+    asAligned: "center",
+    withIcon: { icon: "fa fa-spinner fa-spin", size: "", position: "left" },
+    withColor: {
+        backgroundColor: "",
+        accentColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+    },
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "loader",
+        dictionary: dictionary,
+    },
+    isHidden: false,
+    isFluid: false,
+};
+
+FluidContent.parameters = {
+    docs: {
+        description: {
+            story: "Loader with fluid thoughts",
         },
     },
 };
