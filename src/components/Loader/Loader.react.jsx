@@ -188,14 +188,16 @@ export default function Loader(props) {
             transform: "rotate(10deg)"
         },
         content: {
+            width: props.isFluid ? "auto" : "50vw",
             float: props.asFloated !== "none" ? props.asFloated : "none",
             textAlign: props.asAligned,
             fontSize: "1rem",
-            margin: props.asFloated === "none" ? "auto" : "0px"
+            margin: props.asFloated === "none" ? "auto" : "0px",
+            transform:"translateY(40vh)"
         }
     }
     return (
-        <div className="qui-container">
+        <div className={`qui qui-container theme-${props.isTheme}`}>
             {!props.isHidden && (
                 <div style={styles.content}>
                     {text}

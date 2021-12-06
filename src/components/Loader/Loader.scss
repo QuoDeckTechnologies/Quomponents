@@ -1,4 +1,10 @@
-.qui .qui-container {
+.qui.qui-container {
     height: 100vh;
     width: 100vw;
+    &.theme-dark {
+        background-color: #525252;
+    }
+    &.theme-light {
+        background-color: #ffffff;
+    }
 }
