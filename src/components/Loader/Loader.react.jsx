@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
 import PropTypes from "prop-types";
+import {
+    getQuommons,
+    getTranslation,
+    getAnimation,
+} from "../../../common/javascripts/helpers";
 
 Loader.propTypes = {
     //=======================================
@@ -130,13 +134,6 @@ Loader.defaultProps = {
     isFluid: false,
 };
 
-export function getTranslation(tObj, key) {
-    let dict = tObj && tObj.dictionary ? JSON.parse(tObj.dictionary) : null;
-    let tgt = key ? key : tObj && tObj.tgt ? tObj.tgt : null;
-    return dict && tgt && dict[tObj.lang] && dict[tObj.lang][tgt]
-        ? dict[tObj.lang][tgt]
-        : null;
-}
 export default function Loader(props) {
 
     let content = props.content ? props.content : null;
