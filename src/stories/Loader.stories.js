@@ -31,6 +31,10 @@ export default {
     title: "Design System/Loaders/Loader",
     component: Loader,
     argTypes: {
+        isTheme: {
+            control: "select",
+            options: ["light", "dark"]
+        },
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -111,6 +115,7 @@ export default {
 const Template = (args) => <Loader {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+    isTheme: "light",
     asVariant: "primary",
     asSize: "normal",
     asFloated: "none",
