@@ -1,6 +1,19 @@
-$primary-color:#aa7ab7;
+$primary-color:#ed6e6e;
+$primary-text:#ffffff;
+$secondary-color:#3e587a;
+$secondary-text:#ffffff;
+$warning-color:#ffbf00;
+$warning-text:#000000;
 
-// .qui .qui-btn.variant-primary {
-//     background: $primary-color;
-//     color: #000000;
-// }
+.qui .qui-btn.variant-primary{
+    background-color: $primary-color;
+    color: $primary-text;
+}
+.qui .qui-btn.variant-secondary{
+    background-color: $secondary-color;
+    color: $secondary-text;
+}
+.qui .qui-btn.variant-warning{
+    background-color: $warning-color;
+    color: $warning-text;
+}

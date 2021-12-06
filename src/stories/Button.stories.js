@@ -103,7 +103,7 @@ export default {
             },
         },
         a11y: { disable: true },
-        controls: { expanded: true }
+        // controls: { expanded: true }
     },
 };
 
