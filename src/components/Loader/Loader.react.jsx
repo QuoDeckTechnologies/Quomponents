@@ -4,7 +4,10 @@ import {
     getQuommons,
     getTranslation,
     getAnimation,
-} from "../../../common/javascripts/helpers";
+} from "../../common/javascripts/helpers";
+import Box from '@mui/material/Box';
+import "../../common/stylesheets/common.css";
+import "./Loader.scss";
 
 Loader.propTypes = {
     //=======================================
@@ -116,7 +119,7 @@ Loader.defaultProps = {
     //=======================================
     isTheme: "light",
     content: null,
-   
+
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -164,10 +167,31 @@ export default function Loader(props) {
         }
     }, [])
 
+    function getColors(colors) {
+        return { background: colors.backgroundColor }
+    }
+    let colors = props.withColor ? getColors(props.withColor) : {};
+    let styles = {
+        swishStyle: {
+            position: "absolute",
+            left: "-10vw",
+            bottom: "-10%",
+            width: "120vw",
+            height: "30%",
+            transform: "rotate(10deg)"
+        }
+    }
     return (
-        <div>
+        <div className="qui-container">
             {text}
             {thought}
+            <Box
+                sx={{
+                    bgcolor: `${props.asVariant}.main`,
+                }}
+                style={Object.assign({}, colors, styles.swishStyle)}
+            >
+            </Box>
         </div>
     );
 }
