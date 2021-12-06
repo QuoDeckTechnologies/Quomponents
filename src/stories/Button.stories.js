@@ -102,6 +102,8 @@ export default {
                 type: "auto",
             },
         },
+        a11y: { disable: true },
+        controls: { expanded: true }
     },
 };
 
