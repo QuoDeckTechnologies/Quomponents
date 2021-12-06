@@ -188,18 +188,27 @@ export default function Loader(props) {
             transform: "rotate(10deg)"
         },
         content: {
-            width: props.isFluid ? "auto" : "50vw",
+            width: props.isFluid ? "auto" : "75vw",
             float: props.asFloated !== "none" ? props.asFloated : "none",
             textAlign: props.asAligned,
             fontSize: "1rem",
             margin: props.asFloated === "none" ? "auto" : "0px",
-            transform:"translateY(40vh)"
+            transform: "translateY(40vh)"
         }
     }
     return (
         <div className={`qui qui-container theme-${props.isTheme}`}>
             {!props.isHidden && (
                 <div style={styles.content}>
+                    {content.image !== null && (
+                        <img src={content.image} />
+                    )}
+                    <div className={`size-${props.asSize}`}>
+                        {content.image === null && props.withIcon.icon && (
+                            <i className={props.withIcon.icon}></i>
+                        )}
+                    </div>
+                    <br />
                     {text}
                     <motion.div
                         key={`thought-${Math.random()}`}

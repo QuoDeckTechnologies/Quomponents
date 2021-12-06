@@ -4,7 +4,7 @@ import Loader from "../components/Loader/Loader.react";
 const dictionary = JSON.stringify({
     en: {
         loader: {
-            image: null, text: "Did you know ?", thoughts: [
+            text: "Did you know ?", thoughts: [
                 "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
                 "Virtual training takes 40-60% less time to complete than classroom training.",
                 "eLearning produces an 18% increase in employee engagement in the workplace.",
@@ -15,7 +15,7 @@ const dictionary = JSON.stringify({
     },
     hi: {
         loader: {
-            image: null, text: "क्या तुम्हें पता था ?", thoughts: [
+            text: "क्या तुम्हें पता था ?", thoughts: [
                 "गैर-मोबाइल डिवाइस उपयोगकर्ताओं के विपरीत मोबाइल डिवाइस (स्मार्टफोन, टैबलेट, स्मार्टवॉच, आदि) का उपयोग करने पर उत्पादकता में 43% की वृद्धि होती है।",
                 "आभासी प्रशिक्षण कक्षा प्रशिक्षण की तुलना में 40-60% कम समय लेता है।",
                 "ई-लर्निंग कार्यस्थल में कर्मचारियों की व्यस्तता में 18% की वृद्धि करता है।",
@@ -117,7 +117,7 @@ export const Default = Template.bind({});
 Default.args = {
     isTheme: "light",
     content: {
-        image: null,
+        image: "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
         format: "caption",
         text: "Did you know ? ",
         thoughts: [
