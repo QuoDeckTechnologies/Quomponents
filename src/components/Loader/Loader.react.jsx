@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import PropTypes from "prop-types";
 
@@ -10,6 +10,12 @@ Loader.propTypes = {
         "light",
         "dark"
     ]),
+
+    /**
+    Use to add a loading text, thought and image to loader 
+    */
+    content: PropTypes.object,
+
     //=======================================
     // Quommon props
     //=======================================
@@ -67,14 +73,6 @@ Loader.propTypes = {
         position: PropTypes.oneOf(["left", "right"]),
     }),
     /**
-    Use to add a heading label, a footer caption or a title popover to the component
-    */
-    withLabel: PropTypes.shape({
-        format: PropTypes.oneOf(["label", "caption", "popover"]),
-        content: PropTypes.string,
-        textColor: PropTypes.string,
-    }),
-    /**
     Use to define the entry animation of the component
     */
     withAnimation: PropTypes.shape({
@@ -113,6 +111,8 @@ Loader.defaultProps = {
     // Component Specific props
     //=======================================
     isTheme: "light",
+    content: null,
+   
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -123,7 +123,6 @@ Loader.defaultProps = {
 
     withColor: null,
     withIcon: null,
-    withLabel: null,
     withAnimation: null,
     withTranslation: null,
 
@@ -131,9 +130,47 @@ Loader.defaultProps = {
     isFluid: false,
 };
 
+export function getTranslation(tObj, key) {
+    let dict = tObj && tObj.dictionary ? JSON.parse(tObj.dictionary) : null;
+    let tgt = key ? key : tObj && tObj.tgt ? tObj.tgt : null;
+    return dict && tgt && dict[tObj.lang] && dict[tObj.lang][tgt]
+        ? dict[tObj.lang][tgt]
+        : null;
+}
 export default function Loader(props) {
+
+    let content = props.content ? props.content : null;
+    let [text, setText] = useState("");
+    let [thought, setThought] = useState("");
+
+    useEffect(() => {
+        if (
+            props.withTranslation &&
+            props.withTranslation.lang !== "" &&
+            props.withTranslation.lang !== "en"
+        ) {
+            let tObj = getTranslation(props.withTranslation);
+            content = Object.assign(content, tObj)
+        }
+        const interval = setInterval(function () {
+            if (content !== null) {
+                if (content.text) {
+                    setText(content.text)
+                }
+                if (content.thoughts.length > 0) {
+                    setThought(content.thoughts[Math.floor(Math.random() * content.thoughts.length)])
+                }
+            }
+        }, 5000);
+        return () => {
+            clearInterval(interval);
+        }
+    }, [])
+
     return (
         <div>
+            {text}
+            {thought}
         </div>
     );
 }

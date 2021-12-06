@@ -116,26 +116,24 @@ const Template = (args) => <Loader {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     isTheme: "light",
+    content: {
+        image: null,
+        format: "caption",
+        text: "Did you know ? ",
+        thoughts: [
+            "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
+            "Virtual training takes 40-60% less time to complete than classroom training.",
+            "eLearning produces an 18% increase in employee engagement in the workplace.",
+            "eLearning courses consume 90% less energy than traditional learning.",
+            "IBM saved $200 million by adopting a virtual training program for its employees."
+        ]
+    },
     asVariant: "primary",
     asSize: "normal",
     asFloated: "none",
     asPadded: "normal",
     asAligned: "center",
-    withLabel: {
-        format: "caption",
-        content: {
-            text: "Did you know ? ",
-            thoughts: [
-                "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
-                "Virtual training takes 40-60% less time to complete than classroom training.",
-                "eLearning produces an 18% increase in employee engagement in the workplace.",
-                "eLearning courses consume 90% less energy than traditional learning.",
-                "IBM saved $200 million by adopting a virtual training program for its employees."
-            ]
-        },
-        textColor: "#000000",
-    },
-    withIcon: { icon: "fa fa-spinner fa-spin", size: "", position: "" },
+    withIcon: { icon: "fa fa-spinner fa-spin", size: "", position: "left" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -150,7 +148,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "button",
+        tgt: "loader",
         dictionary: dictionary,
     },
     isHidden: false,
