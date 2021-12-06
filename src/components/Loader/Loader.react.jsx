@@ -188,9 +188,10 @@ export default function Loader(props) {
             transform: "rotate(10deg)"
         },
         content: {
-            float: props.asFloated,
+            float: props.asFloated !== "none" ? props.asFloated : "none",
             textAlign: props.asAligned,
-            fontSize: "1rem"
+            fontSize: "1rem",
+            margin: props.asFloated === "none" ? "auto" : "0px"
         }
     }
     return (
