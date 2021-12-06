@@ -142,12 +142,12 @@ Default.args = {
         hoverTextColor: "",
     },
     withAnimation: {
-        animation: "zoom",
+        animation: "slideRight",
         duration: 0.5,
         delay: 0,
     },
     withTranslation: {
-        lang: "en",
+        lang: "hi",
         tgt: "loader",
         dictionary: dictionary,
     },
@@ -158,7 +158,7 @@ Default.args = {
 Default.parameters = {
     docs: {
         description: {
-            story: "Default loader for general purpose useu",
+            story: "Default loader for general purpose use",
         },
     },
 };

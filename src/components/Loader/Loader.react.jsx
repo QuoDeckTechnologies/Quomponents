@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 import {
     getQuommons,
     getTranslation,
@@ -144,28 +145,34 @@ export default function Loader(props) {
     let [thought, setThought] = useState("");
 
     useEffect(() => {
-        if (
-            props.withTranslation &&
-            props.withTranslation.lang !== "" &&
-            props.withTranslation.lang !== "en"
-        ) {
-            let tObj = getTranslation(props.withTranslation);
-            content = Object.assign(content, tObj)
-        }
-        const interval = setInterval(function () {
-            if (content !== null) {
-                if (content.text) {
-                    setText(content.text)
-                }
-                if (content.thoughts.length > 0) {
-                    setThought(content.thoughts[Math.floor(Math.random() * content.thoughts.length)])
-                }
+        if (!props.isHidden) {
+            if (
+                props.withTranslation &&
+                props.withTranslation.lang !== "" &&
+                props.withTranslation.lang !== "en"
+            ) {
+                let tObj = getTranslation(props.withTranslation);
+                content = Object.assign(content, tObj)
             }
-        }, 5000);
-        return () => {
-            clearInterval(interval);
+            setText(content.text);
+            setThought(content.thoughts[Math.floor(Math.random() * content.thoughts.length)])
+            const interval = setInterval(function () {
+                if (content !== null) {
+                    if (content.text) {
+                        setText(content.text)
+                    }
+                    if (content.thoughts.length > 0) {
+                        setThought(content.thoughts[Math.floor(Math.random() * content.thoughts.length)])
+                    }
+                }
+            }, 5000);
+            return () => {
+                clearInterval(interval);
+            }
         }
-    }, [])
+    }, []);
+
+    const animate = getAnimation(props.withAnimation);
 
     function getColors(colors) {
         return { background: colors.backgroundColor }
@@ -179,12 +186,27 @@ export default function Loader(props) {
             width: "120vw",
             height: "30%",
             transform: "rotate(10deg)"
+        },
+        content: {
+            float: props.asFloated,
+            textAlign: props.asAligned,
+            fontSize: "1rem"
         }
     }
     return (
         <div className="qui-container">
-            {text}
-            {thought}
+            {!props.isHidden && (
+                <div style={styles.content}>
+                    {text}
+                    <motion.div
+                        key={`thought-${Math.random()}`}
+                        initial={animate.from}
+                        animate={animate.to}
+                    >
+                        {thought}
+                    </motion.div>
+                </div>
+            )}
             <Box
                 sx={{
                     bgcolor: `${props.asVariant}.main`,
