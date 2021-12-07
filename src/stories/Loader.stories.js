@@ -1,5 +1,6 @@
 import React from "react";
 import Loader from "../components/Loader/Loader.react";
+import quodeckdark from '../components/Loader/quodeck-loader-dark.gif';
 
 const dictionary = JSON.stringify({
     en: {
@@ -184,7 +185,19 @@ TranslatedLoader.parameters = {
 export const DarkLoader = Template.bind({});
 DarkLoader.args = {
     ...Default.args,
-    isTheme: "dark"
+    isTheme: "dark",
+    content: {
+        image: quodeckdark,
+        format: "caption",
+        text: "Did you know ? ",
+        thoughts: [
+            "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
+            "Virtual training takes 40-60% less time to complete than classroom training.",
+            "eLearning produces an 18% increase in employee engagement in the workplace.",
+            "eLearning courses consume 90% less energy than traditional learning.",
+            "IBM saved $200 million by adopting a virtual training program for its employees."
+        ]
+    },
 };
 
 DarkLoader.parameters = {
