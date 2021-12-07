@@ -137,6 +137,10 @@ Loader.defaultProps = {
     isFluid: false,
 };
 
+function getColors(colors) {
+    return { background: colors.backgroundColor }
+}
+
 export default function Loader(props) {
 
     let content = props.content ? props.content : null;
@@ -172,11 +176,13 @@ export default function Loader(props) {
         }
     }, []);
 
+    //-------------------------------------------------------------------
+    // Get animation of the component
+    //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-
-    function getColors(colors) {
-        return { background: colors.backgroundColor }
-    }
+    //-------------------------------------------------------------------
+    //  Set the component standard colors 
+    //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor) : {};
     let styles = {
         content: {
