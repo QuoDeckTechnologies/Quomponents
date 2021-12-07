@@ -1,6 +1,7 @@
 .qui.qui-container {
     height: 100vh;
     width: 100vw;
+    max-width: 100%;
 
     &.theme-dark {
         background-color: #525252;
@@ -12,12 +13,15 @@
         color: #000000
     }
 }
+
 .qui .qui-content {
     font-Size: 1rem;
     transform: translateY(40vh);
     position: relative;
     z-index: 1000;
+    display: table;
 }
+
 .qui .qui-div-bottom {
     position: absolute;
     left: -10vw;
@@ -25,4 +29,12 @@
     width: 120vw;
     height: 30%;
     transform: rotate(10deg);
+}
+
+.order-first {
+    display: table-header-group;
+}
+
+.order-second {
+    display: table-footer-group;
 }

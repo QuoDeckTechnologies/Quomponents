@@ -186,29 +186,34 @@ export default function Loader(props) {
             margin: props.asFloated === "none" ? "auto" : "0px",
         }
     }
+
+    let firstContainerClass = `order-${props.content && props.content.format && props.content.format === "label" ? "second" : "first"}`;
+    let secondContainerClass = `order-${props.content && props.content.format && props.content.format === "label" ? "first" : "second"}`;
+
     return (
         <div className={`qui qui-container theme-${props.isTheme}`}>
-            {content && <div className="qui-content" style={styles.content}>
-                {content.image !== null && (
-                    <img src={content.image} />
-                )}
-                <div className={`size-${props.asSize}`}>
-                    {content.image === null && props.withIcon.icon && (
-                        <i className={props.withIcon.icon}></i>
-                    )}
+            {content &&
+                <div className="qui-content" style={styles.content}>
+                    <div className={`size-${props.asSize} ${firstContainerClass}`}>
+                        {content.image !== null && (
+                            <img src={content.image} />
+                        )}
+                        {content.image === null && props.withIcon.icon && (
+                            <i className={props.withIcon.icon}></i>
+                        )}
+                    </div>
+                    <br />
+                    <div className={props.isHidden ? `qui is-hidden ${secondContainerClass}` : secondContainerClass}>
+                        {text}
+                        <motion.div
+                            key={`thought-${Math.random()}`}
+                            initial={animate.from}
+                            animate={animate.to}
+                        >
+                            {thought}
+                        </motion.div>
+                    </div>
                 </div>
-                <br />
-                <div className={props.isHidden ? `qui is-hidden` : ``}>
-                    {text}
-                    <motion.div
-                        key={`thought-${Math.random()}`}
-                        initial={animate.from}
-                        animate={animate.to}
-                    >
-                        {thought}
-                    </motion.div>
-                </div>
-            </div>
             }
             <Box
                 sx={{

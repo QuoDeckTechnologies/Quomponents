@@ -328,3 +328,29 @@ IconOnlyLoader.parameters = {
         },
     },
 };
+
+
+export const LabelContent = Template.bind({});
+LabelContent.args = {
+    ...Default.args,
+    content: {
+        image: null,
+        format: "label",
+        text: "Did you know ? ",
+        thoughts: [
+            "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
+            "Virtual training takes 40-60% less time to complete than classroom training.",
+            "eLearning produces an 18% increase in employee engagement in the workplace.",
+            "eLearning courses consume 90% less energy than traditional learning.",
+            "IBM saved $200 million by adopting a virtual training program for its employees."
+        ]
+    },
+};
+LabelContent.parameters = {
+    docs: {
+        description: {
+            story:
+                "If image is null loader icon will be seen",
+        },
+    },
+};
