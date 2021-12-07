@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
-    getQuommons,
     getTranslation,
     getAnimation,
 } from "../../common/javascripts/helpers";
@@ -154,21 +153,22 @@ export default function Loader(props) {
                 let tObj = getTranslation(props.withTranslation);
                 content = Object.assign(content, tObj)
             }
-            setText(content.text);
-            setThought(content.thoughts[Math.floor(Math.random() * content.thoughts.length)])
-            const interval = setInterval(function () {
-                if (content !== null) {
+            if (content && content !== null && content.thoughts) {
+                setText(content.text);
+                setThought(content.thoughts[Math.floor(Math.random() * content.thoughts.length)])
+                const interval = setInterval(function () {
                     if (content.text) {
                         setText(content.text)
                     }
                     if (content.thoughts.length > 0) {
                         setThought(content.thoughts[Math.floor(Math.random() * content.thoughts.length)])
                     }
+                }, 5000);
+                return () => {
+                    clearInterval(interval);
                 }
-            }, 5000);
-            return () => {
-                clearInterval(interval);
             }
+            return true;
         }
     }, []);
 
@@ -179,26 +179,16 @@ export default function Loader(props) {
     }
     let colors = props.withColor ? getColors(props.withColor) : {};
     let styles = {
-        swishStyle: {
-            position: "absolute",
-            left: "-10vw",
-            bottom: "-10%",
-            width: "120vw",
-            height: "30%",
-            transform: "rotate(10deg)"
-        },
         content: {
             width: props.isFluid ? "auto" : "75vw",
             float: props.asFloated !== "none" ? props.asFloated : "none",
             textAlign: props.asAligned,
-            fontSize: "1rem",
             margin: props.asFloated === "none" ? "auto" : "0px",
-            transform: "translateY(40vh)"
         }
     }
     return (
         <div className={`qui qui-container theme-${props.isTheme}`}>
-            <div style={styles.content}>
+            {content && <div className="qui-content" style={styles.content}>
                 {content.image !== null && (
                     <img src={content.image} />
                 )}
@@ -219,11 +209,13 @@ export default function Loader(props) {
                     </motion.div>
                 </div>
             </div>
+            }
             <Box
                 sx={{
                     bgcolor: `${props.asVariant}.main`,
                 }}
-                style={Object.assign({}, colors, styles.swishStyle)}
+                style={Object.assign({}, colors)}
+                className="qui-div-bottom"
             >
             </Box>
         </div>
