@@ -278,15 +278,15 @@ ColoredLoader.args = {
     ...Default.args,
     withColor: {
         backgroundColor: "#db9f14",
-        textColor: "#666666",
-        hoverBackgroundColor: "#666666",
-        hoverTextColor: "#ffc900",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
     },
 };
 ColoredLoader.parameters = {
     docs: {
         description: {
-            story: "Use to override the standard background-colors of the button.",
+            story: "Use to override the standard color.",
         },
     },
 };
