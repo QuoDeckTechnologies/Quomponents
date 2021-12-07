@@ -6,7 +6,7 @@ module.exports = {
     addons: [
         "@storybook/addon-essentials",
         "@storybook/preset-create-react-app",
-        "@storybook/addon-storysource",
-        "storybook-addon-turbo-build"
+        "@storybook/addon-a11y",
+        "storybook-addon-turbo-build",
     ],
 };

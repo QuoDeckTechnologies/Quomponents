@@ -23,64 +23,137 @@ export default {
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
+            table: {
+                category: "as-Flags",
+            },
         },
-        isCircular: false,
+        isCircular: {
+            defaultValue: false,
+            table: {
+                category: "is-Toggles",
+            },
+        },
 
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
+            table: {
+                category: "as-Flags",
+            },
         },
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            table: {
+                category: "as-Flags",
+            },
         },
         asPadded: {
             control: "select",
             options: ["fitted", "compact", "normal", "relaxed"],
+            table: {
+                category: "as-Flags",
+            },
         },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
+            table: {
+                category: "as-Flags",
+            },
         },
         asAligned: {
             control: "select",
             options: ["left", "right", "center"],
+            table: {
+                category: "as-Flags",
+            },
         },
 
         withColor: {
-            backgroundColor: "",
-            accentColor: "",
-            textColor: "",
-            hoverBackgroundColor: "",
-            hoverTextColor: "",
+            defaultValue: {
+                backgroundColor: "",
+                accentColor: "",
+                textColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            },
+            table: {
+                category: "with-Params",
+            },
         },
         withIcon: {
-            icon: "",
-            size: "",
-            position: "left",
+            defaultValue: {
+                icon: "",
+                size: "",
+                position: "left",
+            },
+            table: {
+                category: "with-Params",
+            },
         },
         withLabel: {
-            format: "label",
-            content: "",
-            textColor: "",
+            defaultValue: {
+                format: "label",
+                content: "",
+                textColor: "",
+            },
+            table: {
+                category: "with-Params",
+            },
         },
         withAnimation: {
-            animation: "",
-            duration: 0,
-            delay: 0,
+            defaultValue: {
+                animation: "",
+                duration: 0,
+                delay: 0,
+            },
+            table: {
+                category: "with-Params",
+            },
         },
         withTranslation: {
-            lang: "",
-            tgt: "",
-            dictionary: "",
+            defaultValue: {
+                lang: "",
+                tgt: "",
+                dictionary: "",
+            },
+            table: {
+                category: "with-Params",
+            },
         },
 
-        isHidden: false,
-        isDisabled: false,
-        isFluid: false,
-        isLoading: false,
+        isHidden: {
+            defaultValue: false,
+            table: {
+                category: "is-Toggles",
+            },
+        },
+        isDisabled: {
+            defaultValue: false,
+            table: {
+                category: "is-Toggles",
+            },
+        },
+        isFluid: {
+            defaultValue: false,
+            table: {
+                category: "is-Toggles",
+            },
+        },
+        isLoading: {
+            defaultValue: false,
+            table: {
+                category: "is-Toggles",
+            },
+        },
 
-        onClick: null,
+        onClick: {
+            defaultValue: null,
+            table: {
+                category: "Events",
+            },
+        },
     },
     decorators: [
         (story) => (
@@ -97,14 +170,14 @@ export default {
     ],
     parameters: {
         componentSubtitle: "Displays a basic button for general-purpose use",
-        docs: {
-            source: {
-                type: "auto",
-            },
-        },
+        a11y: { disable: true },
+        // controls: { expanded: true }
     },
 };
 
+// -------------------------------------------------------------
+// Default
+// -------------------------------------------------------------
 const Template = (args) => <Button {...args} />;
 export const Default = Template.bind({});
 Default.args = {
@@ -147,7 +220,17 @@ Default.args = {
     isHidden: false,
     isFluid: false,
 };
+Default.parameters = {
+    docs: {
+        source: {
+            code: `<Button {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
 
+// -------------------------------------------------------------
+// Variants
+// -------------------------------------------------------------
 const AllVariantsTemplate = (args) => {
     const baseObj = {
         ...Object.assign({}, Default.args, args, {
@@ -199,9 +282,15 @@ AllVariants.parameters = {
         description: {
             story: "5 variants are supported. Use as per purpose noted here.",
         },
+        source: {
+            code: `<Button asVariant="primary"/>`,
+        },
     },
 };
 
+// -------------------------------------------------------------
+// Icon Button
+// -------------------------------------------------------------
 export const IconOnlyButton = Template.bind({});
 IconOnlyButton.args = {
     ...Default.args,
@@ -220,9 +309,15 @@ IconOnlyButton.parameters = {
             story:
                 "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of buttons or for standalone floating actions. Use isCircular to toggle the rounding.",
         },
+        source: {
+            code: `<Button isCircular={true} withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click to share this...",textColor: ""}}}/>`,
+        },
     },
 };
 
+// -------------------------------------------------------------
+// Fluid Button
+// -------------------------------------------------------------
 export const FluidButton = Template.bind({});
 FluidButton.args = {
     ...Default.args,
@@ -235,8 +330,14 @@ FluidButton.parameters = {
             story: "Typically used as the bottom of a modal or a container.",
         },
     },
+    source: {
+        code: `<Button isFluid={true}/>`,
+    },
 };
 
+// -------------------------------------------------------------
+// Labelled Button
+// -------------------------------------------------------------
 export const LabelledButton = Template.bind({});
 LabelledButton.args = {
     ...Default.args,
@@ -254,9 +355,15 @@ LabelledButton.parameters = {
             story:
                 "Use to provide a header callout (format:label) above the button. Or use as an information caption (format:caption) below the button. Or use as a tooltip (format:tooltip) to explain what the button does. The text here can be customized through the withTranslation option.",
         },
+        source: {
+            code: `<Button withLabel={{format: "label",content: "Press to Confirm...",textColor: "#000000"}}}/>`,
+        },
     },
 };
 
+// -------------------------------------------------------------
+// Loading Button
+// -------------------------------------------------------------
 export const LoadingButton = Template.bind({});
 LoadingButton.args = {
     ...Default.args,
@@ -268,9 +375,15 @@ LoadingButton.parameters = {
             story:
                 "Use to indicate a loading state for the button when it stops being clickable. The loading text can be customized with the withTranslation option through a common loading:'' value in the dictionary.",
         },
+        source: {
+            code: `<Button isLoading={true}/>`,
+        },
     },
 };
 
+// -------------------------------------------------------------
+// Colored Button
+// -------------------------------------------------------------
 export const ColoredButton = Template.bind({});
 ColoredButton.args = {
     ...Default.args,
@@ -287,9 +400,15 @@ ColoredButton.parameters = {
         description: {
             story: "Use to override the standard colors of the button.",
         },
+        source: {
+            code: `<Button withColor={{backgroundColor: "#ffc900", textColor: "#666666",hoverBackgroundColor: "#666666", hoverTextColor: "#ffc900"}}}/>`,
+        },
     },
 };
 
+// -------------------------------------------------------------
+// Animated Button
+// -------------------------------------------------------------
 export const AnimatedButton = Template.bind({});
 AnimatedButton.args = {
     ...Default.args,
@@ -306,8 +425,15 @@ AnimatedButton.parameters = {
             story:
                 "Use to animate the entry of the button with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
+        source: {
+            code: `<Button withAnimation={{animation: "collapse", duration: 0.5, delay: 0}}}/>`,
+        },
     },
 };
+
+// -------------------------------------------------------------
+// Translated Button
+// -------------------------------------------------------------
 export const TranslatedButton = Template.bind({});
 TranslatedButton.args = {
     ...Default.args,
@@ -323,6 +449,19 @@ TranslatedButton.parameters = {
         description: {
             story:
                 "Use to change the language that the text appears in. To make this work for the button, add a button:{text,label} value to the dictionary.",
+        },
+        source: {
+            code: `<Button withTranslation={{lang: "hi", tgt: "button", dictionary: ${JSON.stringify(
+                {
+                    hi: {
+                        loading: "बस एक मिनट...",
+                        button: {
+                            text: "बटन",
+                            label: "इसे बार-बार न दबाएं...",
+                        },
+                    },
+                }
+            )}}}}/>`,
         },
     },
 };
