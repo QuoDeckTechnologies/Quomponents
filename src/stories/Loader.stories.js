@@ -363,7 +363,7 @@ LabelContent.parameters = {
     docs: {
         description: {
             story:
-                "If image is null loader icon will be seen",
+                "If content format is label the content will be shown above loader icon or image",
         },
     },
 };
