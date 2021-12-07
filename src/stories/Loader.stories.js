@@ -34,60 +34,100 @@ export default {
     argTypes: {
         isTheme: {
             control: "select",
-            options: ["light", "dark"]
+            options: ["light", "dark"],
         },
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
+            table: {
+                category: "as-Flags",
+            }
         },
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            table: {
+                category: "as-Flags",
+            }
         },
-        // asPadded: {
-        //     control: "select",
-        //     options: ["fitted", "compact", "normal", "relaxed"],
-        // },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
+            table: {
+                category: "as-Flags",
+            }
         },
         asAligned: {
             control: "select",
             options: ["left", "right", "center"],
+            table: {
+                category: "as-Flags",
+            }
         },
-
         withColor: {
-            backgroundColor: "",
-            accentColor: "",
-            textColor: "",
-            hoverBackgroundColor: "",
-            hoverTextColor: "",
+            defaultValue: {
+                backgroundColor: "",
+                accentColor: "",
+                textColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            },
+            table: {
+                category: "with-Params",
+            },
         },
         withIcon: {
-            icon: "",
-            size: "",
-            position: "",
+            defaultValue: {
+                icon: "",
+                size: "",
+                position: "",
+            },
+            table: {
+                category: "with-Params",
+            }
         },
         withLabel: {
-            format: "label",
-            content: "",
-            textColor: "",
+            defaultValue: {
+                format: "label",
+                content: "",
+                textColor: "",
+            },
+            table: {
+                category: "with-Params",
+            }
         },
         withAnimation: {
-            animation: "",
-            duration: 0,
-            delay: 0,
+            defaultValue: {
+                animation: "",
+                duration: 0,
+                delay: 0,
+            },
+            table: {
+                category: "with-Params",
+            }
         },
         withTranslation: {
-            lang: "",
-            tgt: "",
-            dictionary: "",
+            defaultValue: {
+                lang: "",
+                tgt: "",
+                dictionary: "",
+            },
+            table: {
+                category: "with-Params",
+            }
         },
-
-        isHidden: false,
-        isDisabled: false,
-        isFluid: false
+        isHidden: {
+            defaultValue: false,
+            table: {
+                category: "is-Toggles",
+            }
+        },
+        isFluid: {
+            defaultValue: false,
+            table: {
+                category: "is-Toggles",
+            }
+        }
     },
     decorators: [
         (story) => (
@@ -132,7 +172,6 @@ Default.args = {
     asVariant: "primary",
     asSize: "normal",
     asFloated: "none",
-    asPadded: "normal",
     asAligned: "center",
     withIcon: { icon: "fa fa-spinner fa-spin", size: "", position: "left" },
     withColor: {
