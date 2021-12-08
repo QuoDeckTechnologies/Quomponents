@@ -70,64 +70,64 @@ export default {
             },
         },
         withColor: {
-            defaultValue: {
-                backgroundColor: "",
-                accentColor: "",
-                textColor: "",
-            },
             table: {
                 category: "with-Params",
+                defaultValue: {
+                    backgroundColor: "",
+                    accentColor: "",
+                    textColor: "",
+                },
             },
         },
         withIcon: {
-            defaultValue: {
-                icon: "",
-                size: "",
-            },
             table: {
                 category: "with-Params",
+                defaultValue: {
+                    icon: "",
+                    size: "",
+                },
             },
         },
         withLabel: {
-            defaultValue: {
-                format: "label",
-                header: "",
-                content: [],
-            },
             table: {
                 category: "with-Params",
+                defaultValue: {
+                    format: "label",
+                    header: "",
+                    content: [],
+                },
             },
         },
         withAnimation: {
-            defaultValue: {
-                animation: "",
-                duration: 0,
-                delay: 0,
-            },
             table: {
                 category: "with-Params",
+                defaultValue: {
+                    animation: "",
+                    duration: 0,
+                    delay: 0,
+                },
             },
         },
         withTranslation: {
-            defaultValue: {
-                lang: "",
-                tgt: "",
-                dictionary: "",
-            },
             table: {
                 category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
+                },
             },
         },
         isHidden: {
-            defaultValue: false,
             table: {
                 category: "is-Toggles",
+                defaultValue: false,
             },
         },
         isFluid: {
-            defaultValue: false,
             table: {
                 category: "is-Toggles",
+                defaultValue: false,
             },
         },
     },
@@ -216,6 +216,24 @@ GifLoader.parameters = {
     },
 };
 
+export const IconOnlyLoader = Template.bind({});
+IconOnlyLoader.args = {
+    ...Default.args,
+    withIcon: {
+        icon: "https://acegif.com/wp-content/uploads/loading-42.gif",
+        size: "512px",
+    },
+    withLabel: null,
+};
+
+IconOnlyLoader.parameters = {
+    docs: {
+        description: {
+            story: "Image based loader icon",
+        },
+    },
+};
+
 export const TranslatedLoader = Template.bind({});
 TranslatedLoader.args = {
     ...Default.args,
@@ -233,10 +251,10 @@ MinimalLoader.args = {
     withIcon: null,
 };
 
-TranslatedLoader.parameters = {
+MinimalLoader.parameters = {
     docs: {
         description: {
-            story: "Translated loader component",
+            story: "Minimal loader component",
         },
     },
 };
@@ -245,6 +263,7 @@ export const ColoredLoader = Template.bind({});
 
 ColoredLoader.args = {
     ...Default.args,
+    asPadded: "relaxed",
     withColor: {
         backgroundColor: "#666666",
         textColor: "#ffffff",
@@ -277,121 +296,16 @@ AnimatedLoader.parameters = {
     },
 };
 
-// export const HiddenContent = Template.bind({});
-// HiddenContent.args = {
-//     ...Default.args,
-//     isHidden: true,
-// };
+export const FullPageLoader = Template.bind({});
+FullPageLoader.args = {
+    ...Default.args,
+    isFluid: true,
+};
 
-// HiddenContent.parameters = {
-//     docs: {
-//         description: {
-//             story: "Loader with hidden text and thoughts",
-//         },
-//     },
-// };
-
-// export const FluidContent = Template.bind({});
-// FluidContent.args = {
-//     ...Default.args,
-//     isFluid: true,
-// };
-
-// FluidContent.parameters = {
-//     docs: {
-//         description: {
-//             story: "Loader with fluid thoughts",
-//         },
-//     },
-// };
-
-// // varient stories
-// export const VariantLoader = Template.bind({});
-
-// VariantLoader.args = {
-//     ...Default.args,
-//     asVariant: "secondary",
-// };
-
-// VariantLoader.parameters = {
-//     docs: {
-//         description: {
-//             story: "5 variants are supported. Use as per purpose noted here.",
-//         },
-//     },
-// };
-
-// export const ImageOnlyLoader = Template.bind({});
-// ImageOnlyLoader.args = {
-//     ...Default.args,
-//     content: {
-//         image:
-//             "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
-//         format: "caption",
-//         text: "Did you know ? ",
-//         content: [
-//             "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
-//             "Virtual training takes 40-60% less time to complete than classroom training.",
-//             "eLearning produces an 18% increase in employee engagement in the workplace.",
-//             "eLearning courses consume 90% less energy than traditional learning.",
-//             "IBM saved $200 million by adopting a virtual training program for its employees.",
-//         ],
-//     },
-// };
-// ImageOnlyLoader.parameters = {
-//     docs: {
-//         description: {
-//             story:
-//                 "Any external image/gif link can be passed as a loading image",
-//         },
-//     },
-// };
-
-// export const IconOnlyLoader = Template.bind({});
-// IconOnlyLoader.args = {
-//     ...Default.args,
-//     content: {
-//         image: null,
-//         format: "caption",
-//         text: "Did you know ? ",
-//         content: [
-//             "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
-//             "Virtual training takes 40-60% less time to complete than classroom training.",
-//             "eLearning produces an 18% increase in employee engagement in the workplace.",
-//             "eLearning courses consume 90% less energy than traditional learning.",
-//             "IBM saved $200 million by adopting a virtual training program for its employees.",
-//         ],
-//     },
-// };
-// IconOnlyLoader.parameters = {
-//     docs: {
-//         description: {
-//             story: "If image is null loader icon will be seen",
-//         },
-//     },
-// };
-
-// export const LabelContent = Template.bind({});
-// LabelContent.args = {
-//     ...Default.args,
-//     content: {
-//         image: null,
-//         format: "label",
-//         text: "Did you know ? ",
-//         content: [
-//             "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
-//             "Virtual training takes 40-60% less time to complete than classroom training.",
-//             "eLearning produces an 18% increase in employee engagement in the workplace.",
-//             "eLearning courses consume 90% less energy than traditional learning.",
-//             "IBM saved $200 million by adopting a virtual training program for its employees.",
-//         ],
-//     },
-// };
-// LabelContent.parameters = {
-//     docs: {
-//         description: {
-//             story:
-//                 "If content format is label the content will be shown above loader icon or image",
-//         },
-//     },
-// };
+FullPageLoader.parameters = {
+    docs: {
+        description: {
+            story: "Full Page Loader",
+        },
+    },
+};

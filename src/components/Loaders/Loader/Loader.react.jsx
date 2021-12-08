@@ -87,6 +87,7 @@ Loader.propTypes = {
             "slideUp",
             "slideLeft",
             "slideRight",
+            ""
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
