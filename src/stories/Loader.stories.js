@@ -147,6 +147,9 @@ export default {
     parameters: {
         componentSubtitle: "Displays a loader for general-purpose use",
         a11y: { disable: true },
+        docs: {
+            iframeHeight: 300,
+        },
     },
 };
 
@@ -307,5 +310,6 @@ FullPageLoader.parameters = {
         description: {
             story: "Full Page Loader",
         },
+        iframeHeight: 768,
     },
 };
