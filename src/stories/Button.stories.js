@@ -451,17 +451,12 @@ TranslatedButton.parameters = {
                 "Use to change the language that the text appears in. To make this work for the button, add a button:{text,label} value to the dictionary.",
         },
         source: {
-            code: `<Button withTranslation={{lang: "hi", tgt: "button", dictionary: ${JSON.stringify(
-                {
-                    hi: {
-                        loading: "बस एक मिनट...",
-                        button: {
-                            text: "बटन",
-                            label: "इसे बार-बार न दबाएं...",
-                        },
-                    },
-                }
-            )}}}}/>`,
+            code: `<Button withTranslation={{lang: "hi", tgt: "button", dictionary: ${JSON.stringify({
+                hi: {
+                    loading: "बस एक मिनट...",
+                    button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+                },
+            })}}}}/>`,
         },
     },
 };

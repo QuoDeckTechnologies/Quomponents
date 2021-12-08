@@ -5,15 +5,32 @@ $secondary-text:#ffffff;
 $warning-color:#ffbf00;
 $warning-text:#000000;
 
-.qui .qui-btn.variant-primary{
+.qui .qui-btn.variant-primary,
+.qui .qui-loader.variant-primary {
     background-color: $primary-color;
     color: $primary-text;
 }
-.qui .qui-btn.variant-secondary{
+
+.qui .qui-btn.variant-secondary,
+.qui .qui-loader.variant-secondary {
     background-color: $secondary-color;
     color: $secondary-text;
 }
-.qui .qui-btn.variant-warning{
+
+.qui .qui-btn.variant-warning,
+.qui .qui-loader.variant-warning {
     background-color: $warning-color;
     color: $warning-text;
+}
+
+.qui .variant-primary-text {
+    color: $primary-color;
+}
+
+.qui .variant-secondary-text {
+    color: $secondary-color;
+}
+
+.qui .variant-warning-text {
+    color: $warning-color;
 }
