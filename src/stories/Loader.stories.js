@@ -32,7 +32,7 @@ export default {
     title: "Design System/Loaders/Loader",
     component: Loader,
     argTypes: {
-        isTheme: {
+        asTheme: {
             control: "select",
             options: ["light", "dark"],
         },
@@ -156,7 +156,7 @@ export default {
 const Template = (args) => <Loader {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    isTheme: "light",
+    asTheme: "light",
     content: {
         image: "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
         format: "caption",
@@ -224,7 +224,7 @@ TranslatedLoader.parameters = {
 export const DarkLoader = Template.bind({});
 DarkLoader.args = {
     ...Default.args,
-    isTheme: "dark",
+    asTheme: "dark",
     content: {
         image: quodeckdark,
         format: "caption",

@@ -105,3 +105,21 @@ export function getAnimation(animObj) {
         };
     } else return { from: {}, to: {} };
 }
+
+
+export function getQuommonClasses(props) {
+    let finalArray = [""];
+
+    if (props.asSize) finalArray.push(`size-${props.asSize}`);
+    if (props.asPadded) finalArray.push(`pad-${props.asPadded}`);
+    if (props.asAligned) finalArray.push(`${props.asAligned}-aligned`);
+    if (props.asFloated) finalArray.push(`float-${props.asFloated}`);
+    if (props.asVariant) finalArray.push(`variant-${props.asVariant}`);
+
+    if (props.isHidden) finalArray.push("is-hidden");
+    if (props.isDisabled) finalArray.push("is-disabled");
+    if (props.isFluid) finalArray.push("is-fluid");
+    if (props.isLoading) finalArray.push("is-loading");
+
+    return finalArray.join(" ");
+}

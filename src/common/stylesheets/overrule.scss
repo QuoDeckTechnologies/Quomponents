@@ -17,3 +17,16 @@ $warning-text:#000000;
     background-color: $warning-color;
     color: $warning-text;
 }
+
+.variant-primary{
+    background-color: $primary-color;
+    color: $primary-text;
+}
+.variant-secondary{
+    background-color: $secondary-color;
+    color: $secondary-text;
+}
+.variant-warning{
+    background-color: $warning-color;
+    color: $warning-text;
+}

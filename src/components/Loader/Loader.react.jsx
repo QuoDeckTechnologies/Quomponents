@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import _ from "lodash";
 import { motion } from "framer-motion";
 import {
+    getQuommonClasses,
     getTranslation,
     getAnimation,
 } from "../../common/javascripts/helpers";
@@ -13,7 +15,7 @@ Loader.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-    isTheme: PropTypes.oneOf([
+    asTheme: PropTypes.oneOf([
         "light",
         "dark"
     ]),
@@ -113,7 +115,7 @@ Loader.propTypes = {
 Loader.defaultProps = {
     // Component Specific props
     //=======================================
-    isTheme: "light",
+    asTheme: "light",
     content: null,
 
     // Quommon props
@@ -172,6 +174,14 @@ export default function Loader(props) {
         }
     }, []);
 
+    let commonIconStyle = getQuommonClasses(_.pick(props, ['asSize']));
+
+    let commonContentStyle = getQuommonClasses(_.pick(props, ['isFluid', 'asFloated', 'asAligned']));
+
+    let commontextStyle = getQuommonClasses(_.pick(props, ['isHidden']));
+
+    let commonBoxStyle = getQuommonClasses(_.pick(props, ['asVariant']));
+
     //-------------------------------------------------------------------
     // Get animation of the component
     //-------------------------------------------------------------------
@@ -180,23 +190,14 @@ export default function Loader(props) {
     //  Set the component standard colors 
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor) : {};
-    let styles = {
-        content: {
-            width: props.isFluid ? "auto" : "75vw",
-            float: props.asFloated !== "none" ? props.asFloated : "none",
-            textAlign: props.asAligned,
-            margin: props.asFloated === "none" ? "auto" : "0px",
-        }
-    }
-
     let firstContainerClass = `order-${props.content && props.content.format && props.content.format === "label" ? "second" : "first"}`;
     let secondContainerClass = `order-${props.content && props.content.format && props.content.format === "label" ? "first" : "second"}`;
 
     return (
-        <div className={`qui qui-container theme-${props.isTheme}`}>
+        <div className={`qui qui-container theme-${props.asTheme}`}>
             {content &&
-                <div className="qui-content" style={styles.content}>
-                    <div className={`size-${props.asSize} ${firstContainerClass}`}>
+                <div className={`qui qui-content ${commonContentStyle}`}>
+                    <div className={`${commonIconStyle} ${firstContainerClass}`}>
                         {content.image !== null && (
                             <img src={content.image} />
                         )}
@@ -205,7 +206,7 @@ export default function Loader(props) {
                         )}
                     </div>
                     <br />
-                    <div className={props.isHidden ? `qui is-hidden ${secondContainerClass}` : secondContainerClass}>
+                    <div className={`qui ${commontextStyle} ${secondContainerClass}`}>
                         {text}
                         <motion.div
                             key={`thought-${Math.random()}`}
@@ -218,11 +219,8 @@ export default function Loader(props) {
                 </div>
             }
             <Box
-                sx={{
-                    bgcolor: `${props.asVariant}.main`,
-                }}
                 style={Object.assign({}, colors)}
-                className="qui-div-bottom"
+                className={`qui-div-bottom ${commonBoxStyle}`}
             >
             </Box>
         </div>
