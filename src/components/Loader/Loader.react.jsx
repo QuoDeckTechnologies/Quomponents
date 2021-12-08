@@ -207,7 +207,7 @@ export default function Loader(props) {
                     </div>
                     <br />
                     <div className={`qui ${commontextStyle} ${secondContainerClass}`}>
-                        {text}
+                        <strong>{text}</strong>
                         <motion.div
                             key={`thought-${Math.random()}`}
                             initial={animate.from}
