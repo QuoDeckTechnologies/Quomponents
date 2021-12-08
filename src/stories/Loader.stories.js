@@ -1,32 +1,33 @@
 import React from "react";
 import Loader from "../components/Loader/Loader.react";
-import quodeckdark from '../components/Loader/quodeck-loader-dark.gif';
+import quodeckdark from "../components/Loader/quodeck-loader-dark.gif";
 
 const dictionary = JSON.stringify({
     en: {
         loader: {
-            text: "Did you know ?", thoughts: [
+            text: "Did you know ?",
+            thoughts: [
                 "Productivity increases by 43% when using a mobile device (smartphone, tablet, smartwatch, etc.) in contrast to non-mobile device users",
                 "Virtual training takes 40-60% less time to complete than classroom training.",
                 "eLearning produces an 18% increase in employee engagement in the workplace.",
                 "eLearning courses consume 90% less energy than traditional learning.",
-                "IBM saved $200 million by adopting a virtual training program for its employees."
-            ]
-        }
+                "IBM saved $200 million by adopting a virtual training program for its employees.",
+            ],
+        },
     },
     hi: {
         loader: {
-            text: "क्या तुम्हें पता था ?", thoughts: [
+            text: "क्या तुम्हें पता था ?",
+            thoughts: [
                 "गैर-मोबाइल डिवाइस उपयोगकर्ताओं के विपरीत मोबाइल डिवाइस (स्मार्टफोन, टैबलेट, स्मार्टवॉच, आदि) का उपयोग करने पर उत्पादकता में 43% की वृद्धि होती है।",
                 "आभासी प्रशिक्षण कक्षा प्रशिक्षण की तुलना में 40-60% कम समय लेता है।",
                 "ई-लर्निंग कार्यस्थल में कर्मचारियों की व्यस्तता में 18% की वृद्धि करता है।",
                 "ई-लर्निंग पाठ्यक्रम पारंपरिक शिक्षा की तुलना में 90% कम ऊर्जा की खपत करते हैं।",
-                "आईबीएम ने अपने कर्मचारियों के लिए वर्चुअल ट्रेनिंग प्रोग्राम को अपनाकर 200 मिलियन डॉलर की बचत की।"
-            ]
-        }
-    }
+                "आईबीएम ने अपने कर्मचारियों के लिए वर्चुअल ट्रेनिंग प्रोग्राम को अपनाकर 200 मिलियन डॉलर की बचत की।",
+            ],
+        },
+    },
 });
-
 
 export default {
     title: "Design System/Loaders/Loader",
@@ -41,28 +42,28 @@ export default {
             options: ["primary", "secondary", "success", "warning", "error"],
             table: {
                 category: "as-Flags",
-            }
+            },
         },
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
             table: {
                 category: "as-Flags",
-            }
+            },
         },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
             table: {
                 category: "as-Flags",
-            }
+            },
         },
         asAligned: {
             control: "select",
             options: ["left", "right", "center"],
             table: {
                 category: "as-Flags",
-            }
+            },
         },
         withColor: {
             defaultValue: {
@@ -84,7 +85,7 @@ export default {
             },
             table: {
                 category: "with-Params",
-            }
+            },
         },
         withLabel: {
             defaultValue: {
@@ -94,7 +95,7 @@ export default {
             },
             table: {
                 category: "with-Params",
-            }
+            },
         },
         withAnimation: {
             defaultValue: {
@@ -104,7 +105,7 @@ export default {
             },
             table: {
                 category: "with-Params",
-            }
+            },
         },
         withTranslation: {
             defaultValue: {
@@ -114,20 +115,20 @@ export default {
             },
             table: {
                 category: "with-Params",
-            }
+            },
         },
         isHidden: {
             defaultValue: false,
             table: {
                 category: "is-Toggles",
-            }
+            },
         },
         isFluid: {
             defaultValue: false,
             table: {
                 category: "is-Toggles",
-            }
-        }
+            },
+        },
     },
     decorators: [
         (story) => (
@@ -144,6 +145,7 @@ export default {
     ],
     parameters: {
         componentSubtitle: "Displays a loader for general-purpose use",
+        a11y: { disable: true },
         docs: {
             source: {
                 type: "auto",
@@ -152,13 +154,13 @@ export default {
     },
 };
 
-
 const Template = (args) => <Loader {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     asTheme: "light",
     content: {
-        image: "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
+        image:
+            "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
         format: "caption",
         text: "Did you know ? ",
         thoughts: [
@@ -166,8 +168,8 @@ Default.args = {
             "Virtual training takes 40-60% less time to complete than classroom training.",
             "eLearning produces an 18% increase in employee engagement in the workplace.",
             "eLearning courses consume 90% less energy than traditional learning.",
-            "IBM saved $200 million by adopting a virtual training program for its employees."
-        ]
+            "IBM saved $200 million by adopting a virtual training program for its employees.",
+        ],
     },
     asVariant: "primary",
     asSize: "normal",
@@ -210,7 +212,7 @@ TranslatedLoader.args = {
         lang: "hi",
         tgt: "loader",
         dictionary: dictionary,
-    }
+    },
 };
 
 TranslatedLoader.parameters = {
@@ -234,8 +236,8 @@ DarkLoader.args = {
             "Virtual training takes 40-60% less time to complete than classroom training.",
             "eLearning produces an 18% increase in employee engagement in the workplace.",
             "eLearning courses consume 90% less energy than traditional learning.",
-            "IBM saved $200 million by adopting a virtual training program for its employees."
-        ]
+            "IBM saved $200 million by adopting a virtual training program for its employees.",
+        ],
     },
 };
 
@@ -254,7 +256,7 @@ Animated.args = {
         animation: "slideRight",
         duration: 0.5,
         delay: 0,
-    }
+    },
 };
 
 Animated.parameters = {
@@ -265,11 +267,10 @@ Animated.parameters = {
     },
 };
 
-
 export const HiddenContent = Template.bind({});
 HiddenContent.args = {
     ...Default.args,
-    isHidden: true
+    isHidden: true,
 };
 
 HiddenContent.parameters = {
@@ -283,7 +284,7 @@ HiddenContent.parameters = {
 export const FluidContent = Template.bind({});
 FluidContent.args = {
     ...Default.args,
-    isFluid: true
+    isFluid: true,
 };
 
 FluidContent.parameters = {
@@ -334,7 +335,8 @@ export const ImageOnlyLoader = Template.bind({});
 ImageOnlyLoader.args = {
     ...Default.args,
     content: {
-        image: "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
+        image:
+            "https://icons8.com/preloaders/preloaders/829/Yin%20and%20Yang.gif",
         format: "caption",
         text: "Did you know ? ",
         thoughts: [
@@ -342,8 +344,8 @@ ImageOnlyLoader.args = {
             "Virtual training takes 40-60% less time to complete than classroom training.",
             "eLearning produces an 18% increase in employee engagement in the workplace.",
             "eLearning courses consume 90% less energy than traditional learning.",
-            "IBM saved $200 million by adopting a virtual training program for its employees."
-        ]
+            "IBM saved $200 million by adopting a virtual training program for its employees.",
+        ],
     },
 };
 ImageOnlyLoader.parameters = {
@@ -354,7 +356,6 @@ ImageOnlyLoader.parameters = {
         },
     },
 };
-
 
 export const IconOnlyLoader = Template.bind({});
 IconOnlyLoader.args = {
@@ -368,19 +369,17 @@ IconOnlyLoader.args = {
             "Virtual training takes 40-60% less time to complete than classroom training.",
             "eLearning produces an 18% increase in employee engagement in the workplace.",
             "eLearning courses consume 90% less energy than traditional learning.",
-            "IBM saved $200 million by adopting a virtual training program for its employees."
-        ]
+            "IBM saved $200 million by adopting a virtual training program for its employees.",
+        ],
     },
 };
 IconOnlyLoader.parameters = {
     docs: {
         description: {
-            story:
-                "If image is null loader icon will be seen",
+            story: "If image is null loader icon will be seen",
         },
     },
 };
-
 
 export const LabelContent = Template.bind({});
 LabelContent.args = {
@@ -394,8 +393,8 @@ LabelContent.args = {
             "Virtual training takes 40-60% less time to complete than classroom training.",
             "eLearning produces an 18% increase in employee engagement in the workplace.",
             "eLearning courses consume 90% less energy than traditional learning.",
-            "IBM saved $200 million by adopting a virtual training program for its employees."
-        ]
+            "IBM saved $200 million by adopting a virtual training program for its employees.",
+        ],
     },
 };
 LabelContent.parameters = {

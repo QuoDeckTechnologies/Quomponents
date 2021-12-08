@@ -6,24 +6,23 @@ import {
     getQuommonClasses,
     getTranslation,
     getAnimation,
-} from "../../common/javascripts/helpers";
-import Box from '@mui/material/Box';
+} from "../../common/javascripts/helpers"; //OB: Why is this at a different hierarchy level than buttons
+import Box from "@mui/material/Box";
 import "../../common/stylesheets/common.css";
 import "./Loader.scss";
+
+//OB: Where is the overrule.scss? No way to overrule the component styles?
 
 Loader.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-    asTheme: PropTypes.oneOf([
-        "light",
-        "dark"
-    ]),
+    asTheme: PropTypes.oneOf(["light", "dark"]),
 
     /**
     Use to add a loading text, thought and image to loader 
     */
-    content: PropTypes.object,
+    content: PropTypes.object, //OB: Why haven't you defined the shape
 
     //=======================================
     // Quommon props
@@ -109,7 +108,7 @@ Loader.propTypes = {
     /**
     Use to toggle the component taking the full width of the parent container
     */
-    isFluid: PropTypes.bool
+    isFluid: PropTypes.bool,
 };
 
 Loader.defaultProps = {
@@ -136,15 +135,15 @@ Loader.defaultProps = {
 };
 
 function getColors(colors) {
-    return { background: colors.backgroundColor }
+    return { background: colors.backgroundColor };
 }
 
 export default function Loader(props) {
-
     let content = props.content ? props.content : null;
     let [text, setText] = useState("");
     let [thought, setThought] = useState("");
 
+    //OB: This is interesting and very well done, but is it worth the overhead ? Why not just show one from the list every time it loads?
     useEffect(() => {
         if (!props.isHidden) {
             if (
@@ -153,61 +152,104 @@ export default function Loader(props) {
                 props.withTranslation.lang !== "en"
             ) {
                 let tObj = getTranslation(props.withTranslation);
-                content = Object.assign(content, tObj)
+                content = Object.assign(content, tObj);
             }
             if (content && content !== null && content.thoughts) {
                 setText(content.text);
-                setThought(content.thoughts[Math.floor(Math.random() * content.thoughts.length)])
+                setThought(
+                    content.thoughts[
+                        Math.floor(Math.random() * content.thoughts.length)
+                    ]
+                ); //OB: Why not use _.sample?
                 const interval = setInterval(function () {
                     if (content.text) {
-                        setText(content.text)
+                        setText(content.text);
                     }
                     if (content.thoughts.length > 0) {
-                        setThought(content.thoughts[Math.floor(Math.random() * content.thoughts.length)])
+                        setThought(
+                            content.thoughts[
+                                Math.floor(
+                                    Math.random() * content.thoughts.length
+                                )
+                            ]
+                        );
                     }
                 }, 5000);
                 return () => {
                     clearInterval(interval);
-                }
+                };
             }
             return true;
         }
     }, []);
 
-    let commonIconStyle = getQuommonClasses(_.pick(props, ['asSize']));
+    // OB: Why are we creating an almost identical function again? Why not use getQuommons that we used in Button?
+    // OB: It is important to be able to define css as container and content divs.
+    // OB: If you have to do something this complex, it may not be the right way.
 
-    let commonContentStyle = getQuommonClasses(_.pick(props, ['isFluid', 'asFloated', 'asAligned']));
-
-    let commontextStyle = getQuommonClasses(_.pick(props, ['isHidden']));
-
-    let commonBoxStyle = getQuommonClasses(_.pick(props, ['asVariant']));
+    let commonIconStyle = getQuommonClasses(_.pick(props, ["asSize"]));
+    let commonContentStyle = getQuommonClasses(
+        _.pick(props, ["isFluid", "asFloated", "asAligned"])
+    );
+    let commontextStyle = getQuommonClasses(_.pick(props, ["isHidden"]));
+    let commonBoxStyle = getQuommonClasses(_.pick(props, ["asVariant"]));
 
     //-------------------------------------------------------------------
     // Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     //-------------------------------------------------------------------
-    //  Set the component standard colors 
+    //  Set the component standard colors
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor) : {};
-    let firstContainerClass = `order-${props.content && props.content.format && props.content.format === "label" ? "second" : "first"}`;
-    let secondContainerClass = `order-${props.content && props.content.format && props.content.format === "label" ? "first" : "second"}`;
+    let firstContainerClass = `order-${
+        props.content &&
+        props.content.format &&
+        props.content.format === "label"
+            ? "second"
+            : "first"
+    }`;
+    let secondContainerClass = `order-${
+        props.content &&
+        props.content.format &&
+        props.content.format === "label"
+            ? "first"
+            : "second"
+    }`;
 
     return (
+        //OB: The .qui class is only for the top level and has to get the parent classes
+        //OB: You cannot use .qui in any of the child classes. It is only for the parent container
+
         <div className={`qui qui-container theme-${props.asTheme}`}>
-            {content &&
+            {content && (
                 <div className={`qui qui-content ${commonContentStyle}`}>
-                    <div className={`${commonIconStyle} ${firstContainerClass}`}>
-                        {content.image !== null && (
-                            <img src={content.image} />
-                        )}
-                        {content.image === null && props.withIcon.icon && (
-                            <i className={props.withIcon.icon}></i>
-                        )}
+                    <div
+                        className={`${commonIconStyle} ${firstContainerClass}`}
+                    >
+                        {
+                            //OB: Use == null instead of === null. Then checks for both null and undefined
+                            content.image !== null && (
+                                <img src={content.image} />
+                            )
+                        }
+                        {
+                            //OB: Will give error if withIcon is undefined or null
+                            content.image === null && props.withIcon.icon && (
+                                <i className={props.withIcon.icon}></i>
+                            )
+                        }
                     </div>
                     <br />
-                    <div className={`qui ${commontextStyle} ${secondContainerClass}`}>
-                        <strong>{text}</strong>
+                    <div
+                        className={`qui ${commontextStyle} ${secondContainerClass}`}
+                    >
+                        <strong>
+                            {
+                                //OB: Not handling text colors?
+                                text
+                            }
+                        </strong>
                         <motion.div
                             key={`thought-${Math.random()}`}
                             initial={animate.from}
@@ -217,12 +259,14 @@ export default function Loader(props) {
                         </motion.div>
                     </div>
                 </div>
-            }
+            )}
             <Box
-                style={Object.assign({}, colors)}
+                style={
+                    //OB: Why are we doing this? And why are we not using the native Box styling method?
+                    Object.assign({}, colors)
+                }
                 className={`qui-div-bottom ${commonBoxStyle}`}
-            >
-            </Box>
+            ></Box>
         </div>
     );
 }
