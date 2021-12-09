@@ -10,6 +10,11 @@ $opened-height: 140px;
   opacity: 0;
 }
 
+.fc-btn-main {
+  width: 280px;
+  margin: 0 auto;
+}
+
 .fc-btn {
   position: relative;
   transition: width $transition-duration $transition-easing,
@@ -59,7 +64,7 @@ $opened-height: 140px;
   padding: 6px 12px;
   width: 30%;
   margin: 0 5px;
-  font-size: 1em;
+  font-size: 0.85em;
   cursor: pointer;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -69,6 +74,10 @@ $opened-height: 140px;
     outline: 0;
   }
 
+}
+
+.fc-confirm-container{
+  position: absolute;
 }
 
 .fc-btn.is-open .fc-btn-back {
@@ -100,3 +109,4 @@ $opened-height: 140px;
 .fc-btn[data-direction="left"].is-open {
   transform: rotateY(-180deg);
 }
+
