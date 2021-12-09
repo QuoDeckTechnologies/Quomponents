@@ -1,28 +1,168 @@
 
 import PropTypes from "prop-types";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
+import Button from "../Button/Button.react";
 
-DataExporter.protoTypes = {
-    label: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string,
-    iconBtn: PropTypes.bool,
-    data: PropTypes.array.isRequired
-}
+DataExporter.propTypes = {
+    //=======================================
+    // Component Specific props
+    //=======================================
+
+    /**
+    Pass data in the format of array of in this field objects to exported
+    */
+    data: PropTypes.array.isRequired,
+    /**
+    Button Text has to be in content or passed as children to the component. Is optional if you only want an icon.
+    */
+    content: PropTypes.string,
+    /**
+    Set action emphasis in increasing order 
+    */
+    asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
+    /**
+    Use for rounded corners or circular icon button 
+    */
+    isCircular: PropTypes.bool,
+
+    // Quommon props
+    //=======================================
+
+    /**
+    Use to define standard component type
+    */
+    asVariant: PropTypes.oneOf([
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "error",
+    ]),
+    /**
+    Use to define component text size in increasing order
+    */
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
+    /**
+    Use to define component padding in increasing order
+    */
+    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+    /**
+    Use to float the component in parent container
+    */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+    /**
+    Use to align content within the component container
+    */
+    asAligned: PropTypes.oneOf(["left", "right", "center"]),
+
+    /**
+    Use to override component colors and behavior
+    */
+    withColor: PropTypes.shape({
+        backgroundColor: PropTypes.string,
+        accentColor: PropTypes.string,
+        textColor: PropTypes.string,
+        hoverBackgroundColor: PropTypes.string,
+        hoverTextColor: PropTypes.string,
+    }),
+    /**
+    Use to add an icon to the component
+    */
+    withIcon: PropTypes.shape({
+        icon: PropTypes.string,
+        size: PropTypes.string,
+        position: PropTypes.oneOf(["left", "right"]),
+    }),
+    /**
+    Use to add a heading label, a footer caption or a title popover to the component
+    */
+    withLabel: PropTypes.shape({
+        format: PropTypes.oneOf(["label", "caption", "popover"]),
+        content: PropTypes.string,
+        textColor: PropTypes.string,
+    }),
+    /**
+    Use to define the entry animation of the component
+    */
+    withAnimation: PropTypes.shape({
+        animation: PropTypes.oneOf([
+            "zoom",
+            "collapse",
+            "fade",
+            "slideDown",
+            "slideUp",
+            "slideLeft",
+            "slideRight",
+        ]),
+        duration: PropTypes.number,
+        delay: PropTypes.number,
+    }),
+    /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+
+    /**
+    Use to show/hide the component
+    */
+    isHidden: PropTypes.bool,
+    /**
+    Use to enable/disable the component
+    */
+    isDisabled: PropTypes.bool,
+    /**
+    Use to toggle the component taking the full width of the parent container
+    */
+    isFluid: PropTypes.bool,
+    /**
+    Use to toggle a loading state for the component
+    */
+    isLoading: PropTypes.bool
+};
 
 DataExporter.defaultProps = {
-    label: "Export",
-    backgroundColor: "#000000",
-    iconBtn: false,
-    data: []
-}
+    // Component Specific props
+    //=======================================
+    data: [],
+    asEmphasis: "contained",
+    isCircular: false,
+
+    // Quommon props
+    //=======================================
+    asVariant: "primary",
+    asSize: "normal",
+    asPadded: "normal",
+    asFloated: "none",
+    asAligned: "center",
+
+    withColor: null,
+    withIcon: null,
+    withLabel: null,
+    withAnimation: null,
+    withTranslation: null,
+
+    isHidden: false,
+    isDisabled: false,
+    isFluid: false,
+    isLoading: false,
+};
 
 export default function DataExporter(props) {
 
     function exportData() {
         let { data } = props;
         if (data.length > 0) {
-            let replacer = (key, value) => (value === null ? "" : value); // specify how you want to handle null values here
+            let replacer = (key, value) => (value === null ? "" : value);
             let header = Object.keys(data[0]);
             let csv = data.map((row) =>
                 header
@@ -41,66 +181,5 @@ export default function DataExporter(props) {
         }
     }
 
-    //--------------------------------------
-    // Style Handlers
-    // -------------------------------------
-    const textColor =
-        props.backgroundColor &&
-        (fixTextColor(props.backgroundColor) ? "#000" : "#fff");
-
-    const styles = {
-        btnContainer: {
-            width: "280px",
-            margin: "0 auto",
-        },
-        btnFront: {
-            backgroundColor: props.backgroundColor,
-            color: textColor,
-        }
-    };
-
-    return (
-        <div style={styles.btnContainer}>
-            {props.iconBtn && (
-                <IconButton
-                    {...props}
-                    id="export-icon-btn"
-                    aria-label="export"
-                    variant="contained"
-                    onClick={exportData}
-                    style={styles.btnFront}
-                >
-                </IconButton>
-            )}
-            {!props.iconBtn && (
-                <Button
-                    {...props}
-                    id="export-btn"
-                    variant="contained"
-                    onClick={exportData}
-                    style={styles.btnFront}
-                >
-                    {props.label}
-                </Button>
-            )}
-        </div>
-    );
-
-    //--------------------------------------
-    // Utility Functions
-    // -------------------------------------
-
-    function hexToRgb(hex) {
-        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return {
-            r: parseInt(result[1], 16),
-            g: parseInt(result[2], 16),
-            b: parseInt(result[3], 16),
-        };
-    }
-
-    function fixTextColor(srcColor) {
-        let color = hexToRgb(srcColor);
-        return color.r * 0.299 + color.g * 0.587 + color.b * 0.114 > 186;
-    }
+    return (<Button {...props} onClick={exportData} />);
 }
