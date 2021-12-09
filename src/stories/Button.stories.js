@@ -28,9 +28,9 @@ export default {
             },
         },
         isCircular: {
-            defaultValue: false,
             table: {
                 category: "is-Toggles",
+                defaultValue: false,
             },
         },
 
@@ -71,87 +71,87 @@ export default {
         },
 
         withColor: {
-            defaultValue: {
-                backgroundColor: "",
-                accentColor: "",
-                textColor: "",
-                hoverBackgroundColor: "",
-                hoverTextColor: "",
-            },
             table: {
                 category: "with-Params",
+                defaultValue: {
+                    backgroundColor: "",
+                    accentColor: "",
+                    textColor: "",
+                    hoverBackgroundColor: "",
+                    hoverTextColor: "",
+                },
             },
         },
         withIcon: {
-            defaultValue: {
-                icon: "",
-                size: "",
-                position: "left",
-            },
             table: {
                 category: "with-Params",
+                defaultValue: {
+                    icon: "",
+                    size: "",
+                    position: "left",
+                },
             },
         },
         withLabel: {
-            defaultValue: {
-                format: "label",
-                content: "",
-                textColor: "",
-            },
             table: {
                 category: "with-Params",
+                defaultValue: {
+                    format: "label",
+                    content: "",
+                    textColor: "",
+                },
             },
         },
         withAnimation: {
-            defaultValue: {
-                animation: "",
-                duration: 0,
-                delay: 0,
-            },
             table: {
                 category: "with-Params",
+                defaultValue: {
+                    animation: "",
+                    duration: 0,
+                    delay: 0,
+                },
             },
         },
         withTranslation: {
-            defaultValue: {
-                lang: "",
-                tgt: "",
-                dictionary: "",
-            },
             table: {
                 category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
+                },
             },
         },
 
         isHidden: {
-            defaultValue: false,
             table: {
                 category: "is-Toggles",
+                defaultValue: false,
             },
         },
         isDisabled: {
-            defaultValue: false,
             table: {
                 category: "is-Toggles",
+                defaultValue: false,
             },
         },
         isFluid: {
-            defaultValue: false,
             table: {
                 category: "is-Toggles",
+                defaultValue: false,
             },
         },
         isLoading: {
-            defaultValue: false,
             table: {
                 category: "is-Toggles",
+                defaultValue: false,
             },
         },
 
         onClick: {
-            defaultValue: null,
             table: {
                 category: "Events",
+                defaultValue: null,
             },
         },
     },

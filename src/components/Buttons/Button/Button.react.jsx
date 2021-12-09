@@ -170,7 +170,7 @@ Button.defaultProps = {
 };
 
 function getLabel(labelObj, position) {
-    return labelObj && labelObj.format === position ? labelObj.content : "";
+    return labelObj?.format === position ? labelObj.content : "";
 }
 
 function getColors(colors, hovered) {
@@ -193,9 +193,8 @@ function getIcon(iconObj, position, iconOnly) {
         : "0 0 0 0.5em";
 
     return (
-        iconObj &&
-        iconObj.icon &&
-        iconObj.position === position && (
+        iconObj?.icon &&
+        iconObj?.position === position && (
             <i
                 className={`qui-icon ${iconObj.icon}`}
                 style={{ fontSize: iconObj.size, margin: iconMargin }}
@@ -243,17 +242,16 @@ export default function Button(props) {
     // 4. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel);
-    let labelStyle =
-        labelContent && labelContent.textColor
-            ? { color: labelContent.textColor }
-            : {};
+    let labelStyle = labelContent?.textColor
+        ? { color: labelContent.textColor }
+        : {};
     let loadingText = "Please Wait...";
 
     //-------------------------------------------------------------------
     // 5. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
     if (
-        props.withTranslation &&
+        props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
@@ -261,8 +259,7 @@ export default function Button(props) {
         if (tObj && props.content && props.content !== "") {
             buttonText = tObj.text;
         }
-        if (labelContent && tObj && tObj.label)
-            labelContent.content = tObj.label;
+        if (labelContent && tObj?.label) labelContent.content = tObj.label;
         loadingText = getTranslation(props.withTranslation, "loading");
     }
 

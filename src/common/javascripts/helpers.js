@@ -31,7 +31,7 @@ export function getTranslation(tObj, key) {
 }
 
 export function getAnimation(animObj) {
-    if (animObj && animObj.animation) {
+    if (animObj?.animation) {
         const initialVariants = {
             zoom: {
                 scale: 0,
@@ -61,8 +61,8 @@ export function getAnimation(animObj) {
             },
         };
         let transitionObj = {
-            duration: animObj.duration,
-            delay: animObj.delay,
+            duration: animObj?.duration,
+            delay: animObj?.delay,
         };
         const animationVariants = {
             zoom: {
