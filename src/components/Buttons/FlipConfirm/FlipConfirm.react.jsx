@@ -6,8 +6,8 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "../../../common/stylesheets/overrule.scss";
 import "./FlipConfirm.scss";
+import "../../../common/stylesheets/overrule.scss";
 
 
 
@@ -67,19 +67,13 @@ FlipConfirm.propTypes = {
     asAligned: PropTypes.oneOf(["left", "right", "center"]),
 
     /**
-    Use to show the message in the popup modal
+    Use to define confirmation modal header text and success and failure button text
     */
-    asconfirmMsg: PropTypes.string,
-
-    /**
-    Use to show the options for popup
-    */
-    asconfirmYes: PropTypes.string,
-
-    /**
-   Use to show the options for popup
-   */
-    asconfirmNo: PropTypes.string,
+    withConfirmation: PropTypes.shape({
+        header: PropTypes.string,
+        yes: PropTypes.string,
+        no: PropTypes.string,
+    }),
 
     /**
     Use to override component colors and behavior
@@ -170,9 +164,8 @@ FlipConfirm.defaultProps = {
     asPadded: "normal",
     asFloated: "none",
     asAligned: "center",
-    asconfirmMsg: "Are you sure you want to do that?",
-    asconfirmYes: "Yes",
-    asconfirmNo: "No",
+    withConfirmation: null,
+
 
     withColor: null,
     withIcon: null,
@@ -243,21 +236,21 @@ export default function FlipConfirm(props) {
         <div className={`fc-btn-main`}>
             <div className={`fc-btn ${mode ? "is-open" : ""}`} ref={buttonRef}>
                 <div className="fc-btn-back" style={styles.btnBack}>
-                    <p>{props.asconfirmMsg}</p>
+                    <p>{props.withConfirmation.header}</p>
                     <ButtonGroup>
                         <Button
                             asEmphasis={props.asEmphasis}
-                            asVariant={props.asVariant}
+                            asVariant="error"
                             onClick={yesClick}
                         >
-                            {props.asconfirmYes}
+                            {props.withConfirmation.yes}
                         </Button>
                         <Button
                             asEmphasis={props.asEmphasis}
-                            asVariant={props.asVariant}
+                            asVariant="primary"
                             onClick={noClick}
                         >
-                            {props.asconfirmNo}
+                            {props.withConfirmation.no}
                         </Button>
                     </ButtonGroup>
                 </div>

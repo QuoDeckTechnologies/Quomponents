@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "../components/Buttons/Button/Button.react";
 import FlipConfirm from "../components/Buttons/FlipConfirm/FlipConfirm.react";
 
 const dictionary = JSON.stringify({
@@ -12,7 +11,8 @@ const dictionary = JSON.stringify({
     // },
     hi: {
         loading: "बस एक मिनट...",
-        button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+        Button: { text: "बटन", label: "इसे बार-बार न दबाएं..."},
+        
     },
 });
 
@@ -20,7 +20,7 @@ export default {
     title: "Design System/Buttons/FlipConfirm",
     component: FlipConfirm,
     argTypes: {
-        content: "Button",
+        content: "FlipConfirm",
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
@@ -68,6 +68,16 @@ export default {
             options: ["left", "right", "center"],
             table: {
                 category: "as-Flags",
+            },
+        },
+        withConfirmation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    header: "Are you sure you want to do that?",
+                    yes: "Yes",
+                    no: "No",
+                },
             },
         },
 
@@ -191,10 +201,12 @@ Default.args = {
     asFloated: "none",
     asPadded: "normal",
     asAligned: "center",
-    asconfirmMsg: "Are you sure you want to do that?",
-    asconfirmYes: "Yes",
-    asconfirmNo: "No",
 
+    withConfirmation: {
+        header: "Are you sure you want to do that?",
+        yes: "Yes",
+        no: "No",
+    },
     withLabel: {
         format: "caption",
         content: "Do not press this button repeatedly...",
@@ -215,7 +227,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "button",
+        tgt: "FlipConfirm",
         dictionary: dictionary,
     },
 
@@ -235,62 +247,62 @@ Default.parameters = {
 // -------------------------------------------------------------
 // Variants
 // -------------------------------------------------------------
-const AllVariantsTemplate = (args) => {
-    const baseObj = {
-        ...Object.assign({}, Default.args, args, {
-            asFloated: "inline",
-            withLabel: null,
-            withIcon: null,
-            withTranslation: null,
-            withColor: null,
-        }),
-    };
-    return (
-        <div>
-            <Button
-                {...Object.assign({}, baseObj, {
-                    content: "Primary",
-                    asVariant: "primary",
-                })}
-            />{" "}
-            <Button
-                {...Object.assign({}, baseObj, {
-                    content: "Secondary",
-                    asVariant: "secondary",
-                })}
-            />{" "}
-            <Button
-                {...Object.assign({}, baseObj, {
-                    content: "Success",
-                    asVariant: "success",
-                })}
-            />{" "}
-            <Button
-                {...Object.assign({}, baseObj, {
-                    content: "Warning",
-                    asVariant: "warning",
-                })}
-            />{" "}
-            <Button
-                {...Object.assign({}, baseObj, {
-                    content: "Error",
-                    asVariant: "error",
-                })}
-            />{" "}
-        </div>
-    );
-};
-export const AllVariants = AllVariantsTemplate.bind({});
-AllVariants.parameters = {
-    docs: {
-        description: {
-            story: "5 variants are supported. Use as per purpose noted here.",
-        },
-        source: {
-            code: `<Button asVariant="primary"/>`,
-        },
-    },
-};
+// const AllVariantsTemplate = (args) => {
+//     const baseObj = {
+//         ...Object.assign({}, Default.args, args, {
+//             asFloated: "inline",
+//             withLabel: null,
+//             withIcon: null,
+//             withTranslation: null,
+//             withColor: null,
+//         }),
+//     };
+//     return (
+//         <div>
+//             <Button
+//                 {...Object.assign({}, baseObj, {
+//                     content: "Primary",
+//                     asVariant: "primary",
+//                 })}
+//             />{" "}
+//             <Button
+//                 {...Object.assign({}, baseObj, {
+//                     content: "Secondary",
+//                     asVariant: "secondary",
+//                 })}
+//             />{" "}
+//             <Button
+//                 {...Object.assign({}, baseObj, {
+//                     content: "Success",
+//                     asVariant: "success",
+//                 })}
+//             />{" "}
+//             <Button
+//                 {...Object.assign({}, baseObj, {
+//                     content: "Warning",
+//                     asVariant: "warning",
+//                 })}
+//             />{" "}
+//             <Button
+//                 {...Object.assign({}, baseObj, {
+//                     content: "Error",
+//                     asVariant: "error",
+//                 })}
+//             />{" "}
+//         </div>
+//     );
+// };
+// export const AllVariants = AllVariantsTemplate.bind({});
+// AllVariants.parameters = {
+//     docs: {
+//         description: {
+//             story: "5 variants are supported. Use as per purpose noted here.",
+//         },
+//         source: {
+//             code: `<Button asVariant="primary"/>`,
+//         },
+//     },
+// };
 
 // -------------------------------------------------------------
 // Icon Button
@@ -300,10 +312,10 @@ IconOnlyButton.args = {
     ...Default.args,
     content: "",
     isCircular: true,
-    withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
+    withIcon: { icon: "fas fa-sync-alt", size: "1em", position: "left" },
     withLabel: {
         format: "popover",
-        content: "Click to share this...",
+        content: "Click to open this...",
         textColor: "",
     },
 };
@@ -314,7 +326,7 @@ IconOnlyButton.parameters = {
                 "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of buttons or for standalone floating actions. Use isCircular to toggle the rounding.",
         },
         source: {
-            code: `<Button isCircular={true} withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click to share this...",textColor: ""}}}/>`,
+            code: `<Button isCircular={true} withIcon={{ icon: "fas fa-sync-alt", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click to open this...",textColor: ""}}}/>`,
         },
     },
 };
@@ -444,7 +456,7 @@ TranslatedButton.args = {
     content: "Translated Button",
     withTranslation: {
         lang: "hi",
-        tgt: "button",
+        tgt: "FlipConfirm",
         dictionary: dictionary,
     },
 };
