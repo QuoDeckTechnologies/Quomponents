@@ -22,20 +22,10 @@ Upload.propTypes = {
 
     /**
     Use to define the file type which is supported to upload.
+    Suppoted file types: [video/*, image/*, .mp3, .docx, .xls, .xlsx, .zip, .qdf, .pdf]
   */
-    withFileType: PropTypes.shape({
-        type: PropTypes.oneOf([
-            "video/*",
-            "image/*",
-            ".mp3",
-            ".docx",
-            ".xls",
-            ".xlsx",
-            ".zip",
-            ".qdf",
-            ".pdf",
-            ""
-        ]),
+    withFile: PropTypes.shape({
+        type: PropTypes.string,
         capture: PropTypes.string
     }),
 
@@ -162,7 +152,7 @@ Upload.defaultProps = {
     //=======================================
     asEmphasis: "contained",
     isCircular: false,
-    withFileType: null,
+    withFile: null,
     isMultiple: false,
 
     // Quommon props
@@ -252,8 +242,8 @@ export default function Upload(props) {
                 type="file"
                 onChange={handleChange}
                 multiple={props.isMultiple}
-                accept={props.withFileType?.type}
-                capture={props.withFileType?.capture}
+                accept={props.withFile?.type}
+                capture={props.withFile?.capture}
                 hidden
             />
             <Button

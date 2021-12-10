@@ -33,7 +33,7 @@ export default {
                 defaultValue: false,
             },
         },
-        withFileType: {
+        withFile: {
             category: "with-Params",
             defaultValue: {
                 type: "image/*",
@@ -197,7 +197,7 @@ Default.args = {
     content: "Upload",
     asEmphasis: "contained",
     isCircular: false,
-    withFileType: {
+    withFile: {
         type: "image/*",
         capture: ""
     },
@@ -259,7 +259,7 @@ AllVariants.parameters = {
             story: "5 variants are supported. Use as per purpose noted here.",
         },
         source: {
-            code: `<Upload asVariant="primary"/>`,
+            code: `<Upload asVariant="secondary"/>`,
         },
     },
 };
@@ -272,7 +272,7 @@ export const SingleFileUploader = Template.bind({});
 SingleFileUploader.args = {
     ...Default.args,
     isMultiple: false,
-    withFileType: {
+    withFile: {
         type: "video/*",
         capture: "user"
     }
@@ -283,7 +283,7 @@ SingleFileUploader.parameters = {
             story: "Upload single file which is defined by file type.",
         },
         source: {
-            code: `<Upload asVariant="primary" withFileType: {{ type: "video/*", capture: "user" }} isMultiple={false} />`,
+            code: `<Upload asVariant="primary" withFile: {{ type: "video/*", capture: "user" }} isMultiple={false} />`,
         },
     },
 };
@@ -296,7 +296,7 @@ export const MultipleFileUploader = Template.bind({});
 MultipleFileUploader.args = {
     ...Default.args,
     isMultiple: true,
-    withFileType: {
+    withFile: {
         type: "image/*",
         capture: ""
     }
@@ -307,7 +307,7 @@ MultipleFileUploader.parameters = {
             story: "Upload more than one files which are defined by file type.",
         },
         source: {
-            code: `<Upload asVariant="primary"  withFileType: {{ type: "image/*", capture: "" }} isMultiple={true}/>`,
+            code: `<Upload asVariant="primary"  withFile: {{ type: "image/*", capture: "" }} isMultiple={true}/>`,
         },
     },
 };
