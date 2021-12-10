@@ -234,7 +234,6 @@ export default function FlipConfirm(props) {
     // Style Handlers
     // ---------------------
     const styles = {
-
         btnBack: {
             display: mode ? "block" : "none",
         },
@@ -245,25 +244,22 @@ export default function FlipConfirm(props) {
             <div className={`fc-btn ${mode ? "is-open" : ""}`} ref={buttonRef}>
                 <div className="fc-btn-back" style={styles.btnBack}>
                     <p>{props.asconfirmMsg}</p>
-                    {/* <div className={`color-${props.asVariant}`}> */}
-                        <ButtonGroup aria-label="outlined primary button group">
-                            <Button
-                                variant={props.asEmphasis}
-                                color={props.asVariant}
-                                onClick={yesClick}
-                            >
-                                {props.asconfirmYes}
-                            </Button>
-                            <Button
-                                variant={props.asEmphasis}
-                                color={props.asVariant}
-                                onClick={noClick}
-                            >
-                                {props.asconfirmNo}
-                            </Button>
-                        </ButtonGroup>
-                    {/* </div> */}
-
+                    <ButtonGroup>
+                        <Button
+                            asEmphasis={props.asEmphasis}
+                            asVariant={props.asVariant}
+                            onClick={yesClick}
+                        >
+                            {props.asconfirmYes}
+                        </Button>
+                        <Button
+                            asEmphasis={props.asEmphasis}
+                            asVariant={props.asVariant}
+                            onClick={noClick}
+                        >
+                            {props.asconfirmNo}
+                        </Button>
+                    </ButtonGroup>
                 </div>
                 <Button
                     {...props}

@@ -25,20 +25,6 @@ $opened-height: 140px;
   text-align: center;
 }
 
-.fc-btn-front {
-  position: absolute;
-  display: block;
-  cursor: pointer;
-  backface-visibility: hidden;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  transition: background 0.15s ease,
-    line-height $transition-duration $transition-easing;
-}
-
-.fc-btn-front:hover1 {
-  background-color: lighten(#F44336, 10%);
-}
-
 .fc-btn.is-open .fc-btn-front {
   pointer-events: none;
   line-height: $opened-height;
@@ -62,7 +48,6 @@ $opened-height: 140px;
 
 .fc-btn-back button {
   padding: 6px 12px;
-  width: 30%;
   margin: 0 5px;
   font-size: 0.85em;
   cursor: pointer;
@@ -74,14 +59,6 @@ $opened-height: 140px;
     outline: 0;
   }
 
-}
-
-.qui.qui-fc-btn-grp{
-  width: auto;
-}
-
-.fc-confirm-container{
-  position: absolute;
 }
 
 .fc-btn.is-open .fc-btn-back {
