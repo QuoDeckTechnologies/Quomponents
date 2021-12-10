@@ -125,8 +125,8 @@ export default {
         withFileType: {
             category: "with-Params",
             defaultValue: {
-                type: "video/*",
-                capture: "environment"
+                type: "image/*",
+                capture: ""
             }
         },
         isHidden: {
@@ -227,7 +227,7 @@ Default.args = {
         dictionary: dictionary,
     },
     withFileType: {
-        type: "video/*",
+        type: "image/*",
         capture: "environment"
     },
     isDisabled: false,
@@ -272,14 +272,14 @@ SingleFileUploader.args = {
     ...Default.args,
     isMultiple: false,
     withFileType: {
-        type: "image/png",
+        type: "video/*",
         capture: "user"
     }
 }
 SingleFileUploader.parameters = {
     docs: {
         description: {
-            story: "Allows you to upload a defined file type.",
+            story: "Upload single file which is defined by file type.",
         },
         source: {
             code: `<Upload asVariant="primary"/>`,
@@ -296,14 +296,14 @@ MultipleFileUploader.args = {
     ...Default.args,
     isMultiple: true,
     withFileType: {
-        type: "image/png",
+        type: "image/*",
         capture: ""
     }
 }
 MultipleFileUploader.parameters = {
     docs: {
         description: {
-            story: "Upload multiple files which is defined by file type.",
+            story: "Upload more than one files which are defined by file type.",
         },
         source: {
             code: `<Upload asVariant="primary"/>`,
