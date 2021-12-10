@@ -2,12 +2,7 @@ import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 
 import Button from "../Button/Button.react";
-import { motion } from "framer-motion";
-import {
-    getQuommons,
-    getTranslation,
-    getAnimation,
-} from "../../../common/javascripts/helpers";
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -250,16 +245,25 @@ export default function FlipConfirm(props) {
             <div className={`fc-btn ${mode ? "is-open" : ""}`} ref={buttonRef}>
                 <div className="fc-btn-back" style={styles.btnBack}>
                     <p>{props.asconfirmMsg}</p>
-                        <Button
-                            onClick={yesClick}
-                        >
-                            {props.asconfirmYes}
-                        </Button>
-                        <Button
-                            onClick={noClick}
-                        >
-                            {props.asconfirmNo}
-                        </Button>
+                    {/* <div className={`color-${props.asVariant}`}> */}
+                        <ButtonGroup aria-label="outlined primary button group">
+                            <Button
+                                variant={props.asEmphasis}
+                                color={props.asVariant}
+                                onClick={yesClick}
+                            >
+                                {props.asconfirmYes}
+                            </Button>
+                            <Button
+                                variant={props.asEmphasis}
+                                color={props.asVariant}
+                                onClick={noClick}
+                            >
+                                {props.asconfirmNo}
+                            </Button>
+                        </ButtonGroup>
+                    {/* </div> */}
+
                 </div>
                 <Button
                     {...props}
