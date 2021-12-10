@@ -99,6 +99,7 @@ DataExporter.propTypes = {
             "slideUp",
             "slideLeft",
             "slideRight",
+            ""
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
@@ -127,7 +128,11 @@ DataExporter.propTypes = {
     /**
     Use to toggle a loading state for the component
     */
-    isLoading: PropTypes.bool
+    isLoading: PropTypes.bool,
+    /**
+    Use this function to perform action once data is exported
+    */
+    onDone: PropTypes.func,
 };
 
 DataExporter.defaultProps = {
@@ -157,11 +162,20 @@ DataExporter.defaultProps = {
     isLoading: false,
 };
 
+/**
+## Notes
+- The design system used for this component is Material UI (@mui/material)
+- The animation system used for this component is Framer Motion (framer-motion)
+- Pass inline styles to the component to override any of the component css
+- Or add custom css in overrule.scss to override the component css
+- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
+**/
+
 export default function DataExporter(props) {
 
     function exportData() {
         let { data } = props;
-        if (data.length > 0) {
+        if (data && data.length > 0) {
             let replacer = (key, value) => (value === null ? "" : value);
             let header = Object.keys(data[0]);
             let csv = data.map((row) =>
@@ -178,8 +192,12 @@ export default function DataExporter(props) {
             hiddenElement.target = "_blank";
             hiddenElement.download = `exported_data_${Date.now()}.csv`;
             hiddenElement.click();
+            props.onDone();
         }
     }
 
-    return (<Button {...props} onClick={exportData} />);
+    return (<Button
+        {...props}
+        onClick={exportData}
+    />);
 }

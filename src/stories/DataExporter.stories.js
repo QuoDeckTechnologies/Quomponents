@@ -2,10 +2,10 @@ import React from "react";
 import DataExporter from "../components/Buttons/DataExporter/DataExporter.react";
 
 const dictionary = JSON.stringify({
-    en: {
-        loading: "Please wait...",
-        button: { text: "Export", label: "" },
-    },
+    // en: {
+    //     loading: "Please wait...",
+    //     button: { text: "Export", label: "" },
+    // },
     hi: {
         loading: "बस एक मिनट...",
         button: { text: "एक्स्पोर्ट", label: "" },
@@ -141,7 +141,13 @@ export default {
                 category: "is-Toggles",
                 defaultValue: false,
             },
-        }
+        },
+        onDone: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        },
     },
     decorators: [
         (story) => (
@@ -201,7 +207,7 @@ Default.args = {
     asPadded: "normal",
     asAligned: "center",
     withLabel: {
-        format: "",
+        format: "label",
         content: "",
         textColor: "",
     },
@@ -227,7 +233,7 @@ Default.args = {
     isDisabled: false,
     isLoading: false,
     isHidden: false,
-    isFluid: false,
+    isFluid: false
 };
 Default.parameters = {
     docs: {
@@ -414,10 +420,6 @@ IconExporter.args = {
 };
 IconExporter.parameters = {
     docs: {
-        description: {
-            story:
-                "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of buttons or for standalone floating actions.",
-        },
         source: {
             code: `<DataExporter data={data} withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click here to export",textColor: ""}}}/>`,
         },
@@ -441,10 +443,6 @@ ExporterWithIcon.args = {
 };
 ExporterWithIcon.parameters = {
     docs: {
-        description: {
-            story:
-                "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of buttons or for standalone floating actions.",
-        },
         source: {
             code: `<DataExporter data={data} content="Export" asVariant="primary" withIcon: { icon: "fas fa-share", size: "1em", position: "right" }/>`,
         },
@@ -459,7 +457,7 @@ export const ExporterWithoutIcon = Template.bind({});
 ExporterWithoutIcon.args = {
     ...Default.args,
     content: "Export",
-    withIcon: { icon: "", size: "", position: "" },
+    withIcon: { icon: "", size: "", position: "left" },
     withLabel: {
         format: "popover",
         content: "Click here to export",
@@ -469,7 +467,7 @@ ExporterWithoutIcon.args = {
 ExporterWithoutIcon.parameters = {
     docs: {
         source: {
-            code: `<DataExporter data={data} asVariant="primary" withIcon: { icon: "", size: "", position: "" }/>`,
+            code: `<DataExporter data={data} asVariant="primary" withIcon: { icon: "", size: "", position: "left" }/>`,
         },
     },
 };
@@ -477,8 +475,8 @@ ExporterWithoutIcon.parameters = {
 // -------------------------------------------------------------
 // Translated Button
 // -------------------------------------------------------------
-export const TranslatedButton = Template.bind({});
-TranslatedButton.args = {
+export const TranslatedExporterButton = Template.bind({});
+TranslatedExporterButton.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
@@ -486,10 +484,23 @@ TranslatedButton.args = {
         dictionary: dictionary,
     },
 };
-TranslatedButton.parameters = {
+TranslatedExporterButton.parameters = {
     docs: {
         source: {
             code: `<DataExporter data={data} asVariant="primary" withTranslation: { lang: "hi" tgt: "button" dictionary: { dictionary } }/>`,
+        },
+    },
+};
+
+export const DisabledExporterButton = Template.bind({});
+DisabledExporterButton.args = {
+    ...Default.args,
+    isDisabled:true
+};
+DisabledExporterButton.parameters = {
+    docs: {
+        source: {
+            code: `<DataExporter data={data} asVariant="primary" isDisabled={true} />`,
         },
     },
 };
