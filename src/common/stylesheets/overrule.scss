@@ -9,16 +9,54 @@ $warning-text:#000000;
 .qui .qui-loader.variant-primary {
     background-color: $primary-color;
     color: $primary-text;
+
+    &.emp-text {
+        background-color: transparent;
+        color: $primary-color;
+    }
+
+    &.emp-outlined {
+        background-color: transparent;
+        border: 1px solid $primary-color;
+        color: $primary-color;
+    }
 }
 
 .qui .qui-btn.variant-secondary,
 .qui .qui-loader.variant-secondary {
     background-color: $secondary-color;
     color: $secondary-text;
+
+    &.emp-text {
+        background-color: transparent;
+        color: $secondary-color;
+    }
+
+    &.emp-outlined {
+        background-color: transparent;
+        border: 1px solid $secondary-color;
+        color: $secondary-color;
+    }
 }
 
 .qui .qui-btn.variant-warning,
 .qui .qui-loader.variant-warning {
+    background-color: $warning-color;
+    color: $warning-text;
+
+    &.emp-text {
+        background-color: transparent;
+        color: $warning-color;
+    }
+
+    &.emp-outlined {
+        background-color: transparent;
+        border: 1px solid $warning-color;
+        color: $warning-color;
+    }
+}
+
+.qui .qui-btn.variant-text {
     background-color: $warning-color;
     color: $warning-text;
 }
