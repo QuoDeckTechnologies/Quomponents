@@ -432,8 +432,8 @@ AnimatedUploaderButton.parameters = {
 // -------------------------------------------------------------
 // Translated Button
 // -------------------------------------------------------------
-export const TranslatedButton = Template.bind({});
-TranslatedButton.args = {
+export const TranslatedUploadButton = Template.bind({});
+TranslatedUploadButton.args = {
     ...Default.args,
     content: "Translated Button",
     withTranslation: {
@@ -442,7 +442,7 @@ TranslatedButton.args = {
         dictionary: dictionary,
     },
 };
-TranslatedButton.parameters = {
+TranslatedUploadButton.parameters = {
     docs: {
         description: {
             story:
