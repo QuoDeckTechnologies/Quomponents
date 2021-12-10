@@ -33,6 +33,19 @@ export default {
                 defaultValue: false,
             },
         },
+        withFileType: {
+            category: "with-Params",
+            defaultValue: {
+                type: "image/*",
+                capture: ""
+            }
+        },
+        isMultiple: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
 
         asVariant: {
             control: "select",
@@ -122,13 +135,7 @@ export default {
                 },
             },
         },
-        withFileType: {
-            category: "with-Params",
-            defaultValue: {
-                type: "image/*",
-                capture: ""
-            }
-        },
+
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -148,12 +155,6 @@ export default {
             },
         },
         isLoading: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        isMultiple: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
@@ -181,7 +182,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic upload for general-purpose use",
+        componentSubtitle: "Displays a button for upload-purpose use",
         a11y: { disable: true },
         // controls: { expanded: true }
     },
@@ -196,6 +197,11 @@ Default.args = {
     content: "Upload",
     asEmphasis: "contained",
     isCircular: false,
+    withFileType: {
+        type: "image/*",
+        capture: ""
+    },
+    isMultiple: false,
 
     asVariant: "primary",
     asSize: "normal",
@@ -223,18 +229,13 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "button",
+        tgt: "upload",
         dictionary: dictionary,
-    },
-    withFileType: {
-        type: "image/*",
-        capture: "environment"
     },
     isDisabled: false,
     isLoading: false,
     isHidden: false,
     isFluid: false,
-    isMultiple: false
 };
 Default.parameters = {
     docs: {
@@ -282,7 +283,7 @@ SingleFileUploader.parameters = {
             story: "Upload single file which is defined by file type.",
         },
         source: {
-            code: `<Upload asVariant="primary"/>`,
+            code: `<Upload asVariant="primary" withFileType: {{ type: "video/*", capture: "user" }} isMultiple={false} />`,
         },
     },
 };
@@ -306,7 +307,7 @@ MultipleFileUploader.parameters = {
             story: "Upload more than one files which are defined by file type.",
         },
         source: {
-            code: `<Upload asVariant="primary"/>`,
+            code: `<Upload asVariant="primary"  withFileType: {{ type: "image/*", capture: "" }} isMultiple={true}/>`,
         },
     },
 };
@@ -437,7 +438,7 @@ TranslatedButton.args = {
     content: "Translated Button",
     withTranslation: {
         lang: "hi",
-        tgt: "button",
+        tgt: "upload",
         dictionary: dictionary,
     },
 };
@@ -448,7 +449,7 @@ TranslatedButton.parameters = {
                 "Use to change the language that the text appears in. To make this work for the button, add a button:{text,label} value to the dictionary.",
         },
         source: {
-            code: `<Upload withTranslation={{lang: "hi", tgt: "button", dictionary: ${JSON.stringify(
+            code: `<Upload withTranslation={{lang: "hi", tgt: "upload", dictionary: ${JSON.stringify(
                 {
                     hi: {
                         loading: "बस एक मिनट...",

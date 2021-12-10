@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import Button from "../Button/Button.react";
 Upload.propTypes = {
@@ -120,6 +120,7 @@ Upload.propTypes = {
             "slideUp",
             "slideLeft",
             "slideRight",
+            ""
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
