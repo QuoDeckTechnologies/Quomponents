@@ -8,9 +8,18 @@ DataExporter.propTypes = {
     //=======================================
 
     /**
-    Pass data in the format of array of in this field objects to exported
+    we can export file or json data using this component.
+    To export data select type as "json" and pass data in array of object format to content field.
+    To export file using url select type as "file" and pass file url to content field.
+    This is required field.
     */
-    data: PropTypes.array.isRequired,
+    data: PropTypes.shape({
+        type: PropTypes.oneOf(["json", "file"]).isRequired,
+        content: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.array
+        ]).isRequired
+    }).isRequired,
     /**
     Button Text has to be in content or passed as children to the component. Is optional if you only want an icon.
     */
@@ -138,7 +147,7 @@ DataExporter.propTypes = {
 DataExporter.defaultProps = {
     // Component Specific props
     //=======================================
-    data: [],
+    data: { type: "json", content: [] },
     asEmphasis: "contained",
     isCircular: false,
 
@@ -175,20 +184,26 @@ export default function DataExporter(props) {
 
     function exportData() {
         let { data } = props;
-        if (data && data.length > 0) {
-            let replacer = (key, value) => (value === null ? "" : value);
-            let header = Object.keys(data[0]);
-            let csv = data.map((row) =>
-                header
-                    .map((fieldName) =>
-                        JSON.stringify(row[fieldName], replacer)
-                    )
-                    .join(",")
-            );
-            csv.unshift(header.join(","));
-            csv = csv.join("\r\n");
+        if (data) {
+            let url = data.content;
+            if (data.type === "json" && data.content.length > 0) {
+                let content = data.content;
+                let replacer = (key, value) => (value === null ? "" : value);
+                let header = Object.keys(content[0]);
+                let csv = content.map((row) =>
+                    header
+                        .map((fieldName) =>
+                            JSON.stringify(row[fieldName], replacer)
+                        )
+                        .join(",")
+                );
+                csv.unshift(header.join(","));
+                csv = csv.join("\r\n");
+                url = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+            }
+
             let hiddenElement = document.createElement("a");
-            hiddenElement.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+            hiddenElement.href = url;
             hiddenElement.target = "_blank";
             hiddenElement.download = `exported_data_${Date.now()}.csv`;
             hiddenElement.click();

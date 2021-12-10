@@ -16,7 +16,7 @@ export default {
     title: "Design System/Buttons/DataExporter",
     component: DataExporter,
     argTypes: {
-        data: [],
+        data: { type: "json", content: [] },
         content: "Export",
         asEmphasis: {
             control: "select",
@@ -163,7 +163,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic data exporter button for general-purpose use",
+        componentSubtitle: "Displays a basic data exporter button for general-purpose use. We can export file or json data using this component.",
         a11y: { disable: true }
     },
 };
@@ -174,30 +174,33 @@ export default {
 const Template = (args) => <DataExporter {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    data: [{
-        "published": false,
-        "tags": [],
-        "_id": "5a22f2",
-        "name": "MERN",
-        "category": "course",
-        "summary": "",
-        "identifier": "9La_ApGyc",
-        "owner": "5a1b6f",
-        "createdAt": "2021-12-01T09:14:55.642Z",
-        "id": "5a22f2"
+    data: {
+        type: "json",
+        content: [{
+            "published": false,
+            "tags": [],
+            "_id": "5a22f2",
+            "name": "MERN",
+            "category": "course",
+            "summary": "",
+            "identifier": "9La_ApGyc",
+            "owner": "5a1b6f",
+            "createdAt": "2021-12-01T09:14:55.642Z",
+            "id": "5a22f2"
+        },
+        {
+            "published": false,
+            "tags": [],
+            "_id": "5a8db2",
+            "name": "Test",
+            "category": "course",
+            "summary": "",
+            "identifier": "PVSa42HZi",
+            "owner": "5a6b0c",
+            "createdAt": "2021-12-09T07:29:13.056Z",
+            "id": "5a8db2"
+        }]
     },
-    {
-        "published": false,
-        "tags": [],
-        "_id": "5a8db2",
-        "name": "Test",
-        "category": "course",
-        "summary": "",
-        "identifier": "PVSa42HZi",
-        "owner": "5a6b0c",
-        "createdAt": "2021-12-09T07:29:13.056Z",
-        "id": "5a8db2"
-    }],
     content: "Export",
     asEmphasis: "contained",
     isCircular: false,
@@ -229,7 +232,6 @@ Default.args = {
         tgt: "button",
         dictionary: dictionary,
     },
-
     isDisabled: false,
     isLoading: false,
     isHidden: false,
@@ -239,6 +241,29 @@ Default.parameters = {
     docs: {
         source: {
             code: `<DataExporter {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// File Exporter
+// -------------------------------------------------------------
+
+export const FileExporter = Template.bind({});
+FileExporter.args = {
+    ...Default.args,
+    data: {
+        type: "file",
+        content: "https://demo.quodeck.com/public/samples/user_upload_format.xlsx"
+    }
+};
+FileExporter.parameters = {
+    docs: {
+        description: {
+            story: "To export file using url select type as 'file' and pass file url to content field."
+        },
+        source: {
+            code: `<DataExporter data={{ type: "file", content: "" }} asVariant="primary" isDisabled={true} />`,
         },
     },
 };
@@ -298,7 +323,7 @@ AllVariants.parameters = {
             story: "5 variants are supported. Use as per purpose noted here.",
         },
         source: {
-            code: `<DataExporter data={data} asVariant="primary"/>`,
+            code: `<DataExporter data={{ type: "json", content: [] }} asVariant="primary"/>`,
         },
     },
 };
@@ -348,7 +373,7 @@ AllEmphasis.parameters = {
             story: "3 options are supported for emphasis as text, outlined, contained",
         },
         source: {
-            code: `<DataExporter data={data} asEmphasis="contained"/>`,
+            code: `<DataExporter data={{ type: "json", content: [] }} asEmphasis="contained"/>`,
         }
     },
 };
@@ -372,11 +397,10 @@ CustomColorExporter.args = {
 CustomColorExporter.parameters = {
     docs: {
         source: {
-            code: `<DataExporter data={data} content="Export" withColor: { backgroundColor: "#163E70" accentColor: "" textColor: "#ffffff" hoverBackgroundColor: "#607A9B" hoverTextColor: "ffffff" }/>`,
+            code: `<DataExporter data={{ type: "json", content: [] }} content="Export" withColor: {{ backgroundColor: "#163E70", accentColor: "", textColor: "#ffffff", hoverBackgroundColor: "#607A9B", hoverTextColor: "ffffff" }/>`,
         },
     },
 };
-
 
 // -------------------------------------------------------------
 // Circular Icon Button Exporter
@@ -400,7 +424,7 @@ IconButtonCircularExporter.parameters = {
                 "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of buttons or for standalone floating actions. Use isCircular to toggle the rounding.",
         },
         source: {
-            code: `<DataExporter data={data}  isCircular={true} withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click here to export",textColor: ""}}}/>`,
+            code: `<DataExporter data={{ type: "json", content: [] }}  isCircular={true} withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click here to export",textColor: ""}}}/>`,
         },
     },
 };
@@ -421,7 +445,7 @@ IconExporter.args = {
 IconExporter.parameters = {
     docs: {
         source: {
-            code: `<DataExporter data={data} withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click here to export",textColor: ""}}}/>`,
+            code: `<DataExporter data={{ type: "json", content: [] }} withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click here to export",textColor: ""}}}/>`,
         },
     },
 };
@@ -444,7 +468,7 @@ ExporterWithIcon.args = {
 ExporterWithIcon.parameters = {
     docs: {
         source: {
-            code: `<DataExporter data={data} content="Export" asVariant="primary" withIcon: { icon: "fas fa-share", size: "1em", position: "right" }/>`,
+            code: `<DataExporter data={{ type: "json", content: [] }} content="Export" asVariant="primary" withIcon: { icon: "fas fa-share", size: "1em", position: "right" }/>`,
         },
     },
 };
@@ -467,7 +491,7 @@ ExporterWithoutIcon.args = {
 ExporterWithoutIcon.parameters = {
     docs: {
         source: {
-            code: `<DataExporter data={data} asVariant="primary" withIcon: { icon: "", size: "", position: "left" }/>`,
+            code: `<DataExporter data={{ type: "json", content: [] }} asVariant="primary" withIcon: { icon: "", size: "", position: "left" }/>`,
         },
     },
 };
@@ -487,7 +511,7 @@ TranslatedExporterButton.args = {
 TranslatedExporterButton.parameters = {
     docs: {
         source: {
-            code: `<DataExporter data={data} asVariant="primary" withTranslation: { lang: "hi" tgt: "button" dictionary: { dictionary } }/>`,
+            code: `<DataExporter data={{ type: "json", content: [] }} asVariant="primary" withTranslation: { lang: "hi" tgt: "button" dictionary: { dictionary } }/>`,
         },
     },
 };
@@ -495,17 +519,13 @@ TranslatedExporterButton.parameters = {
 export const DisabledExporterButton = Template.bind({});
 DisabledExporterButton.args = {
     ...Default.args,
-    isDisabled:true
+    isDisabled: true
 };
 DisabledExporterButton.parameters = {
     docs: {
         source: {
-            code: `<DataExporter data={data} asVariant="primary" isDisabled={true} />`,
+            code: `<DataExporter data={{ type: "json", content: [] }} asVariant="primary" isDisabled={true} />`,
         },
     },
 };
-
-
-
-
 
