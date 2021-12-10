@@ -224,7 +224,7 @@ export default function Upload(props) {
                     // If all files have been processed
                     if (allFiles.length === files.length) {
                         // Apply Callback function
-                        if (props.multiple) props.onClick(allFiles);
+                        if (props.isMultiple) props.onClick(allFiles);
                         else props.onClick(allFiles[0]);
                     }
                 };
