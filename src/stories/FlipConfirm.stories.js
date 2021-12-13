@@ -2,13 +2,6 @@ import React from "react";
 import FlipConfirm from "../components/Buttons/FlipConfirm/FlipConfirm.react";
 
 const dictionary = JSON.stringify({
-    // en: {
-    //     loading: "Please wait...",
-    //     button: {
-    //         text: "Button",
-    //         label: "Do not press this repeatedly...",
-    //     },
-    // },
     en: {
         loading: "Please wait...",
         flipconfirm: {
