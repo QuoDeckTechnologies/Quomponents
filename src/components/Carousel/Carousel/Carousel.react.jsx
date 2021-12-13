@@ -324,22 +324,21 @@ export default function Carousel(props) {
 
                 return (
                     <div
-                        className="slider-card"
+                        className="qui-slider-card"
                         style={cardStyle}
                     >
                         {d.box && (
-                            <div className="slider-card-box">
-
-                                {/* <b>{d.box.title}</b>
-                                <div>{d.box.subTitle}</div> */}
+                            <div className="qui-slider-card-box">
+                                <b>{d.box.title}</b>
+                                <div>{d.box.subTitle}</div>
                             </div>
                         )}
                     </div >
                 );
             }
         );
-
     };
+
     // ========================= Render Function =================================
 
     return (
