@@ -292,7 +292,7 @@ export default function Carousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: true,
+        autoplay: false,
         centerPadding: "110px",
         responsive: [
             {
@@ -315,13 +315,15 @@ export default function Carousel(props) {
             }
         ]
     };
+
     let segmentContent = () => {
         let { data } = props;
         return _.map(
             data,
             (d) => {
-                let cardStyle = { backgroundImage: `url(${d.image})`, backgroundRepeat: "round" };
-
+                let cardStyle = {
+                    backgroundImage: `url(${d.image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"
+                };
                 return (
                     <div
                         className="qui-slider-card"
@@ -329,11 +331,17 @@ export default function Carousel(props) {
                     >
                         {d.box && (
                             <div className="qui-slider-card-box">
-                                <b>{d.box.title}</b>
-                                <div>{d.box.subTitle}</div>
-                            </div>
+                                <motion.div
+                                    initial={animate.from}
+                                    animate={animate.to}
+                                    className="qui-slider-box-content"
+                                >
+                                    <b className="line-clamp">{d.box.title}</b>
+                                    <div className="line-clamp">{d.box.subTitle}</div>
+                                </motion.div>
+                            </div >
                         )}
-                    </div >
+                    </div>
                 );
             }
         );

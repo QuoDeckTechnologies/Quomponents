@@ -52,40 +52,67 @@ $position: absolute;
     background-color: #e10f0f;
     color: #ffffff;
     height: 41%;
-    width: 34%;
+    width: 32%;
     position: relative;
     top: 50%;
-    font-size: 12px;
+    font-size: 15px;
+    text-align: left;
+
+    .qui-slider-box-content {
+        padding: 5px;
+    }
+
+    b {
+        font-size: 20px;
+    }
+
+    .line-clamp {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
 }
 
 .qui.qui-slide {
     align-items: center;
     margin: 0 auto;
     z-index: 1;
-  }
-  
-  .qui .qui-slide {
+}
+
+.qui .qui-slide {
     transform: scale(0.9);
     transition: transform 300ms;
     opacity: 0.5;
     z-index: -1;
-  }
-  
-  .qui .qui-activeSlide {
+}
+
+.qui .qui-activeSlide {
     transform: scale(1);
     align-items: center;
     opacity: 1;
-  }
+}
 
 @media only screen and (orientation: portrait) and (max-width: 1024px) {
     .qui .qui-slider-card {
         height: 190px;
         background-color: transparent;
     }
+
     .qui .qui-slider-card-box {
         height: 32%;
         width: 67%;
         position: relative;
         top: 59%;
+        font-size: 12px;
+
+        b {
+            font-size: 16px;
+        }
+
+        .line-clamp {
+            -webkit-line-clamp: 2;
+        }
     }
 }
