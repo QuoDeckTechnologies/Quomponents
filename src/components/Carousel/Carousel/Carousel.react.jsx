@@ -214,9 +214,8 @@ export default function Carousel(props) {
     const [hovered, setHovered] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0)
     const sliderRef = useRef();
-    // console.log("slider::", sliderRef)
     function afterChangeHandler(i) {
-        setCurrentIndex(i)
+        setCurrentIndex((i ? i : 0))
     }
     // const handleNextClick = () => {
     //     slider.slickNext()
@@ -294,6 +293,27 @@ export default function Carousel(props) {
         arrows: false,
         infinite: true,
         autoplay: true,
+        centerPadding: "110px",
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '50px',
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '50px',
+                    slidesToShow: 1
+                }
+            }
+        ]
     };
     let segmentContent = () => {
         let { data } = props;
@@ -323,13 +343,16 @@ export default function Carousel(props) {
     // ========================= Render Function =================================
 
     return (
-        <Slider ref={sliderRef} {...settings}>
+        <Slider ref={sliderRef} {...settings} afterChange={afterChangeHandler}>
             {_.map(segmentContent(), (content, index) => {
                 return (
-                    <div
-                        key={"slider-" + index + Math.random()}
-                    >
-                        {content}
+                    <div className="qui">
+                        <div
+                            key={"slider-" + index + Math.random()}
+                            className={index === currentIndex ? "qui-slide qui-activeSlide" : "qui-slide"}
+                        >
+                            {content}
+                        </div>
                     </div>
                 );
             })}

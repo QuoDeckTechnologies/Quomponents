@@ -10,7 +10,6 @@ $position: absolute;
     height: $image-height;
     overflow: hidden;
     margin: auto;
-    // object-fit: cover;
 }
 
 #btn-next-icon {
@@ -43,26 +42,50 @@ $position: absolute;
     font-size: 0.8em;
 }
 
-.slider-card {
+.qui .qui-slider-card {
     height: 237px;
     background-color: transparent;
-    margin: 5px;
     border-radius: 15px;
 }
 
-.slider-card-box {
+.qui .qui-slider-card-box {
     background-color: #e10f0f;
-    height: 100px;
-    width: 250px;
-    display: inline-block;
+    color: #ffffff;
+    height: 41%;
+    width: 34%;
     position: relative;
-    top: 43%;
-    right: 35%;
+    top: 50%;
+    font-size: 12px;
 }
 
+.qui.qui-slide {
+    align-items: center;
+    margin: 0 auto;
+    z-index: 1;
+  }
+  
+  .qui .qui-slide {
+    transform: scale(0.9);
+    transition: transform 300ms;
+    opacity: 0.5;
+    z-index: -1;
+  }
+  
+  .qui .qui-activeSlide {
+    transform: scale(1);
+    align-items: center;
+    opacity: 1;
+  }
+
 @media only screen and (orientation: portrait) and (max-width: 1024px) {
-    .slider-card {
+    .qui .qui-slider-card {
         height: 190px;
         background-color: transparent;
+    }
+    .qui .qui-slider-card-box {
+        height: 32%;
+        width: 67%;
+        position: relative;
+        top: 59%;
     }
 }
