@@ -107,6 +107,7 @@ Button.propTypes = {
             "slideUp",
             "slideLeft",
             "slideRight",
+            ""
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
@@ -173,16 +174,19 @@ function getLabel(labelObj, position) {
     return labelObj?.format === position ? labelObj.content : "";
 }
 
-function getColors(colors, hovered) {
-    return hovered
+function getColors(colors, emphasis, hovered) {
+    let colorStyle = hovered
         ? {
-              background: colors.hoverBackgroundColor,
-              color: colors.hoverTextColor,
-          }
+            background: colors.hoverBackgroundColor,
+            color: colors.hoverTextColor,
+        }
         : {
-              background: colors.backgroundColor,
-              color: colors.textColor,
-          };
+            background: emphasis !== "contained" ? "transparent" : colors.backgroundColor,
+            color: emphasis !== "contained" ? colors.backgroundColor : colors.textColor,
+        }
+    if (!hovered && emphasis === "outlined")
+        colorStyle.borderColor = colors.backgroundColor
+    return colorStyle;
 }
 
 function getIcon(iconObj, position, iconOnly) {
@@ -223,10 +227,11 @@ export default function Button(props) {
             props.content === "" && props.withIcon ? "is-only-icon" : ""
         }`;
 
+    quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
     //-------------------------------------------------------------------
     // 2. Set the component colors
     //-------------------------------------------------------------------
-    let colors = props.withColor ? getColors(props.withColor, hovered) : {};
+    let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
 
     //-------------------------------------------------------------------
     // 3. Set the button text
