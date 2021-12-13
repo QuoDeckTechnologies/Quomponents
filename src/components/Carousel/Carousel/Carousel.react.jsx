@@ -323,7 +323,10 @@ export default function Carousel(props) {
             data,
             (d, index) => {
                 let cardStyle = {
-                    backgroundImage: `url(${d.image})`
+                    backgroundImage: `url(${d.image})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    boxShadow: "3px 3px 3px 2px rgba(105, 100, 100, 0.79)"
                 };
                 return (
                     <div
