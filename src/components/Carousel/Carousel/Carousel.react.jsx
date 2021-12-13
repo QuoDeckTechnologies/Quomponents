@@ -300,7 +300,7 @@ export default function Carousel(props) {
                 settings: {
                     arrows: false,
                     centerMode: true,
-                    centerPadding: '50px',
+                    centerPadding: '30px',
                     slidesToShow: 1
                 }
             },
@@ -309,7 +309,7 @@ export default function Carousel(props) {
                 settings: {
                     arrows: false,
                     centerMode: true,
-                    centerPadding: '50px',
+                    centerPadding: '30px',
                     slidesToShow: 1
                 }
             }
@@ -341,6 +341,9 @@ export default function Carousel(props) {
                                 </motion.div>
                             </div >
                         )}
+                        <div className="qui-slider-label">
+                            <div className="qui-label-text">{d?.label}</div>
+                        </div>
                     </div>
                 );
             }
