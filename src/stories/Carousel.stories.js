@@ -19,17 +19,14 @@ export default {
     title: "Design System/Carousel/Carousel",
     component: Carousel,
     argTypes: {
-        withCarousel: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    tag: "",
-                    images: "",
-                    content: "",
-                },
-            },
-        },
-
+        data: [{
+            image: "",
+            label: "",
+            box: {
+                title: "",
+                subTitle: ""
+            }
+        }],
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -177,15 +174,22 @@ export default {
 const Template = (args) => <Carousel {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    withCarousel: {
-        tag: "New",
-        images: [
-            "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg",
-            "https://image.freepik.com/free-vector/abstract-banner-background-with-red-shapes_1361-3348.jpg",
-            "https://jongund.github.io/aria-examples/bootstrap-carousel/images/lands-endslide__800x600.jpg"
-        ],
-        content: "this is a text"
+    data: [{
+        image: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg",
+        label: "New",
+        box: {
+            title: "The Negotiation Room",
+            subTitle: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+        }
     },
+    {
+        image: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg",
+        label: "Recommended",
+        box: {
+            title: "The Negotiation Room",
+            subTitle: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+        }
+    }],
     asVariant: "primary",
     asSize: "normal",
     asFloated: "none",

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
+import _ from "lodash";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -20,19 +21,17 @@ Carousel.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-
     /**
-    Button Text has to be in content or passed as children to the component. Is optional if you only want an icon.
-    */
-    content: PropTypes.string,
-    /**
-    Set action emphasis in increasing order 
-    */
-    asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
-    /**
-    Use for rounded corners or circular icon button 
-    */
-    isCircular: PropTypes.bool,
+    Carousel data should be passed in data field and it is required field
+        */
+    data: PropTypes.arrayOf(PropTypes.shape({
+        image: PropTypes.string,
+        label: PropTypes.string,
+        box: PropTypes.shape({
+            title: PropTypes.string,
+            subTitle: PropTypes.string
+        })
+    })).isRequired,
 
     // Quommon props
     //=======================================
@@ -148,9 +147,7 @@ Carousel.propTypes = {
 Carousel.defaultProps = {
     // Component Specific props
     //=======================================
-    asEmphasis: "contained",
-    isCircular: false,
-
+    data: [],
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -293,56 +290,49 @@ export default function Carousel(props) {
         initialSlide: 0,
         slidesToScroll: 1,
         slidesToShow: 1,
-
-        // centerMode: props.centerMode,
+        centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: false,
-        // afterChange: handleCallback,
+        autoplay: true,
+    };
+    let segmentContent = () => {
+        let { data } = props;
+        return _.map(
+            data,
+            (d) => {
+                let cardStyle = { backgroundImage: `url(${d.image})`, backgroundRepeat: "round" };
+
+                return (
+                    <div
+                        className="slider-card"
+                        style={cardStyle}
+                    >
+                        {d.box && (
+                            <div className="slider-card-box">
+
+                                {/* <b>{d.box.title}</b>
+                                <div>{d.box.subTitle}</div> */}
+                            </div>
+                        )}
+                    </div >
+                );
+            }
+        );
+
     };
     // ========================= Render Function =================================
 
     return (
-        <motion.div
-            initial={animate.from}
-            animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-        >
-            <div className="qui-label" style={labelStyle}>
-                {getLabel(labelContent, "label")}
-            </div>
-            <div>
-                <Slider ref={sliderRef} {...settings} afterChange={afterChangeHandler}>
-                    {props.withCarousel.images.map((img, index) => {
-                        return (
-                            <div key={"carousel-" + index}>
-                                <img
-                                    src={img}
-                                    alt="carousel"
-                                    className={"img-carousel-active"}
-                                />
-                                {/* <Button
-                                    id="btn-next-icon"
-                                    onClick={handleNextClick}
-                                    withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}
-                                    circular={true}
-                                >
-                                </Button>
-                                <Button
-                                    id="btn-prev-icon"
-                                    onClick={handlePrevClick}
-                                >
-                                </Button> */}
-                            </div>
-                        );
-                    })}
-                </Slider>
-            </div>
-            <div className="qui-caption" style={labelStyle}>
-                {getLabel(labelContent, "caption")}
-            </div>
-        </motion.div>
+        <Slider ref={sliderRef} {...settings}>
+            {_.map(segmentContent(), (content, index) => {
+                return (
+                    <div
+                        key={"slider-" + index + Math.random()}
+                    >
+                        {content}
+                    </div>
+                );
+            })}
+        </Slider>
     );
 }

@@ -5,7 +5,7 @@ $black-color:#000000;
 $position: absolute;
 
 
-.img-carousel-active{
+.img-carousel-active {
     width: $image-width;
     height: $image-height;
     overflow: hidden;
@@ -13,13 +13,13 @@ $position: absolute;
     // object-fit: cover;
 }
 
-#btn-next-icon{
+#btn-next-icon {
     right: 16px;
     position: $position;
     transform: translate(0, -50%);
     margin-top: -25%;
     color: $black-color;
-    background-color:$white-color;
+    background-color: $white-color;
     min-width: 25px;
     height: 25px;
     border-radius: 31px;
@@ -41,4 +41,28 @@ $position: absolute;
 
 #icon {
     font-size: 0.8em;
+}
+
+.slider-card {
+    height: 237px;
+    background-color: transparent;
+    margin: 5px;
+    border-radius: 15px;
+}
+
+.slider-card-box {
+    background-color: #e10f0f;
+    height: 100px;
+    width: 250px;
+    display: inline-block;
+    position: relative;
+    top: 43%;
+    right: 35%;
+}
+
+@media only screen and (orientation: portrait) and (max-width: 1024px) {
+    .slider-card {
+        height: 190px;
+        background-color: transparent;
+    }
 }
