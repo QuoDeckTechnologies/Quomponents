@@ -313,16 +313,17 @@ export default function Carousel(props) {
                     slidesToShow: 1
                 }
             }
-        ]
+        ],
+        variableWidth: true
     };
 
     let segmentContent = () => {
         let { data } = props;
         return _.map(
             data,
-            (d) => {
+            (d, index) => {
                 let cardStyle = {
-                    backgroundImage: `url(${d.image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"
+                    backgroundImage: `url(${d.image})`
                 };
                 return (
                     <div
@@ -330,7 +331,10 @@ export default function Carousel(props) {
                         style={cardStyle}
                     >
                         {d.box && (
-                            <div className="qui-slider-card-box">
+                            <div
+                                className={`qui qui-carousel qui-slider-card-box ${quommonClasses.childClasses}`}
+                                style={Object.assign({}, colors, props.style)}
+                            >
                                 <motion.div
                                     initial={animate.from}
                                     animate={animate.to}
@@ -340,11 +344,12 @@ export default function Carousel(props) {
                                     <div className="line-clamp">{d.box.subTitle}</div>
                                 </motion.div>
                             </div >
-                        )}
-                        <div className="qui-slider-label">
+                        )
+                        }
+                        <div className={`${index === currentIndex ? "qui qui-carousel qui-slider-label" : "is-hidden"} ${quommonClasses.childClasses}`} >
                             <div className="qui-label-text">{d?.label}</div>
                         </div>
-                    </div>
+                    </div >
                 );
             }
         );
