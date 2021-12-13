@@ -1,15 +1,16 @@
-$image-width: 100%;
-$image-height: auto;
+$image-width: 80%;
+$image-height: 14rem;
 $white-color:#ffffff;
 $black-color:#000000;
 $position: absolute;
 
 
-.img-carousel{
+.img-carousel-active{
     width: $image-width;
     height: $image-height;
     overflow: hidden;
-    object-fit: cover;
+    margin: auto;
+    // object-fit: cover;
 }
 
 #btn-next-icon{
