@@ -1,5 +1,8 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
+import {
+    getTranslation,
+} from "../../../common/javascripts/helpers";
 
 import Button from "../Button/Button.react";
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -164,9 +167,9 @@ FlipConfirm.defaultProps = {
     asPadded: "normal",
     asFloated: "none",
     asAligned: "center",
+
+
     withConfirmation: null,
-
-
     withColor: null,
     withIcon: null,
     withLabel: null,
@@ -189,6 +192,7 @@ FlipConfirm.defaultProps = {
 **/
 
 export default function FlipConfirm(props) {
+    let withConfirmation = props.withConfirmation ? props.withConfirmation : null;
     const [mode, setMode] = useState(false);
     const buttonRef = useRef(null);
 
@@ -224,18 +228,23 @@ export default function FlipConfirm(props) {
         setMode(false);
     }
 
-    // Style Handlers
-    // ---------------------
-    const styles = {
-        btnBack: {
-            display: mode ? "block" : "none",
-        },
-    };
+    //-------------------------------------------------------------------
+    // 1. Translate the text objects in case their is a dictionary provided
+    //-------------------------------------------------------------------
+    if (
+        props.withTranslation &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        let tObj = getTranslation(props.withTranslation);
+        withConfirmation = Object.assign(withConfirmation, tObj)
+    }
+
 
     return (
-        <div className={`fc-btn-main`}>
-            <div className={`fc-btn ${mode ? "is-open" : ""}`} ref={buttonRef}>
-                <div className="fc-btn-back" style={styles.btnBack}>
+        <div className={`qui-fc-btn-main`}>
+            <div className={`qui-fc-btn ${mode ? "is-open" : ""}`} ref={buttonRef}>
+                <div className={`qui-fc-btn-back ${mode ? "is-enable" : "qui is-hidden"}`}>
                     <p>{props.withConfirmation.header}</p>
                     <ButtonGroup>
                         <Button
@@ -246,7 +255,7 @@ export default function FlipConfirm(props) {
                             {props.withConfirmation.yes}
                         </Button>
                         <Button
-                            asEmphasis={props.asEmphasis}
+                            asEmphasis="outlined"
                             asVariant="primary"
                             onClick={noClick}
                         >

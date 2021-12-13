@@ -9,10 +9,26 @@ const dictionary = JSON.stringify({
     //         label: "Do not press this repeatedly...",
     //     },
     // },
+    en: {
+        loading: "Please wait...",
+        flipconfirm: {
+            text: "Button",
+            label: "Do not press this repeatedly...",
+            header: "Are you sure you want to do that?",
+            yes: "Yes",
+            no: "No",
+        }
+    },
     hi: {
         loading: "बस एक मिनट...",
-        Button: { text: "बटन", label: "इसे बार-बार न दबाएं..."},
-        
+        flipconfirm: {
+            text: "बटन",
+            label: "इसे बार-बार न दबाएं...",
+            header: "क्या वाकई आपकी इसे करने की इच्छा है?",
+            yes: "हां",
+            no: "नहीं",
+        }
+
     },
 });
 
@@ -227,7 +243,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "FlipConfirm",
+        tgt: "flipconfirm",
         dictionary: dictionary,
     },
 
@@ -239,70 +255,11 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<Button {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<FlipConfirm {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
 
-// -------------------------------------------------------------
-// Variants
-// -------------------------------------------------------------
-// const AllVariantsTemplate = (args) => {
-//     const baseObj = {
-//         ...Object.assign({}, Default.args, args, {
-//             asFloated: "inline",
-//             withLabel: null,
-//             withIcon: null,
-//             withTranslation: null,
-//             withColor: null,
-//         }),
-//     };
-//     return (
-//         <div>
-//             <Button
-//                 {...Object.assign({}, baseObj, {
-//                     content: "Primary",
-//                     asVariant: "primary",
-//                 })}
-//             />{" "}
-//             <Button
-//                 {...Object.assign({}, baseObj, {
-//                     content: "Secondary",
-//                     asVariant: "secondary",
-//                 })}
-//             />{" "}
-//             <Button
-//                 {...Object.assign({}, baseObj, {
-//                     content: "Success",
-//                     asVariant: "success",
-//                 })}
-//             />{" "}
-//             <Button
-//                 {...Object.assign({}, baseObj, {
-//                     content: "Warning",
-//                     asVariant: "warning",
-//                 })}
-//             />{" "}
-//             <Button
-//                 {...Object.assign({}, baseObj, {
-//                     content: "Error",
-//                     asVariant: "error",
-//                 })}
-//             />{" "}
-//         </div>
-//     );
-// };
-// export const AllVariants = AllVariantsTemplate.bind({});
-// AllVariants.parameters = {
-//     docs: {
-//         description: {
-//             story: "5 variants are supported. Use as per purpose noted here.",
-//         },
-//         source: {
-//             code: `<Button asVariant="primary"/>`,
-//         },
-//     },
-// };
 
 // -------------------------------------------------------------
 // Icon Button
@@ -326,7 +283,7 @@ IconOnlyButton.parameters = {
                 "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of buttons or for standalone floating actions. Use isCircular to toggle the rounding.",
         },
         source: {
-            code: `<Button isCircular={true} withIcon={{ icon: "fas fa-sync-alt", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click to open this...",textColor: ""}}}/>`,
+            code: `<FlipConfirm isCircular={true} withIcon={{ icon: "fas fa-sync-alt", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click to open this...",textColor: ""}}}/>`,
         },
     },
 };
@@ -347,7 +304,7 @@ FluidButton.parameters = {
         },
     },
     source: {
-        code: `<Button isFluid={true}/>`,
+        code: `<FlipConfirm isFluid={true}/>`,
     },
 };
 
@@ -372,7 +329,7 @@ LabelledButton.parameters = {
                 "Use to provide a header callout (format:label) above the button. Or use as an information caption (format:caption) below the button. Or use as a tooltip (format:tooltip) to explain what the button does. The text here can be customized through the withTranslation option.",
         },
         source: {
-            code: `<Button withLabel={{format: "label",content: "Press to Confirm...",textColor: "#000000"}}}/>`,
+            code: `<FlipConfirm withLabel={{format: "label",content: "Press to Confirm...",textColor: "#000000"}}}/>`,
         },
     },
 };
@@ -392,7 +349,7 @@ LoadingButton.parameters = {
                 "Use to indicate a loading state for the button when it stops being clickable. The loading text can be customized with the withTranslation option through a common loading:'' value in the dictionary.",
         },
         source: {
-            code: `<Button isLoading={true}/>`,
+            code: `<FlipConfirm isLoading={true}/>`,
         },
     },
 };
@@ -417,7 +374,7 @@ ColoredButton.parameters = {
             story: "Use to override the standard colors of the button.",
         },
         source: {
-            code: `<Button withColor={{backgroundColor: "#ffc900", textColor: "#666666",hoverBackgroundColor: "#666666", hoverTextColor: "#ffc900"}}}/>`,
+            code: `<FlipConfirm withColor={{backgroundColor: "#ffc900", textColor: "#666666",hoverBackgroundColor: "#666666", hoverTextColor: "#ffc900"}}}/>`,
         },
     },
 };
@@ -442,7 +399,7 @@ AnimatedButton.parameters = {
                 "Use to animate the entry of the button with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<Button withAnimation={{animation: "collapse", duration: 0.5, delay: 0}}}/>`,
+            code: `<FlipConfirm withAnimation={{animation: "collapse", duration: 0.5, delay: 0}}}/>`,
         },
     },
 };
@@ -450,31 +407,35 @@ AnimatedButton.parameters = {
 // -------------------------------------------------------------
 // Translated Button
 // -------------------------------------------------------------
-export const TranslatedButton = Template.bind({});
-TranslatedButton.args = {
+export const TranslatedFlipButton = Template.bind({});
+TranslatedFlipButton.args = {
     ...Default.args,
     content: "Translated Button",
     withTranslation: {
         lang: "hi",
-        tgt: "FlipConfirm",
+        tgt: "flipconfirm",
         dictionary: dictionary,
     },
 };
-TranslatedButton.parameters = {
+TranslatedFlipButton.parameters = {
     docs: {
         description: {
             story:
                 "Use to change the language that the text appears in. To make this work for the button, add a button:{text,label} value to the dictionary.",
         },
         source: {
-            code: `<Button withTranslation={{lang: "hi", tgt: "button", dictionary: ${JSON.stringify(
+            code: `<FlipConfirm withTranslation={{lang: "hi", tgt: "flipconfirm", dictionary: ${JSON.stringify(
                 {
                     hi: {
                         loading: "बस एक मिनट...",
-                        button: {
+                        flipconfirm: {
                             text: "बटन",
                             label: "इसे बार-बार न दबाएं...",
+                            header: "क्या वाकई आपकी इसे करने की इच्छा है?",
+                            yes: "हां",
+                            no: "नहीं",
                         },
+                
                     },
                 }
             )}}}}/>`,

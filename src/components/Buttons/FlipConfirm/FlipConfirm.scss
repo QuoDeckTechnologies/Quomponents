@@ -6,16 +6,16 @@ $closed-height: 80px;
 $opened-width: 280px;
 $opened-height: 140px;
 
-.fc-btn.is-open~.description {
+.qui-fc-btn.is-open~.description {
   opacity: 0;
 }
 
-.fc-btn-main {
+.qui-fc-btn-main {
   width: 280px;
   margin: 0 auto;
 }
 
-.fc-btn {
+.qui-fc-btn {
   position: relative;
   transition: width $transition-duration $transition-easing,
     height $transition-duration $transition-easing,
@@ -25,12 +25,12 @@ $opened-height: 140px;
   text-align: center;
 }
 
-.fc-btn.is-open .fc-btn-front {
+.qui-fc-btn.is-open .qui-fc-btn-front {
   pointer-events: none;
   line-height: $opened-height;
 }
 
-.fc-btn-back {
+.qui-fc-btn-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -41,12 +41,12 @@ $opened-height: 140px;
   transition: box-shadow $transition-duration ease;
 }
 
-.fc-btn-back p {
+.qui-fc-btn-back p {
   margin-top: 27px;
   margin-bottom: 25px;
 }
 
-.fc-btn-back button {
+.qui-fc-btn-back button {
   padding: 6px 12px;
   margin: 0 5px;
   font-size: 0.85em;
@@ -61,33 +61,37 @@ $opened-height: 140px;
 
 }
 
-.fc-btn.is-open .fc-btn-back {
+.qui-fc-btn-back.is-enable{
+  display: block;
+}
+
+.qui-fc-btn.is-open .fc-btn-back {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-.fc-btn[data-direction="left"] .fc-btn-back,
-.fc-btn[data-direction="right"] .fc-btn-back {
+.qui-fc-btn[data-direction="left"] .qui-fc-btn-back,
+.qui-fc-btn[data-direction="right"] .qui-fc-btn-back {
   transform: translateZ(-2px) rotateY(180deg);
 }
 
-.fc-btn.is-open {
+.qui-fc-btn.is-open {
   width: $opened-width;
   height: $opened-height;
 }
 
-.fc-btn[data-direction="top"].is-open {
+.qui-fc-btn[data-direction="top"].is-open {
   transform: rotateX(180deg);
 }
 
-.fc-btn[data-direction="right"].is-open {
+.qui-fc-btn[data-direction="right"].is-open {
   transform: rotateY(180deg);
 }
 
-.fc-btn[data-direction="bottom"].is-open {
+.qui-fc-btn[data-direction="bottom"].is-open {
   transform: rotateX(-180deg);
 }
 
-.fc-btn[data-direction="left"].is-open {
+.qui-fc-btn[data-direction="left"].is-open {
   transform: rotateY(-180deg);
 }
 
