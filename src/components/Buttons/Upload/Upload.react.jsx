@@ -1,20 +1,8 @@
-import React, { useState, useRef } from "react";
+// Import npm packages
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
-import {
-    getTranslation,
-} from "../../../common/javascripts/helpers";
-
 import Button from "../Button/Button.react";
-import ButtonGroup from '@mui/material/ButtonGroup';
-
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../../common/stylesheets/common.css";
-import "./FlipConfirm.scss";
-import "../../../common/stylesheets/overrule.scss";
-
-
-
-FlipConfirm.propTypes = {
+Upload.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -32,6 +20,21 @@ FlipConfirm.propTypes = {
     */
     isCircular: PropTypes.bool,
 
+    /**
+    Use to define the file type which is supported to upload.
+    Suppoted file types: [video/*, image/*, .mp3, .docx, .xls, .xlsx, .zip, .qdf, .pdf]
+  */
+    withFile: PropTypes.shape({
+        type: PropTypes.string,
+        capture: PropTypes.string
+    }),
+
+    /**
+     Use to toggle a multiple to upload more than one files
+   */
+    isMultiple: PropTypes.bool,
+
+    //=====================================
     // Quommon props
     //=======================================
 
@@ -68,15 +71,6 @@ FlipConfirm.propTypes = {
     Use to align content within the component container
     */
     asAligned: PropTypes.oneOf(["left", "right", "center"]),
-
-    /**
-    Use to define confirmation modal header text and success and failure button text
-    */
-    withConfirmation: PropTypes.shape({
-        header: PropTypes.string,
-        yes: PropTypes.string,
-        no: PropTypes.string,
-    }),
 
     /**
     Use to override component colors and behavior
@@ -116,6 +110,7 @@ FlipConfirm.propTypes = {
             "slideUp",
             "slideLeft",
             "slideRight",
+            ""
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
@@ -150,15 +145,15 @@ FlipConfirm.propTypes = {
     Button component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
-
-
 };
 
-FlipConfirm.defaultProps = {
+Upload.defaultProps = {
     // Component Specific props
     //=======================================
     asEmphasis: "contained",
     isCircular: false,
+    withFile: null,
+    isMultiple: false,
 
     // Quommon props
     //=======================================
@@ -168,8 +163,6 @@ FlipConfirm.defaultProps = {
     asFloated: "none",
     asAligned: "center",
 
-
-    withConfirmation: null,
     withColor: null,
     withIcon: null,
     withLabel: null,
@@ -182,102 +175,81 @@ FlipConfirm.defaultProps = {
     isLoading: false,
 };
 
-/**
-## Notes
-- The design system used for this component is Material UI (@mui/material)
-- The animation system used for this component is Framer Motion (framer-motion)
-- Pass inline styles to the component to override any of the component css
-- Or add custom css in overrule.scss to override the component css
-- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
-**/
+export default function Upload(props) {
+    const fileInputRef = useRef();
 
-export default function FlipConfirm(props) {
-    let withConfirmation = props.withConfirmation ? props.withConfirmation : null;
-    const [mode, setMode] = useState(false);
-    const buttonRef = useRef(null);
+    function handleChange(e) {
+        // get the files
+        let files = e.target.files;
 
-    // Click Handlers
-    // ----------------------
-    function frontClick(event) {
-        var mx = event.clientX - buttonRef.current.offsetLeft,
-            my = event.clientY - buttonRef.current.offsetTop;
+        if (files[0].type.match('image.*')
+            || files[0].type.match('video.*')
+            || files[0].type.match('audio.*')
+            || files[0].type.match('application.*')
+        ) {
+            // Process each file
+            var allFiles = [];
+            for (var i = 0; i < files.length; i++) {
+                let file = files[i];
 
-        var w = buttonRef.current.offsetWidth,
-            h = buttonRef.current.offsetHeight;
+                // Make new FileReader
+                let reader = new FileReader();
 
-        var directions = [
-            { id: "top", x: w / 2, y: 0 },
-            { id: "right", x: w, y: h / 2 },
-            { id: "bottom", x: w / 2, y: h },
-            { id: "left", x: 0, y: h / 2 },
-        ];
+                // Convert the file to base64 text
+                reader.readAsDataURL(file);
 
-        directions.sort(function (a, b) {
-            return distance(mx, my, a.x, a.y) - distance(mx, my, b.x, b.y);
-        });
+                // on reader load somthing...
+                reader.onload = () => {
+                    // Make a fileInfo Object
+                    let fileInfo = {
+                        name: file.name,
+                        type: file.type,
+                        size: Math.round(file.size / 1000) + " kB",
+                        base64: reader.result,
+                        file: file
+                    };
 
-        buttonRef.current.setAttribute("data-direction", directions.shift().id);
-        setMode(true);
+                    // Push it to the state
+                    allFiles.push(fileInfo);
+
+                    // If all files have been processed
+                    if (allFiles.length === files.length) {
+                        // Apply Callback function
+                        if (props.isMultiple) props.onClick(allFiles);
+                        else props.onClick(allFiles[0]);
+                    }
+                };
+
+            }
+        }
+        else {
+            let file = e.target.files[0]
+            props.onClick(file);
+        }
     }
 
-    function yesClick() {
-        setMode(false);
-        props.onClick();
-    }
-    function noClick() {
-        setMode(false);
+
+    function uploadFile() {
+        return fileInputRef.current.click()
     }
 
-    //-------------------------------------------------------------------
-    // 1. Translate the text objects in case their is a dictionary provided
-    //-------------------------------------------------------------------
-    if (
-        props.withTranslation &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        let tObj = getTranslation(props.withTranslation);
-        withConfirmation = Object.assign(withConfirmation, tObj)
-    }
-
+    // ========================= Render Function =================================
 
     return (
-        <div className={`qui-fc-btn-main`}>
-            <div className={`qui-fc-btn ${mode ? "is-open" : ""}`} ref={buttonRef}>
-                <div className={`qui-fc-btn-back ${mode ? "is-enable" : "qui is-hidden"}`}>
-                    <p>{props.withConfirmation.header}</p>
-                    <ButtonGroup>
-                        <Button
-                            asEmphasis={props.asEmphasis}
-                            asVariant="error"
-                            onClick={yesClick}
-                        >
-                            {props.withConfirmation.yes}
-                        </Button>
-                        <Button
-                            asEmphasis="outlined"
-                            asVariant="primary"
-                            onClick={noClick}
-                        >
-                            {props.withConfirmation.no}
-                        </Button>
-                    </ButtonGroup>
-                </div>
-                <Button
-                    {...props}
-                    onClick={frontClick}
-                >
-                </Button>
-            </div>
+        <div>
+            <input
+                ref={fileInputRef}
+                type="file"
+                onChange={handleChange}
+                multiple={props.isMultiple}
+                accept={props.withFile?.type}
+                capture={props.withFile?.capture}
+                hidden
+            />
+            <Button
+                {...props}
+                onClick={uploadFile}
+            />
         </div>
     );
-
-    // Utility Functions
-    // ----------------------
-
-    function distance(x1, y1, x2, y2) {
-        var dx = x1 - x2;
-        var dy = y1 - y2;
-        return Math.sqrt(dx * dx + dy * dy);
-    }
 }
