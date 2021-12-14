@@ -78,26 +78,25 @@ $position: absolute;
 .qui-slider-label {
     background-color: #e10f0f;
     color: #ffffff;
-    height: 20%;
+    height: 13%;
     width: 28%;
     position: absolute;
     font-size: 12px;
     right: 0;
-    transform: translate(63px, -87px) rotate(30deg);
+    transform: translate(93px, -99px) rotate(30deg);
 }
 
 .qui .qui-label-text {
-    padding: 17px 0;
-    font-size: 1em;
-    justify-content: center;
+    text-align: center;
     font-weight: bold;
+    padding-top: 4px;
 }
 
 .qui .qui-slide {
     align-items: center;
     margin: 0 auto;
     z-index: 1;
-    transform: scale(0.9);
+    transform: scale(0.8);
     transition: transform 300ms;
     opacity: 0.5;
     z-index: -1;
@@ -105,7 +104,7 @@ $position: absolute;
 }
 
 .qui .qui-activeSlide {
-    transform: scale(1);
+    transform: scale(0.9);
     align-items: center;
     opacity: 1;
 }
@@ -139,12 +138,7 @@ $position: absolute;
 
     .qui-slider-label {
         width: 76%;
-        transform: translate(46px, -65px) rotate(30deg);
-    }
-
-    .qui .qui-label-text {
-        padding: 12px 0;
-        margin-left: 60px;
+        transform: translate(100px, -60px) rotate(42deg);
     }
 
 }

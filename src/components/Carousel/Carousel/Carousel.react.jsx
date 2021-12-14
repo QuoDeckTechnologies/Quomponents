@@ -349,9 +349,14 @@ export default function Carousel(props) {
                             </div >
                         )
                         }
-                        <div className={`${index === currentIndex ? "qui qui-carousel qui-slider-label" : "is-hidden"} ${quommonClasses.childClasses}`} >
-                            <div className="qui-label-text">{d?.label}</div>
-                        </div>
+                        {d?.label && d.label.trim() &&
+                            <div
+                                className={`${index === currentIndex ? "qui qui-carousel qui-slider-label" : "is-hidden"} ${quommonClasses.childClasses}`}
+                                style={Object.assign({}, colors, props.style)}
+                            >
+                                <div className="qui-label-text">{d.label}</div>
+                            </div>
+                        }
                     </div >
                 );
             }
