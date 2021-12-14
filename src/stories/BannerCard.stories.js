@@ -2,16 +2,9 @@ import React from "react";
 import BannerCard from "../components/Carousel/BannerCard/BannerCard.react";
 
 const dictionary = JSON.stringify({
-    // en: {
-    //     loading: "Please wait...",
-    //     button: {
-    //         text: "Button",
-    //         label: "Do not press this repeatedly...",
-    //     },
-    // },
     hi: {
         loading: "बस एक मिनट...",
-        button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+        bannercard: { title: "बातचीत कक्ष", subTitle: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
     },
 });
 
@@ -62,7 +55,6 @@ export default {
                 category: "as-Flags",
             },
         },
-
         withColor: {
             table: {
                 category: "with-Params",
@@ -180,7 +172,7 @@ Default.args = {
         label: "New",
         box: {
             title: "The Negotiation Room",
-            subTitle: "Play the contest and win to earn Flipkart vouchers"
+            subTitle: "Play the contest and win to earn Flipkart vouchers."
         }
     },
     asVariant: "primary",

@@ -18,6 +18,17 @@ BannerCard.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+    /**
+    Banner Card data should be passed in data field and it is required field
+    */
+    data: PropTypes.shape({
+        image: PropTypes.string,
+        label: PropTypes.string,
+        box: PropTypes.shape({
+            title: PropTypes.string,
+            subTitle: PropTypes.string
+        })
+    }).isRequired,
 
     //=======================================
     // Quommon props
@@ -51,6 +62,7 @@ BannerCard.propTypes = {
     Use to align content within the component container
     */
     asAligned: PropTypes.oneOf(["left", "right", "center"]),
+
     /**
     Use to override component colors and behavior
     */
@@ -100,6 +112,7 @@ BannerCard.propTypes = {
         tgt: PropTypes.string,
         dictionary: PropTypes.string,
     }),
+
     /**
     Use to show/hide the component
     */
@@ -108,12 +121,20 @@ BannerCard.propTypes = {
     Use to toggle the component taking the full width of the parent container
     */
     isFluid: PropTypes.bool,
+    /**
+    Use to toggle a loading state for the component
+    */
+    isLoading: PropTypes.bool,
+    /**
+    Button component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 };
 
 BannerCard.defaultProps = {
     // Component Specific props
     //=======================================
-
+    data: {},
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -129,9 +150,9 @@ BannerCard.defaultProps = {
 
     isHidden: false,
     isFluid: true,
+    isFluid: false,
+    isLoading: false,
 };
-
-
 
 /**
 ## Notes
@@ -144,6 +165,8 @@ BannerCard.defaultProps = {
 export default function BannerCard(props) {
 
     let { data } = props;
+    let boxHeader = data.box?.title;
+    let boxContent = data.box?.subTitle;
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -166,6 +189,8 @@ export default function BannerCard(props) {
         props.withTranslation.lang !== "en"
     ) {
         let tObj = getTranslation(props.withTranslation, "bannercard");
+        boxHeader = tObj.title;
+        boxContent = tObj.subTitle;
     }
 
     //-------------------------------------------------------------------
@@ -177,19 +202,23 @@ export default function BannerCard(props) {
 
     return (
         <div className={`qui ${quommonClasses.parentClasses} qui-slider-card`}
-            style={{ backgroundImage: `url(${data.image})` }}>
-            {data.box && (
-                <div
+            style={{ backgroundImage: data ? `url(${data.image})` : "" }}
+            onClick={props.onClick}
+        >
+            {data && data.box && (
+                <motion.div
+                    initial={animate.from}
+                    animate={animate.to}
                     className={`qui-carousel qui-slider-card-box ${quommonClasses.childClasses}`}
                     style={Object.assign({}, colors, props.style)}
                 >
                     <div className="qui-slider-card-box-header">
-                        {data.box?.title}
+                        {boxHeader}
                     </div>
                     <div className="qui-slider-card-box-content">
-                        {data.box?.subTitle}
+                        {boxContent}
                     </div>
-                </div>
+                </motion.div>
             )}
         </div>
     );

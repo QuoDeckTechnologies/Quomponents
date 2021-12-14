@@ -334,19 +334,16 @@ export default function Carousel(props) {
                         style={cardStyle}
                     >
                         {d.box && (
-                            <div
+                            <motion.div
+                                initial={animate.from}
+                                animate={animate.to}
                                 className={`qui qui-carousel qui-slider-card-box ${quommonClasses.childClasses}`}
                                 style={Object.assign({}, colors, props.style)}
                             >
-                                <motion.div
-                                    initial={animate.from}
-                                    animate={animate.to}
-                                    className="qui-slider-box-content"
-                                >
-                                    <b className="line-clamp">{d.box.title}</b>
-                                    <div className="line-clamp">{d.box.subTitle}</div>
-                                </motion.div>
-                            </div >
+
+                                <b className="line-clamp">{d.box.title}</b>
+                                <div className="line-clamp">{d.box.subTitle}</div>
+                            </motion.div>
                         )
                         }
                         {d?.label && d.label.trim() &&

@@ -6,14 +6,12 @@
     // left: 0px;
     // top: 0px;
     border-radius: 15px;
-
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: 3px 3px 3px 2px #d1ccccc9;
 }
 
 .qui-slider-card-box {
-
     position: absolute;
     width: 187px;
     height: 60px;
@@ -25,14 +23,13 @@
 }
 
 .qui-slider-card-box-header {
-    position: absolute;
     font-weight: bold;
     font-size: 20px;
     line-height: 22px;
+    margin-bottom: 6px;
 }
 
 .qui-slider-card-box-content {
-    position: absolute;
     width: 200px;
     height: 50px;
     left: 4%;
