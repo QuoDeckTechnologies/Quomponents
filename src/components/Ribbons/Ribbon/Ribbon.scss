@@ -1,0 +1,22 @@
+.qui .parent {
+    overflow: hidden;
+    width: 20vw;
+    height: 250px;
+    position: relative;
+  }
+  
+  .qui .ribbon {
+    margin: 0;
+    padding: 0;
+    padding:15px 0;
+    top:0;
+    left:0;
+    transform: translateX(-30%) translateY(100px) rotate(-43deg);
+    transform-origin: top left;
+  }
+
+  .qui.float-right .parent .ribbon {
+    transform: translateX(49%) translateY(-47px) rotate(43deg);
+    top: 0;
+    right: 0;
+  }

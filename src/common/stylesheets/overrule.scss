@@ -7,7 +7,8 @@ $warning-text:#000000;
 
 .qui .qui-btn.variant-primary,
 .qui .qui-loader.variant-primary,
-.qui .qui-carousel.variant-primary {
+.qui .qui-carousel.variant-primary,
+.qui .qui-ribbon.variant-primary {
     background-color: $primary-color;
     color: $primary-text;
 
@@ -25,7 +26,8 @@ $warning-text:#000000;
 
 .qui .qui-btn.variant-secondary,
 .qui .qui-loader.variant-secondary,
-.qui .qui-carousel.variant-secondary {
+.qui .qui-carousel.variant-secondary,
+.qui .qui-ribbon.variant-secondary {
     background-color: $secondary-color;
     color: $secondary-text;
 
@@ -43,7 +45,8 @@ $warning-text:#000000;
 
 .qui .qui-btn.variant-warning,
 .qui .qui-loader.variant-warning,
-.qui .qui-carousel.variant-warning {
+.qui .qui-carousel.variant-warning,
+.qui .qui-ribbon.variant-warning {
     background-color: $warning-color;
     color: $warning-text;
 
