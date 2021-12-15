@@ -9,9 +9,6 @@ on:
       - udhav
       - nawab
       - ganesh
-      - Apurva
-      - Shobha
-      - Prabhat
 # What the action will do
 jobs:
   test:
