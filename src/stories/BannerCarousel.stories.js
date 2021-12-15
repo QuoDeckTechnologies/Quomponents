@@ -1,23 +1,16 @@
 import React from "react";
-import Carousel from "../components/Carousel/Carousel/Carousel.react";
+import BannerCarousel from "../components/Carousel/BannerCarousel/BannerCarousel.react";
 
 const dictionary = JSON.stringify({
-    // en: {
-    //     loading: "Please wait...",
-    //     button: {
-    //         text: "Button",
-    //         label: "Do not press this repeatedly...",
-    //     },
-    // },
     hi: {
         loading: "बस एक मिनट...",
-        button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+        bannercard: { title: "बातचीत कक्ष", subTitle: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
     },
 });
 
 export default {
-    title: "Design System/Carousel/Carousel",
-    component: Carousel,
+    title: "Design System/Carousel/BannerCarousel",
+    component: BannerCarousel,
     argTypes: {
         data: [{
             image: "",
@@ -34,35 +27,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asPadded: {
-            control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asFloated: {
-            control: "select",
-            options: ["left", "right", "none", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-
         withColor: {
             table: {
                 category: "with-Params",
@@ -72,26 +36,6 @@ export default {
                     textColor: "",
                     hoverBackgroundColor: "",
                     hoverTextColor: "",
-                },
-            },
-        },
-        withIcon: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    icon: "",
-                    size: "",
-                    position: "left",
-                },
-            },
-        },
-        withLabel: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    format: "label",
-                    content: "",
-                    textColor: "",
                 },
             },
         },
@@ -122,18 +66,7 @@ export default {
                 defaultValue: false,
             },
         },
-        isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        isFluid: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
+
         isLoading: {
             table: {
                 category: "is-Toggles",
@@ -171,7 +104,7 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <Carousel {...args} />;
+const Template = (args) => <BannerCarousel {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     data: [{
@@ -186,22 +119,19 @@ Default.args = {
         image: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg",
         label: "Recommended",
         box: {
-            title: "The Negotiation Room",
+            title: "What is Lorem Ipsum",
             subTitle: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+        }
+    },
+    {
+        image: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg",
+        label: "New",
+        box: {
+            title: "The Negotiation Room",
+            subTitle: "Play the contest and win to earn Flipkart vouchers."
         }
     }],
     asVariant: "primary",
-    asSize: "normal",
-    asFloated: "none",
-    asPadded: "normal",
-    asAligned: "center",
-
-    withLabel: {
-        format: "caption",
-        content: "Do not press this button repeatedly...",
-        textColor: "#000000",
-    },
-    withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -219,16 +149,13 @@ Default.args = {
         tgt: "button",
         dictionary: dictionary,
     },
-
-    isDisabled: false,
     isLoading: false,
     isHidden: false,
-    isFluid: false,
 };
 Default.parameters = {
     docs: {
         source: {
-            code: `<Carousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<BannerCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
