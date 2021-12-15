@@ -1,14 +1,17 @@
 # Name of our action
-name: 'Chromatic'
+name: "Chromatic"
 # The event that will trigger the action
-on: 
-  push :
-     branches-ignore:
-     - subhangi
-     - krishna
-     - udhav
-     - nawab
-     - ganesh
+on:
+  push:
+    branches-ignore:
+      - subhangi
+      - krishna
+      - udhav
+      - nawab
+      - ganesh
+      - Apurva
+      - Shobha
+      - Prabhat
 # What the action will do
 jobs:
   test:
