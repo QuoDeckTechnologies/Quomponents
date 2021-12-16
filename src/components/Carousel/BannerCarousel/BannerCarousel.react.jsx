@@ -149,7 +149,8 @@ export default function BannerCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: true
+        autoplay: false,
+        centerPadding: "7.5%"
     };
 
     let { data } = props;

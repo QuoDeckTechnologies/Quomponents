@@ -117,18 +117,18 @@ Default.args = {
     },
     {
         image: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg",
-        label: "Recommended",
-        box: {
-            title: "What is Lorem Ipsum",
-            subTitle: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-        }
-    },
-    {
-        image: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg",
         label: "New",
         box: {
             title: "The Negotiation Room",
             subTitle: "Play the contest and win to earn Flipkart vouchers."
+        }
+    },
+    {
+        image: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg",
+        label: "Recommended",
+        box: {
+            title: "What is Lorem Ipsum?",
+            subTitle: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         }
     }],
     asVariant: "primary",
