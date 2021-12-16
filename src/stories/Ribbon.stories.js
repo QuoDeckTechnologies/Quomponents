@@ -15,11 +15,12 @@ const dictionary = JSON.stringify({
     },
 });
 
+
 export default {
     title: "Design System/Ribbons/Ribbon",
     component: Ribbon,
     argTypes: {
-        data: {
+        asEmphasis: {
             control: "select",
             options: ["New", "Premium", "Restricted", "Free"],
             table: {
@@ -151,7 +152,9 @@ export default {
         (story) => (
             <div
                 style={{
-                    width: "100%",
+                    border: "1px solid #000",
+                    height: "40vh",
+                    width: "99%",
                     textAlign: "center",
                     fontSize: "1.25em",
                 }}
@@ -167,13 +170,14 @@ export default {
     },
 };
 
+
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
 const Template = (args) => <Ribbon {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    data: "New",
+    asEmphasis: "New",
     asVariant: "primary",
     asSize: "normal",
     asFloated: "none",
@@ -208,6 +212,22 @@ Default.args = {
     isLoading: false,
     isHidden: false,
     isFluid: false,
+    decorators: [
+        (story) => (
+            <div
+                style={{
+                    border: "1px solid #000",
+                    image: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg",
+                    height: "20vh",
+                    width: "100%",
+                    textAlign: "center",
+                    fontSize: "1.25em",
+                }}
+            >
+                {story()}
+            </div>
+        ),
+    ],
 };
 Default.parameters = {
     docs: {

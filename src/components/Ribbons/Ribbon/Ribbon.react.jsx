@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 import {
     getQuommons,
     getTranslation,
@@ -19,7 +18,7 @@ Ribbon.propTypes = {
     /**
     Button Text has to be in content or passed as children to the component. Is optional if you only want an icon.
     */
-    data: PropTypes.oneOf([
+    asEmphasis: PropTypes.oneOf([
         "New",
         "Premium",
         "Restricted",
@@ -139,12 +138,10 @@ Ribbon.propTypes = {
 };
 
 Ribbon.defaultProps = {
-    // Component Specific props
-    //=======================================
-    data: "New",
 
     // Quommon props
     //=======================================
+    asEmphasis: "New",
     asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
@@ -173,8 +170,8 @@ function getColors(colors, emphasis, hovered) {
             color: colors.hoverTextColor,
         }
         : {
-            background: emphasis !== "contained" ? "transparent" : colors.backgroundColor,
-            color: emphasis !== "contained" ? colors.backgroundColor : colors.textColor,
+            background: colors.backgroundColor,
+            color: colors.textColor,
         }
     if (!hovered && emphasis === "outlined")
         colorStyle.borderColor = colors.backgroundColor
@@ -269,11 +266,11 @@ export default function Ribbon(props) {
     // ========================= Render Function =================================
 
     return (
-        <div className={`qui${quommonClasses.parentClasses}`}>
-            <div className="parent" style={Object.assign({}, colors, props.style)}>
-                <div className={`ribbon qui-ribbon ${quommonClasses.childClasses}`}>
-                    {props.data}
-                </div>
+        <div className={`qui ${quommonClasses.parentClasses} qui-ribbon-parent`}>
+            <div className={`qui-ribbon ${quommonClasses.childClasses}`}
+                style={Object.assign({}, colors, props.style)}
+            >
+                {props.asEmphasis}
             </div>
         </div>
     );

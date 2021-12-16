@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import { motion } from "framer-motion";
+import Ribbon from "../../Ribbons/Ribbon/Ribbon.react";
 
 import {
     getQuommons,
@@ -162,6 +163,9 @@ export default function BannerCard(props) {
             style={{ backgroundImage: data ? `url(${data.image})` : "" }}
             onClick={props.onClick}
         >
+            <Ribbon asFloated="right"
+                asEmphasis="New" />
+
             {data && data.box && (
                 <motion.div
                     initial={animate.from}
