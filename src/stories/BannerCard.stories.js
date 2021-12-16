@@ -59,13 +59,13 @@ export default {
                 },
             },
         },
-        isHidden: {
+        isDisabled: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
             },
         },
-        isLoading: {
+        isHidden: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
@@ -118,7 +118,7 @@ Default.args = {
             subTitle: "Play the contest and win to earn Flipkart vouchers."
         }
     },
-    asVariant: "primary",
+    asVariant: "warning",
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -137,7 +137,7 @@ Default.args = {
         dictionary: dictionary,
     },
 
-    isLoading: false,
+    isDisabled: false,
     isHidden: false,
 };
 Default.parameters = {

@@ -6,10 +6,6 @@
   height: 40vh;
   width: 99%;
   margin: 0px 1px;
-
-  &.deactive-card {
-    transform: scaleY(0.9);
-  }
 }
 
 .slick-dots li button:before {
@@ -23,6 +19,20 @@
 
 .slick-dots li {
   margin: 0 -4px;
+}
+
+.slick-slide {
+  transform: scaleY(0.8);
+  .qui-slider-card-box {
+    display: none;
+  }
+
+  &.slick-active {
+    transform: scaleY(1);
+    .qui-slider-card-box {
+      display: inline-block;
+    }
+  }
 }
 
 @media only screen and (orientation: portrait) and (max-width: 1024px) {

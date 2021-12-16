@@ -34,7 +34,8 @@ BannerCarousel.propTypes = {
         box: PropTypes.shape({
             title: PropTypes.string,
             subTitle: PropTypes.string
-        })
+        }),
+        props: PropTypes.object
     })).isRequired,
 
     // Quommon props
@@ -87,14 +88,14 @@ BannerCarousel.propTypes = {
     }),
 
     /**
+    Use to enable/disable the component
+    */
+    isDisabled: PropTypes.bool,
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
 
-    /**
-    Use to toggle a loading state for the component
-    */
-    isLoading: PropTypes.bool,
 
     /**
     Banner Carousel component must have the onClick function passed as props
@@ -114,8 +115,8 @@ BannerCarousel.defaultProps = {
     withAnimation: null,
     withTranslation: null,
 
-    isHidden: false,
-    isLoading: false,
+    isDisabled: false,
+    isHidden: false
 };
 
 /**
@@ -127,14 +128,8 @@ BannerCarousel.defaultProps = {
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function BannerCarousel(props) {
-    const [currentIndex, setCurrentIndex] = useState(0)
     const sliderRef = useRef();
-    function afterChangeHandler(i) {
-        setCurrentIndex((i ? i : 0))
-    }
-    //-------------------------------------------------------------------
-    // 1. Set the classes
-    //-------------------------------------------------------------------
+
     let quommonClasses = getQuommons(props);
     if (props.isCircular)
         quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
@@ -143,14 +138,16 @@ export default function BannerCarousel(props) {
     var settings = {
         dots: true,
         speed: 500,
-        initialSlide: 0,
+        initialSlide: 1,
         slidesToScroll: 1,
         slidesToShow: 1,
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: false,
-        centerPadding: "7.5%"
+        autoplay: true,
+        pauseOnHover: true,
+        centerPadding: "7.5%",
+        swipeToSlide: true,
     };
 
     let { data } = props;
@@ -159,22 +156,18 @@ export default function BannerCarousel(props) {
 
     return (
         <div>
-
-            <Slider ref={sliderRef} {...settings} afterChange={afterChangeHandler}>
+            <Slider ref={sliderRef} {...settings}>
                 {_.map(data, (content, index) => {
-                    console.log("content : ", content);
-                    let slideData = {
-                        image: content.image
-                    };
-                    if (currentIndex === index)
-                        slideData.box = content.box;
+                    let finalProps = { ...props };
+                    if (content.props)
+                        finalProps = { ...finalProps, ...content.props };
                     return (
                         <div className="qui-slide-container">
                             <div
                                 key={"slider-" + index + Math.random()}
-                                className={`qui-slide ${currentIndex === index ? `` : `deactive-card`}`}
+                                className={`qui-slide`}
                             >
-                                <BannerCard {...props} data={slideData} />
+                                <BannerCard {...finalProps} data={content} />
                             </div>
                         </div>
                     );

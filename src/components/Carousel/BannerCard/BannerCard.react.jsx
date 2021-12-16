@@ -81,14 +81,14 @@ BannerCard.propTypes = {
     }),
 
     /**
+    Use to enable/disable the component
+    */
+    isDisabled: PropTypes.bool,
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
 
-    /**
-    Use to toggle a loading state for the component
-    */
-    isLoading: PropTypes.bool,
     /**
     Button component must have the onClick function passed as props
     */
@@ -107,8 +107,8 @@ BannerCard.defaultProps = {
     withAnimation: null,
     withTranslation: null,
 
-    isHidden: false,
-    isLoading: false,
+    isDisabled: false,
+    isHidden: false
 };
 
 /**
