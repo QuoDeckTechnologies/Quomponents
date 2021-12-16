@@ -1,0 +1,72 @@
+.tilt{
+    transform: rotate(10deg);
+    transition: all 0.1s linear;
+}
+
+.qui .loading i{
+    margin-right: 0.25em;
+    animation: loader 2s linear infinite;
+}
+
+.is-circular-btn{
+    border-radius: 50%;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform : rotate(360deg)
+    }
+}
+
+// tiny normal default big huge massive
+
+
+// .tiny{
+//     font-size: 10px;
+// }
+// .small {
+//     font-size: 20px;
+// }
+// .normal{
+//     font-size: 30px;
+// }
+// .default{
+//     // font-size: 30px;
+// }
+// .big{
+//     font-size: 40px;
+// }
+// .huge{
+//     font-size: 50px;
+// }
+// .massive{
+//     font-size: 60px;
+// }
+
+.qui .size-massive {
+    font-size: 3.5em;
+    line-height: 1.2;
+}
+.qui .size-huge {
+    font-size: 3em;
+    line-height: 1.2;
+}
+.qui .size-big {
+    font-size: 2.5em;
+    line-height: 1.2;
+}
+.qui .size-normal {
+    font-size: 2em;
+    line-height: 1.2;
+}
+.qui .size-small {
+    font-size: 1.5em;
+    line-height: 1.2;
+}
+.qui .size-tiny {
+    font-size: 1em;
+    line-height: 1.2;
+}
