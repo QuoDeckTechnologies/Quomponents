@@ -169,11 +169,13 @@ export default function BannerCard(props) {
             onClick={props.onClick}
         >
             {data && data.label && data.label !== "" &&
-                <Ribbon
-                    asFloated="right"
-                    asEmphasis={data.label}
-                    withTranslation={props.withTranslation}
-                />
+                <div className="qui-card-label">
+                    <Ribbon
+                        asFloated="right"
+                        asEmphasis={data.label}
+                        withTranslation={props.withTranslation}
+                    />
+                </div>
             }
             {data && data.box && (
                 <motion.div

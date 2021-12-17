@@ -27,10 +27,18 @@
     display: none;
   }
 
+  .qui-card-label {
+    display: none;
+  }
+
   &.slick-active {
     transform: scaleY(1);
     .qui-slider-card-box {
       display: inline-block;
+    }
+
+    .qui-card-label {
+      display: inline;
     }
   }
 }
