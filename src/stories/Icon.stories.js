@@ -177,18 +177,18 @@ export default {
 
 
 //----------------------------------------------------------
-// Default
+// Home
 //---------------------------------------------------------
 const Template = (args) => <Icon {...args}/>;
-export const Default = Template.bind({});
-Default.args = {
-    content: "Default Button",
-    asEmphasis: "contained",
+export const Home = Template.bind({});
+Home.args = {
+    content: "Home",
+    asEmphasis: "text",
     isCircular: false,
 
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "none",
+    asFloated: "inline",
     asPadded: "normal",
     asAligned: "center",
 
@@ -197,7 +197,7 @@ Default.args = {
         content: "Do not press this button repeatedly...",
         textColor: "#000000",
     },
-    withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
+    withIcon: { icon: "fas fa-globe", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -221,10 +221,116 @@ Default.args = {
     isHidden: false,
     isFluid: false,
 };
-Default.parameters = {
+Home.parameters = {
     docs: {
         source: {
-            code: `<Button {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<Button {...${JSON.stringify(Home.args, null, 2)}}/>`,
         },
     },
 };
+
+//----------------------------------------------------------
+// Tiny Home
+//---------------------------------------------------------
+
+export const TinyHome = Template.bind({});
+TinyHome.args = {
+    content: "TinyHome",
+    asEmphasis: "contained",
+    isCircular: false,
+
+    asVariant: "primary",
+    asSize: "tiny",
+    asFloated: "inline",
+    asPadded: "normal",
+    asAligned: "center",
+
+    withLabel: {
+        format: "caption",
+        content: "Do not press this button repeatedly...",
+        textColor: "#000000",
+    },
+    withIcon: { icon: "fas fa-home", size: "1em", position: "left" },
+    withColor: {
+        backgroundColor: "",
+        accentColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+    },
+    withAnimation: {
+        animation: "fade",
+        duration: 0.5,
+        delay: 0,
+    },
+    // withTranslation: {
+    //     lang: "en",
+    //     tgt: "button",
+    //     dictionary: dictionary,
+    // },
+
+    isDisabled: false,
+    isLoading: false,
+    isHidden: false,
+    isFluid: false,
+};
+TinyHome.parameters = {
+    docs: {
+        source: {
+            code: `<Button {...${JSON.stringify(TinyHome.args, null, 2)}}/>`,
+        },
+    },
+};
+
+//----------------------------------------------------------
+// Document
+//---------------------------------------------------------
+export const Victory = Template.bind({});
+Victory.args = {
+    format:"popover",
+    content: "Victory",
+    asEmphasis: "text",
+    isCircular: false,
+
+    asVariant: "primary",
+    asSize: "big",
+    asFloated: "inline",
+    asPadded: "normal",
+    asAligned: "center",
+
+    withLabel: {
+        format: "caption",
+        content: "Do not press this button repeatedly...",
+        textColor: "#000000",
+    },
+    withIcon: { icon: "fab fa-angellist", size: "1Victorym", position: "left" },
+    withColor: {
+        backgroundColor: "",
+        accentColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+    },
+    // withAnimation: {
+    //     animation: "zoom",
+    //     duration: 0.5,
+    //     delay: 0,
+    // },
+    // withTranslation: {
+    //     lang: "en",
+    //     tgt: "button",
+    //     dictionary: dictionary,
+    // },
+
+    isDisabled: false,
+    isLoading: false,
+    isHidden: false,
+    isFluid: false,
+};
+Victory.parameters = {
+    docs: {
+        source: {
+            code: `<Button {...${JSON.stringify(Victory.args, null, 2)}}/>`,
+        },
+    },
+}

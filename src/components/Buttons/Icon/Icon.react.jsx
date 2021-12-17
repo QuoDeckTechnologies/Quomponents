@@ -1,7 +1,7 @@
 // Import npm packages
 import React, { useState ,useEffect } from "react";
 import PropTypes from "prop-types";
-import { Button as MUIBTn } from "@mui/material";
+import { Button as MUIBTn, getAccordionUtilityClass } from "@mui/material";
 import { motion } from "framer-motion";
 import {
     getQuommons,
@@ -14,7 +14,7 @@ import "../../../common/stylesheets/common.css";
 import "./Icon.scss";
 import "../../../common/stylesheets/overrule.scss";
 import { Typography } from "@mui/material";
-Button.propTypes = {
+Icon.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -144,7 +144,7 @@ Button.propTypes = {
     onClick: PropTypes.func.isRequired,
 };
 
-Button.defaultProps = {
+Icon.defaultProps = {
     // Component Specific props
     //=======================================
     asEmphasis: "contained",
@@ -170,7 +170,7 @@ Button.defaultProps = {
     isLoading: false,
 };
 
-export default function Button(props){
+export default function Icon(props){
     const[tilt,setTilt] = useState(false)
     useEffect(() => {
         console.log(tilt)
@@ -181,22 +181,29 @@ export default function Button(props){
         setTimeout(()=>{
             setTilt(false)
         },300)
+        // props.onClick()
+    }
+    const check = () => {
+        // console.log("this")
+        props.onClick()
     }
 
+    let quommonClasses = getQuommons(props);
+    if(props.isCircular)
+    quommonClasses.childClasses += `is-circular ${props.content === "" && props.withIcon ? "is-only-icon": ""}`;
+
+    // check();
+    const animate = getAnimation(props.withAnimation);
+
+    //change in code not using the button anymore
     return (
-        <div className='qui'>
-            <MUIBTn
-                variant = {props.asEmphasis}
-                color ={props.asVariant}
-                disable = {props.isDisabled}
-                size = {props.asSize}
-                onClick = {()=>handleTilt()}
-                >
-                    <div className={`${tilt? 'qui tilt' : 'qui notilt'} qui-home-btn`}>
-                        <i className ="fas fa-user"></i>
-                        </div>
-                </MUIBTn>
-                <Typography color = {'text.secondary'}>User</Typography>
-        </div>
+        <motion.div
+            initial={animate.from}
+            animate={animate.to}
+            className={`qui ${quommonClasses.parentClasses}`}
+        >
+            <div onClick={handleTilt} className={`qui qui-btn ${quommonClasses.childClasses} ${quommonClasses.parentClasses} ${props.asEmphasis} ${props.asVariant}`}><div className ={`${tilt ? 'tilt':'notilt'} ${quommonClasses.childClasses}`}>{!props.isLoading && <i className={props.withIcon.icon}></i>}{props.isLoading && <div className="qui loading"><i className="fas fa-spinner"></i>PLEASE WAIT...</div>}</div>{!props.isLoading && <div className = {quommonClasses.childClasses}><p className= "qui-text">{props.content}</p></div>}
+                </div>
+        </motion.div>
     )
 }
