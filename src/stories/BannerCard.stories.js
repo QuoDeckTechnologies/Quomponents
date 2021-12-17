@@ -6,10 +6,10 @@ const dictionary = JSON.stringify({
         loading: "बस एक मिनट...",
         bannercard: { title: "बातचीत कक्ष", subTitle: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
         ribbon: {
-            New: "नया",
-            Restricted: "प्रतिबंधित",
-            Premium: "अधिमूल्य",
-            Free: "नि: शुल्क"
+            new: "नया",
+            restricted: "प्रतिबंधित",
+            premium: "अधिमूल्य",
+            free: "नि: शुल्क"
         }
     },
 });

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { motion } from "framer-motion";
 import Ribbon from "../../Ribbons/Ribbon/Ribbon.react";
 
@@ -25,10 +24,10 @@ BannerCard.propTypes = {
     data: PropTypes.shape({
         image: PropTypes.string,
         label: PropTypes.oneOf([
-            "New",
-            "Premium",
-            "Restricted",
-            "Free"
+            "new",
+            "premium",
+            "restricted",
+            "free"
         ]),
         box: PropTypes.shape({
             title: PropTypes.string,

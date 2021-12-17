@@ -10,7 +10,12 @@ const dictionary = JSON.stringify({
     //     },
     // },
     hi: {
-        ribbon: { text: ["मुफ़्त", "प्रतिबंधित"] },
+        ribbon: {
+            new: "नया",
+            restricted: "प्रतिबंधित",
+            premium: "अधिमूल्य",
+            free: "नि: शुल्क"
+        }
     },
 });
 
@@ -21,42 +26,14 @@ export default {
     argTypes: {
         asEmphasis: {
             control: "select",
-            options: ["New", "Premium", "Restricted", "Free"],
+            options: ["new", "premium", "restricted", "free"],
             table: {
                 category: "as-Flags",
             },
         },
-        asVariant: {
-            control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        // asPadded: {
-        //     control: "select",
-        //     options: ["fitted", "compact", "normal", "relaxed"],
-        //     table: {
-        //         category: "as-Flags",
-        //     },
-        // },
         asFloated: {
             control: "select",
-            options: ["left", "right", "none", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
+            options: ["left", "right"],
             table: {
                 category: "as-Flags",
             },
@@ -71,36 +48,6 @@ export default {
                     textColor: "",
                     hoverBackgroundColor: "",
                     hoverTextColor: "",
-                },
-            },
-        },
-        withIcon: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    icon: "",
-                    size: "",
-                    position: "left",
-                },
-            },
-        },
-        withLabel: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    format: "label",
-                    content: "",
-                    textColor: "",
-                },
-            },
-        },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
                 },
             },
         },
@@ -121,39 +68,14 @@ export default {
                 defaultValue: false,
             },
         },
-        isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        isFluid: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        isLoading: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
-            },
-        },
     },
     decorators: [
         (story) => (
             <div
                 style={{
                     border: "1px solid #000",
-                    height: "60px",
-                    width: "147px",
+                    height: "14vhpx",
+                    width: "100%",
                     textAlign: "center",
                 }}
             >
@@ -176,18 +98,8 @@ const Template = (args) => <Ribbon {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     asEmphasis: "प्रतिबंधित",
-    asVariant: "primary",
-    // asSize: "normal",
-    asFloated: "none",
-    asPadded: "normal",
-    asAligned: "center",
+    asFloated: "left",
 
-    withLabel: {
-        format: "caption",
-        content: "Do not press this button repeatedly...",
-        textColor: "#000000",
-    },
-    withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -195,21 +107,13 @@ Default.args = {
         hoverBackgroundColor: "",
         hoverTextColor: "",
     },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
     withTranslation: {
         lang: "hi",
         tgt: "ribbon",
         dictionary: dictionary,
     },
 
-    isDisabled: false,
-    isLoading: false,
     isHidden: false,
-    isFluid: false,
 };
 Default.parameters = {
     docs: {

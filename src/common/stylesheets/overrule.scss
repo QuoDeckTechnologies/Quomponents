@@ -1,9 +1,17 @@
-$primary-color:#ed6e6e;
-$primary-text:#ffffff;
-$secondary-color:#3e587a;
-$secondary-text:#ffffff;
-$warning-color:#ffbf00;
-$warning-text:#000000;
+$primary-color: #ed6e6e;
+$primary-text: #ffffff;
+$secondary-color: #3e587a;
+$secondary-text: #ffffff;
+$warning-color: #ffbf00;
+$warning-text: #000000;
+$new-ribbon-color: #35690b;
+$new-ribbon-text: #ffffff;
+$premium-ribbon-color: #61386f;
+$premium-ribbon-text: #ffffff;
+$restricted-ribbon-color: #ff6347;
+$restricted-ribbon-text: #ffffff;
+$free-ribbon-color: #0067a5;
+$free-ribbon-text: #ffffff;
 
 .qui .qui-btn.variant-primary,
 .qui .qui-loader.variant-primary,
@@ -77,4 +85,21 @@ $warning-text:#000000;
 
 .qui .variant-warning-text {
     color: $warning-color;
+}
+
+.qui .new {
+    background-color: $new-ribbon-color;
+    color: $new-ribbon-text;
+}
+.qui .premium {
+    background-color: $premium-ribbon-color;
+    color: $premium-ribbon-text;
+}
+.qui .restricted {
+    background-color: $restricted-ribbon-color;
+    color: $restricted-ribbon-text;
+}
+.qui .free {
+    background-color: $free-ribbon-color;
+    color: $free-ribbon-text;
 }

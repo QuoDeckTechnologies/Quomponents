@@ -1,7 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
-import { motion } from "framer-motion";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -31,10 +30,10 @@ BannerCarousel.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({
         image: PropTypes.string,
         label: PropTypes.oneOf([
-            "New",
-            "Premium",
-            "Restricted",
-            "Free"
+            "new",
+            "premium",
+            "restricted",
+            "free"
         ]),
         box: PropTypes.shape({
             title: PropTypes.string,

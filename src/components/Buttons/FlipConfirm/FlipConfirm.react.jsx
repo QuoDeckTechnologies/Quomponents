@@ -192,7 +192,7 @@ FlipConfirm.defaultProps = {
 **/
 
 export default function FlipConfirm(props) {
-    let withConfirmation = props.withConfirmation ? props.withConfirmation : null;
+    let withConfirmation = props.withConfirmation;
     const [mode, setMode] = useState(false);
     const buttonRef = useRef(null);
 
@@ -245,21 +245,21 @@ export default function FlipConfirm(props) {
         <div className={`qui-fc-btn-main`}>
             <div className={`qui-fc-btn ${mode ? "is-open" : ""}`} ref={buttonRef}>
                 <div className={`qui-fc-btn-back ${mode ? "is-enable" : "qui is-hidden"}`}>
-                    <p>{props.withConfirmation.header}</p>
+                    <p>{withConfirmation.header}</p>
                     <ButtonGroup>
                         <Button
                             asEmphasis={props.asEmphasis}
                             asVariant="error"
                             onClick={yesClick}
                         >
-                            {props.withConfirmation.yes}
+                            {withConfirmation.yes}
                         </Button>
                         <Button
                             asEmphasis="outlined"
                             asVariant="primary"
                             onClick={noClick}
                         >
-                            {props.withConfirmation.no}
+                            {withConfirmation.no}
                         </Button>
                     </ButtonGroup>
                 </div>

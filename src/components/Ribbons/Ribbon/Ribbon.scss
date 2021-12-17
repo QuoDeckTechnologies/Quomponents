@@ -7,12 +7,14 @@
 
 .qui .qui-ribbon {
   position: relative;
-  transform: translate(-49%, 59%) rotate(-45deg);
+  transform: translate(-48%, 59%) rotate(-45deg);
   transform-origin: top center;
+  text-transform: capitalize;
+  padding: 0.6em 1.2em;
 }
 
 .qui.float-right .qui-ribbon {
-  transform: translate(49%, 59%) rotate(45deg);
+  transform: translate(48%, 59%) rotate(45deg);
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
@@ -33,7 +35,7 @@
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   .qui .qui-ribbon {
-    transform: translate(-48%, 73%) rotate(-45deg);
+    transform: translate(-47%, 73%) rotate(-45deg);
   }
   .qui.float-right .qui-ribbon {
     transform: translate(48%, 62%) rotate(45deg);
