@@ -9,6 +9,9 @@ on:
       - udhav
       - nawab
       - ganesh
+      - rahul
+      - rohit
+      - piyush
 # What the action will do
 jobs:
   test:
