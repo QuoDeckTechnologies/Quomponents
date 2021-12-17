@@ -30,12 +30,16 @@ BannerCarousel.propTypes = {
         */
     data: PropTypes.arrayOf(PropTypes.shape({
         image: PropTypes.string,
-        label: PropTypes.string,
+        label: PropTypes.oneOf([
+            "New",
+            "Premium",
+            "Restricted",
+            "Free"
+        ]),
         box: PropTypes.shape({
             title: PropTypes.string,
             subTitle: PropTypes.string
         }),
-        props: PropTypes.object
     })).isRequired,
 
     // Quommon props
@@ -158,16 +162,13 @@ export default function BannerCarousel(props) {
         <div>
             <Slider ref={sliderRef} {...settings}>
                 {_.map(data, (content, index) => {
-                    let finalProps = { ...props };
-                    if (content.props)
-                        finalProps = { ...finalProps, ...content.props };
                     return (
                         <div className="qui-slide-container">
                             <div
                                 key={"slider-" + index + Math.random()}
                                 className={`qui-slide`}
                             >
-                                <BannerCard {...finalProps} data={content} />
+                                <BannerCard {...props} data={content} />
                             </div>
                         </div>
                     );

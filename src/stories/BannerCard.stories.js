@@ -5,6 +5,12 @@ const dictionary = JSON.stringify({
     hi: {
         loading: "बस एक मिनट...",
         bannercard: { title: "बातचीत कक्ष", subTitle: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
+        ribbon: {
+            New: "नया",
+            Restricted: "प्रतिबंधित",
+            Premium: "अधिमूल्य",
+            Free: "नि: शुल्क"
+        }
     },
 });
 
@@ -84,7 +90,6 @@ export default {
                 style={{
                     width: "100%",
                     textAlign: "center",
-                    fontSize: "1.25em",
                 }}
             >
                 {story()}
@@ -112,7 +117,7 @@ export const Default = Template.bind({});
 Default.args = {
     data: {
         image: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg",
-        label: "New",
+        label: "Restricted",
         box: {
             title: "The Negotiation Room",
             subTitle: "Play the contest and win to earn Flipkart vouchers."

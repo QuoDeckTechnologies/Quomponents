@@ -24,11 +24,16 @@ BannerCard.propTypes = {
     */
     data: PropTypes.shape({
         image: PropTypes.string,
-        label: PropTypes.string,
+        label: PropTypes.oneOf([
+            "New",
+            "Premium",
+            "Restricted",
+            "Free"
+        ]),
         box: PropTypes.shape({
             title: PropTypes.string,
             subTitle: PropTypes.string
-        })
+        }),
     }).isRequired,
 
     //=======================================
@@ -159,13 +164,17 @@ export default function BannerCard(props) {
     // ========================= Render Function =================================
 
     return (
-        <div className={`qui ${quommonClasses.parentClasses} qui-slider-card`}
+        <div className={`qui ${quommonClasses.parentClasses}`}
             style={{ backgroundImage: data ? `url(${data.image})` : "" }}
             onClick={props.onClick}
         >
-            <Ribbon asFloated="right"
-                asEmphasis="New" />
-
+            {data && data.label && data.label !== "" &&
+                <Ribbon
+                    asFloated="right"
+                    asEmphasis={data.label}
+                    withTranslation={props.withTranslation}
+                />
+            }
             {data && data.box && (
                 <motion.div
                     initial={animate.from}

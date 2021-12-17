@@ -206,6 +206,7 @@ function getIcon(iconObj, position, iconOnly) {
 **/
 export default function Ribbon(props) {
     const [hovered, setHovered] = useState(false);
+    let ribbonText = props.asEmphasis;
 
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -244,12 +245,8 @@ export default function Ribbon(props) {
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
-        let tObj = getTranslation(props.withTranslation);
-        if (tObj && props.content && props.content !== "") {
-            buttonText = tObj.text;
-        }
-        if (labelContent && tObj?.label) labelContent.content = tObj.label;
-        loadingText = getTranslation(props.withTranslation, "loading");
+        let tobj = getTranslation(props.withTranslation, "ribbon");
+        ribbonText = tobj[props.asEmphasis] ? tobj[props.asEmphasis] : props.asEmphasis;
     }
 
     //-------------------------------------------------------------------
@@ -270,7 +267,7 @@ export default function Ribbon(props) {
             <div className={`qui-ribbon ${quommonClasses.childClasses}`}
                 style={Object.assign({}, colors, props.style)}
             >
-                {props.asEmphasis}
+                {ribbonText}
             </div>
         </div>
     );
