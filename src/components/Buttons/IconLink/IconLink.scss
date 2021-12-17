@@ -1,0 +1,56 @@
+.tilt{
+    transform: rotate(10deg);
+    transition: all 0.1s ease;
+}
+
+.qui {
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.qui .loading i{
+    margin-right: 0.25em;
+    animation: loader 2s linear infinite;
+}
+
+.qui.loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// .is-circular{
+//     border-radius: 5px;
+// }
+
+.qui-text{
+    margin: 0;
+}
+
+.size-tiny .fas{
+    font-size: 1em;
+}
+.size-small .fas{
+    font-size: 1.25em;
+}
+.size-normal .fas{
+    font-size: 1.50em;
+}
+.size-big .fas{
+    font-size: 1.75em;
+}
+.size-huge .fas{
+    font-size: 2em;
+}
+.size-massive .fas{
+    font-size: 2.25em;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform : rotate(360deg)
+    }
+}
