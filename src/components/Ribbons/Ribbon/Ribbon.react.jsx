@@ -266,7 +266,7 @@ export default function Ribbon(props) {
     // ========================= Render Function =================================
 
     return (
-        <div className={`qui ${quommonClasses.parentClasses} qui-ribbon-parent`}>
+        <div className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`qui-ribbon ${quommonClasses.childClasses}`}
                 style={Object.assign({}, colors, props.style)}
             >

@@ -1,16 +1,41 @@
-.qui-ribbon-parent {
+.qui {
   width: 100%;
   height: 100%;
-  display: inline-block;
+  font-size: 0.8em;
+  text-align: center;
 }
 
 .qui .qui-ribbon {
-  min-width: 62%;
-  transform: translate(-39%, 54%) rotate(-45deg);
-  position: absolute;
+  position: relative;
+  transform: translate(-49%, 59%) rotate(-45deg);
+  transform-origin: top center;
 }
 
 .qui.float-right .qui-ribbon {
-  min-width: 62%;
-  transform: translate(85%, 56%) rotate(45deg);
+  transform: translate(49%, 59%) rotate(45deg);
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .qui .qui-ribbon {
+    transform: translate(-46%, 59%) rotate(-45deg);
+  }
+  .qui.float-right .qui-ribbon {
+    transform: translate(46%, 56%) rotate(45deg);
+  }
+}
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .qui .qui-ribbon {
+    transform: translate(-48%, 53%) rotate(-45deg);
+  }
+  .qui.float-right .qui-ribbon {
+    transform: translate(47%, 62%) rotate(45deg);
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .qui .qui-ribbon {
+    transform: translate(-48%, 73%) rotate(-45deg);
+  }
+  .qui.float-right .qui-ribbon {
+    transform: translate(48%, 62%) rotate(45deg);
+  }
 }

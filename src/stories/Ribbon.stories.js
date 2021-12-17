@@ -10,8 +10,7 @@ const dictionary = JSON.stringify({
     //     },
     // },
     hi: {
-        loading: "बस एक मिनट...",
-        button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+        ribbon: { text: ["मुफ़्त", "प्रतिबंधित"] },
     },
 });
 
@@ -41,13 +40,13 @@ export default {
                 category: "as-Flags",
             },
         },
-        asPadded: {
-            control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
-            table: {
-                category: "as-Flags",
-            },
-        },
+        // asPadded: {
+        //     control: "select",
+        //     options: ["fitted", "compact", "normal", "relaxed"],
+        //     table: {
+        //         category: "as-Flags",
+        //     },
+        // },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
@@ -153,10 +152,9 @@ export default {
             <div
                 style={{
                     border: "1px solid #000",
-                    height: "40vh",
-                    width: "99%",
+                    height: "60px",
+                    width: "147px",
                     textAlign: "center",
-                    fontSize: "1.25em",
                 }}
             >
                 {story()}
@@ -177,9 +175,9 @@ export default {
 const Template = (args) => <Ribbon {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    asEmphasis: "New",
+    asEmphasis: "प्रतिबंधित",
     asVariant: "primary",
-    asSize: "normal",
+    // asSize: "normal",
     asFloated: "none",
     asPadded: "normal",
     asAligned: "center",
@@ -203,8 +201,8 @@ Default.args = {
         delay: 0,
     },
     withTranslation: {
-        lang: "en",
-        tgt: "button",
+        lang: "hi",
+        tgt: "ribbon",
         dictionary: dictionary,
     },
 
@@ -212,22 +210,6 @@ Default.args = {
     isLoading: false,
     isHidden: false,
     isFluid: false,
-    decorators: [
-        (story) => (
-            <div
-                style={{
-                    border: "1px solid #000",
-                    image: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg",
-                    height: "20vh",
-                    width: "100%",
-                    textAlign: "center",
-                    fontSize: "1.25em",
-                }}
-            >
-                {story()}
-            </div>
-        ),
-    ],
 };
 Default.parameters = {
     docs: {
