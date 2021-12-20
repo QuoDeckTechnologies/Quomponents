@@ -74,7 +74,6 @@ export default {
             <div
                 style={{
                     border: "1px solid #000",
-                    height: "14vhpx",
                     width: "100%",
                     textAlign: "center",
                 }}
@@ -97,7 +96,7 @@ export default {
 const Template = (args) => <Ribbon {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    asEmphasis: "प्रतिबंधित",
+    asEmphasis: "restricted",
     asFloated: "left",
 
     withColor: {
@@ -108,7 +107,7 @@ Default.args = {
         hoverTextColor: "",
     },
     withTranslation: {
-        lang: "hi",
+        lang: "en",
         tgt: "ribbon",
         dictionary: dictionary,
     },

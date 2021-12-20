@@ -112,7 +112,7 @@ export default function Ribbon(props) {
         let tobj = getTranslation(props.withTranslation, "ribbon");
         ribbonText = tobj[props.asEmphasis] ? tobj[props.asEmphasis] : props.asEmphasis;
     }
-
+    
     // ========================= Render Function =================================
 
     return (
@@ -120,7 +120,7 @@ export default function Ribbon(props) {
             <div className={`qui-ribbon ${quommonClasses.childClasses} ${props.asEmphasis}`}
                 style={Object.assign({}, colors, props.style)}
             >
-                {ribbonText}
+                <span className="qui-ribbon-text">{ribbonText}</span>
             </div>
         </div>
     );
