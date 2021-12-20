@@ -16,7 +16,7 @@
 }
 
 .qui-ribbon-container .qui-ribbon-text {
-  font-size: 1.33em;
+  font-size: 0.9em;
   font-weight: bold;
   text-transform: capitalize;
 }
@@ -28,19 +28,16 @@
   .qui.float-right .qui-ribbon {
     transform: translate(44%, 71%) rotate(45deg);
   }
-  .qui-ribbon-container .qui-ribbon-text {
-    font-size: 1.2em;
-  }
 }
 @media only screen and (min-width: 481px) {
   .qui-ribbon-container .qui-ribbon {
     transform: translate(-47%, 53%) rotate(-45deg);
   }
   .qui.float-right .qui-ribbon {
-    transform: translate(45%, 73%) rotate(45deg);
+    transform: translate(46%, 73%) rotate(45deg);
   }
   .qui-ribbon-container .qui-ribbon-text {
-    font-size: 1.33em;
+    font-size: 1em;
   }
 }
 @media only screen and (min-width: 769px) {
@@ -48,21 +45,21 @@
     transform: translate(-47%, 58%) rotate(-45deg);
   }
   .qui.float-right .qui-ribbon {
-    transform: translate(47%, 58%) rotate(45deg);
+    transform: translate(45%, 91%) rotate(45deg);
   }
   .qui-ribbon-container .qui-ribbon-text {
-    font-size: 0.8333em;
+    font-size: 1em;
   }
 }
 
 @media only screen and (min-width: 1025px) {
   .qui-ribbon-container .qui-ribbon {
-    transform: translate(-47%, 58%) rotate(-45deg);
+    transform: translate(-46%, 71%) rotate(-45deg);
   }
   .qui.float-right .qui-ribbon {
-    transform: translate(47%, 58%) rotate(45deg);
+    transform: translate(46%, 82%) rotate(45deg);
   }
   .qui-ribbon-container .qui-ribbon-text {
-    font-size: 1.33em;
+    font-size: 1.25em;
   }
 }
