@@ -171,7 +171,7 @@ CardWithoutLabel.args = {
 CardWithoutLabel.parameters = {
     docs: {
         description: {
-            story: "We can pass image in url base64 format or pass an imported image.",
+            story: "We can pass image in url format, base64 format or pass an imported image.",
         },
         source: {
             code: `<BannerCard {...${JSON.stringify(CardWithoutLabel.args, null, 2)}}/>`,
