@@ -117,7 +117,7 @@ export const Default = Template.bind({});
 Default.args = {
     data: {
         image: "https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg",
-        label: "Restricted",
+        label: "restricted",
         box: {
             title: "The Negotiation Room",
             subTitle: "Play the contest and win to earn Flipkart vouchers."

@@ -26,7 +26,7 @@ BannerCarousel.propTypes = {
     //=======================================
     /**
     BannerCarousel data should be passed in data field and it is required field
-        */
+    */
     data: PropTypes.arrayOf(PropTypes.shape({
         image: PropTypes.string,
         label: PropTypes.oneOf([
@@ -99,7 +99,6 @@ BannerCarousel.propTypes = {
     */
     isHidden: PropTypes.bool,
 
-
     /**
     Banner Carousel component must have the onClick function passed as props
     */
@@ -132,11 +131,8 @@ BannerCarousel.defaultProps = {
 **/
 export default function BannerCarousel(props) {
     const sliderRef = useRef();
-
+    let { data } = props;
     let quommonClasses = getQuommons(props);
-    if (props.isCircular)
-        quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
-            }`;
 
     var settings = {
         dots: true,
@@ -152,9 +148,6 @@ export default function BannerCarousel(props) {
         centerPadding: "7.5%",
         swipeToSlide: true,
     };
-
-    let { data } = props;
-
     // ========================= Render Function =================================
 
     return (
