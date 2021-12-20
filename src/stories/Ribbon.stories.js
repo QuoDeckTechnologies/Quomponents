@@ -80,7 +80,7 @@ export default {
 const Template = (args) => <Ribbon {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    asEmphasis: "restricted",
+    asEmphasis: "new",
     asFloated: "left",
 
     withColor: {

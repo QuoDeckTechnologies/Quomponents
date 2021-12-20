@@ -39,6 +39,7 @@ BannerCarousel.propTypes = {
             title: PropTypes.string,
             subTitle: PropTypes.string
         }),
+        props: PropTypes.object
     })).isRequired,
 
     // Quommon props
@@ -143,7 +144,7 @@ export default function BannerCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: false,
+        autoplay: true,
         pauseOnHover: true,
         centerPadding: "7.5%",
         swipeToSlide: true,
@@ -154,13 +155,14 @@ export default function BannerCarousel(props) {
         <div className={`qui ${quommonClasses.parentClasses}`}>
             <Slider ref={sliderRef} {...settings}>
                 {_.map(data, (content, index) => {
+                    let finalProps = { ...props, ...content.props };
                     return (
                         <div className="qui-slide-container">
                             <div
                                 key={"slider-" + index + Math.random()}
                                 className={`qui-slide`}
                             >
-                                <BannerCard {...props} data={content} />
+                                <BannerCard {...finalProps} data={content} />
                             </div>
                         </div>
                     );
