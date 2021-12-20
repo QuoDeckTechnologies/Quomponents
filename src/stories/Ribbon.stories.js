@@ -4,8 +4,8 @@ import Ribbon from "../components/Ribbons/Ribbon/Ribbon.react";
 const dictionary = JSON.stringify({
     // en: {
     //     loading: "Please wait...",
-    //     button: {
-    //         text: "Button",
+    //     ribbon: {
+    //         text: "Ribbon",
     //         label: "Do not press this repeatedly...",
     //     },
     // },
@@ -44,10 +44,7 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
-                    accentColor: "",
                     textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
                 },
             },
         },
@@ -70,7 +67,7 @@ export default {
         },
     },
     parameters: {
-        componentSubtitle: "Displays a basic button for general-purpose use",
+        componentSubtitle: "Display a basic ribbon for general-purpose use",
         a11y: { disable: true },
         // controls: { expanded: true }
     },
@@ -88,10 +85,7 @@ Default.args = {
 
     withColor: {
         backgroundColor: "",
-        accentColor: "",
         textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
     },
     withTranslation: {
         lang: "en",
@@ -105,6 +99,63 @@ Default.parameters = {
     docs: {
         source: {
             code: `<Ribbon {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Floted Ribbon
+// -------------------------------------------------------------
+export const RightRibbon = Template.bind({});
+RightRibbon.args = {
+    ...Default.args,
+    asEmphasis: "premium",
+    asFloated: "right",
+};
+RightRibbon.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to float the ribbon",
+        },
+        source: {
+            code: `<Ribbon asFloated="right"/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Translated Ribbon
+// -------------------------------------------------------------
+export const TranslatedRibbon = Template.bind({});
+TranslatedRibbon.args = {
+    ...Default.args,
+    asEmphasis: "new",
+    withTranslation: {
+        lang: "hi",
+        tgt: "ribbon",
+        dictionary: dictionary,
+    },
+};
+TranslatedRibbon.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the ribbon label language.",
+        },
+        source: {
+            code: `<Ribbon withTranslation={{lang: "hi", tgt: "ribbon", dictionary: ${JSON.stringify(
+                {
+                    hi: {
+                        ribbon: {
+                            new: "नया",
+                            restricted: "प्रतिबंधित",
+                            premium: "अधिमूल्य",
+                            free: "नि: शुल्क"
+                        }
+                    },
+                }
+            )}}}}/>`,
         },
     },
 };
