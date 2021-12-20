@@ -132,7 +132,7 @@ BannerCarousel.defaultProps = {
 export default function BannerCarousel(props) {
     const sliderRef = useRef();
     let { data } = props;
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props, "banner-carousel");
 
     var settings = {
         dots: true,
@@ -143,7 +143,7 @@ export default function BannerCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: true,
+        autoplay: false,
         pauseOnHover: true,
         centerPadding: "7.5%",
         swipeToSlide: true,
@@ -151,7 +151,7 @@ export default function BannerCarousel(props) {
     // ========================= Render Function =================================
 
     return (
-        <div>
+        <div className={`qui ${quommonClasses.parentClasses}`}>
             <Slider ref={sliderRef} {...settings}>
                 {_.map(data, (content, index) => {
                     return (

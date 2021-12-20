@@ -132,7 +132,7 @@ export default function BannerCard(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props, "banner-card");
 
     //-------------------------------------------------------------------
     // 2. Set the component colors

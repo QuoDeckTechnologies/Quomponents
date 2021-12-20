@@ -94,7 +94,7 @@ export default function Ribbon(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props, "ribbon-container");
 
     //-------------------------------------------------------------------
     // 2. Set the component colors

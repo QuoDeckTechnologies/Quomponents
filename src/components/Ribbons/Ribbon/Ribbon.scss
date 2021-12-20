@@ -1,9 +1,9 @@
-.qui {
+.qui-ribbon-container {
   width: 100%;
   height: 100%;
 }
 
-.qui .qui-ribbon {
+.qui-ribbon-container .qui-ribbon {
   position: relative;
   transform: translate(-47%, 73%) rotate(-45deg);
   transform-origin: top center;
@@ -15,14 +15,14 @@
   transform: translate(47%, 73%) rotate(45deg);
 }
 
-.qui-ribbon-text {
+.qui-ribbon-container .qui-ribbon-text {
   font-size: 1em;
   font-weight: bold;
   text-transform: capitalize;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-  .qui .qui-ribbon {
+  .qui-ribbon-container .qui-ribbon {
     transform: translate(-46%, 59%) rotate(-45deg);
   }
   .qui.float-right .qui-ribbon {
@@ -30,7 +30,7 @@
   }
 }
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  .qui .qui-ribbon {
+  .qui-ribbon-container .qui-ribbon {
     transform: translate(-47%, 53%) rotate(-45deg);
   }
   .qui.float-right .qui-ribbon {
@@ -38,7 +38,7 @@
   }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .qui .qui-ribbon {
+  .qui-ribbon-container .qui-ribbon {
     transform: translate(-47%, 73%) rotate(-45deg);
   }
   .qui.float-right .qui-ribbon {
