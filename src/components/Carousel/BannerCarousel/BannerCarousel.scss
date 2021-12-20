@@ -1,4 +1,4 @@
-.qui {
+.qui-banner-carousel {
   overflow: inherit;
 }
 
@@ -13,10 +13,6 @@
 }
 
 .qui-banner-carousel .qui-slider-card-box {
-  display: none;
-}
-
-.qui-card-label {
   display: none;
 }
 
@@ -35,6 +31,10 @@
 
 .qui-banner-carousel .slick-slide {
   transform: scaleY(0.8);
+
+  .qui-card-label {
+    display: none;
+  }
 
   &.slick-active {
     transform: scaleY(1);
