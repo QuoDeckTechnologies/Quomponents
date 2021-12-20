@@ -69,19 +69,6 @@ export default {
             },
         },
     },
-    decorators: [
-        (story) => (
-            <div
-                style={{
-                    border: "1px solid #000",
-                    width: "100%",
-                    textAlign: "center",
-                }}
-            >
-                {story()}
-            </div>
-        ),
-    ],
     parameters: {
         componentSubtitle: "Displays a basic button for general-purpose use",
         a11y: { disable: true },
