@@ -1,59 +1,31 @@
-.qui .qui-btn {
-    min-width: 0;
-    cursor: pointer;
-    margin-top: 50px;
+.qui{
+    margin-top:10px;
 }
 
 .qui .qui-btn.is-circular {
-    border-radius: 50px;
+    border-radius: 50%;
 }
 
-.qui .qui-btn.is-circular.is-only-icon {
+.qui .qui-btn.is-circular {
     border-radius: 50%;
     padding: 8px;
 }
 
-.qui .qui-btn.is-circular.is-only-icon.size-big,
-.qui .qui-btn.is-circular.is-only-icon.size-huge {
+.qui .qui-btn.is-circular.size-big,
+.qui .qui-btn.is-circular.size-huge {
     padding: 16px;
 }
 
-.qui .qui-btn.is-circular.is-only-icon.size-massive {
+.qui .qui-btn.is-circular.size-massive {
     padding: 24px;
 }
 
-.qui .qui-label {
-    font-size: 1em;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
 
-.qui .qui-caption {
-    font-size: 0.85em;
-    margin-top: 5px;
-    margin-left: 3px;
-    font-style: normal;
-}
+.qui .tilt{
+        transform: rotate(10deg);
+        transition: all ease-in-out;
+    }
 
-.qui.is-loading .qui-icon {
-    display: none;
-}
 
-.qui .icon-loader {
-    margin-right: 10px;
-}
 
-.qui:not(.is-loading) .icon-loader {
-    display: none;
-}
 
-button{
-    border:none;
-    margin: 5px;
-}
-.icon:hover{
-
-    transform: rotate(5deg);
-
-}

@@ -1,19 +1,19 @@
 import React from "react";
-import Icon from "../components/Buttons/IconLink/IconLink.react";
+import IconLink from "../components/Buttons/IconLink/IconLink.react";
 
 const dictionary = JSON.stringify({
-  
+
     hi: {
         loading: "बस एक मिनट...",
-        icon: { label: "इसे बार-बार न दबाएं..." },
+        icon: { label: "होम आइकन" },
     },
 });
 
 export default {
     title: "Design System/Buttons/IconLink",
-    component: Icon,
+    component: IconLink,
     argTypes: {
-        //content: "Icon",
+
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
@@ -135,12 +135,7 @@ export default {
                 defaultValue: false,
             },
         },
-        isLoading: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
+
 
         onClick: {
             table: {
@@ -172,7 +167,7 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <Icon {...args} />;
+const Template = (args) => <IconLink {...args} />;
 export const FirstIcon = Template.bind({});
 FirstIcon.args = {
     asEmphasis: "contained",
@@ -186,21 +181,21 @@ FirstIcon.args = {
 
     withLabel: {
         format: "label",
-        content: "Share",
+        content: "Home",
         textColor: "#000000",
     },
-    withIcon: { icon: "fa fa-share", size: "2em"},
+    withIcon: { icon: "fa fa-home icon", size: "2em" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
         textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
+        hoverBackgroundColor: "gray",
+        hoverTextColor: "black",
     },
     withAnimation: {
-        // animation: "zoom",
-        // duration: 0.5,
-        // delay: 0,
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
     },
     withTranslation: {
         lang: "en",
@@ -209,17 +204,157 @@ FirstIcon.args = {
     },
 
     isDisabled: false,
-    isLoading: false,
     isHidden: false,
     isFluid: false,
 };
 FirstIcon.parameters = {
     docs: {
         source: {
-            code: `<Icon {...${JSON.stringify(FirstIcon.args, null, 2)}}/>`,
+            code: `<IconLink {...${JSON.stringify(FirstIcon.args, null, 2)}}/>`,
         },
     },
 };
+
+
+
+
+
+
+
+
+// // -------------------------------------------------------------
+// // Variants
+// // -------------------------------------------------------------
+// const AllVariantsTemplate = (args) => {
+//     const baseObj = {
+//         ...Object.assign({}, FirstIcon.args, args, {
+//             asFloated: "inline",
+//             withIcon: null,
+//             withTranslation: null,
+//             withColor: null,
+//         }),
+//     };
+//     return (
+//         <div>
+//             <IconLink
+//                 {...Object.assign({}, baseObj, {
+//                     content: "",
+//                     asVariant: "error",
+//                     withLabel: {
+//                         format: "caption",
+//                         content: "Left",
+//                         textColor: "#000000",
+//                     },
+//                 })}
+
+//             ><i className="fas fa-angle-double-left"></i></IconLink>{" "}{" "}
+//             <IconLink
+//                 {...Object.assign({}, baseObj, {
+//                     content: "",
+//                     asVariant: "primary",
+//                     withLabel: {
+//                         format: "caption",
+//                         content: "Home",
+//                         textColor: "#000000",
+
+//                     },
+//                 })}
+
+//             ><i className="fa fa-home"></i></IconLink>{" "}{" "}
+
+    
+//             <IconLink
+//                 {...Object.assign({}, baseObj, {
+//                     content: "",
+//                     asVariant: "primary",
+//                     withLabel: {
+//                         format: "caption",
+//                         content: "Share",
+//                         textColor: "#000000",
+//                     },
+//                 })}
+
+//             ><i className="fa fa-share"></i></IconLink>{" "}{" "}
+
+//             <IconLink
+//                 {...Object.assign({}, baseObj, {
+//                     content: "",
+//                     asVariant: "success",
+//                     withLabel: {
+//                         format: "caption",
+//                         content: "Right",
+//                         textColor: "#000000",
+//                     },
+//                 })}
+
+//             ><i className="fas fa-angle-double-right"></i></IconLink>{" "}{" "}
+
+
+//  </div>
+//     );
+// };
+// export const AllVariants = AllVariantsTemplate.bind({});
+// AllVariants.parameters = {
+//     docs: {
+//         description: {
+//             story: "5 variants are supported. Use as per purpose noted here.",
+//         },
+//         source: {
+//             code: `<IconLink asVariant="primary"/>`,
+//         },
+//     },
+// };
+
+
+
+
+
+// -------------------------------------------------------------
+// Colored Icon
+// -------------------------------------------------------------
+export const ColoredIcon = Template.bind({});
+ColoredIcon.args = {
+    ...FirstIcon.args,
+    withColor: {
+        backgroundColor: "black",
+        textColor: "white",
+        hoverBackgroundColor: "orange",
+        hoverTextColor: "black",
+    },
+};
+ColoredIcon.parameters = {
+    docs: {
+        description: {
+            story: "Use to override the standard colors of the Icon.",
+        },
+        source: {
+            code: `<Icon withColor={{backgroundColor: "black", textColor: "white",hoverBackgroundColor: "orange", hoverTextColor: "black"}}}/>`,
+        },
+    },
+};
+
+
+
+
+// -------------------------------------------------------------
+// Fluid Icon
+// -------------------------------------------------------------
+export const FluidIcon = Template.bind({});
+FluidIcon.args = {
+    ...FirstIcon.args,
+    isFluid: true,
+};
+FluidIcon.parameters = {
+    docs: {
+        description: {
+            story: "Typically used as the bottom of a modal or a container.",
+        },
+    },
+    source: {
+        code: `<IconLink isFluid={true}/>`,
+    },
+};
+
 
 
 // -------------------------------------------------------------
@@ -241,7 +376,7 @@ AnimatedIcon.parameters = {
                 "Use to animate the entry of the Icon with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<Icon withAnimation={{animation: "collapse", duration: 0., delay: 0}}}/>`,
+            code: `<IconLink withAnimation={{animation: "collapse", duration: 0., delay: 0}}}/>`,
         },
     },
 };
@@ -265,12 +400,12 @@ TranslatedIcon.parameters = {
                 "Use to change the language that the text appears in. To make this work for the Icon, add a Icon:{text,label} value to the dictionary.",
         },
         source: {
-            code: `<Icon withTranslation={{lang: "hi", tgt: "icon", dictionary: ${JSON.stringify(
+            code: `<IconLink withTranslation={{lang: "hi", tgt: "icon", dictionary: ${JSON.stringify(
                 {
                     hi: {
                         loading: "बस एक मिनट...",
                         icon: {
-                            label: "इसे बार-बार न दबाएं...",
+                            label: "होम आइकन",
                         },
                     },
                 }

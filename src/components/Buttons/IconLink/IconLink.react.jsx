@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 import {
     getQuommons,
@@ -14,7 +15,6 @@ import "../../../common/stylesheets/overrule.scss";
 
 IconLink.propTypes = {
 
-    // content: PropTypes.string,
 
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
 
@@ -90,7 +90,6 @@ IconLink.propTypes = {
 
     isFluid: PropTypes.bool,
 
-    isLoading: PropTypes.bool,
 
     onClick: PropTypes.func.isRequired,
 };
@@ -99,7 +98,7 @@ IconLink.defaultProps = {
     asEmphasis: "contained",
     isCircular: false,
 
-    asVariant: "primary",
+    asVariant: "warnimg",
     asSize: "normal",
     asPadded: "normal",
     asFloated: "none",
@@ -113,7 +112,6 @@ IconLink.defaultProps = {
     isHidden: false,
     isDisabled: false,
     isFluid: false,
-    isLoading: false,
 };
 
 function getLabel(labelObj, position) {
@@ -140,7 +138,7 @@ function getIcon(iconObj, position) {
     return (
         iconObj?.position === position && (
             <i
-                className={`qui-icon ${iconObj.icon}`}
+                className={`qui-btn ${iconObj.icon}`}
                 style={{ fontSize: iconObj.size }}
             ></i>
         )
@@ -148,12 +146,29 @@ function getIcon(iconObj, position) {
 }
 
 export default function IconLink(props) {
+
+
+    
+    const [tilt, setTilt] = useState(false)
+
+    useEffect(() => { console.log(tilt) }, [tilt])
+
+
+    const handleTilt = (e) => {
+        setTilt(true)
+        setTimeout(() => {
+            setTilt(false)
+        }, 1000)
+        //props.onclick(e)
+        console.log(props.withColor)
+
+    };
+
     const [hovered, setHovered] = useState(false);
 
     let quommonClasses = getQuommons(props);
     if (props.isCircular)
-        quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
-            }`;
+        quommonClasses.childClasses += ` is-circular`;
 
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
     let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
@@ -176,10 +191,10 @@ export default function IconLink(props) {
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
         loadingText = getTranslation(props.withTranslation, "loading");
     }
-
-
-
     const animate = getAnimation(props.withAnimation);
+
+
+
 
 
 
@@ -191,22 +206,27 @@ export default function IconLink(props) {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
+            <Tilt >
+                <button 
 
-            <button
-                variant={props.asEmphasis}
-                color={props.asVariant}
-                disabled={props.isDisabled}
-                className={`qui-btn icon ${quommonClasses.childClasses}`}
-                onClick={props.onClick}
-            >
-                <i className="icon-loader fa fa-spinner fa-spin"></i>
-                {getIcon(props.withIcon)}
-            </button>
+                    variant={props.asEmphasis}
+                    color={props.asVariant}
+                    className={`qui-btn ${quommonClasses.childClasses}`}
+                    style={Object.assign({}, colors, props.style)}
+                    onClick={props.onClick}
 
+                    onClick={(e) => handleTilt(e)}
+                >
+
+                    <div className={`${tilt ? 'tilt' : ''}`}>
+                        {getIcon(props.withIcon)}
+                    </div>
+                </button>
+            </Tilt>
 
             <div className="qui-label" style={labelStyle}>
                 {getLabel(labelContent, "label")}
             </div>
         </motion.div>
     );
-}
+};
