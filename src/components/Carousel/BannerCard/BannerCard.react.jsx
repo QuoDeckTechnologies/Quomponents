@@ -19,20 +19,18 @@ BannerCard.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Banner Card data should be passed in data field and it is required field
+    Banner Card data should be passed in content field and it is required field
     */
-    data: PropTypes.shape({
+    content: PropTypes.shape({
         image: PropTypes.string,
-        label: PropTypes.oneOf([
+        tag: PropTypes.oneOf([
             "new",
             "premium",
             "restricted",
             "free"
         ]),
-        box: PropTypes.shape({
-            title: PropTypes.string,
-            subTitle: PropTypes.string
-        }),
+        header: PropTypes.string,
+        content: PropTypes.string
     }).isRequired,
 
     //=======================================
@@ -103,7 +101,7 @@ BannerCard.propTypes = {
 BannerCard.defaultProps = {
     // Component Specific props
     //=======================================
-    data: {},
+    content: {},
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -126,9 +124,9 @@ BannerCard.defaultProps = {
 **/
 export default function BannerCard(props) {
 
-    let { data } = props;
-    let boxHeader = data.box?.title;
-    let boxContent = data.box?.subTitle;
+    let { content } = props;
+    let boxHeader = content?.header;
+    let boxContent = content?.content;
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -151,8 +149,8 @@ export default function BannerCard(props) {
         props.withTranslation.lang !== "en"
     ) {
         let tObj = getTranslation(props.withTranslation, "bannercard");
-        boxHeader = tObj.title;
-        boxContent = tObj.subTitle;
+        boxHeader = tObj.header;
+        boxContent = tObj.content;
     }
 
     //-------------------------------------------------------------------
@@ -161,22 +159,23 @@ export default function BannerCard(props) {
     const animate = getAnimation(props.withAnimation);
 
     // ========================= Render Function =================================
+    let showBox = boxHeader || boxContent;
 
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}
-            style={{ backgroundImage: data ? `url(${data.image})` : "" }}
+            style={{ backgroundImage: content ? `url(${content.image})` : "" }}
             onClick={props.onClick}
         >
-            {data && data.label && data.label !== "" &&
+            {content && content.tag && content.tag !== "" &&
                 <div className="qui-card-label">
                     <Ribbon
                         asFloated="right"
-                        asEmphasis={data.label}
+                        asEmphasis={content.tag}
                         withTranslation={props.withTranslation}
                     />
                 </div>
             }
-            {data && data.box && (
+            {content && showBox && (
                 <motion.div
                     initial={animate.from}
                     animate={animate.to}

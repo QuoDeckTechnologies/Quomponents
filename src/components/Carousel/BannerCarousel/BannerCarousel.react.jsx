@@ -25,20 +25,18 @@ BannerCarousel.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    BannerCarousel data should be passed in data field and it is required field
+    BannerCarousel data should be passed in content field and it is required field
     */
-    data: PropTypes.arrayOf(PropTypes.shape({
+    content: PropTypes.arrayOf(PropTypes.shape({
         image: PropTypes.string,
-        label: PropTypes.oneOf([
+        tag: PropTypes.oneOf([
             "new",
             "premium",
             "restricted",
             "free"
         ]),
-        box: PropTypes.shape({
-            title: PropTypes.string,
-            subTitle: PropTypes.string
-        }),
+        header: PropTypes.string,
+        content: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
 
@@ -109,7 +107,7 @@ BannerCarousel.propTypes = {
 BannerCarousel.defaultProps = {
     // Component Specific props
     //=======================================
-    data: [],
+    content: [],
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -132,7 +130,7 @@ BannerCarousel.defaultProps = {
 **/
 export default function BannerCarousel(props) {
     const sliderRef = useRef();
-    let { data } = props;
+    let { content } = props;
     let quommonClasses = getQuommons(props, "banner-carousel");
 
     var settings = {
@@ -154,15 +152,15 @@ export default function BannerCarousel(props) {
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}>
             <Slider ref={sliderRef} {...settings}>
-                {_.map(data, (content, index) => {
-                    let finalProps = { ...props, ...content.props };
+                {_.map(content, (c, index) => {
+                    let finalProps = { ...props, ...c.props };
                     return (
                         <div className="qui-slide-container">
                             <div
                                 key={"slider-" + index + Math.random()}
                                 className={`qui-slide`}
                             >
-                                <BannerCard {...finalProps} data={content} />
+                                <BannerCard {...finalProps} content={c} />
                             </div>
                         </div>
                     );

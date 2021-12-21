@@ -4,7 +4,7 @@ import BannerCard from "../components/Carousel/BannerCard/BannerCard.react";
 const dictionary = JSON.stringify({
     hi: {
         loading: "बस एक मिनट...",
-        bannercard: { title: "बातचीत कक्ष", subTitle: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
+        bannercard: { header: "बातचीत कक्ष", content: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
         ribbon: {
             new: "नया",
             restricted: "प्रतिबंधित",
@@ -18,13 +18,11 @@ export default {
     title: "Design System/Carousel/BannerCard",
     component: BannerCard,
     argTypes: {
-        data: {
+        content: {
             image: "",
-            label: "",
-            box: {
-                title: "",
-                subTitle: ""
-            }
+            tag: "",
+            header: "",
+            content: ""
         },
         asVariant: {
             control: "select",
@@ -97,7 +95,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a banner card with box for text and label",
+        componentSubtitle: "Displays a banner card with box for text and tag",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -118,13 +116,11 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    data: {
+    content: {
         image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        label: "restricted",
-        box: {
-            title: "The Negotiation Room",
-            subTitle: "Play the contest and win to earn Flipkart vouchers."
-        }
+        tag: "restricted",
+        header: "The Negotiation Room",
+        content: "Play the contest and win to earn Flipkart vouchers."
     },
     asVariant: "warning",
     withColor: {
@@ -159,13 +155,11 @@ Default.parameters = {
 export const CardWithoutLabel = Template.bind({});
 CardWithoutLabel.args = {
     ...Default.args,
-    data: {
+    content: {
         image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        label: "",
-        box: {
-            title: "The Negotiation Room",
-            subTitle: "Play the contest and win to earn Flipkart vouchers."
-        }
+        tag: "",
+        header: "The Negotiation Room",
+        content: "Play the contest and win to earn Flipkart vouchers."
     }
 };
 CardWithoutLabel.parameters = {
@@ -182,9 +176,9 @@ CardWithoutLabel.parameters = {
 export const CardWithoutBox = Template.bind({});
 CardWithoutBox.args = {
     ...Default.args,
-    data: {
+    content: {
         image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        label: "new"
+        tag: "new"
     }
 };
 CardWithoutBox.parameters = {
@@ -198,13 +192,11 @@ CardWithoutBox.parameters = {
 export const TranslatedCard = Template.bind({});
 TranslatedCard.args = {
     ...Default.args,
-    data: {
+    content: {
         image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        label: "new",
-        box: {
-            title: "The Negotiation Room",
-            subTitle: "Play the contest and win to earn Flipkart vouchers."
-        }
+        tag: "new",
+        header: "The Negotiation Room",
+        content: "Play the contest and win to earn Flipkart vouchers."
     },
     withTranslation: {
         lang: "hi",
