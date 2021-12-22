@@ -2,13 +2,6 @@ import React from "react";
 import IconLink from '../components/Buttons/IconLink/IconLink.react'
 
 const dictionary = JSON.stringify({
-    // en: {
-    //     loading: "Please wait...",
-    //     button: {
-    //         text: "Button",
-    //         label: "Do not press this repeatedly...",
-    //     },
-    // },
     hi: {
         loading: "बस एक मिनट...",
         button: { text: "",label: "होम" },
@@ -298,7 +291,7 @@ IconOnlyButton.args = {
     isCircular: true,
     withIcon: { icon: "fas fa-home", size: "1em", position: "left" },
     withLabel: {
-        format: "",
+        format: "caption",
         content: "",
         textColor: "",
     },

@@ -234,18 +234,7 @@ export default function Button(props) {
     const animate = getAnimation(props.withAnimation);
 
     //-------------------------------------------------------------------
-    // 3. Set the button text
-    //-------------------------------------------------------------------
-    let buttonText = props.content
-        ? props.content
-        : props.children
-        ? props.children
-        : "";
-    let iconOnly = buttonText === "";
-
-
-    //-------------------------------------------------------------------
-    // 4. Set the label/caption/popover and loading text
+    // 3. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel);
     let labelStyle = labelContent?.textColor
@@ -255,23 +244,19 @@ export default function Button(props) {
         : {};
 
     //-------------------------------------------------------------------
-    // 4. Translate the text objects in case their is a dictionary provided
+    // 5. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
-        let tObj = getTranslation(props.withTranslation);
-        if (tObj && props.content && props.content !== "") {
-            buttonText = tObj.text;
-        }
+        let tObj = getTranslation(props.withTranslation)
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
-
     }
 
     //-------------------------------------------------------------------
-    // 5. Set colors
+    // 6. Set colors
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
 
