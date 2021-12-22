@@ -47,6 +47,7 @@ $warning-text:#000000;
     &.emp-text {
         background-color: transparent;
         color: $warning-color;
+        margin:0;
     }
 
     &.emp-outlined {
