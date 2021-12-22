@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
     // },
     hi: {
         loading: "बस एक मिनट...",
-        button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+        button: { text: "",label: "होम" },
     },
 });
 
@@ -37,8 +37,7 @@ export default {
 
         asVariant: {
             control: "select",
-            // options: ["primary", "secondary", "success", "warning", "error"],
-            options: ["primary", "secondary", "warning"],
+            options: ["primary", "secondary", "success", "warning", "error"],
             table: {
                 category: "as-Flags",
             },
@@ -143,12 +142,6 @@ export default {
                 defaultValue: false,
             },
         },
-        isLoading: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
 
         onClick: {
             action: 'clicked',
@@ -164,7 +157,6 @@ export default {
                 style={{
                     width: "100%",
                     textAlign: "center",
-                    fontSize: "1.25em",
                 }}
             >
                 {story()}
@@ -172,9 +164,8 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a button",
+        componentSubtitle: "Displays a icon with a link",
         a11y: { disable: true },
-        // controls: { expanded: true }
     },
 };
 
@@ -184,7 +175,7 @@ export default {
 const Template = (args) => <IconLink {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: "Home",
+    content: "",
     asEmphasis: "text",
     isCircular: false,
 
@@ -214,13 +205,12 @@ Default.args = {
         dictionary: dictionary,
     },
     withLabel: {
-        format: "caption",
+        format: "label",
         content: "Home",
         textColor: "#000000",
     },
 
     isDisabled: false,
-    isLoading: false,
     isHidden: false,
     isFluid: false,
 
@@ -229,6 +219,235 @@ Default.parameters = {
     docs: {
         source: {
             code: `<Button {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Variants
+// -------------------------------------------------------------
+const AllVariantsTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            asFloated: "inline",
+            withLabel: null,
+            withTranslation: null,
+            withColor: null,
+            
+        }),
+    };
+    return (
+        <div>
+            <IconLink
+                {...Object.assign({}, baseObj, {
+                    asVariant: "primary",
+                    withIcon: { icon: "fas fa-home", size: "1em", position: "left" },
+
+                })}
+            />
+            <IconLink
+                {...Object.assign({}, baseObj, {
+                    asVariant: "secondary",
+                    withIcon: { icon: "fas fa-desktop", size: "1em", position: "left" },
+                })}
+            />
+            <IconLink
+                {...Object.assign({}, baseObj, {
+                    asVariant: "success",
+                    withIcon: { icon: "fas fa-address-book", size: "1em", position: "left" },
+                })}
+            />
+            <IconLink
+                {...Object.assign({}, baseObj, {
+                    asVariant: "warning",
+                    withIcon: { icon: "fas fa-address-card", size: "1em", position: "left" },
+                })}
+            />
+            <IconLink
+                {...Object.assign({}, baseObj, {
+                    asVariant: "error",
+                    withIcon: { icon: "fas fa-book-open", size: "1em", position: "left" },
+                })}
+            />
+        </div>
+    );
+};
+
+
+export const AllVariants = AllVariantsTemplate.bind({});
+AllVariants.parameters = {
+    docs: {
+        description: {
+            story: "5 variants are supported. Use as per purpose noted here.",
+        },
+        source: {
+            code: `<IconList asVariant="primary"/>`,
+        },
+    },
+};
+
+
+// -------------------------------------------------------------
+// Icon Button
+// -------------------------------------------------------------
+export const IconOnlyButton = Template.bind({});
+IconOnlyButton.args = {
+    ...Default.args,
+    content: "",
+    asEmphasis:"contained",
+    isCircular: true,
+    withIcon: { icon: "fas fa-home", size: "1em", position: "left" },
+    withLabel: {
+        format: "",
+        content: "",
+        textColor: "",
+    },
+};
+IconOnlyButton.parameters = {
+    docs: {
+        description: {
+            story:
+                "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of buttons or for standalone floating actions. Use isCircular to toggle the rounding.",
+        },
+        source: {
+            code: `<Button isCircular={true} withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click to share this...",textColor: ""}}}/>`,
+        },
+    },
+};
+
+
+
+// -------------------------------------------------------------
+// Fluid Button
+// -------------------------------------------------------------
+export const FluidButton = Template.bind({});
+FluidButton.args = {
+    ...Default.args,
+    asEmphasis:"contained",
+    content: "Fluid Button",
+    isFluid: true,
+};
+FluidButton.parameters = {
+    docs: {
+        description: {
+            story: "Typically used as the bottom of a modal or a container.",
+        },
+    },
+    source: {
+        code: `<Button isFluid={true}/>`,
+    },
+};
+
+// -------------------------------------------------------------
+// Caption Button
+// -------------------------------------------------------------
+
+export const CaptionButton = Template.bind({});
+CaptionButton.args = {
+    ...Default.args,
+    content: "Caption Button",
+    withLabel: {
+        format: "caption",
+        content: "Home",
+        textColor: "#000000",
+    },
+};
+
+CaptionButton.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to provide a header callout (format:label) above the button. Or use as an information caption (format:caption) below the button. Or use as a tooltip (format:tooltip) to explain what the button does. The text here can be customized through the withTranslation option.",
+        },
+        source: {
+            code: `<Button withLabel={{format: "label",content: "Press to Confirm...",textColor: "#000000"}}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Colored Button
+// -------------------------------------------------------------
+
+export const ColoredButton = Template.bind({});
+ColoredButton.args ={
+    ...Default.args,
+    withColor: {
+        backgroundColor: "#ffc900",
+        textColor: "#666666",
+        hoverBackgroundColor: "#666666",
+        hoverTextColor: "#ffc900",
+    },
+}
+
+Default.parameters = {
+    docs: {
+        description: {
+            story: "Use to override the standard colors of the button.",
+        },
+        source: {
+            code: `<Button withColor={{backgroundColor: "#ffc900", textColor: "#666666",hoverBackgroundColor: "#666666", hoverTextColor: "#ffc900"}}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Animated Button
+// -------------------------------------------------------------
+export const AnimatedButton = Template.bind({});
+AnimatedButton.args = {
+    ...Default.args,
+    content: "Animated Button",
+    withAnimation: {
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
+    },
+};
+AnimatedButton.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to animate the entry of the button with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        },
+        source: {
+            code: `<Button withAnimation={{animation: "collapse", duration: 0.5, delay: 0}}}/>`,
+        },
+    },
+};
+
+
+// -------------------------------------------------------------
+// Translated Button
+// -------------------------------------------------------------
+export const TranslatedButton = Template.bind({});
+TranslatedButton.args = {
+    ...Default.args,
+    content: "Translated Button",
+    withTranslation: {
+        lang: "hi",
+        tgt: "button",
+        dictionary: dictionary,
+    },
+};
+TranslatedButton.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in. To make this work for the button, add a button:{text,label} value to the dictionary.",
+        },
+        source: {
+            code: `<Button withTranslation={{lang: "hi", tgt: "button", dictionary: ${JSON.stringify(
+                {
+                    hi: {
+                        loading: "बस एक मिनट...",
+                        button: {
+                            text: "",
+                            label: "होम" 
+                        },
+                    },
+                }
+            )}}}}/>`,
         },
     },
 };

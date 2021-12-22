@@ -1,56 +1,41 @@
-.tilt{
+.qui .qui-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.qui .qui-tilt{
     transform: rotate(10deg);
     transition: all 0.1s ease;
 }
 
-.qui {
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.qui .loading i{
-    margin-right: 0.25em;
-    animation: loader 2s linear infinite;
-}
-
-.qui.loading{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-// .is-circular{
-//     border-radius: 5px;
-// }
-
-.qui-text{
+.qui .qui-text{
     margin: 0;
 }
 
-.size-tiny .fas{
-    font-size: 1em;
-}
-.size-small .fas{
-    font-size: 1.25em;
-}
-.size-normal .fas{
-    font-size: 1.50em;
-}
-.size-big .fas{
-    font-size: 1.75em;
-}
-.size-huge .fas{
-    font-size: 2em;
-}
-.size-massive .fas{
-    font-size: 2.25em;
+.qui .qui-icon-label.qui-title {
+    font-weight: normal;
 }
 
-@keyframes loader {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform : rotate(360deg)
-    }
+.qui .qui-icon-caption.qui-title {
+    font-style: normal;
+}
+
+.qui .size-massive {
+    line-height: normal;
+}
+.qui .size-huge {
+    line-height: normal;
+}
+.qui .size-big {
+    line-height: normal;
+}
+.qui .size-normal {
+    line-height: normal;
+}
+.qui .size-small {
+    line-height: normal;
+}
+.qui .size-tiny {
+    line-height: normal;
 }

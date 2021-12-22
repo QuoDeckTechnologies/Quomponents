@@ -131,10 +131,6 @@ Button.propTypes = {
     Use to toggle the component taking the full width of the parent container
     */
     isFluid: PropTypes.bool,
-    /**
-    Use to toggle a loading state for the component
-    */
-    isLoading: PropTypes.bool,
 
     /**
     Button component must have the onClick function passed as props
@@ -165,21 +161,60 @@ Button.defaultProps = {
     isHidden: false,
     isDisabled: false,
     isFluid: false,
-    isLoading: false,
 };
+
+function getColors(colors, emphasis, hovered) {
+    let colorStyle = {}
+    if(!hovered){
+        colorStyle = emphasis === 'text'
+        ? {
+            background : 'transparent',
+            color : colors.textColor
+        }
+        : emphasis === 'outlined' 
+        ? {
+            background : 'transparent',
+            color : colors.textColor,
+            borderColor : colors.textColor
+        }
+        : emphasis === 'contained'
+        ? {
+            background : colors.backgroundColor,
+            color : colors.textColor
+        } 
+        :
+        {}
+    }
+    if(emphasis === 'text' && hovered){
+        colorStyle.background = 'transparent'
+        colorStyle.color = colors.hoverTextColor
+    }
+    if(emphasis === 'contained' && hovered){
+        colorStyle = {
+            background : colors.hoverBackgroundColor,
+            color : colors.hoverTextColor
+        }
+    }
+    if(emphasis === 'outlined' && hovered){
+        colorStyle = {
+            background : 'transparent',
+            color : colors.hoverTextColor,
+            borderColor : colors.hoverTextColor
+        }
+    }
+ 
+
+    return colorStyle;
+}
+
+function getLabel(labelObj, position) {
+    return labelObj?.format === position ? labelObj.content : "";
+}
 
 
 export default function Button(props) {
     const [ tilt,setTilt ] = useState(false)
-
-    
-    const handleTilt = (e) => {
-        setTilt(true)
-        setTimeout(()=>{
-            setTilt(false)
-        },300)
-        props.onClick(e)
-    }
+    const [hovered, setHovered] = useState(false);
 
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -197,23 +232,70 @@ export default function Button(props) {
     //-------------------------------------------------------------------
     
     const animate = getAnimation(props.withAnimation);
-    
+
+    //-------------------------------------------------------------------
+    // 3. Set the button text
+    //-------------------------------------------------------------------
+    let buttonText = props.content
+        ? props.content
+        : props.children
+        ? props.children
+        : "";
+    let iconOnly = buttonText === "";
+
+
+    //-------------------------------------------------------------------
+    // 4. Set the label/caption/popover and loading text
+    //-------------------------------------------------------------------
+    let labelContent = Object.assign({}, props.withLabel);
+    let labelStyle = labelContent?.textColor
+        ? { color: labelContent.textColor,
+            fontWeight : 'normal'
+            }
+        : {};
+
+    //-------------------------------------------------------------------
+    // 4. Translate the text objects in case their is a dictionary provided
+    //-------------------------------------------------------------------
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        let tObj = getTranslation(props.withTranslation);
+        if (tObj && props.content && props.content !== "") {
+            buttonText = tObj.text;
+        }
+        if (labelContent && tObj?.label) labelContent.content = tObj.label;
+
+    }
+
+    //-------------------------------------------------------------------
+    // 5. Set colors
+    //-------------------------------------------------------------------
+    let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
+
+
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className='qui'
+            className={`qui ${quommonClasses.parentClasses}`}
+            onMouseDown={()=>setTilt(true)} 
+            onMouseUp={()=>setTilt(false)} 
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
         >
-            <div onClick={(e)=>handleTilt(e)} className={`qui qui-btn ${quommonClasses.childClasses} ${quommonClasses.parentClasses}`} style={props.withColor}>
-                <div  className={`${tilt ? 'tilt' : 'notilt'} ${quommonClasses.childClasses}`}>
-                    { !props.isLoading && <i className={props.withIcon.icon} style={{color:props.withColor.textColor}}></i> }
-                    { props.isLoading && <div className="qui loading">
-                    <i className="fas fa-spinner"></i>PLEASE WAIT...
-                    </div> }
-                </div>
-                { !props.isLoading && <div className={quommonClasses.childClasses}>
-                    <p className="qui-text" style={{color:props.withColor.textColor}}>{props.content}</p>
-                </div> }
+            <div className={`qui qui-icon-label qui-title size-${props.asSize}`} style={labelStyle}>
+                {getLabel(labelContent, "label")}
+            </div>
+            <div className="qui-container">
+            <div className={`qui-btn ${quommonClasses.childClasses}`} style={colors} >
+                    <i className={`${props.withIcon ? props.withIcon.icon : ''} qui-icon ${tilt ? 'qui-tilt' : ''}`} ></i> 
+            </div>
+            </div>
+            <div className="qui-icon-caption qui-title" style={labelStyle}> 
+                 {getLabel(labelContent, "caption")} 
             </div>
         </motion.div>
     )
