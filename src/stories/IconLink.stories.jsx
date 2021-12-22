@@ -30,7 +30,7 @@ export default {
 
         asVariant: {
             control: "select",
-            options: ["primary", "secondary", "success", "warning"],
+            options: ["primary", "secondary", "success", "warning","error"],
             table: {
                 category: "as-Flags",
             },
@@ -168,8 +168,8 @@ export default {
 // Default
 // -------------------------------------------------------------
 const Template = (args) => <IconLink {...args} />;
-export const FirstIcon = Template.bind({});
-FirstIcon.args = {
+export const Default = Template.bind({});
+Default.args = {
     asEmphasis: "contained",
     isCircular: false,
 
@@ -184,13 +184,13 @@ FirstIcon.args = {
         content: "Home",
         textColor: "#000000",
     },
-    withIcon: { icon: "fa fa-home icon", size: "2em" },
+    withIcon: { icon: "fa fa-home", size: "2em" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
         textColor: "",
         hoverBackgroundColor: "gray",
-        hoverTextColor: "black",
+        hoverTextColor: "orange",
     },
     withAnimation: {
         animation: "zoom",
@@ -207,119 +207,25 @@ FirstIcon.args = {
     isHidden: false,
     isFluid: false,
 };
-FirstIcon.parameters = {
+Default.parameters = {
     docs: {
         source: {
-            code: `<IconLink {...${JSON.stringify(FirstIcon.args, null, 2)}}/>`,
+            code: `<IconLink {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
-
-
-
-
-
-
-
-
-// // -------------------------------------------------------------
-// // Variants
-// // -------------------------------------------------------------
-// const AllVariantsTemplate = (args) => {
-//     const baseObj = {
-//         ...Object.assign({}, FirstIcon.args, args, {
-//             asFloated: "inline",
-//             withIcon: null,
-//             withTranslation: null,
-//             withColor: null,
-//         }),
-//     };
-//     return (
-//         <div>
-//             <IconLink
-//                 {...Object.assign({}, baseObj, {
-//                     content: "",
-//                     asVariant: "error",
-//                     withLabel: {
-//                         format: "caption",
-//                         content: "Left",
-//                         textColor: "#000000",
-//                     },
-//                 })}
-
-//             ><i className="fas fa-angle-double-left"></i></IconLink>{" "}{" "}
-//             <IconLink
-//                 {...Object.assign({}, baseObj, {
-//                     content: "",
-//                     asVariant: "primary",
-//                     withLabel: {
-//                         format: "caption",
-//                         content: "Home",
-//                         textColor: "#000000",
-
-//                     },
-//                 })}
-
-//             ><i className="fa fa-home"></i></IconLink>{" "}{" "}
-
-    
-//             <IconLink
-//                 {...Object.assign({}, baseObj, {
-//                     content: "",
-//                     asVariant: "primary",
-//                     withLabel: {
-//                         format: "caption",
-//                         content: "Share",
-//                         textColor: "#000000",
-//                     },
-//                 })}
-
-//             ><i className="fa fa-share"></i></IconLink>{" "}{" "}
-
-//             <IconLink
-//                 {...Object.assign({}, baseObj, {
-//                     content: "",
-//                     asVariant: "success",
-//                     withLabel: {
-//                         format: "caption",
-//                         content: "Right",
-//                         textColor: "#000000",
-//                     },
-//                 })}
-
-//             ><i className="fas fa-angle-double-right"></i></IconLink>{" "}{" "}
-
-
-//  </div>
-//     );
-// };
-// export const AllVariants = AllVariantsTemplate.bind({});
-// AllVariants.parameters = {
-//     docs: {
-//         description: {
-//             story: "5 variants are supported. Use as per purpose noted here.",
-//         },
-//         source: {
-//             code: `<IconLink asVariant="primary"/>`,
-//         },
-//     },
-// };
-
-
-
-
 
 // -------------------------------------------------------------
 // Colored Icon
 // -------------------------------------------------------------
 export const ColoredIcon = Template.bind({});
 ColoredIcon.args = {
-    ...FirstIcon.args,
+    ...Default.args,
     withColor: {
-        backgroundColor: "black",
-        textColor: "white",
-        hoverBackgroundColor: "orange",
-        hoverTextColor: "black",
+        backgroundColor: "orange",
+        textColor: "gray",
+        hoverBackgroundColor: "gray",
+        hoverTextColor: "orange",
     },
 };
 ColoredIcon.parameters = {
@@ -328,7 +234,7 @@ ColoredIcon.parameters = {
             story: "Use to override the standard colors of the Icon.",
         },
         source: {
-            code: `<Icon withColor={{backgroundColor: "black", textColor: "white",hoverBackgroundColor: "orange", hoverTextColor: "black"}}}/>`,
+            code: `<Icon withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
         },
     },
 };
@@ -341,7 +247,7 @@ ColoredIcon.parameters = {
 // -------------------------------------------------------------
 export const FluidIcon = Template.bind({});
 FluidIcon.args = {
-    ...FirstIcon.args,
+    ...Default.args,
     isFluid: true,
 };
 FluidIcon.parameters = {
@@ -362,7 +268,7 @@ FluidIcon.parameters = {
 // -------------------------------------------------------------
 export const AnimatedIcon = Template.bind({});
 AnimatedIcon.args = {
-    ...FirstIcon.args,
+    ...Default.args,
     withAnimation: {
         animation: "collapse",
         duration: .8,
@@ -386,7 +292,7 @@ AnimatedIcon.parameters = {
 // -------------------------------------------------------------
 export const TranslatedIcon = Template.bind({});
 TranslatedIcon.args = {
-    ...FirstIcon.args,
+    ...Default.args,
     withTranslation: {
         lang: "hi",
         tgt: "icon",

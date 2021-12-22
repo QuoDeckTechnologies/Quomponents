@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React,{ useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 import {
     getQuommons,
@@ -14,20 +13,35 @@ import "./IconLink.scss";
 import "../../../common/stylesheets/overrule.scss";
 
 IconLink.propTypes = {
+//=======================================
+    // Component Specific props
+    //=======================================
 
-
+    /**
+    Set action emphasis in increasing order 
+    */
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
-
+    /**
+    Use for rounded corners or circular icon IconLink 
+    */
     isCircular: PropTypes.bool,
 
+    // Quommon props
+    //=======================================
 
+    /**
+    Use to define standard component type
+    */
     asVariant: PropTypes.oneOf([
         "primary",
         "secondary",
         "success",
         "warning",
+        "error"
     ]),
-
+    /**
+    Use to define component text size in increasing order
+    */
     asSize: PropTypes.oneOf([
         "tiny",
         "small",
@@ -36,14 +50,22 @@ IconLink.propTypes = {
         "huge",
         "massive",
     ]),
-
+    /**
+    Use to define component padding in increasing order
+    */
     asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-
+    /**
+    Use to float the component in parent container
+    */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-
+    /**
+    Use to align content within the component container
+    */
     asAligned: PropTypes.oneOf(["left", "right", "center"]),
 
-
+    /**
+    Use to override component colors and behavior
+    */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
@@ -51,17 +73,25 @@ IconLink.propTypes = {
         hoverBackgroundColor: PropTypes.string,
         hoverTextColor: PropTypes.string,
     }),
-
-
+    /**
+    Use to add an icon to the component
+    */
     withIcon: PropTypes.shape({
         icon: PropTypes.string,
         size: PropTypes.string,
+        position: PropTypes.oneOf(["left", "right"]),
     }),
-
+    /**
+    Use to add a heading label, a footer caption or a title popover to the component
+    */
     withLabel: PropTypes.shape({
         format: PropTypes.oneOf(["label", "caption", "popover"]),
+        content: PropTypes.string,
+        textColor: PropTypes.string,
     }),
-
+    /**
+    Use to define the entry animation of the component
+    */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -76,29 +106,44 @@ IconLink.propTypes = {
         duration: PropTypes.number,
         delay: PropTypes.number,
     }),
-
+    /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
     withTranslation: PropTypes.shape({
         lang: PropTypes.string,
         tgt: PropTypes.string,
         dictionary: PropTypes.string,
     }),
 
-
+    /**
+    Use to show/hide the component
+    */
     isHidden: PropTypes.bool,
-
+    /**
+    Use to enable/disable the component
+    */
     isDisabled: PropTypes.bool,
-
+    /**
+    Use to toggle the component taking the full width of the parent container
+    */
     isFluid: PropTypes.bool,
 
-
-    onClick: PropTypes.func.isRequired,
+    /**
+    IconLink component must have the onClick function passed as props
+    */
+     onClick: PropTypes.func.isRequired,
 };
 
 IconLink.defaultProps = {
+   
+    // Component Specific props
+    //=======================================
     asEmphasis: "contained",
     isCircular: false,
 
-    asVariant: "warnimg",
+    // Quommon props
+    //=======================================
+    asVariant: "warning",
     asSize: "normal",
     asPadded: "normal",
     asFloated: "none",
@@ -133,52 +178,60 @@ function getColors(colors, emphasis, hovered) {
     return colorStyle;
 }
 
-function getIcon(iconObj, position) {
 
-    return (
-        iconObj?.position === position && (
-            <i
-                className={`qui-btn ${iconObj.icon}`}
-                style={{ fontSize: iconObj.size }}
-            ></i>
-        )
-    );
-}
-
+/**
+## Notes
+- The design system used for this component is fontawesome Icons
+- The animation system used for this component is Framer Motion (framer-motion)
+- Pass inline styles to the component to override any of the component css
+- Or add custom css in overrule.scss to override the component css
+- props are not being passed to the IconLink. Please speak to the admin to handle any new prop.
+**/
 export default function IconLink(props) {
 
-
-    
     const [tilt, setTilt] = useState(false)
 
-    useEffect(() => { console.log(tilt) }, [tilt])
+    // useEffect(() => { console.log(tilt) }, [tilt])
 
 
-    const handleTilt = (e) => {
-        setTilt(true)
-        setTimeout(() => {
-            setTilt(false)
-        }, 1000)
-        //props.onclick(e)
-        console.log(props.withColor)
+    // const handleTilt = (e) => {
+    //     setTilt(true)
+    //     setTimeout(() => {
+    //         setTilt(false)
+    //     }, 500)
+    //     //props.onclick(e)
+    //     console.log(props.withColor)
 
-    };
+    // };
 
     const [hovered, setHovered] = useState(false);
 
+    //-------------------------------------------------------------------
+    // 1. Set the classes
+    //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
     if (props.isCircular)
         quommonClasses.childClasses += ` is-circular`;
 
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
+
+    //-------------------------------------------------------------------
+    // 2. Set the component colors
+    //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
 
-
+    //-------------------------------------------------------------------
+    // 4. Set the label/caption/popover and loading text
+    //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel);
     let labelStyle = labelContent?.textColor
         ? { color: labelContent.textColor }
         : {};
     let loadingText = "";
+
+    //-------------------------------------------------------------------
+    // 5. Translate the text objects in case their is a dictionary provided
+    //-------------------------------------------------------------------
 
     if (
         props.withTranslation?.lang &&
@@ -191,12 +244,14 @@ export default function IconLink(props) {
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
         loadingText = getTranslation(props.withTranslation, "loading");
     }
+
+    //-------------------------------------------------------------------
+    // 7. Get animation of the component
+    //-------------------------------------------------------------------
+  
     const animate = getAnimation(props.withAnimation);
 
-
-
-
-
+    // ========================= Render Function =================================
 
     return (
         <motion.div
@@ -205,28 +260,29 @@ export default function IconLink(props) {
             className={`qui ${quommonClasses.parentClasses}`}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-        >
-            <Tilt >
-                <button 
+            onMouseDown={()=> setTilt(true)}
+            onMouseUp={()=> setTilt(false)}
 
+        >
+ 
+            <div className= {`qui-btn qui-icon-label size-${props.asSize ? props.asSize:""}`}style={labelStyle}>
+                 {getLabel(labelContent, "label")}
+            </div>
+                <button 
                     variant={props.asEmphasis}
                     color={props.asVariant}
                     className={`qui-btn ${quommonClasses.childClasses}`}
                     style={Object.assign({}, colors, props.style)}
                     onClick={props.onClick}
+                     >
 
-                    onClick={(e) => handleTilt(e)}
-                >
-
-                    <div className={`${tilt ? 'tilt' : ''}`}>
-                        {getIcon(props.withIcon)}
+                    <div className={`${props.withIcon ? props.withIcon.icon:""} qui-icon ${tilt ? 'tilt' : ''}`}>
                     </div>
                 </button>
-            </Tilt>
-
-            <div className="qui-label" style={labelStyle}>
-                {getLabel(labelContent, "label")}
+            <div className= {`qui-btn qui-icon-caption size-${props.asSize ? props.asSize:""}`}style={labelStyle}>
+                {getLabel(labelContent, "caption")}
             </div>
+
         </motion.div>
     );
 };

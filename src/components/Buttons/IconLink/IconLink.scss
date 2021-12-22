@@ -1,6 +1,4 @@
-.qui{
-    margin-top:10px;
-}
+
 
 .qui .qui-btn.is-circular {
     border-radius: 50%;
@@ -25,6 +23,18 @@
         transform: rotate(10deg);
         transition: all ease-in-out;
     }
+
+ .qui button{
+     border: none;
+ }   
+
+ .qui .qui-icon-label {
+    font-weight:normal;
+}
+
+.qui .qui-icon-caption {
+    font-style: normal;
+}
 
 
 
