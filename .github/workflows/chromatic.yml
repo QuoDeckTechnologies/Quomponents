@@ -12,6 +12,9 @@ on:
       - rahul
       - rohit
       - piyush
+      - CertificateCard
+      - ToolbarDark
+      - AppMenu
 # What the action will do
 jobs:
   test:
