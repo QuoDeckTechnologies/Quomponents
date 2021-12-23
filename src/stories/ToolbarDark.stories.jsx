@@ -1,5 +1,9 @@
 import React from "react";
-import ToolbarDark from "../components/Buttons/ToolbarDark/ToolbarDark.react";
+import ToolbarDark from "../components/Buttons/ToolbarDark/ToolbarDark.react"
+import { ColoredIcon } from "./IconLink.stories";
+import Button from "../components/Buttons/Button/Button.react";
+
+
 
 const dictionary = JSON.stringify({
        en: {
@@ -57,9 +61,6 @@ export default {
                 category: "as-Flags",
             },
         },
-
-    
-    
 
         withColor: {
             table: {
@@ -174,10 +175,67 @@ Default.args = {
     isHidden: false,
     isFluid: false,
 };
+
 Default.parameters = {
     docs: {
         source: {
             code: `<ToolbarDark {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+    
+};
+
+const AllVariantsTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            asFloated: "inline",
+            withLabel: null,
+            withTranslation: null,
+            withColor: null,
+            
+        }),
+    };
+    return (
+        <div>
+            <ToolbarDark
+                {...Object.assign({}, baseObj, {
+                    asVariant: "success",
+                    withIcon: { icon: "fas fa-home", size: "1em", position: "left" },
+
+                })}
+            />
+            <ToolbarDark
+                {...Object.assign({}, baseObj, {
+                    asVariant: "success",
+                    withIcon: { icon: "fas fa-wallet", size: "1em", position: "left" },
+                })}
+            />
+            <ToolbarDark
+                {...Object.assign({}, baseObj, {
+                    asVariant: "success",
+                    withIcon: { icon: "fas fa-home", size: "1em", position: "left" },
+                })}
+            />
+           
+            <ToolbarDark   
+                {...Object.assign({}, baseObj, {
+                    asVariant: "success",
+                    withIcon: { icon: "fas fa-book-open", size: "1em", position: "left" },
+                })}
+            />
+        </div>
+    );
+};
+
+
+export const AllVariants = AllVariantsTemplate.bind({});
+AllVariants.parameters = {
+    docs: {
+        description: {
+            story: "5 variants are supported. Use as per purpose noted here.",
+        },
+        source: {
+            code: `<IconList asVariant="primary"/>`,
         },
     },
 };
