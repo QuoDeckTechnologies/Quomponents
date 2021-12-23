@@ -69,7 +69,9 @@ export default {
     parameters: {
         componentSubtitle: "Display a basic ribbon for general-purpose use",
         a11y: { disable: true },
-        // controls: { expanded: true }
+        docs: {
+            iframeHeight: 300,
+        }
     },
 };
 

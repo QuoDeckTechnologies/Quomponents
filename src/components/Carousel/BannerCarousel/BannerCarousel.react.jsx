@@ -40,84 +40,13 @@ BannerCarousel.propTypes = {
         props: PropTypes.object
     })).isRequired,
 
-    // Quommon props
-    //=======================================
 
-    /**
-    Use to define standard component type
-    */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
-
-    /**
-    Use to override component colors and behavior
-    */
-    withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
-        textColor: PropTypes.string,
-        hoverBackgroundColor: PropTypes.string,
-        hoverTextColor: PropTypes.string,
-    }),
-    /**
-    Use to define the entry animation of the component
-    */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
-    }),
-    /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
-
-    /**
-    Use to enable/disable the component
-    */
-    isDisabled: PropTypes.bool,
-    /**
-    Use to show/hide the component
-    */
-    isHidden: PropTypes.bool,
-
-    /**
-    Banner Carousel component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
 };
 
 BannerCarousel.defaultProps = {
     // Component Specific props
     //=======================================
     content: [],
-    // Quommon props
-    //=======================================
-    asVariant: "primary",
-
-    withColor: null,
-    withAnimation: null,
-    withTranslation: null,
-
-    isDisabled: false,
-    isHidden: false
 };
 
 /**
@@ -152,15 +81,14 @@ export default function BannerCarousel(props) {
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}>
             <Slider ref={sliderRef} {...settings}>
-                {_.map(content, (c, index) => {
-                    let finalProps = { ...props, ...c.props };
+                {_.map(content, (slide, index) => {
                     return (
                         <div className="qui-slide-container">
                             <div
                                 key={"slider-" + index + Math.random()}
                                 className={`qui-slide`}
                             >
-                                <BannerCard {...finalProps} content={c} />
+                                <BannerCard {...slide.props} content={slide} />
                             </div>
                         </div>
                     );
