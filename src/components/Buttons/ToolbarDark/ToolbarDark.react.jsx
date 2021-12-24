@@ -17,6 +17,11 @@ ToolbarDark.propTypes = {
     // Component Specific props
     //=======================================
 
+    content: PropTypes.shape({
+        icon: PropTypes.string,
+
+    }).isRequired,
+
     /**
     Set action emphasis in increasing order 
     */
@@ -102,11 +107,12 @@ ToolbarDark.propTypes = {
     /**
     ToolbarDark component must have the onClick function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
 };
 
 ToolbarDark.defaultProps = {
 
+    content: {},
     // Component Specific props
     //=======================================
     asEmphasis: "contained",
@@ -157,9 +163,14 @@ function getColors(colors, emphasis, hovered) {
 **/
 export default function ToolbarDark(props) {
 
-    const [tilt, setTilt] = useState(false)
+
 
     const [hovered, setHovered] = useState(false);
+
+
+    let { content } = props;
+    let icon = content?.icon;
+
 
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -188,6 +199,14 @@ export default function ToolbarDark(props) {
 
     // ========================= Render Function =================================
 
+    const getIcon=(iconClass)=>{
+        return(
+            <i className={iconClass}></i>
+
+        )
+
+    }
+
     return (
         <motion.div
             className={`qui ${quommonClasses.parentClasses}`}
@@ -201,24 +220,40 @@ export default function ToolbarDark(props) {
                     color={props.asVariant}
                     className={`qui-btn ${quommonClasses.childClasses} size-${props.asSize ? props.asSize : ""}`}
                     style={Object.assign({}, colors, props.style)}
-                    onClick={props.onClick}
                 >
 
-                    <div className={`${props.withIcon ? props.withIcon.icon : ""}`}>
+                    <div >
+
+                        {/* <IconLink onClick={props.onClick}
+>
+
+                            <div className="icon">
+                                {icon}
+                            </div>
+                         
+
+                        </IconLink> */}
+
+                        {props.withIcon.icon.map(icon =>{
+                            return(
+                                getIcon(icon)
+                            )
+
+                        })}
+
+                            </div>
+                        </button>
+                        <div className={`qui-btn-label size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
+                            {getLabel(labelContent, "label")}
+                        </div>
+
+                        <div className={`qui-btn-caption size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
+                            {getLabel(labelContent, "caption")}
+                        </div>
+
+
+
                     </div>
-
-                </button>
-                <div className={`qui-btn-label size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
-                    {getLabel(labelContent, "label")}
-                </div>
-
-                <div className={`qui-btn-caption size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
-                    {getLabel(labelContent, "caption")}
-                </div>
-
-
-
-            </div>
-        </motion.div>
-    );
+                </motion.div>
+                );
 };

@@ -1,18 +1,6 @@
 import React from "react";
 import ToolbarDark from "../components/Buttons/ToolbarDark/ToolbarDark.react"
-import { ColoredIcon } from "./IconLink.stories";
-import Button from "../components/Buttons/Button/Button.react";
 
-
-
-const dictionary = JSON.stringify({
-       en: {
-        icon: {label: "Home"},
-    },
-    hi: {
-        icon: { label: "होम आइकन" },
-    },
-});
 
 export default {
     title: "Design System/Buttons/ToolbarDark",
@@ -148,6 +136,8 @@ export default {
 const Template = (args) => <ToolbarDark {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+   
+
     asEmphasis: "contained",
     isCircular: false,
 
@@ -159,12 +149,12 @@ Default.args = {
     withLabel: {
         format: "caption",
         content: "Home",
-        textColor: "#000000",
+        textColor: "red",
         hoverTextColor:"pink",
     },
-    withIcon: { icon: "fa fa-home", size: "2em", position:"left"},
+    withIcon: { icon: ["fas fa-share","fas fa-home","fas fa-bars", "fas fa-desktop"], size: "", position:""},
     withColor: {
-        backgroundColor: "",
+        backgroundColor: "blue",
         accentColor: "",
         textColor: "",
         hoverBackgroundColor: "",
@@ -200,27 +190,27 @@ const AllVariantsTemplate = (args) => {
             <ToolbarDark
                 {...Object.assign({}, baseObj, {
                     asVariant: "success",
-                    withIcon: { icon: "fas fa-home", size: "1em", position: "left" },
+                    withIcon: { icon: "fas fa-home", size: "1em", position: "center" },
 
                 })}
             />
             <ToolbarDark
                 {...Object.assign({}, baseObj, {
                     asVariant: "success",
-                    withIcon: { icon: "fas fa-wallet", size: "1em", position: "left" },
+                    withIcon: { icon: "fas fa-wallet", size: "1em", position: "center" },
                 })}
             />
             <ToolbarDark
                 {...Object.assign({}, baseObj, {
                     asVariant: "success",
-                    withIcon: { icon: "fas fa-home", size: "1em", position: "left" },
+                    withIcon: { icon: "fas fa-home", size: "1em", position: "center" },
                 })}
             />
            
             <ToolbarDark   
                 {...Object.assign({}, baseObj, {
                     asVariant: "success",
-                    withIcon: { icon: "fas fa-book-open", size: "1em", position: "left" },
+                    withIcon: { icon: "fas fa-book-open", size: "1em", position: "center" },
                 })}
             />
         </div>
