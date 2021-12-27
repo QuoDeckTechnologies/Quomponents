@@ -94,12 +94,12 @@ CertificateCard.propTypes = {
 CertificateCard.defaultProps = {
     // Component Specific props
     //=======================================
-    asStatus : 'in progress',
+    asStatus: 'in progress',
 
     // Quommon props
     //=======================================
     asVariant: "primary",
-    
+
     withColor: null,
     withIcon: null,
     withLabel: null,
@@ -108,9 +108,6 @@ CertificateCard.defaultProps = {
 
     isHidden: false,
 };
-
-
-
 
 export default function CertificateCard(props) {
     //-------------------------------------------------------------------
@@ -136,14 +133,8 @@ export default function CertificateCard(props) {
         color: props.withColor?.accentColor,
     };
     //-------------------------------------------------------------------
-    // 5. Get animation of the component
-    //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
-
-    //-------------------------------------------------------------------
     // 5. Get translation of the component
     //-------------------------------------------------------------------
-
     let labelContent = Object.assign({}, props.withLabel);
     let tObj = null
 
@@ -154,49 +145,53 @@ export default function CertificateCard(props) {
     ) {
         tObj = getTranslation(props.withTranslation);
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
-    } 
-
+    }
+    //-------------------------------------------------------------------
+    // 6. Get Status Card of the component
+    //-------------------------------------------------------------------
     const getStatusCard = (status) => {
         let iconClass
-        if( status === 'in progress') iconClass = 'fas fa-adjust qui-icon-rotate'
-        if( status === 'not started') iconClass = 'far fa-circle '
-        if( status === 'completed') iconClass = 'fas fa-check-circle'
-        
+        if (status === 'in progress') iconClass = 'fas fa-adjust qui-icon-rotate'
+        if (status === 'not started') iconClass = 'far fa-circle '
+        if (status === 'completed') iconClass = 'fas fa-check-circle'
+
         return (
             <div className="qui-status">
                 <div className={`qui-statusInner ${quommonClasses.childClasses}`}>
-                    { tObj ? <p>{tObj?.text[status.replace(' ','')]}</p> : <p>{status.toUpperCase()}</p>}                  
+                    {tObj ? <p>{tObj?.text[status.replace(' ', '')]}</p> : <p>{status.toUpperCase()}</p>}
                     <i className={`${iconClass} variant-${props.asVariant}-text`} style={accentColors}></i>
                 </div>
             </div>
         )
     }
+    //-------------------------------------------------------------------
+    // 7. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
 
     // ========================= Render Function =================================
-
-
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-        <div>
-            <div className={`qui-card `}>
-                <div className={`qui-header`}>
-                    <div className={`qui-colorBanner qui-btn ${quommonClasses.childClasses}`} style={bannerColors}></div>
-                    <div className={`qui-courseHeader variant-${props.asVariant}-text`} style={headerColors}>
-                        <p>{labelContent?.content}</p>
+            <div>
+                <div className={`qui-card `}>
+                    <div className={`qui-header`}>
+                        <div className={`qui-colorBanner qui-btn ${quommonClasses.childClasses}`} style={bannerColors}></div>
+                        <div className={`qui-courseHeader variant-${props.asVariant}-text`} style={headerColors}>
+                            <p>{labelContent?.content}</p>
+                        </div>
+                    </div>
+                    <div className="qui-imageCard">
+                        {props.asStatus === 'certificate' && <div>
+                            <img className="qui-certificateImage" src={`${props.withIcon?.icon}`} alt="certificate" />
+                        </div>}
+                        {props.asStatus !== 'certificate' && getStatusCard(props.asStatus)}
                     </div>
                 </div>
-                <div className="qui-imageCard">
-                    {props.asStatus === 'certificate' &&  <div>
-                        <img className="qui-certificateImage" src={`${props.withIcon?.certificate}`} alt="certificate" /> 
-                    </div>}
-                    {props.asStatus !== 'certificate' && getStatusCard(props.asStatus)}
-                </div>
-            </div>    
-        </div>
+            </div>
         </motion.div>
     );
 }
