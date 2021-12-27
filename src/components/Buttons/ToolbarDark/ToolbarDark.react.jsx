@@ -16,6 +16,11 @@ ToolbarDark.propTypes = {
     // Component Specific props
     //=======================================
 
+    content: PropTypes.shape({
+        icon: PropTypes.string,
+
+    }).isRequired,
+
     /**
     Set action emphasis in increasing order 
     */
@@ -101,11 +106,12 @@ ToolbarDark.propTypes = {
     /**
     ToolbarDark component must have the onClick function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
 };
 
 ToolbarDark.defaultProps = {
 
+    content: {},
     // Component Specific props
     //=======================================
     asEmphasis: "text",
@@ -156,9 +162,21 @@ function getColors(colors, emphasis, hovered) {
 **/
 export default function ToolbarDark(props) {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 070ab5068555e0de974db534b854ee77b75d0a48
 
 
+<<<<<<< HEAD
     const [hovered, setHovered] = useState(false);
+=======
+
+    let { content } = props;
+    let icon = content?.icon;
+
+
+>>>>>>> 070ab5068555e0de974db534b854ee77b75d0a48
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -185,12 +203,28 @@ export default function ToolbarDark(props) {
 
     // ========================= Render Function =================================
 
+    const getIcon=(iconClass)=>{
+        return(
+            <i className={iconClass}></i>
+
+        )
+
+    }
+
     return (
         <motion.div
             className={`qui ${quommonClasses.parentClasses}`}
+<<<<<<< HEAD
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}> 
             <div className="backbar">
+=======
+
+
+        >    <div className={`qui-btn backbar ${quommonClasses.childClasses}`} >
+
+
+>>>>>>> 070ab5068555e0de974db534b854ee77b75d0a48
                 <div
                     variant={props.asEmphasis}
                     color={props.asVariant}
@@ -200,6 +234,7 @@ export default function ToolbarDark(props) {
                 >
                     <IconLink {...props} />
 
+<<<<<<< HEAD
                 </div>
             </div>
 
@@ -210,3 +245,32 @@ export default function ToolbarDark(props) {
 
 
 
+=======
+                    <div >
+
+                       
+
+                        {props.withIcon.icon.map(icon =>{
+                            return(
+                                getIcon(icon)
+                            )
+
+                        })}
+
+                            </div>
+                        </div>
+                        <div className={`qui-btn-label size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
+                            {getLabel(labelContent, "label")}
+                        </div>
+
+                        <div className={`qui-btn-caption size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
+                            {getLabel(labelContent, "caption")}
+                        </div>
+
+
+
+                    </div>
+                </motion.div>
+                );
+};
+>>>>>>> 070ab5068555e0de974db534b854ee77b75d0a48
