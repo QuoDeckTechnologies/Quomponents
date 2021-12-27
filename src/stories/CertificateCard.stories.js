@@ -1,6 +1,8 @@
 import React from "react";
 import CertificateCard from "../components/CertificateCard/CertificateCard.react";
 
+
+
 export default {
     title: "Design System/CertificateCard/CertificateCard",
     component: CertificateCard,
@@ -42,6 +44,13 @@ export default {
                 defaultValue: {
                     content: "",
                 },
+            },
+        },
+        asSize: {
+            control: "select",
+            options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            table: {
+                category: "as-Flags",
             },
         },
         withAnimation: {
@@ -99,10 +108,11 @@ Default.args = {
 
     asVariant: "primary",
     asStatus : 'not started',
-
+    asSize: "normal",
     withLabel: {
         content: "Negotiation Skills 101",
     },
+
     isHidden : false,
     withIcon: { certificate : "https://media.istockphoto.com/vectors/certificate-template-vector-id1097299164" },
     withColor: {
@@ -114,12 +124,6 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-    // withTranslation: {
-    //     lang: "en",
-    //     tgt: "CertificateCard",
-    //     dictionary: dictionary,
-    // },
-
 };
 Default.parameters = {
     docs: {

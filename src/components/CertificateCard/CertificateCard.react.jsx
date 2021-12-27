@@ -47,6 +47,17 @@ CertificateCard.propTypes = {
     withLabel: PropTypes.shape({
         content: PropTypes.string,
     }),
+       /**
+    Use to define component text size in increasing order
+    */
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
     /**
    Use to define the entry animation of the component
    */
@@ -136,7 +147,7 @@ export default function CertificateCard(props) {
                 </div>}
                 {props.asStatus === 'not started' &&
                     <div className="qui-status">
-                            <div className="qui-statusInner">
+                            <div className={`qui-statusInner ${quommonClasses.childClasses}`}>
                                 <p>NOT STARTED</p>
                                 <i className={`far fa-circle variant-${props.asVariant}-text`} style={accentColors}></i>
                             </div>
@@ -144,7 +155,7 @@ export default function CertificateCard(props) {
                 }
                 { props.asStatus === 'in progress' && 
                         <div className="qui-status">
-                            <div className="qui-statusInner">
+                            <div className={`qui-statusInner ${quommonClasses.childClasses}`}>
                             <p>IN PROGRESS</p>
                             <i className={`fas fa-adjust qui-icon-rotate variant-${props.asVariant}-text`} style={accentColors}></i>
                             </div>
@@ -152,7 +163,7 @@ export default function CertificateCard(props) {
                 }
                 { props.asStatus === 'completed' && 
                     <div className="qui-status">
-                        <div className="qui-statusInner">
+                        <div className={`qui-statusInner ${quommonClasses.childClasses}s`}>
                         <p>COMPLETED</p>
                         <i className={`fas fa-check-circle variant-${props.asVariant}-text`} style={accentColors}d></i>
                         </div>
