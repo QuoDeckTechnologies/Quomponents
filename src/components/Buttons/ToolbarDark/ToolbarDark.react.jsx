@@ -182,14 +182,6 @@ export default function ToolbarDark(props) {
         : {};
     let loadingText = "";
 
-    const getIcon = (iconClass) => {
-        return (
-            <i className={iconClass}></i>
-
-        )
-
-    }
-
 
     // ========================= Render Function =================================
 
@@ -197,12 +189,8 @@ export default function ToolbarDark(props) {
         <motion.div
             className={`qui ${quommonClasses.parentClasses}`}
             onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-
-
-        >    <div className="backbar">      
-
-
+            onMouseLeave={() => setHovered(false)}> 
+            <div className="backbar">
                 <div
                     variant={props.asEmphasis}
                     color={props.asVariant}
@@ -210,17 +198,10 @@ export default function ToolbarDark(props) {
                     className={`flex size-${props.asSize ? props.asSize : ""}`}
                     style={Object.assign({}, colors, props.style)}
                 >
+                    <IconLink {...props} />
 
-
-
-                        <IconLink {...props} />
-                        
-
-
-
-
-                    </div>
                 </div>
+            </div>
 
         </motion.div>
     );

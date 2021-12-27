@@ -37,7 +37,6 @@ IconLink.propTypes = {
         "secondary",
         "success",
         "warning",
-        "error"
     ]),
     /**
     Use to define component text size in increasing order
@@ -88,6 +87,7 @@ IconLink.propTypes = {
         format: PropTypes.oneOf(["label", "caption", "popover"]),
         content: PropTypes.string,
         textColor: PropTypes.string,
+        hoverTextColor:PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -138,12 +138,12 @@ IconLink.defaultProps = {
    
     // Component Specific props
     //=======================================
-    asEmphasis: "contained",
+    asEmphasis: "text",
     isCircular: false,
 
     // Quommon props
     //=======================================
-    asVariant: "warning",
+    asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
     asFloated: "none",
@@ -177,8 +177,6 @@ function getColors(colors, emphasis, hovered) {
         colorStyle.borderColor = colors.backgroundColor
     return colorStyle;
 }
-
-
 /**
 ## Notes
 - The design system used for this component is fontawesome Icons
@@ -190,19 +188,6 @@ function getColors(colors, emphasis, hovered) {
 export default function IconLink(props) {
 
     const [tilt, setTilt] = useState(false)
-
-    // useEffect(() => { console.log(tilt) }, [tilt])
-
-
-    // const handleTilt = (e) => {
-    //     setTilt(true)
-    //     setTimeout(() => {
-    //         setTilt(false)
-    //     }, 500)
-    //     //props.onclick(e)
-    //     console.log(props.withColor)
-
-    // };
 
     const [hovered, setHovered] = useState(false);
 
@@ -221,7 +206,7 @@ export default function IconLink(props) {
     let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
 
     //-------------------------------------------------------------------
-    // 4. Set the label/caption/popover and loading text
+    // 3. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel);
     let labelStyle = labelContent?.textColor
@@ -230,7 +215,7 @@ export default function IconLink(props) {
     let loadingText = "";
 
     //-------------------------------------------------------------------
-    // 5. Translate the text objects in case their is a dictionary provided
+    // 4. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
 
     if (
@@ -242,11 +227,11 @@ export default function IconLink(props) {
         if (tObj && props.content && props.content !== "") {
         }
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
-        loadingText = getTranslation(props.withTranslation, "loading");
+        loadingText = getTranslation(props.withTranslation);
     }
 
     //-------------------------------------------------------------------
-    // 7. Get animation of the component
+    // 6. Get animation of the component
     //-------------------------------------------------------------------
   
     const animate = getAnimation(props.withAnimation);
@@ -264,25 +249,25 @@ export default function IconLink(props) {
             onMouseUp={()=> setTilt(false)}
 
         >
- 
-            <div className= {`qui-btn qui-icon-label size-${props.asSize ? props.asSize:""}`}style={labelStyle}>
+        <button className={`qui-btn ${quommonClasses.childClasses}`}
+>            <div className= {`qui-btn-label size-${props.asSize ? props.asSize:""}`}style={labelStyle}>
                  {getLabel(labelContent, "label")}
             </div>
                 <button 
                     variant={props.asEmphasis}
                     color={props.asVariant}
-                    className={`qui-btn ${quommonClasses.childClasses}`}
+                    className={`qui-btn border ${quommonClasses.childClasses}`}
                     style={Object.assign({}, colors, props.style)}
                     onClick={props.onClick}
                      >
 
-                    <div className={`${props.withIcon ? props.withIcon.icon:""} qui-icon ${tilt ? 'tilt' : ''}`}>
+                    <div className={`${props.withIcon ? props.withIcon.icon:""} ${tilt ? 'tilt' : ''}`}>
                     </div>
                 </button>
-            <div className= {`qui-btn qui-icon-caption size-${props.asSize ? props.asSize:""}`}style={labelStyle}>
+            <div className= {`qui-btn-caption size-${props.asSize ? props.asSize:""}`}style={labelStyle}>
                 {getLabel(labelContent, "caption")}
             </div>
-
+</button>
         </motion.div>
     );
 };

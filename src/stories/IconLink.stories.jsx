@@ -2,9 +2,10 @@ import React from "react";
 import IconLink from "../components/Buttons/IconLink/IconLink.react";
 
 const dictionary = JSON.stringify({
-
+       en: {
+        icon: {label: "Home"},
+    },
     hi: {
-        loading: "बस एक मिनट...",
         icon: { label: "होम आइकन" },
     },
 });
@@ -30,7 +31,7 @@ export default {
 
         asVariant: {
             control: "select",
-            options: ["primary", "secondary", "success", "warning","error"],
+            options: ["primary", "secondary", "success", "warning"],
             table: {
                 category: "as-Flags",
             },
@@ -93,6 +94,7 @@ export default {
                     format: "label",
                     content: "",
                     textColor: "",
+                    hoverTextColor:"",
                 },
             },
         },
@@ -148,9 +150,7 @@ export default {
         (story) => (
             <div
                 style={{
-                    width: "100%",
                     textAlign: "center",
-                    fontSize: "1.25em",
                 }}
             >
                 {story()}
@@ -180,11 +180,12 @@ Default.args = {
     asAligned: "center",
 
     withLabel: {
-        format: "label",
+        format: "caption",
         content: "Home",
-        textColor: "#000000",
+        textColor: "",
+        hoverTextColor:"",
     },
-    withIcon: { icon: "fa fa-home", size: "2em" },
+    withIcon: { icon: "fa fa-home", size: "2em", position:"left"},
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -239,9 +240,6 @@ ColoredIcon.parameters = {
     },
 };
 
-
-
-
 // -------------------------------------------------------------
 // Fluid Icon
 // -------------------------------------------------------------
@@ -260,8 +258,6 @@ FluidIcon.parameters = {
         code: `<IconLink isFluid={true}/>`,
     },
 };
-
-
 
 // -------------------------------------------------------------
 // Animated Icon
@@ -282,7 +278,7 @@ AnimatedIcon.parameters = {
                 "Use to animate the entry of the Icon with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<IconLink withAnimation={{animation: "collapse", duration: 0., delay: 0}}}/>`,
+            code: `<IconLink withAnimation={{animation: "collapse", duration: 0.8, delay: 0}}}/>`,
         },
     },
 };
@@ -308,8 +304,11 @@ TranslatedIcon.parameters = {
         source: {
             code: `<IconLink withTranslation={{lang: "hi", tgt: "icon", dictionary: ${JSON.stringify(
                 {
+
+                    en: {
+                        icon: {label: "Home"},
+                    },
                     hi: {
-                        loading: "बस एक मिनट...",
                         icon: {
                             label: "होम आइकन",
                         },

@@ -1,32 +1,23 @@
 
 
-.qui .qui-btn.is-circular {
-    border-radius: 50%;
-}
-
-.qui .qui-btn.is-circular {
+.qui .is-circular{
     border-radius: 50%;
     padding: 8px;
 }
 
-.qui .qui-btn.is-circular.size-big,
-.qui .qui-btn.is-circular.size-huge {
+.qui .is-circular.size-big,
+.qui .is-circular.size-huge,
+ .qui .is-circular.size-massive {
     padding: 16px;
-}
 
-.qui .qui-btn.is-circular.size-massive {
-    padding: 24px;
 }
-
 
 .qui .tilt{
         transform: rotate(10deg);
         transition: all ease-in-out;
     }
 
- .qui button{
-     border: none;
- }   
+
 
  .qui .qui-icon-label {
     font-weight:normal;
@@ -36,6 +27,15 @@
     font-style: normal;
 }
 
+
+
+  
+.qui .button{
+       border:none;
+  }
+.qui .width{
+      width: 100px;;
+}
 
 
 
