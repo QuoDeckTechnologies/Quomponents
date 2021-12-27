@@ -1,25 +1,12 @@
 import React from "react";
-import MenuBlock from "../components/AppMenu/MenuBlock.react";
-
-// const dictionary = JSON.stringify({
-//     en: {
-//         loading: "Please wait...",
-//         button: {
-//             text: "Button",
-//             label: "Do not press this repeatedly...",
-//         },
-//     },
-//     hi: {
-//         loading: "बस एक मिनट...",
-//         button: { text: "होम", label: "होम" },
-//     },
-// });
+import MenuBlock from "../components/AppMenu/MenuBlock/MenuBlock.react";
 
 export default {
-    title: "Design System/AppMenu/MenuBlock",
+    title: "Design System/Appmenu/MenuBlock",
     component: MenuBlock,
     argTypes: {
-        content: "Icon",
+        data: { type: "json", content: [] },
+        content: "Export",
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
@@ -33,10 +20,9 @@ export default {
                 defaultValue: false,
             },
         },
-
         asVariant: {
             control: "select",
-            options: ["primary", "secondary", "warning"],
+            options: ["primary", "secondary", "success", "warning", "error"],
             table: {
                 category: "as-Flags",
             },
@@ -57,7 +43,7 @@ export default {
         },
         asFloated: {
             control: "select",
-            options: ["left", "right", "inline"],
+            options: ["left", "right", "none", "inline"],
             table: {
                 category: "as-Flags",
             },
@@ -69,12 +55,11 @@ export default {
                 category: "as-Flags",
             },
         },
-
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    backgroundColor: "#ED6E6E",
+                    backgroundColor: "",
                     accentColor: "",
                     textColor: "",
                     hoverBackgroundColor: "",
@@ -122,7 +107,6 @@ export default {
                 },
             },
         },
-
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -141,8 +125,7 @@ export default {
                 defaultValue: false,
             },
         },
-
-        onClick: {
+        onDone: {
             table: {
                 category: "Events",
                 defaultValue: null,
@@ -163,49 +146,55 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a icon with a link",
-        a11y: { disable: true },
-    }, 
+        componentSubtitle: "Displays a basic data exporter button for general-purpose use. We can export file or json data using this component.",
+        a11y: { disable: true }
+    },
 };
-//----------------------------------------------------------
-// MenuBlock  Icon
-//---------------------------------------------------------
-const Template = (args) => <MenuBlock {...args} />;
-export const MenuBlockIcon = Template.bind({});
-MenuBlockIcon.args = {
-    content: "MenuBlockIcon",
-    asEmphasis: "contained",
-    isCircular: true,
 
+// -------------------------------------------------------------
+// Default
+// -------------------------------------------------------------
+const Template = (args) => <MenuBlock {...args} />;
+export const Default = Template.bind({});
+Default.args = {
+    data: {
+        type: "json",
+    },
+    content: "Export",
+    asEmphasis: "contained",
+    isCircular: false,
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "inline",
+    asFloated: "none",
     asPadded: "normal",
     asAligned: "center",
-
+    withLabel: {
+        format: "label",
+        content: "",
+        textColor: "",
+    },
     withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "left" },
     withColor: {
-        backgroundColor: "#ED6E6E",
+        backgroundColor: "",
         accentColor: "",
         textColor: "",
         hoverBackgroundColor: "",
         hoverTextColor: "",
     },
-
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
     },
-
     isDisabled: false,
     isHidden: false,
-    isFluid: false,
+    isFluid: false
 };
-MenuBlockIcon.parameters = {
+Default.parameters = {
     docs: {
         source: {
-            code: `<MenuBlock {...${JSON.stringify(MenuBlockIcon.args, null, 2)}}/>`,
+            code: `<MenuBlock {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
+
