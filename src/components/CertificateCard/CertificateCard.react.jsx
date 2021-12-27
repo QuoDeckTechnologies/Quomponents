@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+import { getAnimation, getQuommons, getTranslation } from "../../common/javascripts/helpers";
 
-import "../../../common/stylesheets/common.css";
+import "../../common/stylesheets/common.css";
 import "./CertificateCard.scss";
 import "../../common/stylesheets/overrule.scss";
 
@@ -111,8 +111,11 @@ CertificateCard.defaultProps = {
 };
 
 
+
+
 export default function CertificateCard(props) {
 
+    
     const animate = getAnimation(props.withAnimation);
 
     let quommonClasses = getQuommons(props);
@@ -127,6 +130,33 @@ export default function CertificateCard(props) {
         color: props.withColor?.accentColor,
     };
 
+    let labelContent = Object.assign({}, props.withLabel);
+    let tObj = null
+
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        if (labelContent && tObj?.label) labelContent.content = tObj.label;
+    }
+
+    const getStatusCard = (status) => {
+        let iconClass
+        if( status === 'in progress') iconClass = 'fas fa-adjust qui-icon-rotate'
+        if( status === 'not started') iconClass = 'far fa-circle '
+        if( status === 'completed') iconClass = 'fas fa-check-circle'
+        
+        return (
+            <div className="qui-status">
+                <div className={`qui-statusInner ${quommonClasses.childClasses}`}>
+                    { tObj ? <p>{tObj?.text[status.replace(' ','')]}</p> : <p>{status.toUpperCase()}</p>}                  
+                    <i className={`${iconClass} variant-${props.asVariant}-text`} style={accentColors}></i>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <motion.div
@@ -136,42 +166,17 @@ export default function CertificateCard(props) {
         >
         <div>
             <div className={`qui-card `}>
-                <div className="qui-margin">
                 <div className={`qui-header`}>
                     <div className={`qui-colorBanner qui-btn ${quommonClasses.childClasses}`} style={bannerColors}></div>
                     <div className={`qui-courseHeader variant-${props.asVariant}-text`} style={headerColors}>
-                        <p>{props.withLabel ? props.withLabel.content : ''}</p>
+                        <p>{labelContent?.content}</p>
                     </div>
                 </div>
                 <div className="qui-imageCard">
-                {props.asStatus === 'certificate' &&  <div>
-                    <img className="qui-certificateImage" src={`${props.withIcon?.certificate}`} alt="certificate" /> 
-                </div>}
-                {props.asStatus === 'not started' &&
-                    <div className="qui-status">
-                            <div className={`qui-statusInner ${quommonClasses.childClasses}`}>
-                                <p>NOT STARTED</p>
-                                <i className={`far fa-circle variant-${props.asVariant}-text`} style={accentColors}></i>
-                            </div>
-                    </div>
-                }
-                { props.asStatus === 'in progress' && 
-                        <div className="qui-status">
-                            <div className={`qui-statusInner ${quommonClasses.childClasses}`}>
-                            <p>IN PROGRESS</p>
-                            <i className={`fas fa-adjust qui-icon-rotate variant-${props.asVariant}-text`} style={accentColors}></i>
-                            </div>
-                        </div>
-                }
-                { props.asStatus === 'completed' && 
-                    <div className="qui-status">
-                        <div className={`qui-statusInner ${quommonClasses.childClasses}`}>
-                        <p>COMPLETED</p>
-                        <i className={`fas fa-check-circle variant-${props.asVariant}-text`} style={accentColors}d></i>
-                        </div>
-                    </div>
-                }
-                </div>
+                    {props.asStatus === 'certificate' &&  <div>
+                        <img className="qui-certificateImage" src={`${props.withIcon?.certificate}`} alt="certificate" /> 
+                    </div>}
+                    {props.asStatus !== 'certificate' && getStatusCard(props.asStatus)}
                 </div>
             </div>    
         </div>

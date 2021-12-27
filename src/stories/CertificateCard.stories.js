@@ -2,6 +2,16 @@ import React from "react";
 import CertificateCard from "../components/CertificateCard/CertificateCard.react";
 
 
+const dictionary = JSON.stringify({
+    hi: {
+        CertificateCard: { text: {
+            notstarted : 'शुरू नही हुआ',
+            completed : 'पूरा है',
+            inprogress : 'चालू है'
+        },
+        label: "बातचीत कौशल 101" },
+    },
+});
 
 export default {
     title: "Design System/CertificateCard/CertificateCard",
@@ -122,11 +132,36 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    // withTranslation: {
+    //     lang: "hi",
+    //     tgt: "CertificateCard",
+    //     dictionary: dictionary,
+    // },
 };
 Default.parameters = {
     docs: {
         source: {
             code: `<CertificateCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Default
+// -------------------------------------------------------------
+export const TranslatedCard = Template.bind({})
+TranslatedCard.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "CertificateCard",
+        dictionary: dictionary,
+    },
+}
+TranslatedCard.parameters = {
+    docs: {
+        source: {
+            code: `<TranslatedCard {...${JSON.stringify(TranslatedCard.args, null, 2)}}/>`,
         },
     },
 };
