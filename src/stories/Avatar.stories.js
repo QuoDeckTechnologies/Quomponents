@@ -1,10 +1,11 @@
 import React from "react";
-import Avatar from "../components/AppMenu/Avatar.react";
+import Avatar from "../components/AppMenu/Avatar/Avatar.react";
+
+
 export default {
-    title: "Design System/AppMenu/Avatar",
+    title: "Design System/Appmenu/Avatar",
     component: Avatar,
     argTypes: {
-        content: "Icon",
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
@@ -21,7 +22,7 @@ export default {
 
         asVariant: {
             control: "select",
-            options: ["primary", "secondary", "warning"],
+            options: ["primary", "secondary", "success", "warning", "error"],
             table: {
                 category: "as-Flags",
             },
@@ -42,7 +43,7 @@ export default {
         },
         asFloated: {
             control: "select",
-            options: ["left", "right", "inline"],
+            options: ["left", "right", "none", "inline"],
             table: {
                 category: "as-Flags",
             },
@@ -72,6 +73,7 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     icon: "",
+                    userImage: "",
                     size: "",
                     position: "left",
                 },
@@ -126,6 +128,12 @@ export default {
                 defaultValue: false,
             },
         },
+        isLoading: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
 
         onClick: {
             table: {
@@ -148,27 +156,29 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a icon with a link",
+        componentSubtitle: "Displays a basic Icon for general-purpose use",
         a11y: { disable: true },
-    }, 
+        // controls: { expanded: true }
+    },
 };
-//----------------------------------------------------------
-// Avatar Profile Icon
-//---------------------------------------------------------
+
 const Template = (args) => <Avatar {...args} />;
-export const AvatarIcon = Template.bind({});
-AvatarIcon.args = {
-    content: "AvatarIcon",
+//----------------------------------------------------------
+// Default
+//---------------------------------------------------------
+export const Default = Template.bind({});
+Default.args = {
     asEmphasis: "contained",
     isCircular: true,
 
     asVariant: "primary",
     asSize: "normal",
     asFloated: "inline",
-    asPadded: "normal",
+    asPadded: "compact",
     asAligned: "center",
-
-    withIcon: { icon: "fas fa-image", size: "1em", position: "left" },
+     
+ 
+    withIcon: { icon: "fas fa-user",userImage: "" ,size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -176,15 +186,20 @@ AvatarIcon.args = {
         hoverBackgroundColor: "",
         hoverTextColor: "",
     },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+
     isDisabled: false,
     isHidden: false,
     isFluid: false,
 };
-AvatarIcon.parameters = {
+Default.parameters = {
     docs: {
         source: {
-            code: `<Avatar {...${JSON.stringify(AvatarIcon
-            .args, null, 2)}}/>`,
+            code: `<Avatar {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };

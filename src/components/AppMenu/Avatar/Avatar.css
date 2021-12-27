@@ -1,0 +1,30 @@
+img{
+    border-radius: 50%;
+}
+/* ================================================= */
+/* image Size Definitions */
+/* ================================================= */
+.qui-avatarImage.size-massive {
+    height:70%;
+    width:70%;
+}
+.qui-avatarImage.size-huge {
+    height:60%;
+    width:60%;
+}
+.qui-avatarImage.size-big {
+    height:50%;
+    width:50%
+}
+.qui-avatarImage.size-normal {
+    height:40%;
+    width:40%;
+}
+.qui-avatarImage.size-small {
+    height:30%;
+    width:30%;
+}
+.qui-avatarImage.size-tiny {
+    height:20%;
+    width:20%;
+}
