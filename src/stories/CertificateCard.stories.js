@@ -1,7 +1,6 @@
 import React from "react";
 import CertificateCard from "../components/CertificateCard/CertificateCard.react";
 
-<<<<<<< HEAD
 
 const dictionary = JSON.stringify({
     hi: {
@@ -14,17 +13,15 @@ const dictionary = JSON.stringify({
     },
 });
 
-=======
->>>>>>> 6081c4b3cfb7f26c6c743113fcbe74b9218ff28a
 export default {
     title: "Design System/CertificateCard/CertificateCard",
     component: CertificateCard,
     argTypes: {
         asStatus: {
-            control: 'select',
-            options: ["not started", "in progress", "completed", "certificate"],
-            table: {
-                category: 'as-Flags'
+            control : 'select',
+            options : [ "not started", "in progress", "completed", "certificate" ],
+            table : {
+                category : 'as-Flags'
             }
         },
         asVariant: {
@@ -43,11 +40,11 @@ export default {
                 },
             },
         },
-        withIcon: {
-            table: {
-                category: 'with-Params',
-                defaultValue: {
-                    certificate: ''
+        withIcon : {
+            table : {
+                category : 'with-Params',
+                defaultValue : {
+                    certificate : ''
                 }
             }
         },
@@ -86,10 +83,10 @@ export default {
                 },
             },
         },
-        isHidden: {
-            table: {
-                category: 'is-Toggles',
-                defaultValue: false,
+        isHidden : {
+            table : {
+                category : 'is-Toggles',
+                defaultValue : false,
             }
         },
     },
@@ -109,6 +106,7 @@ export default {
         a11y: { disable: true },
     },
 };
+
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -117,14 +115,14 @@ export const Default = Template.bind({});
 Default.args = {
 
     asVariant: "primary",
-    asStatus: 'not started',
+    asStatus : 'not started',
     asSize: "normal",
     withLabel: {
         content: "Negotiation Skills 101",
     },
 
-    isHidden: false,
-    withIcon: { certificate: "https://media.istockphoto.com/vectors/certificate-template-vector-id1097299164" },
+    isHidden : false,
+    withIcon: { certificate : "https://media.istockphoto.com/vectors/certificate-template-vector-id1097299164" },
     withColor: {
         accentColor: "",
         textColor: "",
@@ -147,7 +145,6 @@ Default.parameters = {
         },
     },
 };
-<<<<<<< HEAD
 
 // -------------------------------------------------------------
 // Default
@@ -168,69 +165,3 @@ TranslatedCard.parameters = {
         },
     },
 };
-=======
-// -------------------------------------------------------------
-// Not Started CertificateCard
-// -------------------------------------------------------------
-export const NotStartedCertificateCard = Template.bind({});
-NotStartedCertificateCard.args = {
-    ...Default.args,
-    asStatus: 'not started',
-};
-NotStartedCertificateCard.parameters = {
-    docs: {
-        description: {
-            story: "Use to Show the CertificateCard with not started mark or empty icon.",
-        },
-    },
-};
-// -------------------------------------------------------------
-// In Progress CertificateCard
-// -------------------------------------------------------------
-export const InProgressCertificateCard = Template.bind({});
-InProgressCertificateCard.args = {
-    ...Default.args,
-    asStatus: 'in progress',
-};
-InProgressCertificateCard.parameters = {
-    docs: {
-        description: {
-            story: "Use to show certificate card with progress mark or icon.",
-        },
-    },
-};
-// -------------------------------------------------------------
-// Completed CertificateCard
-// -------------------------------------------------------------
-export const CompletedCertificateCard = Template.bind({});
-CompletedCertificateCard.args = {
-    ...Default.args,
-    asStatus: 'completed',
-};
-CompletedCertificateCard.parameters = {
-    docs: {
-        description: {
-            story: "Use to Show the CertificateCard with Completion check-mark or icon.",
-        },
-    },
-};
-// -------------------------------------------------------------
-// Animated CertificateCard
-// -------------------------------------------------------------
-export const AnimatedCertificateCard = Template.bind({});
-AnimatedCertificateCard.args = {
-    ...Default.args,
-    withAnimation: {
-        animation: "collapse",
-        duration: 0.5,
-        delay: 0,
-    },
-};
-AnimatedCertificateCard.parameters = {
-    docs: {
-        description: {
-            story: "Use to animate the entry of the CertificateCard with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
-        },
-    },
-};
->>>>>>> 6081c4b3cfb7f26c6c743113fcbe74b9218ff28a
