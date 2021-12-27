@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import {
     getQuommons,
     getTranslation,
-    getAnimation,
 } from "../../../common/javascripts/helpers";
 
 import "../../../common/stylesheets/common.css";

@@ -8,8 +8,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 import {
     getQuommons,
-    getTranslation,
-    getAnimation,
 } from "../../../common/javascripts/helpers";
 
 

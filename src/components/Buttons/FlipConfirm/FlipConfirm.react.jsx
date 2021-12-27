@@ -245,21 +245,21 @@ export default function FlipConfirm(props) {
         <div className={`qui-fc-btn-main`}>
             <div className={`qui-fc-btn ${mode ? "is-open" : ""}`} ref={buttonRef}>
                 <div className={`qui-fc-btn-back ${mode ? "is-enable" : "qui is-hidden"}`}>
-                    <p>{withConfirmation.header}</p>
+                    <p>{withConfirmation?.header}</p>
                     <ButtonGroup>
                         <Button
                             asEmphasis={props.asEmphasis}
                             asVariant="error"
                             onClick={yesClick}
                         >
-                            {withConfirmation.yes}
+                            {withConfirmation?.yes}
                         </Button>
                         <Button
                             asEmphasis="outlined"
                             asVariant="primary"
                             onClick={noClick}
                         >
-                            {withConfirmation.no}
+                            {withConfirmation?.no}
                         </Button>
                     </ButtonGroup>
                 </div>
