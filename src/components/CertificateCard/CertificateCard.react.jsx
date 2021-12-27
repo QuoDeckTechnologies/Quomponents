@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import "../../common/stylesheets/overrule.scss";
-import "./CertificateCard.scss";
 import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+
+import "../../../common/stylesheets/common.css";
+import "./CertificateCard.scss";
+import "../../common/stylesheets/overrule.scss";
 
 CertificateCard.propTypes = {
     //=======================================
