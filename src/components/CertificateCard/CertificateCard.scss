@@ -1,4 +1,6 @@
-
+.qui{
+  height: 100%;
+}
 .qui-card{
   border-radius: 5%;
   box-shadow: 0px 10px 10px rgb(192, 192, 192);
@@ -92,7 +94,7 @@
   }
   .qui-status i{
     font-size: 4em;
-    -webkit-text-stroke: 3px #EEEEEE;
+    -webkit-text-stroke: 4px #EEEEEE;
   }
 }
 @media screen and (max-width: 600px) {
@@ -125,7 +127,7 @@
   }
   .qui-status i{
     font-size: 2em;
-    -webkit-text-stroke: 1px #EEEEEE;
+    -webkit-text-stroke: 1.5px #EEEEEE;
   }
   .qui-colorBanner{
     width: 0.5em;

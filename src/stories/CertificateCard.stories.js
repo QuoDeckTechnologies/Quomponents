@@ -32,7 +32,6 @@ export default {
             table : {
                 category : 'with-Params',
                 defaultValue : {
-                    icon : '',
                     certificate : ''
                 }
             }
@@ -41,9 +40,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    format: "label",
                     content: "",
-                    textColor: "",
                 },
             },
         },
@@ -67,23 +64,11 @@ export default {
                 },
             },
         },
-        isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
         isHidden : {
             table : {
                 category : 'is-Toggles',
                 defaultValue : false,
             }
-        },
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
-            },
         },
     },
     decorators: [
@@ -91,6 +76,8 @@ export default {
             <div
                 style={{
                     textAlign: "center",
+                    // display : 'flex',
+                    // flexDirection : 'row'
                 }}
             >
                 {story()}
@@ -98,7 +85,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic CertificateCard for general-purpose use",
+        componentSubtitle: "Certificate Card displays status of completion or certificate if available",
         a11y: { disable: true },
     },
 };
@@ -114,13 +101,10 @@ Default.args = {
     asStatus : 'not started',
 
     withLabel: {
-        format: "caption",
         content: "Negotiation Skills 101",
-        textColor: "#000000",
     },
-    isDisabled : false,
     isHidden : false,
-    withIcon: { icon: "", certificate : "https://media.istockphoto.com/vectors/certificate-template-vector-id1097299164" },
+    withIcon: { certificate : "https://media.istockphoto.com/vectors/certificate-template-vector-id1097299164" },
     withColor: {
         accentColor: "",
         textColor: "",

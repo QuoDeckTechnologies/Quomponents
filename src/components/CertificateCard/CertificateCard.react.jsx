@@ -76,10 +76,6 @@ CertificateCard.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
-    /**
-       Use to enable/disable the Button
-     */
-    isDisabled: PropTypes.bool,
 
 };
 
@@ -99,7 +95,6 @@ CertificateCard.defaultProps = {
     withTranslation: null,
 
     isHidden: false,
-    isDisabled: false,
 };
 
 
