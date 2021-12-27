@@ -113,7 +113,7 @@ CertificateCard.defaultProps = {
 
 
 export default function CertificateCard(props) {
-//-------------------------------------------------------------------
+    //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
@@ -140,7 +140,9 @@ export default function CertificateCard(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
-
+    //-------------------------------------------------------------------
+    // 5. Get translation of the component
+    //-------------------------------------------------------------------
 
     let labelContent = Object.assign({}, props.withLabel);
     let tObj = null
@@ -169,6 +171,9 @@ export default function CertificateCard(props) {
             </div>
         )
     }
+
+    // ========================= Render Function =================================
+
 
     return (
         <motion.div
