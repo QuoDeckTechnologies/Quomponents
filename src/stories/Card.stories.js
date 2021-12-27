@@ -1,26 +1,17 @@
 import React from "react";
 import Card from "../components/CertificateCard/Card.react";
 
-
 export default {
     title: "Design System/CertificateCard/Card",
     component: Card,
     argTypes: {
-        content: "Card",
-        asEmphasis: {
-            control: "select",
-            options: ["text", "outlined", "contained"],
-            table: {
-                category: "as-Flags",
-            },
+        asStatus: {
+            control : 'select',
+            options : [ "not started", "in progress", "completed", "certificate" ],
+            table : {
+                category : 'as-Flags'
+            }
         },
-        isCircular: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -28,56 +19,23 @@ export default {
                 category: "as-Flags",
             },
         },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asPadded: {
-            control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asFloated: {
-            control: "select",
-            options: ["left", "right", "none", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    backgroundColor: "",
                     accentColor: "",
                     textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
                 },
             },
         },
-        withIcon: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    icon: "",
-                    size: "",
-                    position: "left",
-                },
-            },
+        withIcon : {
+            table : {
+                category : 'with-Params',
+                defaultValue : {
+                    icon : '',
+                    certificate : ''
+                }
+            }
         },
         withLabel: {
             table: {
@@ -109,32 +67,18 @@ export default {
                 },
             },
         },
-
-        isHidden: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
         isDisabled: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
             },
         },
-        isFluid: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
+        isHidden : {
+            table : {
+                category : 'is-Toggles',
+                defaultValue : false,
+            }
         },
-        isLoading: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-
         onClick: {
             table: {
                 category: "Events",
@@ -146,9 +90,7 @@ export default {
         (story) => (
             <div
                 style={{
-                    width: "100%",
                     textAlign: "center",
-                    fontSize: "1.25em",
                 }}
             >
                 {story()}
@@ -158,7 +100,6 @@ export default {
     parameters: {
         componentSubtitle: "Displays a basic Card for general-purpose use",
         a11y: { disable: true },
-        // controls: { expanded: true }
     },
 };
 
@@ -168,31 +109,24 @@ export default {
 const Template = (args) => <Card {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: "Default Card",
-    asEmphasis: "contained",
-    isCircular: false,
 
     asVariant: "primary",
-    asSize: "normal",
-    asFloated: "none",
-    asPadded: "normal",
-    asAligned: "center",
+    asStatus : 'not started',
 
     withLabel: {
         format: "caption",
-        content: "Do not press this Card repeatedly...",
+        content: "Negotiation Skills 101",
         textColor: "#000000",
     },
-    withIcon: { icon: "https://imbuildcon.in/images/media/certificate/certificate-img1-f.jpg", size: "", position: "" },
+    isDisabled : false,
+    isHidden : false,
+    withIcon: { icon: "", certificate : "https://media.istockphoto.com/vectors/certificate-template-vector-id1097299164" },
     withColor: {
-        backgroundColor: "",
         accentColor: "",
         textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
     },
     withAnimation: {
-        animation: "zoom",
+        animation: "collapse",
         duration: 0.5,
         delay: 0,
     },
@@ -202,15 +136,11 @@ Default.args = {
     //     dictionary: dictionary,
     // },
 
-    isDisabled: false,
-    isLoading: false,
-    isHidden: false,
-    isFluid: false,
 };
-// Default.parameters = {
-//     docs: {
-//         source: {
-//             code: `<Card {...${JSON.stringify(Default.args, null, 2)}}/>`,
-//         },
-//     },
-// };
+Default.parameters = {
+    docs: {
+        source: {
+            code: `<Card {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
