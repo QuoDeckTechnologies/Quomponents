@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import IconLink from "../IconLink/IconLink.react"
-
 import {
     getQuommons,
 } from "../../../common/javascripts/helpers";
@@ -74,7 +73,7 @@ ToolbarDark.propTypes = {
     withIcon: PropTypes.shape({
         icon: PropTypes.string,
         size: PropTypes.string,
-        position: PropTypes.oneOf(["left", "right"]),
+        position: PropTypes.oneOf(["center", "left", "right"]),
     }),
     /**
     Use to add a heading label, a footer caption or a title popover to the component
@@ -109,12 +108,12 @@ ToolbarDark.defaultProps = {
 
     // Component Specific props
     //=======================================
-    asEmphasis: "contained",
+    asEmphasis: "text",
     isCircular: false,
 
     // Quommon props
     //=======================================
-    asVariant: "warning",
+    asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
     asAligned: "center",
@@ -157,10 +156,9 @@ function getColors(colors, emphasis, hovered) {
 **/
 export default function ToolbarDark(props) {
 
-    const [tilt, setTilt] = useState(false)
+
 
     const [hovered, setHovered] = useState(false);
-
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -184,6 +182,13 @@ export default function ToolbarDark(props) {
         : {};
     let loadingText = "";
 
+    const getIcon = (iconClass) => {
+        return (
+            <i className={iconClass}></i>
+
+        )
+
+    }
 
 
     // ========================= Render Function =================================
@@ -191,34 +196,36 @@ export default function ToolbarDark(props) {
     return (
         <motion.div
             className={`qui ${quommonClasses.parentClasses}`}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
 
 
-        >    <div className={`qui-btn backbar ${quommonClasses.childClasses}`} >
+        >    <div className="backbar">      
 
 
-                <button
+                <div
                     variant={props.asEmphasis}
                     color={props.asVariant}
-                    className={`qui-btn ${quommonClasses.childClasses} size-${props.asSize ? props.asSize : ""}`}
+                    className={`qui-btn ${quommonClasses.childClasses}`}
+                    className={`flex size-${props.asSize ? props.asSize : ""}`}
                     style={Object.assign({}, colors, props.style)}
-                    onClick={props.onClick}
                 >
 
-                    <div className={`${props.withIcon ? props.withIcon.icon : ""}`}>
+
+
+                        <IconLink {...props} />
+                        
+
+
+
+
                     </div>
-
-                </button>
-                <div className={`qui-btn-label size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
-                    {getLabel(labelContent, "label")}
                 </div>
 
-                <div className={`qui-btn-caption size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
-                    {getLabel(labelContent, "caption")}
-                </div>
-
-
-
-            </div>
         </motion.div>
     );
 };
+
+
+
+

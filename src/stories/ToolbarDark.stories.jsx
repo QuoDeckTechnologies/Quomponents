@@ -1,14 +1,6 @@
 import React from "react";
 import ToolbarDark from "../components/Buttons/ToolbarDark/ToolbarDark.react";
 
-const dictionary = JSON.stringify({
-       en: {
-        icon: {label: "Home"},
-    },
-    hi: {
-        icon: { label: "होम आइकन" },
-    },
-});
 
 export default {
     title: "Design System/Buttons/ToolbarDark",
@@ -58,8 +50,8 @@ export default {
             },
         },
 
-    
-    
+
+
 
         withColor: {
             table: {
@@ -77,9 +69,9 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    icon: "",
+                    icon:"",
                     size: "",
-                    position: "left",
+                    position: "center",
                 },
             },
         },
@@ -90,11 +82,11 @@ export default {
                     format: "label",
                     content: "",
                     textColor: "",
-                    hoverTextColor:"",
+                    hoverTextColor: "",
                 },
             },
         },
-      isHidden: {
+        isHidden: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
@@ -127,7 +119,7 @@ export default {
                 style={{
                     width: "100%",
                     textAlign: "left",
-                    fontSize: "1.25em",
+                    fontSize: "1em",
                 }}
             >
                 {story()}
@@ -147,29 +139,29 @@ export default {
 const Template = (args) => <ToolbarDark {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    asEmphasis: "contained",
+    asEmphasis: "text",
     isCircular: false,
 
-    asVariant: "",
+    asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
-    asAligned: "left",
+    asAligned: "center",
 
     withLabel: {
         format: "caption",
         content: "Home",
-        textColor: "#000000",
-        hoverTextColor:"pink",
+        textColor: "",
+        hoverTextColor: "",
     },
-    withIcon: { icon: "fa fa-home", size: "2em", position:"left"},
+    withIcon: { icon: ["fa fa-certificate", "fa fa-wallet","fa fa-home"]},
     withColor: {
-        backgroundColor: "",
+        backgroundColor: "  ",
         accentColor: "",
         textColor: "",
         hoverBackgroundColor: "",
         hoverTextColor: "",
     },
-   
+
     isDisabled: false,
     isHidden: false,
     isFluid: false,
@@ -178,6 +170,91 @@ Default.parameters = {
     docs: {
         source: {
             code: `<ToolbarDark {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+
+
+
+
+
+
+
+
+const AllVariantsTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            asFloated: "inline",
+            withLabel: null,
+            withTranslation: null,
+            withColor: null,
+            
+        }),
+    };
+    return (
+        <div>
+            <ToolbarDark
+                {...Object.assign({}, baseObj, {
+                    asVariant: "primary",
+                    withIcon: { icon: "fas fa-certificate", size: "1em", position: "center" },
+                    withLabel: {
+                        format: "caption",
+                        content: "Certificate",
+                        textColor: "",
+                        hoverTextColor: "",
+                    },
+
+                })}
+            />
+            <ToolbarDark
+                {...Object.assign({}, baseObj, {
+                    asVariant: "primary",
+                    withIcon: { icon: "fas fa-wallet", size: "1em", position: "center" },
+                    withLabel: {
+                        format: "caption",
+                        content: "Wallet",
+                        textColor: "",
+                        hoverTextColor: "",
+                    },
+                })}
+            />
+            <ToolbarDark
+                {...Object.assign({}, baseObj, {
+                    asVariant: "primary",
+                    withIcon: { icon: "fas fa-gift", size: "1em", position: "center" },
+                    withLabel: {
+                        format: "caption",
+                        content: "Rewards",
+                        textColor: "",
+                        hoverTextColor: "",
+                    },
+                })}
+            />
+            <ToolbarDark
+            {...Object.assign({}, baseObj, {
+                asVariant: "primary",
+                withIcon: { icon: "fas fa-chart-pie", size: "1em", position: "center" },
+                withLabel: {
+                    format: "caption",
+                    content: "Reports",
+                    textColor: "",
+                    hoverTextColor: "",
+                },
+            })}
+        />
+        </div>
+    );
+};
+
+
+export const AllVariants = AllVariantsTemplate.bind({});
+AllVariants.parameters = {
+    docs: {
+        description: {
+            story: "5 variants are supported. Use as per purpose noted here.",
+        },
+        source: {
+            code: `<IconList asVariant="primary"/>`,
         },
     },
 };
