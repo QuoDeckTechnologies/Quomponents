@@ -85,8 +85,6 @@ export default {
             <div
                 style={{
                     textAlign: "center",
-                    // display : 'flex',
-                    // flexDirection : 'row'
                 }}
             >
                 {story()}

@@ -135,7 +135,7 @@ export default function CertificateCard(props) {
         <div>
             <div className={`qui-card `}>
                 <div className="qui-margin">
-                <div className="qui-header">
+                <div className={`qui-header`}>
                     <div className={`qui-colorBanner qui-btn ${quommonClasses.childClasses}`} style={bannerColors}></div>
                     <div className={`qui-courseHeader variant-${props.asVariant}-text`} style={headerColors}>
                         <p>{props.withLabel ? props.withLabel.content : ''}</p>
@@ -143,7 +143,7 @@ export default function CertificateCard(props) {
                 </div>
                 <div className="qui-imageCard">
                 {props.asStatus === 'certificate' &&  <div>
-                    <img className="qui-certificateImage" src={`${props.withIcon ? props.withIcon.certificate : ''}`} alt="certificate" /> 
+                    <img className="qui-certificateImage" src={`${props.withIcon?.certificate}`} alt="certificate" /> 
                 </div>}
                 {props.asStatus === 'not started' &&
                     <div className="qui-status">
@@ -163,7 +163,7 @@ export default function CertificateCard(props) {
                 }
                 { props.asStatus === 'completed' && 
                     <div className="qui-status">
-                        <div className={`qui-statusInner ${quommonClasses.childClasses}s`}>
+                        <div className={`qui-statusInner ${quommonClasses.childClasses}`}>
                         <p>COMPLETED</p>
                         <i className={`fas fa-check-circle variant-${props.asVariant}-text`} style={accentColors}d></i>
                         </div>
