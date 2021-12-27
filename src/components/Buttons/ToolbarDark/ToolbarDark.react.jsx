@@ -215,7 +215,7 @@ export default function ToolbarDark(props) {
         >    <div className={`qui-btn backbar ${quommonClasses.childClasses}`} >
 
 
-                <button
+                <div
                     variant={props.asEmphasis}
                     color={props.asVariant}
                     className={`qui-btn ${quommonClasses.childClasses} size-${props.asSize ? props.asSize : ""}`}
@@ -224,15 +224,7 @@ export default function ToolbarDark(props) {
 
                     <div >
 
-                        {/* <IconLink onClick={props.onClick}
->
-
-                            <div className="icon">
-                                {icon}
-                            </div>
-                         
-
-                        </IconLink> */}
+                       
 
                         {props.withIcon.icon.map(icon =>{
                             return(
@@ -242,7 +234,7 @@ export default function ToolbarDark(props) {
                         })}
 
                             </div>
-                        </button>
+                        </div>
                         <div className={`qui-btn-label size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
                             {getLabel(labelContent, "label")}
                         </div>

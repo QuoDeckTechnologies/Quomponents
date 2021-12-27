@@ -152,7 +152,7 @@ Default.args = {
         textColor: "red",
         hoverTextColor:"pink",
     },
-    withIcon: { icon: ["fas fa-share","fas fa-home","fas fa-bars", "fas fa-desktop"], size: "", position:""},
+    withIcon: { icon: ["fas fa-share","fas fa-home","fas fa-bars", "fas fa-desktop"], size: "2em", position:" center"},
     withColor: {
         backgroundColor: "blue",
         accentColor: "",
