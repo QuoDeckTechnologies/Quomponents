@@ -31,25 +31,6 @@ CertificateCard.propTypes = {
         "error",
     ]),
     /**
-    Use to override component colors and behavior
-    */
-    withColor: PropTypes.shape({
-        textColor: PropTypes.string,
-        accentColor : PropTypes.string
-    }),
-    /**
-    Use to add the spinning icon to the component
-    */
-    withIcon: PropTypes.shape({
-        certificate: PropTypes.string,
-    }),
-    /**
-    Use to add a heading label, a footer caption or a title popover to the component
-    */
-    withLabel: PropTypes.shape({
-        content: PropTypes.string,
-    }),
-       /**
     Use to define component text size in increasing order
     */
     asSize: PropTypes.oneOf([
@@ -60,6 +41,25 @@ CertificateCard.propTypes = {
         "huge",
         "massive",
     ]),
+    /**
+    Use to override component colors and behavior
+    */
+    withColor: PropTypes.shape({
+        textColor: PropTypes.string,
+        accentColor: PropTypes.string
+    }),
+    /**
+    Use to add the spinning icon to the component
+    */
+    withIcon: PropTypes.shape({
+        icon: PropTypes.string,
+    }),
+    /**
+    Use to add a heading label, a footer caption or a title popover to the component
+    */
+    withLabel: PropTypes.shape({
+        content: PropTypes.string,
+    }),
     /**
    Use to define the entry animation of the component
    */
@@ -89,7 +89,6 @@ CertificateCard.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
-
 };
 
 CertificateCard.defaultProps = {
@@ -114,21 +113,34 @@ CertificateCard.defaultProps = {
 
 
 export default function CertificateCard(props) {
-
-    
-    const animate = getAnimation(props.withAnimation);
-
+//-------------------------------------------------------------------
+    // 1. Set the classes
+    //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
-
+    //-------------------------------------------------------------------
+    // 2. Use to set header banner Color
+    //-------------------------------------------------------------------
     let bannerColors = {
         backgroundColor: props.withColor?.textColor,
     };
+    //-------------------------------------------------------------------
+    // 3.Use to set header Color
+    //-------------------------------------------------------------------
     let headerColors = {
         color: props.withColor?.textColor,
     };
+    //-------------------------------------------------------------------
+    // 4. Use to set accent Color of icon
+    //-------------------------------------------------------------------
     let accentColors = {
         color: props.withColor?.accentColor,
     };
+    //-------------------------------------------------------------------
+    // 5. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
+
+
 
     let labelContent = Object.assign({}, props.withLabel);
     let tObj = null
@@ -140,7 +152,7 @@ export default function CertificateCard(props) {
     ) {
         tObj = getTranslation(props.withTranslation);
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
-    }
+    } 
 
     const getStatusCard = (status) => {
         let iconClass

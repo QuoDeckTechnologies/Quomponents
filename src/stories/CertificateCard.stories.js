@@ -132,11 +132,6 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-    // withTranslation: {
-    //     lang: "hi",
-    //     tgt: "CertificateCard",
-    //     dictionary: dictionary,
-    // },
 };
 Default.parameters = {
     docs: {
@@ -145,9 +140,72 @@ Default.parameters = {
         },
     },
 };
-
 // -------------------------------------------------------------
-// Default
+// Not Started CertificateCard
+// -------------------------------------------------------------
+export const NotStartedCertificateCard = Template.bind({});
+NotStartedCertificateCard.args = {
+    ...Default.args,
+    asStatus: 'not started',
+};
+NotStartedCertificateCard.parameters = {
+    docs: {
+        description: {
+            story: "Use to Show the CertificateCard with not started mark or empty icon.",
+        },
+    },
+};
+// -------------------------------------------------------------
+// In Progress CertificateCard
+// -------------------------------------------------------------
+export const InProgressCertificateCard = Template.bind({});
+InProgressCertificateCard.args = {
+    ...Default.args,
+    asStatus: 'in progress',
+};
+InProgressCertificateCard.parameters = {
+    docs: {
+        description: {
+            story: "Use to show certificate card with progress mark or icon.",
+        },
+    },
+};
+// -------------------------------------------------------------
+// Completed CertificateCard
+// -------------------------------------------------------------
+export const CompletedCertificateCard = Template.bind({});
+CompletedCertificateCard.args = {
+    ...Default.args,
+    asStatus: 'completed',
+};
+CompletedCertificateCard.parameters = {
+    docs: {
+        description: {
+            story: "Use to Show the CertificateCard with Completion check-mark or icon.",
+        },
+    },
+};
+// -------------------------------------------------------------
+// Animated CertificateCard
+// -------------------------------------------------------------
+export const AnimatedCertificateCard = Template.bind({});
+AnimatedCertificateCard.args = {
+    ...Default.args,
+    withAnimation: {
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
+    },
+};
+AnimatedCertificateCard.parameters = {
+    docs: {
+        description: {
+            story: "Use to animate the entry of the CertificateCard with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        },
+    },
+};
+// -------------------------------------------------------------
+// Translated Card
 // -------------------------------------------------------------
 export const TranslatedCard = Template.bind({})
 TranslatedCard.args = {
