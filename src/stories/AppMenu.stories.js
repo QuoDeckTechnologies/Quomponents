@@ -175,6 +175,7 @@ const Template = (args) => <AppMenu {...args} />;
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
+    content:"   ",
     asEmphasis: "text",
     isCircular: true,
 
@@ -185,7 +186,7 @@ Default.args = {
     asAligned: "center",
      
  
-    withIcon: { icon: "fas fa-user" ,size: "1em", position: "left" },
+    withIcon: { icon: "fas fa-user" ,size: "1em", position: "right" },
     withUser:{userImage: ""},
     withColor: {
         backgroundColor: "",

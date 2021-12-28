@@ -191,7 +191,7 @@ export default function MenuBlock(props) {
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
 
     // ========================= Render Function =================================
-
+        console.log(props)
     return (
         
             <div onClick={()=>props.onClick} 

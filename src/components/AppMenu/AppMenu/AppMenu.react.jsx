@@ -242,9 +242,9 @@ export default function AppMenu(props) {
     return (
             <div className="qui-container">
                  <div className="qui-avtarImage">
-                    <Avatar {...props}/>
+                    <Avatar {...props} />
                 </div>
-                <MenuBlock {...props}/>
+                <MenuBlock {...props} withIcon={{icon:"fas fa-ellipsis-v",size: "1em", position: "right"}} />
                
             </div>
     );

@@ -73,7 +73,7 @@ export default {
                 defaultValue: {
                     icon: "",
                     size: "",
-                    position: "left",
+                    position: "right",
                 },
             },
         },
