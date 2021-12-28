@@ -1,54 +1,29 @@
-
-.qui .is-circular{
-  border-radius: 50%;
-  padding: 8px;
-}
-
-.qui .is-circular.size-big,
-.qui .is-circular.size-huge,
-.qui .is-circular.size-massive {
-  padding: 16px;
-
-}
-
-.qui button{
-   border: none;
-}   
-
-.qui .qui-icon-label {
-  font-weight:normal;
-}
-
-.qui .qui-icon-caption {
-  font-style: normal;
-}
-
 .qui .backbar{
   background-color: black;
   opacity:.8;
-  padding: 30px;
+  padding: 0.5em 1em;
   text-align: center;
   border-radius: 20px;
 }
-
-
-.qui .qui-icon-label {
-  font-weight:normal;
-}
-
-.qui .qui-icon-caption {
-  font-style: normal;
-}
-
-.flex{
+.qui-icon{
   display: flex;
 }
 
-.qui .border:hover{
-  border:.1px solid blue;
-  
+button{
+  border:none;
+}
+.fa{
+  font-size: 20px;
 }
 
-.qui .pad-normal{
-  padding: 0px;
+.qui button:hover{
+  border:1px solid rgb(25, 168, 216);
 }
+
+@media screen and (min-width:320px){
+ 
+ .qui .pad-normal {
+    padding:0.32em; 
+  }
+}
+

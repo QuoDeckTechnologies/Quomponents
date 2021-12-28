@@ -7,6 +7,14 @@ export default {
     component: ToolbarDark,
     argTypes: {
 
+        content: [
+            {
+                icon:"",
+                label:"label1",
+                link:"",
+            }
+        ],
+
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
@@ -139,10 +147,33 @@ export default {
 const Template = (args) => <ToolbarDark {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    asEmphasis: "text",
+    content: [
+        {
+            icon:"fa fa-share",
+            label:"Certificate",
+            link:"",
+        },
+        {
+            icon:"fa fa-wallet",
+            label:"Wallet",
+            link:"",
+        },
+        {
+            icon:"fa fa-gift",
+            label:"Rewards",
+            link:"",
+        },
+        {
+            icon:"fa fa-chart-pie",
+            label:"Reports",
+            link:"",
+        }
+    ],
+
+    asEmphasis: "outlined",
     isCircular: false,
 
-    asVariant: "primary",
+    asVariant:"secondary",
     asSize: "normal",
     asPadded: "normal",
     asAligned: "center",
@@ -153,9 +184,9 @@ Default.args = {
         textColor: "",
         hoverTextColor: "",
     },
-    withIcon: { icon: ["fa fa-certificate", "fa fa-wallet","fa fa-home"]},
+    withIcon: { icon:"fa fa-home"},
     withColor: {
-        backgroundColor: "  ",
+        backgroundColor: "",
         accentColor: "",
         textColor: "",
         hoverBackgroundColor: "",
@@ -174,87 +205,3 @@ Default.parameters = {
     },
 };
 
-
-
-
-
-
-
-
-const AllVariantsTemplate = (args) => {
-    const baseObj = {
-        ...Object.assign({}, Default.args, args, {
-            asFloated: "inline",
-            withLabel: null,
-            withTranslation: null,
-            withColor: null,
-            
-        }),
-    };
-    return (
-        <div>
-            <ToolbarDark
-                {...Object.assign({}, baseObj, {
-                    asVariant: "primary",
-                    withIcon: { icon: "fas fa-certificate", size: "1em", position: "center" },
-                    withLabel: {
-                        format: "caption",
-                        content: "Certificate",
-                        textColor: "",
-                        hoverTextColor: "",
-                    },
-
-                })}
-            />
-            <ToolbarDark
-                {...Object.assign({}, baseObj, {
-                    asVariant: "primary",
-                    withIcon: { icon: "fas fa-wallet", size: "1em", position: "center" },
-                    withLabel: {
-                        format: "caption",
-                        content: "Wallet",
-                        textColor: "",
-                        hoverTextColor: "",
-                    },
-                })}
-            />
-            <ToolbarDark
-                {...Object.assign({}, baseObj, {
-                    asVariant: "primary",
-                    withIcon: { icon: "fas fa-gift", size: "1em", position: "center" },
-                    withLabel: {
-                        format: "caption",
-                        content: "Rewards",
-                        textColor: "",
-                        hoverTextColor: "",
-                    },
-                })}
-            />
-            <ToolbarDark
-            {...Object.assign({}, baseObj, {
-                asVariant: "primary",
-                withIcon: { icon: "fas fa-chart-pie", size: "1em", position: "center" },
-                withLabel: {
-                    format: "caption",
-                    content: "Reports",
-                    textColor: "",
-                    hoverTextColor: "",
-                },
-            })}
-        />
-        </div>
-    );
-};
-
-
-export const AllVariants = AllVariantsTemplate.bind({});
-AllVariants.parameters = {
-    docs: {
-        description: {
-            story: "5 variants are supported. Use as per purpose noted here.",
-        },
-        source: {
-            code: `<IconList asVariant="primary"/>`,
-        },
-    },
-};

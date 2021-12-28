@@ -249,7 +249,7 @@ export default function IconLink(props) {
             onMouseUp={()=> setTilt(false)}
 
         >
-        <button className={`qui-btn ${quommonClasses.childClasses}`}
+        <div className={`qui-btn ${quommonClasses.childClasses}`}
 >            <div className= {`qui-btn-label size-${props.asSize ? props.asSize:""}`}style={labelStyle}>
                  {getLabel(labelContent, "label")}
             </div>
@@ -267,7 +267,7 @@ export default function IconLink(props) {
             <div className= {`qui-btn-caption size-${props.asSize ? props.asSize:""}`}style={labelStyle}>
                 {getLabel(labelContent, "caption")}
             </div>
-</button>
+</div>
         </motion.div>
     );
 };

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import IconLink from "../IconLink/IconLink.react"
+import _ from "lodash";
 import {
     getQuommons,
 } from "../../../common/javascripts/helpers";
@@ -10,12 +10,17 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./ToolbarDark.scss";
 import "../../../common/stylesheets/overrule.scss";
+import IconLink from "../IconLink/IconLink.react"
 
 ToolbarDark.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-
+    content: PropTypes.arrayOf(PropTypes.shape({
+        icon: PropTypes.string,
+        label: PropTypes.string,
+        link: PropTypes.string,
+    })).isRequired,
     /**
     Set action emphasis in increasing order 
     */
@@ -108,6 +113,7 @@ ToolbarDark.defaultProps = {
 
     // Component Specific props
     //=======================================
+    content: [],
     asEmphasis: "text",
     isCircular: false,
 
@@ -121,16 +127,10 @@ ToolbarDark.defaultProps = {
     withColor: null,
     withIcon: null,
 
-
-
     isHidden: false,
     isDisabled: false,
     isFluid: false,
 };
-
-function getLabel(labelObj, position) {
-    return labelObj?.format === position ? labelObj.content : "";
-}
 
 function getColors(colors, emphasis, hovered) {
     let colorStyle = hovered
@@ -155,7 +155,7 @@ function getColors(colors, emphasis, hovered) {
 - props are not being passed to the ToolbarDark. Please speak to the admin to handle any new prop.
 **/
 export default function ToolbarDark(props) {
- const [hovered, setHovered] = useState(false);
+    const [hovered, setHovered] = useState(false);
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -177,8 +177,8 @@ export default function ToolbarDark(props) {
     let labelStyle = labelContent?.textColor
         ? { color: labelContent.textColor }
         : {};
-    let loadingText = "";
 
+    let { content } = props;
 
     // ========================= Render Function =================================
 
@@ -186,20 +186,27 @@ export default function ToolbarDark(props) {
         <motion.div
             className={`qui ${quommonClasses.parentClasses}`}
             onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}> 
+            onMouseLeave={() => setHovered(false)}>
             <div className="backbar">
-                <div
-                    variant={props.asEmphasis}
-                    color={props.asVariant}
-                    className={`qui-btn ${quommonClasses.childClasses}`}
-                    className={`flex size-${props.asSize ? props.asSize : ""}`}
-                    style={Object.assign({}, colors, props.style)}
-                >
-                    <IconLink {...props} />
+                <div className={`qui-icon`}> 
+                    {_.map(content, (icon, index) => {
+                        return (
+                            <div
+                                key={index}
+                                onClick={props.onClick}
 
+                            >
+                                <IconLink
+                                     {...props}
+                                    withIcon={{ icon: icon.icon }}
+                                    withLabel={{ content: icon.label, format: "caption" }}
+                                />
+                            </div>
+                        )
+                    }
+                    )}
                 </div>
             </div>
-
         </motion.div>
     );
 };
