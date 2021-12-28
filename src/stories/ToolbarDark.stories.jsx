@@ -1,7 +1,6 @@
 import React from "react";
 import ToolbarDark from "../components/Buttons/ToolbarDark/ToolbarDark.react";
 
-
 export default {
     title: "Design System/Buttons/ToolbarDark",
     component: ToolbarDark,
@@ -112,8 +111,6 @@ export default {
                 defaultValue: false,
             },
         },
-
-
         onClick: {
             table: {
                 category: "Events",
@@ -170,10 +167,10 @@ Default.args = {
         }
     ],
 
-    asEmphasis: "outlined",
+    asEmphasis: "text",
     isCircular: false,
 
-    asVariant:"secondary",
+    asVariant:"primary",
     asSize: "normal",
     asPadded: "normal",
     asAligned: "center",
