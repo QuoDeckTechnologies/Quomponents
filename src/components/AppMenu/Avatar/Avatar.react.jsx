@@ -230,7 +230,7 @@ export default function Avatar(props) {
         quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
             }`;
 
-    quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
+    quommonClasses.childClasses += ` emp-text`;
     //-------------------------------------------------------------------
     // 2. Set the component colors
     //-------------------------------------------------------------------
@@ -289,7 +289,7 @@ export default function Avatar(props) {
             )
         }else{
             return (
-                <i className={icon.icon} ></i>
+                <i className={icon?.icon} ></i>
             )
         }
     }
@@ -303,16 +303,10 @@ export default function Avatar(props) {
             className={`qui ${quommonClasses.parentClasses}`}
 
         >  
-         {/* <div className="qui-label" style={labelStyle}>
-                {getLabel(labelContent, "label")}
-            </div> */}
-            <div className={`qui-btn   ${quommonClasses.childClasses}`} onClick={props.onClick}>
+         
+            <div className={`qui-btn   ${quommonClasses.childClasses}`}>
                      {getAvatar(props.withUser,props.withIcon)}
             </div>
-            
-            {/* <div className="qui-caption" style={labelStyle}>
-                {getLabel(labelContent, "caption")}
-            </div> */}
         </div>
     );
     

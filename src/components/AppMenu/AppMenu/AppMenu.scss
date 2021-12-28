@@ -1,0 +1,9 @@
+.qui-container{
+    display: flex;
+    align-items: center;
+}
+.qui-avtarImage{
+    transform: translateX(50%);
+    z-index: 2;
+    margin-left: 1em;
+}

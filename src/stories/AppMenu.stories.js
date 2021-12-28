@@ -1,18 +1,17 @@
 import React from "react";
-import Avatar from "../components/AppMenu/Avatar/Avatar.react";
-
+import AppMenu from "../components/AppMenu/AppMenu/AppMenu.react";
 
 export default {
-    title: "Design System/Appmenu/Avatar",
-    component: Avatar,
+    title: "Design System/Appmenu/Appmenu",
+    component: AppMenu,
     argTypes: {
-        // asEmphasis: {
-        //     control: "select",
-        //     options: ["text", "outlined", "contained"],
-        //     table: {
-        //         category: "as-Flags",
-        //     },
-        // },
+        asEmphasis: {
+            control: "select",
+            options: ["text", "outlined", "contained"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         isCircular: {
             table: {
                 category: "is-Toggles",
@@ -170,13 +169,13 @@ export default {
     },
 };
 
-const Template = (args) => <Avatar {...args} />;
+const Template = (args) => <AppMenu {...args} />;
 //----------------------------------------------------------
 // Default
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
-    // asEmphasis: "text",
+    asEmphasis: "text",
     isCircular: true,
 
     asVariant: "primary",
@@ -208,7 +207,7 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<Avatar {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<AppMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };

@@ -1,24 +1,26 @@
 // Import npm packages
-import React, {  } from "react";
-import Button from "../../Buttons/Button/Button.react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import MenuBlock from "../MenuBlock/MenuBlock.react";
+import Avatar from "../Avatar/Avatar.react";
 import {
     getQuommons,
+    getTranslation,
+    getAnimation,
 } from "../../../common/javascripts/helpers";
-
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./MenuBlock.scss";
+import "./AppMenu.scss";
 import "../../../common/stylesheets/overrule.scss";
 
-MenuBlock.propTypes = {
+
+AppMenu.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
 
     /**
-    Button Text has to be in content or passed as children to the component. Is optional if you only want an icon.
+    AppMenu Text has to be in content or passed as children to the component. Is optional if you only want an icon.
     */
     content: PropTypes.string,
     /**
@@ -26,7 +28,7 @@ MenuBlock.propTypes = {
     */
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
     /**
-    Use for rounded corners or circular icon button 
+    Use for rounded corners or circular icon AppMenu 
     */
     isCircular: PropTypes.bool,
 
@@ -84,6 +86,11 @@ MenuBlock.propTypes = {
         icon: PropTypes.string,
         size: PropTypes.string,
         position: PropTypes.oneOf(["left", "right"]),
+    }),  /**
+    Use to add an image to the component
+    */
+    withImage: PropTypes.shape({
+        userImage: PropTypes.string,
     }),
     /**
     Use to add a heading label, a footer caption or a title popover to the component
@@ -115,7 +122,7 @@ MenuBlock.propTypes = {
     */
     withTranslation: PropTypes.shape({
         lang: PropTypes.string,
-        tgt: PropTypes.string,
+        tgt: PropTypes.string, 
         dictionary: PropTypes.string,
     }),
 
@@ -137,12 +144,12 @@ MenuBlock.propTypes = {
     isLoading: PropTypes.bool,
 
     /**
-    Button component must have the onClick function passed as props
+    AppMenu component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
 };
 
-MenuBlock.defaultProps = {
+AppMenu.defaultProps = {
     // Component Specific props
     //=======================================
     asEmphasis: "contained",
@@ -158,6 +165,7 @@ MenuBlock.defaultProps = {
 
     withColor: null,
     withIcon: null,
+    withUser: null,
     withLabel: null,
     withAnimation: null,
     withTranslation: null,
@@ -168,36 +176,77 @@ MenuBlock.defaultProps = {
     isLoading: false,
 };
 
-/**
-## Notes
-- The design system used for this component is Material UI (@mui/material)
-- The animation system used for this component is Framer Motion (framer-motion)
-- Pass inline styles to the component to override any of the component css
-- Or add custom css in overrule.scss to override the component css
-- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
-**/
-export default function MenuBlock(props) {
-
+export default function AppMenu(props) {
+    const [hovered, setHovered] = useState(false);
 
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
     if (props.isCircular)
-        quommonClasses.childClasses += ` is-circular ${
-            props.content === "" && props.withIcon ? "is-only-icon" : ""
-        }`;
+        quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
+            }`;
 
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
+  
+    //-------------------------------------------------------------------
+    // 3. Set the AppMenu text
+    //-------------------------------------------------------------------
+    let AppMenuText = props.content
+        ? props.content
+        : props.children
+            ? props.children
+            : "";
+    let iconOnly = AppMenuText === "";
+
+    //-------------------------------------------------------------------
+    // 4. Set the label/caption/popover and loading text
+    //-------------------------------------------------------------------
+    let labelContent = Object.assign({}, props.withLabel);
+    let labelStyle = labelContent?.textColor
+        ? { color: labelContent.textColor }
+        : {};
+    let loadingText = "Please Wait...";
+
+    //-------------------------------------------------------------------
+    // 5. Translate the text objects in case their is a dictionary provided
+    //-------------------------------------------------------------------
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        let tObj = getTranslation(props.withTranslation);
+        if (tObj && props.content && props.content !== "") {
+            AppMenuText = tObj.text;
+        }
+        if (labelContent && tObj?.label) labelContent.content = tObj.label;
+        loadingText = getTranslation(props.withTranslation, "loading");
+    }
+
+    //-------------------------------------------------------------------
+    // 6. Provide loading text if loading is clicked
+    //-------------------------------------------------------------------
+    AppMenuText = props.isLoading ? loadingText : AppMenuText;
+    labelContent = props.isLoading ? "" : labelContent;
+
+    //-------------------------------------------------------------------
+    // 7. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
+
 
     // ========================= Render Function =================================
 
-    return (
-        
-            <div onClick={()=>props.onClick} 
-            className= {`qui qui-Menu ${quommonClasses.childClasses}`}>
-                <Button  {...props}/>
-            </div>
 
+    return (
+            <div className="qui-container">
+                 <div className="qui-avtarImage">
+                    <Avatar {...props}/>
+                </div>
+                <MenuBlock {...props}/>
+               
+            </div>
     );
+    
 }
