@@ -82,9 +82,13 @@ Avatar.propTypes = {
     */
     withIcon: PropTypes.shape({
         icon: PropTypes.string,
-        userImage: PropTypes.string,
         size: PropTypes.string,
         position: PropTypes.oneOf(["left", "right"]),
+    }),  /**
+    Use to add an image to the component
+    */
+    withImage: PropTypes.shape({
+        userImage: PropTypes.string,
     }),
     /**
     Use to add a heading label, a footer caption or a title popover to the component
@@ -116,7 +120,7 @@ Avatar.propTypes = {
     */
     withTranslation: PropTypes.shape({
         lang: PropTypes.string,
-        tgt: PropTypes.string,
+        tgt: PropTypes.string, 
         dictionary: PropTypes.string,
     }),
 
@@ -159,6 +163,7 @@ Avatar.defaultProps = {
 
     withColor: null,
     withIcon: null,
+    withUser: null,
     withLabel: null,
     withAnimation: null,
     withTranslation: null,
@@ -277,14 +282,14 @@ export default function Avatar(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
-    const getAvatar = (avatar) => {
-        if(avatar.userImage){
+    const getAvatar = (avatar,icon) => {
+        if(avatar?.userImage){
             return(
-                <img className={`qui ${quommonClasses.parentClasses} ${quommonClasses.childClasses}`} src={avatar.userImage}/>
+                <img className={`${quommonClasses.childClasses}`} src={avatar?.userImage}/>
             )
         }else{
             return (
-                <i className={avatar.icon} ></i>
+                <i className={icon.icon} ></i>
             )
         }
     }
@@ -302,7 +307,7 @@ export default function Avatar(props) {
                 {getLabel(labelContent, "label")}
             </div> */}
             <div className={`qui-btn   ${quommonClasses.childClasses}`} onClick={props.onClick}>
-                     {getAvatar(props.withIcon)}
+                     {getAvatar(props.withUser,props.withIcon)}
             </div>
             
             {/* <div className="qui-caption" style={labelStyle}>

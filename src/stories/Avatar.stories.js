@@ -79,6 +79,14 @@ export default {
                 },
             },
         },
+        withUser: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    userImage: "",
+                },
+            },
+        },
         withLabel: {
             table: {
                 category: "with-Params",
@@ -168,7 +176,7 @@ const Template = (args) => <Avatar {...args} />;
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
-    asEmphasis: "contained",
+    asEmphasis: "text",
     isCircular: true,
 
     asVariant: "primary",
@@ -178,7 +186,8 @@ Default.args = {
     asAligned: "center",
      
  
-    withIcon: { icon: "fas fa-user",userImage: "" ,size: "1em", position: "left" },
+    withIcon: { icon: "fas fa-user" ,size: "1em", position: "left" },
+    withUser:{userImage: ""},
     withColor: {
         backgroundColor: "",
         accentColor: "",
