@@ -280,7 +280,7 @@ export default function Avatar(props) {
     const getAvatar = (avatar) => {
         if(avatar.userImage){
             return(
-                <img className={`qui-avatarImage  ${quommonClasses.childClasses}`} src={avatar.userImage}/>
+                <img className={`qui ${quommonClasses.parentClasses} ${quommonClasses.childClasses}`} src={avatar.userImage}/>
             )
         }else{
             return (
