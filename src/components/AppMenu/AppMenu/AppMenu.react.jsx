@@ -187,7 +187,7 @@ export default function AppMenu(props) {
         quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
             }`;
 
-    quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
+    quommonClasses.childClasses += `emp-${props.asEmphasis}`;
   
     //-------------------------------------------------------------------
     // 3. Set the AppMenu text
@@ -240,13 +240,14 @@ export default function AppMenu(props) {
 
 
     return (
-            <div className="qui-container">
-                 <div className="qui-avtarImage">
-                    <Avatar {...props} />
-                </div>
-                <MenuBlock {...props} withIcon={{icon:"fas fa-ellipsis-v",size: "1em", position: "right"}} />
-               
+     
+        <div className="qui-container">  
+            <div className ="qui-avtarImage">  
+                <Avatar {...props} />
             </div>
+            <MenuBlock {...props} withIcon={{icon:"fas fa-ellipsis-v",size: "1em", position: "right"}} />
+        </div>
+          
     );
      
 }

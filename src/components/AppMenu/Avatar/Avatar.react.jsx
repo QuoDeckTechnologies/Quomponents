@@ -9,7 +9,7 @@ import {
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./Avatar.css";
+import "./Avatar.scss";
 import "../../../common/stylesheets/overrule.scss";
 
 Avatar.propTypes = {
@@ -230,7 +230,7 @@ export default function Avatar(props) {
         quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
             }`;
 
-    quommonClasses.childClasses += ` emp-text`;
+    quommonClasses.childClasses += `emp-text`;
     //-------------------------------------------------------------------
     // 2. Set the component colors
     //-------------------------------------------------------------------
@@ -301,9 +301,7 @@ export default function Avatar(props) {
     return (
         <div
             className={`qui ${quommonClasses.parentClasses}`}
-
-        >  
-         
+        >
             <div className={`qui-btn   ${quommonClasses.childClasses}`}>
                      {getAvatar(props.withUser,props.withIcon)}
             </div>

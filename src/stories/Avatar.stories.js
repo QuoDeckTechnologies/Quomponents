@@ -6,13 +6,13 @@ export default {
     title: "Design System/Appmenu/Avatar",
     component: Avatar,
     argTypes: {
-        // asEmphasis: {
-        //     control: "select",
-        //     options: ["text", "outlined", "contained"],
-        //     table: {
-        //         category: "as-Flags",
-        //     },
-        // },
+        asEmphasis: {
+            control: "select",
+            options: ["text", "outlined", "contained"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         isCircular: {
             table: {
                 category: "is-Toggles",
@@ -169,14 +169,14 @@ export default {
         // controls: { expanded: true }
     },
 };
-
+ 
 const Template = (args) => <Avatar {...args} />;
 //----------------------------------------------------------
 // Default
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
-    // asEmphasis: "text",
+    asEmphasis: "text",
     isCircular: true,
 
     asVariant: "primary",

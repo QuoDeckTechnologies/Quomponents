@@ -195,7 +195,7 @@ export default function MenuBlock(props) {
     return (
         
             <div onClick={()=>props.onClick} 
-            className= {`qui qui-Menu ${quommonClasses.childClasses}`}>
+            className= {`qui qui-block ${quommonClasses.childClasses}`}>
                 <Button  {...props}/>
             </div>
 
