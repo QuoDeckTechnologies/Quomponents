@@ -72,9 +72,9 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    icon: "",
+                    icon: "", 
                     userImage: "",
-                    size: "",
+                    size: "", 
                     position: "left",
                 },
             },

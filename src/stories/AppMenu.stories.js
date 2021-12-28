@@ -143,7 +143,7 @@ export default {
         },
 
         onClick: {
-            table: {
+            table: { 
                 category: "Events",
                 defaultValue: null,
             },

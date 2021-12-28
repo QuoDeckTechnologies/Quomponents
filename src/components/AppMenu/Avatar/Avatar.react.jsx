@@ -232,7 +232,7 @@ export default function Avatar(props) {
 
     quommonClasses.childClasses += `emp-text`;
     //-------------------------------------------------------------------
-    // 2. Set the component colors
+    // 2. Set  the component colors
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
 

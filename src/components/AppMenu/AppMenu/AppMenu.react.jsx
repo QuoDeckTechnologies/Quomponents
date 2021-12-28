@@ -99,7 +99,7 @@ AppMenu.propTypes = {
         format: PropTypes.oneOf(["label", "caption", "popover"]),
         content: PropTypes.string,
         textColor: PropTypes.string,
-    }),
+    }),  
     /**
     Use to define the entry animation of the component
     */
@@ -241,11 +241,12 @@ export default function AppMenu(props) {
 
     return (
      
-        <div className="qui-container">  
+        <div className="qui-container" >  
             <div className ="qui-avtarImage">  
-                <Avatar {...props} />
+                <Avatar {...props}  />
             </div>
-            <MenuBlock {...props} withIcon={{icon:"fas fa-ellipsis-v",size: "1em", position: "right"}} />
+            <MenuBlock {...props}
+            withIcon={{icon:"fas fa-ellipsis-v",size: "1em", position: "right"}} />
         </div>
           
     );
