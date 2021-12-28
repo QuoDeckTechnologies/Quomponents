@@ -1,0 +1,59 @@
+.qui-banner-carousel {
+  overflow: inherit;
+}
+
+.qui-banner-carousel .qui-slide-container {
+  width: 99%;
+}
+
+.qui-banner-carousel .qui-slide {
+  height: 40vh;
+  width: 99%;
+  margin: 0px 1px;
+}
+
+.qui-banner-carousel .qui-slider-card-box {
+  display: none;
+}
+
+.qui-banner-carousel .slick-dots li button:before {
+  font-size: 9px;
+}
+
+.qui-banner-carousel .slick-dots li.slick-active button:before {
+  font-size: 12px;
+  color: #a6a6a6;
+}
+
+.qui-banner-carousel .slick-dots li {
+  margin: 0 -4px;
+}
+
+.qui-banner-carousel .slick-slide {
+  transform: scaleY(0.8);
+
+  .qui-card-label {
+    display: none;
+  }
+
+  &.slick-active {
+    transform: scaleY(1);
+    .qui-slider-card-box {
+      display: inline-block;
+    }
+
+    .qui-card-label {
+      display: inline;
+    }
+  }
+}
+
+@media only screen and (orientation: portrait) and (max-width: 1024px) {
+  .qui-banner-carousel .qui-slide-container {
+    height: 18vh;
+  }
+  .qui-banner-carousel .qui-slide {
+    height: 25vh;
+    width: 96%;
+  }
+}
