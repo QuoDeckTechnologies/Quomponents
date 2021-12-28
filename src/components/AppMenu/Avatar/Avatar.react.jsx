@@ -310,5 +310,6 @@ export default function Avatar(props) {
             </div> */}
         </div>
     );
+    
 }
 
