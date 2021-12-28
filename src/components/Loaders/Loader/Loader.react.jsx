@@ -165,7 +165,7 @@ export default function Loader(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props, "loader");
 
     //-------------------------------------------------------------------
     // 2. Set the component colors
@@ -195,8 +195,8 @@ export default function Loader(props) {
     //-------------------------------------------------------------------
     let labelContent = props.withLabel
         ? Object.assign({}, props.withLabel, {
-              content: _.sample(props.withLabel.content),
-          })
+            content: _.sample(props.withLabel.content),
+        })
         : null;
     let labelStyle = props.withColor?.textColor
         ? { color: props.withColor.textColor }
@@ -289,9 +289,8 @@ export default function Loader(props) {
                             }}
                         >
                             <i
-                                className={`qui-loader-icon ${
-                                    props.withIcon?.icon
-                                } variant-${getClassAccent(props)}-text`}
+                                className={`qui-loader-icon ${props.withIcon?.icon
+                                    } variant-${getClassAccent(props)}-text`}
                                 style={iconStyle}
                             ></i>
                         </Box>

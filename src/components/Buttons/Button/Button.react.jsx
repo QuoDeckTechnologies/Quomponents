@@ -193,8 +193,8 @@ function getIcon(iconObj, position, iconOnly) {
     let iconMargin = iconOnly
         ? "0"
         : position === "left"
-        ? "0 0.5em 0 0"
-        : "0 0 0 0.5em";
+            ? "0 0.5em 0 0"
+            : "0 0 0 0.5em";
 
     return (
         iconObj?.icon &&
@@ -221,11 +221,10 @@ export default function Button(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props, "button");
     if (props.isCircular)
-        quommonClasses.childClasses += ` is-circular ${
-            props.content === "" && props.withIcon ? "is-only-icon" : ""
-        }`;
+        quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
+            }`;
 
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
     //-------------------------------------------------------------------
@@ -239,8 +238,8 @@ export default function Button(props) {
     let buttonText = props.content
         ? props.content
         : props.children
-        ? props.children
-        : "";
+            ? props.children
+            : "";
     let iconOnly = buttonText === "";
 
     //-------------------------------------------------------------------
