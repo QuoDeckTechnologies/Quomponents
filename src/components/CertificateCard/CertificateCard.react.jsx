@@ -152,7 +152,7 @@ export default function CertificateCard(props) {
     const getStatusCard = (status) => {
         let iconClass
         if (status === 'in progress') iconClass = 'fas fa-adjust qui-icon-rotate'
-        if (status === 'not started') iconClass = 'far fa-circle '
+        if (status === 'not started') iconClass = 'far fa-circle'
         if (status === 'completed') iconClass = 'fas fa-check-circle'
 
         return (
@@ -176,22 +176,18 @@ export default function CertificateCard(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div>
-                <div className={`qui-card `}>
-                    <div className={`qui-header`}>
-                        <div className={`qui-colorBanner qui-btn ${quommonClasses.childClasses}`} style={bannerColors}></div>
-                        <div className={`qui-courseHeader variant-${props.asVariant}-text`} style={headerColors}>
-                            <p>{labelContent?.content}</p>
-                        </div>
-                    </div>
-                    <div className="qui-imageCard">
-                        {props.asStatus === 'certificate' && <div>
-                            <img className="qui-certificateImage" src={`${props.withIcon?.icon}`} alt="certificate" />
-                        </div>}
-                        {props.asStatus !== 'certificate' && getStatusCard(props.asStatus)}
-                    </div>
+        <div className="qui-card">
+            <div className="qui-header">
+                <div className={`qui-colorBanner qui-btn ${quommonClasses.childClasses}`} style={bannerColors}></div>
+                <div className={`qui-courseHeader variant-${props.asVariant}-text`} style={headerColors}>
+                    <p>{labelContent?.content}</p>
                 </div>
             </div>
+            <div className="qui-imageCard">
+                {props.asStatus === 'certificate' && <img className="qui-certificateImage" src={`${props.withIcon?.icon}`} alt="certificate"/>}
+                {props.asStatus !== 'certificate' && getStatusCard(props.asStatus)}
+            </div>
+        </div>
         </motion.div>
     );
 }
