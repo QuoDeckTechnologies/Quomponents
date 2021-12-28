@@ -173,7 +173,7 @@ Default.args = {
         content: "",
         textColor: "",
     },
-    withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "left" },
+    withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "right" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
