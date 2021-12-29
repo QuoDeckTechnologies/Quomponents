@@ -5,20 +5,6 @@ export default {
     title: "Design System/Appmenu/Appmenu",
     component: AppMenu,
     argTypes: {
-        asEmphasis: {
-            control: "select",
-            options: ["text", "outlined", "contained"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        isCircular: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -33,13 +19,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asPadded: {
-            control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
@@ -47,14 +26,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-
         withColor: {
             table: {
                 category: "with-Params",
@@ -86,16 +57,6 @@ export default {
                 },
             },
         },
-        withLabel: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    format: "label",
-                    content: "",
-                    textColor: "",
-                },
-            },
-        },
         withAnimation: {
             table: {
                 category: "with-Params",
@@ -116,7 +77,6 @@ export default {
                 },
             },
         },
-
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -129,19 +89,6 @@ export default {
                 defaultValue: false,
             },
         },
-        isFluid: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        isLoading: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-
         onClick: {
             table: { 
                 category: "Events",
@@ -175,18 +122,10 @@ const Template = (args) => <AppMenu {...args} />;
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
-    content:"   ",
-    asEmphasis: "text",
-    isCircular: true,
-
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "inline",
-    asPadded: "compact",
-    asAligned: "center",
-     
- 
-    withIcon: { icon: "fas fa-user" ,size: "1em", position: "right" },
+    asFloated: "inline", 
+    withIcon: { icon: "fas fa-ellipsis-v" ,size: "1em", position: "right" },
     withUser:{userImage: ""},
     withColor: {
         backgroundColor: "",
@@ -200,10 +139,8 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-
     isDisabled: false,
     isHidden: false,
-    isFluid: false,
 };
 Default.parameters = {
     docs: {

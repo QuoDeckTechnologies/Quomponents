@@ -1,15 +1,24 @@
-.qui-container{
+.qui.float-none{
     display: flex;
-    align-items: center;
 }
-.qui-avtarImage{
-    transform:translateX(50%);
-    z-index:2;
-    margin-top:0.2em; 
-    margin-left: 1em; 
+.qui.float-left{
+    display: flex;
+    justify-content: flex-start;
+}
+.qui.float-inline{
+    display: flex;
+    justify-content: center;
+}
+.qui.float-right{
+    display: flex;
+    justify-content: flex-end;
 }
 
-.qui-avtarImage{
-    border-radius: 50%;
+.qui-avatarContainer{
+    transform: translateX(75%);
+    z-index: 2;
 }
- 
+
+.qui-appMenuContainer{
+    filter: drop-shadow(5px 5px 2px rgb(194, 194, 194));
+}
