@@ -291,7 +291,7 @@ export default function Avatar(props) {
             return (
                 <i className={icon?.icon} ></i>
             )
-        }
+        } 
     }
 
 
