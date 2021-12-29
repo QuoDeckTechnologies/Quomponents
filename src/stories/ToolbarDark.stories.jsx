@@ -8,9 +8,9 @@ export default {
 
         content: [
             {
-                icon:"",
-                label:"label1",
-                link:"",
+                icon: "",
+                label: "label1",
+                link: "",
             }
         ],
 
@@ -57,9 +57,6 @@ export default {
             },
         },
 
-
-
-
         withColor: {
             table: {
                 category: "with-Params",
@@ -76,7 +73,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    icon:"",
+                    icon: "",
                     size: "",
                     position: "center",
                 },
@@ -93,6 +90,18 @@ export default {
                 },
             },
         },
+        withAnimation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    animation: "zoom",
+                    duration: 0.7,
+                    delay: 1,
+                },
+            },
+        },
+  
+
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -132,7 +141,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Display ToolbarDark with Icon",
+        componentSubtitle: "Displays  ToolbarDark with Icons",
         a11y: { disable: true },
         // controls: { expanded: true }
     },
@@ -146,31 +155,31 @@ export const Default = Template.bind({});
 Default.args = {
     content: [
         {
-            icon:"fa fa-share",
-            label:"Certificate",
-            link:"",
+            icon: "fa fa-share",
+            label: "Certificate",
+            link: "",
         },
         {
-            icon:"fa fa-wallet",
-            label:"Wallet",
-            link:"",
+            icon: "fa fa-wallet",
+            label: "Wallet",
+            link: "",
         },
         {
-            icon:"fa fa-gift",
-            label:"Rewards",
-            link:"",
+            icon: "fa fa-gift",
+            label: "Rewards",
+            link: "",
         },
         {
-            icon:"fa fa-chart-pie",
-            label:"Reports",
-            link:"",
+            icon: "fa fa-chart-pie",
+            label: "Reports",
+            link: "",
         }
     ],
 
     asEmphasis: "text",
     isCircular: false,
 
-    asVariant:"primary",
+    asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
     asAligned: "center",
@@ -181,7 +190,7 @@ Default.args = {
         textColor: "",
         hoverTextColor: "",
     },
-    withIcon: { icon:"fa fa-home"},
+    withIcon: { icon: "fa fa-home" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -189,7 +198,12 @@ Default.args = {
         hoverBackgroundColor: "",
         hoverTextColor: "",
     },
-
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+   
     isDisabled: false,
     isHidden: false,
     isFluid: false,
@@ -201,4 +215,26 @@ Default.parameters = {
         },
     },
 };
+
+export const AnimatedToolbar = Template.bind({});
+AnimatedToolbar.args = {
+    ...Default.args,
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+};
+AnimatedToolbar.parameters = {
+    docs: {
+        description: {
+            story: "We can animate the appearance of Toolbar",
+        },
+        source: {
+            code: `<ToolbarDark {...${JSON.stringify(AnimatedToolbar.args, null, 2)}}/>`,
+        },
+    },
+};
+
+
 

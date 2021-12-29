@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import _ from "lodash";
 import {
     getQuommons,
+    getTranslation,
+    getAnimation,
 } from "../../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -16,6 +18,10 @@ ToolbarDark.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+
+     /**
+    Icon Text has to be in content or passed as children to the component.
+    */
     content: PropTypes.arrayOf(PropTypes.shape({
         icon: PropTypes.string,
         label: PropTypes.string,
@@ -89,6 +95,32 @@ ToolbarDark.propTypes = {
         textColor: PropTypes.string,
         hoverTextColor: PropTypes.string,
     }),
+    /**
+    Use to define the entry animation of the component
+    */
+    withAnimation: PropTypes.shape({
+        animation: PropTypes.oneOf([
+            "zoom",
+            "collapse",
+            "fade",
+            "slideDown",
+            "slideUp",
+            "slideLeft",
+            "slideRight",
+            ""
+        ]),
+        duration: PropTypes.number,
+        delay: PropTypes.number,
+    }),
+
+    /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
 
     /**
     Use to show/hide the component
@@ -126,6 +158,8 @@ ToolbarDark.defaultProps = {
 
     withColor: null,
     withIcon: null,
+    withAnimation: null,
+    withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
@@ -170,13 +204,22 @@ export default function ToolbarDark(props) {
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
 
+      //-------------------------------------------------------------------
+    // 3. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
-    // 3. Set the label/caption/popover and loading text
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        let tObj = getTranslation(props.withTranslation, "ToolbarDark");
+       
+    }
+
     //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, props.withLabel);
-    let labelStyle = labelContent?.textColor
-        ? { color: labelContent.textColor }
-        : {};
+    // 4. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
 
     let { content } = props;
 
@@ -184,20 +227,23 @@ export default function ToolbarDark(props) {
 
     return (
         <motion.div
+            initial={animate.from}
+            animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}>
             <div className="backbar">
-                <div className={`qui-icon`}> 
+                <div className={`qui-icon`}>
                     {_.map(content, (icon, index) => {
                         return (
                             <div
                                 key={index}
-                                onClick={props.onClick}
-
+                                variant={props.asEmphasis}
+                                color={props.asVariant}
+                                style={Object.assign({}, colors, props.style)}
                             >
                                 <IconLink
-                                     {...props}
+                                    {...props}
                                     withIcon={{ icon: icon.icon }}
                                     withLabel={{ content: icon.label, format: "caption" }}
                                 />
