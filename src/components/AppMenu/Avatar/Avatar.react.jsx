@@ -147,7 +147,7 @@ export default function Avatar(props) {
    
 
     return (
-        <div className={`qui float-${props.asFloated}`}>
+        <div className={`qui qui-avatarContainer float-${props.asFloated}`}>
             <div className={`qui-container size-${props.asSize} variant-${props.asVariant}`}>
             {getAvatar(props.withUser,props.withIcon)}
             </div>

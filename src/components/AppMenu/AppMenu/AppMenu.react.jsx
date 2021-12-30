@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./AppMenu.scss";
 import "../../../common/stylesheets/overrule.scss";
+import { getQuommons } from "../../../common/javascripts/helpers";
 
 
 AppMenu.propTypes = {
@@ -68,7 +69,7 @@ AppMenu.propTypes = {
     Use to add user image to the component 
     */
     withUser: PropTypes.shape({
-        withImage : PropTypes.string
+        withImage: PropTypes.string
     }),
     /**
     Use to define the entry animation of the component
@@ -92,7 +93,7 @@ AppMenu.propTypes = {
     */
     withTranslation: PropTypes.shape({
         lang: PropTypes.string,
-        tgt: PropTypes.string, 
+        tgt: PropTypes.string,
         dictionary: PropTypes.string,
     }),
     /**
@@ -110,6 +111,7 @@ AppMenu.propTypes = {
 };
 
 AppMenu.defaultProps = {
+    //=======================================
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -138,24 +140,28 @@ export default function AppMenu(props) {
     let labelStyle = labelContent?.textColor
         ? { color: labelContent.textColor }
         : {};
+
+    //-------------------------------------------------------------------
+    // 1. Set the classes
+    //-------------------------------------------------------------------
+    let quommonClasses = getQuommons(props);
+    console.log(quommonClasses)
     // ========================= Render Function =================================
 
     return (
-        <div>
-        <div className={`qui qui-appMenuContainer float-${props.asFloated}`}> 
-
-        <div className="qui-label" style={labelStyle}>
+        <div className={`qui ${quommonClasses.parentClasses}`}>
+            <div className={`qui-label ${quommonClasses.childClasses}`} style={labelStyle}>
                 {getLabel(labelContent, "label")}
-        </div>
-        <div className={`qui-avatarContainer `}>
-                <Avatar {...props} withIcon={{icon:'fas fa-user'}}/>
-        </div>
-
-        <MenuBlock {...props} asFloated="none"/>
-            <div className="qui-caption" style={labelStyle}>
+            </div>
+            <div className={`qui-appMenuContainer float-${props.asFloated}`}>
+                <div className={`qui-avatarContainer `}>
+                    <Avatar {...props} withIcon={{ icon: 'fas fa-user' }} />
+                </div>
+                <MenuBlock {...props} asFloated="none" />
+            </div>
+            <div className={`qui-caption ${quommonClasses.childClasses}`} style={labelStyle}>
                 {getLabel(labelContent, "caption")}
+            </div>
         </div>
-        </div> 
-        </div>
-    );  
+    );
 }

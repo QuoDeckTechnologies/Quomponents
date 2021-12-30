@@ -1,24 +1,25 @@
-.qui.float-none{
+.qui .float-none{
     display: flex;
 }
-.qui.float-left{
+.qui .float-left{
     display: flex;
     justify-content: flex-start;
 }
-.qui.float-inline{
+.qui .float-inline{
     display: flex;
     justify-content: center;
 }
-.qui.float-right{
+.qui .float-right{
     display: flex;
     justify-content: flex-end;
 }
 
 .qui-avatarContainer{
-    transform: translateX(75%);
     z-index: 2;
+    transform: translateX(40%);
 }
 
 .qui-appMenuContainer{
     filter: drop-shadow(5px 5px 2px rgb(194, 194, 194));
+    margin: 20px;
 }
