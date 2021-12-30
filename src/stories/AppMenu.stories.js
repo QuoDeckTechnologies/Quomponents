@@ -38,6 +38,16 @@ export default {
                 },
             },
         },
+        withLabel: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    format: "label",
+                    content: "",
+                    textColor: "",
+                },
+            },
+        },
         withIcon: {
             table: {
                 category: "with-Params",
@@ -133,6 +143,11 @@ Default.args = {
         textColor: "",
         hoverBackgroundColor: "", 
         hoverTextColor: "",
+    },
+    withLabel: {
+        format: "caption",
+        content: "Do not press this button repeatedly...",
+        textColor: "#000000",
     },
     withAnimation: {
         animation: "zoom",

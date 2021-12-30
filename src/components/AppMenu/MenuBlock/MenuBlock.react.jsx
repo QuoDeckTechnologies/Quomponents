@@ -1,5 +1,5 @@
 // Import npm packages
-import React, {  } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";

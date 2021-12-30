@@ -57,6 +57,14 @@ AppMenu.propTypes = {
         position: PropTypes.oneOf(["left", "right"]),
     }),
     /**
+    Use to add a heading label, a footer caption or a title popover to the component
+    */
+    withLabel: PropTypes.shape({
+        format: PropTypes.oneOf(["label", "caption", "popover"]),
+        content: PropTypes.string,
+        textColor: PropTypes.string,
+    }),
+    /**
     Use to add user image to the component 
     */
     withUser: PropTypes.shape({
@@ -111,24 +119,43 @@ AppMenu.defaultProps = {
     withColor: null,
     withIcon: null,
     withUser: null,
+    withLabel: null,
     withAnimation: null,
 
     isHidden: false,
     isDisabled: false,
 };
 
-export default function AppMenu(props) {
+function getLabel(labelObj, position) {
+    return labelObj?.format === position ? labelObj.content : "";
+}
 
+export default function AppMenu(props) {
+    //-------------------------------------------------------------------
+    // 4. Set the label/caption/popover and loading text
+    //-------------------------------------------------------------------
+    let labelContent = Object.assign({}, props.withLabel);
+    let labelStyle = labelContent?.textColor
+        ? { color: labelContent.textColor }
+        : {};
     // ========================= Render Function =================================
 
-
     return (
-        <div className={`qui qui-appMenuContainer float-${props.asFloated}`}>  
-            <div className={`qui-avatarContainer `}>
+        <div>
+        <div className={`qui qui-appMenuContainer float-${props.asFloated}`}> 
+
+        <div className="qui-label" style={labelStyle}>
+                {getLabel(labelContent, "label")}
+        </div>
+        <div className={`qui-avatarContainer `}>
                 <Avatar {...props} withIcon={{icon:'fas fa-user'}}/>
-            </div>
-            <MenuBlock {...props} asFloated="none"/>
+        </div>
+
+        <MenuBlock {...props} asFloated="none"/>
+            <div className="qui-caption" style={labelStyle}>
+                {getLabel(labelContent, "caption")}
+        </div>
         </div> 
-    );
-     
+        </div>
+    );  
 }
