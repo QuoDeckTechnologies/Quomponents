@@ -5,10 +5,19 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./MenuBlock.scss";
 import "../../../common/stylesheets/overrule.scss";
+import { getQuommons } from "../../../common/javascripts/helpers";
 
 MenuBlock.propTypes = {
     // Quommon props
     //=======================================
+
+    /**
+    Set action emphasis in increasing order 
+    */
+    asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
+    /**
+    Use for rounded corners or circular icon button 
+    */
 
     /**
     Use to define standard component type
@@ -53,6 +62,14 @@ MenuBlock.propTypes = {
         size: PropTypes.string,
         position: PropTypes.oneOf(["left", "right"]),
     }),
+        /**
+    Use to add a heading label, a footer caption or a title popover to the component
+    */
+    withLabel: PropTypes.shape({
+        format: PropTypes.oneOf(["label", "caption", "popover"]),
+        content: PropTypes.string,
+        textColor: PropTypes.string,
+    }),
     /**
     Use to define the entry animation of the component
     */
@@ -85,6 +102,9 @@ MenuBlock.propTypes = {
 };
 
 MenuBlock.defaultProps = {
+    // Component Specific props
+    //=======================================
+    asEmphasis: "contained",
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -94,12 +114,15 @@ MenuBlock.defaultProps = {
 
     withColor: null,
     withIcon: null,
+    withLabel: null,
     withAnimation: null,
 
     isHidden: false,
     isDisabled: false,
 };
-
+function getLabel(labelObj, position) {
+    return labelObj?.format === position ? labelObj.content : "";
+}
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
@@ -110,15 +133,30 @@ MenuBlock.defaultProps = {
 **/
 export default function MenuBlock(props) {
 
+    let quommonClasses = getQuommons(props);
+    //-------------------------------------------------------------------
+    // 4. Set the label/caption/popover and loading text
+    //-------------------------------------------------------------------
+    let labelContent = Object.assign({}, props.withLabel);
+    let labelStyle = labelContent?.textColor
+        ? { color: labelContent.textColor }
+        : {};
+
     // ========================= Render Function ================================
 
     return (
-        <div className={`qui float-${props.asFloated}`} onClick={(e)=>props.onClick(e)}>
-            <div className={`qui-container qui-menuBlock qui-btn size-${props.asSize} variant-${props.asVariant}`}>
+
+        <div className={`qui ${quommonClasses.parentClasses}`}>
+            <div className={` float-${props.asFloated}`} onClick={(e)=>props.onClick(e)}>
+            <div className={`qui-container qui-menuBlock qui-btn size-${props.asSize} variant-${props.asVariant} emp-${props.asEmphasis}`}>
                 <div className="qui-iconContainer">
-                    <i className={props.withIcon?.icon}></i>
+                <div className={`qui-label ${quommonClasses.childClasses}`} style={labelStyle}>
+                {getLabel(labelContent, "label")}
+                </div>
+                <i className={props.withIcon?.icon}></i>
                 </div>
             </div>
         </div>
-    );
+        </div>
+    )
 }

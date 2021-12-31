@@ -5,6 +5,13 @@ export default {
     title: "Design System/Appmenu/MenuBlock",
     component: MenuBlock,
     argTypes: {
+        asEmphasis: {
+            control: "select",
+            options: ["text", "outlined", "contained"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -35,6 +42,16 @@ export default {
                     textColor: "",
                     hoverBackgroundColor: "",
                     hoverTextColor: "",
+                },
+            },
+        },
+        withLabel: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    format: "label",
+                    content: "",
+                    textColor: "",
                 },
             },
         },
@@ -112,7 +129,8 @@ export default {
 const Template = (args) => <MenuBlock {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-
+    
+    asEmphasis: "contained",
     asVariant: "primary",
     asSize: "normal",
     asFloated: "inline",
@@ -128,6 +146,11 @@ Default.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withLabel: {
+        format: "label",
+        content: "",
+        textColor: "#000000",
     },
     isDisabled: false,
     isHidden: false,

@@ -145,7 +145,6 @@ export default function AppMenu(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
-    console.log(quommonClasses)
     // ========================= Render Function =================================
 
     return (
@@ -159,7 +158,7 @@ export default function AppMenu(props) {
                 </div>
                 <MenuBlock {...props} asFloated="none" />
             </div>
-            <div className={`qui-caption ${quommonClasses.childClasses}`} style={labelStyle}>
+            <div className={`qui qui-caption ${quommonClasses.childClasses}`} style={labelStyle}>
                 {getLabel(labelContent, "caption")}
             </div>
         </div>
