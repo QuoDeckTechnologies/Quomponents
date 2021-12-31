@@ -19,9 +19,9 @@ ToolbarDark.propTypes = {
     // Component Specific props
     //=======================================
 
-     /**
-    Icon Text has to be in content or passed as children to the component.
-    */
+    /**
+   Icon Text has to be in content or passed as children to the component.
+   */
     content: PropTypes.arrayOf(PropTypes.shape({
         icon: PropTypes.string,
         label: PropTypes.string,
@@ -204,7 +204,7 @@ export default function ToolbarDark(props) {
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
 
-      //-------------------------------------------------------------------
+    //-------------------------------------------------------------------
     // 3. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
     if (
@@ -213,7 +213,7 @@ export default function ToolbarDark(props) {
         props.withTranslation.lang !== "en"
     ) {
         let tObj = getTranslation(props.withTranslation, "ToolbarDark");
-       
+
     }
 
     //-------------------------------------------------------------------

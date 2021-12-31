@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
@@ -13,7 +13,7 @@ import "./IconLink.scss";
 import "../../../common/stylesheets/overrule.scss";
 
 IconLink.propTypes = {
-//=======================================
+    //=======================================
     // Component Specific props
     //=======================================
 
@@ -87,7 +87,7 @@ IconLink.propTypes = {
         format: PropTypes.oneOf(["label", "caption", "popover"]),
         content: PropTypes.string,
         textColor: PropTypes.string,
-        hoverTextColor:PropTypes.string,
+        hoverTextColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -131,11 +131,11 @@ IconLink.propTypes = {
     /**
     IconLink component must have the onClick function passed as props
     */
-     onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
 
 IconLink.defaultProps = {
-   
+
     // Component Specific props
     //=======================================
     asEmphasis: "text",
@@ -233,7 +233,7 @@ export default function IconLink(props) {
     //-------------------------------------------------------------------
     // 6. Get animation of the component
     //-------------------------------------------------------------------
-  
+
     const animate = getAnimation(props.withAnimation);
 
     // ========================= Render Function =================================
@@ -245,29 +245,27 @@ export default function IconLink(props) {
             className={`qui ${quommonClasses.parentClasses}`}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            onMouseDown={()=> setTilt(true)}
-            onMouseUp={()=> setTilt(false)}
+            onMouseDown={() => setTilt(true)}
+            onMouseUp={() => setTilt(false)}
 
         >
-        <div className={`qui-btn ${quommonClasses.childClasses}`}
->            <div className= {`qui-btn-label size-${props.asSize ? props.asSize:""}`}style={labelStyle}>
-                 {getLabel(labelContent, "label")}
-            </div>
-                <button 
+                <div className={`qui-btn qui-icon-label emp-text variant-${props.asVariant}  size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
+                    {getLabel(labelContent, "label")}
+                </div>
+                <button
                     variant={props.asEmphasis}
                     color={props.asVariant}
-                    className={`qui-btn border ${quommonClasses.childClasses}`}
+                    className={`qui-btn ${quommonClasses.childClasses}`}
                     style={Object.assign({}, colors, props.style)}
                     onClick={props.onClick}
-                     >
+                >
 
-                    <div className={`${props.withIcon ? props.withIcon.icon:""} ${tilt ? 'tilt' : ''}`}>
+                    <div className={`${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
                     </div>
                 </button>
-            <div className= {`qui-btn-caption size-${props.asSize ? props.asSize:""}`}style={labelStyle}>
-                {getLabel(labelContent, "caption")}
-            </div>
-</div>
+                <div className={` qui-btn qui-icon-caption emp-text variant-${props.asVariant} size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
+                    {getLabel(labelContent, "caption")}
+                </div>
         </motion.div>
     );
 };

@@ -220,8 +220,8 @@ export const AnimatedToolbar = Template.bind({});
 AnimatedToolbar.args = {
     ...Default.args,
     withAnimation: {
-        animation: "slideRight",
-        duration: 0.5,
+        animation: "slideDown",
+        duration: 3,
         delay: 0,
     },
 };
