@@ -20,7 +20,7 @@ export default {
     argTypes: {
         asStatus: {
             control: 'select',
-            options: ["not started", "in progress", "completed", "certificate"],
+            options: ["not started", "in progress", "completed"],
             table: {
                 category: 'as-Flags'
             }
@@ -105,8 +105,10 @@ export default {
     parameters: {
         componentSubtitle: "Certificate Card displays status of completion or certificate if available",
         a11y: { disable: true },
+        docs: { iframeHeight: 900 }
     },
 };
+
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -115,7 +117,7 @@ export const Default = Template.bind({});
 Default.args = {
 
     asVariant: "primary",
-    asStatus: 'certificate',
+    asStatus: 'completed',
     asSize: "normal",
     withLabel: {
         content: "Negotiation Skills 101",

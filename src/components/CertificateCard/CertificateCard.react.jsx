@@ -15,7 +15,7 @@ CertificateCard.propTypes = {
     /**
     Use to define user status of completion
     */
-    asStatus: PropTypes.oneOf(["not started", "in progress", "completed", "certificate"]),
+    asStatus: PropTypes.oneOf(["not started", "in progress", "completed"]),
 
     //=======================================
     // Quommon props
@@ -92,10 +92,11 @@ CertificateCard.propTypes = {
 };
 
 CertificateCard.defaultProps = {
+    //=======================================
     // Component Specific props
     //=======================================
     asStatus: 'in progress',
-
+    //=======================================
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -108,7 +109,13 @@ CertificateCard.defaultProps = {
 
     isHidden: false,
 };
-
+/**
+## Notes
+- The design system used for this component is HTML and CSS
+- The animation system used for this component is Framer Motion (framer-motion)
+- Pass inline styles to the component to override any of the component css
+- Or add custom css in overrule.scss to override the component css
+**/
 export default function CertificateCard(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -149,7 +156,7 @@ export default function CertificateCard(props) {
     //-------------------------------------------------------------------
     // 6. Get Status Card of the component
     //-------------------------------------------------------------------
-    const getStatusCard = (status) => {
+    const getStatusCard = (status='completed') => {
         let iconClass
         if (status === 'in progress') iconClass = 'fas fa-adjust qui-icon-rotate'
         if (status === 'not started') iconClass = 'far fa-circle'
@@ -184,8 +191,8 @@ export default function CertificateCard(props) {
                 </div>
             </div>
             <div className="qui-imageCard">
-                {props.asStatus === 'certificate' && <img className="qui-certificateImage" src={`${props.withIcon?.icon}`} alt="certificate"/>}
-                {props.asStatus !== 'certificate' && getStatusCard(props.asStatus)}
+                {props.withIcon.icon && <img className="qui-certificateImage" src={`${props.withIcon?.icon}`} alt="certificate"/>}
+                {!props.withIcon.icon && getStatusCard(props.asStatus)}
             </div>
         </div>
         </motion.div>
