@@ -156,6 +156,11 @@ export const NotStarted = Template.bind({});
 NotStarted.args = {
     ...Default.args,
     asStatus: 'not started',
+    withIcon:
+    {
+        icon: ""
+    },
+
 };
 NotStarted.parameters = {
     docs: {
@@ -174,6 +179,10 @@ export const InProgress = Template.bind({});
 InProgress.args = {
     ...Default.args,
     asStatus: 'in progress',
+    withIcon:
+    {
+        icon: ""
+    },
 };
 InProgress.parameters = {
     docs: {
@@ -192,6 +201,10 @@ export const Completed = Template.bind({});
 Completed.args = {
     ...Default.args,
     asStatus: 'completed',
+    withIcon:
+    {
+        icon: ""
+    },
 };
 Completed.parameters = {
     docs: {

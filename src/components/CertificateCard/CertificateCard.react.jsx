@@ -21,7 +21,7 @@ CertificateCard.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define standard component type
+    Use to define component header and icon color
     */
     asVariant: PropTypes.oneOf([
         "primary",
@@ -31,7 +31,7 @@ CertificateCard.propTypes = {
         "error",
     ]),
     /**
-    Use to define component text size in increasing order
+    Use to define component text and icon size in increasing order
     */
     asSize: PropTypes.oneOf([
         "tiny",
@@ -42,20 +42,20 @@ CertificateCard.propTypes = {
         "massive",
     ]),
     /**
-    Use to override component colors and behavior
+    Use to accent color is used to change the icon color used and text color is used to change the header color in the component 
     */
     withColor: PropTypes.shape({
         textColor: PropTypes.string,
         accentColor: PropTypes.string
     }),
     /**
-    Use to add the spinning icon to the component
+    Use to add the Certificate's image to the component without certificate image status show is completed
     */
     withIcon: PropTypes.shape({
         icon: PropTypes.string,
     }),
     /**
-    Use to add a heading label, a footer caption or a title popover to the component
+    Use to add header label of the component
     */
     withLabel: PropTypes.shape({
         content: PropTypes.string,
@@ -156,7 +156,7 @@ export default function CertificateCard(props) {
     //-------------------------------------------------------------------
     // 6. Get Status Card of the component
     //-------------------------------------------------------------------
-    const getStatusCard = (status='completed') => {
+    const getStatusCard = (status = 'completed') => {
         let iconClass
         if (status === 'in progress') iconClass = 'fas fa-adjust qui-icon-rotate'
         if (status === 'not started') iconClass = 'far fa-circle'
@@ -183,18 +183,18 @@ export default function CertificateCard(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-        <div className="qui-card">
-            <div className="qui-header">
-                <div className={`qui-colorBanner qui-btn ${quommonClasses.childClasses}`} style={bannerColors}></div>
-                <div className={`qui-courseHeader variant-${props.asVariant}-text`} style={headerColors}>
-                    <p>{labelContent?.content}</p>
+            <div className="qui-card">
+                <div className="qui-header">
+                    <div className={`qui-colorBanner qui-btn ${quommonClasses.childClasses}`} style={bannerColors}></div>
+                    <div className={`qui-courseHeader variant-${props.asVariant}-text`} style={headerColors}>
+                        <p>{labelContent?.content}</p>
+                    </div>
+                </div>
+                <div className="qui-imageCard">
+                    {props.withIcon.icon && <img className="qui-certificateImage" src={`${props.withIcon?.icon}`} alt="certificate" />}
+                    {!props.withIcon.icon && getStatusCard(props.asStatus)}
                 </div>
             </div>
-            <div className="qui-imageCard">
-                {props.withIcon.icon && <img className="qui-certificateImage" src={`${props.withIcon?.icon}`} alt="certificate"/>}
-                {!props.withIcon.icon && getStatusCard(props.asStatus)}
-            </div>
-        </div>
         </motion.div>
     );
 }
