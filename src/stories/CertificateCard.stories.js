@@ -107,7 +107,6 @@ export default {
         a11y: { disable: true },
     },
 };
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -135,7 +134,7 @@ Default.args = {
         delay: 0,
     },
     withTranslation: {
-        lang: "",
+        lang: "en",
         tgt: "CertificateCard",
         dictionary: dictionary,
     },

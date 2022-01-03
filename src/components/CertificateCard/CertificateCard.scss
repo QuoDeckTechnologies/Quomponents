@@ -12,7 +12,6 @@
 .qui .qui-header{
   display: flex;
   justify-content: center;
-  padding: 0 0 2em 0;
   line-height: 3;
   width: 80%;
 }
@@ -81,9 +80,12 @@
   .qui .qui-status p{
     font-size: 1em;
   }
+  .qui .qui-header{
+    padding: 0 0 1em 0;
+  }
   .qui .qui-status i{
     font-size: 1em;
-    -webkit-text-stroke: 1px #EEEEEE;
+    -webkit-text-stroke: 0.5px #EEEEEE;
   }
 }
 
@@ -97,30 +99,58 @@
   .qui .qui-status p{
     font-size: 1em
   }
+  .qui .qui-header{
+    padding: 0 0 2em 0;
+  }
   .qui .qui-status i{
     font-size: 2em;
-    -webkit-text-stroke: 2px #EEEEEE;
+    -webkit-text-stroke: 1.5px #EEEEEE;
   }
   .qui .qui-colorBanner{
-    width: 0.75em;
+    width: 0.5em;
   }
 }
 
 @media screen and (min-width: 769px) {
   .qui .qui-header{
-    line-height: 3;
+    line-height: 2.5;
   }
   .qui .qui-courseHeader p{
-    font-size: 3em;
+    font-size: 3.5em;
   }
   .qui .qui-status p{
     font-size: 1.5em;
   }
+  .qui .qui-header{
+    padding: 0 0 2em 0;
+  }
   .qui .qui-status i{
     font-size: 3em;
+    -webkit-text-stroke: 2.5px #EEEEEE;
+  }
+  .qui .qui-colorBanner{
+    width: 0.75em;
+  }
+}
+@media screen and (min-width: 900px) {
+  .qui .qui-header{
+    line-height: 2.5;
+  }
+  .qui .qui-courseHeader p{
+    font-size: 8em;
+  }
+  .qui .qui-status p{
+    font-size: 2em;
+  }
+  .qui .qui-header{
+    padding: 0 0 3em 0;
+  }
+  .qui .qui-status i{
+    font-size: 4em;
     -webkit-text-stroke: 3px #EEEEEE;
   }
   .qui .qui-colorBanner{
     width: 1em;
   }
+  
 }
