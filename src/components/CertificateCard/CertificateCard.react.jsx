@@ -191,8 +191,8 @@ export default function CertificateCard(props) {
                     </div>
                 </div>
                 <div className="qui-imageCard">
-                    {props.withIcon.icon && <img className="qui-certificateImage" src={`${props.withIcon?.icon}`} alt="certificate" />}
-                    {!props.withIcon.icon && getStatusCard(props.asStatus)}
+                    {props.withIcon?.icon && <img className="qui-certificateImage" src={`${props.withIcon?.icon}`} alt="certificate" />}
+                    {!props.withIcon?.icon && getStatusCard(props.asStatus)}
                 </div>
             </div>
         </motion.div>
