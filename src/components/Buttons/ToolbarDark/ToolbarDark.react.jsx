@@ -20,8 +20,8 @@ ToolbarDark.propTypes = {
     //=======================================
 
     /**
-   Icon Text has to be in content or passed as children to the component.
-   */
+     Toolbar icons data should be passed in content field and it is required field  
+    */
     content: PropTypes.arrayOf(PropTypes.shape({
         icon: PropTypes.string,
         label: PropTypes.string,

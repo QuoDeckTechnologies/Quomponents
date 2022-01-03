@@ -77,8 +77,6 @@ IconLink.propTypes = {
     */
     withIcon: PropTypes.shape({
         icon: PropTypes.string,
-        size: PropTypes.string,
-        position: PropTypes.oneOf(["left", "right"]),
     }),
     /**
     Use to add a heading label, a footer caption or a title popover to the component
@@ -231,7 +229,7 @@ export default function IconLink(props) {
     }
 
     //-------------------------------------------------------------------
-    // 6. Get animation of the component
+    // 5. Get animation of the component
     //-------------------------------------------------------------------
 
     const animate = getAnimation(props.withAnimation);
@@ -249,23 +247,29 @@ export default function IconLink(props) {
             onMouseUp={() => setTilt(false)}
 
         >
-                <div className={`qui-btn qui-icon-label emp-text variant-${props.asVariant}  size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
-                    {getLabel(labelContent, "label")}
-                </div>
-                <button
-                    variant={props.asEmphasis}
-                    color={props.asVariant}
-                    className={`qui-btn ${quommonClasses.childClasses}`}
-                    style={Object.assign({}, colors, props.style)}
-                    onClick={props.onClick}
-                >
+            <div
+                style={Object.assign({}, colors, props.style)}
+                className={`qui-btn qui-icon-label emp-text  variant-${props.asVariant} 
+                 size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
+                {getLabel(labelContent, "label")}
+            </div>
+            <button
+                variant={props.asEmphasis}
+                color={props.asVariant}
+                className={`qui-btn ${quommonClasses.childClasses}`}
+                style={Object.assign({}, colors, props.style)}
+                onClick={props.onClick}
+            >
 
-                    <div className={`${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
-                    </div>
-                </button>
-                <div className={` qui-btn qui-icon-caption emp-text variant-${props.asVariant} size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
-                    {getLabel(labelContent, "caption")}
+                <div className={`${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
                 </div>
+            </button>
+            <div
+                style={Object.assign({}, colors, props.style)}
+                className={` qui-btn qui-icon-caption emp-text variant-${props.asVariant} 
+                size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
+                {getLabel(labelContent, "caption")}
+            </div>
         </motion.div>
     );
 };

@@ -1,14 +1,14 @@
 import React from "react";
 import IconLink from "../components/Buttons/IconLink/IconLink.react";
 
-const dictionary = JSON.stringify({
-       en: {
-        icon: {label: "Home"},
+    const dictionary = JSON.stringify({
+        en: {
+        icon: { label: "Home" },
     },
-    hi: {
+        hi: {
         icon: { label: "होम आइकन" },
     },
-});
+    });
 
 export default {
     title: "Design System/Buttons/IconLink",
@@ -94,7 +94,7 @@ export default {
                     format: "label",
                     content: "",
                     textColor: "",
-                    hoverTextColor:"",
+                    hoverTextColor: "",
                 },
             },
         },
@@ -181,17 +181,17 @@ Default.args = {
 
     withLabel: {
         format: "caption",
-        content: "Home",
+        content: "",
         textColor: "",
-        hoverTextColor:"",
+        hoverTextColor: "",
     },
-    withIcon: { icon: "fa fa-home", size: "2em", position:"left"},
+    withIcon: { icon: "fa fa-home" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
         textColor: "",
-        hoverBackgroundColor: "gray",
-        hoverTextColor: "orange",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
     },
     withAnimation: {
         animation: "zoom",
@@ -235,7 +235,61 @@ ColoredIcon.parameters = {
             story: "Use to override the standard colors of the Icon.",
         },
         source: {
-            code: `<Icon withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
+            code: `<IconLink withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Icon Only
+// -------------------------------------------------------------
+export const IconOnly = Template.bind({});
+IconOnly.args = {
+    ...Default.args,
+    content: "",
+    isCircular: true,
+    withIcon: { icon: "fas fa-home"},
+    
+};
+IconOnly.parameters = {
+    docs: {
+        description: {
+            story:
+                "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of Icons or for standalone floating actions. Use isCircular to toggle the rounding.",
+        },
+        source: {
+            code: `<IconLink isCircular={true} withIcon={{ icon: "fas fa-home" }}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Labelled IconLink
+// -------------------------------------------------------------
+export const LabelledIconLink = Template.bind({});
+LabelledIconLink.args = {
+    ...Default.args,
+    content: "Labelled IconLink",
+    withLabel: {
+        format: "caption",
+        content: "Home",
+        textColor: "#000000",
+    },
+};
+
+LabelledIconLink.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to provide a header callout (format:label) above the icon. Or use as an information caption (format:caption) below the icon. Or use as an information label (format:label) top the icon. The text here can be customized through the withTranslation option.",
+        },
+        source: {
+            code: `<IconLink withLabel={{format: "label",
+             withLabel: {
+                format: "label",
+                content: "Home",
+                textColor: "#000000",
+            },}}}/>`,
         },
     },
 };
@@ -306,7 +360,7 @@ TranslatedIcon.parameters = {
                 {
 
                     en: {
-                        icon: {label: "Home"},
+                        icon: { label: "Home" },
                     },
                     hi: {
                         icon: {

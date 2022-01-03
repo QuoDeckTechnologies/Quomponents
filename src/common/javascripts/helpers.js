@@ -1,5 +1,5 @@
-export function getQuommons(props) {
-    let parentArray = [""],
+export function getQuommons(props, component) {
+    let parentArray = [`qui-${component}`],
         childArray = [""];
 
     if (props.asSize) childArray.push(`size-${props.asSize}`);
