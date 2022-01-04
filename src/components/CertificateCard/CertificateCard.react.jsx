@@ -45,14 +45,14 @@ CertificateCard.propTypes = {
     "massive",
   ]),
   /**
-    Use to accent color is used to change the icon color used and text color is used to change the header color in the component 
+    Use to set Accent Color and Text Color 
     */
   withColor: PropTypes.shape({
     textColor: PropTypes.string,
     accentColor: PropTypes.string,
   }),
   /**
-    Use to add the Certificate's image to the component without certificate image status show is completed
+    Use to add the Certificate's image to the component without certificate image status will show completed
     */
   withIcon: PropTypes.shape({
     icon: PropTypes.string,
@@ -165,7 +165,7 @@ export default function CertificateCard(props) {
     if (status === "not started") iconClass = "far fa-circle";
     if (status === "completed") iconClass = "fas fa-check-circle";
 
-    if (status === "completed" && certificate.icon !== "") {
+    if (status === "completed" && certificate?.icon !== "") {
       return (
         <>
           {certificate?.icon && (
