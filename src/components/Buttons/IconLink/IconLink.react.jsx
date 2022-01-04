@@ -248,8 +248,7 @@ export default function IconLink(props) {
 
         >
             <div
-                style={Object.assign({}, colors, props.style)}
-                className={`qui-btn qui-icon-label emp-text  variant-${props.asVariant} 
+                className={`qui-btn qui-icon-label emp-text variant-${props.asVariant}   
                  size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
                 {getLabel(labelContent, "label")}
             </div>
@@ -265,8 +264,7 @@ export default function IconLink(props) {
                 </div>
             </button>
             <div
-                style={Object.assign({}, colors, props.style)}
-                className={` qui-btn qui-icon-caption emp-text variant-${props.asVariant} 
+                className={`qui-btn qui-icon-caption emp-text variant-${props.asVariant}
                 size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
                 {getLabel(labelContent, "caption")}
             </div>

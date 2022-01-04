@@ -1,14 +1,14 @@
 import React from "react";
 import IconLink from "../components/Buttons/IconLink/IconLink.react";
 
-    const dictionary = JSON.stringify({
-        en: {
+const dictionary = JSON.stringify({
+    en: {
         icon: { label: "Home" },
     },
-        hi: {
+    hi: {
         icon: { label: "होम आइकन" },
     },
-    });
+});
 
 export default {
     title: "Design System/Buttons/IconLink",
@@ -91,7 +91,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    format: "label",
+                    format: "caption",
                     content: "",
                     textColor: "",
                     hoverTextColor: "",
@@ -189,9 +189,9 @@ Default.args = {
     withColor: {
         backgroundColor: "",
         accentColor: "",
-        textColor: "",
+        textColor: "red",
         hoverBackgroundColor: "",
-        hoverTextColor: "",
+        hoverTextColor: "blue",
     },
     withAnimation: {
         animation: "zoom",
@@ -248,8 +248,8 @@ IconOnly.args = {
     ...Default.args,
     content: "",
     isCircular: true,
-    withIcon: { icon: "fas fa-home"},
-    
+    withIcon: { icon: "fas fa-home" },
+
 };
 IconOnly.parameters = {
     docs: {
@@ -266,30 +266,24 @@ IconOnly.parameters = {
 // -------------------------------------------------------------
 // Labelled IconLink
 // -------------------------------------------------------------
-export const LabelledIconLink = Template.bind({});
-LabelledIconLink.args = {
+export const LabelledIcon = Template.bind({});
+LabelledIcon.args = {
     ...Default.args,
-    content: "Labelled IconLink",
     withLabel: {
         format: "caption",
         content: "Home",
-        textColor: "#000000",
+        textColor: "",
     },
 };
 
-LabelledIconLink.parameters = {
+LabelledIcon.parameters = {
     docs: {
         description: {
             story:
                 "Use to provide a header callout (format:label) above the icon. Or use as an information caption (format:caption) below the icon. Or use as an information label (format:label) top the icon. The text here can be customized through the withTranslation option.",
         },
         source: {
-            code: `<IconLink withLabel={{format: "label",
-             withLabel: {
-                format: "label",
-                content: "Home",
-                textColor: "#000000",
-            },}}}/>`,
+            code: `<IconLink withLabel={{format: "label",content: "Home",textColor: ""}}/>`,
         },
     },
 };

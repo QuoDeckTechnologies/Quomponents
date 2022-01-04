@@ -213,7 +213,6 @@ export default function ToolbarDark(props) {
         props.withTranslation.lang !== "en"
     ) {
         let tObj = getTranslation(props.withTranslation, "ToolbarDark");
-
     }
 
     //-------------------------------------------------------------------
