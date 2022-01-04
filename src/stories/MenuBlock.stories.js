@@ -1,6 +1,16 @@
 import React from "react";
 import MenuBlock from "../components/AppMenu/MenuBlock/MenuBlock.react";
 
+const dictionary = JSON.stringify({
+    en: {
+        button: {
+            text: "Button",
+        },
+    },
+    hi: {
+        button: { text: "होम", label: "होम" },
+    },
+});
 export default {
     title: "Design System/Appmenu/MenuBlock",
     component: MenuBlock,
@@ -49,7 +59,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    format: "label",
+                    format: "",
                     content: "",
                     textColor: "",
                 },
@@ -61,17 +71,7 @@ export default {
                 defaultValue: {
                     icon: "",
                     size: "",
-                    position: "right",
-                },
-            },
-        },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
+                    position: "left",
                 },
             },
         },
@@ -122,19 +122,18 @@ export default {
         a11y: { disable: true }
     },
 };
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
 const Template = (args) => <MenuBlock {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    
     asEmphasis: "contained",
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "inline",
-    withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "right" },
+    asFloated: "none",
+    asAligned: "center",
+    withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -160,6 +159,88 @@ Default.parameters = {
         source: {
             code: `<MenuBlock {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
+    },
+};
+//-------------------------------------------------------------
+// Translated Button
+// -------------------------------------------------------------
+export const TranslatedMenuBlock = Template.bind({});
+TranslatedMenuBlock.args = {
+    ...Default.args,
+    content: "Translated Button",
+    withTranslation: {
+        lang: "hi",
+        tgt: "button",
+        dictionary: dictionary,
+    },
+};
+TranslatedMenuBlock.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in. To make this work for the button, add a button:{text,label} value to the dictionary.",
+        },
+        source: {
+            code: `<MenuBlock withTranslation={{lang: "hi", tgt: "button", dictionary: ${JSON.stringify(
+                {
+                    hi: {
+
+                        button: {
+                            text: "बटन",
+                            label: "इसे बार-बार न दबाएं...",
+                        },
+                    },
+                }
+            )}}}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Emphasis
+// -------------------------------------------------------------
+const AllEmphasisTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            asFloated: "inline",
+            withLabel: null,
+            withIcon: null,
+            withTranslation: null,
+            withColor: null,
+            asVariant: "success"
+        }),
+    };
+    return (
+        <div>
+            <MenuBlock
+                {...Object.assign({}, baseObj, {
+                    content: "Text",
+                    asEmphasis: "text",
+                })}
+            />{" "}
+            <MenuBlock
+                {...Object.assign({}, baseObj, {
+                    content: "Outlined",
+                    asEmphasis: "outlined",
+                })}
+            />{" "}
+            <MenuBlock
+                {...Object.assign({}, baseObj, {
+                    content: "Contained",
+                    asEmphasis: "contained",
+                })}
+            />
+        </div>
+    );
+};
+export const AllEmphasis = AllEmphasisTemplate.bind({});
+AllEmphasis.parameters = {
+    docs: {
+        description: {
+            story: "3 options are supported for emphasis as text, outlined, contained",
+        },
+        source: {
+            code: `<MenuBlock data={{ type: "json", content: [] }} asEmphasis="contained"/>`,
+        }
     },
 };
 
