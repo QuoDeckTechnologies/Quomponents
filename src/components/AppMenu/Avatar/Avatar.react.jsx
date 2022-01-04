@@ -8,9 +8,20 @@ import "./Avatar.scss";
 import "../../../common/stylesheets/overrule.scss";
 
 Avatar.propTypes = {
+    
+    
+    //=======================================
+    // Component specific prop
+    //=======================================
+    /**
+    Use to define component user image
+    */
+    withUser : PropTypes.string,
+
     //=======================================
     // Quommon props
     //=======================================
+
     /**
     Use to define standard component type
     */
@@ -48,7 +59,6 @@ Avatar.propTypes = {
     */
     withIcon: PropTypes.shape({
         icon: PropTypes.string,
-        position: PropTypes.oneOf(["left", "right"]),
     }),
     /**
     Use to show/hide the component
@@ -65,6 +75,8 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
+
+    withUser : "",
     // ======================================
     // Quommon props
     //=======================================
@@ -108,19 +120,19 @@ export default function Avatar(props) {
     //-------------------------------------------------------------------
     // 2. Get Avatar if provided, default is icon
     //-------------------------------------------------------------------
-    const getAvatar = (avatar) => {
+    const getAvatar = (icon, avatar) => {
         let imgClasses = getQuommons(props);
         if (props.isCircular)
             imgClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
                 }`;
-        if (avatar?.userImage) {
+        if (avatar) {
             return (
-                <img className={`qui-image `} src={avatar?.userImage} alt='avatar' />
+                <img className={`qui-image `} src={avatar} alt='avatar' />
             )
         } else {
             return (
                 <div style={colors} className={`qui-icon qui-btn ${quommonClasses.childClasses}`}>
-                    <i className={`${avatar?.icon}`} ></i>
+                    <i className={`${icon?.icon}`} ></i>
                 </div>
             )
         }
@@ -131,9 +143,9 @@ export default function Avatar(props) {
 
     return (
 
-        <div className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`}>
+        <div className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`} onClick={(e)=>props.onClick(e)}>
             <div className={`qui-container size-${props.asSize} variant-${props.asVariant}`}>
-                {getAvatar(props.withIcon)}
+                {getAvatar(props.withIcon,props.withUser)}
             </div>
         </div>
     );

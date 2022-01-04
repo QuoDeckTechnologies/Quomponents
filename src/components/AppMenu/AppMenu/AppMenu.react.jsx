@@ -11,6 +11,16 @@ import { getQuommons } from "../../../common/javascripts/helpers";
 
 
 AppMenu.propTypes = {
+    
+    //=======================================
+    // Component specific prop
+    //=======================================
+    /**
+    Use to define component user image
+    */
+    withUser : PropTypes.string,
+
+    
     //=======================================
     // Quommon props
     //=======================================
@@ -52,9 +62,6 @@ AppMenu.propTypes = {
     */
     withIcon: PropTypes.shape({
         icon: PropTypes.string,
-        userImage: PropTypes.string,
-        size: PropTypes.string,
-        position: PropTypes.oneOf(["left", "right"]),
     }),
     /**
     Use to show/hide the component
@@ -71,6 +78,8 @@ AppMenu.propTypes = {
 };
 
 AppMenu.defaultProps = {
+
+    withUser : "",
     //=======================================
     // Quommon props
     //=======================================
@@ -103,7 +112,7 @@ export default function AppMenu(props) {
            
             <div className={`qui-appMenuContainer float-${props.asFloated}`}>
                 <div className={`qui-avatarContainer `}>
-                    <Avatar {...props} withIcon={{ icon: 'fas fa-user',userImage: props.withIcon.userImage }} />
+                    <Avatar {...props} withIcon={{ icon: 'fas fa-user'}} withUser={props.withUser} />
                 </div>
                 <MenuBlock {...props} asFloated="none" />
             </div>
