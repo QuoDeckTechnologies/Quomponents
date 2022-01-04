@@ -32,10 +32,7 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
-                    accentColor: "",
                     textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
                 },
             },
         },
@@ -44,27 +41,8 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     icon: "", 
-                    userImage: "",
-                    size: "", 
+                    userImage: "", 
                     position: "left",
-                },
-            },
-        },
-        withUser: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    userImage: "",
-                },
-            },
-        },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
                 },
             },
         },
@@ -118,19 +96,10 @@ Default.args = {
     asSize: "normal",
     asFloated: "inline",
     
-    withIcon: { icon: "fas fa-user" ,size: "1em", position: "left" },
-    withUser:{userImage: ""},
+    withIcon: { icon: "fas fa-user" ,userImage: "", position: "left" },
     withColor: {
         backgroundColor: "",
-        accentColor: "",
         textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
-    },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
     },
 
     isDisabled: false,
@@ -138,8 +107,42 @@ Default.args = {
 };
 Default.parameters = {
     docs: {
+        description: {
+            story:
+                "Any free fontawesome icon can be used as the Avatar icon definition. we can change the icon to profile image by adding a link to userImgae in withIcon prop."
+        },
         source: {
             code: `<Avatar {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+
+//----------------------------------------------------------
+// Profile icon
+//---------------------------------------------------------
+export const  ProfileIcon = Template.bind({});
+ProfileIcon.args = {
+
+    asVariant: "warning",
+    asSize: "normal",
+    asFloated: "inline",
+    
+    withIcon: { icon: "fas fa-user" ,userImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPOVdk7wUJEgo42hvQ3g2Ge2DIDRuEI8x6Q&usqp=CAU", position: "left" },
+
+    withColor: {
+        backgroundColor: "",
+        textColor: "",
+    },
+    isDisabled: false,
+    isHidden: false,
+};
+ProfileIcon.parameters = {
+    docs: {
+        description: {
+            story: "Profile default icon can change to profile image",
+        },
+        source: {
+            code: `<Avatar {...${JSON.stringify(ProfileIcon.args, null, 2)}}/>`,
         },
     },
 };

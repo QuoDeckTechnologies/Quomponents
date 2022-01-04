@@ -31,19 +31,6 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
-                    accentColor: "",
-                    textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
-                },
-            },
-        },
-        withLabel: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    format: "label",
-                    content: "",
                     textColor: "",
                 },
             },
@@ -54,36 +41,7 @@ export default {
                 defaultValue: {
                     icon: "",
                     userImage: "",
-                    size: "",
                     position: "left",
-                },
-            },
-        },
-        withUser: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    userImage: "",
-                },
-            },
-        },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
-                },
-            },
-        },
-        withTranslation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    lang: "",
-                    tgt: "",
-                    dictionary: "",
                 },
             },
         },
@@ -135,32 +93,50 @@ Default.args = {
     asVariant: "primary",
     asSize: "normal",
     asFloated: "inline", 
-    withIcon: { icon: "fas fa-ellipsis-v" ,size: "1em", position: "right" },
-    withUser:{userImage: ""},
+    withIcon: { icon: "fas fa-ellipsis-v" ,userImage: "", position: "right" },
     withColor: {
         backgroundColor: "",
-        accentColor: "",
         textColor: "",
-        hoverBackgroundColor: "", 
-        hoverTextColor: "",
-    },
-    withLabel: {
-        format: "caption",
-        content: "Do not press this button repeatedly...",
-        textColor: "#000000",
-    },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
     },
     isDisabled: false,
     isHidden: false,
 };
 Default.parameters = {
     docs: {
+        description: {
+            story:
+                "Any free fontawesome icon can be used as the Avatar icon definition. This component is combination of the Avatar component on a MenuBlock component, The Avatar icon can be changed with userImage with in withIcon prop , give a link of any profile image and it will replace the icon with it , On the other side which is a Ellipsis icon in menuBlock component which is a part of menu block , this icon can also be change with other , and whole menublock is clickable",
+        },
         source: {
             code: `<AppMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+
+//----------------------------------------------------------
+// With UserImage
+//---------------------------------------------------------
+export const UserImage = Template.bind({});
+UserImage.args = {
+    asVariant: "warning",
+    asSize: "normal",
+    asFloated: "inline", 
+    withIcon: { icon: "fas fa-ellipsis-v" ,userImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPOVdk7wUJEgo42hvQ3g2Ge2DIDRuEI8x6Q&usqp=CAU", position: "right" },
+    withColor: {
+        backgroundColor: "",
+        textColor: "",
+    },
+    isDisabled: false,
+    isHidden: false,
+};
+UserImage.parameters = {
+    docs: {
+        description: {
+            story:
+                "Any free fontawesome icon can be used as the Avatar icon definition. This component is combination of the Avatar component on a MenuBlock component, The Avatar icon can be changed with userImage with in withIcon prop , give a link of any profile image and it will replace the icon with it , On the other side which is a Ellipsis icon in menuBlock component which is a part of menu block , this icon can also be change with other , and whole menublock is clickable",
+        },
+        source: {
+            code: `<AppMenu {...${JSON.stringify(UserImage.args, null, 2)}}/>`,
         },
     },
 };
