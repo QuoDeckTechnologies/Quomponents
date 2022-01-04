@@ -221,7 +221,7 @@ export const AnimatedCard = Template.bind({});
 AnimatedCard.args = {
   ...Default.args,
   withAnimation: {
-    animation: "collapse",
+    animation: "zoom",
     duration: 0.5,
     delay: 0,
   },
