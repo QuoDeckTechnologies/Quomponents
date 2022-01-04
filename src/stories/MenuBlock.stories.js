@@ -48,10 +48,7 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
-                    accentColor: "",
                     textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
                 },
             },
         },
@@ -136,10 +133,7 @@ Default.args = {
     withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
-        accentColor: "",
         textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
     },
     withAnimation: {
         animation: "zoom",

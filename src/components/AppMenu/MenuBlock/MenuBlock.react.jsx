@@ -45,10 +45,7 @@ MenuBlock.propTypes = {
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
         textColor: PropTypes.string,
-        hoverBackgroundColor: PropTypes.string,
-        hoverTextColor: PropTypes.string,
     }),
     /**
     Use to add an icon to the component
@@ -58,9 +55,9 @@ MenuBlock.propTypes = {
         size: PropTypes.string,
         position: PropTypes.oneOf(["left", "right"]),
     }),
-        /**
-    Use to add a heading label, a footer caption or a title popover to the component
-    */
+    /**
+Use to add a heading label, a footer caption or a title popover to the component
+*/
     withLabel: PropTypes.shape({
         format: PropTypes.oneOf(["label", "caption", "popover"]),
         content: PropTypes.string,
@@ -130,6 +127,9 @@ function getLabel(labelObj, position) {
 **/
 export default function MenuBlock(props) {
 
+
+
+
     let quommonClasses = getQuommons(props);
     // 4. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
@@ -138,6 +138,14 @@ export default function MenuBlock(props) {
         ? { color: labelContent.textColor }
         : {};
 
+    //-------------------------------------------------------------------
+    // 1. Set the color
+    //-------------------------------------------------------------------
+
+    let colors = {
+        backgroundColor: props.withColor?.backgroundColor,
+        color: props.withColor?.textColor
+    }
     //-------------------------------------------------------------------
     // 5. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
@@ -158,17 +166,18 @@ export default function MenuBlock(props) {
     return (
 
         <div className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={` float-${props.asFloated}`} onClick={(e)=>props.onClick(e)}>
-            <div className={`qui-container qui-menuBlock qui-btn size-${props.asSize} 
+            <div className={` float-${props.asFloated}`} onClick={(e) => props.onClick(e)}>
+                <div className={`qui-container qui-menuBlock qui-btn size-${props.asSize} 
             variant-${props.asVariant} emp-${props.asEmphasis} `}>
-                <div className="qui-iconContainer">
-                <div className={`qui-label ${quommonClasses.childClasses}`} style={labelStyle}>
-                {getLabel(labelContent, "label")}
-                </div>
-                <i className={props.withIcon?.icon}></i>
+                    <div style={colors} className="qui-iconContainer">
+                        <div className={`qui-label ${quommonClasses.childClasses}`} style={labelStyle}>
+                        </div >
+                        {getLabel(labelContent, "label")}
+                        {/* <div><p style={{color:"black"}}>hellohellohellohellohellohello</p></div> */}
+                        <i className={props.withIcon?.icon}></i>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     )
 }
