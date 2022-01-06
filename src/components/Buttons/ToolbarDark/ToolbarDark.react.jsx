@@ -33,10 +33,6 @@ ToolbarDark.propTypes = {
     Set action emphasis in increasing order 
     */
   asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
-  /**
-    Use for rounded corners or circular icon ToolbarDark 
-    */
-  isCircular: PropTypes.bool,
 
   // Quommon props
   //=======================================
@@ -84,15 +80,6 @@ ToolbarDark.propTypes = {
     position: PropTypes.oneOf(["center", "left", "right"]),
   }),
   /**
-    Use to add a heading label, a footer caption or a title popover to the component
-    */
-  withLabel: PropTypes.shape({
-    format: PropTypes.oneOf(["label", "caption", "popover"]),
-    content: PropTypes.string,
-    textColor: PropTypes.string,
-    hoverTextColor: PropTypes.string,
-  }),
-  /**
     Use to define the entry animation of the component
     */
   withAnimation: PropTypes.shape({
@@ -109,16 +96,6 @@ ToolbarDark.propTypes = {
     duration: PropTypes.number,
     delay: PropTypes.number,
   }),
-
-  /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-  withTranslation: PropTypes.shape({
-    lang: PropTypes.string,
-    tgt: PropTypes.string,
-    dictionary: PropTypes.string,
-  }),
-
   /**
     Use to show/hide the component
     */
@@ -143,7 +120,6 @@ ToolbarDark.defaultProps = {
   //=======================================
   content: [],
   asEmphasis: "text",
-  isCircular: false,
 
   // Quommon props
   //=======================================
@@ -155,7 +131,6 @@ ToolbarDark.defaultProps = {
   withColor: null,
   withIcon: null,
   withAnimation: null,
-  withTranslation: null,
 
   isHidden: false,
   isDisabled: false,
@@ -231,13 +206,14 @@ export default function ToolbarDark(props) {
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className={`qui-backbar ${props.isCircular ? "qui-circular" : ""}`}
+        className={`qui-backbar`}
         style={{ backgroundColor: props.withColor?.accentColor }}
       >
         <div className={`qui-icon`}>
           {_.map(content, (icon, index) => {
             return (
               <div
+                className="btn"
                 key={index}
                 variant={props.asEmphasis}
                 color={props.asVariant}
@@ -247,7 +223,6 @@ export default function ToolbarDark(props) {
                   {...props}
                   content={{ link: icon.link }}
                   withIcon={{ icon: icon.icon }}
-                  isCircular={false}
                   withLabel={{ content: icon.label, format: icon.format }}
                 />
               </div>

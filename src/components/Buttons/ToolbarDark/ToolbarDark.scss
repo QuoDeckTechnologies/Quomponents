@@ -1,8 +1,8 @@
 .qui .qui-backbar {
   background-color: black;
-  opacity: 0.8;
   padding: 0.5em 1em;
   text-align: center;
+  border-radius: 20px;
 }
 .qui .qui-circular.qui-backbar {
   border-radius: 1em;
@@ -15,7 +15,7 @@
 .qui button {
   border: none;
 }
-.qui .fa:hover {
+.qui .btn:hover {
   border: 1px solid rgb(25, 168, 216);
 }
 

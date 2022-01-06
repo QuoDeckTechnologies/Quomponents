@@ -19,13 +19,6 @@ export default {
         category: "as-Flags",
       },
     },
-    isCircular: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning"],
@@ -74,17 +67,6 @@ export default {
           icon: "",
           size: "",
           position: "center",
-        },
-      },
-    },
-    withLabel: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          format: "label",
-          content: "",
-          textColor: "",
-          hoverTextColor: "",
         },
       },
     },
@@ -178,19 +160,12 @@ Default.args = {
   ],
 
   asEmphasis: "text",
-  isCircular: false,
 
   asVariant: "primary",
   asSize: "normal",
   asPadded: "normal",
   asAligned: "center",
 
-  withLabel: {
-    format: "caption",
-    content: "Home",
-    textColor: "",
-    hoverTextColor: "",
-  },
   withIcon: { icon: "fa fa-home" },
   withColor: {
     backgroundColor: "",
