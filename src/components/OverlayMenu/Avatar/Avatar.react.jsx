@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./Avatar.scss";
 import "../../../common/stylesheets/overrule.scss";
+import IconLink from "../IconLink/IconLink.react"
 
 Avatar.propTypes = {
     
@@ -199,14 +200,27 @@ export default function Avatar(props) {
     return (
         <div className="qui">
         <div className="qui-card">
+            <div>
         <div className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`} onClick={(e)=>props.onClick(e)}>
             <div className={`qui-container size-${props.asSize} variant-${props.asVariant}`}>
                 {getAvatar(props.withIcon,props.withUser)}
             </div>
-            <div className="qui-AvatarCaption" style={labelStyle}>
+        </div>
+        <div className={`"qui-AvatarCaption" size-${props.asSize}`} style={labelStyle}>
                 {getLabel(labelContent, "caption")}
             </div>
-        </div>
+            </div>
+            <div>
+            <IconLink {...props} />
+            <IconLink {...props }  />
+            {/* <IconLink
+                  {...props}
+                  content={{ link: icon.link }}
+                  withIcon={{ icon: icon.icon }}
+                  isCircular={false}
+                  withLabel={{ content: icon.label, format: icon.format }}
+                /> */}
+            </div>
         </div>
         </div>
     );
