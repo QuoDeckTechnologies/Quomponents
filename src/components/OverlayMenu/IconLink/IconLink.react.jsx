@@ -186,7 +186,6 @@ function getColors(colors, emphasis, hovered) {
 **/
 export default function IconLink(props) {
 
-    const [tilt, setTilt] = useState(false)
 
     const [hovered, setHovered] = useState(false);
 
@@ -244,8 +243,6 @@ export default function IconLink(props) {
             className={`qui ${quommonClasses.parentClasses}`}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            onMouseDown={() => setTilt(true)}
-            onMouseUp={() => setTilt(false)}
 
         >   <a href={props.content?.link} className="qui-link">
                 <div
@@ -261,7 +258,7 @@ export default function IconLink(props) {
                     onClick={props.onClick}
                 >
 
-                    <div className={`${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
+                    <div className={`${props.withIcon ? props.withIcon.icon : ""}`}>
                     </div>
                 </button>
                 <div

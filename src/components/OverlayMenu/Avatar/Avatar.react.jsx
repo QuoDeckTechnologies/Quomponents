@@ -202,7 +202,7 @@ export default function Avatar(props) {
         <div className="qui">
             <div className="qui-card">
                 <div className="upper-div">
-                    <i className={"fas fa-times"}></i>
+                    {/* <i className={"fas fa-times"}></i> */}
                     <div className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`}
                     // onClick={(e) => props.onClick(e)}
                     >
