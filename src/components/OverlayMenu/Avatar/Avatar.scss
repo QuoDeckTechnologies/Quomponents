@@ -1,13 +1,14 @@
-.qui img{
+.qui img {
     border-radius: 50%;
-    height:100%;
-    width:100%;   
+    height: 100%;
+    width: 100%;
 }
 
 .qui .qui-AvatarCaption {
     font-size: 0.85em;
     margin-top: 5px;
     margin-left: 3px;
+    font-weight: bold;
 }
 
 // .qui .qui-AvatarCaption.size-big {
@@ -37,7 +38,7 @@
 .qui .qui-avatarContainer.pad-relaxed.size-massive {
     padding: 0px 0px;
 }
- 
+
 /* ================================================= */
 /* Font Size Definitions */
 /* ================================================= */
@@ -48,7 +49,7 @@
 }
 .qui .size-huge {
     i {
-        font-size: 1.60em;
+        font-size: 1.6em;
     }
 }
 .qui .size-big {
@@ -61,7 +62,7 @@
         font-size: 1.3em;
     }
 }
-.qui .size-small { 
+.qui .size-small {
     i {
         font-size: 1.15em;
     }
@@ -72,44 +73,43 @@
     }
 }
 
-.qui-container{
+.qui-container {
     border-radius: 50%;
     overflow: hidden;
 }
 
-.qui-container.size-tiny{
+.qui-container.size-tiny {
     height: 2em;
     width: 2em;
 }
-.qui-container.size-small{
+.qui-container.size-small {
     height: 2.5em;
     width: 2.5em;
 }
-.qui-container.size-normal{
+.qui-container.size-normal {
     height: 3em;
     width: 3em;
 }
-.qui-container.size-big{
+.qui-container.size-big {
     height: 3.5em;
     width: 3.5em;
 }
-.qui-container.size-huge{
+.qui-container.size-huge {
     height: 4em;
     width: 4em;
 }
-.qui-container.size-massive{
+.qui-container.size-massive {
     height: 5em;
     width: 5em;
 }
 
-.qui-icon{
+.qui-icon {
     height: 100%;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 
 /* ================================================= */
 /* Card Definitions */
@@ -125,8 +125,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(241, 101, 101);
-    padding: 10% 0;
+    // background-color: rgb(194, 63, 63);
+    // padding: 10% 0;
     margin: 20px;
-    }
-    
+}
+
+.qui .upper-div {
+    background-color: rgb(241, 101, 101);
+    width: 100%;
+    border-radius: 5%;
+    margin-top: 0;
+    padding: 5% 0;
+}
+.qui .lower-div {
+    background-color: #883333;
+    width: 100%;
+    opacity: o.5;
+    margin: auto;
+    padding: 5% 0;
+    // border-radius: 5%;
+}
+
+.qui .x {
+    position: absolute;
+    left: 22.53%;
+    right: 22.53%;
+    top: 22.53%;
+    bottom: 22.53%;
+    background: #222a35;
+}

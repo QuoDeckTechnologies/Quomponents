@@ -1,7 +1,8 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
-import { getQuommons ,  getTranslation,
+import {
+    getQuommons, getTranslation,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -10,15 +11,15 @@ import "../../../common/stylesheets/overrule.scss";
 import IconLink from "../IconLink/IconLink.react"
 
 Avatar.propTypes = {
-    
-    
+
+
     //=======================================
     // Component specific prop
     //=======================================
     /**
     Use to define component user image
     */
-    withUser : PropTypes.string,
+    withUser: PropTypes.string,
 
     //=======================================
     // Quommon props
@@ -87,7 +88,7 @@ Avatar.propTypes = {
 
 Avatar.defaultProps = {
 
-    withUser : "",
+    withUser: "",
     // ======================================
     // Quommon props
     //=======================================
@@ -199,29 +200,26 @@ export default function Avatar(props) {
 
     return (
         <div className="qui">
-        <div className="qui-card">
-            <div>
-        <div className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`} onClick={(e)=>props.onClick(e)}>
-            <div className={`qui-container size-${props.asSize} variant-${props.asVariant}`}>
-                {getAvatar(props.withIcon,props.withUser)}
+            <div className="qui-card">
+                <div className="upper-div">
+                    <i className={"fas fa-times"}></i>
+                    <div className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`}
+                    // onClick={(e) => props.onClick(e)}
+                    >
+                        <div className={`qui-container size-${props.asSize} variant-${props.asVariant}`}>
+                            {getAvatar(props.withIcon, props.withUser)}
+                        </div>
+                        <div className={`"qui-AvatarCaption" size-${props.asSize}`} style={labelStyle}>
+                            {getLabel(labelContent, "caption")}
+                        </div>
+                    </div>
+
+                </div>
+                <div className="lower-div">
+                    <IconLink {...props} />
+                    <IconLink {...props} />
+                </div>
             </div>
-        </div>
-        <div className={`"qui-AvatarCaption" size-${props.asSize}`} style={labelStyle}>
-                {getLabel(labelContent, "caption")}
-            </div>
-            </div>
-            <div>
-            <IconLink {...props} />
-            <IconLink {...props }  />
-            {/* <IconLink
-                  {...props}
-                  content={{ link: icon.link }}
-                  withIcon={{ icon: icon.icon }}
-                  isCircular={false}
-                  withLabel={{ content: icon.label, format: icon.format }}
-                /> */}
-            </div>
-        </div>
         </div>
     );
 
