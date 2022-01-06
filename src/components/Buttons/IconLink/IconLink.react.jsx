@@ -175,6 +175,7 @@ function getColors(colors, emphasis, hovered) {
         colorStyle.borderColor = colors.backgroundColor
     return colorStyle;
 }
+
 /**
 ## Notes
 - The design system used for this component is fontawesome Icons
@@ -206,7 +207,7 @@ export default function IconLink(props) {
     //-------------------------------------------------------------------
     // 3. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, props.withLabel);
+    let labelContent = Object.assign({}, props.withLabel, props.withColor);
     let labelStyle = labelContent?.textColor
         ? { color: labelContent.textColor }
         : {};
@@ -246,28 +247,29 @@ export default function IconLink(props) {
             onMouseDown={() => setTilt(true)}
             onMouseUp={() => setTilt(false)}
 
-        >
-            <div
-                className={`qui-btn qui-icon-label emp-text variant-${props.asVariant}   
-                 size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
-                {getLabel(labelContent, "label")}
-            </div>
-            <button
-                variant={props.asEmphasis}
-                color={props.asVariant}
-                className={`qui-btn ${quommonClasses.childClasses}`}
-                style={Object.assign({}, colors, props.style)}
-                onClick={props.onClick}
-            >
-
-                <div className={`${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
+        >   <a href={props.content?.link} className="qui-link">
+                <div
+                    className={`qui-btn qui-icon-label emp-text variant-${props.asVariant}   
+                    size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
+                    {getLabel(labelContent, "label")}
                 </div>
-            </button>
-            <div
-                className={`qui-btn qui-icon-caption emp-text variant-${props.asVariant}
-                size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
-                {getLabel(labelContent, "caption")}
-            </div>
+                <button
+                    variant={props.asEmphasis}
+                    color={props.asVariant}
+                    className={`qui-btn ${quommonClasses.childClasses}`}
+                    style={Object.assign({}, colors, props.style)}
+                    onClick={props.onClick}
+                >
+
+                    <div className={`${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
+                    </div>
+                </button>
+                <div
+                    className={`qui-btn qui-icon-caption emp-text variant-${props.asVariant}
+                    size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
+                    {getLabel(labelContent, "caption")}
+                </div>
+            </a>
         </motion.div>
     );
 };
