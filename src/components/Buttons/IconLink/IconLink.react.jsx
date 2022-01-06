@@ -162,20 +162,70 @@ function getLabel(labelObj, position) {
 }
 
 function getColors(colors, emphasis, hovered) {
-    let colorStyle = hovered
+    // let colorStyle = hovered
+    //     ? {
+    //         background: colors.hoverBackgroundColor,
+    //         color: colors.hoverTextColor,
+    //     }
+    //     : {
+    //         background: emphasis !== "contained" ? "transparent" : colors.backgroundColor,
+    //         color: emphasis !== "contained" ? colors.backgroundColor : colors.textColor,
+    //     }
+    // if (!hovered && emphasis === "outlined")
+    //     colorStyle.borderColor = colors.backgroundColor
+    // return colorStyle;
+    let colorStyle = {
+        buttonHandle : {},
+        lableHandle : {}
+    }
+    if(!hovered){
+        colorStyle.buttonHandle = emphasis === 'text'
         ? {
-            background: colors.hoverBackgroundColor,
-            color: colors.hoverTextColor,
+            background : 'transparent',
+            color : colors.backgroundColor
         }
-        : {
-            background: emphasis !== "contained" ? "transparent" : colors.backgroundColor,
-            color: emphasis !== "contained" ? colors.backgroundColor : colors.textColor,
+        : emphasis === 'outlined' 
+        ? {
+            background : 'transparent',
+            color : colors.backgroundColor,
+            borderColor : colors.backgroundColor
         }
-    if (!hovered && emphasis === "outlined")
-        colorStyle.borderColor = colors.backgroundColor
+        : emphasis === 'contained'
+        ? {
+            background : colors.backgroundColor,
+            color : colors.textColor
+        } 
+        :
+        {}
+        colorStyle.lableHandle = {
+            color : colors.textColor
+        }
+    }
+    if(hovered){
+        colorStyle.lableHandle = {
+            color : colors.hoverTextColor
+        }
+        if(emphasis === 'text'){
+            colorStyle.buttonHandle.background = 'transparent'
+            colorStyle.buttonHandle.color = colors.hoverTextColor
+        }
+        if(emphasis === 'contained'){
+            colorStyle.buttonHandle = {
+                background : colors.hoverBackgroundColor,
+                color : colors.hoverTextColor
+            }
+        }
+        if(emphasis === 'outlined'){
+            colorStyle.buttonHandle = {
+                background : 'transparent',
+                color : colors.hoverTextColor,
+                borderColor : colors.hoverTextColor
+            }
+        }
+    }
+    
     return colorStyle;
 }
-
 /**
 ## Notes
 - The design system used for this component is fontawesome Icons
@@ -187,7 +237,6 @@ function getColors(colors, emphasis, hovered) {
 export default function IconLink(props) {
 
     const [tilt, setTilt] = useState(false)
-
     const [hovered, setHovered] = useState(false);
 
     //-------------------------------------------------------------------
@@ -203,14 +252,13 @@ export default function IconLink(props) {
     // 2. Set the component colors
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
-
     //-------------------------------------------------------------------
     // 3. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel, props.withColor);
-    let labelStyle = labelContent?.textColor
-        ? { color: labelContent.textColor }
-        : {};
+    // let labelStyle = labelContent?.textColor
+    //     ? { color: labelContent.textColor }
+    //     : {};
     let loadingText = "";
 
     //-------------------------------------------------------------------
@@ -234,7 +282,7 @@ export default function IconLink(props) {
     //-------------------------------------------------------------------
 
     const animate = getAnimation(props.withAnimation);
-
+    // console.log(labelStyle,colors)
     // ========================= Render Function =================================
 
     return (
@@ -250,15 +298,15 @@ export default function IconLink(props) {
         >   <a href={props.content?.link} className="qui-link">
                 <div
                     className={`qui-btn qui-icon-label emp-text variant-${props.asVariant}   
-                    size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
+                    size-${props.asSize ? props.asSize : ""}`} style={Object.assign({}, colors.lableHandle)}>
                     {getLabel(labelContent, "label")}
                 </div>
                 <button
                     variant={props.asEmphasis}
                     color={props.asVariant}
                     className={`qui-btn ${quommonClasses.childClasses}`}
-                    style={Object.assign({}, colors, props.style)}
-                    onClick={props.onClick}
+                    style={Object.assign({}, colors.buttonHandle)}
+                    onClick={props.onClick()}
                 >
 
                     <div className={`${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
@@ -266,7 +314,7 @@ export default function IconLink(props) {
                 </button>
                 <div
                     className={`qui-btn qui-icon-caption emp-text variant-${props.asVariant}
-                    size-${props.asSize ? props.asSize : ""}`} style={labelStyle}>
+                    size-${props.asSize ? props.asSize : ""}`} style={Object.assign({}, colors.lableHandle)}>
                     {getLabel(labelContent, "caption")}
                 </div>
             </a>

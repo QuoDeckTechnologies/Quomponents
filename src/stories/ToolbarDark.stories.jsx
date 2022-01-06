@@ -60,16 +60,6 @@ export default {
         },
       },
     },
-    withIcon: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          icon: "",
-          size: "",
-          position: "center",
-        },
-      },
-    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -80,7 +70,6 @@ export default {
         },
       },
     },
-
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -137,7 +126,7 @@ Default.args = {
       icon: "fa fa-share",
       label: "Certificate",
       format: "caption",
-      link: "https://www.youtube.com/",
+      link: "https://quodeck.com/",
     },
     {
       icon: "fa fa-wallet",
@@ -155,7 +144,7 @@ Default.args = {
       icon: "fa fa-chart-pie",
       label: "Reports",
       format: "caption",
-      link: "https://github.com/",
+      link: "https://www.youtube.com/",
     },
   ],
 
@@ -166,7 +155,6 @@ Default.args = {
   asPadded: "normal",
   asAligned: "center",
 
-  withIcon: { icon: "fa fa-home" },
   withColor: {
     backgroundColor: "",
     accentColor: "",

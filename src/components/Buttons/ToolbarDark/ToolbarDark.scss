@@ -1,5 +1,5 @@
 .qui .qui-backbar {
-  background-color: black;
+  background-color: #222a35;
   padding: 0.5em 1em;
   text-align: center;
   border-radius: 20px;
@@ -15,9 +15,9 @@
 .qui button {
   border: none;
 }
-.qui .btn:hover {
-  border: 1px solid rgb(25, 168, 216);
-}
+// .qui .btn:hover {
+//   border: 1px solid rgb(25, 168, 216);
+// }
 
 @media screen and (min-width: 320px) {
   .qui .pad-normal {

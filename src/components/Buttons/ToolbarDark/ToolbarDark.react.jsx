@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import _ from "lodash";
 import {
   getQuommons,
-  getTranslation,
   getAnimation,
 } from "../../../common/javascripts/helpers";
 
@@ -33,7 +32,7 @@ ToolbarDark.propTypes = {
     Set action emphasis in increasing order 
     */
   asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
-
+  //=======================================
   // Quommon props
   //=======================================
 
@@ -72,14 +71,6 @@ ToolbarDark.propTypes = {
     hoverTextColor: PropTypes.string,
   }),
   /**
-    Use to add an icon to the component
-    */
-  withIcon: PropTypes.shape({
-    icon: PropTypes.string,
-    size: PropTypes.string,
-    position: PropTypes.oneOf(["center", "left", "right"]),
-  }),
-  /**
     Use to define the entry animation of the component
     */
   withAnimation: PropTypes.shape({
@@ -116,11 +107,12 @@ ToolbarDark.propTypes = {
 };
 
 ToolbarDark.defaultProps = {
+  //=======================================
   // Component Specific props
   //=======================================
   content: [],
   asEmphasis: "text",
-
+  //=======================================
   // Quommon props
   //=======================================
   asVariant: "primary",
@@ -137,22 +129,6 @@ ToolbarDark.defaultProps = {
   isFluid: false,
 };
 
-function getColors(colors, emphasis, hovered) {
-  let colorStyle = hovered
-    ? {
-        background: colors.hoverBackgroundColor,
-        color: colors.hoverTextColor,
-      }
-    : {
-        background:
-          emphasis !== "contained" ? "transparent" : colors.backgroundColor,
-        color:
-          emphasis !== "contained" ? colors.backgroundColor : colors.textColor,
-      };
-  if (!hovered && emphasis === "outlined")
-    colorStyle.borderColor = colors.backgroundColor;
-  return colorStyle;
-}
 /**
 ## Notes
 - The design system used for this component is fontawesome Icons
@@ -172,35 +148,17 @@ export default function ToolbarDark(props) {
   quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
 
   //-------------------------------------------------------------------
-  // 2. Set the component colors
-  //-------------------------------------------------------------------
-  let colors = props.withColor
-    ? getColors(props.withColor, props.asEmphasis, hovered)
-    : {};
-  //-------------------------------------------------------------------
-  // 3. Translate the text objects in case their is a dictionary provided
-  //-------------------------------------------------------------------
-  if (
-    props.withTranslation?.lang &&
-    props.withTranslation.lang !== "" &&
-    props.withTranslation.lang !== "en"
-  ) {
-    let tObj = getTranslation(props.withTranslation, "ToolbarDark");
-  }
-
-  //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
 
   let { content } = props;
-  console.log(quommonClasses);
+  
   // ========================= Render Function =================================
 
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
+    <div
+      
       className={`qui ${quommonClasses.parentClasses}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -212,24 +170,26 @@ export default function ToolbarDark(props) {
         <div className={`qui-icon`}>
           {_.map(content, (icon, index) => {
             return (
-              <div
+              <motion.div
+                initial={animate.from}
+                animate={animate.to}
                 className="btn"
                 key={index}
                 variant={props.asEmphasis}
                 color={props.asVariant}
-                style={Object.assign({}, colors, props.style)}
               >
                 <IconLink
                   {...props}
                   content={{ link: icon.link }}
                   withIcon={{ icon: icon.icon }}
                   withLabel={{ content: icon.label, format: icon.format }}
+                  withColor={{ ...props.withColor }}
                 />
-              </div>
+              </motion.div>
             );
           })}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
