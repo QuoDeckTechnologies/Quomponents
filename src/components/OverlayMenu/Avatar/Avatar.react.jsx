@@ -1,25 +1,22 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
-import {
-    getQuommons, getTranslation,
-} from "../../../common/javascripts/helpers";
+import { getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./Avatar.scss";
 import "../../../common/stylesheets/overrule.scss";
-import IconLink from "../IconLink/IconLink.react"
 
 Avatar.propTypes = {
-
-
+    
+    
     //=======================================
     // Component specific prop
     //=======================================
     /**
     Use to define component user image
     */
-    withUser: PropTypes.string,
+    withUser : PropTypes.string,
 
     //=======================================
     // Quommon props
@@ -63,15 +60,6 @@ Avatar.propTypes = {
     withIcon: PropTypes.shape({
         icon: PropTypes.string,
     }),
-
-    /**
-    Use to add a heading label, a footer caption or a title popover to the component
-    */
-    withLabel: PropTypes.shape({
-        format: PropTypes.oneOf(["label", "caption", "popover"]),
-        content: PropTypes.string,
-        textColor: PropTypes.string,
-    }),
     /**
     Use to show/hide the component
     */
@@ -88,7 +76,7 @@ Avatar.propTypes = {
 
 Avatar.defaultProps = {
 
-    withUser: "",
+    withUser : "",
     // ======================================
     // Quommon props
     //=======================================
@@ -98,17 +86,11 @@ Avatar.defaultProps = {
 
     withColor: null,
     withIcon: null,
-    withLabel: null,
-
 
     isHidden: false,
     isDisabled: false,
 };
 
-
-function getLabel(labelObj, position) {
-    return labelObj?.format === position ? labelObj.content : "";
-}
 
 /**
 ## Notes
@@ -125,47 +107,8 @@ export default function Avatar(props) {
         backgroundColor: props.withColor?.backgroundColor,
         color: props.withColor?.textColor
     }
-
     //-------------------------------------------------------------------
-    // Set the button text
-    //-------------------------------------------------------------------
-    let buttonText = props.content
-        ? props.content
-        : props.children
-            ? props.children
-            : "";
-    let iconOnly = buttonText === "";
-
-
-
-    //-------------------------------------------------------------------
-    // 2. Set the label/caption/popover and loading text
-    //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, props.withLabel);
-    let labelStyle = labelContent?.textColor
-        ? { color: labelContent.textColor }
-        : {};
-    let loadingText = "Please Wait...";
-
-
-    //-------------------------------------------------------------------
-    // 3. Translate the text objects in case their is a dictionary provided
-    //-------------------------------------------------------------------
-    if (
-        props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        let tObj = getTranslation(props.withTranslation);
-        if (tObj && props.content && props.content !== "") {
-            buttonText = tObj.text;
-        }
-        if (labelContent && tObj?.label) labelContent.content = tObj.label;
-        loadingText = getTranslation(props.withTranslation, "loading");
-    }
-
-    //-------------------------------------------------------------------
-    // 4. Set the classes
+    // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
     if (props.isCircular)
@@ -175,7 +118,7 @@ export default function Avatar(props) {
     quommonClasses.childClasses += ` emp-contained`;
 
     //-------------------------------------------------------------------
-    // 5. Get Avatar if provided, default is icon
+    // 2. Get Avatar if provided, default is icon
     //-------------------------------------------------------------------
     const getAvatar = (icon, avatar) => {
         let imgClasses = getQuommons(props);
@@ -199,29 +142,12 @@ export default function Avatar(props) {
 
 
     return (
-        <div className="qui">
-            <div className="qui-card">
-                <div className="upper-div">
-                    {/* <i className={"fas fa-times"}></i> */}
-                    <div className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`}
-                    // onClick={(e) => props.onClick(e)}
-                    >
-                        <div className={`qui-container size-${props.asSize} variant-${props.asVariant}`}>
-                            {getAvatar(props.withIcon, props.withUser)}
-                        </div>
-                        <div className={`"qui-AvatarCaption" size-${props.asSize}`} style={labelStyle}>
-                            {getLabel(labelContent, "caption")}
-                        </div>
-                    </div>
 
-                </div>
-                <div className="lower-div">
-                    <IconLink {...props} />
-                    <IconLink {...props} />
-                </div>
+        <div className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`} onClick={(e)=>props.onClick(e)}>
+            <div className={`qui-container qui-icon-container size-${props.asSize} variant-${props.asVariant}`}>
+                {getAvatar(props.withIcon,props.withUser)}
             </div>
         </div>
     );
 
 }
-

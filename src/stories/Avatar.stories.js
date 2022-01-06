@@ -43,29 +43,6 @@ export default {
                 },
             },
         },
-
-        withLabel: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    format: "label",
-                    content: "",
-                    textColor: "",
-                },
-            },
-        },
-
-        withTranslation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    lang: "",
-                    tgt: "",
-                    dictionary: "",
-                },
-            },
-        },
-
         withIcon: {
             table: {
                 category: "with-Params",
@@ -121,20 +98,14 @@ export const Default = Template.bind({});
 Default.args = {
 
     asVariant: "primary",
-    asSize: "huge",
+    asSize: "normal",
     asFloated: "inline",
     
     withIcon: { icon: "fas fa-user" },
-    withUser: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80", 
+    withUser: "", 
     withColor: {
         backgroundColor: "",
         textColor: "",
-    },
-
-    withLabel: {
-        format: "caption",
-        content: "Aruna Asrani",
-        textColor: "#000000",
     },
 
     isDisabled: false,
@@ -148,6 +119,213 @@ Default.parameters = {
         },
         source: {
             code: `<Avatar {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+
+//----------------------------------------------------------
+// Profile icon
+//---------------------------------------------------------
+export const  ProfileIcon = Template.bind({});
+ProfileIcon.args = {
+
+    asVariant: "warning",
+    asSize: "normal",
+    asFloated: "inline",
+    
+    withIcon: { icon: "fas fa-user" },
+
+    withUser:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPOVdk7wUJEgo42hvQ3g2Ge2DIDRuEI8x6Q&usqp=CAU",
+    withColor: {
+        backgroundColor: "",
+        textColor: "",
+    },
+    isDisabled: false,
+    isHidden: false,
+};
+ProfileIcon.parameters = {
+    docs: {
+        description: {
+            story: "Profile default icon can change to profile image",
+        },
+        source: {
+            code: `<Avatar {...${JSON.stringify(ProfileIcon.args, null, 2)}}/>`,
+        },
+    },
+};
+
+
+
+//----------------------------------------------------------
+// Disabled Avatar Icon
+//---------------------------------------------------------
+export const  DisabledIcon = Template.bind({});
+DisabledIcon.args = {
+
+    asVariant: "warning",
+    asSize: "normal",
+    asFloated: "inline",
+    
+    withIcon: { icon: "fas fa-user" },
+    withUser: "",
+    withColor: {
+        backgroundColor: "",
+        textColor: "",
+    },
+    isDisabled: true,
+    isHidden: false,
+};
+DisabledIcon.parameters = {
+    docs: {
+        description: {
+            story: "Profile default icon can change to profile image , Onclick is disabled",
+        },
+        source: {
+            code: `<Avatar {...${JSON.stringify(DisabledIcon.args, null, 2)}}/>`,
+        },
+    },
+};
+
+
+
+
+// -------------------------------------------------------------
+// AllSizes
+// -------------------------------------------------------------
+const AllSizesTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            asFloated: "inline",
+            
+            
+        }),
+    };
+    return (
+        <div>
+            <Avatar
+                {...Object.assign({}, baseObj, {
+                    asVariant: "secondary",
+                    asSize:"tiny",
+                    withIcon: { icon: "fas fa-user"},
+
+                })}
+            />
+            <Avatar
+                {...Object.assign({}, baseObj, {
+                    asVariant: "secondary",
+                    asSize:"small",
+                    withIcon: { icon: "fas fa-user"},
+                })}
+            />
+            <Avatar
+                {...Object.assign({}, baseObj, {
+                    asVariant: "secondary",
+                    asSize:"normal",
+                    withIcon: { icon: "fas fa-user"},
+                })}
+            />
+            <Avatar
+                {...Object.assign({}, baseObj, {
+                    asVariant: "secondary",
+                    asSize:"big",
+                    withIcon: { icon: "fas fa-user"},
+                })}
+            />
+            <Avatar
+                {...Object.assign({}, baseObj, {
+                    asVariant: "secondary",
+                    asSize:"huge",
+                    withIcon: { icon: "fas fa-user"},
+                })}
+            />
+            <Avatar
+                {...Object.assign({}, baseObj, {
+                    asVariant: "secondary",
+                    asSize:"massive",
+                    withIcon: { icon: "fas fa-user"},
+                })}
+            />
+        </div>
+    );
+};
+
+
+export const AllSizes= AllSizesTemplate.bind({});
+AllSizes.parameters = {
+    docs: {
+        description: {
+            story: "6 sizes are supported with the different different fontawesome icons. Use as per purpose noted here.",
+        },
+        source: {
+            code: `<Avatar asVariant="secondary"/>`,
+        },
+    },
+};
+
+
+
+// -------------------------------------------------------------
+// AllVariants
+// -------------------------------------------------------------
+const AllVariantsTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            asFloated: "inline",
+            
+            
+        }),
+    };
+    return (
+        <div>
+            <Avatar
+                {...Object.assign({}, baseObj, {
+                    asVariant: "primary",
+                    asSize:"normal",
+                    withIcon: { icon: "fas fa-user"},
+
+                })}
+            />
+            <Avatar
+                {...Object.assign({}, baseObj, {
+                    asVariant: "secondary",
+                    asSize:"normal",
+                    withIcon: { icon: "fas fa-user"},
+                })}
+            />
+            <Avatar
+                {...Object.assign({}, baseObj, {
+                    asVariant: "success",
+                    asSize:"normal",
+                    withIcon: { icon: "fas fa-user"},
+                })}
+            />
+            <Avatar
+                {...Object.assign({}, baseObj, {
+                    asVariant: "warning",
+                    asSize:"normal",
+                    withIcon: { icon: "fas fa-user"},
+                })}
+            />
+            <Avatar
+                {...Object.assign({}, baseObj, {
+                    asVariant: "error",
+                    asSize:"normal",
+                    withIcon: { icon: "fas fa-user"},
+                })}
+            />
+        </div>
+    );
+};
+
+
+export const AllVariants= AllVariantsTemplate.bind({});
+AllVariants.parameters = {
+    docs: {
+        description: {
+            story: "5 variants are supported. Use as per purpose noted here.",
+        },
+        source: {
+            code: `<Avatar asVariant="primary"/>`,
         },
     },
 };
