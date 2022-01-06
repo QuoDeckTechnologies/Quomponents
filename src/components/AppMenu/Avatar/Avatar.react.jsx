@@ -144,7 +144,7 @@ export default function Avatar(props) {
     return (
 
         <div className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`} onClick={(e)=>props.onClick(e)}>
-            <div className={`qui-container size-${props.asSize} variant-${props.asVariant}`}>
+            <div className={`qui-container qui-icon-container size-${props.asSize} variant-${props.asVariant}`}>
                 {getAvatar(props.withIcon,props.withUser)}
             </div>
         </div>
