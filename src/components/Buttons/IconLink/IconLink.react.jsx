@@ -24,7 +24,7 @@ IconLink.propTypes = {
     Use for rounded corners or circular icon IconLink 
     */
     isCircular: PropTypes.bool,
-
+    //=======================================
     // Quommon props
     //=======================================
 
@@ -132,12 +132,12 @@ IconLink.propTypes = {
 };
 
 IconLink.defaultProps = {
-
+    //=======================================
     // Component Specific props
     //=======================================
     asEmphasis: "text",
     isCircular: false,
-
+    //=======================================
     // Quommon props
     //=======================================
     asVariant: "primary",

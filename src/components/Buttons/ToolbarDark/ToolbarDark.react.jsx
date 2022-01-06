@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import _ from "lodash";
@@ -138,7 +138,6 @@ ToolbarDark.defaultProps = {
 - props are not being passed to the ToolbarDark. Please speak to the admin to handle any new prop.
 **/
 export default function ToolbarDark(props) {
-  const [hovered, setHovered] = useState(false);
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
@@ -146,22 +145,20 @@ export default function ToolbarDark(props) {
   if (props.isCircular) quommonClasses.childClasses += ` is-circular`;
 
   quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
-
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 2. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  //-------------------------------------------------------------------
+  // 3. Destructure content prop to itirate
+  //-------------------------------------------------------------------
   let { content } = props;
   
   // ========================= Render Function =================================
 
   return (
     <div
-      
       className={`qui ${quommonClasses.parentClasses}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       <div
         className={`qui-backbar`}
