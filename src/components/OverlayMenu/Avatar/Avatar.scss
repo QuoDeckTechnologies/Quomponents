@@ -1,0 +1,128 @@
+.qui img{
+    border-radius: 50%;
+    height:100%;
+    width:100%;   
+}
+
+.qui .qui-AvatarCaption {
+    font-size: 0.85em;
+    margin-top: 5px;
+    margin-left: 3px;
+}
+
+.qui .qui-AvatarCaption.size-big {
+    font-size: 4em;
+    margin-top: 5px;
+    margin-left: 3px;
+}
+
+/* ================================================= */
+/* Padding Definitions */
+/* ================================================= */
+.qui .qui-avatarContainer.pad-fitted {
+    padding: 0px 0px;
+}
+.qui .qui-avatarContainer.pad-compact {
+    padding: 0px 0px;
+}
+.qui .qui-avatarContainer.pad-normal {
+    padding: 0px 0px;
+}
+.qui .qui-avatarContainer.pad-relaxed,
+.qui .qui-avatarContainer.pad-normal.size-huge,
+.qui .qui-avatarContainer.pad-normal.size-massive {
+    padding: 0px 0px;
+}
+.qui .qui-avatarContainer.pad-relaxed.size-huge,
+.qui .qui-avatarContainer.pad-relaxed.size-massive {
+    padding: 0px 0px;
+}
+ 
+/* ================================================= */
+/* Font Size Definitions */
+/* ================================================= */
+.qui .size-massive {
+    i {
+        font-size: 1.7em;
+    }
+}
+.qui .size-huge {
+    i {
+        font-size: 1.60em;
+    }
+}
+.qui .size-big {
+    i {
+        font-size: 1.45em;
+    }
+}
+.qui .size-normal {
+    i {
+        font-size: 1.3em;
+    }
+}
+.qui .size-small { 
+    i {
+        font-size: 1.15em;
+    }
+}
+.qui .size-tiny {
+    i {
+        font-size: 1em;
+    }
+}
+
+.qui-container{
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.qui-container.size-tiny{
+    height: 2em;
+    width: 2em;
+}
+.qui-container.size-small{
+    height: 2.5em;
+    width: 2.5em;
+}
+.qui-container.size-normal{
+    height: 3em;
+    width: 3em;
+}
+.qui-container.size-big{
+    height: 3.5em;
+    width: 3.5em;
+}
+.qui-container.size-huge{
+    height: 4em;
+    width: 4em;
+}
+.qui-container.size-massive{
+    height: 5em;
+    width: 5em;
+}
+
+.qui-icon{
+    height: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ================================================= */
+/* Card Definitions */
+/* ================================================= */
+
+.qui .qui-card {
+    border-radius: 5%;
+    box-shadow: 0px 10px 10px rgb(192, 192, 192);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(194, 20, 20);
+    padding: 10% 0;
+    margin: 20px;
+    }
+    
