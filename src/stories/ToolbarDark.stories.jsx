@@ -180,6 +180,34 @@ Default.parameters = {
   },
 };
 
+//-------------------------------------------------------------
+// Colored Toolbar
+// -------------------------------------------------------------
+export const ColoredToolbar = Template.bind({});
+ColoredToolbar.args = {
+    ...Default.args,
+    withColor: {
+        backgroundColor: "gray",
+        textColor: "gray",
+        accentColor:"#48D1CC",
+        hoverBackgroundColor: "steelblue",
+        hoverTextColor: "steelblue",
+    },
+};
+ColoredToolbar.parameters = {
+    docs: {
+        description: {
+            story: "Use to override the standard colors of the Icon.",
+        },
+        source: {
+            code: `<Toolbardark withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
+        },
+    },
+};
+
+//-------------------------------------------------------------
+// Animated Toolbar
+// -------------------------------------------------------------
 export const AnimatedToolbar = Template.bind({});
 AnimatedToolbar.args = {
   ...Default.args,

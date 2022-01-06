@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
     getQuommons,
-    getTranslation,
     getAnimation,
 } from "../../../common/javascripts/helpers";
 
@@ -163,55 +162,55 @@ function getLabel(labelObj, position) {
 
 function getColors(colors, emphasis, hovered) {
     let colorStyle = {
-        buttonHandle : {},
-        lableHandle : {}
+        buttonHandle: {},
+        lableHandle: {}
     }
-    if(!hovered){
+    if (!hovered) {
         colorStyle.buttonHandle = emphasis === 'text'
-        ? {
-            background : 'transparent',
-            color : colors.backgroundColor
-        }
-        : emphasis === 'outlined' 
-        ? {
-            background : 'transparent',
-            color : colors.backgroundColor,
-            borderColor : colors.backgroundColor
-        }
-        : emphasis === 'contained'
-        ? {
-            background : colors.backgroundColor,
-            color : colors.textColor
-        } 
-        :
-        {}
+            ? {
+                background: 'transparent',
+                color: colors.backgroundColor
+            }
+            : emphasis === 'outlined'
+                ? {
+                    background: 'transparent',
+                    color: colors.backgroundColor,
+                    borderColor: colors.backgroundColor
+                }
+                : emphasis === 'contained'
+                    ? {
+                        background: colors.backgroundColor,
+                        color: colors.textColor
+                    }
+                    :
+                    {}
         colorStyle.lableHandle = {
-            color : colors.textColor
+            color: colors.textColor
         }
     }
-    if(hovered){
+    if (hovered) {
         colorStyle.lableHandle = {
-            color : colors.hoverTextColor
+            color: colors.hoverTextColor
         }
-        if(emphasis === 'text'){
+        if (emphasis === 'text') {
             colorStyle.buttonHandle.background = 'transparent'
             colorStyle.buttonHandle.color = colors.hoverTextColor
         }
-        if(emphasis === 'contained'){
+        if (emphasis === 'contained') {
             colorStyle.buttonHandle = {
-                background : colors.hoverBackgroundColor,
-                color : colors.hoverTextColor
+                background: colors.hoverBackgroundColor,
+                color: colors.hoverTextColor
             }
         }
-        if(emphasis === 'outlined'){
+        if (emphasis === 'outlined') {
             colorStyle.buttonHandle = {
-                background : 'transparent',
-                color : colors.hoverTextColor,
-                borderColor : colors.hoverTextColor
+                background: 'transparent',
+                color: colors.hoverTextColor,
+                borderColor: colors.hoverTextColor
             }
         }
     }
-    
+
     return colorStyle;
 }
 /**

@@ -241,29 +241,6 @@ ColoredIcon.parameters = {
 };
 
 // -------------------------------------------------------------
-// Icon Only
-// -------------------------------------------------------------
-export const IconOnly = Template.bind({});
-IconOnly.args = {
-    ...Default.args,
-    content: "",
-    isCircular: true,
-    withIcon: { icon: "fas fa-home" },
-
-};
-IconOnly.parameters = {
-    docs: {
-        description: {
-            story:
-                "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of Icons or for standalone floating actions. Use isCircular to toggle the rounding.",
-        },
-        source: {
-            code: `<IconLink isCircular={true} withIcon={{ icon: "fas fa-home" }}/>`,
-        },
-    },
-};
-
-// -------------------------------------------------------------
 // Labelled IconLink
 // -------------------------------------------------------------
 export const LabelledIcon = Template.bind({});
