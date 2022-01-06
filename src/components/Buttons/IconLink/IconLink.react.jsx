@@ -162,18 +162,6 @@ function getLabel(labelObj, position) {
 }
 
 function getColors(colors, emphasis, hovered) {
-    // let colorStyle = hovered
-    //     ? {
-    //         background: colors.hoverBackgroundColor,
-    //         color: colors.hoverTextColor,
-    //     }
-    //     : {
-    //         background: emphasis !== "contained" ? "transparent" : colors.backgroundColor,
-    //         color: emphasis !== "contained" ? colors.backgroundColor : colors.textColor,
-    //     }
-    // if (!hovered && emphasis === "outlined")
-    //     colorStyle.borderColor = colors.backgroundColor
-    // return colorStyle;
     let colorStyle = {
         buttonHandle : {},
         lableHandle : {}
@@ -256,33 +244,13 @@ export default function IconLink(props) {
     // 3. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel, props.withColor);
-    // let labelStyle = labelContent?.textColor
-    //     ? { color: labelContent.textColor }
-    //     : {};
     let loadingText = "";
 
     //-------------------------------------------------------------------
-    // 4. Translate the text objects in case their is a dictionary provided
+    // 4. Get animation of the component
     //-------------------------------------------------------------------
-
-    if (
-        props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        let tObj = getTranslation(props.withTranslation);
-        if (tObj && props.content && props.content !== "") {
-        }
-        if (labelContent && tObj?.label) labelContent.content = tObj.label;
-        loadingText = getTranslation(props.withTranslation);
-    }
-
-    //-------------------------------------------------------------------
-    // 5. Get animation of the component
-    //-------------------------------------------------------------------
-
     const animate = getAnimation(props.withAnimation);
-    // console.log(labelStyle,colors)
+
     // ========================= Render Function =================================
 
     return (
@@ -306,7 +274,7 @@ export default function IconLink(props) {
                     color={props.asVariant}
                     className={`qui-btn ${quommonClasses.childClasses}`}
                     style={Object.assign({}, colors.buttonHandle)}
-                    onClick={props.onClick()}
+                    onClick={props.onClick}
                 >
 
                     <div className={`${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>

@@ -189,9 +189,9 @@ Default.args = {
     withColor: {
         backgroundColor: "",
         accentColor: "",
-        textColor: "red",
+        textColor: "",
         hoverBackgroundColor: "",
-        hoverTextColor: "blue",
+        hoverTextColor: "",
     },
     withAnimation: {
         animation: "zoom",
