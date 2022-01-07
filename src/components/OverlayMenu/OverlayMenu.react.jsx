@@ -251,19 +251,21 @@ export default function OverlayMenu(props) {
     // ========================= Render Function =================================
 
     return (
-        <motion.div
-            initial={animate.from}
-            animate={animate.to}
+        <div
+            // initial={animate.from}
+            // animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className="qui-card">
-            <div className="qui-upper-div">
+            <div className="upper-div">
                 <Avatar {...props} withIcon={{ icon: 'fas fa-user' }} withUser={props.withUser} asFloated={props.asFloated}/>
 
             </div>
+            <div className="lower-div">
             <IconLink {...props} />
             <IconLink {...props} />
             </div>
-        </motion.div>
+            </div>
+        </div>
     );
 };
