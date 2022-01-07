@@ -121,7 +121,6 @@ EarnCard.defaultProps = {
     // Component Specific props
     //=======================================
     content: {},
-
     courseContent:{},
     // Quommon props
     //=======================================
@@ -184,10 +183,10 @@ export default function EarnCard(props) {
                 </div>
             </div>
         </div>
-        <div className="qui-rightSide">
-                <div className={`qui-courseHeader size-${props.asSize}`}>
+        <div className={`qui-rightSide size-${props.asSize}`}>
+                <div className={`qui-courseHeader variant-${props.asVariant}-text`}>
                     <h1>{props.courseContent.title}</h1>
-                    <div className="courseBanner"></div>
+                    <div className={`qui-courseBanner variant-${props.asVariant} qui-btn`}></div>
                 </div>
             <div className="qui-courseDescription">
                     <p>{props.courseContent.description}</p>

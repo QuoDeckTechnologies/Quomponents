@@ -130,7 +130,7 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+        image: "static/media/Image.62bfb45a.png",
         tag: "restricted",
     },
     courseContent : {

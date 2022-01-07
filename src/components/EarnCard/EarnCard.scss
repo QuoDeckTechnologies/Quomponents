@@ -1,88 +1,87 @@
-.qui-EarnCard{
-    padding: 1.5em;
-    background-color: white;
-    border-radius: 2em;
-    box-shadow: 0px 10px 20px #d2d2d2;
-    display: flex;
-    padding: 3em;
+.qui-EarnCard {
+  padding: 1.5em;
+  background-color: white;
+  border-radius: 2em;
+  box-shadow: 0px 10px 20px #d2d2d2;
+  display: flex;
+  padding: 3em;
 }
-.qui .qui-leftSide{
-    width: 50%;
-    padding: 0 0.5em 0 0;
+.qui .qui-leftSide {
+  width: 50%;
+  padding: 0 0.5em 0 0;
 }
-.qui .qui-rightSide{
-    width: 50%;
-    padding: 0 0 0 2em;
+.qui .qui-rightSide {
+  width: 50%;
+  padding: 0 0 0 2em;
 }
 
-.qui-leftSide .qui-banner-card{
-    border-radius: 2em;
-    box-shadow: 0px 10px 20px #d2d2d2;
+.qui-leftSide .qui-banner-card {
+  border-radius: 2em;
+  box-shadow: 0px 10px 20px #d2d2d2;
 }
-.qui-leftLowerTop{
-    float: right;
+.qui-leftLowerTop {
+  float: right;
 }
-.qui-EarnCardIcon{
-    text-align: left;
-    // padding-left: 1em;
+.qui-EarnCardIcon {
+  text-align: left;
 }
-.qui-checkbox{
-    display: flex;
-    justify-content: right;
+.qui-checkbox {
+  display: flex;
+  justify-content: right;
 }
-.qui-checkbox h1{
-    margin: 0 0.2em;
+.qui-checkbox h1 {
+  margin: 0 0.2em;
 }
-.qui-courseDate{
-    display: flex;
-    justify-content: left;
-    margin-top: 0.2em;
+.qui-courseDate {
+  display: flex;
+  justify-content: left;
+  margin-top: 0.3em;
 }
-.qui-courseDate h2{
-    margin: 0;
-    // font-weight: 500;
+.qui-courseDate h2 {
+  margin: 0;
 }
-.qui-leftLower{
-    margin: 1em 0 0 0;
+.qui-leftLower {
+  margin: 1em 0 0 0;
 }
-// .qui .size-normal .qui-EarnCardIcon{
-//     font-size: 1em;
-// }
 
-// .qui .qui-EarnCardIcon .size-tiny{
-    
-// }
-// .qui .qui-EarnCardIcon .size-small{
-
-// }
-// .qui .qui-EarnCardIcon .size-normal{
-
-// }
-// .qui .qui-EarnCardIcon .size-big{
-
-// }
-// .qui .qui-EarnCardIcon .size-huge{
-
-// }
-// .qui .qui-EarnCardIcon .size-massive{
-
-// }
-
-.qui .size-massive i{
-    font-size: 6em;
+.qui .size-massive i {
+  font-size: 6em;
 }
-.qui .size-huge i{
-    font-size: 5em;
+.qui .size-huge i {
+  font-size: 5em;
 }
-.qui .size-big i{
-    font-size: 4em;
+.qui .size-big i {
+  font-size: 4em;
 }
-.qui .size-normal i{
-    font-size: 3em;
+.qui .size-normal i {
+  font-size: 3em;
 }
-.qui .size-small i{
-    font-size: 3.5em;
+.qui .size-small i {
+  font-size: 3.5em;
 }
-.qui .size-tiny i{
-    font-size: 3em;
+.qui .size-tiny i {
+  font-size: 3em;
+}
+.qui-courseHeader {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  justify-content: right;
+}
+.qui-courseHeader h1 {
+  margin-right: 0.5em;
+}
+
+.qui-courseDescription {
+  margin-top: 3em;
+  text-align: right;
+}
+.fa-check-square {
+  filter: drop-shadow(0px 10px 3px #d2d2d2);
+}
+
+.qui-courseBanner {
+  height: 100%;
+  width: 2em;
 }
