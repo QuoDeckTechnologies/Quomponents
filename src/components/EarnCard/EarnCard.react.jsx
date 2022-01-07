@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import _ from 'lodash'
-import BannerCard from "../Carousel/BannerCard/BannerCard.react";
-
 import {
     getQuommons,
     getTranslation,
@@ -15,13 +13,14 @@ import "../../common/stylesheets/common.css";
 import "../Carousel/BannerCard/BannerCard.scss";
 import './EarnCard.scss'
 import "../../common/stylesheets/overrule.scss";
+import BannerCard from "../Carousel/BannerCard/BannerCard.react";
 
 EarnCard.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-    Banner Card data should be passed in content field and it is required field
+    EarnCard data should be passed in content field and it is required field
     */
     content: PropTypes.shape({
         image: PropTypes.string,
@@ -34,6 +33,24 @@ EarnCard.propTypes = {
         header: PropTypes.string,
         content: PropTypes.string
     }).isRequired,
+
+    courseContent :PropTypes.shape({
+        title :PropTypes.string,
+        description :PropTypes.string,
+        icon :PropTypes.string,
+        dates: PropTypes.shape({
+            end_date:PropTypes.string,
+            start_date:PropTypes.string,
+          }),
+        topics : PropTypes.arrayOf(
+           PropTypes.shape({
+                name :PropTypes.string,
+                contentList : PropTypes.arrayOf(),
+                checked :PropTypes.bool,
+            }),
+           )
+    }),
+   
 
     //=======================================
     // Quommon props
@@ -104,6 +121,8 @@ EarnCard.defaultProps = {
     // Component Specific props
     //=======================================
     content: {},
+
+    courseContent:{},
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -128,7 +147,9 @@ EarnCard.defaultProps = {
 
 
 export default function EarnCard(props) {
+
     let { courseContent } = props
+
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------

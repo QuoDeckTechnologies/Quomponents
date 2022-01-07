@@ -4,7 +4,6 @@ import EarnCard from "../components/EarnCard/EarnCard.react";
 const dictionary = JSON.stringify({
     hi: {
         loading: "बस एक मिनट...",
-        bannercard: { header: "बातचीत कक्ष", content: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
         ribbon: {
             new: "नया",
             restricted: "प्रतिबंधित",
@@ -22,6 +21,24 @@ export default {
             image: "",
             tag: "",
         },
+
+        courseContent:{
+            title :"",
+            description :"",
+            icon :"",
+            dates:{
+                end_date:"",
+                start_date:"",
+              },
+            topics :[
+                {
+                    name :"",
+                    contentList : [],
+                    checked :false,
+                },
+               ]
+        },
+       
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -100,7 +117,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a banner card with box for text and tag",
+        componentSubtitle: "Displays a EarnCard with text and tag",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -189,7 +206,7 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<BannerCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<EarnCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
