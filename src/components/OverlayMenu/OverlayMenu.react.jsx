@@ -1,27 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
     getQuommons,
     getAnimation,
-} from "../../../common/javascripts/helpers";
+} from "../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../../common/stylesheets/common.css";
-import "./IconLink.scss";
-import "../../../common/stylesheets/overrule.scss";
+import "../../common/stylesheets/common.css";
+import "./OverlayMenu.scss";
+import "../../common/stylesheets/overrule.scss";
+import Avatar from "../AppMenu/Avatar/Avatar.react"
+import IconLink from "../Buttons/IconLink/IconLink.react"
 
-IconLink.propTypes = {
+OverlayMenu.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+
+    /**
+    Use to define component user image
+    */
+    withUser: PropTypes.string,
 
     /**
     Set action emphasis in increasing order 
     */
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
     /**
-    Use for rounded corners or circular icon IconLink 
+    Use for rounded corners or circular icon OverlayMenu 
     */
     isCircular: PropTypes.bool,
     //=======================================
@@ -126,12 +133,15 @@ IconLink.propTypes = {
     isFluid: PropTypes.bool,
 
     /**
-    IconLink component must have the onClick function passed as props
+    OverlayMenu component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
 };
 
-IconLink.defaultProps = {
+OverlayMenu.defaultProps = {
+
+
+    withUser: "",
     //=======================================
     // Component Specific props
     //=======================================
@@ -219,12 +229,9 @@ function getColors(colors, emphasis, hovered) {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- props are not being passed to the IconLink. Please speak to the admin to handle any new prop.
+- props are not being passed to the OverlayMenu. Please speak to the admin to handle any new prop.
 **/
-export default function IconLink(props) {
-
-    const [tilt, setTilt] = useState(false)
-    const [hovered, setHovered] = useState(false);
+export default function OverlayMenu(props) {
 
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -235,14 +242,6 @@ export default function IconLink(props) {
 
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
 
-    //-------------------------------------------------------------------
-    // 2. Set the component colors
-    //-------------------------------------------------------------------
-    let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
-    //-------------------------------------------------------------------
-    // 3. Set the label/caption/popover and loading text
-    //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, props.withLabel, props.withColor);
 
     //-------------------------------------------------------------------
     // 4. Get animation of the component
@@ -256,34 +255,15 @@ export default function IconLink(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            onMouseDown={() => setTilt(true)}
-            onMouseUp={() => setTilt(false)}
+        >
+            <div className="qui-card">
+            <div className="qui-upper-div">
+                <Avatar {...props} withIcon={{ icon: 'fas fa-user' }} withUser={props.withUser} asFloated={props.asFloated}/>
 
-        >   <a href={props.content?.link} className="qui-link">
-                <div
-                    className={`qui-btn qui-icon-label emp-text variant-${props.asVariant}   
-                    size-${props.asSize ? props.asSize : ""}`} style={Object.assign({}, colors.lableHandle)}>
-                    {getLabel(labelContent, "label")}
-                </div>
-                <button
-                    variant={props.asEmphasis}
-                    color={props.asVariant}
-                    className={`qui-btn ${quommonClasses.childClasses}`}
-                    style={Object.assign({}, colors.buttonHandle)}
-                    onClick={props.onClick}
-                >
-
-                    <div className={`${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
-                    </div>
-                </button>
-                <div
-                    className={`qui-btn qui-icon-caption emp-text variant-${props.asVariant}
-                    size-${props.asSize ? props.asSize : ""}`} style={Object.assign({}, colors.lableHandle)}>
-                    {getLabel(labelContent, "caption")}
-                </div>
-            </a>
+            </div>
+            <IconLink {...props} />
+            <IconLink {...props} />
+            </div>
         </motion.div>
     );
 };

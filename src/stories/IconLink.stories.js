@@ -1,5 +1,5 @@
 import React from "react";
-import IconLink from "../components/OverlayMenu/IconLink/IconLink.react";
+import IconLink from "../components/Buttons/IconLink/IconLink.react";
 
 const dictionary = JSON.stringify({
     en: {
@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/OverlayMenu/IconLink",
+    title: "Design System/Buttons/IconLink",
     component: IconLink,
     argTypes: {
 

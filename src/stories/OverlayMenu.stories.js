@@ -1,5 +1,5 @@
 import React from "react";
-import IconLink from "../components/Buttons/IconLink/IconLink.react";
+import OverlayMenu from "../components/OverlayMenu/OverlayMenu.react";
 
 const dictionary = JSON.stringify({
     en: {
@@ -11,9 +11,16 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/Buttons/IconLink",
-    component: IconLink,
+    title: "Design System/OverlayMenu/OverlayMenu",
+    component: OverlayMenu,
     argTypes: {
+
+        withUser: {
+            table: {
+                category: "with-Params",
+                defaultValue:"",
+            },
+        },
 
         asEmphasis: {
             control: "select",
@@ -167,11 +174,13 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <IconLink {...args} />;
+const Template = (args) => <OverlayMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     asEmphasis: "contained",
     isCircular: false,
+    withUser: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPOVdk7wUJEgo42hvQ3g2Ge2DIDRuEI8x6Q&usqp=CAU", 
+
 
     asVariant: "primary",
     asSize: "normal",
@@ -211,135 +220,7 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<IconLink {...${JSON.stringify(Default.args, null, 2)}}/>`,
-        },
-    },
-};
-
-// -------------------------------------------------------------
-// Colored Icon
-// -------------------------------------------------------------
-export const ColoredIcon = Template.bind({});
-ColoredIcon.args = {
-    ...Default.args,
-    withColor: {
-        backgroundColor: "orange",
-        textColor: "gray",
-        hoverBackgroundColor: "gray",
-        hoverTextColor: "orange",
-    },
-};
-ColoredIcon.parameters = {
-    docs: {
-        description: {
-            story: "Use to override the standard colors of the Icon.",
-        },
-        source: {
-            code: `<IconLink withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
-        },
-    },
-};
-
-// -------------------------------------------------------------
-// Labelled IconLink
-// -------------------------------------------------------------
-export const LabelledIcon = Template.bind({});
-LabelledIcon.args = {
-    ...Default.args,
-    withLabel: {
-        format: "caption",
-        content: "Home",
-        textColor: "",
-    },
-};
-
-LabelledIcon.parameters = {
-    docs: {
-        description: {
-            story:
-                "Use to provide a header callout (format:label) above the icon. Or use as an information caption (format:caption) below the icon. Or use as an information label (format:label) top the icon. The text here can be customized through the withTranslation option.",
-        },
-        source: {
-            code: `<IconLink withLabel={{format: "label",content: "Home",textColor: ""}}/>`,
-        },
-    },
-};
-
-// -------------------------------------------------------------
-// Fluid Icon
-// -------------------------------------------------------------
-export const FluidIcon = Template.bind({});
-FluidIcon.args = {
-    ...Default.args,
-    isFluid: true,
-};
-FluidIcon.parameters = {
-    docs: {
-        description: {
-            story: "Typically used as the bottom of a modal or a container.",
-        },
-    },
-    source: {
-        code: `<IconLink isFluid={true}/>`,
-    },
-};
-
-// -------------------------------------------------------------
-// Animated Icon
-// -------------------------------------------------------------
-export const AnimatedIcon = Template.bind({});
-AnimatedIcon.args = {
-    ...Default.args,
-    withAnimation: {
-        animation: "collapse",
-        duration: .8,
-        delay: 0,
-    },
-};
-AnimatedIcon.parameters = {
-    docs: {
-        description: {
-            story:
-                "Use to animate the entry of the Icon with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
-        },
-        source: {
-            code: `<IconLink withAnimation={{animation: "collapse", duration: 0.8, delay: 0}}}/>`,
-        },
-    },
-};
-
-// -------------------------------------------------------------
-// Translated Icon
-// -------------------------------------------------------------
-export const TranslatedIcon = Template.bind({});
-TranslatedIcon.args = {
-    ...Default.args,
-    withTranslation: {
-        lang: "hi",
-        tgt: "icon",
-        dictionary: dictionary,
-    },
-};
-TranslatedIcon.parameters = {
-    docs: {
-        description: {
-            story:
-                "Use to change the language that the text appears in. To make this work for the Icon, add a Icon:{text,label} value to the dictionary.",
-        },
-        source: {
-            code: `<IconLink withTranslation={{lang: "hi", tgt: "icon", dictionary: ${JSON.stringify(
-                {
-
-                    en: {
-                        icon: { label: "Home" },
-                    },
-                    hi: {
-                        icon: {
-                            label: "होम आइकन",
-                        },
-                    },
-                }
-            )}}}}/>`,
+            code: `<OverlayMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
