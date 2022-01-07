@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/IconLink/IconLink",
+    title: "Design System/OverlayMenu/IconLink",
     component: IconLink,
     argTypes: {
 
