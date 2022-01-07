@@ -24,7 +24,7 @@
 }
 .qui-EarnCardIcon{
     text-align: left;
-    padding-left: 1em;
+    // padding-left: 1em;
 }
 .qui-checkbox{
     display: flex;
@@ -45,6 +45,44 @@
 .qui-leftLower{
     margin: 1em 0 0 0;
 }
-.qui .size-normal .qui-EarnCardIcon{
-    font-size: 1em;
+// .qui .size-normal .qui-EarnCardIcon{
+//     font-size: 1em;
+// }
+
+// .qui .qui-EarnCardIcon .size-tiny{
+    
+// }
+// .qui .qui-EarnCardIcon .size-small{
+
+// }
+// .qui .qui-EarnCardIcon .size-normal{
+
+// }
+// .qui .qui-EarnCardIcon .size-big{
+
+// }
+// .qui .qui-EarnCardIcon .size-huge{
+
+// }
+// .qui .qui-EarnCardIcon .size-massive{
+
+// }
+
+.qui .size-massive i{
+    font-size: 6em;
+}
+.qui .size-huge i{
+    font-size: 5em;
+}
+.qui .size-big i{
+    font-size: 4em;
+}
+.qui .size-normal i{
+    font-size: 3em;
+}
+.qui .size-small i{
+    font-size: 3.5em;
+}
+.qui .size-tiny i{
+    font-size: 3em;
 }

@@ -41,17 +41,17 @@ EarnCard.propTypes = {
         dates: PropTypes.shape({
             end_date:PropTypes.string,
             start_date:PropTypes.string,
-          }),
+        }),
         topics : PropTypes.arrayOf(
-           PropTypes.shape({
+            PropTypes.shape({
                 name :PropTypes.string,
-                contentList : PropTypes.arrayOf(),
+                contentList : PropTypes.arrayOf(
+                    PropTypes.shape({})
+                ),
                 checked :PropTypes.bool,
             }),
-           )
+        )
     }),
-   
-
     //=======================================
     // Quommon props
     //=======================================
