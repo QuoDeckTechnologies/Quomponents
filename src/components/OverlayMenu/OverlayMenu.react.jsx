@@ -12,6 +12,8 @@ import "./OverlayMenu.scss";
 import "../../common/stylesheets/overrule.scss";
 import Avatar from "../AppMenu/Avatar/Avatar.react"
 import IconLink from "../Buttons/IconLink/IconLink.react"
+import _ from "lodash";
+
 
 OverlayMenu.propTypes = {
     //=======================================
@@ -22,7 +24,13 @@ OverlayMenu.propTypes = {
     Use to define component user image
     */
     withUser: PropTypes.string,
-
+    content: PropTypes.arrayOf(
+        PropTypes.shape({
+            icon: PropTypes.string,
+            label: PropTypes.string,
+            link: PropTypes.string,
+        })
+    ).isRequired,
     /**
     Set action emphasis in increasing order 
     */
@@ -140,7 +148,7 @@ OverlayMenu.propTypes = {
 
 OverlayMenu.defaultProps = {
 
-
+    content: [],
     withUser: "",
     //=======================================
     // Component Specific props
@@ -242,6 +250,14 @@ export default function OverlayMenu(props) {
 
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
 
+    //-------------------------------------------------------------------
+    // 4. Set the label/caption/popover and loading text
+    //-------------------------------------------------------------------
+    let labelContent = Object.assign({}, props.withLabel);
+    let labelStyle = labelContent?.textColor
+        ? { color: labelContent.textColor }
+        : {};
+    let loadingText = "Please Wait...";
 
     //-------------------------------------------------------------------
     // 4. Get animation of the component
@@ -249,22 +265,43 @@ export default function OverlayMenu(props) {
     const animate = getAnimation(props.withAnimation);
 
     // ========================= Render Function =================================
-
+    //-------------------------------------------------------------------
+    // 3. Destructure content prop to itirate
+    //-------------------------------------------------------------------
+    let { content } = props;
     return (
         <div
-            // initial={animate.from}
-            // animate={animate.to}
+            initial={animate.from}
+            animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className="qui-card">
-            <div className="upper-div">
-                <Avatar {...props} withIcon={{ icon: 'fas fa-user' }} withUser={props.withUser} asFloated={props.asFloated}/>
-
-            </div>
-            <div className="lower-div">
-            <IconLink {...props} />
-            <IconLink {...props} />
-            </div>
+                <div className="upper-div">
+                    {/* <i className="fas fa-times cross-icon"></i> */}
+                    {/* <Avatar {...props} withIcon={{ icon: 'fas fa-user' }} withUser={props.withUser} /> */}
+                    <div className="av-contain">
+                        <i className="fas fa-times cross-icon"></i>
+                        <Avatar {...props} withIcon={{ icon: 'fas fa-user' }} withUser={props.withUser} />
+                        <div className="qui-caption" style={labelStyle}>
+                            {getLabel(labelContent, "caption")}
+                        </div>
+                    </div>
+                </div>
+                <div className={`qui-123 lower-div`}>
+                    {_.map(content, (icon) => {
+                        return (
+                            <div className={`variant-${props.asVariant} qui-btn abc`}>
+                                <IconLink
+                                    {...props}
+                                    withIcon={{ icon: icon.icon }}
+                                    withLabel={{ content: icon.label, format: icon.format }}
+                                    // withLabel={ {content: icon.label}}
+                                    withColor={{ ...props.withColor }}
+                                />
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );

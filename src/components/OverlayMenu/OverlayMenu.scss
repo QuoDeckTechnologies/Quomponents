@@ -6,19 +6,46 @@
     align-items: center;
     background-color: rgb(223, 215, 215);
     margin: 20px;
+    height: 25em;
 }
 
-.upper-div {
+.qui .upper-div {
     width: 100%;
-    margin-top: 20px;
     border-radius: 5%;
     background-color: antiquewhite;
-    display: flex;
+    // display: flex;
+    // height: 5em;
 }
-.lower-div {
+.qui .lower-div {
+    margin-top: 20px;
     width: 100%;
     border-radius: 5%;
     background-color: rgb(223, 215, 215);
     display: flex;
     flex-direction: row;
+}
+
+.qui .cross-icon {
+    top: 10%;
+    left: 45%;
+    position: relative;
+}
+
+.qui-123 {
+    display: flex;
+    justify-content: left;
+    // padding-right: 40%;
+}
+
+.qui .abc {
+    margin: 0.5em;
+    padding: 0.5em;
+    border-radius: 16px;
+}
+
+.qui .av-contain {
+    background-color: rgb(238, 233, 226);
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-radius: 7%;
 }

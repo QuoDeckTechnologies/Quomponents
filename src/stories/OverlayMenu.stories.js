@@ -14,11 +14,16 @@ export default {
     title: "Design System/OverlayMenu/OverlayMenu",
     component: OverlayMenu,
     argTypes: {
-
+        content: [
+            {
+                icon: "",
+                label: "",
+            },
+        ],
         withUser: {
             table: {
                 category: "with-Params",
-                defaultValue:"",
+                defaultValue: "",
             },
         },
 
@@ -179,7 +184,20 @@ export const Default = Template.bind({});
 Default.args = {
     asEmphasis: "contained",
     isCircular: false,
-    withUser: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPOVdk7wUJEgo42hvQ3g2Ge2DIDRuEI8x6Q&usqp=CAU", 
+    content: [
+        {
+            icon: "fas fa-user-edit",
+            label: "Edit Profile",
+            format: "caption",
+        },
+        {
+            icon: "fas fa-user-edit",
+            label: "Account",
+            format: "caption",
+        },
+    ],
+
+    withUser: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPOVdk7wUJEgo42hvQ3g2Ge2DIDRuEI8x6Q&usqp=CAU",
 
 
     asVariant: "primary",
