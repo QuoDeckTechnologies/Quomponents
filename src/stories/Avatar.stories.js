@@ -1,17 +1,8 @@
 import React from "react";
-<<<<<<< HEAD
-import Avatar from "../components/OverlayMenu/Avatar/Avatar.react";
-
-
-export default {
-    title: "Design System/OverlayMenu/Avatar",
-=======
 import Avatar from "../components/AppMenu/Avatar/Avatar.react";
-
 
 export default {
     title: "Design System/Appmenu/Avatar",
->>>>>>> a4ee20b3be4602b6e8aab32d69516d75ad95d5a0
     component: Avatar,
     argTypes: {
         
