@@ -1,18 +1,29 @@
 .qui .qui-menuBlock {
-  border-top-right-radius: 1em ;
-  border-top-left-radius: 1em ;
-  border-bottom-right-radius: 1em ;
-  border-bottom-left-radius: 1em ;
+  border-top-right-radius: 1.5em ;
+  border-top-left-radius: 1.5em;
+  border-bottom-right-radius: 1.5em;
+  border-bottom-left-radius: 1.5em; 
 }
-
-.qui-iconContainer {
+.qui-catalog{
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
-  padding-right: 0.5em;
+  // justify-content: space-between;
+  padding-right:2.8em;  
+  margin-right:1em;
 }
-
+.qui-labeql{
+  padding:15em;
+  justify-content:space-between;
+}
+.qui-iconContainer {
+  display:flex;
+  align-items:center;
+  // justify-content: flex-end;
+  // justify-items: auto;
+  height:100%;
+  width:8em;
+  margin-right:0.6em;
+  padding-right:1em;
+}
 .qui-container.size-tiny.qui-menuBlock {
   height: 2em;
   min-width: 3.5em;
@@ -36,4 +47,8 @@
 .qui-container.size-massive.qui-menuBlock {
   height: 5em;
   min-width: 7.75em;
+}
+.float{
+  filter: drop-shadow(5px 5px 2px rgb(194, 194, 194));
+    margin:1em;
 }

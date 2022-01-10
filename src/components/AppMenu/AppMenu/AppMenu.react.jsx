@@ -58,6 +58,14 @@ AppMenu.propTypes = {
         textColor: PropTypes.string,
     }),
     /**
+    Use to add a heading label, a footer caption or a title popover to the component
+    */
+    withLabel: PropTypes.shape({
+        format: PropTypes.oneOf(["label", "caption", "popover"]),
+        content: PropTypes.string,
+        textColor: PropTypes.string,
+    }),
+    /**
     Use to add an icon to the component
     */
     withIcon: PropTypes.shape({
@@ -112,6 +120,7 @@ export default function AppMenu(props) {
            
             <div className={`qui-appMenuContainer float-${props.asFloated}`}>
                 <div className={`qui-avatarContainer `}>
+                
                     <Avatar {...props} withIcon={{ icon: 'fas fa-user'}} withUser={props.withUser} />
                 </div>
                 <MenuBlock {...props} asFloated="none" />
