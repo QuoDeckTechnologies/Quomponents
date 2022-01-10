@@ -1,5 +1,5 @@
 .qui .qui-card {
-    border-radius: 5%;
+    border-radius: 10%;
     box-shadow: 0px 10px 10px rgb(192, 192, 192);
     display: flex;
     flex-direction: column;
@@ -22,13 +22,10 @@
     left: 45%;
     position: relative;
 }
-
-.qui-123 {
-    display: flex;
-    justify-content: left;
-    // padding-right: 40%;
+.qui .qui-icon-caption {
+    font-style: normal;
+   font-size:10px;
 }
-
 .qui .abc {
     margin: 0.5em;
     padding: 0.5em;
@@ -36,13 +33,10 @@
 }
 
 .qui .av-contain {
-
+    border-top-right-radius: 10%;
+    border-top-left-radius: 10%;
     width: 100%;
-    border-radius: 5%;
     background-color: rgb(238, 233, 226);
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    border-radius: 7%;
     display: flex;
     justify-content: center
 
@@ -55,4 +49,64 @@
 .caption{
     font-weight: bolder;
     text-decoration: none;
+}
+
+
+/* ================================================= */
+/* Font Size Definitions */
+/* ================================================= */
+.qui .size-massive {
+    font-size: 1em;
+    line-height: 1;
+    font-weight: bold;
+}
+.qui .size-huge {
+    font-size: 0.95em;
+    line-height: 1.2;
+}
+.qui .size-big {
+    font-size: 0.9em;
+    line-height: 1.2;
+}
+.qui .size-normal {
+    font-size: 0.8em;
+    line-height: 1.2;
+}
+.qui .size-small {
+    font-size: 0.7em;
+    line-height: 1.2;
+}
+.qui .size-tiny {
+    font-size: 0.6em;
+    line-height: 1.2;
+}
+
+/* ================================================= */
+/* Padding Definitions */
+/* ================================================= */
+.qui .lower-div .qui-btn.pad-fitted {
+    padding: 2px 4px;
+    font-size:1em;
+    
+}
+.qui .lower-div .qui-btn.pad-compact {
+    padding: 4px 8px;
+    font-size:1.5em;
+}
+.qui .lower-div .qui-btn.qui-link.pad-normal {
+    padding: 6px 12px;
+    font-size:2em;
+}
+.qui .lower-div .qui-btn.pad-relaxed,
+.qui .lower-div .qui-btn.pad-normal.size-huge,
+.qui .lower-div .qui-btn.pad-normal.size-massive {
+    padding: 10px 20px;
+    font-size:2em;
+
+}
+.qui .lower-div .qui-btn.pad-relaxed.size-huge,
+.qui .lower-div .qui-btn.pad-relaxed.size-massive {
+    padding: 15px 30px;
+    font-size:2em;
+
 }
