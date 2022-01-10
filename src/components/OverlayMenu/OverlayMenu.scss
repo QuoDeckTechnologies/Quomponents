@@ -1,5 +1,5 @@
 .qui .qui-card {
-    border-radius: 10%;
+    border-radius:10px;
     box-shadow: 0px 10px 10px rgb(192, 192, 192);
     display: flex;
     flex-direction: column;
@@ -7,47 +7,46 @@
     background-color: rgb(223, 215, 215);
     margin: 20px;
     height: 25em;
+   
 }
 .qui .lower-div {
     margin-top: 20px;
     width: 100%;
-    border-radius: 5%;
     background-color: rgb(223, 215, 215);
     display: flex;
     flex-direction: row;
 }
 
 .qui .cross-icon {
-    top: 10%;
-    left: 45%;
-    position: relative;
+    position: absolute;
+    right: 10%;
+    top: 7%;
+    
 }
 .qui .qui-icon-caption {
     font-style: normal;
    font-size:10px;
 }
-.qui .abc {
+.qui .qui-inner-button {
     margin: 0.5em;
     padding: 0.5em;
     border-radius: 16px;
+    width: 5em;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .qui .av-contain {
-    border-top-right-radius: 10%;
-    border-top-left-radius: 10%;
-    width: 100%;
+    border-radius: 10px;
+    width: 100%; 
     background-color: rgb(238, 233, 226);
     display: flex;
     justify-content: center
 
 }
-
-.qui-avatarContainer{
-    z-index: 2;
-    transform: translateX(0%);
-}
 .caption{
-    font-weight: bolder;
+    font-weight: bold;
     text-decoration: none;
 }
 
@@ -76,8 +75,8 @@
     font-size: 0.7em;
     line-height: 1.2;
 }
-.qui .size-tiny {
-    font-size: 0.6em;
+.qui .lower-div .size-tiny {
+    font-size: 1em;
     line-height: 1.2;
 }
 
@@ -101,12 +100,23 @@
 .qui .lower-div .qui-btn.pad-normal.size-huge,
 .qui .lower-div .qui-btn.pad-normal.size-massive {
     padding: 10px 20px;
-    font-size:2em;
+    font-size:1.7em;
 
 }
 .qui .lower-div .qui-btn.pad-relaxed.size-huge,
 .qui .lower-div .qui-btn.pad-relaxed.size-massive {
     padding: 15px 30px;
-    font-size:2em;
+    font-size:1.7em;
 
+}
+
+
+.qui .qui-avatarContainer{
+    z-index: 2;
+    transform: translateX(0%);
+}
+
+.qui-appMenuContainer{
+    filter: drop-shadow(5px 5px 2px rgb(194, 194, 194));
+    margin: 20px;
 }

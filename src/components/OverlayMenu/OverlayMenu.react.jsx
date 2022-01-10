@@ -277,20 +277,20 @@ export default function OverlayMenu(props) {
         >
             <div className="qui-card">
                 <div className="av-contain">
-                    <i className="fa fa-times cross-icon"/>
+                    <i className={`fa fa-times cross-icon size-${props.asSize}`} />
                     <div className={`qui-appMenuContainer float-${props.asFloated}`}>
-                    <div className={`qui-avatarContainer `}>
-                        <Avatar {...props} withIcon={{ icon: 'fas fa-user' }} withUser={props.withUser} />
-                    <div className={`"caption qui-caption" size-${props.asSize}`} style={labelStyle}>
-                            {getLabel(labelContent, "caption")}
+                        <div className={`qui-avatarContainer  `}>
+                            <Avatar {...props} withIcon={{ icon: 'fas fa-user' }} withUser={props.withUser} />
+                            <div className={`caption qui-caption size-${props.asSize}`} style={labelStyle}>
+                                {getLabel(labelContent, "caption")}
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
                 <div className={`lower-div`}>
                     {_.map(content, (icon) => {
                         return (
-                            <div className={`qui-btn abc qui-button variant-${props.asVariant} size-${props.asSize}`} >
+                            <div className={`qui-btn qui-inner-button qui-button variant-${props.asVariant} size-${props.asSize}`} >
                                 <IconLink
                                     {...props}
                                     withIcon={{ icon: icon.icon }}
