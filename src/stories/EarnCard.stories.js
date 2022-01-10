@@ -38,8 +38,6 @@ export default {
                     backgroundColor: "",
                     accentColor: "",
                     textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
                 },
             },
         },
@@ -152,9 +150,7 @@ Default.args = {
     withColor: {
         backgroundColor: "",
         accentColor: "",
-        textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
+        textColor: "#b60d17",
     },
     withAnimation: {
         animation: "zoom",

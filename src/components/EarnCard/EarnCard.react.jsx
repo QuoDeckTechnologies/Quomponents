@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import _ from 'lodash'
 import {
     getQuommons,
-    getTranslation,
     getAnimation,
 } from "../../common/javascripts/helpers";
 
@@ -49,25 +48,6 @@ EarnCard.propTypes = {
             }),
         )
     }).isRequired,
-
-    // courseContent :PropTypes.shape({
-    //     title :PropTypes.string,
-    //     description :PropTypes.string,
-    //     icon :PropTypes.string,
-    //     dates: PropTypes.shape({
-    //         end_date:PropTypes.string,
-    //         start_date:PropTypes.string,
-    //     }),
-    //     topics : PropTypes.arrayOf(
-    //         PropTypes.shape({
-    //             name :PropTypes.string,
-    //             contentList : PropTypes.arrayOf(
-    //                 PropTypes.shape({})
-    //             ),
-    //             checked :PropTypes.bool,
-    //         }),
-    //     )
-    // }),
     //=======================================
     // Quommon props
     //=======================================
@@ -137,19 +117,35 @@ EarnCard.defaultProps = {
     // Component Specific props
     //=======================================
     content: {},
-    // courseContent:{},
+
     // Quommon props
     //=======================================
     asVariant: "primary",
 
     withColor: null,
     withAnimation: null,
-    withTranslation: null,
 
     isDisabled: false,
     isHidden: false
 };
 
+function getColors (colors) {
+    let colorStyle ={
+        textColors : {
+            color : colors.textColor
+        },
+        accentColors : {
+            color : colors.accentColor
+        },
+        bannerColors : {
+            backgroundColor : colors.textColor
+        },
+        cardColors : {
+            backgroundColor : colors.backgroundColor
+        }
+    }
+    return colorStyle
+}
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
@@ -158,59 +154,52 @@ EarnCard.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
-
-
-
 export default function EarnCard(props) {
 
     let { content } = props
-
+    let { asSize } = props
+    let { asVariant } = props
     //-------------------------------------------------------------------
-    // 1. Set the classes
+    // 2. Set the component colors
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "button");
-    if (props.isCircular)
-        quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
-            }`;
-
-    quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
+    let colors = props.withColor ? getColors(props.withColor) : {};
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-
+ 
     // ========================= Render Function =================================
     return (
         <motion.div
         initial={animate.from}
         animate={animate.to}
-        className="qui qui-EarnCard">
+        className="qui qui-EarnCard" style={colors.cardColors}>
         <div className="qui-leftSide" >
             <BannerCard {...props} />
-            <div className={`qui-leftLower size-${props.asSize} variant-${props.asVariant}-text`}>
-                <div className="qui-EarnCardIcon">
-                    <i className={props.content?.icon}></i>
+            <div className={`qui-leftLower size-${asSize} variant-${asVariant}-text`}>
+                <div className="qui-EarnCardIcon" style={colors.accentColors}>
+                    <i className={content?.icon}></i>
                 </div>
                 <div className="qui-leftLowerTop">
                     <div className="qui-checkbox">
-                        {_.map(content.topics ,(topics,index) => {
+                        {_.map(content?.topics ,(topics,index) => {
                             return (
-                                <h1 className={`${topics.checked ? 'fas fa-check-square' : 'far fa-square'}`} key={topics.name+index}></h1>
+                                <h1 className={`${topics.checked ? 'fas fa-check-square' : 'far fa-square'}`} key={topics.name+index} style={colors.accentColors}></h1>
                             )
                         })}
                     </div>
-                    <div className="qui-courseDate">
-                        <h2>{props.content?.dates.start_date}</h2>
+                    <div className="qui-courseDate" style={colors.textColors}>
+                        <h2>{content?.dates.start_date}</h2>
                         <h2>&nbsp;{`-`}&nbsp;</h2>
-                        <h2>{props.content?.dates.end_date}</h2>
+                        <h2>{content?.dates.end_date}</h2>
                     </div>
                 </div>
             </div>
         </div>
-        <div className={`qui-rightSide size-${props.asSize}`}>
-                <div className={`qui-courseHeader variant-${props.asVariant}-text`}>
+        <div className={`qui-rightSide size-${asSize}`}>
+                <div className={`qui-courseHeader variant-${asVariant}-text`} style={colors.textColors}>
                     <h1>{props.content?.title}</h1>
-                    <div className={`qui-courseBanner variant-${props.asVariant} qui-btn`}></div>
+                    <div className={`qui-courseBanner variant-${asVariant} qui-btn`} style={colors.bannerColors}></div>
                 </div>
             <div className="qui-courseDescription">
                     <p>{props.content?.description}</p>

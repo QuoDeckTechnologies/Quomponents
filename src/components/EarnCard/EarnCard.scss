@@ -20,30 +20,30 @@
   justify-content: space-between;
 }
 
-.qui-leftSide .qui-banner-card {
-  border-radius: 2em;
+.qui .qui-leftSide .qui-banner-card {
+  border-radius: 1.5em;
   box-shadow: 0px 10px 20px #d2d2d2;
 }
 
-.qui-EarnCardIcon {
+.qui .qui-EarnCardIcon {
   text-align: left;
 }
-.qui-checkbox {
+.qui .qui-checkbox {
   display: flex;
   justify-content: right;
 }
-.qui-checkbox h1{
+.qui .qui-checkbox h1 {
   margin: 0 0.2em;
 }
-.qui-courseDate {
+.qui .qui-courseDate {
   display: flex;
   justify-content: left;
   margin-top: 0.3em;
 }
-.qui-courseDate h2 {
+.qui .qui-courseDate h2 {
   margin: 0;
 }
-.qui-leftLower {
+.qui .qui-leftLower {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,25 +68,57 @@
 .qui .size-tiny i {
   font-size: 3em;
 }
-.qui-courseHeader {
+.qui .qui-courseHeader {
   height: 50%;
   display: flex;
   align-items: center;
   text-align: right;
   justify-content: right;
 }
-.qui-courseHeader h1 {
+.qui .qui-courseHeader h1 {
   margin-right: 0.5em;
 }
 
-.qui-courseDescription {
+.qui .qui-courseDescription {
   text-align: right;
 }
-.fa-check-square {
+.qui .fa-check-square {
   filter: drop-shadow(0px 10px 3px #d2d2d2);
 }
 
-.qui-courseBanner {
+.qui .qui-courseBanner {
   height: 100%;
   width: 2em;
+}
+
+@media screen and (max-width: 720px) {
+  .qui-EarnCard {
+    border-radius: 1.2em;
+    padding: 1.5em;
+  }
+  .qui .qui-leftSide .qui-banner-card {
+    border-radius: 1em;
+    box-shadow: 0px 7px 20px #d2d2d2;
+  }
+  .qui .fa-check-square {
+    filter: drop-shadow(0px 3px 3px #d2d2d2);
+  }
+  .qui .qui-courseHeader h1 {
+    font-size: 0.9em;
+  }
+  .qui .qui-courseDescription p {
+    font-size: 0.6em;
+  }
+  .qui .qui-checkbox h1 {
+    font-size: 1em;
+  }
+  .qui .qui-courseDate h2 {
+    font-size: 0.8em;
+  }
+  .qui .qui-EarnCardIcon i {
+    font-size: 2em;
+  }
+  .qui .qui-courseBanner {
+    width: 0.5em;
+  }
 }
