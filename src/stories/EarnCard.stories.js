@@ -107,7 +107,7 @@ Default.args = {
         tag: "restricted",
         title: 'QuoDeck Emerging Leadership Program',
         description: 'Win a chance to apply for this exclusive opportunity for taking your career to the stars',
-        icon: 'fas fa-signal',
+        icon: 'fas fa-file-signature',
         dates: {
             end_date: "3rd May",
             start_date: "28th Feb"
@@ -175,9 +175,9 @@ export const ColoredEarnCard = Template.bind({});
 ColoredEarnCard.args = {
     ...Default.args,
     withColor: {
-        backgroundColor: "steelblue",
-        textColor: "red",
-        accentColor: "yellow",
+        backgroundColor: "",
+        textColor: "teal",
+        accentColor: "tomato",
     },
 };
 ColoredEarnCard.parameters = {

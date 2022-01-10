@@ -163,7 +163,7 @@ export default function EarnCard(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className="qui qui-EarnCard" style={colors.cardColors}>
+            className={`qui qui-EarnCard ${props.isDisabled ? 'is-Disabled' : ''} ${props.isHidden ? 'is-hidden' : ''}`} style={colors.cardColors}>
             <div className="qui-leftSide" >
                 <BannerCard {...props} />
                 <div className={`qui-leftLower size-${asSize} variant-${asVariant}-text`}>
