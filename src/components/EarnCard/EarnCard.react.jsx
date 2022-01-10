@@ -31,10 +31,7 @@ EarnCard.propTypes = {
             "free"
         ]),
         header: PropTypes.string,
-        content: PropTypes.string
-    }).isRequired,
-
-    courseContent :PropTypes.shape({
+        content: PropTypes.string,
         title :PropTypes.string,
         description :PropTypes.string,
         icon :PropTypes.string,
@@ -51,7 +48,26 @@ EarnCard.propTypes = {
                 checked :PropTypes.bool,
             }),
         )
-    }),
+    }).isRequired,
+
+    // courseContent :PropTypes.shape({
+    //     title :PropTypes.string,
+    //     description :PropTypes.string,
+    //     icon :PropTypes.string,
+    //     dates: PropTypes.shape({
+    //         end_date:PropTypes.string,
+    //         start_date:PropTypes.string,
+    //     }),
+    //     topics : PropTypes.arrayOf(
+    //         PropTypes.shape({
+    //             name :PropTypes.string,
+    //             contentList : PropTypes.arrayOf(
+    //                 PropTypes.shape({})
+    //             ),
+    //             checked :PropTypes.bool,
+    //         }),
+    //     )
+    // }),
     //=======================================
     // Quommon props
     //=======================================
@@ -121,7 +137,7 @@ EarnCard.defaultProps = {
     // Component Specific props
     //=======================================
     content: {},
-    courseContent:{},
+    // courseContent:{},
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -147,7 +163,7 @@ EarnCard.defaultProps = {
 
 export default function EarnCard(props) {
 
-    let { courseContent } = props
+    let { content } = props
 
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -158,40 +174,48 @@ export default function EarnCard(props) {
             }`;
 
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
+    //-------------------------------------------------------------------
+    // 4. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
 
+    // ========================= Render Function =================================
     return (
-        <div className="qui qui-EarnCard">
+        <motion.div
+        initial={animate.from}
+        animate={animate.to}
+        className="qui qui-EarnCard">
         <div className="qui-leftSide" >
             <BannerCard {...props} />
             <div className={`qui-leftLower size-${props.asSize} variant-${props.asVariant}-text`}>
+                <div className="qui-EarnCardIcon">
+                    <i className={props.content?.icon}></i>
+                </div>
                 <div className="qui-leftLowerTop">
                     <div className="qui-checkbox">
-                        {_.map(courseContent.topics ,(topics,index) => {
+                        {_.map(content.topics ,(topics,index) => {
                             return (
-                                <h1 className={`${topics.checked ? 'fas fa-check-square' : 'far fa-square'}`} key={topics.name}></h1>
+                                <h1 className={`${topics.checked ? 'fas fa-check-square' : 'far fa-square'}`} key={topics.name+index}></h1>
                             )
                         })}
                     </div>
                     <div className="qui-courseDate">
-                        <h2>{props.courseContent.dates.start_date}</h2>
+                        <h2>{props.content?.dates.start_date}</h2>
                         <h2>&nbsp;{`-`}&nbsp;</h2>
-                        <h2>{props.courseContent.dates.end_date}</h2>
+                        <h2>{props.content?.dates.end_date}</h2>
                     </div>
-                </div>
-                <div className="qui-EarnCardIcon">
-                    <i className={props.courseContent.icon}></i>
                 </div>
             </div>
         </div>
         <div className={`qui-rightSide size-${props.asSize}`}>
                 <div className={`qui-courseHeader variant-${props.asVariant}-text`}>
-                    <h1>{props.courseContent.title}</h1>
+                    <h1>{props.content?.title}</h1>
                     <div className={`qui-courseBanner variant-${props.asVariant} qui-btn`}></div>
                 </div>
             <div className="qui-courseDescription">
-                    <p>{props.courseContent.description}</p>
+                    <p>{props.content?.description}</p>
             </div>
         </div>
-        </div>
+        </motion.div>
     );
 }

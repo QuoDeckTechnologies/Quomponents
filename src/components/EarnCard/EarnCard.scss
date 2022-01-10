@@ -1,27 +1,30 @@
 .qui-EarnCard {
-  padding: 1.5em;
   background-color: white;
   border-radius: 2em;
   box-shadow: 0px 10px 20px #d2d2d2;
   display: flex;
+  justify-content: space-between;
   padding: 3em;
 }
 .qui .qui-leftSide {
   width: 50%;
   padding: 0 0.5em 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .qui .qui-rightSide {
   width: 50%;
-  padding: 0 0 0 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .qui-leftSide .qui-banner-card {
   border-radius: 2em;
   box-shadow: 0px 10px 20px #d2d2d2;
 }
-.qui-leftLowerTop {
-  float: right;
-}
+
 .qui-EarnCardIcon {
   text-align: left;
 }
@@ -29,7 +32,7 @@
   display: flex;
   justify-content: right;
 }
-.qui-checkbox h1 {
+.qui-checkbox h1{
   margin: 0 0.2em;
 }
 .qui-courseDate {
@@ -41,6 +44,9 @@
   margin: 0;
 }
 .qui-leftLower {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 1em 0 0 0;
 }
 
@@ -74,7 +80,6 @@
 }
 
 .qui-courseDescription {
-  margin-top: 3em;
   text-align: right;
 }
 .fa-check-square {

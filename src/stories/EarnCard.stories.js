@@ -1,18 +1,6 @@
 import React from "react";
 import EarnCard from "../components/EarnCard/EarnCard.react";
 
-const dictionary = JSON.stringify({
-    hi: {
-        loading: "बस एक मिनट...",
-        ribbon: {
-            new: "नया",
-            restricted: "प्रतिबंधित",
-            premium: "अधिमूल्य",
-            free: "नि: शुल्क"
-        }
-    },
-});
-
 export default {
     title: "Design System/EarnCard/EarnCard",
     component: EarnCard,
@@ -20,8 +8,6 @@ export default {
         content: {
             image: "",
             tag: "",
-        },
-        courseContent:{
             title :"",
             description :"",
             icon :"",
@@ -30,8 +16,7 @@ export default {
                 start_date:"",
               },
             topics :[]
-        },
-       
+        },     
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -65,16 +50,6 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
-                },
-            },
-        },
-        withTranslation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    lang: "",
-                    tgt: "",
-                    dictionary: "",
                 },
             },
         },
@@ -132,8 +107,6 @@ Default.args = {
     content: {
         image: "static/media/Image.62bfb45a.png",
         tag: "restricted",
-    },
-    courseContent : {
         title : 'QuoDeck Emerging Leadership Program',
         description : 'Win a chance to apply for this exclusive opportunity for taking your career to the stars',
         icon : 'fas fa-square',
@@ -175,6 +148,7 @@ Default.args = {
         ]
     },
     asVariant: "primary",
+    asSize : 'normal',
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -187,12 +161,6 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-    withTranslation: {
-        lang: "en",
-        tgt: "button",
-        dictionary: dictionary,
-    },
-
     isDisabled: false,
     isHidden: false,
 };
