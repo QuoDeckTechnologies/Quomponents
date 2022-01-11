@@ -107,7 +107,7 @@ Default.args = {
         tag: "restricted",
         title: 'QuoDeck Emerging Leadership Program',
         description: 'Win a chance to apply for this exclusive opportunity for taking your career to the stars',
-        icon: 'fas fa-file-signature',
+        icon: 'fas fa-square',
         dates: {
             end_date: "3rd May",
             start_date: "28th Feb"

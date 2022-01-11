@@ -8,7 +8,6 @@ import {
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
-import "../Carousel/BannerCard/BannerCard.scss";
 import './EarnCard.scss'
 import "../../common/stylesheets/overrule.scss";
 import BannerCard from "../Carousel/BannerCard/BannerCard.react";
@@ -146,9 +145,7 @@ export default function EarnCard(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring the content, size and variant from props
     //-------------------------------------------------------------------
-    let { content } = props
-    let { asSize } = props
-    let { asVariant } = props
+    let { content,asSize,asVariant,isDisabled,isHidden } = props
     //-------------------------------------------------------------------
     // 2. Set the component colors
     //-------------------------------------------------------------------
@@ -163,7 +160,7 @@ export default function EarnCard(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui qui-EarnCard ${props.isDisabled ? 'is-Disabled' : ''} ${props.isHidden ? 'is-hidden' : ''}`} style={colors.cardColors}>
+            className={`qui qui-EarnCard ${isDisabled ? 'is-Disabled' : ''} ${isHidden ? 'is-hidden' : ''}`} style={colors.cardColors}>
             <div className="qui-leftSide" >
                 <BannerCard {...props} />
                 <div className={`qui-leftLower size-${asSize} variant-${asVariant}-text`}>
@@ -174,13 +171,13 @@ export default function EarnCard(props) {
                         <div className="qui-checkbox">
                             {_.map(content?.topics, (topics, index) => {
                                 return (
-                                    <h1 className={`${topics.checked ? 'fas fa-check-square' : 'far fa-square'}`} key={topics.name + index} style={colors.accentColors}></h1>
+                                    <i className={`${topics.checked ? 'fas fa-check-square' : 'far fa-square'}`} key={topics.name + index} style={colors.accentColors}></i>
                                 )
                             })}
                         </div>
                         <div className="qui-courseDate" style={colors.textColors}>
                             <h2>{content?.dates.start_date}</h2>
-                            <h2>&nbsp;{`-`}&nbsp;</h2>
+                            <h2>&nbsp;-&nbsp;</h2>
                             <h2>{content?.dates.end_date}</h2>
                         </div>
                     </div>
@@ -192,7 +189,7 @@ export default function EarnCard(props) {
                     <div className={`qui-courseBanner variant-${asVariant} qui-btn`} style={colors.bannerColors}></div>
                 </div>
                 <div className="qui-courseDescription">
-                    <p>{props.content?.description}</p>
+                    <h3>{props.content?.description}</h3>
                 </div>
             </div>
         </motion.div>
