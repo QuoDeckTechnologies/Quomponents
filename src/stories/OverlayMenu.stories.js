@@ -197,7 +197,7 @@ Default.args = {
         },
     ],
 
-    withUser: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPOVdk7wUJEgo42hvQ3g2Ge2DIDRuEI8x6Q&usqp=CAU",
+    withUser: "https://i.pinimg.com/564x/03/ac/ad/03acadd2b6688879394e4c15a1eed7d4.jpg",
 
 
     asVariant: "primary",
@@ -208,7 +208,7 @@ Default.args = {
 
     withLabel: {
         format: "caption",
-        content: "",
+        content: "Aruna Asrani",
         textColor: "",
         hoverTextColor: "",
     },

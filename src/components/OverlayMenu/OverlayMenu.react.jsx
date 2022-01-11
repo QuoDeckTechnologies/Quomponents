@@ -274,14 +274,15 @@ export default function OverlayMenu(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
+            
         >
             <div className="qui-card">
                 <div className="av-contain">
-                    <i className={`fa fa-times cross-icon size-${props.asSize}`} />
-                    <div className={`qui-appMenuContainer float-${props.asFloated}`}>
-                        <div className={`qui-avatarContainer  `}>
+                    <i className={`fa fa-times cross-icon size-${props.asSize} onclick-${props.onclick}`} />
+                    <div className={`qui-contain qui-profileContainer float-${props.asFloated}`}>
+                        <div className={`qui-profileAvatar  `}>
                             <Avatar {...props} withIcon={{ icon: 'fas fa-user' }} withUser={props.withUser} />
-                            <div className={`caption qui-caption size-${props.asSize}`} style={labelStyle}>
+                            <div className={`qui-profileCaption size-${props.asSize}`} style={labelStyle}>
                                 {getLabel(labelContent, "caption")}
                             </div>
                         </div>
@@ -290,7 +291,7 @@ export default function OverlayMenu(props) {
                 <div className={`lower-div`}>
                     {_.map(content, (icon) => {
                         return (
-                            <div className={`qui-btn qui-inner-button qui-button variant-${props.asVariant} size-${props.asSize}`} >
+                            <div className={`qui-btn qui-inner-button variant-${props.asVariant} size-${props.asSize}`} >
                                 <IconLink
                                     {...props}
                                     withIcon={{ icon: icon.icon }}
