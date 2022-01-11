@@ -117,15 +117,18 @@ export default function AppMenu(props) {
 
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}>
-           
+           <div style={{}}>
+               <p>heloo</p>
+           </div>
             <div className={`qui-appMenuContainer float-${props.asFloated}`}>
                 <div className={`qui-avatarContainer `}>
                 
                     <Avatar {...props} withIcon={{ icon: 'fas fa-user'}} withUser={props.withUser} />
                 </div>
-                <MenuBlock {...props} asFloated="none" />
+                <MenuBlock {...props} withLabel={{content:''}} asFloated="none"/>
             </div>
            
         </div>
+
     );
 }

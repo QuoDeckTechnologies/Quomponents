@@ -6,22 +6,21 @@
 }
 .qui-catalog{
   display: flex;
-  // justify-content: space-between;
-  padding-right:2.8em;  
-  margin-right:1em;
+  padding-right:2.4em; 
+  padding-left:0.5em;
 }
-.qui-labeql{
-  padding:15em;
-  justify-content:space-between;
-}
+// .qui-labeql{
+//   padding:10em;
+//   // justify-content:space-between;
+// }
 .qui-iconContainer {
   display:flex;
   align-items:center;
   // justify-content: flex-end;
   // justify-items: auto;
   height:100%;
-  width:8em;
-  margin-right:0.6em;
+  // width:8em;
+  // margin-right:0.6em;
   padding-right:1em;
 }
 .qui-container.size-tiny.qui-menuBlock {
@@ -50,5 +49,5 @@
 }
 .float{
   filter: drop-shadow(5px 5px 2px rgb(194, 194, 194));
-    margin:1em;
+    // margin:1em;
 }

@@ -172,8 +172,9 @@ export default function MenuBlock(props) {
                     <div style={colors} className="qui-iconContainer">
                         <div className="qui-catalog">
                         <div className={`qui-labeql ${quommonClasses.childClasses}`} style={labelStyle}>
-                        </div>
                         {getLabel(labelContent, "label")}
+                        </div>
+                       
                         </div>
                         <i className={props.withIcon?.icon}></i>
                     </div>
