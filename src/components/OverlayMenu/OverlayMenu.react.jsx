@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
     getQuommons,
     getAnimation,
+    getTranslation,
 } from "../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -24,6 +25,7 @@ OverlayMenu.propTypes = {
     Use to define component user image
     */
     withUser: PropTypes.string,
+
     content: PropTypes.arrayOf(
         PropTypes.shape({
             icon: PropTypes.string,
@@ -35,10 +37,6 @@ OverlayMenu.propTypes = {
     Set action emphasis in increasing order 
     */
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
-    /**
-    Use for rounded corners or circular icon OverlayMenu 
-    */
-    isCircular: PropTypes.bool,
     //=======================================
     // Quommon props
     //=======================================
@@ -64,27 +62,16 @@ OverlayMenu.propTypes = {
         "massive",
     ]),
     /**
-    Use to define component padding in increasing order
-    */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
-
-    /**
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
+        // backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
         textColor: PropTypes.string,
-        hoverBackgroundColor: PropTypes.string,
-        hoverTextColor: PropTypes.string,
     }),
     /**
     Use to add an icon to the component
@@ -99,7 +86,6 @@ OverlayMenu.propTypes = {
         format: PropTypes.oneOf(["label", "caption", "popover"]),
         content: PropTypes.string,
         textColor: PropTypes.string,
-        hoverTextColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -136,11 +122,6 @@ OverlayMenu.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    Use to toggle the component taking the full width of the parent container
-    */
-    isFluid: PropTypes.bool,
-
-    /**
     OverlayMenu component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
@@ -154,15 +135,12 @@ OverlayMenu.defaultProps = {
     // Component Specific props
     //=======================================
     asEmphasis: "text",
-    isCircular: false,
     //=======================================
     // Quommon props
     //=======================================
     asVariant: "primary",
     asSize: "normal",
-    asPadded: "normal",
     asFloated: "none",
-    asAligned: "center",
 
     withColor: null,
     withIcon: null,
@@ -171,65 +149,10 @@ OverlayMenu.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
-    isFluid: false,
 };
 
 function getLabel(labelObj, position) {
     return labelObj?.format === position ? labelObj.content : "";
-}
-
-function getColors(colors, emphasis, hovered) {
-    let colorStyle = {
-        buttonHandle: {},
-        lableHandle: {}
-    }
-    if (!hovered) {
-        colorStyle.buttonHandle = emphasis === 'text'
-            ? {
-                background: 'transparent',
-                color: colors.backgroundColor
-            }
-            : emphasis === 'outlined'
-                ? {
-                    background: 'transparent',
-                    color: colors.backgroundColor,
-                    borderColor: colors.backgroundColor
-                }
-                : emphasis === 'contained'
-                    ? {
-                        background: colors.backgroundColor,
-                        color: colors.textColor
-                    }
-                    :
-                    {}
-        colorStyle.lableHandle = {
-            color: colors.textColor
-        }
-    }
-    if (hovered) {
-        colorStyle.lableHandle = {
-            color: colors.hoverTextColor
-        }
-        if (emphasis === 'text') {
-            colorStyle.buttonHandle.background = 'transparent'
-            colorStyle.buttonHandle.color = colors.hoverTextColor
-        }
-        if (emphasis === 'contained') {
-            colorStyle.buttonHandle = {
-                background: colors.hoverBackgroundColor,
-                color: colors.hoverTextColor
-            }
-        }
-        if (emphasis === 'outlined') {
-            colorStyle.buttonHandle = {
-                background: 'transparent',
-                color: colors.hoverTextColor,
-                borderColor: colors.hoverTextColor
-            }
-        }
-    }
-
-    return colorStyle;
 }
 /**
 ## Notes
@@ -245,10 +168,9 @@ export default function OverlayMenu(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
-    if (props.isCircular)
-        quommonClasses.childClasses += ` is-circular`;
+    // quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
+    quommonClasses.childClasses += ` emp-contained`;
 
-    quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
 
     //-------------------------------------------------------------------
     // 4. Set the label/caption/popover and loading text
@@ -257,31 +179,41 @@ export default function OverlayMenu(props) {
     let labelStyle = labelContent?.textColor
         ? { color: labelContent.textColor }
         : {};
-    let loadingText = "Please Wait...";
-
+    let tObj = getTranslation(props.withTranslation);
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        if (labelContent && tObj?.label) labelContent.content = tObj.label;
+    }
+    //-------------------------------------------------------------------
+    // 1. Set the color
+    //-------------------------------------------------------------------
+    let colors = {
+        backgroundColor: props.withColor?.accentColor,
+    }
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-
-    // ========================= Render Function =================================
     //-------------------------------------------------------------------
     // 3. Destructure content prop to itirate
     //-------------------------------------------------------------------
     let { content } = props;
     return (
-        <div
+        <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            
         >
             <div className="qui-card">
-                <div className="av-contain">
-                    <i className={`fa fa-times cross-icon size-${props.asSize} onclick-${props.onclick}`} />
+                <div className={"av-contain"} style={colors}>
+                    <i className={`fa fa-times cross-icon size-${props.asSize}`} onClick={props.onClick} />
                     <div className={`qui-contain qui-profileContainer float-${props.asFloated}`}>
                         <div className={`qui-profileAvatar  `}>
-                            <Avatar {...props} withIcon={{ icon: 'fas fa-user' }} withUser={props.withUser} />
+                            <Avatar {...props} withUser={props.withUser} />
                             <div className={`qui-profileCaption size-${props.asSize}`} style={labelStyle}>
                                 {getLabel(labelContent, "caption")}
                             </div>
@@ -302,6 +234,6 @@ export default function OverlayMenu(props) {
                     })}
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };

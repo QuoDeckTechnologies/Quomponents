@@ -3,10 +3,10 @@ import OverlayMenu from "../components/OverlayMenu/OverlayMenu.react";
 
 const dictionary = JSON.stringify({
     en: {
-        icon: { label: "Home" },
+        OverlayMenu: { label: "Aruna Asrani" },
     },
     hi: {
-        icon: { label: "होम आइकन" },
+        OverlayMenu: { label: "अरुणा असरानी" },
     },
 });
 
@@ -34,13 +34,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        isCircular: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning"],
@@ -55,13 +48,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asPadded: {
-            control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
@@ -69,14 +55,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-
         withColor: {
             table: {
                 category: "with-Params",
@@ -143,14 +121,6 @@ export default {
                 defaultValue: false,
             },
         },
-        isFluid: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-
-
         onClick: {
             table: {
                 category: "Events",
@@ -183,7 +153,6 @@ const Template = (args) => <OverlayMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     asEmphasis: "contained",
-    isCircular: false,
     content: [
         {
             icon: "fas fa-user-edit",
@@ -195,6 +164,7 @@ Default.args = {
             label: "Account",
             format: "caption",
         },
+        
     ],
 
     withUser: "https://i.pinimg.com/564x/03/ac/ad/03acadd2b6688879394e4c15a1eed7d4.jpg",
@@ -203,8 +173,6 @@ Default.args = {
     asVariant: "primary",
     asSize: "normal",
     asFloated: "none",
-    asPadded: "normal",
-    asAligned: "center",
 
     withLabel: {
         format: "caption",
@@ -216,9 +184,9 @@ Default.args = {
     withColor: {
         backgroundColor: "",
         accentColor: "",
-        textColor: "",
+        textColor: "white",
         hoverBackgroundColor: "",
-        hoverTextColor: "",
+        hoverTextColor: "white",
     },
     withAnimation: {
         animation: "zoom",
@@ -233,7 +201,6 @@ Default.args = {
 
     isDisabled: false,
     isHidden: false,
-    isFluid: false,
 };
 Default.parameters = {
     docs: {
@@ -242,3 +209,53 @@ Default.parameters = {
         },
     },
 };
+export const TranslatedOverlayMenu = Template.bind({});
+TranslatedOverlayMenu.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "OverlayMenu",
+        dictionary: dictionary,
+    },
+};
+TranslatedOverlayMenu.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in OverlayMenu. To make this work for the OverlayMenu, add a OverlayMenu:{label} value to the dictionary.",
+        },
+        source: {
+            code: `<TranslatedOverlayMenu {...${JSON.stringify(
+                TranslatedOverlayMenu.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+
+export const AnimatedOverlayMenu = Template.bind({});
+AnimatedOverlayMenu.args = {
+    ...Default.args,
+    withAnimation: {
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
+    },
+};
+AnimatedOverlayMenu.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to animate the entry of the OverlayMenu with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        },
+        source: {
+            code: `<AnimatedOverlayMenu {...${JSON.stringify(
+                AnimatedOverlayMenu.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+
