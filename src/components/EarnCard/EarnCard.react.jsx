@@ -162,7 +162,7 @@ export default function EarnCard(props) {
             animate={animate.to}
             className={`qui qui-EarnCard ${isDisabled ? 'is-Disabled' : ''} ${isHidden ? 'is-hidden' : ''}`} style={colors.cardColors}>
             <div className="qui-leftSide" >
-                <BannerCard {...props} />
+            <BannerCard {...props} />
                 <div className={`qui-leftLower size-${asSize} variant-${asVariant}-text`}>
                     <div className="qui-EarnCardIcon" style={colors.accentColors}>
                         <i className={content?.icon}></i>
