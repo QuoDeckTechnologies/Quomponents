@@ -7,15 +7,18 @@
     background-color: rgb(223, 215, 215);
     margin: 20px;
     height: 25em;
-    overflow: hidden;
 }
 
 .qui .lower-div {
-    margin-top: 20px;
-    width: 100%;
+    padding: 1em 0 1em 1em;
     background-color: rgb(223, 215, 215);
     display: flex;
     flex-direction: row;
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
+    
 }
 
 .qui .cross-icon {
@@ -25,15 +28,14 @@
 }
 
 .qui .qui-inner-button {
-    margin: 0.3em;
-    // padding: 0.4em;
     border-radius: 10px;
-    width: 5em;
-    height: 5em;
     font-weight: bold;
+    height: 5em;
+    width: 5em;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin:0 0.5em 0 0;
 }
 
 .qui .qui-profileContainer .qui-avatarContainer {
@@ -82,21 +84,27 @@
 .qui .qui-profileContainer .qui-profileCaption {
     &.size-tiny {
         font-size: 0.2em;
+        padding:0.5em;
     }
     &.size-small {
         font-size: 0.5em;
+        padding:0.5em;
     }
     &.size-normal {
         font-size: 0.7em;
+        padding:0.5em;
     }
     &.size-big {
         font-size: 0.9em;
+        padding:0.5em;
     }
     &.size-huge {
         font-size: 1.2em;
+        padding:0.5em;
     }
     &.size-massive {
         font-size: 1.5em;
+        padding:0.5em;
     }
 }
 
@@ -109,37 +117,37 @@
         width: 3em;
         height: 3em;
         padding: 0.4em;
-        margin-left: 1em;
+        // margin-left: 1em;
     }
     &.size-small {
         width: 3.2em;
         height: 3.2em;
         padding: 0.4em;
-        margin-left: 1em;
+        // margin-left: 1em;
     }
     &.size-normal {
         width: 3.4em;
         height: 3.4em;
         padding: 0.5em;
-        margin-left: 1em;
+        // margin-left: 1em;
     }
     &.size-big {
         width: 3.5em;
         height: 3.5em;
         padding: 0.5em;
-        margin-left: 1em;
+        // margin-left: 1em;
     }
     &.size-huge {
         width: 3.8em;
         height: 3.8em;
         padding: 0.5em;
-        margin-left: 1em;
+        // margin-left: 1em;
     }
     &.size-massive {
         width: 3.5em;
         height: 3.5em;
         padding: 0;
-        margin-left: 1em;
+        // margin-left: 1em;
     }
 }
 
@@ -210,8 +218,6 @@
 .qui .qui-profileCaption {
     font-weight: bold;
     text-decoration: none;
-    margin-top: 5px;
-    margin-left: 3px;
     font-style: normal;
 }
 
@@ -223,6 +229,6 @@
     align-items: center;
 }
 
-.qui-profileContainer {
-    margin: 20px;
+.qui-profileContainer{
+    margin: 1em 0 0.5em 0;
 }
