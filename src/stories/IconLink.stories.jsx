@@ -308,38 +308,3 @@ AnimatedIcon.parameters = {
     },
 };
 
-// -------------------------------------------------------------
-// Translated Icon
-// -------------------------------------------------------------
-export const TranslatedIcon = Template.bind({});
-TranslatedIcon.args = {
-    ...Default.args,
-    withTranslation: {
-        lang: "hi",
-        tgt: "icon",
-        dictionary: dictionary,
-    },
-};
-TranslatedIcon.parameters = {
-    docs: {
-        description: {
-            story:
-                "Use to change the language that the text appears in. To make this work for the Icon, add a Icon:{text,label} value to the dictionary.",
-        },
-        source: {
-            code: `<IconLink withTranslation={{lang: "hi", tgt: "icon", dictionary: ${JSON.stringify(
-                {
-
-                    en: {
-                        icon: { label: "Home" },
-                    },
-                    hi: {
-                        icon: {
-                            label: "होम आइकन",
-                        },
-                    },
-                }
-            )}}}}/>`,
-        },
-    },
-};

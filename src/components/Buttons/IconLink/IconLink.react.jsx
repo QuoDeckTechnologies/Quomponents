@@ -276,7 +276,7 @@ export default function IconLink(props) {
                     onClick={props.onClick}
                 >
 
-                    <div className={`${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
+                    <div className={`i ${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
                     </div>
                 </button>
                 <div
