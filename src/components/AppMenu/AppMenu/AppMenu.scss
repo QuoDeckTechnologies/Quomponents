@@ -15,11 +15,24 @@
 }
 
 .qui-avatarContainer{
-    z-index: 2;
-    transform: translateX(40%);
+    z-index:2;
+    // transform: translateX(45%);
+    // padding-left:1em;  
+}
+.qui .qui-catalog-container{
+    transform: translateX(100%);
+}
+.qui-main-container{
+    display: flex;
 }
 
-.qui-appMenuContainer{
-    filter: drop-shadow(5px 5px 2px rgb(194, 194, 194));
-    margin: 20px;
+.qui-menuIconContainer .qui-iconContainer{
+    padding-right: 0.5em;
+}
+.qui-main-container .qui-container{
+    border-radius: 0%;
+}
+
+.qui-AppMenu {
+    border-radius: 2em;
 }

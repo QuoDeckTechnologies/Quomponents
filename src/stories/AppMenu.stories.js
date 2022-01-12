@@ -42,6 +42,16 @@ export default {
                 },
             },
         },
+        withLabel: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    format: "label",
+                    content: "",
+                    textColor: "",
+                },
+            },
+        },
         withIcon: {
             table: {
                 category: "with-Params",
@@ -99,12 +109,17 @@ export const Default = Template.bind({});
 Default.args = {
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "inline", 
+    asFloated: "left", 
     withIcon: { icon: "fas fa-ellipsis-v" },
     withUser: "", 
     withColor: {
         backgroundColor: "",
         textColor: "",
+    },
+    withLabel: {
+        format: "label",
+        content: "Catalog",
+        textColor: "#000000",
     },
     isDisabled: false,
     isHidden: false,
