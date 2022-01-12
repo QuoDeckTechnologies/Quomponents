@@ -69,7 +69,7 @@ OverlayMenu.propTypes = {
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
-        // backgroundColor: PropTypes.string,
+        backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
         textColor: PropTypes.string,
     }),
@@ -210,7 +210,7 @@ export default function OverlayMenu(props) {
         >
             <div className="qui-card">
                 <div className={"av-contain"} style={colors}>
-                    <i className={`fa fa-times cross-icon size-${props.asSize}`} onClick={props.onClick} />
+                    <i className={`fa fa-times cross-icon   `} onClick={props.onClick} />
                     <div className={`qui-contain qui-profileContainer float-${props.asFloated}`}>
                         <div className={`qui-profileAvatar  `}>
                             <Avatar {...props} withUser={props.withUser} />
@@ -223,7 +223,7 @@ export default function OverlayMenu(props) {
                 <div className={`lower-div`}>
                     {_.map(content, (icon) => {
                         return (
-                            <div className={`qui-btn qui-inner-button variant-${props.asVariant} size-${props.asSize}`} >
+                            <div className={`qui-btn qui-inner-button variant-${props.asVariant} size-${props.asSize}`}>
                                 <IconLink
                                     {...props}
                                     withIcon={{ icon: icon.icon }}

@@ -59,11 +59,9 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    backgroundColor: "",
                     accentColor: "",
+                    backgroundColor: "",
                     textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
                 },
             },
         },
@@ -84,7 +82,6 @@ export default {
                     format: "caption",
                     content: "",
                     textColor: "",
-                    hoverTextColor: "",
                 },
             },
         },
@@ -160,14 +157,52 @@ Default.args = {
             format: "caption",
         },
         {
-            icon: "fas fa-user-edit",
+            icon: "fas fa-home",
+            label: "Account",
+            format: "caption",
+        },
+        
+        {
+            icon: "fas fa-igloo",
+            label: "Edit Profile",
+            format: "caption",
+        },
+        {
+            icon: "fas fa-adjust",
+            label: "Account",
+            format: "caption",
+        },
+        
+        {
+            icon: "fab fa-apple",
+            label: "Edit Profile",
+            format: "caption",
+        },
+        {
+            icon: "fas fa-address-book",
+            label: "Account",
+            format: "caption",
+        },
+        {
+            icon: "fas fa-bus",
+            label: "Account",
+            format: "caption",
+        },
+        
+        {
+            icon: "fas fa-certificate",
+            label: "Edit Profile",
+            format: "caption",
+        },
+        {
+            icon: "fas fa-camera-retro",
             label: "Account",
             format: "caption",
         },
         
     ],
 
-    withUser: "https://i.pinimg.com/564x/03/ac/ad/03acadd2b6688879394e4c15a1eed7d4.jpg",
+    withUser: "https://i.pinimg.com/564x/66/b7/b0/66b7b0cc1927986a85a41d754a360727.jpg",
 
 
     asVariant: "primary",
@@ -178,15 +213,12 @@ Default.args = {
         format: "caption",
         content: "Aruna Asrani",
         textColor: "",
-        hoverTextColor: "",
     },
-    withIcon: { icon: "fa fa-home" },
+    withIcon: { icon: "fa fa-user" },
     withColor: {
-        backgroundColor: "",
         accentColor: "",
+        backgroundColor: "",
         textColor: "white",
-        hoverBackgroundColor: "",
-        hoverTextColor: "white",
     },
     withAnimation: {
         animation: "zoom",
