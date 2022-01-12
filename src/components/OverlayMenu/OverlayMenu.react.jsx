@@ -169,7 +169,7 @@ export default function OverlayMenu(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
     // quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
-    quommonClasses.childClasses += ` emp-text`;
+    quommonClasses.childClasses += ` emp-contained`;
 
 
     //-------------------------------------------------------------------
@@ -223,7 +223,7 @@ export default function OverlayMenu(props) {
                 <div className={`lower-div`}>
                     {_.map(content, (icon) => {
                         return (
-                            <div className={`qui-btn qui-inner-button variant-${props.asVariant} size-${props.asSize}`}>
+                            <div className={`qui-btn qui-inner-button variant-${props.asVariant}`}>
                                 <IconLink
                                     {...props}
                                     withIcon={{ icon: icon.icon }}

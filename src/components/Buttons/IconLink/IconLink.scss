@@ -1,0 +1,46 @@
+.qui .is-circular {
+  border-radius: 50%;
+  padding: 8px;
+}
+.qui .is-circular.size-big,
+.qui .is-circular.size-huge,
+.qui .is-circular.size-massive {
+  padding: 16px;
+}
+.qui .tilt {
+  transform: rotate(10deg);
+  transition: all ease-in-out;
+}
+.qui-link {
+  text-decoration: none;
+}
+.qui .qui-icon-label {
+  font-weight: normal;
+}
+
+.qui .qui-icon-caption {
+  font-style: normal;
+}
+
+.qui .button {
+  border: none;
+}
+
+.qui .size-massive .i {
+  font-size: 3em;
+}
+.qui .size-huge .i {
+  font-size: 2.8em;
+}
+.qui .size-big .i {
+  font-size: 2.6em;
+}
+.qui .size-normal .i {
+  font-size: 2.4em;
+}
+.qui .size-small .i {
+  font-size: 2.2em;
+}
+.qui .size-tiny .i {
+  font-size: 2em;
+}

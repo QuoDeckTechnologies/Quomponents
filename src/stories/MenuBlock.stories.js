@@ -68,7 +68,7 @@ export default {
                 defaultValue: {
                     icon: "",
                     size: "",
-                    position: "right",
+                    position: "left",
                 },
             },
         },
@@ -130,7 +130,7 @@ Default.args = {
     asSize: "normal",
     asFloated: "none",
     asAligned: "center",
-    withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "right" },
+    withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
         textColor: "",
@@ -142,7 +142,7 @@ Default.args = {
     },
     withLabel: {
         format: "label",
-        content: "Catalog",
+        content: "",
         textColor: "#000000",
     },
     isDisabled: false,
