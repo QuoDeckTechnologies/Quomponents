@@ -169,7 +169,7 @@ export default function OverlayMenu(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
     // quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
-    quommonClasses.childClasses += ` emp-contained`;
+    quommonClasses.childClasses += ` emp-text`;
 
 
     //-------------------------------------------------------------------

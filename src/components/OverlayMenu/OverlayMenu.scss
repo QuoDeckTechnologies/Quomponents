@@ -116,104 +116,104 @@
     }
 }
 
-/* ================================================= */
-/* Button Size Definitions */
-/* ================================================= */
+// /* ================================================= */
+// /* Button Size Definitions */
+// /* ================================================= */
 
-.qui .qui-inner-button {
-    &.size-tiny {
-        width: 3em;
-        height: 3em;
-        padding: 0.4em;
-        // margin-left: 1em;
-    }
-    &.size-small {
-        width: 3.2em;
-        height: 3.2em;
-        padding: 0.4em;
-        // margin-left: 1em;
-    }
-    &.size-normal {
-        width: 3.4em;
-        height: 3.4em;
-        padding: 0.5em;
-        // margin-left: 1em;
-    }
-    &.size-big {
-        width: 3.5em;
-        height: 3.5em;
-        padding: 0.5em;
-        // margin-left: 1em;
-    }
-    &.size-huge {
-        width: 3.8em;
-        height: 3.8em;
-        padding: 0.5em;
-        // margin-left: 1em;
-    }
-    &.size-massive {
-        width: 3.5em;
-        height: 3.5em;
-        padding: 0;
-        // margin-left: 1em;
-    }
-}
+// .qui .qui-inner-button {
+//     &.size-tiny {
+//         width: 3em;
+//         height: 3em;
+//         padding: 0.4em;
+//         // margin-left: 1em;
+//     }
+//     &.size-small {
+//         width: 3.2em;
+//         height: 3.2em;
+//         padding: 0.4em;
+//         // margin-left: 1em;
+//     }
+//     &.size-normal {
+//         width: 3.4em;
+//         height: 3.4em;
+//         padding: 0.5em;
+//         // margin-left: 1em;
+//     }
+//     &.size-big {
+//         width: 3.5em;
+//         height: 3.5em;
+//         padding: 0.5em;
+//         // margin-left: 1em;
+//     }
+//     &.size-huge {
+//         width: 3.8em;
+//         height: 3.8em;
+//         padding: 0.5em;
+//         // margin-left: 1em;
+//     }
+//     &.size-massive {
+//         width: 3.5em;
+//         height: 3.5em;
+//         padding: 0;
+//         // margin-left: 1em;
+//     }
+// }
 
-/* ================================================= */
-/* Button icon Size Definitions */
-/* ================================================= */
+// /* ================================================= */
+// /* Button icon Size Definitions */
+// /* ================================================= */
 
-.qui .qui-inner-button button {
-    &.size-tiny {
-        font-size: 1em;
-        padding: 0;
-    }
-    &.size-small {
-        font-size: 1.2em;
-        padding: 0;
-    }
-    &.size-normal {
-        font-size: 1.4em;
-        padding: 0;
-    }
-    &.size-big {
-        font-size: 1.6em;
-        padding: 0;
-    }
-    &.size-huge {
-        font-size: 1.7em;
-        padding: 0;
-    }
-    &.size-massive {
-        font-size: 1em;
-        padding: 0;
-    }
-}
+// .qui .qui-inner-button button {
+//     &.size-tiny {
+//         font-size: 1em;  
+//         padding: 0;
+//     }
+//     &.size-small {
+//         font-size: 1.2em;
+//         padding: 0;
+//     }
+//     &.size-normal {
+//         font-size: 1.4em;
+//         padding: 0;
+//     }
+//     &.size-big {
+//         font-size: 1.6em;
+//         padding: 0;
+//     }
+//     &.size-huge {
+//         font-size: 1.7em;
+//         padding: 0;
+//     }
+//     &.size-massive {
+//         font-size: 1em;
+//         padding: 0;
+//     }
+// }
 
-/* ================================================= */
-/* ButtonCaption Size Definitions */
-/* ================================================= */
+// /* ================================================= */
+// /* ButtonCaption Size Definitions */
+// /* ================================================= */
 
-.qui .qui-inner-button .qui-icon-caption {
-    &.size-tiny {
-        font-size: 0.1em;
-    }
-    &.size-small {
-        font-size: 0.5em;
-    }
-    &.size-normal {
-        font-size: 0.6em;
-    }
-    &.size-big {
-        font-size: 0.5em;
-    }
-    &.size-huge {
-        font-size: 0.5em;
-    }
-    &.size-massive {
-        font-size: 0.5em;
-    }
-}
+// .qui .qui-inner-button .qui-icon-caption {
+//     &.size-tiny {
+//         font-size: 0.1em;
+//     }
+//     &.size-small {
+//         font-size: 0.5em;
+//     }
+//     &.size-normal {
+//         font-size: 0.6em;
+//     }
+//     &.size-big {
+//         font-size: 0.5em;
+//     }
+//     &.size-huge {
+//         font-size: 0.5em;
+//     }
+//     &.size-massive {
+//         font-size: 0.5em;
+//     }
+// }
 
 .qui .av-contain {
     border-radius: 10px;
