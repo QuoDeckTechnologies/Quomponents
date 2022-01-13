@@ -64,23 +64,6 @@ Use to add a heading label, a footer caption or a title popover to the component
         textColor: PropTypes.string,
     }),
     /**
-    Use to define the entry animation of the component
-    */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-            ""
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
-    }),
-    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -102,13 +85,11 @@ MenuBlock.defaultProps = {
     //=======================================
     asVariant: "primary",
     asSize: "normal",
-    asPadded: "normal",
     asFloated: "none",
 
     withColor: null,
     withIcon: null,
     withLabel: null,
-    withAnimation: null,
     withTranslation: null,
 
     isHidden: false,
@@ -126,9 +107,6 @@ function getLabel(labelObj, position) {
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function MenuBlock(props) {
-
-
-
 
     let quommonClasses = getQuommons(props);
     // 4. Set the label/caption/popover and loading text
@@ -159,7 +137,7 @@ export default function MenuBlock(props) {
         }
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
     }
-
+    
 
     // ========================= Render Function ================================
 
@@ -171,10 +149,9 @@ export default function MenuBlock(props) {
             variant-${props.asVariant} emp-${props.asEmphasis} `}>
                     <div style={colors} className="qui-iconContainer">
                         <div className="qui-catalog">
-                        <div className={`qui-labeql ${quommonClasses.childClasses}`} style={labelStyle}>
+                        <div className={`qui-labql${quommonClasses.childClasses}`} style={labelStyle}>
                         {getLabel(labelContent, "label")}
                         </div>
-                       
                         </div>
                         <i className={props.withIcon?.icon}></i>
                     </div>

@@ -95,9 +95,8 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic Icon for general-purpose use",
+        componentSubtitle: "Displays a basic Icon,image and label for general-purpose use",
         a11y: { disable: true },
-        // controls: { expanded: true }
     },
 };
 
@@ -109,7 +108,7 @@ export const Default = Template.bind({});
 Default.args = {
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "left", 
+    asFloated: "inline", 
     withIcon: { icon: "fas fa-ellipsis-v" },
     withUser: "", 
     withColor: {
@@ -117,7 +116,6 @@ Default.args = {
         textColor: "",
     },
     withLabel: {
-        format: "label",
         content: "Catalog",
         textColor: "#000000",
     },

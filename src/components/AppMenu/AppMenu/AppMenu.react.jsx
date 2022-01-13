@@ -101,11 +101,12 @@ AppMenu.defaultProps = {
     isDisabled: false,
 };
 /**
- ## Notes
- - Pass inline styles to the component to override any of the component css
-- Or add custom css in overrule.scss to    override the component css
- **/
-
+## Notes
+- The design system used for this component is fontawesome Icons
+- Pass inline styles to the component to override any of the component css
+- Or add custom css in overrule.scss to override the component css
+- props are not being passed to the AppMenu. Please speak to the admin to handle any new prop.
+**/
 
 export default function AppMenu(props) {
     let { withLabel } = props
@@ -113,21 +114,32 @@ export default function AppMenu(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
-    // ========================= Render Function =================================
+    //-------------------------------------------------------------------
+    // 1. Set the color
+    //-------------------------------------------------------------------
 
+    let colors = {
+        backgroundColor: props.withColor?.backgroundColor,
+        color: props.withColor?.textColor
+    }
+    //    //-------------------------------------------------------------------
+    //   // 3. Destructure content prop to itirate
+    //   //-------------------------------------------------------------------
+    //    let { content } = props;
+     // ========================= Render Function =================================
     return (
         <div className={`qui qui-AppMenu ${quommonClasses.parentClasses}`}>
            <div className="qui-main-container">
-           <div className={`qui-container qui-menuBlock qui-btn size-${props.asSize} 
+           <div style={colors} className={`qui-container qui-menuBlock qui-btn size-${props.asSize} 
             variant-${props.asVariant} emp-${props.asEmphasis} `}>
                     <div className="qui-iconContainer">
                         <div className="qui-catalogContainer">
-                        <p>{withLabel?.content}</p>
+                        {props.withLabel?.content ? <p className="qui-catalogLabel">{withLabel?.content} </p>: '' }
                         </div>
                     </div>
                 </div>
             <div className={`qui-appMenuContainer float-${props.asFloated}`}>
-                <div className={`qui-appMenuAvatar qui-btn variant-${props.asVariant}`}>
+                <div style={colors} className={`qui-appMenuAvatar qui-btn variant-${props.asVariant}`}>
                     <Avatar {...props} withIcon={{ icon: 'fas fa-user'}} withUser={props.withUser} />
                 </div>
                 <div className="qui-menuIconContainer">
@@ -136,6 +148,5 @@ export default function AppMenu(props) {
             </div>
            </div>
         </div>
-
     );
 }

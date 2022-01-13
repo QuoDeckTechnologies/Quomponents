@@ -13,26 +13,24 @@
     display: flex;
     justify-content: flex-end;
 }
-
 .qui-avatarContainer{
-    z-index:2;
-    // transform: translateX(45%);
-    // padding-left:1em;  
+    z-index:2;  
 }
 .qui .qui-catalog-container{
     transform: translateX(100%);
 }
 .qui-main-container{
-    display: flex;
+    display: flex; 
 }
-
 .qui-menuIconContainer .qui-iconContainer{
-    padding-right: 0.5em;
+    padding:0 1em 0 0.5em;
 }
 .qui-main-container .qui-container{
     border-radius: 0%;
 }
-
 .qui-AppMenu {
-    border-radius: 2em;
+    border-radius:2em;
+}
+.qui-catalogContainer .qui-catalogLabel{
+    padding: 0 0.5em 0 0.8em;
 }
