@@ -26,14 +26,6 @@ export default {
                 defaultValue: "",
             },
         },
-
-        asEmphasis: {
-            control: "select",
-            options: ["text", "outlined", "contained"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning"],
@@ -62,6 +54,8 @@ export default {
                     accentColor: "",
                     backgroundColor: "",
                     textColor: "",
+                    hoverTextColor: "",
+                    
                 },
             },
         },
@@ -139,7 +133,7 @@ export default {
     parameters: {
         componentSubtitle: "Displays icon with a link",
         a11y: { disable: true },
-        // controls: { expanded: true }
+        docs: { iframeHeight: 400 },
     },
 };
 
@@ -149,7 +143,6 @@ export default {
 const Template = (args) => <OverlayMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    asEmphasis: "contained",
     content: [
         {
             icon: "fas fa-user-edit",
@@ -161,45 +154,45 @@ Default.args = {
             label: "Account",
             format: "caption",
         },
-        
+
         {
             icon: "fas fa-igloo",
             label: "Edit Profile",
             format: "caption",
         },
-        {
-            icon: "fas fa-adjust",
-            label: "Account",
-            format: "caption",
-        },
-        
-        {
-            icon: "fab fa-apple",
-            label: "Edit Profile",
-            format: "caption",
-        },
-        {
-            icon: "fas fa-address-book",
-            label: "Account",
-            format: "caption",
-        },
-        {
-            icon: "fas fa-bus",
-            label: "Account",
-            format: "caption",
-        },
-        
-        {
-            icon: "fas fa-certificate",
-            label: "Edit Profile",
-            format: "caption",
-        },
-        {
-            icon: "fas fa-camera-retro",
-            label: "Account",
-            format: "caption",
-        },
-        
+        // {
+        //     icon: "fas fa-adjust",
+        //     label: "Account",
+        //     format: "caption",
+        // },
+
+        // {
+        //     icon: "fab fa-apple",
+        //     label: "Edit Profile",
+        //     format: "caption",
+        // },
+        // {
+        //     icon: "fas fa-address-book",
+        //     label: "Account",
+        //     format: "caption",
+        // },
+        // {
+        //     icon: "fas fa-bus",
+        //     label: "Account",
+        //     format: "caption",
+        // },
+
+        // {
+        //     icon: "fas fa-certificate",
+        //     label: "Edit Profile",
+        //     format: "caption",
+        // },
+        // {
+        //     icon: "fas fa-camera-retro",
+        //     label: "Account",
+        //     format: "caption",
+        // },
+
     ],
 
     withUser: "https://i.pinimg.com/564x/66/b7/b0/66b7b0cc1927986a85a41d754a360727.jpg",
@@ -219,6 +212,7 @@ Default.args = {
         accentColor: "",
         backgroundColor: "",
         textColor: "white",
+        hoverTextColor: "white",
     },
     withAnimation: {
         animation: "zoom",
@@ -236,11 +230,19 @@ Default.args = {
 };
 Default.parameters = {
     docs: {
+        description: {
+            story: "OverlayMenu Profile can contain the profile image of the user and it has userIcon by default if profile imgae is not avialable ,with the lable",
+        },
         source: {
             code: `<OverlayMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
+
+
+// -------------------------------------------------------------
+// TranslatedOverlayMenu
+// -------------------------------------------------------------
 export const TranslatedOverlayMenu = Template.bind({});
 TranslatedOverlayMenu.args = {
     ...Default.args,
@@ -291,3 +293,196 @@ AnimatedOverlayMenu.parameters = {
     },
 };
 
+
+// -------------------------------------------------------------
+// OverlayMenuWithBackgroundColor
+// -------------------------------------------------------------
+
+export const OverlayMenuWithBackgroundColor = Template.bind({});
+OverlayMenuWithBackgroundColor.args = {
+    ...Default.args,
+    withColor: {
+        accentColor: "purple",
+        backgroundColor: "yellow",
+        textColor: "yellow",
+        hoverTextColor: "white",
+    },
+    withLabel: {
+        format: "caption",
+        content: "Aruna Asrani",
+        textColor: "purple",
+    },
+
+};
+OverlayMenuWithBackgroundColor.parameters = {
+    docs: {
+        description: {
+            story:
+                "You can change the background colors , hover colors with the props ",
+        },
+        source: {
+            code: `<OverlayMenuWithBackgroundColor {...${JSON.stringify(
+                OverlayMenuWithBackgroundColor.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Primary variant
+// -------------------------------------------------------------
+
+export const PrimaryVariant = Template.bind({});
+PrimaryVariant.args = {
+    ...Default.args,
+
+    asVariant: "primary",
+    asSize: "normal",
+    asFloated: "none",
+    withColor: {
+        accentColor: "",
+        backgroundColor: "",
+        textColor: "white",
+        hoverTextColor: "white",
+    },
+    withLabel: {
+        format: "caption",
+        content: "Aruna Asrani",
+        textColor: "purple",
+    },
+
+};
+PrimaryVariant.parameters = {
+    docs: {
+        description: {
+            story:
+                "Uses one of the five , Primary variant",
+        },
+        source: {
+            code: `<PrimaryVariant {...${JSON.stringify(
+                PrimaryVariant.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Secondary variant
+// -------------------------------------------------------------
+
+export const SecondaryVariant = Template.bind({});
+SecondaryVariant.args = {
+    ...Default.args,
+
+    asVariant: "secondary",
+    asSize: "normal",
+    asFloated: "none",
+    withColor: {
+        accentColor: "",
+        backgroundColor: "",
+        textColor: "white",
+        hoverTextColor: "white",
+    },
+    withLabel: {
+        format: "caption",
+        content: "Aruna Asrani",
+        textColor: "purple",
+    },
+
+};
+SecondaryVariant.parameters = {
+    docs: {
+        description: {
+            story:
+                "Uses one of the five , Secondary variant",
+        },
+        source: {
+            code: `<SecondaryVariant {...${JSON.stringify(
+                SecondaryVariant.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// warning variant
+// -------------------------------------------------------------
+
+export const WarningVariant = Template.bind({});
+WarningVariant.args = {
+    ...Default.args,
+
+    asVariant: "warning",
+    asSize: "normal",
+    asFloated: "none",
+    withColor: {
+        accentColor: "",
+        backgroundColor: "",
+        textColor: "purple",
+        hoverTextColor: "black",
+    },
+    withLabel: {
+        format: "caption",
+        content: "Aruna Asrani",
+        textColor: "purple",
+    },
+
+};
+WarningVariant.parameters = {
+    docs: {
+        description: {
+            story:
+                "Uses one of the five , Warning variant",
+        },
+        source: {
+            code: `<WarningVariant {...${JSON.stringify(
+                WarningVariant.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// DarkVariant 
+// -------------------------------------------------------------
+
+export const DarkVariant = Template.bind({});
+DarkVariant.args = {
+    ...Default.args,
+
+    asVariant: "primary",
+    asSize: "normal",
+    asFloated: "none",
+    withColor: {
+        accentColor: "#232426",
+        backgroundColor: "#232426",
+        textColor: "white",
+        hoverTextColor: "yellow",
+    },
+    withLabel: {
+        format: "caption",
+        content: "Aruna Asrani",
+        textColor: "white",
+    },
+
+};
+DarkVariant.parameters = {
+    docs: {
+        description: {
+            story:
+                "DarkVariant use the black&white color theme ",
+        },
+        source: {
+            code: `<DarkVariant {...${JSON.stringify(
+                DarkVariant.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};

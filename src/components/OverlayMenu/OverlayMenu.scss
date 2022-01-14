@@ -6,20 +6,17 @@
     align-items: center;
     background-color: rgba(246, 246, 246, 1);
     margin: 2em 1px;
-    height: 30em;
+    min-height: 25em;
 }
 
+
+
 .qui .lower-div {
-    padding-top:0.5em;
-    background-color: rgba(246, 246, 246, 1);
-    display: flex;
-    flex-direction: row;
+    padding:1.5em;
     width: 100%;
     width: -moz-available;          /* WebKit-based browsers will ignore this. */
     width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
     width: fill-available;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
     height: auto;
     border-bottom-left-radius:10px ;
@@ -29,27 +26,23 @@
 
 .qui .cross-icon {
     position: absolute;
-    right: 10%;
-    top: 7%;
+    right: 7%;
+    top: 10%;
     font-size:1.2em;
     
 }
-
+.container{
+    justify-content: center;
+}
 .qui .qui-inner-button {
     border-radius: 10px;
     font-weight: bold;
     height: 5em;
     width: 5em;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin:0 0.5em 0.5em 0;
-}
-
-.qui .qui-profileContainer .qui-avatarContainer {
-    &.size-tiny {
-        font-size: 3em;
-    }
 }
 
 /* ================================================= */
@@ -57,32 +50,32 @@
 /* ================================================= */
 
 .qui .qui-profileAvatar .qui-container.qui-icon-container.size-tiny {
-    height: 3em;
-    width: 3em;
+    height: 5.5em;
+    width: 5.5em;
 }
 
 .qui .qui-profileAvatar .qui-container.qui-icon-container.size-small {
-    height: 3.5em;
-    width: 3.5em;
+    height: 6em;
+    width: 6em;
 }
 .qui .qui-profileAvatar .qui-container.qui-icon-container.size-normal {
-    height: 4em;
-    width: 4em;
+    height: 6em;
+    width: 6em;
 }
 
 .qui .qui-profileAvatar .qui-container.qui-icon-container.size-big {
-    height: 4.3em;
-    width: 4.3em;
+    height: 6em;
+    width: 6em;
 }
 
 .qui .qui-profileAvatar .qui-container.qui-icon-container.size-huge {
-    height: 4.7em;
-    width: 4.7em;
+    height: 6em;
+    width: 6em;
 }
 
 .qui .qui-profileAvatar .qui-container.qui-icon-container.size-massive {
-    height: 4.9em;
-    width: 4.9em;
+    height: 6em;
+    width: 6em;
 }
 
 /* ================================================= */
@@ -91,7 +84,7 @@
 
 .qui .qui-profileContainer .qui-profileCaption {
     &.size-tiny {
-        font-size: 0.2em;
+        font-size: 0.7em;
         padding:0.5em;
     }
     &.size-small {
@@ -122,40 +115,34 @@
 
 .qui .qui-inner-button {
     &.size-tiny {
-        width: 3em;
-        height: 3em;
-        padding: 0.4em;
-        // margin-left: 1em;
+        width:2.9em;
+        height:2.9em;
+        padding:0.5em;
     }
     &.size-small {
-        width: 3.2em;
-        height: 3.2em;
-        padding: 0.4em;
-        // margin-left: 1em;
+        width: 3em;
+        height: 3em;
+        padding:0.7em;
     }
     &.size-normal {
         width: 3.4em;
         height: 3.4em;
-        padding: 0.5em;
-        // margin-left: 1em;
+        padding:0.5em;
     }
     &.size-big {
         width: 3.5em;
         height: 3.5em;
-        padding: 0.5em;
-        // margin-left: 1em;
+        padding:0.1em;
     }
     &.size-huge {
-        width: 3.8em;
-        height: 3.8em;
-        padding: 0.5em;
-        // margin-left: 1em;
+        width: 3.6em;
+        height: 3.6em;
+        padding:0.1em;
     }
     &.size-massive {
-        width: 3.5em;
-        height: 3.5em;
-        padding: 0;
-        // margin-left: 1em;
+        width: 3.7em;
+        height: 3.7em;
+        padding:0.1em;
     }
 }
 
@@ -163,57 +150,57 @@
 /* Button icon Size Definitions */
 /* ================================================= */
 
-// .qui .qui-inner-button button {
-//     &.size-tiny {
-//         font-size: 1em;
-//         padding: 0;
-//     }
-//     &.size-small {
-//         font-size: 1.2em;
-//         padding: 0;
-//     }
-//     &.size-normal {
-//         font-size: 1.4em;
-//         padding: 0;
-//     }
-//     &.size-big {
-//         font-size: 1.6em;
-//         padding: 0;
-//     }
-//     &.size-huge {
-//         font-size: 1.7em;
-//         padding: 0;
-//     }
-//     &.size-massive {
-//         font-size: 1em;
-//         padding: 0;
-//     }
-// }
+.qui .qui-inner-button button {
+    &.size-tiny {
+        font-size: 1em;
+        padding: 0.4em;
+    }
+    &.size-small {
+        font-size: 0.7em;
+        padding: 0.2em;
+    }
+    &.size-normal {
+        font-size: 0.7em;
+        padding: 0.1em;
+    }
+    &.size-big {
+        font-size: 0.5em;
+        padding: 0.1em;
+    }
+    &.size-huge {
+        font-size: 0.6em;
+        padding: 0.1em;
+    }
+    &.size-massive {
+        font-size: 0.4em;
+        padding: 0.1em;
+    }
+}
 
-// /* ================================================= */
-// /* ButtonCaption Size Definitions */
-// /* ================================================= */
+/* ================================================= */
+/* ButtonCaption Size Definitions */
+/* ================================================= */
 
-// .qui .qui-inner-button .qui-icon-caption {
-//     &.size-tiny {
-//         font-size: 0.1em;
-//     }
-//     &.size-small {
-//         font-size: 0.5em;
-//     }
-//     &.size-normal {
-//         font-size: 0.6em;
-//     }
-//     &.size-big {
-//         font-size: 0.5em;
-//     }
-//     &.size-huge {
-//         font-size: 0.5em;
-//     }
-//     &.size-massive {
-//         font-size: 0.5em;
-//     }
-// }
+.qui .qui-inner-button .qui-icon-caption {
+    &.size-tiny {
+        font-size:0.5em;
+    }
+    &.size-small {
+        font-size: 0.5em;
+    }
+    &.size-normal {
+        font-size: 0.6em;
+    }
+    &.size-big {
+        font-size: 0.6em;
+    }
+    &.size-huge {
+        font-size: 0.6em;
+    }
+    &.size-massive {
+        font-size: 0.4em;
+    }
+}
 
 .qui .av-contain {
     border-radius: 10px;

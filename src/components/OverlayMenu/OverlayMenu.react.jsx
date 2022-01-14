@@ -14,6 +14,8 @@ import "../../common/stylesheets/overrule.scss";
 import Avatar from "../AppMenu/Avatar/Avatar.react"
 import IconLink from "../Buttons/IconLink/IconLink.react"
 import _ from "lodash";
+import Grid from "@mui/material/Grid"
+
 
 
 OverlayMenu.propTypes = {
@@ -33,10 +35,6 @@ OverlayMenu.propTypes = {
             link: PropTypes.string,
         })
     ).isRequired,
-    /**
-    Set action emphasis in increasing order 
-    */
-    asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
     //=======================================
     // Quommon props
     //=======================================
@@ -72,6 +70,7 @@ OverlayMenu.propTypes = {
         backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
         textColor: PropTypes.string,
+        hoverTextColor: PropTypes.string,
     }),
     /**
     Use to add an icon to the component
@@ -129,12 +128,12 @@ OverlayMenu.propTypes = {
 
 OverlayMenu.defaultProps = {
 
-    content: [],
-    withUser: "",
+
     //=======================================
     // Component Specific props
     //=======================================
-    asEmphasis: "text",
+    content: [],
+    withUser: "",
     //=======================================
     // Quommon props
     //=======================================
@@ -168,8 +167,6 @@ export default function OverlayMenu(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
-    // quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
-    quommonClasses.childClasses += ` emp-contained`;
 
 
     //-------------------------------------------------------------------
@@ -192,7 +189,7 @@ export default function OverlayMenu(props) {
     // 1. Set the color
     //-------------------------------------------------------------------
     let colors = {
-        backgroundColor: props.withColor?.accentColor,
+        backgroundColor: props.withColor?.backgroundColor,
     }
     //-------------------------------------------------------------------
     // 4. Get animation of the component
@@ -221,17 +218,28 @@ export default function OverlayMenu(props) {
                     </div>
                 </div>
                 <div className={`lower-div`}>
-                    {_.map(content, (icon) => {
-                        return (
-                            <div className={`qui-btn qui-inner-button variant-${props.asVariant}`}>
-                                <IconLink
-                                    {...props}
-                                    withIcon={{ icon: icon.icon }}
-                                    withLabel={{ content: icon.label, format: icon.format }}
-                                />
-                            </div>
-                        );
-                    })}
+                    <div className="container" >
+                        <Grid container
+                            rowSpacing={{xs:1, sm:1, md:1, lg:1, xl:1}} 
+                            columnSpacing={{xs:1, sm:1, md:1, lg:1, xl:1}}
+                            >
+                            {_.map(content, (icon) => {
+                                return (
+                                    <Grid item xs={4} sm={4} md={4} lg={4}>
+                                        <div className={`qui-btn qui-inner-button  size-${props.asSize} variant-${props.asVariant}`} style={{ backgroundColor: props.withColor?.accentColor}}>
+                                            <IconLink
+                                                {...props}
+                                                withColor={{ ...props.withColor, textColor: props.withColor?.textColor, backgroundColor: props.withColor?.textColor }}
+                                                asEmphasis="text"
+                                                withIcon={{ icon: icon.icon }}
+                                                withLabel={{ content: icon.label, format: icon.format }}
+                                            />
+                                        </div>
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
+                    </div>
                 </div>
             </div>
         </motion.div>
