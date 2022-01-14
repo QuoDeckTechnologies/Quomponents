@@ -160,38 +160,38 @@ Default.args = {
             label: "Edit Profile",
             format: "caption",
         },
-        // {
-        //     icon: "fas fa-adjust",
-        //     label: "Account",
-        //     format: "caption",
-        // },
+        {
+            icon: "fas fa-adjust",
+            label: "Account",
+            format: "caption",
+        },
 
-        // {
-        //     icon: "fab fa-apple",
-        //     label: "Edit Profile",
-        //     format: "caption",
-        // },
-        // {
-        //     icon: "fas fa-address-book",
-        //     label: "Account",
-        //     format: "caption",
-        // },
-        // {
-        //     icon: "fas fa-bus",
-        //     label: "Account",
-        //     format: "caption",
-        // },
+        {
+            icon: "fab fa-apple",
+            label: "Edit Profile",
+            format: "caption",
+        },
+        {
+            icon: "fas fa-address-book",
+            label: "Account",
+            format: "caption",
+        },
+        {
+            icon: "fas fa-bus",
+            label: "Account",
+            format: "caption",
+        },
 
-        // {
-        //     icon: "fas fa-certificate",
-        //     label: "Edit Profile",
-        //     format: "caption",
-        // },
-        // {
-        //     icon: "fas fa-camera-retro",
-        //     label: "Account",
-        //     format: "caption",
-        // },
+        {
+            icon: "fas fa-certificate",
+            label: "Edit Profile",
+            format: "caption",
+        },
+        {
+            icon: "fas fa-camera-retro",
+            label: "Account",
+            format: "caption",
+        },
 
     ],
 

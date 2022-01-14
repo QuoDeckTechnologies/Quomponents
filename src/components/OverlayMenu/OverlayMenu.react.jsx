@@ -132,7 +132,13 @@ OverlayMenu.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
+    /**
+    In content you  can pass buttons as Grid Item
+     */
     content: [],
+    /**
+     withUser contains the link to the progile image that can replace the profile default icon.
+     */
     withUser: "",
     //=======================================
     // Quommon props
