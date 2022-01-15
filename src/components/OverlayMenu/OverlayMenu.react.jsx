@@ -24,10 +24,13 @@ OverlayMenu.propTypes = {
     //=======================================
 
     /**
-    Use to define component user image
+    Use to define user image to component
     */
     withUser: PropTypes.string,
-
+     
+    /**
+    Use to define buttons to component
+    */
     content: PropTypes.arrayOf(
         PropTypes.shape({
             icon: PropTypes.string,
