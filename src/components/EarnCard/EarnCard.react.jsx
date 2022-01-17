@@ -192,9 +192,9 @@ export default function EarnCard(props) {
               })}
             </div>
             <div className="qui-courseDate" style={colors.textColors}>
-              <h2>{content?.dates.start_date}</h2>
+              <h2>{content?.dates?.start_date}</h2>
               <h2>&nbsp;-&nbsp;</h2>
-              <h2>{content?.dates.end_date}</h2>
+              <h2>{content?.dates?.end_date}</h2>
             </div>
           </div>
         </div>
