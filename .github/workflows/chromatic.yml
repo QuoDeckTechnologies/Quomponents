@@ -15,6 +15,9 @@ on:
       - CertificateCard
       - ToolbarDark
       - AppMenu
+      - EarnCard
+      - OverlayMenu
+      - IG**
 # What the action will do
 jobs:
   test:
