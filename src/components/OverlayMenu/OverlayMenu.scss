@@ -122,7 +122,9 @@
 @media only screen and (min-width: 769px) {
     .qui .qui-inner-button{
         height:28vw;  
-        width:28vw;         
+        width:28vw;
+        padding: 0px;     
+            
     }
 }
 @media only screen and (min-width: 1024px) {
@@ -152,7 +154,7 @@
 }
 @media only screen and (min-width: 1024px) {
     .qui .qui-inner-button button{
-      font-size: 1.5em;
+      font-size: 2em;
     }
 
 }
@@ -177,7 +179,7 @@
 }
 @media only screen and (min-width: 1024px) {
     .qui .qui-inner-button .qui-icon-caption {
-        font-size: 1.2em;
+        font-size: 1.3em;
       }
 }
 
