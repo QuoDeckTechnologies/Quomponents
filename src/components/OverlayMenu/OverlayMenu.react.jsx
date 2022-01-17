@@ -230,7 +230,7 @@ export default function OverlayMenu(props) {
                 <div className={`lower-div`}>
                     <div className="container" >
                         <Grid container 
-                            rowSpacing={{xs:1, sm:1, md:1, lg:1, xl:1}} 
+                            rowSpacing={{xs:1, sm:2, md:2, lg:1, xl:1}} 
                             columnSpacing={{xs:1, sm:1, md:1, lg:1, xl:1}}
                             >
                             {_.map(content, (icon) => {
