@@ -13,7 +13,6 @@ export default {
     title: "Design System/Buttons/IconLink",
     component: IconLink,
     argTypes: {
-        content: "Books",
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
@@ -168,7 +167,6 @@ export default {
 const Template = (args) => <IconLink {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: "",
     asEmphasis: "text",
     isCircular: false,
 
@@ -286,7 +284,6 @@ AllVariants.parameters = {
 export const IconOnlyButton = Template.bind({});
 IconOnlyButton.args = {
     ...Default.args,
-    content: "",
     asEmphasis:"contained",
     isCircular: true,
     withIcon: { icon: "fas fa-home", size: "1em", position: "left" },
@@ -317,7 +314,6 @@ export const FluidButton = Template.bind({});
 FluidButton.args = {
     ...Default.args,
     asEmphasis:"contained",
-    content: "Fluid Button",
     isFluid: true,
 };
 FluidButton.parameters = {
@@ -338,7 +334,6 @@ FluidButton.parameters = {
 export const CaptionButton = Template.bind({});
 CaptionButton.args = {
     ...Default.args,
-    content: "Caption Button",
     withLabel: {
         format: "caption",
         content: "Home",
@@ -390,7 +385,6 @@ Default.parameters = {
 export const AnimatedButton = Template.bind({});
 AnimatedButton.args = {
     ...Default.args,
-    content: "Animated Button",
     withAnimation: {
         animation: "collapse",
         duration: 0.5,
@@ -416,7 +410,6 @@ AnimatedButton.parameters = {
 export const TranslatedButton = Template.bind({});
 TranslatedButton.args = {
     ...Default.args,
-    content: "Translated Button",
     withTranslation: {
         lang: "hi",
         tgt: "button",

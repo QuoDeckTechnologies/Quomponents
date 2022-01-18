@@ -12,15 +12,10 @@ import "../../../common/stylesheets/common.css";
 import './IconLink.scss'
 import "../../../common/stylesheets/overrule.scss";
 
-Button.propTypes = {
+IconLink.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-
-    /**
-    Button Text has to be in content or passed as children to the component. Is optional if you only want an icon.
-    */
-    content: PropTypes.string,
     /**
     Set action emphasis in increasing order 
     */
@@ -138,7 +133,7 @@ Button.propTypes = {
     onClick: PropTypes.func.isRequired,
 };
 
-Button.defaultProps = {
+IconLink.defaultProps = {
     // Component Specific props
     //=======================================
     asEmphasis: "contained",
@@ -177,13 +172,10 @@ function getColors(colors, emphasis, hovered) {
             color : colors.textColor,
             borderColor : colors.textColor
         }
-        : emphasis === 'contained'
-        ? {
+        : {
             background : colors.backgroundColor,
             color : colors.textColor
-        } 
-        :
-        {}
+        }
     }
     if(emphasis === 'text' && hovered){
         colorStyle.background = 'transparent'
@@ -212,7 +204,7 @@ function getLabel(labelObj, position) {
 }
 
 
-export default function Button(props) {
+export default function IconLink(props) {
     const [ tilt,setTilt ] = useState(false)
     const [hovered, setHovered] = useState(false);
 
@@ -271,7 +263,7 @@ export default function Button(props) {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
-            <div className={`qui qui-icon-label qui-title size-${props.asSize}`} style={labelStyle}>
+            <div className={`qui-icon-label qui-title size-${props.asSize}`} style={labelStyle}>
                 {getLabel(labelContent, "label")}
             </div>
             <div className="qui-container">
