@@ -9,6 +9,15 @@ on:
       - udhav
       - nawab
       - ganesh
+      - rahul
+      - rohit
+      - piyush
+      - CertificateCard
+      - ToolbarDark
+      - AppMenu
+      - EarnCard
+      - OverlayMenu
+      - IG**
 # What the action will do
 jobs:
   test:
