@@ -24,10 +24,13 @@ OverlayMenu.propTypes = {
     //=======================================
 
     /**
-    Use to define component user image
+    Use to define user image to component
     */
     withUser: PropTypes.string,
-
+     
+    /**
+    Use to define buttons to component
+    */
     content: PropTypes.arrayOf(
         PropTypes.shape({
             icon: PropTypes.string,
@@ -197,6 +200,7 @@ export default function OverlayMenu(props) {
     let colors = {
         backgroundColor: props.withColor?.backgroundColor,
     }
+
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -225,14 +229,14 @@ export default function OverlayMenu(props) {
                 </div>
                 <div className={`lower-div`}>
                     <div className="container" >
-                        <Grid container
-                            rowSpacing={{xs:1, sm:1, md:1, lg:1, xl:1}} 
+                        <Grid container 
+                            rowSpacing={{xs:1, sm:2, md:2, lg:1, xl:1}} 
                             columnSpacing={{xs:1, sm:1, md:1, lg:1, xl:1}}
                             >
                             {_.map(content, (icon) => {
                                 return (
                                     <Grid item xs={4} sm={4} md={4} lg={4}>
-                                        <div className={`qui-btn qui-inner-button  size-${props.asSize} variant-${props.asVariant}`} style={{ backgroundColor: props.withColor?.accentColor}}>
+                                        <div className={`qui-btn qui-inner-button variant-${props.asVariant}`} style={{ backgroundColor: props.withColor?.accentColor}}>
                                             <IconLink
                                                 {...props}
                                                 withColor={{ ...props.withColor, textColor: props.withColor?.textColor, backgroundColor: props.withColor?.textColor }}
