@@ -111,10 +111,7 @@ export default function Avatar(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
-    if (props.isCircular)
-        quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
-            }`;
-
+    
     quommonClasses.childClasses += ` emp-contained`;
 
     //-------------------------------------------------------------------
@@ -122,9 +119,6 @@ export default function Avatar(props) {
     //-------------------------------------------------------------------
     const getAvatar = (icon, avatar) => {
         let imgClasses = getQuommons(props);
-        if (props.isCircular)
-            imgClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
-                }`;
         if (avatar) {
             return (
                 <img className={`qui-image `} src={avatar} alt='avatar' />
@@ -143,7 +137,9 @@ export default function Avatar(props) {
 
     return (
 
-        <div className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`} onClick={(e)=>props.onClick(e)}>
+        <div className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`}
+        onClick={props.onClick}
+        >
             <div className={`qui-container qui-icon-container size-${props.asSize} variant-${props.asVariant}`}>
                 {getAvatar(props.withIcon,props.withUser)}
             </div>
