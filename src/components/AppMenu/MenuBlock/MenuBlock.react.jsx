@@ -144,7 +144,7 @@ export default function MenuBlock(props) {
     return (
 
         <div className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={` float-${props.asFloated}`} onClick={(e) => props.onClick(e)}>
+            <div className={` float-${props.asFloated}`} onClick={props.onClick}>
                 <div className={`qui-container qui-menuBlock qui-btn size-${props.asSize} 
             variant-${props.asVariant} emp-${props.asEmphasis} `}>
                     <div style={colors} className="qui-iconContainer">
