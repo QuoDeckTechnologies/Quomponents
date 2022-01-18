@@ -16,8 +16,6 @@ import IconLink from "../Buttons/IconLink/IconLink.react"
 import _ from "lodash";
 import Grid from "@mui/material/Grid"
 
-
-
 OverlayMenu.propTypes = {
     //=======================================
     // Component Specific props
@@ -27,7 +25,7 @@ OverlayMenu.propTypes = {
     Use to define user image to component
     */
     withUser: PropTypes.string,
-     
+
     /**
     Use to define buttons to component
     */
@@ -176,10 +174,8 @@ export default function OverlayMenu(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
-
-
     //-------------------------------------------------------------------
-    // 4. Set the label/caption/popover and loading text
+    // 2. Set the label in OverLayMenu
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel);
     let labelStyle = labelContent?.textColor
@@ -195,18 +191,17 @@ export default function OverlayMenu(props) {
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
     }
     //-------------------------------------------------------------------
-    // 1. Set the color
+    // 3. Set the color
     //-------------------------------------------------------------------
     let colors = {
         backgroundColor: props.withColor?.backgroundColor,
     }
-
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     //-------------------------------------------------------------------
-    // 3. Destructure content prop to itirate
+    // 5. Destructure content prop to itirate
     //-------------------------------------------------------------------
     let { content } = props;
     return (
@@ -229,14 +224,14 @@ export default function OverlayMenu(props) {
                 </div>
                 <div className={`lower-div`}>
                     <div className="container" >
-                        <Grid container 
-                            rowSpacing={{xs:1, sm:2, md:2, lg:1, xl:1}} 
-                            columnSpacing={{xs:1, sm:1, md:1, lg:1, xl:1}}
-                            >
-                            {_.map(content, (icon) => {
+                        <Grid container
+                            rowSpacing={{ xs: 1, sm: 2, md: 2, lg: 1, xl: 1 }}
+                            columnSpacing={{ xs: 1, sm: 1, md: 1, lg: 1, xl: 1 }}
+                        >
+                            {_.map(content, (icon, index) => {
                                 return (
-                                    <Grid item xs={4} sm={4} md={4} lg={4}>
-                                        <div className={`qui-btn qui-inner-button variant-${props.asVariant}`} style={{ backgroundColor: props.withColor?.accentColor}}>
+                                    <Grid key={index} item xs={4} sm={4} md={4} lg={4}>
+                                        <div className={`qui-btn qui-inner-button variant-${props.asVariant}`} style={{ backgroundColor: props.withColor?.accentColor }}>
                                             <IconLink
                                                 {...props}
                                                 withColor={{ ...props.withColor, textColor: props.withColor?.textColor, backgroundColor: props.withColor?.textColor }}
