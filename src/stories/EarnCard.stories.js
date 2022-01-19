@@ -1,6 +1,28 @@
 import React from "react";
 import EarnCard from "../components/EarnCard/EarnCard.react";
 
+
+const dictionary = JSON.stringify({
+  hi: {
+    loading: "बस एक मिनट...",
+    bannercard: { header: "", content: "" },
+    ribbon: {
+        new: "नया",
+        restricted: "प्रतिबंधित",
+        premium: "अधिमूल्य",
+        free: "नि: शुल्क"
+    },
+    earncard : {
+      title : 'क्वोडेक इमर्जिंग लीडरशिप प्रोग्राम',
+      description : 'अपने करियर को सितारों तक ले जाने के इस विशेष अवसर के लिए आवेदन करने का मौका जीतें',
+      dates : {
+        end_date : '3 मई',
+        start_date : '28 फरवरी'
+      }
+    }
+  },
+});
+
 export default {
   title: "Design System/EarnCard/EarnCard",
   component: EarnCard,
@@ -55,6 +77,16 @@ export default {
         },
       },
     },
+    withTranslation: {
+      table: {
+          category: "with-Params",
+          defaultValue: {
+              lang: "",
+              tgt: "",
+              dictionary: "",
+          },
+      },
+  },
     isDisabled: {
       table: {
         category: "is-Toggles",
@@ -214,6 +246,32 @@ AnimatedEarnCard.parameters = {
     source: {
       code: `<EarnCard {...${JSON.stringify(
         AnimatedEarnCard.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+//-------------------------------------------------------------
+// Translated EarnCard
+// -------------------------------------------------------------
+export const TranslatedCard = Template.bind({});
+TranslatedCard.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "earncard",
+    dictionary: dictionary,
+  },
+};
+TranslatedCard.parameters = {
+  docs: {
+    description: {
+      story: "We can translate the language of EarnCard if dictionary is provided",
+    },
+    source: {
+      code: `<EarnCard {...${JSON.stringify(
+        TranslatedCard.args,
         null,
         2
       )}}/>`,
