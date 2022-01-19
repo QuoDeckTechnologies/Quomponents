@@ -210,7 +210,7 @@ export default function EarnCard(props) {
     >
       <div className="qui-left-side">
         <div className="qui-banner-div">
-          <BannerCard {...props} onClick={() => {}} />
+          <BannerCard {...props} onClick={() => { }} />
         </div>
         <div className={`qui-left-lower ${quommonClasses.childClasses}`}>
           <div className="qui-earncard-icon" style={colors.accentColors}>
@@ -221,9 +221,8 @@ export default function EarnCard(props) {
               {_.map(content?.topics, (topics, index) => {
                 return (
                   <i
-                    className={`${
-                      topics.checked ? "fas fa-check-square" : "far fa-square"
-                    }`}
+                    className={`${topics.checked ? "fas fa-check-square" : "far fa-square"
+                      }`}
                     key={topics.name + index}
                     style={colors.accentColors}
                   ></i>
