@@ -28,7 +28,7 @@ export default {
         },
         asVariant: {
             control: "select",
-            options: ["primary", "secondary", "success", "warning"],
+            options: ["primary", "secondary", "success", "warning","error"],
             table: {
                 category: "as-Flags",
             },
@@ -133,7 +133,7 @@ export default {
     parameters: {
         componentSubtitle: "Displays icon with a link",
         a11y: { disable: true },
-        docs: { iframeHeight: 400 },
+        docs: { iframeHeight: 700 },
     },
 };
 
@@ -231,10 +231,112 @@ Default.args = {
 Default.parameters = {
     docs: {
         description: {
-            story: "OverlayMenu Profile can contain the profile image of the user and it has userIcon by default if profile imgae is not avialable ,with the lable",
+            story: "OverlayMenu Profile can contain the profile image of the user and it has userIcon by default if profile imgae is not avialable ,with the Caption",
         },
         source: {
             code: `<OverlayMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+
+
+// -------------------------------------------------------------
+// labled variant
+// -------------------------------------------------------------
+export const labeled = Template.bind({});
+labeled.args = {
+    content: [
+        {
+            icon: "fas fa-user-edit",
+            label: "Edit Profile",
+            format: "label",
+        },
+        {
+            icon: "fas fa-home",
+            label: "Account",
+            format: "label",
+        },
+
+        {
+            icon: "fas fa-igloo",
+            label: "Edit Profile",
+            format: "label",
+        },
+        {
+            icon: "fas fa-adjust",
+            label: "Account",
+            format: "label",
+        },
+
+        {
+            icon: "fab fa-apple",
+            label: "Edit Profile",
+            format: "label",
+        },
+        {
+            icon: "fas fa-address-book",
+            label: "Account",
+            format: "label",
+        },
+        {
+            icon: "fas fa-bus",
+            label: "Account",
+            format: "label",
+        },
+
+        {
+            icon: "fas fa-certificate",
+            label: "Edit Profile",
+            format: "label",
+        },
+        {
+            icon: "fas fa-camera-retro",
+            label: "Account",
+            format: "label",
+        },
+
+    ],
+
+    withUser: "https://i.pinimg.com/564x/66/b7/b0/66b7b0cc1927986a85a41d754a360727.jpg",
+
+
+    asVariant: "primary",
+    asSize: "normal",
+    asFloated: "none",
+
+    withLabel: {
+        format: "label",
+        content: "Aruna Asrani",
+        textColor: "",
+    },
+    withIcon: { icon: "fa fa-user" },
+    withColor: {
+        accentColor: "",
+        backgroundColor: "",
+        textColor: "white",
+        hoverTextColor: "white",
+    },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "icon",
+        dictionary: dictionary,
+    },
+
+    isDisabled: false,
+    isHidden: false,
+};
+labeled.parameters = {
+    docs: {
+        description: {
+            story: "OverlayMenu Profile can contain the profile image of the user and it has userIcon by default if profile imgae is not avialable ,with the lable",
+        },
+        source: {
+            code: `<OverlayMenu {...${JSON.stringify(labeled.args, null, 2)}}/>`,
         },
     },
 };
@@ -441,6 +543,84 @@ WarningVariant.parameters = {
         source: {
             code: `<WarningVariant {...${JSON.stringify(
                 WarningVariant.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// success variant
+// -------------------------------------------------------------
+
+export const SuccessVariant = Template.bind({});
+SuccessVariant.args = {
+    ...Default.args,
+
+    asVariant: "success",
+    asSize: "normal",
+    asFloated: "none",
+    withColor: {
+        accentColor: "",
+        backgroundColor: "",
+        textColor: "",
+        hoverTextColor: "",
+    },
+    withLabel: {
+        format: "caption",
+        content: "Aruna Asrani",
+        textColor: "",
+    },
+
+};
+SuccessVariant.parameters = {
+    docs: {
+        description: {
+            story:
+                "Uses one of the five , success variant",
+        },
+        source: {
+            code: `<SuccessVariant {...${JSON.stringify(
+                SuccessVariant.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// ErrorVariant
+// -------------------------------------------------------------
+
+export const ErrorVariant = Template.bind({});
+ErrorVariant.args = {
+    ...Default.args,
+
+    asVariant: "error",
+    asSize: "normal",
+    asFloated: "none",
+    withColor: {
+        accentColor: "",
+        backgroundColor: "",
+        textColor: "",
+        hoverTextColor: "",
+    },
+    withLabel: {
+        format: "caption",
+        content: "Aruna Asrani",
+        textColor: "",
+    },
+
+};
+ErrorVariant.parameters = {
+    docs: {
+        description: {
+            story:
+                "Uses one of the five , Error variant",
+        },
+        source: {
+            code: `<ErrorVariant {...${JSON.stringify(
+                ErrorVariant.args,
                 null,
                 2
             )}}/>`,

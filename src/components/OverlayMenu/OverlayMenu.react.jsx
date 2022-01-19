@@ -1,20 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Avatar from "../AppMenu/Avatar/Avatar.react"
+import IconLink from "../Buttons/IconLink/IconLink.react"
+import Grid from "@mui/material/Grid"
+import _ from "lodash";
 import { motion } from "framer-motion";
 import {
     getQuommons,
     getAnimation,
     getTranslation,
 } from "../../common/javascripts/helpers";
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./OverlayMenu.scss";
 import "../../common/stylesheets/overrule.scss";
-import Avatar from "../AppMenu/Avatar/Avatar.react"
-import IconLink from "../Buttons/IconLink/IconLink.react"
-import _ from "lodash";
-import Grid from "@mui/material/Grid"
+
+
 
 OverlayMenu.propTypes = {
     //=======================================
@@ -48,6 +49,7 @@ OverlayMenu.propTypes = {
         "secondary",
         "success",
         "warning",
+        "error",
     ]),
     /**
     Use to define component text size in increasing order
@@ -174,8 +176,10 @@ export default function OverlayMenu(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
+
+
     //-------------------------------------------------------------------
-    // 2. Set the label in OverLayMenu
+    // 4. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel);
     let labelStyle = labelContent?.textColor
@@ -191,17 +195,18 @@ export default function OverlayMenu(props) {
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
     }
     //-------------------------------------------------------------------
-    // 3. Set the color
+    // 1. Set the color
     //-------------------------------------------------------------------
     let colors = {
         backgroundColor: props.withColor?.backgroundColor,
     }
+
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     //-------------------------------------------------------------------
-    // 5. Destructure content prop to itirate
+    // 3. Destructure content prop to itirate
     //-------------------------------------------------------------------
     let { content } = props;
     return (
@@ -215,6 +220,9 @@ export default function OverlayMenu(props) {
                     <i className={`fa fa-times cross-icon   `} onClick={props.onClick} />
                     <div className={`qui-contain qui-profileContainer float-${props.asFloated}`}>
                         <div className={`qui-profileAvatar  `}>
+                        <div className="qui-label" style={labelStyle}>
+                            {getLabel(labelContent, "label")}
+                        </div>
                             <Avatar {...props} withUser={props.withUser} />
                             <div className={`qui-profileCaption size-${props.asSize}`} style={labelStyle}>
                                 {getLabel(labelContent, "caption")}
@@ -231,7 +239,7 @@ export default function OverlayMenu(props) {
                             {_.map(content, (icon, index) => {
                                 return (
                                     <Grid key={index} item xs={4} sm={4} md={4} lg={4}>
-                                        <div className={`qui-btn qui-inner-button variant-${props.asVariant}`} style={{ backgroundColor: props.withColor?.accentColor }}>
+                                        <div className={`qui-btn qui-inner-button variant-${props.asVariant} size-${props.asSize}`} style={{ backgroundColor: props.withColor?.accentColor }}>
                                             <IconLink
                                                 {...props}
                                                 withColor={{ ...props.withColor, textColor: props.withColor?.textColor, backgroundColor: props.withColor?.textColor }}
