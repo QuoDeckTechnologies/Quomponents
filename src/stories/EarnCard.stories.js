@@ -1,25 +1,25 @@
 import React from "react";
 import EarnCard from "../components/EarnCard/EarnCard.react";
 
-
 const dictionary = JSON.stringify({
   hi: {
     loading: "बस एक मिनट...",
     bannercard: { header: "", content: "" },
     ribbon: {
-        new: "नया",
-        restricted: "प्रतिबंधित",
-        premium: "अधिमूल्य",
-        free: "नि: शुल्क"
+      new: "नया",
+      restricted: "प्रतिबंधित",
+      premium: "अधिमूल्य",
+      free: "नि: शुल्क",
     },
-    earncard : {
-      title : 'क्वोडेक इमर्जिंग लीडरशिप प्रोग्राम',
-      description : 'अपने करियर को सितारों तक ले जाने के इस विशेष अवसर के लिए आवेदन करने का मौका जीतें',
-      dates : {
-        end_date : '3 मई',
-        start_date : '28 फरवरी'
-      }
-    }
+    earncard: {
+      title: "क्वोडेक इमर्जिंग लीडरशिप प्रोग्राम",
+      description:
+        "अपने करियर को सितारों तक ले जाने के इस विशेष अवसर के लिए आवेदन करने का मौका जीतें",
+      dates: {
+        end_date: "3 मई",
+        start_date: "28 फरवरी",
+      },
+    },
   },
 });
 
@@ -79,14 +79,14 @@ export default {
     },
     withTranslation: {
       table: {
-          category: "with-Params",
-          defaultValue: {
-              lang: "",
-              tgt: "",
-              dictionary: "",
-          },
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
+        },
       },
-  },
+    },
     isDisabled: {
       table: {
         category: "is-Toggles",
@@ -267,14 +267,11 @@ TranslatedCard.args = {
 TranslatedCard.parameters = {
   docs: {
     description: {
-      story: "We can translate the language of EarnCard if dictionary is provided",
+      story:
+        "We can translate the language of EarnCard if dictionary is provided",
     },
     source: {
-      code: `<EarnCard {...${JSON.stringify(
-        TranslatedCard.args,
-        null,
-        2
-      )}}/>`,
+      code: `<EarnCard {...${JSON.stringify(TranslatedCard.args, null, 2)}}/>`,
     },
   },
 };

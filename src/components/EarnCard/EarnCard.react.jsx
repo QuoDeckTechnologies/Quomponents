@@ -3,7 +3,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import _ from "lodash";
-import { getAnimation, getQuommons, getTranslation } from "../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  getTranslation,
+} from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./EarnCard.scss";
@@ -90,10 +94,10 @@ EarnCard.propTypes = {
   /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
     */
-    withTranslation: PropTypes.shape({
-      lang: PropTypes.string,
-      tgt: PropTypes.string,
-      dictionary: PropTypes.string,
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
   }),
   /**
     Use to enable/disable the component
@@ -169,32 +173,32 @@ export default function EarnCard(props) {
   // 4. Get translation of the component
   //-------------------------------------------------------------------
   let labelContent = {
-    title : content?.title,
-    description : content?.description,
-    dates : {
-      end_date : content?.dates?.end_date,
-      start_date : content?.dates?.start_date
-    }
-  }
+    title: content?.title,
+    description: content?.description,
+    dates: {
+      end_date: content?.dates?.end_date,
+      start_date: content?.dates?.start_date,
+    },
+  };
   let tObj = null;
-  
+
   if (
     props.withTranslation?.lang &&
     props.withTranslation.lang !== "" &&
     props.withTranslation.lang !== "en"
-    ) {
+  ) {
     tObj = getTranslation(props.withTranslation);
-    if (labelContent && tObj){
-      labelContent.title = tObj.title
-      labelContent.description = tObj.description
-      labelContent.dates = Object.assign({},tObj.dates)
+    if (labelContent && tObj) {
+      labelContent.title = tObj.title;
+      labelContent.description = tObj.description;
+      labelContent.dates = Object.assign({}, tObj.dates);
     }
   }
   //-------------------------------------------------------------------
   // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-  
+
   // ========================= Render Function =================================
   return (
     <motion.div
