@@ -171,7 +171,7 @@ function getLabel(labelObj, position) {
 - props are not being passed to the OverlayMenu. Please speak to the admin to handle any new prop.
 **/
 export default function OverlayMenu(props) {
-
+    
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -182,16 +182,15 @@ export default function OverlayMenu(props) {
     // 4. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel);
-    let labelStyle = labelContent?.textColor
-        ? { color: labelContent.textColor }
-        : {};
-    let tObj = getTranslation(props.withTranslation);
+    let iconLabel = null;
+    let tObj = null;
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
+        iconLabel = tObj.content;
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
     }
     //-------------------------------------------------------------------
@@ -218,13 +217,13 @@ export default function OverlayMenu(props) {
             <div className="qui-card">
                 <div className={"av-contain"} style={colors}>
                     <i className={`fa fa-times cross-icon   `} onClick={props.onClick} />
-                    <div className={`qui-contain qui-profileContainer float-${props.asFloated}`}>
-                        <div className={`qui-profileAvatar  `}>
-                        <div className="qui-label" style={labelStyle}>
-                            {getLabel(labelContent, "label")}
-                        </div>
+                    <div className={`qui-contain qui-profileContainer   `}>
+                        <div className={`qui-profileAvatar `}>
+                            <div className="qui-profileCaption" >
+                                {getLabel(labelContent, "label")}
+                            </div>
                             <Avatar {...props} withUser={props.withUser} />
-                            <div className={`qui-profileCaption size-${props.asSize}`} style={labelStyle}>
+                            <div className={`qui-profileCaption size-${props.asSize}`} >
                                 {getLabel(labelContent, "caption")}
                             </div>
                         </div>
@@ -233,19 +232,19 @@ export default function OverlayMenu(props) {
                 <div className={`lower-div`}>
                     <div className="container" >
                         <Grid container
-                            rowSpacing={{ xs: 1, sm: 2, md: 2, lg: 1, xl: 1 }}
+                            rowSpacing={{ xs: 1, sm: 1, md: 1, lg: 1, xl: 1 }}
                             columnSpacing={{ xs: 1, sm: 1, md: 1, lg: 1, xl: 1 }}
                         >
                             {_.map(content, (icon, index) => {
                                 return (
                                     <Grid key={index} item xs={4} sm={4} md={4} lg={4}>
-                                        <div className={`qui-btn qui-inner-button variant-${props.asVariant} size-${props.asSize}`} style={{ backgroundColor: props.withColor?.accentColor }}>
+                                        <div className={`qui-btn qui-inner-button variant-${props.asVariant}`} style={{ backgroundColor: props.withColor?.accentColor }}>
                                             <IconLink
                                                 {...props}
                                                 withColor={{ ...props.withColor, textColor: props.withColor?.textColor, backgroundColor: props.withColor?.textColor }}
                                                 asEmphasis="text"
                                                 withIcon={{ icon: icon.icon }}
-                                                withLabel={{ content: icon.label, format: icon.format }}
+                                                withLabel={{ content: tObj ? iconLabel[index]["label"] : icon.label, format: icon.format }}
                                             />
                                         </div>
                                     </Grid>

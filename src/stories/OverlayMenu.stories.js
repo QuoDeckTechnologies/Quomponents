@@ -2,11 +2,22 @@ import React from "react";
 import OverlayMenu from "../components/OverlayMenu/OverlayMenu.react";
 
 const dictionary = JSON.stringify({
-    en: {
-        OverlayMenu: { label: "Aruna Asrani" },
-    },
+
     hi: {
-        OverlayMenu: { label: "अरुणा असरानी" },
+        OverlayMenu: { 
+            label: "अरुणा असरानी" ,
+            content:[
+                {label:"प्रोफ़ाइल संपादित करें"},
+                {label:"खाता"},
+                {label:"प्रोफ़ाइल संपादित करें"},
+                {label:"खाता"},
+                {label:"प्रोफ़ाइल संपादित करें"},
+                {label:"खाता"},
+                {label:"खाता"},
+                {label:"प्रोफ़ाइल संपादित करें"},
+                {label:"खाता"},
+            ]
+        },
     },
 });
 
@@ -28,7 +39,7 @@ export default {
         },
         asVariant: {
             control: "select",
-            options: ["primary", "secondary", "success", "warning","error"],
+            options: ["primary", "secondary", "success", "warning", "error"],
             table: {
                 category: "as-Flags",
             },
@@ -55,7 +66,7 @@ export default {
                     backgroundColor: "",
                     textColor: "",
                     hoverTextColor: "",
-                    
+
                 },
             },
         },
@@ -239,107 +250,6 @@ Default.parameters = {
     },
 };
 
-
-// -------------------------------------------------------------
-// labled variant
-// -------------------------------------------------------------
-export const labeled = Template.bind({});
-labeled.args = {
-    content: [
-        {
-            icon: "fas fa-user-edit",
-            label: "Edit Profile",
-            format: "label",
-        },
-        {
-            icon: "fas fa-home",
-            label: "Account",
-            format: "label",
-        },
-
-        {
-            icon: "fas fa-igloo",
-            label: "Edit Profile",
-            format: "label",
-        },
-        {
-            icon: "fas fa-adjust",
-            label: "Account",
-            format: "label",
-        },
-
-        {
-            icon: "fab fa-apple",
-            label: "Edit Profile",
-            format: "label",
-        },
-        {
-            icon: "fas fa-address-book",
-            label: "Account",
-            format: "label",
-        },
-        {
-            icon: "fas fa-bus",
-            label: "Account",
-            format: "label",
-        },
-
-        {
-            icon: "fas fa-certificate",
-            label: "Edit Profile",
-            format: "label",
-        },
-        {
-            icon: "fas fa-camera-retro",
-            label: "Account",
-            format: "label",
-        },
-
-    ],
-
-    withUser: "https://i.pinimg.com/564x/66/b7/b0/66b7b0cc1927986a85a41d754a360727.jpg",
-
-
-    asVariant: "primary",
-    asSize: "normal",
-    asFloated: "none",
-
-    withLabel: {
-        format: "label",
-        content: "Aruna Asrani",
-        textColor: "",
-    },
-    withIcon: { icon: "fa fa-user" },
-    withColor: {
-        accentColor: "",
-        backgroundColor: "",
-        textColor: "white",
-        hoverTextColor: "white",
-    },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
-    withTranslation: {
-        lang: "en",
-        tgt: "icon",
-        dictionary: dictionary,
-    },
-
-    isDisabled: false,
-    isHidden: false,
-};
-labeled.parameters = {
-    docs: {
-        description: {
-            story: "OverlayMenu Profile can contain the profile image of the user and it has userIcon by default if profile imgae is not avialable ,with the lable",
-        },
-        source: {
-            code: `<OverlayMenu {...${JSON.stringify(labeled.args, null, 2)}}/>`,
-        },
-    },
-};
 
 
 // -------------------------------------------------------------
