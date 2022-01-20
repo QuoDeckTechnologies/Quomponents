@@ -1,8 +1,9 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
-
+import { shallow, mount } from "enzyme";
+import { render, screen, fireEvent } from "@testing-library/react";
+import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import from Config
 // -------------------------------------
@@ -10,51 +11,57 @@ import { shallow, mount, render } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import DataExporter from "../DataExporter/DataExporter.react";
+import DataExporter from "../Buttons/DataExporter/DataExporter.react";
 
 describe("DataExporter", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-    let mockData = [{ id: 1, name: "Test User1" }, { id: 2, name: "Test User2" }];
 
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(<DataExporter
+            content = "Export"
             label="Export"
             iconBtn={false}
-            data={mockData}
+            data = {{
+                type: "json",
+                content: [{
+                    "published": false,
+                    "tags": [],
+                    "_id": "5a22f2",
+                    "name": "MERN",
+                    "category": "course",
+                    "summary": "",
+                    "identifier": "9La_ApGyc",
+                    "owner": "5a1b6f",
+                    "createdAt": "2021-12-01T09:14:55.642Z",
+                    "id": "5a22f2"
+                },
+                {
+                    "published": false,
+                    "tags": [],
+                    "_id": "5a8db2",
+                    "name": "Test",
+                    "category": "course",
+                    "summary": "",
+                    "identifier": "PVSa42HZi",
+                    "owner": "5a6b0c",
+                    "createdAt": "2021-12-09T07:29:13.056Z",
+                    "id": "5a8db2"
+                }]
+            }}
+            onDone={()=>{}}
         />);
     });
 
-    it("it should render correctly without throwing an error if iconBtn props is false",
+    it("it should render correctly",
         () => {
-            component.setProps({ iconBtn: false });
             expect(component.exists()).toBe(true);
         });
-
-    it("should render correctly without throwing an error if iconBtn props is true",
+    it("it should render correctly when clicked",
         () => {
-            component.setProps({ iconBtn: true });
-            expect(component.exists()).toBe(true);
-        });
-
-    it("should render correctly without throwing an error if iconBtn props is undefined ",
-        () => {
-            component.setProps({ iconBtn: undefined });
-            expect(component.exists()).toBe(true);
-        });
-
-    it("should render Default button if iconBtn props is false ",
-        () => {
-            component.setProps({ iconBtn: false });
-            expect(component.find("#export-btn").exists()).toBe(true);
-        });
-
-    it("should render Icon button if iconBtn props is true ",
-        () => {
-            component.setProps({ iconBtn: true });
-            expect(component.find("#export-icon-btn").exists()).toBe(true);
+            component.simulate('click')
         });
 });
