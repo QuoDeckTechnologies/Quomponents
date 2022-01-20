@@ -415,7 +415,7 @@ SecondaryVariant.parameters = {
             code: `<SecondaryVariant {...${JSON.stringify(
                 SecondaryVariant.args,
                 null,
-                2
+                3
             )}}/>`,
         },
     },

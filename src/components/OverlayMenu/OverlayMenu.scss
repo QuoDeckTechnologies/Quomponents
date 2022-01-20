@@ -1,9 +1,11 @@
 .qui .qui-card {
+    border: 1px solid gray;
     border-radius: 10px;
     align-items: center;
     background-color: rgba(246, 246, 246, 1);
     margin: 2em 1px;
     min-height: 25em;
+    
 }
 
 .qui .lower-div {
@@ -16,6 +18,7 @@
     height: auto;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    background-color: gray;
 }
 
 .qui .cross-icon {

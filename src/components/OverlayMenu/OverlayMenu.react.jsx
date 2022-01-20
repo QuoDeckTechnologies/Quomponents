@@ -179,7 +179,7 @@ export default function OverlayMenu(props) {
 
 
     //-------------------------------------------------------------------
-    // 4. Set the label/caption/popover and loading text
+    // 2. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel);
     let iconLabel = null;
@@ -194,7 +194,7 @@ export default function OverlayMenu(props) {
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
     }
     //-------------------------------------------------------------------
-    // 1. Set the color
+    // 3. Set the color
     //-------------------------------------------------------------------
     let colors = {
         backgroundColor: props.withColor?.backgroundColor,
@@ -205,7 +205,7 @@ export default function OverlayMenu(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     //-------------------------------------------------------------------
-    // 3. Destructure content prop to itirate
+    // 5. Destructure content prop to itirate
     //-------------------------------------------------------------------
     let { content } = props;
     return (
@@ -215,9 +215,9 @@ export default function OverlayMenu(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className="qui-card">
-                <div className={"av-contain"} style={colors}>
+                <div className={"av-contain" } style={colors}>
                     <i className={`fa fa-times cross-icon   `} onClick={props.onClick} />
-                    <div className={`qui-contain qui-profileContainer   `}>
+                    <div className={`qui-contain qui-profileContainer`} title={getLabel(labelContent,"popover")}>
                         <div className={`qui-profileAvatar `}>
                             <div className="qui-profileCaption" >
                                 {getLabel(labelContent, "label")}
