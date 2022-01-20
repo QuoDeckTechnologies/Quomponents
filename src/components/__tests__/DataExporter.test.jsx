@@ -2,12 +2,6 @@
 // Import from NPM
 // -------------------------------------
 import { shallow, mount } from "enzyme";
-import { render, screen, fireEvent } from "@testing-library/react";
-import renderer, { act } from "react-test-renderer";
-//--------------------------------------
-// Import from Config
-// -------------------------------------
-
 //--------------------------------------
 // Import Components
 // -------------------------------------

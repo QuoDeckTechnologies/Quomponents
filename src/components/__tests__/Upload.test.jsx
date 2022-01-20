@@ -3,7 +3,6 @@
 // -------------------------------------
 import { shallow, mount } from "enzyme";
 import { render, screen, fireEvent } from "@testing-library/react";
-import renderer from 'react-test-renderer'
 //--------------------------------------
 // Import Components
 // -------------------------------------
