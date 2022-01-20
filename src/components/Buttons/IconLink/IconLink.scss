@@ -1,0 +1,27 @@
+.qui .is-circular {
+  border-radius: 50%;
+  padding: 8px;
+}
+.qui .is-circular.size-big,
+.qui .is-circular.size-huge,
+.qui .is-circular.size-massive {
+  padding: 16px;
+}
+.qui .tilt {
+  transform: rotate(10deg);
+  transition: all ease-in-out;
+}
+.qui-link {
+  text-decoration: none;
+}
+.qui .qui-icon-label {
+  font-weight: normal;
+}
+
+.qui .qui-icon-caption {
+  font-style: normal;
+}
+
+.qui .button {
+  border: none;
+}
