@@ -102,7 +102,7 @@ Default.args = {
     asFloated: "inline",
     
     withIcon: { icon: "fas fa-user" },
-    withUser: "", 
+    withUser: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPOVdk7wUJEgo42hvQ3g2Ge2DIDRuEI8x6Q&usqp=CAU", 
     withColor: {
         backgroundColor: "",
         textColor: "",

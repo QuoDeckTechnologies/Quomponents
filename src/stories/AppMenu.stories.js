@@ -42,16 +42,6 @@ export default {
                 },
             },
         },
-        withLabel: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    format: "label",
-                    content: "",
-                    textColor: "",
-                },
-            },
-        },
         withIcon: {
             table: {
                 category: "with-Params",

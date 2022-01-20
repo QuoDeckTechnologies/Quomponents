@@ -68,7 +68,7 @@ export default {
                 defaultValue: {
                     icon: "",
                     size: "",
-                    position: "right",
+                    position: "left",
                 },
             },
         },
@@ -130,7 +130,7 @@ Default.args = {
     asSize: "normal",
     asFloated: "inline",
     asAligned: "center",
-    withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "right" },
+    withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
         textColor: "",
