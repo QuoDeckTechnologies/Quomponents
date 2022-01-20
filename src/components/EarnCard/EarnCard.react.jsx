@@ -231,7 +231,7 @@ export default function EarnCard(props) {
             </div>
             <div className="qui-course-date" style={colors.textColors}>
               <h2>{labelContent?.dates?.start_date}</h2>
-              <h2>&nbsp;-&nbsp;</h2>
+              {labelContent?.dates?.end_date ? <h2>&nbsp;-&nbsp;</h2> : ""}
               <h2>{labelContent?.dates?.end_date}</h2>
             </div>
           </div>
