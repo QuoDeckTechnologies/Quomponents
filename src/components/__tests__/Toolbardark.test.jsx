@@ -1,0 +1,208 @@
+import { shallow, mount, render } from 'enzyme';
+import renderer from "react-test-renderer";
+
+//--------------------------------------
+// Import Components
+// -------------------------------------
+import ToolbarDark from '../Buttons/ToolbarDark/ToolbarDark.react'
+describe("ToolbarDark", () => {
+
+    let component;
+
+    beforeEach(() => {
+        jest.resetAllMocks();
+        component = shallow(
+            <ToolbarDark
+                content={[
+                    {
+                        icon: "fa fa-share",
+                        label: "Certificate",
+                        format: "caption",
+                        link: "https://quodeck.com/",
+                    },
+                    {
+                        icon: "fa fa-wallet",
+                        label: "Wallet",
+                        format: "caption",
+                        link: "https://www.google.com/",
+                    },
+                    {
+                        icon: "fa fa-gift",
+                        label: "Rewards",
+                        format: "caption",
+                        link: "https://github.com/",
+                    },
+                    {
+                        icon: "fa fa-chart-pie",
+                        label: "Reports",
+                        format: "caption",
+                        link: "https://www.youtube.com/",
+                    },
+                ]}
+
+                asEmphasis="text"
+                asVariant="primary"
+                asSize="normal"
+                asPadded="normal"
+                asAligned="center"
+
+                withColor={{
+                    backgroundColor: "",
+                    accentColor: "",
+                    textColor: "",
+                    hoverBackgroundColor: "",
+                    hoverTextColor: "",
+                }}
+                withAnimation={{
+                    animation: "zoom",
+                    duration: 0.5,
+                    delay: 0,
+                }}
+
+                isDisabled={false}
+                isHidden={false}
+                isFluid={false}
+                isCircular={true}
+                onClick={() => console.log("ToolbarDark testing")} />
+        );
+    });
+
+    it("ToolbarDark", () => {
+        component = shallow(<ToolbarDark onClick={() => console.log("ToolbarDark testing")} />);
+
+    });
+
+    it("should render correctly without throwing error",
+        () => {
+            expect(component.exists()).toBe(true);
+        });
+
+    it("should render correctly if variant is 'primary' and size is 'normal' ",
+        () => {
+            component.setProps({
+                asVariant: "primary",
+                asSize: "normal",
+            });
+            expect(component.exists()).toBe(true);
+        });
+
+    it("should render correctly if withColor props define null",
+        () => {
+            component.setProps({ withColor: null });
+            expect(component.exists()).toBe(true);
+        });
+
+    it('renders children when passed in', () => {
+        const component = shallow((
+            <ToolbarDark onClick={() => console.log("ToolbarDark testing")}>
+                <div className="qui-icon" />
+            </ToolbarDark>
+        ));
+        expect(component.contains(<div className="qui-icon" />)).toEqual(true);
+    });
+
+    it('component have one qui-icon class ', () => {
+        expect(component.find('.qui-icon').exists()).toBe(true)
+    })
+
+    it('Each component must have a one `qui` parent class', () => {
+        expect(component.find('.qui').exists()).toBe(true)
+    })
+
+    it("should render correctly without withColor prop", () => {
+        component.setProps({
+            withColor: null,
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly with isDisabled as true", () => {
+        component.setProps({
+            isDisabled: true,
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly with isHidden as true", () => {
+        component.setProps({
+            isHidden: true,
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly with different colors", () => {
+        component.setProps({
+            withColor: {
+                backgroundColor: "red",
+                accentColor: "green",
+                textColor: "blue",
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly with different animation", () => {
+        component.setProps({
+            withAnimation: {
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,        },
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly if content has objects in it", () => {
+        component.setProps({
+            content: [
+                {
+                    icon: "fa fa-share",
+                    label: "Certificate",
+                    format: "caption",
+                    link: "https://quodeck.com/",
+                },
+                {
+                    icon: "fa fa-wallet",
+                    label: "Wallet",
+                    format: "caption",
+                    link: "https://www.google.com/",
+                },
+                {
+                    icon: "fa fa-gift",
+                    label: "Rewards",
+                    format: "caption",
+                    link: "https://github.com/",
+                },
+                {
+                    icon: "fa fa-chart-pie",
+                    label: "Reports",
+                    format: "caption",
+                    link: "https://www.youtube.com/",
+                },
+            ]
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly if content are not specified", () => {
+        component.setProps({
+            content: [],
+        });
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly with empty props which are not required", () => {
+        component.setProps({
+            content: [],
+            withColor: {},
+            withAnimation: {},
+            isDisabled: null,
+            isHidden: null
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("matches snapshot", () => {
+        const tree = renderer.create(<ToolbarDark onClick={() => console.log("ToolbarDark testing")} />).toJSON()
+        expect(tree).toMatchSnapshot()
+    })
+
+});
+

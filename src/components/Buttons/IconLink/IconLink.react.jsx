@@ -177,13 +177,10 @@ function getColors(colors, emphasis, hovered) {
                     color: colors.backgroundColor,
                     borderColor: colors.backgroundColor
                 }
-                : emphasis === 'contained'
-                    ? {
+                :  {
                         background: colors.backgroundColor,
                         color: colors.textColor
                     }
-                    :
-                    {}
         colorStyle.lableHandle = {
             color: colors.textColor
         }
