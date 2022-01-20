@@ -208,7 +208,7 @@ export default function EarnCard(props) {
       style={colors.cardColors}
       onClick={(e) => props.onClick(e)}
     >
-      <div className="qui-left-side">
+    <div className="qui-left-side">
         <div className="qui-banner-div">
           <BannerCard {...props} onClick={() => { }} />
         </div>
@@ -245,7 +245,7 @@ export default function EarnCard(props) {
         <div className="qui-course-description">
           <h3>{labelContent?.description}</h3>
         </div>
-      </div>
+    </div>
     </motion.div>
   );
 }
