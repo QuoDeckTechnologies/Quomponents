@@ -16,11 +16,22 @@ describe("OverlayMenu", () => {
     let onClick = jest.fn();
 
     const dictionary = JSON.stringify({
-        en: {
-            OverlayMenu: { label: "Aruna Asrani" },
-        },
+
         hi: {
-            OverlayMenu: { label: "अरुणा असरानी" },
+            OverlayMenu: { 
+                label: "अरुणा असरानी" ,
+                content:[
+                    {label:"प्रोफ़ाइल संपादित करें"},
+                    {label:"खाता"},
+                    {label:"प्रोफ़ाइल संपादित करें"},
+                    {label:"खाता"},
+                    {label:"प्रोफ़ाइल संपादित करें"},
+                    {label:"खाता"},
+                    {label:"खाता"},
+                    {label:"प्रोफ़ाइल संपादित करें"},
+                    {label:"खाता"},
+                ]
+            },
         },
     });
 
@@ -39,12 +50,13 @@ describe("OverlayMenu", () => {
 
                 isHidden={false}
                 isDisabled={false}
+                tObj = {null}
 
-                content={[
-                    {
-                        icon: "fas fa-user-edit",
-                        label: "Edit Profile",
-                    }]}
+                // content={[
+                //     {
+                //         icon: "fas fa-user-edit",
+                //         label: "Edit Profile",
+                //     }]}
                 withUser={""}
 
                 onClick={onClick}
@@ -57,7 +69,7 @@ describe("OverlayMenu", () => {
     });
 
     it("OverlayMenu should render correctly without throwing an error if Iconlink is present", () => {
-        expect(component.find("IconLink").exists()).toBe(true);
+        expect(component.find("IconLink").exists()).toBe(false);
     });
 
     it("OverlayMenu should render correctly without throwing an error if Avatar is present", () => {
@@ -71,7 +83,7 @@ describe("OverlayMenu", () => {
     it("OverlayMenu should render correctly if label isequal to 'Aruna Asrani' ", () => {
         component.setProps({
             withLabel: {
-                format: "caption",
+                format: "label",
                 content: "Aruna Asrani",
                 textColor: "Black",
             }
@@ -80,38 +92,52 @@ describe("OverlayMenu", () => {
         expect(divTag.children).toBe('Aruna Asrani')
     })
 
-    it("OverlayMenu should render correctly if label's style", () => {
-        component.setProps({
-            withLabel: {
-                format: "caption",
-                content: "Aruna Asrani",
-                textColor: "Black",
-            }
-        });
-        const divTag = component.find("div").at(4).props()
-        expect(divTag.style.color).toBe('Black')
-    })
-
     it("should render correctly with translation",
         () => {
             component.setProps({
+                withLabel: {
+                    format: "label",
+                    content: "Aruna Asrani",
+                    textColor: "Black",
+                },
                 withTranslation: {
                     lang: "en",
-                    tgt: "OverlayMenu:",
+                    tgt: "OverlayMenu",
                     dictionary: dictionary,
                 },
             });
             expect(component.exists()).toBe(true);
         });
 
-    it("should render correctly if translation object is not returned",
+    it("should render correctly with translation",
         () => {
             component.setProps({
+
                 withTranslation: {
                     lang: "hi",
-                    tgt: "",
+                    tgt: "OverlayMenu",
                     dictionary: dictionary,
-                }
+                },
+                content:[
+                    {
+                        label:"प्रोफ़ाइल संपादित करें",
+                    }],
+            });
+            expect(component.exists()).toBe(true);
+        });
+    it("should render correctly with translation",
+        () => {
+            component.setProps({
+
+                withTranslation: {
+                    lang: "en",
+                    tgt: "OverlayMenu",
+                    dictionary: dictionary,
+                },
+                content:[
+                    {
+                        label:"Edit Profile",
+                    }],
             });
             expect(component.exists()).toBe(true);
         });

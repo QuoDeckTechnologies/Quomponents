@@ -189,7 +189,7 @@ export default function OverlayMenu(props) {
     ) {
         tObj = getTranslation(props.withTranslation);
         iconLabel = tObj.content;
-        if (labelContent && tObj?.label) labelContent.content = tObj.label;
+        if (labelContent && tObj?.label) labelContent.content = tObj.label; 
     }
     //-------------------------------------------------------------------
     // 3. Set the color
