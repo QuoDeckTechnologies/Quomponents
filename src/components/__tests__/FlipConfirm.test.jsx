@@ -10,32 +10,41 @@ import { shallow, mount, render } from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import FlipConfirm from '../FlipConfirm/FlipConfirm.react';
+import FlipConfirm from "../Buttons/FlipConfirm/FlipConfirm.react"
 
 describe("FlipConfirm", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
-    let component,
-        onClick = jest.fn();
+    let component;
 
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(<FlipConfirm
-            label="Delete"
-            iconBtn={false}
+            asEmphasis="contained"
+            isCircular={false}
+            asVariant="primary"
+            asSize="normal"
+            asPadded="normal"
+            asFloated="none"
+            asAligned="center"
+
+            withConfirmation={null}
+            withColor={null}
+            withIcon={null}
+            withLabel={null}
+            withAnimation={null}
+            withTranslation={null}
+            isHidden={false}
+            isDisabled={false}
+            isFluid={false}
+            isLoading={false}
+            onClick={() => console.log("FlipConfirm testing")}
         />);
     })
 
-    it("it should render correctly without throwing an error if iconBtn props is false",
+    it("should render correctly without throwing error",
         () => {
-            component.setProps({ iconBtn: false });
-            expect(component.exists()).toBe(true);
-        });
-
-    it("should render correctly without throwing an error if iconBtn props is true",
-        () => {
-            component.setProps({ iconBtn: true });
             expect(component.exists()).toBe(true);
         });
 });
