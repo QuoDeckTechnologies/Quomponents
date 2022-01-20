@@ -146,8 +146,7 @@ export default {
         a11y: { disable: true },
         docs: { iframeHeight: 700 },
     },
-};
-
+ };
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -249,9 +248,6 @@ Default.parameters = {
         },
     },
 };
-
-
-
 // -------------------------------------------------------------
 // TranslatedOverlayMenu
 // -------------------------------------------------------------
@@ -415,7 +411,7 @@ SecondaryVariant.parameters = {
             code: `<SecondaryVariant {...${JSON.stringify(
                 SecondaryVariant.args,
                 null,
-                3
+                2
             )}}/>`,
         },
     },

@@ -15,8 +15,6 @@ import "../../common/stylesheets/common.css";
 import "./OverlayMenu.scss";
 import "../../common/stylesheets/overrule.scss";
 
-
-
 OverlayMenu.propTypes = {
     //=======================================
     // Component Specific props
