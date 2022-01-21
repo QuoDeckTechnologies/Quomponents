@@ -83,6 +83,7 @@
   justify-content: right;
 }
 .qui .qui-course-header h1 {
+  padding: .1em .2em;
   margin: 0 0.5em 0 0;
 }
 
@@ -99,7 +100,8 @@
 
 .qui .qui-course-banner {
   height: 100%;
-  width: 1em;
+  width: .7em;
+  
 }
 @media only screen and (max-width: 460px) {
   .qui .qui-left-side .qui-banner-card {
@@ -138,26 +140,6 @@
   .qui .size-normal .qui-earncard-icon i {
     font-size: 2em;
   }
-  .qui .size-massive .qui-earncard-icon i {
-    font-size: 3.5em;
-  }
-  .qui .size-huge .qui-earncard-icon i {
-    font-size: 3em;
-  }
-  .qui .size-big .qui-earncard-icon i {
-    font-size: 2.5em;
-  }
-
-  .qui .size-massive .qui-checkbox i {
-    font-size: 4em;
-  }
-  .qui .size-huge .qui-checkbox i {
-    font-size: 3em;
-  }
-  .qui .size-big .qui-checkbox i {
-    font-size: 2.5em;
-  }
-  
   .qui .size-normal .qui-checkbox i {
     font-size: 1em;
   }
@@ -176,26 +158,6 @@
   .qui .size-normal .qui-earncard-icon i  {
     font-size: 3em;
   }
-  .qui .size-massive .qui-earncard-icon i {
-    font-size: 4em;
-  }
-  .qui .size-huge .qui-earncard-icon i {
-    font-size: 3.5em;
-  }
-  .qui .size-big .qui-earncard-icon i {
-    font-size: 3em;
-  }
-
-  .qui .size-massive .qui-checkbox i {
-    font-size: 4em;
-  }
-  .qui .size-huge .qui-checkbox i {
-    font-size: 3em;
-  }
-  .qui .size-big .qui-checkbox i {
-    font-size: 2.5em;
-  }
-   
   .qui .size-normal .qui-checkbox i {
     font-size: 1.5em;
   }
@@ -213,26 +175,7 @@
   }
   .qui .size-normal .qui-earncard-icon i  {
     font-size: 3.5em;
-  }
-  .qui .size-massive .qui-earncard-icon i {
-    font-size: 4em;
-  }
-  .qui .size-huge .qui-earncard-icon i {
-    font-size: 4.2em;
-  }
-  .qui .size-big .qui-earncard-icon i {
-    font-size: 4em;
-  }
- .qui .size-massive .qui-checkbox i {
-  font-size: 2em;
-}
-.qui .size-huge .qui-checkbox i {
-  font-size: 2.2em;
-}
-.qui .size-big .qui-checkbox i {
-  font-size: 2em;
-}
-  
+  }  
   .qui .size-normal .qui-checkbox i {
     font-size: 2em;
   }

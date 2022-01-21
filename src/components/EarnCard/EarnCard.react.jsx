@@ -209,9 +209,7 @@ export default function EarnCard(props) {
       onClick={(e) => props.onClick(e)}
     >
     <div className="qui-left-side">
-        <div className="qui-banner-div">
           <BannerCard {...props} onClick={() => { }} />
-        </div>
         <div className={`qui-left-lower ${quommonClasses.childClasses}`}>
           <div className="qui-earncard-icon" style={colors.accentColors}>
             <i className={content?.icon}></i>
