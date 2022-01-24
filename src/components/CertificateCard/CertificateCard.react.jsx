@@ -207,7 +207,7 @@ export default function CertificateCard(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <div className="qui-card">
+      <div className="qui-certificate-card">
         <div className="qui-header">
           <div
             className={`qui-colorBanner qui-btn ${quommonClasses.childClasses}`}

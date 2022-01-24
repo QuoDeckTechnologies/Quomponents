@@ -15,7 +15,6 @@ IconLink.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-
     /**
     Set action emphasis in increasing order 
     */
