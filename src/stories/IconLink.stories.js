@@ -3,15 +3,10 @@ import IconLink from "../components/Buttons/IconLink/IconLink.react";
 
 const dictionary = JSON.stringify({
     en: {
-        loading: "Please wait...",
-        button: {
-            text: "Button",
-            label: "Do not press this repeatedly...",
-        },
+        icon: { label: "Home" },
     },
     hi: {
-        loading: "बस एक मिनट...",
-        button: { text: "होम", label: "इसे बार-बार न दबाएं..." },
+        icon: { label: "होम आइकन" },
     },
 });
 
@@ -19,7 +14,6 @@ export default {
     title: "Design System/Buttons/IconLink",
     component: IconLink,
     argTypes: {
-        content: "Icon",
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
@@ -36,7 +30,7 @@ export default {
 
         asVariant: {
             control: "select",
-            options: ["primary", "secondary", "warning"],
+            options: ["primary", "secondary", "success", "warning"],
             table: {
                 category: "as-Flags",
             },
@@ -96,9 +90,10 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    format: "label",
+                    format: "caption",
                     content: "",
                     textColor: "",
+                    hoverTextColor: "",
                 },
             },
         },
@@ -153,9 +148,7 @@ export default {
         (story) => (
             <div
                 style={{
-                    width: "100%",
                     textAlign: "center",
-                    fontSize: "1.25em",
                 }}
             >
                 {story()}
@@ -163,35 +156,34 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a icon with a link",
+        componentSubtitle: "Displays icon with a link",
         a11y: { disable: true },
         // controls: { expanded: true }
     },
 };
 
-
-//----------------------------------------------------------
-// Home
-//---------------------------------------------------------
+// -------------------------------------------------------------
+// Default
+// -------------------------------------------------------------
 const Template = (args) => <IconLink {...args} />;
-export const Home = Template.bind({});
-Home.args = {
-    content: "Home",
+export const Default = Template.bind({});
+Default.args = {
     asEmphasis: "contained",
     isCircular: false,
 
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "inline",
+    asFloated: "none",
     asPadded: "normal",
     asAligned: "center",
 
     withLabel: {
         format: "caption",
-        content: "Do not press this button repeatedly...",
-        textColor: "#000000",
+        content: "",
+        textColor: "",
+        hoverTextColor: "",
     },
-    withIcon: { icon: "fas fa-globe", size: "1em", position: "left" },
+    withIcon: { icon: "fa fa-home" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -204,202 +196,112 @@ Home.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "icon",
+        dictionary: dictionary,
+    },
 
     isDisabled: false,
     isHidden: false,
     isFluid: false,
 };
-Home.parameters = {
+Default.parameters = {
     docs: {
         source: {
-            code: `<IconLink {...${JSON.stringify(Home.args, null, 2)}}/>`,
+            code: `<IconLink {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
 
-
-//----------------------------------------------------------
-// Circular
-//---------------------------------------------------------
-export const Circular = Template.bind({});
-Circular.args = {
-    content: "Circle",
-    asEmphasis: "contained",
-    isCircular: true,
-
-    asVariant: "primary",
-    asSize: "normal",
-    asFloated: "inline",
-    asPadded: "normal",
-    asAligned: "center",
-
-    withLabel: {
-        format: "caption",
-        content: "Do not press this button repeatedly...",
-        textColor: "#000000",
-    },
-    withIcon: { icon: "fab fa-apple", size: "1em", position: "left" },
-    withColor: {
-        backgroundColor: "",
-        accentColor: "",
-        textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
-    },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
-
-    isDisabled: false,
-    isHidden: false,
-    isFluid: false,
-};
-Circular.parameters = {
-    docs: {
-        source: {
-            code: `<IconLink {...${JSON.stringify(Circular.args, null, 2)}}/>`,
-        },
-    },
-};
-
-
 // -------------------------------------------------------------
-// Icon Hover Button
+// Colored Icon
 // -------------------------------------------------------------
-export const IconHover = Template.bind({});
-IconHover.args = {
-    content: "Hover on it",
-    asEmphasis: "contained",
-    isCircular: false,
-    
+export const ColoredIcon = Template.bind({});
+ColoredIcon.args = {
+    ...Default.args,
     withColor: {
-        backgroundColor: "#ffc900",
-        textColor: "black",
-        hoverBackgroundColor: "#85d5d6",
-        hoverTextColor: "",
+        backgroundColor: "orange",
+        textColor: "gray",
+        hoverBackgroundColor: "gray",
+        hoverTextColor: "orange",
     },
-
-    withAnimation: {
-        animation: "collapse",
-        duration: 0.5,
-        delay: 0,
-    },
-
-    asVariant: "primary",
-    asSize: "normal",
-    asFloated: "inline",
-    asPadded: "normal",
-    asAligned: "center",
-
-    withLabel: {
-        format: "caption",
-        content: "Do not press this button repeatedly...",
-        textColor: "#000000",
-    },
-    withIcon: { icon: "fab fa-adn", size: "1em", position: "left" },
-
-    isDisabled: false,
-    isHidden: false,
-    isFluid: false,
 };
-IconHover.parameters = {
+ColoredIcon.parameters = {
     docs: {
         description: {
-            story: "Use to override the standard colors of the button.",
+            story: "Use to override the standard colors of the Icon.",
         },
         source: {
-            code: `<IconHover withColor={{backgroundColor: "#ffc900", textColor: "#666666",hoverBackgroundColor: "#666666", hoverTextColor: "#ffc900"}}}/>`,
+            code: `<IconLink withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
         },
     },
 };
 
-
 // -------------------------------------------------------------
-// IconLabel
+// Labelled IconLink
 // -------------------------------------------------------------
-export const IconLabel = Template.bind({});
-IconLabel.args = {
-    content: "Home",
-    asEmphasis: "contained",
-    isCircular: false,
-
-    asVariant: "primary",
-    asSize: "normal",
-    asFloated: "inline",
-    asPadded: "normal",
-    asAligned: "center",
-
+export const LabelledIcon = Template.bind({});
+LabelledIcon.args = {
+    ...Default.args,
     withLabel: {
-        format: "label",
+        format: "caption",
         content: "Home",
-        textColor: "#000000",
-    },
-    withIcon: { icon: "fas fa-home", size: "1em", position: "left" },
-    withColor: {
-        backgroundColor: "",
-        accentColor: "",
         textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
     },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
-
-    isDisabled: false,
-    isHidden: false,
-    isFluid: false,
-  
 };
 
-IconLabel.parameters = {
+LabelledIcon.parameters = {
     docs: {
         description: {
             story:
-                "Use to provide a header callout (format:label) above the button. Or use as a tooltip (format:tooltip) to explain what the button does. The text here can be customized through the withTranslation option.",
+                "Use to provide a header callout (format:label) above the icon. Or use as an information caption (format:caption) below the icon. Or use as an information label (format:label) top the icon. The text here can be customized through the withTranslation option.",
         },
         source: {
-            code: `<IconLabel withLabel={{format: "label",content: "Press to Confirm...",textColor: "#000000"}}}/>`,
+            code: `<IconLink withLabel={{format: "label",content: "Home",textColor: ""}}/>`,
         },
     },
 };
 
-
-//----------------------------------------------------------
-// Translated  button
-//---------------------------------------------------------
-export const TransButton = Template.bind({});
-TransButton.args = {
-    ...Home.args,
-    content: "Home",
-    withTranslation: {
-        lang: "hi",
-        tgt: "button",
-        dictionary: dictionary,
-    },
+// -------------------------------------------------------------
+// Fluid Icon
+// -------------------------------------------------------------
+export const FluidIcon = Template.bind({});
+FluidIcon.args = {
+    ...Default.args,
+    isFluid: true,
 };
-TransButton.parameters = {
+FluidIcon.parameters = {
     docs: {
         description: {
-            story: "Translating the Button",
+            story: "Typically used as the bottom of a modal or a container.",
+        },
+    },
+    source: {
+        code: `<IconLink isFluid={true}/>`,
+    },
+};
+
+// -------------------------------------------------------------
+// Animated Icon
+// -------------------------------------------------------------
+export const AnimatedIcon = Template.bind({});
+AnimatedIcon.args = {
+    ...Default.args,
+    withAnimation: {
+        animation: "collapse",
+        duration: .8,
+        delay: 0,
+    },
+};
+AnimatedIcon.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to animate the entry of the Icon with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<TransButton withTranslation={{lang:"hi", tgt:"button",dictionary:${JSON.stringify(
-                {
-                    hi: {
-                        loading:
-                            "बस एक मिनट",
-                        button: {
-                            text: "होम",
-                            label: "इसे लगातार न दबाएं..."
-                        },
-                    },
-                }
-            )}}}/>`,
+            code: `<IconLink withAnimation={{animation: "collapse", duration: 0.8, delay: 0}}}/>`,
         },
     },
 };
