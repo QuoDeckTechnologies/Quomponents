@@ -1,6 +1,18 @@
 import React from "react";
 import ToolbarDark from "../components/Buttons/ToolbarDark/ToolbarDark.react";
+const dictionary = JSON.stringify({
 
+  hi: {
+    ToolbarDark: {
+      content: [
+        { label: "प्रमाणपत्र" },
+        { label: "बटुआ" },
+        { label: "पुरस्कार" },
+        { label: "रिपोर्ट" },
+      ]
+    },
+  },
+});
 export default {
   title: "Design System/Buttons/ToolbarDark",
   component: ToolbarDark,
@@ -70,6 +82,16 @@ export default {
         },
       },
     },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
+        },
+      },
+    },
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -123,7 +145,7 @@ export const Default = Template.bind({});
 Default.args = {
   content: [
     {
-      icon: "fa fa-share",
+      icon: "fa fa-certificate",
       label: "Certificate",
       format: "caption",
       link: "https://quodeck.com/",
@@ -167,6 +189,11 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "ToolbarDark",
+    dictionary: dictionary,
+  },
 
   isDisabled: false,
   isHidden: false,
@@ -185,24 +212,24 @@ Default.parameters = {
 // -------------------------------------------------------------
 export const ColoredToolbar = Template.bind({});
 ColoredToolbar.args = {
-    ...Default.args,
-    withColor: {
-        backgroundColor: "gray",
-        textColor: "gray",
-        accentColor:"#48D1CC",
-        hoverBackgroundColor: "steelblue",
-        hoverTextColor: "steelblue",
-    },
+  ...Default.args,
+  withColor: {
+    backgroundColor: "gray",
+    textColor: "gray",
+    accentColor: "#48D1CC",
+    hoverBackgroundColor: "steelblue",
+    hoverTextColor: "steelblue",
+  },
 };
 ColoredToolbar.parameters = {
-    docs: {
-        description: {
-            story: "Use to override the standard colors of the Icon.",
-        },
-        source: {
-            code: `<Toolbardark withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
-        },
+  docs: {
+    description: {
+      story: "Use to override the standard colors of the Icon.",
     },
+    source: {
+      code: `<Toolbardark withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
+    },
+  },
 };
 
 //-------------------------------------------------------------
@@ -225,6 +252,82 @@ AnimatedToolbar.parameters = {
     source: {
       code: `<ToolbarDark {...${JSON.stringify(
         AnimatedToolbar.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// WithoutLabelToolbardark
+// -------------------------------------------------------------
+export const WithoutLabelToolbardark = Template.bind({});
+WithoutLabelToolbardark.args = {
+  ...Default.args,
+  content: [
+    {
+      icon: "fa fa-certificate",
+      label: "",
+      format: "caption",
+      link: "https://quodeck.com/",
+    },
+    {
+      icon: "fa fa-wallet",
+      label: "",
+      format: "caption",
+      link: "https://www.google.com/",
+    },
+    {
+      icon: "fa fa-gift",
+      label: "",
+      format: "caption",
+      link: "https://github.com/",
+    },
+    {
+      icon: "fa fa-chart-pie",
+      label: "",
+      format: "caption",
+      link: "https://www.youtube.com/",
+    },
+  ],
+  asVariant: "warning"
+};
+WithoutLabelToolbardark.parameters = {
+  docs: {
+    description: {
+      story:
+        "Show ToolbarDark component without caption/label with asVarient:'warning'",
+    },
+    source: {
+      code: `<WithoutLabelToolbardark {...${JSON.stringify(
+        WithoutLabelToolbardark.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// TranslatedToolbardark
+// -------------------------------------------------------------
+export const TranslatedToolbardark = Template.bind({});
+TranslatedToolbardark.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "ToolbarDark",
+    dictionary: dictionary,
+  },
+};
+TranslatedToolbardark.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in Toolbardark. To make this work for the Toolbardark, add a content:{label} value to the dictionary.",
+    },
+    source: {
+      code: `<TranslatedToolbardark {...${JSON.stringify(
+        TranslatedToolbardark.args,
         null,
         2
       )}}/>`,

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import _ from "lodash";
 import {
   getQuommons,
+  getTranslation,
   getAnimation,
 } from "../../../common/javascripts/helpers";
 
@@ -19,7 +20,7 @@ ToolbarDark.propTypes = {
   //=======================================
 
   /**
-     Toolbar icons data should be passed in content field and it is required field  
+    Toolbar icons data should be passed in content field and it is required field  
     */
   content: PropTypes.arrayOf(
     PropTypes.shape({
@@ -88,6 +89,14 @@ ToolbarDark.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
@@ -123,6 +132,7 @@ ToolbarDark.defaultProps = {
   withColor: null,
   withIcon: null,
   withAnimation: null,
+  withTranslation: null,
 
   isHidden: false,
   isDisabled: false,
@@ -146,14 +156,29 @@ export default function ToolbarDark(props) {
 
   quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
   //-------------------------------------------------------------------
-  // 2. Get animation of the component
+  // 3. Get animation of the component
+  //-------------------------------------------------------------------
+  let labelContent = Object.assign({}, props.withLabel);
+  let iconLabel;
+  let tObj;
+  if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+  ) {
+    tObj = getTranslation(props.withTranslation);
+    iconLabel = tObj.content;
+    if (labelContent && tObj?.label) labelContent.content = tObj.label;
+  }
+  //-------------------------------------------------------------------
+  // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 3. Destructure content prop to itirate
+  // 5. Destructure content prop to itirate
   //-------------------------------------------------------------------
   let { content } = props;
-  
+
   // ========================= Render Function =================================
 
   return (
@@ -179,7 +204,7 @@ export default function ToolbarDark(props) {
                   {...props}
                   content={{ link: icon.link }}
                   withIcon={{ icon: icon.icon }}
-                  withLabel={{ content: icon.label, format: icon.format }}
+                  withLabel={{ content: tObj ? iconLabel[index]["label"] : icon.label, format: icon.format }}
                   withColor={{ ...props.withColor }}
                 />
               </motion.div>

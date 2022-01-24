@@ -7,6 +7,16 @@ import renderer, { act } from "react-test-renderer";
 import IconLink from '../Buttons/IconLink/IconLink.react'
 describe("IconLink", () => {
     let component;
+
+    const dictionary = JSON.stringify({
+        en: {
+            icon: { label: "Home" },
+        },
+        hi: {
+            icon: { label: "होम" },
+        },
+    });
+
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -66,7 +76,7 @@ describe("IconLink", () => {
     it("should render correctly with isCircular prop",
         () => {
             component.setProps({
-                isCircular : true
+                isCircular: true
             })
             expect(component.exists()).toBe(true);
         });
@@ -76,7 +86,7 @@ describe("IconLink", () => {
                 withLabel: {
                     format: "caption",
                     content: "Content",
-                    textColor : 'black'
+                    textColor: 'black'
                 },
             })
             expect(component.exists()).toBe(true);
@@ -85,108 +95,108 @@ describe("IconLink", () => {
         () => {
             component.setProps({
                 isCircular: true,
-                content : '',
-                withIcon : {
-                    icon : 'fas fa-desktop'
+                content: '',
+                withIcon: {
+                    icon: 'fas fa-desktop'
                 }
             })
             expect(component.exists()).toBe(true);
         });
     it("should render correctly with withColor prop when hovered",
         () => {
-            const component = renderer.create(<IconLink 
-                withColor = {{
+            const component = renderer.create(<IconLink
+                withColor={{
                     backgroundColor: "#ffc900",
                     textColor: "#666666",
                     hoverBackgroundColor: "#666666",
                     hoverTextColor: "#ffc900",
                 }}
-                onClick={()=>console.log('testing')}
-                />)
+                onClick={() => console.log('testing')}
+            />)
             const tree = component.toJSON()
-            act(()=>{
+            act(() => {
                 tree.props.onMouseEnter()
             })
         });
     it("should render correctly with withColor prop and asEmphasis set to `text` when hovered",
         () => {
-            const component = renderer.create(<IconLink 
-                asEmphasis = "text"
-                withColor = {{
+            const component = renderer.create(<IconLink
+                asEmphasis="text"
+                withColor={{
                     backgroundColor: "#ffc900",
                     textColor: "#666666",
                     hoverBackgroundColor: "#666666",
                     hoverTextColor: "#ffc900",
                 }}
-                onClick={()=>console.log('testing')}
-                />)
+                onClick={() => console.log('testing')}
+            />)
             const tree = component.toJSON()
-            act(()=>{
+            act(() => {
                 tree.props.onMouseEnter()
             })
         });
     it("should render correctly with withColor prop and asEmphasis set to `outlined` when hovered",
         () => {
-            const component = renderer.create(<IconLink 
-                asEmphasis = "outlined"
-                withColor = {{
+            const component = renderer.create(<IconLink
+                asEmphasis="outlined"
+                withColor={{
                     backgroundColor: "#ffc900",
                     textColor: "#666666",
                     hoverBackgroundColor: "#666666",
                     hoverTextColor: "#ffc900",
                 }}
-                onClick={()=>console.log('testing')}
-                />)
+                onClick={() => console.log('testing')}
+            />)
             const tree = component.toJSON()
-            act(()=>{
+            act(() => {
                 tree.props.onMouseEnter()
             })
         });
     it("should render correctly with withColor prop and asEmphasis set to `contained` when hovered",
         () => {
-            const component = renderer.create(<IconLink 
-                asEmphasis = "contained"
-                withColor = {{
+            const component = renderer.create(<IconLink
+                asEmphasis="contained"
+                withColor={{
                     backgroundColor: "#ffc900",
                     textColor: "#666666",
                     hoverBackgroundColor: "#666666",
                     hoverTextColor: "#ffc900",
                 }}
-                onClick={()=>console.log('testing')}
-                />)
+                onClick={() => console.log('testing')}
+            />)
             const tree = component.toJSON()
-            act(()=>{
+            act(() => {
                 tree.props.onMouseEnter()
             })
         });
     it("should render correctly when hovered or clicked",
         () => {
-            const component = renderer.create(<IconLink onClick={()=>console.log('testing')} />)
+            const component = renderer.create(<IconLink onClick={() => console.log('testing')} />)
             const tree = component.toJSON()
-            act(()=>{
+            act(() => {
                 tree.props.onMouseDown()
                 tree.props.onMouseUp()
             })
         });
     it("should render correctly when hovered",
         () => {
-            const component = renderer.create(<IconLink onClick={()=>console.log('testing')} />)
+            const component = renderer.create(<IconLink onClick={() => console.log('testing')} />)
             const tree = component.toJSON()
-            act(()=>{
+            act(() => {
                 tree.props.onMouseLeave()
                 tree.props.onMouseEnter()
             })
         });
     it("should render correctly when hovered with translation",
         () => {
-            const component = renderer.create(<IconLink 
+            const component = renderer.create(<IconLink
                 withIcon={{
                     icon: "fas fa-desktop"
                 }}
-                onClick={()=>console.log('testing')} 
-                />)
+                onClick={() => console.log('testing')}
+            />)
             const tree = component.toJSON()
-            act(()=>{
+            act(() => {
                 tree.props.onMouseDown()
             })
         });
@@ -259,6 +269,23 @@ describe("IconLink", () => {
         });
         expect(component.exists()).toBe(true);
     });
+
+    it("should render correctly with translation",
+        () => {
+            component.setProps({
+
+                withTranslation: {
+                    lang: "hi",
+                    tgt: "icon",
+                    dictionary: dictionary,
+                },
+                content: [
+                    {
+                        label: "Home",
+                    }],
+            });
+            expect(component.exists()).toBe(true);
+        });
 
 });
 

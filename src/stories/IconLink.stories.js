@@ -6,7 +6,7 @@ const dictionary = JSON.stringify({
         icon: { label: "Home" },
     },
     hi: {
-        icon: { label: "होम आइकन" },
+        icon: { label: "होम" },
     },
 });
 
@@ -306,5 +306,32 @@ AnimatedIcon.parameters = {
             code: `<IconLink withAnimation={{animation: "collapse", duration: 0.8, delay: 0}}}/>`,
         },
     },
+};
+// -------------------------------------------------------------
+// TranslatedIconlink
+// -------------------------------------------------------------
+export const TranslatedIconlink = Template.bind({});
+TranslatedIconlink.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "icon",
+    dictionary: dictionary,
+  },
+};
+TranslatedIconlink.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in iconlink. To make this work for the iconlink, add a icon:{label} value to the dictionary.",
+    },
+    source: {
+      code: `<TranslatedIconlink {...${JSON.stringify(
+        TranslatedIconlink.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
 };
 

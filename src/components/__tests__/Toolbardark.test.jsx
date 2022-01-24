@@ -6,7 +6,19 @@ import renderer from "react-test-renderer";
 // -------------------------------------
 import ToolbarDark from '../Buttons/ToolbarDark/ToolbarDark.react'
 describe("ToolbarDark", () => {
+    const dictionary = JSON.stringify({
 
+        hi: {
+            ToolbarDark: {
+                content: [
+                    { label: "प्रमाणपत्र" },
+                    { label: "बटुआ" },
+                    { label: "पुरस्कार" },
+                    { label: "रिपोर्ट" },
+                ]
+            },
+        },
+    });
     let component;
 
     beforeEach(() => {
@@ -57,6 +69,11 @@ describe("ToolbarDark", () => {
                     animation: "zoom",
                     duration: 0.5,
                     delay: 0,
+                }}
+                withTranslation={{
+                    lang: "hi",
+                    tgt: "ToolbarDark",
+                    dictionary: dictionary,
                 }}
 
                 isDisabled={false}
@@ -145,7 +162,8 @@ describe("ToolbarDark", () => {
             withAnimation: {
                 animation: "collapse",
                 duration: 0.5,
-                delay: 0,        },
+                delay: 0,
+            },
         });
         expect(component.exists()).toBe(true);
     });
@@ -158,24 +176,6 @@ describe("ToolbarDark", () => {
                     label: "Certificate",
                     format: "caption",
                     link: "https://quodeck.com/",
-                },
-                {
-                    icon: "fa fa-wallet",
-                    label: "Wallet",
-                    format: "caption",
-                    link: "https://www.google.com/",
-                },
-                {
-                    icon: "fa fa-gift",
-                    label: "Rewards",
-                    format: "caption",
-                    link: "https://github.com/",
-                },
-                {
-                    icon: "fa fa-chart-pie",
-                    label: "Reports",
-                    format: "caption",
-                    link: "https://www.youtube.com/",
                 },
             ]
         });
@@ -193,16 +193,50 @@ describe("ToolbarDark", () => {
             content: [],
             withColor: {},
             withAnimation: {},
+            withTranslation: {},
             isDisabled: null,
             isHidden: null
         });
         expect(component.exists()).toBe(true);
     });
 
-    it("matches snapshot", () => {
-        const tree = renderer.create(<ToolbarDark onClick={() => console.log("ToolbarDark testing")} />).toJSON()
-        expect(tree).toMatchSnapshot()
-    })
+    it("should render correctly with translation",
+        () => {
+            component.setProps({
+
+                withTranslation: {
+                    lang: "hi",
+                    tgt: "ToolbarDark",
+                    dictionary: dictionary,
+                },
+                content: [
+                    { label: "प्रमाणपत्र" },
+                    { label: "बटुआ" },
+                    { label: "पुरस्कार" },
+                    { label: "रिपोर्ट" },
+                ]
+            });
+            expect(component.exists()).toBe(true);
+        });
+    it("should render correctly with translation",
+        () => {
+            component.setProps({
+
+                withTranslation: {
+                    lang: "en",
+                    tgt: "ToolbarDark",
+                    dictionary: dictionary,
+                },
+                content: [
+                    { label: "Certificate" },
+                    { label: "Wallet" },
+                    { label: "Rewards" },
+                    { label: "Reports" },
+                ]
+            });
+            expect(component.exists()).toBe(true);
+        });
+
 
 });
 
