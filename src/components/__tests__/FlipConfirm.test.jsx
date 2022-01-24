@@ -123,9 +123,9 @@ describe("FlipConfirm", () => {
     it("Click testing", () => {
         let wrapper = shallow(<FlipConfirm onClick={() => console.log("")}
         />);
-        wrapper.find("Button").at(0).simulate('click',{ clientX : 100 , clientY : 100 });
-        wrapper.find("Button").at(1).simulate('click',{ clientX : 100 , clientY : 100 });
-        wrapper.find("Button").at(2).simulate('click',{ clientX : 100 , clientY : 100 });
+        wrapper.find("Button").at(0).simulate('click', { clientX: 100, clientY: 100 });
+        wrapper.find("Button").at(1).simulate('click', { clientX: 100, clientY: 100 });
+        wrapper.find("Button").at(2).simulate('click', { clientX: 100, clientY: 100 });
         // wrapper.find('input').at(0).simulate('change', { target: { name: 'width', value: 50 } });
 
     })
@@ -134,7 +134,7 @@ describe("FlipConfirm", () => {
 
         const { container } = render(<FlipConfirm onClick={() => { }} />);
         const inputElement = container.querySelector(".qui-btn");
-        fireEvent.change(inputElement, { clientX : 100 , clientY : 100 });
+        fireEvent.change(inputElement, { clientX: 100, clientY: 100 });
 
     })
 
