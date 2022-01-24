@@ -115,7 +115,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic data exporter button for general-purpose use. We can export file or json data using this component.",
+        componentSubtitle: "Displays a basic data exporter button for general-purpose use.",
         a11y: { disable: true }
     },
 };
@@ -128,28 +128,27 @@ Default.args = {
     asEmphasis: "contained",
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "none",
+    asFloated: "inline",
     asAligned: "center",
     withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
         textColor: "",
     },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
     withLabel: {
         format: "label",
-        content: "",
-        textColor: "#000000",
+        content: "Catalog",
+        textColor: "",
     },
     isDisabled: false,
     isHidden: false,
 };
 Default.parameters = {
     docs: {
+        description: {
+            story:
+                "Any free fontawesome icon can be used as the Ellipsis icon definition. we can change the icon to MenuBlock ican by adding withIcon prop.",
+        },
         source: {
             code: `<MenuBlock {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
@@ -190,51 +189,123 @@ TranslatedMenuBlock.parameters = {
     },
 };
 // -------------------------------------------------------------
-// Emphasis
+// AllSizes
 // -------------------------------------------------------------
-const AllEmphasisTemplate = (args) => {
+const AllSizesTemplate = (args) => {
     const baseObj = {
         ...Object.assign({}, Default.args, args, {
-            asFloated: "inline",
-            withLabel: null,
-            withIcon: null,
-            withTranslation: null,
-            withColor: null,
-            asVariant: "success"
+            asFloated: "inline",   
         }),
     };
     return (
         <div>
             <MenuBlock
                 {...Object.assign({}, baseObj, {
-                    content: "Text",
-                    asEmphasis: "text",
+                    asVariant: "primary",
+                    asSize:"tiny",
                 })}
-            />{" "}
+            />
             <MenuBlock
                 {...Object.assign({}, baseObj, {
-                    content: "Outlined",
-                    asEmphasis: "outlined",
+                    asVariant: "secondary",
+                    asSize:"small",
                 })}
-            />{" "}
+            />
             <MenuBlock
                 {...Object.assign({}, baseObj, {
-                    content: "Contained",
-                    asEmphasis: "contained",
+                    asVariant: "success",
+                    asSize:"normal",
+                })}
+            />
+            <MenuBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "warning",
+                    asSize:"big",
+                })}
+            />
+            <MenuBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "error",
+                    asSize:"huge",
+                })}
+            />
+            <MenuBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "primary",
+                    asSize:"massive",
                 })}
             />
         </div>
     );
 };
-export const AllEmphasis = AllEmphasisTemplate.bind({});
-AllEmphasis.parameters = {
+export const AllSizes= AllSizesTemplate.bind({});
+AllSizes.parameters = {
     docs: {
         description: {
-            story: "3 options are supported for emphasis as text, outlined, contained",
+            story: "6 sizes are supported. Use as per purpose noted here.",
         },
         source: {
-            code: `<MenuBlock data={{ type: "json", content: [] }} asEmphasis="contained"/>`,
-        }
+            code: `<MenuBlock asVariant="secondary"/>`,
+        },
     },
 };
-
+// -------------------------------------------------------------
+// AllVariants
+// -------------------------------------------------------------
+const AllVariantsTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            asFloated: "inline",  
+        }),
+    };
+    return (
+        <div>
+            <MenuBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "primary",
+                    asSize:"normal",
+                    withIcon: { icon: "fas fa-ellipsis-v"},
+                })}
+            />
+            <MenuBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "secondary",
+                    asSize:"normal",
+                    withIcon: { icon: "fas fa-ellipsis-v"},
+                })}
+            />
+            <MenuBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "success",
+                    asSize:"normal",
+                    withIcon: { icon: "fas fa-ellipsis-v"},
+                })}
+            />
+            <MenuBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "warning",
+                    asSize:"normal",
+                    withIcon: { icon: "fas fa-ellipsis-v"},
+                })}
+            />
+            <MenuBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "error",
+                    asSize:"normal",
+                    withIcon: { icon: "fas fa-ellipsis-v"},
+                })}
+            />
+        </div>
+    );
+};
+export const AllVariants= AllVariantsTemplate.bind({});
+AllVariants.parameters = {
+    docs: {
+        description: {
+            story: "5 variants are supported. Use as per purpose noted here.",
+        },
+        source: {
+            code: `<MenuBlock asVariant="primary"/>`,
+        },
+    },
+};

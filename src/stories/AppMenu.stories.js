@@ -85,9 +85,8 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic Icon for general-purpose use",
+        componentSubtitle: "Displays a basic Icon,image and label for general-purpose use",
         a11y: { disable: true },
-        // controls: { expanded: true }
     },
 };
 
@@ -105,6 +104,10 @@ Default.args = {
     withColor: {
         backgroundColor: "",
         textColor: "",
+    },
+    withLabel: {
+        content: "Catalog",
+        textColor: "#000000",
     },
     isDisabled: false,
     isHidden: false,

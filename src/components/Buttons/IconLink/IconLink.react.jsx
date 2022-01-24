@@ -243,8 +243,6 @@ export default function IconLink(props) {
     // 3. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel, props.withColor);
-    let loadingText = "";
-
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
