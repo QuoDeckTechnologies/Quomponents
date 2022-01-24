@@ -14,6 +14,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./OverlayMenu.scss";
 import "../../common/stylesheets/overrule.scss";
+import Modal from '@mui/material/Modal';
 
 OverlayMenu.propTypes = {
     //=======================================
@@ -169,7 +170,8 @@ function getLabel(labelObj, position) {
 - props are not being passed to the OverlayMenu. Please speak to the admin to handle any new prop.
 **/
 export default function OverlayMenu(props) {
-    
+    const [ setOpen] = React.useState(false);
+    const handleClose = () => setOpen(false);
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -189,7 +191,7 @@ export default function OverlayMenu(props) {
     ) {
         tObj = getTranslation(props.withTranslation);
         iconLabel = tObj.content;
-        if (labelContent && tObj?.label) labelContent.content = tObj.label; 
+        if (labelContent && tObj?.label) labelContent.content = tObj.label;
     }
     //-------------------------------------------------------------------
     // 3. Set the color
@@ -207,51 +209,57 @@ export default function OverlayMenu(props) {
     //-------------------------------------------------------------------
     let { content } = props;
     return (
-        <motion.div
-            initial={animate.from}
-            animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}
+        <Modal className="qui qui-modal"
+            open={true}
+            onClose={handleClose}
         >
-            <div className="qui-card">
-                <div className={"av-contain" } style={colors}>
-                    <i className={`fa fa-times cross-icon   `} onClick={props.onClick} />
-                    <div className={`qui-contain qui-profileContainer`} title={getLabel(labelContent,"popover")}>
-                        <div className={`qui-profileAvatar `}>
-                            <div className="qui-profileCaption" >
-                                {getLabel(labelContent, "label")}
-                            </div>
-                            <Avatar {...props} withUser={props.withUser} />
-                            <div className={`qui-profileCaption size-${props.asSize}`} >
-                                {getLabel(labelContent, "caption")}
+            <motion.div
+                initial={animate.from}
+                animate={animate.to}
+                className={` ${quommonClasses.parentClasses}`}
+
+            >
+                <div className="qui-card">
+                    <div className={"av-contain"} style={colors}>
+                        <i className={`fa fa-times cross-icon   `} onClick={props.onClick} />
+                        <div className={`qui-contain qui-profileContainer`} title={getLabel(labelContent, "popover")}>
+                            <div className={`qui-profileAvatar `}>
+                                <div className="qui-profileCaption" >
+                                    {getLabel(labelContent, "label")}
+                                </div>
+                                <Avatar {...props} withUser={props.withUser} />
+                                <div className={`qui-profileCaption size-${props.asSize}`} >
+                                    {getLabel(labelContent, "caption")}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className={`lower-div`}>
-                    <div className="container" >
-                        <Grid container
-                            rowSpacing={{ xs: 1, sm: 1, md: 1, lg: 1, xl: 1 }}
-                            columnSpacing={{ xs: 1, sm: 1, md: 1, lg: 1, xl: 1 }}
-                        >
-                            {_.map(content, (icon, index) => {
-                                return (
-                                    <Grid key={index} item xs={4} sm={4} md={4} lg={4}>
-                                        <div className={`qui-btn qui-inner-button variant-${props.asVariant}`} style={{ backgroundColor: props.withColor?.accentColor }}>
-                                            <IconLink
-                                                {...props}
-                                                withColor={{ ...props.withColor, textColor: props.withColor?.textColor, backgroundColor: props.withColor?.textColor }}
-                                                asEmphasis="text"
-                                                withIcon={{ icon: icon.icon }}
-                                                withLabel={{ content: tObj ? iconLabel[index]["label"] : icon.label, format: icon.format }}
-                                            />
-                                        </div>
-                                    </Grid>
-                                );
-                            })}
-                        </Grid>
+                    <div className={`lower-div`}>
+                        <div className="container" >
+                            <Grid container
+                                rowSpacing={{ xs: 1, sm: 1, md: 1, lg: 1, xl: 1 }}
+                                columnSpacing={{ xs: 1, sm: 1, md: 1, lg: 1, xl: 1 }}
+                            >
+                                {_.map(content, (icon, index) => {
+                                    return (
+                                        <Grid key={index} item xs={4} sm={4} md={4} lg={4}>
+                                            <div className={`qui-btn qui-inner-button variant-${props.asVariant}`} style={{ backgroundColor: props.withColor?.accentColor }}>
+                                                <IconLink
+                                                    {...props}
+                                                    withColor={{ ...props.withColor, textColor: props.withColor?.textColor, backgroundColor: props.withColor?.textColor }}
+                                                    asEmphasis="text"
+                                                    withIcon={{ icon: icon.icon }}
+                                                    withLabel={{ content: tObj ? iconLabel[index]["label"] : icon.label, format: icon.format }}
+                                                />
+                                            </div>
+                                        </Grid>
+                                    );
+                                })}
+                            </Grid>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </motion.div>
+            </motion.div>
+         </Modal>
     );
 };
