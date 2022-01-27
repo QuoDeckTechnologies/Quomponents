@@ -1,0 +1,32 @@
+.qui .coinImage {
+    width: 75px;
+    align-self: start;
+}
+
+.qui .parent {
+    width: fit-content;
+    // display: flex;
+    // flex-direction:column;
+}
+
+.qui .upperHalf {
+    padding-left: 0.5em;
+    text-align: left;
+    font-size: 30px;
+    font-weight: 900;
+    color: #3e587a;
+    width: 100%;
+}
+
+.qui .lowerHalf {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.qui .lowerHalf .amount {
+    padding-left: 10px;
+    text-align: left;
+    font-size: 60px;
+    color: #ed6e6e;
+}
