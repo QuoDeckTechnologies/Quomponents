@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 //--------------------------------------
 // Import from Config
