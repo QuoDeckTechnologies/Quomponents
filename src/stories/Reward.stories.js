@@ -4,11 +4,11 @@ import Reward from "../components/Reward/Reward.react"
 const dictionary = JSON.stringify({
     // en: {
     //     reward: {
-    //         label: "Complete to win",
+    //         content: "Complete to win",amount:"10,000"
     //     },
     // },
     hi: {
-        reward: { label: "जीतने के लिए पूर्ण" },
+        reward: { label: "जीतने के लिए पूर्ण", point: "१०,०००" },
     },
 });
 
@@ -16,12 +16,14 @@ export default {
     title: "Design System/Reward/Reward",
     component: Reward,
     argTypes: {
-
-        asVariant: {
-            control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
+        content: {
             table: {
-                category: "as-Flags",
+                category: "with-Params",
+                defaultValue: {
+                    label: "",
+                    point: "",
+                    textColor: "",
+                },
             },
         },
         asSize: {
@@ -45,14 +47,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-
         withColor: {
             table: {
                 category: "with-Params",
@@ -68,18 +62,6 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     icon: "",
-                    size: "",
-                },
-            },
-        },
-        withLabel: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    format: "label",
-                    content: "",
-                    amount: "",
-                    textColor: "",
                 },
             },
         },
@@ -103,7 +85,6 @@ export default {
                 },
             },
         },
-
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -131,29 +112,23 @@ export default {
         docs: { iframeHeight: 200 },
     },
 };
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
 const Template = (args) => <Reward {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-
-    asVariant: "primary",
+    content: {
+        label: "Complete to win",
+        point: "10,000",
+        textColor: "#3E587A",
+    },
     asSize: "normal",
     asFloated: "none",
     asPadded: "normal",
-    asAligned: "center",
 
-    withLabel: {
-        format: "caption",
-        content: "Complete to win",
-        amount: "10,000",
-        textColor: "#3e587a",
-    },
     withIcon: {
         icon: "https://lh3.googleusercontent.com/kG6f_MoL-4JkAaqeCMRbbAwTXByEoDZ59wJFM5WVWpn2z_r-UiNCJPpNp5LWTLMtaBrxn7c=s55",
-        size: "1em",
     },
     withColor: {
         backgroundColor: "",
@@ -180,7 +155,6 @@ Default.parameters = {
         },
     },
 };
-
 // -------------------------------------------------------------
 // Translated Reward
 // -------------------------------------------------------------
@@ -266,10 +240,9 @@ AmountColor.parameters = {
 export const LabelColor = Template.bind({});
 LabelColor.args = {
     ...Default.args,
-    withLabel: {
-        format: "caption",
-        content: "Complete to win",
-        amount: "10,000",
+    content: {
+        label: "Complete to win",
+        point: "10,000",
         textColor: "green",
     },
 };
@@ -277,7 +250,7 @@ LabelColor.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the label color that appears in Reward Component. To make this work, add a withLabel:{textColor}.",
+                "Use to change the label color that appears in Reward Component. To make this work, add a content:{textColor}.",
         },
         source: {
             code: `<LabelColor {...${JSON.stringify(

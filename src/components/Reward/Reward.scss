@@ -1,21 +1,19 @@
 .qui .coinImage {
-    width: 75px;
+    width: 2em;
     align-self: start;
 }
 
 .qui .parent {
-    width: fit-content;
-    // display: flex;
-    // flex-direction:column;
+    // width: fit-content;
+    min-width: 6rem;
 }
 
 .qui .upperHalf {
     padding-left: 0.5em;
     text-align: left;
-    font-size: 30px;
+    font-size: 0.9em;
     font-weight: 900;
     color: #3e587a;
-    width: 100%;
 }
 
 .qui .lowerHalf {
@@ -27,6 +25,27 @@
 .qui .lowerHalf .amount {
     padding-left: 10px;
     text-align: left;
-    font-size: 60px;
+    font-size: 1.5em;
     color: #ed6e6e;
+}
+/* ================================================= */
+/* Parent Size Definitions */
+/* ================================================= */
+.qui .size-massive .parent {
+    width: 16rem;
+}
+.qui .size-huge .parent {
+    width: 14rem;
+}
+.qui .size-big .parent {
+    width: 12rem;
+}
+.qui .size-normal .parent {
+    width: 10rem;
+}
+.qui .size-small .parent {
+    width: 8rem;
+}
+.qui .size-tiny .parent {
+    width: 6rem;
 }

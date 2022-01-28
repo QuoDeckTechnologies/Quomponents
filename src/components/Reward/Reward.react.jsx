@@ -9,24 +9,23 @@ import {
 import "../../common/stylesheets/common.css";
 import "./Reward.scss";
 import "../../common/stylesheets/overrule.scss";
+import "@fontsource/oswald"; // Defaults to weight 400.
 
 Reward.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+    /**
+      Use to add label and point in the component
+      */
+    content: PropTypes.shape({
+        label: PropTypes.string,
+        point: PropTypes.string,
+        textColor: PropTypes.string,
+    }),
     //=======================================
     // Quommon props
     //=======================================
-    /**
-      Use to define component header and icon color
-      */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
     /**
       Use to define component text and icon size in increasing order
       */
@@ -39,7 +38,7 @@ Reward.propTypes = {
         "massive",
     ]),
     /**
-      Use to set Accent Color and Text Color 
+      Use to set Text Color for points 
       */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
@@ -47,19 +46,10 @@ Reward.propTypes = {
         accentColor: PropTypes.string,
     }),
     /**
-      Use to add the Certificate's image to the component without certificate image status will show completed
+      Use to add the point's image to the component
       */
     withIcon: PropTypes.shape({
         icon: PropTypes.string,
-    }),
-    /**
-      Use to add header label of the component
-      */
-    withLabel: PropTypes.shape({
-        format: PropTypes.oneOf(["label", "caption", "popover"]),
-        content: PropTypes.string,
-        amount: PropTypes.string,
-        textColor: PropTypes.string,
     }),
     /**
      Use to define the entry animation of the component
@@ -96,14 +86,12 @@ Reward.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
+    content: null,
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "primary",
-
     withColor: null,
     withIcon: null,
-    withLabel: null,
     withAnimation: null,
     withTranslation: null,
 
@@ -116,9 +104,6 @@ Reward.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-function getLabel(labelObj, position) {
-    return labelObj?.format === position ? labelObj.content : "";
-}
 
 export default function Reward(props) {
     //-------------------------------------------------------------------
@@ -129,18 +114,20 @@ export default function Reward(props) {
     // 2. Use to set label Color
     //-------------------------------------------------------------------
     let labelColors = {
-        color: props.withLabel?.textColor,
+        color: props.content?.textColor,
+        fontFamily: "Oswald",
     };
     //-------------------------------------------------------------------
     // 3.Use to set Amount Color
     //-------------------------------------------------------------------
-    let amoutColor = {
+    let pointColor = {
         color: props.withColor?.textColor,
+        fontFamily: "Oswald",
     };
     //-------------------------------------------------------------------
-    // 2. Translation
+    // 4. Use to set Translation in the Component
     //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, props.withLabel);
+    let labelContent = Object.assign({}, props.content);
     let tObj = null;
     if (
         props.withTranslation?.lang &&
@@ -148,12 +135,16 @@ export default function Reward(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj?.label) labelContent.content = tObj.label;
+        if (labelContent && tObj?.label) {
+            labelContent.label = tObj.label
+            labelContent.point = tObj.point
+        };
     }
     //-------------------------------------------------------------------
-    // 3. Get animation of the component
+    // 5. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
+
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -161,19 +152,23 @@ export default function Reward(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`parent ${quommonClasses.childClasses}`}>
-                <div className="upperHalf" style={labelColors}>
-                    {getLabel(labelContent, "caption")}
-                </div>
-                <div className="lowerHalf">
-                    <div>
-                        <img
-                            className={`coinImage`}
-                            src={props.withIcon.icon}
-                            alt="Please wait..."
-                        />
+            <div className={` ${quommonClasses.childClasses}`}>
+                <div className={`parent ${props.asSize}`}>
+                    <div className="upperHalf" style={labelColors}>
+                        {labelContent?.label}
                     </div>
-                    <div className="amount" style={amoutColor}>{props.withLabel.amount}</div>
+                    <div className="lowerHalf">
+                        <div>
+                            <img
+                                className={`coinImage`}
+                                src={props.withIcon.icon}
+                                alt="Coin"
+                            />
+                        </div>
+                        <div className="amount" style={pointColor}>
+                            {labelContent?.point}
+                        </div>
+                    </div>
                 </div>
             </div>
         </motion.div>
