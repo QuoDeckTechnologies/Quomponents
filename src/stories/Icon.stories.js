@@ -1,19 +1,25 @@
 import React from "react";
-import IconLink from "../components/Buttons/IconLink/IconLink.react";
+import Icon from "../components/Buttons/Icon/Icon.react";
 
-const dictionary = JSON.stringify({
-    en: {
-        icon: { label: "Home" },
-    },
-    hi: {
-        icon: { label: "होम आइकन" },
-    },
-});
+// const dictionary = JSON.stringify({
+//     // en: {
+//     //     loading: "Please wait...",
+//     //     button: {
+//     //         text: "Button",
+//     //         label: "Do not press this repeatedly...",
+//     //     },
+//     // },
+//     hi: {
+//         loading: "बस एक मिनट...",
+//         button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+//     },
+// });
 
 export default {
-    title: "Design System/Buttons/IconLink",
-    component: IconLink,
+    title: "Design System/Buttons/Icon",
+    component: Icon,
     argTypes: {
+        content: "Button",
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
@@ -30,7 +36,7 @@ export default {
 
         asVariant: {
             control: "select",
-            options: ["primary", "secondary", "success", "warning"],
+            options: ["primary", "secondary", "success", "warning", "error"],
             table: {
                 category: "as-Flags",
             },
@@ -90,10 +96,9 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    format: "caption",
+                    format: "label",
                     content: "",
                     textColor: "",
-                    hoverTextColor: "",
                 },
             },
         },
@@ -136,6 +141,12 @@ export default {
                 defaultValue: false,
             },
         },
+        isLoading: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
 
         onClick: {
             table: {
@@ -148,7 +159,9 @@ export default {
         (story) => (
             <div
                 style={{
+                    width: "100%",
                     textAlign: "center",
+                    fontSize: "1.25em",
                 }}
             >
                 {story()}
@@ -156,34 +169,88 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays icon with a link",
+        componentSubtitle: "Displays a basic button for general-purpose use",
         a11y: { disable: true },
         // controls: { expanded: true }
     },
 };
 
-// -------------------------------------------------------------
-// Default
-// -------------------------------------------------------------
-const Template = (args) => <IconLink {...args} />;
-export const Default = Template.bind({});
-Default.args = {
-    asEmphasis: "contained",
+
+//----------------------------------------------------------
+// Home
+//---------------------------------------------------------
+const Template = (args) => <Icon {...args}/>;
+export const Home = Template.bind({});
+Home.args = {
+    content: "Home",
+    asEmphasis: "text",
     isCircular: false,
 
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "none",
+    asFloated: "inline",
     asPadded: "normal",
     asAligned: "center",
 
     withLabel: {
         format: "caption",
-        content: "",
+        content: "Do not press this button repeatedly...",
+        textColor: "#000000",
+    },
+    withIcon: { icon: "fas fa-globe", size: "1em", position: "left" },
+    withColor: {
+        backgroundColor: "",
+        accentColor: "",
         textColor: "",
+        hoverBackgroundColor: "",
         hoverTextColor: "",
     },
-    withIcon: { icon: "fa fa-home" },
+    // withAnimation: {
+    //     animation: "zoom",
+    //     duration: 0.5,
+    //     delay: 0,
+    // },
+    // withTranslation: {
+    //     lang: "en",
+    //     tgt: "button",
+    //     dictionary: dictionary,
+    // },
+
+    isDisabled: false,
+    isLoading: false,
+    isHidden: false,
+    isFluid: false,
+};
+Home.parameters = {
+    docs: {
+        source: {
+            code: `<Button {...${JSON.stringify(Home.args, null, 2)}}/>`,
+        },
+    },
+};
+
+//----------------------------------------------------------
+// Tiny Home
+//---------------------------------------------------------
+
+export const TinyHome = Template.bind({});
+TinyHome.args = {
+    content: "TinyHome",
+    asEmphasis: "contained",
+    isCircular: false,
+
+    asVariant: "primary",
+    asSize: "tiny",
+    asFloated: "inline",
+    asPadded: "normal",
+    asAligned: "center",
+
+    withLabel: {
+        format: "caption",
+        content: "Do not press this button repeatedly...",
+        textColor: "#000000",
+    },
+    withIcon: { icon: "fas fa-home", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -192,116 +259,78 @@ Default.args = {
         hoverTextColor: "",
     },
     withAnimation: {
-        animation: "zoom",
+        animation: "fade",
         duration: 0.5,
         delay: 0,
     },
-    withTranslation: {
-        lang: "en",
-        tgt: "icon",
-        dictionary: dictionary,
-    },
+    // withTranslation: {
+    //     lang: "en",
+    //     tgt: "button",
+    //     dictionary: dictionary,
+    // },
 
     isDisabled: false,
+    isLoading: false,
     isHidden: false,
     isFluid: false,
 };
-Default.parameters = {
+TinyHome.parameters = {
     docs: {
         source: {
-            code: `<IconLink {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<Button {...${JSON.stringify(TinyHome.args, null, 2)}}/>`,
         },
     },
 };
 
-// -------------------------------------------------------------
-// Colored Icon
-// -------------------------------------------------------------
-export const ColoredIcon = Template.bind({});
-ColoredIcon.args = {
-    ...Default.args,
-    withColor: {
-        backgroundColor: "orange",
-        textColor: "gray",
-        hoverBackgroundColor: "gray",
-        hoverTextColor: "orange",
-    },
-};
-ColoredIcon.parameters = {
-    docs: {
-        description: {
-            story: "Use to override the standard colors of the Icon.",
-        },
-        source: {
-            code: `<IconLink withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
-        },
-    },
-};
+//----------------------------------------------------------
+// Document
+//---------------------------------------------------------
+export const Victory = Template.bind({});
+Victory.args = {
+    format:"popover",
+    content: "Victory",
+    asEmphasis: "text",
+    isCircular: false,
 
-// -------------------------------------------------------------
-// Labelled IconLink
-// -------------------------------------------------------------
-export const LabelledIcon = Template.bind({});
-LabelledIcon.args = {
-    ...Default.args,
+    asVariant: "primary",
+    asSize: "big",
+    asFloated: "inline",
+    asPadded: "normal",
+    asAligned: "center",
+
     withLabel: {
         format: "caption",
-        content: "Home",
+        content: "Do not press this button repeatedly...",
+        textColor: "#000000",
+    },
+    withIcon: { icon: "fab fa-angellist", size: "1Victorym", position: "left" },
+    withColor: {
+        backgroundColor: "",
+        accentColor: "",
         textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
     },
-};
+    // withAnimation: {
+    //     animation: "zoom",
+    //     duration: 0.5,
+    //     delay: 0,
+    // },
+    // withTranslation: {
+    //     lang: "en",
+    //     tgt: "button",
+    //     dictionary: dictionary,
+    // },
 
-LabelledIcon.parameters = {
+    isDisabled: false,
+    isLoading: false,
+    isHidden: false,
+    isFluid: false,
+};
+Victory.parameters = {
     docs: {
-        description: {
-            story:
-                "Use to provide a header callout (format:label) above the icon. Or use as an information caption (format:caption) below the icon. Or use as an information label (format:label) top the icon. The text here can be customized through the withTranslation option.",
-        },
         source: {
-            code: `<IconLink withLabel={{format: "label",content: "Home",textColor: ""}}/>`,
+            code: `<Button {...${JSON.stringify(Victory.args, null, 2)}}/>`,
         },
     },
-};
-
-// -------------------------------------------------------------
-// Fluid Icon
-// -------------------------------------------------------------
-export const FluidIcon = Template.bind({});
-FluidIcon.args = {
-    ...Default.args,
-    isFluid: true,
-};
-FluidIcon.parameters = {
-    docs: {
-        description: {
-            story: "Typically used as the bottom of a modal or a container.",
-        },
-    },
-    source: {
-        code: `<IconLink isFluid={true}/>`,
-    },
-};
-
-// -------------------------------------------------------------
-// Animated Icon
-// -------------------------------------------------------------
-export const AnimatedIcon = Template.bind({});
-AnimatedIcon.args = {
-    ...Default.args,
-    withAnimation: {
-        animation: "collapse",
-        duration: .8,
-        delay: 0,
-    },
-};
-AnimatedIcon.parameters = {
-    docs: {
-        description: {
-            story:
-                "Use to animate the entry of the Icon with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
-        },
-        source: {
-            code: `<IconLink withAnimation={{animation: "collapse", duration: 0.8, delay: 0}}}/>`,
-        },
-    },
-};
+}

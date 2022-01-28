@@ -10,7 +10,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./IconLink.scss";
 import "../../../common/stylesheets/overrule.scss";
-
 IconLink.propTypes = {
     //=======================================
     // Component Specific props
