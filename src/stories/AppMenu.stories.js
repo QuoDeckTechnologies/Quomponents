@@ -28,7 +28,7 @@ export default {
         },
         asFloated: {
             control: "select",
-            options: ["left", "right", "none", "inline"],
+            options: ["left", "right", "inline"],
             table: {
                 category: "as-Flags",
             },
