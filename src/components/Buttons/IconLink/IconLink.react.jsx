@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
     getQuommons,
+    getTranslation,
     getAnimation,
 } from "../../../common/javascripts/helpers";
 
@@ -22,6 +23,7 @@ IconLink.propTypes = {
     Use for rounded corners or circular icon IconLink 
     */
     isCircular: PropTypes.bool,
+    
     //=======================================
     // Quommon props
     //=======================================
@@ -58,7 +60,6 @@ IconLink.propTypes = {
     Use to align content within the component container
     */
     asAligned: PropTypes.oneOf(["left", "right", "center"]),
-
     /**
     Use to override component colors and behavior
     */
@@ -102,14 +103,13 @@ IconLink.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+   Use to show a translated version of the component text. Dictionary must be valid JSON. 
+   */
     withTranslation: PropTypes.shape({
         lang: PropTypes.string,
         tgt: PropTypes.string,
         dictionary: PropTypes.string,
     }),
-
     /**
     Use to show/hide the component
     */
@@ -122,7 +122,6 @@ IconLink.propTypes = {
     Use to toggle the component taking the full width of the parent container
     */
     isFluid: PropTypes.bool,
-
     /**
     IconLink component must have the onClick function passed as props
     */
@@ -175,13 +174,10 @@ function getColors(colors, emphasis, hovered) {
                     color: colors.backgroundColor,
                     borderColor: colors.backgroundColor
                 }
-                : emphasis === 'contained'
-                    ? {
-                        background: colors.backgroundColor,
-                        color: colors.textColor
-                    }
-                    :
-                    {}
+                : {
+                    background: colors.backgroundColor,
+                    color: colors.textColor
+                }
         colorStyle.lableHandle = {
             color: colors.textColor
         }
@@ -232,7 +228,6 @@ export default function IconLink(props) {
         quommonClasses.childClasses += ` is-circular`;
 
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
-
     //-------------------------------------------------------------------
     // 2. Set the component colors
     //-------------------------------------------------------------------
@@ -240,7 +235,18 @@ export default function IconLink(props) {
     //-------------------------------------------------------------------
     // 3. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, props.withLabel, props.withColor);
+    let labelContent = Object.assign({}, props.withLabel);
+    let iconLabel = null;
+    let tObj = null;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        iconLabel = tObj.content;
+        if (labelContent && tObj?.label) labelContent.content = tObj.label;
+    }
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -267,11 +273,11 @@ export default function IconLink(props) {
                 <button
                     variant={props.asEmphasis}
                     color={props.asVariant}
+                    title={getLabel(labelContent, "popover")}
                     className={`qui-btn ${quommonClasses.childClasses}`}
                     style={Object.assign({}, colors.buttonHandle)}
                     onClick={props.onClick}
                 >
-
                     <div className={`i ${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
                     </div>
                 </button>
