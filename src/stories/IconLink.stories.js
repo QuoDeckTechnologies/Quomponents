@@ -14,7 +14,6 @@ export default {
     title: "Design System/Buttons/IconLink",
     component: IconLink,
     argTypes: {
-
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
@@ -137,7 +136,6 @@ export default {
                 defaultValue: false,
             },
         },
-
 
         onClick: {
             table: {
@@ -307,6 +305,7 @@ AnimatedIcon.parameters = {
         },
     },
 };
+
 // -------------------------------------------------------------
 // TranslatedIconlink
 // -------------------------------------------------------------

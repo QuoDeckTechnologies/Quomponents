@@ -3,7 +3,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import _ from "lodash";
-import { getAnimation } from "../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  getTranslation,
+} from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./EarnCard.scss";
@@ -88,6 +92,14 @@ EarnCard.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
     Use to enable/disable the component
     */
   isDisabled: PropTypes.bool,
@@ -113,7 +125,7 @@ EarnCard.defaultProps = {
   asSize: "normal",
   withColor: null,
   withAnimation: null,
-
+  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
@@ -145,15 +157,45 @@ function getColors(colors) {
 **/
 export default function EarnCard(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring the content, size and variant from props
+  // 1. Destructuring content from props
   //-------------------------------------------------------------------
-  let { content, asSize, asVariant, isDisabled, isHidden } = props;
+  let { content } = props;
   //-------------------------------------------------------------------
-  // 2. Set the component colors
+  // 2. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "earncard");
+  quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
+  //-------------------------------------------------------------------
+  // 3. Set the component colors
   //-------------------------------------------------------------------
   let colors = props.withColor ? getColors(props.withColor) : {};
   //-------------------------------------------------------------------
-  // 3. Get animation of the component
+  // 4. Get translation of the component
+  //-------------------------------------------------------------------
+  let labelContent = {
+    title: content?.title,
+    description: content?.description,
+    dates: {
+      end_date: content?.dates?.end_date,
+      start_date: content?.dates?.start_date,
+    },
+  };
+  let tObj = null;
+
+  if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+  ) {
+    tObj = getTranslation(props.withTranslation);
+    if (labelContent && tObj) {
+      labelContent.title = tObj.title;
+      labelContent.description = tObj.description;
+      labelContent.dates = Object.assign({}, tObj.dates);
+    }
+  }
+  //-------------------------------------------------------------------
+  // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
 
@@ -162,58 +204,48 @@ export default function EarnCard(props) {
     <motion.div
       initial={animate.from}
       animate={animate.to}
-      className={`qui qui-EarnCard ${isDisabled ? "is-Disabled" : ""} ${
-        isHidden ? "is-hidden" : ""
-      }`}
+      className={`qui ${quommonClasses.parentClasses}`}
       style={colors.cardColors}
+      onClick={(e) => props.onClick(e)}
     >
-      <div className="qui-leftSide">
-        <div className="qui-BannerDiv">
-          <BannerCard {...props} />
+    <div className="qui-left-side">
+        <div className="qui-banner-div">
+          <BannerCard {...props} onClick={() => { }} />
         </div>
-        <div
-          className={`qui-leftLower size-${asSize} variant-${asVariant}-text`}
-        >
-          <div className="qui-EarnCardIcon" style={colors.accentColors}>
+        <div className={`qui-left-lower ${quommonClasses.childClasses}`}>
+          <div className="qui-earncard-icon" style={colors.accentColors}>
             <i className={content?.icon}></i>
           </div>
-          <div className="qui-leftLowerTop">
+          <div>
             <div className="qui-checkbox">
               {_.map(content?.topics, (topics, index) => {
                 return (
                   <i
-                    className={`${
-                      topics.checked ? "fas fa-check-square" : "far fa-square"
-                    }`}
+                    className={`${topics.checked ? "fas fa-check-square" : "far fa-square"
+                      }`}
                     key={topics.name + index}
                     style={colors.accentColors}
                   ></i>
                 );
               })}
             </div>
-            <div className="qui-courseDate" style={colors.textColors}>
-              <h2>{content?.dates?.start_date}</h2>
-              <h2>&nbsp;-&nbsp;</h2>
-              <h2>{content?.dates?.end_date}</h2>
+            <div className="qui-course-date" style={colors.textColors}>
+              <h2>{labelContent?.dates?.start_date}</h2>
+              {labelContent?.dates?.end_date ? <h2>&nbsp;-&nbsp;</h2> : ""}
+              <h2>{labelContent?.dates?.end_date}</h2>
             </div>
           </div>
         </div>
       </div>
-      <div className={`qui-rightSide size-${asSize}`}>
-        <div
-          className={`qui-courseHeader variant-${asVariant}-text`}
-          style={colors.textColors}
-        >
-          <h1>{props.content?.title}</h1>
-          <div
-            className={`qui-courseBanner variant-${asVariant} qui-btn`}
-            style={colors.bannerColors}
-          ></div>
+      <div className={`qui-right-side ${quommonClasses.childClasses}`}>
+        <div className="qui-course-header" style={colors.textColors}>
+          <h1>{labelContent?.title}</h1>
+          <div className="qui-course-banner" style={colors.bannerColors}></div>
         </div>
-        <div className="qui-courseDescription">
-          <h3>{props.content?.description}</h3>
+        <div className="qui-course-description">
+          <h3>{labelContent?.description}</h3>
         </div>
-      </div>
+    </div>
     </motion.div>
   );
 }
