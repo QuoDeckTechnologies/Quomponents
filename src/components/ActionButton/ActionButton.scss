@@ -1,0 +1,106 @@
+
+.qui .actionButtonContainer{
+    min-height:5rem;
+    min-width: 5rem;
+    background-color: #E5E5E5;
+    border-radius: 50%;
+    box-shadow: 3px 3px 5px #818080 inset;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qui .actionButtonContainer .actionButton{
+    flex-direction: column;
+    width: 100%;
+    padding:0.6em 0;
+    border-radius: 15%;  
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
+}
+
+.qui .actionButtonContainer .actionButtonWithImage{
+    width: 70%;
+}
+
+.qui .actionButtonContainer .actionButton .actionButton-text{
+    font-size: 1.6em;
+    padding: 0 5px;
+}
+
+.qui .actionButtonContainer .actionButton .actionButton-amount{
+    
+    font-size: 1em;
+
+    padding: 0 5px;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
+}
+
+
+/* ================================================= */
+/* Font Size Definitions */
+/* ================================================= */
+.qui .size-massive .actionButtonContainer{
+    height: 16rem;
+    width:16rem;
+  
+}
+.qui .size-huge .actionButtonContainer{
+    min-height: 13rem;
+    min-width: 13rem;
+
+}
+.qui .size-big .actionButtonContainer{
+    min-height: 11rem;
+    min-width: 11rem;
+
+}
+.qui .size-normal .actionButtonContainer{
+    min-height: 9rem;
+    min-width: 9rem;
+
+}
+.qui .size-small .actionButtonContainer{
+    min-height: 7rem;
+    min-width: 7rem;
+}
+.qui .size-tiny .actionButtonContainer{
+    min-height:5rem;
+    min-width: 5rem;
+}
+
+.qui .size-small .actionButtonContainer .actionButton .actionButton-text{
+    font-size: 2em;
+}
+.qui .size-small .actionButtonContainer .actionButton .actionButton-amount{
+    font-size: 1.2em;
+}
+
+.qui .size-normal .actionButtonContainer .actionButton .actionButton-text{
+    font-size: 2.1em;
+}
+.qui .size-normal .actionButtonContainer .actionButton .actionButton-amount{
+    font-size: 1.3em;
+}
+
+
+.qui .size-big .actionButtonContainer .actionButton .actionButton-text{
+    font-size: 2.1em;
+}
+.qui .size-big .actionButtonContainer .actionButton .actionButton-amount{
+    font-size: 1.3em;
+}
+
+.qui .size-huge .actionButtonContainer .actionButton .actionButton-text{
+    font-size: 2.1em;
+}
+.qui .size-huge .actionButtonContainer .actionButton .actionButton-amount{
+    font-size: 1.3em;
+}
+
+.qui .size-massive .actionButtonContainer .actionButton .actionButton-text{
+    font-size: 2.2em;
+}
+.qui .size-massive .actionButtonContainer .actionButton .actionButton-amount{
+    font-size: 1.3em;
+}
