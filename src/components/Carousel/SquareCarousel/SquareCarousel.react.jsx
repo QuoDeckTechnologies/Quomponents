@@ -72,7 +72,7 @@ export default function SquareCarousel(props) {
         infinite: true,
         autoplay: false,
         pauseOnHover: true,
-        centerPadding: "7.5%",
+        centerPadding: "17%",
         swipeToSlide: true,
     };
     // ========================= Render Function =================================

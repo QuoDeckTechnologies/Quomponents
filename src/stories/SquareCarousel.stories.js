@@ -26,6 +26,16 @@ export default {
             props: {}
         }],
     },
+    withAnimation: {
+        table: {
+            category: "with-Params",
+            defaultValue: {
+                animation: "",
+                duration: 0,
+                delay: 0,
+            },
+        },
+    },
     decorators: [
         (story) => (
             <div
@@ -77,7 +87,7 @@ const Template = (args) => <SquareCarousel {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: [{
-        image:" https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
+        image: " https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
         tag: "new",
         header: "The Negotiation Room",
         content: "Play the contest and win to earn Flipkart vouchers.",
@@ -108,9 +118,96 @@ Default.args = {
 };
 Default.parameters = {
     docs: {
+        description: {
+            story: "This is a default SquareCarousel",
+        },
         source: {
             code: `<SquareCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
 
+
+// -------------------------------------------------------------
+// SquareCarouselSquareCarouselWithoutBox
+// -------------------------------------------------------------
+export const SquareCarouselWithoutBox = Template.bind({});
+SquareCarouselWithoutBox.args = {
+    content: [{
+        image: " https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
+        tag: "new",
+        props: {
+            ...dataprops,
+            asVariant: "secondary"
+        }
+    },
+    {
+        image: "https://i.pinimg.com/564x/68/ed/88/68ed881d5ff0dbe232ff8d4d2e186a99.jpg",
+        tag: "premium",
+        props: {
+            ...dataprops,
+        }
+    },
+    {
+        image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
+        tag: "restricted",
+        props: {
+            ...dataprops,
+        }
+    }],
+
+};
+SquareCarouselWithoutBox.parameters = {
+    docs: {
+        description: {
+            story: "We can see the Square Carousel without any Box Header and Content",
+        },
+        source: {
+            code: `<SquareCarousel {...${JSON.stringify(SquareCarouselWithoutBox.args, null, 2)}}/>`,
+        },
+    },
+};
+
+
+// -------------------------------------------------------------
+// SquareCarouselWithoutTag
+// -------------------------------------------------------------
+export const SquareCarouselWithoutTag = Template.bind({});
+SquareCarouselWithoutTag.args = {
+    content: [{
+        image: " https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
+        header: "The Negotiation Room",
+        content: "Play the contest and win to earn Flipkart vouchers.",
+        props: {
+            ...dataprops,
+            asVariant: "secondary"
+        }
+    },
+    {
+        image: "https://i.pinimg.com/564x/68/ed/88/68ed881d5ff0dbe232ff8d4d2e186a99.jpg",
+        header: "The Negotiation Room",
+        content: "  ",
+        props: {
+            ...dataprops,
+        }
+    },
+    {
+        image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
+        header: "What is Lorem Ipsum?",
+        content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        props: {
+            ...dataprops,
+        }
+    }],
+
+};
+SquareCarouselWithoutTag.parameters = {
+    docs: {
+        description: {
+            story: "We can see the Square Carousel without any Tag",
+        },
+        source: {
+            code: `<SquareCarousel {...${JSON.stringify(SquareCarouselWithoutTag.args, null, 2)}}/>`,
+        },
+    },
+};

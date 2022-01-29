@@ -1,4 +1,3 @@
-
 .qui-square-carousel .slick-dots li button:before {
   font-size: 9px;
 }
@@ -29,10 +28,7 @@
   display: none;
 }
 
-
 .qui-square-carousel .slick-slide {
-  transform: scalex(1.4);
-
   .qui-card-label {
     display: none;
   }
@@ -60,39 +56,117 @@
   background-size: cover;
   box-shadow: 1px 2px 3px 2px #666666;
 }
-.qui-square-slide-container .qui-banner-card .qui-slider-card-box {
-  position: absolute;
-  font-size: 1em;
-  max-width: 80%;
-  left: 0%;
-  bottom: 12%;
-  opacity: 0.9;
-  padding: 0.5em 0.5em;
-  background: rgb(251, 165, 60);
-  border-radius: 0px 0.8em 0.8em 0px;
-}
 
+@media only screen and (min-width: 320px) {
+  .qui-square-slide-container .qui-banner-card {
+    width: 55vw;
+  }
 
-
-@media only screen and (min-width: 320px) { 
-.qui-square-slide-container .qui-banner-card {
-      width: 60vw;
+  .qui-square-slide-container .qui-banner-card .qui-slider-card-box {
+    position: absolute;
+    font-size: 0.8em;
+    max-width: 80%;
+    left: 0%;
+    bottom: 12%;
+    opacity: 0.9;
+    padding: 0.5em 1em;
+    background: rgb(251, 165, 60);
+    border-radius: 0px 0.5em 0.5em 0px;
+  }
+  .qui-square-slide-container .qui-banner-card .qui-slider-card-box-content {
+    line-height: 1.1;
+    text-align: left;
+    padding: 0.1em 0em;
+    max-width: 99%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
   }
 }
 
-@media only screen and (min-width: 481px) { 
-.qui-square-slide-container .qui-banner-card {
-      width: 60vw;
+@media only screen and (min-width: 481px) {
+  .qui-square-slide-container .qui-banner-card {
+    width: 60vw;
+  }
+
+  .qui-square-slide-container .qui-banner-card .qui-slider-card-box {
+    position: absolute;
+    font-size: 1.3em;
+    left: 0%;
+    bottom: 12%;
+    opacity: 0.9;
+    padding: 0.5em 0.5em;
+    background: rgb(251, 165, 60);
+    border-radius: 0px 0.8em 0.8em 0px;
+  }
+  .qui-square-slide-container .qui-banner-card .qui-slider-card-box-content {
+    line-height: 1.1;
+    text-align: left;
+    padding: 0.1em 0em;
+    max-width: 99%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
   }
 }
 
-@media only screen and (min-width: 769px) { 
-.qui-square-slide-container .qui-banner-card {
-      width: 60vw;
+@media only screen and (min-width: 769px) {
+  .qui-square-slide-container .qui-banner-card {
+    width: 57vw;
+  }
+
+  .qui-square-slide-container .qui-banner-card .qui-slider-card-box {
+    position: absolute;
+    font-size: 2em;
+    min-width: 85%;
+    left: 0%;
+    bottom: 12%;
+    opacity: 0.9;
+    padding: 0.5em 0.5em;
+    background: rgb(251, 165, 60);
+    border-radius: 0px 0.8em 0.8em 0px;
+  }
+  .qui-square-slide-container .qui-banner-card .qui-slider-card-box-content {
+    line-height: 1.1;
+    text-align: left;
+    padding: 0.1em 0em;
+    max-width: 99%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
   }
 }
-@media only screen and (min-width: 1024px) { 
-.qui-square-slide-container .qui-banner-card {
-      width: 63vw;
+@media only screen and (min-width: 1024px) {
+  .qui-square-slide-container .qui-banner-card {
+    width: 60vw;
+  }
+
+  .qui-square-slide-container .qui-banner-card .qui-slider-card-box {
+    position: absolute;
+    font-size: 2em;
+    min-width: 85%;
+    left: 0%;
+    bottom: 12%;
+    opacity: 0.9;
+    padding: 0.5em 0.5em;
+    background: rgb(251, 165, 60);
+    border-radius: 0px 0.8em 0.8em 0px;
+  }
+  .qui-square-slide-container .qui-banner-card .qui-slider-card-box-content {
+    line-height: 1.1;
+    text-align: left;
+    padding: 0.1em 0em;
+    max-width: 99%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
   }
 }
