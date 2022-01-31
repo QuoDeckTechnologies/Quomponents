@@ -13,7 +13,7 @@ const dictionary = JSON.stringify({
       heading: "बातचीत का खेल",
       description:
         "बातचीत कौशल की अपनी समझ को बेहतर बनाने के लिए इस गेम को खेलें",
-        tags: ['संचार','बिक्री']
+      tags: ["संचार", "बिक्री"],
     },
   },
 });
@@ -156,10 +156,14 @@ ColoredLearnCard.args = {
 ColoredLearnCard.parameters = {
   docs: {
     description: {
-      story: "Use to override the standard colors of the Icon.",
+      story: "Use to override the standard colors of the LearnCard.",
     },
     source: {
-      code: `<LearnCard withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
+      code: `<LearnCard {...${JSON.stringify(
+        ColoredLearnCard.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -170,6 +174,7 @@ export const AnimatedLearnCard = Template.bind({});
 AnimatedLearnCard.args = {
   ...Default.args,
   asEmphasis: "free",
+  asVariant:'secondary',
   withAnimation: {
     animation: "collapse",
     duration: 0.5,
@@ -179,7 +184,7 @@ AnimatedLearnCard.args = {
 AnimatedLearnCard.parameters = {
   docs: {
     description: {
-      story: "We can animate the appearance of EarnCard",
+      story: "We can animate the appearance of LearnCard",
     },
     source: {
       code: `<LearnCard {...${JSON.stringify(
@@ -209,23 +214,11 @@ TranslatedLearnCard.parameters = {
       story: "Use to change the LearnCard language.",
     },
     source: {
-      code: `<LearnCard withTranslation={{lang: "hi", tgt: "LearnCard", dictionary: ${JSON.stringify(
-        {
-          hi: {
-            ribbon: {
-              new: "नया",
-              restricted: "प्रतिबंधित",
-              premium: "अधिमूल्य",
-              free: "नि: शुल्क",
-            },
-            learncard: {
-              heading: "बातचीत का खेल",
-              description:
-                "बातचीत कौशल की अपनी समझ को बेहतर बनाने के लिए इस गेम को खेलें",
-            },
-          },
-        }
-      )}}}}/>`,
+      code: `<LearnCard {...${JSON.stringify(
+        TranslatedLearnCard.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

@@ -17,8 +17,8 @@ LearnCard.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    Ribbon Text has to be in content or passed as children to the component.
-    */
+  All the text and icons has to be in content prop or passed as children to the component.
+  */
   content: PropTypes.shape({
     heading: PropTypes.string,
     points: PropTypes.string,
@@ -27,19 +27,19 @@ LearnCard.propTypes = {
     icon: PropTypes.string,
   }),
   /**
-    Ribbon Text has to be in content or passed as children to the component.
-    */
+  Ribbon Text is taken from Emphasis prop or passed as children to the component.
+  */
   asEmphasis: PropTypes.oneOf(["new", "premium", "restricted", "free"]),
   /**
-      Use to show/hide the Ribbon component
-      */
+  Use to show/hide the Ribbon component
+  */
   isHiddenRibbon: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
   /**
-      Use to define component header and icon color
-      */
+  Use to define tag colors and points colors
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -48,8 +48,8 @@ LearnCard.propTypes = {
     "error",
   ]),
   /**
-      Use to define component text and icon size in increasing order
-      */
+  Use to define component text and icon size in increasing order
+  */
   asSize: PropTypes.oneOf([
     "tiny",
     "small",
@@ -59,17 +59,16 @@ LearnCard.propTypes = {
     "massive",
   ]),
   /**
-      Use to set Accent Color and Text Color 
-      */
+  Use background color and text color to set ribbon colors and accent color for header and banner colors 
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
-
     accentColor: PropTypes.string,
   }),
   /**
-     Use to define the entry animation of the component
-     */
+   Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -85,20 +84,20 @@ LearnCard.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-      Use to show a translated version of the component text. Dictionary must be valid JSON. 
-      */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-      Use to show/hide the component
-      */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
-    */
+  Button component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -120,12 +119,12 @@ LearnCard.defaultProps = {
   isHidden: false,
 };
 /**
-  ## Notes
-  - The design system used for this component is HTML and CSS
-  - The animation system used for this component is Framer Motion (framer-motion)
-  - Pass inline styles to the component to override any of the component css
-  - Or add custom css in overrule.scss to override the component css
-  **/
+## Notes
+- The design system used for this component is HTML and CSS
+- The animation system used for this component is Framer Motion (framer-motion)
+- Pass inline styles to the component to override any of the component css
+- Or add custom css in overrule.scss to override the component css
+**/
 
 export default function LearnCard(props) {
   //-------------------------------------------------------------------
@@ -149,7 +148,7 @@ export default function LearnCard(props) {
     if (labelContent && tObj?.heading) {
       labelContent.heading = tObj.heading;
       labelContent.description = tObj.description;
-      labelContent.tags = tObj.tags
+      labelContent.tags = tObj.tags;
     }
   }
   //-------------------------------------------------------------------
@@ -204,10 +203,11 @@ export default function LearnCard(props) {
                 {_.map(labelContent?.tags, (tag, i) => {
                   return (
                     <div className="qui-tag-container" key={i}>
-                      <small
-                      className={`qui-single-tag qui-btn variant-${props.asVariant}`}>
-                      {tag}
-                    </small>
+                      <p
+                        className={`qui-single-tag qui-btn variant-${props.asVariant}`}
+                      >
+                        {tag}
+                      </p>
                     </div>
                   );
                 })}
