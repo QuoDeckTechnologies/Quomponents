@@ -149,6 +149,7 @@ export default function LearnCard(props) {
     if (labelContent && tObj?.heading) {
       labelContent.heading = tObj.heading;
       labelContent.description = tObj.description;
+      labelContent.tags = tObj.tags
     }
   }
   //-------------------------------------------------------------------
@@ -200,14 +201,14 @@ export default function LearnCard(props) {
             <div className="qui-info">
               <i className={content?.icon}></i>
               <div className="qui-tags">
-                {_.map(content?.tags, (tag, i) => {
+                {_.map(labelContent?.tags, (tag, i) => {
                   return (
-                    <small
-                      className={`qui-single-tag qui-btn variant-${props.asVariant}`}
-                      key={i}
-                    >
+                    <div className="qui-tag-container" key={i}>
+                      <small
+                      className={`qui-single-tag qui-btn variant-${props.asVariant}`}>
                       {tag}
                     </small>
+                    </div>
                   );
                 })}
               </div>

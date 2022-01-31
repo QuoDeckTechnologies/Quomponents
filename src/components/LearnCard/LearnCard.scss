@@ -65,7 +65,13 @@
   padding: 0.5em;
   border-radius: 0.8em;
 }
-
+.qui .qui-tag-container{
+  margin: 0.5em 0;
+}
+.qui .qui-tags{
+  display: flex;
+  flex-wrap: wrap;
+}
 .qui .qui-tags small {
   margin-right: 1em;
 }

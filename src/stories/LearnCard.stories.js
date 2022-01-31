@@ -13,6 +13,7 @@ const dictionary = JSON.stringify({
       heading: "बातचीत का खेल",
       description:
         "बातचीत कौशल की अपनी समझ को बेहतर बनाने के लिए इस गेम को खेलें",
+        tags: ['संचार','बिक्री']
     },
   },
 });
@@ -113,7 +114,7 @@ Default.args = {
   isHiddenRibbon: false,
   asEmphasis: "premium",
   asVariant: "primary",
-  asSize: "massive",
+  asSize: "normal",
   withColor: {
     backgroundColor: "",
     textColor: "",
