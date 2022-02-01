@@ -41,14 +41,6 @@ SquareCarousel.propTypes = {
         props: PropTypes.object
     })).isRequired,
 
-    /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
 
     /**
     Use to define the entry animation of the component
@@ -126,7 +118,7 @@ export default function SquareCarousel(props) {
                             <div
                                 className={`qui-square-slide`}
                             >
-                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
+                                <BannerCard  {...slide.props} content={slide} onClick={()=>{}} />
                             </div>
                         </div>
                     );
