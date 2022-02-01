@@ -1,0 +1,52 @@
+.qui-NavMain-container{
+    display: flex;
+    margin-top: 1em;
+    justify-content: space-between;
+    align-items: center;
+}
+.qui-left-container{
+    display: flex;
+    align-items: center;
+    font-size:1.8em;
+}
+.qui-angel{
+    padding-left:0.5px;
+}
+.qui-right-container{
+    display: flex;
+    align-items: center;
+}
+.qui-search{
+    font-size:2em;
+}
+i{
+    padding-right: 0.3em;
+}
+.qui-right-container .qui-AppMenu{ 
+    font-size: 0.6em;
+}
+@media only screen and (orientation: portrait) and (min-width:320px) {
+    .qui-NavMain-container{
+         width: 100%;
+        
+    }
+}
+@media only screen and (orientation: portrait) and (min-width:720px) {
+    .qui-NavMain-container{
+        font-size:10em;
+        width: 100%;
+    }
+    .qui-left-container{
+        font-size: 1em;
+    }
+}
+@media only screen and (orientation: portrait) and (max-width:1024px) {
+    .qui-NavMain-container{
+        font-size:10em;
+        width: 100%;
+    }
+    .qui-left-container{
+        font-size: 1em;
+    }
+}
+
