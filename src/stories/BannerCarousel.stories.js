@@ -26,6 +26,12 @@ export default {
             content: "",
             props: {}
         }],
+        onClick: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        }
     },
     decorators: [
         (story) => (
