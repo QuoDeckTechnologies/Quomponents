@@ -28,7 +28,7 @@
   display: none;
 }
 
-.qui-square-carousel .slick-slide {
+.qui-square-carousel .slick-slide {  
   .qui-card-label {
     display: none;
   }
@@ -54,12 +54,13 @@
   border-radius: 1.5em;
   background-repeat: no-repeat;
   background-size: cover;
-  box-shadow: 1px 2px 3px 2px #666666;
+  box-shadow: 2px 4px 3px #949494;
 }
 
 @media only screen and (min-width: 320px) {
   .qui-square-slide-container .qui-banner-card {
-    width: 55vw;
+    width: 48vw;
+    height: 5vh;
   }
 
   .qui-square-slide-container .qui-banner-card .qui-slider-card-box {
@@ -88,7 +89,7 @@
 
 @media only screen and (min-width: 481px) {
   .qui-square-slide-container .qui-banner-card {
-    width: 60vw;
+    width: 52vw;
   }
 
   .qui-square-slide-container .qui-banner-card .qui-slider-card-box {
@@ -116,7 +117,7 @@
 
 @media only screen and (min-width: 769px) {
   .qui-square-slide-container .qui-banner-card {
-    width: 57vw;
+    width: 52vw;
   }
 
   .qui-square-slide-container .qui-banner-card .qui-slider-card-box {
@@ -144,7 +145,7 @@
 }
 @media only screen and (min-width: 1024px) {
   .qui-square-slide-container .qui-banner-card {
-    width: 60vw;
+    width: 53vw;
   }
 
   .qui-square-slide-container .qui-banner-card .qui-slider-card-box {

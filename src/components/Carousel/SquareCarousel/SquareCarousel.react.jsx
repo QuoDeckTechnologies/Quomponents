@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
+import { motion } from "framer-motion";
+
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -8,6 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import {
     getQuommons,
+    getAnimation,
 } from "../../../common/javascripts/helpers";
 
 
@@ -38,7 +41,32 @@ SquareCarousel.propTypes = {
         props: PropTypes.object
     })).isRequired,
 
-    
+    /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+
+    /**
+    Use to define the entry animation of the component
+    */
+    withAnimation: PropTypes.shape({
+        animation: PropTypes.oneOf([
+            "zoom",
+            "collapse",
+            "fade",
+            "slideDown",
+            "slideUp",
+            "slideLeft",
+            "slideRight",
+            ""
+        ]),
+        duration: PropTypes.number,
+        delay: PropTypes.number,
+    }),
 
 };
 
@@ -46,6 +74,9 @@ SquareCarousel.defaultProps = {
     // Component Specific props
     //=======================================
     content: [],
+    withAnimation: null,
+
+
 };
 
 /**
@@ -61,6 +92,11 @@ export default function SquareCarousel(props) {
     let { content } = props;
     let quommonClasses = getQuommons(props, "square-carousel");
 
+    //-------------------------------------------------------------------
+    // 4. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
+
     var settings = {
         dots: true,
         speed: 500,
@@ -72,27 +108,29 @@ export default function SquareCarousel(props) {
         infinite: true,
         autoplay: false,
         pauseOnHover: true,
-        centerPadding: "17%",
+        centerPadding: "21%",
         swipeToSlide: true,
     };
     // ========================= Render Function =================================
-
     return (
-        <div className={`qui ${quommonClasses.parentClasses}`}>
+        <motion.div
+            initial={animate.from}
+            animate={animate.to}
+            className={`qui ${quommonClasses.parentClasses}`}>
             <Slider ref={sliderRef} {...settings}>
-                {_.map(content, (slide, index) => {
+                {_.map( content, (slide, index) => {
                     return (
                         <div className="qui-square-slide-container">
                             <div
                                 key={"slider-" + index + Math.random()}
                                 className={`qui-square-slide`}
                             >
-                                <BannerCard {...slide.props} content={slide} />
+                                <BannerCard  {...slide.props} content={slide}/>
                             </div>
                         </div>
                     );
                 })}
             </Slider>
-        </div>
+        </motion.div>
     );
 }

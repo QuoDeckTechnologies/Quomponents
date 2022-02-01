@@ -1,18 +1,6 @@
 import React from "react";
 import SquareCarousel from "../components/Carousel/SquareCarousel/SquareCarousel.react";
 
-const dictionary = JSON.stringify({
-    hi: {
-        loading: "बस एक मिनट...",
-        squarecarousel: { header: "बातचीत कक्ष", content: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
-        ribbon: {
-            new: "नया",
-            restricted: "प्रतिबंधित",
-            premium: "अधिमूल्य",
-            free: "नि: शुल्क"
-        }
-    },
-});
 
 export default {
     title: "Design System/Carousel/SquareCarousel",
@@ -67,14 +55,9 @@ let dataprops = {
         hoverTextColor: "",
     },
     withAnimation: {
-        animation: "zoom",
+        animation: "slideLeft",
         duration: 0.5,
         delay: 0,
-    },
-    withTranslation: {
-        lang: "en",
-        tgt: "button",
-        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false
@@ -83,11 +66,15 @@ let dataprops = {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
+
+// -------------------------------------------------------------
+// Default
+// -------------------------------------------------------------
 const Template = (args) => <SquareCarousel {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: [{
-        image: " https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
+        image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
         tag: "new",
         header: "The Negotiation Room",
         content: "Play the contest and win to earn Flipkart vouchers.",
@@ -97,16 +84,16 @@ Default.args = {
         }
     },
     {
-        image: "https://i.pinimg.com/564x/68/ed/88/68ed881d5ff0dbe232ff8d4d2e186a99.jpg",
+        image: "https://i.pinimg.com/564x/d7/eb/54/d7eb54f1760884ebea92519ac653aa19.jpg",
         tag: "premium",
         header: "The Negotiation Room",
-        content: "  ",
+        content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
         props: {
             ...dataprops,
         }
     },
     {
-        image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
+        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
         tag: "restricted",
         header: "What is Lorem Ipsum?",
         content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -115,19 +102,20 @@ Default.args = {
         }
     }],
 
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+
 };
 Default.parameters = {
     docs: {
-        description: {
-            story: "This is a default SquareCarousel",
-        },
         source: {
             code: `<SquareCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
-
-
 // -------------------------------------------------------------
 // SquareCarouselSquareCarouselWithoutBox
 // -------------------------------------------------------------
@@ -193,8 +181,8 @@ SquareCarouselWithoutTag.args = {
     },
     {
         image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
-        header: "What is Lorem Ipsum?",
-        content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        header: "What is Negotiation Room?",
+        content: "Play the contest and win to earn Flipkart vouchers",
         props: {
             ...dataprops,
         }
@@ -208,6 +196,32 @@ SquareCarouselWithoutTag.parameters = {
         },
         source: {
             code: `<SquareCarousel {...${JSON.stringify(SquareCarouselWithoutTag.args, null, 2)}}/>`,
+        },
+    },
+};
+
+
+export const AnimatedSquareCarousel = Template.bind({});
+AnimatedSquareCarousel.args = {
+    ...Default.args,
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+};
+AnimatedSquareCarousel.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to animate the entry of the SquareCarousel with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        },
+        source: {
+            code: `<AnimatedSquareCarousel {...${JSON.stringify(
+                AnimatedSquareCarousel.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };
