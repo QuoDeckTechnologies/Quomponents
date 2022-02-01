@@ -106,7 +106,7 @@ export default function SquareCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: false,
+        autoplay: true,
         pauseOnHover: true,
         centerPadding: "21%",
         swipeToSlide: true,
@@ -116,16 +116,17 @@ export default function SquareCarousel(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}>
+            className={`qui ${quommonClasses.parentClasses}`}
+        >
             <Slider ref={sliderRef} {...settings}>
-                {_.map( content, (slide, index) => {
+                {_.map(content, (slide, index) => {
                     return (
-                        <div className="qui-square-slide-container">
+                        <div className="qui-square-slide-container"
+                            key={"slider-" + index + Math.random()}>
                             <div
-                                key={"slider-" + index + Math.random()}
                                 className={`qui-square-slide`}
                             >
-                                <BannerCard  {...slide.props} content={slide}/>
+                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
                             </div>
                         </div>
                     );

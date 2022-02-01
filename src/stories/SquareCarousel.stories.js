@@ -66,18 +66,14 @@ let dataprops = {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-
-// -------------------------------------------------------------
-// Default
-// -------------------------------------------------------------
 const Template = (args) => <SquareCarousel {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: [{
+        header: "Negotiation Room",
+        content: "Play and win the competition to win Flipkart vouchers.",
         image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
         tag: "new",
-        header: "The Negotiation Room",
-        content: "Play the contest and win to earn Flipkart vouchers.",
         props: {
             ...dataprops,
             asVariant: "secondary"
@@ -86,8 +82,8 @@ Default.args = {
     {
         image: "https://i.pinimg.com/564x/d7/eb/54/d7eb54f1760884ebea92519ac653aa19.jpg",
         tag: "premium",
-        header: "The Negotiation Room",
-        content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+        header: "ਗੱਲਬਾਤ ਦਾ ਕਮਰਾ",
+        content: "Flipkart ਵਾਊਚਰ ਹਾਸਲ ਕਰਨ ਲਈ ਮੁਕਾਬਲਾ ਖੇਡੋ ਅਤੇ ਜਿੱਤੋ। ",
         props: {
             ...dataprops,
         }
@@ -95,8 +91,8 @@ Default.args = {
     {
         image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
         tag: "restricted",
-        header: "What is Lorem Ipsum?",
-        content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        header: "निगोशिएशन रूम",
+        content: "फ्लिपकार्ट व्हाउचर मिळवण्यासाठी स्पर्धा खेळा आणि जिंका.",
         props: {
             ...dataprops,
         }
