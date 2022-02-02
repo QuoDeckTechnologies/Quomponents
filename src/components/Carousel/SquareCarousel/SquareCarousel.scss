@@ -1,16 +1,3 @@
-.qui-square-carousel .slick-dots li button:before {
-  font-size: 9px;
-}
-
-.qui-square-carousel .slick-dots li.slick-active button:before {
-  font-size: 12px;
-  color: #a6a6a6;
-}
-
-.qui-square-carousel .slick-dots li {
-  margin: 0 -4px;
-}
-
 .qui-square-carousel {
   overflow: inherit;
 }
@@ -58,13 +45,13 @@
 
 @media only screen and (min-width: 320px) {
   .qui-square-slide-container .qui-banner-card {
-    width: 48vw;
-    height: 5vh;
+    width: 55vw;
+    height: 6vh;
   }
 
   .qui-square-slide-container .qui-banner-card .qui-slider-card-box {
     position: absolute;
-    font-size: 0.8em;
+    font-size: 1em;
     max-width: 80%;
     left: 0%;
     bottom: 12%;
@@ -83,16 +70,30 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  .qui-square-carousel .slick-dots li button:before {
+    font-size: 9px;
+  }
+  
+  .qui-square-carousel .slick-dots li.slick-active button:before {
+    font-size: 12px;
+    color: #a6a6a6;
+  }
+  .qui-square-carousel .slick-dots li {
+    margin: 0 -4px;
+  }
+  
 }
 
 @media only screen and (min-width: 481px) {
   .qui-square-slide-container .qui-banner-card {
-    width: 52vw;
+    width: 59vw;   
+    height: 7vh;
+
   }
 
   .qui-square-slide-container .qui-banner-card .qui-slider-card-box {
     position: absolute;
-    font-size: 1.3em;
+    font-size: 1.7em;
     left: 0%;
     bottom: 12%;
     opacity: 0.9;
@@ -110,16 +111,30 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  .qui-square-carousel .slick-dots li button:before {
+    font-size: 12px;
+  }
+  
+  .qui-square-carousel .slick-dots li.slick-active button:before {
+    font-size: 20px;
+    color: #a6a6a6;
+  }
+  .qui-square-carousel .slick-dots li {
+    margin: -2px 2px;
+  }
+  
 }
 
 @media only screen and (min-width: 769px) {
   .qui-square-slide-container .qui-banner-card {
-    width: 52vw;
+    width: 57vw;
+    height: 7vh;
+
   }
 
   .qui-square-slide-container .qui-banner-card .qui-slider-card-box {
     position: absolute;
-    font-size: 2em;
+    font-size: 2.1em;
     min-width: 85%;
     left: 0%;
     bottom: 12%;
@@ -141,12 +156,14 @@
 }
 @media only screen and (min-width: 1024px) {
   .qui-square-slide-container .qui-banner-card {
-    width: 53vw;
+    width: 60vw;
+    height: 7vh;
+
   }
 
   .qui-square-slide-container .qui-banner-card .qui-slider-card-box {
     position: absolute;
-    font-size: 2em;
+    font-size: 2.2em;
     min-width: 85%;
     left: 0%;
     bottom: 12%;
@@ -164,5 +181,16 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+  .qui-square-carousel .slick-dots li button:before {
+    font-size: 12px;
+  }
+  
+  .qui-square-carousel .slick-dots li.slick-active button:before {
+    font-size: 24px;
+    color: #a6a6a6;
+  }
+  .qui-square-carousel .slick-dots li {
+    margin: -2px 3px;
   }
 }
