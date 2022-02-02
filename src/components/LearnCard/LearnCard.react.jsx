@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import _ from "lodash";
@@ -46,17 +46,6 @@ LearnCard.propTypes = {
     "success",
     "warning",
     "error",
-  ]),
-  /**
-  Use to define component text and icon size in increasing order
-  */
-  asSize: PropTypes.oneOf([
-    "tiny",
-    "small",
-    "normal",
-    "big",
-    "huge",
-    "massive",
   ]),
   /**
   Use background color and text color to set ribbon colors and accent color for header and banner colors 
@@ -118,6 +107,7 @@ LearnCard.defaultProps = {
   withTranslation: null,
   isHidden: false,
 };
+
 /**
 ## Notes
 - The design system used for this component is HTML and CSS
@@ -125,26 +115,31 @@ LearnCard.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-
 export default function LearnCard(props) {
   //-------------------------------------------------------------------
   // 1. Destructure content,isHiddenRibbon,isHidden from props
   //-------------------------------------------------------------------
   let { content, isHiddenRibbon, isHidden } = props;
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // 2. Setting each tag length
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "learn-card");
+  let tagLength = 12;
+  let maxTags = 5;
   //-------------------------------------------------------------------
-  // 3. Get translation of the component
+  // 3. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "learn-card-ribbon");
+  //-------------------------------------------------------------------
+  // 4. Get translation of the component
   //-------------------------------------------------------------------
   let labelContent = Object.assign({}, props.content);
+  let tObj = null;
   if (
     props.withTranslation?.lang &&
     props.withTranslation.lang !== "" &&
     props.withTranslation.lang !== "en"
   ) {
-    let tObj = getTranslation(props.withTranslation);
+    tObj = getTranslation(props.withTranslation);
     if (labelContent && tObj?.heading) {
       labelContent.heading = tObj.heading;
       labelContent.description = tObj.description;
@@ -152,7 +147,25 @@ export default function LearnCard(props) {
     }
   }
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 5. States to hold all description
+  //-------------------------------------------------------------------
+  const [expandTags, setExpandTags] = useState(false);
+  const [itirate, setItirate] = useState(1);
+  //-------------------------------------------------------------------
+  // 6. Functions to expand and collapse text
+  //-------------------------------------------------------------------
+  const handleLessTags = (e) => {
+    e.preventDefault();
+    setItirate(1);
+    setExpandTags(false);
+  };
+  const handleMoreTags = (e) => {
+    e.preventDefault();
+    setItirate(maxTags - 1);
+    setExpandTags(true);
+  };
+  //-------------------------------------------------------------------
+  // 7. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
 
@@ -160,63 +173,87 @@ export default function LearnCard(props) {
     <motion.div
       initial={animate.from}
       animate={animate.to}
-      className="qui-learn-card"
       onClick={props.onClick}
+      className={`qui ${quommonClasses.parentClasses}`}
     >
-      <Ribbon
-        {...props}
-        asFloated="left"
-        isHidden={isHiddenRibbon ? isHiddenRibbon : isHidden}
-        asVariant=""
-      />
-      <div className={`qui ${quommonClasses.parentClasses}`}>
-        <div className={quommonClasses.childClasses}>
-          <img
-            className="qui-game-thumbnail"
-            src={content?.image}
-            alt="game thumbnail"
-          />
-        </div>
-        <div className={`qui-content ${quommonClasses.childClasses}`}>
-          <div className={`qui-learn-card-header `}>
-            <h1 style={{ color: props.withColor?.accentColor }}>
-              {labelContent.heading}
-            </h1>
-            <div className="qui-points">
-              <h1 className={`qui-btn variant-${props.asVariant}-text`}>
-                {content?.points}
+      <div className="qui-card-label">
+        <Ribbon
+          {...props}
+          asFloated="left"
+          isHidden={isHiddenRibbon ? isHiddenRibbon : isHidden}
+          asVariant=""
+        />
+      </div>
+      <div>
+        <div className="qui-learn-card">
+          <div className={quommonClasses.childClasses}>
+            <img
+              className="qui-game-thumbnail"
+              src={content?.image}
+              alt="game thumbnail"
+            />
+          </div>
+          <div className={`qui-content ${quommonClasses.childClasses}`}>
+            <div className={`qui-learn-card-header `}>
+              <h1 style={{ color: props.withColor?.accentColor }}>
+                {labelContent.heading}
               </h1>
-              <img
-                className="qui-coin-image"
-                src="https://lh3.googleusercontent.com/kG6f_MoL-4JkAaqeCMRbbAwTXByEoDZ59wJFM5WVWpn2z_r-UiNCJPpNp5LWTLMtaBrxn7c=s55"
-                alt="coin"
-              />
-            </div>
-          </div>
-          <div className="qui-description">
-            <h2>{labelContent.description}</h2>
-          </div>
-          <div className="qui-lower-container">
-            <div className="qui-info">
-              <i className={content?.icon}></i>
-              <div className="qui-tags">
-                {_.map(labelContent?.tags, (tag, i) => {
-                  return (
-                    <div className="qui-tag-container" key={i}>
-                      <p
-                        className={`qui-single-tag qui-btn variant-${props.asVariant}`}
-                      >
-                        {tag}
-                      </p>
-                    </div>
-                  );
-                })}
+              <div className="qui-points">
+                <h1 className={`qui-btn variant-${props.asVariant}-text`}>
+                  {content?.points}
+                </h1>
+                <img
+                  className="qui-coin-image"
+                  src="https://lh3.googleusercontent.com/kG6f_MoL-4JkAaqeCMRbbAwTXByEoDZ59wJFM5WVWpn2z_r-UiNCJPpNp5LWTLMtaBrxn7c=s55"
+                  alt="coin"
+                />
               </div>
             </div>
-            <div
-              className="qui-banner"
-              style={{ backgroundColor: props.withColor?.accentColor }}
-            ></div>
+            <div className="qui-description">
+              {!expandTags && <h2>{labelContent.description}</h2>}
+            </div>
+            <div className="qui-lower-container">
+              <div className="qui-info">
+                <i className={content?.icon}></i>
+                <div className="qui-tags">
+                  {_.map(labelContent?.tags, (tag, i) => {
+                    if (i <= itirate) {
+                      return (
+                        <div className="qui-tag-container" key={i}>
+                          <p
+                            className={`qui-single-tag qui-btn variant-${props.asVariant}`}
+                          >
+                            {tag.length > tagLength &&
+                            !expandTags &&
+                            labelContent.tags.length > 2
+                              ? tag.slice(0, 12) + "..."
+                              : tag}
+                          </p>
+                        </div>
+                      );
+                    }
+                  })}
+                  {labelContent.tags.length > 2 && !expandTags && (
+                    <div className="qui-see-more-tags">
+                      <a href="!#" onClick={(e) => handleMoreTags(e)}>
+                        {tObj ? "और देखें" : "see more"}
+                      </a>
+                    </div>
+                  )}
+                  {expandTags && (
+                    <div className="qui-see-more-tags">
+                      <a href="!#" onClick={(e) => handleLessTags(e)}>
+                        {tObj ? "कम देखें" : "see less"}
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div
+                className="qui-banner"
+                style={{ backgroundColor: props.withColor?.accentColor }}
+              ></div>
+            </div>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ const dictionary = JSON.stringify({
       heading: "बातचीत का खेल",
       description:
         "बातचीत कौशल की अपनी समझ को बेहतर बनाने के लिए इस गेम को खेलें",
-      tags: ["संचार", "बिक्री"],
+      tags: ["संचार", "बिक्री", "प्रौद्योगिकी", "व्यापार", "विविध"],
     },
   },
 });
@@ -40,13 +40,6 @@ export default {
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asSize: {
-      control: "select",
-      options: ["tiny", "small", "normal", "big", "huge", "massive"],
       table: {
         category: "as-Flags",
       },
@@ -78,7 +71,6 @@ export default {
         },
       },
     },
-
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -94,7 +86,6 @@ export default {
     },
   },
 };
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -106,7 +97,7 @@ Default.args = {
     points: "100",
     description:
       "Play this game to improve your understanding of negotiation skills",
-    tags: ["Communication", "Sales"],
+    tags: ["Communication", "Sales", "Technology", "Business", "Misc."],
     icon: "fas fa-gamepad",
     image:
       "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg",
@@ -114,7 +105,6 @@ Default.args = {
   isHiddenRibbon: false,
   asEmphasis: "premium",
   asVariant: "primary",
-  asSize: "normal",
   withColor: {
     backgroundColor: "",
     textColor: "",
@@ -168,13 +158,13 @@ ColoredLearnCard.parameters = {
   },
 };
 //-------------------------------------------------------------
-// Animated EarnCard
+// Animated LearnCard
 // -------------------------------------------------------------
 export const AnimatedLearnCard = Template.bind({});
 AnimatedLearnCard.args = {
   ...Default.args,
   asEmphasis: "free",
-  asVariant:'secondary',
+  asVariant: "secondary",
   withAnimation: {
     animation: "collapse",
     duration: 0.5,
@@ -184,7 +174,7 @@ AnimatedLearnCard.args = {
 AnimatedLearnCard.parameters = {
   docs: {
     description: {
-      story: "We can animate the appearance of LearnCard",
+      story: "We can animate the entrance of LearnCard",
     },
     source: {
       code: `<LearnCard {...${JSON.stringify(
@@ -219,6 +209,58 @@ TranslatedLearnCard.parameters = {
         null,
         2
       )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Variants
+// -------------------------------------------------------------
+const AllVariantsTemplate = () => {
+  const baseObj = {
+    ...Object.assign({}, Default.args),
+  };
+  return (
+    <div className="qui-all-variants">
+      <LearnCard
+        {...Object.assign({}, baseObj, {
+          isHiddenRibbon: true,
+        })}
+      />
+      <LearnCard
+        {...Object.assign({}, baseObj, {
+          asVariant: "warning",
+          withColor: {
+            backgroundColor: "steelblue",
+            textColor: "",
+            accentColor: "steelblue",
+          },
+        })}
+      />
+      <LearnCard
+        {...Object.assign({}, baseObj, {
+          asEmphasis: "premium",
+          asVariant: "secondary",
+        })}
+      />
+      <LearnCard
+        {...Object.assign({}, baseObj, {
+          asEmphasis: "new",
+          withTranslation: {
+            lang: "hi",
+            tgt: "learncard",
+            dictionary: dictionary,
+          },
+        })}
+      />
+    </div>
+  );
+};
+export const AllVariants = AllVariantsTemplate.bind({});
+AllVariants.parameters = {
+  docs: {
+    description: {
+      story:
+        "Some of variants are shown here by changing some of the props. Use as per purpose noted here.",
     },
   },
 };
