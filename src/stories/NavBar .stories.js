@@ -2,13 +2,8 @@ import React from "react";
 import NavBar from "../components/NavBar /NavBar/NavBar.react";
 
 const dictionary = JSON.stringify({
-    en: {
-        NavBar: {
-            text: "Earn",
-        },
-    },
     hi: {
-        NavBar: { text: "कमाये", label: "कमाये" },
+        NavBar: { content: "कमाये", label: "कमाये" },
     },
 });
 
@@ -20,7 +15,7 @@ export default {
         withUser: {
             table: {
                 category: "with-Params",
-                defaultValue:"",
+                defaultValue: "",
             },
         },
         asVariant: {
@@ -99,7 +94,7 @@ export default {
             },
         },
         onClick: {
-            table: { 
+            table: {
                 category: "Events",
                 defaultValue: null,
             },
@@ -131,11 +126,11 @@ const Template = (args) => <NavBar {...args} />;
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
-    content: "Earn",
+    content: "EARN",
     asVariant: "primary",
     asSize: "normal",
-    withIcon: { icon: "fas fa-angle-left"},
-    withUser: "", 
+    withIcon: { icon: "fas fa-angle-left" },
+    withUser: "",
     withColor: {
         backgroundColor: "",
         textColor: "",
@@ -172,9 +167,9 @@ Default.parameters = {
 //---------------------------------------------------------
 export const UserNavBar = Template.bind({});
 UserNavBar.args = {
-    content: "Earn",
+    content: "LEARN",
     asSize: "normal",
-    withIcon: { icon: "fas fa-angle-left"},
+    withIcon: { icon: "fas fa-angle-left" },
     withUser: "https://png.pngitem.com/pimgs/s/130-1300380_female-user-image-icon-hd-png-download.png",
     withColor: {
         backgroundColor: "",
@@ -205,8 +200,8 @@ UserNavBar.parameters = {
 const AllVariantsTemplate = (args) => {
     const baseObj = {
         ...Object.assign({}, Default.args, args, {
-            
-            
+
+
         }),
     };
     return (
@@ -214,37 +209,37 @@ const AllVariantsTemplate = (args) => {
             <NavBar
                 {...Object.assign({}, baseObj, {
                     asVariant: "primary",
-                    asSize:"normal",
-                    withIcon: { icon: "fas fa-angle-left"},
+                    asSize: "normal",
+                    withIcon: { icon: "fas fa-angle-left" },
 
                 })}
             />
             <NavBar
                 {...Object.assign({}, baseObj, {
                     asVariant: "secondary",
-                    asSize:"normal",
-                    withIcon: { icon: "fas fa-angle-left"},
+                    asSize: "normal",
+                    withIcon: { icon: "fas fa-angle-left" },
                 })}
             />
             <NavBar
                 {...Object.assign({}, baseObj, {
                     asVariant: "success",
-                    asSize:"normal",
-                    withIcon: { icon: "fas fa-angle-left"},
+                    asSize: "normal",
+                    withIcon: { icon: "fas fa-angle-left" },
                 })}
             />
             <NavBar
                 {...Object.assign({}, baseObj, {
                     asVariant: "warning",
-                    asSize:"normal",
-                    withIcon: { icon: "fas fa-angle-left"},
+                    asSize: "normal",
+                    withIcon: { icon: "fas fa-angle-left" },
                 })}
             />
             <NavBar
                 {...Object.assign({}, baseObj, {
                     asVariant: "error",
-                    asSize:"normal",
-                    withIcon: { icon: "fas fa-angle-left"},
+                    asSize: "normal",
+                    withIcon: { icon: "fas fa-angle-left" },
                 })}
             />
         </div>
@@ -252,7 +247,7 @@ const AllVariantsTemplate = (args) => {
 };
 
 
-export const AllVariants= AllVariantsTemplate.bind({});
+export const AllVariants = AllVariantsTemplate.bind({});
 AllVariants.parameters = {
     docs: {
         description: {
@@ -269,7 +264,7 @@ AllVariants.parameters = {
 export const TranslatedNavBar = Template.bind({});
 TranslatedNavBar.args = {
     ...Default.args,
-    content: "Earn",
+    content: "EARN",
     withTranslation: {
         lang: "hi",
         tgt: "NavBar",
@@ -283,16 +278,10 @@ TranslatedNavBar.parameters = {
                 "Use to change the language that the text appears in. To make this work for the NavBar, add a NavBar:{text,label} value to the dictionary.",
         },
         source: {
-            code: `<NavBAr  withTranslation={{lang: "hi", tgt: "NavBar", dictionary: ${JSON.stringify(
-                {
-                    hi: {
-
-                        NavBar: {
-                            text: "कमाये",
-                            label: "कमाये",
-                        },
-                    },
-                }
+            code: `<TranslatedNavBar {...${JSON.stringify(
+                TranslatedNavBar.args,
+                null,
+                2
             )}}}}/>`,
         },
     },

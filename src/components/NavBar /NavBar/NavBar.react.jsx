@@ -1,24 +1,25 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
+import './msg.png';
 import AppMenu from "../../AppMenu/AppMenu/AppMenu.react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./NavBar.scss";
 import "../../../common/stylesheets/overrule.scss";
 import { motion } from "framer-motion";
-import { getQuommons, getTranslation,getAnimation,} from "../../../common/javascripts/helpers";
+import { getQuommons, getTranslation, getAnimation, } from "../../../common/javascripts/helpers";
 
 
 NavBar.propTypes = {
-    
+
     //=======================================
     // Component specific prop
     //=======================================
     /**
     Use to define component user image
     */
-    withUser : PropTypes.string,
+    withUser: PropTypes.string,
 
     /**
     NavBar Text has to be in content or passed as children to the component. Is optional if you only want an icon.
@@ -88,9 +89,9 @@ NavBar.propTypes = {
         duration: PropTypes.number,
         delay: PropTypes.number,
     }),
-      /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+    /**
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
     withTranslation: PropTypes.shape({
         lang: PropTypes.string,
         tgt: PropTypes.string,
@@ -112,10 +113,10 @@ NavBar.propTypes = {
 };
 
 NavBar.defaultProps = {
-//=======================================
-// Component Specific props
-//=======================================
-    withUser : "",
+    //=======================================
+    // Component Specific props
+    //=======================================
+    withUser: "",
     //=======================================
     // Quommon props
     //=======================================
@@ -126,6 +127,7 @@ NavBar.defaultProps = {
     withIcon: null,
     isHidden: false,
     isDisabled: false,
+    withTranslation: null,
 };
 
 /**
@@ -137,20 +139,19 @@ NavBar.defaultProps = {
 **/
 
 export default function NavBar(props) {
-     // 1. Set the classes
+    // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "NavBar");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
 
     // 1. Set the color
     //-------------------------------------------------------------------
-
     let colors = {
         backgroundColor: props.withColor?.backgroundColor,
         color: props.withColor?.textColor
     }
     //-------------------------------------------------------------------
-    // 5. Translate the text objects in case their is a dictionary provided
+    // 2. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
     if (
         props.withTranslation?.lang &&
@@ -161,35 +162,35 @@ export default function NavBar(props) {
         if (tObj && props.content && props.content !== "") {
         }
     }
-     //-------------------------------------------------------------------
-    // 4. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
-    
-     //-------------------------------------------------------------------
-    // 4. Set the label/caption/popover and loading text
+    // 3. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel);
     let labelStyle = labelContent?.textColor
         ? { color: labelContent.textColor }
         : {};
-     // ========================= Render Function =================================
+    //-------------------------------------------------------------------
+    // 4. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
+
+    // ========================= Render Function =================================
     return (
         <motion.div
-        initial={animate.from}
-        animate={animate.to} className={`qui ${quommonClasses.parentClasses}`} onClick={props.onClick}>
-            <div  style={colors}  className={`qui-NavMain-container ${quommonClasses.childClasses} variant-${props.asVariant} `} >
-                <div  className={`qui-left-container size-${props.asSize} `}>
-                    <div style={colors}  className={`qui-angel`}><i className={props.withIcon?.icon}></i></div>
+            initial={animate.from}
+            animate={animate.to} className={`qui ${quommonClasses.parentClasses}`} onClick={props.onClick}>
+            <div style={colors} className={`qui-NavMain-container ${quommonClasses.childClasses} variant-${props.asVariant} `} >
+                <div className={`qui-left-container size-${props.asSize} `}>
+                    <div style={colors} className={`qui-angel`}><i className={props.withIcon?.icon}></i></div>
                     <div className="qui-dots" >
-                    <i class="fas fa-comment-dots"></i></div>
-                        <div className="qui-label" style={labelStyle}>
-                           {props.content} </div>
-                    
+                        <i class="fas fa-comment-alt"></i></div>
+                    <div className="qui-label" style={labelStyle}>
+                        {props.content} </div>
+
                 </div>
-                <div className="qui-right-container" >  
-                <div className={`qui-search size-${props.asSize} `}><i class="fas fa-search"></i></div>
-                    <div><AppMenu {...props} withIcon={{ icon: 'fas fa-ellipsis-v'}}/></div>
+                <div className="qui-right-container" >
+                    <div className={`qui-searching size-${props.asSize} `}><i class="fas fa-search"></i></div>
+                    <div><AppMenu {...props} withIcon={{ icon: 'fas fa-ellipsis-v' }} /></div>
                 </div>
             </div>
         </motion.div>
