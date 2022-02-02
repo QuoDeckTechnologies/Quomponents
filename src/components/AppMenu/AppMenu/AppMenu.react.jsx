@@ -49,7 +49,7 @@ AppMenu.propTypes = {
     /**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
     /**
     Use to override component colors and behavior
     */
@@ -93,7 +93,7 @@ AppMenu.defaultProps = {
     //=======================================
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "none",
+   
 
     withColor: null,
     withIcon: null,
@@ -113,7 +113,7 @@ export default function AppMenu(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props,"AppMenu");
     //-------------------------------------------------------------------
     // 1. Set the color
     //-------------------------------------------------------------------
@@ -128,7 +128,7 @@ export default function AppMenu(props) {
     //    let { content } = props;
      // ========================= Render Function =================================
     return (
-        <div className={`qui qui-AppMenu ${quommonClasses.parentClasses}`}>
+        <div className={`qui ${quommonClasses.parentClasses}`}>
            <div className="qui-main-container">
            <div style={colors} className={`qui-container qui-menuBlock qui-btn size-${props.asSize} 
             variant-${props.asVariant} emp-${props.asEmphasis} `}>
@@ -143,7 +143,7 @@ export default function AppMenu(props) {
                     <Avatar {...props} withIcon={{ icon: 'fas fa-user'}} withUser={props.withUser} />
                 </div>
                 <div className="qui-menuIconContainer">
-                <MenuBlock {...props} withLabel={{content:''}} asFloated="none"/>
+                <MenuBlock {...props} withLabel={{content:''}} />
                 </div>
             </div>
            </div>
