@@ -17,18 +17,17 @@ Reward.propTypes = {
     //=======================================
     /**
       Use to add label and point in the component
-      */
+    */
     content: PropTypes.shape({
         label: PropTypes.string,
         point: PropTypes.string,
-        textColor: PropTypes.string,
     }),
     //=======================================
     // Quommon props
     //=======================================
     /**
-      Use to define component text and icon size in increasing order
-      */
+      Use to define component size in increasing order
+    */
     asSize: PropTypes.oneOf([
         "tiny",
         "small",
@@ -38,16 +37,15 @@ Reward.propTypes = {
         "massive",
     ]),
     /**
-      Use to set Text Color for points 
-      */
+      Use to set Colors for points and label
+    */
     withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
         textColor: PropTypes.string,
         accentColor: PropTypes.string,
     }),
     /**
-      Use to add the point's image to the component
-      */
+      Use to add the point/Coin's image to the component
+    */
     withIcon: PropTypes.shape({
         icon: PropTypes.string,
     }),
@@ -70,7 +68,7 @@ Reward.propTypes = {
     }),
     /**
       Use to show a translated version of the component text. Dictionary must be valid JSON. 
-      */
+    */
     withTranslation: PropTypes.shape({
         lang: PropTypes.string,
         tgt: PropTypes.string,
@@ -78,7 +76,7 @@ Reward.propTypes = {
     }),
     /**
       Use to show/hide the component
-      */
+    */
     isHidden: PropTypes.bool,
 };
 
@@ -114,18 +112,22 @@ export default function Reward(props) {
     // 2. Use to set label Color
     //-------------------------------------------------------------------
     let labelColors = {
-        color: props.content?.textColor,
-        fontFamily: "Oswald",
-    };
-    //-------------------------------------------------------------------
-    // 3.Use to set Amount Color
-    //-------------------------------------------------------------------
-    let pointColor = {
         color: props.withColor?.textColor,
         fontFamily: "Oswald",
     };
     //-------------------------------------------------------------------
-    // 4. Use to set Translation in the Component
+    // 3.Use to set Point Color
+    //-------------------------------------------------------------------
+    let pointColor = {
+        color: props.withColor?.accentColor,
+        fontFamily: "Oswald",
+    };
+    //-------------------------------------------------------------------
+    // 4.Use to set Src for Coin Image
+    //-------------------------------------------------------------------
+    let coinSrc = Object.assign({}, props.withIcon);
+    //-------------------------------------------------------------------
+    // 5. Use to set Translation in the Component
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.content);
     let tObj = null;
@@ -141,10 +143,9 @@ export default function Reward(props) {
         };
     }
     //-------------------------------------------------------------------
-    // 5. Get animation of the component
+    // 6. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -161,11 +162,11 @@ export default function Reward(props) {
                         <div>
                             <img
                                 className={`coinImage`}
-                                src={props.withIcon.icon}
+                                src={coinSrc?.icon}
                                 alt="Coin"
                             />
                         </div>
-                        <div className="amount" style={pointColor}>
+                        <div className="point" style={pointColor}>
                             {labelContent?.point}
                         </div>
                     </div>

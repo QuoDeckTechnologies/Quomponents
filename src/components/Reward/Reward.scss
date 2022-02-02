@@ -1,11 +1,9 @@
-.qui .coinImage {
-    width: 2em;
-    align-self: start;
-}
-
+/* ================================================= */
+/* Reward Container Defination */
+/* ================================================= */
 .qui .parent {
-    // width: fit-content;
     min-width: 6rem;
+    display: flexbox;
 }
 
 .qui .upperHalf {
@@ -22,11 +20,16 @@
     align-items: center;
 }
 
-.qui .lowerHalf .amount {
+.qui .lowerHalf .point {
     padding-left: 10px;
     text-align: left;
     font-size: 1.5em;
     color: #ed6e6e;
+}
+
+.qui .coinImage {
+    width: 2em;
+    align-self: start;
 }
 /* ================================================= */
 /* Parent Size Definitions */

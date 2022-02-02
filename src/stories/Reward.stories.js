@@ -4,7 +4,7 @@ import Reward from "../components/Reward/Reward.react"
 const dictionary = JSON.stringify({
     // en: {
     //     reward: {
-    //         content: "Complete to win",amount:"10,000"
+    //         content: "Complete to win",point:"10,000"
     //     },
     // },
     hi: {
@@ -22,7 +22,6 @@ export default {
                 defaultValue: {
                     label: "",
                     point: "",
-                    textColor: "",
                 },
             },
         },
@@ -51,9 +50,9 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    backgroundColor: "",
-                    accentColor: "",
                     textColor: "",
+                    accentColor: "",
+
                 },
             },
         },
@@ -121,7 +120,6 @@ Default.args = {
     content: {
         label: "Complete to win",
         point: "10,000",
-        textColor: "#3E587A",
     },
     asSize: "normal",
     asFloated: "none",
@@ -131,9 +129,8 @@ Default.args = {
         icon: "https://lh3.googleusercontent.com/kG6f_MoL-4JkAaqeCMRbbAwTXByEoDZ59wJFM5WVWpn2z_r-UiNCJPpNp5LWTLMtaBrxn7c=s55",
     },
     withColor: {
-        backgroundColor: "",
-        accentColor: "",
-        textColor: "",
+        textColor: "#3e587a",
+        accentColor: "#ed6e6e",
     },
     withAnimation: {
         animation: "zoom",
@@ -210,24 +207,25 @@ AnimationReward.parameters = {
     },
 };
 // -------------------------------------------------------------
-// Amount Color Reward
+// Point Color in Reward
 // -------------------------------------------------------------
-export const AmountColor = Template.bind({});
-AmountColor.args = {
+export const PointColor = Template.bind({});
+PointColor.args = {
     ...Default.args,
     withColor: {
-        textColor: "red",
+        textColor: "",
+        accentColor: "red",
     },
 };
-AmountColor.parameters = {
+PointColor.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the amount color that appears in Reward Component. To make this work, add a withColor:{textColor}.",
+                "Use to change the point color that appears in Reward Component. To make this work, add a withColor:{accentColor}.",
         },
         source: {
-            code: `<AmountColor {...${JSON.stringify(
-                AmountColor.args,
+            code: `<PointColor {...${JSON.stringify(
+                PointColor.args,
                 null,
                 2
             )}}/>`,
@@ -235,22 +233,21 @@ AmountColor.parameters = {
     },
 };
 // -------------------------------------------------------------
-// Label Color Reward
+// Label Color in Reward
 // -------------------------------------------------------------
 export const LabelColor = Template.bind({});
 LabelColor.args = {
     ...Default.args,
-    content: {
-        label: "Complete to win",
-        point: "10,000",
-        textColor: "green",
+    withColor: {
+        textColor: "yellow",
+        accentColor: "",
     },
 };
 LabelColor.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the label color that appears in Reward Component. To make this work, add a content:{textColor}.",
+                "Use to change the label color that appears in Reward Component. To make this work, add a withColor:{textColor}.",
         },
         source: {
             code: `<LabelColor {...${JSON.stringify(
