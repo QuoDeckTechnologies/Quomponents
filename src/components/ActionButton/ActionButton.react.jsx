@@ -206,13 +206,12 @@ export default function ActionButton(props) {
 
     const actionButtonBackground = (isCircle) => {
 
-        //with cirlce and without circle classes definition
+        //With cirlce and without circle and responsive font size classes definition
         let actionButtonStyle, label, amount, labelStyle, amountStyle;
         label = labelContent?.name;
         amount = labelContent.amount;
 
-        actionButtonStyle = isCircle? "actionButtonContainer" : "actionButtonContainerWithNoCircle"
-        console.log(amount.length)
+        actionButtonStyle = isCircle? "actionButtonContainer" : "actionButtonContainerWithNoCircle";
         if(label.length >5 || amount.length > 5){
             labelStyle = "responsiveLabelSize"
             amountStyle= "responsiveAmountSize"
