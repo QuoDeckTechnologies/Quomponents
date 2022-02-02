@@ -2,20 +2,12 @@ import React from "react";
 import ActionButton from "../components/ActionButton/ActionButton.react.jsx";
 
 const dictionary = JSON.stringify({
-    // en: {
-    //     loading: "Please wait...",
-    //     button: {
-    //         text: "Button",
-    //         label: "Do not press this repeatedly...",
-    //     },
-    // },
     hi: {
         ActionButton: {
             rupeeSymbol: "रु.",
-            label: "ख़रीदे",
-            amount:"७५"
+            name: "ख़रीदे",
+            amount: "७५"
         }
-
     },
 });
 
@@ -23,14 +15,26 @@ export default {
     title: "Design System/ActionButton/ActionButton",
     component: ActionButton,
     argTypes: {
-        buttonType: {
-            control: "select",
-            options: ["withButton", "withImage"],
+        isCircle: {
             table: {
-                category: "as-Flags",
+                category: "is-Toggles",
+                defaultValue: true,
             },
         },
+        content: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    format: "label",
+                    name: "",
+                    amount: "",
+                    rupeeSymbol: "Rs.",
+                    icon: "https://lh3.googleusercontent.com/xLmXTCiuwYkuQ3QNLCMzRJbZstJfKd4JolyOy2UuEekbaDJvqDuc1dATac4lVmAfE3KoP6E=s85",
+                    iconWidth: "4em",
 
+                },
+            },
+        },
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -76,27 +80,6 @@ export default {
                 },
             },
         },
-        withIcon: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    icon: "",
-                    width: "",
-                    iconColor:""   
-                },
-            },
-        },
-        withLabel: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    format: "label",
-                    content: "",
-                    amount: "",
-                    rupeeSymbol: "Rs."
-                },
-            },
-        },
         withAnimation: {
             table: {
                 category: "with-Params",
@@ -117,7 +100,6 @@ export default {
                 },
             },
         },
-
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -163,25 +145,23 @@ export default {
 // -------------------------------------------------------------
 const Template = (args) => <ActionButton {...args} />;
 export const Default = Template.bind({});
-Default.args = { 
+Default.args = {
+    content: {
+        format: "caption",
+        name: "BUY",
+        amount: "75",
+        rupeeSymbol: "Rs.",
+        icon: "https://lh3.googleusercontent.com/xLmXTCiuwYkuQ3QNLCMzRJbZstJfKd4JolyOy2UuEekbaDJvqDuc1dATac4lVmAfE3KoP6E=s85",
+        iconWidth: "4em",
+
+    },
+    isCircle: true,
     asVariant: "primary",
     asSize: "normal",
     asFloated: "inline",
     asPadded: "normal",
     asAligned: "center",
-    buttonType: "withButton",
 
-    withLabel: {
-        format: "caption",
-        content: "BUY",
-        rupeeSymbol: "Rs.",
-        amount: "75"
-    },
-    withIcon: { 
-        icon: "https://lh3.googleusercontent.com/xLmXTCiuwYkuQ3QNLCMzRJbZstJfKd4JolyOy2UuEekbaDJvqDuc1dATac4lVmAfE3KoP6E=s85", 
-        width: "70%",
-        iconColor:"#fff"   
-},
     withColor: {
         backgroundColor: "",
         textColor: "",
@@ -199,7 +179,7 @@ Default.args = {
 
     isDisabled: false,
     isHidden: false,
- 
+
 };
 Default.parameters = {
     docs: {
@@ -210,15 +190,17 @@ Default.parameters = {
 };
 
 
-
-
-
-
 export const ActionButtonWithButton = Template.bind({});
 
 ActionButtonWithButton.args = {
     ...Default.args,
-    buttonType: "withButton"
+    content: {
+        name: "BUY",
+        amount: "75",
+        rupeeSymbol: "Rs.",
+        icon: "",
+        iconWidth: "4em"
+    }
 }
 
 
@@ -226,7 +208,13 @@ export const ActionButtonWithImage = Template.bind({});
 
 ActionButtonWithImage.args = {
     ...Default.args,
-    buttonType: "withImage"
+    content: {
+        name: "BUY",
+        amount: "75",
+        rupeeSymbol: "Rs.",
+        icon: "https://lh3.googleusercontent.com/xLmXTCiuwYkuQ3QNLCMzRJbZstJfKd4JolyOy2UuEekbaDJvqDuc1dATac4lVmAfE3KoP6E=s85",
+        iconWidth: "4em",
+    }
 }
 
 // -------------------------------------------------------------
@@ -235,6 +223,9 @@ ActionButtonWithImage.args = {
 export const TranslatedActionButton = Template.bind({});
 TranslatedActionButton.args = {
     ...Default.args,
+    content: {
+        icon: ""
+    },
     withTranslation: {
         lang: "hi",
         tgt: "ActionButton",
@@ -245,7 +236,7 @@ TranslatedActionButton.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the text appears in. To make this work for the ActionButton, add a buttonType:{text:{withButton, withImage},label} value to the dictionary.",
+                "Use to change the language that the text appears in. To make this work for the ActionButton, add a content:{text:{name, amount, rupeeSymbol},label} value to the dictionary.",
         },
         source: {
             code: `<ActionButton {...${JSON.stringify(
@@ -257,40 +248,32 @@ TranslatedActionButton.parameters = {
     },
 };
 
-
-
-
-
-
-
-
 export const AllVariantsTemplate = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {
-            buttonType: "withButton"
+            content: {
+                name: "BUY",
+                amount: "75",
+                rupeeSymbol: "Rs.",
+            }
         }),
     };
     const baseObj2 = {
         ...Object.assign({}, Default.args, args, {
-            buttonType: "withImage"
+            content: {
+                icon: "https://lh3.googleusercontent.com/xLmXTCiuwYkuQ3QNLCMzRJbZstJfKd4JolyOy2UuEekbaDJvqDuc1dATac4lVmAfE3KoP6E=s85",
+                iconWidth: "4em",
+            }
         }),
     };
     return (
         <div>
             <ActionButton
                 {...Object.assign({}, baseObj1, {
-                    asVariant: "primary",
-                    asSize: "normal",
-
                 })}
             />
             <ActionButton
                 {...Object.assign({}, baseObj2, {
-                    asSize: "normal",
-                    withIcon: { 
-                        icon: "https://lh3.googleusercontent.com/xLmXTCiuwYkuQ3QNLCMzRJbZstJfKd4JolyOy2UuEekbaDJvqDuc1dATac4lVmAfE3KoP6E=s85",
-                         width: "70%",
-                         iconColor:"white" },
                 })}
             />
         </div>

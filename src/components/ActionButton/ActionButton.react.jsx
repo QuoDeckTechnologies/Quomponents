@@ -23,12 +23,21 @@ ActionButton.propTypes = {
     // Quommon props
     //=======================================
 
-    // Use to toggle button type
+    /**
+    Use to define content of component 
+    */
+    content: PropTypes.shape({
+        name: PropTypes.string,
+        amount: PropTypes.string,
+        rupeeSymbol: PropTypes.string,
+        icon: PropTypes.string,
+        iconWidth: PropTypes.string,
+    }),
 
-    buttonType: PropTypes.oneOf([
-        "withButton",
-        "withImage"
-    ]),
+    /**
+    Use to define circle status of component 
+    */
+    isCircle: PropTypes.bool,
 
     /**
     Use to define standard component type
@@ -74,23 +83,7 @@ ActionButton.propTypes = {
         hoverBackgroundColor: PropTypes.string,
         hoverTextColor: PropTypes.string,
     }),
-    /**
-    Use to add an icon to the component
-    */
-    withIcon: PropTypes.shape({
-        icon: PropTypes.string,
-        width: PropTypes.string,
-        iconColor: PropTypes.string
-    }),
-    /**
-    Use to add a heading label, a footer caption or a title popover to the component
-    */
-    withLabel: PropTypes.shape({
-        format: PropTypes.oneOf(["label", "caption", "popover"]),
-        content: PropTypes.string,
-        amount: PropTypes.string,
-        rupeeSymbol: PropTypes.string,
-    }),
+
     /**
     Use to define the entry animation of the component
     */
@@ -135,10 +128,11 @@ ActionButton.propTypes = {
 ActionButton.defaultProps = {
     // Component Specific props
     //=======================================
-    buttonType: "withButton",
 
     // Quommon props
     //=======================================
+    content: null,
+    isCircle: true,
     asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
@@ -174,14 +168,14 @@ export default function ActionButton(props) {
 
 
     //-------------------------------------------------------------------
-    // 7. Get animation of the component
+    // 2. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
     //-------------------------------------------------------------------
-    // 5. Get translation of the component
+    // 3. Get translation of the component
     //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, props.withLabel);
+    let labelContent = Object.assign({}, props.content);
     let tObj = null;
 
     if (
@@ -190,94 +184,74 @@ export default function ActionButton(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj?.label) labelContent.content = tObj.label;
+        if (labelContent && tObj?.name) labelContent.name = tObj.name;
         if (labelContent && tObj?.amount) labelContent.amount = tObj.amount;
         if (labelContent && tObj?.rupeeSymbol) labelContent.rupeeSymbol = tObj.rupeeSymbol;
     }
 
+    //-------------------------------------------------------------------
+    // 4. Get the custom button styling of the component
+    //-------------------------------------------------------------------
+
+    let buttonStyle = {
+        color: props.withColor?.textColor,
+        backgroundColor: props.withColor?.backgroundColor,
+    };
 
     // ========================= Render Function =================================
     //-------------------------------------------------------------------
-    // 6. Get Status Card of the component
+    // 5. Get the Status of Component
     //-------------------------------------------------------------------
 
-    let actionButtonTextStyle = {
-        fontFamily: "Oswald",
-        fontStyle: "Regular"
-    }
 
-    let playButtonStyle = {
-        fontFamily: "Oswald",
-        fontStyle: "Regular",
-        fontSize: "1.7em",
-        color: props.withIcon.iconColor
-    }
-    let actionButtonImageStyle = {
-        fontFamily: "Quicksand"
-    }
-    let textStyle = {
-        color: props.withColor?.textColor,
-        backgroundColor: props.withColor?.backgroundColor
-    };
+    const actionButtonBackground = (isCircle) => {
 
-    let imgStyle = {
-        width: props.withIcon?.width
-    }
-    const playButton = (buttonType) => {
-        let actionButton1, actionButton2;
+        //with cirlce and without circle classes definition
+        let actionButtonStyle, label, amount, labelStyle, amountStyle;
+        label = labelContent?.name;
+        amount = labelContent.amount;
 
-        if (buttonType === "withButton") actionButton1 = "actionButton";
-        if (buttonType === "withImage") actionButton2 = "actionButtonWithImage";
-
-        if (buttonType === "withButton") {
+        actionButtonStyle = isCircle? "actionButtonContainer" : "actionButtonContainerWithNoCircle"
+        console.log(amount.length)
+        if(label.length >5 || amount.length > 5){
+            labelStyle = "responsiveLabelSize"
+            amountStyle= "responsiveAmountSize"
+        }
+        if (labelContent?.icon) {
             return (
-                <div className={`qui-btn variant-${props.asVariant} ${actionButton1} `} style={textStyle}>
-                    <div className={`actionButton-text`} style={actionButtonTextStyle}>
-                        {labelContent?.content}
-                    </div>
-                    <div className={`actionButton-amount`} style={actionButtonImageStyle}>
-
-                        {labelContent.rupeeSymbol}{" "}
-                        {labelContent?.amount}
-
+                <div className={actionButtonStyle}>
+                    <img
+                        className={`actionButtonWithImage`}
+                        alt="img"
+                        src={labelContent ? `${labelContent.icon}` : ""}
+                        style={{ width: labelContent.iconWidth ? `${labelContent.iconWidth}` : "4em" }}
+                    />
+                </div>
+            )
+        } else {
+            return (
+                <div className={actionButtonStyle}>
+                    <div className={`qui-btn variant-${props.asVariant} actionButton `} style={buttonStyle} onClick={props.onClick}>
+                        <div className={`actionButton-label ${labelStyle}`}>
+                            {labelContent?.name}
+                        </div>
+                        <div className={`actionButton-amount ${amountStyle}`}>
+                            {labelContent.rupeeSymbol}{" "}
+                            {labelContent?.amount}
+                        </div>
                     </div>
                 </div>
             )
-
-        } else {
-            if (buttonType === "withImage" && props.withIcon.icon === "") {
-                return (
-                    <span style={playButtonStyle}>
-                        PLAY
-                    </span>
-                )
-            }
-            else {
-                return (
-
-                    <img
-                        className={`${actionButton2}`}
-                        alt="img"
-                        src={props.withIcon.icon}
-                        style={imgStyle}
-                    />
-                )
-            }
-
         }
     }
-
 
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}
-        >
-            <div className={`qui ${quommonClasses.childClasses}`}>
-                <div className={`actionButtonContainer`}>
-                    {playButton(props.buttonType)}
-                </div>
+            className={`qui ${quommonClasses.parentClasses}`}>
+            <div className={`${quommonClasses.childClasses}`}>
+                {actionButtonBackground(props.isCircle)}
             </div>
         </motion.div>
     );
