@@ -20,11 +20,12 @@ LearnCard.propTypes = {
   All the text and icons has to be in content prop or passed as children to the component.
   */
   content: PropTypes.shape({
-    heading: PropTypes.string,
-    points: PropTypes.string,
+    title: PropTypes.string,
     description: PropTypes.string,
-    tags: PropTypes.arrayOf(PropTypes.string),
+    image: PropTypes.string,
     icon: PropTypes.string,
+    points: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string),
   }),
   /**
   Ribbon Text is taken from Emphasis prop or passed as children to the component.
@@ -121,10 +122,11 @@ export default function LearnCard(props) {
   //-------------------------------------------------------------------
   let { content, isHiddenRibbon, isHidden } = props;
   //-------------------------------------------------------------------
-  // 2. Setting each tag length
+  // 2. Setting each tag length, tags quantity(maxTags) and title length
   //-------------------------------------------------------------------
-  let tagLength = 12;
-  let maxTags = 5;
+  let tagLength = 5;
+  let maxTags = 10;
+  let titleLength = 20;
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -140,23 +142,23 @@ export default function LearnCard(props) {
     props.withTranslation.lang !== "en"
   ) {
     tObj = getTranslation(props.withTranslation);
-    if (labelContent && tObj?.heading) {
-      labelContent.heading = tObj.heading;
+    if (labelContent && tObj?.title) {
+      labelContent.title = tObj.title;
       labelContent.description = tObj.description;
       labelContent.tags = tObj.tags;
     }
   }
   //-------------------------------------------------------------------
-  // 5. States to hold all description
+  // 5. States to hold expand tags logic
   //-------------------------------------------------------------------
   const [expandTags, setExpandTags] = useState(false);
-  const [itirate, setItirate] = useState(1);
+  const [itirate, setItirate] = useState(labelContent?.tags.length);
   //-------------------------------------------------------------------
-  // 6. Functions to expand and collapse text
+  // 6. Functions to expand and collapse tags
   //-------------------------------------------------------------------
   const handleLessTags = (e) => {
     e.preventDefault();
-    setItirate(1);
+    setItirate(labelContent?.tags.length);
     setExpandTags(false);
   };
   const handleMoreTags = (e) => {
@@ -189,14 +191,14 @@ export default function LearnCard(props) {
           <div className={quommonClasses.childClasses}>
             <img
               className="qui-game-thumbnail"
-              src={content?.image}
+              src={content?.image ? content?.image : 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg'}
               alt="game thumbnail"
             />
           </div>
           <div className={`qui-content ${quommonClasses.childClasses}`}>
             <div className={`qui-learn-card-header `}>
               <h1 style={{ color: props.withColor?.accentColor }}>
-                {labelContent.heading}
+                {labelContent.title.slice(0,titleLength) + (labelContent.title.length > titleLength ? '...' : '')}
               </h1>
               <div className="qui-points">
                 <h1 className={`qui-btn variant-${props.asVariant}-text`}>
@@ -204,13 +206,13 @@ export default function LearnCard(props) {
                 </h1>
                 <img
                   className="qui-coin-image"
-                  src="https://lh3.googleusercontent.com/kG6f_MoL-4JkAaqeCMRbbAwTXByEoDZ59wJFM5WVWpn2z_r-UiNCJPpNp5LWTLMtaBrxn7c=s55"
+                  src="https://www.usmint.gov/wordpress/wp-content/uploads/2020/12/2021-general-george-washington-crossing-the-delaware-quarter-uncirculated-obverse-philadelphia.jpg"
                   alt="coin"
                 />
               </div>
             </div>
             <div className="qui-description">
-              {!expandTags && <h2>{labelContent.description}</h2>}
+              {!expandTags && <h2>{labelContent?.description}</h2>}
             </div>
             <div className="qui-lower-container">
               <div className="qui-info">
@@ -223,27 +225,27 @@ export default function LearnCard(props) {
                           <p
                             className={`qui-single-tag qui-btn variant-${props.asVariant}`}
                           >
-                            {tag.length > tagLength &&
+                            {tag?.length > tagLength &&
                             !expandTags &&
-                            labelContent.tags.length > 2
-                              ? tag.slice(0, 12) + "..."
+                            labelContent?.tags.length > 2
+                              ? tag?.slice(0, tagLength) + "..."
                               : tag}
                           </p>
                         </div>
                       );
                     }
                   })}
-                  {labelContent.tags.length > 2 && !expandTags && (
+                  {labelContent?.tags?.length > 2 && !expandTags && (
                     <div className="qui-see-more-tags">
                       <a href="!#" onClick={(e) => handleMoreTags(e)}>
-                        {tObj ? "और देखें" : "see more"}
+                        {tObj ? tObj?.seeMore : "See more"}
                       </a>
                     </div>
                   )}
                   {expandTags && (
                     <div className="qui-see-more-tags">
                       <a href="!#" onClick={(e) => handleLessTags(e)}>
-                        {tObj ? "कम देखें" : "see less"}
+                        {tObj ? tObj?.seeLess : "See less"}
                       </a>
                     </div>
                   )}

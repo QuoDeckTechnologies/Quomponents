@@ -10,10 +10,12 @@ const dictionary = JSON.stringify({
       free: "नि: शुल्क",
     },
     learncard: {
-      heading: "बातचीत का खेल",
+      title: "बातचीत का खेल",
       description:
         "बातचीत कौशल की अपनी समझ को बेहतर बनाने के लिए इस गेम को खेलें",
       tags: ["संचार", "बिक्री", "प्रौद्योगिकी", "व्यापार", "विविध"],
+      seeMore : 'और देखें',
+      seeLess : 'कम देखें'
     },
   },
 });
@@ -24,11 +26,12 @@ export default {
   argTypes: {
     content: {
       defaultValue: {
-        heading: "",
-        points: "",
+        title: "",
         description: "",
-        tags: [],
+        image : '',
         icon: "",
+        points: "",
+        tags: [],
       },
     },
     isHiddenRibbon: {
@@ -77,6 +80,7 @@ export default {
         defaultValue: false,
       },
     },
+    onclick : () => {}
   },
   parameters: {
     componentSubtitle: "Display a LearnCard Component",
@@ -93,14 +97,14 @@ const Template = (args) => <LearnCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    heading: "The Negotiation Game",
-    points: "100",
+    title: "The Negotiation Game",
     description:
-      "Play this game to improve your understanding of negotiation skills",
-    tags: ["Communication", "Sales", "Technology", "Business", "Misc."],
-    icon: "fas fa-gamepad",
+    "Play this game to improve your understanding of negotiation skills",
     image:
-      "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnltfxyRHuEEUE4gIZp9fr77Q8goigP7mQ6Q&usqp=CAU",
+    icon: "fas fa-gamepad",
+    points: "100",
+      tags: ["Communication", "Sales", "Technology", "Business", "Misc."],
   },
   isHiddenRibbon: false,
   asEmphasis: "premium",
@@ -138,9 +142,9 @@ ColoredLearnCard.args = {
   ...Default.args,
   asVariant: "warning",
   withColor: {
-    backgroundColor: "steelblue",
+    backgroundColor: "#4682b4",
     textColor: "",
-    accentColor: "steelblue",
+    accentColor: "#4682b4",
   },
 };
 ColoredLearnCard.parameters = {

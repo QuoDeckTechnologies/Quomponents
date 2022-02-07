@@ -12,6 +12,8 @@
 }
 .qui.qui-learn-card-ribbon .qui-ribbon {
   filter: opacity(80%);
+  position: relative;
+  z-index: 10;
 }
 .qui .qui-game-thumbnail {
   height: 12em;
@@ -120,27 +122,42 @@
   height: 100%;
 }
 @media only screen and (min-width: 320px) {
-  .qui-learn-card-ribbon {
+  .qui-card-label .qui-ribbon{
+    font-size: 0.50em;
+  }
+  .qui-learn-card {
     font-size: 0.35em;
   }
 }
 @media only screen and (min-width: 481px) {
-  .qui-learn-card-ribbon {
+  .qui-card-label .qui-ribbon{
+    font-size: 1.2em;
+  }
+  .qui-learn-card {
     font-size: 0.8em;
   }
 }
 @media only screen and (min-width: 540px) {
-  .qui-learn-card-ribbon {
+  .qui-card-label .qui-ribbon{
+    font-size: 0.85em;
+  }
+  .qui-learn-card {
     font-size: 0.6em;
   }
 }
 @media only screen and (min-width: 768px) {
-  .qui-learn-card-ribbon {
+  .qui-card-label .qui-ribbon{
+    font-size: 1.2em;
+  }
+  .qui-learn-card {
     font-size: 0.9em;
   }
 }
 @media only screen and (min-width: 1024px) {
-  .qui-learn-card-ribbon {
+  .qui-card-label .qui-ribbon{
+    font-size: 1.5em;
+  }
+  .qui-learn-card {
     font-size: 1.2em;
   }
 }
