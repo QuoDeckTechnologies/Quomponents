@@ -2,18 +2,13 @@ import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import { motion } from "framer-motion";
-
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import {
     getQuommons,
     getAnimation,
 } from "../../../common/javascripts/helpers";
-
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./SquareCarousel.scss";
@@ -23,7 +18,7 @@ import BannerCard from "../BannerCard/BannerCard.react";
 
 SquareCarousel.propTypes = {
     //=======================================
-    // Component Specific props
+    // Quommon props
     //=======================================
     /**
     SquareCarousel data should be passed in content field and it is required field
@@ -67,8 +62,6 @@ SquareCarousel.defaultProps = {
     //=======================================
     content: [],
     withAnimation: null,
-
-
 };
 
 /**
@@ -118,7 +111,7 @@ export default function SquareCarousel(props) {
                             <div
                                 className={`qui-square-slide`}
                             >
-                                <BannerCard  {...slide.props} content={slide} onClick={()=>{}} />
+                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
                             </div>
                         </div>
                     );
