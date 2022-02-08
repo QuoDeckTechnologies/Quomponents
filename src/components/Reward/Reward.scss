@@ -1,12 +1,12 @@
 /* ================================================= */
 /* Reward Container Definitions */
 /* ================================================= */
-.qui .parent {
+.qui .qui-parent {
     min-width: 6rem;
     display: flexbox;
 }
 
-.qui .upperHalf {
+.qui .qui-upperHalf {
     padding-left: 0.5em;
     text-align: left;
     font-size: 0.9em;
@@ -14,41 +14,20 @@
     color: #3e587a;
 }
 
-.qui .lowerHalf {
+.qui .qui-lowerHalf {
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.qui .lowerHalf .point {
+.qui .qui-lowerHalf .qui-point {
     padding-left: 10px;
     text-align: left;
     font-size: 1.5em;
     color: #ed6e6e;
 }
 
-.qui .coinImage {
+.qui .qui-coinImage {
     width: 2em;
     align-self: start;
-}
-/* ================================================= */
-/* Parent Size Definitions */
-/* ================================================= */
-.qui .size-massive .parent {
-    width: 16rem;
-}
-.qui .size-huge .parent {
-    width: 14rem;
-}
-.qui .size-big .parent {
-    width: 12rem;
-}
-.qui .size-normal .parent {
-    width: 10rem;
-}
-.qui .size-small .parent {
-    width: 8rem;
-}
-.qui .size-tiny .parent {
-    width: 6rem;
 }

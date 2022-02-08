@@ -9,7 +9,6 @@ import {
 import "../../common/stylesheets/common.css";
 import "./Reward.scss";
 import "../../common/stylesheets/overrule.scss";
-import "@fontsource/oswald"; // Defaults to weight 400.
 
 Reward.propTypes = {
     //=======================================
@@ -101,6 +100,7 @@ Reward.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
+- Content props is use to add label and points in the component
 **/
 
 export default function Reward(props) {
@@ -113,14 +113,12 @@ export default function Reward(props) {
     //-------------------------------------------------------------------
     let labelColors = {
         color: props.withColor?.textColor,
-        fontFamily: "Oswald",
     };
     //-------------------------------------------------------------------
     // 3.Use to set Point Color
     //-------------------------------------------------------------------
     let pointColor = {
         color: props.withColor?.accentColor,
-        fontFamily: "Oswald",
     };
     //-------------------------------------------------------------------
     // 4.Use to set Src for Coin Image
@@ -146,6 +144,7 @@ export default function Reward(props) {
     // 6. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
+
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -154,19 +153,19 @@ export default function Reward(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={` ${quommonClasses.childClasses}`}>
-                <div className={`parent ${props.asSize}`}>
-                    <div className="upperHalf" style={labelColors}>
+                <div className={`qui-parent ${props.asSize}`}>
+                    <div className="qui-upperHalf" style={labelColors}>
                         {labelContent?.label}
                     </div>
-                    <div className="lowerHalf">
+                    <div className="qui-lowerHalf">
                         <div>
                             <img
-                                className={`coinImage`}
+                                className={`qui-coinImage`}
                                 src={coinSrc?.icon}
                                 alt="Coin"
                             />
                         </div>
-                        <div className="point" style={pointColor}>
+                        <div className="qui-point" style={pointColor}>
                             {labelContent?.point}
                         </div>
                     </div>

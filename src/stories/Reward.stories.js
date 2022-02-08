@@ -4,7 +4,7 @@ import Reward from "../components/Reward/Reward.react"
 const dictionary = JSON.stringify({
     // en: {
     //     reward: {
-    //         content: "Complete to win",point:"10,000"
+    //         label: "Complete to win",point:"10,000"
     //     },
     // },
     hi: {
@@ -126,7 +126,7 @@ Default.args = {
     asPadded: "normal",
 
     withIcon: {
-        icon: "https://lh3.googleusercontent.com/kG6f_MoL-4JkAaqeCMRbbAwTXByEoDZ59wJFM5WVWpn2z_r-UiNCJPpNp5LWTLMtaBrxn7c=s55",
+        icon: "https://image.freepik.com/free-vector/golden-coin-with-word-bitcoin_1308-9855.jpg?w=740",
     },
     withColor: {
         textColor: "#3e587a",
@@ -195,7 +195,7 @@ AnimationReward.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the label appears in. To make this work for the reward, add a reward:{label} value to the dictionary.",
+                "Use to animate the entry of the Reward with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
             code: `<AnimationReward {...${JSON.stringify(
@@ -214,7 +214,7 @@ PointColor.args = {
     ...Default.args,
     withColor: {
         textColor: "",
-        accentColor: "red",
+        accentColor: "#FF0000",
     },
 };
 PointColor.parameters = {
@@ -239,7 +239,7 @@ export const LabelColor = Template.bind({});
 LabelColor.args = {
     ...Default.args,
     withColor: {
-        textColor: "yellow",
+        textColor: "#1C6600",
         accentColor: "",
     },
 };
