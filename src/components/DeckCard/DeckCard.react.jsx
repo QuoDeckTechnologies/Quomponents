@@ -21,13 +21,11 @@ DeckCard.propTypes = {
       DeckCard data should be passed in content field and it is a required field
       */
     content: PropTypes.shape({
-        image: PropTypes.string,
-        tag: PropTypes.oneOf(["new", "premium", "restricted", "free"]),
-        header: PropTypes.string,
-        content: PropTypes.string,
         title: PropTypes.string,
         description: PropTypes.string,
+        image: PropTypes.string,
         icon: PropTypes.string,
+        tag: PropTypes.oneOf(["new", "premium", "restricted", "free"]),
         topics: PropTypes.arrayOf(
             PropTypes.shape({
                 name: PropTypes.string,
@@ -35,6 +33,8 @@ DeckCard.propTypes = {
             })
         ),
     }).isRequired,
+    isHiddenRibbon: PropTypes.bool,
+
     //=======================================
     // Quommon props
     //=======================================
@@ -93,14 +93,14 @@ DeckCard.propTypes = {
     /**
       Button component must have the onClick function passed as props
       */
-    onClick: PropTypes.func,
+    onClick: PropTypes.func.isRequired,
 };
 
 DeckCard.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: {},
+    isHiddenRibbon: false,
     //=======================================
     // Quommon props
     //=======================================
@@ -141,7 +141,7 @@ export default function DeckCard(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
     //-------------------------------------------------------------------
-    let { content } = props;
+    let { content, isHiddenRibbon, isHidden } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -157,7 +157,6 @@ export default function DeckCard(props) {
     let labelContent = {
         title: content?.title,
         description: content?.description,
-
     };
     let tObj = null;
 
@@ -168,8 +167,8 @@ export default function DeckCard(props) {
     ) {
         tObj = getTranslation(props.withTranslation);
         if (labelContent && tObj) {
-            labelContent.title = tObj.title;
-            labelContent.description = tObj.description;
+            labelContent.title = tObj?.title;
+            labelContent.description = tObj?.description;
         }
     }
     //-------------------------------------------------------------------
@@ -182,22 +181,23 @@ export default function DeckCard(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            onClick={props.onClick}
         >
-            {content && content.tag && content.tag !== "" &&
-                <div className={`qui-deckcard-label`}>
-                    <Ribbon
-                        asEmphasis={content.tag}
-                        withTranslation={props.withTranslation}
-                    />
-                </div>
-            }
-            <div className={`qui ${quommonClasses.parentClasses}`}
+            <div className={`qui-deckcard-label`}>
+                <Ribbon
+                    asFloated="left"
+                    asEmphasis={content?.tag}
+                    withTranslation={props.withTranslation}
+                    isHidden={isHiddenRibbon ? isHiddenRibbon : isHidden}
+
+                />
+            </div>
+            <div className={`qui ${quommonClasses.parentClasses}`} onClick={props.onClick}
+
                 style={colors.cardColors}
             >
                 <div className="qui-left">
                     <div>
-                        <img className="image" src={props.content.image} />
+                        <img className="image" src={props.content?.image} />
                     </div>
                 </div>
                 <div className={`qui-middle`}>

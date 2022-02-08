@@ -1,5 +1,5 @@
 .qui-deckcard {
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 2em;
     box-shadow: 0px 10px 20px #d2d2d2;
     display: flex;
@@ -77,6 +77,14 @@
   width: 9em;
   z-index: 10;
   position: absolute;
+}
+.qui-all {
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+
+
 }
 @media only screen and (min-width: 320px) {
   .qui-deckcard {
