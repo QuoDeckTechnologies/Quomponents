@@ -1,0 +1,226 @@
+.qui-portrait-carousel {
+  overflow: inherit;
+}
+.qui-portrait-carousel .qui-portrait-slide-container {
+  width: 99%;
+  margin-top:3.7em;
+}
+.qui-portrait-carousel .qui-portrait-slide {
+  height: auto;
+  width: 99%;
+}
+.qui-portrait-carousel .qui-slider-card-box {
+  display: none;
+}
+.qui-portrait-carousel .slick-slide {
+  .qui-card-label {
+    display: none;
+  }
+  &.slick-active {
+    transform: scaleY(1);
+    .qui-slider-card-box {
+      display: inline-block;
+    }
+    .qui-card-label {
+      display: inline;
+    }
+  }
+}
+.slick-prev:before, .slick-next:before {
+  font-family: 'slick';
+  font-size: 20px;
+  line-height: 1;
+  opacity: .75;
+  color: #4b4b4b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.slick-next {
+  right: 50px;
+  
+}
+.slick-prev {
+  left: 50px;
+}
+.slick-prev, .slick-next {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 105%;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  transform: translate(0, -50%);
+  cursor:grab;
+  color: rgb(153, 22, 22);
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.qui-portrait-slide-container .qui-banner-card {
+  display: inline-block;
+  font-size: 0.75em;
+  width: 100%;
+  padding-bottom: 75%;
+  border-radius: 1.5em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 2px 4px 3px #949494;
+}
+@media only screen and (min-width: 320px) {
+  .qui-portrait-slide-container .qui-banner-card {
+    width: 88vw;
+    height: 40vh;
+    
+  }
+  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box {
+    position: absolute;
+    font-size: 1em;
+    max-width: 70%;
+    text-align: -webkit-center;
+    margin:auto;
+    left: 0%;
+    right:0%;
+    bottom: 0%;
+    opacity: 0.9;
+    padding: 0.5em 1em;
+    background: rgb(251, 165, 60);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 0em;
+
+    
+  }
+  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box-content {
+    line-height: 1.1;
+    text-align: left;
+    padding: 0.1em 0em;
+    max-width: 99%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box-header {
+   text-align: center;
+  }
+  .qui-portrait-carousel .slick-dots li button:before {
+    font-size: 9px;
+  }
+  .qui-portrait-carousel .slick-dots li.slick-active button:before {
+    font-size: 12px;
+    color: #a6a6a6;
+  }
+  .qui-portrait-carousel .slick-dots li {
+    margin: 0 -4px;
+  }
+  .qui-portrait-carousel .slick-dots{
+    bottom:-34px;
+    left:0%;
+    right:0%;
+    margin:auto;
+    width: fit-content;
+  }
+}
+@media only screen and (min-width: 481px) {
+  .qui-portrait-slide-container .qui-banner-card {
+    width: 59vw;
+    height: 7vh;
+    
+  }
+  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box {
+    position: absolute;
+    font-size: 1.7em;
+    left: 0%;
+    bottom: 12%;
+    opacity: 0.9;
+    padding: 0.5em 0.5em;
+    background: rgb(251, 165, 60);
+    border-radius: 0px 0.8em 0.8em 0px;
+  }
+  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box-content {
+    line-height: 1.1;
+    text-align: left;
+    padding: 0.1em 0em;
+    max-width: 99%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .qui-portrait-carousel .slick-dots li button:before {
+    font-size: 12px;
+  }
+  .qui-portrait-carousel .slick-dots li.slick-active button:before {
+    font-size: 20px;
+    color: #a6a6a6;
+  }
+  .qui-portrait-carousel .slick-dots li {
+    margin: -2px 2px;
+  }
+}
+@media only screen and (min-width: 769px) {
+  .qui-portrait-slide-container .qui-banner-card {
+    width: 57vw;
+    height: 7vh;
+  }
+  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box {
+    position: absolute;
+    font-size: 2.1em;
+    min-width: 85%;
+    left: 0%;
+    bottom: 12%;
+    opacity: 0.9;
+    padding: 0.5em 0.5em;
+    background: rgb(251, 165, 60);
+    border-radius: 0px 0.8em 0.8em 0px;
+  }
+  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box-content {
+    line-height: 1.1;
+    text-align: left;
+    padding: 0.1em 0em;
+    max-width: 99%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .qui-portrait-slide-container .qui-banner-card {
+    width: 60vw;
+    height: 7vh;
+  }
+  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box {
+    position: absolute;
+    font-size: 2.2em;
+    min-width: 85%;
+    left: 0%;
+    bottom: 12%;
+    opacity: 0.9;
+    padding: 0.5em 0.5em;
+    background: rgb(251, 165, 60);
+    border-radius: 0px 0.8em 0.8em 0px;
+  }
+  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box-content {
+    line-height: 1.1;
+    text-align: left;
+    padding: 0.1em 0em;
+    max-width: 99%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .qui-portrait-carousel .slick-dots li button:before {
+    font-size: 12px;
+  }
+  .qui-portrait-carousel .slick-dots li.slick-active button:before {
+    font-size: 24px;
+    color: #a6a6a6;
+  }
+  .qui-portrait-carousel .slick-dots li {
+    margin: -2px 3px;
+  }
+}
