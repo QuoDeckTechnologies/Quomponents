@@ -1,21 +1,19 @@
 import React from "react";
-import ActionButton from "../components/ActionButton/ActionButton.react.jsx";
+import ActionButton from "../components/Buttons/ActionButton/ActionButton.react";
 
 const dictionary = JSON.stringify({
     hi: {
         ActionButton: {
-            rupeeSymbol: "रु.",
-            name: "ख़रीदे",
-            amount: "७५"
+            title: "ख़रीदे",
+            subTitle: "रु. ७५"
         }
     },
 });
-
 export default {
     title: "Design System/ActionButton/ActionButton",
     component: ActionButton,
     argTypes: {
-        isCircle: {
+        isEllipse: {
             table: {
                 category: "is-Toggles",
                 defaultValue: true,
@@ -25,13 +23,9 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    format: "label",
-                    name: "",
-                    amount: "",
-                    rupeeSymbol: "Rs.",
-                    icon: "https://lh3.googleusercontent.com/xLmXTCiuwYkuQ3QNLCMzRJbZstJfKd4JolyOy2UuEekbaDJvqDuc1dATac4lVmAfE3KoP6E=s85",
-                    iconWidth: "4em",
-
+                    title: "",
+                    subTitle: "",
+                    image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png"
                 },
             },
         },
@@ -147,15 +141,11 @@ const Template = (args) => <ActionButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        format: "caption",
-        name: "BUY",
-        amount: "75",
-        rupeeSymbol: "Rs.",
-        icon: "https://lh3.googleusercontent.com/xLmXTCiuwYkuQ3QNLCMzRJbZstJfKd4JolyOy2UuEekbaDJvqDuc1dATac4lVmAfE3KoP6E=s85",
-        iconWidth: "4em",
-
+        title: "BUY",
+        subTitle: "Rs. 75",
+        image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png"
     },
-    isCircle: true,
+    isEllipse: true,
     asVariant: "primary",
     asSize: "normal",
     asFloated: "inline",
@@ -188,35 +178,26 @@ Default.parameters = {
         },
     },
 };
-
-
 export const ActionButtonWithButton = Template.bind({});
 
 ActionButtonWithButton.args = {
     ...Default.args,
     content: {
-        name: "BUY",
-        amount: "75",
-        rupeeSymbol: "Rs.",
-        icon: "",
-        iconWidth: "4em"
+        title: "BUY",
+        subTitle: "Rs. 75",
+        image: ""
     }
 }
-
-
 export const ActionButtonWithImage = Template.bind({});
 
 ActionButtonWithImage.args = {
     ...Default.args,
     content: {
-        name: "BUY",
-        amount: "75",
-        rupeeSymbol: "Rs.",
-        icon: "https://lh3.googleusercontent.com/xLmXTCiuwYkuQ3QNLCMzRJbZstJfKd4JolyOy2UuEekbaDJvqDuc1dATac4lVmAfE3KoP6E=s85",
-        iconWidth: "4em",
+        title: "BUY",
+        subTitle: "Rs. 75",
+        image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png"
     }
 }
-
 // -------------------------------------------------------------
 // Translated ActionButton
 // -------------------------------------------------------------
@@ -224,7 +205,7 @@ export const TranslatedActionButton = Template.bind({});
 TranslatedActionButton.args = {
     ...Default.args,
     content: {
-        icon: ""
+        image: ""
     },
     withTranslation: {
         lang: "hi",
@@ -236,7 +217,7 @@ TranslatedActionButton.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the text appears in. To make this work for the ActionButton, add a content:{text:{name, amount, rupeeSymbol},label} value to the dictionary.",
+                "Use to change the language that the text appears in. To make this work for the ActionButton, add a content:{text:{title, subTitle},label} value to the dictionary.",
         },
         source: {
             code: `<ActionButton {...${JSON.stringify(
@@ -252,17 +233,15 @@ export const AllVariantsTemplate = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {
             content: {
-                name: "BUY",
-                amount: "75",
-                rupeeSymbol: "Rs.",
+                title: "BUY",
+                subTitle: "Rs. 75",
             }
         }),
     };
     const baseObj2 = {
         ...Object.assign({}, Default.args, args, {
             content: {
-                icon: "https://lh3.googleusercontent.com/xLmXTCiuwYkuQ3QNLCMzRJbZstJfKd4JolyOy2UuEekbaDJvqDuc1dATac4lVmAfE3KoP6E=s85",
-                iconWidth: "4em",
+                image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png",
             }
         }),
     };

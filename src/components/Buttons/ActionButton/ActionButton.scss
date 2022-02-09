@@ -1,7 +1,7 @@
 /* ================================================= */
 /* Action Button Styling */
 /* ================================================= */
-.qui .actionButtonContainer{
+.qui .actionButton-container{
     min-height:5rem;
     min-width: 5rem;
     background-color: #E5E5E5;
@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.qui .actionButtonContainerWithNoCircle{
+.qui .actionButton-container-with-noEllipse{
     min-height:5rem;
     min-width: 5rem;    
     display: flex;
@@ -20,8 +20,7 @@
     align-items: center;
 }
 
-.qui .actionButtonContainerWithNoCircle .actionButton,
-.qui .actionButtonContainer .actionButton{
+.actionButton{
     flex-direction: column;
     width: 100%;
     padding:1em 0;
@@ -29,56 +28,61 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); 
 }
 
-.qui .actionButtonContainer .actionButton .actionButton-label, 
-.qui .actionButtonContainerWithNoCircle .actionButton .actionButton-label{
+.actionButton-title{
     font-size: 1.6em;
     padding: 0 5px;
-    &.responsiveLabelSize{
+    &.responsive-title{
         font-size: 1em;
     }
 }
 
-.qui .actionButtonContainer .actionButton .actionButton-amount, 
-.qui .actionButtonContainerWithNoCircle .actionButton .actionButton-amount{
+.actionButton-subTitle{
     font-size: 1em;
     padding: 0 5px;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    &.responsiveAmountSize{
+    &.responsive-subTitle{
         font-size: 0.8em;
     }
+}
+
+.qui .size-tiny .image{
+    width: 3.5em;
+}
+.image{
+    width: 4em;
 }
 
 /* ================================================= */
 /* Container Size Definitions*/
 /* ================================================= */
-.qui .size-massive .actionButtonContainer,
-.qui .size-massive .actionButtonContainerWithNoCircle{
+.qui .size-massive .actionButton-container,
+.qui .size-massive .actionButton-container-with-noEllipse{
     min-height: 16rem;
     min-width:16rem;
 }
-.qui .size-huge .actionButtonContainer,
-.qui .size-huge .actionButtonContainerWithNoCircle{
+.qui .size-huge .actionButton-container,
+.qui .size-huge .actionButton-container-with-noEllipse{
     min-height: 13rem;
     min-width: 13rem;
 }
-.qui .size-big .actionButtonContainer,
-.qui .size-big .actionButtonContainerWithNoCircle {
+.qui .size-big .actionButton-container,
+.qui .size-big .actionButton-container-with-noEllipse {
     min-height: 11rem;
     min-width: 11rem;
 }
-.qui .size-normal .actionButtonContainer,
-.qui .size-normal .actionButtonContainerWithNoCircle {
+.qui .size-normal .actionButton-container,
+.qui .size-normal .actionButton-container-with-noEllipse {
     min-height: 9rem;
     min-width: 9rem;
 
 }
-.qui .size-small .actionButtonContainer,
-.qui .size-small .actionButtonContainerWithNoCircle{
+.qui .size-small .actionButton-container,
+.qui .size-small .actionButton-container-with-noEllipse{
     min-height: 7rem;
     min-width: 7rem;
 }
-.qui .size-tiny .actionButtonContainer,
-.qui .size-tiny .actionButtonContainerWithNoCircle {
+.qui .size-tiny .actionButton-container,
+.qui .size-tiny .actionButton-container-with-noEllipse {
     min-height:5rem;
     min-width: 5rem;
 }

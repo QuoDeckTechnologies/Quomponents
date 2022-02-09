@@ -5,40 +5,32 @@ import {
     getQuommons,
     getTranslation,
     getAnimation,
-} from "../../common/javascripts/helpers";
+} from "../../../common/javascripts/helpers.js";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../common/stylesheets/common.css";
+import "../../../common/stylesheets/common.css";
 import "./ActionButton.scss";
-import "../../common/stylesheets/overrule.scss";
-
-import "@fontsource/oswald";
-import "@fontsource/quicksand";
+import "../../../common/stylesheets/overrule.scss";
 
 ActionButton.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+      /**
+    Use to define title, sub-title and image of component
+    */
+    content: PropTypes.shape({
+        title: PropTypes.string,
+        subTitle: PropTypes.string,
+        image: PropTypes.string
+    }).isRequired,
+    /**
+    Use to define the visibility of Background Ellipse 
+    */
+    isEllipse: PropTypes.bool,
 
     // Quommon props
     //=======================================
-
-    /**
-    Use to define content of component 
-    */
-    content: PropTypes.shape({
-        name: PropTypes.string,
-        amount: PropTypes.string,
-        rupeeSymbol: PropTypes.string,
-        icon: PropTypes.string,
-        iconWidth: PropTypes.string,
-    }),
-
-    /**
-    Use to define circle status of component 
-    */
-    isCircle: PropTypes.bool,
-
     /**
     Use to define standard component type
     */
@@ -128,23 +120,21 @@ ActionButton.propTypes = {
 ActionButton.defaultProps = {
     // Component Specific props
     //=======================================
+    content: null,
+    isEllipse: true,
 
     // Quommon props
     //=======================================
-    content: null,
-    isCircle: true,
     asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
     asFloated: "inline",
     asAligned: "center",
-
     withColor: null,
     withIcon: null,
     withLabel: null,
     withAnimation: null,
     withTranslation: null,
-
     isHidden: false,
     isDisabled: false,
     isFluid: false,
@@ -184,15 +174,13 @@ export default function ActionButton(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj?.name) labelContent.name = tObj.name;
-        if (labelContent && tObj?.amount) labelContent.amount = tObj.amount;
-        if (labelContent && tObj?.rupeeSymbol) labelContent.rupeeSymbol = tObj.rupeeSymbol;
+        if (labelContent && tObj?.title) labelContent.title = tObj.title;
+        if (labelContent && tObj?.subTitle) labelContent.subTitle = tObj.subTitle;
     }
 
     //-------------------------------------------------------------------
     // 4. Get the custom button styling of the component
     //-------------------------------------------------------------------
-
     let buttonStyle = {
         color: props.withColor?.textColor,
         backgroundColor: props.withColor?.backgroundColor,
@@ -202,55 +190,48 @@ export default function ActionButton(props) {
     //-------------------------------------------------------------------
     // 5. Get the Status of Component
     //-------------------------------------------------------------------
-
-
-    const actionButtonBackground = (isCircle) => {
-
-        //With cirlce and without circle and responsive font size classes definition
-        let actionButtonStyle, label, amount, labelStyle, amountStyle;
-        label = labelContent?.name;
-        amount = labelContent.amount;
-
-        actionButtonStyle = isCircle? "actionButtonContainer" : "actionButtonContainerWithNoCircle";
-        if(label.length >5 || amount.length > 5){
-            labelStyle = "responsiveLabelSize"
-            amountStyle= "responsiveAmountSize"
+    const actionButtonBackground = (isEllipse) => {
+        let actionButtonStyle, title, subTitle, titleStyle, subTitleStyle;
+        title =  labelContent?.title;
+        subTitle =  labelContent?.subTitle;
+        actionButtonStyle = isEllipse? "actionButton-container" : "actionButton-container-with-noEllipse";
+        
+        if(title?.length >5 || subTitle?.length > 7){
+            titleStyle = "responsive-title"
+            subTitleStyle= "responsive-subTitle"
         }
-        if (labelContent?.icon) {
+        if (labelContent?.image) {
             return (
                 <div className={actionButtonStyle}>
                     <img
-                        className={`actionButtonWithImage`}
+                        className={`image`}
                         alt="img"
-                        src={labelContent ? `${labelContent.icon}` : ""}
-                        style={{ width: labelContent.iconWidth ? `${labelContent.iconWidth}` : "4em" }}
+                        src={labelContent ? `${labelContent.image}` : ""}
                     />
                 </div>
             )
         } else {
             return (
                 <div className={actionButtonStyle}>
-                    <div className={`qui-btn variant-${props.asVariant} actionButton `} style={buttonStyle} onClick={props.onClick}>
-                        <div className={`actionButton-label ${labelStyle}`}>
-                            {labelContent?.name}
+                    <div className={`qui-btn variant-${props.asVariant} actionButton`} style={buttonStyle} onClick={props.onClick}>
+                        <div className={`actionButton-title ${titleStyle}`}>
+                            {labelContent?.title}
                         </div>
-                        <div className={`actionButton-amount ${amountStyle}`}>
-                            {labelContent.rupeeSymbol}{" "}
-                            {labelContent?.amount}
+                        <div className={`actionButton-subTitle ${subTitleStyle}`}>
+                            {labelContent?.subTitle}
                         </div>
                     </div>
                 </div>
             )
         }
     }
-
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses}`}>
-                {actionButtonBackground(props.isCircle)}
+                {actionButtonBackground(props.isEllipse)}
             </div>
         </motion.div>
     );
