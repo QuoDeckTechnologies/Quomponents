@@ -9,8 +9,8 @@ export default {
         content: [{
             image: "",
             tag: "",
+            topics: [],
             header: "",
-            content: "",
             props: {}
         }],
     },
@@ -54,11 +54,6 @@ let dataprops = {
         hoverBackgroundColor: "",
         hoverTextColor: "",
     },
-    withAnimation: {
-        animation: "slideLeft",
-        duration: 0.5,
-        delay: 0,
-    },
     isDisabled: false,
     isHidden: false
 }
@@ -71,9 +66,9 @@ export const Default = Template.bind({});
 Default.args = {
     content: [{
         image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
-        content: "",
         header: "Balloon Burst",
         tag: "new",
+        checked: true,
         props: {
             ...dataprops,
             asVariant: "secondary"
@@ -82,8 +77,8 @@ Default.args = {
     {
         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
         tag: "premium",
+        checked: true,
         header: "Cityscape",
-        content: "",
         props: {
             ...dataprops,
         }
@@ -91,18 +86,18 @@ Default.args = {
     {
         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
         tag: "restricted",
+        checked: false,
         header: "GhostBuster",
-        content: "",
         props: {
             ...dataprops,
         }
     }],
 
-    withAnimation: {
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-    },
+    // withAnimation: {
+    //     animation: "slideRight",
+    //     duration: 0.5,
+    //     delay: 0,
+    // },
 
 };
 Default.parameters = {

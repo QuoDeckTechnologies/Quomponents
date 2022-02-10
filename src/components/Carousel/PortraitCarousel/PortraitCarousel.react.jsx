@@ -31,8 +31,12 @@ PortraitCarousel.propTypes = {
             "restricted",
             "free"
         ]),
+        topics: PropTypes.arrayOf(
+            PropTypes.shape({
+                checked: PropTypes.bool,
+            })
+        ),
         header: PropTypes.string,
-        content: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
 
@@ -54,6 +58,7 @@ PortraitCarousel.propTypes = {
         duration: PropTypes.number,
         delay: PropTypes.number,
     }),
+
 
 };
 
@@ -109,9 +114,15 @@ export default function PortraitCarousel(props) {
                     return (
                         <div className="qui-portrait-slide-container"
                             key={"slider-" + index + Math.random()}>
-                            <div
-                                className={`qui-portrait-slide`}
-                            >
+
+
+                            <div className={`qui-portrait-slide`}>
+                                {slide.checked && <div className="qui-mid-circle"  style={{ accentColor: props.withColor?.accentColor }}>
+                                <div className="qui-checkbox">
+                                        <i className = {slide.checked ? "fas fa-check-square" : "far fa-square"}>
+                                        </i>
+                                    </div>
+                                </div>}
                                 <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
                             </div>
                         </div>
