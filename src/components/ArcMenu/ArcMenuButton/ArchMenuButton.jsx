@@ -124,13 +124,13 @@ export default function ArcMenuButton(props) {
       <div className={quommonClasses.childClasses}>
         <div className={`qui-arc`} style={{ borderColor: colors.borderColor }}>
           <button
-            className={`qui-arc-menu-button ${quommonClasses.childClasses} ${props.even ? `variant-${props.asVariant}-text` : 'qui-btn'}`}
-            style={ props.even ? {backgroundColor:'white'} : { backgroundColor: colors.backgroundColor }}
+            className={`qui-arc-menu-button ${quommonClasses.childClasses} ${props.odd ? `variant-${props.asVariant}-text` : 'qui-btn'}`}
+            style={ props.odd ? {backgroundColor:'white'} : { backgroundColor: colors.backgroundColor }}
             onClick={(e)=>props.onClick(e)}
           >
             <i
               className={props.icon ? props.icon : "fas fa-desktop"}
-              style={ props.even ? {color:colors.backgroundColor} : { color: colors.color }}
+              style={ props.odd ? {color:colors.backgroundColor} : { color: colors.color }}
             ></i>
           </button>
         </div>

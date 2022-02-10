@@ -134,7 +134,7 @@ export default function ArcMenu(props) {
     >
       <div className="qui-arc-menu-list">
         {_.map(content?.icons, (icon, i) => {
-          return <ArcMenuButton {...props} icon={icon} even={i%2} key={i} />;
+          return <ArcMenuButton {...props} icon={icon} odd={i%2} key={i} />;
         })}
       </div>
     </motion.div>
