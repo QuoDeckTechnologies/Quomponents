@@ -24,6 +24,24 @@ export default {
             },
         },
     },
+    isDisabled: {
+        table: {
+            category: "is-Toggles",
+            defaultValue: false,
+        },
+    },
+    isHidden: {
+        table: {
+            category: "is-Toggles",
+            defaultValue: false,
+        },
+    },
+    onClick: {
+        table: {
+            category: "Events",
+            defaultValue: null,
+        },
+    },
     decorators: [
         (story) => (
             <div
@@ -156,7 +174,6 @@ SquareWrapperCarouselWithoutTag.args = {
     content: [{
         image: " https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
         header: "The Negotiation Room",
-        content: "Play the contest and win to earn Flipkart vouchers.",
         props: {
             ...dataprops,
             asVariant: "secondary"
@@ -165,7 +182,6 @@ SquareWrapperCarouselWithoutTag.args = {
     {
         image: "https://i.pinimg.com/564x/68/ed/88/68ed881d5ff0dbe232ff8d4d2e186a99.jpg",
         header: "The Negotiation Room",
-        content: "  ",
         props: {
             ...dataprops,
         }
@@ -173,7 +189,6 @@ SquareWrapperCarouselWithoutTag.args = {
     {
         image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
         header: "What is Negotiation Room?",
-        content: "Play the contest and win to earn Flipkart vouchers",
         props: {
             ...dataprops,
         }

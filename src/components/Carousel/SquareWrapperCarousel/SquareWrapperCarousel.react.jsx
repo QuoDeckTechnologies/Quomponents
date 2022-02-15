@@ -58,6 +58,10 @@ SquareWrapperCarousel.propTypes = {
         duration: PropTypes.number,
         delay: PropTypes.number,
     }),
+    /**
+    Button component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 
 
 };
@@ -109,6 +113,8 @@ export default function SquareWrapperCarousel(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
+            onClick={props.onClick}
+
         >
             <Slider ref={sliderRef} {...settings}>
                 {_.map(content, (slide, index) => {
@@ -118,8 +124,8 @@ export default function SquareWrapperCarousel(props) {
 
 
                             <div className={`qui-SquareWrapper-slide `}>
-                                {slide.checked && <div className="qui-mid-circle"  style={{ accentColor: props.withColor?.accentColor }}>
-                                <div className="qui-checkbox">
+                                {slide.checked && <div className="qui-mid-circle" style={{backgroundColor:slide.props.withColor.accentColor}}>
+                                <div className="qui-checkbox" style={{color:slide.props.withColor.accentColor}}>
                                         <i className = {slide.checked ? "fas fa-check-square" : "far fa-square"}>
                                         </i>
                                     </div>

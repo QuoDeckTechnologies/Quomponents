@@ -54,6 +54,10 @@ PortraitCarousel.propTypes = {
         duration: PropTypes.number,
         delay: PropTypes.number,
     }),
+    /**
+    Button component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 
 
 };
@@ -113,8 +117,8 @@ export default function PortraitCarousel(props) {
                             <div className="qui-portrait-slide-container qui-banner"
                                 key={"slider-" + index + Math.random()}>
                                 <div className={`qui-portrait-slide ${quommonClasses.childClasses} `}>
-                                    {slide.selected && <div className="qui-mid-circle"  >
-                                        <div className="qui-checkbox">
+                                    {slide.selected && <div className="qui-mid-circle" style={{backgroundColor:slide.props.withColor.accentColor}} >
+                                        <div className="qui-checkbox" style={{color:slide.props.withColor.accentColor}}>
                                             <i className={slide.selected ? "fas fa-check-square" : "far fa-square"}>
                                             </i>
                                         </div>

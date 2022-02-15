@@ -36,6 +36,24 @@ export default {
             </div>
         ),
     ],
+    isDisabled: {
+        table: {
+            category: "is-Toggles",
+            defaultValue: false,
+        },
+    },
+    isHidden: {
+        table: {
+            category: "is-Toggles",
+            defaultValue: false,
+        },
+    },
+    onClick: {
+        table: {
+            category: "Events",
+            defaultValue: null,
+        },
+    },
     parameters: {
         componentSubheader: "Displays a banner carousel.",
         a11y: { disable: true },
@@ -51,8 +69,6 @@ let dataprops = {
         backgroundColor: "",
         accentColor: "",
         textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
     },
     isDisabled: false,
     isHidden: false
@@ -71,7 +87,12 @@ Default.args = {
         checked: true,
         props: {
             ...dataprops,
-            asVariant: "secondary"
+            asVariant: "secondary",
+            withColor: {
+                backgroundColor: "red",
+                accentColor: "purple",
+                textColor: "yellow",
+            },
         }
     },
     {
@@ -81,6 +102,11 @@ Default.args = {
         header: "Cityscape",
         props: {
             ...dataprops,
+            withColor: {
+                backgroundColor: "#454545",
+                accentColor: "#666666",
+                textColor: "yellow",
+            },
         }
     },
     {
@@ -90,6 +116,11 @@ Default.args = {
         header: "GhostBuster",
         props: {
             ...dataprops,
+            withColor: {
+                backgroundColor: "blue",
+                accentColor: "yellow",
+                textColor: "red",
+            },
         }
     }],
 
@@ -156,7 +187,6 @@ LandscapeCarouselWithoutTag.args = {
     content: [{
         image: " https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
         header: "The Negotiation Room",
-        content: "Play the contest and win to earn Flipkart vouchers.",
         props: {
             ...dataprops,
             asVariant: "secondary"
@@ -165,7 +195,6 @@ LandscapeCarouselWithoutTag.args = {
     {
         image: "https://i.pinimg.com/564x/68/ed/88/68ed881d5ff0dbe232ff8d4d2e186a99.jpg",
         header: "The Negotiation Room",
-        content: "  ",
         props: {
             ...dataprops,
         }
@@ -173,7 +202,6 @@ LandscapeCarouselWithoutTag.args = {
     {
         image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
         header: "What is Negotiation Room?",
-        content: "Play the contest and win to earn Flipkart vouchers",
         props: {
             ...dataprops,
         }

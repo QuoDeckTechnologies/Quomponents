@@ -58,6 +58,10 @@ LandscapeCarousel.propTypes = {
         duration: PropTypes.number,
         delay: PropTypes.number,
     }),
+    /**
+    Button component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 
 
 };
@@ -68,8 +72,14 @@ LandscapeCarousel.defaultProps = {
     content: [],
     withAnimation: null,
 };
-
-
+function getColors(colors) {
+    let colorStyle = {
+        accentColors: {
+            backgroundColor: colors.accentColor,
+        }
+    }
+    return colorStyle;
+}
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
@@ -82,7 +92,11 @@ export default function LandscapeCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
     let quommonClasses = getQuommons(props, "Landscape-carousel");
-
+    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
+    //-------------------------------------------------------------------
+    // 3. Set the component colors
+    //-------------------------------------------------------------------
+    let colors = props.withColor ? getColors(props.withColor) : {};
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -105,32 +119,34 @@ export default function LandscapeCarousel(props) {
     // ========================= Render Function =================================
     return (
         <div className="Landscape-container">
-        <motion.div
-            initial={animate.from}
-            animate={animate.to}
-            className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
-        >
-            <Slider ref={sliderRef} {...settings}>
-                {_.map(content, (slide, index) => {
-                    return (
-                        <div className="qui-Landscape-slide-container qui-banner"
-                            key={"slider-" + index + Math.random()}>
+            <motion.div
+                initial={animate.from}
+                animate={animate.to}
+                className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
+                onClick={props.onClick}
+
+            >
+                <Slider ref={sliderRef} {...settings}>
+                    {_.map(content, (slide, index) => {
+                        return (
+                            <div className="qui-Landscape-slide-container qui-banner"
+                                key={"slider-" + index + Math.random()}>
 
 
-                            <div className={`qui-Landscape-slide `}>
-                                {slide.checked && <div className="qui-mid-circle"  style={{ accentColor: props.withColor?.accentColor }}>
-                                <div className="qui-checkbox">
-                                        <i className = {slide.checked ? "fas fa-check-square" : "far fa-square"}>
-                                        </i>
-                                    </div>
-                                </div>}
-                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
+                                <div className={`qui-Landscape-slide `}>
+                                    {slide.checked && <div className="qui-mid-circle" style={{backgroundColor:slide.props.withColor.accentColor}}>
+                                        <div className="qui-checkbox" style={{color:slide.props.withColor.textColor}}>
+                                            <i className={slide.checked ? "fas fa-check-square" : "far fa-square"}>
+                                            </i>
+                                        </div>
+                                    </div>}
+                                    <BannerCard  {...slide.props} content={slide} />
+                                </div>
                             </div>
-                        </div>
-                    );
-                })}
-            </Slider>
-        </motion.div>
+                        );
+                    })}
+                </Slider>
+            </motion.div>
         </div>
     );
 }

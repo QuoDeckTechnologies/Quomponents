@@ -54,6 +54,20 @@ HtmlCarousel.propTypes = {
         delay: PropTypes.number,
     }),
 
+    /**
+    Use to enable/disable the component
+    */
+    isDisabled: PropTypes.bool,
+    /**
+    Use to show/hide the component
+    */
+    isHidden: PropTypes.bool,
+
+    /**
+    Button component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
+
 };
 
 HtmlCarousel.defaultProps = {
@@ -61,6 +75,8 @@ HtmlCarousel.defaultProps = {
     //=======================================
     content: [],
     withAnimation: null,
+    isDisabled: false,
+    isHidden: false
 };
 
 
@@ -101,7 +117,8 @@ export default function HtmlCarousel(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui qui-top ${quommonClasses.parentClasses}`}
+            className={`qui ${quommonClasses.parentClasses}`}
+            onClick={props.onClick}
         >
             <Slider ref={sliderRef} {...settings}>
                 {_.map(content, (slide, index) => {
@@ -109,7 +126,7 @@ export default function HtmlCarousel(props) {
                         <div className="qui-Html-slide-container"
                             key={"slider-" + index + Math.random()}>
                             <div className={`qui-Html-slide`}>
-                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
+                                <BannerCard  {...slide.props} content={slide} isHidden={slide.props.isHidden}/>
                             </div>
                         </div>
                     );
