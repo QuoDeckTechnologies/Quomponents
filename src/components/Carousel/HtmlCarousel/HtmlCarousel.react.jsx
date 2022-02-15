@@ -11,17 +11,17 @@ import {
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./PortraitCarousel.scss";
+import "./HtmlCarousel.scss";
 import "../../../common/stylesheets/overrule.scss";
 
 import BannerCard from "../BannerCard/BannerCard.react";
 
-PortraitCarousel.propTypes = {
+HtmlCarousel.propTypes = {
     //=======================================
     // Quommon props
     //=======================================
     /**
-    PortraitCarousel data should be passed in content field and it is required field
+    HtmlCarousel data should be passed in content field and it is required field
     */
     content: PropTypes.arrayOf(PropTypes.shape({
         image: PropTypes.string,
@@ -31,8 +31,7 @@ PortraitCarousel.propTypes = {
             "restricted",
             "free"
         ]),
-        selected: PropTypes.bool,
-        header: PropTypes.string,
+        content: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
 
@@ -55,15 +54,15 @@ PortraitCarousel.propTypes = {
         delay: PropTypes.number,
     }),
 
-
 };
 
-PortraitCarousel.defaultProps = {
+HtmlCarousel.defaultProps = {
     // Component Specific props
     //=======================================
     content: [],
     withAnimation: null,
 };
+
 
 /**
 ## Notes
@@ -73,10 +72,10 @@ PortraitCarousel.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
-export default function PortraitCarousel(props) {
+export default function HtmlCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
-    let quommonClasses = getQuommons(props, "portrait-carousel");
+    let quommonClasses = getQuommons(props, "Html-carousel");
 
     //-------------------------------------------------------------------
     // 4. Get animation of the component
@@ -96,36 +95,26 @@ export default function PortraitCarousel(props) {
         pauseOnHover: true,
         centerPadding: "0%",
         swipeToSlide: true,
-        
     };
     // ========================= Render Function =================================
     return (
-        <div className="portrait-container">
-            <motion.div
-                initial={animate.from}
-                animate={animate.to}
-                className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
-                onClick={props.onClick}
-            >
-                <Slider ref={sliderRef} {...settings}>
-                    {_.map(content, (slide, index) => {
-                        return (
-                            <div className="qui-portrait-slide-container qui-banner"
-                                key={"slider-" + index + Math.random()}>
-                                <div className={`qui-portrait-slide ${quommonClasses.childClasses} `}>
-                                    {slide.selected && <div className="qui-mid-circle"  >
-                                        <div className="qui-checkbox">
-                                            <i className={slide.selected ? "fas fa-check-square" : "far fa-square"}>
-                                            </i>
-                                        </div>
-                                    </div>}
-                                    <BannerCard  {...slide.props} content={slide} onClick={props.onClick} className="kp" />
-                                </div>
+        <motion.div
+            initial={animate.from}
+            animate={animate.to}
+            className={`qui qui-top ${quommonClasses.parentClasses}`}
+        >
+            <Slider ref={sliderRef} {...settings}>
+                {_.map(content, (slide, index) => {
+                    return (
+                        <div className="qui-Html-slide-container"
+                            key={"slider-" + index + Math.random()}>
+                            <div className={`qui-Html-slide`}>
+                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
                             </div>
-                        );
-                    })}
-                </Slider>
-            </motion.div>
-        </div>
+                        </div>
+                    );
+                })}
+            </Slider>
+        </motion.div>
     );
 }

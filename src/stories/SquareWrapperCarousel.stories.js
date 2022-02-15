@@ -1,10 +1,10 @@
 import React from "react";
-import PortraitCarousel from "../components/Carousel/PortraitCarousel/PortraitCarousel.react";
+import SquareWrapperCarousel from "../components/Carousel/SquareWrapperCarousel/SquareWrapperCarousel.react";
 
 
 export default {
-    title: "Design System/Carousel/PortraitCarousel",
-    component: PortraitCarousel,
+    title: "Design System/Carousel/SquareWrapperCarousel",
+    component: SquareWrapperCarousel,
     argTypes: {
         content: [{
             image: "",
@@ -46,11 +46,13 @@ export default {
 };
 
 let dataprops = {
-    asVariant: "",
+    asVariant: "warning",
     withColor: {
         backgroundColor: "",
         accentColor: "",
         textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
     },
     isDisabled: false,
     isHidden: false
@@ -59,14 +61,14 @@ let dataprops = {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <PortraitCarousel {...args} />;
+const Template = (args) => <SquareWrapperCarousel {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: [{
         image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
         header: "Balloon Burst",
         tag: "new",
-        selected: true,
+        checked: true,
         props: {
             ...dataprops,
             asVariant: "secondary"
@@ -75,7 +77,7 @@ Default.args = {
     {
         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
         tag: "premium",
-        selected: true,
+        checked: true,
         header: "Cityscape",
         props: {
             ...dataprops,
@@ -84,7 +86,7 @@ Default.args = {
     {
         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
         tag: "restricted",
-        selected: false,
+        checked: false,
         header: "GhostBuster",
         props: {
             ...dataprops,
@@ -101,15 +103,15 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<PortraitCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<SquareWrapperCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
 // -------------------------------------------------------------
-// PortraitCarouselWithoutBox
+// SquareWrapperCarouselWithoutBox
 // -------------------------------------------------------------
-export const PortraitCarouselWithoutBox = Template.bind({});
-PortraitCarouselWithoutBox.args = {
+export const SquareWrapperCarouselWithoutBox = Template.bind({});
+SquareWrapperCarouselWithoutBox.args = {
     content: [{
         image: "https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
         tag: "new",
@@ -134,23 +136,23 @@ PortraitCarouselWithoutBox.args = {
     }],
 
 };
-PortraitCarouselWithoutBox.parameters = {
+SquareWrapperCarouselWithoutBox.parameters = {
     docs: {
         description: {
             story: "We can see the Square Carousel without any Box Header and Content",
         },
         source: {
-            code: `<PortraitCarousel {...${JSON.stringify(PortraitCarouselWithoutBox.args, null, 2)}}/>`,
+            code: `<SquareWrapperCarousel {...${JSON.stringify(SquareWrapperCarouselWithoutBox.args, null, 2)}}/>`,
         },
     },
 };
 
 
 // -------------------------------------------------------------
-// PortraitCarouselWithoutTag
+// SquareWrapperCarouselWithoutTag
 // -------------------------------------------------------------
-export const PortraitCarouselWithoutTag = Template.bind({});
-PortraitCarouselWithoutTag.args = {
+export const SquareWrapperCarouselWithoutTag = Template.bind({});
+SquareWrapperCarouselWithoutTag.args = {
     content: [{
         image: " https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
         header: "The Negotiation Room",
@@ -178,20 +180,20 @@ PortraitCarouselWithoutTag.args = {
     }],
 
 };
-PortraitCarouselWithoutTag.parameters = {
+SquareWrapperCarouselWithoutTag.parameters = {
     docs: {
         description: {
             story: "We can see the Square Carousel without any Tag",
         },
         source: {
-            code: `<PortraitCarousel {...${JSON.stringify(PortraitCarouselWithoutTag.args, null, 2)}}/>`,
+            code: `<SquareWrapperCarousel {...${JSON.stringify(SquareWrapperCarouselWithoutTag.args, null, 2)}}/>`,
         },
     },
 };
 
 
-export const AnimatedPortraitCarousel = Template.bind({});
-AnimatedPortraitCarousel.args = {
+export const AnimatedSquareWrapperCarousel = Template.bind({});
+AnimatedSquareWrapperCarousel.args = {
     ...Default.args,
     withAnimation: {
         animation: "slideRight",
@@ -199,15 +201,15 @@ AnimatedPortraitCarousel.args = {
         delay: 0,
     },
 };
-AnimatedPortraitCarousel.parameters = {
+AnimatedSquareWrapperCarousel.parameters = {
     docs: {
         description: {
             story:
-                "Use to animate the entry of the PortraitCarousel with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+                "Use to animate the entry of the SquareWrapperCarousel with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<AnimatedPortraitCarousel {...${JSON.stringify(
-                AnimatedPortraitCarousel.args,
+            code: `<AnimatedSquareWrapperCarousel {...${JSON.stringify(
+                AnimatedSquareWrapperCarousel.args,
                 null,
                 2
             )}}/>`,

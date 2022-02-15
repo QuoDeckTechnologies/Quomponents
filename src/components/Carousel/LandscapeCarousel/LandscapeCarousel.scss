@@ -1,28 +1,26 @@
-.qui-portrait-carousel {
+.qui-Landscape-carousel {
   overflow: inherit;
 }
 
-.qui .qui-portrait-slide .qui-checkbox i {
+.qui .qui-checkbox i {
   position: absolute;
   bottom: 18%;
   right: 0%;
   left: 0%;
   margin: auto;
   font-size: 1.2em;
-}
-.qui .qui-portrait-slide .fa-check-square {
   filter: drop-shadow(0px 0px 0px #d2d2d2);
 }
-.qui-portrait-carousel .qui-portrait-slide-container {
-  margin-top: 2em;
+.qui-Landscape-carousel .qui-Landscape-slide-container {
+  margin-top: 3em;
 }
-.qui-portrait-carousel .qui-portrait-slide {
+.qui-Landscape-carousel .qui-Landscape-slide {
   position: relative;
 }
-.qui-portrait-carousel .qui-slider-card-box {
+.qui-Landscape-carousel .qui-slider-card-box {
   display: none;
 }
-.qui-portrait-carousel .slick-slide {
+.qui-Landscape-carousel .slick-slide {
   .qui-card-label {
     display: none;
   }
@@ -38,20 +36,16 @@
 }
 
 @media only screen and (min-width: 320px) {
-  .qui-portrait-carousel .qui-portrait-slide-container {
-    margin-top: 2em;
-  }
-  .qui-portrait-slide-container .qui-portrait-slide .qui-banner-card {
+  .qui-Landscape-slide .qui-banner-card {
     display: inline-block;
     font-size: 0.75em;
     width: 100%;
-    padding-bottom: 80vh;
     border-radius: 1.5em;
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: 0px 0px 0px 0px #666666;
   }
-  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box {
+  .qui-Landscape-slide-container .qui-banner-card .qui-slider-card-box {
     position: absolute;
     font-size: 1em;
     max-width: 70%;
@@ -60,16 +54,34 @@
     left: 0%;
     right: 0%;
     bottom: 0%;
-    opacity: 1;
+    opacity: 0.9;
     padding: 0.5em 1em;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
     border-bottom-right-radius: 0em;
   }
-  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box-header {
+  .qui-Landscape-slide-container .qui-banner-card .qui-slider-card-box-header {
     text-align: center;
   }
-  .qui-portrait-slide .qui-mid-circle {
+  .qui-Landscape-carousel .slick-dots li button:before {
+    font-size: 9px;
+  }
+  .qui-Landscape-carousel .slick-dots li.slick-active button:before {
+    font-size: 12px;
+    color: #a6a6a6;
+  }
+  .qui-Landscape-carousel .slick-dots li {
+    margin: 0 -4px;
+  }
+  .qui-Landscape-carousel .slick-dots {
+    bottom: -34px;
+    left: 0%;
+    right: 0%;
+    margin: auto;
+    width: fit-content;
+  }
+
+  .qui-Landscape-slide .qui-mid-circle {
     width: 70px;
     height: 35px; /* as the half of the width */
     background-color: gold;
@@ -79,9 +91,19 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 39.5px;
+    bottom: 40px;
     margin: auto;
     z-index: 1;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    font-family: "slick";
+    font-size: 30px;
+    line-height: 1;
+    opacity: 0.75;
+    color: #4b4b4b;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   .slick-next {
     right: 5%;
@@ -103,47 +125,34 @@
     outline: none;
     background: transparent;
   }
-  .slick-prev:before,
-  .slick-next:before {
-    font-family: "slick";
-    font-size: 30px;
-    line-height: 1;
-    opacity: 0.75;
-    color: #16c59f;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  .qui-portrait-carousel .slick-dots li button:before {
-    font-size: 9px;
-  }
-  .qui-portrait-carousel .slick-dots li.slick-active button:before {
-    font-size: 12px;
-    color: #48b41e;
-  }
-  .qui-portrait-carousel .slick-dots li {
-    margin: 0 -4px;
-  }
-  .qui-portrait-carousel .slick-dots {
-    bottom: -34px;
-    left: 0%;
-    right: 0%;
-    margin: auto;
-    width: fit-content;
-  }
 }
 
 @media only screen and (min-width: 481px) {
-  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box-header {
-    text-align: center;
-    font-size: 1.5em;
+  .qui-Landscape-slide .qui-banner-card {
+    font-size: 1em;
+  }
+  .qui-Landscape-slide .qui-mid-circle {
+    width: 80px;
+    height: 40px; /* as the half of the width */
+    background-color: gold;
+    border-top-left-radius: 100px; /* 100px of height + 10px of border */
+    border-top-right-radius: 100px; /* 100px of height + 10px of border */
+    border-bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 51px;
+    margin: auto;
+    z-index: 1;
   }
 
-  .qui-portrait-slide-container .qui-ribbon-container {
-    font-size: 1.5em;
-    font-weight: bold;
-    text-transform: capitalize;
+}
+
+@media only screen and (min-width: 769px) {
+  .qui-Landscape-slide .qui-banner-card {
+    font-size: 1.3em;
   }
-  .qui-portrait-slide .qui-mid-circle {
+  .qui-Landscape-slide .qui-mid-circle {
     width: 100px;
     height: 50px; /* as the half of the width */
     background-color: gold;
@@ -153,34 +162,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 47px;
-    margin: auto;
-    z-index: 1;
-  }
-}
-
-@media only screen and (min-width: 769px) {
-  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box-header {
-    text-align: center;
-    font-size: 1.7em;
-  }
-
-  .qui-portrait-slide-container .qui-ribbon-container {
-    font-size: 1.7em;
-    font-weight: bold;
-    text-transform: capitalize;
-  }
-  .qui-portrait-slide .qui-mid-circle {
-    width: 110px;
-    height: 55px; /* as the half of the width */
-    background-color: gold;
-    border-top-left-radius: 100px; /* 100px of height + 10px of border */
-    border-top-right-radius: 100px; /* 100px of height + 10px of border */
-    border-bottom: 0;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 51px;
+    bottom: 66px;
     margin: auto;
     z-index: 1;
   }

@@ -1,16 +1,16 @@
+import { withTheme } from "@emotion/react";
 import React from "react";
-import PortraitCarousel from "../components/Carousel/PortraitCarousel/PortraitCarousel.react";
+import HtmlCarousel from "../components/Carousel/HtmlCarousel/HtmlCarousel.react";
 
 
 export default {
-    title: "Design System/Carousel/PortraitCarousel",
-    component: PortraitCarousel,
+    title: "Design System/Carousel/HtmlCarousel",
+    component: HtmlCarousel,
     argTypes: {
         content: [{
             image: "",
             tag: "",
-            topics: [],
-            header: "",
+            content: "",
             props: {}
         }],
     },
@@ -46,12 +46,19 @@ export default {
 };
 
 let dataprops = {
-    asVariant: "",
+    asVariant: "warning",
     withColor: {
-        backgroundColor: "",
+        backgroundColor:"",
         accentColor: "",
         textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
     },
+    // withAnimation: {
+    //     animation: "slideLeft",
+    //     duration: 0.5,
+    //     delay: 0,
+    // },
     isDisabled: false,
     isHidden: false
 }
@@ -59,35 +66,54 @@ let dataprops = {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <PortraitCarousel {...args} />;
+const Template = (args) => <HtmlCarousel {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: [{
         image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
-        header: "Balloon Burst",
+        content: "This is HtmlCarousel, Imported from banner card.",
         tag: "new",
-        selected: true,
         props: {
             ...dataprops,
-            asVariant: "secondary"
+            asVariant: "primary",
+            withColor: {
+                backgroundColor:"",
+                accentColor: "",
+                textColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            },
         }
     },
     {
         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
         tag: "premium",
-        selected: true,
-        header: "Cityscape",
+        content: "This is HtmlCarousel, Imported from banner card.",
         props: {
             ...dataprops,
+            asVariant: "secondary",
+            withColor: {
+                backgroundColor:"",
+                accentColor: "",
+                textColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            },
         }
     },
     {
         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
         tag: "restricted",
-        selected: false,
-        header: "GhostBuster",
+        content: "This is HtmlCarousel, Imported from banner card.",
         props: {
             ...dataprops,
+            withColor: {
+                backgroundColor:"red",
+                accentColor: "",
+                textColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            },
         }
     }],
 
@@ -101,15 +127,15 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<PortraitCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<HtmlCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
 // -------------------------------------------------------------
-// PortraitCarouselWithoutBox
+// HtmlCarouselWithoutBox
 // -------------------------------------------------------------
-export const PortraitCarouselWithoutBox = Template.bind({});
-PortraitCarouselWithoutBox.args = {
+export const HtmlCarouselWithoutBox = Template.bind({});
+HtmlCarouselWithoutBox.args = {
     content: [{
         image: "https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
         tag: "new",
@@ -134,26 +160,25 @@ PortraitCarouselWithoutBox.args = {
     }],
 
 };
-PortraitCarouselWithoutBox.parameters = {
+HtmlCarouselWithoutBox.parameters = {
     docs: {
         description: {
             story: "We can see the Square Carousel without any Box Header and Content",
         },
         source: {
-            code: `<PortraitCarousel {...${JSON.stringify(PortraitCarouselWithoutBox.args, null, 2)}}/>`,
+            code: `<HtmlCarousel {...${JSON.stringify(HtmlCarouselWithoutBox.args, null, 2)}}/>`,
         },
     },
 };
 
 
 // -------------------------------------------------------------
-// PortraitCarouselWithoutTag
+// HtmlCarouselWithoutTag
 // -------------------------------------------------------------
-export const PortraitCarouselWithoutTag = Template.bind({});
-PortraitCarouselWithoutTag.args = {
+export const HtmlCarouselWithoutTag = Template.bind({});
+HtmlCarouselWithoutTag.args = {
     content: [{
         image: " https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
-        header: "The Negotiation Room",
         content: "Play the contest and win to earn Flipkart vouchers.",
         props: {
             ...dataprops,
@@ -162,15 +187,13 @@ PortraitCarouselWithoutTag.args = {
     },
     {
         image: "https://i.pinimg.com/564x/68/ed/88/68ed881d5ff0dbe232ff8d4d2e186a99.jpg",
-        header: "The Negotiation Room",
-        content: "  ",
+        content: " Play the contest and win to earn Flipkart vouchers",
         props: {
             ...dataprops,
         }
     },
     {
         image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
-        header: "What is Negotiation Room?",
         content: "Play the contest and win to earn Flipkart vouchers",
         props: {
             ...dataprops,
@@ -178,20 +201,20 @@ PortraitCarouselWithoutTag.args = {
     }],
 
 };
-PortraitCarouselWithoutTag.parameters = {
+HtmlCarouselWithoutTag.parameters = {
     docs: {
         description: {
             story: "We can see the Square Carousel without any Tag",
         },
         source: {
-            code: `<PortraitCarousel {...${JSON.stringify(PortraitCarouselWithoutTag.args, null, 2)}}/>`,
+            code: `<HtmlCarousel {...${JSON.stringify(HtmlCarouselWithoutTag.args, null, 2)}}/>`,
         },
     },
 };
 
 
-export const AnimatedPortraitCarousel = Template.bind({});
-AnimatedPortraitCarousel.args = {
+export const AnimatedHtmlCarousel = Template.bind({});
+AnimatedHtmlCarousel.args = {
     ...Default.args,
     withAnimation: {
         animation: "slideRight",
@@ -199,15 +222,15 @@ AnimatedPortraitCarousel.args = {
         delay: 0,
     },
 };
-AnimatedPortraitCarousel.parameters = {
+AnimatedHtmlCarousel.parameters = {
     docs: {
         description: {
             story:
-                "Use to animate the entry of the PortraitCarousel with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+                "Use to animate the entry of the HtmlCarousel with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<AnimatedPortraitCarousel {...${JSON.stringify(
-                AnimatedPortraitCarousel.args,
+            code: `<AnimatedHtmlCarousel {...${JSON.stringify(
+                AnimatedHtmlCarousel.args,
                 null,
                 2
             )}}/>`,
