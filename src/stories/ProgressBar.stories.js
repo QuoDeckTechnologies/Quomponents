@@ -108,9 +108,9 @@ Default.args = {
     asSize: "normal",
     withColor: {
         backgroundColor: "",
-        accentColor: "gray",
-        lineColor: "red",
-        textColor: "black",
+        accentColor: "#808080",
+        lineColor: "#E82E19",
+        textColor: "#000000",
     },
     withAnimation: {
         animation: "zoom",
@@ -136,8 +136,8 @@ ColoredProgressbar.args = {
     ...Default.args,
     withColor: {
         backgroundColor: "#C98787",
-        accentColor: "lightgray",
-        lineColor: "red",
+        accentColor: "#D3D3D3",
+        lineColor: "#E82E19",
         textColor: "#ffffff",
     },
 };
