@@ -1,14 +1,13 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import _ from "lodash";
-import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+import { getTranslation,getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ArcMenu.scss";
 import "../../common/stylesheets/overrule.scss";
-import ArcMenuButton from "./ArcMenuButton/ArchMenuButton";
 
 ArcMenu.propTypes = {
   //=======================================
@@ -17,8 +16,12 @@ ArcMenu.propTypes = {
   /**
   ArcMenu icons can be passed with content prop
   */
-  content: PropTypes.shape({
-    icons: PropTypes.arrayOf(PropTypes.string),
+  content:PropTypes.shape({
+    arcIcon:PropTypes.string,
+    menuData : PropTypes.arrayOf(PropTypes.shape({
+      name : PropTypes.string,
+      icon : PropTypes.string
+    }))
   }).isRequired,
   //=======================================
   // Quommon props
@@ -45,10 +48,6 @@ ArcMenu.propTypes = {
     "massive",
   ]),
   /**
-    Use to float the component in parent container
-    */
-  asFloated: PropTypes.oneOf(["left", "right"]),
-  /**
   Use to override component colors and behavior
   */
   withColor: PropTypes.shape({
@@ -56,7 +55,6 @@ ArcMenu.propTypes = {
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
-
   /**
   Use to define the entry animation of the component
   */
@@ -74,6 +72,14 @@ ArcMenu.propTypes = {
     duration: PropTypes.number,
     delay: PropTypes.number,
   }),
+    /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+      lang: PropTypes.string,
+      tgt: PropTypes.string,
+      dictionary: PropTypes.string,
+    }),
   /**
   Use to enable/disable the component
   */
@@ -100,15 +106,25 @@ ArcMenu.defaultProps = {
   //=======================================
   asVariant: "primary",
   asSize: "normal",
-  asFloated: "none",
   withColor: null,
   withAnimation: null,
   withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
+
+const getColors = (withColor) => {
+  let colors = {
+    backgroundColor: withColor.backgroundColor,
+    borderColor: withColor.accentColor,
+    color: withColor.textColor,
+  };
+  return colors;
+};
+
 /**
 ## Notes
+- Component using ArcMenu must have a class `qui`
 - The design system used for this component is HTML and CSS
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
@@ -116,27 +132,66 @@ ArcMenu.defaultProps = {
 - Icons can be changed from content prop
 **/
 export default function ArcMenu(props) {
-  let { content } = props;
+  const [openMenu,setOpenMenu] = useState (false)
+
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "arc-menu");
+  let quommonClasses = getQuommons(props, "arc-menu-button");
   //-------------------------------------------------------------------
-  // 2. Get animation of the component
+  // 2. Set the component colors
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  let colors = props.withColor ? getColors(props.withColor) : {};
+  //-------------------------------------------------------------------
+  // 3. Get translation of the component
+  //-------------------------------------------------------------------
+  let labelContent = Object.assign({}, props.content);
+  let tObj = null;
+
+  if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+  ) {
+    tObj = getTranslation(props.withTranslation);
+    if (labelContent && tObj) labelContent.menuData = tObj?.content?.menuData;
+  }
 
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
-      className={`qui ${quommonClasses.parentClasses}`}
-    >
-      <div className="qui-arc-menu-list">
-        {_.map(content?.icons, (icon, i) => {
-          return <ArcMenuButton {...props} icon={icon} odd={i%2} key={i} />;
-        })}
+    <div className={`qui ${quommonClasses.parentClasses}`}>
+      <motion.div
+        initial = {false}
+        animate = { !openMenu ? {display:'none',opacity:0} : {display:'block',opacity:1} }
+        className={`qui-arc-menu-modal`}
+        onClick={()=>setOpenMenu(false)}
+      ></motion.div>
+      <div className={quommonClasses.childClasses}>
+        <div className={`qui-arc`} style={{ borderColor: colors.borderColor }}>
+          <button
+            className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
+            style={{ backgroundColor: colors.backgroundColor }}
+            onClick={()=>setOpenMenu(prevState => !prevState)}
+          >
+            <i
+              className={`qui-arch-icon ${labelContent?.arcIcon ? labelContent?.arcIcon : "fas fa-desktop"}`}
+              style={{ color: colors.color }}
+            ></i>
+          </button>
+          <motion.div
+            initial = {false}
+            animate = { !openMenu ? {opacity:0,y:'100%'} : {opacity:1,y:0} }
+            className = {`qui-arc-menu-buttons `}
+          >
+            {_.map(labelContent.menuData,(dataObj,i)=>{
+              return (
+                <div className={`qui-menu-button ${quommonClasses.childClasses}`} key={i}>
+                  <button className={`qui-btn qui-single-button ${quommonClasses.childClasses}`} style={{ backgroundColor: colors.backgroundColor,color:colors.color }}><i className={dataObj.icon} style={{ color: colors.color }}></i>{dataObj.name}</button>
+                </div>
+              )
+            })}
+          </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

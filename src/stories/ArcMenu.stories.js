@@ -1,6 +1,22 @@
 import React from "react";
 import ArcMenu from "../components/ArcMenu/ArcMenu.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    arcmenu: {
+      content: {
+        menuData: [
+          { name: "घर", icon: "fa fa-home" },
+          { name: "खाता", icon: "fas fa-user" },
+          { name: "समायोजन", icon: "fa fa-cogs" },
+          { name: "संदेश", icon: "fa fa-comments" },
+          { name: "कॉन्फ़िगर", icon: "fa fa-file" },
+          { name: "लॉग आउट", icon: "fas fa-desktop" },
+        ],
+      },
+    },
+  },
+});
 export default {
   title: "Design System/ArcMenu/ArcMenu",
   component: ArcMenu,
@@ -8,7 +24,8 @@ export default {
     content: {
       table: {
         defaultValue: {
-          icons: [],
+          arcIcon: "",
+          menuData: [],
         },
       },
     },
@@ -22,13 +39,6 @@ export default {
     asSize: {
       control: "select",
       options: ["tiny", "small", "normal", "big", "huge", "massive"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asFloated: {
-      control: "select",
-      options: ["left", "right"],
       table: {
         category: "as-Flags",
       },
@@ -50,6 +60,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -102,20 +122,32 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    icons: ["fas fa-desktop", "fas fa-user", "fas fa-home"],
+    arcIcon: "fas fa-user",
+    menuData: [
+      { name: "Home", icon: "fa fa-home" },
+      { name: "Account", icon: "fas fa-user" },
+      { name: "Settings", icon: "fa fa-cogs" },
+      { name: "Message", icon: "fa fa-comments" },
+      { name: "Configure", icon: "fa fa-file" },
+      { name: "Logout", icon: "fas fa-desktop" },
+    ],
   },
   asVariant: "primary",
   asSize: "normal",
-  asFloated: "left",
   withColor: {
     backgroundColor: "",
     accentColor: "",
     textColor: "",
   },
   withAnimation: {
-    animation: "zoom",
+    animation: "slideUp",
     duration: 0.5,
     delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "button",
+    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,
@@ -147,20 +179,29 @@ ColoredArcMenu.parameters = {
   },
 };
 // -------------------------------------------------------------
-// ArcMenu Button
+// Translated Arc menu
 // -------------------------------------------------------------
-export const ArcMenuButton = Template.bind({});
-ArcMenuButton.args = {
+export const TranslatedArcMenu = Template.bind({});
+TranslatedArcMenu.args = {
   ...Default.args,
-  content: {
-    icons: ["fas fa-desktop"],
-  },
   asVariant: "secondary",
+  withTranslation: {
+    lang: "hi",
+    tgt: "arcmenu",
+    dictionary: dictionary,
+  },
 };
-ArcMenuButton.parameters = {
+TranslatedArcMenu.parameters = {
   docs: {
+    description: {
+      story: "Use to change the language that the text appears in.",
+    },
     source: {
-      code: `<ArcMenu {...${JSON.stringify(ArcMenuButton.args, null, 2)}}/>`,
+      code: `<TranslatedArcMenu {...${JSON.stringify(
+        TranslatedArcMenu.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

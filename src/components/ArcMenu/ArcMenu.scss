@@ -1,43 +1,123 @@
-.qui .qui-arc-menu-list {
+.qui.qui-arc-menu-button {
+  position: static;
+}
+.qui .qui-arc {
+  width: 3em;
+  height: 3em;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
+  border-top-right-radius: 100%;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  margin-top: 1em;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.qui .qui-arc .qui-arc-menu-button {
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 6px 7px 0px rgb(201, 201, 201);
 }
 
-// @media only screen and (min-width: 320px) {
-//   .qui .size-small {
-//     .qui-btn {
-//       height: 2.5em;
-//       width: 2.5em;
-//     }
-//     .qui-arc {
-//       height: 3.5em;
-//       width: 3.5em;
-//     }
-//   }
-// }
+.qui .qui-arc-menu-buttons {
+  position: absolute;
+  left: 100%;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  z-index: 10;
+}
+.qui .qui-menu-button {
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5em;
+}
+.qui .qui-single-button {
+  height: 5em;
+  width: 5em;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  box-shadow: 0px 6px 7px 0px #656565;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.qui .qui-arc-menu-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.397);
+  z-index: 10;
+}
+.qui .size-small {
+  .qui-arc {
+    height: 3.5em;
+    width: 3.5em;
+  }
+}
+.qui .size-normal {
+  .qui-arc {
+    height: 4em;
+    width: 4em;
+  }
+}
+.qui .size-big {
+  .qui-arc-menu-button {
+    height: 2.8em;
+    width: 2.8em;
+  }
+  .qui-arc {
+    height: 5.5em;
+    width: 5.5em;
+  }
+}
+.qui .size-huge {
+  .qui-arc-menu-button {
+    height: 2.7em;
+    width: 2.7em;
+  }
+  .qui-arc {
+    height: 6em;
+    width: 6em;
+  }
+}
+.qui .size-massive {
+  .qui-arc-menu-button {
+    height: 3em;
+    width: 3em;
+  }
+  .qui-arc {
+    height: 9em;
+    width: 9em;
+  }
+}
 
-// @media only screen and (min-width: 481px) {
-//   .qui .size-normal {
-//     .qui-btn {
-//       height: 2.6em;
-//       width: 2.6em;
-//     }
-//     .qui-arc {
-//       height: 4em;
-//       width: 4em;
-//     }
-//   }
-// }
+@media only screen and (min-width: 320px) {
+  .qui-arc-menu-button {
+    font-size: 0.61em;
+  }
+}
 
-// @media only screen and (min-width: 769px) {
-//   .qui .size-big {
-//     .qui-btn {
-//       height: 2.8em;
-//       width: 2.8em;
-//     }
-//     .qui-arc {
-//       height: 5.5em;
-//       width: 5.5em;
-//     }
-//   }
-// }
+@media only screen and (min-width: 481px) {
+  .qui-arc-menu-button {
+    font-size: 0.75em;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .qui-arc-menu-button {
+    font-size: 1.2em;
+  }
+}
