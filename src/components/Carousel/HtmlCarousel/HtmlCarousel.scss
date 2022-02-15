@@ -61,10 +61,12 @@
     position: absolute;
     padding: 0.1em 0.1em;
     top: 50%;
+    left: 0%;
+    right: 0%;
+    margin: auto;
     text-align: center;
     max-width: 25ch;
     transform: translateY(-50%);
-    margin-left: 10%;
     opacity: 1;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -92,12 +94,12 @@
 
 @media only screen and (min-width: 481px) {
   .qui-Html-slide-container .qui-banner-card {
-    font-size: 1em;
+    font-size: 1.2em;
   }
 }
 
 @media only screen and (min-width: 769px) {
   .qui-Html-slide-container .qui-banner-card {
-    font-size: 1.3em;
+    font-size: 1.5em;
   }
 }
