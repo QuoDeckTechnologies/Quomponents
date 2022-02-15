@@ -36,18 +36,6 @@ export default {
             </div>
         ),
     ],
-    isDisabled: {
-        table: {
-            category: "is-Toggles",
-            defaultValue: false,
-        },
-    },
-    isHidden: {
-        table: {
-            category: "is-Toggles",
-            defaultValue: false,
-        },
-    },
     onClick: {
         table: {
             category: "Events",
@@ -70,8 +58,6 @@ let dataprops = {
         accentColor: "",
         textColor: "",
     },
-    isDisabled: false,
-    isHidden: false
 }
 
 // -------------------------------------------------------------

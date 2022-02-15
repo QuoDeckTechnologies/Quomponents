@@ -24,18 +24,6 @@ export default {
             },
         },
     },
-    isDisabled: {
-        table: {
-            category: "is-Toggles",
-            defaultValue: false,
-        },
-    },
-    isHidden: {
-        table: {
-            category: "is-Toggles",
-            defaultValue: false,
-        },
-    },
     onClick: {
         table: {
             category: "Events",
@@ -77,8 +65,6 @@ let dataprops = {
     //     duration: 0.5,
     //     delay: 0,
     // },
-    isDisabled: false,
-    isHidden: false
 }
 
 // -------------------------------------------------------------
@@ -230,28 +216,3 @@ HtmlCarouselWithoutTag.parameters = {
     },
 };
 
-
-export const AnimatedHtmlCarousel = Template.bind({});
-AnimatedHtmlCarousel.args = {
-    ...Default.args,
-    withAnimation: {
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-    },
-};
-AnimatedHtmlCarousel.parameters = {
-    docs: {
-        description: {
-            story:
-                "Use to animate the entry of the HtmlCarousel with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
-        },
-        source: {
-            code: `<AnimatedHtmlCarousel {...${JSON.stringify(
-                AnimatedHtmlCarousel.args,
-                null,
-                2
-            )}}/>`,
-        },
-    },
-};
