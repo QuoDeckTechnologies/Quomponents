@@ -2,8 +2,6 @@
   overflow: inherit;
 }
 
-
-
 .qui .qui-SquareWrapper-slide .qui-checkbox i {
   position: absolute;
   bottom: 18%;
@@ -41,11 +39,11 @@
     display: inline-block;
     font-size: 0.75em;
     width: 100%;
-    padding-bottom:100%;
+    padding-bottom: 100%;
     border-radius: 1.5em;
     background-repeat: no-repeat;
     background-size: cover;
-    box-shadow:  0px 0px 0px 0px #666666;
+    box-shadow: 0px 0px 0px 0px #666666;
   }
   .qui-SquareWrapper-slide-container .qui-banner-card .qui-slider-card-box {
     position: absolute;
@@ -70,20 +68,19 @@
   }
   .qui-SquareWrapper-carousel .slick-dots li.slick-active button:before {
     font-size: 12px;
-    color: #48b41e;
   }
   .qui-SquareWrapper-carousel .slick-dots li {
     margin: 0 -4px;
   }
   .qui-SquareWrapper-carousel .slick-dots {
-    bottom: -34px;
+    bottom: -25px;
     left: 0%;
     right: 0%;
     margin: auto;
     width: fit-content;
   }
 
-  .qui-mid-circle {
+  .qui-SquareWrapper-carousel .qui-mid-circle {
     width: 70px;
     height: 35px; /* as the half of the width */
     background-color: gold;
@@ -97,35 +94,15 @@
     margin: auto;
     z-index: 1;
   }
-  .slick-prev:before,
-  .slick-next:before {
-    font-family: "slick";
-    font-size: 30px;
-    line-height: 1;
-    opacity: 0.75;
-    color: #16c59f;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  .qui-SquareWrapper-carousel .qui-slick-arrows {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
   }
-  .slick-next {
-    right: 5%;
-  }
-  .slick-prev {
-    left: 1%;
-  }
-  .slick-prev,
-  .slick-next {
-    font-size: 0;
-    line-height: 0;
-    position: absolute;
-    top: 104%;
-    display: block;
-    padding: 0;
-    cursor: grab;
-    color: rgb(153, 22, 22);
-    border: none;
-    outline: none;
-    background: transparent;
+  .qui-SquareWrapper-carousel .qui-slick-prev,
+  .qui-slick-next {
+    cursor: pointer;
   }
 }
 

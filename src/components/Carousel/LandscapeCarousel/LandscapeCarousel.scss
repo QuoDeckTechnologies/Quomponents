@@ -92,35 +92,14 @@
     margin: auto;
     z-index: 1;
   }
-  .slick-prev:before,
-  .slick-next:before {
-    font-family: "slick";
-    font-size: 30px;
-    line-height: 1;
-    opacity: 0.75;
-    color: #4b4b4b;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  .qui-Landscape-carousel .qui-slick-arrows{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
   }
-  .slick-next {
-    right: 5%;
-  }
-  .slick-prev {
-    left: 1%;
-  }
-  .slick-prev,
-  .slick-next {
-    font-size: 0;
-    line-height: 0;
-    position: absolute;
-    top: 104%;
-    display: block;
-    padding: 0;
-    cursor: grab;
-    color: rgb(153, 22, 22);
-    border: none;
-    outline: none;
-    background: transparent;
+  .qui-Landscape-carousel .qui-slick-prev,.qui-slick-next{
+    cursor: pointer;
   }
 }
 
