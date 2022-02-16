@@ -135,6 +135,23 @@
     margin: auto;
     z-index: 1;
   }
+  .qui-portrait-carousel .qui-slick-arrows{
+    font-size: 2em;
+  }
+  .qui-portrait-carousel .slick-dots li button:before {
+    font-size: 12px;
+  }
+  .qui-portrait-carousel .slick-dots li.slick-active button:before {
+    font-size: 15px;
+    color: #a6a6a6;
+  }
+  .qui-portrait-carousel .slick-dots li {
+    margin: 0 -2px;
+  }
+  .qui-portrait-carousel .slick-dots {
+    bottom: -30px;
+  }
+
 }
 
 @media only screen and (min-width: 769px) {
@@ -161,5 +178,21 @@
     bottom: 51px;
     margin: auto;
     z-index: 1;
+  }
+  .qui-portrait-carousel .qui-slick-arrows{
+    font-size: 2.5em;
+  }
+  .qui-portrait-carousel .slick-dots li button:before {
+    font-size: 15px;
+  }
+  .qui-portrait-carousel .slick-dots li.slick-active button:before {
+    font-size: 17px;
+    color: #a6a6a6;
+  }
+  .qui-portrait-carousel .slick-dots li {
+    margin: 0 -2px;
+  }
+  .qui-portrait-carousel .slick-dots {
+    bottom: -35px;
   }
 }

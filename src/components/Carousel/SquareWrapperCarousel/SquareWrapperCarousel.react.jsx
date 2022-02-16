@@ -86,7 +86,7 @@ export default function SquareWrapperCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
     let quommonClasses = getQuommons(props, "SquareWrapper-carousel");
-
+    console.log(sliderRef.current)
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -101,7 +101,7 @@ export default function SquareWrapperCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: false,
+        autoplay:true,
         pauseOnHover: true,
         centerPadding: "0%",
         swipeToSlide: true,
@@ -138,12 +138,10 @@ export default function SquareWrapperCarousel(props) {
             </Slider>
             <div className="qui-slick-arrows">
                 <div className="qui-slick-prev"
-                    style={{ color: content[0].props.withColor.accentColor }}
                     onClick={() => sliderRef.current.slickPrev()}>
                     <i className="fas fa-arrow-alt-circle-left"></i>
                 </div>
                 <div className="qui-slick-next"
-                    style={{ color: content[0].props.withColor.accentColor }}
                     onClick={() => sliderRef.current.slickNext()}>
                     <i className="fas fa-arrow-alt-circle-right"></i>
                 </div>

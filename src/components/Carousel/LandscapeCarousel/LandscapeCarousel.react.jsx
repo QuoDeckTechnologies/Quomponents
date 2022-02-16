@@ -111,8 +111,9 @@ export default function LandscapeCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: false,
-        pauseOnHover: true,
+        autoplay:true,
+        autplaySpeed:1000,
+        pauseOnHover: false,
         centerPadding: "0%",
         swipeToSlide: true,
     };
