@@ -1,7 +1,5 @@
 import React from "react";
 import PortraitCarousel from "../components/Carousel/PortraitCarousel/PortraitCarousel.react";
-
-
 export default {
     title: "Design System/Carousel/PortraitCarousel",
     component: PortraitCarousel,
@@ -108,13 +106,6 @@ Default.args = {
             ...dataprops,
         }
     }],
-
-    // withAnimation: {
-    //     animation: "slideRight",
-    //     duration: 0.5,
-    //     delay: 0,
-    // },
-
 };
 Default.parameters = {
     docs: {

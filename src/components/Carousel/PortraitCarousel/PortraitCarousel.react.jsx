@@ -13,9 +13,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./PortraitCarousel.scss";
 import "../../../common/stylesheets/overrule.scss";
-
 import BannerCard from "../BannerCard/BannerCard.react";
-
 PortraitCarousel.propTypes = {
     //=======================================
     // Quommon props
@@ -35,8 +33,6 @@ PortraitCarousel.propTypes = {
         header: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
-
-
     /**
     Use to define the entry animation of the component
     */
@@ -58,8 +54,6 @@ PortraitCarousel.propTypes = {
     Button component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
-
-
 };
 
 PortraitCarousel.defaultProps = {
@@ -68,7 +62,6 @@ PortraitCarousel.defaultProps = {
     content: [],
     withAnimation: null,
 };
-
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
@@ -81,12 +74,10 @@ export default function PortraitCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
     let quommonClasses = getQuommons(props, "portrait-carousel");
-
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-
     var settings = {
         dots: true,
         speed: 500,
@@ -96,11 +87,10 @@ export default function PortraitCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay:true,
+        autoplay: true,
         pauseOnHover: true,
         centerPadding: "0%",
         swipeToSlide: true,
-        
     };
     // ========================= Render Function =================================
     return (
@@ -109,16 +99,15 @@ export default function PortraitCarousel(props) {
                 initial={animate.from}
                 animate={animate.to}
                 className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
-                onClick={props.onClick}
-            >
+                onClick={props.onClick}>
                 <Slider ref={sliderRef} {...settings}>
                     {_.map(content, (slide, index) => {
                         return (
                             <div className="qui-portrait-slide-container qui-banner"
                                 key={"slider-" + index + Math.random()}>
                                 <div className={`qui-portrait-slide ${quommonClasses.childClasses} `}>
-                                    {slide.selected && <div className="qui-mid-circle" style={{backgroundColor:slide.props.withColor.accentColor}} >
-                                        <div className="qui-checkbox" style={{color:slide.props.withColor.accentColor}}>
+                                    {slide.selected && <div className="qui-mid-circle" style={{ backgroundColor: slide.props.withColor.accentColor }} >
+                                        <div className="qui-checkbox" style={{ color: slide.props.withColor.accentColor }}>
                                             <i className={slide.selected ? "fas fa-check-square" : "far fa-square"}>
                                             </i>
                                         </div>
@@ -129,18 +118,18 @@ export default function PortraitCarousel(props) {
                         );
                     })}
                 </Slider>
-            <div className="qui-slick-arrows">
-                <div className="qui-slick-prev"
-                    style={{ color: content[0].props.withColor.accentColor }}
-                    onClick={() => sliderRef.current.slickPrev()}>
-                    <i className="fas fa-arrow-alt-circle-left"></i>
+                <div className="qui-slick-arrows">
+                    <div className="qui-slick-prev"
+                        style={{ color: content[0].props.withColor.accentColor }}
+                        onClick={() => sliderRef.current.slickPrev()}>
+                        <i className="fas fa-arrow-alt-circle-left"></i>
+                    </div>
+                    <div className="qui-slick-next"
+                        style={{ color: content[0].props.withColor.accentColor }}
+                        onClick={() => sliderRef.current.slickNext()}>
+                        <i className="fas fa-arrow-alt-circle-right"></i>
+                    </div>
                 </div>
-                <div className="qui-slick-next"
-                    style={{ color: content[0].props.withColor.accentColor }}
-                    onClick={() => sliderRef.current.slickNext()}>
-                    <i className="fas fa-arrow-alt-circle-right"></i>
-                </div>
-            </div>
             </motion.div>
         </div>
     );

@@ -109,13 +109,6 @@ Default.args = {
             },
         }
     }],
-
-    // withAnimation: {
-    //     animation: "slideRight",
-    //     duration: 0.5,
-    //     delay: 0,
-    // },
-
 };
 Default.parameters = {
     docs: {

@@ -82,22 +82,22 @@
     margin: auto;
     width: fit-content;
   }
-  .qui-Html-carousel .qui-slick-arrows{
+  .qui-Html-carousel .qui-slick-arrows {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.5em;
   }
-  .qui-Html-carousel .qui-slick-prev,.qui-slick-next{
+  .qui-Html-carousel .qui-slick-prev,
+  .qui-slick-next {
     cursor: pointer;
   }
 }
-
 @media only screen and (min-width: 481px) {
   .qui-Html-slide-container .qui-banner-card {
     font-size: 1.2em;
   }
-  .qui-Html-carousel .qui-slick-arrows{
+  .qui-Html-carousel .qui-slick-arrows {
     font-size: 2em;
   }
   .qui-Html-carousel .slick-dots li button:before {
@@ -114,12 +114,11 @@
     bottom: -30px;
   }
 }
-
 @media only screen and (min-width: 769px) {
   .qui-Html-slide-container .qui-banner-card {
     font-size: 1.7em;
   }
-  .qui-Html-carousel .qui-slick-arrows{
+  .qui-Html-carousel .qui-slick-arrows {
     font-size: 2.5em;
   }
   .qui-Html-carousel .slick-dots li button:before {

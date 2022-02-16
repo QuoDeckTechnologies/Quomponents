@@ -1,8 +1,6 @@
 import { withTheme } from "@emotion/react";
 import React from "react";
 import HtmlCarousel from "../components/Carousel/HtmlCarousel/HtmlCarousel.react";
-
-
 export default {
     title: "Design System/Carousel/HtmlCarousel",
     component: HtmlCarousel,
@@ -54,19 +52,13 @@ export default {
 let dataprops = {
     asVariant: "warning",
     withColor: {
-        backgroundColor:"",
+        backgroundColor: "",
         accentColor: "",
         textColor: "",
         hoverBackgroundColor: "",
         hoverTextColor: "",
     },
-    // withAnimation: {
-    //     animation: "slideLeft",
-    //     duration: 0.5,
-    //     delay: 0,
-    // },
 }
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -81,7 +73,7 @@ Default.args = {
             ...dataprops,
             asVariant: "primary",
             withColor: {
-                backgroundColor:"",
+                backgroundColor: "",
                 accentColor: "",
                 textColor: "",
                 hoverBackgroundColor: "",
@@ -97,7 +89,7 @@ Default.args = {
             ...dataprops,
             asVariant: "secondary",
             withColor: {
-                backgroundColor:"",
+                backgroundColor: "",
                 accentColor: "",
                 textColor: "",
                 hoverBackgroundColor: "",
@@ -112,7 +104,7 @@ Default.args = {
         props: {
             ...dataprops,
             withColor: {
-                backgroundColor:"red",
+                backgroundColor: "red",
                 accentColor: "",
                 textColor: "",
                 hoverBackgroundColor: "",
@@ -120,13 +112,6 @@ Default.args = {
             },
         }
     }],
-
-    // withAnimation: {
-    //     animation: "slideRight",
-    //     duration: 0.5,
-    //     delay: 0,
-    // },
-
 };
 Default.parameters = {
     docs: {

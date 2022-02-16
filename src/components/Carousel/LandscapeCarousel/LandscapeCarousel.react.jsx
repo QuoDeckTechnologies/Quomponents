@@ -13,7 +13,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./LandscapeCarousel.scss";
 import "../../../common/stylesheets/overrule.scss";
-
 import BannerCard from "../BannerCard/BannerCard.react";
 
 LandscapeCarousel.propTypes = {
@@ -39,8 +38,6 @@ LandscapeCarousel.propTypes = {
         header: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
-
-
     /**
     Use to define the entry animation of the component
     */
@@ -62,10 +59,7 @@ LandscapeCarousel.propTypes = {
     Button component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
-
-
 };
-
 LandscapeCarousel.defaultProps = {
     // Component Specific props
     //=======================================
@@ -101,7 +95,6 @@ export default function LandscapeCarousel(props) {
     // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-
     var settings = {
         dots: true,
         speed: 500,
@@ -111,8 +104,8 @@ export default function LandscapeCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay:true,
-        autplaySpeed:1000,
+        autoplay: true,
+        autplaySpeed: 1000,
         pauseOnHover: false,
         centerPadding: "0%",
         swipeToSlide: true,
@@ -124,9 +117,7 @@ export default function LandscapeCarousel(props) {
                 initial={animate.from}
                 animate={animate.to}
                 className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
-                onClick={props.onClick}
-
-            >
+                onClick={props.onClick}>
                 <Slider ref={sliderRef} {...settings}>
                     {_.map(content, (slide, index) => {
                         return (

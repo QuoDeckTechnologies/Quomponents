@@ -13,7 +13,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./HtmlCarousel.scss";
 import "../../../common/stylesheets/overrule.scss";
-
 import BannerCard from "../BannerCard/BannerCard.react";
 
 HtmlCarousel.propTypes = {
@@ -34,8 +33,6 @@ HtmlCarousel.propTypes = {
         content: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
-
-
     /**
     Use to define the entry animation of the component
     */
@@ -57,17 +54,13 @@ HtmlCarousel.propTypes = {
     Button component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
-
 };
-
 HtmlCarousel.defaultProps = {
     // Component Specific props
     //=======================================
     content: [],
     withAnimation: null,
 };
-
-
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
@@ -94,7 +87,7 @@ export default function HtmlCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay:true,
+        autoplay: true,
         pauseOnHover: true,
         centerPadding: "0%",
         swipeToSlide: true,

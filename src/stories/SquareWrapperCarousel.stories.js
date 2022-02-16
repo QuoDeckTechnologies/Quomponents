@@ -1,7 +1,5 @@
 import React from "react";
 import SquareWrapperCarousel from "../components/Carousel/SquareWrapperCarousel/SquareWrapperCarousel.react";
-
-
 export default {
     title: "Design System/Carousel/SquareWrapperCarousel",
     component: SquareWrapperCarousel,
@@ -110,13 +108,6 @@ Default.args = {
             ...dataprops,
         }
     }],
-
-    // withAnimation: {
-    //     animation: "slideRight",
-    //     duration: 0.5,
-    //     delay: 0,
-    // },
-
 };
 Default.parameters = {
     docs: {
@@ -164,8 +155,6 @@ SquareWrapperCarouselWithoutBox.parameters = {
         },
     },
 };
-
-
 // -------------------------------------------------------------
 // SquareWrapperCarouselWithoutTag
 // -------------------------------------------------------------
@@ -205,8 +194,6 @@ SquareWrapperCarouselWithoutTag.parameters = {
         },
     },
 };
-
-
 export const AnimatedSquareWrapperCarousel = Template.bind({});
 AnimatedSquareWrapperCarousel.args = {
     ...Default.args,

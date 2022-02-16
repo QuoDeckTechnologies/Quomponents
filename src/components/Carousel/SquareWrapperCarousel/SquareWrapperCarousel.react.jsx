@@ -13,7 +13,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./SquareWrapperCarousel.scss";
 import "../../../common/stylesheets/overrule.scss";
-
 import BannerCard from "../BannerCard/BannerCard.react";
 
 SquareWrapperCarousel.propTypes = {
@@ -39,8 +38,6 @@ SquareWrapperCarousel.propTypes = {
         header: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
-
-
     /**
     Use to define the entry animation of the component
     */
@@ -62,18 +59,13 @@ SquareWrapperCarousel.propTypes = {
     Button component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
-
-
 };
-
 SquareWrapperCarousel.defaultProps = {
     // Component Specific props
     //=======================================
     content: [],
     withAnimation: null,
 };
-
-
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
@@ -101,7 +93,7 @@ export default function SquareWrapperCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay:true,
+        autoplay: true,
         pauseOnHover: true,
         centerPadding: "0%",
         swipeToSlide: true,
@@ -109,44 +101,44 @@ export default function SquareWrapperCarousel(props) {
     // ========================= Render Function =================================
     return (
         <div className="SquareWrapper-container">
-        <motion.div
-            initial={animate.from}
-            animate={animate.to}
-            className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
-            onClick={props.onClick}
+            <motion.div
+                initial={animate.from}
+                animate={animate.to}
+                className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
+                onClick={props.onClick}
 
-        >
-            <Slider ref={sliderRef} {...settings}>
-                {_.map(content, (slide, index) => {
-                    return (
-                        <div className="qui-SquareWrapper-slide-container qui-banner"
-                            key={"slider-" + index + Math.random()}>
+            >
+                <Slider ref={sliderRef} {...settings}>
+                    {_.map(content, (slide, index) => {
+                        return (
+                            <div className="qui-SquareWrapper-slide-container qui-banner"
+                                key={"slider-" + index + Math.random()}>
 
 
-                            <div className={`qui-SquareWrapper-slide `}>
-                                {slide.checked && <div className="qui-mid-circle" style={{backgroundColor:slide.props.withColor.accentColor}}>
-                                <div className="qui-checkbox" style={{color:slide.props.withColor.accentColor}}>
-                                        <i className = {slide.checked ? "fas fa-check-square" : "far fa-square"}>
-                                        </i>
-                                    </div>
-                                </div>}
-                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} className="kp" />
+                                <div className={`qui-SquareWrapper-slide `}>
+                                    {slide.checked && <div className="qui-mid-circle" style={{ backgroundColor: slide.props.withColor.accentColor }}>
+                                        <div className="qui-checkbox" style={{ color: slide.props.withColor.accentColor }}>
+                                            <i className={slide.checked ? "fas fa-check-square" : "far fa-square"}>
+                                            </i>
+                                        </div>
+                                    </div>}
+                                    <BannerCard  {...slide.props} content={slide} onClick={props.onClick} className="kp" />
+                                </div>
                             </div>
-                        </div>
-                    );
-                })}
-            </Slider>
-            <div className="qui-slick-arrows">
-                <div className="qui-slick-prev"
-                    onClick={() => sliderRef.current.slickPrev()}>
-                    <i className="fas fa-arrow-alt-circle-left"></i>
+                        );
+                    })}
+                </Slider>
+                <div className="qui-slick-arrows">
+                    <div className="qui-slick-prev"
+                        onClick={() => sliderRef.current.slickPrev()}>
+                        <i className="fas fa-arrow-alt-circle-left"></i>
+                    </div>
+                    <div className="qui-slick-next"
+                        onClick={() => sliderRef.current.slickNext()}>
+                        <i className="fas fa-arrow-alt-circle-right"></i>
+                    </div>
                 </div>
-                <div className="qui-slick-next"
-                    onClick={() => sliderRef.current.slickNext()}>
-                    <i className="fas fa-arrow-alt-circle-right"></i>
-                </div>
-            </div>
-        </motion.div>
+            </motion.div>
         </div>
     );
 }
