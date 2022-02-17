@@ -1,0 +1,38 @@
+/* ================================================= */
+/* InlineEdit Definitions */
+/* ================================================= */
+.qui .qui-input-container {
+    width: 100%;
+    font-size: 1em;
+}
+
+.qui .qui-input-field {
+    width: 100%;
+    border: none;
+    outline: 0;
+    height: 2em;
+    border-radius: 0.3em;
+    text-overflow: ellipsis;
+}
+
+.qui .qui-input-field:focus {
+    border-bottom: 3px solid;
+}
+/* ================================================= */
+/* Styling Definitions for different resolution */
+/* ================================================= */
+@media only screen and (min-width: 320px) {
+    .qui .qui-input-container {
+        width: 85%;
+    }
+}
+@media only screen and (min-width: 481px) {
+    .qui .qui-input-container {
+        width: 90%;
+    }
+}
+@media only screen and (min-width: 769px) {
+    .qui .qui-input-container {
+        width: 95%;
+    }
+}
