@@ -82,7 +82,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a ProgressBar with BannerCard, text and icon.",
+        componentSubtitle: "Displays a ProgressBar with Steps and Buttons",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -147,7 +147,8 @@ ColoredProgressbar.parameters = {
             story: "Use to override the standard colors of the Icon.",
         },
         source: {
-            code: `<Progressbar withColor={{backgroundColor: "orange", textColor: "gray"}}}/>`,
+            code: `<Progressbar withColor={{backgroundColor: "#C98787", accentColor: "#D3D3D3",
+            lineColor: "#E82E19", textColor: "#ffffff"}}}/>`,
         },
     },
 };
