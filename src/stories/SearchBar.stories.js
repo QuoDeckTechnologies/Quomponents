@@ -1,0 +1,189 @@
+import React from "react";
+import SearchBar from "../components/SearchBar/SearchBar.react";
+
+const dictionary = JSON.stringify({
+    hi: {
+        SearchBar:{
+            placeHolder: "खोजें...",
+        }
+    },
+});
+
+export default {
+    title: "Design System/SearchBar/SearchBar",
+    component: SearchBar,
+
+    placeHolder :"Search...",
+    argTypes: {
+        asFloated: {
+            control: "select",
+            options: ["left", "right", "inline"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        withColor: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    textColor: "",
+                },
+            },
+        },
+        withIcon: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    icon: "fas fa-search",
+                    size: ""
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
+                },
+            },
+        },
+        isHidden: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
+        isDisabled: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
+        isFluid: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
+        isClosed: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
+        onClick: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        },
+  
+    },
+    decorators: [
+        (story) => (
+            <div
+                style={{
+                    width: "100%",
+                    textAlign: "center",
+                    fontSize: "1.25em",
+                }}
+            >
+                {story()}
+            </div>
+        ),
+    ],
+};
+// -------------------------------------------------------------
+// Default
+// -------------------------------------------------------------
+const Template = (args) => <SearchBar {...args} />;
+export const Default = Template.bind({});
+Default.args = {
+    placeHolder :"Search...",
+    asFloated: "left",
+    withIcon: { icon: "fas fa-search", size: "1em" },
+    withColor: {
+        textColor: "",
+    },
+    isDisabled: false,
+    isFluid:false,
+    isClosed:false,
+    isHidden: false,
+    withTranslation: {
+        lang: "",
+        tgt: "SearchBar",
+        dictionary: dictionary,
+    },
+};
+Default.parameters = {
+    docs: {
+        docs: {
+            source: {
+                code: `<SearchBar {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            },
+        },
+    },
+};
+
+//Closed Search Bar
+export const ClosedSearchBar = Template.bind({});
+ClosedSearchBar.args = {
+    ...Default.args,
+   isClosed:true
+};
+
+//All Variants
+export const AllVariantsTemplate = (args) => {
+    const baseObj1 = {
+        ...Object.assign({}, Default.args, args, {
+            isClosed:false
+        }),
+    };
+    const baseObj2 = {
+        ...Object.assign({}, Default.args, args, {
+            isClosed:true
+        }),
+    };
+    return (
+        <div>
+            <SearchBar
+                {...Object.assign({}, baseObj1, {
+                })}
+            />
+            <SearchBar
+                {...Object.assign({}, baseObj2, {
+                })}
+            />
+        </div>
+    );
+};
+
+// -------------------------------------------------------------
+// Translated ActionButton
+// -------------------------------------------------------------
+export const TranslatedSearchBar = Template.bind({});
+TranslatedSearchBar.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "SearchBar",
+        dictionary: dictionary,
+    },
+};
+TranslatedSearchBar.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in. To make this work for the ActionButton, add a content:{text:{title, subTitle},label} value to the dictionary.",
+        },
+        source: {
+            code: `<SearchBar {...${JSON.stringify(
+                TranslatedSearchBar.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
