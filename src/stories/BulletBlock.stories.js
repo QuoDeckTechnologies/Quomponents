@@ -74,7 +74,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a BulletBlock with BannerCard, text and icon.",
+        componentSubtitle: "Displays a BulletBlock with list of items.",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,

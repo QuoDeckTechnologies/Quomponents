@@ -1,24 +1,24 @@
 .qui-bulletblock {
   padding: 1em;
-  border-radius: .5em;
+  border-radius: 0.5em;
   align-items: center;
   padding-bottom: 1.7em;
 }
-.qui li{
-  margin-bottom: -.7em;
+.qui li {
+  margin-bottom: -0.7em;
 }
 @media screen and (min-width: 320px) {
-.qui-bulletblock {
-   font-size: 1em;
+  .qui-bulletblock {
+    font-size: 1em;
   }
 }
 @media screen and (min-width: 481px) {
-.qui-bulletblock {
-   font-size: 1.5em;
+  .qui-bulletblock {
+    font-size: 1.5em;
   }
 }
 @media screen and (min-width: 769px) {
-.qui-bulletblock {
+  .qui-bulletblock {
     font-size: 1.8em;
   }
 }
