@@ -30,11 +30,7 @@ SquareWrapperCarousel.propTypes = {
             "restricted",
             "free"
         ]),
-        topics: PropTypes.arrayOf(
-            PropTypes.shape({
-                checked: PropTypes.bool,
-            })
-        ),
+        Selected: PropTypes.bool,
         header: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
@@ -116,9 +112,9 @@ export default function SquareWrapperCarousel(props) {
 
 
                                 <div className={`qui-SquareWrapper-slide `}>
-                                    {slide.checked && <div className="qui-mid-circle" style={{ backgroundColor: slide.props.withColor.accentColor }}>
-                                        <div className="qui-checkbox" style={{ color: slide.props.withColor.accentColor }}>
-                                            <i className={slide.checked ? "fas fa-check-square" : "far fa-square"}>
+                                    {slide.Selected && <div className="qui-mid-circle" style={{ backgroundColor: slide.props.withColor.accentColor }}>
+                                        <div className="qui-checkbox" style={{ color: slide.props.withColor.textColor }}>
+                                            <i className={slide.Selected ? "fas fa-check-square" : "far fa-square"}>
                                             </i>
                                         </div>
                                     </div>}

@@ -9,7 +9,7 @@ export default {
         content: [{
             image: "",
             tag: "",
-            topics: [],
+            Selected :"",
             header: "",
             props: {}
         }],
@@ -70,7 +70,7 @@ Default.args = {
         image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
         header: "Balloon Burst",
         tag: "new",
-        checked: true,
+        Selected: true,
         props: {
             ...dataprops,
             asVariant: "secondary",
@@ -84,7 +84,7 @@ Default.args = {
     {
         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
         tag: "premium",
-        checked: true,
+        Selected: true,
         header: "Cityscape",
         props: {
             ...dataprops,
@@ -98,7 +98,7 @@ Default.args = {
     {
         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
         tag: "restricted",
-        checked: false,
+        Selected: false,
         header: "GhostBuster",
         props: {
             ...dataprops,

@@ -7,7 +7,7 @@ export default {
         content: [{
             image: "",
             tag: "",
-            topics: [],
+            checked:"",
             header: "",
             props: {}
         }],
@@ -20,18 +20,6 @@ export default {
                 duration: 0,
                 delay: 0,
             },
-        },
-    },
-    isDisabled: {
-        table: {
-            category: "is-Toggles",
-            defaultValue: false,
-        },
-    },
-    isHidden: {
-        table: {
-            category: "is-Toggles",
-            defaultValue: false,
         },
     },
     onClick: {
@@ -53,7 +41,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubheader: "Displays a banner carousel.",
+        componentSubheader: "Displays a portrait carousel.",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -68,8 +56,6 @@ let dataprops = {
         accentColor: "",
         textColor: "",
     },
-    isDisabled: false,
-    isHidden: false
 }
 
 // -------------------------------------------------------------

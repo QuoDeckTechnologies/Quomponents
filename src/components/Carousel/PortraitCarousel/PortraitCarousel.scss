@@ -195,3 +195,45 @@
     bottom: -35px;
   }
 }
+
+@media only screen and (min-width: 1024px) {
+  .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box-header {
+    text-align: center;
+    font-size: 2em;
+  }
+
+  .qui-portrait-slide-container .qui-ribbon-container {
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  .qui-portrait-slide .qui-mid-circle {
+    width: 130px;
+    height: 65px; /* as the half of the width */
+    background-color: gold;
+    border-top-left-radius: 100px; /* 100px of height + 10px of border */
+    border-top-right-radius: 100px; /* 100px of height + 10px of border */
+    border-bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 56px;
+    margin: auto;
+    z-index: 1;
+  }
+  .qui-portrait-carousel .qui-slick-arrows {
+    font-size: 3em;
+  }
+  .qui-portrait-carousel .slick-dots li button:before {
+    font-size: 15px;
+  }
+  .qui-portrait-carousel .slick-dots li.slick-active button:before {
+    font-size: 17px;
+  }
+  .qui-portrait-carousel .slick-dots li {
+    margin: 0 -2px;
+  }
+  .qui-portrait-carousel .slick-dots {
+    bottom: -35px;
+  }
+}

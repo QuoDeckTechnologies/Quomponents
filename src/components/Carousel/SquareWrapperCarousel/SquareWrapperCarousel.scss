@@ -98,10 +98,19 @@
   .qui-SquareWrapper-carousel .qui-slick-prev,
   .qui-slick-next {
     cursor: pointer;
-    color: #666666;
   }
 }
 @media only screen and (min-width: 481px) {
+  .qui-SquareWrapper-slide-container .qui-SquareWrapper-slide .qui-banner-card {
+    display: inline-block;
+    font-size: 0.75em;
+    width: 100%;
+    padding-bottom: 80%;
+    border-radius: 1.5em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 0px 0px #666666;
+  }
   .qui-SquareWrapper-slide-container .qui-banner-card .qui-slider-card-box-header {
     text-align: center;
     font-size: 1.5em;
@@ -143,6 +152,16 @@
   }
 }
 @media only screen and (min-width: 769px) {
+  .qui-SquareWrapper-slide-container .qui-SquareWrapper-slide .qui-banner-card {
+    display: inline-block;
+    font-size: 0.75em;
+    width: 100%;
+    padding-bottom: 80%;
+    border-radius: 1.5em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 0px 0px #666666;
+  }
   .qui-SquareWrapper-slide-container .qui-banner-card .qui-slider-card-box-header {
     text-align: center;
     font-size: 1.7em;

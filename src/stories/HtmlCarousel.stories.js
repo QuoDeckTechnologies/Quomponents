@@ -8,6 +8,7 @@ export default {
         content: [{
             image: "",
             tag: "",
+            Selected: "",
             content: "",
             props: {}
         }],
@@ -44,7 +45,7 @@ export default {
         componentSubheader: "Displays a banner carousel.",
         a11y: { disable: true },
         docs: {
-            iframeHeight: 600,
+            iframeHeight: 800,
         }
     },
 };
@@ -55,8 +56,6 @@ let dataprops = {
         backgroundColor: "",
         accentColor: "",
         textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
     },
 }
 // -------------------------------------------------------------
@@ -76,8 +75,6 @@ Default.args = {
                 backgroundColor: "",
                 accentColor: "",
                 textColor: "",
-                hoverBackgroundColor: "",
-                hoverTextColor: "",
             },
         }
     },
@@ -92,8 +89,6 @@ Default.args = {
                 backgroundColor: "",
                 accentColor: "",
                 textColor: "",
-                hoverBackgroundColor: "",
-                hoverTextColor: "",
             },
         }
     },
@@ -107,8 +102,6 @@ Default.args = {
                 backgroundColor: "red",
                 accentColor: "",
                 textColor: "",
-                hoverBackgroundColor: "",
-                hoverTextColor: "",
             },
         }
     }],

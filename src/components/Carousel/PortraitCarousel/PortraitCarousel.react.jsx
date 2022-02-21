@@ -106,8 +106,8 @@ export default function PortraitCarousel(props) {
                             <div className="qui-portrait-slide-container qui-banner"
                                 key={"slider-" + index + Math.random()}>
                                 <div className={`qui-portrait-slide ${quommonClasses.childClasses} `}>
-                                    {slide.selected && <div className="qui-mid-circle" style={{ backgroundColor: slide.props.withColor.accentColor }} >
-                                        <div className="qui-checkbox" style={{ color: slide.props.withColor.accentColor }}>
+                                    {slide.selected && <div className="qui-mid-circle" style={{ backgroundColor: slide.props.withColor.accentColor }}>
+                                        <div className="qui-checkbox" style={{ color: slide.props.withColor.textColor }}>
                                             <i className={slide.selected ? "fas fa-check-square" : "far fa-square"}>
                                             </i>
                                         </div>
