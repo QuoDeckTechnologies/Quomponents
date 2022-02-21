@@ -149,7 +149,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "button",
+    tgt: "buttonbank",
     dictionary: dictionary,
   },
 

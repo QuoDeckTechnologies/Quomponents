@@ -58,7 +58,10 @@ ButtonBank.propTypes = {
     */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
+    accenColor : PropTypes.string,
     textColor: PropTypes.string,
+    hoverBackgroundColor : PropTypes.string,
+    hoverTextColor : PropTypes.string
   }),
   /**
     Use to define the entry animation of the component
@@ -104,6 +107,7 @@ ButtonBank.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
+  content:[],
   asEmphasis: "contained",
   isCircular: false,
   //=======================================
