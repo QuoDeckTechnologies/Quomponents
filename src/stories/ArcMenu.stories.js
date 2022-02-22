@@ -146,7 +146,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "button",
+    tgt: "arcmenu",
     dictionary: dictionary,
   },
   isDisabled: false,

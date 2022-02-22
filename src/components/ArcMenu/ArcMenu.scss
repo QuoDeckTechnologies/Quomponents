@@ -16,8 +16,8 @@
   bottom: 0;
 }
 .qui .qui-arc .qui-arc-menu-button {
-  height: 2.5em;
-  width: 2.5em;
+  height: 2em;
+  width: 2em;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -45,7 +45,7 @@
   height: 5em;
   width: 5em;
   padding: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 10%;
   box-shadow: 0px 6px 7px 0px #656565;
   display: flex;
   flex-direction: column;
@@ -61,46 +61,95 @@
   background-color: rgba(0, 0, 0, 0.397);
   z-index: 10;
 }
+.qui .size-tiny {
+  .qui-arc{
+    height: 2.5em;
+    width: 2.5em;
+  }
+}
 .qui .size-small {
   .qui-arc {
-    height: 3.5em;
-    width: 3.5em;
+    height: 2.5em;
+    width: 2.5em;
   }
 }
 .qui .size-normal {
   .qui-arc {
-    height: 4em;
-    width: 4em;
+    height: 3em;
+    width: 3em;
+  }
+  .qui-arc-menu-button i{
+    font-size: 1em;
   }
 }
 .qui .size-big {
   .qui-arc-menu-button {
-    height: 2.8em;
-    width: 2.8em;
+    height: 2em;
+    width: 2em;
   }
   .qui-arc {
-    height: 5.5em;
-    width: 5.5em;
+    height: 3.5em;
+    width: 3.5em;
+  }
+  .qui-arc-menu-button i{
+    font-size: 1em;
+  }
+  .qui-single-button {
+    height: 3em;
+    width: 3em;
+  }
+  .qui-single-button i{
+    font-size: 1em;
+  }
+  .qui-single-button small{
+    font-size: 0.5em;
   }
 }
 .qui .size-huge {
   .qui-arc-menu-button {
-    height: 2.7em;
-    width: 2.7em;
+    height: 2em;
+    width: 2em;
   }
   .qui-arc {
-    height: 6em;
-    width: 6em;
+    height: 4em;
+    width: 4em;
   }
+  .qui-arc-menu-button i{
+    font-size: 1em;
+  }
+  .qui-single-button {
+    height: 2.5em;
+    width: 2.5em;
+  }
+  .qui-single-button i{
+    font-size: 1em;
+  }
+  .qui-single-button small{
+    font-size: 0.4em;
+  }
+
 }
 .qui .size-massive {
   .qui-arc-menu-button {
-    height: 3em;
-    width: 3em;
+    height: 1.2em;
+    width: 1.2em;
   }
   .qui-arc {
-    height: 9em;
-    width: 9em;
+    height: 3.5em;
+    width: 3.5em;
+  }
+  .qui-arc-menu-button i{
+    font-size: 0.8em;
+  }
+  .qui-single-button {
+    height: 1.5em;
+    width: 1.5em;
+  }
+  .qui-single-button i{
+    font-size: 0.5em;
+  }
+  .qui-single-button small{
+    font-size: 0.3em;
   }
 }
 

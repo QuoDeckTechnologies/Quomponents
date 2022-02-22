@@ -124,7 +124,7 @@ const getColors = (withColor) => {
 
 /**
 ## Notes
-- Component using ArcMenu must have a class `qui`
+- ArcMenu must be used as last child of `qui` parent class
 - The design system used for this component is HTML and CSS
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
@@ -133,7 +133,6 @@ const getColors = (withColor) => {
 **/
 export default function ArcMenu(props) {
   const [openMenu,setOpenMenu] = useState (false)
-
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
@@ -185,7 +184,7 @@ export default function ArcMenu(props) {
             {_.map(labelContent.menuData,(dataObj,i)=>{
               return (
                 <div className={`qui-menu-button ${quommonClasses.childClasses}`} key={i}>
-                  <button className={`qui-btn qui-single-button ${quommonClasses.childClasses}`} style={{ backgroundColor: colors.backgroundColor,color:colors.color }}><i className={dataObj.icon} style={{ color: colors.color }}></i>{dataObj.name}</button>
+                  <button className={`qui-btn qui-single-button ${quommonClasses.childClasses}`} style={{ backgroundColor: colors.backgroundColor,color:colors.color }}><i className={dataObj.icon} style={{ color: colors.color }}></i><small>{dataObj.name}</small></button>
                 </div>
               )
             })}
