@@ -55,23 +55,6 @@ ArcMenu.propTypes = {
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
     /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
     */
@@ -107,7 +90,6 @@ ArcMenu.defaultProps = {
   asVariant: "primary",
   asSize: "normal",
   withColor: null,
-  withAnimation: null,
   withTranslation: null,
   isDisabled: false,
   isHidden: false,
@@ -184,7 +166,7 @@ export default function ArcMenu(props) {
             {_.map(labelContent.menuData,(dataObj,i)=>{
               return (
                 <div className={`qui-menu-button ${quommonClasses.childClasses}`} key={i}>
-                  <button className={`qui-btn qui-single-button ${quommonClasses.childClasses}`} style={{ backgroundColor: colors.backgroundColor,color:colors.color }}><i className={dataObj.icon} style={{ color: colors.color }}></i><small>{dataObj.name}</small></button>
+                  <button onClick={props.onClick} className={`qui-btn qui-single-button ${quommonClasses.childClasses}`} style={{ backgroundColor: colors.backgroundColor,color:colors.color }}><i className={dataObj.icon} style={{ color: colors.color }}></i><small>{dataObj.name}</small></button>
                 </div>
               )
             })}
