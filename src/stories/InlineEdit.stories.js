@@ -13,13 +13,6 @@ export default {
         category: "as-Flags",
       },
     },
-    asPadded: {
-      control: "select",
-      options: ["fitted", "compact", "normal", "relaxed"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     asFloated: {
       control: "select",
       options: ["left", "right", "none", "inline"],
@@ -60,6 +53,12 @@ export default {
         defaultValue: false,
       },
     },
+    isDisabled: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
   },
   decorators: [
     (story) => (
@@ -88,7 +87,6 @@ Default.args = {
   content: "Please input your text here",
   asSize: "normal",
   asFloated: "none",
-  asPadded: "normal",
   asAligned: "left",
   withColor: {
     accentColor: "#FFAB00",
@@ -102,6 +100,7 @@ Default.args = {
     delay: 0,
   },
   isHidden: false,
+  isDisabled: false,
 };
 Default.parameters = {
   docs: {
@@ -131,6 +130,53 @@ AnimatedInlineEdit.parameters = {
     source: {
       code: `<AnimatedInlineEdit {...${JSON.stringify(
         AnimatedInlineEdit.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Variants
+// -------------------------------------------------------------
+const AllVariantsTemplate = (args) => {
+  const baseObj = {
+    ...Object.assign({}, Default.args, args, {
+    }),
+  };
+  return (
+    <div>
+      <InlineEdit
+        {...Object.assign({}, baseObj, {
+          withColor: {
+            accentColor: "#ffbf00",
+            textColor: "#ffffff",
+            backgroundColor: "#666666",
+          }
+        })}
+      />{" "}
+      <br />
+      <InlineEdit
+        {...Object.assign({}, baseObj, {
+          withColor: {
+            accentColor: "#589C48",
+            textColor: "#FBB149",
+            backgroundColor: "#733381",
+          }
+        })}
+      />{" "}
+    </div>
+  );
+};
+export const AllVariants = AllVariantsTemplate.bind({});
+AllVariants.parameters = {
+  docs: {
+    description: {
+      story: "variants are supported. Use as per purpose noted here.",
+    },
+    source: {
+      code: `<AllVariants {...${JSON.stringify(
+        AllVariants.args,
         null,
         2
       )}}/>`,

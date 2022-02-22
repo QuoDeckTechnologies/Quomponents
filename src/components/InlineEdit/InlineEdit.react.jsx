@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
@@ -14,7 +14,7 @@ InlineEdit.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      Use to define component text and icon size in increasing order
+      Use to define Input's value
     */
     content: PropTypes.string.isRequired,
     //=======================================
@@ -32,10 +32,6 @@ InlineEdit.propTypes = {
         "massive",
     ]),
     /**
-        Use to define component padding in increasing order
-    */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
@@ -44,7 +40,7 @@ InlineEdit.propTypes = {
     */
     asAligned: PropTypes.oneOf(["left", "right", "center"]),
     /**
-      Use to set Accent Color and Text Color 
+      Use to set Colors in component 
     */
     withColor: PropTypes.shape({
         textColor: PropTypes.string,
@@ -72,6 +68,10 @@ InlineEdit.propTypes = {
       Use to show/hide the component
     */
     isHidden: PropTypes.bool,
+    /**
+    Use to enable/disable the component
+    */
+    isDisabled: PropTypes.bool,
 };
 
 InlineEdit.defaultProps = {
@@ -83,7 +83,6 @@ InlineEdit.defaultProps = {
     // Quommon props
     //=======================================
     asSize: "normal",
-    asPadded: "normal",
     asFloated: "none",
     asAligned: "center",
 
@@ -91,6 +90,7 @@ InlineEdit.defaultProps = {
     withAnimation: null,
 
     isHidden: false,
+    isDisabled: false,
 };
 /**
 ## Notes
@@ -115,10 +115,9 @@ export default function InlineEdit(props) {
         backgroundColor: props.withColor?.backgroundColor,
         color: props.withColor?.textColor,
     };
-
-    const changeFocus = (event) => {
-        let inp = event.target.id
-        document.getElementById(inp).setAttribute("style", `border-color:${props.withColor?.accentColor}`)
+    const inputRef = useRef();
+    const changeFocus = () => {
+        inputRef.current.style.borderColor = props.withColor?.accentColor
     }
     //-------------------------------------------------------------------
     // 4. Get animation of the component
@@ -131,12 +130,12 @@ export default function InlineEdit(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-input-container`}>
+            <div className={`${quommonClasses.childClasses}`}>
                 <input
-                    id={1}
-                    className={`qui-input-field ${quommonClasses.childClasses}`}
+                    className={`qui-input-field ${props.asAligned}-aligned`}
                     value={input}
-                    onFocus={(e) => changeFocus(e)}
+                    ref={inputRef}
+                    onFocus={() => changeFocus()}
                     onChange={(e) => setInput(e.target.value)}
                     style={Color}
                 />
@@ -144,5 +143,4 @@ export default function InlineEdit(props) {
         </motion.div>
     );
 }
-
 
