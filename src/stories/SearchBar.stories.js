@@ -3,7 +3,7 @@ import SearchBar from "../components/SearchBar/SearchBar.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        SearchBar:{
+        SearchBar: {
             placeHolder: "खोजें...",
         }
     },
@@ -13,7 +13,7 @@ export default {
     title: "Design System/SearchBar/SearchBar",
     component: SearchBar,
 
-    placeHolder :"Search...",
+    placeHolder: "Search...",
     argTypes: {
         asFloated: {
             control: "select",
@@ -22,10 +22,25 @@ export default {
                 category: "as-Flags",
             },
         },
+        asVariant: {
+            control: "select",
+            options: ["primary", "secondary", "success", "warning", "error"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asSize: {
+            control: "select",
+            options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
+                    backgroundColor: "",
                     textColor: "",
                 },
             },
@@ -34,8 +49,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    icon: "fas fa-search",
-                    size: ""
+                    icon: "fas fa-search"
                 },
             },
         },
@@ -79,7 +93,7 @@ export default {
                 defaultValue: null,
             },
         },
-  
+
     },
     decorators: [
         (story) => (
@@ -101,15 +115,18 @@ export default {
 const Template = (args) => <SearchBar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    placeHolder :"Search...",
+    placeHolder: "Search...",
     asFloated: "left",
-    withIcon: { icon: "fas fa-search", size: "1em" },
+    asVariant:"primary",
+    asSize: "normal",
+    withIcon: { icon: "fas fa-search" },
     withColor: {
+        backgroundColor: "",
         textColor: "",
     },
     isDisabled: false,
-    isFluid:false,
-    isClosed:false,
+    isFluid: false,
+    isClosed: false,
     isHidden: false,
     withTranslation: {
         lang: "",
@@ -131,19 +148,19 @@ Default.parameters = {
 export const ClosedSearchBar = Template.bind({});
 ClosedSearchBar.args = {
     ...Default.args,
-   isClosed:true
+    isClosed: true
 };
 
 //All Variants
 export const AllVariantsTemplate = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {
-            isClosed:false
+            isClosed: false
         }),
     };
     const baseObj2 = {
         ...Object.assign({}, Default.args, args, {
-            isClosed:true
+            isClosed: true
         }),
     };
     return (
@@ -176,7 +193,7 @@ TranslatedSearchBar.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the text appears in. To make this work for the ActionButton, add a content:{text:{title, subTitle},label} value to the dictionary.",
+                "Use to change the language that the text appears in. To make this work for the SearchBar, add a SearchBar:{placeHolder} value to the dictionary.",
         },
         source: {
             code: `<SearchBar {...${JSON.stringify(
