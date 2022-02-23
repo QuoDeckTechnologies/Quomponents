@@ -1,15 +1,6 @@
 .qui-Landscape-carousel {
   overflow: inherit;
 }
-.qui .qui-checkbox i {
-  position: absolute;
-  bottom: 18%;
-  right: 0%;
-  left: 0%;
-  margin: auto;
-  font-size: 1.2em;
-  filter: drop-shadow(0px 0px 0px #d2d2d2);
-}
 .qui-Landscape-carousel .qui-Landscape-slide {
   position: relative;
 }
@@ -40,6 +31,15 @@
     background-size: cover;
     box-shadow: 0px 0px 0px 0px #666666;
   }
+  .qui .qui-checkbox i {
+    position: absolute;
+    bottom: 18%;
+    right: 0%;
+    left: 0%;
+    margin: auto;
+    font-size: 1.2em;
+    filter: drop-shadow(0px 0px 0px #d2d2d2);
+  }
   .qui-Landscape-slide-container .qui-banner-card .qui-slider-card-box {
     position: absolute;
     font-size: 1em;
@@ -49,6 +49,8 @@
     left: 0%;
     right: 0%;
     bottom: 0%;
+    height: 2em;
+    max-height: 2em;
     opacity: 0.9;
     padding: 0.5em 1em;
     border-top-left-radius: 1em;
@@ -76,8 +78,8 @@
     width: fit-content;
   }
   .qui-Landscape-slide .qui-mid-circle {
-    width: 70px;
-    height: 35px; /* as the half of the width */
+    width: 4.5em;
+    height: 2.2em; /* as the half of the width */
     background-color: gold;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
@@ -85,10 +87,14 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 40px;
+    bottom: 2.5em;
     margin: auto;
     z-index: 1;
   }
+  .qui-banner-card .qui-slider-card-box-content {
+    display: none;
+  }
+
   .qui-Landscape-carousel .qui-slick-arrows {
     display: flex;
     justify-content: space-between;
@@ -101,12 +107,25 @@
   }
 }
 @media only screen and (min-width: 481px) {
+  .qui-Landscape-slide-container .qui-banner-card .qui-slider-card-box {
+    height: 2em;
+    max-height: 2em;
+  }
   .qui-Landscape-slide .qui-banner-card {
     font-size: 1em;
   }
+  .qui .qui-checkbox i {
+    position: absolute;
+    bottom: 18%;
+    right: 0%;
+    left: 0%;
+    margin: auto;
+    font-size: 1.4em;
+    filter: drop-shadow(0px 0px 0px #d2d2d2);
+  }
   .qui-Landscape-slide .qui-mid-circle {
-    width: 80px;
-    height: 40px; /* as the half of the width */
+    width: 5.2em;
+    height: 2.6em; /* as the half of the width */
     background-color: gold;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
@@ -114,7 +133,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 51px;
+    bottom: 3.3em;
     margin: auto;
     z-index: 1;
   }
@@ -137,12 +156,16 @@
 }
 
 @media only screen and (min-width: 769px) {
+  .qui-Landscape-slide-container .qui-banner-card .qui-slider-card-box {
+    height: 2em;
+    max-height: 2em;
+  }
   .qui-Landscape-slide .qui-banner-card {
     font-size: 1.3em;
   }
   .qui-Landscape-slide .qui-mid-circle {
-    width: 100px;
-    height: 50px; /* as the half of the width */
+    width: 6em;
+    height: 3em; /* as the half of the width */
     background-color: gold;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
@@ -150,9 +173,67 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 66px;
+    bottom: 4.2em;
     margin: auto;
     z-index: 1;
+  }
+  .qui .qui-checkbox i {
+    position: absolute;
+    bottom: 18%;
+    right: 0%;
+    left: 0%;
+    margin: auto;
+    font-size: 1.6em;
+    filter: drop-shadow(0px 0px 0px #d2d2d2);
+  }
+  .qui-Landscape-carousel .qui-slick-arrows {
+    font-size: 2.5em;
+  }
+  .qui-Landscape-carousel .slick-dots li button:before {
+    font-size: 15px;
+  }
+  .qui-Landscape-carousel .slick-dots li.slick-active button:before {
+    font-size: 17px;
+    color: #a6a6a6;
+  }
+  .qui-Landscape-carousel .slick-dots li {
+    margin: 0 -2px;
+  }
+  .qui-Landscape-carousel .slick-dots {
+    bottom: -35px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .qui-Landscape-slide-container .qui-banner-card .qui-slider-card-box {
+    height: 2em;
+    max-height: 2em;
+  }
+  .qui-Landscape-slide .qui-banner-card {
+    font-size: 1.3em;
+  }
+  .qui-Landscape-slide .qui-mid-circle {
+    width: 6em;
+    height: 3em; /* as the half of the width */
+    background-color: gold;
+    border-top-left-radius: 100px; /* 100px of height + 10px of border */
+    border-top-right-radius: 100px; /* 100px of height + 10px of border */
+    border-bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4.16em;
+    margin: auto;
+    z-index: 1;
+  }
+  .qui .qui-checkbox i {
+    position: absolute;
+    bottom: 18%;
+    right: 0%;
+    left: 0%;
+    margin: auto;
+    font-size: 1.6em;
+    filter: drop-shadow(0px 0px 0px #d2d2d2);
   }
   .qui-Landscape-carousel .qui-slick-arrows {
     font-size: 2.5em;

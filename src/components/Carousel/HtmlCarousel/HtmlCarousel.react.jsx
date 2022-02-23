@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
     getQuommons,
-    getAnimation,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -34,23 +33,6 @@ HtmlCarousel.propTypes = {
         props: PropTypes.object
     })).isRequired,
     /**
-    Use to define the entry animation of the component
-    */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-            ""
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
-    }),
-    /**
     Button component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
@@ -59,7 +41,6 @@ HtmlCarousel.defaultProps = {
     // Component Specific props
     //=======================================
     content: [],
-    withAnimation: null,
 };
 /**
 ## Notes
@@ -76,7 +57,6 @@ export default function HtmlCarousel(props) {
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
 
     var settings = {
         dots: true,
@@ -96,10 +76,7 @@ export default function HtmlCarousel(props) {
     // ========================= Render Function =================================
     return (
         <motion.div
-            initial={animate.from}
-            animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            onClick={props.onClick}
         >
             <Slider ref={sliderRef} {...settings}>
                 {_.map(content, (slide, index) => {
@@ -107,7 +84,7 @@ export default function HtmlCarousel(props) {
                         <div className="qui-Html-slide-container"
                             key={"slider-" + index + Math.random()}>
                             <div className={`qui-Html-slide`}>
-                                <BannerCard  {...slide.props} content={slide} />
+                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
                             </div>
                         </div>
                     );

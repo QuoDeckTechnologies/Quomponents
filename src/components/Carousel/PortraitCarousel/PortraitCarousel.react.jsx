@@ -99,7 +99,7 @@ export default function PortraitCarousel(props) {
                 initial={animate.from}
                 animate={animate.to}
                 className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
-                onClick={props.onClick}>
+            >
                 <Slider ref={sliderRef} {...settings}>
                     {_.map(content, (slide, index) => {
                         return (
@@ -112,7 +112,7 @@ export default function PortraitCarousel(props) {
                                             </i>
                                         </div>
                                     </div>}
-                                    <BannerCard  {...slide.props} content={slide} onClick={props.onClick} className="kp" />
+                                    <BannerCard  {...slide.props} content={slide} onClick={props.onClick}/>
                                 </div>
                             </div>
                         );

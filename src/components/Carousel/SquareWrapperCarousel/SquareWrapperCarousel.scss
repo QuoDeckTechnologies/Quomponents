@@ -1,14 +1,6 @@
 .qui-SquareWrapper-carousel {
   overflow: inherit;
 }
-.qui .qui-SquareWrapper-slide .qui-checkbox i {
-  position: absolute;
-  bottom: 18%;
-  right: 0%;
-  left: 0%;
-  margin: auto;
-  font-size: 1.2em;
-}
 .qui-SquareWrapper-carousel .qui-SquareWrapper-slide {
   position: relative;
 }
@@ -58,6 +50,16 @@
   }
   .qui-SquareWrapper-slide-container .qui-banner-card .qui-slider-card-box-header {
     text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    line-height: 1.1;
+    padding-top: 0.1em;
+    margin-bottom: 0.2em;
+    max-width: 40ch;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .qui-SquareWrapper-carousel .slick-dots li button:before {
     font-size: 9px;
@@ -76,8 +78,8 @@
     width: fit-content;
   }
   .qui-SquareWrapper-carousel .qui-mid-circle {
-    width: 70px;
-    height: 35px; /* as the half of the width */
+    width: 4em;
+    height: 2em; /* as the half of the width */
     background-color: gold;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
@@ -85,9 +87,17 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 40px;
+    bottom: 2.2em;
     margin: auto;
     z-index: 1;
+  }
+  .qui .qui-SquareWrapper-slide .qui-checkbox i {
+    position: absolute;
+    bottom: 18%;
+    right: 0%;
+    left: 0%;
+    margin: auto;
+    font-size: 1.2em;
   }
   .qui-SquareWrapper-carousel .qui-slick-arrows {
     display: flex;
@@ -111,18 +121,32 @@
     background-size: cover;
     box-shadow: 0px 0px 0px 0px #666666;
   }
+  .qui-SquareWrapper-slide-container .qui-banner-card .qui-slider-card-box {
+    font-size: 1em;
+    max-width: 70%;
+    height:2.1em;
+  }
   .qui-SquareWrapper-slide-container .qui-banner-card .qui-slider-card-box-header {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.1em;
+    font-weight: bold;
+    line-height: 1.1;
+    padding-top: 0.1em;
+    margin-bottom: 0.2em;
+    max-width: 60ch;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .qui-SquareWrapper-slide-container .qui-ribbon-container {
     font-size: 1.5em;
     font-weight: bold;
     text-transform: capitalize;
   }
-  .qui-SquareWrapper-slide .qui-mid-circle {
-    width: 100px;
-    height: 50px; /* as the half of the width */
+  .qui-SquareWrapper-carousel .qui-mid-circle {
+    width: 5em;
+    height: 2.5em; /* as the half of the width */
     background-color: gold;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
@@ -130,9 +154,23 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 47px;
+    bottom: 2.62em;
     margin: auto;
     z-index: 1;
+  }
+  .qui .qui-SquareWrapper-slide .qui-checkbox i {
+    position: absolute;
+    bottom: 18%;
+    right: 0%;
+    left: 0%;
+    margin: auto;
+    font-size: 1.5em;
+  }
+  .qui-SquareWrapper-carousel .qui-slick-arrows {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.7em;
   }
   .qui-SquareWrapper-carousel .qui-slick-arrows {
     font-size: 2em;
@@ -162,18 +200,32 @@
     background-size: cover;
     box-shadow: 0px 0px 0px 0px #666666;
   }
+  .qui-SquareWrapper-slide-container .qui-banner-card .qui-slider-card-box {
+    font-size: 1em;
+    max-width: 70%;
+    height:2.5em;
+  }
   .qui-SquareWrapper-slide-container .qui-banner-card .qui-slider-card-box-header {
     text-align: center;
-    font-size: 1.7em;
+    font-size: 1.1em;
+    font-weight: bold;
+    line-height: 1.1;
+    padding-top: 0.1em;
+    margin-bottom: 0.2em;
+    max-width: 60ch;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .qui-SquareWrapper-slide-container .qui-ribbon-container {
     font-size: 1.7em;
     font-weight: bold;
     text-transform: capitalize;
   }
-  .qui-SquareWrapper-slide .qui-mid-circle {
-    width: 110px;
-    height: 55px; /* as the half of the width */
+  .qui-SquareWrapper-carousel .qui-mid-circle {
+    width: 6.5em;
+    height: 3.3em; /* as the half of the width */
     background-color: gold;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
@@ -181,9 +233,24 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 51px;
+    bottom: 2.93em;
     margin: auto;
     z-index: 1;
+  }
+  .qui .qui-SquareWrapper-slide .qui-checkbox i {
+    position: absolute;
+    bottom: 18%;
+    right: 0%;
+    left: 0%;
+    margin: auto;
+    font-size: 2em;
+  }
+
+  .qui-SquareWrapper-carousel .qui-slick-arrows {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.7em;
   }
   .qui-SquareWrapper-carousel .qui-slick-arrows {
     font-size: 2.5em;
@@ -201,4 +268,12 @@
   .qui-SquareWrapper-carousel .slick-dots {
     bottom: -35px;
   }
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .qui-SquareWrapper-carousel .qui-mid-circle {
+    bottom: 2.95em;
+  }
+
 }

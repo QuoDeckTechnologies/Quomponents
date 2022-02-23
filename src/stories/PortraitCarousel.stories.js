@@ -7,7 +7,7 @@ export default {
         content: [{
             image: "",
             tag: "",
-            checked:"",
+            checked: "",
             header: "",
             props: {}
         }],
@@ -50,7 +50,7 @@ export default {
 };
 
 let dataprops = {
-    asVariant: "Primary",
+    asVariant: "primary",
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -92,6 +92,11 @@ Default.args = {
             ...dataprops,
         }
     }],
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
 };
 Default.parameters = {
     docs: {

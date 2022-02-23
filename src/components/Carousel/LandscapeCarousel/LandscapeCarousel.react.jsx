@@ -62,14 +62,6 @@ LandscapeCarousel.defaultProps = {
     content: [],
     withAnimation: null,
 };
-function getColors(colors) {
-    let colorStyle = {
-        accentColors: {
-            backgroundColor: colors.accentColor,
-        }
-    }
-    return colorStyle;
-}
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
@@ -82,11 +74,6 @@ export default function LandscapeCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
     let quommonClasses = getQuommons(props, "Landscape-carousel");
-    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
-    //-------------------------------------------------------------------
-    // 3. Set the component colors
-    //-------------------------------------------------------------------
-    let colors = props.withColor ? getColors(props.withColor) : {};
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -113,7 +100,7 @@ export default function LandscapeCarousel(props) {
                 initial={animate.from}
                 animate={animate.to}
                 className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
-                onClick={props.onClick}>
+            >
                 <Slider ref={sliderRef} {...settings}>
                     {_.map(content, (slide, index) => {
                         return (
@@ -126,7 +113,7 @@ export default function LandscapeCarousel(props) {
                                             </i>
                                         </div>
                                     </div>}
-                                    <BannerCard  {...slide.props} content={slide} />
+                                    <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
                                 </div>
                             </div>
                         );

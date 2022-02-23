@@ -7,7 +7,7 @@ export default {
         content: [{
             image: "",
             tag: "",
-            Selected:"",
+            Selected: "",
             header: "",
             props: {}
         }],
@@ -20,18 +20,6 @@ export default {
                 duration: 0,
                 delay: 0,
             },
-        },
-    },
-    isDisabled: {
-        table: {
-            category: "is-Toggles",
-            defaultValue: false,
-        },
-    },
-    isHidden: {
-        table: {
-            category: "is-Toggles",
-            defaultValue: false,
         },
     },
     onClick: {
@@ -104,6 +92,11 @@ Default.args = {
             ...dataprops,
         }
     }],
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
 };
 Default.parameters = {
     docs: {
@@ -140,6 +133,11 @@ SquareWrapperCarouselWithoutBox.args = {
         }
     }],
 
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
 };
 SquareWrapperCarouselWithoutBox.parameters = {
     docs: {

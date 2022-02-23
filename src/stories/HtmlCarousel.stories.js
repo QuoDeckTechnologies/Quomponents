@@ -1,4 +1,3 @@
-import { withTheme } from "@emotion/react";
 import React from "react";
 import HtmlCarousel from "../components/Carousel/HtmlCarousel/HtmlCarousel.react";
 export default {
@@ -12,16 +11,6 @@ export default {
             content: "",
             props: {}
         }],
-    },
-    withAnimation: {
-        table: {
-            category: "with-Params",
-            defaultValue: {
-                animation: "",
-                duration: 0,
-                delay: 0,
-            },
-        },
     },
     onClick: {
         table: {

@@ -74,7 +74,6 @@ export default function SquareWrapperCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
     let quommonClasses = getQuommons(props, "SquareWrapper-carousel");
-    console.log(sliderRef.current)
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -101,7 +100,6 @@ export default function SquareWrapperCarousel(props) {
                 initial={animate.from}
                 animate={animate.to}
                 className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
-                onClick={props.onClick}
 
             >
                 <Slider ref={sliderRef} {...settings}>
