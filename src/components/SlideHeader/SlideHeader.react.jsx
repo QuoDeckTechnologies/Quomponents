@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./SlideHeader.scss";
@@ -14,8 +15,8 @@ SlideHeader.propTypes = {
     // Component Specific props
     //=======================================
     /**
-     Use to define title and subtitle in SliderHeader
-   */
+   Use to define title and subtitle in SliderHeader
+    */
     content: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string
@@ -24,8 +25,8 @@ SlideHeader.propTypes = {
     // Quommon props
     //=======================================
     /**
-      Use to define component size in increasing order
-    */
+        Use to define component size in increasing order
+      */
     asSize: PropTypes.oneOf([
         "tiny",
         "small",
@@ -47,7 +48,7 @@ SlideHeader.propTypes = {
     */
     asAligned: PropTypes.oneOf(["left", "right", "center"]),
     /**
-      Use to set Color 
+      Use to set Color  
     */
     withColor: PropTypes.shape({
         textColor: PropTypes.string,
@@ -72,6 +73,14 @@ SlideHeader.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the SlideHeader. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
       Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -92,6 +101,7 @@ SlideHeader.defaultProps = {
 
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
 
     isHidden: false,
 };
@@ -106,11 +116,23 @@ export default function SlideHeader(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "slide-header");
+    let quommonClasses = getQuommons(props);
     //-------------------------------------------------------------------
     // 2. Use to set defaultText i.e title and subtitle in SliderHeader
     //-------------------------------------------------------------------
     let defaultText = Object.assign({}, props.content);
+    let tObj = null;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        if (defaultText && tObj?.title) {
+            defaultText.title = tObj.title
+            defaultText.subtitle = tObj.subtitle
+        };
+    }
     //-------------------------------------------------------------------
     // 3. Use to set Color in SliderHeader
     //-------------------------------------------------------------------
@@ -131,10 +153,10 @@ export default function SlideHeader(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-titleBlock ${quommonClasses.childClasses}`} style={Color}>
-                <div className={`qui-title`} >
+                <div className="qui-title">
                     {defaultText?.title}
                 </div>
-                <div className={`qui-subtitle`}>
+                <div className="qui-subtitle">
                     {defaultText?.subtitle}
                 </div>
             </div>
