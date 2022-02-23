@@ -12,24 +12,25 @@ describe("OverlayMenu", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-    let mockFn = jest.fn();
     let onClick = jest.fn();
+    const mockFn = jest.fn();
+
 
     const dictionary = JSON.stringify({
 
         hi: {
-            OverlayMenu: { 
-                label: "अरुणा असरानी" ,
-                content:[
-                    {label:"प्रोफ़ाइल संपादित करें"},
-                    {label:"खाता"},
-                    {label:"प्रोफ़ाइल संपादित करें"},
-                    {label:"खाता"},
-                    {label:"प्रोफ़ाइल संपादित करें"},
-                    {label:"खाता"},
-                    {label:"खाता"},
-                    {label:"प्रोफ़ाइल संपादित करें"},
-                    {label:"खाता"},
+            OverlayMenu: {
+                label: "अरुणा असरानी",
+                content: [
+                    { label: "प्रोफ़ाइल संपादित करें" },
+                    { label: "खाता" },
+                    { label: "प्रोफ़ाइल संपादित करें" },
+                    { label: "खाता" },
+                    { label: "प्रोफ़ाइल संपादित करें" },
+                    { label: "खाता" },
+                    { label: "खाता" },
+                    { label: "प्रोफ़ाइल संपादित करें" },
+                    { label: "खाता" },
                 ]
             },
         },
@@ -50,7 +51,7 @@ describe("OverlayMenu", () => {
 
                 isHidden={false}
                 isDisabled={false}
-                tObj = {null}
+                tObj={null}
 
                 // content={[
                 //     {
@@ -118,9 +119,9 @@ describe("OverlayMenu", () => {
                     tgt: "OverlayMenu",
                     dictionary: dictionary,
                 },
-                content:[
+                content: [
                     {
-                        label:"प्रोफ़ाइल संपादित करें",
+                        label: "प्रोफ़ाइल संपादित करें",
                     }],
             });
             expect(component.exists()).toBe(true);
@@ -134,12 +135,19 @@ describe("OverlayMenu", () => {
                     tgt: "OverlayMenu",
                     dictionary: dictionary,
                 },
-                content:[
+                content: [
                     {
-                        label:"Edit Profile",
+                        label: "Edit Profile",
                     }],
             });
             expect(component.exists()).toBe(true);
         });
+    it('should call mock function when button is clicked', () => {
+        const tree = shallow(
+            <OverlayMenu name='button test' handleClick={mockFn} />
+        );
+        tree.simulate('click');
+        expect(mockFn).toHaveBeenCalled();
+    });
 });
 
