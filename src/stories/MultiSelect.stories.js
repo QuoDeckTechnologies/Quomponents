@@ -3,7 +3,7 @@ import MultiSelect from "../components/MultiSelect/MultiSelect.react";
 
 const dictionary = JSON.stringify({
   hi: {
-    MultiSelect: {
+    multiSelect: {
       content: [
         { text:"प्राथमिक बटन",selected:true},
         { text:"प्राथमिक बटन",selected:false},
@@ -166,7 +166,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "button",
+    tgt: "multiSelect",
     dictionary: dictionary,
   },
 
@@ -230,7 +230,7 @@ AnimationUnchecked.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "button",
+    tgt: "multiSelect",
     dictionary: dictionary,
   },
 
@@ -294,7 +294,7 @@ AnimationChecked.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "button",
+    tgt: "multiSelect",
     dictionary: dictionary,
   },
 
@@ -321,7 +321,7 @@ TranslatedMultiSelect.args = {
   asVariant: "primary",
   withTranslation: {
     lang: "hi",
-    tgt: "MultiSelect",
+    tgt: "multiSelect",
     dictionary: dictionary,
   },
 };
