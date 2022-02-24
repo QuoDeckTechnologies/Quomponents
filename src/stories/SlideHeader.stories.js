@@ -123,13 +123,13 @@ Default.args = {
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
   },
   asSize: "normal",
-  asFloated: "none",
+  asFloated: "inline",
   asPadded: "normal",
   asAligned: "center",
   withColor: {
     accentColor: "#AD2929",
     textColor: "#FFFFFF",
-    backgroundColor: "#ad292980",
+    backgroundColor: "#d28f8f",
   },
   withAnimation: {
     animation: "collapse",
