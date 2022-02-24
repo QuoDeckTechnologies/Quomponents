@@ -1,13 +1,14 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
-import './msg.png';
 import AppMenu from "../../AppMenu/AppMenu/AppMenu.react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./NavBar.scss";
 import "../../../common/stylesheets/overrule.scss";
 import { motion } from "framer-motion";
+import _ from "lodash";
+import IconLink from "../../Buttons/IconLink/IconLink.react";
 import { getQuommons, getTranslation, getAnimation, } from "../../../common/javascripts/helpers";
 
 
@@ -17,15 +18,24 @@ NavBar.propTypes = {
     // Component specific prop
     //=======================================
     /**
+    NavBar Text has to be in content or passed as children to the component.
+    */
+    content: PropTypes.shape({
+        title: PropTypes.string,
+        logoimg: PropTypes.string,
+        iconlink: PropTypes.arrayOf(
+            PropTypes.shape({
+                icon: PropTypes.string,
+                link: PropTypes.bool,
+            })
+        ),
+    }).isRequired,
+
+    /**
     Use to define component user image
     */
     withUser: PropTypes.string,
 
-    /**
-    NavBar Text has to be in content or passed as children to the component. Is optional if you only want an icon.
-    */
-    content: PropTypes.string,
-    /**
     //=======================================
     // Quommon props
     //=======================================
@@ -40,38 +50,6 @@ NavBar.propTypes = {
         "warning",
         "error",
     ]),
-    /**
-    Use to define component text size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
-    Use to override component colors and behavior
-    */
-    withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-        textColor: PropTypes.string,
-    }),
-    /**
-    Use to add a heading label, a footer caption or a title popover to the component
-    */
-    withLabel: PropTypes.shape({
-        format: PropTypes.oneOf(["label", "caption", "popover"]),
-        content: PropTypes.string,
-        textColor: PropTypes.string,
-    }),
-    /**
-    Use to add an icon to the component
-    */
-    withIcon: PropTypes.shape({
-        icon: PropTypes.string,
-    }),
     /**
     Use to define the entry animation of the component
     */
@@ -97,7 +75,6 @@ NavBar.propTypes = {
         tgt: PropTypes.string,
         dictionary: PropTypes.string,
     }),
-
     /**
     Use to show/hide the component
     */
@@ -116,59 +93,47 @@ NavBar.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    withUser: "",
+    content: {},
     //=======================================
     // Quommon props
     //=======================================
     asVariant: "primary",
-    asSize: "normal",
-
-    withColor: null,
-    withIcon: null,
     isHidden: false,
     isDisabled: false,
     withTranslation: null,
 };
-
 /**
 ## Notes
 - The design system used for this component is fontawesome Icons
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- props are not being passed to the NavBar. Please speak to the admin to handle any new prop.
 **/
-
 export default function NavBar(props) {
-    // 1. Set the classes
+    //-------------------------------------------------------------------
+    // 1. Destructuring content from props
+    //-------------------------------------------------------------------
+    let { content } = props;
+    // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "NavBar");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
-
-    // 1. Set the color
     //-------------------------------------------------------------------
-    let colors = {
-        backgroundColor: props.withColor?.backgroundColor,
-        color: props.withColor?.textColor
-    }
+    // 3. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
-    // 2. Translate the text objects in case their is a dictionary provided
-    //-------------------------------------------------------------------
+    let labelContent = {
+        title: content?.title,
+    };
+    let tObj = null;
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
-        let tObj = getTranslation(props.withTranslation);
-        if (tObj && props.content && props.content !== "") {
+        tObj = getTranslation(props.withTranslation);
+        if (labelContent && tObj) {
+            labelContent.title = tObj.title;
         }
     }
-    //-------------------------------------------------------------------
-    // 3. Set the label/caption/popover and loading text
-    //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, props.withLabel);
-    let labelStyle = labelContent?.textColor
-        ? { color: labelContent.textColor }
-        : {};
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -178,18 +143,25 @@ export default function NavBar(props) {
     return (
         <motion.div
             initial={animate.from}
-            animate={animate.to} className={`qui ${quommonClasses.parentClasses}`} onClick={props.onClick}>
-            <div style={colors} className={`qui-NavMain-container ${quommonClasses.childClasses} variant-${props.asVariant} `} >
-                <div className={`qui-left-container size-${props.asSize} `}>
-                    <div style={colors} className={`qui-angel`}><i className={props.withIcon?.icon}></i></div>
-                    <div className="qui-dots" >
-                        <i class="fas fa-comment-alt"></i></div>
-                    <div className="qui-label" style={labelStyle}>
-                        {props.content} </div>
-
+            animate={animate.to} className={`qui ${quommonClasses.parentClasses}`}>
+            <div className={`qui-navbar-container ${quommonClasses.childClasses} variant-${props.asVariant} `} >
+                <div className="qui-left-navbar">
+                    {_.map(content?.iconlink, (icon, index) => {
+                        return (
+                            <IconLink
+                                {...props}
+                                content={{ link: icon.link }}
+                                withIcon={{ icon: icon.icon }}
+                            />
+                        );
+                    })}
+                    <img src={props.content?.logoimg} alt="Logo" className="logoimg" />
+                    <div className="qui-content">
+                        {labelContent?.title}
+                    </div>
                 </div>
-                <div className="qui-right-container" >
-                    <div className={`qui-searching size-${props.asSize} `}><i class="fas fa-search"></i></div>
+                <div className="qui-right-navbar" >
+                    <div className="qui-searching" onClick={props.onClick}><i class="fas fa-search"></i></div>
                     <div><AppMenu {...props} withIcon={{ icon: 'fas fa-ellipsis-v' }} /></div>
                 </div>
             </div>
