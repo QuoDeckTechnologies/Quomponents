@@ -1,10 +1,10 @@
 import React from "react";
-import NavBar from "../components/NavBar /NavBar/NavBar.react";
+import NavBar from "../components/NavBar/NavBar/NavBar.react";
 
 const dictionary = JSON.stringify({
     hi: {
         navbar: {
-            title: "कमाएँ",
+            title: "कमाये",
         },
     },
 });
@@ -222,26 +222,26 @@ AllVariants.parameters = {
 // -------------------------------------------------------------
 export const AnimatedNavbar = Template.bind({});
 AnimatedNavbar.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 1,
-    delay: 0,
-  },
+    ...Default.args,
+    withAnimation: {
+        animation: "fade",
+        duration: 1,
+        delay: 0,
+    },
 };
 AnimatedNavbar.parameters = {
-  docs: {
-    description: {
-      story: "We can animate the appearance of Navbar",
+    docs: {
+        description: {
+            story: "We can animate the appearance of Navbar",
+        },
+        source: {
+            code: `<NavbarDark {...${JSON.stringify(
+                AnimatedNavbar.args,
+                null,
+                2
+            )}}/>`,
+        },
     },
-    source: {
-      code: `<NavbarDark {...${JSON.stringify(
-        AnimatedNavbar.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
 };
 // -------------------------------------------------------------
 // Translated NavBar

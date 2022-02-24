@@ -11,7 +11,6 @@ import _ from "lodash";
 import IconLink from "../../Buttons/IconLink/IconLink.react";
 import { getQuommons, getTranslation, getAnimation, } from "../../../common/javascripts/helpers";
 
-
 NavBar.propTypes = {
 
     //=======================================
