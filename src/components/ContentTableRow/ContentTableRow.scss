@@ -1,0 +1,27 @@
+.qui-content-table-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 0.5em;
+}
+
+.qui .qui-content-input{
+    flex: 1;
+    border: none;
+}
+.qui .qui-content-input:focus{
+    outline: none;
+}
+.qui .qui-content-checkbox{
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+    background-color: gray;
+}
+
+.qui .qui-content-menu{
+    font-size: 1.5em;
+    background-color: white;
+    cursor: pointer;
+}
