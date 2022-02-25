@@ -113,7 +113,7 @@ Default.parameters = {
     },
 };
 // -------------------------------------------------------------
-// SquareCarouselSquareCarouselWithoutBox
+// SquareCarouselWithoutBox
 // -------------------------------------------------------------
 export const SquareCarouselWithoutBox = Template.bind({});
 SquareCarouselWithoutBox.args = {
@@ -196,6 +196,10 @@ SquareCarouselWithoutTag.parameters = {
     },
 };
 
+
+// -------------------------------------------------------------
+// AnimatedSquareCarousel
+// -------------------------------------------------------------
 
 export const AnimatedSquareCarousel = Template.bind({});
 AnimatedSquareCarousel.args = {
