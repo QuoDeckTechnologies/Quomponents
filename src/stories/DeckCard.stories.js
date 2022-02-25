@@ -141,7 +141,6 @@ Default.args = {
       },
     ],
   },
-  isHiddenRibbon: false,
   asVariant: "primary",
   withColor: {
     backgroundColor: "",
@@ -187,7 +186,6 @@ ColoredDeckcard.parameters = {
     },
   },
 };
-
 //-------------------------------------------------------------
 // Animated DeckCard
 // -------------------------------------------------------------
@@ -247,7 +245,6 @@ WithtagAndUncompleteDeckcard.parameters = {
     },
   },
 };
-
 //-------------------------------------------------------------
 // Translated DeckCard
 // -------------------------------------------------------------

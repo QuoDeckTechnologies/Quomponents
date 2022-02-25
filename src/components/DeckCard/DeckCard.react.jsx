@@ -184,11 +184,8 @@ export default function DeckCard(props) {
         >
             <div className={`qui-deckcard-label`}>
                 <Ribbon
-                    asFloated="left"
                     asEmphasis={content?.tag}
                     withTranslation={props.withTranslation}
-                    isHidden={isHiddenRibbon ? isHiddenRibbon : isHidden}
-
                 />
             </div>
             <div className={`qui ${quommonClasses.parentClasses}`} onClick={props.onClick}
@@ -218,10 +215,11 @@ export default function DeckCard(props) {
                     <div>
                         {_.map(content?.topics, (topics, index) => {
                             return (
-                                <div><i
+                                <div
+                                    key={topics.name + index}
+                                ><i
                                     className={`${quommonClasses.childClasses} ${topics.checked ? "fa fa-check-square" : "far fa-square"
                                         }`}
-                                    key={topics.name + index}
                                     style={colors.accentColors}
                                 ></i></div>
                             );
