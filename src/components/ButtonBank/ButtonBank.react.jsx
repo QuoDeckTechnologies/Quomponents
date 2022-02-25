@@ -2,12 +2,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
+import { getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ButtonBank.scss";
 import "../../common/stylesheets/overrule.scss";
 import Button from "../Buttons/Button/Button.react";
-import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
 
 ButtonBank.propTypes = {
   //=======================================
@@ -17,10 +17,6 @@ ButtonBank.propTypes = {
     Each button Text has to be in content array.
     */
   content: PropTypes.arrayOf(PropTypes.string).isRequired,
-  /**
-    Set action emphasis in increasing order 
-    */
-  asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
   /**
     Use for rounded corners or circular icon button 
     */
@@ -58,10 +54,10 @@ ButtonBank.propTypes = {
     */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accenColor : PropTypes.string,
+    accenColor: PropTypes.string,
     textColor: PropTypes.string,
-    hoverBackgroundColor : PropTypes.string,
-    hoverTextColor : PropTypes.string
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
     Use to define the entry animation of the component
@@ -81,15 +77,6 @@ ButtonBank.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-  withTranslation: PropTypes.shape({
-    lang: PropTypes.string,
-    tgt: PropTypes.string,
-    dictionary: PropTypes.string,
-  }),
-
-  /**
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
@@ -107,8 +94,7 @@ ButtonBank.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content:[],
-  asEmphasis: "contained",
+  content: [],
   isCircular: false,
   //=======================================
   // Quommon props
@@ -120,7 +106,6 @@ ButtonBank.defaultProps = {
   withColor: null,
   withLabel: null,
   withAnimation: null,
-  withTranslation: null,
 
   isHidden: false,
   isDisabled: false,
@@ -135,33 +120,23 @@ ButtonBank.defaultProps = {
 **/
 export default function ButtonBank(props) {
   //-------------------------------------------------------------------
-  // 1. Set the classes
+  // 1. Destructuring content from props
+  //-------------------------------------------------------------------
+  const { content } = props
+  //-------------------------------------------------------------------
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "button-bank");
-  //-------------------------------------------------------------------
-  // 2. Get translation of the component
-  //-------------------------------------------------------------------
-  let labelContent = props.content;
-  let tObj = null;
-
-  if (
-    props.withTranslation?.lang &&
-    props.withTranslation.lang !== "" &&
-    props.withTranslation.lang !== "en"
-  ) {
-    tObj = getTranslation(props.withTranslation);
-    if (labelContent && tObj) labelContent = tObj.content;
-  }
 
   return (
     <div className={`qui ${quommonClasses.parentClasses}`}>
-      {_.map(labelContent, (buttonText, i) => {
+      {_.map(content, (buttonText, i) => {
         return (
           <div
             className={`qui-button-bank-single-button ${quommonClasses.childClasses}`}
             key={i}
           >
-            {<Button {...props} withTranslation={null} content={buttonText} />}
+            {<Button {...props} withTranslation={null} content={buttonText} onClick={props.onClick}/>}
           </div>
         );
       })}

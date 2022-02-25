@@ -1,26 +1,11 @@
 import React from "react";
 import ButtonBank from "../components/ButtonBank/ButtonBank.react";
 
-const dictionary = JSON.stringify({
-  hi: {
-    buttonbank: {
-      content: ["प्राथमिक बटन", "प्राथमिक बटन", "प्राथमिक बटन", "प्राथमिक बटन"],
-    },
-  },
-});
-
 export default {
-  title: "Design System/ButtonBank/ButtonBank",
+  title: "Design System/ButtonBank/Button",
   component: ButtonBank,
   argTypes: {
     content: [],
-    asEmphasis: {
-      control: "select",
-      options: ["text", "outlined", "contained"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     isCircular: {
       table: {
         category: "is-Toggles",
@@ -67,16 +52,6 @@ export default {
         },
       },
     },
-    withTranslation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          lang: "",
-          tgt: "",
-          dictionary: "",
-        },
-      },
-    },
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -91,10 +66,10 @@ export default {
     },
     onClick: {
       table: {
-        category: "Events",
-        defaultValue: null,
+          category: "Events",
+          defaultValue: null,
       },
-    },
+  },
   },
   decorators: [
     (story) => (
@@ -128,7 +103,6 @@ Default.args = {
     "Primary Button",
     "Primary Button",
   ],
-  asEmphasis: "contained",
   isCircular: false,
 
   asVariant: "warning",
@@ -147,14 +121,9 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
-  withTranslation: {
-    lang: "en",
-    tgt: "buttonbank",
-    dictionary: dictionary,
-  },
-
   isDisabled: false,
   isHidden: false,
+
 };
 Default.parameters = {
   docs: {
@@ -198,37 +167,11 @@ ColoredButtonBank.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Translated Button
-// -------------------------------------------------------------
-export const TranslatedButtonBank = Template.bind({});
-TranslatedButtonBank.args = {
-  ...Default.args,
-  asVariant: "success",
-  withTranslation: {
-    lang: "hi",
-    tgt: "buttonbank",
-    dictionary: dictionary,
-  },
-};
-TranslatedButtonBank.parameters = {
-  docs: {
-    description: {
-      story:
-        "Use to change the language of that the text appears in the component.",
-    },
-    source: {
-      code: `<ButtonBank withTranslation={{lang: "hi", tgt: "buttonbank", dictionary: ${JSON.stringify(
-        dictionary
-      )}}}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
 // All Variants
 // -------------------------------------------------------------
-const AllVariantTemplate = () => {
+const AllVariantTemplate = (args) => {
   const baseObj = {
-    ...Object.assign({}, Default.args),
+    ...Object.assign({}, Default.args,args),
   };
 
   return (
