@@ -10,7 +10,7 @@ const dictionary = JSON.stringify({
     },
 });
 export default {
-    title: "Design System/ActionButton/ActionButton",
+    title: "Design System/Buttons/ActionButton",
     component: ActionButton,
     argTypes: {
         isEllipse: {

@@ -130,11 +130,13 @@ ActionButton.defaultProps = {
     asPadded: "normal",
     asFloated: "inline",
     asAligned: "center",
+
     withColor: null,
     withIcon: null,
     withLabel: null,
     withAnimation: null,
     withTranslation: null,
+
     isHidden: false,
     isDisabled: false,
     isFluid: false,
@@ -154,8 +156,7 @@ export default function ActionButton(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
-
+    let quommonClasses = getQuommons(props,"action-button");
 
     //-------------------------------------------------------------------
     // 2. Get animation of the component
@@ -186,7 +187,7 @@ export default function ActionButton(props) {
         backgroundColor: props.withColor?.backgroundColor,
     };
 
-    // ========================= Render Function =================================
+
     //-------------------------------------------------------------------
     // 5. Get the Status of Component
     //-------------------------------------------------------------------
@@ -194,11 +195,11 @@ export default function ActionButton(props) {
         let actionButtonStyle, title, subTitle, titleStyle, subTitleStyle;
         title =  labelContent?.title;
         subTitle =  labelContent?.subTitle;
-        actionButtonStyle = isEllipse? "actionButton-container" : "actionButton-container-with-noEllipse";
+        actionButtonStyle = isEllipse? "action-button-container" : "action-button-container-with-no-ellipse";
         
         if(title?.length >5 || subTitle?.length > 7){
             titleStyle = "responsive-title"
-            subTitleStyle= "responsive-subTitle"
+            subTitleStyle= "responsive-sub-title"
         }
         if (labelContent?.image) {
             return (
@@ -213,11 +214,13 @@ export default function ActionButton(props) {
         } else {
             return (
                 <div className={actionButtonStyle}>
-                    <div className={`qui-btn variant-${props.asVariant} actionButton`} style={buttonStyle} onClick={props.onClick}>
-                        <div className={`actionButton-title ${titleStyle}`}>
+                    <div className={`qui-btn variant-${props.asVariant} action-button`} 
+                        style={buttonStyle} 
+                        onClick={props.onClick}>
+                        <div className={`action-button-title ${titleStyle}`}>
                             {labelContent?.title}
                         </div>
-                        <div className={`actionButton-subTitle ${subTitleStyle}`}>
+                        <div className={`action-button-sub-title ${subTitleStyle}`}>
                             {labelContent?.subTitle}
                         </div>
                     </div>
