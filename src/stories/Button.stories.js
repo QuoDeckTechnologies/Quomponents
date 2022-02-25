@@ -9,7 +9,7 @@ const dictionary = JSON.stringify({
     //         label: "Do not press this repeatedly...",
     //     },
     // },
-    hi: {
+    hi: { 
         loading: "बस एक मिनट...",
         button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
     },
