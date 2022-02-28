@@ -110,7 +110,7 @@ Default.args = {
         backgroundColor: "",
         accentColor: "#808080",
         lineColor: "#E82E19",
-        textColor: "#000000",
+        textColor: "",
     },
     withAnimation: {
         animation: "zoom",
@@ -138,7 +138,7 @@ ColoredProgressbar.args = {
         backgroundColor: "#C98787",
         accentColor: "#D3D3D3",
         lineColor: "#E82E19",
-        textColor: "#ffffff",
+        textColor: "",
     },
 };
 ColoredProgressbar.parameters = {

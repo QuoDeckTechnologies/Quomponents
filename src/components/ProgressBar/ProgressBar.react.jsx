@@ -11,6 +11,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ProgressBar.scss";
 import "../../common/stylesheets/overrule.scss";
+
 ProgressBar.propTypes = {
     //=======================================
     // Component Specific props
@@ -131,7 +132,7 @@ export default function ProgressBar(props) {
     const [currentStep, updateCurrentStep] = useState(1);
 
     function increment() {
-        if (props.content.labelArray.length !== currentStep) {
+        if (props.content?.labelArray.length !== currentStep) {
             updateCurrentStep(nextState => nextState + 1)
         }
     }
@@ -164,20 +165,27 @@ export default function ProgressBar(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            style={colors.backColors}
+            style={colors?.backColors}
         >
             <div className={`left ${quommonClasses.childClasses}`}>
-                <i className={`icon ${content?.lefticon}`} style={colors.textColors} onClick={() => decrement()}></i>
+                <i className={`icon ${content?.lefticon}`}
+                    style={colors?.textColors}
+                    onClick={() => decrement()}>
+                </i>
             </div>
             <div className={`middle ${quommonClasses.childClasses}`}>
-                {_.map(props.content?.labelArray, (item, index) => {
+                {_.map(props.content?.labelArray, (key, index) => {
                     return (
-                        <div className={`line`} style={index + 1 <= currentStep ? { backgroundColor: props.withColor.lineColor } : colors.accentColors} ></div>
+                        <div className={`line`} key={index}
+                            style={index + 1 <= currentStep ? { backgroundColor: props.withColor?.lineColor } : colors?.accentColors} ></div>
                     )
                 })}
             </div>
             <div className={`right ${quommonClasses.childClasses}`}>
-                <i className={`icon ${content?.righticon}`} style={colors.textColors} onClick={() => increment()}></i>
+                <i className={`icon ${content?.righticon}`}
+                    style={colors?.textColors}
+                    onClick={() => increment()}>
+                </i>
             </div>
         </motion.div>
     );
