@@ -6,28 +6,23 @@ import {
 } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
+import "../SearchBar/SearchBar.scss";
 import "../../common/stylesheets/overrule.scss";
-import "../SearchBar/SearchBar.scss"
+
 
 SearchBar.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     placeHolder: PropTypes.string.isRequired,
+    /**
+    Use to toggle the component having expandable effect or not
+    */
+    isClosed: PropTypes.bool,
 
     //=======================================
     // Quommon props
     //=======================================
-    /**
-    Use to define standard component type
-    */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
     /**
     Use to float the component in parent container
     */
@@ -78,10 +73,6 @@ SearchBar.propTypes = {
     */
     isFluid: PropTypes.bool,
     /**
-    Use to toggle the component having expandable effect or not
-    */
-    isClosed: PropTypes.bool,
-    /**
     SearchBar component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
@@ -92,11 +83,11 @@ SearchBar.defaultProps = {
     // Component Specific props
     //=======================================
     placeHolder: "Search...",
+    isClosed: false,
 
     //=======================================
     // Quommon props
     //=======================================
-    asVariant:"primary",
     asFloated: "left", //Please do not set it inline for expandle search bar. You can set inline for static search bar.
     asSize: "normal",
 
@@ -106,8 +97,7 @@ SearchBar.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
-    isFluid: false,
-    isClosed: false
+    isFluid: false
 };
 /**
 ## Notes
@@ -121,7 +111,7 @@ export default function SearchBar(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props,"search-bar");
 
     //-------------------------------------------------------------------
     // 2. Get translation of the component
@@ -193,9 +183,9 @@ export default function SearchBar(props) {
                 onClick={() => { setExpandable(true) }}
                 ref={box}
             >
-                <div className={`search-bar-child-container ${searchBarStyle} `}>
+                <div className={`search-bar-child-container ${searchBarStyle}`}>
                     <input
-                        className={`search-bar-input-field ${inputStyle} `}
+                        className={`search-bar-input-field ${inputStyle}`}
                         placeholder={searchPlaceHolder}
                         style={{ color: props.withColor?.textColor}}
                         id="input"
@@ -203,7 +193,7 @@ export default function SearchBar(props) {
                     />
                     <button
                         aria-label="Search-Icon"
-                        className={`search-bar-icon ${iconStyle} variant-${props.asVariant}`}
+                        className={`search-bar-icon ${iconStyle}`}
                         onClick={handleButtonPress}
                         style={{ backgroundColor: props.withColor?.backgroundColor }}
                     >

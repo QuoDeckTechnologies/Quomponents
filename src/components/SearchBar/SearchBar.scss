@@ -1,11 +1,10 @@
-.search-bar-container {
+.qui .search-bar-container {
     height: 50px;
     display: flex;
     align-items: center;
     padding: 0 10px;
 }
-
-.search-bar-child-container {
+.qui .search-bar-child-container {
     transition: 0.3s;
     width: 100%;
     height: 35px;
@@ -13,16 +12,14 @@
     align-items: center;
     box-shadow: 0px 1px 5px grey;
 }
-
-.search-bar-input-field {
+.qui .search-bar-input-field {
     width: 100%;
     border: none;
     outline: none;
     height: 100%;
-    padding-left: 15px;
+    padding-left: 1.1em;
 }
-
-.search-bar-icon {
+.qui .search-bar-icon {
     display: flex;
     background: #666666;
     display: flex;
@@ -34,21 +31,17 @@
     font-size: 16px;
     cursor: pointer;
 }
-
-.search-bar-child-container-closed {
+.qui .search-bar-child-container-closed {
     width: 36px;
     padding: 0;
 }
-
-.search-bar-input-closed {
+.qui .search-bar-input-closed {
     display: none;
 }
-
-.search-bar-icon-closed {
+.qui .search-bar-icon-closed {
     width: 37px;
 }
-
-.search-bar-expand-effect {
+.qui .search-bar-expand-effect {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -107,7 +100,7 @@
     height: 43px;
 }
 .qui .size-big .search-bar-input-field {
-    font-size: 0.7em;
+    font-size: 0.6em;
 }
 .qui .size-big .search-bar-child-container-closed {
     width: 40px;
@@ -126,7 +119,7 @@
     height: 50px;
 }
 .qui .size-huge .search-bar-input-field {
-    font-size: 0.7em;
+    font-size: 0.6em;
 }
 .qui .size-huge .search-bar-child-container-closed {
     width: 50px;
@@ -145,7 +138,7 @@
     height: 54px;
 }
 .qui .size-massive .search-bar-input-field {
-    font-size: 0.7em;
+    font-size: 0.6em;
 }
 .qui .size-massive .search-bar-child-container-closed {
     width: 55px;

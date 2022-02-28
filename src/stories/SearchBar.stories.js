@@ -12,19 +12,11 @@ const dictionary = JSON.stringify({
 export default {
     title: "Design System/SearchBar/SearchBar",
     component: SearchBar,
-
     placeHolder: "Search...",
     argTypes: {
         asFloated: {
             control: "select",
             options: ["left", "right", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asVariant: {
-            control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
             table: {
                 category: "as-Flags",
             },
@@ -117,7 +109,6 @@ export const Default = Template.bind({});
 Default.args = {
     placeHolder: "Search...",
     asFloated: "left",
-    asVariant:"primary",
     asSize: "normal",
     withIcon: { icon: "fas fa-search" },
     withColor: {
