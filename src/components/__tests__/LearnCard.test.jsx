@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -21,9 +21,8 @@ describe("LearnCard", () => {
         free: "नि: शुल्क",
       },
       learncard: {
-        heading: "बातचीत का खेल",
-        description:
-          "बातचीत कौशल की अपनी समझ को बेहतर बनाने के लिए इस गेम को खेलें",
+        seeMore: "और देखें..",
+        seeLess: "कम देखें..",
       },
     },
   });
@@ -32,30 +31,25 @@ describe("LearnCard", () => {
     jest.resetAllMocks();
     component = shallow(
       <LearnCard
-        asEmphasis="new"
-        isHiddenRibbon={false}
+        content={{ title: "" }}
         asVariant="primary"
         withColor={null}
-        withIcon={null}
-        withLabel={null}
         withAnimation={null}
         withTranslation={null}
         isHidden={false}
+        tags = {[
+          "Communication",
+          "Sales",
+          "Technology",
+          "Business",
+          "Miscellaneous",
+          "More tags",
+        ]}
         onClick={() => console.log("LearnCard testing")}
       />
     );
   });
   it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly with withTranslation prop", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "learncard",
-        dictionary: dictionary,
-      },
-    });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly with withTranslation prop when target not specfied", () => {
@@ -83,11 +77,41 @@ describe("LearnCard", () => {
     });
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly with isHidden and isHiddenRibbon prop", () => {
+  it("should render correctly when clicked on `see more or see less` tag", () => {
+    component = mount(
+      <LearnCard
+        asVariant="primary"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={null}
+        isHidden={false}
+        onClick={() => console.log("LearnCard testing")}
+      />
+    );
     component.setProps({
-      isHidden: true,
-      isHiddenRibbon: true,
+      content: {
+        title: "The Negotiation Game",
+        description:
+          "Play this game to improve your understanding of negotiation skills",
+        image: "",
+        icon: "fas fa-desktop",
+        points: "100",
+        tag: "premium",
+        tags: [
+          "Communication",
+          "Sales",
+          "Technology",
+          "Business",
+          "Miscellaneous",
+          "More tags",
+        ],
+      },
     });
-    expect(component.exists()).toBe(true);
+    component.find("a").simulate("click");
+    component
+      .find("a")
+      .simulate("click", {
+        preventDefault: () => console.log("prevent default"),
+      });
   });
 });
