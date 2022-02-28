@@ -26,8 +26,17 @@
   display: flex;
   justify-content: space-between;
 }
+.qui .qui-learn-card-title {
+  max-width: 12em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .qui .qui-learn-card-header h1 {
   margin: 0;
+  font-size: 2.5em;
+  font-weight: 500;
+ 
 }
 .qui .qui-tag-container {
   margin-bottom: 0.5em;
@@ -67,7 +76,7 @@
 .qui .qui-tags {
   display: flex;
   flex-wrap: wrap;
-  width: 80%;
+  width: 90%;
 }
 .qui .qui-tags p {
   font-size: 1.3em;
@@ -84,9 +93,11 @@
 .qui .qui-content {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   position: relative;
   z-index: 2;
   margin-left: 1.5em;
+  min-height: 12em;
   width: 100%;
 }
 .qui .qui-info i {
@@ -98,9 +109,9 @@
   margin: 0.5em 0;
 }
 .qui .qui-description h2 {
-  margin: 0;
-  display: inline;
-  font-weight: 500;
+  margin: 0.2em 0;
+  font-weight: 100;
+  font-size: 1.8em;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -126,7 +137,7 @@
     font-size: 0.5em;
   }
   .qui-learn-card {
-    font-size: 0.35em;
+    font-size: 0.32em;
   }
 }
 @media only screen and (min-width: 481px) {
@@ -150,10 +161,10 @@
     font-size: 1.2em;
   }
   .qui .qui-learn-card {
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1025px) {
   .qui .qui-card-label .qui-ribbon {
     font-size: 1.5em;
   }

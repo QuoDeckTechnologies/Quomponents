@@ -25,16 +25,9 @@ LearnCard.propTypes = {
     image: PropTypes.string,
     icon: PropTypes.string,
     points: PropTypes.string,
+    tag: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
-  }),
-  /**
-  Ribbon Text is taken from Emphasis prop or passed as children to the component.
-  */
-  asEmphasis: PropTypes.oneOf(["new", "premium", "restricted", "free"]),
-  /**
-  Use to show/hide the Ribbon component
-  */
-  isHiddenRibbon: PropTypes.bool,
+  }).isRequired,
   //=======================================
   // Quommon props
   //=======================================
@@ -92,11 +85,7 @@ LearnCard.propTypes = {
 };
 
 LearnCard.defaultProps = {
-  //=======================================
-  // Component Specific props
-  //=======================================
-  asEmphasis: "new",
-  isHiddenRibbon: false,
+  content: {},
   //=======================================
   // Quommon props
   //=======================================
@@ -120,13 +109,13 @@ export default function LearnCard(props) {
   //-------------------------------------------------------------------
   // 1. Destructure content,isHiddenRibbon,isHidden from props
   //-------------------------------------------------------------------
-  let { content, isHiddenRibbon, isHidden } = props;
+  let { content } = props;
   //-------------------------------------------------------------------
-  // 2. Setting each tag length, tags quantity(maxTags) and title length
+  // 2. Setting each tag length, tags quantity i.e minTags and maxTags
   //-------------------------------------------------------------------
   let tagLength = 5;
+  let minTags = 5;
   let maxTags = 10;
-  let titleLength = 20;
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -142,23 +131,18 @@ export default function LearnCard(props) {
     props.withTranslation.lang !== "en"
   ) {
     tObj = getTranslation(props.withTranslation);
-    if (labelContent && tObj?.title) {
-      labelContent.title = tObj.title;
-      labelContent.description = tObj.description;
-      labelContent.tags = tObj.tags;
-    }
   }
   //-------------------------------------------------------------------
   // 5. States to hold expand tags logic
   //-------------------------------------------------------------------
   const [expandTags, setExpandTags] = useState(false);
-  const [itirate, setItirate] = useState(labelContent?.tags.length);
+  const [itirate, setItirate] = useState(minTags);
   //-------------------------------------------------------------------
   // 6. Functions to expand and collapse tags
   //-------------------------------------------------------------------
   const handleLessTags = (e) => {
     e.preventDefault();
-    setItirate(labelContent?.tags.length);
+    setItirate(minTags);
     setExpandTags(false);
   };
   const handleMoreTags = (e) => {
@@ -182,7 +166,7 @@ export default function LearnCard(props) {
         <Ribbon
           {...props}
           asFloated="left"
-          isHidden={isHiddenRibbon ? isHiddenRibbon : isHidden}
+          asEmphasis={content?.tag}
           asVariant=""
         />
       </div>
@@ -191,14 +175,18 @@ export default function LearnCard(props) {
           <div className={quommonClasses.childClasses}>
             <img
               className="qui-game-thumbnail"
-              src={content?.image ? content?.image : 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg'}
+              src={
+                content?.image
+                  ? content?.image
+                  : "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg"
+              }
               alt="game thumbnail"
             />
           </div>
           <div className={`qui-content ${quommonClasses.childClasses}`}>
             <div className={`qui-learn-card-header `}>
               <h1 style={{ color: props.withColor?.accentColor }}>
-                {labelContent.title.slice(0,titleLength) + (labelContent.title.length > titleLength ? '...' : '')}
+                <div className="qui-learn-card-title">{labelContent.title}</div>
               </h1>
               <div className="qui-points">
                 <h1 className={`qui-btn variant-${props.asVariant}-text`}>
@@ -215,11 +203,13 @@ export default function LearnCard(props) {
               {!expandTags && <h2>{labelContent?.description}</h2>}
             </div>
             <div className="qui-lower-container">
-              <div className="qui-info">
+              <div
+                className={`qui-info qui-btn variant-${props.asVariant}-text`}
+              >
                 <i className={content?.icon}></i>
                 <div className="qui-tags">
                   {_.map(labelContent?.tags, (tag, i) => {
-                    if (i <= itirate) {
+                    if (i < itirate) {
                       return (
                         <div className="qui-tag-container" key={i}>
                           <p
@@ -227,7 +217,7 @@ export default function LearnCard(props) {
                           >
                             {tag?.length > tagLength &&
                             !expandTags &&
-                            labelContent?.tags.length > 2
+                            labelContent?.tags?.length >= tagLength
                               ? tag?.slice(0, tagLength) + "..."
                               : tag}
                           </p>
@@ -235,20 +225,19 @@ export default function LearnCard(props) {
                       );
                     }
                   })}
-                  {labelContent?.tags?.length > 2 && !expandTags && (
-                    <div className="qui-see-more-tags">
-                      <a href="!#" onClick={(e) => handleMoreTags(e)}>
-                        {tObj ? tObj?.seeMore : "See more"}
-                      </a>
-                    </div>
-                  )}
-                  {expandTags && (
-                    <div className="qui-see-more-tags">
+                  <div className="qui-see-more-tags">
+                    {expandTags ? (
                       <a href="!#" onClick={(e) => handleLessTags(e)}>
-                        {tObj ? tObj?.seeLess : "See less"}
+                        {tObj ? tObj?.seeLess : "See less.."}
                       </a>
-                    </div>
-                  )}
+                    ) : (
+                      labelContent?.tags?.length > minTags && (
+                        <a href="!#" onClick={(e) => handleMoreTags(e)}>
+                          {tObj ? tObj?.seeMore : "See more.."}
+                        </a>
+                      )
+                    )}
+                  </div>
                 </div>
               </div>
               <div

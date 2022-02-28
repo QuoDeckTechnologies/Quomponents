@@ -10,12 +10,8 @@ const dictionary = JSON.stringify({
       free: "नि: शुल्क",
     },
     learncard: {
-      title: "बातचीत का खेल",
-      description:
-        "बातचीत कौशल की अपनी समझ को बेहतर बनाने के लिए इस गेम को खेलें",
-      tags: ["संचार", "बिक्री", "प्रौद्योगिकी", "व्यापार", "विविध"],
-      seeMore : 'और देखें',
-      seeLess : 'कम देखें'
+      seeMore : 'और देखें..',
+      seeLess : 'कम देखें..'
     },
   },
 });
@@ -31,25 +27,13 @@ export default {
         image : '',
         icon: "",
         points: "",
+        tag : '',
         tags: [],
-      },
-    },
-    isHiddenRibbon: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
       },
     },
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asEmphasis: {
-      control: "select",
-      options: ["new", "premium", "restricted", "free"],
       table: {
         category: "as-Flags",
       },
@@ -80,7 +64,12 @@ export default {
         defaultValue: false,
       },
     },
-    onclick : () => {}
+    onClick : {
+      table : {
+        category : 'Events',
+        defaultValue : null
+      }
+    }
   },
   parameters: {
     componentSubtitle: "Display a LearnCard Component",
@@ -102,12 +91,11 @@ Default.args = {
     "Play this game to improve your understanding of negotiation skills",
     image:
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnltfxyRHuEEUE4gIZp9fr77Q8goigP7mQ6Q&usqp=CAU",
-    icon: "fas fa-gamepad",
+    icon: "fas fa-desktop",
     points: "100",
-      tags: ["Communication", "Sales", "Technology", "Business", "Misc."],
+    tag : 'premium',
+    tags: ["Communication", "Sales", "Technology", "Business", "Miscellaneous"],
   },
-  isHiddenRibbon: false,
-  asEmphasis: "premium",
   asVariant: "primary",
   withColor: {
     backgroundColor: "",
@@ -167,7 +155,6 @@ ColoredLearnCard.parameters = {
 export const AnimatedLearnCard = Template.bind({});
 AnimatedLearnCard.args = {
   ...Default.args,
-  asEmphasis: "free",
   asVariant: "secondary",
   withAnimation: {
     animation: "collapse",
@@ -195,7 +182,6 @@ AnimatedLearnCard.parameters = {
 export const TranslatedLearnCard = Template.bind({});
 TranslatedLearnCard.args = {
   ...Default.args,
-  asEmphasis: "new",
   withTranslation: {
     lang: "hi",
     tgt: "learncard",
@@ -219,9 +205,9 @@ TranslatedLearnCard.parameters = {
 // -------------------------------------------------------------
 // Variants
 // -------------------------------------------------------------
-const AllVariantsTemplate = () => {
+const AllVariantsTemplate = (args) => {
   const baseObj = {
-    ...Object.assign({}, Default.args),
+    ...Object.assign({},args, Default.args)
   };
   return (
     <div className="qui-all-variants">
@@ -242,13 +228,11 @@ const AllVariantsTemplate = () => {
       />
       <LearnCard
         {...Object.assign({}, baseObj, {
-          asEmphasis: "premium",
           asVariant: "secondary",
         })}
       />
       <LearnCard
         {...Object.assign({}, baseObj, {
-          asEmphasis: "new",
           withTranslation: {
             lang: "hi",
             tgt: "learncard",
