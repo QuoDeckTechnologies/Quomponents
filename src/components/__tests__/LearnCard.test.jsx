@@ -37,15 +37,8 @@ describe("LearnCard", () => {
         withAnimation={null}
         withTranslation={null}
         isHidden={false}
-        tags = {[
-          "Communication",
-          "Sales",
-          "Technology",
-          "Business",
-          "Miscellaneous",
-          "More tags",
-        ]}
-        onClick={() => console.log("LearnCard testing")}
+        tags = {null}
+        onClick={() => {}}
       />
     );
   });
@@ -85,7 +78,7 @@ describe("LearnCard", () => {
         withAnimation={null}
         withTranslation={null}
         isHidden={false}
-        onClick={() => console.log("LearnCard testing")}
+        onClick={() => {}}
       />
     );
     component.setProps({
@@ -109,9 +102,47 @@ describe("LearnCard", () => {
     });
     component.find("a").simulate("click");
     component
-      .find("a")
-      .simulate("click", {
-        preventDefault: () => console.log("prevent default"),
-      });
+    .find("a")
+    .simulate("click", {
+      preventDefault: () => {},
+    });
+  });
+  it("should render correctly when clicked on `see more or see less` tag translated", () => {
+    component = mount(
+      <LearnCard
+        asVariant="primary"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={null}
+        isHidden={false}
+        onClick={() => {}}
+      />
+    );
+    component.setProps({
+      content: {
+        title: "The Negotiation Game",
+        description:
+          "Play this game to improve your understanding of negotiation skills",
+        image: "",
+        icon: "fas fa-desktop",
+        points: "100",
+        tag: "premium",
+        tags: [
+          "Communication",
+          "Sales",
+          "Technology",
+          "Business",
+          "Miscellaneous",
+          "More tags",
+        ],
+      },
+      withTranslation: {
+        lang: "hi",
+        tgt: "learncard",
+        dictionary: dictionary,
+      },
+    });
+    component.find("a").simulate("click");
+    expect(component.exists()).toBe(true)
   });
 });
