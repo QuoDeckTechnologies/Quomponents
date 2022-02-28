@@ -18,16 +18,16 @@
 .qui .qui-game-thumbnail {
   height: 12em;
   width: 12em;
-  margin: 0.3em 1.5em 0 0.5em;
+  margin: 0.3em 1.5em 0 0;
   border-radius: 1.2em;
-  box-shadow: 0px 10px 20px #d2d2d2;
 }
 .qui .qui-learn-card-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .qui .qui-learn-card-title {
-  max-width: 12em;
+  max-width: 13em;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -45,26 +45,21 @@
   display: flex;
   align-items: center;
 }
-.qui .qui-points h1 {
-  margin-right: 0.2em;
-}
 .qui .qui-coin-image {
-  height: 2em;
-  width: 2em;
+  height: 3.5em;
+  width: 3.5em;
 }
 .qui .qui-info {
   display: flex;
   flex-direction: row;
   width: 90%;
   align-items: center;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
 .qui .qui-lower-container {
   position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .qui .qui-lower-container i {
   margin-right: 0.5em;
@@ -106,11 +101,10 @@
 .qui .qui-description {
   display: flex;
   align-items: center;
-  margin: 0.5em 0;
 }
-.qui .qui-description h2 {
-  margin: 0.2em 0;
-  font-weight: 100;
+.qui .qui-description p {
+  margin: 0;
+  font-weight: lighter;
   font-size: 1.8em;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -164,11 +158,11 @@
     font-size: 0.8em;
   }
 }
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1024px) {
   .qui .qui-card-label .qui-ribbon {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
   .qui .qui-learn-card {
-    font-size: 1.2em;
+    font-size: 1em;
   }
 }

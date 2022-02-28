@@ -11,6 +11,8 @@ import Ribbon from "../Ribbons/Ribbon/Ribbon.react";
 import "../../common/stylesheets/common.css";
 import "./LearnCard.scss";
 import "../../common/stylesheets/overrule.scss";
+import balloonBurst from '../../assets/balloon_burst.png'
+import coinImage from '../../assets/icons8_coin_96px.png'
 
 LearnCard.propTypes = {
   //=======================================
@@ -178,7 +180,7 @@ export default function LearnCard(props) {
               src={
                 content?.image
                   ? content?.image
-                  : "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg"
+                  : balloonBurst
               }
               alt="game thumbnail"
             />
@@ -194,13 +196,13 @@ export default function LearnCard(props) {
                 </h1>
                 <img
                   className="qui-coin-image"
-                  src="https://www.usmint.gov/wordpress/wp-content/uploads/2020/12/2021-general-george-washington-crossing-the-delaware-quarter-uncirculated-obverse-philadelphia.jpg"
+                  src={coinImage}
                   alt="coin"
                 />
               </div>
             </div>
             <div className="qui-description">
-              {!expandTags && <h2>{labelContent?.description}</h2>}
+              {!expandTags && <p>{labelContent?.description}</p>}
             </div>
             <div className="qui-lower-container">
               <div

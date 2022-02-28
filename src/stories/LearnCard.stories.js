@@ -89,8 +89,7 @@ Default.args = {
     title: "The Negotiation Game",
     description:
     "Play this game to improve your understanding of negotiation skills",
-    image:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnltfxyRHuEEUE4gIZp9fr77Q8goigP7mQ6Q&usqp=CAU",
+    image:"",
     icon: "fas fa-desktop",
     points: "100",
     tag : 'premium',
