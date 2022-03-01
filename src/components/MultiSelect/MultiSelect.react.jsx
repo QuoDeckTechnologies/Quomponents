@@ -131,7 +131,7 @@ export default function MultiSelect(props) {
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}>
 
-            <div className={`qui-multi-select-button ${quommonClasses.childClasses}`} >
+            <div className={`qui-multi-select-button-container ${quommonClasses.childClasses}`} >
                 <i className={`qui-multi-select-checkbox ${isChecked ? "fas fa-check-square" : "far fa-square"}`}
                     onClick={() => toggleChecked()}>
                 </i>
