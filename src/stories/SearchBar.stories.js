@@ -100,6 +100,13 @@ export default {
             </div>
         ),
     ],
+    parameters: {
+        componentSubtitle: "Display a basic ribbon for general-purpose use",
+        a11y: { disable: false },
+        docs: {
+            iframeHeight: 300,
+        }
+    },
 };
 // -------------------------------------------------------------
 // Default
@@ -125,6 +132,7 @@ Default.args = {
         dictionary: dictionary,
     },
 };
+
 Default.parameters = {
     docs: {
         docs: {
@@ -133,6 +141,7 @@ Default.parameters = {
             },
         },
     },
+    
 };
 
 //Closed Search Bar
