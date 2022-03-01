@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import _ from "lodash";
-import { getTranslation,getQuommons } from "../../common/javascripts/helpers";
+import { getTranslation, getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ArcMenu.scss";
@@ -16,12 +16,14 @@ ArcMenu.propTypes = {
   /**
   ArcMenu icons can be passed with content prop
   */
-  content:PropTypes.shape({
-    arcIcon:PropTypes.string,
-    menuData : PropTypes.arrayOf(PropTypes.shape({
-      name : PropTypes.string,
-      icon : PropTypes.string
-    }))
+  content: PropTypes.shape({
+    arcIcon: PropTypes.string,
+    menuData: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        icon: PropTypes.string,
+      })
+    ),
   }).isRequired,
   //=======================================
   // Quommon props
@@ -55,14 +57,14 @@ ArcMenu.propTypes = {
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
-    /**
+  /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
     */
-    withTranslation: PropTypes.shape({
-      lang: PropTypes.string,
-      tgt: PropTypes.string,
-      dictionary: PropTypes.string,
-    }),
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
   /**
   Use to enable/disable the component
   */
@@ -82,7 +84,8 @@ ArcMenu.defaultProps = {
   // Component Specific props
   //=======================================
   content: {
-    icons: [],
+    arcIcon: "",
+    menuData: [],
   },
   //=======================================
   // Quommon props
@@ -114,7 +117,7 @@ const getColors = (withColor) => {
 - Icons can be changed from content prop
 **/
 export default function ArcMenu(props) {
-  const [openMenu,setOpenMenu] = useState (false)
+  const [openMenu, setOpenMenu] = useState(false);
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
@@ -141,34 +144,58 @@ export default function ArcMenu(props) {
   return (
     <div className={`qui ${quommonClasses.parentClasses}`}>
       <motion.div
-        initial = {false}
-        animate = { !openMenu ? {display:'none',opacity:0} : {display:'block',opacity:1} }
+        initial={false}
+        animate={
+          !openMenu
+            ? { display: "none", opacity: 0 }
+            : { display: "block", opacity: 1 }
+        }
         className={`qui-arc-menu-modal`}
-        onClick={()=>setOpenMenu(false)}
+        onClick={() => setOpenMenu(false)}
       ></motion.div>
       <div className={quommonClasses.childClasses}>
         <div className={`qui-arc`} style={{ borderColor: colors.borderColor }}>
           <button
             className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
             style={{ backgroundColor: colors.backgroundColor }}
-            onClick={()=>setOpenMenu(prevState => !prevState)}
+            onClick={() => setOpenMenu((prevState) => !prevState)}
           >
             <i
-              className={`qui-arch-icon ${labelContent?.arcIcon ? labelContent?.arcIcon : "fas fa-desktop"}`}
+              className={`qui-arch-icon ${
+                labelContent?.arcIcon ? labelContent?.arcIcon : "fas fa-desktop"
+              }`}
               style={{ color: colors.color }}
             ></i>
           </button>
           <motion.div
-            initial = {false}
-            animate = { !openMenu ? {opacity:0,y:'100%'} : {opacity:1,y:0} }
-            className = {`qui-arc-menu-buttons `}
+            initial={false}
+            animate={
+              !openMenu ? { opacity: 0, y: "100%" } : { opacity: 1, y: 0 }
+            }
+            className={`qui-arc-menu-buttons `}
           >
-            {_.map(labelContent.menuData,(dataObj,i)=>{
+            {_.map(labelContent.menuData, (dataObj, i) => {
               return (
-                <div className={`qui-menu-button ${quommonClasses.childClasses}`} key={i}>
-                  <button onClick={props.onClick} className={`qui-btn qui-single-button ${quommonClasses.childClasses}`} style={{ backgroundColor: colors.backgroundColor,color:colors.color }}><i className={dataObj.icon} style={{ color: colors.color }}></i><small>{dataObj.name}</small></button>
+                <div
+                  className={`qui-menu-button ${quommonClasses.childClasses}`}
+                  key={i}
+                >
+                  <button
+                    onClick={props.onClick}
+                    className={`qui-btn qui-single-button ${quommonClasses.childClasses}`}
+                    style={{
+                      backgroundColor: colors.backgroundColor,
+                      color: colors.color,
+                    }}
+                  >
+                    <i
+                      className={dataObj.icon}
+                      style={{ color: colors.color }}
+                    ></i>
+                    <small>{dataObj.name}</small>
+                  </button>
                 </div>
-              )
+              );
             })}
           </motion.div>
         </div>
