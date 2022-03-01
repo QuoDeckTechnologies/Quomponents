@@ -1,27 +1,55 @@
-.qui-content-table-row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    padding: 0.5em;
+.qui-content-table-row {
+  background-color: white;
+  padding: 0.5em 0.6em;
 }
-
-.qui .qui-content-input{
-    flex: 1;
-    border: none;
+.qui .qui-table-content-row-container {
+  display: flex;
+  align-items: center;
 }
-.qui .qui-content-input:focus{
-    outline: none;
+.qui .qui-content-input {
+  flex: 1;
+  border: 0.1em solid #ffffff;
+  font-size: 1em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.qui .qui-content-checkbox{
-    height: 1.5em;
-    width: 1.5em;
-    cursor: pointer;
-    background-color: gray;
+.qui .qui-content-input:focus {
+  outline: none;
+  border: 0.1em solid black;
 }
-
-.qui .qui-content-menu{
-    font-size: 1.5em;
-    background-color: white;
-    cursor: pointer;
+.qui .qui-content-input:hover {
+  border: 0.1em solid black;
+}
+.qui .qui-content-table-checkbox-container {
+  height: 1.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.qui .qui-content-checkbox {
+  cursor: pointer;
+  font-size: 1.2em;
+  vertical-align: middle;
+  text-align: center;
+}
+.qui.qui-content-table-row .fa-check-square {
+  filter: drop-shadow(0px 0px 0px #ffffff);
+}
+.qui .qui-content-menu {
+  font-size: 1.2em;
+  background-color: rgb(255, 255, 255);
+  color: #808080;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+.qui .qui-content-table-file-icon {
+  width: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.qui .qui-table-file-icon {
+  font-size: 1.2em;
 }

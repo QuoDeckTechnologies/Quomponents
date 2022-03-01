@@ -1,18 +1,12 @@
 // Import npm packages
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import _ from "lodash";
-import {
-  getAnimation,
-  getQuommons,
-  getTranslation,
-} from "../../common/javascripts/helpers";
+import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
-import './ContentTableRow.scss'
+import "./ContentTableRow.scss";
 import "../../common/stylesheets/overrule.scss";
-
 
 ContentTableRow.propTypes = {
   //=======================================
@@ -21,21 +15,10 @@ ContentTableRow.propTypes = {
   /**
     ContentTableRow data should be passed in content field and it is a required field
     */
-  content: PropTypes.shape({
-    
-  }).isRequired,
+  content: PropTypes.shape({}).isRequired,
   //=======================================
   // Quommon props
   //=======================================
-  /**
-    Use to override component colors and behavior
-    */
-  withColor: PropTypes.shape({
-    backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
-    textColor: PropTypes.string,
-  }),
-
   /**
     Use to define the entry animation of the component
     */
@@ -75,13 +58,24 @@ ContentTableRow.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  withColor: null,
   withAnimation: null,
-  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
 
+function getIcon(fileExtention) {
+  let icon;
+  if (fileExtention === "pdf") {
+    icon = "far fa-file-pdf";
+  } else if (fileExtention === "zip") {
+    icon = "fas fa-archive";
+  } else if (fileExtention === "qdf") {
+    icon = "far fa-images";
+  } else {
+    icon = "far fa-file";
+  }
+  return <i className={`${icon} qui-table-file-icon`}></i>;
+}
 /**
 ## Notes
 - The design system used for this component is Fontawesome Icon
@@ -91,14 +85,65 @@ ContentTableRow.defaultProps = {
 - Status of topics can be changed from content prop
 **/
 export default function ContentTableRow(props) {
-  const quommonClasses = getQuommons(props,'content-table-row')
+  //-------------------------------------------------------------------
+  // 1. Destructuring content props
+  //-------------------------------------------------------------------
+  const { content } = props;
+  //-------------------------------------------------------------------
+  // 2. Extracting file name and extention
+  //-------------------------------------------------------------------
+  const [fileName, setFileName] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
+  const [fullName] = useState(content?.fileName);
+  useEffect(() => {
+    setFileName(fullName?.slice(0, fullName.lastIndexOf(".")));
+  }, [content?.fileName]);
+  let fileExtention = fullName?.substring(
+    fullName?.lastIndexOf(".") + 1,
+    fullName?.length
+  );
+  //-------------------------------------------------------------------
+  // 3. Set the classes
+  //-------------------------------------------------------------------
+  const quommonClasses = getQuommons(props, "content-table-row");
+  //-------------------------------------------------------------------
+  // 4. Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props.withAnimation);
 
   // ========================= Render Function =================================
+
   return (
-    <div className={`qui ${quommonClasses.parentClasses}`}>
-        <input type="checkbox" className="qui-content-checkbox"/>
-        <input type="text" className="qui-content-input"/>
-        <button className="qui-content-menu"><i class="fas fa-ellipsis-v"></i></button>
-    </div>
+    <motion.div
+      initial={animate.from}
+      animate={animate.to}
+      className={`qui ${quommonClasses.parentClasses}`}
+      className={`qui ${quommonClasses.parentClasses}`}
+    >
+      <div
+        className={`qui-table-content-row-container ${quommonClasses.childClasses}`}
+      >
+        <div className="qui-content-table-checkbox-container">
+          <i
+            className={`${
+              isChecked ? "far fa-square" : "fas fa-check-square"
+            } qui-content-checkbox`}
+            onClick={() => setIsChecked((prevState) => !prevState)}
+          ></i>
+        </div>
+        <div className="qui-content-table-file-icon">
+          {getIcon(fileExtention)}
+        </div>
+        <input
+          type="text"
+          className="qui-content-input"
+          value={fileName}
+          onChange={(e) => setFileName(e.target.value)}
+        />
+        <button className="qui-content-menu" onClick={()=>props.onClick()}>
+          <i className="fas fa-ellipsis-v"></i>
+        </button>
+      </div>
+    </motion.div>
   );
 }

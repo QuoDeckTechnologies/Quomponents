@@ -7,20 +7,8 @@ export default {
     argTypes: {
         content: {
             defaultValue : {
-
+                fileName : ''
             }
-        },
-        withColor: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    backgroundColor: "",
-                    accentColor: "",
-                    textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
-                },
-            },
         },
         withAnimation: {
             table: {
@@ -77,14 +65,7 @@ const Template = (args) => <ContentTableRow {...args} />
 export const Default = Template.bind({});
 Default.args = {
     content: {
-
-    },
-    withColor: {
-        backgroundColor: "",
-        accentColor: "",
-        textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
+        fileName : 'Dummy file-name.pdf'
     },
     withAnimation: {
         animation: "zoom",
