@@ -168,3 +168,51 @@ AnimatedBulletblock.parameters = {
         },
     },
 };
+
+// -------------------------------------------------------------
+// Allvariant
+// -------------------------------------------------------------
+const AllvariantTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+        }),
+    };
+    return (
+        <div>
+            <BulletBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "primary",
+                    withColor: {
+                        textColor: "#121212",
+                        backgroundColor: "",
+                        accentColor: "",
+                    },
+
+                })}
+            />
+            <BulletBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "secondary",
+                    withColor: {
+                        backgroundColor: "#C98787",
+                        textColor: "#ffffff",
+                        accentColor: "",
+                    },
+
+                })}
+            />
+        </div>
+    );
+};
+
+export const Allvariant = AllvariantTemplate.bind({});
+Allvariant.parameters = {
+    docs: {
+        description: {
+            story: "6 sizes are supported. Use as per purpose noted here.",
+        },
+        source: {
+            code: `<AppMenu asVariant="secondary"/>`,
+        },
+    },
+};

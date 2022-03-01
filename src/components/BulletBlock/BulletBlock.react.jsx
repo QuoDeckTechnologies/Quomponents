@@ -152,9 +152,10 @@ export default function BulletBlock(props) {
             onClick={(e) => props.onClick(e)}
         >
             <div>
-                {_.map(props.content.items, (item, index) => {
+                {_.map(props.content?.items, (item, index) => {
                     return (
-                        <div className={`${quommonClasses.childClasses}`} style={colors.textColors}>
+                        <div className={` ${quommonClasses.childClasses}`} key={index}
+                            style={colors.textColors}>
                             <ul>
                                 <li>
                                     {item}
