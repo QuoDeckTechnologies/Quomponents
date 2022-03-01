@@ -151,9 +151,9 @@ export const ColoredArcMenu = Template.bind({});
 ColoredArcMenu.args = {
   ...Default.args,
   withColor: {
-    backgroundColor: "#ffcc00",
+    backgroundColor: "#eae8dc",
     accentColor: "",
-    textColor: "#808080",
+    textColor: "#e88073",
   },
 };
 ColoredArcMenu.parameters = {
