@@ -1,24 +1,11 @@
 import React from "react";
 import MultiSelect from "../components/MultiSelect/MultiSelect.react";
 
-const dictionary = JSON.stringify({
-  hi: {
-    multiSelect: {
-      content: [
-        { text:"प्राथमिक बटन",selected:true},
-        { text:"प्राथमिक बटन",selected:false},
-        { text:"प्राथमिक बटन",selected:true},
-        { text:"प्राथमिक बटन",selected:false},
-      ],
-    },
-  },
-});
-
 export default {
   title: "Design System/MultiSelect/MultiSelect",
   component: MultiSelect,
   argTypes: {
-    content: [],
+    content: "",
     asEmphasis: {
       control: "select",
       options: ["text", "outlined", "contained"],
@@ -72,16 +59,6 @@ export default {
         },
       },
     },
-    withTranslation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          lang: "",
-          tgt: "",
-          dictionary: "",
-        },
-      },
-    },
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -115,7 +92,7 @@ export default {
   ],
   parameters: {
     componentSubtitle: "Displays a MultiSelect Component",
-    a11y: { disable: true },      
+    a11y: { disable: true },
     docs: { iframeHeight: 300 },
 
   },
@@ -127,24 +104,7 @@ export default {
 const Template = (args) => <MultiSelect {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: [
-    {
-      text: "Primary Button",
-      selected: true,
-    },
-    {
-      text: "Primary Button",
-      selected: false,
-    },
-    {
-      text: "Primary Button",
-      selected: true,
-    },
-    {
-      text: "Primary Button",
-      selected: false,
-    }
-  ],
+  content: "Primary Button",
   asEmphasis: "contained",
   isCircular: false,
 
@@ -164,12 +124,6 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
-  withTranslation: {
-    lang: "en",
-    tgt: "multiSelect",
-    dictionary: dictionary,
-  },
-
   isDisabled: false,
   isHidden: false,
 
@@ -177,7 +131,7 @@ Default.args = {
 Default.parameters = {
   docs: {
     description: {
-        story: "Default component shows features like selected ,not selected , animation in the component",
+      story: "Default component shows features like selected ,not selected , animation in the component",
     },
     source: {
       code: `<MultiSelect {...${JSON.stringify(Default.args, null, 2)}}/>`,
@@ -185,69 +139,6 @@ Default.parameters = {
   },
 };
 
-//--------------------------------------------------------------
-// AnimationUnchecked Buttons
-//--------------------------------------------------------------
-
-export const AnimationUnchecked = Template.bind({});
-AnimationUnchecked.args = {
-  content: [
-    {
-      text: "Primary Button",
-      selected: false,
-    },
-    {
-      text: "Primary Button",
-      selected: false,
-    },
-    {
-      text: "Primary Button",
-      selected: false,
-    },
-    {
-      text: "Primary Button",
-      selected: false,
-    }
-  ],
-  asEmphasis: "contained",
-  isCircular: false,
-
-  asVariant: "warning",
-  asSize: "normal",
-  asFloated: "none",
-
-  withColor: {
-    backgroundColor: "",
-    accentColor: "",
-    textColor: "",
-    hoverBackgroundColor: "",
-    hoverTextColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
-  },
-  withTranslation: {
-    lang: "en",
-    tgt: "multiSelect",
-    dictionary: dictionary,
-  },
-
-  isDisabled: false,
-  isHidden: false,
-
-};
-AnimationUnchecked.parameters = {
-  docs: {
-    description: {
-        story: "Show the animation of the Unchecked component can change with the props",
-    },
-    source: {
-      code: `<MultiSelect {...${JSON.stringify(AnimationUnchecked.args, null, 2)}}/>`,
-    },
-  },
-};
 
 //--------------------------------------------------------------
 // Animationchecked Buttons
@@ -255,24 +146,7 @@ AnimationUnchecked.parameters = {
 
 export const AnimationChecked = Template.bind({});
 AnimationChecked.args = {
-  content: [
-    {
-      text: "Primary Button",
-      selected: true,
-    },
-    {
-      text: "Primary Button",
-      selected: true,
-    },
-    {
-      text: "Primary Button",
-      selected: true,
-    },
-    {
-      text: "Primary Button",
-      selected: true,
-    }
-  ],
+  content: "primary",
   asEmphasis: "contained",
   isCircular: false,
 
@@ -291,11 +165,6 @@ AnimationChecked.args = {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
-  },
-  withTranslation: {
-    lang: "en",
-    tgt: "multiSelect",
-    dictionary: dictionary,
   },
 
   isDisabled: false,
@@ -305,7 +174,7 @@ AnimationChecked.args = {
 AnimationChecked.parameters = {
   docs: {
     description: {
-        story: "Animation Checked shows the buttons with animation and all variants as selected",
+      story: "Animation Checked shows the buttons with animation and all variants as selected",
     },
     source: {
       code: `<MultiSelect {...${JSON.stringify(AnimationChecked.args, null, 2)}}/>`,
@@ -313,35 +182,9 @@ AnimationChecked.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Translated Button
+// Multi select
 // -------------------------------------------------------------
-export const TranslatedMultiSelect = Template.bind({});
-TranslatedMultiSelect.args = {
-  ...Default.args,
-  asVariant: "primary",
-  withTranslation: {
-    lang: "hi",
-    tgt: "multiSelect",
-    dictionary: dictionary,
-  },
-};
-TranslatedMultiSelect.parameters = {
-  docs: {
-    description: {
-      story:
-        "Use to change the language of that the text appears in the component.",
-    },
-    source: {
-      code: `<MultiSelect withTranslation={{lang: "hi", tgt: "MultiSelect", dictionary: ${JSON.stringify(
-        dictionary
-      )}}}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// All Variants
-// -------------------------------------------------------------
-const AllVariantTemplate = () => {
+const AllVariants= () => {
   const baseObj = {
     ...Object.assign({}, Default.args),
   };
@@ -350,45 +193,35 @@ const AllVariantTemplate = () => {
     <div className="qui-allvariants-container">
       <MultiSelect
         {...Object.assign({}, baseObj, {
-          content: [{
-            text:"Primary Button", selected:true
-          }],
+          content: "Primary Button",
           asVariant: "primary",
         })}
       />
       <MultiSelect
         {...Object.assign({}, baseObj, {
-          content: [{
-            text:"secondary Button", selected:false
-          }],
+          content: "Secondary Button",
           asVariant: "secondary",
         })}
       />
       <MultiSelect
         {...Object.assign({}, baseObj, {
-          content: [{
-            text:"warning Button", selected:true
-          }],
+          content: "Warning Button",
           asVariant: "warning",
         })}
       />
       <MultiSelect
         {...Object.assign({}, baseObj, {
-          content: [{
-            text:"Error Button", selected:false
-          }],
+          content: "Error Button",
           asVariant: "error",
         })}
       />
       <MultiSelect
         {...Object.assign({}, baseObj, {
-          content: [{
-            text:"success Button", selected:true
-          }],
+          content: "Success Button",
           asVariant: "success",
         })}
       />
     </div>
   );
 };
-export const AllVariants = AllVariantTemplate.bind({});
+export const MultipleSelect = AllVariants.bind({});

@@ -1,26 +1,28 @@
-.qui .qui-multi-select-single-button {
+.qui .qui-multi-select-button {
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 1;
 }
 .qui-multi-select-checkbox{
-  padding-right: 1em;
+  margin-right: 1em;
+  cursor:pointer;
 }
-.qui .qui-portrait-slide .qui-checkbox i {
+.qui .qui-multi-select-button .qui-checkbox i {
   position: relative;
   bottom: 18%;
   right: 0%;
   left: 0%;
   margin: auto;
-  font-size: 1.2em;
+  font-size: 1.4em;
 }
 
-.qui .qui-multi-select-single-button .qui-button button {
-  padding: 0.6em 4em;
+.qui .qui-multi-select-button .qui-button button {
+  padding: 1em 4em;
   width: 20em;
 }
-.qui.qui-multi-select .qui-multi-select-single-button {
+.qui.qui-multi-select .qui-multi-select-button {
   padding: 0;
 }
 @media only screen and (min-width: 320px) {

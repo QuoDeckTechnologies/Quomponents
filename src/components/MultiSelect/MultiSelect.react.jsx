@@ -1,5 +1,5 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import _ from 'lodash'
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -16,10 +16,7 @@ MultiSelect.propTypes = {
     /**
     Each button Text has to be in content object.
     */
-    content: PropTypes.arrayOf(PropTypes.shape({
-        text:PropTypes.string,
-        selected:PropTypes.bool,
-    })).isRequired,
+    content: PropTypes.string,
     /**
     Set action emphasis in increasing order 
     */
@@ -81,15 +78,6 @@ MultiSelect.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
-
-    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -107,21 +95,19 @@ MultiSelect.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: [],
+    content: "Primary",
     asEmphasis: "contained",
     isCircular: false,
+
     //=======================================
     // Quommon props
     //=======================================
     asVariant: "primary",
     asSize: "normal",
     asFloated: "none",
-
     withColor: null,
     withLabel: null,
     withAnimation: null,
-    withTranslation: null,
-
     isHidden: false,
     isDisabled: false,
 };
@@ -130,40 +116,29 @@ MultiSelect.defaultProps = {
 ## Notes
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Status of topics can be changed from content prop
-- Check and uncheck your selection from content prop
+- Check and uncheck your selection by clicking on it
 **/
+
 export default function MultiSelect(props) {
+    const [isChecked, setIsChecked] = useState(false);
+    function toggleChecked() {
+        setIsChecked(prevState => !prevState)
+    }
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "multi-select");
-    //-------------------------------------------------------------------
-    // 2. Get translation of the component
-    //-------------------------------------------------------------------
-    let labelContent = props.content;
-    let tObj = null;
-
-    if (
-        props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj) labelContent = tObj.content;
-    }
-
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}>
-            {_.map(labelContent, (buttonData, i) => {
-                return (
-                    <div className={`qui-multi-select-single-button ${quommonClasses.childClasses}`} key={i}>
-                        <i className={`qui-multi-select-checkbox ${buttonData.selected ? "fas fa-check-square" : "far fa-square" }`}>
-                        </i>
-                        {<Button {...props} withTranslation={null} content={buttonData.text} />}
-                    </div>
-                )
-            })}
+
+            <div className={`qui-multi-select-button ${quommonClasses.childClasses}`} >
+                <i className={`qui-multi-select-checkbox ${isChecked ? "fas fa-check-square" : "far fa-square"}`}
+                    onClick={() => toggleChecked()}>
+                </i>
+                <div className="qui-multi-select-button">
+                {<Button {...props} content={props.content} onClick={() => toggleChecked()} />}</div>
+            </div>
+
         </div>
     )
 }
