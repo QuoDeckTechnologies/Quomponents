@@ -85,10 +85,6 @@ MultiSelect.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
-    /**
-    Button component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
 };
 
 MultiSelect.defaultProps = {
