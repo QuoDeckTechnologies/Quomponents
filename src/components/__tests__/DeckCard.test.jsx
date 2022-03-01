@@ -65,6 +65,11 @@ describe("DeckCard", () => {
                     duration: 0.5,
                     delay: 0,
                 }}
+                withTranslation={{
+                    lang: "hi",
+                    tgt: "DeckCard",
+                    dictionary: dictionary,
+                }}
                 isDisabled={false}
                 isHidden={false}
                 onClick={() => console.log("EanrCard testing")}
@@ -95,4 +100,8 @@ describe("DeckCard", () => {
         });
         expect(component.exists()).toBe(true);
     });
+
+    it('component have one far class ', () => {
+        expect(component.find('.far').exists()).toBe(true)
+    })
 });

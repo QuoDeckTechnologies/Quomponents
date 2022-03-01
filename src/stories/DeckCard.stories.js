@@ -1,5 +1,9 @@
 import React from "react";
 import DeckCard from "../components/DeckCard/DeckCard.react";
+import image from "../assets/balloon_burst.png";
+import icon from "../assets/icons8_nintendo_gamecube_controller_96px.png";
+import image1 from "../assets/play_backdrop.png";
+import icon1 from "../assets/icons8_course_96px.png";
 
 const dictionary = JSON.stringify({
   hi: {
@@ -32,12 +36,6 @@ export default {
           tag: "",
         },
         topics: [],
-      },
-    },
-    isHiddenRibbon: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
       },
     },
     asVariant: {
@@ -109,7 +107,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a DeckCard with BannerCard, text and icon.",
+    componentSubtitle: "Displays a DeckCard with ribbon, and images for general-purpose use",
     a11y: { disable: true },
     docs: {
       iframeHeight: 600,
@@ -130,9 +128,8 @@ Default.args = {
     title: "The Negotiation Game",
     description:
       "Play this game to improve your understanding of negotiation skills",
-
-    image: "static/media/Image.62bfb45a.png",
-    icon: "fas fa-gamepad",
+    image: image,
+    icon: icon,
     tag: "restricted",
     topics: [
       {
@@ -179,10 +176,10 @@ ColoredDeckcard.args = {
 ColoredDeckcard.parameters = {
   docs: {
     description: {
-      story: "Use to override the standard colors of the Icon.",
+      story: "Use to override the standard colors of the content.",
     },
     source: {
-      code: `<DeckCard withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
+      code: `<DeckCard withColor={{backgroundColor: "", textColor: "#3A8080",accentColor: "#F2A52D"}}}/>`,
     },
   },
 };
@@ -215,15 +212,15 @@ AnimatedDeckcard.parameters = {
 //-------------------------------------------------------------
 // With Tag and Uncomplete DeckCard
 // -------------------------------------------------------------
-export const WithtagAndUncompleteDeckcard = Template.bind({});
-WithtagAndUncompleteDeckcard.args = {
+export const WithtagAndUncheckedDeckcard = Template.bind({});
+WithtagAndUncheckedDeckcard.args = {
   ...Default.args,
   content: {
     title: "Negotiation Skills 101",
     description:
       "Study this course to improve your understanding of negotiation skills",
-    image: "static/media/Image.62bfb45a.png",
-    icon: "fas fa-gamepad",
+    image: image1,
+    icon: icon1,
     tag: "premium",
     topics: [
       {
@@ -234,14 +231,14 @@ WithtagAndUncompleteDeckcard.args = {
   },
 
 };
-WithtagAndUncompleteDeckcard.parameters = {
+WithtagAndUncheckedDeckcard.parameters = {
   docs: {
     description: {
       story:
         "We can displays the DeckCard with tag and unchecked topic of DeckCard",
     },
     source: {
-      code: `<DeckCard {...${JSON.stringify(WithtagAndUncompleteDeckcard.args, null, 2)}}/>`,
+      code: `<DeckCard {...${JSON.stringify(WithtagAndUncheckedDeckcard.args, null, 2)}}/>`,
     },
   },
 };
@@ -268,3 +265,71 @@ TranslatedDeckcard.parameters = {
     },
   },
 };
+
+// -------------------------------------------------------------
+// AllVariants
+// -------------------------------------------------------------
+const AllVariantsTemplate = (args) => {
+  const baseObj = {
+    ...Object.assign({}, Default.args, args, {
+    }),
+  };
+  return (
+    <div>
+      <DeckCard
+        {...Object.assign({}, baseObj, {
+          content: {
+            title: "The Negotiation Game",
+            description:
+              "Play this game to improve your understanding of negotiation skills",
+            image: image,
+            icon: icon,
+            tag: "restricted",
+            topics: [
+              {
+                name: "Name One",
+                checked: true,
+              },
+            ],
+          },
+          asVariant: "primary",
+          asSize: "small",
+        })}
+      />
+      <DeckCard
+        {...Object.assign({}, baseObj, {
+          content: {
+            title: "Negotiation Skills 101",
+            description:
+              "Study this course to improve your understanding of negotiation skills",
+            image: image1,
+            icon: icon1,
+            tag: "premium",
+            topics: [
+              {
+                name: "Name One",
+                checked: false,
+              },
+            ],
+          },
+          asVariant: "secondary",
+          asSize: "big",
+        })}
+      />
+    </div>
+  );
+};
+
+
+export const AllVariants = AllVariantsTemplate.bind({});
+AllVariants.parameters = {
+  docs: {
+    description: {
+      story: " all variants are supported. Use as per purpose noted here.",
+    },
+    source: {
+      code: `<DeckCard asVariant=""/>`,
+    },
+  },
+};
+

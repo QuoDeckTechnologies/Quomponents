@@ -33,7 +33,6 @@ DeckCard.propTypes = {
             })
         ),
     }).isRequired,
-    isHiddenRibbon: PropTypes.bool,
 
     //=======================================
     // Quommon props
@@ -98,10 +97,6 @@ DeckCard.propTypes = {
 
 DeckCard.defaultProps = {
     //=======================================
-    // Component Specific props
-    //=======================================
-    isHiddenRibbon: false,
-    //=======================================
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -141,7 +136,7 @@ export default function DeckCard(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
     //-------------------------------------------------------------------
-    let { content, isHiddenRibbon, isHidden } = props;
+    let { content } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -184,6 +179,7 @@ export default function DeckCard(props) {
         >
             <div className={`qui-deckcard-label`}>
                 <Ribbon
+                    asFloated="left"
                     asEmphasis={content?.tag}
                     withTranslation={props.withTranslation}
                 />
@@ -193,9 +189,7 @@ export default function DeckCard(props) {
                 style={colors.cardColors}
             >
                 <div className="qui-left">
-                    <div>
                         <img className="image" src={props.content?.image} />
-                    </div>
                 </div>
                 <div className={`qui-middle`}>
                     <div className="qui-course-title" style={colors.textColors}>
@@ -209,7 +203,7 @@ export default function DeckCard(props) {
                 <div className={`qui-right`}>
                     <div className={`${quommonClasses.childClasses}`} style={colors.accentColors}
                     >
-                        <i className={content?.icon}></i>
+                        <img className="gamepad" src={props.content?.icon} />
                     </div>
                     <div className="banner" style={colors.bannerColors}></div>
                     <div>
