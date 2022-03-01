@@ -33,13 +33,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         withAnimation: {
             table: {
                 category: "with-Params",
@@ -62,12 +55,6 @@ export default {
         },
 
         isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        isFluid: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
@@ -107,11 +94,6 @@ Default.args = {
 
     asSize: "normal",
 
-    withLabel: {
-        format: "caption",
-        content: "Do not press this button repeatedly...",
-        textColor: "#000000",
-    },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -124,7 +106,6 @@ Default.args = {
     },
 
     isHidden: false,
-    isFluid: false,
 };
 Default.parameters = {
     docs: {
@@ -138,7 +119,7 @@ Default.parameters = {
 // -------------------------------------------------------------
 // MultipleColorPicker
 // -------------------------------------------------------------
-const MultipleColorPicker = (args) => {
+export const MultipleColorPicker = (args) => {
     const baseObj = {
         ...Object.assign({}, Default.args, args, {
         }),

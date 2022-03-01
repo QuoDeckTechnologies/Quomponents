@@ -39,10 +39,6 @@ CustomColor.propTypes = {
         "huge",
         "massive",
     ]),
-    /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
 
     /**
     Use to define the entry animation of the component
@@ -89,7 +85,6 @@ CustomColor.defaultProps = {
     // Quommon props
     //=======================================
     asSize: "normal",
-    asAligned: "center",
 
     withColor: null,
     withAnimation: null,
@@ -97,7 +92,6 @@ CustomColor.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
-    isFluid: false,
 };
 
 /**
@@ -117,7 +111,7 @@ export default function CustomColor(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
 
-    let quommonClasses = getQuommons(props, "button");
+    let quommonClasses = getQuommons(props, "custom-color");
     if (props.isCircular)
         quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
             }`;
@@ -142,36 +136,45 @@ export default function CustomColor(props) {
             labelContent.title = tObj.title;
         }
     }
-
-    const [color, setColor] = useState("#18CB3C");
+    const ref = useRef()
+    const [color, setColor] = useState("#fff");
     const [showColorPicker, setshowColorPicker] = useState(false);
 
+    useEffect(() => {
+        const checkIfClickedOutside = e => {
+            if (showColorPicker && ref.current && !ref.current.contains(e.target)) {
+                setshowColorPicker(false)
+            }
+        }
+        document.addEventListener("mousedown", checkIfClickedOutside)
+        return () => {
+            document.removeEventListener("mousedown", checkIfClickedOutside)
+        }
+    }, [showColorPicker])
+
+    console.log(ChromePicker)
     // ========================= Render Function =================================
 
     return (
-        <div className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`custom-color ${quommonClasses.childClasses}`}>
-                <div className="color-picker">
+        <div className={`qui ${quommonClasses.parentClasses}`} ref={ref}>
+            <div className={`qui-custom-color-container ${quommonClasses.childClasses}`}>
+                <div className="qui-custom-color-button-container">
                     <button
-                        className="qui-color-picker-button "
-                        style={{ backgroundColor: color }}
-                        onClick={() =>
-                            setshowColorPicker(showColorPicker => !showColorPicker)
-                        }
-                    >
-                        {showColorPicker}
-                    </button>
-                    <div className="qui-color-picker-title">{labelContent?.title}</div>
+                        className="qui-custom-color-button"
+                        style={{ backgroundColor:color }}
+                        onClick={() => setshowColorPicker(showColorPicker => !showColorPicker)} />
+                    <div className="qui-custom-color-title">{labelContent?.title}</div>
+                </div>
+                <div className="qui-chrome-picker-container">
                     {showColorPicker && (
-                        <div className="qui-chrome-picker-container"
-                            onClick={() => setshowColorPicker(false)}>
-                            <ChromePicker
-                                color={color}
-                                onChange={updateColor => setColor(updateColor.hex)}
-                            />
-                        </div>
+                        <ChromePicker
+                            className="qui-chrome-picker"
+                            color={color}
+                            onChange={updateColor => setColor(updateColor.hex)}
+                        />
                     )}
                 </div>
+
             </div>
         </div>
     );

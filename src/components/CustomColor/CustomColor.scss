@@ -1,27 +1,22 @@
-.custom-color {
-	text-align: center;
+.qui-custom-color-container {
+	position: relative;
 }
-.qui .qui-color-picker-button{
-	width: 3rem;
-	height: 1rem;
+.qui .qui-custom-color-button{
+	width: 2.4rem;
+	height: 1.3rem;
 	border: 0.1em solid black;
-	outline: none;
 	cursor: pointer;
-	color: black;
-	font-size:larger;
 	margin-right: 1rem;
 }
-.qui-chrome-picker-container{
-	height: 100%;
-	width: 100%;
-	display:flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.color-picker{
+.qui .qui-custom-color-button-container{
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+.qui-custom-color-title{
+}
+.qui .qui-chrome-picker{
+	margin:auto;
+	display: inline-block;
 }
