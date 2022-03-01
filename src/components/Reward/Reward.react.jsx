@@ -4,22 +4,23 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
-    getTranslation,
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./Reward.scss";
 import "../../common/stylesheets/overrule.scss";
+import coin from "../../assets/icons8_coin_96px.png";
 
 Reward.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-      Use to add label and point in the component
+      Use to add label,point and image in the Reward
     */
     content: PropTypes.shape({
         label: PropTypes.string,
         point: PropTypes.string,
+        image: PropTypes.string,
     }),
     //=======================================
     // Quommon props
@@ -43,12 +44,6 @@ Reward.propTypes = {
         accentColor: PropTypes.string,
     }),
     /**
-      Use to add the point/Coin's image to the component
-    */
-    withIcon: PropTypes.shape({
-        icon: PropTypes.string,
-    }),
-    /**
      Use to define the entry animation of the component
      */
     withAnimation: PropTypes.shape({
@@ -66,14 +61,6 @@ Reward.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
-    /**
       Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -88,9 +75,7 @@ Reward.defaultProps = {
     // Quommon props
     //=======================================
     withColor: null,
-    withIcon: null,
     withAnimation: null,
-    withTranslation: null,
 
     isHidden: false,
 };
@@ -107,7 +92,7 @@ export default function Reward(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props, "reward");
     //-------------------------------------------------------------------
     // 2. Use to set label Color
     //-------------------------------------------------------------------
@@ -121,27 +106,11 @@ export default function Reward(props) {
         color: props.withColor?.accentColor,
     };
     //-------------------------------------------------------------------
-    // 4.Use to set Src for Coin Image
+    // 4. Use to set content in the Reward component
     //-------------------------------------------------------------------
-    let coinSrc = Object.assign({}, props.withIcon);
+    let rewardContent = Object.assign({}, props.content);
     //-------------------------------------------------------------------
-    // 5. Use to set Translation in the Component
-    //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, props.content);
-    let tObj = null;
-    if (
-        props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj?.label) {
-            labelContent.label = tObj.label
-            labelContent.point = tObj.point
-        };
-    }
-    //-------------------------------------------------------------------
-    // 6. Get animation of the component
+    // 5. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
@@ -154,19 +123,19 @@ export default function Reward(props) {
         >
             <div className={` ${quommonClasses.childClasses}`}>
                 <div className={`qui-parent ${props.asSize}`}>
-                    <div className="qui-upperHalf" style={labelColors}>
-                        {labelContent?.label}
+                    <div className="qui-upper-half" style={labelColors}>
+                        {rewardContent?.label}
                     </div>
-                    <div className="qui-lowerHalf">
+                    <div className="qui-lower-half">
                         <div>
                             <img
-                                className={`qui-coinImage`}
-                                src={coinSrc?.icon}
-                                alt="Coin"
+                                className={`qui-coin-image`}
+                                src={rewardContent?.image ? rewardContent?.image : coin}
+                                alt="coin"
                             />
                         </div>
                         <div className="qui-point" style={pointColor}>
-                            {labelContent?.point}
+                            {rewardContent?.point}
                         </div>
                     </div>
                 </div>

@@ -1,16 +1,6 @@
 import React from "react";
-import Reward from "../components/Reward/Reward.react"
-
-const dictionary = JSON.stringify({
-    // en: {
-    //     reward: {
-    //         label: "Complete to win",point:"10,000"
-    //     },
-    // },
-    hi: {
-        reward: { label: "जीतने के लिए पूर्ण", point: "१०,०००" },
-    },
-});
+import Reward from "../components/Reward/Reward.react";
+import coin from "../assets/icons8_coin_96px.png";
 
 export default {
     title: "Design System/Reward/Reward",
@@ -22,6 +12,7 @@ export default {
                 defaultValue: {
                     label: "",
                     point: "",
+                    image: "",
                 },
             },
         },
@@ -56,14 +47,6 @@ export default {
                 },
             },
         },
-        withIcon: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    icon: "",
-                },
-            },
-        },
         withAnimation: {
             table: {
                 category: "with-Params",
@@ -71,16 +54,6 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
-                },
-            },
-        },
-        withTranslation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    lang: "",
-                    tgt: "",
-                    dictionary: "",
                 },
             },
         },
@@ -106,7 +79,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic button for general-purpose use",
+        componentSubtitle: "Displays a basic Reward for general-purpose use",
         a11y: { disable: true },
         docs: { iframeHeight: 200 },
     },
@@ -120,14 +93,12 @@ Default.args = {
     content: {
         label: "Complete to win",
         point: "10,000",
+        image: coin
     },
     asSize: "normal",
     asFloated: "none",
     asPadded: "normal",
 
-    withIcon: {
-        icon: "https://image.freepik.com/free-vector/golden-coin-with-word-bitcoin_1308-9855.jpg?w=740",
-    },
     withColor: {
         textColor: "#3e587a",
         accentColor: "#ed6e6e",
@@ -137,45 +108,12 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-    withTranslation: {
-        lang: "en",
-        tgt: "reward",
-        dictionary: dictionary,
-    },
-
     isHidden: false,
 };
 Default.parameters = {
     docs: {
         source: {
             code: `<Reward {...${JSON.stringify(Default.args, null, 2)}}/>`,
-        },
-    },
-};
-// -------------------------------------------------------------
-// Translated Reward
-// -------------------------------------------------------------
-export const TranslatedReward = Template.bind({});
-TranslatedReward.args = {
-    ...Default.args,
-    withTranslation: {
-        lang: "hi",
-        tgt: "reward",
-        dictionary: dictionary,
-    },
-};
-TranslatedReward.parameters = {
-    docs: {
-        description: {
-            story:
-                "Use to change the language that the label appears in. To make this work for the reward, add a reward:{label} value to the dictionary.",
-        },
-        source: {
-            code: `<TranslatedReward {...${JSON.stringify(
-                TranslatedReward.args,
-                null,
-                2
-            )}}/>`,
         },
     },
 };

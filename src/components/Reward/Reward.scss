@@ -6,28 +6,27 @@
     display: flexbox;
 }
 
-.qui .qui-upperHalf {
+.qui .qui-upper-half {
     padding-left: 0.5em;
     text-align: left;
-    font-size: 0.9em;
-    font-weight: 900;
+    font-size: 1.25em;
     color: #3e587a;
 }
 
-.qui .qui-lowerHalf {
+.qui .qui-lower-half {
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.qui .qui-lowerHalf .qui-point {
+.qui .qui-lower-half .qui-point {
     padding-left: 10px;
     text-align: left;
-    font-size: 1.5em;
+    font-size: 2.25em;
     color: #ed6e6e;
 }
 
-.qui .qui-coinImage {
-    width: 2em;
+.qui .qui-coin-image {
+    width: 3.375em;
     align-self: start;
 }
