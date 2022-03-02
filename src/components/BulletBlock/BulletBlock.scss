@@ -1,6 +1,9 @@
 .qui-bulletblock {
-  padding: 1em 1.25em;
   border-radius: 0.5em;
+  margin-bottom:1em;
+  padding: 1em;
+  align-items: center;
+  justify-content: center;
 }
 .qui li{
   margin: 0em;
@@ -8,8 +11,12 @@
   margin-left: -.5em;
   margin-bottom: -.7em;
 }
+.qui .li:last-child {
+  margin-bottom: -1em;
+}
 .qui ul{
-  margin-top: -0.01em;
+  margin-top:-0.1em ;
+  padding-bottom: 0;
 }
 
 @media screen and (min-width: 320px) {

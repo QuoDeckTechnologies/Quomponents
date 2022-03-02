@@ -5,9 +5,7 @@ export default {
     title: "Design System/BulletBlock/BulletBlock",
     component: BulletBlock,
     argTypes: {
-        content: {
-            items: ["label1"],
-        },
+        content: ["label1"],
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -42,22 +40,10 @@ export default {
                 },
             },
         },
-        isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
         isHidden: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
-            },
-        },
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
             },
         },
     },
@@ -91,11 +77,11 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        items: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "Quisque sed turpis vel lectus suscipit auctor",
-            "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."],
-    },
+    content: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Quisque sed turpis vel lectus suscipit auctor",
+        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+    ],
     asVariant: "primary",
     asSize: "normal",
     withColor: {
@@ -108,7 +94,6 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-    isDisabled: false,
     isHidden: false,
 };
 Default.parameters = {

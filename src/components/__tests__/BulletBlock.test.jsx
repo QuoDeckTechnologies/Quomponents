@@ -22,13 +22,11 @@ describe("BulletBlock", () => {
         jest.resetAllMocks();
         component = shallow(
             <BulletBlock
-                content={{
-                    items: [
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                        "Quisque sed turpis vel lectus suscipit auctor",
-                        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-                    ],
-                }}
+                content={[
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                    "Quisque sed turpis vel lectus suscipit auctor",
+                    "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+                ]}
                 asVariant="primary"
                 asSize="normal"
                 withColor={{
@@ -41,9 +39,7 @@ describe("BulletBlock", () => {
                     duration: 0.5,
                     delay: 0,
                 }}
-                isDisabled={false}
                 isHidden={false}
-                onClick={() => console.log("bulletblock testing")}
             />
         );
     });
@@ -51,12 +47,22 @@ describe("BulletBlock", () => {
     it("should render correctly without throwing error", () => {
         expect(component.exists()).toBe(true);
     });
-
-    it("should render correctly when clicked", () => {
-        let component = renderer.create(<BulletBlock onClick={() => { }} />);
-        let tree = component.toJSON();
-        act(() => {
-            tree.props.onClick();
+    it("should render correctly with empty props which are not required", () => {
+        component.setProps({
+            withColor: {},
+            withAnimation: {},
+            isHidden: null
         });
+        expect(component.exists()).toBe(true);
     });
+    it("should render correctly with withColor prop ",
+        () => {
+            const component = renderer.create(<BulletBlock
+                withColor={{
+                    backgroundColor: "#C9878",
+                    accentColor: "#ffffff",
+                    textColor: "#b60d17",
+                }}
+            />)
+        });
 });

@@ -20,9 +20,9 @@ BulletBlock.propTypes = {
     /**
        BulletBlock data should be passed in content field and it is required field  
       */
-    content: PropTypes.shape({
-        items: PropTypes.arrayOf(PropTypes.shape({})),
-    }),
+    content: PropTypes.arrayOf(
+        PropTypes.string
+    ),
 
     /**
   //=======================================
@@ -57,7 +57,6 @@ BulletBlock.propTypes = {
         accentColor: PropTypes.string,
         textColor: PropTypes.string,
     }),
-
     /**
       Use to define the entry animation of the component
       */
@@ -76,24 +75,16 @@ BulletBlock.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to enable/disable the component
-      */
-    isDisabled: PropTypes.bool,
-    /**
       Use to show/hide the component
       */
     isHidden: PropTypes.bool,
-    /**
-      Button component must have the onClick function passed as props
-      */
-    onClick: PropTypes.func.isRequired,
 };
 
 BulletBlock.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: {},
+    content: [],
     //=======================================
     // Quommon props
     //=======================================
@@ -101,7 +92,6 @@ BulletBlock.defaultProps = {
     asSize: "normal",
     withColor: null,
     withAnimation: null,
-    isDisabled: false,
     isHidden: false,
 };
 
@@ -149,13 +139,13 @@ export default function BulletBlock(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
             style={colors.backgroundColors}
-            onClick={(e) => props.onClick(e)}
         >
             <div>
-                {_.map(props.content?.items, (item, index) => {
+                {_.map(props.content, (item, index) => {
                     return (
-                        <div className={` ${quommonClasses.childClasses}`} key={index}
-                            style={colors.textColors}>
+                        <div className={`li ${quommonClasses.childClasses}`}
+                            style={colors.textColors}
+                            key={index}>
                             <ul>
                                 <li>
                                     {item}
