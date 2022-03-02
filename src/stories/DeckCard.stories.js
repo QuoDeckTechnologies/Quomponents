@@ -107,7 +107,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a DeckCard with ribbon, and images for general-purpose use",
+    componentSubtitle: "Displays a DeckCard with ribbon, images and icon for general-purpose use",
     a11y: { disable: true },
     docs: {
       iframeHeight: 600,
@@ -293,7 +293,6 @@ const AllVariantsTemplate = (args) => {
             ],
           },
           asVariant: "primary",
-          asSize: "small",
         })}
       />
       <DeckCard
@@ -313,7 +312,6 @@ const AllVariantsTemplate = (args) => {
             ],
           },
           asVariant: "secondary",
-          asSize: "big",
         })}
       />
     </div>
@@ -325,10 +323,10 @@ export const AllVariants = AllVariantsTemplate.bind({});
 AllVariants.parameters = {
   docs: {
     description: {
-      story: " all variants are supported. Use as per purpose noted here.",
+      story: " all variants are supported in DeckCard",
     },
     source: {
-      code: `<DeckCard asVariant=""/>`,
+      code: `<DeckCard content:{}, asVariant:""/>`,
     },
   },
 };

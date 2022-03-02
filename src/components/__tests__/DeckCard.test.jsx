@@ -100,8 +100,31 @@ describe("DeckCard", () => {
         });
         expect(component.exists()).toBe(true);
     });
+    it("should render correctly with withColor prop",
+        () => {
+            const component = renderer.create(<DeckCard
+                content={{
+                    title: "The Negotiation Game",
+                    description:
+                        "Play this game to improve your understanding of negotiation skills",
 
-    it('component have one far class ', () => {
-        expect(component.find('.far').exists()).toBe(true)
-    })
+                    image: "static/media/Image.62bfb45a.png",
+                    icon: "fas fa-gamepad",
+                    tag: "restricted",
+                    topics: [
+                        {
+                            name: "Name One",
+                            checked: true,
+                        },
+                    ],
+                }}
+                withColor={{
+                    backgroundColor: "",
+                    accentColor: "",
+                    textColor: "#b60d17",
+                }}
+                onClick={() => console.log('testing')}
+            />)
+        });
+
 });

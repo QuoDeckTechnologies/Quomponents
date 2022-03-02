@@ -6,32 +6,31 @@
   padding: 1em;
   margin-bottom: 1em;
 }
-.qui .qui-left {
-  width: 20%;
-  padding: 0;
-  margin: 0;
+.qui-left {
+  width: auto;
 }
 .qui .qui-middle {
-  width: 65%;
-  margin-right: 5%;
+  width: 80%;
+  margin: 0% 4%;
   display: flex;
   flex-direction: column;
 }
 .qui .qui-right {
-  width: 10%;
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .qui .image {
-  height: 3em;
-  width: 3em;
+  height: 100%;
+  width: 8em;
+  border-radius: 1em;
 }
 .qui .gamepad {
   height: 2.5em;
   width: 2.5em;
   padding: 0;
-  margin-bottom: -.25em;
+  margin-bottom: -0.25em;
 }
 .qui .qui-course-title {
   display: flex;
@@ -85,16 +84,10 @@
 
 @media only screen and (min-width: 320px) {
   .qui-deckcard {
-    font-size: 0.65em;
+    font-size: 0.7em;
   }
-  .qui .image {
-    height: 8em;
-    width: 8em;
-    border-radius: 1em;
-  }
-  .qui .qui-middle {
-    padding-left: 3.2em;
-    padding-right: 0em;
+  .qui .qui-course-title h1 {
+    font-size: 1.5em;
   }
   .qui-ribbon-container {
     font-size: 0.6em;
@@ -103,11 +96,10 @@
 
 @media only screen and (min-width: 481px) {
   .qui-deckcard {
-    font-size: .8em;
+    font-size: 0.8em;
   }
-  .qui .image {
-    height: 9em;
-    width: 9em;
+  .qui .qui-course-title h1 {
+    font-size: 2em;
   }
   .qui-ribbon-container {
     font-size: 0.8em;
@@ -116,11 +108,10 @@
 
 @media only screen and (min-width: 769px) {
   .qui-deckcard {
-    font-size: 1em;
+    font-size: 0.9em;
   }
-  .qui .image {
-    height: 10em;
-    width: 10em;
+  .qui .qui-course-title h1 {
+    font-size: 2.5em;
   }
   .qui-ribbon-container {
     font-size: 1em;

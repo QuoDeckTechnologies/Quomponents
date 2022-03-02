@@ -90,7 +90,7 @@ DeckCard.propTypes = {
       */
     isHidden: PropTypes.bool,
     /**
-      Button component must have the onClick function passed as props
+      DeckCard component must have the onClick function passed as props
       */
     onClick: PropTypes.func.isRequired,
 };
@@ -189,7 +189,7 @@ export default function DeckCard(props) {
                 style={colors.cardColors}
             >
                 <div className="qui-left">
-                        <img className="image" src={props.content?.image} />
+                    <img className="image" src={props.content?.image} />
                 </div>
                 <div className={`qui-middle`}>
                     <div className="qui-course-title" style={colors.textColors}>
