@@ -1,5 +1,5 @@
 import React from "react";
-import Choice from "../components//Buttons/Choice/Choice.react";
+import Choice from "../components/Buttons/Choice/Choice.react";
 
 const dictionary = JSON.stringify({
   en: {
@@ -10,8 +10,8 @@ const dictionary = JSON.stringify({
   },
   hi: {
     Choice: {
-      Choice1: "हां",
-      Choice2: "नहीं",
+      Choice1: "प्राथमिक बटन",
+      Choice2: "माध्यमिक बटन",
     },
   },
 });
@@ -56,6 +56,7 @@ export default {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
+          accentColor:"",
           textColor: "",
         },
       },
@@ -136,6 +137,7 @@ Default.args = {
 
   withColor: {
     backgroundColor: "",
+    accentColor:"",
     textColor: "",
   },
   withAnimation: {
@@ -145,7 +147,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "button",
+    tgt: "Choice",
     dictionary: dictionary,
   },
 

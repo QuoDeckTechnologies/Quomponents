@@ -18,18 +18,22 @@
     font-size: 0.5em;
     box-shadow: 0.1em 0.1em 0.3em grey;
     border:1px solid;
+    text-transform: uppercase;
 }
 .qui .choice1{
     background-color: #FFAB00;
     color: black;
+    border:none;
 }
 
 .qui .choice2{
     background-color: #454545;
     color: #FFAB00;
+    border:none;
 }
 
-.or{
+.qui .or{
+    text-transform: uppercase;
     display: flex;
     z-index: 1;
     position: absolute;
@@ -43,6 +47,7 @@
     border-radius: 50%;
     box-shadow: 0.1em 0.1em 0.3em grey;
     border: 1px solid #FFFFFF;
+    color:#454545;
 }
 
 

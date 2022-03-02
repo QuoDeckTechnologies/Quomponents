@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 import {
     getQuommons,
     getTranslation,
     getAnimation
 } from "../../../common/javascripts/helpers";
+
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
+import "./Choice.scss";
 import "../../../common/stylesheets/overrule.scss";
-import "../Choice/Choice.scss";
-import { motion } from "framer-motion";
 
 Choice.propTypes = {
     //=======================================
@@ -25,7 +26,7 @@ Choice.propTypes = {
     Use to enable/disable the OR tag
     */
     isOr: PropTypes.bool,
-    
+
     //=======================================
     // Quommon props
     //=======================================
@@ -42,7 +43,9 @@ Choice.propTypes = {
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
-        textColor: PropTypes.string,
+        backgroundColor:PropTypes.string,
+        accentColor:PropTypes.string,
+        textColor: PropTypes.string
     }),
     /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -61,7 +64,7 @@ Choice.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
- 
+
     /**
     Choice component must have the onClick function passed as props
     */
@@ -126,7 +129,7 @@ export default function Choice(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props, "choice");
 
     //-------------------------------------------------------------------
     // 2. Translate the text objects in case their is a dictionary provided
@@ -141,17 +144,17 @@ export default function Choice(props) {
         if (tObj && props.content && props.content !== "") {
             choices = tObj;
         }
- 
+
     }
     // 3. Set the component colors
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor, props.asEmphasis) : {};
 
-        //-------------------------------------------------------------------
+    //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-   
+
     function choice1() {
         props.onClick("choice 1");
     }
@@ -159,14 +162,14 @@ export default function Choice(props) {
         props.onClick("choice 2");
     }
 
-    let orStyle = { display: props.isOr ? "flex" : "none" }
+    let orStyle = { display: props.isOr ? "flex" : "none" , color: props.withColor?.accentColor}
 
     function choice() {
         return (
-            <motion.div 
-             initial={animate.from}
-             animate={animate.to}
-             className={`container`} >
+            <motion.div
+                initial={animate.from}
+                animate={animate.to}
+                className={`container`} >
                 <div className={`qui-btn choices choice1`} style={Object.assign({}, colors)} onClick={choice1}>{choices?.Choice1}</div>
                 <div className="or" style={Object.assign({}, orStyle)}>OR</div>
                 <div className={`qui-btn choices choice2`} style={Object.assign({}, colors)} onClick={choice2}>{choices?.Choice2}</div>
