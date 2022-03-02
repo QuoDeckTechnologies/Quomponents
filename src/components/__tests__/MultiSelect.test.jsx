@@ -36,7 +36,7 @@ describe("MultiSelct", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly with isCircular set and empty content", () => {
+  it("should render correctly with isCircular set ", () => {
     component.setProps({
       isCircular: true,
       content: "Content",

@@ -184,11 +184,14 @@ AnimationChecked.parameters = {
 // -------------------------------------------------------------
 // Multi select
 // -------------------------------------------------------------
-const AllVariants= () => {
+// const AllVariants= () => {
+//   const baseObj = {
+//     ...Object.assign({}, Default.args),
+//   };
+const AllVariants = (args) => {
   const baseObj = {
-    ...Object.assign({}, Default.args),
+    ...Object.assign({}, Default.args, args),
   };
-
   return (
     <div className="qui-allvariants-container">
       <MultiSelect

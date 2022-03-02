@@ -7,7 +7,7 @@ import "../../common/stylesheets/common.css";
 import './MultiSelect.scss'
 import "../../common/stylesheets/overrule.scss";
 import Button from "../Buttons/Button/Button.react";
-import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
+import { getQuommons } from "../../common/javascripts/helpers";
 
 MultiSelect.propTypes = {
     //=======================================
@@ -85,6 +85,10 @@ MultiSelect.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
+    /**
+    Component must have the onClick function passed as props
+      */
+    onClick: PropTypes.func.isRequired,
 };
 
 MultiSelect.defaultProps = {
@@ -125,14 +129,16 @@ export default function MultiSelect(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "multi-select");
     return (
-        <div className={`qui ${quommonClasses.parentClasses}`}>
+        <div className={`qui ${quommonClasses.parentClasses}`} onClick={(e) => props.onClick(e)}>
 
             <div className={`qui-multi-select-button-container ${quommonClasses.childClasses}`} >
-                <i className={`qui-multi-select-checkbox ${isChecked ? "fas fa-check-square" : "far fa-square"}`}
-                    onClick={() => toggleChecked()}>
-                </i>
+                <div className="square-background">
+                    <i className={`qui-multi-select-checkbox ${isChecked ? "fas fa-check-square" : "fa fa-square"}`}
+                        onClick={() => toggleChecked()}>
+                    </i>
+                </div>
                 <div className="qui-multi-select-button">
-                {<Button {...props} content={props.content} onClick={() => toggleChecked()} />}</div>
+                    {<Button {...props} content={props.content} onClick={() => toggleChecked()} />}</div>
             </div>
 
         </div>
