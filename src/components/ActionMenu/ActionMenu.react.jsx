@@ -12,7 +12,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ActionMenu.scss";
 import "../../common/stylesheets/overrule.scss";
-import BannerCard from "../Carousel/BannerCard/BannerCard.react";
 
 ActionMenu.propTypes = {
     //=======================================
@@ -21,14 +20,12 @@ ActionMenu.propTypes = {
     /**
       ActionMenu data should be passed in content field and it is a required field
       */
-    content: PropTypes.shape({
-        topics: PropTypes.arrayOf(
-            PropTypes.shape({
-                title: PropTypes.string,
-                icon: PropTypes.string,
-            })
-        ),
-    }).isRequired,
+    content: PropTypes.arrayOf(
+        PropTypes.shape({
+            title: PropTypes.string,
+            icon: PropTypes.string,
+        }),
+    ).isRequired,
     //=======================================
     // Quommon props
     //=======================================
@@ -85,7 +82,7 @@ ActionMenu.propTypes = {
       */
     isHidden: PropTypes.bool,
     /**
-      Button component must have the onClick function passed as props
+      ActionMenu component must have the onClick function passed as props
       */
     onClick: PropTypes.func.isRequired,
 };
@@ -94,14 +91,16 @@ ActionMenu.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: {},
+    content: [],
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "primary",
+    asVariant: "success",
+
     withColor: null,
     withAnimation: null,
     withTranslation: null,
+
     isDisabled: false,
     isHidden: false,
 };
@@ -149,7 +148,6 @@ export default function ActionMenu(props) {
         title: content?.title,
     };
     let tObj = null;
-
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
@@ -172,15 +170,14 @@ export default function ActionMenu(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-                {_.map(content?.topics, (item, index) => {
-                    return (
-                        <div  className={`items ${quommonClasses.childClasses}`} key={index} onClick={props.onClick} style={colors.backgroundColors}>
-                            <i className={`icons ${item.icon}`} style={colors.accentColors}></i>
-                            <div className="titles" style={colors.textColors}>{item.title}</div>
-                        </div>
-                    );
-                })}
-
+            {_.map(content, (item, index) => {
+                return (
+                    <div className={`items ${quommonClasses.childClasses}`} key={index} onClick={props.onClick} style={colors.backgroundColors}>
+                        <i className={`icons ${item.icon}`} style={colors.accentColors}></i>
+                        <div className="titles" style={colors.textColors}>{item.title}</div>
+                    </div>
+                );
+            })}
         </motion.div>
     );
 }

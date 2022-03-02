@@ -1,17 +1,29 @@
 import React from "react";
 import ActionMenu from "../components/ActionMenu/ActionMenu.react";
+const dictionary = JSON.stringify({
+    hi: {
+        ActionMenu: [
+            { title: "खुला डेक" },
+            { title: "डेक संपादित करें" },
+            { title: "डेक ऊपर ले जाएँ" },
+            { title: "डेक नीचे ले जाएँ" },
+            { title: "विषय पर जाएं" },
+            { title: "अप्रकाशित डेक" },
+            { title: "डेक हटाएं" },
+        ]
+    }
+});
 
 export default {
     title: "Design System/ActionMenu/ActionMenu",
     component: ActionMenu,
     argTypes: {
-        content: {
-            table: {
-                defaultValue: {
-                    topics: [],
-                },
+        content: [
+            {
+                title: "label1",
+                icon: "",
             },
-        },
+        ],
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -81,7 +93,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a ActionMenu with BannerCard, text and icon.",
+        componentSubtitle: "Displays a ActionMenu icons & related contents for general-purpose use.",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -98,48 +110,51 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        topics: [
-            {
-                title: "Open Deck",
-                icon: "fas fa-book-open",
-            },
-            {
-                title: "Edit Deck",
-                icon: "fas fa-edit",
-            },
-            {
-                title: "Move Deck Up",
-                icon: "fas fa-angle-up",
-            },
-            {
-                title: "Move Deck Down",
-                icon: "fas fa-angle-down",
-            },
-            {
-                title: "Move to Topic",
-                icon: "fas fa-square",
-            },
-            {
-                title: "Unpublish Deck",
-                icon: "fas fa-eye-slash",
-            },
-            {
-                title: "Delete Deck",
-                icon: "fas fa-trash",
-            },
-        ],
-    },
-    asVariant: "primary",
+    content: [
+        {
+            title: "Open Deck",
+            icon: "fas fa-book-open",
+        },
+        {
+            title: "Edit Deck",
+            icon: "fas fa-edit",
+        },
+        {
+            title: "Move Deck Up",
+            icon: "fas fa-angle-up",
+        },
+        {
+            title: "Move Deck Down",
+            icon: "fas fa-angle-down",
+        },
+        {
+            title: "Move to Topic",
+            icon: "fas fa-square",
+        },
+        {
+            title: "Unpublish Deck",
+            icon: "fas fa-eye-slash",
+        },
+        {
+            title: "Delete Deck",
+            icon: "fas fa-trash",
+        },
+    ],
+    asVariant: "success",
     withColor: {
         backgroundColor: "",
-        textColor: "#b60d17",
+        textColor: "",
         accentColor: "",
     },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "ActionMenu",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -159,9 +174,9 @@ export const ColoredActionMenu = Template.bind({});
 ColoredActionMenu.args = {
     ...Default.args,
     withColor: {
-        backgroundColor: "",
-        textColor: "teal",
-        accentColor: "tomato",
+        backgroundColor: "#ADD8E6",
+        textColor: "#C53816",
+        accentColor: "#F2A52D",
     },
 };
 ColoredActionMenu.parameters = {
@@ -170,7 +185,7 @@ ColoredActionMenu.parameters = {
             story: "Use to override the standard colors of the Icon.",
         },
         source: {
-            code: `<ActionMenu withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
+            code: `<ActionMenu withColor={{backgroundColor: "lightblue", textColor: "#666666",accentColor: "#666666"}}}/>`,
         },
     },
 };
@@ -201,3 +216,29 @@ AnimatedActionMenu.parameters = {
         },
     },
 };
+
+//-------------------------------------------------------------
+// Translated ActionMenu
+// -------------------------------------------------------------
+export const TranslatedActionMenu = Template.bind({});
+TranslatedActionMenu.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "ActionMenu",
+        dictionary: dictionary,
+    },
+};
+TranslatedActionMenu.parameters = {
+    docs: {
+        description: {
+            story:
+                "We can translate the language of ActionMenu if dictionary is provided",
+        },
+        source: {
+            code: `<ActionMenu {...${JSON.stringify(TranslatedActionMenu.args, null, 2)}}/>`,
+        },
+    },
+};
+
+
