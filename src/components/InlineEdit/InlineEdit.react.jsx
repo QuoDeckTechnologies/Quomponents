@@ -43,7 +43,6 @@ InlineEdit.propTypes = {
       Use to set Colors in component 
     */
     withColor: PropTypes.shape({
-        textColor: PropTypes.string,
         accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
     }),
@@ -111,13 +110,13 @@ export default function InlineEdit(props) {
     //-------------------------------------------------------------------
     // 3. Use to set styling of input tag.
     //-------------------------------------------------------------------
-    let Color = {
-        backgroundColor: props.withColor?.backgroundColor,
-        color: props.withColor?.textColor,
-    };
     const inputRef = useRef();
     const changeFocus = () => {
         inputRef.current.style.borderColor = props.withColor?.accentColor
+        inputRef.current.style.backgroundColor = props.withColor?.backgroundColor
+    }
+    const changeBlur = () => {
+        inputRef.current.style.backgroundColor = "transparent"
     }
     //-------------------------------------------------------------------
     // 4. Get animation of the component
@@ -136,8 +135,8 @@ export default function InlineEdit(props) {
                     value={input}
                     ref={inputRef}
                     onFocus={() => changeFocus()}
+                    onBlur={() => changeBlur()}
                     onChange={(e) => setInput(e.target.value)}
-                    style={Color}
                 />
             </div>
         </motion.div>

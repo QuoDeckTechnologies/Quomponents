@@ -32,7 +32,6 @@ export default {
         category: "with-Params",
         defaultValue: {
           accentColor: "",
-          textColor: "",
           backgroundColor: "",
         },
       },
@@ -90,9 +89,7 @@ Default.args = {
   asAligned: "left",
   withColor: {
     accentColor: "#FFAB00",
-    textColor: "",
-    backgroundColor: "#E5E5E5",
-
+    backgroundColor: "#ffab001a",
   },
   withAnimation: {
     animation: "collapse",
@@ -150,7 +147,6 @@ const AllVariantsTemplate = (args) => {
         {...Object.assign({}, baseObj, {
           withColor: {
             accentColor: "#ffbf00",
-            textColor: "#ffffff",
             backgroundColor: "#666666",
           }
         })}
@@ -160,7 +156,6 @@ const AllVariantsTemplate = (args) => {
         {...Object.assign({}, baseObj, {
           withColor: {
             accentColor: "#589C48",
-            textColor: "#FBB149",
             backgroundColor: "#733381",
           }
         })}
