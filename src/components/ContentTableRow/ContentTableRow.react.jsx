@@ -74,7 +74,7 @@ function getIcon(fileExtention) {
   } else {
     icon = "far fa-file";
   }
-  return <i className={`${icon} qui-table-file-icon`}></i>;
+  return icon
 }
 /**
 ## Notes
@@ -92,16 +92,23 @@ export default function ContentTableRow(props) {
   //-------------------------------------------------------------------
   // 2. Extracting file name and extention
   //-------------------------------------------------------------------
-  const [fileName, setFileName] = useState('');
+  const [fileName, setFileName] = useState(content.fileName);
   const [isChecked, setIsChecked] = useState(false);
-  const [fullName] = useState(content?.fileName);
+
+  let fileExtention = content.fileName?.substring(
+    content.fileName?.lastIndexOf(".") + 1,
+    content.fileName?.length)
+  let icon = getIcon(fileExtention)
+
   useEffect(() => {
-    setFileName(fullName?.slice(0, fullName.lastIndexOf(".")));
+    setFileName(content.fileName)
+    fileExtention = content.fileName?.substring(
+      content.fileName?.lastIndexOf(".") + 1,
+      content.fileName?.length
+    );
+    icon = getIcon(fileExtention)
   }, [content?.fileName]);
-  let fileExtention = fullName?.substring(
-    fullName?.lastIndexOf(".") + 1,
-    fullName?.length
-  );
+
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -132,7 +139,7 @@ export default function ContentTableRow(props) {
           ></i>
         </div>
         <div className="qui-content-table-file-icon">
-          {getIcon(fileExtention)}
+          <i className={`${icon} qui-table-file-icon`}></i>
         </div>
         <input
           type="text"
