@@ -62,12 +62,6 @@ export default {
                 defaultValue: false,
             },
         },
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
-            },
-        },
     },
     decorators: [
         (story) => (
@@ -82,7 +76,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a ProgressBar with Steps and Buttons",
+        componentSubtitle: "Displays a ProgressBar with Buttons & Steps for general-purpose use",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -138,13 +132,13 @@ ColoredProgressbar.args = {
         backgroundColor: "#C98787",
         accentColor: "#D3D3D3",
         lineColor: "#E82E19",
-        textColor: "",
+        textColor: "#ffffff",
     },
 };
 ColoredProgressbar.parameters = {
     docs: {
         description: {
-            story: "Use to override the standard colors of the Icon.",
+            story: "Use to override the standard colors of the content.",
         },
         source: {
             code: `<Progressbar withColor={{backgroundColor: "#C98787", accentColor: "#D3D3D3",
@@ -176,6 +170,48 @@ AnimatedProgressbar.parameters = {
                 null,
                 2
             )}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// AllVariants
+// -------------------------------------------------------------
+const AllVariantsTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+        }),
+    };
+    return (
+        <div>
+            <ProgressBar
+                {...Object.assign({}, baseObj, {
+                    asVariant: "primary",
+                })}
+            />
+            <ProgressBar
+                {...Object.assign({}, baseObj, {
+                    withColor: {
+                        backgroundColor: "#C98787",
+                        accentColor: "#D3D3D3",
+                        lineColor: "#E82E19",
+                        textColor: "#ffffff",
+                    },
+                })}
+            />
+        </div>
+    );
+};
+
+
+export const AllVariants = AllVariantsTemplate.bind({});
+AllVariants.parameters = {
+    docs: {
+        description: {
+            story: "All variants are supported in ProgressBar.",
+        },
+        source: {
+            code: `<ProgressBar content:{}/>`,
         },
     },
 };

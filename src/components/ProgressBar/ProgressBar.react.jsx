@@ -22,6 +22,9 @@ ProgressBar.propTypes = {
     content: PropTypes.shape({
         lefticon: PropTypes.string,
         righticon: PropTypes.string,
+        labelArray: PropTypes.arrayOf(
+            PropTypes.string
+        ),
     }),
     //=======================================
     // Quommon props
@@ -56,7 +59,6 @@ ProgressBar.propTypes = {
         lineColor: PropTypes.string,
         textColor: PropTypes.string,
     }),
-
     /**
       Use to define the entry animation of the component
       */
@@ -82,10 +84,6 @@ ProgressBar.propTypes = {
       Use to show/hide the component
       */
     isHidden: PropTypes.bool,
-    /**
-      Button component must have the onClick function passed as props
-      */
-    onClick: PropTypes.func.isRequired,
 };
 
 ProgressBar.defaultProps = {
@@ -167,25 +165,27 @@ export default function ProgressBar(props) {
             className={`qui ${quommonClasses.parentClasses}`}
             style={colors?.backColors}
         >
-            <div className={`left ${quommonClasses.childClasses}`}>
-                <i className={`icon ${content?.lefticon}`}
-                    style={colors?.textColors}
-                    onClick={() => decrement()}>
-                </i>
-            </div>
-            <div className={`middle ${quommonClasses.childClasses}`}>
-                {_.map(props.content?.labelArray, (key, index) => {
-                    return (
-                        <div className={`line`} key={index}
-                            style={index + 1 <= currentStep ? { backgroundColor: props.withColor?.lineColor } : colors?.accentColors} ></div>
-                    )
-                })}
-            </div>
-            <div className={`right ${quommonClasses.childClasses}`}>
-                <i className={`icon ${content?.righticon}`}
-                    style={colors?.textColors}
-                    onClick={() => increment()}>
-                </i>
+            <div className={`qui-progressbar${quommonClasses.childClasses}`}>
+                <div className={`left`}>
+                    <i className={`icon ${content?.lefticon}`}
+                        style={colors?.textColors}
+                        onClick={() => decrement()}>
+                    </i>
+                </div>
+                <div className={`middle`}>
+                    {_.map(props.content?.labelArray, (key, index) => {
+                        return (
+                            <div className={`line`} key={index}
+                                style={index + 1 <= currentStep ? { backgroundColor: props.withColor?.lineColor } : colors?.accentColors} ></div>
+                        )
+                    })}
+                </div>
+                <div className={`right`}>
+                    <i className={`icon ${content?.righticon}`}
+                        style={colors?.textColors}
+                        onClick={() => increment()}>
+                    </i>
+                </div>
             </div>
         </motion.div>
     );
