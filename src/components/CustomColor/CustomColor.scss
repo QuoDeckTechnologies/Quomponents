@@ -1,5 +1,8 @@
 .qui-custom-color-container {
-	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: baseline;
+	align-items: center;
 }
 .qui .qui-custom-color-button{
 	width: 2.4rem;
@@ -10,13 +13,14 @@
 }
 .qui .qui-custom-color-button-container{
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 1rem;
-}
-.qui-custom-color-title{
+	margin: auto;
 }
 .qui .qui-chrome-picker{
-	margin:auto;
-	display: inline-block;
+	position: fixed;
+	top:25%;
+	left:70%;
+	width: 6em;
+	height: 12em;
+	transform: translate(-50% , -50%);
+	z-index: 1000;
 }

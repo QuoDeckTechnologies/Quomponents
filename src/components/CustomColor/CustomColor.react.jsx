@@ -151,8 +151,14 @@ export default function CustomColor(props) {
             document.removeEventListener("mousedown", checkIfClickedOutside)
         }
     }, [showColorPicker])
-
-    console.log(ChromePicker)
+    const closePicker = e => {
+        if(ref.current === e.target){
+            setshowColorPicker(true)
+        }else{
+            setshowColorPicker(false)
+        }
+    }
+    console.log(closePicker)
     // ========================= Render Function =================================
 
     return (
