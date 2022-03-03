@@ -229,7 +229,6 @@ WithtagAndUncheckedDeckcard.args = {
       },
     ],
   },
-
 };
 WithtagAndUncheckedDeckcard.parameters = {
   docs: {
@@ -317,8 +316,6 @@ const AllVariantsTemplate = (args) => {
     </div>
   );
 };
-
-
 export const AllVariants = AllVariantsTemplate.bind({});
 AllVariants.parameters = {
   docs: {

@@ -55,11 +55,11 @@ describe("DeckCard", () => {
                 }}
                 asVariant="primary"
                 asSize="normal"
-                withColor={{
-                    backgroundColor: "",
-                    accentColor: "",
-                    textColor: "#b60d17",
-                }}
+                let colors={{
+                    backgroundColor: "red",
+                    accentColor: "green",
+                    textColor: "blue",
+                  }}
                 withAnimation={{
                     animation: "zoom",
                     duration: 0.5,
@@ -90,7 +90,7 @@ describe("DeckCard", () => {
         });
         expect(component.exists()).toBe(true);
     });
-    it("should render correctly with withTranslation prop", () => {
+    it("should render correctly without target", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
@@ -102,7 +102,7 @@ describe("DeckCard", () => {
     });
     it("should render correctly with withColor prop",
         () => {
-            const component = renderer.create(<DeckCard
+          component = renderer.create(<DeckCard
                 content={{
                     title: "The Negotiation Game",
                     description:
@@ -114,7 +114,7 @@ describe("DeckCard", () => {
                     topics: [
                         {
                             name: "Name One",
-                            checked: true,
+                            checked: false,
                         },
                     ],
                 }}
