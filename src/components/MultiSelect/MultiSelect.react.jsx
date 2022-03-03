@@ -1,7 +1,6 @@
 // Import npm packages
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import _ from 'lodash'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import './MultiSelect.scss'
@@ -37,17 +36,6 @@ MultiSelect.propTypes = {
         "success",
         "warning",
         "error",
-    ]),
-    /**
-    Use to define component text size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
     ]),
     /**
     Use to float the component in parent container
@@ -103,7 +91,6 @@ MultiSelect.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "primary",
-    asSize: "normal",
     asFloated: "none",
     withColor: null,
     withLabel: null,
@@ -132,12 +119,12 @@ export default function MultiSelect(props) {
         <div className={`qui ${quommonClasses.parentClasses}`} onClick={(e) => props.onClick(e)}>
 
             <div className={`qui-multi-select-button-container ${quommonClasses.childClasses}`} >
-                <div className="square-background">
-                    <i className={`qui-multi-select-checkbox ${isChecked ? "fas fa-check-square" : "fa fa-square"}`}
-                        onClick={() => toggleChecked()}>
-                    </i>
-                </div>
                 <div className="qui-multi-select-button">
+                    <div className="square-background">
+                        <i className={`qui-multi-select-checkbox ${isChecked ? "fas fa-check-square" : "fa fa-square"}`}
+                            onClick={() => toggleChecked()}>
+                        </i>
+                    </div>
                     {<Button {...props} content={props.content} onClick={() => toggleChecked()} />}</div>
             </div>
 

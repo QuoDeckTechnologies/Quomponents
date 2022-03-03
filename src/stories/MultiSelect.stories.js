@@ -26,13 +26,6 @@ export default {
         category: "as-Flags",
       },
     },
-    asSize: {
-      control: "select",
-      options: ["tiny", "small", "normal", "big", "huge", "massive"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     asFloated: {
       control: "select",
       options: ["left", "right", "none", "inline"],
@@ -109,7 +102,6 @@ Default.args = {
   isCircular: false,
 
   asVariant: "warning",
-  asSize: "normal",
   asFloated: "none",
 
   withColor: {
@@ -151,7 +143,6 @@ AnimationChecked.args = {
   isCircular: false,
 
   asVariant: "warning",
-  asSize: "normal",
   asFloated: "none",
 
   withColor: {
