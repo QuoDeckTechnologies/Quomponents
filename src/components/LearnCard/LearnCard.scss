@@ -11,7 +11,7 @@
   display: none;
 }
 .qui.qui-learn-card-ribbon .qui-ribbon {
-  filter: opacity(80%);
+  opacity: 0.8;
   position: relative;
   z-index: 10;
 }
@@ -39,7 +39,7 @@
  
 }
 .qui .qui-tag-container {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.3em;
 }
 .qui .qui-points {
   display: flex;
@@ -54,6 +54,11 @@
   flex-direction: row;
   width: 90%;
   align-items: center;
+}
+.qui .qui-info img{
+  height: 3.5em;
+  width: 3.5em;
+  margin-right: 0.5em;
 }
 .qui .qui-lower-container {
   position: relative;

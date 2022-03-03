@@ -13,6 +13,7 @@ import "./LearnCard.scss";
 import "../../common/stylesheets/overrule.scss";
 import balloonBurst from '../../assets/balloon_burst.png'
 import coinImage from '../../assets/icons8_coin_96px.png'
+import gameController from '../../assets/icons8_nintendo_gamecube_controller_96px.png'
 
 LearnCard.propTypes = {
   //=======================================
@@ -208,7 +209,8 @@ export default function LearnCard(props) {
               <div
                 className={`qui-info qui-btn variant-${props.asVariant}-text`}
               >
-                <i className={content?.icon}></i>
+                {/* <i className={content?.icon}></i> */}
+                <img src={gameController} alt="game controller" />
                 <div className="qui-tags">
                   {_.map(labelContent?.tags, (tag, i) => {
                     if (i < itirate) {
