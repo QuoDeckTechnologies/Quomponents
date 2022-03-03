@@ -1,0 +1,35 @@
+.qui .qui-enrollment-list-element{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    margin-bottom: 0.2em;
+    padding: 0.3em 0.7em;
+}
+.qui .qui-enrollment-rule{
+    margin: 0;
+    background-color: #e8e8e8;
+    padding: 0.3em;
+    margin-right: 0.2em;
+    border-radius: 0.2em;
+    font-size: 0.9em;
+}
+
+.qui .qui-enrollment-rules{
+    display: flex;
+}
+.qui .qui-enrollment-icons{
+    display: flex;
+    align-items: center;
+}
+.qui .qui-enrollment-icons i{
+    margin: 0 0.2em;
+    cursor: pointer;
+}
+
+.qui .qui-enrollment-icons .fa-times{
+    font-size: 1.2em;
+}
+.qui .qui-enrollment-icons .fa-play{
+    color: #666666;
+}
