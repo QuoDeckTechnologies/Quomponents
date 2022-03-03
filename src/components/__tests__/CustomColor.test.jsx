@@ -17,7 +17,10 @@ describe("CustomColor", () => {
     component = shallow(
       <CustomColor
         
-    content={}
+    content={
+        title= "ColorPicker",
+        color = "red"
+    }
     // Quommon props
     //=======================================
     asSize="normal"
