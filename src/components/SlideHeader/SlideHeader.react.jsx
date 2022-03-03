@@ -14,11 +14,11 @@ SlideHeader.propTypes = {
     // Component Specific props
     //=======================================
     /**
-     Use to define title and subtitle in SliderHeader
+     Use to define title and subTitle in SliderHeader
    */
     content: PropTypes.shape({
         title: PropTypes.string,
-        subtitle: PropTypes.string
+        subTitle: PropTypes.string
     }),
     //=======================================
     // Quommon props
@@ -108,7 +108,7 @@ export default function SlideHeader(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "slide-header");
     //-------------------------------------------------------------------
-    // 2. Use to set defaultText i.e title and subtitle in SliderHeader
+    // 2. Use to set defaultText i.e title and subTitle in SliderHeader
     //-------------------------------------------------------------------
     let defaultText = Object.assign({}, props.content);
     //-------------------------------------------------------------------
@@ -130,12 +130,12 @@ export default function SlideHeader(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-titleBlock ${quommonClasses.childClasses}`} style={Color}>
+            <div className={`qui-title-block ${quommonClasses.childClasses}`} style={Color}>
                 <div className={`qui-title`} >
                     {defaultText?.title}
                 </div>
-                <div className={`qui-subtitle`}>
-                    {defaultText?.subtitle}
+                <div className={`qui-sub-title`}>
+                    {defaultText?.subTitle}
                 </div>
             </div>
         </motion.div>

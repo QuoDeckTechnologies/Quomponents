@@ -10,7 +10,7 @@ export default {
         category: "with-Params",
         defaultValue: {
           title: "",
-          subtitle: "",
+          subTitle: "",
         },
       },
     },
@@ -95,15 +95,15 @@ export const Default = Template.bind({});
 Default.args = {
   content: {
     title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    subTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
   },
   asSize: "normal",
-  asFloated: "none",
+  asFloated: "inline",
   asPadded: "normal",
   asAligned: "center",
   withColor: {
     accentColor: "#AD2929",
-    textColor: "",
+    textColor: "#ffffff",
     backgroundColor: "#ad292980",
   },
   withAnimation: {
@@ -128,7 +128,7 @@ ColoredSlideHeader.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#666666",
-    textColor: "#ffffff",
+    textColor: "#fffff",
     accentColor: "#ffbf00",
   },
 };
