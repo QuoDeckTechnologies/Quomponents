@@ -60,7 +60,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a BulletBlock with list of items.",
+        componentSubtitle: "Displays a BulletBlock with list of items for general-purpose use.",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -119,10 +119,14 @@ ColoredBulletblock.args = {
 ColoredBulletblock.parameters = {
     docs: {
         description: {
-            story: "Use to override the standard colors of the Icon.",
+            story: "Use to override the standard colors of the contents.",
         },
         source: {
-            code: `<Bulletblock withColor={{backgroundColor: "orange", textColor: "gray"}}/>`,
+            code: `<Bulletblock 
+            withColor={{
+            backgroundColor: "#C98787",
+            textColor: "#ffffff",
+            accentColor: "",}}/>`,
         },
     },
 };
@@ -142,7 +146,7 @@ AnimatedBulletblock.args = {
 AnimatedBulletblock.parameters = {
     docs: {
         description: {
-            story: "We can animate the appearance of Toolbar",
+            story: "We can animate the appearance of BulletBlock",
         },
         source: {
             code: `<Bulletblock {...${JSON.stringify(
@@ -194,7 +198,7 @@ export const Allvariant = AllvariantTemplate.bind({});
 Allvariant.parameters = {
     docs: {
         description: {
-            story: "6 sizes are supported. Use as per purpose noted here.",
+            story: "All Variants are supported in BulletBock.",
         },
         source: {
             code: `<AppMenu asVariant="secondary"/>`,

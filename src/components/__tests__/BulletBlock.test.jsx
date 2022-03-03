@@ -29,10 +29,10 @@ describe("BulletBlock", () => {
                 ]}
                 asVariant="primary"
                 asSize="normal"
-                withColor={{
-                    backgroundColor: "#C9878",
-                    accentColor: "#ffffff",
-                    textColor: "#b60d17",
+                let colors={{
+                    backgroundColor: "red",
+                    accentColor: "green",
+                    textColor: "blue",
                 }}
                 withAnimation={{
                     animation: "zoom",
@@ -57,7 +57,7 @@ describe("BulletBlock", () => {
     });
     it("should render correctly with withColor prop ",
         () => {
-            const component = renderer.create(<BulletBlock
+            component = renderer.create(<BulletBlock
                 withColor={{
                     backgroundColor: "#C9878",
                     accentColor: "#ffffff",
