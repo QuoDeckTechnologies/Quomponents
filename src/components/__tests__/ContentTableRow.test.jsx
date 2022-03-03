@@ -18,9 +18,7 @@ describe("ContentTableRow", () => {
             content = {{
                 fileName : 'dummy file-name.pdf'
             }}
-            withColor = {null}
             withAnimation = {null}
-            withTranslation = {null}
             isDisabled = {false}
             isHidden = {false}
             onClick = {()=>{}}
