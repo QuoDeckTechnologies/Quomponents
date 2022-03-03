@@ -17,20 +17,6 @@ describe("ActionMenu", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-  const dictionary = JSON.stringify({
-    hi: {
-      ActionMenu: [
-        { title: "खुला डेक" },
-        { title: "डेक संपादित करें" },
-        { title: "डेक ऊपर ले जाएँ" },
-        { title: "डेक नीचे ले जाएँ" },
-        { title: "विषय पर जाएं" },
-        { title: "अप्रकाशित डेक" },
-        { title: "डेक हटाएं" },
-      ]
-    }
-  });
-
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -66,49 +52,25 @@ describe("ActionMenu", () => {
           },
         ]}
         asVariant="primary"
-        withColor={{
-          backgroundColor: "",
-          accentColor: "",
-          textColor: "#b60d17",
+        let colors={{
+          backgroundColor: "red",
+          accentColor: "green",
+          textColor: "blue",
         }}
         withAnimation={{
           animation: "zoom",
           duration: 0.5,
           delay: 0,
         }}
-        withTranslation={{
-          lang: "hi",
-          tgt: "ActionMenu",
-          dictionary: dictionary,
-        }}
         isDisabled={false}
         isHidden={false}
-        onClick={() => console.log("EanrCard testing")}
+        onClick={() => console.log("testing")}
+
       />
     );
   });
 
   it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly with withTranslation prop", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "ActionMenu",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly without tgt", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "",
-        dictionary: dictionary,
-      },
-    });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly if content are not specified", () => {
@@ -131,8 +93,8 @@ describe("ActionMenu", () => {
     () => {
       const component = renderer.create(<ActionMenu
         withColor={{
-          backgroundColor: "",
-          accentColor: "",
+          backgroundColor: "red",
+          accentColor: "blue",
           textColor: "#b60d17",
         }}
         onClick={() => console.log('testing')}

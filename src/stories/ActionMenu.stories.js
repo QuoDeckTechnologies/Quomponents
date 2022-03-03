@@ -1,18 +1,5 @@
 import React from "react";
 import ActionMenu from "../components/ActionMenu/ActionMenu.react";
-const dictionary = JSON.stringify({
-    hi: {
-        ActionMenu: [
-            { title: "खुला डेक" },
-            { title: "डेक संपादित करें" },
-            { title: "डेक ऊपर ले जाएँ" },
-            { title: "डेक नीचे ले जाएँ" },
-            { title: "विषय पर जाएं" },
-            { title: "अप्रकाशित डेक" },
-            { title: "डेक हटाएं" },
-        ]
-    }
-});
 
 export default {
     title: "Design System/ActionMenu/ActionMenu",
@@ -27,6 +14,13 @@ export default {
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asSize: {
+            control: "select",
+            options: ["tiny", "small", "normal", "big", "huge", "massive"],
             table: {
                 category: "as-Flags",
             },
@@ -48,16 +42,6 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
-                },
-            },
-        },
-        withTranslation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    lang: "",
-                    tgt: "",
-                    dictionary: "",
                 },
             },
         },
@@ -93,7 +77,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a ActionMenu icons & related contents for general-purpose use.",
+        componentSubtitle: "Displays a ActionMenu with icons & related contents for general-purpose use.",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -141,6 +125,7 @@ Default.args = {
         },
     ],
     asVariant: "success",
+    asSize: "normal",
     withColor: {
         backgroundColor: "",
         textColor: "",
@@ -150,11 +135,6 @@ Default.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
-    },
-    withTranslation: {
-        lang: "hi",
-        tgt: "ActionMenu",
-        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -174,7 +154,7 @@ export const ColoredActionMenu = Template.bind({});
 ColoredActionMenu.args = {
     ...Default.args,
     withColor: {
-        backgroundColor: "#ADD8E6",
+        backgroundColor: "8#ADDE6",
         textColor: "#C53816",
         accentColor: "#F2A52D",
     },
@@ -182,10 +162,58 @@ ColoredActionMenu.args = {
 ColoredActionMenu.parameters = {
     docs: {
         description: {
-            story: "Use to override the standard colors of the Icon.",
+            story: "Use to override the standard colors of the Icon & Contents.",
         },
         source: {
             code: `<ActionMenu withColor={{backgroundColor: "lightblue", textColor: "#666666",accentColor: "#666666"}}}/>`,
+        },
+    },
+};
+
+//-------------------------------------------------------------
+// Without Icons ActionMenu
+// -------------------------------------------------------------
+export const WithoutIconsActionMenu = Template.bind({});
+WithoutIconsActionMenu.args = {
+    ...Default.args,
+    content: [
+        {
+            title: "Open Deck",
+            icon: "",
+        },
+        {
+            title: "Edit Deck",
+            icon: "",
+        },
+        {
+            title: "Move Deck Up",
+            icon: "",
+        },
+        {
+            title: "Move Deck Down",
+            icon: "",
+        },
+        {
+            title: "Move to Topic",
+            icon: "",
+        },
+        {
+            title: "Unpublish Deck",
+            icon: "",
+        },
+        {
+            title: "Delete Deck",
+            icon: "",
+        },
+    ],
+};
+WithoutIconsActionMenu.parameters = {
+    docs: {
+        description: {
+            story: "Dispay the actionmenu without icons.",
+        },
+        source: {
+            code: `<ActionMenu content:[{""}]/>`,
         },
     },
 };
@@ -217,28 +245,5 @@ AnimatedActionMenu.parameters = {
     },
 };
 
-//-------------------------------------------------------------
-// Translated ActionMenu
-// -------------------------------------------------------------
-export const TranslatedActionMenu = Template.bind({});
-TranslatedActionMenu.args = {
-    ...Default.args,
-    withTranslation: {
-        lang: "hi",
-        tgt: "ActionMenu",
-        dictionary: dictionary,
-    },
-};
-TranslatedActionMenu.parameters = {
-    docs: {
-        description: {
-            story:
-                "We can translate the language of ActionMenu if dictionary is provided",
-        },
-        source: {
-            code: `<ActionMenu {...${JSON.stringify(TranslatedActionMenu.args, null, 2)}}/>`,
-        },
-    },
-};
 
 

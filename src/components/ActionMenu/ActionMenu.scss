@@ -11,7 +11,17 @@
     text-align: left;
     width: 80%;
 }
-.qui .fa-angle-up, .fa-angle-down{
+.qui .titles.size-normal,
+.qui .titles.size-big {
+    font-size: 1em;
+}
+.qui .titles.size-huge,
+.qui .titles.size-massive {
+    font-size: 1.25em;
+}
+
+.qui .fa-angle-up,
+.fa-angle-down {
     font-size: 1.25em;
 }
 

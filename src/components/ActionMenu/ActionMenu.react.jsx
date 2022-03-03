@@ -6,7 +6,6 @@ import _ from "lodash";
 import {
     getAnimation,
     getQuommons,
-    getTranslation,
 } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -39,6 +38,17 @@ ActionMenu.propTypes = {
         "warning",
         "error",
     ]),
+     /**
+    Use to define component text size in increasing order
+    */
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
     /**
       Use to override component colors and behavior
       */
@@ -66,14 +76,6 @@ ActionMenu.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to show a translated version of the component text. Dictionary must be valid JSON. 
-      */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
-    /**
       Use to enable/disable the component
       */
     isDisabled: PropTypes.bool,
@@ -96,10 +98,10 @@ ActionMenu.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "success",
+    asSize: "normal",
 
     withColor: null,
     withAnimation: null,
-    withTranslation: null,
 
     isDisabled: false,
     isHidden: false,
@@ -125,7 +127,6 @@ function getColors(colors) {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Status of topics can be changed from content prop
 **/
 export default function ActionMenu(props) {
     //-------------------------------------------------------------------
@@ -142,24 +143,7 @@ export default function ActionMenu(props) {
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor) : {};
     //-------------------------------------------------------------------
-    // 4. Get translation of the component
-    //-------------------------------------------------------------------
-    let labelContent = {
-        title: content?.title,
-    };
-    let tObj = null;
-    if (
-        props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj) {
-            labelContent.title = tObj.title;
-        }
-    }
-    //-------------------------------------------------------------------
-    // 5. Get animation of the component
+    // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
@@ -170,11 +154,11 @@ export default function ActionMenu(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            {_.map(content, (item, index) => {
+            {_.map(props.content, (item, index) => {
                 return (
                     <div className={`items ${quommonClasses.childClasses}`} key={index} onClick={props.onClick} style={colors.backgroundColors}>
                         <i className={`icons ${item.icon}`} style={colors.accentColors}></i>
-                        <div className="titles" style={colors.textColors}>{item.title}</div>
+                        <div className={`titles ${quommonClasses.childClasses}`} style={colors.textColors}>{item.title}</div>
                     </div>
                 );
             })}
