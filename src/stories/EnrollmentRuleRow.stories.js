@@ -19,20 +19,6 @@ export default {
         },
       },
     },
-    asVariant: {
-      control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asSize: {
-      control: "select",
-      options: ["tiny", "small", "normal", "big", "huge", "massive"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     withColor: {
       table: {
         category: "with-Params",
@@ -50,16 +36,6 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
-        },
-      },
-    },
-    withTranslation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          lang: "",
-          tgt: "",
-          dictionary: "",
         },
       },
     },
@@ -136,12 +112,10 @@ Default.args = {
       },
     ],
   },
-  asVariant: "primary",
-  asSize: "normal",
   withColor: {
     backgroundColor: "",
     accentColor: "",
-    textColor: "#b60d17",
+    textColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -154,7 +128,60 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<EarnCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<EnrollmentRuleRow {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+//-------------------------------------------------------------
+// Colored EnrollmentRuleRow
+// -------------------------------------------------------------
+export const ColoredContentTableRow = Template.bind({});
+ColoredContentTableRow.args = {
+  ...Default.args,
+  withColor: {
+    backgroundColor: "#8c9ea3",
+    textColor: "#ffffff",
+    accentColor: "#597387",
+  },
+};
+ColoredContentTableRow.parameters = {
+  docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
+    source: {
+      code: `<EnrollmentRuleRow {...${JSON.stringify(ColoredContentTableRow.args, null, 2)}}/>`,
+    },
+  },
+};
+//-------------------------------------------------------------
+// Animated EnrollmentRuleRow
+// -------------------------------------------------------------
+export const AnimatedEnrollmentRuleRow = Template.bind({});
+AnimatedEnrollmentRuleRow.args = {
+  ...Default.args,
+  withColor: {
+    backgroundColor: "#BBBBBB",
+    textColor: "",
+    accentColor: "#ffb703",
+  },
+  withAnimation: {
+    animation: "fade",
+    duration: 1,
+    delay: 0,
+  },
+};
+AnimatedEnrollmentRuleRow.parameters = {
+  docs: {
+    description: {
+      story: "We can animate the appearance of EnrollmentRuleRow",
+    },
+    source: {
+      code: `<EnrollmentRuleRow {...${JSON.stringify(
+        AnimatedEnrollmentRuleRow.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

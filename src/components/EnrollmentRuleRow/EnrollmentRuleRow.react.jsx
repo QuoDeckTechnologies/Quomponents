@@ -1,18 +1,12 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import _ from "lodash";
-import {
-  getAnimation,
-  getQuommons,
-  getTranslation,
-} from "../../common/javascripts/helpers";
+import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./EnrollmentRuleRow.scss";
 import "../../common/stylesheets/overrule.scss";
-import { useEffect } from "react";
 
 EnrollmentRuleRow.propTypes = {
   //=======================================
@@ -25,27 +19,7 @@ EnrollmentRuleRow.propTypes = {
   //=======================================
   // Quommon props
   //=======================================
-  /**
-    Use to define standard component type
-    */
-  asVariant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "error",
-  ]),
-  /**
-    Use to define component size in increasing order
-    */
-  asSize: PropTypes.oneOf([
-    "tiny",
-    "small",
-    "normal",
-    "big",
-    "huge",
-    "massive",
-  ]),
+
   /**
     Use to override component colors and behavior
     */
@@ -54,7 +28,6 @@ EnrollmentRuleRow.propTypes = {
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
-
   /**
     Use to define the entry animation of the component
     */
@@ -71,14 +44,6 @@ EnrollmentRuleRow.propTypes = {
     ]),
     duration: PropTypes.number,
     delay: PropTypes.number,
-  }),
-  /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-  withTranslation: PropTypes.shape({
-    lang: PropTypes.string,
-    tgt: PropTypes.string,
-    dictionary: PropTypes.string,
   }),
   /**
     Use to enable/disable the component
@@ -102,15 +67,11 @@ EnrollmentRuleRow.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asVariant: "primary",
-  asSize: "normal",
   withColor: null,
   withAnimation: null,
-  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
-
 /**
 ## Notes
 - The design system used for this component is Fontawesome Icon
@@ -120,50 +81,84 @@ EnrollmentRuleRow.defaultProps = {
 - Status of topics can be changed from content prop
 **/
 export default function EnrollmentRuleRow(props) {
-  const { content } = props;
-  const [allRules, setAllRules] = useState(content.allRules);
-  const [criteria, setCriteria] = useState(content.enrollmentRule);
-
-  useEffect(() => {
-    let temp = {}
-    let allKeys = Object.keys(criteria)
-    let keys = allKeys.filter( key => {
-      return criteria[key] !== ''
-    })
-    if( keys.length !== 0){
-      keys.forEach( key => {
-        temp[key] = criteria[key]
-      })
-      let newRules = {criteria:temp}
-      setAllRules([...allRules,newRules])
-    }
-  },[content.enrollmentRule])
   //-------------------------------------------------------------------
-  // 1. Set the classes
+  // 1. Destructuring content prop
+  //-------------------------------------------------------------------
+  const { content } = props;
+  //-------------------------------------------------------------------
+  // 2. Defining variables and states
+  //-------------------------------------------------------------------
+  const [allRules, setAllRules] = useState(content?.allRules);
+  let criteria = content?.enrollmentRule;
+  //-------------------------------------------------------------------
+  // 3. useEffect hook to mimic submit of enrollment rules
+  //-------------------------------------------------------------------
+  useEffect(() => {
+    criteria = content?.enrollmentRule;
+    let temp = {};
+    let allKeys
+    let keys
+    if(criteria){
+      allKeys = Object.keys(criteria);
+      keys = allKeys.filter((key) => {
+        return criteria[key] !== "";
+      });
+    }
+    if (keys?.length !== 0) {
+      keys?.forEach((key) => {
+        temp[key] = criteria[key];
+      });
+      let newRule = { criteria: temp };
+      setAllRules([...allRules, newRule]);
+    }
+  }, [content?.enrollmentRule]);
+  //-------------------------------------------------------------------
+  // 4. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "enrollment-rule-row");
+  //-------------------------------------------------------------------
+  // 5. Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props.withAnimation);
 
   // ========================= Render Function =================================
   return (
-    <div className={`qui ${quommonClasses.parentClasses}`}>
-      {allRules.map((item, index) => {
+    <motion.div
+      initial={animate.from}
+      animate={animate.to}
+      className={`qui ${quommonClasses.parentClasses}`}
+    >
+      {allRules && allRules?.map((item, index) => {
         let data = Object.values(item.criteria);
         return (
-          <div className="qui-enrollment-list-element" key={index}>
+          <div
+            className="qui-enrollment-list-element"
+            key={index}
+            style={{ backgroundColor: props.withColor?.backgroundColor }}
+          >
             <div className="qui-enrollment-rules">
-            {data.map((item, index) => {
-              return (
-                <p className="qui-enrollment-rule" key={index}>{item}</p>
-              )
-            })}
+              {data.map((item, index) => {
+                return (
+                  <p
+                    className="qui-enrollment-rule"
+                    key={index}
+                    style={{
+                      backgroundColor: props.withColor?.accentColor,
+                      color: props.withColor?.textColor,
+                    }}
+                  >
+                    {item}
+                  </p>
+                );
+              })}
             </div>
             <div className="qui-enrollment-icons">
-              <i className="fas fa-play"></i>
-              <i className="fas fa-times"></i>
+              <i className="fas fa-play" onClick={()=>props.onClick()}></i>
+              <i className="fas fa-times" onClick={()=>props.onClick()}></i>
             </div>
           </div>
         );
       })}
-    </div>
+    </motion.div>
   );
 }
