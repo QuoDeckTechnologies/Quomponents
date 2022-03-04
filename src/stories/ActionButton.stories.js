@@ -60,7 +60,6 @@ export default {
                 category: "as-Flags",
             },
         },
-
         withColor: {
             table: {
                 category: "with-Params",
@@ -102,7 +101,6 @@ export default {
                 defaultValue: false,
             },
         },
-
         onClick: {
             table: {
                 category: "Events",
@@ -147,7 +145,6 @@ Default.args = {
     asFloated: "inline",
     asPadded: "normal",
     asAligned: "center",
-
     withColor: {
         backgroundColor: "",
         textColor: "",
@@ -162,10 +159,8 @@ Default.args = {
         tgt: "button",
         dictionary: dictionary,
     },
-
     isDisabled: false,
     isHidden: false,
-
 };
 Default.parameters = {
     docs: {
@@ -175,7 +170,6 @@ Default.parameters = {
     },
 };
 export const ActionButtonWithButton = Template.bind({});
-
 ActionButtonWithButton.args = {
     ...Default.args,
     content: {
@@ -185,7 +179,6 @@ ActionButtonWithButton.args = {
     }
 }
 export const ActionButtonWithImage = Template.bind({});
-
 ActionButtonWithImage.args = {
     ...Default.args,
     content: {
@@ -224,7 +217,6 @@ TranslatedActionButton.parameters = {
         },
     },
 };
-
 export const AllVariantsTemplate = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {

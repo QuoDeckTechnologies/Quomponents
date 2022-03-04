@@ -13,13 +13,11 @@ import "../../../common/stylesheets/common.css";
 import "./ActionButton.scss";
 import "../../../common/stylesheets/overrule.scss";
 
-import playbtn from "../../../assets/image.png"
-
 ActionButton.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-      /**
+    /**
     Use to define title, sub-title and image of component
     */
     content: PropTypes.shape({
@@ -143,7 +141,7 @@ ActionButton.defaultProps = {
     isHidden: false,
     isDisabled: false,
 
-    onClick:null
+    onClick: null
 };
 
 /**
@@ -160,7 +158,7 @@ export default function ActionButton(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props,"action-button");
+    let quommonClasses = getQuommons(props, "action-button");
 
     //-------------------------------------------------------------------
     // 2. Get animation of the component
@@ -197,13 +195,13 @@ export default function ActionButton(props) {
     //-------------------------------------------------------------------
     const actionButtonBackground = (isEllipse) => {
         let actionButtonStyle, title, subTitle, titleStyle, subTitleStyle;
-        title =  labelContent?.title;
-        subTitle =  labelContent?.subTitle;
-        actionButtonStyle = isEllipse? "action-button-container" : "action-button-container-with-no-ellipse";
-        
-        if(title?.length >5 || subTitle?.length > 7){
+        title = labelContent?.title;
+        subTitle = labelContent?.subTitle;
+        actionButtonStyle = isEllipse ? "action-button-container" : "action-button-container-with-no-ellipse";
+
+        if (title?.length > 5 || subTitle?.length > 7) {
             titleStyle = "responsive-title"
-            subTitleStyle= "responsive-sub-title"
+            subTitleStyle = "responsive-sub-title"
         }
         if (labelContent?.image) {
             return (
@@ -219,8 +217,8 @@ export default function ActionButton(props) {
         } else {
             return (
                 <div className={actionButtonStyle}>
-                    <div className={`qui-btn variant-${props.asVariant} action-button`} 
-                        style={buttonStyle} 
+                    <div className={`qui-btn variant-${props.asVariant} action-button`}
+                        style={buttonStyle}
                         onClick={props.onClick}>
                         <div className={`action-button-title ${titleStyle}`}>
                             {labelContent?.title}
