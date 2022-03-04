@@ -14,13 +14,6 @@ export default {
         },
       },
     },
-    asSize: {
-      control: "select",
-      options: ["tiny", "small", "normal", "big", "huge", "massive"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     asPadded: {
       control: "select",
       options: ["fitted", "compact", "normal", "relaxed"],
@@ -97,7 +90,6 @@ Default.args = {
     title: "Neque porro quisquam est qui dolorem",
     subTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
   },
-  asSize: "normal",
   asFloated: "inline",
   asPadded: "normal",
   asAligned: "center",
@@ -163,7 +155,7 @@ AnimatedSlideHeader.parameters = {
   docs: {
     description: {
       story:
-        "Use to animate the entry of the InlineEdit with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        "Use to animate the entry of the SlideHeader with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
     },
     source: {
       code: `<AnimatedSlideHeader {...${JSON.stringify(

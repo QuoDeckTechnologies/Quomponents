@@ -19,7 +19,6 @@ describe("SlideHeader", () => {
         component = shallow(
             <SlideHeader
                 content={null}
-                asSize="normal"
                 asPadded="normal"
                 asFloated="none"
                 asAligned="center"

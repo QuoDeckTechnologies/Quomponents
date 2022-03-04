@@ -24,17 +24,6 @@ SlideHeader.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define component size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
     Use to define component padding in increasing order
     */
     asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
@@ -85,7 +74,6 @@ SlideHeader.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asSize: "normal",
     asPadded: "normal",
     asFloated: "none",
     asAligned: "center",
