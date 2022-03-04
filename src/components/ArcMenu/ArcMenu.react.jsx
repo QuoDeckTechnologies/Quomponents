@@ -25,6 +25,10 @@ ArcMenu.propTypes = {
       })
     ),
   }).isRequired,
+  /**
+  Use to toggle usage of ArcMenu as a menu button or close button
+  */
+  isCloseButton: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
@@ -87,6 +91,7 @@ ArcMenu.defaultProps = {
     arcIcon: "",
     menuData: [],
   },
+  isCloseButton: false,
   //=======================================
   // Quommon props
   //=======================================
@@ -167,7 +172,7 @@ export default function ArcMenu(props) {
               style={{ color: colors.color }}
             ></i>
           </button>
-          <motion.div
+          {!props.isCloseBtton && <motion.div
             initial={false}
             animate={
               !openMenu ? { opacity: 0, y: "100%" } : { opacity: 1, y: 0 }
@@ -197,7 +202,7 @@ export default function ArcMenu(props) {
                 </div>
               );
             })}
-          </motion.div>
+          </motion.div>}
         </div>
       </div>
     </div>

@@ -29,6 +29,12 @@ export default {
         },
       },
     },
+    isCloseButton: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
@@ -122,6 +128,7 @@ Default.args = {
       { name: "Logout", icon: "fas fa-desktop" },
     ],
   },
+  isCloseButton: false,
   asVariant: "primary",
   asSize: "normal",
   withColor: {
