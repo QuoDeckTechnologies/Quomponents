@@ -51,7 +51,13 @@ export default {
         defaultValue: false,
       },
     },
-    onClick: {
+    onRunRule: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+    onRemoveRule: {
       table: {
         category: "Events",
         defaultValue: null,

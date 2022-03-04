@@ -55,7 +55,8 @@ describe("EnrollmentRuleRow", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onClick={() => console.log("EnrollmentRuleRow testing")}
+        onRunRule={() => {}}
+        onRemoveRule={() => {}}
       />
     );
   });

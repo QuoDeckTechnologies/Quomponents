@@ -54,9 +54,13 @@ EnrollmentRuleRow.propTypes = {
     */
   isHidden: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
+    EnrollmentRuleRow component must have the onRunRule function passed as props
     */
-  onClick: PropTypes.func.isRequired,
+  onRunRule: PropTypes.func.isRequired,
+  /**
+    EnrollmentRuleRow component must have the onRemoveRule function passed as props
+    */
+  onRemoveRule: PropTypes.func.isRequired,
 };
 
 EnrollmentRuleRow.defaultProps = {
@@ -154,8 +158,14 @@ export default function EnrollmentRuleRow(props) {
                 })}
               </div>
               <div className="qui-enrollment-icons">
-                <i className="fas fa-play" onClick={() => props.onClick()}></i>
-                <i className="fas fa-times" onClick={() => props.onClick()}></i>
+                <i
+                  className="fas fa-play"
+                  onClick={(e) => props.onRunRule(e)}
+                ></i>
+                <i
+                  className="fas fa-times"
+                  onClick={(e) => props.onRemoveRule(e)}
+                ></i>
               </div>
             </div>
           );
