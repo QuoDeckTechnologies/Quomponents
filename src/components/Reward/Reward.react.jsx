@@ -15,7 +15,7 @@ Reward.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      Use to add label,point and image in the Reward
+    Use to add label,point and image in the Reward
     */
     content: PropTypes.shape({
         label: PropTypes.string,
@@ -26,7 +26,7 @@ Reward.propTypes = {
     // Quommon props
     //=======================================
     /**
-      Use to define component size in increasing order
+    Use to define component size in increasing order
     */
     asSize: PropTypes.oneOf([
         "tiny",
@@ -37,14 +37,14 @@ Reward.propTypes = {
         "massive",
     ]),
     /**
-      Use to set Colors for points and label
+    Use to set Colors for points and label
     */
     withColor: PropTypes.shape({
         textColor: PropTypes.string,
         accentColor: PropTypes.string,
     }),
     /**
-     Use to define the entry animation of the component
+    Use to define the entry animation of the component
      */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
@@ -61,7 +61,7 @@ Reward.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to show/hide the component
+    Use to show/hide the component
     */
     isHidden: PropTypes.bool,
 };

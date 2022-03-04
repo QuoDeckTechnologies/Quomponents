@@ -24,6 +24,8 @@
     text-align: left;
     font-size: 2.25em;
     color: #ed6e6e;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .qui .qui-coin-image {

@@ -43,7 +43,6 @@ export default {
                 defaultValue: {
                     textColor: "",
                     accentColor: "",
-
                 },
             },
         },
@@ -63,7 +62,6 @@ export default {
                 defaultValue: false,
             },
         },
-
     },
     decorators: [
         (story) => (

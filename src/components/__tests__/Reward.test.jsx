@@ -28,7 +28,7 @@ describe("Reward", () => {
             expect(component.exists()).toBe(true);
         });
 
-    it("should render correctly Content Props with value",
+    it("it should render correctly when Content Props is pass with the values",
         () => {
             component.setProps({
                 content: {
