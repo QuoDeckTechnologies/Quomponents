@@ -7,7 +7,7 @@ import { shallow } from "enzyme";
 // -------------------------------------
 import ButtonBank from '../ButtonBank/ButtonBank.react'
 
-describe("EarnCard", () => {
+describe("ButtonBank", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
