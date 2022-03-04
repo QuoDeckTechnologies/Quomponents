@@ -6,17 +6,19 @@
 .qui .qui-left-navbar {
     display: flex;
     align-items: center;
+    width: auto;
 }
 .qui .qui-right-navbar {
     display: flex;
     align-items: center;
-    padding-right: 0.5em;
+    width: auto;
+    padding-right: .5em;
 }
 .qui .logoimg {
     margin-left: 0.35em;
-    height: 2.5em;
-    width: 2.5em;
-    filter: drop-shadow(2px 2px 1px rgb(150, 146, 146));
+    height: 3em;
+    width: 2.7em;
+    filter: drop-shadow(1px 1px 0.8px rgb(150, 146, 146));
 }
 .qui .qui-content {
     font-weight: bolder;
@@ -44,6 +46,11 @@
     margin-top: -0.01em;
     margin-right: -0.1em;
 }
+.qui .qui-appMenuContainer {
+    display: flex;
+    border-radius: 20%;
+}
+
 @media screen and (min-width: 320px) {
     .qui-navbar-container {
         font-size: 0.7em;

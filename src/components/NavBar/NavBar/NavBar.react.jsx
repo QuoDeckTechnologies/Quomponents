@@ -25,7 +25,7 @@ NavBar.propTypes = {
         iconlink: PropTypes.arrayOf(
             PropTypes.shape({
                 icon: PropTypes.string,
-                link: PropTypes.bool,
+                link: PropTypes.string,
             })
         ),
     }).isRequired,
@@ -142,13 +142,16 @@ export default function NavBar(props) {
     return (
         <motion.div
             initial={animate.from}
-            animate={animate.to} className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`qui-navbar-container ${quommonClasses.childClasses} variant-${props.asVariant} `} >
+            animate={animate.to}
+            className={`qui ${quommonClasses.parentClasses}`}
+        >
+            <div className={`qui-navbar-container ${quommonClasses.childClasses}`} >
                 <div className="qui-left-navbar">
                     {_.map(content?.iconlink, (icon, index) => {
                         return (
                             <IconLink
                                 {...props}
+                                key={index}
                                 content={{ link: icon.link }}
                                 withIcon={{ icon: icon.icon }}
                             />
@@ -161,7 +164,7 @@ export default function NavBar(props) {
                 </div>
                 <div className="qui-right-navbar" >
                     <div className="qui-searching" onClick={props.onClick}><i class="fas fa-search"></i></div>
-                    <div><AppMenu {...props} withIcon={{ icon: 'fas fa-ellipsis-v' }} /></div>
+                    <AppMenu {...props} withIcon={{ icon: 'fas fa-ellipsis-v' }} />
                 </div>
             </div>
         </motion.div>
