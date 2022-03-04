@@ -26,10 +26,10 @@ describe("Choice", () => {
   });
   let colors = {
     primaryBackgroundColor: "red",
-    secondaryBackgroundColor: "red",
+    secondaryBackgroundColor: "green",
     accentColor: "blue",
     primaryTextColor: "green",
-    secondaryTextColor: "grey"
+    secondaryTextColor: "grey",
   }
   choice1 = jest.fn();
   choice2 = jest.fn();
@@ -97,32 +97,39 @@ describe("Choice", () => {
   });
 
   it("should render correctly when passed text in asEmphasis props", () => {
-    let style = {
-      background: 'transparent',
-      boxShadow: 'none',
-      border: 'none'
+    let style={
+      background: "transparent",
+      border: "none",
+      boxShadow: "none",
+      color: "green",
     }
     component.setProps({
-      withColor: style,
+      withColor: colors,
       asEmphasis: "text"
     });
-    component.update();
     expect(component.find("div").at(2).props().style).toStrictEqual(style);
     expect(component.find("div").at(4).props().style).toStrictEqual(style);
   });
 
   it("should render correctly when passed outlined in asEmphasis props", () => {
-    let style = {
-      boxShadow: 'none',
-      primaryBackgroundColor: 'red',
-      secondaryBackgroundColor: 'blue'
+    let style1 = {
+      background: "transparent",
+      borderColor: "red",
+      boxShadow: "none",
+      color: "green",
+    }
+    let style2 = {
+      background: "transparent",
+      borderColor: "green",
+      boxShadow: "none",
+      color: "green",
     }
     component.setProps({
-      withColor: style,
+      withColor: colors,
       asEmphasis: "outlined"
     });
-    expect(component.find("div").at(2).props().style.borderColor).toStrictEqual("red");
-    expect(component.find("div").at(4).props().style.borderColor).toStrictEqual("blue");
+    expect(component.find("div").at(2).props().style).toStrictEqual(style1);
+    expect(component.find("div").at(4).props().style).toStrictEqual(style2);
   });
 
   it("should enable/ disable the OR div when passed props", () => {

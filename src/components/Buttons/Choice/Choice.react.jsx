@@ -112,7 +112,7 @@ function getPrimaryButtonColors(colors, emphasis) {
                 color: colors?.primaryTextColor,
             }
             : {
-                background: colors.primaryBackgroundColor,
+                background: colors?.primaryBackgroundColor,
                 color: colors?.primaryTextColor,
                 border: 'none'
             }
@@ -136,7 +136,7 @@ function getSecondaryButtonColors(colors, emphasis) {
                 color: colors?.secondaryBackgroundColor,
             }
             : {
-                background: colors.secondaryBackgroundColor,
+                background: colors?.secondaryBackgroundColor,
                 color: colors?.secondaryTextColor,
                 border: 'none'
             }
