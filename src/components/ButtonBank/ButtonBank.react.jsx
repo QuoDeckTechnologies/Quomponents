@@ -54,7 +54,6 @@ ButtonBank.propTypes = {
     */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accenColor: PropTypes.string,
     textColor: PropTypes.string,
     hoverBackgroundColor: PropTypes.string,
     hoverTextColor: PropTypes.string,
@@ -122,7 +121,7 @@ export default function ButtonBank(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content from props
   //-------------------------------------------------------------------
-  const { content } = props
+  const { content } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -136,7 +135,14 @@ export default function ButtonBank(props) {
             className={`qui-button-bank-single-button ${quommonClasses.childClasses}`}
             key={i}
           >
-            {<Button {...props} withTranslation={null} content={buttonText} onClick={props.onClick}/>}
+            {
+              <Button
+                {...props}
+                withTranslation={null}
+                content={buttonText}
+                onClick={(e) => props.onClick(e)}
+              />
+            }
           </div>
         );
       })}

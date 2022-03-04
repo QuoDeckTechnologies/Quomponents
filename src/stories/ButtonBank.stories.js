@@ -39,6 +39,8 @@ export default {
         defaultValue: {
           backgroundColor: "",
           textColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -66,10 +68,10 @@ export default {
     },
     onClick: {
       table: {
-          category: "Events",
-          defaultValue: null,
+        category: "Events",
+        defaultValue: null,
       },
-  },
+    },
   },
   decorators: [
     (story) => (
@@ -104,14 +106,12 @@ Default.args = {
     "Primary Button",
   ],
   isCircular: false,
-
   asVariant: "warning",
   asSize: "normal",
   asFloated: "none",
 
   withColor: {
     backgroundColor: "",
-    accentColor: "",
     textColor: "",
     hoverBackgroundColor: "",
     hoverTextColor: "",
@@ -123,7 +123,6 @@ Default.args = {
   },
   isDisabled: false,
   isHidden: false,
-
 };
 Default.parameters = {
   docs: {
@@ -147,7 +146,6 @@ ColoredButtonBank.args = {
   withColor: {
     backgroundColor: "#00296b",
     textColor: "#fdc500",
-    accentColor: "",
     hoverBackgroundColor: "#fdc500",
     hoverTextColor: "#00296b",
   },
@@ -171,9 +169,8 @@ ColoredButtonBank.parameters = {
 // -------------------------------------------------------------
 const AllVariantTemplate = (args) => {
   const baseObj = {
-    ...Object.assign({}, Default.args,args),
+    ...Object.assign({}, Default.args, args),
   };
-
   return (
     <div className="qui-allvariants-container">
       <ButtonBank
@@ -212,7 +209,6 @@ const AllVariantTemplate = (args) => {
           withColor: {
             backgroundColor: "#00296b",
             textColor: "#fdc500",
-            accentColor: "",
             hoverBackgroundColor: "#fdc500",
             hoverTextColor: "#00296b",
           },
