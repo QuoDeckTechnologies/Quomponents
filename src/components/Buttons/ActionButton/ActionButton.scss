@@ -20,7 +20,7 @@
     align-items: center;
 }
 
-.action-button {
+.qui .action-button {
     flex-direction: column;
     width: 100%;
     padding: 1em 0;
@@ -28,23 +28,26 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.action-button-title {
-    font-size: 1.6em;
+.qui .action-button-title {
+    font-size: 1.8em;
     padding: 0 5px;
+    margin-bottom: -0.1em;
     &.responsive-title {
         font-size: 1em;
     }
 }
 
-.action-button-sub-title {
+.qui .action-button-sub-title {
     font-size: 1em;
     padding: 0 5px;
+    
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     &.responsive-sub-title {
         font-size: 0.8em;
+        
     }
 }
-.image {
+.qui .image {
     width: 4em;
 }
 
@@ -56,6 +59,7 @@
     min-height: 16rem;
     min-width: 16rem;
 }
+
 .qui .size-huge .action-button-container,
 .qui .size-huge .action-button-container-with-no-ellipse {
     min-height: 13rem;
