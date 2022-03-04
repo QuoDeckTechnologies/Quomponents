@@ -96,9 +96,9 @@ export default function EnrollmentRuleRow(props) {
   useEffect(() => {
     criteria = content?.enrollmentRule;
     let temp = {};
-    let allKeys
-    let keys
-    if(criteria){
+    let allKeys;
+    let keys;
+    if (criteria) {
       allKeys = Object.keys(criteria);
       keys = allKeys.filter((key) => {
         return criteria[key] !== "";
@@ -128,37 +128,38 @@ export default function EnrollmentRuleRow(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      {allRules && allRules?.map((item, index) => {
-        let data = Object.values(item.criteria);
-        return (
-          <div
-            className="qui-enrollment-list-element"
-            key={index}
-            style={{ backgroundColor: props.withColor?.backgroundColor }}
-          >
-            <div className="qui-enrollment-rules">
-              {data.map((item, index) => {
-                return (
-                  <p
-                    className="qui-enrollment-rule"
-                    key={index}
-                    style={{
-                      backgroundColor: props.withColor?.accentColor,
-                      color: props.withColor?.textColor,
-                    }}
-                  >
-                    {item}
-                  </p>
-                );
-              })}
+      {allRules &&
+        allRules?.map((item, index) => {
+          let data = Object.values(item.criteria);
+          return (
+            <div
+              className="qui-enrollment-list-element"
+              key={index}
+              style={{ backgroundColor: props.withColor?.backgroundColor }}
+            >
+              <div className="qui-enrollment-rules">
+                {data.map((item, index) => {
+                  return (
+                    <p
+                      className="qui-enrollment-rule"
+                      key={index}
+                      style={{
+                        backgroundColor: props.withColor?.accentColor,
+                        color: props.withColor?.textColor,
+                      }}
+                    >
+                      {item}
+                    </p>
+                  );
+                })}
+              </div>
+              <div className="qui-enrollment-icons">
+                <i className="fas fa-play" onClick={() => props.onClick()}></i>
+                <i className="fas fa-times" onClick={() => props.onClick()}></i>
+              </div>
             </div>
-            <div className="qui-enrollment-icons">
-              <i className="fas fa-play" onClick={()=>props.onClick()}></i>
-              <i className="fas fa-times" onClick={()=>props.onClick()}></i>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
     </motion.div>
   );
 }

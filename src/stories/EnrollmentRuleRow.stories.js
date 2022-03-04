@@ -128,7 +128,11 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<EnrollmentRuleRow {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<EnrollmentRuleRow {...${JSON.stringify(
+        Default.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -150,7 +154,11 @@ ColoredContentTableRow.parameters = {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<EnrollmentRuleRow {...${JSON.stringify(ColoredContentTableRow.args, null, 2)}}/>`,
+      code: `<EnrollmentRuleRow {...${JSON.stringify(
+        ColoredContentTableRow.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
