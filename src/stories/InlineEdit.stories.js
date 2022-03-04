@@ -89,7 +89,7 @@ Default.args = {
   asAligned: "left",
   withColor: {
     accentColor: "#FFAB00",
-    backgroundColor: "#ffab001a",
+    backgroundColor: "#ffab000d",
   },
   withAnimation: {
     animation: "collapse",

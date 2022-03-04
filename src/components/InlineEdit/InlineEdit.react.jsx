@@ -14,14 +14,14 @@ InlineEdit.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      Use to define Input's value
+    Use to define Input's value
     */
     content: PropTypes.string.isRequired,
     //=======================================
     // Quommon props
     //=======================================
     /**
-      Use to define component text and icon size in increasing order
+    Use to define component text and icon size in increasing order
     */
     asSize: PropTypes.oneOf([
         "tiny",
@@ -40,14 +40,14 @@ InlineEdit.propTypes = {
     */
     asAligned: PropTypes.oneOf(["left", "right", "center"]),
     /**
-      Use to set Colors in component 
+    Use to set Colors in component 
     */
     withColor: PropTypes.shape({
         accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
     }),
     /**
-     Use to define the entry animation of the component
+    Use to define the entry animation of the component
     */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
@@ -64,7 +64,7 @@ InlineEdit.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to show/hide the component
+    Use to show/hide the component
     */
     isHidden: PropTypes.bool,
     /**

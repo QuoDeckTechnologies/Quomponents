@@ -37,7 +37,7 @@ describe("InlineEdit", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when withColor is provided",
+    it("it should render correctly when withColor Props is pass with the values",
         () => {
             component.setProps({
                 withColor: {
@@ -47,4 +47,30 @@ describe("InlineEdit", () => {
             });
             expect(component.exists()).toBe(true);
         });
+
+    it("it should render correctly without throwing an error", () => {
+        expect(component.find('input').simulate('change')).toBe(true);
+    });
+
+    it("it should render correctly without throwing an error", () => {
+        component.setProps({
+            withColor: {
+                accentColor: "#FFAB00",
+                backgroundColor: "transparent",
+            }
+        });
+        expect(component.find('input').simulate('blur')).toBe("transparent");
+    });
+
+    it("it should render correctly without throwing an error", () => {
+        component.setProps({
+            withColor: {
+                accentColor: "#FFAB00",
+                backgroundColor: "transparent",
+            }
+        });
+        expect(component.find('input').simulate('focus')).toBe(true);
+    });
 });
+
+
