@@ -13,6 +13,7 @@ import "../../common/stylesheets/common.css";
 import "./DeckCard.scss";
 import "../../common/stylesheets/overrule.scss";
 import Ribbon from "../Ribbons/Ribbon/Ribbon.react";
+
 DeckCard.propTypes = {
     //=======================================
     // Component Specific props
@@ -32,7 +33,7 @@ DeckCard.propTypes = {
                 checked: PropTypes.bool,
             })
         ),
-    }).isRequired,
+    }),
 
     //=======================================
     // Quommon props
@@ -55,7 +56,6 @@ DeckCard.propTypes = {
         accentColor: PropTypes.string,
         textColor: PropTypes.string,
     }),
-
     /**
       Use to define the entry animation of the component
       */
@@ -179,6 +179,7 @@ export default function DeckCard(props) {
         >
             <div className={`qui-deckcard-label`}>
                 <Ribbon
+                    isHidden={content ? props.isHidden:true}
                     asFloated="left"
                     asEmphasis={content?.tag}
                     withTranslation={props.withTranslation}
@@ -189,7 +190,7 @@ export default function DeckCard(props) {
                 style={colors.cardColors}
             >
                 <div className="qui-left">
-                    <img className="image" src={props.content?.image} />
+                    <img className="qui-deckcardimg" src={props.content?.image}  />
                 </div>
                 <div className={`qui-middle`}>
                     <div className="qui-course-title" style={colors.textColors}>
@@ -203,9 +204,9 @@ export default function DeckCard(props) {
                 <div className={`qui-right`}>
                     <div className={`${quommonClasses.childClasses}`} style={colors.accentColors}
                     >
-                        <img className="gamepad" src={props.content?.icon} />
+                        <img className="qui-iconimg" src={props.content?.icon} />
                     </div>
-                    <div className="banner" style={colors.bannerColors}></div>
+                    <div className="qui-verticleline" style={colors.bannerColors}></div>
                     <div>
                         {_.map(content?.topics, (topics, index) => {
                             return (

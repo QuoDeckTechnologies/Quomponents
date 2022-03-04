@@ -1,8 +1,8 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
-import renderer, { act } from "react-test-renderer";
+import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 //--------------------------------------
 // Import from Config
 // -------------------------------------
@@ -110,7 +110,7 @@ describe("DeckCard", () => {
 
                     image: "static/media/Image.62bfb45a.png",
                     icon: "fas fa-gamepad",
-                    tag: "restricted",
+                    tag: "premium",
                     topics: [
                         {
                             name: "Name One",
