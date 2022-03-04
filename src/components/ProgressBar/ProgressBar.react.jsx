@@ -20,9 +20,9 @@ ProgressBar.propTypes = {
       ProgressBar data should be passed in content field and it is a required field
       */
     content: PropTypes.shape({
-        lefticon: PropTypes.string,
-        righticon: PropTypes.string,
-        labelArray: PropTypes.arrayOf(
+        leftIcon: PropTypes.string,
+        rightIcon: PropTypes.string,
+        stepArray: PropTypes.arrayOf(
             PropTypes.string
         ),
     }),
@@ -130,7 +130,7 @@ export default function ProgressBar(props) {
     const [currentStep, updateCurrentStep] = useState(1);
 
     function increment() {
-        if (props.content?.labelArray.length !== currentStep) {
+        if (props.content?.stepArray.length !== currentStep) {
             updateCurrentStep(nextState => nextState + 1)
         }
     }
@@ -166,22 +166,22 @@ export default function ProgressBar(props) {
             style={colors?.backColors}
         >
             <div className={`qui-progressbar${quommonClasses.childClasses}`}>
-                <div className={`left`}>
-                    <i className={`icon ${content?.lefticon}`}
+                <div className="qui-leftblock">
+                    <i className={`qui-icon ${content?.leftIcon}`}
                         style={colors?.textColors}
                         onClick={() => decrement()}>
                     </i>
                 </div>
-                <div className={`middle`}>
-                    {_.map(props.content?.labelArray, (key, index) => {
+                <div className="qui-middleblock">
+                    {_.map(props.content?.stepArray, (key, index) => {
                         return (
-                            <div className={`line`} key={index}
+                            <div className="qui-currentstep" key={index}
                                 style={index + 1 <= currentStep ? { backgroundColor: props.withColor?.lineColor } : colors?.accentColors} ></div>
                         )
                     })}
                 </div>
-                <div className={`right`}>
-                    <i className={`icon ${content?.righticon}`}
+                <div className="qui-rightblock">
+                    <i className={`qui-icon ${content?.rightIcon}`}
                         style={colors?.textColors}
                         onClick={() => increment()}>
                     </i>

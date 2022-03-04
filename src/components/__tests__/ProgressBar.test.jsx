@@ -1,11 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render, } from "enzyme";
-import renderer, { act } from "react-test-renderer";
-//--------------------------------------
-// Import from Config
-// -------------------------------------
+import { shallow } from "enzyme";
 
 //--------------------------------------
 // Import Components
@@ -24,9 +20,9 @@ describe("ProgressBar", () => {
         component = shallow(
             <ProgressBar
                 content={{
-                    lefticon: "fa fa-arrow-alt-circle-left",
-                    righticon: "fa fa-arrow-alt-circle-right",
-                    labelArray: ["step1", "step2", "step3", "step4", "step5"],
+                    leftIcon: "fa fa-arrow-alt-circle-left",
+                    rightIcon: "fa fa-arrow-alt-circle-right",
+                    stepArray: ["step1", "step2", "step3", "step4", "step5"],
                 }}
                 asVariant="primary"
                 asSize="normal"
@@ -51,39 +47,39 @@ describe("ProgressBar", () => {
     });
     it("should render correctly when clicked", () => {
         let component = shallow(<ProgressBar />);
-        expect(component.find(".icon").length).toBe(2);
+        expect(component.find(".qui-icon").length).toBe(2);
     });
     it("should call decrement when click", () => {
         component = shallow(<ProgressBar
             content={{
-                lefticon: "fa fa-arrow-alt-circle-left",
-                righticon: "fa fa-arrow-alt-circle-right",
-                labelArray: ["step1", "step2", "step3", "step4", "step5"],
+                leftIcon: "fa fa-arrow-alt-circle-left",
+                rightIcon: "fa fa-arrow-alt-circle-right",
+                stepArray: ["step1", "step2", "step3", "step4", "step5"],
             }}
             onClick={decrement} />);
-        let leftarrow = component.find(".icon").at(1);
+        let leftarrow = component.find(".qui-icon").at(1);
         leftarrow.simulate("click");
         leftarrow.simulate("click");
-        component.find(".icon").at(0).simulate("click");
+        component.find(".qui-icon").at(0).simulate("click");
     });
     it("should call decrement when click", () => {
         component = shallow(<ProgressBar
             content={{
-                lefticon: "fa fa-arrow-alt-circle-left",
-                righticon: "fa fa-arrow-alt-circle-right",
-                labelArray: ["step1", "step2", "step3", "step4", "step5"],
+                leftIcon: "fa fa-arrow-alt-circle-left",
+                rightIcon: "fa fa-arrow-alt-circle-right",
+                stepArray: ["step1", "step2", "step3", "step4", "step5"],
             }}
             onClick={decrement} />);
-        component.find(".icon").at(0).simulate("click");
+        component.find(".qui-icon").at(0).simulate("click");
     });
     it("should call increment when click", () => {
         component = shallow(<ProgressBar
             content={{
-                lefticon: "fa fa-arrow-alt-circle-left",
-                righticon: "fa fa-arrow-alt-circle-right",
-                labelArray: ["step1"],
+                leftIcon: "fa fa-arrow-alt-circle-left",
+                rightIcon: "fa fa-arrow-alt-circle-right",
+                stepArray: ["step1"],
             }}
             onClick={increment} />);
-        component.find(".icon").at(1).simulate("click");
+        component.find(".qui-icon").at(1).simulate("click");
     });
 });

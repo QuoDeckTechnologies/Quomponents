@@ -8,10 +8,10 @@ export default {
         content: {
             table: {
                 defaultValue: {
-                    lefticon: "",
-                    righticon: "",
+                    leftIcon: "",
+                    rightIcon: "",
                 },
-                labelArray: [],
+                stepArray:[],
             },
         },
         asVariant: {
@@ -94,9 +94,9 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        lefticon: "fa fa-arrow-alt-circle-left",
-        righticon: "fa fa-arrow-alt-circle-right",
-        labelArray: ["step1", "step2", "step3", "step4", "step5"],
+        leftIcon: "fa fa-arrow-alt-circle-left",
+        rightIcon: "fa fa-arrow-alt-circle-right",
+        stepArray:["step1", "step2", "step3", "step4", "step5"],
     },
     asVariant: "primary",
     asSize: "normal",
@@ -202,8 +202,6 @@ const AllVariantsTemplate = (args) => {
         </div>
     );
 };
-
-
 export const AllVariants = AllVariantsTemplate.bind({});
 AllVariants.parameters = {
     docs: {
