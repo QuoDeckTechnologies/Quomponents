@@ -31,7 +31,8 @@ BannerCarousel.propTypes = {
             "new",
             "premium",
             "restricted",
-            "free"
+            "free",
+            ""
         ]),
         header: PropTypes.string,
         content: PropTypes.string,
@@ -81,12 +82,14 @@ export default function BannerCarousel(props) {
             <Slider ref={sliderRef} {...settings}>
                 {_.map(content, (slide, index) => {
                     return (
-                        <div className="qui-slide-container">
+                        <div className="qui-slide-container"
+                            key={"sliderData-" + index + Math.random()}
+                        >
                             <div
                                 key={"slider-" + index + Math.random()}
                                 className={`qui-slide`}
                             >
-                                <BannerCard {...slide.props} content={slide} />
+                                <BannerCard {...slide.props} content={slide} onClick={props.onClick}/>
                             </div>
                         </div>
                     );
