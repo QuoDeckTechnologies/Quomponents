@@ -6,10 +6,6 @@ import { shallow, mount } from 'enzyme';
 // Import Components
 // -------------------------------------
 import Reward from '../Reward/Reward.react'
-//--------------------------------------
-// Import content's image
-// -------------------------------------
-// import coin from "../assets/icons8_coin_96px.png";
 
 describe("Reward", () => {
     // -------------------------------------
@@ -39,8 +35,8 @@ describe("Reward", () => {
                     label: "Complete to win",
                     point: "10,000",
                     image: "coin.png"
-                },
-            }),
+                }
+            })
             expect(component.exists()).toBe(true);
         });
 });
