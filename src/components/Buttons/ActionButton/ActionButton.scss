@@ -40,15 +40,15 @@
 .qui .action-button-sub-title {
     font-size: 1em;
     padding: 0 5px;
-    
+
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     &.responsive-sub-title {
         font-size: 0.8em;
-        
     }
 }
 .qui .image {
-    width: 4em;
+    width: 5em;
+    cursor: pointer;
 }
 
 /* ================================================= */

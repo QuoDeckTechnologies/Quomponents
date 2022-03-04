@@ -1,4 +1,5 @@
 // Import npm packages
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
@@ -11,6 +12,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./ActionButton.scss";
 import "../../../common/stylesheets/overrule.scss";
+
+import playbtn from "../../../assets/image.png"
 
 ActionButton.propTypes = {
     //=======================================
@@ -139,8 +142,8 @@ ActionButton.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
-    isFluid: false,
-    isLoading: false,
+
+    onClick:null
 };
 
 /**
@@ -149,7 +152,8 @@ ActionButton.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
+- Action Button has 2 phases, with button and with image. Pass props according to your convenience
+- isEllipse is a prop to add ellipse background or not.
 **/
 export default function ActionButton(props) {
 
@@ -207,7 +211,8 @@ export default function ActionButton(props) {
                     <img
                         className={`image`}
                         alt="img"
-                        src={labelContent ? `${labelContent.image}` : ""}
+                        src={`${labelContent.image}`}
+                        onClick={props.onClick}
                     />
                 </div>
             )
@@ -230,8 +235,8 @@ export default function ActionButton(props) {
     }
     return (
         <motion.div
-            initial={animate.from}
-            animate={animate.to}
+            initial={animate?.from}
+            animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses}`}>
                 {actionButtonBackground(props.isEllipse)}

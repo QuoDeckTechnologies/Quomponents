@@ -1,5 +1,6 @@
 import React from "react";
 import ActionButton from "../components/Buttons/ActionButton/ActionButton.react";
+import PlayBtn from "../assets/play-btn.png"
 
 const dictionary = JSON.stringify({
     hi: {
@@ -20,14 +21,9 @@ export default {
             },
         },
         content: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    title: "",
-                    subTitle: "",
-                    image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png"
-                },
-            },
+            title: "",
+            subTitle: "",
+            image: PlayBtn
         },
         asVariant: {
             control: "select",
@@ -143,7 +139,7 @@ Default.args = {
     content: {
         title: "BUY",
         subTitle: "Rs. 75",
-        image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png"
+        image: PlayBtn
     },
     isEllipse: true,
     asVariant: "primary",
@@ -195,7 +191,7 @@ ActionButtonWithImage.args = {
     content: {
         title: "BUY",
         subTitle: "Rs. 75",
-        image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png"
+        image: PlayBtn
     }
 }
 // -------------------------------------------------------------
@@ -241,7 +237,7 @@ export const AllVariantsTemplate = (args) => {
     const baseObj2 = {
         ...Object.assign({}, Default.args, args, {
             content: {
-                image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png",
+                image: PlayBtn
             }
         }),
     };
