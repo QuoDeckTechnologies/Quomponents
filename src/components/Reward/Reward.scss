@@ -1,26 +1,26 @@
 /* ================================================= */
 /* Reward Container Definitions */
 /* ================================================= */
-.qui .qui-parent {
+.qui .qui-reward-container {
     min-width: 6rem;
     display: flexbox;
 }
 
-.qui .qui-upper-half {
+.qui .qui-label-container {
     padding-left: 0.5em;
     text-align: left;
     font-size: 1.25em;
     color: #3e587a;
 }
 
-.qui .qui-lower-half {
+.qui .qui-point-container {
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.qui .qui-lower-half .qui-point {
-    padding-left: 10px;
+.qui .qui-point-container .qui-point {
+    padding-left: 0.2em;
     text-align: left;
     font-size: 2.25em;
     color: #ed6e6e;
@@ -28,7 +28,7 @@
     text-overflow: ellipsis;
 }
 
-.qui .qui-coin-image {
+.qui .qui-reward-image {
     width: 3.375em;
     align-self: start;
 }

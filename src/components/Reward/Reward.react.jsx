@@ -8,7 +8,7 @@ import {
 import "../../common/stylesheets/common.css";
 import "./Reward.scss";
 import "../../common/stylesheets/overrule.scss";
-import coin from "../../assets/icons8_coin_96px.png";
+import rewardImage from "../../assets/icons8_coin_96px.png";
 
 Reward.propTypes = {
     //=======================================
@@ -122,15 +122,15 @@ export default function Reward(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={` ${quommonClasses.childClasses}`}>
-                <div className={`qui-parent ${props.asSize}`}>
-                    <div className="qui-upper-half" style={labelColors}>
+                <div className={`qui-reward-container ${props.asSize}`}>
+                    <div className={`qui-label-container`} style={labelColors}>
                         {rewardContent?.label}
                     </div>
-                    <div className="qui-lower-half">
+                    <div className={`qui-point-container`}>
                         <div>
                             <img
-                                className={`qui-coin-image`}
-                                src={rewardContent?.image ? rewardContent?.image : coin}
+                                className={`qui-reward-image`}
+                                src={rewardContent?.image ? rewardContent.image : rewardImage}
                                 alt="coin"
                             />
                         </div>

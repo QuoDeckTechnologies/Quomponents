@@ -34,7 +34,7 @@ describe("Reward", () => {
                 content: {
                     label: "Complete to win",
                     point: "10,000",
-                    image: "coin.png"
+                    image: "rewardImage"
                 }
             })
             expect(component.exists()).toBe(true);

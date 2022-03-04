@@ -1,6 +1,6 @@
 import React from "react";
 import Reward from "../components/Reward/Reward.react";
-import coin from "../assets/icons8_coin_96px.png";
+import rewardImage from "../assets/icons8_coin_96px.png";
 
 export default {
     title: "Design System/Reward/Reward",
@@ -91,7 +91,7 @@ Default.args = {
     content: {
         label: "Complete to win",
         point: "10,000",
-        image: coin
+        image: rewardImage
     },
     asSize: "normal",
     asFloated: "none",
