@@ -1,21 +1,6 @@
 import React from "react";
 import SlideHeader from "../components/SlideHeader/SlideHeader.react";
 
-const dictionary = JSON.stringify({
-  // en: {
-  //   SlideHeader: {
-  //     title: "Neque porro quisquam est qui dolorem",
-  //     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem"
-  //   },
-  // },
-  hi: {
-    SlideHeader: {
-      title: "नेक पोरो क्विस्कम इस्ट क्यूई डोलोरेम",
-      subtitle: "लोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, क्युराबिटुर इप्सम सेम"
-    },
-  },
-});
-
 export default {
   title: "Design System/SlideHeader/SlideHeader",
   component: SlideHeader,
@@ -77,16 +62,6 @@ export default {
         },
       },
     },
-    withTranslation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          lang: "",
-          tgt: "",
-          dictionary: "",
-        },
-      },
-    },
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -135,11 +110,6 @@ Default.args = {
     animation: "collapse",
     duration: 0.5,
     delay: 0,
-  },
-  withTranslation: {
-    lang: "en",
-    tgt: "SlideHeader",
-    dictionary: dictionary,
   },
   isHidden: false,
 };
@@ -193,7 +163,7 @@ AnimatedSlideHeader.parameters = {
   docs: {
     description: {
       story:
-        "Use to animate the entry of the SlideHeader with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        "Use to animate the entry of the InlineEdit with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
     },
     source: {
       code: `<AnimatedSlideHeader {...${JSON.stringify(
@@ -203,88 +173,4 @@ AnimatedSlideHeader.parameters = {
       )}}/>`,
     },
   },
-};
-// -------------------------------------------------------------
-// Translated SlideHeader
-// -------------------------------------------------------------
-export const TranslatedSlideHeader = Template.bind({});
-TranslatedSlideHeader.args = {
-  ...Default.args,
-  withTranslation: {
-    lang: "hi",
-    tgt: "SlideHeader",
-    dictionary: dictionary,
-  },
-};
-TranslatedSlideHeader.parameters = {
-  docs: {
-    description: {
-      story:
-        "Use to change the language that the text appears in. To make this work for the SlideHeader, add a SlideHeader:{title, subtitle} value to the dictionary.",
-    },
-    source: {
-      code: `<TranslatedSlideHeader {...${JSON.stringify(
-        TranslatedSlideHeader.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Variants
-// -------------------------------------------------------------
-const AllVariantsTemplate = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args, {
-    }),
-  };
-  return (
-    <div>
-      <SlideHeader
-        {...Object.assign({}, baseObj, {
-          withColor: {
-            accentColor: "#ffbf00",
-            textColor: "#ffffff",
-            backgroundColor: "#666666",
-          },
-          withTranslation: {
-            lang: "en",
-            tgt: "SlideHeader",
-            dictionary: dictionary,
-          },
-        })}
-      />{" "}
-      <br />
-      <SlideHeader
-        {...Object.assign({}, baseObj, {
-          withColor: {
-            accentColor: "#589C48",
-            textColor: "#FBB149",
-            backgroundColor: "#733381",
-          },
-          withTranslation: {
-            lang: "hi",
-            tgt: "SlideHeader",
-            dictionary: dictionary,
-          },
-        })}
-      />{" "}
-    </div>
-  );
-};
-export const AllVariants = AllVariantsTemplate.bind({});
-AllVariants.parameters = {
-  docs: {
-    description: {
-      story: "variants are supported. Use as per purpose noted here.",
-    },
-    source: {
-      code: `<AllVariants {...${JSON.stringify(
-        AllVariants.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
+}; 
