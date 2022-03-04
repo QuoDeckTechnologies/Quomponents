@@ -27,7 +27,8 @@ BannerCard.propTypes = {
             "new",
             "premium",
             "restricted",
-            "free"
+            "free",
+            ""
         ]),
         header: PropTypes.string,
         content: PropTypes.string
