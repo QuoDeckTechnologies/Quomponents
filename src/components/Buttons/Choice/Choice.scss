@@ -1,12 +1,11 @@
-.qui .container{
+.qui .container {
     display: flex;
     width: fit-content;
     justify-content: center;
     align-items: center;
     padding: 10px;
 }
-
-.qui .choices{
+.qui .choices {
     min-height: 1em;
     width: 3em;
     margin: 0 0.3em;
@@ -14,25 +13,23 @@
     justify-content: center;
     align-items: center;
     border-radius: 0.2em;
-    padding:1.5em 2.4em;
+    padding: 1.5em 2.4em;
     font-size: 0.5em;
     box-shadow: 0.1em 0.1em 0.3em grey;
-    border:1px solid;
+    border: 1px solid;
     text-transform: uppercase;
 }
-.qui .choice1{
-    background-color: #FFAB00;
+.qui .choice1 {
+    background-color: #ffab00;
     color: black;
-    border:none;
+    border: none;
 }
-
-.qui .choice2{
+.qui .choice2 {
     background-color: #454545;
-    color: #FFAB00;
-    border:none;
+    color: #ffab00;
+    border: none;
 }
-
-.qui .or{
+.qui .or {
     text-transform: uppercase;
     display: flex;
     z-index: 1;
@@ -46,8 +43,6 @@
     font-size: 0.5em;
     border-radius: 50%;
     box-shadow: 0.1em 0.1em 0.3em grey;
-    border: 1px solid #FFFFFF;
-    color:#454545;
+    border: 1px solid #ffffff;
+    color: #454545;
 }
-
-

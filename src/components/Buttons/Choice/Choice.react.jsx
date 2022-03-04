@@ -16,21 +16,17 @@ Choice.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-
     content: PropTypes.shape({
         Choice1: PropTypes.string,
         Choice2: PropTypes.string
     }).isRequired,
-
     /**
     Use to enable/disable the OR tag
     */
-    isOr: PropTypes.bool,
-
+    isChoice: PropTypes.bool,
     //=======================================
     // Quommon props
     //=======================================
-
     /**
     Use to float the component in parent container
     */
@@ -43,8 +39,8 @@ Choice.propTypes = {
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
-        backgroundColor:PropTypes.string,
-        accentColor:PropTypes.string,
+        backgroundColor: PropTypes.string,
+        accentColor: PropTypes.string,
         textColor: PropTypes.string
     }),
     /**
@@ -55,7 +51,6 @@ Choice.propTypes = {
         tgt: PropTypes.string,
         dictionary: PropTypes.string,
     }),
-
     /**
     Use to show/hide the component
     */
@@ -64,7 +59,6 @@ Choice.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
-
     /**
     Choice component must have the onClick function passed as props
     */
@@ -79,19 +73,16 @@ Choice.defaultProps = {
         Choice1: "Yes",
         Choice2: "No",
     },
-
+    isChoice: true,
     //=======================================
     // Quommon props
     //=======================================
     asEmphasis: "contained",
     asFloated: "inline",
-
     withColor: null,
     withTranslation: null,
-
     isHidden: false,
     isDisabled: false,
-    isOr: true
 };
 /**
 ## Notes
@@ -154,15 +145,13 @@ export default function Choice(props) {
     // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-
     function choice1() {
         props.onClick("choice 1");
     }
     function choice2() {
         props.onClick("choice 2");
     }
-
-    let orStyle = { display: props.isOr ? "flex" : "none" , color: props.withColor?.accentColor}
+    let orStyle = { display: props.isChoice ? "flex" : "none", color: props.withColor?.accentColor }
 
     function choice() {
         return (

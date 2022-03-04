@@ -21,10 +21,10 @@ export default {
   component: Choice,
   argTypes: {
     content: {
-      Choice1:"Primary Button",
-      Choice2:"Secondary Button"
+      Choice1: "Primary Button",
+      Choice2: "Secondary Button"
     },
-    isOr: {
+    isChoice: {
       table: {
         category: "is-Toggles",
         defaultValue: true,
@@ -56,7 +56,7 @@ export default {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
-          accentColor:"",
+          accentColor: "",
           textColor: "",
         },
       },
@@ -114,30 +114,26 @@ export default {
   ],
   parameters: {
     componentSubtitle: "Displays a Choice Component",
-    a11y: { disable: true },      
+    a11y: { disable: true },
     docs: { iframeHeight: 300 },
-
   },
 };
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
 const Template = (args) => <Choice {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content:{
-    Choice1:"Primary Button",
-    Choice2:"Secondary Button"
+  content: {
+    Choice1: "Primary Button",
+    Choice2: "Secondary Button"
   },
   asEmphasis: "contained",
-
   asSize: "normal",
   asFloated: "inline",
-
   withColor: {
     backgroundColor: "",
-    accentColor:"",
+    accentColor: "",
     textColor: "",
   },
   withAnimation: {
@@ -150,16 +146,14 @@ Default.args = {
     tgt: "Choice",
     dictionary: dictionary,
   },
-
   isDisabled: false,
-  isOr:true,
+  isChoice: true,
   isHidden: false,
-
 };
 Default.parameters = {
   docs: {
     description: {
-        story: "Default component shows features like selected ,not selected , animation in the component",
+      story: "Default component shows features like selected ,not selected , animation in the component",
     },
     source: {
       code: `<Choice {...${JSON.stringify(Default.args, null, 2)}}/>`,
@@ -173,20 +167,20 @@ Default.parameters = {
 export const TranslatedChoice = Template.bind({});
 TranslatedChoice.args = {
   ...Default.args,
-    withTranslation: {
-        lang: "hi",
-        tgt: "Choice",
-        dictionary: dictionary,
-    },
+  withTranslation: {
+    lang: "hi",
+    tgt: "Choice",
+    dictionary: dictionary,
+  },
 };
 TranslatedChoice.parameters = {
-    docs: {
-        description: {
-            story:
-                "Use to change the language that the text appears in. To make this work for the Choice Button, add a Choice:{Choice1,Choice2} value to the dictionary.",
-        },
-        source: {
-            code: `<Choice {...${JSON.stringify(Default.args, null, 2)}}/>`,
-        },
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in. To make this work for the Choice Button, add a Choice:{Choice1,Choice2} value to the dictionary.",
     },
+    source: {
+      code: `<Choice {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
 };
