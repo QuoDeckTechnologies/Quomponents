@@ -125,15 +125,15 @@ export default function SearchBar(props) {
     // 3. Handle Enter and Button Press Events
     //-------------------------------------------------------------------
     const [expandable, setExpandable] = useState(false);
-
+    const input = useRef(null);
+    const box = useRef(null);
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
             handleButtonPress();
         }
     }
     const handleButtonPress = () => {
-        const value = document.getElementById("input").value;
-        return props.onClick(value);
+        return props.onClick(input.current?.value);
     }
     //-------------------------------------------------------------------
     // 4. Handle Open and Close Input box
@@ -151,7 +151,6 @@ export default function SearchBar(props) {
             return () => document.removeEventListener("click", handleOutsideClick);
         }, [ref]);
     }
-    const box = useRef(null);
     useOutsideAlerter(box);
     //-------------------------------------------------------------------
     // 5. Get Conditional Styling of Component
@@ -174,10 +173,10 @@ export default function SearchBar(props) {
             >
                 <div className={`search-bar-child-container ${searchBarStyle}`}>
                     <input
+                        ref={input}
                         className={`search-bar-input-field ${inputStyle}`}
                         placeholder={searchPlaceHolder}
                         style={{ color: props.withColor?.textColor }}
-                        id="input"
                         onKeyPress={handleKeyPress}
                     />
                     <button

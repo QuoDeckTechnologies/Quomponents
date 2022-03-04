@@ -2,6 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from 'enzyme';
+import { render, fireEvent, getByPlaceholderText } from "@testing-library/react";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -19,7 +20,6 @@ describe("SearchBar", () => {
             }
         },
     });
-
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -82,5 +82,26 @@ describe("SearchBar", () => {
         expect(searchBarChildContainer.props().className).toBe("search-bar-child-container undefined");
         expect(inputBox.props().className).toBe("search-bar-input-field undefined");
         expect(button.props().className).toBe("search-bar-icon undefined");
+    });
+
+    test("input button press correctly", () => {
+        const handleButtonPress = jest.fn();
+        const { container } = render(
+            <SearchBar onClick={handleButtonPress} />
+        );
+        const input = getByPlaceholderText(container, "Search...");
+        let button = component.find("button");
+        fireEvent.change(input, { target: { value: "some value" } });
+        fireEvent.keyPress(input, { key: "Enter", value: "some text" });
+        button.simulate('click');
+        expect(input.value).toBe("some value")
+        expect(handleButtonPress).toBeCalled();
+    });
+
+    it("should pass the value to the search bar", () => {
+        const { container } = render(<SearchBar onClick={() => {console.log("Testing Search Bar") }} />);
+        const inputElement = getByPlaceholderText(container, "Search...");
+        fireEvent.change(inputElement, { target: { value: "some value" } });
+        expect(inputElement.value).toBe("some value")
     });
 });
