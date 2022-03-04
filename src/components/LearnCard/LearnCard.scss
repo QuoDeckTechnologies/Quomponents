@@ -1,5 +1,6 @@
 .qui .qui-learn-card {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background-color: white;
   border-radius: 2em;
@@ -52,8 +53,9 @@
 .qui .qui-info {
   display: flex;
   flex-direction: row;
-  width: 90%;
   align-items: center;
+  width: 90%;
+  margin-top: 0.4em;
 }
 .qui .qui-info img{
   height: 3.5em;
@@ -86,8 +88,8 @@
 .qui .qui-banner {
   position: absolute;
   bottom: 1%;
-  right: 1%;
-  height: 100%;
+  right: 3%;
+  height: 5.5em;
   width: 0.7em;
 }
 .qui .qui-content {
@@ -97,7 +99,7 @@
   position: relative;
   z-index: 2;
   margin-left: 1.5em;
-  min-height: 12em;
+  min-height: 14em;
   width: 100%;
 }
 .qui .qui-info i {
@@ -141,10 +143,10 @@
 }
 @media only screen and (min-width: 481px) {
   .qui .qui-card-label .qui-ribbon {
-    font-size: 1.2em;
+    font-size: 0.7em;
   }
   .qui .qui-learn-card {
-    font-size: 0.8em;
+    font-size: 0.5em;
   }
 }
 @media only screen and (min-width: 540px) {
@@ -160,14 +162,14 @@
     font-size: 1.2em;
   }
   .qui .qui-learn-card {
-    font-size: 0.8em;
+    font-size: 0.73em;
   }
 }
 @media only screen and (min-width: 1024px) {
   .qui .qui-card-label .qui-ribbon {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
   .qui .qui-learn-card {
-    font-size: 1em;
+    font-size: 0.9em;
   }
 }
