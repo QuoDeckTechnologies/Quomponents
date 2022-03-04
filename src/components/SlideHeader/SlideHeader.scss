@@ -5,6 +5,8 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    min-width: 17em;
+    min-height: 10em;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
     border-bottom: 0.4em solid;
@@ -22,7 +24,7 @@
 }
 
 .qui .qui-sub-title {
-    width: 75%;
+    width: 90%;
     font-size: 0.8em;
     line-height: 1em;
     letter-spacing: -0.02em;
@@ -32,6 +34,10 @@
 /* Styling Definitions for different resolution */
 /* ================================================= */
 @media screen and (min-width: 320px) {
+    .qui .qui-title-block {
+        min-width: 17em;
+        min-height: 10em;
+    }
     .qui .qui-title {
         font-size: 1.2em;
     }
@@ -40,27 +46,39 @@
     }
 }
 @media screen and (min-width: 481px) {
+    .qui .qui-title-block {
+        min-width: 30em;
+        min-height: 22em;
+    }
     .qui .qui-title {
-        font-size: 1.8em;
+        font-size: 3em;
     }
     .qui .qui-sub-title {
-        font-size: 1.2em;
+        font-size: 1.8em;
     }
 }
 @media screen and (min-width: 769px) {
+    .qui .qui-title-block {
+        min-width: 40em;
+        min-height: 33em;
+    }
     .qui .qui-title {
-        font-size: 2em;
+        font-size: 5em;
     }
     .qui .qui-sub-title {
-        font-size: 1.5em;
+        font-size: 3em;
     }
 }
 @media screen and (min-width: 1024px) {
+    .qui .qui-title-block {
+        min-width: 50em;
+        min-height: 44em;
+    }
     .qui .qui-title {
-        font-size: 2.5em;
+        font-size: 7em;
         line-height: 1em;
     }
     .qui .qui-sub-title {
-        font-size: 1.8em;
+        font-size: 4em;
     }
 }

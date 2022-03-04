@@ -24,7 +24,7 @@ SlideHeader.propTypes = {
     // Quommon props
     //=======================================
     /**
-      Use to define component size in increasing order
+    Use to define component size in increasing order
     */
     asSize: PropTypes.oneOf([
         "tiny",
@@ -35,7 +35,7 @@ SlideHeader.propTypes = {
         "massive",
     ]),
     /**
-        Use to define component padding in increasing order
+    Use to define component padding in increasing order
     */
     asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
     /**
@@ -47,7 +47,7 @@ SlideHeader.propTypes = {
     */
     asAligned: PropTypes.oneOf(["left", "right", "center"]),
     /**
-      Use to set Color 
+    Use to set Color 
     */
     withColor: PropTypes.shape({
         textColor: PropTypes.string,
@@ -55,7 +55,7 @@ SlideHeader.propTypes = {
         backgroundColor: PropTypes.string,
     }),
     /**
-     Use to define the entry animation of the component
+    Use to define the entry animation of the component
     */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
@@ -72,7 +72,7 @@ SlideHeader.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to show/hide the component
+    Use to show/hide the component
     */
     isHidden: PropTypes.bool,
 };

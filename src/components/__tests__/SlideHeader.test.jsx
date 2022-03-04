@@ -3,7 +3,6 @@ import React from 'react';
 // Import from NPM
 // -------------------------------------
 import { shallow, mount, render } from 'enzyme';
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
