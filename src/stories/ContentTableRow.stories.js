@@ -54,6 +54,9 @@ export default {
   parameters: {
     componentSubtitle: "Displays a Content table row",
     a11y: { disable: true },
+    docs : {
+      iframeHeight : 200
+    }
   },
 };
 
@@ -100,6 +103,9 @@ const ListTemplate = (args) => {
 export const ContentTableRowList = ListTemplate.bind({});
 ContentTableRowList.parameters = {
   docs: {
+    description : {
+      story : 'Shows a list of ContentTableRow Component'
+    },
     source: {
       code: `<ContentTableRowList {...${JSON.stringify(
         ContentTableRowList.args,

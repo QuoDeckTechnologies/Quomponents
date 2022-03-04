@@ -74,7 +74,7 @@ function getIcon(fileExtention) {
   } else {
     icon = "far fa-file";
   }
-  return icon
+  return icon;
 }
 /**
 ## Notes
@@ -94,37 +94,40 @@ export default function ContentTableRow(props) {
   //-------------------------------------------------------------------
   const [fileName, setFileName] = useState(content.fileName);
   const [isChecked, setIsChecked] = useState(false);
-
-  let fileExtention = content.fileName?.substring(
-    content.fileName?.lastIndexOf(".") + 1,
-    content.fileName?.length)
-  let icon = getIcon(fileExtention)
-
-  useEffect(() => {
-    setFileName(content.fileName)
+  let fileExtention;
+  let icon;
+  //-------------------------------------------------------------------
+  // 3. Function to get fileExtention and fileicon
+  //-------------------------------------------------------------------
+  const getExtention = () => {
     fileExtention = content.fileName?.substring(
       content.fileName?.lastIndexOf(".") + 1,
       content.fileName?.length
     );
-    icon = getIcon(fileExtention)
+    icon = getIcon(fileExtention);
+  };
+  useEffect(() => {
+    setFileName(content.fileName);
+    getExtention();
   }, [content?.fileName]);
-
   //-------------------------------------------------------------------
-  // 3. Set the classes
+  // 4. Set the classes
   //-------------------------------------------------------------------
   const quommonClasses = getQuommons(props, "content-table-row");
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  //-------------------------------------------------------------------
+  // 6. Getting extention and fileicon
+  //-------------------------------------------------------------------
+  getExtention();
   // ========================= Render Function =================================
-
+  
   return (
     <motion.div
       initial={animate.from}
       animate={animate.to}
-      className={`qui ${quommonClasses.parentClasses}`}
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div
@@ -147,7 +150,7 @@ export default function ContentTableRow(props) {
           value={fileName}
           onChange={(e) => setFileName(e.target.value)}
         />
-        <button className="qui-content-menu" onClick={()=>props.onClick()}>
+        <button className="qui-content-menu" onClick={() => props.onClick()}>
           <i className="fas fa-ellipsis-v"></i>
         </button>
       </div>
