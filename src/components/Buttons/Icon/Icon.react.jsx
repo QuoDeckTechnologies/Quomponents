@@ -1,20 +1,20 @@
-import React, { useState, useRef } from "react";
+// Import npm packages
+import React, { useState ,useEffect } from "react";
 import PropTypes from "prop-types";
+import { Button as MUIBTn, getAccordionUtilityClass } from "@mui/material";
+import { motion } from "framer-motion";
 import {
+    getQuommons,
     getTranslation,
+    getAnimation,
 } from "../../../common/javascripts/helpers";
-
-import Button from "../Button/Button.react";
-import ButtonGroup from '@mui/material/ButtonGroup';
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./FlipConfirm.scss";
+import "./Icon.scss";
 import "../../../common/stylesheets/overrule.scss";
-
-
-
-FlipConfirm.propTypes = {
+import { Typography } from "@mui/material";
+Icon.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -70,15 +70,6 @@ FlipConfirm.propTypes = {
     asAligned: PropTypes.oneOf(["left", "right", "center"]),
 
     /**
-    Use to define confirmation modal header text and success and failure button text
-    */
-    withConfirmation: PropTypes.shape({
-        header: PropTypes.string,
-        yes: PropTypes.string,
-        no: PropTypes.string,
-    }),
-
-    /**
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
@@ -116,6 +107,7 @@ FlipConfirm.propTypes = {
             "slideUp",
             "slideLeft",
             "slideRight",
+            ""
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
@@ -150,11 +142,9 @@ FlipConfirm.propTypes = {
     Button component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
-
-
 };
 
-FlipConfirm.defaultProps = {
+Icon.defaultProps = {
     // Component Specific props
     //=======================================
     asEmphasis: "contained",
@@ -168,8 +158,6 @@ FlipConfirm.defaultProps = {
     asFloated: "none",
     asAligned: "center",
 
-
-    withConfirmation: null,
     withColor: null,
     withIcon: null,
     withLabel: null,
@@ -182,101 +170,40 @@ FlipConfirm.defaultProps = {
     isLoading: false,
 };
 
-/**
-## Notes
-- The design system used for this component is Material UI (@mui/material)
-- The animation system used for this component is Framer Motion (framer-motion)
-- Pass inline styles to the component to override any of the component css
-- Or add custom css in overrule.scss to override the component css
-- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
-**/
+export default function Icon(props){
+    const[tilt,setTilt] = useState(false)
+    useEffect(() => {
+        console.log(tilt)
+    }, [tilt])
 
-export default function FlipConfirm(props) {
-    let withConfirmation = props.withConfirmation;
-    const [mode, setMode] = useState(false);
-    const buttonRef = useRef(null);
-    // Click Handlers
-    // ----------------------
-    function frontClick(event) {
-        var mx = event.clientX - buttonRef.current?.offsetLeft,
-            my = event.clientY - buttonRef.current?.offsetTop;
-
-        var w = buttonRef.current?.offsetWidth,
-            h = buttonRef.current?.offsetHeight;
-
-        var directions = [
-            { id: "top", x: w / 2, y: 0 },
-            { id: "right", x: w, y: h / 2 },
-            { id: "bottom", x: w / 2, y: h },
-            { id: "left", x: 0, y: h / 2 },
-        ];
-
-        directions.sort(function (a, b) {
-            return distance(mx, my, a.x, a.y) - distance(mx, my, b.x, b.y);
-        });
-
-        buttonRef.current?.setAttribute("data-direction", directions.shift().id);
-        setMode(true);
+    const handleTilt =() =>{
+        setTilt(true)
+        setTimeout(()=>{
+            setTilt(false)
+        },300)
+        // props.onClick()
+    }
+    const check = () => {
+        // console.log("this")
+        props.onClick()
     }
 
-    function yesClick() {
-        setMode(false);
-        props.onClick();
-    }
-    function noClick() {
-        setMode(false);
-    }
+    let quommonClasses = getQuommons(props);
+    if(props.isCircular)
+    quommonClasses.childClasses += `is-circular ${props.content === "" && props.withIcon ? "is-only-icon": ""}`;
 
-    //-------------------------------------------------------------------
-    // 1. Translate the text objects in case their is a dictionary provided
-    //-------------------------------------------------------------------
-    if (
-        props.withTranslation &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        let tObj = getTranslation(props.withTranslation);
-        withConfirmation = Object.assign(withConfirmation, tObj)
-    }
+    // check();
+    const animate = getAnimation(props.withAnimation);
 
-
+    //change in code not using the button anymore
     return (
-        <div className={`qui-fc-btn-main`}>
-            <div className={`qui-fc-btn ${mode ? "is-open" : ""}`} ref={buttonRef}>
-                <div className={`qui-fc-btn-back ${mode ? "is-enable" : "qui is-hidden"}`}>
-                    <p>{withConfirmation?.header}</p>
-                    <ButtonGroup>
-                        <Button
-                            asEmphasis={props.asEmphasis}
-                            asVariant="error"
-                            onClick={yesClick}
-                        >
-                            {withConfirmation?.yes}
-                        </Button>
-                        <Button
-                            asEmphasis="outlined"
-                            asVariant="primary"
-                            onClick={noClick}
-                        >
-                            {withConfirmation?.no}
-                        </Button>
-                    </ButtonGroup>
+        <motion.div
+            initial={animate.from}
+            animate={animate.to}
+            className={`qui ${quommonClasses.parentClasses}`}
+        >
+            <div onClick={handleTilt} className={`qui qui-btn ${quommonClasses.childClasses} ${quommonClasses.parentClasses} ${props.asEmphasis} ${props.asVariant}`}><div className ={`${tilt ? 'tilt':'notilt'} ${quommonClasses.childClasses}`}>{!props.isLoading && <i className={props.withIcon.icon}></i>}{props.isLoading && <div className="qui loading"><i className="fas fa-spinner"></i>PLEASE WAIT...</div>}</div>{!props.isLoading && <div className = {quommonClasses.childClasses}><p className= "qui-text">{props.content}</p></div>}
                 </div>
-                <Button
-                    {...props}
-                    onClick={frontClick}
-                >
-                </Button>
-            </div>
-        </div>
-    );
-
-    // Utility Functions
-    // ----------------------
-
-    function distance(x1, y1, x2, y2) {
-        var dx = x1 - x2;
-        var dy = y1 - y2;
-        return Math.sqrt(dx * dx + dy * dy);
-    }
+        </motion.div>
+    )
 }
