@@ -38,4 +38,7 @@ describe("ButtonBank", () => {
     it("should render correctly without throwing error", () => {
         expect(component.exists()).toBe(true);
     });
+    it("should render correctly without throwing error", () => {
+        component.find('Button').at(0).simulate('click')
+    });
 })
