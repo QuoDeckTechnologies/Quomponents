@@ -9,7 +9,6 @@ import "../../common/stylesheets/common.css";
 import "../SearchBar/SearchBar.scss";
 import "../../common/stylesheets/overrule.scss";
 
-
 SearchBar.propTypes = {
     //=======================================
     // Component Specific props
@@ -59,7 +58,6 @@ SearchBar.propTypes = {
         tgt: PropTypes.string,
         dictionary: PropTypes.string,
     }),
-
     /**
     Use to show/hide the component
     */
@@ -90,11 +88,9 @@ SearchBar.defaultProps = {
     //=======================================
     asFloated: "left", //Please do not set it inline for expandle search bar. You can set inline for static search bar.
     asSize: "normal",
-
     withColor: null,
     withIcon: null,
     withTranslation: null,
-
     isHidden: false,
     isDisabled: false,
     isFluid: false
@@ -111,8 +107,7 @@ export default function SearchBar(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props,"search-bar");
-
+    let quommonClasses = getQuommons(props, "search-bar");
     //-------------------------------------------------------------------
     // 2. Get translation of the component
     //-------------------------------------------------------------------
@@ -126,7 +121,6 @@ export default function SearchBar(props) {
     if (tObj && props.placeHolder && props.placeHolder !== "") {
         searchPlaceHolder = tObj.placeHolder;
     }
-
     //-------------------------------------------------------------------
     // 3. Handle Enter and Button Press Events
     //-------------------------------------------------------------------
@@ -141,7 +135,6 @@ export default function SearchBar(props) {
         const value = document.getElementById("input").value;
         return props.onClick(value);
     }
-
     //-------------------------------------------------------------------
     // 4. Handle Open and Close Input box
     //-------------------------------------------------------------------
@@ -153,16 +146,13 @@ export default function SearchBar(props) {
                     setExpandable(false)
                 }
             }
-
             // Adding click event listener
             document.addEventListener("click", handleOutsideClick);
             return () => document.removeEventListener("click", handleOutsideClick);
         }, [ref]);
     }
-
     const box = useRef(null);
     useOutsideAlerter(box);
-
     //-------------------------------------------------------------------
     // 5. Get Conditional Styling of Component
     //-------------------------------------------------------------------
@@ -177,7 +167,6 @@ export default function SearchBar(props) {
                 }
             }
         }
-
         return (
             <div className={`search-bar-container`}
                 onClick={() => { setExpandable(true) }}
@@ -187,7 +176,7 @@ export default function SearchBar(props) {
                     <input
                         className={`search-bar-input-field ${inputStyle}`}
                         placeholder={searchPlaceHolder}
-                        style={{ color: props.withColor?.textColor}}
+                        style={{ color: props.withColor?.textColor }}
                         id="input"
                         onKeyPress={handleKeyPress}
                     />
@@ -206,7 +195,6 @@ export default function SearchBar(props) {
             </div>
         )
     }
-
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses}`}>
