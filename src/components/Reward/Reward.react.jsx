@@ -8,7 +8,7 @@ import {
 import "../../common/stylesheets/common.css";
 import "./Reward.scss";
 import "../../common/stylesheets/overrule.scss";
-import rewardImage from "../../assets/icons8_coin_96px.png";
+import rewardImage from "../../assets/rewardImage.png";
 
 Reward.propTypes = {
     //=======================================
