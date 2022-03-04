@@ -25,9 +25,11 @@ describe("Choice", () => {
     },
   });
   let colors = {
-    backgroundColor: "red",
+    primaryBackgroundColor: "red",
+    secondaryBackgroundColor: "red",
     accentColor: "blue",
-    color: "green",
+    primaryTextColor: "green",
+    secondaryTextColor: "grey"
   }
   choice1 = jest.fn();
   choice2 = jest.fn();
@@ -45,7 +47,7 @@ describe("Choice", () => {
         isHidden={false}
         isDisabled={false}
         isFluid={false}
-        isOr={true}
+        isChoice={true}
         onClick={() => console.log("Choice Testing")}
       />
     );
@@ -55,18 +57,18 @@ describe("Choice", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should call choice1 function", () => {
+  it("should call choice1 function on click of primary button", () => {
     component.setProps({ onClick: choice1 })
     let choicebtn = component.find("div").at(2)
     choicebtn.simulate('click')
-    expect(choice1).toBeCalledTimes(1);
+    expect(choice1).toBeCalledWith("choice 1");
   });
 
-  it("should call choice2 function", () => {
+  it("should call choice2 function on click of secondary button", () => {
     component.setProps({ onClick: choice2 })
     let choicebtn = component.find("div").at(4)
     choicebtn.simulate('click')
-    expect(choice2).toBeCalledTimes(1);
+    expect(choice2).toBeCalledWith("choice 2");
   });
 
   it("should render correctly with withTranslation prop", () => {
@@ -83,8 +85,18 @@ describe("Choice", () => {
     expect(component.find("div").at(4).text()).toBe("माध्यमिक बटन");
   });
 
-  it("should render correctly when passed text in asEmphasis props", () => {
+  it("should render correctly when passed withTranslation Props", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.find("div").at(4).text().placeholder).toBe(undefined);
+  });
 
+  it("should render correctly when passed text in asEmphasis props", () => {
     let style = {
       background: 'transparent',
       boxShadow: 'none',
@@ -101,24 +113,22 @@ describe("Choice", () => {
 
   it("should render correctly when passed outlined in asEmphasis props", () => {
     let style = {
-      background: 'transparent',
       boxShadow: 'none',
-      backgroundColor: 'red'
+      primaryBackgroundColor: 'red',
+      secondaryBackgroundColor: 'blue'
     }
     component.setProps({
       withColor: style,
       asEmphasis: "outlined"
     });
-    component.update();
-
     expect(component.find("div").at(2).props().style.borderColor).toStrictEqual("red");
-    expect(component.find("div").at(4).props().style.borderColor).toStrictEqual("red");
+    expect(component.find("div").at(4).props().style.borderColor).toStrictEqual("blue");
   });
 
   it("should enable/ disable the OR div when passed props", () => {
     expect(component.find("div").at(3).exists()).toBe(true)
     component.setProps({
-      isOr: false
+      isChoice: false
     })
     expect(component.find("div").at(3).exists()).toBe(true)
   })

@@ -55,9 +55,11 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          backgroundColor: "",
+          primaryBackgroundColor: "",
+          secondaryBackgroundColor: "",
           accentColor: "",
-          textColor: "",
+          primaryTextColor: "",
+          secondaryTextColor:""
         },
       },
     },
@@ -132,9 +134,11 @@ Default.args = {
   asSize: "normal",
   asFloated: "inline",
   withColor: {
-    backgroundColor: "",
+    primaryBackgroundColor: "",
+    secondaryBackgroundColor: "",
     accentColor: "",
-    textColor: "",
+    primaryTextColor: "",
+    secondaryTextColor:""
   },
   withAnimation: {
     animation: "zoom",

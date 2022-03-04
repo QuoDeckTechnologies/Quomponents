@@ -39,9 +39,11 @@ Choice.propTypes = {
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
+        primaryBackgroundColor: PropTypes.string,
+        secondaryBackgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
-        textColor: PropTypes.string
+        primaryTextColor: PropTypes.string,
+        secondarTextColor: PropTypes.string
     }),
     /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -93,27 +95,52 @@ Choice.defaultProps = {
 - props are not being passed to the Choice. Please speak to the admin to handle any new prop.
 **/
 
-function getColors(colors, emphasis) {
-    let colorStyle;
-    colorStyle = emphasis === 'text'
+function getPrimaryButtonColors(colors, emphasis) {
+    let colorStyleForPrimary;
+    colorStyleForPrimary = emphasis === 'text'
         ? {
             background: 'transparent',
             boxShadow: 'none',
-            border: 'none'
+            border: 'none',
+            color: colors?.primaryTextColor,
         }
         : emphasis === 'outlined'
             ? {
                 background: 'transparent',
                 boxShadow: 'none',
-                borderColor: colors.backgroundColor
+                borderColor: colors?.primaryBackgroundColor,
+                color: colors?.primaryTextColor,
             }
             : {
-                background: colors.backgroundColor,
-                color: colors.textColor,
+                background: colors.primaryBackgroundColor,
+                color: colors?.primaryTextColor,
                 border: 'none'
             }
+    return colorStyleForPrimary;
+}
 
-    return colorStyle
+function getSecondaryButtonColors(colors, emphasis) {
+    let colorStyleForSecondary;
+    colorStyleForSecondary = emphasis === 'text'
+        ? {
+            background: 'transparent',
+            boxShadow: 'none',
+            border: 'none',
+            color: colors?.secondaryBackgroundColor,
+        }
+        : emphasis === 'outlined'
+            ? {
+                background: 'transparent',
+                boxShadow: 'none',
+                borderColor: colors?.secondaryBackgroundColor,
+                color: colors?.secondaryBackgroundColor,
+            }
+            : {
+                background: colors.secondaryBackgroundColor,
+                color: colors?.secondaryTextColor,
+                border: 'none'
+            }
+    return colorStyleForSecondary;
 }
 
 export default function Choice(props) {
@@ -139,7 +166,8 @@ export default function Choice(props) {
     }
     // 3. Set the component colors
     //-------------------------------------------------------------------
-    let colors = props.withColor ? getColors(props.withColor, props.asEmphasis) : {};
+    let primaryButtonStyle = getPrimaryButtonColors(props.withColor, props.asEmphasis);
+    let secondaryButtonStyle = getSecondaryButtonColors(props.withColor, props.asEmphasis);
 
     //-------------------------------------------------------------------
     // 4. Get animation of the component
@@ -159,9 +187,10 @@ export default function Choice(props) {
                 initial={animate.from}
                 animate={animate.to}
                 className={`container`} >
-                <div className={`qui-btn choices choice1`} style={Object.assign({}, colors)} onClick={choice1}>{choices?.Choice1}</div>
+                <div className={`qui-btn choices choice1`}
+                    style={Object.assign({}, primaryButtonStyle)} onClick={choice1}>{choices?.Choice1}</div>
                 <div className="or" style={Object.assign({}, orStyle)}>OR</div>
-                <div className={`qui-btn choices choice2`} style={Object.assign({}, colors)} onClick={choice2}>{choices?.Choice2}</div>
+                <div className={`qui-btn choices choice2`} style={Object.assign({}, secondaryButtonStyle)} onClick={choice2}>{choices?.Choice2}</div>
             </motion.div>
         )
     }
