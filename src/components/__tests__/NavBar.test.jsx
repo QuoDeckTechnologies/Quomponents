@@ -63,7 +63,17 @@ describe("NavBar", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "earncard",
+                tgt: "navbar",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly without tgt", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "",
                 dictionary: dictionary,
             },
         });

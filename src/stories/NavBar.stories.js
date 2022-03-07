@@ -110,6 +110,9 @@ Default.args = {
     },
     asVariant: "primary",
     withUser: "",
+    withLabel: {
+        content: "Catalog",
+    },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -147,6 +150,9 @@ UserNavbar.args = {
         }],
     },
     withUser: "https://dp-client.com/CMS-NEW/assets/images/user/user11605616227.png",
+    withLabel: {
+        content: "",
+    },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -259,7 +265,7 @@ TranslatedNavBar.parameters = {
     docs: {
         description: {
             story:
-                "UWe can translate the language of NavBar if dictionary is provided",
+                "We can translate the language of NavBar if dictionary is provided",
         },
         source: {
             code: `<TranslatedNavBar {...${JSON.stringify(

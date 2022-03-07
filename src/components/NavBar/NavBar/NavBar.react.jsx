@@ -50,6 +50,12 @@ NavBar.propTypes = {
         "error",
     ]),
     /**
+    Use to add a heading label, a footer caption or a title popover to the component
+    */
+    withLabel: PropTypes.shape({
+        content: PropTypes.string,
+    }),
+    /**
     Use to define the entry animation of the component
     */
     withAnimation: PropTypes.shape({
@@ -83,7 +89,7 @@ NavBar.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    AppMenu component must have the onClick function passed as props
+    NavBar component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
 };
