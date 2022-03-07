@@ -7,7 +7,8 @@ export default {
   argTypes: {
     content: {
       defaultValue: {
-        fileName: "",
+        name: "",
+        readerType: "",
       },
     },
     withAnimation: {
@@ -54,9 +55,9 @@ export default {
   parameters: {
     componentSubtitle: "Displays a Content table row",
     a11y: { disable: true },
-    docs : {
-      iframeHeight : 200
-    }
+    docs: {
+      iframeHeight: 200,
+    },
   },
 };
 
@@ -68,7 +69,8 @@ const Template = (args) => <ContentTableRow {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    fileName: "Dummy file-name.pdf",
+    name: "Dummy file-name",
+    readerType: "videck",
   },
   withAnimation: {
     animation: "zoom",
@@ -90,21 +92,32 @@ Default.parameters = {
 // ContentTableRow
 // -------------------------------------------------------------
 const ListTemplate = (args) => {
-
   return (
     <div className="qui-content-table-row-list">
-      <ContentTableRow {...args} content={{fileName:'Dummy file-name.pdf'}}/>
-      <ContentTableRow {...args} content={{fileName:'Dummy file-name.zip'}}/>
-      <ContentTableRow {...args} content={{fileName:'Dummy file-name.qdf'}}/>
-      <ContentTableRow {...args} content={{fileName:'Dummy file-name.xyz'}}/>
+      <ContentTableRow
+        {...args}
+        content={{ name: "Dummy file-name", readerType: "docdeck" }}
+      />
+      <ContentTableRow
+        {...args}
+        content={{ name: "Dummy file-name", readerType: "assessment" }}
+      />
+      <ContentTableRow
+        {...args}
+        content={{ name: "Dummy file-name", readerType: "survey" }}
+      />
+      <ContentTableRow
+        {...args}
+        content={{ name: "Dummy file-name", readerType: "qdf" }}
+      />
     </div>
   );
 };
 export const ContentTableRowList = ListTemplate.bind({});
 ContentTableRowList.parameters = {
   docs: {
-    description : {
-      story : 'Shows a list of ContentTableRow Component'
+    description: {
+      story: "Shows a list of ContentTableRow Component",
     },
     source: {
       code: `<ContentTableRowList {...${JSON.stringify(

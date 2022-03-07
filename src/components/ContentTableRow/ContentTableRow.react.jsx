@@ -15,7 +15,10 @@ ContentTableRow.propTypes = {
   /**
     ContentTableRow data should be passed in content field and it is a required field
     */
-  content: PropTypes.shape({}).isRequired,
+  content: PropTypes.shape({
+    name: PropTypes.string,
+    readerType: PropTypes.string,
+  }).isRequired,
   //=======================================
   // Quommon props
   //=======================================
@@ -63,18 +66,34 @@ ContentTableRow.defaultProps = {
   isHidden: false,
 };
 
-function getIcon(fileExtention) {
-  let icon;
-  if (fileExtention === "pdf") {
-    icon = "far fa-file-pdf";
-  } else if (fileExtention === "zip") {
-    icon = "fas fa-archive";
-  } else if (fileExtention === "qdf") {
-    icon = "far fa-images";
-  } else {
-    icon = "far fa-file";
+function getIcon(readerType) {
+  switch (readerType) {
+    case "videck":
+      return "fas fa-film";
+    case "docdeck":
+      return "far fa-file-pdf";
+    case "assessment":
+      return "fas fa-stethoscope";
+    case "survey":
+      return "fab fa-wpforms";
+    case "adaptive":
+      return "fas fa-random";
+    case "quiz":
+      return "far fa-question-circle";
+    case "casestudy":
+      return "fas fa-archive";
+    // case "dialogue":
+    //   return "talking outline";
+    case "qdf":
+    case "deck":
+      return "far fa-images";
+    case "game":
+      return "fas fa-gamepad";
+    case "certdeck":
+      return "fas fa-certificate";
+    default:
+      return "far fa-file";
   }
-  return icon;
 }
 /**
 ## Notes
@@ -90,26 +109,15 @@ export default function ContentTableRow(props) {
   //-------------------------------------------------------------------
   const { content } = props;
   //-------------------------------------------------------------------
-  // 2. Extracting file name and extention
+  // 2. Setting states for file name and checkbox
   //-------------------------------------------------------------------
-  const [fileName, setFileName] = useState(content.fileName);
+  const [name, setName] = useState(content?.name);
   const [isChecked, setIsChecked] = useState(false);
-  let fileExtention;
-  let icon;
+  const readerType = content.readerType;
   //-------------------------------------------------------------------
-  // 3. Function to get fileExtention and fileicon
+  // 6. Getting fileicon
   //-------------------------------------------------------------------
-  const getExtention = () => {
-    fileExtention = content.fileName?.substring(
-      content.fileName?.lastIndexOf(".") + 1,
-      content.fileName?.length
-    );
-    icon = getIcon(fileExtention);
-  };
-  useEffect(() => {
-    setFileName(content.fileName);
-    getExtention();
-  }, [content?.fileName]);
+  let icon = readerType ? getIcon(readerType) : "";
   //-------------------------------------------------------------------
   // 4. Set the classes
   //-------------------------------------------------------------------
@@ -118,12 +126,9 @@ export default function ContentTableRow(props) {
   // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-  //-------------------------------------------------------------------
-  // 6. Getting extention and fileicon
-  //-------------------------------------------------------------------
-  getExtention();
+
   // ========================= Render Function =================================
-  
+
   return (
     <motion.div
       initial={animate.from}
@@ -147,8 +152,9 @@ export default function ContentTableRow(props) {
         <input
           type="text"
           className="qui-content-input"
-          value={fileName}
-          onChange={(e) => setFileName(e.target.value)}
+          value={name}
+          maxLength={60}
+          onChange={(e) => setName(e.target.value)}
         />
         <button className="qui-content-menu" onClick={() => props.onClick()}>
           <i className="fas fa-ellipsis-v"></i>
