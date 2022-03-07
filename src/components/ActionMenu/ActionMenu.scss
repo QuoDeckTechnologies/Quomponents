@@ -1,8 +1,9 @@
 .qui .items {
     display: flex;
-    margin-bottom: 0.05em;
-    padding: 0.1em;
+    margin-bottom: 0.1em;
+    padding: 0.01em;
     align-items: center;
+    justify-content: space-between;
 }
 .qui .icons {
     width: 20%;
@@ -19,10 +20,9 @@
 .qui .titles.size-massive {
     font-size: 1.25em;
 }
-
 .qui .fa-angle-up,
 .fa-angle-down {
-    font-size: 1.25em;
+    transform: scale(1.5, 2);
 }
 
 @media screen and (min-width: 320px) {
