@@ -1,0 +1,51 @@
+.qui-deckanalysis {
+    display: flex;
+    padding: 0.5em;
+    min-width: 50%;
+    min-height: auto;
+    align-items: center;
+}
+.qui .qui-maincontainer {
+    background-color: white;
+    border-radius: 1em;
+    min-width: 50%;
+    align-items: center;
+}
+.qui .qui-upperblock {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    margin-bottom: -2em;
+}
+.qui .qui-upperrblock {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+}
+.qui .qui-deckimage {
+    height: 5em;
+    width: 5em;
+    padding: 0.5em;
+}
+.qui .qui-deckdigit {
+    transform: scale(3, 4.5);
+    padding: 0em 0.5em 0em 0.25em;
+}
+.qui .qui-deckbottom {
+    position: relative;
+    background-color: #c1dc9e;
+    padding: 1em;
+    padding-top: 2em;
+    border-radius: 0.5em;
+}
+.qui .qui-slidetitle {
+    padding-left: 2em;
+}
+.qui .qui-titledescription h1 {
+    margin-bottom: -0.5em;
+}
+.qui .qui-titledescription
+{
+ padding-right: 1em;
+} 
