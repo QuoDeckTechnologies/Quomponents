@@ -1,28 +1,28 @@
 .qui .items {
     display: flex;
-    margin-bottom: 0.1em;
+    margin: 0.05em 0em;
     padding: 0.01em;
     align-items: center;
-    justify-content: space-between;
 }
 .qui .icons {
     width: 20%;
+    padding: 0.25em 0em;
 }
 .qui .titles {
     text-align: left;
     width: 80%;
 }
-.qui .titles.size-normal,
+.qui .titles.size-normal {
+    font-size: 0.9em;
+}
 .qui .titles.size-big {
     font-size: 1em;
 }
-.qui .titles.size-huge,
-.qui .titles.size-massive {
-    font-size: 1.25em;
+.qui .titles.size-huge {
+    font-size: 1.1em;
 }
-.qui .fa-angle-up,
-.fa-angle-down {
-    transform: scale(1.5, 2);
+.qui .titles.size-massive {
+    font-size: 1.2em;
 }
 
 @media screen and (min-width: 320px) {
