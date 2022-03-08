@@ -97,6 +97,12 @@ export default {
                 defaultValue: false,
             },
         },
+        isFluid: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: true,
+            },
+        },
 
         onClick: {
             table: {
@@ -119,9 +125,11 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic button for general-purpose use",
+        componentSubtitle: "Displays a loader for general-purpose use",
         a11y: { disable: true },
-        docs: { iframeHeight: 200 },
+        docs: {
+            iframeHeight: 300,
+        },
     },
 };
 
@@ -156,6 +164,7 @@ Default.args = {
     },
 
     isDisabled: false,
+    isFluid:true,
     isHidden: false,
 
 };

@@ -89,6 +89,10 @@ RibbonMenu.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
+        /**
+    Use to enable/disable the component
+    */
+    isFluid: PropTypes.bool,
     /**
       RibbonMenu component must have the onClick function passed as props
       */
@@ -114,6 +118,7 @@ RibbonMenu.defaultProps = {
     withTranslation: null,
 
     isHidden: false,
+    isFluid:true,
     isDisabled: false
 };
 
@@ -129,7 +134,7 @@ export default function RibbonMenu(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "ribbon-menu");
+    let quommonClasses = getQuommons(props,"ribbon-menu");
 
     // ========================= Render Function =================================
 

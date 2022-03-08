@@ -5,10 +5,7 @@ import "../../common/stylesheets/common.css";
 import "./RibbonMenu.scss";
 import "../../common/stylesheets/overrule.scss";
 
-import upload from "../../assets/icons8_upload_to_ftp_64px.png";
-import download from "../../assets/icons8_downloads_32px.png";
-import save from "../../assets/icons8_save_32px.png";
-import save_and_exit from "../../assets/icons8_logout_rounded_left_64px.png";
+import IconLink from "../Buttons/IconLink/IconLink.react"
 
 export default function RibbonHtmlMenu(props) {
 
@@ -16,30 +13,49 @@ export default function RibbonHtmlMenu(props) {
 
     return (
         <div className={`ribbon-menu-html-container`}>
-        <div className="exit-section">
-            <img className={"save-exit"} alt={"exit"} src={save_and_exit} />
-            <div className="label">Save & Exit</div>
-        </div>
-        <div className="parent-vertical-line"></div>
-        <div className="save-section">
-            <div className="save-section-child-container">
-                <div className="save-section-child">
-                    <img className={"file-icons"} alt={"exit"} src={upload} />
-                    <div className="label">Upload</div>
-                </div>
-                <div className="child-vertical-line"></div>
-                <div className="save-section-child">
-                    <img className={"file-icons"} alt={"exit"} src={download} />
-                    <div className="label">Download</div>
-                </div>
-                <div className="child-vertical-line"></div>
-                <div className="save-section-child">
-                    <img className={"file-icons"} alt={"exit"} src={save} />
-                    <div className="label">Save</div>
-                </div>
+            <div className="exit-section">
+                <IconLink
+                    {...props}
+                    tilt={false}
+                    asSize={"small"}
+                    withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
+                    withIcon={{ icon: 'fa fa-sign-out-alt' }} />
+                <div className="ribbon-label">Save & Exit</div>
             </div>
-            <div className="label-file">File</div>
+            <div className="parent-vertical-line"></div>
+            <div className="save-section">
+                <div className="save-section-child-container">
+                    <div className="save-section-child">
+                        <IconLink
+                            className={`file-icons`}
+                            {...props}
+                            asSize={'tiny'}
+                            withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
+                            withIcon={{ icon: 'fas fa-file-upload' }} />
+                        <div className="ribbon-label">Upload</div>
+                    </div>
+                    <div className="child-vertical-line"></div>
+                    <div className="save-section-child">
+                        <IconLink
+                            className={`file-icons`}
+                            {...props}
+                            asSize={'tiny'}
+                            withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
+                            withIcon={{ icon: 'fas fa-download' }} />
+                        <div className="ribbon-label">Download</div>
+                    </div>
+                    <div className="child-vertical-line"></div>
+                    <div className="save-section-child">
+                        <IconLink
+                            {...props}
+                            asSize={'tiny'}
+                            withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
+                            withIcon={{ icon: 'fas fa-file-alt' }} />
+                        <div className="ribbon-label">Save</div>
+                    </div>
+                </div>
+                <div className="label-file">File</div>
+            </div>
         </div>
-    </div>
     );
 }
