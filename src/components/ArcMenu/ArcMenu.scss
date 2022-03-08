@@ -1,4 +1,4 @@
-.qui.qui-arc-menu-button {
+.qui.qui-arc-menu {
   position: static;
 }
 .qui .qui-arc {
@@ -22,9 +22,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 6px 7px 0px rgb(201, 201, 201);
+  box-shadow: 0px 3px 2px 0px #b6b6b6;
 }
-
 .qui .qui-arc-menu-buttons {
   position: absolute;
   left: 100%;
@@ -46,7 +45,7 @@
   width: 5em;
   padding: 0.5em;
   border-radius: 10%;
-  box-shadow: 0px 6px 7px 0px #656565;
+  box-shadow: 0px 3px 2px 0px #656565;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,7 +91,7 @@
     width: 2.2em;
   }
   .qui-arc-menu-button i {
-    font-size: 1.2em;
+    font-size: 1.4em;
   }
 }
 .qui .size-big {
@@ -164,21 +163,32 @@
     font-size: 0.3em;
   }
 }
-
+.qui .qui-arc.qui-close-button {
+  border-bottom-left-radius: 100%;
+  border-top: none;
+  border-right: none;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  top: 0;
+  right: 0;
+  left: auto;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  margin-top: 0;
+}
 @media only screen and (min-width: 320px) {
-  .qui-arc-menu-button {
+  .qui-arc-menu {
     font-size: 0.8em;
   }
 }
-
 @media only screen and (min-width: 481px) {
-  .qui-arc-menu-button {
+  .qui-arc-menu {
     font-size: 0.9em;
   }
 }
-
 @media only screen and (min-width: 769px) {
-  .qui-arc-menu-button {
+  .qui-arc-menu {
     font-size: 1.2em;
   }
 }

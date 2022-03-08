@@ -118,7 +118,7 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    arcIcon: "fas fa-user",
+    arcIcon: "fas fa-caret-down",
     menuData: [
       { name: "Home", icon: "fa fa-home" },
       { name: "Account", icon: "fas fa-user" },
@@ -128,7 +128,7 @@ Default.args = {
       { name: "Logout", icon: "fas fa-desktop" },
     ],
   },
-  isCloseButton: false,
+  isCloseButton: true,
   asVariant: "primary",
   asSize: "normal",
   withColor: {
@@ -158,9 +158,9 @@ export const ColoredArcMenu = Template.bind({});
 ColoredArcMenu.args = {
   ...Default.args,
   withColor: {
-    backgroundColor: "#eae8dc",
+    backgroundColor: "#f5f5f5",
     accentColor: "",
-    textColor: "#e88073",
+    textColor: "#fec13c",
   },
 };
 ColoredArcMenu.parameters = {

@@ -126,7 +126,7 @@ export default function ArcMenu(props) {
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "arc-menu-button");
+  let quommonClasses = getQuommons(props, "arc-menu");
   //-------------------------------------------------------------------
   // 2. Set the component colors
   //-------------------------------------------------------------------
@@ -136,7 +136,6 @@ export default function ArcMenu(props) {
   //-------------------------------------------------------------------
   let labelContent = Object.assign({}, props.content);
   let tObj = null;
-
   if (
     props.withTranslation?.lang &&
     props.withTranslation.lang !== "" &&
@@ -145,6 +144,8 @@ export default function ArcMenu(props) {
     tObj = getTranslation(props.withTranslation);
     if (labelContent && tObj) labelContent.menuData = tObj?.content?.menuData;
   }
+
+  // ========================= Render Function =================================
 
   return (
     <div className={`qui ${quommonClasses.parentClasses}`}>
@@ -159,50 +160,70 @@ export default function ArcMenu(props) {
         onClick={() => setOpenMenu(false)}
       ></motion.div>
       <div className={quommonClasses.childClasses}>
-        <div className={`qui-arc`} style={{ borderColor: colors.borderColor }}>
-          <button
-            className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
-            style={{ backgroundColor: colors.backgroundColor }}
-            onClick={() => setOpenMenu((prevState) => !prevState)}
-          >
-            <i
-              className={`qui-arch-icon ${
-                labelContent?.arcIcon ? labelContent?.arcIcon : "fas fa-desktop"
-              }`}
-              style={{ color: colors.color }}
-            ></i>
-          </button>
-          {!props.isCloseBtton && <motion.div
-            initial={false}
-            animate={
-              !openMenu ? { opacity: 0, y: "100%" } : { opacity: 1, y: 0 }
-            }
-            className={`qui-arc-menu-buttons `}
-          >
-            {_.map(labelContent.menuData, (dataObj, i) => {
-              return (
-                <div
-                  className={`qui-menu-button ${quommonClasses.childClasses}`}
-                  key={i}
-                >
-                  <button
-                    onClick={props.onClick}
-                    className={`qui-btn qui-single-button ${quommonClasses.childClasses}`}
-                    style={{
-                      backgroundColor: colors.backgroundColor,
-                      color: colors.color,
-                    }}
+        <div
+          className={`qui-arc ${props.isCloseButton ? "qui-close-button" : ""}`}
+          style={{ borderColor: colors.borderColor }}
+        >
+          {!props.isCloseButton ? (
+            <button
+              className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
+              style={{ backgroundColor: colors.backgroundColor }}
+              onClick={() => setOpenMenu((prevState) => !prevState)}
+            >
+              <i
+                className={`qui-arch-icon ${
+                  labelContent?.arcIcon
+                    ? labelContent?.arcIcon
+                    : "fas fa-desktop"
+                }`}
+                style={{ color: colors.color }}
+              ></i>
+            </button>
+          ) : (
+            <button
+              className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
+              style={{ backgroundColor: colors.backgroundColor }}
+              onClick={(e) => props.onClick(e)}
+            >
+              <i
+                className={`qui-arch-icon fas fa-times`}
+                style={{ color: colors.color }}
+              ></i>
+            </button>
+          )}
+          {!props.isCloseButton && (
+            <motion.div
+              initial={false}
+              animate={
+                !openMenu ? { opacity: 0, y: "100%" } : { opacity: 1, y: 0 }
+              }
+              className={`qui-arc-menu-buttons `}
+            >
+              {_.map(labelContent.menuData, (dataObj, i) => {
+                return (
+                  <div
+                    className={`qui-menu-button ${quommonClasses.childClasses}`}
+                    key={i}
                   >
-                    <i
-                      className={dataObj.icon}
-                      style={{ color: colors.color }}
-                    ></i>
-                    <small>{dataObj.name}</small>
-                  </button>
-                </div>
-              );
-            })}
-          </motion.div>}
+                    <button
+                      onClick={props.onClick}
+                      className={`qui-btn qui-single-button ${quommonClasses.childClasses}`}
+                      style={{
+                        backgroundColor: colors.backgroundColor,
+                        color: colors.color,
+                      }}
+                    >
+                      <i
+                        className={dataObj.icon}
+                        style={{ color: colors.color }}
+                      ></i>
+                      <small>{dataObj.name}</small>
+                    </button>
+                  </div>
+                );
+              })}
+            </motion.div>
+          )}
         </div>
       </div>
     </div>
