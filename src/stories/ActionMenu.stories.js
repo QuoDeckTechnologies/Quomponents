@@ -171,54 +171,6 @@ ColoredActionMenu.parameters = {
 };
 
 //-------------------------------------------------------------
-// Without Icons ActionMenu
-// -------------------------------------------------------------
-export const WithoutIconsActionMenu = Template.bind({});
-WithoutIconsActionMenu.args = {
-    ...Default.args,
-    content: [
-        {
-            title: "Open Deck",
-            icon: "",
-        },
-        {
-            title: "Edit Deck",
-            icon: "",
-        },
-        {
-            title: "Move Deck Up",
-            icon: "",
-        },
-        {
-            title: "Move Deck Down",
-            icon: "",
-        },
-        {
-            title: "Move to Topic",
-            icon: "",
-        },
-        {
-            title: "Unpublish Deck",
-            icon: "",
-        },
-        {
-            title: "Delete Deck",
-            icon: "",
-        },
-    ],
-};
-WithoutIconsActionMenu.parameters = {
-    docs: {
-        description: {
-            story: "Dispay the actionmenu without icons.",
-        },
-        source: {
-            code: `<ActionMenu content:[{""}]/>`,
-        },
-    },
-};
-
-//-------------------------------------------------------------
 // Animated ActionMenu
 // -------------------------------------------------------------
 export const AnimatedActionMenu = Template.bind({});
