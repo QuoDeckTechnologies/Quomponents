@@ -112,7 +112,7 @@ export default function LearnerTableRow(props) {
       style={{ backgroundColor: props.withColor?.backgroundColor }}
     >
       {enrolledLearners &&
-        enrolledLearners?.map((learner, index) => {
+        enrolledLearners.map((learner, index) => {
           return (
             <div
               className="qui-learner-list-element"
