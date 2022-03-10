@@ -30,11 +30,6 @@ RibbonMenu.propTypes = {
     //=======================================
     // Quommon props
     //=======================================
-
-    /**
-    Use to define standard component type
-    */
-    asVariant: PropTypes.oneOf(["primary", "secondary", "success", "warning"]),
     /**
     Use to define component text size in increasing order
     */
@@ -51,10 +46,6 @@ RibbonMenu.propTypes = {
     */
     asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
     /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
-    /**
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
@@ -63,23 +54,6 @@ RibbonMenu.propTypes = {
         textColor: PropTypes.string,
         hoverBackgroundColor: PropTypes.string,
         hoverTextColor: PropTypes.string,
-    }),
-    /**
-    Use to define the entry animation of the component
-    */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-            "",
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
     }),
     /**
     Use to show/hide the component
@@ -104,22 +78,20 @@ RibbonMenu.defaultProps = {
     // Component Specific props
     //=======================================
     content: [],
-    asEmphasis: "text",
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
-    asAligned: "center",
 
     withColor: null,
-    withAnimation: null,
     withTranslation: null,
 
     isHidden: false,
     isFluid:true,
-    isDisabled: false
+    isDisabled: false,
+
+    onClick:null
 };
 
 /**
