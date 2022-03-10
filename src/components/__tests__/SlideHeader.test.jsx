@@ -34,21 +34,21 @@ describe("SlideHeader", () => {
             expect(component.exists()).toBe(true);
         });
 
-    it("should render correctly if asFloatedProp get selected to Inline",
+    it("should render correctly if asFloated Props get selected to Inline",
         () => {
             component.setProps({ asFloated: "inline" });
             expect(component.exists()).toBe(true);
         });
 
-    it("should render correctly if withColor set to any color prop",
+    it("should render correctly if withColor set to any color props",
         () => {
-            component.setProps({ withColor: { backgroundColor: "purple" } });
-            expect(component.exists()).toBe(true);
-        });
-
-    it("should render correctly if withColor set to any color prop",
-        () => {
-            component.setProps({ withColor: { textColor: "red" } });
+            component.setProps({
+                withColor: {
+                    accentColor: "#AD2929",
+                    textColor: "#ffffff",
+                    backgroundColor: "#ad292980",
+                }
+            });
             expect(component.exists()).toBe(true);
         });
 
