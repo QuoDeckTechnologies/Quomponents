@@ -8,10 +8,9 @@
   flex-direction: row;
   align-items: center;
 }
-
 .qui .qui-learner-username {
   display: flex;
-  flex: 1;
+  flex: 0.8;
   margin-left: 0.2em;
   width: 10em;
 }
@@ -58,13 +57,11 @@
     font-size: 0.61em;
   }
 }
-
 @media only screen and (min-width: 481px) {
   .qui-learner-table-row {
     font-size: 0.75em;
   }
 }
-
 @media only screen and (min-width: 769px) {
   .qui-learner-table-row {
     font-size: 1.2em;

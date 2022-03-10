@@ -5,13 +5,7 @@ export default {
   title: "Design System/LearnerTableRow/LearnerTableRow",
   component: LearnerTableRow,
   argTypes: {
-    content: {
-      table: {
-        defaultValue: {
-          enrolledLearners: [],
-        },
-      },
-    },
+    content: [],
     withColor: {
       table: {
         category: "with-Params",
@@ -87,16 +81,14 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    enrolledLearners: [
-      {
-        _id: "",
-        username: "sysadmin",
-        first_name: "System",
-        last_name: "Administrator",
-      },
-    ],
-  },
+  content: [
+    {
+      _id: "",
+      username: "sysadmin",
+      first_name: "System",
+      last_name: "Administrator",
+    },
+  ],
   withColor: {
     backgroundColor: "",
     accentColor: "",
@@ -125,55 +117,36 @@ const ListTemplate = (args) => {
     <div className="qui-content-table-row-list">
       <LearnerTableRow
         {...args}
-        content={{
-          enrolledLearners: [
-            {
-              _id: "",
-              username: "sysadmin",
-              first_name: "System",
-              last_name: "Administrator",
-            },
-          ],
-        }}
+        content={[
+          {
+            _id: "",
+            username: "sysadmin",
+            first_name: "System",
+            last_name: "Administrator",
+          },
+        ]}
       />
       <LearnerTableRow
         {...args}
-        content={{
-          enrolledLearners: [
-            {
-              _id: "",
-              username: "john_doe",
-              first_name: "John",
-              last_name: "Doe",
-            },
-          ],
-        }}
+        content={[
+          {
+            _id: "",
+            username: "john_doe",
+            first_name: "John",
+            last_name: "Doe",
+          },
+        ]}
       />
       <LearnerTableRow
         {...args}
-        content={{
-          enrolledLearners: [
-            {
-              _id: "",
-              username: "jane_doe",
-              first_name: "Jane",
-              last_name: "Doe",
-            },
-          ],
-        }}
-      />
-      <LearnerTableRow
-        {...args}
-        content={{
-          enrolledLearners: [
-            {
-              _id: "",
-              username: "superadmin",
-              first_name: "Super",
-              last_name: "Administrator",
-            },
-          ],
-        }}
+        content={[
+          {
+            _id: "",
+            username: "superadmin",
+            first_name: "Super",
+            last_name: "Administrator",
+          },
+        ]}
       />
     </div>
   );

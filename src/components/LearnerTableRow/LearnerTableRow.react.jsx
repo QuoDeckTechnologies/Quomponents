@@ -15,7 +15,7 @@ LearnerTableRow.propTypes = {
   /**
     LearnerTableRow data should be passed in content field and it is a required field
     */
-  content: PropTypes.shape({}).isRequired,
+  content: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   //=======================================
   // Quommon props
   //=======================================
@@ -67,7 +67,7 @@ LearnerTableRow.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  content: [],
   //=======================================
   // Quommon props
   //=======================================
@@ -93,7 +93,7 @@ export default function LearnerTableRow(props) {
   // 2. Defining variables and states
   //-------------------------------------------------------------------
   const [isChecked, setIsChecked] = useState(false);
-  const enrolledLearners = content?.enrolledLearners;
+  const enrolledLearners = content;
   //-------------------------------------------------------------------
   // 4. Set the classes
   //-------------------------------------------------------------------
