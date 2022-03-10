@@ -1,7 +1,9 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
+import React from 'react';
 import { shallow, mount, enzyme } from 'enzyme';
+
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -48,21 +50,24 @@ describe("InlineEdit", () => {
             expect(component.exists()).toBe(true);
         });
 
-    it("it should render correctly without throwing an error", () => {
-        expect(component.find('input').simulate('change')).toBe(true);
+    it("it should pass the value to the InlineEdit", () => {
+        component.find('input').simulate('change', { target: { value: 'Please input your text here' } })
+        expect(component.find('input').props().value).toEqual('Please input your text here');
     });
 
-    it("it should render correctly without throwing an error", () => {
+    it("it should render correct props when blur on input", () => {
         component.setProps({
             withColor: {
                 accentColor: "#FFAB00",
                 backgroundColor: "transparent",
             }
         });
-        expect(component.find('input').simulate('blur')).toBe("transparent");
+        console.log(component.find('input').simulate('blur'))
+        component.find('input').simulate('blur', { style: { backgroundColor: "transparent" } })
+        expect(component.find('input').props().children.style.backgroundColor).toEqual("transparent");
     });
 
-    it("it should render correctly without throwing an error", () => {
+    it("it should render correct props when focus on input", () => {
         component.setProps({
             withColor: {
                 accentColor: "#FFAB00",
@@ -72,5 +77,3 @@ describe("InlineEdit", () => {
         expect(component.find('input').simulate('focus')).toBe(true);
     });
 });
-
-
