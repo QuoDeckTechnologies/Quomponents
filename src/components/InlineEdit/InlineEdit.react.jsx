@@ -102,7 +102,7 @@ export default function InlineEdit(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props, "inline-edit");
     //-------------------------------------------------------------------
     // 2. Declaration of Input's value
     //-------------------------------------------------------------------
