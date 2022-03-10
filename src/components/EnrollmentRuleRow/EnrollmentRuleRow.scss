@@ -13,13 +13,11 @@
   margin-right: 0.2em;
   border-radius: 0.2em;
   font-size: 0.9em;
-  // max-width: 10em;
   max-width: 6.5em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .qui .qui-enrollment-rules {
   display: flex;
 }
@@ -31,14 +29,12 @@
   margin: 0 0.2em;
   cursor: pointer;
 }
-
 .qui .qui-enrollment-icons .fa-times {
   font-size: 1.2em;
 }
 .qui .qui-enrollment-icons .fa-play {
   color: #666666;
 }
-
 @media only screen and (min-width: 320px) {
   .qui-enrollment-rule-row {
     font-size: 0.61em;
@@ -47,7 +43,6 @@
     max-width: 4.5em;
   }
 }
-
 @media only screen and (min-width: 481px) {
   .qui-enrollment-rule-row {
     font-size: 0.75em;
@@ -56,7 +51,6 @@
     max-width: 6.5em;
   }
 }
-
 @media only screen and (min-width: 769px) {
   .qui-enrollment-rule-row {
     font-size: 1.2em;

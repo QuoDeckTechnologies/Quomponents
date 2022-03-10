@@ -15,11 +15,30 @@ EnrollmentRuleRow.propTypes = {
   /**
     EnrollmentRuleRow data should be passed in content field and it is a required field
     */
-  content: PropTypes.shape({}).isRequired,
+  content: PropTypes.shape({
+    enrollmentRule: PropTypes.shape({
+      company: PropTypes.string,
+      zone: PropTypes.string,
+      branch: PropTypes.string,
+      department: PropTypes.string,
+      date_of_joining: PropTypes.string,
+    }),
+    allRules: PropTypes.arrayOf(
+      PropTypes.shape({
+        _id: PropTypes.string,
+        criteria: PropTypes.shape({
+          company: PropTypes.string,
+          zone: PropTypes.string,
+          branch: PropTypes.string,
+          department: PropTypes.string,
+          date_of_joining: PropTypes.string,
+        }),
+      })
+    ),
+  }).isRequired,
   //=======================================
   // Quommon props
   //=======================================
-
   /**
     Use to override component colors and behavior
     */
@@ -126,6 +145,7 @@ export default function EnrollmentRuleRow(props) {
   const animate = getAnimation(props.withAnimation);
 
   // ========================= Render Function =================================
+  
   return (
     <motion.div
       initial={animate.from}

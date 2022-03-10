@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
+import { mount } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -60,7 +60,6 @@ describe("EnrollmentRuleRow", () => {
       />
     );
   });
-
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
