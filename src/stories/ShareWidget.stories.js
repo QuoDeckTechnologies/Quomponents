@@ -19,16 +19,8 @@ export default {
                 defaultValue: {
                     label: "",
                     circular: false,
-                    size: 32,
                     url: ""
                 },
-            },
-        },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
             },
         },
         asFloated: {
@@ -86,7 +78,7 @@ export default {
         componentSubtitle:
             "Default ShareWidget for general purpose use",
         a11y: { disable: true },
-        docs: { iframeHeight: 100 },
+        docs: { iframeHeight: 150 },
     },
 };
 // -------------------------------------------------------------
@@ -98,10 +90,8 @@ Default.args = {
     content: {
         label: "Share",
         circular: true,
-        size: 32,
         url: "www.quodeck.com",
     },
-    asSize: "normal",
     asFloated: "inline",
 
     withAnimation: {
@@ -213,7 +203,6 @@ const AllVariantsTemplate = (args) => {
                     content: {
                         label: "Share",
                         circular: false,
-                        size: 32,
                         url: "www.quodeck.com",
                     }
                 })}
@@ -224,19 +213,12 @@ const AllVariantsTemplate = (args) => {
                     content: {
                         label: "Share",
                         circular: false,
-                        size: 50,
                         url: "www.quodeck.com",
-                    }
-                })}
-            />{" "}
-            <br />
-            <ShareWidget
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        label: "Share",
-                        circular: true,
-                        size: 50,
-                        url: "www.quodeck.com",
+                    },
+                    withTranslation: {
+                        lang: "hi",
+                        tgt: "ShareWidget",
+                        dictionary: dictionary,
                     }
                 })}
             />{" "}

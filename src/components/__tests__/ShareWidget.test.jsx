@@ -26,7 +26,6 @@ describe("ShareWidget", () => {
         component = shallow(
             <ShareWidget
                 content={null}
-                asSize="normal"
                 asFloated="none"
                 withColor={null}
                 withAnimation={null}
@@ -55,8 +54,7 @@ describe("ShareWidget", () => {
                 content: {
                     label: "Share",
                     circular: true,
-                    size: 32,
-                    url: "www.facebook.com",
+                    url: "www.quodeck.com",
                 },
             });
             expect(component.exists()).toBe(true);

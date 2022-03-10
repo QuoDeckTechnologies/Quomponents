@@ -22,40 +22,27 @@ import "../../common/stylesheets/common.css";
 import "./ShareWidget.scss";
 import "../../common/stylesheets/overrule.scss";
 
-
 ShareWidget.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-      Use to define content's value in side the ShareWidget
+    Use to define content's value in side the ShareWidget
     */
     content: PropTypes.shape({
         label: PropTypes.string,
         circular: PropTypes.bool,
-        size: PropTypes.number,
         url: PropTypes.string,
     }),
     //=======================================
     // Quommon props
     //=======================================
     /**
-      Use to define component text and icon size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-     Use to define the entry animation of the component
+    Use to define the entry animation of the component
     */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
@@ -72,7 +59,7 @@ ShareWidget.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to show/hide the component
+    Use to show/hide the component
     */
     isHidden: PropTypes.bool,
     /**
@@ -89,7 +76,6 @@ ShareWidget.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asSize: "normal",
     asFloated: "none",
 
     withAnimation: null,
@@ -109,7 +95,7 @@ export default function ShareWidget(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props, "share-widget");
     //-------------------------------------------------------------------
     // 2. Get translation of the ShareWidget component
     //-------------------------------------------------------------------
@@ -141,23 +127,23 @@ export default function ShareWidget(props) {
                 </div>
                 <div className="qui-shareicon-container">
                     <FacebookShareButton className="qui-share-icon" url={shareContent?.url}>
-                        <FacebookIcon size={shareContent?.size} round={shareContent?.circular} />
+                        <FacebookIcon round={shareContent?.circular} />
                     </FacebookShareButton>
 
                     <TwitterShareButton className="qui-share-icon" url={shareContent?.url}>
-                        <TwitterIcon size={shareContent?.size} round={shareContent?.circular} />
+                        <TwitterIcon round={shareContent?.circular} />
                     </TwitterShareButton>
 
                     <LinkedinShareButton className="qui-share-icon" url={shareContent?.url}>
-                        <LinkedinIcon size={shareContent?.size} round={shareContent?.circular} />
+                        <LinkedinIcon round={shareContent?.circular} />
                     </LinkedinShareButton>
 
                     <WhatsappShareButton className="qui-share-icon" url={shareContent?.url}>
-                        <WhatsappIcon size={shareContent?.size} round={shareContent?.circular} />
+                        <WhatsappIcon round={shareContent?.circular} />
                     </WhatsappShareButton>
 
                     <EmailShareButton className="qui-share-icon" url={shareContent?.url}>
-                        <EmailIcon size={shareContent?.size} round={shareContent?.circular} />
+                        <EmailIcon round={shareContent?.circular} />
                     </EmailShareButton>
                 </div>
             </div>
