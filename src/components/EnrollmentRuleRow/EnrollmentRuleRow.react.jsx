@@ -28,7 +28,7 @@ EnrollmentRuleRow.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to override component colors and behavior
+    Use to override component colors
     */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
@@ -89,7 +89,6 @@ EnrollmentRuleRow.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Status of topics can be changed from content prop
 **/
 export default function EnrollmentRuleRow(props) {
   //-------------------------------------------------------------------

@@ -80,7 +80,7 @@ export default {
     componentSubtitle: "Displays a EnrollmentRuleRow.",
     a11y: { disable: true },
     docs: {
-      iframeHeight: 600,
+      iframeHeight: 250,
     },
   },
 };
