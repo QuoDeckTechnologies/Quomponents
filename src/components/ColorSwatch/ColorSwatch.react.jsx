@@ -76,10 +76,7 @@ ActionButton.defaultProps = {
 
 /**
 ## Notes
-- The design system used for this component is Material UI (@mui/material)
-- The animation system used for this component is Framer Motion (framer-motion)
-- Pass inline styles to the component to override any of the component css
-- Or add custom css in overrule.scss to override the component css
+- Pass withColor props which consists of primary, accent, secondary and page color props.
 **/
 export default function ActionButton(props) {
     //-------------------------------------------------------------------
