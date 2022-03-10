@@ -71,7 +71,7 @@ describe("DeckCard", () => {
                     dictionary: dictionary,
                 }}
                 isDisabled={false}
-                isHidden={false}
+                isHidden={true}
                 onClick={() => console.log("EanrCard testing")}
             />
         );
@@ -118,6 +118,7 @@ describe("DeckCard", () => {
                         },
                     ],
                 }}
+                isHidden={false}
                 withColor={{
                     backgroundColor: "",
                     accentColor: "",

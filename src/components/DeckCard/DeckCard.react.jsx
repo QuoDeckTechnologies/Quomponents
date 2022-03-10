@@ -33,7 +33,7 @@ DeckCard.propTypes = {
                 checked: PropTypes.bool,
             })
         ),
-    }),
+    }).isRequired,
 
     //=======================================
     // Quommon props
@@ -179,7 +179,7 @@ export default function DeckCard(props) {
         >
             <div className={`qui-deckcard-label`}>
                 <Ribbon
-                    isHidden={content ? props.isHidden:true}
+                    isHidden={content?.title ? props.isHidden : true}
                     asFloated="left"
                     asEmphasis={content?.tag}
                     withTranslation={props.withTranslation}
@@ -189,11 +189,11 @@ export default function DeckCard(props) {
 
                 style={colors.cardColors}
             >
-                <div className="qui-left">
-                    <img className="qui-deckcardimg" src={props.content?.image}  />
+                <div className="qui-deckcardleft">
+                    <img className="qui-deckcardimg" src={props.content?.image} />
                 </div>
-                <div className={`qui-middle`}>
-                    <div className="qui-course-title" style={colors.textColors}>
+                <div className="qui-deckcardmiddle">
+                    <div className="qui-deckcardtitle" style={colors.textColors}>
                         <h1>{labelContent?.title}</h1>
                     </div>
                     <div className="qui-description">
@@ -201,12 +201,11 @@ export default function DeckCard(props) {
                     </div>
                 </div>
 
-                <div className={`qui-right`}>
-                    <div className={`${quommonClasses.childClasses}`} style={colors.accentColors}
-                    >
+                <div className="qui-deckcardright">
+                    <div className={`${quommonClasses.childClasses}`}>
                         <img className="qui-iconimg" src={props.content?.icon} />
                     </div>
-                    <div className="qui-verticleline" style={colors.bannerColors}></div>
+                    <div className="qui-deckcardvline" style={colors.bannerColors}></div>
                     <div>
                         {_.map(content?.topics, (topics, index) => {
                             return (
