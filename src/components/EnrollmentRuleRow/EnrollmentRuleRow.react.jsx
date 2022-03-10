@@ -16,23 +16,11 @@ EnrollmentRuleRow.propTypes = {
     EnrollmentRuleRow data should be passed in content field and it is a required field
     */
   content: PropTypes.shape({
-    enrollmentRule: PropTypes.shape({
-      company: PropTypes.string,
-      zone: PropTypes.string,
-      branch: PropTypes.string,
-      department: PropTypes.string,
-      date_of_joining: PropTypes.string,
-    }),
+    enrollmentRule: PropTypes.shape({}),
     allRules: PropTypes.arrayOf(
       PropTypes.shape({
         _id: PropTypes.string,
-        criteria: PropTypes.shape({
-          company: PropTypes.string,
-          zone: PropTypes.string,
-          branch: PropTypes.string,
-          department: PropTypes.string,
-          date_of_joining: PropTypes.string,
-        }),
+        criteria: PropTypes.shape({}),
       })
     ),
   }).isRequired,
