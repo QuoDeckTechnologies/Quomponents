@@ -2,8 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-    getQuommons,
-    getTranslation,
+    getQuommons
 } from "../../common/javascripts/helpers.js";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -28,16 +27,6 @@ ActionButton.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define standard component type
-    */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
-    /**
     Use to define component text size in increasing order
     */
     asSize: PropTypes.oneOf([
@@ -57,39 +46,6 @@ ActionButton.propTypes = {
     */
     asFloated: PropTypes.oneOf(["left", "right", "inline"]),
     /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
-
- 
-
-    /**
-    Use to define the entry animation of the component
-    */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-            ""
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
-    }),
-    /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
-
-    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -107,19 +63,14 @@ ActionButton.propTypes = {
 ActionButton.defaultProps = {
     // Component Specific props
     //=======================================
-    content: null,
-
+    withColor: null,
     // Quommon props
     //=======================================
-    asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
-
-    withColor: null,
-
+    asFloated: "inline",
     isHidden: false,
     isDisabled: false,
-
     onClick: null
 };
 
@@ -131,7 +82,6 @@ ActionButton.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function ActionButton(props) {
-
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -141,23 +91,20 @@ export default function ActionButton(props) {
     // 2. Get the component with the color props
     //-------------------------------------------------------------------
     const colorSwatch = (colors) => {
-            return(
-                <div className={`color-swatch-container`}
-                style={{backgroundColor: colors?.pageColor}}>
-                    <div className={`color-swatch-title`}
-                    style={{backgroundColor: colors?.primaryColor}}>
-
-                    </div>
-                    <div className="color-swatch-sub-title"
-                    style={{backgroundColor: colors?.accentColor}}>
-
-                    </div>
-                    <div className="color-swatch-footer"
-                    style={{backgroundColor: colors?.secondaryColor}}>
-
-                    </div>
+        return (
+            <div className={`color-swatch-container`}
+                style={{ backgroundColor: colors?.pageColor }}>
+                <div className={`color-swatch-title`}
+                    style={{ backgroundColor: colors?.primaryColor }}>
                 </div>
-            )
+                <div className="color-swatch-sub-title"
+                    style={{ backgroundColor: colors?.accentColor }}>
+                </div>
+                <div className="color-swatch-footer"
+                    style={{ backgroundColor: colors?.secondaryColor }}>
+                </div>
+            </div>
+        )
     }
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}>
