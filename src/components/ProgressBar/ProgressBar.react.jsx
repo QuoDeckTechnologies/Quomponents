@@ -166,13 +166,13 @@ export default function ProgressBar(props) {
             style={colors?.backColors}
         >
             <div className={`qui-progressbar${quommonClasses.childClasses}`}>
-                <div className="qui-leftblock">
+                <div>
                     <i className={`qui-icon ${content?.leftIcon}`}
                         style={colors?.textColors}
                         onClick={() => decrement()}>
                     </i>
                 </div>
-                <div className="qui-middleblock">
+                <div className="qui-progressbarmiddle">
                     {_.map(props.content?.stepArray, (key, index) => {
                         return (
                             <div className="qui-currentstep" key={index}
@@ -180,7 +180,7 @@ export default function ProgressBar(props) {
                         )
                     })}
                 </div>
-                <div className="qui-rightblock">
+                <div>
                     <i className={`qui-icon ${content?.rightIcon}`}
                         style={colors?.textColors}
                         onClick={() => increment()}>
