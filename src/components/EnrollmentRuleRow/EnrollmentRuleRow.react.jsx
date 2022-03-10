@@ -133,7 +133,7 @@ export default function EnrollmentRuleRow(props) {
   const animate = getAnimation(props.withAnimation);
 
   // ========================= Render Function =================================
-  
+
   return (
     <motion.div
       initial={animate.from}
@@ -143,40 +143,42 @@ export default function EnrollmentRuleRow(props) {
       {allRules &&
         allRules.map((item, index) => {
           let data = Object.values(item.criteria);
-          return (
-            <div
-              className="qui-enrollment-list-element"
-              key={index}
-              style={{ backgroundColor: props.withColor?.backgroundColor }}
-            >
-              <div className="qui-enrollment-rules">
-                {data.map((item, index) => {
-                  return (
-                    <p
-                      className="qui-enrollment-rule"
-                      key={index}
-                      style={{
-                        backgroundColor: props.withColor?.accentColor,
-                        color: props.withColor?.textColor,
-                      }}
-                    >
-                      {item}
-                    </p>
-                  );
-                })}
+          if (data.length) {
+            return (
+              <div
+                className="qui-enrollment-list-element"
+                key={index}
+                style={{ backgroundColor: props.withColor?.backgroundColor }}
+              >
+                <div className="qui-enrollment-rules">
+                  {data.map((item, index) => {
+                    return (
+                      <p
+                        className="qui-enrollment-rule"
+                        key={index}
+                        style={{
+                          backgroundColor: props.withColor?.accentColor,
+                          color: props.withColor?.textColor,
+                        }}
+                      >
+                        {item}
+                      </p>
+                    );
+                  })}
+                </div>
+                <div className="qui-enrollment-icons">
+                  <i
+                    className="fas fa-play"
+                    onClick={(e) => props.onRunRule(e)}
+                  ></i>
+                  <i
+                    className="fas fa-times"
+                    onClick={(e) => props.onRemoveRule(e)}
+                  ></i>
+                </div>
               </div>
-              <div className="qui-enrollment-icons">
-                <i
-                  className="fas fa-play"
-                  onClick={(e) => props.onRunRule(e)}
-                ></i>
-                <i
-                  className="fas fa-times"
-                  onClick={(e) => props.onRemoveRule(e)}
-                ></i>
-              </div>
-            </div>
-          );
+            );
+          }
         })}
     </motion.div>
   );
