@@ -105,15 +105,15 @@ Default.args = {
         },
         {
             title: "Move Deck Up",
-            icon: "fas fa-angle-up",
+            icon: "fas fa-chevron-up",
         },
         {
             title: "Move Deck Down",
-            icon: "fas fa-angle-down",
+            icon: "fas fa-chevron-down",
         },
         {
             title: "Move to Topic",
-            icon: "fas fa-square",
+            icon: "fas fa-retweet",
         },
         {
             title: "Unpublish Deck",
@@ -121,13 +121,13 @@ Default.args = {
         },
         {
             title: "Delete Deck",
-            icon: "fas fa-trash",
+            icon: "fas fa-trash-alt",
         },
     ],
     asVariant: "success",
-    asSize: "normal",
+    asSize: "small",
     withColor: {
-        backgroundColor: "",
+        backgroundColor: "#339b9b",
         textColor: "",
         accentColor: "",
     },
@@ -154,7 +154,7 @@ export const ColoredActionMenu = Template.bind({});
 ColoredActionMenu.args = {
     ...Default.args,
     withColor: {
-        backgroundColor: "8#ADDE6",
+        backgroundColor: "#D3D3D3",
         textColor: "#C53816",
         accentColor: "#F2A52D",
     },
