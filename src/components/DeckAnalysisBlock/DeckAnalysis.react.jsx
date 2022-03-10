@@ -41,17 +41,6 @@ DeckAnalysis.propTypes = {
         "error",
     ]),
     /**
-      Use to define component size in increasing order
-      */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
       Use to override component colors and behavior
       */
     withColor: PropTypes.shape({
@@ -94,7 +83,7 @@ DeckAnalysis.propTypes = {
       */
     isHidden: PropTypes.bool,
     /**
-      Button component must have the onClick function passed as props
+      DeckAnalysisBlock component must have the onClick function passed as props
       */
     onClick: PropTypes.func.isRequired,
 };
@@ -108,7 +97,6 @@ DeckAnalysis.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "primary",
-    asSize: "normal",
     withColor: null,
     withAnimation: null,
     withTranslation: null,
@@ -158,7 +146,7 @@ export default function DeckAnalysis(props) {
     let labelContent = {
         title: content?.title,
         description: content?.description,
-        digit:content?.digit,
+        digit: content?.digit,
     };
     let tObj = null;
 
@@ -185,24 +173,23 @@ export default function DeckAnalysis(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            onClick={props.onClick}
         >
-            <div className="qui-maincontainer"className={`${quommonClasses.childClasses}`}>
+            <div className="qui qui-maindeck" className={`${quommonClasses.childClasses}`} style={colors.textColors}>
                 <div className="qui-upperrblock">
-                    <div className="qui-slidetitle">
+                    <div className="qui-decktitle">
                         <div className="qui-upperblock">
                             <p className={`qui-deckdigit`}>{labelContent?.digit}</p>
                             <img src={content?.image} className="qui-deckimage"></img>
                         </div>
                         <h1>{labelContent?.title}</h1>
                     </div>
-                    <div className="qui-titledescription" style={colors.textColors}>
+                    <div className="qui-titledescription" >
                         <h1>{labelContent?.title}</h1>
                         <h3>{labelContent?.description}</h3>
                     </div>
                 </div>
-                <div className="qui-deckbottom">
-                    <i className={content?.icon}></i>
+                <div className="qui-deckbottom" onClick={props.onClick} style={colors.backgroundColors}>
+                    <i className={content?.icon} style={colors.accentColors}></i>
                 </div>
             </div>
         </motion.div>
