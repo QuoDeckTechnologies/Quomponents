@@ -141,7 +141,7 @@ export default function EnrollmentRuleRow(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       {allRules &&
-        allRules?.map((item, index) => {
+        allRules.map((item, index) => {
           let data = Object.values(item.criteria);
           return (
             <div
