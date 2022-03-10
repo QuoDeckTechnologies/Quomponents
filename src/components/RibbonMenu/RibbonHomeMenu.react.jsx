@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -8,7 +8,15 @@ import "../../common/stylesheets/overrule.scss";
 import IconLink from "../Buttons/IconLink/IconLink.react"
 
 export default function RibbonHomeMenu(props) {
+    const [isBackChecked, setBakChecked] = useState(false);
+    const [isNextChecked, setNextChecked] = useState(false);
 
+    function toggleBackChecked() {
+        setBakChecked(prevState => !prevState)
+    }
+    function toggleNextChecked() {
+        setNextChecked(prevState => !prevState)
+    }
     // ========================= Render Function =================================
 
     return (
@@ -48,7 +56,7 @@ export default function RibbonHomeMenu(props) {
                             {...props}
                             asSize={'tiny'}
                             withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                            withIcon={{ icon: 'fas fa-file-alt' }} />
+                            withIcon={{ icon: 'far fa-file-alt' }} />
                         <div className="ribbon-label">Save</div>
                     </div>
                 </div>
@@ -72,7 +80,7 @@ export default function RibbonHomeMenu(props) {
                                 {...props}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                                withIcon={{ icon: 'fas fa-copy' }} />
+                                withIcon={{ icon: 'far fa-copy' }} />
                             <div className="slide-label">Duplicate Slide</div>
                         </div>
                         <div className="slide-section-right-content">
@@ -92,21 +100,22 @@ export default function RibbonHomeMenu(props) {
                 <div className="settings-section-child-container">
                     <div className="vo-section-child">
                         <div className="vo-section-right-content">
-                            <IconLink
+                        <IconLink
                                 {...props}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                                withIcon={{ icon: 'fas fa-check-square file-right-icons' }} />
-                            <div className="ribbon-label">Enable Back Arrow</div>
+                                withIcon={{ icon:`file-right-icons ${isBackChecked ? "far fa-check-square" : "far fa-square"}`  }}
+                                onClick={() => toggleBackChecked()}/>
+                            <div className="ribbon-label" onClick={() => toggleBackChecked()}>Enable Back Arrow</div>
                         </div>
                         <div className="vo-section-right-content">
-
-                            <IconLink
+                        <IconLink
                                 {...props}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                                withIcon={{ icon: 'fas fa-check-square file-right-icons' }} />
-                            <div className="ribbon-label">Enable Next Arrow</div>
+                                withIcon={{ icon:`file-right-icons ${isNextChecked ? "far fa-check-square" : "far fa-square"}`  }}
+                                onClick={() => toggleNextChecked()}/>
+                            <div className="ribbon-label" onClick={() => toggleNextChecked()}>Enable Next Arrow</div>
                         </div>
                     </div>
                 </div>

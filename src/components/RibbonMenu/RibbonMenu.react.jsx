@@ -96,7 +96,7 @@ RibbonMenu.propTypes = {
     /**
       RibbonMenu component must have the onClick function passed as props
       */
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func
 };
 
 RibbonMenu.defaultProps = {

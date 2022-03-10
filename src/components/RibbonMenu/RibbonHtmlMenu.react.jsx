@@ -50,7 +50,7 @@ export default function RibbonHtmlMenu(props) {
                             {...props}
                             asSize={'tiny'}
                             withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                            withIcon={{ icon: 'fas fa-file-alt' }} />
+                            withIcon={{ icon: 'far fa-file-alt' }} />
                         <div className="ribbon-label">Save</div>
                     </div>
                 </div>

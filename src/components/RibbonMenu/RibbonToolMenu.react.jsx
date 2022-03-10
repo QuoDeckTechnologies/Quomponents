@@ -1,9 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 
 import IconLink from "../Buttons/IconLink/IconLink.react";
 
 export default function RibbonToolMenu(props) {
-
+    const [isNavigationChecked, setNavigationChecked] = useState(false);
+    const [isSlideChecked, setSlideChecked] = useState(false);
+    const [isVoiceoverChecked, setVoiceoverChecked] = useState(false);
+    function toggleNavigationChecked() {
+        setNavigationChecked(prevState => !prevState)
+    }
+    function toggleSlideChecked() {
+        setSlideChecked(prevState => !prevState)
+    }
+    function toggleVoiceoverChecked() {
+        setVoiceoverChecked(prevState => !prevState)
+    }
     // ========================= Render Function =================================
 
     return (
@@ -26,24 +37,27 @@ export default function RibbonToolMenu(props) {
                                 {...props}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                                withIcon={{ icon: 'fas fa-check-square file-right-icons' }} />
-                            <div className="ribbon-label">Enable Navigation</div>
+                                withIcon={{ icon:`file-right-icons ${isNavigationChecked ? "far fa-check-square" : "far fa-square"}`  }}
+                                onClick={() => toggleNavigationChecked()}/>
+                            <div className="ribbon-label" onClick={() => toggleNavigationChecked()}>Enable Navigation</div>
                         </div>
                         <div className="settings-section-right-content">
                             <IconLink
                                 {...props}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                                withIcon={{ icon: 'fas fa-check-square file-right-icons' }} />
-                            <div className="ribbon-label">Enable Slide List</div>
+                                withIcon={{ icon:`file-right-icons ${isSlideChecked ? "far fa-check-square" : "far fa-square"}`  }}
+                                onClick={() => toggleSlideChecked()}/>
+                            <div className="ribbon-label" onClick={() => toggleSlideChecked()}>Enable Slide List</div>
                         </div>
                         <div className="settings-section-right-content">
                             <IconLink
                                 {...props}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                                withIcon={{ icon: 'fas fa-check-square file-right-icons' }} />
-                            <div className="ribbon-label">Enable Voiceovers</div>
+                                withIcon={{ icon:`file-right-icons ${isVoiceoverChecked ? "far fa-check-square" : "far fa-square"}`  }}
+                                onClick={() => toggleVoiceoverChecked()}/>
+                            <div className="ribbon-label" onClick={() => toggleVoiceoverChecked()}>Enable Voiceovers</div>
                         </div>
                     </div>
                 </div>
@@ -67,7 +81,7 @@ export default function RibbonToolMenu(props) {
                                 {...props}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                                withIcon={{ icon: 'fas fa-copy' }} />
+                                withIcon={{ icon: 'far fa-copy' }} />
                             <div className="tool-label">Copy Slides to Script</div>
                         </div>
                         <div className="vo-section-right-content">
