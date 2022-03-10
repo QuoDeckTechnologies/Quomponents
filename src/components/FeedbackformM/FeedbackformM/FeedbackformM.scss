@@ -1,0 +1,68 @@
+.qui .qui-togle {
+    position: absolute;
+    top: 0;
+    left: 4%;
+    padding-left: 1.1em;
+    background-color: #f0f0f0;
+}
+
+.qui .qui-checkbox-text {
+    width: 100%;
+    display: flex;
+}
+
+.qui .qui-togle-main {
+    margin: 1.9em;
+}
+
+input[type="checkbox"] {
+    display: flex;
+    width: 3.6em;
+    height: 1.5em;
+    -webkit-appearance: none;
+    background-color: #c6c6c6;
+    outline: none;
+    transition: .5s;
+    box-shadow: inset 0 0 5px regba(0, 0, 0, .2);
+    border-radius: 50px;
+}
+
+input[type="checkbox"]:hover {
+    background-color: #bbb7b7;
+}
+
+input[type="checkbox"]:before {
+    background: #f8ab30;
+    content: '';
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    top: 0;
+    left: 4.5em;
+    box-shadow: 0 2px 5px rgbba(0, 0, 0, .2);
+    transform: .5s;
+    transform: scale(1);
+}
+
+input:checked[type="checkbox"]:before {
+    left: 2em;
+}
+
+.qui .qui-togle-title {
+    width: 50%;
+    padding: 2em;
+    margin-bottom: 0.7em;
+    border: none;
+    background-color: #dbdbdb;
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+    box-shadow: 0 5px #a3a2a2;
+}
+
+span {
+    margin-top: 0.4em;
+    font-size: 0.7em;
+    text-align: center;
+    align-items: center;
+}
