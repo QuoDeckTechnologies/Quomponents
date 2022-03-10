@@ -1,0 +1,100 @@
+/* ================================================= */
+/* Action Button Styling */
+/* ================================================= */
+.qui .action-button-container {
+    min-height: 5rem;
+    min-width: 5rem;
+    background-color: #e5e5e5;
+    border-radius: 50%;
+    box-shadow: 3px 3px 5px #818080 inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qui .action-button-container-with-no-ellipse {
+    min-height: 5rem;
+    min-width: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qui .action-button {
+    flex-direction: column;
+    width: 100%;
+    padding: 1em 0;
+    border-radius: 15%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.qui .action-button-title {
+    font-size: 1.8em;
+    padding: 0 5px;
+    margin-bottom: -0.1em;
+    &.responsive-title {
+        font-size: 1em;
+    }
+}
+
+.qui .action-button-sub-title {
+    font-size: 1em;
+    padding: 0 5px;
+
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    &.responsive-sub-title {
+        font-size: 0.8em;
+    }
+}
+.qui .image {
+    width: 5em;
+    cursor: pointer;
+}
+
+/* ================================================= */
+/* Container Size Definitions*/
+/* ================================================= */
+.qui .size-massive .action-button-container,
+.qui .size-massive .action-button-container-with-no-ellipse {
+    min-height: 16rem;
+    min-width: 16rem;
+}
+
+.qui .size-huge .action-button-container,
+.qui .size-huge .action-button-container-with-no-ellipse {
+    min-height: 13rem;
+    min-width: 13rem;
+}
+.qui .size-big .action-button-container,
+.qui .size-big .action-button-container-with-no-ellipse {
+    min-height: 11rem;
+    min-width: 11rem;
+}
+.qui .size-normal .action-button-container,
+.qui .size-normal .action-button-container-with-no-ellipse {
+    min-height: 9rem;
+    min-width: 9rem;
+}
+.qui .size-small .action-button-container,
+.qui .size-small .action-button-container-with-no-ellipse {
+    min-height: 6rem;
+    min-width: 6rem;
+}
+.qui .size-tiny .action-button-container,
+.qui .size-tiny .action-button-container-with-no-ellipse {
+    min-height: 4rem;
+    min-width: 4rem;
+}
+.qui .size-tiny .action-button {
+    padding: 0.8em 0;
+    font-size: 0.7em;
+}
+.qui .size-small .action-button {
+    padding: 0.6em 0;
+}
+.qui .size-tiny .image {
+    width: 2.5em;
+}
+.qui .size-small .image {
+    width: 3em;
+}
