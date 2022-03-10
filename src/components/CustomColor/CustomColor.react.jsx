@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChromePicker } from "react-color";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 import {
     getQuommons,
     getTranslation,
+    getAnimation,
 } from "../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -74,6 +76,10 @@ CustomColor.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
+    /**
+    Use to float the component in parent container
+    */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
 
 };
 
@@ -92,6 +98,8 @@ CustomColor.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
+    asFloated: "none",
+
 };
 
 /**
@@ -112,10 +120,7 @@ export default function CustomColor(props) {
     //-------------------------------------------------------------------
 
     let quommonClasses = getQuommons(props, "custom-color");
-    if (props.isCircular)
-        quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
-            }`;
-
+   
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
 
     //-------------------------------------------------------------------
@@ -123,6 +128,7 @@ export default function CustomColor(props) {
     //-------------------------------------------------------------------
     let labelContent = {
         title: content?.title,
+        color: content?.color,
     };
     let tObj = null;
 
@@ -136,8 +142,13 @@ export default function CustomColor(props) {
             labelContent.title = tObj.title;
         }
     }
+    //-------------------------------------------------------------------
+    // 7. Get animation of the component
+    //-------------------------------------------------------------------
+
+    const animate = getAnimation(props.withAnimation);
     const ref = useRef()
-    const [color, setColor] = useState("#fff");
+    const [color, setColor] = useState(labelContent.color);
     const [showColorPicker, setshowColorPicker] = useState(false);
 
     useEffect(() => {
@@ -147,41 +158,35 @@ export default function CustomColor(props) {
             }
         }
         document.addEventListener("mousedown", checkIfClickedOutside)
-        return () => {
-            document.removeEventListener("mousedown", checkIfClickedOutside)
-        }
-    }, [showColorPicker])
-    const closePicker = e => {
-        if(ref.current === e.target){
-            setshowColorPicker(true)
-        }else{
-            setshowColorPicker(false)
-        }
-    }
-    console.log(closePicker)
+        // setColor(labelContent.color)
+    }, [showColorPicker, /*labelContent.color*/])
+
     // ========================= Render Function =================================
 
     return (
-        <div className={`qui ${quommonClasses.parentClasses}`} ref={ref}>
-            <div className={`qui-custom-color-container ${quommonClasses.childClasses}`}>
-                <div className="qui-custom-color-button-container">
-                    <button
-                        className="qui-custom-color-button"
-                        style={{ backgroundColor:color }}
-                        onClick={() => setshowColorPicker(showColorPicker => !showColorPicker)} />
-                    <div className="qui-custom-color-title">{labelContent?.title}</div>
-                </div>
-                <div className="qui-chrome-picker-container">
-                    {showColorPicker && (
+        <motion.div
+        initial={animate.from}
+        animate={animate.to}
+        className={`qui ${quommonClasses.parentClasses}`}
+        ref={ref}>
+            <div className="qui-color-picker-container">
+                <div className={`qui-custom-color-container  qui-color-container ${quommonClasses.childClasses}`}>
+                    <div className="button-title-container">
+                        <button
+                            className="qui-custom-color-button"
+                            style={{ backgroundColor:color}}
+                            onClick={() => setshowColorPicker(showColorPicker => !showColorPicker)} />
+                        <div className="qui-custom-color-title">{labelContent?.title}</div>
+                    </div>
+                    {showColorPicker && (   
                         <ChromePicker
                             className="qui-chrome-picker"
                             color={color}
-                            onChange={updateColor => setColor(updateColor.hex)}
+                            onChange={update => setColor(update.hex)}
                         />
                     )}
                 </div>
-
             </div>
-        </div>
+        </motion.div>
     );
 }
