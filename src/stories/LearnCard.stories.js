@@ -1,5 +1,6 @@
 import React from "react";
 import LearnCard from "../components/LearnCard/LearnCard.react";
+import gameController from "../assets/icons8_nintendo_gamecube_controller_96px.png";
 
 const dictionary = JSON.stringify({
   hi: {
@@ -10,8 +11,8 @@ const dictionary = JSON.stringify({
       free: "नि: शुल्क",
     },
     learncard: {
-      seeMore : 'और देखें..',
-      seeLess : 'कम देखें..'
+      seeMore: "और देखें..",
+      seeLess: "कम देखें..",
     },
   },
 });
@@ -24,10 +25,10 @@ export default {
       defaultValue: {
         title: "",
         description: "",
-        image : '',
-        icon: "",
+        image: "",
+        typeIcon: "",
         points: "",
-        tag : '',
+        tag: "",
         tags: [],
       },
     },
@@ -64,12 +65,12 @@ export default {
         defaultValue: false,
       },
     },
-    onClick : {
-      table : {
-        category : 'Events',
-        defaultValue : null
-      }
-    }
+    onClick: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
   },
   parameters: {
     componentSubtitle: "Display a LearnCard Component",
@@ -88,11 +89,12 @@ Default.args = {
   content: {
     title: "The Negotiation Game",
     description:
-    "Play this game to improve your understanding of negotiation skills",
-    image:"",
-    icon: "fas fa-desktop",
+      "Play this game to improve your understanding of negotiation skills",
+    image:
+      "https://images.unsplash.com/photo-1646968731015-518bb763b52f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    typeIcon: gameController,
     points: "100",
-    tag : 'premium',
+    tag: "premium",
     tags: ["Communication", "Sales", "Technology", "Business", "Miscellaneous"],
   },
   asVariant: "primary",
@@ -115,6 +117,30 @@ Default.args = {
   isHidden: false,
 };
 Default.parameters = {
+  docs: {
+    source: {
+      code: `<LearnCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Default Image
+// -------------------------------------------------------------
+export const DefaultImage = Template.bind({});
+DefaultImage.args = {
+  ...Default.args,
+  content: {
+    title: "The Negotiation Game",
+    description:
+      "Play this game to improve your understanding of negotiation skills",
+    image: "",
+    typeIcon: gameController,
+    points: "100",
+    tag: "premium",
+    tags: ["Communication", "Sales", "Technology", "Business", "Miscellaneous"],
+  },
+};
+DefaultImage.parameters = {
   docs: {
     source: {
       code: `<LearnCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
@@ -181,6 +207,24 @@ AnimatedLearnCard.parameters = {
 export const TranslatedLearnCard = Template.bind({});
 TranslatedLearnCard.args = {
   ...Default.args,
+  content: {
+    title: "The Negotiation Game",
+    description:
+      "Play this game to improve your understanding of negotiation skills",
+    image:
+      "https://images.unsplash.com/photo-1646917939502-5f124b08bd97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    typeIcon: gameController,
+    points: "100",
+    tag: "new",
+    tags: [
+      "Communication",
+      "Sales",
+      "Technology",
+      "Business",
+      "Miscellaneous",
+      "Extras",
+    ],
+  },
   withTranslation: {
     lang: "hi",
     tgt: "learncard",
@@ -206,13 +250,29 @@ TranslatedLearnCard.parameters = {
 // -------------------------------------------------------------
 const AllVariantsTemplate = (args) => {
   const baseObj = {
-    ...Object.assign({},args, Default.args)
+    ...Object.assign({}, args, Default.args),
   };
   return (
     <div className="qui-all-variants">
+      <LearnCard {...Object.assign({}, baseObj, {})} />
       <LearnCard
         {...Object.assign({}, baseObj, {
-          isHiddenRibbon: true,
+          content: {
+            title: "The Negotiation Game",
+            description:
+              "Play this game to improve your understanding of negotiation skills",
+            image: "",
+            typeIcon: gameController,
+            points: "100",
+            tag: "new",
+            tags: [
+              "Communication",
+              "Sales",
+              "Technology",
+              "Business",
+              "Miscellaneous",
+            ],
+          },
         })}
       />
       <LearnCard
@@ -232,6 +292,23 @@ const AllVariantsTemplate = (args) => {
       />
       <LearnCard
         {...Object.assign({}, baseObj, {
+          content: {
+            title: "The Negotiation Game",
+            description:
+              "Play this game to improve your understanding of negotiation skills",
+            image: "",
+            typeIcon: gameController,
+            points: "100",
+            tag: "new",
+            tags: [
+              "Communication",
+              "Sales",
+              "Technology",
+              "Business",
+              "Miscellaneous",
+              "Extras",
+            ],
+          },
           withTranslation: {
             lang: "hi",
             tgt: "learncard",

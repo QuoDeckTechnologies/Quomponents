@@ -11,9 +11,8 @@ import Ribbon from "../Ribbons/Ribbon/Ribbon.react";
 import "../../common/stylesheets/common.css";
 import "./LearnCard.scss";
 import "../../common/stylesheets/overrule.scss";
-import balloonBurst from '../../assets/balloon_burst.png'
-import coinImage from '../../assets/icons8_coin_96px.png'
-import gameController from '../../assets/icons8_nintendo_gamecube_controller_96px.png'
+import defaultImage from "../../assets/default11.jpeg";
+import coinImage from "../../assets/icons8_coin_96px.png";
 
 LearnCard.propTypes = {
   //=======================================
@@ -26,7 +25,7 @@ LearnCard.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     image: PropTypes.string,
-    icon: PropTypes.string,
+    typeIcon: PropTypes.string,
     points: PropTypes.string,
     tag: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
@@ -116,7 +115,7 @@ export default function LearnCard(props) {
   //-------------------------------------------------------------------
   // 2. Setting each tag length, tags quantity i.e minTags and maxTags
   //-------------------------------------------------------------------
-  let tagLength = 5;
+  let tagLength = 10;
   let minTags = 5;
   let maxTags = 10;
   //-------------------------------------------------------------------
@@ -150,7 +149,7 @@ export default function LearnCard(props) {
   };
   const handleMoreTags = (e) => {
     e.preventDefault();
-    setItirate(maxTags - 1);
+    setItirate(maxTags);
     setExpandTags(true);
   };
   //-------------------------------------------------------------------
@@ -171,84 +170,72 @@ export default function LearnCard(props) {
           asFloated="left"
           asEmphasis={content?.tag}
           asVariant=""
+          isHidden={content?.title ? props.isHidden : true}
         />
       </div>
-      <div>
-        <div className="qui-learn-card">
-          <div className={quommonClasses.childClasses}>
-            <img
-              className="qui-game-thumbnail"
-              src={
-                content?.image
-                  ? content?.image
-                  : balloonBurst
-              }
-              alt="game thumbnail"
-            />
-          </div>
-          <div className={`qui-content ${quommonClasses.childClasses}`}>
-            <div className={`qui-learn-card-header `}>
-              <h1 style={{ color: props.withColor?.accentColor }}>
-                <div className="qui-learn-card-title">{labelContent.title}</div>
+      <div className="qui-learn-card">
+        <div className={quommonClasses.childClasses}>
+          <img
+            className="qui-learn-card-game-thumbnail"
+            src={content?.image ? content?.image : defaultImage}
+            alt="game thumbnail"
+          />
+        </div>
+        <div
+          className={`qui-learn-card-content ${quommonClasses.childClasses}`}
+        >
+          <div className={`qui-learn-card-header `}>
+            <h1 style={{ color: props.withColor?.accentColor }}>
+              <div className="qui-learn-card-title">{labelContent.title}</div>
+            </h1>
+            <div className="qui-points">
+              <h1 className={`qui-btn variant-${props.asVariant}-text`}>
+                {content?.points}
               </h1>
-              <div className="qui-points">
-                <h1 className={`qui-btn variant-${props.asVariant}-text`}>
-                  {content?.points}
-                </h1>
-                <img
-                  className="qui-coin-image"
-                  src={coinImage}
-                  alt="coin"
-                />
-              </div>
+              <img className="qui-coin-image" src={coinImage} alt="coin" />
             </div>
-            <div className="qui-description">
-              {!expandTags && <p>{labelContent?.description}</p>}
-            </div>
-            <div className="qui-lower-container">
-              <div
-                className={`qui-info qui-btn variant-${props.asVariant}-text`}
-              >
-                {/* <i className={content?.icon}></i> */}
-                <img src={gameController} alt="game controller" />
-                <div className="qui-tags">
-                  {_.map(labelContent?.tags, (tag, i) => {
-                    if (i < itirate) {
-                      return (
-                        <div className="qui-tag-container" key={i}>
-                          <p
-                            className={`qui-single-tag qui-btn variant-${props.asVariant}`}
-                          >
-                            {tag?.length > tagLength &&
-                            !expandTags &&
-                            labelContent?.tags?.length >= tagLength
-                              ? tag?.slice(0, tagLength) + "..."
-                              : tag}
-                          </p>
-                        </div>
-                      );
-                    }
-                  })}
-                  <div className="qui-see-more-tags">
-                    {expandTags ? (
-                      <a href="!#" onClick={(e) => handleLessTags(e)}>
-                        {tObj ? tObj?.seeLess : "See less.."}
+          </div>
+          <div className="qui-description">
+            {!expandTags && <p>{labelContent?.description}</p>}
+          </div>
+          <div className="qui-lower-container">
+            <div className={`qui-info qui-btn variant-${props.asVariant}-text`}>
+              <img src={content?.typeIcon} alt="game controller" />
+              <div className="qui-tags">
+                {_.map(labelContent?.tags, (tag, i) => {
+                  if (i < itirate) {
+                    return (
+                      <div className="qui-tag-container" key={i}>
+                        <p
+                          className={`qui-single-tag qui-btn variant-${props.asVariant}`}
+                        >
+                          {tag?.length > tagLength && !expandTags
+                            ? tag?.slice(0, tagLength) + "..."
+                            : tag}
+                        </p>
+                      </div>
+                    );
+                  }
+                })}
+                <div className="qui-see-more-tags">
+                  {expandTags ? (
+                    <a href="!#" onClick={(e) => handleLessTags(e)}>
+                      {tObj ? tObj?.seeLess : "See less.."}
+                    </a>
+                  ) : (
+                    labelContent?.tags?.length > minTags && (
+                      <a href="!#" onClick={(e) => handleMoreTags(e)}>
+                        {tObj ? tObj?.seeMore : "See more.."}
                       </a>
-                    ) : (
-                      labelContent?.tags?.length > minTags && (
-                        <a href="!#" onClick={(e) => handleMoreTags(e)}>
-                          {tObj ? tObj?.seeMore : "See more.."}
-                        </a>
-                      )
-                    )}
-                  </div>
+                    )
+                  )}
                 </div>
               </div>
-              <div
-                className="qui-banner"
-                style={{ backgroundColor: props.withColor?.accentColor }}
-              ></div>
             </div>
+            <div
+              className="qui-learn-card-banner"
+              style={{ backgroundColor: props.withColor?.accentColor }}
+            ></div>
           </div>
         </div>
       </div>
