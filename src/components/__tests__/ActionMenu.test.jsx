@@ -1,8 +1,8 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
-import renderer, { act } from "react-test-renderer";
+import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 //--------------------------------------
 // Import from Config
 // -------------------------------------

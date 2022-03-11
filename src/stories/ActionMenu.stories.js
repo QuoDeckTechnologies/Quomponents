@@ -125,7 +125,7 @@ Default.args = {
         },
     ],
     asVariant: "success",
-    asSize: "small",
+    asSize: "normal",
     withColor: {
         backgroundColor: "#ffffff",
         textColor: "",

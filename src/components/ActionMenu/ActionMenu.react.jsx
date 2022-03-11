@@ -38,9 +38,9 @@ ActionMenu.propTypes = {
         "warning",
         "error",
     ]),
-     /**
-    Use to define component text size in increasing order
-    */
+    /**
+   Use to define component text size in increasing order
+   */
     asSize: PropTypes.oneOf([
         "tiny",
         "small",

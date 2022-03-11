@@ -3,18 +3,15 @@
     padding: 0.1em;
     align-items: center;
     width: 50%;
-    margin: .2em 0em;
+    margin-bottom: 0.1em;
 }
-.qui .qui-actionmenu-icon{
+.qui .qui-actionmenu-icon {
     width: 2.5em;
     display: flex;
     justify-content: center;
 }
-.qui .qui-actionmenu-icon i{
-    font-size: .5em;
-}
-.qui .qui-actionmenu-icons {
-    margin: 0em 1em;
+.qui .qui-actionmenu-icons i {
+    height: 1em;
 }
 .qui .qui-actionmenu-titles {
     text-align: left;
@@ -34,16 +31,25 @@
 
 @media screen and (min-width: 320px) {
     .qui .qui-actionmenu-items {
-        font-size: .7em;
+        font-size: 0.7em;
+    }
+    .qui .qui-actionmenu-icons i {
+        height: 5em;
     }
 }
 @media screen and (min-width: 481px) {
     .qui .qui-actionmenu-items {
         font-size: 1em;
     }
+    .qui .qui-actionmenu-icons i {
+        height: 2em;
+    }
 }
 @media screen and (min-width: 769px) {
     .qui .qui-actionmenu-items {
         font-size: 2em;
+    }
+    .qui .qui-actionmenu-icons i {
+        height: 10em;
     }
 }
