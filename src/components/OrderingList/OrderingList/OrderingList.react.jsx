@@ -1,12 +1,15 @@
 // Import npm packages
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
+import { getQuommons, getAnimation, } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OrderingList.scss";
 import "../../../common/stylesheets/overrule.scss";
-import { motion } from "framer-motion";
-import { getQuommons, getAnimation, } from "../../../common/javascripts/helpers";
+import ButtonBank from "../../ButtonBank/ButtonBank.react";
+
+
 
 OrderingList.propTypes = {
     /**
@@ -113,7 +116,6 @@ export default function OrderingList(props) {
             //Put it back into our array. N.B. we are mutating the array here, but that's why we made a copy first
             temp_state[index] = beforeItem;
             temp_state[index - 1] = currentItem;
-            // console.log("temp_state 1", beforeItem, currentItem, temp_state);
         }
         else {
             const currentItem = btnArr[index];
@@ -122,7 +124,6 @@ export default function OrderingList(props) {
             // Put it back into our array. N.B. we are mutating the array here, but that's why we made a copy first
             temp_state[index] = afterItem;
             temp_state[index + 1] = currentItem;
-            // console.log("temp_state 2", currentItem, afterItem);
         }
         //Set the state to our new copy
         setBtnArr(temp_state);
@@ -137,7 +138,6 @@ export default function OrderingList(props) {
             //Put it back into our array. N.B. we are mutating the array here, but that's why we made a copy first
             temp_state[index] = afterItem;
             temp_state[index + 1] = currentItem;
-            // console.log("temp_state 1", afterItem, currentItem, temp_state);
         } else {
             const currentItem = btnArr[index];
             const afterItem = btnArr[index + 1];
@@ -145,7 +145,6 @@ export default function OrderingList(props) {
             //Put it back into our array. N.B. we are mutating the array here, but that's why we made a copy first
             temp_state[index] = afterItem;
             temp_state[index - 1] = currentItem;
-            // console.log("temp_state 2", currentItem, afterItem);
         }
         //Set the state to our new copy
         setBtnArr(temp_state);
@@ -155,7 +154,7 @@ export default function OrderingList(props) {
     let quommonClasses = getQuommons(props, "orderinglist");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
 
-    // 2            . Get animation of the component
+    // 2. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
@@ -168,7 +167,7 @@ export default function OrderingList(props) {
             {btnArr?.map((item, index) => (
                 <div key={index}>
                     <div className={`qui-ordering-list ${quommonClasses.childClasses}`}>
-                        <div style={{ pointerEvents: index === 0 ? "none" : "" }} className="qui-upslide" onClick={() => handleUpClick(index)}>
+                        <div style={{ pointerEvents: index === 0 ? "none" : "" }} className="qui-ordering-btn" onClick={() => handleUpClick(index)}>
                             <div className="qui-up-solid-border">
                                 <div className="qui-up-dotted-border">
                                     <button className={`qui-slide-icon fa fa-arrow-up `} ></button>
@@ -178,7 +177,7 @@ export default function OrderingList(props) {
                         <div className={`qui-btn qui-title-bttn ${quommonClasses.childClasses}`}>
                             <div className={`qui-title-content`}>{item}</div>
                         </div>
-                        <div style={{ pointerEvents: index === btnArr.length - 1 ? "none" : "" }} className={`qui-downslide`} onClick={() => handleDownClick(index)}>
+                        <div style={{ pointerEvents: index === btnArr.length - 1 ? "none" : "" }} className={`qui-ordering-btn`} onClick={() => handleDownClick(index)}>
                             <div className="qui-down-solid-border">
                                 <div className="qui-down-dotted-border">
                                     <button className={`qui-slide-icon  fa fa-arrow-down`}></button>
