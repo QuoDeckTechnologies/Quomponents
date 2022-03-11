@@ -167,7 +167,7 @@ export default function ProgressBar(props) {
         >
             <div className={`qui-progressbar${quommonClasses.childClasses}`}>
                 <div>
-                    <i className={`qui-icon ${content?.leftIcon}`}
+                    <i className={`qui-progressbaricons ${content?.leftIcon}`}
                         style={colors?.textColors}
                         onClick={() => decrement()}>
                     </i>
@@ -181,7 +181,7 @@ export default function ProgressBar(props) {
                     })}
                 </div>
                 <div>
-                    <i className={`qui-icon ${content?.rightIcon}`}
+                    <i className={`qui-progressbaricons ${content?.rightIcon}`}
                         style={colors?.textColors}
                         onClick={() => increment()}>
                     </i>
