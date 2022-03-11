@@ -6,7 +6,7 @@ const dictionary = JSON.stringify({
         deckanalysis: {
             title: "स्लाइड्स",
             description: "डेक में 10 से 40 स्लाइड होनी चाहिए",
-            digit: "१८",
+            slideNumber: 18,
         },
     },
 });
@@ -21,7 +21,7 @@ export default {
                     description: "",
                     icon: "",
                     image: "",
-                    digit: "",
+                    slideNumber:18,
                 },
             },
         },
@@ -115,7 +115,7 @@ Default.args = {
             "Deck Should have 10 to 40 slides",
         icon: "fas fa-ellipsis-h",
         image: slideImage,
-        digit: "18",
+        slideNumber: 18,
     },
     asVariant: "primary",
     withColor: {

@@ -25,7 +25,7 @@ DeckAnalysis.propTypes = {
         description: PropTypes.string,
         icon: PropTypes.string,
         image: PropTypes.string,
-        digit: PropTypes.string,
+        slideNumber: PropTypes.number,
     }).isRequired,
     //=======================================
     // Quommon props
@@ -146,7 +146,7 @@ export default function DeckAnalysis(props) {
     let labelContent = {
         title: content?.title,
         description: content?.description,
-        digit: content?.digit,
+        slideNumber: content?.slideNumber,
     };
     let tObj = null;
 
@@ -159,7 +159,7 @@ export default function DeckAnalysis(props) {
         if (labelContent && tObj) {
             labelContent.title = tObj.title;
             labelContent.description = tObj.description;
-            labelContent.digit = tObj.digit;
+            labelContent.slideNumber = tObj.slideNumber;
         }
     }
     //-------------------------------------------------------------------
@@ -178,7 +178,7 @@ export default function DeckAnalysis(props) {
                 <div className="qui-upperrblock">
                     <div className="qui-decktitle">
                         <div className="qui-upperblock">
-                            <p className={`qui-deckdigit`}>{labelContent?.digit}</p>
+                            <p className={`qui-deckdigit`}>{labelContent?.slideNumber}</p>
                             <img src={content?.image} className="qui-deckimage"></img>
                         </div>
                         <h1>{labelContent?.title}</h1>
