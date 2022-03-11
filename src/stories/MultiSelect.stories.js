@@ -5,7 +5,7 @@ export default {
   title: "Design System/MultiSelect/MultiSelect",
   component: MultiSelect,
   argTypes: {
-    content: "",
+    content: [],
     asEmphasis: {
       control: "select",
       options: ["text", "outlined", "contained"],
@@ -97,7 +97,9 @@ export default {
 const Template = (args) => <MultiSelect {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: "Primary Button",
+  content: ["Primary Button",
+    "Primary Button",
+    "Primary Button"],
   asEmphasis: "contained",
   isCircular: false,
 
@@ -138,29 +140,12 @@ Default.parameters = {
 
 export const AnimationChecked = Template.bind({});
 AnimationChecked.args = {
-  content: "primary",
-  asEmphasis: "contained",
-  isCircular: false,
-
-  asVariant: "warning",
-  asFloated: "none",
-
-  withColor: {
-    backgroundColor: "",
-    accentColor: "",
-    textColor: "",
-    hoverBackgroundColor: "",
-    hoverTextColor: "",
-  },
+  ...Default.args,
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
   },
-
-  isDisabled: false,
-  isHidden: false,
-
 };
 AnimationChecked.parameters = {
   docs: {
@@ -172,50 +157,50 @@ AnimationChecked.parameters = {
     },
   },
 };
-// -------------------------------------------------------------
-// Multi select
-// -------------------------------------------------------------
-// const AllVariants= () => {
+// // -------------------------------------------------------------
+// // Multi select
+// // -------------------------------------------------------------
+// // const AllVariants= () => {
+// //   const baseObj = {
+// //     ...Object.assign({}, Default.args),
+// //   };
+// const AllVariants = (args) => {
 //   const baseObj = {
-//     ...Object.assign({}, Default.args),
+//     ...Object.assign({}, Default.args, args),
 //   };
-const AllVariants = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args),
-  };
-  return (
-    <div className="qui-allvariants-container">
-      <MultiSelect
-        {...Object.assign({}, baseObj, {
-          content: "Primary Button",
-          asVariant: "primary",
-        })}
-      />
-      <MultiSelect
-        {...Object.assign({}, baseObj, {
-          content: "Secondary Button",
-          asVariant: "secondary",
-        })}
-      />
-      <MultiSelect
-        {...Object.assign({}, baseObj, {
-          content: "Warning Button",
-          asVariant: "warning",
-        })}
-      />
-      <MultiSelect
-        {...Object.assign({}, baseObj, {
-          content: "Error Button",
-          asVariant: "error",
-        })}
-      />
-      <MultiSelect
-        {...Object.assign({}, baseObj, {
-          content: "Success Button",
-          asVariant: "success",
-        })}
-      />
-    </div>
-  );
-};
-export const MultipleSelect = AllVariants.bind({});
+//   return (
+//     <div className="qui-allvariants-container">
+//       <MultiSelect
+//         {...Object.assign({}, baseObj, {
+//           content: "Primary Button",
+//           asVariant: "primary",
+//         })}
+//       />
+//       <MultiSelect
+//         {...Object.assign({}, baseObj, {
+//           content: "Secondary Button",
+//           asVariant: "secondary",
+//         })}
+//       />
+//       <MultiSelect
+//         {...Object.assign({}, baseObj, {
+//           content: "Warning Button",
+//           asVariant: "warning",
+//         })}
+//       />
+//       <MultiSelect
+//         {...Object.assign({}, baseObj, {
+//           content: "Error Button",
+//           asVariant: "error",
+//         })}
+//       />
+//       <MultiSelect
+//         {...Object.assign({}, baseObj, {
+//           content: "Success Button",
+//           asVariant: "success",
+//         })}
+//       />
+//     </div>
+//   );
+// };
+// export const MultipleSelect = AllVariants.bind({});

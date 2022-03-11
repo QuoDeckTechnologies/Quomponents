@@ -6,6 +6,7 @@ import "../../common/stylesheets/common.css";
 import './MultiSelect.scss'
 import "../../common/stylesheets/overrule.scss";
 import Button from "../Buttons/Button/Button.react";
+import _ from "lodash";
 import { getQuommons } from "../../common/javascripts/helpers";
 
 MultiSelect.propTypes = {
@@ -15,7 +16,7 @@ MultiSelect.propTypes = {
     /**
     Each button Text has to be in content object.
     */
-    content: PropTypes.string,
+    content: PropTypes.arrayOf(PropTypes.string).isRequired,
     /**
     Set action emphasis in increasing order 
     */
@@ -83,7 +84,7 @@ MultiSelect.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: "Primary",
+    content: [],
     asEmphasis: "contained",
     isCircular: false,
 
@@ -107,6 +108,7 @@ MultiSelect.defaultProps = {
 **/
 
 export default function MultiSelect(props) {
+    const {content} = props;
     const [isChecked, setIsChecked] = useState(false);
     function toggleChecked() {
         setIsChecked(prevState => !prevState)
@@ -117,17 +119,20 @@ export default function MultiSelect(props) {
     let quommonClasses = getQuommons(props, "multi-select");
     return (
         <div className={`qui ${quommonClasses.parentClasses}`} onClick={(e) => props.onClick(e)}>
-
-            <div className={`qui-multi-select-button-container ${quommonClasses.childClasses}`} >
-                <div className="qui-multi-select-button">
-                    <div className="square-background">
-                        <i className={`qui-multi-select-checkbox ${isChecked ? "fas fa-check-square" : "fa fa-square"}`}
-                            onClick={() => toggleChecked()}>
-                        </i>
+            {_.map(content, (text,index) => {
+                return (
+                    <div key={text,index}
+                        className={`qui-multi-select-button-container ${quommonClasses.childClasses}`} >
+                        <div className="qui-multi-select-button">
+                            <div className="square-background">
+                                <i className={`qui-multi-select-checkbox ${isChecked ? "fas fa-check-square" : "fa fa-square"}`}
+                                    onClick={() => toggleChecked()}>
+                                </i>
+                            </div>
+                            {<Button {...props} content={text} onClick={() => toggleChecked()} />}</div>
                     </div>
-                    {<Button {...props} content={props.content} onClick={() => toggleChecked()} />}</div>
-            </div>
-
+                );
+            })}
         </div>
     )
 }
