@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ContentTableRow.scss";
 import "../../common/stylesheets/overrule.scss";
+import ActionMenu from "../ActionMenu/ActionMenu.react";
 
 ContentTableRow.propTypes = {
   //=======================================
@@ -113,7 +114,11 @@ export default function ContentTableRow(props) {
   //-------------------------------------------------------------------
   const [name, setName] = useState(content?.name);
   const [isChecked, setIsChecked] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const readerType = content.readerType;
+  useEffect(()=>{
+    setName(content?.name)
+  },[content?.name])
   //-------------------------------------------------------------------
   // 6. Getting fileicon
   //-------------------------------------------------------------------
@@ -156,9 +161,56 @@ export default function ContentTableRow(props) {
           maxLength={60}
           onChange={(e) => setName(e.target.value)}
         />
-        <button className="qui-content-menu" onClick={() => props.onClick()}>
+        <button
+          className="qui-content-menu"
+          onClick={() => setShowMenu((prevState) => !prevState)}
+          onBlur={() => setShowMenu(false)}
+        >
           <i className="fas fa-ellipsis-v"></i>
         </button>
+        {showMenu && (
+          <div className="qui-content-table-row-action-menu">
+            <ActionMenu
+              {...props}
+              content={[
+                {
+                  title: "Open Deck",
+                  icon: "fas fa-book-open",
+                },
+                {
+                  title: "Edit Deck",
+                  icon: "fas fa-edit",
+                },
+                {
+                  title: "Move Deck Up",
+                  icon: "fas fa-chevron-up",
+                },
+                {
+                  title: "Move Deck Down",
+                  icon: "fas fa-chevron-down",
+                },
+                {
+                  title: "Move to Topic",
+                  icon: "fas fa-retweet",
+                },
+                {
+                  title: "Unpublish Deck",
+                  icon: "fas fa-eye-slash",
+                },
+                {
+                  title: "Delete Deck",
+                  icon: "fas fa-trash-alt",
+                },
+              ]}
+              withColor={{ backgroundColor: "white" }}
+              withAnimation={{
+                animation: "slideDown",
+                duration: 0.5,
+                delay: 0,
+              }}
+            />
+          </div>
+        )}
       </div>
     </motion.div>
   );
