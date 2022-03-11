@@ -59,7 +59,7 @@ describe("DeckCard", () => {
                     backgroundColor: "red",
                     accentColor: "green",
                     textColor: "blue",
-                  }}
+                }}
                 withAnimation={{
                     animation: "zoom",
                     duration: 0.5,
@@ -71,7 +71,7 @@ describe("DeckCard", () => {
                     dictionary: dictionary,
                 }}
                 isDisabled={false}
-                isHidden={true}
+                isHidden={false}
                 onClick={() => console.log("EanrCard testing")}
             />
         );
@@ -102,7 +102,7 @@ describe("DeckCard", () => {
     });
     it("should render correctly with withColor prop",
         () => {
-          component = renderer.create(<DeckCard
+            component = renderer.create(<DeckCard
                 content={{
                     title: "The Negotiation Game",
                     description:
@@ -110,7 +110,6 @@ describe("DeckCard", () => {
 
                     image: "static/media/Image.62bfb45a.png",
                     icon: "fas fa-gamepad",
-                    tag: "premium",
                     topics: [
                         {
                             name: "Name One",
@@ -118,7 +117,7 @@ describe("DeckCard", () => {
                         },
                     ],
                 }}
-                isHidden={false}
+                isHidden={true}
                 withColor={{
                     backgroundColor: "",
                     accentColor: "",

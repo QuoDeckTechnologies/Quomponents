@@ -179,14 +179,13 @@ export default function DeckCard(props) {
         >
             <div className={`qui-deckcard-label`}>
                 <Ribbon
-                    isHidden={content?.title ? props.isHidden : true}
+                    isHidden={content?.tag ? props.isHidden : true}
                     asFloated="left"
                     asEmphasis={content?.tag}
                     withTranslation={props.withTranslation}
                 />
             </div>
             <div className={`qui ${quommonClasses.parentClasses}`} onClick={props.onClick}
-
                 style={colors.cardColors}
             >
                 <div className="qui-deckcardleft">
@@ -196,11 +195,10 @@ export default function DeckCard(props) {
                     <div className="qui-deckcardtitle" style={colors.textColors}>
                         <h1>{labelContent?.title}</h1>
                     </div>
-                    <div className="qui-description">
+                    <div className="qui-deckcarddescription">
                         <h3>{labelContent?.description}</h3>
                     </div>
                 </div>
-
                 <div className="qui-deckcardright">
                     <div className={`${quommonClasses.childClasses}`}>
                         <img className="qui-iconimg" src={props.content?.icon} />
