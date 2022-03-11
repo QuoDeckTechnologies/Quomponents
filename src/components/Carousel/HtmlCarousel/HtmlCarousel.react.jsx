@@ -92,13 +92,11 @@ export default function HtmlCarousel(props) {
             </Slider>
             <div className="qui-slick-arrows">
                 <div className="qui-slick-prev"
-                    style={{ color: content[0].props.withColor.accentColor }}
-                    onClick={() => sliderRef.current.slickPrev()}>
+                    onClick={() => sliderRef.current?.slickPrev()}>
                     <i className="fas fa-arrow-alt-circle-left"></i>
                 </div>
                 <div className="qui-slick-next"
-                    style={{ color: content[0].props.withColor.accentColor }}
-                    onClick={() => sliderRef.current.slickNext()}>
+                    onClick={() => sliderRef.current?.slickNext()}>
                     <i className="fas fa-arrow-alt-circle-right"></i>
                 </div>
             </div>

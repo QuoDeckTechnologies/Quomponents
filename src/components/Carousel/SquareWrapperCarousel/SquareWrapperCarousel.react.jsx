@@ -30,7 +30,7 @@ SquareWrapperCarousel.propTypes = {
             "restricted",
             "free"
         ]),
-        Selected: PropTypes.bool,
+        selected: PropTypes.bool,
         header: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
@@ -110,13 +110,13 @@ export default function SquareWrapperCarousel(props) {
 
 
                                 <div className={`qui-SquareWrapper-slide `}>
-                                    {slide.Selected && <div className="qui-mid-circle" >
-                                        <div className="qui-checkbox" >
-                                            <i className={slide.Selected ? "fas fa-check-square" : "far fa-square"}>
+                                    {slide.selected && <div className="qui-mid-circle" >
+                                        <div className="qui-square-wrapper-checkbox" >
+                                            <i className={"fas fa-check-square"}>
                                             </i>
                                         </div>
                                     </div>}
-                                    <BannerCard  {...slide.props} content={slide} onClick={props.onClick} className="kp" />
+                                    <BannerCard  {...slide.props} content={slide} onClick={props.onClick}/>
                                 </div>
                             </div>
                         );
@@ -124,11 +124,11 @@ export default function SquareWrapperCarousel(props) {
                 </Slider>
                 <div className="qui-slick-arrows">
                     <div className="qui-slick-prev"
-                        onClick={() => sliderRef.current.slickPrev()}>
+                        onClick={() => sliderRef.current?.slickPrev()}>
                         <i className="fas fa-arrow-alt-circle-left"></i>
                     </div>
                     <div className="qui-slick-next"
-                        onClick={() => sliderRef.current.slickNext()}>
+                        onClick={() => sliderRef.current?.slickNext()}>
                         <i className="fas fa-arrow-alt-circle-right"></i>
                     </div>
                 </div>

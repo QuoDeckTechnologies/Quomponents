@@ -9,7 +9,7 @@ export default {
         content: [{
             image: "",
             tag: "",
-            Selected: "",
+            selected: "",
             header: "",
             props: {}
         }],
@@ -62,19 +62,19 @@ Default.args = {
         image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
         header: "Balloon Burst",
         tag: "new",
-        Selected: true,
+        selected: true,
         
     },
     {
         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
         tag: "premium",
-        Selected: true,
+        selected: true,
         header: "Cityscape",  
     },
     {
         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
         tag: "restricted",
-        Selected: false,
+        selected: false,
         header: "GhostBuster",
     }],
     withAnimation: {

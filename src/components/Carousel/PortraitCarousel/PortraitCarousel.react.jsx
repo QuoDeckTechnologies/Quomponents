@@ -107,8 +107,8 @@ export default function PortraitCarousel(props) {
                                 key={"slider-" + index + Math.random()}>
                                 <div className={`qui-portrait-slide ${quommonClasses.childClasses} `}>
                                     {slide.selected && <div className="qui-mid-circle" >
-                                        <div className="qui-checkbox">
-                                            <i className={slide.selected ? "fas fa-check-square" : "far fa-square"}>
+                                        <div className="qui-portrait-checkbox">
+                                            <i className={"fas fa-check-square"}>
                                             </i>
                                         </div>
                                     </div>}
@@ -120,11 +120,11 @@ export default function PortraitCarousel(props) {
                 </Slider>
                 <div className="qui-slick-arrows">
                     <div className="qui-slick-prev"
-                        onClick={() => sliderRef.current.slickPrev()}>
+                        onClick={() => sliderRef.current?.slickPrev()}>
                         <i className="fas fa-arrow-alt-circle-left"></i>
                     </div>
                     <div className="qui-slick-next"
-                        onClick={() => sliderRef.current.slickNext()}>
+                        onClick={() => sliderRef.current?.slickNext()}>
                         <i className="fas fa-arrow-alt-circle-right"></i>
                     </div>
                 </div>
