@@ -1,0 +1,61 @@
+.qui.qui-custom-color{
+	overflow: visible;
+	justify-content: center;
+	align-items: center;
+}
+.qui .qui-custom-color-container {
+	position: relative;
+}
+.qui .qui-custom-color-button{
+	width: 2.4rem;
+	height: 1.3rem;
+	border: 0.1em solid black;
+	cursor: pointer;
+	margin-right: 1rem;
+}
+.qui .button-title-container{
+	display: flex;
+	align-items: center;
+}
+.qui .qui-chrome-picker{
+	position: absolute;
+	top:100%;
+	left:0%;
+	z-index: 1000;
+}
+.qui .qui-custom-color-button{
+position: relative;
+}
+.qui .size-tiny {
+	.qui-custom-color-button{
+		height: 1em;
+		width: 1.7rem;
+	}
+}
+.qui .size-small {
+	.qui-custom-color-button{
+		height: 1.3em;
+		width: 2.2rem;
+	}
+}
+.qui .size-big {
+	.qui-custom-color-button{
+		height: 1.6em;
+		width: 2.6rem;
+	}
+}
+.qui .size-huge {
+	.qui-custom-color-button{
+		height: 1.8em;
+		width: 2.9rem;
+	}
+}
+.qui .size-massive {
+	.qui-custom-color-button{
+		height: 2.1em;
+		width: 3.3rem;
+	}
+}
+.qui.qui-custom-color .qui-chrome-picker{
+	width: 162px;
+}
