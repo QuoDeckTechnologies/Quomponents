@@ -1,7 +1,8 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from 'enzyme';
+import React from 'react';
+import { shallow ,mount} from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -33,13 +34,51 @@ describe('PortraitCarousel', () => {
         () => {
             expect(component.exists()).toBe(true);
         });
-    it('should pass', () => {
+    it('should pass click on slickPrev', () => {
         const wrapper = shallow(<PortraitCarousel onClick={() => console.log("Testing SlickPrev")} />);
         let slickPrevDiv = wrapper.find(".qui-slick-prev").simulate("click", { current: { slickPrev: "" } })
     });
 
-    it('should pass', () => {
-        const wrapper = shallow(<PortraitCarousel onClick={() => console.log("Testing SlickPrev")} />);
+    it('should pass click on slickNext ', () => {
+        const wrapper = shallow(<PortraitCarousel onClick={() => console.log("Testing SlickNext")} />);
         let slickNextDiv = wrapper.find(".qui-slick-next").simulate("click", { current: { slickNext: "" } })
     });
+    it('should pass Conditional True ', () => {
+        component.setProps({
+            selected : true ,
+        })
+        console.log(component.find(".qui-checkbox").props().children.props.className)
+        expect(component.find(".qui-checkbox").props().children.props.className).toBe("fas fa-check-square")
+    });
+    it('should pass Conditional false ', () => {
+        component.setProps({
+            selected : false ,
+        })
+        console.log(component.find(".qui-checkbox").props().children.props.className)
+        expect(component.find(".qui-checkbox").props().children.props.className).toBe("fas fa-check-square")
+    });
+
+    test('should render and handle click event correctly when previousSibling exists', () => {
+        const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({ current: { slickPrev: "" } });
+        const wrapper = shallow(<PortraitCarousel onClick={() => console.log("Testing SlickPrev")}/>);
+        wrapper.find(".qui-slick-prev").simulate('click');
+        expect(useRefSpy).toBeCalledTimes(1);
+        expect(click).toBeCalledTimes(1);
+      });
+    
+
+    // test('Given invalid details the form should display an error', () => {
+
+    //     const login = mount(<PortraitCarousel selected={false}/>);
+    //     expect(login.find('qui-checkbox').hasClass('far fa-square')).toBeTruthy();
+      
+    //   })
+      
+    // test('Given invalid details the form should display an error', () => {
+
+    //     const login = mount(<PortraitCarousel selected={true}/>);
+    //     expect(login.find('qui-checkbox').hasClass('fas fa-check-square')).toBeTruthy();
+      
+    //   })
+      
 })

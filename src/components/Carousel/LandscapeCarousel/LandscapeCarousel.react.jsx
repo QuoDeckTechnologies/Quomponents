@@ -20,7 +20,7 @@ LandscapeCarousel.propTypes = {
     // Quommon props
     //=======================================
     /**
-    LandscapeCarousel data should be passed in content field and it is required field
+    landscapeCarousel data should be passed in content field and it is required field
     */
     content: PropTypes.arrayOf(PropTypes.shape({
         image: PropTypes.string,
@@ -73,7 +73,7 @@ LandscapeCarousel.defaultProps = {
 export default function LandscapeCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
-    let quommonClasses = getQuommons(props, "Landscape-carousel");
+    let quommonClasses = getQuommons(props, "landscape-carousel");
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -87,7 +87,7 @@ export default function LandscapeCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: true,
+        autoplay: false,
         autplaySpeed: 1000,
         pauseOnHover: false,
         centerPadding: "0%",
@@ -95,18 +95,18 @@ export default function LandscapeCarousel(props) {
     };
     // ========================= Render Function =================================
     return (
-        <div className="Landscape-container">
+        <div className="landscape-container">
             <motion.div
                 initial={animate.from}
                 animate={animate.to}
-                className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
+                className={`qui qui-landscape-carousel-container ${quommonClasses.parentClasses}`}
             >
                 <Slider ref={sliderRef} {...settings}>
                     {_.map(content, (slide, index) => {
                         return (
-                            <div className="qui-Landscape-slide-container qui-banner"
+                            <div className="qui-landscape-slide-container qui-banner"
                                 key={"slider-" + index + Math.random()}>
-                                <div className={`qui-Landscape-slide `}>
+                                <div className={`qui-landscape-slide `}>
                                     {slide.Selected && <div className="qui-mid-circle" >
                                         <div className="qui-checkbox">
                                             <i className={slide.Selected ? "fas fa-check-square" : "far fa-square"}>
