@@ -5,13 +5,6 @@ export default {
     title: "Design System/IconBlock/IconBlock",
     component: IconBlock,
     argTypes: {
-        asVariant: {
-            control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -53,7 +46,7 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     icon: "",
-                    iconColor:""
+                    color: ""
                 },
             },
         },
@@ -102,15 +95,14 @@ export default {
 const Template = (args) => <IconBlock {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    asVariant: "primary",
     asSize: "normal",
     asFloated: "inline",
     asPadded: "normal",
-    asEmphasis:"contained",
+    asEmphasis: "contained",
     withColor: {
-        backgroundColor: ""
+        backgroundColor: "#AD2929"
     },
-    withIcon: { icon: "fas fa-book-open" , iconColor:"#fff"},
+    withIcon: { icon: "fas fa-book-open", color: "#fff" },
     isDisabled: false,
     isHidden: false,
 };

@@ -20,16 +20,7 @@ IconBlock.propTypes = {
 
     // Quommon props
     //=======================================
-    /**
-    Use to define standard component type
-    */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
+
     /**
     Set action emphasis in increasing order 
     */
@@ -64,7 +55,7 @@ IconBlock.propTypes = {
     */
     withIcon: PropTypes.shape({
         icon: PropTypes.string,
-        iconColor: PropTypes.string,
+        color: PropTypes.string,
     }),
     /**
     Use to show/hide the component
@@ -87,7 +78,6 @@ IconBlock.defaultProps = {
 
     // Quommon props
     //=======================================
-    asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
     asFloated: "inline",
@@ -103,13 +93,11 @@ IconBlock.defaultProps = {
     onClick: null
 };
 
-
 function getColors(colors, emphasis, icon) {
     let colorStyle = {
         backgroundHandle: {},
         iconColorHandle: {}
     }
-
     colorStyle.backgroundHandle = emphasis === 'text'
         ? {
             background: 'transparent',
@@ -129,14 +117,14 @@ function getColors(colors, emphasis, icon) {
             }
     colorStyle.iconColorHandle = emphasis === 'text'
         ? {
-            color: icon.iconColor,
+            color: icon.color,
         }
         : emphasis === 'outlined'
             ? {
                 color: colors?.backgroundColor,
             }
             : {
-                color: icon?.iconColor,
+                color: icon?.color,
             }
 
     return colorStyle;
@@ -163,14 +151,13 @@ export default function IconBlock(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
-
     let empColors = props.withColor ? getColors(props.withColor, props.asEmphasis, props.withIcon) : {};
     //-------------------------------------------------------------------
     // 3. Get the Status of Component
     //-------------------------------------------------------------------
-    const iconBlock = (colors) => {
+    const iconBlock = () => {
         return (
-            <div className={`qui-btn icon-button-container variant-${props.asVariant}`}
+            <div className={`qui-btn icon-button-container`}
                 style={Object.assign({}, empColors.backgroundHandle)}
             >
                 <i className={`${props.withIcon?.icon} icon-button-style`}
@@ -185,7 +172,7 @@ export default function IconBlock(props) {
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses}`}>
-                {iconBlock(props.withColor)}
+                {iconBlock()}
             </div>
         </motion.div>
     );
