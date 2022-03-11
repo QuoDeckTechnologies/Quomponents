@@ -167,16 +167,16 @@ export default function OrderingList(props) {
               className="qui-ordering-btn"
               onClick={() => handleUpClick(index)}
             >
-              <div className="qui-up-solid-border">
-                <div className="qui-up-dotted-border">
-                  <button className={`qui-slide-icon fa fa-arrow-up `}></button>
+              <div className="qui-ordering-border-up">
+                <div className="qui-ordering-dotted-up">
+                  <button className={`qui-ordering-btn-icon fa fa-arrow-up `}></button>
                 </div>
               </div>
             </div>
             <div
-              className={`qui-btn qui-title-bttn ${quommonClasses.childClasses}`}
+              className={`qui-btn qui-ordering-title-bttn ${quommonClasses.childClasses}`}
             >
-              <div className={`qui-title-content`}>{item}</div>
+              <div className={`qui-ordering-title-content`}>{item}</div>
             </div>
             <div
               style={{
@@ -185,10 +185,10 @@ export default function OrderingList(props) {
               className={`qui-ordering-btn`}
               onClick={() => handleDownClick(index)}
             >
-              <div className="qui-down-solid-border">
-                <div className="qui-down-dotted-border">
+              <div className="qui-ordering-border-down">
+                <div className="qui-ordering-dotted-down">
                   <button
-                    className={`qui-slide-icon  fa fa-arrow-down`}
+                    className={`qui-ordering-btn-icon fa fa-arrow-down`}
                   ></button>
                 </div>
               </div>

@@ -11,28 +11,28 @@
     border: 0.2em solid #666666;
 }
 
-.qui .qui-up-solid-border {
+.qui .qui-ordering-border-up {
     display: flex;
     width: 100%;
     margin-bottom: 0.4em;
     border-bottom: 0.2em solid #666666;
 }
 
-.qui .qui-up-dotted-border {
+.qui .qui-ordering-dotted-up {
     width: 100%;
     display: flex;
     margin-bottom: 0.2em;
     border-bottom: 0.2em dashed #666666;
 }
 
-.qui .qui-down-solid-border {
+.qui .qui-ordering-border-down {
     display: flex;
     width: 100%;
     margin-top: 0.4em;
     border-top: 0.2em solid #666666;
 }
 
-.qui .qui-down-dotted-border {
+.qui .qui-ordering-dotted-down {
     display: flex;
     width: 100%;
     margin-top: 0.2em;
@@ -40,14 +40,14 @@
     align-items: center;
 }
 
-.qui .qui-slide-icon {
+.qui .qui-ordering-btn-icon {
     font-size: 1.2em;
     margin-left: 0.8em;
     color: #666666;
     background-color: #f8f8f8;
 }
 
-.qui .qui-title-bttn {
+.qui .qui-ordering-title-bttn {
     display: flex;
     margin: 0.2em 0.6em;
     align-items: center;
@@ -63,17 +63,17 @@
         height: 2em;
     }
 
-    .qui .qui-title-bttn {
+    .qui .qui-ordering-title-bttn {
         width: 10em;
         height: 2.8em;
     }
 
-    .qui .qui-slide-icon {
+    .qui .qui-ordering-btn-icon {
         font-size: 0.8em;
         margin-left: 0.4em;
     }
 
-    .qui .qui-title-content {
+    .qui .qui-ordering-title-content {
         font-size: 0.5em;
     }
 }
@@ -84,16 +84,16 @@
         height: 2.5em;
     }
 
-    .qui .qui-title-bttn {
+    .qui .qui-ordering-title-bttn {
         width: 15em;
         height: 3.5em;
     }
 
-    .qui .qui-slide-icon {
+    .qui .qui-ordering-btn-icon {
         margin-left: 0.7em;
     }
 
-    .qui .qui-title-content {
+    .qui .qui-ordering-title-content {
         font-size: 0.5em;
     }
 }
@@ -104,17 +104,17 @@
         height: 3.5em;
     }
 
-    .qui .qui-title-bttn {
+    .qui .qui-ordering-title-bttn {
         width: 25em;
         height: 5em;
     }
 
-    .qui .qui-slide-icon {
+    .qui .qui-ordering-btn-icon {
         font-size: 1.2em;
         margin-left: 0.8em;
     }
 
-    .qui .qui-title-content {
+    .qui .qui-ordering-title-content {
         font-size: 1.5em;
     }
 }
