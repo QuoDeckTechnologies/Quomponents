@@ -175,7 +175,7 @@ export default function OrderingList(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className={`qui-btn qui-title ${quommonClasses.childClasses}`}>
+                        <div className={`qui-btn qui-title-bttn ${quommonClasses.childClasses}`}>
                             <div className={`qui-title-content`}>{item}</div>
                         </div>
                         <div style={{ pointerEvents: index === btnArr.length - 1 ? "none" : "" }} className={`qui-downslide`} onClick={() => handleDownClick(index)}>
