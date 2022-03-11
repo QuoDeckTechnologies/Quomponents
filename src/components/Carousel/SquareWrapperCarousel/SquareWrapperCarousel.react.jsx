@@ -110,8 +110,8 @@ export default function SquareWrapperCarousel(props) {
 
 
                                 <div className={`qui-SquareWrapper-slide `}>
-                                    {slide.Selected && <div className="qui-mid-circle" style={{ backgroundColor: slide.props.withColor.accentColor }}>
-                                        <div className="qui-checkbox" style={{ color: slide.props.withColor.textColor }}>
+                                    {slide.Selected && <div className="qui-mid-circle" >
+                                        <div className="qui-checkbox" >
                                             <i className={slide.Selected ? "fas fa-check-square" : "far fa-square"}>
                                             </i>
                                         </div>

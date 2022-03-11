@@ -11,7 +11,14 @@
   position: relative;
 }
 .qui-portrait-carousel .qui-slider-card-box {
-  display: none;
+  background-color: #454545;
+}
+
+.qui-slick-prev{
+  color: #666666;
+}
+.qui-slick-next{
+  color: #666666;
 }
 .qui-portrait-carousel .slick-slide {
   .qui-card-label {
@@ -60,11 +67,12 @@
   }
   .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box-header {
     text-align: center;
+    color: white;
   }
   .qui-portrait-slide .qui-mid-circle {
     width: 4.5em;
     height: 2.2em; /* as the half of the width */
-    background-color: gold;
+    background-color: #666666;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
     border-bottom: 0;
@@ -81,6 +89,7 @@
     right: 0%;
     left: 0%;
     margin: auto;
+    color: #ffe600;
     font-size: 1.2em;
   }
   .qui-portrait-carousel .slick-dots li button:before {
@@ -128,7 +137,6 @@
   .qui-portrait-slide .qui-mid-circle {
     width: 5.8em;
     height: 2.9em; /* as the half of the width */
-    background-color: gold;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
     border-bottom: 0;
@@ -190,7 +198,6 @@
   .qui-portrait-slide .qui-mid-circle {
     width: 7em;
     height: 3.5em; /* as the half of the width */
-    background-color: gold;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
     border-bottom: 0;
@@ -236,7 +243,6 @@
   .qui-portrait-slide .qui-mid-circle {
     width: 8em;
     height: 4em; /* as the half of the width */
-    background-color: gold;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
     border-bottom: 0;

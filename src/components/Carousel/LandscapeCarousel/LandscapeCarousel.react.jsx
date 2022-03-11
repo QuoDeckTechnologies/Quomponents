@@ -107,8 +107,8 @@ export default function LandscapeCarousel(props) {
                             <div className="qui-Landscape-slide-container qui-banner"
                                 key={"slider-" + index + Math.random()}>
                                 <div className={`qui-Landscape-slide `}>
-                                    {slide.Selected && <div className="qui-mid-circle" style={{ backgroundColor: slide.props.withColor.accentColor }}>
-                                        <div className="qui-checkbox" style={{ color: slide.props.withColor.textColor }}>
+                                    {slide.Selected && <div className="qui-mid-circle" >
+                                        <div className="qui-checkbox">
                                             <i className={slide.Selected ? "fas fa-check-square" : "far fa-square"}>
                                             </i>
                                         </div>
@@ -121,12 +121,10 @@ export default function LandscapeCarousel(props) {
                 </Slider>
                 <div className="qui-slick-arrows">
                     <div className="qui-slick-prev"
-                        style={{ color: content[0].props.withColor.accentColor }}
                         onClick={() => sliderRef.current.slickPrev()}>
                         <i className="fas fa-arrow-alt-circle-left"></i>
                     </div>
                     <div className="qui-slick-next"
-                        style={{ color: content[0].props.withColor.accentColor }}
                         onClick={() => sliderRef.current.slickNext()}>
                         <i className="fas fa-arrow-alt-circle-right"></i>
                     </div>

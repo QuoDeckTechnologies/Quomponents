@@ -51,14 +51,6 @@ export default {
     },
 };
 
-let dataprops = {
-    asVariant: "warning",
-    withColor: {
-        backgroundColor: "",
-        accentColor: "",
-        textColor: "",
-    },
-}
 
 // -------------------------------------------------------------
 // Default
@@ -71,42 +63,19 @@ Default.args = {
         header: "Balloon Burst",
         tag: "new",
         Selected: true,
-        props: {
-            ...dataprops,
-            withColor: {
-                backgroundColor: "red",
-                accentColor: "purple",
-                textColor: "yellow",
-            },
-        }
+        
     },
     {
         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
         tag: "premium",
         Selected: true,
-        header: "Cityscape",
-        props: {
-            ...dataprops,
-            withColor: {
-                backgroundColor: "#454545",
-                accentColor: "#666666",
-                textColor: "yellow",
-            },
-        }
+        header: "Cityscape",  
     },
     {
         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
         tag: "restricted",
         Selected: false,
         header: "GhostBuster",
-        props: {
-            ...dataprops,
-            withColor: {
-                backgroundColor: "blue",
-                accentColor: "yellow",
-                textColor: "red",
-            },
-        }
     }],
     withAnimation: {
         animation: "slideRight",
@@ -129,24 +98,14 @@ LandscapeCarouselWithoutBox.args = {
     content: [{
         image: "https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
         tag: "new",
-        props: {
-            ...dataprops,
-            asVariant: "secondary"
-        }
     },
     {
         image: "https://i.pinimg.com/564x/68/ed/88/68ed881d5ff0dbe232ff8d4d2e186a99.jpg",
         tag: "premium",
-        props: {
-            ...dataprops,
-        }
     },
     {
         image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
         tag: "restricted",
-        props: {
-            ...dataprops,
-        }
     }],
 
 };
@@ -170,24 +129,14 @@ LandscapeCarouselWithoutTag.args = {
     content: [{
         image: " https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
         header: "The Negotiation Room",
-        props: {
-            ...dataprops,
-            asVariant: "secondary"
-        }
     },
     {
         image: "https://i.pinimg.com/564x/68/ed/88/68ed881d5ff0dbe232ff8d4d2e186a99.jpg",
         header: "The Negotiation Room",
-        props: {
-            ...dataprops,
-        }
     },
     {
         image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
         header: "What is Negotiation Room?",
-        props: {
-            ...dataprops,
-        }
     }],
 
 };

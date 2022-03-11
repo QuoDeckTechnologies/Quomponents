@@ -22,11 +22,6 @@ describe('LandscapeCarousel', () => {
         selected: true,
         props: {
             asVariant: "primary",
-            withColor: {
-                backgroundColor: "red",
-                accentColor: "green",
-                textColor: "blue",
-            }
         }
     }]
     beforeEach(() => {
@@ -34,7 +29,6 @@ describe('LandscapeCarousel', () => {
         component = shallow(
             <LandscapeCarousel
                 content={content}
-                withColor={colors}
                 onClick={() => console.log("Tesing Carousel")}
             />
         );

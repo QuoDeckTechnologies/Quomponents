@@ -30,11 +30,6 @@ describe('SquareWrapperCarousel', () => {
         selected: true,
         props: {
             asVariant: "primary",
-            withColor: {
-                backgroundColor: "red",
-                accentColor: "green",
-                textColor: "blue",
-            }
         }
     }]
     beforeEach(() => {
@@ -42,7 +37,6 @@ describe('SquareWrapperCarousel', () => {
         component = shallow(
             <SquareWrapperCarousel
                 content={content}
-                withColor={colors}
                 onClick={() => console.log("Tesing Carousel")}
             />
         );

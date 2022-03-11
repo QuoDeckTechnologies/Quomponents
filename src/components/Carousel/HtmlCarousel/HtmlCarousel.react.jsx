@@ -67,7 +67,7 @@ export default function HtmlCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: true,
+        autoplay: false,
         pauseOnHover: true,
         centerPadding: "0%",
         swipeToSlide: true,

@@ -87,8 +87,9 @@ Default.args = {
         content: "This is HtmlCarousel, Imported from banner card.",
         props: {
             ...dataprops,
+            asVariant: "warning",
             withColor: {
-                backgroundColor: "red",
+                backgroundColor: "",
                 accentColor: "",
                 textColor: "",
             },
