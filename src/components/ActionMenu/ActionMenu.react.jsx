@@ -38,9 +38,9 @@ ActionMenu.propTypes = {
         "warning",
         "error",
     ]),
-     /**
-    Use to define component text size in increasing order
-    */
+    /**
+   Use to define component text size in increasing order
+   */
     asSize: PropTypes.oneOf([
         "tiny",
         "small",
@@ -136,7 +136,7 @@ export default function ActionMenu(props) {
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "ActionMenu");
+    let quommonClasses = getQuommons(props, "actionmenu");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 3. Set the component colors
@@ -156,9 +156,9 @@ export default function ActionMenu(props) {
         >
             {_.map(props.content, (item, index) => {
                 return (
-                    <div className={`items ${quommonClasses.childClasses}`} key={index} onClick={props.onClick} style={colors.backgroundColors}>
-                        <i className={`icons ${item.icon}`} style={colors.accentColors}></i>
-                        <div className={`titles ${quommonClasses.childClasses}`} style={colors.textColors}>{item.title}</div>
+                    <div className={`qui-actionmenu-items ${quommonClasses.childClasses}`} key={index} onClick={props.onClick} style={colors.backgroundColors}>
+                        <div className="qui-actionmenu-icon"><i className={`qui-actionmenu-icons ${item.icon}`} style={colors.accentColors}></i></div>
+                        <div className={`qui-actionmenu-titles ${quommonClasses.childClasses}`} style={colors.textColors}>{item.title}</div>
                     </div>
                 );
             })}
