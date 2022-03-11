@@ -7,7 +7,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OrderingList.scss";
 import "../../../common/stylesheets/overrule.scss";
-import ButtonBank from "../../ButtonBank/ButtonBank.react";
 
 OrderingList.propTypes = {
   /**
