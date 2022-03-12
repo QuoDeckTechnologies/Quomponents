@@ -5,6 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import './MultiSelect.scss'
 import "../../common/stylesheets/overrule.scss";
+import { Checkbox } from "@mui/material";
 import Button from "../Buttons/Button/Button.react";
 import _ from "lodash";
 import { getQuommons } from "../../common/javascripts/helpers";
@@ -108,7 +109,7 @@ MultiSelect.defaultProps = {
 **/
 
 export default function MultiSelect(props) {
-    const {content} = props;
+    const { content } = props;
     const [isChecked, setIsChecked] = useState(false);
     function toggleChecked() {
         setIsChecked(prevState => !prevState)
@@ -117,17 +118,17 @@ export default function MultiSelect(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "multi-select");
+
+  
     return (
         <div className={`qui ${quommonClasses.parentClasses}`} onClick={(e) => props.onClick(e)}>
-            {_.map(content, (text,index) => {
+            {_.map(content, (text, index) => {
                 return (
-                    <div key={text,index}
+                    <div key={text, index}
                         className={`qui-multi-select-button-container ${quommonClasses.childClasses}`} >
                         <div className="qui-multi-select-button">
                             <div className="square-background">
-                                <i className={`qui-multi-select-checkbox ${isChecked ? "fas fa-check-square" : "fa fa-square"}`}
-                                    onClick={() => toggleChecked()}>
-                                </i>
+                                <Checkbox/>
                             </div>
                             {<Button {...props} content={text} onClick={() => toggleChecked()} />}</div>
                     </div>
@@ -136,3 +137,6 @@ export default function MultiSelect(props) {
         </div>
     )
 }
+{/* <i className={`qui-multi-select-checkbox ${isChecked ? "fas fa-check-square" : "fa fa-square"}`}
+    onClick={() => toggleChecked()}>
+</i> */}
