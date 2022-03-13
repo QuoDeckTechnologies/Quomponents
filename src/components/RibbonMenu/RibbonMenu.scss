@@ -23,7 +23,8 @@
     width: 999px;
 }
 .qui .ribbon-menu-design-container {
-    width: 316px;
+    width: 1004.05px;
+
 }
 .qui .ribbon-menu-tools-container {
     width: 632px;
@@ -164,4 +165,25 @@
 }
 .qui .settings-section-child-container {
     width: 149px;
+}
+
+.qui .swatch-container{
+    width: 613.9px;
+    height: 64px;
+    background-color: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0px 1px 4px grey;
+}
+.qui .custom-color-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+}
+.qui .slide-background{
+    height:64px;
+    width: 104px;
 }
