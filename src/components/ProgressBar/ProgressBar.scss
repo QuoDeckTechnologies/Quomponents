@@ -1,0 +1,57 @@
+.qui .qui-progressbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1em 1.5em;
+}
+.qui .size-tiny .qui-progressbaricons,
+.qui .size-small .qui-progressbaricons {
+  font-size: 2em;
+}
+.qui .size-normal .qui-progressbaricons,
+.qui .size-big .qui-progressbaricons {
+  font-size: 2.5em;
+}
+.qui .size-huge .qui-progressbaricons,
+.qui .size-massive .qui-progressbaricons {
+  font-size: 2.2em;
+}
+.qui .qui-currentstep {
+  position: relative;
+  height: 0.38em;
+  flex: 1;
+  background-color: black;
+  width: 12em;
+  margin: 0em 0.1em;
+}
+.qui .qui-progressbarmiddle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  padding: 0em 0.5em;
+}
+
+@media only screen and (min-width: 320px) {
+  .qui-progressbar {
+    font-size: 1em;
+  }
+  .qui .qui-currentstep {
+    width: 1em;
+  }
+  .qui .size-massive .qui-currentstep {
+    width: 0.5em;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .qui-progressbar {
+    font-size: 1.25em;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .qui-progressbar {
+    font-size: 1.5em;
+  }
+}

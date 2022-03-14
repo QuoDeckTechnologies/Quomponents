@@ -54,6 +54,10 @@ SquareCarousel.propTypes = {
         duration: PropTypes.number,
         delay: PropTypes.number,
     }),
+    /**
+    Button component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 
 };
 
@@ -111,7 +115,8 @@ export default function SquareCarousel(props) {
                             <div
                                 className={`qui-square-slide`}
                             >
-                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
+                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick}
+/>
                             </div>
                         </div>
                     );
