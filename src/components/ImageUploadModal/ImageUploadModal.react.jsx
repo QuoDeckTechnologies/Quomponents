@@ -1,8 +1,10 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import AvatarEditor from "react-avatar-editor";
+import Cropper from "react-easy-crop";
+import Slider from "react-rangeslider";
 import _ from "lodash";
 import {
   getAnimation,
@@ -14,7 +16,6 @@ import "../../common/stylesheets/common.css";
 import "./ImageUploadModal.scss";
 import "../../common/stylesheets/overrule.scss";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
-import Slider from "react-rangeslider";
 import Button from "../Buttons/Button/Button.react";
 
 ImageUploadModal.propTypes = {
@@ -115,7 +116,26 @@ ImageUploadModal.defaultProps = {
   isDisabled: false,
   isHidden: false,
 };
-
+function getSize(size) {
+  if (size === "tiny") {
+    return 240;
+  }
+  if (size === "small") {
+    return 320;
+  }
+  if (size === "normal") {
+    return 600;
+  }
+  if (size === "big") {
+    return 800;
+  }
+  if (size === "huge") {
+    return 950;
+  }
+  if (size === "massive") {
+    return 1024;
+  }
+}
 /**
 ## Notes
 - The design system used for this component is Fontawesome Icon
@@ -128,13 +148,12 @@ export default function ImageUploadModal(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content from props
   //-------------------------------------------------------------------
-  let { content } = props;
 
-  let aspectCoeff = props.aspectRatio < 1.3 ? 420 : 256;
   //-------------------------------------------------------------------
   // 2. Defining state and variable
   //-------------------------------------------------------------------
   const [zoom, setZoom] = useState(10);
+
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -143,7 +162,7 @@ export default function ImageUploadModal(props) {
   // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  const width = getSize(props.asSize);
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -168,8 +187,8 @@ export default function ImageUploadModal(props) {
         </div>
         <AvatarEditor
           className="qui-image-preview"
-          width={aspectCoeff}
-          height={aspectCoeff * props.aspectRatio}
+          width={width}
+          height={width / 2}
           image={
             "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"
           }
@@ -185,12 +204,14 @@ export default function ImageUploadModal(props) {
         <div className="qui-image-upload-buttons">
           <Button
             {...props}
+            asSize='normal'
             content="cancel"
             asEmphasis="text"
             asFloated="left"
           />
           <Button
             {...props}
+            asSize='normal'
             content="save"
             asEmphasis="contained"
             asFloated="left"

@@ -8,6 +8,7 @@
 }
 .qui .qui-image-cropper {
   width: 85%;
+  // position: absolute;
 }
 .qui .qui-image-cropper .qui-button.float-none {
   min-height: 0;
@@ -56,6 +57,11 @@
 .qui .qui-save-image-modal-button {
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.4);
 }
+
+.qui .qui-image-preview {
+  border-radius: 1em;
+}
+
 // ---------------------------------------------------
 // range-slider index CSS with modifications
 // ---------------------------------------------------
