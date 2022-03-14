@@ -127,7 +127,7 @@ export default function SearchBar(props) {
     const input = useRef(null);
     const box = useRef(null);
     const handleKeyPress = (event) => {
-        if (event?.key === 'Enter') {
+        if (event.key === 'Enter') {
             handleButtonPress();
         }
     }
@@ -141,7 +141,7 @@ export default function SearchBar(props) {
         useEffect(() => {
             // Function for click event
             function handleOutsideClick(event) {
-                if (ref?.current && !ref?.current.contains(event?.target)) {
+                if (ref.current && !ref.current.contains(event?.target)) {
                     setExpandable(false)
                 }
             }
@@ -168,22 +168,19 @@ export default function SearchBar(props) {
         return (
             <div className={`search-bar-container`}
                 onClick={() => { setExpandable(true) }}
-                ref={box}
-            >
+                ref={box}>
                 <div className={`search-bar-child-container ${searchBarStyle}`}>
                     <input
                         ref={input}
                         className={`search-bar-input-field ${inputStyle}`}
                         placeholder={searchPlaceHolder}
                         style={{ color: props.withColor?.textColor }}
-                        onKeyPress={handleKeyPress}
-                    />
+                        onKeyPress={handleKeyPress} />
                     <button
                         aria-label="Search-Icon"
                         className={`search-bar-icon ${iconStyle}`}
                         onClick={handleButtonPress}
-                        style={{ backgroundColor: props.withColor?.backgroundColor }}
-                    >
+                        style={{ backgroundColor: props.withColor?.backgroundColor }}>
                         <i className={props.withIcon?.icon}></i>
                     </button>
                     <div className={`search-bar-expand-effect`}

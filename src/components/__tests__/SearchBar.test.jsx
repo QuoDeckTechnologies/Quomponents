@@ -12,7 +12,9 @@ describe("SearchBar", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
-    let component;
+    let component, handleButtonPress, handleKeyPress;
+    handleKeyPress = jest.fn();
+    handleButtonPress = jest.fn();
     const dictionary = JSON.stringify({
         hi: {
             SearchBar: {
@@ -56,7 +58,6 @@ describe("SearchBar", () => {
         expect(component.find("input").props().placeholder).toBe("खोजें...");
     });
 
-
     it("should render closed Search Bar", () => {
         component.setProps({ isClosed: true });
         component.setProps({ isFluid: false });
@@ -84,24 +85,23 @@ describe("SearchBar", () => {
         expect(button.props().className).toBe("search-bar-icon undefined");
     });
 
-    test("input button press correctly", () => {
-        const handleButtonPress = jest.fn();
-        const { container } = render(
-            <SearchBar onClick={handleButtonPress} />
-        );
-        const input = getByPlaceholderText(container, "Search...");
-        let button = component.find("button");
-        fireEvent.change(input, { target: { value: "some value" } });
-        fireEvent.keyPress(input, { key: 'Enter', value: "some value" });
-        button.simulate('click');
-        expect(input.value).toBe("some value")
-        
-    });
-
-    it("should pass the value to the search bar", () => {
-        const { container } = render(<SearchBar onClick={() => {console.log("Testing Search Bar") }} />);
+    it("should pass the value when clicked on button", () => {
+        const { container } = render(<SearchBar onClick={() => { console.log("Testing Search Bar") }} />);
         const inputElement = getByPlaceholderText(container, "Search...");
+        let button = component.find("button");
+        button.simulate('click');
         fireEvent.click(inputElement, { target: { value: "some value" } });
         expect(inputElement.value).toBe("some value")
     });
+
+    it('should pass the value when pressed Enter', () => {
+        const { queryByPlaceholderText } = render(<SearchBar onClick={() => {
+            console.log("Testing SearchBar")
+            handleKeyPress = { handleKeyPress }
+            handleButtonPress = { handleButtonPress }
+        }} />)
+        const searchInput = queryByPlaceholderText('Search...')
+        fireEvent.keyPress(searchInput, { target: { value: 'test' } })
+        expect(searchInput.value).toBe('test')
+    })
 });
