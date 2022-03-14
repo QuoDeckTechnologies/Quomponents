@@ -154,7 +154,7 @@ export default function ActionMenu(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            {_.map(props.content, (item, index) => {
+            {_.map(content, (item, index) => {
                 return (
                     <div className={`qui-actionmenu-items ${quommonClasses.childClasses}`} key={index} onClick={props.onClick} style={colors.backgroundColors}>
                         <div className="qui-actionmenu-icon"><i className={`qui-actionmenu-icons ${item.icon}`} style={colors.accentColors}></i></div>

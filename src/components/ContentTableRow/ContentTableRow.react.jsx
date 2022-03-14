@@ -164,7 +164,6 @@ export default function ContentTableRow(props) {
         <button
           className="qui-content-menu"
           onClick={() => setShowMenu((prevState) => !prevState)}
-          onBlur={() => setShowMenu(false)}
         >
           <i className="fas fa-ellipsis-v"></i>
         </button>
