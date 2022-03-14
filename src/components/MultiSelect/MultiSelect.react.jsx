@@ -6,8 +6,6 @@ import "../../common/stylesheets/common.css";
 import './MultiSelect.scss'
 import "../../common/stylesheets/overrule.scss";
 import { Checkbox } from "@mui/material";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import  withStyles from '@mui/styles';
 import Button from "../Buttons/Button/Button.react";
 import _ from "lodash";
 import { getQuommons } from "../../common/javascripts/helpers";
@@ -124,26 +122,26 @@ export default function MultiSelect(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "multi-select");
 
-    const WhiteBackgroundCheckbox = withStyles(theme => ({
-        root: {
-          color: "red",
-          "& .MuiIconButton-label": {
-            position: "relative",
-            zIndex: 0
-          },
-          "&:not($checked) .MuiIconButton-label:after": {
-            content: '""',
-            left: 4,
-            top: 4,
-            height: 15,
-            width: 15,
-            position: "absolute",
-            backgroundColor: "white",
-            zIndex: -1
-          }
-        },
-        checked: {}
-      }))(Checkbox);
+    // const WhiteBackgroundCheckbox = withStyles(theme => ({
+    //     root: {
+    //       color: "red",
+    //       "& .MuiIconButton-label": {
+    //         position: "relative",
+    //         zIndex: 0
+    //       },
+    //       "&:not($checked) .MuiIconButton-label:after": {
+    //         content: '""',
+    //         left: 4,
+    //         top: 4,
+    //         height: 15,
+    //         width: 15,
+    //         position: "absolute",
+    //         backgroundColor: "white",
+    //         zIndex: -1
+    //       }
+    //     },
+    //     checked: {}
+    //   }))(Checkbox);
 
     return (
         <div className={`qui ${quommonClasses.parentClasses}`} onClick={(e) => props.onClick(e)}>
@@ -152,7 +150,7 @@ export default function MultiSelect(props) {
                     <div key={text, index}
                         className={`qui-multi-select-button-container ${quommonClasses.childClasses}`} >
                         <div className="qui-multi-select-button" >
-                            <div className="square-background">
+                            {/* <div className="square-background"> */}
                                 <Checkbox
                                     sx={
                                         { color: "white",
@@ -166,7 +164,7 @@ export default function MultiSelect(props) {
                                     iconStyle={{fill: 'white'}}
                                     value={text}
                                     onChange={(e) => getValue(e)} />
-                            </div>
+                            {/* </div> */}
                             {<Button {...props} content={text} />}</div>
                     </div>
                 );

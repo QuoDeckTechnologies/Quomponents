@@ -1,12 +1,16 @@
 .qui-multi-select-checkbox {
   cursor: pointer;
 }
-.qui .square-background {
-  background-color: #d60000;
-  padding: 0.2em;
-  border-radius: 1em;
-  font-size: 0em;
+// .qui .square-background {
+//   background-color: #d60000;
+//   padding: 0.2em;
+//   border-radius: 2em;
+//   font-size: 0em;
+// }
+.PrivateSwitchBase-input{
+  background-color:rgb(227, 220, 235);
 }
+
 .qui-multi-select-button {
   padding: 0;
   display: flex;
