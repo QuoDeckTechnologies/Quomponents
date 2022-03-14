@@ -98,7 +98,6 @@ SearchBar.defaultProps = {
 /**
 ## Notes
 - The design system used for this component is fontawesome Icons
-- The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 - props are not being passed to the SearchBar. Please speak to the admin to handle any new prop.
@@ -128,7 +127,7 @@ export default function SearchBar(props) {
     const input = useRef(null);
     const box = useRef(null);
     const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
+        if (event?.key === 'Enter') {
             handleButtonPress();
         }
     }
@@ -142,7 +141,7 @@ export default function SearchBar(props) {
         useEffect(() => {
             // Function for click event
             function handleOutsideClick(event) {
-                if (ref.current && !ref.current.contains(event.target)) {
+                if (ref?.current && !ref?.current.contains(event?.target)) {
                     setExpandable(false)
                 }
             }
