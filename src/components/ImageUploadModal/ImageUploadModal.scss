@@ -3,12 +3,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1em 0em 3.5em 0em;
+  padding: 1em 0em 2.8em 0em;
   border-radius: 1em;
+  position: relative;
+  z-index: 20;
+}
+.qui-image-upload-modal.qui-upload-image-modal-close{
+  display: none;
 }
 .qui .qui-image-cropper {
   width: 85%;
-  // position: absolute;
 }
 .qui .qui-image-cropper .qui-button.float-none {
   min-height: 0;
@@ -63,7 +67,7 @@
 }
 
 // ---------------------------------------------------
-// range-slider index CSS with modifications
+// range-slider default CSS with modifications
 // ---------------------------------------------------
 .qui.qui-image-upload-modal .rangeslider-horizontal {
   height: 12px;

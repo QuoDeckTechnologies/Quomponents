@@ -5,17 +5,8 @@ export default {
   title: "Design System/ImageUploadModal/ImageUploadModal",
   component: ImageUploadModal,
   argTypes: {
-    content: {
-      table: {
-        defaultValue: {
-          
-        },
-      },
-    },
-    aspectRatio: {
-      table: {
-        defaultValue: ''
-      },
+    isOpen: {
+      defaultValue : true
     },
     asVariant: {
         control: "select",
@@ -110,10 +101,9 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: {},
-  aspectRatio:1,
+  isOpen: true,
   asVariant:'warning',
-  asSize: "normal",
+  asSize: "tiny",
   withColor: {
     backgroundColor: "",
     accentColor: "",

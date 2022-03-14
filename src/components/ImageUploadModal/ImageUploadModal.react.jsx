@@ -1,9 +1,8 @@
 // Import npm packages
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import AvatarEditor from "react-avatar-editor";
-import Cropper from "react-easy-crop";
 import Slider from "react-rangeslider";
 import _ from "lodash";
 import {
@@ -17,16 +16,13 @@ import "./ImageUploadModal.scss";
 import "../../common/stylesheets/overrule.scss";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
 import Button from "../Buttons/Button/Button.react";
+import defaultImage from "../../assets/default11.jpeg";
 
 ImageUploadModal.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
-  /**
-    ImageUploadModal data should be passed in content field and it is a required field
-    */
-  content: PropTypes.shape({}).isRequired,
-  aspectRatio: PropTypes.number.isRequired,
+  isOpen: PropTypes.bool.isRequired,
   //=======================================
   // Quommon props
   //=======================================
@@ -103,8 +99,7 @@ ImageUploadModal.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
-  aspectRatio: null,
+  isOpen: true,
   //=======================================
   // Quommon props
   //=======================================
@@ -133,7 +128,7 @@ function getSize(size) {
     return 950;
   }
   if (size === "massive") {
-    return 1024;
+    return 1400;
   }
 }
 /**
@@ -146,16 +141,30 @@ function getSize(size) {
 **/
 export default function ImageUploadModal(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring content from props
+  // 1. useRef hook for file upload
   //-------------------------------------------------------------------
-
+  const fileRef = useRef();
   //-------------------------------------------------------------------
   // 2. Defining state and variable
   //-------------------------------------------------------------------
   const [zoom, setZoom] = useState(10);
-
+  const [image, setImage] = useState(null);
+  const [closeUploadModal, setCloseUploadModal] = useState(props.isOpen);
+  useEffect(()=>{
+    setCloseUploadModal(props.isOpen)
+  },[props.isOpen])
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // 3. Defining functions for file upload
+  //-------------------------------------------------------------------
+  const uploadFile = () => {
+    fileRef.current.click();
+  };
+  const handleChange = (e) => {
+    let file = e.target.files[0];
+    setImage(file);
+  };
+  //-------------------------------------------------------------------
+  // 4. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "image-upload-modal");
   //-------------------------------------------------------------------
@@ -165,10 +174,10 @@ export default function ImageUploadModal(props) {
   const width = getSize(props.asSize);
   // ========================= Render Function =================================
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
-      className={`qui ${quommonClasses.parentClasses}`}
+    <div
+      className={`qui ${quommonClasses.parentClasses}  ${
+        closeUploadModal ? "" : "qui-upload-image-modal-close"
+      } `}
     >
       <div
         className={`qui-image-modal-upload-header ${quommonClasses.childClasses}`}
@@ -177,21 +186,23 @@ export default function ImageUploadModal(props) {
       </div>
       <div className={`qui-image-cropper ${quommonClasses.childClasses}`}>
         <div className="qui-image-upload-button">
-          <Button
-            {...props}
-            content="Choose file"
-            asEmphasis="outlined"
-            isFluid={true}
-            asPadded="normal"
-          />
+          <form>
+            <input type="file" onChange={handleChange} ref={fileRef} hidden />
+            <Button
+              {...props}
+              content="Choose file"
+              asEmphasis="outlined"
+              isFluid={true}
+              asPadded="normal"
+              onClick={uploadFile}
+            />
+          </form>
         </div>
         <AvatarEditor
           className="qui-image-preview"
           width={width}
-          height={width / 2}
-          image={
-            "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"
-          }
+          height={width / 1.15}
+          image={image ? image : defaultImage}
           border={0}
           scale={zoom / 10}
         />
@@ -204,21 +215,26 @@ export default function ImageUploadModal(props) {
         <div className="qui-image-upload-buttons">
           <Button
             {...props}
-            asSize='normal'
+            asSize="normal"
             content="cancel"
             asEmphasis="text"
             asFloated="left"
           />
           <Button
             {...props}
-            asSize='normal'
+            asSize="normal"
             content="save"
             asEmphasis="contained"
             asFloated="left"
           />
         </div>
       </div>
-      <ArcMenu content={{}} isCloseButton={true} {...props} />
-    </motion.div>
+      <ArcMenu
+        content={{}}
+        isCloseButton={true}
+        {...props}
+        onClick={() => setCloseUploadModal(false)}
+      />
+    </div>
   );
 }
