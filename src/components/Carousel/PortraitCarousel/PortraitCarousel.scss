@@ -10,14 +10,13 @@
 .qui-portrait-carousel .qui-portrait-slide {
   position: relative;
 }
-.qui-portrait-carousel .qui-slider-card-box {
+.portrait-container .qui-portrait-carousel .qui-slider-card-box {
   background-color: #454545;
 }
-
-.qui-slick-prev{
+.qui-slick-prev {
   color: #666666;
 }
-.qui-slick-next{
+.qui-slick-next {
   color: #666666;
 }
 .qui-portrait-carousel .slick-slide {
@@ -213,6 +212,8 @@
   }
   .qui-portrait-carousel .slick-dots li button:before {
     font-size: 15px;
+    color: #a6a6a6;
+
   }
   .qui-portrait-carousel .slick-dots li.slick-active button:before {
     font-size: 17px;
@@ -223,6 +224,7 @@
   }
   .qui-portrait-carousel .slick-dots {
     bottom: -35px;
+    color: #a6a6a6;
   }
 }
 
@@ -261,6 +263,7 @@
   }
   .qui-portrait-carousel .slick-dots li.slick-active button:before {
     font-size: 17px;
+    color:#A6A6A6;
   }
   .qui-portrait-carousel .slick-dots li {
     margin: 0 -2px;

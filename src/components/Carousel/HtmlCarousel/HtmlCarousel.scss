@@ -1,17 +1,19 @@
-.qui-Html-carousel {
+.qui-html-carousel {
   overflow: inherit;
 }
-.qui-Html-carousel .qui-Html-slide-container {
+.qui-html-carousel .qui-html-slide-container {
   width: 99%;
 }
-.qui-Html-carousel .qui-slider-card-box {
+.qui-html-carousel .qui-html-slide-container .qui-slider-card-box {
   display: none;
+  background-color: rgba(173, 41, 41, 0.6);
+  color:white;
 }
-.qui-Html-slide-container .qui-ribbon-container .qui-ribbon {
+.qui-html-slide-container .qui-ribbon-container .qui-ribbon {
   position: relative;
   z-index: 1;
 }
-.qui-Html-carousel .slick-slide {
+.qui-html-carousel .slick-slide {
   .qui-card-label {
     display: none;
   }
@@ -26,7 +28,7 @@
   }
 }
 @media only screen and (min-width: 320px) {
-  .qui-Html-slide .qui-banner-card {
+  .qui-html-slide .qui-banner-card {
     display: inline-block;
     width: 100%;
     border-radius: 1.5em;
@@ -34,12 +36,12 @@
     background-size: cover;
     box-shadow: 0px 0px 0px 0px #666666;
   }
-  .qui-Html-slide-container .qui-ribbon-container {
+  .qui-html-slide-container .qui-ribbon-container {
     font-size: 1.1 em;
     font-weight: bold;
     text-transform: capitalize;
   }
-  .qui-Html-slide-container .qui-banner-card .qui-slider-card-box {
+  .qui-html-slide-container .qui-banner-card .qui-slider-card-box {
     max-width: 70%;
     left: 0%;
     bottom: 10%;
@@ -49,7 +51,7 @@
     padding: 0.5em 1em;
     border-radius: 0.5em;
   }
-  .qui-Html-slide-container .qui-banner-card .qui-slider-card-box-content {
+  .qui-html-slide-container .qui-banner-card .qui-slider-card-box-content {
     font-size: 1.4em;
     font-weight: normal;
     line-height: 1.1;
@@ -68,83 +70,83 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .qui-Html-carousel .slick-dots li button:before {
+  .qui-html-carousel .slick-dots li button:before {
     font-size: 9px;
   }
-  .qui-Html-carousel .slick-dots li.slick-active button:before {
+  .qui-html-carousel .slick-dots li.slick-active button:before {
     font-size: 12px;
     color: #a6a6a6;
   }
-  .qui-Html-carousel .slick-dots li {
+  .qui-html-carousel .slick-dots li {
     margin: 0 -4px;
   }
-  .qui-Html-carousel .slick-dots {
+  .qui-html-carousel .slick-dots {
     bottom: -25px;
     left: 0%;
     right: 0%;
     margin: auto;
     width: fit-content;
   }
-  .qui-Html-carousel .qui-slick-arrows {
+  .qui-html-carousel .qui-slick-arrows {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.5em;
   }
-  .qui-Html-carousel .qui-slick-prev,
+  .qui-html-carousel .qui-slick-prev,
   .qui-slick-next {
     cursor: pointer;
   }
 }
 @media only screen and (min-width: 481px) {
-  .qui-Html-slide-container .qui-ribbon-container {
+  .qui-html-slide-container .qui-ribbon-container {
     font-size: 1.3em;
     font-weight: bold;
     text-transform: capitalize;
   }
-  .qui-Html-slide-container .qui-banner-card .qui-slider-card-box-content {
+  .qui-html-slide-container .qui-banner-card .qui-slider-card-box-content {
     font-size: 1.6em;
   }
-  .qui-Html-carousel .qui-slick-arrows {
+  .qui-html-carousel .qui-slick-arrows {
     font-size: 2em;
   }
-  .qui-Html-carousel .slick-dots li button:before {
+  .qui-html-carousel .slick-dots li button:before {
     font-size: 12px;
   }
-  .qui-Html-carousel .slick-dots li.slick-active button:before {
+  .qui-html-carousel .slick-dots li.slick-active button:before {
     font-size: 15px;
     color: #a6a6a6;
   }
-  .qui-Html-carousel .slick-dots li {
+  .qui-html-carousel .slick-dots li {
     margin: 0 -2px;
   }
-  .qui-Html-carousel .slick-dots {
+  .qui-html-carousel .slick-dots {
     bottom: -30px;
   }
 }
 @media only screen and (min-width: 769px) {
-  .qui-Html-slide-container .qui-ribbon-container {
+  .qui-html-slide-container .qui-ribbon-container {
     font-size: 1.2em;
     font-weight: bold;
     text-transform: capitalize;
   }
-  .qui-Html-slide-container .qui-banner-card .qui-slider-card-box-content {
+  .qui-html-slide-container .qui-banner-card .qui-slider-card-box-content {
     font-size: 1.7em;
   }
-  .qui-Html-carousel .qui-slick-arrows {
+  .qui-html-carousel .qui-slick-arrows {
     font-size: 2.5em;
   }
-  .qui-Html-carousel .slick-dots li button:before {
+  .qui-html-carousel .slick-dots li button:before {
     font-size: 15px;
   }
-  .qui-Html-carousel .slick-dots li.slick-active button:before {
+  .qui-html-carousel .slick-dots li.slick-active button:before {
     font-size: 17px;
     color: #a6a6a6;
   }
-  .qui-Html-carousel .slick-dots li {
+  .qui-html-carousel .slick-dots li {
     margin: 0 -2px;
   }
-  .qui-Html-carousel .slick-dots {
+  .qui-html-carousel .slick-dots {
     bottom: -35px;
   }
 }

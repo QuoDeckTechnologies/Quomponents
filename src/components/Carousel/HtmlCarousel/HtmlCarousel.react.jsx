@@ -48,12 +48,11 @@ HtmlCarousel.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function HtmlCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
-    let quommonClasses = getQuommons(props, "Html-carousel");
+    let quommonClasses = getQuommons(props, "html-carousel");
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -67,11 +66,10 @@ export default function HtmlCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: false,
+        autoplay: true,
         pauseOnHover: true,
         centerPadding: "0%",
         swipeToSlide: true,
-        fade: true,
     };
     // ========================= Render Function =================================
     return (
@@ -81,9 +79,9 @@ export default function HtmlCarousel(props) {
             <Slider ref={sliderRef} {...settings}>
                 {_.map(content, (slide, index) => {
                     return (
-                        <div className="qui-Html-slide-container"
+                        <div className="qui-html-slide-container"
                             key={"slider-" + index + Math.random()}>
-                            <div className={`qui-Html-slide`}>
+                            <div className={`qui-html-slide`}>
                                 <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
                             </div>
                         </div>

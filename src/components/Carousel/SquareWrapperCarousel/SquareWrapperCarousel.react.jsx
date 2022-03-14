@@ -68,7 +68,6 @@ SquareWrapperCarousel.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function SquareWrapperCarousel(props) {
     const sliderRef = useRef();
@@ -116,7 +115,7 @@ export default function SquareWrapperCarousel(props) {
                                             </i>
                                         </div>
                                     </div>}
-                                    <BannerCard  {...slide.props} content={slide} onClick={props.onClick}/>
+                                    <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
                                 </div>
                             </div>
                         );

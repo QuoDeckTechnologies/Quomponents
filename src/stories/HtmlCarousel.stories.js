@@ -7,7 +7,6 @@ export default {
         content: [{
             image: "",
             tag: "",
-            Selected: "",
             content: "",
             props: {}
         }],
@@ -41,11 +40,6 @@ export default {
 
 let dataprops = {
     asVariant: "warning",
-    withColor: {
-        backgroundColor: "",
-        accentColor: "",
-        textColor: "",
-    },
 }
 // -------------------------------------------------------------
 // Default
@@ -60,11 +54,6 @@ Default.args = {
         props: {
             ...dataprops,
             asVariant: "primary",
-            withColor: {
-                backgroundColor: "",
-                accentColor: "",
-                textColor: "",
-            },
         }
     },
     {
@@ -74,11 +63,6 @@ Default.args = {
         props: {
             ...dataprops,
             asVariant: "secondary",
-            withColor: {
-                backgroundColor: "",
-                accentColor: "",
-                textColor: "",
-            },
         }
     },
     {
@@ -88,11 +72,6 @@ Default.args = {
         props: {
             ...dataprops,
             asVariant: "warning",
-            withColor: {
-                backgroundColor: "",
-                accentColor: "",
-                textColor: "",
-            },
         }
     }],
 };
