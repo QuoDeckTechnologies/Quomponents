@@ -68,8 +68,8 @@
 }
 .qui .size-tiny {
   .qui-arc {
-    height: 3.3em;
-    width: 3.3em;
+    height: 3em;
+    width: 3em;
   }
   .qui-arc-menu-button {
     height: 3.2em;
@@ -81,31 +81,38 @@
 }
 .qui .size-small {
   .qui-arc {
-    height: 2.5em;
-    width: 2.5em;
+    height: 3.5em;
+    width: 3.5em;
+  }
+  .qui-arc-menu-button {
+    height: 2.9em;
+    width: 2.9em;
+  }
+  .qui-arc-menu-button i {
+    font-size: 1.8em;
   }
 }
 .qui .size-normal {
   .qui-arc {
-    height: 2.8em;
-    width: 2.8em;
+    height: 3.2em;
+    width: 3.2em;
   }
   .qui-arc-menu-button {
-    height: 1.9em;
-    width: 1.9em;
+    height: 2.3em;
+    width: 2.3em;
   }
   .qui-arc-menu-button i {
     font-size: 1.2em;
   }
 }
 .qui .size-big {
-  .qui-arc-menu-button {
-    height: 1.8em;
-    width: 1.8em;
-  }
   .qui-arc {
     height: 3em;
     width: 3em;
+  }
+  .qui-arc-menu-button {
+    height: 1.7em;
+    width: 1.7em;
   }
   .qui-arc-menu-button i {
     font-size: 1em;
@@ -127,8 +134,8 @@
     width: 4em;
   }
   .qui-arc-menu-button {
-    height: 2em;
-    width: 2em;
+    height: 1.9em;
+    width: 1.9em;
   }
   .qui-arc-menu-button i {
     font-size: 1em;
