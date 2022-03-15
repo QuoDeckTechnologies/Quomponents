@@ -1,15 +1,9 @@
 // Import npm packages
-import React, { useState, useRef,useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 import AvatarEditor from "react-avatar-editor";
 import Slider from "react-rangeslider";
-import _ from "lodash";
-import {
-  getAnimation,
-  getQuommons,
-  getTranslation,
-} from "../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ImageUploadModal.scss";
@@ -22,6 +16,15 @@ ImageUploadModal.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
+  /**
+    Use to define content of the component
+    */
+  content: PropTypes.shape({
+    header: PropTypes.string,
+  }),
+  /**
+    Use to define if modal is open
+    */
   isOpen: PropTypes.bool.isRequired,
   //=======================================
   // Quommon props
@@ -47,15 +50,6 @@ ImageUploadModal.propTypes = {
     "huge",
     "massive",
   ]),
-  /**
-    Use to override component colors and behavior
-    */
-  withColor: PropTypes.shape({
-    backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
-    textColor: PropTypes.string,
-  }),
-
   /**
     Use to define the entry animation of the component
     */
@@ -99,13 +93,13 @@ ImageUploadModal.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
+  content: {},
   isOpen: true,
   //=======================================
   // Quommon props
   //=======================================
   asVariant: "primary",
   asSize: "normal",
-  withColor: null,
   withAnimation: null,
   withTranslation: null,
   isDisabled: false,
@@ -126,8 +120,7 @@ function getSize(size) {
   }
   if (size === "huge") {
     return 950;
-  }
-  if (size === "massive") {
+  } else {
     return 1400;
   }
 }
@@ -137,7 +130,6 @@ function getSize(size) {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Status of topics can be changed from content prop
 **/
 export default function ImageUploadModal(props) {
   //-------------------------------------------------------------------
@@ -150,62 +142,107 @@ export default function ImageUploadModal(props) {
   const [zoom, setZoom] = useState(10);
   const [image, setImage] = useState(null);
   const [closeUploadModal, setCloseUploadModal] = useState(props.isOpen);
-  useEffect(()=>{
-    setCloseUploadModal(props.isOpen)
-  },[props.isOpen])
+  useEffect(() => {
+    setCloseUploadModal(props.isOpen);
+  }, [props.isOpen]);
   //-------------------------------------------------------------------
   // 3. Defining functions for file upload
   //-------------------------------------------------------------------
   const uploadFile = () => {
-    fileRef.current.click();
+    fileRef.current?.click();
   };
   const handleChange = (e) => {
     let file = e.target.files[0];
     setImage(file);
+  };
+  const getEditor = (image, width) => {
+    if (image) {
+      return (
+        <AvatarEditor
+          className="qui-image-preview"
+          width={width}
+          height={width / 1.15}
+          image={image}
+          border={0}
+          scale={zoom / 10}
+        />
+      );
+    } else {
+      const height = width / 1.15;
+      return (
+        <img
+          className="qui-image-upload-default-image"
+          style={{ height: height }}
+          src={defaultImage}
+          alt="default"
+        />
+      );
+    }
   };
   //-------------------------------------------------------------------
   // 4. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "image-upload-modal");
   //-------------------------------------------------------------------
-  // 5. Get animation of the component
+  // 5. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  let header = props.content.header;
+  if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+  ) {
+    let tObj = getTranslation(props.withTranslation);
+    if (tObj) {
+      header = tObj.header;
+    }
+  }
+  //-------------------------------------------------------------------
+  // 6. Get width of the editor
+  //-------------------------------------------------------------------
   const width = getSize(props.asSize);
   // ========================= Render Function =================================
   return (
     <div
-      className={`qui ${quommonClasses.parentClasses}  ${
+      className={`qui ${quommonClasses.parentClasses} ${
         closeUploadModal ? "" : "qui-upload-image-modal-close"
-      } `}
+      }`}
     >
       <div
         className={`qui-image-modal-upload-header ${quommonClasses.childClasses}`}
       >
-        <h2>Upload Image</h2>
+        <h2>{header}</h2>
       </div>
       <div className={`qui-image-cropper ${quommonClasses.childClasses}`}>
         <div className="qui-image-upload-button">
           <form>
-            <input type="file" onChange={handleChange} ref={fileRef} hidden />
+            <input
+              type="file"
+              className="qui-image-upload-field"
+              onChange={handleChange}
+              ref={fileRef}
+              hidden
+            />
             <Button
               {...props}
               content="Choose file"
               asEmphasis="outlined"
               isFluid={true}
               asPadded="normal"
+              withTranslation={{
+                lang: props.withTranslation?.lang,
+                tgt: "button",
+                dictionary: JSON.stringify({
+                  hi: {
+                    button: { text: "फाइलें चुनें" },
+                  },
+                }),
+              }}
               onClick={uploadFile}
             />
           </form>
         </div>
-        <AvatarEditor
-          className="qui-image-preview"
-          width={width}
-          height={width / 1.15}
-          image={image ? image : defaultImage}
-          border={0}
-          scale={zoom / 10}
-        />
+        {getEditor(image, width)}
         <Slider
           min={0}
           max={100}
@@ -219,6 +256,16 @@ export default function ImageUploadModal(props) {
             content="cancel"
             asEmphasis="text"
             asFloated="left"
+            withTranslation={{
+              lang: props.withTranslation?.lang,
+              tgt: "button",
+              dictionary: JSON.stringify({
+                hi: {
+                  button: { text: "रद्द करें" },
+                },
+              }),
+            }}
+            onClick={() => setImage(null)}
           />
           <Button
             {...props}
@@ -226,6 +273,15 @@ export default function ImageUploadModal(props) {
             content="save"
             asEmphasis="contained"
             asFloated="left"
+            withTranslation={{
+              lang: props.withTranslation?.lang,
+              tgt: "button",
+              dictionary: JSON.stringify({
+                hi: {
+                  button: { text: "स्वीकार" },
+                },
+              }),
+            }}
           />
         </div>
       </div>
@@ -233,7 +289,9 @@ export default function ImageUploadModal(props) {
         content={{}}
         isCloseButton={true}
         {...props}
-        onClick={() => setCloseUploadModal(false)}
+        onClick={() => {
+          setCloseUploadModal(false);
+        }}
       />
     </div>
   );

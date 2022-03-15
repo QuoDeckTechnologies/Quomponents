@@ -1,35 +1,38 @@
 import React from "react";
 import ImageUploadModal from "../components/ImageUploadModal/ImageUploadModal.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    imageuploadmodal: { header: "तस्वीर अपलोड करें" },
+  },
+});
+
 export default {
   title: "Design System/ImageUploadModal/ImageUploadModal",
   component: ImageUploadModal,
   argTypes: {
-    isOpen: {
-      defaultValue : true
-    },
-    asVariant: {
-        control: "select",
-        options: ["primary", "secondary", "success", "warning", "error"],
-        table: {
-          category: "as-Flags",
+    content: {
+      table: {
+        defaultValue: {
+          header: "Upload Image",
         },
       },
+    },
+    isOpen: {
+      defaultValue: true,
+    },
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     asSize: {
       control: "select",
       options: ["tiny", "small", "normal", "big", "huge", "massive"],
       table: {
         category: "as-Flags",
-      },
-    },
-    withColor: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          backgroundColor: "",
-          accentColor: "",
-          textColor: "",
-        },
       },
     },
     withAnimation: {
@@ -84,10 +87,10 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a ImageUploadModal.",
+    componentSubtitle: "Displays a Image Upload Modal Component.",
     a11y: { disable: true },
     docs: {
-      iframeHeight: 600,
+      iframeHeight: 500,
     },
   },
 };
@@ -101,18 +104,19 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
+  content: {header: "Upload Image"},
   isOpen: true,
-  asVariant:'warning',
+  asVariant: "warning",
   asSize: "tiny",
-  withColor: {
-    backgroundColor: "",
-    accentColor: "",
-    textColor: "",
-  },
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "imageuploadmodal",
+    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,
@@ -121,6 +125,34 @@ Default.parameters = {
   docs: {
     source: {
       code: `<ImageUploadModal {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+//-------------------------------------------------------------
+// Translated ImageUploadModal
+// -------------------------------------------------------------
+export const TranslatedImageUploadModal = Template.bind({});
+TranslatedImageUploadModal.args = {
+  ...Default.args,
+  asVariant:'primary',
+  withTranslation: {
+    lang: "hi",
+    tgt: "imageuploadmodal",
+    dictionary: dictionary,
+  },
+};
+TranslatedImageUploadModal.parameters = {
+  docs: {
+    description: {
+      story:
+        "We can translate the language of Image Upload Modal if dictionary is provided",
+    },
+    source: {
+      code: `<ImageUploadModal {...${JSON.stringify(
+        TranslatedImageUploadModal.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

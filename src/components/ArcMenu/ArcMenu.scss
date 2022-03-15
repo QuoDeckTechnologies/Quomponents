@@ -22,7 +22,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 3px 2px 0px #b6b6b6;
+  box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.2);
 }
 .qui .qui-arc-menu-buttons {
   position: absolute;
@@ -68,12 +68,12 @@
 }
 .qui .size-tiny {
   .qui-arc {
-    height: 2.8em;
-    width: 2.8em;
+    height: 3.3em;
+    width: 3.3em;
   }
   .qui-arc-menu-button {
-    height: 2.5em;
-    width: 2.5em;
+    height: 3.2em;
+    width: 3.2em;
   }
   .qui-arc-menu-button i {
     font-size: 1.5em;

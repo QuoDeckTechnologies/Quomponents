@@ -8,7 +8,7 @@
   position: relative;
   z-index: 20;
 }
-.qui-image-upload-modal.qui-upload-image-modal-close{
+.qui-image-upload-modal.qui-upload-image-modal-close {
   display: none;
 }
 .qui .qui-image-cropper {
@@ -16,7 +16,7 @@
 }
 .qui .qui-image-cropper .qui-button.float-none {
   min-height: 0;
-  margin-bottom: 0.8em;
+  margin-bottom: 1.2em;
 }
 .qui.qui-image-upload-modal
   .qui-image-cropper
@@ -25,6 +25,10 @@
   button {
   font-size: 1.5em;
   color: rgb(90, 90, 90);
+}
+.qui .qui-image-upload-button button {
+  border-radius: 0.3em;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
 }
 .qui .qui-image-cropper .qui-button .qui-label {
   display: none;
@@ -35,7 +39,7 @@
   margin-bottom: 1em;
   padding: 0.5em;
   border-radius: 0.2em;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
 }
 .qui .qui-image-modal-upload-header {
   width: 85%;
@@ -44,6 +48,7 @@
 .qui .qui-image-modal-upload-header h2 {
   margin: 1.5em 0;
   color: rgb(90, 90, 90);
+  font-size: 1.8em;
 }
 .qui .qui-image-upload-modal-range-slider {
   width: 100%;
@@ -59,13 +64,20 @@
   }
 }
 .qui .qui-save-image-modal-button {
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
 }
-
 .qui .qui-image-preview {
   border-radius: 1em;
 }
-
+.qui .qui-image-upload-default-image {
+  border-radius: 1em;
+  object-fit: cover;
+  width: 100%;
+}
+.qui.qui-image-upload-modal .qui-button button {
+  font-size: 1.5em;
+  padding: 0.8em 1.2em;
+}
 // ---------------------------------------------------
 // range-slider default CSS with modifications
 // ---------------------------------------------------
@@ -80,7 +92,6 @@
   background: #e6e6e6;
   touch-action: none;
 }
-
 .qui.qui-image-upload-modal
   .rangeslider.rangeslider-horizontal
   .rangeslider__fill {
@@ -182,13 +193,11 @@
     font-size: 0.61em;
   }
 }
-
 @media only screen and (min-width: 481px) {
   .qui-image-upload-modal {
     font-size: 0.75em;
   }
 }
-
 @media only screen and (min-width: 769px) {
   .qui-image-upload-modal {
     font-size: 1.2em;
