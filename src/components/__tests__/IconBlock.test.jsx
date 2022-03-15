@@ -37,10 +37,8 @@ describe("Button", () => {
     });
 
     it("should render correctly when passed color props", () => {
-
         component.setProps({ withColor: { backgroundColor: "#000" } })
         component.setProps({ withIcon: { color: "#fff" } })
-
         expect(component.find("div").at(1).props().style.background).toBe("#000")
         expect(component.find("i").at(0).props().style.color).toBe("#fff")
     });
@@ -55,6 +53,6 @@ describe("Button", () => {
         component.setProps({ asEmphasis: "text" })
         component.setProps({ withColor: { backgroundColor: "#000" } })
         component.setProps({ withIcon: { icon: "fas fa-book", color: "#fff" } })
-        expect(component.find("i").at(0).props().style.color).toBe("#000")
+        expect(component.find("i").at(0).props().style.color).toBe("#fff")
     })
 });

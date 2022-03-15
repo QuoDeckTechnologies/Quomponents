@@ -37,6 +37,23 @@ IconBlock.propTypes = {
         "massive",
     ]),
     /**
+    Use to define the entry animation of the component
+    */
+    withAnimation: PropTypes.shape({
+        animation: PropTypes.oneOf([
+            "zoom",
+            "collapse",
+            "fade",
+            "slideDown",
+            "slideUp",
+            "slideLeft",
+            "slideRight",
+            ""
+        ]),
+        duration: PropTypes.number,
+        delay: PropTypes.number,
+    }),
+    /**
     Use to define component padding in increasing order
     */
     asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
@@ -75,6 +92,7 @@ IconBlock.propTypes = {
 IconBlock.defaultProps = {
     // Component Specific props
     //=======================================
+    withIcon: null,
 
     // Quommon props
     //=======================================
@@ -82,14 +100,10 @@ IconBlock.defaultProps = {
     asPadded: "normal",
     asFloated: "inline",
     asEmphasis: "contained",
-
     withColor: null,
-    withIcon: null,
     withAnimation: null,
-
     isHidden: false,
     isDisabled: false,
-
     onClick: null
 };
 
@@ -117,7 +131,7 @@ function getColors(colors, emphasis, icon) {
             }
     colorStyle.iconColorHandle = emphasis === 'text'
         ? {
-            color: icon.color,
+            color: icon?.color,
         }
         : emphasis === 'outlined'
             ? {
@@ -132,12 +146,10 @@ function getColors(colors, emphasis, icon) {
 
 /**
 ## Notes
-- The design system used for this component is Material UI (@mui/material)
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Action Button has 2 phases, with button and with image. Pass props according to your convenience
-- isEllipse is a prop to add ellipse background or not.
+- Pass icon with its color props
 **/
 export default function IconBlock(props) {
 

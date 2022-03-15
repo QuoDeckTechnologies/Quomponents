@@ -50,6 +50,16 @@ export default {
                 },
             },
         },
+        withAnimation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    animation: "",
+                    duration: 0,
+                    delay: 0,
+                },
+            },
+        },
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -101,6 +111,11 @@ Default.args = {
     asEmphasis: "contained",
     withColor: {
         backgroundColor: "#AD2929"
+    },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
     },
     withIcon: { icon: "fas fa-book-open", color: "#fff" },
     isDisabled: false,
