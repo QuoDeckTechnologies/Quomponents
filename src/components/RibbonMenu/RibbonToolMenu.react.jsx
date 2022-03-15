@@ -22,7 +22,7 @@ export default function RibbonToolMenu(props) {
             <div className="question-bank-section">
                 <IconLink
                     {...props}
-                    tilt={false}
+                    key={1}
                     asSize={"small"}
                     withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                     withIcon={{ icon: 'fab fa-stack-exchange' }} />
@@ -35,6 +35,7 @@ export default function RibbonToolMenu(props) {
                         <div className="settings-section-right-content">
                             <IconLink
                                 {...props}
+                                key={2}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                                 withIcon={{ icon:`file-right-icons ${isNavigationChecked ? "far fa-check-square" : "far fa-square"}`  }}
@@ -44,6 +45,7 @@ export default function RibbonToolMenu(props) {
                         <div className="settings-section-right-content">
                             <IconLink
                                 {...props}
+                                key={3}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                                 withIcon={{ icon:`file-right-icons ${isSlideChecked ? "far fa-check-square" : "far fa-square"}`  }}
@@ -53,6 +55,7 @@ export default function RibbonToolMenu(props) {
                         <div className="settings-section-right-content">
                             <IconLink
                                 {...props}
+                                key={4}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                                 withIcon={{ icon:`file-right-icons ${isVoiceoverChecked ? "far fa-check-square" : "far fa-square"}`  }}
@@ -69,6 +72,7 @@ export default function RibbonToolMenu(props) {
                     <div className="vo-section-child upload">
                         <IconLink
                             {...props}
+                            key={5}
                             asSize={'tiny'}
                             withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                             withIcon={{ icon: 'fas fa-file-upload' }} />
@@ -79,6 +83,7 @@ export default function RibbonToolMenu(props) {
                         <div className="vo-section-right-content">
                             <IconLink
                                 {...props}
+                                key={6}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                                 withIcon={{ icon: 'far fa-copy' }} />
@@ -87,6 +92,7 @@ export default function RibbonToolMenu(props) {
                         <div className="vo-section-right-content">
                             <IconLink
                                 {...props}
+                                key={7}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                                 withIcon={{ icon: 'fas fa-download' }} />
@@ -99,6 +105,7 @@ export default function RibbonToolMenu(props) {
             <div className="parent-vertical-line"></div>
             <div className="question-bank-section">
                 <IconLink
+                key={8}
                     {...props}
                     asSize={"small"}
                     withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}

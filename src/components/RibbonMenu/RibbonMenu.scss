@@ -16,7 +16,6 @@
     align-items: flex-start;
     justify-content: space-between;
     padding: 15px 9px 10px 20px;
-
 }
 .qui .ribbon-menu-html-container {
     width: 316px;
@@ -122,6 +121,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .qui .vo-section-child.upload,
 .qui .slide-section-child.upload{
@@ -211,12 +211,10 @@
 .qui .settings-section-child-container {
     width: 149px;
 }
-
 .qui .color-pallete-section-child-container {
     width: 613.9px;
 
 }
-
 .qui .custom-color-container{
     display: flex;
     flex-direction: column;
@@ -225,8 +223,6 @@
     font-size: 0.8em;
     height: 64px;
 }
-
-
 .qui .set-remove{
     width: 25px;
     height: 37px;

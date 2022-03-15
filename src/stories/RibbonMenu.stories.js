@@ -16,22 +16,8 @@ export default {
         content: {
             table: {
                 defaultValue: {
-                    tab:"HTML"
+                    tab:"html"
                 },
-            },
-        },
-        asVariant: {
-            control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
             },
         },
         asPadded: {
@@ -46,33 +32,6 @@ export default {
             options: ["left", "right", "inline"],
             table: {
                 category: "as-Flags",
-            },
-        },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-
-        withColor: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    backgroundColor: "",
-                    textColor: "",
-                },
-            },
-        },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
-                },
             },
         },
         withTranslation: {
@@ -103,7 +62,6 @@ export default {
                 defaultValue: true,
             },
         },
-
         onClick: {
             table: {
                 category: "Events",
@@ -140,38 +98,23 @@ const Template = (args) => <RibbonMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        tab:"HTML"
+        tab:"html"
     },
-    asVariant: "primary",
-    asSize: "normal",
     asFloated: "inline",
     asPadded: "normal",
-    asAligned: "center",
-
-    withColor: {
-        backgroundColor: "",
-        textColor: "",
-    },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
     withTranslation: {
         lang: "en",
-        tgt: "button",
+        tgt: "RibbonMenu",
         dictionary: dictionary,
     },
-
     isDisabled: false,
     isFluid:true,
     isHidden: false,
-
 };
 Default.parameters = {
     docs: {
         source: {
-            code: `<Button {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<RibbonMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
