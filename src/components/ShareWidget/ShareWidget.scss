@@ -30,6 +30,10 @@
     align-items: center;
     margin-right: 0.5em;
 }
+.qui .qui-share-icon-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
 
 /* ================================================= */
 /* ShareWidget Sizing Definitions */

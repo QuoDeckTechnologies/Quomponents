@@ -126,23 +126,23 @@ export default function ShareWidget(props) {
                     {shareContent?.label} :
                 </div>
                 <div className="qui-shareicon-container">
-                    <FacebookShareButton className="qui-share-icon" url={shareContent?.url}>
+                    <FacebookShareButton className={`qui-share-icon  ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
                         <FacebookIcon round={shareContent?.circular} />
                     </FacebookShareButton>
 
-                    <TwitterShareButton className="qui-share-icon" url={shareContent?.url}>
+                    <TwitterShareButton className={`qui-share-icon ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
                         <TwitterIcon round={shareContent?.circular} />
                     </TwitterShareButton>
 
-                    <LinkedinShareButton className="qui-share-icon" url={shareContent?.url}>
+                    <LinkedinShareButton className={`qui-share-icon ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
                         <LinkedinIcon round={shareContent?.circular} />
                     </LinkedinShareButton>
 
-                    <WhatsappShareButton className="qui-share-icon" url={shareContent?.url}>
+                    <WhatsappShareButton className={`qui-share-icon ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
                         <WhatsappIcon round={shareContent?.circular} />
                     </WhatsappShareButton>
 
-                    <EmailShareButton className="qui-share-icon" url={shareContent?.url}>
+                    <EmailShareButton className={`qui-share-icon ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
                         <EmailIcon round={shareContent?.circular} />
                     </EmailShareButton>
                 </div>
