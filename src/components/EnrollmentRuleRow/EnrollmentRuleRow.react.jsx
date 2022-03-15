@@ -99,12 +99,11 @@ export default function EnrollmentRuleRow(props) {
   // 2. Defining variables and states
   //-------------------------------------------------------------------
   const [allRules, setAllRules] = useState(content?.allRules);
-  let criteria = content?.enrollmentRule;
   //-------------------------------------------------------------------
   // 3. useEffect hook to mimic submit of enrollment rules
   //-------------------------------------------------------------------
   useEffect(() => {
-    criteria = content?.enrollmentRule;
+    let criteria = content?.enrollmentRule;
     let temp = {};
     let allKeys;
     let keys;
@@ -119,9 +118,9 @@ export default function EnrollmentRuleRow(props) {
         temp[key] = criteria[key];
       });
       let newRule = { criteria: temp };
-      setAllRules([...allRules, newRule]);
+      setAllRules(prevState => [...prevState, newRule]);
     }
-  }, [content?.enrollmentRule]);
+  },[content?.enrollmentRule]);
   //-------------------------------------------------------------------
   // 4. Set the classes
   //-------------------------------------------------------------------
@@ -177,6 +176,8 @@ export default function EnrollmentRuleRow(props) {
                 </div>
               </div>
             );
+          } else {
+            return <></>;
           }
         })}
     </motion.div>
