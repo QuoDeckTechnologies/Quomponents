@@ -2,16 +2,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
+import ReactPlayer from 'react-player';
 import {
     getQuommons,
-    getTranslation,
     getAnimation,
 } from "../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./Videobox.scss";
 import "../../common/stylesheets/overrule.scss";
-
+import videoBoxImg from "../../assets/videoplaceholder.png"
 Videobox.propTypes = {
     //=======================================
     // Component Specific props
@@ -20,27 +20,10 @@ Videobox.propTypes = {
     Use to define title, sub-title and image of component
     */
     content: PropTypes.shape({
-        title: PropTypes.string,
-        subTitle: PropTypes.string,
-        image: PropTypes.string
+        url: PropTypes.string,
     }).isRequired,
-    /**
-    Use to define the visibility of Background Ellipse 
-    */
-    isEllipse: PropTypes.bool,
-
     // Quommon props
     //=======================================
-    /**
-    Use to define standard component type
-    */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
     /**
     Use to define component text size in increasing order
     */
@@ -52,28 +35,6 @@ Videobox.propTypes = {
         "huge",
         "massive",
     ]),
-    /**
-    Use to define component padding in increasing order
-    */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-    /**
-    Use to float the component in parent container
-    */
-    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
-    /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
-    /**
-    Use to override component colors and behavior
-    */
-    withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
-        textColor: PropTypes.string,
-        hoverBackgroundColor: PropTypes.string,
-        hoverTextColor: PropTypes.string,
-    }),
     /**
     Use to define the entry animation of the component
     */
@@ -92,14 +53,6 @@ Videobox.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
-    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -108,7 +61,7 @@ Videobox.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    Button component must have the onClick function passed as props
+    Videobox component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
 };
@@ -116,27 +69,15 @@ Videobox.propTypes = {
 Videobox.defaultProps = {
     // Component Specific props
     //=======================================
-    content: null,
-    isEllipse: true,
-
+    content: {},
     // Quommon props
     //=======================================
-    asVariant: "primary",
     asSize: "normal",
-    asPadded: "normal",
-    asFloated: "inline",
-    asAligned: "center",
 
-    withColor: null,
-    withIcon: null,
-    withLabel: null,
     withAnimation: null,
-    withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
-
-    onClick: null
 };
 
 /**
@@ -149,74 +90,43 @@ Videobox.defaultProps = {
 - isEllipse is a prop to add ellipse background or not.
 **/
 export default function Videobox(props) {
-
     //-------------------------------------------------------------------
-    // 1. Set the classes
+    // 1. Destructuring content from props
+    //-------------------------------------------------------------------
+    let { content } = props;    
+    //-------------------------------------------------------------------
+    // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "video-box");
     //-------------------------------------------------------------------
-    // 2. Get animation of the component
+    // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     //-------------------------------------------------------------------
-    // 3. Get translation of the component
+    // 4. Get the Status of Component
     //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, props.content);
-    let tObj = null;
-
-    if (
-        props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj?.title) labelContent.title = tObj.title;
-        if (labelContent && tObj?.subTitle) labelContent.subTitle = tObj.subTitle;
-    }
-    //-------------------------------------------------------------------
-    // 4. Get the custom button styling of the component
-    //-------------------------------------------------------------------
-    let buttonStyle = {
-        color: props.withColor?.textColor,
-        backgroundColor: props.withColor?.backgroundColor,
-    };
-    //-------------------------------------------------------------------
-    // 5. Get the Status of Component
-    //-------------------------------------------------------------------
-    const actionButtonBackground = (isEllipse) => {
-        let actionButtonStyle, title, subTitle, titleStyle, subTitleStyle;
-        title = labelContent?.title;
-        subTitle = labelContent?.subTitle;
-        actionButtonStyle = isEllipse ? "action-button-container" : "action-button-container-with-no-ellipse";
-
-        if (title?.length > 5 || subTitle?.length > 7) {
-            titleStyle = "responsive-title"
-            subTitleStyle = "responsive-sub-title"
-        }
-        if (labelContent?.image) {
+    const videoBoxBackground = (content) => {
+        let videoBoxStyle = content?.url ? "videoplayer" : "videoboximg";
+        if (content?.url) {
             return (
-                <div className={actionButtonStyle}>
-                    <img
-                        className={`image`}
-                        alt="img"
-                        src={`${labelContent.image}`}
-                        onClick={props.onClick}
+                <div className={`videoplayer ${videoBoxStyle}`}>
+                    <ReactPlayer
+                        url={content.url}
+                        width="100%"
+                        playing
+                        controls={true}
                     />
                 </div>
             )
         } else {
             return (
-                <div className={actionButtonStyle}>
-                    <div className={`qui-btn variant-${props.asVariant} action-button`}
-                        style={buttonStyle}
-                        onClick={props.onClick}>
-                        <div className={`action-button-title ${titleStyle}`}>
-                            {labelContent?.title}
-                        </div>
-                        <div className={`action-button-sub-title ${subTitleStyle}`}>
-                            {labelContent?.subTitle}
-                        </div>
-                    </div>
+                <div className={`${videoBoxStyle}`}>
+                    <img
+                        alt="img"
+                        className="videoboximg"
+                        src={videoBoxImg}
+                        onClick={props.onClick}
+                    />
                 </div>
             )
         }
@@ -227,7 +137,7 @@ export default function Videobox(props) {
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses}`}>
-                {actionButtonBackground(props.isEllipse)}
+                {videoBoxBackground(props.content)}
             </div>
         </motion.div>
     );
