@@ -1,4 +1,4 @@
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import renderer, { act } from "react-test-renderer";
 
 //--------------------------------------
@@ -35,9 +35,8 @@ describe("IconLink", () => {
                     hoverTextColor: "",
                 }}
                 withIcon={{ icon: "fa fa-home" }}
-                withColor={{
+                let colors={{
                     backgroundColor: "",
-                    accentColor: "",
                     textColor: "",
                     hoverBackgroundColor: "",
                     hoverTextColor: "",
@@ -200,92 +199,25 @@ describe("IconLink", () => {
                 tree.props.onMouseDown()
             })
         });
-
-    it("should render correctly without throwing error",
-        () => {
-            expect(component.exists()).toBe(true);
-        });
-
-    it("should render correctly if asPadded is 'normal' and AsAligned is 'center' ",
-        () => {
-            component.setProps({
-                asPadded: "normal",
-                asAligned: "center",
-            });
-            expect(component.exists()).toBe(true);
-        });
-
-    it("should render correctly if size is '' empty string",
-        () => {
-            component.setProps({
-                asSize: "",
-            });
-            expect(component.exists()).toBe(true);
-        });
-
-    it("should render correctly if withIcon props contains special icon",
-        () => {
-            component.setProps({ withIcon: { icon: "fa fa-home" } });
-            expect(component.exists()).toBe(true);
-        });
-
-    it('component have one qui-link class ', () => {
-        expect(component.find('.qui-link').exists()).toBe(true)
-    })
-
-    it('Each component must have a one `qui` parent class', () => {
-        expect(component.find('.qui').exists()).toBe(true)
-    })
-
-    it("should render correctly with isDisabled as true", () => {
+    it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            isDisabled: true,
+            withTranslation: {
+                lang: "hi",
+                tgt: "icon",
+                dictionary: dictionary,
+            },
         });
         expect(component.exists()).toBe(true);
     });
-
-    it("should render correctly with isCircular as true", () => {
+    it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            isCircular: true,
+            withTranslation: {
+                lang: "hi",
+                tgt: "",
+                dictionary: dictionary,
+            },
         });
         expect(component.exists()).toBe(true);
     });
-
-
-    it("should render correctly if content are not specified", () => {
-        component.setProps({
-            content: [],
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly with empty props which are not required", () => {
-        component.setProps({
-            content: [],
-            withColor: {},
-            withAnimation: {},
-            isDisabled: null,
-            isHidden: null
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly with translation",
-        () => {
-            component.setProps({
-
-                withTranslation: {
-                    lang: "hi",
-                    tgt: "icon",
-                    dictionary: dictionary,
-                },
-                content: [
-                    {
-                        label: "Home",
-                    }],
-            });
-            expect(component.exists()).toBe(true);
-        });
-
 });
 

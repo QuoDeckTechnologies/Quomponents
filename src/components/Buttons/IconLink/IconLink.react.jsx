@@ -6,7 +6,6 @@ import {
     getTranslation,
     getAnimation,
 } from "../../../common/javascripts/helpers";
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./IconLink.scss";
@@ -23,7 +22,7 @@ IconLink.propTypes = {
     Use for rounded corners or circular icon IconLink 
     */
     isCircular: PropTypes.bool,
-    
+
     //=======================================
     // Quommon props
     //=======================================
@@ -65,7 +64,6 @@ IconLink.propTypes = {
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
         textColor: PropTypes.string,
         hoverBackgroundColor: PropTypes.string,
         hoverTextColor: PropTypes.string,
@@ -82,8 +80,6 @@ IconLink.propTypes = {
     withLabel: PropTypes.shape({
         format: PropTypes.oneOf(["label", "caption", "popover"]),
         content: PropTypes.string,
-        textColor: PropTypes.string,
-        hoverTextColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -204,7 +200,6 @@ function getColors(colors, emphasis, hovered) {
             }
         }
     }
-
     return colorStyle;
 }
 /**
@@ -236,7 +231,6 @@ export default function IconLink(props) {
     // 3. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel);
-    let iconLabel = null;
     let tObj = null;
     if (
         props.withTranslation?.lang &&
@@ -244,7 +238,6 @@ export default function IconLink(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        iconLabel = tObj.content;
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
     }
     //-------------------------------------------------------------------
@@ -265,27 +258,25 @@ export default function IconLink(props) {
             onMouseUp={() => setTilt(false)}
 
         >   <a href={props.content?.link} className="qui-link">
-                <div
-                    className={`qui-btn qui-icon-label emp-text variant-${props.asVariant}   
-                    size-${props.asSize ? props.asSize : ""}`} style={Object.assign({}, colors.lableHandle)}>
-                    {getLabel(labelContent, "label")}
-                </div>
                 <button
                     variant={props.asEmphasis}
                     color={props.asVariant}
-                    title={getLabel(labelContent, "popover")}
                     className={`qui-btn ${quommonClasses.childClasses}`}
-                    style={Object.assign({}, colors.buttonHandle)}
-                    onClick={props.onClick}
+                    style={Object.assign({}, colors.buttonHandle)} onClick={props.onClick}
                 >
-                    <div className={`i ${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
+                    <div className={`qui-iconlink`}
+                        style={Object.assign({}, colors.buttonHandle)}><div
+                            className={`qui-btn qui-icon-label emp-text`} style={Object.assign({}, colors.lableHandle)}>
+                            {getLabel(labelContent, "label")}
+                        </div>
+                        <div className={`qui-iconlink-icon ${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
+                        </div>
+                        <div
+                            className={`qui-btn qui-icon-caption emp-text`} style={Object.assign({}, colors.lableHandle)}>
+                            {getLabel(labelContent, "caption")}
+                        </div>
                     </div>
                 </button>
-                <div
-                    className={`qui-btn qui-icon-caption emp-text variant-${props.asVariant}
-                    size-${props.asSize ? props.asSize : ""}`} style={Object.assign({}, colors.lableHandle)}>
-                    {getLabel(labelContent, "caption")}
-                </div>
             </a>
         </motion.div>
     );

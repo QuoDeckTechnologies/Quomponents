@@ -27,7 +27,6 @@ export default {
                 defaultValue: false,
             },
         },
-
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning"],
@@ -69,7 +68,6 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
-                    accentColor: "",
                     textColor: "",
                     hoverBackgroundColor: "",
                     hoverTextColor: "",
@@ -92,8 +90,6 @@ export default {
                 defaultValue: {
                     format: "caption",
                     content: "",
-                    textColor: "",
-                    hoverTextColor: "",
                 },
             },
         },
@@ -180,13 +176,10 @@ Default.args = {
     withLabel: {
         format: "caption",
         content: "",
-        textColor: "",
-        hoverTextColor: "",
     },
     withIcon: { icon: "fa fa-home" },
     withColor: {
         backgroundColor: "",
-        accentColor: "",
         textColor: "",
         hoverBackgroundColor: "",
         hoverTextColor: "",
@@ -247,7 +240,6 @@ LabelledIcon.args = {
     withLabel: {
         format: "caption",
         content: "Home",
-        textColor: "",
     },
 };
 
@@ -311,26 +303,26 @@ AnimatedIcon.parameters = {
 // -------------------------------------------------------------
 export const TranslatedIconlink = Template.bind({});
 TranslatedIconlink.args = {
-  ...Default.args,
-  withTranslation: {
-    lang: "hi",
-    tgt: "icon",
-    dictionary: dictionary,
-  },
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "icon",
+        dictionary: dictionary,
+    },
 };
 TranslatedIconlink.parameters = {
-  docs: {
-    description: {
-      story:
-        "Use to change the language that the text appears in iconlink. To make this work for the iconlink, add a icon:{label} value to the dictionary.",
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in iconlink. To make this work for the iconlink, add a icon:{label} value to the dictionary.",
+        },
+        source: {
+            code: `<TranslatedIconlink {...${JSON.stringify(
+                TranslatedIconlink.args,
+                null,
+                2
+            )}}/>`,
+        },
     },
-    source: {
-      code: `<TranslatedIconlink {...${JSON.stringify(
-        TranslatedIconlink.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
 };
 
