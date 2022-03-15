@@ -10,7 +10,7 @@ import "../../common/stylesheets/common.css";
 import "./ColorSwatch.scss";
 import "../../common/stylesheets/overrule.scss";
 
-ActionButton.propTypes = {
+ColorSwatch.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -53,14 +53,13 @@ ActionButton.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
-
     /**
     Button component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
 };
 
-ActionButton.defaultProps = {
+ColorSwatch.defaultProps = {
     // Component Specific props
     //=======================================
     withColor: null,
@@ -78,7 +77,8 @@ ActionButton.defaultProps = {
 ## Notes
 - Pass withColor props which consists of primary, accent, secondary and page color props.
 **/
-export default function ActionButton(props) {
+
+export default function ColorSwatch(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -87,10 +87,13 @@ export default function ActionButton(props) {
     //-------------------------------------------------------------------
     // 2. Get the component with the color props
     //-------------------------------------------------------------------
+
     const colorSwatch = (colors) => {
         return (
             <div className={`color-swatch-container`}
-                style={{ backgroundColor: colors?.pageColor }}>
+                style={{ backgroundColor: colors?.pageColor }}
+                onClick={props.onClick}
+                >
                 <div className={`color-swatch-title`}
                     style={{ backgroundColor: colors?.primaryColor }}>
                 </div>
