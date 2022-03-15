@@ -128,3 +128,92 @@ Default.parameters = {
         },
     },
 };
+
+export const AllVariantsTemplate = (args) => {
+    const baseObj1 = {
+        ...Object.assign({}, Default.args, args, {
+            asSize: "tiny",
+        }),
+        asEmphasis: "text",
+        withIcon: { icon: "fas fa-book", color: "#DF5594" },
+    };
+    const baseObj2 = {
+        ...Object.assign({}, Default.args, args, {
+            asSize: "small",
+        }),
+        withColor: {
+            backgroundColor: "#D8CE0D"
+        },
+        asEmphasis: "outlined",
+        withIcon: { icon: "fas fa-book" },
+    };
+    const baseObj3 = {
+        ...Object.assign({}, Default.args, args, {
+            asSize: "normal",
+        }),
+        withColor: {
+            backgroundColor: "#5A9C32"
+        },
+        asEmphasis: "contained",
+        withIcon: { icon: "fas fa-book", color: "#fff" },
+    };
+    const baseObj4 = {
+        ...Object.assign({}, Default.args, args, {
+            asSize: "big",
+        }),
+        asEmphasis: "text",
+        withIcon: { icon: "fas fa-book", color: "#8B0000" },
+    };
+    const baseObj5 = {
+        ...Object.assign({}, Default.args, args, {
+            asSize: "huge",
+        }),
+        withColor: {
+            backgroundColor: "#21618C"
+        },
+        asEmphasis: "outlined",
+        withIcon: { icon: "fas fa-book" },
+    };
+    const baseObj6 = {
+        ...Object.assign({}, Default.args, args, {
+            asSize: "massive",
+        }),
+        withColor: {
+            backgroundColor: "#D98880"
+        },
+        asEmphasis: "contained",
+        withIcon: { icon: "fas fa-book", color: "#fff" },
+    };
+    return (
+        <div>
+            <div>
+                <IconBlock
+                    {...Object.assign({}, baseObj1, {
+                    })}
+                />
+                <IconBlock
+                    {...Object.assign({}, baseObj2, {
+                    })}
+                />
+                <IconBlock
+                    {...Object.assign({}, baseObj3, {
+                    })}
+                />
+            </div>
+            <div>
+                <IconBlock
+                    {...Object.assign({}, baseObj4, {
+                    })}
+                />
+                <IconBlock
+                    {...Object.assign({}, baseObj5, {
+                    })}
+                />
+                <IconBlock
+                    {...Object.assign({}, baseObj6, {
+                    })}
+                />
+            </div>
+        </div>
+    );
+};

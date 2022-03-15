@@ -104,6 +104,7 @@ IconBlock.defaultProps = {
     onClick: null
 };
 
+// Set Conditional Styling
 function getColors(colors, emphasis, icon) {
     let colorStyle = {
         backgroundHandle: {},
@@ -159,15 +160,19 @@ export default function IconBlock(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
-    let empColors = props.withColor ? getColors(props.withColor, props.asEmphasis, props.withIcon) : {};
     //-------------------------------------------------------------------
-    // 3. Get the Status of Component
+    // 3. Get Conditional styling
+    //-------------------------------------------------------------------
+    let empColors = props.withColor ? getColors(props.withColor, props.asEmphasis, props.withIcon) : {};
+
+    //-------------------------------------------------------------------
+    // 4. Get the Status of Component
     //-------------------------------------------------------------------
     const iconBlock = () => {
         return (
             <div className={`qui-btn icon-button-container`}
                 style={Object.assign({}, empColors.backgroundHandle)}
-            >
+                onClick={props.onClick}>
                 <i className={`${props.withIcon?.icon} icon-button-style`}
                     style={Object.assign({}, empColors.iconColorHandle)}
                 ></i>
