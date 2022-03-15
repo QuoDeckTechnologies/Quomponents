@@ -105,38 +105,40 @@ IconBlock.defaultProps = {
 };
 
 // Set Conditional Styling
-function getColors(colors, emphasis, icon) {
+function getColors(colors, emphasis, icon, disable) {
     let colorStyle = {
         backgroundHandle: {},
-        iconColorHandle: {}
+        iconColorHandle: {},
+        disableStyle: {}
     }
+
     colorStyle.backgroundHandle = emphasis === 'text'
         ? {
             background: 'transparent',
-            color: colors?.backgroundColor,
+            color: disable ? "#cccccc" : colors?.backgroundColor,
             border: 'none'
         }
         : emphasis === 'outlined'
             ? {
                 background: 'transparent',
-                color: colors?.backgroundColor,
-                borderColor: colors?.backgroundColor
+                color: disable ? "#cccccc" : colors?.backgroundColor,
+                borderColor: disable ? "#cccccc" : colors?.backgroundColor
             }
             : {
-                background: colors?.backgroundColor,
+                background: disable ? "#cccccc" : colors?.backgroundColor,
                 border: 'none'
 
             }
     colorStyle.iconColorHandle = emphasis === 'text'
         ? {
-            color: icon?.color,
+            color: disable ? "#666666" : icon?.color,
         }
         : emphasis === 'outlined'
             ? {
-                color: colors?.backgroundColor,
+                color: disable ? "#cccccc" : colors?.backgroundColor,
             }
             : {
-                color: icon?.color,
+                color: disable ? "#666666" : icon?.color,
             }
     return colorStyle;
 }
@@ -163,7 +165,7 @@ export default function IconBlock(props) {
     //-------------------------------------------------------------------
     // 3. Get Conditional styling
     //-------------------------------------------------------------------
-    let empColors = props.withColor ? getColors(props.withColor, props.asEmphasis, props.withIcon) : {};
+    let empColors = props.withColor ? getColors(props.withColor, props.asEmphasis, props.withIcon, props.isDisabled) : {};
 
     //-------------------------------------------------------------------
     // 4. Get the Status of Component
