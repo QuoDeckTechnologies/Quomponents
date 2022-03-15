@@ -16,11 +16,16 @@ IconBlock.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-
+    /**
+    Use to add an icon to the component
+    */
+    withIcon: PropTypes.shape({
+        icon: PropTypes.string,
+        color: PropTypes.string,
+    }),
 
     // Quommon props
     //=======================================
-
     /**
     Set action emphasis in increasing order 
     */
@@ -68,13 +73,6 @@ IconBlock.propTypes = {
         backgroundColor: PropTypes.string,
     }),
     /**
-    Use to add an icon to the component
-    */
-    withIcon: PropTypes.shape({
-        icon: PropTypes.string,
-        color: PropTypes.string,
-    }),
-    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -82,7 +80,6 @@ IconBlock.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
-
     /**
     Button component must have the onClick function passed as props
     */
@@ -140,7 +137,6 @@ function getColors(colors, emphasis, icon) {
             : {
                 color: icon?.color,
             }
-
     return colorStyle;
 }
 
