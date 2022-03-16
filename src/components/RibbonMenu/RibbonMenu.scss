@@ -30,7 +30,7 @@
     width: 632px;
 }
 .qui .exit-section,
-.qui .question-bank-section{
+.qui .question-bank-section {
     font-size: 1em;
     height: 84px;
     width: 84px;
@@ -43,19 +43,18 @@
     border-radius: 5px;
 }
 
-.qui .ribbon-label ,
+.qui .ribbon-label,
 .qui .tool-label,
-.qui .slide-label{
+.qui .slide-label {
     display: flex;
     align-items: center;
     font-size: 10px;
     color: #666666;
     margin-top: 3px;
     cursor: pointer;
- 
 }
 .tool-label,
-.slide-label{
+.slide-label {
     margin-left: 5px;
 }
 .qui .icon {
@@ -81,17 +80,16 @@
 .qui .overlay-background-section {
     display: flex;
     flex-direction: column;
- 
 }
-.qui .color-pallete-section{
+.qui .color-pallete-section {
     margin-bottom: 10px;
 }
 .qui .save-section-child,
 .qui .file-section-child,
 .qui .settings-section-child,
 .qui .vo-section-child,
-.qui .slide-section-child ,
-.qui .view-section-child{
+.qui .slide-section-child,
+.qui .view-section-child {
     width: 100%;
     height: 100%;
     display: flex;
@@ -99,23 +97,22 @@
     justify-content: center;
     align-items: center;
     font-size: 0.7em;
-  
 }
 .qui .slide-background-section-child,
-.qui .overlay-background-section-child{
-     font-size: 0.6em;
-     padding-left: 15px;
-     text-align: left;
+.qui .overlay-background-section-child {
+    font-size: 0.6em;
+    padding-left: 15px;
+    text-align: left;
     display: flex;
     align-items: center;
     color: #666666;
 }
-.qui .label-set-remove{
+.qui .label-set-remove {
     margin-left: 5px;
     display: flex;
     align-items: center;
 }
-.qui .color-pallete-section-child{
+.qui .color-pallete-section-child {
     width: 100%;
     height: 100%;
     display: flex;
@@ -124,8 +121,8 @@
     cursor: pointer;
 }
 .qui .vo-section-child.upload,
-.qui .slide-section-child.upload{
-   width: 100px;
+.qui .slide-section-child.upload {
+    width: 100px;
 }
 .qui .vo-section-right-content,
 .qui .slide-section-right-content,
@@ -136,8 +133,10 @@
     font-size: 0.6em;
     padding: 0.1em 0;
 }
-.qui .slide-section-right-content{
+
+.qui .slide-section-right-content {
     margin-left: 10px;
+    width: 110px;
 }
 .qui .file-right-icons {
     padding: 0 5px;
@@ -149,7 +148,7 @@
 .qui .question-bank {
     height: 42px;
     width: 42px;
-    color:black
+    color: black;
 }
 
 .qui .label-file {
@@ -173,20 +172,18 @@
     background: #f5f5f5;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-  
 }
 
 .qui .vo-section-child-container,
 .qui .slide-section-child-container,
 .qui .slide-background-section-child-container,
-.qui .overlay-background-section-child-container{
+.qui .overlay-background-section-child-container {
     height: 64px;
     display: flex;
     align-items: center;
     background: #f5f5f5;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-
 }
 .qui .save-section-child-container {
     width: 187px;
@@ -198,11 +195,11 @@
     width: 234px;
 }
 .qui .slide-background-section-child-container,
-.qui .overlay-background-section-child-container{
+.qui .overlay-background-section-child-container {
     width: 104px;
 }
 .qui .slide-section-child-container {
-    width: 210px;    
+    width: 210px;
 }
 .qui .view-section-child-container {
     width: 264px;
@@ -213,18 +210,17 @@
 }
 .qui .color-pallete-section-child-container {
     width: 613.9px;
-
 }
-.qui .custom-color-container{
+.qui .custom-color-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    color:#666666;
+    color: #666666;
     font-size: 0.8em;
     height: 64px;
 }
-.qui .set-remove{
+.qui .set-remove {
     width: 25px;
     height: 37px;
-    background-color: #C4C4C4;
+    background-color: #c4c4c4;
 }

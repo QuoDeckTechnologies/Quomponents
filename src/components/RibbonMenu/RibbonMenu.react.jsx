@@ -35,6 +35,10 @@ RibbonMenu.propTypes = {
     */
     asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
     /**
+    Use to float the component in parent container
+    */
+    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -62,10 +66,8 @@ RibbonMenu.defaultProps = {
     //=======================================
     asSize: "normal",
     asPadded: "normal",
-
-    withColor: null,
-    withTranslation: null,
-
+    asFloated : "left",
+    
     isHidden: false,
     isFluid:true,
     isDisabled: false,
@@ -106,7 +108,7 @@ export default function RibbonMenu(props) {
             )
         } else {
             return (
-                <RibbonHomeMenu />
+                <RibbonHomeMenu/>
             )
         }
     }

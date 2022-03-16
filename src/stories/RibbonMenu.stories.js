@@ -1,14 +1,6 @@
 import React from "react";
 import RibbonMenu from "../components/RibbonMenu/RibbonMenu.react";
 
-
-const dictionary = JSON.stringify({
-    hi: {
-        RibbonMenu: {
-            
-        }
-    },
-});
 export default {
     title: "Design System/RibbonMenu/RibbonMenu",
     component: RibbonMenu,
@@ -32,16 +24,6 @@ export default {
             options: ["left", "right", "inline"],
             table: {
                 category: "as-Flags",
-            },
-        },
-        withTranslation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    lang: "",
-                    tgt: "",
-                    dictionary: "",
-                },
             },
         },
         isHidden: {
@@ -100,13 +82,8 @@ Default.args = {
     content: {
         tab:"html"
     },
-    asFloated: "inline",
+    asFloated: "left",
     asPadded: "normal",
-    withTranslation: {
-        lang: "en",
-        tgt: "RibbonMenu",
-        dictionary: dictionary,
-    },
     isDisabled: false,
     isFluid:true,
     isHidden: false,
