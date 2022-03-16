@@ -37,7 +37,8 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    backgroundColor: ""
+                    backgroundColor: "",
+                    accentColor: ""
                 },
             },
         },
@@ -45,8 +46,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    icon: "",
-                    color: ""
+                    name: ""
                 },
             },
         },
@@ -110,14 +110,15 @@ Default.args = {
     asPadded: "normal",
     asEmphasis: "contained",
     withColor: {
-        backgroundColor: "#AD2929"
+        backgroundColor: "#AD2929",
+        accentColor: "#fff"
     },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
     },
-    withIcon: { icon: "fas fa-book-open", color: "#fff" },
+    withIcon: { name: "fas fa-book-open" },
     isDisabled: false,
     isHidden: false,
 };
@@ -134,8 +135,11 @@ export const AllVariantsTemplate = (args) => {
         ...Object.assign({}, Default.args, args, {
             asSize: "tiny",
         }),
+        withColor:{
+            accentColor: "#fff"
+        },
         asEmphasis: "text",
-        withIcon: { icon: "fas fa-book", color: "#DF5594" },
+        withIcon: { name: "fas fa-book"},
     };
     const baseObj2 = {
         ...Object.assign({}, Default.args, args, {
@@ -145,24 +149,28 @@ export const AllVariantsTemplate = (args) => {
             backgroundColor: "#D8CE0D"
         },
         asEmphasis: "outlined",
-        withIcon: { icon: "fas fa-book" },
+        withIcon: { name: "fas fa-book" }
     };
     const baseObj3 = {
         ...Object.assign({}, Default.args, args, {
             asSize: "normal",
         }),
         withColor: {
-            backgroundColor: "#5A9C32"
+            backgroundColor: "#5A9C32",
+            accentColor: "#fff" 
         },
         asEmphasis: "contained",
-        withIcon: { icon: "fas fa-book", color: "#fff" },
+        withIcon: { name : "fas fa-book"}
     };
     const baseObj4 = {
         ...Object.assign({}, Default.args, args, {
             asSize: "big",
         }),
+        withColor:{
+            accentColor:"#8B0000"
+        },
         asEmphasis: "text",
-        withIcon: { icon: "fas fa-book", color: "#8B0000" },
+        withIcon: { icon: "fas fa-book"}
     };
     const baseObj5 = {
         ...Object.assign({}, Default.args, args, {
@@ -172,17 +180,18 @@ export const AllVariantsTemplate = (args) => {
             backgroundColor: "#21618C"
         },
         asEmphasis: "outlined",
-        withIcon: { icon: "fas fa-book" },
+        withIcon: { name: "fas fa-book" },
     };
     const baseObj6 = {
         ...Object.assign({}, Default.args, args, {
             asSize: "massive",
         }),
         withColor: {
-            backgroundColor: "#D98880"
+            backgroundColor: "#D98880",
+            accentColor: "#fff" 
         },
         asEmphasis: "contained",
-        withIcon: { icon: "fas fa-book", color: "#fff" },
+        withIcon: { name: "fas fa-book"}
     };
     return (
         <div>

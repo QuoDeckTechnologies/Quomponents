@@ -16,13 +16,6 @@ IconBlock.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-    /**
-    Use to add an icon to the component
-    */
-    withIcon: PropTypes.shape({
-        icon: PropTypes.string,
-        color: PropTypes.string,
-    }),
 
     // Quommon props
     //=======================================
@@ -59,6 +52,19 @@ IconBlock.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to override component colors and behavior
+    */
+    withColor: PropTypes.shape({
+        backgroundColor: PropTypes.string,
+        accentColor: PropTypes.string
+    }),
+    /**
+    Use to add an icon to the component
+    */
+    withIcon: PropTypes.shape({
+        name: PropTypes.string
+    }),
+    /**
     Use to define component padding in increasing order
     */
     asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
@@ -66,12 +72,6 @@ IconBlock.propTypes = {
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "inline"]),
-    /**
-    Use to override component colors and behavior
-    */
-    withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-    }),
     /**
     Use to show/hide the component
     */
@@ -89,7 +89,7 @@ IconBlock.propTypes = {
 IconBlock.defaultProps = {
     // Component Specific props
     //=======================================
-    withIcon: null,
+    
 
     // Quommon props
     //=======================================
@@ -98,6 +98,7 @@ IconBlock.defaultProps = {
     asFloated: "inline",
     asEmphasis: "contained",
     withColor: null,
+    withIcon: null,
     withAnimation: null,
     isHidden: false,
     isDisabled: false,
@@ -108,8 +109,7 @@ IconBlock.defaultProps = {
 function getColors(colors, emphasis, icon, disable) {
     let colorStyle = {
         backgroundHandle: {},
-        iconColorHandle: {},
-        disableStyle: {}
+        iconColorHandle: {}
     }
 
     colorStyle.backgroundHandle = emphasis === 'text'
@@ -131,14 +131,14 @@ function getColors(colors, emphasis, icon, disable) {
             }
     colorStyle.iconColorHandle = emphasis === 'text'
         ? {
-            color: disable ? "#666666" : icon?.color,
+            color: disable ? "#666666" : colors?.accentColor,
         }
         : emphasis === 'outlined'
             ? {
                 color: disable ? "#cccccc" : colors?.backgroundColor,
             }
             : {
-                color: disable ? "#666666" : icon?.color,
+                color: disable ? "#666666" : colors?.accentColor,
             }
     return colorStyle;
 }
@@ -172,10 +172,10 @@ export default function IconBlock(props) {
     //-------------------------------------------------------------------
     const iconBlock = () => {
         return (
-            <div className={`qui-btn icon-button-container`}
+            <div className={`qui-btn qui-icon-button-container`}
                 style={Object.assign({}, empColors.backgroundHandle)}
                 onClick={props.onClick}>
-                <i className={`${props.withIcon?.icon} icon-button-style`}
+                <i className={`${props.withIcon?.name} qui-icon-button-style`}
                     style={Object.assign({}, empColors.iconColorHandle)}
                 ></i>
             </div>
