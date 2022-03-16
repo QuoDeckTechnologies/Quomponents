@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { render, fireEvent, getByPlaceholderText } from "@testing-library/react";
 //--------------------------------------
 // Import Components
@@ -12,7 +12,8 @@ describe("SearchBar", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
-    let component, handleButtonPress, handleKeyPress;
+    let component;
+    let handleButtonPress, handleKeyPress;
     handleKeyPress = jest.fn();
     handleButtonPress = jest.fn();
     const dictionary = JSON.stringify({
@@ -26,7 +27,7 @@ describe("SearchBar", () => {
     beforeEach(() => {
         jest.resetAllMocks();
 
-        component = shallow(<SearchBar
+        component = mount(<SearchBar
             asSize="normal"
             asFloated="inline"
             withColor={null}
@@ -39,6 +40,8 @@ describe("SearchBar", () => {
             isFluid={null}
             onClick={() => console.log('test')}
             placeHolder="Search..."
+            handleKeyPress = { handleKeyPress }
+        handleButtonPress = { handleButtonPress } 
         />);
     })
 
@@ -97,11 +100,13 @@ describe("SearchBar", () => {
     it('should pass the value when pressed Enter', () => {
         const { queryByPlaceholderText } = render(<SearchBar onClick={() => {
             console.log("Testing SearchBar")
-            handleKeyPress = { handleKeyPress }
-            handleButtonPress = { handleButtonPress }
-        }} />)
+
+        }}/>)
         const searchInput = queryByPlaceholderText('Search...')
-        fireEvent.keyPress(searchInput, { target: { value: 'test' } })
-        expect(searchInput.value).toBe('test')
+        fireEvent.change(searchInput, { target: { value: "some value" } });
+        fireEvent.keyPress(searchInput, { key: 'enter', keyCode: 13})
+        handleButtonPress()
+        expect(handleButtonPress.mock.calls.length).toBe(1)
+        expect(searchInput.value).toBe('some value')
     })
 });
