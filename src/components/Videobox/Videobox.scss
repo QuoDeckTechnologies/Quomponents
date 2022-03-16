@@ -1,30 +1,27 @@
-.video-box {
+.qui-video-box {
     border-radius: 2em;
-    position: relative;
+    background-color:#000000;
 }
-.qui .videoboximg {
+.qui .qui-default-videobox {
     width: 100%;
-}
-.qui .videoplayer .vp-center {
-    width: 100%;
-    position: relative;
     border-radius: 2em;
-    bottom: 0;
-    right: 0;
-    left:0;
+}
+.qui .qui-videoplayer {
+    width: 100%;
 }
 @media screen and (min-width: 320px) {
-    .qui .videoplayer {
-        height: 25vh;
+    .qui-video-box {
+        width: 100%;
     }
 }
 @media screen and (min-width: 481px) {
-    .qui .videoplayer {
-        height: 35vh;
+    .qui-video-box {
+        width: 100%;
     }
 }
-@media screen and (min-width: 769px) {
-    .qui .videoplayer {
-        height:45vh;
-    }
-  }
+
+.qui-video-box .html5-video-player{
+    position: relative;
+    top:0em;
+}
+

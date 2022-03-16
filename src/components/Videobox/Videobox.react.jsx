@@ -7,11 +7,10 @@ import {
     getQuommons,
     getAnimation,
 } from "../../common/javascripts/helpers.js";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+//import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./Videobox.scss";
 import "../../common/stylesheets/overrule.scss";
-import videoBoxImg from "../../assets/videoplaceholder.png"
 Videobox.propTypes = {
     //=======================================
     // Component Specific props
@@ -86,14 +85,12 @@ Videobox.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Action Button has 2 phases, with button and with image. Pass props according to your convenience
-- isEllipse is a prop to add ellipse background or not.
 **/
 export default function Videobox(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
     //-------------------------------------------------------------------
-    let { content } = props;    
+    let { content } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -106,10 +103,10 @@ export default function Videobox(props) {
     // 4. Get the Status of Component
     //-------------------------------------------------------------------
     const videoBoxBackground = (content) => {
-        let videoBoxStyle = content?.url ? "videoplayer" : "videoboximg";
+        let videoBoxStyle = content?.url ? "qui-videoplayer" : "qui-default-videobox";
         if (content?.url) {
             return (
-                <div className={`videoplayer ${videoBoxStyle}`}>
+                <div className={`qui-videoplayer ${videoBoxStyle}`}>
                     <ReactPlayer
                         url={content.url}
                         width="100%"
@@ -121,11 +118,11 @@ export default function Videobox(props) {
         } else {
             return (
                 <div className={`${videoBoxStyle}`}>
-                    <img
-                        alt="img"
-                        className="videoboximg"
-                        src={videoBoxImg}
-                        onClick={props.onClick}
+                    <ReactPlayer
+                        className="qui-default-videobox"
+                        url="https://www.youtube.com/watch?v=NpEaa2P7qZI"
+                        width="100%"
+                        playing
                     />
                 </div>
             )
@@ -135,7 +132,9 @@ export default function Videobox(props) {
         <motion.div
             initial={animate?.from}
             animate={animate?.to}
-            className={`qui ${quommonClasses.parentClasses}`}>
+            className={`qui ${quommonClasses.parentClasses}`}
+            onClick={props.onClick}
+            >
             <div className={`${quommonClasses.childClasses}`}>
                 {videoBoxBackground(props.content)}
             </div>

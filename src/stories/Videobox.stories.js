@@ -71,7 +71,7 @@ const Template = (args) => <Videobox {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        url: "https://vimeo.com/682661192",
+        url: "https://www.youtube.com/watch?v=Bwx5nqvSTZ0",
     },
     asSize: "normal",
     withAnimation: {
@@ -89,3 +89,31 @@ Default.parameters = {
         },
     },
 };
+
+//-------------------------------------------------------------
+// Animated VideoBox
+// -------------------------------------------------------------
+export const AnimatedVideobox = Template.bind({});
+AnimatedVideobox.args = {
+  ...Default.args,
+  withAnimation: {
+    animation: "fade",
+    duration: 2,
+    delay: 0,
+  },
+};
+AnimatedVideobox.parameters = {
+  docs: {
+    description: {
+      story: "We can animate the appearance of Toolbar",
+    },
+    source: {
+      code: `<ToolbarDark {...${JSON.stringify(
+        AnimatedVideobox.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+
