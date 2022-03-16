@@ -5,7 +5,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import './MultiSelect.scss'
 import "../../common/stylesheets/overrule.scss";
-import { Checkbox } from "@mui/material";
 import Button from "../Buttons/Button/Button.react";
 import _ from "lodash";
 import { getQuommons } from "../../common/javascripts/helpers";
@@ -109,60 +108,31 @@ MultiSelect.defaultProps = {
 **/
 
 export default function MultiSelect(props) {
-    const { content } = props;
-    const [isChecked, setIsChecked] = useState([]);
-    const getValue = (e) => {
-        let value = isChecked;
-        value.push(e.target.value)
-        setIsChecked(value)
-        console.log(value)
+    const {content} = props;
+    const [isChecked, setIsChecked] = useState(false);
+    function toggleChecked() {
+        setIsChecked(prevState => !prevState)
     }
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "multi-select");
-
-    // const WhiteBackgroundCheckbox = withStyles(theme => ({
-    //     root: {
-    //       color: "red",
-    //       "& .MuiIconButton-label": {
-    //         position: "relative",
-    //         zIndex: 0
-    //       },
-    //       "&:not($checked) .MuiIconButton-label:after": {
-    //         content: '""',
-    //         left: 4,
-    //         top: 4,
-    //         height: 15,
-    //         width: 15,
-    //         position: "absolute",
-    //         backgroundColor: "white",
-    //         zIndex: -1
-    //       }
-    //     },
-    //     checked: {}
-    //   }))(Checkbox);
-
     return (
         <div className={`qui ${quommonClasses.parentClasses}`} onClick={(e) => props.onClick(e)}>
-            <ul className="checkbox-list">
-            {_.map(content, (text, index) => {
-                    return (
-                        <li key={index}>
-                            <div className="Checkbox-list-item">
-                                    <input
-                                        className="checkbox-input"
-                                        type="checkbox"
-                                        id={`custom-checkbox-${index}`}
-                                        name={text}
-                                        value={text}
-                                    />
-                                    <label htmlFor={`custom-checkbox-${index}`}>{text}</label>
+            {_.map(content, (text,index) => {
+                return (
+                    <div key={text,index}
+                        className={`qui-multi-select-button-container ${quommonClasses.childClasses}`} >
+                        <div className="qui-multi-select-button">
+                            <div className="square-background">
+                                <i className={`qui-multi-select-checkbox ${isChecked ? "fas fa-check-square" : "fa fa-square"}`}
+                                    onClick={() => toggleChecked()}>
+                                </i>
                             </div>
-                        </li>
-                    );
-                })}
-            </ul>
+                            {<Button {...props} content={text} onClick={() => toggleChecked()} />}</div>
+                    </div>
+                );
+            })}
         </div>
     )
 }

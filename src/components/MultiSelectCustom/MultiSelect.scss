@@ -1,22 +1,28 @@
 .qui-multi-select-checkbox {
   cursor: pointer;
 }
-// .qui .square-background {
-//   background-color: #d60000;
-//   padding: 0.2em;
-//   border-radius: 2em;
-//   font-size: 0em;
-// }
-.PrivateSwitchBase-input{
-  background-color:rgb(227, 220, 235);
+.qui .square-background {
+  background-color: #f3f3f3;
+  padding: 0.8em;
+  border-radius: 1em;
+  font-size: 0.5em;
 }
-
 .qui-multi-select-button {
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 0.2em;
+}
+.fa-square:before {
+  color: #ffffff;
+  font-size: 1.6em;
+}
+.fa-check-square:before {
+  font-size: 1.6em;
+}
+.qui .fa-check-square {
+  filter: drop-shadow(0px 0px 0px #d2d2d2);
 }
 .qui-multi-select-button .qui.float-none {
   overflow: unset;
@@ -32,17 +38,38 @@
   width: 13em;
   padding: 0.5em;
 }
+.qui .qui-btn {
+  padding: 1em;
+}
 @media only screen and (min-width: 320px) {
   .qui .qui-multi-select-button-container .qui-button button {
     margin: 0 0.5em;
     width: 13em;
     padding: 0.38em;
   }
+  .fa-square:before {
+    font-size: 1.9em;
+  }
+  .fa-check-square:before {
+    font-size: 1.9em;
+  }
+  .qui .square-background {
+    font-size: 0.6em;
+  }
 }
 @media only screen and (min-width: 481px) {
   .qui .qui-multi-select-button-container .qui-button button {
     margin: 0 0.5em;
     width: 19em;
+  }
+  .fa-square:before {
+    font-size: 1.9em;
+  }
+  .fa-check-square:before {
+    font-size: 1.9em;
+  }
+  .qui .square-background {
+    font-size: 0.65em;
   }
 }
 @media only screen and (min-width: 769px) {
@@ -51,24 +78,19 @@
     width: 25em;
     padding: 0.8em;
   }
+  .fa-square:before {
+    font-size: 2em;
+  }
+  .fa-check-square:before {
+    font-size: 2em;
+  }
+  .qui .square-background {
+    font-size: 0.8em;
+  }
 }
 @media only screen and (min-width: 1024px) {
   .qui .qui-multi-select-button-container .qui-button button {
     margin: 0 0.5em;
     width: 25em;
   }
-}
-.MuiCheckbox-root{
-  color: greenyellow;
-  
-}
-////////////////////////////////////////////////////////////
-
-.checkbox-list {
-  list-style: none;
-  padding: 0;
-}
-
-.Checkbox-list-item .input{
-  background-color: red;
 }
