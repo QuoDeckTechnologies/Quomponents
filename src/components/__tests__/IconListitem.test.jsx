@@ -54,12 +54,6 @@ describe("IconListItem", () => {
             component.setProps({ isHidden: true });
             expect(component.exists()).toBe(true);
         });
-
-    it("should render correctly if isDisabled toggled as true",
-        () => {
-            component.setProps({ isDisabled: true });
-            expect(component.exists()).toBe(true);
-        });
     it("should render correctly without throwing error when clicked on button", () => {
         component.setProps({
             content: [{

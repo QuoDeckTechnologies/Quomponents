@@ -19,11 +19,11 @@ IconListItem.propTypes = {
     IconListItem data should be passed in content field and it is a required field
     */
 
-  content: PropTypes.arrayOf(
+  content: PropTypes.shape(
     PropTypes.shape({
-      image: PropTypes.string,
-      title: PropTypes.string,
-    })
+      image: PropTypes.arrayOf(),
+      title: PropTypes.arrayOf(),
+    }).isRequired,
   ),
   //=======================================
   // Quommon props
@@ -72,7 +72,7 @@ IconListItem.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  content: [],
   //=======================================
   // Quommon props
   //=======================================
@@ -111,9 +111,9 @@ export default function IconListItem(props) {
             key={index}>
             <div className={`qui-icon-list ${quommonClasses.childClasses}`}>
               <p className={`qui-list-title `} style={{ order: index % 2 === 0 ? 2 : 1 }} >
-                {item.title}
+                {item?.title}
               </p>
-              <img className="qui-list-image" style={{ order: index % 2 === 0 ? 1 : 2 }} src={item.image} alt=""></img>
+              <img className="qui-list-image" style={{ order: index % 2 === 0 ? 1 : 2 }} src={item?.image} alt=""></img>
             </div>
           </motion.div>
         );

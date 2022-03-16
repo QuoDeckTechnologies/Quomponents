@@ -6,7 +6,7 @@ export default {
     component: IconListItem,
     argTypes: {
         content: [{
-            title: " ",
+            title: "",
             image: ""
         }],
 
