@@ -10,8 +10,6 @@ import PortraitCarousel from '../Carousel/PortraitCarousel/PortraitCarousel.reac
 
 describe('PortraitCarousel', () => {
     let component, content;
-    let slickPrev = jest.fn();
-    let slickNext = jest.fn();
     content = [{
         image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
         tag: "new",
@@ -32,7 +30,7 @@ describe('PortraitCarousel', () => {
         () => {
             expect(component.exists()).toBe(true);
         });
-    it('should pass Conditional True ', () => {
+    it('should pass conditional true when the slide is selected {true} from the props ', () => {
         component.setProps({
             content: [{
                 image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
@@ -56,14 +54,12 @@ describe('PortraitCarousel', () => {
         })
         expect(component.find(".qui-portrait-checkbox").props().children.props.className).toBe("fas fa-check-square")
     });
-    test('should render and handle click event slickPrev', () => {
-        const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({ current: { slickPrev } });
+    test('should render and handle click event slickPrev on previous arrows', () => {
         const wrapper = shallow(<PortraitCarousel onClick={() => console.log("Testing SlickPrev")} />);
-        wrapper.find(".qui-slick-prev").simulate('click');
+        wrapper.find(".qui-portrait-slick-prev").simulate('click');
     });
-    test('should render and handle click event slickNext', () => {
-        const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({ current: { slickNext } });
+    test('should render and handle click event slickNext on next arrow', () => {
         const wrapper = shallow(<PortraitCarousel onClick={() => console.log("Testing slickNext")} />);
-        wrapper.find(".qui-slick-next").simulate('click');
+        wrapper.find(".qui-portrait-slick-next").simulate('click');
     });
 })

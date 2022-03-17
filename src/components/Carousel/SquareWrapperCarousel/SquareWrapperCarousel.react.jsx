@@ -87,51 +87,46 @@ export default function SquareWrapperCarousel(props) {
         centerMode: true,
         arrows: false,
         infinite: true,
-        autoplay: true,
+        autoplay: false,
         pauseOnHover: true,
         centerPadding: "0%",
         swipeToSlide: true,
     };
     // ========================= Render Function =================================
     return (
-        <div className="SquareWrapper-container">
-            <motion.div
-                initial={animate.from}
-                animate={animate.to}
-                className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
-
-            >
-                <Slider ref={sliderRef} {...settings}>
-                    {_.map(content, (slide, index) => {
-                        return (
-                            <div className="qui-SquareWrapper-slide-container qui-banner"
-                                key={"slider-" + index + Math.random()}>
-
-
-                                <div className={`qui-SquareWrapper-slide `}>
-                                    {slide.selected && <div className="qui-mid-circle" >
-                                        <div className="qui-square-wrapper-checkbox" >
-                                            <i className={"fas fa-check-square"}>
-                                            </i>
-                                        </div>
-                                    </div>}
-                                    <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
-                                </div>
+        <motion.div
+            initial={animate.from}
+            animate={animate.to}
+            className={`qui qui-square-wrapper-carousel-container ${quommonClasses.parentClasses}`}
+        >
+            <Slider ref={sliderRef} {...settings}>
+                {_.map(content, (slide, index) => {
+                    return (
+                        <div className="qui-SquareWrapper-slide-container qui-banner"
+                            key={"slider-" + index + Math.random()}>
+                            <div className={`qui-SquareWrapper-slide `}>
+                                {slide.selected && <div className="qui-mid-circle" >
+                                    <div className="qui-square-wrapper-checkbox" >
+                                        <i className={"fas fa-check-square"}>
+                                        </i>
+                                    </div>
+                                </div>}
+                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
                             </div>
-                        );
-                    })}
-                </Slider>
-                <div className="qui-slick-arrows">
-                    <div className="qui-slick-prev"
-                        onClick={() => sliderRef.current?.slickPrev()}>
-                        <i className="fas fa-arrow-alt-circle-left"></i>
-                    </div>
-                    <div className="qui-slick-next"
-                        onClick={() => sliderRef.current?.slickNext()}>
-                        <i className="fas fa-arrow-alt-circle-right"></i>
-                    </div>
+                        </div>
+                    );
+                })}
+            </Slider>
+            <div className="qui-square-wrapper-slick-arrows">
+                <div className="qui-square-wrapper-slick-prev"
+                    onClick={() => sliderRef.current?.slickPrev()}>
+                    <i className="fas fa-arrow-alt-circle-left"></i>
                 </div>
-            </motion.div>
-        </div>
+                <div className="qui-square-wrapper-slick-next"
+                    onClick={() => sliderRef.current?.slickNext()}>
+                    <i className="fas fa-arrow-alt-circle-right"></i>
+                </div>
+            </div>
+        </motion.div>
     );
 }

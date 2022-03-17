@@ -163,3 +163,151 @@ HtmlCarouselWithoutTag.parameters = {
     },
 };
 
+// -------------------------------------------------------------
+// MultipleHtmlCarousels
+// -------------------------------------------------------------
+const MultipleHtmlCarouselsTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            content: [{
+                image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+                content: "This is HtmlCarousel, Imported from banner card.",
+                tag: "new",
+                props: {
+                    ...dataprops,
+                    asVariant: "primary",
+                }
+            },
+            {
+                image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                tag: "premium",
+                content: "This is HtmlCarousel, Imported from banner card.",
+                props: {
+                    ...dataprops,
+                    asVariant: "secondary",
+                }
+            },
+            {
+                image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+                tag: "restricted",
+                content: "This is HtmlCarousel, Imported from banner card.",
+                props: {
+                    ...dataprops,
+                    asVariant: "warning",
+                }
+            }],
+        }),
+    };
+    return (
+        <div>
+            <HtmlCarousel
+                {...Object.assign({}, baseObj, {
+                    content: [{
+                        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                        content: "This is HtmlCarousel, Imported from banner card.",
+                        tag: "new",
+                        props: {
+                            ...dataprops,
+                            asVariant: "primary",
+                        }
+                    },
+                    {
+                        image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+                        tag: "premium",
+                        content: "This is HtmlCarousel, Imported from banner card.",
+                        props: {
+                            ...dataprops,
+                            asVariant: "secondary",
+                        }
+                    },
+                    {
+                        image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+                        tag: "restricted",
+                        content: "This is HtmlCarousel, Imported from banner card.",
+                        props: {
+                            ...dataprops,
+                            asVariant: "warning",
+                        }
+                    }],
+                })}
+            />
+            <HtmlCarousel
+                {...Object.assign({}, baseObj, {
+                    content: [{
+                        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                        content: "This is HtmlCarousel, Imported from banner card.",
+                        tag: "new",
+                        props: {
+                            ...dataprops,
+                            asVariant: "primary",
+                        }
+                    },
+                    {
+                        image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+                        tag: "premium",
+                        content: "This is HtmlCarousel, Imported from banner card.",
+                        props: {
+                            ...dataprops,
+                            asVariant: "secondary",
+                        }
+                    },
+                    {
+                        image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",   
+                        tag: "restricted",
+                        content: "This is HtmlCarousel, Imported from banner card.",
+                        props: {
+                            ...dataprops,
+                            asVariant: "warning",
+                        }
+                    }],
+
+                })}
+            />
+            <HtmlCarousel
+                {...Object.assign({}, baseObj, {
+                    content: [{
+                        image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+                        content: "This is HtmlCarousel, Imported from banner card.",
+                        tag: "new",
+                        props: {
+                            ...dataprops,
+                            asVariant: "primary",
+                        }
+                    },
+                    {
+                        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                        tag: "premium",
+                        content: "This is HtmlCarousel, Imported from banner card.",
+                        props: {
+                            ...dataprops,
+                            asVariant: "secondary",
+                        }
+                    },
+                    {
+                        image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+                        tag: "restricted",
+                        content: "This is HtmlCarousel, Imported from banner card.",
+                        props: {
+                            ...dataprops,
+                            asVariant: "warning",
+                        }
+                    }],
+
+                })}
+            />
+        </div>
+    );
+};
+
+
+export const MultipleHtmlCarousels = MultipleHtmlCarouselsTemplate.bind({});
+MultipleHtmlCarousels.parameters = {
+    docs: {
+        description: {
+            story: "5 variants are supported. Use as per purpose noted here.",
+        },
+        source: {
+            code: `<HtmlCarousel "/>`,
+        },
+    },
+};

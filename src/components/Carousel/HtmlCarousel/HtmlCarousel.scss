@@ -1,5 +1,6 @@
 .qui-html-carousel {
   overflow: inherit;
+  margin-bottom: 2em;
 }
 .qui-html-carousel .qui-html-slide-container {
   width: 99%;
@@ -7,11 +8,17 @@
 .qui-html-carousel .qui-html-slide-container .qui-slider-card-box {
   display: none;
   background-color: rgba(173, 41, 41, 0.6);
-  color:white;
+  color: white;
 }
 .qui-html-slide-container .qui-ribbon-container .qui-ribbon {
   position: relative;
   z-index: 1;
+}
+
+.qui-html-slide-container .qui-banner-card .qui-slider-card-box-content {
+  overflow: hidden;
+  max-width: 100ch;
+  text-overflow: ellipsis;
 }
 .qui-html-carousel .slick-slide {
   .qui-card-label {
@@ -31,6 +38,7 @@
   .qui-html-slide .qui-banner-card {
     display: inline-block;
     width: 100%;
+    font-size: 0.7em;
     border-radius: 1.5em;
     background-repeat: no-repeat;
     background-size: cover;
@@ -56,19 +64,17 @@
     font-weight: normal;
     line-height: 1.1;
     position: absolute;
-    padding: 0.1em 0.1em;
+    padding: 0.1em 0.2em;
     top: 50%;
     left: 0%;
     right: 0%;
     margin: auto;
     text-align: center;
-    max-width: 25ch;
     transform: translateY(-50%);
     opacity: 1;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    overflow: hidden;
   }
   .qui-html-carousel .slick-dots li button:before {
     font-size: 9px;
@@ -87,18 +93,22 @@
     margin: auto;
     width: fit-content;
   }
-  .qui-html-carousel .qui-slick-arrows {
+  .qui-html-carousel .qui-html-slick-arrows {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.5em;
   }
-  .qui-html-carousel .qui-slick-prev,
-  .qui-slick-next {
+  .qui-html-carousel .qui-html-slick-prev,
+  .qui-html-slick-next {
     cursor: pointer;
+    color: #666666;
   }
 }
 @media only screen and (min-width: 481px) {
+  .qui-html-slide .qui-banner-card {
+    font-size: 0.85em;
+  }
   .qui-html-slide-container .qui-ribbon-container {
     font-size: 1.3em;
     font-weight: bold;
@@ -107,7 +117,7 @@
   .qui-html-slide-container .qui-banner-card .qui-slider-card-box-content {
     font-size: 1.6em;
   }
-  .qui-html-carousel .qui-slick-arrows {
+  .qui-html-carousel .qui-html-slick-arrows {
     font-size: 2em;
   }
   .qui-html-carousel .slick-dots li button:before {
@@ -125,6 +135,9 @@
   }
 }
 @media only screen and (min-width: 769px) {
+  .qui-html-slide .qui-banner-card {
+    font-size: 1em;
+  }
   .qui-html-slide-container .qui-ribbon-container {
     font-size: 1.2em;
     font-weight: bold;
@@ -133,7 +146,7 @@
   .qui-html-slide-container .qui-banner-card .qui-slider-card-box-content {
     font-size: 1.7em;
   }
-  .qui-html-carousel .qui-slick-arrows {
+  .qui-html-carousel .qui-html-slick-arrows {
     font-size: 2.5em;
   }
   .qui-html-carousel .slick-dots li button:before {

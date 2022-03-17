@@ -93,41 +93,39 @@ export default function PortraitCarousel(props) {
     };
     // ========================= Render Function =================================
     return (
-        <div className="portrait-container">
-            <motion.div
-                initial={animate.from}
-                animate={animate.to}
-                className={`qui qui-carousel-container ${quommonClasses.parentClasses}`}
-            >
-                <Slider ref={sliderRef} {...settings}>
-                    {_.map(content, (slide, index) => {
-                        return (
-                            <div className="qui-portrait-slide-container qui-banner"
-                                key={"slider-" + index + Math.random()}>
-                                <div className={`qui-portrait-slide ${quommonClasses.childClasses} `}>
-                                    {slide.selected && <div className="qui-mid-circle" >
-                                        <div className="qui-portrait-checkbox">
-                                            <i className={"fas fa-check-square"}>
-                                            </i>
-                                        </div>
-                                    </div>}
-                                    <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
-                                </div>
+        <motion.div
+            initial={animate.from}
+            animate={animate.to}
+            className={`qui qui-portrait-carousel-container ${quommonClasses.parentClasses}`}
+        >
+            <Slider ref={sliderRef} {...settings}>
+                {_.map(content, (slide, index) => {
+                    return (
+                        <div className="qui-portrait-slide-container"
+                            key={"slider-" + index + Math.random()}>
+                            <div className={`qui-portrait-slide ${quommonClasses.childClasses} `}>
+                                {slide.selected && <div className="qui-mid-circle" >
+                                    <div className="qui-portrait-checkbox">
+                                        <i className={"fas fa-check-square"}>
+                                        </i>
+                                    </div>
+                                </div>}
+                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
                             </div>
-                        );
-                    })}
-                </Slider>
-                <div className="qui-slick-arrows">
-                    <div className="qui-slick-prev"
-                        onClick={() => sliderRef.current?.slickPrev()}>
-                        <i className="fas fa-arrow-alt-circle-left"></i>
-                    </div>
-                    <div className="qui-slick-next"
-                        onClick={() => sliderRef.current?.slickNext()}>
-                        <i className="fas fa-arrow-alt-circle-right"></i>
-                    </div>
+                        </div>
+                    );
+                })}
+            </Slider>
+            <div className="qui-portrait-slick-arrows">
+                <div className="qui-portrait-slick-prev"
+                    onClick={() => sliderRef.current?.slickPrev()}>
+                    <i className="fas fa-arrow-alt-circle-left"></i>
                 </div>
-            </motion.div>
-        </div>
+                <div className="qui-portrait-slick-next"
+                    onClick={() => sliderRef.current?.slickNext()}>
+                    <i className="fas fa-arrow-alt-circle-right"></i>
+                </div>
+            </div>
+        </motion.div>
     );
 }

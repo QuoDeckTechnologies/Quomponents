@@ -10,8 +10,6 @@ import LandscapeCarousel from '../Carousel/LandscapeCarousel/LandscapeCarousel.r
 
 describe('LandscapeCarousel', () => {
     let component, content;
-    let slickPrev = jest.fn();
-    let slickNext = jest.fn();
     content = [{
         image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
         tag: "new",
@@ -33,7 +31,7 @@ describe('LandscapeCarousel', () => {
             expect(component.exists()).toBe(true);
         });
 
-    it('should pass Conditional True ', () => {
+    it('should pass conditional true when the slide is selected {true} from the props ', () => {
         component.setProps({
             content: [{
                 image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
@@ -50,15 +48,13 @@ describe('LandscapeCarousel', () => {
             }]
         })
     });
-    test('should render and handle click event correctly when previousSibling exists', () => {
-        const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({ current: { slickPrev } });
+    test('should render and handle click event slickPrev on previous arrows', () => {
         const wrapper = shallow(<LandscapeCarousel onClick={() => console.log("Testing SlickPrev")} />);
-        wrapper.find(".qui-slick-prev").simulate('click');
+        wrapper.find(".qui-landscape-slick-prev").simulate('click');
     });
-    test('should render and handle click event correctly when previousSibling exists', () => {
-        const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({ current: { slickNext } });
-        const wrapper = shallow(<LandscapeCarousel onClick={() => console.log("Testing SlickPrev")} />);
-        wrapper.find(".qui-slick-next").simulate('click');
+    test('should render and handle click event slickNext on next arrow', () => {
+        const wrapper = shallow(<LandscapeCarousel onClick={() => console.log("Testing SlickNext")} />);
+        wrapper.find(".qui-landscape-slick-next").simulate('click');
     });
 
 })

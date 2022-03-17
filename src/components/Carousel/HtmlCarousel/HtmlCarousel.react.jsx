@@ -88,12 +88,12 @@ export default function HtmlCarousel(props) {
                     );
                 })}
             </Slider>
-            <div className="qui-slick-arrows">
-                <div className="qui-slick-prev"
+            <div className="qui-html-slick-arrows">
+                <div className="qui-html-slick-prev"
                     onClick={() => sliderRef.current?.slickPrev()}>
                     <i className="fas fa-arrow-alt-circle-left"></i>
                 </div>
-                <div className="qui-slick-next"
+                <div className="qui-html-slick-next"
                     onClick={() => sliderRef.current?.slickNext()}>
                     <i className="fas fa-arrow-alt-circle-right"></i>
                 </div>

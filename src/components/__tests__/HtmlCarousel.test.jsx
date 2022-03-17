@@ -10,8 +10,6 @@ import HtmlCarousel from '../Carousel/HtmlCarousel/HtmlCarousel.react'
 
 describe('HtmlCarousel', () => {
     let component, content;
-    let slickPrev = jest.fn();
-    let slickNext = jest.fn();
     let colors = {
         backgroundColor: "red",
         accentColor: "green",
@@ -46,14 +44,12 @@ describe('HtmlCarousel', () => {
         () => {
             expect(component.exists()).toBe(true);
         });
-    test('should render and handle click event slickPrev', () => {
-        const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({ current: { slickPrev } });
+    test('should render and handle click event slickPrev on previous arrows', () => {
         const wrapper = shallow(<HtmlCarousel onClick={() => console.log("Testing SlickPrev")} />);
-        wrapper.find(".qui-slick-prev").simulate('click');
+        wrapper.find(".qui-html-slick-prev").simulate('click');
     });
     test('should render and handle click event slickNext', () => {
-        const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({ current: { slickNext } });
         const wrapper = shallow(<HtmlCarousel onClick={() => console.log("Testing SlickNext")} />);
-        wrapper.find(".qui-slick-next").simulate('click');
+        wrapper.find(".qui-html-slick-next").simulate('click');
     });
 })
