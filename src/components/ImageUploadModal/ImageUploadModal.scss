@@ -4,9 +4,18 @@
   flex-direction: column;
   align-items: center;
   padding: 1em 0em 2.8em 0em;
-  border-radius: 1em;
-  position: relative;
+  border-radius: 0.7em;
+  position: absolute;
   z-index: 20;
+  box-shadow: 0 6px 6px 0px #00000052;
+}
+.qui-image-upload-modal:focus {
+  outline: none;
+}
+.qui .qui-avatar-canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .qui-image-upload-modal.qui-upload-image-modal-close {
   display: none;
@@ -46,9 +55,10 @@
   display: flex;
 }
 .qui .qui-image-modal-upload-header h2 {
-  margin: 1.5em 0;
+  margin: 0.8em 0;
+  font-weight: 500;
   color: rgb(90, 90, 90);
-  font-size: 1.8em;
+  font-size: 2em;
 }
 .qui .qui-image-upload-modal-range-slider {
   width: 100%;
@@ -190,16 +200,16 @@
 }
 @media only screen and (min-width: 320px) {
   .qui-image-upload-modal {
-    font-size: 0.61em;
+    font-size: 0.5em;
   }
 }
 @media only screen and (min-width: 481px) {
   .qui-image-upload-modal {
-    font-size: 0.75em;
+    font-size: 0.6em;
   }
 }
 @media only screen and (min-width: 769px) {
   .qui-image-upload-modal {
-    font-size: 1.2em;
+    font-size: 0.8em;
   }
 }

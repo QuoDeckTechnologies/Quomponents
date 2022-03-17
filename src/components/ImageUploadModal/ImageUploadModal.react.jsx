@@ -1,6 +1,7 @@
 // Import npm packages
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
+import Modal from "@mui/material/Modal";
 import AvatarEditor from "react-avatar-editor";
 import Slider from "react-rangeslider";
 import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
@@ -113,15 +114,15 @@ function getSize(size) {
     return 320;
   }
   if (size === "normal") {
-    return 600;
+    return 400;
   }
   if (size === "big") {
-    return 800;
+    return 600;
   }
   if (size === "huge") {
-    return 950;
+    return 750;
   } else {
-    return 1400;
+    return 900;
   }
 }
 /**
@@ -141,9 +142,9 @@ export default function ImageUploadModal(props) {
   //-------------------------------------------------------------------
   const [zoom, setZoom] = useState(10);
   const [image, setImage] = useState(null);
-  const [closeUploadModal, setCloseUploadModal] = useState(props.isOpen);
+  const [openUploadModal, setOpenUploadModal] = useState(props.isOpen);
   useEffect(() => {
-    setCloseUploadModal(props.isOpen);
+    setOpenUploadModal(props.isOpen);
   }, [props.isOpen]);
   //-------------------------------------------------------------------
   // 3. Defining functions for file upload
@@ -180,79 +181,95 @@ export default function ImageUploadModal(props) {
   const width = getSize(props.asSize);
   // ========================= Render Function =================================
   return (
-    <div
-      className={`qui ${quommonClasses.parentClasses} ${
-        closeUploadModal ? "" : "qui-upload-image-modal-close"
-      }`}
+    <Modal
+      open={openUploadModal}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
     >
       <div
-        className={`qui-image-modal-upload-header ${quommonClasses.childClasses}`}
+        className={`qui ${quommonClasses.parentClasses} ${
+          openUploadModal ? "" : "qui-upload-image-modal-close"
+        }`}
+        style={{ width: width + 80 }}
       >
-        <h2>{imageModalContent.header}</h2>
-      </div>
-      <div className={`qui-image-cropper ${quommonClasses.childClasses}`}>
-        <div className="qui-image-upload-button">
-          <form>
-            <input
-              type="file"
-              className="qui-image-upload-field"
-              onChange={handleChange}
-              ref={fileRef}
-              hidden
+        <div
+          className={`qui-image-modal-upload-header ${quommonClasses.childClasses}`}
+        >
+          <h2>{imageModalContent.header}</h2>
+        </div>
+        <div className={`qui-image-cropper ${quommonClasses.childClasses}`}>
+          <div className="qui-image-upload-button">
+            <form>
+              <input
+                type="file"
+                className="qui-image-upload-field"
+                onChange={handleChange}
+                ref={fileRef}
+                hidden
+              />
+              <Button
+                {...props}
+                content={imageModalContent.buttons[0]}
+                withTranslation={null}
+                withAnimation={null}
+                asEmphasis="outlined"
+                isFluid={true}
+                asPadded="normal"
+                onClick={uploadFile}
+              />
+            </form>
+          </div>
+          <div className="qui-avatar-canvas">
+            <AvatarEditor
+              className="qui-image-preview"
+              width={width}
+              height={width / 1.15}
+              image={image ? image : defaultImage}
+              border={0}
+              scale={zoom / 10}
+            />
+          </div>
+          <Slider
+            min={0}
+            max={100}
+            value={zoom}
+            onChange={(value) => setZoom(value)}
+          />
+          <div className="qui-image-upload-buttons">
+            <Button
+              {...props}
+              asSize="normal"
+              content={imageModalContent.buttons[1]}
+              asEmphasis="text"
+              asFloated="left"
+              withTranslation={null}
+              withAnimation={null}
+              onClick={() => setImage(null)}
             />
             <Button
               {...props}
-              content={imageModalContent.buttons[0]}
+              asSize="normal"
+              content={imageModalContent.buttons[2]}
               withTranslation={null}
-              asEmphasis="outlined"
-              isFluid={true}
-              asPadded="normal"
-              onClick={uploadFile}
+              withAnimation={null}
+              asEmphasis="contained"
+              asFloated="left"
             />
-          </form>
+          </div>
         </div>
-        <AvatarEditor
-          className="qui-image-preview"
-          width={width}
-          height={width / 1.15}
-          image={image ? image : defaultImage}
-          border={0}
-          scale={zoom / 10}
+        <ArcMenu
+          {...props}
+          content={{}}
+          isCloseButton={true}
+          onClick={() => {
+            setOpenUploadModal(false);
+          }}
         />
-        <Slider
-          min={0}
-          max={100}
-          value={zoom}
-          onChange={(value) => setZoom(value)}
-        />
-        <div className="qui-image-upload-buttons">
-          <Button
-            {...props}
-            asSize="normal"
-            content={imageModalContent.buttons[1]}
-            asEmphasis="text"
-            asFloated="left"
-            withTranslation={null}
-            onClick={() => setImage(null)}
-          />
-          <Button
-            {...props}
-            asSize="normal"
-            content={imageModalContent.buttons[2]}
-            withTranslation={null}
-            asEmphasis="contained"
-            asFloated="left"
-          />
-        </div>
       </div>
-      <ArcMenu
-        {...props}
-        content={{}}
-        isCloseButton={true}
-        onClick={() => {
-          setCloseUploadModal(false);
-        }}
-      />
-    </div>
+    </Modal>
   );
 }
