@@ -128,7 +128,7 @@ export default function SearchBar(props) {
     const box = useRef(null);
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
-            return props.onClick(input.current?.value);
+          handleButtonPress();
         }
     }
     const handleButtonPress = () => {

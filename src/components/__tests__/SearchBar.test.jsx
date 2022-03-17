@@ -185,7 +185,8 @@ describe("SearchBar", () => {
     it('should pass the value when pressed Enter', () => {
         const { queryByPlaceholderText } = render(<SearchBar onClick={() => {
             console.log("Testing SearchBar")
-
+            handleKeyPress={handleKeyPress}
+            handleButtonPress={handleButtonPress}
         }} />)
         const searchInput = queryByPlaceholderText('Search...')
         fireEvent.change(searchInput, { target: { value: "some value" } });
