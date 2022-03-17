@@ -40,14 +40,99 @@ describe("SearchBar", () => {
             isFluid={null}
             onClick={() => console.log('test')}
             placeHolder="Search..."
-            handleKeyPress = { handleKeyPress }
-        handleButtonPress = { handleButtonPress } 
+            handleKeyPress={handleKeyPress}
+            handleButtonPress={handleButtonPress}
         />);
     })
 
     it("should render correctly without throwing an error if icon props is false", () => {
         expect(component.exists()).toBe(true);
     });
+
+    it("should render correctly when passed asSize prop as tiny", () => {
+        component.setProps({ asSize: "tiny" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asSize prop as small", () => {
+        component.setProps({ asSize: "small" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asSize prop as normal", () => {
+        component.setProps({ asSize: "normal" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asSize prop as big", () => {
+        component.setProps({ asSize: "big" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asSize prop as huge", () => {
+        component.setProps({ asSize: "huge" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asSize prop as massive", () => {
+        component.setProps({ asSize: "massive" })
+        expect(component.exists()).toBe(true);
+    })
+
+    it("should render correctly when passed asFloated prop as left", () => {
+        component.setProps({ asFloated: "left" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asFloated prop as right", () => {
+        component.setProps({ asFloated: "right" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asFloated prop as inline", () => {
+        component.setProps({ asFloated: "inline" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asFloated prop as none", () => {
+        component.setProps({ asFloated: "none" })
+        expect(component.exists()).toBe(true);
+    })
+
+    it("should render correctly when passed withColor props", () => {
+        let colors = {
+            backgroundColor: "#fff",
+            textColor: "#00FFFF",
+        }
+        component.setProps({ withColor: colors })
+        expect(component.exists()).toBe(true);
+    })
+
+    it("should render correctly when passed withIcon props", () => {
+        let icon = { icon: "fas fa-share" }
+        component.setProps({ withIcon: icon })
+        expect(component.exists()).toBe(true);
+    })
+
+    it("should render correctly when passed withAnimation props", () => {
+        let animation = {
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+        }
+        component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    })
+
+    it("should render correctly when passed isHidden props as false", () => {
+        component.setProps({ isHidden: false })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed isHidden props as true", () => {
+        component.setProps({ isHidden: true })
+        expect(component.exists()).toBe(true);
+    })
+
+    it("should render correctly when passed isDisabled props as false", () => {
+        component.setProps({ isDisabled: false })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed isDisabled props as true", () => {
+        component.setProps({ isDisabled: true })
+        expect(component.exists()).toBe(true);
+    })
 
     it("should render correctly when passed withTranslation Props", () => {
         expect(component.find("input").props().placeholder).toBe("Search...")
@@ -69,9 +154,9 @@ describe("SearchBar", () => {
         let inputBox = component.find("input");
         let button = component.find("button");
 
-        expect(searchBarChildContainer.props().className).toBe('search-bar-child-container search-bar-child-container-closed');
-        expect(inputBox.props().className).toBe('search-bar-input-field search-bar-input-closed');
-        expect(button.props().className).toBe('search-bar-icon search-bar-icon-closed');
+        expect(searchBarChildContainer.props().className).toBe('qui-search-bar-child-container qui-search-bar-child-container-closed');
+        expect(inputBox.props().className).toBe('qui-search-bar-input-field qui-search-bar-input-closed');
+        expect(button.props().className).toBe('qui-search-bar-icon qui-search-bar-icon-closed');
     });
 
     it("should render opened Search Bar when clicked", () => {
@@ -83,9 +168,9 @@ describe("SearchBar", () => {
         let button = component.find("button");
 
         searchBarContainer.simulate('click')
-        expect(searchBarChildContainer.props().className).toBe("search-bar-child-container undefined");
-        expect(inputBox.props().className).toBe("search-bar-input-field undefined");
-        expect(button.props().className).toBe("search-bar-icon undefined");
+        expect(searchBarChildContainer.props().className).toBe("qui-search-bar-child-container undefined");
+        expect(inputBox.props().className).toBe("qui-search-bar-input-field undefined");
+        expect(button.props().className).toBe("qui-search-bar-icon undefined");
     });
 
     it("should pass the value when clicked on button", () => {
@@ -101,11 +186,11 @@ describe("SearchBar", () => {
         const { queryByPlaceholderText } = render(<SearchBar onClick={() => {
             console.log("Testing SearchBar")
 
-        }}/>)
+        }} />)
         const searchInput = queryByPlaceholderText('Search...')
         fireEvent.change(searchInput, { target: { value: "some value" } });
-        fireEvent.keyPress(searchInput, { key: 'enter', keyCode: 13})
-        handleButtonPress()
+        fireEvent.keyPress(searchInput, { key: 'enter', keyCode: 13 })
+        handleButtonPress();
         expect(handleButtonPress.mock.calls.length).toBe(1)
         expect(searchInput.value).toBe('some value')
     })

@@ -40,7 +40,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    icon: "fas fa-search"
+                    name: "fas fa-search"
                 },
             },
         },
@@ -115,7 +115,7 @@ Default.args = {
     placeHolder: "Search...",
     asFloated: "left",
     asSize: "normal",
-    withIcon: { icon: "fas fa-search" },
+    withIcon: { name: "fas fa-search" },
     withColor: {
         backgroundColor: "",
         textColor: "",

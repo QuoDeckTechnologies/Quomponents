@@ -48,7 +48,7 @@ SearchBar.propTypes = {
     Use to add an icon to the component
     */
     withIcon: PropTypes.shape({
-        icon: PropTypes.string,
+        name: PropTypes.string,
     }),
     /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -128,7 +128,7 @@ export default function SearchBar(props) {
     const box = useRef(null);
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
-            handleButtonPress();
+            return props.onClick(input.current?.value);
         }
     }
     const handleButtonPress = () => {
@@ -159,31 +159,31 @@ export default function SearchBar(props) {
         if (isClosed) {
             if (props.isFluid === false) {
                 if (expandable === false) {
-                    searchBarStyle = "search-bar-child-container-closed";
-                    inputStyle = "search-bar-input-closed";
-                    iconStyle = "search-bar-icon-closed";
+                    searchBarStyle = "qui-search-bar-child-container-closed";
+                    inputStyle = "qui-search-bar-input-closed";
+                    iconStyle = "qui-search-bar-icon-closed";
                 }
             }
         }
         return (
-            <div className={`search-bar-container`}
+            <div className={`qui-search-bar-container`}
                 onClick={() => { setExpandable(true) }}
                 ref={box}>
-                <div className={`search-bar-child-container ${searchBarStyle}`}>
+                <div className={`qui-search-bar-child-container ${searchBarStyle}`}>
                     <input
                         ref={input}
-                        className={`search-bar-input-field ${inputStyle}`}
+                        className={`qui-search-bar-input-field ${inputStyle}`}
                         placeholder={searchPlaceHolder}
                         style={{ color: props.withColor?.textColor }}
                         onKeyPress={handleKeyPress} />
                     <button
                         aria-label="Search-Icon"
-                        className={`search-bar-icon ${iconStyle}`}
+                        className={`qui-search-bar-icon ${iconStyle}`}
                         onClick={handleButtonPress}
                         style={{ backgroundColor: props.withColor?.backgroundColor }}>
-                        <i className={props.withIcon?.icon}></i>
+                        <i className={props.withIcon?.name}></i>
                     </button>
-                    <div className={`search-bar-expand-effect`}
+                    <div className={`qui-search-bar-expand-effect`}
                         style={{ display: props.isClosed ? expandable ? "none" : "flex" : "none" }}>
                     </div>
                 </div>
