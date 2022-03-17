@@ -131,26 +131,34 @@ function getColors(colors) {
 export default function ActionMenu(props) {
     const handelevent = (index) => {
         if (index === 0) {
-            alert(index);
+            //index 0 is for Open Deck
+            return (props.onClick(index));
         }
         else if (index === 1) {
-            alert(index);
+            //index 1 is for Edot Deck 
+            return (props.onClick(index));
         }
         else if (index === 2) {
-            alert(index);
+            //index 2 is for Move Deck Up
+            return (props.onClick(index));
         }
         else if (index === 3) {
-            alert(index);
+            //index 3 is for Move Deck Down
+            return (props.onClick(index));
         }
         else if (index === 4) {
-            alert(index);
+            //index 4 is for Move To Topic
+            return (props.onClick(index));
         }
         else if (index === 5) {
-            alert(index);
+            //index 5 is for Unpublish Deck
+            return (props.onClick(index));
         }
-        else {
-            alert(index);
+        else if (index === 6) {
+            //index 6 is for Delete Deck
+            return (props.onClick(index));
         }
+
     }
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
