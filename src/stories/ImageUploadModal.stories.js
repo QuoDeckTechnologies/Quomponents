@@ -3,7 +3,10 @@ import ImageUploadModal from "../components/ImageUploadModal/ImageUploadModal.re
 
 const dictionary = JSON.stringify({
   hi: {
-    imageuploadmodal: { header: "तस्वीर अपलोड करें" },
+    imageuploadmodal: {
+      header: "तस्वीर अपलोड करें",
+      buttons: ["फाइलें चुनें", "रद्द करें", "स्वीकार"],
+    },
   },
 });
 
@@ -104,7 +107,10 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: {header: "Upload Image"},
+  content: {
+    header: "Upload Image",
+    buttons: ["choose file", "cancel", "save"],
+  },
   isOpen: true,
   asVariant: "warning",
   asSize: "tiny",
@@ -134,7 +140,7 @@ Default.parameters = {
 export const TranslatedImageUploadModal = Template.bind({});
 TranslatedImageUploadModal.args = {
   ...Default.args,
-  asVariant:'primary',
+  asVariant: "primary",
   withTranslation: {
     lang: "hi",
     tgt: "imageuploadmodal",

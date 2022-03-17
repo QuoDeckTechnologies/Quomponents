@@ -155,30 +155,6 @@ export default function ImageUploadModal(props) {
     let file = e.target.files[0];
     setImage(file);
   };
-  const getEditor = (image, width) => {
-    if (image) {
-      return (
-        <AvatarEditor
-          className="qui-image-preview"
-          width={width}
-          height={width / 1.15}
-          image={image}
-          border={0}
-          scale={zoom / 10}
-        />
-      );
-    } else {
-      const height = width / 1.15;
-      return (
-        <img
-          className="qui-image-upload-default-image"
-          style={{ height: height }}
-          src={defaultImage}
-          alt="default"
-        />
-      );
-    }
-  };
   //-------------------------------------------------------------------
   // 4. Set the classes
   //-------------------------------------------------------------------
@@ -186,15 +162,16 @@ export default function ImageUploadModal(props) {
   //-------------------------------------------------------------------
   // 5. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
-  let header = props.content.header;
+  let imageModalContent = props.content;
+  let tObj = null;
   if (
     props.withTranslation?.lang &&
     props.withTranslation.lang !== "" &&
     props.withTranslation.lang !== "en"
   ) {
-    let tObj = getTranslation(props.withTranslation);
+    tObj = getTranslation(props.withTranslation);
     if (tObj) {
-      header = tObj.header;
+      imageModalContent = tObj;
     }
   }
   //-------------------------------------------------------------------
@@ -211,7 +188,7 @@ export default function ImageUploadModal(props) {
       <div
         className={`qui-image-modal-upload-header ${quommonClasses.childClasses}`}
       >
-        <h2>{header}</h2>
+        <h2>{imageModalContent.header}</h2>
       </div>
       <div className={`qui-image-cropper ${quommonClasses.childClasses}`}>
         <div className="qui-image-upload-button">
@@ -225,24 +202,23 @@ export default function ImageUploadModal(props) {
             />
             <Button
               {...props}
-              content="Choose file"
+              content={imageModalContent.buttons[0]}
+              withTranslation={null}
               asEmphasis="outlined"
               isFluid={true}
               asPadded="normal"
-              withTranslation={{
-                lang: props.withTranslation?.lang,
-                tgt: "button",
-                dictionary: JSON.stringify({
-                  hi: {
-                    button: { text: "फाइलें चुनें" },
-                  },
-                }),
-              }}
               onClick={uploadFile}
             />
           </form>
         </div>
-        {getEditor(image, width)}
+        <AvatarEditor
+          className="qui-image-preview"
+          width={width}
+          height={width / 1.15}
+          image={image ? image : defaultImage}
+          border={0}
+          scale={zoom / 10}
+        />
         <Slider
           min={0}
           max={100}
@@ -253,42 +229,26 @@ export default function ImageUploadModal(props) {
           <Button
             {...props}
             asSize="normal"
-            content="cancel"
+            content={imageModalContent.buttons[1]}
             asEmphasis="text"
             asFloated="left"
-            withTranslation={{
-              lang: props.withTranslation?.lang,
-              tgt: "button",
-              dictionary: JSON.stringify({
-                hi: {
-                  button: { text: "रद्द करें" },
-                },
-              }),
-            }}
+            withTranslation={null}
             onClick={() => setImage(null)}
           />
           <Button
             {...props}
             asSize="normal"
-            content="save"
+            content={imageModalContent.buttons[2]}
+            withTranslation={null}
             asEmphasis="contained"
             asFloated="left"
-            withTranslation={{
-              lang: props.withTranslation?.lang,
-              tgt: "button",
-              dictionary: JSON.stringify({
-                hi: {
-                  button: { text: "स्वीकार" },
-                },
-              }),
-            }}
           />
         </div>
       </div>
       <ArcMenu
+        {...props}
         content={{}}
         isCloseButton={true}
-        {...props}
         onClick={() => {
           setCloseUploadModal(false);
         }}

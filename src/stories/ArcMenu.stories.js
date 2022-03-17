@@ -29,11 +29,9 @@ export default {
         },
       },
     },
-    isCloseButton: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
+    type: {
+      control: "select",
+      options: ["menu", "add", "close"],
     },
     asVariant: {
       control: "select",
@@ -117,18 +115,8 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    arcIcon: "fas fa-caret-down",
-    menuData: [
-      { name: "Home", icon: "fa fa-home" },
-      { name: "Account", icon: "fas fa-user" },
-      { name: "Settings", icon: "fa fa-cogs" },
-      { name: "Message", icon: "fa fa-comments" },
-      { name: "Configure", icon: "fa fa-file" },
-      { name: "Logout", icon: "fas fa-desktop" },
-    ],
-  },
-  isCloseButton: true,
+  content: {},
+  type: "close",
   asVariant: "primary",
   asSize: "normal",
   withColor: {
@@ -148,6 +136,32 @@ Default.parameters = {
   docs: {
     source: {
       code: `<ArcMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Default Close button
+// -------------------------------------------------------------
+export const MenuButton = Template.bind({});
+MenuButton.args = {
+  ...Default.args,
+  content: {
+    arcIcon: "fas fa-caret-down",
+    menuData: [
+      { name: "Home", icon: "fa fa-home" },
+      { name: "Account", icon: "fas fa-user" },
+      { name: "Settings", icon: "fa fa-cogs" },
+      { name: "Message", icon: "fa fa-comments" },
+      { name: "Configure", icon: "fa fa-file" },
+      { name: "Logout", icon: "fas fa-desktop" },
+    ],
+  },
+  type: "menu",
+};
+MenuButton.parameters = {
+  docs: {
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(MenuButton.args, null, 2)}}/>`,
     },
   },
 };

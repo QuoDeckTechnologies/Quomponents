@@ -26,9 +26,13 @@ ArcMenu.propTypes = {
     ),
   }).isRequired,
   /**
-  Use to toggle usage of ArcMenu as a menu button or close button
+  Use to toggle usage of ArcMenu as a menu button, add button or close button
   */
-  isCloseButton: PropTypes.bool,
+  type:  PropTypes.oneOf([
+    "menu",
+    "add",
+    "close",
+  ]),
   //=======================================
   // Quommon props
   //=======================================
@@ -91,7 +95,7 @@ ArcMenu.defaultProps = {
     arcIcon: "",
     menuData: [],
   },
-  isCloseButton: false,
+  type: 'close',
   //=======================================
   // Quommon props
   //=======================================
@@ -161,10 +165,10 @@ export default function ArcMenu(props) {
       ></motion.div>
       <div className={quommonClasses.childClasses}>
         <div
-          className={`qui-arc ${props.isCloseButton ? "qui-close-button" : ""}`}
+          className={`qui-arc ${props.type === 'close' ? "qui-close-button" : ""}`}
           style={{ borderColor: colors.borderColor }}
         >
-          {!props.isCloseButton ? (
+          {props.type !== 'close'? (
             <button
               className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
               style={{ backgroundColor: colors.backgroundColor }}
@@ -181,7 +185,7 @@ export default function ArcMenu(props) {
             </button>
           ) : (
             <button
-              className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
+              className={`qui-arc-menu-button qui-arc-menu-close-button ${quommonClasses.childClasses}`}
               style={{ backgroundColor: colors.backgroundColor }}
               onClick={(e) => props.onClick(e)}
             >
@@ -191,7 +195,7 @@ export default function ArcMenu(props) {
               ></i>
             </button>
           )}
-          {!props.isCloseButton && (
+          {props.type !== 'close' && (
             <motion.div
               initial={false}
               animate={
