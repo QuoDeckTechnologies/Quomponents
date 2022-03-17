@@ -1,21 +1,19 @@
-.qui-iconlink
-{
+.qui .qui-iconlink {
   display: flex;
   flex-direction: column;
-  width:auto;
-  flex:3;
+  align-items: center;
+  justify-content: center;
+  width: 3.5em;
+  height: 3.5em;
 }
 .qui .qui-btn.is-circular {
-  border-radius: 20%;
-}
-.qui .is-circular {
-  border-radius: 20%;
+  border-radius: 10%;
 }
 .qui .tilt {
   transform: rotate(10deg);
   transition: all ease-in-out;
 }
-.qui-link {
+.qui .qui-link {
   text-decoration: none;
 }
 .qui .qui-icon-label {
@@ -24,21 +22,15 @@
 .qui .qui-icon-caption {
   font-style: normal;
 }
-.qui .size-massive .qui-iconlink-icon {
-  font-size: 3em;
+.qui .qui-iconlink .qui-iconlink-icon {
+  font-size: 2.5em;
 }
-.qui .size-huge .qui-iconlink-icon {
-  font-size: 2.8em;
+.qui .size-huge.qui-iconlink {
+  width: 3.2em;
 }
-.qui .size-big .qui-iconlink-icon {
-  font-size: 2.6em;
+.qui .size-massive.qui-iconlink {
+  width: 3.5em;
 }
-.qui .size-normal .qui-iconlink-icon {
-  font-size: 2.4em;
-}
-.qui .size-small .qui-iconlink-icon {
-  font-size: 2.2em;
-}
-.qui .size-tiny .qui-iconlink-icon {
-  font-size: 2em;
+.qui .qui-btn.is-circular.circular-without-label {
+  border-radius: 50%;
 }

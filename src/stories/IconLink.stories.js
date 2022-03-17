@@ -55,13 +55,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
 
         withColor: {
             table: {
@@ -79,8 +72,6 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     icon: "",
-                    size: "",
-                    position: "left",
                 },
             },
         },
@@ -126,12 +117,6 @@ export default {
                 defaultValue: false,
             },
         },
-        isFluid: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
 
         onClick: {
             table: {
@@ -169,15 +154,16 @@ Default.args = {
 
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "none",
+    asFloated: "inline",
     asPadded: "normal",
-    asAligned: "center",
 
     withLabel: {
         format: "caption",
-        content: "",
+        content: "Home",
     },
-    withIcon: { icon: "fa fa-home" },
+    withIcon: {
+        icon: "fa fa-home",
+    },
     withColor: {
         backgroundColor: "",
         textColor: "",
@@ -197,7 +183,6 @@ Default.args = {
 
     isDisabled: false,
     isHidden: false,
-    isFluid: false,
 };
 Default.parameters = {
     docs: {
@@ -208,10 +193,10 @@ Default.parameters = {
 };
 
 // -------------------------------------------------------------
-// Colored Icon
+// Colored IconLink
 // -------------------------------------------------------------
-export const ColoredIcon = Template.bind({});
-ColoredIcon.args = {
+export const ColoredIconlink = Template.bind({});
+ColoredIconlink.args = {
     ...Default.args,
     withColor: {
         backgroundColor: "orange",
@@ -220,7 +205,7 @@ ColoredIcon.args = {
         hoverTextColor: "orange",
     },
 };
-ColoredIcon.parameters = {
+ColoredIconlink.parameters = {
     docs: {
         description: {
             story: "Use to override the standard colors of the Icon.",
@@ -232,18 +217,18 @@ ColoredIcon.parameters = {
 };
 
 // -------------------------------------------------------------
-// Labelled IconLink
+// Without Labelled IconLink
 // -------------------------------------------------------------
-export const LabelledIcon = Template.bind({});
-LabelledIcon.args = {
+export const WithoutLabelledIconlink = Template.bind({});
+WithoutLabelledIconlink.args = {
     ...Default.args,
     withLabel: {
         format: "caption",
-        content: "Home",
+        content: "",
     },
 };
 
-LabelledIcon.parameters = {
+WithoutLabelledIconlink.parameters = {
     docs: {
         description: {
             story:
@@ -256,29 +241,10 @@ LabelledIcon.parameters = {
 };
 
 // -------------------------------------------------------------
-// Fluid Icon
+// Animated IconLink
 // -------------------------------------------------------------
-export const FluidIcon = Template.bind({});
-FluidIcon.args = {
-    ...Default.args,
-    isFluid: true,
-};
-FluidIcon.parameters = {
-    docs: {
-        description: {
-            story: "Typically used as the bottom of a modal or a container.",
-        },
-    },
-    source: {
-        code: `<IconLink isFluid={true}/>`,
-    },
-};
-
-// -------------------------------------------------------------
-// Animated Icon
-// -------------------------------------------------------------
-export const AnimatedIcon = Template.bind({});
-AnimatedIcon.args = {
+export const AnimatedIconlink = Template.bind({});
+AnimatedIconlink.args = {
     ...Default.args,
     withAnimation: {
         animation: "collapse",
@@ -286,7 +252,7 @@ AnimatedIcon.args = {
         delay: 0,
     },
 };
-AnimatedIcon.parameters = {
+AnimatedIconlink.parameters = {
     docs: {
         description: {
             story:

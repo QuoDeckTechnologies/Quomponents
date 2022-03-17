@@ -60,7 +60,7 @@ describe("IconLink", () => {
         () => {
             expect(component.exists()).toBe(true);
         });
-    it("should render with withColor prop ",
+    it("should render correctly with withColor props ",
         () => {
             component.setProps({
                 withColor: {
@@ -72,14 +72,14 @@ describe("IconLink", () => {
             })
             expect(component.exists()).toBe(true);
         });
-    it("should render correctly with isCircular prop",
+    it("should render correctly with isCircular props",
         () => {
             component.setProps({
                 isCircular: true
             })
             expect(component.exists()).toBe(true);
         });
-    it("should render correctly with withLabel prop",
+    it("should render correctly with withLabel props",
         () => {
             component.setProps({
                 withLabel: {
@@ -90,18 +90,7 @@ describe("IconLink", () => {
             })
             expect(component.exists()).toBe(true);
         });
-    it("should render correctly with isCircular prop",
-        () => {
-            component.setProps({
-                isCircular: true,
-                content: '',
-                withIcon: {
-                    icon: 'fas fa-desktop'
-                }
-            })
-            expect(component.exists()).toBe(true);
-        });
-    it("should render correctly with withColor prop when hovered",
+    it("should render correctly with withColor props when hovered",
         () => {
             const component = renderer.create(<IconLink
                 withColor={{
@@ -117,7 +106,7 @@ describe("IconLink", () => {
                 tree.props.onMouseEnter()
             })
         });
-    it("should render correctly with withColor prop and asEmphasis set to `text` when hovered",
+    it("should render correctly with withColor props and asEmphasis set to `text` when hovered",
         () => {
             const component = renderer.create(<IconLink
                 asEmphasis="text"
@@ -134,7 +123,7 @@ describe("IconLink", () => {
                 tree.props.onMouseEnter()
             })
         });
-    it("should render correctly with withColor prop and asEmphasis set to `outlined` when hovered",
+    it("should render correctly with withColor props and asEmphasis set to `outlined` when hovered",
         () => {
             const component = renderer.create(<IconLink
                 asEmphasis="outlined"
@@ -151,7 +140,7 @@ describe("IconLink", () => {
                 tree.props.onMouseEnter()
             })
         });
-    it("should render correctly with withColor prop and asEmphasis set to `contained` when hovered",
+    it("should render correctly with withColor props and asEmphasis set to `contained` when hovered",
         () => {
             const component = renderer.create(<IconLink
                 asEmphasis="contained"
@@ -186,7 +175,7 @@ describe("IconLink", () => {
                 tree.props.onMouseEnter()
             })
         });
-    it("should render correctly when hovered with translation",
+    it("should render correctly when hovered & withIcon",
         () => {
             const component = renderer.create(<IconLink
                 withIcon={{
@@ -199,7 +188,7 @@ describe("IconLink", () => {
                 tree.props.onMouseDown()
             })
         });
-    it("should render correctly with withTranslation prop", () => {
+    it("should render correctly with withTranslation props", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
@@ -209,7 +198,7 @@ describe("IconLink", () => {
         });
         expect(component.exists()).toBe(true);
     });
-    it("should render correctly with withTranslation prop", () => {
+    it("should render correctly without tgt in withTraslation props", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
