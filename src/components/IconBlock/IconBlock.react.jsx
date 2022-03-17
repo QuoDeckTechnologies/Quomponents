@@ -62,7 +62,9 @@ IconBlock.propTypes = {
     Use to add an icon to the component
     */
     withIcon: PropTypes.shape({
-        name: PropTypes.string
+        name: PropTypes.string,
+        size: PropTypes.string,
+        position: PropTypes.string
     }),
     /**
     Use to define component padding in increasing order
@@ -89,7 +91,7 @@ IconBlock.propTypes = {
 IconBlock.defaultProps = {
     // Component Specific props
     //=======================================
-    
+
 
     // Quommon props
     //=======================================
@@ -132,13 +134,19 @@ function getColors(colors, emphasis, icon, disable) {
     colorStyle.iconColorHandle = emphasis === 'text'
         ? {
             color: disable ? "#666666" : colors?.accentColor,
+            fontSize: icon?.size,
+            position: icon?.position
         }
         : emphasis === 'outlined'
             ? {
                 color: disable ? "#cccccc" : colors?.backgroundColor,
+                fontSize: icon?.size,
+                position: icon?.position
             }
             : {
                 color: disable ? "#666666" : colors?.accentColor,
+                fontSize: icon?.size,
+                position: icon?.position
             }
     return colorStyle;
 }
