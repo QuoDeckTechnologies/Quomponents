@@ -129,6 +129,29 @@ function getColors(colors) {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function ActionMenu(props) {
+    const handelevent = (index) => {
+        if (index === 0) {
+            alert(index);
+        }
+        else if (index === 1) {
+            alert(index);
+        }
+        else if (index === 2) {
+            alert(index);
+        }
+        else if (index === 3) {
+            alert(index);
+        }
+        else if (index === 4) {
+            alert(index);
+        }
+        else if (index === 5) {
+            alert(index);
+        }
+        else {
+            alert(index);
+        }
+    }
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
     //-------------------------------------------------------------------
@@ -154,14 +177,15 @@ export default function ActionMenu(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            {_.map(props.content, (item, index) => {
+            {_.map(props.content, (content, index) => {
                 return (
-                    <div className={`qui-actionmenu-items ${quommonClasses.childClasses}`} key={index} onClick={props.onClick} style={colors.backgroundColors}>
-                        <div className="qui-actionmenu-icon"><i className={`qui-actionmenu-icons ${item.icon}`} style={colors.accentColors}></i></div>
-                        <div className={`qui-actionmenu-titles ${quommonClasses.childClasses}`} style={colors.textColors}>{item.title}</div>
+                    <div className={`qui-actionmenu-items`} onClick={() => handelevent(index)} style={colors.backgroundColors}>
+                        <div className="qui-actionmenu-icon" ><i className={`qui-actionmenu-icons ${content.icon}`} style={colors.accentColors}></i></div>
+                        <div className={`qui-actionmenu-titles `} style={colors.textColors}>{content.title}</div>
                     </div>
                 );
             })}
-        </motion.div>
+
+        </motion.div >
     );
 }
