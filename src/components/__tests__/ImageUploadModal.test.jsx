@@ -37,7 +37,7 @@ describe("ImageUploadModal", () => {
         withTranslation={null}
         isDisabled={false}
         isHidden={false}
-        onClick={() => {}}
+        onSave={() => {}}
       />
     );
   });
@@ -68,6 +68,7 @@ describe("ImageUploadModal", () => {
     component
       .find(".qui-image-upload-field")
       .simulate("change", { target: { files: "xyz" } });
+    component.find('Button').at(2).simulate('click')
     expect(component.exists()).toBe(true);
   });
   it("should render correctly without throwing error when slider is operated", () => {

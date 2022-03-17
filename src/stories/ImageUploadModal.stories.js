@@ -24,6 +24,9 @@ export default {
     isOpen: {
       defaultValue: true,
     },
+    imageQuality: {
+      defaultValue : 50
+    },
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
@@ -70,7 +73,7 @@ export default {
         defaultValue: false,
       },
     },
-    onClick: {
+    onSave: {
       table: {
         category: "Events",
         defaultValue: null,
@@ -112,6 +115,7 @@ Default.args = {
     buttons: ["choose file", "cancel", "save"],
   },
   isOpen: true,
+  imageQuality: 50,
   asVariant: "warning",
   asSize: "tiny",
   withAnimation: {

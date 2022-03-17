@@ -27,6 +27,10 @@ ImageUploadModal.propTypes = {
     Use to define if modal is open
     */
   isOpen: PropTypes.bool.isRequired,
+  /**
+    Use to define image quality of cropped image it must be in the range of `1 to 100` 
+    */
+  imageQuality: PropTypes.number.isRequired,
   //=======================================
   // Quommon props
   //=======================================
@@ -85,9 +89,9 @@ ImageUploadModal.propTypes = {
     */
   isHidden: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
+    imageUploadModal component must have the onSave function passed as props
     */
-  onClick: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
 };
 
 ImageUploadModal.defaultProps = {
@@ -96,6 +100,7 @@ ImageUploadModal.defaultProps = {
   //=======================================
   content: {},
   isOpen: true,
+  imageQuality:50,
   //=======================================
   // Quommon props
   //=======================================
@@ -117,12 +122,12 @@ function getSize(size) {
     return 400;
   }
   if (size === "big") {
-    return 600;
+    return 480;
   }
   if (size === "huge") {
-    return 750;
+    return 560;
   } else {
-    return 900;
+    return 640;
   }
 }
 /**
@@ -137,6 +142,7 @@ export default function ImageUploadModal(props) {
   // 1. useRef hook for file upload
   //-------------------------------------------------------------------
   const fileRef = useRef();
+  const editorRef = useRef()
   //-------------------------------------------------------------------
   // 2. Defining state and variable
   //-------------------------------------------------------------------
@@ -156,6 +162,12 @@ export default function ImageUploadModal(props) {
     let file = e.target.files[0];
     setImage(file);
   };
+  const handleSave = () => {
+    if(image){
+      let image = editorRef.current?.getImage().toDataURL('image/jpeg', (props.imageQuality/100))
+      props.onSave(image)
+    }
+  }
   //-------------------------------------------------------------------
   // 4. Set the classes
   //-------------------------------------------------------------------
@@ -194,7 +206,7 @@ export default function ImageUploadModal(props) {
         className={`qui ${quommonClasses.parentClasses} ${
           openUploadModal ? "" : "qui-upload-image-modal-close"
         }`}
-        style={{ width: width + 80 }}
+        style={{ width: width + 90 }}
       >
         <div
           className={`qui-image-modal-upload-header ${quommonClasses.childClasses}`}
@@ -226,6 +238,7 @@ export default function ImageUploadModal(props) {
           <div className="qui-avatar-canvas">
             <AvatarEditor
               className="qui-image-preview"
+              ref={editorRef}
               width={width}
               height={width / 1.15}
               image={image ? image : defaultImage}
@@ -258,6 +271,7 @@ export default function ImageUploadModal(props) {
               withAnimation={null}
               asEmphasis="contained"
               asFloated="left"
+              onClick={handleSave}
             />
           </div>
         </div>
