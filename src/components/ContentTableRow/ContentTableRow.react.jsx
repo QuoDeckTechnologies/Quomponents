@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
@@ -112,13 +112,25 @@ export default function ContentTableRow(props) {
   //-------------------------------------------------------------------
   // 2. Setting states for file name and checkbox
   //-------------------------------------------------------------------
+  const menuRef = useRef()
   const [name, setName] = useState(content?.name);
   const [isChecked, setIsChecked] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const readerType = content.readerType;
-  useEffect(()=>{
-    setName(content?.name)
-  },[content?.name])
+  useEffect(() => {
+    setName(content?.name);
+  }, [content?.name]);
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (showMenu && !menuRef.current?.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", checkIfClickedOutside);
+    return () => {
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [showMenu]);
   //-------------------------------------------------------------------
   // 6. Getting fileicon
   //-------------------------------------------------------------------
@@ -161,55 +173,57 @@ export default function ContentTableRow(props) {
           maxLength={60}
           onChange={(e) => setName(e.target.value)}
         />
-        <button
-          className="qui-content-menu"
-          onClick={() => setShowMenu((prevState) => !prevState)}
-        >
-          <i className="fas fa-ellipsis-v"></i>
-        </button>
-        {showMenu && (
-          <div className="qui-content-table-row-action-menu">
-            <ActionMenu
-              {...props}
-              content={[
-                {
-                  title: "Open Deck",
-                  icon: "fas fa-book-open",
-                },
-                {
-                  title: "Edit Deck",
-                  icon: "fas fa-edit",
-                },
-                {
-                  title: "Move Deck Up",
-                  icon: "fas fa-chevron-up",
-                },
-                {
-                  title: "Move Deck Down",
-                  icon: "fas fa-chevron-down",
-                },
-                {
-                  title: "Move to Topic",
-                  icon: "fas fa-retweet",
-                },
-                {
-                  title: "Unpublish Deck",
-                  icon: "fas fa-eye-slash",
-                },
-                {
-                  title: "Delete Deck",
-                  icon: "fas fa-trash-alt",
-                },
-              ]}
-              withColor={{ backgroundColor: "white" }}
-              withAnimation={{
-                animation: "slideDown",
-                duration: 0.5,
-                delay: 0,
-              }}
-            />
-          </div>
-        )}
+        <div className="qui-content-table-row-dropdown" ref={menuRef}>
+          <button
+            className="qui-content-menu"
+            onClick={() => setShowMenu((prevState) => !prevState)}
+          >
+            <i className="fas fa-ellipsis-v"></i>
+          </button>
+          {showMenu && (
+            <div className="qui-content-table-row-action-menu">
+              <ActionMenu
+                {...props}
+                content={[
+                  {
+                    title: "Open Deck",
+                    icon: "fas fa-book-open",
+                  },
+                  {
+                    title: "Edit Deck",
+                    icon: "fas fa-edit",
+                  },
+                  {
+                    title: "Move Deck Up",
+                    icon: "fas fa-chevron-up",
+                  },
+                  {
+                    title: "Move Deck Down",
+                    icon: "fas fa-chevron-down",
+                  },
+                  {
+                    title: "Move to Topic",
+                    icon: "fas fa-retweet",
+                  },
+                  {
+                    title: "Unpublish Deck",
+                    icon: "fas fa-eye-slash",
+                  },
+                  {
+                    title: "Delete Deck",
+                    icon: "fas fa-trash-alt",
+                  },
+                ]}
+                withColor={{ backgroundColor: "white" }}
+                withAnimation={{
+                  animation: "slideDown",
+                  duration: 0.5,
+                  delay: 0,
+                }}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </motion.div>
   );

@@ -129,6 +129,36 @@ function getColors(colors) {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function ActionMenu(props) {
+    const handelevent = (index) => {
+        if (index === 0) {
+            //index 0 is for Open Deck
+            return (props.onClick(index));
+        }
+        else if (index === 1) {
+            //index 1 is for Edot Deck 
+            return (props.onClick(index));
+        }
+        else if (index === 2) {
+            //index 2 is for Move Deck Up
+            return (props.onClick(index));
+        }
+        else if (index === 3) {
+            //index 3 is for Move Deck Down
+            return (props.onClick(index));
+        }
+        else if (index === 4) {
+            //index 4 is for Move To Topic
+            return (props.onClick(index));
+        }
+        else if (index === 5) {
+            //index 5 is for Unpublish Deck
+            return (props.onClick(index));
+        }
+        else {
+            //index 6 is for Delete Deck
+            return (props.onClick(index));
+        }
+    }
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
     //-------------------------------------------------------------------
@@ -154,14 +184,15 @@ export default function ActionMenu(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            {_.map(content, (item, index) => {
+            {_.map(props.content, (content, index) => {
                 return (
-                    <div className={`qui-actionmenu-items ${quommonClasses.childClasses}`} key={index} onClick={props.onClick} style={colors.backgroundColors}>
-                        <div className="qui-actionmenu-icon"><i className={`qui-actionmenu-icons ${item.icon}`} style={colors.accentColors}></i></div>
-                        <div className={`qui-actionmenu-titles ${quommonClasses.childClasses}`} style={colors.textColors}>{item.title}</div>
+                    <div className={`qui-actionmenu-items`} onClick={() => handelevent(index)} key={index} style={colors.backgroundColors}>
+                        <div className="qui-actionmenu-icon" ><i className={`qui-actionmenu-icons ${content.icon}`} style={colors.accentColors}></i></div>
+                        <div className={`qui-actionmenu-titles `} style={colors.textColors}>{content.title}</div>
                     </div>
                 );
             })}
-        </motion.div>
+
+        </motion.div >
     );
 }

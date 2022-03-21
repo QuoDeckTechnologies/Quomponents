@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { mount } from "enzyme";
+import { shallow, mount } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -143,13 +143,34 @@ describe("ContentTableRow", () => {
     component.find(".qui-content-checkbox").simulate("click");
     component.find(".qui-content-menu").simulate("click");
   });
+  it("it should render correctly without throwing an error when clicked on checkbox and menu button", () => {
+    // component.find(".qui-content-menu").simulate("click");
+    // component.find(".qui-content-checkbox").simulate("click",{target:'xyz'});
+    const map = {};
+    window.addEventListener = jest.fn((event, cb) => {
+      map[event] = cb;
+    });
+    const component = mount(
+      <ContentTableRow
+        content={{
+          name: "dummy file-name.pdf",
+          readerType: "videck",
+        }}
+        withAnimation={null}
+        isDisabled={false}
+        isHidden={false}
+        onClick={() => {}}
+      />
+    );
+    map.mousedown();
+  });
   it("it should render correctly without throwing an error when input is provided", () => {
     component.find(".qui-content-input").simulate("change", {
       target: { value: "Editted file name" },
     });
   });
-  it("it should render correctly without throwing an error when clicked on menu icon and outside its container", () => {
-    component.find(".qui-content-menu").simulate("click");
-    component.find(".qui-content-menu").simulate("blur");
-  });
+  // it("it should render correctly without throwing an error when clicked on menu icon and outside its container", () => {
+  //   component.find(".qui-content-menu").simulate("click");
+  //   component.find(".qui-content-menu").simulate("blur");
+  // });
 });
