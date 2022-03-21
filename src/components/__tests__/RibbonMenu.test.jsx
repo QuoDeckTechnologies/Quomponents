@@ -6,10 +6,10 @@ import { shallow } from "enzyme";
 // Import Components
 // -------------------------------------
 import RibbonMenu from "../RibbonMenu/RibbonMenu.react";
-import RibbonDesignMenu from "../RibbonMenu/RibbonDesignMenu.react";
-import RibbonHomeMenu from "../RibbonMenu/RibbonHomeMenu.react";
-import RibbonHtmlMenu from "../RibbonMenu/RibbonHtmlMenu.react";
-import RibbonToolMenu from "../RibbonMenu/RibbonToolMenu.react"
+import RibbonDesignMenu from "../RibbonMenu/designMenu/RibbonDesignMenu.react";
+import RibbonHomeMenu from "../RibbonMenu//homeMenu/RibbonHomeMenu.react";
+import RibbonHtmlMenu from "../RibbonMenu/htmlMenu/RibbonHtmlMenu.react";
+import RibbonToolMenu from "../RibbonMenu/toolsMenu/RibbonToolMenu.react"
 
 
 describe("RibbonMenu", () => {

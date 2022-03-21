@@ -5,13 +5,7 @@ export default {
     title: "Design System/RibbonMenu/RibbonMenu",
     component: RibbonMenu,
     argTypes: {
-        content: {
-            table: {
-                defaultValue: {
-                    tab:"html"
-                },
-            },
-        },
+        tab: "",
         asPadded: {
             control: "select",
             options: ["fitted", "compact", "normal", "relaxed"],
@@ -79,9 +73,7 @@ export default {
 const Template = (args) => <RibbonMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        tab:"html"
-    },
+    tab: "html",
     asFloated: "left",
     asPadded: "normal",
     isDisabled: false,

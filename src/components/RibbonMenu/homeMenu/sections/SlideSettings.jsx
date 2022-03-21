@@ -1,0 +1,53 @@
+import React , { useState }from "react";
+
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "../../../../common/stylesheets/common.css";
+import "../../RibbonMenu.scss";
+import "../RibbonHomeMenu.scss";
+import "../../../../common/stylesheets/overrule.scss";
+
+import IconLink from "../../../Buttons/IconLink/IconLink.react";
+
+export default function SlideSettings(props) {
+    const [isBackChecked, setBakChecked] = useState(false);
+    const [isNextChecked, setNextChecked] = useState(false);
+
+    function toggleBackChecked() {
+        setBakChecked(prevState => !prevState)
+    }
+    function toggleNextChecked() {
+        setNextChecked(prevState => !prevState)
+    }
+
+
+
+    // ========================= Render Function =================================
+
+    return (
+<div className="settings-section">
+                <div className="settings-section-child-container">
+                    <div className="settings-section-child">
+                        <div className="settings-section-right-content">
+                            <IconLink
+                                {...props}
+                                asSize={'tiny'}
+                                withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
+                                withIcon={{ icon: `file-right-icons ${isBackChecked ? "far fa-check-square" : "far fa-square"}` }}
+                                onClick={() => toggleBackChecked()} />
+                            <div className="ribbon-label" onClick={() => toggleBackChecked()}>Enable Back Arrow</div>
+                        </div>
+                        <div className="settings-section-right-content">
+                            <IconLink
+                                {...props}
+                                asSize={'tiny'}
+                                withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
+                                withIcon={{ icon: `file-right-icons ${isNextChecked ? "far fa-check-square" : "far fa-square"}` }}
+                                onClick={() => toggleNextChecked()} />
+                            <div className="ribbon-label" onClick={() => toggleNextChecked()}>Enable Next Arrow</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="label-file">Settings</div>
+            </div>
+    );
+}

@@ -10,10 +10,10 @@ import "../../common/stylesheets/common.css";
 import "./RibbonMenu.scss";
 import "../../common/stylesheets/overrule.scss";
 
-import RibbonToolMenu from "./RibbonToolMenu.react";
-import RibbonDesignMenu from "./RibbonDesignMenu.react"
-import RibbonHomeMenu from "./RibbonHomeMenu.react";
-import RibbonHtmlMenu from "./RibbonHtmlMenu.react";
+import RibbonToolMenu from "./toolsMenu/RibbonToolMenu.react";
+import RibbonDesignMenu from "./designMenu/RibbonDesignMenu.react"
+import RibbonHomeMenu from "./homeMenu/RibbonHomeMenu.react";
+import RibbonHtmlMenu from "./htmlMenu/RibbonHtmlMenu.react";
 
 RibbonMenu.propTypes = {
     //=======================================
@@ -23,9 +23,7 @@ RibbonMenu.propTypes = {
     /**
     RibbonMenu tabs data should be passed in content field and it is required field  
     */
-    content: PropTypes.shape({
-        tab: PropTypes.string,
-    }).isRequired,
+    tab: PropTypes.string,
 
     //=======================================
     // Quommon props
@@ -60,7 +58,7 @@ RibbonMenu.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: [],
+    tab: "html",
     //=======================================
     // Quommon props
     //=======================================
@@ -115,7 +113,7 @@ export default function RibbonMenu(props) {
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses} ribbon-menu`}>
-                {ribbonMenu(props.content?.tab)}
+                {ribbonMenu(props.tab)}
             </div>
         </div>
     );

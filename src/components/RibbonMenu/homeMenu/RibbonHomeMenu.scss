@@ -1,0 +1,102 @@
+
+.qui .ribbon-menu-home-container{
+    width: 999px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 15px 9px 10px 20px;
+}
+
+
+//SlideSection Styling Definitions
+.qui .slide-section{
+    display: flex;
+    flex-direction: column;
+}
+.qui .slide-section-child-container{
+    width: 210px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+.qui .slide-section-child{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7em;
+}
+
+.qui .slide-section-child.upload {
+    width: 100px;
+}
+.qui .slide-section-right-content {
+    margin-left: 10px;
+    width: 110px;
+}
+.qui .slide-section-right-content{
+    width: 130px;
+    display: flex;
+    align-items: center;
+    font-size: 0.6em;
+    padding: 0.1em 0;
+}
+.qui .slide-label {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    color: #666666;
+    margin-top: 3px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+//SettingSection Styling Definitions
+.qui .settings-section{
+    display: flex;
+    flex-direction: column;
+}
+.qui .settings-section-child-container{
+    width: 149px;
+    height: 64px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #f5f5f5;
+    box-shadow: 0px 1px 4px rgba(119, 110, 110, 0.25);
+    border-radius: 5px;
+}
+
+
+//ViewSection Styling Definitions
+.qui .view-section{
+    display: flex;
+    flex-direction: column;
+}
+.qui .view-section-child {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7em;
+}
+
+.qui .view-section-child-container {
+    width: 264px;
+    padding: 0 10px;
+    height: 64px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #f5f5f5;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}

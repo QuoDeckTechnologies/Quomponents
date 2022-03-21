@@ -6,7 +6,7 @@ import IconLink from "../Buttons/IconLink/IconLink.react";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import RibbonHomeMenu from "../RibbonMenu/RibbonHomeMenu.react";
+import RibbonHomeMenu from "../RibbonMenu/homeMenu/RibbonHomeMenu.react";
 
 
 

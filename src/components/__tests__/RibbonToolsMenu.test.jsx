@@ -5,7 +5,7 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import RibbonToolsMenu from "../RibbonMenu/RibbonToolsMenu.react";
+import RibbonToolsMenu from "../RibbonMenu/toolsMenu/RibbonToolMenu.react";
 
 
 
