@@ -154,11 +154,10 @@ export default function ActionMenu(props) {
             //index 5 is for Unpublish Deck
             return (props.onClick(index));
         }
-        else if (index === 6) {
+        else {
             //index 6 is for Delete Deck
             return (props.onClick(index));
         }
-
     }
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
@@ -187,7 +186,7 @@ export default function ActionMenu(props) {
         >
             {_.map(props.content, (content, index) => {
                 return (
-                    <div className={`qui-actionmenu-items`} onClick={() => handelevent(index)} style={colors.backgroundColors}>
+                    <div className={`qui-actionmenu-items`} onClick={() => handelevent(index)} key={index} style={colors.backgroundColors}>
                         <div className="qui-actionmenu-icon" ><i className={`qui-actionmenu-icons ${content.icon}`} style={colors.accentColors}></i></div>
                         <div className={`qui-actionmenu-titles `} style={colors.textColors}>{content.title}</div>
                     </div>
