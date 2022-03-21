@@ -1,29 +1,25 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
-
+import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import {
     getQuommons,
 } from "../../../common/javascripts/helpers";
-
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./BannerCarousel.scss";
+import "./HtmlCarousel.scss";
 import "../../../common/stylesheets/overrule.scss";
-
 import BannerCard from "../BannerCard/BannerCard.react";
 
-BannerCarousel.propTypes = {
+HtmlCarousel.propTypes = {
     //=======================================
-    // Component Specific props
+    // Quommon props
     //=======================================
     /**
-    BannerCarousel data should be passed in content field and it is required field
+    HtmlCarousel data should be passed in content field and it is required field
     */
     content: PropTypes.arrayOf(PropTypes.shape({
         image: PropTypes.string,
@@ -31,35 +27,35 @@ BannerCarousel.propTypes = {
             "new",
             "premium",
             "restricted",
-            "free",
-            ""
+            "free"
         ]),
-        header: PropTypes.string,
         content: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
-
-
+    /**
+    Button component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 };
-
-BannerCarousel.defaultProps = {
+HtmlCarousel.defaultProps = {
     // Component Specific props
     //=======================================
     content: [],
 };
-
 /**
 ## Notes
-- The design system used for this component is Material UI (@mui/material)
+- The design system used for this component is Slick-slider ("react-slick")
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
-export default function BannerCarousel(props) {
+export default function HtmlCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
-    let quommonClasses = getQuommons(props, "banner-carousel");
+    let quommonClasses = getQuommons(props, "html-carousel");
+    //-------------------------------------------------------------------
+    // 4. Get animation of the component
+    //-------------------------------------------------------------------
 
     var settings = {
         dots: true,
@@ -72,29 +68,36 @@ export default function BannerCarousel(props) {
         infinite: true,
         autoplay: true,
         pauseOnHover: true,
-        centerPadding: "7.5%",
+        centerPadding: "0%",
         swipeToSlide: true,
     };
     // ========================= Render Function =================================
-
     return (
-        <div className={`qui ${quommonClasses.parentClasses}`}>
+        <motion.div
+            className={`qui ${quommonClasses.parentClasses}`}
+        >
             <Slider ref={sliderRef} {...settings}>
                 {_.map(content, (slide, index) => {
                     return (
-                        <div className="qui-slide-container"
-                            key={"sliderData-" + index + Math.random()}
-                        >
-                            <div
-                                key={"slider-" + index + Math.random()}
-                                className={`qui-slide`}
-                            >
-                                <BannerCard {...slide.props} content={slide} onClick={props.onClick}/>
+                        <div className="qui-html-slide-container"
+                            key={"slider-" + index + Math.random()}>
+                            <div className={`qui-html-slide`}>
+                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
                             </div>
                         </div>
                     );
                 })}
             </Slider>
-        </div>
+            <div className="qui-html-slick-arrows">
+                <div className="qui-html-slick-prev"
+                    onClick={() => sliderRef.current?.slickPrev()}>
+                    <i className="fas fa-arrow-alt-circle-left"></i>
+                </div>
+                <div className="qui-html-slick-next"
+                    onClick={() => sliderRef.current?.slickNext()}>
+                    <i className="fas fa-arrow-alt-circle-right"></i>
+                </div>
+            </div>
+        </motion.div>
     );
 }
