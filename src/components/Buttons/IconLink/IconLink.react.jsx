@@ -35,6 +35,7 @@ IconLink.propTypes = {
         "secondary",
         "success",
         "warning",
+        "error"
     ]),
     /**
     Use to define component text size in increasing order

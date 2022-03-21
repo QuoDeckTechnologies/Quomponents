@@ -29,7 +29,7 @@ export default {
         },
         asVariant: {
             control: "select",
-            options: ["primary", "secondary", "success", "warning"],
+            options: ["primary", "secondary", "success", "warning", "error"],
             table: {
                 category: "as-Flags",
             },

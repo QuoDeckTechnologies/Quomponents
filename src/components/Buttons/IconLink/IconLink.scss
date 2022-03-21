@@ -3,8 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 3.5em;
-  height: 3.5em;
+  min-width: 3.5em;
+  min-height: 3.5em;
 }
 .qui .qui-btn.is-circular {
   border-radius: 10%;
