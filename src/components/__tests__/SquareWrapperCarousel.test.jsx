@@ -11,12 +11,7 @@ import SquareWrapperCarousel from '../Carousel/SquareWrapperCarousel/SquareWrapp
 
 describe('SquareWrapperCarousel', () => {
     let component, content;
-   
-    let colors = {
-        backgroundColor: "red",
-        accentColor: "green",
-        textColor: "blue",
-    }
+
     content = [{
         image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
         tag: "new",
@@ -36,11 +31,11 @@ describe('SquareWrapperCarousel', () => {
             />
         );
     });
-    it("should render correctly without throwing error",
+    test("should render correctly without throwing error",
         () => {
             expect(component.exists()).toBe(true);
         });
-    it('should pass conditional true when the slide is selected {true} from the props ', () => {
+    test('should pass conditional true when the slide is selected {true} from the props ', () => {
         component.setProps({
             content: [{
                 image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",

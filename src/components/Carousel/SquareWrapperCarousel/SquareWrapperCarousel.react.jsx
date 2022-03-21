@@ -64,15 +64,16 @@ SquareWrapperCarousel.defaultProps = {
 };
 /**
 ## Notes
-- The design system used for this component is Material UI (@mui/material)
+- The design system used for this component is Slick-slider ("react-slick")
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
+- Set true or false to the selected prop for select/deselect the slide .
 **/
 export default function SquareWrapperCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
-    let quommonClasses = getQuommons(props, "SquareWrapper-carousel");
+    let quommonClasses = getQuommons(props, "square-wrapper-carousel");
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -102,9 +103,9 @@ export default function SquareWrapperCarousel(props) {
             <Slider ref={sliderRef} {...settings}>
                 {_.map(content, (slide, index) => {
                     return (
-                        <div className="qui-SquareWrapper-slide-container qui-banner"
+                        <div className="qui-square-wrapper-slide-container qui-banner"
                             key={"slider-" + index + Math.random()}>
-                            <div className={`qui-SquareWrapper-slide `}>
+                            <div className={`qui-square-wrapper-slide `}>
                                 {slide.selected && <div className="qui-mid-circle" >
                                     <div className="qui-square-wrapper-checkbox" >
                                         <i className={"fas fa-check-square"}>

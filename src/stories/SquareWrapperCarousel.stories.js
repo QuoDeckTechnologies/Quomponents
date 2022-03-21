@@ -40,10 +40,10 @@ export default {
         ),
     ],
     parameters: {
-        componentSubheader: "Displays a banner carousel.",
+        componentSubheader: "Displays a SquareWrapper carousel.",
         a11y: { disable: true },
         docs: {
-            iframeHeight: 600,
+            iframeHeight: 850,
         }
     },
 };
@@ -113,7 +113,7 @@ SquareWrapperCarouselWithoutBox.args = {
 SquareWrapperCarouselWithoutBox.parameters = {
     docs: {
         description: {
-            story: "We can see the Square Carousel without any Box Header and Content",
+            story: "We can see the SquareWrapper Carousel without any header box",
         },
         source: {
             code: `<SquareWrapperCarousel {...${JSON.stringify(SquareWrapperCarouselWithoutBox.args, null, 2)}}/>`,
@@ -142,7 +142,7 @@ SquareWrapperCarouselWithoutTag.args = {
 SquareWrapperCarouselWithoutTag.parameters = {
     docs: {
         description: {
-            story: "We can see the Square Carousel without any Tag",
+            story: "We can see the SquareWrapper Carousel without any Tag",
         },
         source: {
             code: `<SquareWrapperCarousel {...${JSON.stringify(SquareWrapperCarouselWithoutTag.args, null, 2)}}/>`,
@@ -175,9 +175,9 @@ AnimatedSquareWrapperCarousel.parameters = {
 };
 
 // -------------------------------------------------------------
-// MultiplePortraitCarousels
+// MultipleSquareWrapperCarousels
 // -------------------------------------------------------------
-const MultiplePortraitCarouselsTemplate = (args) => {
+const MultipleSquareWrapperCarouselsTemplate = (args) => {
     const baseObj = {
         ...Object.assign({}, Default.args, args, {
             content: [{
@@ -271,14 +271,11 @@ const MultiplePortraitCarouselsTemplate = (args) => {
 };
 
 
-export const MultiplePortraitCarousels = MultiplePortraitCarouselsTemplate.bind({});
-MultiplePortraitCarousels.parameters = {
+export const MultipleSquareWrapperCarousels = MultipleSquareWrapperCarouselsTemplate.bind({});
+MultipleSquareWrapperCarousels.parameters = {
     docs: {
         description: {
-            story: "5 variants are supported. Use as per purpose noted here.",
-        },
-        source: {
-            code: `<SquareWrapperCarousel "/>`,
+            story: "3 variants with or without the selected slide, tag or content",
         },
     },
 };

@@ -43,7 +43,7 @@ export default {
         },
     },
     parameters: {
-        componentSubheader: "Displays a banner carousel.",
+        componentSubheader: "Displays a Landscape carousel.",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -112,7 +112,7 @@ LandscapeCarouselWithoutBox.args = {
 LandscapeCarouselWithoutBox.parameters = {
     docs: {
         description: {
-            story: "We can see the Square Carousel without any Box Header and Content",
+            story: "We can see the landscape Carousel without any header box",
         },
         source: {
             code: `<LandscapeCarousel {...${JSON.stringify(LandscapeCarouselWithoutBox.args, null, 2)}}/>`,
@@ -143,7 +143,7 @@ LandscapeCarouselWithoutTag.args = {
 LandscapeCarouselWithoutTag.parameters = {
     docs: {
         description: {
-            story: "We can see the Square Carousel without any Tag",
+            story: "We can see the Landscape Carousel without any Tag",
         },
         source: {
             code: `<LandscapeCarousel {...${JSON.stringify(LandscapeCarouselWithoutTag.args, null, 2)}}/>`,
@@ -280,10 +280,7 @@ export const MultipleLandscapeCarousels = MultipleLandscapeCarouselsTemplate.bin
 MultipleLandscapeCarousels.parameters = {
     docs: {
         description: {
-            story: "5 variants are supported. Use as per purpose noted here.",
-        },
-        source: {
-            code: `<LandscapeCarousel "/>`,
+            story: "3 variants with or without the selected slide, tag or content",
         },
     },
 };

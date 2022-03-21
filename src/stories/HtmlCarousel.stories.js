@@ -30,7 +30,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubheader: "Displays a banner carousel.",
+        componentSubheader: "Displays a Html carousel.",
         a11y: { disable: true },
         docs: {
             iframeHeight: 800,
@@ -114,7 +114,7 @@ HtmlCarouselWithoutBox.args = {
 HtmlCarouselWithoutBox.parameters = {
     docs: {
         description: {
-            story: "We can see the Square Carousel without any Box Header and Content",
+            story: "We can see the Html Carousel without any header box",
         },
         source: {
             code: `<HtmlCarousel {...${JSON.stringify(HtmlCarouselWithoutBox.args, null, 2)}}/>`,
@@ -155,7 +155,7 @@ HtmlCarouselWithoutTag.args = {
 HtmlCarouselWithoutTag.parameters = {
     docs: {
         description: {
-            story: "We can see the Square Carousel without any Tag",
+            story: "We can see the Html Carousel without any Tag",
         },
         source: {
             code: `<HtmlCarousel {...${JSON.stringify(HtmlCarouselWithoutTag.args, null, 2)}}/>`,
@@ -304,10 +304,7 @@ export const MultipleHtmlCarousels = MultipleHtmlCarouselsTemplate.bind({});
 MultipleHtmlCarousels.parameters = {
     docs: {
         description: {
-            story: "5 variants are supported. Use as per purpose noted here.",
-        },
-        source: {
-            code: `<HtmlCarousel "/>`,
+            story: "3 variants with or without the check, tag and content.",
         },
     },
 };

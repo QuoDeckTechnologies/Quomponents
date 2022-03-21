@@ -1,8 +1,5 @@
 import React from "react";
 import PortraitCarousel from "../components/Carousel/PortraitCarousel/PortraitCarousel.react";
-import HtmlCarousel from "../components/Carousel/HtmlCarousel/HtmlCarousel.react";
-import LandscapeCarousel from "../components/Carousel/LandscapeCarousel/LandscapeCarousel.react";
-import SquareWrapperCarousel from "../components/Carousel/SquareWrapperCarousel/SquareWrapperCarousel.react";
 export default {
     title: "Design System/Carousel/PortraitCarousel",
     component: PortraitCarousel,
@@ -110,7 +107,7 @@ PortraitCarouselWithoutBox.args = {
 PortraitCarouselWithoutBox.parameters = {
     docs: {
         description: {
-            story: "We can see the Square Carousel without any Box Header and Content",
+            story: "We can see the Portrait Carousel without any header box",
         },
         source: {
             code: `<PortraitCarousel {...${JSON.stringify(PortraitCarouselWithoutBox.args, null, 2)}}/>`,
@@ -141,7 +138,7 @@ PortraitCarouselWithoutTag.args = {
 PortraitCarouselWithoutTag.parameters = {
     docs: {
         description: {
-            story: "We can see the Square Carousel without any Tag",
+            story: "We can see the Portrait Carousel without any Tag",
         },
         source: {
             code: `<PortraitCarousel {...${JSON.stringify(PortraitCarouselWithoutTag.args, null, 2)}}/>`,
@@ -276,10 +273,7 @@ export const MultiplePortraitCarousels = MultiplePortraitCarouselsTemplate.bind(
 MultiplePortraitCarousels.parameters = {
     docs: {
         description: {
-            story: "5 variants are supported. Use as per purpose noted here.",
-        },
-        source: {
-            code: `<PortraitCarousel "/>`,
+            story: "3 variants with or without the check, tag and content.",
         },
     },
 };
