@@ -31,11 +31,11 @@ describe('SquareWrapperCarousel', () => {
             />
         );
     });
-    test("should render correctly without throwing error",
+    it("should render correctly without throwing error",
         () => {
             expect(component.exists()).toBe(true);
         });
-    test('should pass conditional true when the slide is selected {true} from the props ', () => {
+    it('should pass conditional true when the slide is selected {true} from the props ', () => {
         component.setProps({
             content: [{
                 image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
@@ -52,11 +52,11 @@ describe('SquareWrapperCarousel', () => {
             }]
         })
     });
-    test('should render and handle click event slickPrev on previous arrows', () => {
+    it('should render and handle click event slickPrev on previous arrows', () => {
         const wrapper = shallow(<SquareWrapperCarousel onClick={() => console.log("Testing SlickPrev")} />);
         wrapper.find(".qui-square-wrapper-slick-prev").simulate('click');
     });
-    test('should render and handle click event slickNext on next arrow', () => {
+    it('should render and handle click event slickNext on next arrow', () => {
         const wrapper = shallow(<SquareWrapperCarousel onClick={() => console.log("Testing SlickNext")} />);
         wrapper.find(".qui-square-wrapper-slick-next").simulate('click');
     });

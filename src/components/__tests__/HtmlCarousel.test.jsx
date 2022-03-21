@@ -30,15 +30,15 @@ describe('HtmlCarousel', () => {
             />
         );
     });
-    test("should render correctly without throwing error",
+    it("should render correctly without throwing error",
         () => {
             expect(component.exists()).toBe(true);
         });
-    test('should render and handle click event slickPrev on previous arrows', () => {
+    it('should render and handle click event slickPrev on previous arrows', () => {
         const wrapper = shallow(<HtmlCarousel onClick={() => console.log("Testing SlickPrev")} />);
         wrapper.find(".qui-html-slick-prev").simulate('click');
     });
-    test('should render and handle click event slickNext', () => {
+    it('should render and handle click event slickNext', () => {
         const wrapper = shallow(<HtmlCarousel onClick={() => console.log("Testing SlickNext")} />);
         wrapper.find(".qui-html-slick-next").simulate('click');
     });

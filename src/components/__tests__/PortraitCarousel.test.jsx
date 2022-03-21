@@ -26,11 +26,11 @@ describe('PortraitCarousel', () => {
             />
         );
     });
-    test("should render correctly without throwing error",
+    it("should render correctly without throwing error",
         () => {
             expect(component.exists()).toBe(true);
         });
-    test('should pass conditional true when the slide is selected {true} from the props ', () => {
+    it('should pass conditional true when the slide is selected {true} from the props ', () => {
         component.setProps({
             content: [{
                 image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
@@ -54,11 +54,11 @@ describe('PortraitCarousel', () => {
         })
         expect(component.find(".qui-portrait-checkbox").props().children.props.className).toBe("fas fa-check-square")
     });
-    test('should render and handle click event slickPrev on previous arrows', () => {
+    it('should render and handle click event slickPrev on previous arrows', () => {
         const wrapper = shallow(<PortraitCarousel onClick={() => console.log("Testing SlickPrev")} />);
         wrapper.find(".qui-portrait-slick-prev").simulate('click');
     });
-    test('should render and handle click event slickNext on next arrow', () => {
+    it('should render and handle click event slickNext on next arrow', () => {
         const wrapper = shallow(<PortraitCarousel onClick={() => console.log("Testing slickNext")} />);
         wrapper.find(".qui-portrait-slick-next").simulate('click');
     });
