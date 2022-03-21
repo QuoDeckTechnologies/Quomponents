@@ -68,7 +68,7 @@ describe("ImageUploadModal", () => {
     component
       .find(".qui-image-upload-field")
       .simulate("change", { target: { files: "xyz" } });
-    component.find('Button').at(2).simulate('click')
+    component.find("Button").at(2).simulate("click");
     expect(component.exists()).toBe(true);
   });
   it("should render correctly without throwing error when slider is operated", () => {
@@ -79,40 +79,20 @@ describe("ImageUploadModal", () => {
     component.find("ArcMenu").simulate("click");
     expect(component.exists()).toBe(true);
   });
+  it("should render correctly without throwing error when window is resized", () => {
+    global.innerWidth = 200;
+    global.dispatchEvent(new Event("resize"));
+    expect(component.exists()).toBe(true);
+  });
+  it("should render correctly without throwing error when window is resized to larger viewport", () => {
+    global.innerWidth = 1200;
+    global.dispatchEvent(new Event("resize"));
+    expect(component.exists()).toBe(true);
+  });
   it("should render correctly without throwing error when clicked on upload button", () => {
     component.find("Button").at(0).simulate("click");
     component.find("Button").at(1).simulate("click");
     component.find("Button").at(2).simulate("click");
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly without throwing error when asSize prop is tiny", () => {
-    component.setProps({
-      asSize: "tiny",
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly without throwing error when asSize prop is small", () => {
-    component.setProps({
-      asSize: "small",
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly without throwing error when asSize prop is big", () => {
-    component.setProps({
-      asSize: "big",
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly without throwing error when asSize prop is huge", () => {
-    component.setProps({
-      asSize: "huge",
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly without throwing error when asSize prop is massive", () => {
-    component.setProps({
-      asSize: "massive",
-    });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly without throwing error with translation", () => {

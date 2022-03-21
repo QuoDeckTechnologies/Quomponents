@@ -5,7 +5,11 @@ const dictionary = JSON.stringify({
   hi: {
     imageuploadmodal: {
       header: "तस्वीर अपलोड करें",
-      buttons: ["फाइलें चुनें", "रद्द करें", "स्वीकार"],
+      buttons: {
+        chooseFile: "फाइलें चुनें",
+        cancel: "रद्द करें",
+        save: "स्वीकार",
+      },
     },
   },
 });
@@ -14,29 +18,15 @@ export default {
   title: "Design System/ImageUploadModal/ImageUploadModal",
   component: ImageUploadModal,
   argTypes: {
-    content: {
-      table: {
-        defaultValue: {
-          header: "Upload Image",
-        },
-      },
-    },
     isOpen: {
       defaultValue: true,
     },
     imageQuality: {
-      defaultValue : 50
+      defaultValue: 50,
     },
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asSize: {
-      control: "select",
-      options: ["tiny", "small", "normal", "big", "huge", "massive"],
       table: {
         category: "as-Flags",
       },
@@ -110,14 +100,9 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    header: "Upload Image",
-    buttons: ["choose file", "cancel", "save"],
-  },
   isOpen: true,
   imageQuality: 50,
   asVariant: "warning",
-  asSize: "tiny",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,

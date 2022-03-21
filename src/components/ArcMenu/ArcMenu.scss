@@ -100,15 +100,16 @@
 }
 .qui .size-normal {
   .qui-arc {
-    height: 3.2em;
-    width: 3.2em;
+    height: 2.8em;
+    width: 2.8em;
   }
   .qui-arc-menu-button {
-    height: 2.3em;
-    width: 2.3em;
+    height: 2.6em;
+    width: 2.6em;
+    transform: translate(-20%, 15%);
   }
   .qui-arc-menu-button i {
-    font-size: 1.2em;
+    font-size: 1.4em;
   }
 }
 .qui .size-big {
@@ -203,15 +204,7 @@
   }
 }
 @media only screen and (min-width: 481px) {
-  .qui-arc-menu {
-    font-size: 2em;
-  }
   .qui .qui-arc .qui-arc-menu-button {
     box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.32);
-  }
-}
-@media only screen and (min-width: 769px) {
-  .qui-arc-menu {
-    font-size: 1.5em;
   }
 }

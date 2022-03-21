@@ -18,12 +18,6 @@ ImageUploadModal.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    Use to define content of the component
-    */
-  content: PropTypes.shape({
-    header: PropTypes.string,
-  }),
-  /**
     Use to define if modal is open
     */
   isOpen: PropTypes.bool.isRequired,
@@ -43,17 +37,6 @@ ImageUploadModal.propTypes = {
     "success",
     "warning",
     "error",
-  ]),
-  /**
-    Use to define component size in increasing order
-    */
-  asSize: PropTypes.oneOf([
-    "tiny",
-    "small",
-    "normal",
-    "big",
-    "huge",
-    "massive",
   ]),
   /**
     Use to define the entry animation of the component
@@ -98,38 +81,17 @@ ImageUploadModal.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
   isOpen: true,
-  imageQuality:50,
+  imageQuality: 50,
   //=======================================
   // Quommon props
   //=======================================
   asVariant: "primary",
-  asSize: "normal",
   withAnimation: null,
   withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
-function getSize(size) {
-  if (size === "tiny") {
-    return 240;
-  }
-  if (size === "small") {
-    return 320;
-  }
-  if (size === "normal") {
-    return 400;
-  }
-  if (size === "big") {
-    return 480;
-  }
-  if (size === "huge") {
-    return 560;
-  } else {
-    return 640;
-  }
-}
 /**
 ## Notes
 - The design system used for this component is Fontawesome Icon
@@ -142,13 +104,14 @@ export default function ImageUploadModal(props) {
   // 1. useRef hook for file upload
   //-------------------------------------------------------------------
   const fileRef = useRef();
-  const editorRef = useRef()
+  const editorRef = useRef();
   //-------------------------------------------------------------------
   // 2. Defining state and variable
   //-------------------------------------------------------------------
   const [zoom, setZoom] = useState(10);
   const [image, setImage] = useState(null);
   const [openUploadModal, setOpenUploadModal] = useState(props.isOpen);
+  const [width, setWidth] = useState(window.innerWidth > 1023 ? 440 : 240);
   useEffect(() => {
     setOpenUploadModal(props.isOpen);
   }, [props.isOpen]);
@@ -163,11 +126,13 @@ export default function ImageUploadModal(props) {
     setImage(file);
   };
   const handleSave = () => {
-    if(image){
-      let image = editorRef.current?.getImage().toDataURL('image/jpeg', (props.imageQuality/100))
-      props.onSave(image)
+    if (image) {
+      let image = editorRef.current
+        ?.getImage()
+        .toDataURL("image/jpeg", props.imageQuality / 100);
+      props.onSave(image);
     }
-  }
+  };
   //-------------------------------------------------------------------
   // 4. Set the classes
   //-------------------------------------------------------------------
@@ -175,7 +140,6 @@ export default function ImageUploadModal(props) {
   //-------------------------------------------------------------------
   // 5. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
-  let imageModalContent = props.content;
   let tObj = null;
   if (
     props.withTranslation?.lang &&
@@ -183,14 +147,17 @@ export default function ImageUploadModal(props) {
     props.withTranslation.lang !== "en"
   ) {
     tObj = getTranslation(props.withTranslation);
-    if (tObj) {
-      imageModalContent = tObj;
-    }
   }
   //-------------------------------------------------------------------
   // 6. Get width of the editor
   //-------------------------------------------------------------------
-  const width = getSize(props.asSize);
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1023) {
+      setWidth(480);
+    } else {
+      setWidth(240);
+    }
+  });
   // ========================= Render Function =================================
   return (
     <Modal
@@ -203,15 +170,13 @@ export default function ImageUploadModal(props) {
       }}
     >
       <div
-        className={`qui ${quommonClasses.parentClasses} ${
-          openUploadModal ? "" : "qui-upload-image-modal-close"
-        }`}
-        style={{ width: width + 90 }}
+        className={`qui ${quommonClasses.parentClasses}`}
+        style={{ width: width }}
       >
         <div
           className={`qui-image-modal-upload-header ${quommonClasses.childClasses}`}
         >
-          <h2>{imageModalContent.header}</h2>
+          <h2>{tObj ? tObj.header : "Upload Image"}</h2>
         </div>
         <div className={`qui-image-cropper ${quommonClasses.childClasses}`}>
           <div className="qui-image-upload-button">
@@ -225,7 +190,7 @@ export default function ImageUploadModal(props) {
               />
               <Button
                 {...props}
-                content={imageModalContent.buttons[0]}
+                content={tObj ? tObj.buttons.chooseFile : "choose file"}
                 withTranslation={null}
                 withAnimation={null}
                 asEmphasis="outlined"
@@ -256,7 +221,7 @@ export default function ImageUploadModal(props) {
             <Button
               {...props}
               asSize="normal"
-              content={imageModalContent.buttons[1]}
+              content={tObj ? tObj.buttons.cancel : "cancel"}
               asEmphasis="text"
               asFloated="left"
               withTranslation={null}
@@ -266,7 +231,7 @@ export default function ImageUploadModal(props) {
             <Button
               {...props}
               asSize="normal"
-              content={imageModalContent.buttons[2]}
+              content={tObj ? tObj.buttons.save : "save"}
               withTranslation={null}
               withAnimation={null}
               asEmphasis="contained"
@@ -278,6 +243,7 @@ export default function ImageUploadModal(props) {
         <ArcMenu
           {...props}
           content={{}}
+          asSize="normal"
           isCloseButton={true}
           onClick={() => {
             setOpenUploadModal(false);
