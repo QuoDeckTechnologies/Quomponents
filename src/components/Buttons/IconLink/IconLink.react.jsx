@@ -6,7 +6,6 @@ import {
     getTranslation,
     getAnimation,
 } from "../../../common/javascripts/helpers";
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./IconLink.scss";
@@ -23,7 +22,7 @@ IconLink.propTypes = {
     Use for rounded corners or circular icon IconLink 
     */
     isCircular: PropTypes.bool,
-    
+
     //=======================================
     // Quommon props
     //=======================================
@@ -36,6 +35,7 @@ IconLink.propTypes = {
         "secondary",
         "success",
         "warning",
+        "error"
     ]),
     /**
     Use to define component text size in increasing order
@@ -57,15 +57,10 @@ IconLink.propTypes = {
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
-    /**
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
         textColor: PropTypes.string,
         hoverBackgroundColor: PropTypes.string,
         hoverTextColor: PropTypes.string,
@@ -82,8 +77,6 @@ IconLink.propTypes = {
     withLabel: PropTypes.shape({
         format: PropTypes.oneOf(["label", "caption", "popover"]),
         content: PropTypes.string,
-        textColor: PropTypes.string,
-        hoverTextColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -119,10 +112,6 @@ IconLink.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    Use to toggle the component taking the full width of the parent container
-    */
-    isFluid: PropTypes.bool,
-    /**
     IconLink component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
@@ -140,8 +129,7 @@ IconLink.defaultProps = {
     asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
-    asFloated: "none",
-    asAligned: "center",
+    asFloated: "inline",
 
     withColor: null,
     withIcon: null,
@@ -150,7 +138,6 @@ IconLink.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
-    isFluid: false,
 };
 
 function getLabel(labelObj, position) {
@@ -204,7 +191,6 @@ function getColors(colors, emphasis, hovered) {
             }
         }
     }
-
     return colorStyle;
 }
 /**
@@ -227,6 +213,10 @@ export default function IconLink(props) {
     if (props.isCircular)
         quommonClasses.childClasses += ` is-circular`;
 
+    if (props.withLabel?.content == null || props.withLabel?.content === "") {
+        quommonClasses.childClasses += ` circular-without-label`;
+    };
+
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
     //-------------------------------------------------------------------
     // 2. Set the component colors
@@ -236,7 +226,6 @@ export default function IconLink(props) {
     // 3. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
     let labelContent = Object.assign({}, props.withLabel);
-    let iconLabel = null;
     let tObj = null;
     if (
         props.withTranslation?.lang &&
@@ -244,7 +233,6 @@ export default function IconLink(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        iconLabel = tObj.content;
         if (labelContent && tObj?.label) labelContent.content = tObj.label;
     }
     //-------------------------------------------------------------------
@@ -263,30 +251,24 @@ export default function IconLink(props) {
             onMouseLeave={() => setHovered(false)}
             onMouseDown={() => setTilt(true)}
             onMouseUp={() => setTilt(false)}
-
         >   <a href={props.content?.link} className="qui-link">
                 <div
-                    className={`qui-btn qui-icon-label emp-text variant-${props.asVariant}   
-                    size-${props.asSize ? props.asSize : ""}`} style={Object.assign({}, colors.lableHandle)}>
-                    {getLabel(labelContent, "label")}
-                </div>
-                <button
-                    variant={props.asEmphasis}
-                    color={props.asVariant}
+                    className={`qui-btn ${quommonClasses.childClasses} qui-iconlink`}
                     title={getLabel(labelContent, "popover")}
-                    className={`qui-btn ${quommonClasses.childClasses}`}
                     style={Object.assign({}, colors.buttonHandle)}
-                    onClick={props.onClick}
                 >
-                    <div className={`i ${props.withIcon ? props.withIcon.icon : ""} ${tilt ? 'tilt' : ''}`}>
+                    <div
+                        className={`qui-btn qui-icon-label emp-text`} style={Object.assign({}, colors.lableHandle)}>
+                        {getLabel(labelContent, "label")}
                     </div>
-                </button>
-                <div
-                    className={`qui-btn qui-icon-caption emp-text variant-${props.asVariant}
-                    size-${props.asSize ? props.asSize : ""}`} style={Object.assign({}, colors.lableHandle)}>
-                    {getLabel(labelContent, "caption")}
+                    <i onClick={props.onClick} className={`${props.withIcon?.icon} qui-iconlink-icon  ${tilt ? 'tilt' : ''}`}>
+                    </i>
+                    <div
+                        className={`qui-btn qui-icon-caption emp-text`} style={Object.assign({}, colors.lableHandle)}>
+                        {getLabel(labelContent, "caption")}
+                    </div>
                 </div>
-            </a>
-        </motion.div>
+            </a >
+        </motion.div >
     );
 };
