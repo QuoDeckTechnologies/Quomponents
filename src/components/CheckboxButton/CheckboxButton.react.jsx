@@ -3,20 +3,21 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
-import './MultiSelect.scss'
+import './CheckboxButton.scss'
 import "../../common/stylesheets/overrule.scss";
-import CheckboxButton from "../CheckboxButton/CheckboxButton.react";
+import Button from "../Buttons/Button/Button.react";
 import _ from "lodash";
 import { getQuommons } from "../../common/javascripts/helpers";
 
-MultiSelect.propTypes = {
+Checkbox.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
     Each button Text has to be in content object.
     */
-    content: PropTypes.arrayOf(PropTypes.string).isRequired,
+    content: PropTypes.string.isRequired,
+    // PropTypes.arrayOf(PropTypes.string).isRequired,
     /**
     Set action emphasis in increasing order 
     */
@@ -80,11 +81,11 @@ MultiSelect.propTypes = {
     onClick: PropTypes.func.isRequired,
 };
 
-MultiSelect.defaultProps = {
+Checkbox.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: [],
+    content: "",
     asEmphasis: "contained",
     isCircular: false,
 
@@ -100,6 +101,7 @@ MultiSelect.defaultProps = {
     isDisabled: false,
 };
 
+
 /**
 ## Notes
 - Pass inline styles to the component to override any of the component css
@@ -107,14 +109,18 @@ MultiSelect.defaultProps = {
 - Check and uncheck your selection by clicking on it
 **/
 
-export default function MultiSelect(props) {
-    const { content } = props;
-    const [isChecked, setIsChecked] = useState([]);
-    const getValue = (e) => {
-        let value = isChecked;
-        value.push(e.target.value)
-        setIsChecked(value)
-        console.log(value)
+export default function Checkbox(props) {
+
+    //-------------------------------------------------------------------
+    // 3. Set the color
+    //-------------------------------------------------------------------
+    let colors = {
+        backgroundColor: props.withColor?.backgroundColor,
+    }
+    // const { content } = props;
+    const [isChecked, setIsChecked] = useState(false);
+    function toggleChecked() {
+        setIsChecked(prevState => !prevState)
     }
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -122,14 +128,19 @@ export default function MultiSelect(props) {
     let quommonClasses = getQuommons(props, "multi-select");
 
     return (
-        <div className={`qui ${quommonClasses.parentClasses}`} >
-            {_.map(content, (text, index) => {
-                return (
-                    <div key={index} className="Checkbox-list-item">
-                        <CheckboxButton {...props} content={text}/>
+        <div className={`qui ${quommonClasses.parentClasses}`} onClick={(e) => props.onClick(e)}>
+            <div
+                className={`qui-multi-select-button-container ${quommonClasses.childClasses}`} >
+                <div className="qui-multi-select-button">
+                    <div className={`square-background variant-${props.asVariant}`} style={colors}>
+                        <i className={`qui-multi-select-checkbox variant-${props.asVariant} ${isChecked ? "fas fa-check-square" : "fa fa-square"}`}
+                            onClick={() => toggleChecked()}
+                            
+                        >
+                        </i>
                     </div>
-                );
-            })}
+                    {<Button {...props} content={props.content} onClick={() => toggleChecked()} />}</div>
+            </div>
         </div>
     )
 }

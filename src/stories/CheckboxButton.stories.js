@@ -1,11 +1,11 @@
 import React from "react";
-import MultiSelect from "../components/MultiSelect/MultiSelect.react";
+import CheckboxButton from "../components/CheckboxButton/CheckboxButton.react";
 
 export default {
-  title: "Design System/MultiSelect/MultiSelect",
-  component: MultiSelect,
+  title: "Design System/CheckBoxButton/Checkbox",
+  component: CheckboxButton,
   argTypes: {
-    content: [],
+    content: "",
     asEmphasis: {
       control: "select",
       options: ["text", "outlined", "contained"],
@@ -84,7 +84,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a MultiSelect Component",
+    componentSubtitle: "Displays a Checkbox Component",
     a11y: { disable: true },
     docs: { iframeHeight: 300 },
 
@@ -94,13 +94,10 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <MultiSelect {...args} />;
+const Template = (args) => <CheckboxButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: ["Primary Button",
-    "Primary Button",
-    "Primary Button"
-  ],
+  content: "Primary Checkbox",
   asEmphasis: "contained",
   isCircular: false,
 
@@ -129,7 +126,7 @@ Default.parameters = {
       story: "Default component shows features like selected ,not selected , animation in the component",
     },
     source: {
-      code: `<MultiSelect {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<CheckboxButton {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
   },
 };
