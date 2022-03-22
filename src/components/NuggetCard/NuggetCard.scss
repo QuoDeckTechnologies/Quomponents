@@ -1,0 +1,48 @@
+.qui-nugget-card{
+    height: 30.125em;
+    width: 22.5em;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+}
+.qui-nugget-card-container{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+ 
+}
+
+.qui-nugget-card-body{
+    display: flex;
+    flex-direction: column;
+    height: 25em;
+    justify-content: space-around;
+    border:1px solid black;
+    margin: 1.8125em 1.8125em 0 1.8125em;
+}
+
+.qui-nugget-card-footer{
+    display: flex;
+    height: 3em;
+    margin: 0 1.8125em;
+    border:1px solid red
+}
+
+.qui-nugget-card-child1{
+    
+    height: 64px;
+    // width: 100%;
+    z-index: 1;
+}
+
+.qui-nugget-card-child2{
+    color:black
+}
+
+.qui-nugget-card-child4{
+    height: 46px;
+}
+
+.img-container{
+    width:100%;
+    height:167px
+}
