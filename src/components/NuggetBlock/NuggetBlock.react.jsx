@@ -112,7 +112,7 @@ export default function NuggetBlock(props) {
     //-------------------------------------------------------------------
     // 3. Get Nugget Image
     //-------------------------------------------------------------------
-    let icon = props.image ? props.image : defaultImage;
+    let image = props.image ? props.image : defaultImage;
 
     return (
         <motion.div
@@ -120,7 +120,7 @@ export default function NuggetBlock(props) {
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses}`}>
-                <div style={{ backgroundImage: `url(${icon})` }} alt="nuggetimage" className="qui-nugget-block-image" />
+                <div style={{ backgroundImage: `url(${image})` }} alt="nuggetimage" className="qui-nugget-block-image" />
             </div>
         </motion.div>
     );
