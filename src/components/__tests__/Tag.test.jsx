@@ -19,6 +19,7 @@ describe("Tag", () => {
         component = shallow(
             <Tag
                 content=""
+                asVariant="primary"
                 asSize="normal"
                 asPadded="normal"
                 asFloated="none"
@@ -37,6 +38,31 @@ describe("Tag", () => {
     it("should render correct content to Tag", () => {
         component.setProps({ content: "TAG" })
         expect(component.find('div').at(1).props().children).toEqual("TAG");
+    });
+
+    it("should render correctly when passed asVariant prop as primary", () => {
+        component.setProps({ asVariant: "primary" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asVariant prop as secondary", () => {
+        component.setProps({ asVariant: "secondary" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asVariant prop as warning", () => {
+        component.setProps({ asVariant: "warning" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asVariant prop as error", () => {
+        component.setProps({ asVariant: "error" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asVariant prop as success", () => {
+        component.setProps({ asVariant: "success" })
+        expect(component.exists()).toBe(true);
     });
 
     it("should render correctly when passed asSize prop as tiny", () => {

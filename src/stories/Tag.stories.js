@@ -6,6 +6,13 @@ export default {
     component: Tag,
     argTypes: {
         content: "Tag",
+        asVariant: {
+            control: "select",
+            options: ["primary", "secondary", "success", "warning", "error"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -79,6 +86,7 @@ const Template = (args) => <Tag {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: "Tag",
+    asVariant: "warning",
     asSize: "normal",
     asFloated: "inline",
     asPadded: "normal",
@@ -158,6 +166,7 @@ AnimatedTag.parameters = {
 const AllSizeTemplate = (args) => {
     const baseObj = {
         ...Object.assign({}, Default.args, args, {
+            withColor: null,
         }),
     };
     return (
@@ -166,30 +175,35 @@ const AllSizeTemplate = (args) => {
                 {...Object.assign({}, baseObj, {
                     content: "tiny tag",
                     asSize: "tiny",
+                    asVariant: "primary",
                 })}
             />{" "}
             <Tag
                 {...Object.assign({}, baseObj, {
                     content: "small tag",
                     asSize: "small",
+                    asVariant: "secondary",
                 })}
             />{" "}
             <Tag
                 {...Object.assign({}, baseObj, {
                     content: "big tag",
                     asSize: "big",
+                    asVariant: "warning",
                 })}
             />{" "}
             <Tag
                 {...Object.assign({}, baseObj, {
                     content: "huge tag",
                     asSize: "huge",
+                    asVariant: "primary",
                 })}
             />{" "}
             <Tag
                 {...Object.assign({}, baseObj, {
                     content: "massive tag",
                     asSize: "massive",
+                    asVariant: "warning",
                 })}
             />{" "}
         </div>
@@ -199,14 +213,10 @@ export const DifferentSizeTag = AllSizeTemplate.bind({});
 DifferentSizeTag.parameters = {
     docs: {
         description: {
-            story: "Variants are supported. Use as per purpose noted here.",
+            story: "Variants and Size are supported. Use as per purpose noted here.",
         },
         source: {
-            code: `<DifferentSizeTag {...${JSON.stringify(
-                DifferentSizeTag.args,
-                null,
-                2
-            )}}/>`,
+            code: `<Tag content: "massive tag", asSize: "massive", asVariant: "warning"/>`,
         },
     },
 };

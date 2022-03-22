@@ -15,11 +15,21 @@ Tag.propTypes = {
     //=======================================
     /**
     Use to define Tag's value
-     */
+    */
     content: PropTypes.string.isRequired,
     //=======================================
     // Quommon props
     //=======================================
+    /**
+    Use to define standard component type
+    */
+    asVariant: PropTypes.oneOf([
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "error",
+    ]),
     /**
     Use to define component size in increasing order
     */
@@ -77,6 +87,7 @@ Tag.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
+    asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
     asFloated: "none",
@@ -116,7 +127,7 @@ export default function Tag(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-tag-block ${quommonClasses.childClasses}`} style={Color}>
+            <div className={`qui-tag-block qui-btn ${quommonClasses.childClasses}`} style={Color}>
                 <div className="qui-tag-label">
                     {props.content}
                 </div>
