@@ -114,21 +114,13 @@ export default function NuggetBlock(props) {
     //-------------------------------------------------------------------
     let icon = props.image ? props.image : defaultImage;
 
-    //-------------------------------------------------------------------
-    // 4. Get the Status of Component
-    //-------------------------------------------------------------------
-    const nuggetBlock = () => {
-        return (
-            <img src={icon} alt="nuggetimage" className="qui-nugget-block-image" />
-        )
-    }
     return (
         <motion.div
             initial={animate?.from}
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses}`}>
-                {nuggetBlock()}
+                <div style={{ backgroundImage: `url(${icon})` }} alt="nuggetimage" className="qui-nugget-block-image" />
             </div>
         </motion.div>
     );
