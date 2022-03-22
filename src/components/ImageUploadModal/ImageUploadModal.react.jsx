@@ -111,10 +111,26 @@ export default function ImageUploadModal(props) {
   const [zoom, setZoom] = useState(10);
   const [image, setImage] = useState(null);
   const [openUploadModal, setOpenUploadModal] = useState(props.isOpen);
-  const [width, setWidth] = useState(window.innerWidth > 1023 ? 440 : 240);
+  const [width, setWidth] = useState(window.innerWidth >= 768 ? 440 : 240);
   useEffect(() => {
     setOpenUploadModal(props.isOpen);
   }, [props.isOpen]);
+  //-------------------------------------------------------------------
+  // 6. Get width of the editor
+  //-------------------------------------------------------------------
+  const resizeHandler = () => {
+    if (window.innerWidth >= 768) {
+      setWidth(480);
+    } else {
+      setWidth(240);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("resize", resizeHandler);
+    return () => {
+      window.removeEventListener("resize", resizeHandler);
+    };
+  }, []);
   //-------------------------------------------------------------------
   // 3. Defining functions for file upload
   //-------------------------------------------------------------------
@@ -148,16 +164,7 @@ export default function ImageUploadModal(props) {
   ) {
     tObj = getTranslation(props.withTranslation);
   }
-  //-------------------------------------------------------------------
-  // 6. Get width of the editor
-  //-------------------------------------------------------------------
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 1023) {
-      setWidth(480);
-    } else {
-      setWidth(240);
-    }
-  });
+
   // ========================= Render Function =================================
   return (
     <Modal
