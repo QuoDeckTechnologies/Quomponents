@@ -1,4 +1,4 @@
-.qui-image-upload-modal {
+.qui .qui-image-upload-modal-container {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
   z-index: 20;
   box-shadow: 0 6px 6px 0px #00000052;
 }
-.qui-image-upload-modal:focus {
+.qui .qui-image-upload-modal-container:focus {
   outline: none;
 }
 .qui .qui-avatar-canvas {
@@ -21,7 +21,7 @@
   min-height: 0;
   margin-bottom: 1.2em;
 }
-.qui.qui-image-upload-modal
+.qui .qui-image-upload-modal-container
   .qui-image-cropper
   .qui-image-upload-button
   .qui-button
@@ -53,7 +53,7 @@
   color: #777777;
   font-size: 2em;
 }
-.qui .qui-image-upload-modal-range-slider {
+.qui .qui-image-upload-modal-container-range-slider {
   width: 100%;
 }
 .qui .qui-image-upload-buttons {
@@ -77,25 +77,25 @@
   object-fit: cover;
   width: 100%;
 }
-.qui.qui-image-upload-modal .qui-button button {
+.qui .qui-image-upload-modal-container .qui-button button {
   font-size: 1.5em;
   padding: 0.8em 2em;
 }
 // ---------------------------------------------------
 // range-slider default CSS with modifications
 // ---------------------------------------------------
-.qui.qui-image-upload-modal .rangeslider-horizontal {
+.qui .qui-image-upload-modal-container .rangeslider-horizontal {
   height: 12px;
   border-radius: 10px;
 }
-.qui.qui-image-upload-modal .rangeslider {
+.qui .qui-image-upload-modal-container .rangeslider {
   display: block;
   margin: 20px 0;
   position: relative;
   background: #e6e6e6;
   touch-action: none;
 }
-.qui.qui-image-upload-modal
+.qui .qui-image-upload-modal-container
   .rangeslider.rangeslider-horizontal
   .rangeslider__fill {
   height: 100%;
@@ -117,14 +117,14 @@
     background-color: #ffbf00;
   }
 }
-.qui.qui-image-upload-modal .rangeslider-horizontal .rangeslider__handle {
+.qui .qui-image-upload-modal-container .rangeslider-horizontal .rangeslider__handle {
   width: 30px;
   height: 30px;
   border-radius: 30px;
   top: 50%;
   transform: translate3d(-50%, -50%, 0);
 }
-.qui.qui-image-upload-modal .rangeslider .rangeslider__handle {
+.qui .qui-image-upload-modal-container .rangeslider .rangeslider__handle {
   background: #fff;
   border: 1px solid #ccc;
   cursor: pointer;
@@ -147,15 +147,15 @@
     background-color: #ffbf00;
   }
 }
-.qui.qui-image-upload-modal .rangeslider-horizontal .rangeslider__handle:after {
+.qui .qui-image-upload-modal-container .rangeslider-horizontal .rangeslider__handle:after {
   display: none;
 }
-.qui.qui-image-upload-modal
+.qui .qui-image-upload-modal-container
   .rangeslider-horizontal
   .rangeslider__handle-tooltip {
   top: -55px;
 }
-.qui.qui-image-upload-modal .rangeslider .rangeslider__handle-tooltip {
+.qui .qui-image-upload-modal-container .rangeslider .rangeslider__handle-tooltip {
   width: 40px;
   height: 40px;
   text-align: center;
@@ -170,12 +170,12 @@
   left: 50%;
   transform: translate3d(-50%, 0, 0);
 }
-.qui.qui-image-upload-modal .rangeslider .rangeslider__handle-tooltip span {
+.qui .qui-image-upload-modal-container .rangeslider .rangeslider__handle-tooltip span {
   margin-top: 12px;
   display: inline-block;
   line-height: 100%;
 }
-.qui.qui-image-upload-modal
+.qui .qui-image-upload-modal-container
   .rangeslider-horizontal
   .rangeslider__handle-tooltip:after {
   border-left: 8px solid transparent;
@@ -185,19 +185,19 @@
   bottom: -8px;
   transform: translate3d(-50%, 0, 0);
 }
-.qui.qui-image-upload-modal .rangeslider .rangeslider__handle-tooltip:after {
+.qui .qui-image-upload-modal-container .rangeslider .rangeslider__handle-tooltip:after {
   content: " ";
   position: absolute;
   width: 0;
   height: 0;
 }
 @media only screen and (min-width: 320px) {
-  .qui-image-upload-modal {
+  .qui .qui-image-upload-modal-container {
     font-size: 0.6em;
   }
 }
-@media only screen and (min-width: 1023px) {
-  .qui-image-upload-modal {
+@media only screen and (min-width: 768px) {
+  .qui .qui-image-upload-modal-container {
     font-size: 0.8em;
   }
 }

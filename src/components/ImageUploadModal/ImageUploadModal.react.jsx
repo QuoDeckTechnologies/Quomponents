@@ -94,7 +94,7 @@ ImageUploadModal.defaultProps = {
 };
 /**
 ## Notes
-- The design system used for this component is Fontawesome Icon
+- The design system used for this component is Material UI (@mui/material)
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
@@ -175,9 +175,10 @@ export default function ImageUploadModal(props) {
         alignItems: "center",
         justifyContent: "center",
       }}
+      className={`qui ${quommonClasses.parentClasses}`}
     >
       <div
-        className={`qui ${quommonClasses.parentClasses}`}
+        className={`qui-image-upload-modal-container`}
         style={{ width: width }}
       >
         <div

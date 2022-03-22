@@ -86,7 +86,7 @@ export default {
     componentSubtitle: "Displays a Image Upload Modal Component.",
     a11y: { disable: true },
     docs: {
-      iframeHeight: 500,
+      iframeHeight: 1000,
     },
   },
 };
