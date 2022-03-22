@@ -34,9 +34,8 @@ describe("Tag", () => {
             expect(component.exists()).toBe(true);
         });
 
-    it("it should render correct content to Tag", () => {
+    it("should render correct content to Tag", () => {
         component.setProps({ content: "TAG" })
-        console.log(component.find('div').at(1).props().children)
         expect(component.find('div').at(1).props().children).toEqual("TAG");
     });
 

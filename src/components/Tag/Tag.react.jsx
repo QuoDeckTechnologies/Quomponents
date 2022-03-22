@@ -118,7 +118,7 @@ export default function Tag(props) {
         >
             <div className={`qui-tag-block ${quommonClasses.childClasses}`} style={Color}>
                 <div className="qui-tag-label">
-                    {props.content?.toUpperCase()}
+                    {props.content}
                 </div>
             </div>
         </motion.div>
