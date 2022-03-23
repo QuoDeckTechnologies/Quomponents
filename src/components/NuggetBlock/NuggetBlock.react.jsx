@@ -124,8 +124,7 @@ export default function NuggetBlock(props) {
         color = "#C1DC9E"
     } else if (status === "UNPUBLISHED") {
         color = "#B2B4B3"
-    }
-    else {
+    } else {
         display = "none"
     }
 

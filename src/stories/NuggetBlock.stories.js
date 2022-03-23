@@ -1,26 +1,26 @@
 import React from "react";
 import NuggetBlock from "../components/NuggetBlock/NuggetBlock.react";
 
-import Nugget_Story from "../assets/nugget/nugget_story.png";
-import Nugget_Quiz from "../assets/nugget/nugget_quiz.png";
-import Nugget_Assessment from "../assets/nugget/nugget_assessment.png";
-import Nugget_Game from "../assets/nugget/nugget_game.png";
-import Nugget_Article from "../assets/nugget/nugget_article.png";
-import Nugget_Feedback from "../assets/nugget/nugget_feedback.png";
-import Nugget_Poll from "../assets/nugget/nugget_poll.png";
-import Nugget_Profiler from "../assets/nugget/nugget_profiler.png";
-import Nugget_Recco from "../assets/nugget/nugget_recco.png";
-import Nugget_Document from "../assets/nugget/nugget_document.png";
-import Nugget_Survey from "../assets/nugget/nugget_survey.png";
-import Nugget_Submission from "../assets/nugget/nugget_submission.png";
-import Nugget_Calculator from "../assets/nugget/nugget_calculator.png";
-import Nugget_Linklist from "../assets/nugget/nugget_linklist.png";
-import Nugget_Faq from "../assets/nugget/nugget_faq.png";
-import Nugget_Event from "../assets/nugget/nugget_event.png";
-import Nugget_Video from "../assets/nugget/nugget_video.png";
-import Nugget_News from "../assets/nugget/nugget_news.png";
-import Nugget_Webinar from "../assets/nugget/nugget_webinar.png";
-import Nugget_Gallery from "../assets/nugget/nugget_gallery.png";
+import Nugget_Story from "../assets/nuggets/nugget_story.png";
+import Nugget_Quiz from "../assets/nuggets/nugget_quiz.png";
+import Nugget_Assessment from "../assets/nuggets/nugget_assessment.png";
+import Nugget_Game from "../assets/nuggets/nugget_game.png";
+import Nugget_Article from "../assets/nuggets/nugget_article.png";
+import Nugget_Feedback from "../assets/nuggets/nugget_feedback.png";
+import Nugget_Poll from "../assets/nuggets/nugget_poll.png";
+import Nugget_Profiler from "../assets/nuggets/nugget_profiler.png";
+import Nugget_Recco from "../assets/nuggets/nugget_recco.png";
+import Nugget_Document from "../assets/nuggets/nugget_document.png";
+import Nugget_Survey from "../assets/nuggets/nugget_survey.png";
+import Nugget_Submission from "../assets/nuggets/nugget_submission.png";
+import Nugget_Calculator from "../assets/nuggets/nugget_calculator.png";
+import Nugget_Linklist from "../assets/nuggets/nugget_linklist.png";
+import Nugget_Faq from "../assets/nuggets/nugget_faq.png";
+import Nugget_Event from "../assets/nuggets/nugget_event.png";
+import Nugget_Video from "../assets/nuggets/nugget_video.png";
+import Nugget_News from "../assets/nuggets/nugget_news.png";
+import Nugget_Webinar from "../assets/nuggets/nugget_webinar.png";
+import Nugget_Gallery from "../assets/nuggets/nugget_gallery.png";
 
 export default {
     title: "Design System/NuggetBlock/NuggetBlock",
