@@ -26,8 +26,14 @@ export default {
     title: "Design System/NuggetBlock/NuggetBlock",
     component: NuggetBlock,
     argTypes: {
-
         image: "",
+        status: {
+            control: "select",
+            options: ["published", "unpublished", "none"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -105,6 +111,7 @@ const Template = (args) => <NuggetBlock {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     image: Nugget_Profiler,
+    status: "none",
     asSize: "normal",
     asFloated: "inline",
     asPadded: "normal",
@@ -127,105 +134,206 @@ Default.parameters = {
 export const AllVariantsTemplate = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Story
+            image: Nugget_Story,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0.1,
+            },
         })
 
     };
     const baseObj2 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Quiz
+            image: Nugget_Quiz,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0.2,
+            },
         })
     };
     const baseObj3 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Assessment
+            image: Nugget_Assessment,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0.3,
+            },
         })
     };
     const baseObj4 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Game
+            image: Nugget_Game,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0.4,
+            },
         })
     };
     const baseObj5 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Article
+            image: Nugget_Article,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0.5,
+            },
         })
     };
     const baseObj6 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Feedback
+            image: Nugget_Feedback,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 1.5,
+            },
         })
     };
     const baseObj7 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Poll
+            image: Nugget_Poll,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 1.6,
+            },
         })
     };
     const baseObj8 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Profiler
+            image: Nugget_Profiler,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 1.7,
+            },
         })
     };
     const baseObj9 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Recco
+            image: Nugget_Recco,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 1.8,
+            },
         })
     };
     const baseObj10 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Document
+            image: Nugget_Document,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0.6,
+            },
         })
     };
     const baseObj11 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Survey
+            image: Nugget_Survey,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 1.4,
+            },
         })
     };
     const baseObj12 = {
         ...Object.assign({}, Default.args, args, {
             image: Nugget_Submission,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 2.1,
+            },
         })
     };
     const baseObj13 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Calculator
+            image: Nugget_Calculator,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 2
+            },
         })
 
     };
     const baseObj14 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Linklist
+            image: Nugget_Linklist,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 1.9,
+            },
         })
     };
     const baseObj15 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Faq
+            image: Nugget_Faq,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0.7,
+            },
         })
     };
     const baseObj16 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Event
+            image: Nugget_Event,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 1.3,
+            },
         })
     };
     const baseObj17 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Video
+            image: Nugget_Video,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 1.2,
+            },
         })
     };
     const baseObj18 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_News
+            image: Nugget_News,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 1,
+            },
         })
     };
     const baseObj19 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Webinar
+            image: Nugget_Webinar,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0.9,
+            },
         })
 
     };
     const baseObj20 = {
         ...Object.assign({}, Default.args, args, {
-            image: Nugget_Gallery
+            image: Nugget_Gallery,
+            withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0.8,
+            },
+            status: "none"
         })
     };
     return (

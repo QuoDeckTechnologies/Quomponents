@@ -19,6 +19,7 @@ NuggetBlock.propTypes = {
     // Component Specific props
     //=======================================
     image: PropTypes.string.isRequired,
+    status: PropTypes.oneOf(["published", "unpublished", "none"]),
 
     // Quommon props
     //=======================================
@@ -76,14 +77,13 @@ NuggetBlock.defaultProps = {
     // Component Specific props
     //=======================================
     image: "",
+    status: "none",
 
     // Quommon props
     //=======================================
     asSize: "normal",
     asPadded: "normal",
     asFloated: "inline",
-    withColor: null,
-    withIcon: null,
     withAnimation: null,
     isHidden: false,
     isDisabled: false,
@@ -114,13 +114,29 @@ export default function NuggetBlock(props) {
     //-------------------------------------------------------------------
     let image = props.image ? props.image : defaultImage;
 
+    //-------------------------------------------------------------------
+    // 4. Get Nugget Status
+    //-------------------------------------------------------------------
+    let status, color, display;
+    status = props.status.toUpperCase();
+
+    if (status === "PUBLISHED") {
+        color = "#C1DC9E"
+    } else if (status === "UNPUBLISHED") {
+        color = "#B2B4B3"
+    }
+    else {
+        display = "none"
+    }
+
     return (
         <motion.div
             initial={animate?.from}
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses}`}>
-                <div style={{ backgroundImage: `url(${image})` }} alt="nuggetimage" className="qui-nugget-block-image" />
+                <div className={`qui-nugget-status`} style={{ backgroundColor: color, display: display }}></div>
+                <div style={{ backgroundImage: `url(${image})` }} alt="nuggetimage" className="qui-nugget-block-image" onClick={() => { return props.onClick() }} />
             </div>
         </motion.div>
     );
