@@ -7,8 +7,8 @@ import { shallow } from "enzyme";
 // -------------------------------------
 import NuggetBlock from "../NuggetBlock/NuggetBlock.react";
 
-import Nugget_Profiler from "../../assets/nugget/nugget_profiler.png";
-describe("IconBlock", () => {
+import Nugget_Profiler from "../../assets/nuggets/nugget_profiler.png";
+describe("NuggetBlock", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
