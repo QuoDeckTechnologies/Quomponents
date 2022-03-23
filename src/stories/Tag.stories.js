@@ -167,6 +167,7 @@ const AllSizeTemplate = (args) => {
     const baseObj = {
         ...Object.assign({}, Default.args, args, {
             withColor: null,
+            asFloated: "inline",
         }),
     };
     return (
