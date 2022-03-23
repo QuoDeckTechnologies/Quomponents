@@ -91,8 +91,8 @@ Default.args = {
     asFloated: "inline",
     asPadded: "normal",
     withColor: {
-        textColor: "#121212",
-        backgroundColor: "#FFAB00",
+        textColor: "",
+        backgroundColor: "",
     },
     withAnimation: {
         animation: "collapse",
