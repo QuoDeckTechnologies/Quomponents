@@ -2,7 +2,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import _ from "lodash";
 import {
     getAnimation,
     getQuommons,
@@ -188,8 +187,8 @@ export default function DeckAnalysis(props) {
                         <h3>{labelContent?.description}</h3>
                     </div>
                 </div>
-                <div className="qui-deckbottom" onClick={props.onClick} style={colors.backgroundColors}>
-                    <i className={content?.icon} style={colors.accentColors}></i>
+                <div className="qui-deckbottom"  style={colors.backgroundColors}>
+                    <i className={content?.icon} style={colors.accentColors} onClick={props.onClick}></i>
                 </div>
             </div>
         </motion.div>

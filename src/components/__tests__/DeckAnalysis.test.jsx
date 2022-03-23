@@ -2,10 +2,6 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-import renderer, { act } from "react-test-renderer";
-//--------------------------------------
-// Import from Config
-// -------------------------------------
 
 //--------------------------------------
 // Import Components
@@ -78,12 +74,5 @@ describe("DeckAnalysis", () => {
             },
         });
         expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when clicked", () => {
-        let component = renderer.create(<DeckAnalysis onClick={() => { }} />);
-        let tree = component.toJSON();
-        act(() => {
-            tree.props.onClick();
-        });
     });
 });
