@@ -7,7 +7,7 @@ import {
     getQuommons,
     getAnimation,
 } from "../../common/javascripts/helpers.js";
-//import "@fortawesome/fontawesome-free/css/all.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./Videobox.scss";
 import "../../common/stylesheets/overrule.scss";
@@ -23,17 +23,6 @@ Videobox.propTypes = {
     }).isRequired,
     // Quommon props
     //=======================================
-    /**
-    Use to define component text size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
     /**
     Use to define the entry animation of the component
     */
@@ -60,9 +49,26 @@ Videobox.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    Videobox component must have the onClick function passed as props
+    Videobox component must have the onReady function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onReady: PropTypes.func,
+    /**
+    Videobox component must have the onError function passed as props
+    */
+    onError: PropTypes.func,
+    /**
+    Videobox component must have the onPlay function passed as props
+    */
+    onPlay: PropTypes.func,
+    /**
+    Videobox component must have the onPause function passed as props
+    */
+    onPause: PropTypes.func,
+    /**
+    Videobox component must have the onEnded function passed as props
+    */
+    onEnded: PropTypes.func,
+
 };
 
 Videobox.defaultProps = {
@@ -71,8 +77,6 @@ Videobox.defaultProps = {
     content: {},
     // Quommon props
     //=======================================
-    asSize: "normal",
-
     withAnimation: null,
 
     isHidden: false,
@@ -81,12 +85,32 @@ Videobox.defaultProps = {
 
 /**
 ## Notes
-- The design system used for this component is Material UI (@mui/material)
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function Videobox(props) {
+
+    let onReady = () => {
+        return props.onReady;
+    };
+
+    let onError = () => {
+        return props.onError;
+    };
+
+    let onPlay = () => {
+        return props.onPlay;
+    };
+
+    let onPause = () => {
+        return props.onPause;
+    };
+
+    let onEnded = () => {
+        return props.onEnded;
+    };
+
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
     //-------------------------------------------------------------------
@@ -99,44 +123,28 @@ export default function Videobox(props) {
     // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-    //-------------------------------------------------------------------
-    // 4. Get the Status of Component
-    //-------------------------------------------------------------------
-    const videoBoxBackground = (content) => {
-        let videoBoxStyle = content?.url ? "qui-videoplayer" : "qui-default-videobox";
-        if (content?.url) {
-            return (
-                <div className={`qui-videoplayer ${videoBoxStyle}`}>
-                    <ReactPlayer
-                        url={content.url}
-                        width="100%"
-                        playing
-                        controls={true}
-                    />
-                </div>
-            )
-        } else {
-            return (
-                <div className={`${videoBoxStyle}`}>
-                    <ReactPlayer
-                        className="qui-default-videobox"
-                        url="https://www.youtube.com/watch?v=NpEaa2P7qZI"
-                        width="100%"
-                        playing
-                    />
-                </div>
-            )
-        }
-    }
+
+    // ========================= Render Function =================================
     return (
         <motion.div
             initial={animate?.from}
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            onClick={props.onClick}
-            >
-            <div className={`${quommonClasses.childClasses}`}>
-                {videoBoxBackground(props.content)}
+        >
+            <div className={`react-video-player`}>
+                <ReactPlayer
+                    className="react-player"
+                    url={content?.url ? content?.url : "https://www.youtube.com/watch?v=NpEaa2P7qZI"}
+                    width="100%"
+                    height="100%"
+                    playing
+                    controls={true}
+                    onReady={onReady()}
+                    onError={onError()}
+                    onPlay={onPlay()}
+                    onPause={onPause()}
+                    onEnded={onEnded()}
+                />
             </div>
         </motion.div>
     );

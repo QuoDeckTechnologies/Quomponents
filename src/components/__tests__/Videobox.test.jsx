@@ -2,6 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
+import ReactPlayer from "react-player";
 
 //--------------------------------------
 // Import Components
@@ -12,18 +13,20 @@ describe("Videobox", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
-   let onClick = jest.fn();
-    let component, DefaultImg;
+    let onPlay = jest.fn();
+    let onPause = jest.fn();
+    let onEnded = jest.fn();
+    let onReady = jest.fn();
+    let onError = jest.fn();
+    let component;
 
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
             <Videobox
                 content={{
-                    url: "https://vimeo.com/682661192",
-                    image: DefaultImg
+                    url: "https://www.youtube.com/watch?v=Bwx5nqvSTZ0",
                 }}
-                asSize="normal"
                 withAnimation={{
                     animation: "zoom",
                     duration: 0.5,
@@ -31,7 +34,11 @@ describe("Videobox", () => {
                 }}
                 isDisabled={false}
                 isHidden={false}
-                onClick ={onClick}
+                onEnded={onEnded}
+                onPlay={onPlay}
+                onPause={onPause}
+                onReady={onReady}
+                onError={onError}
             />
         );
     });
@@ -39,12 +46,51 @@ describe("Videobox", () => {
     it("should render correctly without throwing error", () => {
         expect(component.exists()).toBe(true);
     });
-    it("should render correctly with empty props which are not required", () => {
-        component.setProps({
-            content:{},
-            withAnimation: {},
-            isHidden: null
-        });
-        expect(component.exists()).toBe(true);
+    it("should rednder correctly when call onReady", () => {
+        component = shallow(<Videobox
+            onReady={onReady}
+        />);
+        component.find(ReactPlayer).simulate("ready");
     });
+    it("should rednder correctly when call onError", () => {
+        component = shallow(<Videobox
+            onError={onError}
+        />);
+        component.find(ReactPlayer).simulate("error");
+    });
+    it("should rednder correctly when call onPlay", () => {
+        component = shallow(<Videobox
+            onPlay={onPlay}
+        />);
+        component.find(".react-player").simulate("play");
+    });
+    it("should rednder correctly when call onPause", () => {
+        component = shallow(<Videobox
+            onPause={onPause}
+        />);
+        component.find(ReactPlayer).simulate("pause");
+    });
+    it("should rednder correctly when call onEnded", () => {
+        component = shallow(<Videobox
+            onEnded={onEnded}
+        />);
+        component.find(".react-player").simulate("ended");
+    });
+    it("should render correctly when passed isHidden props as false", () => {
+        component.setProps({ isHidden: false })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed isHidden props as true", () => {
+        component.setProps({ isHidden: true })
+        expect(component.exists()).toBe(true);
+    })
+
+    it("should render correctly when passed isDisabled props as false", () => {
+        component.setProps({ isDisabled: false })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed isDisabled props as true", () => {
+        component.setProps({ isDisabled: true })
+        expect(component.exists()).toBe(true);
+    })
 });

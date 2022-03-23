@@ -2,66 +2,83 @@ import React from "react";
 import Videobox from "../components/Videobox/Videobox.react";
 
 export default {
-    title: "Design System/Videobox",
-    component: Videobox,
-    argTypes: {
-        content: {
-            url: "",
-        },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
-                },
-            },
-        },
-        isHidden: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
-            },
-        },
+  title: "Design System/Videobox",
+  component: Videobox,
+  argTypes: {
+    content: {
+      url: "",
     },
-    decorators: [
-        (story) => (
-            <div
-                style={{
-                    width: "100%",
-                    textAlign: "",
-                    fontSize: "",
-                }}
-            >
-                {story()}
-            </div>
-        ),
-    ],
-    parameters: {
-        componentSubtitle: "Displays a basic button for general-purpose use",
-        a11y: { disable: true },
-        docs: { iframeHeight: 200 },
+    withAnimation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          animation: "",
+          duration: 0,
+          delay: 0,
+        },
+      },
     },
+    isHidden: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
+    isDisabled: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
+    onReady: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+    onPlay: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+    onPause: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+    onError: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+    onEnded: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+  },
+  decorators: [
+    (story) => (
+      <div
+        style={{
+          width: "100%",
+          textAlign: "",
+          fontSize: "",
+        }}
+      >
+        {story()}
+      </div>
+    ),
+  ],
+  parameters: {
+    componentSubtitle: "Displays a basic button for general-purpose use",
+    a11y: { disable: true },
+    docs: { iframeHeight: 200 },
+  },
 };
 
 // -------------------------------------------------------------
@@ -70,24 +87,50 @@ export default {
 const Template = (args) => <Videobox {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        url: "https://www.youtube.com/watch?v=Bwx5nqvSTZ0",
-    },
-    asSize: "normal",
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
-    isDisabled: false,
-    isHidden: false,
+  content: {
+    url: "https://www.youtube.com/watch?v=Bwx5nqvSTZ0",
+  },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  isDisabled: false,
+  isHidden: false,
 };
 Default.parameters = {
-    docs: {
-        source: {
-            code: `<VideoBox {...${JSON.stringify(Default.args, null, 2)}}/>`,
-        },
+  docs: {
+    source: {
+      code: `<VideoBox {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
+  },
+};
+
+// -------------------------------------------------------------
+// WithoutContentUrl
+// -------------------------------------------------------------
+export const WithoutContentUrl = Template.bind({});
+WithoutContentUrl.args = {
+  ...Default.args,
+  content:
+  {
+    url: "",
+  }
+};
+WithoutContentUrl.parameters = {
+  docs: {
+    description: {
+      story:
+        "Show ToolbarDark component without caption/label with asVarient:'warning'",
+    },
+    source: {
+      code: `<WithoutContentUrl {...${JSON.stringify(
+        WithoutContentUrl.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
 };
 
 //-------------------------------------------------------------
@@ -105,10 +148,10 @@ AnimatedVideobox.args = {
 AnimatedVideobox.parameters = {
   docs: {
     description: {
-      story: "We can animate the appearance of Toolbar",
+      story: "We can animate the appearance of videobox",
     },
     source: {
-      code: `<ToolbarDark {...${JSON.stringify(
+      code: `<VideoBox {...${JSON.stringify(
         AnimatedVideobox.args,
         null,
         2

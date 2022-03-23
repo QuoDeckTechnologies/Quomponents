@@ -1,27 +1,13 @@
 .qui-video-box {
-    border-radius: 2em;
-    background-color:#000000;
+    border-radius: 0.8em;
+    background-color: #000000;
 }
-.qui .qui-default-videobox {
-    width: 100%;
-    border-radius: 2em;
-}
-.qui .qui-videoplayer {
-    width: 100%;
-}
-@media screen and (min-width: 320px) {
-    .qui-video-box {
-        width: 100%;
-    }
-}
-@media screen and (min-width: 481px) {
-    .qui-video-box {
-        width: 100%;
-    }
-}
-
-.qui-video-box .html5-video-player{
+.qui .react-video-player {
     position: relative;
-    top:0em;
+    padding-top: 56.25%;
 }
-
+.qui .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
