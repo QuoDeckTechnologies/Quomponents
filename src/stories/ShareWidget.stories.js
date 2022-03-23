@@ -18,7 +18,6 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     label: "",
-                    circular: false,
                     url: ""
                 },
             },
@@ -28,6 +27,16 @@ export default {
             options: ["left", "right", "none", "inline"],
             table: {
                 category: "as-Flags",
+            },
+        },
+        withColor: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    accentColor: "",
+                    textColor: "",
+                    backgroundColor: "",
+                },
             },
         },
         withAnimation: {
@@ -89,11 +98,12 @@ export const Default = Template.bind({});
 Default.args = {
     content: {
         label: "Share",
-        circular: true,
         url: "www.quodeck.com",
     },
     asFloated: "inline",
-
+    withColor: {
+        textColor: "#000000",
+    },
     withAnimation: {
         animation: "collapse",
         duration: 0.5,
@@ -200,25 +210,8 @@ const AllVariantsTemplate = (args) => {
             <br />
             <ShareWidget
                 {...Object.assign({}, baseObj, {
-                    content: {
-                        label: "Share",
-                        circular: false,
-                        url: "www.quodeck.com",
-                    }
-                })}
-            />{" "}
-            <br />
-            <ShareWidget
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        label: "Share",
-                        circular: false,
-                        url: "www.quodeck.com",
-                    },
-                    withTranslation: {
-                        lang: "hi",
-                        tgt: "ShareWidget",
-                        dictionary: dictionary,
+                    withColor: {
+                        textColor: "#00FF00",
                     }
                 })}
             />{" "}

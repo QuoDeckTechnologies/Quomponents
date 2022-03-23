@@ -31,7 +31,6 @@ ShareWidget.propTypes = {
     */
     content: PropTypes.shape({
         label: PropTypes.string,
-        circular: PropTypes.bool,
         url: PropTypes.string,
     }),
     //=======================================
@@ -41,6 +40,12 @@ ShareWidget.propTypes = {
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+    /**
+    Use to set text Color in ShareWidget
+    */
+    withColor: PropTypes.shape({
+        textColor: PropTypes.string,
+    }),
     /**
     Use to define the entry animation of the component
     */
@@ -78,6 +83,7 @@ ShareWidget.defaultProps = {
     //=======================================
     asFloated: "none",
 
+    withColor: null,
     withAnimation: null,
 
     isHidden: false,
@@ -111,6 +117,12 @@ export default function ShareWidget(props) {
         if (shareContent && tObj?.label) shareContent.label = tObj.label;
     }
     //-------------------------------------------------------------------
+    // 3. Use to set label Color in ShareWidget
+    //-------------------------------------------------------------------
+    let Color = {
+        color: props.withColor?.textColor,
+    };
+    //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
@@ -122,28 +134,28 @@ export default function ShareWidget(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-sharewidget-container ${quommonClasses.childClasses}`}>
-                <div className="qui-share-label">
+                <div className="qui-share-label" style={Color}>
                     {shareContent?.label} :
                 </div>
                 <div className="qui-shareicon-container">
                     <FacebookShareButton className={`qui-share-icon  ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
-                        <FacebookIcon round={shareContent?.circular} />
+                        <FacebookIcon round={true} />
                     </FacebookShareButton>
 
                     <TwitterShareButton className={`qui-share-icon ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
-                        <TwitterIcon round={shareContent?.circular} />
+                        <TwitterIcon round={true} />
                     </TwitterShareButton>
 
                     <LinkedinShareButton className={`qui-share-icon ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
-                        <LinkedinIcon round={shareContent?.circular} />
+                        <LinkedinIcon round={true} />
                     </LinkedinShareButton>
 
                     <WhatsappShareButton className={`qui-share-icon ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
-                        <WhatsappIcon round={shareContent?.circular} />
+                        <WhatsappIcon round={true} />
                     </WhatsappShareButton>
 
                     <EmailShareButton className={`qui-share-icon ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
-                        <EmailIcon round={shareContent?.circular} />
+                        <EmailIcon round={true} />
                     </EmailShareButton>
                 </div>
             </div>
