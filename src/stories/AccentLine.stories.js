@@ -5,6 +5,13 @@ export default {
     title: "Design System/AccentLine/AccentLine",
     component: AccentLine,
     argTypes: {
+        asVariant: {
+            control: "select",
+            options: ["primary", "secondary", "success", "warning", "error"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -43,6 +50,12 @@ export default {
                 defaultValue: false,
             },
         },
+        isFluid: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
     },
     decorators: [
         (story) => (
@@ -68,10 +81,11 @@ export default {
 const Template = (args) => <AccentLine {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+    asVariant: "warning",
     asSize: "normal",
     asFloated: "inline",
     withColor: {
-        accentColor: "#ffab00",
+        accentColor: "",
     },
     withAnimation: {
         animation: "zoom",
@@ -79,6 +93,7 @@ Default.args = {
         delay: 0,
     },
     isHidden: false,
+    isFluid: false,
 };
 Default.parameters = {
     docs: {

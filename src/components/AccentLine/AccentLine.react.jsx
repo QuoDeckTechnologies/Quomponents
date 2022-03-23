@@ -14,6 +14,16 @@ AccentLine.propTypes = {
     // Quommon props
     //=======================================
     /**
+    Use to define standard component type
+    */
+    asVariant: PropTypes.oneOf([
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "error",
+    ]),
+    /**
     Use to define component size in increasing order
     */
     asSize: PropTypes.oneOf([
@@ -55,12 +65,17 @@ AccentLine.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
+    /**
+    Use to toggle the component taking the full width of the parent container
+    */
+    isFluid: PropTypes.bool,
 };
 
 AccentLine.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
+    asVariant: "warning",
     asSize: "normal",
     asFloated: "none",
 
@@ -68,6 +83,7 @@ AccentLine.defaultProps = {
     withAnimation: null,
 
     isHidden: false,
+    isFluid: false,
 };
 /**
 ## Notes
@@ -81,6 +97,7 @@ export default function AccentLine(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "accent-line");
+    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 2. Use to set AccentLine Color
     //-------------------------------------------------------------------
@@ -99,7 +116,7 @@ export default function AccentLine(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-accentline-container ${quommonClasses.childClasses}`}>
-                <div className="qui-accentline" style={AccentLineColors}></div>
+                <div className={`qui-accentline `} style={AccentLineColors}></div>
             </div>
         </motion.div>
     );
