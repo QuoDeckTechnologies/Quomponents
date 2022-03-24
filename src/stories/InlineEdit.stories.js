@@ -6,6 +6,13 @@ export default {
   component: InlineEdit,
   argTypes: {
     content: "Please input your text here",
+    asEmphasis: {
+      control: "select",
+      options: ["singleLine", "multiLine"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     asSize: {
       control: "select",
       options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -74,7 +81,7 @@ export default {
     componentSubtitle:
       "Default InlineEdit for general purpose use",
     a11y: { disable: true },
-    docs: { iframeHeight: 100 },
+    docs: { iframeHeight: 150 },
   },
 };
 // -------------------------------------------------------------
@@ -84,6 +91,7 @@ const Template = (args) => <InlineEdit {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: "Please input your text here",
+  asEmphasis: "singleLine",
   asSize: "normal",
   asFloated: "none",
   asAligned: "left",
@@ -106,6 +114,30 @@ Default.parameters = {
     },
   },
 };
+// -------------------------------------------------------------
+// MultiLine InlineEdit
+// -------------------------------------------------------------
+export const MultiLineEdit = Template.bind({});
+MultiLineEdit.args = {
+  ...Default.args,
+  asEmphasis: "multiLine",
+};
+MultiLineEdit.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to animate the entry of the InlineEdit with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+    },
+    source: {
+      code: `<MultiLineEdit {...${JSON.stringify(
+        MultiLineEdit.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+
 // -------------------------------------------------------------
 // Animated InlineEdit
 // -------------------------------------------------------------
@@ -154,6 +186,7 @@ const AllVariantsTemplate = (args) => {
       <br />
       <InlineEdit
         {...Object.assign({}, baseObj, {
+          asEmphasis: "multiLine",
           withColor: {
             accentColor: "#589C48",
             backgroundColor: "#733381",
@@ -170,11 +203,7 @@ AllVariants.parameters = {
       story: "variants are supported. Use as per purpose noted here.",
     },
     source: {
-      code: `<AllVariants {...${JSON.stringify(
-        AllVariants.args,
-        null,
-        2
-      )}}/>`,
+      code: `<InlineEdit asEmphasis: "multiLine", withColor: { accentColor: "#589C48", backgroundColor: "#733381"}/>`,
     },
   },
 };
