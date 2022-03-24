@@ -1,22 +1,13 @@
 import React from "react";
 import ArcMenu from "../components/ArcMenu/ArcMenu.react";
 
-const dictionary = JSON.stringify({
-  hi: {
-    arcmenu: {
-      content: {
-        menuData: [
-          { name: "घर", icon: "fa fa-home" },
-          { name: "खाता", icon: "fas fa-user" },
-          { name: "समायोजन", icon: "fa fa-cogs" },
-          { name: "संदेश", icon: "fa fa-comments" },
-          { name: "कॉन्फ़िगर", icon: "fa fa-file" },
-          { name: "लॉग आउट", icon: "fas fa-desktop" },
-        ],
-      },
-    },
-  },
-});
+import Nugget_Story from "../assets/nuggets/nugget_story.png";
+import Nugget_Quiz from "../assets/nuggets/nugget_quiz.png";
+import Nugget_Assessment from "../assets/nuggets/nugget_assessment.png";
+import Nugget_Game from "../assets/nuggets/nugget_game.png";
+import Nugget_Article from "../assets/nuggets/nugget_article.png";
+import Nugget_Feedback from "../assets/nuggets/nugget_feedback.png";
+
 export default {
   title: "Design System/ArcMenu/ArcMenu",
   component: ArcMenu,
@@ -24,25 +15,29 @@ export default {
     content: {
       table: {
         defaultValue: {
-          arcIcon: "",
           menuData: [],
         },
       },
     },
+    arcIcon: "",
     type: {
       control: "select",
       options: ["menu", "add", "close"],
     },
-    asVariant: {
+    position: {
       control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
+      options: ["top-right", "top-left", "bottom-right", "bottom-left"],
     },
     asSize: {
       control: "select",
       options: ["tiny", "small", "normal", "big", "huge", "massive"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
       table: {
         category: "as-Flags",
       },
@@ -54,16 +49,6 @@ export default {
           backgroundColor: "",
           accentColor: "",
           textColor: "",
-        },
-      },
-    },
-    withTranslation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          lang: "",
-          tgt: "",
-          dictionary: "",
         },
       },
     },
@@ -115,19 +100,25 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: {},
+  content: {
+    menuData: [
+      { image: Nugget_Story },
+      { image: Nugget_Quiz },
+      { image: Nugget_Assessment },
+      { image: Nugget_Game },
+      { image: Nugget_Article },
+      { image: Nugget_Feedback },
+    ],
+  },
+  arcIcon: "fas fa-caret-down",
   type: "close",
-  asVariant: "primary",
+  position: "top-right",
   asSize: "normal",
+  asVariant: "primary",
   withColor: {
     backgroundColor: "",
     accentColor: "",
     textColor: "",
-  },
-  withTranslation: {
-    lang: "en",
-    tgt: "arcmenu",
-    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,
@@ -145,18 +136,8 @@ Default.parameters = {
 export const MenuButton = Template.bind({});
 MenuButton.args = {
   ...Default.args,
-  content: {
-    arcIcon: "fas fa-caret-down",
-    menuData: [
-      { name: "Home", icon: "fa fa-home" },
-      { name: "Account", icon: "fas fa-user" },
-      { name: "Settings", icon: "fa fa-cogs" },
-      { name: "Message", icon: "fa fa-comments" },
-      { name: "Configure", icon: "fa fa-file" },
-      { name: "Logout", icon: "fas fa-desktop" },
-    ],
-  },
   type: "menu",
+  position: "bottom-left",
 };
 MenuButton.parameters = {
   docs: {
@@ -181,33 +162,6 @@ ColoredArcMenu.parameters = {
   docs: {
     source: {
       code: `<ArcMenu {...${JSON.stringify(ColoredArcMenu.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Translated Arc menu
-// -------------------------------------------------------------
-export const TranslatedArcMenu = Template.bind({});
-TranslatedArcMenu.args = {
-  ...Default.args,
-  asVariant: "secondary",
-  withTranslation: {
-    lang: "hi",
-    tgt: "arcmenu",
-    dictionary: dictionary,
-  },
-};
-TranslatedArcMenu.parameters = {
-  docs: {
-    description: {
-      story: "Use to change the language that the text appears in.",
-    },
-    source: {
-      code: `<TranslatedArcMenu {...${JSON.stringify(
-        TranslatedArcMenu.args,
-        null,
-        2
-      )}}/>`,
     },
   },
 };

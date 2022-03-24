@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { mount } from "enzyme";
+import { shallow, mount } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -12,41 +12,29 @@ describe("ArcMenu", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-  const dictionary = JSON.stringify({
-    hi: {
-      arcmenu: {
-        content: {
-          menuData: [
-            { name: "घर", icon: "fa fa-home" },
-            { name: "खाता", icon: "fas fa-user" },
-            { name: "समायोजन", icon: "fa fa-cogs" },
-            { name: "संदेश", icon: "fa fa-comments" },
-            { name: "कॉन्फ़िगर", icon: "fa fa-file" },
-            { name: "लॉग आउट", icon: "fas fa-desktop" },
-          ],
-        },
-      },
-    },
-  });
   beforeEach(() => {
     jest.resetAllMocks();
-    component = mount(
+    component = shallow(
       <ArcMenu
         content={{
-          arcIcon: "fas fa-user",
-          menuData: [],
+          menuData: [
+            { image: "" },
+            { image: "" },
+            { image: "" },
+            { image: "" },
+            { image: "" },
+            { image: "" },
+          ],
         }}
+        arcIcon="fas fa-caret-down"
+        type="close"
+        position="top-right"
         asVariant="primary"
         asSize="normal"
         withColor={{
           backgroundColor: "#ffcc00",
-          accentColor: "",
+          accentColor: "red",
           textColor: "#808080",
-        }}
-        withTranslation={{
-          lang: "hi",
-          tgt: "arcmenu",
-          dictionary: dictionary,
         }}
         isCloseButton={false}
         isDisabled={false}
@@ -59,39 +47,54 @@ describe("ArcMenu", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly when modal opens", () => {
-    component.find(".qui-arc-menu-modal").at(1).simulate("click");
-  });
-  it("should render correctly when modal closes", () => {
-    component.find(".qui-arc-menu-button").at(0).simulate("click");
-  });
-  it("should render correctly when modal closes", () => {
+  it("should render correctly whith top-left position", () => {
     component.setProps({
-      isCloseButton: true,
-    });
-    component.find(".qui-arc-menu-button").at(0).simulate("click");
-  });
-  it("should render correctly when modal isCloseButton prop is toggled", () => {
-    component.setProps({
-      isCloseButton: true,
+      position: "top-left",
     });
   });
-  it("should render correctly with null props", () => {
+  it("should render correctly with bottom-left position", () => {
     component.setProps({
-      withColor: null,
-      withTranslation: null,
-      content: {},
+      position: "bottom-left",
     });
-    expect(component.exists()).toBe(true);
   });
-  it("should render correctly when target is not specified", () => {
+  it("should render correctly with bottom-right position", () => {
     component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "",
-        dictionary: dictionary,
-      },
+      position: "bottom-right",
     });
-    expect(component.exists()).toBe(true);
   });
+  it("should render correctly when position not specified", () => {
+    component.setProps({
+      position: null,
+    });
+  });
+  it("should render correctly when modal is operated", () => {
+    component.setProps({
+      type: "menu",
+    });
+    component.find(".qui-arc-menu-button").simulate("click");
+    component.find(".qui-arc-menu-backdrop").at(0).simulate("click");
+  });
+  it("should render correctly when clicked on close button", () => {
+    component.find(".qui-arc-menu-close-button").simulate("click");
+  });
+  it("should render correctly when clicked on NuggetBlock", () => {
+    component.setProps({
+      type: "menu",
+    });
+    component.find(".qui-arc-menu-button").simulate("click");
+    component.find("NuggetBlock").at(0).simulate("click");
+  });
+  it("should render correctly when withColor props is null", () => {
+    component.setProps({
+      withColor: null
+    });
+  });
+  it("should render correctly when arcIcon props is null", () => {
+    component.setProps({
+      type:'menu',
+      arcIcon: null,
+      // type:''
+    });
+  });
+
 });
