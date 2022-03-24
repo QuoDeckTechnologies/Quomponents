@@ -126,7 +126,7 @@ MultiLineEdit.parameters = {
   docs: {
     description: {
       story:
-        "Use to animate the entry of the InlineEdit with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        "Use to show the multiLine editing state for the InlineEdit.",
     },
     source: {
       code: `<MultiLineEdit {...${JSON.stringify(
