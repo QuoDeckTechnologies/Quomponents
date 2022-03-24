@@ -34,7 +34,12 @@ ArcMenu.propTypes = {
   /**
   Use to toggle position of ArcMenu
   */
-  position: PropTypes.string,
+  position: PropTypes.oneOf([
+    'top-right',
+    'top-left',
+    'bottom-right',
+    'bottom-left'
+  ]),
   //=======================================
   // Quommon props
   //=======================================

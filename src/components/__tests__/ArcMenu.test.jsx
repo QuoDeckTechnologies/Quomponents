@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -86,15 +86,14 @@ describe("ArcMenu", () => {
   });
   it("should render correctly when withColor props is null", () => {
     component.setProps({
-      withColor: null
+      withColor: null,
     });
   });
   it("should render correctly when arcIcon props is null", () => {
     component.setProps({
-      type:'menu',
       arcIcon: null,
-      // type:''
+      type: "menu",
+      position: "bottom-right",
     });
   });
-
 });
