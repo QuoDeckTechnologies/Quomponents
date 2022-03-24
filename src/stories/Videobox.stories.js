@@ -75,7 +75,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a basic button for general-purpose use",
+    componentSubtitle: "Displays a videobox for general-purpose use",
     a11y: { disable: true },
     docs: { iframeHeight: 200 },
   },
@@ -121,7 +121,7 @@ WithoutContentUrl.parameters = {
   docs: {
     description: {
       story:
-        "Show ToolbarDark component without caption/label with asVarient:'warning'",
+        "Show VideoBox component without content url"
     },
     source: {
       code: `<WithoutContentUrl {...${JSON.stringify(
