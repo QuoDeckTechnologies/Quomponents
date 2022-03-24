@@ -27,10 +27,9 @@ export default {
                 defaultValue: false,
             },
         },
-
         asVariant: {
             control: "select",
-            options: ["primary", "secondary", "success", "warning"],
+            options: ["primary", "secondary", "success", "warning", "error"],
             table: {
                 category: "as-Flags",
             },
@@ -56,20 +55,12 @@ export default {
                 category: "as-Flags",
             },
         },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
 
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
-                    accentColor: "",
                     textColor: "",
                     hoverBackgroundColor: "",
                     hoverTextColor: "",
@@ -81,8 +72,6 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     icon: "",
-                    size: "",
-                    position: "left",
                 },
             },
         },
@@ -92,8 +81,6 @@ export default {
                 defaultValue: {
                     format: "caption",
                     content: "",
-                    textColor: "",
-                    hoverTextColor: "",
                 },
             },
         },
@@ -125,12 +112,6 @@ export default {
             },
         },
         isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        isFluid: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
@@ -173,20 +154,18 @@ Default.args = {
 
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "none",
+    asFloated: "inline",
     asPadded: "normal",
-    asAligned: "center",
 
     withLabel: {
         format: "caption",
-        content: "",
-        textColor: "",
-        hoverTextColor: "",
+        content: "Home",
     },
-    withIcon: { icon: "fa fa-home" },
+    withIcon: {
+        icon: "fa fa-home",
+    },
     withColor: {
         backgroundColor: "",
-        accentColor: "",
         textColor: "",
         hoverBackgroundColor: "",
         hoverTextColor: "",
@@ -204,7 +183,6 @@ Default.args = {
 
     isDisabled: false,
     isHidden: false,
-    isFluid: false,
 };
 Default.parameters = {
     docs: {
@@ -215,10 +193,10 @@ Default.parameters = {
 };
 
 // -------------------------------------------------------------
-// Colored Icon
+// Colored IconLink
 // -------------------------------------------------------------
-export const ColoredIcon = Template.bind({});
-ColoredIcon.args = {
+export const ColoredIconlink = Template.bind({});
+ColoredIconlink.args = {
     ...Default.args,
     withColor: {
         backgroundColor: "orange",
@@ -227,7 +205,7 @@ ColoredIcon.args = {
         hoverTextColor: "orange",
     },
 };
-ColoredIcon.parameters = {
+ColoredIconlink.parameters = {
     docs: {
         description: {
             story: "Use to override the standard colors of the Icon.",
@@ -239,19 +217,18 @@ ColoredIcon.parameters = {
 };
 
 // -------------------------------------------------------------
-// Labelled IconLink
+// Without Labelled IconLink
 // -------------------------------------------------------------
-export const LabelledIcon = Template.bind({});
-LabelledIcon.args = {
+export const WithoutLabelledIconlink = Template.bind({});
+WithoutLabelledIconlink.args = {
     ...Default.args,
     withLabel: {
         format: "caption",
-        content: "Home",
-        textColor: "",
+        content: "",
     },
 };
 
-LabelledIcon.parameters = {
+WithoutLabelledIconlink.parameters = {
     docs: {
         description: {
             story:
@@ -264,29 +241,10 @@ LabelledIcon.parameters = {
 };
 
 // -------------------------------------------------------------
-// Fluid Icon
+// Animated IconLink
 // -------------------------------------------------------------
-export const FluidIcon = Template.bind({});
-FluidIcon.args = {
-    ...Default.args,
-    isFluid: true,
-};
-FluidIcon.parameters = {
-    docs: {
-        description: {
-            story: "Typically used as the bottom of a modal or a container.",
-        },
-    },
-    source: {
-        code: `<IconLink isFluid={true}/>`,
-    },
-};
-
-// -------------------------------------------------------------
-// Animated Icon
-// -------------------------------------------------------------
-export const AnimatedIcon = Template.bind({});
-AnimatedIcon.args = {
+export const AnimatedIconlink = Template.bind({});
+AnimatedIconlink.args = {
     ...Default.args,
     withAnimation: {
         animation: "collapse",
@@ -294,7 +252,7 @@ AnimatedIcon.args = {
         delay: 0,
     },
 };
-AnimatedIcon.parameters = {
+AnimatedIconlink.parameters = {
     docs: {
         description: {
             story:
@@ -311,26 +269,26 @@ AnimatedIcon.parameters = {
 // -------------------------------------------------------------
 export const TranslatedIconlink = Template.bind({});
 TranslatedIconlink.args = {
-  ...Default.args,
-  withTranslation: {
-    lang: "hi",
-    tgt: "icon",
-    dictionary: dictionary,
-  },
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "icon",
+        dictionary: dictionary,
+    },
 };
 TranslatedIconlink.parameters = {
-  docs: {
-    description: {
-      story:
-        "Use to change the language that the text appears in iconlink. To make this work for the iconlink, add a icon:{label} value to the dictionary.",
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in iconlink. To make this work for the iconlink, add a icon:{label} value to the dictionary.",
+        },
+        source: {
+            code: `<TranslatedIconlink {...${JSON.stringify(
+                TranslatedIconlink.args,
+                null,
+                2
+            )}}/>`,
+        },
     },
-    source: {
-      code: `<TranslatedIconlink {...${JSON.stringify(
-        TranslatedIconlink.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
 };
 
