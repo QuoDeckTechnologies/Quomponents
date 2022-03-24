@@ -5,7 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import './MultiSelect.scss'
 import "../../common/stylesheets/overrule.scss";
-import CheckboxButton from "../CheckboxButton/CheckboxButton.react";
+import Button from "../Buttons/Button/Button.react";
 import _ from "lodash";
 import { getQuommons } from "../../common/javascripts/helpers";
 
@@ -16,7 +16,12 @@ MultiSelect.propTypes = {
     /**
     Each button Text has to be in content object.
     */
-    content: PropTypes.arrayOf(PropTypes.string).isRequired,
+    content: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string,
+            isSelected: PropTypes.bool,
+        })
+    ).isRequired,
     /**
     Set action emphasis in increasing order 
     */
@@ -99,6 +104,20 @@ MultiSelect.defaultProps = {
     isHidden: false,
     isDisabled: false,
 };
+function getColors(colors, emphasis, hovered) {
+    let colorStyle = hovered
+        ? {
+            background: colors.hoverBackgroundColor,
+            color: colors.hoverTextColor,
+        }
+        : {
+            background: emphasis !== "contained" ? "transparent" : colors.backgroundColor,
+            color: emphasis !== "contained" ? colors.backgroundColor : colors.textColor,
+        }
+    if (!hovered && emphasis === "outlined")
+        colorStyle.borderColor = colors.backgroundColor
+    return colorStyle;
+}
 
 /**
 ## Notes
@@ -109,27 +128,58 @@ MultiSelect.defaultProps = {
 
 export default function MultiSelect(props) {
     const { content } = props;
-    const [isChecked, setIsChecked] = useState([]);
-    const getValue = (e) => {
-        let value = isChecked;
-        value.push(e.target.value)
-        setIsChecked(value)
-        console.log(value)
+    const [hovered, setHovered] = useState(false);
+    const [isChecked, setIsChecked] = useState(props.content);
+    let tmp = isChecked;
+    function handleSubmit() {
+        let selectedIndexes = []
+        for (let i = 0; i <= props.content.length; i++) {
+            if (props.content[i]?.isSelected === true) {
+                selectedIndexes.push(i)
+            }
+        }
+        props.onClick(selectedIndexes)
     }
+
+    function toggleChecked(content) {
+        tmp = content;
+        tmp.isSelected = !tmp.isSelected;
+        setIsChecked(prevState => !prevState)
+    }
+    //-------------------------------------------------------------------
+    // 2. Set the component colors
+    //-------------------------------------------------------------------
+    let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
+
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "multi-select");
 
     return (
-        <div className={`qui ${quommonClasses.parentClasses}`} >
+        <div className={`qui qui-multi-select-container ${quommonClasses.parentClasses}`} >
             {_.map(content, (text, index) => {
                 return (
-                    <div key={index} className="Checkbox-list-item">
-                        <CheckboxButton {...props} content={text}/>
+                    <div key={index}
+                        className={`qui-multi-select-button-container ${quommonClasses.childClasses}`} >
+                        <div className="qui-multi-select-button">
+                            <div className={`qui-square-background`} >
+                                <i className={`qui-multi-select-checkbox  ${text.isSelected ? "fas fa-check-square" : "fa fa-square"}`}
+                                    onClick={() => toggleChecked(text)}>
+                                </i>
+                            </div>
+                            {<Button {...props} content={text.name} onClick={() => toggleChecked(text)} />}</div>
                     </div>
                 );
             })}
+            <input
+                type="submit"
+                value="Submit Answer"
+                className={`qui-submit-button qui-btn variant-${props.asVariant} emp-${props.asEmphasis}`}
+                onClick={() => handleSubmit()}
+                style={Object.assign({}, colors, props.style)}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)} />
         </div>
     )
 }

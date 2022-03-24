@@ -5,7 +5,24 @@ export default {
   title: "Design System/MultiSelect/MultiSelect",
   component: MultiSelect,
   argTypes: {
-    content: [],
+    content: [
+      {
+        name: "Primary Button",
+        isSelected: true,
+      },
+      {
+        name: "Primary Button",
+        isSelected: true,
+      },
+      {
+        name: "Primary Button",
+        isSelected: true,
+      },
+      {
+        name: "Primary Button",
+        isSelected: true,
+      },
+    ],
     asEmphasis: {
       control: "select",
       options: ["text", "outlined", "contained"],
@@ -97,9 +114,23 @@ export default {
 const Template = (args) => <MultiSelect {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: ["Primary Button",
-    "Primary Button",
-    "Primary Button"
+  content: [
+    {
+      name: "Primary Button",
+      isSelected: true,
+    },
+    {
+      name: "Primary Button",
+      isSelected: true,
+    },
+    {
+      name: "Primary Button",
+      isSelected: true,
+    },
+    {
+      name: "Primary Button",
+      isSelected: true,
+    },
   ],
   asEmphasis: "contained",
   isCircular: false,
@@ -134,3 +165,165 @@ Default.parameters = {
   },
 };
 
+
+// -------------------------------------------------------------
+// All Variants
+// -------------------------------------------------------------
+const AllVariantTemplate = (args) => {
+  const baseObj = {
+    ...Object.assign({}, Default.args, args),
+  };
+  return (
+    <div className="qui-allvariants-container">
+      <MultiSelect
+        {...Object.assign({}, baseObj, {
+          content: [
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+          ],
+          asVariant: "primary",
+          withAnimation: {
+            animation: "slideDown",
+            duration: 0.5,
+            delay: 0.2,
+          },
+        })}
+      />
+      <MultiSelect
+        {...Object.assign({}, baseObj, {
+          content: [
+            {
+              name: "Primary Button",
+              isSelected: false,
+            },
+            {
+              name: "Primary Button",
+              isSelected: false,
+            },
+            {
+              name: "Primary Button",
+              isSelected: false,
+            },
+            {
+              name: "Primary Button",
+              isSelected: false,
+            },
+          ],
+          asVariant: "secondary",
+          withAnimation: {
+            animation: "slideDown",
+            duration: 0.5,
+            delay: 0.4,
+          },
+        })}
+      />
+      <MultiSelect
+        {...Object.assign({}, baseObj, {
+          content: [
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+            {
+              name: "Primary Button",
+              isSelected: false,
+            },
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+            {
+              name: "Primary Button",
+              isSelected: false,
+            },
+          ],
+          asVariant: "success",
+          withAnimation: {
+            animation: "slideDown",
+            duration: 0.5,
+            delay: 0.6,
+          },
+        })}
+      />
+      <MultiSelect
+        {...Object.assign({}, baseObj, {
+          content: [
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+          ],
+          asVariant: "warning",
+          withAnimation: {
+            animation: "slideDown",
+            duration: 0.5,
+            delay: 0.8,
+          },
+        })}
+      />
+      <MultiSelect
+        {...Object.assign({}, baseObj, {
+          content: [
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+            {
+              name: "Primary Button",
+              isSelected: true,
+            },
+          ],
+          asVariant: "error",
+          withAnimation: {
+            animation: "slideDown",
+            duration: 0.5,
+            delay: 1,
+          },
+        })}
+      />
+    </div>
+  );
+};
+export const AllVariants = AllVariantTemplate.bind({});
+AllVariants.parameters = {
+  docs: {
+    description: {
+      story:
+        "5 variants  is supported. Use as per purpose noted here.",
+    },
+  },
+};
