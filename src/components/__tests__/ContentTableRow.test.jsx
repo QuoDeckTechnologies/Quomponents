@@ -2,7 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow, mount } from "enzyme";
-import {fireEvent, render, screen} from '@testing-library/react'
+import { fireEvent, render, screen } from "@testing-library/react";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -149,20 +149,22 @@ describe("ContentTableRow", () => {
       target: { value: "Editted file name" },
     });
   });
-  test('react testing lib', () => {
-    render(<ContentTableRow
-      content={{
-        name: "dummy file-name.pdf",
-        readerType: "videck",
-      }}
-      withAnimation={null}
-      isDisabled={false}
-      isHidden={false}
-      onClick={() => {}}
-    /> )
-    const button = screen.getByRole('button')
-    const input = screen.getByRole('textbox')
-    fireEvent.click(button)
-    fireEvent.mouseDown(input)
-  })
+  test("it should render correctly when menu is closed", () => {
+    render(
+      <ContentTableRow
+        content={{
+          name: "dummy file-name.pdf",
+          readerType: "videck",
+        }}
+        withAnimation={null}
+        isDisabled={false}
+        isHidden={false}
+        onClick={() => {}}
+      />
+    );
+    const button = screen.getByRole("button");
+    const input = screen.getByRole("textbox");
+    fireEvent.click(button);
+    fireEvent.mouseDown(input);
+  });
 });
