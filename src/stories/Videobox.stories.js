@@ -5,9 +5,8 @@ export default {
   title: "Design System/Videobox",
   component: Videobox,
   argTypes: {
-    content: {
-      url: "",
-    },
+
+    url: "",
     withAnimation: {
       table: {
         category: "with-Params",
@@ -87,9 +86,7 @@ export default {
 const Template = (args) => <Videobox {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    url: "https://www.youtube.com/watch?v=Bwx5nqvSTZ0",
-  },
+  url: "https://www.youtube.com/watch?v=Bwx5nqvSTZ0",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
@@ -112,10 +109,7 @@ Default.parameters = {
 export const WithoutContentUrl = Template.bind({});
 WithoutContentUrl.args = {
   ...Default.args,
-  content:
-  {
-    url: "",
-  }
+  url: "",
 };
 WithoutContentUrl.parameters = {
   docs: {

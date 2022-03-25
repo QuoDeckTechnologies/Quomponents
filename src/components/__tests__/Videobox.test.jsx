@@ -24,9 +24,8 @@ describe("Videobox", () => {
         jest.resetAllMocks();
         component = shallow(
             <Videobox
-                content={{
-                    url: "https://www.youtube.com/watch?v=Bwx5nqvSTZ0",
-                }}
+
+                url={"https://www.youtube.com/watch?v=Bwx5nqvSTZ0"}
                 withAnimation={{
                     animation: "zoom",
                     duration: 0.5,

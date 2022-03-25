@@ -16,11 +16,9 @@ Videobox.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Use to define title, sub-title and image of component
+    Use to define url of component
     */
-    content: PropTypes.shape({
-        url: PropTypes.string,
-    }).isRequired,
+    url: PropTypes.string,
     // Quommon props
     //=======================================
     /**
@@ -74,7 +72,7 @@ Videobox.propTypes = {
 Videobox.defaultProps = {
     // Component Specific props
     //=======================================
-    content: {},
+    url: "",
     // Quommon props
     //=======================================
     withAnimation: null,
@@ -111,16 +109,14 @@ export default function Videobox(props) {
         return props.onEnded;
     };
 
+    
+    const {url}=props;
     //-------------------------------------------------------------------
-    // 1. Destructuring content from props
-    //-------------------------------------------------------------------
-    let { content } = props;
-    //-------------------------------------------------------------------
-    // 2. Set the classes
+    // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "video-box");
     //-------------------------------------------------------------------
-    // 3. Get animation of the component
+    // 2. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
@@ -134,7 +130,7 @@ export default function Videobox(props) {
             <div className={`react-video-player`}>
                 <ReactPlayer
                     className="react-player"
-                    url={content?.url ? content?.url : "https://www.youtube.com/watch?v=NpEaa2P7qZI"}
+                    url={url ? url : "https://www.youtube.com/watch?v=NpEaa2P7qZI"}
                     width="100%"
                     height="100%"
                     playing
