@@ -160,20 +160,16 @@ export default function ActionMenu(props) {
         }
     }
     //-------------------------------------------------------------------
-    // 1. Destructuring content from props
-    //-------------------------------------------------------------------
-    let { content } = props;
-    //-------------------------------------------------------------------
-    // 2. Set the classes
+    // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "actionmenu");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
-    // 3. Set the component colors
+    // 2. Set the component colors
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor) : {};
     //-------------------------------------------------------------------
-    // 4. Get animation of the component
+    // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
