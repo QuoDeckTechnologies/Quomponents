@@ -1,0 +1,20 @@
+.qui .qui-nugget-block-image{
+    height: 4em;
+    width: 4em;
+    border-radius: 0.7em;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.qui-nugget-status{
+    position: relative;
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    top:0.7em;
+    margin-top: -0.7em;
+    left:-0.1em;
+    box-shadow: 0.15em 0.25em 0.25em rgba(0, 0, 0, 0.25);
+}
+
+
