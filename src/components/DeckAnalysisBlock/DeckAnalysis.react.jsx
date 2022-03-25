@@ -20,11 +20,12 @@ DeckAnalysis.propTypes = {
       DeckAnalysis data should be passed in content field and it is a required field
       */
     content: PropTypes.shape({
-        title: PropTypes.string,
-        description: PropTypes.string,
+        header: PropTypes.string,
+        message: PropTypes.string,
         icon: PropTypes.string,
         image: PropTypes.string,
-        slideNumber: PropTypes.number,
+        slideCount: PropTypes.number,
+        status: PropTypes.bool,
     }).isRequired,
     //=======================================
     // Quommon props
@@ -43,9 +44,8 @@ DeckAnalysis.propTypes = {
       Use to override component colors and behavior
       */
     withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
         textColor: PropTypes.string,
+        accentColor: PropTypes.string,
     }),
 
     /**
@@ -111,9 +111,6 @@ function getColors(colors) {
         accentColors: {
             color: colors.accentColor,
         },
-        backgroundColors: {
-            backgroundColor: colors.backgroundColor,
-        },
     };
     return colorStyle;
 }
@@ -133,7 +130,7 @@ export default function DeckAnalysis(props) {
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "deckanalysis");
+    let quommonClasses = getQuommons(props, "deckanalysisblock");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 3. Set the component colors
@@ -143,9 +140,8 @@ export default function DeckAnalysis(props) {
     // 4. Get translation of the component
     //-------------------------------------------------------------------
     let labelContent = {
-        title: content?.title,
-        description: content?.description,
-        slideNumber: content?.slideNumber,
+        header: content?.header,
+        message: content?.message,
     };
     let tObj = null;
 
@@ -156,9 +152,8 @@ export default function DeckAnalysis(props) {
     ) {
         tObj = getTranslation(props.withTranslation);
         if (labelContent && tObj) {
-            labelContent.title = tObj.title;
-            labelContent.description = tObj.description;
-            labelContent.slideNumber = tObj.slideNumber;
+            labelContent.header = tObj.header;
+            labelContent.message = tObj.message;
         }
     }
     //-------------------------------------------------------------------
@@ -173,22 +168,23 @@ export default function DeckAnalysis(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className="qui qui-maindeck" className={`${quommonClasses.childClasses}`} style={colors.textColors}>
-                <div className="qui-upperrblock">
-                    <div className="qui-decktitle">
-                        <div className="qui-upperblock">
-                            <p className={`qui-deckdigit`}>{labelContent?.slideNumber}</p>
-                            <img src={content?.image} className="qui-deckimage"></img>
+            <div className="qui qui-main-deckblock" className={`${quommonClasses.childClasses}`} style={colors.textColors}>
+                <div className="qui-deckblock-top">
+                    <div className="qui-deckblock-header">
+                        <div className="qui-deckblock-rtop">
+                            <p className={`qui-deckblock-slidecount`}>{content?.slideCount}</p>
+                            <img src={content?.image} className="qui-deckblock-image"></img>
                         </div>
-                        <h1>{labelContent?.title}</h1>
+                        <h1>{labelContent?.header}</h1>
                     </div>
-                    <div className="qui-titledescription" >
-                        <h1>{labelContent?.title}</h1>
-                        <h3>{labelContent?.description}</h3>
+                    <div className="qui-deckblock-header-message" >
+                        <h1>{labelContent?.header}</h1>
+                        <h3>{labelContent?.message}</h3>
                     </div>
                 </div>
-                <div className="qui-deckbottom"  style={colors.backgroundColors}>
-                    <i className={content?.icon} style={colors.accentColors} onClick={props.onClick}></i>
+                <div className="qui-deckblock-bottom" style={props.content?.status === true ? { backgroundColor: "#C1DC9E" } : { backgroundColor: "#D97575" }} >
+                    <i className={content?.icon} style={colors.accentColors}
+                        onClick={props.onClick}></i>
                 </div>
             </div>
         </motion.div>

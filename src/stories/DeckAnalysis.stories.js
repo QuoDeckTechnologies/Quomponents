@@ -4,9 +4,8 @@ import slideImage from "../assets/icons8_layout_60px.png";
 const dictionary = JSON.stringify({
     hi: {
         deckanalysis: {
-            title: "स्लाइड्स",
-            description: "डेक में 10 से 40 स्लाइड होनी चाहिए",
-            slideNumber: 18,
+            header: "स्लाइड्स",
+            message: "डेक में 10 से 40 स्लाइड होनी चाहिए",
         },
     },
 });
@@ -17,11 +16,12 @@ export default {
         content: {
             table: {
                 defaultValue: {
-                    title: "",
-                    description: "",
+                    header: "",
+                    message: "",
                     icon: "",
                     image: "",
-                    slideNumber:18,
+                    slideCount: null,
+                    status: null,
                 },
             },
         },
@@ -36,7 +36,6 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    backgroundColor: "",
                     accentColor: "",
                     textColor: "",
                 },
@@ -110,18 +109,19 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        title: "SLIDES",
-        description:
+        header: "SLIDES",
+        message:
             "Deck Should have 10 to 40 slides",
         icon: "fas fa-ellipsis-h",
         image: slideImage,
-        slideNumber: 18,
+        slideCount: 18,
+        status: false,
     },
-    asVariant: "primary",
+    asVariant: "warning",
     withColor: {
-        backgroundColor: "",
-        accentColor: "",
         textColor: "",
+        accentColor: "",
+       
     },
     withAnimation: {
         animation: "zoom",
@@ -151,14 +151,13 @@ export const ColoredDeckAnalysis = Template.bind({});
 ColoredDeckAnalysis.args = {
     ...Default.args,
     withColor: {
-        backgroundColor: "",
         textColor: "teal",
         accentColor: "tomato",
     },
 };
 ColoredDeckAnalysis.parameters = {
     docs: {
-        description: {
+        message: {
             story: "Use to override the standard colors of the Icon.",
         },
         source: {
@@ -182,7 +181,7 @@ AnimatedDeckAnalysis.args = {
 };
 AnimatedDeckAnalysis.parameters = {
     docs: {
-        description: {
+        message: {
             story: "We can animate the appearance of DeckAnalysis",
         },
         source: {
@@ -209,7 +208,7 @@ TranslatedDeck.args = {
 };
 TranslatedDeck.parameters = {
     docs: {
-        description: {
+        message: {
             story:
                 "We can translate the language of DeckAnalysis if dictionary is provided",
         },
