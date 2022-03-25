@@ -6,13 +6,13 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import DeckAnalysis from "../DeckAnalysisBlock/DeckAnalysis.react";
+import DeckAnalysis from "../DeckAnalysisBlock/DeckAnalysisBlock.react";
 
 describe("DeckAnalysis", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
-    let component, slideImage;
+    let component;
     const dictionary = JSON.stringify({
         hi: {
             deckanalysis: {
@@ -28,12 +28,12 @@ describe("DeckAnalysis", () => {
             <DeckAnalysis
                 content={{
                     header: "SLIDES",
+                    fheader: "SLIDES",
                     message:
                         "Deck Should have 10 to 40 slides",
                     icon: "fas fa-ellipsis-h",
-                    image: slideImage,
                     slideCount: 18,
-                    status:true,
+                    status: true,
                 }}
                 asVariant="primary"
                 let colors={{
@@ -56,16 +56,16 @@ describe("DeckAnalysis", () => {
     });
     it("should render correctly when passed withColor props", () => {
         component.setProps({
-            content:{
+            content: {
                 header: "SLIDES",
+                fheader: "SLIDES",
                 message:
                     "Deck Should have 10 to 40 slides",
                 icon: "fas fa-ellipsis-h",
-                image: slideImage,
                 slideCount: 18,
-                status:false,
+                status: false,
             },
-          });
+        });
     });
     it("should render correctly when passed withColor props", () => {
         let colors = {
@@ -97,36 +97,6 @@ describe("DeckAnalysis", () => {
 
     it("should render correctly when passed asVariant prop as success", () => {
         component.setProps({ asVariant: "success" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("should render correctly when passed asAligned prop as left", () => {
-        component.setProps({ asAligned: "left" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asAligned prop as right", () => {
-        component.setProps({ asAligned: "right" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asAligned prop as center", () => {
-        component.setProps({ asAligned: "center" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("should render correctly when passed asFloated prop as left", () => {
-        component.setProps({ asFloated: "left" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asFloated prop as right", () => {
-        component.setProps({ asFloated: "right" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asFloated prop as inline", () => {
-        component.setProps({ asFloated: "inline" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asFloated prop as none", () => {
-        component.setProps({ asFloated: "none" })
         expect(component.exists()).toBe(true);
     })
 

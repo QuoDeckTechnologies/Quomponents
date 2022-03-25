@@ -1,25 +1,25 @@
 import React from "react";
-import DeckAnalysis from "../components/DeckAnalysisBlock/DeckAnalysis.react";
-import slideImage from "../assets/icons8_layout_60px.png";
+import DeckAnalysisBlock from "../components/DeckAnalysisBlock/DeckAnalysisBlock.react";
 const dictionary = JSON.stringify({
     hi: {
         deckanalysis: {
             header: "स्लाइड्स",
+            fheader: "स्लाइड्स",
             message: "डेक में 10 से 40 स्लाइड होनी चाहिए",
         },
     },
 });
 export default {
-    title: "Design System/DeckAnalysis/DeckAnalysis",
-    component: DeckAnalysis,
+    title: "Design System/DeckAnalysisBlock/DeckAnalysis",
+    component: DeckAnalysisBlock,
     argTypes: {
         content: {
             table: {
                 defaultValue: {
                     header: "",
+                    fheader: "",
                     message: "",
                     icon: "",
-                    image: "",
                     slideCount: null,
                     status: null,
                 },
@@ -103,25 +103,25 @@ export default {
 // Default
 // -------------------------------------------------------------
 const Template = (args) => {
-    return <DeckAnalysis {...args} />;
+    return <DeckAnalysisBlock {...args} />;
 };
 
 export const Default = Template.bind({});
 Default.args = {
     content: {
         header: "SLIDES",
+        fheader: "SLIDES",
         message:
             "Deck Should have 10 to 40 slides",
-        icon: "fas fa-ellipsis-h",
-        image: slideImage,
+        icon: " fa fa-desktop",
         slideCount: 18,
-        status: false,
+        status: true,
     },
-    asVariant: "warning",
+    asVariant: "success",
     withColor: {
         textColor: "",
         accentColor: "",
-       
+
     },
     withAnimation: {
         animation: "zoom",
@@ -139,20 +139,20 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<DeckAnalysis {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<DeckAnalysisBlock {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
 
 //-------------------------------------------------------------
-// Colored DeckAnalysis
+// Colored DeckAnalysisBlock
 // -------------------------------------------------------------
 export const ColoredDeckAnalysis = Template.bind({});
 ColoredDeckAnalysis.args = {
     ...Default.args,
     withColor: {
-        textColor: "teal",
-        accentColor: "tomato",
+        textColor: "#3A8080",
+        accentColor: "#EB6346",
     },
 };
 ColoredDeckAnalysis.parameters = {
@@ -161,14 +161,14 @@ ColoredDeckAnalysis.parameters = {
             story: "Use to override the standard colors of the Icon.",
         },
         source: {
-            code: `<DeckAnalysis withColor: {backgroundColor: "",textColor: "teal",accentColor: "tomato",
+            code: `<DeckAnalysisBlock withColor: {backgroundColor: "",textColor: "teal",accentColor: "tomato",
       }/>`,
         },
     },
 };
 
 //-------------------------------------------------------------
-// Animated DeckAnalysis
+// Animated DeckAnalysisBlock
 // -------------------------------------------------------------
 export const AnimatedDeckAnalysis = Template.bind({});
 AnimatedDeckAnalysis.args = {
@@ -182,10 +182,10 @@ AnimatedDeckAnalysis.args = {
 AnimatedDeckAnalysis.parameters = {
     docs: {
         message: {
-            story: "We can animate the appearance of DeckAnalysis",
+            story: "We can animate the appearance of DeckAnalysisBlock",
         },
         source: {
-            code: `<DeckAnalysis {...${JSON.stringify(
+            code: `<DeckAnalysisBlock {...${JSON.stringify(
                 AnimatedDeckAnalysis.args,
                 null,
                 2
@@ -195,7 +195,7 @@ AnimatedDeckAnalysis.parameters = {
 };
 
 //-------------------------------------------------------------
-// Translated DeckAnalysis
+// Translated DeckAnalysisBlock
 // -------------------------------------------------------------
 export const TranslatedDeck = Template.bind({});
 TranslatedDeck.args = {
@@ -210,10 +210,10 @@ TranslatedDeck.parameters = {
     docs: {
         message: {
             story:
-                "We can translate the language of DeckAnalysis if dictionary is provided",
+                "We can translate the language of DeckAnalysisBlock if dictionary is provided",
         },
         source: {
-            code: `<DeckAnalysis {...${JSON.stringify(TranslatedDeck.args, null, 2)}}/>`,
+            code: `<DeckAnalysisBlock {...${JSON.stringify(TranslatedDeck.args, null, 2)}}/>`,
         },
     },
 };

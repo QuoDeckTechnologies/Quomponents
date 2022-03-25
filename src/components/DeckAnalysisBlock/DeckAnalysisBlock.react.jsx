@@ -9,7 +9,7 @@ import {
 } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
-import "./DeckAnalysis.scss";
+import "./DeckAnalysisBlock.scss";
 import "../../common/stylesheets/overrule.scss";
 
 DeckAnalysis.propTypes = {
@@ -21,6 +21,7 @@ DeckAnalysis.propTypes = {
       */
     content: PropTypes.shape({
         header: PropTypes.string,
+        fheader: PropTypes.string,
         message: PropTypes.string,
         icon: PropTypes.string,
         image: PropTypes.string,
@@ -141,6 +142,7 @@ export default function DeckAnalysis(props) {
     //-------------------------------------------------------------------
     let labelContent = {
         header: content?.header,
+        fheader: content?.fheader,
         message: content?.message,
     };
     let tObj = null;
@@ -153,6 +155,7 @@ export default function DeckAnalysis(props) {
         tObj = getTranslation(props.withTranslation);
         if (labelContent && tObj) {
             labelContent.header = tObj.header;
+            labelContent.fheader = tObj.fheader;
             labelContent.message = tObj.message;
         }
     }
@@ -173,9 +176,9 @@ export default function DeckAnalysis(props) {
                     <div className="qui-deckblock-header">
                         <div className="qui-deckblock-rtop">
                             <p className={`qui-deckblock-slidecount`}>{content?.slideCount}</p>
-                            <img src={content?.image} className="qui-deckblock-image"></img>
+                            <i className={`qui-deckblock-icon ${content?.icon}`}></i>
                         </div>
-                        <h1>{labelContent?.header}</h1>
+                        <h1>{labelContent?.fheader}</h1>
                     </div>
                     <div className="qui-deckblock-header-message" >
                         <h1>{labelContent?.header}</h1>
@@ -183,7 +186,7 @@ export default function DeckAnalysis(props) {
                     </div>
                 </div>
                 <div className="qui-deckblock-bottom" style={props.content?.status === true ? { backgroundColor: "#C1DC9E" } : { backgroundColor: "#D97575" }} >
-                    <i className={content?.icon} style={colors.accentColors}
+                    <i className="fas fa-ellipsis-h" style={colors.accentColors}
                         onClick={props.onClick}></i>
                 </div>
             </div>
