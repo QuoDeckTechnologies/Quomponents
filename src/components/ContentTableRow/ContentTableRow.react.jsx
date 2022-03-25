@@ -8,6 +8,7 @@ import "../../common/stylesheets/common.css";
 import "./ContentTableRow.scss";
 import "../../common/stylesheets/overrule.scss";
 import ActionMenu from "../ActionMenu/ActionMenu.react";
+import Backdrop from '@mui/material/Backdrop'
 
 ContentTableRow.propTypes = {
   //=======================================
@@ -124,7 +125,7 @@ export default function ContentTableRow(props) {
     const checkIfClickedOutside = (e) => {
       if (showMenu && !menuRef.current?.contains(e.target)) {
         setShowMenu(false);
-      }
+      } 
     };
     document.addEventListener("mousedown", checkIfClickedOutside);
     return () => {
@@ -152,6 +153,7 @@ export default function ContentTableRow(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
+      <Backdrop open={showMenu} />
       <div
         className={`qui-table-content-row-container ${quommonClasses.childClasses}`}
       >
