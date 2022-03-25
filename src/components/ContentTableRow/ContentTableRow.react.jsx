@@ -150,7 +150,7 @@ export default function ContentTableRow(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <Backdrop open={showMenu} />
+      <Backdrop open={showMenu} sx={{zIndex:10}}/>
       <div
         className={`qui-table-content-row-container ${quommonClasses.childClasses}`}
       >
