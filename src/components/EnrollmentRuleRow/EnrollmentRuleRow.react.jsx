@@ -177,7 +177,7 @@ export default function EnrollmentRuleRow(props) {
               </div>
             );
           } else {
-            return <></>;
+            return null;
           }
         })}
     </motion.div>

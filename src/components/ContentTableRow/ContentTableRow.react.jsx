@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
@@ -113,7 +113,6 @@ export default function ContentTableRow(props) {
   //-------------------------------------------------------------------
   // 2. Setting states for file name and checkbox
   //-------------------------------------------------------------------
-  // const menuRef = useRef()
   const [name, setName] = useState(content?.name);
   const [isChecked, setIsChecked] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
