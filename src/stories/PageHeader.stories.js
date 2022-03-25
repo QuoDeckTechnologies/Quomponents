@@ -115,3 +115,56 @@ Default.parameters = {
         },
     },
 };
+// -------------------------------------------------------------
+// Colored PageHeader
+// -------------------------------------------------------------
+export const ColoredPageHeader = Template.bind({});
+ColoredPageHeader.args = {
+    ...Default.args,
+    withColor: {
+        backgroundColor: "#666666",
+        textColor: "#fffff",
+    },
+};
+ColoredPageHeader.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to override the standard colors of the SliderHeader.",
+        },
+        source: {
+            code: `<ColoredPageHeader {...${JSON.stringify(
+                ColoredPageHeader.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Animated PageHeader
+// -------------------------------------------------------------
+export const AnimatedPageHeader = Template.bind({});
+AnimatedPageHeader.args = {
+    ...Default.args,
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+};
+AnimatedPageHeader.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to animate the entry of the PageHeader with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        },
+        source: {
+            code: `<AnimatedPageHeader {...${JSON.stringify(
+                AnimatedPageHeader.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+}; 

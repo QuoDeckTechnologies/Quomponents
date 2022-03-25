@@ -54,7 +54,7 @@ PageHeader.propTypes = {
     */
     asAligned: PropTypes.oneOf(["left", "right", "center"]),
     /**
-    Use to set Color 
+    Use to set Color in PageHeader
     */
     withColor: PropTypes.shape({
         textColor: PropTypes.string,
