@@ -226,7 +226,7 @@ export default function ArcMenu(props) {
               ></i>
             </button>
           )}
-          {props.type !== "close" && (
+          {props.type === "menu" && (
             <motion.div
               variants={props.position.includes('bottom') ? slideUp : slideDown}
               initial={false}
