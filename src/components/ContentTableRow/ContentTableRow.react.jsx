@@ -113,7 +113,7 @@ export default function ContentTableRow(props) {
   //-------------------------------------------------------------------
   // 2. Setting states for file name and checkbox
   //-------------------------------------------------------------------
-  const menuRef = useRef()
+  // const menuRef = useRef()
   const [name, setName] = useState(content?.name);
   const [isChecked, setIsChecked] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -123,13 +123,11 @@ export default function ContentTableRow(props) {
   }, [content?.name]);
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
-      if (showMenu && !menuRef.current?.contains(e.target)) {
-        setShowMenu(false);
-      } 
+      setShowMenu(false);
     };
-    document.addEventListener("mousedown", checkIfClickedOutside);
+    document.addEventListener("mouseup", checkIfClickedOutside);
     return () => {
-      document.removeEventListener("mousedown", checkIfClickedOutside);
+      document.removeEventListener("mouseup", checkIfClickedOutside);
     };
   }, [showMenu]);
   //-------------------------------------------------------------------
@@ -175,7 +173,7 @@ export default function ContentTableRow(props) {
           maxLength={60}
           onChange={(e) => setName(e.target.value)}
         />
-        <div className="qui-content-table-row-dropdown" ref={menuRef}>
+        <div className="qui-content-table-row-dropdown">
           <button
             className="qui-content-menu"
             onClick={() => setShowMenu((prevState) => !prevState)}

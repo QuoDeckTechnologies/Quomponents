@@ -165,6 +165,6 @@ describe("ContentTableRow", () => {
     const button = screen.getByRole("button");
     const input = screen.getByRole("textbox");
     fireEvent.click(button);
-    fireEvent.mouseDown(input);
+    fireEvent.mouseUp(input);
   });
 });
