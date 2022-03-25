@@ -186,7 +186,7 @@ export default function ActionMenu(props) {
         >
             {_.map(props.content, (content, index) => {
                 return (
-                    <div className={`qui-actionmenu-items`} onClick={() => handelevent(index)} key={index} style={colors.backgroundColors}>
+                    <div className={`qui-actionmenu-items`} onMouseDown={() => handelevent(index)} key={index} style={colors.backgroundColors}>
                         <div className="qui-actionmenu-icon" ><i className={`qui-actionmenu-icons ${content.icon}`} style={colors.accentColors}></i></div>
                         <div className={`qui-actionmenu-titles `} style={colors.textColors}>{content.title}</div>
                     </div>
