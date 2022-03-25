@@ -2,7 +2,6 @@
 // Import from NPM
 // -------------------------------------
 import { mount, shallow } from "enzyme";
-import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -12,12 +11,17 @@ describe("MultiSelct", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
-  let component;
+  let component, content;
+  content = [{
+    name: "Primary",
+    isSelected: true
+  }]
   beforeEach(() => {
     jest.resetAllMocks();
     let handleSubmit = jest.fn()
     component = mount(
       <MultiSelect
+        content={content}
         asEmphasis="contained"
         isCircular={false}
         asVariant="primary"
@@ -36,13 +40,12 @@ describe("MultiSelct", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-
   it("should render correctly onClick for Check true", () => {
-    component.find(".qui-btn").at(0).simulate('click');
+    component.find(".qui-btn").at(1).simulate('click');
   });
   it('Test click event on handleSubmit funtion of Button', () => {
     const handleSubmit = jest.fn();
-    const button = shallow((<MultiSelect onClick={handleSubmit}>Ok!</MultiSelect>));
+    const button = shallow((<MultiSelect onClick={handleSubmit} />));
     button.find('input').at(0).simulate('click');
     expect(handleSubmit.mock.calls.length).toEqual(1);
   });
@@ -58,7 +61,6 @@ describe("MultiSelct", () => {
     component.setProps({ withColor: colors })
     expect(component.exists()).toBe(true);
   })
-
   it("should render correctly when passed asEmphasis prop as contained", () => {
     let colors = {
       backgroundColor: "#fff",
@@ -71,7 +73,6 @@ describe("MultiSelct", () => {
     component.setProps({ withColor: colors })
     expect(component.exists()).toBe(true);
   })
-
   it("should render correctly when passed asEmphasis prop as outlined", () => {
     let colors = {
       backgroundColor: "#fff",
@@ -166,5 +167,13 @@ describe("MultiSelct", () => {
     component.setProps({
       isCircular: true,
     });
+  });
+  it("should render with onclick toggleChecked", () => {
+    let btn = component.find(".qui-multi-select-checkbox").at(0)
+    btn.simulate('click')
+  });
+  it("should render with onclick submit", () => {
+    let btn = component.find(".qui-submit-button")
+    btn.simulate('click')
   });
 });

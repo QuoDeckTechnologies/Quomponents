@@ -90,12 +90,11 @@ MultiSelect.defaultProps = {
     // Component Specific props
     //=======================================
     content: [],
-    asEmphasis: "contained",
-    isCircular: false,
-
     //=======================================
     // Quommon props
     //=======================================
+    asEmphasis: "contained",
+    isCircular: false,
     asVariant: "primary",
     asFloated: "none",
     withColor: null,
@@ -104,20 +103,6 @@ MultiSelect.defaultProps = {
     isHidden: false,
     isDisabled: false,
 };
-function getColors(colors, emphasis, hovered) {
-    let colorStyle = hovered
-        ? {
-            background: colors.hoverBackgroundColor,
-            color: colors.hoverTextColor,
-        }
-        : {
-            background: emphasis !== "contained" ? "transparent" : colors.backgroundColor,
-            color: emphasis !== "contained" ? colors.backgroundColor : colors.textColor,
-        }
-    if (!hovered && emphasis === "outlined")
-        colorStyle.borderColor = colors.backgroundColor
-    return colorStyle;
-}
 
 /**
 ## Notes
@@ -125,32 +110,31 @@ function getColors(colors, emphasis, hovered) {
 - Or add custom css in overrule.scss to override the component css
 - Check and uncheck your selection by clicking on it
 **/
-
 export default function MultiSelect(props) {
     const { content } = props;
-    const [hovered, setHovered] = useState(false);
-    const [isChecked, setIsChecked] = useState(props.content);
-    let tmp = isChecked;
+    const [, setIsChecked] = useState();
+    let tmp = props.content;
     function handleSubmit() {
         let selectedIndexes = []
         for (let i = 0; i <= props.content.length; i++) {
-            if (props.content[i]?.isSelected === true) {
+            if (props.content[i]?.isSelected) {
                 selectedIndexes.push(i)
             }
         }
         props.onClick(selectedIndexes)
     }
-
     function toggleChecked(content) {
         tmp = content;
         tmp.isSelected = !tmp.isSelected;
         setIsChecked(prevState => !prevState)
     }
     //-------------------------------------------------------------------
-    // 2. Set the component colors
+    // 3. Set the color
     //-------------------------------------------------------------------
-    let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
-
+    let colors = {
+        backgroundColor: props.withColor?.backgroundColor,
+        color: props.withColor?.textColor
+    }
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -177,9 +161,7 @@ export default function MultiSelect(props) {
                 value="Submit Answer"
                 className={`qui-submit-button qui-btn variant-${props.asVariant} emp-${props.asEmphasis}`}
                 onClick={() => handleSubmit()}
-                style={Object.assign({}, colors, props.style)}
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)} />
+                style={colors} />
         </div>
     )
 }
