@@ -13,14 +13,6 @@ import ArcMenu from "../ArcMenu/ArcMenu.react";
 import Button from "../Buttons/Button/Button.react";
 import defaultImage from "../../assets/default11.jpeg";
 
-// 
-import Nugget_Story from "../../assets/nuggets/nugget_story.png";
-import Nugget_Quiz from "../../assets/nuggets/nugget_quiz.png";
-import Nugget_Assessment from "../../assets/nuggets/nugget_assessment.png";
-import Nugget_Game from "../../assets/nuggets/nugget_game.png";
-import Nugget_Article from "../../assets/nuggets/nugget_article.png";
-import Nugget_Feedback from "../../assets/nuggets/nugget_feedback.png";
-
 ImageUploadModal.propTypes = {
   //=======================================
   // Component Specific props
@@ -258,17 +250,7 @@ export default function ImageUploadModal(props) {
         </div>
         <ArcMenu
           {...props}
-          content={{
-            menuData: [
-              { image: Nugget_Story},
-              { image: Nugget_Quiz},
-              { image: Nugget_Assessment},
-              { image: Nugget_Game},
-              { image: Nugget_Article},
-              { image: Nugget_Feedback},
-            ],
-          }}
-          arcIcon='fa fa-caret-down'
+          content={[]}
           type="close"
           position="top-right"
           onClick={() => {

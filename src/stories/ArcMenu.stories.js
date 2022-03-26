@@ -12,17 +12,11 @@ export default {
   title: "Design System/ArcMenu/ArcMenu",
   component: ArcMenu,
   argTypes: {
-    content: {
-      table: {
-        defaultValue: {
-          menuData: [],
-        },
-      },
-    },
+    content: [],
     arcIcon: "",
     type: {
       control: "select",
-      options: ["menu", "add", "close"],
+      options: ["close", "menu", "add"],
     },
     position: {
       control: "select",
@@ -31,13 +25,6 @@ export default {
     asSize: {
       control: "select",
       options: ["tiny", "small", "normal", "big", "huge", "massive"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asVariant: {
-      control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
       table: {
         category: "as-Flags",
       },
@@ -100,21 +87,18 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    menuData: [
-      { image: Nugget_Story },
-      { image: Nugget_Quiz },
-      { image: Nugget_Assessment },
-      { image: Nugget_Game },
-      { image: Nugget_Article },
-      { image: Nugget_Feedback },
-    ],
-  },
-  arcIcon: "fas fa-caret-down",
+  content: [
+    { image: Nugget_Story },
+    { image: Nugget_Quiz },
+    { image: Nugget_Assessment },
+    { image: Nugget_Game },
+    { image: Nugget_Article },
+    { image: Nugget_Feedback },
+  ],
+  arcIcon: "",
   type: "close",
   position: "top-right",
   asSize: "normal",
-  asVariant: "primary",
   withColor: {
     backgroundColor: "",
     accentColor: "",
@@ -131,7 +115,7 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Default Close button
+// Menu button
 // -------------------------------------------------------------
 export const MenuButton = Template.bind({});
 MenuButton.args = {
@@ -147,19 +131,39 @@ MenuButton.parameters = {
   },
 };
 // -------------------------------------------------------------
+// Menu button
+// -------------------------------------------------------------
+export const AddButton = Template.bind({});
+AddButton.args = {
+  ...Default.args,
+  type: "add",
+  position: "bottom-left",
+};
+AddButton.parameters = {
+  docs: {
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(AddButton.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
 // Colored ArchMenu
 // -------------------------------------------------------------
 export const ColoredArcMenu = Template.bind({});
 ColoredArcMenu.args = {
   ...Default.args,
+  arcIcon: "fas fa-exclamation-circle",
   withColor: {
-    backgroundColor: "#f5f5f5",
-    accentColor: "",
-    textColor: "#fec13c",
+    backgroundColor: "#B1D0E0",
+    accentColor: "#ffffff",
+    textColor: "#1A374D",
   },
 };
 ColoredArcMenu.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the ArcMenu.",
+    },
     source: {
       code: `<ArcMenu {...${JSON.stringify(ColoredArcMenu.args, null, 2)}}/>`,
     },

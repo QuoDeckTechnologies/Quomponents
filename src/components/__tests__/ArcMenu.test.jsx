@@ -16,16 +16,14 @@ describe("ArcMenu", () => {
     jest.resetAllMocks();
     component = shallow(
       <ArcMenu
-        content={{
-          menuData: [
-            { image: "" },
-            { image: "" },
-            { image: "" },
-            { image: "" },
-            { image: "" },
-            { image: "" },
-          ],
-        }}
+        content={[
+          { image: "" },
+          { image: "" },
+          { image: "" },
+          { image: "" },
+          { image: "" },
+          { image: "" },
+        ]}
         arcIcon="fas fa-caret-down"
         type="close"
         position="top-right"
@@ -73,6 +71,18 @@ describe("ArcMenu", () => {
     });
     component.find(".qui-arc-menu-button").simulate("click");
     component.find(".qui-arc-menu-backdrop").at(0).simulate("click");
+  });
+  it("should render correctly with add type and empty arcIcon", () => {
+    component.setProps({
+      arcIcon:'',
+      type: "add",
+    });
+  });
+  it("should render correctly with add type and empty arcIcon", () => {
+    component.setProps({
+      arcIcon:'',
+      type: "close",
+    });
   });
   it("should render correctly when clicked on close button", () => {
     component.find(".qui-arc-menu-close-button").simulate("click");
