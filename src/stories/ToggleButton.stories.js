@@ -168,3 +168,64 @@ TranslatedToggleButton.parameters = {
   },
 };
 
+// Different Variants ToggleButton
+// -------------------------------------------------------------
+const AllSizeTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            withColor: null,
+            asFloated: "inline",
+        }),
+    };
+    return (
+        <div>
+            <ToggleButton
+                {...Object.assign({}, baseObj, {
+                    content: "tiny toggle Button",
+                    asSize: "tiny",
+                    asVariant: "primary",
+                })}
+            />{" "}
+            <ToggleButton
+                {...Object.assign({}, baseObj, {
+                    content: "small toggle Button",
+                    asSize: "small",
+                    asVariant: "secondary",
+                })}
+            />{" "}
+            <ToggleButton
+                {...Object.assign({}, baseObj, {
+                    content: "big toggle Button",
+                    asSize: "big",
+                    asVariant: "warning",
+                })}
+            />{" "}
+            <ToggleButton
+                {...Object.assign({}, baseObj, {
+                    content: "huge toggle Button",
+                    asSize: "huge",
+                    asVariant: "primary",
+                })}
+            />{" "}
+            <ToggleButton
+                {...Object.assign({}, baseObj, {
+                    content: "massive toggle Button",
+                    asSize: "massive",
+                    asVariant: "warning",
+                })}
+            />{" "}
+        </div>
+    );
+};
+export const DifferentSizeToggleButton = AllSizeTemplate.bind({});
+DifferentSizeToggleButton.parameters = {
+    docs: {
+        description: {
+            story: "Variants and Size are supported. Use as per purpose noted here.",
+        },
+        source: {
+            code: `<ToggleButton content: "massive toggle Button", asSize: "massive", asVariant: "warning"/>`,
+        },
+    },
+};
+
