@@ -2,16 +2,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import {
-  getQuommons,
-  getTranslation,
-  getAnimation,
-} from "../../common/javascripts/helpers";
-
+import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ClickableImage.scss";
 import "../../common/stylesheets/overrule.scss";
+import defaultImage from "../../assets/default11.jpeg";
 
 ClickableImage.propTypes = {
   //=======================================
@@ -23,21 +19,6 @@ ClickableImage.propTypes = {
   content: PropTypes.shape({
     image: PropTypes.string,
   }),
-  /**
-    Use to define component text size in increasing order
-    */
-  asSize: PropTypes.oneOf([
-    "tiny",
-    "small",
-    "normal",
-    "big",
-    "huge",
-    "massive",
-  ]),
-  /**
-    Use to define component padding in increasing order
-    */
-  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
   /**
     Use to define the entry animation of the component
     */
@@ -77,8 +58,6 @@ ClickableImage.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asSize: "normal",
-  asPadded: "normal",
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
@@ -86,7 +65,7 @@ ClickableImage.defaultProps = {
 
 /**
 ## Notes
-- The design system used for this component is Material UI (@mui/material)
+- The design system used for this component is HTML and CSS
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
@@ -97,11 +76,24 @@ export default function ClickableImage(props) {
   // 1. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "clickable-image");
+  //-------------------------------------------------------------------
+  // 2. Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props.withAnimation);
   // ========================= Render Function =================================
 
   return (
-    <div className={`qui ${quommonClasses.parentClasses}`}>
-      <img src={content.image ? content.image : ''} className='' alt="clickable picture" onClick={(e) => props.onClick(e)}/>
-    </div>
+    <motion.div
+      initial={animate.from}
+      animate={animate.to}
+      className={`qui ${quommonClasses.parentClasses}`}
+    >
+      <img
+        src={content.image ? content.image : defaultImage}
+        className="qui-clicked-on-image"
+        alt="clickable picture"
+        onClick={(e) => props.onClick(e)}
+      />
+    </motion.div>
   );
 }

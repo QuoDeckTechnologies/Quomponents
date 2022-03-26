@@ -12,20 +12,6 @@ export default {
         },
       },
     },
-    asSize: {
-      control: "select",
-      options: ["tiny", "small", "normal", "big", "huge", "massive"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asPadded: {
-      control: "select",
-      options: ["fitted", "compact", "normal", "relaxed"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -55,23 +41,11 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          // width: "100%",
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
   parameters: {
     componentSubtitle:
       "Displays a basic Clickable Image for general-purpose use",
     a11y: { disable: true },
-    // controls: { expanded: true }
+    docs: { iframeHeight: 1000 },
   },
 };
 // -------------------------------------------------------------
@@ -81,11 +55,8 @@ const Template = (args) => <ClickableImage {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    image:
-      "https://images.unsplash.com/photo-1647339490516-b835c0408b71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    image: "",
   },
-  asSize: "normal",
-  asPadded: "normal",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
@@ -98,6 +69,27 @@ Default.parameters = {
   docs: {
     source: {
       code: `<ClickableImage {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// With Image
+// -------------------------------------------------------------
+export const WithImage = Template.bind({});
+WithImage.args = {
+  ...Default.args,
+  content: {
+    image:
+      "https://images.unsplash.com/photo-1647339490516-b835c0408b71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  },
+};
+WithImage.parameters = {
+  docs: {
+    description: {
+      story: "Use to Show the ClickableImage with image provided by the user.",
+    },
+    source: {
+      code: `<ClickableImage {...${JSON.stringify(WithImage.args, null, 2)}}/>`,
     },
   },
 };
