@@ -1,30 +1,17 @@
 import React from "react";
 import NuggetCard from "../components/NuggetCard/NuggetCard.react";
-import PlayBtn from "../assets/play-btn.png"
 
-const dictionary = JSON.stringify({
-    hi: {
-        ActionButton: {
-            title: "ख़रीदे",
-            subTitle: "रु. ७५"
-        }
-    },
-});
 export default {
     title: "Design System/NuggetCard/NuggetCard",
     component: NuggetCard,
     argTypes: {
-        isEllipse: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: true,
-            },
-        },
         content: {
             title: "",
-            subTitle: "",
-            image: PlayBtn
+            description: "",
+            baseImage: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
+            tag: []
         },
+        baseImage: "",
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -135,11 +122,11 @@ const Template = (args) => <NuggetCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        title: "BUY",
-        subTitle: "Rs. 75",
-        image: PlayBtn
+        title: "Measure your sales readiness",
+        description: "Take this quick profile test to check how well you are prepared for a sales job",
+        baseImage: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
+        tag: ["SAles", "Sales2"]
     },
-    isEllipse: true,
     asVariant: "primary",
     asSize: "normal",
     asFloated: "inline",
@@ -154,18 +141,58 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-    withTranslation: {
-        lang: "en",
-        tgt: "button",
-        dictionary: dictionary,
-    },
     isDisabled: false,
     isHidden: false,
 };
 Default.parameters = {
     docs: {
         source: {
-            code: `<Button {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<NuggetCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
+};
+// -------------------------------------------------------------
+// MobileView
+// -------------------------------------------------------------
+
+export const DifferentResolution = (args) => {
+    const baseObj1 = {
+        ...Object.assign({}, Default.args, args, {
+            content: {
+                title: "Measure your sales readiness",
+                description: "Take this quick profile test to check how well you are prepared for a sales job",
+                baseImage: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
+                tag: ["SAles", "Sales2"]
+            },
+        }),
+    };
+    return (
+        <div style={{display:"flex", flexWrap:"wrap"}}>
+            <div style={{ display: "flex", width: "375px", margin:"5px" }}>
+                <NuggetCard
+                    {...Object.assign({}, baseObj1, {
+                    })}
+                />
+            </div>
+            <div style={{ display: "flex", width: "481px", margin:"5px" }}>
+                <NuggetCard
+                    {...Object.assign({}, baseObj1, {
+                    })}
+                />
+            </div>
+            <div style={{ display: "flex", width: "769px", margin:"5px" }}>
+                <NuggetCard
+                    {...Object.assign({}, baseObj1, {
+                    })}
+                />
+            </div>
+            <div style={{ display: "flex", width: "1024px", margin:"5px" }}>
+                <NuggetCard
+                    {...Object.assign({}, baseObj1, {
+                    })}
+                />
+            </div>
+        </div>
+
+    );
 };

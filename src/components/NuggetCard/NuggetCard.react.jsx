@@ -5,29 +5,37 @@ import {
     getQuommons,
     getTranslation
 } from "../../common/javascripts/helpers.js";
+import _ from "lodash";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./NuggetCard.scss";
 import "../../common/stylesheets/overrule.scss";
-import { Button } from "@mui/material";
+
+import NuggetBlock from "../NuggetBlock/NuggetBlock.react.jsx";
+import Tag from "../Tag/Tag.react";
+import Reward from "../Reward/Reward.react";
+import IconBlock from "../IconBlock/IconBlock.react";
+import ShareWidget from "../ShareWidget/ShareWidget.react";
+import ArcMenu from "../ArcMenu/ArcMenu.react";
+
+import Nugget_Profiler from "../../assets/nuggets/nugget_profiler.png";
+import deafaultImage from "../../assets/default.jpeg"
 
 NuggetCard.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-    /**
-    Use to define title, sub-title and image of component
-    */
+
     content: PropTypes.shape({
         title: PropTypes.string,
-        subTitle: PropTypes.string,
-        image: PropTypes.string
-    }).isRequired,
-    /**
-    Use to define the visibility of Background Ellipse 
-    */
-    isEllipse: PropTypes.bool,
+        baseImage: PropTypes.string,
+        description: PropTypes.string,
+        tag: PropTypes.shape({
+            name: PropTypes.string
+        })
+    }),
+
 
     // Quommon props
     //=======================================
@@ -60,11 +68,6 @@ NuggetCard.propTypes = {
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "inline"]),
-    /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
-
     /**
     Use to override component colors and behavior
     */
@@ -120,9 +123,12 @@ NuggetCard.propTypes = {
 NuggetCard.defaultProps = {
     // Component Specific props
     //=======================================
-    content: null,
-    isEllipse: true,
-
+    content: {
+        title: "Measure your sales readiness",
+        description: "Take this quick profile test to check how well you are prepared for a sales job... ",
+        baseImage: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
+        tag: []
+    },
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -178,41 +184,78 @@ export default function NuggetCard(props) {
     // 4. Get the custom styling of the component
     //-------------------------------------------------------------------
 
+    function handleNuggetBlock() {
+        props.onClick()
+    }
 
+    //-------------------------------------------------------------------
+    // 5. Get the Base Image
+    //-------------------------------------------------------------------
+    let baseImage = props.content.baseImage ? props.content?.baseImage : deafaultImage;
 
     //-------------------------------------------------------------------
     // 5. Get the Status of Component
     //-------------------------------------------------------------------
+
+    // 6. Get the tags
+    let tags = props.content.tag
+
+    console.log(props.content.tag[0])
     const nuggetCard = () => {
         return (
             <div className={`qui-nugget-card-container`}>
                 <div className="qui-nugget-card-body">
-                    <div className={`qui-nugget-card-child1`}>
-                        Nugget block
+                    <div className={`qui-nugget-card-title-container`}>
+                        <div className={`qui-nugget-block-styling`}>
+                            <NuggetBlock status="none" image={Nugget_Profiler} onClick={handleNuggetBlock} />
+                        </div>
+
+                        <div className={`qui-nugget-card-title`}>
+                            {props.content?.title}
+                        </div>
                     </div>
-                    <div className="qui-nugget-card-child2" style={{ backkgroundColor: "red" }}>
-                        <Button {...props}>Sales</Button>
+                    <div className="qui-nugget-card-tag-container" style={{ backkgroundColor: "red" }}>
+                        {_.map(tags, (tag, index) => {
+                            return (
+                                <div className={`qui-nugget-card-tag`} >
+                                    <Tag content={tag} asSize="tiny" withColor={{ backgroundColor: "#FFAB00", textColor: "#000" }} />
+                                </div>
+                            )
+                        })}
+
                     </div>
-                    <div className="img-container">
-                        <img src="https://images.unsplash.com/photo-1579353977828-2a4eab540b9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2FtcGxlfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-                            alt="img"
-                            height="100%"
-                            width="100%"
-                        />
+                    <div className="qui-nugget-card-base-image" style={{ backgroundImage: `url(${baseImage})` }}>
                     </div>
-                    <div className={`qui-nugget-card-child4`}>
-                    some content
+                    <div className={`qui-nugget-card-description-container`}>
+                        <div className={`qui-nugget-card-description`}>
+                            {props.content?.description}
+                        </div>
+                        <div className={`qui-nugget-card-reward`}>
+                            <Reward asSize="tiny" content={{ label: "Complete to win", point: "200" }} />
+                        </div>
                     </div>
                 </div>
                 <div className="qui-nugget-card-footer">
-                <div className="last-child">
-                    footer
+                    <div className={`qui-nugget-card-arc-menu`}>
+                        <ArcMenu content={{ arcIcon: "fas fa-th-large" }} withColor={{ backgroundColor: "#666666" }}
+                            asSize="normal"
+                        />
+                    </div>
+                    <div className={`qui-nugget-card-share-block`}>
+                        <div className={`qui-nugget-card-name`}>
+                            {"Profiler"}
+                        </div>
+                        <div className={'qui-nugget-card-share-widget'}>
+                            <ShareWidget asSize="tiny" withColor={{ textColor: "#AAAAAA" }} content={{ label: "Share", url: "https://www.quodeck.com" }} />
+                        </div>
+                        <div className={'qui-nugget-card-link'}>
+                            <a href="https://www.quodeck.com/XrPmy_OAK" >https://www.quodeck.com/XrPmy_OAK</a>
+                            <IconBlock asSize="small" asEmphasis="text" withIcon={{ name: "fas fa-copy" }} withColor={{ accentColor: "yellow" }} />
+                        </div>
+                    </div>
                 </div>
-                </div>
-
             </div>
         )
-
     }
     return (
         <div
