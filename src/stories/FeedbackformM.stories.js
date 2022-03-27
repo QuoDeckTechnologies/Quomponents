@@ -5,6 +5,10 @@ export default {
     title: "Design System/FeedbackformM/FeedbackformM",
     component: FeedbackformM,
     argTypes: {
+        content :{
+            title:"Show Feedback",
+            isToggled: true,
+        },
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -15,6 +19,21 @@ export default {
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+
+        asFloated: {
+            control: "select",
+            options: ["left", "right", "none", "inline"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asAligned: {
+            control: "select",
+            options: ["left", "right", "center"],
             table: {
                 category: "as-Flags",
             },
@@ -74,6 +93,14 @@ const Template = (args) => <FeedbackformM {...args} />;
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
+    content :{
+        title:"Show Feedback",
+        isToggled: true,
+    },
+    asSize: "normal",
+    asFloated: "inline",
+    asVariant:"primary",
+    asAligned:"",
     withAnimation: {
         animation: "zoom",
         duration: 0.5,

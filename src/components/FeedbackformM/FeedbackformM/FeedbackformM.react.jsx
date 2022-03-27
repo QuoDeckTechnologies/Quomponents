@@ -1,6 +1,7 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
+import ToggleButton from "../../ToggleButton/ToggleButton.react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./FeedbackformM.scss";
@@ -12,7 +13,10 @@ FeedbackformM.propTypes = {
     //=======================================
     // Quommon props
     //=======================================
-
+    content: PropTypes.shape({
+        title: PropTypes.string,
+        isToggled: PropTypes.bool,
+    }),
     /**
     Use to define standard component type
     */
@@ -34,6 +38,14 @@ FeedbackformM.propTypes = {
         "huge",
         "massive",
     ]),
+    /**
+    Use to float the component in parent container
+    */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+    /**
+    Use to align content within the component container
+    */
+    asAligned: PropTypes.oneOf(["left", "right", "center"]),
     /**
     Use to define the entry animation of the component
     */
@@ -67,11 +79,13 @@ FeedbackformM.propTypes = {
 };
 
 FeedbackformM.defaultProps = {
+    content: "",
     //=======================================
     // Quommon props
     //=======================================
     asVariant: "primary",
     asSize: "normal",
+    asFloated: "inline",
     isHidden: false,
     isDisabled: false,
 };
@@ -85,9 +99,10 @@ FeedbackformM.defaultProps = {
 **/
 
 export default function FeedbackformM(props) {
+    let { content } = props
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "FeedbackformM");
+    let quommonClasses = getQuommons(props, "feedback-form-m");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 2. Get animation of the component
@@ -103,16 +118,14 @@ export default function FeedbackformM(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`qui-togle-main  ${quommonClasses.childClasses}`}>
-
-                <div className={`qui-togle`}>
-                    <div className="qui-checkbox-text">
-                        <input onClick={props.onClick} type="checkbox" />
-                        <span>SHOW FEEDBACK</span>
-                    </div>
+            <div className={`qui-feedback-form-container  ${quommonClasses.childClasses}`}>
+                <div className="qui-feedback-toggle">
+                    <ToggleButton {...props} asFloated={'none'}/>
                 </div>
-                <input type='text' placeholder='If Correct' className="qui-togle-title" />
-                <input type='text' placeholder='If InCorrect' className="qui-togle-title" />
+                <div className={`qui-feedback-form size-${props.asSize}`}>
+                    <input type='text' placeholder='If Correct' className={`qui-toggle-input-fields size-${props.asSize} variant-${props.asVariant}`} />
+                    <input type='text' placeholder='If InCorrect' className={`qui-toggle-input-fields size-${props.asSize} variant-${props.asVariant}`} />
+                </div>
             </div>
         </motion.div>
     );
