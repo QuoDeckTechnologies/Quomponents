@@ -20,7 +20,10 @@ ToggleButton.propTypes = {
 
     // Quommon props
     //=======================================
-    content: PropTypes.string.isRequired,
+    content: PropTypes.shape({
+        title:PropTypes.string,
+        isToggled: PropTypes.bool,
+    }),
 
     /**
     Use to define standard component type
@@ -133,7 +136,7 @@ ToggleButton.defaultProps = {
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function ToggleButton(props) {
-    let {content} = props
+    let { content } = props
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -144,8 +147,8 @@ export default function ToggleButton(props) {
     let colors = {
         backgroundColor: props.withColor?.backgroundColor,
     }
-    let textColor={
-        color:props.withColor?.textColor
+    let textColor = {
+        color: props.withColor?.textColor
     }
     // -------------------------------------------------------------------
     // 5. Translate the text objects in case their is a dictionary provided
@@ -158,15 +161,8 @@ export default function ToggleButton(props) {
         let tObj = getTranslation(props.withTranslation);
         if (tObj && content && content !== "") {
         }
-        // console.log(tObj.content)
-        // if(tObj?.content){
-        //     content = tObj.con
-        // }
-        console.log(tObj.content)
         if (content && tObj?.content) content = tObj.content;
     }
-    
-
     //-------------------------------------------------------------------
     // 7. Get animation of the component
     //-------------------------------------------------------------------
@@ -174,6 +170,11 @@ export default function ToggleButton(props) {
 
     const [isToggled, setIsToggled] = useState(false);
     const onToggle = () => setIsToggled(!isToggled);
+    // function onToggle(){
+    //     if(content.isToggled === true){
+    //         setIsToggled(isToggled)
+    //     }
+    // }
     function toggle() {
         if (isToggled) {
             props.onClick(isToggled)
@@ -203,7 +204,7 @@ export default function ToggleButton(props) {
             <div
                 className={`qui-Toggle-Button-title size-${props.asSize} variant-${props.asVariant}`}
                 style={textColor}>
-                {content}
+                {content.title}
             </div>
         </motion.div >
     );

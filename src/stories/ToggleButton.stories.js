@@ -8,10 +8,13 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/ToggleButtons/ToggleButton",
+    title: "Design System/ToggleButton/ToggleButton",
     component: ToggleButton,
     argTypes: {
-        content: "Primary",
+        content: {
+            title : "Active",
+            isToggled : false,
+        },
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -111,7 +114,10 @@ export default {
 const Template = (args) => <ToggleButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: "Active",
+    content:{
+        title : "Active",
+        isToggled: false
+    },
     asVariant: "primary",
     asSize: "normal",
     asFloated: "inline",
