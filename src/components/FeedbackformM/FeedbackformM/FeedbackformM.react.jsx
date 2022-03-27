@@ -120,9 +120,9 @@ export default function FeedbackformM(props) {
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`qui-feedback-form-container  ${quommonClasses.childClasses}`}>
                 <div className="qui-feedback-toggle">
-                    <ToggleButton {...props} asFloated={'none'}/>
+                    <ToggleButton {...props}/>
                 </div>
-                <div className={`qui-feedback-form size-${props.asSize}`}>
+                <div className={`qui-input-field-container`}>
                     <input type='text' placeholder='If Correct' className={`qui-toggle-input-fields size-${props.asSize} variant-${props.asVariant}`} />
                     <input type='text' placeholder='If InCorrect' className={`qui-toggle-input-fields size-${props.asSize} variant-${props.asVariant}`} />
                 </div>
