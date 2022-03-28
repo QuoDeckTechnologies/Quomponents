@@ -21,7 +21,7 @@ ToggleButton.propTypes = {
     // Quommon props
     //=======================================
     content: PropTypes.shape({
-        title:PropTypes.string,
+        title: PropTypes.string,
         isToggled: PropTypes.bool,
     }),
 
@@ -110,7 +110,10 @@ ToggleButton.propTypes = {
 ToggleButton.defaultProps = {
     // Component Specific props
     //=======================================
-    content: "",
+    content: {
+        title: "",
+        isToggled: true
+    },
     // Quommon props
     //=======================================
     asVariant: "primary",

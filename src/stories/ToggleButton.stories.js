@@ -2,8 +2,8 @@ import React from "react";
 import ToggleButton from "../components/ToggleButton/ToggleButton.react";
 
 const dictionary = JSON.stringify({
-    hi: { 
-        ToggleButton: {content: "सक्रिय" },
+    hi: {
+        ToggleButton: { content: { title: "सक्रिय" } },
     },
 });
 
@@ -12,8 +12,8 @@ export default {
     component: ToggleButton,
     argTypes: {
         content: {
-            title : "Active",
-            isToggled : false,
+            title: "Active",
+            isToggled: false,
         },
         asVariant: {
             control: "select",
@@ -114,8 +114,8 @@ export default {
 const Template = (args) => <ToggleButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content:{
-        title : "Active",
+    content: {
+        title: "Active",
         isToggled: false
     },
     asVariant: "primary",
@@ -155,23 +155,23 @@ Default.parameters = {
 // -------------------------------------------------------------
 export const TranslatedToggleButton = Template.bind({});
 TranslatedToggleButton.args = {
-  ...Default.args,
-  withTranslation: {
-    lang: "hi",
-    tgt: "ToggleButton",
-    dictionary: dictionary,
-  },
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "ToggleButton",
+        dictionary: dictionary,
+    },
 };
 TranslatedToggleButton.parameters = {
-  docs: {
-    description: {
-      story:
-        "Use to change the language that the text appears in.",
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in.",
+        },
+        source: {
+            code: `<ToggleButton {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
     },
-    source: {
-      code: `<ToggleButton {...${JSON.stringify(Default.args, null, 2)}}/>`,
-    },
-  },
 };
 
 // Different Variants ToggleButton
@@ -187,35 +187,50 @@ const AllSizeTemplate = (args) => {
         <div>
             <ToggleButton
                 {...Object.assign({}, baseObj, {
-                    content: "tiny toggle Button",
+                    content: {
+                        title: "Active",
+                        isToggled: true,
+                    },
                     asSize: "tiny",
                     asVariant: "primary",
                 })}
             />{" "}
             <ToggleButton
                 {...Object.assign({}, baseObj, {
-                    content: "small toggle Button",
+                    content: {
+                        title: "Active",
+                        isToggled: true,
+                    },
                     asSize: "small",
                     asVariant: "secondary",
                 })}
             />{" "}
             <ToggleButton
                 {...Object.assign({}, baseObj, {
-                    content: "big toggle Button",
+                    content: {
+                        title: "Active",
+                        isToggled: true,
+                    },
                     asSize: "big",
                     asVariant: "warning",
                 })}
             />{" "}
             <ToggleButton
                 {...Object.assign({}, baseObj, {
-                    content: "huge toggle Button",
+                    content: {
+                        title: "Active",
+                        isToggled: true,
+                    },
                     asSize: "huge",
                     asVariant: "primary",
                 })}
             />{" "}
             <ToggleButton
                 {...Object.assign({}, baseObj, {
-                    content: "massive toggle Button",
+                    content: {
+                        title: "Active",
+                        isToggled: true,
+                    },
                     asSize: "massive",
                     asVariant: "warning",
                 })}
