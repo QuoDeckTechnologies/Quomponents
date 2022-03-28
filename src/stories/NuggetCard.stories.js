@@ -15,7 +15,6 @@ export default {
             rewardPoint:"",
             link:""
         },
-        baseImage: "",
         asFloated: {
             control: "select",
             options: ["left", "right", "inline"],

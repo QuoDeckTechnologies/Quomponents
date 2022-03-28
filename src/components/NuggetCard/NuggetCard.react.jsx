@@ -25,7 +25,6 @@ NuggetCard.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-
     content: PropTypes.shape({
         title: PropTypes.string,
         baseImage: PropTypes.string,
@@ -43,7 +42,6 @@ NuggetCard.propTypes = {
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "inline"]),
-
     /**
     Use to define the entry animation of the component
     */
@@ -69,9 +67,8 @@ NuggetCard.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
-
     /**
-    Button component must have the onClick function passed as props
+    Component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
 };
@@ -119,7 +116,6 @@ export default function NuggetCard(props) {
     //-------------------------------------------------------------------
     // 4. Get the custom styling of the component
     //-------------------------------------------------------------------
-
     function handleNuggetBlock() {
         console.log("Nugget Block");
     }
