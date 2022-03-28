@@ -41,8 +41,7 @@
 }
 
 .qui .qui-ordering-btn-icon {
-    font-size: 1.2em;
-    margin-left: 0.8em;
+    outline: none;
     color: #666666;
     background-color: #f8f8f8;
 }
@@ -56,7 +55,6 @@
     filter: drop-shadow(2px 5px 5px rgb(150, 146, 146));
 }
 
-
 @media only screen and (min-width: 320px) {
     .qui .qui-ordering-btn {
         width: 2em;
@@ -69,12 +67,17 @@
     }
 
     .qui .qui-ordering-btn-icon {
-        font-size: 0.8em;
-        margin-left: 0.4em;
+        font-size: 0.5em;
+        margin-left: 0.2em;
     }
 
     .qui .qui-ordering-title-content {
         font-size: 0.5em;
+    }
+
+    .qui-orderinglist Button {
+        width: 10em;
+        height: 2em;
     }
 }
 
@@ -90,12 +93,19 @@
     }
 
     .qui .qui-ordering-btn-icon {
-        margin-left: 0.7em;
+        font-size: 0.8em;
+        margin-left: 0.1em;
     }
 
     .qui .qui-ordering-title-content {
         font-size: 0.5em;
     }
+
+    .qui-orderinglist Button {
+        width: 10em;
+        height:2em;
+    }
+   
 }
 
 @media only screen and (min-width:720px) {
@@ -110,11 +120,15 @@
     }
 
     .qui .qui-ordering-btn-icon {
-        font-size: 1.2em;
-        margin-left: 0.8em;
+        font-size: 0.8em;
     }
 
     .qui .qui-ordering-title-content {
         font-size: 1.5em;
+    }
+
+    .qui-orderinglist Button {
+        width: 13em;
+        height: 3em;
     }
 }

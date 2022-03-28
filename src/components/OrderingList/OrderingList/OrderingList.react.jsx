@@ -1,12 +1,14 @@
 // Import npm packages
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import _ from "lodash";
 import { motion } from "framer-motion";
 import { getQuommons, getAnimation } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OrderingList.scss";
 import "../../../common/stylesheets/overrule.scss";
+import Button from "../../Buttons/Button/Button.react";
 
 OrderingList.propTypes = {
   /**
@@ -18,7 +20,6 @@ OrderingList.propTypes = {
   //=======================================
   // Quommon props
   //=======================================
-
   /**
     Use to define standard component type
     */
@@ -40,6 +41,11 @@ OrderingList.propTypes = {
     "huge",
     "massive",
   ]),
+  /**
+Use to float the component in parent container
+*/
+  asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+
   /**
     Use to define the entry animation of the component
     */
@@ -77,6 +83,7 @@ OrderingList.defaultProps = {
   //=======================================
   asVariant: "primary",
   asSize: "normal",
+  asFloated: "none",
   isHidden: false,
   isDisabled: false,
   withTranslation: null,
@@ -89,59 +96,38 @@ OrderingList.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 - props are not being passed to the NavBar. Please speak to the admin to handle any new prop.
 **/
-
 export default function OrderingList(props) {
-  let Content = Object.assign({}, props.content?.title);
-
-  const [btnArr, setBtnArr] = useState(Content.title);
+  const [shuffle, setshuffle] = useState(_.shuffle(props.content?.title));
 
   useEffect(() => {
-    setBtnArr(props.content?.title);
+    setshuffle(_.shuffle(props.content?.title))
   }, [props.content?.title]);
 
-  const handleUpClick = (index) => {
-    let temp_state = [...btnArr];
+  //swap the item
+  let swap = (to, from, shuffle) => {
+    let swapArray = shuffle;
+    let b = swapArray[to];
+    swapArray[to] = swapArray[from];
+    swapArray[from] = b;
+    setshuffle([...swapArray]);
 
-    //Make a shallow copy of the element you want to mutate
-    if (btnArr[index - 1]) {
-      const beforeItem = btnArr[index - 1];
-      const currentItem = btnArr[index];
-
-      //Put it back into our array. N.B. we are mutating the array here, but that's why we made a copy first
-      temp_state[index] = beforeItem;
-      temp_state[index - 1] = currentItem;
-    } else {
-      const currentItem = btnArr[index];
-      const afterItem = btnArr[index + 1];
-      // Update the property you're interested in
-      // Put it back into our array. N.B. we are mutating the array here, but that's why we made a copy first
-      temp_state[index] = afterItem;
-      temp_state[index + 1] = currentItem;
-    }
-    //Set the state to our new copy
-    setBtnArr(temp_state);
   };
-  const handleDownClick = (index) => {
-    let temp_state = [...btnArr];
-    //Make a shallow copy of the element you want to mutate
-    if (btnArr[index + 1]) {
-      const currentItem = btnArr[index];
-      const afterItem = btnArr[index + 1];
-
-      //Put it back into our array. N.B. we are mutating the array here, but that's why we made a copy first
-      temp_state[index] = afterItem;
-      temp_state[index + 1] = currentItem;
-    } else {
-      const currentItem = btnArr[index];
-      const afterItem = btnArr[index + 1];
-
-      //Put it back into our array. N.B. we are mutating the array here, but that's why we made a copy first
-      temp_state[index] = afterItem;
-      temp_state[index - 1] = currentItem;
+  let upClick = (index, shuffle) => {
+    if (index > 0 && index <= shuffle.length - 1) {
+      swap(index, index - 1, shuffle);
     }
-    //Set the state to our new copy
-    setBtnArr(temp_state);
   };
+  let downClick = (index, shuffle) => {
+    if (index >= 0 && index < shuffle.length - 1) {
+      swap(index, index + 1, shuffle);
+    }
+  };
+
+  function handleSubmit() {
+    props.onClick(shuffle)
+    console.log(shuffle, 'handleSubmit')
+  }
+
   // 1. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "orderinglist");
@@ -150,21 +136,19 @@ export default function OrderingList(props) {
   // 2. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
   // ========================= Render Function =================================
   return (
     <motion.div
       initial={animate.from}
       animate={animate.to}
-      className={`qui ${quommonClasses.parentClasses}`}
+      className={`qui ${quommonClasses.parentClasses} `}
     >
-      {btnArr?.map((item, index) => (
+      {_.map(shuffle, ((item, index) => (
         <div key={index}>
           <div className={`qui-ordering-list ${quommonClasses.childClasses}`}>
             <div
-              style={{ pointerEvents: index === 0 ? "none" : "" }}
               className="qui-ordering-btn"
-              onClick={() => handleUpClick(index)}
+              onClick={() => upClick(index, shuffle)}
             >
               <div className="qui-ordering-border-up">
                 <div className="qui-ordering-dotted-up">
@@ -178,11 +162,8 @@ export default function OrderingList(props) {
               <div className={`qui-ordering-title-content`}>{item}</div>
             </div>
             <div
-              style={{
-                pointerEvents: index === btnArr.length - 1 ? "none" : "",
-              }}
               className={`qui-ordering-btn`}
-              onClick={() => handleDownClick(index)}
+              onClick={() => downClick(index, shuffle)}
             >
               <div className="qui-ordering-border-down">
                 <div className="qui-ordering-dotted-down">
@@ -194,7 +175,12 @@ export default function OrderingList(props) {
             </div>
           </div>
         </div>
-      ))}
+      )))}
+      {<Button
+        {...props}
+        onClick={() => handleSubmit()}
+        content={"Submit Answer"}
+      />}
     </motion.div>
   );
 }

@@ -27,6 +27,13 @@ export default {
                 category: "as-Flags",
             },
         },
+        asFloated: {
+            control: "select",
+            options: ["left", "right", "none", "inline"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withAnimation: {
             table: {
                 category: "with-Params",
@@ -83,6 +90,7 @@ export const Default = Template.bind({});
 Default.args = {
     asSize: "normal",
     asVariant: "warning",
+    asFloated: "none",
     content: {
         title: ["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"]
     },
@@ -99,7 +107,7 @@ Default.parameters = {
     docs: {
         description: {
             story:
-                "Any free fontawesome icon can be used as the NavBar icon definition. This component is combination of the Avatar component on a MenuBlock component, The MenuBlock icon can be changed with userImage with in withIcon prop , give a link of any profile image and it will replace the icon with it , On the other side which is a Ellipsis icon in menuBlock component which is a part of NavBar , this icon can also be change with other , and whole NavBarr is clickable",
+                "Any free fontawesome icon can be used as the OrderingList icon definition. This component is combination of the ordering Button  title component  and orderingList buuton  is clickable and ranking the title",
         },
         source: {
             code: `<OrderingList {...${JSON.stringify(Default.args, null, 2)}}/>`,
