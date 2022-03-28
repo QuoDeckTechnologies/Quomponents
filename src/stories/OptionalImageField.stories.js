@@ -9,9 +9,9 @@ export default {
       defaultValue: {
         text: "Upload",
         icon: "fas fa-image",
+        actionButton: true,
       },
     },
-    isActionButton: true,
     withColor: {
       table: {
         category: "with-Params",
@@ -66,8 +66,8 @@ Default.args = {
   content: {
     text: "Upload",
     icon: "fas fa-image",
+    actionButton: true,
   },
-  isActionButton: true,
   withColor: {
     backgroundColor: "",
     accentColor: "",
@@ -98,13 +98,39 @@ Default.parameters = {
 export const WithoutActionButton = Template.bind({});
 WithoutActionButton.args = {
   ...Default.args,
-  isActionButton: false,
+  content: {
+    text: "",
+    icon: "fas fa-image",
+    actionButton: false,
+  },
 };
 WithoutActionButton.parameters = {
   docs: {
     source: {
       code: `<OptionalImageField {...${JSON.stringify(
         WithoutActionButton.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Without Icon
+// -------------------------------------------------------------
+export const WithoutIcon = Template.bind({});
+WithoutIcon.args = {
+  ...Default.args,
+  content: {
+    text: "Upload",
+    actionButton: true,
+  },
+};
+WithoutIcon.parameters = {
+  docs: {
+    source: {
+      code: `<OptionalImageField {...${JSON.stringify(
+        WithoutIcon.args,
         null,
         2
       )}}/>`,
@@ -120,6 +146,7 @@ WithCustomIcon.args = {
   content: {
     text: "Upload new file",
     icon: "fas fa-camera-retro",
+    actionButton: true,
   },
 };
 WithCustomIcon.parameters = {

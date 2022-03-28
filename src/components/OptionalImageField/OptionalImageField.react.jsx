@@ -14,16 +14,13 @@ OptionalImageField.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    OptionalImageField Text and icon has to be in content.
+    OptionalImageField text and icon has to be in content.
     */
   content: PropTypes.shape({
     text: PropTypes.string,
     icon: PropTypes.string,
+    actionButton: PropTypes.bool,
   }),
-  /**
-    OptionalImageField can have an action button to undo uploaded image.
-    */
-  isActionButton: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
@@ -71,7 +68,6 @@ OptionalImageField.defaultProps = {
   // Component Specific props
   //=======================================
   content: {},
-  isActionButton: true,
   //=======================================
   // Quommon props
   //=======================================
@@ -149,12 +145,14 @@ export default function OptionalImageField(props) {
         ref={fileRef}
         hidden
       />
-      <div
-        className="qui-optional-image-field-icon"
-        style={colors.iconBoundries}
-      >
-        <i className={content.icon ? content.icon : "fas fa-image"}></i>
-      </div>
+      {content?.icon && (
+        <div
+          className="qui-optional-image-field-icon"
+          style={colors.iconBoundries}
+        >
+          <i className={content.icon}></i>
+        </div>
+      )}
       <div className="qui-optional-image-field-button-container">
         <Button
           className="qui-optional-image-field-button"
@@ -162,10 +160,10 @@ export default function OptionalImageField(props) {
           style={colors.button}
           onClick={uploadFile}
         >
-          {content.text ? content.text : "Upload"}
+          {content?.text ? content.text : "Upload"}
         </Button>
       </div>
-      {isActionButton && (
+      {content?.actionButton && (
         <div
           className={`qui-optional-image-field-action-icon ${
             file ? "qui-uploaded" : ""

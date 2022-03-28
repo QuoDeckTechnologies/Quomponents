@@ -19,8 +19,8 @@ describe("EnrollmentRuleRow", () => {
         content={{
           text: "Upload",
           icon: "fas fa-user",
+          actionButton: true,
         }}
-        isActionButton={true}
         withColor={null}
         withAnimation={null}
         isHidden={false}
@@ -30,6 +30,12 @@ describe("EnrollmentRuleRow", () => {
     );
   });
   it("should render correctly without throwing error", () => {
+    expect(component.exists()).toBe(true);
+  });
+  it("should render correctly when content prop is null", () => {
+    component.setProps({
+      content: null,
+    });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly when using withColor prop", () => {
@@ -47,11 +53,15 @@ describe("EnrollmentRuleRow", () => {
     expect(component.exists()).toBe(true);
   });
   it("should render correctly when file is uploaded", () => {
-    component.find(".qui-image-upload-field").simulate("change",{target:{files:['dummy file.png']}});
+    component
+      .find(".qui-image-upload-field")
+      .simulate("change", { target: { files: ["dummy file.png"] } });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly when file is uploaded and removed", () => {
-    component.find(".qui-image-upload-field").simulate("change",{target:{files:['dummy file.png']}});
+    component
+      .find(".qui-image-upload-field")
+      .simulate("change", { target: { files: ["dummy file.png"] } });
     component.find(".qui-optional-image-field-action-icon").simulate("click");
     expect(component.exists()).toBe(true);
   });
