@@ -28,12 +28,17 @@ NuggetCard.propTypes = {
     //=======================================
 
     content: PropTypes.shape({
+        nuggetName:PropTypes.string,
         title: PropTypes.string,
         baseImage: PropTypes.string,
         description: PropTypes.string,
         tag: PropTypes.shape({
             name: PropTypes.string
-        })
+        }),
+        nuggetName:PropTypes.string,
+        nuggetStatus:PropTypes.string,
+        rewardPoint:PropTypes.string,
+        link:PropTypes.string
     }),
 
 
@@ -127,7 +132,11 @@ NuggetCard.defaultProps = {
         title: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job... ",
         baseImage: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
-        tag: []
+        tag: [],
+        nuggetName:"Profiler",
+        nuggetStatus:"none",
+        rewardPoint:"200",
+        link:"https://www.quodeck.com/XrPmy_OAK"
     },
     // Quommon props
     //=======================================
@@ -191,23 +200,22 @@ export default function NuggetCard(props) {
     //-------------------------------------------------------------------
     // 5. Get the Base Image
     //-------------------------------------------------------------------
-    let baseImage = props.content.baseImage ? props.content?.baseImage : deafaultImage;
+    let baseImage = props.content?.baseImage ? props.content?.baseImage : deafaultImage;
 
     //-------------------------------------------------------------------
     // 5. Get the Status of Component
     //-------------------------------------------------------------------
 
     // 6. Get the tags
-    let tags = props.content.tag
-
-    console.log(props.content.tag[0])
+    let tags = props.content?.tag ? props.content?.tag : [""];
+    
     const nuggetCard = () => {
         return (
             <div className={`qui-nugget-card-container`}>
                 <div className="qui-nugget-card-body">
                     <div className={`qui-nugget-card-title-container`}>
                         <div className={`qui-nugget-block-styling`}>
-                            <NuggetBlock status="none" image={Nugget_Profiler} onClick={handleNuggetBlock} />
+                            <NuggetBlock status={props.content?.nuggetStatus} image={Nugget_Profiler} onClick={handleNuggetBlock} />
                         </div>
 
                         <div className={`qui-nugget-card-title`}>
@@ -231,7 +239,7 @@ export default function NuggetCard(props) {
                             {props.content?.description}
                         </div>
                         <div className={`qui-nugget-card-reward`}>
-                            <Reward asSize="tiny" content={{ label: "Complete to win", point: "200" }} />
+                            <Reward asSize="tiny" content={{ label: "Complete to win", point: props.content?.rewardPoint}} />
                         </div>
                     </div>
                 </div>
@@ -243,14 +251,16 @@ export default function NuggetCard(props) {
                     </div>
                     <div className={`qui-nugget-card-share-block`}>
                         <div className={`qui-nugget-card-name`}>
-                            {"Profiler"}
+                            {props.content?.nuggetName}
                         </div>
                         <div className={'qui-nugget-card-share-widget'}>
-                            <ShareWidget asSize="tiny" withColor={{ textColor: "#AAAAAA" }} content={{ label: "Share", url: "https://www.quodeck.com" }} />
+                            <ShareWidget asSize="tiny" withColor={{ textColor: "#AAAAAA" }} content={{ label: "Share", url: props.content?.link }} />
                         </div>
-                        <div className={'qui-nugget-card-link'}>
-                            <a href="https://www.quodeck.com/XrPmy_OAK" >https://www.quodeck.com/XrPmy_OAK</a>
-                            <IconBlock asSize="small" asEmphasis="text" withIcon={{ name: "fas fa-copy" }} withColor={{ accentColor: "yellow" }} />
+                        <div className={'qui-nugget-card-link-container'}>
+                            <a className={'qui-nugget-card-link'} href={props.content?.link}>{props.content?.link}</a>
+                            <IconBlock asSize="small" asEmphasis="text" withIcon={{ name: "fas fa-copy" }} withColor={{ accentColor: "yellow" }} 
+                            onClick={() => {navigator.clipboard.writeText(props.content?.link)}}/>
+                         <span className="tooltiptext">Copied to Clipboard </span> 
                         </div>
                     </div>
                 </div>

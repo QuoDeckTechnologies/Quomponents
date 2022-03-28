@@ -8,8 +8,12 @@ export default {
         content: {
             title: "",
             description: "",
-            baseImage: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
-            tag: []
+            baseImage: "",
+            tag: [],
+            nuggetName:"",
+            nuggetStatus: [],
+            rewardPoint:"",
+            link:""
         },
         baseImage: "",
         asVariant: {
@@ -125,7 +129,11 @@ Default.args = {
         title: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
         baseImage: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
-        tag: ["SAles", "Sales2"]
+        tag: ["Tag1", "Tag2"],
+        nuggetName:"Profiler",
+        nuggetStatus:"none",
+        rewardPoint:"200",
+        link:"https://www.quodeck.com/XrPmy_OAK"
     },
     asVariant: "primary",
     asSize: "normal",
@@ -162,7 +170,11 @@ export const DifferentResolution = (args) => {
                 title: "Measure your sales readiness",
                 description: "Take this quick profile test to check how well you are prepared for a sales job",
                 baseImage: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
-                tag: ["SAles", "Sales2"]
+                tag: ["Tag1", "Tag2"],
+                nuggetName:"Profiler",
+                nuggetStatus:"none",
+                rewardPoint:"200",
+                link:"https://www.quodeck.com/XrPmy_OAK"
             },
         }),
     };

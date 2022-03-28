@@ -23,6 +23,7 @@
 .qui-nugget-card-footer {
     display: flex;
     justify-content: space-between;
+    margin-top: 0.5em;
     margin-bottom: 0.2em;
 }
 
@@ -105,34 +106,38 @@
     margin-right: 1.5em;
     justify-content: center;
 }
-.qui-nugget-card-link {
+.qui-nugget-card-link-container {
     text-align: right;
     display: flex;
     align-items: center;
 }
-.qui-nugget-card-link a {
+.qui-nugget-card-link{
     color: #666666;
     text-decoration: none;
 }
-
 .qui-nugget-card-share-widget {
-    font-size: 1.3em;
+    margin-right:-1.5em;
 }
-
 .qui-nugget-card-reward {
     font-size: 0.8em;
 }
 
 .qui-nugget-card-name {
+    font-size: 1.1em;
     color: #aaaaaa;
 }
-@media only screen and (min-width: 320px) and (max-width: 374px){
+
+.tooltiptext{
+    display: block;
+}
+@media only screen and (min-width: 320px) {
     .qui-nugget-card-body {
         min-height: 20em;
     }
     
     .qui-nugget-card-share-widget {
-        font-size: 1.3em;
+        font-size: 1.2em;
+        margin-right: -0.9em;
     }
     .qui-nugget-card-title {
         font-size: 1.1em;
@@ -140,10 +145,16 @@
     .qui-nugget-card-base-image {
         height: 6em;
     }
+    .qui-nugget-card-link-container{
+    margin-right: -0.8em;
+    }
 }
 @media only screen and (min-width: 375px) {
     .qui-nugget-card-title {
         font-size: 1.2em;
+    }
+    .qui-nugget-card-share-widget {
+        margin-right:-1em;
     }
 }
 
@@ -152,23 +163,44 @@
         font-size: 0.6em;
     }
     .qui-nugget-card-share-widget {
-        font-size: 1.3em;
+        font-size: 0.8em;
+        margin-right: -1em;
     }
 }
-
-@media only screen and (min-width: 769px) {
-    
+@media only screen and (min-width: 540px) {
+    .qui-nugget-card-share-block {
+        font-size: 0.6em;
+    }
     .qui-nugget-card-share-widget {
-        font-size: 1.3em;
+        font-size: 0.8em;
+        margin-right: -1.3em;
     }
 }
-
+@media only screen and (min-width: 768px) {
+    .qui-nugget-card-share-block {
+        font-size: 0.6em;
+    }
+    .qui-nugget-card-share-widget {
+        font-size: 0.8em;
+        margin-right:-1.5em;
+    }
+}
+@media only screen and (min-width: 832px) {
+    .qui-nugget-card-share-block {
+        font-size: 0.6em;
+    }
+    .qui-nugget-card-share-widget {
+        font-size: 0.5em;
+        margin-right:-2em;
+    }
+}
 @media only screen and (min-width: 1024px) {
     .qui-nugget-card-share-block {
         font-size: 0.6em;
     }
     .qui-nugget-card-share-widget {
-        font-size: 1.5em;
+        font-size: 0.4em;
+        margin-right:-3em;
     }
 
 }
