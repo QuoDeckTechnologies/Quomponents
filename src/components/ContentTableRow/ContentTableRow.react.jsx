@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
-import ActionMenu from "../ActionMenu/ActionMenu.react";
 import Backdrop from '@mui/material/Backdrop'
+import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ContentTableRow.scss";
 import "../../common/stylesheets/overrule.scss";
+import ActionMenu from "../ActionMenu/ActionMenu.react";
 
 ContentTableRow.propTypes = {
   //=======================================
