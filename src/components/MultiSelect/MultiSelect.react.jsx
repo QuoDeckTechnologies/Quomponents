@@ -113,7 +113,6 @@ MultiSelect.defaultProps = {
 export default function MultiSelect(props) {
     const { content } = props;
     const [, setIsChecked] = useState();
-    let tmp = props.content;
     function handleSubmit() {
         let selectedIndexes = []
         for (let i = 0; i <= props.content.length; i++) {
@@ -124,7 +123,7 @@ export default function MultiSelect(props) {
         props.onClick(selectedIndexes)
     }
     function toggleChecked(content) {
-        tmp = content;
+        let tmp = content;
         tmp.isSelected = !tmp.isSelected;
         setIsChecked(prevState => !prevState)
     }
