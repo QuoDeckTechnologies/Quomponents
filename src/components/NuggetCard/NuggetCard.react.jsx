@@ -2,8 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-    getQuommons,
-    getTranslation
+    getQuommons
 } from "../../common/javascripts/helpers.js";
 import _ from "lodash";
 
@@ -28,19 +27,15 @@ NuggetCard.propTypes = {
     //=======================================
 
     content: PropTypes.shape({
-        nuggetName:PropTypes.string,
         title: PropTypes.string,
         baseImage: PropTypes.string,
         description: PropTypes.string,
-        tag: PropTypes.shape({
-            name: PropTypes.string
-        }),
-        nuggetName:PropTypes.string,
-        nuggetStatus:PropTypes.string,
-        rewardPoint:PropTypes.string,
-        link:PropTypes.string
+        tag: PropTypes.array,
+        nuggetName: PropTypes.string,
+        nuggetStatus: PropTypes.string,
+        rewardPoint: PropTypes.string,
+        link: PropTypes.string
     }),
-
 
     // Quommon props
     //=======================================
@@ -133,10 +128,10 @@ NuggetCard.defaultProps = {
         description: "Take this quick profile test to check how well you are prepared for a sales job... ",
         baseImage: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
         tag: [],
-        nuggetName:"Profiler",
-        nuggetStatus:"none",
-        rewardPoint:"200",
-        link:"https://www.quodeck.com/XrPmy_OAK"
+        nuggetName: "Profiler",
+        nuggetStatus: "none",
+        rewardPoint: "200",
+        link: "https://www.quodeck.com/XrPmy_OAK"
     },
     // Quommon props
     //=======================================
@@ -174,27 +169,11 @@ export default function NuggetCard(props) {
     let quommonClasses = getQuommons(props, "nugget-card");
 
     //-------------------------------------------------------------------
-    // 3. Get translation of the component
-    //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, props.content);
-    let tObj = null;
-
-    if (
-        props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj?.title) labelContent.title = tObj.title;
-        if (labelContent && tObj?.subTitle) labelContent.subTitle = tObj.subTitle;
-    }
-
-    //-------------------------------------------------------------------
     // 4. Get the custom styling of the component
     //-------------------------------------------------------------------
 
     function handleNuggetBlock() {
-        props.onClick()
+        console.log("Nugget Block");
     }
 
     //-------------------------------------------------------------------
@@ -208,7 +187,7 @@ export default function NuggetCard(props) {
 
     // 6. Get the tags
     let tags = props.content?.tag ? props.content?.tag : [""];
-    
+
     const nuggetCard = () => {
         return (
             <div className={`qui-nugget-card-container`}>
@@ -225,12 +204,11 @@ export default function NuggetCard(props) {
                     <div className="qui-nugget-card-tag-container" style={{ backkgroundColor: "red" }}>
                         {_.map(tags, (tag, index) => {
                             return (
-                                <div className={`qui-nugget-card-tag`} >
+                                <div key={index} className={`qui-nugget-card-tag`} >
                                     <Tag content={tag} asSize="tiny" withColor={{ backgroundColor: "#FFAB00", textColor: "#000" }} />
                                 </div>
                             )
                         })}
-
                     </div>
                     <div className="qui-nugget-card-base-image" style={{ backgroundImage: `url(${baseImage})` }}>
                     </div>
@@ -239,14 +217,19 @@ export default function NuggetCard(props) {
                             {props.content?.description}
                         </div>
                         <div className={`qui-nugget-card-reward`}>
-                            <Reward asSize="tiny" content={{ label: "Complete to win", point: props.content?.rewardPoint}} />
+                            <Reward asSize="tiny" content={{ label: "Complete to win", point: props.content?.rewardPoint }} />
                         </div>
                     </div>
                 </div>
                 <div className="qui-nugget-card-footer">
                     <div className={`qui-nugget-card-arc-menu`}>
-                        <ArcMenu content={{ arcIcon: "fas fa-th-large" }} withColor={{ backgroundColor: "#666666" }}
-                            asSize="normal"
+                        <ArcMenu
+                            withColor={{ backgroundColor: "#666666" }}
+                            asSize="tiny"
+                            type="add"
+                            arcIcon="fas fa-th-large"
+                            position="bottom-left"
+                            onClick={() => { console.log("Arc Menu") }}
                         />
                     </div>
                     <div className={`qui-nugget-card-share-block`}>
@@ -258,9 +241,8 @@ export default function NuggetCard(props) {
                         </div>
                         <div className={'qui-nugget-card-link-container'}>
                             <a className={'qui-nugget-card-link'} href={props.content?.link}>{props.content?.link}</a>
-                            <IconBlock asSize="small" asEmphasis="text" withIcon={{ name: "fas fa-copy" }} withColor={{ accentColor: "yellow" }} 
-                            onClick={() => {navigator.clipboard.writeText(props.content?.link)}}/>
-                         <span className="tooltiptext">Copied to Clipboard </span> 
+                            <IconBlock asSize="small" asEmphasis="text" withIcon={{ name: "fas fa-copy" }} withColor={{ accentColor: "yellow" }}
+                                onClick={() => { navigator.clipboard.writeText(props.content?.link) }} />
                         </div>
                     </div>
                 </div>

@@ -6,6 +6,15 @@ import { shallow } from "enzyme";
 // Import Components
 // -------------------------------------
 import NuggetCard from "../NuggetCard/NuggetCard.react";
+import NuggetBlock from "../NuggetBlock/NuggetBlock.react";
+import ArcMenu from "../ArcMenu/ArcMenu.react";
+import IconBlock from "../IconBlock/IconBlock.react"
+
+Object.assign(navigator, {
+    clipboard: {
+      writeText: () => {},
+    },
+  });
 
 describe("NuggetCard", () => {
     // -------------------------------------
@@ -19,9 +28,12 @@ describe("NuggetCard", () => {
         tag: ["Tag1","Tag2"],
         nuggetName:"Profiler",
         nuggetStatu:"none",
-        rewardPoint:"200"
+        rewardPoint:"200",
+        link:"https://www.quodeck.com"
     };
     let mockFn = jest.fn();
+  
+      jest.spyOn(navigator.clipboard, "writeText");
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -126,27 +138,26 @@ describe("NuggetCard", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render defaultImage when passed nothing in the image props", () => {
-        component.setProps({ image: "" })
-        expect(component.find("div").at(2).props().style.backgroundImage).toBe("url(default.jpeg)")
+    it("should render call a function when clicked on NuggetBlock",()=>{
+        let nuggetBlock = component.find(NuggetBlock)
+        nuggetBlock.simulate('click')
+    })  
+
+    it("should render call a function when clicked on ArcMenu",()=>{
+        let arcMenu = component.find(ArcMenu)
+        arcMenu.simulate('click')
     })
+  
+    it("should call clipboard.writeText", () => {
+        let iconBlock = component.find(IconBlock)
+        iconBlock.simulate('click')
+        expect(navigator.clipboard.writeText).toHaveBeenCalledWith("https://www.quodeck.com");
+      });
 
-    it("should render published nugget block when passed status as published", () => {
-        component.setProps({ status: "published" })
-        expect(component.find("div").at(1).props().style.backgroundColor).toBe("#C1DC9E")
-    });
-    it("should render unpublished nugget block when passed status as unpublished", () => {
-        component.setProps({ status: "unpublished" })
-        expect(component.find("div").at(1).props().style.backgroundColor).toBe("#B2B4B3")
-    });
-    it("should not render status of nugget block when passed status as none", () => {
-        component.setProps({ status: "none" })
-        expect(component.find("div").at(1).props().style.display).toBe("none")
-    });
-
-    it("should call the function when clicked on nugget block", () => {
-        let NuggetCard = component.find("div").at(2);
-        NuggetCard.simulate('click')
-        expect(mockFn).toBeCalled()
-    });
+      it("should show default image when passed nothing in baseImage",()=>{
+          let content ={
+            baseImage:""
+          }
+          component.setProps({content:content})
+      })
 });
