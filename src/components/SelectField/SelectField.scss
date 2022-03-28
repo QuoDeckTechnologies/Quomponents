@@ -11,7 +11,7 @@
     // min-height: 2em;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
-    border-bottom: 0.4em solid grey;
+    border-bottom: 0.4em solid;
 }
 .qui .qui-select-field {
     width: 100%;
@@ -36,16 +36,4 @@
 }
 .qui .MuiSelect-icon {
     font-size: 3em;
-}
-
-.qui .qui-date-field {
-    width: 90%;
-    font-size: 2em;
-    border: none;
-    outline: none;
-    background-color: transparent;
-}
-.qui .qui-date-field .input[type="datetime-local" i] {
-    font-size: 4em;
-    border-radius: 10px;
 }

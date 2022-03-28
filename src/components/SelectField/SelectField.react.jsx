@@ -18,7 +18,11 @@ SelectField.propTypes = {
     /**
     Use to define Content in component
     */
-    content: PropTypes.string.isRequired,
+    content: PropTypes.shape({
+        label: PropTypes.string,
+        categoryOptions: PropTypes.array,
+    }
+    ).isRequired,
     //=======================================
     // Quommon props
     //=======================================
@@ -34,16 +38,24 @@ SelectField.propTypes = {
         "massive",
     ]),
     /**
+    Use to define component padding in increasing order
+    */
+    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-    Use to set Color 
+    Use to align content within the component container
+    */
+    asAligned: PropTypes.oneOf(["left", "right", "center"]),
+    /**
+    Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
-        textColor: PropTypes.string,
-        accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
+        accentColor: PropTypes.string,
+        textColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -72,31 +84,18 @@ SelectField.propTypes = {
     isDisabled: PropTypes.bool,
 };
 
-const names = [
-    'Sales Training',
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
-    'Sales Training Sales Training Sales Training Sales Training Sales Training Sales Training'
-];
-
 SelectField.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: "Course Category",
+    content: [],
     //=======================================
     // Quommon props
     //=======================================
     asSize: "normal",
+    asPadded: "normal",
     asFloated: "none",
+    asAligned: "center",
 
     withColor: null,
     withAnimation: null,
@@ -106,10 +105,11 @@ SelectField.defaultProps = {
 };
 /**
 ## Notes
-- The design system used for this component is HTML and CSS
+- The design system used for this component is Material UI (@mui/material)
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
+- MUI props are not being passed to the Select and MenuItem. Please speak to the admin to handle any new MUI prop.
 **/
 export default function SelectField(props) {
     //-------------------------------------------------------------------
@@ -135,19 +135,18 @@ export default function SelectField(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className="qui-select-field-container" style={Color}>
+            <div className={`qui-select-field-container ${quommonClasses.childClasses}`} style={Color}>
                 <div className="qui-select-field">
                     <div className="qui-select-field-label">
-                        {props.content}
+                        {props.content?.label}
                     </div>
                     <Select className="qui-select-field-select">
-
-                        {names.map((name) => (
+                        {props.content?.categoryOptions.map((option) => (
                             <MenuItem
-                                key={name}
-                                value={name}
+                                key={option}
+                                value={option}
                             >
-                                {name}
+                                {option}
                             </MenuItem>
                         ))}
                     </Select>
