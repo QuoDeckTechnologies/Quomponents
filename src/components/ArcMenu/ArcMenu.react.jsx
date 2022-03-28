@@ -177,7 +177,7 @@ export default function ArcMenu(props) {
           className={`qui-arc ${getPosition(props.position)}`}
           style={{ borderColor: colors.borderColor }}
         >
-          {props.type !== "close" ? (
+          {props.type === "menu" && (
             <button
               className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
               style={{ backgroundColor: colors.backgroundColor }}
@@ -185,16 +185,13 @@ export default function ArcMenu(props) {
             >
               <i
                 className={`qui-arch-icon ${
-                  props.arcIcon
-                    ? props.arcIcon
-                    : props.type === "menu"
-                    ? "fas fa-bars"
-                    : "fas fa-plus"
+                  props.arcIcon ? props.arcIcon : "fas fa-bars"
                 }`}
                 style={{ color: colors.color }}
               ></i>
             </button>
-          ) : (
+          )}
+          {props.type === "close" && (
             <button
               className={`qui-arc-menu-button qui-arc-menu-close-button ${quommonClasses.childClasses}`}
               style={{ backgroundColor: colors.backgroundColor }}
@@ -203,6 +200,20 @@ export default function ArcMenu(props) {
               <i
                 className={`qui-arch-icon ${
                   props.arcIcon ? props.arcIcon : "fas fa-times"
+                }`}
+                style={{ color: colors.color }}
+              ></i>
+            </button>
+          )}
+          {props.type === "add" && (
+            <button
+              className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
+              style={{ backgroundColor: colors.backgroundColor }}
+              onClick={() => props.onClick(true)}
+            >
+              <i
+                className={`qui-arch-icon ${
+                  props.arcIcon ? props.arcIcon : "fas fa-plus"
                 }`}
                 style={{ color: colors.color }}
               ></i>

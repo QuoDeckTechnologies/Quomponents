@@ -74,13 +74,20 @@ describe("ArcMenu", () => {
   });
   it("should render correctly with add type and empty arcIcon", () => {
     component.setProps({
-      arcIcon:'',
+      arcIcon: "",
+      type: "add",
+    });
+    component.find(".qui-arc-menu-button").simulate("click");
+  });
+  it("should render correctly with add type and empty arcIcon", () => {
+    component.setProps({
+      arcIcon: "fas fa-share",
       type: "add",
     });
   });
   it("should render correctly with add type and empty arcIcon", () => {
     component.setProps({
-      arcIcon:'',
+      arcIcon: "",
       type: "close",
     });
   });
