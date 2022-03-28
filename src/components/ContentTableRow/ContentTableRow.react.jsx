@@ -3,12 +3,12 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+import ActionMenu from "../ActionMenu/ActionMenu.react";
+import Backdrop from '@mui/material/Backdrop'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ContentTableRow.scss";
 import "../../common/stylesheets/overrule.scss";
-import ActionMenu from "../ActionMenu/ActionMenu.react";
-import Backdrop from '@mui/material/Backdrop'
 
 ContentTableRow.propTypes = {
   //=======================================
@@ -183,36 +183,7 @@ export default function ContentTableRow(props) {
             <div className="qui-content-table-row-action-menu">
               <ActionMenu
                 {...props}
-                content={[
-                  {
-                    title: "Open Deck",
-                    icon: "fas fa-book-open",
-                  },
-                  {
-                    title: "Edit Deck",
-                    icon: "fas fa-edit",
-                  },
-                  {
-                    title: "Move Deck Up",
-                    icon: "fas fa-chevron-up",
-                  },
-                  {
-                    title: "Move Deck Down",
-                    icon: "fas fa-chevron-down",
-                  },
-                  {
-                    title: "Move to Topic",
-                    icon: "fas fa-retweet",
-                  },
-                  {
-                    title: "Unpublish Deck",
-                    icon: "fas fa-eye-slash",
-                  },
-                  {
-                    title: "Delete Deck",
-                    icon: "fas fa-trash-alt",
-                  },
-                ]}
+                content={content?.menuData}
                 withColor={{ backgroundColor: "white" }}
                 withAnimation={{
                   animation: "slideDown",
