@@ -40,31 +40,6 @@ NuggetCard.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define standard component type
-    */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
-    /**
-    Use to define component text size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
-    Use to define component padding in increasing order
-    */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "inline"]),
@@ -86,15 +61,6 @@ NuggetCard.propTypes = {
         duration: PropTypes.number,
         delay: PropTypes.number,
     }),
-    /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
-
     /**
     Use to show/hide the component
     */
