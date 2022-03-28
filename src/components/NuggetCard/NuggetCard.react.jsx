@@ -68,16 +68,6 @@ NuggetCard.propTypes = {
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "inline"]),
-    /**
-    Use to override component colors and behavior
-    */
-    withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
-        textColor: PropTypes.string,
-        hoverBackgroundColor: PropTypes.string,
-        hoverTextColor: PropTypes.string,
-    }),
 
     /**
     Use to define the entry animation of the component
@@ -135,17 +125,9 @@ NuggetCard.defaultProps = {
     },
     // Quommon props
     //=======================================
-    asVariant: "primary",
-    asSize: "normal",
-    asPadded: "normal",
     asFloated: "inline",
-    asAligned: "center",
 
-    withColor: null,
-    withIcon: null,
-    withLabel: null,
     withAnimation: null,
-    withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
