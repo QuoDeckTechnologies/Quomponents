@@ -89,7 +89,7 @@ export default function ClickableImage(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <img
-        src={content.image ? content.image : defaultImage}
+        src={content?.image ? content.image : defaultImage}
         className="qui-clicked-on-image"
         alt="clickable picture"
         onClick={(e) => props.onClick(e)}
