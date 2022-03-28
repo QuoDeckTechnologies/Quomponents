@@ -1,46 +1,26 @@
 import React from "react";
 import ArcMenu from "../components/ArcMenu/ArcMenu.react";
 
-const dictionary = JSON.stringify({
-  hi: {
-    arcmenu: {
-      content: {
-        menuData: [
-          { name: "घर", icon: "fa fa-home" },
-          { name: "खाता", icon: "fas fa-user" },
-          { name: "समायोजन", icon: "fa fa-cogs" },
-          { name: "संदेश", icon: "fa fa-comments" },
-          { name: "कॉन्फ़िगर", icon: "fa fa-file" },
-          { name: "लॉग आउट", icon: "fas fa-desktop" },
-        ],
-      },
-    },
-  },
-});
+import Nugget_Story from "../assets/nuggets/nugget_story.png";
+import Nugget_Quiz from "../assets/nuggets/nugget_quiz.png";
+import Nugget_Assessment from "../assets/nuggets/nugget_assessment.png";
+import Nugget_Game from "../assets/nuggets/nugget_game.png";
+import Nugget_Article from "../assets/nuggets/nugget_article.png";
+import Nugget_Feedback from "../assets/nuggets/nugget_feedback.png";
+
 export default {
   title: "Design System/ArcMenu/ArcMenu",
   component: ArcMenu,
   argTypes: {
-    content: {
-      table: {
-        defaultValue: {
-          arcIcon: "",
-          menuData: [],
-        },
-      },
-    },
-    isCloseButton: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    asVariant: {
+    content: [],
+    arcIcon: "",
+    type: {
       control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
+      options: ["close", "menu", "add"],
+    },
+    position: {
+      control: "select",
+      options: ["top-right", "top-left", "bottom-right", "bottom-left"],
     },
     asSize: {
       control: "select",
@@ -56,16 +36,6 @@ export default {
           backgroundColor: "",
           accentColor: "",
           textColor: "",
-        },
-      },
-    },
-    withTranslation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          lang: "",
-          tgt: "",
-          dictionary: "",
         },
       },
     },
@@ -117,29 +87,22 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    arcIcon: "fas fa-caret-down",
-    menuData: [
-      { name: "Home", icon: "fa fa-home" },
-      { name: "Account", icon: "fas fa-user" },
-      { name: "Settings", icon: "fa fa-cogs" },
-      { name: "Message", icon: "fa fa-comments" },
-      { name: "Configure", icon: "fa fa-file" },
-      { name: "Logout", icon: "fas fa-desktop" },
-    ],
-  },
-  isCloseButton: true,
-  asVariant: "primary",
+  content: [
+    { image: Nugget_Story },
+    { image: Nugget_Quiz },
+    { image: Nugget_Assessment },
+    { image: Nugget_Game },
+    { image: Nugget_Article },
+    { image: Nugget_Feedback },
+  ],
+  arcIcon: "",
+  type: "close",
+  position: "top-right",
   asSize: "normal",
   withColor: {
     backgroundColor: "",
     accentColor: "",
     textColor: "",
-  },
-  withTranslation: {
-    lang: "en",
-    tgt: "arcmenu",
-    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,
@@ -152,48 +115,57 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
+// Menu button
+// -------------------------------------------------------------
+export const MenuButton = Template.bind({});
+MenuButton.args = {
+  ...Default.args,
+  type: "menu",
+  position: "bottom-left",
+};
+MenuButton.parameters = {
+  docs: {
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(MenuButton.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Menu button
+// -------------------------------------------------------------
+export const AddButton = Template.bind({});
+AddButton.args = {
+  ...Default.args,
+  type: "add",
+  position: "bottom-left",
+};
+AddButton.parameters = {
+  docs: {
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(AddButton.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
 // Colored ArchMenu
 // -------------------------------------------------------------
 export const ColoredArcMenu = Template.bind({});
 ColoredArcMenu.args = {
   ...Default.args,
+  arcIcon: "fas fa-exclamation-circle",
   withColor: {
-    backgroundColor: "#f5f5f5",
-    accentColor: "",
-    textColor: "#fec13c",
+    backgroundColor: "#B1D0E0",
+    accentColor: "#ffffff",
+    textColor: "#1A374D",
   },
 };
 ColoredArcMenu.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the ArcMenu.",
+    },
     source: {
       code: `<ArcMenu {...${JSON.stringify(ColoredArcMenu.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Translated Arc menu
-// -------------------------------------------------------------
-export const TranslatedArcMenu = Template.bind({});
-TranslatedArcMenu.args = {
-  ...Default.args,
-  asVariant: "secondary",
-  withTranslation: {
-    lang: "hi",
-    tgt: "arcmenu",
-    dictionary: dictionary,
-  },
-};
-TranslatedArcMenu.parameters = {
-  docs: {
-    description: {
-      story: "Use to change the language that the text appears in.",
-    },
-    source: {
-      code: `<TranslatedArcMenu {...${JSON.stringify(
-        TranslatedArcMenu.args,
-        null,
-        2
-      )}}/>`,
     },
   },
 };
