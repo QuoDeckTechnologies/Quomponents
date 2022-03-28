@@ -43,7 +43,7 @@ Choice.propTypes = {
         secondaryBackgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
         primaryTextColor: PropTypes.string,
-        secondarTextColor: PropTypes.string
+        secondaryTextColor: PropTypes.string
     }),
     /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -109,7 +109,7 @@ function getPrimaryButtonColors(colors, emphasis) {
                 background: 'transparent',
                 boxShadow: 'none',
                 borderColor: colors?.primaryBackgroundColor,
-                color: colors?.primaryTextColor,
+                color: colors?.primaryBackgroundColor,
             }
             : {
                 background: colors?.primaryBackgroundColor,
