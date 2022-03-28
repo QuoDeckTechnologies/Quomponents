@@ -127,19 +127,151 @@ const ListTemplate = (args) => {
     <div className="qui-content-table-row-list">
       <ContentTableRow
         {...args}
-        content={{ name: "Dummy file-name", readerType: "docdeck" }}
+        content={{
+          name: "Dummy file-name",
+          readerType: "docdeck",
+          menuData: [
+            {
+              title: "Open Deck",
+              icon: "fas fa-book-open",
+            },
+            {
+              title: "Edit Deck",
+              icon: "fas fa-edit",
+            },
+            {
+              title: "Move Deck Up",
+              icon: "fas fa-chevron-up",
+            },
+            {
+              title: "Move Deck Down",
+              icon: "fas fa-chevron-down",
+            },
+            {
+              title: "Move to Topic",
+              icon: "fas fa-retweet",
+            },
+            {
+              title: "Unpublish Deck",
+              icon: "fas fa-eye-slash",
+            },
+            {
+              title: "Delete Deck",
+              icon: "fas fa-trash-alt",
+            },
+          ],
+        }}
       />
       <ContentTableRow
         {...args}
-        content={{ name: "Dummy file-name", readerType: "assessment" }}
+        content={{
+          name: "Dummy file-name",
+          readerType: "assessment",
+          menuData: [
+            {
+              title: "Open Deck",
+              icon: "fas fa-book-open",
+            },
+            {
+              title: "Edit Deck",
+              icon: "fas fa-edit",
+            },
+            {
+              title: "Move Deck Up",
+              icon: "fas fa-chevron-up",
+            },
+            {
+              title: "Move Deck Down",
+              icon: "fas fa-chevron-down",
+            },
+            {
+              title: "Move to Topic",
+              icon: "fas fa-retweet",
+            },
+            {
+              title: "Unpublish Deck",
+              icon: "fas fa-eye-slash",
+            },
+            {
+              title: "Delete Deck",
+              icon: "fas fa-trash-alt",
+            },
+          ],
+        }}
       />
       <ContentTableRow
         {...args}
-        content={{ name: "Dummy file-name", readerType: "survey" }}
+        content={{
+          name: "Dummy file-name",
+          readerType: "survey",
+          menuData: [
+            {
+              title: "Open Deck",
+              icon: "fas fa-book-open",
+            },
+            {
+              title: "Edit Deck",
+              icon: "fas fa-edit",
+            },
+            {
+              title: "Move Deck Up",
+              icon: "fas fa-chevron-up",
+            },
+            {
+              title: "Move Deck Down",
+              icon: "fas fa-chevron-down",
+            },
+            {
+              title: "Move to Topic",
+              icon: "fas fa-retweet",
+            },
+            {
+              title: "Unpublish Deck",
+              icon: "fas fa-eye-slash",
+            },
+            {
+              title: "Delete Deck",
+              icon: "fas fa-trash-alt",
+            },
+          ],
+        }}
       />
       <ContentTableRow
         {...args}
-        content={{ name: "Dummy file-name", readerType: "qdf" }}
+        content={{
+          name: "Dummy file-name",
+          readerType: "qdf",
+          menuData: [
+            {
+              title: "Open Deck",
+              icon: "fas fa-book-open",
+            },
+            {
+              title: "Edit Deck",
+              icon: "fas fa-edit",
+            },
+            {
+              title: "Move Deck Up",
+              icon: "fas fa-chevron-up",
+            },
+            {
+              title: "Move Deck Down",
+              icon: "fas fa-chevron-down",
+            },
+            {
+              title: "Move to Topic",
+              icon: "fas fa-retweet",
+            },
+            {
+              title: "Unpublish Deck",
+              icon: "fas fa-eye-slash",
+            },
+            {
+              title: "Delete Deck",
+              icon: "fas fa-trash-alt",
+            },
+          ],
+        }}
       />
     </div>
   );
