@@ -153,7 +153,7 @@ export default function OptionalImageField(props) {
         className="qui-optional-image-field-icon"
         style={colors.iconBoundries}
       >
-        <i className={content.icon}></i>
+        <i className={content.icon ? content.icon : "fas fa-image"}></i>
       </div>
       <div className="qui-optional-image-field-button-container">
         <Button
@@ -162,7 +162,7 @@ export default function OptionalImageField(props) {
           style={colors.button}
           onClick={uploadFile}
         >
-          {content.text}
+          {content.text ? content.text : "Upload"}
         </Button>
       </div>
       {isActionButton && (

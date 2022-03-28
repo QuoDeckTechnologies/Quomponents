@@ -92,3 +92,90 @@ Default.parameters = {
     },
   },
 };
+// -------------------------------------------------------------
+// Without ActionButton
+// -------------------------------------------------------------
+export const WithoutActionButton = Template.bind({});
+WithoutActionButton.args = {
+  ...Default.args,
+  isActionButton: false,
+};
+WithoutActionButton.parameters = {
+  docs: {
+    source: {
+      code: `<OptionalImageField {...${JSON.stringify(
+        WithoutActionButton.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// With Custom Icon
+// -------------------------------------------------------------
+export const WithCustomIcon = Template.bind({});
+WithCustomIcon.args = {
+  ...Default.args,
+  content: {
+    text: "Upload new file",
+    icon: "fas fa-camera-retro",
+  },
+};
+WithCustomIcon.parameters = {
+  docs: {
+    source: {
+      code: `<OptionalImageField {...${JSON.stringify(
+        WithCustomIcon.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Colored OptionalImageField
+// -------------------------------------------------------------
+export const ColoredOptionalImageField = Template.bind({});
+ColoredOptionalImageField.args = {
+  ...Default.args,
+  withColor: {
+    backgroundColor: "#2a9d8f09",
+    accentColor: "#264653",
+    textColor: "#023047",
+  },
+};
+ColoredOptionalImageField.parameters = {
+  docs: {
+    source: {
+      code: `<OptionalImageField {...${JSON.stringify(
+        ColoredOptionalImageField.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Animated OptionalImageField
+// -------------------------------------------------------------
+export const AnimatedOptionalImageField = Template.bind({});
+AnimatedOptionalImageField.args = {
+  ...Default.args,
+  withAnimation: {
+    animation: "fade",
+    duration: 0.5,
+    delay: 0,
+  },
+};
+AnimatedOptionalImageField.parameters = {
+  docs: {
+    source: {
+      code: `<OptionalImageField {...${JSON.stringify(
+        AnimatedOptionalImageField.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
