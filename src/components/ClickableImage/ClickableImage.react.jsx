@@ -7,7 +7,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ClickableImage.scss";
 import "../../common/stylesheets/overrule.scss";
-import defaultImage from "../../assets/default11.jpeg";
+import defaultImage from "../../assets/default.jpeg";
 
 ClickableImage.propTypes = {
   //=======================================
