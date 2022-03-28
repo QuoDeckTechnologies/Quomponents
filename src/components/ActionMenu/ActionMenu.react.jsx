@@ -101,30 +101,6 @@ function getColors(colors) {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function ActionMenu(props) {
-  const handelevent = (index) => {
-    if (index === 0) {
-      //index 0 is for Open Deck
-      return props.onClick(index);
-    } else if (index === 1) {
-      //index 1 is for Edot Deck
-      return props.onClick(index);
-    } else if (index === 2) {
-      //index 2 is for Move Deck Up
-      return props.onClick(index);
-    } else if (index === 3) {
-      //index 3 is for Move Deck Down
-      return props.onClick(index);
-    } else if (index === 4) {
-      //index 4 is for Move To Topic
-      return props.onClick(index);
-    } else if (index === 5) {
-      //index 5 is for Unpublish Deck
-      return props.onClick(index);
-    } else {
-      //index 6 is for Delete Deck
-      return props.onClick(index);
-    }
-  };
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
@@ -149,7 +125,7 @@ export default function ActionMenu(props) {
         return (
           <div
             className={`qui-actionmenu-items`}
-            onMouseDown={() => handelevent(index)}
+            onMouseDown={() => props.onClick(index)}
             key={index}
             style={colors.backgroundColors}
           >
