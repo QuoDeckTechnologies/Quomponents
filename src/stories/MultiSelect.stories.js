@@ -140,7 +140,6 @@ Default.args = {
 
   withColor: {
     backgroundColor: "",
-    accentColor: "",
     textColor: "",
     hoverBackgroundColor: "",
     hoverTextColor: "",

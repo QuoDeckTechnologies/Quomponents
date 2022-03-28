@@ -129,13 +129,6 @@ export default function MultiSelect(props) {
         setIsChecked(prevState => !prevState)
     }
     //-------------------------------------------------------------------
-    // 3. Set the color
-    //-------------------------------------------------------------------
-    let colors = {
-        backgroundColor: props.withColor?.backgroundColor,
-        color: props.withColor?.textColor
-    }
-    //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "multi-select");
@@ -156,12 +149,9 @@ export default function MultiSelect(props) {
                     </div>
                 );
             })}
-            <input
-                type="submit"
-                value="Submit Answer"
-                className={`qui-submit-button qui-btn variant-${props.asVariant} emp-${props.asEmphasis}`}
-                onClick={() => handleSubmit()}
-                style={colors} />
-        </div>
+            {<Button {...props}
+                content={"Submit Answer"}
+                onClick={() => handleSubmit()} />}
+        </div >
     )
 }

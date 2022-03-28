@@ -45,8 +45,9 @@ describe("MultiSelct", () => {
   });
   it('Test click event on handleSubmit funtion of Button', () => {
     const handleSubmit = jest.fn();
-    const button = shallow((<MultiSelect onClick={handleSubmit} />));
-    button.find('input').at(0).simulate('click');
+    const button = shallow((<MultiSelect onClick={handleSubmit}
+      content={[{ name: "primary", isSelected: true }]} />));
+    button.find('Button').at(1).simulate('click');
     expect(handleSubmit.mock.calls.length).toEqual(1);
   });
   it("should render correctly when passed asEmphasis prop as text", () => {
@@ -170,10 +171,6 @@ describe("MultiSelct", () => {
   });
   it("should render with onclick toggleChecked", () => {
     let btn = component.find(".qui-multi-select-checkbox").at(0)
-    btn.simulate('click')
-  });
-  it("should render with onclick submit", () => {
-    let btn = component.find(".qui-submit-button")
     btn.simulate('click')
   });
 });
