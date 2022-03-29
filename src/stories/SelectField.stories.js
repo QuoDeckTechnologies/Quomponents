@@ -122,3 +122,57 @@ Default.parameters = {
         },
     },
 };
+// -------------------------------------------------------------
+// Colored SelectField
+// -------------------------------------------------------------
+export const ColoredSelectField = Template.bind({});
+ColoredSelectField.args = {
+    ...Default.args,
+    withColor: {
+        backgroundColor: "#666666",
+        textColor: "#fffff",
+        accentColor: "#ffbf00",
+    },
+};
+ColoredSelectField.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to override the standard colors of the SelectField.",
+        },
+        source: {
+            code: `<ColoredSelectField {...${JSON.stringify(
+                ColoredSelectField.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Animated SelectField
+// -------------------------------------------------------------
+export const AnimatedSelectField = Template.bind({});
+AnimatedSelectField.args = {
+    ...Default.args,
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+};
+AnimatedSelectField.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to animate the entry of the SelectField with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        },
+        source: {
+            code: `<AnimatedSelectField {...${JSON.stringify(
+                AnimatedSelectField.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+}; 

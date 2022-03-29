@@ -19,9 +19,7 @@
 
 .qui .qui-select-field-label {
     padding: 0.6em 0 0 1em;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    width: fit-content;
     font-size: 1.3em;
 }
 
@@ -29,6 +27,7 @@
     padding: 0 1em 0 0.5em;
     width: 100%;
     font-size: 1.3em;
+    font-weight: 600;
 }
 .qui .MuiOutlinedInput-notchedOutline {
     border: none;

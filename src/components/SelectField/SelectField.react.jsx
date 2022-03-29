@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -8,8 +10,6 @@ import {
 import "../../common/stylesheets/common.css";
 import "./SelectField.scss";
 import "../../common/stylesheets/overrule.scss";
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
 
 SelectField.propTypes = {
     //=======================================
@@ -140,7 +140,8 @@ export default function SelectField(props) {
                     <div className="qui-select-field-label">
                         {props.content?.label}
                     </div>
-                    <Select className="qui-select-field-select">
+                    <Select className="qui-select-field-select" defaultValue="none">
+                        <MenuItem disabled value="none" >Choose...</MenuItem>
                         {props.content?.categoryOptions.map((option) => (
                             <MenuItem
                                 key={option}
