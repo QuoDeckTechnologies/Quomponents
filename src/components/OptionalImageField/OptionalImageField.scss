@@ -1,56 +1,74 @@
 .qui.qui-optional-image-field {
   display: flex;
   align-items: center;
-  box-shadow: 0px 3px 5px #0000004f;
+  filter: drop-shadow(0px 3px 2px #0000004f);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 0.5em;
+}
+.qui.qui-optional-image-field.is-fluid {
+  min-height: 0;
+}
+.qui.qui-optional-image-field.is-fluid
+  .qui-optional-image-field-button-container {
+  flex: 1;
 }
 .qui.qui-optional-image-field.is-hidden {
   display: none;
 }
 .qui .qui-optional-image-field-icon {
   padding: 0.12em 0.2em;
-  font-size: 1.7em;
+  font-size: 1.97em;
   display: flex;
   align-items: center;
-  background-color: #e8e8e88c;
+  background-color: #efefef;
   color: #969696;
-  border-top: 0.05em solid #ffbf00;
-  border-left: 0.05em solid #ffbf00;
-  border-bottom: 0.05em solid #ffbf00;
-}
-.qui .qui-optional-image-field-button-container {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  border-top: 0.08em solid #ffbf00;
+  border-left: 0.08em solid #ffbf00;
+  border-bottom: 0.08em solid #ffbf00;
 }
 .qui .qui-optional-image-field-button {
   border-radius: 0;
   width: 100%;
   color: #ffbf00;
   background-color: #f6f2e9;
-  border-color: #ffbf00;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  border: 0.15em solid #ffbf00;
+  padding: 0.35em 5em;
+  font-size: 1em;
 }
 .qui .qui-optional-image-field-button:hover {
   background-color: #f6f2e9e3;
-  border-color: #ffbf00;
+  border: 0.15em solid #ffbf00;
 }
 .qui .qui-optional-image-field-action-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1em;
-  padding: 0.53em 0.5em;
+  font-size: 2.05em;
+  padding: 0.17em;
   background-color: #666666;
-  color: #ffffff;
+  color: #969696;
   min-width: 1em;
 }
 .qui .qui-optional-image-field-action-icon.qui-uploaded {
   cursor: pointer;
+}
+
+@media only screen and (min-width: 320px) {
+  .qui.qui-optional-image-field {
+    font-size: 0.69em;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .qui.qui-optional-image-field {
+    font-size: 0.75em;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .qui.qui-optional-image-field {
+    font-size: 1em;
+  }
 }

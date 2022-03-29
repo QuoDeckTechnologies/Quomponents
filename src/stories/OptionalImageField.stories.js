@@ -12,6 +12,17 @@ export default {
         actionButton: true,
       },
     },
+    withFile: {
+      defaultValue: {
+        type: "image/*",
+        capture: "",
+      },
+    },
+    isMultiple: {
+      table: {
+        defaultValue: false,
+      },
+    },
     withColor: {
       table: {
         category: "with-Params",
@@ -44,6 +55,12 @@ export default {
         defaultValue: false,
       },
     },
+    isFluid: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
     onClick: {
       table: {
         category: "Events",
@@ -68,6 +85,11 @@ Default.args = {
     icon: "fas fa-image",
     actionButton: true,
   },
+  withFile: {
+    type: "image/*",
+    capture: "",
+  },
+  isMultiple: false,
   withColor: {
     backgroundColor: "",
     accentColor: "",
@@ -80,6 +102,7 @@ Default.args = {
   },
   isDisabled: false,
   isHidden: false,
+  isFluid: false,
 };
 Default.parameters = {
   docs: {

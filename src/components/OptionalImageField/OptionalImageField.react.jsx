@@ -2,12 +2,12 @@
 import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
+import Button from "@mui/material/Button";
 import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./OptionalImageField.scss";
 import "../../common/stylesheets/overrule.scss";
-import Button from "@mui/material/Button";
 
 OptionalImageField.propTypes = {
   //=======================================
@@ -21,6 +21,20 @@ OptionalImageField.propTypes = {
     icon: PropTypes.string,
     actionButton: PropTypes.bool,
   }),
+
+  /**
+    Use to define the file type which is supported to upload.
+    Suppoted file types: [video/*, image/*, .mp3, .docx, .xls, .xlsx, .zip, .qdf, .pdf]
+  */
+  withFile: PropTypes.shape({
+    type: PropTypes.string,
+    capture: PropTypes.string,
+  }),
+
+  /**
+   Use to toggle a multiple to upload more than one files
+ */
+  isMultiple: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
@@ -50,13 +64,17 @@ OptionalImageField.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show/hide the component
-    */
+   Use to show/hide the component
+   */
   isHidden: PropTypes.bool,
   /**
-    Use to enable/disable the component
-    */
+   Use to enable/disable the component
+   */
   isDisabled: PropTypes.bool,
+  /**
+    Use to toggle the component taking the full width of the parent container
+    */
+  isFluid: PropTypes.bool,
   /**
     OptionalImageField component must have the onClick function passed as props
     */
@@ -68,6 +86,8 @@ OptionalImageField.defaultProps = {
   // Component Specific props
   //=======================================
   content: {},
+  withFile: null,
+  isMultiple: false,
   //=======================================
   // Quommon props
   //=======================================
@@ -75,6 +95,7 @@ OptionalImageField.defaultProps = {
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
+  isFluid: false,
 };
 const getColors = (withColor) => {
   let colors = {
@@ -102,11 +123,11 @@ const getColors = (withColor) => {
 **/
 export default function OptionalImageField(props) {
   const fileRef = useRef();
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(false);
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { content, isActionButton } = props;
+  const { content } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -126,9 +147,35 @@ export default function OptionalImageField(props) {
     fileRef.current.click();
   };
   const handleChange = (e) => {
-    let file = e.target.files[0];
-    setFile(file);
-    props.onClick(file);
+    let files = e.target.files;
+    var allFiles = [];
+    for (var i = 0; i < files.length; i++) {
+      let file = files[i];
+      // Make new FileReader
+      let reader = new FileReader();
+      // Convert the file to base64 text
+      reader.readAsDataURL(file);
+      // on reader load something...
+      reader.onload = () => {
+        // Make a fileInfo Object
+        let fileInfo = {
+          name: file.name,
+          type: file.type,
+          size: Math.round(file.size / 1000) + " kB",
+          base64: reader.result,
+          file: file,
+        };
+        // Push it to the state
+        allFiles.push(fileInfo);
+        // If all files have been processed
+        if (allFiles.length === files.length) {
+          // Apply Callback function
+          if (props.isMultiple) props.onClick(allFiles);
+          else props.onClick(allFiles[0]);
+        }
+      };
+    }
+    setFile(true);
   };
   // ========================= Render Function =================================
 
@@ -140,9 +187,12 @@ export default function OptionalImageField(props) {
     >
       <input
         type="file"
+        ref={fileRef}
+        accept={props.withFile?.type}
+        capture={props.withFile?.capture}
+        multiple={props.isMultiple}
         className="qui-image-upload-field"
         onChange={handleChange}
-        ref={fileRef}
         hidden
       />
       {content?.icon && (
@@ -168,7 +218,7 @@ export default function OptionalImageField(props) {
           className={`qui-optional-image-field-action-icon ${
             file ? "qui-uploaded" : ""
           }`}
-          onClick={() => setFile(null)}
+          onClick={() => setFile(false)}
         >
           <i className={file ? "fas fa-times" : "fas fa-angle-left"}></i>
         </div>
