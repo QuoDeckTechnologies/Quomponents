@@ -111,21 +111,22 @@ MultiSelect.defaultProps = {
 - Check and uncheck your selection by clicking on it
 **/
 export default function MultiSelect(props) {
-    const { content } = props;
-    const [, setIsChecked] = useState();
+    let [data, setData] = useState([...props.content]);
+
     function handleSubmit() {
         let selectedIndexes = []
-        for (let i = 0; i <= props.content.length; i++) {
-            if (props.content[i]?.isSelected) {
+        for (let i = 0; i <= data.length; i++) {
+            if (data[i]?.isSelected) {
                 selectedIndexes.push(i)
             }
         }
         props.onClick(selectedIndexes)
     }
-    function toggleChecked(content) {
-        let tmp = content;
-        tmp.isSelected = !tmp.isSelected;
-        setIsChecked(prevState => !prevState)
+
+    function toggleChecked(index) {
+        let tempArr = [...data];
+        tempArr[index] = { ...tempArr[index], isSelected: !tempArr[index].isSelected };
+        setData(tempArr);
     }
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -134,17 +135,17 @@ export default function MultiSelect(props) {
 
     return (
         <div className={`qui qui-multi-select-container ${quommonClasses.parentClasses}`} >
-            {_.map(content, (text, index) => {
+            {_.map(data, (text, index) => {
                 return (
                     <div key={index}
                         className={`qui-multi-select-button-container ${quommonClasses.childClasses}`} >
                         <div className="qui-multi-select-button">
                             <div className={`qui-square-background`} >
                                 <i className={`qui-multi-select-checkbox  ${text.isSelected ? "fas fa-check-square" : "fa fa-square"}`}
-                                    onClick={() => toggleChecked(text)}>
+                                    onClick={() => toggleChecked(index)}>
                                 </i>
                             </div>
-                            {<Button {...props} content={text.name} onClick={() => toggleChecked(text)} />}</div>
+                            {<Button {...props} content={text.name} onClick={() => toggleChecked(index)} />}</div>
                     </div>
                 );
             })}

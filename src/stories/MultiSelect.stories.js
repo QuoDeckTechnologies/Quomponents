@@ -8,19 +8,19 @@ export default {
     content: [
       {
         name: "Primary Button",
-        isSelected: true,
+        isSelected: false,
       },
       {
         name: "Primary Button",
-        isSelected: true,
+        isSelected: false,
       },
       {
         name: "Primary Button",
-        isSelected: true,
+        isSelected: false,
       },
       {
         name: "Primary Button",
-        isSelected: true,
+        isSelected: false,
       },
     ],
     asEmphasis: {
@@ -117,19 +117,19 @@ Default.args = {
   content: [
     {
       name: "Primary Button",
-      isSelected: true,
+      isSelected: false,
     },
     {
       name: "Primary Button",
-      isSelected: true,
+      isSelected: false,
     },
     {
       name: "Primary Button",
-      isSelected: true,
+      isSelected: false,
     },
     {
       name: "Primary Button",
-      isSelected: true,
+      isSelected: false,
     },
   ],
   asEmphasis: "contained",
@@ -179,19 +179,19 @@ const AllVariantTemplate = (args) => {
           content: [
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
           ],
           asVariant: "primary",
@@ -235,7 +235,7 @@ const AllVariantTemplate = (args) => {
           content: [
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
             {
               name: "Primary Button",
@@ -243,7 +243,7 @@ const AllVariantTemplate = (args) => {
             },
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
             {
               name: "Primary Button",
@@ -263,19 +263,19 @@ const AllVariantTemplate = (args) => {
           content: [
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
           ],
           asVariant: "warning",
@@ -291,19 +291,19 @@ const AllVariantTemplate = (args) => {
           content: [
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
             {
               name: "Primary Button",
-              isSelected: true,
+              isSelected: false,
             },
           ],
           asVariant: "error",
