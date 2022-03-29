@@ -46,7 +46,6 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     textColor: "",
-                    backgroundColor: "",
                 },
             },
         },
@@ -99,7 +98,6 @@ Default.args = {
     asAligned: "center",
     withColor: {
         textColor: "#AAAAAA",
-        backgroundColor: "",
     },
     withAnimation: {
         animation: "collapse",
@@ -122,7 +120,6 @@ export const ColoredPageHeader = Template.bind({});
 ColoredPageHeader.args = {
     ...Default.args,
     withColor: {
-        backgroundColor: "#666666",
         textColor: "#fffff",
     },
 };
@@ -130,7 +127,7 @@ ColoredPageHeader.parameters = {
     docs: {
         description: {
             story:
-                "Use to override the standard colors of the SliderHeader.",
+                "Use to override the standard colors of the PageHeader.",
         },
         source: {
             code: `<ColoredPageHeader {...${JSON.stringify(

@@ -149,7 +149,6 @@ describe("PageHeader", () => {
 
     it("it should render correctly when passed withColor props", () => {
         let colors = {
-            backgroundColor: "#fff",
             textColor: "#00FFFF",
         }
         component.setProps({ withColor: colors })

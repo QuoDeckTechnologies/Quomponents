@@ -58,7 +58,6 @@ PageHeader.propTypes = {
     */
     withColor: PropTypes.shape({
         textColor: PropTypes.string,
-        backgroundColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -119,7 +118,6 @@ export default function PageHeader(props) {
     // 2. Use to set Color in PageHeader
     //-------------------------------------------------------------------
     let Color = {
-        backgroundColor: props.withColor?.backgroundColor,
         color: props.withColor?.textColor,
     };
     //-------------------------------------------------------------------
@@ -141,7 +139,3 @@ export default function PageHeader(props) {
         </motion.div >
     );
 }
-
-
-
-
