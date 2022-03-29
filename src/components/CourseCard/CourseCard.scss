@@ -1,0 +1,188 @@
+.qui-course-card {
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+    border-radius: 0.6em;
+}
+.qui-course-card-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.qui-course-card-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 23em;
+    margin: 1em 1.8125em 0 1.8125em;
+    justify-content: space-between;
+}
+.qui-course-card-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
+}
+.qui-course-card-title-container {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+.qui-course-card-title {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+    font-size: 1.4em;
+    width: 80%;
+    color: #454545;
+}
+.qui-course-card-tag-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.8em;
+    height: auto;
+}
+.qui .qui-course-card-tag{
+  margin: 0 0.4em 0.4em 0;
+}
+.qui-course-card-child4 {
+    height: 46px;
+    width: 2em;
+}
+.qui-course-card-base-image {
+    margin-top: 0.5em;
+    width: 100%;
+    height: 10.4375em;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 0.3125em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+}
+.qui-nugget-block-styling {
+    margin-left: -0.5em;
+}
+.qui-course-card-description {
+    color: "#666666";
+    font-size: 0.7em;
+}
+.qui-course-card-description-container {
+    display: flex;
+    margin-top: 1em;
+    width: 100%;
+    justify-content: space-between;
+}
+.qui-course-card-description {
+    width: 55%;
+    text-align: left;
+    color: #666666;
+    text-overflow: ellipsis;
+}
+.qui-course-card-arc-menu {
+    height: 4em;
+    width: 5em;
+}
+.qui-course-card-share-block {
+    font-size: 0.52em;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    align-items: end;
+    margin-right: 1.5em;
+    justify-content: center;
+}
+.qui-course-card-link-container {
+    text-align: right;
+    display: flex;
+    align-items: center;
+}
+.qui-course-card-link{
+    color: #666666;
+    text-decoration: none;
+}
+.qui-course-card-share-widget {
+    margin-right:-1.5em;
+}
+.qui-course-card-reward {
+    font-size: 0.8em;
+}
+.qui-course-card-name {
+    font-size: 1.1em;
+    color: #aaaaaa;
+}
+.tooltiptext{
+    display: block;
+}
+
+@media only screen and (min-width: 320px) {
+    .qui-course-card-body {
+        min-height: 20em;
+    }
+    .qui-course-card-share-widget {
+        font-size: 1.2em;
+        margin-right: -0.9em;
+    }
+    .qui-course-card-title {
+        font-size: 1.1em;
+    }
+    .qui-course-card-link-container{
+    margin-right: -0.8em;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .qui-course-card-title {
+        font-size: 1.2em;
+    }
+    .qui-course-card-share-widget {
+        margin-right:-1em;
+    }
+}
+
+@media only screen and (min-width: 481px) {
+    .qui-course-card-share-block {
+        font-size: 0.6em;
+    }
+    .qui-course-card-share-widget {
+        font-size: 0.8em;
+        margin-right: -1em;
+    }
+}
+@media only screen and (min-width: 540px) {
+    .qui-course-card-share-block {
+        font-size: 0.6em;
+    }
+    .qui-course-card-share-widget {
+        font-size: 0.8em;
+        margin-right: -1.3em;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .qui-course-card-share-block {
+        font-size: 0.6em;
+    }
+    .qui-course-card-share-widget {
+        font-size: 0.8em;
+        margin-right:-1.5em;
+    }
+}
+@media only screen and (min-width: 832px) {
+    .qui-course-card-share-block {
+        font-size: 0.6em;
+    }
+    .qui-course-card-share-widget {
+        font-size: 0.5em;
+        margin-right:-2em;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .qui-course-card-share-block {
+        font-size: 0.6em;
+    }
+    .qui-course-card-share-widget {
+        font-size: 0.4em;
+        margin-right:-3em;
+    }
+}
