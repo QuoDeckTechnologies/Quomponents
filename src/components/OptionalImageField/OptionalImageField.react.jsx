@@ -146,9 +146,9 @@ export default function OptionalImageField(props) {
   const uploadFile = () => {
     fileRef.current.click();
   };
+  let allFiles = [];
   const handleChange = (e) => {
     let files = e.target.files;
-    var allFiles = [];
     for (var i = 0; i < files.length; i++) {
       let file = files[i];
       // Make new FileReader
@@ -218,7 +218,10 @@ export default function OptionalImageField(props) {
           className={`qui-optional-image-field-action-icon ${
             file ? "qui-uploaded" : ""
           }`}
-          onClick={() => setFile(false)}
+          onClick={() => {
+            setFile(false)
+            allFiles = []
+          }}
         >
           <i className={file ? "fas fa-times" : "fas fa-angle-left"}></i>
         </div>
