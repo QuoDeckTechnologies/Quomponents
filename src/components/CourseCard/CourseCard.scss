@@ -110,6 +110,8 @@
     margin-right:-1.5em;
 }
 .qui-course-card-reward {
+    width: 50%;
+    text-overflow: ellipsis;
     font-size: 0.8em;
 }
 .qui-course-card-name {
@@ -119,6 +121,7 @@
 .qui-course-card-tag-and-date-container{
     display: flex;
     align-items: center;
+    margin-top: -0.8em;
 }
 .qui-course-card-date-container{
     display: flex;

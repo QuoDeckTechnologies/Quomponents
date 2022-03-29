@@ -6,14 +6,16 @@ export default {
     component: NuggetCard,
     argTypes: {
         content: {
-            title: "",
+            published:false,
+            tags: [],
+            category:"",
+            name: "",
             description: "",
-            baseImage: "",
-            tag: [],
-            nuggetName:"",
-            nuggetStatus: [],
-            rewardPoint:"",
-            link:""
+            image: "",
+            points:"",
+            identifier:"",
+            startDate:"",
+            endDate: ""
         },
         asFloated: {
             control: "select",
@@ -78,14 +80,16 @@ const Template = (args) => <NuggetCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        title: "Measure your sales readiness",
+        published:false,
+        tags: ["Tag1","Tag2"],
+        category:"Profiler",
+        name: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
-        baseImage: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
-        tag: ["Tag1", "Tag2"],
-        nuggetName:"Profiler",
-        nuggetStatus:"none",
-        rewardPoint:"200",
-        link:"https://www.quodeck.com/XrPmy_OAK"
+        image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+        points:"200",
+        identifier:"XrPmy_OAK",
+        startDate:"26th Feb",
+        endDate: "3rd May"
     },
     asFloated: "inline",
     withAnimation: {
@@ -111,14 +115,16 @@ export const DifferentResolution = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {
             content: {
-                title: "Measure your sales readiness",
+                published:false,
+                tags: ["Tag1","Tag2"],
+                category:"Profiler",
+                name: "Measure your sales readiness",
                 description: "Take this quick profile test to check how well you are prepared for a sales job",
-                baseImage: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
-                tag: ["Tag1", "Tag2"],
-                nuggetName:"Profiler",
-                nuggetStatus:"none",
-                rewardPoint:"200",
-                link:"https://www.quodeck.com/XrPmy_OAK"
+                image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+                points:"200",
+                identifier:"XrPmy_OAK",
+                startDate:"26th Feb",
+                endDate: "3rd May"
             },
         }),
     };

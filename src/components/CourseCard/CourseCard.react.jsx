@@ -27,14 +27,16 @@ CourseCard.propTypes = {
 //=======================================
 content: PropTypes.shape({
     published:PropTypes.bool,
-    category:PropTypes.string,
+    courseType:PropTypes.string,
     tags: PropTypes.array,
     courseName: PropTypes.string,
     description:PropTypes.string,
-    baseImage: PropTypes.string,
+    courseImage:PropTypes.string,
+    courseWrapperImage: PropTypes.string,
     points:PropTypes.string,
     identifier:PropTypes.string,
-    date:PropTypes.string
+    startDate:PropTypes.string,
+    endDate:PropTypes.string
 }),
 
 // Quommon props
@@ -80,10 +82,11 @@ CourseCard.defaultProps = {
 content: {
     published:false,
     tags: [],
-    category:"Course",
+    courseType:"Gamified",
     courseName: "Measure your sales readiness",
     description: "Take this quick profile test to check how well you are prepared for a sales job",
-    image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+    courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+    courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
     points:"200",
     identifier:"XrPmy_OAK",
     startDate:"26th Feb",
@@ -117,7 +120,7 @@ export default function CourseCard(props) {
     //-------------------------------------------------------------------
     // 2. Get the Base Image
     //-------------------------------------------------------------------
-    let image = props.content?.image ? props.content?.image : deafaultImage;
+    // let image = props.content?.image ? props.content?.image : deafaultImage;
 
     //-------------------------------------------------------------------
     // 3. Get the tags
@@ -125,10 +128,23 @@ export default function CourseCard(props) {
     let tags = props.content?.tags ? props.content?.tags : [""];
 
     //-------------------------------------------------------------------
-    // 4.  Create link of article based on this identifier
+    // 4.  Create link of article based on identifier
     //-------------------------------------------------------------------
     let link = "https://www.quodeck.com/"+ props.content?.identifier;
 
+    //-------------------------------------------------------------------
+    // 5.  Set image according to course type
+    //-------------------------------------------------------------------
+    let image;
+    if(props.content?.courseType?.toUpperCase() === "GAMIFIED"){
+        image = props.content?.courseImage ? props.content?.courseImage : props.content?.courseWrapperImage ?  props.content?.courseWrapperImage : deafaultImage;
+    }else{
+        image = props.content?.courseImage ? props.content?.courseImage : deafaultImage;
+    }
+
+    //-------------------------------------------------------------------
+    // 5. Get the CourseCard Component
+    //-------------------------------------------------------------------
     const CourseCard = () => {
     return (
         <div className={`qui-course-card-container`}>
@@ -184,7 +200,7 @@ export default function CourseCard(props) {
                 </div>
                 <div className={`qui-course-card-share-block`}>
                     <div className={`qui-course-card-name`}>
-                        {props.content?.nuggetType}
+                        {props.content?.courseType}
                     </div>
                     <div className={'qui-course-card-share-widget'}>
                         <ShareWidget asSize="tiny" withColor={{ textColor: "#AAAAAA" }} content={{ label: "Share", url: link }} />

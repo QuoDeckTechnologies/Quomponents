@@ -18,6 +18,7 @@ import IconBlock from "../IconBlock/IconBlock.react";
 import ShareWidget from "../ShareWidget/ShareWidget.react";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
 
+import { nugget } from "../../assets/nuggets/nuggets.js";
 import Nugget_Profiler from "../../assets/nuggets/nugget_profiler.png";
 import deafaultImage from "../../assets/default.jpeg"
 
@@ -26,14 +27,16 @@ NuggetCard.propTypes = {
     // Component Specific props
     //=======================================
     content: PropTypes.shape({
-        title: PropTypes.string,
-        baseImage: PropTypes.string,
-        description: PropTypes.string,
-        tag: PropTypes.array,
-        nuggetName: PropTypes.string,
-        nuggetStatus: PropTypes.string,
-        rewardPoint: PropTypes.string,
-        link: PropTypes.string
+        published:PropTypes.bool,
+        category:PropTypes.string,
+        tags: PropTypes.array,
+        name: PropTypes.string,
+        description:PropTypes.string,
+        image: PropTypes.string,
+        points:PropTypes.string,
+        identifier:PropTypes.string,
+        startDate:PropTypes.string,
+        endDate:PropTypes.string
     }),
 
     // Quommon props
@@ -77,14 +80,16 @@ NuggetCard.defaultProps = {
     // Component Specific props
     //=======================================
     content: {
-        title: "Measure your sales readiness",
-        description: "Take this quick profile test to check how well you are prepared for a sales job... ",
-        baseImage: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
-        tag: [],
-        nuggetName: "Profiler",
-        nuggetStatus: "none",
-        rewardPoint: "200",
-        link: "https://www.quodeck.com/XrPmy_OAK"
+        published:false,
+        tags: [],
+        category:"Profiler",
+        name: "Measure your sales readiness",
+        description: "Take this quick profile test to check how well you are prepared for a sales job",
+        image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+        points:"200",
+        identifier:"XrPmy_OAK",
+        startDate:"26th Feb",
+        endDate: "3rd May"
     },
     // Quommon props
     //=======================================
@@ -100,11 +105,9 @@ NuggetCard.defaultProps = {
 
 /**
 ## Notes
-- The design system used for this component is Material UI (@mui/material)
-- The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-
+- Pass all the required props to the component.
 **/
 export default function NuggetCard(props) {
 
@@ -123,26 +126,39 @@ export default function NuggetCard(props) {
     //-------------------------------------------------------------------
     // 5. Get the Base Image
     //-------------------------------------------------------------------
-    let baseImage = props.content?.baseImage ? props.content?.baseImage : deafaultImage;
-
-    //-------------------------------------------------------------------
-    // 5. Get the Status of Component
-    //-------------------------------------------------------------------
+    let image = props.content?.image ? props.content?.image : deafaultImage;
 
     // 6. Get the tags
-    let tags = props.content?.tag ? props.content?.tag : [""];
+    let tags = props.content?.tags ? props.content?.tags : [""];
 
+    //-------------------------------------------------------------------
+    // 4.  Create link of article based on the identifier
+    //-------------------------------------------------------------------
+    let link = "https://www.quodeck.com/"+ props.content?.identifier;
+
+    //-------------------------------------------------------------------
+    // 5. Get Nugget Image and Nugget Name
+    //-------------------------------------------------------------------
+    let nuggetCategory, nuggetImage;
+    nugget.filter(nuggets => nuggets.name.toUpperCase().includes(props.content?.category?.toUpperCase())).map(filteredCategory => (
+        nuggetCategory = filteredCategory.name,
+        nuggetImage = filteredCategory.image
+      ))
+
+    //-------------------------------------------------------------------
+    // 6. Get the NuggetCard Component
+    //-------------------------------------------------------------------
     const nuggetCard = () => {
         return (
             <div className={`qui-nugget-card-container`}>
                 <div className="qui-nugget-card-body">
                     <div className={`qui-nugget-card-title-container`}>
                         <div className={`qui-nugget-block-styling`}>
-                            <NuggetBlock status={props.content?.nuggetStatus} image={Nugget_Profiler} onClick={handleNuggetBlock} />
+                            <NuggetBlock published={props.content?.published} image={nuggetImage} onClick={handleNuggetBlock} />
                         </div>
 
                         <div className={`qui-nugget-card-title`}>
-                            {props.content?.title}
+                            {props.content?.name}
                         </div>
                     </div>
                     <div className="qui-nugget-card-tag-container" style={{ backkgroundColor: "red" }}>
@@ -154,14 +170,14 @@ export default function NuggetCard(props) {
                             )
                         })}
                     </div>
-                    <div className="qui-nugget-card-base-image" style={{ backgroundImage: `url(${baseImage})` }}>
+                    <div className="qui-nugget-card-base-image" style={{ backgroundImage: `url(${image})` }}>
                     </div>
                     <div className={`qui-nugget-card-description-container`}>
                         <div className={`qui-nugget-card-description`}>
                             {props.content?.description}
                         </div>
                         <div className={`qui-nugget-card-reward`}>
-                            <Reward asSize="tiny" content={{ label: "Complete to win", point: props.content?.rewardPoint }} />
+                            <Reward asSize="tiny" content={{ label: "Complete to win", point: props.content?.points }} />
                         </div>
                     </div>
                 </div>
@@ -178,15 +194,15 @@ export default function NuggetCard(props) {
                     </div>
                     <div className={`qui-nugget-card-share-block`}>
                         <div className={`qui-nugget-card-name`}>
-                            {props.content?.nuggetName}
+                            {nuggetCategory}
                         </div>
                         <div className={'qui-nugget-card-share-widget'}>
                             <ShareWidget asSize="tiny" withColor={{ textColor: "#AAAAAA" }} content={{ label: "Share", url: props.content?.link }} />
                         </div>
                         <div className={'qui-nugget-card-link-container'}>
-                            <a className={'qui-nugget-card-link'} href={props.content?.link}>{props.content?.link}</a>
+                            <a className={'qui-nugget-card-link'} href={link}>{link}</a>
                             <IconBlock asSize="small" asEmphasis="text" withIcon={{ name: "fas fa-copy" }} withColor={{ accentColor: "yellow" }}
-                                onClick={() => { navigator.clipboard.writeText(props.content?.link) }} />
+                                onClick={() => { navigator.clipboard.writeText(link) }} />
                         </div>
                     </div>
                 </div>
