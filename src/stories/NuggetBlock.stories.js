@@ -27,11 +27,10 @@ export default {
     component: NuggetBlock,
     argTypes: {
         image: "",
-        status: {
-            control: "select",
-            options: ["published", "unpublished", "none"],
+        published:{
             table: {
-                category: "as-Flags",
+                category: "is-Toggles",
+                defaultValue: false,
             },
         },
         asSize: {
@@ -111,7 +110,7 @@ const Template = (args) => <NuggetBlock {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     image: Nugget_Profiler,
-    status: "none",
+    published: false,
     asSize: "normal",
     asFloated: "inline",
     asPadded: "normal",
@@ -332,8 +331,7 @@ export const AllVariantsTemplate = (args) => {
                 animation: "zoom",
                 duration: 0.5,
                 delay: 0.8,
-            },
-            status: "none"
+            }
         })
     };
     return (
