@@ -30,31 +30,28 @@
     align-items: center;
 }
 .qui-course-card-title {
-    display: flex;
-    flex-wrap: wrap;
     text-align: left;
     font-size: 1.4em;
-    width: 80%;
     color: #454545;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
 }
 .qui-course-card-tag-container {
     width: 100%;
     display: flex;
-   
     flex-wrap: wrap;
     font-size: 0.8em;
     height: auto;
-    
 }
 .qui .qui-course-card-tag{
     display :flex;
     align-items: center;
   padding: 0.2em;
 
-}
-.qui-course-card-child4 {
-    height: 46px;
-    width: 2em;
 }
 .qui-course-card-base-image {
     margin-top: 0.5em;
@@ -70,20 +67,22 @@
     margin-left: -0.5em;
 }
 .qui-course-card-description {
-    color: "#666666";
+    width: 55%;
+    text-align: left;
+    color: #666666;
     font-size: 0.7em;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    white-space: normal;
 }
 .qui-course-card-description-container {
     display: flex;
     margin-top: 1em;
     width: 100%;
     justify-content: space-between;
-}
-.qui-course-card-description {
-    width: 55%;
-    text-align: left;
-    color: #666666;
-    text-overflow: ellipsis;
 }
 .qui-course-card-arc-menu {
     height: 4em;
@@ -130,9 +129,12 @@
     color:#666666
 }
 
-@media only screen and (min-width: 320px) {
+@media only screen and (min-width: 320px) and (max-width: 374px){
     .qui-course-card-body {
         min-height: 20em;
+    }
+    .qui-course-card-base-image{
+        height: 7em;
     }
     .qui-course-card-share-widget {
         font-size: 1.2em;
@@ -152,9 +154,12 @@
     }
 }
 
-@media only screen and (min-width: 375px) {
+@media only screen and (min-width: 375px) and (max-width: 481px){
     .qui-course-card-title {
         font-size: 1.2em;
+    }
+    .qui-course-card-base-image{
+        height: 8em;
     }
     .qui-course-card-share-widget {
         margin-right:-1em;

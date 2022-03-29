@@ -7,31 +7,26 @@ export default {
     argTypes: {
         content: {
             published:false,
+            courseType:"",
             tags: [],
-            name: "",
+            courseName: "",
             description: "",
             baseImage: "",
-            rewardPoint:"",
+            points:"",
             identifier:"",
-            date:""
+            startDate:"",
+            endDate:""
         },     
-        category:{
-            control: "select",
-            options: ["Story", "Quiz", "Assessment", "Game", "Article", "Feedback", "Poll", "Profiler", "Recco", "Document", "Survey", "Submission", "Caculator", "Linklist", "Faq", "Event", "Video", "Quiz", "News", "Webinar", "Gallery", "Course"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         asFloated: {
             control: "select",
             options: ["left", "right", "inline"],
             table: {
-                category: "as-Flags",
+                courseType: "as-Flags",
             },
         },
         withAnimation: {
             table: {
-                category: "with-Params",
+                courseType: "with-Params",
                 defaultValue: {
                     animation: "",
                     duration: 0,
@@ -41,19 +36,19 @@ export default {
         },
         isHidden: {
             table: {
-                category: "is-Toggles",
+                courseType: "is-Toggles",
                 defaultValue: false,
             },
         },
         isDisabled: {
             table: {
-                category: "is-Toggles",
+                courseType: "is-Toggles",
                 defaultValue: false,
             },
         },
         onClick: {
             table: {
-                category: "Events",
+                courseType: "Events",
                 defaultValue: null,
             },
         },
@@ -86,15 +81,16 @@ export const Default = Template.bind({});
 Default.args = {
     content: {
         published:false,
+        courseType:"Course",
         tags: ["Tag1","Tag2"],
-        name: "Measure your sales readiness",
+        courseName: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
         image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-        rewardPoint:"200",
+        points:"200",
         identifier:"XrPmy_OAK",
-        date:"28th Feb - 3rd May"
+        startDate:"26th Feb",
+        endDate:"3rd March"
     },    
-    category:"Course",
     asFloated: "inline",
     withAnimation: {
         animation: "zoom",
@@ -121,14 +117,14 @@ export const DifferentResolution = (args) => {
             content: {
                 published:false,
                 tags: ["Tag1","Tag2"],
-                name: "Measure your sales readiness",
+                courseName: "Measure your sales readiness",
                 description: "Take this quick profile test to check how well you are prepared for a sales job",
                 image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-                rewardPoint:"200",
+                points:"200",
                 identifier:"XrPmy_OAK",
                 date:"28th Feb - 3rd May"
             },    
-            category:"Course",
+            courseType:"Course",
         }),
     };
     return (
