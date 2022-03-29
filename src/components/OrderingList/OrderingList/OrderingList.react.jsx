@@ -14,9 +14,9 @@ OrderingList.propTypes = {
   /**
      OrderingList title data should be passed in content field and it is required field  
     */
-  content: PropTypes.shape({
-    title: PropTypes.arrayOf(PropTypes.string),
-  }),
+  content: PropTypes.arrayOf(
+    PropTypes.string
+  ),
   //=======================================
   // Quommon props
   //=======================================
@@ -42,10 +42,9 @@ OrderingList.propTypes = {
     "massive",
   ]),
   /**
-Use to float the component in parent container
-*/
+  Use to float the component in parent container
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-
   /**
     Use to define the entry animation of the component
     */
@@ -78,15 +77,18 @@ Use to float the component in parent container
 };
 
 OrderingList.defaultProps = {
+  // Component Specific props
+  //=======================================
+  content: [],
   //=======================================
   // Quommon props
   //=======================================
   asVariant: "primary",
   asSize: "normal",
   asFloated: "none",
+  withTranslation: null,
   isHidden: false,
   isDisabled: false,
-  withTranslation: null,
 };
 
 /**
@@ -97,26 +99,26 @@ OrderingList.defaultProps = {
 - props are not being passed to the NavBar. Please speak to the admin to handle any new prop.
 **/
 export default function OrderingList(props) {
-  const [shuffle, setshuffle] = useState(_.shuffle(props.content?.title));
+  const [shuffle, setShuffle] = useState(_.shuffle(props.content));
 
   useEffect(() => {
-    setshuffle(_.shuffle(props.content?.title))
-  }, [props.content?.title]);
-
+    setShuffle(_.shuffle(props.content))
+  }, [props.content]);
   //swap the item
   let swap = (to, from, shuffle) => {
     let swapArray = shuffle;
     let b = swapArray[to];
     swapArray[to] = swapArray[from];
     swapArray[from] = b;
-    setshuffle([...swapArray]);
-
+    setShuffle([...swapArray]);
   };
+
   let upClick = (index, shuffle) => {
     if (index > 0 && index <= shuffle.length - 1) {
       swap(index, index - 1, shuffle);
     }
   };
+
   let downClick = (index, shuffle) => {
     if (index >= 0 && index < shuffle.length - 1) {
       swap(index, index + 1, shuffle);
@@ -125,14 +127,11 @@ export default function OrderingList(props) {
 
   function handleSubmit() {
     props.onClick(shuffle)
-    console.log(shuffle, 'handleSubmit')
   }
-
   // 1. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "orderinglist");
   quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
-
   // 2. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);

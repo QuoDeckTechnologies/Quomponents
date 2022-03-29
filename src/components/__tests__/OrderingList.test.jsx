@@ -1,9 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
-import renderer, { act } from "react-test-renderer";
-import Button from "../Buttons/Button/Button.react";
+import { mount } from "enzyme";
 //--------------------------------------
 // Import from Config
 // -------------------------------------
@@ -22,9 +20,7 @@ describe("OrderingList", () => {
         jest.resetAllMocks();
         component = mount(
             <OrderingList
-                content={{
-                    title: ["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"],
-                }}
+                content={["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"]}
                 asVariant="primary"
                 asSize="normal"
                 asFloated="none"

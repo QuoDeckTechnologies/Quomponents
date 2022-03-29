@@ -1,18 +1,11 @@
 import React from "react";
 import OrderingList from "../components/OrderingList/OrderingList/OrderingList.react";
 
-
 export default {
     title: "Design System/OrderingList/OrderingList",
     component: OrderingList,
     argTypes: {
-        content: {
-            table: {
-                defaultValue: {
-                    title: [],
-                },
-            },
-        },
+        content: [],
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -81,7 +74,6 @@ export default {
         a11y: { disable: true },
     },
 };
-
 const Template = (args) => <OrderingList {...args} />;
 //----------------------------------------------------------
 // Default
@@ -91,10 +83,7 @@ Default.args = {
     asSize: "normal",
     asVariant: "warning",
     asFloated: "none",
-    content: {
-        title: ["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"]
-    },
-
+    content: ["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"],
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -120,8 +109,6 @@ Default.parameters = {
 const AllVariantsTemplate = (args) => {
     const baseObj = {
         ...Object.assign({}, Default.args, args, {
-
-
         }),
     };
     return (
@@ -130,42 +117,35 @@ const AllVariantsTemplate = (args) => {
                 {...Object.assign({}, baseObj, {
                     asVariant: "primary",
                     asSize: "normal",
-
                 })}
             />
             <OrderingList
                 {...Object.assign({}, baseObj, {
                     asVariant: "secondary",
                     asSize: "normal",
-
                 })}
             />
             <OrderingList
                 {...Object.assign({}, baseObj, {
                     asVariant: "success",
                     asSize: "normal",
-
                 })}
             />
             <OrderingList
                 {...Object.assign({}, baseObj, {
                     asVariant: "warning",
                     asSize: "normal",
-
                 })}
             />
             <OrderingList
                 {...Object.assign({}, baseObj, {
                     asVariant: "error",
                     asSize: "normal",
-
                 })}
             />
         </div>
     );
 };
-
-
 export const AllVariants = AllVariantsTemplate.bind({});
 AllVariants.parameters = {
     docs: {
