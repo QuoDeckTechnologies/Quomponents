@@ -1,7 +1,8 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import ToggleButton from "../../ToggleButton/ToggleButton.react";
+import ToggleButtonMUI from "../../ToggleButtonMUI/ToggleButton.react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./FeedbackformM.scss";
@@ -100,7 +101,10 @@ FeedbackformM.defaultProps = {
 
 export default function FeedbackformM(props) {
     let { content } = props
+
+    const [toggle, setToggle] = useState(false);
     // 1. Set the classes
+    console.log(toggle)
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "feedback-form-m");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
@@ -111,7 +115,9 @@ export default function FeedbackformM(props) {
     //-------------------------------------------------------------------
     // 3. Destructure content prop to itirate
     //------------------------------------------------------------------
+    function show() {
 
+    }
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -120,12 +126,12 @@ export default function FeedbackformM(props) {
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`qui-feedback-form-container  ${quommonClasses.childClasses}`}>
                 <div className="qui-feedback-toggle">
-                    <ToggleButton {...props}/>
+                    <ToggleButtonMUI {...props} content={{ title: "Show Feedback",isToggled: toggle }} onClick={() => setToggle(prevState => !prevState)} />
                 </div>
-                <div className={`qui-input-field-container`}>
+                {toggle && <div className={`qui-input-field-container`}>
                     <input type='text' placeholder='If Correct' className={`qui-toggle-input-fields size-${props.asSize} variant-${props.asVariant}`} />
                     <input type='text' placeholder='If InCorrect' className={`qui-toggle-input-fields size-${props.asSize} variant-${props.asVariant}`} />
-                </div>
+                </div>}
             </div>
         </motion.div>
     );

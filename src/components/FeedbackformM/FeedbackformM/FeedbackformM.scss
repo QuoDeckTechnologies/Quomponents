@@ -1,17 +1,21 @@
-
+.qui.qui-feedback-form-m{
+    overflow: visible;
+}
 .qui .qui-feedback-form-container {
     position: relative;
 }
 .qui .qui-feedback-toggle {
-    position: absolute;
-    left: 0.7em;
-    top:-1.5em;
-    background-color: #f0f0f0;
+    margin:0 0.5em;
+    padding-right: 0.2em;
+    position: relative;
+    z-index: 10;
+    background-color: #ffffff;
 }
 .qui .qui-toggle-input-fields {
     padding: 1em 0.5em;
     margin:0.5em;
     border: none;
+    top:2em;
     background-color: #dbdbdb;
     border-top-right-radius: 0.3em;
     border-top-left-radius: 0.3em;
@@ -21,14 +25,11 @@
     outline: none !important;
 }
 .qui .qui-input-field-container{
-    margin-top: 2em;
+    position: absolute;
+    top: 1em;
     padding:1em 0.5em;
     border: 0.05em solid #DDDDDD;
     border-radius: 1em;
 }
-// .qui .qui-feedback-toggle{
-//     background-color: #ffffff;
-//     padding: 0.1em;
-//     margin-bottom: 1em;
-// }
+
 
