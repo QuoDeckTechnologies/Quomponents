@@ -16,7 +16,26 @@ describe("ArcMenu", () => {
     jest.resetAllMocks();
     component = shallow(
       <ArcMenu
-        content={[
+        menuContent={[
+          {
+            header: "learning",
+            list: [
+              "upload scorm",
+              "upload pdf",
+              "add video link",
+              "create qdf deck",
+            ],
+          },
+          {
+            header: "evaluating",
+            list: ["create survey", "create quiz", "add a game"],
+          },
+          {
+            header: "rewarding",
+            list: ["give a certificate", "give a badge", "give a reward"],
+          },
+        ]}
+        nuggetContent={[
           { image: "" },
           { image: "" },
           { image: "" },
@@ -24,17 +43,10 @@ describe("ArcMenu", () => {
           { image: "" },
           { image: "" },
         ]}
-        arcIcon="fas fa-caret-down"
         type="close"
         position="top-right"
         asVariant="primary"
         asSize="normal"
-        withColor={{
-          backgroundColor: "#ffcc00",
-          accentColor: "red",
-          textColor: "#808080",
-        }}
-        isCloseButton={false}
         isDisabled={false}
         isHidden={false}
         onClick={() => {}}
@@ -94,13 +106,19 @@ describe("ArcMenu", () => {
   it("should render correctly when clicked on close button", () => {
     component.find(".qui-arc-menu-close-button").simulate("click");
   });
-  // it("should render correctly when clicked on NuggetBlock", () => {
-  //   component.setProps({
-  //     type: "menu",
-  //   });
-  //   component.find(".qui-arc-menu-button").simulate("click");
-  //   component.find("NuggetBlock").at(0).simulate("click");
-  // });
+  it("should render correctly when clicked on NuggetBlock", () => {
+    component.setProps({
+      type: "nugget-menu",
+    });
+    component.find(".qui-arc-menu-button").simulate("click");
+    component.find("NuggetBlock").at(0).simulate("click");
+  });
+  it("should render correctly when clicked on NuggetBlock", () => {
+    component.setProps({
+      type: "menu",
+    });
+    component.find(".qui-arc-menu-list-item").at(0).simulate("click");
+  });
   it("should render correctly when withColor props is null", () => {
     component.setProps({
       withColor: null,

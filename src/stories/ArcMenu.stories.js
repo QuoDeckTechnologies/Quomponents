@@ -13,7 +13,7 @@ export default {
   component: ArcMenu,
   argTypes: {
     menuContent: [],
-    nuggetContent:[],
+    nuggetContent: [],
     arcIcon: "",
     type: {
       control: "select",
@@ -79,9 +79,18 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   menuContent: [
-    {header:'learning',list:['upload scorm','upload pdf','add video link','create qdf deck']},
-    {header:'evaluating',list:['create survey','create quiz','add a game']},
-    {header:'rewarding',list:['give a certificate','give a badge','give a reward']},
+    {
+      header: "learning",
+      list: ["upload scorm", "upload pdf", "add video link", "create qdf deck"],
+    },
+    {
+      header: "evaluating",
+      list: ["create survey", "create quiz", "add a game"],
+    },
+    {
+      header: "rewarding",
+      list: ["give a certificate", "give a badge", "give a reward"],
+    },
   ],
   nuggetContent: [
     { image: Nugget_Story },
@@ -119,7 +128,7 @@ NuggetMenuButton.args = {
     { image: Nugget_Article },
     { image: Nugget_Feedback },
   ],
-  menuContent:[],
+  menuContent: [],
   type: "nugget-menu",
   position: "bottom-left",
 };
@@ -137,11 +146,20 @@ export const MenuButton = Template.bind({});
 MenuButton.args = {
   ...Default.args,
   menuContent: [
-    {header:'learning',list:['upload scorm','upload pdf','add video link','create qdf deck']},
-    {header:'evaluating',list:['create survey','create quiz','add a game']},
-    {header:'rewarding',list:['give a certificate','give a badge','give a reward']},
+    {
+      header: "learning",
+      list: ["upload scorm", "upload pdf", "add video link", "create qdf deck"],
+    },
+    {
+      header: "evaluating",
+      list: ["create survey", "create quiz", "add a game"],
+    },
+    {
+      header: "rewarding",
+      list: ["give a certificate", "give a badge", "give a reward"],
+    },
   ],
-  nuggetContent:[],
+  nuggetContent: [],
   type: "menu",
   position: "bottom-left",
 };

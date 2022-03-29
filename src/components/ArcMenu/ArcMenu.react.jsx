@@ -78,7 +78,7 @@ ArcMenu.defaultProps = {
   // Component Specific props
   //=======================================
   menuContent: [],
-  nuggetContent:[],
+  nuggetContent: [],
   type: "close",
   position: "top-right",
   //=======================================
@@ -138,7 +138,7 @@ const getMenuAnimation = (position) => {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function ArcMenu(props) {
-  const { menuContent,nuggetContent } = props;
+  const { menuContent, nuggetContent } = props;
   const [openMenu, setOpenMenu] = useState(false);
   //-------------------------------------------------------------------
   // 1. Set the classes
@@ -236,10 +236,11 @@ export default function ArcMenu(props) {
                   >
                     {dataObj.header.toUpperCase()}
                     <div className="qui-arc-menu-list-item-container">
-                      {dataObj.list.map((listItem) => (
+                      {dataObj.list.map((listItem, index) => (
                         <div
                           className="qui-arc-menu-list-item"
                           onClick={() => props.onClick(listItem)}
+                          key={listItem + index}
                         >
                           {listItem.toUpperCase()}
                         </div>
