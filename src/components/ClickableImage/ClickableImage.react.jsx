@@ -91,7 +91,7 @@ export default function ClickableImage(props) {
       <img
         src={content?.image ? content.image : defaultImage}
         className="qui-clicked-on-image"
-        alt="clickable picture"
+        alt="ClickableImage"
         onClick={(e) => props.onClick(e)}
       />
     </motion.div>
