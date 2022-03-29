@@ -21,7 +21,7 @@ PageHeader.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define standard component type
+    Use to define standard text color type
     */
     asVariant: PropTypes.oneOf([
         "primary",
