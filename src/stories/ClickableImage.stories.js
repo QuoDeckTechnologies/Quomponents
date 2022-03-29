@@ -89,7 +89,11 @@ WithBase64Image.parameters = {
       story: "Use to Show the ClickableImage with image provided by the user.",
     },
     source: {
-      code: `<ClickableImage {...${JSON.stringify(WithBase64Image.args, null, 2)}}/>`,
+      code: `<ClickableImage {...${JSON.stringify(
+        WithBase64Image.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -111,6 +115,43 @@ WithImage.parameters = {
     },
     source: {
       code: `<ClickableImage {...${JSON.stringify(WithImage.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Slide story
+// -------------------------------------------------------------
+const SlideTemplate = (args) => {
+  return (
+    <div style={{display:'flex'}}>
+      {args.content.images.map((image,index) => {
+      return (
+        <div style={{margin:'0 0.1em'}} key={index}>
+        <ClickableImage content={{image}} onClick={()=>args.onClick(index)} />
+      </div>
+      )
+    })}
+    </div>
+  );
+};
+export const WithSlide = SlideTemplate.bind({});
+WithSlide.args = {
+  ...Default.args,
+  content: {
+    images: [
+      "https://images.unsplash.com/photo-1647339490516-b835c0408b71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "https://images.unsplash.com/photo-1648285191822-1b02b816cd78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
+      "https://images.unsplash.com/photo-1648138754702-de8f199972b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+    ],
+  },
+};
+WithSlide.parameters = {
+  docs: {
+    description: {
+      story: "Use to Show the ClickableImage index output with itiration provided by the user.",
+    },
+    source: {
+      code: `<ClickableImage {...${JSON.stringify(WithSlide.args, null, 2)}}/>`,
     },
   },
 };
