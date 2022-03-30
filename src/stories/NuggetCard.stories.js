@@ -24,16 +24,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
-                },
-            },
-        },
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -92,11 +82,6 @@ Default.args = {
         endDate: "3rd May"
     },
     asFloated: "inline",
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
     isDisabled: false,
     isHidden: false,
 };

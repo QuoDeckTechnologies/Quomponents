@@ -6,18 +6,18 @@ export default {
     component: CourseCard,
     argTypes: {
         content: {
-            published:false,
-            courseType:"",
+            published: false,
+            courseType: "",
             tags: [],
             courseName: "",
             description: "",
             courseImage: "",
             courseWrapperImage: "",
-            points:"",
-            identifier:"",
-            startDate:"",
-            endDate:""
-        },     
+            points: "",
+            identifier: "",
+            startDate: "",
+            endDate: ""
+        },
         asFloated: {
             control: "select",
             options: ["left", "right", "inline"],
@@ -81,18 +81,18 @@ const Template = (args) => <CourseCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        published:false,
-        courseType:"Course",
-        tags: ["Tag1","Tag2"],
+        published: false,
+        courseType: "Course",
+        tags: ["Tag1", "Tag2"],
         courseName: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
         courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
         courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-        points:"200",
-        identifier:"XrPmy_OAK",
-        startDate:"26th Feb",
-        endDate:"3rd March"
-    },    
+        points: "200",
+        identifier: "XrPmy_OAK",
+        startDate: "26th Feb",
+        endDate: "3rd March"
+    },
     asFloated: "inline",
     withAnimation: {
         animation: "zoom",
@@ -110,52 +110,51 @@ Default.parameters = {
     },
 };
 // -------------------------------------------------------------
-// MobileView
+// Component with Different width 
 // -------------------------------------------------------------
-
 export const DifferentResolution = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {
             content: {
-                published:false,
-                tags: ["Tag1","Tag2"],
+                published: false,
+                tags: ["Tag1", "Tag2"],
                 courseName: "Measure your sales readiness",
                 description: "Take this quick profile test to check how well you are prepared for a sales job",
                 image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-                points:"200",
-                identifier:"XrPmy_OAK",
-                date:"28th Feb - 3rd May"
-            },    
-            courseType:"Course",
+                points: "200",
+                identifier: "XrPmy_OAK",
+                startDate: "26th Feb",
+                endDate: "3rd March"
+            },
+            courseType: "Course",
         }),
     };
     return (
-        <div style={{display:"flex", flexWrap:"wrap"}}>
-            <div style={{ display: "flex", width: "375px", margin:"5px" }}>
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", width: "375px", margin: "5px" }}>
                 <CourseCard
                     {...Object.assign({}, baseObj1, {
                     })}
                 />
             </div>
-            <div style={{ display: "flex", width: "481px", margin:"5px" }}>
+            <div style={{ display: "flex", width: "481px", margin: "5px" }}>
                 <CourseCard
                     {...Object.assign({}, baseObj1, {
                     })}
                 />
             </div>
-            <div style={{ display: "flex", width: "769px", margin:"5px" }}>
+            <div style={{ display: "flex", width: "769px", margin: "5px" }}>
                 <CourseCard
                     {...Object.assign({}, baseObj1, {
                     })}
                 />
             </div>
-            <div style={{ display: "flex", width: "1024px", margin:"5px" }}>
+            <div style={{ display: "flex", width: "1024px", margin: "5px" }}>
                 <CourseCard
                     {...Object.assign({}, baseObj1, {
                     })}
                 />
             </div>
         </div>
-
     );
 };

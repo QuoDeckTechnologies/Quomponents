@@ -5,7 +5,7 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import NuggetCard from "../NuggetCard/NuggetCard.react";
+import CourseCard from "../CourseCard/CourseCard.react";
 import NuggetBlock from "../NuggetBlock/NuggetBlock.react";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
 import IconBlock from "../IconBlock/IconBlock.react"
@@ -16,7 +16,7 @@ Object.assign(navigator, {
     },
 });
 
-describe("NuggetCard", () => {
+describe("CourseCard", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -24,10 +24,11 @@ describe("NuggetCard", () => {
     content = {
         published: false,
         tags: [],
-        category: "Profiler",
-        name: "Measure your sales readiness",
+        courseType: "Gamified",
+        courseName: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
-        image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+        courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+        courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
         points: "200",
         identifier: "XrPmy_OAK",
         startDate: "26th Feb",
@@ -39,7 +40,7 @@ describe("NuggetCard", () => {
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
-            <NuggetCard
+            <CourseCard
                 content={content}
                 status="published"
                 asSize="normal"
@@ -141,26 +142,55 @@ describe("NuggetCard", () => {
 
     it("should copy the link when clicked on copy icon", () => {
         component.setProps({ content: { category: "Profiler", identifier: "XrPmy_MND" } })
-        let iconBlock = component.find(IconBlock)
+        let iconBlock = component.find(IconBlock).at(1)
         iconBlock.simulate('click')
         expect(navigator.clipboard.writeText).toHaveBeenCalledWith("https://www.quodeck.com/XrPmy_MND");
     });
 
-    it("should show image when passed image", () => {
+    it("should show courseImage when passed courseImage in the Gamified Course Card", () => {
         let content = {
-            category: "Profiler",
-            image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
+            courseType: "Gamified",
+            courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
         }
         component.setProps({ content: content })
-        expect(component.find(".qui-nugget-card-base-image").props().style.backgroundImage).toBe("url(https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg)")
+        expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg)")
     })
 
-    it("should show default image when passed nothing in image", () => {
+    it("should show courseWrapperImage when passed courseWrapperImage but not courseImage in the Gamified Course Card", () => {
         let content = {
-            category: "Profiler",
-            image: ""
+            courseType: "Gamified",
+            courseImage: "",
+            courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
         }
         component.setProps({ content: content })
-        expect(component.find(".qui-nugget-card-base-image").props().style.backgroundImage).toBe("url(default.jpeg)")
+        expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg)")
+    })
+
+    it("should show default image when passed nothing in image in the Gamified Course Card", () => {
+        let content = {
+            courseType: "Gamified",
+            courseImage: "",
+            courseWrapperImage: ""
+        }
+        component.setProps({ content: content })
+        expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(default.jpeg)")
+    })
+
+    it("should show courseWrapperImage when passed courseWrapperImage but not courseImage in the Normal Course Card", () => {
+        let content = {
+            courseType: "Course",
+            courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
+        }
+        component.setProps({ content: content })
+        expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg)")
+    })
+
+    it("should show default image when passed nothing in image in the Nomal Course Card", () => {
+        let content = {
+            courseType: "Course",
+            courseImage: ""
+        }
+        component.setProps({ content: content })
+        expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(default.jpeg)")
     })
 });
