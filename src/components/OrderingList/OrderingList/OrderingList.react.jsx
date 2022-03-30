@@ -14,9 +14,7 @@ OrderingList.propTypes = {
   /**
      OrderingList title data should be passed in content field and it is required field  
     */
-  content: PropTypes.arrayOf(
-    PropTypes.string
-  ),
+  content: PropTypes.array.isRequired,
   //=======================================
   // Quommon props
   //=======================================
@@ -130,7 +128,7 @@ export default function OrderingList(props) {
   }
   // 1. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "orderinglist");
+  let quommonClasses = getQuommons(props, "ordering-list");
   quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
   // 2. Get animation of the component
   //-------------------------------------------------------------------
@@ -177,9 +175,11 @@ export default function OrderingList(props) {
       )))}
       {<Button
         {...props}
+        asFloated="none"
         onClick={() => handleSubmit()}
         content={"Submit Answer"}
       />}
+
     </motion.div>
   );
 }
