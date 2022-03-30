@@ -12,15 +12,15 @@ import Button from "../../Buttons/Button/Button.react";
 
 OrderingList.propTypes = {
   /**
-     OrderingList title data should be passed in content field and it is required field  
-    */
-  content: PropTypes.array.isRequired,
+  OrderingList title data should be passed in content field and it is required field  
+  */
+  content: PropTypes.arrayOf(PropTypes.string),
   //=======================================
   // Quommon props
   //=======================================
   /**
-    Use to define standard component type
-    */
+  Use to define standard component type
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -29,8 +29,8 @@ OrderingList.propTypes = {
     "error",
   ]),
   /**
-    Use to define component text size in increasing order
-    */
+  Use to define component text size in increasing order
+  */
   asSize: PropTypes.oneOf([
     "tiny",
     "small",
@@ -44,8 +44,8 @@ OrderingList.propTypes = {
   */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -61,16 +61,16 @@ OrderingList.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    Use to enable/disable the component
-    */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    OrderingList component must have the onClick function passed as props
-    */
+  OrderingList component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 

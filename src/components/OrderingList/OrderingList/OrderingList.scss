@@ -7,8 +7,6 @@
 
 .qui .qui-ordering-btn {
     display: flex;
-    width: 3em;
-    height: 3em;
     border-radius: 0.2em;
     border: 0.2em solid #666666;
 }
@@ -62,9 +60,39 @@
     filter: drop-shadow(2px 5px 5px rgb(150, 146, 146));
 }
 
+.qui .size-tiny .qui-ordering-btn {
+    width: 2em;
+    height: 2em;
+}
+
+.qui .size-small .qui-ordering-btn {
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.qui .size-normal .qui-ordering-btn {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+.qui .size-big .qui-ordering-btn {
+    width: 3.3em;
+    height: 3.3em;
+}
+
+.qui .size-huge .qui-ordering-btn {
+    width: 3.5em;
+    height: 3.5em;
+}
+
+.qui .size-massive .qui-ordering-btn {
+    width: 4em;
+    height: 4em;
+}
+
 @media only screen and (min-width: 320px) {
     .qui.qui-ordering-list {
-        font-size: 0.5em;
+        font-size: 1em;
     }
 }
 
