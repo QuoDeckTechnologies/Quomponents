@@ -82,26 +82,6 @@ export default {
                 },
             },
         },
-        withIcon: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    icon: "",
-                    size: "",
-                    position: "left",
-                },
-            },
-        },
-        withLabel: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    format: "label",
-                    content: "",
-                    textColor: "",
-                },
-            },
-        },
         withAnimation: {
             table: {
                 category: "with-Params",
@@ -112,24 +92,7 @@ export default {
                 },
             },
         },
-        withTranslation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    lang: "",
-                    tgt: "",
-                    dictionary: "",
-                },
-            },
-        },
-
         isHidden: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        isDisabled: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
@@ -141,13 +104,6 @@ export default {
                 defaultValue: false,
             },
         },
-        isLoading: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-
         onClick: {
             table: {
                 category: "Events",
@@ -181,22 +137,13 @@ export default {
 const Template = (args) => <TextBlock {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: "Default TextBlock",
+    content: "Neque porro quisquam est qui dolorem",
     asEmphasis: "contained",
-    isCircular: false,
-
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "none",
+    asFloated: "inline",
     asPadded: "normal",
     asAligned: "center",
-
-    withLabel: {
-        format: "caption",
-        content: "Do not press this button repeatedly...",
-        textColor: "#000000",
-    },
-    withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -209,14 +156,6 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-    withTranslation: {
-        lang: "en",
-        tgt: "button",
-        dictionary: dictionary,
-    },
-
-    isDisabled: false,
-    isLoading: false,
     isHidden: false,
     isFluid: false,
 };
