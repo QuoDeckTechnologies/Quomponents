@@ -149,9 +149,9 @@ export default function OptionalImageField(props) {
   const uploadFile = () => {
     fileRef.current.click();
   };
-  let allFiles = [];
   const handleChange = (e) => {
     let files = e.target.files;
+    let allFiles = [];
     for (var i = 0; i < files.length; i++) {
       let file = files[i];
       let reader = new FileReader();
@@ -217,7 +217,6 @@ export default function OptionalImageField(props) {
           }`}
           onClick={() => {
             setFile(false);
-            allFiles = [];
           }}
         >
           <i className={file ? "fas fa-times" : "fas fa-angle-left"}></i>
