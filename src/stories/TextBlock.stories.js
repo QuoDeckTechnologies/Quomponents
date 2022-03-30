@@ -9,7 +9,7 @@ const dictionary = JSON.stringify({
     //         label: "Do not press this repeatedly...",
     //     },
     // },
-    hi: { 
+    hi: {
         loading: "बस एक मिनट...",
         button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
     },
@@ -20,6 +20,12 @@ export default {
     component: TextBlock,
     argTypes: {
         content: "TextBlock",
+        opacity: "0.5",
+
+        position: {
+            control: "select",
+            options: ["top-right", "top-left", "bottom-right", "bottom-left"],
+        },
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
@@ -138,6 +144,8 @@ const Template = (args) => <TextBlock {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: "Neque porro quisquam est qui dolorem",
+    opacity: 1,
+    position: "top-right",
     asEmphasis: "contained",
     asVariant: "primary",
     asSize: "normal",

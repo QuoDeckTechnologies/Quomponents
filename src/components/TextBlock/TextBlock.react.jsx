@@ -16,7 +16,7 @@ TextBlock.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-
+    opacity: PropTypes.string,
     /**
     TextBlock Text has to be in content or passed as children to the component. Is optional if you only want an icon.
     */
@@ -26,6 +26,16 @@ TextBlock.propTypes = {
     */
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
     /**
+
+  /**
+  Use to toggle position of ArcMenu
+  */
+    position: PropTypes.oneOf([
+        "top-right",
+        "top-left",
+        "bottom-right",
+        "bottom-left",
+    ]),
 
     // Quommon props
     //=======================================
@@ -108,10 +118,9 @@ TextBlock.propTypes = {
 TextBlock.defaultProps = {
     // Component Specific props
     //=======================================
-    content : "",
-    asEmphasis: "contained",
-    isCircular: false,
-
+    content: "",
+    opacity: "",
+    position: "top-right",
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -119,6 +128,8 @@ TextBlock.defaultProps = {
     asPadded: "normal",
     asFloated: "none",
     asAligned: "center",
+    asEmphasis: "contained",
+    isCircular: false,
 
     withColor: null,
     withLabel: null,
@@ -140,16 +151,38 @@ TextBlock.defaultProps = {
 **/
 export default function TextBlock(props) {
     const [hovered, setHovered] = useState(false);
-    let {content} = props
+    let { content } = props
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "text-block");
-    
-    quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
-   
     //-------------------------------------------------------------------
-    // 7. Get animation of the component
+    // 2. Get custom styling 
+    //-------------------------------------------------------------------
+    let opacity = props.opacity;
+
+    quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
+
+
+    const getPosition = (position) => {
+        if (position === "top-right") {
+            return "qui-top-right";
+        }
+        if (position === "top-left") {
+            return "qui-top-left";
+        }
+        if (position === "bottom-right") {
+            return "qui-bottom-right";
+        }
+        if (position === "bottom-left") {
+            return "qui-bottom-left";
+        }
+        return "qui-top-right";
+    };
+
+
+    //-------------------------------------------------------------------
+    // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
@@ -163,10 +196,18 @@ export default function TextBlock(props) {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
-          <div className={`qui-text-block  ${quommonClasses.childClasses} ${props.asEmphasis}
-          `}>
-            {content}
-          </div>
+            <div className={`qui-text-block-tringle ${getPosition(props.position)}`}>
+                <div class="arrow-up"></div>
+                <div class="arrow-down"></div>
+                <div class="arrow-left"></div>
+                <div class="arrow-right"></div>
+            </div>
+            <div className={`qui-text-block qui-btn  ${quommonClasses.childClasses}
+          `} style={{ opacity: opacity }}>
+            </div>
+            <div className="qui-block-text">
+                {content}
+            </div>
         </motion.div>
     );
 }
