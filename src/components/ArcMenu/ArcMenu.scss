@@ -45,8 +45,18 @@
   background-color: #666666;
   color: #ffbf00;
   .qui-arch-icon {
-    font-size: 2.5em;
+    font-size: 1.5em;
   }
+}
+.qui .qui-add-icon-wrapper {
+  height: 2.5em;
+  width: 2.5em;
+  display: flex;
+  align-content: flex-end;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 50%;
+  background-color: #9b8442;
 }
 .qui .qui-arc.qui-top-right .qui-arc-menu-button {
   transform: translate(-20%, 20%);
@@ -66,6 +76,10 @@
   grid-template-columns: 1fr 1fr 1fr;
   z-index: 10;
 }
+.qui .qui-arc-menu-buttons.qui-arc-menu-menu {
+  display: flex;
+  align-items: flex-start;
+}
 .qui .qui-arc.qui-top-right .qui-arc-menu-buttons,
 .qui .qui-arc.qui-bottom-right .qui-arc-menu-buttons {
   right: 130%;
@@ -74,19 +88,30 @@
 .qui .qui-arc.qui-bottom-left .qui-arc-menu-buttons {
   left: 120%;
 }
-.qui .qui-arc.qui-top-right .qui-arc-menu-buttons,
-.qui .qui-arc.qui-top-left .qui-arc-menu-buttons {
-  bottom: -150%;
-}
+// .qui .qui-arc.qui-top-right .qui-arc-menu-buttons,
+// .qui .qui-arc.qui-top-left .qui-arc-menu-buttons {
+//   bottom: -150%;
+// }
+// .qui .qui-arc.qui-top-right .qui-arc-menu-buttons.qui-arc-menu-buttons.qui-arc-menu-menu ,
+// .qui .qui-arc.qui-top-left .qui-arc-menu-buttons.qui-arc-menu-buttons.qui-arc-menu-menu  {
+//   bottom: -200%;
+// }
 .qui .qui-arc.qui-bottom-right .qui-arc-menu-buttons,
 .qui .qui-arc.qui-bottom-left .qui-arc-menu-buttons {
   bottom: 0;
 }
-.qui .qui-menu-button {
+.qui .qui-menu-button.qui-arc-menu-nugget-menu {
   height: 6em;
   width: 6em;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+.qui .qui-menu-button.qui-arc-menu-header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 0.5em;
 }
 .qui .qui-single-button {
   height: 5em;
@@ -120,11 +145,46 @@
   i {
     color: #ffbf00;
   }
+  .qui-arc-close-icon {
+    font-size: 2.5em;
+  }
+}
+.qui .qui-arc-icon-fragment-top,
+.qui .qui-arc-icon-fragment-bottom {
+  display: flex;
+}
+.qui .qui-arc-icon-fragment-left {
+  height: 1em;
+  width: 1em;
+  background-color: #ffbf00;
+  border-radius: 50%;
+  margin: 0.1em;
+}
+.qui .qui-arc-icon-fragment-right {
+  height: 1em;
+  width: 1em;
+  background-color: #9b8442;
+  border-radius: 50%;
+  margin: 0.1em;
+}
+.qui .qui-arc-menu-header {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  font-size: 1.4em;
+}
+.qui .qui-arc-menu-list-item {
+  padding: 0.4em 1.2em;
+  margin: 0.2em;
+  min-width: 4em;
+  background-color: #454545;
+  color: #ffbf00;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  white-space: nowrap;
 }
 @media only screen and (min-width: 320px) {
-  // .qui-arc-menu {
-  //   font-size: 1.8em;
-  // }
   .qui .qui-arc .qui-arc-menu-button {
     box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.32);
   }

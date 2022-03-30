@@ -12,11 +12,12 @@ export default {
   title: "Design System/ArcMenu/ArcMenu",
   component: ArcMenu,
   argTypes: {
-    content: [],
+    menuContent: [],
+    nuggetContent: [],
     arcIcon: "",
     type: {
       control: "select",
-      options: ["close", "menu", "add"],
+      options: ["close", "menu", "add", "nugget-menu"],
     },
     position: {
       control: "select",
@@ -27,16 +28,6 @@ export default {
       options: ["tiny", "small", "normal", "big", "huge", "massive"],
       table: {
         category: "as-Flags",
-      },
-    },
-    withColor: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          backgroundColor: "",
-          accentColor: "",
-          textColor: "",
-        },
       },
     },
     isDisabled: {
@@ -87,7 +78,21 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: [
+  menuContent: [
+    {
+      header: "learning",
+      list: ["upload scorm", "upload pdf", "add video link", "create qdf deck"],
+    },
+    {
+      header: "evaluating",
+      list: ["create survey", "create quiz", "add a game"],
+    },
+    {
+      header: "rewarding",
+      list: ["give a certificate", "give a badge", "give a reward"],
+    },
+  ],
+  nuggetContent: [
     { image: Nugget_Story },
     { image: Nugget_Quiz },
     { image: Nugget_Assessment },
@@ -99,11 +104,6 @@ Default.args = {
   type: "close",
   position: "top-right",
   asSize: "normal",
-  withColor: {
-    backgroundColor: "",
-    accentColor: "",
-    textColor: "",
-  },
   isDisabled: false,
   isHidden: false,
 };
@@ -115,11 +115,51 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
+// Nugget Menu button
+// -------------------------------------------------------------
+export const NuggetMenuButton = Template.bind({});
+NuggetMenuButton.args = {
+  ...Default.args,
+  nuggetContent: [
+    { image: Nugget_Story },
+    { image: Nugget_Quiz },
+    { image: Nugget_Assessment },
+    { image: Nugget_Game },
+    { image: Nugget_Article },
+    { image: Nugget_Feedback },
+  ],
+  menuContent: [],
+  type: "nugget-menu",
+  position: "bottom-left",
+};
+NuggetMenuButton.parameters = {
+  docs: {
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(NuggetMenuButton.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
 // Menu button
 // -------------------------------------------------------------
 export const MenuButton = Template.bind({});
 MenuButton.args = {
   ...Default.args,
+  menuContent: [
+    {
+      header: "learning",
+      list: ["upload scorm", "upload pdf", "add video link", "create qdf deck"],
+    },
+    {
+      header: "evaluating",
+      list: ["create survey", "create quiz", "add a game"],
+    },
+    {
+      header: "rewarding",
+      list: ["give a certificate", "give a badge", "give a reward"],
+    },
+  ],
+  nuggetContent: [],
   type: "menu",
   position: "bottom-left",
 };
@@ -143,29 +183,6 @@ AddButton.parameters = {
   docs: {
     source: {
       code: `<ArcMenu {...${JSON.stringify(AddButton.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Colored ArchMenu
-// -------------------------------------------------------------
-export const ColoredArcMenu = Template.bind({});
-ColoredArcMenu.args = {
-  ...Default.args,
-  arcIcon: "fas fa-exclamation-circle",
-  withColor: {
-    backgroundColor: "#B1D0E0",
-    accentColor: "#ffffff",
-    textColor: "#1A374D",
-  },
-};
-ColoredArcMenu.parameters = {
-  docs: {
-    description: {
-      story: "Use to override the standard colors of the ArcMenu.",
-    },
-    source: {
-      code: `<ArcMenu {...${JSON.stringify(ColoredArcMenu.args, null, 2)}}/>`,
     },
   },
 };
