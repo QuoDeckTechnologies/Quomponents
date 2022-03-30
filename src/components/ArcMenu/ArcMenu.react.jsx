@@ -23,7 +23,7 @@ ArcMenu.propTypes = {
       header: PropTypes.string,
       list: PropTypes.arrayOf[PropTypes.string],
     })
-  ).isRequired,
+  ),
   /**
   ArcMenu `nugget-menu` images can be passed within nuggetContent array prop
   */
@@ -31,11 +31,11 @@ ArcMenu.propTypes = {
     PropTypes.shape({
       image: PropTypes.string,
     })
-  ).isRequired,
+  ),
   /**
-  Use to toggle type of ArcMenu as a `close` , `menu`, `add` or `nugget-menu`
+  Use to change the type of ArcMenu as a `close` , `menu`, `add` or `nugget-menu`
   */
-  type: PropTypes.oneOf(["close", "menu", "add", "nugget-menu"]),
+  type: PropTypes.oneOf(["close", "menu", "add", "nugget-menu"]).isRequired,
   /**
   Use to toggle position of ArcMenu
   */
@@ -68,7 +68,9 @@ ArcMenu.propTypes = {
   */
   isHidden: PropTypes.bool,
   /**
-  Button component must have the onClick function passed as props
+  ArcMenu component must have the onClick function passed as props
+  For `nugget-menu` type, it outputs index of nugget images provided
+  For `menu` type, it outputs value of the list item
   */
   onClick: PropTypes.func.isRequired,
 };
@@ -131,17 +133,20 @@ const getMenuAnimation = (position) => {
 };
 /**
 ## Notes
-- ArcMenu must be used as last child of `qui` parent class
+- ArcMenu must be used as a child of `qui` parent class
 - The design system used for this component is HTML and CSS
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function ArcMenu(props) {
+  //-------------------------------------------------------------------
+  // 1. Destructuring props and defining states
+  //-------------------------------------------------------------------
   const { menuContent, nuggetContent } = props;
   const [openMenu, setOpenMenu] = useState(false);
   //-------------------------------------------------------------------
-  // 1. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "arc-menu");
 
