@@ -29,9 +29,9 @@ describe("ShareWidget", () => {
                 asFloated="none"
                 withColor={null}
                 withAnimation={null}
+                withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
-                withIcon={null}
             />
         );
     });
@@ -41,36 +41,54 @@ describe("ShareWidget", () => {
             expect(component.exists()).toBe(true);
         });
 
-
-    it("should render correctly if asFloatedProp get selected to Inline",
-        () => {
-            component.setProps({ asFloated: "inline" });
-            expect(component.exists()).toBe(true);
-        });
-
     it("should render correctly if Content set Value",
         () => {
             component.setProps({
                 content: {
                     label: "Share",
-                    circular: true,
                     url: "www.quodeck.com",
                 },
             });
             expect(component.exists()).toBe(true);
         });
 
-    it("should render correctly if isDisabled toggled as true",
-        () => {
-            component.setProps({ isDisabled: true });
-            expect(component.exists()).toBe(true);
-        });
+    it("should render correctly when passed asFloated prop as left", () => {
+        component.setProps({ asFloated: "left" })
+        expect(component.exists()).toBe(true);
+    });
 
-    it("should render correctly if isHidden toggled as true",
-        () => {
-            component.setProps({ isHidden: true });
-            expect(component.exists()).toBe(true);
-        });
+    it("should render correctly when passed asFloated prop as right", () => {
+        component.setProps({ asFloated: "right" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asFloated prop as inline", () => {
+        component.setProps({ asFloated: "inline" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asFloated prop as none", () => {
+        component.setProps({ asFloated: "none" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed withColor props", () => {
+        let colors = {
+            textColor: "#00FFFF",
+        }
+        component.setProps({ withColor: colors })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed withAnimation props", () => {
+        let animation = {
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+        }
+        component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    });
 
     it("should render correctly with translation",
         () => {
@@ -83,6 +101,7 @@ describe("ShareWidget", () => {
             });
             expect(component.exists()).toBe(true);
         });
+
     it("should render correctly if translation object is not returned",
         () => {
             component.setProps({
@@ -94,4 +113,24 @@ describe("ShareWidget", () => {
             });
             expect(component.exists()).toBe(true);
         });
+
+    it("should render correctly when passed isHidden props as false", () => {
+        component.setProps({ isHidden: false })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed isHidden props as true", () => {
+        component.setProps({ isHidden: true })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed isDisabled props as false", () => {
+        component.setProps({ isDisabled: false })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed isDisabled props as true", () => {
+        component.setProps({ isDisabled: true })
+        expect(component.exists()).toBe(true);
+    });
 });

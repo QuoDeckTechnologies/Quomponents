@@ -64,6 +64,14 @@ ShareWidget.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the ShareWidget label. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -85,6 +93,7 @@ ShareWidget.defaultProps = {
 
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
@@ -135,7 +144,7 @@ export default function ShareWidget(props) {
         >
             <div className={`qui-sharewidget-container ${quommonClasses.childClasses}`}>
                 <div className="qui-share-label" style={Color}>
-                    {shareContent?.label} :
+                    {shareContent?.label ? shareContent?.label : "Share"} :
                 </div>
                 <div className="qui-shareicon-container">
                     <FacebookShareButton className={`qui-share-icon  ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
