@@ -1,0 +1,104 @@
+.qui-treebar-parent {
+    height: calc(100vh - 35px);
+}
+
+.qui-treebar-pageheader {
+    padding: 0.5em 0.7em;
+    font-size: 2em;
+    background: #aaaaaa;
+    color: #ffffff;
+}
+
+.qui-treebar-searchbar .qui-search-bar-container {
+    width: 100%;
+    padding: 0 0;
+    position: relative;
+    bottom: 0.4em;
+}
+
+.qui-treebar-searchbar .qui-search-bar {
+    width: 100%;
+}
+
+.qui-treebar-container {
+    width: 100%;
+    height: calc(100vh - 84px);
+    background: #e5e5e5;
+    font-size: 1em;
+    overflow: auto;
+    position: relative;
+    bottom: 0.7em;
+}
+
+.qui-treebar-content {
+    background: #e5e5e5;
+}
+
+.qui-treebar-headerStyle {
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #767676;
+    display: inline-block;
+    vertical-align: top;
+}
+.qui-treebar-headerStyle-child {
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #767676;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 1em;
+}
+
+.qui-treebar-activeHeaderStyle {
+    font-size: 1.2em;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.qui-treebar-activeTitleStyle {
+    color: #ffffff;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 23ch;
+    padding: 0.2em 0;
+}
+
+.qui-treebar-titleStyle {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 23ch;
+    padding: 0.2em 0;
+}
+
+.qui-treebar-iconStyle {
+    margin-right: 0.5em;
+    font-size: 1.2em;
+}
+.qui-treebar-iconStyle-children {
+    .qui-treebar-iconStyle {
+        margin-right: 1em;
+        font-size: 1.2em;
+    }
+}
+
+.qui .tree-item,
+.css-f91fgu {
+    background: #e5e5e5 !important;
+}
+.qui .tree-item,
+.css-1u94gzr {
+    display: none;
+}
+
+.qui .tree-item,
+.qui li {
+    margin: 0.1em 0;
+    right: 0.7em;
+}
