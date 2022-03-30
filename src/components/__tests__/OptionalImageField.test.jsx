@@ -7,7 +7,7 @@ import { mount } from "enzyme";
 // -------------------------------------
 import OptionalImageField from "../OptionalImageField/OptionalImageField.react";
 
-describe("EnrollmentRuleRow", () => {
+describe("OptionalImageField", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------

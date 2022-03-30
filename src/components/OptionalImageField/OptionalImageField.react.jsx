@@ -122,26 +122,29 @@ const getColors = (withColor) => {
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function OptionalImageField(props) {
+  //-------------------------------------------------------------------
+  // 1. Definig states and hooks
+  //-------------------------------------------------------------------
   const fileRef = useRef();
   const [file, setFile] = useState(false);
   //-------------------------------------------------------------------
-  // 1. Destructuring props
+  // 2. Destructuring props
   //-------------------------------------------------------------------
   const { content } = props;
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "optional-image-field");
   //-------------------------------------------------------------------
-  // 3. Set the component colors
+  // 4. Set the component colors
   //-------------------------------------------------------------------
   let colors = props.withColor ? getColors(props.withColor) : {};
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 5. File upload handlers
+  // 6. File upload handlers
   //-------------------------------------------------------------------
   const uploadFile = () => {
     fileRef.current.click();
@@ -151,13 +154,9 @@ export default function OptionalImageField(props) {
     let files = e.target.files;
     for (var i = 0; i < files.length; i++) {
       let file = files[i];
-      // Make new FileReader
       let reader = new FileReader();
-      // Convert the file to base64 text
       reader.readAsDataURL(file);
-      // on reader load something...
       reader.onload = () => {
-        // Make a fileInfo Object
         let fileInfo = {
           name: file.name,
           type: file.type,
@@ -165,11 +164,8 @@ export default function OptionalImageField(props) {
           base64: reader.result,
           file: file,
         };
-        // Push it to the state
         allFiles.push(fileInfo);
-        // If all files have been processed
         if (allFiles.length === files.length) {
-          // Apply Callback function
           if (props.isMultiple) props.onClick(allFiles);
           else props.onClick(allFiles[0]);
         }
@@ -193,6 +189,7 @@ export default function OptionalImageField(props) {
         multiple={props.isMultiple}
         className="qui-image-upload-field"
         onChange={handleChange}
+        onClick={(e) => (e.target.value = "")}
         hidden
       />
       {content?.icon && (
@@ -219,8 +216,8 @@ export default function OptionalImageField(props) {
             file ? "qui-uploaded" : ""
           }`}
           onClick={() => {
-            setFile(false)
-            allFiles = []
+            setFile(false);
+            allFiles = [];
           }}
         >
           <i className={file ? "fas fa-times" : "fas fa-angle-left"}></i>
