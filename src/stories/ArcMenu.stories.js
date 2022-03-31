@@ -14,7 +14,6 @@ export default {
   argTypes: {
     menuContent: [],
     nuggetContent: [],
-    arcIcon: "",
     type: {
       control: "select",
       options: ["close", "menu", "add", "nugget-menu"],
@@ -22,13 +21,6 @@ export default {
     position: {
       control: "select",
       options: ["top-right", "top-left", "bottom-right", "bottom-left"],
-    },
-    asSize: {
-      control: "select",
-      options: ["tiny", "small", "normal", "big", "huge", "massive"],
-      table: {
-        category: "as-Flags",
-      },
     },
     isDisabled: {
       table: {
@@ -100,10 +92,8 @@ Default.args = {
     { image: Nugget_Article },
     { image: Nugget_Feedback },
   ],
-  arcIcon: "",
   type: "close",
   position: "top-right",
-  asSize: "normal",
   isDisabled: false,
   isHidden: false,
 };

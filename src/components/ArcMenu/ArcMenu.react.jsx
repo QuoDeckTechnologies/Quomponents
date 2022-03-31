@@ -48,17 +48,17 @@ ArcMenu.propTypes = {
   //=======================================
   // Quommon props
   //=======================================
-  /**
-  Use to define component size in increasing order
-  */
-  asSize: PropTypes.oneOf([
-    "tiny",
-    "small",
-    "normal",
-    "big",
-    "huge",
-    "massive",
-  ]),
+  // /**
+  // Use to define component size in increasing order
+  // */
+  // asSize: PropTypes.oneOf([
+  //   "tiny",
+  //   "small",
+  //   "normal",
+  //   "big",
+  //   "huge",
+  //   "massive",
+  // ]),
   /**
   Use to enable/disable the component
   */
@@ -86,7 +86,7 @@ ArcMenu.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asSize: "normal",
+  // asSize: "normal",
   withTranslation: null,
   isDisabled: false,
   isHidden: false,
@@ -239,7 +239,7 @@ export default function ArcMenu(props) {
                     className={`qui-menu-button qui-arc-menu-header ${quommonClasses.childClasses}`}
                     key={i}
                   >
-                    {dataObj.header.toUpperCase()}
+                    {dataObj.header?.toUpperCase()}
                     <div className="qui-arc-menu-list-item-container">
                       {dataObj.list.map((listItem, index) => (
                         <div

@@ -88,14 +88,6 @@
 .qui .qui-arc.qui-bottom-left .qui-arc-menu-buttons {
   left: 120%;
 }
-// .qui .qui-arc.qui-top-right .qui-arc-menu-buttons,
-// .qui .qui-arc.qui-top-left .qui-arc-menu-buttons {
-//   bottom: -150%;
-// }
-// .qui .qui-arc.qui-top-right .qui-arc-menu-buttons.qui-arc-menu-buttons.qui-arc-menu-menu ,
-// .qui .qui-arc.qui-top-left .qui-arc-menu-buttons.qui-arc-menu-buttons.qui-arc-menu-menu  {
-//   bottom: -200%;
-// }
 .qui .qui-arc.qui-bottom-right .qui-arc-menu-buttons,
 .qui .qui-arc.qui-bottom-left .qui-arc-menu-buttons {
   bottom: 0;
@@ -176,11 +168,13 @@
 .qui .qui-arc-menu-list-item {
   padding: 0.4em 1.2em;
   margin: 0.2em;
-  min-width: 4em;
+  width: 10em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background-color: #454545;
   color: #ffbf00;
-  display: flex;
-  justify-content: center;
+  text-align: center;
   cursor: pointer;
   white-space: nowrap;
 }
@@ -188,9 +182,26 @@
   .qui .qui-arc .qui-arc-menu-button {
     box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.32);
   }
+  .qui .qui-arc-menu-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .qui .qui-arc-menu-buttons.qui-arc-menu-menu {
+    display: block;
+  }
 }
 @media only screen and (min-width: 481px) {
   .qui .qui-arc .qui-arc-menu-button {
     box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.32);
+  }
+}
+@media only screen and (min-width: 768px) {
+  .qui .qui-arc-menu-buttons.qui-arc-menu-menu {
+    display: flex;
+    align-items: flex-start;
+  }
+  .qui .qui-arc-menu-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
