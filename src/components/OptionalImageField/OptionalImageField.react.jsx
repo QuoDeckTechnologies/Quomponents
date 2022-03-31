@@ -23,7 +23,7 @@ OptionalImageField.propTypes = {
   }),
   /**
     Use to define the file type which is supported to upload.
-    Suppoted file types: [video/*, image/*, .mp3, .docx, .xls, .xlsx, .zip, .qdf, .pdf]
+    Suppoted file type image/*.
   */
   withFile: PropTypes.shape({
     type: PropTypes.string,
@@ -31,7 +31,7 @@ OptionalImageField.propTypes = {
   }),
 
   /**
-   Use to toggle a multiple to upload more than one files
+   Use to toggle a multiple to upload more than one images
  */
   isMultiple: PropTypes.bool,
   //=======================================
