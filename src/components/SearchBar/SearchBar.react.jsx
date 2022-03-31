@@ -13,6 +13,9 @@ SearchBar.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+    /**
+    Placeholder value to show the placeholder of input box
+    */
     placeHolder: PropTypes.string.isRequired,
     /**
     Use to toggle the component having expandable effect or not
