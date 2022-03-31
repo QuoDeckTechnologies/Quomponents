@@ -17,6 +17,7 @@ InlineEdit.propTypes = {
     Use to define InlineEdit's value
     */
     content: PropTypes.string.isRequired,
+    inlineEditID: PropTypes.string.isRequired,
     /**
     Use to set the state of InlineEdit 
     */
@@ -75,6 +76,10 @@ InlineEdit.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
+    /**
+    InlineEdit component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 };
 
 InlineEdit.defaultProps = {
@@ -82,6 +87,7 @@ InlineEdit.defaultProps = {
     // Component Specific props
     //=======================================
     content: "",
+    inlineEditID: "",
     asEmphasis: "singleLine",
     //=======================================
     // Quommon props
@@ -95,6 +101,8 @@ InlineEdit.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
+
+    onClick: null,
 };
 /**
 ## Notes
@@ -117,6 +125,7 @@ export default function InlineEdit(props) {
         setInput(e.target.value);
         if (e.key === "Enter" && e.target.value !== "") {
             e.target.blur()
+            props.onClick(e.target.id, e.target.value);
         }
         if (e.key === "Escape") {
             e.target.value = ""
@@ -134,7 +143,7 @@ export default function InlineEdit(props) {
         }
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         onInput(inputRef.current);
     }, [onInput, inputRef]);
 
@@ -153,7 +162,7 @@ export default function InlineEdit(props) {
     const getInput = (asEmphasis) => {
         if (asEmphasis === "multiLine") {
             return (
-                <textarea
+                <textarea id={props.inlineEditID}
                     className={`qui-textarea-field ${props.asAligned}-aligned`}
                     value={input}
                     ref={inputRef}
@@ -167,7 +176,7 @@ export default function InlineEdit(props) {
         }
         else {
             return (
-                <input
+                <input id={props.inlineEditID}
                     className={`qui-input-field ${props.asAligned}-aligned`}
                     value={input}
                     ref={inputRef}
