@@ -14,7 +14,7 @@ OptionalImageField.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    OptionalImageField text and icon has to be in content.
+    OptionalImageField title, icon and actionButton has to be in content.
     */
   content: PropTypes.shape({
     title: PropTypes.string,
@@ -87,7 +87,7 @@ OptionalImageField.defaultProps = {
   content: {},
   withFile: null,
   isMultiple: false,
-  
+
   //=======================================
   // Quommon props
   //=======================================
