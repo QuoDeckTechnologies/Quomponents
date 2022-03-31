@@ -1,0 +1,21 @@
+.qui.qui-check-box .Mui-checked {
+  color: #ffab00;
+}
+.qui.qui-check-box.is-fluid {
+  min-height: 0;
+}
+.qui.qui-check-box.is-fluid .qui-check-box-inner-container h4 {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.qui .qui-check-box-inner-container {
+  display: flex;
+  align-items: center;
+}
+.qui .qui-check-box-inner-container h4 {
+  margin: 0;
+  font-weight: 500;
+  color: #454545;
+  cursor: pointer;
+}
