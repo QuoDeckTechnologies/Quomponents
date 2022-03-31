@@ -29,11 +29,11 @@ OptionalImageField.propTypes = {
     type: PropTypes.string,
     capture: PropTypes.string,
   }),
-
   /**
    Use to toggle a multiple to upload more than one images
  */
   isMultiple: PropTypes.bool,
+
   //=======================================
   // Quommon props
   //=======================================
@@ -87,6 +87,7 @@ OptionalImageField.defaultProps = {
   content: {},
   withFile: null,
   isMultiple: false,
+  
   //=======================================
   // Quommon props
   //=======================================
