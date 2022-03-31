@@ -142,7 +142,7 @@ describe("SearchBar", () => {
         expect(component.find("input").props().placeholder).toBe("खोजें...");
     });
 
-    it("should render closed Search Bar", () => {
+    it("should render closed Search Bar with closed SearchBar css classes", () => {
         component.setProps({ isClosed: true });
         component.setProps({ isFluid: false });
 
@@ -155,7 +155,7 @@ describe("SearchBar", () => {
         expect(button.props().className).toBe('qui-search-bar-icon qui-search-bar-icon-closed');
     });
 
-    it("should render opened Search Bar when clicked", () => {
+    it("should render opened Search Bar with the opened searchbar css classes", () => {
         component.setProps({ isClosed: false });
 
         let searchBarContainer = component.find("div").at(2);
@@ -202,14 +202,14 @@ describe("SearchBar", () => {
         expect(searchInput.value).toBe('some value')
     })
 
-    it('Should open SearchBar', () => {
-        component.setProps({ isClosed: true })
+    it('should open the closed SearchBar', () => {
+        component.setProps({ isClosed: true, isFluid: false, expandable: false })
         let searchBar = component.find(".qui-search-bar-container")
         searchBar.simulate('click')
     })
 
-    it('should close SearchBar when clicked outside', () => {
-        component.setProps({ isClosed: true })
+    it('should close the opened SearchBar when clicked outside', () => {
+        component.setProps({ isClosed: true, isFluid: false, expandable: false })
         let searchBar = component.find(".qui-search-bar-container")
         searchBar.simulate('click')
 
