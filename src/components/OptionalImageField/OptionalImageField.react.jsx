@@ -17,11 +17,10 @@ OptionalImageField.propTypes = {
     OptionalImageField text and icon has to be in content.
     */
   content: PropTypes.shape({
-    text: PropTypes.string,
+    title: PropTypes.string,
     icon: PropTypes.string,
     actionButton: PropTypes.bool,
   }),
-
   /**
     Use to define the file type which is supported to upload.
     Suppoted file types: [video/*, image/*, .mp3, .docx, .xls, .xlsx, .zip, .qdf, .pdf]
@@ -39,7 +38,7 @@ OptionalImageField.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to override component colors and behavior
+    Use to override component colors
     */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
@@ -112,14 +111,12 @@ const getColors = (withColor) => {
   };
   return colors;
 };
-
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function OptionalImageField(props) {
   //-------------------------------------------------------------------
@@ -207,7 +204,7 @@ export default function OptionalImageField(props) {
           style={colors.button}
           onClick={uploadFile}
         >
-          {content?.text ? content.text : "Upload"}
+          {content?.title ? content.title : "Upload"}
         </Button>
       </div>
       {content?.actionButton && (

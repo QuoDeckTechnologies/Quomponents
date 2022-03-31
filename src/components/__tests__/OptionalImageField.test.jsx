@@ -45,12 +45,14 @@ describe("OptionalImageField", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when content prop is null", () => {
     component.setProps({
       content: null,
     });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when using withColor prop", () => {
     component.setProps({
       withColor: {
@@ -61,21 +63,23 @@ describe("OptionalImageField", () => {
     });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when upload button is clicked", () => {
     component.find(".qui-optional-image-field-button").at(0).simulate("click");
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when file is uploaded", async () => {
     component.setProps({
       isMultiple: true,
     });
-
     component
       .find(".qui-image-upload-field")
       .simulate("change", { target: { files: [file, file, file] } });
     await pauseFor(100);
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when file is uploaded and removed", async () => {
     component
       .find(".qui-image-upload-field")

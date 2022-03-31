@@ -7,7 +7,7 @@ export default {
   argTypes: {
     content: {
       defaultValue: {
-        text: "Upload",
+        title: "Upload",
         icon: "fas fa-image",
         actionButton: true,
       },
@@ -81,7 +81,7 @@ const Template = (args) => <OptionalImageField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    text: "Upload",
+    title: "Upload",
     icon: "fas fa-image",
     actionButton: true,
   },
@@ -94,11 +94,6 @@ Default.args = {
     backgroundColor: "",
     accentColor: "",
     textColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
   },
   isDisabled: false,
   isHidden: false,
@@ -115,6 +110,7 @@ Default.parameters = {
     },
   },
 };
+
 // -------------------------------------------------------------
 // Without ActionButton
 // -------------------------------------------------------------
@@ -122,7 +118,7 @@ export const WithoutActionButton = Template.bind({});
 WithoutActionButton.args = {
   ...Default.args,
   content: {
-    text: "",
+    title: "",
     icon: "fas fa-image",
     actionButton: false,
   },
@@ -138,6 +134,7 @@ WithoutActionButton.parameters = {
     },
   },
 };
+
 // -------------------------------------------------------------
 // Without Icon
 // -------------------------------------------------------------
@@ -145,7 +142,7 @@ export const WithoutIcon = Template.bind({});
 WithoutIcon.args = {
   ...Default.args,
   content: {
-    text: "Upload",
+    title: "Upload",
     actionButton: true,
   },
 };
@@ -160,6 +157,7 @@ WithoutIcon.parameters = {
     },
   },
 };
+
 // -------------------------------------------------------------
 // With Custom Icon
 // -------------------------------------------------------------
@@ -167,7 +165,7 @@ export const WithCustomIcon = Template.bind({});
 WithCustomIcon.args = {
   ...Default.args,
   content: {
-    text: "Upload new file",
+    title: "Upload new file",
     icon: "fas fa-camera-retro",
     actionButton: true,
   },
@@ -183,6 +181,7 @@ WithCustomIcon.parameters = {
     },
   },
 };
+
 // -------------------------------------------------------------
 // Colored OptionalImageField
 // -------------------------------------------------------------
@@ -206,6 +205,7 @@ ColoredOptionalImageField.parameters = {
     },
   },
 };
+
 // -------------------------------------------------------------
 // Animated OptionalImageField
 // -------------------------------------------------------------
@@ -213,7 +213,7 @@ export const AnimatedOptionalImageField = Template.bind({});
 AnimatedOptionalImageField.args = {
   ...Default.args,
   withAnimation: {
-    animation: "fade",
+    animation: "zoom",
     duration: 0.5,
     delay: 0,
   },
