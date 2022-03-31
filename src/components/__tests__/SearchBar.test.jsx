@@ -50,57 +50,57 @@ describe("SearchBar", () => {
     });
 
     it("should render correctly when passed asSize prop as tiny", () => {
-        component.setProps({ asSize: "tiny" })
+        component.setProps({ asSize: "tiny" });
         expect(component.exists()).toBe(true);
-    })
+    });
     it("should render correctly when passed asSize prop as small", () => {
         component.setProps({ asSize: "small" })
         expect(component.exists()).toBe(true);
     })
     it("should render correctly when passed asSize prop as normal", () => {
-        component.setProps({ asSize: "normal" })
+        component.setProps({ asSize: "normal" });
         expect(component.exists()).toBe(true);
-    })
+    });
     it("should render correctly when passed asSize prop as big", () => {
-        component.setProps({ asSize: "big" })
+        component.setProps({ asSize: "big" });
         expect(component.exists()).toBe(true);
-    })
+    });
     it("should render correctly when passed asSize prop as huge", () => {
-        component.setProps({ asSize: "huge" })
+        component.setProps({ asSize: "huge" });
         expect(component.exists()).toBe(true);
     })
     it("should render correctly when passed asSize prop as massive", () => {
-        component.setProps({ asSize: "massive" })
+        component.setProps({ asSize: "massive" });
         expect(component.exists()).toBe(true);
-    })
+    });
 
     it("should render correctly when passed asFloated prop as left", () => {
-        component.setProps({ asFloated: "left" })
+        component.setProps({ asFloated: "left" });
         expect(component.exists()).toBe(true);
-    })
+    });
     it("should render correctly when passed asFloated prop as right", () => {
-        component.setProps({ asFloated: "right" })
+        component.setProps({ asFloated: "right" });
         expect(component.exists()).toBe(true);
-    })
+    });
     it("should render correctly when passed asFloated prop as inline", () => {
-        component.setProps({ asFloated: "inline" })
+        component.setProps({ asFloated: "inline" });
         expect(component.exists()).toBe(true);
-    })
+    });
 
     it("should render correctly when passed withColor props", () => {
         let colors = {
             backgroundColor: "#fff",
             textColor: "#00FFFF",
         }
-        component.setProps({ withColor: colors })
+        component.setProps({ withColor: colors });
         expect(component.exists()).toBe(true);
-    })
+    });
 
     it("should render correctly when passed withIcon props", () => {
         let icon = { icon: "fas fa-share" }
         component.setProps({ withIcon: icon })
         expect(component.exists()).toBe(true);
-    })
+    });
 
     it("should render correctly when passed withAnimation props", () => {
         let animation = {
@@ -110,25 +110,25 @@ describe("SearchBar", () => {
         }
         component.setProps({ withAnimation: animation })
         expect(component.exists()).toBe(true);
-    })
+    });
 
     it("should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false })
+        component.setProps({ isHidden: false });
         expect(component.exists()).toBe(true);
-    })
+    });
     it("should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true })
+        component.setProps({ isHidden: true });
         expect(component.exists()).toBe(true);
-    })
+    });
 
     it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false })
+        component.setProps({ isDisabled: false });
         expect(component.exists()).toBe(true);
-    })
+    });
     it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true })
+        component.setProps({ isDisabled: true });
         expect(component.exists()).toBe(true);
-    })
+    });
 
     it("should render correctly when passed withTranslation Props", () => {
         expect(component.find("input").props().placeholder).toBe("Search...")
@@ -163,7 +163,7 @@ describe("SearchBar", () => {
         let inputBox = component.find("input");
         let button = component.find("button");
 
-        searchBarContainer.simulate('click')
+        searchBarContainer.simulate('click');
         expect(searchBarChildContainer.props().className).toBe("qui-search-bar-child-container undefined");
         expect(inputBox.props().className).toBe("qui-search-bar-input-field undefined");
         expect(button.props().className).toBe("qui-search-bar-icon undefined");
@@ -175,7 +175,7 @@ describe("SearchBar", () => {
         let button = component.find("button");
         button.simulate('click');
         fireEvent.click(inputElement, { target: { value: "some value" } });
-        expect(inputElement.value).toBe("some value")
+        expect(inputElement.value).toBe("some value");
     });
 
     it('should pass the value when pressed Enter', () => {
@@ -183,36 +183,35 @@ describe("SearchBar", () => {
             console.log("Testing SearchBar")
             handleKeyPress = { handleKeyPress }
             handleButtonPress = { handleButtonPress }
-        }} />)
-        const searchInput = queryByPlaceholderText('Search...')
+        }} />);
+        const searchInput = queryByPlaceholderText('Search...');
         fireEvent.change(searchInput, { target: { value: "some value" } });
-        fireEvent.keyPress(searchInput, { key: 'Enter', keyCode: 13 })
-        expect(searchInput.value).toBe('some value')
-    })
+        fireEvent.keyPress(searchInput, { key: 'Enter', keyCode: 13 });
+        expect(searchInput.value).toBe('some value');
+    });
 
     it('should pass the value when pressed enter', () => {
         const { queryByPlaceholderText } = render(<SearchBar onClick={() => {
             console.log("Testing SearchBar")
             handleKeyPress = { handleKeyPress }
             handleButtonPress = { handleButtonPress }
-        }} />)
-        const searchInput = queryByPlaceholderText('Search...')
+        }} />);
+        const searchInput = queryByPlaceholderText('Search...');
         fireEvent.change(searchInput, { target: { value: "some value" } });
-        fireEvent.keyPress(searchInput, { key: 'enter', keyCode: 13 })
-        expect(searchInput.value).toBe('some value')
-    })
+        fireEvent.keyPress(searchInput, { key: 'enter', keyCode: 13 });
+        expect(searchInput.value).toBe('some value');
+    });
 
     it('should open the closed SearchBar', () => {
-        component.setProps({ isClosed: true, isFluid: false, expandable: false })
-        let searchBar = component.find(".qui-search-bar-container")
-        searchBar.simulate('click')
-    })
+        component.setProps({ isClosed: true, isFluid: false, expandable: false });
+        let searchBar = component.find(".qui-search-bar-container");
+        searchBar.simulate('click');
+    });
 
     it('should close the opened SearchBar when clicked outside', () => {
-        component.setProps({ isClosed: true, isFluid: false, expandable: false })
-        let searchBar = component.find(".qui-search-bar-container")
-        searchBar.simulate('click')
-
+        component.setProps({ isClosed: true, isFluid: false, expandable: false });
+        let searchBar = component.find(".qui-search-bar-container");
+        searchBar.simulate('click');
         fireEvent.click(document.body)
-    })
+    });
 });
