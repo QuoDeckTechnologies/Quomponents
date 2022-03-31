@@ -86,10 +86,6 @@ describe("SearchBar", () => {
         component.setProps({ asFloated: "inline" })
         expect(component.exists()).toBe(true);
     })
-    it("should render correctly when passed asFloated prop as none", () => {
-        component.setProps({ asFloated: "none" })
-        expect(component.exists()).toBe(true);
-    })
 
     it("should render correctly when passed withColor props", () => {
         let colors = {
@@ -185,14 +181,38 @@ describe("SearchBar", () => {
     it('should pass the value when pressed Enter', () => {
         const { queryByPlaceholderText } = render(<SearchBar onClick={() => {
             console.log("Testing SearchBar")
-            handleKeyPress={handleKeyPress}
-            handleButtonPress={handleButtonPress}
+            handleKeyPress = { handleKeyPress }
+            handleButtonPress = { handleButtonPress }
+        }} />)
+        const searchInput = queryByPlaceholderText('Search...')
+        fireEvent.change(searchInput, { target: { value: "some value" } });
+        fireEvent.keyPress(searchInput, { key: 'Enter', keyCode: 13 })
+        expect(searchInput.value).toBe('some value')
+    })
+
+    it('should pass the value when pressed enter', () => {
+        const { queryByPlaceholderText } = render(<SearchBar onClick={() => {
+            console.log("Testing SearchBar")
+            handleKeyPress = { handleKeyPress }
+            handleButtonPress = { handleButtonPress }
         }} />)
         const searchInput = queryByPlaceholderText('Search...')
         fireEvent.change(searchInput, { target: { value: "some value" } });
         fireEvent.keyPress(searchInput, { key: 'enter', keyCode: 13 })
-        handleButtonPress();
-        expect(handleButtonPress.mock.calls.length).toBe(1)
         expect(searchInput.value).toBe('some value')
+    })
+
+    it('Should open SearchBar', () => {
+        component.setProps({ isClosed: true })
+        let searchBar = component.find(".qui-search-bar-container")
+        searchBar.simulate('click')
+    })
+
+    it('should close SearchBar when clicked outside', () => {
+        component.setProps({ isClosed: true })
+        let searchBar = component.find(".qui-search-bar-container")
+        searchBar.simulate('click')
+
+        fireEvent.click(document.body)
     })
 });
