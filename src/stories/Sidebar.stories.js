@@ -5,9 +5,14 @@ export default {
     title: "Design System/Sidebar/Sidebar",
     component: Sidebar,
     argTypes: {
+        mode:{ control: "select",
+        options: ["default", "editMode"],
+        table: {
+            category: "as-Flags",
+        },},
         content: {
-            image:"",
-            sections:[]
+            image: "",
+            sections: {}
         },
         asVariant: {
             control: "select",
@@ -98,9 +103,17 @@ export default {
 const Template = (args) => <Sidebar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+    mode:"default",
     content: {
-     image:"",
-     sections:["fas fa-book", "fas fa-book-open"]
+        image: "",
+        sections: {
+            welcome: {
+                link: "/social",
+                name: "courses",
+                icon: "fas fa-book-open",
+                show: ["admin", "creator", "learner"]
+            }
+        }
     },
     asVariant: "primary",
     asSize: "normal",

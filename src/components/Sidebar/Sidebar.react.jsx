@@ -1,5 +1,5 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {
     getQuommons
@@ -12,19 +12,29 @@ import "./Sidebar.scss";
 import "../../common/stylesheets/overrule.scss";
 
 import IconLink from "../Buttons/IconLink/IconLink.react";
+import ArcMenu from "../ArcMenu/ArcMenu.react"
 
-import defaultImage from "../../assets/default.jpeg"
+import defaultImage from "../../assets/default.jpeg";
 
 Sidebar.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-    Use to define title, sub-title and image of component
+    Use to define section content and logo
+    */
+    mode: PropTypes.oneOf(["editMode", "default"]),
+    /**
+    Use to define section content and logo
     */
     content: PropTypes.shape({
         image: PropTypes.string,
-        sections: PropTypes.array
+        sections: PropTypes.shape({
+            link: PropTypes.string,
+            name: PropTypes.string,
+            icon: PropTypes.string,
+            show: PropTypes.array
+        })
     }).isRequired,
 
     // Quommon props
@@ -80,6 +90,7 @@ Sidebar.propTypes = {
 Sidebar.defaultProps = {
     // Component Specific props
     //=======================================
+    mode: "default",
     content: null,
 
     // Quommon props
@@ -120,32 +131,58 @@ export default function Sidebar(props) {
     //-------------------------------------------------------------------
     let logo = props.content?.image ? props.content?.image : defaultImage;
 
+    const [isActive, setActive] = useState(false)
+    //-------------------------------------------------------------------
+    // 3. Conditional Styling
+    //-------------------------------------------------------------------
+    function handleSection(section) {
+        setActive(prevState => !prevState)
+    }
+
+    let color = isActive ? "yellow" : ""
     //-------------------------------------------------------------------
     // 5. Get the Status of Component
     //-------------------------------------------------------------------
-    const sidebar = (isEllipse) => {
-        return (
-            <div className={`qui-side-bar-container`}>
-                <div style={{ backgroundImage: `url(${logo})` }} className="qui-side-bar-logo" />
-                <div className={`qui-side-bar-sections-container`}>
-                {_.map(props.content.sections, (icon, index) => {
+    const sidebar = (mode) => {
+        if (mode === "default") {
+            return (
+                <div className={`qui-side-bar-default-container`}>
+                    <div style={{ backgroundImage: `url(${logo})` }} className="qui-side-bar-logo" />
+                    <div className={`qui-side-bar-sections-container`}>
+                        {_.map(props.content?.sections, (sections, index) => {
+                            return (
+                                <div className={`qui-side-bar-sections`} style={{ zIndex: 1 }} onClick={() => { handleSection(sections.name) }}
+                                    key={`panellink-${index}`}>
+                                    <IconLink asSize="tiny" withIcon={{ icon: sections.icon }} withLabel={{ format: "caption", content: sections.name }}
+                                    />
+                                </div>
 
-                    return (<div className={`qui-side-bar-sections`} style={{zIndex:1}}>
-                        <IconLink asSize="tiny" withIcon={{ icon: icon }} />
-                    </div>)    
-                })}
-
+                            )
+                        })}
+                    </div>
                 </div>
-        
+            )
+        } else {
+            return (<div className={`qui-side-bar-editmode-container`}>
+                <div style={{ backgroundImage: `url(${logo})` }} className="qui-side-bar-logo" />
+                <div className={`qui-side-bar-edit-mode-sections-container`}>
+                {/* <div className={`qui-side-bar-edit-mode-arc-menu`}>
+                        <ArcMenu type="menu" />
+                    </div> */}
+                    <div className={`qui-side-bar-edit-mode-label`}>
+                        EDIT MODE
+                    </div>
+                </div>
+            </div>)
 
-            </div>
-        )
+        }
+
     }
     return (
         <div
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses}`}>
-                {sidebar(props.isEllipse)}
+                {sidebar(props.mode)}
             </div>
         </div>
     );
