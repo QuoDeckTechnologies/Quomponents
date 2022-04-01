@@ -8,6 +8,7 @@ export default {
         content: {
             label: "",
             categoryOptions: [],
+            placeHolder: ""
         },
         asSize: {
             control: "select",
@@ -97,6 +98,7 @@ Default.args = {
     content: {
         label: "Course Category",
         categoryOptions: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
+        placeHolder: "Choose...",
     },
     asSize: "normal",
     asFloated: "none",
@@ -130,7 +132,7 @@ ColoredSelectField.args = {
     ...Default.args,
     withColor: {
         backgroundColor: "#666666",
-        textColor: "#fffff",
+        textColor: "#ffbf00",
         accentColor: "#ffbf00",
     },
 };

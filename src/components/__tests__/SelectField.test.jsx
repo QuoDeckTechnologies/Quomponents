@@ -21,6 +21,7 @@ describe("SelectField", () => {
                 content={{
                     label: "Course Category",
                     categoryOptions: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
+                    placeHolder: "Choose...",
                 }}
                 asSize="normal"
                 asPadded="normal"

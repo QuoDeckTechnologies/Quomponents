@@ -7,8 +7,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    // min-width: 15em;
-    // min-height: 2em;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
     border-bottom: 0.4em solid;
@@ -36,3 +34,9 @@
 .qui .MuiSelect-icon {
     font-size: 3em;
 }
+
+.css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper{
+    width: 100%;
+}
+
+
