@@ -17,6 +17,9 @@ InlineEdit.propTypes = {
     Use to define InlineEdit's value
     */
     content: PropTypes.string.isRequired,
+    /**
+    Use to define InlineEdit's ID
+    */
     inlineEditID: PropTypes.string.isRequired,
     /**
     Use to set the state of InlineEdit 
