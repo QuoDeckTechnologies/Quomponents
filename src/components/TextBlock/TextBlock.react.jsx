@@ -16,73 +16,40 @@ TextBlock.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+    /**
+  Opacity used to set the background opacity of the text block
+  */
     opacity: PropTypes.string,
     /**
-    TextBlock Text has to be in content or passed as children to the component. Is optional if you only want an icon.
+   toggle the conversation prop to see the component as chat conversation
+   */
+    conversation: PropTypes.bool,
+    /**
+    TextBlock Text has to be in content or passed as string to the component.
     */
     content: PropTypes.string,
+
     /**
-    Set action emphasis in increasing order 
+    Use to toggle position of text-block conversation
     */
-    asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
-    /**
-
-  /**
-  Use to toggle position of ArcMenu
-  */
     position: PropTypes.oneOf([
-        "top-right",
-        "top-left",
-        "bottom-right",
-        "bottom-left",
+        "right-top",
+        "right-bottom",
+        "left-top",
+        "left-bottom",
     ]),
-
     // Quommon props
     //=======================================
-
-    /**
-    Use to define standard component type
-    */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
-    /**
-    Use to define component text size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
-    Use to define component padding in increasing order
-    */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
     /**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
-
+    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
     /**
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
         textColor: PropTypes.string,
-        hoverBackgroundColor: PropTypes.string,
-        hoverTextColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -105,14 +72,6 @@ TextBlock.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
-    /**
-    Use to toggle the component taking the full width of the parent container
-    */
-    isFluid: PropTypes.bool,
-    /**
-    TextBlock component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
 };
 
 TextBlock.defaultProps = {
@@ -120,16 +79,11 @@ TextBlock.defaultProps = {
     //=======================================
     content: "",
     opacity: "",
-    position: "top-right",
+    position: "left-top",
+    
     // Quommon props
     //=======================================
-    asVariant: "primary",
-    asSize: "normal",
-    asPadded: "normal",
-    asFloated: "none",
-    asAligned: "center",
-    asEmphasis: "contained",
-    isCircular: false,
+    asFloated: "inline",
 
     withColor: null,
     withLabel: null,
@@ -138,19 +92,18 @@ TextBlock.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
-    isFluid: false,
+    conversation: false,
 };
 
 /**
 ## Notes
-- The design system used for this component is Material UI (@mui/material)
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
+- TextBlock component can be used as the conversation or just a block with content.
+- Conversation props passed as true/false
 **/
 export default function TextBlock(props) {
-    const [hovered, setHovered] = useState(false);
     let { content } = props
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -159,30 +112,31 @@ export default function TextBlock(props) {
     //-------------------------------------------------------------------
     // 2. Get custom styling 
     //-------------------------------------------------------------------
-    let opacity = props.opacity;
-
-    quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
-
-
-    const getPosition = (position) => {
-        if (position === "top-right") {
-            return "qui-top-right";
+    const getArrowPosition = (position) => {
+        if (position === "right-bottom") {
+            return "arrow-right-bottom";
         }
-        if (position === "top-left") {
-            return "qui-top-left";
+        if (position === "left-bottom") {
+            return "arrow-left-bottom";
         }
-        if (position === "bottom-right") {
-            return "qui-bottom-right";
+        if (position === "right-top") {
+            return "arrow-right-top";
+        } else {
+            return "arrow-left-top";
         }
-        if (position === "bottom-left") {
-            return "qui-bottom-left";
-        }
-        return "qui-top-right";
     };
-
-
     //-------------------------------------------------------------------
-    // 3. Get animation of the component
+    // 3. Use to set Color in text-block
+    //-------------------------------------------------------------------
+    let componentStyle = {
+
+        mainContainer: {
+            backgroundColor: props.withColor?.backgroundColor,
+            color: props.withColor?.textColor,
+        }
+    };
+    //-------------------------------------------------------------------
+    // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
@@ -192,22 +146,22 @@ export default function TextBlock(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
+            className={`qui qui-text-block-container ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-text-block-tringle ${getPosition(props.position)}`}>
-                <div class="arrow-up"></div>
-                <div class="arrow-down"></div>
-                <div class="arrow-left"></div>
-                <div class="arrow-right"></div>
+            <div className={`qui-text-block-area ${quommonClasses.childClasses} `} style={{ ...componentStyle.mainContainer, opacity: props.opacity }}>
             </div>
-            <div className={`qui-text-block qui-btn  ${quommonClasses.childClasses}
-          `} style={{ opacity: opacity }}>
-            </div>
-            <div className="qui-block-text">
+            <div className={`qui-block-text`} style={{ ...componentStyle.mainContainer }}>
                 {content}
             </div>
-        </motion.div>
+            {props.conversation && <div className={`qui-text-block-tringle`}>
+                <div className={`arrow ${getArrowPosition(props.position)}`}
+                    style={{
+                        opacity: props.opacity,
+                        borderRightColor: props.withColor.backgroundColor,
+                        borderLeftColor: props.withColor.backgroundColor
+                    }}>
+                </div>
+            </div>}
+        </motion.div >
     );
 }

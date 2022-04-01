@@ -1,90 +1,29 @@
 import React from "react";
 import TextBlock from "../components/TextBlock/TextBlock.react";
 
-const dictionary = JSON.stringify({
-    // en: {
-    //     loading: "Please wait...",
-    //     button: {
-    //         text: "TextBlock",
-    //         label: "Do not press this repeatedly...",
-    //     },
-    // },
-    hi: {
-        loading: "बस एक मिनट...",
-        button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
-    },
-});
-
 export default {
     title: "Design System/TextBlock/TextBlock",
     component: TextBlock,
     argTypes: {
         content: "TextBlock",
-        opacity: "0.5",
-
+        opacity: "1",
         position: {
             control: "select",
-            options: ["top-right", "top-left", "bottom-right", "bottom-left"],
-        },
-        asEmphasis: {
-            control: "select",
-            options: ["text", "outlined", "contained"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        isCircular: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-
-        asVariant: {
-            control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asPadded: {
-            control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
-            table: {
-                category: "as-Flags",
-            },
+            options: ["right-top", "right-bottom", "left-top", "left-bottom"],
         },
         asFloated: {
             control: "select",
-            options: ["left", "right", "none", "inline"],
+            options: ["left", "right", "inline"],
             table: {
                 category: "as-Flags",
             },
         },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
-                    accentColor: "",
                     textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
                 },
             },
         },
@@ -104,16 +43,10 @@ export default {
                 defaultValue: false,
             },
         },
-        isFluid: {
+        conversation: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
-            },
-        },
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
             },
         },
     },
@@ -144,20 +77,13 @@ const Template = (args) => <TextBlock {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: "Neque porro quisquam est qui dolorem",
-    opacity: 1,
-    position: "top-right",
-    asEmphasis: "contained",
-    asVariant: "primary",
-    asSize: "normal",
+    opacity: "1",
+    position: "left-top",
+    conversation: true,
     asFloated: "inline",
-    asPadded: "normal",
-    asAligned: "center",
     withColor: {
         backgroundColor: "",
-        accentColor: "",
-        textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
+        textColor: "white",
     },
     withAnimation: {
         animation: "zoom",
@@ -165,13 +91,117 @@ Default.args = {
         delay: 0,
     },
     isHidden: false,
-    isFluid: false,
+    conversation: true,
 };
 Default.parameters = {
     docs: {
+        description: {
+            story:
+                "Use to show the component with all default props",
+        },
         source: {
             code: `<TextBlock {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
 
+// -------------------------------------------------------------
+// WithoutConversation 
+// -------------------------------------------------------------
+export const WithoutConversation = Template.bind({});
+WithoutConversation.args = {
+    ...Default.args,
+    conversation: false,
+    withAnimation: {
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
+    },
+};
+WithoutConversation.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to show the component without the conversation toggle on. Can be used as a chat conversation.",
+        },
+        source: {
+            code: `<WithoutConversation {...${JSON.stringify(
+                WithoutConversation.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Conversation
+// -------------------------------------------------------------
+export const Conversation = (args) => {
+    const baseObj1 = {
+        ...Object.assign({}, Default.args, args, {
+            position: "right-bottom",
+            asFloated: "left",
+            withAnimation: {
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0.1,
+            },
+        })
+
+    };
+    const baseObj2 = {
+        ...Object.assign({}, Default.args, args, {
+            position: "left-bottom",
+            asFloated: "right",
+            withAnimation: {
+                animation: "slideLeft",
+                duration: 0.5,
+                delay: 0.3,
+            },
+        })
+
+    };
+    const baseObj3 = {
+        ...Object.assign({}, Default.args, args, {
+            position: "right-bottom",
+            asFloated: "left",
+            withAnimation: {
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0.5,
+            },
+        })
+
+    };
+    const baseObj4 = {
+        ...Object.assign({}, Default.args, args, {
+            position: "left-bottom",
+            asFloated: "right",
+            withAnimation: {
+                animation: "slideLeft",
+                duration: 0.5,
+                delay: 0.7,
+            },
+        })
+    };
+    return (
+        <div>
+            <TextBlock
+                {...Object.assign({}, baseObj1, {
+                })}
+            />
+            <TextBlock
+                {...Object.assign({}, baseObj2, {
+                })}
+            />
+            <TextBlock
+                {...Object.assign({}, baseObj3, {
+                })}
+            />
+            <TextBlock
+                {...Object.assign({}, baseObj4, {
+                })}
+            />
+        </div>
+    );
+};
