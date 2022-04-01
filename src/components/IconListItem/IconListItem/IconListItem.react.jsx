@@ -1,5 +1,6 @@
 // Import npm packages
-import React, { useState } from "react";
+import React from "react";
+import _ from "lodash";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
@@ -91,7 +92,11 @@ IconListItem.defaultProps = {
 - Status of topics can be changed from content prop
 **/
 export default function IconListItem(props) {
-  const [btnArr] = useState(props.content)
+  // const [btnArr] = useState(props.content)
+  //-------------------------------------------------------------------
+  // 1. Destructuring content prop
+  //-------------------------------------------------------------------
+  const { content } = props;
   // 1. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "IconListItem");
@@ -103,7 +108,7 @@ export default function IconListItem(props) {
   // ========================= Render Function =================================
   return (
     <div className={`qui ${quommonClasses.parentClasses}`}>
-      {btnArr?.map((item, index) => {
+      {_.map(content,(item, index) => {
         return (
           <motion.div
             initial={animate.from}
