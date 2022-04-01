@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Select, MenuItem, Typography } from "@mui/material";
-// import Select from '@mui/material/Select';
-// import MenuItem from '@mui/material/MenuItem';
+import { Select, MenuItem } from "@mui/material";
 import { motion } from "framer-motion";
 import {
     getAnimation,
