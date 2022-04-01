@@ -14,39 +14,24 @@ CheckBox.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    CheckBox Text has to be in content or passed as children to the component. Is optional if you only want an icon.
+    CheckBox Text has to be in label or passed as children to the component. Is optional if you only want an icon.
     */
-  content: PropTypes.string,
+  label: PropTypes.string,
   /**
     Use to check/uncheck the component
     */
-  isChecked: PropTypes.bool,
+  checked: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to define component text size in increasing order
     */
-  asSize: PropTypes.oneOf([
-    "tiny",
-    "small",
-    "normal",
-    "big",
-    "huge",
-    "massive",
-  ]),
+  asSize: PropTypes.oneOf(["tiny", "normal", "huge"]),
   /**
     Use to float the component in parent container
     */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-  /**
-    Use to override component colors and behavior
-    */
-  withColor: PropTypes.shape({
-    backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
-    textColor: PropTypes.string,
-  }),
   /**
     Use to define the entry animation of the component
     */
@@ -86,14 +71,13 @@ CheckBox.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: "",
-  isChecked: false,
+  label: "",
+  checked: false,
   //=======================================
   // Quommon props
   //=======================================
   asSize: "normal",
   asFloated: "none",
-  withColor: null,
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
@@ -108,9 +92,9 @@ CheckBox.defaultProps = {
 **/
 export default function CheckBox(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring content prop
+  // 1. Destructuring label prop
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { label } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -123,12 +107,9 @@ export default function CheckBox(props) {
   // 4. Get size of the chekbox
   //-------------------------------------------------------------------
   const getSize = () => {
-    if (props.asSize === "small") return "small";
+    if (props.asSize === "tiny") return "small";
     if (props.asSize === "normal") return "medium";
-    if (props.asSize === "big") return "medium";
-    if (props.asSize === "huge") return "large";
-    if (props.asSize === "massive") return "large";
-    return "";
+    else return "large";
   };
   // ========================= Render Function =================================
 
@@ -142,15 +123,18 @@ export default function CheckBox(props) {
         className={`qui-check-box-inner-container ${quommonClasses.childClasses}`}
       >
         <Checkbox
-          defaultChecked={props.isChecked}
+          defaultChecked={props.checked}
           id="qui-check-box-element"
           disabled={props.isDisabled}
           size={getSize()}
-          value={content}
+          value={label}
           onChange={(e) => props.onClick(e)}
         />
-        <label htmlFor="qui-check-box-element">
-          <h4>{content}</h4>
+        <label
+          htmlFor="qui-check-box-element"
+          className="qui-check-box-element"
+        >
+          <h4>{label}</h4>
         </label>
       </div>
     </motion.div>

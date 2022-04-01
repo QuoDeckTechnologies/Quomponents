@@ -5,15 +5,15 @@ export default {
   title: "Design System/CheckBox/CheckBox",
   component: CheckBox,
   argTypes: {
-    content: "CheckBox",
-    isChecked: {
+    label: "CheckBox",
+    checked: {
       table: {
         defaultValue: false,
       },
     },
     asSize: {
       control: "select",
-      options: ["tiny", "small", "normal", "big", "huge", "massive"],
+      options: ["tiny", "normal", "huge"],
       table: {
         category: "as-Flags",
       },
@@ -23,16 +23,6 @@ export default {
       options: ["left", "right", "none", "inline"],
       table: {
         category: "as-Flags",
-      },
-    },
-    withColor: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          backgroundColor: "",
-          accentColor: "",
-          textColor: "",
-        },
       },
     },
     withAnimation: {
@@ -82,15 +72,10 @@ export default {
 const Template = (args) => <CheckBox {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: "Enable Checkbox",
-  isChecked: false,
+  label: "Default Checkbox",
+  checked: false,
   asSize: "normal",
-  asFloated: "none",
-  withColor: {
-    backgroundColor: "",
-    accentColor: "",
-    textColor: "",
-  },
+  asFloated: "left",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
@@ -108,30 +93,131 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Default
+// Read only checkbox
+// -------------------------------------------------------------
+export const ReadOnlyCheckBox = Template.bind({});
+ReadOnlyCheckBox.args = {
+  label: "Read Only Checkbox",
+  checked: true,
+  asSize: "normal",
+  asFloated: "left",
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  isDisabled: true,
+  isHidden: false,
+  isFluid: false,
+};
+ReadOnlyCheckBox.parameters = {
+  docs: {
+    source: {
+      code: `<CheckBox {...${JSON.stringify(ReadOnlyCheckBox.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Disabled checkbox
+// -------------------------------------------------------------
+export const DisabledCheckBox = Template.bind({});
+DisabledCheckBox.args = {
+  label: "Disabled Checkbox",
+  checked: false,
+  asSize: "normal",
+  asFloated: "left",
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  isDisabled: true,
+  isHidden: false,
+  isFluid: false,
+};
+DisabledCheckBox.parameters = {
+  docs: {
+    source: {
+      code: `<CheckBox {...${JSON.stringify(DisabledCheckBox.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Multiple CheckBox
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
   return (
     <>
-      <CheckBox {...args} content={args.content[0]} isChecked={true} />
-      <CheckBox {...args} content={args.content[1]} isChecked={false} />
+      <CheckBox
+        {...args}
+        label={args.label[0]}
+        checked={true}
+        asFloated="none"
+      />
+      <CheckBox
+        {...args}
+        label={args.label[1]}
+        checked={false}
+        asFloated="none"
+      />
     </>
   );
 };
 export const MultipleCheckBox = MultipleTemplate.bind({});
 MultipleCheckBox.args = {
   ...Default.args,
-  content: ["Option One", "Option Two"],
+  label: ["Option One", "Option Two"],
 };
 MultipleCheckBox.parameters = {
   docs: {
     description: {
       story:
-        "Multiple checkboxes can be used which outputs their status and content text to `onClick` prop",
+        "Multiple checkboxes can be used which outputs their status and label text to `onClick` prop",
     },
     source: {
       code: `<CheckBox {...${JSON.stringify(
         MultipleCheckBox.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Multiple CheckBox
+// -------------------------------------------------------------
+const MultipleTemplateInline = (args) => {
+  return (
+    <>
+      <CheckBox
+        {...args}
+        label={args.label[0]}
+        checked={true}
+        asFloated="inline"
+      />
+      <CheckBox
+        {...args}
+        label={args.label[1]}
+        checked={false}
+        asFloated="inline"
+      />
+    </>
+  );
+};
+export const InlineMultipleCheckBox = MultipleTemplateInline.bind({});
+InlineMultipleCheckBox.args = {
+  ...Default.args,
+  label: ["Option One", "Option Two"],
+};
+InlineMultipleCheckBox.parameters = {
+  docs: {
+    description: {
+      story:
+        "Multiple checkboxes can be used which outputs their status and label text to `onClick` prop",
+    },
+    source: {
+      code: `<CheckBox {...${JSON.stringify(
+        InlineMultipleCheckBox.args,
         null,
         2
       )}}/>`,

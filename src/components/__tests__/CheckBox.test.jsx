@@ -32,33 +32,15 @@ describe("CheckBox", () => {
     });
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly when asSize is small", () => {
-    component.setProps({
-      asSize: "small",
-    });
-    expect(component.exists()).toBe(true);
-  });
   it("should render correctly when asSize is normal", () => {
     component.setProps({
       asSize: "normal",
     });
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly when asSize is big", () => {
-    component.setProps({
-      asSize: "big",
-    });
-    expect(component.exists()).toBe(true);
-  });
   it("should render correctly when asSize is huge", () => {
     component.setProps({
       asSize: "huge",
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when asSize is massive", () => {
-    component.setProps({
-      asSize: "massive",
     });
     expect(component.exists()).toBe(true);
   });
