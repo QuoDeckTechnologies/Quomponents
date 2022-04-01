@@ -91,7 +91,6 @@ Default.args = {
         delay: 0,
     },
     isHidden: false,
-    conversation: true,
 };
 Default.parameters = {
     docs: {
