@@ -16,23 +16,27 @@ Object.assign(navigator, {
     },
 });
 
+
 describe("CourseCard", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component, content;
     content = {
-        published: false,
+        satus: "published",
         tags: [],
-        courseType: "Gamified",
+        courseType: "standard",
+        wrapper:"supermarket",
         courseName: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
         courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
         courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
         points: "200",
         identifier: "XrPmy_OAK",
-        startDate: "26th Feb",
-        endDate: "3rd May"
+        date :{
+            start_date:"2032-03-30T18:30:00.000Z",
+            end_date:"2021-05-10T12:55:18.458Z"
+        }
     };
     let mockFn = jest.fn();
 
@@ -42,7 +46,6 @@ describe("CourseCard", () => {
         component = shallow(
             <CourseCard
                 content={content}
-                status="published"
                 asSize="normal"
                 asPadded="normal"
                 asFloated="inline"
@@ -141,7 +144,11 @@ describe("CourseCard", () => {
     })
 
     it("should copy the link when clicked on copy icon", () => {
-        component.setProps({ content: { category: "Profiler", identifier: "XrPmy_MND" } })
+        component.setProps({ content: { category: "Profiler", identifier: "XrPmy_MND", wrapper:"supermarket" } ,
+        date :{
+            start_date:"2032-03-30T18:30:00.000Z",
+            end_date:"2021-05-10T12:55:18.458Z"
+        }})
         let iconBlock = component.find(IconBlock).at(1)
         iconBlock.simulate('click')
         expect(navigator.clipboard.writeText).toHaveBeenCalledWith("https://www.quodeck.com/XrPmy_MND");
@@ -149,8 +156,13 @@ describe("CourseCard", () => {
 
     it("should show courseImage when passed courseImage in the Gamified Course Card", () => {
         let content = {
-            courseType: "Gamified",
-            courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
+            courseType: "standard",
+            courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+            wrapper:"none",
+            date :{
+                start_date:"2032-03-30T18:30:00.000Z",
+                end_date:"2021-05-10T12:55:18.458Z"
+            }
         }
         component.setProps({ content: content })
         expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg)")
@@ -158,9 +170,14 @@ describe("CourseCard", () => {
 
     it("should show courseWrapperImage when passed courseWrapperImage but not courseImage in the Gamified Course Card", () => {
         let content = {
-            courseType: "Gamified",
+            courseType: "exam",
             courseImage: "",
-            courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
+            wrapper:"supermarket",
+            courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+            date :{
+                start_date:"2032-03-30T18:30:00.000Z",
+                end_date:"2021-05-10T12:55:18.458Z"
+            }
         }
         component.setProps({ content: content })
         expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg)")
@@ -168,9 +185,14 @@ describe("CourseCard", () => {
 
     it("should show default image when passed nothing in image in the Gamified Course Card", () => {
         let content = {
-            courseType: "Gamified",
+            courseType: "standard",
             courseImage: "",
-            courseWrapperImage: ""
+            wrapper:"supermarket",
+            courseWrapperImage: "",
+            date :{
+                start_date:"2032-03-30T18:30:00.000Z",
+                end_date:"2021-05-10T12:55:18.458Z"
+            }
         }
         component.setProps({ content: content })
         expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(default.jpeg)")
@@ -178,8 +200,13 @@ describe("CourseCard", () => {
 
     it("should show courseWrapperImage when passed courseWrapperImage but not courseImage in the Normal Course Card", () => {
         let content = {
-            courseType: "Course",
-            courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
+            courseType: "standard",
+            wrapper:"supermarket",
+            courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+            date :{
+                start_date:"2032-03-30T18:30:00.000Z",
+                end_date:"2021-05-10T12:55:18.458Z"
+            }
         }
         component.setProps({ content: content })
         expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg)")
@@ -187,8 +214,13 @@ describe("CourseCard", () => {
 
     it("should show default image when passed nothing in image in the Nomal Course Card", () => {
         let content = {
-            courseType: "Course",
-            courseImage: ""
+            courseType: "exam",
+            wrapper:"none",
+            courseImage: "",
+            date :{
+                start_date:"",
+                end_date:""
+            }
         }
         component.setProps({ content: content })
         expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(default.jpeg)")

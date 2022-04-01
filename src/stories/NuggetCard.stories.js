@@ -6,16 +6,14 @@ export default {
     component: NuggetCard,
     argTypes: {
         content: {
-            published:false,
+            status:"",
             tags: [],
             category:"",
             name: "",
             description: "",
             image: "",
             points:"",
-            identifier:"",
-            startDate:"",
-            endDate: ""
+            identifier:""
         },
         asFloated: {
             control: "select",
@@ -70,16 +68,14 @@ const Template = (args) => <NuggetCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        published:false,
+        status:"none",
         tags: ["Tag1","Tag2"],
-        category:"Profiler",
+        category:"profiler",
         name: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
         image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
         points:"200",
-        identifier:"XrPmy_OAK",
-        startDate:"26th Feb",
-        endDate: "3rd May"
+        identifier:"XrPmy_OAK"
     },
     asFloated: "inline",
     isDisabled: false,
@@ -107,9 +103,7 @@ export const DifferentResolution = (args) => {
                 description: "Take this quick profile test to check how well you are prepared for a sales job",
                 image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
                 points:"200",
-                identifier:"XrPmy_OAK",
-                startDate:"26th Feb",
-                endDate: "3rd May"
+                identifier:"XrPmy_OAK"
             },
         }),
     };

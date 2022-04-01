@@ -6,8 +6,9 @@ export default {
     component: CourseCard,
     argTypes: {
         content: {
-            published: false,
+            status: "none",
             courseType: "",
+            wrapper:"",
             tags: [],
             courseName: "",
             description: "",
@@ -15,8 +16,10 @@ export default {
             courseWrapperImage: "",
             points: "",
             identifier: "",
-            startDate: "",
-            endDate: ""
+            date: {
+                start_date: "",
+                end_date: ""
+            }
         },
         asFloated: {
             control: "select",
@@ -81,8 +84,9 @@ const Template = (args) => <CourseCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        published: false,
-        courseType: "Course",
+        status: "none",
+        courseType: "standard",
+        wrapper:"supermarket",
         tags: ["Tag1", "Tag2"],
         courseName: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
@@ -90,8 +94,10 @@ Default.args = {
         courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
         points: "200",
         identifier: "XrPmy_OAK",
-        startDate: "26th Feb",
-        endDate: "3rd March"
+        date: {
+            start_date: "2016-01-04 10:34:23",
+            end_date: "2016-03-15 10:34:23"
+        }
     },
     asFloated: "inline",
     withAnimation: {
@@ -115,18 +121,20 @@ Default.parameters = {
 export const DifferentResolution = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {
-            content: {
-                published: false,
-                tags: ["Tag1", "Tag2"],
-                courseName: "Measure your sales readiness",
-                description: "Take this quick profile test to check how well you are prepared for a sales job",
-                image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-                points: "200",
-                identifier: "XrPmy_OAK",
-                startDate: "26th Feb",
-                endDate: "3rd March"
-            },
-            courseType: "Course",
+            status: "none",
+            courseType: "stamdard",
+            wrapper:"supermarket",
+            tags: ["Tag1", "Tag2"],
+            courseName: "Measure your sales readiness",
+            description: "Take this quick profile test to check how well you are prepared for a sales job",
+            courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+            courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+            points: "200",
+            identifier: "XrPmy_OAK",
+            date: {
+                start_date: "2016-01-04 10:34:23",
+                end_date: "2016-03-15 10:34:23"
+            }
         }),
     };
     return (

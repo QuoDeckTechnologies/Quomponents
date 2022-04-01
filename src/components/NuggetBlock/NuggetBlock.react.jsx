@@ -19,7 +19,7 @@ NuggetBlock.propTypes = {
     // Component Specific props
     //=======================================
     image: PropTypes.string.isRequired,
-    published: PropTypes.bool,
+    status: PropTypes.oneOf(["published", "unpublished", "none"]),
 
     // Quommon props
     //=======================================
@@ -70,14 +70,14 @@ NuggetBlock.propTypes = {
     /**
     Button component must have the onClick function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
 };
 
 NuggetBlock.defaultProps = {
     // Component Specific props
     //=======================================
     image: "",
-    published:false,
+    status: "none",
 
     // Quommon props
     //=======================================
@@ -118,9 +118,12 @@ export default function NuggetBlock(props) {
     // 4. Get Nugget Status
     //-------------------------------------------------------------------
     let status, color, display;
-    status = props.published;
-    if (status === true) {
+    status = props.status.toUpperCase();
+
+    if (status === "PUBLISHED") {
         color = "#C1DC9E"
+    } else if (status === "UNPUBLISHED") {
+        color = "#B2B4B3"
     } else {
         display = "none"
     }

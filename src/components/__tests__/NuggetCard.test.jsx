@@ -24,7 +24,7 @@ describe("NuggetCard", () => {
     content = {
         published: false,
         tags: [],
-        category: "Profiler",
+        category: "profiler",
         name: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
         image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
@@ -140,7 +140,7 @@ describe("NuggetCard", () => {
     })
 
     it("should copy the link when clicked on copy icon", () => {
-        component.setProps({ content: { category: "Profiler", identifier: "XrPmy_MND" } })
+        component.setProps({ content: { category: "profiler", identifier: "XrPmy_MND" } })
         let iconBlock = component.find(IconBlock)
         iconBlock.simulate('click')
         expect(navigator.clipboard.writeText).toHaveBeenCalledWith("https://www.quodeck.com/XrPmy_MND");
@@ -148,7 +148,7 @@ describe("NuggetCard", () => {
 
     it("should show image when passed image", () => {
         let content = {
-            category: "Profiler",
+            category: "profiler",
             image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
         }
         component.setProps({ content: content })
@@ -157,7 +157,7 @@ describe("NuggetCard", () => {
 
     it("should show default image when passed nothing in image", () => {
         let content = {
-            category: "Profiler",
+            category: "profiler",
             image: ""
         }
         component.setProps({ content: content })
