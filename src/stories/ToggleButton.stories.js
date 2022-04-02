@@ -3,7 +3,7 @@ import ToggleButton from "../components/ToggleButton/ToggleButton.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        ToggleButton: { content: { title: "सक्रिय" } },
+        ToggleButton: { content: "सक्रिय" },
     },
 });
 
@@ -11,17 +11,7 @@ export default {
     title: "Design System/ToggleButton/ToggleButton",
     component: ToggleButton,
     argTypes: {
-        content: {
-            title: "Active",
-            isToggled: false,
-        },
-        asVariant: {
-            control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
-            table: {
-                category: "as-Flags",
-            },
-        },
+        content: "Active",
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -43,18 +33,6 @@ export default {
                 defaultValue: {
                     backgroundColor: "",
                     accentColor: "",
-                    textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
-                },
-            },
-        },
-        withLabel: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    format: "label",
-                    content: "",
                     textColor: "",
                 },
             },
@@ -114,24 +92,14 @@ export default {
 const Template = (args) => <ToggleButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        title: "Active",
-        isToggled: false
-    },
-    asVariant: "primary",
+    content: "Active",
     asSize: "normal",
     asFloated: "inline",
 
-    withLabel: {
-        format: "caption",
-        textColor: "#000000",
-    },
     withColor: {
-        backgroundColor: "",
-        accentColor: "",
+        backgroundColor: "#454545",
+        accentColor: "#FFAB00",
         textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
     },
     withAnimation: {
         animation: "zoom",
@@ -173,80 +141,3 @@ TranslatedToggleButton.parameters = {
         },
     },
 };
-
-// Different Variants ToggleButton
-// -------------------------------------------------------------
-const AllSizeTemplate = (args) => {
-    const baseObj = {
-        ...Object.assign({}, Default.args, args, {
-            withColor: null,
-            asFloated: "inline",
-        }),
-    };
-    return (
-        <div>
-            <ToggleButton
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        title: "Active",
-                        isToggled: true,
-                    },
-                    asSize: "tiny",
-                    asVariant: "primary",
-                })}
-            />{" "}
-            <ToggleButton
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        title: "Active",
-                        isToggled: true,
-                    },
-                    asSize: "small",
-                    asVariant: "secondary",
-                })}
-            />{" "}
-            <ToggleButton
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        title: "Active",
-                        isToggled: true,
-                    },
-                    asSize: "big",
-                    asVariant: "warning",
-                })}
-            />{" "}
-            <ToggleButton
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        title: "Active",
-                        isToggled: true,
-                    },
-                    asSize: "huge",
-                    asVariant: "primary",
-                })}
-            />{" "}
-            <ToggleButton
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        title: "Active",
-                        isToggled: true,
-                    },
-                    asSize: "massive",
-                    asVariant: "warning",
-                })}
-            />{" "}
-        </div>
-    );
-};
-export const DifferentSizeToggleButton = AllSizeTemplate.bind({});
-DifferentSizeToggleButton.parameters = {
-    docs: {
-        description: {
-            story: "Variants and Size are supported. Use as per purpose noted here.",
-        },
-        source: {
-            code: `<ToggleButton content: "massive toggle Button", asSize: "massive", asVariant: "warning"/>`,
-        },
-    },
-};
-

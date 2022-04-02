@@ -1,49 +1,10 @@
-.toggle-switch {
-    position: relative;
-    display: inline-block;
-    width: 2em;
-    height: 0.8em;
-    margin: 1em;
-}
-.toggle-switch input[type="checkbox"] {
-    display: none;
-}
-.qui.qui-toggle-button-container{
+
+.qui .qui-toggle-button-container{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
 }
-.toggle-switch .switch {
-    position: absolute;
-    cursor: pointer;
-    background-color: #454545;
-    border-radius: 25px;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    transition: background-color 0.2s ease;
-}
-.toggle-switch .switch::before {
-    position: absolute;
-    content: "";
-    left: -0.1em;
-    top: -0.2em;
-    width: 1.2em;
-    height: 1.2em;
-    background-color: #aaaaaa;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-}
-.toggle-switch input[type="checkbox"]:checked + .switch::before {
-    transform: translateX(1em);
-    background-color: #ffab00;
-}
-.toggle-switch input[type="checkbox"]:checked + .switch {
-    background-color: #454545;
-}
 .qui-Toggle-Button-title {
-    font-size: 0.8em;
     text-transform: uppercase;
 }

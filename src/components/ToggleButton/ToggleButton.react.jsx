@@ -1,6 +1,7 @@
 // Import npm packages
-import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { Switch } from "@mui/material";
+import { styled } from "@mui/material";
 import { motion } from "framer-motion";
 import {
     getQuommons,
@@ -17,24 +18,10 @@ ToggleButton.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+    content: PropTypes.string,
 
     // Quommon props
     //=======================================
-    content: PropTypes.shape({
-        title: PropTypes.string,
-        isToggled: PropTypes.bool,
-    }),
-
-    /**
-    Use to define standard component type
-    */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
     /**
     Use to define component text size in increasing order
     */
@@ -56,14 +43,6 @@ ToggleButton.propTypes = {
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
-        textColor: PropTypes.string,
-    }),
-    /**
-    Use to add a heading label, a footer caption or a title popover to the component
-    */
-    withLabel: PropTypes.shape({
-        format: PropTypes.oneOf(["label", "caption", "popover"]),
-        content: PropTypes.string,
         textColor: PropTypes.string,
     }),
     /**
@@ -110,25 +89,19 @@ ToggleButton.propTypes = {
 ToggleButton.defaultProps = {
     // Component Specific props
     //=======================================
-    content: {
-        title: "",
-        isToggled: true
-    },
+    content: "",
     // Quommon props
     //=======================================
-    asVariant: "primary",
     asSize: "normal",
     asFloated: "none",
 
     withColor: null,
-    withLabel: null,
     withAnimation: null,
     withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
 };
-
 
 /**
 ## Notes
@@ -139,6 +112,36 @@ ToggleButton.defaultProps = {
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function ToggleButton(props) {
+    const ToggleSwitch = styled(Switch)(() => ({
+        width: '3.5em',
+        height: '2em',
+        '& .MuiSwitch-switchBase': {
+            color: '#AAAAAA',
+            margin: 1,
+            padding: 0,
+            transform: 'translate(0.5em,0.2em)',
+            '&.Mui-checked': {
+                color: props.withColor?.accentColor,
+                transform: 'translate(1.5em,0.2em)',
+                '& + .MuiSwitch-track': {
+                    opacity: 1,
+                    backgroundColor: props.withColor?.backgroundColor,
+                },
+            },
+        },
+        '& .MuiSwitch-thumb': {
+            width: ' 1.5em',
+            height: '1.5em',
+        },
+        '& .MuiSwitch-track': {
+            opacity: 1,
+            backgroundColor: props.withColor?.backgroundColor,
+            borderRadius: '1em',
+        },
+    }));
+
+
+
     let { content } = props
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -147,12 +150,13 @@ export default function ToggleButton(props) {
     //-------------------------------------------------------------------
     // 2. Set the component colors
     //-------------------------------------------------------------------
-    let colors = {
-        backgroundColor: props.withColor?.backgroundColor,
-    }
     let textColor = {
         color: props.withColor?.textColor
     }
+    //-------------------------------------------------------------------
+    // 2. Set the component colors
+    //--------------------------
+   
     // -------------------------------------------------------------------
     // 5. Translate the text objects in case their is a dictionary provided
     // -------------------------------------------------------------------
@@ -171,43 +175,27 @@ export default function ToggleButton(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
-    const [isToggled, setIsToggled] = useState(false);
-    const onToggle = () => setIsToggled(!isToggled);
-    // function onToggle(){
-    //     if(content.isToggled === true){
-    //         setIsToggled(isToggled)
-    //     }
-    // }
-    function toggle() {
-        if (isToggled) {
-            props.onClick(isToggled)
-        }
-    }
+    const handleChange = (event) => {
+            props.onClick(event.target.checked)
+    };
+
     // ========================= Render Function =================================
 
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui qui-toggle-button-container ${quommonClasses.parentClasses}`}
+            className={`qui ${quommonClasses.parentClasses}`}
         >
-            <label className={`toggle-switch ${quommonClasses.childClasses} `}>
-                <input
-                    type="checkbox"
-                    checked={isToggled}
-                    onChange={onToggle}
-                    className={`size-${props.asSize}`}
-                    onClick={toggle()}
+            <div className="qui-toggle-button-container">
+                <ToggleSwitch
+                    onChange={handleChange}
                 />
-                <span
-                    className={`switch`}
-                    style={colors}
-                />
-            </label>
-            <div
-                className={`qui-Toggle-Button-title size-${props.asSize} variant-${props.asVariant}`}
-                style={textColor}>
-                {content.title}
+                <div
+                    className={`qui-Toggle-Button-title size-${props.asSize}`}
+                    style={textColor}>
+                    {content}
+                </div>
             </div>
         </motion.div >
     );
