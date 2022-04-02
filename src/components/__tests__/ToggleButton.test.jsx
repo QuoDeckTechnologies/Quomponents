@@ -12,28 +12,28 @@ describe("ToggleButton", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
-  let component;
+  let component,
+      onChange = jest.fn();
+
+
   const dictionary = JSON.stringify({
     hi: {
-      loading: "बस एक मिनट...",
-      button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+      ToggleButton: { content: "सक्रिय" },
     },
   });
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
       <ToggleButton
-        asVariant="primary"
         asSize="normal"
-        asPadded="normal"
-        asFloated="none"
-        asAligned="center"
         withColor={null}
         withAnimation={null}
         withTranslation={null}
         isHidden={false}
         isDisabled={false}
         onClick={() => console.log("ToggleButton Testing")}
+        onChange={onChange}
+
       />
     );
   });
@@ -42,30 +42,26 @@ describe("ToggleButton", () => {
     expect(component.exists()).toBe(true);
   });
   it("should render correctly with translation",
-  () => {
+    () => {
       component.setProps({
-          withTranslation: {
-              lang: "en",
-              tgt: "button:",
-              dictionary: dictionary,
-          },
+        withTranslation: {
+          lang: "en",
+          tgt: "button:",
+          dictionary: dictionary,
+        },
       });
       expect(component.exists()).toBe(true);
-  });
+    });
 
   it("should render correctly if translation object is not returned",
-  () => {
+    () => {
       component.setProps({
-          withTranslation: {
-              lang: "hi",
-              tgt: "",
-              dictionary: dictionary,
-          }
+        withTranslation: {
+          lang: "hi",
+          tgt: "",
+          dictionary: dictionary,
+        }
       });
       expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly onClick toggled", () => {
-    component.find("input").at(0).simulate('click');
-  });
+    });
 });
