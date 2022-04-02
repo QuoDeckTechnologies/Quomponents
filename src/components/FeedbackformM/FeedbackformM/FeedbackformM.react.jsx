@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import ToggleButton from "../../ToggleButton/ToggleButton.react";
-import ToggleButtonMUI from "../../ToggleButtonMUI/ToggleButton.react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./FeedbackformM.scss";
@@ -126,7 +125,8 @@ export default function FeedbackformM(props) {
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`qui-feedback-form-container  ${quommonClasses.childClasses}`}>
                 <div className="qui-feedback-toggle">
-                    <ToggleButtonMUI {...props} content={{ title: "Show Feedback",isToggled: toggle }} onClick={() => setToggle(prevState => !prevState)} />
+                    <ToggleButton {...props}/>
+                    {/* <ToggleButtonMUI {...props} content={{ title: "Show Feedback",isToggled: toggle }} onClick={() => setToggle(prevState => !prevState)} /> */}
                 </div>
                 {toggle && <div className={`qui-input-field-container`}>
                     <input type='text' placeholder='If Correct' className={`qui-toggle-input-fields size-${props.asSize} variant-${props.asVariant}`} />
