@@ -1,7 +1,6 @@
 // Import npm packages
 import PropTypes from "prop-types";
-import { Switch } from "@mui/material";
-import { styled } from "@mui/material";
+import { Switch , styled} from "@mui/material";
 import { motion } from "framer-motion";
 import {
     getQuommons,

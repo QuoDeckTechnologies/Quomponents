@@ -12,7 +12,9 @@ describe("ToggleButton", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
-  let component;
+  let component,
+      onChange = jest.fn();
+
 
   const dictionary = JSON.stringify({
     hi: {
@@ -30,6 +32,8 @@ describe("ToggleButton", () => {
         isHidden={false}
         isDisabled={false}
         onClick={() => console.log("ToggleButton Testing")}
+        onChange={onChange}
+
       />
     );
   });
@@ -60,5 +64,4 @@ describe("ToggleButton", () => {
       });
       expect(component.exists()).toBe(true);
     });
-
 });
