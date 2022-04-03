@@ -112,16 +112,16 @@ ToggleButton.defaultProps = {
 **/
 export default function ToggleButton(props) {
     const ToggleSwitch = styled(Switch)(() => ({
-        width: '3.5em',
+        width: '3.2em',
         height: '2em',
         '& .MuiSwitch-switchBase': {
             color: '#AAAAAA',
             margin: 1,
             padding: 0,
-            transform: 'translate(0.5em,0.2em)',
+            transform: 'translate(0.5em,0.3em)',
             '&.Mui-checked': {
                 color: props.withColor?.accentColor,
-                transform: 'translate(1.5em,0.2em)',
+                transform: 'translate(1.5em,0.3em)',
                 '& + .MuiSwitch-track': {
                     opacity: 1,
                     backgroundColor: props.withColor?.backgroundColor,
@@ -129,8 +129,8 @@ export default function ToggleButton(props) {
             },
         },
         '& .MuiSwitch-thumb': {
-            width: ' 1.5em',
-            height: '1.5em',
+            width: ' 1.2em',
+            height: '1.2em',
         },
         '& .MuiSwitch-track': {
             opacity: 1,
