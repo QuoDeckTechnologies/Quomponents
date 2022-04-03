@@ -27,6 +27,7 @@ describe("CardTag", () => {
                 withAnimation={null}
                 isHidden={false}
                 active={false}
+                onClick={() => console.log("CardTag Testing")}
             />
         );
     });

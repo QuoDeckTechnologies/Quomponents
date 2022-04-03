@@ -38,9 +38,10 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    accentColor: "",
-                    textColor: "",
                     backgroundColor: "",
+                    textColor: "",
+                    activeBackgroundColor: "",
+                    activeTextColor: ""
                 },
             },
         },
@@ -103,8 +104,10 @@ Default.args = {
     asFloated: "inline",
     asPadded: "normal",
     withColor: {
-        textColor: "",
-        backgroundColor: "",
+        backgroundColor: "#AAAAAA",
+        textColor: "#FFF",
+        activeBackgroundColor: "",
+        activeTextColor: ""
     },
     withAnimation: {
         animation: "collapse",
@@ -128,10 +131,12 @@ export const ColoredCardTag = Template.bind({});
 ColoredCardTag.args = {
     ...Default.args,
     withColor: {
-        backgroundColor: "#666666",
-        textColor: "#FFAB00",
-        active: false,
+        backgroundColor: "#AAAAAA",
+        textColor: "#FFF",
+        activeBackgroundColor: "#666666",
+        activeTextColor: "#FFAB00"
     },
+    active:false,
 };
 ColoredCardTag.parameters = {
     docs: {
