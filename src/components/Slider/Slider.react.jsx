@@ -1,0 +1,117 @@
+// Import npm packages
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { motion } from "framer-motion";
+import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
+import Slider from "react-rangeslider";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "../../common/stylesheets/common.css";
+import "./Slider.scss";
+// import "react-rangeslider/lib/index.css";
+import "../../common/stylesheets/overrule.scss";
+
+Button.propTypes = {
+  //=======================================
+  // Component Specific props
+  //=======================================
+  /**
+    Use to set initial Value of the slider
+    */
+  initialValue: PropTypes.number,
+
+  //=======================================
+  // Quommon props
+  //=======================================
+  /**
+    Use to define standard component type
+    */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
+  /**
+    Use to define the entry animation of the component
+    */
+  withAnimation: PropTypes.shape({
+    animation: PropTypes.oneOf([
+      "zoom",
+      "collapse",
+      "fade",
+      "slideDown",
+      "slideUp",
+      "slideLeft",
+      "slideRight",
+      "",
+    ]),
+    duration: PropTypes.number,
+    delay: PropTypes.number,
+  }),
+  /**
+    Use to show/hide the component
+    */
+  isHidden: PropTypes.bool,
+  /**
+    Use to enable/disable the component
+    */
+  isDisabled: PropTypes.bool,
+  /**
+    Button component must have the onClick function passed as props
+    */
+  onClick: PropTypes.func.isRequired,
+};
+
+Button.defaultProps = {
+  //=======================================
+  // Component Specific props
+  //=======================================
+  initialValue: 10,
+  //=======================================
+  // Quommon props
+  //=======================================
+  asVariant: "primary",
+  withAnimation: null,
+  isHidden: false,
+  isDisabled: false,
+};
+/**
+## Notes
+- The animation system used for this component is Framer Motion (framer-motion)
+- Pass inline styles to the component to override any of the component css
+- Or add custom css in overrule.scss to override the component css
+**/
+export default function Button(props) {
+  const [slideValue, setSlideValue] = useState(props.initialValue);
+  //-------------------------------------------------------------------
+  // 1. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "slider");
+  //-------------------------------------------------------------------
+  // 7. Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props.withAnimation);
+
+  // ========================= Render Function =================================
+
+  return (
+    <motion.div
+      initial={animate.from}
+      animate={animate.to}
+      className={`qui ${quommonClasses.parentClasses}`}
+    >
+      <div className={`qui-slider-container ${quommonClasses.childClasses}`}>
+        <Slider
+          min={0}
+          max={100}
+          value={slideValue}
+          onChange={(value) => {
+            setSlideValue(value);
+            props.onClick(slideValue);
+          }}
+        />
+      </div>
+    </motion.div>
+  );
+}
