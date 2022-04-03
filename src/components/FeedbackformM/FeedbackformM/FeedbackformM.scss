@@ -36,11 +36,10 @@
 .qui .qui-toggle-input-fields:focus {
     outline: none !important;
 }
-
 .qui-feedback-toggle-button{
     position: absolute;
     top:-1em;
-    left:1em;
+    left:1.5em;
     background-color: #ffffff;
 }
 @media only screen and (min-width: 320px) {
@@ -51,14 +50,15 @@
         width: 85%;
     }
     .qui-feedback-toggle-button{
-        font-size: 0.8em;
+        font-size: 0.95em;
     }
-
 }
-
 @media only screen and (min-width: 481px) {
     .qui .qui-input-field-container {
         flex-direction: row;
+    }
+    .qui-feedback-toggle-button{
+        font-size: 1em;
     }
 }
 @media only screen and (min-width: 769px) {

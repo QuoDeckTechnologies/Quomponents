@@ -97,7 +97,6 @@ export default function FeedbackformM(props) {
 
     const [toggle, setToggle] = useState(false);
     // 1. Set the classes
-    console.log(toggle)
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "feedback-form-m");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
