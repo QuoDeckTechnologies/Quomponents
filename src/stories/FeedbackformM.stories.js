@@ -5,17 +5,7 @@ export default {
     title: "Design System/FeedbackformM/FeedbackformM",
     component: FeedbackformM,
     argTypes: {
-        content :{
-            title:"Show Feedback",
-            isToggled: true,
-        },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
+       content: "Show Feedback",
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -36,6 +26,16 @@ export default {
             options: ["left", "right", "center"],
             table: {
                 category: "as-Flags",
+            },
+        },
+        withColor: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    backgroundColor: "",
+                    accentColor: "",
+                    textColor: "",
+                },
             },
         },
         withAnimation: {
@@ -93,11 +93,7 @@ const Template = (args) => <FeedbackformM {...args} />;
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
-    content :{
-        title:"Show Feedback",
-        isToggled: true,
-    },
-    asSize: "normal",
+       content:"Show Feedback",
     asFloated: "inline",
     asVariant:"primary",
     asAligned:"",
@@ -105,6 +101,11 @@ Default.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withColor: {
+        backgroundColor: "#454545",
+        accentColor: "#FFAB00",
+        textColor: "",
     },
     isDisabled: false,
     isHidden: false,
@@ -117,67 +118,6 @@ Default.parameters = {
         },
         source: {
             code: `<FeedbackformM {...${JSON.stringify(Default.args, null, 2)}}/>`,
-        },
-    },
-};
-// -------------------------------------------------------------
-// AllVariants
-// -------------------------------------------------------------
-const AllVariantsTemplate = (args) => {
-    const baseObj = {
-        ...Object.assign({}, Default.args, args, {
-
-
-        }),
-    };
-    return (
-        <div>
-            <FeedbackformM
-                {...Object.assign({}, baseObj, {
-                    asVariant: "primary",
-                    asSize: "normal",
-
-                })}
-            />
-            <FeedbackformM
-                {...Object.assign({}, baseObj, {
-                    asVariant: "secondary",
-                    asSize: "normal",
-
-                })}
-            />
-            <FeedbackformM
-                {...Object.assign({}, baseObj, {
-                    asVariant: "success",
-                    asSize: "normal",
-
-                })}
-            />
-            <FeedbackformM
-                {...Object.assign({}, baseObj, {
-                    asVariant: "warning",
-                    asSize: "normal",
-
-                })}
-            />
-            <FeedbackformM
-                {...Object.assign({}, baseObj, {
-                    asVariant: "error",
-                    asSize: "normal",
-
-                })}
-            />
-        </div>
-    );
-};
-export const AllVariants = AllVariantsTemplate.bind({});
-AllVariants.parameters = {
-    docs: {
-        description: {
-            story: "5 variants are supported. Use as per purpose noted here.",
-        },
-        source: {
-            code: `<FeedbackformM asVariant="primary"/>`,
         },
     },
 };
