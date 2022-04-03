@@ -13,6 +13,7 @@ CardTag.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+    active: PropTypes.bool,
     /**
     Use to define CardTag's value
     */
@@ -53,8 +54,8 @@ CardTag.propTypes = {
     Use to define component backgroundColor and textColor Color 
     */
     withColor: PropTypes.shape({
-        textColor: PropTypes.string,
         backgroundColor: PropTypes.string,
+        textColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -96,6 +97,7 @@ CardTag.defaultProps = {
     withAnimation: null,
 
     isHidden: false,
+    active: true,
 };
 /**
 ## Notes
@@ -127,7 +129,7 @@ export default function CardTag(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-card-tag-block qui-btn ${quommonClasses.childClasses}`} style={Color}>
+            <div className={`${props.active ? "qui-card-tag-block qui-btn " : 'qui-card-tag-block qui-card-tag-decativated'} ${quommonClasses.childClasses}`} style={props.active ? Color : {}}>
                 <div className="qui-card-tag-label">
                     {props.content}
                 </div>

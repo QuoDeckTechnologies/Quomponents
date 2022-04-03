@@ -60,6 +60,12 @@ export default {
                 defaultValue: false,
             },
         },
+        active: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: true,
+            },
+        },
     },
     decorators: [
         (story) => (
@@ -100,6 +106,7 @@ Default.args = {
         delay: 0,
     },
     isHidden: false,
+    active: true,
 };
 Default.parameters = {
     docs: {
@@ -117,6 +124,7 @@ ColoredCardTag.args = {
     withColor: {
         backgroundColor: "#666666",
         textColor: "#FFAB00",
+        active:false,
     },
 };
 ColoredCardTag.parameters = {

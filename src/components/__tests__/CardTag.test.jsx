@@ -26,6 +26,7 @@ describe("CardTag", () => {
                 withColor={null}
                 withAnimation={null}
                 isHidden={false}
+                active={false}
             />
         );
     });
@@ -161,6 +162,11 @@ describe("CardTag", () => {
 
     it("should render correctly when passed isHidden props as true", () => {
         component.setProps({ isHidden: true })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed active props as true", () => {
+        component.setProps({ active: true })
         expect(component.exists()).toBe(true);
     });
 });
