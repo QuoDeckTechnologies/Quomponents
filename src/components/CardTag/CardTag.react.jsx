@@ -78,6 +78,10 @@ CardTag.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
+    /**
+    component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 };
 
 CardTag.defaultProps = {
@@ -129,7 +133,8 @@ export default function CardTag(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`${props.active ? "qui-card-tag-block qui-btn " : 'qui-card-tag-block qui-card-tag-decativated'} ${quommonClasses.childClasses}`} style={props.active ? Color : {}}>
+            <div className={`${props.active ? "qui-card-tag-block qui-btn " : 'qui-card-tag-block qui-card-tag-decativated'} ${quommonClasses.childClasses}`} style={props.active ? Color : {}}
+            onClick={props.onClick}>
                 <div className="qui-card-tag-label">
                     {props.content}
                 </div>

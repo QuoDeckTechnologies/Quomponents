@@ -54,6 +54,12 @@ export default {
                 },
             },
         },
+        onClick: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        },
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -124,7 +130,7 @@ ColoredCardTag.args = {
     withColor: {
         backgroundColor: "#666666",
         textColor: "#FFAB00",
-        active:false,
+        active: false,
     },
 };
 ColoredCardTag.parameters = {
