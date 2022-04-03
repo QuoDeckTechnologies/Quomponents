@@ -77,7 +77,7 @@ CheckBox.defaultProps = {
   // Quommon props
   //=======================================
   asSize: "normal",
-  asFloated: "none",
+  asFloated: "left",
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
