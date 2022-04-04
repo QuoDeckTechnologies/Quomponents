@@ -1,13 +1,13 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import Slider from "../Slider/Slider.react";
 
-describe("Upload", () => {
+describe("Slider", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -21,7 +21,8 @@ describe("Upload", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly without throwing error", () => {
+  
+  it("should render correctly without throwing error when it is slided", () => {
     component.find("Slider").simulate("change", 20);
     expect(component.exists()).toBe(true);
   });
