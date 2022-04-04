@@ -1,3 +1,4 @@
+import { display, height } from "@mui/system";
 import React from "react";
 import CardTag from "../components/CardTag/CardTag.react";
 
@@ -17,13 +18,6 @@ export default {
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asPadded: {
-            control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
             table: {
                 category: "as-Flags",
             },
@@ -104,7 +98,6 @@ Default.args = {
     asVariant: "warning",
     asSize: "normal",
     asFloated: "inline",
-    asPadded: "normal",
     withColor: {
         backgroundColor: "#AAAAAA",
         textColor: "#FFF",
@@ -248,51 +241,98 @@ const Custom = (args) => {
     const baseObj = {
         ...Object.assign({}, Default.args, args, {
             withColor: null,
-            asFloated: "inline",
         }),
     };
     return (
         <div style={{
-            width: "1.9em",
+            width: "90%",
+            height: "auto",
             padding: "0.5em 0 1em 2em",
+            backgroundColor: "#dce9e7",
             display: "flex",
-            flexDirection: "column",
-            backgroundColor: "#454545"
+            flex: "1",
         }}>
-            <CardTag
-                {...Object.assign({}, baseObj, {
-                    content: "tiny CardTag",
-                    asSize: "tiny",
-                    asVariant: "primary",
-                    withAnimation: {
-                        animation: "slideDown",
-                        duration: 0.5,
-                        delay: 0,
-                    },
-                })}
-            /><br /> <CardTag
-                {...Object.assign({}, baseObj, {
-                    content: "tiny CardTag",
-                    asSize: "tiny",
-                    asVariant: "secondary",
-                    withAnimation: {
-                        animation: "slideDown",
-                        duration: 0.5,
-                        delay: 0.5,
-                    },
-                })}
-            /><br /><CardTag
-                {...Object.assign({}, baseObj, {
-                    content: "tiny CardTag",
-                    asSize: "tiny",
-                    asVariant: "warning",
-                    withAnimation: {
-                        animation: "slideDown",
-                        duration: 0.5,
-                        delay: 1,
-                    },
-                })}
-            />
+            <div style={{
+                width: "2.5em",
+                padding: "0.5em 0 1em 2em",
+                display: "flex",
+                flexDirection: "column",
+            }}><div style={{ marginBottom: "0.3em" }}>
+                    <CardTag
+                        {...Object.assign({}, baseObj, {
+                            content: "CardTag",
+                            asSize: "tiny",
+                            asVariant: "primary",
+                            withAnimation: {
+                                animation: "slideDown",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div><div style={{ marginBottom: "0.3em" }}>
+                    <CardTag
+                        {...Object.assign({}, baseObj, {
+                            content: "CardTag",
+                            asSize: "tiny",
+                            asVariant: "secondary",
+                            withAnimation: {
+                                animation: "slideDown",
+                                duration: 0.5,
+                                delay: 0.5,
+                            },
+                        })}
+                    /></div>
+                <div style={{ marginBottom: "0.3em" }}>
+                    <CardTag
+                        {...Object.assign({}, baseObj, {
+                            content: "CardTag",
+                            asSize: "tiny",
+                            asVariant: "warning",
+                            withAnimation: {
+                                animation: "slideDown",
+                                duration: 0.5,
+                                delay: 1,
+                            },
+                        })}
+                    /></div>
+                <div style={{ marginBottom: "0.3em" }}>
+                    <CardTag
+                        {...Object.assign({}, baseObj, {
+                            content: "CardTag",
+                            asSize: "tiny",
+                            asVariant: "primary",
+                            withAnimation: {
+                                animation: "slideDown",
+                                duration: 0.5,
+                                delay: 1.5,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ marginBottom: "0.3em" }}>
+                    <CardTag
+                        {...Object.assign({}, baseObj, {
+                            content: "CardTag",
+                            asSize: "tiny",
+                            asVariant: "secondary",
+                            withAnimation: {
+                                animation: "slideDown",
+                                duration: 0.5,
+                                delay: 2,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+            <div style={{
+                width: "100%",
+                height: "auto",
+                backgroundColor: "#fff",
+                marginRight:"0.5em"
+            }}>
+
+            </div>
         </div>
     );
 };

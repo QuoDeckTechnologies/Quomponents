@@ -43,10 +43,6 @@ CardTag.propTypes = {
         "massive",
     ]),
     /**
-    Use to define component padding in increasing order
-    */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
@@ -100,7 +96,6 @@ CardTag.defaultProps = {
     //=======================================
     asVariant: "primary",
     asSize: "normal",
-    asPadded: "normal",
     asFloated: "none",
 
     withColor: null,
