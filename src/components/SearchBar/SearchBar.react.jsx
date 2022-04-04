@@ -103,7 +103,7 @@ SearchBar.defaultProps = {
 - The design system used for this component is fontawesome Icons
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- props are not being passed to the SearchBar. Please speak to the admin to handle any new prop.
+- Pass isClosed props to give closed effect to SearchBar.
 **/
 export default function SearchBar(props) {
     //-------------------------------------------------------------------
