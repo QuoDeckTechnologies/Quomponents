@@ -149,7 +149,7 @@ describe("CourseCard", () => {
 
     it("should show courseImage when passed courseImage in the Gamified Course Card", () => {
         let content = {
-            courseType: "",
+            courseType: "exam",
             wrapper:"carnival",
             courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
             date :{
