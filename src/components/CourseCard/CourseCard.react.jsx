@@ -217,7 +217,8 @@ export default function CourseCard(props) {
                         <div className={'qui-course-card-link-container'}>
                             <a className={'qui-course-card-link'} href={link}>{link}</a>
                             <IconBlock asSize="small" asEmphasis="text" withIcon={{ name: "fas fa-copy" }} withColor={{ accentColor: "#FFBF00" }}
-                                onClick={() => { navigator.clipboard.writeText(link) }} />
+                            asPadded="fitted"
+                            onClick={() => { navigator.clipboard.writeText(link) }} />
                         </div>
                     </div>
                 </div>

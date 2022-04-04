@@ -52,7 +52,6 @@
     padding: 0.2em;
 }
 .qui-nugget-block-styling {
-    margin-left: -0.5em;
     pointer-events: none;
 }
 .qui-course-card-description {
@@ -169,7 +168,7 @@
         font-size: 0.55em;
     }
     .qui-course-card-tag-container {
-        font-size: 0.6em;
+        font-size: 0.55em;
     }
     .qui.qui-course-card .qui-slider-card-box {
         left: 19%;
@@ -183,9 +182,6 @@
     .qui-course-card-share-widget {
         margin-right: -1em;
     }
-    .qui-course-card-tag-container {
-        font-size: 0.75em;
-    }
     .qui-course-card-body {
         min-height: 20em;
     }
@@ -194,6 +190,9 @@
     }
     .qui-course-card-date-container {
         font-size: 0.6em;
+    }
+    .qui-course-card-tag-container {
+        font-size: 0.7em;
     }
     .qui.qui-course-card .qui-slider-card-box {
         left: 20%;
