@@ -18,6 +18,10 @@ InlineEdit.propTypes = {
     */
     content: PropTypes.string.isRequired,
     /**
+    Use to define name's ID
+    */
+    name: PropTypes.string.isRequired,
+    /**
     Use to set the state of InlineEdit 
     */
     asEmphasis: PropTypes.oneOf(["singleLine", "multiLine"]),
@@ -75,6 +79,10 @@ InlineEdit.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
+    /**
+    InlineEdit component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 };
 
 InlineEdit.defaultProps = {
@@ -82,6 +90,7 @@ InlineEdit.defaultProps = {
     // Component Specific props
     //=======================================
     content: "",
+    name: "",
     asEmphasis: "singleLine",
     //=======================================
     // Quommon props
@@ -95,6 +104,8 @@ InlineEdit.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
+
+    onClick: null,
 };
 /**
 ## Notes
@@ -117,6 +128,7 @@ export default function InlineEdit(props) {
         setInput(e.target.value);
         if (e.key === "Enter" && e.target.value !== "") {
             e.target.blur()
+            props.onClick(e.target.name, e.target.value);
         }
         if (e.key === "Escape") {
             e.target.value = ""
@@ -134,7 +146,7 @@ export default function InlineEdit(props) {
         }
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         onInput(inputRef.current);
     }, [onInput, inputRef]);
 
@@ -156,6 +168,7 @@ export default function InlineEdit(props) {
                 <textarea
                     className={`qui-textarea-field ${props.asAligned}-aligned`}
                     value={input}
+                    name={props.name}
                     ref={inputRef}
                     onFocus={() => changeFocus()}
                     onBlur={() => changeBlur()}
@@ -170,6 +183,7 @@ export default function InlineEdit(props) {
                 <input
                     className={`qui-input-field ${props.asAligned}-aligned`}
                     value={input}
+                    name={props.name}
                     ref={inputRef}
                     onFocus={() => changeFocus()}
                     onBlur={() => changeBlur()}
