@@ -1,21 +1,14 @@
-/* ================================================= */
-/* card-tag Definitions */
-/* ================================================= */
 .qui .qui-card-tag-block {
     display: flex;
     justify-content: center;
     align-items: center;
     min-width: 1em;
     min-height: 3.5em;
-    padding:1.5em 1em;
+    padding: 1.5em 1em;
     border-radius: 0.5em;
 }
-
 .qui .qui-card-tag-label {
     writing-mode: vertical-rl;
     font-size: 1.2em;
     text-transform: uppercase;
-}
-.qui .qui-card-tag-decativated{
-    pointer-events: none;
 }

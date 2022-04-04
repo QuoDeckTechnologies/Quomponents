@@ -13,7 +13,7 @@ CardTag.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-    active: PropTypes.bool,
+    isActive: PropTypes.bool,
     /**
     Use to define CardTag's value
     */
@@ -56,8 +56,8 @@ CardTag.propTypes = {
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         textColor: PropTypes.string,
-        activeBackroundColor:PropTypes.string,
-        activeTextColor:PropTypes.string,
+        activeBackroundColor: PropTypes.string,
+        activeTextColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -71,7 +71,6 @@ CardTag.propTypes = {
             "slideUp",
             "slideLeft",
             "slideRight",
-            "",
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
@@ -80,6 +79,10 @@ CardTag.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
+    /**
+    Use to enable/disable the component
+    */
+    isDisabled: PropTypes.bool,
     /**
     component must have the onClick function passed as props
     */
@@ -91,6 +94,7 @@ CardTag.defaultProps = {
     // Component Specific props
     //=======================================
     content: "",
+    isActive: true,
     //=======================================
     // Quommon props
     //=======================================
@@ -103,7 +107,7 @@ CardTag.defaultProps = {
     withAnimation: null,
 
     isHidden: false,
-    active: true,
+    isDisabled: false,
 };
 /**
 ## Notes
@@ -123,7 +127,7 @@ export default function CardTag(props) {
     let activeColor = {
         backgroundColor: props.withColor?.activeBackgroundColor,
         color: props.withColor?.activeTextColor,
-    }; 
+    };
     let deactivatedColor = {
         backgroundColor: props.withColor?.backgroundColor,
         color: props.withColor?.textColor,
@@ -137,10 +141,9 @@ export default function CardTag(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}
-        >
-            <div className={`${props.active ? "qui-card-tag-block qui-btn " : 'qui-card-tag-block qui-card-tag-decativated'} ${quommonClasses.childClasses}`} style={props.active ? activeColor : deactivatedColor}
-            onClick={props.onClick}>
+            className={`qui ${quommonClasses.parentClasses}`}>
+            <div className={`qui-btn ${props.active ? "qui-card-tag-block" : 'qui-card-tag-block qui-card-tag-decativated'} ${quommonClasses.childClasses}`} style={props.isActive ? activeColor : deactivatedColor}
+                onClick={props.onClick}>
                 <div className="qui-card-tag-label">
                     {props.content}
                 </div>

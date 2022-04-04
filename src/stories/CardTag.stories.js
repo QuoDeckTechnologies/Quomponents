@@ -6,6 +6,7 @@ export default {
     component: CardTag,
     argTypes: {
         content: "Content",
+        isActive: false,
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -67,10 +68,10 @@ export default {
                 defaultValue: false,
             },
         },
-        active: {
+        isDisabled: {
             table: {
                 category: "is-Toggles",
-                defaultValue: true,
+                defaultValue: false,
             },
         },
     },
@@ -89,7 +90,7 @@ export default {
         componentSubtitle:
             "Default CardTag for general purpose use",
         a11y: { disable: true },
-        docs: { iframeHeight: 200 },
+        docs: { iframeHeight: 500 },
     },
 };
 // -------------------------------------------------------------
@@ -99,6 +100,7 @@ const Template = (args) => <CardTag {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: "Content",
+    isActive: true,
     asVariant: "warning",
     asSize: "normal",
     asFloated: "inline",
@@ -106,8 +108,8 @@ Default.args = {
     withColor: {
         backgroundColor: "#AAAAAA",
         textColor: "#FFF",
-        activeBackgroundColor: "",
-        activeTextColor: ""
+        activeBackgroundColor: "#666666",
+        activeTextColor: "#FFAB00"
     },
     withAnimation: {
         animation: "collapse",
@@ -115,7 +117,7 @@ Default.args = {
         delay: 0,
     },
     isHidden: false,
-    active: true,
+    isDisabled: false,
 };
 Default.parameters = {
     docs: {
@@ -133,10 +135,10 @@ ColoredCardTag.args = {
     withColor: {
         backgroundColor: "#AAAAAA",
         textColor: "#FFF",
-        activeBackgroundColor: "#666666",
-        activeTextColor: "#FFAB00"
+        activeBackgroundColor: "#88ee88",
+        activeTextColor: "#37285f"
     },
-    active:false,
+    active: false,
 };
 ColoredCardTag.parameters = {
     docs: {
@@ -235,7 +237,73 @@ AnimatedSize.parameters = {
             story: "Variants and Size are supported with Animation. Use as per purpose noted here.",
         },
         source: {
-            code: `<CardTag content: "massive CardTag", asSize: "massive", asVariant: "warning"/>`,
+            code: ``,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Different Variants CardTag
+// -------------------------------------------------------------
+const Custom = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            withColor: null,
+            asFloated: "inline",
+        }),
+    };
+    return (
+        <div style={{
+            width: "1.9em",
+            padding: "0.5em 0 1em 2em",
+            display: "flex",
+            flexDirection: "column",
+            backgroundColor: "#454545"
+        }}>
+            <CardTag
+                {...Object.assign({}, baseObj, {
+                    content: "tiny CardTag",
+                    asSize: "tiny",
+                    asVariant: "primary",
+                    withAnimation: {
+                        animation: "slideDown",
+                        duration: 0.5,
+                        delay: 0,
+                    },
+                })}
+            /><br /> <CardTag
+                {...Object.assign({}, baseObj, {
+                    content: "tiny CardTag",
+                    asSize: "tiny",
+                    asVariant: "secondary",
+                    withAnimation: {
+                        animation: "slideDown",
+                        duration: 0.5,
+                        delay: 0.5,
+                    },
+                })}
+            /><br /><CardTag
+                {...Object.assign({}, baseObj, {
+                    content: "tiny CardTag",
+                    asSize: "tiny",
+                    asVariant: "warning",
+                    withAnimation: {
+                        animation: "slideDown",
+                        duration: 0.5,
+                        delay: 1,
+                    },
+                })}
+            />
+        </div>
+    );
+};
+export const CustomCardTag = Custom.bind({});
+CustomCardTag.parameters = {
+    docs: {
+        description: {
+            story: "Card Tags can be used with a parent div to show data.",
+        },
+        source: {
+            code: ``,
         },
     },
 };
