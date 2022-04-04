@@ -17,6 +17,7 @@ import Reward from "../Reward/Reward.react";
 import IconBlock from "../IconBlock/IconBlock.react";
 import ShareWidget from "../ShareWidget/ShareWidget.react";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
+import BannerCard from "../Carousel/BannerCard/BannerCard.react";
 
 import deafaultImage from "../../assets/default.jpeg";
 import Nugget_Story from "../../assets/nuggets/nugget_story.png";
@@ -183,7 +184,7 @@ export default function NuggetCard(props) {
     //-------------------------------------------------------------------
     // 6. Capitalize first letter of category text
     //-------------------------------------------------------------------
-    let category = props.content?.category?.charAt(0).toUpperCase() + props.content?.category.slice(1);
+    let category = props.content?.category ? props.content?.category?.charAt(0).toUpperCase() + props.content?.category?.slice(1) : "";
 
     //-------------------------------------------------------------------
     // 7. Get the NuggetCard Component
@@ -209,8 +210,7 @@ export default function NuggetCard(props) {
                             )
                         })}
                     </div>
-                    <div className="qui-nugget-card-base-image" style={{ backgroundImage: `url(${image})` }}>
-                    </div>
+                    <BannerCard {...props} content={{image:image}}/>
                     <div className={`qui-nugget-card-description-container`}>
                         <div className={`qui-nugget-card-description`}>
                             {props.content?.description}

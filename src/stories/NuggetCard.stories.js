@@ -6,14 +6,14 @@ export default {
     component: NuggetCard,
     argTypes: {
         content: {
-            status:"",
+            status: "",
             tags: [],
-            category:"",
+            category: "",
             name: "",
             description: "",
             image: "",
-            points:"",
-            identifier:""
+            points: "",
+            identifier: ""
         },
         asFloated: {
             control: "select",
@@ -68,14 +68,14 @@ const Template = (args) => <NuggetCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        status:"none",
-        tags: ["Tag1","Tag2"],
-        category:"profiler",
+        status: "none",
+        tags: ["Tag1", "Tag2"],
+        category: "profiler",
         name: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
-        image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-        points:"200",
-        identifier:"XrPmy_OAK"
+        image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+        points: "200",
+        identifier: "XrPmy_OAK"
     },
     asFloated: "inline",
     isDisabled: false,
@@ -96,38 +96,38 @@ export const DifferentResolution = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {
             content: {
-                published:false,
-                tags: ["Tag1","Tag2"],
-                category:"Profiler",
+                published: false,
+                tags: ["Tag1", "Tag2"],
+                category: "Profiler",
                 name: "Measure your sales readiness",
                 description: "Take this quick profile test to check how well you are prepared for a sales job",
-                image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-                points:"200",
-                identifier:"XrPmy_OAK"
+                image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+                points: "200",
+                identifier: "XrPmy_OAK"
             },
         }),
     };
     return (
-        <div style={{display:"flex", flexWrap:"wrap"}}>
-            <div style={{ display: "flex", width: "375px", margin:"5px" }}>
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", width: "375px", margin: "5px" }}>
                 <NuggetCard
                     {...Object.assign({}, baseObj1, {
                     })}
                 />
             </div>
-            <div style={{ display: "flex", width: "481px", margin:"5px" }}>
+            <div style={{ display: "flex", width: "481px", margin: "5px" }}>
                 <NuggetCard
                     {...Object.assign({}, baseObj1, {
                     })}
                 />
             </div>
-            <div style={{ display: "flex", width: "769px", margin:"5px" }}>
+            <div style={{ display: "flex", width: "769px", margin: "5px" }}>
                 <NuggetCard
                     {...Object.assign({}, baseObj1, {
                     })}
                 />
             </div>
-            <div style={{ display: "flex", width: "1024px", margin:"5px" }}>
+            <div style={{ display: "flex", width: "1024px", margin: "5px" }}>
                 <NuggetCard
                     {...Object.assign({}, baseObj1, {
                     })}

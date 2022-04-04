@@ -17,9 +17,11 @@ import Reward from "../Reward/Reward.react";
 import IconBlock from "../IconBlock/IconBlock.react";
 import ShareWidget from "../ShareWidget/ShareWidget.react";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
+import BannerCard from "../Carousel/BannerCard/BannerCard.react";
 
 import Nugget_Course from "../../assets/nuggets/nugget_course.png";
 import deafaultImage from "../../assets/default.jpeg";
+
 
 CourseCard.propTypes = {
     //=======================================
@@ -36,7 +38,6 @@ CourseCard.propTypes = {
         courseName: PropTypes.string,
         description: PropTypes.string,
         courseImage: PropTypes.string,
-        courseWrapperImage: PropTypes.string,
         points: PropTypes.string,
         identifier: PropTypes.string,
         date: PropTypes.shape({
@@ -72,11 +73,10 @@ CourseCard.defaultProps = {
         status: "",
         tags: [],
         courseType: "standard",
-        wrapper: "supermarket",
+        wrapper: "cityscape",
         courseName: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
-        courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-        courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+        courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
         points: "200",
         identifier: "XrPmy_OAK",
         date: {
@@ -112,7 +112,7 @@ export default function CourseCard(props) {
     //-------------------------------------------------------------------
     let image;
     if (props.content?.wrapper !== "none") {
-        image = props.content?.courseImage ? props.content?.courseImage : props.content?.courseWrapperImage ? props.content?.courseWrapperImage : deafaultImage;
+        image = props.content?.courseImage ? props.content?.courseImage : props.content?.wrapper ? "assets/courses/" + props.content?.wrapper + "/play_backdrop.png" : deafaultImage;
     } else {
         image = props.content?.courseImage ? props.content?.courseImage : deafaultImage;
     }
@@ -149,13 +149,14 @@ export default function CourseCard(props) {
     let endDay = eD % 100;
 
     //Set the startDate and endDate
+    
     let startDate = startDayNum + (dateSuffix[(startDay - 20) % 10] || dateSuffix[startDay] || dateSuffix[0]) + " " + startMonthWord;
     let endDate = endDayNum + (dateSuffix[(endDay - 20) % 10] || dateSuffix[endDay] || dateSuffix[0]) + " " + endMonthWord;
 
     //-------------------------------------------------------------------
     // 6. Capitalize first letter of wrapper text
     //-------------------------------------------------------------------
-    let wrapper = props.content?.wrapper?.charAt(0).toUpperCase() + props.content?.wrapper.slice(1);
+    let wrapper = props.content?.wrapper ? props.content?.wrapper?.charAt(0).toUpperCase() + props.content?.wrapper?.slice(1): "";
 
     //-------------------------------------------------------------------
     // 7. Get the CourseCard Component
@@ -190,9 +191,7 @@ export default function CourseCard(props) {
                             </div>
                         </div>
                     </div>
-
-                    <div className="qui-course-card-base-image" style={{ backgroundImage: `url(${image})` }}>
-                    </div>
+                    <BannerCard {...props} content={{image:image , header:wrapper}}/>
                     <div className={`qui-course-card-description-container`}>
                         <div className={`qui-course-card-description`}>
                             {props.content?.description}

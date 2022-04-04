@@ -13,7 +13,6 @@ export default {
             courseName: "",
             description: "",
             courseImage: "",
-            courseWrapperImage: "",
             points: "",
             identifier: "",
             date: {
@@ -86,12 +85,11 @@ Default.args = {
     content: {
         status: "none",
         courseType: "standard",
-        wrapper:"supermarket",
+        wrapper:"cityscape",
         tags: ["Tag1", "Tag2"],
         courseName: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
-        courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-        courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+        courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
         points: "200",
         identifier: "XrPmy_OAK",
         date: {
@@ -122,13 +120,12 @@ export const DifferentResolution = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {
             status: "none",
-            courseType: "stamdard",
-            wrapper:"supermarket",
+            courseType: "standard",
+            wrapper:"cityscape",
             tags: ["Tag1", "Tag2"],
             courseName: "Measure your sales readiness",
             description: "Take this quick profile test to check how well you are prepared for a sales job",
-            courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-            courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+            courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
             points: "200",
             identifier: "XrPmy_OAK",
             date: {
