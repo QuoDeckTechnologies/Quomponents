@@ -7,7 +7,7 @@ import { mount, shallow } from "enzyme";
 // -------------------------------------
 import MultiSelect from "../MultiSelect/MultiSelect.react";
 
-describe("MultiSelct", () => {
+describe("MultiSelect", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
