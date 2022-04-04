@@ -1,11 +1,11 @@
-.qui .qui-treebar-parent {
-    width: 100%;
+.qui.qui-treebar-parent {
     height: 100%;
+    text-align: left;
 }
 
 .qui .qui-treebar-pageheader {
     padding: 0.5em 0.4em;
-    font-size: 2em;
+    font-size: 1.8em;
     background: #aaaaaa;
     color: #ffffff;
 }
@@ -31,37 +31,24 @@
     bottom: 0.9em;
 }
 
-.qui .qui-treebar-content {
-    background: #e5e5e5;
-}
-
 .qui .qui-treebar-headerStyle {
     font-size: 1em;
-    cursor: pointer;
-    color: #767676;
     display: inline-block;
-    vertical-align: top;
 }
 
 .qui .qui-treebar-headerStyle-child {
     font-size: 1em;
-    cursor: pointer;
-    color: #767676;
     display: inline-block;
-    vertical-align: top;
-    margin-left: 1em;
+    margin-left: 1.6em;
 }
 
 .qui .qui-treebar-activeHeaderStyle {
     font-size: 1em;
-    color: #000000;
-    cursor: pointer;
     display: inline-block;
     vertical-align: top;
 }
 
 .qui .qui-treebar-activeTitleStyle {
-    color: #ffffff;
     display: block;
     white-space: nowrap;
     overflow: hidden;
@@ -81,13 +68,13 @@
 
 .qui .qui-treebar-iconStyle {
     margin-right: 0.5em;
-    font-size: 1.2em;
+    font-size: 0.9em;
 }
 
 .qui .qui-treebar-iconStyle-children {
     .qui-treebar-iconStyle {
         margin-right: 1em;
-        font-size: 1.2em;
+        font-size: 0.9em;
     }
 }
 
@@ -109,4 +96,5 @@
 .qui li {
     margin: 0.1em 0;
     right: 0.7em;
+    background: #dddddd;
 }

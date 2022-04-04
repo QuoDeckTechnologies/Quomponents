@@ -31,13 +31,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
 
         withTranslation: {
             table: {
@@ -188,7 +181,6 @@ Default.args = {
         }
     },
     asFloated: "left",
-    asAligned: "left",
     withAnimation: {
         animation: "",
         duration: 0.5,
@@ -352,7 +344,6 @@ const AllVariantsTemplate = (args) => {
         <div style={{ width: "30%" }}>
             <TreeBarOpen
                 {...Object.assign({}, baseObj, {
-                    asAligned: "left",
                 })}
             />{" "}
         </div>

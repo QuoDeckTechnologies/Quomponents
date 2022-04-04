@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { Treebeard, decorators } from "react-treebeard";
+import defaultTheme from "react-treebeard/dist/themes/default";
+
 import {
     getQuommons,
     getTranslation,
@@ -21,7 +23,7 @@ TreeItem.propTypes = {
     // Component Specific props
     //=======================================
     /**
-   TreeBar is pass Page Header.
+     TreeBar pass the Page Header.
    */
     pageHeader: PropTypes.string.isRequired,
 
@@ -29,9 +31,7 @@ TreeItem.propTypes = {
     Treebar pass tree folder structure data
     */
     content: PropTypes.shape({}),
-    /**
-     * 
-     */
+   
     // Quommon props
     //=======================================
 
@@ -39,10 +39,6 @@ TreeItem.propTypes = {
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
-    Use to align content.TreeData within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
 
     /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -65,6 +61,7 @@ TreeItem.propTypes = {
     Use to toggle the component taking the full width of the parent container
     */
     isFluid: PropTypes.bool,
+
     /**
     Button component must have the onClick function passed as props
     */
@@ -81,7 +78,6 @@ TreeItem.defaultProps = {
     //=======================================
 
     asFloated: "none",
-    asAligned: "center",
 
     withTranslation: null,
 
@@ -168,6 +164,35 @@ export default function TreeItem(props) {
     // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
+
+    //-------------------------------------------------------------------
+    // 4. Treebeard default style
+    //-------------------------------------------------------------------
+    defaultTheme.tree.node.link = {
+        ...defaultTheme.tree.node.link,
+        color: "#454545",
+        background: "#F5F5F5",
+        width: "100%"
+    };
+
+    defaultTheme.tree.node.activeLink = {
+        ...defaultTheme.tree.node.activeLink,
+        color: "#454545",
+        background: "#dddddd",
+        width: "100%"
+    };
+
+    defaultTheme.tree.node.subtree = {
+        ...defaultTheme.tree.node.subtree,
+        width: "100%",
+        paddingLeft: "1em"
+    };
+
+    defaultTheme.tree.node.base = {
+        ...defaultTheme.tree.node.base,
+        width: "100%",
+        backgroundColor: "#fffff",
+    };
 
     // ========================= Render Function =================================
     return (
