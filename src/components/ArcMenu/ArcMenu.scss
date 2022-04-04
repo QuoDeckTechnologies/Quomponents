@@ -134,6 +134,7 @@
 .qui .qui-arc .qui-arc-menu-button.qui-arc-menu-close-button {
   cursor: pointer;
   background-color: #f5f5f5;
+  border: none;
   i {
     color: #ffbf00;
   }
@@ -190,11 +191,7 @@
     display: block;
   }
 }
-@media only screen and (min-width: 481px) {
-  .qui .qui-arc .qui-arc-menu-button {
-    box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.32);
-  }
-}
+
 @media only screen and (min-width: 768px) {
   .qui .qui-arc-menu-buttons.qui-arc-menu-menu {
     display: flex;
