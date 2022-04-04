@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow,mount } from "enzyme";
+import { shallow, mount } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -11,39 +11,45 @@ describe("CheckBox", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
+
   let component;
   beforeEach(() => {
     jest.resetAllMocks();
-    component = mount(
+    component = shallow(
       <CheckBox
-        content={{label:'Default Label',checked:false}}
+        content={{ label: "Default Label", checked: false }}
         onClick={(e) => {
           console.log(e);
         }}
       />
     );
   });
+
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when asSize is tiny", () => {
     component.setProps({
       asSize: "tiny",
     });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when asSize is normal", () => {
     component.setProps({
       asSize: "normal",
     });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when asSize is huge", () => {
     component.setProps({
       asSize: "huge",
     });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly without throwing error", () => {
     component
       .find("#qui-check-box-element")
@@ -51,5 +57,17 @@ describe("CheckBox", () => {
       .simulate("change", {
         target: { value: "Enable Checkbox", checked: true },
       });
+  });
+
+  it("should render correctly without throwing error", () => {
+    let wrapper = mount(
+      <CheckBox
+        content={{ label: "Default Label", checked: false }}
+        onClick={(e) => {
+          console.log(e);
+        }}
+      />
+    );
+    expect(wrapper.exists()).toBe(true);
   });
 });
