@@ -12,11 +12,11 @@
 }
 .qui .qui-block-text {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   width: 95%;
   transform: translate(-50%, -50%);
-  padding: 0.5em;
+  padding: 0.5em 1em;
   font-weight: bold;
   text-overflow: ellipsis;
 }
@@ -47,11 +47,11 @@
 @media only screen and (min-width: 320px) {
   .qui .qui-text-block-area {
     width: 80vw;
-    height: 7em;
+    height: 7.5em;
   }
 
   .qui .qui-block-text {
-    height: 5em;
+    max-height: 5.35em;
     font-size: 1.1em;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -98,6 +98,7 @@
   }
   .qui .qui-block-text {
     font-size: 1.5em;
+    top:50%;
   }
   .qui .qui-arrow-right-bottom {
     right: -1.2em;
@@ -135,7 +136,9 @@
     height: 17em;
   }
   .qui .qui-block-text {
-    font-size: 3em;
+    font-size: 2.8em;
+    max-height: 5.9em;
+    top:45%
   }
   .qui .qui-arrow-right-bottom {
     bottom: 3em;
@@ -173,6 +176,7 @@
   }
   .qui .qui-block-text {
     font-size: 3.4em;
+    max-height: 5.2em;
   }
   .qui .qui-arrow-right-bottom {
     right: -2.5em;
