@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
+import Backdrop from "@mui/material/Backdrop";
 import _ from "lodash";
 import { getQuommons } from "../../common/javascripts/helpers";
-import Backdrop from "@mui/material/Backdrop";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ArcMenu.scss";
@@ -23,7 +23,7 @@ ArcMenu.propTypes = {
       header: PropTypes.string,
       list: PropTypes.arrayOf[PropTypes.string],
     })
-  ).isRequired,
+  ),
   /**
   ArcMenu `nugget-menu` images can be passed within nuggetContent array prop
   */
@@ -31,11 +31,11 @@ ArcMenu.propTypes = {
     PropTypes.shape({
       image: PropTypes.string,
     })
-  ).isRequired,
+  ),
   /**
-  Use to toggle type of ArcMenu as a `close` , `menu`, `add` or `nugget-menu`
+  Use to change the type of ArcMenu as a `close` , `menu`, `add` or `nugget-menu`
   */
-  type: PropTypes.oneOf(["close", "menu", "add", "nugget-menu"]),
+  type: PropTypes.oneOf(["close", "menu", "add", "nugget-menu"]).isRequired,
   /**
   Use to toggle position of ArcMenu
   */
@@ -48,17 +48,17 @@ ArcMenu.propTypes = {
   //=======================================
   // Quommon props
   //=======================================
-  /**
-  Use to define component size in increasing order
-  */
-  asSize: PropTypes.oneOf([
-    "tiny",
-    "small",
-    "normal",
-    "big",
-    "huge",
-    "massive",
-  ]),
+  // /**
+  // Use to define component size in increasing order
+  // */
+  // asSize: PropTypes.oneOf([
+  //   "tiny",
+  //   "small",
+  //   "normal",
+  //   "big",
+  //   "huge",
+  //   "massive",
+  // ]),
   /**
   Use to enable/disable the component
   */
@@ -68,7 +68,9 @@ ArcMenu.propTypes = {
   */
   isHidden: PropTypes.bool,
   /**
-  Button component must have the onClick function passed as props
+  ArcMenu component must have the onClick function passed as props
+  For `nugget-menu` type, it outputs index of nugget images provided
+  For `menu` type, it outputs value of the list item
   */
   onClick: PropTypes.func.isRequired,
 };
@@ -84,7 +86,7 @@ ArcMenu.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asSize: "normal",
+  // asSize: "normal",
   withTranslation: null,
   isDisabled: false,
   isHidden: false,
@@ -131,17 +133,20 @@ const getMenuAnimation = (position) => {
 };
 /**
 ## Notes
-- ArcMenu must be used as last child of `qui` parent class
+- ArcMenu must be used as a child of `qui` parent class
 - The design system used for this component is HTML and CSS
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function ArcMenu(props) {
+  //-------------------------------------------------------------------
+  // 1. Destructuring props and defining states
+  //-------------------------------------------------------------------
   const { menuContent, nuggetContent } = props;
   const [openMenu, setOpenMenu] = useState(false);
   //-------------------------------------------------------------------
-  // 1. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "arc-menu");
 
@@ -234,7 +239,7 @@ export default function ArcMenu(props) {
                     className={`qui-menu-button qui-arc-menu-header ${quommonClasses.childClasses}`}
                     key={i}
                   >
-                    {dataObj.header.toUpperCase()}
+                    {dataObj.header?.toUpperCase()}
                     <div className="qui-arc-menu-list-item-container">
                       {dataObj.list.map((listItem, index) => (
                         <div
