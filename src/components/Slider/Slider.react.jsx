@@ -21,17 +21,7 @@ Button.propTypes = {
 
   //=======================================
   // Quommon props
-  //=======================================
-  /**
-    Use to define standard component type
-    */
-  asVariant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "error",
-  ]),
+  //=======================================,
   /**
     Use to define the entry animation of the component
     */
@@ -71,7 +61,6 @@ Button.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asVariant: "primary",
   withAnimation: null,
   isHidden: false,
   isDisabled: false,

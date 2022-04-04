@@ -1,7 +1,11 @@
 .qui.qui-slider {
   overflow: visible;
-//   margin-top: 3.2em;
 }
+
+.qui.qui-slider.is-disabled {
+  filter: grayscale(100%);
+}
+
 // ---------------------------------------------------
 // range-slider default CSS with modifications
 // ---------------------------------------------------
@@ -9,6 +13,7 @@
   height: 12px;
   border-radius: 10px;
 }
+
 .qui.qui-slider .rangeslider {
   display: block;
   margin: 20px 0;
@@ -16,26 +21,14 @@
   background: #e6e6e6;
   touch-action: none;
 }
+
 .qui.qui-slider .rangeslider.rangeslider-horizontal .rangeslider__fill {
   height: 100%;
   border-radius: 10px;
   top: 0;
+  background-color: #ffab00;
 }
-.qui .qui-slider-container.variant-primary {
-  .rangeslider.rangeslider-horizontal .rangeslider__fill {
-    background-color: #ed6e6e;
-  }
-}
-.qui .qui-slider-container.variant-secondary {
-  .rangeslider.rangeslider-horizontal .rangeslider__fill {
-    background-color: #3e587a;
-  }
-}
-.qui .qui-slider-container.variant-warning {
-  .rangeslider.rangeslider-horizontal .rangeslider__fill {
-    background-color: #ffbf00;
-  }
-}
+
 .qui.qui-slider .rangeslider-horizontal .rangeslider__handle {
   width: 30px;
   height: 30px;
@@ -43,6 +36,7 @@
   top: 50%;
   transform: translate3d(-50%, -50%, 0);
 }
+
 .qui.qui-slider .rangeslider .rangeslider__handle {
   background: #fff;
   border: 1px solid #ccc;
@@ -50,28 +44,17 @@
   display: inline-block;
   position: absolute;
   border: none;
+  background-color: #ffab00;
 }
-.qui .qui-slider-container.variant-primary {
-  .rangeslider .rangeslider__handle {
-    background-color: #ed6e6e;
-  }
-}
-.qui .qui-slider-container.variant-secondary {
-  .rangeslider .rangeslider__handle {
-    background-color: #3e587a;
-  }
-}
-.qui .qui-slider-container.variant-warning {
-  .rangeslider .rangeslider__handle {
-    background-color: #ffbf00;
-  }
-}
+
 .qui.qui-slider .rangeslider-horizontal .rangeslider__handle:after {
   display: none;
 }
+
 .qui.qui-slider .rangeslider-horizontal .rangeslider__handle-tooltip {
   top: -55px;
 }
+
 .qui.qui-slider .rangeslider .rangeslider__handle-tooltip {
   width: 40px;
   height: 40px;
@@ -87,12 +70,14 @@
   left: 50%;
   transform: translate3d(-50%, 0, 0);
 }
+
 .qui.qui-slider .rangeslider .rangeslider__handle-tooltip span {
   margin-top: 12px;
   display: inline-block;
   line-height: 100%;
   user-select: none;
 }
+
 .qui.qui-slider .rangeslider-horizontal .rangeslider__handle-tooltip:after {
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
@@ -101,6 +86,7 @@
   bottom: -8px;
   transform: translate3d(-50%, 0, 0);
 }
+
 .qui.qui-slider .rangeslider .rangeslider__handle-tooltip:after {
   content: " ";
   position: absolute;
