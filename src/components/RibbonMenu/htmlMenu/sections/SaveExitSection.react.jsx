@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../../common/stylesheets/common.css";
@@ -8,19 +9,26 @@ import "../../../../common/stylesheets/overrule.scss";
 
 import IconLink from "../../../Buttons/IconLink/IconLink.react";
 
-function saveExit(){
- return alert("some value")
+SaveExitSection.propTypes = {
+    saveExit: PropTypes.func
 }
-export default function SaveExitSection(props) {
 
+SaveExitSection.defaultProps = {
+    saveExit: (value) => { alert(value) }
+}
+
+export default function SaveExitSection(props) {
+    const handleSave = () => {
+       return props.saveExit("parameter")
+    }
     return (
         <div className="exit-section">
             <IconLink
-                onClick={saveExit}
+                onClick={handleSave}
                 asSize={"small"}
                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                 withIcon={{ icon: 'fa fa-sign-out-alt' }} />
-            <div className="ribbon-label"  onClick={saveExit}>Save & Exit</div>
+            <div className="ribbon-label" onClick={handleSave}>Save & Exit</div>
         </div>
     )
 
