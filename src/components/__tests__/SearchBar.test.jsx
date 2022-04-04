@@ -97,7 +97,7 @@ describe("SearchBar", () => {
     });
 
     it("should render correctly when passed withIcon props", () => {
-        let icon = { icon: "fas fa-share" }
+        let icon = { name: "fas fa-share" }
         component.setProps({ withIcon: icon })
         expect(component.exists()).toBe(true);
     });
@@ -214,4 +214,10 @@ describe("SearchBar", () => {
         searchBar.simulate('click');
         fireEvent.click(document.body)
     });
+
+    it("should render search icon when passed nothing with withIcon props",()=>{
+        let icon = { name: "" }
+        component.setProps({ withIcon: icon })
+        expect(component.find("i").props().className).toBe("fas fa-search")
+    })
 });

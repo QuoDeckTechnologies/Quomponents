@@ -110,6 +110,7 @@ export default function SearchBar(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "search-bar");
+    
     //-------------------------------------------------------------------
     // 2. Get translation of the component
     //-------------------------------------------------------------------
@@ -137,6 +138,7 @@ export default function SearchBar(props) {
     const handleButtonPress = () => {
         return props.onClick(input.current?.value);
     }
+
     //-------------------------------------------------------------------
     // 4. Handle Open and Close Input box
     //-------------------------------------------------------------------
@@ -158,18 +160,17 @@ export default function SearchBar(props) {
     // 5. Get Conditional Styling of Component
     //-------------------------------------------------------------------
     function searchBar(isClosed) {
-        let searchBarStyle, inputStyle, iconStyle;
+        let searchBarContainer, searchBarStyle, inputStyle, iconStyle;
         if (isClosed) {
-            if (props.isFluid === false) {
                 if (expandable === false) {
+                    searchBarContainer = "qui-search-bar-container-closed";
                     searchBarStyle = "qui-search-bar-child-container-closed";
                     inputStyle = "qui-search-bar-input-closed";
                     iconStyle = "qui-search-bar-icon-closed";
-                }
             }
         }
         return (
-            <div className={`qui-search-bar-container`}
+            <div className={`qui-search-bar-container ${searchBarContainer}`}
                 onClick={() => { setExpandable(true) }}
                 ref={box}>
                 <div className={`qui-search-bar-child-container ${searchBarStyle}`}>
@@ -184,7 +185,7 @@ export default function SearchBar(props) {
                         className={`qui-search-bar-icon ${iconStyle}`}
                         onClick={handleButtonPress}
                         style={{ backgroundColor: props.withColor?.backgroundColor }}>
-                        <i className={props.withIcon?.name}></i>
+                        <i className={props.withIcon?.name ? props.withIcon?.name : "fas fa-search"}></i>
                     </button>
                     <div className={`qui-search-bar-expand-effect`}
                         style={{ display: props.isClosed ? expandable ? "none" : "flex" : "none" }}>
