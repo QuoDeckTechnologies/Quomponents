@@ -42,15 +42,12 @@
 @media only screen and (min-width: 320px) {
   .qui .qui-text-block-area {
     width: 80vw;
-    height: 7.5em;
+    height: 7em;
   }
   .qui .qui-block-text {
     max-height: 5.35em;
-    font-size: 1.1em;
-    text-overflow: ellipsis;
+    font-size: 0.8em;
     overflow: hidden;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     white-space: no-wrap;
   }
@@ -85,127 +82,117 @@
 }
 @media only screen and (min-width: 481px) {
   .qui .qui-text-block-area {
-    width: 80vw;
-    height: 13em;
+    width: 60vw;
+    height: 5em;
   }
   .qui .qui-block-text {
-    font-size: 1.5em;
+    font-size: 0.8em;
     top: 50%;
   }
   .qui .qui-arrow-right-bottom {
     right: -1.2em;
-    bottom: 2em;
-    border-top: 0.9em solid transparent;
-    border-bottom: 0.9em solid transparent;
+    bottom: 1em;
+    border-top: 0.8em solid transparent;
+    border-bottom: 0.8em solid transparent;
     border-left: 1.2em solid #ad292980;
   }
   .qui .qui-arrow-left-bottom {
     left: -1.2em;
-    bottom: 2em;
-    border-top: 1em solid transparent;
-    border-bottom: 1em solid transparent;
+    bottom: 1em;
+    border-top: 0.8em solid transparent;
+    border-bottom: 0.8em solid transparent;
     border-right: 1.2em solid #ad292980;
   }
   .qui .qui-arrow-left-top {
     left: -1.2em;
-    top: 2em;
-    border-top: 1em solid transparent;
-    border-bottom: 1em solid transparent;
+    top: 1em;
+    border-top: 0.8em solid transparent;
+    border-bottom: 0.8em solid transparent;
     border-right: 1.2em solid #ad292980;
   }
   .qui .qui-arrow-right-top {
     right: -1.2em;
-    top: 2em;
-    border-top: 1em solid transparent;
-    border-bottom: 1em solid transparent;
+    top: 1em;
+    border-top: 0.8em solid transparent;
+    border-bottom: 0.8em solid transparent;
     border-left: 1.2em solid #ad292980;
   }
 }
 @media only screen and (min-width: 769px) {
   .qui .qui-text-block-area {
-    height: 17em;
+    width: 60vw;
+    height: 6em;
   }
   .qui .qui-block-text {
-    font-size: 2.8em;
+    font-size: 1em;
     max-height: 5.9em;
     top: 50%;
   }
   .qui .qui-arrow-right-bottom {
-    bottom: 3em;
-    right: -2em;
-    border-top: 1.5em solid transparent;
-    border-bottom: 1.5em solid transparent;
-    border-left: 2em solid #ad292980;
+    bottom: 0.5em;
+    right: -1.4em;
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+    border-left: 1.4em solid #ad292980;
   }
   .qui .qui-arrow-left-bottom {
-    bottom: 3em;
-    left: -2em;
-    border-top: 1.5em solid transparent;
-    border-bottom: 1.5em solid transparent;
-    border-right: 2em solid #ad292980;
+    bottom: 0.5em;
+    left: -1.4em;
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+    border-right: 1.4em solid #ad292980;
   }
   .qui .qui-arrow-left-top {
-    top: 3em;
-    left: -2em;
-    border-top: 1.5em solid transparent;
-    border-bottom: 1.5em solid transparent;
-    border-right: 2em solid #ad292980;
+    top: 0.5em;
+    left: -1.4em;
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+    border-right: 1.4em solid #ad292980;
   }
   .qui .qui-arrow-right-top {
-    right: -2em;
-    border-top: 1.5em solid transparent;
-    border-bottom: 1.5em solid transparent;
-    border-left: 2em solid #ad292980;
+    right: -1.4em;
+    top:0.5em;
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+    border-left: 1.4em solid #ad292980;
   }
 }
 @media only screen and (min-width: 1024px) {
   .qui .qui-text-block-area {
-    width: 80vw;
-    height: 21em;
+    width: 60vw;
+    height: 7em;
   }
   .qui .qui-block-text {
-    font-size: 3.4em;
+    font-size: 1em;
     max-height: 5.2em;
     top: 45%;
   }
   .qui .qui-arrow-right-bottom {
-    right: -2.5em;
-    border-top: 2em solid transparent;
-    border-bottom: 2em solid transparent;
-    border-left: 2.5em solid #ad292980;
+    right: -1.7em;
+    bottom:0.5em;
+    border-top: 1.3em solid transparent;
+    border-bottom: 1.3em solid transparent;
+    border-left: 1.7em solid #ad292980;
   }
   .qui .qui-arrow-left-bottom {
-    left: -2.5em;
-    border-top: 2em solid transparent;
-    border-bottom: 2em solid transparent;
-    border-right: 2.5em solid #ad292980;
+    left: -1.7em;
+    bottom:0.5em;
+    border-top: 1.3em solid transparent;
+    border-bottom: 1.3em solid transparent;
+    border-right: 1.7em solid #ad292980;
   }
   .qui .qui-arrow-left-top {
-    left: -2.5em;
-    border-top: 2em solid transparent;
-    border-bottom: 2em solid transparent;
-    border-right: 2.5em solid #ad292980;
+    left: -1.7em;
+    top:0.5em;
+    border-top: 1.3em solid transparent;
+    border-bottom: 1.3em solid transparent;
+    border-right: 1.7em solid #ad292980;
   }
   .qui .qui-arrow-right-top {
-    right: -2.5em;
-    border-top: 2em solid transparent;
-    border-bottom: 2em solid transparent;
-    border-left: 2.5em solid #ad292980;
+    right: -1.7em;
+    top:0.5em;
+    border-top: 1.3em solid transparent;
+    border-bottom: 1.3em solid transparent;
+    border-left: 1.7em solid #ad292980;
   }
-}
-.qui .qui-text-block-area-tringle.qui-right-top {
-  top: 0;
-  right: 0;
-}
-.qui .qui-text-block-area-tringle.qui-left-top {
-  top: 0;
-  left: 0;
-}
-.qui .qui-text-block-area-tringle.qui-right-bottom {
-  bottom: 0;
-  right: 0;
-}
-.qui .qui-text-block-area-tringle.qui-left-bottom {
-  bottom: 0;
-  left: 0;
 }

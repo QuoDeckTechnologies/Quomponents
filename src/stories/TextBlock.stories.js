@@ -19,6 +19,13 @@ export default {
                 category: "as-Flags",
             },
         },
+        asSize: {
+            control: "select",
+            options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -79,6 +86,7 @@ Default.args = {
     position: "left-top",
     conversation: true,
     asFloated: "inline",
+    asSize:"normal",
     withColor: {
         backgroundColor: "",
         textColor: "#fff",

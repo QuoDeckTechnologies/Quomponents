@@ -44,6 +44,17 @@ TextBlock.propTypes = {
     */
     asFloated: PropTypes.oneOf(["left", "right", "inline"]),
     /**
+    Use to define component text size in increasing order
+    */
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
+    /**
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
@@ -83,6 +94,7 @@ TextBlock.defaultProps = {
     // Quommon props
     //=======================================
     asFloated: "inline",
+    asSize:"normal",
 
     withColor: null,
     withAnimation: null,
@@ -143,10 +155,10 @@ export default function TextBlock(props) {
         >
             <div className={`qui-text-block-area ${quommonClasses.childClasses} `} style={{ ...componentStyle.mainContainer, opacity: props.opacity }}>
             </div>
-            <div className={`qui-block-text`} style={{ ...componentStyle.mainContainer }}>
+            <div className={`qui-block-text size-${props.asSize}`} style={{ ...componentStyle.mainContainer }}>
                 {content}
             </div>
-            {props.conversation && <div className={`qui-text-block-tringle`}>
+            {props.conversation && <div className={`qui-text-block-tringle size-${props.asSize}`}>
                 <div className={`qui-text-block-chat-arrow ${getArrowPosition(props.position)}`}
                     style={{
                         opacity: props.opacity,
