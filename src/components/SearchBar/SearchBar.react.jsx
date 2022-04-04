@@ -110,7 +110,7 @@ export default function SearchBar(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "search-bar");
-    
+
     //-------------------------------------------------------------------
     // 2. Get translation of the component
     //-------------------------------------------------------------------
@@ -132,7 +132,7 @@ export default function SearchBar(props) {
     const box = useRef(null);
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
-          handleButtonPress();
+            handleButtonPress();
         }
     }
     const handleButtonPress = () => {
@@ -162,11 +162,11 @@ export default function SearchBar(props) {
     function searchBar(isClosed) {
         let searchBarContainer, searchBarStyle, inputStyle, iconStyle;
         if (isClosed) {
-                if (expandable === false) {
-                    searchBarContainer = "qui-search-bar-container-closed";
-                    searchBarStyle = "qui-search-bar-child-container-closed";
-                    inputStyle = "qui-search-bar-input-closed";
-                    iconStyle = "qui-search-bar-icon-closed";
+            if (expandable === false) {
+                searchBarContainer = "qui-search-bar-container-closed";
+                searchBarStyle = "qui-search-bar-child-container-closed";
+                inputStyle = "qui-search-bar-input-closed";
+                iconStyle = "qui-search-bar-icon-closed";
             }
         }
         return (
