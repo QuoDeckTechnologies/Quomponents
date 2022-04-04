@@ -128,7 +128,7 @@ export default function InlineEdit(props) {
         setInput(e.target.value);
         if (e.key === "Enter" && e.target.value !== "") {
             e.target.blur()
-            props.onClick(e.target.id, e.target.value);
+            props.onClick(e.target.name, e.target.value);
         }
         if (e.key === "Escape") {
             e.target.value = ""
@@ -165,9 +165,10 @@ export default function InlineEdit(props) {
     const getInput = (asEmphasis) => {
         if (asEmphasis === "multiLine") {
             return (
-                <textarea id={props.inlineEditID}
+                <textarea
                     className={`qui-textarea-field ${props.asAligned}-aligned`}
                     value={input}
+                    name={props.inlineEditID}
                     ref={inputRef}
                     onFocus={() => changeFocus()}
                     onBlur={() => changeBlur()}
@@ -182,6 +183,7 @@ export default function InlineEdit(props) {
                 <input id={props.inlineEditID}
                     className={`qui-input-field ${props.asAligned}-aligned`}
                     value={input}
+                    name={props.inlineEditID}
                     ref={inputRef}
                     onFocus={() => changeFocus()}
                     onBlur={() => changeBlur()}
