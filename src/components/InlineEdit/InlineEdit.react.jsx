@@ -180,7 +180,7 @@ export default function InlineEdit(props) {
         }
         else {
             return (
-                <input id={props.inlineEditID}
+                <input
                     className={`qui-input-field ${props.asAligned}-aligned`}
                     value={input}
                     name={props.inlineEditID}
