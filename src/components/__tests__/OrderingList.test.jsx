@@ -63,36 +63,6 @@ describe("OrderingList", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed asSize prop as tiny", () => {
-        component.setProps({ asSize: "tiny" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asSize prop as small", () => {
-        component.setProps({ asSize: "small" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asSize prop as normal", () => {
-        component.setProps({ asSize: "normal" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asSize prop as big", () => {
-        component.setProps({ asSize: "big" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asSize prop as huge", () => {
-        component.setProps({ asSize: "huge" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asSize prop as massive", () => {
-        component.setProps({ asSize: "massive" })
-        expect(component.exists()).toBe(true);
-    });
-
     it("should render correctly when passed asFloated prop as left", () => {
         component.setProps({ asFloated: "left" })
         expect(component.exists()).toBe(true);
