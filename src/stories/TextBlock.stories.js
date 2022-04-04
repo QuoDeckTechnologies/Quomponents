@@ -11,6 +11,7 @@ export default {
             control: "select",
             options: ["right-top", "right-bottom", "left-top", "left-bottom"],
         },
+        conversation: true,
         asFloated: {
             control: "select",
             options: ["left", "right", "inline"],
@@ -38,12 +39,6 @@ export default {
             },
         },
         isHidden: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        conversation: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
@@ -83,7 +78,7 @@ Default.args = {
     asFloated: "inline",
     withColor: {
         backgroundColor: "",
-        textColor: "white",
+        textColor: "#fff",
     },
     withAnimation: {
         animation: "zoom",

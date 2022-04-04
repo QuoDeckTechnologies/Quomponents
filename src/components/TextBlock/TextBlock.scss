@@ -18,27 +18,28 @@
   transform: translate(-50%, -50%);
   padding: 0.5em;
   font-weight: bold;
+  text-overflow: ellipsis;
 }
 
 // Tringles
-.arrow {
+.qui-text-block-chat-arrow {
   position: absolute;
 }
-.arrow-right-bottom {
+.qui .qui-arrow-right-bottom {
   width: 0;
   height: 0;
 }
 
-.arrow-left-bottom {
+.qui .qui-arrow-left-bottom {
   width: 0;
   height: 0;
 }
-.arrow-left-top {
+.qui .qui-arrow-left-top {
   width: 0;
   height: 0;
 }
 
-.arrow-right-top {
+.qui .qui-arrow-right-top {
   width: 0;
   height: 0;
 }
@@ -50,9 +51,16 @@
   }
 
   .qui .qui-block-text {
-    font-size: 1.5em;
+    height: 5em;
+    font-size: 1.1em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    white-space: no-wrap;
   }
-  .arrow-right-bottom {
+  .qui .qui-arrow-right-bottom {
     right: -0.9em;
     bottom: 1em;
     border-top: 0.6em solid transparent;
@@ -60,14 +68,14 @@
     border-left: 0.9em solid #ad292980;
   }
 
-  .arrow-left-bottom {
+  .qui .qui-arrow-left-bottom {
     left: -0.9em;
     bottom: 1em;
     border-top: 0.6em solid transparent;
     border-bottom: 0.6em solid transparent;
     border-right: 0.9em solid #ad292980;
   }
-  .arrow-left-top {
+  .qui .qui-arrow-left-top {
     left: -0.9em;
     top: 1em;
     border-top: 0.6em solid transparent;
@@ -75,7 +83,7 @@
     border-right: 0.9em solid #ad292980;
   }
 
-  .arrow-right-top {
+  .qui .qui-arrow-right-top {
     right: -0.9em;
     top: 1em;
     border-top: 0.6em solid transparent;
@@ -89,9 +97,9 @@
     height: 13em;
   }
   .qui .qui-block-text {
-    font-size: 2.2em;
+    font-size: 1.5em;
   }
-  .arrow-right-bottom {
+  .qui .qui-arrow-right-bottom {
     right: -1.2em;
     bottom: 2em;
     border-top: 0.9em solid transparent;
@@ -99,14 +107,14 @@
     border-left: 1.2em solid #ad292980;
   }
 
-  .arrow-left-bottom {
+  .qui .qui-arrow-left-bottom {
     left: -1.2em;
     bottom: 2em;
     border-top: 1em solid transparent;
     border-bottom: 1em solid transparent;
     border-right: 1.2em solid #ad292980;
   }
-  .arrow-left-top {
+  .qui .qui-arrow-left-top {
     left: -1.2em;
     top: 2em;
     border-top: 1em solid transparent;
@@ -114,7 +122,7 @@
     border-right: 1.2em solid #ad292980;
   }
 
-  .arrow-right-top {
+  .qui .qui-arrow-right-top {
     right: -1.2em;
     top: 2em;
     border-top: 1em solid transparent;
@@ -129,7 +137,7 @@
   .qui .qui-block-text {
     font-size: 3em;
   }
-  .arrow-right-bottom {
+  .qui .qui-arrow-right-bottom {
     bottom: 3em;
     right: -2em;
     border-top: 1.5em solid transparent;
@@ -137,29 +145,27 @@
     border-left: 2em solid #ad292980;
   }
 
-  .arrow-left-bottom {
+  .qui .qui-arrow-left-bottom {
     bottom: 3em;
     left: -2em;
     border-top: 1.5em solid transparent;
     border-bottom: 1.5em solid transparent;
     border-right: 2em solid #ad292980;
   }
-  .arrow-left-top {
+  .qui .qui-arrow-left-top {
     top: 3em;
     left: -2em;
     border-top: 1.5em solid transparent;
     border-bottom: 1.5em solid transparent;
     border-right: 2em solid #ad292980;
   }
-
-  .arrow-right-top {
+  .qui .qui-arrow-right-top {
     right: -2em;
     border-top: 1.5em solid transparent;
     border-bottom: 1.5em solid transparent;
     border-left: 2em solid #ad292980;
   }
 }
-
 @media only screen and (min-width: 1024px) {
   .qui .qui-text-block-area {
     width: 80vw;
@@ -168,27 +174,27 @@
   .qui .qui-block-text {
     font-size: 3.4em;
   }
-  .arrow-right-bottom {
+  .qui .qui-arrow-right-bottom {
     right: -2.5em;
     border-top: 2em solid transparent;
     border-bottom: 2em solid transparent;
     border-left: 2.5em solid #ad292980;
   }
 
-  .arrow-left-bottom {
+  .qui .qui-arrow-left-bottom {
     left: -2.5em;
     border-top: 2em solid transparent;
     border-bottom: 2em solid transparent;
     border-right: 2.5em solid #ad292980;
   }
-  .arrow-left-top {
+  .qui .qui-arrow-left-top {
     left: -2.5em;
     border-top: 2em solid transparent;
     border-bottom: 2em solid transparent;
     border-right: 2.5em solid #ad292980;
   }
 
-  .arrow-right-top {
+  .qui .qui-arrow-right-top {
     right: -2.5em;
     border-top: 2em solid transparent;
     border-bottom: 2em solid transparent;

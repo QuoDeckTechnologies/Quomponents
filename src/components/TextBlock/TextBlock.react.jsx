@@ -16,12 +16,12 @@ TextBlock.propTypes = {
     // Component Specific props
     //=======================================
     /**
-  Opacity used to set the background opacity of the text block
-  */
+    Opacity used to set the background opacity of the text block
+    */
     opacity: PropTypes.string,
     /**
-   toggle the conversation prop to see the component as chat conversation
-   */
+    toggle the conversation prop to see the component as chat conversation
+    */
     conversation: PropTypes.bool,
     /**
     TextBlock Text has to be in content or passed as string to the component.
@@ -79,7 +79,7 @@ TextBlock.defaultProps = {
     content: "",
     opacity: "",
     position: "left-top",
-    
+    conversation: false,
     // Quommon props
     //=======================================
     asFloated: "inline",
@@ -91,7 +91,6 @@ TextBlock.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
-    conversation: false,
 };
 
 /**
@@ -113,15 +112,15 @@ export default function TextBlock(props) {
     //-------------------------------------------------------------------
     const getArrowPosition = (position) => {
         if (position === "right-bottom") {
-            return "arrow-right-bottom";
+            return "qui-arrow-right-bottom";
         }
         if (position === "left-bottom") {
-            return "arrow-left-bottom";
+            return "qui-arrow-left-bottom";
         }
         if (position === "right-top") {
-            return "arrow-right-top";
+            return "qui-arrow-right-top";
         } else {
-            return "arrow-left-top";
+            return "qui-arrow-left-top";
         }
     };
     //-------------------------------------------------------------------
@@ -153,7 +152,7 @@ export default function TextBlock(props) {
                 {content}
             </div>
             {props.conversation && <div className={`qui-text-block-tringle`}>
-                <div className={`arrow ${getArrowPosition(props.position)}`}
+                <div className={`qui-text-block-chat-arrow ${getArrowPosition(props.position)}`}
                     style={{
                         opacity: props.opacity,
                         borderRightColor: props.withColor.backgroundColor,
