@@ -1,12 +1,15 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import ReactPlayer from 'react-player';
 import {
     getQuommons,
     getAnimation,
 } from "../../common/javascripts/helpers.js";
+import YouTube from "react-youtube";
+import { Player, BigPlayButton } from "video-react";
+import "video-react/dist/video-react.css";
+import Vimeo from "@u-wave/react-vimeo";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./Videobox.scss";
@@ -18,7 +21,7 @@ Videobox.propTypes = {
     /**
     Use to define url of component
     */
-    url: PropTypes.string,
+    url: PropTypes.string.isRequired,
     // Quommon props
     //=======================================
     /**
@@ -42,6 +45,8 @@ Videobox.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
+    autoplay: PropTypes.bool,
+    loop: PropTypes.bool,
     /**
     Use to enable/disable the component
     */
@@ -51,10 +56,6 @@ Videobox.propTypes = {
     */
     onReady: PropTypes.func,
     /**
-    Videobox component must have the onError function passed as props
-    */
-    onError: PropTypes.func,
-    /**
     Videobox component must have the onPlay function passed as props
     */
     onPlay: PropTypes.func,
@@ -63,54 +64,151 @@ Videobox.propTypes = {
     */
     onPause: PropTypes.func,
     /**
-    Videobox component must have the onEnded function passed as props
+    Videobox component must have the onEnd function passed as props
     */
-    onEnded: PropTypes.func,
+    onEnd: PropTypes.func,
 
 };
 
 Videobox.defaultProps = {
     // Component Specific props
     //=======================================
-    url: "",
+    url: "https://www.youtube.com/watch?v=NpEaa2P7qZI",
     // Quommon props
     //=======================================
     withAnimation: null,
 
     isHidden: false,
     isDisabled: false,
+    autoplay: true,
+    rel: 0,
+    mute: true,
 };
 
 /**
 ## Notes
-- The animation system used for this component is Framer Motion (framer-motion)
+- The animation system used for component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function Videobox(props) {
 
-    let onReady = () => {
-        return props.onReady;
+    const { url, autoplay, loop } = props;
+
+    const [error, setError] = useState(false)
+
+    function onReady(e) {
+        if (e.target && autoplay) {
+            e.target.playVideo();
+        }
+        if (props.onReady) props.onReady();
+    }
+
+    function onPlay(e) { };
+
+    function onEnd(e) {
+        if (props.loop) e.target.playVideo();
+        if (onEnd) props.onEnd(e);
     };
 
-    let onError = () => {
-        return props.onError;
+    function onPause(e) {
+        if (onPause) props.onPause(e);
     };
 
-    let onPlay = () => {
-        return props.onPlay;
+    function onError(e) {
+        setError(true);
+    };
+    const loadPlayer = () => {
+        if (error) {
+            return (
+                <div className="qui-errorbox">
+                    {" "}
+                    Error While loading video..
+                    please make sure that you are connected to internet and try again later{" "}
+                </div>
+            );
+        } else {
+            const opts = {
+                playerVars: {
+                    autoplay: autoplay ? 1 : 0,
+                    loop: loop ? 1 : 0,
+                    mute: props.mute ? 1 : 0,
+                    rel: 0,
+                },
+            };
+
+            let getVideoId = (url) => {
+                let videoId = "";
+                if (url.indexOf("v=") === -1) {
+                    var video_array = url.split("/");
+                    videoId = video_array[video_array.length - 1];
+                } else {
+                    videoId = url.split("v=")[1];
+                    var ampersandPosition = videoId.indexOf("&");
+                    if (ampersandPosition !== -1) {
+                        videoId = videoId.substring(0, ampersandPosition);
+                    }
+                }
+                return videoId;
+            };
+
+            if (url.indexOf("vimeo") !== -1) {
+
+                return (
+                    <div
+                        className="video-responsive vimeo-embed-container"
+                    >
+                        <Vimeo
+                            className="react-player"
+                            video={url}
+                            autoplay={true}
+                            playerOptions={{ width: window.innerWidth }}
+                            onReady={(e) => onReady(e)}
+                            onPlay={(e) => onPlay(e)}
+                            onEnd={(e) => onEnd(e)}
+                            onError={(e) => onError(e)}
+                            onPause={(e) => onPause(e)}
+                        />
+                    </div>
+                );
+            } else if (url.indexOf("youtu.be") !== -1 || url.indexOf("youtube") !== -1) {
+                return (
+                    <div
+                        className="video-responsive"
+                    >
+                        <YouTube
+                            className="react-player"
+                            videoId={getVideoId(url)}
+                            opts={opts}
+                            onReady={(e) => onReady(e)}
+                            onPlay={(e) => onPlay(e)}
+                            onEnd={(e) => onEnd(e)}
+                            onError={(e) => onError(e)}
+                            onPause={(e) => onPause(e)}
+                        />
+                    </div>
+                );
+            }
+             else {
+                return (
+                    <div
+                        className="video-responsive"
+                    >
+                        <Player
+                            className="react-player"
+                            playsInline
+                            src={url}
+                            autoplay={true}
+                            opts={opts}
+                        >
+                            <BigPlayButton position="center" />
+                        </Player>
+                    </div>
+                );
+            }
+        }
     };
 
-    let onPause = () => {
-        return props.onPause;
-    };
-
-    let onEnded = () => {
-        return props.onEnded;
-    };
-
-    
-    const {url}=props;
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -127,21 +225,10 @@ export default function Videobox(props) {
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`react-video-player`}>
-                <ReactPlayer
-                    className="react-player"
-                    url={url ? url : "https://www.youtube.com/watch?v=NpEaa2P7qZI"}
-                    width="100%"
-                    height="100%"
-                    playing
-                    controls={true}
-                    onReady={onReady()}
-                    onError={onError()}
-                    onPlay={onPlay()}
-                    onPause={onPause()}
-                    onEnded={onEnded()}
-                />
+            <div className={`qui-react-video-player`}>
+                {loadPlayer()}
             </div>
         </motion.div>
     );
+
 }

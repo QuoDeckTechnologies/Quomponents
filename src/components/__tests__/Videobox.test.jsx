@@ -2,7 +2,9 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-import ReactPlayer from "react-player";
+import YouTube from "react-youtube";
+import { Player, BigPlayButton } from "video-react";
+import Vimeo from "@u-wave/react-vimeo";
 
 //--------------------------------------
 // Import Components
@@ -15,7 +17,7 @@ describe("Videobox", () => {
     // -------------------------------------
     let onPlay = jest.fn();
     let onPause = jest.fn();
-    let onEnded = jest.fn();
+    let onEnd = jest.fn();
     let onReady = jest.fn();
     let onError = jest.fn();
     let component;
@@ -33,12 +35,14 @@ describe("Videobox", () => {
                 }}
                 isDisabled={false}
                 isHidden={false}
-                onEnded={onEnded}
-                onPlay={onPlay}
-                onPause={onPause}
-                onReady={onReady}
-                onError={onError}
-            />
+                autoplay={true}
+                loop={false}
+                onPlay={(e) => onPlay(e)}
+                onEnd={(e) => onEnd(e)}
+                onError={(e) => onError(e)}
+                onPause={(e) => onPause(e)}
+            >
+            </Videobox>
         );
     });
 
@@ -47,34 +51,35 @@ describe("Videobox", () => {
     });
     it("should rednder correctly when call onReady", () => {
         component = shallow(<Videobox
-            onReady={onReady}
+            onReady={(e) => onReady(e)}
         />);
-        component.find(ReactPlayer).simulate("ready");
+        component.find(".react-player").simulate("ready", { target: { playVideo: () => { } } });
     });
     it("should rednder correctly when call onError", () => {
         component = shallow(<Videobox
-            onError={onError}
+            onError={(e) => onError(e)}
         />);
-        component.find(ReactPlayer).simulate("error");
+        component.find(".react-player").simulate("error");
     });
     it("should rednder correctly when call onPlay", () => {
         component = shallow(<Videobox
-            onPlay={onPlay}
+            onPlay={(e) => onPlay(e)}
         />);
         component.find(".react-player").simulate("play");
     });
     it("should rednder correctly when call onPause", () => {
         component = shallow(<Videobox
-            onPause={onPause}
+            onPause={(e) => onPause(e)}
         />);
-        component.find(ReactPlayer).simulate("pause");
+        component.find(".react-player").simulate("pause", { target: {} });
     });
-    it("should rednder correctly when call onEnded", () => {
+    it("should rednder correctly when call onEnd", () => {
         component = shallow(<Videobox
-            onEnded={onEnded}
+            onEnd={(e) => onEnd(e)}
         />);
-        component.find(".react-player").simulate("ended");
+        component.find(".react-player").simulate("end", { target: { playVideo: () => { } } });
     });
+
     it("should render correctly when passed isHidden props as false", () => {
         component.setProps({ isHidden: false })
         expect(component.exists()).toBe(true);
@@ -90,6 +95,10 @@ describe("Videobox", () => {
     })
     it("should render correctly when passed isDisabled props as true", () => {
         component.setProps({ isDisabled: true })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed isDisabled props as true", () => {
+        component.setProps({ url: "https://vimeo.com/686836566" })
         expect(component.exists()).toBe(true);
     })
 });
