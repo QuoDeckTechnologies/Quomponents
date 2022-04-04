@@ -44,7 +44,6 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    font-size: 0.8em;
 }
 .qui .qui-course-card-tag {
     display: flex;
@@ -118,8 +117,8 @@
 .qui.qui-course-card .qui-slider-card-box {
     position: absolute;
     font-size: 1em;
-    min-width: 40%;
-    left: 27%;
+    min-width: 50%;
+    left: 23%;
     bottom: 0;
     opacity: 1;
     padding: 0.5em 1em;
