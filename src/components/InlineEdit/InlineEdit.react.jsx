@@ -18,9 +18,9 @@ InlineEdit.propTypes = {
     */
     content: PropTypes.string.isRequired,
     /**
-    Use to define InlineEdit's ID
+    Use to define name's ID
     */
-    inlineEditID: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     /**
     Use to set the state of InlineEdit 
     */
@@ -90,7 +90,7 @@ InlineEdit.defaultProps = {
     // Component Specific props
     //=======================================
     content: "",
-    inlineEditID: "",
+    name: "",
     asEmphasis: "singleLine",
     //=======================================
     // Quommon props
@@ -168,7 +168,7 @@ export default function InlineEdit(props) {
                 <textarea
                     className={`qui-textarea-field ${props.asAligned}-aligned`}
                     value={input}
-                    name={props.inlineEditID}
+                    name={props.name}
                     ref={inputRef}
                     onFocus={() => changeFocus()}
                     onBlur={() => changeBlur()}
@@ -183,7 +183,7 @@ export default function InlineEdit(props) {
                 <input
                     className={`qui-input-field ${props.asAligned}-aligned`}
                     value={input}
-                    name={props.inlineEditID}
+                    name={props.name}
                     ref={inputRef}
                     onFocus={() => changeFocus()}
                     onBlur={() => changeBlur()}

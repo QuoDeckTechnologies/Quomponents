@@ -6,7 +6,7 @@ export default {
   component: InlineEdit,
   argTypes: {
     content: "Please input your text here",
-    inlineEditID: "",
+    name: "",
     asEmphasis: {
       control: "select",
       options: ["singleLine", "multiLine"],
@@ -92,7 +92,7 @@ const Template = (args) => <InlineEdit {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: "Please input your text here",
-  inlineEditID: "testing_id",
+  name: "testing_id",
   asEmphasis: "singleLine",
   asSize: "normal",
   asFloated: "none",
