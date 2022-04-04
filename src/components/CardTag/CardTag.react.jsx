@@ -142,7 +142,7 @@ export default function CardTag(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`qui-btn ${props.active ? "qui-card-tag-block" : 'qui-card-tag-block qui-card-tag-decativated'} ${quommonClasses.childClasses}`} style={props.isActive ? activeColor : deactivatedColor}
+            <div className={`qui-btn ${props.isActive ? "qui-card-tag-block" : 'qui-card-tag-block qui-card-tag-decativated'} ${quommonClasses.childClasses}`} style={props.isActive ? activeColor : deactivatedColor}
                 onClick={props.onClick}>
                 <div className="qui-card-tag-label">
                     {props.content}

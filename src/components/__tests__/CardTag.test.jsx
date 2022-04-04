@@ -26,7 +26,7 @@ describe("CardTag", () => {
                 withColor={null}
                 withAnimation={null}
                 isHidden={false}
-                active={false}
+                isActive={false}
                 onClick={() => console.log("CardTag Testing")}
             />
         );
@@ -167,7 +167,7 @@ describe("CardTag", () => {
     });
 
     it("should render correctly when passed active props as true", () => {
-        component.setProps({ active: true })
+        component.setProps({ isActive: true })
         expect(component.exists()).toBe(true);
     });
 });
