@@ -6,13 +6,6 @@ export default {
     component: OrderingList,
     argTypes: {
         content: [],
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -80,7 +73,6 @@ const Template = (args) => <OrderingList {...args} />;
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
-    asSize: "normal",
     asVariant: "warning",
     asFloated: "none",
     content: ["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"],
@@ -116,31 +108,26 @@ const AllVariantsTemplate = (args) => {
             <OrderingList
                 {...Object.assign({}, baseObj, {
                     asVariant: "primary",
-                    asSize: "normal",
                 })}
             />
             <OrderingList
                 {...Object.assign({}, baseObj, {
                     asVariant: "secondary",
-                    asSize: "normal",
                 })}
             />
             <OrderingList
                 {...Object.assign({}, baseObj, {
                     asVariant: "success",
-                    asSize: "normal",
                 })}
             />
             <OrderingList
                 {...Object.assign({}, baseObj, {
                     asVariant: "warning",
-                    asSize: "normal",
                 })}
             />
             <OrderingList
                 {...Object.assign({}, baseObj, {
                     asVariant: "error",
-                    asSize: "normal",
                 })}
             />
         </div>

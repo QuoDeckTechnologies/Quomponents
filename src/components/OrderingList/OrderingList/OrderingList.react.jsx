@@ -29,17 +29,6 @@ OrderingList.propTypes = {
     "error",
   ]),
   /**
-  Use to define component text size in increasing order
-  */
-  asSize: PropTypes.oneOf([
-    "tiny",
-    "small",
-    "normal",
-    "big",
-    "huge",
-    "massive",
-  ]),
-  /**
   Use to float the component in parent container
   */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
@@ -173,12 +162,14 @@ export default function OrderingList(props) {
           </div>
         </div>
       )))}
-      {<Button
-        {...props}
-        asFloated="none"
-        onClick={() => handleSubmit()}
-        content={"Submit Answer"}
-      />}
+      <div className="qui-submit">
+        {<Button
+          {...props}
+          asFloated="none"
+          onClick={() => handleSubmit()}
+          content={"Submit Answer"}
+        />}
+      </div>
 
     </motion.div>
   );
