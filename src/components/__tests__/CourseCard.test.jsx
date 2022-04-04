@@ -6,16 +6,15 @@ import { shallow } from "enzyme";
 // Import Components
 // -------------------------------------
 import CourseCard from "../CourseCard/CourseCard.react";
-import NuggetBlock from "../NuggetBlock/NuggetBlock.react";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
-import IconBlock from "../IconBlock/IconBlock.react"
+import IconBlock from "../IconBlock/IconBlock.react";
+import BannerCard from "../Carousel/BannerCard/BannerCard.react"
 
 Object.assign(navigator, {
     clipboard: {
         writeText: () => { },
     },
 });
-
 
 describe("CourseCard", () => {
     // -------------------------------------
@@ -30,7 +29,6 @@ describe("CourseCard", () => {
         courseName: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
         courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-        courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
         points: "200",
         identifier: "XrPmy_OAK",
         date :{
@@ -133,14 +131,9 @@ describe("CourseCard", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should simulate the NuggetBlock on click", () => {
-        let nuggetBlock = component.find(NuggetBlock)
-        nuggetBlock.simulate('click')
-    })
-
     it("should simulate the ArcMenu on click", () => {
         let arcMenu = component.find(ArcMenu)
-        arcMenu.simulate('click')
+        arcMenu.simulate('click');
     })
 
     it("should copy the link when clicked on copy icon", () => {
@@ -149,80 +142,64 @@ describe("CourseCard", () => {
             start_date:"2032-03-30T18:30:00.000Z",
             end_date:"2021-05-10T12:55:18.458Z"
         }})
-        let iconBlock = component.find(IconBlock).at(1)
-        iconBlock.simulate('click')
+        let iconBlock = component.find(IconBlock).at(1);
+        iconBlock.simulate('click');
         expect(navigator.clipboard.writeText).toHaveBeenCalledWith("https://www.quodeck.com/XrPmy_MND");
     });
 
     it("should show courseImage when passed courseImage in the Gamified Course Card", () => {
         let content = {
-            courseType: "standard",
-            courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-            wrapper:"none",
-            date :{
-                start_date:"2032-03-30T18:30:00.000Z",
-                end_date:"2021-05-10T12:55:18.458Z"
-            }
-        }
-        component.setProps({ content: content })
-        expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg)")
-    })
-
-    it("should show courseWrapperImage when passed courseWrapperImage but not courseImage in the Gamified Course Card", () => {
-        let content = {
-            courseType: "exam",
-            courseImage: "",
-            wrapper:"supermarket",
-            courseWrapperImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-            date :{
-                start_date:"2032-03-30T18:30:00.000Z",
-                end_date:"2021-05-10T12:55:18.458Z"
-            }
-        }
-        component.setProps({ content: content })
-        expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg)")
-    })
-
-    it("should show default image when passed nothing in image in the Gamified Course Card", () => {
-        let content = {
-            courseType: "standard",
-            courseImage: "",
-            wrapper:"supermarket",
-            courseWrapperImage: "",
-            date :{
-                start_date:"2032-03-30T18:30:00.000Z",
-                end_date:"2021-05-10T12:55:18.458Z"
-            }
-        }
-        component.setProps({ content: content })
-        expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(default.jpeg)")
-    })
-
-    it("should show courseWrapperImage when passed courseWrapperImage but not courseImage in the Normal Course Card", () => {
-        let content = {
-            courseType: "standard",
-            wrapper:"supermarket",
+            courseType: "",
+            wrapper:"carnival",
             courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
             date :{
                 start_date:"2032-03-30T18:30:00.000Z",
                 end_date:"2021-05-10T12:55:18.458Z"
             }
         }
-        component.setProps({ content: content })
-        expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg)")
+        component.setProps({ content: content });
+        expect(component.find(BannerCard).props().content.image).toBe("https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg")
     })
 
-    it("should show default image when passed nothing in image in the Nomal Course Card", () => {
+    it("should show courseWrapperImage when passed wrapper in the Gamified Course Card", () => {
         let content = {
             courseType: "exam",
-            wrapper:"none",
             courseImage: "",
+            wrapper:"carnival",
             date :{
-                start_date:"",
-                end_date:""
+                start_date:"2032-03-30T18:30:00.000Z",
+                end_date:"2021-05-10T12:55:18.458Z"
             }
         }
-        component.setProps({ content: content })
-        expect(component.find(".qui-course-card-base-image").props().style.backgroundImage).toBe("url(default.jpeg)")
+        component.setProps({ content: content });
+        expect(component.find(BannerCard).props().content.image).toBe("assets/courses/carnival/play_backdrop.jpg")
+    })
+
+    it("should show default image when passed nothing in courseImage and wrapper", () => {
+        let content = {
+            courseType: "standard",
+            courseImage: "",
+            wrapper:"",
+            date :{
+                start_date:"2032-03-30T18:30:00.000Z",
+                end_date:"2021-05-10T12:55:18.458Z"
+            }
+        }
+        component.setProps({ content: content });
+        expect(component.find(BannerCard).props().content.image).toBe("default.jpeg");
+    })
+
+    it("should show courseWrapperImage when it does not have courseImage in the Normal Course Card", () => {
+        let content = {
+            courseType: "standard",
+            wrapper:"carnival",
+            courseImage: "",
+            date :{
+                start_date:"2032-03-30T18:30:00.000Z",
+                end_date:"2021-05-10T12:55:18.458Z"
+            }
+        }
+        component.setProps({ content: content });
+        expect(component.find(BannerCard).props().content.image).toBe("assets/courses/carnival/play_backdrop.jpg");
     })
 });

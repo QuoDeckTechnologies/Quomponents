@@ -110,12 +110,7 @@ export default function CourseCard(props) {
     //-------------------------------------------------------------------
     // 2.  Set image according to course type
     //-------------------------------------------------------------------
-    let image;
-    if (props.content?.wrapper !== "none") {
-        image = props.content?.courseImage ? props.content?.courseImage : props.content?.wrapper ? "assets/courses/" + props.content?.wrapper + "/play_backdrop.jpg" : deafaultImage;
-    } else {
-        image = props.content?.courseImage ? props.content?.courseImage : deafaultImage;
-    }
+    let image = props.content?.courseImage ? props.content?.courseImage : props.content?.wrapper ? "assets/courses/" + props.content?.wrapper + "/play_backdrop.jpg" : deafaultImage;
 
     //-------------------------------------------------------------------
     // 3. Get the tags
@@ -167,7 +162,7 @@ export default function CourseCard(props) {
                 <div className="qui-course-card-body">
                     <div className={`qui-course-card-title-container`}>
                         <div className={`qui-nugget-block-styling`}>
-                            <NuggetBlock status={props.content?.status} image={Nugget_Course} onClick={() => { console.log("Nugget Block") }} />
+                            <NuggetBlock status={props.content?.status} image={Nugget_Course} />
                         </div>
                         <div className={`qui-course-card-title`}>
                             {props.content?.courseName}

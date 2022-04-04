@@ -6,9 +6,9 @@ import { shallow } from "enzyme";
 // Import Components
 // -------------------------------------
 import NuggetCard from "../NuggetCard/NuggetCard.react";
-import NuggetBlock from "../NuggetBlock/NuggetBlock.react";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
-import IconBlock from "../IconBlock/IconBlock.react"
+import IconBlock from "../IconBlock/IconBlock.react";
+import BannerCard from "../Carousel/BannerCard/BannerCard.react";
 
 Object.assign(navigator, {
     clipboard: {
@@ -129,16 +129,6 @@ describe("NuggetCard", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should simulate the NuggetBlock on click", () => {
-        let nuggetBlock = component.find(NuggetBlock)
-        nuggetBlock.simulate('click')
-    })
-
-    it("should simulate the ArcMenu on click", () => {
-        let arcMenu = component.find(ArcMenu)
-        arcMenu.simulate('click')
-    })
-
     it("should copy the link when clicked on copy icon", () => {
         component.setProps({ content: { category: "profiler", identifier: "XrPmy_MND" } })
         let iconBlock = component.find(IconBlock)
@@ -146,13 +136,18 @@ describe("NuggetCard", () => {
         expect(navigator.clipboard.writeText).toHaveBeenCalledWith("https://www.quodeck.com/XrPmy_MND");
     });
 
+    it("should simulate the ArcMenu on click", () => {
+        let arcMenu = component.find(ArcMenu)
+        arcMenu.simulate('click');
+    })
+
     it("should show image when passed image", () => {
         let content = {
             category: "profiler",
             image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
         }
         component.setProps({ content: content })
-        expect(component.find(".qui-nugget-card-base-image").props().style.backgroundImage).toBe("url(https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg)")
+        expect(component.find(BannerCard).props().content.image).toBe("https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg")
     })
 
     it("should show default image when passed nothing in image", () => {
@@ -161,6 +156,13 @@ describe("NuggetCard", () => {
             image: ""
         }
         component.setProps({ content: content })
-        expect(component.find(".qui-nugget-card-base-image").props().style.backgroundImage).toBe("url(default.jpeg)")
+        expect(component.find(BannerCard).props().content.image).toBe("default.jpeg")
+    })
+
+    it("should show nothing when passed nothing in category", () => {
+        let content = {
+            category: "",
+        }
+        component.setProps({ content: content })
     })
 });
