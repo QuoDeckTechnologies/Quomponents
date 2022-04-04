@@ -7,7 +7,6 @@ import Slider from "react-rangeslider";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./Slider.scss";
-// import "react-rangeslider/lib/index.css";
 import "../../common/stylesheets/overrule.scss";
 
 Button.propTypes = {
