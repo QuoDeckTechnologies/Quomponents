@@ -151,7 +151,7 @@ export default function ToolbarDark(props) {
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "button");
+  let quommonClasses = getQuommons(props, "toolbar-dark");
   if (props.isCircular) quommonClasses.childClasses += ` is-circular`;
 
   quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
@@ -182,20 +182,18 @@ export default function ToolbarDark(props) {
   // ========================= Render Function =================================
 
   return (
-    <div
-      className={`qui ${quommonClasses.parentClasses}`}
-    >
+    <div className={`qui ${quommonClasses.parentClasses}`}>
       <div
-        className={`qui-backbar`}
+        className={`qui-toolbar-dark-backbar`}
         style={{ backgroundColor: props.withColor?.accentColor }}
       >
-        <div className={`qui-icon`}>
+        <div className={`qui-toolbar-dark-icon`}>
           {_.map(content, (icon, index) => {
             return (
               <motion.div
                 initial={animate.from}
                 animate={animate.to}
-                className="btn"
+                className="qui-toolbar-dark-btn"
                 key={index}
                 variant={props.asEmphasis}
                 color={props.asVariant}
@@ -204,7 +202,10 @@ export default function ToolbarDark(props) {
                   {...props}
                   content={{ link: icon.link }}
                   withIcon={{ icon: icon.icon }}
-                  withLabel={{ content: tObj ? iconLabel[index]["label"] : icon.label, format: icon.format }}
+                  withLabel={{
+                    content: tObj ? iconLabel[index]["label"] : icon.label,
+                    format: icon.format,
+                  }}
                   withColor={{ ...props.withColor }}
                 />
               </motion.div>
