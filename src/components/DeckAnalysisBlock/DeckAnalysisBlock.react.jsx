@@ -33,14 +33,14 @@ DeckAnalysis.propTypes = {
     //=======================================
     /**
       Use to define standard component type
-      */
+    */
     asVariant: PropTypes.oneOf([
         "primary",
         "secondary",
         "success",
         "warning",
         "error",
-    ]),
+    ]), 
     /**
       Use to override component colors and behavior
       */
@@ -131,7 +131,7 @@ export default function DeckAnalysis(props) {
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "deckanalysisblock");
+    let quommonClasses = getQuommons(props, "deck-analysis-block");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 3. Set the component colors
@@ -175,7 +175,7 @@ export default function DeckAnalysis(props) {
                 <div className="qui-deckblock-top">
                     <div className="qui-deckblock-header">
                         <div className="qui-deckblock-rtop">
-                            <p className={`qui-deckblock-slidecount`}>{content?.slideCount}</p>
+                            <h1 className={`qui-deckblock-slidecount`}>{content?.slideCount}</h1>
                             <i className={`qui-deckblock-icon ${content?.icon}`}></i>
                         </div>
                         <h1>{labelContent?.fheader}</h1>
