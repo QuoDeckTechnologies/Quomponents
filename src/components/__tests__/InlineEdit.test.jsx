@@ -17,11 +17,13 @@ describe("InlineEdit", () => {
     let onChange = jest.fn();
     let onBlur = jest.fn();
     let onInput = jest.fn();
+    let onClick = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
         component = mount(<InlineEdit
             content="Please input your text here"
+            inlineEditID="testing_id"
             asEmphasis="singleLine"
             asSize="normal"
             asFloated="none"
@@ -34,6 +36,7 @@ describe("InlineEdit", () => {
             onChange={onChange}
             onBlur={onBlur}
             onInput={onInput}
+            onClick={onClick}
         />);
     })
 
