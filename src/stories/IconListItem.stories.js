@@ -73,14 +73,6 @@ Default.args = {
         image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
         title: "The boot space in Hyundai Elantra is 420 L"
     },
-    {
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlCeVhPcF0B061dWx6Y2p6ZshztnAoVQI59g&usqp=CAU",
-        title: "The boot space in Hyundai Elantra is 420 L"
-    },
-    {
-        image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-        title: "The boot space in Hyundai Elantra is 420 L"
-    }
 
     ],
     asSize: "normal",

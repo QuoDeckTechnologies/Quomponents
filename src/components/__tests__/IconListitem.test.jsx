@@ -40,31 +40,87 @@ describe("IconListItem", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly if Floated is 'none' and size is 'normal' ",
-        () => {
-            component.setProps({
-                asFloated: "none",
-                asSize: "normal",
-            });
-            expect(component.exists()).toBe(true);
-        });
+    it("should render correctly when passed asSize prop as tiny", () => {
+        component.setProps({ asSize: "tiny" })
+        expect(component.exists()).toBe(true);
+    });
 
-    it("should render correctly if isHidden toggled as true",
-        () => {
-            component.setProps({ isHidden: true });
-            expect(component.exists()).toBe(true);
-        });
-    it("should render correctly without throwing error when clicked on button", () => {
-        component.setProps({
-            content: [{
+    it("should render correctly when passed asSize prop as small", () => {
+        component.setProps({ asSize: "small" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as normal", () => {
+        component.setProps({ asSize: "normal" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as big", () => {
+        component.setProps({ asSize: "big" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as huge", () => {
+        component.setProps({ asSize: "huge" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as massive", () => {
+        component.setProps({ asSize: "massive" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asFloated prop as left", () => {
+        component.setProps({ asFloated: "left" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asFloated prop as right", () => {
+        component.setProps({ asFloated: "right" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asFloated prop as inline", () => {
+        component.setProps({ asFloated: "inline" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asFloated prop as none", () => {
+        component.setProps({ asFloated: "none" })
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly when passed isHidden props as false", () => {
+        component.setProps({ isHidden: false })
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly when passed isHidden prop as true", () => {
+        component.setProps({ isHidden: true });
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly when passed withAnimation props", () => {
+        let animation = {
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+        }
+        component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly without throwing error when pass content", () => {
+       let value = [{
                 image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
                 title: "The boot space in Hyundai Elantra is 420 L"
-            }]
-        })
-        component.find(".qui-list-title").simulate("click")
-        console.log(component.find(".qui-list-image").props().style);
-        expect(component.find(".qui-list-title").props().style.order).toEqual(2);
-        // component.find(".qui-list-image").simulate("click");
-        // expect(component.exists()).toBe(false);
+            },
+            {
+                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                title: "The boot space in Hyundai Elantra is 420 L"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                title: "The boot space in Hyundai Elantra is 420 L"
+            },]
+            
+        component.setProps({ content:value })
+        expect(component.exists()).toBe(true);
     });
 });

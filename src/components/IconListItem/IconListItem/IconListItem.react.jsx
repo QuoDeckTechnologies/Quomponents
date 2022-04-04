@@ -17,13 +17,13 @@ IconListItem.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    IconListItem data should be passed in content field and it is a required field
-    */
+  IconListItem data should be passed in content field and it is a required field
+  */
 
-  content: PropTypes.shape(
+  content: PropTypes.arrayOf(
     PropTypes.shape({
-      image: PropTypes.arrayOf(),
-      title: PropTypes.arrayOf(),
+      image: PropTypes.string,
+      title: PropTypes.string,
     }).isRequired,
   ),
   //=======================================
@@ -31,8 +31,8 @@ IconListItem.propTypes = {
   //=======================================
 
   /**
-    Use to define component size in increasing order
-    */
+  Use to define component size in increasing order
+  */
   asSize: PropTypes.oneOf([
     "tiny",
     "small",
@@ -42,13 +42,13 @@ IconListItem.propTypes = {
     "massive",
   ]),
   /**
-Use to float the component in parent container
-*/
+  Use to float the component in parent container
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
 
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -64,8 +64,8 @@ Use to float the component in parent container
     delay: PropTypes.number,
   }),
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
 };
 
@@ -92,23 +92,23 @@ IconListItem.defaultProps = {
 - Status of topics can be changed from content prop
 **/
 export default function IconListItem(props) {
-  // const [btnArr] = useState(props.content)
+
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
   const { content } = props;
-  // 1. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "IconListItem");
   quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 3. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   // ========================= Render Function =================================
   return (
     <div className={`qui ${quommonClasses.parentClasses}`}>
-      {_.map(content,(item, index) => {
+      {_.map(content, (item, index) => {
         return (
           <motion.div
             initial={animate.from}
