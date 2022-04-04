@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import Modal from "@mui/material/Modal";
 import AvatarEditor from "react-avatar-editor";
-import Slider from "react-rangeslider";
+import Slider from "../Slider/Slider.react";
 import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -219,12 +219,7 @@ export default function ImageUploadModal(props) {
               scale={zoom / 10}
             />
           </div>
-          <Slider
-            min={0}
-            max={100}
-            value={zoom}
-            onChange={(value) => setZoom(value)}
-          />
+          <Slider initialValue={10} onClick={(value) => setZoom(value)} />
           <div className="qui-image-upload-buttons">
             <Button
               {...props}
