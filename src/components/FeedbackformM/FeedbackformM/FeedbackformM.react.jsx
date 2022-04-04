@@ -93,8 +93,6 @@ FeedbackformM.defaultProps = {
 **/
 
 export default function FeedbackformM(props) {
-    let { content } = props
-
     const [toggle, setToggle] = useState(false);
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -104,10 +102,6 @@ export default function FeedbackformM(props) {
     // 2. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-    //-------------------------------------------------------------------
-    // 3. Destructure content prop to itirate
-    //------------------------------------------------------------------
-
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -116,12 +110,12 @@ export default function FeedbackformM(props) {
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`qui-feedback-form-container  ${quommonClasses.childClasses}`}>
                 <div className="qui-feedback-toggle-button">
-                    <ToggleButton {...props} />
+                    <ToggleButton {...props} onClick={() => setToggle(prevState => !prevState)} />
                 </div>
-                <div className={`qui-input-field-container`}>
+                {toggle && <div className={`qui-input-field-container`}>
                     <input type='text' placeholder='If Correct' className={`qui-toggle-input-fields variant-${props.asVariant}`} />
                     <input type='text' placeholder='If InCorrect' className={`qui-toggle-input-fields variant-${props.asVariant}`} />
-                </div>
+                </div>}
             </div>
         </motion.div>
     );
