@@ -114,9 +114,7 @@ const getMenuAnimation = (position) => {
       opacity: 1,
       transition: {
         duration: 0.5,
-        type: "spring",
-        damping: 25,
-        stiffness: 500,
+        type: "linear",
       },
     },
     exit: {
