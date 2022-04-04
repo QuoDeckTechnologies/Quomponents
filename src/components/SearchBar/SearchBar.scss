@@ -4,6 +4,9 @@
     align-items: center;
     padding: 0 10px;
 }
+.qui .qui-search-bar-container-closed{
+    width: fit-content;
+}
 .qui .qui-search-bar-child-container {
     transition: 0.3s;
     width: 100%;
@@ -43,13 +46,13 @@
 }
 .qui .qui-search-bar-expand-effect {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 2em;
+    height:2em;
     z-index: 1;
     cursor: pointer;
 }
 
-//Styling Definitions of Component when asSoze - tiny
+//Styling Definitions of Component when asSize - tiny
 .qui .size-tiny .qui-search-bar-container {
     height: 40px;
 }
@@ -68,7 +71,7 @@
     width: 25px;
 }
 
-//Styling Definitions of Component when asSoze - small
+//Styling Definitions of Component when asSize - small
 .qui .size-small .qui-search-bar-container {
     height: 45px;
 }
@@ -87,7 +90,7 @@
     width: 35px;
 }
 
-//Styling Definitions of Component when asSoze - big
+//Styling Definitions of Component when asSize - big
 .qui .size-big .qui-search-bar-container {
     height: 63px;
 }
@@ -105,8 +108,13 @@
 .qui .size-big .qui-search-bar-child-container-closed {
     width: 40px;
 }
+.qui .size-big .qui-search-bar-expand-effect {
+    position: absolute;
+    width: 1.7em;
+    height:1.7em;
+}
 
-//Styling Definitions of Component when asSoze - huge
+//Styling Definitions of Component when asSize - huge
 .qui .size-huge .qui-search-bar-container {
     height: 65px;
 }
@@ -124,8 +132,13 @@
 .qui .size-huge .qui-search-bar-child-container-closed {
     width: 50px;
 }
+.qui .size-huge .qui-search-bar-expand-effect {
+    position: absolute;
+    width: 1.7em;
+    height:1.7em;
+}
 
-//Styling Definitions of Component when asSoze - massive
+//Styling Definitions of Component when asSize - massive
 .qui .size-massive .qui-search-bar-container {
     height: 70px;
 }
@@ -142,4 +155,9 @@
 }
 .qui .size-massive .qui-search-bar-child-container-closed {
     width: 55px;
+}
+.qui .size-massive .qui-search-bar-expand-effect {
+    position: absolute;
+    width: 1.4em;
+    height:1.4em;
 }
