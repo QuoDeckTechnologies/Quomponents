@@ -1,6 +1,6 @@
 // Import npm packages
 import PropTypes from "prop-types";
-import { Switch , styled} from "@mui/material";
+import { Switch, styled } from "@mui/material";
 import { motion } from "framer-motion";
 import {
     getQuommons,
@@ -155,7 +155,7 @@ export default function ToggleButton(props) {
     //-------------------------------------------------------------------
     // 2. Set the component colors
     //--------------------------
-   
+
     // -------------------------------------------------------------------
     // 5. Translate the text objects in case their is a dictionary provided
     // -------------------------------------------------------------------
@@ -175,7 +175,9 @@ export default function ToggleButton(props) {
     const animate = getAnimation(props.withAnimation);
 
     const handleChange = (event) => {
+        if (event.target.checked) {
             props.onClick(event.target.checked)
+        }
     };
 
     // ========================= Render Function =================================
