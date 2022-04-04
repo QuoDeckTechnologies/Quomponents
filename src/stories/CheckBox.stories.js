@@ -5,10 +5,12 @@ export default {
   title: "Design System/CheckBox/CheckBox",
   component: CheckBox,
   argTypes: {
-    label: "CheckBox",
-    checked: {
+    content: {
       table: {
-        defaultValue: false,
+        defaultValue: {
+          label: "",
+          checked: false,
+        },
       },
     },
     asSize: {
@@ -61,7 +63,7 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a basic button for general-purpose use",
+    componentSubtitle: "Displays a CheckBox component",
     a11y: { disable: true },
   },
 };
@@ -72,8 +74,10 @@ export default {
 const Template = (args) => <CheckBox {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  label: "Default Checkbox",
-  checked: false,
+  content: {
+    label: "Default Checkbox",
+    checked: false,
+  },
   asSize: "normal",
   asFloated: "left",
   withAnimation: {
@@ -97,8 +101,10 @@ Default.parameters = {
 // -------------------------------------------------------------
 export const ReadOnlyCheckBox = Template.bind({});
 ReadOnlyCheckBox.args = {
-  label: "Read Only Checkbox",
-  checked: true,
+  content: {
+    label: "Read Only Checkbox",
+    checked: true,
+  },
   asSize: "normal",
   asFloated: "left",
   withAnimation: {
@@ -112,8 +118,16 @@ ReadOnlyCheckBox.args = {
 };
 ReadOnlyCheckBox.parameters = {
   docs: {
+    description: {
+      story:
+        "Read Only checkbox can be created by making `isDisabled` prop set to `true` and `checked` state can be as required",
+    },
     source: {
-      code: `<CheckBox {...${JSON.stringify(ReadOnlyCheckBox.args, null, 2)}}/>`,
+      code: `<CheckBox {...${JSON.stringify(
+        ReadOnlyCheckBox.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -122,8 +136,10 @@ ReadOnlyCheckBox.parameters = {
 // -------------------------------------------------------------
 export const DisabledCheckBox = Template.bind({});
 DisabledCheckBox.args = {
-  label: "Disabled Checkbox",
-  checked: false,
+  content: {
+    label: "Disabled Checkbox",
+    checked: false,
+  },
   asSize: "normal",
   asFloated: "left",
   withAnimation: {
@@ -137,8 +153,16 @@ DisabledCheckBox.args = {
 };
 DisabledCheckBox.parameters = {
   docs: {
+    description: {
+      story:
+        "Disabled checkbox can be created with `isDisabled` prop set to `true`",
+    },
     source: {
-      code: `<CheckBox {...${JSON.stringify(DisabledCheckBox.args, null, 2)}}/>`,
+      code: `<CheckBox {...${JSON.stringify(
+        DisabledCheckBox.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -150,14 +174,12 @@ const MultipleTemplate = (args) => {
     <>
       <CheckBox
         {...args}
-        label={args.label[0]}
-        checked={true}
+        content={{ label: args.label[0], checked: true }}
         asFloated="none"
       />
       <CheckBox
         {...args}
-        label={args.label[1]}
-        checked={false}
+        content={{ label: args.label[1], checked: false }}
         asFloated="none"
       />
     </>
@@ -191,14 +213,12 @@ const MultipleTemplateInline = (args) => {
     <>
       <CheckBox
         {...args}
-        label={args.label[0]}
-        checked={true}
+        content={{ label: args.label[0], checked: true }}
         asFloated="inline"
       />
       <CheckBox
         {...args}
-        label={args.label[1]}
-        checked={false}
+        content={{ label: args.label[0], checked: false }}
         asFloated="inline"
       />
     </>
@@ -212,8 +232,7 @@ InlineMultipleCheckBox.args = {
 InlineMultipleCheckBox.parameters = {
   docs: {
     description: {
-      story:
-        "Multiple checkboxes can be used which outputs their status and label text to `onClick` prop",
+      story: "Multiple inline checkboxes can be created when needed",
     },
     source: {
       code: `<CheckBox {...${JSON.stringify(

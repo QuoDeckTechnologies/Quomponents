@@ -1,5 +1,5 @@
 // Import npm packages
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { Checkbox } from "@mui/material";
@@ -14,13 +14,12 @@ CheckBox.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    CheckBox Text has to be in label or passed as children to the component. Is optional if you only want an icon.
+    CheckBox Text has to be in content prop.
     */
-  label: PropTypes.string,
-  /**
-    Use to check/uncheck the component
-    */
-  checked: PropTypes.bool,
+  content: PropTypes.shape({
+    label: PropTypes.string,
+    checked: PropTypes.bool,
+  }),
   //=======================================
   // Quommon props
   //=======================================
@@ -71,8 +70,7 @@ CheckBox.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  label: "",
-  checked: false,
+  content: {},
   //=======================================
   // Quommon props
   //=======================================
@@ -87,30 +85,36 @@ CheckBox.defaultProps = {
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
 - The animation system used for this component is Framer Motion (framer-motion)
-- Pass inline styles to the component to override any of the component css
-- Or add custom css in overrule.scss to override the component css
 **/
 export default function CheckBox(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring label prop
   //-------------------------------------------------------------------
-  const { label } = props;
+  const { content } = props;
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // 2. Defining states and hooks
+  //-------------------------------------------------------------------
+  const [isChecked, setIsChecked] = useState(content.checked);
+  useEffect(() => {
+    setIsChecked(content.checked);
+  }, [content.checked]);
+  //-------------------------------------------------------------------
+  // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "check-box");
   //-------------------------------------------------------------------
-  // 3. Get animation of the component
+  // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 4. Get size of the chekbox
+  // 5. Get size of the chekbox
   //-------------------------------------------------------------------
   const getSize = () => {
     if (props.asSize === "tiny") return "small";
     if (props.asSize === "normal") return "medium";
     else return "large";
   };
+
   // ========================= Render Function =================================
 
   return (
@@ -123,18 +127,21 @@ export default function CheckBox(props) {
         className={`qui-check-box-inner-container ${quommonClasses.childClasses}`}
       >
         <Checkbox
-          defaultChecked={props.checked}
+          checked={isChecked}
           id="qui-check-box-element"
           disabled={props.isDisabled}
           size={getSize()}
-          value={label}
-          onChange={(e) => props.onClick(e)}
+          value={content?.label}
+          onChange={(e) => {
+            setIsChecked((prevState) => !prevState);
+            props.onClick(e.target.value, e.target.checked);
+          }}
         />
         <label
           htmlFor="qui-check-box-element"
           className="qui-check-box-element"
         >
-          <h4>{label}</h4>
+          <h4>{content?.label}</h4>
         </label>
       </div>
     </motion.div>

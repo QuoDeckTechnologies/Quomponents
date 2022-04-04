@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from "enzyme";
+import { shallow,mount } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -14,9 +14,9 @@ describe("CheckBox", () => {
   let component;
   beforeEach(() => {
     jest.resetAllMocks();
-    component = shallow(
+    component = mount(
       <CheckBox
-        content="Enable Checkbox"
+        content={{label:'Default Label',checked:false}}
         onClick={(e) => {
           console.log(e);
         }}
