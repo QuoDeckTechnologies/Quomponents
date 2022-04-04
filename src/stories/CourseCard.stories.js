@@ -85,7 +85,7 @@ Default.args = {
     content: {
         status: "none",
         courseType: "standard",
-        wrapper:"cityscape",
+        wrapper:"carnival",
         tags: ["Tag1", "Tag2"],
         courseName: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
@@ -121,7 +121,7 @@ export const DifferentResolution = (args) => {
         ...Object.assign({}, Default.args, args, {
             status: "none",
             courseType: "standard",
-            wrapper:"cityscape",
+            wrapper:"carnival",
             tags: ["Tag1", "Tag2"],
             courseName: "Measure your sales readiness",
             description: "Take this quick profile test to check how well you are prepared for a sales job",

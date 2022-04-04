@@ -73,7 +73,7 @@ CourseCard.defaultProps = {
         status: "",
         tags: [],
         courseType: "standard",
-        wrapper: "cityscape",
+        wrapper: "carnival",
         courseName: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
         courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
@@ -112,7 +112,7 @@ export default function CourseCard(props) {
     //-------------------------------------------------------------------
     let image;
     if (props.content?.wrapper !== "none") {
-        image = props.content?.courseImage ? props.content?.courseImage : props.content?.wrapper ? "assets/courses/" + props.content?.wrapper + "/play_backdrop.png" : deafaultImage;
+        image = props.content?.courseImage ? props.content?.courseImage : props.content?.wrapper ? "assets/courses/" + props.content?.wrapper + "/play_backdrop.jpg" : deafaultImage;
     } else {
         image = props.content?.courseImage ? props.content?.courseImage : deafaultImage;
     }
