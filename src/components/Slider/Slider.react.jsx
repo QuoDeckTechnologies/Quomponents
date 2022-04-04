@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
-import Slider from "react-rangeslider";
+import  SliderPackage from "react-rangeslider";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./Slider.scss";
 import "../../common/stylesheets/overrule.scss";
 
-Button.propTypes = {
+Slider.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
@@ -47,12 +47,12 @@ Button.propTypes = {
     */
   isDisabled: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
+    Slider component must have the onClick function passed as props
     */
   onClick: PropTypes.func.isRequired,
 };
 
-Button.defaultProps = {
+Slider.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
@@ -70,7 +70,7 @@ Button.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function Button(props) {
+export default function Slider(props) {
   const [slideValue, setSlideValue] = useState(props.initialValue);
   //-------------------------------------------------------------------
   // 1. Set the classes
@@ -90,7 +90,7 @@ export default function Button(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div className={`qui-slider-container ${quommonClasses.childClasses}`}>
-        <Slider
+        <SliderPackage
           min={0}
           max={100}
           value={slideValue}
