@@ -1,48 +1,50 @@
-.qui-treebar-parent {
-    height: calc(100vh - 35px);
+.qui .qui-treebar-parent {
+    width: 100%;
+    height: 100%;
 }
 
-.qui-treebar-pageheader {
-    padding: 0.5em 0.7em;
+.qui .qui-treebar-pageheader {
+    padding: 0.5em 0.4em;
     font-size: 2em;
     background: #aaaaaa;
     color: #ffffff;
 }
 
-.qui-treebar-searchbar .qui-search-bar-container {
+.qui .qui-treebar-searchbar .qui-search-bar-container {
     width: 100%;
     padding: 0 0;
     position: relative;
     bottom: 0.4em;
 }
 
-.qui-treebar-searchbar .qui-search-bar {
+.qui .qui-treebar-searchbar .qui-search-bar {
     width: 100%;
 }
 
-.qui-treebar-container {
+.qui .qui-treebar-container {
     width: 100%;
-    height: calc(100vh - 84px);
+    height: 70vh;
     background: #e5e5e5;
     font-size: 1em;
     overflow: auto;
     position: relative;
-    bottom: 0.7em;
+    bottom: 0.9em;
 }
 
-.qui-treebar-content {
+.qui .qui-treebar-content {
     background: #e5e5e5;
 }
 
-.qui-treebar-headerStyle {
-    font-size: 1.2em;
+.qui .qui-treebar-headerStyle {
+    font-size: 1em;
     cursor: pointer;
     color: #767676;
     display: inline-block;
     vertical-align: top;
 }
-.qui-treebar-headerStyle-child {
-    font-size: 1.2em;
+
+.qui .qui-treebar-headerStyle-child {
+    font-size: 1em;
     cursor: pointer;
     color: #767676;
     display: inline-block;
@@ -50,15 +52,15 @@
     margin-left: 1em;
 }
 
-.qui-treebar-activeHeaderStyle {
-    font-size: 1.2em;
+.qui .qui-treebar-activeHeaderStyle {
+    font-size: 1em;
     color: #000000;
     cursor: pointer;
     display: inline-block;
     vertical-align: top;
 }
 
-.qui-treebar-activeTitleStyle {
+.qui .qui-treebar-activeTitleStyle {
     color: #ffffff;
     display: block;
     white-space: nowrap;
@@ -68,7 +70,7 @@
     padding: 0.2em 0;
 }
 
-.qui-treebar-titleStyle {
+.qui .qui-treebar-titleStyle {
     display: block;
     white-space: nowrap;
     overflow: hidden;
@@ -77,27 +79,33 @@
     padding: 0.2em 0;
 }
 
-.qui-treebar-iconStyle {
+.qui .qui-treebar-iconStyle {
     margin-right: 0.5em;
     font-size: 1.2em;
 }
-.qui-treebar-iconStyle-children {
+
+.qui .qui-treebar-iconStyle-children {
     .qui-treebar-iconStyle {
         margin-right: 1em;
         font-size: 1.2em;
     }
 }
 
-.qui .tree-item,
+.qui .qui-tree-item,
 .css-f91fgu {
+    height: 100%;
     background: #e5e5e5 !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 3em !important;
 }
-.qui .tree-item,
+
+.qui .qui-tree-item,
 .css-1u94gzr {
     display: none;
 }
 
-.qui .tree-item,
+.qui .qui-tree-item,
 .qui li {
     margin: 0.1em 0;
     right: 0.7em;

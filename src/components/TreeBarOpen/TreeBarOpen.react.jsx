@@ -14,7 +14,7 @@ import "../../common/stylesheets/common.css";
 import "./TreeBarOpen.scss";
 import "../../common/stylesheets/overrule.scss";
 
-// import SearchBar from "../SearchBar/SearchBar.react";
+import SearchBar from "../SearchBar/SearchBar.react";
 
 TreeItem.propTypes = {
     //=======================================
@@ -35,17 +35,6 @@ TreeItem.propTypes = {
     // Quommon props
     //=======================================
 
-    /**
-    Use to define component text size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
     /**
     Use to float the component in parent container
     */
@@ -91,7 +80,6 @@ TreeItem.defaultProps = {
     // Quommon props
     //=======================================
 
-    asSize: "normal",
     asFloated: "none",
     asAligned: "center",
 
@@ -127,7 +115,6 @@ export default function TreeItem(props) {
     const [cursor, setCursor] = useState();
     const [folderData, setFolderData] = useState(props.content.TreeData);
     const [folderStructure, setfolderStructure] = useState(props.content.TreeData);
-    
     //-------------------------------------------------------------------
     // Search the specific data
     //-------------------------------------------------------------------
@@ -170,8 +157,10 @@ export default function TreeItem(props) {
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
-    ) tObj = getTranslation(props.withTranslation);
-    if (tObj && props.pageHeader && props.pageHeader !== "") {
+    ) {
+        tObj = getTranslation(props.withTranslation);
+    }
+    if (tObj && props.pageHeader) {
         pageHeaderTitle = tObj.pageHeader;
     }
 
@@ -194,20 +183,21 @@ export default function TreeItem(props) {
                     </div>
                 )}
                 <div className="qui-treebar-searchbar">
-                    {/* <SearchBar
+                    <SearchBar
                         {...props.content.props}
                         onClick={startSearch}
-                    /> */}
+                    />
                 </div>
-
                 {props.content.TreeData && (
-                    <div className={`qui-treebar-container`}>
-                        <div className="qui-treebar-content.TreeData">
-                            <Treebeard
-                                data={folderStructure}
-                                decorators={decorators}
-                                onToggle={onToggle}
-                            />
+                    <div>
+                        <div className={`qui-treebar-container`}>
+                            <div className="qui-treebar-content">
+                                <Treebeard
+                                    data={folderStructure}
+                                    decorators={decorators}
+                                    onToggle={onToggle}
+                                />
+                            </div>
                         </div>
                     </div>
                 )}

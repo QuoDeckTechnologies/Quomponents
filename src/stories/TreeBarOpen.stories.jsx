@@ -1,5 +1,5 @@
 import React from "react";
-import TreeItem from "../components/TreeBarOpen/TreeBarOpen.react";
+import TreeBarOpen from "../components/TreeBarOpen/TreeBarOpen.react";
 
 const dictionary = JSON.stringify({
     hi: {
@@ -14,7 +14,7 @@ const dictionary = JSON.stringify({
 
 export default {
     title: "Design System/TreeBar/TreeBarOpen",
-    component: TreeItem,
+    component: TreeBarOpen,
     argTypes: {
         pageHeader: "Page Header",
         content: { TreeData: {}, props: {} },
@@ -22,13 +22,6 @@ export default {
             table: {
                 category: "Events",
                 defaultValue: null,
-            },
-        },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
             },
         },
         asFloated: {
@@ -125,7 +118,7 @@ let dataprops = {
     },
 }
 
-const Template = (args) => <TreeItem {...args} />;
+const Template = (args) => <TreeBarOpen {...args} style={{ width: "30%" }} />;
 export const Default = Template.bind({});
 Default.args = {
     pageHeader: "Courses",
@@ -194,7 +187,6 @@ Default.args = {
             ...dataprops
         }
     },
-    asSize: "tiny",
     asFloated: "left",
     asAligned: "left",
     withAnimation: {
@@ -214,7 +206,7 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<TreeItem {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<TreeBarOpen {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
@@ -323,6 +315,57 @@ TranslatedTreeBar.parameters = {
                 null,
                 2
             )}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Without PageHeader
+// -------------------------------------------------------------
+export const WithoutPageHeader = Template.bind({});
+WithoutPageHeader.args = {
+    ...Default.args,
+    pageHeader: ""
+};
+WithoutPageHeader.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to disable page header.",
+        },
+        source: {
+            code: `<TreeBarOpen {...${JSON.stringify(
+                WithoutPageHeader.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+
+const AllVariantsTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+        }),
+    };
+    return (
+        <div style={{ width: "30%" }}>
+            <TreeBarOpen
+                {...Object.assign({}, baseObj, {
+                    asAligned: "left",
+                })}
+            />{" "}
+        </div>
+    );
+};
+export const AllVariants = AllVariantsTemplate.bind({});
+AllVariants.parameters = {
+    docs: {
+        description: {
+            story: "5 variants are supported. Use as per purpose noted here.",
+        },
+        source: {
+            code: `<TreeBarOpen asVariant="primary"/>`,
         },
     },
 };
