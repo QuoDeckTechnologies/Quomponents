@@ -85,14 +85,11 @@ TextBlock.defaultProps = {
     asFloated: "inline",
 
     withColor: null,
-    withLabel: null,
     withAnimation: null,
-    withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
 };
-
 /**
 ## Notes
 - The animation system used for this component is Framer Motion (framer-motion)
@@ -127,7 +124,6 @@ export default function TextBlock(props) {
     // 3. Use to set Color in text-block
     //-------------------------------------------------------------------
     let componentStyle = {
-
         mainContainer: {
             backgroundColor: props.withColor?.backgroundColor,
             color: props.withColor?.textColor,
@@ -139,7 +135,6 @@ export default function TextBlock(props) {
     const animate = getAnimation(props.withAnimation);
 
     // ========================= Render Function =================================
-
     return (
         <motion.div
             initial={animate.from}

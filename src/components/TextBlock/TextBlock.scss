@@ -2,7 +2,6 @@
   overflow: visible;
   margin-bottom: 0.5em;
 }
-
 .qui .qui-text-block-area {
   position: relative;
   background-color: #ad292980;
@@ -20,7 +19,6 @@
   font-weight: bold;
   text-overflow: ellipsis;
 }
-
 // Tringles
 .qui-text-block-chat-arrow {
   position: absolute;
@@ -29,7 +27,6 @@
   width: 0;
   height: 0;
 }
-
 .qui .qui-arrow-left-bottom {
   width: 0;
   height: 0;
@@ -38,18 +35,15 @@
   width: 0;
   height: 0;
 }
-
 .qui .qui-arrow-right-top {
   width: 0;
   height: 0;
 }
-
 @media only screen and (min-width: 320px) {
   .qui .qui-text-block-area {
     width: 80vw;
     height: 7.5em;
   }
-
   .qui .qui-block-text {
     max-height: 5.35em;
     font-size: 1.1em;
@@ -67,7 +61,6 @@
     border-bottom: 0.6em solid transparent;
     border-left: 0.9em solid #ad292980;
   }
-
   .qui .qui-arrow-left-bottom {
     left: -0.9em;
     bottom: 1em;
@@ -82,7 +75,6 @@
     border-bottom: 0.6em solid transparent;
     border-right: 0.9em solid #ad292980;
   }
-
   .qui .qui-arrow-right-top {
     right: -0.9em;
     top: 1em;
@@ -98,7 +90,7 @@
   }
   .qui .qui-block-text {
     font-size: 1.5em;
-    top:50%;
+    top: 50%;
   }
   .qui .qui-arrow-right-bottom {
     right: -1.2em;
@@ -107,7 +99,6 @@
     border-bottom: 0.9em solid transparent;
     border-left: 1.2em solid #ad292980;
   }
-
   .qui .qui-arrow-left-bottom {
     left: -1.2em;
     bottom: 2em;
@@ -122,7 +113,6 @@
     border-bottom: 1em solid transparent;
     border-right: 1.2em solid #ad292980;
   }
-
   .qui .qui-arrow-right-top {
     right: -1.2em;
     top: 2em;
@@ -138,7 +128,7 @@
   .qui .qui-block-text {
     font-size: 2.8em;
     max-height: 5.9em;
-    top:50%
+    top: 50%;
   }
   .qui .qui-arrow-right-bottom {
     bottom: 3em;
@@ -147,7 +137,6 @@
     border-bottom: 1.5em solid transparent;
     border-left: 2em solid #ad292980;
   }
-
   .qui .qui-arrow-left-bottom {
     bottom: 3em;
     left: -2em;
@@ -177,7 +166,7 @@
   .qui .qui-block-text {
     font-size: 3.4em;
     max-height: 5.2em;
-    top:45%,
+    top: 45%;
   }
   .qui .qui-arrow-right-bottom {
     right: -2.5em;
@@ -185,7 +174,6 @@
     border-bottom: 2em solid transparent;
     border-left: 2.5em solid #ad292980;
   }
-
   .qui .qui-arrow-left-bottom {
     left: -2.5em;
     border-top: 2em solid transparent;
@@ -198,7 +186,6 @@
     border-bottom: 2em solid transparent;
     border-right: 2.5em solid #ad292980;
   }
-
   .qui .qui-arrow-right-top {
     right: -2.5em;
     border-top: 2em solid transparent;
@@ -206,7 +193,6 @@
     border-left: 2.5em solid #ad292980;
   }
 }
-
 .qui .qui-text-block-area-tringle.qui-right-top {
   top: 0;
   right: 0;

@@ -61,6 +61,9 @@ export default {
     parameters: {
         componentSubtitle: "Displays a basic button for general-purpose use",
         a11y: { disable: true },
+        docs: {
+            iframeHeight: 500,
+        }
         // controls: { expanded: true }
     },
 };
@@ -98,7 +101,6 @@ Default.parameters = {
         },
     },
 };
-
 // -------------------------------------------------------------
 // WithoutConversation 
 // -------------------------------------------------------------
@@ -141,7 +143,6 @@ export const Conversation = (args) => {
                 delay: 0.1,
             },
         })
-
     };
     const baseObj2 = {
         ...Object.assign({}, Default.args, args, {
@@ -153,7 +154,6 @@ export const Conversation = (args) => {
                 delay: 0.3,
             },
         })
-
     };
     const baseObj3 = {
         ...Object.assign({}, Default.args, args, {
@@ -165,7 +165,6 @@ export const Conversation = (args) => {
                 delay: 0.5,
             },
         })
-
     };
     const baseObj4 = {
         ...Object.assign({}, Default.args, args, {

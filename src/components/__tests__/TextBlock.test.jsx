@@ -19,21 +19,18 @@ describe("TextBlock", () => {
                 content=""
                 opacity=""
                 position="left-top"
+                conversation={true}
                 asFloated="inline"
                 withColor={{
                     backgroundColor: "#ffc900",
                     textColor: "#666666",
                 }}
-                withLabel={null}
                 withAnimation={null}
-                withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
-                conversation={true}
             />
         );
     });
-
     it("should render correctly without throwing error", () => {
         expect(component.exists()).toBe(true);
     });
@@ -57,6 +54,27 @@ describe("TextBlock", () => {
             position: "left-bottom"
         })
     });
+    it("should render correctly when passed withAnimation props", () => {
+        let animation = {
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+        }
+        component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asFloated prop as left", () => {
+        component.setProps({ asFloated: "left" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asFloated prop as right", () => {
+        component.setProps({ asFloated: "right" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asFloated prop as inline", () => {
+        component.setProps({ asFloated: "inline" })
+        expect(component.exists()).toBe(true);
+    })
     it("should render correctly with content", () => {
         component.setProps({
             content: "",
@@ -72,6 +90,14 @@ describe("TextBlock", () => {
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
     })
+    it("should render correctly when passed isDisabled props as false", () => {
+        component.setProps({ isDisabled: false })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed isDisabled props as true", () => {
+        component.setProps({ isDisabled: true })
+        expect(component.exists()).toBe(true);
+    })
     it("should render correctly when passed isHidden props as false", () => {
         component.setProps({ isHidden: false })
         expect(component.exists()).toBe(true);
@@ -80,5 +106,8 @@ describe("TextBlock", () => {
         component.setProps({ isHidden: true })
         expect(component.exists()).toBe(true);
     })
-
+    it("should render correctly when passed conversation props as true", () => {
+        component.setProps({ conversation: true })
+        expect(component.exists()).toBe(true);
+    })
 });
