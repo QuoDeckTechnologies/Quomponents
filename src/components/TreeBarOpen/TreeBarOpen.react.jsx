@@ -31,7 +31,7 @@ TreeItem.propTypes = {
     Treebar pass tree folder structure data
     */
     content: PropTypes.shape({}),
-   
+
     // Quommon props
     //=======================================
 
@@ -136,7 +136,7 @@ export default function TreeItem(props) {
             node.toggled = toggled;
         }
         setFolderData(Object.assign({}, folderData))
-        setCursor(node);
+        props.onSelectData(node);
     };
 
     //-------------------------------------------------------------------
@@ -192,6 +192,8 @@ export default function TreeItem(props) {
         ...defaultTheme.tree.node.base,
         width: "100%",
         backgroundColor: "#fffff",
+        margin: "0.1em 0",
+        right: "0.7em",
     };
 
     // ========================= Render Function =================================

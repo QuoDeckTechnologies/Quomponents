@@ -68,6 +68,12 @@ export default {
                 defaultValue: null,
             },
         },
+        onSelectData: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        },
     },
     decorators: [
         (story) => (
@@ -335,28 +341,30 @@ WithoutPageHeader.parameters = {
     },
 };
 
-const AllVariantsTemplate = (args) => {
-    const baseObj = {
-        ...Object.assign({}, Default.args, args, {
-        }),
-    };
-    return (
-        <div style={{ width: "30%" }}>
-            <TreeBarOpen
-                {...Object.assign({}, baseObj, {
-                })}
-            />{" "}
-        </div>
-    );
+// -------------------------------------------------------------
+// With Animation
+// -------------------------------------------------------------
+export const WithAnimation = Template.bind({});
+WithAnimation.args = {
+    ...Default.args,
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
 };
-export const AllVariants = AllVariantsTemplate.bind({});
-AllVariants.parameters = {
+WithAnimation.parameters = {
     docs: {
         description: {
-            story: "5 variants are supported. Use as per purpose noted here.",
+            story:
+                "Use to animate Treebar page.",
         },
         source: {
-            code: `<TreeBarOpen asVariant="primary"/>`,
+            code: `<TreeBarOpen {...${JSON.stringify(
+                WithAnimation.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };

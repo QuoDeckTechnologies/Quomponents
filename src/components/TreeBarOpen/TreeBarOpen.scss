@@ -1,10 +1,11 @@
 .qui.qui-treebar-parent {
     height: 100%;
     text-align: left;
+    box-shadow: 2px 2px 3px #b3b0b0;
 }
 
 .qui .qui-treebar-pageheader {
-    padding: 0.5em 0.4em;
+    padding: 0.3em 0.4em;
     font-size: 1.8em;
     background: #aaaaaa;
     color: #ffffff;
@@ -14,7 +15,7 @@
     width: 100%;
     padding: 0 0;
     position: relative;
-    bottom: 0.4em;
+    height: 1.9em;
 }
 
 .qui .qui-treebar-searchbar .qui-search-bar {
@@ -22,13 +23,12 @@
 }
 
 .qui .qui-treebar-container {
-    width: 100%;
+    width: 102%;
     height: 70vh;
     background: #e5e5e5;
     font-size: 1em;
     overflow: auto;
     position: relative;
-    bottom: 0.9em;
 }
 
 .qui .qui-treebar-headerStyle {
@@ -78,23 +78,15 @@
     }
 }
 
-.qui .qui-tree-item,
+.qui.qui-tree-item,
 .css-f91fgu {
     height: 100%;
     background: #e5e5e5 !important;
     overflow-x: hidden;
     overflow-y: auto;
-    padding-bottom: 3em !important;
 }
 
 .qui .qui-tree-item,
 .css-1u94gzr {
     display: none;
-}
-
-.qui .qui-tree-item,
-.qui li {
-    margin: 0.1em 0;
-    right: 0.7em;
-    background: #dddddd;
 }
