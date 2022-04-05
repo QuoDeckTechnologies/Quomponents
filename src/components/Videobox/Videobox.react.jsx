@@ -98,7 +98,7 @@ export default function Videobox(props) {
     const [error, setError] = useState(false)
 
     function onReady(e) {
-        if (e.target && autoplay) {
+        if (e.target && props.autoplay) {
             e.target.playVideo();
         }
         if (props.onReady) props.onReady();
@@ -108,11 +108,15 @@ export default function Videobox(props) {
 
     function onEnd(e) {
         if (props.loop) e.target.playVideo();
-        if (onEnd) props.onEnd(e);
+        if (props.onEnd) props.onEnd(e);
+        console.log(e)
+
     };
 
     function onPause(e) {
-        if (onPause) props.onPause(e);
+        if (props.onPause) props.onPause(e);
+        console.log(e)
+
     };
 
     function onError(e) {
@@ -189,7 +193,7 @@ export default function Videobox(props) {
                     </div>
                 );
             }
-             else {
+            else {
                 return (
                     <div
                         className="video-responsive"
