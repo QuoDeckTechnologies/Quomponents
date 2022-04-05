@@ -182,7 +182,7 @@ export default function ArcMenu(props) {
       <Backdrop
         open={openMenu}
         className="qui-arc-menu-backdrop"
-        onClick={() => setOpenMenu((prevState) => !prevState)}
+        onClick={() => setOpenMenu(false)}
         sx={{ zIndex: 10 }}
       ></Backdrop>
       <div className={quommonClasses.childClasses}>

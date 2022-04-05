@@ -65,6 +65,9 @@
   background-color: #9b8442;
 }
 
+.qui .qui-arc .qui-arc-menu-button {
+  cursor: pointer;
+}
 .qui .qui-arc.qui-top-right .qui-arc-menu-button {
   transform: translate(-20%, 20%);
 }
@@ -204,7 +207,8 @@
     box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.32);
   }
   .qui .qui-arc-menu-buttons.qui-arc-menu-menu {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
   .qui .qui-arc {
     height: 2.5em;
@@ -223,7 +227,7 @@
     width: 0.5em;
   }
   .qui .qui-arc-menu-header {
-    font-size: 1em;
+    font-size: 0.7em;
   }
   .qui .qui-add-icon-wrapper {
     height: 1.5em;
@@ -284,14 +288,6 @@
 @media only screen and (min-width: 768px) {
   .qui.qui-arc-menu .qui-arc-menu-nugget-menu {
     font-size: 0.8em;
-  }
-  .qui .qui-arc-menu-buttons.qui-arc-menu-menu {
-    display: flex;
-    align-items: flex-start;
-  }
-  .qui .qui-arc-menu-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
   }
   .qui .qui-arc {
     height: 4em;

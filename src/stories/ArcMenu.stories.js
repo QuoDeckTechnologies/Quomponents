@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import ArcMenu from "../components/ArcMenu/ArcMenu.react";
+import Backdrop from '@mui/material/Backdrop'
 
 import Nugget_Story from "../assets/nuggets/nugget_story.png";
 import Nugget_Quiz from "../assets/nuggets/nugget_quiz.png";
@@ -181,6 +182,58 @@ AddButton.parameters = {
   docs: {
     source: {
       code: `<ArcMenu {...${JSON.stringify(AddButton.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Menu button
+// -------------------------------------------------------------
+const ExampleTemplate = (args) => {
+  const [openModalOne, setOpenModalOne] = useState(false);
+  const [openModalTwo, setOpenModalTwo] = useState(false);
+  return (
+    <div
+      className="qui"
+      style={{
+        height: "100vh",
+        border: "0.1em solid black",
+        overflow: "visible",
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
+      }}
+    >
+      <Backdrop open={openModalOne} sx={{zIndex:10}} onClick={()=>setOpenModalOne(false)}/>
+      <Backdrop open={openModalTwo} sx={{zIndex:21}} onClick={()=>setOpenModalTwo(false)}/>
+      {openModalOne && (
+        <div className="qui-first-imported-component" style={{position:'absolute',zIndex:20,left:'0',bottom:'20%'}}>
+          <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#454545',color:'white',marginBottom:'0.1em',cursor:'pointer'}} onClick={()=>setOpenModalTwo(true)}>Option One</div>
+          <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#454545',color:'white',cursor:'pointer'}} onClick={()=>setOpenModalTwo(true)}>Option Two</div>
+        </div>
+      )}
+     {openModalTwo && <div className="qui qui-second-imported-component" style={{position:'absolute',zIndex:22,background:'white',padding:'5em'}}>
+       <h1>Testing Second Modal</h1>
+       <ArcMenu
+        type="close"
+        arcIcon="close"
+        position="top-right"
+        onClick={() => setOpenModalTwo(false)}
+      />
+       </div>}
+      <ArcMenu
+        type="add"
+        arcIcon="add"
+        position="bottom-left"
+        onClick={() => setOpenModalOne(true)}
+      />
+    </div>
+  );
+};
+export const AddButtonExample = ExampleTemplate.bind({});
+AddButtonExample.parameters = {
+  docs: {
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(AddButtonExample.args, null, 2)}}/>`,
     },
   },
 };
