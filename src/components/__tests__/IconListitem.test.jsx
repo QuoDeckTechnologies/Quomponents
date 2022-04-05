@@ -40,36 +40,6 @@ describe("IconListItem", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed asSize prop as tiny", () => {
-        component.setProps({ asSize: "tiny" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asSize prop as small", () => {
-        component.setProps({ asSize: "small" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asSize prop as normal", () => {
-        component.setProps({ asSize: "normal" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asSize prop as big", () => {
-        component.setProps({ asSize: "big" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asSize prop as huge", () => {
-        component.setProps({ asSize: "huge" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asSize prop as massive", () => {
-        component.setProps({ asSize: "massive" })
-        expect(component.exists()).toBe(true);
-    });
-
     it("should render correctly when passed asFloated prop as left", () => {
         component.setProps({ asFloated: "left" })
         expect(component.exists()).toBe(true);
@@ -107,20 +77,20 @@ describe("IconListItem", () => {
         expect(component.exists()).toBe(true);
     });
     it("should render correctly without throwing error when pass content", () => {
-       let value = [{
-                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-                title: "The boot space in Hyundai Elantra is 420 L"
-            },
-            {
-                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-                title: "The boot space in Hyundai Elantra is 420 L"
-            },
-            {
-                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-                title: "The boot space in Hyundai Elantra is 420 L"
-            },]
-            
-        component.setProps({ content:value })
+        let value = [{
+            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+            title: "The boot space in Hyundai Elantra is 420 L"
+        },
+        {
+            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+            title: "The boot space in Hyundai Elantra is 420 L"
+        },
+        {
+            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+            title: "The boot space in Hyundai Elantra is 420 L"
+        },]
+
+        component.setProps({ content: value })
         expect(component.exists()).toBe(true);
     });
 });

@@ -19,7 +19,6 @@ IconListItem.propTypes = {
   /**
   IconListItem data should be passed in content field and it is a required field
   */
-
   content: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string,
@@ -28,24 +27,11 @@ IconListItem.propTypes = {
   ),
   //=======================================
   // Quommon props
-  //=======================================
-
-  /**
-  Use to define component size in increasing order
-  */
-  asSize: PropTypes.oneOf([
-    "tiny",
-    "small",
-    "normal",
-    "big",
-    "huge",
-    "massive",
-  ]),
+  //======================================= 
   /**
   Use to float the component in parent container
   */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-
   /**
   Use to define the entry animation of the component
   */
@@ -77,7 +63,6 @@ IconListItem.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asSize: "normal",
   asFloated: "none",
   withAnimation: null,
   isHidden: false,
@@ -85,14 +70,12 @@ IconListItem.defaultProps = {
 
 /**
 ## Notes
-- The design system used for this component is Fontawesome Icon
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 - Status of topics can be changed from content prop
 **/
 export default function IconListItem(props) {
-
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
@@ -114,7 +97,8 @@ export default function IconListItem(props) {
             initial={animate.from}
             animate={animate.to}
             key={index}>
-            <div className={`qui-icon-list ${quommonClasses.childClasses}`}>
+            
+            <div className={`qui-conversion-list ${quommonClasses.childClasses}`}>
               <p className={`qui-list-title `} style={{ order: index % 2 === 0 ? 2 : 1 }} >
                 {item?.title}
               </p>

@@ -1,50 +1,51 @@
- .qui-icon-list {
+ .qui .qui-conversion-list {
      display: flex;
      margin-top: 1.5em;
      justify-content: center;
      align-items: center;
+     padding-left: 2em;
  }
 
- .qui-list-image {
+ .qui .qui-list-image {
      margin-right: 1.5em;
      border-radius: 0.3em;
  }
 
- .qui-list-title {
+ .qui .qui-list-title {
      width: 50%;
      font-size: 1.4em;
      margin-right: 1.5em;
  }
 
  @media only screen and (min-width: 320px) {
-     .qui-list-image {
+     .qui .qui-list-image {
          width: 2.4em;
          height: 2.4em;
      }
 
-     .qui-list-title {
-         font-size: 1em;
+     .qui .qui-list-title {
+         font-size: 1.2em;
      }
  }
 
  @media only screen and (min-width: 540px) {
-     .qui-list-image {
+     .qui .qui-list-image {
          width: 3em;
          height: 3em;
      }
 
-     .qui-list-title {
+     .qui .qui-list-title {
          font-size: 1.2em;
      }
  }
 
  @media only screen and (min-width: 720px) {
-     .qui-list-image {
+     .qui .qui-list-image {
          width: 5em;
          height: 5em;
      }
 
-     .qui-list-title {
+     .qui .qui-list-title {
          font-size: 1.4em;
      }
  }
