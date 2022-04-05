@@ -218,7 +218,7 @@ const MultipleTemplateInline = (args) => {
       />
       <CheckBox
         {...args}
-        content={{ label: args.label[0], checked: false }}
+        content={{ label: args.label[1], checked: false }}
         asFloated="inline"
       />
     </>
