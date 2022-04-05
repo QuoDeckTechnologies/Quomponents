@@ -2,7 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from 'enzyme';
-import { render } from "@testing-library/react";
+import { render , fireEvent} from "@testing-library/react";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -16,6 +16,8 @@ import {
 import { Treebeard, decorators } from "react-treebeard";
 import '@testing-library/jest-dom';
 import '@testing-library/jest-dom/extend-expect';
+
+import SearchBar from "../SearchBar/SearchBar.react"
 
 
 describe("TreeBarOpen", () => {
@@ -141,6 +143,7 @@ describe("TreeBarOpen", () => {
         jest.resetAllMocks();
 
         component = shallow(<TreeBarOpen
+            content={content}
             asSize="normal"
             asFloated="inline"
             withColor={null}
@@ -279,11 +282,8 @@ describe("TreeBarOpen", () => {
 
     it("should expand search value tree", () => {
         const filter = "Article";
-
         const defaultMatcherData = defaultMatcher(filter, content.TreeData);
-
         let matcher = defaultMatcher;
-
         const findNodeData = findNode(content.TreeData.children[0], filter, matcher = defaultMatcher);
         expect(defaultMatcherData).toEqual(true)
 
@@ -300,4 +300,15 @@ describe("TreeBarOpen", () => {
         expect(expandFilteredNodesData).toEqual(filteredData);
     });
 
+    it("should render tree bar when click on search", () => {
+        component.setProps({onClick:jest.fn("some value")})
+        let search = component.find(SearchBar);
+        search.simulate('click') 
+    });
+
+    it("should toggle the treebeard",()=>{
+        component.setProps({onToggle:jest.fn()})
+        let treeBeard = component.find(Treebeard)
+        treeBeard.simulate('toggle')
+    })
 });
