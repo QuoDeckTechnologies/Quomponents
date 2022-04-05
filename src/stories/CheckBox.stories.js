@@ -58,12 +58,6 @@ export default {
         defaultValue: false,
       },
     },
-    isFluid: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
     onClick: {
       table: {
         category: "Events",
@@ -100,7 +94,6 @@ Default.args = {
   },
   isDisabled: false,
   isHidden: false,
-  isFluid: false,
 };
 Default.parameters = {
   docs: {
@@ -121,7 +114,6 @@ ReadOnlyCheckBox.args = {
   },
   isDisabled: true,
   isHidden: false,
-  isFluid: false,
 };
 ReadOnlyCheckBox.parameters = {
   docs: {
@@ -150,7 +142,6 @@ DisabledCheckBox.args = {
   },
   isDisabled: true,
   isHidden: false,
-  isFluid: false,
 };
 DisabledCheckBox.parameters = {
   docs: {

@@ -64,10 +64,6 @@ CheckBox.propTypes = {
     */
   isDisabled: PropTypes.bool,
   /**
-    Use to toggle the component taking the full width of the parent container
-    */
-  isFluid: PropTypes.bool,
-  /**
     CheckBox component must have the onClick function passed as props to return checked/unchecked status and label of the checkbox
     */
   onClick: PropTypes.func.isRequired,
@@ -87,7 +83,6 @@ CheckBox.defaultProps = {
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
-  isFluid: false,
 };
 /**
 ## Notes
