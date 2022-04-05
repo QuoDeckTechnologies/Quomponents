@@ -211,7 +211,7 @@ const ExampleTemplate = (args) => {
           <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#454545',color:'white',cursor:'pointer'}} onClick={()=>setOpenModalTwo(true)}>Option Two</div>
         </div>
       )}
-     {openModalTwo && <div className="qui qui-second-imported-component" style={{position:'absolute',zIndex:22,background:'white',padding:'5em'}}>
+     {openModalTwo && <div/*parent must have a qui class for arcmenu*/className="qui qui-second-imported-component" style={{position:'absolute',zIndex:22,background:'white',padding:'5em'}}>
        <h1>Testing Second Modal</h1>
        <ArcMenu
         type="close"
