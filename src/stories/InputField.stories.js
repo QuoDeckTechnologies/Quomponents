@@ -16,6 +16,7 @@ export default {
         },
       },
     },
+    name: "",
     asEmphasis: {
       control: "select",
       options: ["filled", "charLimited", "listInput", "shortField"],
@@ -23,23 +24,9 @@ export default {
         category: "as-Flags",
       },
     },
-    asSize: {
-      control: "select",
-      options: ["tiny", "small", "normal", "big", "huge", "massive"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     asFloated: {
       control: "select",
       options: ["left", "right", "none", "inline"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asAligned: {
-      control: "select",
-      options: ["left", "right", "center"],
       table: {
         category: "as-Flags",
       },
@@ -107,10 +94,9 @@ Default.args = {
     placeholder: "Options",
     maxLength: 300,
   },
+  name: "testing_id",
   asEmphasis: "filled",
-  asSize: "normal",
   asFloated: "none",
-  asAligned: "left",
   withColor: {
     textColor: "#666666",
     accentColor: "#8c8c89",
