@@ -6,7 +6,7 @@ export default {
     component: NuggetCard,
     argTypes: {
         content: {
-            status: "",
+            published: false,
             tags: [],
             category: "",
             name: "",
@@ -68,7 +68,7 @@ const Template = (args) => <NuggetCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        status: "none",
+        published: false,
         tags: ["Tag1", "Tag2"],
         category: "profiler",
         name: "Measure your sales readiness",

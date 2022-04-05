@@ -46,7 +46,7 @@ NuggetCard.propTypes = {
     // Component Specific props
     //=======================================
     content: PropTypes.shape({
-        status: PropTypes.oneOf(["published", "unpublished", "none"]),
+        published: PropTypes.bool,
         category: PropTypes.oneOf([
             "quiz",
             "assessment",
@@ -101,7 +101,7 @@ NuggetCard.defaultProps = {
     // Component Specific props
     //=======================================
     content: {
-        status: "none",
+        published: false,
         tags: [],
         category: "profiler",
         name: "Measure your sales readiness",
@@ -156,7 +156,12 @@ export default function NuggetCard(props) {
     }
 
     //-------------------------------------------------------------------
-    // 6. Get the Nugget Image
+    // 6. Get published status
+    //-------------------------------------------------------------------
+    let status = props.content.published ? "published" : "none"
+
+    //-------------------------------------------------------------------
+    // 7. Get the Nugget Image
     //-------------------------------------------------------------------
     const nuggetImages = {
         "quiz": Nugget_Quiz,
@@ -182,12 +187,12 @@ export default function NuggetCard(props) {
     };
 
     //-------------------------------------------------------------------
-    // 6. Capitalize first letter of category text
+    // 8. Capitalize first letter of category text
     //-------------------------------------------------------------------
     let category = props.content?.category ? props.content?.category?.charAt(0).toUpperCase() + props.content?.category?.slice(1) : "";
 
     //-------------------------------------------------------------------
-    // 7. Get the NuggetCard Component
+    // 9. Get the NuggetCard Component
     //-------------------------------------------------------------------
     const nuggetCard = () => {
         return (
@@ -195,7 +200,7 @@ export default function NuggetCard(props) {
                 <div className="qui-nugget-card-body">
                     <div className={`qui-nugget-card-title-container`}>
                         <div className={`qui-nugget-block-styling`}>
-                            <NuggetBlock status={props.content?.status} image={nuggetImages[props.content?.category]} />
+                            <NuggetBlock status={status} image={nuggetImages[props.content?.category]} />
                         </div>
                         <div className={`qui-nugget-card-title`}>
                             {props.content?.name}
