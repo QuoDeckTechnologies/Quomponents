@@ -178,11 +178,11 @@ export default function DeckAnalysis(props) {
                             <h1 className={`qui-deckblock-slidecount`}>{content?.slideCount}</h1>
                             <i className={`qui-deckblock-icon ${content?.icon}`}></i>
                         </div>
-                        <h1>{labelContent?.fheader}</h1>
+                        <h1 className="qui-fheader">{labelContent?.fheader}</h1>
                     </div>
                     <div className="qui-deckblock-header-message" >
                         <h1>{labelContent?.header}</h1>
-                        <h3>{labelContent?.message}</h3>
+                        <p>{labelContent?.message}</p>
                     </div>
                 </div>
                 <div className="qui-deckblock-bottom" style={props.content?.status === true ? { backgroundColor: "#C1DC9E" } : { backgroundColor: "#D97575" }} >
