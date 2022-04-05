@@ -229,11 +229,11 @@ const ExampleTemplate = (args) => {
     </div>
   );
 };
-export const AddButtonExample = ExampleTemplate.bind({});
-AddButtonExample.parameters = {
+export const AddCloseButtonUseCase = ExampleTemplate.bind({});
+AddCloseButtonUseCase.parameters = {
   docs: {
     source: {
-      code: `<ArcMenu {...${JSON.stringify(AddButtonExample.args, null, 2)}}/>`,
+      code: `<ArcMenu {...${JSON.stringify(AddCloseButtonUseCase.args, null, 2)}}/>`,
     },
   },
 };
