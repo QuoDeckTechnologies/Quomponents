@@ -6,13 +6,16 @@
 .qui .qui-feedback-form-container {
     display: flex;
 }
-.qui .qui-input-field-container {
+.qui .qui-feedback-input-field-container {
     width: 100%;
     top: 1em;
     padding: 1em 0.5em;
     border: 0.05em solid #dddddd;
     border-radius: 1em;
     display: flex;
+}
+.qui .qui-feedback-input-field{
+    margin-bottom:0.5em;
 }
 .qui .qui-toggle-input-fields {
     padding: 1em 0.5em;
@@ -43,7 +46,7 @@
     background-color: #ffffff;
 }
 @media only screen and (min-width: 320px) {
-    .qui .qui-input-field-container {
+    .qui .qui-feedback-input-field-container {
         flex-direction: column;
     }
     .qui-feedback-toggle-button {
@@ -57,7 +60,7 @@
     }
 }
 @media only screen and (min-width: 481px) {
-    .qui .qui-input-field-container {
+    .qui .qui-feedback-input-field-container {
         flex-direction: row;
     }
     .qui-feedback-toggle-button {
@@ -70,7 +73,7 @@
     }
 }
 @media only screen and (min-width: 1024px) {
-    .qui .qui-input-field-container {
+    .qui .qui-feedback-input-field-container {
         flex-direction: row;
     }
 }

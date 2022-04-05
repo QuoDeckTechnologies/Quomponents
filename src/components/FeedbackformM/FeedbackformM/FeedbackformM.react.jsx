@@ -1,6 +1,7 @@
 // Import npm packages
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import InputField from "../../InputField/InputField.react"
 import ToggleButton from "../../ToggleButton/ToggleButton.react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -112,9 +113,11 @@ export default function FeedbackformM(props) {
                 <div className="qui-feedback-toggle-button">
                     <ToggleButton {...props} onClick={() => setToggle(prevState => !prevState)} />
                 </div>
-                {toggle && <div className={`qui-input-field-container`}>
-                    <input type='text' placeholder='If Correct' className={`qui-toggle-input-fields variant-${props.asVariant}`} />
-                    <input type='text' placeholder='If InCorrect' className={`qui-toggle-input-fields variant-${props.asVariant}`} />
+                {toggle && <div className={`qui-feedback-input-field-container`}>
+                    {/* <input type='text' placeholder='If Correct' className={`qui-toggle-input-fields variant-${props.asVariant}`} />
+                    <input type='text' placeholder='If InCorrect' className={`qui-toggle-input-fields variant-${props.asVariant}`} /> */}
+                    <InputField {...props} className={`qui-feedback-input-field`} />
+                    <InputField {...props} />
                 </div>}
             </div>
         </motion.div>
