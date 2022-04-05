@@ -1,23 +1,25 @@
 .qui.qui-text-block {
-  overflow: visible;
   margin-bottom: 0.5em;
 }
 .qui .qui-text-block-area {
+  width: 70vw;
+  margin: 0 1em 0 1em;
+  min-height: 2em;
   position: relative;
   background-color: #ad292980;
   border-radius: 0.5em;
-  padding: 0.2em;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .qui .qui-block-text {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  width: 95%;
-  transform: translate(-50%, -50%);
-  padding: 0.5em 1em;
+  height: auto;
   font-weight: bold;
-  text-overflow: ellipsis;
+  word-break: break-word;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  white-space: no-wrap;
 }
 // Tringles
 .qui-text-block-chat-arrow {
@@ -39,160 +41,37 @@
   width: 0;
   height: 0;
 }
+.qui .qui-arrow-right-bottom {
+  right: 0.1em;
+  bottom: 0.5em;
+  border-top: 0.6em solid transparent;
+  border-bottom: 0.6em solid transparent;
+  border-left: 0.9em solid #ad292980;
+}
+.qui .qui-arrow-left-bottom {
+  left: 0.1em;
+  bottom: 0.5em;
+  border-top: 0.6em solid transparent;
+  border-bottom: 0.6em solid transparent;
+  border-right: 0.9em solid #ad292980;
+}
+.qui .qui-arrow-left-top {
+  left: 0.1em;
+  top: 0.5em;
+  border-top: 0.6em solid transparent;
+  border-bottom: 0.6em solid transparent;
+  border-right: 0.9em solid #ad292980;
+}
+.qui .qui-arrow-right-top {
+  right: 0.1em;
+  top: 0.5em;
+  border-top: 0.6em solid transparent;
+  border-bottom: 0.6em solid transparent;
+  border-left: 0.9em solid #ad292980;
+}
 @media only screen and (min-width: 320px) {
   .qui .qui-text-block-area {
-    width: 80vw;
-    height: 7em;
-  }
-  .qui .qui-block-text {
-    max-height: 5.35em;
-    font-size: 0.8em;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    white-space: no-wrap;
-  }
-  .qui .qui-arrow-right-bottom {
-    right: -0.9em;
-    bottom: 1em;
-    border-top: 0.6em solid transparent;
-    border-bottom: 0.6em solid transparent;
-    border-left: 0.9em solid #ad292980;
-  }
-  .qui .qui-arrow-left-bottom {
-    left: -0.9em;
-    bottom: 1em;
-    border-top: 0.6em solid transparent;
-    border-bottom: 0.6em solid transparent;
-    border-right: 0.9em solid #ad292980;
-  }
-  .qui .qui-arrow-left-top {
-    left: -0.9em;
-    top: 1em;
-    border-top: 0.6em solid transparent;
-    border-bottom: 0.6em solid transparent;
-    border-right: 0.9em solid #ad292980;
-  }
-  .qui .qui-arrow-right-top {
-    right: -0.9em;
-    top: 1em;
-    border-top: 0.6em solid transparent;
-    border-bottom: 0.6em solid transparent;
-    border-left: 0.9em solid #ad292980;
-  }
-}
-@media only screen and (min-width: 481px) {
-  .qui .qui-text-block-area {
-    width: 60vw;
-    height: 5em;
-  }
-  .qui .qui-block-text {
-    font-size: 0.8em;
-    top: 50%;
-  }
-  .qui .qui-arrow-right-bottom {
-    right: -1.2em;
-    bottom: 1em;
-    border-top: 0.8em solid transparent;
-    border-bottom: 0.8em solid transparent;
-    border-left: 1.2em solid #ad292980;
-  }
-  .qui .qui-arrow-left-bottom {
-    left: -1.2em;
-    bottom: 1em;
-    border-top: 0.8em solid transparent;
-    border-bottom: 0.8em solid transparent;
-    border-right: 1.2em solid #ad292980;
-  }
-  .qui .qui-arrow-left-top {
-    left: -1.2em;
-    top: 1em;
-    border-top: 0.8em solid transparent;
-    border-bottom: 0.8em solid transparent;
-    border-right: 1.2em solid #ad292980;
-  }
-  .qui .qui-arrow-right-top {
-    right: -1.2em;
-    top: 1em;
-    border-top: 0.8em solid transparent;
-    border-bottom: 0.8em solid transparent;
-    border-left: 1.2em solid #ad292980;
-  }
-}
-@media only screen and (min-width: 769px) {
-  .qui .qui-text-block-area {
-    width: 60vw;
-    height: 6em;
-  }
-  .qui .qui-block-text {
-    font-size: 1em;
-    max-height: 5.9em;
-    top: 50%;
-  }
-  .qui .qui-arrow-right-bottom {
-    bottom: 0.5em;
-    right: -1.4em;
-    border-top: 1em solid transparent;
-    border-bottom: 1em solid transparent;
-    border-left: 1.4em solid #ad292980;
-  }
-  .qui .qui-arrow-left-bottom {
-    bottom: 0.5em;
-    left: -1.4em;
-    border-top: 1em solid transparent;
-    border-bottom: 1em solid transparent;
-    border-right: 1.4em solid #ad292980;
-  }
-  .qui .qui-arrow-left-top {
-    top: 0.5em;
-    left: -1.4em;
-    border-top: 1em solid transparent;
-    border-bottom: 1em solid transparent;
-    border-right: 1.4em solid #ad292980;
-  }
-  .qui .qui-arrow-right-top {
-    right: -1.4em;
-    top:0.5em;
-    border-top: 1em solid transparent;
-    border-bottom: 1em solid transparent;
-    border-left: 1.4em solid #ad292980;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .qui .qui-text-block-area {
-    width: 60vw;
-    height: 7em;
-  }
-  .qui .qui-block-text {
-    font-size: 1em;
-    max-height: 5.2em;
-    top: 45%;
-  }
-  .qui .qui-arrow-right-bottom {
-    right: -1.7em;
-    bottom:0.5em;
-    border-top: 1.3em solid transparent;
-    border-bottom: 1.3em solid transparent;
-    border-left: 1.7em solid #ad292980;
-  }
-  .qui .qui-arrow-left-bottom {
-    left: -1.7em;
-    bottom:0.5em;
-    border-top: 1.3em solid transparent;
-    border-bottom: 1.3em solid transparent;
-    border-right: 1.7em solid #ad292980;
-  }
-  .qui .qui-arrow-left-top {
-    left: -1.7em;
-    top:0.5em;
-    border-top: 1.3em solid transparent;
-    border-bottom: 1.3em solid transparent;
-    border-right: 1.7em solid #ad292980;
-  }
-  .qui .qui-arrow-right-top {
-    right: -1.7em;
-    top:0.5em;
-    border-top: 1.3em solid transparent;
-    border-bottom: 1.3em solid transparent;
-    border-left: 1.7em solid #ad292980;
+    width: 70vw;
+    padding: 0.5em;
   }
 }

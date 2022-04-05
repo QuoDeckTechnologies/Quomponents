@@ -16,8 +16,7 @@ describe("TextBlock", () => {
         jest.resetAllMocks();
         component = mount(
             <TextBlock
-                content=""
-                opacity=""
+                content="Neque porro quisquam est qui dolorem"
                 position="left-top"
                 conversation={true}
                 asFloated="inline"
@@ -25,16 +24,17 @@ describe("TextBlock", () => {
                     backgroundColor: "#ffc900",
                     textColor: "#666666",
                 }}
-                withAnimation={null}
+                withAnimation={{
+                    animation: "zoom",
+                    duration: 0.5,
+                    delay: 0,
+                }}
                 isHidden={false}
                 isDisabled={false}
             />
         );
     });
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly with position is changed", () => {
+    it("should render correctly with position is changed to left-top", () => {
         component.setProps({
             position: "left-top"
         })
@@ -61,6 +61,10 @@ describe("TextBlock", () => {
             delay: 0,
         }
         component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed withAnimation props to be null", () => {
+        component.setProps({ withAnimation: null })
         expect(component.exists()).toBe(true);
     })
     it("should render correctly when passed asFloated prop as left", () => {

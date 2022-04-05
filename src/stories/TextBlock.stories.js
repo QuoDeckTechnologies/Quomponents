@@ -6,7 +6,6 @@ export default {
     component: TextBlock,
     argTypes: {
         content: "TextBlock",
-        opacity: "1",
         position: {
             control: "select",
             options: ["right-top", "right-bottom", "left-top", "left-bottom"],
@@ -82,11 +81,10 @@ const Template = (args) => <TextBlock {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: "Neque porro quisquam est qui dolorem",
-    opacity: "1",
     position: "left-top",
     conversation: true,
     asFloated: "inline",
-    asSize:"normal",
+    asSize: "normal",
     withColor: {
         backgroundColor: "",
         textColor: "#fff",
@@ -143,66 +141,129 @@ WithoutConversation.parameters = {
 export const Conversation = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {
-            position: "right-bottom",
+            content: "Hi!!",
+            position: "left-top",
             asFloated: "left",
             withAnimation: {
                 animation: "slideRight",
                 duration: 0.5,
                 delay: 0.1,
             },
+            withColor: {
+                backgroundColor: "#202c33",
+                textColor: "#fff",
+            },
         })
     };
     const baseObj2 = {
         ...Object.assign({}, Default.args, args, {
-            position: "left-bottom",
+            content: "Hello ",
+            position: "right-top",
             asFloated: "right",
             withAnimation: {
                 animation: "slideLeft",
                 duration: 0.5,
                 delay: 0.3,
             },
+            withColor: {
+                backgroundColor: "#225c4b",
+                textColor: "#fff",
+            },
         })
     };
     const baseObj3 = {
         ...Object.assign({}, Default.args, args, {
-            position: "right-bottom",
+            content: "Neque porro quisquam est qui dolorem",
+            position: "left-top",
             asFloated: "left",
             withAnimation: {
                 animation: "slideRight",
                 duration: 0.5,
                 delay: 0.5,
             },
+            withColor: {
+                backgroundColor: "#202c33",
+                textColor: "#fff",
+            },
         })
     };
     const baseObj4 = {
         ...Object.assign({}, Default.args, args, {
-            position: "left-bottom",
+            content: "Neque porro quisquam est qui dolorem Neque porro quisquam est qui dolorem",
+            position: "right-top",
             asFloated: "right",
             withAnimation: {
                 animation: "slideLeft",
                 duration: 0.5,
                 delay: 0.7,
             },
+            withColor: {
+                backgroundColor: "#225c4b",
+                textColor: "#fff",
+            },
+        })
+    };
+    const baseObj5 = {
+        ...Object.assign({}, Default.args, args, {
+            content: "Neque porro quisquam est qui dolorem Neque porro quisquam est qui dolorem ",
+            position: "left-top",
+            asFloated: "left",
+            withAnimation: {
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0.9,
+            },
+            withColor: {
+                backgroundColor: "#202c33",
+                textColor: "#fff",
+            },
+        })
+    };
+    const baseObj6 = {
+        ...Object.assign({}, Default.args, args, {
+            content: "OK!",
+            position: "right-top",
+            asFloated: "right",
+            withAnimation: {
+                animation: "slideLeft",
+                duration: 0.5,
+                delay: 1.1,
+            },
+            withColor: {
+                backgroundColor: "#225c4b",
+                textColor: "#fff",
+            },
         })
     };
     return (
-        <div>
-            <TextBlock
-                {...Object.assign({}, baseObj1, {
-                })}
-            />
-            <TextBlock
-                {...Object.assign({}, baseObj2, {
-                })}
-            />
-            <TextBlock
-                {...Object.assign({}, baseObj3, {
-                })}
-            />
-            <TextBlock
-                {...Object.assign({}, baseObj4, {
-                })}
-            />
-        </div>
+        <div style={{ backgroundImage: 'url("https://wallpaperaccess.com/full/2224368.png")', display: "flex", alignItems: "center", flexDirection: "column", height: "auto", width: "100%" }}>
+            <div style={{ fontFamily: "Helvetica", color: "white", fontWeight: "bold", fontSize: "2em", margin: "1em" }}>Whatsapp</div>
+            <div style={{ width: "100%" }} >
+                <TextBlock
+                    {...Object.assign({}, baseObj1, {
+                    })}
+                />
+                <TextBlock
+                    {...Object.assign({}, baseObj2, {
+                    })}
+                />
+                <TextBlock
+                    {...Object.assign({}, baseObj3, {
+                    })}
+                />
+                <TextBlock
+                    {...Object.assign({}, baseObj4, {
+                    })}
+                />
+                <TextBlock
+                    {...Object.assign({}, baseObj5, {
+                    })}
+                />
+                <TextBlock
+                    {...Object.assign({}, baseObj6, {
+                    })}
+                />
+            </div>
+        </div >
     );
 };

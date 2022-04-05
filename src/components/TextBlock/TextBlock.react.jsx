@@ -1,4 +1,5 @@
 // Import npm packages
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
@@ -14,11 +15,7 @@ import "../../common/stylesheets/overrule.scss";
 TextBlock.propTypes = {
     //=======================================
     // Component Specific props
-    //=======================================
-    /**
-    Opacity used to set the background opacity of the text block
-    */
-    opacity: PropTypes.string,
+    //======================================
     /**
     toggle the conversation prop to see the component as chat conversation
     */
@@ -73,7 +70,6 @@ TextBlock.propTypes = {
             "slideUp",
             "slideLeft",
             "slideRight",
-            ""
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
@@ -88,13 +84,12 @@ TextBlock.defaultProps = {
     // Component Specific props
     //=======================================
     content: "",
-    opacity: "",
     position: "left-top",
     conversation: false,
     // Quommon props
     //=======================================
     asFloated: "inline",
-    asSize:"normal",
+    asSize: "normal",
 
     withColor: null,
     withAnimation: null,
@@ -128,21 +123,16 @@ export default function TextBlock(props) {
         }
         if (position === "right-top") {
             return "qui-arrow-right-top";
-        } else {
+        }
+        else {
             return "qui-arrow-left-top";
         }
     };
+    if (content === "") {
+        return props.isHidden === true
+    }
     //-------------------------------------------------------------------
-    // 3. Use to set Color in text-block
-    //-------------------------------------------------------------------
-    let componentStyle = {
-        mainContainer: {
-            backgroundColor: props.withColor?.backgroundColor,
-            color: props.withColor?.textColor,
-        }
-    };
-    //-------------------------------------------------------------------
-    // 4. Get animation of the component
+    // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
@@ -151,14 +141,13 @@ export default function TextBlock(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui qui-text-block-container ${quommonClasses.parentClasses}`}
-        >
-            <div className={`qui-text-block-area ${quommonClasses.childClasses} `} style={{ ...componentStyle.mainContainer, opacity: props.opacity }}>
+            className={`qui qui-text-block-container ${quommonClasses.parentClasses}`}>
+            <div className={`qui-text-block-area`} style={{ backgroundColor: props.withColor.backgroundColor }}>
+                <div className={`qui-block-text size-${props.asSize} ${quommonClasses.childClasses} `} style={{ color: props.withColor.textColor }} >
+                    {content}
+                </div>
             </div>
-            <div className={`qui-block-text size-${props.asSize}`} style={{ ...componentStyle.mainContainer }}>
-                {content}
-            </div>
-            {props.conversation && <div className={`qui-text-block-tringle size-${props.asSize}`}>
+            {props.conversation && <div className={`qui-text-block-tringle`}>
                 <div className={`qui-text-block-chat-arrow ${getArrowPosition(props.position)}`}
                     style={{
                         opacity: props.opacity,
