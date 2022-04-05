@@ -32,6 +32,13 @@ export default {
                 category: "as-Flags",
             },
         },
+        asFloated: {
+            control: "select",
+            options: ["left", "right", "none", "inline"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -118,6 +125,7 @@ Default.args = {
         status: true,
     },
     asVariant: "success",
+    asFloated: "left",
     withColor: {
         textColor: "",
         accentColor: "",
@@ -214,6 +222,66 @@ TranslatedDeck.parameters = {
         },
         source: {
             code: `<DeckAnalysisBlock {...${JSON.stringify(TranslatedDeck.args, null, 2)}}/>`,
+        },
+    },
+};
+
+
+// -------------------------------------------------------------
+// AllVariants
+// -------------------------------------------------------------
+const AllVariantBlocks = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+        }),
+    };
+    return (
+        <div>
+            <DeckAnalysisBlock
+                {...Object.assign({}, baseObj, {
+                    withColor: {
+                        textColor: "#3A8080",
+                        accentColor: "#EB6346",
+                    },
+                })}
+            />
+            <DeckAnalysisBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "primary"
+                })}
+            />
+            <DeckAnalysisBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "secondary"
+                })}
+            />
+            <DeckAnalysisBlock
+                {...Object.assign({}, baseObj, {
+                    asVariant: "warning"
+                })}
+            />
+            <DeckAnalysisBlock
+                {...Object.assign({}, baseObj, {
+                    withAnimation: {
+                        animation: "collapse",
+                        duration: 1,
+                        delay: 0,
+                    },
+                })}
+            />
+        </div>
+    );
+};
+
+
+export const AllVariantsBlocks = AllVariantBlocks.bind({});
+AllVariantsBlocks.parameters = {
+    docs: {
+        description: {
+            story: "All variants are supported in DeckAnalysisBlock.",
+        },
+        source: {
+            code: `<DeckAnalysisBlock asVariant=""/>`,
         },
     },
 };

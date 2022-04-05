@@ -1,32 +1,36 @@
 .qui-deck-analysis-block {
-    width: 45%;
     margin: 0em 1em 1em 0em;
+    align-items: center;
+    width: 45%;
     box-shadow: 0px 5px 2px #d2d2d2;
     border-radius: 0.5em;
 }
 .qui .qui-main-deckblock {
     width: 100%;
+    box-shadow: 0px 5px 2px #d2d2d2;
+    border-radius: 0.5em;
 }
 .qui .qui-deckblock-header {
-    padding-left: 2.5em;
+    font-size: 1em;
 }
 .qui .qui-deckblock-rtop {
     display: flex;
-    margin-bottom: -5.5em;
+    margin-bottom: -3.8em;
 }
 .qui .qui-deckblock-top {
     display: flex;
 }
 .qui .qui-deckblock-icon {
-    font-size: 4em;
+    font-size: 3.2em;
     padding: 0.3em;
 }
 .qui .qui-fheader {
-    margin-left: 1em;
+    margin-left: 0.5em;
 }
 .qui .qui-deckblock-slidecount {
-    font-size: 5em;
+    font-size: 3.5em;
     margin-top: 0.1em;
+    margin-right: -0.1em;
     font-weight: 100;
 }
 .qui .qui-deckblock-bottom {
@@ -35,7 +39,7 @@
     height: 4em;
 }
 .qui .qui-deckblock-bottom .fas {
-    margin: 2.5em 0em 0em 2em;
+    margin: 2em 0em 0em 1.5em;
     cursor: pointer;
 }
 .qui .qui-deckblock-header-message h1 {
@@ -48,16 +52,25 @@
 
 @media screen and (min-width: 320px) {
     .qui-deck-analysis-block {
-        font-size: 0.42em;
+        font-size: 0.4em;
+        width: 48%;
     }
 }
 @media screen and (min-width: 481px) {
     .qui-deck-analysis-block {
         font-size: 0.6em;
+        width: 40%;
     }
 }
 @media screen and (min-width: 769px) {
     .qui-deck-analysis-block {
         font-size: 1em;
+        width: 40%;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .qui-deck-analysis-block {
+        font-size: 1em;
+        width: 40%;
     }
 }

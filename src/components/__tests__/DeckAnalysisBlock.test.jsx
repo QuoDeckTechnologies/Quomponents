@@ -99,6 +99,31 @@ describe("DeckAnalysis", () => {
         component.setProps({ asVariant: "success" })
         expect(component.exists()).toBe(true);
     })
+    it("should render correctly when passed asFloated prop as left", () => {
+        component.setProps({ asFloated: "left" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asFloated prop as right", () => {
+        component.setProps({ asFloated: "right" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asFloated prop as inline", () => {
+        component.setProps({ asFloated: "inline" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asFloated prop as none", () => {
+        component.setProps({ asFloated: "none" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed withColor props", () => {
+        let colors = {
+            backgroundColor: "#fff",
+            accentColor: "#FF0000",
+            textColor: "#00FFFF",
+        }
+        component.setProps({ withColor: colors })
+        expect(component.exists()).toBe(true);
+    })
 
     it("should render correctly with withTranslation prop", () => {
         component.setProps({

@@ -40,7 +40,11 @@ DeckAnalysis.propTypes = {
         "success",
         "warning",
         "error",
-    ]), 
+    ]),
+    /**
+     Use to float the component in parent container
+     */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
       Use to override component colors and behavior
       */
@@ -97,6 +101,7 @@ DeckAnalysis.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "primary",
+    asFloated:"left",
     withColor: null,
     withAnimation: null,
     withTranslation: null,
@@ -171,7 +176,7 @@ export default function DeckAnalysis(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className="qui qui-main-deckblock" className={`${quommonClasses.childClasses}`} style={colors.textColors}>
+            <div className={`qui qui-main-deckblock ${quommonClasses.childClasses}`} style={colors.textColors}>
                 <div className="qui-deckblock-top">
                     <div className="qui-deckblock-header">
                         <div className="qui-deckblock-rtop">
