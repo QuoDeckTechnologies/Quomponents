@@ -32,6 +32,13 @@ CheckBox.propTypes = {
     */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
+    Use to override component colors 
+    */
+  withColor: PropTypes.shape({
+    accentColor: PropTypes.string,
+    textColor: PropTypes.string,
+  }),
+  /**
     Use to define the entry animation of the component
     */
   withAnimation: PropTypes.shape({
@@ -76,6 +83,7 @@ CheckBox.defaultProps = {
   //=======================================
   asSize: "normal",
   asFloated: "left",
+  withColor: null,
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
@@ -90,7 +98,7 @@ export default function CheckBox(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring label prop
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { content, withColor } = props;
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
@@ -127,6 +135,7 @@ export default function CheckBox(props) {
         className={`qui-check-box-inner-container ${quommonClasses.childClasses}`}
       >
         <Checkbox
+          style={{ color: withColor?.accentColor }}
           checked={isChecked}
           id="qui-check-box-element"
           disabled={props.isDisabled}
@@ -141,7 +150,7 @@ export default function CheckBox(props) {
           htmlFor="qui-check-box-element"
           className="qui-check-box-element"
         >
-          <h4>{content?.label}</h4>
+          <h4 style={{ color: withColor?.textColor }}>{content?.label}</h4>
         </label>
       </div>
     </motion.div>

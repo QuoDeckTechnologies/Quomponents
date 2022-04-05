@@ -27,6 +27,15 @@ export default {
         category: "as-Flags",
       },
     },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          accentColor: "",
+          textColor: "",
+        },
+      },
+    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -80,6 +89,10 @@ Default.args = {
   },
   asSize: "normal",
   asFloated: "left",
+  withColor: {
+    accentColor: "",
+    textColor: "",
+  },
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
@@ -101,16 +114,10 @@ Default.parameters = {
 // -------------------------------------------------------------
 export const ReadOnlyCheckBox = Template.bind({});
 ReadOnlyCheckBox.args = {
+  ...Default.args,
   content: {
     label: "Read Only Checkbox",
     checked: true,
-  },
-  asSize: "normal",
-  asFloated: "left",
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
   },
   isDisabled: true,
   isHidden: false,
@@ -136,16 +143,10 @@ ReadOnlyCheckBox.parameters = {
 // -------------------------------------------------------------
 export const DisabledCheckBox = Template.bind({});
 DisabledCheckBox.args = {
+  ...Default.args,
   content: {
     label: "Disabled Checkbox",
     checked: false,
-  },
-  asSize: "normal",
-  asFloated: "left",
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
   },
   isDisabled: true,
   isHidden: false,
