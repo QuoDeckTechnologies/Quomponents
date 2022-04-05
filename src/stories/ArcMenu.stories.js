@@ -18,6 +18,10 @@ export default {
       control: "select",
       options: ["close", "menu", "add", "nugget-menu"],
     },
+    arcIcon:{
+      control: "select",
+      options: ["close", "menu", "add"],
+    },
     position: {
       control: "select",
       options: ["top-right", "top-left", "bottom-right", "bottom-left"],
@@ -93,6 +97,7 @@ Default.args = {
     { image: Nugget_Feedback },
   ],
   type: "close",
+  arcIcon:'close',
   position: "top-right",
   isDisabled: false,
   isHidden: false,
@@ -120,6 +125,7 @@ NuggetMenuButton.args = {
   ],
   menuContent: [],
   type: "nugget-menu",
+  arcIcon:'menu',
   position: "bottom-left",
 };
 NuggetMenuButton.parameters = {
@@ -151,6 +157,7 @@ MenuButton.args = {
   ],
   nuggetContent: [],
   type: "menu",
+  arcIcon:'menu',
   position: "bottom-left",
 };
 MenuButton.parameters = {
@@ -167,6 +174,7 @@ export const AddButton = Template.bind({});
 AddButton.args = {
   ...Default.args,
   type: "add",
+  arcIcon:'add',
   position: "bottom-left",
 };
 AddButton.parameters = {

@@ -33,9 +33,13 @@ ArcMenu.propTypes = {
     })
   ),
   /**
-  Use to change the type of ArcMenu as a `close` , `menu`, `add` or `nugget-menu`
+  Use to change the type of menu ArcMenu opens, a `close` , `menu`, `add` or `nugget-menu`
   */
-  type: PropTypes.oneOf(["close", "menu", "add", "nugget-menu"]).isRequired,
+  type: PropTypes.oneOf(["close", "menu", "add", "nugget-menu"]),
+  /**
+  Use to change the icon of ArcMenu as `close` , `menu` or `add`
+  */
+  arcIcon: PropTypes.oneOf(["close", "menu", "add"]).isRequired,
   /**
   Use to toggle position of ArcMenu
   */
@@ -141,13 +145,40 @@ export default function ArcMenu(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props and defining states
   //-------------------------------------------------------------------
-  const { menuContent, nuggetContent } = props;
+  const { menuContent, nuggetContent, arcIcon } = props;
   const [openMenu, setOpenMenu] = useState(false);
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "arc-menu");
-
+  const getIcon = (icon) => {
+    if (icon === "menu") {
+      return (
+        <div className="qui-arc-icon-menu-wrapper">
+          <div className="qui-arc-icon-fragment-top">
+            <div className="qui-arc-icon-fragment-left"></div>
+            <div className="qui-arc-icon-fragment-right"></div>
+          </div>
+          <div className="qui-arc-icon-fragment-bottom">
+            <div className="qui-arc-icon-fragment-right"></div>
+            <div className="qui-arc-icon-fragment-left"></div>
+          </div>
+        </div>
+      );
+    }
+    if (icon === "close") {
+      return (
+        <i className={`qui-arch-icon qui-arc-close-icon fas fa-times`}></i>
+      );
+    }
+    if (icon === "add") {
+      return (
+        <div className="qui-add-icon-wrapper">
+          <i className={`qui-arch-icon fas fa-plus`}></i>
+        </div>
+      );
+    }
+  };
   // ========================= Render Function =================================
 
   return (
@@ -165,7 +196,7 @@ export default function ArcMenu(props) {
               className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
               onClick={() => setOpenMenu((prevState) => !prevState)}
             >
-              <div className="qui-arc-icon-menu-wrapper">
+              {/* <div className="qui-arc-icon-menu-wrapper">
                 <div className="qui-arc-icon-fragment-top">
                   <div className="qui-arc-icon-fragment-left"></div>
                   <div className="qui-arc-icon-fragment-right"></div>
@@ -174,29 +205,32 @@ export default function ArcMenu(props) {
                   <div className="qui-arc-icon-fragment-right"></div>
                   <div className="qui-arc-icon-fragment-left"></div>
                 </div>
-              </div>
+              </div> */}
+              {getIcon(arcIcon)}
             </button>
           )}
-          {props.type === "close" && (
+          {(props.type === "close" || props.type === 'add') && (
             <button
-              className={`qui-arc-menu-button qui-arc-menu-close-button ${quommonClasses.childClasses}`}
+              className={`qui-arc-menu-button qui-arc-menu-${props.type}-button ${quommonClasses.childClasses}`}
               onClick={(e) => props.onClick(e)}
             >
-              <i
+              {/* <i
                 className={`qui-arch-icon qui-arc-close-icon fas fa-times`}
-              ></i>
+              ></i> */}
+              {getIcon(arcIcon)}
             </button>
           )}
-          {props.type === "add" && (
+          {/* {props.type === "add" && (
             <button
-              className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
+              className={`qui-arc-menu-button qui-arc-menu-${props.type}-button qui-btn ${quommonClasses.childClasses}`}
               onClick={(e) => props.onClick(e)}
             >
               <div className="qui-add-icon-wrapper">
                 <i className={`qui-arch-icon fas fa-plus`}></i>
               </div>
+              {getIcon(arcIcon)}
             </button>
-          )}
+          )} */}
           {props.type === "nugget-menu" && (
             <motion.div
               variants={getMenuAnimation(props.position)}
