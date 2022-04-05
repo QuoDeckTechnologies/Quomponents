@@ -122,7 +122,7 @@ describe("ArcMenu", () => {
     component.setProps({
       type: "menu",
     });
-    component.find(".qui-arc-menu-list-item").at(0).simulate("click");
+    component.find(".qui-arc-menu-list-item").at(0).simulate("mousedown");
   });
 
   it("should render correctly when type is menu and position is bottom-right", () => {

@@ -218,11 +218,14 @@ export default function ArcMenu(props) {
                     key={i}
                   >
                     <NuggetBlock
-                      image={dataObj.image}
+                      image={dataObj?.image}
                       status="none"
                       asSize="huge"
                       asPadded="fitted"
-                      onClick={() => props.onClick(i)}
+                      onClick={() => {
+                        props.onClick(dataObj?.link)
+                        setOpenMenu(false)
+                      }}
                     />
                   </div>
                 );
@@ -248,7 +251,10 @@ export default function ArcMenu(props) {
                       {dataObj.list.map((listItem, index) => (
                         <div
                           className="qui-arc-menu-list-item"
-                          onClick={() => props.onClick(listItem)}
+                          onMouseDown={() => {
+                            props.onClick(listItem)
+                            setOpenMenu(false)
+                          }}
                           key={listItem + index}
                         >
                           {listItem.toUpperCase()}

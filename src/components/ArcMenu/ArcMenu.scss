@@ -98,18 +98,22 @@
 }
 
 .qui .qui-arc.qui-top-right .qui-arc-menu-buttons,
+.qui .qui-arc.qui-top-left .qui-arc-menu-buttons {
+  top: 150%;
+}
+.qui .qui-arc.qui-bottom-left .qui-arc-menu-buttons,
 .qui .qui-arc.qui-bottom-right .qui-arc-menu-buttons {
-  right: 130%;
+  bottom: 150%;
+}
+
+.qui .qui-arc.qui-top-right .qui-arc-menu-buttons,
+.qui .qui-arc.qui-bottom-right .qui-arc-menu-buttons {
+  right: 0%;
 }
 
 .qui .qui-arc.qui-top-left .qui-arc-menu-buttons,
 .qui .qui-arc.qui-bottom-left .qui-arc-menu-buttons {
-  left: 120%;
-}
-
-.qui .qui-arc.qui-bottom-right .qui-arc-menu-buttons,
-.qui .qui-arc.qui-bottom-left .qui-arc-menu-buttons {
-  bottom: 0;
+  left: 0%;
 }
 
 .qui .qui-menu-button.qui-arc-menu-nugget-menu {
@@ -199,10 +203,6 @@
   .qui .qui-arc .qui-arc-menu-button {
     box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.32);
   }
-  .qui .qui-arc-menu-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
   .qui .qui-arc-menu-buttons.qui-arc-menu-menu {
     display: block;
   }
@@ -283,7 +283,7 @@
 
 @media only screen and (min-width: 768px) {
   .qui.qui-arc-menu .qui-arc-menu-nugget-menu {
-    font-size: 1em;
+    font-size: 0.8em;
   }
   .qui .qui-arc-menu-buttons.qui-arc-menu-menu {
     display: flex;
