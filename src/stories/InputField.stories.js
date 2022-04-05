@@ -1,15 +1,24 @@
 import React from "react";
-import InlineEdit from "../components/InlineEdit/InlineEdit.react";
+import InputField from "../components/InputField/InputField.react";
 
 export default {
-  title: "Design System/InlineEdit/InlineEdit",
-  component: InlineEdit,
+  title: "Design System/InputField/InputField",
+  component: InputField,
   argTypes: {
-    content: "Please input your text here",
-    name: "",
+    content: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          label: "Input Name",
+          value: "Please input your text here",
+          placeholder: "Options",
+          maxLength: 1,
+        },
+      },
+    },
     asEmphasis: {
       control: "select",
-      options: ["singleLine", "multiLine"],
+      options: ["filled", "charLimited", "listInput", "shortField"],
       table: {
         category: "as-Flags",
       },
@@ -39,6 +48,7 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
+          textColor: "",
           accentColor: "",
           backgroundColor: "",
         },
@@ -80,7 +90,7 @@ export default {
   ],
   parameters: {
     componentSubtitle:
-      "Default InlineEdit for general purpose use",
+      "Default InputField for general purpose use",
     a11y: { disable: true },
     docs: { iframeHeight: 150 },
   },
@@ -88,17 +98,22 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <InlineEdit {...args} />;
+const Template = (args) => <InputField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: "Please input your text here",
-  name: "testing_id",
-  asEmphasis: "singleLine",
+  content: {
+    label: "Input Name",
+    value: "Please input your text here",
+    placeholder: "Options",
+    maxLength: 300,
+  },
+  asEmphasis: "filled",
   asSize: "normal",
   asFloated: "none",
   asAligned: "left",
   withColor: {
-    accentColor: "#FFAB00",
+    textColor: "#666666",
+    accentColor: "#8c8c89",
     backgroundColor: "#ffab000d",
   },
   withAnimation: {
@@ -112,55 +127,27 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<InlineEdit {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<InputField {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// MultiLine InlineEdit
+// charLimited InputField
 // -------------------------------------------------------------
-export const MultiLineEdit = Template.bind({});
-MultiLineEdit.args = {
+export const charLimitedField = Template.bind({});
+charLimitedField.args = {
   ...Default.args,
-  asEmphasis: "multiLine",
+  asEmphasis: "charLimited",
 };
-MultiLineEdit.parameters = {
+charLimitedField.parameters = {
   docs: {
     description: {
       story:
-        "Use to show the multiLine editing state for the InlineEdit.",
+        "Use to show the charLimited editing state for the InputField.",
     },
     source: {
-      code: `<MultiLineEdit {...${JSON.stringify(
-        MultiLineEdit.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-
-// -------------------------------------------------------------
-// Animated InlineEdit
-// -------------------------------------------------------------
-export const AnimatedInlineEdit = Template.bind({});
-AnimatedInlineEdit.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "slideRight",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedInlineEdit.parameters = {
-  docs: {
-    description: {
-      story:
-        "Use to animate the entry of the InlineEdit with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
-    },
-    source: {
-      code: `<AnimatedInlineEdit {...${JSON.stringify(
-        AnimatedInlineEdit.args,
+      code: `<charLimitedField {...${JSON.stringify(
+        charLimitedField.args,
         null,
         2
       )}}/>`,
@@ -168,44 +155,53 @@ AnimatedInlineEdit.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Variants
+// listInput InputField
 // -------------------------------------------------------------
-const AllVariantsTemplate = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args, {
-    }),
-  };
-  return (
-    <div>
-      <InlineEdit
-        {...Object.assign({}, baseObj, {
-          withColor: {
-            accentColor: "#ffbf00",
-            backgroundColor: "#666666",
-          }
-        })}
-      />{" "}
-      <br />
-      <InlineEdit
-        {...Object.assign({}, baseObj, {
-          asEmphasis: "multiLine",
-          withColor: {
-            accentColor: "#589C48",
-            backgroundColor: "#733381",
-          }
-        })}
-      />{" "}
-    </div>
-  );
+export const listInputField = Template.bind({});
+listInputField.args = {
+  ...Default.args,
+  content: {
+    value: "",
+    placeholder: "Options",
+    maxLength: 300,
+  },
+  asEmphasis: "listInput",
 };
-export const AllVariants = AllVariantsTemplate.bind({});
-AllVariants.parameters = {
+listInputField.parameters = {
   docs: {
     description: {
-      story: "variants are supported. Use as per purpose noted here.",
+      story:
+        "Use to show the listInput editing state for the InputField.",
     },
     source: {
-      code: `<InlineEdit asEmphasis: "multiLine", withColor: { accentColor: "#589C48", backgroundColor: "#733381"}/>`,
+      code: `<listInputField {...${JSON.stringify(
+        listInputField.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// shortField InputField
+// -------------------------------------------------------------
+export const ShortFieldField = Template.bind({});
+ShortFieldField.args = {
+  ...Default.args,
+  asEmphasis: "shortField",
+};
+ShortFieldField.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to show the shortField editing state for the InputField.",
+    },
+    source: {
+      code: `<ShortFieldField {...${JSON.stringify(
+        ShortFieldField.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

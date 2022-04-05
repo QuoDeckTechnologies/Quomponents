@@ -1,30 +1,37 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
+import TextField from '@mui/material/TextField';
 import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
-import "./InlineEdit.scss";
+import "./InputField.scss";
 import "../../common/stylesheets/overrule.scss";
 
-InlineEdit.propTypes = {
+InputField.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-    Use to define InlineEdit's value
+    Use to define InputField's value
     */
-    content: PropTypes.string.isRequired,
+    content: PropTypes.shape({
+        label: PropTypes.string,
+        value: PropTypes.string,
+        placeholder: PropTypes.string,
+        maxLength: PropTypes.number,
+    }),
     /**
-    Use to define name's ID
+    Use to set the state of InputField 
     */
-    name: PropTypes.string.isRequired,
-    /**
-    Use to set the state of InlineEdit 
-    */
-    asEmphasis: PropTypes.oneOf(["singleLine", "multiLine"]),
+    asEmphasis: PropTypes.oneOf([
+        "filled",
+        "charLimited",
+        "listInput",
+        "shortField",
+    ]),
     //=======================================
     // Quommon props
     //=======================================
@@ -51,6 +58,7 @@ InlineEdit.propTypes = {
     Use to set Colors in component 
     */
     withColor: PropTypes.shape({
+        textColor: PropTypes.string,
         accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
     }),
@@ -79,19 +87,14 @@ InlineEdit.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
-    /**
-    InlineEdit component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
 };
 
-InlineEdit.defaultProps = {
+InputField.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: "",
-    name: "",
-    asEmphasis: "singleLine",
+    content: null,
+    asEmphasis: "filled",
     //=======================================
     // Quommon props
     //=======================================
@@ -104,8 +107,6 @@ InlineEdit.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
-
-    onClick: null,
 };
 /**
 ## Notes
@@ -114,41 +115,32 @@ InlineEdit.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function InlineEdit(props) {
+export default function InputField(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "inline-edit");
+    let quommonClasses = getQuommons(props, "input-field");
     //-------------------------------------------------------------------
-    // 2. Declaration of Input's value
+    // 2. Declaration of InputField's value
     //-------------------------------------------------------------------
-    const [input, setInput] = useState(props.content);
+    const [input, setInput] = useState(props.content?.value);
+    const [count, setCount] = useState(props.content?.maxLength);
 
     function handleChange(e) {
         setInput(e.target.value);
+        setCount(e.target.value.length)
+
         if (e.key === "Enter" && e.target.value !== "") {
             e.target.blur()
-            props.onClick(e.target.name, e.target.value);
         }
         if (e.key === "Escape") {
             e.target.value = ""
         }
     }
     //-------------------------------------------------------------------
-    // 3. Use to set styling for InlineEdit.
+    // 3. Use to set styling for InputField.
     //-------------------------------------------------------------------
     const inputRef = useRef();
-
-    const onInput = (target) => {
-        if (target.scrollHeight > 33) {
-            target.style.height = "5px";
-            target.style.height = target.scrollHeight - 16 + "px";
-        }
-    };
-
-    useEffect(() => {
-        onInput(inputRef.current);
-    }, [onInput, inputRef]);
 
     const changeFocus = () => {
         inputRef.current.style.borderColor = props.withColor?.accentColor
@@ -156,34 +148,90 @@ export default function InlineEdit(props) {
     }
 
     const changeBlur = () => {
-        inputRef.current.style.backgroundColor = "transparent"
+        inputRef.current.style.backgroundColor = "#d4d3cf"
     }
     //-------------------------------------------------------------------
-    // 4. Use to set state of InlineEdit.
+    // 4. Use to set state of InputField.
     //-------------------------------------------------------------------
     const { asEmphasis } = props
     const getInput = (asEmphasis) => {
-        if (asEmphasis === "multiLine") {
+        if (asEmphasis === "filled") {
             return (
-                <textarea
-                    className={`qui-textarea-field ${props.asAligned}-aligned`}
+                <TextField
+                    className="qui-filled"
+                    // InputProps={{
+                    //     disableUnderline: true,
+                    // }}
+                    InputLabelProps={{
+                        style: { color: props.withColor?.textColor },
+                    }}
+                    label={props.content?.label}
+                    variant="filled"
                     value={input}
-                    name={props.name}
                     ref={inputRef}
-                    onFocus={() => changeFocus()}
+                    onFocus={() => changeFocus()
+                    }
                     onBlur={() => changeBlur()}
                     onChange={handleChange}
                     onKeyDown={handleChange}
-                    onInput={(e) => onInput(e.target)}
                 />
+
+            )
+        }
+        if (asEmphasis === "charLimited") {
+            return (
+                <div className="qui-char-limited-container">
+                    <div className="qui-char-limited-max-length">{`${count}/${props.content?.maxLength}`}</div>
+                    <TextField
+                        className="qui-char-limited"
+                        InputLabelProps={{
+                            style: { color: props.withColor?.textColor },
+                        }}
+                        inputProps={{ maxLength: props.content?.maxLength }}
+                        multiline={true}
+                        label={props.content?.label}
+                        variant="filled"
+                        value={input}
+                        ref={inputRef}
+                        onFocus={() => changeFocus()}
+                        onBlur={() => changeBlur()}
+                        onChange={handleChange}
+                        onKeyDown={handleChange}
+                    />
+                </div>
+            )
+        }
+        if (asEmphasis === "listInput") {
+            return (
+                <div className="qui-list-input-container">
+                    <div className="qui-char-limited-max-length">{`${count}/${props.content?.maxLength}`}</div>
+                    <TextField
+                        className="qui-list-input"
+                        InputLabelProps={{
+                            style: { color: props.withColor?.textColor },
+                        }}
+                        inputProps={{ maxLength: props.content?.maxLength }}
+                        placeholder={props.content?.placeholder}
+                        multiline={true}
+                        size="small"
+                        variant="filled"
+                        value={input}
+                        ref={inputRef}
+                        onFocus={() => changeFocus()}
+                        onBlur={() => changeBlur()}
+                        onChange={handleChange}
+                        onKeyDown={handleChange}
+                    />
+                </div>
             )
         }
         else {
             return (
                 <input
-                    className={`qui-input-field ${props.asAligned}-aligned`}
+                    className="qui-short-field"
+                    type="number"
+                    min="0"
                     value={input}
-                    name={props.name}
                     ref={inputRef}
                     onFocus={() => changeFocus()}
                     onBlur={() => changeBlur()}
@@ -204,7 +252,7 @@ export default function InlineEdit(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`${quommonClasses.childClasses}`}>
+            <div className={`qui-input-field-container ${quommonClasses.childClasses}`}>
                 {getInput(asEmphasis)}
             </div>
         </motion.div>

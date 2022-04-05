@@ -6,9 +6,9 @@ import { shallow, mount, enzyme } from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import InlineEdit from '../InlineEdit/InlineEdit.react'
+import InputField from '../InputField/InputField.react'
 
-describe("InlineEdit", () => {
+describe("InputField", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -17,13 +17,16 @@ describe("InlineEdit", () => {
     let onChange = jest.fn();
     let onBlur = jest.fn();
     let onInput = jest.fn();
-    let onClick = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
-        component = mount(<InlineEdit
-            content="Please input your text here"
-            inlineEditID="testing_id"
+        component = mount(<InputField
+            content={{
+                label: "Input Name",
+                value: "Please input your text here",
+                placeholder: "Options",
+                maxLength: 300,
+            }}
             asEmphasis="singleLine"
             asSize="normal"
             asFloated="none"
@@ -36,7 +39,6 @@ describe("InlineEdit", () => {
             onChange={onChange}
             onBlur={onBlur}
             onInput={onInput}
-            onClick={onClick}
         />);
     })
 
@@ -158,86 +160,88 @@ describe("InlineEdit", () => {
         expect(component.exists()).toBe(true);
     });
     // ---------------------------------
-    it("it should pass the value to the InlineEdit", () => {
+    it("it should pass the value to the InputField", () => {
         component.find('input').simulate('change', { target: { value: 'Please input your text here' } })
         expect(component.find('input').props().value).toEqual('Please input your text here');
     });
 
-    it("it should render correct props when blur on InlineEdit", () => {
+    it("it should render correct props when blur on InputField", () => {
         component.find('input').simulate('blur', { style: { backgroundColor: "#666666" } })
         expect(component.exists()).toBe(true);
     });
 
-    it("it should render correct props when focus on InlineEdit", () => {
+    it("it should render correct props when focus on InputField", () => {
         component.find('input').simulate('focus', { style: { accentColor: "#ffbf00" } })
         expect(component.exists()).toBe(true);
     });
     // ---------------------------------
-    it("it should pass the value to the InlineEdit when asEmphasis props set as multiLine", () => {
-        component.setProps({
-            asEmphasis: "multiLine"
-        });
-        component.find('textarea').simulate('change', { target: { value: 'Please input your text here' } })
-        expect(component.find('textarea').props().value).toEqual('Please input your text here');
-    });
-
-    it("it should render correct props when blur on InlineEdit when asEmphasis props set as multiLine", () => {
-        component.setProps({
-            asEmphasis: "multiLine"
-        });
-        component.find('textarea').simulate('blur', { style: { backgroundColor: "#666666" } })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correct props when focus on InlineEdit when asEmphasis props set as multiLine", () => {
-        component.setProps({
-            asEmphasis: "multiLine"
-        });
-        component.find('textarea').simulate('focus', { style: { accentColor: "#ffbf00" } })
-        expect(component.exists()).toBe(true);
-    });
-    // ---------------------------------
     it("it should trigger the escape event when input contain some value", () => {
-        let InlineEdit = component.find('input');
-        InlineEdit.simulate('change', { target: { value: 'Please input your text here' } });
+        let InputField = component.find('input');
+        InputField.simulate('change', { target: { value: 'Please input your text here' } });
         component.find('input').simulate('change', { key: 'Enter' })
         expect(component.exists()).toBe(true);
     });
 
     it("it should trigger the escape event when input contain empty value", () => {
-        let InlineEdit = component.find('input');
-        InlineEdit.simulate('change', { target: { value: '' } });
+        let InputField = component.find('input');
+        InputField.simulate('change', { target: { value: '' } });
         component.find('input').simulate('change', { key: 'Escape' })
         expect(component.exists()).toBe(true);
     });
 
     it("it should trigger the escape event when textarea contain some value", () => {
         component.setProps({
-            asEmphasis: "multiLine"
+            asEmphasis: "filled"
         });
-        let InlineEdit = component.find('textarea');
-        InlineEdit.simulate('change', { target: { value: 'Please input your text here' } });
-        component.find('textarea').simulate('change', { key: 'Enter' })
+        let InputField = component.find('TextField');
+        InputField.simulate('change', { target: { value: 'Please input your text here' } });
+        component.find('TextField').simulate('change', { key: 'Enter' })
         expect(component.exists()).toBe(true);
     });
 
-    it("it should trigger the escape event when textarea contain empty value", () => {
+    // it("it should trigger the escape event when textarea contain empty value", () => {
+    //     component.setProps({
+    //         asEmphasis: "multiLine"
+    //     });
+    //     let InputField = component.find('textarea');
+    //     InputField.simulate('change', { target: { value: '' } });
+    //     component.find('textarea').simulate('change', { key: 'Escape' })
+    //     expect(component.exists()).toBe(true);
+    // });
+
+    // it("it should render correct style when height of textarea changes", () => {
+    //     component.setProps({
+    //         asEmphasis: "multiLine"
+    //     });
+    //     component.find('textarea').simulate('input', { target: { style: { height: "5px" }, scrollHeight: 35 } });
+    //     expect(component.exists()).toBe(true);
+    // });
+
+    // ---------------------------------
+    it("it should pass the value to the InputField when asEmphasis props set as multiLine", () => {
         component.setProps({
-            asEmphasis: "multiLine"
+            asEmphasis: "charLimited"
         });
-        let InlineEdit = component.find('textarea');
-        InlineEdit.simulate('change', { target: { value: '' } });
-        component.find('textarea').simulate('change', { key: 'Escape' })
+        // component.find('textarea').simulate('change', { target: { value: 'Please input your text here' } })
+        // expect(component.find('textarea').props().value).toEqual('Please input your text here');
+    });
+
+    it("it should render correct props when blur on InputField when asEmphasis props set as multiLine", () => {
+        component.setProps({
+            asEmphasis: "listInput"
+        });
+        // component.find('textarea').simulate('blur', { style: { backgroundColor: "#666666" } })
         expect(component.exists()).toBe(true);
     });
 
-    it("it should render correct style when height of textarea changes", () => {
+    it("it should render correct props when focus on InputField when asEmphasis props set as multiLine", () => {
         component.setProps({
-            asEmphasis: "multiLine"
+            asEmphasis: "shortField"
         });
-        component.find('textarea').simulate('input', { target: { style: { height: "5px" }, scrollHeight: 35 } });
+        // component.find('textarea').simulate('focus', { style: { accentColor: "#ffbf00" } })
         expect(component.exists()).toBe(true);
     });
+
 });
 
 
