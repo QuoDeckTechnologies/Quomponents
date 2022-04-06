@@ -181,8 +181,8 @@ export default function ToggleButton(props) {
                 <label
                     htmlFor="qui-switch-toggle"
                     className={`qui-Toggle-Button-title size-${props.asSize} ${quommonClasses.childClasses}`}
-                >
-                    <p style={{ color: props.withColor?.textColor }}>{content}</p>
+                    style={{ color: props.withColor?.textColor }}>
+                    {content}
                 </label>
             </div>
         </motion.div >
