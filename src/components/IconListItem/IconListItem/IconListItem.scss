@@ -2,20 +2,19 @@
      display: flex;
      margin-top: 1.5em;
      align-items: center;
-     justify-content: space-around;
-     padding-left: 0.9em;
+     justify-content: center;
+
  }
 
  .qui .qui-list-image {
      border-radius: 0.3em;
      width: 3em;
      height: 3em;
-     margin-right: 1.5em;
  }
 
  .qui .qui-list-title {
      width: auto;
-     margin-right: 1.5em;
+     margin: 0 1em 0 1em;
  }
 
  @media only screen and (min-width: 320px) {
@@ -32,6 +31,6 @@
 
  @media only screen and (min-width: 720px) {
      .qui .qui-conversion-list {
-         font-size: 1.6em;
+         font-size: 2em;
      }
  }

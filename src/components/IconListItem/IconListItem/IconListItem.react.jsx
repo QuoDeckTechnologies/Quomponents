@@ -79,7 +79,7 @@ export default function IconListItem(props) {
   const { content } = props;
   // 2. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "IconListItem");
+  let quommonClasses = getQuommons(props, "iconlist-item");
   quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
   //-------------------------------------------------------------------
   // 3. Get animation of the component
