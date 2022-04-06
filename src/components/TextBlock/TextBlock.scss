@@ -1,0 +1,77 @@
+.qui.qui-text-block {
+  margin-bottom: 0.5em;
+}
+.qui .qui-text-block-area {
+  width: 70vw;
+  margin: 0 1em 0 1em;
+  min-height: 2em;
+  position: relative;
+  background-color: #ad292980;
+  border-radius: 0.5em;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.qui .qui-block-text {
+  height: auto;
+  font-weight: bold;
+  word-break: break-word;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  white-space: no-wrap;
+}
+// Tringles
+.qui-text-block-chat-arrow {
+  position: absolute;
+}
+.qui .qui-arrow-right-bottom {
+  width: 0;
+  height: 0;
+}
+.qui .qui-arrow-left-bottom {
+  width: 0;
+  height: 0;
+}
+.qui .qui-arrow-left-top {
+  width: 0;
+  height: 0;
+}
+.qui .qui-arrow-right-top {
+  width: 0;
+  height: 0;
+}
+.qui .qui-arrow-right-bottom {
+  right: 0.1em;
+  bottom: 0.5em;
+  border-top: 0.6em solid transparent;
+  border-bottom: 0.6em solid transparent;
+  border-left: 0.9em solid #ad292980;
+}
+.qui .qui-arrow-left-bottom {
+  left: 0.1em;
+  bottom: 0.5em;
+  border-top: 0.6em solid transparent;
+  border-bottom: 0.6em solid transparent;
+  border-right: 0.9em solid #ad292980;
+}
+.qui .qui-arrow-left-top {
+  left: 0.1em;
+  top: 0.5em;
+  border-top: 0.6em solid transparent;
+  border-bottom: 0.6em solid transparent;
+  border-right: 0.9em solid #ad292980;
+}
+.qui .qui-arrow-right-top {
+  right: 0.1em;
+  top: 0.5em;
+  border-top: 0.6em solid transparent;
+  border-bottom: 0.6em solid transparent;
+  border-left: 0.9em solid #ad292980;
+}
+@media only screen and (min-width: 320px) {
+  .qui .qui-text-block-area {
+    width: 70vw;
+    padding: 0.5em;
+  }
+}
