@@ -22,12 +22,6 @@ ToggleButton.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define component text size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "small",
-        "normal",
-    ]), /**
     Use to define standard component type
     */
     asVariant: PropTypes.oneOf([
@@ -96,7 +90,6 @@ ToggleButton.defaultProps = {
     content: "",
     // Quommon props
     //=======================================
-    asSize: "normal",
     asVariant: "primary",
     asFloated: "none",
 
@@ -159,10 +152,6 @@ export default function ToggleButton(props) {
             props.onClick(event.target.checked)
         }
     };
-    const getSwitchSize = () => {
-        if (props.asSize === "small") return "small";
-        if (props.asSize === "normal") return "medium";
-    };
 
     // ========================= Render Function =================================
     return (
@@ -174,13 +163,12 @@ export default function ToggleButton(props) {
             <div className="qui-toggle-button-container">
                 <ToggleSwitch
                     onChange={handleChange}
-                    size={getSwitchSize()}
                     id="qui-switch-toggle"
                     disableRipple={true}
                 />
                 <label
                     htmlFor="qui-switch-toggle"
-                    className={`qui-Toggle-Button-title size-${props.asSize} ${quommonClasses.childClasses}`}
+                    className={`qui-Toggle-Button-title`}
                     style={{ color: props.withColor?.textColor }}>
                     {content}
                 </label>

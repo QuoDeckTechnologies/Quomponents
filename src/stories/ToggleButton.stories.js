@@ -12,13 +12,6 @@ export default {
     component: ToggleButton,
     argTypes: {
         content: "Active",
-        asSize: {
-            control: "select",
-            options: ["small", "normal"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -100,7 +93,6 @@ const Template = (args) => <ToggleButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: "Active",
-    asSize: "normal",
     asVariant: "primary",
     asFloated: "inline",
 
