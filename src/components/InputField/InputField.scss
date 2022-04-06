@@ -1,5 +1,5 @@
 /* ================================================= */
-/* InlineEdit Definitions */
+/* InputField Definitions */
 /* ================================================= */
 .qui .qui-input-field-container {
     display: flex;
@@ -13,7 +13,6 @@
 .qui .qui-filled {
     width: 100%;
     min-height: 1.5em;
-    text-indent: 0.5em;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
 }
@@ -26,7 +25,6 @@
 .qui .qui-char-limited {
     width: 100%;
     min-height: 1.5em;
-    text-indent: 0.5em;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
 }
@@ -51,7 +49,6 @@
     width: 100%;
     min-height: 1em;
     font-size: 1em;
-    text-indent: 0.5em;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
 }
@@ -59,30 +56,24 @@
 /* shortFiled Definitions */
 /* ================================================= */
 .qui .qui-short-field {
-    width: 10%;
+    width: 3em;
     min-height: 1em;
-    text-indent: 0.5em;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
-}
-
-.qui .qui-short-field:focus {
-    border-bottom: 1em solid;
 }
 /* ================================================= */
 /* Mui Override Definitions */
 /* ================================================= */
 .qui .MuiFilledInput-root:after {
-    border-bottom: 0.3em solid #ffab00;
     animation: none;
     transition: none;
     outline: none;
 }
-.qui .MuiFilledInput-root:hover:not(.Mui-disable):after {
-    border-bottom: 0.3em solid #ffab00;
-}
 .qui .MuiFilledInput-root:before {
     border-bottom: 0.3em solid #8c8c89;
+    animation: none;
+    transition: none;
+    outline: none;
 }
 .qui .MuiFilledInput-root:hover:not(.Mui-disable):before {
     border-bottom: 0.3em solid #8c8c89;

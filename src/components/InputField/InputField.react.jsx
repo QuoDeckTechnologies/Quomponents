@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
-import { TextField, styled } from '@mui/material';
+import TextField from '@mui/material/TextField';
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -124,7 +124,7 @@ export default function InputField(props) {
         setInput(e.target.value);
         setCount(e.target.value.length)
 
-        if (e.key === "Enter" && e.target.value !== "") {
+        if (e.key === "Enter") {
             e.target.blur()
             props.onClick(e.target.name, e.target.value);
         }
@@ -135,43 +135,43 @@ export default function InputField(props) {
     //-------------------------------------------------------------------
     // 3. Use to set styling for InputField.
     //-------------------------------------------------------------------
-    const inputRef = useRef();
+    let inputRef = useRef();
 
-    const changeFocus = () => {
-        inputRef.current.style.borderColor = props.withColor?.accentColor
+    let changeFocus = () => {
         inputRef.current.style.backgroundColor = props.withColor?.backgroundColor
     }
 
-    const changeBlur = () => {
+    let changeBlur = () => {
         inputRef.current.style.backgroundColor = "#d4d3cf"
+    }
+
+    let inputlabelColor = {
+        style: { color: props.withColor?.textColor },
+    }
+
+    let outlineStyle = {
+        "& .MuiFilledInput-root:after": {
+            border: `0.2em solid ${props.withColor.accentColor}`
+        },
     }
     //-------------------------------------------------------------------
     // 4. Use to set state of InputField.
     //-------------------------------------------------------------------
-    const { asEmphasis } = props
+    const { asEmphasis } = props;
+
     const getInput = (asEmphasis) => {
         if (asEmphasis === "filled") {
             return (
                 <TextField
                     className="qui-filled"
-                    InputLabelProps={{
-                        style: { color: props.withColor?.textColor },
-                    }}
-                    // InputProps={{ classes: { root: { borderBottomColor: "red" } } }}
-                    // InputProps={{
-                    //     root: {
-                    //         '&$focused $notchedOutline': {
-                    //             borderColor: 'orange'
-                    //         }
-                    //     }
-                    // }}
+                    InputLabelProps={inputlabelColor}
+                    sx={outlineStyle}
                     label={props.content?.label}
                     variant="filled"
                     value={input}
                     name={props.name}
                     ref={inputRef}
-                    onFocus={() => changeFocus()
-                    }
+                    onFocus={() => changeFocus()}
                     onBlur={() => changeBlur()}
                     onChange={handleChange}
                     onKeyDown={handleChange}
@@ -185,9 +185,8 @@ export default function InputField(props) {
                     <div className="qui-char-limited-max-length">{`${count}/${props.content?.maxLength}`}</div>
                     <TextField
                         className="qui-char-limited"
-                        InputLabelProps={{
-                            style: { color: props.withColor?.textColor },
-                        }}
+                        InputLabelProps={inputlabelColor}
+                        sx={outlineStyle}
                         inputProps={{
                             maxLength: props.content?.maxLength
                         }}
@@ -211,9 +210,7 @@ export default function InputField(props) {
                     <div className="qui-char-limited-max-length">{`${count}/${props.content?.maxLength}`}</div>
                     <TextField
                         className="qui-list-input"
-                        InputLabelProps={{
-                            style: { color: props.withColor?.textColor },
-                        }}
+                        sx={outlineStyle}
                         placeholder={props.content?.placeholder}
                         multiline={true}
                         size="small"
@@ -233,9 +230,7 @@ export default function InputField(props) {
             return (
                 <TextField
                     className="qui-short-field"
-                    InputLabelProps={{
-                        style: { color: props.withColor?.textColor },
-                    }}
+                    sx={outlineStyle}
                     type="number"
                     InputProps={{ inputProps: { min: 0, max: 10 } }}
                     size={"small"}
@@ -243,8 +238,7 @@ export default function InputField(props) {
                     value={input}
                     name={props.name}
                     ref={inputRef}
-                    onFocus={() => changeFocus()
-                    }
+                    onFocus={() => changeFocus()}
                     onBlur={() => changeBlur()}
                     onChange={handleChange}
                     onKeyDown={handleChange}
