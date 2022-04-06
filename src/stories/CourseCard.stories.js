@@ -8,7 +8,7 @@ export default {
         content: {
             status: "none",
             courseType: "",
-            wrapper:"",
+            wrapper: "",
             tags: [],
             courseName: "",
             description: "",
@@ -18,7 +18,8 @@ export default {
             date: {
                 start_date: "",
                 end_date: ""
-            }
+            },
+            sequential: false
         },
         asFloated: {
             control: "select",
@@ -85,7 +86,7 @@ Default.args = {
     content: {
         status: "none",
         courseType: "standard",
-        wrapper:"carnival",
+        wrapper: "carnival",
         tags: ["Tag1", "Tag2"],
         courseName: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
@@ -95,7 +96,8 @@ Default.args = {
         date: {
             start_date: "2016-01-04 10:34:23",
             end_date: "2016-03-15 10:34:23"
-        }
+        },
+        sequential: false
     },
     asFloated: "inline",
     withAnimation: {
@@ -121,7 +123,7 @@ export const DifferentResolution = (args) => {
         ...Object.assign({}, Default.args, args, {
             status: "none",
             courseType: "standard",
-            wrapper:"carnival",
+            wrapper: "carnival",
             tags: ["Tag1", "Tag2"],
             courseName: "Measure your sales readiness",
             description: "Take this quick profile test to check how well you are prepared for a sales job",
@@ -131,7 +133,8 @@ export const DifferentResolution = (args) => {
             date: {
                 start_date: "2016-01-04 10:34:23",
                 end_date: "2016-03-15 10:34:23"
-            }
+            },
+            sequential: false
         }),
     };
     return (

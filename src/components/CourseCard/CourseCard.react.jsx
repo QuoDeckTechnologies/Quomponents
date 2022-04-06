@@ -43,7 +43,8 @@ CourseCard.propTypes = {
         date: PropTypes.shape({
             start_date: PropTypes.string,
             end_date: PropTypes.string
-        })
+        }),
+        sequential: PropTypes.bool
     }),
 
     // Quommon props
@@ -82,7 +83,8 @@ CourseCard.defaultProps = {
         date: {
             start_date: "2016-01-04 10:34:23",
             end_date: "2016-03-15 10:34:23"
-        }
+        },
+        sequential: false
     },
     // Quommon props
     //=======================================
@@ -129,30 +131,19 @@ export default function CourseCard(props) {
     //-------------------------------------------------------------------
     // 5. Standardize Date
     //-------------------------------------------------------------------
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "October", "Nov", "Dec"];
+    const options = { month: 'short', day: 'numeric' };
+    let startDate = props.content?.date?.start_date ? new Date(props.content.date.start_date).toLocaleDateString(undefined, options) : "";
+    let endDate = props.content?.date?.start_date ? new Date(props.content.date.end_date).toLocaleDateString(undefined, options) : "";
 
-    let sD = new Date(props.content?.date?.start_date) // Create the instance of start date
-    let eD = new Date(props.content?.date?.end_date) // Create the instance of end date
-    let startDayNum = sD.toLocaleString('en-US', { day: 'numeric' }); // Get start day in numeric
-    let endDayNum = eD.toLocaleString('en-US', { day: 'numeric' }); // Get end day in numeric
-    let startMonthWord = months[sD.getMonth()]; //Get month in words
-    let endMonthWord = months[eD.getMonth()]; //Convert month number to word
 
-    //Adding suffix of th, st, nd, rd after months
-    let dateSuffix = ["th", "st", "nd", "rd"];
-    let startDay = sD % 100;
-    let endDay = eD % 100;
+    let header;
+    if (props.content?.wrapper?.toLowerCase() === "none" || props.content.wrapper === "") {
+        header = ""
+    } else {
+        header = props.content?.wrapper.charAt(0).toUpperCase() + props.content?.wrapper?.slice(1)
+    }
 
-    //Set the startDate and endDate
-    
-    let startDate = startDayNum + (dateSuffix[(startDay - 20) % 10] || dateSuffix[startDay] || dateSuffix[0]) + " " + startMonthWord;
-    let endDate = endDayNum + (dateSuffix[(endDay - 20) % 10] || dateSuffix[endDay] || dateSuffix[0]) + " " + endMonthWord;
-
-    //-------------------------------------------------------------------
-    // 6. Capitalize first letter of wrapper text
-    //-------------------------------------------------------------------
-    let wrapper = props.content?.wrapper ? props.content?.wrapper?.charAt(0).toUpperCase() + props.content?.wrapper?.slice(1): "";
-
+    let isSequential = props.content?.sequential ? "Sequential Course" : "Non Sequential Course"
     //-------------------------------------------------------------------
     // 7. Get the CourseCard Component
     //-------------------------------------------------------------------
@@ -173,20 +164,23 @@ export default function CourseCard(props) {
                             {_.map(tags, (tag, index) => {
                                 return (
                                     <div key={index} className={`qui-course-card-tag`} >
-                                        <Tag content={tag} asSize="tiny" withColor={{ backgroundColor: "#FFAB00", textColor: "#000" }} />
+                                        <Tag content={tag} asPadded="compact" asSize="tiny" withColor={{ backgroundColor: "#FFAB00", textColor: "#000" }} />
                                     </div>
                                 )
                             })}
-                        </div>
-                        <div className="qui-course-card-date-container">
-                            <IconBlock asSize="tiny" asEmphasis="text" withIcon={{ name: "far fa-calendar-alt", size: "2em" }} withColor={{ accentColor: "#000" }}
-                            />
-                            <div className={`qui-course-card-date`}>
-                                {startDate} - {endDate}
+                        </div>{
+                            startDate && endDate &&
+                            <div className="qui-course-card-date-container">
+                                <IconBlock asSize="tiny" asEmphasis="text" withIcon={{ name: "far fa-calendar-alt", size: "2em" }} withColor={{ accentColor: "#000" }}
+                                />
+                                <div className={`qui-course-card-date`}>
+                                    {startDate} - {endDate}
+                                </div>
                             </div>
-                        </div>
+                        }
+
                     </div>
-                    <BannerCard {...props} content={{image:image , header:wrapper}}/>
+                    <BannerCard {...props} content={{ image: image, header: header }} />
                     <div className={`qui-course-card-description-container`}>
                         <div className={`qui-course-card-description`}>
                             {props.content?.description}
@@ -199,17 +193,15 @@ export default function CourseCard(props) {
                 <div className="qui-course-card-footer">
                     <div className={`qui-course-card-arc-menu`}>
                         <ArcMenu
-                            withColor={{ backgroundColor: "#666666" }}
-                            asSize="tiny"
                             type="add"
-                            arcIcon="fas fa-th-large"
+                            arcIcon="menu"
                             position="bottom-left"
                             onClick={() => { console.log("Arc Menu") }}
                         />
                     </div>
                     <div className={`qui-course-card-share-block`}>
                         <div className={`qui-course-card-name`}>
-                            {wrapper}
+                            {isSequential}
                         </div>
                         <div className={'qui-course-card-share-widget'}>
                             <ShareWidget asSize="tiny" withColor={{ textColor: "#AAAAAA" }} content={{ label: "Share", url: link }} />
@@ -217,8 +209,8 @@ export default function CourseCard(props) {
                         <div className={'qui-course-card-link-container'}>
                             <a className={'qui-course-card-link'} href={link}>{link}</a>
                             <IconBlock asSize="small" asEmphasis="text" withIcon={{ name: "fas fa-copy" }} withColor={{ accentColor: "#FFBF00" }}
-                            asPadded="fitted"
-                            onClick={() => { navigator.clipboard.writeText(link) }} />
+                                asPadded="fitted"
+                                onClick={() => { navigator.clipboard.writeText(link) }} />
                         </div>
                     </div>
                 </div>

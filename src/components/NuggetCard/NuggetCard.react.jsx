@@ -77,6 +77,7 @@ NuggetCard.propTypes = {
         identifier: PropTypes.string
     }),
 
+    arcFn: PropTypes.func,
     // Quommon props
     //=======================================
     /**
@@ -117,6 +118,7 @@ NuggetCard.defaultProps = {
     isHidden: false,
     isDisabled: false,
 
+    arcFn: ()=>{console.log("arc")},
     onClick: null
 };
 
@@ -144,6 +146,7 @@ export default function NuggetCard(props) {
     // 4. Get the tags
     //-------------------------------------------------------------------
     let tags = props.content?.tags ? props.content?.tags : [""];
+    let tagStyle = props.content?.tags ? "flex" : "none";
 
     //-------------------------------------------------------------------
     // 5. Create link of article, based on the identifier
@@ -206,11 +209,11 @@ export default function NuggetCard(props) {
                             {props.content?.name}
                         </div>
                     </div>
-                    <div className="qui-nugget-card-tag-container">
+                    <div className="qui-nugget-card-tag-container" style={{display:tagStyle}}>
                         {_.map(tags, (tag, index) => {
                             return (
                                 <div key={index} className={`qui-nugget-card-tag`} >
-                                    <Tag content={tag} asSize="tiny" withColor={{ backgroundColor: "#FFAB00", textColor: "#000" }} />
+                                    <Tag asPadded="compact" content={tag} asSize="tiny" withColor={{ backgroundColor: "#FFAB00", textColor: "#000" }} />
                                 </div>
                             )
                         })}
@@ -228,12 +231,10 @@ export default function NuggetCard(props) {
                 <div className="qui-nugget-card-footer">
                     <div className={`qui-nugget-card-arc-menu`}>
                         <ArcMenu
-                            withColor={{ backgroundColor: "#666666" }}
-                            asSize="tiny"
                             type="add"
-                            arcIcon="fas fa-th-large"
+                            arcIcon="menu"
                             position="bottom-left"
-                            onClick={() => { console.log("Arc Menu") }}
+                            onClick={()=>{props.arcFn()}}
                         />
                     </div>
                     <div className={`qui-nugget-card-share-block`}>
