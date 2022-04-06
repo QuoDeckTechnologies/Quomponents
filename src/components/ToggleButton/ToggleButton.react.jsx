@@ -156,6 +156,7 @@ export default function ToggleButton(props) {
     }, [content?.toggled]);
     const handleChange = (e) => {
         setToggle((prevState) => !prevState);
+        props.onClick(e.target.checked)
     };
 
     // ========================= Render Function =================================
