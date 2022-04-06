@@ -12,6 +12,8 @@ import "../../../common/stylesheets/common.css";
 import "./MobileToolbar.scss";
 import "../../../common/stylesheets/overrule.scss";
 
+import ArcMenu from "../../ArcMenu/ArcMenu.react"
+
 MobileToolbar.propTypes = {
     //=======================================
     // Component Specific props
@@ -169,8 +171,8 @@ export default function MobileToolbar(props) {
     //-------------------------------------------------------------------
     const mobileToolbar = () => {
         return(
-            <div className={`qui-mobile-toolbar-container`}>
-                
+            <div className={`qui-mobile-toolbar-container`} >
+                <ArcMenu position="bottom-left" arcIcon="menu"/>
             </div>
         )
     }
