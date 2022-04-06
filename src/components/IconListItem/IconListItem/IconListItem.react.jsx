@@ -3,10 +3,7 @@ import React from "react";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import {
-  getAnimation,
-  getQuommons,
-} from "../../../common/javascripts/helpers";
+import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./IconListItem.scss";
@@ -23,11 +20,11 @@ IconListItem.propTypes = {
     PropTypes.shape({
       image: PropTypes.string,
       title: PropTypes.string,
-    }).isRequired,
+    }).isRequired
   ),
   //=======================================
   // Quommon props
-  //======================================= 
+  //=======================================
   /**
   Use to float the component in parent container
   */
@@ -93,21 +90,26 @@ export default function IconListItem(props) {
     <div className={`qui ${quommonClasses.parentClasses}`}>
       {_.map(content, (item, index) => {
         return (
-          <motion.div
-            initial={animate.from}
-            animate={animate.to}
-            key={index}>
-            
-            <div className={`qui-conversion-list ${quommonClasses.childClasses}`}>
-              <p className={`qui-list-title `} style={{ order: index % 2 === 0 ? 2 : 1 }} >
+          <motion.div initial={animate.from} animate={animate.to} key={index}>
+            <div
+              className={`qui-conversion-list ${quommonClasses.childClasses}`}
+            >
+              <div
+                className={`qui-list-title `}
+                style={{ order: index % 2 === 0 ? 2 : 1 }}
+              >
                 {item?.title}
-              </p>
-              <img className="qui-list-image" style={{ order: index % 2 === 0 ? 1 : 2 }} src={item?.image} alt=""></img>
+              </div>
+              <img
+                className="qui-list-image"
+                style={{ order: index % 2 === 0 ? 1 : 2 }}
+                src={item?.image}
+                alt=""
+              ></img>
             </div>
           </motion.div>
         );
       })}
     </div>
   );
-
 }
