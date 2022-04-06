@@ -97,10 +97,10 @@ export default function CheckBox(props) {
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  const [isChecked, setIsChecked] = useState(content.checked);
+  const [isChecked, setIsChecked] = useState(content?.checked);
   useEffect(() => {
-    setIsChecked(content.checked);
-  }, [content.checked]);
+    setIsChecked(content?.checked);
+  }, [content?.checked]);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
