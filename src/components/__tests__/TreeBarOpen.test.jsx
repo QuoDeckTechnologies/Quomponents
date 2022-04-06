@@ -363,10 +363,29 @@ describe("TreeBarOpen", () => {
     });
 
     it("should render tree bar when click on search", () => {
-        component.setProps({ content: content })
+        let inputData = ""
+        component.setProps({ content: content, filter: inputData })
         component.setProps({ onClick: jest.fn() })
         let search = component.find(SearchBar);
-        search.simulate('click')
+        const filter = "Article";
+        let matcher = defaultMatcher;
+
+        search.simulate('click', inputData);
+
+        search.simulate('click', filter, content.TreeData);
+        defaultMatcher(filter, content.TreeData);
+
+
+        search.simulate('change', content.TreeData, filter, matcher);
+        findNode(content.TreeData, filter, matcher);
+
+        let newData = search.simulate('change', content.TreeData, filter);
+        const result = filterTree(content.TreeData, filter);
+        matcher(filter, content.TreeData);
+
+        search.simulate('change', newData, filter);
+        search.simulate('change', newData, filter);
+        expandFilteredNodes(result, filter);
     });
 
     it("should toggle the treebeard", () => {
@@ -376,7 +395,6 @@ describe("TreeBarOpen", () => {
         component.setProps({ data: nodeData })
         let treeBeard = component.find(Treebeard);
         treeBeard.simulate('toggle', nodeData, toggled);
-        console.log(treeBeard.props())
         expect(onSelectData).toHaveBeenCalledWith(nodeData);
     })
 });

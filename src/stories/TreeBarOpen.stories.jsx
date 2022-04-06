@@ -125,13 +125,13 @@ Default.args = {
         TreeData: {
             id: "allArticles",
             parentId: null,
-            name: "All Articles",
+            name: "Courses",
             description: "",
             children: [
                 {
                     id: "category-0",
                     parentId: "allArticles",
-                    name: "Article",
+                    name: "Pulic Library",
                     description: "",
                     children: [
                         {
@@ -163,7 +163,7 @@ Default.args = {
                 {
                     id: "category-1",
                     parentId: "allArticles",
-                    name: "News",
+                    name: "Induction Program",
                     description: "",
                     children: [
                         {

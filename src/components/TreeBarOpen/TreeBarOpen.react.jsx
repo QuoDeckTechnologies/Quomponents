@@ -108,8 +108,7 @@ decorators.Header = ({ node }) => {
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function TreeItem(props) {
-    const [cursor, setCursor] = useState();
-    const [folderData, setFolderData] = useState(props.content.TreeData);
+    const [cursor, setCursor] = useState(props.content.TreeData);
     const [folderStructure, setfolderStructure] = useState(props.content.TreeData);
     //-------------------------------------------------------------------
     // Search the specific data
@@ -135,7 +134,7 @@ export default function TreeItem(props) {
         if (node.children) {
             node.toggled = toggled;
         }
-        setFolderData(Object.assign({}, folderData))
+        setCursor(Object.assign({}, cursor))
         props.onSelectData(node);
     };
 
