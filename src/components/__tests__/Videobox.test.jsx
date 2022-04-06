@@ -3,7 +3,7 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 import YouTube from "react-youtube";
-import { Player, BigPlayButton } from "video-react";
+import { Player } from "video-react";
 import Vimeo from "@u-wave/react-vimeo";
 
 //--------------------------------------
@@ -15,10 +15,10 @@ describe("Videobox", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
+    let onReady = jest.fn();
     let onPlay = jest.fn();
     let onPause = jest.fn();
     let onEnd = jest.fn();
-    let onReady = jest.fn();
     let onError = jest.fn();
     let component;
 
@@ -37,6 +37,7 @@ describe("Videobox", () => {
                 isHidden={false}
                 autoplay={true}
                 loop={false}
+                onReady={(e) => onReady(e)}
                 onPlay={(e) => onPlay(e)}
                 onEnd={(e) => onEnd(e)}
                 onError={(e) => onError(e)}
@@ -49,6 +50,28 @@ describe("Videobox", () => {
     it("should render correctly without throwing error", () => {
         expect(component.exists()).toBe(true);
     });
+    it("should render a video if video id is provided", () => {
+        component.setProps({
+            url: ''
+        });
+        component.update();
+        expect(component.find(Player).exists()).toBe(true);
+    });
+    it("should render a video if video id is provided", () => {
+        component.setProps({
+            url: 'https://www.youtube.com/watch?v=Bwx5nqvSTZ0'
+        });
+        component.update();
+        expect(component.find(YouTube).exists()).toBe(true);
+    });
+    it("should render a video if video id is provided", () => {
+        component.setProps({
+            url: 'https://vimeo.com/686836566'
+        });
+        component.update();
+        expect(component.find(Vimeo).exists()).toBe(true);
+    });
+
     it("should rednder correctly when call onReady", () => {
         component = shallow(<Videobox
             onReady={(e) => onReady(e)}

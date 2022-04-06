@@ -80,6 +80,7 @@ Videobox.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
+
     autoplay: true,
     rel: 0,
     mute: true,
@@ -95,13 +96,13 @@ export default function Videobox(props) {
 
     const { url, autoplay, loop } = props;
 
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(false);
 
     function onReady(e) {
         if (e.target && props.autoplay) {
             e.target.playVideo();
         }
-        if (props.onReady) props.onReady();
+        if (props.onReady) props.onReady(e);
     }
 
     function onPlay(e) { };
@@ -109,14 +110,10 @@ export default function Videobox(props) {
     function onEnd(e) {
         if (props.loop) e.target.playVideo();
         if (props.onEnd) props.onEnd(e);
-        console.log(e)
-
     };
 
     function onPause(e) {
         if (props.onPause) props.onPause(e);
-        console.log(e)
-
     };
 
     function onError(e) {
@@ -141,7 +138,7 @@ export default function Videobox(props) {
                 },
             };
 
-            let getVideoId = (url) => {
+            var getVideoId = (url) => {
                 let videoId = "";
                 if (url.indexOf("v=") === -1) {
                     var video_array = url.split("/");
@@ -156,6 +153,7 @@ export default function Videobox(props) {
                 return videoId;
             };
 
+
             if (url.indexOf("vimeo") !== -1) {
 
                 return (
@@ -165,7 +163,7 @@ export default function Videobox(props) {
                         <Vimeo
                             className="react-player"
                             video={url}
-                            autoplay={true}
+                            autoplay={true} 
                             playerOptions={{ width: window.innerWidth }}
                             onReady={(e) => onReady(e)}
                             onPlay={(e) => onPlay(e)}
@@ -175,7 +173,7 @@ export default function Videobox(props) {
                         />
                     </div>
                 );
-            } else if (url.indexOf("youtu.be") !== -1 || url.indexOf("youtube") !== -1) {
+            } if (url.indexOf("youtu.be") !== -1 || url.indexOf("youtube") !== -1) {
                 return (
                     <div
                         className="video-responsive"
@@ -202,8 +200,7 @@ export default function Videobox(props) {
                             className="react-player"
                             playsInline
                             src={url}
-                            autoplay={true}
-                            opts={opts}
+                            autoplay={props.autoplay}
                         >
                             <BigPlayButton position="center" />
                         </Player>
