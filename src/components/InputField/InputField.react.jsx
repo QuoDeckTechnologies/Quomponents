@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
-import TextField from '@mui/material/TextField';
-import { styled } from "@mui/material";
+import { TextField, styled } from '@mui/material';
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -25,6 +24,10 @@ InputField.propTypes = {
         maxLength: PropTypes.number,
     }),
     /**
+    Use to define name's ID
+    */
+    name: PropTypes.string.isRequired,
+    /**
     Use to set the state of InputField 
     */
     asEmphasis: PropTypes.oneOf([
@@ -37,24 +40,9 @@ InputField.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define component size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
     /**
     Use to set Colors in component 
     */
@@ -88,6 +76,10 @@ InputField.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
+    /**
+    InputField component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 };
 
 InputField.defaultProps = {
@@ -95,19 +87,20 @@ InputField.defaultProps = {
     // Component Specific props
     //=======================================
     content: null,
+    name: "",
     asEmphasis: "filled",
     //=======================================
     // Quommon props
     //=======================================
-    asSize: "normal",
     asFloated: "none",
-    asAligned: "center",
 
     withColor: null,
     withAnimation: null,
 
     isHidden: false,
     isDisabled: false,
+
+    onClick: null,
 };
 /**
 ## Notes
@@ -117,17 +110,6 @@ InputField.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function InputField(props) {
-    const FilledInput = styled(TextField)(() => ({
-        '& .MuiInputBase-root': {
-            '&.MuiFilledInput-root:after': {
-                backgroundColor: props.withColor?.accentColor,
-                height: "0.3em",
-            }, '&.MuiFilledInput-root:before': {
-                backgroundColor: "#AAAAAA",
-                height: "0.3em",
-            },
-        },
-    }));
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -144,6 +126,7 @@ export default function InputField(props) {
 
         if (e.key === "Enter" && e.target.value !== "") {
             e.target.blur()
+            props.onClick(e.target.name, e.target.value);
         }
         if (e.key === "Escape") {
             e.target.value = ""
@@ -152,8 +135,7 @@ export default function InputField(props) {
     //-------------------------------------------------------------------
     // 3. Use to set styling for InputField.
     //-------------------------------------------------------------------
-    const inputRef = useRef(null);
-    console.log(inputRef.current)
+    const inputRef = useRef();
 
     const changeFocus = () => {
         inputRef.current.style.borderColor = props.withColor?.accentColor
@@ -170,17 +152,23 @@ export default function InputField(props) {
     const getInput = (asEmphasis) => {
         if (asEmphasis === "filled") {
             return (
-                <FilledInput
+                <TextField
                     className="qui-filled"
-                    // InputProps={{
-                    //     disableUnderline: true,
-                    // }}
                     InputLabelProps={{
                         style: { color: props.withColor?.textColor },
                     }}
+                    // InputProps={{ classes: { root: { borderBottomColor: "red" } } }}
+                    // InputProps={{
+                    //     root: {
+                    //         '&$focused $notchedOutline': {
+                    //             borderColor: 'orange'
+                    //         }
+                    //     }
+                    // }}
                     label={props.content?.label}
                     variant="filled"
                     value={input}
+                    name={props.name}
                     ref={inputRef}
                     onFocus={() => changeFocus()
                     }
@@ -195,16 +183,19 @@ export default function InputField(props) {
             return (
                 <div className="qui-char-limited-container">
                     <div className="qui-char-limited-max-length">{`${count}/${props.content?.maxLength}`}</div>
-                    <FilledInput
+                    <TextField
                         className="qui-char-limited"
                         InputLabelProps={{
                             style: { color: props.withColor?.textColor },
                         }}
-                        inputProps={{ maxLength: props.content?.maxLength }}
+                        inputProps={{
+                            maxLength: props.content?.maxLength
+                        }}
                         multiline={true}
                         label={props.content?.label}
                         variant="filled"
                         value={input}
+                        name={props.name}
                         ref={inputRef}
                         onFocus={() => changeFocus()}
                         onBlur={() => changeBlur()}
@@ -218,17 +209,17 @@ export default function InputField(props) {
             return (
                 <div className="qui-list-input-container">
                     <div className="qui-char-limited-max-length">{`${count}/${props.content?.maxLength}`}</div>
-                    <FilledInput
+                    <TextField
                         className="qui-list-input"
                         InputLabelProps={{
                             style: { color: props.withColor?.textColor },
                         }}
-                        inputProps={{ maxLength: props.content?.maxLength }}
                         placeholder={props.content?.placeholder}
                         multiline={true}
                         size="small"
                         variant="filled"
                         value={input}
+                        name={props.name}
                         ref={inputRef}
                         onFocus={() => changeFocus()}
                         onBlur={() => changeBlur()}
@@ -240,13 +231,20 @@ export default function InputField(props) {
         }
         else {
             return (
-                <input
+                <TextField
                     className="qui-short-field"
+                    InputLabelProps={{
+                        style: { color: props.withColor?.textColor },
+                    }}
                     type="number"
-                    min="0"
+                    InputProps={{ inputProps: { min: 0, max: 10 } }}
+                    size={"small"}
+                    variant="filled"
                     value={input}
+                    name={props.name}
                     ref={inputRef}
-                    onFocus={() => changeFocus()}
+                    onFocus={() => changeFocus()
+                    }
                     onBlur={() => changeBlur()}
                     onChange={handleChange}
                     onKeyDown={handleChange}

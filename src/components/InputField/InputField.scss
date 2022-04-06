@@ -6,7 +6,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-bottom: 0.5em;
 }
 /* ================================================= */
 /* filled Definitions */
@@ -42,11 +41,6 @@
     border-bottom-left-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
 }
-
-// .qui .MuiTextField-root {
-//     border-top-left-radius: 0.5em;
-//     border-top-right-radius: 0.5em;
-// }
 /* ================================================= */
 /* listInput Definitions */
 /* ================================================= */
@@ -65,18 +59,11 @@
 /* shortFiled Definitions */
 /* ================================================= */
 .qui .qui-short-field {
-    padding: 0.3em;
-    width: 3em;
-    border: none;
-    outline: 0;
+    width: 10%;
     min-height: 1em;
+    text-indent: 0.5em;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
-    text-overflow: ellipsis;
-    text-indent: 0.7em;
-    overflow: hidden;
-    font-size: 1em;
-    border-bottom: 0.15em solid;
 }
 
 .qui .qui-short-field:focus {
@@ -85,20 +72,22 @@
 /* ================================================= */
 /* Mui Override Definitions */
 /* ================================================= */
-
-.qui .MuiFilledInput-root:before {
-    border-bottom: 0em;
+.qui .MuiFilledInput-root:after {
+    border-bottom: 0.3em solid #ffab00;
+    animation: none;
+    transition: none;
+    outline: none;
 }
-.qui .MuiFilledInput-root:after{
-    border-bottom:0em;
+.qui .MuiFilledInput-root:hover:not(.Mui-disable):after {
+    border-bottom: 0.3em solid #ffab00;
+}
+.qui .MuiFilledInput-root:before {
+    border-bottom: 0.3em solid #8c8c89;
 }
 .qui .MuiFilledInput-root:hover:not(.Mui-disable):before {
-    border-bottom: 0em ;
+    border-bottom: 0.3em solid #8c8c89;
 }
-.qui .MuiOutlinedInput-root {
-    border-radius: 50em;
-    pointer-events: none;
+.qui .MuiFilledInput-root {
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
 }
-// .qui .MuiInputBase-input-MuiFilledInput-input:focus{
-//     border-bottom: 0.3em solid rgb(83, 128, 0);
-// }
