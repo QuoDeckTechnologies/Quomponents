@@ -151,7 +151,7 @@ export default function InputField(props) {
 
     let outlineStyle = {
         "& .MuiFilledInput-root:after": {
-            border: `0.2em solid ${props.withColor.accentColor}`
+            border: `0.2em solid ${props.withColor?.accentColor ? props.withColor?.accentColor : "#ffab00"}`
         },
     }
     //-------------------------------------------------------------------

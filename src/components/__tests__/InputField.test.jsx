@@ -7,6 +7,7 @@ import { shallow, mount, enzyme } from 'enzyme';
 // Import Components
 // -------------------------------------
 import InputField from '../InputField/InputField.react'
+import TextField from '@mui/material/TextField';
 
 describe("InputField", () => {
     // -------------------------------------
@@ -16,7 +17,7 @@ describe("InputField", () => {
     let onFocus = jest.fn();
     let onChange = jest.fn();
     let onBlur = jest.fn();
-    let onInput = jest.fn();
+    let onClick = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -27,18 +28,21 @@ describe("InputField", () => {
                 placeholder: "Options",
                 maxLength: 300,
             }}
-            asEmphasis="singleLine"
-            asSize="normal"
+            name=""
+            asEmphasis="filled"
             asFloated="none"
-            asAligned="center"
-            withColor={null}
+            withColor={{
+                textColor: "#666666",
+                accentColor: "#ffab00",
+                backgroundColor: "#ffab000d",
+            }}
             withAnimation={null}
             isDisabled={false}
             isHidden={false}
             onFocus={onFocus}
             onChange={onChange}
             onBlur={onBlur}
-            onInput={onInput}
+            onClick={onClick}
         />);
     })
 
@@ -46,43 +50,23 @@ describe("InputField", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("it should render correctly when passed asEmphasis prop as singleLine", () => {
-        component.setProps({ asEmphasis: "singleLine" })
+    it("it should render correctly when passed asEmphasis prop as filled", () => {
+        component.setProps({ asEmphasis: "filled" })
         expect(component.exists()).toBe(true);
     });
 
-    it("it should render correctly when passed asEmphasis prop as multiLine", () => {
-        component.setProps({ asEmphasis: "multiLine" })
+    it("it should render correctly when passed asEmphasis prop as charLimited", () => {
+        component.setProps({ asEmphasis: "charLimited" })
         expect(component.exists()).toBe(true);
     });
 
-    it("it should render correctly when passed asSize prop as tiny", () => {
-        component.setProps({ asSize: "tiny" })
+    it("it should render correctly when passed asEmphasis prop as listInput", () => {
+        component.setProps({ asEmphasis: "listInput" })
         expect(component.exists()).toBe(true);
     });
 
-    it("it should render correctly when passed asSize prop as small", () => {
-        component.setProps({ asSize: "small" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asSize prop as normal", () => {
-        component.setProps({ asSize: "normal" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asSize prop as big", () => {
-        component.setProps({ asSize: "big" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asSize prop as huge", () => {
-        component.setProps({ asSize: "huge" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asSize prop as massive", () => {
-        component.setProps({ asSize: "massive" })
+    it("it should render correctly when passed asEmphasis prop as shortField", () => {
+        component.setProps({ asEmphasis: "shortField" })
         expect(component.exists()).toBe(true);
     });
 
@@ -106,23 +90,9 @@ describe("InputField", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("it should render correctly when passed asAligned prop as left", () => {
-        component.setProps({ asAligned: "left" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asAligned prop as right", () => {
-        component.setProps({ asAligned: "right" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asAligned prop as center", () => {
-        component.setProps({ asAligned: "center" })
-        expect(component.exists()).toBe(true);
-    });
-
     it("it should render correctly when passed withColor props", () => {
         let colors = {
+            textColor: "#fff",
             backgroundColor: "#fff",
             accentColor: "#FF0000",
         }
@@ -159,6 +129,22 @@ describe("InputField", () => {
         component.setProps({ isHidden: true })
         expect(component.exists()).toBe(true);
     });
+    // ------------------------------
+    it("it should trigger the escape event when input contain some value", () => {
+        let InlineEdit = component.find('input');
+        InlineEdit.simulate('change', { target: { value: 'Please input your text here' } });
+        component.find('input').simulate('change', { key: 'Enter' })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("it should trigger the escape event when input contain empty value", () => {
+        let InlineEdit = component.find('input');
+        InlineEdit.simulate('change', { target: { value: '' } });
+        component.find('input').simulate('change', { key: 'Escape' })
+        expect(component.exists()).toBe(true);
+    });
+    // --------------------------
+
     // ---------------------------------
     it("it should pass the value to the InputField", () => {
         component.find('input').simulate('change', { target: { value: 'Please input your text here' } })
@@ -174,71 +160,11 @@ describe("InputField", () => {
         component.find('input').simulate('focus', { style: { accentColor: "#ffbf00" } })
         expect(component.exists()).toBe(true);
     });
-    // ---------------------------------
-    it("it should trigger the escape event when input contain some value", () => {
-        let InputField = component.find('input');
-        InputField.simulate('change', { target: { value: 'Please input your text here' } });
-        component.find('input').simulate('change', { key: 'Enter' })
-        expect(component.exists()).toBe(true);
-    });
 
-    it("it should trigger the escape event when input contain empty value", () => {
-        let InputField = component.find('input');
-        InputField.simulate('change', { target: { value: '' } });
-        component.find('input').simulate('change', { key: 'Escape' })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should trigger the escape event when textarea contain some value", () => {
-        component.setProps({
-            asEmphasis: "filled"
-        });
-        let InputField = component.find('TextField');
-        InputField.simulate('change', { target: { value: 'Please input your text here' } });
-        component.find('TextField').simulate('change', { key: 'Enter' })
-        expect(component.exists()).toBe(true);
-    });
-
-    // it("it should trigger the escape event when textarea contain empty value", () => {
-    //     component.setProps({
-    //         asEmphasis: "multiLine"
-    //     });
-    //     let InputField = component.find('textarea');
-    //     InputField.simulate('change', { target: { value: '' } });
-    //     component.find('textarea').simulate('change', { key: 'Escape' })
-    //     expect(component.exists()).toBe(true);
-    // });
-
-    // it("it should render correct style when height of textarea changes", () => {
-    //     component.setProps({
-    //         asEmphasis: "multiLine"
-    //     });
-    //     component.find('textarea').simulate('input', { target: { style: { height: "5px" }, scrollHeight: 35 } });
-    //     expect(component.exists()).toBe(true);
-    // });
-
-    // ---------------------------------
-    it("it should pass the value to the InputField when asEmphasis props set as multiLine", () => {
-        component.setProps({
-            asEmphasis: "charLimited"
-        });
-        // component.find('textarea').simulate('change', { target: { value: 'Please input your text here' } })
-        // expect(component.find('textarea').props().value).toEqual('Please input your text here');
-    });
-
-    it("it should render correct props when blur on InputField when asEmphasis props set as multiLine", () => {
-        component.setProps({
-            asEmphasis: "listInput"
-        });
-        // component.find('textarea').simulate('blur', { style: { backgroundColor: "#666666" } })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correct props when focus on InputField when asEmphasis props set as multiLine", () => {
-        component.setProps({
-            asEmphasis: "shortField"
-        });
-        // component.find('textarea').simulate('focus', { style: { accentColor: "#ffbf00" } })
+    it("it should render correct props when focus on InputField when asEmphasis props set as charLimited", () => {
+        component.setProps({ asEmphasis: "charLimited" })
+        console.log(component.find(TextField).at(1).props)
+        component.find('TextField').simulate('focus', { style: { accentColor: "#ffbf00" } })
         expect(component.exists()).toBe(true);
     });
 
