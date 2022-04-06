@@ -2,7 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from 'enzyme';
-import { render , fireEvent} from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -138,6 +138,69 @@ describe("TreeBarOpen", () => {
         toggled: true
     };
 
+    let nodeData = {
+        "id": "allArticles",
+        "parentId": null,
+        "name": "Courses",
+        "description": "",
+        "children": [
+            {
+                "id": "category-0",
+                "parentId": "allArticles",
+                "name": "Pulic Library",
+                "description": "",
+                "children": [
+                    {
+                        "published": true,
+                        "tags": [],
+                        "_id": "622eeb5ede595f24b7aadd6e",
+                        "name": "Sedding Dummy Test Article",
+                        "category": "article",
+                        "summary": "",
+                        "identifier": "2Dpr5SmeY",
+                        "owner": "622b36ff46e1c31a2e22c42e",
+                        "createdAt": "2022-03-14T07:14:38.348Z",
+                        "id": "622eeb5ede595f24b7aadd6e"
+                    },
+                    {
+                        "published": true,
+                        "tags": [],
+                        "_id": "622b4534a2d4393e6ce1c3ba",
+                        "name": "New Article",
+                        "category": "article",
+                        "summary": "",
+                        "identifier": "Yeb4B2_bn",
+                        "owner": "622b36ff46e1c31a2e22c42e",
+                        "createdAt": "2022-03-11T12:48:52.066Z",
+                        "id": "622b4534a2d4393e6ce1c3ba"
+                    }
+                ]
+            },
+            {
+                "id": "category-1",
+                "parentId": "allArticles",
+                "name": "Induction Program",
+                "description": "",
+                "children": [
+                    {
+                        "published": true,
+                        "tags": [],
+                        "_id": "623da574187838221637bebe",
+                        "name": "Test News",
+                        "category": "news",
+                        "summary": "",
+                        "identifier": "RnQ5trn7T",
+                        "owner": "622b36ff46e1c31a2e22c42e",
+                        "createdAt": "2022-03-25T11:20:20.195Z",
+                        "id": "623da574187838221637bebe"
+                    }
+                ]
+            }
+        ],
+        "active": true,
+        "toggled": true
+    }
+
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -255,7 +318,6 @@ describe("TreeBarOpen", () => {
         expect(component.exists()).toBe(true);
     });
 
-
     it("should render correctly if translation object is not returned",
         () => {
             component.setProps({
@@ -301,14 +363,20 @@ describe("TreeBarOpen", () => {
     });
 
     it("should render tree bar when click on search", () => {
-        component.setProps({onClick:jest.fn("some value")})
+        component.setProps({ content: content })
+        component.setProps({ onClick: jest.fn() })
         let search = component.find(SearchBar);
-        search.simulate('click') 
+        search.simulate('click')
     });
 
-    it("should toggle the treebeard",()=>{
-        component.setProps({onToggle:jest.fn()})
-        let treeBeard = component.find(Treebeard)
-        treeBeard.simulate('toggle')
+    it("should toggle the treebeard", () => {
+        let toggled = false;
+        let onSelectData = jest.fn();
+        component.setProps({ node: nodeData, toggled: toggled, onSelectData: onSelectData })
+        component.setProps({ data: nodeData })
+        let treeBeard = component.find(Treebeard);
+        treeBeard.simulate('toggle', nodeData, toggled);
+        console.log(treeBeard.props())
+        expect(onSelectData).toHaveBeenCalledWith(nodeData);
     })
 });
