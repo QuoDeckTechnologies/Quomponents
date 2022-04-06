@@ -93,6 +93,7 @@ export default function FeedbackformM(props) {
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
+    console.log(toggle)
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
     return (
@@ -102,7 +103,7 @@ export default function FeedbackformM(props) {
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`qui-feedback-form-container  ${quommonClasses.childClasses}`}>
                 <div className="qui-feedback-toggle-button">
-                    <ToggleButton {...props} onClick={() => setToggle(prevState => !prevState)} />
+                    <ToggleButton {...props} content={{ title: "Show Feedback" }} onClick={() => setToggle(prevState => !prevState)} />
                 </div>
                 {toggle && <div className={`qui-feedback-input-field-container`}>
                     <InputField {...props} />
