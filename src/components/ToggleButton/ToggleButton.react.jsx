@@ -1,5 +1,5 @@
 // Import npm packages
-import React from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types";
 import { Switch, styled } from "@mui/material";
 import { motion } from "framer-motion";
@@ -18,7 +18,10 @@ ToggleButton.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: PropTypes.string,
+    content: PropTypes.shape({
+        title: PropTypes.string,
+        toggled: PropTypes.bool,
+    }),
     // Quommon props
     //=======================================
     /**
@@ -87,7 +90,7 @@ ToggleButton.propTypes = {
 ToggleButton.defaultProps = {
     // Component Specific props
     //=======================================
-    content: "",
+    content: {},
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -129,28 +132,30 @@ export default function ToggleButton(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "toggle-button");
-    // -------------------------------------------------------------------
-    // 5. Translate the text objects in case their is a dictionary provided
-    // -------------------------------------------------------------------
+    //-------------------------------------------------------------------
+    // 3. Get translation of the component
+    //-------------------------------------------------------------------
+    let labelContent = Object.assign({}, content);
+    let tObj = null;
+
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
-        let tObj = getTranslation(props.withTranslation);
-        if (tObj && content && content !== "") {
-        }
-        if (content && tObj?.content) content = tObj.content;
+        tObj = getTranslation(props.withTranslation);
+        if (labelContent && tObj?.title) labelContent.title = tObj.title;
     }
     //-------------------------------------------------------------------
     // 7. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-
-    const handleChange = (event) => {
-        if (event.target.checked) {
-            props.onClick(event.target.checked)
-        }
+    const [toggle, setToggle] = useState(content?.toggled)
+    useEffect(() => {
+        setToggle(content?.toggled);
+    }, [content?.toggled]);
+    const handleChange = (e) => {
+        setToggle((prevState) => !prevState);
     };
 
     // ========================= Render Function =================================
@@ -162,15 +167,18 @@ export default function ToggleButton(props) {
         >
             <div className="qui-toggle-button-container">
                 <ToggleSwitch
-                    onChange={handleChange}
+                    onChange={(e) => {
+                        handleChange(e);
+                    }}
                     id="qui-switch-toggle"
                     disableRipple={true}
+                    checked={toggle}
                 />
                 <label
                     htmlFor="qui-switch-toggle"
                     className={`qui-Toggle-Button-title`}
                     style={{ color: props.withColor?.textColor }}>
-                    {content}
+                    {labelContent.title}
                 </label>
             </div>
         </motion.div >

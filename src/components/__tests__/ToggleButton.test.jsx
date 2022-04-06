@@ -14,16 +14,21 @@ describe("ToggleButton", () => {
   // -------------------------------------
   let component,
       onChange = jest.fn();
+  let content ={
+    title:"Active",
+    toggled: false,
+  }
 
   const dictionary = JSON.stringify({
     hi: {
-      ToggleButton: { content: "सक्रिय" },
+      ToggleButton: { title: "सक्रिय" },
     },
   });
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
       <ToggleButton
+        content={content}
         asSize="normal"
         withColor={null}
         withAnimation={null}
