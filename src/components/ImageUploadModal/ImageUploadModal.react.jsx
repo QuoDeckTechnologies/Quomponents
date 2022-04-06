@@ -247,6 +247,7 @@ export default function ImageUploadModal(props) {
           {...props}
           content={[]}
           type="close"
+          arcIcon="close"
           position="top-right"
           onClick={() => {
             setOpenUploadModal(false);
