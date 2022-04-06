@@ -33,6 +33,7 @@ export default {
         defaultValue: {
           accentColor: "",
           textColor: "",
+
         },
       },
     },
@@ -163,7 +164,7 @@ DisabledCheckBox.parameters = {
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
   return (
-    <>
+    <div>
       <CheckBox
         {...args}
         content={{ label: args.label[0], checked: true }}
@@ -174,7 +175,7 @@ const MultipleTemplate = (args) => {
         content={{ label: args.label[1], checked: false }}
         asFloated="none"
       />
-    </>
+    </div>
   );
 };
 export const MultipleCheckBox = MultipleTemplate.bind({});
@@ -202,7 +203,7 @@ MultipleCheckBox.parameters = {
 // -------------------------------------------------------------
 const MultipleTemplateInline = (args) => {
   return (
-    <>
+    <div>
       <CheckBox
         {...args}
         content={{ label: args.label[0], checked: true }}
@@ -213,7 +214,7 @@ const MultipleTemplateInline = (args) => {
         content={{ label: args.label[1], checked: false }}
         asFloated="inline"
       />
-    </>
+    </div>
   );
 };
 export const InlineMultipleCheckBox = MultipleTemplateInline.bind({});
