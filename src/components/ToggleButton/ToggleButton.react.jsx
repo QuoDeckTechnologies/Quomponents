@@ -1,4 +1,5 @@
 // Import npm packages
+import React from "react"
 import PropTypes from "prop-types";
 import { Switch, styled } from "@mui/material";
 import { motion } from "framer-motion";
@@ -18,7 +19,6 @@ ToggleButton.propTypes = {
     // Component Specific props
     //=======================================
     content: PropTypes.string,
-
     // Quommon props
     //=======================================
     /**
@@ -26,18 +26,23 @@ ToggleButton.propTypes = {
     */
     asSize: PropTypes.oneOf([
         "tiny",
-        "small",
         "normal",
-        "big",
-        "huge",
-        "massive",
+    ]), /**
+    Use to define standard component type
+    */
+    asVariant: PropTypes.oneOf([
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "error",
     ]),
     /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-    Use to override component colors and behavior
+    Use to override component colors 
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
@@ -92,6 +97,7 @@ ToggleButton.defaultProps = {
     // Quommon props
     //=======================================
     asSize: "normal",
+    asVariant: "primary",
     asFloated: "none",
 
     withColor: null,
@@ -108,54 +114,28 @@ ToggleButton.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
+- MUI props are not being passed to the ToggleButton. Please speak to the admin to handle any new MUI prop.
 **/
 export default function ToggleButton(props) {
     const ToggleSwitch = styled(Switch)(() => ({
-        width: '3.2em',
-        height: '2em',
         '& .MuiSwitch-switchBase': {
-            color: '#AAAAAA',
-            margin: 1,
-            padding: 0,
-            transform: 'translate(0.5em,0.3em)',
+            color: '#AAAAAA ',
             '&.Mui-checked': {
                 color: props.withColor?.accentColor,
-                transform: 'translate(1.5em,0.3em)',
                 '& + .MuiSwitch-track': {
-                    opacity: 1,
                     backgroundColor: props.withColor?.backgroundColor,
                 },
             },
         },
-        '& .MuiSwitch-thumb': {
-            width: ' 1.2em',
-            height: '1.2em',
-        },
         '& .MuiSwitch-track': {
-            opacity: 1,
             backgroundColor: props.withColor?.backgroundColor,
-            borderRadius: '1em',
         },
     }));
-
-
-
     let { content } = props
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "toggle-button");
-    //-------------------------------------------------------------------
-    // 2. Set the component colors
-    //-------------------------------------------------------------------
-    let textColor = {
-        color: props.withColor?.textColor
-    }
-    //-------------------------------------------------------------------
-    // 2. Set the component colors
-    //--------------------------
-
     // -------------------------------------------------------------------
     // 5. Translate the text objects in case their is a dictionary provided
     // -------------------------------------------------------------------
@@ -179,9 +159,12 @@ export default function ToggleButton(props) {
             props.onClick(event.target.checked)
         }
     };
+    const getSwitchSize = () => {
+        if (props.asSize === "tiny") return "small";
+        if (props.asSize === "normal") return "medium";
+    };
 
     // ========================= Render Function =================================
-
     return (
         <motion.div
             initial={animate.from}
@@ -191,12 +174,16 @@ export default function ToggleButton(props) {
             <div className="qui-toggle-button-container">
                 <ToggleSwitch
                     onChange={handleChange}
+                    size={getSwitchSize()}
+                    id="qui-switch-toggle"
+                    disableRipple={true}
                 />
-                <div
-                    className={`qui-Toggle-Button-title size-${props.asSize}`}
-                    style={textColor}>
-                    {content}
-                </div>
+                <label
+                    htmlFor="qui-switch-toggle"
+                    className={`qui-Toggle-Button-title size-${props.asSize} ${quommonClasses.childClasses}`}
+                >
+                    <p style={{ color: props.withColor?.textColor }}>{content}</p>
+                </label>
             </div>
         </motion.div >
     );
