@@ -3,7 +3,7 @@ import ToggleButton from "../components/ToggleButton/ToggleButton.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        ToggleButton: { content: "सक्रिय" },
+        ToggleButton: { title: "सक्रिय" },
     },
 });
 
@@ -11,7 +11,10 @@ export default {
     title: "Design System/ToggleButton/ToggleButton",
     component: ToggleButton,
     argTypes: {
-        content: "Active",
+        content: {
+            title: "Active",
+            toggled: true,
+        },
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -92,7 +95,10 @@ export default {
 const Template = (args) => <ToggleButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: "Active",
+    content: {
+        title: "Active",
+        toggled: true,
+    },
     asVariant: "primary",
     asFloated: "inline",
 
@@ -138,43 +144,6 @@ TranslatedToggleButton.parameters = {
         },
         source: {
             code: `<ToggleButton {...${JSON.stringify(Default.args, null, 2)}}/>`,
-        },
-    },
-};
-
-// -------------------------------------------------------------
-// AllSizesToggleButtons
-// -------------------------------------------------------------
-const AllSizes = (args) => {
-    const baseObj = {
-        ...Object.assign({}, Default.args, args, {
-            content: "Toggle Button"
-        }),
-    };
-    return (
-        <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
-            <ToggleButton
-                {...Object.assign({}, baseObj, {
-                    content: "Tiny Toggle Button",
-                    asSize: "tiny",
-                })}
-            />
-            <ToggleButton
-                {...Object.assign({}, baseObj, {
-                    content: "Normal Toggle Button",
-                    asSize: "normal",
-                })}
-            />
-        </div>
-    );
-};
-
-
-export const AllSizesToggleButtons = AllSizes.bind({});
-AllSizesToggleButtons.parameters = {
-    docs: {
-        description: {
-            story: "Mui Switch has 2 different sizes : small || medium which are overrided here as tiny and normal.",
         },
     },
 };
