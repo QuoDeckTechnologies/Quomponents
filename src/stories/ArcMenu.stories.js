@@ -193,10 +193,11 @@ const ExampleTemplate = (args) => {
   const [openModalTwo, setOpenModalTwo] = useState(false);
   return (
     <div
-      className="qui"
+      className="qui"/*parent must have a qui class for arcmenu*/
       style={{
         height: "100vh",
         border: "0.1em solid black",
+        borderRadius:'1em',
         overflow: "visible",
         display:'flex',
         justifyContent:'center',
@@ -207,11 +208,15 @@ const ExampleTemplate = (args) => {
       <Backdrop open={openModalTwo} sx={{zIndex:21}} onClick={()=>setOpenModalTwo(false)}/>
       {openModalOne && (
         <div className="qui-first-imported-component" style={{position:'absolute',zIndex:20,left:'0',bottom:'20%'}}>
-          <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#454545',color:'white',marginBottom:'0.1em',cursor:'pointer'}} onClick={()=>setOpenModalTwo(true)}>Option One</div>
-          <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#454545',color:'white',cursor:'pointer'}} onClick={()=>setOpenModalTwo(true)}>Option Two</div>
+           <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#ffbf00',marginBottom:'0.1em',cursor:'pointer'}} >Heading</div>
+          <a href="http://localhost:6006/?path=/story/design-system-accentline-accentline--default">
+          <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#454545',color:'white',marginBottom:'0.1em',cursor:'pointer'}} >Redirects</div>
+          </a>
+          <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#454545',color:'white',cursor:'pointer'}} onClick={()=>setOpenModalTwo(true)}>Opens a modal</div>
+          <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#d97575',marginTop:'0.1em',cursor:'pointer'}} onClick={()=>setOpenModalOne(false)}>Delete</div>
         </div>
       )}
-     {openModalTwo && <div/*parent must have a qui class for arcmenu*/className="qui qui-second-imported-component" style={{position:'absolute',zIndex:22,background:'white',padding:'5em'}}>
+     {openModalTwo && <div className="qui qui-second-imported-component" style={{position:'absolute',zIndex:22,background:'white',padding:'5em'}}>
        <h1>Testing Second Modal</h1>
        <ArcMenu
         type="close"
@@ -219,6 +224,7 @@ const ExampleTemplate = (args) => {
         position="top-right"
         onClick={() => setOpenModalTwo(false)}
       />
+      <button onClick={(e)=>args.onClick(e)}>Click</button>
        </div>}
       <ArcMenu
         type="add"
