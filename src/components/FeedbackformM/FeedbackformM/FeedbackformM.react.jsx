@@ -106,8 +106,8 @@ export default function FeedbackformM(props) {
                     <ToggleButton {...props} content={{ title: "Show Feedback" }} onClick={() => setToggle(prevState => !prevState)} />
                 </div>
                 {toggle && <div className={`qui-feedback-input-field-container`}>
-                    <InputField {...props} />
-                    <InputField {...props} />
+                    <InputField {...props} content={{label:"If Correct"}} />
+                    <InputField {...props} content={{label:"If InCorrect"}} />
                 </div>}
             </div>
         </motion.div>
