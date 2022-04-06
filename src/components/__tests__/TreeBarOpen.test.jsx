@@ -7,18 +7,11 @@ import { render, fireEvent } from "@testing-library/react";
 // Import Components
 // -------------------------------------
 import TreeBarOpen from '../TreeBarOpen/TreeBarOpen.react';
-import {
-    filterTree,
-    expandFilteredNodes,
-    findNode,
-    defaultMatcher,
-} from "../TreeBarOpen/TreeBarOpen.react";
 import { Treebeard, decorators } from "react-treebeard";
 import '@testing-library/jest-dom';
 import '@testing-library/jest-dom/extend-expect';
 
 import SearchBar from "../SearchBar/SearchBar.react"
-
 
 describe("TreeBarOpen", () => {
     // -------------------------------------
@@ -93,49 +86,6 @@ describe("TreeBarOpen", () => {
                 }
             ]
         },
-    };
-    let filteredData = {
-        id: "allArticles",
-        parentId: null,
-        name: "All Articles",
-        description: "",
-        children: [
-            {
-                id: "category-0",
-                parentId: "allArticles",
-                name: "Article",
-                description: "",
-                children: [
-                    {
-                        published: true,
-                        "tags": [],
-                        "_id": "622eeb5ede595f24b7aadd6e",
-                        name: "Sedding Dummy Test Article",
-                        category: "article",
-                        summary: "",
-                        "identifier": "2Dpr5SmeY",
-                        "owner": "622b36ff46e1c31a2e22c42e",
-                        createdAt: "2022-03-14T07:14:38.348Z",
-                        id: "622eeb5ede595f24b7aadd6e",
-                        toggled: false
-                    },
-                    {
-                        published: true,
-                        "tags": [],
-                        "_id": "622b4534a2d4393e6ce1c3ba",
-                        name: "New Article",
-                        category: "article",
-                        summary: "",
-                        "identifier": "Yeb4B2_bn",
-                        "owner": "622b36ff46e1c31a2e22c42e", createdAt: "2022-03-11T12:48:52.066Z",
-                        id: "622b4534a2d4393e6ce1c3ba",
-                        toggled: false
-                    }
-                ],
-                toggled: true
-            }
-        ],
-        toggled: true
     };
 
     let nodeData = {
@@ -342,50 +292,16 @@ describe("TreeBarOpen", () => {
         expect(getByText('All Articles')).toBeInTheDocument();
     });
 
-    it("should expand search value tree", () => {
-        const filter = "Article";
-        const defaultMatcherData = defaultMatcher(filter, content.TreeData);
-        let matcher = defaultMatcher;
-        const findNodeData = findNode(content.TreeData.children[0], filter, matcher = defaultMatcher);
-        expect(defaultMatcherData).toEqual(true)
-
-        expect(findNodeData).toEqual(true);
-
-        const finState = filterTree(content.TreeData, filter, matcher = defaultMatcher);
-
-        const expandFilteredNodesData = expandFilteredNodes(
-            finState,
-            filter,
-            matcher = defaultMatcher
-        );
-        expect(finState).toEqual(content.TreeData);
-        expect(expandFilteredNodesData).toEqual(filteredData);
-    });
-
     it("should render tree bar when click on search", () => {
-        let inputData = ""
-        component.setProps({ content: content, filter: inputData })
+        let inputData = "Sedding Dummy Test Article";
+        let filter = "Sedding Dummy Test Article";
+
+        component.setProps({ filter: inputData })
+
+        component.setProps({ content: content })
         component.setProps({ onClick: jest.fn() })
         let search = component.find(SearchBar);
-        const filter = "Article";
-        let matcher = defaultMatcher;
-
         search.simulate('click', inputData);
-
-        search.simulate('click', filter, content.TreeData);
-        defaultMatcher(filter, content.TreeData);
-
-
-        search.simulate('change', content.TreeData, filter, matcher);
-        findNode(content.TreeData, filter, matcher);
-
-        let newData = search.simulate('change', content.TreeData, filter);
-        const result = filterTree(content.TreeData, filter);
-        matcher(filter, content.TreeData);
-
-        search.simulate('change', newData, filter);
-        search.simulate('change', newData, filter);
-        expandFilteredNodes(result, filter);
     });
 
     it("should toggle the treebeard", () => {
@@ -396,5 +312,5 @@ describe("TreeBarOpen", () => {
         let treeBeard = component.find(Treebeard);
         treeBeard.simulate('toggle', nodeData, toggled);
         expect(onSelectData).toHaveBeenCalledWith(nodeData);
-    })
+    });
 });

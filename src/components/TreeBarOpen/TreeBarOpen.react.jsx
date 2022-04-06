@@ -108,17 +108,17 @@ decorators.Header = ({ node }) => {
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function TreeItem(props) {
-    const [cursor, setCursor] = useState(props.content.TreeData);
-    const [folderStructure, setfolderStructure] = useState(props.content.TreeData);
+    const [cursor, setCursor] = useState(props.content?.TreeData);
+    const [folderStructure, setfolderStructure] = useState(props.content?.TreeData);
     //-------------------------------------------------------------------
     // Search the specific data
     //-------------------------------------------------------------------
     const startSearch = (inputData) => {
         let filter = inputData ? inputData : "";
         if (!filter) {
-            return setfolderStructure(props.content.TreeData);
+            return setfolderStructure(props.content?.TreeData);
         }
-        let filtered = filterTree(props.content.TreeData, filter);
+        let filtered = filterTree(props.content?.TreeData, filter);
         filtered = expandFilteredNodes(filtered, filter);
         setfolderStructure(filtered);
     };
@@ -214,7 +214,7 @@ export default function TreeItem(props) {
                         onClick={startSearch}
                     />
                 </div>
-                {props.content.TreeData && (
+                {props.content?.TreeData && (
                     <div>
                         <div className={`qui-treebar-container`}>
                             <div className="qui-treebar-content">
