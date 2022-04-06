@@ -78,6 +78,9 @@
     transition: none;
     outline: none;
 }
+.qui .MuiFilledInput-root:hover:not(.Mui-disable):after {
+    border-bottom: 0.3em solid #ffab00;
+}
 .qui .MuiFilledInput-root:before {
     border-bottom: 0.3em solid #8c8c89;
 }
