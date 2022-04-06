@@ -138,7 +138,9 @@ export default function CheckBox(props) {
           value={content?.label}
           onChange={(e) => {
             setIsChecked((prevState) => !prevState);
-            props.onClick(e.target.value, e.target.checked);
+            let tmp_Obj = {}
+            tmp_Obj[e.target.value.replace(' ','').toLowerCase()] = e.target.checked
+            props.onClick(tmp_Obj);
           }}
         />
         <label
