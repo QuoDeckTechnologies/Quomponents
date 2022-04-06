@@ -142,8 +142,8 @@ export default function TextBlock(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui qui-text-block-container ${quommonClasses.parentClasses}`}>
-            <div className={`qui-text-block-area`} style={{ backgroundColor: props.withColor.backgroundColor }}>
-                <div className={`qui-block-text size-${props.asSize} ${quommonClasses.childClasses} `} style={{ color: props.withColor.textColor }} >
+            <div className={`qui-text-block-area`} style={{ backgroundColor: props.withColor?.backgroundColor }}>
+                <div className={`qui-block-text size-${props.asSize} ${quommonClasses.childClasses} `} style={{ color: props.withColor?.textColor }} >
                     {content}
                 </div>
             </div>
@@ -151,8 +151,8 @@ export default function TextBlock(props) {
                 <div className={`qui-text-block-chat-arrow ${getArrowPosition(props.position)}`}
                     style={{
                         opacity: props.opacity,
-                        borderRightColor: props.withColor.backgroundColor,
-                        borderLeftColor: props.withColor.backgroundColor
+                        borderRightColor: props.withColor?.backgroundColor,
+                        borderLeftColor: props.withColor?.backgroundColor
                     }}>
                 </div>
             </div>}
