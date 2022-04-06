@@ -6,7 +6,7 @@ export default {
     component: CourseCard,
     argTypes: {
         content: {
-            status: "none",
+            published: false,
             courseType: "",
             wrapper: "",
             tags: [],
@@ -84,7 +84,7 @@ const Template = (args) => <CourseCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        status: "none",
+        published: false,
         courseType: "standard",
         wrapper: "carnival",
         tags: ["Tag1", "Tag2"],
@@ -121,7 +121,7 @@ Default.parameters = {
 export const DifferentResolution = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {
-            status: "none",
+            published: false,
             courseType: "standard",
             wrapper: "carnival",
             tags: ["Tag1", "Tag2"],

@@ -182,7 +182,7 @@
     }
 }
 
-@media only screen and (min-width: 375px) and (max-width: 413px) {
+@media only screen and (min-width: 375px) and (max-width: 411px) {
     .qui-course-card-title {
         font-size: 1em;
     }
@@ -250,7 +250,9 @@
     .qui-course-card-title {
         font-size: 1em;
     }
-
+    .qui-course-card-tag-and-date-container{
+        margin-top: 0.3em;
+    }
     .qui-course-block-styling{
         font-size: 0.8em;
         margin-left: -0.7em;

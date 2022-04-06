@@ -28,7 +28,7 @@ CourseCard.propTypes = {
     // Component Specific props
     //=======================================
     content: PropTypes.shape({
-        status: PropTypes.string,
+        pulished: PropTypes.bool,
         courseType: PropTypes.oneOf([
             "standard",
             "exam"
@@ -71,7 +71,7 @@ CourseCard.defaultProps = {
     // Component Specific props
     //=======================================
     content: {
-        status: "",
+        published: false,
         tags: [],
         courseType: "standard",
         wrapper: "carnival",
@@ -136,6 +136,12 @@ export default function CourseCard(props) {
     let endDate = props.content?.date?.start_date ? new Date(props.content.date.end_date).toLocaleDateString(undefined, options) : "";
 
 
+    //-------------------------------------------------------------------
+    // 6. Get published status
+    //-------------------------------------------------------------------
+    let status = props.content.published ? "published" : "none"
+
+
     let header;
     if (props.content?.wrapper?.toLowerCase() === "none" || props.content.wrapper === "") {
         header = ""
@@ -153,7 +159,7 @@ export default function CourseCard(props) {
                 <div className="qui-course-card-body">
                     <div className={`qui-course-card-title-container`}>
                         <div className={`qui-nugget-block-styling`}>
-                            <NuggetBlock status={props.content?.status} image={Nugget_Course} />
+                            <NuggetBlock status={status} image={Nugget_Course} />
                         </div>
                         <div className={`qui-course-card-title`}>
                             {props.content?.courseName}
