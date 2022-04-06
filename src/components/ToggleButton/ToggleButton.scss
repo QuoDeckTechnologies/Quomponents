@@ -3,6 +3,7 @@
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
+    font-size: 0.8em;
 }
 .qui .qui-toggle-button-container {
     display: flex;
@@ -18,24 +19,104 @@
 }
 @media only screen and (min-width: 320px) {
     .qui-toggle-button-container .MuiSwitch-root.MuiSwitch-sizeMedium.css-7jaee5-MuiSwitch-root {
-        width:2.5em;
+        width: 2.5em;
+    }
+    .MuiSwitch-root.MuiSwitch-sizeMedium.css-1bf3yyv-MuiSwitch-root {
+        width: 2.5em;
     }
     .MuiSwitch-root {
         .MuiSwitch-switchBase.Mui-checked {
-            transform: translateX(1.1em);
+            transform: translateX(1em);
         }
         .MuiSwitch-switchBase .MuiSwitch-thumb {
             width: 0.9em;
             height: 0.9em;
-            transform: translate(-0.2em, -0.05em);
+            transform: translate(-0.1em, -0.05em);
         }
         .MuiSwitch-track {
             width: 1.9em;
             height: 0.6em;
             border-radius: 1em;
         }
-        .qui.qui-Toggle-Button-title {
-            font-size: 0.5em;
+    }
+}
+@media only screen and (min-width: 481px) {
+    .qui-toggle-button-container .MuiSwitch-root.MuiSwitch-sizeMedium.css-7jaee5-MuiSwitch-root {
+        width: 2.8em;
+    }
+    .MuiSwitch-root.MuiSwitch-sizeMedium.css-1bf3yyv-MuiSwitch-root {
+        width: 2.8em;
+    }
+    .MuiSwitch-root {
+        .MuiSwitch-switchBase.Mui-checked {
+            transform: translateX(1.1em);
         }
+        .MuiSwitch-switchBase .MuiSwitch-thumb {
+            width: 1.1em;
+            height: 1.1em;
+            transform: translate(-0.1em, -0.05em);
+        }
+        .MuiSwitch-track {
+            width: 2.8em;
+            height: 0.7em;
+            border-radius: 1em;
+        }
+    }
+    .qui-Toggle-Button-title {
+        font-size: 1em;
+        padding-top: 0.1em;
+    }
+}
+@media only screen and (min-width: 769px) {
+    .qui-toggle-button-container .MuiSwitch-root.MuiSwitch-sizeMedium.css-7jaee5-MuiSwitch-root {
+        width: 3.2em;
+        height: 2em;
+    }
+    .MuiSwitch-root.MuiSwitch-sizeMedium.css-1bf3yyv-MuiSwitch-root {
+        width: 3.2em;
+    }
+    .MuiSwitch-root {
+        .MuiSwitch-switchBase.Mui-checked {
+            transform: translateX(1.4em);
+        }
+        .MuiSwitch-switchBase .MuiSwitch-thumb {
+            width: 1.3em;
+            height: 1.3em;
+            transform: translate(-0.2em, -0.07em);
+        }
+        .MuiSwitch-track {
+            width: 3.1em;
+            height: 0.9em;
+            border-radius: 1em;
+        }
+    }
+    .qui-Toggle-Button-title {
+        font-size: 1.1em;
+        padding-top: 0.2em;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .MuiSwitch-root.MuiSwitch-sizeMedium.css-1bf3yyv-MuiSwitch-root {
+        width: 3.3em;
+        height: 2.1em;
+    }
+    .MuiSwitch-root {
+        .MuiSwitch-switchBase.Mui-checked {
+            transform: translateX(1.5em);
+        }
+        .MuiSwitch-switchBase .MuiSwitch-thumb {
+            width: 1.4em;
+            height: 1.4em;
+            transform: translate(-0.2em, -0.07em);
+        }
+        .MuiSwitch-track {
+            width: 3.3em;
+            height: 1em;
+            border-radius: 1em;
+        }
+    }
+    .qui-Toggle-Button-title {
+        font-size: 1.1em;
+        padding-bottom: 0.1em;
     }
 }
