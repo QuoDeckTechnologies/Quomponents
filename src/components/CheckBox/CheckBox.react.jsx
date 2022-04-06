@@ -91,7 +91,7 @@ CheckBox.defaultProps = {
 **/
 export default function CheckBox(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring label prop
+  // 1. Destructuring content and withColor prop
   //-------------------------------------------------------------------
   const { content, withColor } = props;
   //-------------------------------------------------------------------
