@@ -14,7 +14,7 @@ export default {
         content: "Active",
         asSize: {
             control: "select",
-            options: ["tiny", "normal"],
+            options: ["small", "normal"],
             table: {
                 category: "as-Flags",
             },

@@ -18,23 +18,26 @@
     }
     .MuiSwitch-root {
         &.MuiSwitch-sizeSmall {
+            .MuiSwitch-switchBase.Mui-checked {
+                transform: translateX(1em);
+            }
             .MuiSwitch-switchBase .MuiSwitch-thumb {
-                width: 0.7em;
-                height: 0.7em;
-                transform: translate(0, 0.03em);
+                width: 0.9em;
+                height: 0.9em;
+                transform: translate(-0.2em, -0.05em);
             }
             .MuiSwitch-track {
-                width: 1.1em;
-                height: 0.5em;
+                width: 2em;
+                height: 0.6em;
                 border-radius: 1em;
             }
         }
     }
     .MuiSwitch-root {
-        .MuiSwitch-switchBase.Mui-checked {
-            transform: translate(1.3em, 0em);
-        }
         &.MuiSwitch-sizeMedium {
+            .MuiSwitch-switchBase.Mui-checked {
+                transform: translateX(1.5em);
+            }
             .MuiSwitch-switchBase .MuiSwitch-thumb {
                 width: 1.2em;
                 height: 1.2em;

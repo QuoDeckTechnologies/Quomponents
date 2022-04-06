@@ -25,7 +25,7 @@ ToggleButton.propTypes = {
     Use to define component text size in increasing order
     */
     asSize: PropTypes.oneOf([
-        "tiny",
+        "small",
         "normal",
     ]), /**
     Use to define standard component type
@@ -160,7 +160,7 @@ export default function ToggleButton(props) {
         }
     };
     const getSwitchSize = () => {
-        if (props.asSize === "tiny") return "small";
+        if (props.asSize === "small") return "small";
         if (props.asSize === "normal") return "medium";
     };
 
