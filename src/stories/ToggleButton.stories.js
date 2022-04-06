@@ -14,7 +14,14 @@ export default {
         content: "Active",
         asSize: {
             control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            options: ["tiny", "normal"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asVariant: {
+            control: "select",
+            options: ["primary", "secondary", "success", "warning", "error"],
             table: {
                 category: "as-Flags",
             },
@@ -94,6 +101,7 @@ export const Default = Template.bind({});
 Default.args = {
     content: "Active",
     asSize: "normal",
+    asVariant: "primary",
     asFloated: "inline",
 
     withColor: {
@@ -138,6 +146,43 @@ TranslatedToggleButton.parameters = {
         },
         source: {
             code: `<ToggleButton {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// AllSizesToggleButtons
+// -------------------------------------------------------------
+const AllSizes = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            content: "Toggle Button"
+        }),
+    };
+    return (
+        <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+            <ToggleButton
+                {...Object.assign({}, baseObj, {
+                    content: "Tiny Toggle Button",
+                    asSize: "tiny",
+                })}
+            />
+            <ToggleButton
+                {...Object.assign({}, baseObj, {
+                    content: "Normal Toggle Button",
+                    asSize: "normal",
+                })}
+            />
+        </div>
+    );
+};
+
+
+export const AllSizesToggleButtons = AllSizes.bind({});
+AllSizesToggleButtons.parameters = {
+    docs: {
+        description: {
+            story: "Mui Switch has 2 different sizes : small || medium which are overrided here as tiny and normal.",
         },
     },
 };

@@ -1,10 +1,52 @@
-
-.qui .qui-toggle-button-container{
+.qui-Toggle-Button-title {
+    margin-left: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    p {
+        padding-top: 0.1em;
+    }
+}
+.qui .qui-toggle-button-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-}
-.qui-Toggle-Button-title {
-    text-transform: uppercase;
+    .MuiButtonBase-root.MuiSwitch-switchBase:hover {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    .MuiButtonBase-root.MuiSwitch-switchBase.Mui-checked:hover {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    .MuiSwitch-root {
+        &.MuiSwitch-sizeSmall {
+            .MuiSwitch-switchBase .MuiSwitch-thumb {
+                width: 0.7em;
+                height: 0.7em;
+                transform: translate(0, 0.03em);
+            }
+            .MuiSwitch-track {
+                width: 1.1em;
+                height: 0.5em;
+                border-radius: 1em;
+            }
+        }
+    }
+    .MuiSwitch-root {
+        .MuiSwitch-switchBase.Mui-checked {
+            transform: translate(1.3em, 0em);
+        }
+        &.MuiSwitch-sizeMedium {
+            .MuiSwitch-switchBase .MuiSwitch-thumb {
+                width: 1.2em;
+                height: 1.2em;
+                transform: translate(-0.3em, -0.1em);
+            }
+            .MuiSwitch-track {
+                width: 2em;
+                height: 0.8em;
+                border-radius: 1em;
+            }
+        }
+    }
 }

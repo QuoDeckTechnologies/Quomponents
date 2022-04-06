@@ -15,7 +15,6 @@ describe("ToggleButton", () => {
   let component,
       onChange = jest.fn();
 
-
   const dictionary = JSON.stringify({
     hi: {
       ToggleButton: { content: "सक्रिय" },
@@ -33,7 +32,6 @@ describe("ToggleButton", () => {
         isDisabled={false}
         onClick={() => console.log("ToggleButton Testing")}
         onChange={onChange}
-
       />
     );
   });
