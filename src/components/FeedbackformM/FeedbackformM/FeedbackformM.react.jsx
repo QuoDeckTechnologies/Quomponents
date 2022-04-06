@@ -26,21 +26,6 @@ FeedbackformM.propTypes = {
         "error",
     ]),
     /**
-    Use to define component text size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "small",
-        "normal",
-    ]),
-    /**
-    Use to float the component in parent container
-    */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
-    /**
     Use to define the entry animation of the component
     */
     withAnimation: PropTypes.shape({
@@ -86,8 +71,6 @@ FeedbackformM.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "primary",
-    asSize:"normal",
-    asFloated: "inline",
     withColor: null,
     isHidden: false,
     isDisabled: false,

@@ -13,27 +13,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asSize: {
-            control: "select",
-            options: ["small",  "normal"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asFloated: {
-            control: "select",
-            options: ["left", "right", "none", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -99,18 +78,15 @@ const Template = (args) => <FeedbackformM {...args} />;
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
-       content:"Show Feedback",
-    asFloated: "inline",
+    content:"Show Feedback",
     asVariant:"primary",
-    asSize:"normal",
-    asAligned:"",
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
     },
     withColor: {
-        backgroundColor: "#454545",
+        backgroundColor: "#a19594",
         accentColor: "#FFAB00",
         textColor: "",
     },
