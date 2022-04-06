@@ -79,7 +79,7 @@ export default {
     componentSubtitle:
       "Default InputField for general purpose use",
     a11y: { disable: true },
-    docs: { iframeHeight: 150 },
+    docs: { iframeHeight: 100 },
   },
 };
 // -------------------------------------------------------------
@@ -99,7 +99,7 @@ Default.args = {
   asFloated: "none",
   withColor: {
     textColor: "#666666",
-    accentColor: "#8c8c89",
+    accentColor: "#ffab00",
     backgroundColor: "#ffab000d",
   },
   withAnimation: {
