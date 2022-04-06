@@ -64,7 +64,7 @@ CheckBox.propTypes = {
     */
   isDisabled: PropTypes.bool,
   /**
-    CheckBox component must have the onClick function passed as props to return checked/unchecked status and label of the checkbox
+   CheckBox component must have the onClick function passed as props to return label of the checkbox and checked/unchecked status
     */
   onClick: PropTypes.func.isRequired,
 };
