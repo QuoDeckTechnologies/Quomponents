@@ -26,6 +26,13 @@ FeedbackformM.propTypes = {
         "error",
     ]),
     /**
+    Use to define component text size in increasing order
+    */
+    asSize: PropTypes.oneOf([
+        "small",
+        "normal",
+    ]),
+    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
@@ -79,6 +86,7 @@ FeedbackformM.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "primary",
+    asSize:"normal",
     asFloated: "inline",
     withColor: null,
     isHidden: false,
@@ -114,9 +122,7 @@ export default function FeedbackformM(props) {
                     <ToggleButton {...props} onClick={() => setToggle(prevState => !prevState)} />
                 </div>
                 {toggle && <div className={`qui-feedback-input-field-container`}>
-                    {/* <input type='text' placeholder='If Correct' className={`qui-toggle-input-fields variant-${props.asVariant}`} />
-                    <input type='text' placeholder='If InCorrect' className={`qui-toggle-input-fields variant-${props.asVariant}`} /> */}
-                    <InputField {...props} className={`qui-feedback-input-field`} />
+                    <InputField {...props} />
                     <InputField {...props} />
                 </div>}
             </div>

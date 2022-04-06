@@ -13,7 +13,13 @@ export default {
                 category: "as-Flags",
             },
         },
-
+        asSize: {
+            control: "select",
+            options: ["small",  "normal"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
@@ -96,6 +102,7 @@ Default.args = {
        content:"Show Feedback",
     asFloated: "inline",
     asVariant:"primary",
+    asSize:"normal",
     asAligned:"",
     withAnimation: {
         animation: "zoom",
