@@ -129,18 +129,23 @@ export default function CheckBox(props) {
       <div
         className={`qui-check-box-inner-container ${quommonClasses.childClasses}`}
       >
-        <Checkbox
-          style={{ color: withColor?.accentColor }}
-          checked={isChecked}
-          id="qui-check-box-element"
-          disabled={props.isDisabled}
-          size={getSize()}
-          value={content?.label}
-          onChange={(e) => {
-            setIsChecked((prevState) => !prevState);
-            props.onClick({ value: e.target.value, checked: e.target.checked });
-          }}
-        />
+        {content && (
+          <Checkbox
+            style={{ color: withColor?.accentColor }}
+            checked={isChecked}
+            id="qui-check-box-element"
+            disabled={props.isDisabled}
+            size={getSize()}
+            value={content?.label}
+            onChange={(e) => {
+              setIsChecked((prevState) => !prevState);
+              props.onClick({
+                value: e.target.value,
+                checked: e.target.checked,
+              });
+            }}
+          />
+        )}
         <label
           htmlFor="qui-check-box-element"
           className="qui-check-box-element"
