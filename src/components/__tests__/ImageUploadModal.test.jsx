@@ -2,6 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow, mount } from "enzyme";
+import { act } from "react-dom/test-utils";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -72,7 +73,7 @@ describe("ImageUploadModal", () => {
     expect(component.exists()).toBe(true);
   });
   it("should render correctly without throwing error when slider is operated", () => {
-    component.find("Slider").simulate("change", 20);
+    component.find("Slider").simulate("click", 20);
     expect(component.exists()).toBe(true);
   });
   it("should render correctly without throwing error when clicked close icon", () => {
@@ -81,13 +82,15 @@ describe("ImageUploadModal", () => {
   });
   it("should render correctly without throwing error when window is resized", () => {
     global.innerWidth = 200;
-    global.dispatchEvent(new Event("resize"));
-    expect(component.exists()).toBe(true);
+    act(() => {
+      global.dispatchEvent(new Event("resize"));
+    });
   });
   it("should render correctly without throwing error when window is resized to larger viewport", () => {
     global.innerWidth = 1200;
-    global.dispatchEvent(new Event("resize"));
-    expect(component.exists()).toBe(true);
+    act(() => {
+      global.dispatchEvent(new Event("resize"));
+    });
   });
   it("should render correctly without throwing error when clicked on upload button", () => {
     component.find("Button").at(0).simulate("click");
