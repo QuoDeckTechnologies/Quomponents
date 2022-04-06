@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import TextField from '@mui/material/TextField';
+import { styled } from "@mui/material";
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -116,6 +117,17 @@ InputField.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function InputField(props) {
+    const FilledInput = styled(TextField)(() => ({
+        '& .MuiInputBase-root': {
+            '&.MuiFilledInput-root:after': {
+                backgroundColor: props.withColor?.accentColor,
+                height: "0.3em",
+            }, '&.MuiFilledInput-root:before': {
+                backgroundColor: "#AAAAAA",
+                height: "0.3em",
+            },
+        },
+    }));
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -140,7 +152,8 @@ export default function InputField(props) {
     //-------------------------------------------------------------------
     // 3. Use to set styling for InputField.
     //-------------------------------------------------------------------
-    const inputRef = useRef();
+    const inputRef = useRef(null);
+    console.log(inputRef.current)
 
     const changeFocus = () => {
         inputRef.current.style.borderColor = props.withColor?.accentColor
@@ -157,7 +170,7 @@ export default function InputField(props) {
     const getInput = (asEmphasis) => {
         if (asEmphasis === "filled") {
             return (
-                <TextField
+                <FilledInput
                     className="qui-filled"
                     // InputProps={{
                     //     disableUnderline: true,
@@ -182,7 +195,7 @@ export default function InputField(props) {
             return (
                 <div className="qui-char-limited-container">
                     <div className="qui-char-limited-max-length">{`${count}/${props.content?.maxLength}`}</div>
-                    <TextField
+                    <FilledInput
                         className="qui-char-limited"
                         InputLabelProps={{
                             style: { color: props.withColor?.textColor },
@@ -205,7 +218,7 @@ export default function InputField(props) {
             return (
                 <div className="qui-list-input-container">
                     <div className="qui-char-limited-max-length">{`${count}/${props.content?.maxLength}`}</div>
-                    <TextField
+                    <FilledInput
                         className="qui-list-input"
                         InputLabelProps={{
                             style: { color: props.withColor?.textColor },
