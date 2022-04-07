@@ -307,6 +307,7 @@ describe("TreeBarOpen", () => {
     it("should toggle the treebeard", () => {
         let toggled = false;
         let onSelectData = jest.fn();
+        component.find(".qui-treebar-searchbar").children().simulate("click");
         component.setProps({ node: nodeData, toggled: toggled, onSelectData: onSelectData })
         component.setProps({ data: nodeData })
         let treeBeard = component.find(Treebeard);
