@@ -7,6 +7,31 @@
     align-items: center;
     position: relative;
 }
+// ================================================= */
+/* max and ideal Definitions */
+/* ================================================= */
+.qui .qui-char-limit-max-length {
+    background-color: #aaaaaa;
+    width: fit-content;
+    padding: 0 0.9em 0.3em 0.9em;
+    font-size: 1em;
+    position: absolute;
+    right: 2em;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    z-index: 2;
+}
+.qui .qui-char-limit-ideal-length {
+    background-color: #f80909;
+    width: fit-content;
+    padding: 0 0.9em 0.3em 0.9em;
+    font-size: 1em;
+    position: absolute;
+    right: 2em;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    z-index: 2;
+}
 /* ================================================= */
 /* filled Definitions */
 /* ================================================= */
@@ -16,7 +41,7 @@
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
 }
-// /* ================================================= */
+// ================================================= */
 /* charLimited Definitions */
 /* ================================================= */
 .qui .qui-char-limited-container {
@@ -27,17 +52,6 @@
     min-height: 1.5em;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
-}
-
-.qui .qui-char-limited-max-length {
-    background-color: #aaaaaa;
-    width: fit-content;
-    padding: 0 0.7em 0.1em 0.7em;
-    font-size: 1em;
-    position: absolute;
-    right: 2em;
-    border-bottom-left-radius: 0.5em;
-    border-bottom-right-radius: 0.5em;
 }
 /* ================================================= */
 /* listInput Definitions */
