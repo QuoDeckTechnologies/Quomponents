@@ -5,7 +5,7 @@ export default {
     title: "Design System/FeedbackformM/FeedbackformM",
     component: FeedbackformM,
     argTypes: {
-       content: "Show Feedback",
+        content: "Show Feedback",
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -17,9 +17,12 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    backgroundColor: "",
-                    accentColor: "",
-                    textColor: "",
+                    ToggleBackgroundColor:"",
+                    ToggleAccentColor: "",
+                    ToggleTextColor: "",
+                    InputFieldBackgroundColor: "",
+                    InputFieldAccentColor: "",
+                    InputFieldTextColor:"",
                 },
             },
         },
@@ -78,17 +81,20 @@ const Template = (args) => <FeedbackformM {...args} />;
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
-    content:"Show Feedback",
-    asVariant:"primary",
+    content: "Show Feedback",
+    asVariant: "primary",
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
     },
     withColor: {
-        backgroundColor: "#a19594",
-        accentColor: "#FFAB00",
-        textColor: "",
+        ToggleBackgroundColor:"#454545",
+        ToggleAccentColor: "#FFAB00",
+        ToggleTextColor: "",
+        InputFieldBackgroundColor: "#ffab000d",
+        InputFieldAccentColor: "#ffab00",
+        InputFieldTextColor:"#666666",
     },
     isDisabled: false,
     isHidden: false,

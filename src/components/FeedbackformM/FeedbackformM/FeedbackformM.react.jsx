@@ -46,11 +46,13 @@ FeedbackformM.propTypes = {
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
-        textColor: PropTypes.string,
+        ToggleBackgroundColor: PropTypes.string,
+        ToggleAccentColor: PropTypes.string,
+        ToggleTextColor: PropTypes.string,
+        InputFieldBackgroundColor: PropTypes.string,
+        InputFieldAccentColor: PropTypes.string,
+        InputFieldTextColor: PropTypes.string,
     }),
-
     /**
     Use to show/hide the component
     */
@@ -86,10 +88,27 @@ FeedbackformM.defaultProps = {
 
 export default function FeedbackformM(props) {
     const [toggle, setToggle] = useState(false);
+    //------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "feedback-form-m");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
+    //------------------------------------------------------------------
+    // 1. Set the colors of ToggleButton
+    //-------------------------------------------------------------------
+    let ToggleColors = {
+        backgroundColor: props.withColor?.ToggleBackgroundColor,
+        accentColor: props.withColor?.ToggleAccentColor,
+        textColor: props.withColor?.ToggleTextColor
+    }
+    //------------------------------------------------------------------
+    // 1. Set the colors of InputField
+    //-------------------------------------------------------------------
+    let InputFieldColors = {
+        backgroundColor: props.withColor?.InputFieldBackgroundColor,
+        accentColor: props.withColor?.InputFieldAccentColor,
+        textColor: props.withColor?.InputFieldTextColor
+    }
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
@@ -103,11 +122,14 @@ export default function FeedbackformM(props) {
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`qui-feedback-form-container  ${quommonClasses.childClasses}`}>
                 <div className="qui-feedback-toggle-button">
-                    <ToggleButton {...props} content={{ title: "Show Feedback" }} onClick={() => setToggle(prevState => !prevState)} />
+                    <ToggleButton {...props}  onClick={() => setToggle(prevState => !prevState)}
+                        label="Show Feedback"
+                        isActive= {false}
+                        withColor={ToggleColors} />
                 </div>
                 {toggle && <div className={`qui-feedback-input-field-container`}>
-                    <InputField {...props} content={{label:"If Correct"}} name={"0"}  />
-                    <InputField {...props} content={{label:"If InCorrect"}} name={"1"} />
+                    <InputField {...props} content={{ label: "If Correct" }} withColor={InputFieldColors} name={"0"} />
+                    <InputField {...props} content={{ label: "If InCorrect" }} withColor={InputFieldColors} name={"1"} />
                 </div>}
             </div>
         </motion.div>
