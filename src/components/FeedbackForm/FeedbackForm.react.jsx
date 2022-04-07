@@ -1,31 +1,23 @@
 // Import npm packages
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import InputField from "../../InputField/InputField.react"
-import ToggleButton from "../../ToggleButton/ToggleButton.react";
+import InputField from "../InputField/InputField.react"
+import ToggleButton from "../ToggleButton/ToggleButton.react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../../common/stylesheets/common.css";
-import "./FeedbackformM.scss";
-import "../../../common/stylesheets/overrule.scss";
+import "../../common/stylesheets/common.css";
+import "./FeedbackForm.scss";
+import "../../common/stylesheets/overrule.scss";
 import { motion } from "framer-motion";
-import { getQuommons, getAnimation, } from "../../../common/javascripts/helpers";
+import { getQuommons, getAnimation, } from "../../common/javascripts/helpers";
 
-FeedbackformM.propTypes = {
+FeedbackForm.propTypes = {
+    //=======================================
+    // Component Specific props
+    //=======================================
+    content: PropTypes.string,
     //=======================================
     // Quommon props
     //=======================================
-    content: PropTypes.string,
-
-    /**
-    Use to define standard component type
-    */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
     /**
     Use to define the entry animation of the component
     */
@@ -47,13 +39,14 @@ FeedbackformM.propTypes = {
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
-        ToggleBackgroundColor: PropTypes.string,
-        ToggleAccentColor: PropTypes.string,
-        ToggleTextColor: PropTypes.string,
-        InputFieldBackgroundColor: PropTypes.string,
-        InputFieldAccentColor: PropTypes.string,
-        InputFieldTextColor: PropTypes.string,
-        ToggleBoxColor: PropTypes.string,
+        withColor: PropTypes.shape({
+            toggleBarColor: PropTypes.string,
+            toggleActiveColor: PropTypes.string,
+            toggleLabelColor: PropTypes.string,
+            inputBackgroundColor: PropTypes.string,
+            inputAccentColor: PropTypes.string,
+            inputTextColor: PropTypes.string
+        })
     }),
     /**
     Use to show/hide the component
@@ -64,17 +57,19 @@ FeedbackformM.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    AppMenu component must have the onClick function passed as props
+    FeedbackForm component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
 };
 
-FeedbackformM.defaultProps = {
+FeedbackForm.defaultProps = {
+    //=======================================
+    // Component Specific props
+    //=======================================
+    content: "",
     //=======================================
     // Quommon props
     //=======================================
-    content: "",
-    asVariant: "primary",
     withColor: null,
     withAnimation: null,
     isHidden: false,
@@ -83,34 +78,33 @@ FeedbackformM.defaultProps = {
 
 /**
 ## Notes
-- The design system used for this component is fontawesome Icons
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- FeedbackForm is used to take feedback from the user and appears when user toggle the switch 
+- FeedbackForm is used to take feedback from the user and appears when user toggle the switch
+- The feedback form will appear by switching the toggle button , in form one can enter the data in 2  different different input fields which will  be used as per requirment  , by clicking outside the input field or entering on it the entered data will be saved. 
 **/
 
-export default function FeedbackformM(props) {
+export default function FeedbackForm(props) {
     const [toggle, setToggle] = useState(false);
     //------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "feedback-form-m");
-    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
+    let quommonClasses = getQuommons(props, "feedback-form");
     //------------------------------------------------------------------
     // 1. Set the colors of ToggleButton
     //-------------------------------------------------------------------
     let ToggleColors = {
-        backgroundColor: props.withColor?.ToggleBackgroundColor,
-        accentColor: props.withColor?.ToggleAccentColor,
-        textColor: props.withColor?.ToggleTextColor
+        backgroundColor: props.withColor?.toggleBarColor,
+        accentColor: props.withColor?.toggleActiveColor,
+        textColor: props.withColor?.toggleLabelColor
     }
     //------------------------------------------------------------------
     // 1. Set the colors of InputField
     //-------------------------------------------------------------------
     let InputFieldColors = {
-        backgroundColor: props.withColor?.InputFieldBackgroundColor,
-        accentColor: props.withColor?.InputFieldAccentColor,
-        textColor: props.withColor?.InputFieldTextColor
+        backgroundColor: props.withColor?.inputBackgroundColor,
+        accentColor: props.withColor?.inputAccentColor,
+        textColor: props.withColor?.inputTextColor
     }
     //-------------------------------------------------------------------
     // 2. Get animation of the component

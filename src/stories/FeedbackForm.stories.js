@@ -1,29 +1,21 @@
 import React from "react";
-import FeedbackformM from "../components/FeedbackformM/FeedbackformM/FeedbackformM.react";
+import FeedbackForm from "../components/FeedbackForm/FeedbackForm.react";
 
 export default {
-    title: "Design System/FeedbackformM/FeedbackformM",
-    component: FeedbackformM,
+    title: "Design System/FeedbackForm/FeedbackForm",
+    component: FeedbackForm,
     argTypes: {
         content: "Show Feedback",
-        asVariant: {
-            control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    ToggleBackgroundColor: "",
-                    ToggleAccentColor: "",
-                    ToggleTextColor: "",
-                    InputFieldBackgroundColor: "",
-                    InputFieldAccentColor: "",
-                    InputFieldTextColor: "",
-                    ToggleBoxColor: "#f8f8f8",
+                    toggleBarColor: "",
+                    toggleActiveColor: "",
+                    toggleLabelColor: "",
+                    inputBackgroundColor: "",
+                    inputAccentColor: "",
+                    inputTextColor: "",
                 },
             },
         },
@@ -70,33 +62,31 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic Icon and content for general-purpose use",
+        componentSubtitle: "Displays a feedback form by switching toggleButton on",
         a11y: { disable: true },
-        docs: { iframeHeight: 700 },
+        docs: { iframeHeight: 200 },
     },
 };
 
-const Template = (args) => <FeedbackformM {...args} />;
+const Template = (args) => <FeedbackForm {...args} />;
 //----------------------------------------------------------
 // Default
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
     content: "Show Feedback",
-    asVariant: "primary",
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
     },
     withColor: {
-        ToggleBackgroundColor: "#454545",
-        ToggleAccentColor: "#FFAB00",
-        ToggleTextColor: "",
-        InputFieldBackgroundColor: "#ffab000d",
-        InputFieldAccentColor: "#ffab00",
-        InputFieldTextColor: "#666666",
-        ToggleBoxColor: "#f8f8f8",
+        toggleBarColor: "#454545",
+        toggleActiveColor: "#FFAB00",
+        toggleLabelColor: "",
+        inputBackgroundColor: "#ffab000d",
+        inputAccentColor: "#ffab00",
+        inputTextColor: "#666666",
     },
     isDisabled: false,
     isHidden: false,
@@ -105,10 +95,10 @@ Default.parameters = {
     docs: {
         description: {
             story:
-                "Any free fontawesome icon can be used as the NavBar icon definition. This component is combination of the Avatar component on a MenuBlock component, The MenuBlock icon can be changed with userImage with in withIcon prop , give a link of any profile image and it will replace the icon with it , On the other side which is a Ellipsis icon in menuBlock component which is a part of NavBar , this icon can also be change with other , and whole NavBarr is clickable",
+                "The feedback form will appear by switching the toggle button , in form one can enter the data in 2 different different input fields which will  be used as per requirment  , by clicking outside the input field or entering on it the entered data will be saved.",
         },
         source: {
-            code: `<FeedbackformM {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<FeedbackForm {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
