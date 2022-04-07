@@ -52,6 +52,7 @@ FeedbackformM.propTypes = {
         InputFieldBackgroundColor: PropTypes.string,
         InputFieldAccentColor: PropTypes.string,
         InputFieldTextColor: PropTypes.string,
+        ToggleBoxColor: PropTypes.string,
     }),
     /**
     Use to show/hide the component
@@ -68,12 +69,13 @@ FeedbackformM.propTypes = {
 };
 
 FeedbackformM.defaultProps = {
-    content: "",
     //=======================================
     // Quommon props
     //=======================================
+    content: "",
     asVariant: "primary",
     withColor: null,
+    withAnimation: null,
     isHidden: false,
     isDisabled: false,
 };
@@ -83,7 +85,7 @@ FeedbackformM.defaultProps = {
 - The design system used for this component is fontawesome Icons
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- props are not being passed to the NavBar. Please speak to the admin to handle any new prop.
+- FeedbackForm is used to take feedback from the user and appears when user toggle the switch 
 **/
 
 export default function FeedbackformM(props) {
@@ -112,7 +114,6 @@ export default function FeedbackformM(props) {
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
-    console.log(toggle)
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
     return (
@@ -121,10 +122,9 @@ export default function FeedbackformM(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`qui-feedback-form-container  ${quommonClasses.childClasses}`}>
-                <div className="qui-feedback-toggle-button">
-                    <ToggleButton {...props}  onClick={() => setToggle(prevState => !prevState)}
-                        label="Show Feedback"
-                        isActive= {false}
+                <div className="qui-feedback-toggle-button" style={{ backgroundColor: props.withColor?.ToggleBoxColor }}>
+                    <ToggleButton {...props} onClick={() => setToggle(prevState => !prevState)}
+                        label={props.content ? props.content : "Show Feedback"}
                         withColor={ToggleColors} />
                 </div>
                 {toggle && <div className={`qui-feedback-input-field-container`}>
