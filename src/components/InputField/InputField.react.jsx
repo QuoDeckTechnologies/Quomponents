@@ -104,7 +104,7 @@ InputField.defaultProps = {
 };
 /**
 ## Notes
-- The design system used for this component is HTML and CSS
+- The design system used for this component is Material UI (@mui/material)
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
@@ -141,8 +141,9 @@ export default function InputField(props) {
         inputRef.current.style.backgroundColor = props.withColor?.backgroundColor
     }
 
-    let changeBlur = () => {
+    let changeBlur = (e) => {
         inputRef.current.style.backgroundColor = "#d4d3cf"
+        props.onClick(e.target.name, e.target.value);
     }
 
     let inputlabelColor = {
@@ -171,33 +172,29 @@ export default function InputField(props) {
                     value={input}
                     name={props.name}
                     ref={inputRef}
-                    onFocus={() => changeFocus()}
-                    onBlur={() => changeBlur()}
+                    onFocus={changeFocus}
+                    onBlur={changeBlur}
                     onChange={handleChange}
                     onKeyDown={handleChange}
                 />
-
             )
         }
         if (asEmphasis === "charLimited") {
             return (
                 <div className="qui-char-limited-container">
-                    <div className="qui-char-limited-max-length">{`${count}/${props.content?.maxLength}`}</div>
+                    <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>
                     <TextField
                         className="qui-char-limited"
                         InputLabelProps={inputlabelColor}
                         sx={outlineStyle}
-                        inputProps={{
-                            maxLength: props.content?.maxLength
-                        }}
                         multiline={true}
                         label={props.content?.label}
                         variant="filled"
                         value={input}
                         name={props.name}
                         ref={inputRef}
-                        onFocus={() => changeFocus()}
-                        onBlur={() => changeBlur()}
+                        onFocus={changeFocus}
+                        onBlur={changeBlur}
                         onChange={handleChange}
                         onKeyDown={handleChange}
                     />
@@ -207,7 +204,7 @@ export default function InputField(props) {
         if (asEmphasis === "listInput") {
             return (
                 <div className="qui-list-input-container">
-                    <div className="qui-char-limited-max-length">{`${count}/${props.content?.maxLength}`}</div>
+                    <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>
                     <TextField
                         className="qui-list-input"
                         sx={outlineStyle}
@@ -218,8 +215,8 @@ export default function InputField(props) {
                         value={input}
                         name={props.name}
                         ref={inputRef}
-                        onFocus={() => changeFocus()}
-                        onBlur={() => changeBlur()}
+                        onFocus={changeFocus}
+                        onBlur={changeBlur}
                         onChange={handleChange}
                         onKeyDown={handleChange}
                     />
@@ -232,14 +229,14 @@ export default function InputField(props) {
                     className="qui-short-field"
                     sx={outlineStyle}
                     type="number"
-                    InputProps={{ inputProps: { min: 0, max: 10 } }}
+                    InputProps={{ inputProps: { min: 0 } }}
                     size={"small"}
                     variant="filled"
                     value={input}
                     name={props.name}
                     ref={inputRef}
-                    onFocus={() => changeFocus()}
-                    onBlur={() => changeBlur()}
+                    onFocus={changeFocus}
+                    onBlur={changeBlur}
                     onChange={handleChange}
                     onKeyDown={handleChange}
                 />

@@ -7,7 +7,6 @@ import { shallow, mount, enzyme } from 'enzyme';
 // Import Components
 // -------------------------------------
 import InputField from '../InputField/InputField.react'
-import TextField from '@mui/material/TextField';
 
 describe("InputField", () => {
     // -------------------------------------
@@ -26,15 +25,15 @@ describe("InputField", () => {
                 label: "Input Name",
                 value: "Please input your text here",
                 placeholder: "Options",
-                maxLength: 300,
+                maxLength: 30,
             }}
             name=""
             asEmphasis="filled"
             asFloated="none"
             withColor={{
-                textColor: "#666666",
-                accentColor: "#ffab00",
-                backgroundColor: "#ffab000d",
+                textColor: "",
+                accentColor: "",
+                backgroundColor: "",
             }}
             withAnimation={null}
             isDisabled={false}
@@ -47,6 +46,32 @@ describe("InputField", () => {
     })
 
     it("it should render correctly without throwing an error", () => {
+        expect(component.exists()).toBe(true);
+    });
+
+    it("it should render the class of character limit the input is under limit correctly when passed asEmphasis prop as charLimited", () => {
+        component.setProps({
+            content: {
+                label: "Input new Name",
+                value: "text here",
+                placeholder: "Options",
+                maxLength: 10,
+            },
+            asEmphasis: "charLimited"
+        })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("it should render the class of character limit the input is under limit correctly when passed asEmphasis prop as listInput", () => {
+        component.setProps({
+            content: {
+                label: "Input new Name",
+                value: "text here",
+                placeholder: "Options",
+                maxLength: 10,
+            },
+            asEmphasis: "listInput"
+        })
         expect(component.exists()).toBe(true);
     });
 
@@ -129,23 +154,21 @@ describe("InputField", () => {
         component.setProps({ isHidden: true })
         expect(component.exists()).toBe(true);
     });
-    // ------------------------------
+
     it("it should trigger the escape event when input contain some value", () => {
-        let InlineEdit = component.find('input');
-        InlineEdit.simulate('change', { target: { value: 'Please input your text here' } });
+        let InputField = component.find('input');
+        InputField.simulate('change', { target: { value: 'Please input your text here' } });
         component.find('input').simulate('change', { key: 'Enter' })
         expect(component.exists()).toBe(true);
     });
 
     it("it should trigger the escape event when input contain empty value", () => {
-        let InlineEdit = component.find('input');
-        InlineEdit.simulate('change', { target: { value: '' } });
+        let InputField = component.find('input');
+        InputField.simulate('change', { target: { value: '' } });
         component.find('input').simulate('change', { key: 'Escape' })
         expect(component.exists()).toBe(true);
     });
-    // --------------------------
 
-    // ---------------------------------
     it("it should pass the value to the InputField", () => {
         component.find('input').simulate('change', { target: { value: 'Please input your text here' } })
         expect(component.find('input').props().value).toEqual('Please input your text here');
@@ -160,14 +183,6 @@ describe("InputField", () => {
         component.find('input').simulate('focus', { style: { accentColor: "#ffbf00" } })
         expect(component.exists()).toBe(true);
     });
-
-    it("it should render correct props when focus on InputField when asEmphasis props set as charLimited", () => {
-        component.setProps({ asEmphasis: "charLimited" })
-        console.log(component.find(TextField).at(1).props)
-        component.find('TextField').simulate('focus', { style: { accentColor: "#ffbf00" } })
-        expect(component.exists()).toBe(true);
-    });
-
 });
 
 
