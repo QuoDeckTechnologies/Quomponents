@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types";
 import { Switch, styled } from "@mui/material";
 import { motion } from "framer-motion";
@@ -22,10 +22,6 @@ ToggleButton.propTypes = {
     Use to show the label of the toggle button
     */
     label: PropTypes.string,
-    /**
-    Use to toggle the switch
-    */
-    isActive: PropTypes.bool,
     // Quommon props
     //=======================================
     /**
@@ -84,7 +80,6 @@ ToggleButton.defaultProps = {
     // Component Specific props
     //=======================================
     label: "",
-    isActive: true,
     // Quommon props
     //=======================================
     asFloated: "none",
@@ -120,22 +115,22 @@ export default function ToggleButton(props) {
             backgroundColor: props.withColor?.backgroundColor,
         },
     }));
-    let { label } = props
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "toggle-button");
-    //-------------------------------------------------------------------
-    // 3. Get translation of the component
-    //-------------------------------------------------------------------
-    let tObj = null;
+    // //-------------------------------------------------------------------
+    // // 3. Get translation of the component
+    // //-------------------------------------------------------------------
+    let labelContent = props.label;
+    let tObj = null
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
-    ) {
-        tObj = getTranslation(props.withTranslation);
-        if (label && tObj?.label) label = tObj.label;
+    ) tObj = getTranslation(props.withTranslation);
+    if (tObj && props.label && props.label !== "") {
+        labelContent = tObj.label;
     }
     //-------------------------------------------------------------------
     // 7. Get animation of the component
@@ -154,7 +149,7 @@ export default function ToggleButton(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className="qui-toggle-button-container">
+            <div className={`qui-toggle-button-container `} >
                 <ToggleSwitch
                     onChange={(e) => {
                         handleChange(e);
@@ -167,7 +162,7 @@ export default function ToggleButton(props) {
                     htmlFor="qui-switch-toggle"
                     className={`qui-Toggle-Button-title`}
                     style={{ color: props.withColor?.textColor }}>
-                    {label}
+                    {labelContent}
                 </label>
             </div>
         </motion.div >
