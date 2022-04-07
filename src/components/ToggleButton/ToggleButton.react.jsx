@@ -18,22 +18,10 @@ ToggleButton.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: PropTypes.shape({
-        title: PropTypes.string,
-        toggled: PropTypes.bool,
-    }),
+    label: PropTypes.string,
+    isActive: PropTypes.bool,
     // Quommon props
     //=======================================
-    /**
-    Use to define standard component type
-    */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
     /**
     Use to float the component in parent container
     */
@@ -90,10 +78,10 @@ ToggleButton.propTypes = {
 ToggleButton.defaultProps = {
     // Component Specific props
     //=======================================
-    content: {},
+    label: "",
+    isActive: true,
     // Quommon props
     //=======================================
-    asVariant: "primary",
     asFloated: "none",
 
     withColor: null,
@@ -127,7 +115,7 @@ export default function ToggleButton(props) {
             backgroundColor: props.withColor?.backgroundColor,
         },
     }));
-    let { content } = props
+    let { label } = props
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -135,25 +123,23 @@ export default function ToggleButton(props) {
     //-------------------------------------------------------------------
     // 3. Get translation of the component
     //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, content);
     let tObj = null;
-
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj?.title) labelContent.title = tObj.title;
+        if (label && tObj?.label) label = tObj.label;
     }
     //-------------------------------------------------------------------
     // 7. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-    const [toggle, setToggle] = useState(content?.toggled)
+    const [toggle, setToggle] = useState(props?.isActive)
     useEffect(() => {
-        setToggle(content?.toggled);
-    }, [content?.toggled]);
+        setToggle(props?.isActive);
+    }, [props?.isActive]);
     const handleChange = (e) => {
         setToggle((prevState) => !prevState);
         props.onClick(e.target.checked)
@@ -179,7 +165,7 @@ export default function ToggleButton(props) {
                     htmlFor="qui-switch-toggle"
                     className={`qui-Toggle-Button-title`}
                     style={{ color: props.withColor?.textColor }}>
-                    {labelContent.title}
+                    {label}
                 </label>
             </div>
         </motion.div >
