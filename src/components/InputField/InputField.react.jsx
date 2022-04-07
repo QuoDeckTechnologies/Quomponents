@@ -139,22 +139,22 @@ export default function InputField(props) {
 
     let changeFocus = () => {
         inputRef.current.style.backgroundColor = props.withColor?.backgroundColor
-    }
+    };
 
     let changeBlur = (e) => {
         inputRef.current.style.backgroundColor = "#d4d3cf"
         props.onClick(e.target.name, e.target.value);
-    }
+    };
 
     let inputlabelColor = {
         style: { color: props.withColor?.textColor ? props.withColor?.textColor : "#666666" },
-    }
+    };
 
     let outlineStyle = {
         "& .MuiFilledInput-root:after": {
             borderBottom: `0.3em solid ${props.withColor?.accentColor ? props.withColor?.accentColor : "#ffab00"}`
         },
-    }
+    };
     //-------------------------------------------------------------------
     // 4. Use to set state of InputField.
     //-------------------------------------------------------------------
