@@ -3,7 +3,7 @@ import ToggleButton from "../components/ToggleButton/ToggleButton.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        ToggleButton: { title: "सक्रिय" },
+        ToggleButton: { label: "सक्रिय" },
     },
 });
 
@@ -11,10 +11,8 @@ export default {
     title: "Design System/ToggleButton/ToggleButton",
     component: ToggleButton,
     argTypes: {
-        content: {
-            title: "Active",
-            toggled: true,
-        },
+        label: "Active",
+        isActive: true.valueOf,
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -95,10 +93,8 @@ export default {
 const Template = (args) => <ToggleButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        title: "Active",
-        toggled: true,
-    },
+    label: "Active",
+    isActive: false,
     asVariant: "primary",
     asFloated: "inline",
 
