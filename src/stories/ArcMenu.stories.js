@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ArcMenu from "../components/ArcMenu/ArcMenu.react";
-import Backdrop from '@mui/material/Backdrop'
+import Backdrop from "@mui/material/Backdrop";
 
 import Nugget_Story from "../assets/nuggets/nugget_story.png";
 import Nugget_Quiz from "../assets/nuggets/nugget_quiz.png";
@@ -15,7 +15,7 @@ export default {
   argTypes: {
     menuContent: [],
     nuggetContent: [],
-    type: {
+    menuType: {
       control: "select",
       options: ["close", "menu", "add", "nugget-menu"],
     },
@@ -26,6 +26,16 @@ export default {
     position: {
       control: "select",
       options: ["top-right", "top-left", "bottom-right", "bottom-left"],
+    },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          backgroundColor: "",
+          accentColor: "",
+          textColor: "",
+        },
+      },
     },
     isDisabled: {
       table: {
@@ -46,17 +56,17 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  // decorators: [
+  //   (story) => (
+  //     <div
+  //       style={{
+  //         width: "100%",
+  //       }}
+  //     >
+  //       {story()}
+  //     </div>
+  //   ),
+  // ],
   parameters: {
     componentSubtitle: "Displays a ArcMenu component",
     a11y: { disable: true },
@@ -90,16 +100,21 @@ Default.args = {
     },
   ],
   nuggetContent: [
-    { link: "/nugget_story", image: Nugget_Story },
-    { link: "/nugget_quiz", image: Nugget_Quiz },
-    { link: "/nugget_assessment", image: Nugget_Assessment },
-    { link: "/nugget_game", image: Nugget_Game },
-    { link: "/nugget_article", image: Nugget_Article },
-    { link: "/nugget_feedback", image: Nugget_Feedback },
+    { name: "nugget story", image: Nugget_Story },
+    { name: "nugget quiz", image: Nugget_Quiz },
+    { name: "nugget assessment", image: Nugget_Assessment },
+    { name: "nugget game", image: Nugget_Game },
+    { name: "nugget article", image: Nugget_Article },
+    { name: "nugget feedback", image: Nugget_Feedback },
   ],
-  type: "close",
+  menuType: "close",
   arcIcon: "close",
   position: "top-right",
+  withColor: {
+    backgroundColor: "",
+    accentColor: "",
+    textColor: "",
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -117,15 +132,15 @@ export const NuggetMenuButton = Template.bind({});
 NuggetMenuButton.args = {
   ...Default.args,
   nuggetContent: [
-    { link: "/nugget_story", image: Nugget_Story },
-    { link: "/nugget_quiz", image: Nugget_Quiz },
-    { link: "/nugget_assessment", image: Nugget_Assessment },
-    { link: "/nugget_game", image: Nugget_Game },
-    { link: "/nugget_article", image: Nugget_Article },
-    { link: "/nugget_feedback", image: Nugget_Feedback },
+    { name: "nugget story", image: Nugget_Story },
+    { name: "nugget quiz", image: Nugget_Quiz },
+    { name: "nugget assessment", image: Nugget_Assessment },
+    { name: "nugget game", image: Nugget_Game },
+    { name: "nugget article", image: Nugget_Article },
+    { name: "nugget feedback", image: Nugget_Feedback },
   ],
   menuContent: [],
-  type: "nugget-menu",
+  menuType: "nugget-menu",
   arcIcon: "menu",
   position: "bottom-left",
 };
@@ -157,7 +172,7 @@ MenuButton.args = {
     },
   ],
   nuggetContent: [],
-  type: "menu",
+  menuType: "menu",
   arcIcon: "menu",
   position: "bottom-left",
 };
@@ -174,7 +189,7 @@ MenuButton.parameters = {
 export const AddButton = Template.bind({});
 AddButton.args = {
   ...Default.args,
-  type: "add",
+  menuType: "add",
   arcIcon: "add",
   position: "bottom-left",
 };
@@ -186,48 +201,112 @@ AddButton.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Menu button
+// Add Close Button Use Case
 // -------------------------------------------------------------
 const ExampleTemplate = (args) => {
   const [openModalOne, setOpenModalOne] = useState(false);
   const [openModalTwo, setOpenModalTwo] = useState(false);
   return (
     <div
-      className="qui"/*parent must have a qui class for arcmenu*/
+      className="qui" /*parent must have a qui class for arcmenu*/
       style={{
-        height: "100vh",
+        height: "90vh",
         border: "0.1em solid black",
-        borderRadius:'1em',
+        borderRadius: "1em",
         overflow: "visible",
-        display:'flex',
-        justifyContent:'center',
-        alignItems:'center'
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <Backdrop open={openModalOne} sx={{zIndex:10}} onClick={()=>setOpenModalOne(false)}/>
-      <Backdrop open={openModalTwo} sx={{zIndex:21}} onClick={()=>setOpenModalTwo(false)}/>
-      {openModalOne && (
-        <div className="qui-first-imported-component" style={{position:'absolute',zIndex:20,left:'0',bottom:'20%'}}>
-           <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#ffbf00',marginBottom:'0.1em',cursor:'pointer'}} >Heading</div>
-          <a href="http://localhost:6006/?path=/story/design-system-accentline-accentline--default">
-          <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#454545',color:'white',marginBottom:'0.1em',cursor:'pointer'}} >Redirects</div>
-          </a>
-          <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#454545',color:'white',cursor:'pointer'}} onClick={()=>setOpenModalTwo(true)}>Opens a modal</div>
-          <div className="qui-test-component-element" style={{width:'10em',backgroundColor:'#d97575',marginTop:'0.1em',cursor:'pointer'}} onClick={()=>setOpenModalOne(false)}>Delete</div>
-        </div>
-      )}
-     {openModalTwo && <div className="qui qui-second-imported-component" style={{position:'absolute',zIndex:22,background:'white',padding:'5em'}}>
-       <h1>Testing Second Modal</h1>
-       <ArcMenu
-        type="close"
-        arcIcon="close"
-        position="top-right"
+      <Backdrop
+        open={openModalOne}
+        sx={{ zIndex: 10 }}
+        onClick={() => setOpenModalOne(false)}
+      />
+      <Backdrop
+        open={openModalTwo}
+        sx={{ zIndex: 21 }}
         onClick={() => setOpenModalTwo(false)}
       />
-      <button onClick={(e)=>args.onClick(e)}>Click</button>
-       </div>}
+      {openModalOne && (
+        <div
+          className="qui-first-imported-component"
+          style={{ position: "absolute", zIndex: 20, left: "0", bottom: "20%" }}
+        >
+          <div
+            className="qui-test-component-element"
+            style={{
+              width: "10em",
+              backgroundColor: "#ffbf00",
+              marginBottom: "0.1em",
+              cursor: "pointer",
+            }}
+          >
+            Heading
+          </div>
+          <a href="http://localhost:6006/?path=/story/design-system-accentline-accentline--default">
+            <div
+              className="qui-test-component-element"
+              style={{
+                width: "10em",
+                backgroundColor: "#454545",
+                color: "white",
+                marginBottom: "0.1em",
+                cursor: "pointer",
+              }}
+            >
+              Redirects
+            </div>
+          </a>
+          <div
+            className="qui-test-component-element"
+            style={{
+              width: "10em",
+              backgroundColor: "#454545",
+              color: "white",
+              cursor: "pointer",
+            }}
+            onClick={() => setOpenModalTwo(true)}
+          >
+            Opens a modal
+          </div>
+          <div
+            className="qui-test-component-element"
+            style={{
+              width: "10em",
+              backgroundColor: "#d97575",
+              marginTop: "0.1em",
+              cursor: "pointer",
+            }}
+            onClick={() => setOpenModalOne(false)}
+          >
+            Delete
+          </div>
+        </div>
+      )}
+      {openModalTwo && (
+        <div
+          className="qui qui-second-imported-component"
+          style={{
+            position: "absolute",
+            zIndex: 22,
+            background: "white",
+            padding: "5em",
+          }}
+        >
+          <h1>Testing Second Modal</h1>
+          <ArcMenu
+            menuType="close"
+            arcIcon="close"
+            position="top-right"
+            onClick={() => setOpenModalTwo(false)}
+          />
+          <button onClick={(e) => args.onClick(e)}>Click</button>
+        </div>
+      )}
       <ArcMenu
-        type="add"
+        menuType="add"
         arcIcon="add"
         position="bottom-left"
         onClick={() => setOpenModalOne(true)}
@@ -239,7 +318,128 @@ export const AddCloseButtonUseCase = ExampleTemplate.bind({});
 AddCloseButtonUseCase.parameters = {
   docs: {
     source: {
-      code: `<ArcMenu {...${JSON.stringify(AddCloseButtonUseCase.args, null, 2)}}/>`,
+      code: `<ArcMenu {...${JSON.stringify(
+        AddCloseButtonUseCase.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+//  Menu Button Use Case
+// -------------------------------------------------------------
+const ExampleTemplateMenu = (args) => {
+  const menuHandler = (value) => {
+    /* useHistory or useNavigate can be used here to redirect within the application */
+    if (value === "google") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+    if (value === "youtube") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+    if (value === "github") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+    if (value === "facebook") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+  };
+  return (
+    <div
+      className="qui" /*parent must have a qui class for arcmenu*/
+      style={{
+        height: "90vh",
+        border: "0.1em solid black",
+        borderRadius: "1em",
+        overflow: "visible",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <ArcMenu
+        menuContent={[
+          {
+            header: "learning",
+            list: ["google", "youtube", "github", "facebook"],
+          },
+        ]}
+        menuType="menu"
+        arcIcon="menu"
+        position="bottom-left"
+        onClick={(value) => menuHandler(value)}
+      />
+    </div>
+  );
+};
+export const MenuUseCase = ExampleTemplateMenu.bind({});
+MenuUseCase.parameters = {
+  docs: {
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(MenuUseCase.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+//  Nugget Button Use Case
+// -------------------------------------------------------------
+const ExampleTemplateNugget = (args) => {
+  const menuHandler = (value) => {
+    /* useHistory or useNavigate can be used here to redirect within the application */
+    if (value === "nugget story") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+    if (value === "nugget quiz") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+    if (value === "nugget assessment") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+  };
+  return (
+    <div
+      className="qui" /*parent must have a qui class for arcmenu*/
+      style={{
+        height: "90vh",
+        border: "0.1em solid black",
+        borderRadius: "1em",
+        overflow: "visible",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <ArcMenu
+        nuggetContent={[
+          { name: "nugget story", image: Nugget_Story },
+          { name: "nugget quiz", image: Nugget_Quiz },
+          { name: "nugget assessment", image: Nugget_Assessment },
+        ]}
+        menuType="nugget-menu"
+        arcIcon="menu"
+        position="bottom-left"
+        onClick={(value) => menuHandler(value)}
+      />
+    </div>
+  );
+};
+export const NuggetMenuUseCase = ExampleTemplateNugget.bind({});
+NuggetMenuUseCase.parameters = {
+  docs: {
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(
+        NuggetMenuUseCase.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
