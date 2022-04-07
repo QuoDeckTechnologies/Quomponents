@@ -9,24 +9,15 @@
 .qui .qui-feedback-input-field-container {
     width: 100%;
     top: 1em;
-    padding: 1em 0.5em 0 0.5em;
+    padding: 1.2em 0.5em 0 0.5em;
     border: 0.05em solid #dddddd;
     border-radius: 1em;
     display: flex;
 }
-.qui .qui-feedback-input-field-container .qui-input-field{
-    margin:0 0.3em 0.3em 0;
+.qui .qui-feedback-input-field-container .qui-input-field {
+    margin: 0 0.3em 0.7em 0;
 }
-.qui .qui-feedback-toggle {
-    margin: 0 0.5em;
-    padding-right: 0.2em;
-    position: relative;
-    z-index: 10;
-    background-color: #ffffff;
-}
-.qui .qui-toggle-input-fields:focus {
-    outline: none !important;
-}
+
 .qui-feedback-toggle-button {
     position: absolute;
     top: -1em;
@@ -48,10 +39,16 @@
     .qui .qui-feedback-input-field-container {
         flex-direction: row;
     }
+    .qui .qui-feedback-input-field-container .qui-input-field {
+        margin: 0 0.3em 0.7em 0.3em;
+    }
 }
 @media only screen and (min-width: 769px) {
     .qui .qui-input-field-container {
         flex-direction: row;
+    }
+    .qui .qui-feedback-input-field-container .qui-input-field {
+        margin: 0 0.3em 0.7em 0.3em;
     }
 }
 @media only screen and (min-width: 1024px) {
