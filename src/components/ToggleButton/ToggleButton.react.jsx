@@ -18,7 +18,13 @@ ToggleButton.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+    /**
+    Use to show the label of the toggle button
+    */
     label: PropTypes.string,
+    /**
+    Use to toggle the switch
+    */
     isActive: PropTypes.bool,
     // Quommon props
     //=======================================
@@ -68,7 +74,6 @@ ToggleButton.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
-
     /**
     ToggleButton component must have the onClick function passed as props
     */
@@ -136,10 +141,7 @@ export default function ToggleButton(props) {
     // 7. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-    const [toggle, setToggle] = useState(props?.isActive)
-    useEffect(() => {
-        setToggle(props?.isActive);
-    }, [props?.isActive]);
+    const [toggle, setToggle] = useState(false)
     const handleChange = (e) => {
         setToggle((prevState) => !prevState);
         props.onClick(e.target.checked)

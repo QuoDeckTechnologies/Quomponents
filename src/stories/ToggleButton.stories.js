@@ -6,13 +6,11 @@ const dictionary = JSON.stringify({
         ToggleButton: { label: "सक्रिय" },
     },
 });
-
 export default {
     title: "Design System/ToggleButton/ToggleButton",
     component: ToggleButton,
     argTypes: {
         label: "Active",
-        isActive: true.valueOf,
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -94,7 +92,6 @@ const Template = (args) => <ToggleButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     label: "Active",
-    isActive: false,
     asVariant: "primary",
     asFloated: "inline",
 
@@ -119,7 +116,6 @@ Default.parameters = {
         },
     },
 };
-
 // -------------------------------------------------------------
 // Translated ToggleButton
 // -------------------------------------------------------------
