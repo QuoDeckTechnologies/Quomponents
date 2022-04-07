@@ -1,0 +1,36 @@
+ .qui .qui-conversion-list {
+     display: flex;
+     margin-top: 1.5em;
+     align-items: center;
+     justify-content: center;
+
+ }
+
+ .qui .qui-list-image {
+     border-radius: 0.3em;
+     width: 3em;
+     height: 3em;
+ }
+
+ .qui .qui-list-title {
+     width: auto;
+     margin: 0 1em 0 1em;
+ }
+
+ @media only screen and (min-width: 320px) {
+     .qui .qui-conversion-list {
+         font-size: 1em;
+     }
+ }
+
+ @media only screen and (min-width: 540px) {
+     .qui .qui-conversion-list {
+         font-size: 1.2em;
+     }
+ }
+
+ @media only screen and (min-width: 720px) {
+     .qui .qui-conversion-list {
+         font-size: 2em;
+     }
+ }
