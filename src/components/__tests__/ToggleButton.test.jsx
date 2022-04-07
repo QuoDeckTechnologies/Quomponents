@@ -2,7 +2,6 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -17,7 +16,7 @@ describe("ToggleButton", () => {
 
   const dictionary = JSON.stringify({
     hi: {
-      label: "सक्रिय",
+      ToggleButton: { label: "सक्रिय" },
     },
   });
   beforeEach(() => {
@@ -25,7 +24,7 @@ describe("ToggleButton", () => {
     component = shallow(
       <ToggleButton
         label="Active"
-        asSize="normal"
+        asFloated="inline"
         withColor={null}
         withAnimation={null}
         withTranslation={null}
@@ -39,30 +38,12 @@ describe("ToggleButton", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly with isActive false",
-    () => {
-      component.setProps({
-        isActive: false
-      });
-      expect(component.exists()).toBe(true);
-    });
   it("should render correctly if translation object is not returned",
     () => {
       component.setProps({
         withTranslation: {
           lang: "hi",
-          tgt: "label",
-          dictionary: dictionary,
-        }
-      });
-      expect(component.exists()).toBe(true);
-    });
-  it("should render correctly if translation object is not returned",
-    () => {
-      component.setProps({
-        withTranslation: {
-          lang: "hi",
-          tgt: "",
+          tgt: "ToggleButton",
           dictionary: dictionary,
         }
       });
@@ -73,4 +54,46 @@ describe("ToggleButton", () => {
       let toggleSwitch = component.find("div").at(0).children().at(0)
       toggleSwitch.simulate('change', { target: { checked: true } })
     });
+  it("should render correctly when passed withColor props", () => {
+    let colors = {
+      backgroundColor: "#fff",
+      accentColor: "#FF0000",
+      textColor: "#00FFFF",
+    }
+    component.setProps({ withColor: colors })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed withAnimation props", () => {
+    let animation = {
+      animation: "zoom",
+      duration: 0.5,
+      delay: 0,
+    }
+    component.setProps({ withAnimation: animation })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when label is passed", () => {
+    component.setProps({ label: "Not Active"})
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when label is null", () => {
+    component.setProps({ label: ""})
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isHidden props as false", () => {
+    component.setProps({ isHidden: false })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isHidden props as true", () => {
+    component.setProps({ isHidden: true })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isDisabled props as false", () => {
+    component.setProps({ isDisabled: false })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isDisabled props as true", () => {
+    component.setProps({ isDisabled: true })
+    expect(component.exists()).toBe(true);
+  })
 });
