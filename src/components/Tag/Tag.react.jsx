@@ -115,11 +115,14 @@ export default function Tag(props) {
     let Color = {
         backgroundColor: props.withColor?.backgroundColor,
         color: props.withColor?.textColor,
+        display :props?.content ? "flex" : "none"
     };
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
+    
+    
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -129,7 +132,7 @@ export default function Tag(props) {
         >
             <div className={`qui-tag-block qui-btn ${quommonClasses.childClasses}`} style={Color}>
                 <div className="qui-tag-label">
-                    {props.content}
+                    {props?.content}
                 </div>
             </div>
         </motion.div>

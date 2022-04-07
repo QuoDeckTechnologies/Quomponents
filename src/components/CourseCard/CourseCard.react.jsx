@@ -28,7 +28,7 @@ CourseCard.propTypes = {
     // Component Specific props
     //=======================================
     content: PropTypes.shape({
-        pulished: PropTypes.bool,
+        published: PropTypes.bool,
         courseType: PropTypes.oneOf([
             "standard",
             "exam"
@@ -46,7 +46,11 @@ CourseCard.propTypes = {
         }),
         sequential: PropTypes.bool
     }),
-
+    /**
+    Use to add function to ArcMenu
+    */
+    arcFn: PropTypes.func,
+    
     // Quommon props
     //=======================================
     /**
@@ -86,6 +90,7 @@ CourseCard.defaultProps = {
         },
         sequential: false
     },
+    arcFn: ()=>{},
     // Quommon props
     //=======================================
     asFloated: "inline",
@@ -118,6 +123,7 @@ export default function CourseCard(props) {
     // 3. Get the tags
     //-------------------------------------------------------------------
     let tags = props.content?.tags ? props.content?.tags : [""];
+    let tagStyle = props.content?.tags ? "flex" : "none";
 
     //-------------------------------------------------------------------
     // 4.  Create link of article based on identifier
@@ -131,25 +137,39 @@ export default function CourseCard(props) {
     //-------------------------------------------------------------------
     // 5. Standardize Date
     //-------------------------------------------------------------------
-    const options = { month: 'short', day: 'numeric' };
-    let startDate = props.content?.date?.start_date ? new Date(props.content.date.start_date).toLocaleDateString(undefined, options) : "";
-    let endDate = props.content?.date?.start_date ? new Date(props.content.date.end_date).toLocaleDateString(undefined, options) : "";
+    let sD, eD, startDay, endDay, startMonth, endMonth, startDate, endDate;
 
+    sD = new Date(props.content?.date?.start_date);
+    eD = new Date(props.content?.date?.end_date);
+    startDay = sD.toLocaleDateString(undefined, { day: "numeric" });
+    startMonth = sD.toLocaleDateString(undefined, { month: 'short' });
+
+    endDay = eD.toLocaleDateString(undefined, { day: "numeric" });
+    endMonth = eD.toLocaleDateString(undefined, { month: 'short' });
+
+    startDate = props.content?.date?.start_date ? startDay + " " + startMonth : "";
+    endDate = props.content?.date?.end_date ? endDay + " " + endMonth : "";
 
     //-------------------------------------------------------------------
     // 6. Get published status
     //-------------------------------------------------------------------
-    let status = props.content.published ? "published" : "none"
+    let status = props.content?.published === true ? "published" : "none";
 
-
+    //-------------------------------------------------------------------
+    // 7. Get header of wrapper
+    //-------------------------------------------------------------------
     let header;
     if (props.content?.wrapper?.toLowerCase() === "none" || props.content.wrapper === "") {
-        header = ""
+        header = "";
     } else {
-        header = props.content?.wrapper.charAt(0).toUpperCase() + props.content?.wrapper?.slice(1)
+        header = props.content?.wrapper?.charAt(0).toUpperCase() + props.content?.wrapper?.slice(1);
     }
 
-    let isSequential = props.content?.sequential ? "Sequential Course" : "Non Sequential Course"
+    //-------------------------------------------------------------------
+    // 8. Get the status of Sequential course
+    //-------------------------------------------------------------------
+    let isSequential = props.content?.sequential ? "Sequential Course" : "Non Sequential Course";
+
     //-------------------------------------------------------------------
     // 7. Get the CourseCard Component
     //-------------------------------------------------------------------
@@ -169,7 +189,7 @@ export default function CourseCard(props) {
                         <div className="qui-course-card-tag-container">
                             {_.map(tags, (tag, index) => {
                                 return (
-                                    <div key={index} className={`qui-course-card-tag`} >
+                                    <div key={index} className={`qui-course-card-tag`} style={{ display: tagStyle }} >
                                         <Tag content={tag} asPadded="compact" asSize="tiny" withColor={{ backgroundColor: "#FFAB00", textColor: "#000" }} />
                                     </div>
                                 )
@@ -184,7 +204,6 @@ export default function CourseCard(props) {
                                 </div>
                             </div>
                         }
-
                     </div>
                     <BannerCard {...props} content={{ image: image, header: header }} />
                     <div className={`qui-course-card-description-container`}>
@@ -202,7 +221,7 @@ export default function CourseCard(props) {
                             type="add"
                             arcIcon="menu"
                             position="bottom-left"
-                            onClick={() => { console.log("Arc Menu") }}
+                            onClick={()=>{props.arcFn()}}
                         />
                     </div>
                     <div className={`qui-course-card-share-block`}>

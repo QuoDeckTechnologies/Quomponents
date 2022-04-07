@@ -6,8 +6,12 @@
     justify-content: center;
     align-items: center;
     border-radius: 0.6em;
+    height: auto;
+    word-break: break-word;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    white-space: no-wrap;
 }
-
 .qui .qui-tag-label {
     font-size: 1.2em;
     padding: 0.2em 0.2em;

@@ -76,14 +76,13 @@ NuggetCard.propTypes = {
         points: PropTypes.string,
         identifier: PropTypes.string
     }),
-
+    /**
+    Use to add function to ArcMenu
+    */
     arcFn: PropTypes.func,
+
     // Quommon props
     //=======================================
-    /**
-    Use to float the component in parent container
-    */
-    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
     /**
     Use to show/hide the component
     */
@@ -111,14 +110,13 @@ NuggetCard.defaultProps = {
         points: "200",
         identifier: "XrPmy_OAK"
     },
+    arcFn: () => { },
+
     // Quommon props
     //=======================================
-    asFloated: "inline",
-
     isHidden: false,
     isDisabled: false,
 
-    arcFn: ()=>{console.log("arc")},
     onClick: null
 };
 
@@ -161,7 +159,7 @@ export default function NuggetCard(props) {
     //-------------------------------------------------------------------
     // 6. Get published status
     //-------------------------------------------------------------------
-    let status = props.content.published ? "published" : "none"
+    let status = props.content?.published === true ? "published" : "none";
 
     //-------------------------------------------------------------------
     // 7. Get the Nugget Image
@@ -209,7 +207,7 @@ export default function NuggetCard(props) {
                             {props.content?.name}
                         </div>
                     </div>
-                    <div className="qui-nugget-card-tag-container" style={{display:tagStyle}}>
+                    <div className="qui-nugget-card-tag-container" style={{ display: tagStyle }}>
                         {_.map(tags, (tag, index) => {
                             return (
                                 <div key={index} className={`qui-nugget-card-tag`} >
@@ -218,7 +216,7 @@ export default function NuggetCard(props) {
                             )
                         })}
                     </div>
-                    <BannerCard {...props} content={{image:image}}/>
+                    <BannerCard content={{ image: image }} />
                     <div className={`qui-nugget-card-description-container`}>
                         <div className={`qui-nugget-card-description`}>
                             {props.content?.description}
@@ -231,10 +229,11 @@ export default function NuggetCard(props) {
                 <div className="qui-nugget-card-footer">
                     <div className={`qui-nugget-card-arc-menu`}>
                         <ArcMenu
+                            {...props}
                             type="add"
                             arcIcon="menu"
                             position="bottom-left"
-                            onClick={()=>{props.arcFn()}}
+                            onClick={() => { props.arcFn() }}
                         />
                     </div>
                     <div className={`qui-nugget-card-share-block`}>
@@ -247,8 +246,8 @@ export default function NuggetCard(props) {
                         <div className={'qui-nugget-card-link-container'}>
                             <a className={'qui-nugget-card-link'} href={link}>{link}</a>
                             <IconBlock asSize="small" asEmphasis="text" withIcon={{ name: "fas fa-copy" }} withColor={{ accentColor: "#FFBF00" }}
-                            asPadded="fitted"
-                            onClick={() => { navigator.clipboard.writeText(link) }} />
+                                asPadded="fitted"
+                                onClick={() => { navigator.clipboard.writeText(link) }} />
                         </div>
                     </div>
                 </div>

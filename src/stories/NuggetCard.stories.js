@@ -85,10 +85,9 @@ Default.args = {
         points: "200",
         identifier: "XrPmy_OAK"
     },
-    asFloated: "inline",
+    asFloat:"inline",
     isDisabled: false,
     isHidden: false,
-    arcFn: ()=>{console.log("Arc Menu")}
 };
 Default.parameters = {
     docs: {
@@ -98,64 +97,14 @@ Default.parameters = {
     },
 };
 // -------------------------------------------------------------
-// MobileView
-// -------------------------------------------------------------
-
-export const DifferentResolution = (args) => {
-    const baseObj1 = {
-        ...Object.assign({}, Default.args, args, {
-            content: {
-                published: false,
-                tags: ["Tag1", "Tag2"],
-                category: "Profiler",
-                name: "Measure your sales readiness",
-                description: "Take this quick profile test to check how well you are prepared for a sales job",
-                image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-                points: "200",
-                identifier: "XrPmy_OAK"
-            },
-        }),
-    };
-    return (
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
-            <div style={{ display: "flex", width: "375px", margin: "5px" }}>
-                <NuggetCard
-                    {...Object.assign({}, baseObj1, {
-                    })}
-                />
-            </div>
-            <div style={{ display: "flex", width: "481px", margin: "5px" }}>
-                <NuggetCard
-                    {...Object.assign({}, baseObj1, {
-                    })}
-                />
-            </div>
-            <div style={{ display: "flex", width: "769px", margin: "5px" }}>
-                <NuggetCard
-                    {...Object.assign({}, baseObj1, {
-                    })}
-                />
-            </div>
-            <div style={{ display: "flex", width: "1024px", margin: "5px" }}>
-                <NuggetCard
-                    {...Object.assign({}, baseObj1, {
-                    })}
-                />
-            </div>
-        </div>
-
-    );
-};
-
-// -------------------------------------------------------------
-// Menu button
+// Story with Menu Button
 // -------------------------------------------------------------
 const ExampleTemplate = (args) => {
     const [openModalOne, setOpenModalOne] = useState(false);
     const [openModalTwo, setOpenModalTwo] = useState(false);
     return (<div>
         <NuggetCard arcFn={() => setOpenModalOne(true)} />
-        <div style={{ position: "absolute" }}>
+        <div style={{ position: "absolute", flexDirection:"column", display:"flex" }}>
             <Backdrop open={openModalOne} sx={{ zIndex: 10 }} onClick={() => setOpenModalOne(false)} />
             <Backdrop open={openModalTwo} sx={{ zIndex: 21 }} onClick={() => setOpenModalTwo(false)} />
             {openModalOne && (
@@ -168,7 +117,7 @@ const ExampleTemplate = (args) => {
                     <div className="qui-test-component-element" style={{ width: '10em', backgroundColor: '#d97575', marginTop: '0.1em', cursor: 'pointer' }} onClick={() => setOpenModalOne(false)}>Delete</div>
                 </div>
             )}
-            {openModalTwo && <div className="qui qui-second-imported-component" style={{ position: 'absolute', zIndex: 22, background: 'white', padding: '5em', marginTop: '-20em', }}>
+            {openModalTwo && <div className="qui qui-second-imported-component" style={{width:"50%", display:"flex",flexDirection:"column", justifyContent:"center", zIndex: 22, background: 'white', padding: '1em', marginTop: '-20em', }}>
                 <h1>Testing Second Modal</h1>
                 <ArcMenu
                     type="close"
@@ -181,14 +130,29 @@ const ExampleTemplate = (args) => {
             }
         </div>
     </div>
-
     );
 };
-export const AddCloseButtonUseCase = ExampleTemplate.bind({});
-AddCloseButtonUseCase.parameters = {
+export const MenuButtonUseCase = ExampleTemplate.bind({});
+MenuButtonUseCase.parameters = {
     docs: {
         source: {
-            code: `<ArcMenu {...${JSON.stringify(AddCloseButtonUseCase.args, null, 2)}}/>`,
+            code: `<ArcMenu {...${JSON.stringify(MenuButtonUseCase.args, null, 2)}}/>`,
         },
     },
+};
+
+export const FullScreen = (args) => {
+    const baseObj1 = {
+        ...Object.assign({}, Default.args, args, {
+     
+        }),
+    };
+    return (
+        <div style={{width:"500px"}}>
+            <NuggetCard
+                {...Object.assign({}, baseObj1, {
+                })}
+            />
+        </div>
+    );
 };
