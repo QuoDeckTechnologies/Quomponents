@@ -151,6 +151,9 @@ export default function ArcMenu(props) {
   // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "arc-menu");
+  //-------------------------------------------------------------------
+  // 3. Get icon for button
+  //-------------------------------------------------------------------
   const getIcon = (icon) => {
     if (icon === "menu") {
       return (
@@ -223,8 +226,8 @@ export default function ArcMenu(props) {
                       asSize="huge"
                       asPadded="fitted"
                       onClick={() => {
-                        props.onClick(dataObj?.link)
-                        setOpenMenu(false)
+                        props.onClick(dataObj?.link);
+                        setOpenMenu(false);
                       }}
                     />
                   </div>
@@ -252,8 +255,8 @@ export default function ArcMenu(props) {
                         <div
                           className="qui-arc-menu-list-item"
                           onMouseDown={() => {
-                            props.onClick(listItem)
-                            setOpenMenu(false)
+                            props.onClick(listItem);
+                            setOpenMenu(false);
                           }}
                           key={listItem + index}
                         >
