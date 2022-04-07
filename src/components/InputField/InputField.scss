@@ -56,7 +56,7 @@
 /* shortFiled Definitions */
 /* ================================================= */
 .qui .qui-short-field {
-    width: 3em;
+    width: 4em;
     min-height: 1em;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
@@ -81,4 +81,7 @@
 .qui .MuiFilledInput-root {
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
+}
+.qui .MuiInputBase-input.MuiFilledInput-input {
+    margin-bottom: 0.3em;
 }

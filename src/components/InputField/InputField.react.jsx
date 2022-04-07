@@ -146,12 +146,12 @@ export default function InputField(props) {
     }
 
     let inputlabelColor = {
-        style: { color: props.withColor?.textColor },
+        style: { color: props.withColor?.textColor ? props.withColor?.textColor : "#666666" },
     }
 
     let outlineStyle = {
         "& .MuiFilledInput-root:after": {
-            border: `0.2em solid ${props.withColor?.accentColor ? props.withColor?.accentColor : "#ffab00"}`
+            borderBottom: `0.3em solid ${props.withColor?.accentColor ? props.withColor?.accentColor : "#ffab00"}`
         },
     }
     //-------------------------------------------------------------------
