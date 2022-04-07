@@ -15,6 +15,7 @@ FeedbackformM.propTypes = {
     // Quommon props
     //=======================================
     content: PropTypes.string,
+
     /**
     Use to define standard component type
     */
@@ -116,21 +117,27 @@ export default function FeedbackformM(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
+
+    let fieldsetClasses = toggle ? "qui-fieldset" : "qui-fieldset qui-feedback-de-active";
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`qui-feedback-form-container  ${quommonClasses.childClasses}`}>
-                <div className="qui-feedback-toggle-button" style={{ backgroundColor: props.withColor?.ToggleBoxColor }}>
-                    <ToggleButton {...props} onClick={() => setToggle(prevState => !prevState)}
-                        label={props.content ? props.content : "Show Feedback"}
-                        withColor={ToggleColors} />
-                </div>
-                {toggle && <div className={`qui-feedback-input-field-container`}>
-                    <InputField {...props} content={{ label: "If Correct" }} withColor={InputFieldColors} name={"0"} />
-                    <InputField {...props} content={{ label: "If InCorrect" }} withColor={InputFieldColors} name={"1"} />
-                </div>}
+            <div className={quommonClasses.childClasses}>
+                <fieldset className={fieldsetClasses}>
+                    <legend>
+                        <ToggleButton {...props} onClick={() => setToggle(prevState => !prevState)}
+                            label={props.content ? props.content : "Show Feedback"}
+                            withColor={ToggleColors} />
+                    </legend>
+                    {toggle &&
+                        <div className="qui-feedback-input-field-container">
+                            <InputField {...props} content={{ label: "If Correct" }} withColor={InputFieldColors} name={"correct"} />
+                            <InputField {...props} content={{ label: "If InCorrect" }} withColor={InputFieldColors} name={"incorrect"} />
+                        </div>
+                    }
+                </fieldset>
             </div>
         </motion.div>
     );
