@@ -88,9 +88,19 @@ describe("ImageUploadModal", () => {
     unmount();
   });
   it("should render correctly without throwing when file is uploaded", () => {
+    const parts = [
+      new Blob(["construct a file..."], {}),
+      "blob",
+      new Uint16Array([33]),
+    ];
+    const file = new File(parts, "name_file.jpeg", { 
+      size: 643810,
+      type: "image/jpeg",
+      webkitRelativePath: "",
+    });
     component
       .find(".qui-image-upload-field")
-      .simulate("change", { target: { files: "xyz" } });
+      .simulate("change", { target: { files: [file] } });
     component.find("Button").at(2).simulate("click");
     expect(component.exists()).toBe(true);
   });
