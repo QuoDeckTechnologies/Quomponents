@@ -167,6 +167,7 @@ export default function InputField(props) {
                     className="qui-filled"
                     InputLabelProps={inputlabelColor}
                     sx={outlineStyle}
+                    multiline={true}
                     label={props.content?.label}
                     variant="filled"
                     value={input}
