@@ -92,7 +92,9 @@ ArcMenu.defaultProps = {
   isDisabled: false,
   isHidden: false,
 };
-
+//-------------------------------------------------------------------
+// ArcMenu position handler
+//-------------------------------------------------------------------
 const getPosition = (position) => {
   if (position === "top-right") {
     return "qui-top-right";
@@ -108,6 +110,9 @@ const getPosition = (position) => {
   }
   return "qui-top-right";
 };
+//-------------------------------------------------------------------
+// menu and nugget-menu animation handler
+//-------------------------------------------------------------------
 const getMenuAnimation = (position) => {
   let animate = {
     visible: {
