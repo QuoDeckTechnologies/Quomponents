@@ -130,8 +130,6 @@ Default.args = {
             link: "https://www.whatsapp.com/",
         },
     ],
-    currentLink: "https://quodeck.com/",
-
     asEmphasis: "default",
     asVariant: "primary",
     withColor: {
@@ -165,10 +163,10 @@ export const ColoredToolbar = Template.bind({});
 ColoredToolbar.args = {
     ...Default.args,
     withColor: {
-        backgroundColor: "#D3D3D3",
+        backgroundColor: "#666666",
         textColor: "#EB6146",
         accentColor: "#48D1CC",
-        hoverBackgroundColor: "#D3D3D3",
+        hoverBackgroundColor: "#666666",
         hoverTextColor: "#EB6146",
     },
 };

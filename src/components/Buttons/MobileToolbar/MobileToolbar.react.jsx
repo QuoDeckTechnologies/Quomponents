@@ -27,9 +27,6 @@ MobileToolbar.propTypes = {
             link: PropTypes.string,
         })
     ).isRequired,
-
-    currentLink: PropTypes.string,
-
     /**
     Use to set the state of MobileToolbar 
     */
@@ -95,7 +92,6 @@ MobileToolbar.defaultProps = {
     //=======================================
     label: "Edit Mode",
     content: [],
-    currentLink: "",
     asEmphasis: "default",
     //=======================================
     // Quommon props
@@ -135,7 +131,7 @@ function getColors(colors) {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function MobileToolbar(props) {
-    const [state, setState] = useState(props.currentLink)
+    const [state, setState] = useState("https://quodeck.com/")
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -181,7 +177,7 @@ export default function MobileToolbar(props) {
                         position="bottom-left" arcIcon="close"
                         onClick={props.onClick}
                     />
-                    <div className="qui-editing-title" style={colors.textColors}>{label}</div>
+                    <h2 className="qui-editing-title" style={colors.textColors}>{label}</h2>
                 </div>
             )
         }
@@ -198,7 +194,7 @@ export default function MobileToolbar(props) {
             className={`qui ${quommonClasses.parentClasses}`}
             style={{ backgroundColor: props.withColor?.accentColor }}
         >
-            <div className={`qui-mobile-toolbar-container ${quommonClasses.childClasses}`}>
+            <div className={`${quommonClasses.childClasses}`}>
                 {getInput(asEmphasis)}
             </div>
         </motion.div>
