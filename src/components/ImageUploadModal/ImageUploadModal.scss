@@ -17,9 +17,17 @@
   flex-direction: column;
   align-items: center;
 }
+.qui .qui-image-cropper .qui.qui-slider{
+  margin: 1.5em 0;
+}
 .qui .qui-image-cropper .qui-button.float-none {
   min-height: 0;
   margin-bottom: 1.2em;
+}
+.qui .qui-avatar-default-image{
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1em;
 }
 .qui
   .qui-image-upload-modal-container

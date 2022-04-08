@@ -209,15 +209,24 @@ export default function ImageUploadModal(props) {
             </form>
           </div>
           <div className="qui-avatar-canvas">
-            <AvatarEditor
-              className="qui-image-preview"
-              ref={editorRef}
-              width={width}
-              height={width / 1.15}
-              image={image ? image : defaultImage}
-              border={0}
-              scale={zoom / 10}
-            />
+            {image ? (
+              <AvatarEditor
+                className="qui-image-preview"
+                ref={editorRef}
+                width={width}
+                height={width / 1.15}
+                image={image}
+                border={0}
+                scale={zoom / 10}
+              />
+            ) : (
+              <img
+                className="qui-avatar-default-image"
+                style={{ width: width, height: width / 1.15 }}
+                src={defaultImage}
+                alt="default"
+              />
+            )}
           </div>
           <Slider initialValue={10} onClick={(value) => setZoom(value)} />
           <div className="qui-image-upload-buttons">

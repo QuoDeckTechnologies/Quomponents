@@ -2,6 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow, mount } from "enzyme";
+import { render } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 //--------------------------------------
 // Import Components
@@ -45,26 +46,47 @@ describe("ImageUploadModal", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-  // it("should render correctly without throwing error", () => {
-  //   component = mount(
-  //     <ImageUploadModal
-  //       content={{ header: "Upload image" }}
-  //       isOpen={true}
-  //       asVariant="primary"
-  //       asSize="normal"
-  //       withColor={null}
-  //       withAnimation={null}
-  //       withTranslation={{
-  //         lang: "en",
-  //         tgt: "imageuploadmodal",
-  //         dictionary: dictionary,
-  //       }}
-  //       isDisabled={false}
-  //       isHidden={false}
-  //       onClick={() => {}}
-  //     />
-  //   );
-  // });
+  it("should render correctly without throwing error when component mounts", () => {
+    component = mount(
+      <ImageUploadModal
+        content={{ header: "Upload image" }}
+        isOpen={true}
+        asVariant="primary"
+        asSize="normal"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={{
+          lang: "en",
+          tgt: "imageuploadmodal",
+          dictionary: dictionary,
+        }}
+        isDisabled={false}
+        isHidden={false}
+        onSave={() => {}}
+      />
+    );
+  });
+  it("should render correctly without throwing error when component unmounts", () => {
+    const { unmount } = render(
+      <ImageUploadModal
+        content={{ header: "Upload image" }}
+        isOpen={true}
+        asVariant="primary"
+        asSize="normal"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={{
+          lang: "en",
+          tgt: "imageuploadmodal",
+          dictionary: dictionary,
+        }}
+        isDisabled={false}
+        isHidden={false}
+        onSave={() => {}}
+      />
+    );
+    unmount();
+  });
   it("should render correctly without throwing when file is uploaded", () => {
     component
       .find(".qui-image-upload-field")
