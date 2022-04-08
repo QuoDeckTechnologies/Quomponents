@@ -20,7 +20,6 @@ export default {
                 category: "as-Flags",
             },
         },
-
         withColor: {
             table: {
                 category: "with-Params",
@@ -74,7 +73,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic button for general-purpose use",
+        componentSubtitle: "Displays a Toggle button ",
         a11y: { disable: true },
         // controls: { expanded: true }
     },
