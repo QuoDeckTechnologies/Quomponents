@@ -1,0 +1,53 @@
+/* ================================================= */
+/* SelectField Definitions */
+/* ================================================= */
+.qui .qui-date-field-container {
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    border-bottom: 0.4em solid;
+}
+.qui .qui-date-field {
+    position: relative;
+    width: 100%;
+}
+
+.qui .qui-date-field-label {
+    padding: 0.6em 0 0 1em;
+    width: fit-content;
+    font-size: 1em;
+}
+.qui .qui-date-field-input {
+    width: 100%;
+    font-size: 2em;
+}
+
+.qui .react-datepicker__input-container {
+    width: 75%;
+}
+.qui .qui-date-field-date-picker {
+    margin: 0.3em 0.5em 0 0.3em;
+    font-size: 1em;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    pointer-events: none;
+}
+.qui .qui-calendar-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 7%;
+    top: 30%;
+    font-size: 1.2em;
+    -webkit-text-stroke: 0.06em #000000;
+}
+/* ================================================= */
+/* Styling Definitions for different resolution */
+/* ================================================= */
+@media screen and (min-width: 320px) {
+}
+@media screen and (min-width: 481px) {
+}
+@media screen and (min-width: 769px) {
+}
+@media screen and (min-width: 1024px) {
+}
