@@ -245,9 +245,12 @@ export default function NuggetCard(props) {
                         </div>
                         <div className={'qui-nugget-card-link-container'}>
                             <a className={'qui-nugget-card-link'} href={link}>{link}</a>
+                            <div className={`qui-nugget-card-copy-icon-container`}>
                             <IconBlock asSize="small" asEmphasis="text" withIcon={{ name: "fas fa-copy" }} withColor={{ accentColor: "#FFBF00" }}
                                 asPadded="fitted"
                                 onClick={() => { navigator.clipboard.writeText(link) }} />
+                            </div>
+
                         </div>
                     </div>
                 </div>

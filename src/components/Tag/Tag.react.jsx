@@ -121,8 +121,7 @@ export default function Tag(props) {
     // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-    
-    
+
     // ========================= Render Function =================================
     return (
         <motion.div

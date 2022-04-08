@@ -197,7 +197,7 @@ export default function CourseCard(props) {
                         </div>{
                             startDate && endDate &&
                             <div className="qui-course-card-date-container">
-                                <IconBlock asSize="tiny" asEmphasis="text" withIcon={{ name: "far fa-calendar-alt", size: "2em" }} withColor={{ accentColor: "#000" }}
+                                <IconBlock asSize="tiny" asPadded="fitted" asEmphasis="text" withIcon={{ name: "far fa-calendar-alt", size: "2em" }} withColor={{ accentColor: "#000" }}
                                 />
                                 <div className={`qui-course-card-date`}>
                                     {startDate} - {endDate}

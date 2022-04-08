@@ -77,7 +77,7 @@ export const Default = Template.bind({});
 Default.args = {
     content: {
         published: false,
-        tags: ["Tag1", "Tag2"],
+        tags: ["Sales"],
         category: "profiler",
         name: "Measure your sales readiness",
         description: "Take this quick profile test to check how well you are prepared for a sales job",
@@ -141,18 +141,3 @@ MenuButtonUseCase.parameters = {
     },
 };
 
-export const FullScreen = (args) => {
-    const baseObj1 = {
-        ...Object.assign({}, Default.args, args, {
-     
-        }),
-    };
-    return (
-        <div style={{width:"500px"}}>
-            <NuggetCard
-                {...Object.assign({}, baseObj1, {
-                })}
-            />
-        </div>
-    );
-};
