@@ -56,22 +56,11 @@ export default {
       },
     },
   },
-  // decorators: [
-  //   (story) => (
-  //     <div
-  //       style={{
-  //         width: "100%",
-  //       }}
-  //     >
-  //       {story()}
-  //     </div>
-  //   ),
-  // ],
   parameters: {
     componentSubtitle: "Displays a ArcMenu component",
     a11y: { disable: true },
     docs: {
-      iframeHeight: 300,
+      iframeHeight: 500,
     },
   },
 };
