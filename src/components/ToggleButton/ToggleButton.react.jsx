@@ -101,20 +101,20 @@ ToggleButton.defaultProps = {
 - MUI props are not being passed to the ToggleButton. Please speak to the admin to handle any new MUI prop.
 **/
 export default function ToggleButton(props) {
-    const ToggleSwitch = styled(Switch)(() => ({
-        '& .MuiSwitch-switchBase': {
-            color: '#AAAAAA ',
-            '&.Mui-checked': {
-                color: props.withColor?.accentColor,
-                '& + .MuiSwitch-track': {
-                    backgroundColor: props.withColor?.backgroundColor,
-                },
-            },
-        },
-        '& .MuiSwitch-track': {
-            backgroundColor: props.withColor?.backgroundColor,
-        },
-    }));
+    // const ToggleSwitch = styled(Switch)(() => ({
+    //     '& .MuiSwitch-switchBase': {
+    //         color: '#AAAAAA ',
+    //         '&.Mui-checked': {
+    //             color: props.withColor?.accentColor,
+    //             '& + .MuiSwitch-track': {
+    //                 backgroundColor: props.withColor?.backgroundColor,
+    //             },
+    //         },
+    //     },
+    //     '& .MuiSwitch-track': {
+    //         backgroundColor: props.withColor?.backgroundColor,
+    //     },
+    // }));
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -150,7 +150,21 @@ export default function ToggleButton(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-toggle-button-container `} >
-                <ToggleSwitch
+                <Switch
+                sx={{
+                  '& .MuiSwitch-switchBase': {
+                    color: '#AAAAAA ',
+                    '&.Mui-checked': {
+                      color: props.withColor?.accentColor,
+                      '& + .MuiSwitch-track': {
+                        backgroundColor: props.withColor?.backgroundColor,
+                      },
+                    },
+                  },
+                  '& .MuiSwitch-track': {
+                    backgroundColor: props.withColor?.backgroundColor,
+                  },
+                }}
                     onChange={(e) => {
                         handleChange(e);
                     }}
