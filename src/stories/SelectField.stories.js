@@ -70,6 +70,12 @@ export default {
                 defaultValue: false,
             },
         },
+        onClick: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        },
     },
     decorators: [
         (story) => (

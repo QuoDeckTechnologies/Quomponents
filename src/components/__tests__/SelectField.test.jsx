@@ -7,12 +7,14 @@ import { shallow, mount, render } from 'enzyme';
 // Import Components
 // -------------------------------------
 import SelectField from "../SelectField/SelectField.react"
+import { Select } from "@mui/material";
 
 describe("SelectField", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
+    let onClick = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -31,13 +33,14 @@ describe("SelectField", () => {
                 withAnimation={null}
                 isHidden={false}
                 isDisabled={false}
+                onClick={onClick}
             />
         );
     });
 
     it("it should render correctly without throwing error", () => {
         expect(component.exists()).toBe(true);
-    });
+    })
 
     it("it should render correctly when passed asSize prop as tiny", () => {
         component.setProps({ asSize: "tiny" })
@@ -58,10 +61,12 @@ describe("SelectField", () => {
         component.setProps({ asSize: "big" })
         expect(component.exists()).toBe(true);
     })
+
     it("it should render correctly when passed asSize prop as huge", () => {
         component.setProps({ asSize: "huge" })
         expect(component.exists()).toBe(true);
     })
+
     it("it should render correctly when passed asSize prop as massive", () => {
         component.setProps({ asSize: "massive" })
         expect(component.exists()).toBe(true);
@@ -71,14 +76,17 @@ describe("SelectField", () => {
         component.setProps({ asPadded: "fitted" })
         expect(component.exists()).toBe(true);
     })
+
     it("it should render correctly when passed asPadded prop as commpact", () => {
         component.setProps({ asPadded: "compact" })
         expect(component.exists()).toBe(true);
     })
+
     it("it should render correctly when passed asPadded prop as normal", () => {
         component.setProps({ asPadded: "normal" })
         expect(component.exists()).toBe(true);
     })
+
     it("it should render correctly when passed asPadded prop as relaxed", () => {
         component.setProps({ asPadded: "relaxed" })
         expect(component.exists()).toBe(true);
@@ -152,5 +160,9 @@ describe("SelectField", () => {
     it("it should render correctly when passed isDisabled props as false", () => {
         component.setProps({ isDisabled: false })
         expect(component.exists()).toBe(true);
+    })
+    it("it should pass the value to the SelectField", () => {
+        component.find(Select).simulate('change', { target: { value: 'Sales Training' } })
+        expect(component.find(Select).props().value).toEqual('Sales Training');
     })
 });

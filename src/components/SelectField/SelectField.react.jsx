@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Select, MenuItem } from "@mui/material";
 import { motion } from "framer-motion";
@@ -82,6 +82,10 @@ SelectField.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
+    /**
+    SelecField component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 };
 
 SelectField.defaultProps = {
@@ -117,7 +121,16 @@ export default function SelectField(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "select-field");
     //-------------------------------------------------------------------
-    // 2. Use to set Color in SelectField
+    // 2. Declaration of SelectField's value
+    //-------------------------------------------------------------------
+    const [selectValue, setSelectValue] = useState();
+
+    const handleChange = (e) => {
+        setSelectValue(e.target.value);
+        props.onClick(e.target.value);
+    };
+    //-------------------------------------------------------------------
+    // 3. Use to set Color in SelectField
     //-------------------------------------------------------------------
     let Color = {
         backgroundColor: props.withColor?.backgroundColor,
@@ -125,7 +138,7 @@ export default function SelectField(props) {
         borderBottomColor: `${props.withColor?.accentColor}`,
     };
     //-------------------------------------------------------------------
-    // 3. Get animation of the component
+    // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
@@ -140,9 +153,13 @@ export default function SelectField(props) {
                     <div className="qui-select-field-label">
                         {props.content?.label}
                     </div>
-                    <Select className="qui-select-field-select" defaultValue="none" >
+                    <Select className="qui-select-field-select"
+                        defaultValue="none"
+                        value={selectValue}
+                        onChange={handleChange}
+                    >
                         <MenuItem disabled value="none" >{props.content?.placeHolder}</MenuItem>
-                        {props.content?.categoryOptions.map((option) => (
+                        {props.content?.categoryOptions?.map((option) => (
                             <MenuItem className="qui-select-field-menu-item"
                                 key={option}
                                 value={option}
