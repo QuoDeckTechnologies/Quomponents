@@ -175,7 +175,9 @@ export default function ArcMenu(props) {
       </div>
     );
   };
-
+  //-------------------------------------------------------------------
+  // 4. Get menu according to menuType selected
+  //-------------------------------------------------------------------
   const getMenu = (menu) => {
     if (menu === "menu") {
       return (
@@ -237,7 +239,7 @@ export default function ArcMenu(props) {
       );
     }
   };
-  
+
   // ========================= Render Function =================================
 
   return (

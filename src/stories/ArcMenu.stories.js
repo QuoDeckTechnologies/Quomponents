@@ -319,6 +319,7 @@ AddCloseButtonUseCase.parameters = {
 //  Menu Button Use Case
 // -------------------------------------------------------------
 const ExampleTemplateMenu = (args) => {
+  const [openModalOne, setOpenModalOne] = useState(false);
   const menuHandler = (value) => {
     /* useHistory or useNavigate can be used here to redirect within the application */
     if (value === "google") {
@@ -333,9 +334,8 @@ const ExampleTemplateMenu = (args) => {
       window.location.href =
         "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
     }
-    if (value === "facebook") {
-      window.location.href =
-        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    if (value === "modal") {
+      setOpenModalOne(true);
     }
   };
   return (
@@ -351,11 +351,36 @@ const ExampleTemplateMenu = (args) => {
         alignItems: "center",
       }}
     >
+      <Backdrop
+        open={openModalOne}
+        sx={{ zIndex: 10 }}
+        onClick={() => setOpenModalOne(false)}
+      />
+      {openModalOne && (
+        <div
+          className="qui qui-second-imported-component"
+          style={{
+            position: "absolute",
+            zIndex: 22,
+            background: "white",
+            padding: "5em",
+          }}
+        >
+          <h1>Testing Second Modal</h1>
+          <ArcMenu
+            menuType="close"
+            arcIcon="close"
+            position="top-right"
+            onClick={() => setOpenModalOne(false)}
+          />
+          <button onClick={(e) => args.onClick(e)}>Click</button>
+        </div>
+      )}
       <ArcMenu
         menuContent={[
           {
             header: "learning",
-            list: ["google", "youtube", "github", "facebook"],
+            list: ["google", "youtube", "github", "modal"],
           },
         ]}
         menuType="menu"
