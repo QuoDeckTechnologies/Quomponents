@@ -1,7 +1,83 @@
-.qui-mobile-toolbar-container{
-    height: 85px;
-    width: 375px;
+.qui-mobile-toolbar {
+    width: 100%;
+    height: auto;
     background-color: #454545;
-    border-top-left-radius: 1em;
-    border-top-right-radius:1em;
+    border-radius: 1em 1em 0 0;
+    padding: 0.5em 0em;
+}
+.qui .qui-default-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+}
+.qui .qui-editing-toolbar {
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 0.5em;
+}
+.qui .qui-editing-title {
+    color: #eb6146;
+    text-transform: uppercase;
+}
+
+@media screen and (min-width: 320px) {
+    .qui .qui-default-toolbar {
+        font-size: 0.5em;
+    }
+    .qui .qui-editing-title {
+        font-size: 2em;
+        padding-right: 0.25em;
+    }
+    .qui .qui-editing-toolbar .qui-arc-menu .qui-arc {
+        height: 3em;
+        width: 3em;
+    }
+    .qui .qui-editing-toolbar .qui-arc .qui-arc-menu-button {
+        height: 3.3em;
+        width: 3.3em;
+    }
+    .qui .qui-editing-toolbar .qui-arc .qui-arc-menu-button.qui-arc-menu-close-button .qui-arc-close-icon {
+        font-size: 2em;
+    }
+}
+
+@media screen and (min-width: 481px) {
+    .qui .qui-default-toolbar {
+        font-size: 1em;
+    }
+    .qui .qui-editing-title {
+        font-size: 2.5em;
+    }
+    .qui .qui-editing-toolbar .qui-arc-menu .qui-arc {
+        height: 3.3em;
+        width: 3.3em;
+    }
+    .qui .qui-editing-toolbar .qui-arc .qui-arc-menu-button {
+        height: 3.5em;
+        width: 3.5em;
+    }
+    .qui .qui-editing-toolbar .qui-arc .qui-arc-menu-button.qui-arc-menu-close-button .qui-arc-close-icon {
+        font-size: 2.5em;
+    }
+}
+@media screen and (min-width: 769px) {
+    .qui .qui-default-toolbar {
+        font-size: 1.2em;
+    }
+    .qui .qui-editing-title {
+        font-size: 3em;
+    }
+    .qui .qui-editing-toolbar .qui-arc-menu .qui-arc {
+        height: 3.8em;
+        width: 3.8em;
+    }
+    .qui .qui-editing-toolbar .qui-arc .qui-arc-menu-button {
+        height: 4em;
+        width: 4em;
+    }
+    .qui .qui-editing-toolbar .qui-arc .qui-arc-menu-button.qui-arc-menu-close-button .qui-arc-close-icon {
+        font-size: 3em;
+    }
 }
