@@ -5,7 +5,13 @@ export default {
     title: "Design System/RibbonMenu/RibbonMenu",
     component: RibbonMenu,
     argTypes: {
-        tab: "",
+        asEmphasis: {
+            control: "select",
+            options: ["html", "home", "tools", "design"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         asPadded: {
             control: "select",
             options: ["fitted", "compact", "normal", "relaxed"],
@@ -73,7 +79,7 @@ export default {
 const Template = (args) => <RibbonMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    tab: "html",
+    asEmphasis: "html",
     asFloated: "left",
     asPadded: "normal",
     isDisabled: false,

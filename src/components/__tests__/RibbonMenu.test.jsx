@@ -16,16 +16,13 @@ describe("RibbonMenu", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
-    let component, content;
-    content = {
-      tab:"html"
-    }
-
+    let component;
+    
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
             <RibbonMenu
-                content={content}
+                asEmphasis="html"
                 asPadded="normal"
                 asFloated="inline"
                 isHidden={false}
@@ -43,26 +40,17 @@ describe("RibbonMenu", () => {
     })
     it("should render Design Menu when passed design in the tab props",()=>{
         expect(component.find(RibbonDesignMenu).exists()).toBe(false)
-        let content ={
-            tab:"design"
-        }
-        component.setProps({content:content});
+        component.setProps({asEmphasis:"design"});
         expect(component.find(RibbonDesignMenu).exists()).toBe(true)
     })
     it("should render Tools Menu when passed tools in the tab props",()=>{
         expect(component.find(RibbonToolMenu).exists()).toBe(false)
-        let content ={
-            tab:"tools"
-        }
-        component.setProps({content:content})
+        component.setProps({asEmphasis:"tools"})
         expect(component.find(RibbonToolMenu).exists()).toBe(true)
     })
     it("should render Home Menu when passed home in the tab props",()=>{
         expect(component.find(RibbonHomeMenu).exists()).toBe(false)
-        let content ={
-            tab:"home"
-        }
-        component.setProps({content:content})
+        component.setProps({asEmphasis:"home"})
         expect(component.find(RibbonHomeMenu).exists()).toBe(true)
     })
 });

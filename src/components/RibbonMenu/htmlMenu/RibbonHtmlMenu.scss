@@ -1,4 +1,4 @@
-.qui .ribbon-menu-html-container{
+.qui .qui-ribbon-html-menu-container{
     width: 316px;
     display: flex;
     flex-direction: row;
@@ -8,7 +8,7 @@
 }
 
 //SaveExitSection Styling Definitions
-.qui .exit-section{
+.qui .qui-ribbon-menu-exit-section{
     font-size: 1em;
     height: 84px;
     width: 84px;
@@ -22,11 +22,11 @@
 }
 
 //SaveSection Styling Definitions
-.qui .save-section{
+.qui .qui-ribbon-menu-save-section{
     display: flex;
     flex-direction: column;
 }
-.qui .save-section-child-container{
+.qui .qui-ribbon-menu-save-section-child-container{
     width: 187px;
     height: 64px;
     display: flex;
@@ -36,7 +36,7 @@
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }
-.qui .save-section-child{
+.qui .qui-ribbon-menu-save-section-child{
     width: 100%;
     height: 100%;
     display: flex;

@@ -14,14 +14,14 @@ export default function QuestionBankSection(props) {
 
     // ========================= Render Function =================================
     return (
-        <div className="question-bank-section">
+        <div className="qui-ribbon-menu-question-bank-section">
             <IconLink
                 {...props}
                 key={1}
                 asSize={"small"}
                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                 withIcon={{ icon: 'fab fa-stack-exchange' }} />
-            <div className="ribbon-label">Question Bank</div>
+            <div className="qui-ribbon-menu-label">Question Bank</div>
         </div>
 
     )

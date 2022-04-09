@@ -15,9 +15,9 @@ export default function SaveSection(props) {
     // ========================= Render Function =================================
 
     return (
-        <div className="save-section">
-            <div className="save-section-child-container">
-                <div className="save-section-child">
+        <div className="qui-ribbon-menu-save-section">
+            <div className="qui-ribbon-menu-save-section-child-container">
+                <div className="qui-ribbon-menu-save-section-child">
                     <IconLink
                         onClick={() => { console.log("test") }}
                         className={`file-icons`}
@@ -25,10 +25,10 @@ export default function SaveSection(props) {
                         asSize={'tiny'}
                         withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                         withIcon={{ icon: 'fas fa-file-upload' }} />
-                    <div className="ribbon-label">Upload</div>
+                    <div className="qui-ribbon-menu-label">Upload</div>
                 </div>
-                <div className="child-vertical-line"></div>
-                <div className="save-section-child">
+                <div className="qui-ribbon-menu-child-vertical-line"></div>
+                <div className="qui-ribbon-menu-save-section-child">
                     <IconLink
                         onClick={() => { console.log("test") }}
                         className={`file-icons`}
@@ -36,20 +36,20 @@ export default function SaveSection(props) {
                         asSize={'tiny'}
                         withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                         withIcon={{ icon: 'fas fa-download' }} />
-                    <div className="ribbon-label">Download</div>
+                    <div className="qui-ribbon-menu-label">Download</div>
                 </div>
-                <div className="child-vertical-line"></div>
-                <div className="save-section-child">
+                <div className="qui-ribbon-menu-child-vertical-line"></div>
+                <div className="qui-ribbon-menu-save-section-child">
                     <IconLink
                         onClick={() => { console.log("test") }}
                         {...props}
                         asSize={'tiny'}
                         withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                         withIcon={{ icon: 'far fa-file-alt' }} />
-                    <div className="ribbon-label">Save</div>
+                    <div className="qui-ribbon-menu-label">Save</div>
                 </div>
             </div>
-            <div className="label-file">File</div>
+            <div className="qui-ribbon-menu-label-file">File</div>
         </div>
     );
 }

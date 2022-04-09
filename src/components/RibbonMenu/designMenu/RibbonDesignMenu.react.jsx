@@ -16,27 +16,27 @@ export default function RibbonDesignMenu(props) {
 
     return (
 
-        <div className={`ribbon-menu-design-container`}>
+        <div className={`ribbon-design-menu-container`}>
             <PalleteThemeSection/>
-            <div className="parent-vertical-line"></div>
-            <div className="overlay-background-section">
-                <div className="overlay-background-section-child-container">
-                    <div className="overlay-background-section-child">
-                        <div className="set-remove"></div>
-                        <div className="label-set-remove">Set Remove</div>
+            <div className="qui-ribbon-menu-parent-vertical-line"></div>
+            <div className="qui-ribbon-menu-overlay-background-section">
+                <div className="qui-ribbon-menu-overlay-background-section-child-container">
+                    <div className="qui-ribbon-menu-overlay-background-section-child">
+                        <div className="qui-ribbon-menu-set-remove"></div>
+                        <div className="qui-ribbon-menu-label-set-remove">Set Remove</div>
                     </div>
                 </div>
-                <div className="label-file">Slide Background</div>
+                <div className="qui-ribbon-menu-label-file">Slide Background</div>
             </div>
-            <div className="parent-vertical-line"></div>
-            <div className="slide-background-section">
-                <div className="slide-background-section-child-container">
-                    <div className="slide-background-section-child">
-                        <div className="set-remove"></div>
-                        <div className="label-set-remove">Set Remove</div>
+            <div className="qui-ribbon-menu-parent-vertical-line"></div>
+            <div className="qui-ribbon-menu-slide-background-section">
+                <div className="qui-ribbon-menu-slide-background-section-child-container">
+                    <div className="qui-ribbon-menu-slide-background-section-child">
+                        <div className="qui-ribbon-menu-set-remove"></div>
+                        <div className="qui-ribbon-menu-label-set-remove">Set Remove</div>
                     </div>
                 </div>
-                <div className="label-file">Overlay Background</div>
+                <div className="qui-ribbon-menu-label-file">Overlay Background</div>
             </div>
         </div>
     );

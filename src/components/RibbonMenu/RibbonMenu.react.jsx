@@ -23,7 +23,12 @@ RibbonMenu.propTypes = {
     /**
     RibbonMenu tabs data should be passed in content field and it is required field  
     */
-    tab: PropTypes.string,
+    asEmphasis:  PropTypes.oneOf([
+        "html",
+        "design",
+        "tools",
+        "home"
+        ]),
 
     //=======================================
     // Quommon props
@@ -58,10 +63,11 @@ RibbonMenu.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    tab: "html",
+   
     //=======================================
     // Quommon props
     //=======================================
+    asEmphasis: "html",
     asSize: "normal",
     asPadded: "normal",
     asFloated : "left",
@@ -112,8 +118,8 @@ export default function RibbonMenu(props) {
     }
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`${quommonClasses.childClasses} ribbon-menu`}>
-                {ribbonMenu(props.tab)}
+            <div className={`${quommonClasses.childClasses} qui-ribbon-menu`}>
+                {ribbonMenu(props.asEmphasis)}
             </div>
         </div>
     );
