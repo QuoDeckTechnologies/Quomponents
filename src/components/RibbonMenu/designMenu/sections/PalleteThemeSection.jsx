@@ -1,4 +1,4 @@
-import React, {useEffect, useState }  from "react";
+import React, { useState }  from "react";
 import _ from "lodash";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -10,24 +10,20 @@ import CustomColor from "../../../CustomColor/CustomColor.react";
 import ColorSwatch from "../../../ColorSwatch/ColorSwatch.react"
 
 import { PaletteSet } from "../../PalleteSelect.react";
-export default function PalleteThemeSection(props) {
-    const [selectedColor, setColor] = useState();
 
+export default function PalleteThemeSection(props) {
+    console.log(props)
+    const [selectedColor, setColor] = useState();
 
     const select = (colors) => {
         setColor(colors)
     }
-    useEffect((colors) => {
-        select(colors)
-})
 
     // ========================= Render Function =================================
-
     return (
         <div className={`qui-ribbon-menu-pallete-custom-color-section-container`}>
             <div className="qui-ribbon-menu-color-pallete-section">
                 <div className="qui-ribbon-menu-color-pallete-section-child-container">
-
                     {_.map(PaletteSet, (colors, index) => {
                         return (
                             <div className="qui-ribbon-menu-color-pallete-section-child"

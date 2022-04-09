@@ -1,7 +1,7 @@
 import React from "react";
 
 import AnalysisSection from "./sections/AnalysisSection";
-import DeckSettingsSection from "./sections/DeckSettingSection";
+import DeckSettingsSection from "./sections/DeckSettingsSection";
 import QuestionBankSection from "./sections/QuestionBankSection.react";
 import VoiceoverSection from "./sections/VoiceoverSection.react";
 
