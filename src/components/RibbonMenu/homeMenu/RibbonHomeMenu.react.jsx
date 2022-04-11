@@ -18,15 +18,15 @@ export default function RibbonHomeMenu(props) {
     // ========================= Render Function =================================
 
     return (
-        <div className={`ribbon-menu-home-container`}>
+        <div className={`qui-ribbon-home-menu-container`}>
             <SaveExitSection />
-            <div className="parent-vertical-line"></div>
+            <div className="qui-ribbon-menu-parent-vertical-line"></div>
             <SaveSection />
-            <div className="parent-vertical-line"></div>
+            <div className="qui-ribbon-menu-parent-vertical-line"></div>
             <SlideSection />
-            <div className="parent-vertical-line"></div>
+            <div className="qui-ribbon-menu-parent-vertical-line"></div>
             <SlideSettings />
-            <div className="parent-vertical-line"></div>
+            <div className="qui-ribbon-menu-parent-vertical-line"></div>
             <ViewSection />
         </div>
     );

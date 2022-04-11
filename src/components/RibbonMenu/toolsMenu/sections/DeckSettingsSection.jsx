@@ -25,42 +25,42 @@ export default function DeckSettingsSection(props) {
     }
     // ========================= Render Function =================================
     return (
-        <div className="settings-section">
-        <div className="settings-section-child-container">
-            <div className="settings-section-child">
-                <div className="settings-section-right-content">
+        <div className="qui-ribbon-menu-settings-section">
+        <div className="ribbon-menu-settings-section-child-container">
+            <div className="qui-ribbon-menu-settings-section-child">
+                <div className="qui-ribbon-menu-settings-section-right-content">
                     <IconLink
                         {...props}
                         key={2}
                         asSize={'tiny'}
                         withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                        withIcon={{ icon: `file-right-icons ${isNavigationChecked ? "far fa-check-square" : "far fa-square"}` }}
+                        withIcon={{ icon: `qui-ribbon-file-right-icons ${isNavigationChecked ? "far fa-check-square" : "far fa-square"}` }}
                         onClick={() => toggleNavigationChecked()} />
-                    <div className="ribbon-label" onClick={() => toggleNavigationChecked()}>Enable Navigation</div>
+                    <div className="qui-ribbon-menu-label" onClick={() => toggleNavigationChecked()}>Enable Navigation</div>
                 </div>
-                <div className="settings-section-right-content">
+                <div className="qui-ribbon-menu-settings-section-right-content">
                     <IconLink
                         {...props}
                         key={3}
                         asSize={'tiny'}
                         withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                        withIcon={{ icon: `file-right-icons ${isSlideChecked ? "far fa-check-square" : "far fa-square"}` }}
+                        withIcon={{ icon: `qui-ribbon-file-right-icons ${isSlideChecked ? "far fa-check-square" : "far fa-square"}` }}
                         onClick={() => toggleSlideChecked()} />
-                    <div className="ribbon-label" onClick={() => toggleSlideChecked()}>Enable Slide List</div>
+                    <div className="qui-ribbon-menu-label" onClick={() => toggleSlideChecked()}>Enable Slide List</div>
                 </div>
-                <div className="settings-section-right-content">
+                <div className="qui-ribbon-menu-settings-section-right-content">
                     <IconLink
                         {...props}
                         key={4}
                         asSize={'tiny'}
                         withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                        withIcon={{ icon: `file-right-icons ${isVoiceoverChecked ? "far fa-check-square" : "far fa-square"}` }}
+                        withIcon={{ icon: `qui-ribbon-file-right-icons ${isVoiceoverChecked ? "far fa-check-square" : "far fa-square"}` }}
                         onClick={() => toggleVoiceoverChecked()} />
-                    <div className="ribbon-label" onClick={() => toggleVoiceoverChecked()}>Enable Voiceovers</div>
+                    <div className="qui-ribbon-menu-label" onClick={() => toggleVoiceoverChecked()}>Enable Voiceovers</div>
                 </div>
             </div>
         </div>
-        <div className="label-file">Settings</div>
+        <div className="qui-ribbon-menu-label-file">Settings</div>
     </div>
 
     )

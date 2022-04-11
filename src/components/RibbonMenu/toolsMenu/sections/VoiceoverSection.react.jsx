@@ -22,9 +22,9 @@ export default function VoiceoverSection(props) {
                         asSize={'tiny'}
                         withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                         withIcon={{ icon: 'fas fa-file-upload' }} />
-                    <div className="ribbon-label">Upload</div>
+                    <div className="qui-ribbon-menu-label">Upload</div>
                 </div>
-                <div className="child-vertical-line"></div>
+                <div className="qui-ribbon-menu-child-vertical-line"></div>
                 <div className="vo-section-child">
                     <div className="vo-section-right-content">
                         <IconLink
@@ -33,7 +33,7 @@ export default function VoiceoverSection(props) {
                             asSize={'tiny'}
                             withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                             withIcon={{ icon: 'far fa-copy' }} />
-                        <div className="tool-label">Copy Slides to Script</div>
+                        <div className="qui-ribbon-menu-tool-label">Copy Slides to Script</div>
                     </div>
                     <div className="vo-section-right-content">
                         <IconLink
@@ -42,11 +42,11 @@ export default function VoiceoverSection(props) {
                             asSize={'tiny'}
                             withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                             withIcon={{ icon: 'fas fa-download' }} />
-                        <div className="tool-label">Download Script</div>
+                        <div className="qui-ribbon-menu-tool-label">Download Script</div>
                     </div>
                 </div>
             </div>
-            <div className="label-file">Voiceovers</div>
+            <div className="qui-ribbon-menu-label-file">Voiceovers</div>
         </div>
 
     )

@@ -14,45 +14,45 @@ export default function ViewSection(props) {
 
     return (
 
-        <div className="view-section">
-        <div className="view-section-child-container">
-            <div className="view-section-child">
+        <div className="ribbon-menu-view-section">
+        <div className="ribbon-menu-view-section-child-container">
+            <div className="ribbon-menu-view-section-child">
                 <IconLink
                     {...props}
                     asSize={'tiny'}
                     withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                     withIcon={{ icon: 'fas fa-filter' }} />
-                <div className="ribbon-label">Sorter</div>
+                <div className="qui-ribbon-menu-label">Sorter</div>
             </div>
-            <div className="child-vertical-line"></div>
-            <div className="view-section-child">
+            <div className="qui-ribbon-menu-child-vertical-line"></div>
+            <div className="ribbon-menu-view-section-child">
                 <IconLink
                     {...props}
                     asSize={'tiny'}
                     withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                     withIcon={{ icon: 'fas fa-mobile-alt' }} />
-                <div className="ribbon-label">Mobile</div>
+                <div className="qui-ribbon-menu-label">Mobile</div>
             </div>
-            <div className="child-vertical-line"></div>
-            <div className="view-section-child">
+            <div className="qui-ribbon-menu-child-vertical-line"></div>
+            <div className="ribbon-menu-view-section-child">
                 <IconLink
                     {...props}
                     asSize={'tiny'}
                     withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                     withIcon={{ icon: 'fas fa-laptop' }} />
-                <div className="ribbon-label">Desktop</div>
+                <div className="qui-ribbon-menu-label">Desktop</div>
             </div>
-            <div className="child-vertical-line"></div>
-            <div className="view-section-child">
+            <div className="qui-ribbon-menu-child-vertical-line"></div>
+            <div className="ribbon-menu-view-section-child">
                 <IconLink
                     {...props}
                     asSize={'tiny'}
                     withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                     withIcon={{ icon: 'fas fa-comments' }} />
-                <div className="ribbon-label">Comments</div>
+                <div className="qui-ribbon-menu-label">Comments</div>
             </div>
         </div>
-        <div className="label-file">View</div>
+        <div className="qui-ribbon-menu-label-file">View</div>
     </div>
     )
 }

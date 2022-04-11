@@ -1,9 +1,9 @@
 import React from "react";
-import RibbonMenu from "../components/RibbonMenu/RibbonMenu.react";
+import SaveExitSection from "../components/RibbonMenu/htmlMenu/sections/SaveExitSection.react";
 
 export default {
-    title: "Design System/RibbonMenu/RibbonMenu",
-    component: RibbonMenu,
+    title: "Design System/RibbonMenu/SaveExitSection",
+    component: SaveExitSection,
     argTypes: {
         asEmphasis: {
             control: "select",
@@ -76,7 +76,7 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <RibbonMenu {...args} />;
+const Template = (args) => <SaveExitSection {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     asEmphasis: "html",
@@ -89,7 +89,7 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<RibbonMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<SaveExitSection {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };

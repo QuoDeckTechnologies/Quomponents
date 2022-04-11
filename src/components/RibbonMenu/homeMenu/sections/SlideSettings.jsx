@@ -24,30 +24,30 @@ export default function SlideSettings(props) {
     // ========================= Render Function =================================
 
     return (
-<div className="settings-section">
-                <div className="settings-section-child-container">
-                    <div className="settings-section-child">
-                        <div className="settings-section-right-content">
+<div className="qui-ribbon-menu-settings-section">
+                <div className="ribbon-menu-settings-section-child-container">
+                    <div className="qui-ribbon-menu-settings-section-child">
+                        <div className="qui-ribbon-menu-settings-section-right-content">
                             <IconLink
                                 {...props}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                                withIcon={{ icon: `file-right-icons ${isBackChecked ? "far fa-check-square" : "far fa-square"}` }}
+                                withIcon={{ icon: `qui-ribbon-file-right-icons ${isBackChecked ? "far fa-check-square" : "far fa-square"}` }}
                                 onClick={() => toggleBackChecked()} />
-                            <div className="ribbon-label" onClick={() => toggleBackChecked()}>Enable Back Arrow</div>
+                            <div className="qui-ribbon-menu-label" onClick={() => toggleBackChecked()}>Enable Back Arrow</div>
                         </div>
-                        <div className="settings-section-right-content">
+                        <div className="qui-ribbon-menu-settings-section-right-content">
                             <IconLink
                                 {...props}
                                 asSize={'tiny'}
                                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
-                                withIcon={{ icon: `file-right-icons ${isNextChecked ? "far fa-check-square" : "far fa-square"}` }}
+                                withIcon={{ icon: `qui-ribbon-file-right-icons ${isNextChecked ? "far fa-check-square" : "far fa-square"}` }}
                                 onClick={() => toggleNextChecked()} />
-                            <div className="ribbon-label" onClick={() => toggleNextChecked()}>Enable Next Arrow</div>
+                            <div className="qui-ribbon-menu-label" onClick={() => toggleNextChecked()}>Enable Next Arrow</div>
                         </div>
                     </div>
                 </div>
-                <div className="label-file">Settings</div>
+                <div className="qui-ribbon-menu-label-file">Settings</div>
             </div>
     );
 }

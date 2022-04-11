@@ -13,9 +13,9 @@ export default function RibbonHtmlMenu(props) {
     // ========================= Render Function =================================
 
     return (
-        <div className={`ribbon-menu-html-container`}>
+        <div className={`qui-ribbon-html-menu-container`}>
             <SaveExitSection {...props}/>
-            <div className="parent-vertical-line"></div>
+            <div className="qui-ribbon-menu-parent-vertical-line"></div>
             <SaveSection {...props}/>
         </div>
     );

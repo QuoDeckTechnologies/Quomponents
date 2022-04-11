@@ -22,13 +22,13 @@ export default function SaveExitSection(props) {
        return props.saveExit("parameter")
     }
     return (
-        <div className="exit-section">
+        <div className="qui-ribbon-menu-exit-section">
             <IconLink
                 onClick={handleSave}
                 asSize={"small"}
                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                 withIcon={{ icon: 'fa fa-sign-out-alt' }} />
-            <div className="ribbon-label" onClick={handleSave}>Save & Exit</div>
+            <div className="qui-ribbon-menu-label" onClick={handleSave}>Save & Exit</div>
         </div>
     )
 

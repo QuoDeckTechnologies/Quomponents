@@ -13,14 +13,14 @@ import IconLink from "../../../Buttons/IconLink/IconLink.react";
 export default function AnalysisSection(props) {
 
     return (
-        <div className="analytics-bank-section">
+        <div className="qui-ribbon-menu-question-analytics-bank-section">
             <IconLink
                 key={8}
                 {...props}
                 asSize={"small"}
                 withColor={{ backgroundColor: '#666666', hoverTextColor: '#666666' }}
                 withIcon={{ icon: 'fas fa-chart-area' }} />
-            <div className="ribbon-label">Analysis</div>
+            <div className="qui-ribbon-menu-label">Analysis</div>
         </div>
     )
 }

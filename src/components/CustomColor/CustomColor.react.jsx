@@ -170,7 +170,7 @@ export default function CustomColor(props) {
         className={`qui ${quommonClasses.parentClasses}`}
         ref={ref}>
             <div className="qui-color-picker-container">
-                <div className={`qui-custom-color-container  qui-color-container ${quommonClasses.childClasses}`}>
+                <div className={`qui-qui-ribbon-menu-custom-color-container  qui-color-container ${quommonClasses.childClasses}`}>
                     <div className="button-title-container">
                         <button
                             className="qui-custom-color-button"
