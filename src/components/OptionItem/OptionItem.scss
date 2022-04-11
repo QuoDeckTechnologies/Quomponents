@@ -1,0 +1,33 @@
+.qui.qui-option-item .qui-char-limit-max-length {
+  font-size: 0.65em;
+}
+
+.qui .qui-option-item-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+.qui .qui-option-item-close-icon {
+  font-size: 1.2em;
+  margin-left: 0.5em;
+  cursor: pointer;
+  color: #a8a8a8;
+}
+
+.qui .qui-option-item-radio {
+  min-width: 7em;
+  margin: 0 0.2em;
+}
+.qui
+  .qui-option-item-container
+  .qui-option-item-radio
+  .css-146k4iu-MuiButtonBase-root-MuiRadio-root.Mui-checked {
+  color: #ffab00;
+}
+
+.qui.qui-option-item .qui-optional-image-field {
+  margin-bottom: 0.09em;
+}
+.qui .qui-option-item-container .qui-option-item-checkbox{
+  min-width: 8em;
+}

@@ -133,7 +133,7 @@ export default function CheckBox(props) {
           <Checkbox
             style={{ color: withColor?.accentColor }}
             checked={isChecked}
-            id="qui-check-box-element"
+            id={`qui-checkbox-identifier-class-${content.label}`}
             disabled={props.isDisabled}
             size={getSize()}
             value={content?.label}
@@ -147,7 +147,7 @@ export default function CheckBox(props) {
           />
         )}
         <label
-          htmlFor="qui-check-box-element"
+          htmlFor={`qui-checkbox-identifier-class-${content.label}`}
           className="qui-check-box-element"
         >
           <h4 style={{ color: withColor?.textColor }}>{content?.label}</h4>

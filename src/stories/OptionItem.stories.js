@@ -1,11 +1,17 @@
 import React from "react";
-import OptionItem from "../components/OptionItem/OptionItem/OptionItem.react";
+import OptionItem from "../components/OptionItem/OptionItem.react";
 
 export default {
   title: "Design System/OptionItem/OptionItem",
   component: OptionItem,
-
-    content: {
+  argTypes: {
+    content: [],
+    optionType: {
+      control: "select",
+      options: ["title", "single-select", "picture-select", "multiple-select"],
+      table: {
+        category: "as-Flags",
+      },
     },
     withColor: {
       table: {
@@ -39,18 +45,7 @@ export default {
         defaultValue: false,
       },
     },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  },
   parameters: {
     componentSubtitle: "Displays a OptionItem.",
     a11y: { disable: true },
@@ -69,10 +64,29 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: {
+  content: [
+    {
+      name: "name one",
+      value: "option one",
+      placeholder: "Placeholder One",
+      checked: false,
     },
+    {
+      name: "name two",
+      value: "option two",
+      placeholder: "Placeholder Two",
+      checked: true,
+    },
+    {
+      name: "name three",
+      value: "option three",
+      placeholder: "Placeholder Three",
+      checked: false,
+    },
+  ],
+  optionType: "single-select",
   withColor: {
-    backgroundColor: "",
+    backgroundColor: "#ffab000d",
     accentColor: "",
     textColor: "",
   },
@@ -87,11 +101,7 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<OptionItem {...${JSON.stringify(
-        Default.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItem {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
   },
 };
