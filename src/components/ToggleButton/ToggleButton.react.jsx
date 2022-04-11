@@ -1,7 +1,7 @@
 // Import npm packages
 import React, { useState } from "react"
 import PropTypes from "prop-types";
-import { Switch, styled } from "@mui/material";
+import { Switch } from "@mui/material";
 import { motion } from "framer-motion";
 import {
     getQuommons,
@@ -53,7 +53,6 @@ ToggleButton.propTypes = {
         duration: PropTypes.number,
         delay: PropTypes.number,
     }),
-
     /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
     */
@@ -75,7 +74,6 @@ ToggleButton.propTypes = {
     */
     onClick: PropTypes.func.isRequired,
 };
-
 ToggleButton.defaultProps = {
     // Component Specific props
     //=======================================
@@ -101,20 +99,6 @@ ToggleButton.defaultProps = {
 - MUI props are not being passed to the ToggleButton. Please speak to the admin to handle any new MUI prop.
 **/
 export default function ToggleButton(props) {
-    const ToggleSwitch = styled(Switch)(() => ({
-        '& .MuiSwitch-switchBase': {
-            color: '#AAAAAA ',
-            '&.Mui-checked': {
-                color: props.withColor?.accentColor,
-                '& + .MuiSwitch-track': {
-                    backgroundColor: props.withColor?.backgroundColor,
-                },
-            },
-        },
-        '& .MuiSwitch-track': {
-            backgroundColor: props.withColor?.backgroundColor,
-        },
-    }));
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -150,7 +134,21 @@ export default function ToggleButton(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-toggle-button-container `} >
-                <ToggleSwitch
+                <Switch
+                    sx={{
+                        '& .MuiSwitch-switchBase': {
+                            color: '#AAAAAA ',
+                            '&.Mui-checked': {
+                                color: props.withColor?.accentColor,
+                                '& + .MuiSwitch-track': {
+                                    backgroundColor: props.withColor?.backgroundColor,
+                                },
+                            },
+                        },
+                        '& .MuiSwitch-track': {
+                            backgroundColor: props.withColor?.backgroundColor,
+                        },
+                    }}
                     onChange={(e) => {
                         handleChange(e);
                     }}

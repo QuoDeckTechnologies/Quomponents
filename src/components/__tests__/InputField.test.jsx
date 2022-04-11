@@ -155,32 +155,32 @@ describe("InputField", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("it should trigger the escape event when input contain some value", () => {
-        let InputField = component.find('input');
+    it("it should trigger the escape event when textarea contain some value", () => {
+        let InputField = component.find('textarea').at(0);
         InputField.simulate('change', { target: { value: 'Please input your text here' } });
-        component.find('input').simulate('change', { key: 'Enter' })
+        component.find('textarea').at(0).simulate('change', { key: 'Enter' })
         expect(component.exists()).toBe(true);
     });
 
-    it("it should trigger the escape event when input contain empty value", () => {
-        let InputField = component.find('input');
+    it("it should trigger the escape event when textarea contain empty value", () => {
+        let InputField = component.find('textarea').at(0);
         InputField.simulate('change', { target: { value: '' } });
-        component.find('input').simulate('change', { key: 'Escape' })
+        component.find('textarea').at(0).simulate('change', { key: 'Escape' })
         expect(component.exists()).toBe(true);
     });
 
     it("it should pass the value to the InputField", () => {
-        component.find('input').simulate('change', { target: { value: 'Please input your text here' } })
-        expect(component.find('input').props().value).toEqual('Please input your text here');
+        component.find('textarea').at(0).simulate('change', { target: { value: 'Please input your text here' } })
+        expect(component.find('textarea').at(0).props().value).toEqual('Please input your text here');
     });
 
     it("it should render correct props when blur on InputField", () => {
-        component.find('input').simulate('blur', { style: { backgroundColor: "#666666" } })
+        component.find('textarea').at(0).simulate('blur', { style: { backgroundColor: "#666666" } })
         expect(component.exists()).toBe(true);
     });
 
     it("it should render correct props when focus on InputField", () => {
-        component.find('input').simulate('focus', { style: { accentColor: "#ffbf00" } })
+        component.find('textarea').at(0).simulate('focus', { style: { accentColor: "#ffbf00" } })
         expect(component.exists()).toBe(true);
     });
 });

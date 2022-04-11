@@ -73,11 +73,11 @@ describe("ToggleButton", () => {
     expect(component.exists()).toBe(true);
   })
   it("should render correctly when label is passed", () => {
-    component.setProps({ label: "Not Active"})
+    component.setProps({ label: "Not Active" })
     expect(component.exists()).toBe(true);
   })
   it("should render correctly when label is null", () => {
-    component.setProps({ label: ""})
+    component.setProps({ label: "" })
     expect(component.exists()).toBe(true);
   })
   it("should render correctly when passed isHidden props as false", () => {

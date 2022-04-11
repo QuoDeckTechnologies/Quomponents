@@ -5,9 +5,9 @@ export default {
   title: "Design System/InputField/InputField",
   component: InputField,
   argTypes: {
+    name: "",
     content: {
       table: {
-        category: "with-Params",
         defaultValue: {
           label: "Input Name",
           value: "Please input your text here",
@@ -16,7 +16,6 @@ export default {
         },
       },
     },
-    name: "",
     asEmphasis: {
       control: "select",
       options: ["filled", "charLimited", "listInput", "shortField"],
@@ -61,6 +60,12 @@ export default {
       table: {
         category: "is-Toggles",
         defaultValue: false,
+      },
+    },
+    onClick: {
+      table: {
+        category: "Events",
+        defaultValue: null,
       },
     },
   },
@@ -174,6 +179,9 @@ listInputField.parameters = {
 export const ShortFieldField = Template.bind({});
 ShortFieldField.args = {
   ...Default.args,
+  content: {
+    value: "0",
+  },
   asEmphasis: "shortField",
 };
 ShortFieldField.parameters = {
