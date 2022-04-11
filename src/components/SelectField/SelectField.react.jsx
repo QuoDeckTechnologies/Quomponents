@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Select, MenuItem } from "@mui/material";
 import { motion } from "framer-motion";
+import _ from "lodash";
 import {
     getAnimation,
     getQuommons,
@@ -164,7 +165,7 @@ export default function SelectField(props) {
                                 key={option}
                                 value={option}
                             >
-                                {option}
+                                {(_.startCase(option))}
                             </MenuItem>
                         ))}
                     </Select>
