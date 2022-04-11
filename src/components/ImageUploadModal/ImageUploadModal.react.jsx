@@ -29,16 +29,6 @@ ImageUploadModal.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to define standard component type
-    */
-  asVariant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "error",
-  ]),
-  /**
     Use to define the entry animation of the component
     */
   withAnimation: PropTypes.shape({
@@ -86,7 +76,6 @@ ImageUploadModal.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asVariant: "primary",
   withAnimation: null,
   withTranslation: null,
   isDisabled: false,
@@ -193,12 +182,14 @@ export default function ImageUploadModal(props) {
                 type="file"
                 className="qui-image-upload-field"
                 onChange={handleChange}
+                onClick={(e) => (e.target.value = "")}
                 ref={fileRef}
                 hidden
               />
               <Button
                 {...props}
                 content={tObj ? tObj.buttons.chooseFile : "choose file"}
+                asVariant='warning'
                 withTranslation={null}
                 withAnimation={null}
                 asEmphasis="outlined"
@@ -234,6 +225,7 @@ export default function ImageUploadModal(props) {
               {...props}
               asSize="normal"
               content={tObj ? tObj.buttons.cancel : "cancel"}
+              asVariant='warning'
               asEmphasis="text"
               asFloated="left"
               withTranslation={null}
@@ -244,6 +236,7 @@ export default function ImageUploadModal(props) {
               {...props}
               asSize="normal"
               content={tObj ? tObj.buttons.save : "save"}
+              asVariant='warning'
               withTranslation={null}
               withAnimation={null}
               asEmphasis="contained"

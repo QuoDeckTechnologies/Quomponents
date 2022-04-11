@@ -93,7 +93,7 @@ describe("ImageUploadModal", () => {
       "blob",
       new Uint16Array([33]),
     ];
-    const file = new File(parts, "name_file.jpeg", { 
+    const file = new File(parts, "name_file.jpeg", {
       size: 643810,
       type: "image/jpeg",
       webkitRelativePath: "",
@@ -101,6 +101,9 @@ describe("ImageUploadModal", () => {
     component
       .find(".qui-image-upload-field")
       .simulate("change", { target: { files: [file] } });
+    component
+      .find(".qui-image-upload-field")
+      .simulate("click", { target: { value: "" } });
     component.find("Button").at(2).simulate("click");
     expect(component.exists()).toBe(true);
   });

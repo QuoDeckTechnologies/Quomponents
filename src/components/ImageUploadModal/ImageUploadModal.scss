@@ -3,11 +3,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3.5em;
+  padding: 3.7em;
   border-radius: 0.9em;
   position: absolute;
   z-index: 20;
   box-shadow: 0 6px 6px 0px #00000052;
+}
+.qui .qui-image-upload-modal-container .qui.qui-button {
+  overflow: visible;
 }
 .qui .qui-image-upload-modal-container:focus {
   outline: none;
@@ -16,18 +19,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0px 5px 7px #00000052;
+  border-radius: 1em;
+  overflow: hidden;
 }
-.qui .qui-image-cropper .qui.qui-slider{
-  margin: 1.5em 0;
+.qui .qui-image-cropper .qui.qui-slider {
+  margin: 2em 0;
 }
 .qui .qui-image-cropper .qui-button.float-none {
   min-height: 0;
-  margin-bottom: 1.2em;
+  margin-bottom: 1.8em;
 }
-.qui .qui-avatar-default-image{
+.qui .qui-avatar-default-image {
   width: 100%;
   object-fit: cover;
-  border-radius: 1em;
+  // border-radius: 1em;
 }
 .qui
   .qui-image-upload-modal-container
@@ -78,9 +84,9 @@
 .qui .qui-save-image-modal-button {
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
 }
-.qui .qui-image-preview {
-  border-radius: 1em;
-}
+// .qui .qui-image-preview {
+//   border-radius: 1em;
+// }
 .qui .qui-image-upload-default-image {
   border-radius: 1em;
   object-fit: cover;
@@ -88,7 +94,7 @@
 }
 .qui .qui-image-upload-modal-container .qui-button button {
   font-size: 1.5em;
-  padding: 0.8em 2em;
+  padding: 0.6em 2em;
 }
 
 @media only screen and (min-width: 320px) {
@@ -103,7 +109,11 @@
     height: 4em;
     width: 4em;
   }
-  .qui .qui-image-upload-modal-container .qui-arc .qui-arc-menu-button.qui-arc-menu-close-button .qui-arc-close-icon{
+  .qui
+    .qui-image-upload-modal-container
+    .qui-arc
+    .qui-arc-menu-button.qui-arc-menu-close-button
+    .qui-arc-close-icon {
     font-size: 2em;
   }
 }
@@ -119,7 +129,11 @@
     height: 5.5em;
     width: 5.5em;
   }
-  .qui .qui-image-upload-modal-container .qui-arc .qui-arc-menu-button.qui-arc-menu-close-button .qui-arc-close-icon{
+  .qui
+    .qui-image-upload-modal-container
+    .qui-arc
+    .qui-arc-menu-button.qui-arc-menu-close-button
+    .qui-arc-close-icon {
     font-size: 3em;
   }
 }

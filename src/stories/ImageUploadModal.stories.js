@@ -24,13 +24,6 @@ export default {
     imageQuality: {
       defaultValue: 50,
     },
-    asVariant: {
-      control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -102,7 +95,6 @@ export const Default = Template.bind({});
 Default.args = {
   isOpen: true,
   imageQuality: 50,
-  asVariant: "warning",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
@@ -129,7 +121,6 @@ Default.parameters = {
 export const TranslatedImageUploadModal = Template.bind({});
 TranslatedImageUploadModal.args = {
   ...Default.args,
-  asVariant: "primary",
   withTranslation: {
     lang: "hi",
     tgt: "imageuploadmodal",
