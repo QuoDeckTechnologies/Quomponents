@@ -10,9 +10,10 @@
 .qui .qui-tag-label {
     font-size: 1.2em;
     padding: 0.2em 0.2em;
-    white-space: nowrap; 
-    // max-width: 40ch; 
+    max-width: 20ch;
     overflow: hidden;
     text-overflow: ellipsis; 
     font-weight: bold;
+    text-align: left;
+   
 }

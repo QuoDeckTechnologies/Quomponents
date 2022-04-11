@@ -85,7 +85,7 @@ Default.args = {
         points: "200",
         identifier: "XrPmy_OAK"
     },
-    asFloat:"inline",
+    asFloated:"inline",
     isDisabled: false,
     isHidden: false,
 };
