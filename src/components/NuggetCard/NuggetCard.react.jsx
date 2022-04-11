@@ -203,20 +203,18 @@ export default function NuggetCard(props) {
 	let tag3Length = props.content?.tags[2]?.length;
 	let showMoreBtn = false;
 
-	let minTags = 3;
-	let maxTags = 10;
+	let showTags = 3;
 	const [expandTags, setExpandTags] = useState(false);
-	const [itirate, setItirate] = useState(minTags);
+	const [itirate, setItirate] = useState(showTags);
 
-	const handleLessTags = (e) => {
-		e.preventDefault();
-		setItirate(minTags);
-		setExpandTags(false);
-	};
-	const handleMoreTags = (e) => {
-		e.preventDefault();
-		setItirate(maxTags);
-		setExpandTags(true);
+	const handleLessTags = () => {
+		if(expandTags === true){
+			showTags = 3
+		}else{
+			showTags = 10
+		}
+		setItirate(showTags);
+		setExpandTags(prevState => !prevState);
 	};
 
 	if (
@@ -277,24 +275,14 @@ export default function NuggetCard(props) {
 								}
 							})}
 						</div>
-
 						{showMoreBtn && (
 							<div className="qui-nugget-card-show-more-container">
-								{expandTags ? (
 									<button
 										className="qui-nugget-card-show-more"
-										onClick={(e) => handleLessTags(e)}
+										onClick={handleLessTags}
 									>
-										<i className={"fas fa-angle-up"} />
+										<i className={expandTags ? "fas fa-angle-up" :"fas fa-angle-down" } />
 									</button>
-								) : (
-									<button
-										className="qui-nugget-card-show-more"
-										onClick={(e) => handleMoreTags(e)}
-									>
-										<i className={"fas fa-angle-down"} />
-									</button>
-								)}
 							</div>
 						)}
 					</div>
