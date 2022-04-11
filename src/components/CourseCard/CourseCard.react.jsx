@@ -1,9 +1,7 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import {
-    getQuommons
-} from "../../common/javascripts/helpers.js";
+import { getQuommons } from "../../common/javascripts/helpers.js";
 import _ from "lodash";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -22,83 +20,81 @@ import BannerCard from "../Carousel/BannerCard/BannerCard.react";
 import Nugget_Course from "../../assets/nuggets/nugget_course.png";
 import deafaultImage from "../../assets/default.jpeg";
 
-
 CourseCard.propTypes = {
-    //=======================================
-    // Component Specific props
-    //=======================================
-    content: PropTypes.shape({
-        published: PropTypes.bool,
-        courseType: PropTypes.oneOf([
-            "standard",
-            "exam"
-        ]),
-        wrapper: PropTypes.string,
-        tags: PropTypes.array,
-        courseName: PropTypes.string,
-        description: PropTypes.string,
-        courseImage: PropTypes.string,
-        points: PropTypes.string,
-        identifier: PropTypes.string,
-        date: PropTypes.shape({
-            start_date: PropTypes.string,
-            end_date: PropTypes.string
-        }),
-        sequential: PropTypes.bool
-    }),
-    /**
+	//=======================================
+	// Component Specific props
+	//=======================================
+	content: PropTypes.shape({
+		published: PropTypes.bool,
+		courseType: PropTypes.oneOf(["standard", "exam"]),
+		wrapper: PropTypes.string,
+		tags: PropTypes.array,
+		courseName: PropTypes.string,
+		description: PropTypes.string,
+		courseImage: PropTypes.string,
+		points: PropTypes.string,
+		identifier: PropTypes.string,
+		date: PropTypes.shape({
+			start_date: PropTypes.string,
+			end_date: PropTypes.string,
+		}),
+		sequential: PropTypes.bool,
+	}),
+	/**
     Use to add function to ArcMenu
     */
-    arcFn: PropTypes.func,
-    
-    // Quommon props
-    //=======================================
-    /**
+	arcFn: PropTypes.func,
+
+	// Quommon props
+	//=======================================
+	/**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
-    /**
+	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+	/**
     Use to show/hide the component
     */
-    isHidden: PropTypes.bool,
-    /**
+	isHidden: PropTypes.bool,
+	/**
     Use to enable/disable the component
     */
-    isDisabled: PropTypes.bool,
-    /**
+	isDisabled: PropTypes.bool,
+	/**
     Component must have the onClick function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+	onClick: PropTypes.func.isRequired,
 };
 
 CourseCard.defaultProps = {
-    // Component Specific props
-    //=======================================
-    content: {
-        published: false,
-        tags: [],
-        courseType: "standard",
-        wrapper: "carnival",
-        courseName: "Measure your sales readiness",
-        description: "Take this quick profile test to check how well you are prepared for a sales job",
-        courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-        points: "200",
-        identifier: "XrPmy_OAK",
-        date: {
-            start_date: "2016-01-04 10:34:23",
-            end_date: "2016-03-15 10:34:23"
-        },
-        sequential: false
-    },
-    arcFn: ()=>{},
-    // Quommon props
-    //=======================================
-    asFloated: "inline",
+	// Component Specific props
+	//=======================================
+	content: {
+		published: false,
+		tags: [],
+		courseType: "standard",
+		wrapper: "carnival",
+		courseName: "Measure your sales readiness",
+		description:
+			"Take this quick profile test to check how well you are prepared for a sales job",
+		courseImage:
+			"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+		points: "200",
+		identifier: "XrPmy_OAK",
+		date: {
+			start_date: "2016-01-04 10:34:23",
+			end_date: "2016-03-15 10:34:23",
+		},
+		sequential: false,
+	},
+	arcFn: () => {},
+	// Quommon props
+	//=======================================
+	asFloated: "inline",
 
-    isHidden: false,
-    isDisabled: false,
+	isHidden: false,
+	isDisabled: false,
 
-    onClick: null
+	onClick: null,
 };
 
 /**
@@ -109,145 +105,256 @@ CourseCard.defaultProps = {
 - Give width to the parent component to work the component properly
 **/
 export default function CourseCard(props) {
-    //-------------------------------------------------------------------
-    // 1. Set the classes
-    //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "course-card");
+	//-------------------------------------------------------------------
+	// 1. Set the classes
+	//-------------------------------------------------------------------
+	let quommonClasses = getQuommons(props, "course-card");
 
-    //-------------------------------------------------------------------
-    // 2.  Set image according to course type
-    //-------------------------------------------------------------------
-    let image = props.content?.courseImage ? props.content?.courseImage : props.content?.wrapper ? "assets/courses/" + props.content?.wrapper + "/play_backdrop.jpg" : deafaultImage;
+	//-------------------------------------------------------------------
+	// 2.  Set image according to course type
+	//-------------------------------------------------------------------
+	let image = props.content?.courseImage
+		? props.content?.courseImage
+		: props.content?.wrapper
+		? "assets/courses/" + props.content?.wrapper + "/play_backdrop.jpg"
+		: deafaultImage;
 
-    //-------------------------------------------------------------------
-    // 3. Get the tags
-    //-------------------------------------------------------------------
-    let tags = props.content?.tags ? props.content?.tags : [""];
-    let tagStyle = props.content?.tags ? "flex" : "none";
+	//-------------------------------------------------------------------
+	// 3. Get the tags
+	//-------------------------------------------------------------------
+	let tags = props.content?.tags ? props.content?.tags : [""];
+	let tagStyle = props.content?.tags ? "flex" : "none";
 
-    //-------------------------------------------------------------------
-    // 4.  Create link of article based on identifier
-    //-------------------------------------------------------------------
-    let link;
-    if (props.content?.identifier) {
-        link = "https://www.quodeck.com/" + props.content?.identifier;
-    } else {
-        link = "";
-    }
-    //-------------------------------------------------------------------
-    // 5. Standardize Date
-    //-------------------------------------------------------------------
-    let sD, eD, startDay, endDay, startMonth, endMonth, startDate, endDate;
+	//-------------------------------------------------------------------
+	// 4.  Create link of article based on identifier
+	//-------------------------------------------------------------------
+	let link;
+	if (props.content?.identifier) {
+		link = "https://www.quodeck.com/" + props.content?.identifier;
+	} else {
+		link = "";
+	}
+	//-------------------------------------------------------------------
+	// 5. Standardize Date
+	//-------------------------------------------------------------------
+	let sD, eD, startDay, endDay, startMonth, endMonth, startDate, endDate;
 
-    sD = new Date(props.content?.date?.start_date);
-    eD = new Date(props.content?.date?.end_date);
-    startDay = sD.toLocaleDateString(undefined, { day: "numeric" });
-    startMonth = sD.toLocaleDateString(undefined, { month: 'short' });
+	sD = new Date(props.content?.date?.start_date);
+	eD = new Date(props.content?.date?.end_date);
+	startDay = sD.toLocaleDateString(undefined, { day: "numeric" });
+	startMonth = sD.toLocaleDateString(undefined, { month: "short" });
 
-    endDay = eD.toLocaleDateString(undefined, { day: "numeric" });
-    endMonth = eD.toLocaleDateString(undefined, { month: 'short' });
+	endDay = eD.toLocaleDateString(undefined, { day: "numeric" });
+	endMonth = eD.toLocaleDateString(undefined, { month: "short" });
 
-    startDate = props.content?.date?.start_date ? startDay + " " + startMonth : "";
-    endDate = props.content?.date?.end_date ? endDay + " " + endMonth : "";
+	startDate = props.content?.date?.start_date
+		? startDay + " " + startMonth
+		: "";
+	endDate = props.content?.date?.end_date ? endDay + " " + endMonth : "";
 
-    //-------------------------------------------------------------------
-    // 6. Get published status
-    //-------------------------------------------------------------------
-    let status = props.content?.published === true ? "published" : "none";
+	//-------------------------------------------------------------------
+	// 6. Get published status
+	//-------------------------------------------------------------------
+	let status = props.content?.published === true ? "published" : "none";
 
-    //-------------------------------------------------------------------
-    // 7. Get header of wrapper
-    //-------------------------------------------------------------------
-    let header;
-    if (props.content?.wrapper?.toLowerCase() === "none" || props.content.wrapper === "") {
-        header = "";
-    } else {
-        header = props.content?.wrapper?.charAt(0).toUpperCase() + props.content?.wrapper?.slice(1);
-    }
+	//-------------------------------------------------------------------
+	// 7. Get header of wrapper
+	//-------------------------------------------------------------------
+	let header;
+	if (
+		props.content?.wrapper?.toLowerCase() === "none" ||
+		props.content.wrapper === ""
+	) {
+		header = "";
+	} else {
+		header =
+			props.content?.wrapper?.charAt(0).toUpperCase() +
+			props.content?.wrapper?.slice(1);
+	}
 
-    //-------------------------------------------------------------------
-    // 8. Get the status of Sequential course
-    //-------------------------------------------------------------------
-    let isSequential = props.content?.sequential ? "Sequential Course" : "Non Sequential Course";
+	//-------------------------------------------------------------------
+	// 8. Get the status of Sequential course
+	//-------------------------------------------------------------------
+	let isSequential = props.content?.sequential
+		? "Sequential Course"
+		: "Non Sequential Course";
 
-    //-------------------------------------------------------------------
-    // 7. Get the CourseCard Component
-    //-------------------------------------------------------------------
-    const CourseCard = () => {
-        return (
-            <div className={`qui-course-card-container`}>
-                <div className="qui-course-card-body">
-                    <div className={`qui-course-card-title-container`}>
-                        <div className={`qui-nugget-block-styling`}>
-                            <NuggetBlock status={status} image={Nugget_Course} />
-                        </div>
-                        <div className={`qui-course-card-title`}>
-                            {props.content?.courseName}
-                        </div>
-                    </div>
-                    <div className="qui-course-card-tag-and-date-container">
-                        <div className="qui-course-card-tag-container">
-                            {_.map(tags, (tag, index) => {
-                                return (
-                                    <div key={index} className={`qui-course-card-tag`} style={{ display: tagStyle }} >
-                                        <Tag content={tag} asPadded="compact" asSize="tiny" withColor={{ backgroundColor: "#FFAB00", textColor: "#000" }} />
-                                    </div>
-                                )
-                            })}
-                        </div>{
-                            startDate && endDate &&
-                            <div className="qui-course-card-date-container">
-                                <IconBlock asSize="tiny" asPadded="fitted" asEmphasis="text" withIcon={{ name: "far fa-calendar-alt", size: "2em" }} withColor={{ accentColor: "#000" }}
-                                />
-                                <div className={`qui-course-card-date`}>
-                                    {startDate} - {endDate}
-                                </div>
-                            </div>
-                        }
-                    </div>
-                    <BannerCard {...props} content={{ image: image, header: header }} />
-                    <div className={`qui-course-card-description-container`}>
-                        <div className={`qui-course-card-description`}>
-                            {props.content?.description}
-                        </div>
-                        <div className={`qui-course-card-reward`}>
-                            <Reward asSize="tiny" content={{ label: "Complete to win", point: props.content?.points }} />
-                        </div>
-                    </div>
-                </div>
-                <div className="qui-course-card-footer">
-                    <div className={`qui-course-card-arc-menu`}>
-                        <ArcMenu
-                            type="add"
-                            arcIcon="menu"
-                            position="bottom-left"
-                            onClick={()=>{props.arcFn()}}
-                        />
-                    </div>
-                    <div className={`qui-course-card-share-block`}>
-                        <div className={`qui-course-card-name`}>
-                            {isSequential}
-                        </div>
-                        <div className={'qui-course-card-share-widget'}>
-                            <ShareWidget asSize="tiny" withColor={{ textColor: "#AAAAAA" }} content={{ label: "Share", url: link }} />
-                        </div>
-                        <div className={'qui-course-card-link-container'}>
-                            <a className={'qui-course-card-link'} href={link}>{link}</a>
-                            <IconBlock asSize="small" asEmphasis="text" withIcon={{ name: "fas fa-copy" }} withColor={{ accentColor: "#FFBF00" }}
-                                asPadded="fitted"
-                                onClick={() => { navigator.clipboard.writeText(link) }} />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-    return (
-        <div
-            className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`${quommonClasses.childClasses}`}>
-                {CourseCard()}
-            </div>
-        </div>
-    );
+	//-------------------------------------------------------------------
+	// 9. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
+	//-------------------------------------------------------------------
+	let showMoreBtn = false;
+	let truncate;
+	let tag1Length = props.content?.tags[0]?.length;
+	let tag2Length = props.content?.tags[1]?.length;
+	let tag3Length = props.content?.tags[2]?.length;
+	let minTags = 3;
+	let maxTags = 10;
+	const [expandTags, setExpandTags] = useState(false);
+	const [itirate, setItirate] = useState(minTags);
+
+	const handleLessTags = (e) => {
+		e.preventDefault();
+		setItirate(minTags);
+		setExpandTags(false);
+	};
+	const handleMoreTags = (e) => {
+		e.preventDefault();
+		setItirate(maxTags);
+		setExpandTags(true);
+	};
+
+	if (
+		tag1Length >= 15 ||
+		tag2Length >= 15 ||
+		tag3Length >= 15 ||
+		props.content?.tags.length > 3
+	) {
+		showMoreBtn = true;
+		if (expandTags === true) {
+			truncate = "qui-nugget-card-untruncate";
+		} else {
+			truncate = "qui-nugget-card-truncate";
+		}
+	} else {
+		showMoreBtn = false;
+	}
+
+	//-------------------------------------------------------------------
+	// 10. Get the CourseCard Component
+	//-------------------------------------------------------------------
+	const CourseCard = () => {
+		return (
+			<div className={`qui-course-card-container`}>
+				<div className="qui-course-card-body">
+					<div className={`qui-course-card-title-container`}>
+						<div className={`qui-nugget-block-styling`}>
+							<NuggetBlock status={status} image={Nugget_Course} />
+						</div>
+						<div className={`qui-course-card-title`}>
+							{props.content?.courseName}
+						</div>
+					</div>
+					<div className="qui-course-card-tag-and-date-container">
+						<div
+							className={`qui-course-card-tag-container`}
+							style={{ display: tagStyle }}
+						>
+							{_.map(tags, (tag, index) => {
+								if (index < itirate) {
+									return (
+										<div
+											key={index}
+											className={`qui-course-card-tag ${truncate}`}
+										>
+											<Tag
+												asPadded="compact"
+												content={tag}
+												asSize="tiny"
+												withColor={{
+													backgroundColor: "#FFAB00",
+													textColor: "#000",
+												}}
+											/>
+										</div>
+									);
+								}
+							})}
+						</div>
+						<div>
+							{showMoreBtn && (
+								<div className="qui-nugget-card-show-more-container">
+									{expandTags ? (
+										<button
+											className={`qui-course-card-show-more`}
+											onClick={(e) => handleLessTags(e)}
+										>
+											<i className={"fas fa-angle-up"} />
+										</button>
+									) : (
+										<button
+											className={`qui-course-card-show-more`}
+											onClick={(e) => handleMoreTags(e)}
+										>
+											<i className={"fas fa-angle-down"} />
+										</button>
+									)}
+								</div>
+							)}
+						</div>
+						{startDate && endDate && (
+							<div className="qui-course-card-date-container">
+								<IconBlock
+									asSize="tiny"
+									asPadded="fitted"
+									asEmphasis="text"
+									withIcon={{ name: "far fa-calendar-alt", size: "2em" }}
+									withColor={{ accentColor: "#000" }}
+								/>
+								<div className={`qui-course-card-date`}>
+									{startDate} - {endDate}
+								</div>
+							</div>
+						)}
+					</div>
+					<BannerCard {...props} content={{ image: image, header: header }} />
+					<div className={`qui-course-card-description-container`}>
+						<div className={`qui-course-card-description`}>
+							{props.content?.description}
+						</div>
+						<div className={`qui-course-card-reward`}>
+							<Reward
+								asSize="tiny"
+								content={{
+									label: "Complete to win",
+									point: props.content?.points,
+								}}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="qui-course-card-footer">
+					<div className={`qui-course-card-arc-menu`}>
+						<ArcMenu
+							type="add"
+							arcIcon="menu"
+							position="bottom-left"
+							onClick={() => {
+								props.arcFn();
+							}}
+						/>
+					</div>
+					<div className={`qui-course-card-share-block`}>
+						<div className={`qui-course-card-name`}>{isSequential}</div>
+						<div className={"qui-course-card-share-widget"}>
+							<ShareWidget
+								asSize="tiny"
+								withColor={{ textColor: "#AAAAAA" }}
+								content={{ label: "Share", url: link }}
+							/>
+						</div>
+						<div className={"qui-course-card-link-container"}>
+							<a className={"qui-course-card-link"} href={link}>
+								{link}
+							</a>
+							<IconBlock
+								asSize="small"
+								asEmphasis="text"
+								withIcon={{ name: "fas fa-copy" }}
+								withColor={{ accentColor: "#FFBF00" }}
+								asPadded="fitted"
+								onClick={() => {
+									navigator.clipboard.writeText(link);
+								}}
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	};
+	return (
+		<div className={`qui ${quommonClasses.parentClasses}`}>
+			<div className={`${quommonClasses.childClasses}`}>{CourseCard()}</div>
+		</div>
+	);
 }

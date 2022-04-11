@@ -110,7 +110,7 @@ NuggetCard.defaultProps = {
 		points: "200",
 		identifier: "XrPmy_OAK",
 	},
-	arcFn: () => {},
+	arcFn: null,
 
 	// Quommon props
 	//=======================================
@@ -140,7 +140,7 @@ export default function NuggetCard(props) {
 	let image = props.content?.image ? props.content?.image : deafaultImage;
 
 	//-------------------------------------------------------------------
-	// 4. Get the tags
+	// 4. Get the tags and its styling
 	//-------------------------------------------------------------------
 	let tags = props.content?.tags ? props.content?.tags : [""];
 	let tagStyle = props.content?.tags ? "flex" : "none";
@@ -189,20 +189,45 @@ export default function NuggetCard(props) {
 	//-------------------------------------------------------------------
 	// 8. Capitalize first letter of category text
 	//-------------------------------------------------------------------
-	let category = props.content?.category ? props.content?.category?.charAt(0).toUpperCase() + props.content?.category?.slice(1) : "";
+	let category = props.content?.category
+		? props.content?.category?.charAt(0).toUpperCase() +
+		  props.content?.category?.slice(1)
+		: "";
 
-	let tagLength = props.content?.tags[0]?.length;
-	let showMoreBtn = false;
+	//-------------------------------------------------------------------
+	// 9. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
+	//-------------------------------------------------------------------
 	let truncate;
-	const [expand, setExpand] = useState();
+	let tag1Length = props.content?.tags[0]?.length;
+	let tag2Length = props.content?.tags[1]?.length;
+	let tag3Length = props.content?.tags[2]?.length;
+	let showMoreBtn = false;
+
+	let minTags = 3;
+	let maxTags = 10;
+	const [expandTags, setExpandTags] = useState(false);
+	const [itirate, setItirate] = useState(minTags);
+
+	const handleLessTags = (e) => {
+		e.preventDefault();
+		setItirate(minTags);
+		setExpandTags(false);
+	};
+	const handleMoreTags = (e) => {
+		e.preventDefault();
+		setItirate(maxTags);
+		setExpandTags(true);
+	};
+
 	if (
-		tagLength >= 15 ||
+		tag1Length >= 15 ||
+		tag2Length >= 15 ||
+		tag3Length >= 15 ||
 		props.content?.tags.length > 3
 	) {
 		showMoreBtn = true;
-		if (expand === true) {
+		if (expandTags === true) {
 			truncate = "qui-nugget-card-untruncate";
-          
 		} else {
 			truncate = "qui-nugget-card-truncate";
 		}
@@ -210,12 +235,8 @@ export default function NuggetCard(props) {
 		showMoreBtn = false;
 	}
 
-	const handleShowMore = () => {
-		setExpand((expand) => !expand);
-	};
-
 	//-------------------------------------------------------------------
-	// 9. Get the NuggetCard Component
+	// 10. Get the NuggetCard Component
 	//-------------------------------------------------------------------
 	const nuggetCard = () => {
 		return (
@@ -230,34 +251,51 @@ export default function NuggetCard(props) {
 						</div>
 						<div className={`qui-nugget-card-title`}>{props.content?.name}</div>
 					</div>
-					<div
-						className={`qui-nugget-card-tag-container`}
-						style={{ display: tagStyle }}
-					>
-						{_.map(tags, (tag, index) => {
-							return (
-								<div key={index} className={`qui-nugget-card-tag ${truncate}`}>
-									<Tag
-										asPadded="compact"
-										content={tag}
-										asSize="tiny"
-										withColor={{
-											backgroundColor: "#FFAB00",
-											textColor: "#000",
-										}}
-									/>
-								</div>
-							);
-						})}
+					<div className="qui-nugget-card-tag-show-more">
+						<div
+							className={`qui-nugget-card-tag-container`}
+							style={{ display: tagStyle }}
+						>
+							{_.map(tags, (tag, index) => {
+								if (index < itirate) {
+									return (
+										<div
+											key={index}
+											className={`qui-nugget-card-tag ${truncate}`}
+										>
+											<Tag
+												asPadded="compact"
+												content={tag}
+												asSize="tiny"
+												withColor={{
+													backgroundColor: "#FFAB00",
+													textColor: "#000",
+												}}
+											/>
+										</div>
+									);
+								}
+							})}
+						</div>
+
 						{showMoreBtn && (
-							<button
-								className={`qui-nugget-card-show-more`}
-								onClick={handleShowMore}
-							>
-								<i
-									className={expand ? "fas fa-angle-up" : "fas fa-angle-down"}
-								/>
-							</button>
+							<div className="qui-nugget-card-show-more-container">
+								{expandTags ? (
+									<button
+										className="qui-nugget-card-show-more"
+										onClick={(e) => handleLessTags(e)}
+									>
+										<i className={"fas fa-angle-up"} />
+									</button>
+								) : (
+									<button
+										className="qui-nugget-card-show-more"
+										onClick={(e) => handleMoreTags(e)}
+									>
+										<i className={"fas fa-angle-down"} />
+									</button>
+								)}
+							</div>
 						)}
 					</div>
 					<BannerCard content={{ image: image }} />
