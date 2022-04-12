@@ -82,8 +82,6 @@ Videobox.defaultProps = {
     isDisabled: false,
 
     autoplay: true,
-    rel: 0,
-    mute: true,
 };
 
 /**
@@ -102,18 +100,18 @@ export default function Videobox(props) {
         if (e.target && props.autoplay) {
             e.target.playVideo();
         }
-        if (props.onReady) props.onReady(e);
+        if (props.onReady) { props.onReady(e) };
     }
 
     function onPlay(e) { };
 
     function onEnd(e) {
         if (props.loop) e.target.playVideo();
-        if (props.onEnd) props.onEnd(e);
+        if (props.onEnd) { props.onEnd(e) };
     };
 
     function onPause(e) {
-        if (props.onPause) props.onPause(e);
+        if (props.onPause) { props.onPause(e) };
     };
 
     function onError(e) {
@@ -133,17 +131,16 @@ export default function Videobox(props) {
                 playerVars: {
                     autoplay: autoplay ? 1 : 0,
                     loop: loop ? 1 : 0,
-                    mute: props.mute ? 1 : 0,
-                    rel: 0,
                 },
             };
 
-            var getVideoId = (url) => {
+            let getVideoId = (url) => {
                 let videoId = "";
                 if (url.indexOf("v=") === -1) {
                     var video_array = url.split("/");
                     videoId = video_array[video_array.length - 1];
-                } else {
+                }
+                else {
                     videoId = url.split("v=")[1];
                     var ampersandPosition = videoId.indexOf("&");
                     if (ampersandPosition !== -1) {
@@ -152,7 +149,6 @@ export default function Videobox(props) {
                 }
                 return videoId;
             };
-
 
             if (url.indexOf("vimeo") !== -1) {
 
@@ -163,13 +159,13 @@ export default function Videobox(props) {
                         <Vimeo
                             className="react-player"
                             video={url}
-                            autoplay={true} 
+                            autoplay={props.autoplay}
                             playerOptions={{ width: window.innerWidth }}
-                            onReady={(e) => onReady(e)}
-                            onPlay={(e) => onPlay(e)}
-                            onEnd={(e) => onEnd(e)}
-                            onError={(e) => onError(e)}
-                            onPause={(e) => onPause(e)}
+                            onReady={onReady}
+                            onPlay={onPlay}
+                            onEnd={onEnd}
+                            onError={onError}
+                            onPause={onPause}
                         />
                     </div>
                 );
@@ -182,11 +178,11 @@ export default function Videobox(props) {
                             className="react-player"
                             videoId={getVideoId(url)}
                             opts={opts}
-                            onReady={(e) => onReady(e)}
-                            onPlay={(e) => onPlay(e)}
-                            onEnd={(e) => onEnd(e)}
-                            onError={(e) => onError(e)}
-                            onPause={(e) => onPause(e)}
+                            onReady={onReady}
+                            onPlay={onPlay}
+                            onEnd={onEnd}
+                            onError={onError}
+                            onPause={onPause}
                         />
                     </div>
                 );
@@ -197,9 +193,8 @@ export default function Videobox(props) {
                         className="video-responsive"
                     >
                         <Player
-                            className="react-player"
-                            playsInline
                             src={url}
+                            playsInline
                             autoplay={props.autoplay}
                         >
                             <BigPlayButton position="center" />
