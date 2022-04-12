@@ -158,7 +158,7 @@ export default function ToggleButton(props) {
                 />
                 <label
                     htmlFor="qui-switch-toggle"
-                    className={`qui-Toggle-Button-title`}
+                    className={`qui-toggle-button-title`}
                     style={{ color: props.withColor?.textColor }}>
                     {labelContent}
                 </label>
