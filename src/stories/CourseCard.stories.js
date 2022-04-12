@@ -274,13 +274,3 @@ MenuButtonUseCase.parameters = {
 	},
 };
 
-export const FullScreen = (args) => {
-	const baseObj1 = {
-		...Object.assign({}, Default.args, args, {}),
-	};
-	return (
-		<div style={{ width: "500px" }}>
-			<CourseCard {...Object.assign({}, baseObj1, {})} />
-		</div>
-	);
-};

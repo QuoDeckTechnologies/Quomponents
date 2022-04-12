@@ -105,7 +105,24 @@ const ExampleTemplate = (args) => {
 	const [openModalTwo, setOpenModalTwo] = useState(false);
 	return (
 		<div>
-			<NuggetCard arcFn={() => setOpenModalOne(true)} />
+			<NuggetCard
+				arcFn={() => setOpenModalOne(true)}
+				content={{
+					published: false,
+					tags: ["Sales"],
+					category: "profiler",
+					name: "Measure your sales readiness",
+					description:
+						"Take this quick profile test to check how well you are prepared for a sales job",
+					image:
+						"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+					points: "200",
+					identifier: "XrPmy_OAK",
+				}}
+				asFloated={"inline"}
+				isDisabled={false}
+				isHidden={false}
+			/>
 			<div
 				style={{
 					position: "absolute",
@@ -213,22 +230,6 @@ const ExampleTemplate = (args) => {
 	);
 };
 export const MenuButtonUseCase = ExampleTemplate.bind({});
-MenuButtonUseCase.args = {
-	content: {
-		published: false,
-		tags: ["Sales"],
-		category: "profiler",
-		name: "Measure your sales readiness",
-		description:
-			"Take this quick profile test to check how well you are prepared for a sales job",
-		image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-		points: "200",
-		identifier: "XrPmy_OAK",
-	},
-	asFloated: "inline",
-	isDisabled: false,
-	isHidden: false,
-};
 MenuButtonUseCase.parameters = {
 	docs: {
 		source: {
