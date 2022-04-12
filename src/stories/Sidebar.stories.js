@@ -5,11 +5,13 @@ export default {
     title: "Design System/Sidebar/Sidebar",
     component: Sidebar,
     argTypes: {
-        mode:{ control: "select",
-        options: ["default", "editMode"],
-        table: {
-            category: "as-Flags",
-        },},
+        asEmphasis: {
+            control: "select",
+            options: ["default", "editMode"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         content: {
             image: "",
             sections: {}
@@ -24,13 +26,6 @@ export default {
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asPadded: {
-            control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
             table: {
                 category: "as-Flags",
             },
@@ -55,6 +50,16 @@ export default {
                 defaultValue: {
                     backgroundColor: "",
                     textColor: "",
+                },
+            },
+        },
+        withAnimation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    animation: "",
+                    duration: 0,
+                    delay: 0,
                 },
             },
         },
@@ -103,14 +108,38 @@ export default {
 const Template = (args) => <Sidebar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    mode:"default",
+    asEmphasis: "default",
     content: {
-        image: "",
+        image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png",
         sections: {
-            welcome: {
+            Courses: {
                 link: "/social",
-                name: "courses",
-                icon: "fas fa-book-open",
+                name: "Courses",
+                icon: "fas fa-award",
+                show: ["admin", "creator", "learner"]
+            },
+            Nuggets: {
+                link: "/social",
+                name: "Nuggets",
+                icon: "fas fa-braille",
+                show: ["admin", "creator", "learner"]
+            },
+            Tests: {
+                link: "/social",
+                name: "Tests",
+                icon: "fas fa-paste",
+                show: ["admin", "creator", "learner"]
+            },
+            Contests: {
+                link: "/social",
+                name: "Contests",
+                icon: "fas fa-trophy",
+                show: ["admin", "creator", "learner"]
+            },
+            Posts: {
+                link: "/social",
+                name: "Posts",
+                icon: "fas fa-comment-alt",
                 show: ["admin", "creator", "learner"]
             }
         }
@@ -118,11 +147,15 @@ Default.args = {
     asVariant: "primary",
     asSize: "normal",
     asFloated: "inline",
-    asPadded: "normal",
     asAligned: "center",
     withColor: {
         backgroundColor: "",
         textColor: "",
+    },
+    withAnimation: {
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
     },
     isDisabled: false,
     isHidden: false,
@@ -131,6 +164,121 @@ Default.parameters = {
     docs: {
         source: {
             code: `<Button {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// EditMode
+// -------------------------------------------------------------
+const EditModeTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+        }),
+    };
+    return (
+        <div >
+            <Sidebar
+                {...Object.assign({}, baseObj, {
+                    asEmphasis: "editMode"
+                })}
+            />
+        </div>
+    );
+};
+export const EditMode = EditModeTemplate.bind({});
+EditMode.parameters = {
+    docs: {
+        description: {
+            story: "2 modes are supported in Sidebar.",
+        },
+        source: {
+            code: `<SideBar content:{}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// variants
+// -------------------------------------------------------------
+const SidebarVariantsTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+        }),
+    };
+    return (
+        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ margin: "1em" }}>
+                <Sidebar
+                    {...Object.assign({}, baseObj, {
+                        asEmphasis: "default"
+                    })}
+                />
+            </div>
+            <div>
+                <Sidebar
+                    {...Object.assign({}, baseObj, {
+                        asEmphasis: "editMode"
+                    })}
+                />
+            </div>
+        </div>
+    );
+};
+export const SidebarVariants = SidebarVariantsTemplate.bind({});
+SidebarVariants.parameters = {
+    docs: {
+        description: {
+            story: "2 modes are supported in Sidebar.",
+        },
+        source: {
+            code: `<SideBar content:{}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// AnimatiedVariants
+// -------------------------------------------------------------
+const AnimatedSidebarTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+        }),
+    };
+    return (
+        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ margin: "1em" }}>
+                <Sidebar
+                    {...Object.assign({}, baseObj, {
+                        asEmphasis: "default",
+                        withAnimation: {
+                            animation: "slideRight",
+                            duration: 0.5,
+                            delay: 0,
+                        },
+                    })}
+                />
+            </div>
+            <div>
+                <Sidebar
+                    {...Object.assign({}, baseObj, {
+                        asEmphasis: "editMode",
+                        withAnimation: {
+                            animation: "slideLeft",
+                            duration: 0.5,
+                            delay: 0,
+                        },
+                    })}
+                />
+            </div>
+        </div>
+    );
+};
+export const AnimatedSidebar = AnimatedSidebarTemplate.bind({});
+AnimatedSidebar.parameters = {
+    docs: {
+        description: {
+            story: "2 modes are supported in Sidebar.",
+        },
+        source: {
+            code: `<SideBar content:{}/>`,
         },
     },
 };

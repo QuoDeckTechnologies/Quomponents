@@ -1,8 +1,10 @@
 // Import npm packages
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 import {
-    getQuommons
+    getQuommons,
+    getAnimation
 } from "../../common/javascripts/helpers.js";
 import _ from "lodash";
 
@@ -23,7 +25,7 @@ Sidebar.propTypes = {
     /**
     Use to define section content and logo
     */
-    mode: PropTypes.oneOf(["editMode", "default"]),
+    asEmphasis: PropTypes.oneOf(["editMode", "default"]),
     /**
     Use to define section content and logo
     */
@@ -50,10 +52,6 @@ Sidebar.propTypes = {
         "error",
     ]),
     /**
-    Use to define component padding in increasing order
-    */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "inline"]),
@@ -73,6 +71,23 @@ Sidebar.propTypes = {
         hoverTextColor: PropTypes.string,
     }),
     /**
+    Use to define the entry animation of the component
+    */
+    withAnimation: PropTypes.shape({
+        animation: PropTypes.oneOf([
+            "zoom",
+            "collapse",
+            "fade",
+            "slideDown",
+            "slideUp",
+            "slideLeft",
+            "slideRight",
+            ""
+        ]),
+        duration: PropTypes.number,
+        delay: PropTypes.number,
+    }),
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -90,19 +105,19 @@ Sidebar.propTypes = {
 Sidebar.defaultProps = {
     // Component Specific props
     //=======================================
-    mode: "default",
+    asEmphasis: "default",
     content: null,
 
     // Quommon props
     //=======================================
     asVariant: "primary",
     asSize: "normal",
-    asPadded: "normal",
     asFloated: "inline",
     asAligned: "center",
 
     withColor: null,
     withIcon: null,
+    withAnimation: null,
 
     isHidden: false,
     isDisabled: false,
@@ -132,6 +147,7 @@ export default function Sidebar(props) {
     let logo = props.content?.image ? props.content?.image : defaultImage;
 
     const [isActive, setActive] = useState(false)
+    const [state, setState] = useState("https://quodeck.com/")
     //-------------------------------------------------------------------
     // 3. Conditional Styling
     //-------------------------------------------------------------------
@@ -139,21 +155,40 @@ export default function Sidebar(props) {
         setActive(prevState => !prevState)
     }
 
+    //-------------------------------------------------------------------
+    // 2. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
+    let modeColor = {
+        color: props.withColor?.accentColor
+    }
     let color = isActive ? "yellow" : ""
     //-------------------------------------------------------------------
     // 5. Get the Status of Component
     //-------------------------------------------------------------------
-    const sidebar = (mode) => {
-        if (mode === "default") {
+    const sidebar = (asEmphasis) => {
+        if (asEmphasis === "default") {
             return (
                 <div className={`qui-side-bar-default-container`}>
-                    <div style={{ backgroundImage: `url(${logo})` }} className="qui-side-bar-logo" />
-                    <div className={`qui-side-bar-sections-container`}>
+                    <div
+                        style={{ backgroundImage: `url(${logo})` }}
+                        className="qui-side-bar-logo" />
+                    <div
+                        className={`qui-side-bar-sections-container`}>
                         {_.map(props.content?.sections, (sections, index) => {
                             return (
-                                <div className={`qui-side-bar-sections`} style={{ zIndex: 1 }} onClick={() => { handleSection(sections.name) }}
+                                <div
+                                    className={`qui-side-bar-sections`}
+                                    style={{ background: props.withColor?.backgroundColor }}
+                                    onClick={() => { handleSection(sections.name) }}
                                     key={`panellink-${index}`}>
-                                    <IconLink asSize="tiny" withIcon={{ icon: sections.icon }} withLabel={{ format: "caption", content: sections.name }}
+                                    <IconLink
+                                        asEmphasis={sections.link === state ? "contained" : "text"}
+                                        asSize="tiny"
+                                        withIcon={{ icon: sections.icon }}
+                                        withLabel={{ format: "caption", content: sections.name }}
+                                        withColor={{ backgroundColor: props.withColor?.textColor }}
+                                        onClick={() => { setState(sections.link); }}
                                     />
                                 </div>
 
@@ -165,25 +200,23 @@ export default function Sidebar(props) {
         } else {
             return (<div className={`qui-side-bar-editmode-container`}>
                 <div style={{ backgroundImage: `url(${logo})` }} className="qui-side-bar-logo" />
-                <div className={`qui-side-bar-edit-mode-sections-container`}>
-                {/* <div className={`qui-side-bar-edit-mode-arc-menu`}>
-                        <ArcMenu type="menu" />
-                    </div> */}
-                    <div className={`qui-side-bar-edit-mode-label`}>
-                        EDIT MODE
-                    </div>
-                </div>
+                <p className={`qui-side-bar-edit-mode-label`}>
+                    EDIT MODE
+                </p>
+                <ArcMenu position="bottom-left" menuType="close" arcIcon="close" onClick={props.onClick} />
             </div>)
 
         }
 
     }
     return (
-        <div
+        <motion.div
+            initial={animate?.from}
+            animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses}`}>
-                {sidebar(props.mode)}
+                {sidebar(props.asEmphasis)}
             </div>
-        </div>
+        </motion.div>
     );
 }
