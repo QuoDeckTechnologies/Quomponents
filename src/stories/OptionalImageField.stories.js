@@ -10,6 +10,7 @@ export default {
         title: "Upload",
         icon: "fas fa-image",
         actionButton: true,
+        name:'testing_name'
       },
     },
     withFile: {
@@ -84,6 +85,7 @@ Default.args = {
     title: "Upload",
     icon: "fas fa-image",
     actionButton: true,
+    name:'testing_name'
   },
   withFile: {
     type: "image/*",

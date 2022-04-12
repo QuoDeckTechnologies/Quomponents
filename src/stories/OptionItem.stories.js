@@ -45,6 +45,12 @@ export default {
         defaultValue: false,
       },
     },
+    onClick: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
   },
   parameters: {
     componentSubtitle: "Displays a OptionItem.",
@@ -70,18 +76,21 @@ Default.args = {
       value: "option one",
       placeholder: "Placeholder One",
       checked: false,
+      image:{}
     },
     {
       name: "name two",
       value: "option two",
       placeholder: "Placeholder Two",
       checked: true,
+      image:{}
     },
     {
       name: "name three",
       value: "option three",
       placeholder: "Placeholder Three",
       checked: false,
+      image:{}
     },
   ],
   optionType: "single-select",

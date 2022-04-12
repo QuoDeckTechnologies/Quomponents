@@ -20,6 +20,7 @@ OptionalImageField.propTypes = {
     title: PropTypes.string,
     icon: PropTypes.string,
     actionButton: PropTypes.bool,
+    name: PropTypes.string,
   }),
   /**
     Use to define the file type which is supported to upload.
@@ -184,8 +185,9 @@ export default function OptionalImageField(props) {
         ref={fileRef}
         accept={props.withFile?.type}
         capture={props.withFile?.capture}
-        multiple={props.isMultiple}
+        multiple={props?.isMultiple}
         className="qui-image-upload-field"
+        id={content?.name}
         onChange={handleChange}
         onClick={(e) => (e.target.value = "")}
         hidden

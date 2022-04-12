@@ -2,14 +2,13 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import _ from "lodash";
+import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./OptionItem.scss";
 import "../../common/stylesheets/overrule.scss";
 import InputField from "../InputField/InputField.react";
-import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import OptionalImageField from "../OptionalImageField/OptionalImageField.react";
 import CheckBox from "../CheckBox/CheckBox.react";
 
@@ -66,6 +65,8 @@ OptionItem.propTypes = {
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
+
+  onClick: PropTypes.func.isRequired,
 };
 
 OptionItem.defaultProps = {
@@ -93,13 +94,17 @@ export default function OptionItem(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { content, optionType, onClick } = props;
 
-  const [contentState, setContentState] = useState([...props.content]);
+  const [contentState, setContentState] = useState([...content]);
 
   useEffect(() => {
-    setContentState([...props.content]);
-  }, [props.content]);
+    setContentState([...content]);
+  }, [content, optionType]);
+
+  useEffect(() => {
+    onClick(contentState);
+  }, [contentState, onClick]);
   //-------------------------------------------------------------------
   // 4. Set the classes
   //-------------------------------------------------------------------
@@ -113,36 +118,78 @@ export default function OptionItem(props) {
     let tmp = contentState.filter((dataObj) => dataObj.value !== e.target.id);
     setContentState(tmp);
   };
+  let tmp_state = contentState;
+  let tmp_arr = [];
+  let tmp_obj = {};
 
   const handleRadio = (e) => {
-    let tmp_arr = [];
-    let tmp_state = contentState
+    tmp_state = contentState;
+    tmp_arr = [];
+    tmp_obj = {};
     tmp_state.forEach((dataObj) => {
       if (dataObj.name === e.target.value) {
-        dataObj.checked = true;
-        tmp_arr.push(dataObj);
+        tmp_obj = { ...dataObj };
+        tmp_obj.checked = true;
+        tmp_arr.push(tmp_obj);
       } else {
-        dataObj.checked = false;
-        tmp_arr.push(dataObj);
+        tmp_obj = { ...dataObj };
+        tmp_obj.checked = false;
+        tmp_arr.push(tmp_obj);
       }
     });
     setContentState([...tmp_arr]);
   };
+
   const handleCheckbox = (e) => {
-    // console.log(e)
-    let tmp_arr = [];
-    let tmp_state = contentState
+    tmp_state = contentState;
+    tmp_arr = [];
+    tmp_obj = {};
     tmp_state.forEach((dataObj) => {
       if (dataObj.name === e.value) {
-        dataObj.checked = e.checked;
-        tmp_arr.push(dataObj);
+        tmp_obj = { ...dataObj };
+        tmp_obj.checked = e.checked;
+        tmp_arr.push(tmp_obj);
       } else {
-        tmp_arr.push(dataObj);
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
       }
     });
     setContentState([...tmp_arr]);
-    console.log(tmp_arr)
   };
+
+  const handleField = (name, value) => {
+    tmp_state = contentState;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.name === name) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.value = value;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentState([...tmp_arr]);
+  };
+
+  const handleImageUpload = () => {
+    // tmp_state = contentState;
+    // tmp_arr = [];
+    // tmp_obj = {};
+    // tmp_state.forEach((dataObj) => {
+    //   if (dataObj.name === name) {
+    //     tmp_obj = { ...dataObj };
+    //     tmp_obj.value = value;
+    //     tmp_arr.push(tmp_obj);
+    //   } else {
+    //     tmp_obj = { ...dataObj };
+    //     tmp_arr.push(tmp_obj);
+    //   }
+    // });
+    // setContentState([...tmp_arr]);
+  }
 
   const getField = (contentState, optionType) => {
     return (
@@ -167,26 +214,27 @@ export default function OptionItem(props) {
                 />
               )}
               {optionType === "picture-select" && (
-                <OptionalImageField content={{ icon: "fas fa-image" }} />
+                <OptionalImageField content={{ icon: "fas fa-image" }} onClick={(image)=>handleImageUpload(image)}/>
               )}
               {optionType === "multiple-select" && (
                 <div className="qui-option-item-checkbox">
-                  <CheckBox onClick={(value) => handleCheckbox(value)} content={{label:dataObj.name,checked:dataObj.checked}}/>
+                  <CheckBox
+                    onClick={(value) => handleCheckbox(value)}
+                    content={{ label: dataObj.name, checked: dataObj.checked }}
+                  />
                 </div>
               )}
               {optionType !== "picture-select" && (
                 <InputField
                   name={dataObj.name}
                   content={{
-                    value: '',
+                    value: "",
                     placeholder: dataObj.placeholder,
                     maxLength: 300,
                   }}
                   asEmphasis="listInput"
                   withColor={props.withColor}
-                  /////////////////////////////////////////////////////////////////////
-                  onClick={(name, value) => console.log(name, value)}
-                  ////////////////////////////////////////////////////////////////////
+                  onClick={(name, value) => handleField(name, value)}
                 />
               )}
               <i
