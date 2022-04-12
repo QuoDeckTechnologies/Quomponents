@@ -328,7 +328,7 @@ describe("TreeBarOpen", () => {
     expect(onSelectData).toHaveBeenCalledWith(nodeData);
   });
 
-  it("should toggle the treebeard", () => {
+  it(" should toggle the treebeard ", () => {
     let onToggle = jest.fn();
     const { getByText } = render(
       <Treebeard
@@ -337,5 +337,16 @@ describe("TreeBarOpen", () => {
         decorators={decorators}
       />
     );
+  });
+  it("course",()=>{
+    component.setProps({
+      TreeData:{
+        children:[ {
+          id: "category-0",
+          parentId: "allArticles",
+          name: "Pulic Library",
+          description: ""}]
+      },
+    })
   });
 });

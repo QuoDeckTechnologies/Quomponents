@@ -88,7 +88,6 @@ TreeItem.defaultProps = {
 
 decorators.Header = ({ node }) => {
   const iconType = node?.children ? "far fa-folder" : "fas fa-bullseye";
-  console.log(node.children)
   return (
     <div
       className={
