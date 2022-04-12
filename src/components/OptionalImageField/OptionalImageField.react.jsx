@@ -76,7 +76,7 @@ OptionalImageField.propTypes = {
     */
   isFluid: PropTypes.bool,
   /**
-    OptionalImageField component must have the onClick function passed as props
+    OptionalImageField component must have the onClick function passed as props returns `name` prop and an object
     */
   onClick: PropTypes.func.isRequired,
 };
@@ -165,8 +165,8 @@ export default function OptionalImageField(props) {
         };
         allFiles.push(fileInfo);
         if (allFiles.length === files.length) {
-          if (props.isMultiple) props.onClick(allFiles);
-          else props.onClick(allFiles[0]);
+          if (props.isMultiple) props.onClick(allFiles,e.target.id);
+          else props.onClick(allFiles[0],e.target.id);
         }
       };
     }

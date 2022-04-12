@@ -31,6 +31,7 @@ OptionItem.propTypes = {
     "single-select",
     "picture-select",
     "multiple-select",
+    "picture-title",
   ]),
   /**
     Use to override component colors
@@ -118,6 +119,7 @@ export default function OptionItem(props) {
     let tmp = contentState.filter((dataObj) => dataObj.value !== e.target.id);
     setContentState(tmp);
   };
+
   let tmp_state = contentState;
   let tmp_arr = [];
   let tmp_obj = {};
@@ -174,22 +176,22 @@ export default function OptionItem(props) {
     setContentState([...tmp_arr]);
   };
 
-  const handleImageUpload = () => {
-    // tmp_state = contentState;
-    // tmp_arr = [];
-    // tmp_obj = {};
-    // tmp_state.forEach((dataObj) => {
-    //   if (dataObj.name === name) {
-    //     tmp_obj = { ...dataObj };
-    //     tmp_obj.value = value;
-    //     tmp_arr.push(tmp_obj);
-    //   } else {
-    //     tmp_obj = { ...dataObj };
-    //     tmp_arr.push(tmp_obj);
-    //   }
-    // });
-    // setContentState([...tmp_arr]);
-  }
+  const handleImageUpload = (image, id) => {
+    tmp_state = contentState;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.name === id) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.image = image;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentState([...tmp_arr]);
+  };
 
   const getField = (contentState, optionType) => {
     return (
@@ -213,8 +215,12 @@ export default function OptionItem(props) {
                   onChange={handleRadio}
                 />
               )}
-              {optionType === "picture-select" && (
-                <OptionalImageField content={{ icon: "fas fa-image" }} onClick={(image)=>handleImageUpload(image)}/>
+              {(optionType === "picture-select" ||
+                optionType === "picture-title") && (
+                <OptionalImageField
+                  content={{ icon: "fas fa-image", name: dataObj.name }}
+                  onClick={(image, id) => handleImageUpload(image, id)}
+                />
               )}
               {optionType === "multiple-select" && (
                 <div className="qui-option-item-checkbox">

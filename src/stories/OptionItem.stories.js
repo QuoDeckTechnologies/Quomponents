@@ -8,7 +8,13 @@ export default {
     content: [],
     optionType: {
       control: "select",
-      options: ["title", "single-select", "picture-select", "multiple-select"],
+      options: [
+        "title",
+        "single-select",
+        "picture-select",
+        "multiple-select",
+        "picture-title",
+      ],
       table: {
         category: "as-Flags",
       },
@@ -76,21 +82,21 @@ Default.args = {
       value: "option one",
       placeholder: "Placeholder One",
       checked: false,
-      image:{}
+      image: {},
     },
     {
       name: "name two",
       value: "option two",
       placeholder: "Placeholder Two",
       checked: true,
-      image:{}
+      image: {},
     },
     {
       name: "name three",
       value: "option three",
       placeholder: "Placeholder Three",
       checked: false,
-      image:{}
+      image: {},
     },
   ],
   optionType: "single-select",
