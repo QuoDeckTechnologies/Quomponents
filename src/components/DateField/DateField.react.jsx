@@ -23,17 +23,6 @@ DateField.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define component size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
     Use to define component padding in increasing order
     */
     asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
@@ -41,10 +30,6 @@ DateField.propTypes = {
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
     /**
     Use to override component colors and behavior
     */
@@ -92,10 +77,8 @@ DateField.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asSize: "normal",
     asPadded: "normal",
     asFloated: "none",
-    asAligned: "center",
 
     withColor: null,
     withAnimation: null,
@@ -111,20 +94,22 @@ DateField.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function DateField(props) {
+    //-------------------------------------------------------------------
+    // 1. Set the classes
+    //-------------------------------------------------------------------
+    let quommonClasses = getQuommons(props, "date-field");
+    //-------------------------------------------------------------------
+    // 2. Declaration of DateFiled's value
+    //-------------------------------------------------------------------
     const [startDate, setStartDate] = useState(new Date());
 
     const datepicker = useRef();
     function handleClickDatepickerIcon() {
         const datepickerElement = datepicker.current;
         datepickerElement.setFocus(true);
-    }
-    // console.log(startDate)
+    };
     //-------------------------------------------------------------------
-    // 1. Set the classes
-    //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "date-field");
-    //-------------------------------------------------------------------
-    // 2. Use to set Color in DateField
+    // 3. Use to set Color in DateField
     //-------------------------------------------------------------------
     let Color = {
         backgroundColor: props.withColor?.backgroundColor,
@@ -132,7 +117,7 @@ export default function DateField(props) {
         borderBottomColor: `${props.withColor?.accentColor}`,
     };
     //-------------------------------------------------------------------
-    // 3. Get animation of the component
+    // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
@@ -142,8 +127,8 @@ export default function DateField(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-date-field-container ${quommonClasses.childClasses}`} style={Color}>
-                <div className="qui-date-field">
+            <div className={`qui-date-field-container ${quommonClasses.childClasses}`} >
+                <div className="qui-date-field" style={Color}>
                     <div className="qui-date-field-label">
                         {props.content}
                     </div>
@@ -154,7 +139,10 @@ export default function DateField(props) {
                         <DatePicker
                             className="qui-date-field-date-picker"
                             selected={startDate}
-                            onChange={(date) => setStartDate(date)}
+                            onChange={(date) => {
+                                props.onClick(date)
+                                setStartDate(date)
+                            }}
                             showTimeSelect
                             timeFormat="HH:mm"
                             timeIntervals={1}

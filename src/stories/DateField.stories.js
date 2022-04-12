@@ -6,13 +6,6 @@ export default {
     component: DateField,
     argTypes: {
         content: "",
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         asPadded: {
             control: "select",
             options: ["fitted", "compact", "normal", "relaxed"],
@@ -23,13 +16,6 @@ export default {
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
             table: {
                 category: "as-Flags",
             },
@@ -98,10 +84,8 @@ const Template = (args) => <DateField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: "Start Date",
-    asSize: "normal",
     asFloated: "none",
     asPadded: "normal",
-    asAligned: "left",
     withColor: {
         backgroundColor: "#aaaaaa",
         accentColor: "",
