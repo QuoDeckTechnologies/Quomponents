@@ -16,7 +16,7 @@
 }
 
 .qui .qui-select-field-label {
-    padding: 0.6em 0 0 1em;
+    padding: 0.6em 0 0 1.2em;
     width: fit-content;
     font-size: 1.3em;
 }
@@ -37,4 +37,22 @@
 }
 .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
     width: 100%;
+}
+/* ================================================= */
+/* SelectField Sizing Definitions */
+/* ================================================= */
+.qui .size-massive .qui-select-field-label {
+    padding-left: 0.8em;
+}
+.qui .size-huge .qui-select-field-label {
+    padding-left: 0.96em;
+}
+.qui .size-big .qui-select-field-label {
+    padding-left: 1em;
+}
+.qui .size-small .qui-select-field-label {
+    padding-left: 1.3em;
+}
+.qui .size-tiny .qui-select-field-label {
+    padding-left: 1.4em;
 }

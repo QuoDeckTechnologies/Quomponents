@@ -31,13 +31,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -109,7 +102,6 @@ Default.args = {
     asSize: "normal",
     asFloated: "none",
     asPadded: "normal",
-    asAligned: "left",
     withColor: {
         backgroundColor: "#aaaaaa",
         accentColor: "",

@@ -28,7 +28,6 @@ describe("SelectField", () => {
                 asSize="normal"
                 asPadded="normal"
                 asFloated="none"
-                asAligned="center"
                 withColor={null}
                 withAnimation={null}
                 isHidden={false}
@@ -109,21 +108,6 @@ describe("SelectField", () => {
 
     it("it should render correctly when passed asFloated prop as none", () => {
         component.setProps({ asFloated: "none" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("it should render correctly when passed asAligned prop as left", () => {
-        component.setProps({ asAligned: "left" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("it should render correctly when passed asAligned prop as right", () => {
-        component.setProps({ asAligned: "right" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("it should render correctly when passed asAligned prop as center", () => {
-        component.setProps({ asAligned: "center" })
         expect(component.exists()).toBe(true);
     })
 

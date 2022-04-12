@@ -47,10 +47,6 @@ SelectField.propTypes = {
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
-    /**
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
@@ -100,7 +96,6 @@ SelectField.defaultProps = {
     asSize: "normal",
     asPadded: "normal",
     asFloated: "none",
-    asAligned: "center",
 
     withColor: null,
     withAnimation: null,
