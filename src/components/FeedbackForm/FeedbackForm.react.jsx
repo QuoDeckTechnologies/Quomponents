@@ -112,7 +112,7 @@ export default function FeedbackForm(props) {
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
 
-    let fieldsetClasses = toggle ? "qui-fieldset" : "qui-fieldset qui-feedback-de-active";
+    let fieldsetClasses = toggle ? "qui-feedback-fieldset" : "qui-feedback-fieldset qui-feedback-de-active";
     return (
         <motion.div
             initial={animate.from}
