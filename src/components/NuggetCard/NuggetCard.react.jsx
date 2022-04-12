@@ -17,7 +17,7 @@ import ShareWidget from "../ShareWidget/ShareWidget.react";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
 import BannerCard from "../Carousel/BannerCard/BannerCard.react";
 
-import deafaultImage from "../../assets/default.jpeg";
+import defaultImage from "../../assets/default.jpeg";
 import Nugget_Story from "../../assets/nuggets/nugget_story.png";
 import Nugget_Quiz from "../../assets/nuggets/nugget_quiz.png";
 import Nugget_Assessment from "../../assets/nuggets/nugget_assessment.png";
@@ -67,7 +67,7 @@ NuggetCard.propTypes = {
 			"gallery",
 			"faq",
 		]),
-		tags: PropTypes.array,
+		tags: PropTypes.arrayOf(PropTypes.string),
 		name: PropTypes.string,
 		description: PropTypes.string,
 		image: PropTypes.string,
@@ -81,6 +81,10 @@ NuggetCard.propTypes = {
 
 	// Quommon props
 	//=======================================
+	/**
+    Use to float the component in parent container
+    */
+	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
     Use to show/hide the component
     */
@@ -98,18 +102,7 @@ NuggetCard.propTypes = {
 NuggetCard.defaultProps = {
 	// Component Specific props
 	//=======================================
-	content: {
-		published: false,
-		tags: [],
-		category: "profiler",
-		name: "Measure your sales readiness",
-		description:
-			"Take this quick profile test to check how well you are prepared for a sales job",
-		image:
-			"https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-		points: "200",
-		identifier: "XrPmy_OAK",
-	},
+	content: {},
 	arcFn: null,
 
 	// Quommon props
@@ -125,7 +118,6 @@ NuggetCard.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 - Pass all the required props to the component.
-- Give width to the parent component to work the component properly
 **/
 
 export default function NuggetCard(props) {
@@ -137,12 +129,11 @@ export default function NuggetCard(props) {
 	//-------------------------------------------------------------------
 	// 3. Get the Image
 	//-------------------------------------------------------------------
-	let image = props.content?.image ? props.content?.image : deafaultImage;
+	let image = props.content?.image ? props.content?.image : defaultImage;
 
 	//-------------------------------------------------------------------
-	// 4. Get the tags and its styling
+	// 4. Get the tag styling
 	//-------------------------------------------------------------------
-	let tags = props.content?.tags ? props.content?.tags : [""];
 	let tagStyle = props.content?.tags ? "flex" : "none";
 
 	//-------------------------------------------------------------------
@@ -193,35 +184,37 @@ export default function NuggetCard(props) {
 		? props.content?.category?.charAt(0).toUpperCase() +
 		  props.content?.category?.slice(1)
 		: "";
-
 	//-------------------------------------------------------------------
 	// 9. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
 	//-------------------------------------------------------------------
 	let truncate;
-	let tag1Length = props.content?.tags[0]?.length;
-	let tag2Length = props.content?.tags[1]?.length;
-	let tag3Length = props.content?.tags[2]?.length;
+	let tag1Length =
+		props.content?.tags?.length > 0 ? props.content?.tags[0]?.length : "";
+	let tag2Length =
+		props.content?.tags?.length > 0 ? props.content?.tags[1]?.length : "";
+	let tag3Length =
+		props.content?.tags?.length > 0 ? props.content?.tags[2]?.length : "";
 	let showMoreBtn = false;
+	let minTags = 3;
+	let maxTags = 10;
 
 	let showTags = 3;
 	const [expandTags, setExpandTags] = useState(false);
 	const [itirate, setItirate] = useState(showTags);
 
 	const handleLessTags = () => {
-		if(expandTags === true){
-			showTags = 3
-		}else{
-			showTags = 10
-		}
-		setItirate(showTags);
-		setExpandTags(prevState => !prevState);
+		setItirate(minTags);
+		setExpandTags(false);
 	};
-
+	const handleMoreTags = () => {
+		setItirate(maxTags);
+		setExpandTags(true);
+	};
 	if (
 		tag1Length >= 15 ||
 		tag2Length >= 15 ||
 		tag3Length >= 15 ||
-		props.content?.tags.length > 3
+		props.content?.tags?.length > 3
 	) {
 		showMoreBtn = true;
 		if (expandTags === true) {
@@ -254,7 +247,7 @@ export default function NuggetCard(props) {
 							className={`qui-nugget-card-tag-container`}
 							style={{ display: tagStyle }}
 						>
-							{_.map(tags, (tag, index) => {
+							{_.map(props.content?.tags, (tag, index) => {
 								if (index < itirate) {
 									return (
 										<div
@@ -276,17 +269,21 @@ export default function NuggetCard(props) {
 							})}
 						</div>
 						{showMoreBtn && (
-							<div className="qui-nugget-card-show-more-container">
-									<button
-										className="qui-nugget-card-show-more"
-										onClick={handleLessTags}
-									>
-										<i className={expandTags ? "fas fa-angle-up" :"fas fa-angle-down" } />
-									</button>
+							<div className={`qui-nugget-card-show-more`}>
+								<button
+									className={`qui-course-card-show-more`}
+									onClick={expandTags ? handleLessTags : handleMoreTags}
+								>
+									<i
+										className={
+											expandTags ? "fas fa-angle-up" : "fas fa-angle-down"
+										}
+									/>
+								</button>
 							</div>
 						)}
 					</div>
-					<BannerCard content={{ image: image }} />
+					<BannerCard content={{ image: image }} onClick={() => {}} />
 					<div className={`qui-nugget-card-description-container`}>
 						<div className={`qui-nugget-card-description`}>
 							{props.content?.description}

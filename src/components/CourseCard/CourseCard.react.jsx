@@ -18,7 +18,7 @@ import ArcMenu from "../ArcMenu/ArcMenu.react";
 import BannerCard from "../Carousel/BannerCard/BannerCard.react";
 
 import Nugget_Course from "../../assets/nuggets/nugget_course.png";
-import deafaultImage from "../../assets/default.jpeg";
+import defaultImage from "../../assets/default.jpeg";
 
 CourseCard.propTypes = {
 	//=======================================
@@ -68,25 +68,8 @@ CourseCard.propTypes = {
 CourseCard.defaultProps = {
 	// Component Specific props
 	//=======================================
-	content: {
-		published: false,
-		tags: [],
-		courseType: "standard",
-		wrapper: "carnival",
-		courseName: "Measure your sales readiness",
-		description:
-			"Take this quick profile test to check how well you are prepared for a sales job",
-		courseImage:
-			"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-		points: "200",
-		identifier: "XrPmy_OAK",
-		date: {
-			start_date: "2016-01-04 10:34:23",
-			end_date: "2016-03-15 10:34:23",
-		},
-		sequential: false,
-	},
-	arcFn: () => {},
+	content: {},
+	arcFn: null,
 	// Quommon props
 	//=======================================
 	asFloated: "inline",
@@ -102,7 +85,6 @@ CourseCard.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 - Pass all the required props to the component.
-- Give width to the parent component to work the component properly
 **/
 export default function CourseCard(props) {
 	//-------------------------------------------------------------------
@@ -117,12 +99,11 @@ export default function CourseCard(props) {
 		? props.content?.courseImage
 		: props.content?.wrapper
 		? "assets/courses/" + props.content?.wrapper + "/play_backdrop.jpg"
-		: deafaultImage;
+		: defaultImage;
 
 	//-------------------------------------------------------------------
-	// 3. Get the tags
+	// 3. Get the tag styling
 	//-------------------------------------------------------------------
-	let tags = props.content?.tags ? props.content?.tags : [""];
 	let tagStyle = props.content?.tags ? "flex" : "none";
 
 	//-------------------------------------------------------------------
@@ -160,16 +141,16 @@ export default function CourseCard(props) {
 	//-------------------------------------------------------------------
 	// 7. Get header of wrapper
 	//-------------------------------------------------------------------
-	let header;
+	let header = "";
 	if (
 		props.content?.wrapper?.toLowerCase() === "none" ||
-		props.content.wrapper === ""
+		props.content?.wrapper === ""
 	) {
 		header = "";
 	} else {
-		header =
-			props.content?.wrapper?.charAt(0).toUpperCase() +
-			props.content?.wrapper?.slice(1);
+		header = `${props.content?.wrapper
+			?.charAt(0)
+			.toUpperCase()}${props.content?.wrapper?.slice(1)}`;
 	}
 
 	//-------------------------------------------------------------------
@@ -182,38 +163,40 @@ export default function CourseCard(props) {
 	//-------------------------------------------------------------------
 	// 9. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
 	//-------------------------------------------------------------------
-	let showMoreBtn = false;
 	let truncate;
-	let tag1Length = props.content?.tags[0]?.length;
-	let tag2Length = props.content?.tags[1]?.length;
-	let tag3Length = props.content?.tags[2]?.length;
+	let tag1Length =
+		props.content?.tags?.length > 0 ? props.content?.tags[0]?.length : "";
+	let tag2Length =
+		props.content?.tags?.length > 0 ? props.content?.tags[1]?.length : "";
+	let tag3Length =
+		props.content?.tags?.length > 0 ? props.content?.tags[2]?.length : "";
+	let showMoreBtn = false;
 	let minTags = 3;
 	let maxTags = 10;
-	const [expandTags, setExpandTags] = useState(false);
-	const [itirate, setItirate] = useState(minTags);
 
-	const handleLessTags = (e) => {
-		e.preventDefault();
+	let showTags = 3;
+	const [expandTags, setExpandTags] = useState(false);
+	const [itirate, setItirate] = useState(showTags);
+
+	const handleLessTags = () => {
 		setItirate(minTags);
 		setExpandTags(false);
 	};
-	const handleMoreTags = (e) => {
-		e.preventDefault();
+	const handleMoreTags = () => {
 		setItirate(maxTags);
 		setExpandTags(true);
 	};
-
 	if (
 		tag1Length >= 15 ||
 		tag2Length >= 15 ||
 		tag3Length >= 15 ||
-		props.content?.tags.length > 3
+		props.content?.tags?.length > 3
 	) {
 		showMoreBtn = true;
 		if (expandTags === true) {
-			truncate = "qui-nugget-card-untruncate";
+			truncate = "qui-course-card-untruncate";
 		} else {
-			truncate = "qui-nugget-card-truncate";
+			truncate = "qui-course-card-truncate";
 		}
 	} else {
 		showMoreBtn = false;
@@ -239,7 +222,7 @@ export default function CourseCard(props) {
 							className={`qui-course-card-tag-container`}
 							style={{ display: tagStyle }}
 						>
-							{_.map(tags, (tag, index) => {
+							{_.map(props.content?.tags, (tag, index) => {
 								if (index < itirate) {
 									return (
 										<div
@@ -260,27 +243,21 @@ export default function CourseCard(props) {
 								}
 							})}
 						</div>
-						<div>
-							{showMoreBtn && (
-								<div className="qui-nugget-card-show-more-container">
-									{expandTags ? (
-										<button
-											className={`qui-course-card-show-more`}
-											onClick={(e) => handleLessTags(e)}
-										>
-											<i className={"fas fa-angle-up"} />
-										</button>
-									) : (
-										<button
-											className={`qui-course-card-show-more`}
-											onClick={(e) => handleMoreTags(e)}
-										>
-											<i className={"fas fa-angle-down"} />
-										</button>
-									)}
-								</div>
-							)}
-						</div>
+
+						{showMoreBtn && (
+							<div className={`qui-course-card-show-more-container`}>
+								<button
+									className={`qui-course-card-show-more`}
+									onClick={expandTags ? handleLessTags : handleMoreTags}
+								>
+									<i
+										className={
+											expandTags ? "fas fa-angle-up" : "fas fa-angle-down"
+										}
+									/>
+								</button>
+							</div>
+						)}
 						{startDate && endDate && (
 							<div className="qui-course-card-date-container">
 								<IconBlock
@@ -296,7 +273,10 @@ export default function CourseCard(props) {
 							</div>
 						)}
 					</div>
-					<BannerCard {...props} content={{ image: image, header: header }} />
+					<BannerCard
+						content={{ image: image, header: header }}
+						onClick={() => {}}
+					/>
 					<div className={`qui-course-card-description-container`}>
 						<div className={`qui-course-card-description`}>
 							{props.content?.description}
