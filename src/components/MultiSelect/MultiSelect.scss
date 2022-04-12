@@ -1,0 +1,120 @@
+.qui.qui-multi-select-container.qui-multi-select {
+  overflow: visible;
+}
+.qui-multi-select-container .qui.qui-button {
+  overflow: visible;
+}
+.qui .qui-multi-select-checkbox {
+  cursor: pointer;
+}
+.qui .qui-square-background {
+  background-color: #f3f3f3;
+  padding: 0.8em;
+  border-radius: 1em;
+  font-size: 0.5em;
+}
+.qui .qui-multi-select-button {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.2em;
+}
+.qui .qui-multi-select-checkbox.fa-square:before {
+  color: #ffffff;
+  font-size: 1.6em;
+}
+.qui .qui-multi-select-checkbox.fa-check-square:before {
+  font-size: 2em;
+}
+.qui .qui-multi-select-container.fa-check-square {
+  filter: drop-shadow(0px 0px 0px #d2d2d2);
+}
+.qui .qui-multi-select-button-container .qui-label {
+  margin-bottom: 0;
+}
+.qui .qui-caption {
+  margin-top: 0;
+}
+.qui.qui-multi-select-container.qui-button {
+  overflow: visible;
+}
+.qui-multi-select-container Button {
+  margin: 1em;
+}
+.qui .qui-multi-select-button-container .qui-button button {
+  margin: 0 0.5em;
+  width: 13em;
+  padding: 0.5em;
+}
+@media only screen and (min-width: 320px) {
+  .qui .qui-multi-select-button-container .qui-multi-select-button .qui-button button {
+    margin: 0 0.5em;
+    width: 13em;
+    padding: 0.7em;
+  }
+  .qui.qui-multi-select-container Button {
+    width: 11em;
+    padding: 0.6em;
+  }
+  .qui .qui-multi-select-checkbox.fa-square:before {
+    font-size: 3.2em;
+  }
+  .qui .qui-multi-select-checkbox.fa-check-square:before {
+    font-size: 3.2em;
+  }
+  .qui .qui .qui-square-background {
+    font-size: 1.5em;
+  }
+}
+@media only screen and (min-width: 481px) {
+  .qui .qui-multi-select-button-container .qui-multi-select-button .qui-button button {
+    margin: 0 0.5em;
+    width: 25em;
+    padding: 0.9em;
+  }
+  .qui.qui-multi-select-container Button {
+    width: 15em;
+    padding: 0.8em;
+  }
+  .qui .qui-multi-select-checkbox.fa-square:before {
+    font-size: 2.2em;
+  }
+  .qui .qui-multi-select-checkbox.fa-check-square:before {
+    font-size: 2.2em;
+  }
+  .qui .qui-square-background {
+    font-size: 0.8em;
+  }
+}
+@media only screen and (min-width: 769px) {
+  .qui .qui-multi-select-button-container .qui-multi-select-button .qui-button button {
+    margin: 0 0.5em;
+    width: 27em;
+    padding: 1em;
+  }
+  .qui.qui-multi-select-container Button {
+    width: 19em;
+    padding: 0.8em;
+  }
+  .qui .qui-multi-select-checkbox.fa-square:before {
+    font-size: 2.5em;
+  }
+  .qui .qui-multi-select-checkbox.fa-check-square:before {
+    font-size: 2.5em;
+  }
+  .qui .qui-square-background {
+    font-size: 0.7em;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .qui .qui-multi-select-button-container .qui-multi-select-button .qui-button button {
+    margin: 0 0.5em;
+    width: 30em;
+    padding: 1.1em;
+  }
+  .qui.qui-multi-select-container Button {
+    width: 22em;
+    padding: 1em;
+  }
+}

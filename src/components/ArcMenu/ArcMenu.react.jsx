@@ -29,13 +29,18 @@ ArcMenu.propTypes = {
   */
   nuggetContent: PropTypes.arrayOf(
     PropTypes.shape({
+      name: PropTypes.string,
       image: PropTypes.string,
     })
   ),
   /**
-  Use to change the type of ArcMenu as a `close` , `menu`, `add` or `nugget-menu`
+  Use to change the type of menu ArcMenu opens, a `close` , `menu`, `add` or `nugget-menu`
   */
-  type: PropTypes.oneOf(["close", "menu", "add", "nugget-menu"]).isRequired,
+  menuType: PropTypes.oneOf(["close", "menu", "add", "nugget-menu"]),
+  /**
+  Use to change the icon of ArcMenu as `close` , `menu` or `add`
+  */
+  arcIcon: PropTypes.oneOf(["close", "menu", "add"]).isRequired,
   /**
   Use to toggle position of ArcMenu
   */
@@ -48,17 +53,14 @@ ArcMenu.propTypes = {
   //=======================================
   // Quommon props
   //=======================================
-  // /**
-  // Use to define component size in increasing order
-  // */
-  // asSize: PropTypes.oneOf([
-  //   "tiny",
-  //   "small",
-  //   "normal",
-  //   "big",
-  //   "huge",
-  //   "massive",
-  // ]),
+  /**
+    Use to override component colors of menu when `menuType` is `menu`
+    */
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    accentColor: PropTypes.string,
+    textColor: PropTypes.string,
+  }),
   /**
   Use to enable/disable the component
   */
@@ -69,8 +71,8 @@ ArcMenu.propTypes = {
   isHidden: PropTypes.bool,
   /**
   ArcMenu component must have the onClick function passed as props
-  For `nugget-menu` type, it outputs index of nugget images provided
-  For `menu` type, it outputs value of the list item
+  For `nugget-menu` menuType, it return name of nugget images provided
+  For `menu` menuType, it return title of the list item
   */
   onClick: PropTypes.func.isRequired,
 };
@@ -81,17 +83,18 @@ ArcMenu.defaultProps = {
   //=======================================
   menuContent: [],
   nuggetContent: [],
-  type: "close",
+  menuType: "close",
   position: "top-right",
   //=======================================
   // Quommon props
   //=======================================
-  // asSize: "normal",
-  withTranslation: null,
+  withColor: null,
   isDisabled: false,
   isHidden: false,
 };
-
+//-------------------------------------------------------------------
+// ArcMenu position handler
+//-------------------------------------------------------------------
 const getPosition = (position) => {
   if (position === "top-right") {
     return "qui-top-right";
@@ -107,6 +110,9 @@ const getPosition = (position) => {
   }
   return "qui-top-right";
 };
+//-------------------------------------------------------------------
+// menu and nugget-menu animation handler
+//-------------------------------------------------------------------
 const getMenuAnimation = (position) => {
   let animate = {
     visible: {
@@ -114,9 +120,7 @@ const getMenuAnimation = (position) => {
       opacity: 1,
       transition: {
         duration: 0.5,
-        type: "spring",
-        damping: 25,
-        stiffness: 500,
+        type: "linear",
       },
     },
     exit: {
@@ -143,12 +147,95 @@ export default function ArcMenu(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props and defining states
   //-------------------------------------------------------------------
-  const { menuContent, nuggetContent } = props;
+  const { menuContent, nuggetContent, arcIcon, withColor } = props;
   const [openMenu, setOpenMenu] = useState(false);
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "arc-menu");
+  //-------------------------------------------------------------------
+  // 3. Get icon for button
+  //-------------------------------------------------------------------
+  const getIcon = (icon) => {
+    if (icon === "menu") {
+      return (
+        <div className="qui-arc-icon-menu-wrapper">
+          <div className="qui-arc-icon-fragment-top">
+            <div className="qui-arc-icon-fragment-left"></div>
+            <div className="qui-arc-icon-fragment-right"></div>
+          </div>
+          <div className="qui-arc-icon-fragment-bottom">
+            <div className="qui-arc-icon-fragment-right"></div>
+            <div className="qui-arc-icon-fragment-left"></div>
+          </div>
+        </div>
+      );
+    }
+    if (icon === "close") {
+      return <i className={`qui-arc-icon qui-arc-close-icon fas fa-times`}></i>;
+    }
+    return (
+      <div className="qui-add-icon-wrapper">
+        <i className={`qui-arc-icon fas fa-plus`}></i>
+      </div>
+    );
+  };
+  //-------------------------------------------------------------------
+  // 4. Get menu according to menuType selected
+  //-------------------------------------------------------------------
+  const getMenu = (menu) => {
+    if (menu === "menu") {
+      return _.map(menuContent, (dataObj, i) => {
+        return (
+          <div
+            className={`qui-menu-button qui-arc-menu-header ${quommonClasses.childClasses}`}
+            key={i}
+            style={{ color: withColor?.accentColor }}
+          >
+            {dataObj.header?.toUpperCase()}
+            <div className="qui-arc-menu-list-item-container">
+              {dataObj.list.map((listItem, index) => (
+                <div
+                  className="qui-arc-menu-list-item"
+                  onMouseDown={() => {
+                    props.onClick(listItem);
+                    setOpenMenu(false);
+                  }}
+                  key={listItem + index}
+                  style={{
+                    backgroundColor: withColor?.backgroundColor,
+                    color: withColor?.textColor,
+                  }}
+                >
+                  {listItem.toUpperCase()}
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      });
+    } else {
+      return _.map(nuggetContent, (dataObj, i) => {
+        return (
+          <div
+            className={`qui-menu-button qui-arc-menu-nugget-menu ${quommonClasses.childClasses}`}
+            key={i}
+          >
+            <NuggetBlock
+              image={dataObj?.image}
+              status="none"
+              asSize="huge"
+              asPadded="fitted"
+              onClick={() => {
+                props.onClick(dataObj?.name);
+                setOpenMenu(false);
+              }}
+            />
+          </div>
+        );
+      });
+    }
+  };
 
   // ========================= Render Function =================================
 
@@ -157,103 +244,36 @@ export default function ArcMenu(props) {
       <Backdrop
         open={openMenu}
         className="qui-arc-menu-backdrop"
-        onClick={() => setOpenMenu((prevState) => !prevState)}
+        onClick={() => setOpenMenu(false)}
         sx={{ zIndex: 10 }}
       ></Backdrop>
       <div className={quommonClasses.childClasses}>
         <div className={`qui-arc ${getPosition(props.position)}`}>
-          {(props.type === "nugget-menu" || props.type === "menu") && (
+          {(props.menuType === "nugget-menu" || props.menuType === "menu") && (
             <button
               className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
               onClick={() => setOpenMenu((prevState) => !prevState)}
             >
-              <div className="qui-arc-icon-menu-wrapper">
-                <div className="qui-arc-icon-fragment-top">
-                  <div className="qui-arc-icon-fragment-left"></div>
-                  <div className="qui-arc-icon-fragment-right"></div>
-                </div>
-                <div className="qui-arc-icon-fragment-bottom">
-                  <div className="qui-arc-icon-fragment-right"></div>
-                  <div className="qui-arc-icon-fragment-left"></div>
-                </div>
-              </div>
+              {getIcon(arcIcon)}
             </button>
           )}
-          {props.type === "close" && (
+          {(props.menuType === "close" || props.menuType === "add") && (
             <button
-              className={`qui-arc-menu-button qui-arc-menu-close-button ${quommonClasses.childClasses}`}
+              className={`qui-arc-menu-button qui-arc-menu-${props.menuType}-button ${quommonClasses.childClasses}`}
               onClick={(e) => props.onClick(e)}
             >
-              <i
-                className={`qui-arch-icon qui-arc-close-icon fas fa-times`}
-              ></i>
+              {getIcon(arcIcon)}
             </button>
           )}
-          {props.type === "add" && (
-            <button
-              className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
-              onClick={(e) => props.onClick(e)}
-            >
-              <div className="qui-add-icon-wrapper">
-                <i className={`qui-arch-icon fas fa-plus`}></i>
-              </div>
-            </button>
-          )}
-          {props.type === "nugget-menu" && (
+          {(props.menuType === "menu" || props.menuType === "nugget-menu") && (
             <motion.div
               variants={getMenuAnimation(props.position)}
               initial={false}
               animate={openMenu ? "visible" : "exit"}
               exit="exit"
-              className={`qui-arc-menu-buttons `}
+              className={`qui-arc-menu-buttons qui-arc-${props.menuType}-menu`}
             >
-              {_.map(nuggetContent, (dataObj, i) => {
-                return (
-                  <div
-                    className={`qui-menu-button qui-arc-menu-nugget-menu ${quommonClasses.childClasses}`}
-                    key={i}
-                  >
-                    <NuggetBlock
-                      image={dataObj.image}
-                      status="none"
-                      asSize="huge"
-                      asPadded="fitted"
-                      onClick={() => props.onClick(i)}
-                    />
-                  </div>
-                );
-              })}
-            </motion.div>
-          )}
-          {props.type === "menu" && (
-            <motion.div
-              variants={getMenuAnimation(props.position)}
-              initial={false}
-              animate={openMenu ? "visible" : "exit"}
-              exit="exit"
-              className={`qui-arc-menu-buttons qui-arc-menu-menu`}
-            >
-              {_.map(menuContent, (dataObj, i) => {
-                return (
-                  <div
-                    className={`qui-menu-button qui-arc-menu-header ${quommonClasses.childClasses}`}
-                    key={i}
-                  >
-                    {dataObj.header?.toUpperCase()}
-                    <div className="qui-arc-menu-list-item-container">
-                      {dataObj.list.map((listItem, index) => (
-                        <div
-                          className="qui-arc-menu-list-item"
-                          onClick={() => props.onClick(listItem)}
-                          key={listItem + index}
-                        >
-                          {listItem.toUpperCase()}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
+              {getMenu(props.menuType)}
             </motion.div>
           )}
         </div>
