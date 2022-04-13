@@ -7,7 +7,7 @@ import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import MobileToolbar from '../Buttons/MobileToolbar/MobileToolbar.react'
+import MobileToolbar from '../MobileToolbar/MobileToolbar.react'
 import ArcMenu from "../ArcMenu/ArcMenu.react"
 import IconLink from '../Buttons/IconLink/IconLink.react'
 describe("MobileToolbar", () => {

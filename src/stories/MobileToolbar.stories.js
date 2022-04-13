@@ -1,7 +1,7 @@
 import React from "react";
-import MobileToolbar from "../components/Buttons/MobileToolbar/MobileToolbar.react";
+import MobileToolbar from "../components/MobileToolbar/MobileToolbar.react";
 export default {
-    title: "Design System/Buttons/MobileToolbar",
+    title: "Design System/MobileToolbar/MobileToolbar",
     component: MobileToolbar,
     argTypes: {
         label: "Edit Mode",
@@ -91,6 +91,7 @@ export default {
         docs: { iframeHeight: 150 },
     },
 };
+
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -208,14 +209,12 @@ AnimatedToolbar.parameters = {
     },
 };
 
-
 // -------------------------------------------------------------
 // AllVariants
 // -------------------------------------------------------------
 const AllVariantsTemplate = (args) => {
     const baseObj = {
         ...Object.assign({}, Default.args, args, {
-            asFloated: "inline",
         }),
     };
     return (
@@ -235,8 +234,6 @@ const AllVariantsTemplate = (args) => {
         </div>
     );
 };
-
-
 export const AllVariants = AllVariantsTemplate.bind({});
 AllVariants.parameters = {
     docs: {

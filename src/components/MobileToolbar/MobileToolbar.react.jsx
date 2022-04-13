@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 import {
     getQuommons,
     getAnimation,
-} from "../../../common/javascripts/helpers.js";
+} from "../../common/javascripts/helpers.js";
 import _ from "lodash";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../../common/stylesheets/common.css";
+import "../../common/stylesheets/common.css";
 import "./MobileToolbar.scss";
-import "../../../common/stylesheets/overrule.scss";
-import IconLink from "../IconLink/IconLink.react";
-import ArcMenu from "../../ArcMenu/ArcMenu.react"
+import "../../common/stylesheets/overrule.scss";
+import IconLink from "../Buttons/IconLink/IconLink.react";
+import ArcMenu from "../ArcMenu/ArcMenu.react"
 
 MobileToolbar.propTypes = {
     /**
@@ -150,7 +150,7 @@ export default function MobileToolbar(props) {
                 <div className="qui-default-toolbar">
                     {_.map(content, (item, index) => {
                         return (
-                            <div key={index}>
+                            <div key={index} className="qui-iconlink-toolbar">
                                 <IconLink
                                     {...props}
                                     asEmphasis={item.link === state ? "contained" : "text"}
