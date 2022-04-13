@@ -1,5 +1,5 @@
 import React from "react";
-import OptionItem from "../components/OptionItem/OptionItem/OptionItem.react";
+import OptionItem from "../components/OptionItem/OptionItem.react";
 
 export default {
   title: "Design System/OptionItem/OptionItem",
