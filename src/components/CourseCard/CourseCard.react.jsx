@@ -142,7 +142,7 @@ export default function CourseCard(props) {
 	// 7. Get header of wrapper
 	//-------------------------------------------------------------------
 	let header = "";
-	if(props.content?.wrapper){
+	if (props.content?.wrapper) {
 		if (
 			props.content?.wrapper?.toLowerCase() === "none" ||
 			props.content?.wrapper === ""
@@ -154,7 +154,7 @@ export default function CourseCard(props) {
 				.toUpperCase()}${props.content?.wrapper?.slice(1)}`;
 		}
 	}
-	
+
 	//-------------------------------------------------------------------
 	// 8. Get the status of Sequential course
 	//-------------------------------------------------------------------
@@ -245,7 +245,6 @@ export default function CourseCard(props) {
 								}
 							})}
 						</div>
-
 						{showMoreBtn && (
 							<div className={`qui-course-card-show-more-container`}>
 								<button

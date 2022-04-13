@@ -184,7 +184,7 @@ export default function NuggetCard(props) {
 		? props.content?.category?.charAt(0).toUpperCase() +
 		  props.content?.category?.slice(1)
 		: "";
-		
+
 	//-------------------------------------------------------------------
 	// 9. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
 	//-------------------------------------------------------------------

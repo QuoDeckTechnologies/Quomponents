@@ -149,7 +149,11 @@
 .qui-nugget-card-show-more-container{
     display: flex;
     justify-content: center;
-    height: 1.5em;
+    align-items: flex-start;
+}
+.qui-nugget-card-show-more-container :first-child{
+    align-self: center;
+    width: fit-content;
 }
 .qui-nugget-card-show-more{
     width: 10%;
@@ -159,7 +163,8 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-    align-items: center;
+    height: fit-content;
+    margin-top: 0.5em;
 }
 @media only screen and (min-width: 320px) and (max-width: 374px) {
     .qui-nugget-block-styling{
