@@ -184,6 +184,7 @@ export default function NuggetCard(props) {
 		? props.content?.category?.charAt(0).toUpperCase() +
 		  props.content?.category?.slice(1)
 		: "";
+		
 	//-------------------------------------------------------------------
 	// 9. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
 	//-------------------------------------------------------------------
@@ -302,13 +303,22 @@ export default function NuggetCard(props) {
 				<div className="qui-nugget-card-footer">
 					<div className={`qui-nugget-card-arc-menu`}>
 						<ArcMenu
-							{...props}
-							type="add"
+							menuContent={[
+								{
+									list: [
+										"EDIT DETAILS",
+										"EDIT CONTENT",
+										"DESIGN NUGGET",
+										"PUBLISH NUGGET",
+										"VIEW ANALYTICS",
+										"DELETE NUGGET",
+									],
+								},
+							]}
+							menuType="menu"
 							arcIcon="menu"
 							position="bottom-left"
-							onClick={() => {
-								props.arcFn();
-							}}
+							onClick={() => {}}
 						/>
 					</div>
 					<div className={`qui-nugget-card-share-block`}>

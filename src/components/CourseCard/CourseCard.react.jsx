@@ -142,17 +142,19 @@ export default function CourseCard(props) {
 	// 7. Get header of wrapper
 	//-------------------------------------------------------------------
 	let header = "";
-	if (
-		props.content?.wrapper?.toLowerCase() === "none" ||
-		props.content?.wrapper === ""
-	) {
-		header = "";
-	} else {
-		header = `${props.content?.wrapper
-			?.charAt(0)
-			.toUpperCase()}${props.content?.wrapper?.slice(1)}`;
+	if(props.content?.wrapper){
+		if (
+			props.content?.wrapper?.toLowerCase() === "none" ||
+			props.content?.wrapper === ""
+		) {
+			header = "";
+		} else {
+			header = `${props.content?.wrapper
+				?.charAt(0)
+				.toUpperCase()}${props.content?.wrapper?.slice(1)}`;
+		}
 	}
-
+	
 	//-------------------------------------------------------------------
 	// 8. Get the status of Sequential course
 	//-------------------------------------------------------------------
@@ -295,12 +297,21 @@ export default function CourseCard(props) {
 				<div className="qui-course-card-footer">
 					<div className={`qui-course-card-arc-menu`}>
 						<ArcMenu
-							type="add"
+							menuContent={[
+								{
+									list: [
+										"EDIT DETAILS",
+										"EDIT CONTENT",
+										"MANAGE LEARNERS",
+										"VIEW ANALYTICS",
+										"DELETE COURSE",
+									],
+								},
+							]}
+							menuType="menu"
 							arcIcon="menu"
 							position="bottom-left"
-							onClick={() => {
-								props.arcFn();
-							}}
+							onClick={() => {}}
 						/>
 					</div>
 					<div className={`qui-course-card-share-block`}>

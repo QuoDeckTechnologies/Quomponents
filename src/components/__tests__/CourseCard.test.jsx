@@ -186,7 +186,7 @@ describe("CourseCard", () => {
 		);
 	});
 
-	it("should show default image when passed nothing in courseImage and wrapper", () => {
+	it("should show default image and remove header from image when passed nothing in courseImage and wrapper", () => {
 		let content = {
 			courseType: "standard",
 			courseImage: "",
@@ -200,6 +200,21 @@ describe("CourseCard", () => {
 		expect(component.find(BannerCard).props().content.image).toBe(
 			"default.jpeg"
 		);
+		expect(component.find(BannerCard).props().content.header).toBe("");
+	});
+
+	it("should remove header from base image", () => {
+		let content = {
+			courseType: "standard",
+			courseImage: "",
+			wrapper: "none",
+			date: {
+				start_date: "2032-03-30T18:30:00.000Z",
+				end_date: "2021-05-10T12:55:18.458Z",
+			},
+		};
+		component.setProps({ content: content });
+		expect(component.find(BannerCard).props().content.header).toBe("");
 	});
 
 	it("should show courseWrapperImage when it does not have courseImage in the Normal Course Card", () => {

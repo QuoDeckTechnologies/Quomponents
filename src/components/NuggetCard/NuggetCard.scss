@@ -122,8 +122,8 @@
     opacity: 1;
     padding: 0.5em 1em;
     background: #454545;
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
+    border-top-left-radius:0.5em;
+    border-top-right-radius:0.5em;
     border-bottom-right-radius: 0;
     display: flex;
     justify-content: center;
@@ -189,6 +189,10 @@
     .qui-nugget-card-link-container {
         margin-right: -0.8em;
     }
+    .qui-nugget-card .qui-arc{
+        height: 2.5em;
+        width: 2.5em;
+    }
     .qui-nugget-card  .qui-arc-menu .qui-arc-menu-button{
         height:3em;
         width:3em;
@@ -196,7 +200,11 @@
     .qui-nugget-card-description-container{
         margin-top: 1em;
     }
-
+    .qui-nugget-card  .qui-arc-icon-fragment-left,
+    .qui-nugget-card  .qui-arc-icon-fragment-right{
+        height:0.5em;
+        width:0.5em;
+    }
 }
 
 @media only screen and (min-width: 375px) and (max-width: 411px) {
@@ -244,14 +252,24 @@
     .qui-nugget-card-share-widget {
         font-size: 1.1em;
     }
+    .qui-nugget-card .qui-arc{
+        height: 2.5em;
+        width: 2.5em;
+    }
     .qui-nugget-card  .qui-arc-menu .qui-arc-menu-button{
         height:4em;
         width:4em;
+    }
+    .qui-nugget-card-description-container{
+        margin-top: 1em;
     }
     .qui-nugget-card  .qui-arc-icon-fragment-left,
     .qui-nugget-card  .qui-arc-icon-fragment-right{
         height:0.7em;
         width:0.7em;
+    }
+    .qui-nugget-card  .qui-arc-menu-header{
+        font-size: 0.5em;
     }
 }
 
@@ -300,17 +318,24 @@
     .qui-nugget-card-description-container{
         margin-top: 1em;
     }
-    .qui-nugget-card-share-widget {
-        font-size: 1.1em;
+    .qui-nugget-card .qui-arc{
+        height: 2.5em;
+        width: 2.5em;
     }
     .qui-nugget-card  .qui-arc-menu .qui-arc-menu-button{
         height:4em;
         width:4em;
     }
+    .qui-nugget-card-description-container{
+        margin-top: 1em;
+    }
     .qui-nugget-card  .qui-arc-icon-fragment-left,
     .qui-nugget-card  .qui-arc-icon-fragment-right{
         height:0.7em;
         width:0.7em;
+    }
+    .qui-nugget-card  .qui-arc-menu-header{
+        font-size: 0.5em;
     }
 }
 
@@ -377,6 +402,9 @@
         height:0.5em;
         width:0.5em;
     }
+    .qui-nugget-card  .qui-arc-menu-header{
+        font-size: 0.5em;
+    }
 }
 
 @media only screen and (min-width: 540px) {
@@ -442,6 +470,9 @@
     .qui-nugget-card  .qui-arc-icon-fragment-right{
         height:0.5em;
         width:0.5em;
+    }
+    .qui-nugget-card  .qui-arc-menu-header{
+        font-size: 0.5em;
     }
 }
 
@@ -556,7 +587,6 @@
     .qui-nugget-card .qui-banner-card{
         margin-top: 0.9em;
     }
-
     .qui-nugget-card .qui-arc{
         height: 2em;
         width: 2em;

@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import NuggetCard from "../components/NuggetCard/NuggetCard.react";
-import ArcMenu from "../components/ArcMenu/ArcMenu.react";
-import Backdrop from "@mui/material/Backdrop";
 
 export default {
 	title: "Design System/NuggetCard/NuggetCard",
@@ -97,147 +95,33 @@ Default.parameters = {
 		},
 	},
 };
+
 // -------------------------------------------------------------
-// Story with Menu Button
+// Nugget Card With Many Tags
 // -------------------------------------------------------------
-const ExampleTemplate = (args) => {
-	const [openModalOne, setOpenModalOne] = useState(false);
-	const [openModalTwo, setOpenModalTwo] = useState(false);
+export const NuggetCardWithManyTags = (args) => {
+	const baseObj1 = {
+		...Object.assign({}, Default.args, args, {
+			content: {
+				published: false,
+				tags: ["Sales1", "Sales2", "Sales3", "Sales4", "Sales5"],
+				category: "profiler",
+				name: "Measure your sales readiness",
+				description:
+					"Take this quick profile test to check how well you are prepared for a sales job",
+				image:
+					"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+				points: "200",
+				identifier: "XrPmy_OAK",
+			},
+			asFloated: "inline",
+			isDisabled: false,
+			isHidden: false,
+		}),
+	};
 	return (
 		<div>
-			<NuggetCard
-				arcFn={() => setOpenModalOne(true)}
-				content={{
-					published: false,
-					tags: ["Sales"],
-					category: "profiler",
-					name: "Measure your sales readiness",
-					description:
-						"Take this quick profile test to check how well you are prepared for a sales job",
-					image:
-						"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-					points: "200",
-					identifier: "XrPmy_OAK",
-				}}
-				asFloated={"inline"}
-				isDisabled={false}
-				isHidden={false}
-			/>
-			<div
-				style={{
-					position: "absolute",
-					flexDirection: "column",
-					display: "flex",
-				}}
-			>
-				<Backdrop
-					open={openModalOne}
-					sx={{ zIndex: 10 }}
-					onClick={() => setOpenModalOne(false)}
-				/>
-				<Backdrop
-					open={openModalTwo}
-					sx={{ zIndex: 21 }}
-					onClick={() => setOpenModalTwo(false)}
-				/>
-				{openModalOne && (
-					<div
-						className="qui-first-imported-component"
-						style={{
-							position: "absolute",
-							zIndex: 20,
-							left: "0",
-							marginTop: "-10em",
-						}}
-					>
-						<div
-							className="qui-test-component-element"
-							style={{
-								width: "10em",
-								backgroundColor: "#ffbf00",
-								marginBottom: "0.1em",
-								cursor: "pointer",
-							}}
-						>
-							Heading
-						</div>
-						<a href="http://localhost:6006/?path=/story/design-system-accentline-accentline--default">
-							<div
-								className="qui-test-component-element"
-								style={{
-									width: "10em",
-									backgroundColor: "#454545",
-									color: "white",
-									marginBottom: "0.1em",
-									cursor: "pointer",
-								}}
-							>
-								Redirects
-							</div>
-						</a>
-						<div
-							className="qui-test-component-element"
-							style={{
-								width: "10em",
-								backgroundColor: "#454545",
-								color: "white",
-								cursor: "pointer",
-							}}
-							onClick={() => setOpenModalTwo(true)}
-						>
-							Opens a modal
-						</div>
-						<div
-							className="qui-test-component-element"
-							style={{
-								width: "10em",
-								backgroundColor: "#d97575",
-								marginTop: "0.1em",
-								cursor: "pointer",
-							}}
-							onClick={() => setOpenModalOne(false)}
-						>
-							Delete
-						</div>
-					</div>
-				)}
-				{openModalTwo && (
-					<div
-						className="qui qui-second-imported-component"
-						style={{
-							width: "50%",
-							display: "flex",
-							flexDirection: "column",
-							justifyContent: "center",
-							zIndex: 22,
-							background: "white",
-							padding: "1em",
-							marginTop: "-20em",
-						}}
-					>
-						<h1>Testing Second Modal</h1>
-						<ArcMenu
-							type="close"
-							arcIcon="close"
-							position="top-right"
-							onClick={() => setOpenModalTwo(false)}
-						/>
-						<button onClick={(e) => args.onClick(e)}>Click</button>
-					</div>
-				)}
-			</div>
+			<NuggetCard {...Object.assign({}, baseObj1, {})} />
 		</div>
 	);
-};
-export const MenuButtonUseCase = ExampleTemplate.bind({});
-MenuButtonUseCase.parameters = {
-	docs: {
-		source: {
-			code: `<ArcMenu {...${JSON.stringify(
-				MenuButtonUseCase.args,
-				null,
-				2
-			)}}/>`,
-		},
-	},
 };
