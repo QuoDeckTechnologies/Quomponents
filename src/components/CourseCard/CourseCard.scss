@@ -50,6 +50,7 @@
 .qui-course-card-tag-and-date-container {
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
 }
 .qui-course-card-tag-and-date-container :first-child{
     align-self: center;
