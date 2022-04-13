@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
+import _ from "lodash";
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -11,6 +12,7 @@ import "../../common/stylesheets/overrule.scss";
 import InputField from "../InputField/InputField.react";
 import OptionalImageField from "../OptionalImageField/OptionalImageField.react";
 import CheckBox from "../CheckBox/CheckBox.react";
+import Button from "../Buttons/Button/Button.react";
 
 OptionItem.propTypes = {
   //=======================================
@@ -32,6 +34,11 @@ OptionItem.propTypes = {
     "picture-select",
     "multiple-select",
     "picture-title",
+    "picture-select-with-caption",
+    "single-select-picture-title",
+    "title-outline-button",
+    "short-field-title",
+    "option-picture-with-message",
   ]),
   /**
     Use to override component colors
@@ -115,14 +122,19 @@ export default function OptionItem(props) {
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
 
-  const handleRemove = (e) => {
-    let tmp = contentState.filter((dataObj) => dataObj.value !== e.target.id);
-    setContentState(tmp);
-  };
-
   let tmp_state = contentState;
   let tmp_arr = [];
   let tmp_obj = {};
+
+  const handleRemove = (e) => {
+    tmp_state = contentState;
+    tmp_arr = [];
+    tmp_state.forEach((dataObj) => {
+      tmp_arr.push({ ...dataObj });
+    });
+    tmp_arr = _.remove(tmp_state, (dataObj) => dataObj.name !== e.target.id);
+    setContentState([...tmp_arr]);
+  };
 
   const handleRadio = (e) => {
     tmp_state = contentState;
@@ -193,62 +205,219 @@ export default function OptionItem(props) {
     setContentState([...tmp_arr]);
   };
 
+  const handleCaption = (captionName, captionValue) => {
+    tmp_state = contentState;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.captionName === captionName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.captionValue = captionValue;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentState([...tmp_arr]);
+  };
+
+  const handleShortFieldFirst = (shortFieldName_1, shortFieldValue_1) => {
+    tmp_state = contentState;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.shortFieldName_1 === shortFieldName_1) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.shortFieldValue_1 = shortFieldValue_1;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentState([...tmp_arr]);
+  };
+
+  const handleShortFieldSecond = (shortFieldName_2, shortFieldValue_2) => {
+    tmp_state = contentState;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.shortFieldName_2 === shortFieldName_2) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.shortFieldValue_2 = shortFieldValue_2;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentState([...tmp_arr]);
+  };
+
   const getField = (contentState, optionType) => {
     return (
       <RadioGroup>
         {contentState.map((dataObj, index) => {
           return (
-            <div className="qui-option-item-container" key={index}>
-              {(optionType === "single-select" ||
-                optionType === "picture-select") && (
-                <FormControlLabel
-                  sx={{ color: "warning" }}
-                  className="qui-option-item-radio"
-                  value={dataObj.name}
-                  control={
-                    <Radio
-                      checked={dataObj.checked}
-                      style={{ color: props.withColor.accentColor }}
-                    />
-                  }
-                  label={dataObj.checked ? "correct" : "incorrect"}
-                  onChange={handleRadio}
-                />
-              )}
-              {(optionType === "picture-select" ||
-                optionType === "picture-title") && (
-                <OptionalImageField
-                  content={{ icon: "fas fa-image", name: dataObj.name }}
-                  onClick={(image, id) => handleImageUpload(image, id)}
-                />
-              )}
-              {optionType === "multiple-select" && (
-                <div className="qui-option-item-checkbox">
-                  <CheckBox
-                    onClick={(value) => handleCheckbox(value)}
-                    content={{ label: dataObj.name, checked: dataObj.checked }}
+            <div className="qui-option-item-wrapper" key={index}>
+              <div className="qui-option-item-container">
+                {(optionType === "single-select" ||
+                  optionType === "picture-select" ||
+                  optionType === "single-select-picture-title") && (
+                  <FormControlLabel
+                    sx={{ color: "warning" }}
+                    className="qui-option-item-radio"
+                    value={dataObj.name}
+                    control={
+                      <Radio
+                        checked={dataObj.checked}
+                        style={{ color: props.withColor.accentColor }}
+                      />
+                    }
+                    label={dataObj.checked ? "correct" : "incorrect"}
+                    onChange={handleRadio}
                   />
+                )}
+                {optionType === "option-picture-with-message" && (
+                  <div className="qui-option-item-option-field">
+                    <InputField
+                      name={dataObj.optionName}
+                      content={{
+                        value: dataObj.optionValue,
+                        placeholder: dataObj.optionPlaceholder,
+                        maxLength: 30,
+                      }}
+                      asEmphasis="listInput"
+                      withColor={props.withColor}
+                      onClick={(name, value) => handleField(name, value)}
+                    />
+                  </div>
+                )}
+                {(optionType === "picture-select" ||
+                  optionType === "picture-title" ||
+                  optionType === "picture-select-with-caption" ||
+                  optionType === "single-select-picture-title" ||
+                  optionType === "option-picture-with-message") && (
+                  <div className="qui-option-item-upload-button">
+                    <OptionalImageField
+                      content={{ icon: "fas fa-image", name: dataObj.name }}
+                      onClick={(image, id) => handleImageUpload(image, id)}
+                      withColor={{ ...props.withColor }}
+                    />
+                  </div>
+                )}
+                {optionType === "multiple-select" && (
+                  <div className="qui-option-item-checkbox">
+                    <CheckBox
+                      onClick={(value) => handleCheckbox(value)}
+                      content={{
+                        label: dataObj.name,
+                        checked: dataObj.checked,
+                      }}
+                    />
+                  </div>
+                )}
+                {optionType === "short-field-title" && (
+                  <div className="qui-short-field-container">
+                    <InputField
+                      name={dataObj.shortFieldName_1}
+                      content={{
+                        value: dataObj.shortFieldValue_1,
+                      }}
+                      asEmphasis="shortField"
+                      asFloated="left"
+                      withColor={props.withColor}
+                      onClick={(name, value) =>
+                        handleShortFieldFirst(name, value)
+                      }
+                    />
+                    <InputField
+                      name={dataObj.shortFieldName_2}
+                      content={{
+                        value: dataObj.shortFieldValue_2,
+                      }}
+                      asEmphasis="shortField"
+                      asFloated="left"
+                      withColor={props.withColor}
+                      onClick={(name, value) =>
+                        handleShortFieldSecond(name, value)
+                      }
+                    />
+                  </div>
+                )}
+                {optionType !== "picture-select" && (
+                  <InputField
+                    name={dataObj.name}
+                    content={{
+                      value: dataObj.value,
+                      placeholder: dataObj.placeholder,
+                      maxLength: 300,
+                    }}
+                    asEmphasis="listInput"
+                    withColor={props.withColor}
+                    onClick={(name, value) => handleField(name, value)}
+                  />
+                )}
+                {optionType === "picture-select-with-caption" && (
+                  <InputField
+                    name={dataObj.captionName}
+                    content={{
+                      value: dataObj.captionValue,
+                      placeholder: dataObj.captionPlaceholder,
+                      maxLength: 300,
+                    }}
+                    asEmphasis="listInput"
+                    withColor={props.withColor}
+                    onClick={(captionName, captionValue) =>
+                      handleCaption(captionName, captionValue)
+                    }
+                  />
+                )}
+                {optionType === "title-outline-button" && (
+                  <div className="qui-option-item-button">
+                    <Button
+                      asSize="normal"
+                      asPadded="fitted"
+                      content="outlined button"
+                      asVariant="warning"
+                      asEmphasis="outlined"
+                      asFloated="left"
+                      withTranslation={null}
+                      withAnimation={null}
+                      onClick={props.onClick}
+                    />
+                  </div>
+                )}
+                <div className="qui-option-item-close-icon">
+                  <i
+                    className="qui-option-item-close-icon fas fa-times"
+                    id={dataObj.name}
+                    onClick={(e) => handleRemove(e)}
+                  ></i>
+                </div>
+              </div>
+              {optionType === "option-picture-with-message" && (
+                <div className="qui-option-item-message-field">
+                  <InputField
+                    name={dataObj.messageName}
+                    content={{
+                      value: dataObj.messageValue,
+                      placeholder: dataObj.messagePlaceholder,
+                      maxLength: 300,
+                    }}
+                    asEmphasis="listInput"
+                    withColor={props.withColor}
+                    onClick={(name, value) => console.log(name, value)}
+                  />
+                  <div className="qui-option-item-close-icon"></div>
                 </div>
               )}
-              {optionType !== "picture-select" && (
-                <InputField
-                  name={dataObj.name}
-                  content={{
-                    value: "",
-                    placeholder: dataObj.placeholder,
-                    maxLength: 300,
-                  }}
-                  asEmphasis="listInput"
-                  withColor={props.withColor}
-                  onClick={(name, value) => handleField(name, value)}
-                />
-              )}
-              <i
-                className="qui-option-item-close-icon fas fa-times"
-                id={dataObj.value}
-                onClick={(e) => handleRemove(e)}
-              ></i>
             </div>
+            // <>
+
+            // </>
           );
         })}
       </RadioGroup>
