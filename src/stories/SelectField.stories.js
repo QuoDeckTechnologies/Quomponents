@@ -24,13 +24,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asFloated: {
-            control: "select",
-            options: ["left", "right", "none", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -100,7 +93,6 @@ Default.args = {
         placeHolder: "Choose...",
     },
     asSize: "normal",
-    asFloated: "none",
     asPadded: "normal",
     withColor: {
         backgroundColor: "#aaaaaa",
