@@ -164,3 +164,85 @@ export const CourseCardWithManyTags = (args) => {
 		</div>
 	);
 };
+
+// -------------------------------------------------------------
+// Published Course Card
+// -------------------------------------------------------------
+export const PublsihedCourseCard = (args) => {
+	const baseObj1 = {
+		...Object.assign({}, Default.args, args, {
+			content: {
+				published: true,
+				courseType: "standard",
+				wrapper: "carnival",
+				tags: ["Tag1", "Tag2"],
+				courseName: "Measure your sales readiness",
+				description:
+					"Take this quick profile test to check how well you are prepared for a sales job",
+				courseImage:
+					"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+				points: "200",
+				identifier: "XrPmy_OAK",
+				date: {
+					start_date: "2016-01-04 10:34:23",
+					end_date: "2016-03-15 10:34:23",
+				},
+				sequential: false,
+			},
+			withAnimation: {
+				animation: "zoom",
+				duration: 0.5,
+				delay: 0,
+			},
+			asFloated: "inline",
+			isDisabled: false,
+			isHidden: false,
+		}),
+	};
+	return (
+		<div>
+			<CourseCard {...Object.assign({}, baseObj1, {})} />
+		</div>
+	);
+};
+
+// -------------------------------------------------------------
+// CourseCard With Extra Content in Name and Description
+// -------------------------------------------------------------
+export const CourseCardWithExtraContent = (args) => {
+	const baseObj1 = {
+		...Object.assign({}, Default.args, args, {
+			content: {
+				published: false,
+				courseType: "standard",
+				wrapper: "carnival",
+				tags: ["Tag1", "Tag2"],
+				courseName: "Measure your sales readiness Measure your sales readiness",
+				description:
+					"Take this quick profile test to check how well you are prepared for a sales job.Take this quick profile test to check how well you are prepared for a sales job",
+				courseImage:
+					"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+				points: "200",
+				identifier: "XrPmy_OAK",
+				date: {
+					start_date: "2016-01-04 10:34:23",
+					end_date: "2016-03-15 10:34:23",
+				},
+				sequential: false,
+			},
+			withAnimation: {
+				animation: "zoom",
+				duration: 0.5,
+				delay: 0,
+			},
+			asFloated: "inline",
+			isDisabled: false,
+			isHidden: false,
+		}),
+	};
+	return (
+		<div>
+			<CourseCard {...Object.assign({}, baseObj1, {})} />
+		</div>
+	);
+};

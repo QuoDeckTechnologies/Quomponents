@@ -125,3 +125,63 @@ export const NuggetCardWithManyTags = (args) => {
 		</div>
 	);
 };
+
+// -------------------------------------------------------------
+// Published Nugget Card
+// -------------------------------------------------------------
+export const PublishedNuggetCard = (args) => {
+	const baseObj1 = {
+		...Object.assign({}, Default.args, args, {
+			content: {
+				published: true,
+				tags: ["Sales1", "Sales2"],
+				category: "profiler",
+				name: "Measure your sales readiness",
+				description:
+					"Take this quick profile test to check how well you are prepared for a sales job",
+				image:
+					"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+				points: "200",
+				identifier: "XrPmy_OAK",
+			},
+			asFloated: "inline",
+			isDisabled: false,
+			isHidden: false,
+		}),
+	};
+	return (
+		<div>
+			<NuggetCard {...Object.assign({}, baseObj1, {})} />
+		</div>
+	);
+};
+
+// -------------------------------------------------------------
+// NuggetCard With Extra Content in Name and Description
+// -------------------------------------------------------------
+export const NuggetCardWithExtraContent = (args) => {
+	const baseObj1 = {
+		...Object.assign({}, Default.args, args, {
+			content: {
+				published: true,
+				tags: ["Sales1", "Sales2"],
+				category: "profiler",
+				name: "Measure your sales readiness Measure your sales readiness",
+				description:
+					"Take this quick profile test to check how well you are prepared for a sales job. Take this quick profile test to check how well you are prepared for a sales job",
+				image:
+					"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+				points: "200",
+				identifier: "XrPmy_OAK",
+			},
+			asFloated: "inline",
+			isDisabled: false,
+			isHidden: false,
+		}),
+	};
+	return (
+		<div>
+			<NuggetCard {...Object.assign({}, baseObj1, {})} />
+		</div>
+	);
+};

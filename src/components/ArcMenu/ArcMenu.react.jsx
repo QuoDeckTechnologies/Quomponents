@@ -21,7 +21,7 @@ ArcMenu.propTypes = {
   menuContent: PropTypes.arrayOf(
     PropTypes.shape({
       header: PropTypes.string,
-      list: PropTypes.arrayOf[PropTypes.string],
+      list: PropTypes.arrayOf(PropTypes.string),
     })
   ),
   /**
