@@ -328,24 +328,25 @@ describe("TreeBarOpen", () => {
     expect(onSelectData).toHaveBeenCalledWith(nodeData);
   });
 
-  it(" should toggle the treebeard ", () => {
+  it(" should toggle the treebeard", () => {
+    let toggled = false;
     let onToggle = jest.fn();
+    component.setProps({ node: nodeData });
     const { getByText } = render(
       <Treebeard
         data={nodeDataSecondary}
-        onToggle={onToggle}
+        onToggle={toggled}
         decorators={decorators}
+        node= {nodeData}
       />
     );
   });
-  it("course",()=>{
+  
+  it("should Treebar toggle selected node",()=>{
     component.setProps({
       TreeData:{
-        children:[ {
-          id: "category-0",
-          parentId: "allArticles",
-          name: "Pulic Library",
-          description: ""}]
+        data:{nodeDataSecondary}
+        
       },
     })
   });
