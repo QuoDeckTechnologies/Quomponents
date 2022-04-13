@@ -7,6 +7,11 @@
     width: 2.5em;
     p {
         margin: 0;
+        text-transform: uppercase;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-height: 70%;
     }
 }
 .qui-side-bar-default-container {
@@ -34,11 +39,13 @@
     font-size: 0.6em;
     cursor: pointer;
     box-shadow: 0px 10px 15px -10px #888 inset;
-
     background-color: #e8e8e8;
     display: flex;
     justify-content: center;
     align-items: center;
+    .qui-iconlink {
+        min-height: 4.5em;
+    }
 }
 
 .qui-side-bar-editmode-container {
@@ -54,7 +61,7 @@
             width: 2.5em;
         }
         .qui-arc-menu-button.qui-arc-menu-close-button .qui-arc-close-icon {
-            font-size:1.5em;
+            font-size: 1.5em;
         }
     }
     .qui .qui-arc.qui-bottom-left .qui-arc-menu-button {

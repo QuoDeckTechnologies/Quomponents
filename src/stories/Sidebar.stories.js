@@ -13,6 +13,7 @@ export default {
             },
         },
         content: {
+            title:"",
             image: "",
             sections: {}
         },
@@ -50,6 +51,9 @@ export default {
                 defaultValue: {
                     backgroundColor: "",
                     textColor: "",
+                    textColor:"",
+                    hoverBackgroundColor: "",
+                    hoverTextColor: "",
                 },
             },
         },
@@ -110,6 +114,7 @@ export const Default = Template.bind({});
 Default.args = {
     asEmphasis: "default",
     content: {
+        title:"Edit Mode",
         image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png",
         sections: {
             Courses: {
@@ -119,25 +124,25 @@ Default.args = {
                 show: ["admin", "creator", "learner"]
             },
             Nuggets: {
-                link: "/social",
+                link: "/socialone",
                 name: "Nuggets",
                 icon: "fas fa-braille",
                 show: ["admin", "creator", "learner"]
             },
             Tests: {
-                link: "/social",
+                link: "/socialtwo",
                 name: "Tests",
                 icon: "fas fa-paste",
                 show: ["admin", "creator", "learner"]
             },
             Contests: {
-                link: "/social",
+                link: "/socialthree",
                 name: "Contests",
                 icon: "fas fa-trophy",
                 show: ["admin", "creator", "learner"]
             },
             Posts: {
-                link: "/social",
+                link: "/socialfour",
                 name: "Posts",
                 icon: "fas fa-comment-alt",
                 show: ["admin", "creator", "learner"]
@@ -151,6 +156,9 @@ Default.args = {
     withColor: {
         backgroundColor: "",
         textColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "#13ff43",
     },
     withAnimation: {
         animation: "collapse",
