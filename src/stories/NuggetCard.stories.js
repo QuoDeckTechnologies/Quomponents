@@ -61,7 +61,7 @@ export default {
 		),
 	],
 	parameters: {
-		componentSubtitle: "Displays a basic button for general-purpose use",
+		componentSubtitle: "Displays a NuggetCard",
 		a11y: { disable: true },
 		docs: { iframeHeight: 200 },
 	},
