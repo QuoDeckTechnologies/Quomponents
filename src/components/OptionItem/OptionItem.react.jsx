@@ -12,7 +12,8 @@ import "../../common/stylesheets/overrule.scss";
 import InputField from "../InputField/InputField.react";
 import OptionalImageField from "../OptionalImageField/OptionalImageField.react";
 import CheckBox from "../CheckBox/CheckBox.react";
-import Button from "../Buttons/Button/Button.react";
+// import Button from "../Buttons/Button/Button.react";
+import Button from "@mui/material/Button";
 
 OptionItem.propTypes = {
   //=======================================
@@ -73,7 +74,9 @@ OptionItem.propTypes = {
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
-
+  /**
+    OptionItem component must have the onClick function passed as props
+    */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -103,7 +106,9 @@ export default function OptionItem(props) {
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
   const { content, optionType, onClick } = props;
-
+  //-------------------------------------------------------------------
+  // 2. Defining state and hooks
+  //-------------------------------------------------------------------
   const [contentState, setContentState] = useState([...content]);
 
   useEffect(() => {
@@ -114,18 +119,22 @@ export default function OptionItem(props) {
     onClick(contentState);
   }, [contentState, onClick]);
   //-------------------------------------------------------------------
-  // 4. Set the classes
+  // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "option-item");
   //-------------------------------------------------------------------
-  // 5. Get animation of the component
+  // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  //-------------------------------------------------------------------
+  // 5. Defining temperary variables for functions
+  //-------------------------------------------------------------------
   let tmp_state = contentState;
   let tmp_arr = [];
   let tmp_obj = {};
-
+  //-------------------------------------------------------------------
+  // 6. Function to remove an option
+  //-------------------------------------------------------------------
   const handleRemove = (e) => {
     tmp_state = contentState;
     tmp_arr = [];
@@ -135,7 +144,9 @@ export default function OptionItem(props) {
     tmp_arr = _.remove(tmp_state, (dataObj) => dataObj.name !== e.target.id);
     setContentState([...tmp_arr]);
   };
-
+  //-------------------------------------------------------------------
+  // 7. Function to add checked option into component state
+  //-------------------------------------------------------------------
   const handleRadio = (e) => {
     tmp_state = contentState;
     tmp_arr = [];
@@ -153,7 +164,9 @@ export default function OptionItem(props) {
     });
     setContentState([...tmp_arr]);
   };
-
+  //-------------------------------------------------------------------
+  // 8. Function to add checked options into component state
+  //-------------------------------------------------------------------
   const handleCheckbox = (e) => {
     tmp_state = contentState;
     tmp_arr = [];
@@ -170,7 +183,9 @@ export default function OptionItem(props) {
     });
     setContentState([...tmp_arr]);
   };
-
+  //-------------------------------------------------------------------
+  // 9. Function to add field input into component state
+  //-------------------------------------------------------------------
   const handleField = (name, value) => {
     tmp_state = contentState;
     tmp_arr = [];
@@ -187,7 +202,9 @@ export default function OptionItem(props) {
     });
     setContentState([...tmp_arr]);
   };
-
+  //-------------------------------------------------------------------
+  // 10. Function to add image data object into component state
+  //-------------------------------------------------------------------
   const handleImageUpload = (image, id) => {
     tmp_state = contentState;
     tmp_arr = [];
@@ -204,7 +221,9 @@ export default function OptionItem(props) {
     });
     setContentState([...tmp_arr]);
   };
-
+  //-------------------------------------------------------------------
+  // 11. Function to add caption field input into component state
+  //-------------------------------------------------------------------
   const handleCaption = (captionName, captionValue) => {
     tmp_state = contentState;
     tmp_arr = [];
@@ -221,7 +240,9 @@ export default function OptionItem(props) {
     });
     setContentState([...tmp_arr]);
   };
-
+  //-------------------------------------------------------------------
+  // 12. Function to add first short field input into component state
+  //-------------------------------------------------------------------
   const handleShortFieldFirst = (shortFieldName_1, shortFieldValue_1) => {
     tmp_state = contentState;
     tmp_arr = [];
@@ -238,7 +259,9 @@ export default function OptionItem(props) {
     });
     setContentState([...tmp_arr]);
   };
-
+  //-------------------------------------------------------------------
+  // 13. Function to add second short field input into component state
+  //-------------------------------------------------------------------
   const handleShortFieldSecond = (shortFieldName_2, shortFieldValue_2) => {
     tmp_state = contentState;
     tmp_arr = [];
@@ -255,7 +278,67 @@ export default function OptionItem(props) {
     });
     setContentState([...tmp_arr]);
   };
+  //-------------------------------------------------------------------
+  // 14. Function to add option field input into component state
+  //-------------------------------------------------------------------
+  const handleOption = (optionName, optionValue) => {
+    tmp_state = contentState;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.optionName === optionName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.optionValue = optionValue;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentState([...tmp_arr]);
+  };
+  //-------------------------------------------------------------------
+  // 15. Function to add header field input into component state
+  //-------------------------------------------------------------------
+  const handleHeader = (headerName, headerValue) => {
+    tmp_state = contentState;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.headerName === headerName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.headerValue = headerValue;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentState([...tmp_arr]);
+  };
 
+  //-------------------------------------------------------------------
+  // 16. Function to add message field input into component state
+  //-------------------------------------------------------------------
+  const handleMessage = (messageName, messageValue) => {
+    tmp_state = contentState;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.messageName === messageName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.messageValue = messageValue;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentState([...tmp_arr]);
+  };
+  //-------------------------------------------------------------------
+  // 17. Function to return selected optionType
+  //-------------------------------------------------------------------
   const getField = (contentState, optionType) => {
     return (
       <RadioGroup>
@@ -276,7 +359,7 @@ export default function OptionItem(props) {
                         style={{ color: props.withColor.accentColor }}
                       />
                     }
-                    label={dataObj.checked ? "correct" : "incorrect"}
+                    label={dataObj.checked ? "Correct" : "Incorrect"}
                     onChange={handleRadio}
                   />
                 )}
@@ -291,7 +374,7 @@ export default function OptionItem(props) {
                       }}
                       asEmphasis="listInput"
                       withColor={props.withColor}
-                      onClick={(name, value) => handleField(name, value)}
+                      onClick={(name, value) => handleOption(name, value)}
                     />
                   </div>
                 )}
@@ -347,17 +430,31 @@ export default function OptionItem(props) {
                     />
                   </div>
                 )}
-                {optionType !== "picture-select" && (
+                {optionType !== "picture-select" &&
+                  optionType !== "option-picture-with-message" && (
+                    <InputField
+                      name={dataObj.name}
+                      content={{
+                        value: dataObj.value,
+                        placeholder: dataObj.placeholder,
+                        maxLength: 300,
+                      }}
+                      asEmphasis="listInput"
+                      withColor={props.withColor}
+                      onClick={(name, value) => handleField(name, value)}
+                    />
+                  )}
+                {optionType === "option-picture-with-message" && (
                   <InputField
-                    name={dataObj.name}
+                    name={dataObj.headerName}
                     content={{
-                      value: dataObj.value,
-                      placeholder: dataObj.placeholder,
+                      value: dataObj.headerValue,
+                      placeholder: dataObj.headerPlaceholder,
                       maxLength: 300,
                     }}
                     asEmphasis="listInput"
                     withColor={props.withColor}
-                    onClick={(name, value) => handleField(name, value)}
+                    onClick={(name, value) => handleHeader(name, value)}
                   />
                 )}
                 {optionType === "picture-select-with-caption" && (
@@ -378,16 +475,15 @@ export default function OptionItem(props) {
                 {optionType === "title-outline-button" && (
                   <div className="qui-option-item-button">
                     <Button
-                      asSize="normal"
-                      asPadded="fitted"
-                      content="outlined button"
-                      asVariant="warning"
-                      asEmphasis="outlined"
-                      asFloated="left"
-                      withTranslation={null}
-                      withAnimation={null}
-                      onClick={props.onClick}
-                    />
+                      variant="outlined"
+                      style={{
+                        borderColor: props.withColor.accentColor,
+                        color: props.withColor.accentColor,
+                        whiteSpace:'nowrap'
+                      }}
+                    >
+                      Outlined Button
+                    </Button>
                   </div>
                 )}
                 <div className="qui-option-item-close-icon">
@@ -409,15 +505,12 @@ export default function OptionItem(props) {
                     }}
                     asEmphasis="listInput"
                     withColor={props.withColor}
-                    onClick={(name, value) => console.log(name, value)}
+                    onClick={(name, value) => handleMessage(name, value)}
                   />
                   <div className="qui-option-item-close-icon"></div>
                 </div>
               )}
             </div>
-            // <>
-
-            // </>
           );
         })}
       </RadioGroup>
