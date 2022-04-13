@@ -180,7 +180,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 0.5em;
 }
 .qui-course-card-show-more{
     background:transparent;
@@ -190,7 +189,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 @media only screen and (min-width: 320px) and (max-width: 374px) {
     .qui-course-block-styling{
@@ -248,6 +246,9 @@
     .qui-course-card .qui-slider-card-box-header{
         font-size: 0.8em;
     }
+    .qui-course-card-show-more{
+        margin-top: 0.5em;
+    }
 }
 
 @media only screen and (min-width: 375px) and (max-width: 411px) {
@@ -276,7 +277,7 @@
     .qui-course-card-link-container {
         margin-right: -0.8em;
     }
-    .qui-course-card-name{
+    .qui-course-card-ame{
         font-size: 0.8em;
     }
     .qui-course-card-link{
@@ -327,6 +328,9 @@
     }
     .qui-course-card .qui-slider-card-box-header{
         font-size: 0.7em;
+    }
+    .qui-course-card-show-more{
+        margin-top: 0.6em;
     }
 }
 
@@ -409,6 +413,9 @@
     .qui-course-card .qui-slider-card-box-header{
         font-size: 0.7em;
     }
+    .qui-course-card-show-more{
+        margin-top: 0.5em;
+    }
 }
 
 @media only screen and (min-width: 481px) {
@@ -482,6 +489,9 @@
     }
     .qui-course-card .qui-slider-card-box-header{
         font-size: 0.7em;
+    }
+    .qui-course-card-show-more{
+        margin-top: 0.5em;
     }
 }
 
@@ -562,6 +572,9 @@
     .qui-course-card .qui-slider-card-box-header{
         font-size: 0.6em;
     }
+    .qui-course-card-show-more{
+        margin-top: 1em;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -631,6 +644,9 @@
     }
     .qui-course-card .qui-slider-card-box-header{
         font-size: 0.6em;
+    }
+    .qui-course-card-show-more{
+        margin-top: 1em;
     }
 }
 
