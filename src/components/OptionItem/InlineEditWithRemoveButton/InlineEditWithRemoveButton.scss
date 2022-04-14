@@ -1,0 +1,28 @@
+.qui .qui-inline-option-container {
+  display: flex;
+  align-items: center;
+}
+
+.qui .qui-option-item-close-icon {
+  display: flex;
+}
+
+.qui.qui-inline-edit-with-remove-button .qui-char-limit-max-length {
+  font-size: 0.65em;
+}
+
+.qui .qui-inline-edit-with-remove-button-close-icon {
+  height: 2em;
+  width: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #a8a8a8;
+}
+
+.qui.qui-inline-edit-with-remove-button .qui-input-field {
+  text-indent: 0;
+}
