@@ -94,11 +94,11 @@ export default function InlineEditWithRemoveButton(props) {
   //-------------------------------------------------------------------
   const { content } = props;
   //-------------------------------------------------------------------
-  // 3. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "inline-edit-with-remove-button");
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 3. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
 
