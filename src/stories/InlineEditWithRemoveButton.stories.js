@@ -70,9 +70,9 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    targetName: "name one",
+    targetName: "Target Name",
     value: "",
-    placeholder: "Placeholder One",
+    placeholder: "InlineEdit with remove button",
   },
   withColor: {
     backgroundColor: "#ffab000d",
@@ -91,6 +91,85 @@ Default.parameters = {
   docs: {
     source: {
       code: `<OptionItem {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Colored Inline Edit With Remove Button
+// -------------------------------------------------------------
+export const ColoredInlineEditWithRemoveButton = Template.bind({});
+ColoredInlineEditWithRemoveButton.args = {
+  ...Default.args,
+  withColor: {
+    backgroundColor: "#8c9ea3",
+    textColor: "#ffffff",
+    accentColor: "#597387",
+  },
+};
+ColoredInlineEditWithRemoveButton.parameters = {
+  docs: {
+    source: {
+      code: `<OptionItem {...${JSON.stringify(
+        ColoredInlineEditWithRemoveButton.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Animated Inline Edit With Remove Button
+// -------------------------------------------------------------
+export const AnimatedInlineEditWithRemoveButton = Template.bind({});
+AnimatedInlineEditWithRemoveButton.args = {
+  ...Default.args,
+  withAnimation: {
+    animation: "fade",
+    duration: 0.5,
+    delay: 0,
+  },
+};
+AnimatedInlineEditWithRemoveButton.parameters = {
+  docs: {
+    source: {
+      code: `<OptionItem {...${JSON.stringify(
+        AnimatedInlineEditWithRemoveButton.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Multiple Inline Edit With Remove Button
+// -------------------------------------------------------------
+const MultipleTemplate = (args) => {
+  return (
+    <div>
+      <div style={{ marginBottom: "1em" }}>
+        <InlineEditWithRemoveButton {...args} />
+      </div>
+      <div style={{ marginBottom: "1em" }}>
+        <InlineEditWithRemoveButton {...args} />
+      </div>
+      <div style={{ marginBottom: "1em" }}>
+        <InlineEditWithRemoveButton {...args} />
+      </div>
+    </div>
+  );
+};
+export const MultipleInlineEditWithRemoveButton = MultipleTemplate.bind({});
+MultipleInlineEditWithRemoveButton.args = {
+  ...Default.args,
+};
+MultipleInlineEditWithRemoveButton.parameters = {
+  docs: {
+    source: {
+      code: `<OptionItem {...${JSON.stringify(
+        MultipleInlineEditWithRemoveButton.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

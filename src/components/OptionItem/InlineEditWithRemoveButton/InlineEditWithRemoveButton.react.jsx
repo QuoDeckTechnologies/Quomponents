@@ -2,7 +2,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import _ from "lodash";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -15,7 +14,7 @@ InlineEditWithRemoveButton.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    InlineEditWithRemoveButton data should be passed in content field and it is a required field
+    InlineEditWithRemoveButton name should be passed in content object
     */
   content: PropTypes.shape({
     targetName: PropTypes.string,
@@ -59,11 +58,11 @@ InlineEditWithRemoveButton.propTypes = {
   */
   isHidden: PropTypes.bool,
   /**
-    InlineEditWithRemoveButton component must have the onClick function passed as props
+    InlineEditWithRemoveButton component must have the onInput function passed as props
     */
   onInput: PropTypes.func.isRequired,
   /**
-    InlineEditWithRemoveButton component must have the onClick function passed as props
+    InlineEditWithRemoveButton component must have the onClose function passed as props
     */
   onClose: PropTypes.func.isRequired,
 };
@@ -125,7 +124,7 @@ export default function InlineEditWithRemoveButton(props) {
         />
         <div className="qui-inline-edit-with-remove-button-close-icon">
           <i
-            className="fas fa-times"
+            className="qui-inline-edit-with-remove-button-icon fas fa-times"
             id={content.targetName}
             onClick={(e) => props.onClose(e.target.id)}
           ></i>
