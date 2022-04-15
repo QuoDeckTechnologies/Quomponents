@@ -74,10 +74,6 @@ NuggetCard.propTypes = {
 		points: PropTypes.string,
 		identifier: PropTypes.string,
 	}),
-	/**
-    Use to add function to ArcMenu
-    */
-	arcFn: PropTypes.func,
 
 	// Quommon props
 	//=======================================
@@ -103,7 +99,6 @@ NuggetCard.defaultProps = {
 	// Component Specific props
 	//=======================================
 	content: {},
-	arcFn: null,
 
 	// Quommon props
 	//=======================================
@@ -318,7 +313,7 @@ export default function NuggetCard(props) {
 							menuType="menu"
 							arcIcon="menu"
 							position="bottom-left"
-							onClick={() => {}}
+							onClick={props.onClick}
 						/>
 					</div>
 					<div className={`qui-nugget-card-share-block`}>

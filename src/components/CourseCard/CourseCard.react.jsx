@@ -40,10 +40,6 @@ CourseCard.propTypes = {
 		}),
 		sequential: PropTypes.bool,
 	}),
-	/**
-    Use to add function to ArcMenu
-    */
-	arcFn: PropTypes.func,
 
 	// Quommon props
 	//=======================================
@@ -69,7 +65,7 @@ CourseCard.defaultProps = {
 	// Component Specific props
 	//=======================================
 	content: {},
-	arcFn: null,
+	
 	// Quommon props
 	//=======================================
 	asFloated: "inline",
@@ -310,7 +306,7 @@ export default function CourseCard(props) {
 							menuType="menu"
 							arcIcon="menu"
 							position="bottom-left"
-							onClick={() => {}}
+							onClick={props.onClick}
 						/>
 					</div>
 					<div className={`qui-course-card-share-block`}>

@@ -34,12 +34,6 @@ export default {
 				defaultValue: false,
 			},
 		},
-		arcFn: {
-			table: {
-				category: "Events",
-				defaultValue: null,
-			},
-		},
 		onClick: {
 			table: {
 				category: "Events",

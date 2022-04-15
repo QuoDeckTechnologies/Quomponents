@@ -50,12 +50,6 @@ export default {
 				defaultValue: false,
 			},
 		},
-		arcFn: {
-			table: {
-				courseType: "Events",
-				defaultValue: null,
-			},
-		},
 		onClick: {
 			table: {
 				courseType: "Events",
