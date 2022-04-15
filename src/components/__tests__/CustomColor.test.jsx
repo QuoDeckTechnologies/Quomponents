@@ -2,12 +2,12 @@ import { ChromePicker } from "react-color";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from "enzyme";
+import { shallow ,mount} from "enzyme";
+import { fireEvent } from "@testing-library/react";
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import CustomColor from "../CustomColor/CustomColor.react";
-
 
 describe("CustomColor", () => {
   // -------------------------------------
@@ -23,7 +23,6 @@ describe("CustomColor", () => {
     jest.resetAllMocks();
     component = shallow(
       <CustomColor
-
         content={{
           title: "",
           color: "",
@@ -31,7 +30,6 @@ describe("CustomColor", () => {
         // Quommon props
         //=======================================
         asSize="normal"
-        withColor={null}
         withAnimation={null}
         withTranslation={null}
         isHidden={false}
@@ -40,7 +38,6 @@ describe("CustomColor", () => {
       />
     );
   });
-
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
@@ -66,19 +63,87 @@ describe("CustomColor", () => {
       });
       expect(component.exists()).toBe(true);
     });
-
   it("should open ChromePicker",
     () => {
       expect(component.find(ChromePicker).exists()).toBe(false)
       component.find("button").simulate('click')
       expect(component.find(ChromePicker).exists()).toBe(true)
-      let chromeOnChange = jest.fn()
-      component.setProps({
-        onChange:chromeOnChange 
-      })
-      component.find(ChromePicker).simulate('change')
-      expect(chromeOnChange).toBeCalled()
     });
-
+  it("should test onChange function",
+    () => {
+      let hex = "#ff0000"
+      expect(component.find(ChromePicker).exists()).toBe(false)
+      component.find("button").simulate('click')
+      let comp = component.find(ChromePicker)
+      comp.simulate('change', hex)
+    });
+  it("should render correctly when passed asSize prop as tiny", () => {
+    component.setProps({ asSize: "tiny" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asSize prop as small", () => {
+    component.setProps({ asSize: "small" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asSize prop as normal", () => {
+    component.setProps({ asSize: "normal" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asSize prop as big", () => {
+    component.setProps({ asSize: "big" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asSize prop as huge", () => {
+    component.setProps({ asSize: "huge" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asSize prop as massive", () => {
+    component.setProps({ asSize: "massive" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed withAnimation props", () => {
+    let animation = {
+      animation: "zoom",
+      duration: 0.5,
+      delay: 0,
+    }
+    component.setProps({ withAnimation: animation })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed withTranslation props", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "",
+        dictionary: dictionary,
+      }
+    })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isHidden props as false", () => {
+    component.setProps({ isHidden: false })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isHidden props as true", () => {
+    component.setProps({ isHidden: true })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isDisabled props as false", () => {
+    component.setProps({ isDisabled: false })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isDisabled props as true", () => {
+    component.setProps({ isDisabled: true })
+    expect(component.exists()).toBe(true);
+  })
+  it('should close the opened SearchBar when clicked outside', () => {
+    component.find("button").simulate('click')
+    fireEvent.click(document.body)
+  });
+  it('should close the opened SearchBar when clicked outside', () => {
+      let searchBar = component.find(".qui-custom-color-button");
+      searchBar.simulate('click');
+      fireEvent.click(document.body)
+  });
 
 });

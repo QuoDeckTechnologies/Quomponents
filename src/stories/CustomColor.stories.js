@@ -8,7 +8,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/CustomColors/CustomColor",
+    title: "Design System/CustomColor/CustomColor",
     component: CustomColor,
     argTypes: {
         content: {
@@ -76,6 +76,7 @@ export default {
     parameters: {
         componentSubtitle: "Displays the diffrent diffrent color pickers",
         a11y: { disable: true },
+        docs: { iframeHeight: 300 },
     },
 };
 
@@ -87,7 +88,7 @@ export const Default = Template.bind({});
 Default.args = {
     content: {
         title: "Page Color",
-        color: "pink",
+        color: "#454545",
     },
 
     asSize: "normal",
@@ -132,7 +133,7 @@ export const MultipleColorPicker = (args) => {
                     asSize: "normal",
                     content: {
                         title: "Page Color",
-                        color: "red"
+                        color: "#000000"
                     },
                     withAnimation: {
                         animation: "slideLeft",
@@ -147,7 +148,7 @@ export const MultipleColorPicker = (args) => {
                     asSize: "normal",
                     content: {
                         title: "Header Color",
-                        color: "green"
+                        color: "#00FF00"
                     },
                     withAnimation: {
                         animation: "slideRight",
@@ -162,7 +163,7 @@ export const MultipleColorPicker = (args) => {
                     asSize: "normal",
                     content: {
                         title: "Divider Color",
-                        color: "yellow"
+                        color: "#FFD700"
                     },
                     withAnimation: {
                         animation: "slideLeft",
@@ -177,7 +178,7 @@ export const MultipleColorPicker = (args) => {
                     asSize: "normal",
                     content: {
                         title: "navigator Color",
-                        color: "purple"
+                        color: "#8B008B"
                     },
                     withAnimation: {
                         animation: "slideRight",
@@ -206,7 +207,7 @@ export const AllSizeColorPicker = (args) => {
                     asSize: "tiny",
                     content: {
                         title: "Page Color",
-                        color: "voilet"
+                        color: "#EE82EE"
                     },
                     withAnimation: {
                         animation: "slideLeft",
@@ -236,7 +237,7 @@ export const AllSizeColorPicker = (args) => {
                     asSize: "normal",
                     content: {
                         title: "Divider Color",
-                        color: "blue"
+                        color: "#0000ff"
                     },
                     withAnimation: {
                         animation: "slideLeft",
@@ -251,7 +252,7 @@ export const AllSizeColorPicker = (args) => {
                     asSize: "big",
                     content: {
                         title: "navigator Color",
-                        color: "green"
+                        color: "#00ff00"
                     },
                     withAnimation: {
                         animation: "slideRight",
@@ -266,7 +267,7 @@ export const AllSizeColorPicker = (args) => {
                     asSize: "huge",
                     content: {
                         title: "Background Color",
-                        color: "orange"
+                        color: "#FFA500"
                     },
                     withAnimation: {
                         animation: "slideRight",
@@ -281,7 +282,7 @@ export const AllSizeColorPicker = (args) => {
                     asSize: "massive",
                     content: {
                         title: "Border Color",
-                        color: "red"
+                        color: "#ff0000"
                     },
                     withAnimation: {
                         animation: "slideRight",
@@ -337,7 +338,7 @@ export const AnimatedCustomColor = Template.bind({});
 AnimatedCustomColor.args = {
     content: {
         title: "Page Color",
-        color: "pink",
+        color: "#FFC0CB",
     },
 
     asSize: "normal",

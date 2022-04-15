@@ -17,7 +17,6 @@ CustomColor.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-
     /**
     CustomColor Text has to be in content or passed as children to the component. 
     */
@@ -25,11 +24,8 @@ CustomColor.propTypes = {
         color: PropTypes.string,
         title: PropTypes.string,
     }).isRequired,
-
-
     // Quommon props
     //=======================================
-
     /**
     Use to define component text size in increasing order
     */
@@ -41,7 +37,6 @@ CustomColor.propTypes = {
         "huge",
         "massive",
     ]),
-
     /**
     Use to define the entry animation of the component
     */
@@ -67,7 +62,6 @@ CustomColor.propTypes = {
         tgt: PropTypes.string,
         dictionary: PropTypes.string,
     }),
-
     /**
     Use to show/hide the component  
     */
@@ -80,28 +74,22 @@ CustomColor.propTypes = {
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-
 };
-
 CustomColor.defaultProps = {
     // Component Specific props
     //=======================================
-
     content: {},
     // Quommon props
     //=======================================
     asSize: "normal",
 
-    withColor: null,
     withAnimation: null,
     withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
     asFloated: "none",
-
 };
-
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
@@ -118,11 +106,8 @@ export default function CustomColor(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-
     let quommonClasses = getQuommons(props, "custom-color");
-   
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
-
     //-------------------------------------------------------------------
     // 4. Get translation of the component
     //-------------------------------------------------------------------
@@ -131,7 +116,6 @@ export default function CustomColor(props) {
         color: content?.color,
     };
     let tObj = null;
-
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
@@ -145,42 +129,52 @@ export default function CustomColor(props) {
     //-------------------------------------------------------------------
     // 7. Get animation of the component
     //-------------------------------------------------------------------
-
     const animate = getAnimation(props.withAnimation);
-    const ref = useRef()
+    // const ref = useRef()
+    const box = useRef(null);
     const [color, setColor] = useState(labelContent.color);
     const [showColorPicker, setshowColorPicker] = useState(false);
 
-    useEffect(() => {
-        const checkIfClickedOutside = e => {
-            if (showColorPicker && ref.current && !ref.current.contains(e.target)) {
-                setshowColorPicker(false)
+    //-------------------------------------------------------------------
+    // 4. Handle close 
+    //-------------------------------------------------------------------
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+            // Function for click event
+            function handleOutsideClick(event) {
+                if (ref.current && !ref.current.contains(event?.target)) {
+                    setshowColorPicker(false)
+                }
             }
-        }
-        document.addEventListener("mousedown", checkIfClickedOutside)
-        // setColor(labelContent.color)
-    }, [showColorPicker, /*labelContent.color*/])
-
+            // Adding click event listener
+            document.addEventListener("mousedown", handleOutsideClick);
+            return () => document.removeEventListener("mousedown", handleOutsideClick);
+        }, [ref]);
+    }
+    useOutsideAlerter(box);
     // ========================= Render Function =================================
 
     return (
         <motion.div
-        initial={animate.from}
-        animate={animate.to}
-        className={`qui ${quommonClasses.parentClasses}`}
-        ref={ref}>
-            <div className="qui-color-picker-container">
+            initial={animate.from}
+            animate={animate.to}
+            className={`qui ${quommonClasses.parentClasses}`}
+        >
+            <div className="qui-color-picker-container"
+
+            >
                 <div className={`qui-qui-ribbon-menu-custom-color-container  qui-color-container ${quommonClasses.childClasses}`}>
                     <div className="button-title-container">
                         <button
+                            ref={box}
                             className="qui-custom-color-button"
-                            style={{ backgroundColor:color}}
+                            style={{ backgroundColor: color }}
                             onClick={() => setshowColorPicker(showColorPicker => !showColorPicker)} />
                         <div className="qui-custom-color-title">{labelContent?.title}</div>
                     </div>
-                    {showColorPicker && (   
+                    {showColorPicker && (
                         <ChromePicker
-                            className="qui-chrome-picker"
+                            className={"qui-chrome-picker"}
                             color={color}
                             onChange={update => setColor(update.hex)}
                         />
