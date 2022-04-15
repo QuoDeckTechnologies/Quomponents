@@ -1,15 +1,14 @@
 import React from "react";
-import RibbonMenu from "../components/RibbonMenu/RibbonMenu.react";
+import RibbonHtmlMenu from "../components/RibbonMenu/htmlMenu//RibbonHtmlMenu.react";
 
 export default {
-    title: "Design System/RibbonMenu/RibbonMenu",
-    component: RibbonMenu,
+    title: "Design System/RibbonMenu/RibbonHtmlMenu",
+    component: RibbonHtmlMenu,
     argTypes: {
-        asEmphasis: {
-            control: "select",
-            options: ["html", "home", "tools", "design"],
+        saveExit: {
             table: {
-                category: "as-Flags",
+                category: "Events",
+                defaultValue: null,
             },
         },
         asFloated: {
@@ -30,19 +29,7 @@ export default {
                 category: "is-Toggles",
                 defaultValue: false,
             },
-        },
-        isFluid: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: true,
-            },
-        },
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
-            },
-        },
+        }
     },
     decorators: [
         (story) => (
@@ -69,19 +56,17 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <RibbonMenu {...args} />;
+const Template = (args) => <RibbonHtmlMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    asEmphasis: "html",
     asFloated: "left",
     isDisabled: false,
-    isFluid:true,
-    isHidden: false,
+    isHidden: false
 };
 Default.parameters = {
     docs: {
         source: {
-            code: `<RibbonMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<RibbonHtmlMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };

@@ -2,21 +2,13 @@ import React from "react";
 import SaveExitSection from "../components/RibbonMenu/htmlMenu/sections/SaveExitSection.react";
 
 export default {
-    title: "Design System/RibbonMenu/SaveExitSection",
+    title: "Design System/RibbonMenu/RibbonHtmlMenu/SaveExitSection",
     component: SaveExitSection,
     argTypes: {
-        asEmphasis: {
-            control: "select",
-            options: ["html", "home", "tools", "design"],
+        saveExit: {
             table: {
-                category: "as-Flags",
-            },
-        },
-        asPadded: {
-            control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
-            table: {
-                category: "as-Flags",
+                category: "Events",
+                defaultValue: null,
             },
         },
         asFloated: {
@@ -36,12 +28,6 @@ export default {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
-            },
-        },
-        isFluid: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: true,
             },
         },
         onClick: {
@@ -79,11 +65,8 @@ export default {
 const Template = (args) => <SaveExitSection {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    asEmphasis: "html",
     asFloated: "left",
-    asPadded: "normal",
     isDisabled: false,
-    isFluid:true,
     isHidden: false,
 };
 Default.parameters = {

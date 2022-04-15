@@ -19,6 +19,7 @@ export default function PalleteThemeSection(props) {
         setColor(colors)
     }
 
+
     // ========================= Render Function =================================
     return (
         <div className={`qui-ribbon-menu-pallete-custom-color-section-container`}>
@@ -30,6 +31,7 @@ export default function PalleteThemeSection(props) {
                                 onClick={() => select(colors)}
                             >
                                 <ColorSwatch
+                                asPadded="fitted"
                                     asSize="small"
                                     withColor={{
                                         primaryColor: colors.colors[0],

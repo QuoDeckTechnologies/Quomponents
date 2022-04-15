@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {
-    getQuommons,
-} from "../../common/javascripts/helpers";
+import { getQuommons } from "../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -11,72 +9,61 @@ import "./RibbonMenu.scss";
 import "../../common/stylesheets/overrule.scss";
 
 import RibbonToolMenu from "./toolsMenu/RibbonToolMenu.react";
-import RibbonDesignMenu from "./designMenu/RibbonDesignMenu.react"
+import RibbonDesignMenu from "./designMenu/RibbonDesignMenu.react";
 import RibbonHomeMenu from "./homeMenu/RibbonHomeMenu.react";
 import RibbonHtmlMenu from "./htmlMenu/RibbonHtmlMenu.react";
 
 RibbonMenu.propTypes = {
-    //=======================================
-    // Component Specific props
-    //=======================================
+	//=======================================
+	// Component Specific props
+	//=======================================
 
+	//=======================================
+	// Quommon props
+	//=======================================
     /**
     RibbonMenu tabs data should be passed in content field and it is required field  
     */
-    asEmphasis:  PropTypes.oneOf([
-        "html",
-        "design",
-        "tools",
-        "home"
-        ]),
-
-    //=======================================
-    // Quommon props
-    //=======================================
-    /**
-    Use to define component padding in increasing order
-    */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-    /**
+	asEmphasis: PropTypes.oneOf(["html", "design", "tools", "home"]),
+	/**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
-    /**
+	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+	/**
     Use to show/hide the component
     */
-    isHidden: PropTypes.bool,
-    /**
+	isHidden: PropTypes.bool,
+	/**
     Use to enable/disable the component
     */
-    isDisabled: PropTypes.bool,
-        /**
+	isDisabled: PropTypes.bool,
+	/**
     Use to enable/disable the component
     */
-    isFluid: PropTypes.bool,
-    /**
+	isFluid: PropTypes.bool,
+	/**
       RibbonMenu component must have the onClick function passed as props
       */
-    onClick: PropTypes.func
+	onClick: PropTypes.func,
 };
 
 RibbonMenu.defaultProps = {
-    //=======================================
-    // Component Specific props
-    //=======================================
-   
-    //=======================================
-    // Quommon props
-    //=======================================
-    asEmphasis: "html",
-    asSize: "normal",
-    asPadded: "normal",
-    asFloated : "left",
-    
-    isHidden: false,
-    isFluid:true,
-    isDisabled: false,
+	//=======================================
+	// Component Specific props
+	//=======================================
 
-    onClick:null
+	//=======================================
+	// Quommon props
+	//=======================================
+	asEmphasis: "html",
+	asSize: "normal",
+	asFloated: "left",
+
+	isHidden: false,
+	isFluid: true,
+	isDisabled: false,
+
+	onClick: null,
 };
 
 /**
@@ -88,39 +75,28 @@ RibbonMenu.defaultProps = {
 - props are not being passed to the RibbonMenu. Please speak to the admin to handle any new prop.
 **/
 export default function RibbonMenu(props) {
-    //-------------------------------------------------------------------
-    // 1. Set the classes
-    //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props,"ribbon-menu");
+	//-------------------------------------------------------------------
+	// 1. Set the classes
+	//-------------------------------------------------------------------
+	let quommonClasses = getQuommons(props, "ribbon-menu");
 
-    // ========================= Render Function =================================
-
-    const ribbonMenu = (tabs) => {
-        if (tabs?.toUpperCase() === "HTML") {
-            return (
-                <RibbonHtmlMenu />
-            )
-        }
-        else if (tabs?.toUpperCase() === "DESIGN") {
-            return (
-                <RibbonDesignMenu />
-            )
-        }
-        else if (tabs?.toUpperCase() === "TOOLS") {
-            return (
-                <RibbonToolMenu />
-            )
-        } else {
-            return (
-                <RibbonHomeMenu/>
-            )
-        }
-    }
-    return (
-        <div className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`${quommonClasses.childClasses} qui-ribbon-menu`}>
-                {ribbonMenu(props.asEmphasis)}
-            </div>
-        </div>
-    );
+	// ========================= Render Function =================================
+	const ribbonMenu = (tabs) => {
+		if (tabs?.toUpperCase() === "HTML") {
+			return <RibbonHtmlMenu />;
+		} else if (tabs?.toUpperCase() === "DESIGN") {
+			return <RibbonDesignMenu />;
+		} else if (tabs?.toUpperCase() === "TOOLS") {
+			return <RibbonToolMenu />;
+		} else {
+			return <RibbonHomeMenu />;
+		}
+	};
+	return (
+		<div className={`qui ${quommonClasses.parentClasses}`}>
+			<div className={`${quommonClasses.childClasses} qui-ribbon-menu`}>
+				{ribbonMenu(props.asEmphasis)}
+			</div>
+		</div>
+	);
 }
