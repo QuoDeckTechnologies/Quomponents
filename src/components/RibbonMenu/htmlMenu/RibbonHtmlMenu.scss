@@ -10,7 +10,8 @@
     }
 }
 
-.qui-ribbon-menu-exit-save-section{
+//SaveExitSection Styling Definitions
+.qui-ribbon-menu-exit-save-section-parent{
     font-size: 1em;
     height: 4.2em;
     width: 4.2em;
@@ -22,7 +23,6 @@
     flex-direction: column;
     align-items: center;
 }
-//SaveExitSection Styling Definitions
 .qui-ribbon-exit-save-section{
     height: 4.2em;
     display: flex;
@@ -45,9 +45,18 @@
     font-size: 0.6em;
 }
 //SaveSection Styling Definitions
+.qui-ribbon-menu-save-section-parent{
+    display: flex;
+    flex-direction: column;
+    height:4.5em;
+    padding: 0.1em 0.1em;
+    align-items: center;
+}
 .qui-ribbon-menu-save-section{
     display: flex;
     flex-direction: column;
+    height:4.5em;
+    align-items: center;
 }
 .qui-ribbon-menu-save-section-child-container{
     width: 187px;

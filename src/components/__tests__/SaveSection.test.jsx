@@ -1,3 +1,4 @@
+import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
@@ -5,21 +6,22 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import RibbonHtmlMenu from "../RibbonMenu/htmlMenu/RibbonHtmlMenu.react";
+import SaveSection from "../RibbonMenu/htmlMenu/sections/SaveSection.react";
 
-describe("RibbonMenu", () => {
+describe("SaveSection", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
 	let component;
+
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
-			<RibbonHtmlMenu
+			<SaveSection
 				asFloated="left"
 				isHidden={false}
 				isDisabled={false}
-				onClick={jest.fn()}
+                onClick={jest.fn()}
 			/>
 		);
 	});

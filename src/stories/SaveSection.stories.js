@@ -1,9 +1,9 @@
 import React from "react";
-import RibbonHtmlMenu from "../components/RibbonMenu/htmlMenu//RibbonHtmlMenu.react";
+import SaveSection from "../components/RibbonMenu/htmlMenu/sections/SaveSection.react";
 
 export default {
-	title: "Design System/RibbonMenu/RibbonHtmlMenu",
-	component: RibbonHtmlMenu,
+	title: "Design System/RibbonMenu/RibbonHtmlMenu/SaveSection",
+	component: SaveSection,
 	argTypes: {
 		asFloated: {
 			control: "select",
@@ -56,7 +56,7 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <RibbonHtmlMenu {...args} />;
+const Template = (args) => <SaveSection {...args} />;
 export const Default = Template.bind({});
 Default.args = {
 	asFloated: "left",
@@ -66,7 +66,7 @@ Default.args = {
 Default.parameters = {
 	docs: {
 		source: {
-			code: `<RibbonHtmlMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
+			code: `<SaveSection {...${JSON.stringify(Default.args, null, 2)}}/>`,
 		},
 	},
 };

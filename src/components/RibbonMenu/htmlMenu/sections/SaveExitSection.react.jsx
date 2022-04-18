@@ -32,8 +32,8 @@ SaveExitSection.propTypes = {
     */
 	isDisabled: PropTypes.bool,
 	/**
-      RibbonMenu component must have the onClick function passed as props
-      */
+    SaveExitSection component must have the onClick function passed as props
+    */
 	onClick: PropTypes.func,
 };
 
@@ -41,8 +41,12 @@ export default function SaveExitSection(props) {
 	//-------------------------------------------------------------------
 	// 1. Set the classes
 	//-------------------------------------------------------------------
-	let quommonClasses = getQuommons(props, "ribbon-menu-exit-save-section");
+	let quommonClasses = getQuommons(
+		props,
+		"ribbon-menu-exit-save-section-parent"
+	);
 
+	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
@@ -57,10 +61,7 @@ export default function SaveExitSection(props) {
 						}}
 						withIcon={{ icon: "fa fa-sign-out-alt" }}
 					/>
-					<div
-						className="qui-ribbon-menu-label"
-						onClick={props.onClick}
-					>
+					<div className="qui-ribbon-menu-label" onClick={props.onClick}>
 						Save & Exit
 					</div>
 				</div>
