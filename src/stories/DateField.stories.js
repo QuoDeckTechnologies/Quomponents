@@ -13,13 +13,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asFloated: {
-            control: "select",
-            options: ["left", "right", "none", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -84,7 +77,6 @@ const Template = (args) => <DateField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: "Start Date",
-    asFloated: "none",
     asPadded: "normal",
     withColor: {
         backgroundColor: "#aaaaaa",

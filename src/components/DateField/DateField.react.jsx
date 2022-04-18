@@ -27,10 +27,6 @@ DateField.propTypes = {
     */
     asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
     /**
-    Use to float the component in parent container
-    */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
@@ -78,7 +74,6 @@ DateField.defaultProps = {
     // Quommon props
     //=======================================
     asPadded: "normal",
-    asFloated: "none",
 
     withColor: null,
     withAnimation: null,

@@ -24,6 +24,7 @@
     width: 75%;
 }
 .qui .qui-date-field-date-picker {
+    // width: 100%;
     font-size: 1.625em;
     border: none;
     outline: none;
@@ -52,6 +53,14 @@
     .qui .qui-calendar-icon {
         font-size: 2em;
     }
+    .qui .react-datepicker {
+        font-size: 0.75em;
+        margin-left: -1em;
+        inset: 0.8em 0 0 0;
+    }
+    .qui .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+        width: 1.4em;
+    }
 }
 @media screen and (min-width: 481px) {
     .qui .qui-date-field-label {
@@ -62,6 +71,14 @@
     }
     .qui .qui-calendar-icon {
         font-size: 3em;
+    }
+    .qui .react-datepicker {
+        font-size: 1.15em;
+        margin-left: -0.5em;
+        inset: 0.6em 0 0 0;
+    }
+    .qui .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+        width: 2em;
     }
 }
 @media screen and (min-width: 769px) {
@@ -74,6 +91,14 @@
     .qui .qui-calendar-icon {
         font-size: 4em;
     }
+    .qui .react-datepicker {
+        font-size: 1.3em;
+        margin-left: -0.5em;
+        inset: 0.6em 0 0 0;
+    }
+    .qui .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+        width: 2.59em;
+    }
 }
 @media screen and (min-width: 1024px) {
     .qui .qui-date-field-label {
@@ -84,5 +109,13 @@
     }
     .qui .qui-calendar-icon {
         font-size: 5em;
+    }
+    .qui .react-datepicker {
+        font-size: 1.5em;
+        margin-left: -0.3em;
+        inset: 0.5em 0 0 0;
+    }
+    .qui .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+        width: 3em;
     }
 }

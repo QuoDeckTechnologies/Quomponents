@@ -21,7 +21,6 @@ describe("DateField", () => {
             <DateField
                 content="Start Date"
                 asPadded="normal"
-                asFloated="none"
                 withColor={null}
                 withAnimation={null}
                 isHidden={false}
@@ -64,26 +63,6 @@ describe("DateField", () => {
 
     it("should render correctly when passed asPadded prop as relaxed", () => {
         component.setProps({ asPadded: "relaxed" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("should render correctly when passed asFloated prop as left", () => {
-        component.setProps({ asFloated: "left" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("should render correctly when passed asFloated prop as right", () => {
-        component.setProps({ asFloated: "right" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("should render correctly when passed asFloated prop as inline", () => {
-        component.setProps({ asFloated: "inline" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("should render correctly when passed asFloated prop as none", () => {
-        component.setProps({ asFloated: "none" })
         expect(component.exists()).toBe(true);
     })
 
