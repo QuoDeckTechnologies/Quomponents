@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import TextField from '@mui/material/TextField';
 import { motion } from "framer-motion";
@@ -119,6 +119,10 @@ export default function InputField(props) {
     //-------------------------------------------------------------------
     const [input, setInput] = useState(props.content?.value);
     const [count, setCount] = useState(props.content?.maxLength);
+
+    useEffect(()=>{
+        setInput(props.content?.value)
+    },[props.content?.value])
 
     function handleChange(e) {
         setInput(e.target.value);

@@ -1,5 +1,5 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
@@ -93,10 +93,12 @@ export default function OptionItemOne(props) {
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
   const { content } = props;
+
+  // const [contentState, setContentState] = useState({ ...content });
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "inline-edit-with-remove-button");
+  let quommonClasses = getQuommons(props, "option-item-one");
   //-------------------------------------------------------------------
   // 3. Get animation of the component
   //-------------------------------------------------------------------
@@ -125,8 +127,8 @@ export default function OptionItemOne(props) {
         <div className="qui-inline-edit-with-remove-button-close-icon">
           <i
             className="qui-inline-edit-with-remove-button-icon fas fa-times"
-            id={content.targetName}
-            onClick={(e) => props.onClose(e.target.id)}
+            data-id={content.targetName}
+            onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>
         </div>
       </div>

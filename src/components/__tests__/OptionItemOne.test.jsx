@@ -5,9 +5,9 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Component
 // -------------------------------------
-import InlineEditWithRemoveButton from "../OptionItem/InlineEditWithRemoveButton/InlineEditWithRemoveButton.react";
+import OptionItemOne from "../OptionItem/OptionItemOne/OptionItemOne.react";
 
-describe("Inline Edit With Remove Button", () => {
+describe("Option Item One", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -15,20 +15,25 @@ describe("Inline Edit With Remove Button", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <InlineEditWithRemoveButton
+      <OptionItemOne
         content={{ targetName: "name", value: "", placeholder: "placeholder" }}
         onInput={() => {}}
         onClose={() => {}}
       />
     );
   });
+
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly without throwing error", () => {
+
+  it("should render correctly without throwing error when written in input field", () => {
     component.find("InputField").simulate("click");
   });
-  it("should render correctly without throwing error", () => {
-    component.find(".fa-times").simulate("click", { target: { id: "name" } });
+
+  it("should render correctly without throwing error when clicked on close icon", () => {
+    component
+      .find(".fa-times")
+      .simulate("click", { target: { dataset: { id: "name" } } });
   });
 });

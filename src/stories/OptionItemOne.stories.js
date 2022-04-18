@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import _ from 'lodash'
 import OptionItemOne from "../components/OptionItem/OptionItemOne/OptionItemOne.react";
 
 export default {
-  title:
-    "Design System/OptionItem/OptionItemOne",
+  title: "Design System/OptionItem/OptionItemOne",
   component: OptionItemOne,
   argTypes: {
     content: {},
@@ -144,24 +144,95 @@ AnimatedOptionItemOne.parameters = {
 // Multiple Inline Edit With Remove Button
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  let obj = {...args.content}
+  let obj = { ...args.content };
+  const [contentArr, setContentArr] = useState(args.multiContent);
+
+  useEffect(() => {
+    args.onInput(contentArr);
+  });
+  // return (
+  //   <div>
+  //     <div style={{ marginBottom: "1em" }}>
+  //       <OptionItemOne {...args} content={{ ...obj, targetName: "one" }} />
+  //     </div>
+  //     <div style={{ marginBottom: "1em" }}>
+  //       <OptionItemOne {...args} content={{ ...obj, targetName: "two" }} />
+  //     </div>
+  //     <div style={{ marginBottom: "1em" }}>
+  //       <OptionItemOne {...args} content={{ ...obj, targetName: "three" }} />
+  //     </div>
+  //   </div>
+  // );
+
+  let tmp_state = contentArr;
+  let tmp_arr = [];
+  let tmp_obj = {};
+
+  const handleRemove = (dataID) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_state.forEach((dataObj) => {
+      tmp_arr.push({ ...dataObj });
+    });
+    tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
+    setContentArr([...tmp_arr]);
+  };
+
+  const handleInput = (targetName, value) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+    
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.targetName === targetName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.value = value;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
+
   return (
     <div>
-      <div style={{ marginBottom: "1em" }}>
-        <OptionItemOne {...args} content={{...obj,targetName:'one'}}/>
-      </div>
-      <div style={{ marginBottom: "1em" }}>
-        <OptionItemOne {...args} content={{...obj,targetName:'two'}}/>
-      </div>
-      <div style={{ marginBottom: "1em" }}>
-        <OptionItemOne {...args} content={{...obj,targetName:'three'}}/>
-      </div>
+      {contentArr.map((content, index) => {
+        return (
+          <div style={{ marginBottom: "1em" }} key={index}>
+            <OptionItemOne
+              {...args}
+              content={{...content}}
+              onInput={(targetName, value) => handleInput(targetName, value)}
+              onClose={handleRemove}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };
 export const MultipleOptionItemOne = MultipleTemplate.bind({});
 MultipleOptionItemOne.args = {
   ...Default.args,
+  multiContent: [
+    {
+      targetName: "TargetNameOne",
+      value: "",
+      placeholder: "Placeholder One",
+    },
+    {
+      targetName: "TargetNameTwo",
+      value: "",
+      placeholder: "Placeholder Two",
+    },
+    {
+      targetName: "TargetNameThree",
+      value: "Default Value",
+      placeholder: "Placeholder Three",
+    },
+  ],
 };
 MultipleOptionItemOne.parameters = {
   docs: {
