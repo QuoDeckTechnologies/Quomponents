@@ -33,10 +33,6 @@ describe("NuggetCard", () => {
 			"https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
 		points: "200",
 		identifier: "XrPmy_OAK",
-		date: {
-			start_date: "26th Feb",
-			end_date: "3rd May",
-		},
 	};
 	let mockFn = jest.fn();
 
@@ -46,8 +42,6 @@ describe("NuggetCard", () => {
 		component = shallow(
 			<NuggetCard
 				content={content}
-				asSize="normal"
-				asPadded="normal"
 				asFloated="inline"
 				isHidden={false}
 				isDisabled={false}
@@ -60,56 +54,16 @@ describe("NuggetCard", () => {
 		expect(component.exists()).toBe(true);
 	});
 
-	it("should render correctly when passed asSize prop as tiny", () => {
-		component.setProps({ asSize: "tiny" });
-		expect(component.exists()).toBe(true);
-	});
-	it("should render correctly when passed asSize prop as small", () => {
-		component.setProps({ asSize: "small" });
-		expect(component.exists()).toBe(true);
-	});
-	it("should render correctly when passed asSize prop as normal", () => {
-		component.setProps({ asSize: "normal" });
-		expect(component.exists()).toBe(true);
-	});
-	it("should render correctly when passed asSize prop as big", () => {
-		component.setProps({ asSize: "big" });
-		expect(component.exists()).toBe(true);
-	});
-	it("should render correctly when passed asSize prop as huge", () => {
-		component.setProps({ asSize: "huge" });
-		expect(component.exists()).toBe(true);
-	});
-	it("should render correctly when passed asSize prop as massive", () => {
-		component.setProps({ asSize: "massive" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asPadded prop as fitted", () => {
-		component.setProps({ asPadded: "fitted" });
-		expect(component.exists()).toBe(true);
-	});
-	it("should render correctly when passed asPadded prop as commpact", () => {
-		component.setProps({ asPadded: "compact" });
-		expect(component.exists()).toBe(true);
-	});
-	it("should render correctly when passed asPadded prop as normal", () => {
-		component.setProps({ asPadded: "normal" });
-		expect(component.exists()).toBe(true);
-	});
-	it("should render correctly when passed asPadded prop as relaxed", () => {
-		component.setProps({ asPadded: "relaxed" });
-		expect(component.exists()).toBe(true);
-	});
-
 	it("should render correctly when passed asFloated prop as left", () => {
 		component.setProps({ asFloated: "left" });
 		expect(component.exists()).toBe(true);
 	});
+
 	it("should render correctly when passed asFloated prop as right", () => {
 		component.setProps({ asFloated: "right" });
 		expect(component.exists()).toBe(true);
 	});
+
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
 		expect(component.exists()).toBe(true);
@@ -119,6 +73,7 @@ describe("NuggetCard", () => {
 		component.setProps({ isHidden: false });
 		expect(component.exists()).toBe(true);
 	});
+
 	it("should render correctly when passed isHidden props as true", () => {
 		component.setProps({ isHidden: true });
 		expect(component.exists()).toBe(true);
@@ -128,6 +83,7 @@ describe("NuggetCard", () => {
 		component.setProps({ isDisabled: false });
 		expect(component.exists()).toBe(true);
 	});
+
 	it("should render correctly when passed isDisabled props as true", () => {
 		component.setProps({ isDisabled: true });
 		expect(component.exists()).toBe(true);
@@ -174,8 +130,10 @@ describe("NuggetCard", () => {
 		);
 	});
 
-	it("should display showmore button when passed more than 3 tags and on click should show all the tags", () => {
-		component.setProps({ content: { tags: ["Tag1", "Tag2", "Tag3", "Tag4"] } });
+	it("should display showmore button when passed more than 5 tags and on click should show all the tags", () => {
+		component.setProps({
+			content: { tags: ["Tag1", "Tag2", "Tag3", "Tag4", "Tag5", "Tag6"] },
+		});
 		let showMore = component.find("button");
 		expect(showMore.exists()).toBe(true);
 		component.find("button").simulate("click");

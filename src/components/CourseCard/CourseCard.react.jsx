@@ -170,7 +170,7 @@ export default function CourseCard(props) {
 		props.content?.tags?.length > 0 ? props.content?.tags[2]?.length : "";
 	let showMoreBtn = false;
 	let minTags = 3;
-	let maxTags = 10;
+	let maxTags = props.content?.tags?.length;
 
 	let showTags = 3;
 	const [expandTags, setExpandTags] = useState(false);

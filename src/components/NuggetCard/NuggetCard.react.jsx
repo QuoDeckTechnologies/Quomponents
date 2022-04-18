@@ -191,10 +191,10 @@ export default function NuggetCard(props) {
 	let tag3Length =
 		props.content?.tags?.length > 0 ? props.content?.tags[2]?.length : "";
 	let showMoreBtn = false;
-	let minTags = 3;
-	let maxTags = 10;
-
-	let showTags = 3;
+	let minTags = 5;
+	let maxTags = props.content?.tags?.length;
+	let showTags = 5;
+	
 	const [expandTags, setExpandTags] = useState(false);
 	const [itirate, setItirate] = useState(showTags);
 
@@ -210,7 +210,7 @@ export default function NuggetCard(props) {
 		tag1Length >= 15 ||
 		tag2Length >= 15 ||
 		tag3Length >= 15 ||
-		props.content?.tags?.length > 3
+		props.content?.tags?.length > 5
 	) {
 		showMoreBtn = true;
 		if (expandTags === true) {
