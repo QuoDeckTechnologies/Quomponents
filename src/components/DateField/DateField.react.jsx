@@ -138,6 +138,9 @@ export default function DateField(props) {
                                 props.onClick(date)
                                 setStartDate(date)
                             }}
+                            onKeyDown={(e) => {
+                                e.preventDefault();
+                            }}
                             showTimeSelect
                             timeFormat="HH:mm"
                             timeIntervals={1}
