@@ -5,16 +5,16 @@ import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./InlineEditWithRemoveButton.scss";
+import "./OptionItemOne.scss";
 import "../../../common/stylesheets/overrule.scss";
 import InputField from "../../InputField/InputField.react";
 
-InlineEditWithRemoveButton.propTypes = {
+OptionItemOne.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
   /**
-    InlineEditWithRemoveButton name should be passed in content object
+    OptionItemOne name should be passed in content object
     */
   content: PropTypes.shape({
     targetName: PropTypes.string,
@@ -58,16 +58,16 @@ InlineEditWithRemoveButton.propTypes = {
   */
   isHidden: PropTypes.bool,
   /**
-    InlineEditWithRemoveButton component must have the onInput function passed as props
+    OptionItemOne component must have the onInput function passed as props
     */
   onInput: PropTypes.func.isRequired,
   /**
-    InlineEditWithRemoveButton component must have the onClose function passed as props
+    OptionItemOne component must have the onClose function passed as props
     */
   onClose: PropTypes.func.isRequired,
 };
 
-InlineEditWithRemoveButton.defaultProps = {
+OptionItemOne.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
@@ -88,7 +88,7 @@ InlineEditWithRemoveButton.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function InlineEditWithRemoveButton(props) {
+export default function OptionItemOne(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------

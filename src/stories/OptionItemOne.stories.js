@@ -1,10 +1,10 @@
-import { RadioGroup } from "@mui/material";
 import React from "react";
-import SingleSelect from "../components/OptionItem/SingleSelect/SingleSelect.react";
+import OptionItemOne from "../components/OptionItem/OptionItemOne/OptionItemOne.react";
 
 export default {
-  title: "Design System/OptionItem/SingleSelect",
-  component: SingleSelect,
+  title:
+    "Design System/OptionItem/OptionItemOne",
+  component: OptionItemOne,
   argTypes: {
     content: {},
     withColor: {
@@ -64,7 +64,7 @@ export default {
 // Default
 // -------------------------------------------------------------
 const Template = (args) => {
-  return <SingleSelect {...args} />;
+  return <OptionItemOne {...args} />;
 };
 
 export const Default = Template.bind({});
@@ -72,8 +72,7 @@ Default.args = {
   content: {
     targetName: "Target Name",
     value: "",
-    placeholder: "Single Select",
-    checked: true,
+    placeholder: "InlineEdit with remove button",
   },
   withColor: {
     backgroundColor: "#ffab000d",
@@ -91,15 +90,15 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<SingleSelect {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<OptionItemOne {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Colored Single Select
+// Colored Inline Edit With Remove Button
 // -------------------------------------------------------------
-export const ColoredSingleSelect = Template.bind({});
-ColoredSingleSelect.args = {
+export const ColoredOptionItemOne = Template.bind({});
+ColoredOptionItemOne.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#8c9ea3",
@@ -107,11 +106,11 @@ ColoredSingleSelect.args = {
     accentColor: "#597387",
   },
 };
-ColoredSingleSelect.parameters = {
+ColoredOptionItemOne.parameters = {
   docs: {
     source: {
-      code: `<SingleSelect {...${JSON.stringify(
-        ColoredSingleSelect.args,
+      code: `<OptionItemOne {...${JSON.stringify(
+        ColoredOptionItemOne.args,
         null,
         2
       )}}/>`,
@@ -119,10 +118,10 @@ ColoredSingleSelect.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Animated Single Select
+// Animated Inline Edit With Remove Button
 // -------------------------------------------------------------
-export const AnimatedSingleSelect = Template.bind({});
-AnimatedSingleSelect.args = {
+export const AnimatedOptionItemOne = Template.bind({});
+AnimatedOptionItemOne.args = {
   ...Default.args,
   withAnimation: {
     animation: "fade",
@@ -130,11 +129,11 @@ AnimatedSingleSelect.args = {
     delay: 0,
   },
 };
-AnimatedSingleSelect.parameters = {
+AnimatedOptionItemOne.parameters = {
   docs: {
     source: {
-      code: `<SingleSelect {...${JSON.stringify(
-        AnimatedSingleSelect.args,
+      code: `<OptionItemOne {...${JSON.stringify(
+        AnimatedOptionItemOne.args,
         null,
         2
       )}}/>`,
@@ -145,41 +144,30 @@ AnimatedSingleSelect.parameters = {
 // Multiple Inline Edit With Remove Button
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  let obj = { ...args.content };
+  let obj = {...args.content}
   return (
-    <RadioGroup>
-      <div>
-        <div style={{ marginBottom: "1em" }}>
-          <SingleSelect
-            {...args}
-            content={{ ...obj, targetName: "one", checked: false }}
-          />
-        </div>
-        <div style={{ marginBottom: "1em" }}>
-          <SingleSelect
-            {...args}
-            content={{ ...obj, targetName: "two", checked: true }}
-          />
-        </div>
-        <div style={{ marginBottom: "1em" }}>
-          <SingleSelect
-            {...args}
-            content={{ ...obj, targetName: "three", checked: false }}
-          />
-        </div>
+    <div>
+      <div style={{ marginBottom: "1em" }}>
+        <OptionItemOne {...args} content={{...obj,targetName:'one'}}/>
       </div>
-    </RadioGroup>
+      <div style={{ marginBottom: "1em" }}>
+        <OptionItemOne {...args} content={{...obj,targetName:'two'}}/>
+      </div>
+      <div style={{ marginBottom: "1em" }}>
+        <OptionItemOne {...args} content={{...obj,targetName:'three'}}/>
+      </div>
+    </div>
   );
 };
-export const MultipleSingleSelect = MultipleTemplate.bind({});
-MultipleSingleSelect.args = {
+export const MultipleOptionItemOne = MultipleTemplate.bind({});
+MultipleOptionItemOne.args = {
   ...Default.args,
 };
-MultipleSingleSelect.parameters = {
+MultipleOptionItemOne.parameters = {
   docs: {
     source: {
-      code: `<SingleSelect {...${JSON.stringify(
-        MultipleSingleSelect.args,
+      code: `<OptionItemOne {...${JSON.stringify(
+        MultipleOptionItemOne.args,
         null,
         2
       )}}/>`,
