@@ -131,7 +131,7 @@ function getColors(colors) {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function MobileToolbar(props) {
-    const [state, setState] = useState("https://quodeck.com/")
+    const [state, setState] = useState("")
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
