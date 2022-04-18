@@ -1,0 +1,24 @@
+.qui.qui-single-select .qui-char-limit-max-length {
+  font-size: 0.65em;
+}
+.qui .qui-single-select-container {
+  display: flex;
+  align-items: center;
+}
+
+.qui .qui-single-select-close-icon {
+  height: 2em;
+  width: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: #a8a8a8;
+}
+.qui .qui-single-select-icon {
+  cursor: pointer;
+}
+.qui.qui-single-select .qui-input-field {
+  text-indent: 0;
+}

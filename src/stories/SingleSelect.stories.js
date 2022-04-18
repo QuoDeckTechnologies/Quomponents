@@ -1,10 +1,10 @@
+import { RadioGroup } from "@mui/material";
 import React from "react";
-import InlineEditWithRemoveButton from "../components/OptionItem/InlineEditWithRemoveButton/InlineEditWithRemoveButton.react";
+import SingleSelect from "../components/OptionItem/SingleSelect/SingleSelect.react";
 
 export default {
-  title:
-    "Design System/OptionItem/InlineEditWithRemoveButton",
-  component: InlineEditWithRemoveButton,
+  title: "Design System/OptionItem/SingleSelect",
+  component: SingleSelect,
   argTypes: {
     content: {},
     withColor: {
@@ -64,7 +64,7 @@ export default {
 // Default
 // -------------------------------------------------------------
 const Template = (args) => {
-  return <InlineEditWithRemoveButton {...args} />;
+  return <SingleSelect {...args} />;
 };
 
 export const Default = Template.bind({});
@@ -72,7 +72,8 @@ Default.args = {
   content: {
     targetName: "Target Name",
     value: "",
-    placeholder: "InlineEdit with remove button",
+    placeholder: "Single Select",
+    checked: true,
   },
   withColor: {
     backgroundColor: "#ffab000d",
@@ -90,15 +91,15 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<InlineEditWithRemoveButton {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<SingleSelect {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Colored Inline Edit With Remove Button
+// Colored Single Select
 // -------------------------------------------------------------
-export const ColoredInlineEditWithRemoveButton = Template.bind({});
-ColoredInlineEditWithRemoveButton.args = {
+export const ColoredSingleSelect = Template.bind({});
+ColoredSingleSelect.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#8c9ea3",
@@ -106,11 +107,11 @@ ColoredInlineEditWithRemoveButton.args = {
     accentColor: "#597387",
   },
 };
-ColoredInlineEditWithRemoveButton.parameters = {
+ColoredSingleSelect.parameters = {
   docs: {
     source: {
-      code: `<InlineEditWithRemoveButton {...${JSON.stringify(
-        ColoredInlineEditWithRemoveButton.args,
+      code: `<SingleSelect {...${JSON.stringify(
+        ColoredSingleSelect.args,
         null,
         2
       )}}/>`,
@@ -118,10 +119,10 @@ ColoredInlineEditWithRemoveButton.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Animated Inline Edit With Remove Button
+// Animated Single Select
 // -------------------------------------------------------------
-export const AnimatedInlineEditWithRemoveButton = Template.bind({});
-AnimatedInlineEditWithRemoveButton.args = {
+export const AnimatedSingleSelect = Template.bind({});
+AnimatedSingleSelect.args = {
   ...Default.args,
   withAnimation: {
     animation: "fade",
@@ -129,11 +130,11 @@ AnimatedInlineEditWithRemoveButton.args = {
     delay: 0,
   },
 };
-AnimatedInlineEditWithRemoveButton.parameters = {
+AnimatedSingleSelect.parameters = {
   docs: {
     source: {
-      code: `<InlineEditWithRemoveButton {...${JSON.stringify(
-        AnimatedInlineEditWithRemoveButton.args,
+      code: `<SingleSelect {...${JSON.stringify(
+        AnimatedSingleSelect.args,
         null,
         2
       )}}/>`,
@@ -144,30 +145,41 @@ AnimatedInlineEditWithRemoveButton.parameters = {
 // Multiple Inline Edit With Remove Button
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  let obj = {...args.content}
+  let obj = { ...args.content };
   return (
-    <div>
-      <div style={{ marginBottom: "1em" }}>
-        <InlineEditWithRemoveButton {...args} content={{...obj,targetName:'one'}}/>
+    <RadioGroup>
+      <div>
+        <div style={{ marginBottom: "1em" }}>
+          <SingleSelect
+            {...args}
+            content={{ ...obj, targetName: "one", checked: false }}
+          />
+        </div>
+        <div style={{ marginBottom: "1em" }}>
+          <SingleSelect
+            {...args}
+            content={{ ...obj, targetName: "two", checked: true }}
+          />
+        </div>
+        <div style={{ marginBottom: "1em" }}>
+          <SingleSelect
+            {...args}
+            content={{ ...obj, targetName: "three", checked: false }}
+          />
+        </div>
       </div>
-      <div style={{ marginBottom: "1em" }}>
-        <InlineEditWithRemoveButton {...args} content={{...obj,targetName:'two'}}/>
-      </div>
-      <div style={{ marginBottom: "1em" }}>
-        <InlineEditWithRemoveButton {...args} content={{...obj,targetName:'three'}}/>
-      </div>
-    </div>
+    </RadioGroup>
   );
 };
-export const MultipleInlineEditWithRemoveButton = MultipleTemplate.bind({});
-MultipleInlineEditWithRemoveButton.args = {
+export const MultipleSingleSelect = MultipleTemplate.bind({});
+MultipleSingleSelect.args = {
   ...Default.args,
 };
-MultipleInlineEditWithRemoveButton.parameters = {
+MultipleSingleSelect.parameters = {
   docs: {
     source: {
-      code: `<InlineEditWithRemoveButton {...${JSON.stringify(
-        MultipleInlineEditWithRemoveButton.args,
+      code: `<SingleSelect {...${JSON.stringify(
+        MultipleSingleSelect.args,
         null,
         2
       )}}/>`,
