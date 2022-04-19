@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import _ from 'lodash'
 import OptionItemOne from "../components/OptionItem/OptionItemOne/OptionItemOne.react";
 
 export default {
@@ -144,30 +143,22 @@ AnimatedOptionItemOne.parameters = {
 // Multiple Inline Edit With Remove Button
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  let obj = { ...args.content };
   const [contentArr, setContentArr] = useState(args.multiContent);
-
+  // -------------------------------------------------------------
+  // Hook to return modified content object
+  // -------------------------------------------------------------
   useEffect(() => {
     args.onInput(contentArr);
   });
-  // return (
-  //   <div>
-  //     <div style={{ marginBottom: "1em" }}>
-  //       <OptionItemOne {...args} content={{ ...obj, targetName: "one" }} />
-  //     </div>
-  //     <div style={{ marginBottom: "1em" }}>
-  //       <OptionItemOne {...args} content={{ ...obj, targetName: "two" }} />
-  //     </div>
-  //     <div style={{ marginBottom: "1em" }}>
-  //       <OptionItemOne {...args} content={{ ...obj, targetName: "three" }} />
-  //     </div>
-  //   </div>
-  // );
-
+  // -------------------------------------------------------------
+  // Temporary variables for operations
+  // -------------------------------------------------------------
   let tmp_state = contentArr;
   let tmp_arr = [];
   let tmp_obj = {};
-
+  // -------------------------------------------------------------
+  // Function to remove an object from the array
+  // -------------------------------------------------------------
   const handleRemove = (dataID) => {
     tmp_state = contentArr;
     tmp_arr = [];
@@ -177,12 +168,14 @@ const MultipleTemplate = (args) => {
     tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
     setContentArr([...tmp_arr]);
   };
-
+  // -------------------------------------------------------------
+  // Function to put value in the array of objects
+  // -------------------------------------------------------------
   const handleInput = (targetName, value) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
-    
+
     tmp_state.forEach((dataObj) => {
       if (dataObj.targetName === targetName) {
         tmp_obj = { ...dataObj };
@@ -203,7 +196,7 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemOne
               {...args}
-              content={{...content}}
+              content={{ ...content }}
               onInput={(targetName, value) => handleInput(targetName, value)}
               onClose={handleRemove}
             />

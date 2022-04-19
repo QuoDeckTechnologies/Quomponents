@@ -15,12 +15,13 @@ OptionItemTwo.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    OptionItemTwo name should be passed in content object
+    OptionItemTwo targetName, value, placeholder, checked should be passed in content object
     */
   content: PropTypes.shape({
     targetName: PropTypes.string,
     value: PropTypes.string,
     placeholder: PropTypes.string,
+    checked: PropTypes.bool,
   }),
   //=======================================
   // Quommon props
@@ -98,31 +99,36 @@ export default function OptionItemTwo(props) {
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
   const { content } = props;
-
+  //-------------------------------------------------------------------
+  // 2. Defining states and hooks
+  //-------------------------------------------------------------------
   const [value, setValue] = useState(content.value);
   const [isChecked, setIsChecked] = useState(content.checked);
+  useEffect(() => {
+    setIsChecked(content.checked);
+  }, [content.checked]);
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "option-item-two");
   //-------------------------------------------------------------------
-  // 3. Get animation of the component
+  // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  //-------------------------------------------------------------------
+  // 5. Function to return checked value of the component
+  //-------------------------------------------------------------------
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
     props.onSelect(content.targetName, value, e.target.checked);
   };
-
+  //-------------------------------------------------------------------
+  // 6. Function to return input value of the component
+  //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     setValue(value);
     props.onInput(content.targetName, value, isChecked);
   };
-
-  useEffect(() => {
-    setIsChecked(content.checked);
-  }, [content.checked]);
 
   // ========================= Render Function =================================
 
@@ -134,24 +140,11 @@ export default function OptionItemTwo(props) {
     >
       <div className="qui-single-select-container">
         <div className="qui-option-item-radio-container">
-          {/* <input
-            type="radio"
-            className="qui-option-item-radio-button"
-            name={content.radioName}
-            id={content.targetName}
-            value={value}
-            checked={isChecked}
-            onChange={handleRadio}
-          />
-          <label htmlFor={content.targetName} className="qui-option-item-label">
-            {isChecked ? "Correct" : "Incorrect"}
-          </label> */}
           <FormControlLabel
             className="qui-option-item-radio"
             value={content.targetName}
             control={
               <Radio
-                // style={{backgroundColor:'red'}}
                 checked={isChecked}
                 style={{ color: props.withColor?.accentColor }}
               />

@@ -145,15 +145,21 @@ AnimatedOptionItemTwo.parameters = {
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
   const [contentArr, setContentArr] = useState([...args.multiContent]);
-
+  // -------------------------------------------------------------
+  // Hook to return modified content object
+  // -------------------------------------------------------------
   useEffect(() => {
     args.onInput(contentArr);
   });
-
+  // -------------------------------------------------------------
+  // Temporary variables for operations
+  // -------------------------------------------------------------
   let tmp_state = contentArr;
   let tmp_arr = [];
   let tmp_obj = {};
-
+  // -------------------------------------------------------------
+  // Function to remove an object from the array
+  // -------------------------------------------------------------
   const handleRemove = (dataID) => {
     tmp_state = contentArr;
     tmp_arr = [];
@@ -163,7 +169,9 @@ const MultipleTemplate = (args) => {
     tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
     setContentArr([...tmp_arr]);
   };
-
+  // -------------------------------------------------------------
+  // Function to set selected option in the content array
+  // -------------------------------------------------------------
   const handleSelect = (targetName, value, checked) => {
     tmp_state = contentArr;
     tmp_arr = [];
@@ -181,7 +189,9 @@ const MultipleTemplate = (args) => {
     });
     setContentArr([...tmp_arr]);
   };
-
+  // -------------------------------------------------------------
+  // Function to put value in the array of objects
+  // -------------------------------------------------------------
   const handleInput = (targetName, value, checked) => {
     tmp_state = contentArr;
     tmp_arr = [];
