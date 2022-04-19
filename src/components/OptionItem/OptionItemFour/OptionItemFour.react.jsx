@@ -1,25 +1,27 @@
 // Import npm packages
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./OptionItemOne.scss";
+import "./OptionItemFour.scss";
 import "../../../common/stylesheets/overrule.scss";
 import InputField from "../../InputField/InputField.react";
+import CheckBox from "../../CheckBox/CheckBox.react";
 
-OptionItemOne.propTypes = {
+OptionItemFour.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
   /**
-     OptionItemOne targetName, value, placeholder should be passed in content object
+     OptionItemFour targetName, value, placeholder should be passed in content object
     */
   content: PropTypes.shape({
     targetName: PropTypes.string,
     value: PropTypes.string,
     placeholder: PropTypes.string,
+    checked: PropTypes.bool,
   }),
   //=======================================
   // Quommon props
@@ -58,16 +60,20 @@ OptionItemOne.propTypes = {
   */
   isHidden: PropTypes.bool,
   /**
-    OptionItemOne component must have the onInput function passed as props
+    OptionItemFour component must have the onSelect function passed as props
+    */
+  onSelect: PropTypes.func.isRequired,
+  /**
+    OptionItemFour component must have the onInput function passed as props
     */
   onInput: PropTypes.func.isRequired,
   /**
-    OptionItemOne component must have the onClose function passed as props
+    OptionItemFour component must have the onClose function passed as props
     */
   onClose: PropTypes.func.isRequired,
 };
 
-OptionItemOne.defaultProps = {
+OptionItemFour.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
@@ -87,20 +93,44 @@ OptionItemOne.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function OptionItemOne(props) {
+export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
   const { content } = props;
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "option-item-one");
+  const [value, setValue] = useState(content.value);
+  const [isChecked, setIsChecked] = useState(content.checked);
+  useEffect(() => {
+    setIsChecked(content.checked);
+  }, [content.checked]);
+  useEffect(() => {
+    props.onSelect(content.targetName, value, isChecked);
+  }, [isChecked]);
   //-------------------------------------------------------------------
-  // 3. Get animation of the component
+  // 3. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "option-item-four");
+  //-------------------------------------------------------------------
+  // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  //-------------------------------------------------------------------
+  // 5. Function to return checked value of the component
+  //-------------------------------------------------------------------
+  const handleCheckBox = (data) => {
+    setIsChecked(data.checked);
+  };
+  //-------------------------------------------------------------------
+  // 6. Function to return input value of the component
+  //-------------------------------------------------------------------
+  const handleValue = (name, value) => {
+    setValue(value);
+    props.onInput(content.targetName, value, isChecked);
+  };
+  
   // ========================= Render Function =================================
 
   return (
@@ -109,7 +139,22 @@ export default function OptionItemOne(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <div className="qui-inline-option-container">
+      <div className="qui-option-item-four-container">
+        <div className="qui-option-item-four-checkbox">
+          <CheckBox
+            onClick={handleCheckBox}
+            content={{
+              checked: isChecked,
+            }}
+            withColor={{ ...props.withColor }}
+          />
+          <span
+            className="qui-option-item-four-checkbox-label"
+            onClick={() => setIsChecked((prevState) => !prevState)}
+          >
+            {isChecked ? "Correct" : "Incorrect"}
+          </span>
+        </div>
         <InputField
           name={content.targetName}
           content={{
@@ -119,11 +164,11 @@ export default function OptionItemOne(props) {
           }}
           asEmphasis="listInput"
           withColor={props.withColor}
-          onClick={(name, value) => props.onInput(name, value)}
+          onClick={handleValue}
         />
-        <div className="qui-inline-edit-with-remove-button-close-icon">
+        <div className="qui-option-item-four-close-icon">
           <i
-            className="qui-inline-edit-with-remove-button-icon fas fa-times"
+            className="qui-option-item-four-icon fas fa-times"
             data-id={content.targetName}
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>

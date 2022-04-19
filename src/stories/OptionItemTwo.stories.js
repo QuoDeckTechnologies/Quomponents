@@ -44,6 +44,12 @@ export default {
         defaultValue: null,
       },
     },
+    onSelect: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
     onClose: {
       table: {
         category: "Events",
@@ -52,7 +58,7 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a InlineEdit with remove button.",
+    componentSubtitle: "Displays a Option Item Two.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
@@ -71,7 +77,7 @@ Default.args = {
   content: {
     targetName: "Target Name",
     value: "",
-    placeholder: "Single Select",
+    placeholder: "Option Item Two",
     checked: true,
   },
   withColor: {
@@ -95,7 +101,7 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Colored Single Select
+// Colored Option Item Two
 // -------------------------------------------------------------
 export const ColoredOptionItemTwo = Template.bind({});
 ColoredOptionItemTwo.args = {
@@ -118,7 +124,7 @@ ColoredOptionItemTwo.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Animated Single Select
+// Animated Option Item Two
 // -------------------------------------------------------------
 export const AnimatedOptionItemTwo = Template.bind({});
 AnimatedOptionItemTwo.args = {
@@ -141,7 +147,7 @@ AnimatedOptionItemTwo.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Multiple Inline Edit With Remove Button
+// Multiple Option Item Two
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
   const [contentArr, setContentArr] = useState([...args.multiContent]);

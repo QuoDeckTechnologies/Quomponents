@@ -78,7 +78,6 @@ OptionItemTwo.defaultProps = {
   // Component Specific props
   //=======================================
   content: {},
-  optionType: "title",
   //=======================================
   // Quommon props
   //=======================================

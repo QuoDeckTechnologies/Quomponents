@@ -1,25 +1,27 @@
 // Import npm packages
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./OptionItemOne.scss";
+import "./OptionItemFive.scss";
 import "../../../common/stylesheets/overrule.scss";
 import InputField from "../../InputField/InputField.react";
+import OptionalImageField from "../../OptionalImageField/OptionalImageField.react";
 
-OptionItemOne.propTypes = {
+OptionItemFive.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
   /**
-     OptionItemOne targetName, value, placeholder should be passed in content object
+     OptionItemFive targetName, value, placeholder should be passed in content object
     */
   content: PropTypes.shape({
     targetName: PropTypes.string,
     value: PropTypes.string,
     placeholder: PropTypes.string,
+    image: PropTypes.object,
   }),
   //=======================================
   // Quommon props
@@ -58,16 +60,20 @@ OptionItemOne.propTypes = {
   */
   isHidden: PropTypes.bool,
   /**
-    OptionItemOne component must have the onInput function passed as props
+    OptionItemFive component must have the onUpload function passed as props
+    */
+  onUpload: PropTypes.func.isRequired,
+  /**
+    OptionItemFive component must have the onInput function passed as props
     */
   onInput: PropTypes.func.isRequired,
   /**
-    OptionItemOne component must have the onClose function passed as props
+    OptionItemFive component must have the onClose function passed as props
     */
   onClose: PropTypes.func.isRequired,
 };
 
-OptionItemOne.defaultProps = {
+OptionItemFive.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
@@ -87,20 +93,36 @@ OptionItemOne.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function OptionItemOne(props) {
+export default function OptionItemFive(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
   const { content } = props;
+
+  const [image, setImage] = useState(content.image);
+  const [value, setValue] = useState(content.value);
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "option-item-one");
+  let quommonClasses = getQuommons(props, "option-item-five");
   //-------------------------------------------------------------------
   // 3. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  //-------------------------------------------------------------------
+  // 6. Function to update value of the input field
+  //-------------------------------------------------------------------
+  const handleImageUpload = (image) => {
+    setImage(image);
+    props.onUpload(content.targetName, image, value);
+  };
+  //-------------------------------------------------------------------
+  // 6. Function to return input value of the component
+  //-------------------------------------------------------------------
+  const handleValue = (name, value) => {
+    setValue(value);
+    props.onInput(content.targetName, image, value);
+  };
   // ========================= Render Function =================================
 
   return (
@@ -109,7 +131,14 @@ export default function OptionItemOne(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <div className="qui-inline-option-container">
+      <div className="qui-option-item-five-container">
+        <div className="qui-option-item-five-upload-button">
+          <OptionalImageField
+            content={{ icon: "fas fa-image" }}
+            onClick={(image) => handleImageUpload(image)}
+            withColor={{ ...props.withColor }}
+          />
+        </div>
         <InputField
           name={content.targetName}
           content={{
@@ -119,11 +148,11 @@ export default function OptionItemOne(props) {
           }}
           asEmphasis="listInput"
           withColor={props.withColor}
-          onClick={(name, value) => props.onInput(name, value)}
+          onClick={handleValue}
         />
-        <div className="qui-inline-edit-with-remove-button-close-icon">
+        <div className="qui-option-item-five-close-icon">
           <i
-            className="qui-inline-edit-with-remove-button-icon fas fa-times"
+            className="qui-option-item-five-icon fas fa-times"
             data-id={content.targetName}
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>

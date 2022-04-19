@@ -1,25 +1,26 @@
 // Import npm packages
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
+import { FormControlLabel, Radio } from "@mui/material";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./OptionItemOne.scss";
+import "./OptionItemThree.scss";
 import "../../../common/stylesheets/overrule.scss";
-import InputField from "../../InputField/InputField.react";
+import OptionalImageField from '../../OptionalImageField/OptionalImageField.react'
 
-OptionItemOne.propTypes = {
+OptionItemThree.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
   /**
-     OptionItemOne targetName, value, placeholder should be passed in content object
+    OptionItemThree targetName, value, placeholder, checked should be passed in content object
     */
   content: PropTypes.shape({
     targetName: PropTypes.string,
-    value: PropTypes.string,
-    placeholder: PropTypes.string,
+    image: PropTypes.object,
+    checked: PropTypes.bool,
   }),
   //=======================================
   // Quommon props
@@ -58,16 +59,20 @@ OptionItemOne.propTypes = {
   */
   isHidden: PropTypes.bool,
   /**
-    OptionItemOne component must have the onInput function passed as props
+    OptionItemThree component must have the onUpload function passed as props
     */
-  onInput: PropTypes.func.isRequired,
+  onUpload: PropTypes.func.isRequired,
   /**
-    OptionItemOne component must have the onClose function passed as props
+    OptionItemThree component must have the onSelect function passed as props
+    */
+  onSelect: PropTypes.func.isRequired,
+  /**
+    OptionItemThree component must have the onClose function passed as props
     */
   onClose: PropTypes.func.isRequired,
 };
 
-OptionItemOne.defaultProps = {
+OptionItemThree.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
@@ -87,19 +92,41 @@ OptionItemOne.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function OptionItemOne(props) {
+export default function OptionItemThree(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
   const { content } = props;
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "option-item-one");
+  const [image, setImage] = useState(content.image);
+  const [isChecked, setIsChecked] = useState(content.checked);
+  useEffect(() => {
+    setIsChecked(content.checked);
+  }, [content.checked]);
   //-------------------------------------------------------------------
-  // 3. Get animation of the component
+  // 3. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "option-item-three");
+  //-------------------------------------------------------------------
+  // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
+  //-------------------------------------------------------------------
+  // 5. Function to change checked state of the component
+  //-------------------------------------------------------------------
+  const handleRadio = (e) => {
+    setIsChecked(e.target.checked);
+    props.onSelect(content.targetName, image, e.target.checked);
+  };
+  //-------------------------------------------------------------------
+  // 6. Function to update value of the input field
+  //-------------------------------------------------------------------
+  const handleImageUpload = (image) => {
+    setImage(image);
+    props.onUpload(content.targetName, image, isChecked);
+  };
 
   // ========================= Render Function =================================
 
@@ -109,21 +136,31 @@ export default function OptionItemOne(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <div className="qui-inline-option-container">
-        <InputField
-          name={content.targetName}
-          content={{
-            value: content.value,
-            placeholder: content.placeholder,
-            maxLength: 300,
-          }}
-          asEmphasis="listInput"
-          withColor={props.withColor}
-          onClick={(name, value) => props.onInput(name, value)}
-        />
-        <div className="qui-inline-edit-with-remove-button-close-icon">
+      <div className="qui-option-item-three-container">
+        <div className="qui-option-item-three-radio-container">
+          <FormControlLabel
+            className="qui-option-item-three-radio"
+            value={content.targetName}
+            control={
+              <Radio
+                checked={isChecked}
+                style={{ color: props.withColor?.accentColor }}
+              />
+            }
+            label={isChecked ? "Correct" : "Incorrect"}
+            onChange={handleRadio}
+          />
+        </div>
+        <div className="qui-option-item-three-upload-button">
+          <OptionalImageField
+            content={{ icon: "fas fa-image" }}
+            onClick={(image) => handleImageUpload(image)}
+            withColor={{ ...props.withColor }}
+          />
+        </div>
+        <div className="qui-option-item-three-close-icon">
           <i
-            className="qui-inline-edit-with-remove-button-icon fas fa-times"
+            className="qui-option-item-three-icon fas fa-times"
             data-id={content.targetName}
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>

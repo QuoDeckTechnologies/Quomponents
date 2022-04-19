@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import OptionItemOne from "../components/OptionItem/OptionItemOne/OptionItemOne.react";
+import OptionItemFour from "../components/OptionItem/OptionItemFour/OptionItemFour.react";
 
 export default {
-  title: "Design System/OptionItem/OptionItemOne",
-  component: OptionItemOne,
+  title: "Design System/OptionItem/OptionItemFour",
+  component: OptionItemFour,
   argTypes: {
     content: {},
     withColor: {
@@ -38,6 +38,12 @@ export default {
         defaultValue: false,
       },
     },
+    onSelect: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
     onInput: {
       table: {
         category: "Events",
@@ -52,7 +58,7 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a Option Item One.",
+    componentSubtitle: "Displays a Option Item Four.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
@@ -63,7 +69,7 @@ export default {
 // Default
 // -------------------------------------------------------------
 const Template = (args) => {
-  return <OptionItemOne {...args} />;
+  return <OptionItemFour {...args} />;
 };
 
 export const Default = Template.bind({});
@@ -71,7 +77,8 @@ Default.args = {
   content: {
     targetName: "Target Name",
     value: "",
-    placeholder: "Option Item One",
+    placeholder: "Option Item Four",
+    checked: true,
   },
   withColor: {
     backgroundColor: "#ffab000d",
@@ -89,27 +96,27 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<OptionItemOne {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<OptionItemFour {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Colored Option Item One
+// Colored Option Item Four
 // -------------------------------------------------------------
-export const ColoredOptionItemOne = Template.bind({});
-ColoredOptionItemOne.args = {
+export const ColoredOptionItemFour = Template.bind({});
+ColoredOptionItemFour.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#8c9ea3",
-    textColor: "#ffffff",
+    textColor: "",
     accentColor: "#597387",
   },
 };
-ColoredOptionItemOne.parameters = {
+ColoredOptionItemFour.parameters = {
   docs: {
     source: {
-      code: `<OptionItemOne {...${JSON.stringify(
-        ColoredOptionItemOne.args,
+      code: `<OptionItemFour {...${JSON.stringify(
+        ColoredOptionItemFour.args,
         null,
         2
       )}}/>`,
@@ -117,10 +124,10 @@ ColoredOptionItemOne.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Animated Option Item One
+// Animated Option Item Four
 // -------------------------------------------------------------
-export const AnimatedOptionItemOne = Template.bind({});
-AnimatedOptionItemOne.args = {
+export const AnimatedOptionItemFour = Template.bind({});
+AnimatedOptionItemFour.args = {
   ...Default.args,
   withAnimation: {
     animation: "fade",
@@ -128,11 +135,11 @@ AnimatedOptionItemOne.args = {
     delay: 0,
   },
 };
-AnimatedOptionItemOne.parameters = {
+AnimatedOptionItemFour.parameters = {
   docs: {
     source: {
-      code: `<OptionItemOne {...${JSON.stringify(
-        AnimatedOptionItemOne.args,
+      code: `<OptionItemFour {...${JSON.stringify(
+        AnimatedOptionItemFour.args,
         null,
         2
       )}}/>`,
@@ -140,7 +147,7 @@ AnimatedOptionItemOne.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Multiple Option Item One
+// Multiple Option Item Four
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
   const [contentArr, setContentArr] = useState(args.multiContent);
@@ -169,6 +176,25 @@ const MultipleTemplate = (args) => {
     setContentArr([...tmp_arr]);
   };
   // -------------------------------------------------------------
+  // Function to set selected option in the content array
+  // -------------------------------------------------------------
+  const handleSelect = (targetName, value, checked) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.targetName === targetName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.checked = checked;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
+  // -------------------------------------------------------------
   // Function to put value in the array of objects
   // -------------------------------------------------------------
   const handleInput = (targetName, value) => {
@@ -194,10 +220,15 @@ const MultipleTemplate = (args) => {
       {contentArr.map((content, index) => {
         return (
           <div style={{ marginBottom: "1em" }} key={index}>
-            <OptionItemOne
+            <OptionItemFour
               {...args}
               content={{ ...content }}
-              onInput={(targetName, value) => handleInput(targetName, value)}
+              onSelect={(targetName, value, checked) =>
+                handleSelect(targetName, value, checked)
+              }
+              onInput={(targetName, value, checked) =>
+                handleInput(targetName, value, checked)
+              }
               onClose={handleRemove}
             />
           </div>
@@ -206,32 +237,35 @@ const MultipleTemplate = (args) => {
     </div>
   );
 };
-export const MultipleOptionItemOne = MultipleTemplate.bind({});
-MultipleOptionItemOne.args = {
+export const MultipleOptionItemFour = MultipleTemplate.bind({});
+MultipleOptionItemFour.args = {
   ...Default.args,
   multiContent: [
     {
       targetName: "TargetNameOne",
       value: "",
       placeholder: "Placeholder One",
+      checked: false,
     },
     {
       targetName: "TargetNameTwo",
       value: "",
       placeholder: "Placeholder Two",
+      checked: true,
     },
     {
       targetName: "TargetNameThree",
       value: "Default Value",
       placeholder: "Placeholder Three",
+      checked: false,
     },
   ],
 };
-MultipleOptionItemOne.parameters = {
+MultipleOptionItemFour.parameters = {
   docs: {
     source: {
-      code: `<OptionItemOne {...${JSON.stringify(
-        MultipleOptionItemOne.args,
+      code: `<OptionItemFour {...${JSON.stringify(
+        MultipleOptionItemFour.args,
         null,
         2
       )}}/>`,
