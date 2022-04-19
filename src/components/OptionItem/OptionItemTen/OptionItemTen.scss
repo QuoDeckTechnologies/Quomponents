@@ -1,0 +1,57 @@
+.qui .qui-option-item-ten-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: space-between;
+    grid-gap: 0.5em;
+}
+.qui .qui-option-item-inputfieldone {
+    display: flex;
+    flex: 1;
+}
+.qui .qui-option-item-inputfieldthree {
+    display: flex;
+    flex: 1;
+    margin-top: 0.3em;
+}
+.qui .qui-option-item-inputfieldtwo {
+    display: flex;
+    flex: 1;
+}
+.qui.qui-option-item-ten .qui-input-field {
+    text-indent: 0;
+}
+.qui.qui-option-item-ten .qui-char-limit-max-length {
+    font-size: 0.65em;
+}
+.qui .qui-option-item-close-icon {
+    height: 2em;
+    width: 2em;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #a8a8a8;
+}
+.qui .qui-option-item-ten-container .qui-optional-image-field-button {
+    padding: 0.5em;
+    font-size: 0.8em;
+}
+.qui .qui-option-item-ten-container .qui-optional-image-field-icon {
+    padding: 0.04em 0.2em;
+}
+.qui.qui-option-item-ten .qui.qui-optional-image-field {
+    font-size: 1em;
+}
+.qui .qui-option-item-ten-container .qui-option-item-upload-button {
+    min-width: 5em;
+}
+@media only screen and (min-width: 320px) {
+    .qui.qui-option-item-ten .qui-char-limit-max-length {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 481px) {
+    .qui.qui-option-item-ten .qui-char-limit-max-length {
+        display: block;
+    }
+}

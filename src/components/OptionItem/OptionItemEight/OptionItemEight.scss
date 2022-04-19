@@ -1,11 +1,12 @@
-.qui.qui-option-item-eight .qui-char-limit-max-length {
-    font-size: 0.65em;
-}
 .qui .qui-option-item-eight-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     grid-gap: 0.5em;
+    flex: 1;
+}
+.qui.qui-option-item-eight .qui-char-limit-max-length {
+    font-size: 0.65em;
 }
 .qui .qui-option-item-eight-close-icon {
     height: 2em;
@@ -23,7 +24,6 @@
 .qui.qui-option-item-eight .qui-input-field {
     text-indent: 0;
 }
-
 .qui.qui-option-item-eight .qui-option-item-button {
     .css-tqxl64-MuiButtonBase-root-MuiButton-root {
         color: #666666;

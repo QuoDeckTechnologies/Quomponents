@@ -6,17 +6,17 @@ import _ from "lodash";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./OptionItemSix.scss";
+import "./OptionItemTen.scss";
 import "../../../common/stylesheets/overrule.scss";
 import OptionalImageField from "../../OptionalImageField/OptionalImageField.react";
 import InputField from "../../InputField/InputField.react";
 
-OptionItemSix.propTypes = {
+OptionItemTen.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-      OptionItemSix data should be passed in content field and it is a required field
+      OptionItemTen data should be passed in content field and it is a required field
       */
     content: PropTypes.shape({
         targetName: PropTypes.string,
@@ -60,16 +60,16 @@ OptionItemSix.propTypes = {
     */
     isHidden: PropTypes.bool,
     /**
-      OptionItemSix component must have the onClick function passed as props
+      OptionItemTen component must have the onClick function passed as props
       */
     onInput: PropTypes.func.isRequired,
     /**
-      OptionItemSix component must have the onClick function passed as props
+      OptionItemTen component must have the onClick function passed as props
       */
     onClose: PropTypes.func.isRequired,
 };
 
-OptionItemSix.defaultProps = {
+OptionItemTen.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -89,22 +89,26 @@ OptionItemSix.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function OptionItemSix(props) {
+export default function OptionItemTen(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring content prop
     //-------------------------------------------------------------------
     const { content } = props;
     const [value, setValue] = useState(content.value);
     //-------------------------------------------------------------------
-    // 2. Set the classes
+    // 3. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "option-item-six");
+    let quommonClasses = getQuommons(props, "option-item-ten");
     //-------------------------------------------------------------------
-    // 3. Get animation of the component
+    // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     //-------------------------------------------------------------------
-    // 4. Function to return input value of the component
+    // 5. Function to return checked value of the component
+    //-------------------------------------------------------------------
+
+    //-------------------------------------------------------------------
+    // 6. Function to return input value of the component
     //-------------------------------------------------------------------
     const handleValue = (name, value) => {
         setValue(value);
@@ -118,30 +122,9 @@ export default function OptionItemSix(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className="qui-option-item-six-container">
-
-                <div className="qui-optionitem-flexone">
-                    <div className="qui-optionitem-flextwo">
-                        <div className="qui-option-item-upload-button">
-                            <OptionalImageField
-                                content={{ icon: "fas fa-image" }}
-                                onClick={props.onInput}
-                                withColor={{ ...props.withColor }}
-                            />
-                        </div>
-                        <InputField
-                            name={content.targetName}
-                            content={{
-                                value: content.value,
-                                placeholder: content.placeholder,
-                                maxLength: 300,
-                            }}
-                            asEmphasis="listInput"
-                            withColor={props.withColor}
-                            onClick={handleValue}
-                        />
-                    </div>
-                    <div className="qui-optionitem-flexthree"> <InputField
+            <div className="qui-option-item-ten-container">
+                <div className="qui-option-item-inputfieldone">
+                    <InputField
                         name={content.targetName}
                         content={{
                             value: content.value,
@@ -152,15 +135,48 @@ export default function OptionItemSix(props) {
                         withColor={props.withColor}
                         onClick={handleValue}
                     />
-                    </div>
+                </div>
+                <div className="qui-option-item-upload-button">
+                    <OptionalImageField
+                        content={{ icon: "fas fa-image" }}
+                        onClick={props.onInput}
+                        withColor={{ ...props.withColor }}
+                    />
+                </div>
+                <div className="qui-option-item-inputfieldtwo">
+                    <InputField
+                        name={content.targetName}
+                        content={{
+                            value: content.value,
+                            placeholder: content.placeholder,
+                            maxLength: 300,
+                        }}
+                        asEmphasis="listInput"
+                        withColor={props.withColor}
+                        onClick={handleValue}
+                    />
                 </div>
                 <div className="qui-option-item-close-icon">
                     <i
                         className="fas fa-times"
                         id={content.targetName}
                         onClick={(e) => props.onClose(e.target.dataset.id)}
-                    ></i>
+                    >
+                    </i>
                 </div>
+            </div>
+            <div className="qui-option-item-inputfieldthree">
+                <InputField
+                    name={content.targetName}
+                    content={{
+                        value: content.value,
+                        placeholder: content.placeholder,
+                        maxLength: 300,
+                    }}
+                    asEmphasis="listInput"
+                    withColor={props.withColor}
+                    onClick={handleValue}
+                />
             </div>
         </motion.div>
     );

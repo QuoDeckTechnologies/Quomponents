@@ -95,29 +95,37 @@ export default function OptionItemSeven(props) {
     // 1. Destructuring content prop
     //-------------------------------------------------------------------
     const { content } = props;
-
+    //-------------------------------------------------------------------
+    // 2. Defining states and hooks
+    //-------------------------------------------------------------------
+    const [value, setValue] = useState(content.value);
     const [isChecked, setIsChecked] = useState(content.checked);
-    const [value, setValue] = useState(content.targetName);
-
     useEffect(() => {
         setIsChecked(content.checked);
     }, [content.checked]);
-    //   useEffect(() => {
-    //     console.log(isChecked);
-    //   }, [isChecked]);
     //-------------------------------------------------------------------
-    // 2. Set the classes
+    // 3. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "option-item-seven");
     //-------------------------------------------------------------------
-    // 3. Get animation of the component
+    // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-
+    //-------------------------------------------------------------------
+    // 5. Function to return checked value of the component
+    //-------------------------------------------------------------------
     const handleRadio = (e) => {
         setIsChecked(e.target.checked);
-        props.onInput(content.name, value, e.target.checked);
+        props.onSelect(content.targetName, value, e.target.checked);
     };
+    //-------------------------------------------------------------------
+    // 6. Function to return input value of the component
+    //-------------------------------------------------------------------
+    const handleValue = (name, value) => {
+        setValue(value);
+        props.onInput(content.targetName, value, isChecked);
+    };
+
     // ========================= Render Function =================================
 
     return (
@@ -127,18 +135,20 @@ export default function OptionItemSeven(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className="qui-option-item-seven-container">
-               <FormControlLabel
-                    className="qui-option-item-seven-radio"
-                    value={content.targetName}
-                    control={
-                        <Radio
-                            checked={isChecked}
-                            style={{ color: props.withColor.accentColor }}
-                        />
-                    }
-                    label={isChecked ? "Correct" : "Incorrect"}
-                    onChange={handleRadio}
-                />
+                <div className="qui-option-item-radio-container">
+                    <FormControlLabel
+                        className="qui-option-item-radio"
+                        value={content.targetName}
+                        control={
+                            <Radio
+                                checked={isChecked}
+                                style={{ color: props.withColor?.accentColor }}
+                            />
+                        }
+                        label={isChecked ? "Correct" : "Incorrect"}
+                        onChange={handleRadio}
+                    />
+                </div>
                 <div className="qui-option-item-upload-button">
                     <OptionalImageField
                         content={{ icon: "fas fa-image" }}
@@ -155,13 +165,13 @@ export default function OptionItemSeven(props) {
                     }}
                     asEmphasis="listInput"
                     withColor={props.withColor}
-                    onClick={(name, value) => props.onInput(name, value, isChecked)}
+                    onClick={handleValue}
                 />
                 <div className="qui-option-item-seven-close-icon">
                     <i
                         className="qui-option-item-seven-icon fas fa-times"
                         id={content.targetName}
-                        onClick={(e) => props.onClose(e.target.id)}
+                        onClick={(e) => props.onClose(e.target.dataset.id)}
                     ></i>
                 </div>
             </div>

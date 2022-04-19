@@ -1,10 +1,10 @@
 import React from "react";
-import OptionItemSix from "../components/OptionItem/OptionItemSix/OptionItemSix.react";
+import OptionItemTen from "../components/OptionItem/OptionItemTen/OptionItemTen.react";
 
 export default {
   title:
-    "Design System/OptionItem/OptionItemSix",
-  component: OptionItemSix,
+    "Design System/OptionItem/OptionItemTen",
+  component: OptionItemTen,
   argTypes: {
     content: {},
     withColor: {
@@ -64,7 +64,7 @@ export default {
 // Default
 // -------------------------------------------------------------
 const Template = (args) => {
-  return <OptionItemSix {...args} />;
+  return <OptionItemTen {...args} />;
 };
 
 export const Default = Template.bind({});
@@ -72,7 +72,7 @@ Default.args = {
   content: {
     targetName: "name one",
     value: "",
-    placeholder: "Ops6",
+    placeholder: "Ops10",
   },
   withColor: {
     backgroundColor: "#ffab000d",
@@ -94,12 +94,11 @@ Default.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
-// Colored OptionItem Six
+// Colored OptionItem Ten
 // -------------------------------------------------------------
-export const ColoredOptionitemSix = Template.bind({});
-ColoredOptionitemSix.args = {
+export const ColoredOptionitemTen = Template.bind({});
+ColoredOptionitemTen.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#8c9ea3",
@@ -107,11 +106,11 @@ ColoredOptionitemSix.args = {
     accentColor: "#597387",
   },
 };
-ColoredOptionitemSix.parameters = {
+ColoredOptionitemTen.parameters = {
   docs: {
     source: {
       code: `<OptionItemSeven {...${JSON.stringify(
-        ColoredOptionitemSix.args,
+        ColoredOptionitemTen.args,
         null,
         2
       )}}/>`,
@@ -119,10 +118,10 @@ ColoredOptionitemSix.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Animated OptionItem Six
+// Animated OptionItem Ten
 // -------------------------------------------------------------
-export const AnimatedOptionitemSix = Template.bind({});
-AnimatedOptionitemSix.args = {
+export const AnimatedOptionitemTen = Template.bind({});
+AnimatedOptionitemTen.args = {
   ...Default.args,
   withAnimation: {
     animation: "fade",
@@ -130,14 +129,15 @@ AnimatedOptionitemSix.args = {
     delay: 0,
   },
 };
-AnimatedOptionitemSix.parameters = {
+AnimatedOptionitemTen.parameters = {
   docs: {
     source: {
       code: `<OptionItemSeven {...${JSON.stringify(
-        AnimatedOptionitemSix.args,
+        AnimatedOptionitemTen.args,
         null,
         2
       )}}/>`,
     },
   },
 };
+

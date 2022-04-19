@@ -1,6 +1,8 @@
 .qui .qui-option-item-seven-container {
   display: flex;
+  flex: 1;
   align-items: center;
+  justify-content: space-between;
 }
 .qui.qui-option-item-seven .qui-char-limit-max-length {
   font-size: 0.65em;
@@ -17,24 +19,37 @@
 }
 .qui.qui-option-item-seven .qui.qui-optional-image-field {
   font-size: 1em;
-  margin-top: .5em;
-}
-.qui .qui-option-item-upload-button {
-  min-width: 5em;
 }
 .qui .qui-option-item-seven-close-icon {
-  height: 2em;
   width: 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 1.2em;
   color: #a8a8a8;
-  margin-left: 0.5em;
+  margin-left: 0.25em;
 }
 .qui .qui-option-item-seven-icon {
   cursor: pointer;
 }
 .qui.qui-option-item-seven .qui-input-field {
   text-indent: 0;
+}
+.qui .qui-option-item-seven-container .qui-option-item-upload-button {
+  min-width: 8em;
+}
+
+@media only screen and (min-width: 320px) {
+  .qui .qui-option-item-radio-container {
+    min-width: 3.5em;
+  }
+  .qui .qui-option-item-radio-container .MuiTypography-root.css-ahj2mt-MuiTypography-root {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .qui .qui-option-item-radio-container {
+    min-width: 8em;
+  }
+  .qui .qui-option-item-radio-container .MuiTypography-root.css-ahj2mt-MuiTypography-root {
+    display: block;
+  }
 }

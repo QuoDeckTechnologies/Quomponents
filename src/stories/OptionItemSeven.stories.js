@@ -1,7 +1,5 @@
-import { RadioGroup } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import OptionItemSeven from "../components/OptionItem/OptionItemSeven/OptionItemSeven.react";
-import { MultipleOptionitemEight } from "./OptionItemEight.stories";
 
 export default {
   title: "Design System/OptionItem/OptionItemSeven",
@@ -97,7 +95,7 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Colored Single Select
+// Colored OptionItem Seven
 // -------------------------------------------------------------
 export const ColoredOptionitemSeven = Template.bind({});
 ColoredOptionitemSeven.args = {
@@ -120,7 +118,7 @@ ColoredOptionitemSeven.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Animated Single Select
+// Animated OptionItem
 // -------------------------------------------------------------
 export const AnimatedOptionitemSeven = Template.bind({});
 AnimatedOptionitemSeven.args = {
@@ -146,35 +144,116 @@ AnimatedOptionitemSeven.parameters = {
 // Multiple Inline Edit With Remove Button
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  let obj = { ...args.content };
+  const [contentArr, setContentArr] = useState([...args.multiContent]);
+  // -------------------------------------------------------------
+  // Hook to return modified content object
+  // -------------------------------------------------------------
+  useEffect(() => {
+    args.onInput(contentArr);
+  });
+  // -------------------------------------------------------------
+  // Temporary variables for operations
+  // -------------------------------------------------------------
+  let tmp_state = contentArr;
+  let tmp_arr = [];
+  let tmp_obj = {};
+  // -------------------------------------------------------------
+  // Function to remove an object from the array
+  // -------------------------------------------------------------
+  const handleRemove = (dataID) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_state.forEach((dataObj) => {
+      tmp_arr.push({ ...dataObj });
+    });
+    tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
+    setContentArr([...tmp_arr]);
+  };
+  // -------------------------------------------------------------
+  // Function to set selected option in the content array
+  // -------------------------------------------------------------
+  const handleSelect = (targetName, value, checked) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.targetName === targetName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.checked = checked;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_obj.checked = !checked;
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
+  // -------------------------------------------------------------
+  // Function to put value in the array of objects
+  // -------------------------------------------------------------
+  const handleInput = (targetName, value, checked) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.targetName === targetName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.value = value;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
+
   return (
-    <RadioGroup>
-      <div>
-        <div style={{ marginBottom: "1em" }}>
-          <OptionItemSeven
-            {...args}
-            content={{ ...obj, targetName: "one", checked: false }}
-          />
-        </div>
-        <div style={{ marginBottom: "1em" }}>
-          <OptionItemSeven
-            {...args}
-            content={{ ...obj, targetName: "two", checked: true }}
-          />
-        </div>
-        <div style={{ marginBottom: "1em" }}>
-          <OptionItemSeven
-            {...args}
-            content={{ ...obj, targetName: "three", checked: false }}
-          />
-        </div>
-      </div>
-    </RadioGroup>
+    <div>
+      {contentArr.map((content, index) => {
+        return (
+          <div style={{ marginBottom: "1em" }} key={index}>
+            <OptionItemSeven
+              {...args}
+              content={content}
+              onSelect={(targetName, value, checked) =>
+                handleSelect(targetName, value, checked)
+              }
+              onInput={(targetName, value, checked) =>
+                handleInput(targetName, value, checked)
+              }
+              onClose={handleRemove}
+            />
+          </div>
+        );
+      })}
+    </div>
   );
 };
 export const MultipleOptionitemSeven = MultipleTemplate.bind({});
 MultipleOptionitemSeven.args = {
   ...Default.args,
+  multiContent: [
+    {
+      targetName: "TargetNameOne",
+      value: "",
+      placeholder: "Placeholder One",
+      checked: false,
+    },
+    {
+      targetName: "TargetNameTwo",
+      value: "",
+      placeholder: "Placeholder Two",
+      checked: true,
+    },
+    {
+      targetName: "TargetNameThree",
+      value: "Default Value",
+      placeholder: "Placeholder Three",
+      checked: false,
+    },
+  ],
 };
 MultipleOptionitemSeven.parameters = {
   docs: {
@@ -187,3 +266,4 @@ MultipleOptionitemSeven.parameters = {
     },
   },
 };
+

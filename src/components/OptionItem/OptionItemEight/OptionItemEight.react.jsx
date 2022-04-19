@@ -72,7 +72,6 @@ OptionItemEight.defaultProps = {
     // Component Specific props
     //=======================================
     content: {},
-    optionType: "title",
     //=======================================
     // Quommon props
     //=======================================
@@ -139,7 +138,7 @@ export default function OptionItemEight(props) {
                     <i
                         className="qui-option-item-eight-icon fas fa-times"
                         id={content?.targetName}
-                        onClick={(e) => props.onClose(e.target.id)}
+                        onClick={(e) => props.onClose(e.target.dataset.id)}
                     ></i>
                 </div>
             </div>

@@ -1,16 +1,15 @@
-.qui-optionitem-popuplist-container {
+.qui-option-item-six-container {
     display: flex;
-    min-width: 100%;
     flex: 1;
-    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.qui.qui-option-item-six .qui-char-limit-max-length {
+    font-size: 0.65em;
 }
 .qui .qui-option-item-close-icon {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     float: right;
     flex: end;
-    margin-top: 0.35em;
     height: 2em;
     width: 2em;
     font-size: 1.2em;
@@ -20,23 +19,27 @@
 .qui .qui-optionitem-flexone {
     display: flex;
     flex: 1;
-    flex-wrap: wrap;
 }
-
-.qui .qui-optionitem-popuplist-container .qui-optional-image-field-button {
+.qui .qui-optionitem-flexthree {
+    display: flex;
+    margin-left: .5em;
+}
+.qui .qui-option-item-six-container .qui-optional-image-field-button {
     padding: 0.5em;
     font-size: 0.8em;
 }
-.qui .qui-optionitem-popuplist-container .qui-optional-image-field-icon {
+.qui .qui-option-item-six-container .qui-optional-image-field-icon {
     padding: 0.04em 0.2em;
 }
-.qui.qui-option-item .qui.qui-optional-image-field {
+.qui.qui-option-item-six .qui.qui-optional-image-field {
     font-size: 1em;
 }
-.qui .qui-option-item-upload-button {
+.qui .qui-option-item-six-container .qui-option-item-upload-button {
     min-width: 8em;
 }
-
+.qui.qui-option-item-six .qui-input-field {
+    text-indent: 0;
+  }
 @media only screen and (min-width: 320px) {
     .qui.qui-option-item .qui-option-item-close-icon {
         font-size: 1em;
@@ -48,14 +51,14 @@
         display: flex;
         flex: 1;
     }
-    .qui .qui-option-item-close-icon {
-        position: fixed;
-        right: 0;
+    .qui .qui-optionitem-flexthree {
+        display: flex;
+        margin-left: 0em;
     }
 }
 
 @media only screen and (min-width: 481px) {
-    .qui-option-item .qui-option-item-close-icon {
+    .qui-option-item-six-container .qui-option-item-close-icon {
         font-size: 1.1em;
     }
     .qui .qui-optionitem-flexone {
@@ -64,27 +67,15 @@
     }
     .qui .qui-optionitem-flexthree {
         display: flex;
-        flex: 1;
-    }
-    .qui .qui-optionitem-flextwo {
-        display: flex;
-        flex: 1;
+        margin-left: .5em;
     }
 }
 
 @media only screen and (min-width: 769px) {
-    .qui-option-item .qui-option-item-close-icon {
+    .qui-option-item-six-container .qui-option-item-close-icon {
         font-size: 1.2em;
     }
     .qui .qui-optionitem-flexone {
-        display: flex;
-        flex: 1;
-    }
-    .qui .qui-optionitem-flexthree {
-        display: flex;
-        flex: 1;
-    }
-    .qui .qui-optionitem-flextwo {
         display: flex;
         flex: 1;
     }
