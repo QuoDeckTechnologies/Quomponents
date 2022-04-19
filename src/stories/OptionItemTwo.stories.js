@@ -1,5 +1,4 @@
-import { RadioGroup } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import OptionItemTwo from "../components/OptionItem/OptionItemTwo/OptionItemTwo.react";
 
 export default {
@@ -145,35 +144,106 @@ AnimatedOptionItemTwo.parameters = {
 // Multiple Inline Edit With Remove Button
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  let obj = { ...args.content };
+  const [contentArr, setContentArr] = useState([...args.multiContent]);
+
+  useEffect(() => {
+    args.onInput(contentArr);
+  });
+
+  let tmp_state = contentArr;
+  let tmp_arr = [];
+  let tmp_obj = {};
+
+  const handleRemove = (dataID) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_state.forEach((dataObj) => {
+      tmp_arr.push({ ...dataObj });
+    });
+    tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
+    setContentArr([...tmp_arr]);
+  };
+
+  const handleSelect = (targetName, value, checked) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.targetName === targetName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.checked = checked;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_obj.checked = !checked;
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
+
+  const handleInput = (targetName, value, checked) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.targetName === targetName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.value = value;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
+
   return (
-    <RadioGroup>
-      <div>
-        <div style={{ marginBottom: "1em" }}>
-          <OptionItemTwo
-            {...args}
-            content={{ ...obj, targetName: "one", checked: false }}
-          />
-        </div>
-        <div style={{ marginBottom: "1em" }}>
-          <OptionItemTwo
-            {...args}
-            content={{ ...obj, targetName: "two", checked: true }}
-          />
-        </div>
-        <div style={{ marginBottom: "1em" }}>
-          <OptionItemTwo
-            {...args}
-            content={{ ...obj, targetName: "three", checked: false }}
-          />
-        </div>
-      </div>
-    </RadioGroup>
+    <div>
+      {contentArr.map((content, index) => {
+        return (
+          <div style={{ marginBottom: "1em" }} key={index}>
+            <OptionItemTwo
+              {...args}
+              content={content}
+              onSelect={(targetName, value, checked) =>
+                handleSelect(targetName, value, checked)
+              }
+              onInput={(targetName, value, checked) =>
+                handleInput(targetName, value, checked)
+              }
+              onClose={handleRemove}
+            />
+          </div>
+        );
+      })}
+    </div>
   );
 };
 export const MultipleOptionItemTwo = MultipleTemplate.bind({});
 MultipleOptionItemTwo.args = {
   ...Default.args,
+  multiContent: [
+    {
+      targetName: "TargetNameOne",
+      value: "",
+      placeholder: "Placeholder One",
+      checked: false,
+    },
+    {
+      targetName: "TargetNameTwo",
+      value: "",
+      placeholder: "Placeholder Two",
+      checked: true,
+    },
+    {
+      targetName: "TargetNameThree",
+      value: "Default Value",
+      placeholder: "Placeholder Three",
+      checked: false,
+    },
+  ],
 };
 MultipleOptionItemTwo.parameters = {
   docs: {

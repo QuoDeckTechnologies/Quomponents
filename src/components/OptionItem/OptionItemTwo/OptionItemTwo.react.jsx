@@ -63,6 +63,10 @@ OptionItemTwo.propTypes = {
     */
   onInput: PropTypes.func.isRequired,
   /**
+    OptionItemTwo component must have the onSelect function passed as props
+    */
+  onSelect: PropTypes.func.isRequired,
+  /**
     OptionItemTwo component must have the onClose function passed as props
     */
   onClose: PropTypes.func.isRequired,
@@ -72,7 +76,7 @@ OptionItemTwo.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: [],
+  content: {},
   optionType: "title",
   //=======================================
   // Quommon props
@@ -95,19 +99,12 @@ export default function OptionItemTwo(props) {
   //-------------------------------------------------------------------
   const { content } = props;
 
+  const [value, setValue] = useState(content.value);
   const [isChecked, setIsChecked] = useState(content.checked);
-  const [value, setValue] = useState(content.targetName);
-
-  useEffect(() => {
-    setIsChecked(content.checked);
-  }, [content.checked]);
-  //   useEffect(() => {
-  //     console.log(isChecked);
-  //   }, [isChecked]);
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "single-select");
+  let quommonClasses = getQuommons(props, "option-item-two");
   //-------------------------------------------------------------------
   // 3. Get animation of the component
   //-------------------------------------------------------------------
@@ -115,9 +112,18 @@ export default function OptionItemTwo(props) {
 
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
-    props.onInput(content.name, value, e.target.checked);
-    console.log(e.target.checked)
+    props.onSelect(content.targetName, value, e.target.checked);
   };
+
+  const handleValue = (name, value) => {
+    setValue(value);
+    props.onInput(content.targetName, value, isChecked);
+  };
+
+  useEffect(() => {
+    setIsChecked(content.checked);
+  }, [content.checked]);
+
   // ========================= Render Function =================================
 
   return (
@@ -127,18 +133,33 @@ export default function OptionItemTwo(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div className="qui-single-select-container">
-        <FormControlLabel
-          className="qui-single-select-radio"
-          value={content.targetName}
-          control={
-            <Radio
-              checked={isChecked}
-              style={{ color: props.withColor.accentColor }}
-            />
-          }
-          label={isChecked ? "Correct" : "Incorrect"}
-          onChange={handleRadio}
-        />
+        <div className="qui-option-item-radio-container">
+          {/* <input
+            type="radio"
+            className="qui-option-item-radio-button"
+            name={content.radioName}
+            id={content.targetName}
+            value={value}
+            checked={isChecked}
+            onChange={handleRadio}
+          />
+          <label htmlFor={content.targetName} className="qui-option-item-label">
+            {isChecked ? "Correct" : "Incorrect"}
+          </label> */}
+          <FormControlLabel
+            className="qui-option-item-radio"
+            value={content.targetName}
+            control={
+              <Radio
+                // style={{backgroundColor:'red'}}
+                checked={isChecked}
+                style={{ color: props.withColor?.accentColor }}
+              />
+            }
+            label={isChecked ? "Correct" : "Incorrect"}
+            onChange={handleRadio}
+          />
+        </div>
         <InputField
           name={content.targetName}
           content={{
@@ -148,13 +169,13 @@ export default function OptionItemTwo(props) {
           }}
           asEmphasis="listInput"
           withColor={props.withColor}
-          onClick={(name, value) => props.onInput(name, value, isChecked)}
+          onClick={handleValue}
         />
         <div className="qui-single-select-close-icon">
           <i
             className="qui-single-select-icon fas fa-times"
-            id={content.targetName}
-            onClick={(e) => props.onClose(e.target.id)}
+            data-id={content.targetName}
+            onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>
         </div>
       </div>
