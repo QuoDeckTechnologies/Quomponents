@@ -1,0 +1,40 @@
+.qui .qui-option-item-seven-container {
+  display: flex;
+  align-items: center;
+}
+.qui.qui-option-item-seven .qui-char-limit-max-length {
+  font-size: 0.65em;
+}
+.qui .qui-option-item-seven-radio {
+  min-width: 6em;
+}
+.qui .qui-option-item-seven-container .qui-optional-image-field-button {
+  padding: 0.5em;
+  font-size: 0.8em;
+}
+.qui .qui-option-item-seven-container .qui-optional-image-field-icon {
+  padding: 0.04em 0.2em;
+}
+.qui.qui-option-item-seven .qui.qui-optional-image-field {
+  font-size: 1em;
+  margin-top: .5em;
+}
+.qui .qui-option-item-upload-button {
+  min-width: 5em;
+}
+.qui .qui-option-item-seven-close-icon {
+  height: 2em;
+  width: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: #a8a8a8;
+  margin-left: 0.5em;
+}
+.qui .qui-option-item-seven-icon {
+  cursor: pointer;
+}
+.qui.qui-option-item-seven .qui-input-field {
+  text-indent: 0;
+}
