@@ -1,3 +1,4 @@
+import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
@@ -5,24 +6,22 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import RibbonHomeMenu from "../RibbonMenu/homeMenu/RibbonHomeMenu.react";
+import SlideSection from "../RibbonMenu/homeMenu/sections/SlideSection.react";
 
-describe("RibbonHomeMenu", () => {
+describe("SlideSection", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
-	let component, toggleBackChecked, toggleNextChecked;
-	toggleBackChecked = jest.fn();
-	toggleNextChecked = jest.fn();
+	let component;
+
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
-			<RibbonHomeMenu
-				toggleBackChecked={toggleBackChecked}
-				toggleNextChecked={toggleNextChecked}
-				onClick={() => {
-					console.log("Testing RibbonHomeMenu");
-				}}
+			<SlideSection
+				asFloated="left"
+				isHidden={false}
+				isDisabled={false}
+				onClick={jest.fn()}
 			/>
 		);
 	});

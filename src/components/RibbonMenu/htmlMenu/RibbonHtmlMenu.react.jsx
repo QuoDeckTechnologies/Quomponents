@@ -48,7 +48,7 @@ export default function RibbonHtmlMenu(props) {
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className={`qui-ribbon-html-menu-container`}>
-					<SaveExitSection asFloated="inline" onClick={props.onClick} />
+					<SaveExitSection {...props} />
 					<div className="qui-ribbon-menu-parent-vertical-line"></div>
 					<SaveSection {...props} />
 				</div>

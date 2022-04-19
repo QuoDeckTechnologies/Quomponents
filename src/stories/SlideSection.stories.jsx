@@ -1,9 +1,9 @@
 import React from "react";
-import RibbonHtmlMenu from "../components/RibbonMenu/htmlMenu//RibbonHtmlMenu.react";
+import SlideSection from "../components/RibbonMenu/homeMenu/sections/SlideSection.react";
 
 export default {
-	title: "Design System/RibbonMenu/RibbonHtmlMenu",
-	component: RibbonHtmlMenu,
+	title: "Design System/RibbonMenu/RibbonHomeMenu/SlideSection",
+	component: SlideSection,
 	argTypes: {
 		asFloated: {
 			control: "select",
@@ -45,7 +45,7 @@ export default {
 		),
 	],
 	parameters: {
-		componentSubtitle: "Displays a RibbonHtmlMenu for general-purpose use",
+		componentSubtitle: "Displays a SlideSection for general-purpose use",
 		a11y: { disable: true },
 		docs: {
 			iframeHeight: 300,
@@ -56,7 +56,7 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <RibbonHtmlMenu {...args} />;
+const Template = (args) => <SlideSection {...args} />;
 export const Default = Template.bind({});
 Default.args = {
 	asFloated: "left",
@@ -66,7 +66,7 @@ Default.args = {
 Default.parameters = {
 	docs: {
 		source: {
-			code: `<RibbonHtmlMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
+			code: `<SlideSection {...${JSON.stringify(Default.args, null, 2)}}/>`,
 		},
 	},
 };

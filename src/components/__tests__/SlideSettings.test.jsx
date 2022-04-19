@@ -1,3 +1,4 @@
+import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
@@ -5,24 +6,22 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import RibbonHomeMenu from "../RibbonMenu/homeMenu/RibbonHomeMenu.react";
+import SlideSettings from "../RibbonMenu/homeMenu/sections/SlideSettings.react";
 
-describe("RibbonHomeMenu", () => {
+describe("SlideSettings", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
-	let component, toggleBackChecked, toggleNextChecked;
-	toggleBackChecked = jest.fn();
-	toggleNextChecked = jest.fn();
+	let component;
+
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
-			<RibbonHomeMenu
-				toggleBackChecked={toggleBackChecked}
-				toggleNextChecked={toggleNextChecked}
-				onClick={() => {
-					console.log("Testing RibbonHomeMenu");
-				}}
+			<SlideSettings
+				asFloated="left"
+				isHidden={false}
+				isDisabled={false}
+				onClick={jest.fn()}
 			/>
 		);
 	});
@@ -64,5 +63,25 @@ describe("RibbonHomeMenu", () => {
 	it("should render correctly when passed isDisabled props as true", () => {
 		component.setProps({ isDisabled: true });
 		expect(component.exists()).toBe(true);
+	});
+
+	it("should enable back arrow by clicking on Icon", () => {
+		let backArrow = component.find("IconLink").at(0);
+		backArrow.simulate("click");
+	});
+
+	it("should enable back arrow by clicking on text", () => {
+		let backArrow = component.find(".qui-ribbon-menu-label").at(0);
+		backArrow.simulate("click");
+	});
+
+	it("should enable next arrow by clicking on Icon", () => {
+		let nextArrow = component.find("IconLink").at(1);
+		nextArrow.simulate("click");
+	});
+
+	it("should enable next arrow by clicking on text", () => {
+		let nextArrow = component.find(".qui-ribbon-menu-label").at(1);
+		nextArrow.simulate("click");
 	});
 });

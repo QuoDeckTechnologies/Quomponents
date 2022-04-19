@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+import { getQuommons } from "../../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -7,27 +10,59 @@ import "./RibbonHomeMenu.scss";
 import "../../../common/stylesheets/overrule.scss";
 
 import SaveExitSection from "../htmlMenu/sections/SaveExitSection.react";
-import SaveSection from "../htmlMenu/sections/SaveSection.react"
+import SaveSection from "../htmlMenu/sections/SaveSection.react";
 import SlideSection from "./sections/SlideSection.react";
-import SlideSettings from "./sections/SlideSettings";
+import SlideSettings from "./sections/SlideSettings.react";
 import ViewSection from "./sections/ViewSection.react";
 
+RibbonHomeMenu.propTypes = {
+	//=======================================
+	// Component Specific props
+	//=======================================
+
+	//=======================================
+	// Quommon props
+	//=======================================
+	/**
+    Use to float the component in parent container
+    */
+	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+	/**
+    Use to show/hide the component
+    */
+	isHidden: PropTypes.bool,
+	/**
+    Use to enable/disable the component
+    */
+	isDisabled: PropTypes.bool,
+	/**
+    RibbonHomeMenu component must have the onClick function passed as props
+    */
+	onClick: PropTypes.func,
+};
 
 export default function RibbonHomeMenu(props) {
+	//-------------------------------------------------------------------
+	// 1. Set the classes
+	//-------------------------------------------------------------------
+	let quommonClasses = getQuommons(props, "ribbon-home-menu-parent");
 
-    // ========================= Render Function =================================
-
-    return (
-        <div className={`qui-ribbon-home-menu-container`}>
-            <SaveExitSection />
-            <div className="qui-ribbon-menu-parent-vertical-line"></div>
-            <SaveSection />
-            <div className="qui-ribbon-menu-parent-vertical-line"></div>
-            <SlideSection />
-            <div className="qui-ribbon-menu-parent-vertical-line"></div>
-            <SlideSettings />
-            <div className="qui-ribbon-menu-parent-vertical-line"></div>
-            <ViewSection />
-        </div>
-    );
+	// ========================= Render Function =================================
+	return (
+		<div className={`qui ${quommonClasses.parentClasses}`}>
+			<div className={`${quommonClasses.childClasses}`}>
+				<div className={`qui-ribbon-home-menu-container`}>
+					<SaveExitSection {...props}/>
+					<div className="qui-ribbon-menu-parent-vertical-line"></div>
+					<SaveSection {...props}/>
+					<div className="qui-ribbon-menu-parent-vertical-line"></div>
+					<SlideSection {...props}/>
+					<div className="qui-ribbon-menu-parent-vertical-line"></div>
+					<SlideSettings {...props}/>
+					<div className="qui-ribbon-menu-parent-vertical-line"></div>
+					<ViewSection {...props}/>
+				</div>
+			</div>
+		</div>
+	);
 }

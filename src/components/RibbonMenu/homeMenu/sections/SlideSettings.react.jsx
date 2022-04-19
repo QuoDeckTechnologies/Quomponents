@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { getQuommons } from "../../../../common/javascripts/helpers";
@@ -11,7 +11,7 @@ import "../../../../common/stylesheets/overrule.scss";
 
 import IconLink from "../../../Buttons/IconLink/IconLink.react";
 
-SlideSection.propTypes = {
+SlideSettings.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
@@ -32,78 +32,87 @@ SlideSection.propTypes = {
     */
 	isDisabled: PropTypes.bool,
 	/**
-    SlideSection component must have the onClick function passed as props
+    SlideSettings component must have the onClick function passed as props
     */
 	onClick: PropTypes.func,
 };
-export default function SlideSection(props) {
+
+export default function SlideSettings(props) {
 	//-------------------------------------------------------------------
 	// 1. Set the classes
 	//-------------------------------------------------------------------
-	let quommonClasses = getQuommons(props, "ribbon-menu-slide-section-parent");
+	let quommonClasses = getQuommons(
+		props,
+		"ribbon-menu-slide-setting-section-parent"
+	);
+
+	//-------------------------------------------------------------------
+	// 2. Toggle the state of Back and Next checkboxes
+	//-------------------------------------------------------------------
+	const [isBackChecked, setBakChecked] = useState(false);
+	const [isNextChecked, setNextChecked] = useState(false);
+
+	function toggleBackChecked() {
+		setBakChecked((prevState) => !prevState);
+	}
+	function toggleNextChecked() {
+		setNextChecked((prevState) => !prevState);
+	}
 
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
-				<div className="qui-ribbon-menu-slide-section">
-					<div className="qui-ribbon-menu-slide-section-child-container">
-						<div className="qui-ribbon-menu-slide-section-child upload">
-							<IconLink
-								onClick={props.onClick}
-								asSize="tiny"
-								asPadded="fitted"
-								withColor={{
-									backgroundColor: "#666666",
-									hoverTextColor: "#666666",
-								}}
-								withIcon={{ icon: "fas fa-plus" }}
-							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
-								New Slide
-							</div>
-						</div>
-						<div className="qui-ribbon-menu-child-vertical-line"></div>
-						<div className="qui-ribbon-menu-slide-section-child">
-							<div className="qui-ribbon-menu-slide-section-right-content">
+				<div className="qui-ribbon-menu-settings-section">
+					<div className="ribbon-menu-settings-section-child-container">
+						<div className="qui-ribbon-menu-settings-section-child">
+							<div className="qui-ribbon-menu-settings-section-right-content">
 								<IconLink
-									onClick={props.onClick}
 									asSize="tiny"
 									asPadded="fitted"
 									withColor={{
 										backgroundColor: "#666666",
 										hoverTextColor: "#666666",
 									}}
-									withIcon={{ icon: "far fa-copy" }}
+									withIcon={{
+										icon: `qui-ribbon-file-right-icons ${
+											isBackChecked ? "far fa-check-square" : "far fa-square"
+										}`,
+									}}
+									onClick={toggleBackChecked}
 								/>
 								<div
-									className="qui-ribbon-menu-slide-label"
-									onClick={props.onClick}
+									className="qui-ribbon-menu-label"
+									onClick={toggleBackChecked}
 								>
-									Duplicate Slide
+									Enable Back Arrow
 								</div>
 							</div>
-							<div className="qui-ribbon-menu-slide-section-right-content">
+							<div className="qui-ribbon-menu-settings-section-right-content">
 								<IconLink
-									onClick={props.onClick}
 									asSize="tiny"
 									asPadded="fitted"
 									withColor={{
 										backgroundColor: "#666666",
 										hoverTextColor: "#666666",
 									}}
-									withIcon={{ icon: "fas fa-trash" }}
+									withIcon={{
+										icon: `qui-ribbon-file-right-icons ${
+											isNextChecked ? "far fa-check-square" : "far fa-square"
+										}`,
+									}}
+									onClick={() => toggleNextChecked()}
 								/>
 								<div
-									className="qui-ribbon-menu-slide-label"
-									onClick={props.onClick}
+									className="qui-ribbon-menu-label"
+									onClick={() => toggleNextChecked()}
 								>
-									Delete Slide
+									Enable Next Arrow
 								</div>
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">Slide</div>
+					<div className="qui-ribbon-menu-label-file">Settings</div>
 				</div>
 			</div>
 		</div>
