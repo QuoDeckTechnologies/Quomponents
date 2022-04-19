@@ -8,13 +8,10 @@
 }
 
 .qui .qui-single-select-close-icon {
-  height: 2em;
-  width: 2em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.2em;
   color: #a8a8a8;
 }
 
@@ -50,6 +47,11 @@
     .MuiTypography-root.css-ahj2mt-MuiTypography-root {
     display: none;
   }
+  .qui .qui-single-select-close-icon {
+    height: 1.5em;
+    width: 1.7em;
+    font-size: 1.4em;
+  }
 }
 
 @media only screen and (min-width: 769px) {
@@ -60,5 +62,10 @@
     .qui-option-item-radio-container
     .MuiTypography-root.css-ahj2mt-MuiTypography-root {
     display: block;
+  }
+  .qui .qui-single-select-close-icon {
+    height: 1.5em;
+    width: 1.7em;
+    font-size: 1.6em;
   }
 }

@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
@@ -14,7 +14,7 @@ OptionItemOne.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    OptionItemOne name should be passed in content object
+     OptionItemTwo targetName, value, placeholder should be passed in content object
     */
   content: PropTypes.shape({
     targetName: PropTypes.string,
@@ -71,7 +71,7 @@ OptionItemOne.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: [],
+  content: {},
   optionType: "title",
   //=======================================
   // Quommon props
@@ -93,8 +93,6 @@ export default function OptionItemOne(props) {
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
   const { content } = props;
-
-  // const [contentState, setContentState] = useState({ ...content });
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
