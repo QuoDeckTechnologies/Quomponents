@@ -98,19 +98,21 @@ export default function OptionItemFive(props) {
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
   const { content } = props;
-
+  //-------------------------------------------------------------------
+  // 2. Defining states
+  //-------------------------------------------------------------------
   const [image, setImage] = useState(content.image);
   const [value, setValue] = useState(content.value);
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "option-item-five");
   //-------------------------------------------------------------------
-  // 3. Get animation of the component
+  // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 6. Function to update value of the input field
+  // 5. Function to update value of the input field
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
     setImage(image);
@@ -123,6 +125,7 @@ export default function OptionItemFive(props) {
     setValue(value);
     props.onInput(content.targetName, image, value);
   };
+  
   // ========================= Render Function =================================
 
   return (
