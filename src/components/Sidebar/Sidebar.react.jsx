@@ -10,13 +10,13 @@ import _ from "lodash";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
-import "./Sidebar.scss";
+import "../Sidebar/Sidebar.scss";
 import "../../common/stylesheets/overrule.scss";
 
 import IconLink from "../Buttons/IconLink/IconLink.react";
 import ArcMenu from "../ArcMenu/ArcMenu.react"
 
-import defaultImage from "../../assets/default.jpeg";
+import coloredDefaultLogo from "../../assets/coloredDefaultLogo.png";
 
 Sidebar.propTypes = {
     //=======================================
@@ -27,19 +27,21 @@ Sidebar.propTypes = {
     */
     asEmphasis: PropTypes.oneOf(["editMode", "default"]),
     /**
-    Use to define section content and logo
+    Use to define license type
     */
-    content: PropTypes.shape({
-        title: PropTypes.string,
-        image: PropTypes.string,
-        sections: PropTypes.shape({
-            link: PropTypes.string,
-            name: PropTypes.string,
-            icon: PropTypes.string,
-            show: PropTypes.array
-        })
-    }).isRequired,
-
+    licenseType: PropTypes.string,
+    /**
+    Use to define section label of edit Mode
+    */
+    label: PropTypes.string,
+    /**
+    Use to define anything
+    */
+    noCourses: PropTypes.bool,
+    /**
+     Use to define the location of the sidebar
+     */
+    sidebarLocation: PropTypes.string,
     // Quommon props
     //=======================================
     /**
@@ -56,11 +58,6 @@ Sidebar.propTypes = {
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "inline"]),
-    /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
-
     /**
     Use to override component colors and behavior
     */
@@ -95,7 +92,6 @@ Sidebar.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
-
     /**
     Button component must have the onClick function passed as props
     */
@@ -105,24 +101,15 @@ Sidebar.propTypes = {
 Sidebar.defaultProps = {
     // Component Specific props
     //=======================================
+    licenseType: "",
     asEmphasis: "default",
-    content: {
-        title: "",
-        image: "",
-        sections: {
-            link: "",
-            name: "",
-            icon: "",
-            show: [],
-        }
-    },
-
+    label: "",
+    noCourses: false,
+    sidebarLocation: "",
     // Quommon props
     //=======================================
     asVariant: "primary",
-    asSize: "normal",
     asFloated: "inline",
-    asAligned: "center",
 
     withColor: null,
     withIcon: null,
@@ -140,11 +127,8 @@ Sidebar.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Action Button has 2 phases, with button and with image. Pass props according to your convenience
-- isEllipse is a prop to add ellipse background or not.
 **/
 export default function Sidebar(props) {
-
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -154,15 +138,8 @@ export default function Sidebar(props) {
     //-------------------------------------------------------------------
     // 2. Set the Logo Image
     //-------------------------------------------------------------------
-    let logo = props.content?.image ? props.content?.image : defaultImage;
-    // const [isActive, setActive] = useState(false)
-    const [state, setState] = useState("/social")
-    //-------------------------------------------------------------------
-    // 3. Conditional Styling
-    //-------------------------------------------------------------------
-    // function handleSection(section) {
-    //     setActive(prevState => !prevState)
-    // }
+    let logo = coloredDefaultLogo;
+    const [state, setState] = useState("/")
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
@@ -170,6 +147,126 @@ export default function Sidebar(props) {
     //-------------------------------------------------------------------
     // 5. Get the Status of Component
     //-------------------------------------------------------------------
+
+    const panelLinks = {
+        welcome: [
+            {
+                key: "welcome",
+                name: "Welcome",
+                icon: "fas fa-handshake",
+                show: true,
+            },
+        ],
+        content: [
+            {
+                key: "platforms",
+                name: "Library",
+                icon: "fas fa-sitemap",
+                show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType),
+            },
+            {
+                key: "files",
+                name: "Editor",
+                icon: "fas fa-desktop",
+                show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType) && !props.noCourses,
+            },
+            {
+                key: "advanced",
+                name: "Settings",
+                icon: "fas fa-cogs",
+                show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType) && !props.noCourses,
+            },
+            {
+                key: "share",
+                name: "Enrolment",
+                icon: "fa fa-person-booth",
+                show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType) && !props.noCourses,
+            },
+            {
+                key: "preview",
+                name: "Preview",
+                icon: "fas fa-eye",
+                show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType) && !props.noCourses && window.innerHeight > window.innerWidth,
+            },
+        ],
+        admin: [
+            { key: "users", name: "Users", icon: "fas fa-users", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "courses", name: "Courses", icon: "fas fa-book", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            {
+                key: "branding",
+                name: "Branding",
+                icon: "fas fa-paint-brush",
+                show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType),
+            },
+            { key: "tags", name: "Tags", icon: "fas fa-tags", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "adverts", name: "Ads", icon: "fas fa-image", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "tickets", name: "Ticket Centers", icon: "fas fa-envelope-open-text", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+        ],
+        analytics: [
+            {
+                key: "organization",
+                name: "Org",
+                icon: "fas fa-building",
+                show: ["SuperAdmin", "Admin", "DataAdmin"].includes(props.licenseType),
+            },
+            {
+                key: "users",
+                name: "Teams",
+                icon: "fa fa-users",
+                show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType),
+            },
+            {
+                key: "trainees",
+                name: "Trainees",
+                icon: "fas fa-chalkboard-teacher",
+                show: ["SuperAdmin", "Admin", "Trainer"].includes(props.licenseType),
+            },
+            {
+                key: "courses",
+                name: "Courses",
+                icon: "fas fa-book",
+                show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType),
+            },
+            {
+                key: "articles",
+                name: "Articles",
+                icon: "fas fa-newspaper",
+                show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType),
+            },
+        ],
+        blog: [
+            {
+                key: "articles",
+                name: "Articles",
+                icon: "fas fa-newspaper",
+                show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType),
+            },
+            { key: "editor", name: "Editor", icon: "fas fa-pencil-alt", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+        ],
+        social: [
+            { key: "text", name: "Text", icon: "fas fa-pencil-alt", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "link", name: "Link", icon: "fas fa-link", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "image", name: "Image", icon: "fas fa-image", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "gallery", name: "Gallery", icon: "fas fa-images", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "video", name: "Video", icon: "fas fa-film", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+        ],
+        help: [
+            { key: "chat", name: "Chatbot", icon: "fas fa-comment", show: true },
+            { key: "faq", name: "FAQ", icon: "fas fa-comments", show: true },
+            { key: "ticket", name: "Support", icon: "fas fa-desktop", show: true },
+        ]
+    };
+    function editMode() {
+        return (
+            <div className={`qui-side-bar-editmode-container`}>
+                <div style={{ backgroundImage: `url(${logo})` }} className="qui-side-bar-logo" />
+                <p className={`qui-side-bar-edit-mode-label`}>
+                    {props.label}
+                </p>
+                <ArcMenu position="bottom-left" menuType="close" arcIcon="close" onClick={props.onClick} />
+            </div>
+        )
+    }
     const sidebar = (asEmphasis) => {
         if (asEmphasis === "default") {
             return (
@@ -179,40 +276,35 @@ export default function Sidebar(props) {
                         className="qui-side-bar-logo" />
                     <div
                         className={`qui-side-bar-sections-container`}>
-                        {_.map(props.content?.sections, (sections, index) => {
-                            return (
-                                <div
-                                    className={`qui-side-bar-sections`}
-                                    onClick={() => { setState(sections.link); }}
-                                    key={`panellink-${index}`}
-                                >
-                                    <IconLink
-                                        asEmphasis={sections.link === state ? "contained" : "text"}
-                                        asSize="tiny"
-                                        withIcon={{ icon: sections.icon }}
-                                        asVariant={props.asVariant}
-                                        withLabel={{ format: "caption", content: sections.name }}
-                                        withColor= {props.withColor}
-                                        onClick={() => { setState(sections.link); }}
-                                    />
-                                </div>
+                        {_.map(_.filter(panelLinks[props.sidebarLocation], (l) => l.show),
+                            (sections, index) => {
+                                return (
+                                    <div
+                                        className={`qui-side-bar-sections`}
+                                        onClick={() => { setState(sections.key); }}
+                                        key={`panellink-${index}`}
+                                    >
+                                        <IconLink
+                                            asEmphasis={sections.key === state ? "contained" : "text"}
+                                            asSize="tiny"
+                                            withIcon={{ icon: sections.icon }}
+                                            asVariant={props.asVariant}
+                                            withLabel={{ format: "caption", content: sections.name }}
+                                            withColor={props.withColor}
+                                            onClick={() => { setState(sections.key); }}
+                                        />
+                                    </div>
 
-                            )
-                        })}
+                                )
+                            })}
                     </div>
                 </div>
             )
         } else {
-            return (<div className={`qui-side-bar-editmode-container`}>
-                <div style={{ backgroundImage: `url(${logo})` }} className="qui-side-bar-logo" />
-                <p className={`qui-side-bar-edit-mode-label`}>
-                    {props.content?.title}
-                </p>
-                <ArcMenu position="bottom-left" menuType="close" arcIcon="close" onClick={props.onClick} />
-            </div>)
-
+            return (
+                editMode()
+            )
         }
-
     }
     return (
         <motion.div
@@ -223,3 +315,4 @@ export default function Sidebar(props) {
         </motion.div>
     );
 }
+

@@ -5,28 +5,17 @@ export default {
     title: "Design System/Sidebar/Sidebar",
     component: Sidebar,
     argTypes: {
+        licenseType: "admin",
         asEmphasis: {
             control: "select",
             options: ["default", "editMode"],
-            table: {
-                category: "as-Flags",
-            },
         },
-        content: {
-            title:"",
-            image: "",
-            sections: {}
-        },
+        label: "",
+        noCourses: false,
+        sidebarLocation: "",
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
             table: {
                 category: "as-Flags",
             },
@@ -38,20 +27,12 @@ export default {
                 category: "as-Flags",
             },
         },
-        asAligned: {
-            control: "select",
-            options: ["left", "right", "center"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
                     textColor: "",
-                    textColor:"",
                     hoverBackgroundColor: "",
                     hoverTextColor: "",
                 },
@@ -112,50 +93,15 @@ export default {
 const Template = (args) => <Sidebar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+    licenseType: "SuperAdmin",
     asEmphasis: "default",
-    content: {
-        title:"Edit Mode",
-        image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png",
-        sections: {
-            Courses: {
-                link: "/social",
-                name: "Courses",
-                icon: "fas fa-award",
-                show: ["admin", "creator", "learner"]
-            },
-            Nuggets: {
-                link: "/socialone",
-                name: "Nuggets",
-                icon: "fas fa-braille",
-                show: ["admin", "creator", "learner"]
-            },
-            Tests: {
-                link: "/socialtwo",
-                name: "Tests",
-                icon: "fas fa-paste",
-                show: ["admin", "creator", "learner"]
-            },
-            Contests: {
-                link: "/socialthree",
-                name: "Contests",
-                icon: "fas fa-trophy",
-                show: ["admin", "creator", "learner"]
-            },
-            Posts: {
-                link: "/socialfour",
-                name: "Posts",
-                icon: "fas fa-comment-alt",
-                show: ["admin", "creator", "learner"]
-            }
-        }
-    },
+    label: "Edit Mode",
+    noCourses: false,
+    sidebarLocation: "welcome",
     asVariant: "primary",
-    asSize: "normal",
     asFloated: "inline",
-    asAligned: "center",
     withColor: {
         backgroundColor: "",
-        textColor: "",
         textColor: "",
         hoverBackgroundColor: "",
         hoverTextColor: "#13ff43",
@@ -200,7 +146,7 @@ EditMode.parameters = {
             story: "2 modes are supported in Sidebar.",
         },
         source: {
-            code: `<SideBar content:{}/>`,
+            code: `<Sidebar content:{}/>`,
         },
     },
 };
@@ -238,7 +184,7 @@ SidebarVariants.parameters = {
             story: "2 modes are supported in Sidebar.",
         },
         source: {
-            code: `<SideBar content:{}/>`,
+            code: `<Sidebar content:{}/>`,
         },
     },
 };
@@ -286,7 +232,595 @@ AnimatedSidebar.parameters = {
             story: "2 modes are supported in Sidebar.",
         },
         source: {
-            code: `<SideBar content:{}/>`,
+            code: `<Sidebar content:{}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// DifferentLocations
+// -------------------------------------------------------------
+const LocationTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+        }),
+    };
+    return (
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%" }}>
+            <h2>SuperAdmin</h2>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", width: "100%", }}>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >welcome</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "welcome",
+                            withAnimation: {
+                                animation: "slideRight",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >content without courses</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "content",
+                            noCourses: true,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >content with courses</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "content",
+                            noCourses: false,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >blog</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "blog",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >social</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "social",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >admin</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "admin",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >analytics</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "analytics",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >help</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "help",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+            <br></br>
+
+            <h2>Admin</h2>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", width: "100%", }}>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >welcome</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "welcome",
+                            withAnimation: {
+                                animation: "slideRight",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >content without courses</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "content",
+                            noCourses: true,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >content with courses</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "content",
+                            noCourses: false,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >blog</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "blog",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >social</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "social",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >admin</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "admin",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >analytics</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "analytics",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >help</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "help",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+            <br></br>
+
+            <h2>Trainer</h2>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", width: "100%", }}>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >welcome</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Trainer",
+                            sidebarLocation: "welcome",
+                            withAnimation: {
+                                animation: "slideRight",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >content without courses</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Trainer",
+                            sidebarLocation: "content",
+                            noCourses: true,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >content with courses</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Trainer",
+                            sidebarLocation: "content",
+                            noCourses: false,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >analytics</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Trainer",
+                            sidebarLocation: "analytics",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >help</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Trainer",
+                            sidebarLocation: "help",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+            <br></br>
+
+            <h2>Manager</h2>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", width: "100%", }}>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >welcome</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Manager",
+                            sidebarLocation: "welcome",
+                            withAnimation: {
+                                animation: "slideRight",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >content without courses</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Manager",
+                            sidebarLocation: "content",
+                            noCourses: true,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >content with courses</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Manager",
+                            sidebarLocation: "content",
+                            noCourses: false,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >analytics</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Manager",
+                            sidebarLocation: "analytics",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >help</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Manager",
+                            sidebarLocation: "help",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+            <br></br>
+
+            <h2>Creator</h2>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", width: "100%", }}>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >welcome</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "welcome",
+                            withAnimation: {
+                                animation: "slideRight",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >content without courses</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "content",
+                            noCourses: true,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >content with courses</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "content",
+                            noCourses: false,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >blog</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "blog",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >social</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "social",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >analytics</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "analytics",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >help</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "help",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+            <br></br>
+
+            <h2>DataAdmin</h2>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", width: "100%", }}>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >welcome</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "DataAdmin",
+                            sidebarLocation: "welcome",
+                            withAnimation: {
+                                animation: "slideRight",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >analytics</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "DataAdmin",
+                            sidebarLocation: "analytics",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
+export const LocationsByLicenseType = LocationTemplate.bind({});
+LocationsByLicenseType.parameters = {
+    docs: {
+        description: {
+            story: "6 license types are supported with different different sidebar locations.",
+        },
+        source: {
+            code: `<Sidebar content:{}/>`,
         },
     },
 };

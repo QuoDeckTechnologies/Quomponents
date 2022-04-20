@@ -7,23 +7,17 @@ import { shallow } from 'enzyme';
 // -------------------------------------
 import Sidebar from '../Sidebar/Sidebar.react'
 import ArcMenu from "../ArcMenu/ArcMenu.react"
-import IconLink from '../Buttons/IconLink/IconLink.react'
 describe("Sidebar", () => {
-    let component,
-    setState = jest.fn(), 
-    title="",
-    image = "",
-    sections = {}
+    let component
     beforeEach(() => {
         jest.resetAllMocks();
-        component = shallow(    
+        component = shallow(
             <Sidebar
                 asEmphasis="default"
-                content={
-                    title=title,
-                    image=image,
-                    sections=sections
-                }
+                sidebarLocation='welcome'
+                licenseType='SuperAdmin'
+                noCourses={false}
+                label="EditMode"
                 asVariant="primary"
                 asSize="normal"
                 asFloated="inline"
@@ -39,40 +33,28 @@ describe("Sidebar", () => {
     it("should render correctly without throwing error", () => {
         expect(component.exists()).toBe(true);
     });
-    it("should call setState when click", () => {
-        component = shallow(<Sidebar
-            onClick={setState} />);
-        component.find(IconLink).at(0).simulate("click");
-        component.find(IconLink).at(1).simulate("click");
-        component.find(IconLink).at(2).simulate("click");
-        component.find(IconLink).at(3).simulate("click");
-        component.find(IconLink).at(4).simulate("click");
+    it("should call setState when click on div", () => {
+        component.find(".qui-side-bar-sections").at(0).simulate('click')
     });
     it("should call setState when click on div", () => {
-        component = shallow(<Sidebar
-            onClick={setState} />);
-        component.find(".qui-side-bar-sections").at(0).simulate('click')
+        component.find("IconLink").at(0).simulate('click')
     });
     it("should render correctly when passed asVariant prop as primary", () => {
         component.setProps({ asVariant: "primary" })
         expect(component.exists()).toBe(true);
     })
-
     it("should render correctly when passed asVariant prop as secondary", () => {
         component.setProps({ asVariant: "secondary" })
         expect(component.exists()).toBe(true);
     })
-
     it("should render correctly when passed asVariant prop as warning", () => {
         component.setProps({ asVariant: "warning" })
         expect(component.exists()).toBe(true);
     })
-
     it("should render correctly when passed asVariant prop as error", () => {
         component.setProps({ asVariant: "error" })
         expect(component.exists()).toBe(true);
     })
-
     it("should render correctly when passed asEmphasis prop as default ", () => {
         let colors = {
             backgroundColor: "#fff",
@@ -91,7 +73,6 @@ describe("Sidebar", () => {
         component.update();
         expect(component.find(ArcMenu).exists()).toBe(true);
     });
-
     it("should render correctly when passed asVariant prop as success", () => {
         component.setProps({ asVariant: "success" })
         expect(component.exists()).toBe(true);
@@ -115,7 +96,6 @@ describe("Sidebar", () => {
         component.setProps({ withAnimation: animation })
         expect(component.exists()).toBe(true);
     })
-
     it("should render correctly when passed isHidden props as false", () => {
         component.setProps({ isHidden: false })
         expect(component.exists()).toBe(true);
@@ -124,7 +104,6 @@ describe("Sidebar", () => {
         component.setProps({ isHidden: true })
         expect(component.exists()).toBe(true);
     })
-
     it("should render correctly when passed isDisabled props as false", () => {
         component.setProps({ isDisabled: false })
         expect(component.exists()).toBe(true);
