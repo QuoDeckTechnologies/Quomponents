@@ -14,13 +14,13 @@
         max-height: 70%;
     }
 }
-.qui-side-bar-default-container {
+.qui .qui-side-bar-default-container {
     background-color: #fff;
 }
-.qui-side-bar-editmode-container {
+.qui .qui-side-bar-editmode-container {
     background-color: #666666;
 }
-.qui-side-bar-logo {
+.qui .qui-side-bar-logo {
     width: 2.5em;
     background-color: #454545;
     height: 2.5em;
@@ -28,14 +28,14 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.qui-side-bar-sections-container {
+.qui .qui-side-bar-sections-container {
     width: 2.5em;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
-.qui-side-bar-sections {
+.qui .qui-side-bar-sections {
     height: 4em;
     font-size: 0.6em;
     cursor: pointer;
@@ -48,7 +48,7 @@
         min-height: 4.5em;
     }
 }
-.qui-side-bar-editmode-container {
+.qui .qui-side-bar-editmode-container {
     position: relative;
     .qui-arc.qui-bottom-left {
         left: -0.9em;
@@ -68,7 +68,7 @@
         transform: translate(10%, 10%);
     }
 }
-.qui-side-bar-edit-mode-label {
+.qui .qui-side-bar-edit-mode-label {
     position: absolute;
     color: #fff;
     font-size: 1.5em;

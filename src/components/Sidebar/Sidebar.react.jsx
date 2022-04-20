@@ -15,7 +15,6 @@ import "../../common/stylesheets/overrule.scss";
 
 import IconLink from "../Buttons/IconLink/IconLink.react";
 import ArcMenu from "../ArcMenu/ArcMenu.react"
-
 import coloredDefaultLogo from "../../assets/coloredDefaultLogo.png";
 
 Sidebar.propTypes = {
@@ -35,7 +34,7 @@ Sidebar.propTypes = {
     */
     label: PropTypes.string,
     /**
-    Use to define anything
+    Use to toggle if there is course assigned by the related license or not
     */
     noCourses: PropTypes.bool,
     /**
@@ -123,10 +122,11 @@ Sidebar.defaultProps = {
 
 /**
 ## Notes
-- The design system used for this component is Material UI (@mui/material)
+- The design system used as a navigation bar in Dashboard
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
+- Sidebar shows content according to the license type of the user
 **/
 export default function Sidebar(props) {
     //-------------------------------------------------------------------
@@ -145,9 +145,8 @@ export default function Sidebar(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     //-------------------------------------------------------------------
-    // 5. Get the Status of Component
+    // 3. Get the location of the section 
     //-------------------------------------------------------------------
-
     const panelLinks = {
         welcome: [
             {

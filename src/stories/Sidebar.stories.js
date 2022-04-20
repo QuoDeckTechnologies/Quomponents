@@ -81,9 +81,9 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic button for general-purpose use",
+        componentSubtitle: "Displays sidebar for navigation purpose",
         a11y: { disable: true },
-        docs: { iframeHeight: 200 },
+        docs: { iframeHeight: 600 },
     },
 };
 
@@ -143,7 +143,7 @@ export const EditMode = EditModeTemplate.bind({});
 EditMode.parameters = {
     docs: {
         description: {
-            story: "2 modes are supported in Sidebar.",
+            story: "Edit mode of Sidebar.",
         },
         source: {
             code: `<Sidebar content:{}/>`,
@@ -229,7 +229,7 @@ export const AnimatedSidebar = AnimatedSidebarTemplate.bind({});
 AnimatedSidebar.parameters = {
     docs: {
         description: {
-            story: "2 modes are supported in Sidebar.",
+            story: "Animated Sidebar.",
         },
         source: {
             code: `<Sidebar content:{}/>`,
