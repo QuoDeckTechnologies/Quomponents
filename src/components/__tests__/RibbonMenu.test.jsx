@@ -9,7 +9,7 @@ import RibbonMenu from "../RibbonMenu/RibbonMenu.react";
 import RibbonDesignMenu from "../RibbonMenu/designMenu/RibbonDesignMenu.react";
 import RibbonHomeMenu from "../RibbonMenu//homeMenu/RibbonHomeMenu.react";
 import RibbonHtmlMenu from "../RibbonMenu/htmlMenu/RibbonHtmlMenu.react";
-import RibbonToolMenu from "../RibbonMenu/toolsMenu/RibbonToolMenu.react"
+import RibbonToolsMenu from "../RibbonMenu/toolsMenu/RibbonToolsMenu.react"
 
 
 describe("RibbonMenu", () => {
@@ -44,9 +44,9 @@ describe("RibbonMenu", () => {
         expect(component.find(RibbonDesignMenu).exists()).toBe(true)
     })
     it("should render Tools Menu when passed tools in the tab props",()=>{
-        expect(component.find(RibbonToolMenu).exists()).toBe(false)
+        expect(component.find(RibbonToolsMenu).exists()).toBe(false)
         component.setProps({asEmphasis:"tools"})
-        expect(component.find(RibbonToolMenu).exists()).toBe(true)
+        expect(component.find(RibbonToolsMenu).exists()).toBe(true)
     })
     it("should render Home Menu when passed home in the tab props",()=>{
         expect(component.find(RibbonHomeMenu).exists()).toBe(false)

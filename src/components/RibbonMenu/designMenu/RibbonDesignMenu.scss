@@ -1,4 +1,4 @@
-.qui .ribbon-design-menu-container {
+.qui .qui-ribbon-design-menu-container {
     width: 1050.05px;
     display: flex;
     flex-direction: row;
@@ -9,14 +9,24 @@
         padding: 0;
     }
 }
-
+.qui.qui-ribbon-design-menu-parent{
+    overflow: visible;
+}
 //ColorPallete Section
-.qui .qui-ribbon-menu-color-pallete-section {
+.qui-ribbon-design-menu-pallete-theme-section-parent{
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    height:4.5em;
+    padding: 0.1em 0.1em;
+    align-items: center;
+}
+.qui-ribbon-menu-color-pallete-section {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
 }
-.qui .qui-ribbon-menu-color-pallete-section-child-container {
+.qui-ribbon-menu-color-pallete-section-child-container {
     width: 613.9px;
     height: 64px;
     display: flex;
@@ -27,7 +37,7 @@
     border-radius: 5px;
     padding: 0 5px;
 }
-.qui .qui-ribbon-menu-color-pallete-section-child {
+.qui-ribbon-menu-color-pallete-section-child {
     width: 100%;
     height: 100%;
     display: flex;
@@ -35,7 +45,7 @@
     align-items: center;
     cursor: pointer;
 }
-.qui .qui-ribbon-menu-custom-color-container {
+.qui-ribbon-menu-custom-color-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -43,20 +53,28 @@
     font-size: 0.8em;
     height: 64px;
 }
-.qui .qui-ribbon-menu-pallete-custom-color-section-container {
+.qui-ribbon-menu-pallete-custom-color-section-container {
     width: 760px;
     display: flex;
     justify-content: space-between;
 }
 
 //SlideBackground Section Styling Definitions
-.qui .qui-ribbon-menu-slide-background-section,
-.qui .qui-ribbon-menu-overlay-background-section {
+.qui-ribbon-design-menu-slide-background-parent,
+.qui-ribbon-design-menu-overlay-background-parent{
+    display: flex;
+    flex-direction: column;
+    height:4.5em;
+    padding: 0.1em 0.1em;
+    align-items: center;
+}
+.qui-ribbon-menu-slide-background-section,
+.qui-ribbon-menu-overlay-background-section {
     display: flex;
     flex-direction: column;
 }
-.qui .qui-ribbon-menu-slide-background-section-child,
-.qui .qui-ribbon-menu-overlay-background-section-child {
+.qui-ribbon-menu-slide-background-section-child,
+.qui-ribbon-menu-overlay-background-section-child {
     font-size: 0.6em;
     padding-left: 15px;
     text-align: left;
@@ -64,8 +82,8 @@
     align-items: center;
     color: #666666;
 }
-.qui .qui-ribbon-menu-slide-background-section-child-container,
-.qui .qui-ribbon-menu-overlay-background-section-child-container {
+.qui-ribbon-menu-slide-background-section-child-container,
+.qui-ribbon-menu-overlay-background-section-child-container {
     height: 64px;
     display: flex;
     align-items: center;
@@ -73,16 +91,16 @@
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }
-.qui .qui-ribbon-menu-slide-background-section-child-container,
-.qui .qui-ribbon-menu-overlay-background-section-child-container {
+.qui-ribbon-menu-slide-background-section-child-container,
+.qui-ribbon-menu-overlay-background-section-child-container {
     width: 104px;
 }
-.qui .qui-ribbon-menu-set-remove {
+.qui-ribbon-menu-set-remove {
     width: 25px;
     height: 37px;
     background-color: #c4c4c4;
 }
-.qui .qui-ribbon-menu-label-set-remove {
+.qui-ribbon-menu-label-set-remove {
     margin-left: 5px;
     display: flex;
     align-items: center;

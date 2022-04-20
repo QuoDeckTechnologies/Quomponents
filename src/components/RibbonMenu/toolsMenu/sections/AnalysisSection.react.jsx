@@ -11,7 +11,7 @@ import "../../../../common/stylesheets/overrule.scss";
 
 import IconLink from "../../../Buttons/IconLink/IconLink.react";
 
-QuestionBankSection.propTypes = {
+AnalysisSection.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
@@ -37,31 +37,30 @@ QuestionBankSection.propTypes = {
 	onClick: PropTypes.func,
 };
 
-export default function QuestionBankSection(props) {
+export default function AnalysisSection(props) {
 	//-------------------------------------------------------------------
 	// 1. Set the classes
 	//-------------------------------------------------------------------
-	let quommonClasses = getQuommons(
-		props,
-		"ribbon-tools-menu-question-bank-parent"
-	);
+	let quommonClasses = getQuommons(props, "ribbon-tools-menu-analysis-parent");
 
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
-				<div className="qui-ribbon-menu-question-bank-section">
+				<div className="qui-ribbon-menu-analytics-section">
 					<IconLink
-                        onClick={props.onClick}
+						onClick={props.onClick}
 						asSize="small"
-                        asPadded="fitted"
+						asPadded="fitted"
 						withColor={{
 							backgroundColor: "#666666",
 							hoverTextColor: "#666666",
 						}}
-						withIcon={{ icon: "fab fa-stack-exchange" }}
+						withIcon={{ icon: "fas fa-chart-area" }}
 					/>
-					<div className="qui-ribbon-menu-label" onClick={props.onClick}>Question Bank</div>
+					<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+						Analysis
+					</div>
 				</div>
 			</div>
 		</div>

@@ -8,7 +8,7 @@ import "../../common/stylesheets/common.css";
 import "./RibbonMenu.scss";
 import "../../common/stylesheets/overrule.scss";
 
-import RibbonToolMenu from "./toolsMenu/RibbonToolMenu.react";
+import RibbonToolsMenu from "./toolsMenu/RibbonToolsMenu.react";
 import RibbonDesignMenu from "./designMenu/RibbonDesignMenu.react";
 import RibbonHomeMenu from "./homeMenu/RibbonHomeMenu.react";
 import RibbonHtmlMenu from "./htmlMenu/RibbonHtmlMenu.react";
@@ -87,7 +87,7 @@ export default function RibbonMenu(props) {
 		} else if (tabs?.toUpperCase() === "DESIGN") {
 			return <RibbonDesignMenu />;
 		} else if (tabs?.toUpperCase() === "TOOLS") {
-			return <RibbonToolMenu />;
+			return <RibbonToolsMenu />;
 		} else {
 			return <RibbonHomeMenu />;
 		}

@@ -6,12 +6,10 @@ import { getQuommons } from "../../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../../common/stylesheets/common.css";
 import "../../RibbonMenu.scss";
-import "../RibbonToolsMenu.scss";
+import "../RibbonDesignMenu.scss";
 import "../../../../common/stylesheets/overrule.scss";
 
-import IconLink from "../../../Buttons/IconLink/IconLink.react";
-
-QuestionBankSection.propTypes = {
+SlideBackground.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
@@ -32,36 +30,32 @@ QuestionBankSection.propTypes = {
     */
 	isDisabled: PropTypes.bool,
 	/**
-    AnalysisSection component must have the onClick function passed as props
+    RibbbonDesignMenu component must have the onClick function passed as props
     */
 	onClick: PropTypes.func,
 };
 
-export default function QuestionBankSection(props) {
+export default function SlideBackground(props) {
 	//-------------------------------------------------------------------
 	// 1. Set the classes
 	//-------------------------------------------------------------------
 	let quommonClasses = getQuommons(
 		props,
-		"ribbon-tools-menu-question-bank-parent"
+		"ribbon-design-menu-slide-background-parent"
 	);
 
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
-				<div className="qui-ribbon-menu-question-bank-section">
-					<IconLink
-                        onClick={props.onClick}
-						asSize="small"
-                        asPadded="fitted"
-						withColor={{
-							backgroundColor: "#666666",
-							hoverTextColor: "#666666",
-						}}
-						withIcon={{ icon: "fab fa-stack-exchange" }}
-					/>
-					<div className="qui-ribbon-menu-label" onClick={props.onClick}>Question Bank</div>
+				<div className="qui-ribbon-menu-overlay-background-section">
+					<div className="qui-ribbon-menu-overlay-background-section-child-container">
+						<div className="qui-ribbon-menu-overlay-background-section-child">
+							<div className="qui-ribbon-menu-set-remove"></div>
+							<div className="qui-ribbon-menu-label-set-remove">Set Remove</div>
+						</div>
+					</div>
+					<div className="qui-ribbon-menu-label-file">Slide Background</div>
 				</div>
 			</div>
 		</div>

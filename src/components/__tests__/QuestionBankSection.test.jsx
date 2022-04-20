@@ -1,3 +1,4 @@
+import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
@@ -5,27 +6,29 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import RibbonToolsMenu from "../RibbonMenu/toolsMenu/RibbonToolsMenu.react";
+import QuestionBankSection from "../RibbonMenu/toolsMenu/sections/QuestionBankSection.react";
 
+describe("QuestionBankSection", () => {
+	// -------------------------------------
+	// Setup definitions for the test suite
+	// -------------------------------------
+	let component;
 
+	beforeEach(() => {
+		jest.resetAllMocks();
+		component = shallow(
+			<QuestionBankSection
+				asFloated="left"
+				isHidden={false}
+				isDisabled={false}
+				onClick={jest.fn()}
+			/>
+		);
+	});
 
-describe("RibbonToolsMenu", () => {
-    // -------------------------------------
-    // Setup definitions for the test suite
-    // -------------------------------------
-    let component;
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <RibbonToolsMenu
-            onClick={()=>{console.log("Testing RibbonToolsMenu")}}
-            />
-        );
-    });
-
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
+	it("should render correctly without throwing error", () => {
+		expect(component.exists()).toBe(true);
+	});
 
 	it("should render correctly when passed asFloated prop as left", () => {
 		component.setProps({ asFloated: "left" });

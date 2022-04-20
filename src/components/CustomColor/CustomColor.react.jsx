@@ -161,12 +161,11 @@ export default function CustomColor(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className="qui-color-picker-container"
-
             >
-                <div className={`qui-qui-ribbon-menu-custom-color-container  qui-color-container ${quommonClasses.childClasses}`}>
-                    <div className="button-title-container">
+                <div className={`qui-qui-ribbon-menu-custom-color-container  qui-color-container ${quommonClasses.childClasses}`} ref={box}>
+                    <div className="button-title-container"
+                        >
                         <button
-                            ref={box}
                             className="qui-custom-color-button"
                             style={{ backgroundColor: color }}
                             onClick={() => setshowColorPicker(showColorPicker => !showColorPicker)} />

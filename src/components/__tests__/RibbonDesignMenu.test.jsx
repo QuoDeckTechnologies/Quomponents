@@ -5,27 +5,28 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import RibbonToolsMenu from "../RibbonMenu/toolsMenu/RibbonToolsMenu.react";
+import RibbonDesignMenu from "../RibbonMenu/designMenu/RibbonDesignMenu.react";
 
+describe("RibbonMenu", () => {
+	// -------------------------------------
+	// Setup definitions for the test suite
+	// -------------------------------------
+	let component;
+	beforeEach(() => {
+		jest.resetAllMocks();
+		component = shallow(
+			<RibbonDesignMenu
+				asFloated="left"
+				isHidden={false}
+				isDisabled={false}
+				onClick={jest.fn()}
+			/>
+		);
+	});
 
-
-describe("RibbonToolsMenu", () => {
-    // -------------------------------------
-    // Setup definitions for the test suite
-    // -------------------------------------
-    let component;
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <RibbonToolsMenu
-            onClick={()=>{console.log("Testing RibbonToolsMenu")}}
-            />
-        );
-    });
-
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
+	it("should render correctly without throwing error", () => {
+		expect(component.exists()).toBe(true);
+	});
 
 	it("should render correctly when passed asFloated prop as left", () => {
 		component.setProps({ asFloated: "left" });
@@ -53,12 +54,12 @@ describe("RibbonToolsMenu", () => {
 	});
 
 	it("should render correctly when passed isDisabled props as false", () => {
-		component.setProps({ isDisabled: false });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isDisabled props as true", () => {
-		component.setProps({ isDisabled: true });
-		expect(component.exists()).toBe(true);
-	});
+        component.setProps({ isDisabled: false });
+        expect(component.exists()).toBe(true);
+    });
+	
+    it("should render correctly when passed isDisabled props as true", () => {
+        component.setProps({ isDisabled: true });
+        expect(component.exists()).toBe(true);
+    });
 });

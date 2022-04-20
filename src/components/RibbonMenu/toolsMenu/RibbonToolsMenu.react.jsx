@@ -6,13 +6,15 @@ import { getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "../RibbonMenu.scss";
-import "./RibbonHtmlMenu.scss";
+import "./RibbonToolsMenu.scss";
 import "../../../common/stylesheets/overrule.scss";
 
-import SaveExitSection from "./sections/SaveExitSection.react";
-import SaveSection from "./sections/SaveSection.react";
+import AnalysisSection from "./sections/AnalysisSection.react";
+import DeckSettingsSection from "./sections/DeckSettingsSection.react";
+import QuestionBankSection from "./sections/QuestionBankSection.react";
+import VoiceoverSection from "./sections/VoiceoverSection.react";
 
-RibbonHtmlMenu.propTypes = {
+RibbonToolsMenu.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
@@ -33,25 +35,29 @@ RibbonHtmlMenu.propTypes = {
     */
 	isDisabled: PropTypes.bool,
 	/**
-    RibbonHtmlMenu component must have the onClick function passed as props
+    SaveExitSection component must have the onClick function passed as props
     */
 	onClick: PropTypes.func,
 };
 
-export default function RibbonHtmlMenu(props) {
+export default function RibbonToolsMenu(props) {
 	//-------------------------------------------------------------------
 	// 1. Set the classes
 	//-------------------------------------------------------------------
-	let quommonClasses = getQuommons(props, "ribbon-html-menu-parent");
+	let quommonClasses = getQuommons(props, "ribbon-tools-menu-parent");
 
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
-				<div className={`qui-ribbon-html-menu-container`}>
-					<SaveExitSection {...props} />
+				<div className={`qui-ribbon-tools-menu-container`}>
+					<QuestionBankSection {...props}/>
 					<div className="qui-ribbon-menu-parent-vertical-line"></div>
-					<SaveSection {...props} />
+					<DeckSettingsSection {...props}/>
+					<div className="qui-ribbon-menu-parent-vertical-line"></div>
+					<VoiceoverSection {...props}/>
+					<div className="qui-ribbon-menu-parent-vertical-line"></div>
+					<AnalysisSection {...props}/>
 				</div>
 			</div>
 		</div>

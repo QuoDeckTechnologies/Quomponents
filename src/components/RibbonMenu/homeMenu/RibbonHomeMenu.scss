@@ -73,6 +73,13 @@
 /* ================================================= */
 /* SettingSection Styling Definitions */
 /* ================================================= */
+.qui-ribbon-home-menu-slide-setting-section-parent{
+    display: flex;
+    flex-direction: column;
+    height:4.5em;
+    padding: 0.1em 0.1em;
+    align-items: center;
+}
 .qui .qui-ribbon-menu-settings-section{
     display: flex;
     flex-direction: column;
@@ -85,7 +92,8 @@
     padding: 0.1em 0.1em;
     align-items: center;
 }
-.qui-ribbon-menu-settings-section-child-container{
+.qui-ribbon-home-menu-settings-section-child-container{
+    font-size: 0.7em;
     width: 149px;
     height: 64px;
     display: flex;
