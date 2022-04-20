@@ -99,13 +99,14 @@ export default function ImageUploadModal(props) {
   //-------------------------------------------------------------------
   const [zoom, setZoom] = useState(10);
   const [image, setImage] = useState(null);
+  const [imageType, setImageType] = useState(null);
   const [openUploadModal, setOpenUploadModal] = useState(props.isOpen);
   const [width, setWidth] = useState(window.innerWidth >= 768 ? 440 : 240);
   useEffect(() => {
     setOpenUploadModal(props.isOpen);
   }, [props.isOpen]);
   //-------------------------------------------------------------------
-  // 6. Get width of the editor
+  // 3. Get width of the editor
   //-------------------------------------------------------------------
   const resizeHandler = () => {
     if (window.innerWidth >= 768) {
@@ -121,29 +122,55 @@ export default function ImageUploadModal(props) {
     };
   }, []);
   //-------------------------------------------------------------------
-  // 3. Defining functions for file upload
+  // 4. Defining functions for file upload
   //-------------------------------------------------------------------
   const uploadFile = () => {
     fileRef.current?.click();
   };
+  //-------------------------------------------------------------------
+  // 5. Function to upload image
+  //-------------------------------------------------------------------
   const handleChange = (e) => {
+    let reader = new FileReader();
+    let fileInfo;
     let file = e.target.files[0];
-    setImage(file);
+    setImageType(file.type);
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      fileInfo = {
+        base64: reader.result,
+        file: file,
+      };
+      setImage(fileInfo);
+    };
   };
+  //-------------------------------------------------------------------
+  // 6. Function returns gif, png or jpeg in base 64
+  //-------------------------------------------------------------------
   const handleSave = () => {
     if (image) {
-      let image = editorRef.current
-        ?.getImage()
-        .toDataURL("image/jpeg", props.imageQuality / 100);
-      props.onSave(image);
+      // If the image uploaded is a gif, convert it to a Base64 string without canvas
+      if (imageType === "image/gif") {
+        props.onSave(image.base64);
+      }
+      // If the image uploaded is not a gif, convert it to a jpg with 80% compression, or to a png
+      // and then a Base64 string with canvas
+      if (imageType === "image/jpeg") {
+        let image = editorRef.current?.getImage().toDataURL("image/jpeg", 0.8);
+        props.onSave(image);
+      }
+      if (imageType === "image/png") {
+        let image = editorRef.current?.getImage().toDataURL("image/png");
+        props.onSave(image);
+      }
     }
   };
   //-------------------------------------------------------------------
-  // 4. Set the classes
+  // 7. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "image-upload-modal");
   //-------------------------------------------------------------------
-  // 5. Translate the text objects in case their is a dictionary provided
+  // 8. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   let tObj = null;
   if (
@@ -189,7 +216,7 @@ export default function ImageUploadModal(props) {
               <Button
                 {...props}
                 content={tObj ? tObj.buttons.chooseFile : "choose file"}
-                asVariant='warning'
+                asVariant="warning"
                 withTranslation={null}
                 withAnimation={null}
                 asEmphasis="outlined"
@@ -200,21 +227,30 @@ export default function ImageUploadModal(props) {
             </form>
           </div>
           <div className="qui-avatar-canvas">
-            {image ? (
+            {image && imageType !== "image/gif" && (
               <AvatarEditor
                 className="qui-image-preview"
                 ref={editorRef}
                 width={width}
                 height={width / 1.15}
-                image={image}
+                image={image.file}
                 border={0}
                 scale={zoom / 10}
               />
-            ) : (
+            )}
+            {!image && (
               <img
                 className="qui-avatar-default-image"
                 style={{ width: width, height: width / 1.15 }}
                 src={defaultImage}
+                alt="default"
+              />
+            )}
+            {image && imageType === "image/gif" && (
+              <img
+                className="qui-avatar-default-image"
+                style={{ width: width, height: width / 1.15 }}
+                src={image?.base64}
                 alt="default"
               />
             )}
@@ -225,7 +261,7 @@ export default function ImageUploadModal(props) {
               {...props}
               asSize="normal"
               content={tObj ? tObj.buttons.cancel : "cancel"}
-              asVariant='warning'
+              asVariant="warning"
               asEmphasis="text"
               asFloated="left"
               withTranslation={null}
@@ -236,7 +272,7 @@ export default function ImageUploadModal(props) {
               {...props}
               asSize="normal"
               content={tObj ? tObj.buttons.save : "save"}
-              asVariant='warning'
+              asVariant="warning"
               withTranslation={null}
               withAnimation={null}
               asEmphasis="contained"
