@@ -1,5 +1,4 @@
-import { RadioGroup } from "@mui/material";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import OptionItemEight from "../components/OptionItem/OptionItemEight/OptionItemEight.react";
 
 export default {
@@ -53,7 +52,7 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a InlineEdit with remove button.",
+    componentSubtitle: "Displays a optionitemeight with inputField and buttons for general-purpose use.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
@@ -95,10 +94,10 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Colored Single Select
+// Colored OptionItem Eight
 // -------------------------------------------------------------
-export const ColoredOptionitemEight = Template.bind({});
-ColoredOptionitemEight.args = {
+export const ColoredOptionItemEight = Template.bind({});
+ColoredOptionItemEight.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#8c9ea3",
@@ -106,11 +105,11 @@ ColoredOptionitemEight.args = {
     accentColor: "#597387",
   },
 };
-ColoredOptionitemEight.parameters = {
+ColoredOptionItemEight.parameters = {
   docs: {
     source: {
       code: `<OptionItemEight {...${JSON.stringify(
-        ColoredOptionitemEight.args,
+        ColoredOptionItemEight.args,
         null,
         2
       )}}/>`,
@@ -118,10 +117,10 @@ ColoredOptionitemEight.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Animated Single Select
+// Animated OptionItem Eight
 // -------------------------------------------------------------
-export const AnimatedOptionitemEight = Template.bind({});
-AnimatedOptionitemEight.args = {
+export const AnimatedOptionItemEight = Template.bind({});
+AnimatedOptionItemEight.args = {
   ...Default.args,
   withAnimation: {
     animation: "fade",
@@ -129,11 +128,11 @@ AnimatedOptionitemEight.args = {
     delay: 0,
   },
 };
-AnimatedOptionitemEight.parameters = {
+AnimatedOptionItemEight.parameters = {
   docs: {
     source: {
       code: `<OptionItemEight {...${JSON.stringify(
-        AnimatedOptionitemEight.args,
+        AnimatedOptionItemEight.args,
         null,
         2
       )}}/>`,
@@ -141,44 +140,98 @@ AnimatedOptionitemEight.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Multiple Inline Edit With Remove Button
+// Multiple Option Item Eight
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  let obj = { ...args.content };
+  const [contentArr, setContentArr] = useState(args.multiContent);
+  // -------------------------------------------------------------
+  // Hook to return modified content object
+  // -------------------------------------------------------------
+  useEffect(() => {
+    args.onInput(contentArr);
+  });
+  // -------------------------------------------------------------
+  // Temporary variables for operations
+  // -------------------------------------------------------------
+  let tmp_state = contentArr;
+  let tmp_arr = [];
+  let tmp_obj = {};
+  // -------------------------------------------------------------
+  // Function to remove an object from the array
+  // -------------------------------------------------------------
+  const handleRemove = (dataID) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_state.forEach((dataObj) => {
+      tmp_arr.push({ ...dataObj });
+    });
+    tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
+    setContentArr([...tmp_arr]);
+  };
+  // -------------------------------------------------------------
+  // Function to put value in the array of objects
+  // -------------------------------------------------------------
+  const handleInput = (targetName, value) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.targetName === targetName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.value = value;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
+
   return (
-    <RadioGroup>
-      <div>
-        <div style={{ marginBottom: "1em" }}>
-          <OptionItemEight
-            {...args}
-            content={{ ...obj, targetName: "one" }}
-          />
-        </div>
-        <div style={{ marginBottom: "1em" }}>
-          <OptionItemEight
-            {...args}
-            content={{ ...obj, targetName: "two"}}
-          />
-        </div>
-        <div style={{ marginBottom: "1em" }}>
-          <OptionItemEight
-            {...args}
-            content={{ ...obj, targetName: "three"}}
-          />
-        </div>
-      </div>
-    </RadioGroup>
+    <div>
+      {contentArr.map((content, index) => {
+        return (
+          <div style={{ marginBottom: "1em" }} key={index}>
+            <OptionItemEight
+              {...args}
+              content={{ ...content }}
+              onInput={(targetName, value) => handleInput(targetName, value)}
+              onClose={handleRemove}
+            />
+          </div>
+        );
+      })}
+    </div>
   );
 };
-export const MultipleOptionitemEight = MultipleTemplate.bind({});
-MultipleOptionitemEight.args = {
+export const MultipleOptionItemEight = MultipleTemplate.bind({});
+MultipleOptionItemEight.args = {
   ...Default.args,
+  multiContent: [
+    {
+      targetName: "TargetNameOne",
+      value: "",
+      placeholder: "Placeholder Eight",
+    },
+    {
+      targetName: "TargetNameTwo",
+      value: "",
+      placeholder: "Placeholder Two",
+    },
+    {
+      targetName: "TargetNameThree",
+      value: "Default Value",
+      placeholder: "Placeholder Three",
+    },
+  ],
 };
-MultipleOptionitemEight.parameters = {
+MultipleOptionItemEight.parameters = {
   docs: {
     source: {
       code: `<OptionItemEight {...${JSON.stringify(
-        MultipleOptionitemEight.args,
+        MultipleOptionItemEight.args,
         null,
         2
       )}}/>`,

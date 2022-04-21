@@ -7,11 +7,15 @@ import { shallow, mount } from "enzyme";
 // -------------------------------------
 import OptionItemSix from "../OptionItem/OptionItemSix/OptionItemSix.react";
 
-describe("Option Item Two", () => {
+describe("Option Item Six", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
+
+    const pauseFor = (milliseconds) =>
+        new Promise((resolve) => setTimeout(resolve, milliseconds));
+
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -34,6 +38,7 @@ describe("Option Item Two", () => {
                 isDisabled={false}
                 isHidden={false}
                 onInput={() => { }}
+                onUpload={() => { }}
                 onClose={() => { }}
             />
         );
@@ -52,6 +57,7 @@ describe("Option Item Two", () => {
                     placeholder: "placeholder",
                 }}
                 onInput={() => { }}
+                onUpload={() => { }}
                 onClose={() => { }}
             />
         );
@@ -62,11 +68,19 @@ describe("Option Item Two", () => {
         component.find("InputField").at(0).simulate("click");
         component.find("InputField").at(1).simulate("click");
     });
+    it("should render correctly when file is uploaded", async () => {
+        component
+            .find("OptionalImageField")
+            .simulate("click", {});
+        await pauseFor(100);
+        expect(component.exists()).toBe(true);
+    });
     it("should render correctly without throwing error when clicked on close icon", () => {
         component
             .find(".fa-times")
             .simulate("click", { target: { dataset: { id: "name" } } });
     });
+
     it("should render correctly when passed withColor props", () => {
         let colors = {
             backgroundColor: "#fff",

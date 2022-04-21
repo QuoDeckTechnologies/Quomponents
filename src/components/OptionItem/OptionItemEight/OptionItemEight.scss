@@ -1,16 +1,13 @@
 .qui .qui-option-item-eight-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    grid-gap: 0.5em;
+    gap: 0.5em;
     flex: 1;
 }
 .qui.qui-option-item-eight .qui-char-limit-max-length {
     font-size: 0.65em;
 }
 .qui .qui-option-item-eight-close-icon {
-    height: 2em;
-    width: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,9 +33,25 @@
     .qui.qui-option-item-seven .qui-char-limit-max-length {
         display: none;
     }
+    .qui.qui-option-item-eight .qui-option-item-button {
+        .css-tqxl64-MuiButtonBase-root-MuiButton-root {
+            font-size: 0.6em;
+            padding: 0.5em 1em;
+            width: auto;
+        }
+    }
 }
+
 @media only screen and (min-width: 481px) {
     .qui.qui-option-item-seven .qui-char-limit-max-length {
         display: block;
+    }
+    .qui.qui-option-item-eight .qui-option-item-button {
+        .css-tqxl64-MuiButtonBase-root-MuiButton-root {
+            font-size: 1em;
+            padding: 0.5em 1em;
+            width: auto;
+            white-space: nowrap;
+        }
     }
 }

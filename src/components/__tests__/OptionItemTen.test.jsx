@@ -5,9 +5,9 @@ import { shallow, mount } from "enzyme";
 //--------------------------------------
 // Import Component
 // -------------------------------------
-import OptionItemSeven from "../OptionItem/OptionItemSeven/OptionItemSeven.react";
+import OptionItemTen from "../OptionItem/OptionItemTen/OptionItemTen.react";
 
-describe("Option Item Seven", () => {
+describe("Option Item Ten", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -19,13 +19,11 @@ describe("Option Item Seven", () => {
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
-            <OptionItemSeven
+            <OptionItemTen
                 content={{
                     targetName: "name",
                     value: "",
-                    image: {},
                     placeholder: "placeholder",
-                    checked: false,
                 }}
                 withColor={{
                     backgroundColor: "",
@@ -40,7 +38,6 @@ describe("Option Item Seven", () => {
                 isDisabled={false}
                 isHidden={false}
                 onInput={() => { }}
-                onSelect={() => { }}
                 onUpload={() => { }}
                 onClose={() => { }}
             />
@@ -53,15 +50,13 @@ describe("Option Item Seven", () => {
 
     it("should render correctly without throwing error", () => {
         let component = mount(
-            <OptionItemSeven
+            <OptionItemTen
                 content={{
                     targetName: "name",
                     value: "",
                     placeholder: "placeholder",
-                    checked: false,
                 }}
                 onInput={() => { }}
-                onSelect={() => { }}
                 onUpload={() => { }}
                 onClose={() => { }}
             />
@@ -70,26 +65,13 @@ describe("Option Item Seven", () => {
     });
 
     it("should render correctly without throwing error when wriiten in input field", () => {
-        component.find("InputField").simulate("click");
+        component.find("InputField").at(0).simulate("click");
+        component.find("InputField").at(1).simulate("click");
     });
-
-    it("should render correctly without throwing error when radio button is used", () => {
-        component
-            .find(".qui-option-item-radio")
-            .simulate("change", { target: { checked: true } });
-    });
-
     it("should render correctly without throwing error when clicked on close icon", () => {
         component
             .find(".fa-times")
             .simulate("click", { target: { dataset: { id: "name" } } });
-    });
-    it("should render correctly when file is uploaded", async () => {
-        component
-            .find("OptionalImageField")
-            .simulate("click", {});
-        await pauseFor(100);
-        expect(component.exists()).toBe(true);
     });
     it("should render correctly when passed withColor props", () => {
         let colors = {
@@ -126,4 +108,11 @@ describe("Option Item Seven", () => {
         component.setProps({ isDisabled: true })
         expect(component.exists()).toBe(true);
     })
+    it("should render correctly when file is uploaded", async () => {
+        component
+            .find("OptionalImageField")
+            .simulate("click", {});
+        await pauseFor(100);
+        expect(component.exists()).toBe(true);
+    });
 });
