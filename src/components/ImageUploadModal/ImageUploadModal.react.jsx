@@ -21,10 +21,6 @@ ImageUploadModal.propTypes = {
     Use to define if modal is open
     */
   isOpen: PropTypes.bool.isRequired,
-  /**
-    Use to define image quality of cropped image it must be in the range of `1 to 100` 
-    */
-  imageQuality: PropTypes.number.isRequired,
   //=======================================
   // Quommon props
   //=======================================
@@ -72,7 +68,6 @@ ImageUploadModal.defaultProps = {
   // Component Specific props
   //=======================================
   isOpen: true,
-  imageQuality: 50,
   //=======================================
   // Quommon props
   //=======================================
@@ -283,7 +278,6 @@ export default function ImageUploadModal(props) {
         </div>
         <ArcMenu
           {...props}
-          content={[]}
           type="close"
           arcIcon="close"
           position="top-right"

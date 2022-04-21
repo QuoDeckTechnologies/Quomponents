@@ -21,9 +21,6 @@ export default {
     isOpen: {
       defaultValue: true,
     },
-    imageQuality: {
-      defaultValue: 50,
-    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -94,7 +91,6 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   isOpen: true,
-  imageQuality: 50,
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
