@@ -65,7 +65,7 @@ CourseCard.defaultProps = {
 	// Component Specific props
 	//=======================================
 	content: {},
-	
+
 	// Quommon props
 	//=======================================
 	asFloated: "inline",
@@ -96,11 +96,6 @@ export default function CourseCard(props) {
 		: props.content?.wrapper
 		? "assets/courses/" + props.content?.wrapper + "/play_backdrop.jpg"
 		: defaultImage;
-
-	//-------------------------------------------------------------------
-	// 3. Get the tag styling
-	//-------------------------------------------------------------------
-	let tagStyle = props.content?.tags ? "flex" : "none";
 
 	//-------------------------------------------------------------------
 	// 4.  Create link of article based on identifier
@@ -215,11 +210,39 @@ export default function CourseCard(props) {
 							{props.content?.courseName}
 						</div>
 					</div>
-					<div className="qui-course-card-tag-and-date-container">
-						<div
-							className={`qui-course-card-tag-container`}
-							style={{ display: tagStyle }}
-						>
+					<div className="qui-course-card-date-and-tags-container">
+						<div className="qui-course-card-show-more-date-container">
+							{showMoreBtn && (
+								<div className={`qui-course-card-show-more-container`}>
+									<button
+										className={`qui-course-card-show-more`}
+										onClick={expandTags ? handleLessTags : handleMoreTags}
+									>
+										<i
+											className={
+												expandTags ? "fas fa-angle-up" : "fas fa-angle-down"
+											}
+										/>
+									</button>
+								</div>
+							)}
+							{startDate && endDate && (
+								<div className="qui-course-card-date-container">
+									<IconBlock
+										asSize="tiny"
+										asPadded="fitted"
+										asEmphasis="text"
+										withIcon={{ name: "far fa-calendar-alt", size: "2em" }}
+										withColor={{ accentColor: "#000" }}
+									/>
+									<div className={`qui-course-card-date`}>
+										{startDate} - {endDate}
+									</div>
+								</div>
+							)}
+						</div>
+
+						<div className="qui-course-card-tag-container">
 							{_.map(props.content?.tags, (tag, index) => {
 								if (index < itirate) {
 									return (
@@ -241,34 +264,6 @@ export default function CourseCard(props) {
 								}
 							})}
 						</div>
-						{showMoreBtn && (
-							<div className={`qui-course-card-show-more-container`}>
-								<button
-									className={`qui-course-card-show-more`}
-									onClick={expandTags ? handleLessTags : handleMoreTags}
-								>
-									<i
-										className={
-											expandTags ? "fas fa-angle-up" : "fas fa-angle-down"
-										}
-									/>
-								</button>
-							</div>
-						)}
-						{startDate && endDate && (
-							<div className="qui-course-card-date-container">
-								<IconBlock
-									asSize="tiny"
-									asPadded="fitted"
-									asEmphasis="text"
-									withIcon={{ name: "far fa-calendar-alt", size: "2em" }}
-									withColor={{ accentColor: "#000" }}
-								/>
-								<div className={`qui-course-card-date`}>
-									{startDate} - {endDate}
-								</div>
-							</div>
-						)}
 					</div>
 					<BannerCard
 						content={{ image: image, header: header }}

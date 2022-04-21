@@ -263,8 +263,7 @@ export default function NuggetCard(props) {
 									);
 								}
 							})}
-						</div>
-						{showMoreBtn && (
+							{showMoreBtn && (
 							<div className={`qui-nugget-card-show-more`}>
 								<button
 									className={`qui-course-card-show-more`}
@@ -278,6 +277,8 @@ export default function NuggetCard(props) {
 								</button>
 							</div>
 						)}
+						</div>
+						
 					</div>
 					<BannerCard content={{ image: image }} onClick={() => {}} />
 					<div className={`qui-nugget-card-description-container`}>
