@@ -13,7 +13,7 @@ import NuggetBlock from "../NuggetBlock/NuggetBlock.react";
 
 Object.assign(navigator, {
 	clipboard: {
-		writeText: () => {},
+		writeText: () => { },
 	},
 });
 
@@ -28,10 +28,8 @@ describe("CourseCard", () => {
 		wrapper: "carnival",
 		tags: ["Tag1", "Tag2"],
 		courseName: "Measure your sales readiness",
-		description:
-			"Take this quick profile test to check how well you are prepared for a sales job",
-		courseImage:
-			"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+		description: "Take this quick profile test to check how well you are prepared for a sales job",
+		courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
 		points: "200",
 		identifier: "XrPmy_OAK",
 		date: {
@@ -103,17 +101,14 @@ describe("CourseCard", () => {
 		});
 		let iconBlock = component.find(IconBlock);
 		iconBlock.simulate("click");
-		expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
-			"https://www.quodeck.com/XrPmy_MND"
-		);
+		expect(navigator.clipboard.writeText).toHaveBeenCalledWith("https://www.quodeck.com/XrPmy_MND");
 	});
 
 	it("should show courseImage when passed courseImage in the Gamified Course Card", () => {
 		let content = {
 			courseType: "exam",
 			wrapper: "carnival",
-			courseImage:
-				"https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+			courseImage: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
 			date: {
 				start_date: "2032-03-30T18:30:00.000Z",
 				end_date: "2021-05-10T12:55:18.458Z",
@@ -121,9 +116,7 @@ describe("CourseCard", () => {
 		};
 		component.setProps({ content: content });
 		component.find(BannerCard).simulate("click");
-		expect(component.find(BannerCard).props().content.image).toBe(
-			"https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
-		);
+		expect(component.find(BannerCard).props().content.image).toBe("https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg");
 	});
 
 	it("should show courseWrapperImage when passed wrapper in the Gamified Course Card", () => {
@@ -137,9 +130,7 @@ describe("CourseCard", () => {
 			},
 		};
 		component.setProps({ content: content });
-		expect(component.find(BannerCard).props().content.image).toBe(
-			"assets/courses/carnival/play_backdrop.jpg"
-		);
+		expect(component.find(BannerCard).props().content.image).toBe("assets/courses/carnival/play_backdrop.jpg");
 	});
 
 	it("should show default image and remove header from image when passed nothing in courseImage and wrapper", () => {
@@ -153,9 +144,7 @@ describe("CourseCard", () => {
 			},
 		};
 		component.setProps({ content: content });
-		expect(component.find(BannerCard).props().content.image).toBe(
-			"default.jpeg"
-		);
+		expect(component.find(BannerCard).props().content.image).toBe("default.jpeg");
 		expect(component.find(BannerCard).props().content.header).toBe("");
 	});
 
@@ -184,9 +173,7 @@ describe("CourseCard", () => {
 			},
 		};
 		component.setProps({ content: content });
-		expect(component.find(BannerCard).props().content.image).toBe(
-			"assets/courses/carnival/play_backdrop.jpg"
-		);
+		expect(component.find(BannerCard).props().content.image).toBe("assets/courses/carnival/play_backdrop.jpg");
 	});
 
 	it("should display showmore button when passed more than 3 tags and on click should show all the tags", () => {
@@ -214,15 +201,11 @@ describe("CourseCard", () => {
 
 	it("should show sequential course card", () => {
 		component.setProps({ content: { sequential: true } });
-		expect(component.find(".qui-course-card-name").text()).toBe(
-			"Sequential Course"
-		);
+		expect(component.find(".qui-course-card-name").text()).toBe("Sequential Course");
 	});
 
 	it("should show non sequential course card", () => {
 		component.setProps({ content: { sequential: false } });
-		expect(component.find(".qui-course-card-name").text()).toBe(
-			"Non Sequential Course"
-		);
+		expect(component.find(".qui-course-card-name").text()).toBe("Non Sequential Course");
 	});
 });

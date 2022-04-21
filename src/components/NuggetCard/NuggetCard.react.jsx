@@ -1,6 +1,7 @@
 // Import npm packages
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+
 import { getQuommons } from "../../common/javascripts/helpers.js";
 import _ from "lodash";
 
@@ -78,20 +79,20 @@ NuggetCard.propTypes = {
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    Component must have the onClick function passed as props
-    */
+	Component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func.isRequired,
 };
 
@@ -122,17 +123,17 @@ export default function NuggetCard(props) {
 	let quommonClasses = getQuommons(props, "nugget-card");
 
 	//-------------------------------------------------------------------
-	// 3. Get the Image
+	// 2. Get the Image
 	//-------------------------------------------------------------------
 	let image = props.content?.image ? props.content?.image : defaultImage;
 
 	//-------------------------------------------------------------------
-	// 4. Get the tag styling
+	// 3. Get the tag styling
 	//-------------------------------------------------------------------
 	let tagStyle = props.content?.tags ? "flex" : "none";
 
 	//-------------------------------------------------------------------
-	// 5. Create link of article, based on the identifier
+	// 4. Create link of article, based on the identifier
 	//-------------------------------------------------------------------
 	let link;
 	if (props.content?.identifier) {
@@ -142,12 +143,12 @@ export default function NuggetCard(props) {
 	}
 
 	//-------------------------------------------------------------------
-	// 6. Get published status
+	// 5. Get published status
 	//-------------------------------------------------------------------
 	let status = props.content?.published === true ? "published" : "none";
 
 	//-------------------------------------------------------------------
-	// 7. Get the Nugget Image
+	// 6. Get the Nugget Image
 	//-------------------------------------------------------------------
 	const nuggetImages = {
 		quiz: Nugget_Quiz,
@@ -173,28 +174,22 @@ export default function NuggetCard(props) {
 	};
 
 	//-------------------------------------------------------------------
-	// 8. Capitalize first letter of category text
+	// 7. Capitalize first letter of category text
 	//-------------------------------------------------------------------
-	let category = props.content?.category
-		? props.content?.category?.charAt(0).toUpperCase() +
-		  props.content?.category?.slice(1)
-		: "";
+	let category = props.content?.category ? props.content?.category?.charAt(0).toUpperCase() + props.content?.category?.slice(1) : "";
 
 	//-------------------------------------------------------------------
-	// 9. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
+	// 8. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
 	//-------------------------------------------------------------------
 	let truncate;
-	let tag1Length =
-		props.content?.tags?.length > 0 ? props.content?.tags[0]?.length : "";
-	let tag2Length =
-		props.content?.tags?.length > 0 ? props.content?.tags[1]?.length : "";
-	let tag3Length =
-		props.content?.tags?.length > 0 ? props.content?.tags[2]?.length : "";
+	let tag1Length = props.content?.tags?.length > 0 ? props.content?.tags[0]?.length : "";
+	let tag2Length = props.content?.tags?.length > 0 ? props.content?.tags[1]?.length : "";
+	let tag3Length = props.content?.tags?.length > 0 ? props.content?.tags[2]?.length : "";
 	let showMoreBtn = false;
 	let minTags = 5;
 	let maxTags = props.content?.tags?.length;
 	let showTags = 5;
-	
+
 	const [expandTags, setExpandTags] = useState(false);
 	const [itirate, setItirate] = useState(showTags);
 
@@ -206,12 +201,7 @@ export default function NuggetCard(props) {
 		setItirate(maxTags);
 		setExpandTags(true);
 	};
-	if (
-		tag1Length >= 15 ||
-		tag2Length >= 15 ||
-		tag3Length >= 15 ||
-		props.content?.tags?.length > 5
-	) {
+	if (tag1Length >= 15 || tag2Length >= 15 || tag3Length >= 15 || props.content?.tags?.length > 5) {
 		showMoreBtn = true;
 		if (expandTags === true) {
 			truncate = "qui-nugget-card-untruncate";
@@ -223,7 +213,7 @@ export default function NuggetCard(props) {
 	}
 
 	//-------------------------------------------------------------------
-	// 10. Get the NuggetCard Component
+	// 9. Get the NuggetCard Component
 	//-------------------------------------------------------------------
 	const nuggetCard = () => {
 		return (
@@ -241,15 +231,13 @@ export default function NuggetCard(props) {
 					<div className="qui-nugget-card-tag-show-more">
 						<div
 							className={`qui-nugget-card-tag-container`}
-							style={{ display: tagStyle }}
-						>
+							style={{ display: tagStyle }} >
 							{_.map(props.content?.tags, (tag, index) => {
 								if (index < itirate) {
 									return (
 										<div
 											key={index}
-											className={`qui-nugget-card-tag ${truncate}`}
-										>
+											className={`qui-nugget-card-tag ${truncate}`}>
 											<Tag
 												asPadded="compact"
 												content={tag}
@@ -264,23 +252,17 @@ export default function NuggetCard(props) {
 								}
 							})}
 							{showMoreBtn && (
-							<div className={`qui-nugget-card-show-more`}>
-								<button
-									className={`qui-course-card-show-more`}
-									onClick={expandTags ? handleLessTags : handleMoreTags}
-								>
-									<i
-										className={
-											expandTags ? "fas fa-angle-up" : "fas fa-angle-down"
-										}
-									/>
-								</button>
-							</div>
-						)}
+								<div className={`qui-nugget-card-show-more`}>
+									<button
+										className={`qui-course-card-show-more`}
+										onClick={expandTags ? handleLessTags : handleMoreTags}>
+										<i className={expandTags ? "fas fa-angle-up" : "fas fa-angle-down"} />
+									</button>
+								</div>
+							)}
 						</div>
-						
 					</div>
-					<BannerCard content={{ image: image }} onClick={() => {}} />
+					<BannerCard content={{ image: image }} onClick={() => { }} />
 					<div className={`qui-nugget-card-description-container`}>
 						<div className={`qui-nugget-card-description`}>
 							{props.content?.description}

@@ -128,7 +128,7 @@ export const CourseCardWithManyTags = (args) => {
 				published: false,
 				courseType: "standard",
 				wrapper: "carnival",
-				tags: ["Article", "Cataloing", "Returns Management", "Orders Management", "Payments and Settlements", "Customer","Latest", "Pneumonoultramicroscopicsilicovolcanoconiosis", "Tag10", "Tag4", "Tag5", "Tag6","Tag1", "Tag2", "Tag3", "Tag", "Tag5", "Tag6","Tag1", "Tag", "Tag", "Tag", "Tag5", "Tag6","Tag1", "Tag2", "Tag3", "Tag4", "Tag5", "Tag6","Tag1", "Tag2", "Tag3", "Tag4", "Tag5", "Tag6","Tag1", "Tag2", "Tag3", "Tag4", "Tag5", "Tag6"],
+				tags: ["Article", "Cataloing", "Returns Management", "Orders Management", "Payments and Settlements", "Customer", "Latest", "Pneumonoultramicroscopicsilicovolcanoconiosis", "Tag10", "Tag4", "Tag5", "Tag6", "Tag1", "Tag2", "Tag3", "Tag", "Tag5", "Tag6", "Tag1", "Tag", "Tag", "Tag", "Tag5", "Tag6", "Tag1", "Tag2", "Tag3", "Tag4", "Tag5", "Tag6", "Tag1", "Tag2", "Tag3", "Tag4", "Tag5", "Tag6", "Tag1", "Tag2", "Tag3", "Tag4", "Tag5", "Tag6"],
 				courseName: "Measure your sales readiness",
 				description:
 					"Take this quick profile test to check how well you are prepared for a sales job",

@@ -13,7 +13,7 @@ import NuggetBlock from "../NuggetBlock/NuggetBlock.react";
 
 Object.assign(navigator, {
 	clipboard: {
-		writeText: () => {},
+		writeText: () => { },
 	},
 });
 
@@ -35,7 +35,6 @@ describe("NuggetCard", () => {
 		identifier: "XrPmy_OAK",
 	};
 	let mockFn = jest.fn();
-
 	jest.spyOn(navigator.clipboard, "writeText");
 	beforeEach(() => {
 		jest.resetAllMocks();
@@ -95,9 +94,7 @@ describe("NuggetCard", () => {
 		});
 		let iconBlock = component.find(IconBlock);
 		iconBlock.simulate("click");
-		expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
-			"https://www.quodeck.com/XrPmy_MND"
-		);
+		expect(navigator.clipboard.writeText).toHaveBeenCalledWith("https://www.quodeck.com/XrPmy_MND");
 	});
 
 	it("should simulate the ArcMenu on click", () => {
@@ -109,14 +106,11 @@ describe("NuggetCard", () => {
 	it("should show image when passed image", () => {
 		let content = {
 			category: "profiler",
-			image:
-				"https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
+			image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
 		};
 		component.setProps({ content: content });
 		component.find(BannerCard).simulate("click");
-		expect(component.find(BannerCard).props().content.image).toBe(
-			"https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
-		);
+		expect(component.find(BannerCard).props().content.image).toBe("https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg");
 	});
 
 	it("should show default image when passed nothing in image", () => {
@@ -142,7 +136,7 @@ describe("NuggetCard", () => {
 
 	it("should display showmore button when passed long text in the tag and on click should show all the tags", () => {
 		component.setProps({
-			content: { tags: ["Pneumonoultramicroscopicsilicovolcanoconiosis"] },
+			content: { tags: ["Pneumonoultramicroscopicsilicovolcanoconiosis"] }
 		});
 		let showMore = component.find("button");
 		expect(showMore.exists()).toBe(true);

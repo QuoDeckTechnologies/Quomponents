@@ -98,7 +98,7 @@ export const NuggetCardWithManyTags = (args) => {
 		...Object.assign({}, Default.args, args, {
 			content: {
 				published: false,
-				tags: ["Article", "Cataloing", "Returns Management", "Orders Management", "Payments and Settlements", "Customer","Latest", "Pneumonoultramicroscopicsilicovolcanoconiosis"],
+				tags: ["Article", "Cataloing", "Returns Management", "Orders Management", "Payments and Settlements", "Customer", "Latest", "Pneumonoultramicroscopicsilicovolcanoconiosis"],
 				category: "profiler",
 				name: "Measure your sales readiness",
 				description:

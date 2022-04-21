@@ -1,6 +1,7 @@
 // Import npm packages
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+
 import { getQuommons } from "../../common/javascripts/helpers.js";
 import _ from "lodash";
 
@@ -44,20 +45,20 @@ CourseCard.propTypes = {
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    Component must have the onClick function passed as props
-    */
+	Component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func.isRequired,
 };
 
@@ -94,8 +95,8 @@ export default function CourseCard(props) {
 	let image = props.content?.courseImage
 		? props.content?.courseImage
 		: props.content?.wrapper
-		? "assets/courses/" + props.content?.wrapper + "/play_backdrop.jpg"
-		: defaultImage;
+			? "assets/courses/" + props.content?.wrapper + "/play_backdrop.jpg"
+			: defaultImage;
 
 	//-------------------------------------------------------------------
 	// 4.  Create link of article based on identifier
@@ -119,9 +120,7 @@ export default function CourseCard(props) {
 	endDay = eD.toLocaleDateString(undefined, { day: "numeric" });
 	endMonth = eD.toLocaleDateString(undefined, { month: "short" });
 
-	startDate = props.content?.date?.start_date
-		? startDay + " " + startMonth
-		: "";
+	startDate = props.content?.date?.start_date ? startDay + " " + startMonth : "";
 	endDate = props.content?.date?.end_date ? endDay + " " + endMonth : "";
 
 	//-------------------------------------------------------------------
@@ -134,15 +133,10 @@ export default function CourseCard(props) {
 	//-------------------------------------------------------------------
 	let header = "";
 	if (props.content?.wrapper) {
-		if (
-			props.content?.wrapper?.toLowerCase() === "none" ||
-			props.content?.wrapper === ""
-		) {
+		if (props.content?.wrapper?.toLowerCase() === "none" || props.content?.wrapper === "") {
 			header = "";
 		} else {
-			header = `${props.content?.wrapper
-				?.charAt(0)
-				.toUpperCase()}${props.content?.wrapper?.slice(1)}`;
+			header = `${props.content?.wrapper?.charAt(0).toUpperCase()}${props.content?.wrapper?.slice(1)}`;
 		}
 	}
 
@@ -157,12 +151,9 @@ export default function CourseCard(props) {
 	// 9. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
 	//-------------------------------------------------------------------
 	let truncate;
-	let tag1Length =
-		props.content?.tags?.length > 0 ? props.content?.tags[0]?.length : "";
-	let tag2Length =
-		props.content?.tags?.length > 0 ? props.content?.tags[1]?.length : "";
-	let tag3Length =
-		props.content?.tags?.length > 0 ? props.content?.tags[2]?.length : "";
+	let tag1Length = props.content?.tags?.length > 0 ? props.content?.tags[0]?.length : "";
+	let tag2Length = props.content?.tags?.length > 0 ? props.content?.tags[1]?.length : "";
+	let tag3Length = props.content?.tags?.length > 0 ? props.content?.tags[2]?.length : "";
 	let showMoreBtn = false;
 	let minTags = 3;
 	let maxTags = props.content?.tags?.length;
@@ -179,12 +170,7 @@ export default function CourseCard(props) {
 		setItirate(maxTags);
 		setExpandTags(true);
 	};
-	if (
-		tag1Length >= 15 ||
-		tag2Length >= 15 ||
-		tag3Length >= 15 ||
-		props.content?.tags?.length > 3
-	) {
+	if (tag1Length >= 15 || tag2Length >= 15 || tag3Length >= 15 || props.content?.tags?.length > 3) {
 		showMoreBtn = true;
 		if (expandTags === true) {
 			truncate = "qui-course-card-untruncate";
@@ -218,11 +204,7 @@ export default function CourseCard(props) {
 										className={`qui-course-card-show-more`}
 										onClick={expandTags ? handleLessTags : handleMoreTags}
 									>
-										<i
-											className={
-												expandTags ? "fas fa-angle-up" : "fas fa-angle-down"
-											}
-										/>
+										<i className={expandTags ? "fas fa-angle-up" : "fas fa-angle-down"} />
 									</button>
 								</div>
 							)}
@@ -241,7 +223,6 @@ export default function CourseCard(props) {
 								</div>
 							)}
 						</div>
-
 						<div className="qui-course-card-tag-container">
 							{_.map(props.content?.tags, (tag, index) => {
 								if (index < itirate) {
@@ -267,7 +248,7 @@ export default function CourseCard(props) {
 					</div>
 					<BannerCard
 						content={{ image: image, header: header }}
-						onClick={() => {}}
+						onClick={() => { }}
 					/>
 					<div className={`qui-course-card-description-container`}>
 						<div className={`qui-course-card-description`}>
