@@ -27,11 +27,9 @@ export default {
     component: NuggetBlock,
     argTypes: {
         image: "",
-        published:{
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
+        status: {
+            control: "select",
+            options: ["none", "published", "unpublished"],
         },
         asSize: {
             control: "select",
@@ -110,7 +108,7 @@ const Template = (args) => <NuggetBlock {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     image: Nugget_Profiler,
-    published: false,
+    status: "none",
     asSize: "normal",
     asFloated: "inline",
     asPadded: "normal",
