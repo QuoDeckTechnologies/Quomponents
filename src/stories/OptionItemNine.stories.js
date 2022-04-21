@@ -189,18 +189,36 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to set selected option in the content array
   // -------------------------------------------------------------
-  const handleSelect = (targetName, value, checked) => {
+  const handleShortFieldOne = (targetName, value) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
     tmp_state.forEach((dataObj) => {
-      if (dataObj.targetName === targetName) {
+      if (dataObj.targetNameShortFieldOne === targetName) {
         tmp_obj = { ...dataObj };
-        tmp_obj.checked = checked;
+        tmp_obj.valueShortFieldOne = value;
         tmp_arr.push(tmp_obj);
       } else {
         tmp_obj = { ...dataObj };
-        tmp_obj.checked = !checked;
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
+  // -------------------------------------------------------------
+  // Function to set selected option in the content array
+  // -------------------------------------------------------------
+  const handleShortFieldTwo = (targetName, value) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.targetNameShortFieldTwo === targetName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.valueShortFieldTwo = value;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
         tmp_arr.push(tmp_obj);
       }
     });
@@ -234,12 +252,13 @@ const MultipleTemplate = (args) => {
             <OptionItemNine
               {...args}
               content={content}
-              onSelect={(targetName, value) =>
-                handleSelect(targetName, value)
+              onShortFieldOneInput={(targetName, value) =>
+                handleShortFieldOne(targetName, value)
               }
-              onInput={(targetName, value) =>
-                handleInput(targetName, value)
+              onShortFieldTwoInput={(targetName, value) =>
+                handleShortFieldTwo(targetName, value)
               }
+              onInput={(targetName, value) => handleInput(targetName, value)}
               onClose={handleRemove}
             />
           </div>
