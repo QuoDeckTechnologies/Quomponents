@@ -53,7 +53,7 @@ export default {
         defaultValue: false,
       },
     },
-    onSave: {
+    onClick: {
       table: {
         category: "Events",
         defaultValue: null,

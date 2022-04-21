@@ -58,9 +58,9 @@ ImageUploadModal.propTypes = {
     */
   isHidden: PropTypes.bool,
   /**
-    imageUploadModal component must have the onSave function passed as props
+    imageUploadModal component must have the onClick function passed as props
     */
-  onSave: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 ImageUploadModal.defaultProps = {
@@ -146,19 +146,20 @@ export default function ImageUploadModal(props) {
     if (image) {
       // If the image uploaded is a gif, convert it to a Base64 string without canvas
       if (imageType === "image/gif") {
-        props.onSave(image.base64);
+        props.onClick(image.base64);
       }
       // If the image uploaded is not a gif, convert it to a jpg with 80% compression, or to a png
       // and then a Base64 string with canvas
       if (imageType === "image/jpeg") {
         let image = editorRef.current?.getImage().toDataURL("image/jpeg", 0.8);
-        props.onSave(image);
+        props.onClick(image);
       }
       if (imageType === "image/png") {
         let image = editorRef.current?.getImage().toDataURL("image/png");
-        props.onSave(image);
+        props.onClick(image);
       }
     }
+    setOpenUploadModal(false)
   };
   //-------------------------------------------------------------------
   // 7. Set the classes
