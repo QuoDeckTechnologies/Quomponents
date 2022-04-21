@@ -1,5 +1,5 @@
 .qui .qui-image-upload-modal-container {
-  background-color: white;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,12 +9,15 @@
   z-index: 20;
   box-shadow: 0 6px 6px 0px #00000052;
 }
+
 .qui .qui-image-upload-modal-container .qui.qui-button {
   overflow: visible;
 }
+
 .qui .qui-image-upload-modal-container:focus {
   outline: none;
 }
+
 .qui .qui-avatar-canvas {
   display: flex;
   flex-direction: column;
@@ -23,18 +26,21 @@
   border-radius: 1em;
   overflow: hidden;
 }
+
 .qui .qui-image-cropper .qui.qui-slider {
   margin: 2em 0;
 }
+
 .qui .qui-image-cropper .qui-button.float-none {
   min-height: 0;
   margin-bottom: 1.8em;
 }
+
 .qui .qui-avatar-default-image {
   width: 100%;
   object-fit: cover;
-  // border-radius: 1em;
 }
+
 .qui
   .qui-image-upload-modal-container
   .qui-image-cropper
@@ -44,13 +50,16 @@
   font-size: 1.5em;
   color: rgb(90, 90, 90);
 }
+
 .qui .qui-image-upload-button button {
   border-radius: 0.3em;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
 }
+
 .qui .qui-image-cropper .qui-button .qui-label {
   display: none;
 }
+
 .qui .qui-upload-image-modal-button {
   width: 100%;
   font-size: 1.5em;
@@ -59,18 +68,22 @@
   border-radius: 0.2em;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
 }
+
 .qui .qui-image-modal-upload-header {
   width: 100%;
   display: flex;
 }
+
 .qui .qui-image-modal-upload-header h2 {
   margin: 0 0 1.3em 0;
   color: #777777;
   font-size: 2em;
 }
+
 .qui .qui-image-upload-modal-container-range-slider {
   width: 100%;
 }
+
 .qui .qui-image-upload-buttons {
   width: 100%;
   display: flex;
@@ -81,17 +94,17 @@
     border-radius: 0.2em;
   }
 }
+
 .qui .qui-save-image-modal-button {
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
 }
-// .qui .qui-image-preview {
-//   border-radius: 1em;
-// }
+
 .qui .qui-image-upload-default-image {
   border-radius: 1em;
   object-fit: cover;
   width: 100%;
 }
+
 .qui .qui-image-upload-modal-container .qui-button button {
   font-size: 1.5em;
   padding: 0.6em 2em;
