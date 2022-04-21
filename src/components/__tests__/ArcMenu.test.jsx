@@ -43,7 +43,7 @@ describe("ArcMenu", () => {
           { image: "" },
           { image: "" },
         ]}
-        type="close"
+        menuType="close"
         arcIcon="menu"
         position="top-right"
         asVariant="primary"
@@ -85,24 +85,24 @@ describe("ArcMenu", () => {
 
   it("should render correctly when modal is operated", () => {
     component.setProps({
-      type: "menu",
+      menuType: "menu",
     });
     component.find(".qui-arc-menu-button").simulate("click");
     component.find(".qui-arc-menu-backdrop").at(0).simulate("click");
   });
 
-  it("should render correctly with add type and add arcIcon", () => {
+  it("should render correctly with add menuType and add arcIcon", () => {
     component.setProps({
       arcIcon: "add",
-      type: "add",
+      menuType: "add",
     });
     component.find(".qui-arc-menu-button").simulate("click");
   });
 
-  it("should render correctly with close type and close arcIcon", () => {
+  it("should render correctly with close menuType and close arcIcon", () => {
     component.setProps({
       arcIcon: "close",
-      type: "close",
+      menuType: "close",
     });
     component.find(".qui-arc-menu-button").simulate("click");
   });
@@ -113,7 +113,7 @@ describe("ArcMenu", () => {
 
   it("should render correctly when clicked on NuggetBlock", () => {
     component.setProps({
-      type: "nugget-menu",
+      menuType: "nugget-menu",
     });
     component.find(".qui-arc-menu-button").simulate("click");
     component.find("NuggetBlock").at(0).simulate("click");
@@ -121,14 +121,14 @@ describe("ArcMenu", () => {
 
   it("should render correctly when clicked on menu list items", () => {
     component.setProps({
-      type: "menu",
+      menuType: "menu",
     });
     component.find(".qui-arc-menu-list-item").at(0).simulate("mousedown");
   });
 
-  it("should render correctly when type is menu and position is bottom-right", () => {
+  it("should render correctly when menuType is menu and position is bottom-right", () => {
     component.setProps({
-      type: "menu",
+      menuType: "menu",
       position: "bottom-right",
     });
   });
