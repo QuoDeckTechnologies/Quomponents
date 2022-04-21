@@ -22,6 +22,7 @@ OptionItemTen.propTypes = {
         targetName: PropTypes.string,
         value: PropTypes.string,
         placeholder: PropTypes.string,
+        image: PropTypes.object,
     }),
     //=======================================
     // Quommon props
@@ -64,6 +65,10 @@ OptionItemTen.propTypes = {
       */
     onInput: PropTypes.func.isRequired,
     /**
+      OptionItemFive component must have the onUpload function passed as props
+      */
+    onUpload: PropTypes.func.isRequired,
+    /**
       OptionItemTen component must have the onClick function passed as props
       */
     onClose: PropTypes.func.isRequired,
@@ -94,6 +99,10 @@ export default function OptionItemTen(props) {
     // 1. Destructuring content prop
     //-------------------------------------------------------------------
     const { content } = props;
+    //-------------------------------------------------------------------
+    // 2. Defining states
+    //-------------------------------------------------------------------
+    const [image, setImage] = useState(content.image);
     const [value, setValue] = useState(content.value);
     //-------------------------------------------------------------------
     // 3. Set the classes
@@ -104,15 +113,18 @@ export default function OptionItemTen(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     //-------------------------------------------------------------------
-    // 5. Function to return checked value of the component
+    // 5. Function to update value of the input field
     //-------------------------------------------------------------------
-
+    const handleImageUpload = (image) => {
+        setImage(image);
+        props.onUpload(content.targetName, image, value);
+    };
     //-------------------------------------------------------------------
     // 6. Function to return input value of the component
     //-------------------------------------------------------------------
     const handleValue = (name, value) => {
         setValue(value);
-        props.onInput(content.targetName, value);
+        props.onInput(content.targetName, image, value);
     };
     // ========================= Render Function =================================
 
@@ -139,7 +151,7 @@ export default function OptionItemTen(props) {
                 <div className="qui-option-item-upload-button">
                     <OptionalImageField
                         content={{ icon: "fas fa-image" }}
-                        onClick={props.onInput}
+                        onClick={(image) => handleImageUpload(image)}
                         withColor={{ ...props.withColor }}
                     />
                 </div>
@@ -156,10 +168,10 @@ export default function OptionItemTen(props) {
                         onClick={handleValue}
                     />
                 </div>
-                <div className="qui-option-item-close-icon">
+                <div className="qui-option-item-ten-close-icon">
                     <i
                         className="fas fa-times"
-                        id={content.targetName}
+                        data-id={content.targetName}
                         onClick={(e) => props.onClose(e.target.dataset.id)}
                     >
                     </i>

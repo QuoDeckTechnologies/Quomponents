@@ -22,6 +22,7 @@ OptionItemSix.propTypes = {
         targetName: PropTypes.string,
         value: PropTypes.string,
         placeholder: PropTypes.string,
+        image: PropTypes.object,
     }),
     //=======================================
     // Quommon props
@@ -60,11 +61,15 @@ OptionItemSix.propTypes = {
     */
     isHidden: PropTypes.bool,
     /**
-      OptionItemSix component must have the onClick function passed as props
+      OptionItemSix component must have the onInput function passed as props
       */
     onInput: PropTypes.func.isRequired,
     /**
-      OptionItemSix component must have the onClick function passed as props
+      OptionItemSix component must have the onUpload function passed as props
+      */
+    onUpload: PropTypes.func.isRequired,
+    /**
+      OptionItemSix component must have the onClose function passed as props
       */
     onClose: PropTypes.func.isRequired,
 };
@@ -94,22 +99,34 @@ export default function OptionItemSix(props) {
     // 1. Destructuring content prop
     //-------------------------------------------------------------------
     const { content } = props;
+    //-------------------------------------------------------------------
+    // 2. Defining states
+    //-------------------------------------------------------------------
+    const [image, setImage] = useState(content.image);
     const [value, setValue] = useState(content.value);
     //-------------------------------------------------------------------
-    // 2. Set the classes
+    // 3. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "option-item-six");
     //-------------------------------------------------------------------
-    // 3. Get animation of the component
+    // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     //-------------------------------------------------------------------
-    // 4. Function to return input value of the component
+    // 5. Function to update value of the input field
+    //-------------------------------------------------------------------
+    const handleImageUpload = (image) => {
+        setImage(image);
+        props.onUpload(content.targetName, image, value);
+    };
+    //-------------------------------------------------------------------
+    // 6. Function to return input value of the component
     //-------------------------------------------------------------------
     const handleValue = (name, value) => {
         setValue(value);
-        props.onInput(content.targetName, value);
+        props.onInput(content.targetName, image, value);
     };
+
     // ========================= Render Function =================================
 
     return (
@@ -125,10 +142,25 @@ export default function OptionItemSix(props) {
                         <div className="qui-option-item-upload-button">
                             <OptionalImageField
                                 content={{ icon: "fas fa-image" }}
-                                onClick={props.onInput}
+                                onClick={(image) => handleImageUpload(image)}
                                 withColor={{ ...props.withColor }}
                             />
                         </div>
+                        <div className="qui-optionitem-six-inputfieldone">
+                            <InputField
+                                name={content.targetName}
+                                content={{
+                                    value: content.value,
+                                    placeholder: content.placeholder,
+                                    maxLength: 300,
+                                }}
+                                asEmphasis="listInput"
+                                withColor={props.withColor}
+                                onClick={handleValue}
+                            />
+                        </div>
+                    </div>
+                    <div className="qui-optionitem-flexthree">
                         <InputField
                             name={content.targetName}
                             content={{
@@ -141,23 +173,11 @@ export default function OptionItemSix(props) {
                             onClick={handleValue}
                         />
                     </div>
-                    <div className="qui-optionitem-flexthree"> <InputField
-                        name={content.targetName}
-                        content={{
-                            value: content.value,
-                            placeholder: content.placeholder,
-                            maxLength: 300,
-                        }}
-                        asEmphasis="listInput"
-                        withColor={props.withColor}
-                        onClick={handleValue}
-                    />
-                    </div>
                 </div>
-                <div className="qui-option-item-close-icon">
+                <div className="qui-option-item-six-close-icon">
                     <i
                         className="fas fa-times"
-                        id={content.targetName}
+                        data-id={content.targetName}
                         onClick={(e) => props.onClose(e.target.dataset.id)}
                     ></i>
                 </div>

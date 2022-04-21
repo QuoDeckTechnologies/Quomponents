@@ -1,18 +1,18 @@
 .qui .qui-short-field-container {
     display: flex;
     align-items: center;
-    grid-gap: 0.5em;
+    gap: 0.5em;
 }
 .qui .qui-short-field-one {
     .css-c5v1qu-MuiInputBase-input-MuiFilledInput-input {
         padding-top: 0.95em;
-      }
+    }
     width: 4em;
 }
 .qui .qui-short-field-two {
     .css-c5v1qu-MuiInputBase-input-MuiFilledInput-input {
         padding-top: 0.95em;
-      }
+    }
     width: 4em;
 }
 
@@ -20,12 +20,13 @@
     font-size: 0.65em;
 }
 
-.qui .qui-list-input-three{
-    margin-left: -0.7em;
+.qui .qui-list-input-three {
     display: flex;
     flex: 1;
 }
-
+.qui.qui-option-item-nine .qui-input-field {
+    text-indent: 0;
+}
 .qui .qui-option-item-nine-with-remove-button-close-icon {
     display: flex;
     flex-direction: column;

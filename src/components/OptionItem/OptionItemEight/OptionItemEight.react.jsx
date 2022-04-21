@@ -14,7 +14,7 @@ OptionItemEight.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      OptionItemEight name should be passed in content object
+      OptionItemEight data should be passed in content object
       */
     content: PropTypes.shape({
         targetName: PropTypes.string,
@@ -127,7 +127,6 @@ export default function OptionItemEight(props) {
                         style={{
                             borderColor: props.withColor.accentColor,
                             color: props.withColor.accentColor,
-                            whiteSpace: 'nowrap'
                         }}
                     >
                         Outlined Button
@@ -137,7 +136,7 @@ export default function OptionItemEight(props) {
                 <div className="qui-option-item-eight-close-icon">
                     <i
                         className="qui-option-item-eight-icon fas fa-times"
-                        id={content?.targetName}
+                        data-id={content?.targetName}
                         onClick={(e) => props.onClose(e.target.dataset.id)}
                     ></i>
                 </div>

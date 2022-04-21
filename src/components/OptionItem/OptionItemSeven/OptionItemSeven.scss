@@ -3,6 +3,7 @@
   flex: 1;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5em;
 }
 .qui.qui-option-item-seven .qui-char-limit-max-length {
   font-size: 0.65em;
@@ -19,12 +20,16 @@
 }
 .qui.qui-option-item-seven .qui.qui-optional-image-field {
   font-size: 1em;
+  box-shadow: 0px 4px 3px 1px #5c5c5c4f;
+  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
 }
 .qui .qui-option-item-seven-close-icon {
-  width: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 1.2em;
   color: #a8a8a8;
-  margin-left: 0.25em;
 }
 .qui .qui-option-item-seven-icon {
   cursor: pointer;
@@ -33,23 +38,26 @@
   text-indent: 0;
 }
 .qui .qui-option-item-seven-container .qui-option-item-upload-button {
-  min-width: 8em;
+  min-width: auto;
+  margin-bottom: -0.4em;
 }
 
 @media only screen and (min-width: 320px) {
-  .qui .qui-option-item-radio-container {
-    min-width: 3.5em;
+  .qui .qui-option-item-seven-container .qui-option-item-radio-container {
+    min-width: 3.25em;
   }
   .qui .qui-option-item-radio-container .MuiTypography-root.css-ahj2mt-MuiTypography-root {
     display: none;
   }
 }
-
-@media only screen and (min-width: 769px) {
-  .qui .qui-option-item-radio-container {
-    min-width: 8em;
-  }
+@media only screen and (min-width: 481px) {
   .qui .qui-option-item-radio-container .MuiTypography-root.css-ahj2mt-MuiTypography-root {
     display: block;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .qui .qui-option-item-seven-container .qui-option-item-radio-container {
+    min-width: 7em;
   }
 }

@@ -44,15 +44,28 @@ export default {
         defaultValue: null,
       },
     },
+    onUpload: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+    onSelect: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
     onClose: {
       table: {
         category: "Events",
         defaultValue: null,
       },
     },
+
   },
   parameters: {
-    componentSubtitle: "Displays a InlineEdit with remove button.",
+    componentSubtitle: "Displays a optionitemseven with inputfield and buttons for general-purpose use.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
@@ -73,6 +86,7 @@ Default.args = {
     value: "",
     placeholder: "Ops7",
     checked: true,
+    image: {},
   },
   withColor: {
     backgroundColor: "#ffab000d",
@@ -97,8 +111,8 @@ Default.parameters = {
 // -------------------------------------------------------------
 // Colored OptionItem Seven
 // -------------------------------------------------------------
-export const ColoredOptionitemSeven = Template.bind({});
-ColoredOptionitemSeven.args = {
+export const ColoredOptionItemSeven = Template.bind({});
+ColoredOptionItemSeven.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#8c9ea3",
@@ -106,11 +120,11 @@ ColoredOptionitemSeven.args = {
     accentColor: "#597387",
   },
 };
-ColoredOptionitemSeven.parameters = {
+ColoredOptionItemSeven.parameters = {
   docs: {
     source: {
       code: `<OptionItemSeven {...${JSON.stringify(
-        ColoredOptionitemSeven.args,
+        ColoredOptionItemSeven.args,
         null,
         2
       )}}/>`,
@@ -118,10 +132,10 @@ ColoredOptionitemSeven.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Animated OptionItem
+// Animated OptionItem Seven
 // -------------------------------------------------------------
-export const AnimatedOptionitemSeven = Template.bind({});
-AnimatedOptionitemSeven.args = {
+export const AnimatedOptionItemSeven = Template.bind({});
+AnimatedOptionItemSeven.args = {
   ...Default.args,
   withAnimation: {
     animation: "fade",
@@ -129,11 +143,11 @@ AnimatedOptionitemSeven.args = {
     delay: 0,
   },
 };
-AnimatedOptionitemSeven.parameters = {
+AnimatedOptionItemSeven.parameters = {
   docs: {
     source: {
       code: `<OptionItemSeven {...${JSON.stringify(
-        AnimatedOptionitemSeven.args,
+        AnimatedOptionItemSeven.args,
         null,
         2
       )}}/>`,
@@ -141,7 +155,7 @@ AnimatedOptionitemSeven.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Multiple Inline Edit With Remove Button
+// Multiple Option Item Two
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
   const [contentArr, setContentArr] = useState([...args.multiContent]);
@@ -149,7 +163,7 @@ const MultipleTemplate = (args) => {
   // Hook to return modified content object
   // -------------------------------------------------------------
   useEffect(() => {
-    args.onInput(contentArr);
+    args.onUpload(contentArr);
   });
   // -------------------------------------------------------------
   // Temporary variables for operations
@@ -190,16 +204,16 @@ const MultipleTemplate = (args) => {
     setContentArr([...tmp_arr]);
   };
   // -------------------------------------------------------------
-  // Function to put value in the array of objects
+  // Function to image in the array of objects
   // -------------------------------------------------------------
-  const handleInput = (targetName, value, checked) => {
+  const handleUpload = (targetName, image, checked) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
     tmp_state.forEach((dataObj) => {
       if (dataObj.targetName === targetName) {
         tmp_obj = { ...dataObj };
-        tmp_obj.value = value;
+        tmp_obj.image = image;
         tmp_arr.push(tmp_obj);
       } else {
         tmp_obj = { ...dataObj };
@@ -220,8 +234,8 @@ const MultipleTemplate = (args) => {
               onSelect={(targetName, value, checked) =>
                 handleSelect(targetName, value, checked)
               }
-              onInput={(targetName, value, checked) =>
-                handleInput(targetName, value, checked)
+              onUpload={(targetName, image, checked) =>
+                handleUpload(targetName, image, checked)
               }
               onClose={handleRemove}
             />
@@ -231,39 +245,35 @@ const MultipleTemplate = (args) => {
     </div>
   );
 };
-export const MultipleOptionitemSeven = MultipleTemplate.bind({});
-MultipleOptionitemSeven.args = {
+export const MultipleOptionItemSeven = MultipleTemplate.bind({});
+MultipleOptionItemSeven.args = {
   ...Default.args,
   multiContent: [
     {
       targetName: "TargetNameOne",
-      value: "",
-      placeholder: "Placeholder One",
+      image: {},
       checked: false,
     },
     {
       targetName: "TargetNameTwo",
-      value: "",
-      placeholder: "Placeholder Two",
+      image: {},
       checked: true,
     },
     {
       targetName: "TargetNameThree",
-      value: "Default Value",
-      placeholder: "Placeholder Three",
+      image: {},
       checked: false,
     },
   ],
 };
-MultipleOptionitemSeven.parameters = {
+MultipleOptionItemSeven.parameters = {
   docs: {
     source: {
       code: `<OptionItemSeven {...${JSON.stringify(
-        MultipleOptionitemSeven.args,
+        MultipleOptionItemSeven.args,
         null,
         2
       )}}/>`,
     },
   },
 };
-
