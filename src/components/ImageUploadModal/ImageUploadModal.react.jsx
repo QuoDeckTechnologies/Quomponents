@@ -11,7 +11,7 @@ import "./ImageUploadModal.scss";
 import "../../common/stylesheets/overrule.scss";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
 import Button from "../Buttons/Button/Button.react";
-import defaultImage from "../../assets/default11.jpeg";
+import defaultImage from "../../assets/default.jpeg";
 
 ImageUploadModal.propTypes = {
   //=======================================
