@@ -44,6 +44,18 @@ export default {
         defaultValue: null,
       },
     },
+    onShortFieldOneInput: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+    onShortFieldTwoInput: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
     onClose: {
       table: {
         category: "Events",
@@ -222,11 +234,11 @@ const MultipleTemplate = (args) => {
             <OptionItemNine
               {...args}
               content={content}
-              onSelect={(targetName, value, checked) =>
-                handleSelect(targetName, value, checked)
+              onSelect={(targetName, value) =>
+                handleSelect(targetName, value)
               }
-              onInput={(targetName, value, checked) =>
-                handleInput(targetName, value, checked)
+              onInput={(targetName, value) =>
+                handleInput(targetName, value)
               }
               onClose={handleRemove}
             />
