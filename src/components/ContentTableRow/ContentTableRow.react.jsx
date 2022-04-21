@@ -184,7 +184,7 @@ export default function ContentTableRow(props) {
               <ActionMenu
                 {...props}
                 content={content?.menuData}
-                withColor={{ backgroundColor: "white" }}
+                withColor={{ backgroundColor: "#ffffff" }}
                 withAnimation={{
                   animation: "slideDown",
                   duration: 0.5,
