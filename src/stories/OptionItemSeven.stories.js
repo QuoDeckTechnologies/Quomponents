@@ -62,10 +62,10 @@ export default {
         defaultValue: null,
       },
     },
-
   },
   parameters: {
-    componentSubtitle: "Displays a optionitemseven with inputfield and buttons for general-purpose use.",
+    componentSubtitle:
+      "Displays a optionitemseven with inputfield and buttons for general-purpose use.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
@@ -222,6 +222,26 @@ const MultipleTemplate = (args) => {
     });
     setContentArr([...tmp_arr]);
   };
+  // -------------------------------------------------------------
+  // Function to put value in the array of objects
+  // -------------------------------------------------------------
+  const handleInput = (targetName, value) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.targetName === targetName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.value = value;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
 
   return (
     <div>
@@ -231,11 +251,14 @@ const MultipleTemplate = (args) => {
             <OptionItemSeven
               {...args}
               content={content}
-              onSelect={(targetName, value, checked) =>
-                handleSelect(targetName, value, checked)
+              onSelect={(targetName, image, value, checked) =>
+                handleSelect(targetName, image, value, checked)
               }
-              onUpload={(targetName, image, checked) =>
-                handleUpload(targetName, image, checked)
+              onUpload={(targetName, image, value, checked) =>
+                handleUpload(targetName, image, value, checked)
+              }
+              onInput={(targetName, image, value, checked) =>
+                handleInput(targetName, image, value, checked)
               }
               onClose={handleRemove}
             />
