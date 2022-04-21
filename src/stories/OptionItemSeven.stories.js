@@ -186,7 +186,7 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to set selected option in the content array
   // -------------------------------------------------------------
-  const handleSelect = (targetName, value, checked) => {
+  const handleSelect = (targetName, image, value, checked) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
@@ -206,7 +206,7 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to image in the array of objects
   // -------------------------------------------------------------
-  const handleUpload = (targetName, image, checked) => {
+  const handleUpload = (targetName, image, value, checked) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
@@ -225,7 +225,7 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to put value in the array of objects
   // -------------------------------------------------------------
-  const handleInput = (targetName, value) => {
+  const handleInput = (targetName, image, value, checked) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
