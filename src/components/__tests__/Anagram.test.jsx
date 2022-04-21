@@ -1,0 +1,120 @@
+//--------------------------------------
+// Import from NPM
+// -------------------------------------
+import { shallow, mount } from "enzyme";
+import renderer, { act } from "react-test-renderer";
+//--------------------------------------
+// Import Components
+// -------------------------------------
+import Anagram from "../Anagram/Anagram.react";
+import Button from "../Buttons/Button/Button.react";
+
+describe("Anagram", () => {
+  // -------------------------------------
+  // Setup definitions for the test suite
+  // -------------------------------------
+
+  let component;
+  beforeEach(() => {
+    jest.resetAllMocks();
+    component = shallow(
+      <Anagram
+        content={{
+          image: "",
+          caption: "",
+          label: "Default Label",
+        }}
+        asVariant="primary"
+        withColor={null}
+        withTranslation={null}
+        isHidden={false}
+        isDisabled={false}
+        content={{
+          image: "",
+          caption: "",
+          label: "Default Label",
+        }}
+        onClick={(e) => {
+          console.log(e);
+        }}
+      />
+    );
+  });
+
+  it("should render correctly without throwing error", () => {
+    expect(component.exists()).toBe(true);
+  });
+  it("should render correctly with empty content", () => {
+    component.setProps({
+      content: {},
+    });
+    expect(component.exists()).toBe(true);
+  });
+  it('Test click event on handleSubmit funtion of Button', () => {
+    const handleSubmit = jest.fn();
+    const button = shallow((<Anagram onClick={handleSubmit} />));
+    button.find('Button').simulate('click');
+    expect(handleSubmit.mock.calls.length).toEqual(1);
+  });
+  it('Test click event on InputField', () => {
+    component.find('InputField').simulate('click')
+  });
+  it("should render correctly when passed withColor props", () => {
+    let colors = {
+      captionColor: "#ff0000",
+      labelColor: "#000000",
+      inputFieldTextColor: "ff0000",
+      inputFieldAccentColor: "23ff00",
+      inputFieldBackgroundColor: "00ff00",
+      buttonTextColor: "ff0023",
+      buttonBackgroundColor: "ff0ff0",
+      buttonHoverBackgroundColor: "ffff00",
+      buttonHoverTextColor: "ff00ff",
+    }
+    component.setProps({ withColor: colors })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed withAnimation props", () => {
+    let animation = {
+      animation: "zoom",
+      duration: 0.5,
+      delay: 0,
+    }
+    component.setProps({ withAnimation: animation })
+    expect(component.exists()).toBe(true);
+  })
+
+  it("should render correctly when passed isHidden props as false", () => {
+    component.setProps({ isHidden: false })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isHidden props as true", () => {
+    component.setProps({ isHidden: true })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isDisabled props as false", () => {
+    component.setProps({ isDisabled: false })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isDisabled props as true", () => {
+    component.setProps({ isDisabled: true })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly with withColor prop when hovered on Button", () => {
+    const component = renderer.create(
+      <Button
+        withColor={{
+          buttonTextColor: "ff0023",
+          buttonBackgroundColor: "ff0ff0",
+          buttonHoverBackgroundColor: "ffff00",
+          buttonHoverTextColor: "ff00ff",
+        }}
+        onClick={() => console.log("testing")}
+      />
+    );
+    const tree = component.toJSON();
+    act(() => {
+      tree.props.onMouseEnter();
+    });
+  });
+});
