@@ -73,7 +73,7 @@ export default {
 	parameters: {
 		componentSubtitle: "Displays a CourseCard",
 		a11y: { disable: true },
-		docs: { iframeHeight: 200 },
+		docs: { iframeHeight: 570 },
 	},
 };
 
