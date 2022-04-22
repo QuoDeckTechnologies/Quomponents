@@ -95,7 +95,7 @@ Default.args = {
   },
   asVariant: "warning",
   withColor: {
-    captionColor: "",
+    captionColor: "#000000",
     labelColor: "#000000",
     inputFieldTextColor: "",
     inputFieldAccentColor: "",

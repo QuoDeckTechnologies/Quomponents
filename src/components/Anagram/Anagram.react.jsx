@@ -80,7 +80,7 @@ Anagram.propTypes = {
     */
   isHidden: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
+    Anagram component must have the onClick function passed as props
     */
   onClick: PropTypes.func.isRequired,
 };
@@ -141,16 +141,14 @@ export default function Anagram(props) {
       animate={animate.to}
       className={`qui qui-anagram-card ${quommonClasses.parentClasses}`}
     >
-      <div className={`${quommonClasses.childClasses}`}>
-        <BannerCard {...props} content={{ image: props.content?.image }} />
-        <p className={`qui-anagram-caption variant-${props.asVariant}-text`} style={{ color: props.withColor?.captionColor }}>{props.content?.caption}</p>
-        <p className="qui-anagram-label" {...props} style={{ color: props.withColor?.labelColor }}>{props.content?.label}</p>
-        <InputField {...props} content={{ label: "Input Name" }} withColor={inputFieldColors} onClick={(name, value) => setState(value)} />
-        <Button {...props}
-          content={"Submit Answer"}
-          withColor={buttonColors}
-          onClick={() => handleSubmit()} />
-      </div>
+      <BannerCard {...props} content={{ image: props.content?.image }} />
+      <div className={`qui-anagram-caption variant-${props.asVariant}-text`} style={{ color: props.withColor?.captionColor }}>{props.content?.caption}</div>
+      <p className="qui-anagram-label" style={{ color: props.withColor?.labelColor }}>{props.content?.label}</p>
+      <InputField {...props} content={{ label: "Input Name" }} withColor={inputFieldColors} onClick={(name, value) => setState(value)} />
+      <Button {...props}
+        content={"Submit Answer"}
+        withColor={buttonColors}
+        onClick={() => handleSubmit()} />
     </motion.div>
   );
 }
