@@ -44,6 +44,9 @@ NuggetCard.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
+	/**
+    Content props consist of all the data which are required for Nugget Card component
+    */
 	content: PropTypes.shape({
 		published: PropTypes.bool,
 		category: PropTypes.oneOf([
@@ -103,9 +106,9 @@ NuggetCard.defaultProps = {
 
 	// Quommon props
 	//=======================================
+	asFloated: "inline",
 	isHidden: false,
 	isDisabled: false,
-
 	onClick: null,
 };
 

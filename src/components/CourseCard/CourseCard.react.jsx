@@ -25,6 +25,9 @@ CourseCard.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
+	/**
+    Content props consist of all the data which are required for Course Card component
+    */
 	content: PropTypes.shape({
 		published: PropTypes.bool,
 		courseType: PropTypes.oneOf(["standard", "exam"]),
@@ -70,10 +73,8 @@ CourseCard.defaultProps = {
 	// Quommon props
 	//=======================================
 	asFloated: "inline",
-
 	isHidden: false,
 	isDisabled: false,
-
 	onClick: null,
 };
 

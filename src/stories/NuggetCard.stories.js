@@ -72,8 +72,7 @@ Default.args = {
 		tags: ["Sales"],
 		category: "profiler",
 		name: "Measure your sales readiness",
-		description:
-			"Take this quick profile test to check how well you are prepared for a sales job",
+		description: "Take this quick profile test to check how well you are prepared for a sales job",
 		image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
 		points: "200",
 		identifier: "XrPmy_OAK",
@@ -98,13 +97,11 @@ export const NuggetCardWithManyTags = (args) => {
 		...Object.assign({}, Default.args, args, {
 			content: {
 				published: false,
-				tags: ["Article", "Cataloing", "Returns Management", "Orders Management", "Payments and Settlements", "Customer", "Latest", "Pneumonoultramicroscopicsilicovolcanoconiosis"],
+				tags: ["Article", "Cataloing", "Returns Management", "Orders Management", "Payments and Settlements", "Customer", "Latest", "Pneumonoultramicroscopicsilicovolcanoconiosis", "Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5", "Tag 6", "Tag 7", "Tag 8", "Tag 9", "Tag 10", "Tag 11", "Tag 12", "Tag 13", "Tag 14", "Tag 15", "Tag 16", "Tag 17", "Tag 18", "Tag 19", "Tag 20", "Tag 21", "Tag 22", "Tag 23", "Tag 24"],
 				category: "profiler",
 				name: "Measure your sales readiness",
-				description:
-					"Take this quick profile test to check how well you are prepared for a sales job",
-				image:
-					"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+				description: "Take this quick profile test to check how well you are prepared for a sales job",
+				image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
 				points: "200",
 				identifier: "XrPmy_OAK",
 			},
@@ -131,10 +128,8 @@ export const PublishedNuggetCard = (args) => {
 				tags: ["Sales1", "Sales2"],
 				category: "profiler",
 				name: "Measure your sales readiness",
-				description:
-					"Take this quick profile test to check how well you are prepared for a sales job",
-				image:
-					"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+				description: "Take this quick profile test to check how well you are prepared for a sales job",
+				image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
 				points: "200",
 				identifier: "XrPmy_OAK",
 			},
@@ -161,10 +156,8 @@ export const NuggetCardWithExtraContent = (args) => {
 				tags: ["Sales1", "Sales2"],
 				category: "profiler",
 				name: "Measure your sales readiness Measure your sales readiness",
-				description:
-					"Take this quick profile test to check how well you are prepared for a sales job. Take this quick profile test to check how well you are prepared for a sales job",
-				image:
-					"https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+				description: "Take this quick profile test to check how well you are prepared for a sales job. Take this quick profile test to check how well you are prepared for a sales job",
+				image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
 				points: "200",
 				identifier: "XrPmy_OAK",
 			},

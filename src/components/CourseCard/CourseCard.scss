@@ -97,9 +97,9 @@
     display: flex;
     flex-direction: column;
     text-align: right;
-    align-items: end;
+    align-items: flex-end;
     margin-right: 1.5em;
-    justify-content: end;
+    justify-content: flex-end;
 }
 .qui-course-card-link-container {
     text-align: right;
