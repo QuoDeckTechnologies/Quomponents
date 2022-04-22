@@ -104,6 +104,7 @@ describe("ArcMenu", () => {
       arcIcon: "close",
       menuType: "close",
     });
+    component.find(".qui-arc-menu-button").simulate("click");
   });
 
   it("should render correctly when clicked on close button", () => {
