@@ -11,7 +11,6 @@ import "../../common/stylesheets/common.css";
 import "./Anagram.scss";
 import "../../common/stylesheets/overrule.scss";
 import BannerCard from "../Carousel/BannerCard/BannerCard.react";
-import PageHeader from "../../components/PageHeader/PageHeader.react";
 import InputField from "../InputField/InputField.react";
 import Button from "../Buttons/Button/Button.react";
 
@@ -142,14 +141,16 @@ export default function Anagram(props) {
       animate={animate.to}
       className={`qui qui-anagram-card ${quommonClasses.parentClasses}`}
     >
-      <BannerCard {...props} content={{ image: props.content?.image }} />
-      <p className={`qui-anagram-caption variant-${props.asVariant}-text`} style={{ color: props.withColor?.captionColor }}>{props.content?.caption}</p>
-      <PageHeader {...props} content={props.content?.label} withColor={{ textColor: props.withColor?.labelColor }} />
-      <InputField {...props} content={{ label: "Input Name" }} withColor={inputFieldColors} onClick={(name, value) => setState(value)} />
-      <Button {...props}
-        content={"Submit Answer"}
-        withColor={buttonColors}
-        onClick={() => handleSubmit()} />
+      <div className={`${quommonClasses.childClasses}`}>
+        <BannerCard {...props} content={{ image: props.content?.image }} />
+        <p className={`qui-anagram-caption variant-${props.asVariant}-text`} style={{ color: props.withColor?.captionColor }}>{props.content?.caption}</p>
+        <p className="qui-anagram-label" {...props} style={{ color: props.withColor?.labelColor }}>{props.content?.label}</p>
+        <InputField {...props} content={{ label: "Input Name" }} withColor={inputFieldColors} onClick={(name, value) => setState(value)} />
+        <Button {...props}
+          content={"Submit Answer"}
+          withColor={buttonColors}
+          onClick={() => handleSubmit()} />
+      </div>
     </motion.div>
   );
 }
