@@ -31,12 +31,6 @@ export default {
                 defaultValue: false,
             },
         },
-        isFluid: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: true,
-            },
-        },
         onClick: {
             table: {
                 category: "Events",
@@ -75,7 +69,6 @@ Default.args = {
     asEmphasis: "html",
     asFloated: "left",
     isDisabled: false,
-    isFluid:true,
     isHidden: false,
 };
 Default.parameters = {

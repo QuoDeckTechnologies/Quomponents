@@ -38,12 +38,8 @@ RibbonMenu.propTypes = {
     */
 	isDisabled: PropTypes.bool,
 	/**
-    Use to enable/disable the component
+    RibbonMenu component must have the onClick function passed as props
     */
-	isFluid: PropTypes.bool,
-	/**
-      RibbonMenu component must have the onClick function passed as props
-      */
 	onClick: PropTypes.func,
 };
 
@@ -60,7 +56,6 @@ RibbonMenu.defaultProps = {
 	asFloated: "left",
 
 	isHidden: false,
-	isFluid: true,
 	isDisabled: false,
 
 	onClick: null,
@@ -83,13 +78,13 @@ export default function RibbonMenu(props) {
 	// ========================= Render Function =================================
 	const ribbonMenu = (tabs) => {
 		if (tabs?.toUpperCase() === "HTML") {
-			return <RibbonHtmlMenu />;
+			return <RibbonHtmlMenu {...props}/>;
 		} else if (tabs?.toUpperCase() === "DESIGN") {
-			return <RibbonDesignMenu />;
+			return <RibbonDesignMenu {...props}/>;
 		} else if (tabs?.toUpperCase() === "TOOLS") {
-			return <RibbonToolsMenu />;
+			return <RibbonToolsMenu {...props}/>;
 		} else {
-			return <RibbonHomeMenu />;
+			return <RibbonHomeMenu {...props}/>;
 		}
 	};
 	return (
