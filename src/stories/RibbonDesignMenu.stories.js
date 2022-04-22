@@ -2,7 +2,7 @@ import React from "react";
 import RibbonDesignMenu from "../components/RibbonMenu/designMenu/RibbonDesignMenu.react";
 
 export default {
-    title: "Design System/RibbonMenu/RibbonDesignMenu/RibbonDesignMenu",
+    title: "Design System/RibbonMenu/RibbonDesignMenu",
     component: RibbonDesignMenu,
     argTypes: {
         asEmphasis: {

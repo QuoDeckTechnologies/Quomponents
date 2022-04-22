@@ -86,7 +86,9 @@ export default function PalleteThemeSection(props) {
 					<div className={`qui-ribbon-menu-custom-color-container`}>
 						<CustomColor
 							asSize="tiny"
-							content={{ color: selectedColor?.colors[3], title: "Page Color" }}
+							content={{ 
+								color: selectedColor?.colors[3], 
+								title: "Page Color" }}
 						/>
 						<CustomColor
 							asSize="tiny"

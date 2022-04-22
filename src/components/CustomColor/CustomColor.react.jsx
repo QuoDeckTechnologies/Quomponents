@@ -132,7 +132,7 @@ export default function CustomColor(props) {
     const animate = getAnimation(props.withAnimation);
     // const ref = useRef()
     const box = useRef(null);
-    const [color, setColor] = useState(labelContent.color);
+    const [color, setColor] = useState(props.content.color);
     const [showColorPicker, setshowColorPicker] = useState(false);
 
     useEffect(()=>{
