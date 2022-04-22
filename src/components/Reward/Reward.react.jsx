@@ -127,15 +127,15 @@ export default function Reward(props) {
                         {rewardContent?.label}
                     </div>
                     <div className={`qui-point-container`}>
+                    <div className="qui-point" style={pointColor}>
+                            {rewardContent?.point}
+                        </div>
                         <div>
                             <img
                                 className={`qui-reward-image`}
                                 src={rewardContent?.image ? rewardContent.image : rewardImage}
                                 alt="coin"
                             />
-                        </div>
-                        <div className="qui-point" style={pointColor}>
-                            {rewardContent?.point}
                         </div>
                     </div>
                 </div>

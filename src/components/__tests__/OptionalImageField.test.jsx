@@ -29,7 +29,7 @@ describe("OptionalImageField", () => {
     component = mount(
       <OptionalImageField
         content={{
-          text: "Upload",
+          title: "Upload",
           icon: "fas fa-user",
           actionButton: true,
         }}

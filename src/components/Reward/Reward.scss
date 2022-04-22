@@ -3,20 +3,26 @@
 /* ================================================= */
 .qui .qui-reward-container {
     min-width: 6rem;
-    display: flexbox;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .qui .qui-label-container {
+    display: flex;
+    justify-content: right;
     padding-left: 0.5em;
     text-align: left;
     font-size: 1.25em;
     color: #3e587a;
+    
 }
 
 .qui .qui-point-container {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: right;
 }
 
 .qui .qui-point-container .qui-point {
