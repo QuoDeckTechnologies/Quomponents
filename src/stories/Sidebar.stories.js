@@ -33,8 +33,6 @@ export default {
                 defaultValue: {
                     backgroundColor: "",
                     textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
                 },
             },
         },
@@ -103,8 +101,6 @@ Default.args = {
     withColor: {
         backgroundColor: "",
         textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "#13ff43",
     },
     withAnimation: {
         animation: "collapse",
@@ -117,7 +113,7 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<Button {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<Sidebar {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
@@ -133,7 +129,7 @@ const EditModeTemplate = (args) => {
         <div >
             <Sidebar
                 {...Object.assign({}, baseObj, {
-                    asEmphasis: "editMode"
+                    asEmphasis: "editMode",
                 })}
             />
         </div>
@@ -146,7 +142,7 @@ EditMode.parameters = {
             story: "Edit mode of Sidebar.",
         },
         source: {
-            code: `<Sidebar content:{}/>`,
+            code: `<Sidebar asEmphasis:{"editMode"} label={"Edit Mode"} withColor={textColor:"#fff", backgroundColor:"#454545"}/>`,
         },
     },
 };
@@ -184,7 +180,7 @@ SidebarVariants.parameters = {
             story: "2 modes are supported in Sidebar.",
         },
         source: {
-            code: `<Sidebar content:{}/>`,
+            code: `<Sidebar asEmphasis={"default"} label={"Edit Mode"}/>`,
         },
     },
 };
@@ -232,7 +228,7 @@ AnimatedSidebar.parameters = {
             story: "Animated Sidebar.",
         },
         source: {
-            code: `<Sidebar content:{}/>`,
+            code: `<Sidebar withAnimation={animation: "slideLeft",duration: 0.5,delay: 0,}/>`,
         },
     },
 };
@@ -820,7 +816,7 @@ LocationsByLicenseType.parameters = {
             story: "6 license types are supported with different different sidebar locations.",
         },
         source: {
-            code: `<Sidebar content:{}/>`,
+            code: `<Sidebar asEmphasis={"default"}/>`,
         },
     },
 };

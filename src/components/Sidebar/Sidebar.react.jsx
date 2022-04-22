@@ -63,8 +63,6 @@ Sidebar.propTypes = {
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         textColor: PropTypes.string,
-        hoverBackgroundColor: PropTypes.string,
-        hoverTextColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -111,7 +109,6 @@ Sidebar.defaultProps = {
     asFloated: "inline",
 
     withColor: null,
-    withIcon: null,
     withAnimation: null,
 
     isHidden: false,
@@ -138,7 +135,6 @@ export default function Sidebar(props) {
     //-------------------------------------------------------------------
     // 2. Set the Logo Image
     //-------------------------------------------------------------------
-    let logo = coloredDefaultLogo;
     const [state, setState] = useState("/")
     //-------------------------------------------------------------------
     // 2. Get animation of the component
@@ -257,9 +253,9 @@ export default function Sidebar(props) {
     };
     function editMode() {
         return (
-            <div className={`qui-side-bar-editmode-container`}>
-                <div style={{ backgroundImage: `url(${logo})` }} className="qui-side-bar-logo" />
-                <p className={`qui-side-bar-edit-mode-label`}>
+            <div className={`qui-side-bar-editmode-container`} style={{ backgroundColor: props.withColor?.backgroundColor }}>
+                <img className="qui-side-bar-logo" src={coloredDefaultLogo} alt="" />
+                <p className={`qui-side-bar-edit-mode-label`} style={{ color: props.withColor?.textColor }}>
                     {props.label}
                 </p>
                 <ArcMenu position="bottom-left" menuType="close" arcIcon="close" onClick={props.onClick} />
@@ -270,9 +266,7 @@ export default function Sidebar(props) {
         if (asEmphasis === "default") {
             return (
                 <div className={`qui-side-bar-default-container`}>
-                    <div
-                        style={{ backgroundImage: `url(${logo})` }}
-                        className="qui-side-bar-logo" />
+                    <img className="qui-side-bar-logo" src={coloredDefaultLogo} alt="" />
                     <div
                         className={`qui-side-bar-sections-container`}>
                         {_.map(_.filter(panelLinks[props.sidebarLocation], (l) => l.show),

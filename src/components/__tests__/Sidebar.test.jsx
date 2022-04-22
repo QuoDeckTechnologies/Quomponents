@@ -43,6 +43,30 @@ describe("Sidebar", () => {
         component.setProps({ asVariant: "primary" })
         expect(component.exists()).toBe(true);
     })
+    it("should render correctly when passed licenseType prop as SuperAdmin", () => {
+        component.setProps({ licenseType: "SuperAdmin" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed licenseType prop as Admin", () => {
+        component.setProps({ licenseType: "Admin" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed licenseType prop as DataAdmin", () => {
+        component.setProps({ licenseType: "DataAdmin" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed licenseType prop as Manager", () => {
+        component.setProps({ licenseType: "Manager" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed licenseType prop as Creator", () => {
+        component.setProps({ licenseType: "Creator" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed licenseType prop as Trainer", () => {
+        component.setProps({ licenseType: "Trainer" })
+        expect(component.exists()).toBe(true);
+    })
     it("should render correctly when passed asVariant prop as secondary", () => {
         component.setProps({ asVariant: "secondary" })
         expect(component.exists()).toBe(true);
@@ -59,8 +83,6 @@ describe("Sidebar", () => {
         let colors = {
             backgroundColor: "#fff",
             textColor: "#00FFFF",
-            hoverBackgroundColor: "#0000FF",
-            hoverTextColor: "	#00008B",
         }
         component.setProps({ asEmphasis: "default" })
         component.setProps({ withColor: colors })
@@ -81,8 +103,6 @@ describe("Sidebar", () => {
         let colors = {
             backgroundColor: "#fff",
             textColor: "#00FFFF",
-            hoverBackgroundColor: "#0000FF",
-            hoverTextColor: "	#00008B",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
@@ -110,6 +130,26 @@ describe("Sidebar", () => {
     })
     it("should render correctly when passed isDisabled props as true", () => {
         component.setProps({ isDisabled: true })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed noCourses props as true", () => {
+        component.setProps({ noCourses: true })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed noCourses props as false", () => {
+        component.setProps({ noCourses: false })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asFloated prop as left", () => {
+        component.setProps({ asFloated: "left" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asFloated prop as right", () => {
+        component.setProps({ asFloated: "right" })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed asFloated prop as inline", () => {
+        component.setProps({ asFloated: "inline" })
         expect(component.exists()).toBe(true);
     })
 });
