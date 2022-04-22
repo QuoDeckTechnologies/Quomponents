@@ -16,6 +16,7 @@ export default {
                 defaultValue: {
                     color: "",
                     title: "",
+                    onChange: ()=>{},
                 },
             },
         },
@@ -88,13 +89,12 @@ export const Default = Template.bind({});
 Default.args = {
     content: {
         title: "Page Color",
-        color: "#454545",
+        color: "#454545"
     },
 
     asSize: "normal",
     asFloated: "none",
-
-
+    
     withAnimation: {
         animation: "zoom",
         duration: 0.5,

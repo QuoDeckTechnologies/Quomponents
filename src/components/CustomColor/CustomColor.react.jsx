@@ -135,6 +135,10 @@ export default function CustomColor(props) {
     const [color, setColor] = useState(labelContent.color);
     const [showColorPicker, setshowColorPicker] = useState(false);
 
+    useEffect(()=>{
+        setColor(props.content?.color)
+    },[props.content.color])
+
     //-------------------------------------------------------------------
     // 4. Handle close 
     //-------------------------------------------------------------------

@@ -49,7 +49,7 @@ export default function OverlayBackground(props) {
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className="qui-ribbon-menu-slide-background-section">
-					<div className="qui-ribbon-menu-slide-background-section-child-container">
+					<div className="qui-ribbon-menu-slide-background-section-child-container" onClick={props.onClick}>
 						<div className="qui-ribbon-menu-slide-background-section-child">
 							<div className="qui-ribbon-menu-set-remove"></div>
 							<div className="qui-ribbon-menu-label-set-remove">Set Remove</div>

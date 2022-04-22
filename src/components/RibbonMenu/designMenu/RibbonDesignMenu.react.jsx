@@ -50,11 +50,11 @@ export default function RibbonDesignMenu(props) {
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className={`qui-ribbon-design-menu-container`}>
-					<PalleteThemeSection />
+					<PalleteThemeSection {...props} />
 					<div className="qui-ribbon-menu-parent-vertical-line"></div>
-					<SlideBackground />
+					<SlideBackground {...props} />
 					<div className="qui-ribbon-menu-parent-vertical-line"></div>
-					<OverlayBackground />
+					<OverlayBackground {...props} />
 				</div>
 			</div>
 		</div>
