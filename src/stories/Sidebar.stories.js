@@ -120,32 +120,35 @@ Default.parameters = {
 // -------------------------------------------------------------
 // EditMode
 // -------------------------------------------------------------
-const EditModeTemplate = (args) => {
-    const baseObj = {
-        ...Object.assign({}, Default.args, args, {
-        }),
-    };
-    return (
-        <div >
-            <Sidebar
-                {...Object.assign({}, baseObj, {
-                    asEmphasis: "editMode",
-                })}
-            />
-        </div>
-    );
+export const EditMode = Template.bind({});
+EditMode.args = {
+    licenseType: "SuperAdmin",
+    asEmphasis: "editMode",
+    label: "Edit Mode",
+    noCourses: false,
+    sidebarLocation: "welcome",
+    asVariant: "primary",
+    asFloated: "inline",
+    withColor: {
+        backgroundColor: "",
+        textColor: "",
+    },
+    withAnimation: {
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
+    },
+    isDisabled: false,
+    isHidden: false,
 };
-export const EditMode = EditModeTemplate.bind({});
 EditMode.parameters = {
     docs: {
-        description: {
-            story: "Edit mode of Sidebar.",
-        },
         source: {
-            code: `<Sidebar asEmphasis:{"editMode"} label={"Edit Mode"} withColor={textColor:"#fff", backgroundColor:"#454545"}/>`,
+            code: `<Sidebar {...${JSON.stringify(EditMode.args, null, 2)}}/>`,
         },
     },
 };
+// -----
 // -------------------------------------------------------------
 // variants
 // -------------------------------------------------------------
