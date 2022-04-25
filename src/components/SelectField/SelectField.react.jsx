@@ -149,18 +149,24 @@ export default function SelectField(props) {
                         value={selectValue}
                         onChange={handleChange}
                     >
-                        <MenuItem disabled value="none" >{props.content?.placeHolder}</MenuItem>
+                        <MenuItem disabled value="none" >
+                            <div className="qui-select-field-menu-item">
+                                {props.content?.placeHolder}
+                            </div>
+                        </MenuItem>
                         {props.content?.categoryOptions?.map((option) => (
-                            <MenuItem className="qui-select-field-menu-item"
+                            <MenuItem
                                 key={option}
                                 value={option}
                             >
-                                {(_.startCase(option))}
+                                <div className="qui-select-field-menu-item">
+                                    {(_.startCase(option))}
+                                </div>
                             </MenuItem>
                         ))}
                     </Select>
                 </div>
-            </div>
+            </div >
         </motion.div >
     );
 }
