@@ -26,7 +26,7 @@ CaptionedBulletList.propTypes = {
     subtitle: PropTypes.string,
     caption: PropTypes.string,
     image: PropTypes.string,
-    blockBullets: PropTypes.arrayOf(
+    bulletPoints: PropTypes.arrayOf(
       PropTypes.string
     )
   }),
@@ -93,7 +93,7 @@ CaptionedBulletList.defaultProps = {
     title: "",
     subtitle: "",
     caption: "",
-    blockBullets: []
+    bulletPoints: []
   },
   slideId: 0,
   //=======================================
@@ -109,19 +109,22 @@ CaptionedBulletList.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
+- Displays a Captioned Bullet List with TextBlock, BulletBlock and a SlideHeader
 **/
 export default function CaptionedBulletList(props) {
   let { data } = props
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "captioned-bullet-list");
   quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
   //-------------------------------------------------------------------
-  // 5. Get animation of the component
+  //  Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  //-------------------------------------------------------------------
+  //  Setting the colors of imported components
+  //-------------------------------------------------------------------
   let bulletBlockColors = {
     textColor: props.withColor?.bulletBlockTextColor,
     backgroundColor: props.withColor?.bulletBlockBackgroundColor,
@@ -154,7 +157,7 @@ export default function CaptionedBulletList(props) {
             <img className="qui-captioned-bullet-list-image" src={data?.image} alt="" />
           )}
           <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
-          <BulletBlock {...props} content={data?.blockBullets} withColor={bulletBlockColors} asVariant={props.asVariant} />
+          <BulletBlock {...props} content={data?.bulletPoints} withColor={bulletBlockColors} asVariant={props.asVariant} />
         </div>
       </div>}
     </motion.div>

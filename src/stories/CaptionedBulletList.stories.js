@@ -57,7 +57,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a CaptionedBulletList Component",
+    componentSubtitle: "Displays a Captioned Bullet List with TextBlock, BulletBlock and a SlideHeader, we can switch the slideHeader with header image by removing the title and subtitle from prop, and by giving the image link as prop we can see an image. If the title, subtitle, and image are provided together, only the slideHeader is visible",
     a11y: { disable: true },
     docs: {
       iframeHeight: 400,
@@ -75,7 +75,7 @@ Default.args = {
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
     image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    blockBullets: [
+    bulletPoints: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "Quisque sed turpis vel lectus suscipit auctor",
       "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
@@ -115,7 +115,7 @@ CaptionedBulletListWithImage.args = {
     subtitle: "",
     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
     image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    blockBullets: [
+    bulletPoints: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "Quisque sed turpis vel lectus suscipit auctor",
       "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."

@@ -2,12 +2,10 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import CaptionedBulletList from "../CaptionedBulletList/CaptionedBulletList.react";
-import Button from "../Buttons/Button/Button.react";
 
 describe("CaptionedBulletList", () => {
   // -------------------------------------
@@ -23,12 +21,13 @@ describe("CaptionedBulletList", () => {
           subtitle: "This is Subtitle",
           image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
           caption: "caption",
-          blockBullets: [
+          bulletPoints: [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             "Quisque sed turpis vel lectus suscipit auctor",
             "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
           ]
         }}
+        slideId={0}
         asVariant="primary"
         withColor={null}
         withTranslation={null}
@@ -51,13 +50,13 @@ describe("CaptionedBulletList", () => {
   });
   it("should render correctly when passed withColor props", () => {
     let colors = {
-        slideHeaderTextColor: "#FFFFFF",
-        slideHeaderAccentColor: "#AD2929",
-        slideHeaderBackgroundColor: "#ad292980",
-        textBlockBackgroundColor: "#2d92a4",
-        textBlockTextColor: "#fff",
-        bulletBlockTextColor: "#ffffff",
-        bulletBlockBackgroundColor: "#ad292980",
+      slideHeaderTextColor: "#FFFFFF",
+      slideHeaderAccentColor: "#AD2929",
+      slideHeaderBackgroundColor: "#ad292980",
+      textBlockBackgroundColor: "#2d92a4",
+      textBlockTextColor: "#fff",
+      bulletBlockTextColor: "#ffffff",
+      bulletBlockBackgroundColor: "#ad292980",
     }
     component.setProps({ withColor: colors })
     expect(component.exists()).toBe(true);
@@ -89,6 +88,26 @@ describe("CaptionedBulletList", () => {
   })
   it("should render correctly when passed isDisabled props as true", () => {
     component.setProps({ isDisabled: true })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asVariant prop as primary", () => {
+    component.setProps({ asVariant: "primary" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asVariant prop as secondary", () => {
+    component.setProps({ asVariant: "secondary" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asVariant prop as warning", () => {
+    component.setProps({ asVariant: "warning" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asVariant prop as error", () => {
+    component.setProps({ asVariant: "error" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asVariant prop as success", () => {
+    component.setProps({ asVariant: "success" })
     expect(component.exists()).toBe(true);
   })
 });
