@@ -50,6 +50,12 @@ export default {
         defaultValue: null,
       },
     },
+    onClick: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
   },
   parameters: {
     componentSubtitle: "Displays a optionitemeight with inputField and buttons for general-purpose use.",
@@ -71,7 +77,7 @@ Default.args = {
   content: {
     targetName: "Target Name",
     value: "",
-    placeholder: "Ops7",
+    placeholder: "Ops8",
   },
   withColor: {
     backgroundColor: "#ffab000d",

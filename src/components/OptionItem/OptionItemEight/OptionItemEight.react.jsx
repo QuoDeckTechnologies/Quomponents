@@ -1,5 +1,5 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
@@ -65,6 +65,10 @@ OptionItemEight.propTypes = {
       OptionItemEight component must have the onClose function passed as props
       */
     onClose: PropTypes.func.isRequired,
+    /**
+      OptionItemEight component must have the onClick function passed as props
+      */
+    onClick: PropTypes.func.isRequired,
 };
 
 OptionItemEight.defaultProps = {
@@ -92,6 +96,7 @@ export default function OptionItemEight(props) {
     // 1. Destructuring content prop
     //-------------------------------------------------------------------
     const { content } = props;
+    const [value, setValue] = useState(content.value);
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -100,6 +105,13 @@ export default function OptionItemEight(props) {
     // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
+    //-------------------------------------------------------------------
+    // 4. Function to return input value of the component
+    //-------------------------------------------------------------------
+    const handleValue = (name, value) => {
+        setValue(value);
+        props.onInput(content.targetName, value);
+    };
 
     // ========================= Render Function =================================
 
@@ -119,7 +131,7 @@ export default function OptionItemEight(props) {
                     }}
                     asEmphasis="listInput"
                     withColor={props.withColor}
-                    onClick={(name, value) => props.onInput(name, value)}
+                    onClick={handleValue}
                 />
                 <div className="qui-option-item-button">
                     <Button
@@ -128,6 +140,7 @@ export default function OptionItemEight(props) {
                             borderColor: props.withColor.accentColor,
                             color: props.withColor.accentColor,
                         }}
+                        onClick={props.onClick}
                     >
                         Outlined Button
                     </Button>
