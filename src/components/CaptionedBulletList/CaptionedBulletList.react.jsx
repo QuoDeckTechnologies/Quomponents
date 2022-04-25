@@ -19,18 +19,21 @@ CaptionedBulletList.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    CaptionedBulletList data should be passed in content field and it is a required field
+    CaptionedBulletList data should be passed in data field and it is a required field
     */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    textBlockTitle: PropTypes.string,
-    image:PropTypes.string,
+    caption: PropTypes.string,
+    image: PropTypes.string,
     blockBullets: PropTypes.arrayOf(
       PropTypes.string
     )
   }),
-
+  /**
+    CaptionedBulletList slideId should be passed with props, to specify the slide.
+    */
+  slideId:PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
@@ -53,6 +56,7 @@ CaptionedBulletList.propTypes = {
     slideHeaderTextColor: PropTypes.string,
     slideHeaderAccentColor: PropTypes.string,
     slideHeaderBackgroundColor: PropTypes.string,
+    textBlockTextColor: PropTypes.string,
     textBlockBackgroundColor: PropTypes.string,
     bulletBlockTextColor: PropTypes.string,
     bulletBlockBackgroundColor: PropTypes.string,
@@ -79,10 +83,6 @@ CaptionedBulletList.propTypes = {
     Use to show/hide the component
   */
   isHidden: PropTypes.bool,
-  /**
-  Use to float the component in parent container
-  */
-  asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 };
 
 CaptionedBulletList.defaultProps = {
@@ -90,16 +90,16 @@ CaptionedBulletList.defaultProps = {
   // Component Specific props
   //=======================================
   data: {
-    slideHeaderTitle: "",
-    slideHeaderSubtitle: "",
-    textBlockTitle: "",
+    title: "",
+    subtitle: "",
+    caption: "",
     blockBullets: []
   },
+  slideId:0,
   //=======================================
   // Quommon props
   //=======================================
   asVariant: "primary",
-  asFloated: "inline",
   withColor: null,
   withAnimation: null,
   isHidden: false,
@@ -131,6 +131,10 @@ export default function CaptionedBulletList(props) {
     accentColor: props.withColor?.slideHeaderAccentColor,
     backgroundColor: props.withColor?.slideHeaderBackgroundColor
   }
+  let textBlockColors = {
+    textColor: props.withColor?.textBlockTextColor,
+    backgroundColor: props.withColor?.textBlockBackgroundColor
+  }
   let SlideHeaderText = {
     title: props.data?.title,
     subTitle: props.data?.subtitle,
@@ -142,14 +146,14 @@ export default function CaptionedBulletList(props) {
       animate={animate.to}
       className={`qui qui-captioned-bullet-list-card ${quommonClasses.parentClasses}`}
     >
-      <div className={`${quommonClasses.childClasses}`}>
-        {data.title || data.subtitle ? (
+      <div className={`${quommonClasses.childClasses}`} key={"captioned-bullet-list-"+props.slideId}>
+        {data?.title || data?.subtitle ? (
           <SlideHeader {...props} content={SlideHeaderText} withColor={slideHeaderColors} />
         ) : (
-          <img className="qui-captioned-bullet-list-image" src={props.data.image} alt="" />
+          <img className="qui-captioned-bullet-list-image" src={data?.image} alt="" />
         )}
-        <TextBlock {...props} content={props.data?.textBlockTitle} withColor={{ backgroundColor: props.withColor?.textBlockBackgroundColor }} />
-        <BulletBlock {...props} content={props.data?.blockBullets} withColor={bulletBlockColors} asVariant={props.asVariant} asFloated={"inline"} />
+        <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+        <BulletBlock {...props} content={data?.blockBullets} withColor={bulletBlockColors} asVariant={props.asVariant} />
       </div>
     </motion.div>
   );

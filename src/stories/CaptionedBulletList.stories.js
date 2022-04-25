@@ -6,16 +6,10 @@ export default {
   component: CaptionedBulletList,
   argTypes: {
     data: {},
+    slideId: 0,
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asFloated: {
-      control: "select",
-      options: ["left", "right", "inline"],
       table: {
         category: "as-Flags",
       },
@@ -79,17 +73,16 @@ Default.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-    textBlockTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+    caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
     blockBullets: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "Quisque sed turpis vel lectus suscipit auctor",
       "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
     ]
   },
+  slideId: 0,
   asVariant: "warning",
-  asFloated: "inline",
-
   withColor: {
     slideHeaderTextColor: "#FFFFFF",
     slideHeaderAccentColor: "#AD2929",
@@ -113,64 +106,203 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// All Variants
+// CaptionedBulletListWithImage
 // -------------------------------------------------------------
-const AllVariantTemplate = (args) => {
+export const CaptionedBulletListWithImage = Template.bind({});
+CaptionedBulletListWithImage.args = {
+  data: {
+    title: "",
+    subtitle: "",
+    caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    blockBullets: [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "Quisque sed turpis vel lectus suscipit auctor",
+      "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+    ]
+  },
+  asVariant: "warning",
+  withColor: {
+    slideHeaderTextColor: "#FFFFFF",
+    slideHeaderAccentColor: "#AD2929",
+    slideHeaderBackgroundColor: "#ad292980",
+    textBlockBackgroundColor: "#2d92a4",
+    textBlockTextColor: "#fff",
+    bulletBlockTextColor: "#ffffff",
+    bulletBlockBackgroundColor: "#ad292980",
+  },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  isHidden: false,
+};
+CaptionedBulletListWithImage.parameters = {
+  docs: {
+    source: {
+      code: `<CaptionedBulletList {...${JSON.stringify(CaptionedBulletListWithImage.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// MultipleCaptionedBulletList
+// -------------------------------------------------------------
+const MultipleCaptionedBulletListTemplate = (args) => {
   const baseObj = {
-    ...Object.assign({}, Default.args, args),
+    ...Object.assign({}, Default.args, args, {
+    }),
   };
   return (
-    <div className="qui-allvariants-container">
-      <CaptionedBulletList
-        {...Object.assign({}, baseObj, {
-          data: ["Primary"],
-          asVariant: "primary",
-        })}
-      />
-      <CaptionedBulletList
-        {...Object.assign({}, baseObj, {
-          data: ["Secondary"],
-          asVariant: "secondary",
-        })}
-      />
-      <CaptionedBulletList
-        {...Object.assign({}, baseObj, {
-          data: ["Success"],
-          asVariant: "success",
-        })}
-      />
-      <CaptionedBulletList
-        {...Object.assign({}, baseObj, {
-          data: ["Warning"],
-          asVariant: "warning",
-        })}
-      />
-      <CaptionedBulletList
-        {...Object.assign({}, baseObj, {
-          data: ["Error"],
-          asVariant: "error",
-        })}
-      />
-      <CaptionedBulletList
-        {...Object.assign({}, baseObj, {
-          data: ["Hover"],
-          withColor: {
-            backgroundColor: "#00296b",
-            textColor: "#fdc500",
-            hoverBackgroundColor: "#fdc500",
-            hoverTextColor: "#00296b",
-          },
-        })}
-      />
+    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", backgroundColor: "#454545" }}>
+      <div style={{ margin: "1em", width: "25em" }}>
+        <CaptionedBulletList
+          {...Object.assign({}, baseObj, {
+            asVariant: 'warning',
+            withAnimation: {
+              animation: "slideRight",
+              duration: 0.5,
+              delay: 0,
+            },
+          })}
+        />
+      </div>
+      <div style={{ margin: "1em", width: "25em" }}>
+        <CaptionedBulletList
+          {...Object.assign({}, baseObj, {
+            asVariant: 'warning',
+            withAnimation: {
+              animation: "slideUp",
+              duration: 0.5,
+              delay: 0.8,
+            },
+          })}
+        />
+      </div>
+      <div style={{ margin: "1em", width: "25em" }}>
+        <CaptionedBulletList
+          {...Object.assign({}, baseObj, {
+            asVariant: 'warning',
+            withAnimation: {
+              animation: "slideLeft",
+              duration: 0.5,
+              delay: 0.5,
+            },
+          })}
+        />
+      </div>
     </div>
   );
 };
-export const AllVariants = AllVariantTemplate.bind({});
-AllVariants.parameters = {
+export const MultipleCaptionedBulletList = MultipleCaptionedBulletListTemplate.bind({});
+MultipleCaptionedBulletList.parameters = {
   docs: {
     description: {
-      story:
-        "5 variants and a custom withColor prop is supported. Use as per purpose noted here.",
+      story: "Multiple CaptionedBulletList.",
+    },
+    source: {
+      code: `<CaptionedBulletList data={image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+      title: "Neque porro quisquam est qui dolorem",
+      subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem", ,}/>`,
+    },
+  },
+};
+
+// -------------------------------------------------------------
+// ColoredCaptionedBulletList
+// -------------------------------------------------------------
+const ColoredCaptionedBulletListTemplate = (args) => {
+  const baseObj = {
+    ...Object.assign({}, Default.args, args, {
+    }),
+  };
+  return (
+    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", backgroundColor: "#454545" }}>
+      <div style={{ margin: "1em", width: "25em" }}>
+        <CaptionedBulletList
+          {...Object.assign({}, baseObj, {
+            asVariant: 'warning',
+            withColor: {
+              slideHeaderTextColor: "#ffffff",
+              slideHeaderAccentColor: "#AD2929",
+              slideHeaderBackgroundColor: "#AD292980",
+              textBlockTextColor: "#ffffff",
+              textBlockBackgroundColor: "#2d92a4",
+              bulletBlockTextColor: "#12ff00",
+              bulletBlockBackgroundColor: "#000000",
+            },
+            withAnimation: {
+              animation: "slideRight",
+              duration: 0.5,
+              delay: 0,
+            },
+          })}
+        />
+      </div>
+      <div style={{ margin: "1em", width: "25em" }}>
+        <CaptionedBulletList
+          {...Object.assign({}, baseObj, {
+            asVariant: 'warning',
+            withColor: {
+              slideHeaderTextColor: "#ffffff",
+              slideHeaderAccentColor: "#AD2929",
+              textBlockTextColor: "#ffffff",
+              textBlockBackgroundColor: "#a42f2d",
+              slideHeaderBackgroundColor: "#AD292980",
+              bulletBlockTextColor: "#0000ff",
+              bulletBlockBackgroundColor: "#FF00FF",
+            },
+            withAnimation: {
+              animation: "slideUp",
+              duration: 0.5,
+              delay: 0.8,
+            },
+          })}
+        />
+      </div>
+      <div style={{ margin: "1em", width: "25em" }}>
+        <CaptionedBulletList
+          {...Object.assign({}, baseObj, {
+            asVariant: 'warning',
+            withColor: {
+              slideHeaderTextColor: "#ffffff",
+              slideHeaderAccentColor: "#AD2929",
+              textBlockTextColor: "#ffffff",
+              textBlockBackgroundColor: "#7ea42d",
+              slideHeaderBackgroundColor: "#AD292980",
+              bulletBlockTextColor: "",
+              bulletBlockBackgroundColor: "",
+            },
+            withAnimation: {
+              animation: "slideLeft",
+              duration: 0.5,
+              delay: 0.5,
+            },
+          })}
+        />
+      </div>
+    </div>
+  );
+};
+export const ColoredCaptionedBulletList = ColoredCaptionedBulletListTemplate.bind({});
+ColoredCaptionedBulletList.parameters = {
+  docs: {
+    description: {
+      story: "displays Colored CaptionedBulletList.",
+    },
+    source: {
+      code: `<CaptionedBulletList data={image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+      title: "Neque porro quisquam est qui dolorem",
+      subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",}
+      withColor: {
+        slideHeaderTextColor: "#ffffff",
+        slideHeaderAccentColor: "#AD2929",
+        textBlockTextColor:"#ffffff",
+        textBlockBackgroundColor:"#7ea42d",
+        slideHeaderBackgroundColor: "#AD292980",
+        bulletBlockTextColor: "",
+        bulletBlockBackgroundColor: "",
+      },/>`,
     },
   },
 };
