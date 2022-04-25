@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
@@ -13,34 +13,30 @@ describe("Anagram", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
-
   let component;
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
       <Anagram
-        content={{
-          image: "",
-          caption: "",
-          label: "Default Label",
+        data={{
+          title: "This is Title",
+          subtitle: "This is Subtitle",
+          image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+          question: "Question",
+          answer: "Answer",
+          purpose: "quiz",
         }}
         asVariant="primary"
         withColor={null}
         withTranslation={null}
         isHidden={false}
         isDisabled={false}
-        content={{
-          image: "",
-          caption: "",
-          label: "Default Label",
-        }}
         onClick={(e) => {
           console.log(e);
         }}
       />
     );
   });
-
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
@@ -63,6 +59,9 @@ describe("Anagram", () => {
     let colors = {
       captionColor: "#ff0000",
       labelColor: "#000000",
+      slideHeaderTextColor: "ff0000",
+      slideHeaderAccentColor: "23ff00",
+      slideHeaderBackgroundColor: "00ff00",
       inputFieldTextColor: "ff0000",
       inputFieldAccentColor: "23ff00",
       inputFieldBackgroundColor: "00ff00",
@@ -83,7 +82,6 @@ describe("Anagram", () => {
     component.setProps({ withAnimation: animation })
     expect(component.exists()).toBe(true);
   })
-
   it("should render correctly when passed isHidden props as false", () => {
     component.setProps({ isHidden: false })
     expect(component.exists()).toBe(true);
@@ -98,6 +96,10 @@ describe("Anagram", () => {
   })
   it("should render correctly when passed isDisabled props as true", () => {
     component.setProps({ isDisabled: true })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed answer props as null", () => {
+    component.setProps({ answer: null })
     expect(component.exists()).toBe(true);
   })
   it("should render correctly with withColor prop when hovered on Button", () => {

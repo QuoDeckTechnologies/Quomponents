@@ -5,11 +5,15 @@ export default {
   title: "Design System/Anagram/Anagram",
   component: Anagram,
   argTypes: {
-    content: {
+    data: {
+      title: "",
+      subtitle: "",
       image: "",
-      caption: "",
-      label: "",
+      question: "",
+      answer: "",
+      purpose: "",
     },
+    slideId: 0,
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
@@ -21,8 +25,11 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          captionColor: "",
-          labelColor: "",
+          questionColor: "",
+          answerColor: "",
+          slideHeaderTextColor: "",
+          slideHeaderAccentColor: "",
+          slideHeaderBackgroundColor: "",
           inputFieldTextColor: "",
           inputFieldAccentColor: "",
           inputFieldBackgroundColor: "",
@@ -75,7 +82,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a Anagram with BannerCard, label, caption and InputField which can be used with submit button.",
+    componentSubtitle: "Displays a Anagram with a question and jumbled answer, the user need to submit the correct word as answer, we can switch the header image as slideHeader by giving the title and subtitle from prop, and by removing the title and subtitle we can see an image.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 650,
@@ -88,15 +95,22 @@ const Template = (args) => <Anagram {...args} />;
 // -------------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
-  content: {
+  data: {
+    title: "",
+    subtitle: "",
     image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    label: "Rawnes",
+    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    answer: "Answer",
+    purpose: ""
   },
+  slideId: 0,
   asVariant: "warning",
   withColor: {
-    captionColor: "#000000",
-    labelColor: "#000000",
+    questionColor: "#000000",
+    answerColor: "#000000",
+    slideHeaderTextColor: "#ffffff",
+    slideHeaderAccentColor: "#AD2929",
+    slideHeaderBackgroundColor: "#AD292980",
     inputFieldTextColor: "",
     inputFieldAccentColor: "",
     inputFieldBackgroundColor: "",
@@ -117,6 +131,51 @@ Default.parameters = {
   docs: {
     source: {
       code: `<Anagram {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+
+// -------------------------------------------------------------
+// AnagramWithSlideHeader
+// -------------------------------------------------------------
+export const AnagramWithSlideHeader = Template.bind({});
+AnagramWithSlideHeader.args = {
+  data: {
+    title: "Neque porro quisquam est qui dolorem",
+    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    answer: "Answer",
+    purpose: ""
+  },
+  slideId: 0,
+  asVariant: "warning",
+  withColor: {
+    questionColor: "#000000",
+    answerColor: "#000000",
+    slideHeaderTextColor: "#ffffff",
+    slideHeaderAccentColor: "#AD2929",
+    slideHeaderBackgroundColor: "#AD292980",
+    inputFieldTextColor: "",
+    inputFieldAccentColor: "",
+    inputFieldBackgroundColor: "",
+    buttonTextColor: "",
+    buttonBackgroundColor: "",
+    buttonHoverBackgroundColor: "",
+    buttonHoverTextColor: "",
+  },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  isDisabled: false,
+  isHidden: false,
+};
+AnagramWithSlideHeader.parameters = {
+  docs: {
+    source: {
+      code: `<Anagram {...${JSON.stringify(AnagramWithSlideHeader.args, null, 2)}}/>`,
     },
   },
 };
@@ -198,8 +257,11 @@ const ColoredAnagramTemplate = (args) => {
           {...Object.assign({}, baseObj, {
             asVariant: 'warning',
             withColor: {
-              captionColor: "#5072a4",
-              labelColor: "#ff0000",
+              questionColor: "#5072a4",
+              answerColor: "#ff0000",
+              slideHeaderTextColor: "#ffffff",
+              slideHeaderAccentColor: "#AD2929",
+              slideHeaderBackgroundColor: "#AD292980",
               inputFieldTextColor: "#12ff00",
               inputFieldAccentColor: "#00ff17",
               inputFieldBackgroundColor: "#000000",
@@ -221,8 +283,11 @@ const ColoredAnagramTemplate = (args) => {
           {...Object.assign({}, baseObj, {
             asVariant: 'warning',
             withColor: {
-              captionColor: "#FFFF00",
-              labelColor: "#000000",
+              questionColor: "#FFFF00",
+              answerColor: "#000000",
+              slideHeaderTextColor: "#ffffff",
+              slideHeaderAccentColor: "#AD2929",
+              slideHeaderBackgroundColor: "#AD292980",
               inputFieldTextColor: "#0000ff",
               inputFieldAccentColor: "#FF0000",
               inputFieldBackgroundColor: "#FF00FF",
@@ -244,8 +309,11 @@ const ColoredAnagramTemplate = (args) => {
           {...Object.assign({}, baseObj, {
             asVariant: 'warning',
             withColor: {
-              captionColor: "#ffff00",
-              labelColor: "#0f00f0",
+              questionColor: "#ffff00",
+              answerColor: "#0f00f0",
+              slideHeaderTextColor: "#ffffff",
+              slideHeaderAccentColor: "#AD2929",
+              slideHeaderBackgroundColor: "#AD292980",
               inputFieldTextColor: "",
               inputFieldAccentColor: "",
               inputFieldBackgroundColor: "",
@@ -276,8 +344,8 @@ ColoredAnagram.parameters = {
       caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
       label: "RAWNES",}
       withColor: {
-        captionColor: "#FFFF00",
-        labelColor: "#000000",
+        questionColor: "#FFFF00",
+        answerColor: "#000000",
         inputFieldTextColor: "#0000ff",
         inputFieldAccentColor: "#FF0000",
         inputFieldBackgroundColor: "#FF00FF",
