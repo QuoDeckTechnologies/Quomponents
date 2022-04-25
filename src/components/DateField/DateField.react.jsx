@@ -127,7 +127,7 @@ export default function DateField(props) {
                     <div className="qui-date-field-label">
                         {props.content}
                     </div>
-                    <div className="qui-date-field-input">
+                    <div>
                         <i className={`far fa-calendar qui-calendar-icon`}
                             onClick={() => handleClickDatepickerIcon()}
                         ></i>
