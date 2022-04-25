@@ -103,7 +103,7 @@ export default function Title(props) {
   useEffect(() => {
     props.onClick(data);
   }, [data]);
-  
+
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -115,15 +115,15 @@ export default function Title(props) {
         <SlideHeader
           content={{ title: data?.title }}
           withColor={{
-            backgroundColor: withColor.slideHeaderBackgroundColor,
-            accentColor: withColor.accentColor,
-            textColor: withColor.textColor,
+            backgroundColor: withColor?.slideHeaderBackgroundColor,
+            accentColor: withColor?.accentColor,
+            textColor: withColor?.textColor,
           }}
         />
       );
     } else {
       return (
-        data.image && (
+        data?.image && (
           <img
             className="qui-title-image"
             src={props.data?.image}
@@ -142,8 +142,8 @@ export default function Title(props) {
             conversation={false}
             asFloated="left"
             withColor={{
-              backgroundColor: withColor.textBlockBackgroundColor,
-              textColor: withColor.textColor,
+              backgroundColor: withColor?.textBlockBackgroundColor,
+              textColor: withColor?.textColor,
             }}
           />
         </div>
@@ -154,8 +154,8 @@ export default function Title(props) {
             asFloated="left"
             asSize="small"
             withColor={{
-              backgroundColor: withColor.textBlockBackgroundColor,
-              textColor: withColor.textColor,
+              backgroundColor: withColor?.textBlockBackgroundColor,
+              textColor: withColor?.textColor,
             }}
           />
         </div>
@@ -202,10 +202,10 @@ export default function Title(props) {
             >
               <IconBlock
                 withColor={{
-                  accentColor: withColor.textColor,
-                  backgroundColor: withColor.accentColor,
+                  accentColor: withColor?.textColor,
+                  backgroundColor: withColor?.accentColor,
                 }}
-                withIcon={{ name: data.icon }}
+                withIcon={{ name: data?.icon }}
               />
             </div>
           )}
