@@ -1,0 +1,76 @@
+.qui.qui-splash-card {
+  padding: 1.2em;
+  background-color: #ffffff;
+  border-radius: 1em;
+  min-height: 25em;
+  max-width: 18em;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  &.qui-splash-presenter-container {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    text-align: left;
+  }
+  overflow: visible;
+  .qui .qui-title-block {
+    min-width: 12em;
+    min-height: 10em;
+  }
+  .qui .qui-title {
+    font-size: 1.8em;
+    padding: 0 0 0.2em 0;
+  }
+  .qui .qui-sub-title {
+    font-size: 1em;
+  }
+}
+// .qui .qui-splash-container {
+//   position: relative;
+// }
+.qui .qui-splash-presenter {
+  height: 12em;
+  width: 8em;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.qui .qui-splash-text-block {
+  // margin-top: 5em;
+  font-size: 2em;
+  position: relative;
+  bottom: 3em;
+  .qui .qui-text-block-area {
+    // padding: 0.5em;
+    // // margin: 0;
+    // border-radius: 0;
+    // border-top-right-radius: 0.2em;
+    // border-bottom-right-radius: 0.2em;
+    width: 10em;
+    font-size: 0.5em;
+    // position: relative;
+    .qui-block-text {
+      font-weight: 300;
+    }
+  }
+  .qui.qui-text-block-container {
+    // padding: 0.5em;
+    // // margin: 0;
+    // border-radius: 0;
+    // border-top-right-radius: 0.2em;
+    // border-bottom-right-radius: 0.2em;
+    overflow: visible;
+    position: relative;
+    // bottom: 3em;
+    .qui-text-block-chat-arrow.qui-arrow-right-bottom {
+      // display: none;
+      right: 0.1em;
+      bottom: 0.5em;
+      border-top: 0.2em solid transparent;
+      border-bottom: 0.2em solid transparent;
+      border-left: 0.4em solid #ad292980;
+    }
+  }
+}

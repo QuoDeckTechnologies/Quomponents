@@ -1,0 +1,175 @@
+// Import npm packages
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { motion } from "framer-motion";
+import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "../../common/stylesheets/common.css";
+import "./Splash.scss";
+import "../../common/stylesheets/overrule.scss";
+import SlideHeader from "../SlideHeader/SlideHeader.react";
+import IconBlock from "../IconBlock/IconBlock.react";
+import TextBlock from "../TextBlock/TextBlock.react";
+import presenterBackground from "../../assets/presenter-background.png";
+import presenterImage from "../../assets/presenter.png";
+
+Splash.propTypes = {
+  //=======================================
+  // Component Specific props
+  //=======================================
+  /**
+    Splash data should be passed in data field and it is a required field
+    */
+  data: PropTypes.shape({
+    splash: PropTypes.string,
+  }),
+  /**
+    Splash component can use presenter props to show presenter template
+    */
+  isPresenter: PropTypes.bool,
+  //=======================================
+  // Quommon props
+  //=======================================
+  /**
+    Use to override component colors and behavior
+    */
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    textBlockBackgroundColor: PropTypes.string,
+    accentColor: PropTypes.string,
+    textColor: PropTypes.string,
+  }),
+
+  /**
+    Use to define the entry animation of the component
+    */
+  withAnimation: PropTypes.shape({
+    animation: PropTypes.oneOf([
+      "zoom",
+      "collapse",
+      "fade",
+      "slideDown",
+      "slideUp",
+      "slideLeft",
+      "slideRight",
+      "",
+    ]),
+    duration: PropTypes.number,
+    delay: PropTypes.number,
+  }),
+  /**
+    Use to enable/disable the component
+    */
+  isDisabled: PropTypes.bool,
+  /**
+    Use to show/hide the component
+    */
+  isHidden: PropTypes.bool,
+  /**
+    Button component must have the onClick function passed as props
+    */
+  onClick: PropTypes.func.isRequired,
+};
+
+Splash.defaultProps = {
+  //=======================================
+  // Component Specific props
+  //=======================================
+  data: {
+    splash: "",
+  },
+  //=======================================
+  // Quommon props
+  //=======================================
+  withColor: null,
+  withAnimation: null,
+  isDisabled: false,
+  isHidden: false,
+};
+/**
+## Notes
+- The animation system used for this component is Framer Motion (framer-motion)
+- Pass inline styles to the component to override any of the component css
+- Or add custom css in overrule.scss to override the component css
+**/
+export default function Splash(props) {
+  const { data, withColor, isPresenter } = props;
+
+  useEffect(() => {
+    props.onClick(data);
+  }, [data]);
+
+  //-------------------------------------------------------------------
+  // 2. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "splash");
+
+  const getView = (data) => {
+    return (
+      <div className="qui-splash-text">
+        <p>{data?.splash}</p>
+      </div>
+    );
+  };
+
+  const getPresenterView = (data) => {
+    return (
+      <div>
+        <div className="qui-splash-text-block">
+          <TextBlock
+            content={data?.splash}
+            conversation={true}
+            position="right-bottom"
+            asFloated="left"
+            asSize="small"
+            withColor={{
+              backgroundColor: withColor?.textBlockBackgroundColor,
+              textColor: withColor?.textColor,
+            }}
+          />
+        </div>
+        <div className="qui-splash-presenter-image-container">
+          <img
+            className="qui-splash-presenter"
+            src={presenterImage}
+            alt="Presenter"
+          />
+        </div>
+      </div>
+    );
+  };
+
+  //-------------------------------------------------------------------
+  // 5. Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props.withAnimation);
+
+  const getBackground = () => {
+    return {
+      background: `url(${presenterBackground})`,
+      backgroundSize: "cover",
+    };
+  };
+
+  const background = isPresenter ? getBackground() : {};
+
+  // ========================= Render Function =================================
+
+  return (
+    <motion.div
+      initial={animate.from}
+      animate={animate.to}
+      className={`qui qui-splash-card ${quommonClasses.parentClasses} ${
+        isPresenter ? "qui-splash-presenter-container" : ""
+      }`}
+      style={background}
+    >
+      <div
+        className={`qui-splash-container ${quommonClasses.childClasses} `}
+      >
+        {!isPresenter && getView(data)}
+      </div>
+      {isPresenter && getPresenterView(data)}
+    </motion.div>
+  );
+}
