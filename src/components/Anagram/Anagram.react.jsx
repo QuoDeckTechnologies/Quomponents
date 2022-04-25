@@ -162,45 +162,46 @@ export default function Anagram(props) {
         .join("")
     }
   };
+  let buttonText = data?.purpose === "quiz" ? "Check Answer" : "Submit Answer"
 
   // ========================= Render Function =================================
   return (
     <motion.div
       initial={animate.from}
       animate={animate.to}
-      className={`qui qui-anagram-card ${quommonClasses.parentClasses}`}
+      className={`qui ${quommonClasses.parentClasses}`}
     >
-      {data?.title || data?.subtitle ? (
-        <SlideHeader
-          content={{ title: data?.title, subTitle: data?.subtitle }}
-          withColor={slideHeaderColors}
-        />
-      ) : (
-        <img className="qui-anagram-image" src={data?.image} alt="" />
-      )}
-      <div
-        className={`qui-anagram-question variant-${props.asVariant}-text`}
-        style={{ color: props.withColor?.questionColor }}
-        key={"anagram-question-" + props.slideId}>
-        {props.data?.question}
-      </div>
-      <p className="qui-anagram-answer"
-        style={{ color: props.withColor?.answerColor }}>
-        {jumbledWords(data?.answer)}
-      </p>
-      <InputField {...props}
-        content={{ label: "Input Name" }}
-        withColor={inputFieldColors}
-        onClick={(name, value) => setState(value)}
-        name="anagram-input-field" />
-      <Button {...props}
-        content={"Submit Answer"}
-        withColor={buttonColors}
-        onClick={() => handleSubmit()} >
-        {data.purpose === "quiz"
-          ? "checkAnswer"
-          : "submitAnswer"}
-      </Button>
+      {data &&
+        <div className="qui-anagram-card">
+          {data?.title || data?.subtitle ? (
+            <SlideHeader
+              content={{ title: data?.title, subTitle: data?.subtitle }}
+              withColor={slideHeaderColors}
+            />
+          ) : (
+            <img className="qui-anagram-image" src={data?.image} alt="" />
+          )}
+          <div
+            className={`qui-anagram-question variant-${props.asVariant}-text`}
+            style={{ color: props.withColor?.questionColor }}
+            key={"anagram-question-" + props.slideId}>
+            {props.data?.question}
+          </div>
+          <p className="qui-anagram-answer"
+            style={{ color: props.withColor?.answerColor }}>
+            {jumbledWords(data?.answer)}
+          </p>
+          <InputField {...props}
+            content={{ label: "Input Name" }}
+            withColor={inputFieldColors}
+            onClick={(name, value) => setState(value)}
+            name="anagram-input-field" />
+          <Button {...props}
+            content={buttonText}
+            withColor={buttonColors}
+            onClick={() => handleSubmit()} >
+          </Button>
+        </div>}
     </motion.div>
   );
 }

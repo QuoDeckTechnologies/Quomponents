@@ -46,7 +46,7 @@ describe("Anagram", () => {
     });
     expect(component.exists()).toBe(true);
   });
-  it('Test click event on handleSubmit funtion of Button', () => {
+  it('Test click event on handleSubmit function of Button', () => {
     const handleSubmit = jest.fn();
     const button = shallow((<Anagram onClick={handleSubmit} />));
     button.find('Button').simulate('click');
@@ -100,6 +100,26 @@ describe("Anagram", () => {
   })
   it("should render correctly when passed answer props as null", () => {
     component.setProps({ answer: null })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asVariant prop as primary", () => {
+    component.setProps({ asVariant: "primary" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asVariant prop as secondary", () => {
+    component.setProps({ asVariant: "secondary" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asVariant prop as warning", () => {
+    component.setProps({ asVariant: "warning" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asVariant prop as error", () => {
+    component.setProps({ asVariant: "error" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed asVariant prop as success", () => {
+    component.setProps({ asVariant: "success" })
     expect(component.exists()).toBe(true);
   })
   it("should render correctly with withColor prop when hovered on Button", () => {
