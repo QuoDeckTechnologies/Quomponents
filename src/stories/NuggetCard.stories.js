@@ -57,7 +57,7 @@ export default {
 	parameters: {
 		componentSubtitle: "Displays a NuggetCard",
 		a11y: { disable: true },
-		docs: { iframeHeight: 200 },
+		docs: { iframeHeight: 570 },
 	},
 };
 
