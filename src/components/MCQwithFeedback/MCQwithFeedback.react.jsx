@@ -121,13 +121,13 @@ export default function MCQwithFeedback(props) {
       <div
         className={`qui-mcq-with-feedback-container ${quommonClasses.childClasses}`}
       >
-        {content.title || content.subtitle ? (
+        {content?.title || content?.subtitle ? (
           <SlideHeader
-            content={{ title: content.title, subTitle: content.subtitle }}
+            content={{ title: content?.title, subTitle: content?.subtitle }}
             withColor={props.withColor}
           />
         ) : (
-          <img className="qui-mcq-with-feedback-image" src={props.content.image} alt="slide" />
+          <img className="qui-mcq-with-feedback-image" src={props.content?.image} alt="slide" />
         )}
         <p
           className={`qui-mcq-with-feedback-caption`}
@@ -137,7 +137,7 @@ export default function MCQwithFeedback(props) {
         </p>
         <ButtonBank
           {...props}
-          content={props.content.options}
+          content={props.content?.options}
           onClick={(value) => props.onClick(value.target.innerText)}
         />
       </div>

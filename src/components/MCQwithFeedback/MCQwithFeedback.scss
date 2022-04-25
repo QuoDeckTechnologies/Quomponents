@@ -1,16 +1,25 @@
-.qui.qui-mcq-with-feedback-card{
-    padding: 1em;
-    background-color: #ffffff;
-    border-radius: 1em;
+.qui.qui-mcq-with-feedback-card {
+  padding: 1em;
+  background-color: #ffffff;
+  border-radius: 1em;
+
+  .qui .qui-title-block {
+    min-width: 12em;
+    min-height: 10em;
+  }
+  .qui .qui-title {
+    font-size: 1.5em;
+    padding: 0 0 0.2em 0;
+  }
+  .qui .qui-sub-title {
+    font-size: 1em;
+  }
 }
 
-.qui .qui-mcq-with-feedback-image{
-    width: 100%;
-    border-radius: 1em;
+.qui .qui-mcq-with-feedback-image {
+  width: 100%;
+  border-radius: 1em;
 }
-
-
-
 
 // .qui.qui-mcq-with-feedback-card {
 //   max-width: 30em;
