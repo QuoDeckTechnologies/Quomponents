@@ -22,6 +22,9 @@ OptionItemSix.propTypes = {
         targetName: PropTypes.string,
         value: PropTypes.string,
         placeholder: PropTypes.string,
+        captionName: PropTypes.string,
+        captionValue: PropTypes.string,
+        CaptionPlaceholder: PropTypes.string,
         image: PropTypes.object,
     }),
     //=======================================
@@ -102,8 +105,9 @@ export default function OptionItemSix(props) {
     //-------------------------------------------------------------------
     // 2. Defining states
     //-------------------------------------------------------------------
-    const [image, setImage] = useState(content.image);
-    const [value, setValue] = useState(content.value);
+    const [image, setImage] = useState(content?.image);
+    const [value, setValue] = useState(content?.value);
+    const [captionValue, setCaptionValue] = useState(content?.captionValue);
     //-------------------------------------------------------------------
     // 3. Set the classes
     //-------------------------------------------------------------------
@@ -117,14 +121,15 @@ export default function OptionItemSix(props) {
     //-------------------------------------------------------------------
     const handleImageUpload = (image) => {
         setImage(image);
-        props.onUpload(content.targetName, image, value);
+        props.onUpload(content?.targetName, content?.captionName, image, value, captionValue);
     };
     //-------------------------------------------------------------------
     // 6. Function to return input value of the component
     //-------------------------------------------------------------------
-    const handleValue = (name, value) => {
+    const handleValue = (name, value, captionValue) => {
         setValue(value);
-        props.onInput(content.targetName, image, value);
+        setCaptionValue(captionValue);
+        props.onUpload(content?.targetName, content?.captionName, image, value, captionValue);
     };
 
     // ========================= Render Function =================================
@@ -148,10 +153,10 @@ export default function OptionItemSix(props) {
                         </div>
                         <div className="qui-optionitem-six-inputfieldone">
                             <InputField
-                                name={content.targetName}
+                                name={content?.targetName}
                                 content={{
-                                    value: content.value,
-                                    placeholder: content.placeholder,
+                                    value: content?.value,
+                                    placeholder: content?.placeholder,
                                     maxLength: 300,
                                 }}
                                 asEmphasis="listInput"
@@ -162,10 +167,10 @@ export default function OptionItemSix(props) {
                     </div>
                     <div className="qui-optionitem-flexthree">
                         <InputField
-                            name={content.targetName}
+                            name={content?.captionName}
                             content={{
-                                value: content.value,
-                                placeholder: content.placeholder,
+                                value: content?.captionValue,
+                                placeholder: content?.captionPlaceholder,
                                 maxLength: 300,
                             }}
                             asEmphasis="listInput"
@@ -177,7 +182,7 @@ export default function OptionItemSix(props) {
                 <div className="qui-option-item-six-close-icon">
                     <i
                         className="fas fa-times"
-                        data-id={content.targetName}
+                        data-id={content?.targetName}
                         onClick={(e) => props.onClose(e.target.dataset.id)}
                     ></i>
                 </div>

@@ -76,9 +76,12 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    targetName: "name one",
+    targetName: "target",
     value: "",
-    placeholder: "Ops6",
+    placeholder: "This is option A",
+    captionName: "caption",
+    captionValue: "",
+    captionPlaceholder: "Caption For Option A",
     image: {},
   },
   withColor: {

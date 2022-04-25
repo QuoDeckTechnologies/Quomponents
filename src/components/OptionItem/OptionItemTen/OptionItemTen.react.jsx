@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import _ from "lodash";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -22,6 +21,12 @@ OptionItemTen.propTypes = {
         targetName: PropTypes.string,
         value: PropTypes.string,
         placeholder: PropTypes.string,
+        headerName: PropTypes.string,
+        headerValue: PropTypes.string,
+        headerPlaceholder: PropTypes.string,
+        messageName: PropTypes.string,
+        messageValue: PropTypes.string,
+        messagePlaceholder: PropTypes.string,
         image: PropTypes.object,
     }),
     //=======================================
@@ -102,8 +107,8 @@ export default function OptionItemTen(props) {
     //-------------------------------------------------------------------
     // 2. Defining states
     //-------------------------------------------------------------------
-    const [image, setImage] = useState(content.image);
-    const [value, setValue] = useState(content.value);
+    const [image, setImage] = useState(content?.image);
+    const [value, setValue] = useState(content?.value);
     //-------------------------------------------------------------------
     // 3. Set the classes
     //-------------------------------------------------------------------
@@ -117,14 +122,14 @@ export default function OptionItemTen(props) {
     //-------------------------------------------------------------------
     const handleImageUpload = (image) => {
         setImage(image);
-        props.onUpload(content.targetName, image, value);
+        props.onUpload(content?.targetName, image, value);
     };
     //-------------------------------------------------------------------
     // 6. Function to return input value of the component
     //-------------------------------------------------------------------
     const handleValue = (name, value) => {
         setValue(value);
-        props.onInput(content.targetName, image, value);
+        props.onInput(content?.targetName, image, value);
     };
     // ========================= Render Function =================================
 
@@ -137,10 +142,10 @@ export default function OptionItemTen(props) {
             <div className="qui-option-item-ten-container">
                 <div className="qui-option-item-inputfieldone">
                     <InputField
-                        name={content.targetName}
+                        name={content?.targetName}
                         content={{
-                            value: content.value,
-                            placeholder: content.placeholder,
+                            value: content?.value,
+                            placeholder: content?.placeholder,
                             maxLength: 300,
                         }}
                         asEmphasis="listInput"
@@ -157,10 +162,10 @@ export default function OptionItemTen(props) {
                 </div>
                 <div className="qui-option-item-inputfieldtwo">
                     <InputField
-                        name={content.targetName}
+                        name={content?.headerName}
                         content={{
-                            value: content.value,
-                            placeholder: content.placeholder,
+                            value: content?.headerValue,
+                            placeholder: content?.headerPlaceholder,
                             maxLength: 300,
                         }}
                         asEmphasis="listInput"
@@ -171,7 +176,7 @@ export default function OptionItemTen(props) {
                 <div className="qui-option-item-ten-close-icon">
                     <i
                         className="fas fa-times"
-                        data-id={content.targetName}
+                        data-id={content?.targetName}
                         onClick={(e) => props.onClose(e.target.dataset.id)}
                     >
                     </i>
@@ -179,10 +184,10 @@ export default function OptionItemTen(props) {
             </div>
             <div className="qui-option-item-inputfieldthree">
                 <InputField
-                    name={content.targetName}
+                    name={content?.messageName}
                     content={{
-                        value: content.value,
-                        placeholder: content.placeholder,
+                        value: content?.messageValue,
+                        placeholder: content?.messagePlaceholder,
                         maxLength: 300,
                     }}
                     asEmphasis="listInput"

@@ -100,11 +100,11 @@ export default function OptionItemThree(props) {
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  const [image, setImage] = useState(content.image);
-  const [isChecked, setIsChecked] = useState(content.checked);
+  const [image, setImage] = useState(content?.image);
+  const [isChecked, setIsChecked] = useState(content?.checked);
   useEffect(() => {
-    setIsChecked(content.checked);
-  }, [content.checked]);
+    setIsChecked(content?.checked);
+  }, [content?.checked]);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -118,14 +118,14 @@ export default function OptionItemThree(props) {
   //-------------------------------------------------------------------
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
-    props.onSelect(content.targetName, image, e.target.checked);
+    props.onSelect(content?.targetName, image, e.target.checked);
   };
   //-------------------------------------------------------------------
   // 6. Function to update value of the input field
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
     setImage(image);
-    props.onUpload(content.targetName, image, isChecked);
+    props.onUpload(content?.targetName, image, isChecked);
   };
 
   // ========================= Render Function =================================
@@ -140,7 +140,7 @@ export default function OptionItemThree(props) {
         <div className="qui-option-item-three-radio-container">
           <FormControlLabel
             className="qui-option-item-three-radio"
-            value={content.targetName}
+            value={content?.targetName}
             control={
               <Radio
                 checked={isChecked}
@@ -161,7 +161,7 @@ export default function OptionItemThree(props) {
         <div className="qui-option-item-three-close-icon">
           <i
             className="qui-option-item-three-icon fas fa-times"
-            data-id={content.targetName}
+            data-id={content?.targetName}
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>
         </div>

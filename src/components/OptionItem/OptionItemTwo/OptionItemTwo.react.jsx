@@ -101,11 +101,11 @@ export default function OptionItemTwo(props) {
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  const [value, setValue] = useState(content.value);
-  const [isChecked, setIsChecked] = useState(content.checked);
+  const [value, setValue] = useState(content?.value);
+  const [isChecked, setIsChecked] = useState(content?.checked);
   useEffect(() => {
-    setIsChecked(content.checked);
-  }, [content.checked]);
+    setIsChecked(content?.checked);
+  }, [content?.checked]);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -119,14 +119,14 @@ export default function OptionItemTwo(props) {
   //-------------------------------------------------------------------
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
-    props.onSelect(content.targetName, value, e.target.checked);
+    props.onSelect(content?.targetName, value, e.target.checked);
   };
   //-------------------------------------------------------------------
   // 6. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     setValue(value);
-    props.onInput(content.targetName, value, isChecked);
+    props.onInput(content?.targetName, value, isChecked);
   };
 
   // ========================= Render Function =================================
@@ -141,7 +141,7 @@ export default function OptionItemTwo(props) {
         <div className="qui-option-item-radio-container">
           <FormControlLabel
             className="qui-option-item-radio"
-            value={content.targetName}
+            value={content?.targetName}
             control={
               <Radio
                 checked={isChecked}
@@ -153,10 +153,10 @@ export default function OptionItemTwo(props) {
           />
         </div>
         <InputField
-          name={content.targetName}
+          name={content?.targetName}
           content={{
-            value: content.value,
-            placeholder: content.placeholder,
+            value: content?.value,
+            placeholder: content?.placeholder,
             maxLength: 300,
           }}
           asEmphasis="listInput"
@@ -166,7 +166,7 @@ export default function OptionItemTwo(props) {
         <div className="qui-single-select-close-icon">
           <i
             className="qui-single-select-icon fas fa-times"
-            data-id={content.targetName}
+            data-id={content?.targetName}
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>
         </div>

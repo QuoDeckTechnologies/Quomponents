@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
@@ -101,8 +101,8 @@ export default function OptionItemFive(props) {
   //-------------------------------------------------------------------
   // 2. Defining states
   //-------------------------------------------------------------------
-  const [image, setImage] = useState(content.image);
-  const [value, setValue] = useState(content.value);
+  const [image, setImage] = useState(content?.image);
+  const [value, setValue] = useState(content?.value);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -116,14 +116,14 @@ export default function OptionItemFive(props) {
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
     setImage(image);
-    props.onUpload(content.targetName, image, value);
+    props.onUpload(content?.targetName, image, value);
   };
   //-------------------------------------------------------------------
   // 6. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     setValue(value);
-    props.onInput(content.targetName, image, value);
+    props.onInput(content?.targetName, image, value);
   };
   
   // ========================= Render Function =================================
@@ -143,10 +143,10 @@ export default function OptionItemFive(props) {
           />
         </div>
         <InputField
-          name={content.targetName}
+          name={content?.targetName}
           content={{
-            value: content.value,
-            placeholder: content.placeholder,
+            value: content?.value,
+            placeholder: content?.placeholder,
             maxLength: 300,
           }}
           asEmphasis="listInput"
@@ -156,7 +156,7 @@ export default function OptionItemFive(props) {
         <div className="qui-option-item-five-close-icon">
           <i
             className="qui-option-item-five-icon fas fa-times"
-            data-id={content.targetName}
+            data-id={content?.targetName}
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>
         </div>

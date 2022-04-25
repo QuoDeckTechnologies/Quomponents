@@ -96,7 +96,7 @@ export default function OptionItemEight(props) {
     // 1. Destructuring content prop
     //-------------------------------------------------------------------
     const { content } = props;
-    const [value, setValue] = useState(content.value);
+    const [value, setValue] = useState(content?.value);
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -110,7 +110,7 @@ export default function OptionItemEight(props) {
     //-------------------------------------------------------------------
     const handleValue = (name, value) => {
         setValue(value);
-        props.onInput(content.targetName, value);
+        props.onInput(content?.targetName, value);
     };
 
     // ========================= Render Function =================================

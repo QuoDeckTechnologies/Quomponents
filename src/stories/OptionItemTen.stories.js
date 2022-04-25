@@ -76,9 +76,15 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    targetName: "name one",
+    targetName: "target",
     value: "",
-    placeholder: "Ops10",
+    placeholder: "Option A",
+    headerName: "header",
+    headerValue: "",
+    headerPlaceholder: "Header for Option A",
+    messageName: "message",
+    messageValue: "",
+    messagePlaceholder: "Message for Option A",
   },
   withColor: {
     backgroundColor: "#ffab000d",

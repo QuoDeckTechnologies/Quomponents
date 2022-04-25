@@ -12,6 +12,7 @@ describe("Option Item Eight", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
+    onClick = jest.fn();
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -35,6 +36,7 @@ describe("Option Item Eight", () => {
                 isHidden={false}
                 onInput={() => { }}
                 onClose={() => { }}
+                onClick={onClick}
             />
         );
     });

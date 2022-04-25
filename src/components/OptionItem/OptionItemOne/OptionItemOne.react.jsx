@@ -111,10 +111,10 @@ export default function OptionItemOne(props) {
     >
       <div className="qui-inline-option-container">
         <InputField
-          name={content.targetName}
+          name={content?.targetName}
           content={{
-            value: content.value,
-            placeholder: content.placeholder,
+            value: content?.value,
+            placeholder: content?.placeholder,
             maxLength: 300,
           }}
           asEmphasis="listInput"
@@ -124,7 +124,7 @@ export default function OptionItemOne(props) {
         <div className="qui-inline-edit-with-remove-button-close-icon">
           <i
             className="qui-inline-edit-with-remove-button-icon fas fa-times"
-            data-id={content.targetName}
+            data-id={content?.targetName}
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>
         </div>

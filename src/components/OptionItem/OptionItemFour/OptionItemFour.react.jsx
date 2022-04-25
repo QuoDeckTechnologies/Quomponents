@@ -101,13 +101,13 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  const [value, setValue] = useState(content.value);
-  const [isChecked, setIsChecked] = useState(content.checked);
+  const [value, setValue] = useState(content?.value);
+  const [isChecked, setIsChecked] = useState(content?.checked);
   useEffect(() => {
-    setIsChecked(content.checked);
-  }, [content.checked]);
+    setIsChecked(content?.checked);
+  }, [content?.checked]);
   useEffect(() => {
-    props.onSelect(content.targetName, value, isChecked);
+    props.onSelect(content?.targetName, value, isChecked);
   }, [isChecked]);
   //-------------------------------------------------------------------
   // 3. Set the classes
@@ -128,7 +128,7 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     setValue(value);
-    props.onInput(content.targetName, value, isChecked);
+    props.onInput(content?.targetName, value, isChecked);
   };
   
   // ========================= Render Function =================================
@@ -156,10 +156,10 @@ export default function OptionItemFour(props) {
           </span>
         </div>
         <InputField
-          name={content.targetName}
+          name={content?.targetName}
           content={{
-            value: content.value,
-            placeholder: content.placeholder,
+            value: content?.value,
+            placeholder: content?.placeholder,
             maxLength: 300,
           }}
           asEmphasis="listInput"
@@ -169,7 +169,7 @@ export default function OptionItemFour(props) {
         <div className="qui-option-item-four-close-icon">
           <i
             className="qui-option-item-four-icon fas fa-times"
-            data-id={content.targetName}
+            data-id={content?.targetName}
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>
         </div>
