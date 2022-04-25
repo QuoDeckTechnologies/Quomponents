@@ -1,0 +1,82 @@
+.qui .qui-side-bar {
+    width: 3.5em;
+}
+.qui .qui-side-bar-default-container,
+.qui .qui-side-bar-editmode-container {
+    height: 90vh;
+    width: 2.5em;
+    p {
+        margin: 0;
+        text-transform: uppercase;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-height: 70%;
+    }
+}
+.qui .qui-side-bar-default-container {
+    background-color: #fff;
+}
+.qui .qui-side-bar-editmode-container {
+    background-color: #666666;
+}
+.qui .qui-side-bar-logo {
+    width: 2.5em;
+    background-color: #454545;
+    height: 2.5em;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.qui .qui-side-bar-sections-container {
+    width: 2.5em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: -0.25em;
+}
+.qui .qui-side-bar-sections {
+    height: 4.2em;
+    font-size: 0.6em;
+    cursor: pointer;
+    box-shadow: 0px 12px 9px -10px #888 inset;
+    background-color: #e8e8e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .qui-iconlink {
+        min-height: 4.5em;
+    }
+}
+.qui .qui-side-bar-editmode-container {
+    position: relative;
+    .qui-arc.qui-bottom-left {
+        left: -0.9em;
+    }
+    .qui-arc {
+        height: 2.5em;
+        width: 2.7em;
+        .qui-arc-menu-button {
+            height: 2.5em;
+            width: 2.5em;
+        }
+        .qui-arc-menu-button.qui-arc-menu-close-button .qui-arc-close-icon {
+            font-size: 1.5em;
+        }
+    }
+    .qui .qui-arc.qui-bottom-left .qui-arc-menu-button {
+        transform: translate(10%, 10%);
+    }
+}
+.qui .qui-side-bar-edit-mode-label {
+    position: absolute;
+    color: #fff;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    bottom: 3em;
+    left: 15%;
+}
