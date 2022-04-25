@@ -70,7 +70,7 @@ NuggetBlock.propTypes = {
     /**
     Button component must have the onClick function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
 };
 
 NuggetBlock.defaultProps = {
