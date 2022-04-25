@@ -26,6 +26,7 @@ describe("Anagram", () => {
           answer: "Answer",
           purpose: "quiz",
         }}
+        slideId = {0}
         asVariant="primary"
         withColor={null}
         withTranslation={null}
