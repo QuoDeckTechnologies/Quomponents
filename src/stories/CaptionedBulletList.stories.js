@@ -5,13 +5,7 @@ export default {
   title: "Design System/CaptionedBulletList/CaptionedBulletList",
   component: CaptionedBulletList,
   argTypes: {
-    content: {},
-    isCircular: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
+    data: {},
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
@@ -21,7 +15,7 @@ export default {
     },
     asFloated: {
       control: "select",
-      options: ["left", "right", "none", "inline"],
+      options: ["left", "right", "inline"],
       table: {
         category: "as-Flags",
       },
@@ -34,6 +28,8 @@ export default {
           slideHeaderAccentColor: "",
           slideHeaderBackgroundColor: "",
           textBlockBackgroundColor: "",
+          bulletBlockTextdColor: "",
+          bulletBlockBackgroundColor: "",
         },
       },
     },
@@ -51,18 +47,6 @@ export default {
       table: {
         category: "is-Toggles",
         defaultValue: false,
-      },
-    },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    onClick: {
-      table: {
-        category: "Events",
-        defaultValue: null,
       },
     },
   },
@@ -92,27 +76,33 @@ export default {
 const Template = (args) => <CaptionedBulletList {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    slideHeaderTitle: "Neque porro quisquam est qui dolorem",
-    slideHeaderSubtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+  data: {
+    title: "Neque porro quisquam est qui dolorem",
+    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     textBlockTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+    image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+    blockBullets: [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "Quisque sed turpis vel lectus suscipit auctor",
+      "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+    ]
   },
-  isCircular: false,
   asVariant: "warning",
-  asFloated: "none",
+  asFloated: "inline",
 
   withColor: {
     slideHeaderTextColor: "#FFFFFF",
     slideHeaderAccentColor: "#AD2929",
     slideHeaderBackgroundColor: "#ad292980",
     textBlockBackgroundColor: "#ff000000",
+    bulletBlockTextColor: "#ffffff",
+    bulletBlockBackgroundColor: "#ad292980",
   },
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
   },
-  isDisabled: false,
   isHidden: false,
 };
 Default.parameters = {
@@ -133,37 +123,37 @@ const AllVariantTemplate = (args) => {
     <div className="qui-allvariants-container">
       <CaptionedBulletList
         {...Object.assign({}, baseObj, {
-          content: ["Primary"],
+          data: ["Primary"],
           asVariant: "primary",
         })}
       />
       <CaptionedBulletList
         {...Object.assign({}, baseObj, {
-          content: ["Secondary"],
+          data: ["Secondary"],
           asVariant: "secondary",
         })}
       />
       <CaptionedBulletList
         {...Object.assign({}, baseObj, {
-          content: ["Success"],
+          data: ["Success"],
           asVariant: "success",
         })}
       />
       <CaptionedBulletList
         {...Object.assign({}, baseObj, {
-          content: ["Warning"],
+          data: ["Warning"],
           asVariant: "warning",
         })}
       />
       <CaptionedBulletList
         {...Object.assign({}, baseObj, {
-          content: ["Error"],
+          data: ["Error"],
           asVariant: "error",
         })}
       />
       <CaptionedBulletList
         {...Object.assign({}, baseObj, {
-          content: ["Hover"],
+          data: ["Hover"],
           withColor: {
             backgroundColor: "#00296b",
             textColor: "#fdc500",
