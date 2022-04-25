@@ -117,12 +117,14 @@ export default function InputField(props) {
     //-------------------------------------------------------------------
     // 2. Declaration of InputField's value
     //-------------------------------------------------------------------
-    const [input, setInput] = useState(props.content?.value);
-    const [count, setCount] = useState(props.content?.maxLength);
+    let [input, setInput] = useState(props.content?.value);
 
-    useEffect(()=>{
+    let inputCountLength = input?.length;
+    let [count, setCount] = useState(inputCountLength);
+
+    useEffect(() => {
         setInput(props.content?.value)
-    },[props.content?.value])
+    }, [props.content?.value])
 
     function handleChange(e) {
         setInput(e.target.value);
@@ -187,7 +189,7 @@ export default function InputField(props) {
         if (asEmphasis === "charLimited") {
             return (
                 <div className="qui-char-limited-container">
-                    <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>
+                    {props.content?.maxLength && <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>}
                     <TextField
                         className="qui-char-limited"
                         InputLabelProps={inputlabelColor}
@@ -209,7 +211,7 @@ export default function InputField(props) {
         if (asEmphasis === "listInput") {
             return (
                 <div className="qui-list-input-container">
-                    <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>
+                    {props.content?.maxLength && <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>}
                     <TextField
                         className="qui-list-input"
                         sx={outlineStyle}

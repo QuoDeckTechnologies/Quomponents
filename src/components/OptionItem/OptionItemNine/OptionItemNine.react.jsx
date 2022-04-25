@@ -20,8 +20,8 @@ OptionItemNine.propTypes = {
     targetNameShortFieldOne: PropTypes.string,
     targetNameShortFieldTwo: PropTypes.string,
     targetName: PropTypes.string,
-    valueShortFieldOne: PropTypes.string,
-    valueShortFieldTwo: PropTypes.string,
+    valueShortFieldOne: PropTypes.number,
+    valueShortFieldTwo: PropTypes.number,
     value: PropTypes.string,
     placeholder: PropTypes.string,
     maxLength: PropTypes.number,
@@ -123,9 +123,9 @@ export default function OptionItemNine(props) {
       <div className="qui-short-field-container">
         <div className="qui-short-field-one">
           <InputField
-            name={content.targetNameShortFieldOne}
+            name={content?.targetNameShortFieldOne}
             content={{
-              value: content.valueShortFieldOne,
+              value: content?.valueShortFieldOne,
             }}
             asEmphasis="shortField"
             asFloated="left"
@@ -135,9 +135,9 @@ export default function OptionItemNine(props) {
         </div>
         <div className="qui-short-field-two">
           <InputField
-            name={content.targetNameShortFieldTwo}
+            name={content?.targetNameShortFieldTwo}
             content={{
-              value: content.valueShortFieldTwo,
+              value: content?.valueShortFieldTwo,
             }}
             asEmphasis="shortField"
             asFloated="left"
@@ -147,11 +147,11 @@ export default function OptionItemNine(props) {
         </div>
         <div className="qui-list-input-three">
           <InputField
-            name={content.targetName}
+            name={content?.targetName}
             content={{
-              value: content.value,
-              placeholder: content.placeholder,
-              maxLength: content.maxLength,
+              value: content?.value,
+              placeholder: content?.placeholder,
+              maxLength: content?.maxLength,
             }}
             asEmphasis="listInput"
             withColor={props.withColor}
@@ -161,7 +161,7 @@ export default function OptionItemNine(props) {
         <div className="qui-option-item-nine-with-remove-button-close-icon">
           <i
             className="qui-option-item-nine-with-remove-button-icon fas fa-times"
-            data-id={content.targetName}
+            data-id={content?.targetName}
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>
         </div>

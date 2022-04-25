@@ -12,14 +12,14 @@ describe("Option Item Eight", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-    onClick = jest.fn();
+    let onClick = jest.fn();
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
             <OptionItemEight
                 content={{
                     targetName: "name",
-                    value: "",
+                    value: "optionItem",
                     placeholder: "placeholder",
                 }}
                 withColor={{
@@ -45,27 +45,6 @@ describe("Option Item Eight", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly without throwing error", () => {
-        let component = mount(
-            <OptionItemEight
-                content={{
-                    targetName: "name",
-                    value: "",
-                    placeholder: "placeholder",
-                }}
-                withColor={{
-                    backgroundColor: "",
-                    accentColor: "",
-                    textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
-                }}
-                onInput={() => { }}
-                onClose={() => { }}
-            />
-        );
-        expect(component.exists()).toBe(true);
-    });
     it("should render correctly without throwing error when wriiten in input field", () => {
         component.find("InputField").simulate("click");
     });

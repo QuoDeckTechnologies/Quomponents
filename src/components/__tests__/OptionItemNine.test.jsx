@@ -13,6 +13,8 @@ describe("Option Item Two", () => {
     // -------------------------------------
     let component;
     let onClick = jest.fn();
+    let onShortFieldOneInput = jest.fn();
+    let onShortFieldTwoInput = jest.fn();
     let onInput = jest.fn();
     let onClose = jest.fn();
     beforeEach(() => {
@@ -23,8 +25,8 @@ describe("Option Item Two", () => {
                     targetNameShortFieldOne: "ShortFieldOne",
                     targetNameShortFieldTwo: "ShortFieldTwo",
                     targetName: "Target Name",
-                    valueShortFieldOne: "0-",
-                    valueShortFieldTwo: "",
+                    valueShortFieldOne: 0,
+                    valueShortFieldTwo: 0,
                     value: "",
                     placeholder: "Message for Quiz Result",
                     maxLength: 300,
@@ -34,6 +36,8 @@ describe("Option Item Two", () => {
                 isDisabled={false}
                 isHidden={false}
                 onClick={onClick}
+                onShortFieldOneInput={onShortFieldOneInput}
+                onShortFieldTwoInput={onShortFieldTwoInput}
                 onInput={onInput}
                 onClose={onClose}
             />
