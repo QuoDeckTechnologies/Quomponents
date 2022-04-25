@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
@@ -37,7 +37,8 @@ Title.propTypes = {
     Use to override component colors and behavior
     */
   withColor: PropTypes.shape({
-    backgroundColor: PropTypes.string,
+    slideHeaderBackgroundColor: PropTypes.string,
+    textBlockBackgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
@@ -98,6 +99,11 @@ Title.defaultProps = {
 **/
 export default function Title(props) {
   const { data, withColor, isPresenter } = props;
+
+  useEffect(() => {
+    props.onClick(data);
+  }, [data]);
+  
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -108,7 +114,11 @@ export default function Title(props) {
       return (
         <SlideHeader
           content={{ title: data?.title }}
-          withColor={props.withColor}
+          withColor={{
+            backgroundColor: withColor.slideHeaderBackgroundColor,
+            accentColor: withColor.accentColor,
+            textColor: withColor.textColor,
+          }}
         />
       );
     } else {
@@ -131,7 +141,10 @@ export default function Title(props) {
             content={data?.title}
             conversation={false}
             asFloated="left"
-            withColor={{ backgroundColor: "", textColor: "#fff" }}
+            withColor={{
+              backgroundColor: withColor.textBlockBackgroundColor,
+              textColor: withColor.textColor,
+            }}
           />
         </div>
         <div className="qui-title-block-subtitle">
@@ -140,7 +153,10 @@ export default function Title(props) {
             conversation={false}
             asFloated="left"
             asSize="small"
-            withColor={{ backgroundColor: "", textColor: "#fff" }}
+            withColor={{
+              backgroundColor: withColor.textBlockBackgroundColor,
+              textColor: withColor.textColor,
+            }}
           />
         </div>
         <img

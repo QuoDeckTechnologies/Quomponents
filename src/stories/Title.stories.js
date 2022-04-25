@@ -29,11 +29,10 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          backgroundColor: "",
+          slideHeaderBackgroundColor: "",
+          textBlockBackgroundColor: "",
           accentColor: "",
           textColor: "",
-          hoverBackgroundColor: "",
-          hoverTextColor: "",
         },
       },
     },
@@ -89,7 +88,8 @@ Default.args = {
   isPresenter:false,
   asFloated: "none",
   withColor: {
-    backgroundColor: "#ad292980",
+    slideHeaderBackgroundColor: "#ad292980",
+    textBlockBackgroundColor: "",
     accentColor: "#AD2929",
     textColor: "#ffffff",
   },
