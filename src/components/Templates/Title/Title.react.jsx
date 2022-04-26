@@ -68,10 +68,6 @@ Title.propTypes = {
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
-  /**
-    Title component must have the onClick function passed as props
-    */
-  onClick: PropTypes.func.isRequired,
 };
 
 Title.defaultProps = {
@@ -103,17 +99,11 @@ export default function Title(props) {
   //-------------------------------------------------------------------
   const { data, withColor, isPresenter } = props;
   //-------------------------------------------------------------------
-  // 2. Defining hooks
-  //-------------------------------------------------------------------
-  useEffect(() => {
-    props.onClick(data);
-  }, [data]);
-  //-------------------------------------------------------------------
-  // 3. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "title");
   //-------------------------------------------------------------------
-  // 4. Function to return a view for title
+  // 3. Function to return a view for title
   //-------------------------------------------------------------------
   const getView = (data) => {
     if (data?.title) {
@@ -140,7 +130,7 @@ export default function Title(props) {
     }
   };
   //-------------------------------------------------------------------
-  // 5. Function to return a view for title with presenter
+  // 4. Function to return a view for title with presenter
   //-------------------------------------------------------------------
   const getPresenterView = (data) => {
     return (
@@ -177,11 +167,11 @@ export default function Title(props) {
     );
   };
   //-------------------------------------------------------------------
-  // 6. Get animation of the component
+  // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 7. Function to set background for presenter view
+  // 6. Function to set background for presenter view
   //-------------------------------------------------------------------
   const getBackground = () => {
     return {
