@@ -54,11 +54,11 @@ export default function SlideSettings(props) {
 
 	function toggleBackChecked() {
 		setBakChecked((prevState) => !prevState);
-		props.onClick("backArrow",!isBackChecked)
+		props.onClick("backArrow", !isBackChecked);
 	}
 	function toggleNextChecked() {
 		setNextChecked((prevState) => !prevState);
-		props.onClick("nextArrow",!isNextChecked)
+		props.onClick("nextArrow", !isNextChecked);
 	}
 
 	// ========================= Render Function =================================

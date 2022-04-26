@@ -79,7 +79,7 @@ export default function PalleteThemeSection(props) {
 
 	//--------------------------------------------------------------------
 	// 5. Store updated colors into the object
-	//--------------------------------------------------------------------	
+	//--------------------------------------------------------------------
 	let updatedTheme = {
 		primaryColor: selectedPrimaryColor,
 		accentColor: selectedAccentColor,
@@ -95,22 +95,22 @@ export default function PalleteThemeSection(props) {
 	// 6. References of color picker button
 	//-------------------------------------------------------------------
 	const box = useRef();
-	
+
 	//-------------------------------------------------------------------
 	// 7. Handle Closing of Color Picker Container
 	//-------------------------------------------------------------------
 	function useOutsideAlerter(ref) {
-			// Function for click event
-			function handleOutsideClick(event) {
-				if (ref.current && !ref.current.contains(event.target)) {
-					setPageShowColorPicker(false);
-					setPrimaryColorPicker(false);
-					setAccentColorPicker(false);
-					setSecondaryColorPicker(false);
-				}
+		// Function for click event
+		function handleOutsideClick(event) {
+			if (ref.current && !ref.current.contains(event.target)) {
+				setPageShowColorPicker(false);
+				setPrimaryColorPicker(false);
+				setAccentColorPicker(false);
+				setSecondaryColorPicker(false);
 			}
-			// Adding click event listener
-			document.addEventListener("click", handleOutsideClick);
+		}
+		// Adding click event listener
+		document.addEventListener("click", handleOutsideClick);
 	}
 	useOutsideAlerter(box);
 
@@ -146,11 +146,10 @@ export default function PalleteThemeSection(props) {
 						</div>
 						<div className="qui-ribbon-menu-label-file">Settings</div>
 					</div>
-					<div className={`qui-ribbon-menu-custom-color-container`} 	ref={box}>
-						<div className="qui-ribbon-design-menu-color-picker-container" >
+					<div className={`qui-ribbon-menu-custom-color-container`} ref={box}>
+						<div className="qui-ribbon-design-menu-color-picker-container">
 							<div
 								className={`qui-ribbon-design-menu-custom-color-container  qui-ribbon-design-menu-color-container`}
-							
 							>
 								<div className="qui-ribbon-design-menu-button-title-container">
 									<button
@@ -176,7 +175,6 @@ export default function PalleteThemeSection(props) {
 						<div className="qui-ribbon-design-menu-color-picker-container">
 							<div
 								className={`qui-ribbon-design-menu-custom-color-container  qui-ribbon-design-menu-color-container`}
-						
 							>
 								<div className="qui-ribbon-design-menu-button-title-container">
 									<button
@@ -202,7 +200,6 @@ export default function PalleteThemeSection(props) {
 						<div className="qui-ribbon-design-menu-color-picker-container">
 							<div
 								className={`qui-ribbon-design-menu-custom-color-container  qui-ribbon-design-menu-color-container `}
-						
 							>
 								<div className="qui-ribbon-design-menu-button-title-container">
 									<button
@@ -228,7 +225,6 @@ export default function PalleteThemeSection(props) {
 						<div className="qui-ribbon-design-menu-color-picker-container">
 							<div
 								className={`qui-ribbon-design-menu-custom-color-container  qui-ribbon-design-menu-color-container`}
-							
 							>
 								<div className="qui-ribbon-design-menu-button-title-container">
 									<button

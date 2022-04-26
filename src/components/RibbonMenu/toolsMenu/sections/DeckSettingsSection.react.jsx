@@ -54,15 +54,15 @@ export default function DeckSettingsSection(props) {
 	const [isVoiceoverChecked, setVoiceoverChecked] = useState(false);
 	function toggleNavigationChecked() {
 		setNavigationChecked((prevState) => !prevState);
-		props.onClick("navigation", !isNavigationChecked)
+		props.onClick("navigation", !isNavigationChecked);
 	}
 	function toggleSlideChecked() {
 		setSlideChecked((prevState) => !prevState);
-		props.onClick("slideList", !isSlideChecked)
+		props.onClick("slideList", !isSlideChecked);
 	}
 	function toggleVoiceoverChecked() {
 		setVoiceoverChecked((prevState) => !prevState);
-		props.onClick("voiceOver", !isVoiceoverChecked)
+		props.onClick("voiceOver", !isVoiceoverChecked);
 	}
 
 	// ========================= Render Function =================================

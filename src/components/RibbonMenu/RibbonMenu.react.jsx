@@ -48,7 +48,6 @@ RibbonMenu.defaultProps = {
 	// Quommon props
 	//=======================================
 	asEmphasis: "html",
-	asSize: "normal",
 
 	isHidden: false,
 	isDisabled: false,
