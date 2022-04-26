@@ -40,24 +40,18 @@ describe("ImageWithCaption", () => {
     });
     it("should render correctly with empty content", () => {
         component.setProps({
-            content: {},
+            data: {},
         });
         expect(component.exists()).toBe(true);
     });
     it("should render correctly when passed withColor props", () => {
         let colors = {
-            captionColor: "#ff0000",
-            labelColor: "#000000",
             slideHeaderTextColor: "ff0000",
             slideHeaderAccentColor: "23ff00",
             slideHeaderBackgroundColor: "00ff00",
-            inputFieldTextColor: "ff0000",
-            inputFieldAccentColor: "23ff00",
-            inputFieldBackgroundColor: "00ff00",
-            buttonTextColor: "ff0023",
-            buttonBackgroundColor: "ff0ff0",
-            buttonHoverBackgroundColor: "ffff00",
-            buttonHoverTextColor: "ff00ff",
+            captionTextColor: "ff0000",
+            captionAccentColor: "23ff00",
+            captionBackgroundColor: "00ff00",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
@@ -116,6 +110,7 @@ describe("ImageWithCaption", () => {
             title: "This is Title",
             subtitle: "This is Subtitle",
             image: "",
+            caption: "this is caption"
         }
         component.setProps({ data: data })
         expect(component.exists()).toBe(true);
