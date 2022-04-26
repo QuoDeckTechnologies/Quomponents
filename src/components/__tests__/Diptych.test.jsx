@@ -20,8 +20,7 @@ describe("Diptych", () => {
                     title: "This is Title",
                     subtitle: "This is Subtitle",
                     headerImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-                    image1: "https://i.pinimg.com/564x/b1/cf/f8/b1cff858c4af57889d959e03668aada3.jpg",
-                    image2: "https://i.pinimg.com/564x/02/74/fd/0274fdd7ab782768e111db0fd7387fcb.jpg",
+                    diptych:[],
                     caption: "caption",
                 }}
                 slideId={0}

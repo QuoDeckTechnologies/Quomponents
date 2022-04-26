@@ -1,12 +1,13 @@
 import React from "react";
-import Diptych from "../components/Diptych/Diptych.react";
+import Diptych from "../components/Templates/Diptych/Diptych.react";
 
 export default {
-    title: "Design System/Diptych/Diptych",
+    title: "Design System/Templates/Diptych/Diptych",
     component: Diptych,
     argTypes: {
         data: {},
         slideId: 0,
+        isPresenter:false,
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -85,16 +86,23 @@ Default.args = {
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
         headerImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        image1: "https://i.pinimg.com/564x/b1/cf/f8/b1cff858c4af57889d959e03668aada3.jpg",
-        image2: "https://i.pinimg.com/564x/02/74/fd/0274fdd7ab782768e111db0fd7387fcb.jpg",
+        diptych:[
+            "https://i.pinimg.com/564x/b1/cf/f8/b1cff858c4af57889d959e03668aada3.jpg",
+            "https://i.pinimg.com/564x/02/74/fd/0274fdd7ab782768e111db0fd7387fcb.jpg",
+        ],
+        presenterTitle:"Neque porro quisquam est qui dolorem",
+        presenterSubtitle:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        presenterCaption:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl."
     },
     slideId: 0,
+    isPresenter:false,
     asVariant: "warning",
     withColor: {
         slideHeaderTextColor: "#FFFFFF",
         slideHeaderAccentColor: "#AD2929",
         slideHeaderBackgroundColor: "#ad292980",
-        textBlockBackgroundColor: "#AD292980",
+        textBlockBackgroundColor: "black",
+        // textBlockBackgroundColor: "#AD292980",
         textBlockTextColor: "#ffffff",
     },
     withAnimation: {
