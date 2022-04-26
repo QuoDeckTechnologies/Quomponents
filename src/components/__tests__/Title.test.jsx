@@ -31,11 +31,6 @@ describe("Title", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error when component mounts", () => {
-    let component = mount(<Title onClick={() => {}} />);
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly without throwing error when presenter view is selected", () => {
     component.setProps({
       isPresenter: true,
