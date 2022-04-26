@@ -14,12 +14,12 @@ import SlideHeader from "../../SlideHeader/SlideHeader.react";
 import TextBlock from "../../TextBlock/TextBlock.react";
 import Button from "../../Buttons/Button/Button.react";
 
-ImageWIthCaption.propTypes = {
+ImageWithCaption.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-      ImageWIthCaption content should be passed in data field and it is a required field
+      ImageWithCaption content should be passed in data field and it is a required field
       */
     data: PropTypes.shape({
         title: PropTypes.string,
@@ -82,12 +82,12 @@ ImageWIthCaption.propTypes = {
       */
     isHidden: PropTypes.bool,
     /**
-      ImageWIthCaption component must have the onClick function passed as props
+      ImageWithCaption component must have the onClick function passed as props
       */
     onClick: PropTypes.func.isRequired,
 };
 
-ImageWIthCaption.defaultProps = {
+ImageWithCaption.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -110,7 +110,7 @@ ImageWIthCaption.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function ImageWIthCaption(props) {
+export default function ImageWithCaption(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring data from props
     //-------------------------------------------------------------------

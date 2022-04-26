@@ -162,8 +162,8 @@ ColoredImageWithCaption.parameters = {
 //-------------------------------------------------------------
 // Animated ImageWithCaption
 // -------------------------------------------------------------
-export const AnimatedImageWIthCaption = Template.bind({});
-AnimatedImageWIthCaption.args = {
+export const AnimatedImageWithCaption = Template.bind({});
+AnimatedImageWithCaption.args = {
     ...Default.args,
     withAnimation: {
         animation: "fade",
@@ -171,14 +171,14 @@ AnimatedImageWIthCaption.args = {
         delay: 0,
     },
 };
-AnimatedImageWIthCaption.parameters = {
+AnimatedImageWithCaption.parameters = {
     docs: {
         description: {
             story: "We can animate the appearance of ImageWithCaption",
         },
         source: {
             code: `<ImageWithCaption {...${JSON.stringify(
-                AnimatedImageWIthCaption.args,
+                AnimatedImageWithCaption.args,
                 null,
                 2
             )}}/>`,
