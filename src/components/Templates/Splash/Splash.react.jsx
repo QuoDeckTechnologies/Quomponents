@@ -100,7 +100,7 @@ export default function Splash(props) {
   //-------------------------------------------------------------------
   const { data, withColor, isPresenter, slideId } = props;
   //-------------------------------------------------------------------
-  // 2. Defining hook to return
+  // 2. Defining hook to return splash
   //-------------------------------------------------------------------
   useEffect(() => {
     props.onClick(data);
@@ -115,7 +115,7 @@ export default function Splash(props) {
   const getView = (data) => {
     return (
       <div className="qui-splash-text" key={`splash-text-${slideId}`}>
-        <p style={{ color: withColor.textColor }}>{data?.splash}</p>
+        <p style={{ color: withColor?.textColor }}>{data?.splash}</p>
       </div>
     );
   };
@@ -161,7 +161,7 @@ export default function Splash(props) {
       backgroundSize: "cover",
     };
   };
-  const background = isPresenter ? getBackground() : { backgroundColor: withColor.backgroundColor };
+  const background = isPresenter ? getBackground() : { backgroundColor: withColor?.backgroundColor };
 
   // ========================= Render Function =================================
 
