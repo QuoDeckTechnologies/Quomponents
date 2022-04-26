@@ -1,8 +1,8 @@
 import React from "react";
-import CaptionedBulletList from "../components/CaptionedBulletList/CaptionedBulletList.react";
+import CaptionedBulletList from "../components/Templates/CaptionedBulletList/CaptionedBulletList.react";
 
 export default {
-  title: "Design System/CaptionedBulletList/CaptionedBulletList",
+  title: "Design System/Templates/CaptionedBulletList/CaptionedBulletList",
   component: CaptionedBulletList,
   argTypes: {
     data: {},
@@ -74,7 +74,7 @@ Default.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    image: "",
     bulletPoints: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "Quisque sed turpis vel lectus suscipit auctor",
@@ -111,8 +111,8 @@ Default.parameters = {
 export const CaptionedBulletListWithImage = Template.bind({});
 CaptionedBulletListWithImage.args = {
   data: {
-    title: "",
-    subtitle: "",
+    title: "Neque porro quisquam est qui dolorem",
+    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
     image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
     bulletPoints: [

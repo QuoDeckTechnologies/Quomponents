@@ -5,7 +5,7 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import CaptionedBulletList from "../CaptionedBulletList/CaptionedBulletList.react";
+import CaptionedBulletList from "../Templates/CaptionedBulletList/CaptionedBulletList.react";
 
 describe("CaptionedBulletList", () => {
   // -------------------------------------
@@ -108,6 +108,21 @@ describe("CaptionedBulletList", () => {
   })
   it("should render correctly when passed asVariant prop as success", () => {
     component.setProps({ asVariant: "success" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed image prop as null", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
+      image: "",
+      caption: "caption",
+      bulletPoints: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Quisque sed turpis vel lectus suscipit auctor",
+        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+      ]
+    }
+    component.setProps({ data: data })
     expect(component.exists()).toBe(true);
   })
 });

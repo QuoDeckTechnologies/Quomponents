@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
-} from "../../common/javascripts/helpers";
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../common/stylesheets/common.css";
+import "../../../common/stylesheets/common.css";
 import "./CaptionedBulletList.scss";
-import "../../common/stylesheets/overrule.scss";
-import SlideHeader from "../SlideHeader/SlideHeader.react";
-import TextBlock from "../TextBlock/TextBlock.react";
-import BulletBlock from "../BulletBlock/BulletBlock.react";
+import "../../../common/stylesheets/overrule.scss";
+import SlideHeader from "../../SlideHeader/SlideHeader.react";
+import TextBlock from "../../TextBlock/TextBlock.react";
+import BulletBlock from "../../BulletBlock/BulletBlock.react";
 
 CaptionedBulletList.propTypes = {
   //=======================================
@@ -151,9 +151,12 @@ export default function CaptionedBulletList(props) {
     >{data &&
       <div className="qui-captioned-bullet-list-card">
         <div className={`${quommonClasses.childClasses}`} key={"captioned-bullet-list-" + props.slideId}>
-          {data?.title || data?.subtitle ? (
-            <SlideHeader {...props} content={SlideHeaderText} withColor={slideHeaderColors} />
-          ) : (
+          {!data?.image && (data?.title || data?.subtitle) && (
+            <SlideHeader
+              content={{ title: data?.title, subTitle: data?.subtitle }}
+              withColor={slideHeaderColors} />
+          )}
+          {data?.image && (
             <img className="qui-captioned-bullet-list-image" src={data?.image} alt="" />
           )}
           <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
