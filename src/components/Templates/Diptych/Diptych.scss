@@ -1,3 +1,6 @@
+//----------------------------------
+// Diptych-card-styles
+//----------------------------------
 .qui .qui-diptych-card {
   background-color: #ffffff;
   padding: 1.5em;
@@ -29,19 +32,21 @@
     max-height: 13em;
     filter: drop-shadow(0px 5px 2px #a09797);
   }
+  .qui-clicked-on-image {
+    width: inherit;
+  }
   .qui-diptych-clickable-images {
     display: flex;
     align-items: center;
     flex-direction: row;
-    margin: 1em 0;
+    margin: 1em 0em;
     filter: drop-shadow(0px 5px 2px #a09797);
   }
   .qui-clickable-image-container {
-    height: 13em;
     width: 50%;
   }
   .qui-clickable-image-container:first-child {
-    margin-right: 0.3em;
+    margin-right: 0.2em;
     img {
       border-top-left-radius: 0.5em;
       border-bottom-left-radius: 0.5em;
@@ -53,82 +58,113 @@
       border-bottom-right-radius: 0.5em;
     }
   }
-}
-.qui-diptych-presenter-container {
-  width: 22em;
-  border-radius: 1em;
-  padding: 1.5em 1.5em 0 1.5em;
 }
 
-.qui .qui-diptych-presenter-clickable-images {
-  display: inline-flex;
-  .qui-clickable-image-container {
-    height: 13em;
+//-----------------------------------------
+// Diptych presenter styles
+//-----------------------------------------
+.qui-diptych-presenter-container {
+  border-radius: 1em;
+  padding: 1.5em;
+  position: relative;
+  .qui-diptych-presenter-title {
+    .qui-text-block-area {
+      width: 90%;
+      margin: 0 1em 0 0em;
+      text-align: left;
+      font-weight: bolder;
+      font-size: 1.5em;
+      .qui-block-text {
+        padding: 0.2em;
+        transform: scaleY(1.2);
+      }
+    }
   }
-  .qui-clickable-image-container:first-child {
-    margin-right: 0.3em;
+  .qui-diptych-presenter-sub-title {
+    .qui-text-block-area {
+      width: 70%;
+      margin: 0 1em 0 0em;
+      text-align: left;
+      font-size: 1em;
+      font-weight: lighter;
+      .qui-block-text {
+        padding: 0.2em;
+        transform: scaleY(1.2);
+      }
+    }
+  }
+  .qui-diptych-presenter-clickable-images {
+    display: -webkit-inline-box;
+    align-items: center;
+    flex-direction: row;
+    margin: 1em 0em;
+    filter: drop-shadow(0px 5px 2px #0e0c0c5b);
+  }
+
+  .qui-presenter-clickable-image-container {
+    width: 50%;
+  }
+  .qui-presenter-clickable-image-container:first-child {
+    margin-right: 0.2em;
     img {
       border-top-left-radius: 0.5em;
       border-bottom-left-radius: 0.5em;
     }
   }
-  .qui-clickable-image-container:last-child {
+  .qui-presenter-clickable-image-container:last-child {
     img {
       border-top-right-radius: 0.5em;
       border-bottom-right-radius: 0.5em;
     }
   }
-}
-.qui-presenter-title {
-  .qui-block-text {
-    text-align: left;
-    font-size:1.5em;
+  .qui-diptych-presenter-caption {
+    .qui-text-block-area {
+      margin: 0 1em 0 0em;
+      text-align: left;
+      font-size: 1em;
+      font-weight: lighter;
+      z-index: 1;
+      .qui-block-text {
+        padding: 0.2em;
+        margin: 1em 0em;
+        transform: scaleY(1.2);
+      }
+    }
+    .qui-text-block-tringle {
+      .qui-arrow-right-bottom {
+        z-index: 1;
+      }
+    }
   }
-  .qui .qui-text-block-area {
-    width: 18em;
-    padding:1em;
-    font-weight: 500;
-    margin: 0.5em 0 0 0;
-  }
-}
-.qui-presenter-sub-title {
-  .qui-block-text {
-    text-align: left;
-    font-size:1em;
-  }
-  .qui .qui-text-block-area {
-    width: 12em;
-    padding:1em;
-    font-weight: 500;
-    margin: 0 0 0 0;
-  }
-}
-.qui-presenter-caption {
-  .qui-block-text {
-    text-align: left;
-    font-size:1em;
-  }
-  .qui .qui-text-block-area {
-    width: 15em;
-    padding:1em;
-    font-weight: 500;
-    margin: 0 1em 0 0;
-    z-index: 2;
+  .qui-diptych-presenter {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 10em;
   }
 }
-.qui .qui-diptych-presenter{
-  position: absolute;
-  right:0;
-  bottom:0;
-  z-index: 1;
-  height: 10em;
+@media only screen and (min-width: 320px) {
+  .qui .qui-diptych-card {
+    .qui-clickable-image-container {
+      height: 12em;
+    }
+  }
+  .qui-diptych-presenter-container {
+    .qui-text-block-area {
+      width: 8em;
+    }
+  }
 }
 @media only screen and (min-width: 481px) {
-  .qui .qui-diptych-card {
+  .qui .qui-diptych-card,
+  .qui-diptych-presenter-container {
     width: 22em;
+    .qui-clickable-image-container {
+      height: 14em;
+    }
   }
   .qui-diptych-image {
     border-radius: 1em;
-    max-height: 12em;
+    max-height: 16em;
   }
 }

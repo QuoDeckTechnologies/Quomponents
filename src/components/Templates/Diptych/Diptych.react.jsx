@@ -194,42 +194,35 @@ export default function Diptych(props) {
   //-------------------------------------------------------------------
   const diptychPresenterView = (data) => {
     return (
-      <div className="qui-diptych-presenter-card" key={"diptych-presenter-slide-" + props.slideId}>
-        <div className="qui-presenter-title">
-          <TextBlock
+      <div>
+        <div className="qui-diptych-presenter-title">
+          <TextBlock {...props}
             content={data?.presenterTitle}
             asFloated="left"
-            asSize="normal"
-            withColor={textBlockColors}
-          />
+            withColor={textBlockColors} />
         </div>
-        <div className="qui-presenter-sub-title">
-          <TextBlock
+        <div className="qui-diptych-presenter-sub-title">
+          <TextBlock {...props}
             content={data?.presenterSubtitle}
             asFloated="left"
-            asSize="small"
-            withColor={textBlockColors}
-          />
+            withColor={textBlockColors} />
         </div>
-
         <div className="qui-diptych-presenter-clickable-images">
           {_.map(data.diptych, (image, index) => {
             return (
-              <div className="qui-clickable-image-container" key={"diptych-image" + index}>
+              <div className="qui-presenter-clickable-image-container" key={"diptych-image" + index}>
                 <ClickableImage {...props} content={{ image }} onClick={(e) => props.onClick(e)} />
               </div>
             );
           })}
         </div>
-        <div className="qui-presenter-caption">
-          <TextBlock
+        <div className="qui-diptych-presenter-caption">
+          <TextBlock {...props}
             content={data?.presenterCaption}
             asFloated="left"
             conversation={true}
-            position="top-left"
-            asSize="small"
-            withColor={textBlockColors}
-          />
+            position="right-bottom"
+            withColor={textBlockColors} />
         </div>
         <img
           className="qui-diptych-presenter"
@@ -250,13 +243,8 @@ export default function Diptych(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses} ${isPresenter ? "qui-diptych-presenter-container" : ""}`}
       style={{ ...background }}>
-      <div className={`qui-diptych-container ${quommonClasses.childClasses}`}>
-        {!isPresenter && diptychView(data)}
-      </div>
+      {!isPresenter && diptychView(data)}
       {isPresenter && diptychPresenterView(data)}
     </motion.div>
   );
 }
-
-{/* <ClickableImage {...props} content={{ image: data?.image1 }} onClick={(e) => props.onClick(e)} />
-<ClickableImage {...props} content={{ image: data?.image2 }} onClick={(e) => props.onClick(e)} /> */}
