@@ -143,14 +143,14 @@ export default function OptionItemTen(props) {
     props.onInput(content?.targetName, image, value);
   };
   //-------------------------------------------------------------------
-  // 6. Function to return input value of the component
+  // 7. Function to return header value of the component
   //-------------------------------------------------------------------
   const handleHeaderValue = (name, headerValue) => {
     setHeaderValue(headerValue);
     props.onHeader(content?.headerName, image, headerValue);
   };
   //-------------------------------------------------------------------
-  // 6. Function to return input value of the component
+  // 8. Function to return message value of the component
   //-------------------------------------------------------------------
   const handleMessageValue = (name, messageValue) => {
     setMessageValue(messageValue);

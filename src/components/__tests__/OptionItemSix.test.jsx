@@ -39,6 +39,7 @@ describe("Option Item Six", () => {
                 isDisabled={false}
                 isHidden={false}
                 onInput={() => { }}
+                onCaption={() => { }}
                 onUpload={() => { }}
                 onClose={() => { }}
             />
@@ -58,6 +59,7 @@ describe("Option Item Six", () => {
                     placeholder: "placeholder",
                 }}
                 onInput={() => { }}
+                onCaption={() => { }}
                 onUpload={() => { }}
                 onClose={() => { }}
             />
