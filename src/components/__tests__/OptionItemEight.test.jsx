@@ -21,6 +21,7 @@ describe("Option Item Eight", () => {
                     targetName: "name",
                     value: "optionItem",
                     placeholder: "placeholder",
+                    maxLength:300,
                 }}
                 withColor={{
                     backgroundColor: "",

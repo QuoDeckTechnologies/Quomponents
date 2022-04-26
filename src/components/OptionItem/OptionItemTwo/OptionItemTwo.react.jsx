@@ -22,6 +22,7 @@ OptionItemTwo.propTypes = {
     value: PropTypes.string,
     placeholder: PropTypes.string,
     checked: PropTypes.bool,
+    maxLength:PropTypes.number,
   }),
   //=======================================
   // Quommon props
@@ -157,7 +158,7 @@ export default function OptionItemTwo(props) {
           content={{
             value: content?.value,
             placeholder: content?.placeholder,
-            maxLength: 300,
+            maxLength: content?.maxLength,
           }}
           asEmphasis="listInput"
           withColor={props.withColor}

@@ -28,6 +28,7 @@ OptionItemTen.propTypes = {
         messageValue: PropTypes.string,
         messagePlaceholder: PropTypes.string,
         image: PropTypes.object,
+        maxLength:PropTypes.number,
     }),
     //=======================================
     // Quommon props
@@ -146,7 +147,7 @@ export default function OptionItemTen(props) {
                         content={{
                             value: content?.value,
                             placeholder: content?.placeholder,
-                            maxLength: 300,
+                            maxLength: content?.maxLength,
                         }}
                         asEmphasis="listInput"
                         withColor={props.withColor}
@@ -166,7 +167,7 @@ export default function OptionItemTen(props) {
                         content={{
                             value: content?.headerValue,
                             placeholder: content?.headerPlaceholder,
-                            maxLength: 300,
+                            maxLength: content?.maxLength,
                         }}
                         asEmphasis="listInput"
                         withColor={props.withColor}
@@ -188,7 +189,7 @@ export default function OptionItemTen(props) {
                     content={{
                         value: content?.messageValue,
                         placeholder: content?.messagePlaceholder,
-                        maxLength: 300,
+                        maxLength: content?.maxLength,
                     }}
                     asEmphasis="listInput"
                     withColor={props.withColor}

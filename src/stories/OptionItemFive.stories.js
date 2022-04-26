@@ -79,6 +79,7 @@ Default.args = {
     value: "",
     image: {},
     placeholder: "Option Item Five",
+    maxLength:300,
   },
   withColor: {
     backgroundColor: "#ffab000d",

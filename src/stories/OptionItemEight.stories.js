@@ -77,7 +77,8 @@ Default.args = {
   content: {
     targetName: "Target Name",
     value: "",
-    placeholder: "Ops8",
+    placeholder:"This is Option A",
+    maxLength: 300,
   },
   withColor: {
     backgroundColor: "#ffab000d",

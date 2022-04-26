@@ -20,6 +20,7 @@ OptionItemOne.propTypes = {
     targetName: PropTypes.string,
     value: PropTypes.string,
     placeholder: PropTypes.string,
+    maxLength:PropTypes.number,
   }),
   //=======================================
   // Quommon props
@@ -115,7 +116,7 @@ export default function OptionItemOne(props) {
           content={{
             value: content?.value,
             placeholder: content?.placeholder,
-            maxLength: 300,
+            maxLength: content?.maxLength,
           }}
           asEmphasis="listInput"
           withColor={props.withColor}

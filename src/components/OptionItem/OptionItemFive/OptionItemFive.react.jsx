@@ -22,6 +22,7 @@ OptionItemFive.propTypes = {
     value: PropTypes.string,
     placeholder: PropTypes.string,
     image: PropTypes.object,
+    maxLength:PropTypes.number,
   }),
   //=======================================
   // Quommon props
@@ -147,7 +148,7 @@ export default function OptionItemFive(props) {
           content={{
             value: content?.value,
             placeholder: content?.placeholder,
-            maxLength: 300,
+            maxLength: content?.maxLength,
           }}
           asEmphasis="listInput"
           withColor={props.withColor}

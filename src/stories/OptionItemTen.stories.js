@@ -85,6 +85,7 @@ Default.args = {
     messageName: "message",
     messageValue: "",
     messagePlaceholder: "Message for Option A",
+    maxLength: 300,
   },
   withColor: {
     backgroundColor: "#ffab000d",

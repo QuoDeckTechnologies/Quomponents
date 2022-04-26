@@ -25,6 +25,7 @@ describe("Option Item Two", () => {
           value: "",
           placeholder: "placeholder",
           image: {},
+          maxLength:300,
         }}
         onInput={() => {}}
         onUpload={() => {}}

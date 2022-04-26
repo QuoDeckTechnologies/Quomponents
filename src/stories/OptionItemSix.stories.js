@@ -83,6 +83,7 @@ Default.args = {
     captionValue: "",
     captionPlaceholder: "Caption For Option A",
     image: {},
+    maxLength: 300,
   },
   withColor: {
     backgroundColor: "#ffab000d",

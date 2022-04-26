@@ -35,6 +35,7 @@ OptionItemSeven.propTypes = {
         backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
         textColor: PropTypes.string,
+        maxLength: PropTypes.number,
     }),
     /**
     Use to define the entry animation of the component
@@ -179,7 +180,7 @@ export default function OptionItemSeven(props) {
                     content={{
                         value: content?.value,
                         placeholder: content?.placeholder,
-                        maxLength: 300,
+                        maxLength: content?.maxLength,
                     }}
                     asEmphasis="listInput"
                     withColor={props.withColor}

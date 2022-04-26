@@ -24,8 +24,9 @@ OptionItemSix.propTypes = {
         placeholder: PropTypes.string,
         captionName: PropTypes.string,
         captionValue: PropTypes.string,
-        CaptionPlaceholder: PropTypes.string,
+        captionPlaceholder: PropTypes.string,
         image: PropTypes.object,
+        maxLength: PropTypes.number,
     }),
     //=======================================
     // Quommon props
@@ -157,7 +158,7 @@ export default function OptionItemSix(props) {
                                 content={{
                                     value: content?.value,
                                     placeholder: content?.placeholder,
-                                    maxLength: 300,
+                                    maxLength: content?.maxLength,
                                 }}
                                 asEmphasis="listInput"
                                 withColor={props.withColor}
@@ -171,7 +172,7 @@ export default function OptionItemSix(props) {
                             content={{
                                 value: content?.captionValue,
                                 placeholder: content?.captionPlaceholder,
-                                maxLength: 300,
+                                maxLength: content?.maxLength,
                             }}
                             asEmphasis="listInput"
                             withColor={props.withColor}

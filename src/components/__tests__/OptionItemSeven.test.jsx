@@ -26,6 +26,7 @@ describe("Option Item Seven", () => {
                     image: {},
                     placeholder: "placeholder",
                     checked: false,
+                    maxLength:300,
                 }}
                 withColor={{
                     backgroundColor: "",
