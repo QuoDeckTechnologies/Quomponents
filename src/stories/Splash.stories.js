@@ -1,8 +1,8 @@
 import React from "react";
-import Splash from "../components/Splash/Splash.react";
+import Splash from "../components/Templates/Splash/Splash.react";
 
 export default {
-  title: "Design System/Splash/Splash",
+  title: "Design System/Templates/Splash",
   component: Splash,
   argTypes: {
     data: {
@@ -13,6 +13,11 @@ export default {
     isPresenter: {
       table: {
         defaultValue: false,
+      },
+    },
+    slideId: {
+      table: {
+        defaultValue: 0,
       },
     },
     asFloated: {
@@ -26,7 +31,7 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          slideHeaderBackgroundColor: "",
+          backgroundColor: "",
           textBlockBackgroundColor: "",
           accentColor: "",
           textColor: "",
@@ -63,8 +68,11 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a basic button for general-purpose use",
+    componentSubtitle: "Displays a Splash component",
     a11y: { disable: true },
+    docs: {
+      iframeHeight: 500,
+    },
     // controls: { expanded: true }
   },
 };
@@ -76,15 +84,17 @@ const Template = (args) => <Splash {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   data: {
-    splash: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula. ",
+    splash:
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
   },
-  isPresenter:false,
+  isPresenter: false,
+  slideId: 0,
   asFloated: "none",
   withColor: {
-    slideHeaderBackgroundColor: "#ad292980",
+    backgroundColor: "",
     textBlockBackgroundColor: "",
-    accentColor: "#AD2929",
-    textColor: "#ffffff",
+    accentColor: "#ffffff",
+    textColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -98,6 +108,64 @@ Default.parameters = {
   docs: {
     source: {
       code: `<Splash {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Splash With Presenter
+// -------------------------------------------------------------
+export const SplashWithPresenter = Template.bind({});
+SplashWithPresenter.args = {
+  ...Default.args,
+  isPresenter: true,
+};
+SplashWithPresenter.parameters = {
+  docs: {
+    source: {
+      code: `<Splash {...${JSON.stringify(
+        SplashWithPresenter.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Colored Splash
+// -------------------------------------------------------------
+export const ColoredSplash = Template.bind({});
+ColoredSplash.args = {
+  ...Default.args,
+  withColor: {
+    backgroundColor: "#8c9ea3",
+    textBlockBackgroundColor: "",
+    accentColor: "#ffffff",
+    textColor: "#ffffff",
+  },
+};
+ColoredSplash.parameters = {
+  docs: {
+    source: {
+      code: `<Splash {...${JSON.stringify(ColoredSplash.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Animated Splash
+// -------------------------------------------------------------
+export const AnimatedSplash = Template.bind({});
+AnimatedSplash.args = {
+  ...Default.args,
+  withAnimation: {
+    animation: "fade",
+    duration: 0.5,
+    delay: 0,
+  },
+};
+AnimatedSplash.parameters = {
+  docs: {
+    source: {
+      code: `<Splash {...${JSON.stringify(AnimatedSplash.args, null, 2)}}/>`,
     },
   },
 };

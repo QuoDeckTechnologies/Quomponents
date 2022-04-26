@@ -1,17 +1,15 @@
 // Import npm packages
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../common/stylesheets/common.css";
+import "../../../common/stylesheets/common.css";
 import "./Splash.scss";
-import "../../common/stylesheets/overrule.scss";
-import SlideHeader from "../SlideHeader/SlideHeader.react";
-import IconBlock from "../IconBlock/IconBlock.react";
-import TextBlock from "../TextBlock/TextBlock.react";
-import presenterBackground from "../../assets/presenter-background.png";
-import presenterImage from "../../assets/presenter.png";
+import "../../../common/stylesheets/overrule.scss";
+import TextBlock from "../../TextBlock/TextBlock.react";
+import presenterBackground from "../../../assets/presenter-background.png";
+import presenterImage from "../../../assets/presenter.png";
 
 Splash.propTypes = {
   //=======================================
@@ -22,7 +20,11 @@ Splash.propTypes = {
     */
   data: PropTypes.shape({
     splash: PropTypes.string,
-  }),
+  }).isRequired,
+  /**
+    slideId can be used if same template is used continueously for multiple slides in qdf.
+    */
+  slideId: PropTypes.number,
   /**
     Splash component can use presenter props to show presenter template
     */
@@ -93,28 +95,36 @@ Splash.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function Splash(props) {
-  const { data, withColor, isPresenter } = props;
-
+  //-------------------------------------------------------------------
+  // 1. Destructuring props
+  //-------------------------------------------------------------------
+  const { data, withColor, isPresenter, slideId } = props;
+  //-------------------------------------------------------------------
+  // 2. Defining hook to return
+  //-------------------------------------------------------------------
   useEffect(() => {
     props.onClick(data);
   }, [data]);
-
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "splash");
-
+  //-------------------------------------------------------------------
+  // 4. Function to return a view for splash
+  //-------------------------------------------------------------------
   const getView = (data) => {
     return (
-      <div className="qui-splash-text">
-        <p>{data?.splash}</p>
+      <div className="qui-splash-text" key={`splash-text-${slideId}`}>
+        <p style={{ color: withColor.textColor }}>{data?.splash}</p>
       </div>
     );
   };
-
+  //-------------------------------------------------------------------
+  // 5. Function to return a view for splash with presenter
+  //-------------------------------------------------------------------
   const getPresenterView = (data) => {
     return (
-      <div>
+      <div key={`splash-presenter-${slideId}`}>
         <div className="qui-splash-text-block">
           <TextBlock
             content={data?.splash}
@@ -124,7 +134,7 @@ export default function Splash(props) {
             asSize="small"
             withColor={{
               backgroundColor: withColor?.textBlockBackgroundColor,
-              textColor: withColor?.textColor,
+              textColor: withColor?.accentColor,
             }}
           />
         </div>
@@ -138,20 +148,20 @@ export default function Splash(props) {
       </div>
     );
   };
-
   //-------------------------------------------------------------------
-  // 5. Get animation of the component
+  // 6. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  //-------------------------------------------------------------------
+  // 7. Function to set background for presenter view
+  //-------------------------------------------------------------------
   const getBackground = () => {
     return {
       background: `url(${presenterBackground})`,
       backgroundSize: "cover",
     };
   };
-
-  const background = isPresenter ? getBackground() : {};
+  const background = isPresenter ? getBackground() : { backgroundColor: withColor.backgroundColor };
 
   // ========================= Render Function =================================
 
@@ -159,14 +169,12 @@ export default function Splash(props) {
     <motion.div
       initial={animate.from}
       animate={animate.to}
-      className={`qui qui-splash-card ${quommonClasses.parentClasses} ${
+      className={`qui ${quommonClasses.parentClasses} ${
         isPresenter ? "qui-splash-presenter-container" : ""
       }`}
-      style={background}
+      style={{ ...background }}
     >
-      <div
-        className={`qui-splash-container ${quommonClasses.childClasses} `}
-      >
+      <div className={`qui-splash-container ${quommonClasses.childClasses}`}>
         {!isPresenter && getView(data)}
       </div>
       {isPresenter && getPresenterView(data)}
