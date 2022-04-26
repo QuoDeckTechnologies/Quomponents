@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
-} from "../../common/javascripts/helpers";
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../common/stylesheets/common.css";
+import "../../../common/stylesheets/common.css";
 import "./ImageWithCaption.scss";
-import "../../common/stylesheets/overrule.scss";
-import SlideHeader from "../SlideHeader/SlideHeader.react";
-import TextBlock from "../TextBlock/TextBlock.react";
-import Button from "../Buttons/Button/Button.react";
+import "../../../common/stylesheets/overrule.scss";
+import SlideHeader from "../../SlideHeader/SlideHeader.react";
+import TextBlock from "../../TextBlock/TextBlock.react";
+import Button from "../../Buttons/Button/Button.react";
 
 ImageWIthCaption.propTypes = {
     //=======================================
@@ -150,12 +150,13 @@ export default function ImageWIthCaption(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-image-with-caption-card ${quommonClasses.childClasses}`}>
-                {data?.title || data?.subtitle ? (
+                {!data?.image && (data?.title || data?.subtitle) && (
                     <SlideHeader
                         content={{ title: data?.title, subTitle: data?.subtitle }}
-                        withColor={slideHeaderColors}
-                    />
-                ) : (
+                        withColor={slideHeaderColors} />
+                )}
+
+                {data?.image && (
                     <img className="qui-image-with-caption-image" src={data?.image} alt="" />
                 )}
                 <TextBlock {...props}

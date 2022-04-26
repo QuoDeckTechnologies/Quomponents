@@ -1,8 +1,8 @@
 import React from "react";
-import ImageWithCaption from "../components/ImageWithCaption/ImageWithCaption.react";
+import ImageWithCaption from "../components/Templates/ImageWithCaption/ImageWithCaption.react";
 
 export default {
-    title: "Design System/ImageWithCaption/ImageWithCaption",
+    title: "Design System/Templates/ImageWithCaption/ImageWithCaption",
     component: ImageWithCaption,
     argTypes: {
         data: {
@@ -77,7 +77,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a ImageWithCaption with BannerCard, TextBlock and Button for general-purpose use.",
+        componentSubtitle: "Displays a ImageWithCaption with SlideHeader, TextBlock and Button for general-purpose use.",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
