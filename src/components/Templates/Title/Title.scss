@@ -56,7 +56,6 @@
 .qui .qui-title-text-block {
   margin-top: 2em;
   font-size: 2em;
-  // transform: translateX(-7%);
   .qui .qui-text-block-area {
     padding: 0.5em;
     margin: 0;
@@ -83,10 +82,10 @@
 }
 
 .qui .qui-title-text-block .qui-title-presenter {
-  height: 6em;
+  height: 6.2em;
   width: 4em;
   position: absolute;
-  transform: translate(-70%, 85%);
+  transform: translate(-67%, 80%);
 }
 
 @media only screen and (min-width: 320px) {

@@ -1,8 +1,8 @@
 import React from "react";
-import Title from "../components/Title/Title.react";
+import Title from "../components/Templates/Title/Title.react";
 
 export default {
-  title: "Design System/Title/Title",
+  title: "Design System/Templates/Title",
   component: Title,
   argTypes: {
     data: {
@@ -66,8 +66,11 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a basic button for general-purpose use",
+    componentSubtitle: "Displays a Title component",
     a11y: { disable: true },
+    docs: {
+      iframeHeight: 500,
+    },
     // controls: { expanded: true }
   },
 };
@@ -85,7 +88,7 @@ Default.args = {
       "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
     icon: "fas fa-book-open",
   },
-  isPresenter:false,
+  isPresenter: false,
   asFloated: "none",
   withColor: {
     slideHeaderBackgroundColor: "#ad292980",

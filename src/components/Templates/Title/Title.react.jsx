@@ -2,16 +2,16 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../common/stylesheets/common.css";
+import "../../../common/stylesheets/common.css";
 import "./Title.scss";
-import "../../common/stylesheets/overrule.scss";
-import SlideHeader from "../SlideHeader/SlideHeader.react";
-import IconBlock from "../IconBlock/IconBlock.react";
-import TextBlock from "../TextBlock/TextBlock.react";
-import presenterBackground from "../../assets/presenter-background.png";
-import presenterImage from "../../assets/presenter.png";
+import "../../../common/stylesheets/overrule.scss";
+import SlideHeader from "../../SlideHeader/SlideHeader.react";
+import IconBlock from "../../IconBlock/IconBlock.react";
+import TextBlock from "../../TextBlock/TextBlock.react";
+import presenterBackground from "../../../assets/presenter-background.png";
+import presenterImage from "../../../assets/presenter.png";
 
 Title.propTypes = {
   //=======================================
@@ -69,7 +69,7 @@ Title.propTypes = {
     */
   isHidden: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
+    Title component must have the onClick function passed as props
     */
   onClick: PropTypes.func.isRequired,
 };
@@ -98,17 +98,23 @@ Title.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function Title(props) {
+  //-------------------------------------------------------------------
+  // 1. Destructuring props
+  //-------------------------------------------------------------------
   const { data, withColor, isPresenter } = props;
-
+  //-------------------------------------------------------------------
+  // 2. Defining hooks
+  //-------------------------------------------------------------------
   useEffect(() => {
     props.onClick(data);
   }, [data]);
-
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "title");
-
+  //-------------------------------------------------------------------
+  // 4. Function to return a view for title
+  //-------------------------------------------------------------------
   const getView = (data) => {
     if (data?.title) {
       return (
@@ -133,6 +139,9 @@ export default function Title(props) {
       );
     }
   };
+  //-------------------------------------------------------------------
+  // 5. Function to return a view for title with presenter
+  //-------------------------------------------------------------------
   const getPresenterView = (data) => {
     return (
       <div className="qui-title-text-block">
@@ -167,19 +176,19 @@ export default function Title(props) {
       </div>
     );
   };
-
   //-------------------------------------------------------------------
-  // 5. Get animation of the component
+  // 6. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  //-------------------------------------------------------------------
+  // 7. Function to set background for presenter view
+  //-------------------------------------------------------------------
   const getBackground = () => {
     return {
       background: `url(${presenterBackground})`,
       backgroundSize: "cover",
     };
   };
-
   const background = isPresenter ? getBackground() : {};
 
   // ========================= Render Function =================================
