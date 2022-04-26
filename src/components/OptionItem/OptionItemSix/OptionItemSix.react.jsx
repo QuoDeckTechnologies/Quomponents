@@ -69,6 +69,10 @@ OptionItemSix.propTypes = {
       */
     onInput: PropTypes.func.isRequired,
     /**
+      OptionItemSix component must have the onInput function passed as props
+      */
+    onCaption: PropTypes.func.isRequired,
+    /**
       OptionItemSix component must have the onUpload function passed as props
       */
     onUpload: PropTypes.func.isRequired,
@@ -122,15 +126,21 @@ export default function OptionItemSix(props) {
     //-------------------------------------------------------------------
     const handleImageUpload = (image) => {
         setImage(image);
-        props.onUpload(content?.targetName, content?.captionName, image, value, captionValue);
+        props.onUpload(content?.targetName, image);
     };
     //-------------------------------------------------------------------
     // 6. Function to return input value of the component
     //-------------------------------------------------------------------
-    const handleValue = (name, value, captionValue) => {
+    const handleValue = (name, value) => {
         setValue(value);
+        props.onInput(content?.targetName, value);
+    };
+       //-------------------------------------------------------------------
+    // 7. Function to return caption value of the component
+    //-------------------------------------------------------------------
+    const handleCaptionValue = (name, captionValue) => {
         setCaptionValue(captionValue);
-        props.onUpload(content?.targetName, content?.captionName, image, value, captionValue);
+        props.onCaption(content?.captionName,captionValue);
     };
 
     // ========================= Render Function =================================
@@ -176,7 +186,7 @@ export default function OptionItemSix(props) {
                             }}
                             asEmphasis="listInput"
                             withColor={props.withColor}
-                            onClick={handleValue}
+                            onClick={handleCaptionValue}
                         />
                     </div>
                 </div>

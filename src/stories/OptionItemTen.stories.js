@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import OptionItemTen from "../components/OptionItem/OptionItemTen/OptionItemTen.react";
 
 export default {
-  title:
-    "Design System/OptionItem/OptionItemTen",
+  title: "Design System/OptionItem/OptionItemTen",
   component: OptionItemTen,
   argTypes: {
     content: {},
@@ -45,6 +44,18 @@ export default {
         defaultValue: null,
       },
     },
+    onHeader: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+    onMessage: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
     onUpload: {
       table: {
         category: "Events",
@@ -59,7 +70,8 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a optionitemten with inputField and buttons for general-purpose use..",
+    componentSubtitle:
+      "Displays a optionitemten with inputField and buttons for general-purpose use..",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
@@ -184,7 +196,7 @@ const MultipleTemplate = (args) => {
     setContentArr([...tmp_arr]);
   };
   // -------------------------------------------------------------
-  // Function to insert image object in the multiContent array 
+  // Function to insert image object in the multiContent array
   // -------------------------------------------------------------
   const handleUpload = (targetName, image, value) => {
     tmp_state = contentArr;
@@ -222,6 +234,46 @@ const MultipleTemplate = (args) => {
     });
     setContentArr([...tmp_arr]);
   };
+  // -------------------------------------------------------------
+  // Function to put header value in the array
+  // -------------------------------------------------------------
+  const handleHeader = (headerName, image, headerValue) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.headerName === headerName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.headerValue = headerValue;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
+  // -------------------------------------------------------------
+  // Function to put value in the array
+  // -------------------------------------------------------------
+  const handleMessage = (messageName, image, messageValue) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.messageName === messageName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.messageValue = messageValue;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
 
   return (
     <div>
@@ -237,6 +289,12 @@ const MultipleTemplate = (args) => {
               onInput={(targetName, image, value) =>
                 handleInput(targetName, image, value)
               }
+              onHeader={(targetName, image, value) =>
+                handleHeader(targetName, image, value)
+              }
+              onMessage={(targetName, image, value) =>
+                handleMessage(targetName, image, value)
+              }
               onClose={handleRemove}
             />
           </div>
@@ -250,22 +308,40 @@ MultipleOptionItemTen.args = {
   ...Default.args,
   multiContent: [
     {
-      targetName: "TargetNameOne",
+      targetName: "target A",
       value: "",
-      placeholder: "Placeholder One",
-      image: {},
+      placeholder: "Option A",
+      headerName: "header A",
+      headerValue: "",
+      headerPlaceholder: "Header for Option A",
+      messageName: "message A",
+      messageValue: "",
+      messagePlaceholder: "Message for Option A",
+      maxLength: 300,
     },
     {
-      targetName: "TargetNameTwo",
+      targetName: "target B",
       value: "",
-      placeholder: "Placeholder Two",
-      image: {},
+      placeholder: "Option B",
+      headerName: "header B",
+      headerValue: "",
+      headerPlaceholder: "Header for Option B",
+      messageName: "message B",
+      messageValue: "",
+      messagePlaceholder: "Message for Option B",
+      maxLength: 300,
     },
     {
-      targetName: "TargetNameThree",
-      value: "Default Value",
-      placeholder: "Placeholder Three",
-      image: {},
+      targetName: "target C",
+      value: "",
+      placeholder: "Option C",
+      headerName: "header C",
+      headerValue: "",
+      headerPlaceholder: "Header for Option C",
+      messageName: "message C",
+      messageValue: "",
+      messagePlaceholder: "Message for Option C",
+      maxLength: 300,
     },
   ],
 };
@@ -280,5 +356,3 @@ MultipleOptionItemTen.parameters = {
     },
   },
 };
-
-

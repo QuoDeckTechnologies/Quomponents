@@ -11,87 +11,95 @@ import OptionalImageField from "../../OptionalImageField/OptionalImageField.reac
 import InputField from "../../InputField/InputField.react";
 
 OptionItemTen.propTypes = {
-    //=======================================
-    // Component Specific props
-    //=======================================
-    /**
+  //=======================================
+  // Component Specific props
+  //=======================================
+  /**
       OptionItemTen data should be passed in content field and it is a required field
       */
-    content: PropTypes.shape({
-        targetName: PropTypes.string,
-        value: PropTypes.string,
-        placeholder: PropTypes.string,
-        headerName: PropTypes.string,
-        headerValue: PropTypes.string,
-        headerPlaceholder: PropTypes.string,
-        messageName: PropTypes.string,
-        messageValue: PropTypes.string,
-        messagePlaceholder: PropTypes.string,
-        image: PropTypes.object,
-        maxLength:PropTypes.number,
-    }),
-    //=======================================
-    // Quommon props
-    //=======================================
-    /**
+  content: PropTypes.shape({
+    targetName: PropTypes.string,
+    value: PropTypes.string,
+    placeholder: PropTypes.string,
+    headerName: PropTypes.string,
+    headerValue: PropTypes.string,
+    headerPlaceholder: PropTypes.string,
+    messageName: PropTypes.string,
+    messageValue: PropTypes.string,
+    messagePlaceholder: PropTypes.string,
+    image: PropTypes.object,
+    maxLength: PropTypes.number,
+  }),
+  //=======================================
+  // Quommon props
+  //=======================================
+  /**
       Use to override component colors
       */
-    withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
-        textColor: PropTypes.string,
-    }),
-    /**
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    accentColor: PropTypes.string,
+    textColor: PropTypes.string,
+  }),
+  /**
     Use to define the entry animation of the component
     */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-            "",
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
-    }),
-    /**
+  withAnimation: PropTypes.shape({
+    animation: PropTypes.oneOf([
+      "zoom",
+      "collapse",
+      "fade",
+      "slideDown",
+      "slideUp",
+      "slideLeft",
+      "slideRight",
+      "",
+    ]),
+    duration: PropTypes.number,
+    delay: PropTypes.number,
+  }),
+  /**
     Use to enable/disable the component
    */
-    isDisabled: PropTypes.bool,
-    /**
+  isDisabled: PropTypes.bool,
+  /**
     Use to show/hide the component
     */
-    isHidden: PropTypes.bool,
-    /**
+  isHidden: PropTypes.bool,
+  /**
       OptionItemTen component must have the onClick function passed as props
       */
-    onInput: PropTypes.func.isRequired,
-    /**
+  onInput: PropTypes.func.isRequired,
+  /**
+      OptionItemTen component must have the onClick function passed as props
+      */
+  onHeader: PropTypes.func.isRequired,
+  /**
+      OptionItemTen component must have the onClick function passed as props
+      */
+  onMessage: PropTypes.func.isRequired,
+  /**
       OptionItemFive component must have the onUpload function passed as props
       */
-    onUpload: PropTypes.func.isRequired,
-    /**
+  onUpload: PropTypes.func.isRequired,
+  /**
       OptionItemTen component must have the onClick function passed as props
       */
-    onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 OptionItemTen.defaultProps = {
-    //=======================================
-    // Component Specific props
-    //=======================================
-    content: {},
-    //=======================================
-    // Quommon props
-    //=======================================
-    withColor: null,
-    withAnimation: null,
-    isDisabled: false,
-    isHidden: false,
+  //=======================================
+  // Component Specific props
+  //=======================================
+  content: {},
+  //=======================================
+  // Quommon props
+  //=======================================
+  withColor: null,
+  withAnimation: null,
+  isDisabled: false,
+  isHidden: false,
 };
 /**
 ## Notes
@@ -101,101 +109,116 @@ OptionItemTen.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function OptionItemTen(props) {
-    //-------------------------------------------------------------------
-    // 1. Destructuring content prop
-    //-------------------------------------------------------------------
-    const { content } = props;
-    //-------------------------------------------------------------------
-    // 2. Defining states
-    //-------------------------------------------------------------------
-    const [image, setImage] = useState(content?.image);
-    const [value, setValue] = useState(content?.value);
-    //-------------------------------------------------------------------
-    // 3. Set the classes
-    //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "option-item-ten");
-    //-------------------------------------------------------------------
-    // 4. Get animation of the component
-    //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
-    //-------------------------------------------------------------------
-    // 5. Function to update value of the input field
-    //-------------------------------------------------------------------
-    const handleImageUpload = (image) => {
-        setImage(image);
-        props.onUpload(content?.targetName, image, value);
-    };
-    //-------------------------------------------------------------------
-    // 6. Function to return input value of the component
-    //-------------------------------------------------------------------
-    const handleValue = (name, value) => {
-        setValue(value);
-        props.onInput(content?.targetName, image, value);
-    };
-    // ========================= Render Function =================================
+  //-------------------------------------------------------------------
+  // 1. Destructuring content prop
+  //-------------------------------------------------------------------
+  const { content } = props;
+  //-------------------------------------------------------------------
+  // 2. Defining states
+  //-------------------------------------------------------------------
+  const [image, setImage] = useState(content?.image);
+  const [value, setValue] = useState(content?.value);
+  const [headerValue, setHeaderValue] = useState(content?.headerValue);
+  const [messageValue, setMessageValue] = useState(content?.messageValue);
+  //-------------------------------------------------------------------
+  // 3. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "option-item-ten");
+  //-------------------------------------------------------------------
+  // 4. Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props.withAnimation);
+  //-------------------------------------------------------------------
+  // 5. Function to update value of the input field
+  //-------------------------------------------------------------------
+  const handleImageUpload = (image) => {
+    setImage(image);
+    props.onUpload(content?.targetName, image);
+  };
+  //-------------------------------------------------------------------
+  // 6. Function to return input value of the component
+  //-------------------------------------------------------------------
+  const handleValue = (name, value) => {
+    setValue(value);
+    props.onInput(content?.targetName, image, value);
+  };
+  //-------------------------------------------------------------------
+  // 6. Function to return input value of the component
+  //-------------------------------------------------------------------
+  const handleHeaderValue = (name, headerValue) => {
+    setHeaderValue(headerValue);
+    props.onHeader(content?.headerName, image, headerValue);
+  };
+  //-------------------------------------------------------------------
+  // 6. Function to return input value of the component
+  //-------------------------------------------------------------------
+  const handleMessageValue = (name, messageValue) => {
+    setMessageValue(messageValue);
+    props.onMessage(content?.messageName, image, messageValue);
+  };
+  // ========================= Render Function =================================
 
-    return (
-        <motion.div
-            initial={animate.from}
-            animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}
-        >
-            <div className="qui-option-item-ten-container">
-                <div className="qui-option-item-inputfieldone">
-                    <InputField
-                        name={content?.targetName}
-                        content={{
-                            value: content?.value,
-                            placeholder: content?.placeholder,
-                            maxLength: content?.maxLength,
-                        }}
-                        asEmphasis="listInput"
-                        withColor={props.withColor}
-                        onClick={handleValue}
-                    />
-                </div>
-                <div className="qui-option-item-upload-button">
-                    <OptionalImageField
-                        content={{ icon: "fas fa-image" }}
-                        onClick={(image) => handleImageUpload(image)}
-                        withColor={{ ...props.withColor }}
-                    />
-                </div>
-                <div className="qui-option-item-inputfieldtwo">
-                    <InputField
-                        name={content?.headerName}
-                        content={{
-                            value: content?.headerValue,
-                            placeholder: content?.headerPlaceholder,
-                            maxLength: content?.maxLength,
-                        }}
-                        asEmphasis="listInput"
-                        withColor={props.withColor}
-                        onClick={handleValue}
-                    />
-                </div>
-                <div className="qui-option-item-ten-close-icon">
-                    <i
-                        className="fas fa-times"
-                        data-id={content?.targetName}
-                        onClick={(e) => props.onClose(e.target.dataset.id)}
-                    >
-                    </i>
-                </div>
-            </div>
-            <div className="qui-option-item-inputfieldthree">
-                <InputField
-                    name={content?.messageName}
-                    content={{
-                        value: content?.messageValue,
-                        placeholder: content?.messagePlaceholder,
-                        maxLength: content?.maxLength,
-                    }}
-                    asEmphasis="listInput"
-                    withColor={props.withColor}
-                    onClick={handleValue}
-                />
-            </div>
-        </motion.div>
-    );
+  return (
+    <motion.div
+      initial={animate.from}
+      animate={animate.to}
+      className={`qui ${quommonClasses.parentClasses}`}
+    >
+      <div className="qui-option-item-ten-container">
+        <div className="qui-option-item-inputfieldone">
+          <InputField
+            name={content?.targetName}
+            content={{
+              value: content?.value,
+              placeholder: content?.placeholder,
+              maxLength: content?.maxLength,
+            }}
+            asEmphasis="listInput"
+            withColor={props.withColor}
+            onClick={handleValue}
+          />
+        </div>
+        <div className="qui-option-item-upload-button">
+          <OptionalImageField
+            content={{ icon: "fas fa-image" }}
+            onClick={(image) => handleImageUpload(image)}
+            withColor={{ ...props.withColor }}
+          />
+        </div>
+        <div className="qui-option-item-inputfieldtwo">
+          <InputField
+            name={content?.headerName}
+            content={{
+              value: content?.headerValue,
+              placeholder: content?.headerPlaceholder,
+              maxLength: content?.maxLength,
+            }}
+            asEmphasis="listInput"
+            withColor={props.withColor}
+            onClick={handleHeaderValue}
+          />
+        </div>
+        <div className="qui-option-item-ten-close-icon">
+          <i
+            className="fas fa-times"
+            data-id={content?.targetName}
+            onClick={(e) => props.onClose(e.target.dataset.id)}
+          ></i>
+        </div>
+      </div>
+      <div className="qui-option-item-inputfieldthree">
+        <InputField
+          name={content?.messageName}
+          content={{
+            value: content?.messageValue,
+            placeholder: content?.messagePlaceholder,
+            maxLength: content?.maxLength,
+          }}
+          asEmphasis="listInput"
+          withColor={props.withColor}
+          onClick={handleMessageValue}
+        />
+      </div>
+    </motion.div>
+  );
 }

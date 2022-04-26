@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import OptionItemSix from "../components/OptionItem/OptionItemSix/OptionItemSix.react";
 
 export default {
-  title:
-    "Design System/OptionItem/OptionItemSix",
+  title: "Design System/OptionItem/OptionItemSix",
   component: OptionItemSix,
   argTypes: {
     content: {},
@@ -45,6 +44,12 @@ export default {
         defaultValue: null,
       },
     },
+    onCaption: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
     onUpload: {
       table: {
         category: "Events",
@@ -59,7 +64,8 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a optionitemseven with inputfield and buttons for general-purpose use.",
+    componentSubtitle:
+      "Displays a optionitemseven with inputfield and buttons for general-purpose use.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
@@ -183,9 +189,9 @@ const MultipleTemplate = (args) => {
     setContentArr([...tmp_arr]);
   };
   // -------------------------------------------------------------
-  // Function to insert image object in the multiContent array 
+  // Function to insert image object in the multiContent array
   // -------------------------------------------------------------
-  const handleUpload = (targetName, image, value) => {
+  const handleUpload = (targetName, image) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
@@ -204,7 +210,7 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to put value in the array
   // -------------------------------------------------------------
-  const handleInput = (targetName, image, value) => {
+  const handleInput = (targetName, value) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
@@ -213,6 +219,26 @@ const MultipleTemplate = (args) => {
       if (dataObj.targetName === targetName) {
         tmp_obj = { ...dataObj };
         tmp_obj.value = value;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
+  // -------------------------------------------------------------
+  // Function to put caption value in the array
+  // -------------------------------------------------------------
+  const handleCaption = (captionName, captionValue) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.captionName === captionName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.captionValue = captionValue;
         tmp_arr.push(tmp_obj);
       } else {
         tmp_obj = { ...dataObj };
@@ -230,11 +256,10 @@ const MultipleTemplate = (args) => {
             <OptionItemSix
               {...args}
               content={{ ...content }}
-              onUpload={(targetName, image, value) =>
-                handleUpload(targetName, image, value)
-              }
-              onInput={(targetName, image, value) =>
-                handleInput(targetName, image, value)
+              onUpload={(targetName, image) => handleUpload(targetName, image)}
+              onInput={(targetName, value) => handleInput(targetName, value)}
+              onCaption={(captionName, captionValue) =>
+                handleCaption(captionName, captionValue)
               }
               onClose={handleRemove}
             />
@@ -249,22 +274,34 @@ MultipleOptionItemSix.args = {
   ...Default.args,
   multiContent: [
     {
-      targetName: "TargetNameOne",
+      targetName: "target A",
       value: "",
-      placeholder: "Placeholder One",
+      placeholder: "This is option A",
+      captionName: "caption A",
+      captionValue: "",
+      captionPlaceholder: "Caption For Option A",
       image: {},
+      maxLength: 300,
     },
     {
-      targetName: "TargetNameTwo",
+      targetName: "target B",
       value: "",
-      placeholder: "Placeholder Two",
+      placeholder: "This is option B",
+      captionName: "caption B",
+      captionValue: "",
+      captionPlaceholder: "Caption For Option B",
       image: {},
+      maxLength: 300,
     },
     {
-      targetName: "TargetNameThree",
-      value: "Default Value",
-      placeholder: "Placeholder Three",
+      targetName: "target C",
+      value: "",
+      placeholder: "This is option C",
+      captionName: "caption C",
+      captionValue: "",
+      captionPlaceholder: "Caption For Option C",
       image: {},
+      maxLength: 300,
     },
   ],
 };
