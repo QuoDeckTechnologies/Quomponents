@@ -21,14 +21,10 @@ RibbonMenu.propTypes = {
 	//=======================================
 	// Quommon props
 	//=======================================
-    /**
+	/**
     RibbonMenu tabs data should be passed in content field and it is required field  
     */
 	asEmphasis: PropTypes.oneOf(["html", "design", "tools", "home"]),
-	/**
-    Use to float the component in parent container
-    */
-	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
     Use to show/hide the component
     */
@@ -53,7 +49,6 @@ RibbonMenu.defaultProps = {
 	//=======================================
 	asEmphasis: "html",
 	asSize: "normal",
-	asFloated: "left",
 
 	isHidden: false,
 	isDisabled: false,
@@ -67,7 +62,7 @@ RibbonMenu.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- props are not being passed to the RibbonMenu. Please speak to the admin to handle any new prop.
+- Pass tabs props to display different tabs
 **/
 export default function RibbonMenu(props) {
 	//-------------------------------------------------------------------
@@ -78,13 +73,13 @@ export default function RibbonMenu(props) {
 	// ========================= Render Function =================================
 	const ribbonMenu = (tabs) => {
 		if (tabs?.toUpperCase() === "HTML") {
-			return <RibbonHtmlMenu {...props}/>;
+			return <RibbonHtmlMenu {...props} />;
 		} else if (tabs?.toUpperCase() === "DESIGN") {
-			return <RibbonDesignMenu {...props}/>;
+			return <RibbonDesignMenu {...props} />;
 		} else if (tabs?.toUpperCase() === "TOOLS") {
-			return <RibbonToolsMenu {...props}/>;
+			return <RibbonToolsMenu {...props} />;
 		} else {
-			return <RibbonHomeMenu {...props}/>;
+			return <RibbonHomeMenu {...props} />;
 		}
 	};
 	return (

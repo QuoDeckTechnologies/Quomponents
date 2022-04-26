@@ -36,6 +36,7 @@ SlideSection.propTypes = {
     */
 	onClick: PropTypes.func,
 };
+
 export default function SlideSection(props) {
 	//-------------------------------------------------------------------
 	// 1. Set the classes

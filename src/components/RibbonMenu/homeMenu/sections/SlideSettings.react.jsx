@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { getQuommons } from "../../../../common/javascripts/helpers";
@@ -54,19 +54,12 @@ export default function SlideSettings(props) {
 
 	function toggleBackChecked() {
 		setBakChecked((prevState) => !prevState);
+		props.onClick("backArrow",!isBackChecked)
 	}
 	function toggleNextChecked() {
 		setNextChecked((prevState) => !prevState);
+		props.onClick("nextArrow",!isNextChecked)
 	}
-
-	let toggleStatus ={
-		back: isBackChecked,
-		next: isNextChecked,
-	}
-
-	useEffect(()=>{
-		props.onClick(toggleStatus)
-	})
 
 	// ========================= Render Function =================================
 	return (

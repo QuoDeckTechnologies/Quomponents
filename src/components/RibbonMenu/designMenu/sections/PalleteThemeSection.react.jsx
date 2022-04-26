@@ -25,6 +25,10 @@ PalleteThemeSection.propTypes = {
 	// Quommon props
 	//=======================================
 	/**
+    Use to float the component in parent container
+    */
+	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+	/**
     Use to show/hide the component
     */
 	isHidden: PropTypes.bool,
@@ -47,11 +51,25 @@ export default function PalleteThemeSection(props) {
 		"ribbon-design-menu-pallete-theme-section-parent"
 	);
 
+	//----------------------------------------------------------------------------
+	// 2. Declaration of states of color set and setting the initial value for each
+	//----------------------------------------------------------------------------
 	const [selectedPageColor, setPageColor] = useState("#ffffff");
 	const [selectedPrimaryColor, setPrimaryColor] = useState("#f88a8a");
 	const [selectedAccentColor, setAccentColor] = useState("#ef2929");
 	const [selectedSecondaryColor, setSecondaryColor] = useState("#685555");
 
+	//----------------------------------------------------------------------------
+	// 3. Declaration of states of color picker for opening and closing
+	//----------------------------------------------------------------------------
+	const [showPageColorPicker, setPageShowColorPicker] = useState(false);
+	const [showPrimaryColorPicker, setPrimaryColorPicker] = useState(false);
+	const [showAccentColorPicker, setAccentColorPicker] = useState(false);
+	const [showSecondaryColorPicker, setSecondaryColorPicker] = useState(false);
+
+	//--------------------------------------------------------------------
+	// 4. Updating the color set using Theme section
+	//--------------------------------------------------------------------
 	const updateTheme = (colorSet) => {
 		setPageColor(colorSet.pageColor);
 		setPrimaryColor(colorSet.primaryColor);
@@ -59,6 +77,9 @@ export default function PalleteThemeSection(props) {
 		setSecondaryColor(colorSet.secondaryColor);
 	};
 
+	//--------------------------------------------------------------------
+	// 5. Store updated colors into the object
+	//--------------------------------------------------------------------	
 	let updatedTheme = {
 		primaryColor: selectedPrimaryColor,
 		accentColor: selectedAccentColor,
@@ -70,20 +91,18 @@ export default function PalleteThemeSection(props) {
 		props.onClick(updatedTheme);
 	});
 
-	const box = useRef(null);
-	const [showPageColorPicker, setPageShowColorPicker] = useState(false);
-	const [showPrimaryColorPicker, setPrimaryColorPicker] = useState(false);
-	const [showAccentColorPicker, setAccentColorPicker] = useState(false);
-	const [showSecondaryColorPicker, setSecondaryColorPicker] = useState(false);
-
 	//-------------------------------------------------------------------
-	// 4. Handle Closing of Color Picker Container
+	// 6. References of color picker button
+	//-------------------------------------------------------------------
+	const box = useRef();
+	
+	//-------------------------------------------------------------------
+	// 7. Handle Closing of Color Picker Container
 	//-------------------------------------------------------------------
 	function useOutsideAlerter(ref) {
-		useEffect(() => {
 			// Function for click event
 			function handleOutsideClick(event) {
-				if (ref.current && !ref.current.contains(event?.target)) {
+				if (ref.current && !ref.current.contains(event.target)) {
 					setPageShowColorPicker(false);
 					setPrimaryColorPicker(false);
 					setAccentColorPicker(false);
@@ -91,12 +110,10 @@ export default function PalleteThemeSection(props) {
 				}
 			}
 			// Adding click event listener
-			document.addEventListener("mousedown", handleOutsideClick);
-			return () =>
-				document.removeEventListener("mousedown", handleOutsideClick);
-		}, [ref]);
+			document.addEventListener("click", handleOutsideClick);
 	}
 	useOutsideAlerter(box);
+
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
@@ -129,11 +146,11 @@ export default function PalleteThemeSection(props) {
 						</div>
 						<div className="qui-ribbon-menu-label-file">Settings</div>
 					</div>
-					<div className={`qui-ribbon-menu-custom-color-container`}>
-						<div className="qui-ribbon-design-menu-color-picker-container">
+					<div className={`qui-ribbon-menu-custom-color-container`} 	ref={box}>
+						<div className="qui-ribbon-design-menu-color-picker-container" >
 							<div
 								className={`qui-ribbon-design-menu-custom-color-container  qui-ribbon-design-menu-color-container`}
-								ref={box}
+							
 							>
 								<div className="qui-ribbon-design-menu-button-title-container">
 									<button
@@ -159,7 +176,7 @@ export default function PalleteThemeSection(props) {
 						<div className="qui-ribbon-design-menu-color-picker-container">
 							<div
 								className={`qui-ribbon-design-menu-custom-color-container  qui-ribbon-design-menu-color-container`}
-								ref={box}
+						
 							>
 								<div className="qui-ribbon-design-menu-button-title-container">
 									<button
@@ -185,7 +202,7 @@ export default function PalleteThemeSection(props) {
 						<div className="qui-ribbon-design-menu-color-picker-container">
 							<div
 								className={`qui-ribbon-design-menu-custom-color-container  qui-ribbon-design-menu-color-container `}
-								ref={box}
+						
 							>
 								<div className="qui-ribbon-design-menu-button-title-container">
 									<button
@@ -211,7 +228,7 @@ export default function PalleteThemeSection(props) {
 						<div className="qui-ribbon-design-menu-color-picker-container">
 							<div
 								className={`qui-ribbon-design-menu-custom-color-container  qui-ribbon-design-menu-color-container`}
-								ref={box}
+							
 							>
 								<div className="qui-ribbon-design-menu-button-title-container">
 									<button

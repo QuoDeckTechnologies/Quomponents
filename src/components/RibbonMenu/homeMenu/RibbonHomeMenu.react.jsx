@@ -52,15 +52,15 @@ export default function RibbonHomeMenu(props) {
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className={`qui-ribbon-home-menu-container`}>
-					<SaveExitSection {...props}/>
+					<SaveExitSection {...props} />
 					<div className="qui-ribbon-menu-parent-vertical-line"></div>
-					<SaveSection {...props}/>
+					<SaveSection {...props} />
 					<div className="qui-ribbon-menu-parent-vertical-line"></div>
-					<SlideSection {...props}/>
+					<SlideSection {...props} />
 					<div className="qui-ribbon-menu-parent-vertical-line"></div>
-					<SlideSettings {...props}/>
+					<SlideSettings {...props} />
 					<div className="qui-ribbon-menu-parent-vertical-line"></div>
-					<ViewSection {...props}/>
+					<ViewSection {...props} />
 				</div>
 			</div>
 		</div>

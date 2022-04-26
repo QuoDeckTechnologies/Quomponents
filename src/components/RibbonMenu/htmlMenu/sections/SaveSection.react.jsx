@@ -60,7 +60,9 @@ export default function SaveSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-file-upload" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>Upload</div>
+							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+								Upload
+							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
 						<div className="qui-ribbon-menu-save-section-child">
@@ -74,7 +76,9 @@ export default function SaveSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-download" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>Download</div>
+							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+								Download
+							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
 						<div className="qui-ribbon-menu-save-section-child">
@@ -88,7 +92,9 @@ export default function SaveSection(props) {
 								}}
 								withIcon={{ icon: "far fa-file-alt" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>Save</div>
+							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+								Save
+							</div>
 						</div>
 					</div>
 					<div className="qui-ribbon-menu-label-file">File</div>

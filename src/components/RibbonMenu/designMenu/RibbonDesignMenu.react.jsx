@@ -44,8 +44,8 @@ export default function RibbonDesignMenu(props) {
 	// 1. Set the classes
 	//-------------------------------------------------------------------
 	let quommonClasses = getQuommons(props, "ribbon-design-menu-parent");
-	// ========================= Render Function =================================
 
+	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>

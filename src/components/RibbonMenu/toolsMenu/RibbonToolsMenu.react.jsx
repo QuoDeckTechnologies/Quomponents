@@ -51,13 +51,13 @@ export default function RibbonToolsMenu(props) {
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className={`qui-ribbon-tools-menu-container`}>
-					<QuestionBankSection {...props}/>
+					<QuestionBankSection {...props} />
 					<div className="qui-ribbon-menu-parent-vertical-line"></div>
-					<DeckSettingsSection {...props}/>
+					<DeckSettingsSection {...props} />
 					<div className="qui-ribbon-menu-parent-vertical-line"></div>
-					<VoiceoverSection {...props}/>
+					<VoiceoverSection {...props} />
 					<div className="qui-ribbon-menu-parent-vertical-line"></div>
-					<AnalysisSection {...props}/>
+					<AnalysisSection {...props} />
 				</div>
 			</div>
 		</div>

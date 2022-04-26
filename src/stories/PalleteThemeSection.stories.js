@@ -5,6 +5,13 @@ export default {
 	title: "Design System/RibbonMenu/RibbonDesignMenu/PalleteThemeSection",
 	component: PalleteThemeSection,
 	argTypes: {
+		asFloated: {
+			control: "select",
+			options: ["left", "right", "inline"],
+			table: {
+				category: "as-Flags",
+			},
+		},
 		isHidden: {
 			table: {
 				category: "is-Toggles",
@@ -52,6 +59,7 @@ export default {
 const Template = (args) => <PalleteThemeSection {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+	asFloated:"left",
 	isDisabled: false,
 	isHidden: false,
 };

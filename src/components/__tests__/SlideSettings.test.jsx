@@ -13,6 +13,10 @@ describe("SlideSettings", () => {
 	// Setup definitions for the test suite
 	// -------------------------------------
 	let component;
+	let toggleStatus = {
+		backArrow:true,
+		nextArrow: false,
+	};
 
 	beforeEach(() => {
 		jest.resetAllMocks();
@@ -21,7 +25,7 @@ describe("SlideSettings", () => {
 				asFloated="left"
 				isHidden={false}
 				isDisabled={false}
-				onClick={jest.fn()}
+				onClick={jest.fn(toggleStatus)}
 			/>
 		);
 	});

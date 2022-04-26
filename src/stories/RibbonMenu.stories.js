@@ -12,13 +12,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asFloated: {
-            control: "select",
-            options: ["left", "right", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -67,7 +60,6 @@ const Template = (args) => <RibbonMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     asEmphasis: "html",
-    asFloated: "left",
     isDisabled: false,
     isHidden: false,
 };

@@ -1,5 +1,7 @@
 import React from "react";
-import { fireEvent } from "@testing-library/react";
+import { ChromePicker } from "react-color";
+import { render, fireEvent } from "@testing-library/react";
+
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
@@ -31,6 +33,21 @@ describe("PalleteThemeSection", () => {
 		expect(component.exists()).toBe(true);
 	});
 
+	it("should render correctly when passed asFloated prop as left", () => {
+		component.setProps({ asFloated: "left" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed asFloated prop as right", () => {
+		component.setProps({ asFloated: "right" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed asFloated prop as inline", () => {
+		component.setProps({ asFloated: "inline" });
+		expect(component.exists()).toBe(true);
+	});
+
 	it("should render correctly when passed isHidden props as false", () => {
 		component.setProps({ isHidden: false });
 		expect(component.exists()).toBe(true);
@@ -59,25 +76,21 @@ describe("PalleteThemeSection", () => {
 		expect(component.exists()).toBe(true);
 	});
 
-	it("should open color picker", () => {
-		let pallete = component
-			.find(".qui-ribbon-design-menu-custom-color-button")
-			.at(0);
-		pallete.simulate("click");
-		expect(component.exists()).toBe(true);
-	});
-
 	it("should open color picker of Page Color", () => {
 		let palleteButton = component
 			.find(".qui-ribbon-design-menu-custom-color-button")
 			.at(0);
 		palleteButton.simulate("click");
-		expect(component.exists()).toBe(true);
+		expect(component.find(ChromePicker).exists()).toBe(true);
 
 		let pallete = component.find(".qui-ribbon-design-menu-chrome-picker").at(0);
 		pallete.simulate("changeComplete", { update: "#fff" });
-		expect(component.exists()).toBe(true);
-		fireEvent.mouseDown(document.body);
+
+		const onClick = jest.fn();
+		render(<PalleteThemeSection onClick={onClick} />);
+		component.find(".qui-ribbon-menu-color-pallete-section").at(0).simulate("click");
+		fireEvent.click(document.body);
+		expect(onClick).toHaveBeenCalledTimes(1);
 	});
 
 	it("should open color picker of Primary Color", () => {
@@ -85,12 +98,16 @@ describe("PalleteThemeSection", () => {
 			.find(".qui-ribbon-design-menu-custom-color-button")
 			.at(1);
 		palleteButton.simulate("click");
-		expect(component.exists()).toBe(true);
+		expect(component.find(ChromePicker).exists()).toBe(true);
 
 		let pallete = component.find(".qui-ribbon-design-menu-chrome-picker").at(0);
 		pallete.simulate("changeComplete", { update: "#fff" });
-		expect(component.exists()).toBe(true);
-		fireEvent.mouseDown(document.body);
+	
+		const onClick = jest.fn();
+		render(<PalleteThemeSection onClick={onClick} />);
+		component.find(".qui-ribbon-menu-color-pallete-section-child").at(0).simulate("click");
+		fireEvent.click(document.body);
+		expect(onClick).toHaveBeenCalledTimes(1);
 	});
 
 	it("should open color picker of Accent Color", () => {
@@ -98,15 +115,16 @@ describe("PalleteThemeSection", () => {
 			.find(".qui-ribbon-design-menu-custom-color-button")
 			.at(2);
 		palleteButton.simulate("click");
-		expect(component.exists()).toBe(true);
+		expect(component.find(ChromePicker).exists()).toBe(true);
 
 		let pallete = component.find(".qui-ribbon-design-menu-chrome-picker").at(0);
 		pallete.simulate("changeComplete", { update: "#fff" });
-		expect(component.exists()).toBe(true);
-
-		let ref = component.find(".qui-ribbon-design-menu-custom-color-container").at(2)
-		ref.simulate("click")
-		fireEvent.mouseDown(document.body);
+	
+		const onClick = jest.fn();
+		render(<PalleteThemeSection onClick={onClick} />);
+		component.find(".qui-ribbon-menu-color-pallete-section-child").at(0).simulate("click");
+		fireEvent.click(document.body);
+		expect(onClick).toHaveBeenCalledTimes(1);
 	});
 
 	it("should open color picker of Secondary Color", () => {
@@ -114,11 +132,11 @@ describe("PalleteThemeSection", () => {
 			.find(".qui-ribbon-design-menu-custom-color-button")
 			.at(3);
 		palleteButton.simulate("click");
-		expect(component.exists()).toBe(true);
+		expect(component.find(ChromePicker).exists()).toBe(true);
 
 		let pallete = component.find(".qui-ribbon-design-menu-chrome-picker").at(0);
 		pallete.simulate("changeComplete", { update: "#fff" });
-		expect(component.exists()).toBe(true);
-		fireEvent.mouseDown(document.body);
+
+		fireEvent.click(document.body)
 	});
 });

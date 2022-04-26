@@ -52,16 +52,18 @@ export default function QuestionBankSection(props) {
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className="qui-ribbon-menu-question-bank-section">
 					<IconLink
-                        onClick={props.onClick}
+						onClick={props.onClick}
 						asSize="small"
-                        asPadded="fitted"
+						asPadded="fitted"
 						withColor={{
 							backgroundColor: "#666666",
 							hoverTextColor: "#666666",
 						}}
 						withIcon={{ icon: "fab fa-stack-exchange" }}
 					/>
-					<div className="qui-ribbon-menu-label" onClick={props.onClick}>Question Bank</div>
+					<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+						Question Bank
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { getQuommons } from "../../../../common/javascripts/helpers";
@@ -41,30 +41,30 @@ export default function DeckSettingsSection(props) {
 	//-------------------------------------------------------------------
 	// 1. Set the classes
 	//-------------------------------------------------------------------
-	let quommonClasses = getQuommons(props, "ribbon-tools-menu-deck-settings-section-parent");
+	let quommonClasses = getQuommons(
+		props,
+		"ribbon-tools-menu-deck-settings-section-parent"
+	);
 
+	//-------------------------------------------------------------------
+	// 2. Handle states of Navigation, SlideList and Voiceover checkboxes
+	//-------------------------------------------------------------------
 	const [isNavigationChecked, setNavigationChecked] = useState(false);
 	const [isSlideChecked, setSlideChecked] = useState(false);
 	const [isVoiceoverChecked, setVoiceoverChecked] = useState(false);
 	function toggleNavigationChecked() {
 		setNavigationChecked((prevState) => !prevState);
+		props.onClick("navigation", !isNavigationChecked)
 	}
 	function toggleSlideChecked() {
 		setSlideChecked((prevState) => !prevState);
+		props.onClick("slideList", !isSlideChecked)
 	}
 	function toggleVoiceoverChecked() {
 		setVoiceoverChecked((prevState) => !prevState);
+		props.onClick("voiceOver", !isVoiceoverChecked)
 	}
 
-	let toggleStatus ={
-		navigation: isNavigationChecked,
-		slideList: isSlideChecked,
-		voiceOver: isVoiceoverChecked
-	}
-
-	useEffect(()=>{
-		props.onClick(toggleStatus)
-	})
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
@@ -75,7 +75,7 @@ export default function DeckSettingsSection(props) {
 							<div className="qui-ribbon-menu-settings-section-right-content">
 								<IconLink
 									asSize="tiny"
-                                    asPadded="fitted"
+									asPadded="fitted"
 									withColor={{
 										backgroundColor: "#666666",
 										hoverTextColor: "#666666",
@@ -99,7 +99,7 @@ export default function DeckSettingsSection(props) {
 							<div className="qui-ribbon-menu-settings-section-right-content">
 								<IconLink
 									asSize="tiny"
-                                    asPadded="fitted"
+									asPadded="fitted"
 									withColor={{
 										backgroundColor: "#666666",
 										hoverTextColor: "#666666",
@@ -121,7 +121,7 @@ export default function DeckSettingsSection(props) {
 							<div className="qui-ribbon-menu-settings-section-right-content">
 								<IconLink
 									asSize="tiny"
-                                    asPadded="fitted"
+									asPadded="fitted"
 									withColor={{
 										backgroundColor: "#666666",
 										hoverTextColor: "#666666",

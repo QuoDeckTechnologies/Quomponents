@@ -53,52 +53,62 @@ export default function VoiceoverSection(props) {
 					<div className="qui-vo-section-child-container">
 						<div className="qui-vo-section-child upload">
 							<IconLink
-                                onClick={props.onClick}
+								onClick={props.onClick}
 								asSize="tiny"
-                                asPadded="fitted"
+								asPadded="fitted"
 								withColor={{
 									backgroundColor: "#666666",
 									hoverTextColor: "#666666",
 								}}
 								withIcon={{ icon: "fas fa-file-upload" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>Upload</div>
+							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+								Upload
+							</div>
 						</div>
 						<div className="qui-qui-ribbon-menu-child-vertical-line"></div>
 						<div className="qui-vo-section-child">
 							<div className="qui-vo-section-right-content">
 								<IconLink
-                                    onClick={props.onClick}
+									onClick={props.onClick}
 									asSize="tiny"
-                                    asPadded="fitted"
+									asPadded="fitted"
 									withColor={{
 										backgroundColor: "#666666",
 										hoverTextColor: "#666666",
 									}}
 									withIcon={{ icon: "far fa-copy" }}
 								/>
-								<div className="qui-ribbon-menu-tool-label" onClick={props.onClick}>
+								<div
+									className="qui-ribbon-menu-tool-label"
+									onClick={props.onClick}
+								>
 									Copy Slides to Script
 								</div>
 							</div>
 							<div className="qui-vo-section-right-content">
 								<IconLink
-                                    onClick={props.onClick}
+									onClick={props.onClick}
 									asSize="tiny"
-                                    asPadded="fitted"
+									asPadded="fitted"
 									withColor={{
 										backgroundColor: "#666666",
 										hoverTextColor: "#666666",
 									}}
 									withIcon={{ icon: "fas fa-download" }}
 								/>
-								<div className="qui-ribbon-menu-tool-label" onClick={props.onClick}>
+								<div
+									className="qui-ribbon-menu-tool-label"
+									onClick={props.onClick}
+								>
 									Download Script
 								</div>
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file" onClick={props.onClick}>Voiceovers</div>
+					<div className="qui-ribbon-menu-label-file" onClick={props.onClick}>
+						Voiceovers
+					</div>
 				</div>
 			</div>
 		</div>

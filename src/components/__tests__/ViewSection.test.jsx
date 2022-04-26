@@ -6,9 +6,9 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import DeckSettingsSection from "../RibbonMenu/toolsMenu/sections/DeckSettingsSection.react";
+import ViewSection from "../RibbonMenu/homeMenu/sections/ViewSection.react";
 
-describe("DeckSettingsSection", () => {
+describe("ViewSection", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
@@ -17,11 +17,11 @@ describe("DeckSettingsSection", () => {
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
-			<DeckSettingsSection
+			<ViewSection
 				asFloated="left"
 				isHidden={false}
 				isDisabled={false}
-                onClick={jest.fn()}
+				onClick={jest.fn()}
 			/>
 		);
 	});
@@ -56,42 +56,12 @@ describe("DeckSettingsSection", () => {
 	});
 
 	it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false });
-        expect(component.exists()).toBe(true);
-    });
-	
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should enable navigation by clicking on Icon", () => {
-		let backArrow = component.find("IconLink").at(0);
-		backArrow.simulate("click");
+		component.setProps({ isDisabled: false });
+		expect(component.exists()).toBe(true);
 	});
 
-	it("should enable navigation by clicking on text", () => {
-		let backArrow = component.find(".qui-ribbon-menu-label").at(0);
-		backArrow.simulate("click");
-	});
-
-	it("should enable slide list by clicking on Icon", () => {
-		let slideList = component.find("IconLink").at(1);
-		slideList.simulate("click");
-	});
-
-	it("should enable slide list by clicking on text", () => {
-		let slideList = component.find(".qui-ribbon-menu-label").at(1);
-		slideList.simulate("click");
-	});
-
-    it("should enable voiceover by clicking on Icon", () => {
-		let voiceover = component.find("IconLink").at(2);
-		voiceover.simulate("click");
-	});
-
-	it("should enable voiceover by clicking on text", () => {
-		let voiceover = component.find(".qui-ribbon-menu-label").at(2);
-		voiceover.simulate("click");
+	it("should render correctly when passed isDisabled props as true", () => {
+		component.setProps({ isDisabled: true });
+		expect(component.exists()).toBe(true);
 	});
 });

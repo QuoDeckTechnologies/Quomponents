@@ -1,3 +1,6 @@
+/* ================================================= */
+/* Ribbon Design Menu Styling Definitions */
+/* ================================================= */
 .qui .qui-ribbon-design-menu-container {
     width: 1050.05px;
     display: flex;
@@ -12,7 +15,9 @@
 .qui.qui-ribbon-design-menu-parent{
     overflow: visible;
 }
-//ColorPallete Section
+/* ================================================= */
+/* ColorPallete Section */
+/* ================================================= */
 .qui-ribbon-design-menu-pallete-theme-section-parent{
     overflow: visible;
     display: flex;
@@ -52,20 +57,20 @@
     color: #666666;
     font-size: 0.8em;
     height: 64px;
+    width:15%;
 }
 .qui-ribbon-menu-pallete-custom-color-section-container {
     width: 760px;
     display: flex;
     justify-content: space-between;
 }
-
 .qui-ribbon-design-menu-color-picker-container{
     display: flex;
     flex-direction: column;
     justify-content:space-evenly ;
 }
 .qui-ribbon-design-menu-custom-color-title{
-    font-size: 0.75em;
+    font-size: 0.6em;
 }
 .qui.qui-custom-color {
 	overflow: visible;  
@@ -102,8 +107,9 @@
 .qui.qui-custom-color .qui-ribbon-design-menu-chrome-picker {
 	width: 162px;
 }
-
-//SlideBackground Section Styling Definitions
+/* ================================================= */
+/* SlideBackground Section Styling Definitions */
+/* ================================================= */
 .qui-ribbon-design-menu-slide-background-parent,
 .qui-ribbon-design-menu-overlay-background-parent{
     display: flex;
