@@ -6,7 +6,7 @@ import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Anagram from "../Anagram/Anagram.react";
+import Anagram from "../Templates/Anagram/Anagram.react";
 import Button from "../Buttons/Button/Button.react";
 
 describe("Anagram", () => {
@@ -26,7 +26,7 @@ describe("Anagram", () => {
           answer: "Answer",
           purpose: "quiz",
         }}
-        slideId = {0}
+        slideId={0}
         asVariant="primary"
         withColor={null}
         withTranslation={null}
@@ -121,6 +121,18 @@ describe("Anagram", () => {
   })
   it("should render correctly when passed asVariant prop as success", () => {
     component.setProps({ asVariant: "success" })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed image prop as null", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
+      image: "",
+      question: "Question",
+      answer: "Answer",
+      purpose: "quiz",
+    }
+    component.setProps({ data: data })
     expect(component.exists()).toBe(true);
   })
   it("should render correctly with withColor prop when hovered on Button", () => {

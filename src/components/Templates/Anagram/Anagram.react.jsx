@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
-} from "../../common/javascripts/helpers";
+} from "../../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../common/stylesheets/common.css";
+import "../../../common/stylesheets/common.css";
 import "./Anagram.scss";
-import "../../common/stylesheets/overrule.scss";
-import SlideHeader from "../SlideHeader/SlideHeader.react";
-import InputField from "../InputField/InputField.react";
-import Button from "../Buttons/Button/Button.react";
+import "../../../common/stylesheets/overrule.scss";
+import SlideHeader from "../../SlideHeader/SlideHeader.react";
+import InputField from "../../InputField/InputField.react";
+import Button from "../../Buttons/Button/Button.react";
 
 Anagram.propTypes = {
   //=======================================
@@ -173,12 +173,12 @@ export default function Anagram(props) {
     >
       {data &&
         <div className="qui-anagram-card">
-          {data?.title || data?.subtitle ? (
+          {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
               content={{ title: data?.title, subTitle: data?.subtitle }}
-              withColor={slideHeaderColors}
-            />
-          ) : (
+              withColor={slideHeaderColors} />
+          )}
+          {data?.image && (
             <img className="qui-anagram-image" src={data?.image} alt="" />
           )}
           <div

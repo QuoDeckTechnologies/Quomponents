@@ -1,8 +1,8 @@
 import React from "react";
-import Anagram from "../components/Anagram/Anagram.react";
+import Anagram from "../components/Templates/Anagram/Anagram.react";
 
 export default {
-  title: "Design System/Anagram/Anagram",
+  title: "Design System/Templates/Anagram/Anagram",
   component: Anagram,
   argTypes: {
     data: {
@@ -82,7 +82,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a Anagram with a question and jumbled answer, the user need to submit the correct word as answer, we can switch the header image with slideHeader by giving the title and subtitle from prop, and by removing the title and subtitle we can see an image. If the title, subtitle, and image are provided together, only the slideHeader is visible",
+    componentSubtitle: "Displays a Anagram with a question and jumbled answer, the user need to submit the correct word as answer, we can switch the header image with slideHeader by giving the title and subtitle from prop and removing the image prop, and by addinig image prop we can see an image. If the title, subtitle, and image are provided together the presedence will always go to the image",
     a11y: { disable: true },
     docs: {
       iframeHeight: 650,
@@ -96,8 +96,8 @@ const Template = (args) => <Anagram {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   data: {
-    title: "",
-    subtitle: "",
+    title: "Neque porro quisquam est qui dolorem",
+    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     answer: "Answer",
@@ -143,7 +143,7 @@ AnagramWithSlideHeader.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    image: "",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     answer: "Answer",
     purpose: ""
