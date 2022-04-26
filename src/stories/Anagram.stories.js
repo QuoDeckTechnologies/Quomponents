@@ -82,7 +82,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a Anagram with a question and jumbled answer, the user need to submit the correct word as answer, we can switch the header image with slideHeader by giving the title and subtitle from prop and removing the image prop, and by addinig image prop we can see an image. If the title, subtitle, and image are provided together the presedence will always go to the image",
+    componentSubtitle: "Displays a Anagram with a question and jumbled answer, the user need to submit the correct word as answer, we can switch between the image and SlideHeader by adding or removing the image prop",
     a11y: { disable: true },
     docs: {
       iframeHeight: 650,
