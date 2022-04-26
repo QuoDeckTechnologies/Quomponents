@@ -68,7 +68,7 @@ Splash.propTypes = {
     */
   isHidden: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
+    Splash component must have the onClick function passed as props
     */
   onClick: PropTypes.func.isRequired,
 };
