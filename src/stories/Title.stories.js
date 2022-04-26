@@ -111,3 +111,43 @@ Default.parameters = {
     },
   },
 };
+// -------------------------------------------------------------
+// Title With Presenter
+// -------------------------------------------------------------
+export const TitleWithPresenter = Template.bind({});
+TitleWithPresenter.args = {
+  ...Default.args,
+  isPresenter: true,
+};
+TitleWithPresenter.parameters = {
+  docs: {
+    source: {
+      code: `<Title {...${JSON.stringify(TitleWithPresenter.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Colored Title 
+// -------------------------------------------------------------
+export const ColoredTitle = Template.bind({});
+ColoredTitle.args = {
+  ...Default.args,
+  isPresenter: true,
+  withColor: {
+    slideHeaderBackgroundColor: "#8c9ea3",
+    textBlockBackgroundColor: "#ffba08",
+    accentColor: "#ffba08",
+    textColor: "#ffffff",
+  },
+};
+ColoredTitle.parameters = {
+  docs: {
+    source: {
+      code: `<Title {...${JSON.stringify(
+        ColoredTitle.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};

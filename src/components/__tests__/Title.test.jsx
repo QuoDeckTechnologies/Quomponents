@@ -5,7 +5,7 @@ import { shallow, mount } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Title from "../Title/Title.react";
+import Title from "../Templates/Title/Title.react";
 
 describe("Title", () => {
   // -------------------------------------
