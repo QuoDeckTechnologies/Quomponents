@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { getQuommons } from "../../../../common/javascripts/helpers";
@@ -55,6 +55,16 @@ export default function DeckSettingsSection(props) {
 	function toggleVoiceoverChecked() {
 		setVoiceoverChecked((prevState) => !prevState);
 	}
+
+	let toggleStatus ={
+		navigation: isNavigationChecked,
+		slideList: isSlideChecked,
+		voiceOver: isVoiceoverChecked
+	}
+
+	useEffect(()=>{
+		props.onClick(toggleStatus)
+	})
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
@@ -77,11 +87,11 @@ export default function DeckSettingsSection(props) {
 												: "far fa-square"
 										}`,
 									}}
-									onClick={() => toggleNavigationChecked()}
+									onClick={toggleNavigationChecked}
 								/>
 								<div
 									className="qui-ribbon-menu-label"
-									onClick={() => toggleNavigationChecked()}
+									onClick={toggleNavigationChecked}
 								>
 									Enable Navigation
 								</div>

@@ -59,6 +59,50 @@
     justify-content: space-between;
 }
 
+.qui-ribbon-design-menu-color-picker-container{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly ;
+}
+.qui-ribbon-design-menu-custom-color-title{
+    font-size: 0.75em;
+}
+.qui.qui-custom-color {
+	overflow: visible;  
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+}
+.qui-color-picker-container{
+	width: fit-content;
+}
+.qui .qui-ribbon-design-menu-custom-color-container {
+	position: relative;
+}
+.qui .qui-ribbon-design-menu-custom-color-button {
+	width: 18px;
+	height: 10px;
+	border: 0.1em solid black;
+	cursor: pointer;
+	margin-right: 1rem;
+}
+.qui .qui-ribbon-design-menu-button-title-container {
+	display: flex;
+	align-items: center;
+}
+.qui .qui-ribbon-design-menu-chrome-picker {
+	position: absolute;
+	top: 100%;
+	left: 0%;
+	z-index: 1000;
+}
+.qui .qui-ribbon-design-menu-custom-color-button {
+	position: relative;
+}
+.qui.qui-custom-color .qui-ribbon-design-menu-chrome-picker {
+	width: 162px;
+}
+
 //SlideBackground Section Styling Definitions
 .qui-ribbon-design-menu-slide-background-parent,
 .qui-ribbon-design-menu-overlay-background-parent{
