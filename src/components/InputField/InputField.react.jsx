@@ -189,7 +189,7 @@ export default function InputField(props) {
         if (asEmphasis === "charLimited") {
             return (
                 <div className="qui-char-limited-container">
-                    {props.content?.maxLength && <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>}
+                    {(props.content?.maxLength || props.content?.maxLength >= 0) && <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>}
                     <TextField
                         className="qui-char-limited"
                         InputLabelProps={inputlabelColor}
@@ -211,7 +211,7 @@ export default function InputField(props) {
         if (asEmphasis === "listInput") {
             return (
                 <div className="qui-list-input-container">
-                    {props.content?.maxLength && <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>}
+                    {(props.content?.maxLength || props.content?.maxLength >= 0) && < div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>}
                     <TextField
                         className="qui-list-input"
                         sx={outlineStyle}
@@ -227,7 +227,7 @@ export default function InputField(props) {
                         onChange={handleChange}
                         onKeyDown={handleChange}
                     />
-                </div>
+                </div >
             )
         }
         else {
