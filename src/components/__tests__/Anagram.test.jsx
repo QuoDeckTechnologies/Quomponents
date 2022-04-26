@@ -29,7 +29,6 @@ describe("Anagram", () => {
         slideId={0}
         asVariant="primary"
         withColor={null}
-        withTranslation={null}
         isHidden={false}
         isDisabled={false}
         onClick={(e) => {
