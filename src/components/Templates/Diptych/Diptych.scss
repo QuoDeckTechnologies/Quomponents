@@ -1,4 +1,3 @@
-
 .qui .qui-diptych-card {
   background-color: #ffffff;
   padding: 1.5em;
@@ -44,23 +43,21 @@
   .qui-clickable-image-container:first-child {
     margin-right: 0.3em;
     img {
-      background-color: aqua;
       border-top-left-radius: 0.5em;
       border-bottom-left-radius: 0.5em;
     }
   }
   .qui-clickable-image-container:last-child {
     img {
-      background-color: aqua;
       border-top-right-radius: 0.5em;
       border-bottom-right-radius: 0.5em;
     }
   }
 }
-.qui-diptych-presenter-container{
+.qui-diptych-presenter-container {
   width: 22em;
   border-radius: 1em;
-  padding:1em
+  padding: 1.5em 1.5em 0 1.5em;
 }
 
 .qui .qui-diptych-presenter-clickable-images {
@@ -71,7 +68,6 @@
   .qui-clickable-image-container:first-child {
     margin-right: 0.3em;
     img {
-      background-color: aqua;
       border-top-left-radius: 0.5em;
       border-bottom-left-radius: 0.5em;
     }
@@ -83,12 +79,56 @@
     }
   }
 }
+.qui-presenter-title {
+  .qui-block-text {
+    text-align: left;
+    font-size:1.5em;
+  }
+  .qui .qui-text-block-area {
+    width: 18em;
+    padding:1em;
+    font-weight: 500;
+    margin: 0.5em 0 0 0;
+  }
+}
+.qui-presenter-sub-title {
+  .qui-block-text {
+    text-align: left;
+    font-size:1em;
+  }
+  .qui .qui-text-block-area {
+    width: 12em;
+    padding:1em;
+    font-weight: 500;
+    margin: 0 0 0 0;
+  }
+}
+.qui-presenter-caption {
+  .qui-block-text {
+    text-align: left;
+    font-size:1em;
+  }
+  .qui .qui-text-block-area {
+    width: 15em;
+    padding:1em;
+    font-weight: 500;
+    margin: 0 1em 0 0;
+    z-index: 2;
+  }
+}
+.qui .qui-diptych-presenter{
+  position: absolute;
+  right:0;
+  bottom:0;
+  z-index: 1;
+  height: 10em;
+}
 @media only screen and (min-width: 481px) {
   .qui .qui-diptych-card {
     width: 22em;
   }
   .qui-diptych-image {
     border-radius: 1em;
-    max-height: 16em;
+    max-height: 12em;
   }
 }
