@@ -29,11 +29,6 @@ describe("Splash", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error when component mounts", () => {
-    let component = mount(<Splash onClick={() => {}} />);
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly without throwing error when presenter view is selected", () => {
     component.setProps({
       isPresenter: true,

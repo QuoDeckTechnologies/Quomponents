@@ -60,12 +60,6 @@ export default {
         defaultValue: false,
       },
     },
-    onClick: {
-      table: {
-        category: "Events",
-        defaultValue: null,
-      },
-    },
   },
   parameters: {
     componentSubtitle: "Displays a Splash component",

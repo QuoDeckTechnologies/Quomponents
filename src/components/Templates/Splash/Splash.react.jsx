@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
@@ -67,10 +67,6 @@ Splash.propTypes = {
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
-  /**
-    Splash component must have the onClick function passed as props
-    */
-  onClick: PropTypes.func.isRequired,
 };
 
 Splash.defaultProps = {
@@ -100,17 +96,11 @@ export default function Splash(props) {
   //-------------------------------------------------------------------
   const { data, withColor, isPresenter, slideId } = props;
   //-------------------------------------------------------------------
-  // 2. Defining hook to return splash
-  //-------------------------------------------------------------------
-  useEffect(() => {
-    props.onClick(data);
-  }, [data]);
-  //-------------------------------------------------------------------
-  // 3. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "splash");
   //-------------------------------------------------------------------
-  // 4. Function to return a view for splash
+  // 3. Function to return a view for splash
   //-------------------------------------------------------------------
   const getView = (data) => {
     return (
@@ -120,7 +110,7 @@ export default function Splash(props) {
     );
   };
   //-------------------------------------------------------------------
-  // 5. Function to return a view for splash with presenter
+  // 4. Function to return a view for splash with presenter
   //-------------------------------------------------------------------
   const getPresenterView = (data) => {
     return (
@@ -149,11 +139,11 @@ export default function Splash(props) {
     );
   };
   //-------------------------------------------------------------------
-  // 6. Get animation of the component
+  // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 7. Function to set background for presenter view
+  // 6. Function to set background for presenter view
   //-------------------------------------------------------------------
   const getBackground = () => {
     return {
@@ -161,7 +151,9 @@ export default function Splash(props) {
       backgroundSize: "cover",
     };
   };
-  const background = isPresenter ? getBackground() : { backgroundColor: withColor?.backgroundColor };
+  const background = isPresenter
+    ? getBackground()
+    : { backgroundColor: withColor?.backgroundColor };
 
   // ========================= Render Function =================================
 
