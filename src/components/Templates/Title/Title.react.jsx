@@ -159,7 +159,7 @@ export default function Title(props) {
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 6. Function to set background for presenter view
+  // 6. Functions to set background for the template
   //-------------------------------------------------------------------
   const getBackground = () => {
     return {
