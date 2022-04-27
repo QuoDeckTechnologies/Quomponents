@@ -98,7 +98,7 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { content,onSelect } = props;
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
@@ -108,8 +108,8 @@ export default function OptionItemFour(props) {
     setIsChecked(content?.checked);
   }, [content?.checked]);
   useEffect(() => {
-    props.onSelect(content?.targetName, value, isChecked);
-  }, [isChecked]);
+    onSelect(content?.targetName, value, isChecked);
+  }, [content?.targetName, value, isChecked,onSelect]);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------

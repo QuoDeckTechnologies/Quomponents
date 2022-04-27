@@ -117,9 +117,6 @@ export default function OptionItemTen(props) {
   // 2. Defining states
   //-------------------------------------------------------------------
   const [image, setImage] = useState(content?.image);
-  const [value, setValue] = useState(content?.value);
-  const [headerValue, setHeaderValue] = useState(content?.headerValue);
-  const [messageValue, setMessageValue] = useState(content?.messageValue);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -139,21 +136,18 @@ export default function OptionItemTen(props) {
   // 6. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
-    setValue(value);
     props.onInput(content?.targetName, image, value);
   };
   //-------------------------------------------------------------------
   // 7. Function to return header value of the component
   //-------------------------------------------------------------------
   const handleHeaderValue = (name, headerValue) => {
-    setHeaderValue(headerValue);
     props.onHeader(content?.headerName, image, headerValue);
   };
   //-------------------------------------------------------------------
   // 8. Function to return message value of the component
   //-------------------------------------------------------------------
   const handleMessageValue = (name, messageValue) => {
-    setMessageValue(messageValue);
     props.onMessage(content?.messageName, image, messageValue);
   };
   // ========================= Render Function =================================

@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
@@ -97,7 +97,6 @@ export default function OptionItemEight(props) {
     // 1. Destructuring content prop
     //-------------------------------------------------------------------
     const { content } = props;
-    const [value, setValue] = useState(content?.value);
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -110,7 +109,6 @@ export default function OptionItemEight(props) {
     // 4. Function to return input value of the component
     //-------------------------------------------------------------------
     const handleValue = (name, value) => {
-        setValue(value);
         props.onInput(content?.targetName, value);
     };
 
