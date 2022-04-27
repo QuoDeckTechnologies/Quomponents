@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
@@ -10,8 +10,6 @@ import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
 import IconBlock from "../../IconBlock/IconBlock.react";
 import TextBlock from "../../TextBlock/TextBlock.react";
-import presenterBackground from "../../../assets/presenter-background.png";
-import presenterImage from "../../../assets/presenter.png";
 
 Title.propTypes = {
   //=======================================
@@ -25,6 +23,9 @@ Title.propTypes = {
     subtitle: PropTypes.string,
     image: PropTypes.string,
     icon: PropTypes.string,
+    backgroundImage: PropTypes.string,
+    presenterImage: PropTypes.string,
+    presenterBackgroundImage: PropTypes.string,
   }),
   /**
     Title component can use presenter props to show presenter template
@@ -39,6 +40,7 @@ Title.propTypes = {
   withColor: PropTypes.shape({
     slideHeaderBackgroundColor: PropTypes.string,
     textBlockBackgroundColor: PropTypes.string,
+    backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
@@ -61,10 +63,6 @@ Title.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to enable/disable the component
-    */
-  isDisabled: PropTypes.bool,
-  /**
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
@@ -74,17 +72,12 @@ Title.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  data: {
-    image: "",
-    caption: "",
-    label: "",
-  },
+  data: {},
   //=======================================
   // Quommon props
   //=======================================
   withColor: null,
   withAnimation: null,
-  isDisabled: false,
   isHidden: false,
 };
 /**
@@ -106,7 +99,7 @@ export default function Title(props) {
   // 3. Function to return a view for title
   //-------------------------------------------------------------------
   const getView = (data) => {
-    if (data?.title) {
+    if (!data?.image && (data?.title || data?.subtitle)) {
       return (
         <SlideHeader
           content={{ title: data?.title }}
@@ -117,7 +110,7 @@ export default function Title(props) {
           }}
         />
       );
-    } else {
+    } else if (data?.image) {
       return (
         data?.image && (
           <img
@@ -158,11 +151,6 @@ export default function Title(props) {
             }}
           />
         </div>
-        <img
-          className="qui-title-presenter"
-          src={presenterImage}
-          alt="Presenter"
-        />
       </div>
     );
   };
@@ -175,11 +163,21 @@ export default function Title(props) {
   //-------------------------------------------------------------------
   const getBackground = () => {
     return {
-      background: `url(${presenterBackground})`,
+      backgroundImage: `url(${props.data?.backgroundImage})`,
+      backgroundColor: withColor?.backgroundColor,
+      backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
     };
   };
-  const background = isPresenter ? getBackground() : {};
+  const getPresenterBackground = () => {
+    return {
+      backgroundImage: `url(${props.data?.presenterBackgroundImage})`,
+      backgroundColor: withColor?.backgroundColor,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    };
+  };
+  const background = isPresenter ? getPresenterBackground() : getBackground();
 
   // ========================= Render Function =================================
 
@@ -212,7 +210,16 @@ export default function Title(props) {
       </div>
       {isPresenter && getPresenterView(data)}
       {!isPresenter && (
-        <p className={`qui-title-subtitle`}>{props.data?.subtitle}</p>
+        <div className="qui-title-card-subtitle">
+          <p className={`qui-title-subtitle`}>{props.data?.subtitle}</p>
+        </div>
+      )}
+      {isPresenter && data.presenterImage && (
+        <img
+          className="qui-title-presenter-image"
+          src={data.presenterImage}
+          alt="Presenter"
+        />
       )}
     </motion.div>
   );

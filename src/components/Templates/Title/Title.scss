@@ -2,15 +2,19 @@
   padding: 1.2em;
   background-color: #ffffff;
   border-radius: 1em;
-  min-height: 25em;
-  max-width: 18em;
-  position: relative;
+  min-height: 28.8em;
+  max-width: 20.5em;
+
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+
   .qui .qui-title-block {
     min-width: 12em;
-    min-height: 10em;
+    min-height: 14em;
   }
   .qui .qui-title {
-    font-size: 1.8em;
+    font-size: 2.4em;
     padding: 0 0 0.2em 0;
   }
   .qui .qui-sub-title {
@@ -20,6 +24,8 @@
 
 .qui .qui-title-slide-header .qui-title-image {
   box-shadow: 0px 4px 10px #8b8b8b;
+  min-width: 12em;
+  height: 15em;
 }
 
 .qui .qui-title-image {
@@ -27,10 +33,17 @@
   border-radius: 1em;
 }
 
+.qui .qui-title-card-subtitle{
+  margin-top: 5.5em;
+  display: flex;
+  justify-content: center;
+}
+
 .qui .qui-title-subtitle {
-  margin-top: 4.5em;
-  font-size: 0.9em;
+    margin: 0;
+  font-size: 1.1em;
   text-align: center;
+  width: 70%;
 }
 
 .qui .qui-title-slide-header {
@@ -81,11 +94,23 @@
   }
 }
 
-.qui .qui-title-text-block .qui-title-presenter {
-  height: 6.2em;
-  width: 4em;
+.qui .qui-presenter-test-container {
+  height: 50%;
+  width: 50%;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.qui .qui-title-presenter-image {
   position: absolute;
-  transform: translate(-67%, 80%);
+  bottom: 0;
+  right: 0;
+  height: 50%;
+  width: 50%;
+}
+.qui .qui-title-presenter-image {
+  object-fit: cover;
 }
 
 @media only screen and (min-width: 320px) {
