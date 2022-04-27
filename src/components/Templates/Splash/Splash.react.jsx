@@ -8,8 +8,6 @@ import "../../../common/stylesheets/common.css";
 import "./Splash.scss";
 import "../../../common/stylesheets/overrule.scss";
 import TextBlock from "../../TextBlock/TextBlock.react";
-import presenterBackground from "../../../assets/presenter-background.png";
-import presenterImage from "../../../assets/presenter.png";
 
 Splash.propTypes = {
   //=======================================
@@ -21,8 +19,7 @@ Splash.propTypes = {
   data: PropTypes.shape({
     splash: PropTypes.string,
     backgroundImage: PropTypes.string,
-    presenterBackgroundImage: PropTypes.string,
-    presenterImage: PropTypes.string,
+    presenter: PropTypes.string,
   }).isRequired,
   /**
     slideId can be used if same template is used continueously for multiple slides in qdf.
@@ -130,10 +127,10 @@ export default function Splash(props) {
           />
         </div>
         <div className="qui-splash-presenter-image-container"></div>
-        {data?.presenterImage && (
+        {data?.presenter && (
           <img
             className="qui-splash-presenter"
-            src={data?.presenterImage}
+            src={data?.presenter}
             alt="Presenter"
           />
         )}
@@ -149,15 +146,10 @@ export default function Splash(props) {
   //-------------------------------------------------------------------
   const getBackground = () => {
     return {
-      backgroundImage: `url(${props.data?.backgroundImage})`,
+      backgroundImage: `url(${data?.backgroundImage})`,
     };
   };
-  const getPresenterBackground = () => {
-    return {
-      backgroundImage: `url(${props.data?.presenterBackgroundImage})`,
-    };
-  };
-  const background = isPresenter ? getPresenterBackground() : getBackground();
+  const background = getBackground();
 
   // ========================= Render Function =================================
 

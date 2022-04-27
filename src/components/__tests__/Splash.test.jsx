@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -41,6 +41,17 @@ describe("Splash", () => {
       data: {
         splash: null,
       },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when presenter image is provided", () => {
+    component.setProps({
+      data: {
+        splash: null,
+        presenter: "presenter_image",
+      },
+      isPresenter: true,
     });
     expect(component.exists()).toBe(true);
   });

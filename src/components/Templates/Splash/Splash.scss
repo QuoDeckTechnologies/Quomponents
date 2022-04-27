@@ -3,7 +3,7 @@
   background-color: #ffffff;
   border-radius: 1em;
   min-height: 25em;
-  max-width: 18em;
+  width: 18em;
   display: flex;
   align-items: center;
   text-align: center;
@@ -31,11 +31,12 @@
 }
 
 .qui .qui-splash-presenter {
-  height: 12.5em;
-  width: 8em;
+  height: 50%;
+  width: 40%;
   position: absolute;
   right: 0;
   bottom: 0;
+  object-fit: cover;
 }
 
 .qui .qui-splash-text-block {
