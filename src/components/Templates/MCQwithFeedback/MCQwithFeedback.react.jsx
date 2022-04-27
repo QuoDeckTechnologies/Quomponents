@@ -19,7 +19,7 @@ MCQwithFeedback.propTypes = {
     MCQwithFeedback data should be passed in data field and it is a required field
     */
   data: PropTypes.shape({
-    image: PropTypes.string,
+    backgroundImage: PropTypes.string,
     title: PropTypes.string,
     subtitle: PropTypes.string,
     icon: PropTypes.string,
@@ -46,6 +46,8 @@ MCQwithFeedback.propTypes = {
     */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
+    slideHeaderBackgroundColor: PropTypes.string,
+    buttonBackgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
@@ -156,8 +158,9 @@ export default function MCQwithFeedback(props) {
             </div>
           )}
         </div>
+        {data?.icon && <div className="qui-mcq-with-feedback-separator"></div>}
         <p
-          className={`qui-mcq-with-feedback-caption`}
+          className={`qui-mcq-with-feedback-question`}
           style={{ color: props.withColor?.captionColor }}
         >
           {props.data?.question}
@@ -167,7 +170,7 @@ export default function MCQwithFeedback(props) {
             {...props}
             content={optionsArray}
             onClick={(value) =>
-              console.log(
+              props.onClick(
                 optionsArray.indexOf(value.target.innerText.toLowerCase())
               )
             }
