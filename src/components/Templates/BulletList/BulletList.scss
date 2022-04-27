@@ -5,11 +5,13 @@
     background-color: #ffffff;
     padding: 1.5em;
     border-radius: 1em;
+    min-height: 30em;
+    max-width: 22em;
 
     .qui-bullet-list-image {
         width: 100%;
         border-radius: 1em;
-        max-height: 17em;
+        max-height: 12.5em;
         filter: drop-shadow(0px 5px 2px #a09797);
     }
     .qui-title-block {
@@ -26,7 +28,7 @@
 
     .qui-bulletblock {
         max-width: 17.5em;
-        margin: 1em 1.5em 3em 1.5em;
+        margin: 1em 0.4em 3em 0.4em;
         padding: 0;
         ul {
             margin: 0.1em;

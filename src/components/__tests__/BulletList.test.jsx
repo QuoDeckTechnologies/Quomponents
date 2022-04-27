@@ -37,7 +37,8 @@ describe("BulletList", () => {
             title: "Neque porro quisquam est qui dolorem",
             subTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
             image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-            listItems: [
+            backgroundImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+            bullets: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 "Quisque sed turpis vel lectus suscipit auctor",
                 "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
@@ -52,7 +53,7 @@ describe("BulletList", () => {
             title: "Neque porro quisquam est qui dolorem",
             subTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
             image: "",
-            listItems: [
+            bullets: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 "Quisque sed turpis vel lectus suscipit auctor",
                 "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."

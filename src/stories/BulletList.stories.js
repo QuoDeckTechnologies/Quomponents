@@ -11,7 +11,8 @@ export default {
                     title: "",
                     subTitle: "",
                     image: "",
-                    listItems: ["listItems"]
+                    backgroundImage: "",
+                    bullets: ["bullets"]
                 },
             },
         },
@@ -66,7 +67,7 @@ export default {
         componentSubtitle:
             "Default BulletList for general purpose use",
         a11y: { disable: true },
-        docs: { iframeHeight: 650 },
+        docs: { iframeHeight: 600 },
     },
 };
 // -------------------------------------------------------------
@@ -79,7 +80,8 @@ Default.args = {
         title: "Neque porro quisquam est qui dolorem",
         subTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        listItems: [
+        backgroundImage: "",
+        bullets: [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             "Quisque sed turpis vel lectus suscipit auctor",
             "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
@@ -177,7 +179,8 @@ withSlideHeaderBulletList.args = {
         title: "Neque porro quisquam est qui dolorem",
         subTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         image: "",
-        listItems: [
+        backgroundImage: "",
+        bullets: [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             "Quisque sed turpis vel lectus suscipit auctor",
             "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
