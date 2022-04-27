@@ -1,15 +1,19 @@
 import React from "react";
-import MCQwithFeedback from "../components/MCQwithFeedback/MCQwithFeedback.react";
+import MCQwithFeedback from "../components/Templates/MCQwithFeedback/MCQwithFeedback.react";
 
 export default {
-  title: "Design System/MCQwithFeedback/MCQwithFeedback",
+  title: "Design System/Templates/MCQwithFeedback/MCQwithFeedback",
   component: MCQwithFeedback,
   argTypes: {
-    content: {
+    data: {
       defaultValue: {
         image: "",
-        title:'',
-        subtitle:'',
+        title: "",
+        subtitle: "",
+        icon: '',
+        question: "",
+        feedback: [],
+        options: [],
       },
     },
     isCircular: {
@@ -93,10 +97,20 @@ export default {
 const Template = (args) => <MCQwithFeedback {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    title:'Lorem ipsum dolor sit amet',
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+  data: {
+    image:
+      "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    title: "Lorem ipsum dolor sit amet",
+    subtitle: "",
+    icon: "fas fa-times",
+    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    feedback: ["That was correct", "That was wrong"],
+    options: [
+      { correct: "", text: "Item 1" },
+      { correct: "", text: "Item 2" },
+      { correct: "", text: "Item 3" },
+      { correct: "", text: "Item 4" },
+    ],
   },
   isCircular: false,
   asVariant: "primary",

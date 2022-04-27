@@ -1,27 +1,33 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../common/stylesheets/common.css";
+import "../../../common/stylesheets/common.css";
 import "./MCQwithFeedback.scss";
-import "../../common/stylesheets/overrule.scss";
-import SlideHeader from "../SlideHeader/SlideHeader.react";
-import ButtonBank from "../ButtonBank/ButtonBank.react";
+import "../../../common/stylesheets/overrule.scss";
+import SlideHeader from "../../SlideHeader/SlideHeader.react";
+import ButtonBank from "../../ButtonBank/ButtonBank.react";
+import IconBlock from "../../IconBlock/IconBlock.react";
 
 MCQwithFeedback.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
   /**
-    MCQwithFeedback data should be passed in content field and it is a required field
+    MCQwithFeedback data should be passed in data field and it is a required field
     */
-  content: PropTypes.shape({
+  data: PropTypes.shape({
     image: PropTypes.string,
     title: PropTypes.string,
     subtitle: PropTypes.string,
+    icon: PropTypes.string,
+    question: PropTypes.string,
+    feedback: PropTypes.array,
+    options: PropTypes.array,
   }),
+  slideId: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
@@ -79,7 +85,7 @@ MCQwithFeedback.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {
+  data: {
     image: "",
     caption: "",
     label: "",
@@ -100,7 +106,11 @@ MCQwithFeedback.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function MCQwithFeedback(props) {
-  const { content } = props;
+  const { data, withColor } = props;
+
+  let optionsArray = [];
+  data.options.forEach((item) => optionsArray.push(item.text.toLowerCase()));
+
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -121,25 +131,48 @@ export default function MCQwithFeedback(props) {
       <div
         className={`qui-mcq-with-feedback-container ${quommonClasses.childClasses}`}
       >
-        {content?.title || content?.subtitle ? (
-          <SlideHeader
-            content={{ title: content?.title, subTitle: content?.subtitle }}
-            withColor={props.withColor}
-          />
-        ) : (
-          <img className="qui-mcq-with-feedback-image" src={props.content?.image} alt="slide" />
-        )}
+        <div className="qui-mcq-with-feedback-slide-header">
+          {!data?.image && (data?.title || data?.subtitle) ? (
+            <SlideHeader
+              content={{ title: data?.title, subTitle: data?.subtitle }}
+              withColor={props.withColor}
+            />
+          ) : (
+            <img
+              className="qui-mcq-with-feedback-image"
+              src={props.data?.image}
+              alt="slide"
+            />
+          )}
+          {data?.icon && data?.title && (
+            <div className={`qui-mcq-with-feedback-icon-block`}>
+              <IconBlock
+                withColor={{
+                  accentColor: withColor?.textColor,
+                  backgroundColor: withColor?.accentColor,
+                }}
+                withIcon={{ name: data?.icon }}
+              />
+            </div>
+          )}
+        </div>
         <p
           className={`qui-mcq-with-feedback-caption`}
           style={{ color: props.withColor?.captionColor }}
         >
-          {props.content?.caption}
+          {props.data?.question}
         </p>
-        <ButtonBank
-          {...props}
-          content={props.content?.options}
-          onClick={(value) => props.onClick(value.target.innerText)}
-        />
+        {
+          <ButtonBank
+            {...props}
+            content={optionsArray}
+            onClick={(value) =>
+              console.log(
+                optionsArray.indexOf(value.target.innerText.toLowerCase())
+              )
+            }
+          />
+        }
       </div>
     </motion.div>
   );
