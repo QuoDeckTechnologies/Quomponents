@@ -164,17 +164,11 @@ export default function Title(props) {
   const getBackground = () => {
     return {
       backgroundImage: `url(${props.data?.backgroundImage})`,
-      backgroundColor: withColor?.backgroundColor,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
     };
   };
   const getPresenterBackground = () => {
     return {
       backgroundImage: `url(${props.data?.presenterBackgroundImage})`,
-      backgroundColor: withColor?.backgroundColor,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
     };
   };
   const background = isPresenter ? getPresenterBackground() : getBackground();
@@ -186,7 +180,12 @@ export default function Title(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui qui-title-card ${quommonClasses.parentClasses}`}
-      style={background}
+      style={{
+        ...background,
+        backgroundColor: withColor?.backgroundColor,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
     >
       <div className={`qui-title-container ${quommonClasses.childClasses}`}>
         <div className="qui-title-slide-header">
