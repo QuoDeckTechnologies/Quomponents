@@ -21,6 +21,7 @@ CaptionedVideo.propTypes = {
         subTitle: PropTypes.string,
         image: PropTypes.string,
         backgroundImage: PropTypes.string,
+        presenter: PropTypes.string,
         video: PropTypes.string,
         caption: PropTypes.string,
     }).isRequired,
@@ -155,6 +156,13 @@ export default function CaptionedVideo(props) {
                     content={data?.caption}
                     withColor={textBockColors}
                 />
+                {isPresenter && data?.presenter && (
+                    <img
+                        className="qui-title-presenter-image"
+                        src={data?.presenter}
+                        alt="Presenter"
+                    />
+                )}
             </div>
         </motion.div>
     );
