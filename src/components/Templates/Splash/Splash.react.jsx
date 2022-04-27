@@ -20,6 +20,9 @@ Splash.propTypes = {
     */
   data: PropTypes.shape({
     splash: PropTypes.string,
+    backgroundImage: PropTypes.string,
+    presenterBackgroundImage: PropTypes.string,
+    presenterImage: PropTypes.string,
   }).isRequired,
   /**
     slideId can be used if same template is used continueously for multiple slides in qdf.
@@ -73,9 +76,7 @@ Splash.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  data: {
-    splash: "",
-  },
+  data: {},
   //=======================================
   // Quommon props
   //=======================================
@@ -128,13 +129,14 @@ export default function Splash(props) {
             }}
           />
         </div>
-        <div className="qui-splash-presenter-image-container">
+        <div className="qui-splash-presenter-image-container"></div>
+        {data?.presenterImage && (
           <img
             className="qui-splash-presenter"
-            src={presenterImage}
+            src={data?.presenterImage}
             alt="Presenter"
           />
-        </div>
+        )}
       </div>
     );
   };
@@ -143,17 +145,19 @@ export default function Splash(props) {
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 6. Function to set background for presenter view
+  // 6. Functions to set background for the template
   //-------------------------------------------------------------------
   const getBackground = () => {
     return {
-      background: `url(${presenterBackground})`,
-      backgroundSize: "cover",
+      backgroundImage: `url(${props.data?.backgroundImage})`,
     };
   };
-  const background = isPresenter
-    ? getBackground()
-    : { backgroundColor: withColor?.backgroundColor };
+  const getPresenterBackground = () => {
+    return {
+      backgroundImage: `url(${props.data?.presenterBackgroundImage})`,
+    };
+  };
+  const background = isPresenter ? getPresenterBackground() : getBackground();
 
   // ========================= Render Function =================================
 
@@ -164,7 +168,12 @@ export default function Splash(props) {
       className={`qui ${quommonClasses.parentClasses} ${
         isPresenter ? "qui-splash-presenter-container" : ""
       }`}
-      style={{ ...background }}
+      style={{
+        ...background,
+        backgroundColor: withColor?.backgroundColor,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
     >
       <div className={`qui-splash-container ${quommonClasses.childClasses}`}>
         {!isPresenter && getView(data)}
