@@ -22,6 +22,7 @@ describe("Anagram", () => {
           title: "This is Title",
           subtitle: "This is Subtitle",
           image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+          backgroundImage: "",
           question: "Question",
           answer: "Answer",
           purpose: "quiz",
@@ -69,6 +70,7 @@ describe("Anagram", () => {
       buttonBackgroundColor: "ff0ff0",
       buttonHoverBackgroundColor: "ffff00",
       buttonHoverTextColor: "ff00ff",
+      backgroundColor: "",
     }
     component.setProps({ withColor: colors })
     expect(component.exists()).toBe(true);
@@ -151,4 +153,51 @@ describe("Anagram", () => {
       tree.props.onMouseEnter();
     });
   });
+
+  it("should render correctly when passed backgroundImage prop as null and backgroundColor is passed", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
+      image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+      backgroundImage: "",
+      question: "Question",
+      answer: "Answer",
+      purpose: "quiz",
+    }
+    let colors = {
+      slideHeaderTextColor: "#FFFFFF",
+      slideHeaderAccentColor: "#AD2929",
+      slideHeaderBackgroundColor: "#ad292980",
+      textBlockBackgroundColor: "#2d92a4",
+      textBlockTextColor: "#fff",
+      bulletBlockTextColor: "#ffffff",
+      bulletBlockBackgroundColor: "#ad292980",
+      backgroundColor: "#fff"
+    }
+    component.setProps({ data: data, withColor: colors })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed backgroundImage prop", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
+      image: "",
+      backgroundImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+      question: "Question",
+      answer: "Answer",
+      purpose: "quiz",
+    }
+    let colors = {
+      slideHeaderTextColor: "#FFFFFF",
+      slideHeaderAccentColor: "#AD2929",
+      slideHeaderBackgroundColor: "#ad292980",
+      textBlockBackgroundColor: "#2d92a4",
+      textBlockTextColor: "#fff",
+      bulletBlockTextColor: "#ffffff",
+      bulletBlockBackgroundColor: "#ad292980",
+      backgroundColor: "#fff"
+    }
+    component.setProps({ data: data, withColor: colors })
+    expect(component.exists()).toBe(true);
+  })
 });

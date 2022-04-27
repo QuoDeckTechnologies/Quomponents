@@ -25,6 +25,7 @@ Anagram.propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
     image: PropTypes.string,
+    backgroundImage: PropTypes.string,
     question: PropTypes.string,
     answer: PropTypes.string,
     purpose: PropTypes.string,
@@ -59,6 +60,7 @@ Anagram.propTypes = {
     buttonBackgroundColor: PropTypes.string,
     buttonHoverBackgroundColor: PropTypes.string,
     buttonHoverTextColor: PropTypes.string,
+    backgroundColor: PropTypes.string,
   }),
   /**
     Use to define the entry animation of the component
@@ -115,7 +117,7 @@ Anagram.defaultProps = {
   answer using the input field, typed answer will submitted as it is.
 **/
 export default function Anagram(props) {
-  let { data } = props
+  let { data, withColor } = props
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -164,6 +166,16 @@ export default function Anagram(props) {
   };
   let buttonText = data?.purpose === "quiz" ? "Check Answer" : "Submit Answer"
 
+  const getBackground = () => {
+    return {
+      background: `url(${data.backgroundImage})`,
+      backgroundSize: "cover",
+    };
+  };
+  const background = data?.backgroundImage
+    ? getBackground()
+    : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
+
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -172,7 +184,7 @@ export default function Anagram(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       {data &&
-        <div className="qui-anagram-card">
+        <div className="qui-anagram-card" style={{ ...background }}>
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
               content={{ title: data?.title, subTitle: data?.subtitle }}

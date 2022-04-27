@@ -21,7 +21,8 @@ describe("CaptionedBulletList", () => {
           subtitle: "This is Subtitle",
           image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
           caption: "caption",
-          bulletPoints: [
+          backgroundImage: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          bullets: [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             "Quisque sed turpis vel lectus suscipit auctor",
             "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
@@ -29,8 +30,16 @@ describe("CaptionedBulletList", () => {
         }}
         slideId={0}
         asVariant="primary"
-        withColor={null}
-        withTranslation={null}
+        withColor={{
+          slideHeaderTextColor: "",
+          slideHeaderAccentColor: "",
+          slideHeaderBackgroundColor: "",
+          textBlockBackgroundColor: "",
+          textBlockTextColor: "",
+          bulletBlockTextColor: "",
+          bulletBlockBackgroundColor: "",
+          backgroundColor: ""
+        }}
         isHidden={false}
         isDisabled={false}
         onClick={(e) => {
@@ -57,6 +66,7 @@ describe("CaptionedBulletList", () => {
       textBlockTextColor: "#fff",
       bulletBlockTextColor: "#ffffff",
       bulletBlockBackgroundColor: "#ad292980",
+      backgroundColor: "#fff"
     }
     component.setProps({ withColor: colors })
     expect(component.exists()).toBe(true);
@@ -116,13 +126,39 @@ describe("CaptionedBulletList", () => {
       subtitle: "This is Subtitle",
       image: "",
       caption: "caption",
-      bulletPoints: [
+      bullets: [
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "Quisque sed turpis vel lectus suscipit auctor",
         "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
       ]
     }
     component.setProps({ data: data })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed backgroundImage prop as null and backgroundColor is passed", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
+      image: "",
+      backgroundImage: "",
+      caption: "caption",
+      bullets: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Quisque sed turpis vel lectus suscipit auctor",
+        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+      ]
+    }
+    let colors = {
+      slideHeaderTextColor: "#FFFFFF",
+      slideHeaderAccentColor: "#AD2929",
+      slideHeaderBackgroundColor: "#ad292980",
+      textBlockBackgroundColor: "#2d92a4",
+      textBlockTextColor: "#fff",
+      bulletBlockTextColor: "#ffffff",
+      bulletBlockBackgroundColor: "#ad292980",
+      backgroundColor: "#fff"
+    }
+    component.setProps({ data: data, withColor: colors })
     expect(component.exists()).toBe(true);
   })
 });

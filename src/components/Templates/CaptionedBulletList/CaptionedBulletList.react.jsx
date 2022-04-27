@@ -26,7 +26,8 @@ CaptionedBulletList.propTypes = {
     subtitle: PropTypes.string,
     caption: PropTypes.string,
     image: PropTypes.string,
-    bulletPoints: PropTypes.arrayOf(
+    backgroundImage: PropTypes.string,
+    bullets: PropTypes.arrayOf(
       PropTypes.string
     )
   }),
@@ -51,8 +52,6 @@ CaptionedBulletList.propTypes = {
     Use to override component colors and behavior
     */
   withColor: PropTypes.shape({
-    labelColor: PropTypes.string,
-    captionColor: PropTypes.string,
     slideHeaderTextColor: PropTypes.string,
     slideHeaderAccentColor: PropTypes.string,
     slideHeaderBackgroundColor: PropTypes.string,
@@ -60,6 +59,7 @@ CaptionedBulletList.propTypes = {
     textBlockBackgroundColor: PropTypes.string,
     bulletBlockTextColor: PropTypes.string,
     bulletBlockBackgroundColor: PropTypes.string,
+    backgroundColor: PropTypes.string,
   }),
 
   /**
@@ -93,7 +93,9 @@ CaptionedBulletList.defaultProps = {
     title: "",
     subtitle: "",
     caption: "",
-    bulletPoints: []
+    image: "",
+    backgroundImage: "",
+    bullets: []
   },
   slideId: 0,
   //=======================================
@@ -112,7 +114,7 @@ CaptionedBulletList.defaultProps = {
 - Displays a Captioned Bullet List with TextBlock, BulletBlock and a SlideHeader
 **/
 export default function CaptionedBulletList(props) {
-  let { data } = props
+  let { data, withColor } = props
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -142,6 +144,16 @@ export default function CaptionedBulletList(props) {
     title: props.data?.title,
     subTitle: props.data?.subtitle,
   }
+  const getBackground = () => {
+    return {
+      background: `url(${data.backgroundImage})`,
+      backgroundSize: "cover",
+    };
+  };
+  const background = data?.backgroundImage
+    ? getBackground()
+    : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
+
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -149,18 +161,18 @@ export default function CaptionedBulletList(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >{data &&
-      <div className="qui-captioned-bullet-list-card">
+      <div className="qui-captioned-bullet-list-card" style={{ ...background }}>
         <div className={`${quommonClasses.childClasses}`} key={"captioned-bullet-list-" + props.slideId}>
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
-              content={{ title: data?.title, subTitle: data?.subtitle }}
+              content={SlideHeaderText}
               withColor={slideHeaderColors} />
           )}
           {data?.image && (
             <img className="qui-captioned-bullet-list-image" src={data?.image} alt="" />
           )}
           <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
-          <BulletBlock {...props} content={data?.bulletPoints} withColor={bulletBlockColors} asVariant={props.asVariant} />
+          <BulletBlock {...props} content={data?.bullets} withColor={bulletBlockColors} asVariant={props.asVariant} />
         </div>
       </div>}
     </motion.div>

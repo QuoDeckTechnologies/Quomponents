@@ -9,6 +9,7 @@ export default {
       title: "",
       subtitle: "",
       image: "",
+      backgroundImage: "",
       question: "",
       answer: "",
       purpose: "",
@@ -37,6 +38,7 @@ export default {
           buttonBackgroundColor: "",
           buttonHoverBackgroundColor: "",
           buttonHoverTextColor: "",
+          backgroundColor: "#fff",
         },
       },
     },
@@ -99,6 +101,7 @@ Default.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    backgroundImage: "",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     answer: "Answer",
     purpose: ""
@@ -118,6 +121,7 @@ Default.args = {
     buttonBackgroundColor: "",
     buttonHoverBackgroundColor: "",
     buttonHoverTextColor: "",
+    backgroundColor: "#fff",
   },
   withAnimation: {
     animation: "zoom",
@@ -144,6 +148,7 @@ AnagramWithSlideHeader.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     image: "",
+    backgroundImage: "",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     answer: "Answer",
     purpose: ""
@@ -163,6 +168,7 @@ AnagramWithSlideHeader.args = {
     buttonBackgroundColor: "",
     buttonHoverBackgroundColor: "",
     buttonHoverTextColor: "",
+    backgroundColor: "#fff",
   },
   withAnimation: {
     animation: "zoom",
@@ -176,6 +182,53 @@ AnagramWithSlideHeader.parameters = {
   docs: {
     source: {
       code: `<Anagram {...${JSON.stringify(AnagramWithSlideHeader.args, null, 2)}}/>`,
+    },
+  },
+};
+
+// -------------------------------------------------------------
+// AnagramWithSlideHeaderAndBackgroundImage
+// -------------------------------------------------------------
+export const AnagramWithSlideHeaderAndBackgroundImage = Template.bind({});
+AnagramWithSlideHeaderAndBackgroundImage.args = {
+  data: {
+    title: "Neque porro quisquam est qui dolorem",
+    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    image: "",
+    backgroundImage: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    answer: "Answer",
+    purpose: ""
+  },
+  slideId: 0,
+  asVariant: "warning",
+  withColor: {
+    questionColor: "#000000",
+    answerColor: "#000000",
+    slideHeaderTextColor: "#ffffff",
+    slideHeaderAccentColor: "#AD2929",
+    slideHeaderBackgroundColor: "#AD292980",
+    inputFieldTextColor: "",
+    inputFieldAccentColor: "",
+    inputFieldBackgroundColor: "#918686",
+    buttonTextColor: "",
+    buttonBackgroundColor: "",
+    buttonHoverBackgroundColor: "",
+    buttonHoverTextColor: "",
+    backgroundColor: "#fff",
+  },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  isDisabled: false,
+  isHidden: false,
+};
+AnagramWithSlideHeaderAndBackgroundImage.parameters = {
+  docs: {
+    source: {
+      code: `<Anagram {...${JSON.stringify(AnagramWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
     },
   },
 };

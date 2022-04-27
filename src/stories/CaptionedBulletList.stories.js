@@ -24,6 +24,7 @@ export default {
           textBlockBackgroundColor: "",
           bulletBlockTextdColor: "",
           bulletBlockBackgroundColor: "",
+          backgroundColor: "",
         },
       },
     },
@@ -75,7 +76,8 @@ Default.args = {
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
     image: "",
-    bulletPoints: [
+    backgroundImage: "",
+    bullets: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "Quisque sed turpis vel lectus suscipit auctor",
       "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
@@ -90,6 +92,7 @@ Default.args = {
     textBlockBackgroundColor: "#ff000000",
     bulletBlockTextColor: "#ffffff",
     bulletBlockBackgroundColor: "#ad292980",
+    backgroundColor: "#fff",
   },
   withAnimation: {
     animation: "zoom",
@@ -115,7 +118,8 @@ CaptionedBulletListWithImage.args = {
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
     image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    bulletPoints: [
+    backgroundImage: "",
+    bullets: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "Quisque sed turpis vel lectus suscipit auctor",
       "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
@@ -130,6 +134,7 @@ CaptionedBulletListWithImage.args = {
     textBlockTextColor: "#fff",
     bulletBlockTextColor: "#ffffff",
     bulletBlockBackgroundColor: "#ad292980",
+    backgroundColor: "#fff",
   },
   withAnimation: {
     animation: "zoom",
@@ -142,6 +147,48 @@ CaptionedBulletListWithImage.parameters = {
   docs: {
     source: {
       code: `<CaptionedBulletList {...${JSON.stringify(CaptionedBulletListWithImage.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// CaptionedBulletListWithBackgroundImage
+// -------------------------------------------------------------
+export const CaptionedBulletListWithBackgroundImage = Template.bind({});
+CaptionedBulletListWithBackgroundImage.args = {
+  data: {
+    title: "Neque porro quisquam est qui dolorem",
+    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    backgroundImage: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+    bullets: [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "Quisque sed turpis vel lectus suscipit auctor",
+      "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+    ]
+  },
+  asVariant: "warning",
+  withColor: {
+    slideHeaderTextColor: "#FFFFFF",
+    slideHeaderAccentColor: "#AD2929",
+    slideHeaderBackgroundColor: "#ad292980",
+    textBlockBackgroundColor: "#2d92a4",
+    textBlockTextColor: "#fff",
+    bulletBlockTextColor: "#ffffff",
+    bulletBlockBackgroundColor: "#ad292980",
+    backgroundColor: "#fff",
+  },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  isHidden: false,
+};
+CaptionedBulletListWithBackgroundImage.parameters = {
+  docs: {
+    source: {
+      code: `<CaptionedBulletList {...${JSON.stringify(CaptionedBulletListWithBackgroundImage.args, null, 2)}}/>`,
     },
   },
 };
