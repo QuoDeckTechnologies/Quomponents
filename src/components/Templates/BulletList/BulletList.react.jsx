@@ -128,7 +128,7 @@ export default function BulletList(props) {
         ? getBackground()
         : bulletListbackgroundColor;
     //-------------------------------------------------------------------
-    // 4. Get animation of the component
+    // 5. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
