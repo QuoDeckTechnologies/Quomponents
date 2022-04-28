@@ -134,14 +134,15 @@ Default.parameters = {
 export const DiptychWithHeaderImage = Template.bind({});
 DiptychWithHeaderImage.args = {
     data: {
-        title: "",
-        subtitle: "",
+        title: "Neque porro quisquam est qui dolorem",
+        subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
         headerImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
         diptych: [
-            "https://i.pinimg.com/564x/b1/cf/f8/b1cff858c4af57889d959e03668aada3.jpg",
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
             "https://i.pinimg.com/564x/02/74/fd/0274fdd7ab782768e111db0fd7387fcb.jpg",
         ],
+        backgroundImage: "",
         presenterTitle: "Neque porro quisquam est qui dolorem",
         presenterSubtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         presenterCaption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
@@ -153,8 +154,8 @@ DiptychWithHeaderImage.args = {
         slideHeaderTextColor: "#FFFFFF",
         slideHeaderAccentColor: "#AD2929",
         slideHeaderBackgroundColor: "#ad292980",
-        textBlockBackgroundColor: "#2d92a4",
-        textBlockTextColor: "#fff",
+        textBlockBackgroundColor: "#AD292980",
+        textBlockTextColor: "#ffffff",
         backgroundColor: "#ecf0efe8"
     },
     withAnimation: {
@@ -163,9 +164,14 @@ DiptychWithHeaderImage.args = {
         delay: 0,
     },
     isHidden: false,
+    isDisabled: false,
+
 };
 DiptychWithHeaderImage.parameters = {
     docs: {
+        description: {
+            story: "Diptych component have clickable images in between SliderHeader and TextBlock.",
+        },
         source: {
             code: `<Diptych {...${JSON.stringify(DiptychWithHeaderImage.args, null, 2)}}/>`,
         },
