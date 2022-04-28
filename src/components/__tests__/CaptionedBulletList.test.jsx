@@ -5,7 +5,7 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import CaptionedBulletList from "../../Templates/CaptionedBulletList/CaptionedBulletList.react";
+import CaptionedBulletList from "../Templates/CaptionedBulletList/CaptionedBulletList.react";
 
 describe("CaptionedBulletList", () => {
   // -------------------------------------
