@@ -1,0 +1,35 @@
+/* ================================================= */
+/* IconBulletlist Definitions */
+/* ================================================= */
+.qui .qui-icon-bullet-list-card {
+    background-color: #ffffff;
+    padding: 1.5em;
+    border-radius: 1em;
+    min-height: 30em;
+
+    .qui-icon-bullet-list-image {
+        width: 100%;
+        border-radius: 1em;
+        max-height: 12.5em;
+        filter: drop-shadow(0px 5px 2px #a09797);
+    }
+    .qui-title-block {
+        min-width: 12em;
+        min-height: 10em;
+    }
+    .qui-title {
+        font-size: 1.5em;
+        padding: 0 0 0.2em 0;
+    }
+    .qui-sub-title {
+        font-size: 1em;
+    }
+}
+/* ================================================= */
+/* IconBulletlist Sizing Definitions */
+/* ================================================= */
+@media only screen and (min-width: 481px) {
+    .qui .qui-icon-bullet-list-card {
+        width: 25em;
+    }
+}
