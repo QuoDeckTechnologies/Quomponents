@@ -5,7 +5,7 @@ export default {
     title: "Design System/DateField/DateField",
     component: DateField,
     argTypes: {
-        content: "",
+        label: "",
         asPadded: {
             control: "select",
             options: ["fitted", "compact", "normal", "relaxed"],
@@ -54,11 +54,7 @@ export default {
     },
     decorators: [
         (story) => (
-            <div
-                style={{
-                    textAlign: "",
-                }}
-            >
+            <div>
                 {story()}
             </div>
         ),
@@ -67,7 +63,7 @@ export default {
         componentSubtitle:
             "Default DateField for general purpose use",
         a11y: { disable: true },
-        docs: { iframeHeight: 150 },
+        docs: { iframeHeight: 400 },
     },
 };
 // -------------------------------------------------------------
@@ -76,7 +72,7 @@ export default {
 const Template = (args) => <DateField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: "Start Date",
+    label: "Start Date",
     asPadded: "normal",
     withColor: {
         backgroundColor: "#aaaaaa",

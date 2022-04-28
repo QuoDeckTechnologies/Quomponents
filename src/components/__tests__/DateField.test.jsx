@@ -19,7 +19,7 @@ describe("DateField", () => {
         jest.resetAllMocks();
         component = mount(
             <DateField
-                content="Start Date"
+                label="Start Date"
                 asPadded="normal"
                 withColor={null}
                 withAnimation={null}

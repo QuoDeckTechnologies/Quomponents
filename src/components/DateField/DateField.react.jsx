@@ -16,9 +16,9 @@ DateField.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Use to define Content in component
+    Use to define label in DateField component
     */
-    content: PropTypes.string,
+    label: PropTypes.string,
     //=======================================
     // Quommon props
     //=======================================
@@ -69,7 +69,7 @@ DateField.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: "",
+    label: "",
     //=======================================
     // Quommon props
     //=======================================
@@ -125,7 +125,7 @@ export default function DateField(props) {
             <div className={`qui-date-field-container ${quommonClasses.childClasses}`} >
                 <div className="qui-date-field" style={Color}>
                     <div className="qui-date-field-label">
-                        {props.content}
+                        {props.label}
                     </div>
                     <div>
                         <i className={`far fa-calendar qui-calendar-icon`}
