@@ -1,11 +1,19 @@
 import React from "react";
-import CaptionedBulletList from "../components/Templates/CaptionedBulletList/CaptionedBulletList.react";
+import Anagram from "../../components/Templates/Anagram/Anagram.react";
 
 export default {
-  title: "Design System/Templates/CaptionedBulletList/CaptionedBulletList",
-  component: CaptionedBulletList,
+  title: "Design System/Templates/Anagram/Anagram",
+  component: Anagram,
   argTypes: {
-    data: {},
+    data: {
+      title: "",
+      subtitle: "",
+      image: "",
+      backgroundImage: "",
+      question: "",
+      answer: "",
+      purpose: "",
+    },
     slideId: 0,
     asVariant: {
       control: "select",
@@ -18,13 +26,19 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
+          questionColor: "",
+          answerColor: "",
           slideHeaderTextColor: "",
           slideHeaderAccentColor: "",
           slideHeaderBackgroundColor: "",
-          textBlockBackgroundColor: "",
-          bulletBlockTextdColor: "",
-          bulletBlockBackgroundColor: "",
-          backgroundColor: "",
+          inputFieldTextColor: "",
+          inputFieldAccentColor: "",
+          inputFieldBackgroundColor: "",
+          buttonTextColor: "",
+          buttonBackgroundColor: "",
+          buttonHoverBackgroundColor: "",
+          buttonHoverTextColor: "",
+          backgroundColor: "#fff",
         },
       },
     },
@@ -38,10 +52,22 @@ export default {
         },
       },
     },
+    isDisabled: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
     isHidden: {
       table: {
         category: "is-Toggles",
         defaultValue: false,
+      },
+    },
+    onClick: {
+      table: {
+        category: "Events",
+        defaultValue: null,
       },
     },
   },
@@ -58,40 +84,43 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a Captioned Bullet List with TextBlock, BulletBlock and a SlideHeader, we can switch the slideHeader with header image by removing the title and subtitle from prop, and by giving the image link as prop we can see an image. If the title, subtitle, and image are provided together, only the slideHeader is visible",
+    componentSubtitle: "Displays a Anagram with a question and jumbled answer, the user need to submit the correct word as answer, we can switch between the image and SlideHeader by adding or removing the image prop",
     a11y: { disable: true },
     docs: {
-      iframeHeight: 400,
+      iframeHeight: 650,
     },
   },
 };
+const Template = (args) => <Anagram {...args} />;
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <CaptionedBulletList {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-    caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "",
+    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
     backgroundImage: "",
-    bullets: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "Quisque sed turpis vel lectus suscipit auctor",
-      "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-    ]
+    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    answer: "Answer",
+    purpose: ""
   },
   slideId: 0,
   asVariant: "warning",
   withColor: {
-    slideHeaderTextColor: "#FFFFFF",
+    questionColor: "#000000",
+    answerColor: "#000000",
+    slideHeaderTextColor: "#ffffff",
     slideHeaderAccentColor: "#AD2929",
-    slideHeaderBackgroundColor: "#ad292980",
-    textBlockBackgroundColor: "#ff000000",
-    bulletBlockTextColor: "#ffffff",
-    bulletBlockBackgroundColor: "#ad292980",
+    slideHeaderBackgroundColor: "#AD292980",
+    inputFieldTextColor: "",
+    inputFieldAccentColor: "",
+    inputFieldBackgroundColor: "",
+    buttonTextColor: "",
+    buttonBackgroundColor: "",
+    buttonHoverBackgroundColor: "",
+    buttonHoverTextColor: "",
     backgroundColor: "#fff",
   },
   withAnimation: {
@@ -99,166 +128,115 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  isDisabled: false,
   isHidden: false,
 };
 Default.parameters = {
   docs: {
     source: {
-      code: `<CaptionedBulletList {...${JSON.stringify(Default.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// CaptionedBulletListWithImage
-// -------------------------------------------------------------
-export const CaptionedBulletListWithImage = Template.bind({});
-CaptionedBulletListWithImage.args = {
-  data: {
-    title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-    caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    backgroundImage: "",
-    bullets: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "Quisque sed turpis vel lectus suscipit auctor",
-      "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-    ]
-  },
-  asVariant: "warning",
-  withColor: {
-    slideHeaderTextColor: "#FFFFFF",
-    slideHeaderAccentColor: "#AD2929",
-    slideHeaderBackgroundColor: "#ad292980",
-    textBlockBackgroundColor: "#2d92a4",
-    textBlockTextColor: "#fff",
-    bulletBlockTextColor: "#ffffff",
-    bulletBlockBackgroundColor: "#ad292980",
-    backgroundColor: "#fff",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
-  },
-  isHidden: false,
-};
-CaptionedBulletListWithImage.parameters = {
-  docs: {
-    source: {
-      code: `<CaptionedBulletList {...${JSON.stringify(CaptionedBulletListWithImage.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// CaptionedBulletListWithBackgroundImage
-// -------------------------------------------------------------
-export const CaptionedBulletListWithBackgroundImage = Template.bind({});
-CaptionedBulletListWithBackgroundImage.args = {
-  data: {
-    title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-    caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    backgroundImage: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-    bullets: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "Quisque sed turpis vel lectus suscipit auctor",
-      "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-    ]
-  },
-  asVariant: "warning",
-  withColor: {
-    slideHeaderTextColor: "#FFFFFF",
-    slideHeaderAccentColor: "#AD2929",
-    slideHeaderBackgroundColor: "#ad292980",
-    textBlockBackgroundColor: "#2d92a4",
-    textBlockTextColor: "#fff",
-    bulletBlockTextColor: "#ffffff",
-    bulletBlockBackgroundColor: "#ad292980",
-    backgroundColor: "#fff",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
-  },
-  isHidden: false,
-};
-CaptionedBulletListWithBackgroundImage.parameters = {
-  docs: {
-    source: {
-      code: `<CaptionedBulletList {...${JSON.stringify(CaptionedBulletListWithBackgroundImage.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// MultipleCaptionedBulletList
-// -------------------------------------------------------------
-const MultipleCaptionedBulletListTemplate = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args, {
-    }),
-  };
-  return (
-    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", backgroundColor: "#454545" }}>
-      <div style={{ margin: "1em", width: "25em" }}>
-        <CaptionedBulletList
-          {...Object.assign({}, baseObj, {
-            asVariant: 'warning',
-            withAnimation: {
-              animation: "slideRight",
-              duration: 0.5,
-              delay: 0,
-            },
-          })}
-        />
-      </div>
-      <div style={{ margin: "1em", width: "25em" }}>
-        <CaptionedBulletList
-          {...Object.assign({}, baseObj, {
-            asVariant: 'warning',
-            withAnimation: {
-              animation: "slideUp",
-              duration: 0.5,
-              delay: 0.8,
-            },
-          })}
-        />
-      </div>
-      <div style={{ margin: "1em", width: "25em" }}>
-        <CaptionedBulletList
-          {...Object.assign({}, baseObj, {
-            asVariant: 'warning',
-            withAnimation: {
-              animation: "slideLeft",
-              duration: 0.5,
-              delay: 0.5,
-            },
-          })}
-        />
-      </div>
-    </div>
-  );
-};
-export const MultipleCaptionedBulletList = MultipleCaptionedBulletListTemplate.bind({});
-MultipleCaptionedBulletList.parameters = {
-  docs: {
-    description: {
-      story: "Multiple CaptionedBulletList.",
-    },
-    source: {
-      code: `<CaptionedBulletList data={image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-      title: "Neque porro quisquam est qui dolorem",
-      subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem", ,}/>`,
+      code: `<Anagram {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
   },
 };
 
 // -------------------------------------------------------------
-// ColoredCaptionedBulletList
+// AnagramWithSlideHeader
 // -------------------------------------------------------------
-const ColoredCaptionedBulletListTemplate = (args) => {
+export const AnagramWithSlideHeader = Template.bind({});
+AnagramWithSlideHeader.args = {
+  data: {
+    title: "Neque porro quisquam est qui dolorem",
+    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    image: "",
+    backgroundImage: "",
+    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    answer: "Answer",
+    purpose: ""
+  },
+  slideId: 0,
+  asVariant: "warning",
+  withColor: {
+    questionColor: "#000000",
+    answerColor: "#000000",
+    slideHeaderTextColor: "#ffffff",
+    slideHeaderAccentColor: "#AD2929",
+    slideHeaderBackgroundColor: "#AD292980",
+    inputFieldTextColor: "",
+    inputFieldAccentColor: "",
+    inputFieldBackgroundColor: "",
+    buttonTextColor: "",
+    buttonBackgroundColor: "",
+    buttonHoverBackgroundColor: "",
+    buttonHoverTextColor: "",
+    backgroundColor: "#fff",
+  },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  isDisabled: false,
+  isHidden: false,
+};
+AnagramWithSlideHeader.parameters = {
+  docs: {
+    source: {
+      code: `<Anagram {...${JSON.stringify(AnagramWithSlideHeader.args, null, 2)}}/>`,
+    },
+  },
+};
+
+// -------------------------------------------------------------
+// AnagramWithSlideHeaderAndBackgroundImage
+// -------------------------------------------------------------
+export const AnagramWithSlideHeaderAndBackgroundImage = Template.bind({});
+AnagramWithSlideHeaderAndBackgroundImage.args = {
+  data: {
+    title: "Neque porro quisquam est qui dolorem",
+    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    image: "",
+    backgroundImage: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    answer: "Answer",
+    purpose: ""
+  },
+  slideId: 0,
+  asVariant: "warning",
+  withColor: {
+    questionColor: "#000000",
+    answerColor: "#000000",
+    slideHeaderTextColor: "#ffffff",
+    slideHeaderAccentColor: "#AD2929",
+    slideHeaderBackgroundColor: "#AD292980",
+    inputFieldTextColor: "",
+    inputFieldAccentColor: "",
+    inputFieldBackgroundColor: "#918686",
+    buttonTextColor: "",
+    buttonBackgroundColor: "",
+    buttonHoverBackgroundColor: "",
+    buttonHoverTextColor: "",
+    backgroundColor: "#fff",
+  },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  isDisabled: false,
+  isHidden: false,
+};
+AnagramWithSlideHeaderAndBackgroundImage.parameters = {
+  docs: {
+    source: {
+      code: `<Anagram {...${JSON.stringify(AnagramWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+    },
+  },
+};
+
+// -------------------------------------------------------------
+// MultipleAnagram
+// -------------------------------------------------------------
+const MultipleAnagramTemplate = (args) => {
   const baseObj = {
     ...Object.assign({}, Default.args, args, {
     }),
@@ -266,17 +244,84 @@ const ColoredCaptionedBulletListTemplate = (args) => {
   return (
     <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", backgroundColor: "#454545" }}>
       <div style={{ margin: "1em", width: "25em" }}>
-        <CaptionedBulletList
+        <Anagram
+          {...Object.assign({}, baseObj, {
+            asVariant: 'warning',
+            withAnimation: {
+              animation: "slideRight",
+              duration: 0.5,
+              delay: 0,
+            },
+          })}
+        />
+      </div>
+      <div style={{ margin: "1em", width: "25em" }}>
+        <Anagram
+          {...Object.assign({}, baseObj, {
+            asVariant: 'warning',
+            withAnimation: {
+              animation: "slideUp",
+              duration: 0.5,
+              delay: 0.8,
+            },
+          })}
+        />
+      </div>
+      <div style={{ margin: "1em", width: "25em" }}>
+        <Anagram
+          {...Object.assign({}, baseObj, {
+            asVariant: 'warning',
+            withAnimation: {
+              animation: "slideLeft",
+              duration: 0.5,
+              delay: 0.5,
+            },
+          })}
+        />
+      </div>
+    </div>
+  );
+};
+export const MultipleAnagram = MultipleAnagramTemplate.bind({});
+MultipleAnagram.parameters = {
+  docs: {
+    description: {
+      story: "Multiple Anagram.",
+    },
+    source: {
+      code: `<Anagram content={image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+      caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+      label: "RAWNES",}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// ColoredAnagram
+// -------------------------------------------------------------
+const ColoredAnagramTemplate = (args) => {
+  const baseObj = {
+    ...Object.assign({}, Default.args, args, {
+    }),
+  };
+  return (
+    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", backgroundColor: "#454545" }}>
+      <div style={{ margin: "1em", width: "25em" }}>
+        <Anagram
           {...Object.assign({}, baseObj, {
             asVariant: 'warning',
             withColor: {
+              questionColor: "#5072a4",
+              answerColor: "#ff0000",
               slideHeaderTextColor: "#ffffff",
               slideHeaderAccentColor: "#AD2929",
               slideHeaderBackgroundColor: "#AD292980",
-              textBlockTextColor: "#ffffff",
-              textBlockBackgroundColor: "#2d92a4",
-              bulletBlockTextColor: "#12ff00",
-              bulletBlockBackgroundColor: "#000000",
+              inputFieldTextColor: "#12ff00",
+              inputFieldAccentColor: "#00ff17",
+              inputFieldBackgroundColor: "#000000",
+              buttonTextColor: "#00ffa4",
+              buttonBackgroundColor: "#000000",
+              buttonHoverBackgroundColor: "#FF0000",
+              buttonHoverTextColor: "#0000ff",
             },
             withAnimation: {
               animation: "slideRight",
@@ -287,17 +332,22 @@ const ColoredCaptionedBulletListTemplate = (args) => {
         />
       </div>
       <div style={{ margin: "1em", width: "25em" }}>
-        <CaptionedBulletList
+        <Anagram
           {...Object.assign({}, baseObj, {
             asVariant: 'warning',
             withColor: {
+              questionColor: "#FFFF00",
+              answerColor: "#000000",
               slideHeaderTextColor: "#ffffff",
               slideHeaderAccentColor: "#AD2929",
-              textBlockTextColor: "#ffffff",
-              textBlockBackgroundColor: "#a42f2d",
               slideHeaderBackgroundColor: "#AD292980",
-              bulletBlockTextColor: "#0000ff",
-              bulletBlockBackgroundColor: "#FF00FF",
+              inputFieldTextColor: "#0000ff",
+              inputFieldAccentColor: "#FF0000",
+              inputFieldBackgroundColor: "#FF00FF",
+              buttonTextColor: "#ffff17",
+              buttonBackgroundColor: "#12ff00",
+              buttonHoverBackgroundColor: "#ff0000",
+              buttonHoverTextColor: "#5072a4",
             },
             withAnimation: {
               animation: "slideUp",
@@ -308,17 +358,22 @@ const ColoredCaptionedBulletListTemplate = (args) => {
         />
       </div>
       <div style={{ margin: "1em", width: "25em" }}>
-        <CaptionedBulletList
+        <Anagram
           {...Object.assign({}, baseObj, {
             asVariant: 'warning',
             withColor: {
+              questionColor: "#ffff00",
+              answerColor: "#0f00f0",
               slideHeaderTextColor: "#ffffff",
               slideHeaderAccentColor: "#AD2929",
-              textBlockTextColor: "#ffffff",
-              textBlockBackgroundColor: "#7ea42d",
               slideHeaderBackgroundColor: "#AD292980",
-              bulletBlockTextColor: "",
-              bulletBlockBackgroundColor: "",
+              inputFieldTextColor: "",
+              inputFieldAccentColor: "",
+              inputFieldBackgroundColor: "",
+              buttonTextColor: "",
+              buttonBackgroundColor: "",
+              buttonHoverBackgroundColor: "",
+              buttonHoverTextColor: "",
             },
             withAnimation: {
               animation: "slideLeft",
@@ -331,24 +386,26 @@ const ColoredCaptionedBulletListTemplate = (args) => {
     </div>
   );
 };
-export const ColoredCaptionedBulletList = ColoredCaptionedBulletListTemplate.bind({});
-ColoredCaptionedBulletList.parameters = {
+export const ColoredAnagram = ColoredAnagramTemplate.bind({});
+ColoredAnagram.parameters = {
   docs: {
     description: {
-      story: "displays Colored CaptionedBulletList.",
+      story: "displays Colored Anagram.",
     },
     source: {
-      code: `<CaptionedBulletList data={image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-      title: "Neque porro quisquam est qui dolorem",
-      subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",}
+      code: `<Anagram content={image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+      caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+      label: "RAWNES",}
       withColor: {
-        slideHeaderTextColor: "#ffffff",
-        slideHeaderAccentColor: "#AD2929",
-        textBlockTextColor:"#ffffff",
-        textBlockBackgroundColor:"#7ea42d",
-        slideHeaderBackgroundColor: "#AD292980",
-        bulletBlockTextColor: "",
-        bulletBlockBackgroundColor: "",
+        questionColor: "#FFFF00",
+        answerColor: "#000000",
+        inputFieldTextColor: "#0000ff",
+        inputFieldAccentColor: "#FF0000",
+        inputFieldBackgroundColor: "#FF00FF",
+        buttonTextColor: "#ffff17",
+        buttonBackgroundColor: "#12ff00",
+        buttonHoverBackgroundColor: "#ff0000",
+        buttonHoverTextColor: "#5072a4",
       },/>`,
     },
   },
