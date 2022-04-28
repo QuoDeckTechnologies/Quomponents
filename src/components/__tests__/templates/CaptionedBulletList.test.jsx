@@ -2,14 +2,12 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Anagram from "../../Templates/Anagram/Anagram.react";
-import Button from "../../Buttons/Button/Button.react";
+import CaptionedBulletList from "../../Templates/CaptionedBulletList/CaptionedBulletList.react";
 
-describe("Anagram", () => {
+describe("CaptionedBulletList", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -17,18 +15,31 @@ describe("Anagram", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <Anagram
+      <CaptionedBulletList
         data={{
           title: "This is Title",
           subtitle: "This is Subtitle",
           image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-          question: "Question",
-          answer: "Answer",
-          purpose: "quiz",
+          caption: "caption",
+          backgroundImage: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          bullets: [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "Quisque sed turpis vel lectus suscipit auctor",
+            "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+          ]
         }}
         slideId={0}
         asVariant="primary"
-        withColor={null}
+        withColor={{
+          slideHeaderTextColor: "",
+          slideHeaderAccentColor: "",
+          slideHeaderBackgroundColor: "",
+          textBlockBackgroundColor: "",
+          textBlockTextColor: "",
+          bulletBlockTextColor: "",
+          bulletBlockBackgroundColor: "",
+          backgroundColor: ""
+        }}
         isHidden={false}
         isDisabled={false}
         onClick={(e) => {
@@ -46,29 +57,16 @@ describe("Anagram", () => {
     });
     expect(component.exists()).toBe(true);
   });
-  it('Test click event on handleSubmit function of Button', () => {
-    const handleSubmit = jest.fn();
-    const button = shallow((<Anagram onClick={handleSubmit} />));
-    button.find('Button').simulate('click');
-    expect(handleSubmit.mock.calls.length).toEqual(1);
-  });
-  it('Test click event on InputField', () => {
-    component.find('InputField').simulate('click')
-  });
   it("should render correctly when passed withColor props", () => {
     let colors = {
-      captionColor: "#ff0000",
-      labelColor: "#000000",
-      slideHeaderTextColor: "ff0000",
-      slideHeaderAccentColor: "23ff00",
-      slideHeaderBackgroundColor: "00ff00",
-      inputFieldTextColor: "ff0000",
-      inputFieldAccentColor: "23ff00",
-      inputFieldBackgroundColor: "00ff00",
-      buttonTextColor: "ff0023",
-      buttonBackgroundColor: "ff0ff0",
-      buttonHoverBackgroundColor: "ffff00",
-      buttonHoverTextColor: "ff00ff",
+      slideHeaderTextColor: "#FFFFFF",
+      slideHeaderAccentColor: "#AD2929",
+      slideHeaderBackgroundColor: "#ad292980",
+      textBlockBackgroundColor: "#2d92a4",
+      textBlockTextColor: "#fff",
+      bulletBlockTextColor: "#ffffff",
+      bulletBlockBackgroundColor: "#ad292980",
+      backgroundColor: "#fff"
     }
     component.setProps({ withColor: colors })
     expect(component.exists()).toBe(true);
@@ -80,6 +78,10 @@ describe("Anagram", () => {
       delay: 0,
     }
     component.setProps({ withAnimation: animation })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed data as null", () => {
+    component.setProps({ data: {} })
     expect(component.exists()).toBe(true);
   })
   it("should render correctly when passed isHidden props as false", () => {
@@ -96,10 +98,6 @@ describe("Anagram", () => {
   })
   it("should render correctly when passed isDisabled props as true", () => {
     component.setProps({ isDisabled: true })
-    expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed answer props as null", () => {
-    component.setProps({ answer: null })
     expect(component.exists()).toBe(true);
   })
   it("should render correctly when passed asVariant prop as primary", () => {
@@ -127,28 +125,40 @@ describe("Anagram", () => {
       title: "This is Title",
       subtitle: "This is Subtitle",
       image: "",
-      question: "Question",
-      answer: "Answer",
-      purpose: "quiz",
+      caption: "caption",
+      bullets: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Quisque sed turpis vel lectus suscipit auctor",
+        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+      ]
     }
     component.setProps({ data: data })
     expect(component.exists()).toBe(true);
   })
-  it("should render correctly with withColor prop when hovered on Button", () => {
-    const component = renderer.create(
-      <Button
-        withColor={{
-          buttonTextColor: "ff0023",
-          buttonBackgroundColor: "ff0ff0",
-          buttonHoverBackgroundColor: "ffff00",
-          buttonHoverTextColor: "ff00ff",
-        }}
-        onClick={() => console.log("testing")}
-      />
-    );
-    const tree = component.toJSON();
-    act(() => {
-      tree.props.onMouseEnter();
-    });
-  });
+  it("should render correctly when passed backgroundImage prop as null and backgroundColor is passed", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
+      image: "",
+      backgroundImage: "",
+      caption: "caption",
+      bullets: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Quisque sed turpis vel lectus suscipit auctor",
+        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+      ]
+    }
+    let colors = {
+      slideHeaderTextColor: "#FFFFFF",
+      slideHeaderAccentColor: "#AD2929",
+      slideHeaderBackgroundColor: "#ad292980",
+      textBlockBackgroundColor: "#2d92a4",
+      textBlockTextColor: "#fff",
+      bulletBlockTextColor: "#ffffff",
+      bulletBlockBackgroundColor: "#ad292980",
+      backgroundColor: "#fff"
+    }
+    component.setProps({ data: data, withColor: colors })
+    expect(component.exists()).toBe(true);
+  })
 });
