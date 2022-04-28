@@ -45,7 +45,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a loader for general-purpose use",
+        componentSubtitle: "Displays a RibbonMenu for general-purpose use",
         a11y: { disable: true },
         docs: {
             iframeHeight: 300,

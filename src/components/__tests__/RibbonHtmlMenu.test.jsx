@@ -7,7 +7,7 @@ import { shallow } from "enzyme";
 // -------------------------------------
 import RibbonHtmlMenu from "../RibbonMenu/htmlMenu/RibbonHtmlMenu.react";
 
-describe("RibbonMenu", () => {
+describe("RibbonHtmlMenu", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
