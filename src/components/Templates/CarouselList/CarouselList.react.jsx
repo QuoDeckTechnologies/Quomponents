@@ -119,8 +119,7 @@ CarouselList.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- component is used to show the question and the jumbled answer , user need to submit the correct
-  answer using the input field, typed answer will submitted as it is.
+- component uses slideHeader and a Html Carousel , can switch to presenter slide
 **/
 export default function CarouselList(props) {
   let { data, withColor, isPresenter } = props

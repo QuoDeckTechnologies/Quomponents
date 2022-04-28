@@ -73,7 +73,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a CarouselList with a question and jumbled answer, the user need to submit the correct word as answer, we can switch the header image with slideHeader by giving the title and subtitle from prop, and by removing the title and subtitle we can see an image. If the title, subtitle, and image are provided together, only the slideHeader is visible",
+        componentSubtitle: "Displays a carousel list with SlideHeader and a Html Carousel , slideHeader can be replaced by header image by giving headerImage prop, component can be switched as presenter slide by enabling the isPresenter prop.",
         a11y: { disable: true },
         docs: {
             iframeHeight: 650,
