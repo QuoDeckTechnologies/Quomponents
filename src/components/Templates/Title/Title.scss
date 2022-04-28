@@ -2,7 +2,7 @@
   padding: 1.2em;
   background-color: #ffffff;
   border-radius: 1em;
-  min-height: 28.8em;
+  min-height: 31em;
   max-width: 20.5em;
   .qui .qui-title-block {
     min-width: 12em;
@@ -77,6 +77,7 @@
     font-size: 0.5em;
     font-weight: 300;
     .qui .qui-text-block-area {
+      padding: 0.5em 0.5em 0.5em 0.7em;
       border-radius: 0;
       border-top-right-radius: 0.4em;
       border-bottom-right-radius: 0.4em;
@@ -113,9 +114,20 @@
   .qui .qui-title-text-block {
     transform: translateX(-8%);
   }
+  .qui.qui-title-card {
+    .qui .qui-title {
+      font-size: 2em;
+    }
+  }
 }
+
 @media only screen and (min-width: 428px) {
   .qui .qui-title-text-block {
     transform: translateX(-7%);
+  }
+  .qui.qui-title-card {
+    .qui .qui-title {
+      font-size: 2.4em;
+    }
   }
 }

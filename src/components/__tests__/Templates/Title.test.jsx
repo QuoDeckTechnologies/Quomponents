@@ -1,11 +1,11 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Title from "../Templates/Title/Title.react";
+import Title from "../../Templates/Title/Title.react";
 
 describe("Title", () => {
   // -------------------------------------
@@ -60,7 +60,7 @@ describe("Title", () => {
   it("should render correctly without throwing error when presenter image is provided", () => {
     component.setProps({
       data: {
-        presenterImage: "presenter_image",
+        presenter: "presenter_image",
       },
       isPresenter: true,
     });

@@ -24,8 +24,7 @@ Title.propTypes = {
     image: PropTypes.string,
     icon: PropTypes.string,
     backgroundImage: PropTypes.string,
-    presenterImage: PropTypes.string,
-    presenterBackgroundImage: PropTypes.string,
+    presenter: PropTypes.string,
   }),
   /**
     Title component can use presenter props to show presenter template
@@ -35,16 +34,23 @@ Title.propTypes = {
   // Quommon props
   //=======================================
   /**
+    Use to float the component in parent container
+    */
+  asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+  /**
     Use to override component colors and behavior
     */
   withColor: PropTypes.shape({
-    slideHeaderBackgroundColor: PropTypes.string,
-    textBlockBackgroundColor: PropTypes.string,
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
     textColor: PropTypes.string,
+    slideHeaderAccentColor: PropTypes.string,
+    slideHeaderBackgroundColor: PropTypes.string,
+    slideHeaderTextColor: PropTypes.string,
+    textBlockBackgroundColor: PropTypes.string,
+    textBlockTextColor: PropTypes.string,
+    iconBlockBackgroundColor: PropTypes.string,
+    iconBlockAccentColor: PropTypes.string,
   }),
-
   /**
     Use to define the entry animation of the component
     */
@@ -105,8 +111,8 @@ export default function Title(props) {
           content={{ title: data?.title }}
           withColor={{
             backgroundColor: withColor?.slideHeaderBackgroundColor,
-            accentColor: withColor?.accentColor,
-            textColor: withColor?.textColor,
+            accentColor: withColor?.slideHeaderAccentColor,
+            textColor: withColor?.slideHeaderTextColor,
           }}
         />
       );
@@ -135,7 +141,7 @@ export default function Title(props) {
             asFloated="left"
             withColor={{
               backgroundColor: withColor?.textBlockBackgroundColor,
-              textColor: withColor?.textColor,
+              textColor: withColor?.textBlockTextColor,
             }}
           />
         </div>
@@ -147,7 +153,7 @@ export default function Title(props) {
             asSize="small"
             withColor={{
               backgroundColor: withColor?.textBlockBackgroundColor,
-              textColor: withColor?.textColor,
+              textColor: withColor?.textBlockTextColor,
             }}
           />
         </div>
@@ -163,15 +169,10 @@ export default function Title(props) {
   //-------------------------------------------------------------------
   const getBackground = () => {
     return {
-      backgroundImage: `url(${props.data?.backgroundImage})`,
+      backgroundImage: `url(${data?.backgroundImage})`,
     };
   };
-  const getPresenterBackground = () => {
-    return {
-      backgroundImage: `url(${props.data?.presenterBackgroundImage})`,
-    };
-  };
-  const background = isPresenter ? getPresenterBackground() : getBackground();
+  const background = getBackground();
 
   // ========================= Render Function =================================
 
@@ -198,8 +199,8 @@ export default function Title(props) {
             >
               <IconBlock
                 withColor={{
-                  accentColor: withColor?.textColor,
-                  backgroundColor: withColor?.accentColor,
+                  accentColor: withColor?.iconBlockAccentColor,
+                  backgroundColor: withColor?.iconBlockBackgroundColor,
                 }}
                 withIcon={{ name: data?.icon }}
               />
@@ -210,13 +211,18 @@ export default function Title(props) {
       {isPresenter && getPresenterView(data)}
       {!isPresenter && (
         <div className="qui-title-card-subtitle">
-          <p className={`qui-title-subtitle`}>{props.data?.subtitle}</p>
+          <p
+            style={{ color: withColor?.textColor }}
+            className={`qui-title-subtitle`}
+          >
+            {props.data?.subtitle}
+          </p>
         </div>
       )}
-      {isPresenter && data.presenterImage && (
+      {isPresenter && data?.presenter && (
         <img
           className="qui-title-presenter-image"
-          src={data.presenterImage}
+          src={data?.presenter}
           alt="Presenter"
         />
       )}
