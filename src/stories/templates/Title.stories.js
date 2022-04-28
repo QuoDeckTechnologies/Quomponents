@@ -1,5 +1,5 @@
 import React from "react";
-import Title from "../components/Templates/Title/Title.react";
+import Title from "../../components/Templates/Title/Title.react";
 
 export default {
   title: "Design System/Templates/Title/Title",
