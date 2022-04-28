@@ -46,10 +46,14 @@ MCQwithFeedback.propTypes = {
     */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    slideHeaderBackgroundColor: PropTypes.string,
-    buttonBackgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
     textColor: PropTypes.string,
+    slideHeaderBackgroundColor: PropTypes.string,
+    slideHeaderAccentColor: PropTypes.string,
+    slideHeaderTextColor: PropTypes.string,
+    buttonBackgroundColor: PropTypes.string,
+    buttonTextColor: PropTypes.string,
+    buttonHoverBackgroundColor: PropTypes.string,
+    buttonHoverTextColor: PropTypes.string,
   }),
 
   /**
@@ -88,7 +92,7 @@ MCQwithFeedback.defaultProps = {
   // Component Specific props
   //=======================================
   data: {
-    image: "",
+    backgroundImage: "",
     caption: "",
     label: "",
   },
@@ -134,15 +138,19 @@ export default function MCQwithFeedback(props) {
         className={`qui-mcq-with-feedback-container ${quommonClasses.childClasses}`}
       >
         <div className="qui-mcq-with-feedback-slide-header">
-          {!data?.image && (data?.title || data?.subtitle) ? (
+          {!data?.backgroundImage && (data?.title || data?.subtitle) ? (
             <SlideHeader
               content={{ title: data?.title, subTitle: data?.subtitle }}
-              withColor={props.withColor}
+              withColor={{
+                accentColor: withColor?.slideHeaderAccentColor,
+                textColor: withColor?.slideHeaderTextColor,
+                backgroundColor: withColor?.slideHeaderBackgroundColor,
+              }}
             />
           ) : (
             <img
               className="qui-mcq-with-feedback-image"
-              src={props.data?.image}
+              src={props.data?.backgroundImage}
               alt="slide"
             />
           )}
@@ -150,8 +158,8 @@ export default function MCQwithFeedback(props) {
             <div className={`qui-mcq-with-feedback-icon-block`}>
               <IconBlock
                 withColor={{
-                  accentColor: withColor?.textColor,
-                  backgroundColor: withColor?.accentColor,
+                  accentColor: withColor?.slideHeaderTextColor,
+                  backgroundColor: withColor?.slideHeaderAccentColor,
                 }}
                 withIcon={{ name: data?.icon }}
               />
@@ -169,9 +177,15 @@ export default function MCQwithFeedback(props) {
           <ButtonBank
             {...props}
             content={optionsArray}
-            onClick={(value) =>
+            withColor={{
+              backgroundColor: withColor.buttonBackgroundColor,
+              textColor: withColor.buttonTextColor,
+              hoverBackgroundColor: withColor.buttonHoverBackgroundColor,
+              hoverTextColor: withColor.buttonHoverTextColor,
+            }}
+            onClick={(e) =>
               props.onClick(
-                optionsArray.indexOf(value.target.innerText.toLowerCase())
+                optionsArray.indexOf(e.target.innerText.toLowerCase())
               )
             }
           />
