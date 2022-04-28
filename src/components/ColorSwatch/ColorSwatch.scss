@@ -1,4 +1,4 @@
-.qui .color-swatch-container{
+.qui .qui-color-swatch-container {
     width: 1.75em;
     height: 2.625em;
     background: #FFFFFF;
@@ -6,18 +6,21 @@
     aspect-ratio: 2 / 1;
     cursor: pointer;
 }
-.qui .color-swatch-title{
+
+.qui .qui-color-swatch-title {
     width: 100%;
     height: 0.5em;
     background-color: #F88A8A;
 }
-.qui .color-swatch-sub-title{
+
+.qui .qui-color-swatch-sub-title {
     width: 100%;
     height: 0.1875em;
     background-color: #EF2929;
 }
-.qui .color-swatch-footer{
-    margin-top:100%;
+
+.qui .qui-color-swatch-footer {
+    margin-top: 100%;
     width: 100%;
     height: 0.1875em;
     background-color: #685555;

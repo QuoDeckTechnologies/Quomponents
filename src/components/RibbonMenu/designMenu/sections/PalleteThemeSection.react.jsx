@@ -14,7 +14,7 @@ import "../../../../common/stylesheets/overrule.scss";
 
 import ColorSwatch from "../../../ColorSwatch/ColorSwatch.react";
 
-import { PaletteSet } from "../../PalleteSelect.react";
+import { ThemeSet } from "../../ThemeSet.react";
 
 PalleteThemeSection.propTypes = {
 	//=======================================
@@ -123,7 +123,7 @@ export default function PalleteThemeSection(props) {
 				>
 					<div className="qui-ribbon-menu-color-pallete-section">
 						<div className="qui-ribbon-menu-color-pallete-section-child-container">
-							{_.map(PaletteSet, (colorSet, index) => {
+							{_.map(ThemeSet, (colorSet, index) => {
 								return (
 									<div
 										className="qui-ribbon-menu-color-pallete-section-child"

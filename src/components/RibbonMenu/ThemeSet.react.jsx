@@ -1,4 +1,4 @@
-const PaletteSet = [
+const ThemeSet = [
 	{
 		pageColor: "#ffffff",
 		primaryColor: "#f88a8a",
@@ -91,4 +91,4 @@ const PaletteSet = [
 	},
 ];
 
-export { PaletteSet };
+export { ThemeSet };

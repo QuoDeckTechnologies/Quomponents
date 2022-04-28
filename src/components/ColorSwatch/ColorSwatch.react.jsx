@@ -90,17 +90,17 @@ export default function ColorSwatch(props) {
 
     const colorSwatch = (colors) => {
         return (
-            <div className={`color-swatch-container`}
+            <div className={`qui-color-swatch-container`}
                 style={{ backgroundColor: colors?.pageColor }}
                 onClick={props.onClick}
                 >
-                <div className={`color-swatch-title`}
+                <div className={`qui-color-swatch-title`}
                     style={{ backgroundColor: colors?.primaryColor }}>
                 </div>
-                <div className="color-swatch-sub-title"
+                <div className="qui-color-swatch-sub-title"
                     style={{ backgroundColor: colors?.accentColor }}>
                 </div>
-                <div className="color-swatch-footer"
+                <div className="qui-color-swatch-footer"
                     style={{ backgroundColor: colors?.secondaryColor }}>
                 </div>
             </div>
