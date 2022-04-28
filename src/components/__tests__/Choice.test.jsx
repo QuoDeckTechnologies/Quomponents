@@ -166,14 +166,14 @@ describe("Choice", () => {
 		component.setProps({ onClick: choice1 });
 		let choicebtn = component.find(".qui-choice1");
 		choicebtn.simulate("click");
-		expect(choice1).toBeCalledWith({ "correct": "checked", "text": "Item1" });
+		expect(choice1).toBeCalledWith(0);
 	});
 
 	it("should call choice2 function with the parameter when click on choice2 button", () => {
 		component.setProps({ onClick: choice2 });
 		let choicebtn = component.find(".qui-choice2");
 		choicebtn.simulate("click");
-		expect(choice2).toBeCalledWith({ "correct": "", "text": "Item2" });
+		expect(choice2).toBeCalledWith(1);
 	});
 
 	it("should render correctly with withTranslation prop", () => {
