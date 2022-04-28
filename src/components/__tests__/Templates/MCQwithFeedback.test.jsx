@@ -5,7 +5,7 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import MCQwithFeedback from "../Templates/MCQwithFeedback/MCQwithFeedback.react";
+import MCQwithFeedback from "../../Templates/MCQwithFeedback/MCQwithFeedback.react";
 
 describe("MCQ with Feedback", () => {
   // -------------------------------------
