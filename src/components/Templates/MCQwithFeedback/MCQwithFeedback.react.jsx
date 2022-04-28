@@ -26,11 +26,15 @@ MCQwithFeedback.propTypes = {
     question: PropTypes.string,
     feedback: PropTypes.array,
     options: PropTypes.array,
-  }),
+  }).isRequired,
   /**
     slideId can be used if same template is used continueously for multiple slides in qdf.
     */
   slideId: PropTypes.number,
+  /**
+    Use for rounded corners of buttons 
+    */
+  isCircular: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
@@ -66,6 +70,10 @@ MCQwithFeedback.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+    Use to float the component in parent container
+    */
+  asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+  /**
     Use to enable/disable the component
     */
   isDisabled: PropTypes.bool,
@@ -74,7 +82,7 @@ MCQwithFeedback.propTypes = {
     */
   isHidden: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
+    MCQwithFeedback component must have the onClick function passed as props
     */
   onClick: PropTypes.func.isRequired,
 };
@@ -94,6 +102,7 @@ MCQwithFeedback.defaultProps = {
 };
 /**
 ## Notes
+- The design system used for this component is Material UI (@mui/material)
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css

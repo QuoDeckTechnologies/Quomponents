@@ -75,9 +75,12 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a basic button for general-purpose use",
+    componentSubtitle: "Displays a MCQ with Feedback Component",
     a11y: { disable: true },
     // controls: { expanded: true }
+    docs:{
+      iframeHeight : 650
+    }
   },
 };
 
@@ -96,7 +99,7 @@ Default.args = {
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     feedback: ["That was correct", "That was wrong", "Thanks for the answer"],
     options: [
-      { correct: "", text: "Item 1" },
+      { correct: "checked", text: "Item 1" },
       { correct: "", text: "Item 2" },
       { correct: "", text: "Item 3" },
       { correct: "", text: "Item 4" },
@@ -134,8 +137,8 @@ Default.parameters = {
 // -------------------------------------------------------------
 // Slide header MCQ with Feedback
 // -------------------------------------------------------------
-export const SlideHeaderMCQwithFeedback = Template.bind({});
-SlideHeaderMCQwithFeedback.args = {
+export const SlideHeaderMcqWithFeedback = Template.bind({});
+SlideHeaderMcqWithFeedback.args = {
   ...Default.args,
   data: {
     title: "Lorem ipsum dolor sit amet",
@@ -144,7 +147,7 @@ SlideHeaderMCQwithFeedback.args = {
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     feedback: ["That was correct", "That was wrong", "Thanks for the answer"],
     options: [
-      { correct: "", text: "Item 1" },
+      { correct: "checked", text: "Item 1" },
       { correct: "", text: "Item 2" },
       { correct: "", text: "Item 3" },
       { correct: "", text: "Item 4" },
@@ -162,11 +165,11 @@ SlideHeaderMCQwithFeedback.args = {
     buttonHoverTextColor: "",
   },
 };
-SlideHeaderMCQwithFeedback.parameters = {
+SlideHeaderMcqWithFeedback.parameters = {
   docs: {
     source: {
-      code: `<SlideHeaderMCQwithFeedback {...${JSON.stringify(
-        SlideHeaderMCQwithFeedback.args,
+      code: `<SlideHeaderMcqWithFeedback {...${JSON.stringify(
+        SlideHeaderMcqWithFeedback.args,
         null,
         2
       )}}/>`,
@@ -176,8 +179,8 @@ SlideHeaderMCQwithFeedback.parameters = {
 // -------------------------------------------------------------
 // Colored MCQ with Feedback
 // -------------------------------------------------------------
-export const ColoredMCQwithFeedback = Template.bind({});
-ColoredMCQwithFeedback.args = {
+export const ColoredMcqWithFeedback = Template.bind({});
+ColoredMcqWithFeedback.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#fffcf2",
@@ -191,11 +194,11 @@ ColoredMCQwithFeedback.args = {
     buttonHoverTextColor: "",
   },
 };
-ColoredMCQwithFeedback.parameters = {
+ColoredMcqWithFeedback.parameters = {
   docs: {
     source: {
-      code: `<ColoredMCQwithFeedback {...${JSON.stringify(
-        ColoredMCQwithFeedback.args,
+      code: `<ColoredMcqWithFeedback {...${JSON.stringify(
+        ColoredMcqWithFeedback.args,
         null,
         2
       )}}/>`,
