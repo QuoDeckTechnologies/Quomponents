@@ -5,7 +5,9 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Diptych from "../Diptych/Diptych.react";
+import Diptych from "../../Templates/Diptych/Diptych.react";
+import ClickableImage from "../../ClickableImage/ClickableImage.react"
+import SlideHeader from "../../SlideHeader/SlideHeader.react"
 
 describe("Diptych", () => {
     // -------------------------------------
@@ -20,13 +22,23 @@ describe("Diptych", () => {
                     title: "This is Title",
                     subtitle: "This is Subtitle",
                     headerImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-                    diptych:[],
+                    backgroundImage: "",
+                    diptych: [
+                        "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+                        "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
+                    ],
+                    presenterTitle: "",
+                    presenterSubtitle: "",
+                    presenterCaption: "",
+                    presenterBackgroundImage: "",
+                    presenterImage: "",
                     caption: "caption",
                 }}
+                isPresenter={false}
                 slideId={0}
                 asVariant="primary"
                 withColor={null}
-                withTranslation={null}
+                withAnimation={null}
                 isHidden={false}
                 isDisabled={false}
                 onClick={(e) => {
@@ -40,15 +52,44 @@ describe("Diptych", () => {
     });
     it("should render correctly with empty content", () => {
         component.setProps({
-            content: {},
+            data: {},
         });
         expect(component.exists()).toBe(true);
     });
-    it('Test click event on first ClickableImage', () => {
-        component.find('ClickableImage').at(0).simulate('click')
+    it("should render correctly when passed withAnimation props", () => {
+        let animation = {
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+        }
+        component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    })
+    it('Test click event on first ClickableImage when passed isPresenter false', () => {
+        component.setProps({ isPresenter: false })
+        component.find(ClickableImage).at(0).simulate('click')
     });
-    it('Test click event on second ClickableImage', () => {
-        component.find('ClickableImage').at(1).simulate('click')
+    it('Test click event on second ClickableImage when passed isPresenter false', () => {
+        component.setProps({ isPresenter: false })
+        component.find(ClickableImage).at(1).simulate('click')
+    });
+    it('Test click event on second ClickableImage when passed isPresenter true', () => {
+        component.setProps({ isPresenter: true })
+        component.find(ClickableImage).at(0).simulate('click')
+    });
+    it('Test click event on second ClickableImage when passed isPresenter true', () => {
+        component.setProps({ isPresenter: true })
+        component.find(ClickableImage).at(1).simulate('click')
+    });
+    it('should render slideHeader component instead of  header image', () => {
+        expect(component.find(SlideHeader).exists()).toBe(false)
+        let data = {
+            title: "This is Title",
+            subtitle: "This is Subtitle",
+            headerImage: "",
+        }
+        component.setProps({ data: data })
+        expect(component.find(SlideHeader).exists()).toBe(true)
     });
     it("should render correctly when passed withColor props", () => {
         let colors = {
