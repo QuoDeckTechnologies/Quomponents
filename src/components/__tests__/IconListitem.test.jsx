@@ -22,8 +22,9 @@ describe("IconListItem", () => {
         component = mount(
             <IconListItem
                 content={[{
-                    title: "title", image: ""
+                    text: "text", image: ""
                 }]}
+                asEmphasis="conversation"
                 asFloated="none"
                 asSize="normal"
                 withAnimation={{
@@ -31,12 +32,34 @@ describe("IconListItem", () => {
                     duration: 0.5,
                     delay: 0,
                 }}
+                withColor={{
+                    textColor: "#666666",
+                }}
+                // withColor={null}
                 isHidden={false}
             />
         );
     });
 
     it("should render correctly without throwing error", () => {
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed withColor props", () => {
+        let colors = {
+            textColor: "#ffffff",
+        }
+        component.setProps({ withColor: colors })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asEmphasis prop as conversation", () => {
+        component.setProps({ asEmphasis: "conversation" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asEmphasis prop as list", () => {
+        component.setProps({ asEmphasis: "list" })
         expect(component.exists()).toBe(true);
     });
 
@@ -79,15 +102,15 @@ describe("IconListItem", () => {
     it("should render correctly without throwing error when pass content", () => {
         let value = [{
             image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-            title: "The boot space in Hyundai Elantra is 420 L"
+            text: "The boot space in Hyundai Elantra is 420 L"
         },
         {
             image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-            title: "The boot space in Hyundai Elantra is 420 L"
+            text: "The boot space in Hyundai Elantra is 420 L"
         },
         {
             image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-            title: "The boot space in Hyundai Elantra is 420 L"
+            text: "The boot space in Hyundai Elantra is 420 L"
         },]
 
         component.setProps({ content: value })
