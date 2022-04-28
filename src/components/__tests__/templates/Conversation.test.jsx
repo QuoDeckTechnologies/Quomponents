@@ -133,8 +133,5 @@ describe("Conversation", () => {
         }
         component.setProps({ data: data })
         expect(component.exists()).toBe(true);
-
     });
-
-
 });
