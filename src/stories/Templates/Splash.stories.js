@@ -1,5 +1,5 @@
 import React from "react";
-import Splash from "../components/Templates/Splash/Splash.react";
+import Splash from "../../components/Templates/Splash/Splash.react";
 
 export default {
   title: "Design System/Templates/Splash/Splash",
@@ -35,7 +35,7 @@ export default {
         defaultValue: {
           backgroundColor: "",
           textBlockBackgroundColor: "",
-          accentColor: "",
+          textBlockTextColor: "",
           textColor: "",
         },
       },
@@ -92,7 +92,7 @@ Default.args = {
   withColor: {
     backgroundColor: "",
     textBlockBackgroundColor: "",
-    accentColor: "#ffffff",
+    textBlockTextColor: "#ffffff",
     textColor: "",
   },
   withAnimation: {
@@ -128,7 +128,7 @@ SplashWithPresenter.args = {
   withColor: {
     backgroundColor: "",
     textBlockBackgroundColor: "",
-    accentColor: "#ffffff",
+    textBlockTextColor: "#ffffff",
     textColor: "#ffffff",
   },
 };
@@ -152,7 +152,7 @@ ColoredSplash.args = {
   withColor: {
     backgroundColor: "#8c9ea3",
     textBlockBackgroundColor: "#005f73",
-    accentColor: "#ffffff",
+    textBlockTextColor: "#ffffff",
     textColor: "#ffffff",
   },
 };

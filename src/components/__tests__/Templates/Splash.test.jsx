@@ -5,7 +5,7 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Splash from "../Templates/Splash/Splash.react";
+import Splash from "../../Templates/Splash/Splash.react";
 
 describe("Splash", () => {
   // -------------------------------------

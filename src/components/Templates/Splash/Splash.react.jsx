@@ -38,7 +38,7 @@ Splash.propTypes = {
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textBlockBackgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
+    textBlockTextColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
 
@@ -102,7 +102,7 @@ export default function Splash(props) {
   //-------------------------------------------------------------------
   const getView = (data) => {
     return (
-      <div className="qui-splash-text" key={`splash-text-${slideId}`}>
+      <div className="qui-splash-text" key={`splash-${slideId}`}>
         <p style={{ color: withColor?.textColor }}>{data?.splash}</p>
       </div>
     );
@@ -122,7 +122,7 @@ export default function Splash(props) {
             asSize="small"
             withColor={{
               backgroundColor: withColor?.textBlockBackgroundColor,
-              textColor: withColor?.accentColor,
+              textColor: withColor?.textBlockTextColor,
             }}
           />
         </div>
