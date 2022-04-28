@@ -5,6 +5,7 @@
     align-items: center;
     padding: 10px;
 }
+
 .qui .qui-choices {
     min-height: 1em;
     min-width: 3em;
@@ -19,18 +20,21 @@
     border: 1px solid;
     text-transform: uppercase;
 }
+
 .qui .qui-choice1 {
     background-color: #ffab00;
-    color: black; 
+    color: black;
     flex: 1;
     align-self: stretch;
 }
+
 .qui .qui-choice2 {
     background-color: #454545;
     color: #ffab00;
     flex: 1;
     align-self: stretch;
 }
+
 .qui .qui-or {
     text-transform: uppercase;
     display: flex;
@@ -49,13 +53,14 @@
     color: #454545;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 374px)  {
-    .qui .qui-choices{
+@media only screen and (min-width: 320px) and (max-width: 374px) {
+    .qui .qui-choices {
         font-size: 0.4em;
     }
-    .qui .qui-or{
+
+    .qui .qui-or {
         height: 2.3em;
-    width: 2.3em;
-    font-size: 0.45em
+        width: 2.3em;
+        font-size: 0.45em
     }
 }

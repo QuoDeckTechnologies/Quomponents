@@ -12,7 +12,6 @@ describe("Choice", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
-
 	let component, data, options;
 	data = {
 		title: "Neque porro quisquam est qui dolorem",

@@ -57,6 +57,19 @@ export default {
 				},
 			},
 		},
+		isChoice: {
+			table: {
+				category: "is-Toggles",
+				defaultValue: true,
+			},
+		},
+		asEmphasis: {
+			control: "select",
+			options: ["text", "outlined", "contained"],
+			table: {
+				category: "as-Flags",
+			},
+		},
 		isDisabled: {
 			table: {
 				category: "is-Toggles",
@@ -90,7 +103,7 @@ export default {
 	],
 	parameters: {
 		componentSubtitle:
-			"Displays a Choice with a question, the user need to submit the correct word as answer, we can switch between the image and SlideHeader by adding or removing the image prop",
+			"Displays a Choice with a question, the user need to submit the correct option as answer, we can switch between the image and SlideHeader by adding or removing the image prop",
 		a11y: { disable: true },
 		docs: {
 			iframeHeight: 650,
@@ -130,17 +143,19 @@ Default.args = {
 		slideHeaderAccentColor: "#AD2929",
 		slideHeaderBackgroundColor: "#AD292980",
 		backgroundColor: "#ffffff",
-    primaryBackgroundColor: "",
-    secondaryBackgroundColor: "",
-    accentColor: "",
-    primaryTextColor: "",
-    secondaryTextColor: "",
+		primaryBackgroundColor: "",
+		secondaryBackgroundColor: "",
+		accentColor: "",
+		primaryTextColor: "",
+		secondaryTextColor: "",
 	},
 	withAnimation: {
 		animation: "zoom",
 		duration: 0.5,
 		delay: 0,
 	},
+	isChoice: true,
+	asEmphasis: "contained",
 	isDisabled: false,
 	isHidden: false,
 };
@@ -151,7 +166,6 @@ Default.parameters = {
 		},
 	},
 };
-
 // -------------------------------------------------------------
 // ChoiceWithSlideHeader
 // -------------------------------------------------------------
@@ -176,6 +190,7 @@ ChoiceWithSlideHeader.args = {
 		],
 	},
 	slideId: 0,
+	isChoice: true,
 	asVariant: "warning",
 	withColor: {
 		questionColor: "#000000",
@@ -194,6 +209,7 @@ ChoiceWithSlideHeader.args = {
 		duration: 0.5,
 		delay: 0,
 	},
+	asEmphasis: "contained",
 	isDisabled: false,
 	isHidden: false,
 };
@@ -208,177 +224,227 @@ ChoiceWithSlideHeader.parameters = {
 		},
 	},
 };
-
+// -------------------------------------------------------------
+// ChoiceWithSlideHeader
+// -------------------------------------------------------------
+export const ChoiceWithoutCircularOr = Template.bind({});
+ChoiceWithoutCircularOr.args = {
+	data: {
+		title: "Neque porro quisquam est qui dolorem",
+		subtitle:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+		image: "",
+		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+		backgroundImage: "",
+		choice: [
+			{
+				correct: "checked",
+				text: "Item1",
+			},
+			{
+				correct: "",
+				text: "Item2",
+			},
+		],
+	},
+	slideId: 0,
+	isChoice: false,
+	asVariant: "warning",
+	withColor: {
+		questionColor: "#000000",
+		slideHeaderTextColor: "#ffffff",
+		slideHeaderAccentColor: "#AD2929",
+		slideHeaderBackgroundColor: "#AD292980",
+		backgroundColor: "#ffffff",
+		primaryBackgroundColor: "",
+		secondaryBackgroundColor: "",
+		accentColor: "",
+		primaryTextColor: "",
+		secondaryTextColor: "",
+	},
+	withAnimation: {
+		animation: "zoom",
+		duration: 0.5,
+		delay: 0,
+	},
+	asEmphasis: "contained",
+	isDisabled: false,
+	isHidden: false,
+};
+ChoiceWithoutCircularOr.parameters = {
+	docs: {
+		source: {
+			code: `<Choice {...${JSON.stringify(
+				ChoiceWithoutCircularOr.args,
+				null,
+				2
+			)}}/>`,
+		},
+	},
+};
 // -------------------------------------------------------------
 // MultipleChoice
 // -------------------------------------------------------------
-const MultipleChoiceTemplate = (args) => {
-	const baseObj = {
-		...Object.assign({}, Default.args, args, {}),
+export const MultipleChoice = (args) => {
+	const baseObj1 = {
+		...Object.assign({}, Default.args, {
+			asVariant: "primary",
+			withColor: {
+				slideHeaderTextColor: "#ffffff",
+				slideHeaderAccentColor: "#AD2929",
+				slideHeaderBackgroundColor: "#AD292980",
+				primaryBackgroundColor: "",
+				secondaryBackgroundColor: "",
+				accentColor: "",
+				primaryTextColor: "",
+				secondaryTextColor: "",
+			},
+			withAnimation: {
+				animation: "slideRight",
+				duration: 0.5,
+				delay: 0,
+			},
+			asEmphasis: "text"
+		})
+	};
+	const baseObj2 = {
+		...Object.assign({}, Default.args, {
+			asVariant: "warning",
+			withColor: {
+				slideHeaderTextColor: "#ffffff",
+				slideHeaderAccentColor: "#AD2929",
+				slideHeaderBackgroundColor: "#AD292980",
+				primaryBackgroundColor: "",
+				secondaryBackgroundColor: "",
+				accentColor: "",
+				primaryTextColor: "",
+				secondaryTextColor: "",
+			},
+			withAnimation: {
+				animation: "slideRight",
+				duration: 0.5,
+				delay: 0,
+			},
+			asEmphasis: "outlined"
+		})
+	};
+	const baseObj3 = {
+		...Object.assign({}, Default.args, {
+			asVariant: "secondary",
+			withColor: {
+				slideHeaderTextColor: "#ffffff",
+				slideHeaderAccentColor: "#AD2929",
+				slideHeaderBackgroundColor: "#AD292980",
+				primaryBackgroundColor: "",
+				secondaryBackgroundColor: "",
+				accentColor: "",
+				primaryTextColor: "",
+				secondaryTextColor: "",
+			},
+			withAnimation: {
+				animation: "slideRight",
+				duration: 0.5,
+				delay: 0,
+			},
+			asEmphasis: "contained"
+		})
 	};
 	return (
-		<div
-			style={{
-				display: "flex",
-				flexDirection: "row",
-				alignItems: "center",
-				justifyContent: "center",
-				backgroundColor: "#454545",
-			}}
-		>
-			<div style={{ margin: "1em", width: "25em" }}>
-				<Choice
-					{...Object.assign({}, baseObj, {
-						asVariant: "warning",
-						withAnimation: {
-							animation: "slideRight",
-							duration: 0.5,
-							delay: 0,
-						},
-					})}
-				/>
-			</div>
-			<div style={{ margin: "1em", width: "25em" }}>
-				<Choice
-					{...Object.assign({}, baseObj, {
-						asVariant: "warning",
-						withAnimation: {
-							animation: "slideUp",
-							duration: 0.5,
-							delay: 0.8,
-						},
-					})}
-				/>
-			</div>
-			<div style={{ margin: "1em", width: "25em" }}>
-				<Choice
-					{...Object.assign({}, baseObj, {
-						asVariant: "warning",
-						withAnimation: {
-							animation: "slideLeft",
-							duration: 0.5,
-							delay: 0.5,
-						},
-					})}
-				/>
-			</div>
+		<div style={{ display: "flex" }}>
+			<Choice
+				{...Object.assign({}, baseObj1, {
+				})}
+			/>
+			<Choice
+				{...Object.assign({}, baseObj2, {
+				})}
+			/>
+			<Choice
+				{...Object.assign({}, baseObj3, {
+				})}
+			/>
 		</div>
 	);
 };
-export const MultipleChoice = MultipleChoiceTemplate.bind({});
-MultipleChoice.parameters = {
-	docs: {
-		description: {
-			story: "Multiple Choice.",
-		},
-		source: {
-			code: `<Choice content={image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"}/>`,
-		},
-	},
-};
+
 // -------------------------------------------------------------
 // ColoredChoice
 // -------------------------------------------------------------
-const ColoredChoiceTemplate = (args) => {
-	const baseObj = {
-		...Object.assign({}, Default.args, args, {}),
+export const ColoredChoice = (args) => {
+	const baseObj1 = {
+		...Object.assign({}, Default.args, {
+			asVariant: "primary",
+			withColor: {
+				slideHeaderTextColor: "#ffffff",
+				slideHeaderAccentColor: "#AD2929",
+				slideHeaderBackgroundColor: "#AD292980",
+				primaryBackgroundColor: "#AD2929",
+				secondaryBackgroundColor: "#AD292980",
+				accentColor: "",
+				primaryTextColor: "#ffffff",
+				secondaryTextColor: "#ffffff",
+			},
+			withAnimation: {
+				animation: "slideRight",
+				duration: 0.5,
+				delay: 0,
+			},
+		})
+	};
+	const baseObj2 = {
+		...Object.assign({}, Default.args, {
+			asVariant: "warning",
+			withColor: {
+				slideHeaderTextColor: "#ffffff",
+				slideHeaderAccentColor: "#AD2929",
+				slideHeaderBackgroundColor: "#AD292980",
+				primaryBackgroundColor: "#CCFF00",
+				secondaryBackgroundColor: "#CCFF66",
+				accentColor: "",
+				primaryTextColor: "#000000",
+				secondaryTextColor: "#000000",
+			},
+			withAnimation: {
+				animation: "slideRight",
+				duration: 0.5,
+				delay: 0,
+			},
+		})
+	};
+	const baseObj3 = {
+		...Object.assign({}, Default.args, {
+			asVariant: "secondary",
+			withColor: {
+				slideHeaderTextColor: "#ffffff",
+				slideHeaderAccentColor: "#AD2929",
+				slideHeaderBackgroundColor: "#AD292980",
+				primaryBackgroundColor: "#000066",
+				secondaryBackgroundColor: "#003366",
+				accentColor: "",
+				primaryTextColor: "#ffffff",
+				secondaryTextColor: "#ffffff",
+			},
+			withAnimation: {
+				animation: "slideRight",
+				duration: 0.5,
+				delay: 0,
+			},
+		})
 	};
 	return (
-		<div
-			style={{
-				display: "flex",
-				flexDirection: "row",
-				alignItems: "center",
-				justifyContent: "center",
-				backgroundColor: "#454545",
-			}}
-		>
-			<div style={{ margin: "1em", width: "25em" }}>
-				<Choice
-					{...Object.assign({}, baseObj, {
-						asVariant: "warning",
-						withColor: {
-							questionColor: "#5072a4",
-							slideHeaderTextColor: "#ffffff",
-							slideHeaderAccentColor: "#AD2929",
-							slideHeaderBackgroundColor: "#AD292980",
-							primaryBackgroundColor: "",
-							secondaryBackgroundColor: "",
-							accentColor: "",
-							primaryTextColor: "",
-							secondaryTextColor: "",
-						},
-						withAnimation: {
-							animation: "slideRight",
-							duration: 0.5,
-							delay: 0,
-						},
-					})}
-				/>
-			</div>
-			<div style={{ margin: "1em", width: "25em" }}>
-				<Choice
-					{...Object.assign({}, baseObj, {
-						asVariant: "warning",
-						withColor: {
-							questionColor: "#FFFF00",
-							slideHeaderTextColor: "#ffffff",
-							slideHeaderAccentColor: "#AD2929",
-							slideHeaderBackgroundColor: "#AD292980",
-							primaryBackgroundColor: "",
-							secondaryBackgroundColor: "",
-							accentColor: "",
-							primaryTextColor: "",
-							secondaryTextColor: "",
-						},
-						withAnimation: {
-							animation: "slideUp",
-							duration: 0.5,
-							delay: 0.8,
-						},
-					})}
-				/>
-			</div>
-			<div style={{ margin: "1em", width: "25em" }}>
-				<Choice
-					{...Object.assign({}, baseObj, {
-						asVariant: "warning",
-						withColor: {
-							questionColor: "#ffff00",
-							slideHeaderTextColor: "#ffffff",
-							slideHeaderAccentColor: "#AD2929",
-							slideHeaderBackgroundColor: "#AD292980",
-						},
-						withAnimation: {
-							animation: "slideLeft",
-							duration: 0.5,
-							delay: 0.5,
-						},
-					})}
-				/>
-			</div>
+		<div style={{ display: "flex" }}>
+			<Choice
+				{...Object.assign({}, baseObj1, {
+				})}
+			/>
+			<Choice
+				{...Object.assign({}, baseObj2, {
+				})}
+			/>
+			<Choice
+				{...Object.assign({}, baseObj3, {
+				})}
+			/>
 		</div>
 	);
-};
-export const ColoredChoice = ColoredChoiceTemplate.bind({});
-ColoredChoice.parameters = {
-	docs: {
-		description: {
-			story: "displays Colored Choice.",
-		},
-		source: {
-			code: `<Choice content={image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"}
-      withColor: {
-        questionColor: "#FFFF00",
-        slideHeaderTextColor: "#ffffff",
-        slideHeaderAccentColor: "#AD2929",
-        slideHeaderBackgroundColor: "#AD292980",
-        primaryBackgroundColor: "",
-        secondaryBackgroundColor: "",
-        accentColor: "",
-        primaryTextColor: "",
-        secondaryTextColor: "",
-      },/>`,
-		},
-	},
 };

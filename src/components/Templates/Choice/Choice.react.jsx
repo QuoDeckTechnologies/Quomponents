@@ -18,8 +18,8 @@ SlideChoice.propTypes = {
 	// Component Specific props
 	//=======================================
 	/**
-    SlideChoice data should be passed in data field and it is a required field
-    */
+	SlideChoice data should be passed in data field and it is a required field
+	*/
 	data: PropTypes.shape({
 		title: PropTypes.string,
 		subtitle: PropTypes.string,
@@ -34,12 +34,16 @@ SlideChoice.propTypes = {
 		),
 	}).isRequired,
 	slideId: PropTypes.number,
+	/**
+	Use to enable/disable the OR tag
+	*/
+	isChoice: PropTypes.bool,
 	//=======================================
 	// Quommon props
 	//=======================================
 	/**
-    Use to define standard component type
-    */
+	Use to define standard component type
+	*/
 	asVariant: PropTypes.oneOf([
 		"primary",
 		"secondary",
@@ -48,8 +52,8 @@ SlideChoice.propTypes = {
 		"error",
 	]),
 	/**
-    Use to override component colors and behavior
-    */
+	Use to override component colors and behavior
+	*/
 	withColor: PropTypes.shape({
 		questionColor: PropTypes.string,
 		slideHeaderTextColor: PropTypes.string,
@@ -63,8 +67,8 @@ SlideChoice.propTypes = {
 		secondaryTextColor: PropTypes.string,
 	}),
 	/**
-    Use to define the entry animation of the component
-    */
+	Use to define the entry animation of the component
+	*/
 	withAnimation: PropTypes.shape({
 		animation: PropTypes.oneOf([
 			"zoom",
@@ -80,16 +84,20 @@ SlideChoice.propTypes = {
 		delay: PropTypes.number,
 	}),
 	/**
-    Use to enable/disable the component
-    */
+	Set action emphasis in increasing order 
+	*/
+	asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
+	/**
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    SlideChoice component must have the onClick function passed as props
-    */
+	SlideChoice component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func.isRequired,
 };
 
@@ -103,6 +111,7 @@ SlideChoice.defaultProps = {
 	// Quommon props
 	//=======================================
 	asVariant: "primary",
+	asEmphasis: "contained",
 	withColor: null,
 	withAnimation: null,
 	isDisabled: false,
@@ -113,7 +122,7 @@ SlideChoice.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- component is used to show the question with the choice button, user need to submit the correct
+- component is used to show the question with the choice buttons, user need to submit the correct
   answer using choice button.
 **/
 export default function SlideChoice(props) {
@@ -136,7 +145,6 @@ export default function SlideChoice(props) {
 		accentColor: props.withColor?.slideHeaderAccentColor,
 		backgroundColor: props.withColor?.slideHeaderBackgroundColor,
 	};
-
 	let cardBackground = props.withColor?.backgroundColor
 		? props.withColor?.backgroundColor
 		: "#ffffff";
@@ -191,6 +199,7 @@ export default function SlideChoice(props) {
 									primaryTextColor: props.withColor?.primaryTextColor,
 									secondaryTextColor: props.withColor?.secondaryTextColor,
 								}}
+								asEmphasis={props.asEmphasis}
 								asPadded="fitted"
 								asSize="huge"
 								options={[

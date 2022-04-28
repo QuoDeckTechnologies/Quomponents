@@ -6,7 +6,7 @@ const dictionary = JSON.stringify({
     options: [{
       correct: "checked",
       text: "Item 1",
-    },{
+    }, {
       correct: "",
       text: "Item 2",
     }]
@@ -15,13 +15,12 @@ const dictionary = JSON.stringify({
     options: [{
       correct: "checked",
       text: "वस्तु 1",
-    },{
+    }, {
       correct: "",
       text: "वस्तु 2",
     }]
   },
 });
-
 export default {
   title: "Design System/Buttons/Choice",
   component: Choice,
@@ -29,7 +28,7 @@ export default {
     options: [{
       correct: "checked",
       text: "Item 1",
-    },{
+    }, {
       correct: "",
       text: "Item 2",
     }],
@@ -68,7 +67,7 @@ export default {
           secondaryBackgroundColor: "",
           accentColor: "",
           primaryTextColor: "",
-          secondaryTextColor:""
+          secondaryTextColor: ""
         },
       },
     },
@@ -138,7 +137,7 @@ Default.args = {
   options: [{
     correct: "checked",
     text: "Item 1",
-  },{
+  }, {
     correct: "",
     text: "Item 2",
   }],
@@ -150,7 +149,7 @@ Default.args = {
     secondaryBackgroundColor: "",
     accentColor: "",
     primaryTextColor: "",
-    secondaryTextColor:""
+    secondaryTextColor: ""
   },
   withAnimation: {
     animation: "zoom",
@@ -176,7 +175,6 @@ Default.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
 // Translated Button
 // -------------------------------------------------------------

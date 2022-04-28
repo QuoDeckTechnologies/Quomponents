@@ -17,8 +17,8 @@ Choice.propTypes = {
 	// Component Specific props
 	//=======================================
 	/**
-    Options prop is array of 2 object has the correct choice with its text.
-    */
+	Options prop is array of 2 object has the correct choice with its text.
+	*/
 	options: PropTypes.arrayOf(
 		PropTypes.shape({
 			correct: PropTypes.string,
@@ -26,29 +26,29 @@ Choice.propTypes = {
 		})
 	).isRequired,
 	/**
-    Use to pass the key of any element to display its value. 
+	Use to pass the key of any element to display its value. 
 	Pass text in the extractForm to display the string which is there in text key.
-    */
+	*/
 	extractForm: PropTypes.string,
 	/**
-    Use to enable/disable the OR tag
-    */
+	Use to enable/disable the OR tag
+	*/
 	isChoice: PropTypes.bool,
 
 	//=======================================
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-     Set action emphasis in increasing order 
-     */
+	 Set action emphasis in increasing order 
+	 */
 	asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
 	/**
-    Use to override component colors and behavior
-    */
+	Use to override component colors and behavior
+	*/
 	withColor: PropTypes.shape({
 		primaryBackgroundColor: PropTypes.string,
 		secondaryBackgroundColor: PropTypes.string,
@@ -57,24 +57,24 @@ Choice.propTypes = {
 		secondaryTextColor: PropTypes.string,
 	}),
 	/**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+	Use to show a translated version of the component text. Dictionary must be valid JSON. 
+	*/
 	withTranslation: PropTypes.shape({
 		lang: PropTypes.string,
 		tgt: PropTypes.string,
 		dictionary: PropTypes.string,
 	}),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    Choice component must have the onClick function passed as props
-    */
+	Choice component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func.isRequired,
 };
 
@@ -117,23 +117,23 @@ function getPrimaryButtonColors(colors, emphasis) {
 	colorStyleForPrimary =
 		emphasis === "text"
 			? {
-					background: "transparent",
-					boxShadow: "none",
-					border: "none",
-					color: colors?.primaryTextColor,
-			  }
+				background: "transparent",
+				boxShadow: "none",
+				border: "none",
+				color: colors?.primaryTextColor,
+			}
 			: emphasis === "outlined"
-			? {
+				? {
 					background: "transparent",
 					boxShadow: "none",
 					borderColor: colors?.primaryBackgroundColor,
 					color: colors?.primaryBackgroundColor,
-			  }
-			: {
+				}
+				: {
 					background: colors?.primaryBackgroundColor,
 					color: colors?.primaryTextColor,
 					border: "none",
-			  };
+				};
 	return colorStyleForPrimary;
 }
 
@@ -142,23 +142,23 @@ function getSecondaryButtonColors(colors, emphasis) {
 	colorStyleForSecondary =
 		emphasis === "text"
 			? {
-					background: "transparent",
-					boxShadow: "none",
-					border: "none",
-					color: colors?.secondaryBackgroundColor,
-			  }
+				background: "transparent",
+				boxShadow: "none",
+				border: "none",
+				color: colors?.secondaryBackgroundColor,
+			}
 			: emphasis === "outlined"
-			? {
+				? {
 					background: "transparent",
 					boxShadow: "none",
 					borderColor: colors?.secondaryBackgroundColor,
 					color: colors?.secondaryBackgroundColor,
-			  }
-			: {
+				}
+				: {
 					background: colors?.secondaryBackgroundColor,
 					color: colors?.secondaryTextColor,
 					border: "none",
-			  };
+				};
 	return colorStyleForSecondary;
 }
 
