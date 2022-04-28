@@ -14,6 +14,7 @@ describe("DateField", () => {
     let component;
     let onClick = jest.fn();
     let handleClickDatepickerIcon = jest.fn();
+    let preventDefault = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -27,6 +28,7 @@ describe("DateField", () => {
                 isDisabled={false}
                 onClick={onClick}
                 handleClickDatepickerIcon={handleClickDatepickerIcon}
+                preventDefault={preventDefault}
             />
         );
     });
@@ -36,13 +38,21 @@ describe("DateField", () => {
     });
 
     it("should open Calender card correctly without throwing error", () => {
-        let calenderCard = component.find(".qui-date-field-input").children().at(0)
+        let calenderCard = component.find(".qui-calendar-icon").at(0)
         calenderCard.simulate('click')
         expect(calenderCard.exists()).toBe(true);
     });
 
     it("should pass the value to the DatePicker", () => {
         component.find(".qui-date-field-date-picker").at(1).simulate('change')
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should prevent Default action when click on DatePicker", () => {
+        let e = {
+            preventDefault: jest.fn()
+        }
+        component.find('.qui-date-field-date-picker').at(1).props().onKeyDown(e)
         expect(component.exists()).toBe(true);
     });
 
