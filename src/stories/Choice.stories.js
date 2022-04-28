@@ -38,6 +38,7 @@ export default {
         defaultValue: true,
       },
     },
+    extractForm: "",
     asEmphasis: {
       control: "select",
       options: ["text", "outlined", "contained"],
@@ -141,6 +142,7 @@ Default.args = {
     correct: "",
     text: "Item 2",
   }],
+  extractForm: "text",
   asEmphasis: "contained",
   asSize: "normal",
   asFloated: "inline",

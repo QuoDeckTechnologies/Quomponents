@@ -38,6 +38,11 @@ SlideChoice.propTypes = {
 	Use to enable/disable the OR tag
 	*/
 	isChoice: PropTypes.bool,
+	/**
+	Use to pass the key of any element to display its value. 
+	Pass text in the extractForm to display the string.
+	*/
+	extractForm: PropTypes.string,
 	//=======================================
 	// Quommon props
 	//=======================================
@@ -190,6 +195,7 @@ export default function SlideChoice(props) {
 						<div className="qui-slide-choices">
 							<Choice
 								{...props}
+								extractForm={props.extractForm}
 								withColor={{
 									primaryBackgroundColor:
 										props.withColor?.primaryBackgroundColor,

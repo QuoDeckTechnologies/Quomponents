@@ -244,4 +244,38 @@ describe("Choice", () => {
 		});
 		expect(component.find(".qui-or").props().style.display).toBe("flex");
 	});
+
+	it("should display the text of choice button when we pass extractForm props as text", () => {
+		component.setProps({
+			extractForm: "text", options: [
+				{
+					correct: "checked",
+					text: "Item1",
+				},
+				{
+					correct: "",
+					text: "Item2",
+				},
+			]
+		})
+		expect(component.find(".qui-choice1").text()).toBe("Item1");
+		expect(component.find(".qui-choice2").text()).toBe("Item2");
+	})
+
+	it("should display the text of choice button even if we do not pass extractForm", () => {
+		component.setProps({
+			extractForm: "", options: [
+				{
+					correct: "checked",
+					text: "Item1",
+				},
+				{
+					correct: "",
+					text: "Item2",
+				},
+			]
+		})
+		expect(component.find(".qui-choice1").text()).toBe("Item1");
+		expect(component.find(".qui-choice2").text()).toBe("Item2");
+	})
 });

@@ -22,6 +22,7 @@ export default {
 				},
 			],
 		},
+		extractForm: "",
 		slideId: 0,
 		asVariant: {
 			control: "select",
@@ -135,6 +136,7 @@ Default.args = {
 			},
 		],
 	},
+	extractForm: "text",
 	slideId: 0,
 	asVariant: "warning",
 	withColor: {
@@ -305,7 +307,7 @@ export const MultipleChoice = (args) => {
 				delay: 0,
 			},
 			asEmphasis: "text",
-			onClick:()=>{}
+			onClick: () => { }
 		})
 	};
 	const baseObj2 = {
@@ -327,7 +329,7 @@ export const MultipleChoice = (args) => {
 				delay: 0,
 			},
 			asEmphasis: "outlined",
-			onClick:()=>{}
+			onClick: () => { }
 		})
 	};
 	const baseObj3 = {
@@ -349,7 +351,7 @@ export const MultipleChoice = (args) => {
 				delay: 0,
 			},
 			asEmphasis: "contained",
-			onClick:()=>{}
+			onClick: () => { }
 		})
 	};
 	return (
@@ -391,7 +393,7 @@ export const ColoredChoice = (args) => {
 				duration: 0.5,
 				delay: 0,
 			},
-			onClick:()=>{}
+			onClick: () => { }
 		})
 	};
 	const baseObj2 = {
@@ -412,7 +414,7 @@ export const ColoredChoice = (args) => {
 				duration: 0.5,
 				delay: 0,
 			},
-			onClick:()=>{}
+			onClick: () => { }
 		})
 	};
 	const baseObj3 = {
@@ -433,7 +435,7 @@ export const ColoredChoice = (args) => {
 				duration: 0.5,
 				delay: 0,
 			},
-			onClick:()=>{}
+			onClick: () => { }
 		})
 	};
 	return (

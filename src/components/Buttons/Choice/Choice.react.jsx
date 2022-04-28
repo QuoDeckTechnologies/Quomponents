@@ -27,7 +27,7 @@ Choice.propTypes = {
 	).isRequired,
 	/**
 	Use to pass the key of any element to display its value. 
-	Pass text in the extractForm to display the string which is there in text key.
+	Pass text in the extractForm to display the string.
 	*/
 	extractForm: PropTypes.string,
 	/**
@@ -219,7 +219,7 @@ export default function Choice(props) {
 							style={Object.assign({}, primaryButtonStyle)}
 							onClick={choice1}
 						>
-							{options[0]?.text}
+							{options[0][props.extractForm ? props.extractForm : "text"]}
 						</div>
 						<div className="qui-or" style={Object.assign({}, orStyle)}>
 							OR
@@ -229,7 +229,7 @@ export default function Choice(props) {
 							style={Object.assign({}, secondaryButtonStyle)}
 							onClick={choice2}
 						>
-							{options[1]?.text}
+							{options[1][props.extractForm ? props.extractForm : "text"]}
 						</div>
 					</div>
 				)}
