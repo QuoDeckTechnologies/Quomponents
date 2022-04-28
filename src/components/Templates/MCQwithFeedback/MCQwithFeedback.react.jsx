@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
@@ -48,7 +48,6 @@ MCQwithFeedback.propTypes = {
     buttonHoverBackgroundColor: PropTypes.string,
     buttonHoverTextColor: PropTypes.string,
   }),
-
   /**
     Use to define the entry animation of the component
     */
@@ -100,17 +99,21 @@ MCQwithFeedback.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function MCQwithFeedback(props) {
-  const { data, withColor } = props;
-
-  let optionsArray = [];
-  data.options.forEach((item) => optionsArray.push(item.text.toLowerCase()));
-
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // 1. Destructuring props
+  //-------------------------------------------------------------------
+  const { data, withColor, slideId } = props;
+  //-------------------------------------------------------------------
+  // 2. Variable for ButtonBank content props
+  //-------------------------------------------------------------------
+  let optionsArray = [];
+  data?.options?.forEach((item) => optionsArray.push(item.text.toLowerCase()));
+  //-------------------------------------------------------------------
+  // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "mcq-with-feedback");
   //-------------------------------------------------------------------
-  // 5. Get animation of the component
+  // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
 
@@ -121,7 +124,7 @@ export default function MCQwithFeedback(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui qui-mcq-with-feedback-card ${quommonClasses.parentClasses}`}
-      style={{ backgroundColor: withColor.backgroundColor }}
+      style={{ backgroundColor: withColor?.backgroundColor }}
     >
       <div
         className={`qui-mcq-with-feedback-container ${quommonClasses.childClasses}`}
@@ -159,29 +162,28 @@ export default function MCQwithFeedback(props) {
         <p
           className={`qui-mcq-with-feedback-question`}
           style={{ color: withColor?.textColor }}
+          key={`mcq-with-feedback-question-${slideId}`}
         >
           {data?.question}
         </p>
-        {
-          <ButtonBank
-            {...props}
-            content={optionsArray}
-            asVariant="warning"
-            asFloated="none"
-            withColor={{
-              backgroundColor: withColor.buttonBackgroundColor,
-              textColor: withColor.buttonTextColor,
-              hoverBackgroundColor: withColor.buttonHoverBackgroundColor,
-              hoverTextColor: withColor.buttonHoverTextColor,
-            }}
-            withAnimation={null}
-            onClick={(e) =>
-              props.onClick(
-                optionsArray.indexOf(e.target.innerText.toLowerCase())
-              )
-            }
-          />
-        }
+        <ButtonBank
+          {...props}
+          content={optionsArray}
+          asVariant="warning"
+          asFloated="none"
+          withColor={{
+            backgroundColor: withColor?.buttonBackgroundColor,
+            textColor: withColor?.buttonTextColor,
+            hoverBackgroundColor: withColor?.buttonHoverBackgroundColor,
+            hoverTextColor: withColor?.buttonHoverTextColor,
+          }}
+          withAnimation={null}
+          onClick={(e) =>
+            props.onClick(
+              optionsArray.indexOf(e.target.innerText?.toLowerCase())
+            )
+          }
+        />
       </div>
     </motion.div>
   );
