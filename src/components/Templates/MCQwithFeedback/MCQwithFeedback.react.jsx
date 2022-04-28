@@ -27,20 +27,13 @@ MCQwithFeedback.propTypes = {
     feedback: PropTypes.array,
     options: PropTypes.array,
   }),
+  /**
+    slideId can be used if same template is used continueously for multiple slides in qdf.
+    */
   slideId: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
-  /**
-    Use to define standard component type
-    */
-  asVariant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "error",
-  ]),
   /**
     Use to override component colors and behavior
     */
@@ -91,15 +84,10 @@ MCQwithFeedback.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  data: {
-    backgroundImage: "",
-    caption: "",
-    label: "",
-  },
+  data: {},
   //=======================================
   // Quommon props
   //=======================================
-  asVariant: "primary",
   withColor: null,
   withAnimation: null,
   isDisabled: false,
@@ -133,6 +121,7 @@ export default function MCQwithFeedback(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui qui-mcq-with-feedback-card ${quommonClasses.parentClasses}`}
+      style={{ backgroundColor: withColor.backgroundColor }}
     >
       <div
         className={`qui-mcq-with-feedback-container ${quommonClasses.childClasses}`}
@@ -150,7 +139,7 @@ export default function MCQwithFeedback(props) {
           ) : (
             <img
               className="qui-mcq-with-feedback-image"
-              src={props.data?.backgroundImage}
+              src={data?.backgroundImage}
               alt="slide"
             />
           )}
@@ -169,20 +158,23 @@ export default function MCQwithFeedback(props) {
         {data?.icon && <div className="qui-mcq-with-feedback-separator"></div>}
         <p
           className={`qui-mcq-with-feedback-question`}
-          style={{ color: props.withColor?.captionColor }}
+          style={{ color: withColor?.textColor }}
         >
-          {props.data?.question}
+          {data?.question}
         </p>
         {
           <ButtonBank
             {...props}
             content={optionsArray}
+            asVariant="warning"
+            asFloated="none"
             withColor={{
               backgroundColor: withColor.buttonBackgroundColor,
               textColor: withColor.buttonTextColor,
               hoverBackgroundColor: withColor.buttonHoverBackgroundColor,
               hoverTextColor: withColor.buttonHoverTextColor,
             }}
+            withAnimation={null}
             onClick={(e) =>
               props.onClick(
                 optionsArray.indexOf(e.target.innerText.toLowerCase())

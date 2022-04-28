@@ -22,20 +22,6 @@ export default {
         defaultValue: false,
       },
     },
-    asVariant: {
-      control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asSize: {
-      control: "select",
-      options: ["tiny", "small", "normal", "big", "huge", "massive"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     asFloated: {
       control: "select",
       options: ["left", "right", "none", "inline"],
@@ -108,7 +94,7 @@ Default.args = {
     subtitle: "",
     icon: "",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    feedback: ["That was correct", "That was wrong"],
+    feedback: ["That was correct", "That was wrong", "Thanks for the answer"],
     options: [
       { correct: "", text: "Item 1" },
       { correct: "", text: "Item 2" },
@@ -118,8 +104,6 @@ Default.args = {
   },
   slideId: 0,
   isCircular: false,
-  asVariant: "primary",
-  asSize: "normal",
   asFloated: "none",
   withColor: {
     backgroundColor: "",
@@ -144,6 +128,100 @@ Default.parameters = {
   docs: {
     source: {
       code: `<MCQwithFeedback {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Slide header MCQ with Feedback
+// -------------------------------------------------------------
+export const SlideHeaderMCQwithFeedback = Template.bind({});
+SlideHeaderMCQwithFeedback.args = {
+  ...Default.args,
+  data: {
+    title: "Lorem ipsum dolor sit amet",
+    subtitle: "Lorem ipsum dolor ",
+    icon: "",
+    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    feedback: ["That was correct", "That was wrong", "Thanks for the answer"],
+    options: [
+      { correct: "", text: "Item 1" },
+      { correct: "", text: "Item 2" },
+      { correct: "", text: "Item 3" },
+      { correct: "", text: "Item 4" },
+    ],
+  },
+  withColor: {
+    backgroundColor: "",
+    textColor: "",
+    slideHeaderBackgroundColor: "#ad292980",
+    slideHeaderAccentColor: "#AD2929",
+    slideHeaderTextColor: "#ffffff",
+    buttonBackgroundColor: "#ad292980",
+    buttonTextColor: "",
+    buttonHoverBackgroundColor: "#AD2929",
+    buttonHoverTextColor: "",
+  },
+};
+SlideHeaderMCQwithFeedback.parameters = {
+  docs: {
+    source: {
+      code: `<SlideHeaderMCQwithFeedback {...${JSON.stringify(
+        SlideHeaderMCQwithFeedback.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Colored MCQ with Feedback
+// -------------------------------------------------------------
+export const ColoredMCQwithFeedback = Template.bind({});
+ColoredMCQwithFeedback.args = {
+  ...Default.args,
+  withColor: {
+    backgroundColor: "#fffcf2",
+    textColor: "#403d39",
+    slideHeaderBackgroundColor: "#ccc5b9",
+    slideHeaderAccentColor: "#eb5e28",
+    slideHeaderTextColor: "#ffffff",
+    buttonBackgroundColor: "#403d39",
+    buttonTextColor: "#ffffff",
+    buttonHoverBackgroundColor: "#eb5e28",
+    buttonHoverTextColor: "",
+  },
+};
+ColoredMCQwithFeedback.parameters = {
+  docs: {
+    source: {
+      code: `<ColoredMCQwithFeedback {...${JSON.stringify(
+        ColoredMCQwithFeedback.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Animated MCQ with Feedback
+// -------------------------------------------------------------
+export const AnimatedMCQwithFeedback = Template.bind({});
+AnimatedMCQwithFeedback.args = {
+  ...Default.args,
+  withAnimation: {
+    animation: "fade",
+    duration: 0.5,
+    delay: 0,
+  },
+};
+AnimatedMCQwithFeedback.parameters = {
+  docs: {
+    source: {
+      code: `<AnimatedMCQwithFeedback {...${JSON.stringify(
+        AnimatedMCQwithFeedback.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
