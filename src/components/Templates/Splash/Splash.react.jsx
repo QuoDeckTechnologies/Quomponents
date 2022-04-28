@@ -92,7 +92,7 @@ export default function Splash(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { data, withColor, isPresenter, slideId } = props;
+  const { data, withColor, slideId } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -158,7 +158,7 @@ export default function Splash(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses} ${
-        isPresenter ? "qui-splash-presenter-container" : ""
+        data?.presenter ? "qui-splash-presenter-container" : ""
       }`}
       style={{
         ...background,
@@ -168,9 +168,9 @@ export default function Splash(props) {
       }}
     >
       <div className={`qui-splash-container ${quommonClasses.childClasses}`}>
-        {!isPresenter && getView(data)}
+        {!data?.presenter && getView(data)}
       </div>
-      {isPresenter && getPresenterView(data)}
+      {data?.presenter && getPresenterView(data)}
     </motion.div>
   );
 }

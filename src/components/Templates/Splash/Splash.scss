@@ -2,8 +2,8 @@
   padding: 1.2em;
   background-color: #ffffff;
   border-radius: 1em;
-  min-height: 25em;
-  width: 18em;
+  min-height: 31.2em;
+  // width: 18em;
   display: flex;
   align-items: center;
   text-align: center;
@@ -31,7 +31,7 @@
 }
 
 .qui .qui-splash-presenter {
-  height: 50%;
+  // max-height: 50%;
   width: 40%;
   position: absolute;
   right: 0;
@@ -77,6 +77,14 @@
 
 @media only screen and (min-width: 428px) {
   .qui.qui-splash {
+    font-size: 1.3em;
+  }
+}
+@media only screen and (min-width: 767px) {
+  .qui.qui-splash {
     font-size: 1em;
+  }
+  .qui.qui-splash {
+    width: 20.5em;
   }
 }
