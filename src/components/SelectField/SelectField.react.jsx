@@ -28,17 +28,6 @@ SelectField.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define component size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
     Use to define component padding in increasing order
     */
     asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
@@ -89,7 +78,6 @@ SelectField.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asSize: "normal",
     asPadded: "normal",
 
     withColor: null,

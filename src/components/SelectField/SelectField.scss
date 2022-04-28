@@ -11,6 +11,7 @@
     border-top-right-radius: 1em;
     border-bottom: 0.4em solid;
 }
+
 .qui .qui-select-field {
     width: 100%;
 }
@@ -28,35 +29,21 @@
     font-size: 1.3em;
     font-weight: 600;
 }
+
 .qui .MuiOutlinedInput-notchedOutline {
     border: none;
     outline: none;
 }
+
 .qui .MuiSelect-icon {
     font-size: 3em;
 }
+
 .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
     width: 100%;
 }
+
 .qui-select-field-menu-item {
     overflow: hidden;
     text-overflow: ellipsis;
-}
-/* ================================================= */
-/* SelectField Sizing Definitions */
-/* ================================================= */
-.qui .size-massive .qui-select-field-label {
-    padding-left: 0.8em;
-}
-.qui .size-huge .qui-select-field-label {
-    padding-left: 0.96em;
-}
-.qui .size-big .qui-select-field-label {
-    padding-left: 1em;
-}
-.qui .size-small .qui-select-field-label {
-    padding-left: 1.3em;
-}
-.qui .size-tiny .qui-select-field-label {
-    padding-left: 1.4em;
 }

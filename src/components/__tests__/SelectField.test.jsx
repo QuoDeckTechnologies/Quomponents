@@ -25,7 +25,6 @@ describe("SelectField", () => {
                     categoryOptions: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
                     placeHolder: "Choose...",
                 }}
-                asSize="normal"
                 asPadded="normal"
                 withColor={null}
                 withAnimation={null}
@@ -37,36 +36,6 @@ describe("SelectField", () => {
     });
 
     it("it should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    })
-
-    it("it should render correctly when passed asSize prop as tiny", () => {
-        component.setProps({ asSize: "tiny" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("it should render correctly when passed asSize prop as small", () => {
-        component.setProps({ asSize: "small" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("it should render correctly when passed asSize prop as normal", () => {
-        component.setProps({ asSize: "normal" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("it should render correctly when passed asSize prop as big", () => {
-        component.setProps({ asSize: "big" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("it should render correctly when passed asSize prop as huge", () => {
-        component.setProps({ asSize: "huge" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("it should render correctly when passed asSize prop as massive", () => {
-        component.setProps({ asSize: "massive" })
         expect(component.exists()).toBe(true);
     })
 

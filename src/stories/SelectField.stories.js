@@ -10,13 +10,6 @@ export default {
             categoryOptions: [],
             placeHolder: ""
         },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         asPadded: {
             control: "select",
             options: ["fitted", "compact", "normal", "relaxed"],
@@ -65,11 +58,7 @@ export default {
     },
     decorators: [
         (story) => (
-            <div
-                style={{
-                    textAlign: "",
-                }}
-            >
+            <div>
                 {story()}
             </div>
         ),
@@ -92,7 +81,6 @@ Default.args = {
         categoryOptions: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
         placeHolder: "Choose...",
     },
-    asSize: "normal",
     asPadded: "normal",
     withColor: {
         backgroundColor: "#aaaaaa",
