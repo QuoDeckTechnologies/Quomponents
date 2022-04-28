@@ -22,7 +22,6 @@ export default {
 				},
 			],
 		},
-		extractForm: "",
 		slideId: 0,
 		asVariant: {
 			control: "select",
@@ -136,7 +135,6 @@ Default.args = {
 			},
 		],
 	},
-	extractForm: "text",
 	slideId: 0,
 	asVariant: "warning",
 	withColor: {

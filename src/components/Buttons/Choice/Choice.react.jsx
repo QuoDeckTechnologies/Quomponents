@@ -26,11 +26,6 @@ Choice.propTypes = {
 		})
 	).isRequired,
 	/**
-	Use to pass the key of any element to display its value. 
-	Pass text in the extractForm to display the string.
-	*/
-	extractForm: PropTypes.string,
-	/**
 	Use to enable/disable the OR tag
 	*/
 	isChoice: PropTypes.bool,
@@ -198,19 +193,9 @@ export default function Choice(props) {
 	// 4. Get animation of the component
 	//-------------------------------------------------------------------
 	const animate = getAnimation(props.withAnimation);
-	function choice1() {
-		let data = {
-			correct: props?.options[0]?.correct,
-			text: props?.options[0]?.text
-		}
-		props.onClick(data);
-	}
-	function choice2() {
-		let data = {
-			correct: props?.options[1]?.correct,
-			text: props?.options[1]?.text
-		}
-		props.onClick(data);
+
+	function handleClick(index) {
+		props.onClick(index)
 	}
 	let orStyle = {
 		display: props.isChoice ? "flex" : "none",
@@ -225,9 +210,9 @@ export default function Choice(props) {
 						<div
 							className={`qui-btn qui-choices qui-choice1`}
 							style={Object.assign({}, primaryButtonStyle)}
-							onClick={choice1}
+							onClick={() => { handleClick(0) }}
 						>
-							{options[0][props.extractForm ? props.extractForm : "text"]}
+							{options[0]?.text}
 						</div>
 						<div className="qui-or" style={Object.assign({}, orStyle)}>
 							OR
@@ -235,9 +220,9 @@ export default function Choice(props) {
 						<div
 							className={`qui-btn qui-choices qui-choice2`}
 							style={Object.assign({}, secondaryButtonStyle)}
-							onClick={choice2}
+							onClick={() => { handleClick(1) }}
 						>
-							{options[1][props.extractForm ? props.extractForm : "text"]}
+							{options[1]?.text}
 						</div>
 					</div>
 				)}

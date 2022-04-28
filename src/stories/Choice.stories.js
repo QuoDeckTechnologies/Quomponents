@@ -38,7 +38,6 @@ export default {
         defaultValue: true,
       },
     },
-    extractForm: "",
     asEmphasis: {
       control: "select",
       options: ["text", "outlined", "contained"],
@@ -55,7 +54,7 @@ export default {
     },
     asFloated: {
       control: "select",
-      options: ["left", "right", "none", "inline"],
+      options: ["left", "right", "inline"],
       table: {
         category: "as-Flags",
       },
@@ -142,7 +141,6 @@ Default.args = {
     correct: "",
     text: "Item 2",
   }],
-  extractForm: "text",
   asEmphasis: "contained",
   asSize: "normal",
   asFloated: "inline",
