@@ -2,7 +2,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import _ from "lodash";
 import {
     getAnimation,
     getQuommons,
@@ -56,10 +55,6 @@ Conversation.propTypes = {
         slideHeaderTextColor: PropTypes.string,
         slideHeaderAccentColor: PropTypes.string,
         slideHeaderBackgroundColor: PropTypes.string,
-        captionTextColor: PropTypes.string,
-        captionBackgroundColor: PropTypes.string,
-        textblockTextColor: PropTypes.string,
-        textblockBackgroundColor: PropTypes.string,
     }),
     /**
       Use to define the entry animation of the component
@@ -123,10 +118,6 @@ export default function Conversation(props) {
     //-------------------------------------------------------------------
     // 4. Setting the colors of the imported components
     //-------------------------------------------------------------------
-    let IconListItemColors = {
-        textColor: props.withColor?.textblockTextColor,
-        backgroundColor: props.withColor?.textblockBackgroundColor,
-    }
     let slideHeaderColors = {
         textColor: props.withColor?.slideHeaderTextColor,
         accentColor: props.withColor?.slideHeaderAccentColor,
@@ -162,14 +153,10 @@ export default function Conversation(props) {
                 {data?.image && (
                     <img className="qui-conversation-image" src={data?.image} alt="" />
                 )}
-                <div style={{ order: "unset" }}>
-                    <IconListItem
-                        {...props}
-                        content={data?.conversation}
-                        withColor={IconListItemColors}
-                    />
-                </div>
-
+                <IconListItem
+                    {...props}
+                    content={data?.conversation}
+                />
             </div>
         </motion.div>
     );

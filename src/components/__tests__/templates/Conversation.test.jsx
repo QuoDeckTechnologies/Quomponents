@@ -66,9 +66,6 @@ describe("Conversation", () => {
             slideHeaderTextColor: "ff0000",
             slideHeaderAccentColor: "23ff00",
             slideHeaderBackgroundColor: "00ff00",
-            captionTextColor: "ff0000",
-            captionAccentColor: "23ff00",
-            captionBackgroundColor: "00ff00",
         }
         component.setProps({ withColor: colors, data: data })
         expect(component.exists()).toBe(true);
@@ -83,9 +80,6 @@ describe("Conversation", () => {
             slideHeaderTextColor: "ff0000",
             slideHeaderAccentColor: "23ff00",
             slideHeaderBackgroundColor: "00ff00",
-            captionTextColor: "ff0000",
-            captionAccentColor: "23ff00",
-            captionBackgroundColor: "00ff00",
         }
         component.setProps({ withColor: colors, data: data })
         expect(component.exists()).toBe(true);
