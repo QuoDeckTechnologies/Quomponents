@@ -67,7 +67,7 @@ export default {
         componentSubtitle:
             "Default SelectField for general purpose use",
         a11y: { disable: true },
-        docs: { iframeHeight: 200 },
+        docs: { iframeHeight: 400 },
     },
 };
 // -------------------------------------------------------------
