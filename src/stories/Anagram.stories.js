@@ -1,5 +1,5 @@
 import React from "react";
-import Anagram from "../../components/Templates/Anagram/Anagram.react";
+import Anagram from "../components/Templates/Anagram/Anagram.react";
 
 export default {
   title: "Design System/Templates/Anagram/Anagram",
