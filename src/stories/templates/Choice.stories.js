@@ -157,7 +157,7 @@ Default.args = {
 	isChoice: true,
 	asEmphasis: "contained",
 	isDisabled: false,
-	isHidden: false,
+	isHidden: false
 };
 Default.parameters = {
 	docs: {
@@ -304,7 +304,8 @@ export const MultipleChoice = (args) => {
 				duration: 0.5,
 				delay: 0,
 			},
-			asEmphasis: "text"
+			asEmphasis: "text",
+			onClick:()=>{}
 		})
 	};
 	const baseObj2 = {
@@ -325,7 +326,8 @@ export const MultipleChoice = (args) => {
 				duration: 0.5,
 				delay: 0,
 			},
-			asEmphasis: "outlined"
+			asEmphasis: "outlined",
+			onClick:()=>{}
 		})
 	};
 	const baseObj3 = {
@@ -346,7 +348,8 @@ export const MultipleChoice = (args) => {
 				duration: 0.5,
 				delay: 0,
 			},
-			asEmphasis: "contained"
+			asEmphasis: "contained",
+			onClick:()=>{}
 		})
 	};
 	return (
@@ -388,6 +391,7 @@ export const ColoredChoice = (args) => {
 				duration: 0.5,
 				delay: 0,
 			},
+			onClick:()=>{}
 		})
 	};
 	const baseObj2 = {
@@ -408,6 +412,7 @@ export const ColoredChoice = (args) => {
 				duration: 0.5,
 				delay: 0,
 			},
+			onClick:()=>{}
 		})
 	};
 	const baseObj3 = {
@@ -428,6 +433,7 @@ export const ColoredChoice = (args) => {
 				duration: 0.5,
 				delay: 0,
 			},
+			onClick:()=>{}
 		})
 	};
 	return (
