@@ -6,8 +6,8 @@ import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import ImageWithCaption from "../../Templates/ImageWithCaption/ImageWithCaption.react";
-import Button from "../../Buttons/Button/Button.react";
+import ImageWithCaption from "../Templates/ImageWithCaption/ImageWithCaption.react";
+import Button from "../Buttons/Button/Button.react";
 
 describe("ImageWithCaption", () => {
     // -------------------------------------
