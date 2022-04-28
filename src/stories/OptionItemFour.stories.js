@@ -79,7 +79,7 @@ Default.args = {
     value: "",
     placeholder: "Option Item Four",
     checked: true,
-    maxLength:300,
+    maxLength: 300,
   },
   withColor: {
     backgroundColor: "#ffab000d",

@@ -72,7 +72,7 @@ Default.args = {
     targetName: "Target Name",
     value: "",
     placeholder: "Option Item One",
-    maxLength:300,
+    maxLength: 300,
   },
   withColor: {
     backgroundColor: "#ffab000d",

@@ -79,7 +79,7 @@ Default.args = {
     value: "",
     image: {},
     placeholder: "Option Item Five",
-    maxLength:300,
+    maxLength: 300,
   },
   withColor: {
     backgroundColor: "#ffab000d",
@@ -177,7 +177,7 @@ const MultipleTemplate = (args) => {
     setContentArr([...tmp_arr]);
   };
   // -------------------------------------------------------------
-  // Function to insert image object in the multiContent array 
+  // Function to insert image object in the multiContent array
   // -------------------------------------------------------------
   const handleUpload = (targetName, image, value) => {
     tmp_state = contentArr;

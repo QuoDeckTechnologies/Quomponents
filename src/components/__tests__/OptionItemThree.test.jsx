@@ -12,7 +12,7 @@ describe("Option Item Two", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-  
+
   const pauseFor = (milliseconds) =>
     new Promise((resolve) => setTimeout(resolve, milliseconds));
 
@@ -40,10 +40,10 @@ describe("Option Item Two", () => {
     let component = mount(
       <OptionItemThree
         content={{
-            targetName: "name",
-            image: {},
-            checked: false,
-          }}
+          targetName: "name",
+          image: {},
+          checked: false,
+        }}
         onUpload={() => {}}
         onSelect={() => {}}
         onClose={() => {}}
@@ -65,9 +65,7 @@ describe("Option Item Two", () => {
   });
 
   it("should render correctly when file is uploaded", async () => {
-    component
-      .find("OptionalImageField")
-      .simulate("click", {});
+    component.find("OptionalImageField").simulate("click", {});
     await pauseFor(100);
     expect(component.exists()).toBe(true);
   });

@@ -22,7 +22,7 @@ OptionItemFive.propTypes = {
     value: PropTypes.string,
     placeholder: PropTypes.string,
     image: PropTypes.object,
-    maxLength:PropTypes.number,
+    maxLength: PropTypes.number,
   }),
   //=======================================
   // Quommon props
@@ -126,7 +126,7 @@ export default function OptionItemFive(props) {
     setValue(value);
     props.onInput(content?.targetName, image, value);
   };
-  
+
   // ========================= Render Function =================================
 
   return (

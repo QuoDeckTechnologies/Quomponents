@@ -12,9 +12,9 @@ describe("Option Item Two", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-  
+
   const pauseFor = (milliseconds) =>
-  new Promise((resolve) => setTimeout(resolve, milliseconds));
+    new Promise((resolve) => setTimeout(resolve, milliseconds));
 
   beforeEach(() => {
     jest.resetAllMocks();
@@ -25,7 +25,7 @@ describe("Option Item Two", () => {
           value: "",
           placeholder: "placeholder",
           image: {},
-          maxLength:300,
+          maxLength: 300,
         }}
         onInput={() => {}}
         onUpload={() => {}}
@@ -66,9 +66,7 @@ describe("Option Item Two", () => {
   });
 
   it("should render correctly when file is uploaded", async () => {
-    component
-      .find("OptionalImageField")
-      .simulate("click", {});
+    component.find("OptionalImageField").simulate("click", {});
     await pauseFor(100);
     expect(component.exists()).toBe(true);
   });

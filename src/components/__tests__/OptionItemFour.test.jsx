@@ -21,7 +21,7 @@ describe("Option Item Two", () => {
           value: "",
           placeholder: "placeholder",
           checked: false,
-          maxLength:300,
+          maxLength: 300,
         }}
         onInput={() => {}}
         onSelect={() => {}}

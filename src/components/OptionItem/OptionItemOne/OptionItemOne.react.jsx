@@ -20,7 +20,7 @@ OptionItemOne.propTypes = {
     targetName: PropTypes.string,
     value: PropTypes.string,
     placeholder: PropTypes.string,
-    maxLength:PropTypes.number,
+    maxLength: PropTypes.number,
   }),
   //=======================================
   // Quommon props

@@ -58,7 +58,8 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a optionitemeight with inputField and buttons for general-purpose use.",
+    componentSubtitle:
+      "Displays a optionitemeight with inputField and buttons for general-purpose use.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
@@ -77,7 +78,7 @@ Default.args = {
   content: {
     targetName: "Target Name",
     value: "",
-    placeholder:"This is Option A",
+    placeholder: "This is Option A",
     maxLength: 300,
   },
   withColor: {

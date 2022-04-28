@@ -22,7 +22,7 @@ OptionItemTwo.propTypes = {
     value: PropTypes.string,
     placeholder: PropTypes.string,
     checked: PropTypes.bool,
-    maxLength:PropTypes.number,
+    maxLength: PropTypes.number,
   }),
   //=======================================
   // Quommon props

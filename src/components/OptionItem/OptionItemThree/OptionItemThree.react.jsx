@@ -8,7 +8,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OptionItemThree.scss";
 import "../../../common/stylesheets/overrule.scss";
-import OptionalImageField from '../../OptionalImageField/OptionalImageField.react'
+import OptionalImageField from "../../OptionalImageField/OptionalImageField.react";
 
 OptionItemThree.propTypes = {
   //=======================================

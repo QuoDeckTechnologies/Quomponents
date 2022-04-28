@@ -22,7 +22,7 @@ OptionItemFour.propTypes = {
     value: PropTypes.string,
     placeholder: PropTypes.string,
     checked: PropTypes.bool,
-    maxLength:PropTypes.number,
+    maxLength: PropTypes.number,
   }),
   //=======================================
   // Quommon props
@@ -98,7 +98,7 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
-  const { content,onSelect } = props;
+  const { content, onSelect } = props;
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
@@ -109,7 +109,7 @@ export default function OptionItemFour(props) {
   }, [content?.checked]);
   useEffect(() => {
     onSelect(content?.targetName, value, isChecked);
-  }, [content?.targetName, value, isChecked,onSelect]);
+  }, [content?.targetName, value, isChecked, onSelect]);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -131,7 +131,7 @@ export default function OptionItemFour(props) {
     setValue(value);
     props.onInput(content?.targetName, value, isChecked);
   };
-  
+
   // ========================= Render Function =================================
 
   return (
