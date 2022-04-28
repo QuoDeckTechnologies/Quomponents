@@ -199,10 +199,18 @@ export default function Choice(props) {
 	//-------------------------------------------------------------------
 	const animate = getAnimation(props.withAnimation);
 	function choice1() {
-		props.onClick(props?.options[0]?.text);
+		let data = {
+			correct: props?.options[0]?.correct,
+			text: props?.options[0]?.text
+		}
+		props.onClick(data);
 	}
 	function choice2() {
-		props.onClick(props?.options[1]?.text);
+		let data = {
+			correct: props?.options[1]?.correct,
+			text: props?.options[1]?.text
+		}
+		props.onClick(data);
 	}
 	let orStyle = {
 		display: props.isChoice ? "flex" : "none",
