@@ -1,18 +1,16 @@
 // Import npm packages
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
 } from "../../../common/javascripts/helpers.js";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./IconBulletList.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
 import IconListItem from "../../IconListItem/IconListItem/IconListItem.react";
-import Button from "../../Buttons/Button/Button.react";
 
 IconBulletList.propTypes = {
     //=======================================
@@ -26,8 +24,6 @@ IconBulletList.propTypes = {
         subtitle: PropTypes.string,
         image: PropTypes.string,
         backgroundImage: PropTypes.string,
-        // iconlist: PropTypes.array,
-
         iconlist: PropTypes.arrayOf(
         ).isRequired,
     }),
@@ -39,20 +35,18 @@ IconBulletList.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to set Color Use to override component colors and behavior
+    Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         slideHeaderTextColor: PropTypes.string,
         slideHeaderBackgroundColor: PropTypes.string,
         slideHeaderAccentColor: PropTypes.string,
-        bulletBockTextColor: PropTypes.string,
-        bulletBockBackgroundColor: PropTypes.string,
-        bulletBockAccentColor: PropTypes.string,
+        iconListItemTextColor: PropTypes.string,
     }),
     /**
-      Use to define the entry animation of the component
-      */
+    Use to define the entry animation of the component
+    */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -68,7 +62,7 @@ IconBulletList.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to show/hide the component
+    Use to show/hide the component
     */
     isHidden: PropTypes.bool,
 };
@@ -77,24 +71,22 @@ IconBulletList.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    data: {},
+    data: null,
     slideId: 0,
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "primary",
     withColor: null,
     withAnimation: null,
-    isDisabled: false,
+
     isHidden: false,
 };
 /**
 ## Notes
+- The design system used for this component is HTML and CSS
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- component is used to show the question and the jumbled answer , user need to submit the correct
-  answer using the input field, typed answer will submitted as it is.
 **/
 export default function IconBulletList(props) {
     //-------------------------------------------------------------------
@@ -113,10 +105,8 @@ export default function IconBulletList(props) {
         accentColor: withColor?.slideHeaderAccentColor,
         backgroundColor: withColor?.slideHeaderBackgroundColor
     }
-    let bulletBockColors = {
-        textColor: withColor?.bulletBockTextColor,
-        accentColor: withColor?.bulletBockAccentColor,
-        backgroundColor: withColor?.bulletBockBackgroundColor
+    let iconListItemColors = {
+        textColor: withColor?.iconListItemTextColor,
     }
     let iconBulletListbackgroundColor = {
         backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#ffffff",
@@ -154,19 +144,7 @@ export default function IconBulletList(props) {
                     <img className="qui-icon-bullet-list-image" src={data?.image} alt="" />
                 )}
                 <IconListItem {...props}
-                    // content={data?.bullets}
-                    // withColor={bulletBockColors}
-                    // asAligned={"left"}
-                    content={[
-                        {
-                            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-                            title: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old"
-                        },
-                        {
-                            "image": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-                            "title": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old"
-                        },
-                    ]}
+                // withColor={iconListItemColors}
                 />
             </div>
         </motion.div>
