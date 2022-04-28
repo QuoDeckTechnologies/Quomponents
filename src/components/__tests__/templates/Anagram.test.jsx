@@ -6,7 +6,7 @@ import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Anagram from "../Templates/Anagram/Anagram.react";
+import Anagram from "../../Templates/Anagram/Anagram.react";
 import Button from "../Buttons/Button/Button.react";
 
 describe("Anagram", () => {
