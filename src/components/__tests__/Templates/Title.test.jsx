@@ -32,13 +32,6 @@ describe("Title", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error when presenter view is selected", () => {
-    component.setProps({
-      isPresenter: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly without throwing error when image is not defined", () => {
     component.setProps({
       data: {
@@ -57,12 +50,13 @@ describe("Title", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error when presenter image is provided", () => {
+  it("should render correctly without throwing error when icon is provided with presenter image", () => {
     component.setProps({
       data: {
+        title: "test title",
+        icon: "test-icon",
         presenter: "presenter_image",
       },
-      isPresenter: true,
     });
     expect(component.exists()).toBe(true);
   });

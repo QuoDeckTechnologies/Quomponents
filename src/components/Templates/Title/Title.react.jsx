@@ -26,10 +26,6 @@ Title.propTypes = {
     backgroundImage: PropTypes.string,
     presenter: PropTypes.string,
   }),
-  /**
-    Title component can use presenter props to show presenter template
-    */
-  isPresenter: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
@@ -96,7 +92,7 @@ export default function Title(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { data, withColor, isPresenter } = props;
+  const { data, withColor } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -189,12 +185,16 @@ export default function Title(props) {
       }}
     >
       <div className={`qui-title-container ${quommonClasses.childClasses}`}>
-        <div className="qui-title-slide-header">
-          {!isPresenter && getView(data)}
+        <div
+          className={`qui-title-slide-header ${
+            data?.presenter ? "qui-title-slide-header-presenter" : ""
+          }`}
+        >
+          {!data?.presenter && getView(data)}
           {data?.icon && data?.title && (
             <div
               className={`qui-title-icon-block ${
-                isPresenter ? "qui-title-presenter" : ""
+                data?.presenter ? "qui-title-icon-block-presenter" : ""
               }`}
             >
               <IconBlock
@@ -208,8 +208,8 @@ export default function Title(props) {
           )}
         </div>
       </div>
-      {isPresenter && getPresenterView(data)}
-      {!isPresenter && (
+      {data?.presenter && getPresenterView(data)}
+      {!data?.presenter && (
         <div className="qui-title-card-subtitle">
           <p
             style={{ color: withColor?.textColor }}
@@ -219,7 +219,7 @@ export default function Title(props) {
           </p>
         </div>
       )}
-      {isPresenter && data?.presenter && (
+      {data?.presenter && (
         <img
           className="qui-title-presenter-image"
           src={data?.presenter}

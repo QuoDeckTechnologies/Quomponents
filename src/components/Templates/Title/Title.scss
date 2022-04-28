@@ -1,9 +1,6 @@
 .qui.qui-title-card {
-  padding: 1.2em;
   background-color: #ffffff;
   border-radius: 1em;
-  min-height: 31em;
-  max-width: 20.5em;
   .qui .qui-title-block {
     min-width: 12em;
     min-height: 14em;
@@ -29,7 +26,6 @@
 }
 
 .qui .qui-title-card-subtitle {
-  margin-top: 5.5em;
   display: flex;
   justify-content: center;
 }
@@ -41,28 +37,33 @@
   width: 70%;
 }
 
+.qui .qui-title-slide-header.qui-title-slide-header-presenter {
+  position: relative;
+  padding: 0;
+}
 .qui .qui-title-slide-header {
   position: relative;
+  padding: 1.8em;
 }
 
 .qui .qui-title-icon-block {
-  position: absolute;
-  bottom: -1.5em;
+  position: relative;
+  bottom: 1.8em;
   width: 100%;
   display: flex;
   justify-content: center;
   font-size: 1.2em;
 }
 
-.qui .qui-title-icon-block.qui-title-presenter {
-  bottom: -3.3em;
-  left: -0.5em;
+.qui .qui-title-icon-block.qui-title-icon-block-presenter {
+  bottom: -1em;
+  left: 0;
   display: block;
   font-size: 1.2em;
 }
 
 .qui .qui-title-text-block {
-  margin-top: 2em;
+  margin-top: 1em;
   font-size: 2em;
   .qui .qui-text-block-area {
     padding: 0.5em;
@@ -83,19 +84,6 @@
       border-bottom-right-radius: 0.4em;
     }
   }
-  .qui-block-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-  }
-}
-
-.qui .qui-presenter-test-container {
-  height: 50%;
-  width: 50%;
-  bottom: 0;
-  right: 0;
-  overflow: hidden;
 }
 
 .qui .qui-title-presenter-image {
@@ -103,7 +91,6 @@
   bottom: 0;
   right: 0;
   height: 50%;
-  width: 50%;
 }
 
 .qui .qui-title-presenter-image {
@@ -111,23 +98,27 @@
 }
 
 @media only screen and (min-width: 320px) {
-  .qui .qui-title-text-block {
-    transform: translateX(-8%);
-  }
   .qui.qui-title-card {
     .qui .qui-title {
       font-size: 2em;
     }
   }
+  .qui.qui-title-card {
+    min-height: 31em;
+  }
 }
 
 @media only screen and (min-width: 428px) {
-  .qui .qui-title-text-block {
-    transform: translateX(-7%);
-  }
   .qui.qui-title-card {
     .qui .qui-title {
       font-size: 2.4em;
     }
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  .qui.qui-title-card {
+    min-height: 33.7em;
+    max-width: 23em;
   }
 }
