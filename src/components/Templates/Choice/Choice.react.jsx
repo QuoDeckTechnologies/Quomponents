@@ -122,7 +122,7 @@ SlideChoice.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- component is used to show the question with the choice buttons, user need to submit the correct
+- Component is used to show the question with the choice buttons, user need to submit the correct
   answer using choice button.
 **/
 export default function SlideChoice(props) {

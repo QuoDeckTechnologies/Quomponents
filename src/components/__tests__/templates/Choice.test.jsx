@@ -65,6 +65,54 @@ describe("Choice", () => {
 		expect(component.exists()).toBe(true);
 	});
 
+	it("should render correctly when passed asEmphasis prop as text", () => {
+		let colors = {
+			slideHeaderTextColor: "#ffffff",
+			slideHeaderAccentColor: "#AD2929",
+			slideHeaderBackgroundColor: "#AD292980",
+			primaryBackgroundColor: "#000066",
+			secondaryBackgroundColor: "#003366",
+			accentColor: "",
+			primaryTextColor: "#ffffff",
+			secondaryTextColor: "#ffffff",
+		}
+		component.setProps({ asEmphasis: "text" })
+		component.setProps({ withColor: colors })
+		expect(component.exists()).toBe(true);
+	})
+
+	it("should render correctly when passed asEmphasis prop as contained", () => {
+		let colors = {
+			slideHeaderTextColor: "#ffffff",
+			slideHeaderAccentColor: "#AD2929",
+			slideHeaderBackgroundColor: "#AD292980",
+			primaryBackgroundColor: "#000066",
+			secondaryBackgroundColor: "#003366",
+			accentColor: "",
+			primaryTextColor: "#ffffff",
+			secondaryTextColor: "#ffffff",
+		}
+		component.setProps({ asEmphasis: "contained" })
+		component.setProps({ withColor: colors })
+		expect(component.exists()).toBe(true);
+	})
+
+	it("should render correctly when passed asEmphasis prop as outlined", () => {
+		let colors = {
+			slideHeaderTextColor: "#ffffff",
+			slideHeaderAccentColor: "#AD2929",
+			slideHeaderBackgroundColor: "#AD292980",
+			primaryBackgroundColor: "#000066",
+			secondaryBackgroundColor: "#003366",
+			accentColor: "",
+			primaryTextColor: "#ffffff",
+			secondaryTextColor: "#ffffff",
+		}
+		component.setProps({ asEmphasis: "outlined" })
+		component.setProps({ withColor: colors })
+		expect(component.exists()).toBe(true);
+	})
+
 	it("should render correctly when passed asVariant prop as primary", () => {
 		component.setProps({ asVariant: "primary" });
 		expect(component.exists()).toBe(true);

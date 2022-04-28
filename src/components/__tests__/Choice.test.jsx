@@ -58,14 +58,107 @@ describe("Choice", () => {
 				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
-				isFluid={false}
-				isChoice={true}
+				isChoice={false}
 				onClick={() => console.log("Choice Testing")}
 			/>
 		);
 	});
 
 	it("should render correctly without throwing error", () => {
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed asEmphasis prop as text", () => {
+		let colors = {
+			primaryBackgroundColor: "#000066",
+			secondaryBackgroundColor: "#003366",
+			accentColor: "",
+			primaryTextColor: "#ffffff",
+			secondaryTextColor: "#ffffff",
+		}
+		component.setProps({ asEmphasis: "text" })
+		component.setProps({ withColor: colors })
+		expect(component.exists()).toBe(true);
+	})
+
+	it("should render correctly when passed asEmphasis prop as contained", () => {
+		let colors = {
+			primaryBackgroundColor: "#000066",
+			secondaryBackgroundColor: "#003366",
+			accentColor: "",
+			primaryTextColor: "#ffffff",
+			secondaryTextColor: "#ffffff",
+		}
+		component.setProps({ asEmphasis: "contained" })
+		component.setProps({ withColor: colors })
+		expect(component.exists()).toBe(true);
+	})
+
+	it("should render correctly when passed asEmphasis prop as outlined", () => {
+		let colors = {
+			primaryBackgroundColor: "#000066",
+			secondaryBackgroundColor: "#003366",
+			accentColor: "",
+			primaryTextColor: "#ffffff",
+			secondaryTextColor: "#ffffff",
+		}
+		component.setProps({ asEmphasis: "outlined" })
+		component.setProps({ withColor: colors })
+		expect(component.exists()).toBe(true);
+	})
+
+	it("should render correctly when passed asSize prop as tiny", () => {
+		component.setProps({ asSize: "tiny" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed asSize prop as small", () => {
+		component.setProps({ asSize: "small" })
+		expect(component.exists()).toBe(true);
+	})
+
+	it("should render correctly when passed asSize prop as normal", () => {
+		component.setProps({ asSize: "normal" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed asSize prop as big", () => {
+		component.setProps({ asSize: "big" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed asSize prop as huge", () => {
+		component.setProps({ asSize: "huge" });
+		expect(component.exists()).toBe(true);
+	})
+
+	it("should render correctly when passed asSize prop as massive", () => {
+		component.setProps({ asSize: "massive" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed asFloated prop as left", () => {
+		component.setProps({ asFloated: "left" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed asFloated prop as right", () => {
+		component.setProps({ asFloated: "right" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed asFloated prop as inline", () => {
+		component.setProps({ asFloated: "inline" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed withAnimation props", () => {
+		let animation = {
+			animation: "zoom",
+			duration: 0.5,
+			delay: 0,
+		};
+		component.setProps({ withAnimation: animation });
 		expect(component.exists()).toBe(true);
 	});
 
@@ -145,10 +238,10 @@ describe("Choice", () => {
 	});
 
 	it("should enable/ disable the OR div when passed props", () => {
-		expect(component.find(".qui-or").exists()).toBe(true);
+		expect(component.find(".qui-or").props().style.display).toBe("none");
 		component.setProps({
-			isChoice: false,
+			isChoice: true,
 		});
-		expect(component.find(".qui-or").exists()).toBe(true);
+		expect(component.find(".qui-or").props().style.display).toBe("flex");
 	});
 });

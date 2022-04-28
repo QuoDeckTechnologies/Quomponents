@@ -109,7 +109,7 @@ Choice.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- props are not being passed to the Choice. Please speak to the admin to handle any new prop.
+- Component consist of array of 2 object with the props of correct and text, pass checked in the correct props and string the text props which you want to display on th button.
 **/
 
 function getPrimaryButtonColors(colors, emphasis) {
@@ -236,7 +236,6 @@ export default function Choice(props) {
 			</motion.div>
 		);
 	}
-
 	return (
 		<div className={`qui ${quommonClasses.parentClasses} `}>
 			<div className={`${quommonClasses.childClasses} `}>{choice()}</div>
