@@ -31,7 +31,9 @@ describe("Splash", () => {
 
   it("should render correctly without throwing error when presenter view is selected", () => {
     component.setProps({
-      isPresenter: true,
+      data: {
+        presenter: "presenter_image",
+      },
     });
     expect(component.exists()).toBe(true);
   });
@@ -41,17 +43,6 @@ describe("Splash", () => {
       data: {
         splash: null,
       },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error when presenter image is provided", () => {
-    component.setProps({
-      data: {
-        splash: null,
-        presenter: "presenter_image",
-      },
-      isPresenter: true,
     });
     expect(component.exists()).toBe(true);
   });
