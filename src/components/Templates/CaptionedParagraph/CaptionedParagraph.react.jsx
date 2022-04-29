@@ -8,22 +8,22 @@ import {
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./ImageWithCaption.scss";
+import "./CaptionedParagraph.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
 import TextBlock from "../../TextBlock/TextBlock.react";
-import Button from "../../Buttons/Button/Button.react";
 
-ImageWithCaption.propTypes = {
+CaptionedParagraph.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-      ImageWithCaption content should be passed in data field and it is a required field
+      CaptionedParagraph content should be passed in data field and it is a required field
       */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
+        label: PropTypes.string,
         caption: PropTypes.string,
         image: PropTypes.string,
         backgroundImage: PropTypes.string,
@@ -53,10 +53,8 @@ ImageWithCaption.propTypes = {
         slideHeaderBackgroundColor: PropTypes.string,
         captionTextColor: PropTypes.string,
         captionBackgroundColor: PropTypes.string,
-        buttonTextColor: PropTypes.string,
-        buttonBackgroundColor: PropTypes.string,
-        buttonHoverBackgroundColor: PropTypes.string,
-        buttonHoverTextColor: PropTypes.string,
+        textblockTextColor: PropTypes.string,
+        textblockBackgroundColor: PropTypes.string,
     }),
     /**
       Use to define the entry animation of the component
@@ -76,20 +74,12 @@ ImageWithCaption.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to enable/disable the component
-      */
-    isDisabled: PropTypes.bool,
-    /**
       Use to show/hide the component
       */
     isHidden: PropTypes.bool,
-    /**
-      ImageWithCaption component must have the onClick function passed as props
-      */
-    onClick: PropTypes.func.isRequired,
 };
 
-ImageWithCaption.defaultProps = {
+CaptionedParagraph.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -101,7 +91,6 @@ ImageWithCaption.defaultProps = {
     asVariant: "warning",
     withColor: null,
     withAnimation: null,
-    isDisabled: false,
     isHidden: false,
 };
 
@@ -112,7 +101,7 @@ ImageWithCaption.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function ImageWithCaption(props) {
+export default function CaptionedParagraph(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring data from props
     //-------------------------------------------------------------------
@@ -120,7 +109,7 @@ export default function ImageWithCaption(props) {
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "image-with-caption");
+    let quommonClasses = getQuommons(props, "captioned-paragraph");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 3. Get animation of the component
@@ -129,11 +118,9 @@ export default function ImageWithCaption(props) {
     //-------------------------------------------------------------------
     // 4. Setting the colors of the imported components
     //-------------------------------------------------------------------
-    let buttonColors = {
-        textColor: props.withColor?.buttonTextColor,
-        backgroundColor: props.withColor?.buttonBackgroundColor,
-        hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
-        hoverTextColor: props.withColor?.buttonHoverTextColor
+    let textblockColors = {
+        textColor: props.withColor?.textblockTextColor,
+        backgroundColor: props.withColor?.textblockBackgroundColor,
     }
     let captionColors = {
         textColor: props.withColor?.captionTextColor,
@@ -163,8 +150,9 @@ export default function ImageWithCaption(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
             style={{ ...background }}
+
         >
-            <div className={`qui-image-with-caption-card ${quommonClasses.childClasses}`}>
+            <div className={`qui-captioned-paragraph-card ${quommonClasses.childClasses}`} key={"captioned paragraph" + props?.slideId}>
                 {!data?.image && (data?.title || data?.subtitle) && (
                     <SlideHeader
                         content={{ title: data?.title, subTitle: data?.subtitle }}
@@ -172,18 +160,19 @@ export default function ImageWithCaption(props) {
                 )}
 
                 {data?.image && (
-                    <img className="qui-image-with-caption-image" src={data?.image} alt="" />
+                    <img className="qui-captioned-paragraph-image" src={data?.image} alt="" />
                 )}
+                <div className="qui-captioned-paragraph-text-block">
+                    <TextBlock {...props}
+                        content={props.data?.label}
+                        withColor={textblockColors}
+                    />
+                </div>
                 <TextBlock {...props}
-                    key={props.slideId}
                     content={props.data?.caption}
                     withColor={captionColors}
                 />
-                {<Button {...props}
-                    content={"Continue"}
-                    onClick={props.onClick}
-                    withColor={buttonColors}
-                />}
+
             </div>
         </motion.div>
     );
