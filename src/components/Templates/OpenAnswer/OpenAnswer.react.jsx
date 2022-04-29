@@ -49,12 +49,11 @@ OpenAnswer.propTypes = {
     Use to override component colors and behavior
     */
   withColor: PropTypes.shape({
-    questionColor: PropTypes.string,
     slideHeaderTextColor: PropTypes.string,
     slideHeaderAccentColor: PropTypes.string,
     slideHeaderBackgroundColor: PropTypes.string,
-    textBlockTextColor: PropTypes.string,
-    textBlockBackgroundColor: PropTypes.string,
+    questionTextColor: PropTypes.string,
+    questionBackgroundColor: PropTypes.string,
     inputFieldTextColor: PropTypes.string,
     inputFieldAccentColor: PropTypes.string,
     inputFieldBackgroundColor: PropTypes.string,
@@ -144,8 +143,8 @@ export default function OpenAnswer(props) {
     backgroundColor: props.withColor?.slideHeaderBackgroundColor
   }
   let textBlockColors = {
-    textColor: props.withColor?.textBlockTextColor,
-    backgroundColor: props.withColor?.textBlockBackgroundColor
+    textColor: props.withColor?.questionTextColor,
+    backgroundColor: props.withColor?.questionBackgroundColor
   }
   let inputFieldColors = {
     textColor: props.withColor?.inputFieldTextColor,

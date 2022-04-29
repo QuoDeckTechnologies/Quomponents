@@ -28,12 +28,11 @@ describe("OpenAnswer", () => {
         slideId={0}
         asVariant="primary"
         withColor={{
-          questionColor: "#000000",
           slideHeaderTextColor: "#ffffff",
           slideHeaderAccentColor: "#AD2929",
           slideHeaderBackgroundColor: "#AD292980",
-          textBlockBackgroundColor: "#a0979700",
-          textBlockTextColor: "#000000",
+          questionBackgroundColor: "#a0979700",
+          questionTextColor: "#000000",
           inputFieldTextColor: "",
           inputFieldAccentColor: "",
           inputFieldBackgroundColor: "",
@@ -62,12 +61,11 @@ describe("OpenAnswer", () => {
   });
   it("should render correctly when passed withColor props", () => {
     let colors = {
-      questionColor: "#000000",
       slideHeaderTextColor: "#ffffff",
       slideHeaderAccentColor: "#AD2929",
       slideHeaderBackgroundColor: "#AD292980",
-      textBlockBackgroundColor: "#a0979700",
-      textBlockTextColor: "#000000",
+      questionBackgroundColor: "#a0979700",
+      questionTextColor: "#000000",
       inputFieldTextColor: "",
       inputFieldAccentColor: "",
       inputFieldBackgroundColor: "",
@@ -142,12 +140,11 @@ describe("OpenAnswer", () => {
       backgroundImage: "",
     }
     let colors = {
-      questionColor: "#000000",
       slideHeaderTextColor: "#ffffff",
       slideHeaderAccentColor: "#AD2929",
       slideHeaderBackgroundColor: "#AD292980",
-      textBlockBackgroundColor: "#a0979700",
-      textBlockTextColor: "#000000",
+      questionBackgroundColor: "#a0979700",
+      questionTextColor: "#000000",
       inputFieldTextColor: "",
       inputFieldAccentColor: "",
       inputFieldBackgroundColor: "",

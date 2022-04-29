@@ -18,12 +18,11 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          questionColor: "",
           slideHeaderTextColor: "",
           slideHeaderAccentColor: "",
           slideHeaderBackgroundColor: "",
-          textBlockBackgroundColor: "",
-          textBlockTextColor: "",
+          questionBackgroundColor: "",
+          questionTextColor: "",
           inputFieldTextColor: "",
           inputFieldAccentColor: "",
           inputFieldBackgroundColor: "",
@@ -100,12 +99,11 @@ Default.args = {
   slideId: 0,
   asVariant: "warning",
   withColor: {
-    questionColor: "#000000",
     slideHeaderTextColor: "#ffffff",
     slideHeaderAccentColor: "#AD2929",
     slideHeaderBackgroundColor: "#AD292980",
-    textBlockBackgroundColor: "#a0979700",
-    textBlockTextColor: "#000000",
+    questionBackgroundColor: "#a0979700",
+    questionTextColor: "#000000",
     inputFieldTextColor: "",
     inputFieldAccentColor: "",
     inputFieldBackgroundColor: "",
@@ -144,12 +142,11 @@ OpenAnswerWithImage.args = {
   },
   asVariant: "warning",
   withColor: {
-    questionColor: "#000000",
     slideHeaderTextColor: "#ffffff",
     slideHeaderAccentColor: "#AD2929",
     slideHeaderBackgroundColor: "#AD292980",
-    textBlockBackgroundColor: "#a0979700",
-    textBlockTextColor: "#000000",
+    questionBackgroundColor: "#a0979700",
+    questionTextColor: "#000000",
     inputFieldTextColor: "",
     inputFieldAccentColor: "",
     inputFieldBackgroundColor: "",
@@ -188,12 +185,11 @@ OpenAnswerWithBackgroundImage.args = {
   },
   asVariant: "warning",
   withColor: {
-    questionColor: "#000000",
     slideHeaderTextColor: "#ffffff",
     slideHeaderAccentColor: "#AD2929",
     slideHeaderBackgroundColor: "#AD292980",
-    textBlockBackgroundColor: "#a0979700",
-    textBlockTextColor: "#000000",
+    questionBackgroundColor: "#a0979700",
+    questionTextColor: "#000000",
     inputFieldTextColor: "",
     inputFieldAccentColor: "",
     inputFieldBackgroundColor: "",
@@ -270,9 +266,6 @@ const MultipleOpenAnswerTemplate = (args) => {
 export const MultipleOpenAnswer = MultipleOpenAnswerTemplate.bind({});
 MultipleOpenAnswer.parameters = {
   docs: {
-    description: {
-      story: "Multiple OpenAnswer.",
-    },
     source: {
       code: `<OpenAnswer data={image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
       title: "Neque porro quisquam est qui dolorem",
