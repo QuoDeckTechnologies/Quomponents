@@ -44,6 +44,12 @@ export default {
         defaultValue: false,
       },
     },
+    onClick: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
   },
   decorators: [
     (story) => (
@@ -77,7 +83,7 @@ Default.args = {
     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
     image: "",
     backgroundImage: "",
-    iconListImages:[
+    iconListImages: [
       "https://i.pinimg.com/564x/02/58/79/025879fc48f8d5a2a30e37ad1a847c11.jpg",
       "https://i.pinimg.com/564x/64/57/dc/6457dc8f063f284fe17e519dc28b5437.jpg",
       "https://i.pinimg.com/564x/9a/db/19/9adb19d50115e570142a7937a00550ae.jpg",

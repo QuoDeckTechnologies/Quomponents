@@ -28,7 +28,7 @@ IconListCaptions.propTypes = {
     caption: PropTypes.string,
     image: PropTypes.string,
     backgroundImage: PropTypes.string,
-    icontListImages: [],
+    iconListImages: PropTypes.array,
   }),
   /**
     IconListCaptions slideId should be passed with props, to specify the slide.
@@ -80,6 +80,10 @@ IconListCaptions.propTypes = {
     Use to show/hide the component
   */
   isHidden: PropTypes.bool,
+  /**
+    Diptych component must have the onClick function passed as props
+    */
+  onClick: PropTypes.func.isRequired,
 };
 
 IconListCaptions.defaultProps = {
@@ -92,6 +96,7 @@ IconListCaptions.defaultProps = {
     caption: "",
     image: "",
     backgroundImage: "",
+    iconListImages: []
   },
   slideId: 0,
   //=======================================
@@ -146,6 +151,10 @@ export default function IconListCaptions(props) {
     ? getBackground()
     : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
 
+  function handleClick(e) {
+    props.onClick(e)
+  }
+  // let clickableImageContainerClassses = clicked ? "qui-image-container-highlited" : "qui-clickable-image-container"
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -165,11 +174,12 @@ export default function IconListCaptions(props) {
           )}
           <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
 
-          <div className="qui-diptych-clickable-images">
-            {_.map(data?.diptych, (image, index) => {
+          <div className="qui-icon-list-captions-clickable-images">
+            <div className="qui-icon-list-captions-track"></div>
+            {_.map(data?.iconListImages, (image, index) => {
               return (
-                <div className="qui-clickable-image-container" key={"diptych-image" + index}>
-                  <ClickableImage {...props} content={{ image }} onClick={(e) => props.onClick(e)} />
+                <div className="qui-clickable-image-container" key={"icon-list-captions-image" + index}>
+                  <ClickableImage {...props} content={{ image }} onClick={(e) => handleClick(e)} />
                 </div>
               );
             })}
