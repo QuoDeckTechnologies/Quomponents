@@ -61,7 +61,6 @@ export default {
     docs: {
       iframeHeight: 650,
     },
-    // controls: { expanded: true }
   },
 };
 
