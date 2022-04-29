@@ -29,7 +29,10 @@ Choice.propTypes = {
 	Use to enable/disable the OR tag
 	*/
 	isChoice: PropTypes.bool,
-
+	/**
+	Set action emphasis in increasing order 
+	*/
+	asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
 	//=======================================
 	// Quommon props
 	//=======================================
@@ -37,10 +40,6 @@ Choice.propTypes = {
 	Use to float the component in parent container
 	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
-	/**
-	 Set action emphasis in increasing order 
-	 */
-	asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
 	/**
 	Use to override component colors and behavior
 	*/
@@ -88,10 +87,10 @@ Choice.defaultProps = {
 		},
 	],
 	isChoice: true,
+	asEmphasis: "contained",
 	//=======================================
 	// Quommon props
 	//=======================================
-	asEmphasis: "contained",
 	asFloated: "inline",
 	withColor: null,
 	withTranslation: null,

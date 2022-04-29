@@ -12,7 +12,7 @@ describe("Choice", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
-	let component, data, options;
+	let component, data;
 	data = {
 		title: "Neque porro quisquam est qui dolorem",
 		subtitle:
@@ -47,12 +47,9 @@ describe("Choice", () => {
 		component = shallow(
 			<Choice
 				data={data}
-				withColor={colors}
 				slideId={1}
-				options={options}
 				asEmphasis="contained"
-				asSize="normal"
-				asFloated="inline"
+				withColor={colors}
 				withAnimation={null}
 				isHidden={false}
 				isDisabled={false}

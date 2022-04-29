@@ -38,6 +38,10 @@ SlideChoice.propTypes = {
 	Use to enable/disable the OR tag
 	*/
 	isChoice: PropTypes.bool,
+	/**
+	Set action emphasis in increasing order 
+	*/
+	asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
 	//=======================================
 	// Quommon props
 	//=======================================
@@ -84,10 +88,6 @@ SlideChoice.propTypes = {
 		delay: PropTypes.number,
 	}),
 	/**
-	Set action emphasis in increasing order 
-	*/
-	asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
-	/**
 	Use to enable/disable the component
 	*/
 	isDisabled: PropTypes.bool,
@@ -107,11 +107,11 @@ SlideChoice.defaultProps = {
 	//=======================================
 	data: {},
 	slideId: 0,
+	asEmphasis: "contained",
 	//=======================================
 	// Quommon props
 	//=======================================
 	asVariant: "primary",
-	asEmphasis: "contained",
 	withColor: null,
 	withAnimation: null,
 	isDisabled: false,
