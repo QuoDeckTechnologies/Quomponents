@@ -37,6 +37,17 @@ Choice.propTypes = {
 	// Quommon props
 	//=======================================
 	/**
+    Use to define component text size in increasing order
+    */
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
+	/**
 	Use to float the component in parent container
 	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
@@ -91,6 +102,7 @@ Choice.defaultProps = {
 	//=======================================
 	// Quommon props
 	//=======================================
+	asSize:"normal",
 	asFloated: "inline",
 	withColor: null,
 	withTranslation: null,
