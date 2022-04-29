@@ -8,6 +8,7 @@ import { shallow } from "enzyme";
 import ImageGrid from "../../Templates/ImageGrid/ImageGrid.react";
 import ClickableImage from "../../ClickableImage/ClickableImage.react"
 import SlideHeader from "../../SlideHeader/SlideHeader.react"
+import Grid from "@mui/material/Grid"
 
 describe("ImageGrid", () => {
     // -------------------------------------
@@ -23,7 +24,7 @@ describe("ImageGrid", () => {
                     subtitle: "This is Subtitle",
                     headerImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
                     backgroundImage: "",
-                    ImageGrid: [
+                    gridImages: [
                         "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
                         "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
                     ],
@@ -99,10 +100,22 @@ describe("ImageGrid", () => {
         component.setProps({ data: {} })
         expect(component.exists()).toBe(true);
     })
-    it("should click on Clickable Image", () => {
-      component.setProps({isPresenter:true})
-      component.find(ClickableImage).simulate('click')
-    })
+    it('Test click event on first ClickableImage when passed isPresenter false', () => {
+        component.setProps({ isPresenter: false })
+        component.find(ClickableImage).at(0).simulate('click')
+    });
+    it('Test click event on second ClickableImage when passed isPresenter false', () => {
+        component.setProps({ isPresenter: false })
+        component.find(ClickableImage).at(1).simulate('click')
+    });
+    it('Test click event on second ClickableImage when passed isPresenter true', () => {
+        component.setProps({ isPresenter: true })
+        component.find(ClickableImage).at(0).simulate('click')
+    });
+    it('Test click event on second ClickableImage when passed isPresenter true', () => {
+        component.setProps({ isPresenter: true })
+        component.find(ClickableImage).at(1).simulate('click')
+    });
     it("should render correctly when passed isHidden props as false", () => {
         component.setProps({ isHidden: false })
         expect(component.exists()).toBe(true);
