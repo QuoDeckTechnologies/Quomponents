@@ -193,5 +193,49 @@ AnimatedExternalLink.parameters = {
     },
 };
 
+// -------------------------------------------------------------
+// Without Header Image ExternalLink
+// -------------------------------------------------------------
+export const WithoutHeaderImageExternalLink = Template.bind({});
+WithoutHeaderImageExternalLink.args = {
+    data: {
+        title: 'Lorem ipsum dolor sit amet',
+        subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula. ",
+        link: "https://github.com/",
+        image: "",
+        backgroundImage: "",
+    },
+    slideId: 0,
+    asVariant: "warning",
+    withColor: {
+        backgroundColor: "",
+        slideHeaderTextColor: "#ffffff",
+        slideHeaderAccentColor: "#AD2929",
+        slideHeaderBackgroundColor: "#C98787",
+        captionTextColor: "#121212",
+        captionBackgroundColor: "#ffffff",
+        buttonTextColor: "#121212",
+        buttonBackgroundColor: "#F6BF33",
+        buttonHoverBackgroundColor: "#121212",
+        buttonHoverTextColor: "#F6BF33",
+    },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+    isDisabled: false,
+    isHidden: false,
+};
+WithoutHeaderImageExternalLink.parameters = {
+    docs: {
+        source: {
+            code: `<ExternalLink {...${JSON.stringify(WithoutHeaderImageExternalLink.args, null, 2)}}/>`,
+        },
+    },
+};
+
+
 
 
