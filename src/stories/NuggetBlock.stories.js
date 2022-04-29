@@ -29,10 +29,7 @@ export default {
         image: "",
         status: {
             control: "select",
-            options: ["published", "unpublished", "none"],
-            table: {
-                category: "as-Flags",
-            },
+            options: ["none", "published", "unpublished"],
         },
         asSize: {
             control: "select",
@@ -332,8 +329,7 @@ export const AllVariantsTemplate = (args) => {
                 animation: "zoom",
                 duration: 0.5,
                 delay: 0.8,
-            },
-            status: "none"
+            }
         })
     };
     return (

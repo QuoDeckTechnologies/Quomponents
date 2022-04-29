@@ -17,9 +17,11 @@
         "@emotion/styled": "^11.3.0",
         "@fortawesome/fontawesome-free": "^5.15.4",
         "@mui/material": "^5.2.1",
+        "@u-wave/react-vimeo": "^0.9.6",
         "framer-motion": "4.1.17",
         "node-sass": "^6.0.1",
         "react": "^17.0.2",
+        "react-avatar-editor": "^12.0.0",
         "react-dom": "^17.0.2",
         "react-rangeslider": "^2.2.0",
         "react-scripts": "4.0.3",
@@ -27,7 +29,9 @@
         "react-slick": "^0.28.1",
         "react-test-renderer": "^17.0.2",
         "react-treebeard": "^3.2.4",
+        "react-youtube": "^7.14.0",
         "slick-carousel": "^1.8.1",
+        "video-react": "^0.15.0",
         "web-vitals": "^1.0.1"
     },
     "peerDependencies": {

@@ -31,6 +31,7 @@ describe("TreeBarOpen", () => {
       parentId: null,
       name: "All Articles",
       description: "",
+      active: true,
       children: [
         {
           id: "category-0",
@@ -85,20 +86,23 @@ describe("TreeBarOpen", () => {
           ],
         },
       ],
+      toggled: true
     },
   };
 
   let nodeData = {
     id: "allArticles",
     parentId: null,
-    name: "Courses",
+    name: "All Articles",
     description: "",
+    active: true,
     children: [
       {
         id: "category-0",
         parentId: "allArticles",
-        name: "Pulic Library",
+        name: "Article",
         description: "",
+        active: true,
         children: [
           {
             published: true,
@@ -125,12 +129,14 @@ describe("TreeBarOpen", () => {
             id: "622b4534a2d4393e6ce1c3ba",
           },
         ],
+        toggled: true
       },
       {
         id: "category-1",
         parentId: "allArticles",
-        name: "Induction Program",
+        name: "News",
         description: "",
+        active: false,
         children: [
           {
             published: true,
@@ -145,27 +151,20 @@ describe("TreeBarOpen", () => {
             id: "623da574187838221637bebe",
           },
         ],
+        toggled: false,
       },
     ],
-    active: true,
-    toggled: true,
-  };
-  let nodeDataSecondary = {
-    id: "allArticles",
-    parentId: null,
-    name: "Courses",
-    description: "",
-    children: null,
-    active: true,
     toggled: true,
   };
 
+  let onSelectData = jest.fn();
   beforeEach(() => {
     jest.resetAllMocks();
 
     component = shallow(
       <TreeBarOpen
         content={content}
+        cursor={true}
         asSize="normal"
         asFloated="inline"
         withColor={null}
@@ -178,6 +177,7 @@ describe("TreeBarOpen", () => {
         isFluid={null}
         onClick={() => console.log("test")}
         placeHolder="Search..."
+        onSelectData={onSelectData}
       />
     );
   });
@@ -291,26 +291,32 @@ describe("TreeBarOpen", () => {
 
   it("should render Treebar without throwing error", () => {
     let onToggle = jest.fn();
+    let onSelectData = jest.fn();
     const { getByText } = render(
       <Treebeard
-        data={content.TreeData}
+        data={nodeData}
         onToggle={onToggle}
         decorators={decorators}
+        onSelectData={onSelectData}
       />
     );
-    expect(getByText("All Articles")).toBeInTheDocument();
   });
 
   it("should render tree bar when click on search", () => {
     let inputData = "Sedding Dummy Test Article";
-    let filter = "Sedding Dummy Test Article";
-
     component.setProps({ filter: inputData });
-
-    component.setProps({ content: content });
+    component.setProps({ content: content, cursor: true });
     component.setProps({ onClick: jest.fn() });
     let search = component.find(SearchBar);
     search.simulate("click", inputData);
+  });
+
+  it("should render tree bar when click on search", () => {
+    component
+      .find(".qui-treebar-content")
+      .children(0)
+      .simulate("toggle", { content: { TreeData: {} } });
+    component.setProps({ content: { TreeData: {} } });
   });
 
   it("should toggle the treebeard", () => {
@@ -326,28 +332,5 @@ describe("TreeBarOpen", () => {
     let treeBeard = component.find(Treebeard);
     treeBeard.simulate("toggle", nodeData, toggled);
     expect(onSelectData).toHaveBeenCalledWith(nodeData);
-  });
-
-  it(" should toggle the treebeard", () => {
-    let toggled = false;
-    let onToggle = jest.fn();
-    component.setProps({ node: nodeData });
-    const { getByText } = render(
-      <Treebeard
-        data={nodeDataSecondary}
-        onToggle={toggled}
-        decorators={decorators}
-        node= {nodeData}
-      />
-    );
-  });
-  
-  it("should Treebar toggle selected node",()=>{
-    component.setProps({
-      TreeData:{
-        data:{nodeDataSecondary}
-        
-      },
-    })
   });
 });

@@ -155,8 +155,9 @@ export default function InlineEdit(props) {
         inputRef.current.style.backgroundColor = props.withColor?.backgroundColor
     }
 
-    const changeBlur = () => {
+    const changeBlur = (e) => {
         inputRef.current.style.backgroundColor = "transparent"
+        props.onClick(e.target.name, e.target.value);
     }
     //-------------------------------------------------------------------
     // 4. Use to set state of InlineEdit.
@@ -170,8 +171,8 @@ export default function InlineEdit(props) {
                     value={input}
                     name={props.name}
                     ref={inputRef}
-                    onFocus={() => changeFocus()}
-                    onBlur={() => changeBlur()}
+                    onFocus={changeFocus}
+                    onBlur={changeBlur}
                     onChange={handleChange}
                     onKeyDown={handleChange}
                     onInput={(e) => onInput(e.target)}
@@ -185,8 +186,8 @@ export default function InlineEdit(props) {
                     value={input}
                     name={props.name}
                     ref={inputRef}
-                    onFocus={() => changeFocus()}
-                    onBlur={() => changeBlur()}
+                    onFocus={changeFocus}
+                    onBlur={changeBlur}
                     onChange={handleChange}
                     onKeyDown={handleChange}
                 />
