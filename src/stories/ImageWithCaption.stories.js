@@ -1,5 +1,5 @@
 import React from "react";
-import ImageWithCaption from "../../components/Templates/ImageWithCaption/ImageWithCaption.react";
+import ImageWithCaption from "../components/Templates/ImageWithCaption/ImageWithCaption.react";
 
 export default {
     title: "Design System/Templates/ImageWithCaption/ImageWithCaption",
