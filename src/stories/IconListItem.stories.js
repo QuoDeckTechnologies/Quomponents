@@ -25,13 +25,6 @@ export default {
         category: "as-Flags",
       },
     },
-    asFloated: {
-      control: "select",
-      options: ["left", "right", "none", "inline"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     withColor: {
       table: {
         category: "with-Params",
@@ -72,7 +65,7 @@ export default {
     componentSubtitle:
       "Displays a basic image and title for general-purpose use",
     a11y: { disable: true },
-    docs: { iframeHeight: 700 },
+    docs: { iframeHeight: 600 },
   },
 };
 
@@ -121,7 +114,6 @@ Default.args = {
   ],
   asEmphasis: "conversation",
   asVariant: "primary",
-  asFloated: "none",
   withColor: {
     textColor: "#666666",
   },
@@ -144,44 +136,25 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Floated Variants
+// MultiLine InlineEdit
 // -------------------------------------------------------------
-const FloatedVariantsTemplate = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args, {}),
-  };
-  return (
-    <div>
-      <IconListItem
-        {...Object.assign({}, baseObj, {
-          asSize: "small",
-          asFloated: "none",
-        })}
-      />
-      <IconListItem
-        {...Object.assign({}, baseObj, {
-          asSize: "small",
-          asFloated: "left",
-        })}
-      />
-      <IconListItem
-        {...Object.assign({}, baseObj, {
-          asSize: "small",
-          asFloated: "right",
-        })}
-      />
-    </div>
-  );
+export const IconListItemAsList = Template.bind({});
+IconListItemAsList.args = {
+  ...Default.args,
+  asEmphasis: "list",
 };
-
-export const FloatedVariants = FloatedVariantsTemplate.bind({});
-FloatedVariants.parameters = {
+IconListItemAsList.parameters = {
   docs: {
     description: {
-      story: "5 variants are supported. Use as per purpose noted here.",
+      story:
+        "Use to show the list state for the IconListItem.",
     },
     source: {
-      code: `<IconListItem asVariant="primary"/>`,
+      code: `<IconListItemAsList {...${JSON.stringify(
+        IconListItemAsList.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

@@ -8,6 +8,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./IconListItem.scss";
 import "../../../common/stylesheets/overrule.scss";
+import DefaultImage from "../../../assets/default.jpeg"
 
 IconListItem.propTypes = {
   //=======================================
@@ -40,11 +41,7 @@ IconListItem.propTypes = {
     "error",
   ]),
   /**
-  Use to float the component in parent container
-  */
-  asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-  /**
-  Use to override component colors and behavior
+  Use to override text color of the component
   */
   withColor: PropTypes.shape({
     textColor: PropTypes.string,
@@ -82,12 +79,10 @@ IconListItem.defaultProps = {
   // Quommon props
   //=======================================
   asVariant: "primary",
-  asFloated: "none",
   withColor: null,
   withAnimation: null,
   isHidden: false,
 };
-
 /**
 ## Notes
 - The animation system used for this component is Framer Motion (framer-motion)
@@ -110,7 +105,7 @@ export default function IconListItem(props) {
   const getIconListItem = (asEmphasis) => {
     if (asEmphasis === "conversation") {
       return (
-        <>
+        <div>
           {_.map(content, (item, index) => {
             return (
               <motion.div initial={animate.from} animate={animate.to} key={index}>
@@ -121,37 +116,37 @@ export default function IconListItem(props) {
                   <img
                     className="qui-icon-list-item-image"
                     style={{ order: index % 2 === 0 ? 1 : 2 }}
-                    src={item?.image}
-                    alt=""
+                    src={item?.image ? item?.image : DefaultImage}
+                    alt="iconlist"
                   />
                 </div>
               </motion.div>
             );
           })
           }
-        </>
+        </div>
       )
     }
     else {
       return (
-        <>
+        <div>
           {_.map(content, (item, index) => {
             return (
               <motion.div initial={animate.from} animate={animate.to} key={index}>
                 <div className={`qui-icon-list-item ${quommonClasses.childClasses}`}>
                   <img
                     className="qui-icon-list-item-image"
-                    src={item?.image}
-                    alt=""
+                    src={item?.image ? item?.image : DefaultImage}
+                    alt="iconlist"
                   />
-                  <div className={`qui-icon-list-item-text `} style={{ color: withColor.textColor }}>
+                  <div className="qui-icon-list-item-text" style={{ color: withColor.textColor }}>
                     {item?.text}
                   </div>
                 </div>
               </motion.div>
             );
           })}
-        </>
+        </div>
       )
     }
   }

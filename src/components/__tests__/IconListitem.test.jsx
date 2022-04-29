@@ -2,11 +2,6 @@
 // Import from NPM
 // -------------------------------------
 import { shallow, mount, render } from "enzyme";
-import renderer, { act } from "react-test-renderer";
-//--------------------------------------
-// Import from Config
-// -------------------------------------
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -22,7 +17,7 @@ describe("IconListItem", () => {
         component = mount(
             <IconListItem
                 content={[{
-                    text: "text", image: ""
+                    text: "", image: ""
                 }]}
                 asEmphasis="conversation"
                 asFloated="none"
@@ -35,7 +30,6 @@ describe("IconListItem", () => {
                 withColor={{
                     textColor: "#666666",
                 }}
-                // withColor={null}
                 isHidden={false}
             />
         );
@@ -114,6 +108,24 @@ describe("IconListItem", () => {
         },]
 
         component.setProps({ content: value })
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly without throwing error when content props passed and asEmphasis as list", () => {
+        let value = [{
+            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+            text: "The boot space in Hyundai Elantra is 420 L"
+        },]
+        component.setProps({ asEmphasis: "list" })
+        component.setProps({ content: value })
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly without throwing error when content props passed as null and asEmphasis as list ", () => {
+        let item = [{
+            image: "",
+            text: ""
+        },]
+        component.setProps({ asEmphasis: "list" })
+        component.setProps({ content: item })
         expect(component.exists()).toBe(true);
     });
 });
