@@ -69,8 +69,8 @@ console.log(isImageModalOpen)
 					<div className="qui-ribbon-menu-label-file">Overlay Background</div>
 				</div>
 				{isImageModalOpen &&
-					<div className="qui-ribbon-design-menu-image-upload-modal-container">
-						<ImageUploadModal isOpen={isImageModalOpen} onClose={(value)=>{setImageModalOpen(value)}}/>
+					<div>
+						<ImageUploadModal {...props} isOpen={isImageModalOpen} onClose={(value)=>{setImageModalOpen(value)}}/>
 					</div>}
 			</div>
 		</div>
