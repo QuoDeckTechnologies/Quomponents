@@ -49,13 +49,31 @@ describe("Title", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error when icon is provided with presenter image", () => {
+  it("should render correctly without throwing error when icon is provided with presenter object", () => {
     component.setProps({
       data: {
         title: "test title",
         icon: "test-icon",
-        presenter: "presenter_image",
+        presenter: {
+          extention: "",
+          id: "default43",
+        },
       },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when presenter id is given in imageLibrary array", () => {
+    component.setProps({
+      data: {
+        title: "test title",
+        icon: "test-icon",
+        presenter: {
+          extention: "",
+          id: "test",
+        },
+      },
+      imageLibrary: [{ id: "test", image: "test.png" }],
     });
     expect(component.exists()).toBe(true);
   });

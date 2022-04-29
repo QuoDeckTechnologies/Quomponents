@@ -2,7 +2,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  resolveImage,
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./Title.scss";
@@ -24,8 +28,12 @@ Title.propTypes = {
     image: PropTypes.string,
     icon: PropTypes.string,
     backgroundImage: PropTypes.string,
-    presenter: PropTypes.string,
+    presenter: PropTypes.object,
   }),
+  /**
+    Title can set presenter image from imageLibrary array
+    */
+  imageLibrary: PropTypes.array,
   //=======================================
   // Quommon props
   //=======================================
@@ -92,7 +100,7 @@ export default function Title(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { data, withColor } = props;
+  const { data, imageLibrary, withColor } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -169,6 +177,13 @@ export default function Title(props) {
     };
   };
   const background = getBackground();
+  //-------------------------------------------------------------------
+  // 7. Variable to set presenter image
+  //-------------------------------------------------------------------
+  let hasPresenter =
+    data?.presenter !== undefined &&
+    data?.presenter.id !== undefined &&
+    data?.presenter.id !== "default43";
 
   // ========================= Render Function =================================
 
@@ -219,10 +234,10 @@ export default function Title(props) {
           </p>
         </div>
       )}
-      {data?.presenter && (
+      {hasPresenter && (
         <img
           className="qui-title-presenter-image"
-          src={data?.presenter}
+          src={resolveImage(data.presenter.id, imageLibrary)}
           alt="Presenter"
         />
       )}
