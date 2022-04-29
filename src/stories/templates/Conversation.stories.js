@@ -179,3 +179,56 @@ AnimatedConversation.parameters = {
     },
 };
 
+// -------------------------------------------------------------
+// Without Header Image Conversation
+// -------------------------------------------------------------
+export const WithoutHeaderImageConversation = Template.bind({});
+WithoutHeaderImageConversation.args = {
+    data: {
+        title: 'Lorem ipsum dolor sit amet',
+        subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        conversation: [
+            {
+                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                title: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+                title: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+                title: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                title: "Neque porro quisquam est qui dolorem",
+            },
+        ],
+        image: "",
+        backgroundImage: "",
+    },
+    slideId: 0,
+    asVariant: "success",
+    withColor: {
+        backgroundColor: "",
+        slideHeaderTextColor: "#ffffff",
+        slideHeaderAccentColor: "#AD2929",
+        slideHeaderBackgroundColor: "#C98787",
+        iconListItemTextColor: "#121212",
+        iconListItemBackgroundColor: "#ffffff",
+    },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+    isHidden: false,
+};
+WithoutHeaderImageConversation.parameters = {
+    docs: {
+        source: {
+            code: `<Conversation {...${JSON.stringify(WithoutHeaderImageConversation.args, null, 2)}}/>`,
+        },
+    },
+};

@@ -155,6 +155,7 @@ export default function Conversation(props) {
                 )}
                 <IconListItem
                     {...props}
+                    asEmphasis={"conversation"}
                     content={data?.conversation}
                 />
             </div>

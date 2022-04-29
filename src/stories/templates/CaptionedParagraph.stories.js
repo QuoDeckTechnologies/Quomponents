@@ -175,4 +175,45 @@ AnimatedCaptionedParagraph.parameters = {
     },
 };
 
+// -------------------------------------------------------------
+// Without Header Image CaptionedParagraph
+// -------------------------------------------------------------
+export const WithoutHeaderImageCaptionedParagraph = Template.bind({});
+WithoutHeaderImageCaptionedParagraph.args = {
+    data: {
+        title: 'Lorem ipsum dolor sit amet',
+        subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        label: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula.",
+        caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+        image: "",
+        backgroundImage: "",
+    },
+    slideId: 0,
+    asVariant: "warning",
+    withColor: {
+        backgroundColor: "",
+        slideHeaderTextColor: "#ffffff",
+        slideHeaderAccentColor: "#AD2929",
+        slideHeaderBackgroundColor: "#C98787",
+        captionTextColor: "#ffffff",
+        captionBackgroundColor: "#C98787",
+        textblockTextColor: "#121212",
+        textblockBackgroundColor: "#ffffff",
+    },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+    isHidden: false,
+};
+WithoutHeaderImageCaptionedParagraph.parameters = {
+    docs: {
+        source: {
+            code: `<CaptionedParagraph {...${JSON.stringify(WithoutHeaderImageCaptionedParagraph.args, null, 2)}}/>`,
+        },
+    },
+};
+
+
 

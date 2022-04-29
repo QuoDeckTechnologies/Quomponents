@@ -191,5 +191,47 @@ AnimatedImageWithCaption.parameters = {
     },
 };
 
+//-------------------------------------------------------------
+// Without Header Image ImageWithCaption
+// -------------------------------------------------------------
+export const ImagewithcaptionWithoutHeaderImage = Template.bind({});
+ImagewithcaptionWithoutHeaderImage.args = {
+    data: {
+        title: 'Lorem ipsum dolor sit amet',
+        subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+        image: "",
+        backgroundImage: "",
+    },
+    slideId: 0,
+    asVariant: "warning",
+    withColor: {
+        backgroundColor: "",
+        slideHeaderTextColor: "#ffffff",
+        slideHeaderAccentColor: "#AD2929",
+        slideHeaderBackgroundColor: "#C98787",
+        captionTextColor: "#ffffff",
+        captionBackgroundColor: "#C98787",
+        buttonTextColor: "#121212",
+        buttonBackgroundColor: "#F6BF33",
+        buttonHoverBackgroundColor: "#121212",
+        buttonHoverTextColor: "#F6BF33",
+    },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+    isDisabled: false,
+    isHidden: false,
+};
+ImagewithcaptionWithoutHeaderImage.parameters = {
+    docs: {
+        source: {
+            code: `<ImageWithCaption {...${JSON.stringify(ImagewithcaptionWithoutHeaderImage.args, null, 2)}}/>`,
+        },
+    },
+};
+
 
 
