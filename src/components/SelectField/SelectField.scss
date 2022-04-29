@@ -58,3 +58,78 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+/* ================================================= */
+/* SelectField font Sizing Definitions */
+/* ================================================= */
+@media only screen and (min-width: 320px) {
+    .qui .qui-select-field-label {
+        font-size: 0.8em;
+    }
+
+    .qui .qui-select-field-select {
+        font-size: 0.8em;
+    }
+
+    .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+        ul {
+            li {
+                font-size: 0.8em;
+                min-height: 3em;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 481px) {
+    .qui .qui-select-field-label {
+        font-size: 0.9em;
+    }
+
+    .qui .qui-select-field-select {
+        font-size: 0.9em;
+    }
+
+    .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+        ul {
+            li {
+                font-size: 0.9em;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .qui .qui-select-field-label {
+        font-size: 1.1em;
+    }
+
+    .qui .qui-select-field-select {
+        font-size: 1.1em;
+    }
+
+    .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+        ul {
+            li {
+                font-size: 1.1em;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .qui .qui-select-field-label {
+        font-size: 1.3em;
+    }
+
+    .qui .qui-select-field-select {
+        font-size: 1.3em;
+    }
+
+    .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+        ul {
+            li {
+                font-size: 1.3em;
+            }
+        }
+    }
+}
