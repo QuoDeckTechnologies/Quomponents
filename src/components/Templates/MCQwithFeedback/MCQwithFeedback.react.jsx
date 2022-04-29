@@ -116,7 +116,7 @@ export default function MCQwithFeedback(props) {
   // 2. Variable for ButtonBank content props
   //-------------------------------------------------------------------
   let optionsArray = [];
-  data?.options?.forEach((item) => optionsArray.push(item.text.toLowerCase()));
+  data?.options?.forEach((item) => optionsArray.push(item?.text?.toLowerCase()));
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------

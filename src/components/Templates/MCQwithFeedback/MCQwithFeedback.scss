@@ -2,8 +2,6 @@
   padding: 1.6em 1.6em 2em 1.6em;
   background-color: #ffffff;
   border-radius: 1em;
-  // max-width: 20em;
-  // display: flex;
   .qui .qui-title-block {
     min-width: 12em;
     min-height: 10em;
@@ -29,7 +27,6 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  // width: 100%;
   .qui.qui-button-bank {
     width: 100%;
   }
@@ -38,7 +35,6 @@
 .qui .qui-mcq-with-feedback-question {
   text-align: center;
   margin: 1em 0;
-  // margin-bottom: 1em;
 }
 
 .qui .qui-mcq-with-feedback-image {
@@ -51,12 +47,6 @@
 .qui .qui-mcq-with-feedback-slide-header {
   position: relative;
   width: 100%;
-  // .qui.qui-slide-header {
-  //   height: 16em;
-  // }
-  .qui-title-block {
-    height: 10.5em;
-  }
 }
 
 .qui .qui-mcq-with-feedback-separator {
@@ -78,12 +68,6 @@
       font-size: 1em;
     }
   }
-  // .qui .qui-mcq-with-feedback-slide-header {
-  //   height: 13em;
-  // }
-  // .qui.qui-mcq-with-feedback-card {
-  //   width: 100%;
-  // }
 }
 
 @media only screen and (min-width: 481px) {
@@ -92,21 +76,14 @@
       font-size: 1.2em;
     }
   }
-  // .qui .qui-mcq-with-feedback-slide-header {
-  //   height: 15em;
-  // }
   .qui.qui-mcq-with-feedback .qui-button-bank .size-normal {
     font-size: 0.8em;
   }
 }
+
 @media only screen and (min-width: 720px) {
   .qui.qui-mcq-with-feedback-card {
     min-height: 30.1em;
     width: 19.8em;
   }
-  // .qui .qui-mcq-with-feedback-slide-header {
-  //   .qui.qui-slide-header {
-  //     height: 15em;
-  //   }
-  // }
 }

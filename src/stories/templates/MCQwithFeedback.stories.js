@@ -77,10 +77,9 @@ export default {
   parameters: {
     componentSubtitle: "Displays a MCQ with Feedback Component",
     a11y: { disable: true },
-    // controls: { expanded: true }
-    docs:{
-      iframeHeight : 650
-    }
+    docs: {
+      iframeHeight: 650,
+    },
   },
 };
 
