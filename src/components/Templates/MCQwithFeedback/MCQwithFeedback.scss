@@ -1,5 +1,5 @@
 .qui.qui-mcq-with-feedback-card {
-  padding: 1.6em;
+  padding: 1.6em 1.6em 2em 1.6em;
   background-color: #ffffff;
   border-radius: 1em;
   // max-width: 20em;
@@ -101,7 +101,7 @@
 }
 @media only screen and (min-width: 720px) {
   .qui.qui-mcq-with-feedback-card {
-    min-height: 30.5em;
+    min-height: 30.1em;
     width: 19.8em;
   }
   // .qui .qui-mcq-with-feedback-slide-header {
