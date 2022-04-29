@@ -6,10 +6,10 @@ import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Anagram from "../Templates/Anagram/Anagram.react";
-import Button from "../Buttons/Button/Button.react";
+import OpenAnswer from "../../Templates/OpenAnswer/OpenAnswer.react";
+import Button from "../../Buttons/Button/Button.react";
 
-describe("Anagram", () => {
+describe("OpenAnswer", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -17,18 +17,31 @@ describe("Anagram", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <Anagram
+      <OpenAnswer
         data={{
           title: "This is Title",
           subtitle: "This is Subtitle",
+          question: "This is question",
           image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-          question: "Question",
-          answer: "Answer",
-          purpose: "quiz",
+          backgroundImage: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
         }}
         slideId={0}
         asVariant="primary"
-        withColor={null}
+        withColor={{
+          slideHeaderTextColor: "#ffffff",
+          slideHeaderAccentColor: "#AD2929",
+          slideHeaderBackgroundColor: "#AD292980",
+          questionBackgroundColor: "#a0979700",
+          questionTextColor: "#000000",
+          inputFieldTextColor: "",
+          inputFieldAccentColor: "",
+          inputFieldBackgroundColor: "",
+          buttonTextColor: "",
+          buttonBackgroundColor: "",
+          buttonHoverBackgroundColor: "",
+          buttonHoverTextColor: "",
+          backgroundColor: "#fff",
+        }}
         isHidden={false}
         isDisabled={false}
         onClick={(e) => {
@@ -42,33 +55,25 @@ describe("Anagram", () => {
   });
   it("should render correctly with empty content", () => {
     component.setProps({
-      content: {},
+      data: {},
     });
     expect(component.exists()).toBe(true);
   });
-  it('Test click event on handleSubmit function of Button', () => {
-    const handleSubmit = jest.fn();
-    const button = shallow((<Anagram onClick={handleSubmit} />));
-    button.find('Button').simulate('click');
-    expect(handleSubmit.mock.calls.length).toEqual(1);
-  });
-  it('Test click event on InputField', () => {
-    component.find('InputField').simulate('click')
-  });
   it("should render correctly when passed withColor props", () => {
     let colors = {
-      captionColor: "#ff0000",
-      labelColor: "#000000",
-      slideHeaderTextColor: "ff0000",
-      slideHeaderAccentColor: "23ff00",
-      slideHeaderBackgroundColor: "00ff00",
-      inputFieldTextColor: "ff0000",
-      inputFieldAccentColor: "23ff00",
-      inputFieldBackgroundColor: "00ff00",
-      buttonTextColor: "ff0023",
-      buttonBackgroundColor: "ff0ff0",
-      buttonHoverBackgroundColor: "ffff00",
-      buttonHoverTextColor: "ff00ff",
+      slideHeaderTextColor: "#ffffff",
+      slideHeaderAccentColor: "#AD2929",
+      slideHeaderBackgroundColor: "#AD292980",
+      questionBackgroundColor: "#a0979700",
+      questionTextColor: "#000000",
+      inputFieldTextColor: "",
+      inputFieldAccentColor: "",
+      inputFieldBackgroundColor: "",
+      buttonTextColor: "",
+      buttonBackgroundColor: "",
+      buttonHoverBackgroundColor: "",
+      buttonHoverTextColor: "",
+      backgroundColor: "#fff",
     }
     component.setProps({ withColor: colors })
     expect(component.exists()).toBe(true);
@@ -98,10 +103,6 @@ describe("Anagram", () => {
     component.setProps({ isDisabled: true })
     expect(component.exists()).toBe(true);
   })
-  it("should render correctly when passed answer props as null", () => {
-    component.setProps({ answer: null })
-    expect(component.exists()).toBe(true);
-  })
   it("should render correctly when passed asVariant prop as primary", () => {
     component.setProps({ asVariant: "primary" })
     expect(component.exists()).toBe(true);
@@ -127,11 +128,33 @@ describe("Anagram", () => {
       title: "This is Title",
       subtitle: "This is Subtitle",
       image: "",
-      question: "Question",
-      answer: "Answer",
-      purpose: "quiz",
     }
     component.setProps({ data: data })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed backgroundImage prop as null and backgroundColor is passed", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
+      image: "",
+      backgroundImage: "",
+    }
+    let colors = {
+      slideHeaderTextColor: "#ffffff",
+      slideHeaderAccentColor: "#AD2929",
+      slideHeaderBackgroundColor: "#AD292980",
+      questionBackgroundColor: "#a0979700",
+      questionTextColor: "#000000",
+      inputFieldTextColor: "",
+      inputFieldAccentColor: "",
+      inputFieldBackgroundColor: "",
+      buttonTextColor: "",
+      buttonBackgroundColor: "",
+      buttonHoverBackgroundColor: "",
+      buttonHoverTextColor: "",
+      backgroundColor: "#fff",
+    }
+    component.setProps({ data: data, withColor: colors })
     expect(component.exists()).toBe(true);
   })
   it("should render correctly with withColor prop when hovered on Button", () => {
@@ -150,5 +173,14 @@ describe("Anagram", () => {
     act(() => {
       tree.props.onMouseEnter();
     });
+  });
+  it('Test click event on handleSubmit function of Button', () => {
+    const handleSubmit = jest.fn();
+    const button = shallow((<OpenAnswer onClick={handleSubmit} />));
+    button.find('Button').simulate('click');
+    expect(handleSubmit.mock.calls.length).toEqual(1);
+  });
+  it('Test click event on InputField', () => {
+    component.find('InputField').simulate('click')
   });
 });
