@@ -25,10 +25,6 @@ Splash.propTypes = {
     slideId can be used if same template is used continueously for multiple slides in qdf.
     */
   slideId: PropTypes.number,
-  /**
-    Splash component can use presenter props to show presenter template
-    */
-  isPresenter: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
