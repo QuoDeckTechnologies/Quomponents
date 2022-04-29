@@ -44,6 +44,10 @@ CaptionedParagraph.propTypes = {
         "error",
     ]),
     /**
+    Use to float the component in parent container
+    */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+    /**
       Use to override component colors and behavior
       */
     withColor: PropTypes.shape({
@@ -89,6 +93,7 @@ CaptionedParagraph.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "warning",
+    asFloated: "left",
     withColor: null,
     withAnimation: null,
     isHidden: false,

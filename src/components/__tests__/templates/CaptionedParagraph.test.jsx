@@ -26,6 +26,7 @@ describe("CaptionedParagraph", () => {
                 }}
                 slideId={0}
                 asVariant="primary"
+                asFloated="left"
                 withColor={null}
                 isHidden={false}
             />

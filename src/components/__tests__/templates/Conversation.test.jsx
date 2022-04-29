@@ -42,6 +42,7 @@ describe("Conversation", () => {
                 }}
                 slideId={0}
                 asVariant="primary"
+                asFloated="none"
                 withColor={null}
                 isHidden={false}
             />

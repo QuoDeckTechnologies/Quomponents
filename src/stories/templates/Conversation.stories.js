@@ -20,6 +20,13 @@ export default {
                 category: "as-Flags",
             },
         },
+        asFloated: {
+            control: "select",
+            options: ["left", "right", "none", "inline"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -104,6 +111,7 @@ Default.args = {
     },
     slideId: 0,
     asVariant: "success",
+    asFloated: "left",
     withColor: {
         backgroundColor: "",
         slideHeaderTextColor: "#ffffff",
