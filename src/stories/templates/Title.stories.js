@@ -245,7 +245,6 @@ ColoredTitle.args = {
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     icon: "fas fa-book-open",
   },
-  isPresenter: true,
   withColor: {
     backgroundColor: "#14213d",
     textColor: "#ced4da",
