@@ -12,7 +12,6 @@ export default {
         defaultValue: {
           backgroundColor: "",
           accentColor: "",
-          textColor: "",
         },
       },
     },
@@ -82,7 +81,6 @@ Default.args = {
   withColor: {
     backgroundColor: "#ffab000d",
     accentColor: "",
-    textColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -107,7 +105,6 @@ ColoredOptionItemThree.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#8c9ea3",
-    textColor: "#ffffff",
     accentColor: "#597387",
   },
 };

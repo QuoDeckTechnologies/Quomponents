@@ -24,6 +24,7 @@ OptionItemSeven.propTypes = {
     placeholder: PropTypes.string,
     checked: PropTypes.bool,
     image: PropTypes.object,
+    maxLength: PropTypes.number,
   }),
   //=======================================
   // Quommon props
@@ -34,8 +35,6 @@ OptionItemSeven.propTypes = {
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
-    textColor: PropTypes.string,
-    maxLength: PropTypes.number,
   }),
   /**
     Use to define the entry animation of the component

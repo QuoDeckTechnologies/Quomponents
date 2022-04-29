@@ -33,7 +33,6 @@ OptionItemFive.propTypes = {
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
-    textColor: PropTypes.string,
   }),
   /**
   Use to define the entry animation of the component
