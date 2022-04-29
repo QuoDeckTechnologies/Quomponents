@@ -80,7 +80,7 @@ export default {
     componentSubtitle: "Displays a OpenAnswer slide with slide header and an input field , user can submit text by clicking on submit button, we can switch between slideHeader and header Image by giving image prop",
     a11y: { disable: true },
     docs: {
-      iframeHeight: 400,
+      iframeHeight: 600,
     },
   },
 };
