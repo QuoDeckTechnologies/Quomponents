@@ -23,7 +23,6 @@ describe("Title", () => {
           icon: "test-icon",
           image: "test_image",
         }}
-        onClick={() => {}}
       />
     );
   });
