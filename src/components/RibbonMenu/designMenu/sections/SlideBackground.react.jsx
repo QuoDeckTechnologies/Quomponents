@@ -18,20 +18,20 @@ SlideBackground.propTypes = {
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    RibbbonDesignMenu component must have the onClick function passed as props
-    */
+	RibbbonDesignMenu component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 
@@ -55,7 +55,11 @@ export default function SlideBackground(props) {
 					>
 						<div className="qui-ribbon-menu-overlay-background-section-child">
 							<div className="qui-ribbon-menu-set-remove"></div>
-							<div className="qui-ribbon-menu-label-set-remove">Set Remove</div>
+							<div className="qui-ribbon-menu-label-set-remove-container">
+								<div className="qui-ribbon-menu-label-set">Set</div>
+								<div className="qui-ribbon-menu-label-remove"> Remove</div>
+							</div>
+
 						</div>
 					</div>
 					<div className="qui-ribbon-menu-label-file">Slide Background</div>

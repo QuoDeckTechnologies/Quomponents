@@ -11,6 +11,9 @@
     .qui-iconlink{
         padding: 0;
     }
+    .qui .tilt{
+        transform: rotate(0deg);
+    }
 }
 /* ================================================= */
 /* SaveExitSection Styling Definitions */
@@ -26,6 +29,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    .qui .tilt{
+        transform: rotate(0deg);
+    }
 }
 .qui-ribbon-exit-save-section{
     height: 4.2em;
@@ -56,6 +62,9 @@
     height:4.5em;
     padding: 0.1em 0.1em;
     align-items: center;
+    .qui .tilt{
+        transform: rotate(0deg);
+    }
 }
 .qui-ribbon-menu-save-section{
     display: flex;

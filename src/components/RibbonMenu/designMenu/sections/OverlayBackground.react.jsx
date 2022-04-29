@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { getQuommons } from "../../../../common/javascripts/helpers";
@@ -8,6 +8,7 @@ import "../../../../common/stylesheets/common.css";
 import "../../RibbonMenu.scss";
 import "../RibbonDesignMenu.scss";
 import "../../../../common/stylesheets/overrule.scss";
+import ImageUploadModal from "../../../ImageUploadModal/ImageUploadModal.react";
 
 OverlayBackground.propTypes = {
 	//=======================================
@@ -18,20 +19,20 @@ OverlayBackground.propTypes = {
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    RibbbonDesignMenu component must have the onClick function passed as props
-    */
+	RibbbonDesignMenu component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 
@@ -44,6 +45,11 @@ export default function OverlayBackground(props) {
 		"ribbon-design-menu-overlay-background-parent"
 	);
 
+	const [isImageModalOpen, setImageModalOpen] = useState(false);
+	function handleClick() {
+		setImageModalOpen(true)
+	}
+console.log(isImageModalOpen)
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
@@ -51,15 +57,21 @@ export default function OverlayBackground(props) {
 				<div className="qui-ribbon-menu-slide-background-section">
 					<div
 						className="qui-ribbon-menu-slide-background-section-child-container"
-						onClick={props.onClick}
 					>
 						<div className="qui-ribbon-menu-slide-background-section-child">
 							<div className="qui-ribbon-menu-set-remove"></div>
-							<div className="qui-ribbon-menu-label-set-remove">Set Remove</div>
+							<div className="qui-ribbon-menu-label-set-remove-container">
+								<div className="qui-ribbon-menu-label-set" onClick={handleClick}>Set</div>
+								<div className="qui-ribbon-menu-label-remove"> Remove</div>
+							</div>
 						</div>
 					</div>
 					<div className="qui-ribbon-menu-label-file">Overlay Background</div>
 				</div>
+				{isImageModalOpen &&
+					<div className="qui-ribbon-design-menu-image-upload-modal-container">
+						<ImageUploadModal isOpen={isImageModalOpen} onClose={(value)=>{setImageModalOpen(value)}}/>
+					</div>}
 			</div>
 		</div>
 	);
