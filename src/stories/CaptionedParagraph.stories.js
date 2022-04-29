@@ -1,13 +1,14 @@
 import React from "react";
-import ImageWithCaption from "../components/Templates/ImageWithCaption/ImageWithCaption.react";
+import CaptionedParagraph from "../components/Templates/CaptionedParagraph/CaptionedParagraph.react";
 
 export default {
-    title: "Design System/Templates/ImageWithCaption/ImageWithCaption",
-    component: ImageWithCaption,
+    title: "Design System/Templates/CaptionedParagraph/CaptionedParagraph",
+    component: CaptionedParagraph,
     argTypes: {
         data: {
             title: "",
             subtitle: "",
+            label: "",
             caption: "",
             image: "",
             backgroundImage: "",
@@ -47,22 +48,10 @@ export default {
                 },
             },
         },
-        isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
         isHidden: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
-            },
-        },
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
             },
         },
     },
@@ -79,7 +68,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a ImageWithCaption with SlideHeader, TextBlock and Button for general-purpose use.",
+        componentSubtitle: "Displays a CaptionedParagraph with SlideHeader and TextBlocks for general-purpose use.",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -91,7 +80,7 @@ export default {
 // Default
 // -------------------------------------------------------------
 const Template = (args) => {
-    return <ImageWithCaption {...args} />;
+    return <CaptionedParagraph {...args} />;
 };
 
 export const Default = Template.bind({});
@@ -99,6 +88,7 @@ Default.args = {
     data: {
         title: 'Lorem ipsum dolor sit amet',
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        label: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula.",
         caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
         image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
         backgroundImage: "https://www.mmppicture.co.in/wp-content/uploads/2020/08/CB-Background-43.jpg",
@@ -112,33 +102,29 @@ Default.args = {
         slideHeaderBackgroundColor: "#C98787",
         captionTextColor: "#ffffff",
         captionBackgroundColor: "#C98787",
-        buttonTextColor: "#121212",
-        buttonBackgroundColor: "#F6BF33",
-        buttonHoverBackgroundColor: "#121212",
-        buttonHoverTextColor: "#F6BF33",
+        textblockTextColor: "#121212",
+        textblockBackgroundColor: "#ffffff",
     },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
     },
-    isDisabled: false,
     isHidden: false,
 };
 Default.parameters = {
     docs: {
         source: {
-            code: `<ImageWithCaption {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<CaptionedParagraph {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
 
-
 //-------------------------------------------------------------
-// Colored ImageWithCaption
+// Colored CaptionedParagraph
 // -------------------------------------------------------------
-export const ColoredImageWithCaption = Template.bind({});
-ColoredImageWithCaption.args = {
+export const ColoredCaptionedParagraph = Template.bind({});
+ColoredCaptionedParagraph.args = {
     ...Default.args,
     withColor: {
         backgroundColor: "#7d8384",
@@ -147,28 +133,26 @@ ColoredImageWithCaption.args = {
         slideHeaderBackgroundColor: "#DBDBDB",
         captionTextColor: "#454545",
         captionBackgroundColor: "#DBDBDB",
-        buttonTextColor: "#F6BF33",
-        buttonBackgroundColor: "#121212",
-        buttonHoverBackgroundColor: "#F6BF33",
-        buttonHoverTextColor: "#121212",
+        textblockTextColor: "#AD2929",
+        textblockBackgroundColor: "#C1DC9E",
     },
 };
-ColoredImageWithCaption.parameters = {
+ColoredCaptionedParagraph.parameters = {
     docs: {
         description: {
             story: "Use to override the standard colors of the component.",
         },
         source: {
-            code: `<ImageWithCaption withColor={{backgroundColor: "#C98787", accentColor: "#D3D3D3", textColor: "#ffffff"}}}/>`,
+            code: `<CaptionedParagraph withColor={{backgroundColor: "#C98787", accentColor: "#D3D3D3", textColor: "#ffffff"}}}/>`,
         },
     },
 };
 
 //-------------------------------------------------------------
-// Animated ImageWithCaption
+// Animated CaptionedParagraph
 // -------------------------------------------------------------
-export const AnimatedImageWithCaption = Template.bind({});
-AnimatedImageWithCaption.args = {
+export const AnimatedCaptionedParagraph = Template.bind({});
+AnimatedCaptionedParagraph.args = {
     ...Default.args,
     withAnimation: {
         animation: "fade",
@@ -176,20 +160,19 @@ AnimatedImageWithCaption.args = {
         delay: 0,
     },
 };
-AnimatedImageWithCaption.parameters = {
+AnimatedCaptionedParagraph.parameters = {
     docs: {
         description: {
-            story: "We can animate the appearance of ImageWithCaption",
+            story: "We can animate the appearance of CaptionedParagraph",
         },
         source: {
-            code: `<ImageWithCaption {...${JSON.stringify(
-                AnimatedImageWithCaption.args,
+            code: `<CaptionedParagraph {...${JSON.stringify(
+                AnimatedCaptionedParagraph.args,
                 null,
                 2
             )}}/>`,
         },
     },
 };
-
 
 
