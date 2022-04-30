@@ -5,9 +5,16 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
+<<<<<<< HEAD:src/components/__tests__/templates/PictureSingleSelect.test.jsx
 import PictureSingleSelect from "../../Templates/PictureSingleSelect/PictureSingleSelect.react";
 import ClickableImage from "../../ClickableImage/ClickableImage.react"
 describe("PictureSingleSelect", () => {
+=======
+import ExternalLink from "../../Templates/ExternalLink/ExternalLink.react";
+import Button from "../../Buttons/Button/Button.react";
+
+describe("ExternalLink", () => {
+>>>>>>> c6f72b42c8f27efe95a4a3fdf6e3d50178a528ad:src/components/__tests__/templates/ExternalLink.test.jsx
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -15,16 +22,24 @@ describe("PictureSingleSelect", () => {
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
+<<<<<<< HEAD:src/components/__tests__/templates/PictureSingleSelect.test.jsx
             <PictureSingleSelect
+=======
+            <ExternalLink
+>>>>>>> c6f72b42c8f27efe95a4a3fdf6e3d50178a528ad:src/components/__tests__/templates/ExternalLink.test.jsx
                 data={{
                     title: "This is Title",
                     subtitle: "This is Subtitle",
                     question: "This is Question",
                     image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+<<<<<<< HEAD:src/components/__tests__/templates/PictureSingleSelect.test.jsx
                     imageOpts: [
                         "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
                         "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
                     ],
+=======
+                    paragraph: "this is paragraph",
+>>>>>>> c6f72b42c8f27efe95a4a3fdf6e3d50178a528ad:src/components/__tests__/templates/ExternalLink.test.jsx
                     backgroundImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
                 }}
                 slideId={0}
@@ -56,12 +71,18 @@ describe("PictureSingleSelect", () => {
         let data = {
             title: "This is Title",
             subtitle: "This is Subtitle",
+<<<<<<< HEAD:src/components/__tests__/templates/PictureSingleSelect.test.jsx
             imageOpts: [
                 "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
                 "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
             ],
             image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
             question: "this is question",
+=======
+            link:"https/github.com",
+            image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+            paragraph: "this is paragraph",
+>>>>>>> c6f72b42c8f27efe95a4a3fdf6e3d50178a528ad:src/components/__tests__/templates/ExternalLink.test.jsx
             backgroundImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
         }
         let colors = {

@@ -223,8 +223,6 @@ WithoutHeaderImageConversation.args = {
         slideHeaderTextColor: "#ffffff",
         slideHeaderAccentColor: "#AD2929",
         slideHeaderBackgroundColor: "#C98787",
-        iconListItemTextColor: "#121212",
-        iconListItemBackgroundColor: "#ffffff",
     },
     withAnimation: {
         animation: "zoom",
