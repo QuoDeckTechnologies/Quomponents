@@ -60,10 +60,6 @@ PictureSingleSelect.propTypes = {
         slideHeaderBackgroundColor: PropTypes.string,
         captionTextColor: PropTypes.string,
         captionBackgroundColor: PropTypes.string,
-        buttonTextColor: PropTypes.string,
-        buttonBackgroundColor: PropTypes.string,
-        buttonHoverBackgroundColor: PropTypes.string,
-        buttonHoverTextColor: PropTypes.string,
     }),
     /**
       Use to define the entry animation of the component
