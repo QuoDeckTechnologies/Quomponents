@@ -20,7 +20,9 @@ PalleteThemeSection.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
-
+	actions: PropTypes.shape({
+		updateDeck: PropTypes.func
+	}),
 	//=======================================
 	// Quommon props
 	//=======================================
@@ -88,7 +90,7 @@ export default function PalleteThemeSection(props) {
 	};
 
 	useEffect(() => {
-		props.onClick(updatedTheme);
+		props.actions.updateDeck({ colors: updatedTheme });
 	});
 
 	//-------------------------------------------------------------------

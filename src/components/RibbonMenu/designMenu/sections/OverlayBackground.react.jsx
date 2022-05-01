@@ -14,7 +14,13 @@ OverlayBackground.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
-
+	/** 
+	The Actions object is received from DeckEditorContainer for use.
+	*/
+	actions: PropTypes.shape({
+		updateDeck: PropTypes.func
+	}),
+	
 	//=======================================
 	// Quommon props
 	//=======================================
@@ -34,6 +40,10 @@ OverlayBackground.propTypes = {
 	RibbbonDesignMenu component must have the onClick function passed as props
 	*/
 	onClick: PropTypes.func,
+	/**
+	updateDeck component must have the onClick function passed as props
+	*/
+	updateDeck: PropTypes.func,
 };
 
 export default function OverlayBackground(props) {
@@ -46,10 +56,17 @@ export default function OverlayBackground(props) {
 	);
 
 	const [isImageModalOpen, setImageModalOpen] = useState(false);
-	function handleClick() {
+
+	function handleModalOpen() {
 		setImageModalOpen(true)
 	}
-console.log(isImageModalOpen)
+	function handleModalSave(editedImage) {
+		props.actions.updateDeck({ backgroundImage: editedImage })
+	}
+	function removeBackground() {
+		props.actions.updateDeck({ backgroundImage: "" })
+	}
+
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
@@ -61,8 +78,8 @@ console.log(isImageModalOpen)
 						<div className="qui-ribbon-menu-slide-background-section-child">
 							<div className="qui-ribbon-menu-set-remove"></div>
 							<div className="qui-ribbon-menu-label-set-remove-container">
-								<div className="qui-ribbon-menu-label-set" onClick={handleClick}>Set</div>
-								<div className="qui-ribbon-menu-label-remove"> Remove</div>
+								<div className="qui-ribbon-menu-label-set" onClick={handleModalOpen}>Set</div>
+								<div className="qui-ribbon-menu-label-remove" onClick={removeBackground}> Remove</div>
 							</div>
 						</div>
 					</div>
@@ -70,7 +87,7 @@ console.log(isImageModalOpen)
 				</div>
 				{isImageModalOpen &&
 					<div>
-						<ImageUploadModal {...props} isOpen={isImageModalOpen} onClose={(value)=>{setImageModalOpen(value)}}/>
+						<ImageUploadModal isOpen={isImageModalOpen} onClick={(editedImage) => { handleModalSave(editedImage) }} onClose={(value) => { setImageModalOpen(value) }} />
 					</div>}
 			</div>
 		</div>

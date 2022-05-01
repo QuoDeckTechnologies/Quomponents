@@ -15,25 +15,29 @@ SaveSection.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
+	/** 
+	The onSaveDeck function is received from DeckEditorContainer for use.
+	*/
+	onSaveDeck: PropTypes.func,
 
 	//=======================================
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    SaveSection component must have the onClick function passed as props
-    */
+	SaveSection component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 
@@ -43,6 +47,18 @@ export default function SaveSection(props) {
 	//-------------------------------------------------------------------
 	let quommonClasses = getQuommons(props, "ribbon-menu-save-section-parent");
 
+
+
+	const handleSave = () => {
+		props.onSaveDeck();
+	};
+	const handleUpload = () => {
+		// Logic here
+	};
+	const handleDownload = () => {
+		// Logic here
+	};
+
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
@@ -51,7 +67,7 @@ export default function SaveSection(props) {
 					<div className="qui-ribbon-menu-save-section-child-container">
 						<div className="qui-ribbon-menu-save-section-child">
 							<IconLink
-								onClick={props.onClick}
+								onClick={handleUpload}
 								asSize="tiny"
 								asPadded="fitted"
 								withColor={{
@@ -60,14 +76,14 @@ export default function SaveSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-file-upload" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+							<div className="qui-ribbon-menu-label" onClick={handleUpload}>
 								Upload
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
 						<div className="qui-ribbon-menu-save-section-child">
 							<IconLink
-								onClick={props.onClick}
+								onClick={handleDownload}
 								asPadded="fitted"
 								asSize="tiny"
 								withColor={{
@@ -76,14 +92,14 @@ export default function SaveSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-download" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+							<div className="qui-ribbon-menu-label" onClick={handleDownload}>
 								Download
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
 						<div className="qui-ribbon-menu-save-section-child">
 							<IconLink
-								onClick={props.onClick}
+								onClick={handleSave}
 								asSize="tiny"
 								asPadded="fitted"
 								withColor={{
@@ -92,7 +108,7 @@ export default function SaveSection(props) {
 								}}
 								withIcon={{ icon: "far fa-file-alt" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+							<div className="qui-ribbon-menu-label" onClick={handleSave}>
 								Save
 							</div>
 						</div>

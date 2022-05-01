@@ -5,13 +5,7 @@ export default {
     title: "Design System/RibbonMenu/RibbonDesignMenu",
     component: RibbonDesignMenu,
     argTypes: {
-        asEmphasis: {
-            control: "select",
-            options: ["html", "home", "tools", "design"],
-            table: {
-                category: "as-Flags",
-            },
-        },
+        actions: {},
         asFloated: {
             control: "select",
             options: ["left", "right", "inline"],
@@ -66,7 +60,9 @@ export default {
 const Template = (args) => <RibbonDesignMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    asEmphasis: "html",
+    actions: {
+        updateDeck: (value) => { return value }
+    },
     asFloated: "left",
     isDisabled: false,
     isHidden: false,

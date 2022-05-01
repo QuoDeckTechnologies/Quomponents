@@ -17,25 +17,61 @@ RibbonMenu.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
-
+	/** 
+	The Actions object is received from DeckEditorContainer for use.
+	*/
+	actions: PropTypes.shape({
+		updateDeck: PropTypes.func,
+		addPoints: PropTypes.func,
+		addSlide: PropTypes.func,
+		duplicateSlide: PropTypes.func,
+		deleteSlide: PropTypes.func,
+		changeSlideNav: PropTypes.func,
+		setUserOptions: PropTypes.func
+	}),
+	/** 
+	The Deck state is handed down from DeckEditorContainer for use.
+	*/
+	deck: {
+		navEnabled: PropTypes.bool,
+		snEnabled: PropTypes.bool,
+		voEnabled: PropTypes.bool,
+		content: PropTypes.array,
+		currentSlide: PropTypes.number
+	},
+	/** 
+	The deckId is received from DeckEditorContainer for use.
+	*/
+	deckId: PropTypes.string,
+	/** 
+	The onSaveDeck function is received from DeckEditorContainer for use.
+	*/
+	onSaveDeck: PropTypes.func,
+	/** 
+	The onAddQDF function is received from DeckEditorContainer for use.
+	*/
+	onAddQDF: PropTypes.func,
+	params: PropTypes.shape({
+		deckId: PropTypes.string
+	}),
 	//=======================================
 	// Quommon props
 	//=======================================
 	/**
-    RibbonMenu tabs data should be passed in content field and it is required field  
-    */
+	RibbonMenu tabs data should be passed in content field and it is required field  
+	*/
 	asEmphasis: PropTypes.oneOf(["html", "design", "tools", "home"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    RibbonMenu component must have the onClick function passed as props
-    */
+	RibbonMenu component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 

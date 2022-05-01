@@ -15,25 +15,39 @@ SlideSection.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
+	/** 
+	The Actions object is received from DeckEditorContainer for use.
+	*/
+	actions: PropTypes.shape({
+		addSlide: PropTypes.func,
+		duplicateSlide: PropTypes.func,
+		deleteSlide: PropTypes.func
+	}),
+	/** 
+	The Deck state is handed down from DeckEditorContainer for use.
+	*/
+	deck: PropTypes.shape({
+		content: PropTypes.array
+	}),
 
 	//=======================================
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    SlideSection component must have the onClick function passed as props
-    */
+	SlideSection component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 
@@ -51,7 +65,7 @@ export default function SlideSection(props) {
 					<div className="qui-ribbon-menu-slide-section-child-container">
 						<div className="qui-ribbon-menu-slide-section-child upload">
 							<IconLink
-								onClick={props.onClick}
+								onClick={props.actions?.addSlide}
 								asSize="tiny"
 								asPadded="fitted"
 								withColor={{
@@ -60,7 +74,7 @@ export default function SlideSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-plus" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+							<div className="qui-ribbon-menu-label" onClick={props.actions?.addSlide}>
 								New Slide
 							</div>
 						</div>
@@ -68,7 +82,7 @@ export default function SlideSection(props) {
 						<div className="qui-ribbon-menu-slide-section-child">
 							<div className="qui-ribbon-menu-slide-section-right-content">
 								<IconLink
-									onClick={props.onClick}
+									onClick={props.actions?.duplicateSlide}
 									asSize="tiny"
 									asPadded="fitted"
 									withColor={{
@@ -79,25 +93,27 @@ export default function SlideSection(props) {
 								/>
 								<div
 									className="qui-ribbon-menu-slide-label"
-									onClick={props.onClick}
+									onClick={props.actions?.duplicateSlide}
 								>
 									Duplicate Slide
 								</div>
 							</div>
-							<div className="qui-ribbon-menu-slide-section-right-content">
+							<div className="qui-ribbon-menu-slide-section-right-content"
+								style={props.deck.content.length === 1 ? { pointerEvents: "none", opacity: "0.6" } : { pointerEvents: "auto" }}>
 								<IconLink
-									onClick={props.onClick}
+									onClick={props.actions?.deleteSlide}
 									asSize="tiny"
 									asPadded="fitted"
 									withColor={{
 										backgroundColor: "#666666",
 										hoverTextColor: "#666666",
 									}}
+									isDisabled={props.deck?.content?.length === 1 ? true : false}
 									withIcon={{ icon: "fas fa-trash" }}
 								/>
 								<div
 									className="qui-ribbon-menu-slide-label"
-									onClick={props.onClick}
+									onClick={props.actions?.deleteSlide}
 								>
 									Delete Slide
 								</div>

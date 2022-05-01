@@ -5,6 +5,8 @@ export default {
 	title: "Design System/RibbonMenu/RibbonHomeMenu/SlideSection",
 	component: SlideSection,
 	argTypes: {
+		actions: {},
+		deck: {},
 		asFloated: {
 			control: "select",
 			options: ["left", "right", "inline"],
@@ -59,12 +61,48 @@ export default {
 const Template = (args) => <SlideSection {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+	actions: {
+		addSlide: (value) => { return value },
+		duplicateSlide: (value) => { return value },
+		deleteSlide: (value) => { return console.log(value) }
+	},
+	deck: {
+		content: [{}, {}]
+	},
 	asFloated: "left",
 	isDisabled: false,
 	isHidden: false,
 };
 Default.parameters = {
 	docs: {
+		source: {
+			code: `<SlideSection {...${JSON.stringify(Default.args, null, 2)}}/>`,
+		},
+	},
+};
+
+export const SlideSectionWithOneContent = (args) => {
+	const baseObj1 = {
+		...Object.assign({}, Default.args, args, {
+			deck: {
+				content: [{}]
+			},
+		}),
+	};
+	return (
+		<div>
+			<SlideSection
+				{...Object.assign({}, baseObj1, {
+				})}
+			/>
+		</div>
+	);
+};
+SlideSectionWithOneContent.parameters = {
+	docs: {
+		description: {
+			story: "If there is only one content(slide) in the deck it will not get deleted. The delete button will get disabled.",
+		},
 		source: {
 			code: `<SlideSection {...${JSON.stringify(Default.args, null, 2)}}/>`,
 		},

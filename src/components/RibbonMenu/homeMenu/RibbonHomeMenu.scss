@@ -1,39 +1,45 @@
 /* ================================================= */
 /* Ribbon Home Menu Styling Definitions */
 /* ================================================= */
-.qui .qui-ribbon-home-menu-container{
+.qui .qui-ribbon-home-menu-container {
     width: 999px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
     padding: 15px 9px 10px 20px;
-    .qui-iconlink{
+
+    .qui-iconlink {
         padding: 0;
     }
-    .qui .tilt{
+
+    .qui .tilt {
         transform: rotate(0deg);
     }
 }
+
 /* ================================================= */
 /* SlideSection Styling Definitions */
 /* ================================================= */
-.qui-ribbon-menu-slide-section-parent{
+.qui-ribbon-menu-slide-section-parent {
     display: flex;
     flex-direction: column;
-    height:4.5em;
+    height: 4.5em;
     padding: 0.1em 0.1em;
     align-items: center;
-    .qui .tilt{
+
+    .qui .tilt {
         transform: rotate(0deg);
     }
 }
-.qui .qui-ribbon-menu-slide-section{
+
+.qui .qui-ribbon-menu-slide-section {
     display: flex;
     flex-direction: column;
-    height:4.5em;
+    height: 4.5em;
 }
-.qui-ribbon-menu-slide-section-child-container{
+
+.qui-ribbon-menu-slide-section-child-container {
     width: 210px;
     height: 64px;
     display: flex;
@@ -42,7 +48,8 @@
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }
-.qui-ribbon-menu-slide-section-child{
+
+.qui-ribbon-menu-slide-section-child {
     width: 100%;
     height: 100%;
     display: flex;
@@ -51,20 +58,24 @@
     align-items: center;
     font-size: 0.7em;
 }
+
 .qui-ribbon-menu-slide-section-child.upload {
     width: 100px;
 }
+
 .qui-ribbon-menu-slide-section-right-content {
     margin-left: 10px;
     width: 110px;
 }
-.qui-ribbon-menu-slide-section-right-content{
+
+.qui-ribbon-menu-slide-section-right-content {
     width: 130px;
     display: flex;
     align-items: center;
     font-size: 0.6em;
     padding: 0.1em 0;
 }
+
 .qui-ribbon-menu-slide-label {
     display: flex;
     align-items: center;
@@ -74,29 +85,37 @@
     cursor: pointer;
     margin-left: 5px;
 }
+
 /* ================================================= */
 /* SettingSection Styling Definitions */
 /* ================================================= */
-.qui-ribbon-home-menu-slide-setting-section-parent{
+.qui-ribbon-home-menu-slide-setting-section-parent {
     display: flex;
     flex-direction: column;
-    height:4.5em;
+    height: 4.5em;
+    padding: 0.1em 0.1em;
+    align-items: center;
+
+    .qui .tilt {
+        transform: rotate(0deg);
+    }
+}
+
+.qui .qui-ribbon-menu-settings-section {
+    display: flex;
+    flex-direction: column;
+    height: 4.5em;
+}
+
+.qui-ribbon-menu-slide-setting-section-parent {
+    display: flex;
+    flex-direction: column;
+    height: 4.5em;
     padding: 0.1em 0.1em;
     align-items: center;
 }
-.qui .qui-ribbon-menu-settings-section{
-    display: flex;
-    flex-direction: column;
-    height:4.5em;
-}
-.qui-ribbon-menu-slide-setting-section-parent{
-    display: flex;
-    flex-direction: column;
-    height:4.5em;
-    padding: 0.1em 0.1em;
-    align-items: center;
-}
-.qui-ribbon-home-menu-settings-section-child-container{
+
+.qui-ribbon-home-menu-settings-section-child-container {
     font-size: 0.7em;
     width: 149px;
     height: 64px;
@@ -107,24 +126,28 @@
     box-shadow: 0px 1px 4px rgba(119, 110, 110, 0.25);
     border-radius: 5px;
 }
+
 /* ================================================= */
 /* ViewSection Styling Definitions */
 /* ================================================= */
-.qui-ribbon-home-menu-view-section-parent{
+.qui-ribbon-home-menu-view-section-parent {
     display: flex;
     flex-direction: column;
-    height:4.5em;
+    height: 4.5em;
     padding: 0.1em 0.1em;
     align-items: center;
-    .qui .tilt{
+
+    .qui .tilt {
         transform: rotate(0deg);
     }
 }
-.qui-ribbon-menu-view-section{
+
+.qui-ribbon-menu-view-section {
     display: flex;
     flex-direction: column;
-    height:4.5em;
+    height: 4.5em;
 }
+
 .qui-ribbon-menu-view-section-child {
     width: 100%;
     height: 100%;
@@ -134,6 +157,7 @@
     align-items: center;
     font-size: 0.7em;
 }
+
 .qui-ribbon-menu-view-section-child-container {
     width: 264px;
     padding: 0 10px;

@@ -16,25 +16,46 @@ RibbonHtmlMenu.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
+	/** 
+	The Actions object is received from DeckEditorContainer for use.
+	*/
+	actions: PropTypes.shape({
+		addPoints: PropTypes.func
+	}),
+	/** 
+	The deckId is received from DeckEditorContainer for use.
+	*/
+	deckId: PropTypes.string,
+	/** 
+	The onSaveDeck function is received from DeckEditorContainer for use.
+	*/
+	onSaveDeck: PropTypes.func,
+	/** 
+	The onAddQDF function is received from DeckEditorContainer for use.
+	*/
+	onAddQDF: PropTypes.func,
+	params: PropTypes.shape({
+		deckId: PropTypes.string
+	}),
 
 	//=======================================
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    RibbonHtmlMenu component must have the onClick function passed as props
-    */
+	RibbonHtmlMenu component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 

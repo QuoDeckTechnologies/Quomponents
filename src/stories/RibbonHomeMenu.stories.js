@@ -5,6 +5,23 @@ export default {
 	title: "Design System/RibbonMenu/RibbonHomeMenu",
 	component: RibbonHomeMenu,
 	argTypes: {
+		actions: {},
+		deckId: "",
+		onSaveDeck: {
+			table: {
+				category: "Events",
+				defaultValue: null,
+			},
+		},
+		onAddQDF: {
+			table: {
+				category: "Events",
+				defaultValue: null,
+			},
+		},
+		params: {
+			deckId: ""
+		},
 		asFloated: {
 			control: "select",
 			options: ["left", "right", "inline"],
@@ -59,6 +76,22 @@ export default {
 const Template = (args) => <RibbonHomeMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+	actions: {
+		addSlide: (value) => { return value },
+		duplicateSlide: (value) => { return value },
+		deleteSlide: (value) => { return console.log(value) },
+		changeSlideNav: (navObj) => { return navObj },
+		setUserOptions: (view) => { return view },
+		addPoints: (points) => { return points }
+	},
+	deck: {
+		content: [{}, {}, {}],
+		currentSlide: 1
+	},
+	params: {
+		deckId: "1"
+	},
+	deckId: "1",
 	asFloated: "left",
 	isDisabled: false,
 	isHidden: false,

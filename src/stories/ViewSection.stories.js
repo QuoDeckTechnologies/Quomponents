@@ -5,6 +5,7 @@ export default {
 	title: "Design System/RibbonMenu/RibbonHomeMenu/ViewSection",
 	component: ViewSection,
 	argTypes: {
+		actions: {},
 		asFloated: {
 			control: "select",
 			options: ["left", "right", "inline"],
@@ -59,6 +60,9 @@ export default {
 const Template = (args) => <ViewSection {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+	actions: {
+		setUserOptions: (view) => { return view }
+	},
 	asFloated: "left",
 	isDisabled: false,
 	isHidden: false,

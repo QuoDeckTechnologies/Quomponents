@@ -5,6 +5,12 @@ export default {
 	title: "Design System/RibbonMenu/RibbonHtmlMenu/SaveSection",
 	component: SaveSection,
 	argTypes: {
+		onSaveDeck: {
+			table: {
+				category: "Events",
+				defaultValue: null,
+			},
+		},
 		asFloated: {
 			control: "select",
 			options: ["left", "right", "inline"],

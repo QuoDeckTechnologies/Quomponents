@@ -15,25 +15,31 @@ ViewSection.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
-
+	/** 
+	The Actions object is received from DeckEditorContainer for use.
+	*/
+	actions: PropTypes.shape({
+		setUserOptions: PropTypes.func
+	}),
+	
 	//=======================================
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    ViewSection component must have the onClick function passed as props
-    */
+	ViewSection component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 
@@ -46,6 +52,9 @@ export default function ViewSection(props) {
 		"ribbon-home-menu-view-section-parent"
 	);
 
+	function setPreview(view) {
+		props.actions.setUserOptions({ preferredView: view })
+	}
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
@@ -54,7 +63,7 @@ export default function ViewSection(props) {
 					<div className="qui-ribbon-menu-view-section-child-container">
 						<div className="qui-ribbon-menu-view-section-child">
 							<IconLink
-								onClick={props.onClick}
+								onClick={() => { setPreview("sorter") }}
 								asSize="tiny"
 								asPadded="fitted"
 								withColor={{
@@ -63,14 +72,14 @@ export default function ViewSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-filter" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("sorter") }}>
 								Sorter
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
 						<div className="qui-ribbon-menu-view-section-child">
 							<IconLink
-								onClick={props.onClick}
+								onClick={() => { setPreview("mobile") }}
 								asSize="tiny"
 								asPadded="fitted"
 								withColor={{
@@ -79,14 +88,14 @@ export default function ViewSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-mobile-alt" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("mobile") }}>
 								Mobile
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
 						<div className="qui-ribbon-menu-view-section-child">
 							<IconLink
-								onClick={props.onClick}
+								onClick={() => { setPreview("desktop") }}
 								asSize="tiny"
 								asPadded="fitted"
 								withColor={{
@@ -95,14 +104,14 @@ export default function ViewSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-laptop" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("desktop") }}>
 								Desktop
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
 						<div className="qui-ribbon-menu-view-section-child">
 							<IconLink
-								onClick={props.onClick}
+								onClick={() => { setPreview("comments") }}
 								asSize="tiny"
 								asPadded="fitted"
 								withColor={{
@@ -111,7 +120,7 @@ export default function ViewSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-comments" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("comments") }}>
 								Comments
 							</div>
 						</div>

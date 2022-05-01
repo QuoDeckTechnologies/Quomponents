@@ -5,6 +5,7 @@ export default {
 	title: "Design System/RibbonMenu/RibbonDesignMenu/OverlayBackground",
 	component: OverlayBackground,
 	argTypes: {
+		actions: {},
 		asFloated: {
 			control: "select",
 			options: ["left", "right", "inline"],
@@ -29,7 +30,7 @@ export default {
 				category: "Events",
 				defaultValue: null,
 			},
-		},
+		}
 	},
 	decorators: [
 		(story) => (
@@ -59,6 +60,9 @@ export default {
 const Template = (args) => <OverlayBackground {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+	actions: {
+		updateDeck:(value)=>{return value}
+	},
 	asFloated: "left",
 	isDisabled: false,
 	isHidden: false,

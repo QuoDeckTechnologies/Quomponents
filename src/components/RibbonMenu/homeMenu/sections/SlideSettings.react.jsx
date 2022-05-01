@@ -15,25 +15,38 @@ SlideSettings.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
+	/** 
+	The Actions object is received from DeckEditorContainer for use.
+	*/
+	actions: PropTypes.shape({
+		changeSlideNav: PropTypes.func
+	}),
+	/** 
+	The Deck state is handed down from DeckEditorContainer for use.
+	*/
+	deck: PropTypes.shape({
+		currentSlide: PropTypes.number,
+		content: PropTypes.array
+	}),
 
 	//=======================================
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    SlideSettings component must have the onClick function passed as props
-    */
+	SlideSettings component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 
@@ -52,13 +65,16 @@ export default function SlideSettings(props) {
 	const [isBackChecked, setBakChecked] = useState(false);
 	const [isNextChecked, setNextChecked] = useState(false);
 
-	function toggleBackChecked() {
-		setBakChecked((prevState) => !prevState);
-		props.onClick("backArrow", !isBackChecked);
+	function handleChangeSlideNav(navObj) {
+		props.actions.changeSlideNav(navObj);
 	}
-	function toggleNextChecked() {
-		setNextChecked((prevState) => !prevState);
-		props.onClick("nextArrow", !isNextChecked);
+
+	function toggleBackState() {
+		setBakChecked((prevState) => !prevState)
+	}
+
+	function toggleNextState() {
+		setNextChecked((prevState) => !prevState)
 	}
 
 	// ========================= Render Function =================================
@@ -68,8 +84,10 @@ export default function SlideSettings(props) {
 				<div className="qui-ribbon-menu-settings-section">
 					<div className="qui-ribbon-home-menu-settings-section-child-container">
 						<div className="qui-ribbon-home-menu-settings-section-child">
-							<div className="qui-ribbon-menu-settings-section-right-content">
+							<div className="qui-ribbon-menu-settings-section-right-content"
+								style={props.deck?.currentSlide === 0 ? { pointerEvents: "none", opacity: "0.6" } : { pointerEvents: "auto" }}>
 								<IconLink
+									isDisabled={props.deck?.currentSlide === 0 ? true : false}
 									asSize="tiny"
 									asPadded="fitted"
 									withColor={{
@@ -77,21 +95,34 @@ export default function SlideSettings(props) {
 										hoverTextColor: "#666666",
 									}}
 									withIcon={{
-										icon: `qui-ribbon-file-right-icons ${
-											isBackChecked ? "far fa-check-square" : "far fa-square"
-										}`,
+										icon: `qui-ribbon-file-right-icons ${isBackChecked ? "far fa-check-square" : "far fa-square"
+											}`,
 									}}
-									onClick={toggleBackChecked}
+									onClick={() => {
+										toggleBackState();
+										handleChangeSlideNav({
+											previous: !isBackChecked,
+											next: isNextChecked
+										})
+									}}
 								/>
 								<div
 									className="qui-ribbon-menu-label"
-									onClick={toggleBackChecked}
+									onClick={() => {
+										toggleBackState();
+										handleChangeSlideNav({
+											previous: !isBackChecked,
+											next: isNextChecked
+										})
+									}}
 								>
 									Enable Back Arrow
 								</div>
 							</div>
-							<div className="qui-ribbon-menu-settings-section-right-content">
+							<div className="qui-ribbon-menu-settings-section-right-content"
+								style={props.deck?.currentSlide === props.deck?.content?.length - 1 ? { pointerEvents: "none", opacity: "0.6" } : { pointerEvents: "auto" }}>
 								<IconLink
+									isDisabled={props.deck?.currentSlide === props.deck?.content?.length - 1 ? true : false}
 									asSize="tiny"
 									asPadded="fitted"
 									withColor={{
@@ -99,15 +130,26 @@ export default function SlideSettings(props) {
 										hoverTextColor: "#666666",
 									}}
 									withIcon={{
-										icon: `qui-ribbon-file-right-icons ${
-											isNextChecked ? "far fa-check-square" : "far fa-square"
-										}`,
+										icon: `qui-ribbon-file-right-icons ${isNextChecked ? "far fa-check-square" : "far fa-square"
+											}`,
 									}}
-									onClick={() => toggleNextChecked()}
+									onClick={() => {
+										toggleNextState();
+										handleChangeSlideNav({
+											previous: !isBackChecked,
+											next: isNextChecked
+										})
+									}}
 								/>
 								<div
 									className="qui-ribbon-menu-label"
-									onClick={() => toggleNextChecked()}
+									onClick={() => {
+										toggleNextState();
+										handleChangeSlideNav({
+											previous: !isBackChecked,
+											next: isNextChecked
+										})
+									}}
 								>
 									Enable Next Arrow
 								</div>

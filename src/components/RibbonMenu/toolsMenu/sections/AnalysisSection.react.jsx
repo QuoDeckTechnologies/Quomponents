@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { getQuommons } from "../../../../common/javascripts/helpers";
@@ -20,20 +20,20 @@ AnalysisSection.propTypes = {
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    AnalysisSection component must have the onClick function passed as props
-    */
+	AnalysisSection component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 
@@ -43,13 +43,17 @@ export default function AnalysisSection(props) {
 	//-------------------------------------------------------------------
 	let quommonClasses = getQuommons(props, "ribbon-tools-menu-analysis-parent");
 
+	const [modalOpen, setModalOpen] = useState();
+	const handleModalOpen = () => { setModalOpen(true) };
+	const handleModalClose = () => { setModalOpen(false) };
+
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className="qui-ribbon-menu-analytics-section">
 					<IconLink
-						onClick={props.onClick}
+						onClick={handleModalOpen}
 						asSize="small"
 						asPadded="fitted"
 						withColor={{
@@ -58,10 +62,13 @@ export default function AnalysisSection(props) {
 						}}
 						withIcon={{ icon: "fas fa-chart-area" }}
 					/>
-					<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+					<div className="qui-ribbon-menu-label" onClick={handleModalOpen}>
 						Analysis
 					</div>
 				</div>
+				{modalOpen && <div onClick={handleModalClose}>
+					{/* Deck Analysis modal here	 */}
+				</div>}
 			</div>
 		</div>
 	);

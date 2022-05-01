@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { hashHistory } from "react-router";
 
 import { getQuommons } from "../../../../common/javascripts/helpers";
 
@@ -11,29 +12,51 @@ import "../../../../common/stylesheets/overrule.scss";
 
 import IconLink from "../../../Buttons/IconLink/IconLink.react";
 
+
 SaveExitSection.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
+	/** 
+	The Actions object is received from DeckEditorContainer for use.
+	*/
+	actions: PropTypes.shape({
+		addPoints: PropTypes.func
+	}),
+	/** 
+	The deckId is received from DeckEditorContainer for use.
+	*/
+	deckId: PropTypes.string,
+	/** 
+	The onSaveDeck function is received from DeckEditorContainer for use.
+	*/
+	onSaveDeck: PropTypes.func,
+	/** 
+	The onAddQDF function is received from DeckEditorContainer for use.
+	*/
+	onAddQDF: PropTypes.func,
+	params: PropTypes.shape({
+		deckId: PropTypes.string
+	}),
 
 	//=======================================
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    SaveExitSection component must have the onClick function passed as props
-    */
+	SaveExitSection component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 
@@ -46,6 +69,36 @@ export default function SaveExitSection(props) {
 		"ribbon-menu-exit-save-section-parent"
 	);
 
+	const [modalOpen, setModalOpen] = useState(false);
+	const [points, setPoints] = useState("0");
+
+	const handlePoints = (e) => setPoints(e);
+
+	const handlePoModalOpen = () => {
+		if (props.deckId !== undefined) {
+			props.onSaveDeck();
+			props.onAddQDF();
+			hashHistory?.push("/drive?panel=files");
+		} else {
+			setModalOpen(true)
+		}
+	}
+	const handlePoModalClose = () => setModalOpen(false);
+
+	const handleSave = () => {
+		if (props.actions?.addPoints(points)) {
+			props.onSaveDeck();
+			props.onAddQDF();
+			hashHistory?.push("/drive?panel=files");
+		};
+	}
+
+	const updatePoints = () => {
+		props.updatePoints(
+			props.params.deckId
+		);
+	};
+
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
@@ -53,7 +106,11 @@ export default function SaveExitSection(props) {
 				<div className="qui-ribbon-exit-save-section">
 					<IconLink
 						asPadded="fitted"
-						onClick={props.onClick}
+						onClick={
+							(props?.apiUrls?.gamifixURL && props.apiUrls?.gamifixURL !== "")
+								? handlePoModalOpen
+								: handleSave
+						}
 						asSize={"small"}
 						withColor={{
 							backgroundColor: "#666666",
@@ -61,10 +118,18 @@ export default function SaveExitSection(props) {
 						}}
 						withIcon={{ icon: "fa fa-sign-out-alt" }}
 					/>
-					<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+					<div className="qui-ribbon-menu-label" onClick={
+						(props?.apiUrls?.gamifixURL && props?.apiUrls?.gamifixURL !== "")
+							? handlePoModalOpen
+							: handleSave
+					}>
 						Save & Exit
 					</div>
 				</div>
+				{modalOpen &&
+					<div>
+						{/* Points Modal here */}
+					</div>}
 			</div>
 		</div>
 	);

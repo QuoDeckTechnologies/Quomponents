@@ -15,25 +15,39 @@ DeckSettingsSection.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
+	/** 
+	The Actions object is received from DeckEditorContainer for use.
+	*/
+	actions: PropTypes.shape({
+		updateDeck: PropTypes.func
+	}),
+	/** 
+	The Deck state is handed down from DeckEditorContainer for use.
+	*/
+	deck: PropTypes.shape({
+		navEnabled: PropTypes.bool,
+		snEnabled: PropTypes.bool,
+		voEnabled: PropTypes.bool
+	}),
 
 	//=======================================
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    DeckSettingsSection component must have the onClick function passed as props
-    */
+	DeckSettingsSection component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 
@@ -49,22 +63,22 @@ export default function DeckSettingsSection(props) {
 	//-------------------------------------------------------------------
 	// 2. Handle states of Navigation, SlideList and Voiceover checkboxes
 	//-------------------------------------------------------------------
-	const [isNavigationChecked, setNavigationChecked] = useState(false);
-	const [isSlideChecked, setSlideChecked] = useState(false);
-	const [isVoiceoverChecked, setVoiceoverChecked] = useState(false);
+	const [isNavEnabled, setNavigationChecked] = useState(props.deck?.navEnabled);
+	const [isSlideEnabled, setSlideChecked] = useState(props.deck?.snEnabled);
+	const [isVoiceoverEnabled, setVoiceoverChecked] = useState(props.deck?.voEnabled);
+
+	const handleChangeDeckSettings = (settingsObj) => {
+		props.actions.updateDeck(settingsObj);
+	};
 	function toggleNavigationChecked() {
-		setNavigationChecked((prevState) => !prevState);
-		props.onClick("navigation", !isNavigationChecked);
+		setNavigationChecked((prevState) => !prevState)
 	}
 	function toggleSlideChecked() {
-		setSlideChecked((prevState) => !prevState);
-		props.onClick("slideList", !isSlideChecked);
+		setSlideChecked((prevState) => !prevState)
 	}
 	function toggleVoiceoverChecked() {
-		setVoiceoverChecked((prevState) => !prevState);
-		props.onClick("voiceOver", !isVoiceoverChecked);
+		setVoiceoverChecked((prevState) => !prevState)
 	}
-
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
@@ -81,17 +95,26 @@ export default function DeckSettingsSection(props) {
 										hoverTextColor: "#666666",
 									}}
 									withIcon={{
-										icon: `qui-ribbon-file-right-icons ${
-											isNavigationChecked
-												? "far fa-check-square"
-												: "far fa-square"
-										}`,
+										icon: `qui-ribbon-file-right-icons ${isNavEnabled
+											? "far fa-check-square"
+											: "far fa-square"
+											}`,
 									}}
-									onClick={toggleNavigationChecked}
+									onClick={() => {
+										toggleNavigationChecked();
+										handleChangeDeckSettings({
+											navEnabled: !isNavEnabled
+										})
+									}}
 								/>
 								<div
 									className="qui-ribbon-menu-label"
-									onClick={toggleNavigationChecked}
+									onClick={() => {
+										toggleNavigationChecked();
+										handleChangeDeckSettings({
+											navEnabled: !isNavEnabled
+										})
+									}}
 								>
 									Enable Navigation
 								</div>
@@ -105,15 +128,24 @@ export default function DeckSettingsSection(props) {
 										hoverTextColor: "#666666",
 									}}
 									withIcon={{
-										icon: `qui-ribbon-file-right-icons ${
-											isSlideChecked ? "far fa-check-square" : "far fa-square"
-										}`,
+										icon: `qui-ribbon-file-right-icons ${isSlideEnabled ? "far fa-check-square" : "far fa-square"
+											}`,
 									}}
-									onClick={() => toggleSlideChecked()}
+									onClick={() => {
+										toggleSlideChecked();
+										handleChangeDeckSettings({
+											snEnabled: !isSlideEnabled
+										})
+									}}
 								/>
 								<div
 									className="qui-ribbon-menu-label"
-									onClick={() => toggleSlideChecked()}
+									onClick={() => {
+										toggleSlideChecked();
+										handleChangeDeckSettings({
+											snEnabled: !isSlideEnabled
+										})
+									}}
 								>
 									Enable Slide List
 								</div>
@@ -127,17 +159,26 @@ export default function DeckSettingsSection(props) {
 										hoverTextColor: "#666666",
 									}}
 									withIcon={{
-										icon: `qui-ribbon-file-right-icons ${
-											isVoiceoverChecked
-												? "far fa-check-square"
-												: "far fa-square"
-										}`,
+										icon: `qui-ribbon-file-right-icons ${isVoiceoverEnabled
+											? "far fa-check-square"
+											: "far fa-square"
+											}`,
 									}}
-									onClick={() => toggleVoiceoverChecked()}
+									onClick={() => {
+										toggleVoiceoverChecked();
+										handleChangeDeckSettings({
+											voEnabled: !isVoiceoverEnabled
+										})
+									}}
 								/>
 								<div
 									className="qui-ribbon-menu-label"
-									onClick={() => toggleVoiceoverChecked()}
+									onClick={() => {
+										toggleVoiceoverChecked();
+										handleChangeDeckSettings({
+											voEnabled: !isVoiceoverEnabled
+										})
+									}}
 								>
 									Enable Voiceovers
 								</div>

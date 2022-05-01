@@ -19,25 +19,57 @@ RibbonHomeMenu.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
+	/** 
+	The Actions object is received from DeckEditorContainer for use.
+	*/
+	actions: PropTypes.shape({
+		addSlide: PropTypes.func,
+		duplicateSlide: PropTypes.func,
+		deleteSlide: PropTypes.func,
+		changeSlideNav: PropTypes.func,
+		setUserOptions: PropTypes.func
+	}),
+	/** 
+	The Deck state is handed down from DeckEditorContainer for use.
+	*/
+	deck: PropTypes.shape({
+		content: PropTypes.array,
+		currentSlide: PropTypes.number
+	}),
+	/** 
+	The deckId is received from DeckEditorContainer for use.
+	*/
+	deckId: PropTypes.string,
+	/** 
+	The onSaveDeck function is received from DeckEditorContainer for use.
+	*/
+	onSaveDeck: PropTypes.func,
+	/** 
+	The onAddQDF function is received from DeckEditorContainer for use.
+	*/
+	onAddQDF: PropTypes.func,
+	params: PropTypes.shape({
+		deckId: PropTypes.string
+	}),
 
 	//=======================================
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    RibbonHomeMenu component must have the onClick function passed as props
-    */
+	RibbonHomeMenu component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { getQuommons } from "../../../../common/javascripts/helpers";
@@ -20,20 +20,20 @@ VoiceoverSection.propTypes = {
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    DeckSettingsSection component must have the onClick function passed as props
-    */
+	DeckSettingsSection component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 
@@ -46,6 +46,24 @@ export default function VoiceoverSection(props) {
 		"ribbon-tools-menu-voiceover-section-parent"
 	);
 
+	const [voModalOpen, setVoModalOpen] = useState();
+
+	const handleVoModalOpen = () => setVoModalOpen(true);
+	const handleVoModalClose = () => setVoModalOpen(false);
+
+	/**
+	 * Copies the voiceover from the text fields into the tts_audio field
+	 * Does not return a value, calls updateDeck action
+	 *
+	 * @public
+	 */
+	const copySlideToVoiceover = () => {
+		// Logic here
+	};
+	const handleVoiceoverSave = () => {
+		// Logic here
+	};
+
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
@@ -53,7 +71,7 @@ export default function VoiceoverSection(props) {
 					<div className="qui-vo-section-child-container">
 						<div className="qui-vo-section-child upload">
 							<IconLink
-								onClick={props.onClick}
+								onClick={handleVoModalOpen}
 								asSize="tiny"
 								asPadded="fitted"
 								withColor={{
@@ -62,7 +80,7 @@ export default function VoiceoverSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-file-upload" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+							<div className="qui-ribbon-menu-label" onClick={handleVoModalOpen}>
 								Upload
 							</div>
 						</div>
@@ -70,7 +88,7 @@ export default function VoiceoverSection(props) {
 						<div className="qui-vo-section-child">
 							<div className="qui-vo-section-right-content">
 								<IconLink
-									onClick={props.onClick}
+									onClick={copySlideToVoiceover}
 									asSize="tiny"
 									asPadded="fitted"
 									withColor={{
@@ -81,14 +99,14 @@ export default function VoiceoverSection(props) {
 								/>
 								<div
 									className="qui-ribbon-menu-tool-label"
-									onClick={props.onClick}
+									onClick={copySlideToVoiceover}
 								>
 									Copy Slides to Script
 								</div>
 							</div>
 							<div className="qui-vo-section-right-content">
 								<IconLink
-									onClick={props.onClick}
+									onClick={handleVoiceoverSave}
 									asSize="tiny"
 									asPadded="fitted"
 									withColor={{
@@ -99,7 +117,7 @@ export default function VoiceoverSection(props) {
 								/>
 								<div
 									className="qui-ribbon-menu-tool-label"
-									onClick={props.onClick}
+									onClick={handleVoiceoverSave}
 								>
 									Download Script
 								</div>
@@ -110,6 +128,10 @@ export default function VoiceoverSection(props) {
 						Voiceovers
 					</div>
 				</div>
+				{voModalOpen &&
+					<div onClick={handleVoModalClose}>
+						{/* Voiceover Modal here */}
+					</div>}
 			</div>
 		</div>
 	);

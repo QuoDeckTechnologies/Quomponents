@@ -5,6 +5,7 @@ export default {
 	title: "Design System/RibbonMenu/RibbonDesignMenu/PalleteThemeSection",
 	component: PalleteThemeSection,
 	argTypes: {
+		actions: {},
 		asFloated: {
 			control: "select",
 			options: ["left", "right", "inline"],
@@ -59,6 +60,9 @@ export default {
 const Template = (args) => <PalleteThemeSection {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+	actions: {
+		updateDeck:(value)=>{return console.log(value)}
+	},
 	asFloated:"left",
 	isDisabled: false,
 	isHidden: false,

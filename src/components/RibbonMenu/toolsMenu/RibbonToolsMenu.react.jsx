@@ -18,25 +18,39 @@ RibbonToolsMenu.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
+	/** 
+	The Actions object is received from DeckEditorContainer for use.
+	*/
+	actions: PropTypes.shape({
+		updateDeck: PropTypes.func
+	}),
+	/** 
+	The Deck state is handed down from DeckEditorContainer for use.
+	*/
+	deck: PropTypes.shape({
+		navEnabled: PropTypes.bool,
+		snEnabled: PropTypes.bool,
+		voEnabled: PropTypes.bool
+	}),
 
 	//=======================================
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    SaveExitSection component must have the onClick function passed as props
-    */
+	SaveExitSection component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 

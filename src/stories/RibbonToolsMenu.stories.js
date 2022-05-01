@@ -5,6 +5,8 @@ export default {
     title: "Design System/RibbonMenu/RibbonToolsMenu",
     component: RibbonToolsMenu,
     argTypes: {
+        actions: {},
+        deck: {},
         asFloated: {
             control: "select",
             options: ["left", "right", "inline"],
@@ -59,6 +61,14 @@ export default {
 const Template = (args) => <RibbonToolsMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+    actions: {
+        updateDeck: (settingsObj) => { return settingsObj }
+    },
+    deck: {
+        navEnabled: false,
+        snEnabled: false,
+        voEnabled: false
+    },
     asFloated: "left",
     isDisabled: false,
     isHidden: false,

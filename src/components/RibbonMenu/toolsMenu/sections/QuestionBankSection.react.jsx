@@ -20,20 +20,20 @@ QuestionBankSection.propTypes = {
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    AnalysisSection component must have the onClick function passed as props
-    */
+	AnalysisSection component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 
@@ -46,13 +46,17 @@ export default function QuestionBankSection(props) {
 		"ribbon-tools-menu-question-bank-parent"
 	);
 
+	const handleQuestionBank = () => {
+		props.onClick()
+	}
+
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className="qui-ribbon-menu-question-bank-section">
 					<IconLink
-						onClick={props.onClick}
+						onClick={handleQuestionBank}
 						asSize="small"
 						asPadded="fitted"
 						withColor={{
@@ -61,7 +65,7 @@ export default function QuestionBankSection(props) {
 						}}
 						withIcon={{ icon: "fab fa-stack-exchange" }}
 					/>
-					<div className="qui-ribbon-menu-label" onClick={props.onClick}>
+					<div className="qui-ribbon-menu-label" onClick={handleQuestionBank}>
 						Question Bank
 					</div>
 				</div>
