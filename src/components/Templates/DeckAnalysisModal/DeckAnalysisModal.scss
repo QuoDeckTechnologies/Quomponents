@@ -1,0 +1,14 @@
+.qui .qui-deck-analysis-modal-container {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    border-radius: 0.9em;
+    position: absolute;
+    z-index: 20;
+    box-shadow: 0 6px 6px 0px #00000052;
+}
+.qui .qui-deck-analysis-modal-close-btn {
+    display: flex;
+    justify-content: space-between;
+}
