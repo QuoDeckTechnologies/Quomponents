@@ -9,9 +9,9 @@ export default {
       defaultValue: {
         title: "",
         subtitle: "",
-        image: "",
+        image: {},
         icon: "",
-        backgroundImage: "",
+        backgroundImage: {},
         presenter: {},
       },
     },
@@ -155,7 +155,6 @@ DefaultTitleWithSubTitle.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     icon: "fas fa-book-open",
-    backgroundImage: "",
   },
   imageLibrary: [{}],
   asFloated: "none",
@@ -272,7 +271,6 @@ ColoredTitle.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    image: "",
     icon: "fas fa-book-open",
   },
   withColor: {
