@@ -21,8 +21,8 @@ describe("IconBulletlist", () => {
                 data={{
                     title: "Neque porro quisquam est qui dolorem",
                     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-                    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-                    backgroundImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+                    image: { id: "header-image", extention: "" },
+                    backgroundImage: { id: "background-image", extention: "" },
                     iconlist: [{
                         image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
                         text: "Quisque sed turpis vel lectus suscipit auctor",
@@ -32,6 +32,7 @@ describe("IconBulletlist", () => {
                         text: "Neque porro quisquam est qui dolorem"
                     }],
                 }}
+                imageLibrary={[]}
                 slideId={0}
                 asVariant="warning"
                 asFloated="left"
@@ -46,38 +47,24 @@ describe("IconBulletlist", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed data prop as null", () => {
+    it("should render correctly when title and subtitle is not defined in data prop", () => {
         let data = {
             title: "",
             subtitle: "",
-            image: "",
-            backgroundImage: "",
-            iconlist: [],
         }
         component.setProps({ data: data })
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when data prop passed image as null", () => {
+    it("should render correctly when image is not defined in data prop", () => {
         let data = {
             title: "Neque porro quisquam est qui dolorem",
             subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-            image: "",
-            backgroundImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-            iconlist: [{
-                image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-                text: "Quisque sed turpis vel lectus suscipit auctor",
-            },
-            {
-                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-                text: "Neque porro quisquam est qui dolorem"
-            }],
         }
         component.setProps({ data: data })
         expect(component.exists()).toBe(true);
     });
-
-
+    
     it("should render correctly when passed asVariant prop as primary", () => {
         component.setProps({ asVariant: "primary" })
         expect(component.exists()).toBe(true);

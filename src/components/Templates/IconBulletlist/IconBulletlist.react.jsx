@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    resolveImage,
 } from "../../../common/javascripts/helpers";
 import "../../../common/stylesheets/common.css";
 import "./IconBulletlist.scss";
@@ -16,13 +17,13 @@ IconBulletlist.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      IconBulletlist data should be passed in data field and it is a required field
-      */
+    IconBulletlist data should be passed in data field and it is a required field
+    */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
-        image: PropTypes.string,
-        backgroundImage: PropTypes.string,
+        image: PropTypes.object,
+        backgroundImage: PropTypes.object,
         iconlist: PropTypes.arrayOf(
             PropTypes.shape({
                 image: PropTypes.string,
@@ -31,6 +32,10 @@ IconBulletlist.propTypes = {
 
     }).isRequired,
     /**
+    IconBulletlist can set image & backgroundImage from imageLibrary array
+    */
+    imageLibrary: PropTypes.array,
+    /**
     slideId can be used if same template is used continueously for multiple slides.
     */
     slideId: PropTypes.number,
@@ -38,7 +43,7 @@ IconBulletlist.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define standard component type
+      Use to define standard component type
     */
     asVariant: PropTypes.oneOf([
         "primary",
@@ -52,7 +57,7 @@ IconBulletlist.propTypes = {
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-    Use to override component colors and behavior
+      Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
@@ -62,8 +67,8 @@ IconBulletlist.propTypes = {
         iconListItemTextColor: PropTypes.string,
     }),
     /**
-    Use to define the entry animation of the component
-    */
+      Use to define the entry animation of the component
+      */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -79,8 +84,8 @@ IconBulletlist.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-    Use to show/hide the component
-    */
+      Use to show/hide the component
+      */
     isHidden: PropTypes.bool,
 };
 
@@ -111,7 +116,7 @@ export default function IconBulletlist(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring props
     //-------------------------------------------------------------------
-    let { data, withColor, slideId, asVariant } = props;
+    let { data, withColor, imageLibrary, slideId, asVariant } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -134,14 +139,16 @@ export default function IconBulletlist(props) {
     // 4. Function to set background
     //-------------------------------------------------------------------
     const getBackground = () => {
-        return {
-            background: `url(${data?.backgroundImage})`,
-            backgroundSize: "cover",
-        };
+        if (data?.backgroundImage) {
+            return {
+                backgroundImage: `url(${resolveImage(
+                    data?.backgroundImage.id,
+                    imageLibrary
+                )})`,
+            };
+        }
     };
-    const background = data?.backgroundImage
-        ? getBackground()
-        : iconBulletListbackgroundColor;
+    const background = getBackground();
     //-------------------------------------------------------------------
     // 5. Get animation of the component
     //-------------------------------------------------------------------
@@ -152,7 +159,12 @@ export default function IconBulletlist(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            style={{ ...background }}
+            style={{
+                ...background,
+                backgroundColor: withColor?.backgroundColor,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+            }}
         >
             <div className={`qui-icon-bullet-list-card ${quommonClasses.childClasses}`} key={"icon-bullet-list" + slideId}>
                 {!data?.image && (data?.title || data?.subtitle) && (
@@ -162,7 +174,7 @@ export default function IconBulletlist(props) {
                 )}
                 {data?.image && (
                     <img className="qui-icon-bullet-list-image"
-                        src={data?.image}
+                        src={resolveImage(data?.image.id, imageLibrary)}
                         alt="IconBulletlist" />
                 )}
                 <IconListItem {...props}
