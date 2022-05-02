@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
+  resolveImage,
 } from "../../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -26,16 +27,15 @@ Diptych.propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
     caption: PropTypes.string,
-    headerImage: PropTypes.string,
-    backgroundImage: PropTypes.string,
+    image: PropTypes.object,
+    backgroundImage: PropTypes.object,
     diptych: PropTypes.array,
-    presenterTitle: PropTypes.string,
-    presenterSubtitle: PropTypes.string,
-    presenterCaption: PropTypes.string,
-    presenterBackgroundImage: PropTypes.string,
-    presenterImage: PropTypes.string,
-
+    presenter: PropTypes.object,
   }),
+  /**
+    Diptych can set presenter image from imageLibrary array
+    */
+  imageLibrary: PropTypes.array,
   /**
     Diptych slideId should be passed with props, to specify the slide.
     */
@@ -82,10 +82,6 @@ Diptych.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Diptych component can use presenter props to show presenter template
-    */
-  isPresenter: PropTypes.bool,
-  /**
     Use to show/hide the component
   */
   isHidden: PropTypes.bool,
@@ -107,17 +103,12 @@ Diptych.defaultProps = {
     title: "",
     subtitle: "",
     caption: "",
-    headerImage: "",
-    backgroundImage: "",
+    image: "",
+    backgroundImage: {},
     diptych: [],
-    presenterTitle: "",
-    presenterSubtitle: "",
-    presenterCaption: "",
-    presenterBackgroundImage: "",
-    presenterImage: "",
+    presenter: "",
   },
   slideId: 0,
-  isPresenter: false,
   //=======================================
   // Quommon props
   //=======================================
@@ -136,7 +127,15 @@ Diptych.defaultProps = {
 - Displays a Diptych with TextBlock, clickableImages and a SlideHeader
 **/
 export default function Diptych(props) {
-  const { data, withColor, isPresenter } = props;
+  const { data, withColor, imageLibrary } = props;
+  //-------------------------------------------------------------------
+  // Variable to set presenter image
+  //-------------------------------------------------------------------
+  let hasPresenter =
+    data?.presenter !== undefined &&
+    data?.presenter.id !== undefined &&
+    data?.presenter.id !== "default43";
+
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -171,19 +170,19 @@ export default function Diptych(props) {
         backgroundSize: "cover",
       }}>
         <div className={`${quommonClasses.childClasses}`} key={"diptych-" + props.slideId}>
-          {!data?.headerImage && (data?.title || data?.subtitle) && (
+          {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
               content={SlideHeaderText}
               withColor={slideHeaderColors} />
           )}
-          {data?.headerImage && (
-            <img className="qui-diptych-image" src={data?.headerImage} alt="" />
+          {data?.image && (
+            <img className="qui-diptych-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
           )}
           <div className="qui-diptych-clickable-images">
             {_.map(data?.diptych, (image, index) => {
               return (
                 <div className="qui-clickable-image-container" key={"diptych-image" + index}>
-                  <ClickableImage {...props} content={{ image }} onClick={(e) => props.onClick(e)} />
+                  <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={(e) => props.onClick(e)} />
                 </div>
               );
             })}
@@ -208,13 +207,13 @@ export default function Diptych(props) {
       >
         <div className="qui-diptych-presenter-title" >
           <TextBlock {...props}
-            content={data?.presenterTitle}
+            content={data?.title}
             asFloated="left"
             withColor={textBlockColors} />
         </div>
         <div className="qui-diptych-presenter-sub-title">
           <TextBlock {...props}
-            content={data?.presenterSubtitle}
+            content={data?.subtitle}
             asFloated="left"
             withColor={textBlockColors} />
         </div>
@@ -222,24 +221,26 @@ export default function Diptych(props) {
           {_.map(data?.diptych, (image, index) => {
             return (
               <div className="qui-clickable-image-container" key={"diptych-image" + index}>
-                <ClickableImage {...props} content={{ image }} onClick={(e) => props.onClick(e)} />
+                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={(e) => props.onClick(e)} />
               </div>
             );
           })}
         </div>
         <div className="qui-diptych-presenter-caption">
           <TextBlock {...props}
-            content={data?.presenterCaption}
+            content={data?.caption}
             asFloated="left"
             conversation={true}
             position="right-bottom"
             withColor={textBlockColors} />
         </div>
-        <img
-          className="qui-diptych-presenter"
-          src={data.presenterImage}
-          alt=""
-        />
+        {hasPresenter && (
+          <img
+            className="qui-diptych-presenter"
+            src={resolveImage(data.presenter.id, imageLibrary)}
+            alt=""
+          />
+        )}
       </div>
 
     );
@@ -253,16 +254,27 @@ export default function Diptych(props) {
   // Function to set background for presenter view
   //-------------------------------------------------------------------
   const getBackground = () => {
-    return {
-      backgroundImage: `url(${data?.backgroundImage})`,
-    };
+    if (data?.backgroundImage) {
+      return {
+        backgroundImage: `url(${resolveImage(
+          data?.backgroundImage.id,
+          imageLibrary
+        )})`,
+      };
+    }
   };
   const getPresenterBackground = () => {
-    return {
-      backgroundImage: `url(${data?.presenterBackgroundImage})`,
-    };
+    if (data?.backgroundImage) {
+      return {
+        backgroundImage: `url(${resolveImage(
+          data?.backgroundImage.id,
+          imageLibrary
+        )})`,
+      };
+    }
   };
-  const background = isPresenter ? getPresenterBackground() : getBackground();
+  const background = data?.presenter ? getPresenterBackground() : getBackground();
+
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -271,7 +283,7 @@ export default function Diptych(props) {
       className={`qui ${quommonClasses.parentClasses} `}
     >
       {data && <div>
-        {isPresenter ? diptychPresenterView(data) : diptychView(data)}
+        {data?.presenter ? diptychPresenterView(data) : diptychView(data)}
       </div>}
     </motion.div>
   );

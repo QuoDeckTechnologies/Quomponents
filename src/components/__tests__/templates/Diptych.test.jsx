@@ -21,20 +21,33 @@ describe("Diptych", () => {
                 data={{
                     title: "This is Title",
                     subtitle: "This is Subtitle",
-                    headerImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-                    backgroundImage: "",
-                    diptych: [
-                        "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-                        "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
+                    image: {
+                        extention: "",
+                        id: "header-image",
+                    },
+                    backgroundImage: {
+                        extention: "",
+                        id: "background-image",
+                    },
+                    diptych: [{
+                        image: {
+                            extention: "",
+                            id: "image-1",
+                        }
+                    }
                     ],
-                    presenterTitle: "",
-                    presenterSubtitle: "",
-                    presenterCaption: "",
-                    presenterBackgroundImage: "",
-                    presenterImage: "",
+                    imageLibrary: [{
+                        id: "header-image",
+                        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
+                    }, {
+                        id: "background-image",
+                        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
+                    }, {
+                        id: "image-1",
+                        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
+                    },],
                     caption: "caption",
                 }}
-                isPresenter={false}
                 slideId={0}
                 asVariant="primary"
                 withColor={null}
@@ -65,28 +78,91 @@ describe("Diptych", () => {
         component.setProps({ withAnimation: animation })
         expect(component.exists()).toBe(true);
     })
-    it('Test click event on first ClickableImage when passed isPresenter false', () => {
-        component.setProps({ isPresenter: false })
-        component.find(ClickableImage).at(0).simulate('click')
+    it('Test click event on first ClickableImage when passed presenter prop', () => {
+        component.setProps({
+            data: {
+                backgroundImage: {
+                    extention: "",
+                    id: "background-image"
+                }
+            },
+            imageLibrary: [{ id: "background-image", image: "test.png" }],
+        });
+        expect(component.exists()).toBe(true);
     });
-    it('Test click event on second ClickableImage when passed isPresenter false', () => {
-        component.setProps({ isPresenter: false })
-        component.find(ClickableImage).at(1).simulate('click')
+
+    it("should render correctly without throwing error when presenter id is given in imageLibrary array", () => {
+        component.setProps({
+            data: {
+                title: "test title",
+                presenter: {
+                    extention: "",
+                    id: "test",
+                },
+                backgroundImage: {
+                    extention: "",
+                    id: "background-image",
+                }
+            },
+            imageLibrary: [
+                { id: "test", image: "test.png" },
+                { id: "background-image", image: "test2.png" }],
+        });
+        expect(component.exists()).toBe(true);
     });
-    it('Test click event on second ClickableImage when passed isPresenter true', () => {
-        component.setProps({ isPresenter: true })
-        component.find(ClickableImage).at(0).simulate('click')
+    it("should render correctly without throwing error when diptych Images id is given in imageLibrary array", () => {
+        component.setProps({
+            data: {
+                title: "test title",
+                diptych: [{
+                    image: {
+                        extention: "",
+                        id: "image-1",
+                    },
+                    image: {
+                        extention: "",
+                        id: "image-2",
+                    }
+                }],
+            },
+            imageLibrary: [
+                { id: "image-1", image: "test.png" },
+                { id: "image-2", image: "test2.png" }],
+        });
+        component.find(ClickableImage).simulate('click')
+        expect(component.exists()).toBe(true);
     });
-    it('Test click event on second ClickableImage when passed isPresenter true', () => {
-        component.setProps({ isPresenter: true })
-        component.find(ClickableImage).at(1).simulate('click')
+    it("should render correctly without throwing error when presenter is passed and diptych Images id is given in imageLibrary array", () => {
+        component.setProps({
+            data: {
+                presenter: {
+                    extention: "",
+                    id: "presenter-image"
+                },
+                diptych: [{
+                    image: {
+                        extention: "",
+                        id: "image-1",
+                    },
+                    image: {
+                        extention: "",
+                        id: "image-2",
+                    }
+                }],
+            },
+            imageLibrary: [
+                { id: "presenter-image", image: "test0.png" },
+                { id: "image-1", image: "test.png" },
+                { id: "image-2", image: "test2.png" }],
+        });
+        component.find(ClickableImage).simulate('click')
+        expect(component.exists()).toBe(true);
     });
     it('should render slideHeader component instead of  header image', () => {
         expect(component.find(SlideHeader).exists()).toBe(false)
         let data = {
             title: "This is Title",
             subtitle: "This is Subtitle",
-            headerImage: "",
         }
         component.setProps({ data: data })
         expect(component.find(SlideHeader).exists()).toBe(true)

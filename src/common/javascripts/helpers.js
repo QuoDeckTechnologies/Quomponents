@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 export function getQuommons(props, component) {
     let parentArray = [`qui-${component}`],
         childArray = [""];
@@ -105,3 +107,39 @@ export function getAnimation(animObj) {
         };
     } else return { from: {}, to: {} };
 }
+
+export const resolveImage = (srcImg, imgLibrary) => {
+    if (
+        srcImg === undefined ||
+        srcImg === null ||
+        srcImg === "" ||
+        srcImg === " "
+    )
+        return /*getAppConfig().apiUrls.assetLib + "/images/configurable/missing.jpg";*/ "https://www.uni-giessen.de/fbz/fb07/fachgebiete/physik/institute/ap/agschirmeisen/images/missing-image.jpg/image";
+    else {
+        let img = Array.isArray(srcImg)
+            ? srcImg[0]
+            : typeof srcImg === "object"
+                ? srcImg["image"]
+                : srcImg;
+        let libraryImg = _.find(imgLibrary, { id: img });
+
+        if (libraryImg != null) {
+            return libraryImg.image;
+        } else {
+            return img.indexOf("data:") !== -1 || img.indexOf("assets/images/") !== -1
+                ? img
+                : img.indexOf(".jpg") !== -1 ||
+                    img.indexOf(".JPG") !== -1 ||
+                    img.indexOf(".jpeg") !== -1 ||
+                    img.indexOf(".JPEG") !== -1 ||
+                    img.indexOf(".gif") !== -1 ||
+                    img.indexOf(".GIF") !== -1 ||
+                    img.indexOf(".png") !== -1 ||
+                    img.indexOf(".PNG") !== -1 ||
+                    img.indexOf(".svg") !== -1
+                    ? /*getAppConfig().apiUrls.assetUrl + img */ "https://toscon14.files.wordpress.com/2014/05/seminar-presenter-pic.jpg"
+                    : /*getAppConfig().apiUrls.assetLib + "/images/defaults/loading.gif"; */ "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvPBbzEjg1nHzXeOdngyu7VTa-N7YFKeZzhA&usqp=CAU";
+        }
+    }
+};
