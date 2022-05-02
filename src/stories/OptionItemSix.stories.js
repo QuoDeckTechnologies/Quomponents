@@ -12,6 +12,7 @@ export default {
         defaultValue: {
           backgroundColor: "",
           accentColor: "",
+          textColor: "",
         },
       },
     },
@@ -93,6 +94,7 @@ Default.args = {
   withColor: {
     backgroundColor: "#ffab000d",
     accentColor: "",
+    textColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -119,6 +121,7 @@ ColoredOptionItemSix.args = {
   withColor: {
     backgroundColor: "#8c9ea3",
     accentColor: "#597387",
+    textColor: "#bac2c8",
   },
 };
 ColoredOptionItemSix.parameters = {
