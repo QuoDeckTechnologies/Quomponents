@@ -132,9 +132,6 @@ export default function IconBulletlist(props) {
     let iconListItemColors = {
         textColor: withColor?.iconListItemTextColor,
     }
-    let iconBulletListbackgroundColor = {
-        backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#ffffff",
-    };
     //-------------------------------------------------------------------
     // 4. Function to set background
     //-------------------------------------------------------------------

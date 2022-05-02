@@ -72,7 +72,7 @@ export default {
     parameters: {
         componentSubtitle: "Displays a IconBulletlist with SlideHeader and IconListItem for general-purpose use.",
         a11y: { disable: true },
-        docs: { iframeHeight: 600 },
+        docs: { iframeHeight: 550 },
     },
 };
 // -------------------------------------------------------------
@@ -105,8 +105,6 @@ Default.args = {
                 text: "Neque porro quisquam est qui dolorem",
             },
         ],
-        image: { id: "header-image", extention: "" },
-        backgroundImage: { id: "background-image", extention: "" }
     },
     imageLibrary: [
         {
@@ -167,10 +165,6 @@ ColoredIconBulletlist.args = {
         {
             image: "",
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-        },
-        {
-            image: "",
-            text: "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor"
         }],
     },
     asVariant: "secondary",
@@ -246,10 +240,6 @@ WithoutHeaderImageIconBulletlist.args = {
         {
             image: "",
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-        },
-        {
-            image: "",
-            text: "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor"
         }],
     },
     slideId: 0,
@@ -270,8 +260,55 @@ WithoutHeaderImageIconBulletlist.args = {
 };
 WithoutHeaderImageIconBulletlist.parameters = {
     docs: {
+        description: {
+            story: "Use to show IconBulletlist without HeaderImage.",
+        },
         source: {
             code: `<IconBulletlist {...${JSON.stringify(WithoutHeaderImageIconBulletlist.args, null, 2)}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// With Background Image IconBulletlist
+// -------------------------------------------------------------
+export const WithBackgroundImageIconBulletlist = Template.bind({});
+WithBackgroundImageIconBulletlist.args = {
+    ...Default.args,
+    data: {
+        title: "Lorem ipsum dolor sit amet",
+        subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        iconlist: [
+            {
+                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                text: "Neque porro quisquam est qui dolorem",
+            },
+        ],
+        image: { id: "header-image", extention: "" },
+        backgroundImage: { id: "background-image", extention: "" }
+    },
+    withColor: {
+        iconListItemTextColor: "#ffffff"
+    }
+};
+WithBackgroundImageIconBulletlist.parameters = {
+    docs: {
+        description: {
+            story: "Use to show IconBulletlist with BackgroundImage.",
+        },
+        source: {
+            code: `<IconBulletlist {...${JSON.stringify(WithBackgroundImageIconBulletlist.args, null, 2)}}/>`,
         },
     },
 };
