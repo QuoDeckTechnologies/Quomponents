@@ -36,13 +36,13 @@ RibbonMenu.propTypes = {
 	/** 
 	The Deck state is handed down from DeckEditorContainer for use.
 	*/
-	deck: {
+	deck: PropTypes.shape({
 		navEnabled: PropTypes.bool,
 		snEnabled: PropTypes.bool,
 		voEnabled: PropTypes.bool,
 		content: PropTypes.array,
 		currentSlide: PropTypes.number
-	},
+	}),
 	/** 
 	The deckId is received from DeckEditorContainer for use.
 	*/
@@ -80,7 +80,7 @@ RibbonMenu.defaultProps = {
 	// Component Specific props
 	//=======================================
 	asEmphasis: "html",
-	
+
 	//=======================================
 	// Quommon props
 	//=======================================

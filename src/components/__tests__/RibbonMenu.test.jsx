@@ -22,6 +22,25 @@ describe("RibbonMenu", () => {
 		component = shallow(
 			<RibbonMenu
 				asEmphasis="html"
+				actions={{
+					updateDeck: jest.fn(),
+					addPoints: jest.fn(),
+					addSlide: jest.fn(),
+					duplicateSlide: jest.fn(),
+					deleteSlide: jest.fn(),
+					changeSlideNav: jest.fn(),
+					setUserOptions: jest.fn()
+				}}
+				deck={{
+					navEnabled: false,
+					snEnabled: false,
+					voEnabled: false,
+					content: [{}, {}, {}],
+					currentSlide: 1
+				}}
+				params={{
+					deckId: "1"
+				}}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
@@ -68,7 +87,7 @@ describe("RibbonMenu", () => {
 		component.setProps({ asEmphasis: "tools" });
 		expect(component.find(RibbonToolsMenu).exists()).toBe(true);
 	});
-    
+
 	it("should render Home Menu when passed home in the tab props", () => {
 		expect(component.find(RibbonHomeMenu).exists()).toBe(false);
 		component.setProps({ asEmphasis: "home" });
