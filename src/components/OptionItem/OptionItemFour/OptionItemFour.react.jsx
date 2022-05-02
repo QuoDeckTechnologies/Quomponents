@@ -103,12 +103,6 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   const [value, setValue] = useState(content?.value);
   const [isChecked, setIsChecked] = useState(content?.checked);
-  useEffect(() => {
-    setIsChecked(content?.checked);
-  }, [content?.checked]);
-  useEffect(() => {
-    onSelect(content?.targetName, value, isChecked);
-  }, [content?.targetName, value, isChecked, onSelect]);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -121,7 +115,8 @@ export default function OptionItemFour(props) {
   // 5. Function to return checked value of the component
   //-------------------------------------------------------------------
   const handleCheckBox = (data) => {
-    setIsChecked(data.checked);
+    setIsChecked(data?.checked);
+    onSelect(content?.targetName, value, data?.checked);
   };
   //-------------------------------------------------------------------
   // 6. Function to return input value of the component
