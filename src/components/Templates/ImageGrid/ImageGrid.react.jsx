@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    resolveImage
 } from "../../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -27,16 +28,15 @@ ImageGrid.propTypes = {
         title: PropTypes.string,
         subtitle: PropTypes.string,
         caption: PropTypes.string,
-        headerImage: PropTypes.string,
-        backgroundImage: PropTypes.string,
+        image: PropTypes.object,
+        backgroundImage: PropTypes.object,
+        Presenter: PropTypes.object,
         gridImages: PropTypes.array,
-        presenterTitle: PropTypes.string,
-        presenterSubtitle: PropTypes.string,
-        presenterCaption: PropTypes.string,
-        presenterBackgroundImage: PropTypes.string,
-        presenterImage: PropTypes.string,
-
     }),
+    /**
+      ImageGrid can set presenter image from imageLibrary array
+      */
+    imageLibrary: PropTypes.array,
     /**
       ImageGrid slideId should be passed with props, to specify the slide.
       */
@@ -73,10 +73,6 @@ ImageGrid.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      ImageGrid component can use presenter props to show presenter template
-      */
-    isPresenter: PropTypes.bool,
-    /**
       Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -98,17 +94,13 @@ ImageGrid.defaultProps = {
         title: "",
         subtitle: "",
         caption: "",
-        headerImage: "",
-        backgroundImage: "",
+        image: {},
+        backgroundImage: {},
         gridImages: [],
-        presenterTitle: "",
-        presenterSubtitle: "",
-        presenterCaption: "",
-        presenterBackgroundImage: "",
-        presenterImage: "",
+        presenter: {},
     },
+    imageLibrary: [{}],
     slideId: 0,
-    isPresenter: false,
     //=======================================
     // Quommon props
     //=======================================
@@ -126,7 +118,14 @@ ImageGrid.defaultProps = {
 - Displays a ImageGrid with TextBlock, clickableImages and a SlideHeader
 **/
 export default function ImageGrid(props) {
-    const { data, withColor, isPresenter } = props;
+    const { data, withColor, imageLibrary } = props;
+    //-------------------------------------------------------------------
+    // Variable to set presenter image
+    //-------------------------------------------------------------------
+    let hasPresenter =
+        data?.presenter !== undefined &&
+        data?.presenter.id !== undefined &&
+        data?.presenter.id !== "default43";
     //-------------------------------------------------------------------
     // Set the classes
     //-------------------------------------------------------------------
@@ -160,22 +159,22 @@ export default function ImageGrid(props) {
                 backgroundSize: "cover",
             }}>
                 <div className={`${quommonClasses.childClasses}`} key={"imageGrid-" + props.slideId}>
-                    {!data?.headerImage && (data?.title || data?.subtitle) && (
+                    {!data?.image && (data?.title || data?.subtitle) && (
                         <SlideHeader
                             content={SlideHeaderText}
                             withColor={slideHeaderColors} />
                     )}
-                    {data?.headerImage && (
-                        <img className="qui-image-grid-image" src={data?.headerImage} alt="" />
+                    {data?.image && (
+                        <img className="qui-image-grid-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
                     )}
                 </div>
                 <Grid container
                     rowSpacing={{ xs: 0.5, sm: 0.5, md: 0.5, lg: 0.5, xl: 0.5 }}
                     columnSpacing={{ xs: 0.5, sm: 0.5, md: 0.5, lg: 0.5, xl: 0.5 }} className="qui-image-grid-container">
-                    {_.map(data.gridImages, (image, index) => {
+                    {_.map(data?.gridImages, (image, index) => {
                         return (
                             <Grid key={index} item xs={6} sm={6} md={6} lg={6}>
-                                <ClickableImage {...props} content={{ image }} onClick={(e) => props.onClick(e)} />
+                                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={(e) => props.onClick(e)} />
                             </Grid>
                         );
                     })}
@@ -199,13 +198,13 @@ export default function ImageGrid(props) {
             >
                 <div className="qui-image-grid-presenter-title" >
                     <TextBlock {...props}
-                        content={data?.presenterTitle}
+                        content={data?.title}
                         asFloated="left"
                         withColor={textBlockColors} />
                 </div>
                 <div className="qui-image-grid-presenter-sub-title">
                     <TextBlock {...props}
-                        content={data?.presenterSubtitle}
+                        content={data?.subtitle}
                         asFloated="left"
                         withColor={textBlockColors} />
                 </div>
@@ -215,24 +214,26 @@ export default function ImageGrid(props) {
                     {_.map(data.gridImages, (image, index) => {
                         return (
                             <Grid key={index} item xs={6} sm={6} md={6} lg={6}>
-                                <ClickableImage {...props} content={{ image }} onClick={(e) => props.onClick(e)} />
+                                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={(e) => props.onClick(e)} />
                             </Grid>
                         );
                     })}
                 </Grid>
                 <div className="qui-image-grid-presenter-caption">
                     <TextBlock {...props}
-                        content={data?.presenterCaption}
+                        content={data?.caption}
                         asFloated="left"
                         conversation={true}
                         position="right-bottom"
                         withColor={textBlockColors} />
                 </div>
-                <img
-                    className="qui-image-grid-presenter"
-                    src={data.presenterImage}
-                    alt=""
-                />
+                {hasPresenter && (
+                    <img
+                        className="qui-image-grid-presenter"
+                        src={resolveImage(data.presenter.id, imageLibrary)}
+                        alt=""
+                    />
+                )}
             </div>
 
         );
@@ -246,24 +247,36 @@ export default function ImageGrid(props) {
     // Function to set background for presenter view
     //-------------------------------------------------------------------
     const getBackground = () => {
-        return {
-            backgroundImage: `url(${data?.backgroundImage})`,
-        };
+        if (data?.backgroundImage) {
+            return {
+                backgroundImage: `url(${resolveImage(
+                    data?.backgroundImage.id,
+                    imageLibrary
+                )})`,
+            };
+        }
     };
     const getPresenterBackground = () => {
-        return {
-            backgroundImage: `url(${data?.presenterBackgroundImage})`,
-        };
+        if (data?.backgroundImage) {
+            return {
+                backgroundImage: `url(${resolveImage(
+                    data?.backgroundImage.id,
+                    imageLibrary
+                )})`,
+            };
+        }
     };
-    const background = isPresenter ? getPresenterBackground() : getBackground();
+    const background = data?.presenter ? getPresenterBackground() : getBackground();
     // ========================= Render Function =================================
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses} `}
-        >
-            {isPresenter ? ImageGridPresenterView(data) : ImageGridView(data)}
+        >{data &&
+            <div>
+                {data?.presenter ? ImageGridPresenterView(data) : ImageGridView(data)}
+            </div>}
         </motion.div>
     );
 }

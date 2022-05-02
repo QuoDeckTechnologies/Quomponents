@@ -70,6 +70,7 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
+    padding-right: 3em;
     .qui-image-grid-clickable-images {
         display: flex;
         align-items: center;
@@ -102,7 +103,7 @@
     }
     .qui-image-grid-presenter-title {
         .qui-text-block-area {
-            width: 90%;
+            width: 80%;
             margin: 0 1em 0 0em;
             text-align: left;
             font-weight: bolder;
@@ -183,6 +184,7 @@
         bottom: 0;
         right: 0;
         height: 12em;
+        border-bottom-right-radius: 1em;
     }
 
     .qui-image-grid-presenter-container {
@@ -224,6 +226,7 @@
         bottom: 0;
         right: 0;
         height: 14em;
+        border-bottom-right-radius: 1em;
     }
     .qui .qui-image-grid-card {
         .qui-clickable-image {

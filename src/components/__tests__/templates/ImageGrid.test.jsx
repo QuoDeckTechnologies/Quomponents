@@ -22,20 +22,33 @@ describe("ImageGrid", () => {
                 data={{
                     title: "This is Title",
                     subtitle: "This is Subtitle",
-                    headerImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-                    backgroundImage: "",
-                    gridImages: [
-                        "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-                        "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
+                    image: {
+                        extention: "",
+                        id: "header-image",
+                    },
+                    backgroundImage: {
+                        extention: "",
+                        id: "background-image",
+                    },
+                    diptych: [{
+                        image: {
+                            extention: "",
+                            id: "image-1",
+                        }
+                    }
                     ],
-                    presenterTitle: "",
-                    presenterSubtitle: "",
-                    presenterCaption: "",
-                    presenterBackgroundImage: "",
-                    presenterImage: "",
+                    imageLibrary: [{
+                        id: "header-image",
+                        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
+                    }, {
+                        id: "background-image",
+                        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
+                    }, {
+                        id: "image-1",
+                        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
+                    },],
                     caption: "caption",
                 }}
-                isPresenter={false}
                 slideId={0}
                 asVariant="primary"
                 withColor={null}
@@ -66,16 +79,6 @@ describe("ImageGrid", () => {
         component.setProps({ withAnimation: animation })
         expect(component.exists()).toBe(true);
     })
-    it('should render slideHeader component instead of  header image', () => {
-        expect(component.find(SlideHeader).exists()).toBe(false)
-        let data = {
-            title: "This is Title",
-            subtitle: "This is Subtitle",
-            headerImage: "",
-        }
-        component.setProps({ data: data })
-        expect(component.find(SlideHeader).exists()).toBe(true)
-    });
     it("should render correctly when passed withColor props", () => {
         let colors = {
             slideHeaderTextColor: "#FFFFFF",
@@ -100,22 +103,30 @@ describe("ImageGrid", () => {
         component.setProps({ data: {} })
         expect(component.exists()).toBe(true);
     })
-    it('Test click event on first ClickableImage when passed isPresenter false', () => {
-        component.setProps({ isPresenter: false })
-        component.find(ClickableImage).at(0).simulate('click')
-    });
-    it('Test click event on second ClickableImage when passed isPresenter false', () => {
-        component.setProps({ isPresenter: false })
-        component.find(ClickableImage).at(1).simulate('click')
-    });
-    it('Test click event on second ClickableImage when passed isPresenter true', () => {
-        component.setProps({ isPresenter: true })
-        component.find(ClickableImage).at(0).simulate('click')
-    });
-    it('Test click event on second ClickableImage when passed isPresenter true', () => {
-        component.setProps({ isPresenter: true })
-        component.find(ClickableImage).at(1).simulate('click')
-    });
+    it('should render when passed presenter prop', () => {
+        component.setProps({
+            data: {
+                presenter: {
+                    id: "presenter-image",
+                    extention: "",
+                },
+                backgroundImage: {
+                    id: "background-image",
+                    extention: "",
+                }
+            },
+            imageLibrary: [{
+                id: "presenter-image",
+                image: "test-1.png"
+            }, {
+                id: "background-image",
+                image: "test-2.png"
+            }]
+        })
+    })
+    it('should click on Clickable Image', () => {
+        console.log(component.find(Grid).children())
+    })
     it("should render correctly when passed isHidden props as false", () => {
         component.setProps({ isHidden: false })
         expect(component.exists()).toBe(true);
