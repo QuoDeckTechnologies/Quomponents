@@ -83,9 +83,11 @@ Title.defaultProps = {
   // Component Specific props
   //=======================================
   data: {},
+  imageLibrary: null,
   //=======================================
   // Quommon props
   //=======================================
+  asFloated: "left",
   withColor: null,
   withAnimation: null,
   isHidden: false,

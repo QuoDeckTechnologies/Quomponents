@@ -1,6 +1,6 @@
 import _ from "lodash";
-import missingImage from "../../assets/missing.jpeg";
-import loadingImage from "../../assets/loading.png";
+import missingImage from "../../assets/default.jpeg";
+import loadingImage from "../../assets/loading.jpg";
 import defaultPresenter from "../../assets/default-presenter.jpg";
 
 export function getQuommons(props, component) {
