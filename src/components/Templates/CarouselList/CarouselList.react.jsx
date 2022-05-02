@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
+  resolveImage,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -24,12 +25,9 @@ CarouselList.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    headerImage: PropTypes.string,
-    backgroundImage: PropTypes.string,
-    presenterTitle: PropTypes.string,
-    presenterSubtitle: PropTypes.string,
-    presenterImage: PropTypes.string,
-    presenterBackgroundImage: PropTypes.string,
+    image: PropTypes.object,
+    backgroundImage: PropTypes.object,
+    presenter: PropTypes.object,
     carouselContent: PropTypes.arrayOf(
       PropTypes.shape({
         content: PropTypes.string,
@@ -42,8 +40,11 @@ CarouselList.propTypes = {
         ]),
       })),
   }).isRequired,
+  /**
+    CarouselList can set presenter image from imageLibrary array
+    */
+  imageLibrary: PropTypes.array,
   slideId: PropTypes.number,
-  isPresenter: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
@@ -96,16 +97,13 @@ CarouselList.defaultProps = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-    headerImage: "",
-    backgroundImage: "",
-    presenterImage: "",
-    presenterBackgroundImage: "",
-    presenterTitle: "Neque porro quisquam est qui dolorem",
-    presenterSubtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    image: {},
+    backgroundImage: {},
+    presenter: {},
     carouselContent: []
   },
+  imageLibrary: [{}],
   slideId: 0,
-  isPresenter: false,
   //=======================================
   // Quommon props
   //=======================================
@@ -122,7 +120,15 @@ CarouselList.defaultProps = {
 - component uses slideHeader and a Html Carousel , can switch to presenter slide
 **/
 export default function CarouselList(props) {
-  let { data, withColor, isPresenter } = props
+  let { data, withColor, imageLibrary } = props
+
+  //-------------------------------------------------------------------
+  // Variable to set presenter image
+  //-------------------------------------------------------------------
+  let hasPresenter =
+    data?.presenter !== undefined &&
+    data?.presenter.id !== undefined &&
+    data?.presenter.id !== "default43";
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -147,10 +153,6 @@ export default function CarouselList(props) {
     title: data?.title,
     subTitle: data?.subtitle,
   }
-  //--------------------------------------------------------------------------
-  // HtmlCarousel props
-  //--------------------------------------------------------------------------
-
   //-------------------------------------------------------------------
   // Function to return a view for diptych
   //-------------------------------------------------------------------
@@ -162,13 +164,15 @@ export default function CarouselList(props) {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}>
-        {!data?.headerImage && (data?.title || data?.subtitle) && (
+        {!data?.image && (data?.title || data?.subtitle) && (
           <SlideHeader
             content={SlideHeaderText}
             withColor={slideHeaderColors} />
         )}
-        {data?.headerImage && (
-          <img className="qui-carousel-list-image" src={data?.headerImage} alt="" />
+        {data?.image && (
+          <img className="qui-carousel-list-image"
+            src={resolveImage(data?.image.id, imageLibrary)}
+            alt="" />
         )}
         <HtmlCarousel {...props} content={data.carouselContent} />
       </div>
@@ -190,21 +194,22 @@ export default function CarouselList(props) {
       >
         <div className="qui-carousel-list-presenter-title" >
           <TextBlock {...props}
-            content={data?.presenterTitle}
+            content={data?.title}
             asFloated="left"
             withColor={textBlockColors} />
         </div>
         <div className="qui-carousel-list-presenter-sub-title">
           <TextBlock {...props}
-            content={data?.presenterSubtitle}
+            content={data?.subtitle}
             asFloated="left"
             withColor={textBlockColors} />
         </div>
-        <img
-          className="qui-carousel-list-presenter-image"
-          src={data.presenterImage}
-          alt=""
-        />
+        {hasPresenter && (
+          <img
+            className="qui-carousel-list-presenter-image"
+            src={resolveImage(data.presenter.id, imageLibrary)}
+            alt=""
+          />)}
         <HtmlCarousel {...props} content={data.carouselContent} />
       </div>
     );
@@ -213,16 +218,26 @@ export default function CarouselList(props) {
   // Function to set background for presenter view
   //-------------------------------------------------------------------
   const getBackground = () => {
-    return {
-      backgroundImage: `url(${data?.backgroundImage})`,
-    };
+    if (data?.backgroundImage) {
+      return {
+        backgroundImage: `url(${resolveImage(
+          data?.backgroundImage.id,
+          imageLibrary
+        )})`,
+      };
+    }
   };
   const getPresenterBackground = () => {
-    return {
-      backgroundImage: `url(${data?.presenterBackgroundImage})`,
-    };
+    if (data?.backgroundImage) {
+      return {
+        backgroundImage: `url(${resolveImage(
+          data?.backgroundImage.id,
+          imageLibrary
+        )})`,
+      };
+    }
   };
-  const background = isPresenter ? getPresenterBackground() : getBackground();
+  const background = data?.presenter ? getPresenterBackground() : getBackground();
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -231,7 +246,7 @@ export default function CarouselList(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       {data && <div>
-        {isPresenter ? carouselListPresenterView(data) : carouselListView(data)}
+        {data?.presenter ? carouselListPresenterView(data) : carouselListView(data)}
       </div>}
 
     </motion.div>

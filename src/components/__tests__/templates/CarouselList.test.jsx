@@ -20,15 +20,30 @@ describe("CarouselList", () => {
                 data={{
                     title: "This is Title",
                     subtitle: "This is Subtitle",
-                    headerImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-                    backgroundImage: "",
+                    image: {
+                        id: "header-image",
+                        extention: "",
+                    },
+                    backgroundImage: {
+                        id: "background-image",
+                        extention: "",
+                    },
                     carouselContent: [],
-                    presenterTitle: "",
-                    presenterSubtitle: "",
-                    presenterBackgroundImage: "",
-                    presenterImage: "",
                 }}
-                isPresenter={false}
+                imageLibrary={[
+                    {
+                        id: "header-image",
+                        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+                    },
+                    {
+                        id: "background-image",
+                        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+                    },
+                    {
+                        id: "presenter-image",
+                        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+                    },
+                ]}
                 slideId={0}
                 withColor={null}
                 withAnimation={null}
@@ -49,11 +64,54 @@ describe("CarouselList", () => {
         });
         expect(component.exists()).toBe(true);
     });
-    it('should render when passed isPresenter true', () => {
-        component.setProps({ isPresenter: true })
+    it('should render when passed presenter prop', () => {
+        component.setProps({
+            data: {
+                presenter: {
+                    id: "presenter-image",
+                    extention: "",
+                },
+                backgroundImage: {
+                    id: "background-image",
+                    extention: "",
+                }
+            },
+            imageLibrary: [{
+                id: "presenter-image",
+                image: "test-1.png"
+            }, {
+                id: "background-image",
+                image: "test-2.png"
+            }]
+        })
     });
-    it('should render when passed isPresenter false', () => {
-        component.setProps({ isPresenter: false })
+    it('should render when passed presenter prop but backgound image is not passed', () => {
+        component.setProps({
+            data: {
+                presenter: {
+                    id: "presenter-image",
+                    extention: "",
+                },
+            },
+            imageLibrary: [{
+                id: "presenter-image",
+                image: "test-1.png"
+            }]
+        })
+    });
+    it('should render when presenter prop not passed', () => {
+        component.setProps({
+            data: {
+                backgroundImage: {
+                    id: "background-image",
+                    extention: "",
+                }
+            },
+            imageLibrary: [{
+                id: "background-image",
+                image: "test-2.png"
+            }]
+        })
     });
     it("should render correctly when passed withAnimation props", () => {
         let animation = {

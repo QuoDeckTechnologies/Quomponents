@@ -93,24 +93,39 @@
     bottom: -2.3em;
     right: 20%;
   }
+  .qui-html-carousel .slick-dots li button:before {
+    font-size: 12px;
+  }
+  .qui-html-carousel .slick-dots li.slick-active button:before {
+    font-size: 16px;
+    color: #a6a6a6;
+  }
   .qui-html-carousel .slick-dots li {
-    margin: 0 -3.9px;
+    margin: 0 -3px;
   }
 }
 @media only screen and (min-width: 320px) {
   .qui .qui-carousel-list-card {
     min-height: 25em;
-    .qui-clickable-image {
-      height: 12em;
-    }
   }
   .qui-carousel-list-presenter-container {
+    .qui-html-slide {
+      width: 90%;
+    }
+    .qui-html-carousel .qui-html-slick-arrows {
+      top: 0.2em;
+      width: 90%;
+      position: relative;
+      font-size: 2em;
+      z-index: 1;
+    }
     .qui-carousel-list-presenter-image {
       height: 10em;
       position: absolute;
       bottom: 0;
       right: 0;
-      z-index: 1;
+      z-index: 2;
+      border-bottom-right-radius: 1em;
     }
     .qui-text-block-area {
       font-weight: lighter;
@@ -133,7 +148,8 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      z-index: 1;
+      z-index: 2;
+      border-bottom-right-radius: 1em;
     }
     .qui-carousel-list-presenter-caption .qui-text-block-area {
       width: 14em;
