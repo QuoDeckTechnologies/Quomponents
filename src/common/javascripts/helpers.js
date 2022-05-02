@@ -1,7 +1,5 @@
 import _ from "lodash";
-import missingImage from "../../assets/default.jpeg";
-import loadingImage from "../../assets/loading.jpg";
-import defaultPresenter from "../../assets/default-presenter.jpg";
+import defaultImage from "../../assets/default.jpeg";
 
 export function getQuommons(props, component) {
   let parentArray = [`qui-${component}`],
@@ -118,7 +116,7 @@ export const resolveImage = (srcImg, imgLibrary) => {
     srcImg === "" ||
     srcImg === " "
   )
-    return missingImage;
+    return defaultImage;
   else {
     let img = Array.isArray(srcImg)
       ? srcImg[0]
@@ -141,8 +139,8 @@ export const resolveImage = (srcImg, imgLibrary) => {
           img.indexOf(".png") !== -1 ||
           img.indexOf(".PNG") !== -1 ||
           img.indexOf(".svg") !== -1
-        ? defaultPresenter
-        : loadingImage;
+        ? defaultImage
+        : defaultImage;
     }
   }
 };
