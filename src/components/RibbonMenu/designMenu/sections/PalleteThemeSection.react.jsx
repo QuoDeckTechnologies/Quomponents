@@ -90,7 +90,7 @@ export default function PalleteThemeSection(props) {
 	};
 
 	useEffect(() => {
-		props.actions.updateDeck({ colors: updatedTheme });
+		props.actions?.updateDeck({ colors: updatedTheme });
 	});
 
 	//-------------------------------------------------------------------
@@ -136,10 +136,10 @@ export default function PalleteThemeSection(props) {
 											asPadded="fitted"
 											asSize="small"
 											withColor={{
-												primaryColor: colorSet.primaryColor,
-												accentColor: colorSet.accentColor,
-												secondaryColor: colorSet.secondaryColor,
-												pageColor: colorSet.pageColor,
+												primaryColor: colorSet?.primaryColor,
+												accentColor: colorSet?.accentColor,
+												secondaryColor: colorSet?.secondaryColor,
+												pageColor: colorSet?.pageColor,
 											}}
 										/>
 									</div>

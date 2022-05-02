@@ -21,7 +21,7 @@ describe("VoiceoverSection", () => {
 				asFloated="left"
 				isHidden={false}
 				isDisabled={false}
-                onClick={jest.fn()}
+				onClick={jest.fn()}
 			/>
 		);
 	});
@@ -56,16 +56,16 @@ describe("VoiceoverSection", () => {
 	});
 
 	it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false });
-        expect(component.exists()).toBe(true);
-    });
-	
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true });
-        expect(component.exists()).toBe(true);
-    });
+		component.setProps({ isDisabled: false });
+		expect(component.exists()).toBe(true);
+	});
 
-    it("should enable navigation by clicking on Icon", () => {
+	it("should render correctly when passed isDisabled props as true", () => {
+		component.setProps({ isDisabled: true });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should enable navigation by clicking on Icon", () => {
 		let backArrow = component.find("IconLink").at(0);
 		backArrow.simulate("click");
 	});
@@ -84,4 +84,13 @@ describe("VoiceoverSection", () => {
 		let nextArrow = component.find(".qui-ribbon-menu-tool-label").at(1);
 		nextArrow.simulate("click");
 	});
+
+	it("should open and close voice modal", () => {
+		expect(component.find(".qui-ribbon-tools-menu-voiceover-modal").exists()).toBe(false)
+		let backArrow = component.find("IconLink").at(0);
+		backArrow.simulate("click");
+		expect(component.find(".qui-ribbon-tools-menu-voiceover-modal").exists()).toBe(true)
+		component.find(".qui-ribbon-tools-menu-voiceover-modal").simulate('click');
+		expect(component.find(".qui-ribbon-tools-menu-voiceover-modal").exists()).toBe(false)
+	})
 });

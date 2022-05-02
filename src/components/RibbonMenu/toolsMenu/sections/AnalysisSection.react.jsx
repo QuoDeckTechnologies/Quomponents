@@ -66,8 +66,8 @@ export default function AnalysisSection(props) {
 						Analysis
 					</div>
 				</div>
-				{modalOpen && <div onClick={handleModalClose}>
-					{/* Deck Analysis modal here	 */}
+				{modalOpen && <div className="qui-ribbon-tools-menu-deck-analysis-modal" onClick={handleModalClose}>
+					{/* Deck Analysis modal here */}
 				</div>}
 			</div>
 		</div>

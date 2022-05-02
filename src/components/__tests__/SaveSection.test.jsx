@@ -7,6 +7,7 @@ import { shallow } from "enzyme";
 // Import Components
 // -------------------------------------
 import SaveSection from "../RibbonMenu/htmlMenu/sections/SaveSection.react";
+import IconLink from "../Buttons/IconLink/IconLink.react";
 
 describe("SaveSection", () => {
 	// -------------------------------------
@@ -18,10 +19,11 @@ describe("SaveSection", () => {
 		jest.resetAllMocks();
 		component = shallow(
 			<SaveSection
+				onSaveDeck={jest.fn()}
 				asFloated="left"
 				isHidden={false}
 				isDisabled={false}
-                onClick={jest.fn()}
+				onClick={jest.fn()}
 			/>
 		);
 	});
@@ -56,12 +58,27 @@ describe("SaveSection", () => {
 	});
 
 	it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false });
-        expect(component.exists()).toBe(true);
-    });
-	
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true });
-        expect(component.exists()).toBe(true);
-    });
+		component.setProps({ isDisabled: false });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed isDisabled props as true", () => {
+		component.setProps({ isDisabled: true });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should simulate upload button", () => {
+		component.find(IconLink).at(0).simulate('click');
+		expect(component.exists()).toBe(true);
+	})
+
+	it("should simulate download button", () => {
+		component.find(IconLink).at(1).simulate('click');
+		expect(component.exists()).toBe(true);
+	})
+
+	it("should simulate save button", () => {
+		component.find(IconLink).at(2).simulate('click');
+		expect(component.exists()).toBe(true);
+	})
 });

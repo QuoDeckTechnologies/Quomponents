@@ -7,6 +7,7 @@ import { shallow } from "enzyme";
 // Import Components
 // -------------------------------------
 import AnalysisSection from "../RibbonMenu/toolsMenu/sections/AnalysisSection.react";
+import IconLink from "../Buttons/IconLink/IconLink.react";
 
 describe("AnalysisSection", () => {
 	// -------------------------------------
@@ -21,7 +22,7 @@ describe("AnalysisSection", () => {
 				asFloated="left"
 				isHidden={false}
 				isDisabled={false}
-                onClick={jest.fn()}
+				onClick={jest.fn()}
 			/>
 		);
 	});
@@ -56,12 +57,19 @@ describe("AnalysisSection", () => {
 	});
 
 	it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false });
-        expect(component.exists()).toBe(true);
-    });
-	
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true });
-        expect(component.exists()).toBe(true);
-    });
+		component.setProps({ isDisabled: false });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed isDisabled props as true", () => {
+		component.setProps({ isDisabled: true });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should open and close Deck Analysis Modal", () => {
+		component.find(IconLink).simulate('click');
+		expect(component.find(".qui-ribbon-tools-menu-deck-analysis-modal").exists()).toBe(true);
+		component.find(".qui-ribbon-tools-menu-deck-analysis-modal").simulate('click');
+		expect(component.find(".qui-ribbon-tools-menu-deck-analysis-modal").exists()).toBe(false);
+	})
 });

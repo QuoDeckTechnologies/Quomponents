@@ -129,7 +129,7 @@ export default function VoiceoverSection(props) {
 					</div>
 				</div>
 				{voModalOpen &&
-					<div onClick={handleVoModalClose}>
+					<div className="qui-ribbon-tools-menu-voiceover-modal" onClick={handleVoModalClose}>
 						{/* Voiceover Modal here */}
 					</div>}
 			</div>

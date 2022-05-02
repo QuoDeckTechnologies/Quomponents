@@ -7,17 +7,28 @@ import { shallow } from "enzyme";
 // Import Components
 // -------------------------------------
 import SlideSection from "../RibbonMenu/homeMenu/sections/SlideSection.react";
+import IconLink from "../Buttons/IconLink/IconLink.react";
 
 describe("SlideSection", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
-	let component;
+	let component, actions, deck;
+	actions = {
+		addSlide: jest.fn(),
+		duplicateSlide: jest.fn(),
+		deleteSlide: jest.fn(),
+	};
+	deck = {
+		content: [{}, {}]
+	};
 
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<SlideSection
+				actions={actions}
+				deck={deck}
 				asFloated="left"
 				isHidden={false}
 				isDisabled={false}
@@ -64,4 +75,25 @@ describe("SlideSection", () => {
 		component.setProps({ isDisabled: true });
 		expect(component.exists()).toBe(true);
 	});
+
+	it("should add new slide", () => {
+		component.find(IconLink).at(0).simulate('click')
+	})
+
+	it("should duplicate slide", () => {
+		component.find(IconLink).at(1).simulate('click')
+	})
+
+	it("should delete slide", () => {
+		component.find(IconLink).at(2).simulate('click')
+	})
+
+	it("should disable the delete button if there is only 1 slide in the deck", () => {
+		expect(component.find(IconLink).at(2).props().isDisabled).toBe(false)
+		let deck = {
+			content: [{}]
+		}
+		component.setProps({ deck: deck })
+		expect(component.find(IconLink).at(2).props().isDisabled).toBe(true)
+	})
 });

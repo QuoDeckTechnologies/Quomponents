@@ -7,6 +7,7 @@ import { shallow } from "enzyme";
 // Import Components
 // -------------------------------------
 import QuestionBankSection from "../RibbonMenu/toolsMenu/sections/QuestionBankSection.react";
+import IconLink from "../Buttons/IconLink/IconLink.react";
 
 describe("QuestionBankSection", () => {
 	// -------------------------------------
@@ -64,4 +65,9 @@ describe("QuestionBankSection", () => {
 		component.setProps({ isDisabled: true });
 		expect(component.exists()).toBe(true);
 	});
+
+	it("should simulate question bank button", () => {
+		component.find(IconLink).simulate('click');
+		expect(component.exists()).toBe(true);
+	})
 });

@@ -21,7 +21,7 @@ ViewSection.propTypes = {
 	actions: PropTypes.shape({
 		setUserOptions: PropTypes.func
 	}),
-	
+
 	//=======================================
 	// Quommon props
 	//=======================================

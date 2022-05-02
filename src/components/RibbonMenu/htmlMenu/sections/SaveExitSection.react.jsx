@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { hashHistory } from "react-router";
 
 import { getQuommons } from "../../../../common/javascripts/helpers";
 
@@ -70,34 +69,13 @@ export default function SaveExitSection(props) {
 	);
 
 	const [modalOpen, setModalOpen] = useState(false);
-	const [points, setPoints] = useState("0");
 
-	const handlePoints = (e) => setPoints(e);
-
-	const handlePoModalOpen = () => {
-		if (props.deckId !== undefined) {
-			props.onSaveDeck();
-			props.onAddQDF();
-			hashHistory?.push("/drive?panel=files");
-		} else {
-			setModalOpen(true)
-		}
-	}
 	const handlePoModalClose = () => setModalOpen(false);
 
 	const handleSave = () => {
-		if (props.actions?.addPoints(points)) {
-			props.onSaveDeck();
-			props.onAddQDF();
-			hashHistory?.push("/drive?panel=files");
-		};
+		setModalOpen(true)
+		//Logic here
 	}
-
-	const updatePoints = () => {
-		props.updatePoints(
-			props.params.deckId
-		);
-	};
 
 	// ========================= Render Function =================================
 	return (
@@ -106,11 +84,7 @@ export default function SaveExitSection(props) {
 				<div className="qui-ribbon-exit-save-section">
 					<IconLink
 						asPadded="fitted"
-						onClick={
-							(props?.apiUrls?.gamifixURL && props.apiUrls?.gamifixURL !== "")
-								? handlePoModalOpen
-								: handleSave
-						}
+						onClick={handleSave}
 						asSize={"small"}
 						withColor={{
 							backgroundColor: "#666666",
@@ -118,16 +92,12 @@ export default function SaveExitSection(props) {
 						}}
 						withIcon={{ icon: "fa fa-sign-out-alt" }}
 					/>
-					<div className="qui-ribbon-menu-label" onClick={
-						(props?.apiUrls?.gamifixURL && props?.apiUrls?.gamifixURL !== "")
-							? handlePoModalOpen
-							: handleSave
-					}>
+					<div className="qui-ribbon-menu-label" onClick={handleSave}>
 						Save & Exit
 					</div>
 				</div>
 				{modalOpen &&
-					<div>
+					<div className="qui-ribbon-html-menu-points-modal" onClick={handlePoModalClose}>
 						{/* Points Modal here */}
 					</div>}
 			</div>

@@ -11,18 +11,27 @@ describe("RibbonHomeMenu", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
-	let component, toggleBackChecked, toggleNextChecked;
-	toggleBackChecked = jest.fn();
-	toggleNextChecked = jest.fn();
+	let component, actions, deck;
+	actions = {
+		addSlide: jest.fn(),
+		duplicateSlide: jest.fn(),
+		deleteSlide: jest.fn(),
+		changeSlideNav: jest.fn(),
+		setUserOptions: jest.fn()
+	};
+
+	deck = {
+		content: [{}, {}],
+		currentSlide: 0
+	}
+
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<RibbonHomeMenu
-				toggleBackChecked={toggleBackChecked}
-				toggleNextChecked={toggleNextChecked}
-				onClick={() => {
-					console.log("Testing RibbonHomeMenu");
-				}}
+				actions={actions}
+				deck={deck}
+				onClick={jest.fn()}
 			/>
 		);
 	});

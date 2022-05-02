@@ -61,10 +61,10 @@ export default function OverlayBackground(props) {
 		setImageModalOpen(true)
 	}
 	function handleModalSave(editedImage) {
-		props.actions.updateDeck({ backgroundImage: editedImage })
+		props.actions?.updateDeck({ backgroundImage: editedImage })
 	}
 	function removeBackground() {
-		props.actions.updateDeck({ backgroundImage: "" })
+		props.actions?.updateDeck({ backgroundImage: "" })
 	}
 
 	// ========================= Render Function =================================

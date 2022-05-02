@@ -12,16 +12,26 @@ describe("DeckSettingsSection", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
-	let component;
+	let component, actions, deck;
+	actions = {
+		updateDeck: (settingsObj) => { return settingsObj }
+	};
+	deck = {
+		navEnabled: false,
+		snEnabled: false,
+		voEnabled: false
+	};
 
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<DeckSettingsSection
+				actions={actions}
+				deck={deck}
 				asFloated="left"
 				isHidden={false}
 				isDisabled={false}
-                onClick={jest.fn()}
+				onClick={jest.fn()}
 			/>
 		);
 	});
@@ -56,16 +66,16 @@ describe("DeckSettingsSection", () => {
 	});
 
 	it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false });
-        expect(component.exists()).toBe(true);
-    });
-	
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true });
-        expect(component.exists()).toBe(true);
-    });
+		component.setProps({ isDisabled: false });
+		expect(component.exists()).toBe(true);
+	});
 
-    it("should enable navigation by clicking on Icon", () => {
+	it("should render correctly when passed isDisabled props as true", () => {
+		component.setProps({ isDisabled: true });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should enable navigation by clicking on Icon", () => {
 		let backArrow = component.find("IconLink").at(0);
 		backArrow.simulate("click");
 	});
@@ -85,7 +95,7 @@ describe("DeckSettingsSection", () => {
 		slideList.simulate("click");
 	});
 
-    it("should enable voiceover by clicking on Icon", () => {
+	it("should enable voiceover by clicking on Icon", () => {
 		let voiceover = component.find("IconLink").at(2);
 		voiceover.simulate("click");
 	});

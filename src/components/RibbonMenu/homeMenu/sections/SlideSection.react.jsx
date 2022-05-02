@@ -99,7 +99,7 @@ export default function SlideSection(props) {
 								</div>
 							</div>
 							<div className="qui-ribbon-menu-slide-section-right-content"
-								style={props.deck.content.length === 1 ? { pointerEvents: "none", opacity: "0.6" } : { pointerEvents: "auto" }}>
+								style={props.deck?.content?.length === 1 ? { pointerEvents: "none", opacity: "0.6" } : { pointerEvents: "auto" }}>
 								<IconLink
 									onClick={props.actions?.deleteSlide}
 									asSize="tiny"

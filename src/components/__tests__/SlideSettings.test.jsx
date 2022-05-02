@@ -7,17 +7,28 @@ import { shallow } from "enzyme";
 // Import Components
 // -------------------------------------
 import SlideSettings from "../RibbonMenu/homeMenu/sections/SlideSettings.react";
+import IconLink from "../Buttons/IconLink/IconLink.react";
 
 describe("SlideSettings", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
-	let component;
+	let component, actions, deck;
+	actions = {
+		changeSlideNav: jest.fn()
+	};
+
+	deck = {
+		currentSlide: 1,
+		content: [{}, {}, {}]
+	};
 
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<SlideSettings
+				actions={actions}
+				deck={deck}
 				asFloated="left"
 				isHidden={false}
 				isDisabled={false}
@@ -84,4 +95,34 @@ describe("SlideSettings", () => {
 		let nextArrow = component.find(".qui-ribbon-menu-label").at(1);
 		nextArrow.simulate("click");
 	});
+
+	it("should disable backarrow when there are 3 slides in the content and user is editing the first slide", () => {
+		deck = {
+			currentSlide: 0,
+			content: [{}, {}, {}]
+		}
+		component.setProps({ deck: deck });
+		expect(component.find(IconLink).at(0).props().isDisabled).toBe(true);
+		expect(component.find(IconLink).at(1).props().isDisabled).toBe(false);
+	});
+
+	it("should disable nextarrow when there are 3 slides in the content and user is editing the third slide", () => {
+		deck = {
+			currentSlide: 2,
+			content: [{}, {}, {}]
+		}
+		component.setProps({ deck: deck });
+		expect(component.find(IconLink).at(0).props().isDisabled).toBe(false);
+		expect(component.find(IconLink).at(1).props().isDisabled).toBe(true);
+	});
+
+	it("should be able to enable backarrow and nextarrow when there are 3 slides in the content and user is editing the second slide", () => {
+		deck = {
+			currentSlide: 1,
+			content: [{}, {}, {}]
+		}
+		component.setProps({ deck: deck })
+		expect(component.find(IconLink).at(0).props().isDisabled).toBe(false);
+		expect(component.find(IconLink).at(1).props().isDisabled).toBe(false)
+	})
 });

@@ -54,12 +54,12 @@ describe("RibbonDesignMenu", () => {
 	});
 
 	it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false });
-        expect(component.exists()).toBe(true);
-    });
-	
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true });
-        expect(component.exists()).toBe(true);
-    });
+		component.setProps({ isDisabled: false });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed isDisabled props as true", () => {
+		component.setProps({ isDisabled: true });
+		expect(component.exists()).toBe(true);
+	});
 });

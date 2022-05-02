@@ -7,21 +7,27 @@ import { shallow } from "enzyme";
 // Import Components
 // -------------------------------------
 import ViewSection from "../RibbonMenu/homeMenu/sections/ViewSection.react";
+import IconLink from "../Buttons/IconLink/IconLink.react";
 
 describe("ViewSection", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
-	let component;
+	let component, actions, onClick;
+	actions = {
+		setUserOptions: jest.fn()
+	}
+	onClick = jest.fn();
 
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<ViewSection
+				actions={actions}
 				asFloated="left"
 				isHidden={false}
 				isDisabled={false}
-				onClick={jest.fn()}
+				onClick={onClick}
 			/>
 		);
 	});
@@ -64,4 +70,44 @@ describe("ViewSection", () => {
 		component.setProps({ isDisabled: true });
 		expect(component.exists()).toBe(true);
 	});
+
+	it("should pass the sorter value when click on sorter icon", () => {
+		component.find(IconLink).at(0).simulate('click')
+		expect(actions.setUserOptions).toBeCalledWith({ preferredView: "sorter" })
+	})
+
+	it("should pass the sorter value when click on sorter text", () => {
+		component.find(".qui-ribbon-menu-label").at(0).simulate('click')
+		expect(actions.setUserOptions).toBeCalledWith({ preferredView: "sorter" })
+	})
+
+	it("should pass the mobile value when click on mobile icon", () => {
+		component.find(IconLink).at(1).simulate('click')
+		expect(actions.setUserOptions).toBeCalledWith({ preferredView: "mobile" })
+	})
+
+	it("should pass the mobile value when click on mobile text", () => {
+		component.find(".qui-ribbon-menu-label").at(1).simulate('click')
+		expect(actions.setUserOptions).toBeCalledWith({ preferredView: "mobile" })
+	})
+
+	it("should pass the desktop value when click on desktop icon", () => {
+		component.find(IconLink).at(2).simulate('click')
+		expect(actions.setUserOptions).toBeCalledWith({ preferredView: "desktop" })
+	})
+
+	it("should pass the desktop value when click on desktop text", () => {
+		component.find(".qui-ribbon-menu-label").at(2).simulate('click')
+		expect(actions.setUserOptions).toBeCalledWith({ preferredView: "desktop" })
+	})
+
+	it("should pass the comments value when click on comments icon", () => {
+		component.find(IconLink).at(3).simulate('click')
+		expect(actions.setUserOptions).toBeCalledWith({ preferredView: "comments" })
+	})
+
+	it("should pass the comments value when click on comments text", () => {
+		component.find(".qui-ribbon-menu-label").at(3).simulate('click')
+		expect(actions.setUserOptions).toBeCalledWith({ preferredView: "comments" })
+	})
 });
