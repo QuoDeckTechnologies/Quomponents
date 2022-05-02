@@ -182,7 +182,7 @@ export default function Diptych(props) {
             {_.map(data?.diptych, (image, index) => {
               return (
                 <div className="qui-clickable-image-container" key={"diptych-image" + index}>
-                  <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={(e) => props.onClick(e)} />
+                  <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
                 </div>
               );
             })}
@@ -221,7 +221,7 @@ export default function Diptych(props) {
           {_.map(data?.diptych, (image, index) => {
             return (
               <div className="qui-clickable-image-container" key={"diptych-image" + index}>
-                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={(e) => props.onClick(e)} />
+                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
               </div>
             );
           })}

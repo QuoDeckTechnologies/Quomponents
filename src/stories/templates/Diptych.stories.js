@@ -108,11 +108,11 @@ Default.args = {
     }, {
         image: "https://i.pinimg.com/564x/02/74/fd/0274fdd7ab782768e111db0fd7387fcb.jpg",
         id: "image-2",
-    },{
+    }, {
         image: "https://i.pinimg.com/564x/02/74/fd/0274fdd7ab782768e111db0fd7387fcb.jpg",
         id: "image-2",
     },
-],
+    ],
     slideId: 0,
     asVariant: "warning",
     withColor: {
