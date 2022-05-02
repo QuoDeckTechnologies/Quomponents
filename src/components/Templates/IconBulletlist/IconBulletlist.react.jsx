@@ -8,27 +8,28 @@ import {
 import "../../../common/stylesheets/common.css";
 import "./IconBulletlist.scss";
 import "../../../common/stylesheets/overrule.scss";
-import SlideHeader from "../../SlideHeader/SlideHeader.react"
-import IconListItem from "../../IconListItem/IconListItem/IconListItem.react"
+import SlideHeader from "../../SlideHeader/SlideHeader.react";
+import IconListItem from "../../IconListItem/IconListItem/IconListItem.react";
 
 IconBulletlist.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-    IconBulletlist data should be passed in data field and it is a required field
-    */
+      IconBulletlist data should be passed in data field and it is a required field
+      */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
         image: PropTypes.string,
         backgroundImage: PropTypes.string,
         iconlist: PropTypes.arrayOf(
-            PropTypes.string
-            // image: PropTypes.string,
-            // text: PropTypes.string,
-        ).isRequired,
-    }),
+            PropTypes.shape({
+                image: PropTypes.string,
+                text: PropTypes.string,
+            })),
+
+    }).isRequired,
     /**
     slideId can be used if same template is used continueously for multiple slides.
     */
@@ -46,6 +47,10 @@ IconBulletlist.propTypes = {
         "warning",
         "error",
     ]),
+    /**
+    Use to float the component in parent container
+    */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
     Use to override component colors and behavior
     */
@@ -83,12 +88,13 @@ IconBulletlist.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    data: null,
+    data: {},
     slideId: 0,
     //=======================================
     // Quommon props
     //=======================================
     asVariant: "primary",
+    asFloated: "left",
     withColor: null,
     withAnimation: null,
 
@@ -127,7 +133,7 @@ export default function IconBulletlist(props) {
     //-------------------------------------------------------------------
     // 4. Function to set background
     //-------------------------------------------------------------------
-    let getBackground = () => {
+    const getBackground = () => {
         return {
             background: `url(${data?.backgroundImage})`,
             backgroundSize: "cover",
@@ -146,29 +152,24 @@ export default function IconBulletlist(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
+            style={{ ...background }}
         >
-            <div className={`qui-icon-bullet-list-card ${quommonClasses.childClasses}`} style={background} key={"icon-bullet-list" + slideId}>
+            <div className={`qui-icon-bullet-list-card ${quommonClasses.childClasses}`} key={"icon-bullet-list" + slideId}>
                 {!data?.image && (data?.title || data?.subtitle) && (
                     <SlideHeader {...props}
                         content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (
-                    <img className="qui-icon-bullet-list-image" src={data?.image} alt="" />
+                    <img className="qui-icon-bullet-list-image"
+                        src={data?.image}
+                        alt="IconBulletlist" />
                 )}
                 <IconListItem {...props}
                     asVariant={asVariant}
                     asEmphasis={"list"}
-                    content={[
-                        {
-                            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-                            title: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old"
-                        },
-                        {
-                            image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-                            title: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old"
-                        },
-                    ]}
+                    withColor={iconListItemColors}
+                    content={data?.iconlist}
                 />
             </div>
         </motion.div>
