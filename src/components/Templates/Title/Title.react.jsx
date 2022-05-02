@@ -106,17 +106,10 @@ export default function Title(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "title");
   //-------------------------------------------------------------------
-  // 7. Variable to set presenter image
-  //-------------------------------------------------------------------
-  let hasHeaderImage =
-    data?.backgroundImage !== undefined &&
-    data?.backgroundImage.id !== undefined &&
-    data?.backgroundImage.id !== "default43";
-  //-------------------------------------------------------------------
   // 3. Function to return a view for title
   //-------------------------------------------------------------------
   const getView = (data) => {
-    if (hasHeaderImage) {
+    if (!data?.image && (data?.title || data?.subtitle)) {
       return (
         <SlideHeader
           content={{ title: data?.title }}
@@ -127,12 +120,12 @@ export default function Title(props) {
           }}
         />
       );
-    } else {
+    } else if (data?.image) {
       return (
         data?.image && (
           <img
             className="qui-title-image"
-            src={props.data?.image}
+            src={resolveImage(data?.image.id, imageLibrary)}
             alt="slide"
           />
         )
@@ -176,17 +169,10 @@ export default function Title(props) {
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 7. Variable to set presenter image
-  //-------------------------------------------------------------------
-  let hasBackground =
-    data?.backgroundImage !== undefined &&
-    data?.backgroundImage.id !== undefined &&
-    data?.backgroundImage.id !== "default43";
-  //-------------------------------------------------------------------
   // 6. Functions to set background for the template
   //-------------------------------------------------------------------
   const getBackground = () => {
-    if (hasBackground) {
+    if (data?.backgroundImage) {
       return {
         backgroundImage: `url(${resolveImage(
           data?.backgroundImage.id,

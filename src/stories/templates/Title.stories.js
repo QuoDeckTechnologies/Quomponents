@@ -74,11 +74,16 @@ Default.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    image:
-      "https://images.unsplash.com/photo-1650958287606-a0c5d2fda0d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+    image: { id: "header-image", extention: "" },
     icon: "fas fa-book-open",
   },
-  imageLibrary: [{}],
+  imageLibrary: [
+    {
+      id: "header-image",
+      image:
+        "https://images.unsplash.com/photo-1650958287606-a0c5d2fda0d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+    },
+  ],
   asFloated: "none",
   withColor: {
     backgroundColor: "",
@@ -113,7 +118,6 @@ DefaultTitle.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
     icon: "fas fa-book-open",
-    backgroundImage: "",
   },
   imageLibrary: [{}],
   asFloated: "none",
