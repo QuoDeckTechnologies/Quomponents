@@ -135,25 +135,23 @@ export default function CustomColor(props) {
     const [color, setColor] = useState(props.content.color);
     const [showColorPicker, setshowColorPicker] = useState(false);
 
-    useEffect(()=>{
+    useEffect(() => {
         setColor(props.content?.color)
-    },[props.content.color])
+    }, [props.content.color])
 
     //-------------------------------------------------------------------
     // 4. Handle close 
     //-------------------------------------------------------------------
     function useOutsideAlerter(ref) {
-        useEffect(() => {
-            // Function for click event
-            function handleOutsideClick(event) {
-                if (ref.current && !ref.current.contains(event?.target)) {
-                    setshowColorPicker(false)
-                }
+
+        // Function for click event
+        function handleOutsideClick(event) {
+            if (ref.current && !ref.current.contains(event.target)) {
+                setshowColorPicker(false)
             }
-            // Adding click event listener
-            document.addEventListener("mousedown", handleOutsideClick);
-            return () => document.removeEventListener("mousedown", handleOutsideClick);
-        }, [ref]);
+        }
+        // Adding click event listener
+        document.addEventListener("click", handleOutsideClick);
     }
     useOutsideAlerter(box);
     // ========================= Render Function =================================
@@ -168,7 +166,7 @@ export default function CustomColor(props) {
             >
                 <div className={`qui-qui-ribbon-menu-custom-color-container  qui-color-container ${quommonClasses.childClasses}`} ref={box}>
                     <div className="button-title-container"
-                        >
+                    >
                         <button
                             className="qui-custom-color-button"
                             style={{ backgroundColor: color }}

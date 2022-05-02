@@ -67,6 +67,7 @@ export default {
 const Template = (args) => <RibbonMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+    asEmphasis: "html",
     actions: {
         updateDeck: (settingsObj) => { return settingsObj },
 		addPoints: (points) => { return points },
@@ -86,7 +87,6 @@ Default.args = {
 	params: {
 		deckId: "1"
 	},
-    asEmphasis: "html",
     isDisabled: false,
     isHidden: false,
 };

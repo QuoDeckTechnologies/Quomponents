@@ -17,6 +17,10 @@ RibbonMenu.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
+	/**
+	RibbonMenu tabs data should be passed in content field and it is required field  
+	*/
+	asEmphasis: PropTypes.oneOf(["html", "design", "tools", "home"]),
 	/** 
 	The Actions object is received from DeckEditorContainer for use.
 	*/
@@ -58,10 +62,6 @@ RibbonMenu.propTypes = {
 	// Quommon props
 	//=======================================
 	/**
-	RibbonMenu tabs data should be passed in content field and it is required field  
-	*/
-	asEmphasis: PropTypes.oneOf(["html", "design", "tools", "home"]),
-	/**
 	Use to show/hide the component
 	*/
 	isHidden: PropTypes.bool,
@@ -79,12 +79,11 @@ RibbonMenu.defaultProps = {
 	//=======================================
 	// Component Specific props
 	//=======================================
-
+	asEmphasis: "html",
+	
 	//=======================================
 	// Quommon props
 	//=======================================
-	asEmphasis: "html",
-
 	isHidden: false,
 	isDisabled: false,
 
