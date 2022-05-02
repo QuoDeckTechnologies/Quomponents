@@ -40,6 +40,9 @@
     font-size: 15px;
     color: #a6a6a6;
   }
+  .qui-html-carousel .slick-slide.slick-active .qui-slider-card-box {
+    padding: 0.5em;
+  }
 }
 
 //-----------------------------------------
@@ -55,7 +58,7 @@
   flex-direction: column;
   .qui-carousel-list-presenter-title {
     .qui-text-block-area {
-      width: 90%;
+      width: 80%;
       margin: 0 1em 0 0em;
       text-align: left;
       font-weight: bolder;
@@ -80,11 +83,11 @@
     }
   }
   .qui-html-slide {
-    width: 80%;
+    width: 70%;
   }
   .qui-html-carousel .qui-html-slick-arrows {
     top: 0.2em;
-    width: 80%;
+    width: 70%;
     position: relative;
     font-size: 2em;
     z-index: 1;
@@ -136,13 +139,38 @@
 
 @media only screen and (min-width: 481px) {
   .qui .qui-carousel-list-card {
+    width: 90%;
+    .qui-html-carousel .qui-html-slick-arrows {
+      top: 0.2em;
+      width: 100%;
+      position: relative;
+      font-size: 2em;
+      z-index: 1;
+    }
     .qui-html-slide-container .qui-banner-card .qui-slider-card-box-content {
       font-size: 1.6em;
+    }
+  }
+
+  .qui-carousel-list-presenter-container {
+    width: 22em;
+    .qui-html-slide {
+      width: 85%;
+    }
+    .qui-html-carousel .qui-html-slick-arrows {
+      top: 0.2em;
+      width: 85%;
+      position: relative;
+      font-size: 2em;
+      z-index: 1;
     }
   }
   .qui .qui-carousel-list-card,
   .qui-carousel-list-presenter-container {
     width: 22em;
+    .qui-banner-card {
+      padding-bottom: 60.25%;
+    }
     .qui-carousel-list-presenter-image {
       height: 12em;
       position: absolute;
@@ -156,6 +184,16 @@
     }
     .qui-html-slide-container .qui-banner-card .qui-slider-card-box-content {
       font-size: 1.4em;
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .qui .qui-carousel-list-card,
+  .qui-carousel-list-presenter-container {
+    width: 22em;
+    .qui-banner-card {
+      padding-bottom: 65.25%;
     }
   }
 }

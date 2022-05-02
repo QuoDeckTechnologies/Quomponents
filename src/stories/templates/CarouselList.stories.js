@@ -101,7 +101,7 @@ Default.args = {
     slideId: 0,
     imageLibrary: [
         {
-            image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+            image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
             id: "background-image"
         }],
     withColor: {
