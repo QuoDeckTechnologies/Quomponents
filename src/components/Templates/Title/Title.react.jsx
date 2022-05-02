@@ -25,9 +25,9 @@ Title.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    image: PropTypes.string,
+    image: PropTypes.object,
     icon: PropTypes.string,
-    backgroundImage: PropTypes.string,
+    backgroundImage: PropTypes.object,
     presenter: PropTypes.object,
   }),
   /**
@@ -106,10 +106,17 @@ export default function Title(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "title");
   //-------------------------------------------------------------------
+  // 7. Variable to set presenter image
+  //-------------------------------------------------------------------
+  let hasHeaderImage =
+    data?.backgroundImage !== undefined &&
+    data?.backgroundImage.id !== undefined &&
+    data?.backgroundImage.id !== "default43";
+  //-------------------------------------------------------------------
   // 3. Function to return a view for title
   //-------------------------------------------------------------------
   const getView = (data) => {
-    if (!data?.image && (data?.title || data?.subtitle)) {
+    if (hasHeaderImage) {
       return (
         <SlideHeader
           content={{ title: data?.title }}
@@ -120,7 +127,7 @@ export default function Title(props) {
           }}
         />
       );
-    } else if (data?.image) {
+    } else {
       return (
         data?.image && (
           <img
@@ -169,12 +176,24 @@ export default function Title(props) {
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
+  // 7. Variable to set presenter image
+  //-------------------------------------------------------------------
+  let hasBackground =
+    data?.backgroundImage !== undefined &&
+    data?.backgroundImage.id !== undefined &&
+    data?.backgroundImage.id !== "default43";
+  //-------------------------------------------------------------------
   // 6. Functions to set background for the template
   //-------------------------------------------------------------------
   const getBackground = () => {
-    return {
-      backgroundImage: `url(${data?.backgroundImage})`,
-    };
+    if (hasBackground) {
+      return {
+        backgroundImage: `url(${resolveImage(
+          data?.backgroundImage.id,
+          imageLibrary
+        )})`,
+      };
+    }
   };
   const background = getBackground();
   //-------------------------------------------------------------------
