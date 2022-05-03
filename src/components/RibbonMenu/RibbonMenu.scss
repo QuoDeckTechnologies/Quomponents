@@ -14,6 +14,10 @@
     .qui .tilt {
         transform: rotate(0deg);
     }
+
+    .qui-iconlink-icon:hover {
+        color: #000
+    }
 }
 
 /* ================================================= */
@@ -30,6 +34,11 @@
 
 .qui-ribbon-menu-tool-label {
     margin-left: 5px;
+}
+
+.qui-ribbon-menu-label:hover,
+.qui-ribbon-menu-tool-label:hover {
+    color: #000;
 }
 
 .qui-ribbon-menu-label-file {
@@ -63,4 +72,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.qui-ribbon-file-right-icons:hover {
+    color: #000;
 }
