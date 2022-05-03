@@ -6,6 +6,7 @@ export default {
   component: IconListCaptions,
   argTypes: {
     data: {},
+    imageLibrary: [{}],
     slideId: 0,
     asVariant: {
       control: "select",
@@ -81,15 +82,42 @@ Default.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "",
-    backgroundImage: "",
+    backgroundImage: {
+      id: "background-image",
+      extention: ""
+    },
     iconListImages: [
-      "https://i.pinimg.com/564x/02/58/79/025879fc48f8d5a2a30e37ad1a847c11.jpg",
-      "https://i.pinimg.com/564x/64/57/dc/6457dc8f063f284fe17e519dc28b5437.jpg",
-      "https://i.pinimg.com/564x/9a/db/19/9adb19d50115e570142a7937a00550ae.jpg",
-      "https://i.pinimg.com/564x/09/03/8c/09038c92e5e2422e369816d50b16cd3f.jpg",
+      {
+        id: "image-1",
+        extention: "",
+      }, {
+        id: "image-2",
+        extention: "",
+      }, {
+        id: "image-3",
+        extention: "",
+      }, {
+        id: "image-4",
+        extention: "",
+      },
     ]
   },
+  imageLibrary: [{
+    id: "image-1",
+    image: "https://i.pinimg.com/564x/02/58/79/025879fc48f8d5a2a30e37ad1a847c11.jpg",
+  }, {
+    id: "image-2",
+    image: "https://i.pinimg.com/564x/64/57/dc/6457dc8f063f284fe17e519dc28b5437.jpg",
+  }, {
+    id: "image-3",
+    image: "https://i.pinimg.com/564x/9a/db/19/9adb19d50115e570142a7937a00550ae.jpg",
+  }, {
+    id: "image-4",
+    image: "https://i.pinimg.com/564x/09/03/8c/09038c92e5e2422e369816d50b16cd3f.jpg",
+  }, {
+    id: "background-image",
+    image: "https://i.pinimg.com/564x/09/03/8c/09038c92e5e2422e369816d50b16cd3f.jpg",
+  },],
   slideId: 0,
   asVariant: "warning",
   withColor: {
@@ -123,23 +151,57 @@ IconListCaptionsWithImage.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    backgroundImage: "",
-    bullets: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "Quisque sed turpis vel lectus suscipit auctor",
-      "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+    image: {
+      id: "header-image",
+      extention: ""
+    },
+    backgroundImage: {
+      id: "background-image",
+      extention: ""
+    },
+    iconListImages: [
+      {
+        id: "image-1",
+        extention: "",
+      }, {
+        id: "image-2",
+        extention: "",
+      }, {
+        id: "image-3",
+        extention: "",
+      }, {
+        id: "image-4",
+        extention: "",
+      },
     ]
   },
+  imageLibrary: [{
+    id: "image-1",
+    image: "https://i.pinimg.com/564x/02/58/79/025879fc48f8d5a2a30e37ad1a847c11.jpg",
+  }, {
+    id: "image-2",
+    image: "https://i.pinimg.com/564x/64/57/dc/6457dc8f063f284fe17e519dc28b5437.jpg",
+  }, {
+    id: "image-3",
+    image: "https://i.pinimg.com/564x/9a/db/19/9adb19d50115e570142a7937a00550ae.jpg",
+  }, {
+    id: "image-4",
+    image: "https://i.pinimg.com/564x/09/03/8c/09038c92e5e2422e369816d50b16cd3f.jpg",
+  }, {
+    id: "background-image",
+    image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+  }, {
+    id: "header-image",
+    image: "https://i.pinimg.com/564x/64/57/dc/6457dc8f063f284fe17e519dc28b5437.jpg",
+  },],
+  slideId: 0,
   asVariant: "warning",
   withColor: {
     slideHeaderTextColor: "#FFFFFF",
     slideHeaderAccentColor: "#AD2929",
     slideHeaderBackgroundColor: "#ad292980",
-    textBlockBackgroundColor: "#2d92a4",
+    textBlockBackgroundColor: "#ad292980",
     textBlockTextColor: "#fff",
-    bulletBlockTextColor: "#ffffff",
-    bulletBlockBackgroundColor: "#ad292980",
     backgroundColor: "#fff",
   },
   withAnimation: {
@@ -153,209 +215,6 @@ IconListCaptionsWithImage.parameters = {
   docs: {
     source: {
       code: `<IconListCaptions {...${JSON.stringify(IconListCaptionsWithImage.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// IconListCaptionsWithBackgroundImage
-// -------------------------------------------------------------
-export const IconListCaptionsWithBackgroundImage = Template.bind({});
-IconListCaptionsWithBackgroundImage.args = {
-  data: {
-    title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-    caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    backgroundImage: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-    bullets: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "Quisque sed turpis vel lectus suscipit auctor",
-      "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-    ]
-  },
-  asVariant: "warning",
-  withColor: {
-    slideHeaderTextColor: "#FFFFFF",
-    slideHeaderAccentColor: "#AD2929",
-    slideHeaderBackgroundColor: "#ad292980",
-    textBlockBackgroundColor: "#2d92a4",
-    textBlockTextColor: "#fff",
-    bulletBlockTextColor: "#ffffff",
-    bulletBlockBackgroundColor: "#ad292980",
-    backgroundColor: "#fff",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
-  },
-  isHidden: false,
-};
-IconListCaptionsWithBackgroundImage.parameters = {
-  docs: {
-    source: {
-      code: `<IconListCaptions {...${JSON.stringify(IconListCaptionsWithBackgroundImage.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// MultipleIconListCaptions
-// -------------------------------------------------------------
-const MultipleIconListCaptionsTemplate = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args, {
-    }),
-  };
-  return (
-    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", backgroundColor: "#454545" }}>
-      <div style={{ margin: "1em", width: "25em" }}>
-        <IconListCaptions
-          {...Object.assign({}, baseObj, {
-            asVariant: 'warning',
-            withAnimation: {
-              animation: "slideRight",
-              duration: 0.5,
-              delay: 0,
-            },
-          })}
-        />
-      </div>
-      <div style={{ margin: "1em", width: "25em" }}>
-        <IconListCaptions
-          {...Object.assign({}, baseObj, {
-            asVariant: 'warning',
-            withAnimation: {
-              animation: "slideUp",
-              duration: 0.5,
-              delay: 0.8,
-            },
-          })}
-        />
-      </div>
-      <div style={{ margin: "1em", width: "25em" }}>
-        <IconListCaptions
-          {...Object.assign({}, baseObj, {
-            asVariant: 'warning',
-            withAnimation: {
-              animation: "slideLeft",
-              duration: 0.5,
-              delay: 0.5,
-            },
-          })}
-        />
-      </div>
-    </div>
-  );
-};
-export const MultipleIconListCaptions = MultipleIconListCaptionsTemplate.bind({});
-MultipleIconListCaptions.parameters = {
-  docs: {
-    description: {
-      story: "Multiple IconListCaptions.",
-    },
-    source: {
-      code: `<IconListCaptions data={image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-      title: "Neque porro quisquam est qui dolorem",
-      subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem", ,}/>`,
-    },
-  },
-};
-
-// -------------------------------------------------------------
-// ColoredIconListCaptions
-// -------------------------------------------------------------
-const ColoredIconListCaptionsTemplate = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args, {
-    }),
-  };
-  return (
-    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", backgroundColor: "#454545" }}>
-      <div style={{ margin: "1em", width: "25em" }}>
-        <IconListCaptions
-          {...Object.assign({}, baseObj, {
-            asVariant: 'warning',
-            withColor: {
-              slideHeaderTextColor: "#ffffff",
-              slideHeaderAccentColor: "#AD2929",
-              slideHeaderBackgroundColor: "#AD292980",
-              textBlockTextColor: "#ffffff",
-              textBlockBackgroundColor: "#2d92a4",
-              bulletBlockTextColor: "#12ff00",
-              bulletBlockBackgroundColor: "#000000",
-            },
-            withAnimation: {
-              animation: "slideRight",
-              duration: 0.5,
-              delay: 0,
-            },
-          })}
-        />
-      </div>
-      <div style={{ margin: "1em", width: "25em" }}>
-        <IconListCaptions
-          {...Object.assign({}, baseObj, {
-            asVariant: 'warning',
-            withColor: {
-              slideHeaderTextColor: "#ffffff",
-              slideHeaderAccentColor: "#AD2929",
-              textBlockTextColor: "#ffffff",
-              textBlockBackgroundColor: "#a42f2d",
-              slideHeaderBackgroundColor: "#AD292980",
-              bulletBlockTextColor: "#0000ff",
-              bulletBlockBackgroundColor: "#FF00FF",
-            },
-            withAnimation: {
-              animation: "slideUp",
-              duration: 0.5,
-              delay: 0.8,
-            },
-          })}
-        />
-      </div>
-      <div style={{ margin: "1em", width: "25em" }}>
-        <IconListCaptions
-          {...Object.assign({}, baseObj, {
-            asVariant: 'warning',
-            withColor: {
-              slideHeaderTextColor: "#ffffff",
-              slideHeaderAccentColor: "#AD2929",
-              textBlockTextColor: "#ffffff",
-              textBlockBackgroundColor: "#7ea42d",
-              slideHeaderBackgroundColor: "#AD292980",
-              bulletBlockTextColor: "",
-              bulletBlockBackgroundColor: "",
-            },
-            withAnimation: {
-              animation: "slideLeft",
-              duration: 0.5,
-              delay: 0.5,
-            },
-          })}
-        />
-      </div>
-    </div>
-  );
-};
-export const ColoredIconListCaptions = ColoredIconListCaptionsTemplate.bind({});
-ColoredIconListCaptions.parameters = {
-  docs: {
-    description: {
-      story: "displays Colored IconListCaptions.",
-    },
-    source: {
-      code: `<IconListCaptions data={image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-      title: "Neque porro quisquam est qui dolorem",
-      subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",}
-      withColor: {
-        slideHeaderTextColor: "#ffffff",
-        slideHeaderAccentColor: "#AD2929",
-        textBlockTextColor:"#ffffff",
-        textBlockBackgroundColor:"#7ea42d",
-        slideHeaderBackgroundColor: "#AD292980",
-        bulletBlockTextColor: "",
-        bulletBlockBackgroundColor: "",
-      },/>`,
     },
   },
 };

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
+  resolveImage,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -26,10 +27,14 @@ IconListCaptions.propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
     caption: PropTypes.string,
-    image: PropTypes.string,
-    backgroundImage: PropTypes.string,
+    image: PropTypes.object,
+    backgroundImage: PropTypes.object,
     iconListImages: PropTypes.array,
   }),
+  /**
+    IconListCaptions can set presenter image from imageLibrary array
+    */
+  imageLibrary: PropTypes.array,
   /**
     IconListCaptions slideId should be passed with props, to specify the slide.
     */
@@ -94,10 +99,11 @@ IconListCaptions.defaultProps = {
     title: "",
     subtitle: "",
     caption: "",
-    image: "",
-    backgroundImage: "",
+    image: {},
+    backgroundImage: {},
     iconListImages: []
   },
+  imageLibrary: [{}],
   slideId: 0,
   //=======================================
   // Quommon props
@@ -115,7 +121,7 @@ IconListCaptions.defaultProps = {
 - Displays a Captioned IconListCaptions with TextBlock and a SlideHeader with circular images
 **/
 export default function IconListCaptions(props) {
-  let { data, withColor } = props
+  let { data, withColor, imageLibrary } = props
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -143,7 +149,10 @@ export default function IconListCaptions(props) {
   }
   const getBackground = () => {
     return {
-      background: `url(${data.backgroundImage})`,
+      background: `url(${resolveImage(
+        data?.backgroundImage.id,
+        imageLibrary
+      )})`,
       backgroundSize: "cover",
     };
   };
@@ -170,7 +179,7 @@ export default function IconListCaptions(props) {
               withColor={slideHeaderColors} />
           )}
           {data?.image && (
-            <img className="qui-icon-list-captions-image" src={data?.image} alt="" />
+            <img className="qui-icon-list-captions-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
           )}
           <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
 
@@ -179,7 +188,7 @@ export default function IconListCaptions(props) {
             {_.map(data?.iconListImages, (image, index) => {
               return (
                 <div className="qui-clickable-image-container" key={"icon-list-captions-image" + index}>
-                  <ClickableImage {...props} content={{ image }} onClick={(e) => handleClick(e)} />
+                  <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => handleClick(image.id)} />
                 </div>
               );
             })}
