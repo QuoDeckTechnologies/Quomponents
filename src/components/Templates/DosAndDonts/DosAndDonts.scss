@@ -19,6 +19,15 @@
   .qui-block-text {
     font-weight: 100;
   }
+  .qui-choice {
+    margin-top: 1.5em;
+  }
+  .qui .qui-choices {
+    padding: 0.5em 2em;
+    margin: 0 0.1em;
+    text-transform: none;
+    filter: drop-shadow(0px 2px 0px #a09797);
+  }
   .qui-text-block-area {
     width: auto;
     margin: 0.5em 0 0 0;
@@ -39,6 +48,15 @@
     border-radius: 1em;
     max-height: 14em;
     filter: drop-shadow(0px 5px 2px #a09797);
+  }
+}
+@media only screen and (min-width: 320px) {
+  .qui .qui-dos-donts-card {
+    .qui .qui-choices {
+      padding: 0.5em 1.5em;
+      margin: 0 0.1em;
+      font-size: 0.9em;
+    }
   }
 }
 @media only screen and (min-width: 481px) {

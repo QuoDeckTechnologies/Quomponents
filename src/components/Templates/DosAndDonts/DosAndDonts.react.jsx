@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
+  resolveImage,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -24,7 +25,7 @@ DosAndDonts.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    image: PropTypes.string,
+    image: PropTypes.object,
     options: PropTypes.arrayOf(
       PropTypes.shape({
         correct: PropTypes.string,
@@ -34,12 +35,27 @@ DosAndDonts.propTypes = {
     bullets: PropTypes.arrayOf(
       PropTypes.string
     ),
-    backgroundImage: PropTypes.string,
+    reBullets: PropTypes.arrayOf(
+      PropTypes.string
+    ),
+    backgroundImage: PropTypes.object,
   }),
+  /**
+    Diptych can set presenter image from imageLibrary array
+    */
+  imageLibrary: PropTypes.array,
   /**
     DosAndDonts slideId should be passed with props, to specify the slide.
     */
   slideId: PropTypes.number,
+  /**
+  Use to enable/disable the OR tag
+  */
+  isChoice: PropTypes.bool,
+  /**
+  Set action emphasis in increasing order 
+  */
+  asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
   //=======================================
   // Quommon props
   //=======================================
@@ -98,10 +114,12 @@ DosAndDonts.defaultProps = {
     title: "",
     subtitle: "",
     caption: "",
-    image: "",
-    backgroundImage: "",
-    bullets: []
+    image: {},
+    backgroundImage: {},
+    bullets: [],
+    reBullets: []
   },
+  imageLibrary: [{}],
   slideId: 0,
   //=======================================
   // Quommon props
@@ -119,7 +137,7 @@ DosAndDonts.defaultProps = {
 - Displays a Captioned Bullet List with TextBlock, BulletBlock and a SlideHeader
 **/
 export default function DosAndDonts(props) {
-  let { data, withColor } = props
+  let { data, withColor, imageLibrary } = props
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -141,24 +159,20 @@ export default function DosAndDonts(props) {
     accentColor: props.withColor?.slideHeaderAccentColor,
     backgroundColor: props.withColor?.slideHeaderBackgroundColor
   }
-  let textBlockColors = {
-    textColor: props.withColor?.textBlockTextColor,
-    backgroundColor: props.withColor?.textBlockBackgroundColor
-  }
   let SlideHeaderText = {
     title: props.data?.title,
     subTitle: props.data?.subtitle,
   }
   const getBackground = () => {
     return {
-      background: `url(${data.backgroundImage})`,
+      background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
       backgroundSize: "cover",
     };
   };
   const background = data?.backgroundImage
     ? getBackground()
     : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
-
+  console.log(data.options.correct === 0)
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -174,10 +188,21 @@ export default function DosAndDonts(props) {
               withColor={slideHeaderColors} />
           )}
           {data?.image && (
-            <img className="qui-dos-donts-image" src={data?.image} alt="" />
+            <img className="qui-dos-donts-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
           )}
-          <Choice {...props} />
-          <BulletBlock {...props} content={data?.bullets} withColor={bulletBlockColors} asVariant={props.asVariant} />
+          <Choice {...props}
+            options={[
+              {
+                correct: data?.options[0]?.correct,
+                text: data?.options[0]?.text,
+              },
+              {
+                correct: data?.options[1]?.correct,
+                text: data?.options[1]?.text,
+              },
+            ]}
+            asSize="normal" />
+          {data.options[0].correct ? <BulletBlock {...props} content={data?.bullets} withColor={bulletBlockColors} asVariant={props.asVariant} /> : <BulletBlock {...props} content={data?.reBullets} withColor={bulletBlockColors} asVariant={props.asVariant} />}
         </div>
       </div>}
     </motion.div>
