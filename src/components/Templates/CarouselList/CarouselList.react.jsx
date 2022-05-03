@@ -153,6 +153,7 @@ export default function CarouselList(props) {
     title: data?.title,
     subTitle: data?.subtitle,
   }
+  let carouselClass = data.carouselContent == null ? "qui-carousel-hide" : "qui-carousel-show"
   //-------------------------------------------------------------------
   // Function to return a view for diptych
   //-------------------------------------------------------------------
@@ -174,7 +175,9 @@ export default function CarouselList(props) {
             src={resolveImage(data?.image.id, imageLibrary)}
             alt="" />
         )}
-        <HtmlCarousel {...props} content={data.carouselContent} />
+        <div className={carouselClass}>
+          <HtmlCarousel {...props} content={data.carouselContent} />
+        </div>
       </div>
 
     );
@@ -210,7 +213,9 @@ export default function CarouselList(props) {
             src={resolveImage(data.presenter.id, imageLibrary)}
             alt=""
           />)}
-        <HtmlCarousel {...props} content={data.carouselContent} />
+        <div className={carouselClass}>
+          <HtmlCarousel {...props} content={data.carouselContent} />
+        </div>
       </div>
     );
   };
