@@ -1,4 +1,5 @@
 import _ from "lodash";
+import defaultImage from "../../assets/default.jpeg";
 
 export function getQuommons(props, component) {
     let parentArray = [`qui-${component}`],
@@ -115,7 +116,7 @@ export const resolveImage = (srcImg, imgLibrary) => {
         srcImg === "" ||
         srcImg === " "
     )
-        return /*getAppConfig().apiUrls.assetLib + "/images/configurable/missing.jpg";*/ "https://www.uni-giessen.de/fbz/fb07/fachgebiete/physik/institute/ap/agschirmeisen/images/missing-image.jpg/image";
+        return defaultImage;
     else {
         let img = Array.isArray(srcImg)
             ? srcImg[0]
@@ -138,8 +139,8 @@ export const resolveImage = (srcImg, imgLibrary) => {
                     img.indexOf(".png") !== -1 ||
                     img.indexOf(".PNG") !== -1 ||
                     img.indexOf(".svg") !== -1
-                    ? /*getAppConfig().apiUrls.assetUrl + img */ "https://toscon14.files.wordpress.com/2014/05/seminar-presenter-pic.jpg"
-                    : /*getAppConfig().apiUrls.assetLib + "/images/defaults/loading.gif"; */ "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvPBbzEjg1nHzXeOdngyu7VTa-N7YFKeZzhA&usqp=CAU";
+                    ? defaultImage
+                    : defaultImage;
         }
     }
 };
