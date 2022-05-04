@@ -118,8 +118,8 @@ SingleSelect.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Component is used to show the question with the SingleSelect buttons, user need to submit the correct
-  answer using SingleSelect button.
+- Component is used to show the question with the options, user need to submit the correct
+  answer by clicking on option.
 **/
 export default function SingleSelect(props) {
     let { data } = props;

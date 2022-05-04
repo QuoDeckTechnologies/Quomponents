@@ -2,7 +2,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  resolveImage,
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./Title.scss";
@@ -21,11 +25,15 @@ Title.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    image: PropTypes.string,
+    image: PropTypes.object,
     icon: PropTypes.string,
-    backgroundImage: PropTypes.string,
-    presenter: PropTypes.string,
+    backgroundImage: PropTypes.object,
+    presenter: PropTypes.object,
   }),
+  /**
+    Title can set presenter image from imageLibrary array
+    */
+  imageLibrary: PropTypes.array,
   //=======================================
   // Quommon props
   //=======================================
@@ -75,9 +83,11 @@ Title.defaultProps = {
   // Component Specific props
   //=======================================
   data: {},
+  imageLibrary: null,
   //=======================================
   // Quommon props
   //=======================================
+  asFloated: "left",
   withColor: null,
   withAnimation: null,
   isHidden: false,
@@ -92,7 +102,7 @@ export default function Title(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { data, withColor } = props;
+  const { data, imageLibrary, withColor } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -112,15 +122,13 @@ export default function Title(props) {
           }}
         />
       );
-    } else if (data?.image) {
+    } else {
       return (
-        data?.image && (
-          <img
-            className="qui-title-image"
-            src={props.data?.image}
-            alt="slide"
-          />
-        )
+        <img
+          className="qui-title-image"
+          src={resolveImage(data?.image?.id, imageLibrary)}
+          alt="slide"
+        />
       );
     }
   };
@@ -164,11 +172,23 @@ export default function Title(props) {
   // 6. Functions to set background for the template
   //-------------------------------------------------------------------
   const getBackground = () => {
-    return {
-      backgroundImage: `url(${data?.backgroundImage})`,
-    };
+    if (data?.backgroundImage) {
+      return {
+        backgroundImage: `url(${resolveImage(
+          data?.backgroundImage.id,
+          imageLibrary
+        )})`,
+      };
+    }
   };
   const background = getBackground();
+  //-------------------------------------------------------------------
+  // 7. Variable to set presenter image
+  //-------------------------------------------------------------------
+  let hasPresenter =
+    data?.presenter !== undefined &&
+    data?.presenter.id !== undefined &&
+    data?.presenter.id !== "default43";
 
   // ========================= Render Function =================================
 
@@ -181,6 +201,7 @@ export default function Title(props) {
         ...background,
         backgroundColor: withColor?.backgroundColor,
         backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
         backgroundSize: "cover",
       }}
     >
@@ -219,10 +240,10 @@ export default function Title(props) {
           </p>
         </div>
       )}
-      {data?.presenter && (
+      {hasPresenter && (
         <img
           className="qui-title-presenter-image"
-          src={data?.presenter}
+          src={resolveImage(data.presenter.id, imageLibrary)}
           alt="Presenter"
         />
       )}
