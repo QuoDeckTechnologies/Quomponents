@@ -78,9 +78,11 @@ Splash.defaultProps = {
   // Component Specific props
   //=======================================
   data: {},
+  imageLibrary: [],
   //=======================================
   // Quommon props
   //=======================================
+  asFloated: "left",
   withColor: null,
   withAnimation: null,
   isDisabled: false,
