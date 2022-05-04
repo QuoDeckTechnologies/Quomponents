@@ -9,7 +9,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../../common/stylesheets/common.css";
 import "../../RibbonMenu.scss";
 import "../RibbonDesignMenu.scss";
-import "../../../CustomColor/CustomColor.scss";
 import "../../../../common/stylesheets/overrule.scss";
 
 import ColorSwatch from "../../../ColorSwatch/ColorSwatch.react";
@@ -27,20 +26,20 @@ PalleteThemeSection.propTypes = {
 	// Quommon props
 	//=======================================
 	/**
-    Use to float the component in parent container
-    */
+	Use to float the component in parent container
+	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
-    Use to show/hide the component
-    */
+	Use to show/hide the component
+	*/
 	isHidden: PropTypes.bool,
 	/**
-    Use to enable/disable the component
-    */
+	Use to enable/disable the component
+	*/
 	isDisabled: PropTypes.bool,
 	/**
-    RibbbonDesignMenu component must have the onClick function passed as props
-    */
+	RibbbonDesignMenu component must have the onClick function passed as props
+	*/
 	onClick: PropTypes.func,
 };
 
