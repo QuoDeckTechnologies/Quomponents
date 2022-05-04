@@ -118,9 +118,6 @@ export default function BulletList(props) {
         accentColor: withColor?.bulletBockAccentColor,
         backgroundColor: withColor?.bulletBockBackgroundColor
     }
-    let bulletListbackgroundColor = {
-        backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#ffffff",
-    };
     //-------------------------------------------------------------------
     // 4. Function to set background
     //-------------------------------------------------------------------
