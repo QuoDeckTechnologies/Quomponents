@@ -18,17 +18,24 @@ OptionItemTen.propTypes = {
       OptionItemTen data should be passed in content field and it is a required field
       */
   content: PropTypes.shape({
-    targetName: PropTypes.string,
-    value: PropTypes.string,
-    placeholder: PropTypes.string,
-    headerName: PropTypes.string,
-    headerValue: PropTypes.string,
-    headerPlaceholder: PropTypes.string,
-    messageName: PropTypes.string,
-    messageValue: PropTypes.string,
-    messagePlaceholder: PropTypes.string,
+    option: PropTypes.shape({
+      targetName: PropTypes.string,
+      value: PropTypes.string,
+      placeholder: PropTypes.string,
+    }),
+    header: PropTypes.shape({
+      targetName: PropTypes.string,
+      value: PropTypes.string,
+      placeholder: PropTypes.string,
+      maxLength: PropTypes.number,
+    }),
+    message: PropTypes.shape({
+      targetName: PropTypes.string,
+      value: PropTypes.string,
+      placeholder: PropTypes.string,
+      maxLength: PropTypes.number,
+    }),
     image: PropTypes.object,
-    maxLength: PropTypes.number,
   }),
   //=======================================
   // Quommon props
@@ -78,7 +85,7 @@ OptionItemTen.propTypes = {
       */
   onMessage: PropTypes.func.isRequired,
   /**
-      OptionItemFive component must have the onUpload function passed as props
+      OptionItemTen component must have the onUpload function passed as props
       */
   onUpload: PropTypes.func.isRequired,
   /**
@@ -115,7 +122,7 @@ export default function OptionItemTen(props) {
   //-------------------------------------------------------------------
   // 2. Defining states
   //-------------------------------------------------------------------
-  const [image, setImage] = useState(content?.image);
+  // const [image, setImage] = useState(content?.image);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -128,26 +135,26 @@ export default function OptionItemTen(props) {
   // 5. Function to update value of the input field
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
-    setImage(image);
-    props.onUpload(content?.targetName, image);
+    // setImage(image);
+    props.onUpload(image);
   };
   //-------------------------------------------------------------------
   // 6. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
-    props.onInput(content?.targetName, image, value);
+    props.onInput(name, value);
   };
   //-------------------------------------------------------------------
   // 7. Function to return header value of the component
   //-------------------------------------------------------------------
   const handleHeaderValue = (name, headerValue) => {
-    props.onHeader(content?.headerName, image, headerValue);
+    props.onHeader(name, headerValue);
   };
   //-------------------------------------------------------------------
   // 8. Function to return message value of the component
   //-------------------------------------------------------------------
   const handleMessageValue = (name, messageValue) => {
-    props.onMessage(content?.messageName, image, messageValue);
+    props.onMessage(name, messageValue);
   };
   // ========================= Render Function =================================
 
@@ -162,9 +169,8 @@ export default function OptionItemTen(props) {
           <InputField
             name={content?.targetName}
             content={{
-              value: content?.value,
-              placeholder: content?.placeholder,
-              maxLength: content?.maxLength,
+              value: content?.option?.value,
+              placeholder: content?.option?.placeholder,
             }}
             asEmphasis="listInput"
             withColor={props.withColor}
@@ -180,11 +186,11 @@ export default function OptionItemTen(props) {
         </div>
         <div className="qui-option-item-inputfieldtwo">
           <InputField
-            name={content?.headerName}
+            name={content?.header?.targetName}
             content={{
-              value: content?.headerValue,
-              placeholder: content?.headerPlaceholder,
-              maxLength: content?.maxLength,
+              value: content?.header?.value,
+              placeholder: content?.header?.placeholder,
+              maxLength: content?.header?.maxLength,
             }}
             asEmphasis="listInput"
             withColor={props.withColor}
@@ -201,11 +207,11 @@ export default function OptionItemTen(props) {
       </div>
       <div className="qui-option-item-inputfieldthree">
         <InputField
-          name={content?.messageName}
+          name={content?.message?.targetName}
           content={{
-            value: content?.messageValue,
-            placeholder: content?.messagePlaceholder,
-            maxLength: content?.maxLength,
+            value: content?.message?.value,
+            placeholder: content?.message?.placeholder,
+            maxLength: content?.message?.maxLength,
           }}
           asEmphasis="listInput"
           withColor={props.withColor}
