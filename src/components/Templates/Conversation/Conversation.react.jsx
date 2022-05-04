@@ -1,12 +1,11 @@
-// Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    resolveImage,
 } from "../../../common/javascripts/helpers";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./Conversation.scss";
 import "../../../common/stylesheets/overrule.scss";
@@ -18,28 +17,33 @@ Conversation.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      Conversation content should be passed in data field and it is a required field
-      */
+    Conversation data should be passed in data field and it is a required field
+    */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
+        image: PropTypes.object,
+        backgroundImage: PropTypes.object,
         conversation: PropTypes.arrayOf(
             PropTypes.shape({
-                image: PropTypes.string,
-                title: PropTypes.string,
+                image: PropTypes.object,
+                text: PropTypes.string,
             })),
-        image: PropTypes.string,
-        backgroundImage: PropTypes.string,
-
     }).isRequired,
-
+    /**
+    Conversation can set conversation image & backgroundImage from imageLibrary.
+    */
+    imageLibrary: PropTypes.array,
+    /**
+    slideId can be used if same template is used continueously for multiple slides.
+    */
     slideId: PropTypes.number,
     //=======================================
     // Quommon props
     //=======================================
     /**
       Use to define standard component type
-      */
+    */
     asVariant: PropTypes.oneOf([
         "primary",
         "secondary",
@@ -53,12 +57,13 @@ Conversation.propTypes = {
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
       Use to override component colors and behavior
-      */
+    */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         slideHeaderTextColor: PropTypes.string,
-        slideHeaderAccentColor: PropTypes.string,
         slideHeaderBackgroundColor: PropTypes.string,
+        slideHeaderAccentColor: PropTypes.string,
+        iconListItemTextColor: PropTypes.string,
     }),
     /**
       Use to define the entry animation of the component
@@ -92,75 +97,86 @@ Conversation.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "warning",
+    asVariant: "primary",
     asFloated: "left",
     withColor: null,
     withAnimation: null,
+
     isHidden: false,
 };
-
 /**
 ## Notes
-- The design system used for this component is Fontawesome Icon
+- The design system used for this component is HTML and CSS
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function Conversation(props) {
     //-------------------------------------------------------------------
-    // 1. Destructuring data from props
+    // 1. Destructuring props
     //-------------------------------------------------------------------
-    let { data, withColor } = props;
+    let { data, withColor, imageLibrary, slideId, asVariant } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "conversation");
-    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
+    let quommonClasses = getQuommons(props, "icon-bullet-list");
     //-------------------------------------------------------------------
-    // 3. Get animation of the component
-    //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
-    //-------------------------------------------------------------------
-    // 4. Setting the colors of the imported components
+    // 3. Use to set Color in Conversation
     //-------------------------------------------------------------------
     let slideHeaderColors = {
-        textColor: props.withColor?.slideHeaderTextColor,
-        accentColor: props.withColor?.slideHeaderAccentColor,
-        backgroundColor: props.withColor?.slideHeaderBackgroundColor
+        textColor: withColor?.slideHeaderTextColor,
+        accentColor: withColor?.slideHeaderAccentColor,
+        backgroundColor: withColor?.slideHeaderBackgroundColor
+    }
+    let iconListItemColors = {
+        textColor: withColor?.iconListItemTextColor,
     }
     //-------------------------------------------------------------------
-    // 5. Set background image and color for card
+    // 4. Function to set background
     //-------------------------------------------------------------------
     const getBackground = () => {
-        return {
-            background: `url(${data?.backgroundImage})`,
-            backgroundSize: "cover",
-        };
+        if (data?.backgroundImage) {
+            return {
+                backgroundImage: `url(${resolveImage(
+                    data?.backgroundImage.id,
+                    imageLibrary
+                )})`,
+            };
+        }
     };
-    const background = data?.backgroundImage
-        ? getBackground()
-        : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
+    const background = getBackground();
+    //-------------------------------------------------------------------
+    // 5. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            style={{ ...background }}
-
+            style={{
+                ...background,
+                backgroundColor: withColor?.backgroundColor,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+            }}
         >
-            <div className={`qui-conversation-card ${quommonClasses.childClasses}`} key={"conversation" + props?.slideId}>
+            <div className={`qui-icon-bullet-list-card ${quommonClasses.childClasses}`} key={"icon-bullet-list" + slideId}>
                 {!data?.image && (data?.title || data?.subtitle) && (
-                    <SlideHeader
+                    <SlideHeader {...props}
                         content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (
-                    <img className="qui-conversation-image" src={data?.image} alt="" />
+                    <img className="qui-icon-bullet-list-image"
+                        src={resolveImage(data?.image.id, imageLibrary)}
+                        alt="Conversation" />
                 )}
-                <IconListItem
-                    {...props}
+                <IconListItem {...props}
+                    asVariant={asVariant}
                     asEmphasis={"conversation"}
+                    withColor={iconListItemColors}
                     content={data?.conversation}
                 />
             </div>
