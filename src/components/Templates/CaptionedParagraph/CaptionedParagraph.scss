@@ -1,12 +1,7 @@
-.qui.qui-image-with-caption {
+.qui.qui-captioned-paragraph {
     padding: 1.5em;
     border-radius: 1em;
     min-height: 30em;
-
-    .qui-banner-card {
-        box-shadow: 0px 4px 5px 1px #918686;
-        border-radius: 1em;
-    }
 
     .qui .qui-title-block {
         min-width: 12em;
@@ -22,20 +17,15 @@
         font-size: 1em;
     }
 
-    .qui-button button {
-        width: 10em;
-        padding: 0.5em;
-    }
-
-    .qui-image-with-caption-image {
+    .qui-captioned-paragraph-image {
         width: 100%;
         border-radius: 1em;
         max-height: 15em;
         filter: drop-shadow(0px 5px 2px #a09797);
     }
 
-    .qui-text-block {
-        margin: 1.5em 0 1em 0;
+    .qui-captioned-paragraph-text-block {
+        padding: 1em 0 0.5em 0;
     }
 
     .qui-text-block-area {
@@ -44,21 +34,21 @@
 }
 
 @media only screen and (min-width: 320px) {
-    .qui.qui-image-with-caption {
+    .qui.qui-captioned-paragraph {
         width: auto;
         font-size: 0.8em;
     }
 }
 
 @media only screen and (min-width: 481px) {
-    .qui.qui-image-with-caption {
+    .qui.qui-captioned-paragraph {
         width: 20em;
         font-size: 0.9em;
     }
 }
 
 @media only screen and (min-width: 769px) {
-    .qui.qui-image-with-caption {
+    .qui.qui-captioned-paragraph {
         width: 20em;
         font-size: 1em;
     }

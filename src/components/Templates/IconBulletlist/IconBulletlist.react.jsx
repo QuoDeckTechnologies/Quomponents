@@ -1,41 +1,50 @@
-// Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    resolveImage,
 } from "../../../common/javascripts/helpers";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./ImageWithCaption.scss";
+import "./IconBulletlist.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
-import TextBlock from "../../TextBlock/TextBlock.react";
-import Button from "../../Buttons/Button/Button.react";
+import IconListItem from "../../IconListItem/IconListItem/IconListItem.react";
 
-ImageWithCaption.propTypes = {
+IconBulletlist.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-      ImageWithCaption content should be passed in data field and it is a required field
-      */
+    IconBulletlist data should be passed in data field and it is a required field
+    */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
-        caption: PropTypes.string,
-        image: PropTypes.string,
-        backgroundImage: PropTypes.string,
-    }).isRequired,
+        image: PropTypes.object,
+        backgroundImage: PropTypes.object,
+        iconlist: PropTypes.arrayOf(
+            PropTypes.shape({
+                image: PropTypes.object,
+                text: PropTypes.string,
+            })),
 
+    }).isRequired,
+    /**
+    IconBulletlist can set iconlist image & backgroundImage from imageLibrary.
+    */
+    imageLibrary: PropTypes.array,
+    /**
+    slideId can be used if same template is used continueously for multiple slides.
+    */
     slideId: PropTypes.number,
     //=======================================
     // Quommon props
     //=======================================
     /**
       Use to define standard component type
-      */
+    */
     asVariant: PropTypes.oneOf([
         "primary",
         "secondary",
@@ -44,19 +53,18 @@ ImageWithCaption.propTypes = {
         "error",
     ]),
     /**
+    Use to float the component in parent container
+    */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+    /**
       Use to override component colors and behavior
-      */
+    */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         slideHeaderTextColor: PropTypes.string,
-        slideHeaderAccentColor: PropTypes.string,
         slideHeaderBackgroundColor: PropTypes.string,
-        captionTextColor: PropTypes.string,
-        captionBackgroundColor: PropTypes.string,
-        buttonTextColor: PropTypes.string,
-        buttonBackgroundColor: PropTypes.string,
-        buttonHoverBackgroundColor: PropTypes.string,
-        buttonHoverTextColor: PropTypes.string,
+        slideHeaderAccentColor: PropTypes.string,
+        iconListItemTextColor: PropTypes.string,
     }),
     /**
       Use to define the entry animation of the component
@@ -76,20 +84,12 @@ ImageWithCaption.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to enable/disable the component
-      */
-    isDisabled: PropTypes.bool,
-    /**
       Use to show/hide the component
       */
     isHidden: PropTypes.bool,
-    /**
-      ImageWithCaption component must have the onClick function passed as props
-      */
-    onClick: PropTypes.func.isRequired,
 };
 
-ImageWithCaption.defaultProps = {
+IconBulletlist.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -98,92 +98,88 @@ ImageWithCaption.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "warning",
+    asVariant: "primary",
+    asFloated: "left",
     withColor: null,
     withAnimation: null,
-    isDisabled: false,
+
     isHidden: false,
 };
-
 /**
 ## Notes
-- The design system used for this component is Fontawesome Icon
+- The design system used for this component is HTML and CSS
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function ImageWithCaption(props) {
+export default function IconBulletlist(props) {
     //-------------------------------------------------------------------
-    // 1. Destructuring data from props
+    // 1. Destructuring props
     //-------------------------------------------------------------------
-    let { data, withColor } = props;
+    let { data, withColor, imageLibrary, slideId, asVariant } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "image-with-caption");
-    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
+    let quommonClasses = getQuommons(props, "icon-bullet-list");
     //-------------------------------------------------------------------
-    // 3. Get animation of the component
+    // 3. Use to set Color in IconBulletlist
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
-    //-------------------------------------------------------------------
-    // 4. Setting the colors of the imported components
-    //-------------------------------------------------------------------
-    let buttonColors = {
-        textColor: props.withColor?.buttonTextColor,
-        backgroundColor: props.withColor?.buttonBackgroundColor,
-        hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
-        hoverTextColor: props.withColor?.buttonHoverTextColor
-    }
-    let captionColors = {
-        textColor: props.withColor?.captionTextColor,
-        backgroundColor: props.withColor?.captionBackgroundColor
-    }
     let slideHeaderColors = {
-        textColor: props.withColor?.slideHeaderTextColor,
-        accentColor: props.withColor?.slideHeaderAccentColor,
-        backgroundColor: props.withColor?.slideHeaderBackgroundColor
+        textColor: withColor?.slideHeaderTextColor,
+        accentColor: withColor?.slideHeaderAccentColor,
+        backgroundColor: withColor?.slideHeaderBackgroundColor
+    }
+    let iconListItemColors = {
+        textColor: withColor?.iconListItemTextColor,
     }
     //-------------------------------------------------------------------
-    // 5. Set background image and color for card
+    // 4. Function to set background
     //-------------------------------------------------------------------
     const getBackground = () => {
-        return {
-            background: `url(${data?.backgroundImage})`,
-            backgroundSize: "cover",
-        };
+        if (data?.backgroundImage) {
+            return {
+                backgroundImage: `url(${resolveImage(
+                    data?.backgroundImage.id,
+                    imageLibrary
+                )})`,
+            };
+        }
     };
-    const background = data?.backgroundImage
-        ? getBackground()
-        : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
+    const background = getBackground();
+    //-------------------------------------------------------------------
+    // 5. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            style={{ ...background }}
+            style={{
+                ...background,
+                backgroundColor: withColor?.backgroundColor,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+            }}
         >
-            <div className={`qui-image-with-caption-card ${quommonClasses.childClasses}`}>
+            <div className={`qui-icon-bullet-list-card ${quommonClasses.childClasses}`} key={"icon-bullet-list" + slideId}>
                 {!data?.image && (data?.title || data?.subtitle) && (
-                    <SlideHeader
+                    <SlideHeader {...props}
                         content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors} />
                 )}
-
                 {data?.image && (
-                    <img className="qui-image-with-caption-image" src={data?.image} alt="" />
+                    <img className="qui-icon-bullet-list-image"
+                        src={resolveImage(data?.image.id, imageLibrary)}
+                        alt="IconBulletlist" />
                 )}
-                <TextBlock {...props}
-                    key={props.slideId}
-                    content={props.data?.caption}
-                    withColor={captionColors}
+                <IconListItem {...props}
+                    asVariant={asVariant}
+                    asEmphasis={"list"}
+                    withColor={iconListItemColors}
+                    content={data?.iconlist}
                 />
-                {<Button {...props}
-                    content={"Continue"}
-                    onClick={props.onClick}
-                    withColor={buttonColors}
-                />}
             </div>
         </motion.div>
     );
