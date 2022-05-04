@@ -17,14 +17,20 @@ OptionItemNine.propTypes = {
        OptionItemTwo targetName, value, placeholder should be passed in content object
     */
   content: PropTypes.shape({
-    targetNameShortFieldOne: PropTypes.string,
-    targetNameShortFieldTwo: PropTypes.string,
-    targetName: PropTypes.string,
-    valueShortFieldOne: PropTypes.string,
-    valueShortFieldTwo: PropTypes.string,
-    value: PropTypes.string,
-    placeholder: PropTypes.string,
-    maxLength: PropTypes.number,
+    shortFieldOne: PropTypes.shape({
+      targetName: PropTypes.string,
+      value: PropTypes.string,
+    }),
+    shortFieldTwo: PropTypes.shape({
+      targetName: PropTypes.string,
+      value: PropTypes.string,
+    }),
+    message: PropTypes.shape({
+      targetName: PropTypes.string,
+      value: PropTypes.string,
+      placeholder: PropTypes.string,
+      maxLength: PropTypes.number,
+    }),
   }),
   //=======================================
   // Quommon props
@@ -122,9 +128,9 @@ export default function OptionItemNine(props) {
       <div className="qui-short-field-container">
         <div className="qui-short-field-one">
           <InputField
-            name={content?.targetNameShortFieldOne}
+            name={content?.shortFieldOne?.targetName}
             content={{
-              value: content?.valueShortFieldOne,
+              value: content?.shortFieldOne?.value,
             }}
             asEmphasis="shortField"
             asFloated="left"
@@ -134,9 +140,9 @@ export default function OptionItemNine(props) {
         </div>
         <div className="qui-short-field-two">
           <InputField
-            name={content?.targetNameShortFieldTwo}
+            name={content?.shortFieldTwo?.targetName}
             content={{
-              value: content?.valueShortFieldTwo,
+              value: content?.shortFieldTwo?.value,
             }}
             asEmphasis="shortField"
             asFloated="left"
@@ -146,11 +152,11 @@ export default function OptionItemNine(props) {
         </div>
         <div className="qui-list-input-three">
           <InputField
-            name={content?.targetName}
+            name={content?.message?.targetName}
             content={{
-              value: content?.value,
-              placeholder: content?.placeholder,
-              maxLength: content?.maxLength,
+              value: content?.message?.value,
+              placeholder: content?.message?.placeholder,
+              maxLength: content?.message?.maxLength,
             }}
             asEmphasis="listInput"
             withColor={props.withColor}
@@ -160,7 +166,7 @@ export default function OptionItemNine(props) {
         <div className="qui-option-item-nine-with-remove-button-close-icon">
           <i
             className="qui-option-item-nine-with-remove-button-icon fas fa-times"
-            data-id={content?.targetName}
+            data-id={content?.message?.targetName}
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>
         </div>

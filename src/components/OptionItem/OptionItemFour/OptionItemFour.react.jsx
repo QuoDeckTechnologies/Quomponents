@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
@@ -103,6 +103,9 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   const [value, setValue] = useState(content?.value);
   const [isChecked, setIsChecked] = useState(content?.checked);
+  useEffect(() => {
+    onSelect(content?.targetName, value, isChecked);
+  }, [isChecked]);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -116,7 +119,7 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   const handleCheckBox = (data) => {
     setIsChecked(data?.checked);
-    onSelect(content?.targetName, value, data?.checked);
+    // onSelect(content?.targetName, value, data?.checked);
   };
   //-------------------------------------------------------------------
   // 6. Function to return input value of the component

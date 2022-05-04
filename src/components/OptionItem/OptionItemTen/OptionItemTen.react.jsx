@@ -136,7 +136,7 @@ export default function OptionItemTen(props) {
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
     // setImage(image);
-    props.onUpload(image);
+    props.onUpload(content?.option?.targetName, image);
   };
   //-------------------------------------------------------------------
   // 6. Function to return input value of the component
@@ -167,7 +167,7 @@ export default function OptionItemTen(props) {
       <div className="qui-option-item-ten-container">
         <div className="qui-option-item-inputfieldone">
           <InputField
-            name={content?.targetName}
+            name={content?.option?.targetName}
             content={{
               value: content?.option?.value,
               placeholder: content?.option?.placeholder,
@@ -200,7 +200,7 @@ export default function OptionItemTen(props) {
         <div className="qui-option-item-ten-close-icon">
           <i
             className="fas fa-times"
-            data-id={content?.targetName}
+            data-id={content?.option?.targetName}
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>
         </div>

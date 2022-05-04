@@ -80,14 +80,20 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    targetNameShortFieldOne: "ShortFieldOne",
-    targetNameShortFieldTwo: "ShortFieldTwo",
-    targetName: "Target Name",
-    valueShortFieldOne: 0,
-    valueShortFieldTwo: 0,
-    value: "",
-    placeholder: "Message for Quiz Result",
-    maxLength: 300,
+    shortFieldOne: {
+      targetName: "ShortFieldOne",
+      value: "0",
+    },
+    shortFieldTwo: {
+      targetName: "ShortFieldTwo",
+      value: "0",
+    },
+    message: {
+      targetName: "Target Name",
+      value: "",
+      placeholder: "Message for Quiz Result",
+      maxLength: 300,
+    },
   },
   withColor: {
     backgroundColor: "#ffab000d",
@@ -180,7 +186,9 @@ const MultipleTemplate = (args) => {
     tmp_state.forEach((dataObj) => {
       tmp_arr.push({ ...dataObj });
     });
-    tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
+    tmp_arr = tmp_state.filter(
+      (dataObj) => dataObj.message.targetName !== dataID
+    );
     setContentArr([...tmp_arr]);
   };
   // -------------------------------------------------------------
@@ -191,9 +199,9 @@ const MultipleTemplate = (args) => {
     tmp_arr = [];
     tmp_obj = {};
     tmp_state.forEach((dataObj) => {
-      if (dataObj.targetNameShortFieldOne === targetName) {
+      if (dataObj.shortFieldOne.targetName === targetName) {
         tmp_obj = { ...dataObj };
-        tmp_obj.valueShortFieldOne = value;
+        tmp_obj.shortFieldOne.value = value;
         tmp_arr.push(tmp_obj);
       } else {
         tmp_obj = { ...dataObj };
@@ -210,9 +218,9 @@ const MultipleTemplate = (args) => {
     tmp_arr = [];
     tmp_obj = {};
     tmp_state.forEach((dataObj) => {
-      if (dataObj.targetNameShortFieldTwo === targetName) {
+      if (dataObj.shortFieldTwo.targetName === targetName) {
         tmp_obj = { ...dataObj };
-        tmp_obj.valueShortFieldTwo = value;
+        tmp_obj.shortFieldTwo.value = value;
         tmp_arr.push(tmp_obj);
       } else {
         tmp_obj = { ...dataObj };
@@ -224,14 +232,14 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to put value in the array of objects
   // -------------------------------------------------------------
-  const handleInput = (targetName, value, checked) => {
+  const handleInput = (targetName, value) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
     tmp_state.forEach((dataObj) => {
-      if (dataObj.targetName === targetName) {
+      if (dataObj.message.targetName === targetName) {
         tmp_obj = { ...dataObj };
-        tmp_obj.value = value;
+        tmp_obj.message.value = value;
         tmp_arr.push(tmp_obj);
       } else {
         tmp_obj = { ...dataObj };
@@ -269,34 +277,52 @@ MultipleOptionItemNine.args = {
   ...Default.args,
   multiContent: [
     {
-      targetNameShortFieldOne: "ShortFieldOne1",
-      targetNameShortFieldTwo: "ShortFieldTwo1",
-      targetName: "Target Name1",
-      valueShortFieldOne: 0,
-      valueShortFieldTwo: 0,
-      value: "",
-      placeholder: "Message for Quiz Result",
-      maxLength: 300,
+      shortFieldOne: {
+        targetName: "ShortFieldOne A",
+        value: "0",
+      },
+      shortFieldTwo: {
+        targetName: "ShortFieldTwo A",
+        value: "0",
+      },
+      message: {
+        targetName: "Target Name A",
+        value: "",
+        placeholder: "Message for Quiz Result",
+        maxLength: 300,
+      },
     },
     {
-      targetNameShortFieldOne: "ShortFieldOne2",
-      targetNameShortFieldTwo: "ShortFieldTwo2",
-      targetName: "Target Name2",
-      valueShortFieldOne: 0,
-      valueShortFieldTwo: 0,
-      value: "",
-      placeholder: "Message for Quiz Result",
-      maxLength: 300,
+      shortFieldOne: {
+        targetName: "ShortFieldOne B",
+        value: "0",
+      },
+      shortFieldTwo: {
+        targetName: "ShortFieldTwo B",
+        value: "0",
+      },
+      message: {
+        targetName: "Target Name B",
+        value: "",
+        placeholder: "Message for Quiz Result",
+        maxLength: 300,
+      },
     },
     {
-      targetNameShortFieldOne: "ShortFieldOne3",
-      targetNameShortFieldTwo: "ShortFieldTwo3",
-      targetName: "Target Name3",
-      valueShortFieldOne: 0,
-      valueShortFieldTwo: 0,
-      value: "Message for Quiz Result",
-      placeholder: "",
-      maxLength: 300,
+      shortFieldOne: {
+        targetName: "ShortFieldOne C",
+        value: "0",
+      },
+      shortFieldTwo: {
+        targetName: "ShortFieldTwo C",
+        value: "0",
+      },
+      message: {
+        targetName: "Target Name C",
+        value: "",
+        placeholder: "Message for Quiz Result",
+        maxLength: 300,
+      },
     },
   ],
 };

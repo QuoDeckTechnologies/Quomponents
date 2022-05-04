@@ -199,18 +199,20 @@ const MultipleTemplate = (args) => {
     tmp_state.forEach((dataObj) => {
       tmp_arr.push({ ...dataObj });
     });
-    tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
+    tmp_arr = tmp_state.filter(
+      (dataObj) => dataObj.option.targetName !== dataID
+    );
     setContentArr([...tmp_arr]);
   };
   // -------------------------------------------------------------
   // Function to insert image object in the multiContent array
   // -------------------------------------------------------------
-  const handleUpload = (targetName, image, value) => {
+  const handleUpload = (targetName, image) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
     tmp_state.forEach((dataObj) => {
-      if (dataObj.targetName === targetName) {
+      if (dataObj.option.targetName === targetName) {
         tmp_obj = { ...dataObj };
         tmp_obj.image = image;
         tmp_arr.push(tmp_obj);
@@ -224,15 +226,15 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to put value in the array
   // -------------------------------------------------------------
-  const handleInput = (targetName, image, value) => {
+  const handleInput = (targetName, value) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
 
     tmp_state.forEach((dataObj) => {
-      if (dataObj.targetName === targetName) {
+      if (dataObj.option.targetName === targetName) {
         tmp_obj = { ...dataObj };
-        tmp_obj.value = value;
+        tmp_obj.option.value = value;
         tmp_arr.push(tmp_obj);
       } else {
         tmp_obj = { ...dataObj };
@@ -244,15 +246,15 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to put header value in the array
   // -------------------------------------------------------------
-  const handleHeader = (headerName, image, headerValue) => {
+  const handleHeader = (headerName, headerValue) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
 
     tmp_state.forEach((dataObj) => {
-      if (dataObj.headerName === headerName) {
+      if (dataObj.header.targetName === headerName) {
         tmp_obj = { ...dataObj };
-        tmp_obj.headerValue = headerValue;
+        tmp_obj.header.value = headerValue;
         tmp_arr.push(tmp_obj);
       } else {
         tmp_obj = { ...dataObj };
@@ -264,15 +266,15 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to put value in the array
   // -------------------------------------------------------------
-  const handleMessage = (messageName, image, messageValue) => {
+  const handleMessage = (messageName, messageValue) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
 
     tmp_state.forEach((dataObj) => {
-      if (dataObj.messageName === messageName) {
+      if (dataObj.message.targetName === messageName) {
         tmp_obj = { ...dataObj };
-        tmp_obj.messageValue = messageValue;
+        tmp_obj.message.value = messageValue;
         tmp_arr.push(tmp_obj);
       } else {
         tmp_obj = { ...dataObj };
@@ -290,17 +292,11 @@ const MultipleTemplate = (args) => {
             <OptionItemTen
               {...args}
               content={{ ...content }}
-              onUpload={(targetName, image, value) =>
-                handleUpload(targetName, image, value)
-              }
-              onInput={(targetName, image, value) =>
-                handleInput(targetName, image, value)
-              }
-              onHeader={(targetName, image, value) =>
-                handleHeader(targetName, image, value)
-              }
-              onMessage={(targetName, image, value) =>
-                handleMessage(targetName, image, value)
+              onUpload={(targetName, image) => handleUpload(targetName, image)}
+              onInput={(targetName, value) => handleInput(targetName, value)}
+              onHeader={(targetName, value) => handleHeader(targetName, value)}
+              onMessage={(targetName, value) =>
+                handleMessage(targetName, value)
               }
               onClose={handleRemove}
             />
@@ -316,12 +312,12 @@ MultipleOptionItemTen.args = {
   multiContent: [
     {
       option: {
-        targetName: "target",
+        targetName: "target A",
         value: "",
         placeholder: "Option A",
       },
       header: {
-        targetName: "header",
+        targetName: "header A",
         value: "",
         placeholder: "Header for Option A",
         maxLength: 300,
@@ -335,18 +331,18 @@ MultipleOptionItemTen.args = {
     },
     {
       option: {
-        targetName: "target",
+        targetName: "target B",
         value: "",
         placeholder: "Option B",
       },
       header: {
-        targetName: "header",
+        targetName: "header B",
         value: "",
         placeholder: "Header for Option B",
         maxLength: 300,
       },
       message: {
-        targetName: "message",
+        targetName: "message B",
         value: "",
         placeholder: "Message for Option B",
         maxLength: 300,
@@ -354,18 +350,18 @@ MultipleOptionItemTen.args = {
     },
     {
       option: {
-        targetName: "target",
+        targetName: "target C",
         value: "",
         placeholder: "Option C",
       },
       header: {
-        targetName: "header",
+        targetName: "header C",
         value: "",
         placeholder: "Header for Option C",
         maxLength: 300,
       },
       message: {
-        targetName: "message",
+        targetName: "message C",
         value: "",
         placeholder: "Message for Option C",
         maxLength: 300,
