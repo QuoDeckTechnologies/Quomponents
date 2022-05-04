@@ -13,8 +13,8 @@ describe("ColorSwatch", () => {
     // -------------------------------------
     let component, colors;
 
-    colors={
-        primaryColor:"#FFFFFF",
+    colors = {
+        primaryColor: "#FFFFFF",
         accentColor: "#F88A8A",
         secondaryColor: "#EF2929",
         pageColor: "#685555",
@@ -38,8 +38,8 @@ describe("ColorSwatch", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render component with correct colors",()=>{
-        component.setProps({withColor:colors})
+    it("should render component with correct colors", () => {
+        component.setProps({ withColor: colors })
         let page = component.find("div").at(2);
         let title = component.find("div").at(3);
         let subTitle = component.find("div").at(4);

@@ -77,12 +77,12 @@ describe("SaveExitSection", () => {
 		expect(component.exists()).toBe(true);
 	});
 
-	it("should save & exit the deck",()=>{
+	it("should save & exit the deck", () => {
 		component.find(IconLink).simulate('click');
 		expect(component.exists()).toBe(true);
 	});
 
-	it("should close points modal",()=>{
+	it("should close points modal", () => {
 		component.find(IconLink).simulate('click');
 		expect(component.find(".qui-ribbon-html-menu-points-modal").exists()).toBe(true);
 		component.find(".qui-ribbon-html-menu-points-modal").simulate('click');
