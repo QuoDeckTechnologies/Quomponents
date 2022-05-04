@@ -12,10 +12,10 @@ export default {
         subtitle: "",
         icon: "",
         question: "",
-        feedback: [],
         options: [],
       },
     },
+    imageLibrary: [],
     isCircular: {
       table: {
         category: "is-Toggles",
@@ -90,13 +90,11 @@ const Template = (args) => <MCQwithFeedback {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   data: {
-    backgroundImage:
-      "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    image: { id: "header-image", extention: "" },
     title: "Lorem ipsum dolor sit amet",
     subtitle: "",
     icon: "",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    feedback: ["That was correct", "That was wrong", "Thanks for the answer"],
     options: [
       { correct: "checked", text: "Item 1" },
       { correct: "", text: "Item 2" },
@@ -104,6 +102,13 @@ Default.args = {
       { correct: "", text: "Item 4" },
     ],
   },
+  imageLibrary: [
+    {
+      id: "header-image",
+      image:
+        "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    },
+  ],
   slideId: 0,
   isCircular: false,
   asFloated: "none",
@@ -144,7 +149,6 @@ SlideHeaderMcqWithFeedback.args = {
     subtitle: "Lorem ipsum dolor ",
     icon: "",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    feedback: ["That was correct", "That was wrong", "Thanks for the answer"],
     options: [
       { correct: "checked", text: "Item 1" },
       { correct: "", text: "Item 2" },
@@ -169,6 +173,49 @@ SlideHeaderMcqWithFeedback.parameters = {
     source: {
       code: `<SlideHeaderMcqWithFeedback {...${JSON.stringify(
         SlideHeaderMcqWithFeedback.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// MCQ with Feedback and background image
+// -------------------------------------------------------------
+export const McqWithFeedbackAndBackgroundimage = Template.bind({});
+McqWithFeedbackAndBackgroundimage.args = {
+  ...Default.args,
+  data: {
+    image: { id: "header-image", extention: "" },
+    backgroundImage: { id: "background-image", extention: "" },
+    title: "Lorem ipsum dolor sit amet",
+    subtitle: "",
+    icon: "",
+    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    options: [
+      { correct: "checked", text: "Item 1" },
+      { correct: "", text: "Item 2" },
+      { correct: "", text: "Item 3" },
+      { correct: "", text: "Item 4" },
+    ],
+  },
+  imageLibrary: [
+    {
+      id: "header-image",
+      image:
+        "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    },
+    {
+      id: "background-image",
+      image: "https://images.unsplash.com/photo-1536566482680-fca31930a0bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    },
+  ],
+};
+McqWithFeedbackAndBackgroundimage.parameters = {
+  docs: {
+    source: {
+      code: `<MCQwithFeedback {...${JSON.stringify(
+        McqWithFeedbackAndBackgroundimage.args,
         null,
         2
       )}}/>`,

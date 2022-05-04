@@ -21,7 +21,7 @@ describe("MCQ with Feedback", () => {
           title: "test title",
           subtitle: "test subtitle",
           icon: "test-icon",
-          backgroundImage: "test_image",
+          backgroundImage:{},
           options: [
             { correct: "", text: "button name" },
             { correct: "", text: "button name" },
@@ -53,6 +53,15 @@ describe("MCQ with Feedback", () => {
       data: {
         subtitle: "subtitle",
         backgroundImage: null,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when background image is provided with title and subtitle null ", () => {
+    component.setProps({
+      data: {
+        backgroundImage: {},
       },
     });
     expect(component.exists()).toBe(true);

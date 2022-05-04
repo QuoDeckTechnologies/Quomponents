@@ -2,7 +2,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  resolveImage,
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./MCQwithFeedback.scss";
@@ -19,14 +23,18 @@ MCQwithFeedback.propTypes = {
     MCQwithFeedback data should be passed in data field and it is a required field
     */
   data: PropTypes.shape({
-    backgroundImage: PropTypes.string,
+    image: PropTypes.object,
     title: PropTypes.string,
     subtitle: PropTypes.string,
     icon: PropTypes.string,
+    backgroundImage: PropTypes.object,
     question: PropTypes.string,
-    feedback: PropTypes.array,
     options: PropTypes.array,
   }).isRequired,
+  /**
+    MCQwithFeedback can set background image from imageLibrary array
+    */
+  imageLibrary: PropTypes.array,
   /**
     slideId can be used if same template is used continueously for multiple slides in qdf.
     */
@@ -92,9 +100,11 @@ MCQwithFeedback.defaultProps = {
   // Component Specific props
   //=======================================
   data: {},
+  imageLibrary: [],
   //=======================================
   // Quommon props
   //=======================================
+  asFloated: "left",
   withColor: null,
   withAnimation: null,
   isDisabled: false,
@@ -111,12 +121,14 @@ export default function MCQwithFeedback(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { data, withColor, slideId } = props;
+  const { data, withColor, slideId, imageLibrary } = props;
   //-------------------------------------------------------------------
   // 2. Variable for ButtonBank content props
   //-------------------------------------------------------------------
   let optionsArray = [];
-  data?.options?.forEach((item) => optionsArray.push(item?.text?.toLowerCase()));
+  data?.options?.forEach((item) =>
+    optionsArray.push(item?.text?.toLowerCase())
+  );
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -125,7 +137,20 @@ export default function MCQwithFeedback(props) {
   // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  //-------------------------------------------------------------------
+  // 6. Functions to set background for the template
+  //-------------------------------------------------------------------
+  const getBackground = () => {
+    if (data?.backgroundImage) {
+      return {
+        backgroundImage: `url(${resolveImage(
+          data?.backgroundImage.id,
+          imageLibrary
+        )})`,
+      };
+    }
+  };
+  const background = getBackground();
   // ========================= Render Function =================================
 
   return (
@@ -133,13 +158,19 @@ export default function MCQwithFeedback(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui qui-mcq-with-feedback-card ${quommonClasses.parentClasses}`}
-      style={{ backgroundColor: withColor?.backgroundColor }}
+      style={{
+        ...background,
+        backgroundColor: withColor?.backgroundColor,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+      }}
     >
       <div
         className={`qui-mcq-with-feedback-container ${quommonClasses.childClasses}`}
       >
         <div className="qui-mcq-with-feedback-slide-header">
-          {!data?.backgroundImage && (data?.title || data?.subtitle) ? (
+          {!data?.image && (data?.title || data?.subtitle) ? (
             <SlideHeader
               content={{ title: data?.title, subTitle: data?.subtitle }}
               withColor={{
@@ -151,7 +182,7 @@ export default function MCQwithFeedback(props) {
           ) : (
             <img
               className="qui-mcq-with-feedback-image"
-              src={data?.backgroundImage}
+              src={resolveImage(data?.image?.id,imageLibrary)}
               alt="slide"
             />
           )}
