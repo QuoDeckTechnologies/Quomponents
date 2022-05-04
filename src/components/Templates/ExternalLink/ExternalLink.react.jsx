@@ -8,23 +8,24 @@ import {
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./ImageWithCaption.scss";
+import "./ExternalLink.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
 import TextBlock from "../../TextBlock/TextBlock.react";
 import Button from "../../Buttons/Button/Button.react";
 
-ImageWithCaption.propTypes = {
+ExternalLink.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-      ImageWithCaption content should be passed in data field and it is a required field
+      ExternalLink content should be passed in data field and it is a required field
       */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
-        caption: PropTypes.string,
+        paragraph: PropTypes.string,
+        link: PropTypes.string,
         image: PropTypes.string,
         backgroundImage: PropTypes.string,
     }).isRequired,
@@ -84,12 +85,12 @@ ImageWithCaption.propTypes = {
       */
     isHidden: PropTypes.bool,
     /**
-      ImageWithCaption component must have the onClick function passed as props
+      ExternalLink component must have the onClick function passed as props
       */
     onClick: PropTypes.func.isRequired,
 };
 
-ImageWithCaption.defaultProps = {
+ExternalLink.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -112,7 +113,7 @@ ImageWithCaption.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function ImageWithCaption(props) {
+export default function ExternalLink(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring data from props
     //-------------------------------------------------------------------
@@ -120,7 +121,7 @@ export default function ImageWithCaption(props) {
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "image-with-caption");
+    let quommonClasses = getQuommons(props, "external-link");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 3. Get animation of the component
@@ -164,7 +165,8 @@ export default function ImageWithCaption(props) {
             className={`qui ${quommonClasses.parentClasses}`}
             style={{ ...background }}
         >
-            <div className={`qui-image-with-caption-card ${quommonClasses.childClasses}`}>
+            <div className={`qui-external-link-card ${quommonClasses.childClasses}`} key={"External-link" + props.slideId}
+            >
                 {!data?.image && (data?.title || data?.subtitle) && (
                     <SlideHeader
                         content={{ title: data?.title, subTitle: data?.subtitle }}
@@ -172,18 +174,19 @@ export default function ImageWithCaption(props) {
                 )}
 
                 {data?.image && (
-                    <img className="qui-image-with-caption-image" src={data?.image} alt="" />
+                    <img className="qui-external-link-image" src={data?.image} alt="" />
                 )}
                 <TextBlock {...props}
-                    key={props.slideId}
-                    content={props.data?.caption}
+                    content={props.data?.paragraph}
                     withColor={captionColors}
                 />
-                {<Button {...props}
-                    content={"Continue"}
-                    onClick={props.onClick}
-                    withColor={buttonColors}
-                />}
+                <a href={data?.link} target="_blank" className="qui-external-link-address">
+                    {<Button {...props}
+                        content={"Go"}
+                        onClick={props.onClick}
+                        withColor={buttonColors}
+                    />}
+                </a>
             </div>
         </motion.div>
     );

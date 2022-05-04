@@ -6,10 +6,10 @@ import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import ImageWithCaption from "../Templates/ImageWithCaption/ImageWithCaption.react";
-import Button from "../Buttons/Button/Button.react";
+import ExternalLink from "../../Templates/ExternalLink/ExternalLink.react";
+import Button from "../../Buttons/Button/Button.react";
 
-describe("ImageWithCaption", () => {
+describe("ExternalLink", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -17,12 +17,13 @@ describe("ImageWithCaption", () => {
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
-            <ImageWithCaption
+            <ExternalLink
                 data={{
                     title: "This is Title",
                     subtitle: "This is Subtitle",
                     image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-                    caption: "this is caption"
+                    paragraph: "this is paragraph",
+                    backgroundImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
                 }}
                 slideId={0}
                 asVariant="primary"
@@ -44,8 +45,17 @@ describe("ImageWithCaption", () => {
         });
         expect(component.exists()).toBe(true);
     });
-    it("should render correctly when passed withColor props", () => {
+    it("should render correctly when passed withColor props if backgroundImage pass from data props", () => {
+        let data = {
+            title: "This is Title",
+            subtitle: "This is Subtitle",
+            link:"https/github.com",
+            image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+            paragraph: "this is paragraph",
+            backgroundImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+        }
         let colors = {
+            backgroundColor: "",
             slideHeaderTextColor: "ff0000",
             slideHeaderAccentColor: "23ff00",
             slideHeaderBackgroundColor: "00ff00",
@@ -53,7 +63,29 @@ describe("ImageWithCaption", () => {
             captionAccentColor: "23ff00",
             captionBackgroundColor: "00ff00",
         }
-        component.setProps({ withColor: colors })
+        component.setProps({ data: data })
+        component.setProps({ withColor: colors, data: data })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed withColor props if backgroundImage removed from data props", () => {
+        let data = {
+            title: "This is Title",
+            subtitle: "This is Subtitle",
+            image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+            paragraph: "this is paragraph",
+            backgroundImage: "",
+        }
+        let colors = {
+            backgroundColor: "#F4BFCB",
+            slideHeaderTextColor: "ff0000",
+            slideHeaderAccentColor: "23ff00",
+            slideHeaderBackgroundColor: "00ff00",
+            captionTextColor: "ff0000",
+            captionAccentColor: "23ff00",
+            captionBackgroundColor: "00ff00",
+        }
+        component.setProps({ data: data })
+        component.setProps({ withColor: colors, data: data })
         expect(component.exists()).toBe(true);
     })
     it("should render correctly when passed withAnimation props", () => {
@@ -110,7 +142,7 @@ describe("ImageWithCaption", () => {
             title: "This is Title",
             subtitle: "This is Subtitle",
             image: "",
-            caption: "this is caption"
+            paragraph: "this is paragraph"
         }
         component.setProps({ data: data })
         expect(component.exists()).toBe(true);
