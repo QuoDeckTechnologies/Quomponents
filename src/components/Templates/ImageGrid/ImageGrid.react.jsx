@@ -31,7 +31,7 @@ ImageGrid.propTypes = {
         image: PropTypes.object,
         backgroundImage: PropTypes.object,
         Presenter: PropTypes.object,
-        gridImages: PropTypes.array,
+        grid: PropTypes.array,
     }),
     /**
       ImageGrid can set presenter image from imageLibrary array
@@ -96,7 +96,7 @@ ImageGrid.defaultProps = {
         caption: "",
         image: {},
         backgroundImage: {},
-        gridImages: [],
+        grid: [],
         presenter: {},
     },
     imageLibrary: [{}],
@@ -171,11 +171,11 @@ export default function ImageGrid(props) {
                 <Grid container
                     rowSpacing={{ xs: 0.5, sm: 0.5, md: 0.5, lg: 0.5, xl: 0.5 }}
                     columnSpacing={{ xs: 0.5, sm: 0.5, md: 0.5, lg: 0.5, xl: 0.5 }} className="qui-image-grid-container">
-                    {_.map(data?.gridImages, (image, index) => {
+                    {_.map(data?.grid, (image, index) => {
                         return (
                             <Grid key={index} item xs={6} sm={6} md={6} lg={6}
                                 className="qui-grid-images">
-                                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
+                                <ClickableImage {...props} content={{ image: resolveImage(image.image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
                             </Grid>
                         );
                     })}
@@ -212,10 +212,10 @@ export default function ImageGrid(props) {
                 <Grid container
                     rowSpacing={{ xs: 0.5, sm: 0.5, md: 0.5, lg: 0.5, xl: 0.5 }}
                     columnSpacing={{ xs: 0.5, sm: 0.5, md: 0.5, lg: 0.5, xl: 0.5 }} className="qui-image-grid-container">
-                    {_.map(data.gridImages, (image, index) => {
+                    {_.map(data.grid, (image, index) => {
                         return (
                             <Grid key={index} item xs={6} sm={6} md={6} lg={6}>
-                                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
+                                <ClickableImage {...props} content={{ image: resolveImage(image.image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
                             </Grid>
                         );
                     })}

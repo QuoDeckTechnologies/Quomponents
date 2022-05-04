@@ -24,10 +24,14 @@ describe("ImageGrid", () => {
                         extention: "",
                         id: "background-image",
                     },
-                    gridImages: [{
-                        extention: "",
-                        id: "image-1",
-                    }
+                    grid: [
+                        {
+                            text: "<< List item 1. Replace with your own text >>",
+                            image: {
+                                id: "HyLQNLtdp",
+                                extension: ".jpeg"
+                            }
+                        },
                     ],
                     imageLibrary: [{
                         id: "header-image",
@@ -103,39 +107,53 @@ describe("ImageGrid", () => {
                     id: "background-image",
                     extention: "",
                 },
-                gridImages: [
+
+                grid: [
                     {
-                        extention: "",
-                        id: "image-1",
+                        text: "<< List item 1. Replace with your own text >>",
+                        image: {
+                            id: "HyLQNLtdp",
+                            extension: ".jpeg"
+                        }
                     },
                     {
-                        extention: "",
-                        id: "image-2",
-                    }, {
-                        extention: "",
-                        id: "image-3",
+                        text: "<< List item 2. Replace with your own text >>",
+                        image: {
+                            id: "SKjOfKwWN",
+                            extension: ".jpeg"
+                        }
                     },
                     {
-                        extention: "",
-                        id: "image-4",
+                        text: "<< List item 3. Replace with your own text >>",
+                        image: {
+                            id: "h4EX9FXyK",
+                            extension: ".jpeg"
+                        }
                     },
+                    {
+                        text: "<< List item 4. Replace with your own text >>",
+                        image: {
+                            id: "qsZ-6w6lh",
+                            extension: ".jpeg"
+                        }
+                    }
                 ],
             },
             imageLibrary: [{
                 id: "background-image",
                 image: "test1.png"
             }, {
-                id: "image-1",
-                image: "test1.png"
+                image: "https://i.pinimg.com/564x/02/58/79/025879fc48f8d5a2a30e37ad1a847c11.jpg",
+                id: "HyLQNLtdp",
             }, {
-                id: "image-2",
-                image: "image1.png"
+                image: "https://i.pinimg.com/564x/64/57/dc/6457dc8f063f284fe17e519dc28b5437.jpg",
+                id: "SKjOfKwWN",
             }, {
-                id: "image-3",
-                image: "image2.png"
+                image: "https://i.pinimg.com/564x/9a/db/19/9adb19d50115e570142a7937a00550ae.jpg",
+                id: "h4EX9FXyK",
             }, {
-                id: "image-4",
-                image: "imag3.png"
+                image: "https://i.pinimg.com/564x/09/03/8c/09038c92e5e2422e369816d50b16cd3f.jpg",
+                id: "qsZ-6w6lh",
             }, {
                 id: "presenter-image",
                 image: "test2.png"
@@ -146,36 +164,49 @@ describe("ImageGrid", () => {
     it("should render correctly with presenter is null and click on ImageGrid", () => {
         component.setProps({
             data: {
-                gridImages: [
+                grid: [
                     {
-                        extention: "",
-                        id: "image-1",
+                        text: "<< List item 1. Replace with your own text >>",
+                        image: {
+                            id: "HyLQNLtdp",
+                            extension: ".jpeg"
+                        }
                     },
                     {
-                        extention: "",
-                        id: "image-2",
-                    }, {
-                        extention: "",
-                        id: "image-3",
+                        text: "<< List item 2. Replace with your own text >>",
+                        image: {
+                            id: "SKjOfKwWN",
+                            extension: ".jpeg"
+                        }
                     },
                     {
-                        extention: "",
-                        id: "image-4",
+                        text: "<< List item 3. Replace with your own text >>",
+                        image: {
+                            id: "h4EX9FXyK",
+                            extension: ".jpeg"
+                        }
                     },
+                    {
+                        text: "<< List item 4. Replace with your own text >>",
+                        image: {
+                            id: "qsZ-6w6lh",
+                            extension: ".jpeg"
+                        }
+                    }
                 ],
             },
             imageLibrary: [{
-                id: "image-1",
-                image: "test1.png"
+                image: "https://i.pinimg.com/564x/02/58/79/025879fc48f8d5a2a30e37ad1a847c11.jpg",
+                id: "HyLQNLtdp",
             }, {
-                id: "image-2",
-                image: "image1.png"
+                image: "https://i.pinimg.com/564x/64/57/dc/6457dc8f063f284fe17e519dc28b5437.jpg",
+                id: "SKjOfKwWN",
             }, {
-                id: "image-3",
-                image: "image2.png"
+                image: "https://i.pinimg.com/564x/9a/db/19/9adb19d50115e570142a7937a00550ae.jpg",
+                id: "h4EX9FXyK",
             }, {
-                id: "image-4",
-                image: "imag3.png"
+                image: "https://i.pinimg.com/564x/09/03/8c/09038c92e5e2422e369816d50b16cd3f.jpg",
+                id: "qsZ-6w6lh",
             },]
         });
         component.find(ClickableImage).at(0).simulate('click')
