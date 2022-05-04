@@ -122,15 +122,13 @@ export default function Title(props) {
           }}
         />
       );
-    } else if (data?.image) {
+    } else {
       return (
-        data?.image && (
-          <img
-            className="qui-title-image"
-            src={resolveImage(data?.image.id, imageLibrary)}
-            alt="slide"
-          />
-        )
+        <img
+          className="qui-title-image"
+          src={resolveImage(data?.image?.id, imageLibrary)}
+          alt="slide"
+        />
       );
     }
   };
