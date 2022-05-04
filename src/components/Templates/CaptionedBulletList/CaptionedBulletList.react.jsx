@@ -1,35 +1,39 @@
 // Import npm packages
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
-} from "../../../common/javascripts/helpers.js";
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./Anagram.scss";
+import "./CaptionedBulletList.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
-import InputField from "../../InputField/InputField.react";
-import Button from "../../Buttons/Button/Button.react";
+import TextBlock from "../../TextBlock/TextBlock.react";
+import BulletBlock from "../../BulletBlock/BulletBlock.react";
 
-Anagram.propTypes = {
+CaptionedBulletList.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
   /**
-    Anagram data should be passed in data field and it is a required field
+    CaptionedBulletList data should be passed in data field and it is a required field
     */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
+    caption: PropTypes.string,
     image: PropTypes.string,
     backgroundImage: PropTypes.string,
-    question: PropTypes.string,
-    answer: PropTypes.string,
-    purpose: PropTypes.string,
-  }).isRequired,
+    bullets: PropTypes.arrayOf(
+      PropTypes.string
+    )
+  }),
+  /**
+    CaptionedBulletList slideId should be passed with props, to specify the slide.
+    */
   slideId: PropTypes.number,
   //=======================================
   // Quommon props
@@ -48,20 +52,16 @@ Anagram.propTypes = {
     Use to override component colors and behavior
     */
   withColor: PropTypes.shape({
-    answerColor: PropTypes.string,
-    questionColor: PropTypes.string,
     slideHeaderTextColor: PropTypes.string,
     slideHeaderAccentColor: PropTypes.string,
     slideHeaderBackgroundColor: PropTypes.string,
-    inputFieldTextColor: PropTypes.string,
-    inputFieldAccentColor: PropTypes.string,
-    inputFieldBackgroundColor: PropTypes.string,
-    buttonTextColor: PropTypes.string,
-    buttonBackgroundColor: PropTypes.string,
-    buttonHoverBackgroundColor: PropTypes.string,
-    buttonHoverTextColor: PropTypes.string,
+    textBlockTextColor: PropTypes.string,
+    textBlockBackgroundColor: PropTypes.string,
+    bulletBlockTextColor: PropTypes.string,
+    bulletBlockBackgroundColor: PropTypes.string,
     backgroundColor: PropTypes.string,
   }),
+
   /**
     Use to define the entry animation of the component
     */
@@ -80,24 +80,23 @@ Anagram.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to enable/disable the component
-    */
-  isDisabled: PropTypes.bool,
-  /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
-  /**
-    Anagram component must have the onClick function passed as props
-    */
-  onClick: PropTypes.func.isRequired,
 };
 
-Anagram.defaultProps = {
+CaptionedBulletList.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  data: {},
+  data: {
+    title: "",
+    subtitle: "",
+    caption: "",
+    image: "",
+    backgroundImage: "",
+    bullets: []
+  },
   slideId: 0,
   //=======================================
   // Quommon props
@@ -105,7 +104,6 @@ Anagram.defaultProps = {
   asVariant: "primary",
   withColor: null,
   withAnimation: null,
-  isDisabled: false,
   isHidden: false,
 };
 /**
@@ -113,59 +111,39 @@ Anagram.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- component is used to show the question and the jumbled answer , user need to submit the correct
-  answer using the input field, typed answer will submitted as it is.
+- Displays a Captioned Bullet List with TextBlock, BulletBlock and a SlideHeader
 **/
-export default function Anagram(props) {
+export default function CaptionedBulletList(props) {
   let { data, withColor } = props
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "anagram");
+  let quommonClasses = getQuommons(props, "captioned-bullet-list");
   quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
   //-------------------------------------------------------------------
-  // Get animation of the component
+  //  Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-  const [state, setState] = useState();
-  function handleSubmit() {
-    props.onClick(state)
-  }
   //-------------------------------------------------------------------
-  // Setting the colors of the imported components
+  //  Setting the colors of imported components
   //-------------------------------------------------------------------
-  let buttonColors = {
-    textColor: props.withColor?.buttonTextColor,
-    backgroundColor: props.withColor?.buttonBackgroundColor,
-    hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
-    hoverTextColor: props.withColor?.buttonHoverTextColor
-  }
-  let inputFieldColors = {
-    textColor: props.withColor?.inputFieldTextColor,
-    accentColor: props.withColor?.inputFieldAccentColor,
-    backgroundColor: props.withColor?.inputFieldBackgroundColor
+  let bulletBlockColors = {
+    textColor: props.withColor?.bulletBlockTextColor,
+    backgroundColor: props.withColor?.bulletBlockBackgroundColor,
   }
   let slideHeaderColors = {
     textColor: props.withColor?.slideHeaderTextColor,
     accentColor: props.withColor?.slideHeaderAccentColor,
     backgroundColor: props.withColor?.slideHeaderBackgroundColor
   }
-  //--------------------------------------------------------------------------
-  // Function used to jumble the word which is given as the answer from prop
-  //--------------------------------------------------------------------------
-  let jumbledWords = answer => {
-    if (answer !== "" && answer) {
-      return answer
-        .toUpperCase()
-        .split("")
-        .sort(function () {
-          return 0.5 - Math.random();
-        })
-        .join("")
-    }
-  };
-  let buttonText = data?.purpose === "quiz" ? "Check Answer" : "Submit Answer"
-
+  let textBlockColors = {
+    textColor: props.withColor?.textBlockTextColor,
+    backgroundColor: props.withColor?.textBlockBackgroundColor
+  }
+  let SlideHeaderText = {
+    title: props.data?.title,
+    subTitle: props.data?.subtitle,
+  }
   const getBackground = () => {
     return {
       background: `url(${data.backgroundImage})`,
@@ -182,38 +160,21 @@ export default function Anagram(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
-    >
-      {data &&
-        <div className="qui-anagram-card" style={{ ...background }}>
+    >{data &&
+      <div className="qui-captioned-bullet-list-card" style={{ ...background }}>
+        <div className={`${quommonClasses.childClasses}`} key={"captioned-bullet-list-" + props.slideId}>
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
-              content={{ title: data?.title, subTitle: data?.subtitle }}
+              content={SlideHeaderText}
               withColor={slideHeaderColors} />
           )}
           {data?.image && (
-            <img className="qui-anagram-image" src={data?.image} alt="" />
+            <img className="qui-captioned-bullet-list-image" src={data?.image} alt="" />
           )}
-          <div
-            className={`qui-anagram-question variant-${props.asVariant}-text`}
-            style={{ color: props.withColor?.questionColor }}
-            key={"anagram-question-" + props.slideId}>
-            {props.data?.question}
-          </div>
-          <p className="qui-anagram-answer"
-            style={{ color: props.withColor?.answerColor }}>
-            {jumbledWords(data?.answer)}
-          </p>
-          <InputField {...props}
-            content={{ label: "Input Name" }}
-            withColor={inputFieldColors}
-            onClick={(name, value) => setState(value)}
-            name="anagram-input-field" />
-          <Button {...props}
-            content={buttonText}
-            withColor={buttonColors}
-            onClick={() => handleSubmit()} >
-          </Button>
-        </div>}
+          <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+          <BulletBlock {...props} content={data?.bullets} withColor={bulletBlockColors} asVariant={props.asVariant} />
+        </div>
+      </div>}
     </motion.div>
   );
 }
