@@ -194,6 +194,7 @@ export default function OptionalImageField(props) {
         <div
           className="qui-optional-image-field-icon"
           style={colors.iconBoundries}
+          onClick={uploadFile}
         >
           <i className={content.icon}></i>
         </div>
