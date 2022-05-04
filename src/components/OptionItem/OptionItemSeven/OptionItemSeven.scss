@@ -64,14 +64,18 @@
   }
   .qui .qui-option-item-seven-container .qui .qui-optional-image-field-icon {
     border: 0.08em solid #ffbf00;
+    font-size: 1.6em;
   }
 }
 
 @media only screen and (min-width: 481px) {
   .qui .qui-option-item-seven-container .qui-optional-image-field-button {
     display: block;
+    padding: 0.2em 0.5em;
   }
   .qui .qui-option-item-seven-container .qui .qui-optional-image-field-icon {
+    font-size: 1.48em;
+    padding: 0.09em 0.2em;
     border: none;
     border-top: 0.08em solid #ffbf00;
     border-left: 0.08em solid #ffbf00;
@@ -82,5 +86,13 @@
 @media only screen and (min-width: 769px) {
   .qui .qui-option-item-seven-container .qui-option-item-radio-container {
     min-width: 7em;
+  }
+  .qui .qui-option-item-seven-container .qui-optional-image-field-button {
+    padding: 0.2em 1em;
+    font-size: 0.8em;
+  }
+  .qui .qui-option-item-seven-container .qui .qui-optional-image-field-icon {
+    font-size: 1.6em;
+    padding: 0.04em 0.2em;
   }
 }
