@@ -173,8 +173,9 @@ export default function ImageGrid(props) {
                     columnSpacing={{ xs: 0.5, sm: 0.5, md: 0.5, lg: 0.5, xl: 0.5 }} className="qui-image-grid-container">
                     {_.map(data?.gridImages, (image, index) => {
                         return (
-                            <Grid key={index} item xs={6} sm={6} md={6} lg={6}>
-                                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={(e) => props.onClick(e)} />
+                            <Grid key={index} item xs={6} sm={6} md={6} lg={6}
+                                className="qui-grid-images">
+                                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
                             </Grid>
                         );
                     })}
@@ -214,7 +215,7 @@ export default function ImageGrid(props) {
                     {_.map(data.gridImages, (image, index) => {
                         return (
                             <Grid key={index} item xs={6} sm={6} md={6} lg={6}>
-                                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={(e) => props.onClick(e)} />
+                                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
                             </Grid>
                         );
                     })}

@@ -70,6 +70,28 @@ describe("ImageGrid", () => {
         });
         expect(component.exists()).toBe(true);
     });
+    it("should render correctly with presenter is true", () => {
+        // component.setProps({
+        //     data: {
+        //         presenter: {
+        //             id: "presenter-image",
+        //             extention: "",
+        //         },
+        //         backgroundImage: {
+        //             id: "background-image",
+        //             extention: "",
+        //         },
+        //         imageLibrary: [{
+        //             id: "background-image",
+        //             image: "test1.png"
+        //         }, {
+        //             id: "presenter-image",
+        //             image: "test2.png"
+        //         }]
+        //     },
+        // });
+        console.log(component.find(Grid))
+    });
     it("should render correctly when passed withAnimation props", () => {
         let animation = {
             animation: "zoom",
