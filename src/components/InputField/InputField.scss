@@ -60,7 +60,7 @@
     width: 100%;
 }
 .qui .qui-list-input .MuiFilledInput-root {
-    padding: 0.6em;
+    padding: 0.3em 0.6em;
 }
 .qui .qui-list-input {
     width: 100%;
@@ -77,6 +77,9 @@
     min-height: 1em;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
+}
+.qui .qui-short-field .css-c5v1qu-MuiInputBase-input-MuiFilledInput-input{
+    padding: 0.3em 0.6em;
 }
 /* ================================================= */
 /* Mui Override Definitions */
