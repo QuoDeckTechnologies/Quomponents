@@ -22,8 +22,6 @@ describe("OpenAnswer", () => {
           title: "This is Title",
           subtitle: "This is Subtitle",
           question: "This is question",
-          image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-          backgroundImage: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
         }}
         slideId={0}
         asVariant="primary"
@@ -127,17 +125,40 @@ describe("OpenAnswer", () => {
     let data = {
       title: "This is Title",
       subtitle: "This is Subtitle",
-      image: "",
     }
     component.setProps({ data: data })
     expect(component.exists()).toBe(true);
   })
-  it("should render correctly when passed backgroundImage prop as null and backgroundColor is passed", () => {
+  it("should render correctly when passed backgroundImage ", () => {
     let data = {
       title: "This is Title",
       subtitle: "This is Subtitle",
-      image: "",
-      backgroundImage: "",
+      backgroundImage: {
+        id: 'background-image',
+        extention: '',
+      }
+    }
+    let imageLibrary = [{
+      id: 'background-image',
+      image: "test.png"
+    }]
+    component.setProps({ data: data, imageLibrary: imageLibrary })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed backgroundImage null and color passed ", () => {
+    let data = {
+      backgroundImage:null
+    }
+    let color = {
+      backgroundColor: "#fff"
+    }
+    component.setProps({ data: data, withColor: color })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed backgroundImage as null and backgroundColor is passed", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
     }
     let colors = {
       slideHeaderTextColor: "#ffffff",

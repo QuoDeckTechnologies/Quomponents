@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
+  resolveImage,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -25,12 +26,16 @@ CaptionedBulletList.propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
     caption: PropTypes.string,
-    image: PropTypes.string,
-    backgroundImage: PropTypes.string,
+    image: PropTypes.object,
+    backgroundImage: PropTypes.object,
     bullets: PropTypes.arrayOf(
       PropTypes.string
     )
   }),
+  /**
+    CaptionedBulletList should have a imageLibrary array
+    */
+  imageLibrary: PropTypes.array,
   /**
     CaptionedBulletList slideId should be passed with props, to specify the slide.
     */
@@ -97,6 +102,7 @@ CaptionedBulletList.defaultProps = {
     backgroundImage: "",
     bullets: []
   },
+  imageLibrary:[{}],
   slideId: 0,
   //=======================================
   // Quommon props
@@ -114,7 +120,7 @@ CaptionedBulletList.defaultProps = {
 - Displays a Captioned Bullet List with TextBlock, BulletBlock and a SlideHeader
 **/
 export default function CaptionedBulletList(props) {
-  let { data, withColor } = props
+  let { data, withColor, imageLibrary } = props
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -146,7 +152,7 @@ export default function CaptionedBulletList(props) {
   }
   const getBackground = () => {
     return {
-      background: `url(${data.backgroundImage})`,
+      background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
       backgroundSize: "cover",
     };
   };
@@ -169,7 +175,7 @@ export default function CaptionedBulletList(props) {
               withColor={slideHeaderColors} />
           )}
           {data?.image && (
-            <img className="qui-captioned-bullet-list-image" src={data?.image} alt="" />
+            <img className="qui-captioned-bullet-list-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
           )}
           <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
           <BulletBlock {...props} content={data?.bullets} withColor={bulletBlockColors} asVariant={props.asVariant} />
