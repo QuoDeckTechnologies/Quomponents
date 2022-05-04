@@ -32,7 +32,16 @@ describe("Splash", () => {
   it("should render correctly without throwing error when presenter view is selected", () => {
     component.setProps({
       data: {
-        presenter: "presenter_image",
+        presenter: {id:'test_id'},
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when background image is provided", () => {
+    component.setProps({
+      data: {
+        backgroundImage: {},
       },
     });
     expect(component.exists()).toBe(true);
