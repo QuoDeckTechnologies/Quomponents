@@ -254,8 +254,8 @@ ColoredMcqWithFeedback.parameters = {
 // -------------------------------------------------------------
 // Animated MCQ with Feedback
 // -------------------------------------------------------------
-export const AnimatedMCQwithFeedback = Template.bind({});
-AnimatedMCQwithFeedback.args = {
+export const AnimatedMcqWithFeedback = Template.bind({});
+AnimatedMcqWithFeedback.args = {
   ...Default.args,
   withAnimation: {
     animation: "fade",
@@ -263,11 +263,11 @@ AnimatedMCQwithFeedback.args = {
     delay: 0,
   },
 };
-AnimatedMCQwithFeedback.parameters = {
+AnimatedMcqWithFeedback.parameters = {
   docs: {
     source: {
-      code: `<AnimatedMCQwithFeedback {...${JSON.stringify(
-        AnimatedMCQwithFeedback.args,
+      code: `<AnimatedMcqWithFeedback {...${JSON.stringify(
+        AnimatedMcqWithFeedback.args,
         null,
         2
       )}}/>`,
