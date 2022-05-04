@@ -1,5 +1,5 @@
 import React from "react";
-import BulletList from "../components/Templates/BulletList/BulletList.react";
+import BulletList from "../../components/Templates/BulletList/BulletList.react";
 
 export default {
     title: "Design System/Templates/BulletList/BulletList",

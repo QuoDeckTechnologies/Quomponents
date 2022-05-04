@@ -6,7 +6,7 @@ import { shallow, mount, render } from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import BulletList from "../Templates/BulletList/BulletList.react"
+import BulletList from "../../Templates/BulletList/BulletList.react"
 
 describe("BulletList", () => {
     // -------------------------------------
