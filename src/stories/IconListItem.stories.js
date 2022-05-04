@@ -5,17 +5,28 @@ export default {
   title: "Design System/IconListItem/IconListItem",
   component: IconListItem,
   argTypes: {
-    content: [
-      {
-        title: "",
-        image: "",
-      },
-    ],
-    asFloated: {
+    content: [],
+    imageLibrary: [],
+    asEmphasis: {
       control: "select",
-      options: ["left", "right", "none", "inline"],
+      options: ["conversation", "list"],
       table: {
         category: "as-Flags",
+      },
+    },
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          textColor: "",
+        },
       },
     },
     withAnimation: {
@@ -50,7 +61,7 @@ export default {
     componentSubtitle:
       "Displays a basic image and title for general-purpose use",
     a11y: { disable: true },
-    docs: { iframeHeight: 700 },
+    docs: { iframeHeight: 600 },
   },
 };
 
@@ -62,42 +73,49 @@ export const Default = Template.bind({});
 Default.args = {
   content: [
     {
-      image:
-        "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-      title: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      image: { id: "iconlist-image", extention: "" },
+      text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
     },
     {
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-        title: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      image: { id: "iconlistitem", extention: "" },
+      text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
     },
     {
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-        title: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      image: { id: "iconlist-image", extention: "" },
+      text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
     },
     {
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-        title: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      image: { id: "iconlistitem", extention: "" },
+      text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
     },
     {
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-        title: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      image: { id: "iconlist-image", extention: "" },
+      text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
     },
     {
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-        title: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      image: { id: "iconlistitem", extention: "" },
+      text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
     },
     {
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-        title: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      image: { id: "iconlist-image", extention: "" },
+      text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
     }
   ],
-  asFloated: "none",
+  imageLibrary: [
+    {
+      id: "iconlist-image",
+      image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+    },
+    {
+      id: "iconlistitem",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+    }],
+  asEmphasis: "conversation",
+  asVariant: "primary",
+  withColor: {
+    textColor: "#666666",
+  },
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
@@ -117,44 +135,25 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Floated Variants
+// MultiLine InlineEdit
 // -------------------------------------------------------------
-const FloatedVariantsTemplate = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args, {}),
-  };
-  return (
-    <div>
-      <IconListItem
-        {...Object.assign({}, baseObj, {
-          asSize: "small",
-          asFloated: "none",
-        })}
-      />
-      <IconListItem
-        {...Object.assign({}, baseObj, {
-          asSize: "small",
-          asFloated: "left",
-        })}
-      />
-      <IconListItem
-        {...Object.assign({}, baseObj, {
-          asSize: "small",
-          asFloated: "right",
-        })}
-      />
-    </div>
-  );
+export const IconListItemAsList = Template.bind({});
+IconListItemAsList.args = {
+  ...Default.args,
+  asEmphasis: "list",
 };
-
-export const FloatedVariants = FloatedVariantsTemplate.bind({});
-FloatedVariants.parameters = {
+IconListItemAsList.parameters = {
   docs: {
     description: {
-      story: "5 variants are supported. Use as per purpose noted here.",
+      story:
+        "Use to show the list state for the IconListItem.",
     },
     source: {
-      code: `<IconListItem asVariant="primary"/>`,
+      code: `<IconListItemAsList {...${JSON.stringify(
+        IconListItemAsList.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
