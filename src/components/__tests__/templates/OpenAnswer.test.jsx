@@ -25,21 +25,6 @@ describe("OpenAnswer", () => {
         }}
         slideId={0}
         asVariant="primary"
-        withColor={{
-          slideHeaderTextColor: "#ffffff",
-          slideHeaderAccentColor: "#AD2929",
-          slideHeaderBackgroundColor: "#AD292980",
-          questionBackgroundColor: "#a0979700",
-          questionTextColor: "#000000",
-          inputFieldTextColor: "",
-          inputFieldAccentColor: "",
-          inputFieldBackgroundColor: "",
-          buttonTextColor: "",
-          buttonBackgroundColor: "",
-          buttonHoverBackgroundColor: "",
-          buttonHoverTextColor: "",
-          backgroundColor: "#fff",
-        }}
         isHidden={false}
         isDisabled={false}
         onClick={(e) => {
@@ -147,7 +132,7 @@ describe("OpenAnswer", () => {
   })
   it("should render correctly when passed backgroundImage null and color passed ", () => {
     let data = {
-      backgroundImage:null
+      backgroundImage: null
     }
     let color = {
       backgroundColor: "#fff"

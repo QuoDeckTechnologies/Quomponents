@@ -22,19 +22,13 @@ describe("ImageGrid", () => {
                 data={{
                     title: "This is Title",
                     subtitle: "This is Subtitle",
-                    image: {
-                        extention: "",
-                        id: "header-image",
-                    },
                     backgroundImage: {
                         extention: "",
                         id: "background-image",
                     },
-                    diptych: [{
-                        image: {
-                            extention: "",
-                            id: "image-1",
-                        }
+                    gridImages: [{
+                        extention: "",
+                        id: "image-1",
                     }
                     ],
                     imageLibrary: [{
@@ -70,7 +64,37 @@ describe("ImageGrid", () => {
         });
         expect(component.exists()).toBe(true);
     });
-    it("should render correctly with presenter is true", () => {
+    it("should render correctly with presenter is passed", () => {
+        component.setProps({
+            data: {
+                presenter: {
+                    id: "presenter",
+                    extention: ""
+                }
+            },
+            imageLibrary: [{
+                id: "presenter",
+                image: "test.png"
+            }]
+        });
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly with image prop is passed", () => {
+        component.setProps({
+            data: {
+                image: {
+                    extention: "",
+                    id: "header-image",
+                },
+            },
+            imageLibrary: [{
+                id: "header-image",
+                image: "test.png"
+            }]
+        });
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly with presenter is passed and click on ImageGrid", () => {
         component.setProps({
             data: {
                 presenter: {
@@ -81,16 +105,82 @@ describe("ImageGrid", () => {
                     id: "background-image",
                     extention: "",
                 },
-                imageLibrary: [{
-                    id: "background-image",
-                    image: "test1.png"
-                }, {
-                    id: "presenter-image",
-                    image: "test2.png"
-                }]
+                gridImages: [
+                    {
+                        extention: "",
+                        id: "image-1",
+                    },
+                    {
+                        extention: "",
+                        id: "image-2",
+                    }, {
+                        extention: "",
+                        id: "image-3",
+                    },
+                    {
+                        extention: "",
+                        id: "image-4",
+                    },
+                ],
             },
+            imageLibrary: [{
+                id: "background-image",
+                image: "test1.png"
+            }, {
+                id: "image-1",
+                image: "test1.png"
+            }, {
+                id: "image-2",
+                image: "image1.png"
+            }, {
+                id: "image-3",
+                image: "image2.png"
+            }, {
+                id: "image-4",
+                image: "imag3.png"
+            }, {
+                id: "presenter-image",
+                image: "test2.png"
+            }]
         });
-        component.find(Grid).simulate('click')
+        component.find(ClickableImage).at(1).simulate('click')
+    });
+    it("should render correctly with presenter is null and click on ImageGrid", () => {
+        component.setProps({
+            data: {
+                gridImages: [
+                    {
+                        extention: "",
+                        id: "image-1",
+                    },
+                    {
+                        extention: "",
+                        id: "image-2",
+                    }, {
+                        extention: "",
+                        id: "image-3",
+                    },
+                    {
+                        extention: "",
+                        id: "image-4",
+                    },
+                ],
+            },
+            imageLibrary: [{
+                id: "image-1",
+                image: "test1.png"
+            }, {
+                id: "image-2",
+                image: "image1.png"
+            }, {
+                id: "image-3",
+                image: "image2.png"
+            }, {
+                id: "image-4",
+                image: "imag3.png"
+            },]
+        });
+        component.find(ClickableImage).at(0).simulate('click')
     });
     it("should render correctly when passed withAnimation props", () => {
         let animation = {
@@ -145,9 +235,6 @@ describe("ImageGrid", () => {
                 image: "test-2.png"
             }]
         })
-    })
-    it('should click on Clickable Image', () => {
-        console.log(component.find(Grid).children())
     })
     it("should render correctly when passed isHidden props as false", () => {
         component.setProps({ isHidden: false })
