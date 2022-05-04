@@ -59,6 +59,24 @@
   .qui .qui-option-item-seven-container .qui-option-item-radio-container {
     min-width: 3.25em;
   }
+  .qui .qui-option-item-seven-container .qui-optional-image-field-button {
+    display: none;
+  }
+  .qui .qui-option-item-seven-container .qui .qui-optional-image-field-icon {
+    border: 0.08em solid #ffbf00;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .qui .qui-option-item-seven-container .qui-optional-image-field-button {
+    display: block;
+  }
+  .qui .qui-option-item-seven-container .qui .qui-optional-image-field-icon {
+    border: none;
+    border-top: 0.08em solid #ffbf00;
+    border-left: 0.08em solid #ffbf00;
+    border-bottom: 0.08em solid #ffbf00;
+  }
 }
 
 @media only screen and (min-width: 769px) {

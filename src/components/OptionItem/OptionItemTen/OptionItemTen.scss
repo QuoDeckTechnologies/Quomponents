@@ -67,10 +67,25 @@
   .qui.qui-option-item-ten .qui-char-limit-max-length {
     font-size: 0.4em;
   }
+  .qui .qui-option-item-ten-container .qui-optional-image-field-button {
+    display: none;
+  }
+  .qui .qui-option-item-ten-container .qui .qui-optional-image-field-icon {
+    border: 0.08em solid #ffbf00;
+  }
 }
 
 @media only screen and (min-width: 481px) {
   .qui.qui-option-item-ten .qui-char-limit-max-length {
     font-size: 0.65em;
+  }
+  .qui .qui-option-item-ten-container .qui-optional-image-field-button {
+    display: block;
+  }
+  .qui .qui-option-item-ten-container .qui .qui-optional-image-field-icon {
+    border: none;
+    border-top: 0.08em solid #ffbf00;
+    border-left: 0.08em solid #ffbf00;
+    border-bottom: 0.08em solid #ffbf00;
   }
 }

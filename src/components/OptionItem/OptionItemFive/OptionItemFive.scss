@@ -47,25 +47,26 @@
     font-size: 0.8em;
   }
   .qui .qui-option-item-five-container .qui-optional-image-field-button {
-    padding: 1em 0em;
-    font-size: 0.8em;
+    display: none;
   }
   .qui .qui-option-item-five-container .qui .qui-optional-image-field-icon {
-    font-size: 1.53em;
-    padding: 0.48em 0.1em;
+    border: 0.08em solid #ffbf00;
   }
 }
 
 @media only screen and (min-width: 481px) {
   .qui .qui-option-item-five-container .qui-optional-image-field-button {
+    display: block;
     padding: 0.6em 0.5em;
     font-size: 1em;
   }
   .qui .qui-option-item-five-container .qui .qui-optional-image-field-icon {
     font-size: 1.85em;
-  }
-  .qui .qui-option-item-five-container .qui .qui-optional-image-field-icon {
     padding: 0.299em 0.2em;
+    border: none;
+    border-top: 0.08em solid #ffbf00;
+    border-left: 0.08em solid #ffbf00;
+    border-bottom: 0.08em solid #ffbf00;
   }
 }
 
