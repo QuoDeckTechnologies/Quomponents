@@ -176,7 +176,7 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to set selected option in the content array
   // -------------------------------------------------------------
-  const handleSelect = (targetName, value, checked) => {
+  const handleSelect = (targetName, checked) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
@@ -221,12 +221,10 @@ const MultipleTemplate = (args) => {
             <OptionItemFour
               {...args}
               content={{ ...content }}
-              onSelect={(targetName, value, checked) =>
-                handleSelect(targetName, value, checked)
+              onSelect={(targetName, checked) =>
+                handleSelect(targetName, checked)
               }
-              onInput={(targetName, value, checked) =>
-                handleInput(targetName, value, checked)
-              }
+              onInput={(targetName, value) => handleInput(targetName, value)}
               onClose={handleRemove}
             />
           </div>

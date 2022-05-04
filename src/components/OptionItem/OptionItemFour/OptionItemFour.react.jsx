@@ -97,15 +97,12 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
-  const { content, onSelect } = props;
+  const { content, onSelect, onInput } = props;
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  const [value, setValue] = useState(content?.value);
+  // const [value, setValue] = useState(content?.value);
   const [isChecked, setIsChecked] = useState(content?.checked);
-  useEffect(() => {
-    onSelect(content?.targetName, value, isChecked);
-  }, [isChecked]);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -119,14 +116,14 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   const handleCheckBox = (data) => {
     setIsChecked(data?.checked);
-    // onSelect(content?.targetName, value, data?.checked);
+    onSelect(content?.targetName, data?.checked);
   };
   //-------------------------------------------------------------------
   // 6. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
-    setValue(value);
-    props.onInput(content?.targetName, value, isChecked);
+    // setValue(value);
+    onInput(content?.targetName, value);
   };
 
   // ========================= Render Function =================================
@@ -148,7 +145,6 @@ export default function OptionItemFour(props) {
           />
           <span
             className="qui-option-item-four-checkbox-label"
-            onClick={() => setIsChecked((prevState) => !prevState)}
           >
             {isChecked ? "Correct" : "Incorrect"}
           </span>
