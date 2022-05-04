@@ -1,5 +1,5 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
@@ -104,6 +104,10 @@ DosAndDonts.propTypes = {
     Use to show/hide the component
   */
   isHidden: PropTypes.bool,
+  /**
+    Anagram component must have the onClick function passed as props
+    */
+  onClick: PropTypes.func,
 };
 
 DosAndDonts.defaultProps = {
@@ -138,6 +142,7 @@ DosAndDonts.defaultProps = {
 **/
 export default function DosAndDonts(props) {
   let { data, withColor, imageLibrary } = props
+  const [active, setActive] = useState("none")
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -163,6 +168,18 @@ export default function DosAndDonts(props) {
     title: props.data?.title,
     subTitle: props.data?.subtitle,
   }
+  const lists = (value) => {
+    if (value === 0) {
+      setActive("do")
+    }
+    if (value === 1) {
+      setActive("dont")
+    }
+  }
+  let handleClick = (value) => {
+    props.onClick(value)
+    lists(value)
+  }
   const getBackground = () => {
     return {
       background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
@@ -171,15 +188,17 @@ export default function DosAndDonts(props) {
   };
   const background = data?.backgroundImage
     ? getBackground()
-    : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
-  console.log(data.options.correct === 0)
+    : {
+      backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#00000079"
+    };
   // ========================= Render Function =================================
   return (
     <motion.div
       initial={animate.from}
       animate={animate.to}
-      className={`qui ${quommonClasses.parentClasses}`}
-    >{data &&
+      className={`qui ${quommonClasses.parentClasses}`
+      }
+    > {data &&
       <div className="qui-dos-donts-card" style={{ ...background }}>
         <div className={`${quommonClasses.childClasses}`} key={"dos-donts-" + props.slideId}>
           {!data?.image && (data?.title || data?.subtitle) && (
@@ -201,10 +220,23 @@ export default function DosAndDonts(props) {
                 text: data?.options[1]?.text,
               },
             ]}
-            asSize="normal" />
-          {data.options[0].correct ? <BulletBlock {...props} content={data?.bullets} withColor={bulletBlockColors} asVariant={props.asVariant} /> : <BulletBlock {...props} content={data?.reBullets} withColor={bulletBlockColors} asVariant={props.asVariant} />}
+            asSize="normal"
+            onClick={(value) => handleClick(value)} />
         </div>
-      </div>}
-    </motion.div>
+        {active === "do" &&
+          <BulletBlock {...props} content={data?.bullets} withColor={bulletBlockColors} asVariant={props.asVariant} />}
+        {active === "dont" &&
+          <BulletBlock {...props} content={data?.reBullets} withColor={bulletBlockColors} asVariant={props.asVariant} />}
+        {active === "none" && (
+          <h3 className="qui-do-donts-default-text"
+            style={{
+              color: slideHeaderColors.textColor
+            }}>
+            Click on the buttons above to view
+          </h3>
+        )}
+      </div>
+      }
+    </motion.div >
   );
 }

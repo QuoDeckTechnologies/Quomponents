@@ -1,5 +1,6 @@
 .qui .qui-dos-donts-card {
   padding: 1.5em;
+  position: relative;
   border-radius: 1em;
   min-height: 30.5em;
   .qui-side-header {
@@ -49,9 +50,19 @@
     max-height: 14em;
     filter: drop-shadow(0px 5px 2px #a09797);
   }
+  .qui-do-donts-default-text {
+    position: absolute;
+    bottom: 1em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+  }
 }
 @media only screen and (min-width: 320px) {
   .qui .qui-dos-donts-card {
+    .qui-do-donts-default-text {
+      font-size: 1em;
+    }
     .qui .qui-choices {
       padding: 0.5em 1.5em;
       margin: 0 0.1em;
@@ -61,6 +72,9 @@
 }
 @media only screen and (min-width: 481px) {
   .qui .qui-dos-donts-card {
+    .qui-do-donts-default-text {
+      font-size: 1.17em;
+    }
     width: 22em;
   }
   .qui-bulletblock {
