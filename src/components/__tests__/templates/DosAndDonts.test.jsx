@@ -51,6 +51,7 @@ describe("DosAndDonts", () => {
           duration: 0.5,
           delay: 0,
         }}
+        isChoice={false}
         isHidden={false}
         isDisabled={false}
         onClick={(e) => {
@@ -99,6 +100,14 @@ describe("DosAndDonts", () => {
   })
   it("should render correctly when passed isDisabled props as true", () => {
     component.setProps({ isDisabled: true })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isDisabled props as true", () => {
+    component.setProps({ isChoice: true })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isDisabled props as true", () => {
+    component.setProps({ isChoice: false })
     expect(component.exists()).toBe(true);
   })
   it("should render correctly when passed asVariant prop as primary", () => {
