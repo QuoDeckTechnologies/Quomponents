@@ -20,7 +20,7 @@ OverlayBackground.propTypes = {
 	actions: PropTypes.shape({
 		updateDeck: PropTypes.func
 	}),
-	
+
 	//=======================================
 	// Quommon props
 	//=======================================

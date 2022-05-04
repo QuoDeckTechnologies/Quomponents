@@ -46,8 +46,11 @@ export default function QuestionBankSection(props) {
 		"ribbon-tools-menu-question-bank-parent"
 	);
 
+	//-------------------------------------------------------------------
+	// 2. Question Bank function
+	//-------------------------------------------------------------------
 	const handleQuestionBank = () => {
-		props.onClick()
+		//Logic here
 	}
 
 	// ========================= Render Function =================================

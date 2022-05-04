@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import { getQuommons } from "../../../../common/javascripts/helpers";
@@ -43,9 +43,12 @@ export default function AnalysisSection(props) {
 	//-------------------------------------------------------------------
 	let quommonClasses = getQuommons(props, "ribbon-tools-menu-analysis-parent");
 
-	const [modalOpen, setModalOpen] = useState();
-	const handleModalOpen = () => { setModalOpen(true) };
-	const handleModalClose = () => { setModalOpen(false) };
+	//-------------------------------------------------------------------
+	// 2. Handle Open Modal
+	//-------------------------------------------------------------------
+	const handleModalOpen = () => {
+		// Logic here
+	};
 
 	// ========================= Render Function =================================
 	return (
@@ -66,9 +69,6 @@ export default function AnalysisSection(props) {
 						Analysis
 					</div>
 				</div>
-				{modalOpen && <div className="qui-ribbon-tools-menu-deck-analysis-modal" onClick={handleModalClose}>
-					{/* Deck Analysis modal here */}
-				</div>}
 			</div>
 		</div>
 	);

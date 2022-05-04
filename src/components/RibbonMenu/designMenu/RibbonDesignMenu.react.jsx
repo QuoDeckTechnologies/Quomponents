@@ -17,6 +17,9 @@ RibbonDesignMenu.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
+	actions: PropTypes.shape({
+		updateDeck: PropTypes.func
+	}),
 
 	//=======================================
 	// Quommon props

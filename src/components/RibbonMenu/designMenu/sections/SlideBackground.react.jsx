@@ -17,6 +17,7 @@ SlideBackground.propTypes = {
 	actions: PropTypes.shape({
 		updateDeck: PropTypes.func
 	}),
+
 	//=======================================
 	// Quommon props
 	//=======================================
@@ -83,7 +84,6 @@ export default function SlideBackground(props) {
 								<div className="qui-ribbon-menu-label-set" onClick={handleModalOpen}>Set</div>
 								<div className="qui-ribbon-menu-label-remove" onClick={removeBackground}> Remove</div>
 							</div>
-
 						</div>
 					</div>
 					<div className="qui-ribbon-menu-label-file">Slide Background</div>

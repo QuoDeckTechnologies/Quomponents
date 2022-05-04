@@ -19,7 +19,6 @@ describe("SaveSection", () => {
 		jest.resetAllMocks();
 		component = shallow(
 			<SaveSection
-				onSaveDeck={jest.fn()}
 				asFloated="left"
 				isHidden={false}
 				isDisabled={false}

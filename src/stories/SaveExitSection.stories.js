@@ -6,22 +6,6 @@ export default {
 	component: SaveExitSection,
 	argTypes: {
 		actions: {},
-		deckId: "",
-		onSaveDeck: {
-			table: {
-				category: "Events",
-				defaultValue: null,
-			},
-		},
-		onAddQDF: {
-			table: {
-				category: "Events",
-				defaultValue: null,
-			},
-		},
-		params: {
-			deckId: ""
-		},
 		asFloated: {
 			control: "select",
 			options: ["left", "right", "inline"],
@@ -76,13 +60,6 @@ export default {
 const Template = (args) => <SaveExitSection {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-	actions: {
-		addPoints: (points) => { return points }
-	},
-	params: {
-		deckId: "1"
-	},
-	deckId: "1",
 	asFloated: "left",
 	isDisabled: false,
 	isHidden: false,

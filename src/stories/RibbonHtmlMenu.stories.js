@@ -6,23 +6,6 @@ export default {
 	component: RibbonHtmlMenu,
 	argTypes: {
 		actions: {},
-		deckId: "",
-		apiUrls: {},
-		onSaveDeck: {
-			table: {
-				category: "Events",
-				defaultValue: null,
-			},
-		},
-		onAddQDF: {
-			table: {
-				category: "Events",
-				defaultValue: null,
-			},
-		},
-		params: {
-			deckId: ""
-		},
 		asFloated: {
 			control: "select",
 			options: ["left", "right", "inline"],
@@ -77,13 +60,6 @@ export default {
 const Template = (args) => <RibbonHtmlMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-	actions: {
-		addPoints: (points) => { return points }
-	},
-	params: {
-		deckId: "1"
-	},
-	deckId: "1",
 	asFloated: "left",
 	isDisabled: false,
 	isHidden: false,

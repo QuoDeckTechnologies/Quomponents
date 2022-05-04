@@ -6,22 +6,6 @@ export default {
 	component: RibbonHomeMenu,
 	argTypes: {
 		actions: {},
-		deckId: "",
-		onSaveDeck: {
-			table: {
-				category: "Events",
-				defaultValue: null,
-			},
-		},
-		onAddQDF: {
-			table: {
-				category: "Events",
-				defaultValue: null,
-			},
-		},
-		params: {
-			deckId: ""
-		},
 		asFloated: {
 			control: "select",
 			options: ["left", "right", "inline"],
@@ -81,17 +65,12 @@ Default.args = {
 		duplicateSlide: (value) => { return value },
 		deleteSlide: (value) => { return console.log(value) },
 		changeSlideNav: (navObj) => { return navObj },
-		setUserOptions: (view) => { return view },
-		addPoints: (points) => { return points }
+		setUserOptions: (view) => { return view }
 	},
 	deck: {
 		content: [{}, {}, {}],
 		currentSlide: 1
 	},
-	params: {
-		deckId: "1"
-	},
-	deckId: "1",
 	asFloated: "left",
 	isDisabled: false,
 	isHidden: false,

@@ -24,7 +24,6 @@ describe("RibbonMenu", () => {
 				asEmphasis="html"
 				actions={{
 					updateDeck: jest.fn(),
-					addPoints: jest.fn(),
 					addSlide: jest.fn(),
 					duplicateSlide: jest.fn(),
 					deleteSlide: jest.fn(),
@@ -37,9 +36,6 @@ describe("RibbonMenu", () => {
 					voEnabled: false,
 					content: [{}, {}, {}],
 					currentSlide: 1
-				}}
-				params={{
-					deckId: "1"
 				}}
 				isHidden={false}
 				isDisabled={false}

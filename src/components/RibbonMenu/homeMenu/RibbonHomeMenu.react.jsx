@@ -36,21 +36,6 @@ RibbonHomeMenu.propTypes = {
 		content: PropTypes.array,
 		currentSlide: PropTypes.number
 	}),
-	/** 
-	The deckId is received from DeckEditorContainer for use.
-	*/
-	deckId: PropTypes.string,
-	/** 
-	The onSaveDeck function is received from DeckEditorContainer for use.
-	*/
-	onSaveDeck: PropTypes.func,
-	/** 
-	The onAddQDF function is received from DeckEditorContainer for use.
-	*/
-	onAddQDF: PropTypes.func,
-	params: PropTypes.shape({
-		deckId: PropTypes.string
-	}),
 
 	//=======================================
 	// Quommon props

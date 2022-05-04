@@ -68,8 +68,5 @@ describe("AnalysisSection", () => {
 
 	it("should open and close Deck Analysis Modal", () => {
 		component.find(IconLink).simulate('click');
-		expect(component.find(".qui-ribbon-tools-menu-deck-analysis-modal").exists()).toBe(true);
-		component.find(".qui-ribbon-tools-menu-deck-analysis-modal").simulate('click');
-		expect(component.find(".qui-ribbon-tools-menu-deck-analysis-modal").exists()).toBe(false);
 	})
 });

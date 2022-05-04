@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import { getQuommons } from "../../../../common/javascripts/helpers";
@@ -32,7 +32,7 @@ VoiceoverSection.propTypes = {
 	*/
 	isDisabled: PropTypes.bool,
 	/**
-	DeckSettingsSection component must have the onClick function passed as props
+	VoiceoverSection component must have the onClick function passed as props
 	*/
 	onClick: PropTypes.func,
 };
@@ -46,20 +46,23 @@ export default function VoiceoverSection(props) {
 		"ribbon-tools-menu-voiceover-section-parent"
 	);
 
-	const [voModalOpen, setVoModalOpen] = useState();
+	//-------------------------------------------------------------------
+	// 2. Handle Voiceover open modal
+	//-------------------------------------------------------------------
+	const handleVoModalOpen = () => {
+		// Logic here
+	};
 
-	const handleVoModalOpen = () => setVoModalOpen(true);
-	const handleVoModalClose = () => setVoModalOpen(false);
-
-	/**
-	 * Copies the voiceover from the text fields into the tts_audio field
-	 * Does not return a value, calls updateDeck action
-	 *
-	 * @public
-	 */
+	//-------------------------------------------------------------------
+	// 3. Copy Slide to Voiceover function
+	//-------------------------------------------------------------------
 	const copySlideToVoiceover = () => {
 		// Logic here
 	};
+
+	//-------------------------------------------------------------------
+	// 4. Save Voiceover function
+	//-------------------------------------------------------------------
 	const handleVoiceoverSave = () => {
 		// Logic here
 	};
@@ -124,14 +127,10 @@ export default function VoiceoverSection(props) {
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file" onClick={props.onClick}>
+					<div className="qui-ribbon-menu-label-file">
 						Voiceovers
 					</div>
 				</div>
-				{voModalOpen &&
-					<div className="qui-ribbon-tools-menu-voiceover-modal" onClick={handleVoModalClose}>
-						{/* Voiceover Modal here */}
-					</div>}
 			</div>
 		</div>
 	);

@@ -15,10 +15,6 @@ SaveSection.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
-	/** 
-	The onSaveDeck function is received from DeckEditorContainer for use.
-	*/
-	onSaveDeck: PropTypes.func,
 
 	//=======================================
 	// Quommon props
@@ -47,14 +43,23 @@ export default function SaveSection(props) {
 	//-------------------------------------------------------------------
 	let quommonClasses = getQuommons(props, "ribbon-menu-save-section-parent");
 
-
-
+	//-------------------------------------------------------------------
+	// 2. Save function
+	//-------------------------------------------------------------------
 	const handleSave = () => {
-		props.onSaveDeck();
+		// Logic here
 	};
+
+	//-------------------------------------------------------------------
+	// 3. Upload function
+	//-------------------------------------------------------------------
 	const handleUpload = () => {
 		// Logic here
 	};
+
+	//-------------------------------------------------------------------
+	// 4. Download function
+	//-------------------------------------------------------------------
 	const handleDownload = () => {
 		// Logic here
 	};

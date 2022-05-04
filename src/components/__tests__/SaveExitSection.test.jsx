@@ -13,23 +13,11 @@ describe("SaveExitSection", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
-	let component, actions, params;
-	actions = {
-		addPoints: jest.fn()
-	}
-	params = {
-		deckId: "1"
-	}
+	let component;
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<SaveExitSection
-				actions={actions}
-				deckId={"1"}
-				onSaveDeck={jest.fn()}
-				onAddQDF={jest.fn()}
-				params={params}
-				updatePoints={jest.fn()}
 				asFloated="left"
 				isHidden={false}
 				isDisabled={false}
@@ -81,11 +69,4 @@ describe("SaveExitSection", () => {
 		component.find(IconLink).simulate('click');
 		expect(component.exists()).toBe(true);
 	});
-
-	it("should close points modal", () => {
-		component.find(IconLink).simulate('click');
-		expect(component.find(".qui-ribbon-html-menu-points-modal").exists()).toBe(true);
-		component.find(".qui-ribbon-html-menu-points-modal").simulate('click');
-		expect(component.find(".qui-ribbon-html-menu-points-modal").exists()).toBe(false);
-	})
 });

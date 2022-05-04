@@ -16,27 +16,6 @@ RibbonHtmlMenu.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
-	/** 
-	The Actions object is received from DeckEditorContainer for use.
-	*/
-	actions: PropTypes.shape({
-		addPoints: PropTypes.func
-	}),
-	/** 
-	The deckId is received from DeckEditorContainer for use.
-	*/
-	deckId: PropTypes.string,
-	/** 
-	The onSaveDeck function is received from DeckEditorContainer for use.
-	*/
-	onSaveDeck: PropTypes.func,
-	/** 
-	The onAddQDF function is received from DeckEditorContainer for use.
-	*/
-	onAddQDF: PropTypes.func,
-	params: PropTypes.shape({
-		deckId: PropTypes.string
-	}),
 
 	//=======================================
 	// Quommon props

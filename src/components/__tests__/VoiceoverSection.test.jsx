@@ -84,13 +84,4 @@ describe("VoiceoverSection", () => {
 		let nextArrow = component.find(".qui-ribbon-menu-tool-label").at(1);
 		nextArrow.simulate("click");
 	});
-
-	it("should open and close voice modal", () => {
-		expect(component.find(".qui-ribbon-tools-menu-voiceover-modal").exists()).toBe(false)
-		let backArrow = component.find("IconLink").at(0);
-		backArrow.simulate("click");
-		expect(component.find(".qui-ribbon-tools-menu-voiceover-modal").exists()).toBe(true)
-		component.find(".qui-ribbon-tools-menu-voiceover-modal").simulate('click');
-		expect(component.find(".qui-ribbon-tools-menu-voiceover-modal").exists()).toBe(false)
-	})
 });

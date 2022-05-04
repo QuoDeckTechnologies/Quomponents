@@ -14,12 +14,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        onSaveDeck: {
-			table: {
-				category: "Events",
-				defaultValue: null,
-			},
-		},
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -70,23 +64,19 @@ Default.args = {
     asEmphasis: "html",
     actions: {
         updateDeck: (settingsObj) => { return settingsObj },
-		addPoints: (points) => { return points },
         addSlide: (value) => { return value },
-		duplicateSlide: (value) => { return value },
-		deleteSlide: (value) => { return console.log(value) },
-		changeSlideNav: (navObj) => { return navObj },
-		setUserOptions: (view) => { return view }
-	},
+        duplicateSlide: (value) => { return value },
+        deleteSlide: (value) => { return console.log(value) },
+        changeSlideNav: (navObj) => { return navObj },
+        setUserOptions: (view) => { return view }
+    },
     deck: {
         navEnabled: false,
         snEnabled: false,
         voEnabled: false,
         content: [{}, {}, {}],
-		currentSlide: 1
+        currentSlide: 1
     },
-	params: {
-		deckId: "1"
-	},
     isDisabled: false,
     isHidden: false,
 };
