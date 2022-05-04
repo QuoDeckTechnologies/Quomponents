@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    resolveImage
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -23,12 +24,18 @@ CaptionedParagraph.propTypes = {
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
-        label: PropTypes.string,
+        paragraph: PropTypes.string,
         caption: PropTypes.string,
-        image: PropTypes.string,
-        backgroundImage: PropTypes.string,
+        image: PropTypes.object,
+        backgroundImage: PropTypes.object,
     }).isRequired,
-
+    /**
+   CaptionedParagraph can set image & backgroundImage from imageLibrary.
+   */
+    imageLibrary: PropTypes.array,
+    /**
+    slideId can be used if same template is used continueously for multiple slides.
+    */
     slideId: PropTypes.number,
     //=======================================
     // Quommon props
@@ -110,12 +117,11 @@ export default function CaptionedParagraph(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring data from props
     //-------------------------------------------------------------------
-    let { data, withColor } = props;
+    let { data, withColor, imageLibrary, slideId, asVariant } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "captioned-paragraph");
-    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
@@ -124,37 +130,44 @@ export default function CaptionedParagraph(props) {
     // 4. Setting the colors of the imported components
     //-------------------------------------------------------------------
     let textblockColors = {
-        textColor: props.withColor?.textblockTextColor,
-        backgroundColor: props.withColor?.textblockBackgroundColor,
+        textColor: withColor?.textblockTextColor,
+        backgroundColor: withColor?.textblockBackgroundColor,
     }
     let captionColors = {
-        textColor: props.withColor?.captionTextColor,
-        backgroundColor: props.withColor?.captionBackgroundColor
+        textColor: withColor?.captionTextColor,
+        backgroundColor: withColor?.captionBackgroundColor
     }
     let slideHeaderColors = {
-        textColor: props.withColor?.slideHeaderTextColor,
-        accentColor: props.withColor?.slideHeaderAccentColor,
-        backgroundColor: props.withColor?.slideHeaderBackgroundColor
+        textColor: withColor?.slideHeaderTextColor,
+        accentColor: withColor?.slideHeaderAccentColor,
+        backgroundColor: withColor?.slideHeaderBackgroundColor
     }
     //-------------------------------------------------------------------
     // 5. Set background image and color for card
     //-------------------------------------------------------------------
     const getBackground = () => {
-        return {
-            background: `url(${data?.backgroundImage})`,
-            backgroundSize: "cover",
-        };
+        if (data?.backgroundImage) {
+            return {
+                backgroundImage: `url(${resolveImage(
+                    data?.backgroundImage.id,
+                    imageLibrary
+                )})`,
+            };
+        }
     };
-    const background = data?.backgroundImage
-        ? getBackground()
-        : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
+    const background = getBackground();
     // ========================= Render Function =================================
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            style={{ ...background }}
+            style={{
+                ...background,
+                backgroundColor: withColor?.backgroundColor,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover"
+            }}
 
         >
             <div className={`qui-captioned-paragraph-card ${quommonClasses.childClasses}`} key={"captioned paragraph" + props?.slideId}>
@@ -165,11 +178,13 @@ export default function CaptionedParagraph(props) {
                 )}
 
                 {data?.image && (
-                    <img className="qui-captioned-paragraph-image" src={data?.image} alt="" />
+                    <img className="qui-captioned-paragraph-image"
+                        src={resolveImage(data?.image.id, imageLibrary)}
+                        alt="ImageWithCaption" />
                 )}
                 <div className="qui-captioned-paragraph-text-block">
                     <TextBlock {...props}
-                        content={props.data?.label}
+                        content={props.data?.paragraph}
                         withColor={textblockColors}
                     />
                 </div>

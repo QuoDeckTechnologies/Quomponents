@@ -151,8 +151,8 @@ Default.parameters = {
 //-------------------------------------------------------------
 // Colored Conversation
 // -------------------------------------------------------------
-export const ColoredIconBulletlist = Template.bind({});
-ColoredIconBulletlist.args = {
+export const ColoredConversation = Template.bind({});
+ColoredConversation.args = {
     ...Default.args,
     data: {
         title: "Lorem ipsum dolor sit amet",
@@ -179,20 +179,20 @@ ColoredIconBulletlist.args = {
     asVariant: "secondary",
     withColor: {
         backgroundColor: "#F3E5F5",
-        slideHeaderTextColor: "#FFFF",
+        slideHeaderTextColor: "",
         slideHeaderAccentColor: "#9C27B0",
-        slideHeaderBackgroundColor: "#AB47BC",
+        slideHeaderBackgroundColor: "#DBDBDB",
         iconListItemTextColor: "#454545"
     },
 };
-ColoredIconBulletlist.parameters = {
+ColoredConversation.parameters = {
     docs: {
         description: {
             story: "Use to override the standard colors of the component.",
         },
         source: {
             code: `<Conversation {...${JSON.stringify(
-                ColoredIconBulletlist.args,
+                ColoredConversation.args,
                 null,
                 2
             )}}/>`,
@@ -202,8 +202,8 @@ ColoredIconBulletlist.parameters = {
 //-------------------------------------------------------------
 // Animated Conversation
 // -------------------------------------------------------------
-export const AnimatedIconConversation = Template.bind({});
-AnimatedIconConversation.args = {
+export const AnimatedConversation = Template.bind({});
+AnimatedConversation.args = {
     ...Default.args,
     withAnimation: {
         animation: "fade",
@@ -211,14 +211,14 @@ AnimatedIconConversation.args = {
         delay: 0,
     },
 };
-AnimatedIconConversation.parameters = {
+AnimatedConversation.parameters = {
     docs: {
         description: {
             story: "We can animate the appearance of Conversation",
         },
         source: {
             code: `<Conversation {...${JSON.stringify(
-                AnimatedIconConversation.args,
+                AnimatedConversation.args,
                 null,
                 2
             )}}/>`,
@@ -229,8 +229,8 @@ AnimatedIconConversation.parameters = {
 // -------------------------------------------------------------
 // With Background Image Conversation
 // -------------------------------------------------------------
-export const WithBackgroundImageConversation = Template.bind({});
-WithBackgroundImageConversation.args = {
+export const ConversationWithHeaderImageAndBackgroundImage = Template.bind({});
+ConversationWithHeaderImageAndBackgroundImage.args = {
     ...Default.args,
     data: {
         title: "Lorem ipsum dolor sit amet",
@@ -260,13 +260,13 @@ WithBackgroundImageConversation.args = {
         iconListItemTextColor: "#ffffff"
     }
 };
-WithBackgroundImageConversation.parameters = {
+ConversationWithHeaderImageAndBackgroundImage.parameters = {
     docs: {
         description: {
             story: "Use to show Conversation with BackgroundImage.",
         },
         source: {
-            code: `<Conversation {...${JSON.stringify(WithBackgroundImageConversation.args, null, 2)}}/>`,
+            code: `<Conversation {...${JSON.stringify(ConversationWithHeaderImageAndBackgroundImage.args, null, 2)}}/>`,
         },
     },
 };
