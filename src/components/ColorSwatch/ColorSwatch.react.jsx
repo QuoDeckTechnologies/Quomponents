@@ -93,7 +93,7 @@ export default function ColorSwatch(props) {
             <div className={`qui-color-swatch-container`}
                 style={{ backgroundColor: colors?.pageColor }}
                 onClick={props.onClick}
-                >
+            >
                 <div className={`qui-color-swatch-title`}
                     style={{ backgroundColor: colors?.primaryColor }}>
                 </div>
