@@ -102,7 +102,7 @@ CaptionedBulletList.defaultProps = {
     backgroundImage: "",
     bullets: []
   },
-  imageLibrary:[{}],
+  imageLibrary: [{}],
   slideId: 0,
   //=======================================
   // Quommon props
