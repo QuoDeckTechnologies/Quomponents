@@ -39,10 +39,19 @@
     }
 }
 
+.qui-slide-single-select-container {
+    margin-top: 1em;
+}
+
 @media only screen and (min-width: 320px) {
     .qui .qui-slide-single-select-question {
         font-size: 1.2em;
         width: auto;
+    }
+
+    .qui .qui-button-bank-single-button .qui-button button {
+        width: 100%;
+        padding: 1em 0;
     }
 }
 
@@ -56,12 +65,22 @@
     }
 }
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 540px) {
+    .qui .qui-button-bank-single-button .qui-button button {
+        padding: 0.7em 0;
+    }
+}
+
+@media only screen and (min-width: 768px) {
     .qui .qui-slide-single-select-question {
         font-size: 1.4em;
     }
 
     .qui .qui-slide-single-select-card {
         width: 20em;
+    }
+
+    .qui .qui-button-bank-single-button .qui-button button {
+        padding: 0.7em 0;
     }
 }

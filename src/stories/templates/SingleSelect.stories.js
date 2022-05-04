@@ -29,12 +29,10 @@ export default {
 					slideHeaderTextColor: "",
 					slideHeaderAccentColor: "",
 					slideHeaderBackgroundColor: "",
-					backgroundColor: "#ffffff",
-					primaryBackgroundColor: "",
-					secondaryBackgroundColor: "",
-					accentColor: "",
-					primaryTextColor: "",
-					secondaryTextColor: "",
+					buttonBackgroundColor: "",
+					buttonTextColor: "",
+					buttonHoverBackgroundColor: "",
+					buttonHoverTextColor: ""
 				},
 			},
 		},
@@ -46,12 +44,6 @@ export default {
 					duration: 0,
 					delay: 0,
 				},
-			},
-		},
-		isSingleSelect: {
-			table: {
-				category: "is-Toggles",
-				defaultValue: true,
 			},
 		},
 		asEmphasis: {
@@ -113,7 +105,13 @@ Default.args = {
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
 		image: { id: "header-image", extension: "" },
 		backgroundImage: { id: "", extention: "" },
-		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+		options: [
+			{ correct: "checked", text: "Item 1" },
+			{ correct: "", text: "Item 2" },
+			{ correct: "", text: "Item 3" },
+			{ correct: "", text: "Item 4" }
+		],
 	},
 	slideId: 0,
 	imageLibrary: [{
@@ -127,12 +125,11 @@ Default.args = {
 		slideHeaderTextColor: "#ffffff",
 		slideHeaderAccentColor: "#AD2929",
 		slideHeaderBackgroundColor: "#AD292980",
-		backgroundColor: "#ffffff",
-		primaryBackgroundColor: "",
-		secondaryBackgroundColor: "",
-		accentColor: "",
-		primaryTextColor: "",
-		secondaryTextColor: "",
+		buttonBackgroundColor: "#ad292980",
+		buttonTextColor: "",
+		buttonHoverBackgroundColor: "#AD2929",
+		buttonHoverTextColor: "",
+		backgroundColor: "#AD292"
 	},
 	withAnimation: {
 		animation: "zoom",
@@ -160,22 +157,26 @@ SingleSelectWithSlideHeader.args = {
 		subtitle:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
 		backgroundImage: { id: "", extention: "" },
-		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+		options: [
+			{ correct: "checked", text: "Item 1" },
+			{ correct: "", text: "Item 2" },
+			{ correct: "", text: "Item 3" },
+			{ correct: "", text: "Item 4" }
+		],
 	},
 	slideId: 0,
-	isSingleSelect: true,
-	asVariant: "warning",
+	asVariant: "primary",
 	withColor: {
 		questionColor: "#000000",
 		slideHeaderTextColor: "#ffffff",
 		slideHeaderAccentColor: "#AD2929",
 		slideHeaderBackgroundColor: "#AD292980",
-		backgroundColor: "#ffffff",
-		primaryBackgroundColor: "",
-		secondaryBackgroundColor: "",
-		accentColor: "",
-		primaryTextColor: "",
-		secondaryTextColor: "",
+		buttonBackgroundColor: "",
+		buttonTextColor: "",
+		buttonHoverBackgroundColor: "",
+		buttonHoverTextColor: "",
+		backgroundColor: "#AD292"
 	},
 	withAnimation: {
 		animation: "zoom",
@@ -200,94 +201,34 @@ SingleSelectWithSlideHeader.parameters = {
 // -------------------------------------------------------------
 // MultipleSingleSelect
 // -------------------------------------------------------------
-export const MultipleSingleSelect = (args) => {
+export const EmphasisSingleSelect = (args) => {
 	const baseObj1 = {
 		...Object.assign({}, Default.args, {
 			asVariant: "primary",
-			withColor: {
-				slideHeaderTextColor: "#ffffff",
-				slideHeaderAccentColor: "#AD2929",
-				slideHeaderBackgroundColor: "#AD292980",
-				primaryBackgroundColor: "",
-				secondaryBackgroundColor: "",
-				accentColor: "",
-				primaryTextColor: "",
-				secondaryTextColor: "",
-			},
-			withAnimation: {
-				animation: "slideRight",
-				duration: 0.5,
-				delay: 0,
-			},
-			asEmphasis: "text",
-			onClick: () => { }
-		})
-	};
-	const baseObj2 = {
-		...Object.assign({}, Default.args, {
-			asVariant: "warning",
-			withColor: {
-				slideHeaderTextColor: "#ffffff",
-				slideHeaderAccentColor: "#AD2929",
-				slideHeaderBackgroundColor: "#AD292980",
-				primaryBackgroundColor: "",
-				secondaryBackgroundColor: "",
-				accentColor: "",
-				primaryTextColor: "",
-				secondaryTextColor: "",
-			},
-			withAnimation: {
-				animation: "slideRight",
-				duration: 0.5,
-				delay: 0,
-			},
 			asEmphasis: "outlined",
-			onClick: () => { }
-		})
-	};
-	const baseObj3 = {
-		...Object.assign({}, Default.args, {
-			asVariant: "secondary",
 			withColor: {
 				slideHeaderTextColor: "#ffffff",
 				slideHeaderAccentColor: "#AD2929",
 				slideHeaderBackgroundColor: "#AD292980",
-				primaryBackgroundColor: "",
-				secondaryBackgroundColor: "",
-				accentColor: "",
-				primaryTextColor: "",
-				secondaryTextColor: "",
+				buttonBackgroundColor: "#AD2929",
+				buttonTextColor: "#ffffff",
+				buttonHoverBackgroundColor: "#AD292980",
+				buttonHoverTextColor: "#AD2929",
+				backgroundColor: "#AD292"
 			},
 			withAnimation: {
 				animation: "slideRight",
 				duration: 0.5,
 				delay: 0,
 			},
-			asEmphasis: "contained",
-			onClick: () => { }
+			onClick: (value) => { return value }
 		})
 	};
 	return (
-		<div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", backgroundColor: "#454545" }}>
-			<div style={{ margin: "1em", width: "25em" }}>
-				<SingleSelect
-					{...Object.assign({}, baseObj1, {
-					})}
-				/>
-			</div>
-			<div style={{ margin: "1em", width: "25em" }}>
-				<SingleSelect
-					{...Object.assign({}, baseObj2, {
-					})}
-				/>
-			</div>
-			<div style={{ margin: "1em", width: "25em" }}>
-				<SingleSelect
-					{...Object.assign({}, baseObj3, {
-					})}
-				/>
-			</div>
-		</div>
+		<SingleSelect
+			{...Object.assign({}, baseObj1, {
+			})}
+		/>
 	);
 };
 // -------------------------------------------------------------
@@ -301,82 +242,24 @@ export const ColoredSingleSelect = (args) => {
 				slideHeaderTextColor: "#ffffff",
 				slideHeaderAccentColor: "#AD2929",
 				slideHeaderBackgroundColor: "#AD292980",
-				primaryBackgroundColor: "#AD2929",
-				secondaryBackgroundColor: "#AD292980",
-				accentColor: "",
-				primaryTextColor: "#ffffff",
-				secondaryTextColor: "#ffffff",
+				buttonBackgroundColor: "#AD2929",
+				buttonTextColor: "#ffffff",
+				buttonHoverBackgroundColor: "#AD292980",
+				buttonHoverTextColor: "#AD2929",
+				backgroundColor: "#AD292"
 			},
 			withAnimation: {
 				animation: "slideRight",
 				duration: 0.5,
 				delay: 0,
 			},
-			onClick: () => { }
-		})
-	};
-	const baseObj2 = {
-		...Object.assign({}, Default.args, {
-			asVariant: "warning",
-			withColor: {
-				slideHeaderTextColor: "#ffffff",
-				slideHeaderAccentColor: "#AD2929",
-				slideHeaderBackgroundColor: "#AD292980",
-				primaryBackgroundColor: "#CCFF00",
-				secondaryBackgroundColor: "#CCFF66",
-				accentColor: "",
-				primaryTextColor: "#000000",
-				secondaryTextColor: "#000000",
-			},
-			withAnimation: {
-				animation: "slideRight",
-				duration: 0.5,
-				delay: 0,
-			},
-			onClick: () => { }
-		})
-	};
-	const baseObj3 = {
-		...Object.assign({}, Default.args, {
-			asVariant: "secondary",
-			withColor: {
-				slideHeaderTextColor: "#ffffff",
-				slideHeaderAccentColor: "#AD2929",
-				slideHeaderBackgroundColor: "#AD292980",
-				primaryBackgroundColor: "#000066",
-				secondaryBackgroundColor: "#003366",
-				accentColor: "",
-				primaryTextColor: "#ffffff",
-				secondaryTextColor: "#ffffff",
-			},
-			withAnimation: {
-				animation: "slideRight",
-				duration: 0.5,
-				delay: 0,
-			},
-			onClick: () => { }
+			onClick: (value) => { return value }
 		})
 	};
 	return (
-		<div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", backgroundColor: "#454545" }}>
-			<div style={{ margin: "1em", width: "25em" }}>
-				<SingleSelect
-					{...Object.assign({}, baseObj1, {
-					})}
-				/>
-			</div>
-			<div style={{ margin: "1em", width: "25em" }}>
-				<SingleSelect
-					{...Object.assign({}, baseObj2, {
-					})}
-				/>
-			</div>
-			<div style={{ margin: "1em", width: "25em" }}>
-				<SingleSelect
-					{...Object.assign({}, baseObj3, {
-					})}
-				/>
-			</div>
-		</div>
+		<SingleSelect
+			{...Object.assign({}, baseObj1, {
+			})}
+		/>
 	);
 };

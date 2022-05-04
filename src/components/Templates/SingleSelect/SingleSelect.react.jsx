@@ -12,32 +12,29 @@ import "../../../common/stylesheets/common.css";
 import "./SingleSelect.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
-import ButtonBank from "../../ButtonBank/ButtonBank.react"
+import ButtonBank from "../../ButtonBank/ButtonBank.react";
 
 
-SlideChoice.propTypes = {
+SingleSelect.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-    SlideChoice data should be passed in data field and it is a required field
+    SingleSelect data should be passed in data field and it is a required field
     */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
         image: PropTypes.object,
         question: PropTypes.string,
-        backgroundImage: PropTypes.object
+        backgroundImage: PropTypes.object,
+        options: PropTypes.array,
     }).isRequired,
     slideId: PropTypes.number,
     /**
-    Choice can set image & backgroundImage from imageLibrary array
+    SingleSelect can set image & backgroundImage from imageLibrary array
     */
     imageLibrary: PropTypes.array,
-    /**
-    Use to enable/disable the OR tag
-    */
-    isChoice: PropTypes.bool,
     /**
     Set action emphasis in increasing order 
     */
@@ -63,12 +60,11 @@ SlideChoice.propTypes = {
         slideHeaderTextColor: PropTypes.string,
         slideHeaderAccentColor: PropTypes.string,
         slideHeaderBackgroundColor: PropTypes.string,
-        backgroundColor: PropTypes.string,
-        primaryBackgroundColor: PropTypes.string,
-        secondaryBackgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
-        primaryTextColor: PropTypes.string,
-        secondaryTextColor: PropTypes.string,
+        buttonBackgroundColor: PropTypes.string,
+        buttonTextColor: PropTypes.string,
+        buttonHoverBackgroundColor: PropTypes.string,
+        buttonHoverTextColor: PropTypes.string,
+        backgroundColor: PropTypes.string
     }),
     /**
     Use to define the entry animation of the component
@@ -96,12 +92,12 @@ SlideChoice.propTypes = {
     */
     isHidden: PropTypes.bool,
     /**
-    SlideChoice component must have the onClick function passed as props
+    SingleSelect component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
 };
 
-SlideChoice.defaultProps = {
+SingleSelect.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -122,10 +118,10 @@ SlideChoice.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Component is used to show the question with the choice buttons, user need to submit the correct
-  answer using choice button.
+- Component is used to show the question with the SingleSelect buttons, user need to submit the correct
+  answer using SingleSelect button.
 **/
-export default function SlideChoice(props) {
+export default function SingleSelect(props) {
     let { data } = props;
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -191,7 +187,13 @@ export default function SlideChoice(props) {
             }
         }
     };
-    const background = getBackground()
+    const background = getBackground();
+
+    //-------------------------------------------------------------------
+    // 6. Variable for ButtonBank content props
+    //-------------------------------------------------------------------
+    let optionsArray = [];
+    data?.options?.forEach((item) => optionsArray.push(item?.text?.toLowerCase()));
 
     // ========================= Render Function =================================
     return (
@@ -213,11 +215,26 @@ export default function SlideChoice(props) {
                     >
                         {data?.question}
                     </div>
-
                     <div className="qui-slide-single-select-container">
-                        <ButtonBank content={["Button1", "Button2", "Button3"]} onClick={(e) => props.onClick(e)} />
+                        <ButtonBank
+                            {...props}
+                            content={optionsArray}
+                            asSize="massive"
+                            asFloated="none"
+                            withColor={{
+                                backgroundColor: props.withColor?.buttonBackgroundColor,
+                                textColor: props.withColor?.buttonTextColor,
+                                hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
+                                hoverTextColor: props.withColor?.buttonHoverTextColor,
+                            }}
+                            withAnimation={null}
+                            onClick={(e) =>
+                                props.onClick(
+                                    optionsArray.indexOf(e.target.innerText?.toLowerCase())
+                                )
+                            }
+                        />
                     </div>
-
                 </div>
             )}
         </motion.div>
