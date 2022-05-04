@@ -7,8 +7,6 @@ import { shallow } from "enzyme";
 // -------------------------------------
 import ImageGrid from "../../Templates/ImageGrid/ImageGrid.react";
 import ClickableImage from "../../ClickableImage/ClickableImage.react"
-import SlideHeader from "../../SlideHeader/SlideHeader.react"
-import Grid from "@mui/material/Grid"
 
 describe("ImageGrid", () => {
     // -------------------------------------
