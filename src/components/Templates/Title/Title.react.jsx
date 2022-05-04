@@ -203,6 +203,7 @@ export default function Title(props) {
         ...background,
         backgroundColor: withColor?.backgroundColor,
         backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
         backgroundSize: "cover",
       }}
     >
