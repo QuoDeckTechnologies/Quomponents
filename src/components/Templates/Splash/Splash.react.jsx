@@ -186,10 +186,12 @@ export default function Splash(props) {
         backgroundPosition: "center",
       }}
     >
-      <div className={`qui-splash-container ${quommonClasses.childClasses}`}>
-        {!data?.presenter && getView(data)}
+      <div className="qui-splash-wrapper">
+        <div className={`qui-splash-container ${quommonClasses.childClasses}`}>
+          {!data?.presenter && getView(data)}
+        </div>
+        {data?.presenter && getPresenterView(data)}
       </div>
-      {data?.presenter && getPresenterView(data)}
     </motion.div>
   );
 }
