@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    resolveImage,
 } from "../../../common/javascripts/helpers";
 import "../../../common/stylesheets/common.css";
 import "./BulletList.scss";
@@ -21,12 +22,16 @@ BulletList.propTypes = {
     data: PropTypes.shape({
         title: PropTypes.string,
         subTitle: PropTypes.string,
-        image: PropTypes.string,
-        backgroundImage: PropTypes.string,
+        image: PropTypes.object,
+        backgroundImage: PropTypes.object,
         bullets: PropTypes.arrayOf(
             PropTypes.string
         ).isRequired,
     }),
+    /**
+    BulletList can set image and backgroundImage from imageLibrary array
+    */
+    imageLibrary: PropTypes.array,
     /**
     slideId can be used if same template is used continueously for multiple slides.
     */
@@ -74,6 +79,7 @@ BulletList.defaultProps = {
     // Component Specific props
     //=======================================
     data: null,
+    imageLibrary: null,
     slideId: 0,
     //=======================================
     // Quommon props
@@ -94,7 +100,7 @@ export default function BulletList(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring props
     //-------------------------------------------------------------------
-    let { data, withColor, slideId } = props;
+    let { data, imageLibrary, slideId, withColor } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -118,15 +124,17 @@ export default function BulletList(props) {
     //-------------------------------------------------------------------
     // 4. Function to set background
     //-------------------------------------------------------------------
-    let getBackground = () => {
-        return {
-            background: `url(${data?.backgroundImage})`,
-            backgroundSize: "cover",
-        };
+    const getBackground = () => {
+        if (data?.backgroundImage) {
+            return {
+                backgroundImage: `url(${resolveImage(
+                    data?.backgroundImage.id,
+                    imageLibrary
+                )})`,
+            };
+        }
     };
-    const background = data?.backgroundImage
-        ? getBackground()
-        : bulletListbackgroundColor;
+    const background = getBackground();
     //-------------------------------------------------------------------
     // 5. Get animation of the component
     //-------------------------------------------------------------------
@@ -138,14 +146,22 @@ export default function BulletList(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-bullet-list-card ${quommonClasses.childClasses}`} style={background} key={"bullet-list" + slideId}>
+            <div className={`qui-bullet-list-card ${quommonClasses.childClasses}`} key={"bullet-list" + slideId} style={{
+                ...background,
+                backgroundColor: withColor?.backgroundColor,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+            }}>
                 {!data?.image && (data?.title || data?.subTitle) && (
                     <SlideHeader {...props}
                         content={{ title: data?.title, subTitle: data?.subTitle }}
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (
-                    <img className="qui-bullet-list-image" src={data?.image} alt="" />
+                    <img className="qui-bullet-list-image"
+                        src={resolveImage(data?.image?.id, imageLibrary)}
+                        alt="bulletlist" />
                 )}
                 <BulletBock {...props}
                     content={data?.bullets}
