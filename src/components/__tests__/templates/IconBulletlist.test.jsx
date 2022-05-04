@@ -24,11 +24,11 @@ describe("IconBulletlist", () => {
                     image: { id: "header-image", extention: "" },
                     backgroundImage: { id: "background-image", extention: "" },
                     iconlist: [{
-                        image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+                        image: {},
                         text: "Quisque sed turpis vel lectus suscipit auctor",
                     },
                     {
-                        image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                        image: {},
                         text: "Neque porro quisquam est qui dolorem"
                     }],
                 }}
@@ -64,7 +64,7 @@ describe("IconBulletlist", () => {
         component.setProps({ data: data })
         expect(component.exists()).toBe(true);
     });
-    
+
     it("should render correctly when passed asVariant prop as primary", () => {
         component.setProps({ asVariant: "primary" })
         expect(component.exists()).toBe(true);

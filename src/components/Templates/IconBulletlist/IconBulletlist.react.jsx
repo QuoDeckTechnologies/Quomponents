@@ -26,7 +26,7 @@ IconBulletlist.propTypes = {
         backgroundImage: PropTypes.object,
         iconlist: PropTypes.arrayOf(
             PropTypes.shape({
-                image: PropTypes.string,
+                image: PropTypes.object,
                 text: PropTypes.string,
             })),
 

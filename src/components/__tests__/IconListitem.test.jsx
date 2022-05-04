@@ -17,8 +17,9 @@ describe("IconListItem", () => {
         component = mount(
             <IconListItem
                 content={[{
-                    text: "", image: ""
+                    text: "", image: {}
                 }]}
+                imageLibrary={null}
                 asEmphasis="conversation"
                 asFloated="none"
                 asSize="normal"
@@ -121,7 +122,7 @@ describe("IconListItem", () => {
     });
     it("should render correctly without throwing error when content props passed as null and asEmphasis as list ", () => {
         let item = [{
-            image: "",
+            image: {},
             text: ""
         },]
         component.setProps({ asEmphasis: "list" })

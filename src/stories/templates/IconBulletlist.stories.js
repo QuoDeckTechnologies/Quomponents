@@ -89,24 +89,32 @@ Default.args = {
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         iconlist: [
             {
-                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                image: { id: "iconlist-image", extention: "" },
                 text: "Neque porro quisquam est qui dolorem",
             },
             {
-                image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+                image: { id: "icon-list-image", extention: "" },
                 text: "Neque porro quisquam est qui dolorem",
             },
             {
-                image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+                image: { id: "iconlist-image", extention: "" },
                 text: "Neque porro quisquam est qui dolorem",
             },
             {
-                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                image: { id: "icon-list-image", extention: "" },
                 text: "Neque porro quisquam est qui dolorem",
             },
         ],
     },
     imageLibrary: [
+        {
+            id: "iconlist-image",
+            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+        },
+        {
+            id: "icon-list-image",
+            image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+        },
         {
             id: "header-image",
             image:
@@ -150,22 +158,24 @@ ColoredIconBulletlist.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        iconlist: [{
-            image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-            text: "Quisque sed turpis vel lectus suscipit auctor",
-        },
-        {
-            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-            text: "Neque porro quisquam est qui dolorem"
-        },
-        {
-            image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-            text: "Quisque sed turpis vel lectus suscipit auctor."
-        },
-        {
-            image: "",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-        }],
+        iconlist: [
+            {
+                image: { id: "iconlist-image", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "icon-list-image", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "iconlist-image", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "icon-list-image", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+        ],
     },
     asVariant: "secondary",
     withColor: {
@@ -225,24 +235,25 @@ WithoutHeaderImageIconBulletlist.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        iconlist: [{
-            image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-            text: "Quisque sed turpis vel lectus suscipit auctor",
-        },
-        {
-            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-            text: "Neque porro quisquam est qui dolorem"
-        },
-        {
-            image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-            text: "Quisque sed turpis vel lectus suscipit auctor."
-        },
-        {
-            image: "",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-        }],
+        iconlist: [
+            {
+                image: { id: "iconlist-image", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "icon-list-image", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "iconlist-image", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "icon-list-image", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+        ],
     },
-    slideId: 0,
     asVariant: "warning",
     withColor: {
         backgroundColor: "#171030",
@@ -279,19 +290,19 @@ WithBackgroundImageIconBulletlist.args = {
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         iconlist: [
             {
-                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                image: { id: "iconlist-image", extention: "" },
                 text: "Neque porro quisquam est qui dolorem",
             },
             {
-                image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+                image: { id: "icon-list-image", extention: "" },
                 text: "Neque porro quisquam est qui dolorem",
             },
             {
-                image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+                image: { id: "iconlist-image", extention: "" },
                 text: "Neque porro quisquam est qui dolorem",
             },
             {
-                image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                image: { id: "icon-list-image", extention: "" },
                 text: "Neque porro quisquam est qui dolorem",
             },
         ],
@@ -309,6 +320,52 @@ WithBackgroundImageIconBulletlist.parameters = {
         },
         source: {
             code: `<IconBulletlist {...${JSON.stringify(WithBackgroundImageIconBulletlist.args, null, 2)}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// With Background Image and SlideHeader IconBulletlist
+// -------------------------------------------------------------
+export const BackgroundImageWithSlideHeaderIconBulletlist = Template.bind({});
+BackgroundImageWithSlideHeaderIconBulletlist.args = {
+    ...Default.args,
+    data: {
+        title: "Lorem ipsum dolor sit amet",
+        subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        iconlist: [
+            {
+                image: { id: "iconlist-image", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "icon-list-image", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "iconlist-image", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "icon-list-image", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+        ],
+        backgroundImage: { id: "background-image", extention: "" }
+    },
+    withColor: {
+        slideHeaderTextColor: "#ffffff",
+        slideHeaderAccentColor: "#010a26",
+        slideHeaderBackgroundColor: "#C98787",
+        iconListItemTextColor: "#ffffff",
+    },
+};
+BackgroundImageWithSlideHeaderIconBulletlist.parameters = {
+    docs: {
+        description: {
+            story: "Use to show IconBulletlist with BackgroundImage and SlideHeader.",
+        },
+        source: {
+            code: `<IconBulletlist {...${JSON.stringify(BackgroundImageWithSlideHeaderIconBulletlist.args, null, 2)}}/>`,
         },
     },
 };

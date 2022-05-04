@@ -3,7 +3,7 @@ import React from "react";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
+import { getAnimation, getQuommons, resolveImage } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./IconListItem.scss";
@@ -19,10 +19,14 @@ IconListItem.propTypes = {
   */
   content: PropTypes.arrayOf(
     PropTypes.shape({
-      image: PropTypes.string,
+      image: PropTypes.object,
       text: PropTypes.string,
     }).isRequired
   ),
+  /**
+  IconListItem can set image from imageLibrary array
+  */
+  imageLibrary: PropTypes.array,
   /**
   Use to set the state of IconListItem 
   */
@@ -74,6 +78,7 @@ IconListItem.defaultProps = {
   // Component Specific props
   //=======================================
   content: [],
+  imageLibrary: null,
   asEmphasis: "conversation",
   //=======================================
   // Quommon props
@@ -94,7 +99,7 @@ export default function IconListItem(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
-  const { content, asEmphasis, withColor } = props;
+  const { content, asEmphasis, imageLibrary, withColor } = props;
   // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "icon-list-item");
@@ -116,7 +121,7 @@ export default function IconListItem(props) {
                   <img
                     className="qui-icon-list-item-image"
                     style={{ order: index % 2 === 0 ? 1 : 2 }}
-                    src={item?.image ? item?.image : DefaultImage}
+                    src={resolveImage(item?.image.id, imageLibrary)}
                     alt="iconlist"
                   />
                 </div>
@@ -136,7 +141,7 @@ export default function IconListItem(props) {
                 <div className={`qui-icon-list-item ${quommonClasses.childClasses}`}>
                   <img
                     className="qui-icon-list-item-image"
-                    src={item?.image ? item?.image : DefaultImage}
+                    src={resolveImage(item?.image.id, imageLibrary)}
                     alt="iconlist"
                   />
                   <div className="qui-icon-list-item-text" style={{ color: withColor.textColor }}>
