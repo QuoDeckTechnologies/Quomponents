@@ -62,7 +62,6 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "center",
                 }}
             >
                 {story()}
@@ -70,7 +69,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a IconBulletlist with SlideHeader and IconListItem for general-purpose use.",
+        componentSubtitle: "Displays a IconBulletlist for general-purpose use.",
         a11y: { disable: true },
         docs: { iframeHeight: 550 },
     },
@@ -179,11 +178,11 @@ ColoredIconBulletlist.args = {
     },
     asVariant: "secondary",
     withColor: {
-        backgroundColor: "#b7ebe0",
-        slideHeaderTextColor: "#010a26",
-        slideHeaderAccentColor: "#010a26",
-        slideHeaderBackgroundColor: "#8497d1",
-        iconListItemTextColor: ""
+        backgroundColor: "#F3E5F5",
+        slideHeaderTextColor: "#FFFF",
+        slideHeaderAccentColor: "#9C27B0",
+        slideHeaderBackgroundColor: "#AB47BC",
+        iconListItemTextColor: "#454545"
     },
 };
 ColoredIconBulletlist.parameters = {

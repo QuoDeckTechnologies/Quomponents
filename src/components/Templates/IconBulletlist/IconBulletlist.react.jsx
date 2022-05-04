@@ -32,7 +32,7 @@ IconBulletlist.propTypes = {
 
     }).isRequired,
     /**
-    IconBulletlist can set image & backgroundImage from imageLibrary array
+    IconBulletlist can set iconlist image & backgroundImage from imageLibrary.
     */
     imageLibrary: PropTypes.array,
     /**
