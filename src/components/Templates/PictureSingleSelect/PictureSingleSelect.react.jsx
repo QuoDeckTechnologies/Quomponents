@@ -7,6 +7,7 @@ import _ from "lodash"
 import {
     getAnimation,
     getQuommons,
+    resolveImage
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -28,10 +29,16 @@ PictureSingleSelect.propTypes = {
         subtitle: PropTypes.string,
         question: PropTypes.string,
         imageOpts: PropTypes.array,
-        image: PropTypes.string,
-        backgroundImage: PropTypes.string,
+        image: PropTypes.object,
+        backgroundImage: PropTypes.object,
     }).isRequired,
-
+    /**
+      PictureSingleSelect can set images from imageLibrary array
+      */
+    imageLibrary: PropTypes.array,
+    /**
+      PictureSingleSelect slideId should be passed with props, to specify the slide.
+      */
     slideId: PropTypes.number,
     //=======================================
     // Quommon props
@@ -120,12 +127,11 @@ export default function PictureSingleSelect(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring data from props
     //-------------------------------------------------------------------
-    let { data, withColor } = props;
+    let { data, withColor, imageLibrary, slideId } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "picture-single-select");
-    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
@@ -146,23 +152,30 @@ export default function PictureSingleSelect(props) {
     // 5. Set background image and color for card
     //-------------------------------------------------------------------
     const getBackground = () => {
-        return {
-            background: `url(${data?.backgroundImage})`,
-            backgroundSize: "cover",
-        };
+        if (data?.backgroundImage) {
+            return {
+                backgroundImage: `url(${resolveImage(
+                    data?.backgroundImage.id,
+                    imageLibrary
+                )})`,
+            };
+        }
     };
-    const background = data?.backgroundImage
-        ? getBackground()
-        : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
+    const background = getBackground();
     // ========================= Render Function =================================
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            style={{ ...background }}
+            style={{
+                ...background,
+                backgroundColor: withColor?.backgroundColor,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+            }}
         >
-            <div className={`qui-picture-single-select-card ${quommonClasses.childClasses}`} key={"picture-single-select" + props.slideId}
+            <div className={`qui-picture-single-select-card ${quommonClasses.childClasses}`} key={"picture-single-select" + slideId}
             >
                 {!data?.image && (data?.title || data?.subtitle) && (
                     <SlideHeader
@@ -171,7 +184,7 @@ export default function PictureSingleSelect(props) {
                 )}
 
                 {data?.image && (
-                    <img className="qui-picture-single-select-image" src={data?.image} alt="" />
+                    <img className="qui-picture-single-select-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
                 )}
                 <TextBlock {...props}
                     content={props.data?.question}
@@ -183,7 +196,7 @@ export default function PictureSingleSelect(props) {
                     {_.map(data?.imageOpts, (image, index) => {
                         return (
                             <Grid key={index} item xs={6} sm={6} md={6} lg={6}>
-                                <ClickableImage {...props} content={{ image }} onClick={() => props.onClick(index)} />
+                                <ClickableImage {...props} content={{ image: resolveImage(image.image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
                             </Grid>
                         );
                     })}
