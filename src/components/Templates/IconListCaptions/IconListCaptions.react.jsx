@@ -1,5 +1,5 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import { motion } from "framer-motion";
@@ -29,7 +29,7 @@ IconListCaptions.propTypes = {
     caption: PropTypes.string,
     image: PropTypes.object,
     backgroundImage: PropTypes.object,
-    iconListImages: PropTypes.array,
+    iconList: PropTypes.array,
   }),
   /**
     IconListCaptions can set presenter image from imageLibrary array
@@ -61,6 +61,7 @@ IconListCaptions.propTypes = {
     slideHeaderBackgroundColor: PropTypes.string,
     textBlockTextColor: PropTypes.string,
     textBlockBackgroundColor: PropTypes.string,
+    iconListTrackColor: PropTypes.string,
     backgroundColor: PropTypes.string,
   }),
 
@@ -101,7 +102,7 @@ IconListCaptions.defaultProps = {
     caption: "",
     image: {},
     backgroundImage: {},
-    iconListImages: []
+    iconList: []
   },
   imageLibrary: [{}],
   slideId: 0,
@@ -122,6 +123,7 @@ IconListCaptions.defaultProps = {
 **/
 export default function IconListCaptions(props) {
   let { data, withColor, imageLibrary } = props
+  const [state, setState] = useState(0)
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -156,14 +158,17 @@ export default function IconListCaptions(props) {
       backgroundSize: "cover",
     };
   };
-  const background = data?.backgroundImage
+  const background = resolveImage(data?.backgroundImage.id, imageLibrary)
     ? getBackground()
     : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
 
   function handleClick(e) {
     props.onClick(e)
+    setState(e)
+    // let imageBorderColor = {
+    //   borderColor: withColor.iconListTrackColor
+    // }
   }
-  // let clickableImageContainerClassses = clicked ? "qui-image-container-highlited" : "qui-clickable-image-container"
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -181,14 +186,21 @@ export default function IconListCaptions(props) {
           {data?.image && (
             <img className="qui-icon-list-captions-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
           )}
-          <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
-
+          {_.map(data?.iconList, (image, index) => {
+            return (
+              <div key={'textblock' + index}>
+                {state === index &&
+                  <TextBlock {...props} content={image.text} withColor={textBlockColors} />}
+              </div>
+            );
+          })}
           <div className="qui-icon-list-captions-clickable-images">
-            <div className="qui-icon-list-captions-track"></div>
-            {_.map(data?.iconListImages, (image, index) => {
+            <div className="qui-icon-list-captions-track" style={{ backgroundColor: withColor.iconListTrackColor }}></div>
+            {_.map(data?.iconList, (image, index) => {
               return (
-                <div className="qui-clickable-image-container" key={"icon-list-captions-image" + index}>
-                  <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => handleClick(image.id)} />
+                <div className="qui-clickable-image-container" key={"icon-list-captions-image" + index}
+                >
+                  <ClickableImage {...props} content={{ image: resolveImage(image.image.id, imageLibrary) }} onClick={() => handleClick(index)} />
                 </div>
               );
             })}

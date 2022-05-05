@@ -3,27 +3,35 @@ import Choice from "../components/Buttons/Choice/Choice.react";
 
 const dictionary = JSON.stringify({
   en: {
-    Choice: {
-      Choice1: "Primary Button",
-      Choice2: "Secondary Button",
-    },
+    options: [{
+      correct: "checked",
+      text: "Item 1",
+    }, {
+      correct: "",
+      text: "Item 2",
+    }]
   },
   hi: {
-    Choice: {
-      Choice1: "प्राथमिक बटन",
-      Choice2: "माध्यमिक बटन",
-    },
+    options: [{
+      correct: "checked",
+      text: "वस्तु 1",
+    }, {
+      correct: "",
+      text: "वस्तु 2",
+    }]
   },
 });
-
 export default {
   title: "Design System/Buttons/Choice",
   component: Choice,
   argTypes: {
-    content: {
-      Choice1: "Primary Button",
-      Choice2: "Secondary Button"
-    },
+    options: [{
+      correct: "checked",
+      text: "Item 1",
+    }, {
+      correct: "",
+      text: "Item 2",
+    }],
     isChoice: {
       table: {
         category: "is-Toggles",
@@ -46,7 +54,7 @@ export default {
     },
     asFloated: {
       control: "select",
-      options: ["left", "right", "none", "inline"],
+      options: ["left", "right", "inline"],
       table: {
         category: "as-Flags",
       },
@@ -59,7 +67,7 @@ export default {
           secondaryBackgroundColor: "",
           accentColor: "",
           primaryTextColor: "",
-          secondaryTextColor:""
+          secondaryTextColor: ""
         },
       },
     },
@@ -126,10 +134,13 @@ export default {
 const Template = (args) => <Choice {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    Choice1: "Primary Button",
-    Choice2: "Secondary Button"
-  },
+  options: [{
+    correct: "checked",
+    text: "Item 1",
+  }, {
+    correct: "",
+    text: "Item 2",
+  }],
   asEmphasis: "contained",
   asSize: "normal",
   asFloated: "inline",
@@ -138,7 +149,7 @@ Default.args = {
     secondaryBackgroundColor: "",
     accentColor: "",
     primaryTextColor: "",
-    secondaryTextColor:""
+    secondaryTextColor: ""
   },
   withAnimation: {
     animation: "zoom",
@@ -147,7 +158,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "Choice",
+    tgt: "options",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -164,7 +175,6 @@ Default.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
 // Translated Button
 // -------------------------------------------------------------
@@ -173,7 +183,7 @@ TranslatedChoice.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "Choice",
+    tgt: "options",
     dictionary: dictionary,
   },
 };

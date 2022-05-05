@@ -23,8 +23,7 @@ export default {
           slideHeaderAccentColor: "",
           slideHeaderBackgroundColor: "",
           textBlockBackgroundColor: "",
-          bulletBlockTextdColor: "",
-          bulletBlockBackgroundColor: "",
+          iconListTrackColor: "",
           backgroundColor: "",
         },
       },
@@ -65,7 +64,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a Captioned Bullet List with TextBlock, BulletBlock and a SlideHeader, we can switch the slideHeader with header image by removing the title and subtitle from prop, and by giving the image link as prop we can see an image. If the title, subtitle, and image are provided together, only the slideHeader is visible",
+    componentSubtitle: "Displays a IconListCaptions slide  with SlideHeader, clickableimages and textBlock as caption, Caption will change according to click on image",
     a11y: { disable: true },
     docs: {
       iframeHeight: 400,
@@ -86,34 +85,49 @@ Default.args = {
       id: "background-image",
       extention: ""
     },
-    iconListImages: [
+    iconList: [
       {
-        id: "image-1",
-        extention: "",
-      }, {
-        id: "image-2",
-        extention: "",
-      }, {
-        id: "image-3",
-        extention: "",
-      }, {
-        id: "image-4",
-        extention: "",
+        text: "First Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+        image: {
+          id: "HyLQNLtdp",
+          extension: ".jpeg"
+        }
       },
-    ]
+      {
+        text: "Second Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+        image: {
+          id: "SKjOfKwWN",
+          extension: ".jpeg"
+        }
+      },
+      {
+        text: " Third Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+        image: {
+          id: "h4EX9FXyK",
+          extension: ".jpeg"
+        }
+      },
+      {
+        text: "Fourth Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+        image: {
+          id: "qsZ-6w6lh",
+          extension: ".jpeg"
+        }
+      }
+    ],
   },
   imageLibrary: [{
-    id: "image-1",
     image: "https://i.pinimg.com/564x/02/58/79/025879fc48f8d5a2a30e37ad1a847c11.jpg",
+    id: "HyLQNLtdp",
   }, {
-    id: "image-2",
     image: "https://i.pinimg.com/564x/64/57/dc/6457dc8f063f284fe17e519dc28b5437.jpg",
+    id: "SKjOfKwWN",
   }, {
-    id: "image-3",
     image: "https://i.pinimg.com/564x/9a/db/19/9adb19d50115e570142a7937a00550ae.jpg",
+    id: "h4EX9FXyK",
   }, {
-    id: "image-4",
     image: "https://i.pinimg.com/564x/09/03/8c/09038c92e5e2422e369816d50b16cd3f.jpg",
+    id: "qsZ-6w6lh",
   }, {
     id: "background-image",
     image: "https://i.pinimg.com/564x/09/03/8c/09038c92e5e2422e369816d50b16cd3f.jpg",
@@ -126,6 +140,7 @@ Default.args = {
     slideHeaderBackgroundColor: "#ad292980",
     textBlockBackgroundColor: "#ad292980",
     textBlockTextColor: "#fff",
+    iconListTrackColor: "#ff0000",
     backgroundColor: "#fff",
   },
   withAnimation: {
@@ -159,34 +174,49 @@ IconListCaptionsWithImage.args = {
       id: "background-image",
       extention: ""
     },
-    iconListImages: [
+    iconList: [
       {
-        id: "image-1",
-        extention: "",
-      }, {
-        id: "image-2",
-        extention: "",
-      }, {
-        id: "image-3",
-        extention: "",
-      }, {
-        id: "image-4",
-        extention: "",
+        text: "First Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+        image: {
+          id: "HyLQNLtdp",
+          extension: ".jpeg"
+        }
       },
-    ]
+      {
+        text: "Second Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+        image: {
+          id: "SKjOfKwWN",
+          extension: ".jpeg"
+        }
+      },
+      {
+        text: " Third Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+        image: {
+          id: "h4EX9FXyK",
+          extension: ".jpeg"
+        }
+      },
+      {
+        text: "Fourth Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+        image: {
+          id: "qsZ-6w6lh",
+          extension: ".jpeg"
+        }
+      }
+    ],
   },
   imageLibrary: [{
-    id: "image-1",
     image: "https://i.pinimg.com/564x/02/58/79/025879fc48f8d5a2a30e37ad1a847c11.jpg",
+    id: "HyLQNLtdp",
   }, {
-    id: "image-2",
     image: "https://i.pinimg.com/564x/64/57/dc/6457dc8f063f284fe17e519dc28b5437.jpg",
+    id: "SKjOfKwWN",
   }, {
-    id: "image-3",
     image: "https://i.pinimg.com/564x/9a/db/19/9adb19d50115e570142a7937a00550ae.jpg",
+    id: "h4EX9FXyK",
   }, {
-    id: "image-4",
     image: "https://i.pinimg.com/564x/09/03/8c/09038c92e5e2422e369816d50b16cd3f.jpg",
+    id: "qsZ-6w6lh",
   }, {
     id: "background-image",
     image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
