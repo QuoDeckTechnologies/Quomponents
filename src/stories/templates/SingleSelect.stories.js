@@ -199,67 +199,115 @@ SingleSelectWithSlideHeader.parameters = {
 	},
 };
 // -------------------------------------------------------------
-// MultipleSingleSelect
+// EmphasisSingleSelect
 // -------------------------------------------------------------
-export const EmphasisSingleSelect = (args) => {
-	const baseObj1 = {
-		...Object.assign({}, Default.args, {
-			asVariant: "primary",
-			asEmphasis: "outlined",
-			withColor: {
-				slideHeaderTextColor: "#ffffff",
-				slideHeaderAccentColor: "#AD2929",
-				slideHeaderBackgroundColor: "#AD292980",
-				buttonBackgroundColor: "#AD2929",
-				buttonTextColor: "#ffffff",
-				buttonHoverBackgroundColor: "#AD292980",
-				buttonHoverTextColor: "#AD2929",
-				backgroundColor: "#AD292"
-			},
-			withAnimation: {
-				animation: "slideRight",
-				duration: 0.5,
-				delay: 0,
-			},
-			onClick: (value) => { return value }
-		})
-	};
-	return (
-		<SingleSelect
-			{...Object.assign({}, baseObj1, {
-			})}
-		/>
-	);
+export const EmphasisSingleSelect = Template.bind({});
+EmphasisSingleSelect.args = {
+	data: {
+		title: "Neque porro quisquam est qui dolorem",
+		subtitle:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+		image: { id: "header-image", extension: "" },
+		backgroundImage: { id: "", extention: "" },
+		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+		options: [
+			{ correct: "checked", text: "Item 1" },
+			{ correct: "", text: "Item 2" },
+			{ correct: "", text: "Item 3" },
+			{ correct: "", text: "Item 4" }
+		],
+	},
+	slideId: 0,
+	imageLibrary: [{
+		id: "header-image",
+		image:
+			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+	}],
+	asVariant: "secondary",
+	withColor: {
+		questionColor: "#000000",
+		slideHeaderTextColor: "#ffffff",
+		slideHeaderAccentColor: "#AD2929",
+		slideHeaderBackgroundColor: "#AD292980",
+		buttonBackgroundColor: "",
+		buttonTextColor: "",
+		buttonHoverBackgroundColor: "",
+		buttonHoverTextColor: "",
+		backgroundColor: "#AD292"
+	},
+	withAnimation: {
+		animation: "zoom",
+		duration: 0.5,
+		delay: 0,
+	},
+	asEmphasis: "outlined",
+	isDisabled: false,
+	isHidden: false,
+};
+EmphasisSingleSelect.parameters = {
+	docs: {
+		source: {
+			code: `<SingleSelect {...${JSON.stringify(
+				EmphasisSingleSelect.args,
+				null,
+				2
+			)}}/>`,
+		},
+	},
 };
 // -------------------------------------------------------------
 // ColoredSingleSelect
 // -------------------------------------------------------------
-export const ColoredSingleSelect = (args) => {
-	const baseObj1 = {
-		...Object.assign({}, Default.args, {
-			asVariant: "primary",
-			withColor: {
-				slideHeaderTextColor: "#ffffff",
-				slideHeaderAccentColor: "#AD2929",
-				slideHeaderBackgroundColor: "#AD292980",
-				buttonBackgroundColor: "#AD2929",
-				buttonTextColor: "#ffffff",
-				buttonHoverBackgroundColor: "#AD292980",
-				buttonHoverTextColor: "#AD2929",
-				backgroundColor: "#AD292"
-			},
-			withAnimation: {
-				animation: "slideRight",
-				duration: 0.5,
-				delay: 0,
-			},
-			onClick: (value) => { return value }
-		})
-	};
-	return (
-		<SingleSelect
-			{...Object.assign({}, baseObj1, {
-			})}
-		/>
-	);
+export const ColoredSingleSelect = Template.bind({});
+ColoredSingleSelect.args = {
+	data: {
+		title: "Neque porro quisquam est qui dolorem",
+		subtitle:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+		image: { id: "header-image", extension: "" },
+		backgroundImage: { id: "", extention: "" },
+		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+		options: [
+			{ correct: "checked", text: "Item 1" },
+			{ correct: "", text: "Item 2" },
+			{ correct: "", text: "Item 3" },
+			{ correct: "", text: "Item 4" }
+		],
+	},
+	slideId: 0,
+	imageLibrary: [{
+		id: "header-image",
+		image:
+			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+	}],
+	asVariant: "primary",
+	withColor: {
+		slideHeaderTextColor: "#ffffff",
+		slideHeaderAccentColor: "#AD2929",
+		slideHeaderBackgroundColor: "#AD292980",
+		buttonBackgroundColor: "#AD2929",
+		buttonTextColor: "#ffffff",
+		buttonHoverBackgroundColor: "#AD292980",
+		buttonHoverTextColor: "#AD2929",
+		backgroundColor: "#AD292"
+	},
+	withAnimation: {
+		animation: "zoom",
+		duration: 0.5,
+		delay: 0,
+	},
+	asEmphasis: "contained",
+	isDisabled: false,
+	isHidden: false,
+};
+ColoredSingleSelect.parameters = {
+	docs: {
+		source: {
+			code: `<SingleSelect {...${JSON.stringify(
+				ColoredSingleSelect.args,
+				null,
+				2
+			)}}/>`,
+		},
+	},
 };
