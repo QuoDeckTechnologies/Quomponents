@@ -1,4 +1,5 @@
 .qui-option-item-six {
+  overflow: visible;
   gap: 0.5em;
 }
 
@@ -12,8 +13,6 @@
 
 .qui .qui-option-item-six-close-icon i {
   cursor: pointer;
-  font-size: 1.1em;
-  margin-top: 0.1em;
 }
 
 .qui .qui-option-item-six-close-icon {
@@ -88,9 +87,21 @@
     display: none;
   }
   .qui .qui-option-item-six-container .qui .qui-optional-image-field-icon {
-    border: 0.08em solid #ffbf00;
     font-size: 1.6em;
   }
+  .qui
+    .qui-option-item-six-container
+    .qui.qui-optional-image-field
+    .qui-optional-image-field-middle-border {
+    display: none;
+  }
+}
+
+.qui
+  .qui-option-item-six-container
+  .qui.qui-optional-image-field
+  .qui-optional-image-field-wrapper {
+  font-size: 1.01em;
 }
 
 @media only screen and (min-width: 481px) {
@@ -112,13 +123,22 @@
     display: block;
     padding: 0.2em 0.5em;
   }
+  .qui
+    .qui-option-item-six-container
+    .qui.qui-optional-image-field
+    .qui-optional-image-field-middle-border {
+    display: block;
+  }
   .qui .qui-option-item-six-container .qui .qui-optional-image-field-icon {
     border: none;
     font-size: 1.48em;
     padding: 0.09em 0.2em;
-    border-top: 0.08em solid #ffbf00;
-    border-left: 0.08em solid #ffbf00;
-    border-bottom: 0.08em solid #ffbf00;
+  }
+  .qui
+    .qui-option-item-six-container
+    .qui.qui-optional-image-field
+    .qui-optional-image-field-wrapper {
+    border: 0.18em solid #ffbf00;
   }
 }
 

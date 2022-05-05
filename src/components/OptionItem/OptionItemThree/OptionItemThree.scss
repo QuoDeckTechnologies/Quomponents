@@ -40,7 +40,6 @@
 .qui .qui-option-item-three-container .qui-optional-image-field-button {
   padding: 0em 0.8em;
   font-size: 1.2em;
-  border: 0.12em solid #ffbf00;
 }
 
 .qui .qui-option-item-three-container .qui .qui-optional-image-field-icon {
@@ -76,6 +75,12 @@
     padding: 0.2em 1em;
     font-size: 1em;
   }
+  .qui
+    .qui-option-item-three-container
+    .qui.qui-optional-image-field
+    .qui-optional-image-field-wrapper {
+    border: 0.18em solid #ffbf00;
+  }
 }
 
 @media only screen and (min-width: 769px) {
@@ -91,5 +96,11 @@
     height: 1.5em;
     width: 1.7em;
     font-size: 1.6em;
+  }
+  .qui
+    .qui-option-item-three-container
+    .qui.qui-optional-image-field
+    .qui-optional-image-field-wrapper {
+    border: 0.2em solid #ffbf00;
   }
 }
