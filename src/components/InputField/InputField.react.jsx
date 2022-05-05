@@ -216,7 +216,7 @@ export default function InputField(props) {
                         className="qui-list-input"
                         sx={outlineStyle}
                         placeholder={props.content?.placeholder}
-                        multiline={true}
+                        multiline={false}
                         size="small"
                         variant="filled"
                         value={input}
