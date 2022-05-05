@@ -31,12 +31,12 @@ ExternalLink.propTypes = {
         backgroundImage: PropTypes.object,
     }).isRequired,
     /**
-      ExterbalLink can set image & backgroundImage from imageLibrary.
+      ExternalLink can set image & backgroundImage from imageLibrary.
       */
     imageLibrary: PropTypes.array,
     /**
-    slideId can be used if same template is used continueously for multiple slides.
-    */
+      slideId can be used if same template is used continueously for multiple slides.
+      */
     slideId: PropTypes.number,
     //=======================================
     // Quommon props
