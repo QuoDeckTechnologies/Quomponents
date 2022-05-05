@@ -21,6 +21,8 @@
 
 .qui .qui-option-item-four-icon {
   cursor: pointer;
+  font-size: 0.9em;
+  margin-top: 0.1em;
 }
 
 .qui.qui-option-item-four .qui-input-field {
@@ -38,7 +40,11 @@
     width: 1.7em;
     font-size: 1.4em;
   }
-  .qui .qui-option-item-four-checkbox-label {
+  .qui.qui.qui-option-item-four
+    .qui-option-item-four-container
+    .qui.qui-check-box
+    .qui-check-box-element
+    h4 {
     display: none;
   }
 }
@@ -47,7 +53,11 @@
   .qui .qui-option-item-four-checkbox {
     min-width: 7.5em;
   }
-  .qui .qui-option-item-four-checkbox-label {
+  .qui.qui.qui-option-item-four
+    .qui-option-item-four-container
+    .qui.qui-check-box
+    .qui-check-box-element
+    h4 {
     display: block;
   }
 }
