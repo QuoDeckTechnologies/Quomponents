@@ -21,12 +21,25 @@ describe("Anagram", () => {
         data={{
           title: "This is Title",
           subtitle: "This is Subtitle",
-          image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-          backgroundImage: "",
+          image: {
+            id: 'header-image',
+            extention: ""
+          },
+          backgroundImage: {
+            id: 'background-image',
+            extention: ""
+          },
           question: "Question",
           answer: "Answer",
           purpose: "quiz",
         }}
+        imageLibrary={[{
+          id: 'background-image',
+          image: "test-image1.png"
+        }, {
+          id: 'header-image',
+          image: "test-image2.png"
+        }]}
         slideId={0}
         asVariant="primary"
         withColor={null}
@@ -128,7 +141,6 @@ describe("Anagram", () => {
     let data = {
       title: "This is Title",
       subtitle: "This is Subtitle",
-      image: "",
       question: "Question",
       answer: "Answer",
       purpose: "quiz",
@@ -158,8 +170,6 @@ describe("Anagram", () => {
     let data = {
       title: "This is Title",
       subtitle: "This is Subtitle",
-      image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-      backgroundImage: "",
       question: "Question",
       answer: "Answer",
       purpose: "quiz",
@@ -181,12 +191,18 @@ describe("Anagram", () => {
     let data = {
       title: "This is Title",
       subtitle: "This is Subtitle",
-      image: "",
-      backgroundImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+      backgroundImage: {
+        id: 'background-image',
+        extention: ""
+      },
       question: "Question",
       answer: "Answer",
       purpose: "quiz",
     }
+    let imageLibrary = [{
+      id: "background-image",
+      image: 'test-image'
+    }]
     let colors = {
       slideHeaderTextColor: "#FFFFFF",
       slideHeaderAccentColor: "#AD2929",
@@ -197,7 +213,7 @@ describe("Anagram", () => {
       bulletBlockBackgroundColor: "#ad292980",
       backgroundColor: "#fff"
     }
-    component.setProps({ data: data, withColor: colors })
+    component.setProps({ data: data, withColor: colors, imageLibrary: imageLibrary })
     expect(component.exists()).toBe(true);
   })
 });
