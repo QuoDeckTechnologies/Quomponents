@@ -201,7 +201,7 @@ export default function IconListCaptions(props) {
               return (
                 <div className="qui-clickable-image-container" key={"icon-list-captions-image" + index}
                 >
-                  <ClickableImage {...props} content={{ image: resolveImage(image.image.id, imageLibrary) }} onClick={() => handleClick(index)} />
+                  <ClickableImage {...props} content={{ image: resolveImage(image.image.id , imageLibrary) }} onClick={() => handleClick(index)} />
                 </div>
               );
             })}
