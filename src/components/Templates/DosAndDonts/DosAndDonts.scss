@@ -1,0 +1,88 @@
+.qui .qui-dos-donts-card {
+  padding: 1.5em;
+  position: relative;
+  border-radius: 1em;
+  min-height: 30.5em;
+  .qui-side-header {
+    width: 10em;
+  }
+  .qui-title-block {
+    min-width: 12em;
+    min-height: 10em;
+  }
+  .qui-title {
+    font-size: 1.5em;
+    padding: 0 0 0.2em 0;
+  }
+  .qui-sub-title {
+    font-size: 1em;
+  }
+  .qui-block-text {
+    font-weight: 100;
+  }
+  .qui-choice {
+    margin-top: 1.5em;
+  }
+  .qui .qui-choices {
+    padding: 0.5em 2em;
+    margin: 0 0.1em;
+    text-transform: none;
+    filter: drop-shadow(0px 2px 0px #a09797);
+  }
+  .qui-text-block-area {
+    width: auto;
+    margin: 0.5em 0 0 0;
+  }
+  .qui-bulletblock {
+    max-width: 17.5em;
+    margin: auto;
+    padding: 0;
+    ul {
+      margin: 1em;
+    }
+    .li:last-child {
+      margin-bottom: 1.5em;
+    }
+  }
+  .qui-dos-donts-image {
+    width: 99%;
+    border-radius: 1em;
+    max-height: 14em;
+    filter: drop-shadow(0px 5px 2px #a09797);
+  }
+  .qui-do-donts-default-text {
+    position: absolute;
+    bottom: 1em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 320px) {
+  .qui .qui-dos-donts-card {
+    .qui-do-donts-default-text {
+      font-size: 1em;
+    }
+    .qui .qui-choices {
+      padding: 0.5em 1.5em;
+      margin: 0 0.1em;
+      font-size: 0.9em;
+    }
+  }
+}
+@media only screen and (min-width: 481px) {
+  .qui .qui-dos-donts-card {
+    .qui-do-donts-default-text {
+      font-size: 1.17em;
+    }
+    width: 22em;
+  }
+  .qui-bulletblock {
+    font-size: 1.2em;
+    width: 17em;
+  }
+  .qui-dos-donts-image {
+    border-radius: 1em;
+    max-height: 16em;
+  }
+}
