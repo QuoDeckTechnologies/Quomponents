@@ -18,6 +18,7 @@
   box-shadow: 0px 4px 10px #8b8b8b;
   min-width: 12em;
   height: 15em;
+  object-fit: cover;
 }
 
 .qui .qui-title-image {
@@ -90,7 +91,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 45%;
+  height: 50%;
 }
 
 .qui .qui-title-presenter-image {

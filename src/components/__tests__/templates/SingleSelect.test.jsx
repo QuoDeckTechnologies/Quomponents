@@ -5,10 +5,11 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Choice from "../../Templates/Choice/Choice.react";
+import SingleSelect from "../../Templates/SingleSelect/SingleSelect.react";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
+import ButtonBank from "../../ButtonBank/ButtonBank.react";
 
-describe("Choice", () => {
+describe("SingleSelect", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
@@ -17,23 +18,15 @@ describe("Choice", () => {
 		title: "Neque porro quisquam est qui dolorem",
 		subtitle:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+		backgroundImage: { id: "", extention: "" },
 		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-		imageLibrary: [{
-			id: "header-image",
-			image:
-				"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-		}],
-		choice: [
-			{
-				correct: "checked",
-				text: "Item1",
-			},
-			{
-				correct: "",
-				text: "Item2",
-			},
+		options: [
+			{ correct: "checked", text: "Item 1" },
+			{ correct: "", text: "Item 2" },
+			{ correct: "", text: "Item 3" },
+			{ correct: "", text: "Item 4" }
 		],
-	};
+	}
 
 	let colors = {
 		questionColor: "#000000",
@@ -47,7 +40,7 @@ describe("Choice", () => {
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
-			<Choice
+			<SingleSelect
 				data={data}
 				slideId={1}
 				asEmphasis="contained"
@@ -55,7 +48,7 @@ describe("Choice", () => {
 				withAnimation={null}
 				isHidden={false}
 				isDisabled={false}
-				onClick={() => console.log("Choice Testing")}
+				onClick={() => console.log("SingleSelect Testing")}
 			/>
 		);
 	});
@@ -69,11 +62,10 @@ describe("Choice", () => {
 			slideHeaderTextColor: "#ffffff",
 			slideHeaderAccentColor: "#AD2929",
 			slideHeaderBackgroundColor: "#AD292980",
-			primaryBackgroundColor: "#000066",
-			secondaryBackgroundColor: "#003366",
-			accentColor: "",
-			primaryTextColor: "#ffffff",
-			secondaryTextColor: "#ffffff",
+			buttonBackgroundColor: "#AD2929",
+			buttonTextColor: "#ffffff",
+			buttonHoverBackgroundColor: "#AD292980",
+			buttonHoverTextColor: "#AD2929"
 		}
 		component.setProps({ asEmphasis: "text" })
 		component.setProps({ withColor: colors })
@@ -85,11 +77,10 @@ describe("Choice", () => {
 			slideHeaderTextColor: "#ffffff",
 			slideHeaderAccentColor: "#AD2929",
 			slideHeaderBackgroundColor: "#AD292980",
-			primaryBackgroundColor: "#000066",
-			secondaryBackgroundColor: "#003366",
-			accentColor: "",
-			primaryTextColor: "#ffffff",
-			secondaryTextColor: "#ffffff",
+			buttonBackgroundColor: "#AD2929",
+			buttonTextColor: "#ffffff",
+			buttonHoverBackgroundColor: "#AD292980",
+			buttonHoverTextColor: "#AD2929"
 		}
 		component.setProps({ asEmphasis: "contained" })
 		component.setProps({ withColor: colors })
@@ -101,11 +92,10 @@ describe("Choice", () => {
 			slideHeaderTextColor: "#ffffff",
 			slideHeaderAccentColor: "#AD2929",
 			slideHeaderBackgroundColor: "#AD292980",
-			primaryBackgroundColor: "#000066",
-			secondaryBackgroundColor: "#003366",
-			accentColor: "",
-			primaryTextColor: "#ffffff",
-			secondaryTextColor: "#ffffff",
+			buttonBackgroundColor: "#AD2929",
+			buttonTextColor: "#ffffff",
+			buttonHoverBackgroundColor: "#AD292980",
+			buttonHoverTextColor: "#AD2929"
 		}
 		component.setProps({ asEmphasis: "outlined" })
 		component.setProps({ withColor: colors })
@@ -170,17 +160,7 @@ describe("Choice", () => {
 			data: {
 				title: "Neque porro quisquam est qui dolorem",
 				subtitle:
-					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-				choice: [
-					{
-						correct: "checked",
-						text: "Item1",
-					},
-					{
-						correct: "",
-						text: "Item2",
-					},
-				],
+					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem"
 			},
 		});
 		expect(component.find(SlideHeader).props().content.title).toBe(
@@ -202,7 +182,7 @@ describe("Choice", () => {
 					"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
 			}],
 		});
-		expect(component.find(".qui-slide-choice-image").props().src).toBe(
+		expect(component.find(".qui-slide-single-select-image").props().src).toBe(
 			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
 		);
 	});
@@ -211,7 +191,7 @@ describe("Choice", () => {
 		component.setProps({
 			data: {
 				backgroundImage: { id: "", extention: "" },
-				choice: [
+				SingleSelect: [
 					{
 						correct: "checked",
 						text: "Item1",
@@ -227,24 +207,14 @@ describe("Choice", () => {
 			},
 		});
 		expect(
-			component.find(".qui-slide-choice-card").props().style.backgroundColor
+			component.find(".qui-slide-single-select-card").props().style.backgroundColor
 		).toBe("#ffffff");
 	});
 
 	it("should render backgroundImage if we pass background image id", () => {
 		component.setProps({
 			data: {
-				backgroundImage: { id: "background-image", extention: "" },
-				choice: [
-					{
-						correct: "checked",
-						text: "Item1",
-					},
-					{
-						correct: "",
-						text: "Item2",
-					},
-				],
+				backgroundImage: { id: "background-image", extention: "" }
 			},
 			withColor: {
 				backgroundColor: "",
@@ -254,24 +224,29 @@ describe("Choice", () => {
 
 	it("should render backgroundcolor if we pass background color", () => {
 		component.setProps({
-			data: {
-				choice: [
-					{
-						correct: "checked",
-						text: "Item1",
-					},
-					{
-						correct: "",
-						text: "Item2",
-					},
-				],
-			},
 			withColor: {
 				backgroundColor: "#000",
 			},
 		});
 		expect(
-			component.find(".qui-slide-choice-card").props().style.backgroundColor
+			component.find(".qui-slide-single-select-card").props().style.backgroundColor
 		).toBe("#000");
+	});
+
+	it("should return the index of selected option", () => {
+		component.setProps({
+			options: [
+				{ correct: "checked", text: "Item 1" },
+				{ correct: "", text: "Item 2" },
+				{ correct: "", text: "Item 3" },
+				{ correct: "", text: "Item 4" }
+			]
+		})
+		let onClick = jest.fn();
+		component.setProps({ onClick: onClick })
+		component.find(ButtonBank).simulate('click', { target: { innerText: "Item 4" } })
+		expect(onClick).toBeCalledWith(3);
+		component.find(ButtonBank).simulate('click', { target: { innerText: "Item 2" } })
+		expect(onClick).toBeCalledWith(1);
 	});
 });
