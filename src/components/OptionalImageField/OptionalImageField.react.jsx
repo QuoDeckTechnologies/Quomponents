@@ -100,9 +100,10 @@ OptionalImageField.defaultProps = {
 const getColors = (withColor) => {
   let colors = {
     iconBoundries: {
-      borderTopColor: withColor.accentColor,
-      borderLeftColor: withColor.accentColor,
-      borderBottomColor: withColor.accentColor,
+      borderColor: withColor.accentColor,
+    },
+    border: {
+      backgroundColor: withColor.accentColor,
     },
     button: {
       backgroundColor: withColor.backgroundColor,
@@ -190,24 +191,31 @@ export default function OptionalImageField(props) {
         onClick={(e) => (e.target.value = "")}
         hidden
       />
-      {content?.icon && (
-        <div
-          className="qui-optional-image-field-icon"
-          style={colors.iconBoundries}
-          onClick={uploadFile}
-        >
-          <i className={content.icon}></i>
+      <div
+        className="qui-optional-image-field-wrapper"
+        style={colors.iconBoundries}
+      >
+        {content?.icon && (
+          <div className="qui-optional-image-field-icon" onClick={uploadFile}>
+            <i className={content.icon}></i>
+          </div>
+        )}
+        {content?.icon && (
+          <div
+            style={colors.border}
+            className="qui-optional-image-field-middle-border"
+          ></div>
+        )}
+        <div className="qui-optional-image-field-button-container">
+          <Button
+            className="qui-optional-image-field-button"
+            variant="outlined"
+            style={colors.button}
+            onClick={uploadFile}
+          >
+            {content?.title ? content.title : "Upload"}
+          </Button>
         </div>
-      )}
-      <div className="qui-optional-image-field-button-container">
-        <Button
-          className="qui-optional-image-field-button"
-          variant="outlined"
-          style={colors.button}
-          onClick={uploadFile}
-        >
-          {content?.title ? content.title : "Upload"}
-        </Button>
       </div>
       {content?.actionButton && (
         <div
