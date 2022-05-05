@@ -86,7 +86,7 @@ export default {
     ],
     parameters: {
         componentSubtitle:
-            "Displays a OddOneOut with a question, the user need to submit the correct option as answer, we can switch between the image and SlideHeader by adding or removing the image prop",
+            "Component is used to show options and choose the odd one out from the given options, we can switch between the image and SlideHeader by adding or removing the image prop",
         a11y: { disable: true },
         docs: {
             iframeHeight: 650,
