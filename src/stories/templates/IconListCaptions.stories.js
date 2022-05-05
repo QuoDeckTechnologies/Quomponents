@@ -38,6 +38,12 @@ export default {
         },
       },
     },
+    isDisabled: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -149,6 +155,7 @@ Default.args = {
     delay: 0,
   },
   isHidden: false,
+  isDisabled: false,
 };
 Default.parameters = {
   docs: {
@@ -203,55 +210,6 @@ IconListCaptionsWithImage.args = {
           extension: ".jpeg"
         }
       },
-      {
-        text: "Fourth Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-        image: {
-          id: "qsZ-6w6lh",
-          extension: ".jpeg"
-        }
-      },
-      {
-        text: "Fourth Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-        image: {
-          id: "qsZ-6w6lh",
-          extension: ".jpeg"
-        }
-      },
-      {
-        text: "Second Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-        image: {
-          id: "SKjOfKwWN",
-          extension: ".jpeg"
-        }
-      },
-      {
-        text: " Third Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-        image: {
-          id: "h4EX9FXyK",
-          extension: ".jpeg"
-        }
-      },
-      {
-        text: "Fourth Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-        image: {
-          id: "qsZ-6w6lh",
-          extension: ".jpeg"
-        }
-      },
-      {
-        text: "Fourth Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-        image: {
-          id: "qsZ-6w6lh",
-          extension: ".jpeg"
-        }
-      },
-      {
-        text: "Fourth Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-        image: {
-          id: "qsZ-6w6lh",
-          extension: ".jpeg"
-        }
-      },
     ],
   },
   imageLibrary: [{
@@ -281,6 +239,7 @@ IconListCaptionsWithImage.args = {
     slideHeaderBackgroundColor: "#ad292980",
     textBlockBackgroundColor: "#ad292980",
     textBlockTextColor: "#fff",
+    iconListTrackColor: "#ff0000",
     backgroundColor: "#fff",
   },
   withAnimation: {
@@ -289,6 +248,7 @@ IconListCaptionsWithImage.args = {
     delay: 0,
   },
   isHidden: false,
+  isDisabled: false,
 };
 IconListCaptionsWithImage.parameters = {
   docs: {

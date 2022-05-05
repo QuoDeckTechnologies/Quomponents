@@ -83,6 +83,10 @@ IconListCaptions.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+    Use to enable/disable the component
+    */
+  isDisabled: PropTypes.bool,
+  /**
     Use to show/hide the component
   */
   isHidden: PropTypes.bool,
@@ -113,6 +117,7 @@ IconListCaptions.defaultProps = {
   withColor: null,
   withAnimation: null,
   isHidden: false,
+  isDisabled: false,
 };
 /**
 ## Notes
@@ -124,6 +129,7 @@ IconListCaptions.defaultProps = {
 export default function IconListCaptions(props) {
   let { data, withColor, imageLibrary } = props
   const [state, setState] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(0)
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -151,23 +157,17 @@ export default function IconListCaptions(props) {
   }
   const getBackground = () => {
     return {
-      background: `url(${resolveImage(
-        data?.backgroundImage.id,
-        imageLibrary
-      )})`,
+      background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
       backgroundSize: "cover",
     };
   };
-  const background = resolveImage(data?.backgroundImage.id, imageLibrary)
+  const background = data?.backgroundImage
     ? getBackground()
     : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
 
   function handleClick(e) {
     props.onClick(e)
     setState(e)
-    // let imageBorderColor = {
-    //   borderColor: withColor.iconListTrackColor
-    // }
   }
   // ========================= Render Function =================================
   return (
@@ -195,16 +195,17 @@ export default function IconListCaptions(props) {
               </div>
             );
           })}
-          <div className="qui-icon-list-captions-clickable-images">
-            <div className="qui-icon-list-captions-track" style={{ backgroundColor: withColor.iconListTrackColor }}></div>
-            {_.map(data?.iconList, (image, index) => {
-              return (
-                <div className="qui-clickable-image-container" key={"icon-list-captions-image" + index}
-                >
-                  <ClickableImage {...props} content={{ image: resolveImage(image.image.id , imageLibrary) }} onClick={() => handleClick(index)} />
-                </div>
-              );
-            })}
+          <div className="qui-fixed-clickable-images-container">
+            <div className="qui-icon-list-captions-clickable-images">
+              <div className="qui-icon-list-captions-track" style={{ backgroundColor: withColor?.iconListTrackColor }}></div>
+              {_.map(data?.iconList, (image, index) => {
+                return (
+                  <div className={`${index === activeIndex ? "qui-active-index" : "qui-clickable-image-container"}`} key={"icon-list-captions-image" + index}
+                    onClick={() => setActiveIndex(index)} style={{ borderColor: withColor?.iconListTrackColor }}>
+                    <ClickableImage {...props} content={{ image: resolveImage(image.image?.id ? image.image?.id : "", imageLibrary) }} onClick={() => handleClick(index)} />
+                  </div>);
+              })}
+            </div>
           </div>
         </div>
       </div>}

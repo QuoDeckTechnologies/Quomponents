@@ -5,8 +5,8 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import IconListCaptions from "../../Templates/IconListCaptions/IconListCaptions.react";
-
+import IconListCaptions from "../../Templates/IconListCaptions/IconListCaptions.react"
+import ClickableImage from "../../ClickableImage/ClickableImage.react"
 describe("IconListCaptions", () => {
     // -------------------------------------
     // Setup definitions for the test suite
@@ -17,29 +17,15 @@ describe("IconListCaptions", () => {
         component = shallow(
             <IconListCaptions
                 data={{
-                    title: "This is Title",
-                    subtitle: "This is Subtitle",
-                    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-                    caption: "caption",
-                    backgroundImage: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-                    bullets: [
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                        "Quisque sed turpis vel lectus suscipit auctor",
-                        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-                    ]
+                    title: "title",
+                    subtitle: "subtitle",
+                    caption: "This is caption",
+                    iconList: [],
                 }}
                 slideId={0}
                 asVariant="primary"
-                withColor={{
-                    slideHeaderTextColor: "",
-                    slideHeaderAccentColor: "",
-                    slideHeaderBackgroundColor: "",
-                    textBlockBackgroundColor: "",
-                    textBlockTextColor: "",
-                    bulletBlockTextColor: "",
-                    bulletBlockBackgroundColor: "",
-                    backgroundColor: ""
-                }}
+                withAnimation={null}
+                withColor={null}
                 isHidden={false}
                 isDisabled={false}
                 onClick={(e) => {
@@ -51,24 +37,218 @@ describe("IconListCaptions", () => {
     it("should render correctly without throwing error", () => {
         expect(component.exists()).toBe(true);
     });
-    it("should render correctly with empty content", () => {
+    it("should render with click on 0th Clickable Image", () => {
         component.setProps({
-            content: {},
-        });
-        expect(component.exists()).toBe(true);
+            data: {
+                iconList: [{
+                    text: "This is text",
+                    image: {
+                        id: "image",
+                        extention: ""
+                    }
+                }],
+            },
+            withcolor: {
+                slideHeaderTextColor: "#FFFFFF",
+                slideHeaderAccentColor: "#AD2929",
+                slideHeaderBackgroundColor: "#ad292980",
+                textBlockBackgroundColor: "#ad292980",
+                textBlockTextColor: "#fff",
+                iconListTrackColor: "#ff0000",
+                backgroundColor: "#fff",
+            },
+            imageLibrary: [{
+                id: "image",
+                image: "test.png"
+            }]
+        })
+        component.find(ClickableImage).simulate('click', 0)
+    });
+    it("should render with click on active index class", () => {
+        component.setProps({
+            data: {
+                iconList: [{
+                    text: "This is text",
+                    image: {
+                        id: "image",
+                        extention: ""
+                    }
+                }, {
+                    text: "This is text",
+                    image: {
+                        id: "image",
+                        extention: ""
+                    }
+                }],
+            },
+            withcolor: {
+                slideHeaderTextColor: "#FFFFFF",
+                slideHeaderAccentColor: "#AD2929",
+                slideHeaderBackgroundColor: "#ad292980",
+                textBlockBackgroundColor: "#ad292980",
+                textBlockTextColor: "#fff",
+                iconListTrackColor: "#ff0000",
+                backgroundColor: "#fff",
+            },
+            imageLibrary: [{
+                id: "image",
+                image: "test.png"
+            }, {
+                id: "image",
+                image: "test.png"
+            }]
+        })
+        component.find(ClickableImage).at(0).simulate('click', 0)
+    });
+    it("should render with click on qui-clickable-image-container class", () => {
+        component.setProps({
+            data: {
+                iconList: [{
+                    text: "This is text",
+                    image: {
+                        id: "image",
+                        extention: ""
+                    }
+                }, {
+                    text: "This is text",
+                    image: {
+                        id: "image",
+                        extention: ""
+                    }
+                }],
+            },
+            withcolor: {
+                slideHeaderTextColor: "#FFFFFF",
+                slideHeaderAccentColor: "#AD2929",
+                slideHeaderBackgroundColor: "#ad292980",
+                textBlockBackgroundColor: "#ad292980",
+                textBlockTextColor: "#fff",
+                iconListTrackColor: "#ff0000",
+                backgroundColor: "#fff",
+            },
+            imageLibrary: [{
+                id: "image",
+                image: "test.png"
+            }, {
+                id: "image",
+                image: "test.png"
+            }]
+        })
+        component.find(".qui-clickable-image-container").simulate('click')
+    });
+    it("should render with click on Clickable Image with borderColor", () => {
+        component.setProps({
+            data: {
+                iconList: [{
+                    text: "This is text",
+                    image: {
+                        id: "image",
+                        extention: ""
+                    }
+                }],
+            },
+            withcolor: {
+                slideHeaderTextColor: "#FFFFFF",
+                slideHeaderAccentColor: "#AD2929",
+                slideHeaderBackgroundColor: "#ad292980",
+                textBlockBackgroundColor: "#ad292980",
+                textBlockTextColor: "#fff",
+                iconListTrackColor: "#ff0000",
+                backgroundColor: "#fff",
+            },
+            imageLibrary: [{
+                id: "image",
+                image: "test.png"
+            }]
+        })
+        component.find(ClickableImage).simulate('click')
+    });
+    it("should render with click on Clickable Image with default image", () => {
+        component.setProps({
+            data: {
+                iconList: [{
+                    text: "This is text",
+                    image: {
+                        id: "",
+                        extention: ""
+                    }
+                }],
+            },
+            imageLibrary: [{
+                id: "",
+                image: ""
+            }]
+        })
+        component.find(ClickableImage).simulate('click')
+    });
+    it("should render with click on Clickable  image id is null", () => {
+        component.setProps({
+            data: {
+                iconList: [{
+                    text: "This is text",
+                    image: {
+                        extention: ""
+                    }
+                }],
+            },
+            imageLibrary: [{
+                image: ""
+            }]
+        })
+        component.find(ClickableImage).simulate('click')
     });
     it("should render correctly when passed withColor props", () => {
+        component.setProps({
+            data: {
+                title: "title",
+                subtitle: "subtitle",
+                caption: "caption",
+                backgroundImage: {
+                    id: 'background',
+                    extention: ''
+                }
+            },
+            imageLibrary: [{
+                image: "test.png",
+                id: "background"
+            }],
+        })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed image props", () => {
+        component.setProps({
+            data: {
+                title: "title",
+                subtitle: "subtitle",
+                caption: "caption",
+                image: {
+                    id: 'image',
+                    extention: ''
+                }
+            },
+            imageLibrary: [{
+                image: "test.png",
+                id: "image"
+            }],
+        })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed backgroundImage prop as null and backgroundColor is passed", () => {
+        let data = {
+            title: "This is Title",
+            subtitle: "This is Subtitle",
+            caption: "caption",
+        }
         let colors = {
             slideHeaderTextColor: "#FFFFFF",
             slideHeaderAccentColor: "#AD2929",
             slideHeaderBackgroundColor: "#ad292980",
-            textBlockBackgroundColor: "#2d92a4",
+            textBlockBackgroundColor: "#ad292980",
             textBlockTextColor: "#fff",
-            bulletBlockTextColor: "#ffffff",
-            bulletBlockBackgroundColor: "#ad292980",
-            backgroundColor: "#fff"
+            iconListTrackColor: "#ff0000",
+            backgroundColor: "#fff",
         }
-        component.setProps({ withColor: colors })
+        component.setProps({ data: data, withColor: colors })
         expect(component.exists()).toBe(true);
     })
     it("should render correctly when passed withAnimation props", () => {
@@ -110,36 +290,6 @@ describe("IconListCaptions", () => {
     })
     it("should render correctly when passed asVariant prop as error", () => {
         component.setProps({ asVariant: "error" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asVariant prop as success", () => {
-        component.setProps({ asVariant: "success" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed backgroundImage prop as null and backgroundColor is passed", () => {
-        let data = {
-            title: "This is Title",
-            subtitle: "This is Subtitle",
-            image: "",
-            backgroundImage: "",
-            caption: "caption",
-            bullets: [
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                "Quisque sed turpis vel lectus suscipit auctor",
-                "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-            ]
-        }
-        let colors = {
-            slideHeaderTextColor: "#FFFFFF",
-            slideHeaderAccentColor: "#AD2929",
-            slideHeaderBackgroundColor: "#ad292980",
-            textBlockBackgroundColor: "#2d92a4",
-            textBlockTextColor: "#fff",
-            bulletBlockTextColor: "#ffffff",
-            bulletBlockBackgroundColor: "#ad292980",
-            backgroundColor: "#fff"
-        }
-        component.setProps({ data: data, withColor: colors })
         expect(component.exists()).toBe(true);
     })
 });

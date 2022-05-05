@@ -1,4 +1,5 @@
 .qui .qui-icon-list-captions-card {
+  position: relative;
   padding: 1.5em;
   border-radius: 1em;
   min-height: 30.5em;
@@ -47,27 +48,30 @@
     max-height: 14em;
     filter: drop-shadow(0px 5px 2px #a09797);
   }
+  .qui-fixed-clickable-images-container {
+    position: absolute;
+    bottom: 2%;
+    overflow: scroll;
+  }
   .qui-icon-list-captions-clickable-images {
-    position: relative;
+    .qui-icon-list-captions-track {
+      width: 100%;
+      height: 0.5em;
+      background-color: #ff0000;
+      position: absolute;
+      bottom: 50%;
+    }
     display: flex;
+    position: relative;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     margin-top: 4em;
     overflow: scroll;
-    .qui-icon-list-captions-track {
-      width: 100vw;
-      height: 0.5em;
-      background-color: #ff0000;
-      position: absolute;
-      top: 40%;
-    }
     .qui-clickable-image-container {
       filter: drop-shadow(0px 5px 2px #a09797);
-      margin: 0em 0.5em 1em 0.5em;
+      margin: 0em 0em 1em 0.5em;
       .qui-clickable-image {
-        width: 3.5em;
-        height: 3.5em;
         border-radius: 50%;
         object-fit: cover;
         img {
@@ -77,7 +81,68 @@
     }
   }
 }
+@media only screen and (min-width: 320px) {
+  .qui .qui-icon-list-captions-card .qui-fixed-clickable-images-container {
+    width: 86%;
+  }
+  .qui
+    .qui-icon-list-captions-card
+    .qui-icon-list-captions-clickable-images
+    .qui-clickable-image-container
+    .qui-clickable-image {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .qui-active-index {
+    width: 3.2em;
+    height: 3.2em;
+    border: 0.2em solid;
+    border-radius: 50%;
+    filter: drop-shadow(0px 3px 2px #a09797);
+    margin: 0em 0em 1em 0.5em;
+    .qui-clickable-image {
+      width: 3.2em;
+      height: 3.2em;
+      border-radius: 50%;
+      object-fit: cover;
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+}
 @media only screen and (min-width: 481px) {
+  .qui
+    .qui-icon-list-captions-card
+    .qui-icon-list-captions-clickable-images
+    .qui-clickable-image-container
+    .qui-clickable-image {
+    width: 3.8em;
+    height: 3.8em;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .qui-active-index {
+    width: 4em;
+    height: 4em;
+    border: 0.2em solid;
+    border-radius: 50%;
+    filter: drop-shadow(0px 3px 2px #a09797);
+    margin: 0em 0em 1em 0.5em;
+    .qui-clickable-image {
+      width: 3.9em;
+      height: 3.9em;
+      border-radius: 50%;
+      object-fit: cover;
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
   .qui .qui-icon-list-captions-card {
     width: 22em;
   }
