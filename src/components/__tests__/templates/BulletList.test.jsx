@@ -68,9 +68,9 @@ describe("BulletList", () => {
             slideHeaderTextColor: "#FFFF00",
             slideHeaderBackgroundColor: "#ad292980",
             slideHeaderAccentColor: "#f51d0a",
-            bulletBockTextColor: "#FFFF00",
-            bulletBockBackgroundColor: "#ad292980",
-            bulletBockAccentColor: "#FFFFFF",
+            bulletBlockTextColor: "#FFFF00",
+            bulletBlockBackgroundColor: "#ad292980",
+            bulletBlockAccentColor: "#FFFFFF",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);

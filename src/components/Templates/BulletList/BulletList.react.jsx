@@ -10,7 +10,7 @@ import "../../../common/stylesheets/common.css";
 import "./BulletList.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react"
-import BulletBock from "../../BulletBlock/BulletBlock.react"
+import BulletBlock from "../../BulletBlock/BulletBlock.react"
 
 BulletList.propTypes = {
     //=======================================
@@ -47,9 +47,9 @@ BulletList.propTypes = {
         slideHeaderTextColor: PropTypes.string,
         slideHeaderBackgroundColor: PropTypes.string,
         slideHeaderAccentColor: PropTypes.string,
-        bulletBockTextColor: PropTypes.string,
-        bulletBockBackgroundColor: PropTypes.string,
-        bulletBockAccentColor: PropTypes.string,
+        bulletBlockTextColor: PropTypes.string,
+        bulletBlockBackgroundColor: PropTypes.string,
+        bulletBlockAccentColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -113,10 +113,10 @@ export default function BulletList(props) {
         accentColor: withColor?.slideHeaderAccentColor,
         backgroundColor: withColor?.slideHeaderBackgroundColor
     }
-    let bulletBockColors = {
-        textColor: withColor?.bulletBockTextColor,
-        accentColor: withColor?.bulletBockAccentColor,
-        backgroundColor: withColor?.bulletBockBackgroundColor
+    let bulletBlockColors = {
+        textColor: withColor?.bulletBlockTextColor,
+        accentColor: withColor?.bulletBlockAccentColor,
+        backgroundColor: withColor?.bulletBlockBackgroundColor
     }
     //-------------------------------------------------------------------
     // 4. Function to set background
@@ -143,13 +143,15 @@ export default function BulletList(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-bullet-list-card ${quommonClasses.childClasses}`} key={"bullet-list" + slideId} style={{
-                ...background,
-                backgroundColor: withColor?.backgroundColor,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-            }}>
+            <div className={`qui-bullet-list-card ${quommonClasses.childClasses}`} key={"bullet-list" + slideId}
+                style={{
+                    ...background,
+                    backgroundColor: withColor?.backgroundColor,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                }}
+            >
                 {!data?.image && (data?.title || data?.subTitle) && (
                     <SlideHeader {...props}
                         content={{ title: data?.title, subTitle: data?.subTitle }}
@@ -160,9 +162,9 @@ export default function BulletList(props) {
                         src={resolveImage(data?.image?.id, imageLibrary)}
                         alt="bulletlist" />
                 )}
-                <BulletBock {...props}
+                <BulletBlock {...props}
                     content={data?.bullets}
-                    withColor={bulletBockColors}
+                    withColor={bulletBlockColors}
                     asAligned={"left"}
                 />
             </div>
