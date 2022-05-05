@@ -5,9 +5,9 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Title from "../../Templates/Title/Title.react";
+import MCQwithFeedback from "../../Templates/MCQwithFeedback/MCQwithFeedback.react";
 
-describe("Title", () => {
+describe("MCQ with Feedback", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -16,13 +16,19 @@ describe("Title", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <Title
+      <MCQwithFeedback
         data={{
           title: "test title",
           subtitle: "test subtitle",
           icon: "test-icon",
-          image: {},
+          backgroundImage:{},
+          options: [
+            { correct: "", text: "button name" },
+            { correct: "", text: "button name" },
+            { correct: "", text: "button name" },
+          ],
         }}
+        onClick={() => {}}
       />
     );
   });
@@ -42,54 +48,30 @@ describe("Title", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error when data is null", () => {
-    component.setProps({
-      data: null,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error when icon is provided with presenter object", () => {
+  it("should render correctly without throwing error when background image is null", () => {
     component.setProps({
       data: {
-        title: "test title",
-        icon: "test-icon",
-        presenter: {
-          extention: "",
-          id: "default43",
-        },
+        subtitle: "subtitle",
+        backgroundImage: null,
       },
     });
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error when presenter id is given in imageLibrary array", () => {
+  it("should render correctly without throwing error when background image is provided with title and subtitle null ", () => {
     component.setProps({
       data: {
-        title: "test title",
-        icon: "test-icon",
-        presenter: {
-          extention: "",
-          id: "test",
-        },
+        backgroundImage: {},
       },
-      imageLibrary: [{ id: "test", image: "test.png" }],
     });
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error when background image is provided", () => {
-    component.setProps({
-      data: {
-        title: "test title",
-        icon: "test-icon",
-        backgroundImage: {
-          id: "background-image",
-          extention: "",
-        },
-      },
-      imageLibrary: [{ id: "background-image", image: "test.png" }],
-    });
+  it("should render correctly without throwing error when clicked on a button", () => {
+    component
+      .find("ButtonBank")
+      .at(0)
+      .simulate("click", { target: { innerText: "button name" } });
     expect(component.exists()).toBe(true);
   });
 });
