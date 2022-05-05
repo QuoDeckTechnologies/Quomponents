@@ -187,7 +187,7 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to set selected option in the content array
   // -------------------------------------------------------------
-  const handleSelect = (targetName, image, value, checked) => {
+  const handleSelect = (targetName, checked) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
@@ -207,7 +207,7 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to image in the array of objects
   // -------------------------------------------------------------
-  const handleUpload = (targetName, image, value, checked) => {
+  const handleUpload = (targetName, image) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
@@ -226,7 +226,7 @@ const MultipleTemplate = (args) => {
   // -------------------------------------------------------------
   // Function to put value in the array of objects
   // -------------------------------------------------------------
-  const handleInput = (targetName, image, value, checked) => {
+  const handleInput = (targetName, value) => {
     tmp_state = contentArr;
     tmp_arr = [];
     tmp_obj = {};
@@ -252,15 +252,11 @@ const MultipleTemplate = (args) => {
             <OptionItemSeven
               {...args}
               content={content}
-              onSelect={(targetName, image, value, checked) =>
-                handleSelect(targetName, image, value, checked)
+              onSelect={(targetName, checked) =>
+                handleSelect(targetName, checked)
               }
-              onUpload={(targetName, image, value, checked) =>
-                handleUpload(targetName, image, value, checked)
-              }
-              onInput={(targetName, image, value, checked) =>
-                handleInput(targetName, image, value, checked)
-              }
+              onUpload={(targetName, image) => handleUpload(targetName, image)}
+              onInput={(targetName, value) => handleInput(targetName, value)}
               onClose={handleRemove}
             />
           </div>
@@ -274,19 +270,28 @@ MultipleOptionItemSeven.args = {
   ...Default.args,
   multiContent: [
     {
-      targetName: "TargetNameOne",
-      image: {},
+      targetName: "Target Name A",
+      value: "",
+      placeholder: "This is Option A",
       checked: false,
+      image: {},
+      maxLength: 300,
     },
     {
-      targetName: "TargetNameTwo",
-      image: {},
+      targetName: "Target Name B",
+      value: "",
+      placeholder: "This is Option B",
       checked: true,
+      image: {},
+      maxLength: 300,
     },
     {
-      targetName: "TargetNameThree",
-      image: {},
+      targetName: "Target Name C",
+      value: "",
+      placeholder: "This is Option C",
       checked: false,
+      image: {},
+      maxLength: 300,
     },
   ],
 };

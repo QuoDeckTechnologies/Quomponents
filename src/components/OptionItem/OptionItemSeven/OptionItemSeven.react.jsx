@@ -108,8 +108,6 @@ export default function OptionItemSeven(props) {
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  const [value, setValue] = useState(content?.value);
-  const [image, setImage] = useState(content?.image);
   const [isChecked, setIsChecked] = useState(content?.checked);
   useEffect(() => {
     setIsChecked(content?.checked);
@@ -127,21 +125,19 @@ export default function OptionItemSeven(props) {
   //-------------------------------------------------------------------
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
-    props.onSelect(content?.targetName, image, value, e.target.checked);
+    props.onSelect(content?.targetName, e.target.checked);
   };
   //-------------------------------------------------------------------
   // 6. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
-    setValue(value);
-    props.onInput(content?.targetName, image, value, isChecked);
+    props.onInput(content?.targetName, value);
   };
   //-------------------------------------------------------------------
   // 7. Function to update value of the input field
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
-    setImage(image);
-    props.onUpload(content?.targetName, image, value, isChecked);
+    props.onUpload(content?.targetName, image);
   };
 
   // ========================= Render Function =================================

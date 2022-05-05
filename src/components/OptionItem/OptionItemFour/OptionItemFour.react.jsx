@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
@@ -101,7 +101,6 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  // const [value, setValue] = useState(content?.value);
   const [isChecked, setIsChecked] = useState(content?.checked);
   //-------------------------------------------------------------------
   // 3. Set the classes
@@ -122,7 +121,6 @@ export default function OptionItemFour(props) {
   // 6. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
-    // setValue(value);
     onInput(content?.targetName, value);
   };
 
@@ -139,15 +137,12 @@ export default function OptionItemFour(props) {
           <CheckBox
             onClick={handleCheckBox}
             content={{
+              name: content?.targetName,
               checked: isChecked,
+              label: isChecked ? "Correct" : "Incorrect",
             }}
             withColor={{ ...props.withColor }}
           />
-          <span
-            className="qui-option-item-four-checkbox-label"
-          >
-            {isChecked ? "Correct" : "Incorrect"}
-          </span>
         </div>
         <InputField
           name={content?.targetName}
