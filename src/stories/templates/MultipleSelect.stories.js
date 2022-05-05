@@ -12,7 +12,8 @@ export default {
                 image: {},
                 question: "",
                 backgroundImage: {},
-                options: []
+                options: [],
+                purpose: ""
             }
         },
         slideId: 0,
@@ -127,6 +128,7 @@ Default.args = {
                 isSelected: false,
             }
         ],
+        purpose: "quiz"
     },
     slideId: 0,
     imageLibrary: [{
@@ -191,6 +193,7 @@ MultipleSelectWithSlideHeader.args = {
                 isSelected: false,
             }
         ],
+        purpose: ""
     },
     slideId: 0,
     asVariant: "primary",
@@ -255,6 +258,7 @@ EmphasisMultiSelect.args = {
                 isSelected: false,
             }
         ],
+        purpose: "quiz"
     },
     slideId: 0,
     imageLibrary: [{
@@ -323,7 +327,7 @@ ColoredMultiSelect.args = {
                 name: "Item 4",
                 isSelected: false,
             }
-        ],
+        ]
     },
     slideId: 0,
     imageLibrary: [{

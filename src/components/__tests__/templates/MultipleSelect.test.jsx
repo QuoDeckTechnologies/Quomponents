@@ -36,7 +36,7 @@ describe("MultipleSelect", () => {
 				name: "Item 4",
 				isSelected: false,
 			}
-		],
+		]
 	}
 
 	let colors = {
@@ -271,5 +271,21 @@ describe("MultipleSelect", () => {
 		expect(onClick).toBeCalledWith(3);
 		component.find(".qui-slide-multiple-select-container").children().simulate('click', 1)
 		expect(onClick).toBeCalledWith(1);
+	});
+
+	it("should render submit answer text in the submit button", () => {
+		let data = {
+			purpose: ""
+		}
+		component.setProps({ data: data });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render check answer text in the submit button", () => {
+		let data = {
+			purpose: "quiz"
+		}
+		component.setProps({ data: data });
+		expect(component.exists()).toBe(true);
 	});
 });

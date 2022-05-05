@@ -28,6 +28,7 @@ MultipleSelect.propTypes = {
         question: PropTypes.string,
         backgroundImage: PropTypes.object,
         options: PropTypes.array,
+        purpose: PropTypes.string
     }).isRequired,
     slideId: PropTypes.number,
     /**
@@ -202,7 +203,6 @@ export default function MultipleSelect(props) {
         hoverTextColor: props.withColor?.buttonHoverTextColor
     }
 
-
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -224,7 +224,7 @@ export default function MultipleSelect(props) {
                         {data?.question}
                     </div>
                     <div className="qui-slide-multiple-select-container">
-                        <MultiSelect {...props} content={data?.options} withColor={buttonStyle} asSize="small" />
+                        <MultiSelect {...props} content={data?.options} purpose={data?.purpose} withColor={buttonStyle} asSize="small" />
                     </div>
                 </div>
             )}

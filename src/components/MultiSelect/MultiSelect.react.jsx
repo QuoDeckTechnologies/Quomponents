@@ -23,6 +23,10 @@ MultiSelect.propTypes = {
         })
     ).isRequired,
     /**
+    Purpose defines the text which is to be displayed in the submit button, if you pass quiz then it will show check anwer otherwise submit answer.
+    */
+    purpose: PropTypes.string,
+    /**
     Set action emphasis in increasing order 
     */
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
@@ -154,7 +158,9 @@ export default function MultiSelect(props) {
                 );
             })}
             {<Button {...props}
-                content={"Submit Answer"}
+                content={props.purpose === "quiz"
+                    ? "Check Answer"
+                    : "Submit Answer"}
                 onClick={() => handleSubmit()} />}
         </div >
     )
