@@ -143,7 +143,8 @@ export default function BulletList(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-bullet-list-card ${quommonClasses.childClasses}`} key={"bullet-list" + slideId}
+            <div
+                className={`qui-bullet-list-card ${quommonClasses.childClasses}`} key={"bullet-list" + slideId}
                 style={{
                     ...background,
                     backgroundColor: withColor?.backgroundColor,
