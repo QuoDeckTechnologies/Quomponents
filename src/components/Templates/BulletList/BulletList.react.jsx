@@ -33,7 +33,7 @@ BulletList.propTypes = {
     */
     imageLibrary: PropTypes.array,
     /**
-    slideId can be used if same template is used continueously for multiple slides.
+    slideId can be used if same template is used continuously for multiple slides.
     */
     slideId: PropTypes.number,
     //=======================================
