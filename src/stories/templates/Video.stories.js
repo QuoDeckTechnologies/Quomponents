@@ -71,7 +71,7 @@ Default.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        video: "https://www.youtube.com/watch?v=2uiGez49QXA",
+        video: "https://www.youtube.com/embed/NpEaa2P7qZI",
     },
     imageLibrary: [
         {
@@ -114,7 +114,7 @@ ColoredVideo.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        video: "",
+        video: "https://www.youtube.com/embed/NpEaa2P7qZI",
     },
     withColor: {
         backgroundColor: "#F3E5F5",
@@ -172,7 +172,7 @@ WithoutHeaderImageVideo.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        video: "",
+        video: "https://www.youtube.com/embed/NpEaa2P7qZI",
     },
     withColor: {
         backgroundColor: "#171030",
@@ -206,7 +206,7 @@ WithBackgroundImageVideo.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        video: "",
+        video: "https://www.youtube.com/embed/NpEaa2P7qZI",
         image: { id: "header-image", extention: "" },
         backgroundImage: { id: "background-image", extention: "" }
     },
@@ -230,7 +230,7 @@ BackgroundImageWithSlideHeaderVideo.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        video: "",
+        video: "https://www.youtube.com/embed/NpEaa2P7qZI",
         backgroundImage: { id: "background-image", extention: "" }
     },
     withColor: {
