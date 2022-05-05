@@ -6,7 +6,7 @@ import { shallow, mount, render } from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import CaptionedVideo from "../Templates/CaptionedVideo/CaptionedVideo.react"
+import CaptionedVideo from "../../Templates/CaptionedVideo/CaptionedVideo.react"
 
 describe("CaptionedVideo", () => {
     // -------------------------------------
