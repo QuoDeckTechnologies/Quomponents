@@ -89,7 +89,7 @@ export default {
     ],
     parameters: {
         componentSubtitle:
-            "Displays a MultipleSelect with a question, the user need to submit the correct option as answer, we can switch between the image and SlideHeader by adding or removing the image prop",
+            "Displays a MultipleSelect with a question, the user need to submit the correct option/ options by clicking on the button or checkbox, we can switch between the image and SlideHeader by adding or removing the image prop",
         a11y: { disable: true },
         docs: {
             iframeHeight: 650,
@@ -116,6 +116,14 @@ Default.args = {
             },
             {
                 name: "Item 2",
+                isSelected: false,
+            },
+            {
+                name: "Item 3",
+                isSelected: false,
+            },
+            {
+                name: "Item 4",
                 isSelected: false,
             }
         ],
@@ -173,6 +181,14 @@ MultipleSelectWithSlideHeader.args = {
             {
                 name: "Item 2",
                 isSelected: false,
+            },
+            {
+                name: "Item 3",
+                isSelected: false,
+            },
+            {
+                name: "Item 4",
+                isSelected: false,
             }
         ],
     },
@@ -210,67 +226,139 @@ MultipleSelectWithSlideHeader.parameters = {
     },
 };
 // -------------------------------------------------------------
-// MultipleMultipleSelect
+// EmphasisMultiSelect
 // -------------------------------------------------------------
-export const EmphasisMultipleSelect = (args) => {
-    const baseObj1 = {
-        ...Object.assign({}, Default.args, {
-            asVariant: "primary",
-            asEmphasis: "outlined",
-            withColor: {
-                slideHeaderTextColor: "#ffffff",
-                slideHeaderAccentColor: "#AD2929",
-                slideHeaderBackgroundColor: "#AD292980",
-                buttonBackgroundColor: "#AD2929",
-                buttonTextColor: "#ffffff",
-                buttonHoverBackgroundColor: "#AD292980",
-                buttonHoverTextColor: "#AD2929",
-                backgroundColor: "#AD292"
+export const EmphasisMultiSelect = Template.bind({});
+EmphasisMultiSelect.args = {
+    data: {
+        title: "Neque porro quisquam est qui dolorem",
+        subtitle:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+        image: { id: "header-image", extension: "" },
+        backgroundImage: { id: "", extention: "" },
+        question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        options: [
+            {
+                name: "Item 1",
+                isSelected: false,
             },
-            withAnimation: {
-                animation: "slideRight",
-                duration: 0.5,
-                delay: 0,
+            {
+                name: "Item 2",
+                isSelected: false,
             },
-            onClick: (value) => { return value }
-        })
-    };
-    return (
-        <MultipleSelect
-            {...Object.assign({}, baseObj1, {
-            })}
-        />
-    );
+            {
+                name: "Item 3",
+                isSelected: false,
+            },
+            {
+                name: "Item 4",
+                isSelected: false,
+            }
+        ],
+    },
+    slideId: 0,
+    imageLibrary: [{
+        id: "header-image",
+        image:
+            "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    }],
+    asVariant: "secondary",
+    withColor: {
+        questionColor: "#000000",
+        slideHeaderTextColor: "#ffffff",
+        slideHeaderAccentColor: "#AD2929",
+        slideHeaderBackgroundColor: "#AD292980",
+        buttonBackgroundColor: "",
+        buttonTextColor: "",
+        buttonHoverBackgroundColor: "",
+        buttonHoverTextColor: "",
+        backgroundColor: "#AD292"
+    },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+    asEmphasis: "outlined",
+    isDisabled: false,
+    isHidden: false,
+};
+EmphasisMultiSelect.parameters = {
+    docs: {
+        source: {
+            code: `<MultiSelect {...${JSON.stringify(
+                EmphasisMultiSelect.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
 };
 // -------------------------------------------------------------
-// ColoredMultipleSelect
+// ColoredMultiSelect
 // -------------------------------------------------------------
-export const ColoredMultipleSelect = (args) => {
-    const baseObj1 = {
-        ...Object.assign({}, Default.args, {
-            asVariant: "primary",
-            withColor: {
-                slideHeaderTextColor: "#ffffff",
-                slideHeaderAccentColor: "#AD2929",
-                slideHeaderBackgroundColor: "#AD292980",
-                buttonBackgroundColor: "#AD2929",
-                buttonTextColor: "#ffffff",
-                buttonHoverBackgroundColor: "#AD292980",
-                buttonHoverTextColor: "#AD2929",
-                backgroundColor: "#AD292"
+export const ColoredMultiSelect = Template.bind({});
+ColoredMultiSelect.args = {
+    data: {
+        title: "Neque porro quisquam est qui dolorem",
+        subtitle:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+        image: { id: "header-image", extension: "" },
+        backgroundImage: { id: "", extention: "" },
+        question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        options: [
+            {
+                name: "Item 1",
+                isSelected: false,
             },
-            withAnimation: {
-                animation: "slideRight",
-                duration: 0.5,
-                delay: 0,
+            {
+                name: "Item 2",
+                isSelected: false,
             },
-            onClick: (value) => { return value }
-        })
-    };
-    return (
-        <MultipleSelect
-            {...Object.assign({}, baseObj1, {
-            })}
-        />
-    );
+            {
+                name: "Item 3",
+                isSelected: false,
+            },
+            {
+                name: "Item 4",
+                isSelected: false,
+            }
+        ],
+    },
+    slideId: 0,
+    imageLibrary: [{
+        id: "header-image",
+        image:
+            "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    }],
+    asVariant: "primary",
+    withColor: {
+        slideHeaderTextColor: "#ffffff",
+        slideHeaderAccentColor: "#AD2929",
+        slideHeaderBackgroundColor: "#AD292980",
+        buttonBackgroundColor: "#AD2929",
+        buttonTextColor: "#ffffff",
+        buttonHoverBackgroundColor: "#AD292980",
+        buttonHoverTextColor: "#AD2929",
+        backgroundColor: "#AD292"
+    },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+    asEmphasis: "contained",
+    isDisabled: false,
+    isHidden: false,
+};
+ColoredMultiSelect.parameters = {
+    docs: {
+        source: {
+            code: `<MultiSelect {...${JSON.stringify(
+                ColoredMultiSelect.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
 };
