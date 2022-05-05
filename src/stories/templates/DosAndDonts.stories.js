@@ -73,7 +73,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a Captioned Bullet List with TextBlock, BulletBlock and a SlideHeader, we can switch the slideHeader with header image by removing the title and subtitle from prop, and by giving the image link as prop we can see an image. If the title, subtitle, and image are provided together, only the slideHeader is visible",
+        componentSubtitle: "Displays DosAndDonts slide with slideHeader and choice buttons which shows BulletBlock accordinly",
         a11y: { disable: true },
         docs: {
             iframeHeight: 400,
