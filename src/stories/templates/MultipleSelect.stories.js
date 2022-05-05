@@ -6,11 +6,14 @@ export default {
     component: MultipleSelect,
     argTypes: {
         data: {
-            title: "",
-            subtitle: "",
-            image: {},
-            question: "",
-            backgroundImage: {}
+            defaultValue: {
+                title: "",
+                subtitle: "",
+                image: {},
+                question: "",
+                backgroundImage: {},
+                options: []
+            }
         },
         slideId: 0,
         imageLibrary: [],

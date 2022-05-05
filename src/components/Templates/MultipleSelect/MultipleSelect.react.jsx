@@ -12,9 +12,7 @@ import "../../../common/stylesheets/common.css";
 import "./MultipleSelect.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
-import ButtonBank from "../../ButtonBank/ButtonBank.react";
 import MultiSelect from "../../MultiSelect/MultiSelect.react.jsx";
-
 
 MultipleSelect.propTypes = {
     //=======================================
@@ -193,8 +191,16 @@ export default function MultipleSelect(props) {
     //-------------------------------------------------------------------
     // 6. Variable for ButtonBank content props
     //-------------------------------------------------------------------
+
     let optionsArray = [];
     data?.options?.forEach((item) => optionsArray.push(item?.text?.toLowerCase()));
+
+    let buttonStyle = {
+        backgroundColor: props.withColor?.buttonBackgroundColor,
+        textColor: props.withColor?.buttonTextColor,
+        hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
+        hoverTextColor: props.withColor?.buttonHoverTextColor
+    }
 
     // ========================= Render Function =================================
     return (
@@ -217,7 +223,7 @@ export default function MultipleSelect(props) {
                         {data?.question}
                     </div>
                     <div className="qui-slide-multiple-select-container">
-                      <MultiSelect {...props} content={data?.options}/>
+                        <MultiSelect {...props} content={data?.options} withColor={buttonStyle} asSize="small" />
                     </div>
                 </div>
             )}

@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -112,6 +112,10 @@ MultiSelect.defaultProps = {
 **/
 export default function MultiSelect(props) {
     let [data, setData] = useState([...props.content]);
+
+    useEffect(() => {
+        setData([...props.content])
+    }, [props.content])
 
     function handleSubmit() {
         let selectedIndexes = []
