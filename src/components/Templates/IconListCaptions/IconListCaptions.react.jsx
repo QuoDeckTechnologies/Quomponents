@@ -190,7 +190,8 @@ export default function IconListCaptions(props) {
             return (
               <div key={'textblock' + index}>
                 {state === index &&
-                  <TextBlock {...props} content={image.text} withColor={textBlockColors} />}
+                  <TextBlock {...props} content={image.text} withColor={textBlockColors} />
+                }
               </div>
             );
           })}
