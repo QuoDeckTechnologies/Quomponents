@@ -30,7 +30,7 @@
 
     .qui-bulletblock {
         max-width: 17.5em;
-        margin: 1.5em auto 3em;
+        margin: 1.5em 1em 3em;
         padding: 0;
         ul {
             margin: 0.1em;
@@ -61,11 +61,11 @@
 @media only screen and (min-width: 481px) {
     .qui .qui-bullet-list-card {
         width: 22em;
-    }
-
-    .qui-bulletblock {
-        font-size: 1.2em;
-        width: 17em;
+        .qui-bulletblock {
+            font-size: 1.2em;
+            width: 17em;
+            margin: 1.5em 0.6em 3em;
+        }
     }
 
     .qui-bullet-list-image {
