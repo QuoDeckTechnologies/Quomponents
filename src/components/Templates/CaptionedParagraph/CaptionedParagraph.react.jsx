@@ -117,7 +117,7 @@ export default function CaptionedParagraph(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring data from props
     //-------------------------------------------------------------------
-    let { data, withColor, imageLibrary, slideId, asVariant } = props;
+    let { data, withColor, imageLibrary, slideId } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -170,7 +170,7 @@ export default function CaptionedParagraph(props) {
             }}
 
         >
-            <div className={`qui-captioned-paragraph-card ${quommonClasses.childClasses}`} key={"captioned paragraph" + props?.slideId}>
+            <div className={`qui-captioned-paragraph-card ${quommonClasses.childClasses}`} key={"captioned paragraph" + slideId}>
                 {!data?.image && (data?.title || data?.subtitle) && (
                     <SlideHeader
                         content={{ title: data?.title, subTitle: data?.subtitle }}

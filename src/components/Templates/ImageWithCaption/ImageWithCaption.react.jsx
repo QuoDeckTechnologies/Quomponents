@@ -128,7 +128,7 @@ export default function ImageWithCaption(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring data from props
     //-------------------------------------------------------------------
-    let { data, withColor, imageLibrary, slideId, asVariant } = props;
+    let { data, withColor, imageLibrary, slideId } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -202,7 +202,6 @@ export default function ImageWithCaption(props) {
                 />
                 {<Button {...props}
                     content={"Continue"}
-                    asFloated={"inline"}
                     onClick={props.onClick}
                     withColor={buttonColors}
                 />}

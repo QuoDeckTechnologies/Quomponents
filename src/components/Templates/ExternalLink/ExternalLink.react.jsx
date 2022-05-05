@@ -52,12 +52,8 @@ ExternalLink.propTypes = {
         "error",
     ]),
     /**
-    Use to float the component in parent container
+    Use to override component colors and behavior
     */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
-      Use to override component colors and behavior
-      */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         slideHeaderTextColor: PropTypes.string,
@@ -112,7 +108,6 @@ ExternalLink.defaultProps = {
     //=======================================
     asVariant: "warning",
     withColor: null,
-    asFloated: "none",
     withAnimation: null,
     isDisabled: false,
     isHidden: false,
