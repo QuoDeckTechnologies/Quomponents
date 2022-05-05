@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
+  resolveImage,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -25,8 +26,8 @@ OpenAnswer.propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
     question: PropTypes.string,
-    image: PropTypes.string,
-    backgroundImage: PropTypes.string,
+    image: PropTypes.object,
+    backgroundImage: PropTypes.object,
   }),
   /**
     OpenAnswer slideId should be passed with props, to specify the slide.
@@ -90,7 +91,7 @@ OpenAnswer.propTypes = {
     */
   isDisabled: PropTypes.bool,
   /**
-    Anagram component must have the onClick function passed as props
+    OpenAnswer component must have the onClick function passed as props
     */
   onClick: PropTypes.func.isRequired,
 };
@@ -103,9 +104,13 @@ OpenAnswer.defaultProps = {
     title: "",
     subtitle: "",
     question: "",
-    image: "",
-    backgroundImage: "",
+    image: {},
+    backgroundImage: {},
   },
+  /**
+    OpenAnswer component must have the onClick function passed as props
+    */
+  imageLibrary: [{}],
   slideId: 0,
   //=======================================
   // Quommon props
@@ -124,7 +129,7 @@ OpenAnswer.defaultProps = {
 - Displays a Open Answer slide withSlideHeader , TextBlock, inputFiled, and a Button
 **/
 export default function OpenAnswer(props) {
-  let { data, withColor } = props
+  let { data, withColor, imageLibrary } = props
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -163,14 +168,13 @@ export default function OpenAnswer(props) {
   }
   const getBackground = () => {
     return {
-      background: `url(${data.backgroundImage})`,
+      background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
       backgroundSize: "cover",
     };
   };
   const background = data?.backgroundImage
     ? getBackground()
     : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
-
 
   const [state, setState] = useState();
   function handleSubmit() {
@@ -191,7 +195,7 @@ export default function OpenAnswer(props) {
               withColor={slideHeaderColors} />
           )}
           {data?.image && (
-            <img className="qui-open-answer-image" src={data?.image} alt="" />
+            <img className="qui-open-answer-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
           )}
           <TextBlock {...props} content={data?.question} withColor={textBlockColors} />
           <InputField {...props}
