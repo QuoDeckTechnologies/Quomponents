@@ -17,10 +17,12 @@ describe("Choice", () => {
 		title: "Neque porro quisquam est qui dolorem",
 		subtitle:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-		image: "",
 		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-		backgroundImage:
-			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+		imageLibrary: [{
+			id: "header-image",
+			image:
+				"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+		}],
 		choice: [
 			{
 				correct: "checked",
@@ -39,7 +41,7 @@ describe("Choice", () => {
 		slideHeaderTextColor: "#ffffff",
 		slideHeaderAccentColor: "#AD2929",
 		slideHeaderBackgroundColor: "#AD292980",
-		backgroundColor: "#000",
+		backgroundColor: "#fff",
 	};
 
 	beforeEach(() => {
@@ -192,19 +194,13 @@ describe("Choice", () => {
 	it("should render image instead of title and sutitle", () => {
 		component.setProps({
 			data: {
+				image: { id: "header-image", extension: "" },
+			},
+			imageLibrary: [{
+				id: "header-image",
 				image:
 					"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-				choice: [
-					{
-						correct: "checked",
-						text: "Item1",
-					},
-					{
-						correct: "",
-						text: "Item2",
-					},
-				],
-			},
+			}],
 		});
 		expect(component.find(".qui-slide-choice-image").props().src).toBe(
 			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
@@ -214,7 +210,7 @@ describe("Choice", () => {
 	it("should render default backgroundcolor if we doesn't pass background color", () => {
 		component.setProps({
 			data: {
-				backgroundImage: "",
+				backgroundImage: { id: "", extention: "" },
 				choice: [
 					{
 						correct: "checked",
@@ -235,10 +231,30 @@ describe("Choice", () => {
 		).toBe("#ffffff");
 	});
 
+	it("should render backgroundImage if we pass background image id", () => {
+		component.setProps({
+			data: {
+				backgroundImage: { id: "background-image", extention: "" },
+				choice: [
+					{
+						correct: "checked",
+						text: "Item1",
+					},
+					{
+						correct: "",
+						text: "Item2",
+					},
+				],
+			},
+			withColor: {
+				backgroundColor: "",
+			},
+		});
+	});
+
 	it("should render backgroundcolor if we pass background color", () => {
 		component.setProps({
 			data: {
-				backgroundImage: "",
 				choice: [
 					{
 						correct: "checked",
