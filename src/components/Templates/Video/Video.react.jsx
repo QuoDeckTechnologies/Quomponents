@@ -25,10 +25,9 @@ Video.propTypes = {
         image: PropTypes.object,
         backgroundImage: PropTypes.object,
         video: PropTypes.string,
-
     }).isRequired,
     /**
-    Video can set iconlist image & backgroundImage from imageLibrary.
+    Video can set header image & backgroundImage from imageLibrary.
     */
     imageLibrary: PropTypes.array,
     /**
@@ -139,7 +138,10 @@ export default function Video(props) {
                 backgroundSize: "cover",
             }}
         >
-            <div className={`qui-video-card ${quommonClasses.childClasses}`} key={"video" + slideId}>
+            <div
+                className={`qui-video-card ${quommonClasses.childClasses}`}
+                key={"video" + slideId}
+            >
                 {!data?.image && (data?.title || data?.subtitle) && (
                     <SlideHeader {...props}
                         content={{ title: data?.title, subTitle: data?.subtitle }}
