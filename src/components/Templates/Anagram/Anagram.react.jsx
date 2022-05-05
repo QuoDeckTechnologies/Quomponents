@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
+  resolveImage,
 } from "../../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -24,11 +25,16 @@ Anagram.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    image: PropTypes.string,
+    image: PropTypes.object,
+    backgroundImage: PropTypes.object,
     question: PropTypes.string,
     answer: PropTypes.string,
     purpose: PropTypes.string,
   }).isRequired,
+  /**
+    Anagram should have imageLibrary array
+    */
+  imageLibrary: PropTypes.array,
   slideId: PropTypes.number,
   //=======================================
   // Quommon props
@@ -59,6 +65,7 @@ Anagram.propTypes = {
     buttonBackgroundColor: PropTypes.string,
     buttonHoverBackgroundColor: PropTypes.string,
     buttonHoverTextColor: PropTypes.string,
+    backgroundColor: PropTypes.string,
   }),
   /**
     Use to define the entry animation of the component
@@ -115,7 +122,7 @@ Anagram.defaultProps = {
   answer using the input field, typed answer will submitted as it is.
 **/
 export default function Anagram(props) {
-  let { data } = props
+  let { data, withColor, imageLibrary } = props
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -164,6 +171,16 @@ export default function Anagram(props) {
   };
   let buttonText = data?.purpose === "quiz" ? "Check Answer" : "Submit Answer"
 
+  const getBackground = () => {
+    return {
+      background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
+      backgroundSize: "cover",
+    };
+  };
+  const background = data?.backgroundImage
+    ? getBackground()
+    : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
+
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -172,14 +189,14 @@ export default function Anagram(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       {data &&
-        <div className="qui-anagram-card">
+        <div className="qui-anagram-card" style={{ ...background }}>
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
               content={{ title: data?.title, subTitle: data?.subtitle }}
               withColor={slideHeaderColors} />
           )}
           {data?.image && (
-            <img className="qui-anagram-image" src={data?.image} alt="" />
+            <img className="qui-anagram-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
           )}
           <div
             className={`qui-anagram-question variant-${props.asVariant}-text`}

@@ -26,6 +26,7 @@ ImageWithCaption.propTypes = {
         subtitle: PropTypes.string,
         caption: PropTypes.string,
         image: PropTypes.string,
+        backgroundImage: PropTypes.string,
     }).isRequired,
 
     slideId: PropTypes.number,
@@ -46,6 +47,7 @@ ImageWithCaption.propTypes = {
       Use to override component colors and behavior
       */
     withColor: PropTypes.shape({
+        backgroundColor: PropTypes.string,
         slideHeaderTextColor: PropTypes.string,
         slideHeaderAccentColor: PropTypes.string,
         slideHeaderBackgroundColor: PropTypes.string,
@@ -114,7 +116,7 @@ export default function ImageWithCaption(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring data from props
     //-------------------------------------------------------------------
-    let { data } = props;
+    let { data, withColor } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -125,7 +127,7 @@ export default function ImageWithCaption(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     //-------------------------------------------------------------------
-    // Setting the colors of the imported components
+    // 4. Setting the colors of the imported components
     //-------------------------------------------------------------------
     let buttonColors = {
         textColor: props.withColor?.buttonTextColor,
@@ -142,12 +144,25 @@ export default function ImageWithCaption(props) {
         accentColor: props.withColor?.slideHeaderAccentColor,
         backgroundColor: props.withColor?.slideHeaderBackgroundColor
     }
+    //-------------------------------------------------------------------
+    // 5. Set background image and color for card
+    //-------------------------------------------------------------------
+    const getBackground = () => {
+        return {
+            background: `url(${data?.backgroundImage})`,
+            backgroundSize: "cover",
+        };
+    };
+    const background = data?.backgroundImage
+        ? getBackground()
+        : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
     // ========================= Render Function =================================
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
+            style={{ ...background }}
         >
             <div className={`qui-image-with-caption-card ${quommonClasses.childClasses}`}>
                 {!data?.image && (data?.title || data?.subtitle) && (

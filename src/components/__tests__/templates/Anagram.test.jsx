@@ -6,8 +6,8 @@ import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Anagram from "../Templates/Anagram/Anagram.react";
-import Button from "../Buttons/Button/Button.react";
+import Anagram from "../../Templates/Anagram/Anagram.react";
+import Button from "../../Buttons/Button/Button.react";
 
 describe("Anagram", () => {
   // -------------------------------------
@@ -21,11 +21,25 @@ describe("Anagram", () => {
         data={{
           title: "This is Title",
           subtitle: "This is Subtitle",
-          image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+          image: {
+            id: 'header-image',
+            extention: ""
+          },
+          backgroundImage: {
+            id: 'background-image',
+            extention: ""
+          },
           question: "Question",
           answer: "Answer",
           purpose: "quiz",
         }}
+        imageLibrary={[{
+          id: 'background-image',
+          image: "test-image1.png"
+        }, {
+          id: 'header-image',
+          image: "test-image2.png"
+        }]}
         slideId={0}
         asVariant="primary"
         withColor={null}
@@ -69,6 +83,7 @@ describe("Anagram", () => {
       buttonBackgroundColor: "ff0ff0",
       buttonHoverBackgroundColor: "ffff00",
       buttonHoverTextColor: "ff00ff",
+      backgroundColor: "",
     }
     component.setProps({ withColor: colors })
     expect(component.exists()).toBe(true);
@@ -126,7 +141,6 @@ describe("Anagram", () => {
     let data = {
       title: "This is Title",
       subtitle: "This is Subtitle",
-      image: "",
       question: "Question",
       answer: "Answer",
       purpose: "quiz",
@@ -151,4 +165,55 @@ describe("Anagram", () => {
       tree.props.onMouseEnter();
     });
   });
+
+  it("should render correctly when passed backgroundImage prop as null and backgroundColor is passed", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
+      question: "Question",
+      answer: "Answer",
+      purpose: "quiz",
+    }
+    let colors = {
+      slideHeaderTextColor: "#FFFFFF",
+      slideHeaderAccentColor: "#AD2929",
+      slideHeaderBackgroundColor: "#ad292980",
+      textBlockBackgroundColor: "#2d92a4",
+      textBlockTextColor: "#fff",
+      bulletBlockTextColor: "#ffffff",
+      bulletBlockBackgroundColor: "#ad292980",
+      backgroundColor: "#fff"
+    }
+    component.setProps({ data: data, withColor: colors })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed backgroundImage prop", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
+      backgroundImage: {
+        id: 'background-image',
+        extention: ""
+      },
+      question: "Question",
+      answer: "Answer",
+      purpose: "quiz",
+    }
+    let imageLibrary = [{
+      id: "background-image",
+      image: 'test-image'
+    }]
+    let colors = {
+      slideHeaderTextColor: "#FFFFFF",
+      slideHeaderAccentColor: "#AD2929",
+      slideHeaderBackgroundColor: "#ad292980",
+      textBlockBackgroundColor: "#2d92a4",
+      textBlockTextColor: "#fff",
+      bulletBlockTextColor: "#ffffff",
+      bulletBlockBackgroundColor: "#ad292980",
+      backgroundColor: "#fff"
+    }
+    component.setProps({ data: data, withColor: colors, imageLibrary: imageLibrary })
+    expect(component.exists()).toBe(true);
+  })
 });
