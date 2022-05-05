@@ -105,7 +105,7 @@ Default.args = {
             "Quisque sed turpis vel lectus suscipit auctor",
             "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
         ],
-        reBullets: [
+        rebullets: [
             "Don't Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             "Quisque sed turpis vel lectus suscipit auctor",
             "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
@@ -166,7 +166,7 @@ DOsDONTsWithImage.args = {
             "Quisque sed turpis vel lectus suscipit auctor",
             "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
         ],
-        reBullets: [
+        rebullets: [
             "R Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             "Quisque sed turpis vel lectus suscipit auctor",
             "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
@@ -231,7 +231,7 @@ DosDontswithBackgroundImage.args = {
             "Quisque sed turpis vel lectus suscipit auctor",
             "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
         ],
-        reBullets: [
+        rebullets: [
             "R Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             "Quisque sed turpis vel lectus suscipit auctor",
             "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."

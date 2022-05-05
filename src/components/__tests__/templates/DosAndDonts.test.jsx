@@ -36,7 +36,7 @@ describe("DosAndDonts", () => {
             "Quisque sed turpis vel lectus suscipit auctor",
             "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
           ],
-          reBullets: [
+          rebullets: [
             "Don't Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             "Quisque sed turpis vel lectus suscipit auctor",
             "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
@@ -197,7 +197,7 @@ describe("DosAndDonts", () => {
         "Quisque sed turpis vel lectus suscipit auctor",
         "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
       ],
-      reBullets: [
+      rebullets: [
         "Don't Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "Quisque sed turpis vel lectus suscipit auctor",
         "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
@@ -243,7 +243,7 @@ describe("DosAndDonts", () => {
             text: "DON'Ts",
           },
         ],
-        reBullets: [
+        rebullets: [
           "DO Lorem ipsum dolor sit amet, consectetur adipiscing elit",
           "Quisque sed turpis vel lectus suscipit auctor",
           "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."

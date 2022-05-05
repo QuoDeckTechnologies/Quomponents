@@ -35,7 +35,7 @@ DosAndDonts.propTypes = {
     bullets: PropTypes.arrayOf(
       PropTypes.string
     ),
-    reBullets: PropTypes.arrayOf(
+    rebullets: PropTypes.arrayOf(
       PropTypes.string
     ),
     backgroundImage: PropTypes.object,
@@ -121,7 +121,7 @@ DosAndDonts.defaultProps = {
     image: {},
     backgroundImage: {},
     bullets: [],
-    reBullets: []
+    rebullets: []
   },
   imageLibrary: [{}],
   slideId: 0,
@@ -226,7 +226,7 @@ export default function DosAndDonts(props) {
         {active === "do" &&
           <BulletBlock {...props} content={data?.bullets} withColor={bulletBlockColors} asVariant={props.asVariant} />}
         {active === "dont" &&
-          <BulletBlock {...props} content={data?.reBullets} withColor={bulletBlockColors} asVariant={props.asVariant} />}
+          <BulletBlock {...props} content={data?.rebullets} withColor={bulletBlockColors} asVariant={props.asVariant} />}
         {active === "none" && (
           <h3 className="qui-do-donts-default-text"
             style={{
