@@ -7,6 +7,7 @@ export default {
   argTypes: {
     data: {},
     slideId: 0,
+    imageLibrary: [{}],
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
@@ -93,9 +94,15 @@ Default.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    image: "",
-    backgroundImage: "",
+    backgroundImage: {
+      id: 'background-image',
+      extention: ""
+    },
   },
+  imageLibrary: [{
+    id: 'background-image',
+    image: 'https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg',
+  }],
   slideId: 0,
   asVariant: "warning",
   withColor: {
@@ -137,9 +144,15 @@ OpenAnswerWithImage.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    backgroundImage: "",
+    image: {
+      id: "header-image",
+      extention: ''
+    },
   },
+  imageLibrary: [{
+    id: 'header-image',
+    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
+  }],
   asVariant: "warning",
   withColor: {
     slideHeaderTextColor: "#ffffff",
@@ -180,9 +193,15 @@ OpenAnswerWithBackgroundImage.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    backgroundImage: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+    backgroundImage: {
+      id: 'background-image',
+      extention: ''
+    },
   },
+  imageLibrary: [{
+    id: 'background-image',
+    image: 'https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg'
+  },],
   asVariant: "warning",
   withColor: {
     slideHeaderTextColor: "#ffffff",
@@ -211,65 +230,6 @@ OpenAnswerWithBackgroundImage.parameters = {
   docs: {
     source: {
       code: `<OpenAnswer {...${JSON.stringify(OpenAnswerWithBackgroundImage.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// MultipleOpenAnswer
-// -------------------------------------------------------------
-const MultipleOpenAnswerTemplate = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args, {
-    }),
-  };
-  return (
-    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", backgroundColor: "#454545" }}>
-      <div style={{ margin: "1em", width: "25em" }}>
-        <OpenAnswer
-          {...Object.assign({}, baseObj, {
-            asVariant: 'warning',
-            withAnimation: {
-              animation: "slideRight",
-              duration: 0.5,
-              delay: 0,
-            },
-          })}
-        />
-      </div>
-      <div style={{ margin: "1em", width: "25em" }}>
-        <OpenAnswer
-          {...Object.assign({}, baseObj, {
-            asVariant: 'warning',
-            withAnimation: {
-              animation: "slideUp",
-              duration: 0.5,
-              delay: 0.8,
-            },
-          })}
-        />
-      </div>
-      <div style={{ margin: "1em", width: "25em" }}>
-        <OpenAnswer
-          {...Object.assign({}, baseObj, {
-            asVariant: 'warning',
-            withAnimation: {
-              animation: "slideLeft",
-              duration: 0.5,
-              delay: 0.5,
-            },
-          })}
-        />
-      </div>
-    </div>
-  );
-};
-export const MultipleOpenAnswer = MultipleOpenAnswerTemplate.bind({});
-MultipleOpenAnswer.parameters = {
-  docs: {
-    source: {
-      code: `<OpenAnswer data={image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-      title: "Neque porro quisquam est qui dolorem",
-      subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem", ,}/>`,
     },
   },
 };
