@@ -21,16 +21,6 @@ describe("DosAndDonts", () => {
           title: "Neque porro quisquam est qui dolorem",
           subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
           caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-          options: [
-            {
-              correct: "checked",
-              text: "DOs",
-            },
-            {
-              correct: "",
-              text: "DON'Ts",
-            },
-          ],
           bullets: [
             "DO Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             "Quisque sed turpis vel lectus suscipit auctor",
@@ -181,16 +171,6 @@ describe("DosAndDonts", () => {
       title: "Neque porro quisquam est qui dolorem",
       subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
       caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-      options: [
-        {
-          correct: "checked",
-          text: "DOs",
-        },
-        {
-          correct: "",
-          text: "DON'Ts",
-        },
-      ],
       bullets: [
         "DO Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "Quisque sed turpis vel lectus suscipit auctor",
@@ -209,16 +189,6 @@ describe("DosAndDonts", () => {
     component.find(Choice).simulate('click', 0)
     component.setProps({
       data: {
-        options: [
-          {
-            correct: "checked",
-            text: "DOs",
-          },
-          {
-            correct: "",
-            text: "DON'Ts",
-          },
-        ],
         bullets: [
           "DO Lorem ipsum dolor sit amet, consectetur adipiscing elit",
           "Quisque sed turpis vel lectus suscipit auctor",
@@ -232,16 +202,6 @@ describe("DosAndDonts", () => {
     component.find(Choice).simulate('click', 1)
     component.setProps({
       data: {
-        options: [
-          {
-            correct: "checked",
-            text: "DOs",
-          },
-          {
-            correct: "",
-            text: "DON'Ts",
-          },
-        ],
         rebullets: [
           "DO Lorem ipsum dolor sit amet, consectetur adipiscing elit",
           "Quisque sed turpis vel lectus suscipit auctor",
@@ -253,16 +213,6 @@ describe("DosAndDonts", () => {
   it("should render without error when passed background image", () => {
     component.setProps({
       data: {
-        options: [
-          {
-            correct: "checked",
-            text: "DOs",
-          },
-          {
-            correct: "",
-            text: "DON'Ts",
-          },
-        ],
         backgroundImage: {
           id: "background-image",
           extention: ""
@@ -277,16 +227,6 @@ describe("DosAndDonts", () => {
   it("should render without error when passed  image", () => {
     component.setProps({
       data: {
-        options: [
-          {
-            correct: "checked",
-            text: "DOs",
-          },
-          {
-            correct: "",
-            text: "DON'Ts",
-          },
-        ],
         image: {
           id: "header-image",
           extention: ""

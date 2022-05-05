@@ -26,12 +26,6 @@ DosAndDonts.propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
     image: PropTypes.object,
-    options: PropTypes.arrayOf(
-      PropTypes.shape({
-        correct: PropTypes.string,
-        text: PropTypes.string,
-      })
-    ).isRequired,
     bullets: PropTypes.arrayOf(
       PropTypes.string
     ),
@@ -212,12 +206,10 @@ export default function DosAndDonts(props) {
           <Choice {...props}
             options={[
               {
-                correct: data?.options[0]?.correct,
-                text: data?.options[0]?.text,
+                text: "DOs",
               },
               {
-                correct: data?.options[1]?.correct,
-                text: data?.options[1]?.text,
+                text: "DON'Ts",
               },
             ]}
             asSize="normal"
