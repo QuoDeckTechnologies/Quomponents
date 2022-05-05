@@ -8,9 +8,9 @@ export default {
 		data: {
 			title: "",
 			subtitle: "",
-			image: "",
+			image: {},
 			question: "",
-			backgroundImage: "",
+			backgroundImage: {},
 			choice: [
 				{
 					correct: "",
@@ -23,6 +23,7 @@ export default {
 			],
 		},
 		slideId: 0,
+		imageLibrary: [],
 		asVariant: {
 			control: "select",
 			options: ["primary", "secondary", "success", "warning", "error"],
@@ -120,10 +121,9 @@ Default.args = {
 		title: "Neque porro quisquam est qui dolorem",
 		subtitle:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-		image:
-			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+		image: { id: "header-image", extension: "" },
+		backgroundImage: { id: "", extention: "" },
 		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-		backgroundImage: "",
 		choice: [
 			{
 				correct: "checked",
@@ -136,6 +136,11 @@ Default.args = {
 		],
 	},
 	slideId: 0,
+	imageLibrary: [{
+		id: "header-image",
+		image:
+			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+	}],
 	asVariant: "warning",
 	withColor: {
 		questionColor: "#000000",
@@ -175,9 +180,8 @@ ChoiceWithSlideHeader.args = {
 		title: "Neque porro quisquam est qui dolorem",
 		subtitle:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-		image: "",
+		backgroundImage: { id: "", extention: "" },
 		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-		backgroundImage: "",
 		choice: [
 			{
 				correct: "checked",
@@ -233,9 +237,9 @@ ChoiceWithoutCircularOr.args = {
 		title: "Neque porro quisquam est qui dolorem",
 		subtitle:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-		image: "",
+		image: { id: "header-image", extention: "" },
+		backgroundImage: { id: "", extention: "" },
 		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-		backgroundImage: "",
 		choice: [
 			{
 				correct: "checked",
@@ -248,6 +252,11 @@ ChoiceWithoutCircularOr.args = {
 		],
 	},
 	slideId: 0,
+	imageLibrary: [{
+		id: "header-image",
+		image:
+			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+	}],
 	isChoice: false,
 	asVariant: "warning",
 	withColor: {
@@ -353,19 +362,25 @@ export const MultipleChoice = (args) => {
 		})
 	};
 	return (
-		<div style={{ display: "flex" }}>
-			<Choice
-				{...Object.assign({}, baseObj1, {
-				})}
-			/>
-			<Choice
-				{...Object.assign({}, baseObj2, {
-				})}
-			/>
-			<Choice
-				{...Object.assign({}, baseObj3, {
-				})}
-			/>
+		<div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", backgroundColor: "#454545" }}>
+			<div style={{ margin: "1em", width: "25em" }}>
+				<Choice
+					{...Object.assign({}, baseObj1, {
+					})}
+				/>
+			</div>
+			<div style={{ margin: "1em", width: "25em" }}>
+				<Choice
+					{...Object.assign({}, baseObj2, {
+					})}
+				/>
+			</div>
+			<div style={{ margin: "1em", width: "25em" }}>
+				<Choice
+					{...Object.assign({}, baseObj3, {
+					})}
+				/>
+			</div>
 		</div>
 	);
 };
@@ -437,19 +452,25 @@ export const ColoredChoice = (args) => {
 		})
 	};
 	return (
-		<div style={{ display: "flex" }}>
-			<Choice
-				{...Object.assign({}, baseObj1, {
-				})}
-			/>
-			<Choice
-				{...Object.assign({}, baseObj2, {
-				})}
-			/>
-			<Choice
-				{...Object.assign({}, baseObj3, {
-				})}
-			/>
+		<div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", backgroundColor: "#454545" }}>
+			<div style={{ margin: "1em", width: "25em" }}>
+				<Choice
+					{...Object.assign({}, baseObj1, {
+					})}
+				/>
+			</div>
+			<div style={{ margin: "1em", width: "25em" }}>
+				<Choice
+					{...Object.assign({}, baseObj2, {
+					})}
+				/>
+			</div>
+			<div style={{ margin: "1em", width: "25em" }}>
+				<Choice
+					{...Object.assign({}, baseObj3, {
+					})}
+				/>
+			</div>
 		</div>
 	);
 };
