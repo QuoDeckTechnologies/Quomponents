@@ -51,7 +51,6 @@ describe("DosAndDonts", () => {
           duration: 0.5,
           delay: 0,
         }}
-        isChoice={false}
         isHidden={false}
         isDisabled={false}
         onClick={(e) => {

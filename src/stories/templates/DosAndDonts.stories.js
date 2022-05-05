@@ -73,7 +73,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays DosAndDonts slide with slideHeader and choice buttons which shows BulletBlock accordinly",
+        componentSubtitle: "Displays DosAndDonts slide with slideHeader and choice buttons which shows BulletBlock accordingly",
         a11y: { disable: true },
         docs: {
             iframeHeight: 400,
