@@ -1,0 +1,10 @@
+.qui .qui-pdf-viewer-card {
+  min-height: 30em;
+  padding: 1.5em;
+  border-radius: 1em;
+}
+@media only screen and (min-width: 481px) {
+  .qui .qui-pdf-viewer-card {
+    width: 20em;
+  }
+}
