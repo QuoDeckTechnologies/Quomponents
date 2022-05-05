@@ -147,10 +147,10 @@ Default.parameters = {
     },
 };
 // -------------------------------------------------------------
-// DefaultWithImage
+// TriptychWithHeaderImage
 // -------------------------------------------------------------
-export const DefaultWithImage = Template.bind({});
-DefaultWithImage.args = {
+export const TriptychWithHeaderImage = Template.bind({});
+TriptychWithHeaderImage.args = {
     data: {
         title: "Neque porro quisquam est qui dolorem",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
@@ -177,7 +177,6 @@ DefaultWithImage.args = {
             extention: "",
             id: "background-image",
         },
-        presenter: "",
     },
     imageLibrary: [{
         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
@@ -216,13 +215,13 @@ DefaultWithImage.args = {
     isDisabled: false,
 
 };
-DefaultWithImage.parameters = {
+TriptychWithHeaderImage.parameters = {
     docs: {
         description: {
             story: "Triptych component have clickable images in between SliderHeader and TextBlock.",
         },
         source: {
-            code: `<Triptych {...${JSON.stringify(DefaultWithImage.args, null, 2)}}/>`,
+            code: `<Triptych {...${JSON.stringify(TriptychWithHeaderImage.args, null, 2)}}/>`,
         },
     },
 };

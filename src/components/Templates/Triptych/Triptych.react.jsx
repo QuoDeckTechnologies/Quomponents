@@ -103,10 +103,10 @@ Triptych.defaultProps = {
         title: "",
         subtitle: "",
         caption: "",
-        image: "",
+        image: {},
         backgroundImage: {},
         triptych: [],
-        presenter: "",
+        presenter: {},
     },
     slideId: 0,
     //=======================================
@@ -127,7 +127,7 @@ Triptych.defaultProps = {
 - Displays a Triptych with TextBlock, clickableImages and a SlideHeader
 **/
 export default function Triptych(props) {
-    const { data, withColor, imageLibrary } = props;
+    const { data, withColor, imageLibrary, slideId } = props;
     //-------------------------------------------------------------------
     // Variable to set presenter image
     //-------------------------------------------------------------------
@@ -140,19 +140,18 @@ export default function Triptych(props) {
     // Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "triptych");
-    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
 
     //-------------------------------------------------------------------
     //  Setting the colors of imported components
     //-------------------------------------------------------------------
     let slideHeaderColors = {
-        textColor: props.withColor?.slideHeaderTextColor,
-        accentColor: props.withColor?.slideHeaderAccentColor,
-        backgroundColor: props.withColor?.slideHeaderBackgroundColor
+        textColor: withColor?.slideHeaderTextColor,
+        accentColor: withColor?.slideHeaderAccentColor,
+        backgroundColor: withColor?.slideHeaderBackgroundColor
     }
     let textBlockColors = {
-        textColor: props.withColor?.textBlockTextColor,
-        backgroundColor: props.withColor?.textBlockBackgroundColor
+        textColor: withColor?.textBlockTextColor,
+        backgroundColor: withColor?.textBlockBackgroundColor
     }
     let SlideHeaderText = {
         title: data?.title,
@@ -161,15 +160,15 @@ export default function Triptych(props) {
     //-------------------------------------------------------------------
     // Function to return a view for triptych
     //-------------------------------------------------------------------
-    const diptychView = (data) => {
+    const triptychView = (data) => {
         return (
-            <div className="qui-triptych-card" key={"triptych-slide-" + props.slideId} style={{
+            <div className="qui-triptych-card" key={"triptych-slide-" + slideId} style={{
                 ...background,
                 backgroundColor: withColor?.backgroundColor,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
             }}>
-                <div className={`${quommonClasses.childClasses}`} key={"triptych-" + props.slideId}>
+                <div className={`${quommonClasses.childClasses}`} key={"triptych-" + slideId}>
                     {!data?.image && (data?.title || data?.subtitle) && (
                         <SlideHeader
                             content={SlideHeaderText}
@@ -195,7 +194,7 @@ export default function Triptych(props) {
     //-------------------------------------------------------------------
     // Function to return a view for triptych with presenter
     //-------------------------------------------------------------------
-    const diptychPresenterView = (data) => {
+    const triptychPresenterView = (data) => {
         return (
             <div className="qui-triptych-presenter-container"
                 style={{
@@ -283,7 +282,7 @@ export default function Triptych(props) {
             className={`qui ${quommonClasses.parentClasses} `}
         >
             {data && <div>
-                {data?.presenter ? diptychPresenterView(data) : diptychView(data)}
+                {data?.presenter ? triptychPresenterView(data) : triptychView(data)}
             </div>}
         </motion.div>
     );
