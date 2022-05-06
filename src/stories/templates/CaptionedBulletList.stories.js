@@ -75,14 +75,20 @@ Default.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "",
-    backgroundImage: "",
+    backgroundImage: {
+      id: "background-image",
+      extention: "",
+    },
     bullets: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "Quisque sed turpis vel lectus suscipit auctor",
       "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
     ]
   },
+  imageLibrary: [{
+    id: "background-image",
+    image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg"
+  }],
   slideId: 0,
   asVariant: "warning",
   withColor: {
@@ -117,14 +123,20 @@ CaptionedBulletListWithImage.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    backgroundImage: "",
+    image: {
+      id: "header-image",
+      extention: ""
+    },
     bullets: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "Quisque sed turpis vel lectus suscipit auctor",
       "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
     ]
   },
+  imageLibrary: [{
+    id: "header-image",
+    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+  }],
   asVariant: "warning",
   withColor: {
     slideHeaderTextColor: "#FFFFFF",
@@ -159,14 +171,20 @@ CaptionedBulletListWithBackgroundImage.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-    backgroundImage: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+    backgroundImage: {
+      id: "background-image",
+      extention: ""
+    },
     bullets: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "Quisque sed turpis vel lectus suscipit auctor",
       "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
     ]
   },
+  imageLibrary: [{
+    id: "background-image",
+    image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+  }],
   asVariant: "warning",
   withColor: {
     slideHeaderTextColor: "#FFFFFF",
