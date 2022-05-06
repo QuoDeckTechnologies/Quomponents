@@ -1,7 +1,8 @@
 // Import npm packages
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Document, Page } from 'react-pdf';
+import _ from "lodash";
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import { motion } from "framer-motion";
 import {
   getAnimation,
@@ -21,6 +22,8 @@ PdfViewer.propTypes = {
     PdfViewer data should be passed in data field and it is a required field
     */
   data: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    editorWidth: PropTypes.bool,
     title: PropTypes.string,
     subtitle: PropTypes.string,
     pdf: PropTypes.object,
@@ -38,22 +41,6 @@ PdfViewer.propTypes = {
   //=======================================
   // Quommon props
   //=======================================
-  /**
-    Use to define standard component type
-    */
-  asVariant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "error",
-  ]),
-  /**
-    Use to override component colors and behavior
-    */
-  withColor: PropTypes.shape({
-    backgroundColor: PropTypes.string,
-  }),
   /**
     Use to define the entry animation of the component
     */
@@ -89,14 +76,14 @@ PdfViewer.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  data: {},
+  data: {
+    editorWidth: false
+  },
   docLibrary: [{}],
   slideId: 0,
   //=======================================
   // Quommon props
   //=======================================
-  asVariant: "primary",
-  withColor: null,
   withAnimation: null,
   isDisabled: false,
   isHidden: false,
@@ -110,8 +97,31 @@ PdfViewer.defaultProps = {
   answer using the input field, typed answer will submitted as it is.
 **/
 export default function PdfViewer(props) {
-  let { withColor, docLibrary, imageLibrary, data } = props
 
+  const [numPages, setNumPages] = useState(null);
+  // const [fetch, setFetch] = useState(true);
+  // const [blobData, setBlobData] = useState("");
+  // const [pageNumber, setPageNumber] = useState(1);
+  // const [pageScale, setPageScale] = useState(10);
+  // const [showInfo, setShowInfo] = useState(true);
+  // const [fullScreenOpen, SetFullScreenOpen] = useState(false);
+  // const [showControl, SetShowControl] = useState(false);
+  // const [noPdfMessage, setNoPdfMessage] = useState("loading pdf please wait...");
+
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
+  let { withColor, docLibrary, imageLibrary, data } = props;
+
+  // function handleNavigation(currentPage, totalPages) {
+  //   if (props.handleCompletion)
+  //     props.handleCompletion(currentPage, totalPages);
+  // }
+  // let onDocumentLoad = ({ numPages }) => {
+  //   if (numPages === 1) this.handleNavigation(numPages, numPages);
+  //   this.setState({ numPages });
+  // };
   let resolveDocument = (pdf, library) => {
     if (library !== undefined && library.length > 0) {
       if (pdf.id !== "") {
@@ -136,12 +146,38 @@ export default function PdfViewer(props) {
       }
     }
   }
-
+  // let pdfDocument = (
+  //   <Document
+  //     file={this.state.blobData}
+  //     onLoadSuccess={this.onDocumentLoad}
+  //     loading={this.messageDom("loading pdf please wait...")}
+  //     noData={this.messageDom(this.state.noPdfMessage)}
+  //   >
+  //     {_.times(this.state.numPages, num => {
+  //       return (
+  //         <Page
+  //           key={"page-" + num}
+  //           pageNumber={num + 1}
+  //           width={
+  //             ((this.state.fullScreenOpen
+  //               ? 450
+  //               : this.props.editorWidth
+  //                 ? 330
+  //                 : 290) *
+  //               this.state.pageScale) /
+  //             10
+  //           }
+  //           onClick={this.handleControlOpen}
+  //         />
+  //       );
+  //     })}
+  //   </Document>
+  // );
+  // console.log(resolveDocument)
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "pdf-viewer");
-  quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
   //-------------------------------------------------------------------
   // Get animation of the component
   //-------------------------------------------------------------------
@@ -149,13 +185,13 @@ export default function PdfViewer(props) {
   const getBackground = () => {
     return {
       background: `url(${resolveImage(props.data?.backgroundImage.id, imageLibrary)})`,
-      backgroundSize: "cover",
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat"
     };
   };
   const background = props.data?.backgroundImage
     ? getBackground()
     : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
-  console.log(docLibrary)
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -164,7 +200,21 @@ export default function PdfViewer(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div className="qui-pdf-viewer-card" style={{ ...background }}>
-        <Document externalLinkTarget={"https://www.clickdimensions.com/links/TestPDFfile.pdf"} />
+        <header className="App-header">
+          <Document
+            file={resolveDocument(data?.pdf, docLibrary)}
+            onLoadSuccess={onDocumentLoadSuccess}>
+            {Array.from(
+              new Array(numPages),
+              (el, index) => (
+                <Page
+                  key={`page_${index + 1}`}
+                  pageNumber={index + 1}
+                />
+              )
+            )}
+          </Document>
+        </header>
       </div>
     </motion.div>
   );
