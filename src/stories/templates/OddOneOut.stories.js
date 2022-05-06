@@ -9,7 +9,6 @@ export default {
             title: "",
             subtitle: "",
             image: {},
-            question: "",
             backgroundImage: {}
         },
         slideId: 0,
@@ -25,7 +24,6 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    questionColor: "",
                     slideHeaderTextColor: "",
                     slideHeaderAccentColor: "",
                     slideHeaderBackgroundColor: "",
@@ -105,7 +103,6 @@ Default.args = {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         image: { id: "header-image", extension: "" },
         backgroundImage: { id: "", extention: "" },
-        question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         options: [
             { correct: "checked", text: "Item 1" },
             { correct: "", text: "Item 2" },
@@ -121,7 +118,6 @@ Default.args = {
     }],
     asVariant: "warning",
     withColor: {
-        questionColor: "#000000",
         slideHeaderTextColor: "#ffffff",
         slideHeaderAccentColor: "#AD2929",
         slideHeaderBackgroundColor: "#AD292980",
@@ -157,7 +153,6 @@ OddOneOutWithSlideHeader.args = {
         subtitle:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         backgroundImage: { id: "", extention: "" },
-        question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         options: [
             { correct: "checked", text: "Item 1" },
             { correct: "", text: "Item 2" },
@@ -168,7 +163,6 @@ OddOneOutWithSlideHeader.args = {
     slideId: 0,
     asVariant: "primary",
     withColor: {
-        questionColor: "#000000",
         slideHeaderTextColor: "#ffffff",
         slideHeaderAccentColor: "#AD2929",
         slideHeaderBackgroundColor: "#AD292980",
@@ -199,7 +193,7 @@ OddOneOutWithSlideHeader.parameters = {
     },
 };
 // -------------------------------------------------------------
-// MultipleOddOneOut
+// EmphasisOddOneOut
 // -------------------------------------------------------------
 export const EmphasisOddOneOut = (args) => {
     const baseObj1 = {
