@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
 	getAnimation,
 	getQuommons,
+	resolveImage
 } from "../../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -23,9 +24,9 @@ SlideChoice.propTypes = {
 	data: PropTypes.shape({
 		title: PropTypes.string,
 		subtitle: PropTypes.string,
-		image: PropTypes.string,
+		image: PropTypes.object,
 		question: PropTypes.string,
-		backgroundImage: PropTypes.string,
+		backgroundImage: PropTypes.object,
 		choice: PropTypes.arrayOf(
 			PropTypes.shape({
 				correct: PropTypes.string,
@@ -34,6 +35,10 @@ SlideChoice.propTypes = {
 		),
 	}).isRequired,
 	slideId: PropTypes.number,
+	/**
+	Choice can set image & backgroundImage from imageLibrary array
+	*/
+	imageLibrary: PropTypes.array,
 	/**
 	Use to enable/disable the OR tag
 	*/
@@ -128,35 +133,70 @@ SlideChoice.defaultProps = {
 export default function SlideChoice(props) {
 	let { data } = props;
 	//-------------------------------------------------------------------
-	// Set the classes
+	// 1. Set the classes
 	//-------------------------------------------------------------------
 	let quommonClasses = getQuommons(props, "slide-choice");
 	quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
+
 	//-------------------------------------------------------------------
-	// Get animation of the component
+	// 2. Get animation of the component
 	//-------------------------------------------------------------------
 	const animate = getAnimation(props.withAnimation);
 
 	//-------------------------------------------------------------------
-	// Setting the colors of the imported components
+	// 3. Setting the colors of the imported components
 	//-------------------------------------------------------------------
 	let slideHeaderColors = {
 		textColor: props.withColor?.slideHeaderTextColor,
 		accentColor: props.withColor?.slideHeaderAccentColor,
 		backgroundColor: props.withColor?.slideHeaderBackgroundColor,
 	};
-	let cardBackground = props.withColor?.backgroundColor
-		? props.withColor?.backgroundColor
-		: "#ffffff";
-	const getBackground = () => {
-		return {
-			background: `url(${data?.backgroundImage})`,
-			backgroundSize: "cover",
-		};
+
+	//-------------------------------------------------------------------
+	// 4. Function to return a view for title
+	//-------------------------------------------------------------------
+	const getView = (data) => {
+		if ((!data?.image || data?.image?.id === "") && (data?.title || data?.subtitle)) {
+			return (
+				<SlideHeader
+					content={{ title: data?.title, subTitle: data?.subtitle }}
+					withColor={slideHeaderColors}
+				/>
+			);
+		} else if (data?.image) {
+			return (
+				data?.image && (
+					<img
+						className="qui-slide-choice-image"
+						src={resolveImage(data?.image.id, props.imageLibrary)}
+						alt="slide"
+					/>
+				)
+			);
+		}
 	};
-	const background = data?.backgroundImage
-		? getBackground()
-		: { backgroundColor: cardBackground };
+
+	//-------------------------------------------------------------------
+	// 5. Function to set background
+	//-------------------------------------------------------------------
+	const getBackground = () => {
+		if (data?.backgroundImage && (data?.backgroundImage?.id !== "" && data?.backgroundImage?.id)) {
+			return {
+				backgroundImage: `url(${resolveImage(
+					data?.backgroundImage.id,
+					props.imageLibrary
+				)})`,
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "cover",
+				backgroundPosition: "center"
+			};
+		} else {
+			return {
+				backgroundColor: props.withColor?.backgroundColor ? props.withColor?.backgroundColor : "#ffffff"
+			}
+		}
+	};
+	const background = getBackground()
 
 	// ========================= Render Function =================================
 	return (
@@ -169,17 +209,9 @@ export default function SlideChoice(props) {
 				<div
 					className="qui-slide-choice-card"
 					key={"slide-choice" + props.slideId}
-					style={background}
+					style={{ ...background }}
 				>
-					{!data?.image && (data?.title || data?.subtitle) && (
-						<SlideHeader
-							content={{ title: data?.title, subTitle: data?.subtitle }}
-							withColor={slideHeaderColors}
-						/>
-					)}
-					{data?.image && (
-						<img className="qui-slide-choice-image" src={data?.image} alt="" />
-					)}
+					{getView(data)}
 					<div
 						className={`qui-slide-choice-question variant-${props.asVariant}-text`}
 						style={{ color: props.withColor?.questionColor }}

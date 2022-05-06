@@ -1,5 +1,5 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
@@ -9,37 +9,47 @@ import {
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./CaptionedBulletList.scss";
+import "./DosAndDonts.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
-import TextBlock from "../../TextBlock/TextBlock.react";
 import BulletBlock from "../../BulletBlock/BulletBlock.react";
+import Choice from "../../Buttons/Choice/Choice.react"
 
-CaptionedBulletList.propTypes = {
+DosAndDonts.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
   /**
-    CaptionedBulletList data should be passed in data field and it is a required field
+    DosAndDonts data should be passed in data field and it is a required field
     */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    caption: PropTypes.string,
     image: PropTypes.object,
-    backgroundImage: PropTypes.object,
     bullets: PropTypes.arrayOf(
       PropTypes.string
-    )
+    ),
+    rebullets: PropTypes.arrayOf(
+      PropTypes.string
+    ),
+    backgroundImage: PropTypes.object,
   }),
   /**
-    CaptionedBulletList should have a imageLibrary array
+    Diptych can set presenter image from imageLibrary array
     */
   imageLibrary: PropTypes.array,
   /**
-    CaptionedBulletList slideId should be passed with props, to specify the slide.
+    DosAndDonts slideId should be passed with props, to specify the slide.
     */
   slideId: PropTypes.number,
+  /**
+  Use to enable/disable the OR tag
+  */
+  isChoice: PropTypes.bool,
+  /**
+  Set action emphasis in increasing order 
+  */
+  asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
   //=======================================
   // Quommon props
   //=======================================
@@ -88,9 +98,13 @@ CaptionedBulletList.propTypes = {
     Use to show/hide the component
   */
   isHidden: PropTypes.bool,
+  /**
+    Anagram component must have the onClick function passed as props
+    */
+  onClick: PropTypes.func,
 };
 
-CaptionedBulletList.defaultProps = {
+DosAndDonts.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
@@ -98,9 +112,10 @@ CaptionedBulletList.defaultProps = {
     title: "",
     subtitle: "",
     caption: "",
-    image: "",
-    backgroundImage: "",
-    bullets: []
+    image: {},
+    backgroundImage: {},
+    bullets: [],
+    rebullets: []
   },
   imageLibrary: [{}],
   slideId: 0,
@@ -119,12 +134,13 @@ CaptionedBulletList.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 - Displays a Captioned Bullet List with TextBlock, BulletBlock and a SlideHeader
 **/
-export default function CaptionedBulletList(props) {
+export default function DosAndDonts(props) {
   let { data, withColor, imageLibrary } = props
+  const [active, setActive] = useState("none")
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "captioned-bullet-list");
+  let quommonClasses = getQuommons(props, "dos-donts");
   quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
   //-------------------------------------------------------------------
   //  Get animation of the component
@@ -142,13 +158,21 @@ export default function CaptionedBulletList(props) {
     accentColor: props.withColor?.slideHeaderAccentColor,
     backgroundColor: props.withColor?.slideHeaderBackgroundColor
   }
-  let textBlockColors = {
-    textColor: props.withColor?.textBlockTextColor,
-    backgroundColor: props.withColor?.textBlockBackgroundColor
-  }
   let SlideHeaderText = {
     title: props.data?.title,
     subTitle: props.data?.subtitle,
+  }
+  const lists = (value) => {
+    if (value === 0) {
+      setActive("do")
+    }
+    if (value === 1) {
+      setActive("dont")
+    }
+  }
+  let handleClick = (value) => {
+    props.onClick(value)
+    lists(value)
   }
   const getBackground = () => {
     return {
@@ -158,29 +182,53 @@ export default function CaptionedBulletList(props) {
   };
   const background = data?.backgroundImage
     ? getBackground()
-    : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
-
+    : {
+      backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#00000079"
+    };
   // ========================= Render Function =================================
   return (
     <motion.div
       initial={animate.from}
       animate={animate.to}
-      className={`qui ${quommonClasses.parentClasses}`}
-    >{data &&
-      <div className="qui-captioned-bullet-list-card" style={{ ...background }}>
-        <div className={`${quommonClasses.childClasses}`} key={"captioned-bullet-list-" + props.slideId}>
+      className={`qui ${quommonClasses.parentClasses}`
+      }
+    > {data &&
+      <div className="qui-dos-donts-card" style={{ ...background }}>
+        <div className={`${quommonClasses.childClasses}`} key={"dos-donts-" + props.slideId}>
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
               content={SlideHeaderText}
               withColor={slideHeaderColors} />
           )}
           {data?.image && (
-            <img className="qui-captioned-bullet-list-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
+            <img className="qui-dos-donts-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
           )}
-          <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
-          <BulletBlock {...props} content={data?.bullets} withColor={bulletBlockColors} asVariant={props.asVariant} />
+          <Choice {...props}
+            options={[
+              {
+                text: "DOs",
+              },
+              {
+                text: "DON'Ts",
+              },
+            ]}
+            asSize="normal"
+            onClick={(value) => handleClick(value)} />
         </div>
-      </div>}
-    </motion.div>
+        {active === "do" &&
+          <BulletBlock {...props} content={data?.bullets} withColor={bulletBlockColors} asVariant={props.asVariant} />}
+        {active === "dont" &&
+          <BulletBlock {...props} content={data?.rebullets} withColor={bulletBlockColors} asVariant={props.asVariant} />}
+        {active === "none" && (
+          <h3 className="qui-do-donts-default-text"
+            style={{
+              color: slideHeaderColors.textColor
+            }}>
+            Click on the buttons above to view
+          </h3>
+        )}
+      </div>
+      }
+    </motion.div >
   );
 }
