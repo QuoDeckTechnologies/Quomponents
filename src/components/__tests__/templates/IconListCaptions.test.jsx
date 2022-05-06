@@ -19,8 +19,7 @@ describe("IconListCaptions", () => {
                 data={{
                     title: "title",
                     subtitle: "subtitle",
-                    caption: "This is caption",
-                    iconList: [],
+                    cards: [],
                 }}
                 slideId={0}
                 asVariant="primary"
@@ -40,7 +39,7 @@ describe("IconListCaptions", () => {
     it("should render with click on 0th Clickable Image", () => {
         component.setProps({
             data: {
-                iconList: [{
+                cards: [{
                     text: "This is text",
                     image: {
                         id: "image",
@@ -54,7 +53,7 @@ describe("IconListCaptions", () => {
                 slideHeaderBackgroundColor: "#ad292980",
                 textBlockBackgroundColor: "#ad292980",
                 textBlockTextColor: "#fff",
-                iconListTrackColor: "#ff0000",
+                iconlistTrackColor: "#ff0000",
                 backgroundColor: "#fff",
             },
             imageLibrary: [{
@@ -67,7 +66,7 @@ describe("IconListCaptions", () => {
     it("should render with click on active index class", () => {
         component.setProps({
             data: {
-                iconList: [{
+                cards: [{
                     text: "This is text",
                     image: {
                         id: "image",
@@ -87,7 +86,7 @@ describe("IconListCaptions", () => {
                 slideHeaderBackgroundColor: "#ad292980",
                 textBlockBackgroundColor: "#ad292980",
                 textBlockTextColor: "#fff",
-                iconListTrackColor: "#ff0000",
+                iconlistTrackColor: "#ff0000",
                 backgroundColor: "#fff",
             },
             imageLibrary: [{
@@ -103,7 +102,7 @@ describe("IconListCaptions", () => {
     it("should render with click on qui-clickable-image-container class", () => {
         component.setProps({
             data: {
-                iconList: [{
+                cards: [{
                     text: "This is text",
                     image: {
                         id: "image",
@@ -123,7 +122,7 @@ describe("IconListCaptions", () => {
                 slideHeaderBackgroundColor: "#ad292980",
                 textBlockBackgroundColor: "#ad292980",
                 textBlockTextColor: "#fff",
-                iconListTrackColor: "#ff0000",
+                iconlistTrackColor: "#ff0000",
                 backgroundColor: "#fff",
             },
             imageLibrary: [{
@@ -139,7 +138,7 @@ describe("IconListCaptions", () => {
     it("should render with click on Clickable Image with borderColor", () => {
         component.setProps({
             data: {
-                iconList: [{
+                cards: [{
                     text: "This is text",
                     image: {
                         id: "image",
@@ -153,7 +152,7 @@ describe("IconListCaptions", () => {
                 slideHeaderBackgroundColor: "#ad292980",
                 textBlockBackgroundColor: "#ad292980",
                 textBlockTextColor: "#fff",
-                iconListTrackColor: "#ff0000",
+                iconlistTrackColor: "#ff0000",
                 backgroundColor: "#fff",
             },
             imageLibrary: [{
@@ -163,28 +162,10 @@ describe("IconListCaptions", () => {
         })
         component.find(ClickableImage).simulate('click')
     });
-    it("should render with click on Clickable Image with default image", () => {
-        component.setProps({
-            data: {
-                iconList: [{
-                    text: "This is text",
-                    image: {
-                        id: "",
-                        extention: ""
-                    }
-                }],
-            },
-            imageLibrary: [{
-                id: "",
-                image: ""
-            }]
-        })
-        component.find(ClickableImage).simulate('click')
-    });
     it("should render with click on Clickable  image id is null", () => {
         component.setProps({
             data: {
-                iconList: [{
+                cards: [{
                     text: "This is text",
                     image: {
                         extention: ""
@@ -202,7 +183,6 @@ describe("IconListCaptions", () => {
             data: {
                 title: "title",
                 subtitle: "subtitle",
-                caption: "caption",
                 backgroundImage: {
                     id: 'background',
                     extention: ''
@@ -220,7 +200,6 @@ describe("IconListCaptions", () => {
             data: {
                 title: "title",
                 subtitle: "subtitle",
-                caption: "caption",
                 image: {
                     id: 'image',
                     extention: ''
@@ -237,7 +216,6 @@ describe("IconListCaptions", () => {
         let data = {
             title: "This is Title",
             subtitle: "This is Subtitle",
-            caption: "caption",
         }
         let colors = {
             slideHeaderTextColor: "#FFFFFF",
@@ -245,7 +223,7 @@ describe("IconListCaptions", () => {
             slideHeaderBackgroundColor: "#ad292980",
             textBlockBackgroundColor: "#ad292980",
             textBlockTextColor: "#fff",
-            iconListTrackColor: "#ff0000",
+            iconlistTrackColor: "#ff0000",
             backgroundColor: "#fff",
         }
         component.setProps({ data: data, withColor: colors })

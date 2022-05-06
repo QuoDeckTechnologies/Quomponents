@@ -26,10 +26,9 @@ IconListCaptions.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    caption: PropTypes.string,
     image: PropTypes.object,
     backgroundImage: PropTypes.object,
-    iconList: PropTypes.array,
+    cards: PropTypes.array,
   }),
   /**
     IconListCaptions can set presenter image from imageLibrary array
@@ -61,7 +60,7 @@ IconListCaptions.propTypes = {
     slideHeaderBackgroundColor: PropTypes.string,
     textBlockTextColor: PropTypes.string,
     textBlockBackgroundColor: PropTypes.string,
-    iconListTrackColor: PropTypes.string,
+    iconlistTrackColor: PropTypes.string,
     backgroundColor: PropTypes.string,
   }),
 
@@ -103,10 +102,9 @@ IconListCaptions.defaultProps = {
   data: {
     title: "",
     subtitle: "",
-    caption: "",
     image: {},
     backgroundImage: {},
-    iconList: []
+    cards: []
   },
   imageLibrary: [{}],
   slideId: 0,
@@ -186,7 +184,7 @@ export default function IconListCaptions(props) {
           {data?.image && (
             <img className="qui-icon-list-captions-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
           )}
-          {_.map(data?.iconList, (image, index) => {
+          {_.map(data?.cards, (image, index) => {
             return (
               <div key={'textblock' + index}>
                 {state === index &&
@@ -197,11 +195,11 @@ export default function IconListCaptions(props) {
           })}
           <div className="qui-fixed-clickable-images-container">
             <div className="qui-icon-list-captions-clickable-images">
-              <div className="qui-icon-list-captions-track" style={{ backgroundColor: withColor?.iconListTrackColor }}></div>
-              {_.map(data?.iconList, (image, index) => {
+              <div className="qui-icon-list-captions-track" style={{ backgroundColor: withColor?.iconlistTrackColor }}></div>
+              {_.map(data?.cards, (image, index) => {
                 return (
                   <div className={`${index === activeIndex ? "qui-active-index" : "qui-clickable-image-container"}`} key={"icon-list-captions-image" + index}
-                    onClick={() => setActiveIndex(index)} style={{ borderColor: withColor?.iconListTrackColor }}>
+                    onClick={() => setActiveIndex(index)} style={{ borderColor: withColor?.iconlistTrackColor }}>
                     <ClickableImage {...props} content={{ image: resolveImage(image.image?.id ? image.image?.id : "", imageLibrary) }} onClick={() => handleClick(index)} />
                   </div>);
               })}

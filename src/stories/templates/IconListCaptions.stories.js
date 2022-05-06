@@ -23,7 +23,7 @@ export default {
           slideHeaderAccentColor: "",
           slideHeaderBackgroundColor: "",
           textBlockBackgroundColor: "",
-          iconListTrackColor: "",
+          iconlistTrackColor: "",
           backgroundColor: "",
         },
       },
@@ -86,12 +86,11 @@ Default.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-    caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
     backgroundImage: {
       id: "background-image",
       extention: ""
     },
-    iconList: [
+    cards: [
       {
         text: "First Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
         image: {
@@ -146,7 +145,7 @@ Default.args = {
     slideHeaderBackgroundColor: "#ad292980",
     textBlockBackgroundColor: "#ad292980",
     textBlockTextColor: "#fff",
-    iconListTrackColor: "#ff0000",
+    iconlistTrackColor: "#ff0000",
     backgroundColor: "#fff",
   },
   withAnimation: {
@@ -172,7 +171,6 @@ IconListCaptionsWithImage.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-    caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
     image: {
       id: "header-image",
       extention: ""
@@ -181,7 +179,7 @@ IconListCaptionsWithImage.args = {
       id: "background-image",
       extention: ""
     },
-    iconList: [
+    cards: [
       {
         text: "First Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
         image: {
@@ -239,7 +237,7 @@ IconListCaptionsWithImage.args = {
     slideHeaderBackgroundColor: "#ad292980",
     textBlockBackgroundColor: "#ad292980",
     textBlockTextColor: "#fff",
-    iconListTrackColor: "#ff0000",
+    iconlistTrackColor: "#ff0000",
     backgroundColor: "#fff",
   },
   withAnimation: {
