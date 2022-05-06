@@ -21,13 +21,20 @@ describe("CaptionedVideo", () => {
                 data={{
                     title: "Neque porro quisquam est qui dolorem",
                     subTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-                    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-                    backgroundImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+                    image: {
+                        extention: "",
+                        id: "header-image",
+                    },
+                    backgroundImage: {
+                        extention: "",
+                        id: "background-image",
+                    },
                     video: "https://www.youtube.com/watch?v=NpEaa2P7qZI",
                     caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+                    presenter: {},
                 }}
+                imageLibrary={null}
                 slideId={0}
-                isPresenter={false}
                 withColor={null}
                 withAnimation={null}
                 isHidden={false}
@@ -43,8 +50,8 @@ describe("CaptionedVideo", () => {
         let data = {
             title: "Neque porro quisquam est qui dolorem",
             subTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-            image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-            backgroundImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+            image: {},
+            backgroundImage: {},
             video: "https://www.youtube.com/watch?v=NpEaa2P7qZI",
             caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
         }
@@ -53,15 +60,60 @@ describe("CaptionedVideo", () => {
     });
 
     it("should render correctly when empty data props passed", () => {
+        let data = {}
+        component.setProps({ data: data })
+        expect(component.exists()).toBe(true);
+    });
+
+    it('should render slideHeader component instead of  header image', () => {
         let data = {
-            title: "",
-            subTitle: "",
-            image: "",
-            backgroundImage: "",
-            video: "",
-            caption: ""
+            title: "This is Title",
+            subtitle: "This is Subtitle",
         }
         component.setProps({ data: data })
+        expect(component.exists()).toBe(true)
+    });
+
+    it("should render correctly without throwing error when presenter id is given in imageLibrary array", () => {
+        component.setProps({
+            data: {
+                title: "Neque porro quisquam est qui dolorem",
+                subTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+                image: {
+                    extention: "",
+                    id: "header-image",
+                },
+                backgroundImage: {
+                    id: "background-image",
+                    extention: "",
+                },
+                video: "https://www.youtube.com/watch?v=NpEaa2P7qZI",
+                caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+                presenter: {
+                    id: "presenter-image",
+                    extention: "",
+                },
+            },
+            imageLibrary: [
+                { id: "presenter-image", image: "presenter.png" },
+                { id: "background-image", image: "backgroundImage.png" }],
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly without throwing error when presenter is passed in given imageLibrary array", () => {
+        component.setProps({
+            data: {
+                presenter: {
+                    extention: "",
+                    id: "presenter-image"
+                },
+            },
+            imageLibrary: [
+                { id: "presenter-image", image: "test0.png" },
+                { id: "image-1", image: "test.png" },
+                { id: "image-2", image: "test2.png" }],
+        });
         expect(component.exists()).toBe(true);
     });
 

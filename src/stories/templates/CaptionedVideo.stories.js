@@ -76,9 +76,8 @@ Default.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        video: "https://www.youtube.com/watch?v=2uiGez49QXA",
+        video: "https://www.youtube.com/embed/NpEaa2P7qZI",
         caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-        // presenter: { id: "presenter", extention: "" },
     },
     imageLibrary: [
         {
@@ -129,7 +128,7 @@ ColoredCaptionedVideo.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        video: "",
+        video: "https://www.youtube.com/embed/NpEaa2P7qZI",
         caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
     },
     withColor: {
@@ -191,7 +190,7 @@ WithoutHeaderImageCaptionedVideo.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        video: "",
+        video: "https://www.youtube.com/embed/NpEaa2P7qZI",
         caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
     },
     withColor: {
@@ -229,7 +228,7 @@ WithBackgroundImageCaptionedVideo.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        video: "",
+        video: "https://www.youtube.com/embed/NpEaa2P7qZI",
         caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
         image: { id: "header-image", extention: "" },
         backgroundImage: { id: "background-image", extention: "" },
@@ -254,7 +253,7 @@ BackgroundImageWithSlideHeaderCaptionedVideo.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        video: "",
+        video: "https://www.youtube.com/embed/NpEaa2P7qZI",
         caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
         backgroundImage: { id: "background-image", extention: "" },
     },
@@ -286,7 +285,7 @@ CaptionedVideoWithPresenter.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        video: "",
+        video: "https://www.youtube.com/embed/NpEaa2P7qZI",
         caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
         image: { id: "header-image", extention: "" },
         backgroundImage: { id: "background-image", extention: "" },

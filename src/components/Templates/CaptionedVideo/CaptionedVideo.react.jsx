@@ -18,8 +18,8 @@ CaptionedVideo.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    CaptionedVideo data should be passed in data field and it is a required field
-    */
+      CaptionedVideo data should be passed in data field and it is a required field
+      */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
@@ -30,19 +30,19 @@ CaptionedVideo.propTypes = {
         presenter: PropTypes.object,
     }).isRequired,
     /**
-    CaptionedVideo can set iconlist image & backgroundImage from imageLibrary.
-    */
+      CaptionedVideo can set iconlist image & backgroundImage from imageLibrary.
+      */
     imageLibrary: PropTypes.array,
     /**
-    slideId can be used if same template is used continueously for multiple slides.
-    */
+       slideId can be used if same template is used continueously for multiple slides.
+      */
     slideId: PropTypes.number,
     //=======================================
     // Quommon props
     //=======================================
     /**
-    Use to override component colors and behavior
-    */
+      Use to override component colors and behavior
+      */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         slideHeaderTextColor: PropTypes.string,
@@ -53,8 +53,8 @@ CaptionedVideo.propTypes = {
         textBlockBackgroundColor: PropTypes.string,
     }),
     /**
-    Use to define the entry animation of the component
-    */
+      Use to define the entry animation of the component
+      */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -70,7 +70,7 @@ CaptionedVideo.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-    Use to show/hide the component
+      Use to show/hide the component
     */
     isHidden: PropTypes.bool,
 };
@@ -80,6 +80,7 @@ CaptionedVideo.defaultProps = {
     // Component Specific props
     //=======================================
     data: {},
+    imageLibrary: null,
     slideId: 0,
     //=======================================
     // Quommon props
@@ -91,7 +92,7 @@ CaptionedVideo.defaultProps = {
 };
 /**
 ## Notes
-- The design system used for this component is HTML and CSS
+- Displays a CaptionedVideo with Videobox, TextBlock and a SlideHeader
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
@@ -113,7 +114,7 @@ export default function CaptionedVideo(props) {
         data?.presenter?.id !== undefined &&
         data?.presenter?.id !== "default43";
     //-------------------------------------------------------------------
-    // 3. Use to set Color in CaptionedVideo
+    // 3. Use to set Color in imported components of CaptionedVideo
     //-------------------------------------------------------------------
     let slideHeaderColors = {
         textColor: withColor?.slideHeaderTextColor,
@@ -127,7 +128,7 @@ export default function CaptionedVideo(props) {
         backgroundColor: withColor?.textBlockBackgroundColor
     }
     //-------------------------------------------------------------------
-    // 4. Function to set background
+    // 4. Function to set background for normal and Presenter view
     //-------------------------------------------------------------------
     const getBackground = () => {
         if (data?.backgroundImage) {
@@ -139,13 +140,33 @@ export default function CaptionedVideo(props) {
             };
         }
     };
-    const background = getBackground();
+
+    const getPresenterBackground = () => {
+        if (data?.backgroundImage) {
+            return {
+                backgroundImage: `url(${resolveImage(
+                    data?.backgroundImage.id,
+                    imageLibrary
+                )})`,
+            };
+        }
+    };
+
+    const background = data?.presenter ? getPresenterBackground() : getBackground();
     //-------------------------------------------------------------------
     // 4. Function to return a view for CaptionedVideo
     //-------------------------------------------------------------------
-    const getView = (data) => {
+    const CaptionedVideoView = (data) => {
         return (
-            <div className={`qui-captioned-video-card ${quommonClasses.childClasses}`} key={"video" + slideId}>
+            <div
+                className="qui-captioned-video-card"
+                style={{
+                    ...background,
+                    backgroundColor: withColor?.backgroundColor,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                }}
+            >
                 {!data?.image && (data?.title || data?.subtitle) && (
                     <SlideHeader {...props}
                         content={{ title: data?.title, subTitle: data?.subtitle }}
@@ -169,10 +190,18 @@ export default function CaptionedVideo(props) {
     //-------------------------------------------------------------------
     // 5. Function to return a view for CaptionedVideo with presenter
     //-------------------------------------------------------------------
-    const getPresenterView = (data) => {
+    const CaptionedVideoPresenterView = (data) => {
         return (
-            <div className="qui-captioned-video-presenter-view">
-                <div className="qui-captioned-video-presenter-title" >
+            <div
+                className="qui-captioned-video-presenter-container"
+                style={{
+                    ...background,
+                    backgroundColor: withColor?.backgroundColor,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                }}
+            >
+                <div className="qui-captioned-video-presenter-title">
                     <TextBlock {...props}
                         content={data?.title}
                         asFloated="left"
@@ -184,11 +213,9 @@ export default function CaptionedVideo(props) {
                         asFloated="left"
                         withColor={textBlockColors} />
                 </div>
-                <div className="qui-captioned-video-presenter-video-box">
-                    <Videobox {...props}
-                        url={data?.video}
-                    />
-                </div>
+                <Videobox {...props}
+                    url={data?.video}
+                />
                 <div className="qui-captioned-video-presenter-caption">
                     <TextBlock {...props}
                         content={data?.caption}
@@ -218,19 +245,15 @@ export default function CaptionedVideo(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses} ${data?.presenter ? "qui-captioned-video-presenter-container" : ""}`}
-            style={{
-                ...background,
-                backgroundColor: withColor?.backgroundColor,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-            }}
+            className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-captioned-video-card ${quommonClasses.childClasses}`} key={"video" + slideId}>
-                <div className={`qui-captioned-video ${quommonClasses.childClasses}`}>
-                    {!data?.presenter && getView(data)}
-                </div>
-                {data?.presenter && getPresenterView(data)}
+            <div
+                className={`${quommonClasses.childClasses}`}
+                key={"captioned-video" + slideId}
+            >
+                {data && <div>
+                    {data?.presenter ? CaptionedVideoPresenterView(data) : CaptionedVideoView(data)}
+                </div>}
             </div>
         </motion.div>
     );
