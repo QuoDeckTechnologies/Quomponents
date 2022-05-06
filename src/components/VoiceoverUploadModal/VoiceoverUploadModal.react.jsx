@@ -92,6 +92,8 @@ VoiceoverUploadModal.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asVariant: "warning",
+  withColor: null,
   withAnimation: null,
   withTranslation: null,
   isDisabled: false,
