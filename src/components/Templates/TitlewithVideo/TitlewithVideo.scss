@@ -1,0 +1,48 @@
+/* ================================================= */
+/* TitlewithVideo Definitions */
+/* ================================================= */
+.qui.qui-title-with-video {
+    min-height: 30em;
+    border-radius: 1em;
+}
+
+.qui .qui-title-with-video-textblock {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .qui .qui-text-block-area {
+        text-align: center;
+        min-width: 15em;
+        min-height: 8.5em;
+        font-size: 1em;
+    }
+}
+
+.qui .qui-title-with-video-videobox-container {
+    width: 100%;
+
+    .video-responsive {
+        min-height: 30em;
+        width: auto;
+        opacity: 0.85;
+        pointer-events: none;
+    }
+}
+/* ================================================= */
+/* TitlewithVideo Sizing Definitions */
+/* ================================================= */
+@media only screen and (min-width: 320px) {
+    .qui.qui-title-with-video {
+        width: auto;
+    }
+}
+
+@media only screen and (min-width: 481px) {
+    .qui.qui-title-with-video {
+        width: 20em;
+    }
+}
