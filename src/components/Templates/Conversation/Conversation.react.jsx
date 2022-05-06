@@ -1,49 +1,49 @@
-// Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
-    resolveImage
+    resolveImage,
 } from "../../../common/javascripts/helpers";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./ExternalLink.scss";
+import "./Conversation.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
-import TextBlock from "../../TextBlock/TextBlock.react";
-import Button from "../../Buttons/Button/Button.react";
+import IconListItem from "../../IconListItem/IconListItem/IconListItem.react";
 
-ExternalLink.propTypes = {
+Conversation.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-      ExternalLink content should be passed in data field and it is a required field
-      */
+    Conversation data should be passed in data field and it is a required field
+    */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
-        paragraph: PropTypes.string,
-        link: PropTypes.string,
         image: PropTypes.object,
         backgroundImage: PropTypes.object,
+        conversation: PropTypes.arrayOf(
+            PropTypes.shape({
+                image: PropTypes.object,
+                text: PropTypes.string,
+            })),
     }).isRequired,
     /**
-      ExternalLink can set image & backgroundImage from imageLibrary.
-      */
+    Conversation can set conversation image & backgroundImage from imageLibrary.
+    */
     imageLibrary: PropTypes.array,
     /**
-      slideId can be used if same template is used continueously for multiple slides.
-      */
+    slideId can be used if same template is used continueously for multiple slides.
+    */
     slideId: PropTypes.number,
     //=======================================
     // Quommon props
     //=======================================
     /**
       Use to define standard component type
-      */
+    */
     asVariant: PropTypes.oneOf([
         "primary",
         "secondary",
@@ -52,19 +52,18 @@ ExternalLink.propTypes = {
         "error",
     ]),
     /**
-    Use to override component colors and behavior
+    Use to float the component in parent container
+    */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+    /**
+      Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         slideHeaderTextColor: PropTypes.string,
-        slideHeaderAccentColor: PropTypes.string,
         slideHeaderBackgroundColor: PropTypes.string,
-        captionTextColor: PropTypes.string,
-        captionBackgroundColor: PropTypes.string,
-        buttonTextColor: PropTypes.string,
-        buttonBackgroundColor: PropTypes.string,
-        buttonHoverBackgroundColor: PropTypes.string,
-        buttonHoverTextColor: PropTypes.string,
+        slideHeaderAccentColor: PropTypes.string,
+        iconListItemTextColor: PropTypes.string,
     }),
     /**
       Use to define the entry animation of the component
@@ -84,20 +83,12 @@ ExternalLink.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to enable/disable the component
-      */
-    isDisabled: PropTypes.bool,
-    /**
       Use to show/hide the component
       */
     isHidden: PropTypes.bool,
-    /**
-      ExternalLink component must have the onClick function passed as props
-      */
-    onClick: PropTypes.func.isRequired,
 };
 
-ExternalLink.defaultProps = {
+Conversation.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -106,53 +97,42 @@ ExternalLink.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "warning",
+    asVariant: "primary",
+    asFloated: "left",
     withColor: null,
     withAnimation: null,
-    isDisabled: false,
+
     isHidden: false,
 };
-
 /**
 ## Notes
-- The design system used for this component is Fontawesome Icon
+- The design system used for this component is HTML and CSS
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function ExternalLink(props) {
+export default function Conversation(props) {
     //-------------------------------------------------------------------
-    // 1. Destructuring data from props
+    // 1. Destructuring props
     //-------------------------------------------------------------------
-    let { data, withColor, imageLibrary, slideId } = props;
+    let { data, withColor, imageLibrary, slideId, asVariant } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "external-link");
+    let quommonClasses = getQuommons(props, "icon-bullet-list");
     //-------------------------------------------------------------------
-    // 3. Get animation of the component
+    // 3. Use to set Color in Conversation
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
-    //-------------------------------------------------------------------
-    // 4. Setting the colors of the imported components
-    //-------------------------------------------------------------------
-    let buttonColors = {
-        textColor: withColor?.buttonTextColor,
-        backgroundColor: withColor?.buttonBackgroundColor,
-        hoverBackgroundColor: withColor?.buttonHoverBackgroundColor,
-        hoverTextColor: withColor?.buttonHoverTextColor
-    }
-    let captionColors = {
-        textColor: withColor?.captionTextColor,
-        backgroundColor: withColor?.captionBackgroundColor
-    }
     let slideHeaderColors = {
         textColor: withColor?.slideHeaderTextColor,
         accentColor: withColor?.slideHeaderAccentColor,
         backgroundColor: withColor?.slideHeaderBackgroundColor
     }
+    let iconListItemColors = {
+        textColor: withColor?.iconListItemTextColor,
+    }
     //-------------------------------------------------------------------
-    // 5. Set background image and color for card
+    // 4. Function to set background
     //-------------------------------------------------------------------
     const getBackground = () => {
         if (data?.backgroundImage) {
@@ -165,6 +145,10 @@ export default function ExternalLink(props) {
         }
     };
     const background = getBackground();
+    //-------------------------------------------------------------------
+    // 5. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -175,32 +159,26 @@ export default function ExternalLink(props) {
                 ...background,
                 backgroundColor: withColor?.backgroundColor,
                 backgroundRepeat: "no-repeat",
-                backgroundSize: "cover"
+                backgroundSize: "cover",
             }}
         >
-            <div className={`qui-external-link-card ${quommonClasses.childClasses}`} key={"External-link" + slideId}
-            >
+            <div className={`qui-icon-bullet-list-card ${quommonClasses.childClasses}`} key={"icon-bullet-list" + slideId}>
                 {!data?.image && (data?.title || data?.subtitle) && (
-                    <SlideHeader
+                    <SlideHeader {...props}
                         content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (
-                    <img className="qui-external-link-image"
+                    <img className="qui-icon-bullet-list-image"
                         src={resolveImage(data?.image.id, imageLibrary)}
-                        alt="ImageWithCaption" />
+                        alt="Conversation" />
                 )}
-                <TextBlock {...props}
-                    content={props.data?.paragraph}
-                    withColor={captionColors}
+                <IconListItem {...props}
+                    asVariant={asVariant}
+                    asEmphasis={"conversation"}
+                    withColor={iconListItemColors}
+                    content={data?.conversation}
                 />
-                <a href={data?.link} className="qui-external-link-address">
-                    {<Button {...props}
-                        content={"Go"}
-                        onClick={props.onClick}
-                        withColor={buttonColors}
-                    />}
-                </a>
             </div>
         </motion.div>
     );

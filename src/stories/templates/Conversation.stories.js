@@ -1,17 +1,16 @@
 import React from "react";
-import ExternalLink from "../../components/Templates/ExternalLink/ExternalLink.react";
+import Conversation from "../../components/Templates/Conversation/Conversation.react";
 
 export default {
-    title: "Design System/Templates/ExternalLink/ExternalLink",
-    component: ExternalLink,
+    title: "Design System/Templates/Conversation/Conversation",
+    component: Conversation,
     argTypes: {
         data: {
             title: "",
             subtitle: "",
-            paragraph: "",
-            link: "",
             image: { id: "", extention: "" },
             backgroundImage: { id: "", extention: "" },
+            conversation: [],
         },
         imageLibrary: [],
         slideId: 0,
@@ -22,20 +21,22 @@ export default {
                 category: "as-Flags",
             },
         },
+        asFloated: {
+            control: "select",
+            options: ["left", "right", "none", "inline"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
                     slideHeaderTextColor: "",
-                    slideHeaderAccentColor: "",
                     slideHeaderBackgroundColor: "",
-                    captionTextColor: "",
-                    captionBackgroundColor: "",
-                    buttonTextColor: "",
-                    buttonBackgroundColor: "",
-                    buttonHoverBackgroundColor: "",
-                    buttonHoverTextColor: "",
+                    slideHeaderAccentColor: "",
+                    iconListItemTextColor: "",
                 },
             },
         },
@@ -61,7 +62,6 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "center",
                 }}
             >
                 {story()}
@@ -69,7 +69,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a ExternalLink with SlideHeader, TextBlocks and Button for general-purpose use.",
+        componentSubtitle: "Displays a Conversation with Slideheader and IconListItem for general-purpose use.",
         a11y: { disable: true },
         docs: { iframeHeight: 550 },
     },
@@ -78,7 +78,7 @@ export default {
 // Default
 // -------------------------------------------------------------
 const Template = (args) => {
-    return <ExternalLink {...args} />;
+    return <Conversation {...args} />;
 };
 
 export const Default = Template.bind({});
@@ -86,10 +86,34 @@ Default.args = {
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula. ",
-        link: "https://github.com/"
+        conversation: [
+            {
+                image: { id: "image-1", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "image-2", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "image-1", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "image-2", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+        ],
     },
     imageLibrary: [
+        {
+            id: "image-1",
+            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+        },
+        {
+            id: "image-2",
+            image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+        },
         {
             id: "header-image",
             image:
@@ -102,17 +126,13 @@ Default.args = {
     ],
     slideId: 0,
     asVariant: "success",
+    asFloated: "left",
     withColor: {
         backgroundColor: "",
         slideHeaderTextColor: "#ffffff",
         slideHeaderAccentColor: "#AD2929",
         slideHeaderBackgroundColor: "#C98787",
-        captionTextColor: "",
-        captionBackgroundColor: "#ffffff",
-        buttonTextColor: "#121212",
-        buttonBackgroundColor: "#F6BF33",
-        buttonHoverBackgroundColor: "#121212",
-        buttonHoverTextColor: "#F6BF33",
+        iconListItemTextColor: "#121212",
     },
     withAnimation: {
         animation: "zoom",
@@ -124,44 +144,55 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<ExternalLink {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<Conversation {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
 //-------------------------------------------------------------
-// Colored ExternalLink
+// Colored Conversation
 // -------------------------------------------------------------
-export const ColoredExternalLink = Template.bind({});
-ColoredExternalLink.args = {
+export const ColoredConversation = Template.bind({});
+ColoredConversation.args = {
     ...Default.args,
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula. ",
-        link: "https://www.youtube.com/"
+        conversation: [
+            {
+                image: { id: "image-1", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "image-2", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "image-1", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "image-2", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+        ],
     },
     asVariant: "secondary",
     withColor: {
         backgroundColor: "#F3E5F5",
-        slideHeaderTextColor: "#454545",
-        slideHeaderAccentColor: "#C1DC9E",
+        slideHeaderTextColor: "",
+        slideHeaderAccentColor: "#9C27B0",
         slideHeaderBackgroundColor: "#DBDBDB",
-        captionTextColor: "#454545",
-        captionBackgroundColor: "#DBDBDB",
-        buttonTextColor: "#F6BF33",
-        buttonBackgroundColor: "#121212",
-        buttonHoverBackgroundColor: "#F6BF33",
-        buttonHoverTextColor: "#121212",
+        iconListItemTextColor: "#454545"
     },
 };
-ColoredExternalLink.parameters = {
+ColoredConversation.parameters = {
     docs: {
         description: {
             story: "Use to override the standard colors of the component.",
         },
         source: {
-            code: `<ExternalLink {...${JSON.stringify(
-                ColoredExternalLink.args,
+            code: `<Conversation {...${JSON.stringify(
+                ColoredConversation.args,
                 null,
                 2
             )}}/>`,
@@ -169,10 +200,10 @@ ColoredExternalLink.parameters = {
     },
 };
 //-------------------------------------------------------------
-// Animated ExternalLink
+// Animated Conversation
 // -------------------------------------------------------------
-export const AnimatedExternalLink = Template.bind({});
-AnimatedExternalLink.args = {
+export const AnimatedConversation = Template.bind({});
+AnimatedConversation.args = {
     ...Default.args,
     withAnimation: {
         animation: "fade",
@@ -180,14 +211,14 @@ AnimatedExternalLink.args = {
         delay: 0,
     },
 };
-AnimatedExternalLink.parameters = {
+AnimatedConversation.parameters = {
     docs: {
         description: {
-            story: "We can animate the appearance of ExternalLink",
+            story: "We can animate the appearance of Conversation",
         },
         source: {
-            code: `<ExternalLink {...${JSON.stringify(
-                AnimatedExternalLink.args,
+            code: `<Conversation {...${JSON.stringify(
+                AnimatedConversation.args,
                 null,
                 2
             )}}/>`,
@@ -196,27 +227,46 @@ AnimatedExternalLink.parameters = {
 };
 
 // -------------------------------------------------------------
-// With Background Image ExternalLink
+// With Background Image Conversation
 // -------------------------------------------------------------
-export const ExternalLinkWithHeaderImageAndBackgroundImage = Template.bind({});
-ExternalLinkWithHeaderImageAndBackgroundImage.args = {
+export const ConversationWithHeaderImageAndBackgroundImage = Template.bind({});
+ConversationWithHeaderImageAndBackgroundImage.args = {
     ...Default.args,
     data: {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula. ",
-        link: "https://www.youtube.com/",
+        conversation: [
+            {
+                image: { id: "image-1", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "image-2", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "image-1", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "image-2", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+        ],
         image: { id: "header-image", extention: "" },
         backgroundImage: { id: "background-image", extention: "" }
     },
+    withColor: {
+        iconListItemTextColor: "#ffffff"
+    }
 };
-ExternalLinkWithHeaderImageAndBackgroundImage.parameters = {
+ConversationWithHeaderImageAndBackgroundImage.parameters = {
     docs: {
         description: {
-            story: "Use to show ExternalLink with BackgroundImage.",
+            story: "Use to show Conversation with BackgroundImage.",
         },
         source: {
-            code: `<ExternalLink {...${JSON.stringify(ExternalLinkWithHeaderImageAndBackgroundImage.args, null, 2)}}/>`,
+            code: `<Conversation {...${JSON.stringify(ConversationWithHeaderImageAndBackgroundImage.args, null, 2)}}/>`,
         },
     },
 };

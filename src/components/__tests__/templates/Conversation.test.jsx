@@ -6,9 +6,9 @@ import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import ImageWithCaption from "../../Templates/ImageWithCaption/ImageWithCaption.react"
+import Conversation from "../../Templates/Conversation/Conversation.react"
 
-describe("ImageWithCaption", () => {
+describe("Conversation", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -17,12 +17,20 @@ describe("ImageWithCaption", () => {
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
-            <ImageWithCaption
+            <Conversation
                 data={{
                     title: "Neque porro quisquam est qui dolorem",
                     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
                     image: { id: "header-image", extention: "" },
                     backgroundImage: { id: "background-image", extention: "" },
+                    conversation: [{
+                        image: {},
+                        text: "Quisque sed turpis vel lectus suscipit auctor",
+                    },
+                    {
+                        image: {},
+                        text: "Neque porro quisquam est qui dolorem"
+                    }],
                 }}
                 imageLibrary={[]}
                 slideId={0}
@@ -31,9 +39,6 @@ describe("ImageWithCaption", () => {
                 withColor={null}
                 withAnimation={null}
                 isHidden={false}
-                onClick={(e) => {
-                    console.log(e);
-                }}
             />
         );
     });
