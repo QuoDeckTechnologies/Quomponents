@@ -173,4 +173,12 @@ describe("MultiSelect", () => {
     let btn = component.find(".qui-multi-select-checkbox").at(0)
     btn.simulate('click')
   });
+  it("should render submit answer text in the submit button", () => {
+    component.setProps({ purpose: "" })
+    expect(component.find("button").at(1).text()).toBe("Submit Answer")
+  })
+  it("should render check answer text in the submit button", () => {
+    component.setProps({ purpose: "quiz" })
+    expect(component.find("button").at(1).text()).toBe("Check Answer")
+  })
 });
