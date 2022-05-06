@@ -185,7 +185,6 @@ export default function ExternalLink(props) {
                         content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors} />
                 )}
-
                 {data?.image && (
                     <img className="qui-external-link-image"
                         src={resolveImage(data?.image.id, imageLibrary)}
