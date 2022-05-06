@@ -198,9 +198,9 @@ WithoutHeaderImageCaptionedVideo.args = {
         slideHeaderTextColor: "#ffffff",
         slideHeaderAccentColor: "#AD2929",
         slideHeaderBackgroundColor: "#C98787",
-        textBlockTextColor: "",
+        textBlockTextColor: "#454545",
         textBlockAccentColor: "",
-        textBlockBackgroundColor: "",
+        textBlockBackgroundColor: "#FFFF",
     },
     withAnimation: {
         animation: "zoom",
@@ -233,6 +233,11 @@ WithBackgroundImageCaptionedVideo.args = {
         image: { id: "header-image", extention: "" },
         backgroundImage: { id: "background-image", extention: "" },
     },
+    withColor: {
+        textBlockTextColor: "#FFFF",
+        textBlockAccentColor: "",
+        textBlockBackgroundColor: "",
+    },
 };
 WithBackgroundImageCaptionedVideo.parameters = {
     docs: {
@@ -261,7 +266,7 @@ BackgroundImageWithSlideHeaderCaptionedVideo.args = {
         slideHeaderTextColor: "#ffffff",
         slideHeaderAccentColor: "#010a26",
         slideHeaderBackgroundColor: "#C98787",
-        textBlockTextColor: "",
+        textBlockTextColor: "#FFFF",
         textBlockAccentColor: "",
         textBlockBackgroundColor: "",
     },

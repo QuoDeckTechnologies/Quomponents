@@ -110,7 +110,7 @@
 /* ================================================= */
 @media only screen and (min-width: 320px) {
     .qui .qui-captioned-video-card .qui-text-block-area {
-        width: 80%;
+        width: auto;
     }
 
     .qui .qui-captioned-video-card {
@@ -129,7 +129,7 @@
 @media only screen and (min-width: 481px) {
     .qui .qui-captioned-video-card,
     .qui-captioned-video-presenter-container {
-        width: 22em;
+        width: 20em;
     }
 
     .qui-captioned-video-image {

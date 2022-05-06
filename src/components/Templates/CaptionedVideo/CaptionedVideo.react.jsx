@@ -30,7 +30,7 @@ CaptionedVideo.propTypes = {
         presenter: PropTypes.object,
     }).isRequired,
     /**
-    CaptionedVideo can set iconlist image & backgroundImage from imageLibrary.
+    CaptionedVideo can set image, presenter & backgroundImage from imageLibrary.
     */
     imageLibrary: PropTypes.array,
     /**
