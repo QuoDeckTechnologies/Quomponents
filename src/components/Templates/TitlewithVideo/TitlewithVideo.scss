@@ -13,18 +13,16 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     .qui .qui-text-block-area {
         text-align: center;
-        min-width: 15em;
+        min-width: 10em;
         min-height: 8.5em;
-        font-size: 1em;
+        font-size: 1.5em;
     }
 }
 
 .qui .qui-title-with-video-videobox-container {
     width: 100%;
-
     .video-responsive {
         min-height: 22.5em;
         width: auto;
@@ -45,9 +43,10 @@
     .qui.qui-title-with-video {
         width: 20em;
     }
+
     .qui .qui-title-with-video-textblock {
         .qui .qui-text-block-area {
-            max-width: 13em;
+            max-width: 8em;
         }
     }
 }
