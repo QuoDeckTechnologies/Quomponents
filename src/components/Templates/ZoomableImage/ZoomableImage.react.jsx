@@ -14,6 +14,7 @@ import "./ZoomableImage.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
 import TextBlock from "../../TextBlock/TextBlock.react";
+import Button from "../../Buttons/Button/Button.react";
 
 ZoomableImage.propTypes = {
     //=======================================
@@ -127,7 +128,7 @@ ZoomableImage.defaultProps = {
 - Displays a ZoomableImage with TextBlock, Image and a SlideHeader
 **/
 export default function ZoomableImage(props) {
-    const { data, withColor, imageLibrary } = props;
+    const { data, withColor, imageLibrary, slideId } = props;
     //-------------------------------------------------------------------
     // Variable to set presenter image
     //-------------------------------------------------------------------
@@ -139,7 +140,7 @@ export default function ZoomableImage(props) {
     //-------------------------------------------------------------------
     // Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "zoomable");
+    let quommonClasses = getQuommons(props, "zoomable-image");
     //quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
 
     //-------------------------------------------------------------------
@@ -163,24 +164,34 @@ export default function ZoomableImage(props) {
     //-------------------------------------------------------------------
     const zoomabelImage = (data) => {
         return (
-            <div className="qui-zoomable-image-card" key={"zoomable-image-slide-" + props.slideId} style={{
+            <div className="qui-zoomable-image-card" key={"zoomable-image-slide-" + slideId} style={{
                 ...background,
                 backgroundColor: withColor?.backgroundColor,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
             }}>
-                <div className={`${quommonClasses.childClasses}`} key={"zoomable-image" + props.slideId}>
+                <div className={`${quommonClasses.childClasses}`} key={"zoomable-image" + slideId}>
                     {!data?.image && (data?.title || data?.subtitle) && (
                         <SlideHeader
                             content={SlideHeaderText}
                             withColor={slideHeaderColors} />
                     )}
+
+                    <div className="qui-zoomable-icon">
+                        {<Button {...props}
+                            content={"X"}
+                            onClick={props.onClick}
+                            withIcon={"fa fa-close"}
+                        //withColor={buttonColors}
+                        />}
+                    </div>
+
                     {data?.image && (
                         <img className="qui-header-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
                     )}
 
                     {data?.zoomableImage && (
-                        <img className="qui-zoomable-image" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                        <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
                     )}
                     <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
                 </div>
@@ -212,11 +223,18 @@ export default function ZoomableImage(props) {
                         asFloated="left"
                         withColor={textBlockColors} />
                 </div>
-                <div className="">
+                <div className="qui-zoomable-icon">
+                    {<Button {...props}
+                        content={"X"}
+                        onClick={props.onClick}
+                        withIcon={"fa fa-close"}
+                    //withColor={buttonColors}
+                    />}
                     {data?.zoomableImage && (
-                        <img className="qui-zoomable-image" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                        <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
                     )}
                 </div>
+
                 <div className="qui-zoomable-image-presenter-caption">
                     <TextBlock {...props}
                         content={data?.caption}
