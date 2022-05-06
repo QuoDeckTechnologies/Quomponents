@@ -129,6 +129,7 @@ export default function OrderingList(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses} `}
     >
+    <div className="qui-ordering-list-parent-container">
       {_.map(shuffle, ((item, index) => (
         <div key={index}>
           <div className={`qui-ordering-list ${quommonClasses.childClasses}`}>
@@ -170,7 +171,7 @@ export default function OrderingList(props) {
           content={"Submit Answer"}
         />}
       </div>
-
+    </div>
     </motion.div>
   );
 }

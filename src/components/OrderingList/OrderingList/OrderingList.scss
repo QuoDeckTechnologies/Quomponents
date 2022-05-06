@@ -5,6 +5,11 @@
     justify-content: center;
 }
 
+.qui-ordering-list-parent-container{
+    display: flex;
+    flex-direction: column;
+}
+
 .qui .qui-ordering-btn {
     display: flex;
     border-radius: 0.2em;
