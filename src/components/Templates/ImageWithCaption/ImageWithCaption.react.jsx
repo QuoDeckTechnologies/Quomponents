@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    resolveImage,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -25,10 +26,16 @@ ImageWithCaption.propTypes = {
         title: PropTypes.string,
         subtitle: PropTypes.string,
         caption: PropTypes.string,
-        image: PropTypes.string,
-        backgroundImage: PropTypes.string,
+        image: PropTypes.object,
+        backgroundImage: PropTypes.object,
     }).isRequired,
-
+    /**
+   ImageWithCaption can set image & backgroundImage from imageLibrary.
+   */
+    imageLibrary: PropTypes.array,
+    /**
+    slideId can be used if same template is used continueously for multiple slides.
+    */
     slideId: PropTypes.number,
     //=======================================
     // Quommon props
@@ -43,6 +50,10 @@ ImageWithCaption.propTypes = {
         "warning",
         "error",
     ]),
+    /**
+    Use to float the component in parent container
+    */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
       Use to override component colors and behavior
       */
@@ -99,6 +110,7 @@ ImageWithCaption.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "warning",
+    asFloated: "left",
     withColor: null,
     withAnimation: null,
     isDisabled: false,
@@ -116,12 +128,11 @@ export default function ImageWithCaption(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring data from props
     //-------------------------------------------------------------------
-    let { data, withColor } = props;
+    let { data, withColor, imageLibrary, slideId } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "image-with-caption");
-    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
@@ -130,39 +141,47 @@ export default function ImageWithCaption(props) {
     // 4. Setting the colors of the imported components
     //-------------------------------------------------------------------
     let buttonColors = {
-        textColor: props.withColor?.buttonTextColor,
-        backgroundColor: props.withColor?.buttonBackgroundColor,
-        hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
-        hoverTextColor: props.withColor?.buttonHoverTextColor
+        textColor: withColor?.buttonTextColor,
+        backgroundColor: withColor?.buttonBackgroundColor,
+        hoverBackgroundColor: withColor?.buttonHoverBackgroundColor,
+        hoverTextColor: withColor?.buttonHoverTextColor
     }
     let captionColors = {
-        textColor: props.withColor?.captionTextColor,
-        backgroundColor: props.withColor?.captionBackgroundColor
+        textColor: withColor?.captionTextColor,
+        backgroundColor: withColor?.captionBackgroundColor
     }
     let slideHeaderColors = {
-        textColor: props.withColor?.slideHeaderTextColor,
-        accentColor: props.withColor?.slideHeaderAccentColor,
-        backgroundColor: props.withColor?.slideHeaderBackgroundColor
+        textColor: withColor?.slideHeaderTextColor,
+        accentColor: withColor?.slideHeaderAccentColor,
+        backgroundColor: withColor?.slideHeaderBackgroundColor
     }
     //-------------------------------------------------------------------
     // 5. Set background image and color for card
     //-------------------------------------------------------------------
     const getBackground = () => {
-        return {
-            background: `url(${data?.backgroundImage})`,
-            backgroundSize: "cover",
-        };
+        if (data?.backgroundImage) {
+            return {
+                backgroundImage: `url(${resolveImage(
+                    data?.backgroundImage.id,
+                    imageLibrary
+                )})`,
+            };
+        }
     };
-    const background = data?.backgroundImage
-        ? getBackground()
-        : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
+    const background = getBackground();
+
     // ========================= Render Function =================================
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            style={{ ...background }}
+            style={{
+                ...background,
+                backgroundColor: withColor?.backgroundColor,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+            }}
         >
             <div className={`qui-image-with-caption-card ${quommonClasses.childClasses}`}>
                 {!data?.image && (data?.title || data?.subtitle) && (
@@ -172,15 +191,18 @@ export default function ImageWithCaption(props) {
                 )}
 
                 {data?.image && (
-                    <img className="qui-image-with-caption-image" src={data?.image} alt="" />
+                    <img className="qui-image-with-caption-image"
+                        src={resolveImage(data?.image.id, imageLibrary)}
+                        alt="ImageWithCaption" />
                 )}
                 <TextBlock {...props}
-                    key={props.slideId}
-                    content={props.data?.caption}
+                    key={slideId}
+                    content={data?.caption}
                     withColor={captionColors}
                 />
                 {<Button {...props}
                     content={"Continue"}
+                    asFloated={"inline"}
                     onClick={props.onClick}
                     withColor={buttonColors}
                 />}
