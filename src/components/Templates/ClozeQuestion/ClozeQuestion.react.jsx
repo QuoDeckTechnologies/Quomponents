@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
-    resolveImage
+    resolveImage,
 } from "../../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -26,19 +26,19 @@ ClozeQuestion.propTypes = {
         title: PropTypes.string,
         subtitle: PropTypes.string,
         image: PropTypes.object,
-        question: PropTypes.string,
         backgroundImage: PropTypes.object,
-        options: PropTypes.array,
+        question: PropTypes.string,
+        purpose: PropTypes.string,
     }).isRequired,
-    slideId: PropTypes.number,
     /**
-    ClozeQuestion can set image & backgroundImage from imageLibrary array
+    ClozeQuestion should have imageLibrary array
     */
     imageLibrary: PropTypes.array,
+    slideId: PropTypes.number,
     /**
-    Set action emphasis in increasing order 
+    ClozeQuestion component must have the trackInteraction function passed as props
     */
-    asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
+    trackInteraction: PropTypes.func,
     //=======================================
     // Quommon props
     //=======================================
@@ -60,11 +60,14 @@ ClozeQuestion.propTypes = {
         slideHeaderTextColor: PropTypes.string,
         slideHeaderAccentColor: PropTypes.string,
         slideHeaderBackgroundColor: PropTypes.string,
-        buttonBackgroundColor: PropTypes.string,
+        inputFieldTextColor: PropTypes.string,
+        inputFieldAccentColor: PropTypes.string,
+        inputFieldBackgroundColor: PropTypes.string,
         buttonTextColor: PropTypes.string,
+        buttonBackgroundColor: PropTypes.string,
         buttonHoverBackgroundColor: PropTypes.string,
         buttonHoverTextColor: PropTypes.string,
-        backgroundColor: PropTypes.string
+        backgroundColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -103,7 +106,6 @@ ClozeQuestion.defaultProps = {
     //=======================================
     data: {},
     slideId: 0,
-    asEmphasis: "contained",
     //=======================================
     // Quommon props
     //=======================================
@@ -118,22 +120,24 @@ ClozeQuestion.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Component is used to show the question with the options, user need to submit the correct
-  answer by clicking on option.
+- component is used to show the question with the input field, user need to submit the 
+  answer using the input field.
 **/
 export default function ClozeQuestion(props) {
-    let { data } = props;
+    let { data, withColor, imageLibrary } = props
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "slide-cloze-question");
+    let quommonClasses = getQuommons(props, "cloze-question");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
-
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-
+    const [state, setState] = useState();
+    function handleSubmit() {
+        props.trackInteraction(state)
+    }
     //-------------------------------------------------------------------
     // 3. Setting the colors of the imported components
     //-------------------------------------------------------------------
@@ -151,67 +155,24 @@ export default function ClozeQuestion(props) {
     let slideHeaderColors = {
         textColor: props.withColor?.slideHeaderTextColor,
         accentColor: props.withColor?.slideHeaderAccentColor,
-        backgroundColor: props.withColor?.slideHeaderBackgroundColor,
-    };
+        backgroundColor: props.withColor?.slideHeaderBackgroundColor
+    }
 
     //-------------------------------------------------------------------
-    // 4. Function to return a view for title
+    // 4. Conditional text display on the submit button
     //-------------------------------------------------------------------
-    const getView = (data) => {
-        if ((!data?.image || data?.image?.id === "") && (data?.title || data?.subtitle)) {
-            return (
-                <SlideHeader
-                    content={{ title: data?.title, subTitle: data?.subtitle }}
-                    withColor={slideHeaderColors}
-                />
-            );
-        } else if (data?.image) {
-            return (
-                data?.image && (
-                    <img
-                        className="qui-slide-cloze-question-image"
-                        src={resolveImage(data?.image.id, props.imageLibrary)}
-                        alt="slide"
-                    />
-                )
-            );
-        }
-    };
-
-    //-------------------------------------------------------------------
-    // 5. Function to set background
-    //-------------------------------------------------------------------
-    const getBackground = () => {
-        if (data?.backgroundImage && (data?.backgroundImage?.id !== "" && data?.backgroundImage?.id)) {
-            return {
-                backgroundImage: `url(${resolveImage(
-                    data?.backgroundImage.id,
-                    props.imageLibrary
-                )})`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                backgroundPosition: "center"
-            };
-        } else {
-            return {
-                backgroundColor: props.withColor?.backgroundColor ? props.withColor?.backgroundColor : "#ffffff"
-            }
-        }
-    };
-    const background = getBackground();
-
-    //-------------------------------------------------------------------
-    // 6. Variable for ButtonBank content props
-    //-------------------------------------------------------------------
-    let optionsArray = [];
-    data?.options?.forEach((item) => optionsArray.push(item?.text?.toLowerCase()));
-
     let buttonText = data?.purpose === "quiz" ? "Check Answer" : "Submit Answer";
 
-    const [state, setState] = useState();
-    function handleSubmit() {
-        props.onClick(state)
-    }
+    const getBackground = () => {
+        return {
+            background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+        };
+    };
+    const background = data?.backgroundImage
+        ? getBackground()
+        : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
 
     // ========================= Render Function =================================
     return (
@@ -220,36 +181,35 @@ export default function ClozeQuestion(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            {data && (
-                <div
-                    className="qui-slide-cloze-question-card"
-                    key={"slide-cloze-question" + props.slideId}
-                    style={{ ...background }}
-                >
-                    {getView(data)}
+            {data &&
+                <div className="qui-cloze-question-card" style={{ ...background }}>
+                    {!data?.image && (data?.title || data?.subtitle) && (
+                        <SlideHeader
+                            content={{ title: data?.title, subTitle: data?.subtitle }}
+                            withColor={slideHeaderColors} />
+                    )}
+                    {data?.image && (
+                        <img className="qui-cloze-question-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
+                    )}
                     <div
-                        className={`qui-slide-cloze-question-question variant-${props.asVariant}-text`}
+                        className={`qui-cloze-question-label variant-${props.asVariant}-text`}
                         style={{ color: props.withColor?.questionColor }}
-                    >
-                        {data?.question}
+                        key={"cloze-question-label-" + props.slideId}>
+                        {props.data?.question}
                     </div>
-                    <div className="qui-slide-cloze-question-container">
+                    <div className="qui-cloze-question-input-button-container">
                         <InputField {...props}
-                            asEmphasis="filled"
                             content={{ label: "Input Name" }}
                             withColor={inputFieldColors}
                             onClick={(name, value) => setState(value)}
                             name="cloze-question-input-field" />
                         <Button {...props}
-                            className={`qui-cloze-question-submit-button`}
                             content={buttonText}
                             withColor={buttonColors}
-                            onClick={() => handleSubmit()}
-                        >
+                            onClick={() => handleSubmit()} >
                         </Button>
                     </div>
-                </div>
-            )}
+                </div>}
         </motion.div>
     );
 }
