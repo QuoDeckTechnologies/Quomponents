@@ -12,7 +12,7 @@ export default {
                 image: {},
                 question: "",
                 backgroundImage: {},
-                options: [],
+                multiselect: [],
                 purpose: ""
             }
         },
@@ -110,7 +110,7 @@ Default.args = {
         image: { id: "header-image", extension: "" },
         backgroundImage: { id: "", extention: "" },
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        options: [
+        multiselect: [
             {
                 name: "Item 1",
                 isSelected: false,
@@ -175,7 +175,7 @@ MultipleSelectWithSlideHeader.args = {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         backgroundImage: { id: "", extention: "" },
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        options: [
+        multiselect: [
             {
                 name: "Item 1",
                 isSelected: false,
@@ -240,7 +240,7 @@ EmphasisMultiSelect.args = {
         image: { id: "header-image", extension: "" },
         backgroundImage: { id: "", extention: "" },
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        options: [
+        multiselect: [
             {
                 name: "Item 1",
                 isSelected: false,
@@ -310,7 +310,7 @@ ColoredMultiSelect.args = {
         image: { id: "header-image", extension: "" },
         backgroundImage: { id: "", extention: "" },
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        options: [
+        multiselect: [
             {
                 name: "Item 1",
                 isSelected: false,

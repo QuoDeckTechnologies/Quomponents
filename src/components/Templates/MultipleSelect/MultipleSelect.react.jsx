@@ -27,7 +27,7 @@ MultipleSelect.propTypes = {
         image: PropTypes.object,
         question: PropTypes.string,
         backgroundImage: PropTypes.object,
-        options: PropTypes.array,
+        multiselect: PropTypes.array,
         purpose: PropTypes.string
     }).isRequired,
     slideId: PropTypes.number,
@@ -194,7 +194,7 @@ export default function MultipleSelect(props) {
     //-------------------------------------------------------------------
 
     let optionsArray = [];
-    data?.options?.forEach((item) => optionsArray.push(item?.text?.toLowerCase()));
+    data?.multiselect?.forEach((item) => optionsArray.push(item?.text?.toLowerCase()));
 
     let buttonStyle = {
         backgroundColor: props.withColor?.buttonBackgroundColor,
@@ -223,8 +223,8 @@ export default function MultipleSelect(props) {
                     >
                         {data?.question}
                     </div>
-                    {data?.options && <div className="qui-slide-multiple-select-container">
-                        <MultiSelect {...props} content={data?.options} purpose={data?.purpose} withColor={buttonStyle} asSize="small" />
+                    {data?.multiselect && <div className="qui-slide-multiple-select-container">
+                        <MultiSelect {...props} content={data?.multiselect} purpose={data?.purpose} withColor={buttonStyle} asSize="small" />
                     </div>}
                 </div>
             )}

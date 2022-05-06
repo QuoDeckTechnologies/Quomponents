@@ -19,7 +19,7 @@ describe("MultipleSelect", () => {
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
 		backgroundImage: { id: "", extention: "" },
 		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-		options: [
+		multiselect: [
 			{
 				name: "Item 1",
 				isSelected: false,
@@ -246,7 +246,7 @@ describe("MultipleSelect", () => {
 
 	it("should return the index of selected option", () => {
 		component.setProps({
-			options: [
+			multiselect: [
 				{
 					name: "Item 1",
 					isSelected: false,
