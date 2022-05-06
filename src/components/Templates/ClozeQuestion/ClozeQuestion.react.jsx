@@ -134,9 +134,9 @@ export default function ClozeQuestion(props) {
     // 2. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-    const [state, setState] = useState();
+    const [answer, setAnswer] = useState();
     function handleSubmit() {
-        props.trackInteraction(state)
+        props.trackInteraction(answer)
     }
     //-------------------------------------------------------------------
     // 3. Setting the colors of the imported components
@@ -201,7 +201,7 @@ export default function ClozeQuestion(props) {
                         <InputField {...props}
                             content={{ label: "Input Name" }}
                             withColor={inputFieldColors}
-                            onClick={(name, value) => setState(value)}
+                            onClick={(name, value) => setAnswer(value)}
                             name="cloze-question-input-field" />
                         <Button {...props}
                             content={buttonText}
