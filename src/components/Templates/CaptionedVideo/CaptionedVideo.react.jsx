@@ -18,8 +18,8 @@ CaptionedVideo.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      CaptionedVideo data should be passed in data field and it is a required field
-      */
+    CaptionedVideo data should be passed in data field and it is a required field
+    */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
@@ -30,19 +30,19 @@ CaptionedVideo.propTypes = {
         presenter: PropTypes.object,
     }).isRequired,
     /**
-      CaptionedVideo can set iconlist image & backgroundImage from imageLibrary.
-      */
+    CaptionedVideo can set iconlist image & backgroundImage from imageLibrary.
+    */
     imageLibrary: PropTypes.array,
     /**
-       slideId can be used if same template is used continueously for multiple slides.
-      */
+    slideId can be used if same template is used continueously for multiple slides.
+    */
     slideId: PropTypes.number,
     //=======================================
     // Quommon props
     //=======================================
     /**
-      Use to override component colors and behavior
-      */
+    Use to override component colors and behavior
+    */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         slideHeaderTextColor: PropTypes.string,
@@ -53,8 +53,8 @@ CaptionedVideo.propTypes = {
         textBlockBackgroundColor: PropTypes.string,
     }),
     /**
-      Use to define the entry animation of the component
-      */
+    Use to define the entry animation of the component
+    */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -70,7 +70,7 @@ CaptionedVideo.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to show/hide the component
+    Use to show/hide the component
     */
     isHidden: PropTypes.bool,
 };
@@ -114,7 +114,7 @@ export default function CaptionedVideo(props) {
         data?.presenter?.id !== undefined &&
         data?.presenter?.id !== "default43";
     //-------------------------------------------------------------------
-    // 3. Use to set Color in imported components of CaptionedVideo
+    // 4. Use to set Color in imported components of CaptionedVideo
     //-------------------------------------------------------------------
     let slideHeaderColors = {
         textColor: withColor?.slideHeaderTextColor,
@@ -128,7 +128,7 @@ export default function CaptionedVideo(props) {
         backgroundColor: withColor?.textBlockBackgroundColor
     }
     //-------------------------------------------------------------------
-    // 4. Function to set background for normal and Presenter view
+    // 5. Function to set background for normal and Presenter view
     //-------------------------------------------------------------------
     const getBackground = () => {
         if (data?.backgroundImage) {
@@ -154,7 +154,7 @@ export default function CaptionedVideo(props) {
 
     const background = data?.presenter ? getPresenterBackground() : getBackground();
     //-------------------------------------------------------------------
-    // 4. Function to return a view for CaptionedVideo
+    // 6. Function to return a view for CaptionedVideo
     //-------------------------------------------------------------------
     const CaptionedVideoView = (data) => {
         return (
@@ -188,7 +188,7 @@ export default function CaptionedVideo(props) {
         );
     };
     //-------------------------------------------------------------------
-    // 5. Function to return a view for CaptionedVideo with presenter
+    // 7. Function to return a view for CaptionedVideo with presenter
     //-------------------------------------------------------------------
     const CaptionedVideoPresenterView = (data) => {
         return (
@@ -237,7 +237,7 @@ export default function CaptionedVideo(props) {
         );
     };
     //-------------------------------------------------------------------
-    // 5. Get animation of the component
+    // 8. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
