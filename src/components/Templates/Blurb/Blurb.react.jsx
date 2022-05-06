@@ -22,6 +22,7 @@ Blurb.propTypes = {
       */
     data: PropTypes.shape({
         title: PropTypes.string,
+        subtitle: PropTypes.string,
         paragraph: PropTypes.string,
     }).isRequired,
 
