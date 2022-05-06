@@ -195,7 +195,7 @@ export default function ExternalLink(props) {
                     content={props.data?.paragraph}
                     withColor={captionColors}
                 />
-                <a href={data?.link} target="_blank" className="qui-external-link-address">
+                <a href={data?.link} className="qui-external-link-address">
                     {<Button {...props}
                         content={"Go"}
                         onClick={props.onClick}

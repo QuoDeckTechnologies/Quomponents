@@ -202,6 +202,7 @@ export default function ImageWithCaption(props) {
                 />
                 {<Button {...props}
                     content={"Continue"}
+                    asFloated={"inline"}
                     onClick={props.onClick}
                     withColor={buttonColors}
                 />}
