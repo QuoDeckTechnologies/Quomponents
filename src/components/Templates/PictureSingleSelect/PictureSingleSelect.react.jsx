@@ -132,6 +132,7 @@ export default function PictureSingleSelect(props) {
     // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "picture-single-select");
+    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
