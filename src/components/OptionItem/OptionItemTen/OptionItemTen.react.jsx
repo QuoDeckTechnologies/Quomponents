@@ -120,38 +120,33 @@ export default function OptionItemTen(props) {
   //-------------------------------------------------------------------
   const { content } = props;
   //-------------------------------------------------------------------
-  // 2. Defining states
-  //-------------------------------------------------------------------
-  // const [image, setImage] = useState(content?.image);
-  //-------------------------------------------------------------------
-  // 3. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "option-item-ten");
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 3. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 5. Function to update value of the input field
+  // 4. Function to update value of the input field
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
-    // setImage(image);
     props.onUpload(content?.option?.targetName, image);
   };
   //-------------------------------------------------------------------
-  // 6. Function to return input value of the component
+  // 5. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     props.onInput(name, value);
   };
   //-------------------------------------------------------------------
-  // 7. Function to return header value of the component
+  // 6. Function to return header value of the component
   //-------------------------------------------------------------------
   const handleHeaderValue = (name, headerValue) => {
     props.onHeader(name, headerValue);
   };
   //-------------------------------------------------------------------
-  // 8. Function to return message value of the component
+  // 7. Function to return message value of the component
   //-------------------------------------------------------------------
   const handleMessageValue = (name, messageValue) => {
     props.onMessage(name, messageValue);
@@ -179,7 +174,7 @@ export default function OptionItemTen(props) {
         </div>
         <div className="qui-option-item-upload-button">
           <OptionalImageField
-            content={{ icon: "fas fa-image" }}
+            content={{ icon: "fas fa-upload" }}
             onClick={(image) => handleImageUpload(image)}
             withColor={{ ...props.withColor }}
           />

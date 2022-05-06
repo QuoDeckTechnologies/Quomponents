@@ -137,7 +137,7 @@ export default function OptionItemFive(props) {
       <div className="qui-option-item-five-container">
         <div className="qui-option-item-five-upload-button">
           <OptionalImageField
-            content={{ icon: "fas fa-image" }}
+            content={{ icon: "fas fa-upload" }}
             onClick={(image) => handleImageUpload(image)}
             withColor={{ ...props.withColor }}
           />
