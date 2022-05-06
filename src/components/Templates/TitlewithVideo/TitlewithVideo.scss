@@ -26,7 +26,7 @@
     width: 100%;
 
     .video-responsive {
-        min-height: 30em;
+        min-height: 22.5em;
         width: auto;
         opacity: 0.85;
         pointer-events: none;
@@ -44,5 +44,10 @@
 @media only screen and (min-width: 481px) {
     .qui.qui-title-with-video {
         width: 20em;
+    }
+    .qui .qui-title-with-video-textblock {
+        .qui .qui-text-block-area {
+            max-width: 13em;
+        }
     }
 }
