@@ -7,13 +7,6 @@ export default {
     argTypes: {
         data: {},
         slideId: 0,
-        asVariant: {
-            control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -118,7 +111,6 @@ Default.args = {
     },
     ],
     slideId: 0,
-    asVariant: "warning",
     withColor: {
         slideHeaderTextColor: "#FFFFFF",
         slideHeaderAccentColor: "#AD2929",
@@ -197,7 +189,6 @@ TriptychWithHeaderImage.args = {
         id: "image-3",
     },],
     slideId: 0,
-    asVariant: "warning",
     withColor: {
         slideHeaderTextColor: "#FFFFFF",
         slideHeaderAccentColor: "#AD2929",
@@ -278,7 +269,6 @@ TriptychWithPresenter.args = {
             id: "presenter-image",
         },],
     slideId: 0,
-    asVariant: "warning",
     withColor: {
         slideHeaderTextColor: "#FFFFFF",
         slideHeaderAccentColor: "#AD2929",

@@ -44,16 +44,6 @@ Triptych.propTypes = {
     // Quommon props
     //=======================================
     /**
-      Use to define standard component type
-      */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
-    /**
       Use to override component colors and behavior
       */
     withColor: PropTypes.shape({
@@ -112,7 +102,6 @@ Triptych.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "primary",
     withColor: null,
     withAnimation: null,
     isHidden: false,
