@@ -2,8 +2,6 @@
 // Import from NPM
 // -------------------------------------
 import { shallow, mount } from "enzyme";
-import { render } from "@testing-library/react";
-import { act } from "react-dom/test-utils";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -27,21 +25,12 @@ describe("VoiceoverUploadModal", () => {
     "blob",
     new Uint16Array([33]),
   ];
-//   const file = new File(parts, "name_file.txt", {
-//     size: 643810,
-//     type: "image/jpeg",
-//     webkitRelativePath: "",
-//   });
-//   const pauseFor = (milliseconds) =>
-//     new Promise((resolve) => setTimeout(resolve, milliseconds));
+  const pauseFor = (milliseconds) =>
+    new Promise((resolve) => setTimeout(resolve, milliseconds));
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
       <VoiceoverUploadModal
-        content={{
-          header: "Upload Image",
-          buttons: ["choose file", "cancel", "save"],
-        }}
         isOpen={true}
         withAnimation={null}
         withTranslation={null}
@@ -89,17 +78,37 @@ describe("VoiceoverUploadModal", () => {
     });
   });
 
-//   it("should render correctly when jpeg or jpg file is uploaded and saved", async () => {
-//     const file = new File(parts, "name_file.jpeg", {
-//       size: 643810,
-//       type: "image/jpeg",
-//       webkitRelativePath: "",
-//     });
-//     component
-//       .find(".qui-image-upload-field")
-//       .simulate("change", { target: { files: [file] } });
-//     await pauseFor(100);
-//     component.find("Button").at(2).simulate("click");
-//     expect(component.exists()).toBe(true);
-//   });
+  it("should render correctly when component mounts", async () => {
+    let wrapper = mount(<VoiceoverUploadModal onClick={() => {}} />);
+    expect(wrapper.exists()).toBe(true);
+  });
+
+  it("should render correctly when single mp3 file is uploaded", async () => {
+    const file = new File(parts, "name_file.mp3", {
+      size: 643810,
+      type: ".mp3",
+      webkitRelativePath: "",
+    });
+    component
+      .find(".qui-voiceover-upload-field")
+      .simulate("change", { target: { files: [file] } });
+    await pauseFor(100);
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when multiple mp3 file is uploaded", async () => {
+    const file = new File(parts, "name_file.mp3", {
+      size: 643810,
+      type: ".mp3",
+      webkitRelativePath: "",
+    });
+    component
+      .find(".qui-voiceover-upload-field")
+      .simulate("click", { target: { value: "" } });
+    component
+      .find(".qui-voiceover-upload-field")
+      .simulate("change", { target: { files: [file, file] } });
+    await pauseFor(100);
+    expect(component.exists()).toBe(true);
+  });
 });

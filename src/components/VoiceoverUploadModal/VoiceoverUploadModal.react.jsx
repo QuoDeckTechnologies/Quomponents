@@ -22,6 +22,26 @@ VoiceoverUploadModal.propTypes = {
   // Quommon props
   //=======================================
   /**
+    Use to define standard component type
+    */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
+  /**
+    Use to override component colors and behavior
+    */
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    accentColor: PropTypes.string,
+    textColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
+  }),
+  /**
     Use to define the entry animation of the component
     */
   withAnimation: PropTypes.shape({
@@ -155,7 +175,7 @@ export default function VoiceoverUploadModal(props) {
   }
 
   // ========================= Render Function =================================
-  
+
   return (
     <Modal
       open={openUploadModal}
@@ -201,7 +221,6 @@ export default function VoiceoverUploadModal(props) {
               <Button
                 {...props}
                 content={tObj ? tObj.buttons.chooseFile : "choose files"}
-                asVariant="warning"
                 withTranslation={null}
                 withAnimation={null}
                 asEmphasis="outlined"
@@ -216,7 +235,6 @@ export default function VoiceoverUploadModal(props) {
               {...props}
               asSize="normal"
               content={tObj ? tObj.buttons.cancel : "cancel"}
-              asVariant="warning"
               asEmphasis="text"
               asFloated="left"
               withTranslation={null}
@@ -227,7 +245,6 @@ export default function VoiceoverUploadModal(props) {
               {...props}
               asSize="normal"
               content={tObj ? tObj.buttons.save : "save"}
-              asVariant="warning"
               withTranslation={null}
               withAnimation={null}
               asEmphasis="contained"

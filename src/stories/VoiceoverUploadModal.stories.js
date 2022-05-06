@@ -23,6 +23,25 @@ export default {
     isOpen: {
       defaultValue: true,
     },
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          backgroundColor: "",
+          accentColor: "",
+          textColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
+        },
+      },
+    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -69,28 +88,34 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a Image Upload Modal Component.",
+    componentSubtitle: "Displays a Voiceover Upload Modal Component.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 1000,
     },
   },
 };
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
 const Template = (args) => {
   return <VoiceoverUploadModal {...args} />;
 };
-
 export const Default = Template.bind({});
 Default.args = {
   isOpen: true,
+  asVariant: "warning",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
+  },
+  withColor: {
+    backgroundColor: "",
+    accentColor: "",
+    textColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withTranslation: {
     lang: "en",
@@ -111,7 +136,32 @@ Default.parameters = {
     },
   },
 };
-
+// -------------------------------------------------------------
+// Colored Voiceover Upload Modal
+// -------------------------------------------------------------
+export const ColoredVoiceoverUploadModal = Template.bind({});
+ColoredVoiceoverUploadModal.args = {
+  ...Default.args,
+  asVariant: "secondary",
+  withColor: {
+    backgroundColor: "#2a9d8f",
+    accentColor: "",
+    textColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
+  },
+};
+ColoredVoiceoverUploadModal.parameters = {
+  docs: {
+    source: {
+      code: `<VoiceoverUploadModal {...${JSON.stringify(
+        ColoredVoiceoverUploadModal.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
 // -------------------------------------------------------------
 // Translated Voiceover Upload Modal
 // -------------------------------------------------------------
