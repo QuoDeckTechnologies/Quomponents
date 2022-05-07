@@ -1,0 +1,171 @@
+/* ================================================= */
+/* Ribbon Tools Menu Styling Definitions */
+/* ================================================= */
+.qui-ribbon-tools-menu-container {
+    width: 632px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 15px 9px 10px 20px;
+
+    .qui .tilt {
+        transform: rotate(0deg);
+    }
+
+    .qui .qui-iconlink .qui-iconlink-icon:hover {
+        color: #000
+    }
+}
+
+/* ============================================================= */
+/* Question Bank Section & Analytics Section Styling Definitions */
+/* ============================================================= */
+.qui-ribbon-tools-menu-analysis-parent,
+.qui-ribbon-tools-menu-question-bank-parent {
+    font-size: 1em;
+    height: 4.2em;
+    width: 4.2em;
+    background-color: #f5f5f5;
+    justify-content: center;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .qui-iconlink {
+        padding: 0;
+    }
+
+    .qui .tilt {
+        transform: rotate(0deg);
+    }
+
+    .qui .qui-iconlink .qui-iconlink-icon:hover {
+        color: #000;
+    }
+}
+
+.qui-ribbon-menu-question-bank-section,
+.qui-ribbon-menu-analytics-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* =================================== */
+/* Setting Section Styling Definitions */
+/* =================================== */
+.qui-ribbon-tools-menu-deck-settings-section-parent {
+    display: flex;
+    flex-direction: column;
+    height: 4.5em;
+    padding: 0.1em 0.1em;
+    align-items: center;
+
+    .qui-iconlink {
+        padding: 0;
+        min-width: 0;
+        min-height: 3em;
+    }
+
+    .qui .tilt {
+        transform: rotate(0deg);
+    }
+
+    .qui .qui-iconlink .qui-iconlink-icon:hover {
+        color: #000
+    }
+}
+
+.qui .qui-ribbon-menu-settings-section {
+    display: flex;
+    flex-direction: column;
+    height: 4.5em;
+}
+
+.qui-ribbon-menu-settings-section-child-container {
+    width: 149px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+.qui-ribbon-menu-settings-section-child {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7em;
+}
+
+.qui-ribbon-menu-settings-section-right-content {
+    width: 130px;
+    display: flex;
+    align-items: center;
+    font-size: 0.6em;
+    padding: 0.1em 0;
+}
+
+/* ================================================= */
+/* VoiceOver Section Styling Definitions */
+/* ================================================= */
+.qui-ribbon-tools-menu-voiceover-section-parent {
+    display: flex;
+    flex-direction: column;
+    height: 4.5em;
+    padding: 0.1em 0.1em;
+    align-items: center;
+
+    .qui .tilt {
+        transform: rotate(0deg);
+    }
+
+    .qui .qui-iconlink .qui-iconlink-icon:hover {
+        color: #000
+    }
+}
+
+.qui-vo-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.qui-vo-section-child-container {
+    width: 234px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+.qui-vo-section-child {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7em;
+}
+
+.qui-vo-section-child.upload {
+    width: 100px;
+}
+
+.qui-vo-section-right-content {
+    width: 130px;
+    display: flex;
+    align-items: center;
+    font-size: 0.6em;
+    padding: 0.1em 0;
+}
