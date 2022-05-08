@@ -30,6 +30,7 @@ describe("PictureFuddleWithFeedback", () => {
                         extention: ""
                     },
                     question: "Question",
+                    answer: "Answer",
                     purpose: "quiz",
                 }}
                 imageLibrary={[{
