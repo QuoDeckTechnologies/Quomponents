@@ -28,6 +28,7 @@ PictureFuddle.propTypes = {
         image: PropTypes.object,
         backgroundImage: PropTypes.object,
         question: PropTypes.string,
+        answer: PropTypes.string,
         purpose: PropTypes.string,
     }).isRequired,
     /**
@@ -202,7 +203,7 @@ export default function PictureFuddle(props) {
                     </div>
                     <div className="qui-picture-fuddle-input-button-container">
                         <InputField {...props}
-                            content={{ label: "Input Name" }}
+                            content={{ label: props.data?.answer ? props.data?.answer : "Answer" }}
                             withColor={inputFieldColors}
                             onClick={(name, value) => changeText(value)}
                             name="picture-fuddle-input-field" />
