@@ -28,7 +28,7 @@ RankingOptions.propTypes = {
         backgroundImage: PropTypes.object,
         question: PropTypes.string,
         purpose: PropTypes.string,
-        options: PropTypes.arrayOf(PropTypes.string)
+        bullets: PropTypes.arrayOf(PropTypes.string)
     }).isRequired,
     /**
     RankingOptions should have imageLibrary array
@@ -117,7 +117,7 @@ RankingOptions.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Component is used to rank/ arrange the element.
+- Component is used to rank/ arrange the element and submit it.
 **/
 export default function RankingOptions(props) {
     let { data, withColor, imageLibrary } = props
@@ -175,7 +175,7 @@ export default function RankingOptions(props) {
                         {props.data?.question}
                     </div>
                     <div className="qui-ranking-options-button-container">
-                        <OrderingList content={props.data?.options} onClick={(items) => props.trackInteraction(items)} />
+                        <OrderingList content={props.data?.bullets} onClick={(items) => props.trackInteraction(items)} />
                     </div>
                 </div>}
         </motion.div>

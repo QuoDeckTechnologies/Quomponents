@@ -13,7 +13,7 @@ export default {
                 backgroundImage: {},
                 question: "",
                 purpose: "",
-                options: []
+                bullets: []
             }
         },
         slideId: 0,
@@ -85,7 +85,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a RankingOptions component with options, the user need to submit the answer by arranging them using up down buttons, we can switch between the image and SlideHeader by adding or removing the image prop",
+        componentSubtitle: "Displays a RankingOptions component with options, the user need to submit the answer by arranging elements using up down buttons, we can switch between the image and SlideHeader by adding or removing the image prop",
         a11y: { disable: true },
         docs: {
             iframeHeight: 650,
@@ -111,7 +111,7 @@ Default.args = {
         },
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         purpose: "",
-        options: ["Item 1", "Item 2", "Item 3"]
+        bullets: ["Item 1", "Item 2", "Item 3"]
     },
     imageLibrary: [{
         id: "background-image",
@@ -159,7 +159,7 @@ RankingOptionsWithSlideHeader.args = {
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         purpose: "",
-        options: ["Item 1", "Item 2", "Item 3"]
+        bullets: ["Item 1", "Item 2", "Item 3"]
     },
     slideId: 0,
     asVariant: "warning",
@@ -204,7 +204,7 @@ RankingOptionsWithSlideHeaderAndBackgroundImage.args = {
         },
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         purpose: "",
-        options: ["Item 1", "Item 2", "Item 3"]
+        bullets: ["Item 1", "Item 2", "Item 3"]
     },
     imageLibrary: [{
         id: 'background-image',
