@@ -28,6 +28,7 @@ ClozeQuestion.propTypes = {
         image: PropTypes.object,
         backgroundImage: PropTypes.object,
         question: PropTypes.string,
+        answer: PropTypes.string,
         purpose: PropTypes.string,
     }).isRequired,
     /**
@@ -199,7 +200,7 @@ export default function ClozeQuestion(props) {
                     </div>
                     <div className="qui-cloze-question-input-button-container">
                         <InputField {...props}
-                            content={{ label: "Input Name" }}
+                            content={{ label: props.data?.answer ? props.data?.answer : "Answer" }}
                             withColor={inputFieldColors}
                             onClick={(name, value) => setAnswer(value)}
                             name="cloze-question-input-field" />

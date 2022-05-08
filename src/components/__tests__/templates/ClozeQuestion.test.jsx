@@ -30,6 +30,7 @@ describe("ClozeQuestion", () => {
 						extention: ""
 					},
 					question: "Question",
+					answer: "Answer",
 					purpose: "quiz",
 				}}
 				imageLibrary={[{
