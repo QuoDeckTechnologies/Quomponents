@@ -141,7 +141,7 @@ export default function ZoomableImage(props) {
     // Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "zoomable-image");
-    //quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
+    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
 
     //-------------------------------------------------------------------
     //  Setting the colors of imported components
@@ -181,8 +181,6 @@ export default function ZoomableImage(props) {
                         {<Button {...props}
                             content={"X"}
                             onClick={props.onClick}
-                            withIcon={"fa fa-close"}
-                        //withColor={buttonColors}
                         />}
                     </div>
 
@@ -228,12 +226,11 @@ export default function ZoomableImage(props) {
                         content={"X"}
                         onClick={props.onClick}
                         withIcon={"fa fa-close"}
-                    //withColor={buttonColors}
                     />}
-                    {data?.zoomableImage && (
-                        <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
-                    )}
                 </div>
+                {data?.zoomableImage && (
+                    <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                )}
 
                 <div className="qui-zoomable-image-presenter-caption">
                     <TextBlock {...props}
