@@ -15,9 +15,9 @@ describe("TimeLinedOptions", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
-    let component, options;
+    let component, bullets;
 
-    options = ["Item 1", "Item 2", "Item 3"];
+    bullets = ["Item 1", "Item 2", "Item 3"];
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -30,7 +30,7 @@ describe("TimeLinedOptions", () => {
                     },
                     question: "Question",
                     purpose: "quiz",
-                    options: options
+                    bullets: bullets
                 }}
                 imageLibrary={[{
                     id: 'background-image',

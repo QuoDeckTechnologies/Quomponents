@@ -28,7 +28,7 @@ TimeLinedOptions.propTypes = {
         backgroundImage: PropTypes.object,
         question: PropTypes.string,
         purpose: PropTypes.string,
-        options: PropTypes.arrayOf(PropTypes.string)
+        bullets: PropTypes.arrayOf(PropTypes.string)
     }).isRequired,
     /**
     TimeLinedOptions should have imageLibrary array
@@ -175,7 +175,7 @@ export default function TimeLinedOptions(props) {
                         {props.data?.question}
                     </div>
                     <div className="qui-time-lined-options-button-container">
-                        <OrderingList content={props.data?.options} onClick={(items) => props.trackInteraction(items)} />
+                        <OrderingList content={props.data?.bullets} onClick={(items) => props.trackInteraction(items)} />
                     </div>
                 </div>}
         </motion.div>

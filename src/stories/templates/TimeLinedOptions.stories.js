@@ -13,7 +13,7 @@ export default {
                 backgroundImage: {},
                 question: "",
                 purpose: "",
-                options: []
+                bullets: []
             }
         },
         slideId: 0,
@@ -111,7 +111,7 @@ Default.args = {
         },
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         purpose: "",
-        options: ["Item 1", "Item 2", "Item 3"]
+        bullets: ["Item 1", "Item 2", "Item 3"]
     },
     imageLibrary: [{
         id: "background-image",
@@ -159,7 +159,7 @@ TimeLinedOptionsWithSlideHeader.args = {
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         purpose: "",
-        options: ["Item 1", "Item 2", "Item 3"]
+        bullets: ["Item 1", "Item 2", "Item 3"]
     },
     slideId: 0,
     asVariant: "warning",
@@ -204,7 +204,7 @@ TimeLinedOptionsWithSlideHeaderAndBackgroundImage.args = {
         },
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         purpose: "",
-        options: ["Item 1", "Item 2", "Item 3"]
+        bullets: ["Item 1", "Item 2", "Item 3"]
     },
     imageLibrary: [{
         id: 'background-image',
