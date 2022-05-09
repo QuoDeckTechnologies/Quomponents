@@ -24,6 +24,7 @@
 .qui .qui-option-item-three-radio-container {
   display: flex;
   align-items: center;
+  margin-bottom: 0.5em;
 }
 
 .qui .qui-option-item-three-radio-button,
@@ -37,13 +38,17 @@
   color: #ffab00;
 }
 
+.qui.qui-option-item-three .qui .qui-optional-image-field-icon {
+  font-size: 1.5em;
+}
+
 .qui .qui-option-item-three-container .qui-optional-image-field-button {
   padding: 0em 0.8em;
   font-size: 1.2em;
 }
 
 .qui .qui-option-item-three-container .qui .qui-optional-image-field-icon {
-  padding: 0.04em 0.2em;
+  padding: 0em 0.2em;
 }
 
 .qui .qui-option-item-three-radio {
@@ -72,14 +77,14 @@
     font-size: 1em;
   }
   .qui .qui-option-item-three-container .qui-optional-image-field-button {
-    padding: 0.2em 1em;
+    padding: 0em 1em;
     font-size: 1em;
   }
   .qui
     .qui-option-item-three-container
     .qui.qui-optional-image-field
     .qui-optional-image-field-wrapper {
-    border: 0.18em solid #ffbf00;
+    border: 0.2em solid #ffbf00;
   }
 }
 
@@ -101,6 +106,6 @@
     .qui-option-item-three-container
     .qui.qui-optional-image-field
     .qui-optional-image-field-wrapper {
-    border: 0.2em solid #ffbf00;
+    border: 0.19em solid #ffbf00;
   }
 }
