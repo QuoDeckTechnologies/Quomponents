@@ -56,13 +56,7 @@ describe("Option Item Two", () => {
   });
 
   it("should render correctly without throwing error when checkbox is used", () => {
-    component.find("CheckBox").simulate("click", { target: { checked: true } });
-  });
-
-  it("should render correctly without throwing error when checkbox label is clicked", () => {
-    component
-      .find(".qui-option-item-four-checkbox-label")
-      .simulate("click", { target: { checked: true } });
+    component.find("CheckBox").simulate("click", { checked: true });
   });
 
   it("should render correctly without throwing error when clicked on close icon", () => {
