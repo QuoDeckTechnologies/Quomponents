@@ -241,7 +241,11 @@ export default function VoiceoverUploadModal(props) {
               asFloated="left"
               withTranslation={null}
               withAnimation={null}
-              onClick={() => setFile(null)}
+              onClick={() => {
+                setFile(null);
+                setOpenUploadModal(false);
+                props.onClose(false);
+              }}
             />
             <Button
               {...props}
