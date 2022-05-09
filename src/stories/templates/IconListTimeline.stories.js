@@ -56,7 +56,6 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "center",
                 }}
             >
                 {story()}
@@ -81,6 +80,22 @@ Default.args = {
         title: "Lorem ipsum dolor sit amet",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         iconlist: [
+            {
+                image: { id: "iconlist-image-1", extention: "" },
+                text: "Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "iconlist-image-2", extention: "" },
+                text: "Quisque sed turpis vel lectus suscipit auctor.",
+            },
+            {
+                image: { id: "header-image", extention: "" },
+                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            },
+            {
+                image: { id: "iconlist-image-2", extention: "" },
+                text: "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor",
+            },
             {
                 image: { id: "iconlist-image-1", extention: "" },
                 text: "Neque porro quisquam est qui dolorem",

@@ -123,7 +123,7 @@ export default function IconListTimeline(props) {
     //-------------------------------------------------------------------
     // 4. Function to set label on click of image
     //-------------------------------------------------------------------
-    const [label, setLabel] = useState(_.map(data.iconlist, () => false));
+    const [label, setLabel] = useState(_.map(data?.iconlist, () => false));
 
     let imageClick = (index) => {
         let newState = label
@@ -179,35 +179,37 @@ export default function IconListTimeline(props) {
                         alt="IconListTimeline"
                     />
                 )}
-                {_.map(data?.iconlist, (item, index) => {
-                    let listTextStyle = {
-                        display:
-                            label[index] === true ? "block" : "none",
-                        marginLeft: "15px",
-                        color: withColor?.textColor,
-                    };
-                    return (
-                        <div
-                            className="qui-iconlisttime-list-container"
-                            key={`img- ${index}`}
-                        >
+                <div className="qui-iconlisttimeline-box">
+                    {_.map(data?.iconlist, (item, index) => {
+                        let listTextStyle = {
+                            display:
+                                label[index] === true ? "block" : "none",
+                            marginLeft: "1em",
+                            color: withColor?.textColor,
+                        };
+                        return (
                             <div
-                                className="qui-iconlisttime-line"
-                                style={{ backgroundColor: withColor?.accentColor }}
-                            />
-                            <img
-                                className="qui-iconlisttime-image"
-                                src={resolveImage(item?.image.id, imageLibrary)}
-                                alt="IconListTimeline"
-                                onClick={() => imageClick(index)}
-                            />
-                            <div style={listTextStyle}>
-                                {item?.text}
+                                className="qui-iconlisttime-list-container"
+                                key={`img- ${index}`}
+                            >
+                                <div
+                                    className="qui-iconlisttime-line"
+                                    style={{ backgroundColor: withColor?.accentColor }}
+                                />
+                                <img
+                                    className="qui-iconlisttime-image"
+                                    src={resolveImage(item?.image.id, imageLibrary)}
+                                    alt="IconListTimeline"
+                                    onClick={() => imageClick(index)}
+                                />
+                                <div style={listTextStyle}>
+                                    {item?.text}
+                                </div>
                             </div>
-                        </div>
-                    );
-                })
-                }
+                        );
+                    })
+                    }
+                </div>
             </div>
         </motion.div >
     );
