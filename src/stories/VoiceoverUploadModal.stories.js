@@ -146,7 +146,7 @@ ColoredVoiceoverUploadModal.args = {
     backgroundColor: "#2a9d8f",
     textColor: "#a8dadc",
     hoverBackgroundColor: "#1d3557",
-    hoverTextColor: "#e63946",
+    hoverTextColor: "#ffffff",
   },
 };
 ColoredVoiceoverUploadModal.parameters = {
