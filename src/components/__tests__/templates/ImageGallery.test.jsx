@@ -35,6 +35,14 @@ describe("ImageGallery", () => {
                         {
                             image: { id: "text-image-1", extention: "" },
                             text: "one porro quisquam est qui dolorem",
+                        },
+                        {
+                            image: { id: "text-image-1", extention: "" },
+                            text: "one porro quisquam est qui dolorem",
+                        },
+                        {
+                            image: { id: "text-image-1", extention: "" },
+                            text: "one porro quisquam est qui dolorem",
                         }
                     ]
                 }}
@@ -68,17 +76,42 @@ describe("ImageGallery", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly without throwing error when clicked on prev vector icon", () => {
-        component.find(".qui-image-gallery-prev").simulate("click");
+    it("should render correctly when title & subtitle is empty in data props passed", () => {
+        let data = {
+            title: "",
+            subtitle: "",
+            cards: [],
+        }
+        component.setProps({ data: data })
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly without throwing error when clicked on next vector icon", () => {
+    it('should render slideHeader component instead of  header image', () => {
+        let data = {
+            title: "This is Title",
+            subtitle: "This is Subtitle",
+            backgroundImage: {
+                id: "background-image",
+                extention: "",
+            },
+            cards: [
+                {
+                    image: { id: "text-image-1", extention: "" },
+                    text: "one porro quisquam est qui dolorem",
+                }
+            ],
+        }
+        component.setProps({ data: data })
+        expect(component.exists()).toBe(true)
+    });
+
+    it("should render correctly without throwing error when clicked on prev vector icon", () => {
+        component.find(".qui-image-gallery-prev").simulate("click");
         component.find(".qui-image-gallery-next").simulate("click");
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly without throwing error when clicked on next vector icon 1", () => {
+    it("should render correctly without throwing error when clicked on next vector icon", () => {
         component.find(".qui-image-gallery-next").simulate("click");
         component.find(".qui-image-gallery-prev").simulate("click");
         expect(component.exists()).toBe(true);

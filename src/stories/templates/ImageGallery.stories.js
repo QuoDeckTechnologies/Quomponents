@@ -106,27 +106,6 @@ Default.args = {
                 },
                 text: "three porro quisquam est qui dolorem",
             },
-            {
-                image: {
-                    id: "text-image-1",
-                    extention: "",
-                },
-                text: "four porro quisquam est qui dolorem",
-            },
-            {
-                image: {
-                    id: "text-image-2",
-                    extention: "",
-                },
-                text: "five porro quisquam est qui dolorem",
-            },
-            {
-                image: {
-                    id: "text-image-3",
-                    extention: "",
-                },
-                text: "six porro quisquam est qui dolorem porro quisquam est qui dolorem porro quisquam est qui dolorem",
-            },
         ]
     },
     imageLibrary: [

@@ -161,7 +161,7 @@ export default function ImageGallery(props) {
     }
 
     const nextSlide = () => {
-        imageGalleryRef.current?.slickNext();
+        imageGalleryRef?.current?.slickNext();
         if (value < data?.cards?.length - 1) {
             setValue(prevState => prevState + 1)
         }
@@ -182,7 +182,7 @@ export default function ImageGallery(props) {
         >
             <div
                 className={`qui-image-gallery-card ${quommonClasses.childClasses}`}
-                key={"carousel-list-slide-" + props.slideId}
+                key={"image-gallery" + slideId}
                 style={{
                     ...background,
                     backgroundColor: withColor?.backgroundColor,
@@ -199,7 +199,7 @@ export default function ImageGallery(props) {
                 {data?.image && (
                     <img
                         className="qui-image-gallery-image"
-                        src={resolveImage(data?.image.id, imageLibrary)}
+                        src={resolveImage(data?.image?.id, imageLibrary)}
                         alt="ImageGallery"
                     />
                 )}
@@ -207,11 +207,10 @@ export default function ImageGallery(props) {
                     <Slider ref={imageGalleryRef}>
                         {_.map(data?.cards, (slide, index) => {
                             return (
-                                <div className="qui-image-gallery-carousel-image"
-                                    key={"slider-" + index + Math.random()}>
-                                    <div className={`qui-html-slide`}>
+                                <div key={"slider-" + index + Math.random()}>
+                                    <div className={`qui-image-gallery-carousel-image`}>
                                         <BannerCard  {...props}
-                                            content={{ image: resolveImage(slide?.image.id, imageLibrary) }}
+                                            content={{ image: resolveImage(slide?.image?.id, imageLibrary) }}
                                             onClick={props.onClick}
                                         />
                                     </div>
@@ -220,22 +219,26 @@ export default function ImageGallery(props) {
                         })}
                     </Slider>
                     <div className={`qui-image-gallery-text`}>
-                        <div
-                            className="qui-image-gallery-prev"
-                            onClick={prevSlide}
-                        >
-                            <i className="fas fa-arrow-alt-circle-left" />
-                        </div>
+                        {data?.cards?.length > 1 &&
+                            <div
+                                className="qui-image-gallery-prev"
+                                onClick={prevSlide}
+                            >
+                                <i className="fas fa-arrow-alt-circle-left" />
+                            </div>
+                        }
                         <TextBlock {...props}
                             content={data?.cards[value]?.text}
                             withColor={textBlockColors}
                         />
-                        <div
-                            className="qui-image-gallery-next"
-                            onClick={nextSlide}
-                        >
-                            <i className="fas fa-arrow-alt-circle-right" />
-                        </div>
+                        {data?.cards?.length > 1 &&
+                            <div
+                                className="qui-image-gallery-next"
+                                onClick={nextSlide}
+                            >
+                                <i className="fas fa-arrow-alt-circle-right" />
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
