@@ -1,8 +1,11 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import { motion } from "framer-motion";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {
   getAnimation,
   getQuommons,
@@ -128,6 +131,7 @@ export default function IconListCaptions(props) {
   let { data, withColor, imageLibrary } = props
   const [state, setState] = useState(0)
   const [activeIndex, setActiveIndex] = useState(0)
+  const sliderRef = useRef();
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -167,6 +171,21 @@ export default function IconListCaptions(props) {
     props.onClick(e)
     setState(e)
   }
+
+  var settings = {
+    dots: false,
+    speed: 500,
+    initialSlide: 1,
+    slidesToScroll: 1,
+    slidesToShow: 4,
+    centerMode: true,
+    arrows: false,
+    infinite: true,
+    autoplay: false,
+    pauseOnHover: true,
+    centerPadding: "0%",
+    swipeToSlide: true,
+  };
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -194,16 +213,22 @@ export default function IconListCaptions(props) {
             );
           })}
           <div className="qui-fixed-clickable-images-container">
-            <div className="qui-icon-list-captions-clickable-images">
-              <div className="qui-icon-list-captions-track" style={{ backgroundColor: withColor?.iconlistTrackColor }}></div>
+            <div className="qui-icon-list-captions-track" style={{ backgroundColor: withColor?.iconlistTrackColor }}></div>
+            <Slider ref={sliderRef} {...settings}>
               {_.map(data?.cards, (image, index) => {
                 return (
-                  <div className={`${index === activeIndex ? "qui-active-index" : "qui-clickable-image-container"}`} key={"icon-list-captions-image" + index}
-                    onClick={() => setActiveIndex(index)} style={{ borderColor: withColor?.iconlistTrackColor }}>
-                    <ClickableImage {...props} content={{ image: resolveImage(image.image?.id ? image.image?.id : "", imageLibrary) }} onClick={() => handleClick(index)} />
-                  </div>);
+                  <div className={`${index === activeIndex ? "qui-active-index" : "qui-slide-clickable-images"}`}
+                    key={"icon-list-captions-image" + index}
+                    onClick={() => setActiveIndex(index)}
+                  >
+                    <ClickableImage {...props}
+                      content={{ image: resolveImage(image.image?.id ? image.image?.id : "", imageLibrary) }}
+                      onClick={() => handleClick(index)}
+                      style={{ borderColor: withColor?.iconlistTrackColor }} />
+                  </div>
+                );
               })}
-            </div>
+            </Slider>
           </div>
         </div>
       </div>}
