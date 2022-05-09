@@ -126,42 +126,52 @@ export default function OptionItemNine(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div className="qui-short-field-container">
-        <div className="qui-short-field-one">
-          <InputField
-            name={content?.shortFieldOne?.targetName}
-            content={{
-              value: content?.shortFieldOne?.value,
-            }}
-            asEmphasis="shortField"
-            asFloated="left"
-            withColor={props.withColor}
-            onClick={(name, value) => props.onShortFieldOneInput(name, value)}
-          />
-        </div>
-        <div className="qui-short-field-two">
-          <InputField
-            name={content?.shortFieldTwo?.targetName}
-            content={{
-              value: content?.shortFieldTwo?.value,
-            }}
-            asEmphasis="shortField"
-            asFloated="left"
-            withColor={props.withColor}
-            onClick={(name, value) => props.onShortFieldTwoInput(name, value)}
-          />
-        </div>
-        <div className="qui-list-input-three">
-          <InputField
-            name={content?.message?.targetName}
-            content={{
-              value: content?.message?.value,
-              placeholder: content?.message?.placeholder,
-              maxLength: content?.message?.maxLength,
-            }}
-            asEmphasis="listInput"
-            withColor={props.withColor}
-            onClick={(name, value) => props.onInput(name, value)}
-          />
+        <div className="qui-option-item-nine-inner-container">
+          <div className="qui-short-field-inner-container">
+            <div className="qui-short-field-one">
+              <InputField
+                name={content?.shortFieldOne?.targetName}
+                content={{
+                  value: content?.shortFieldOne?.value,
+                }}
+                asEmphasis="shortField"
+                asFloated="left"
+                withColor={props.withColor}
+                onClick={(name, value) =>
+                  props.onShortFieldOneInput(name, value)
+                }
+              />
+            </div>
+            <div className="qui-short-field-two">
+              <InputField
+                name={content?.shortFieldTwo?.targetName}
+                content={{
+                  value: content?.shortFieldTwo?.value,
+                }}
+                asEmphasis="shortField"
+                asFloated="left"
+                withColor={props.withColor}
+                onClick={(name, value) =>
+                  props.onShortFieldTwoInput(name, value)
+                }
+              />
+            </div>
+          </div>
+          <div className="qui-option-item-nine-input-field">
+            <div className="qui-list-input-three">
+              <InputField
+                name={content?.message?.targetName}
+                content={{
+                  value: content?.message?.value,
+                  placeholder: content?.message?.placeholder,
+                  maxLength: content?.message?.maxLength,
+                }}
+                asEmphasis="listInput"
+                withColor={props.withColor}
+                onClick={(name, value) => props.onInput(name, value)}
+              />
+            </div>
+          </div>
         </div>
         <div className="qui-option-item-nine-with-remove-button-close-icon">
           <i
