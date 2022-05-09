@@ -91,7 +91,7 @@ export default {
     componentSubtitle: "Displays a Voiceover Upload Modal Component.",
     a11y: { disable: true },
     docs: {
-      iframeHeight: 1000,
+      iframeHeight: 500,
     },
   },
 };
@@ -112,7 +112,6 @@ Default.args = {
   },
   withColor: {
     backgroundColor: "",
-    accentColor: "",
     textColor: "",
     hoverBackgroundColor: "",
     hoverTextColor: "",
@@ -145,10 +144,9 @@ ColoredVoiceoverUploadModal.args = {
   asVariant: "secondary",
   withColor: {
     backgroundColor: "#2a9d8f",
-    accentColor: "",
-    textColor: "",
-    hoverBackgroundColor: "",
-    hoverTextColor: "",
+    textColor: "#a8dadc",
+    hoverBackgroundColor: "#1d3557",
+    hoverTextColor: "#e63946",
   },
 };
 ColoredVoiceoverUploadModal.parameters = {
