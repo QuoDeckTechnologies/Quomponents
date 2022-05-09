@@ -21,6 +21,7 @@ OptionItemEight.propTypes = {
     value: PropTypes.string,
     placeholder: PropTypes.string,
     maxLength: PropTypes.number,
+    buttonText: PropTypes.string,
   }),
   //=======================================
   // Quommon props
@@ -140,7 +141,7 @@ export default function OptionItemEight(props) {
             }}
             onClick={props.onClick}
           >
-            Outlined Button
+            {content.buttonText}
           </Button>
         </div>
 

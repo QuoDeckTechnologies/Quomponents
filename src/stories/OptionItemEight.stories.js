@@ -79,6 +79,7 @@ Default.args = {
     value: "",
     placeholder: "This is Option A",
     maxLength: 300,
+    buttonText: "outlined button",
   },
   withColor: {
     backgroundColor: "#ffab000d",
