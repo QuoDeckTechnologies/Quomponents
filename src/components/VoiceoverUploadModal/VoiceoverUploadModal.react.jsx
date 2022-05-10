@@ -2,18 +2,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import Modal from "@mui/material/Modal";
-import AvatarEditor from "react-avatar-editor";
-import Slider from "../Slider/Slider.react";
 import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
-import "./ImageUploadModal.scss";
+import "./VoiceoverUploadModal.scss";
 import "../../common/stylesheets/overrule.scss";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
 import Button from "../Buttons/Button/Button.react";
-import defaultImage from "../../assets/default.jpeg";
 
-ImageUploadModal.propTypes = {
+VoiceoverUploadModal.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
@@ -24,6 +21,25 @@ ImageUploadModal.propTypes = {
   //=======================================
   // Quommon props
   //=======================================
+  /**
+    Use to define standard component type
+    */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
+  /**
+    Use to override component colors and behavior
+    */
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
+  }),
   /**
     Use to define the entry animation of the component
     */
@@ -58,16 +74,16 @@ ImageUploadModal.propTypes = {
     */
   isHidden: PropTypes.bool,
   /**
-    imageUploadModal component must have the onClick function passed as props
-    */
-  onClick: PropTypes.func.isRequired,
-    /**
-    imageUploadModal component should have the onClose function passed as props
+    VoiceoverUploadModal component can have the onClose function passed as props to return open/close state
     */
   onClose: PropTypes.func,
+  /**
+    VoiceoverUploadModal component must have the onClick function passed as props
+    */
+  onClick: PropTypes.func.isRequired,
 };
 
-ImageUploadModal.defaultProps = {
+VoiceoverUploadModal.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
@@ -75,6 +91,8 @@ ImageUploadModal.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asVariant: "warning",
+  withColor: null,
   withAnimation: null,
   withTranslation: null,
   isDisabled: false,
@@ -87,90 +105,66 @@ ImageUploadModal.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function ImageUploadModal(props) {
+export default function VoiceoverUploadModal(props) {
   //-------------------------------------------------------------------
   // 1. useRef hook for file upload
   //-------------------------------------------------------------------
   const fileRef = useRef();
-  const editorRef = useRef();
   //-------------------------------------------------------------------
   // 2. Defining state and variable
   //-------------------------------------------------------------------
-  const [zoom, setZoom] = useState(10);
-  const [image, setImage] = useState(null);
-  const [imageType, setImageType] = useState(null);
+  const [file, setFile] = useState(null);
   const [openUploadModal, setOpenUploadModal] = useState(props.isOpen);
-  const [width, setWidth] = useState(window.innerWidth >= 768 ? 440 : 240);
   useEffect(() => {
     setOpenUploadModal(props.isOpen);
   }, [props.isOpen]);
   //-------------------------------------------------------------------
-  // 3. Get width of the editor
-  //-------------------------------------------------------------------
-  const resizeHandler = () => {
-    if (window.innerWidth >= 768) {
-      setWidth(480);
-    } else {
-      setWidth(240);
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("resize", resizeHandler);
-    return () => {
-      window.removeEventListener("resize", resizeHandler);
-    };
-  }, []);
-  //-------------------------------------------------------------------
-  // 4. Defining functions for file upload
+  // 3. Defining functions for file upload
   //-------------------------------------------------------------------
   const uploadFile = () => {
     fileRef.current?.click();
   };
   //-------------------------------------------------------------------
-  // 5. Function to upload image
+  // 4. Function to upload image
   //-------------------------------------------------------------------
   const handleChange = (e) => {
-    let reader = new FileReader();
-    let fileInfo;
-    let file = e.target.files[0];
-    setImageType(file.type);
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      fileInfo = {
-        base64: reader.result,
-        file: file,
+    let files = e.target.files;
+    var allFiles = [];
+    for (var i = 0; i < files.length; i++) {
+      let file = files[i];
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        let fileInfo = {
+          name: file.name,
+          type: file.type,
+          size: Math.round(file.size / 1000) + " kB",
+          base64: reader.result,
+          file: file,
+        };
+        allFiles.push(fileInfo);
+        if (allFiles.length === files.length) {
+          if (allFiles.length > 1) {
+            setFile(allFiles);
+          } else {
+            setFile(allFiles[0]);
+          }
+        }
       };
-      setImage(fileInfo);
-    };
+    }
   };
   //-------------------------------------------------------------------
-  // 6. Function returns gif, png or jpeg in base 64
+  // 5. Function to return uoploaded mp3 files
   //-------------------------------------------------------------------
   const handleSave = () => {
-    if (image) {
-      // If the image uploaded is a gif, convert it to a Base64 string without canvas
-      if (imageType === "image/gif") {
-        props.onClick(image.base64);
-      }
-      // If the image uploaded is not a gif, convert it to a jpg with 80% compression, or to a png
-      // and then a Base64 string with canvas
-      if (imageType === "image/jpeg") {
-        let image = editorRef.current?.getImage().toDataURL("image/jpeg", 0.8);
-        props.onClick(image);
-      }
-      if (imageType === "image/png") {
-        let image = editorRef.current?.getImage().toDataURL("image/png");
-        props.onClick(image);
-      }
-    }
-    setOpenUploadModal(false)
+    props.onClick(file);
   };
   //-------------------------------------------------------------------
-  // 7. Set the classes
+  // 6. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "image-upload-modal");
+  let quommonClasses = getQuommons(props, "voiceover-upload-modal");
   //-------------------------------------------------------------------
-  // 8. Translate the text objects in case their is a dictionary provided
+  // 7. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   let tObj = null;
   if (
@@ -182,6 +176,7 @@ export default function ImageUploadModal(props) {
   }
 
   // ========================= Render Function =================================
+
   return (
     <Modal
       open={openUploadModal}
@@ -193,21 +188,32 @@ export default function ImageUploadModal(props) {
       }}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <div
-        className={`qui-image-upload-modal-container`}
-        style={{ width: width }}
-      >
+      <div className={`qui-voiceover-upload-modal-container`}>
         <div
-          className={`qui-image-modal-upload-header ${quommonClasses.childClasses}`}
+          className={`qui-voiceover-upload-modal-header ${quommonClasses.childClasses}`}
         >
-          <h2>{tObj ? tObj.header : "Upload Image"}</h2>
+          <h2>{tObj ? tObj.header : "Upload Voiceovers"}</h2>
+        </div>
+
+        <div className="qui-voiceover-text-message">
+          {tObj ? (
+            tObj.text
+          ) : (
+            <p>
+              Create MP3 files for each slide individually and name them as the
+              slide numbers they correspond to. e.g. 1.mp3, 2.mp3, etc. You can
+              upload voiceovers for one or more slides in this fashion...
+            </p>
+          )}
         </div>
         <div className={`qui-image-cropper ${quommonClasses.childClasses}`}>
-          <div className="qui-image-upload-button">
+          <div className="qui-voiceover-upload-button">
             <form>
               <input
                 type="file"
-                className="qui-image-upload-field"
+                accept=".mp3"
+                multiple={true}
+                className="qui-voiceover-upload-field"
                 onChange={handleChange}
                 onClick={(e) => (e.target.value = "")}
                 ref={fileRef}
@@ -215,8 +221,7 @@ export default function ImageUploadModal(props) {
               />
               <Button
                 {...props}
-                content={tObj ? tObj.buttons.chooseFile : "choose file"}
-                asVariant="warning"
+                content={tObj ? tObj.buttons.chooseFile : "choose files"}
                 withTranslation={null}
                 withAnimation={null}
                 asEmphasis="outlined"
@@ -226,53 +231,25 @@ export default function ImageUploadModal(props) {
               />
             </form>
           </div>
-          <div className="qui-avatar-canvas">
-            {image && imageType !== "image/gif" && (
-              <AvatarEditor
-                className="qui-image-preview"
-                ref={editorRef}
-                width={width}
-                height={width / 1.15}
-                image={image.file}
-                border={0}
-                scale={zoom / 10}
-              />
-            )}
-            {!image && (
-              <img
-                className="qui-avatar-default-image"
-                style={{ width: width, height: width / 1.15 }}
-                src={defaultImage}
-                alt="default"
-              />
-            )}
-            {image && imageType === "image/gif" && (
-              <img
-                className="qui-avatar-default-image"
-                style={{ width: width, height: width / 1.15 }}
-                src={image?.base64}
-                alt="default"
-              />
-            )}
-          </div>
-          <Slider initialValue={10} onClick={(value) => setZoom(value)} />
-          <div className="qui-image-upload-buttons">
+          <div className="qui-voiceover-upload-buttons">
             <Button
               {...props}
               asSize="normal"
               content={tObj ? tObj.buttons.cancel : "cancel"}
-              asVariant="warning"
               asEmphasis="text"
               asFloated="left"
               withTranslation={null}
               withAnimation={null}
-              onClick={() => setImage(null)}
+              onClick={() => {
+                setFile(null);
+                setOpenUploadModal(false);
+                props.onClose(false);
+              }}
             />
             <Button
               {...props}
               asSize="normal"
               content={tObj ? tObj.buttons.save : "save"}
-              asVariant="warning"
               withTranslation={null}
               withAnimation={null}
               asEmphasis="contained"
@@ -288,7 +265,7 @@ export default function ImageUploadModal(props) {
           position="top-right"
           onClick={() => {
             setOpenUploadModal(false);
-            props.onClose(false)
+            props.onClose(false);
           }}
         />
       </div>
