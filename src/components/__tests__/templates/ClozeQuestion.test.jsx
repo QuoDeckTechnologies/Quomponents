@@ -173,14 +173,18 @@ describe("ClozeQuestion", () => {
 			purpose: "quiz",
 		}
 		let colors = {
-			slideHeaderTextColor: "#FFFFFF",
+			questionColor: "#000000",
+			slideHeaderTextColor: "#ffffff",
 			slideHeaderAccentColor: "#AD2929",
-			slideHeaderBackgroundColor: "#ad292980",
-			textBlockBackgroundColor: "#2d92a4",
-			textBlockTextColor: "#fff",
-			bulletBlockTextColor: "#ffffff",
-			bulletBlockBackgroundColor: "#ad292980",
-			backgroundColor: "#fff"
+			slideHeaderBackgroundColor: "#AD292980",
+			inputFieldTextColor: "#ffffff",
+			inputFieldAccentColor: "#AD292980",
+			inputFieldBackgroundColor: "#ffffff",
+			buttonTextColor: "#AD292980",
+			buttonBackgroundColor: "#AD29298",
+			buttonHoverBackgroundColor: "#AD2929",
+			buttonHoverTextColor: "#000000",
+			backgroundColor: "#ffffff",
 		}
 		component.setProps({ data: data, withColor: colors })
 		expect(component.exists()).toBe(true);
@@ -201,17 +205,7 @@ describe("ClozeQuestion", () => {
 			id: "background-image",
 			image: 'test-image'
 		}]
-		let colors = {
-			slideHeaderTextColor: "#FFFFFF",
-			slideHeaderAccentColor: "#AD2929",
-			slideHeaderBackgroundColor: "#ad292980",
-			textBlockBackgroundColor: "#2d92a4",
-			textBlockTextColor: "#fff",
-			bulletBlockTextColor: "#ffffff",
-			bulletBlockBackgroundColor: "#ad292980",
-			backgroundColor: "#fff"
-		}
-		component.setProps({ data: data, withColor: colors, imageLibrary: imageLibrary })
+		component.setProps({ data: data, imageLibrary: imageLibrary })
 		expect(component.exists()).toBe(true);
 	});
 
