@@ -179,9 +179,9 @@ export default function IconListTimeline(props) {
                         alt="IconListTimeline"
                     />
                 )}
-                <div className="qui-iconlisttimeline-box">
+                <div className="qui-icon-list-timeline-box">
                     <div
-                        className="qui-iconlisttime-line"
+                        className="qui-icon-list-timeline-track"
                         style={{ backgroundColor: withColor?.accentColor }}
                     />
                     {_.map(data?.iconlist, (item, index) => {
@@ -193,11 +193,11 @@ export default function IconListTimeline(props) {
                         };
                         return (
                             <div
-                                className="qui-iconlisttime-list-container"
+                                className="qui-icon-list-timeline-container"
                                 key={`img- ${index}`}
                             >
                                 <img
-                                    className="qui-iconlisttime-image"
+                                    className="qui-icon-list-timeline-image"
                                     src={resolveImage(item?.image.id, imageLibrary)}
                                     alt="IconListTimeline"
                                     onClick={() => imageClick(index)}
