@@ -180,6 +180,10 @@ export default function IconListTimeline(props) {
                     />
                 )}
                 <div className="qui-iconlisttimeline-box">
+                    <div
+                        className="qui-iconlisttime-line"
+                        style={{ backgroundColor: withColor?.accentColor }}
+                    />
                     {_.map(data?.iconlist, (item, index) => {
                         let listTextStyle = {
                             display:
@@ -192,10 +196,6 @@ export default function IconListTimeline(props) {
                                 className="qui-iconlisttime-list-container"
                                 key={`img- ${index}`}
                             >
-                                <div
-                                    className="qui-iconlisttime-line"
-                                    style={{ backgroundColor: withColor?.accentColor }}
-                                />
                                 <img
                                     className="qui-iconlisttime-image"
                                     src={resolveImage(item?.image.id, imageLibrary)}
