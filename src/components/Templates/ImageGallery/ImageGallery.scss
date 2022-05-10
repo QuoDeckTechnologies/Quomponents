@@ -41,15 +41,20 @@
             border-radius: 1.5em;
             background-repeat: no-repeat;
             background-size: cover;
-            box-shadow: 0px 0px 0px 0px #666666;
+            box-shadow: 0px 5px 2px #666666;
         }
     }
     .qui-image-gallery-text {
         margin-top: 1em;
         display: flex;
-        .qui-image-gallery-next,
+        .qui-image-gallery-next {
+            padding-left: 0.4em;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #666666;
+        }
         .qui-image-gallery-prev {
-            padding: 0 0.4em;
+            padding-right: 0.4em;
             font-size: 1.5em;
             cursor: pointer;
             color: #666666;
@@ -61,7 +66,6 @@
             width: fit-content;
             text-align: center;
             margin: auto;
-            padding: 0.5em 1em;
         }
     }
 }
