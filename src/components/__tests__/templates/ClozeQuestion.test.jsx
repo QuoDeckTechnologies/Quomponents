@@ -45,9 +45,6 @@ describe("ClozeQuestion", () => {
 				withColor={null}
 				isHidden={false}
 				isDisabled={false}
-				onClick={(e) => {
-					console.log(e);
-				}}
 			/>
 		);
 	});
@@ -155,7 +152,7 @@ describe("ClozeQuestion", () => {
 					buttonHoverBackgroundColor: "ffff00",
 					buttonHoverTextColor: "ff00ff",
 				}}
-				onClick={() => console.log("testing")}
+				onClick={jest.fn()}
 			/>
 		);
 		const tree = component.toJSON();
@@ -209,8 +206,7 @@ describe("ClozeQuestion", () => {
 	});
 
 	it('should simulate the submit button', () => {
-		const handleSubmit = jest.fn();
-		const button = shallow((<ClozeQuestion onClick={handleSubmit} trackInteraction={jest.fn()} />));
+		const button = shallow((<ClozeQuestion trackInteraction={jest.fn()} />));
 		button.find('Button').simulate('click');
 		expect(component.exists()).toBe(true);
 	});

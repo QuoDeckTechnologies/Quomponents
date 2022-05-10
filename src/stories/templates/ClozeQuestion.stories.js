@@ -63,15 +63,9 @@ export default {
         defaultValue: false,
       },
     },
-    onClick: {
-      table: {
-        category: "Events",
-        defaultValue: null,
-      },
-    },
     trackInteraction: {
       action: 'trackInteraction'
-    },
+    }
   },
   decorators: [
     (story) => (

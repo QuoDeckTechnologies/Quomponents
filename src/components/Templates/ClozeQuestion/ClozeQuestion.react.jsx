@@ -94,11 +94,7 @@ ClozeQuestion.propTypes = {
     /**
     Use to show/hide the component
     */
-    isHidden: PropTypes.bool,
-    /**
-    ClozeQuestion component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
+    isHidden: PropTypes.bool
 };
 
 ClozeQuestion.defaultProps = {
