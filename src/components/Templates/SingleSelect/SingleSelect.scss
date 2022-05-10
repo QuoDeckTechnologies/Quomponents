@@ -49,9 +49,11 @@
         width: auto;
     }
 
-    .qui .qui-button-bank-single-button .qui-button button {
-        width: 100%;
-        padding: 1em 0;
+    .qui .qui-slide-single-select-card {
+        .qui .qui-button-bank-single-button .qui-button button {
+            width: 100%;
+            padding: 1em 0;
+        }
     }
 }
 
@@ -66,8 +68,10 @@
 }
 
 @media only screen and (min-width: 540px) {
-    .qui .qui-button-bank-single-button .qui-button button {
-        padding: 0.7em 0;
+    .qui .qui-slide-single-select-card {
+        .qui .qui-button-bank-single-button .qui-button button {
+            padding: 0.7em 0;
+        }
     }
 }
 
@@ -78,9 +82,5 @@
 
     .qui .qui-slide-single-select-card {
         width: 20em;
-    }
-
-    .qui .qui-button-bank-single-button .qui-button button {
-        padding: 0.7em 0;
     }
 }
