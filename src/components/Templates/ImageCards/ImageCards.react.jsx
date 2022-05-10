@@ -184,7 +184,7 @@ export default function ImageCards(props) {
                 {data?.image && (
                     <img
                         className="qui-image-cards-image"
-                        src={resolveImage(data?.image.id, imageLibrary)}
+                        src={resolveImage(data?.image?.id, imageLibrary)}
                         alt="ImageCards"
                     />
                 )}
@@ -195,7 +195,7 @@ export default function ImageCards(props) {
                                 {state === index &&
                                     <img
                                         className="qui-image-cards-display-image"
-                                        src={resolveImage(image?.image.id, imageLibrary)}
+                                        src={resolveImage(image?.image?.id, imageLibrary)}
                                         alt=""
                                     />
                                 }
@@ -203,16 +203,16 @@ export default function ImageCards(props) {
                         );
                     })}
                     <div className="qui-image-cards-clickable-images-container">
-                    <div className="qui-image-cards-clickable-images">
-                        {_.map(data?.cards, (image, index) => {
-                            return (
-                                <ClickableImage {...props}
-                                    content={{ image: resolveImage(image?.image.id, imageLibrary) }}
-                                    onClick={() => handleClick(index)}
-                                />
-                            );
-                        })}
-                    </div>
+                        <div className="qui-image-cards-clickable-images">
+                            {_.map(data?.cards, (image, index) => {
+                                return (
+                                    <ClickableImage {...props}
+                                        content={{ image: resolveImage(image?.image?.id, imageLibrary) }}
+                                        onClick={() => handleClick(index)}
+                                    />
+                                );
+                            })}
+                        </div>
                     </div>
                     {_.map(data?.cards, (image, index) => {
                         return (
@@ -220,7 +220,7 @@ export default function ImageCards(props) {
                                 {state === index &&
                                     <div className="qui-image-cards-display-text">
                                         <TextBlock {...props}
-                                            content={image.text}
+                                            content={image?.text}
                                             withColor={textBlockColors}
                                             withAnimation={null}
                                         />
