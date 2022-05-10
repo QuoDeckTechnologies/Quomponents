@@ -58,19 +58,18 @@ describe("ClozeQuestion", () => {
 
 	it("should render correctly when passed withColor props", () => {
 		let colors = {
-			captionColor: "#ff0000",
-			labelColor: "#000000",
-			slideHeaderTextColor: "ff0000",
-			slideHeaderAccentColor: "23ff00",
-			slideHeaderBackgroundColor: "00ff00",
-			inputFieldTextColor: "ff0000",
-			inputFieldAccentColor: "23ff00",
-			inputFieldBackgroundColor: "00ff00",
-			buttonTextColor: "ff0023",
-			buttonBackgroundColor: "ff0ff0",
-			buttonHoverBackgroundColor: "ffff00",
-			buttonHoverTextColor: "ff00ff",
-			backgroundColor: "",
+			questionColor: "#000000",
+			slideHeaderTextColor: "#ffffff",
+			slideHeaderAccentColor: "#AD2929",
+			slideHeaderBackgroundColor: "#AD292980",
+			inputFieldTextColor: "#ffffff",
+			inputFieldAccentColor: "#AD292980",
+			inputFieldBackgroundColor: "#ffffff",
+			buttonTextColor: "#AD292980",
+			buttonBackgroundColor: "#AD29298",
+			buttonHoverBackgroundColor: "#AD2929",
+			buttonHoverTextColor: "#000000",
+			backgroundColor: "#ffffff"
 		}
 		component.setProps({ withColor: colors })
 		expect(component.exists()).toBe(true);
