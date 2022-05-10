@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -22,6 +22,10 @@ MultiSelect.propTypes = {
             isSelected: PropTypes.bool,
         })
     ).isRequired,
+    /**
+    Purpose defines the text which is to be displayed in the submit button, if you pass quiz then it will show check anwer otherwise submit answer.
+    */
+    purpose: PropTypes.string,
     /**
     Set action emphasis in increasing order 
     */
@@ -113,6 +117,10 @@ MultiSelect.defaultProps = {
 export default function MultiSelect(props) {
     let [data, setData] = useState([...props.content]);
 
+    useEffect(() => {
+        setData([...props.content])
+    }, [props.content])
+
     function handleSubmit() {
         let selectedIndexes = []
         for (let i = 0; i <= data.length; i++) {
@@ -150,7 +158,9 @@ export default function MultiSelect(props) {
                 );
             })}
             {<Button {...props}
-                content={"Submit Answer"}
+                content={props.purpose === "quiz"
+                    ? "Check Answer"
+                    : "Submit Answer"}
                 onClick={() => handleSubmit()} />}
         </div >
     )

@@ -23,6 +23,7 @@ export default {
         isSelected: false,
       },
     ],
+    purpose: "",
     asEmphasis: {
       control: "select",
       options: ["text", "outlined", "contained"],
@@ -132,6 +133,7 @@ Default.args = {
       isSelected: false,
     },
   ],
+  purpose: "quiz",
   asEmphasis: "contained",
   isCircular: false,
 
@@ -150,8 +152,7 @@ Default.args = {
     delay: 0,
   },
   isDisabled: false,
-  isHidden: false,
-
+  isHidden: false
 };
 Default.parameters = {
   docs: {
@@ -163,7 +164,6 @@ Default.parameters = {
     },
   },
 };
-
 
 // -------------------------------------------------------------
 // All Variants
@@ -194,6 +194,7 @@ const AllVariantTemplate = (args) => {
               isSelected: false,
             },
           ],
+          purpose: "",
           asVariant: "primary",
           withAnimation: {
             animation: "slideDown",
@@ -222,6 +223,7 @@ const AllVariantTemplate = (args) => {
               isSelected: false,
             },
           ],
+          purpose: "",
           asVariant: "secondary",
           withAnimation: {
             animation: "slideDown",
@@ -250,6 +252,7 @@ const AllVariantTemplate = (args) => {
               isSelected: false,
             },
           ],
+          purpose: "",
           asVariant: "success",
           withAnimation: {
             animation: "slideDown",
@@ -278,6 +281,7 @@ const AllVariantTemplate = (args) => {
               isSelected: false,
             },
           ],
+          purpose: "",
           asVariant: "warning",
           withAnimation: {
             animation: "slideDown",
@@ -306,6 +310,7 @@ const AllVariantTemplate = (args) => {
               isSelected: false,
             },
           ],
+          purpose: "",
           asVariant: "error",
           withAnimation: {
             animation: "slideDown",
