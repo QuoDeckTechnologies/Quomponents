@@ -6,10 +6,10 @@ import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import PictureFuddleWithFeedback from "../../Templates/PictureFuddleWithFeedback/PictureFuddleWithFeedback.react";
+import PictureFuddle from "../../Templates/PictureFuddle/PictureFuddle.react";
 import Button from "../../Buttons/Button/Button.react";
 
-describe("PictureFuddleWithFeedback", () => {
+describe("PictureFuddle", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -17,7 +17,7 @@ describe("PictureFuddleWithFeedback", () => {
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
-            <PictureFuddleWithFeedback
+            <PictureFuddle
                 data={{
                     title: "This is Title",
                     subtitle: "This is Subtitle",
@@ -66,7 +66,7 @@ describe("PictureFuddleWithFeedback", () => {
             buttonBackgroundColor: "#AD2929",
             buttonHoverBackgroundColor: "#000000",
             buttonHoverTextColor: "#AD292980",
-            backgroundColor: "#fff"
+            backgroundColor: "#fff",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
@@ -169,7 +169,7 @@ describe("PictureFuddleWithFeedback", () => {
             purpose: "quiz",
         }
         let colors = {
-            backgroundColor: "#fff",
+            backgroundColor: "#fff"
         }
         component.setProps({ data: data, withColor: colors })
         expect(component.exists()).toBe(true);
@@ -190,13 +190,12 @@ describe("PictureFuddleWithFeedback", () => {
             id: "background-image",
             image: 'test-image'
         }]
-
         component.setProps({ data: data, imageLibrary: imageLibrary })
         expect(component.exists()).toBe(true);
     });
 
     it('should simulate the submit button', () => {
-        const button = shallow((<PictureFuddleWithFeedback trackInteraction={jest.fn()} />));
+        const button = shallow((<PictureFuddle trackInteraction={jest.fn()} />));
         button.find('Button').simulate('click');
         expect(component.exists()).toBe(true);
     });

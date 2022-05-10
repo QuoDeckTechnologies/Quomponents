@@ -1,9 +1,9 @@
 import React from "react";
-import PictureFuddleWithFeedback from "../../components/Templates/PictureFuddleWithFeedback/PictureFuddleWithFeedback.react";
+import PictureFuddle from "../../components/Templates/PictureFuddle/PictureFuddle.react";
 
 export default {
-    title: "Design System/Templates/PictureFuddleWithFeedback/PictureFuddleWithFeedback",
-    component: PictureFuddleWithFeedback,
+    title: "Design System/Templates/PictureFuddle/PictureFuddle",
+    component: PictureFuddle,
     argTypes: {
         data: {
             title: "",
@@ -80,14 +80,14 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a PictureFuddleWithFeedback with a question and Input Field, the user need to submit the answer, we can switch between the image and SlideHeader by adding or removing the image prop",
+        componentSubtitle: "Displays a PictureFuddle with a question and Input Field, the user need to submit the answer, we can switch between the image and SlideHeader by adding or removing the image prop",
         a11y: { disable: true },
         docs: {
             iframeHeight: 650,
         },
     },
 };
-const Template = (args) => <PictureFuddleWithFeedback {...args} />;
+const Template = (args) => <PictureFuddle {...args} />;
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -142,16 +142,16 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<PictureFuddleWithFeedback {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<PictureFuddle {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
 
 // -------------------------------------------------------------
-// PictureFuddleWithFeedbackWithSlideHeader
+// PictureFuddleWithSlideHeader
 // -------------------------------------------------------------
-export const PictureFuddleWithFeedbackWithSlideHeader = Template.bind({});
-PictureFuddleWithFeedbackWithSlideHeader.args = {
+export const PictureFuddleWithSlideHeader = Template.bind({});
+PictureFuddleWithSlideHeader.args = {
     data: {
         title: "Neque porro quisquam est qui dolorem",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
@@ -183,19 +183,19 @@ PictureFuddleWithFeedbackWithSlideHeader.args = {
     isDisabled: false,
     isHidden: false,
 };
-PictureFuddleWithFeedbackWithSlideHeader.parameters = {
+PictureFuddleWithSlideHeader.parameters = {
     docs: {
         source: {
-            code: `<PictureFuddleWithFeedback {...${JSON.stringify(PictureFuddleWithFeedbackWithSlideHeader.args, null, 2)}}/>`,
+            code: `<PictureFuddle {...${JSON.stringify(PictureFuddleWithSlideHeader.args, null, 2)}}/>`,
         },
     },
 };
 
 // -------------------------------------------------------------
-// PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage
+// PictureFuddleWithSlideHeaderAndBackgroundImage
 // -------------------------------------------------------------
-export const PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage = Template.bind({});
-PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.args = {
+export const PictureFuddleWithSlideHeaderAndBackgroundImage = Template.bind({});
+PictureFuddleWithSlideHeaderAndBackgroundImage.args = {
     data: {
         title: "Neque porro quisquam est qui dolorem",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
@@ -235,10 +235,10 @@ PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.args = {
     isDisabled: false,
     isHidden: false,
 };
-PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.parameters = {
+PictureFuddleWithSlideHeaderAndBackgroundImage.parameters = {
     docs: {
         source: {
-            code: `<PictureFuddleWithFeedback {...${JSON.stringify(PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+            code: `<PictureFuddle {...${JSON.stringify(PictureFuddleWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
         },
     },
 };
