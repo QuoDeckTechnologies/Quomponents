@@ -61,6 +61,10 @@ ImageUploadModal.propTypes = {
     imageUploadModal component must have the onClick function passed as props
     */
   onClick: PropTypes.func.isRequired,
+    /**
+    imageUploadModal component should have the onClose function passed as props
+    */
+  onClose: PropTypes.func,
 };
 
 ImageUploadModal.defaultProps = {
@@ -284,6 +288,7 @@ export default function ImageUploadModal(props) {
           position="top-right"
           onClick={() => {
             setOpenUploadModal(false);
+            props.onClose(false)
           }}
         />
       </div>
