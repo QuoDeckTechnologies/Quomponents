@@ -202,7 +202,7 @@ export default function ImageCards(props) {
                             </div>
                         );
                     })}
-                    <div className="qui-image-cards-imag-container">
+                    <div className="qui-image-cards-clickable-images-container">
                     <div className="qui-image-cards-clickable-images">
                         {_.map(data?.cards, (image, index) => {
                             return (
