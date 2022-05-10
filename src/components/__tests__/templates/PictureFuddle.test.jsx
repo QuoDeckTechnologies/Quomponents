@@ -152,6 +152,7 @@ describe("PictureFuddle", () => {
                     buttonHoverBackgroundColor: "ffff00",
                     buttonHoverTextColor: "ff00ff",
                 }}
+                onClick={jest.fn()}
             />
         );
         const tree = component.toJSON();
