@@ -189,6 +189,7 @@ export default function IconListTimeline(props) {
                             display:
                                 label[index] === true ? "block" : "none",
                             marginLeft: "1em",
+                            marginTop: "1em",
                             color: withColor?.textColor,
                         };
                         return (
