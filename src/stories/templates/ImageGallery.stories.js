@@ -222,7 +222,7 @@ AnimatedImageGallery.parameters = {
     },
 };
 // -------------------------------------------------------------
-// With Background Image ImageGallery
+// With Header Image ImageGallery
 // -------------------------------------------------------------
 export const WithHeaderImageImageGallery = Template.bind({});
 WithHeaderImageImageGallery.args = {
@@ -262,7 +262,7 @@ WithHeaderImageImageGallery.args = {
 WithHeaderImageImageGallery.parameters = {
     docs: {
         description: {
-            story: "Use to show ImageGallery with BackgroundImage.",
+            story: "Use to show ImageGallery with Header image.",
         },
         source: {
             code: `<ImageGallery {...${JSON.stringify(WithHeaderImageImageGallery.args, null, 2)}}/>`,
@@ -362,7 +362,7 @@ BackgroundImageWithHeaderImage.args = {
 BackgroundImageWithHeaderImage.parameters = {
     docs: {
         description: {
-            story: "Use to show ImageGallery with BackgroundImage and SlideHeader.",
+            story: "Use to show ImageGallery with BackgroundImage and Header Image.",
         },
         source: {
             code: `<ImageGallery {...${JSON.stringify(BackgroundImageWithHeaderImage.args, null, 2)}}/>`,

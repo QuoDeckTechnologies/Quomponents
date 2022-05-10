@@ -34,7 +34,7 @@ ImageGallery.propTypes = {
             })),
     }).isRequired,
     /**
-    ImageGallery can set image, backgroundImage & Card's image from imageLibrary.
+    ImageGallery can set header image, backgroundImage & Card's image from imageLibrary.
     */
     imageLibrary: PropTypes.array,
     /**
