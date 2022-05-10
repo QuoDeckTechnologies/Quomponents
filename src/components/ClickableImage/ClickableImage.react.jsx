@@ -72,12 +72,12 @@ ClickableImage.defaultProps = {
   // Component Specific props
   //=======================================
   content: {},
+  isActive: false,
   //=======================================
   // Quommon props
   //=======================================
   withAnimation: null,
   isHidden: false,
-  isActive: false,
   isCircular: false,
   isDisabled: false,
 };
