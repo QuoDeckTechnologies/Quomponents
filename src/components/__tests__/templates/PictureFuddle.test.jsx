@@ -170,13 +170,6 @@ describe("PictureFuddle", () => {
             purpose: "quiz",
         }
         let colors = {
-            slideHeaderTextColor: "#FFFFFF",
-            slideHeaderAccentColor: "#AD2929",
-            slideHeaderBackgroundColor: "#ad292980",
-            textBlockBackgroundColor: "#2d92a4",
-            textBlockTextColor: "#fff",
-            bulletBlockTextColor: "#ffffff",
-            bulletBlockBackgroundColor: "#ad292980",
             backgroundColor: "#fff"
         }
         component.setProps({ data: data, withColor: colors })
@@ -198,17 +191,7 @@ describe("PictureFuddle", () => {
             id: "background-image",
             image: 'test-image'
         }]
-        let colors = {
-            slideHeaderTextColor: "#FFFFFF",
-            slideHeaderAccentColor: "#AD2929",
-            slideHeaderBackgroundColor: "#ad292980",
-            textBlockBackgroundColor: "#2d92a4",
-            textBlockTextColor: "#fff",
-            bulletBlockTextColor: "#ffffff",
-            bulletBlockBackgroundColor: "#ad292980",
-            backgroundColor: "#fff"
-        }
-        component.setProps({ data: data, withColor: colors, imageLibrary: imageLibrary })
+        component.setProps({ data: data, imageLibrary: imageLibrary })
         expect(component.exists()).toBe(true);
     });
 
