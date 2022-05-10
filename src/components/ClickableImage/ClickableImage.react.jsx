@@ -1,5 +1,5 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
@@ -8,6 +8,7 @@ import "../../common/stylesheets/common.css";
 import "./ClickableImage.scss";
 import "../../common/stylesheets/overrule.scss";
 import defaultImage from "../../assets/default.jpeg";
+import { useEffect } from "react";
 
 ClickableImage.propTypes = {
   //=======================================
@@ -37,9 +38,23 @@ ClickableImage.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+    Use to override component colors and behavior
+    */
+  withColor: PropTypes.shape({
+    borderColor: PropTypes.string,
+  }),
+  /**
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
+  /**
+    Use to show the selection of the component
+    */
+  isActive: PropTypes.bool,
+  /**
+  Use for rounded corners or circular icon button 
+  */
+  isCircular: PropTypes.bool,
   /**
     Use to enable/disable the component
     */
@@ -60,6 +75,8 @@ ClickableImage.defaultProps = {
   //=======================================
   withAnimation: null,
   isHidden: false,
+  isActive: false,
+  isCircular: false,
   isDisabled: false,
 };
 
@@ -76,10 +93,21 @@ export default function ClickableImage(props) {
   // 1. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "clickable-image");
+  if (props.isCircular)
+    quommonClasses.childClasses += ` is-circular`;
+
   //-------------------------------------------------------------------
   // 2. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
+
+  const [isActive, setisActive] = useState(props.isActive)
+  useEffect(() => {
+    setisActive(props.isActive)
+  }, [props.isActive])
+  let handleClick = (e) => {
+    props.onClick(e)
+  }
   // ========================= Render Function =================================
 
   return (
@@ -90,9 +118,10 @@ export default function ClickableImage(props) {
     >
       <img
         src={content?.image ? content.image : defaultImage}
-        className="qui-clicked-on-image"
+        className={`${quommonClasses.childClasses} ${isActive ? `qui-active-image-click` : `qui-clicked-on-image`}`}
         alt="ClickableImage"
-        onClick={(e) => props.onClick(e)}
+        onClick={(e) => handleClick(e)}
+        style={{ borderColor: props.withColor?.borderColor }}
       />
     </motion.div>
   );

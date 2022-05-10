@@ -1,11 +1,24 @@
 .qui-clickable-image {
   height: 100%;
-  width: 100%;
+  width: 90%;
   cursor: pointer;
   object-fit: cover;
+  display: inline;
 }
 .qui .qui-clicked-on-image {
   height: 100%;
-  width: 100%;
+  width: 90%;
   object-fit: cover;
+  &.is-circular {
+    border-radius: 50%;
+  }
+}
+.qui-active-image-click {
+  height: 100%;
+  width: 90%;
+  object-fit: cover;
+  border: 0.5em solid;
+  &.is-circular {
+    border-radius: 50%;
+  }
 }

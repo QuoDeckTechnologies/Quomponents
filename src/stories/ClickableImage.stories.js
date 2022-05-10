@@ -12,6 +12,7 @@ export default {
         },
       },
     },
+    isActive: false,
     withAnimation: {
       table: {
         category: "with-Params",
@@ -22,7 +23,21 @@ export default {
         },
       },
     },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          borderColor: "",
+        },
+      },
+    },
     isHidden: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
+    isCircular: {
       table: {
         category: "is-Toggles",
         defaultValue: false,
@@ -43,7 +58,7 @@ export default {
   },
   parameters: {
     componentSubtitle:
-      "Displays a basic Clickable Image for general-purpose use",
+      "Displays a basic Clickable Image for general-purpose use, can be use as circular image with isCircular prop",
     a11y: { disable: true },
     docs: { iframeHeight: 1000 },
   },
@@ -62,8 +77,13 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withColor: {
+    borderColor: "#ff0000"
+  },
   isDisabled: false,
   isHidden: false,
+  isCircular: false,
+  isActive: false,
 };
 Default.parameters = {
   docs: {
@@ -119,18 +139,47 @@ WithImage.parameters = {
   },
 };
 // -------------------------------------------------------------
+// Circular ClickableImage
+// -------------------------------------------------------------
+const Circular = (args) => {
+  const baseObj = {
+    ...Object.assign({}, Default.args, args, {
+      isCircular: true
+    }),
+  };
+  return (
+    <div>
+      <ClickableImage
+        {...Object.assign({}, baseObj, {
+        })}
+      />{" "}
+    </div>
+  );
+};
+export const CircularImage = Circular.bind({});
+CircularImage.parameters = {
+  docs: {
+    description: {
+      story: "Variants and Size are supported with Animation. Use as per purpose noted here.",
+    },
+    source: {
+      code: ``,
+    },
+  },
+};
+// -------------------------------------------------------------
 // Slide story
 // -------------------------------------------------------------
 const SlideTemplate = (args) => {
   return (
-    <div style={{display:'flex'}}>
-      {args.content.images.map((image,index) => {
-      return (
-        <div style={{margin:'0 0.1em',flex:1}} key={index}>
-        <ClickableImage content={{image}} onClick={()=>args.onClick(index)} />
-      </div>
-      )
-    })}
+    <div style={{ display: 'flex' }}>
+      {args.content.images.map((image, index) => {
+        return (
+          <div style={{ margin: '0 0.1em', flex: 1 }} key={index}>
+            <ClickableImage content={{ image }} onClick={() => args.onClick(index)} />
+          </div>
+        )
+      })}
     </div>
   );
 };
