@@ -1,24 +1,39 @@
-.qui-clickable-image {
-  height: 100%;
-  width: 90%;
+.qui.qui-clickable-image {
   cursor: pointer;
   object-fit: cover;
   display: inline;
 }
-.qui .qui-clicked-on-image {
+
+.qui .qui-active-image-click {
+  border: 0.5em solid;
+}
+
+.qui .qui-image-clickable {
   height: 100%;
-  width: 90%;
+  width: 100%;
   object-fit: cover;
-  &.is-circular {
-    border-radius: 50%;
+}
+
+.qui .qui-image-clickable.is-circular {
+  height: 20em;
+  width: 20em;
+  border-radius: 50%;
+}
+
+@media only screen and (min-width: 320px) {
+  .qui.qui-clickable-image {
+    font-size: 0.9em;
   }
 }
-.qui-active-image-click {
-  height: 100%;
-  width: 90%;
-  object-fit: cover;
-  border: 0.5em solid;
-  &.is-circular {
-    border-radius: 50%;
+
+@media only screen and (min-width: 481px) {
+  .qui.qui-clickable-image {
+    font-size: 2em;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .qui.qui-clickable-image {
+    font-size: 3em;
   }
 }

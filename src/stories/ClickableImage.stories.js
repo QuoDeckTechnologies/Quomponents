@@ -78,7 +78,7 @@ Default.args = {
     delay: 0,
   },
   withColor: {
-    borderColor: "#ff0000"
+    borderColor: "#fcbf49",
   },
   isDisabled: false,
   isHidden: false,
@@ -144,15 +144,12 @@ WithImage.parameters = {
 const Circular = (args) => {
   const baseObj = {
     ...Object.assign({}, Default.args, args, {
-      isCircular: true
+      isCircular: true,
     }),
   };
   return (
     <div>
-      <ClickableImage
-        {...Object.assign({}, baseObj, {
-        })}
-      />{" "}
+      <ClickableImage {...Object.assign({}, baseObj, {})} />{" "}
     </div>
   );
 };
@@ -160,7 +157,8 @@ export const CircularImage = Circular.bind({});
 CircularImage.parameters = {
   docs: {
     description: {
-      story: "Variants and Size are supported with Animation. Use as per purpose noted here.",
+      story:
+        "Variants and Size are supported with Animation. Use as per purpose noted here.",
     },
     source: {
       code: ``,
@@ -172,13 +170,19 @@ CircularImage.parameters = {
 // -------------------------------------------------------------
 const SlideTemplate = (args) => {
   return (
-    <div style={{ display: 'flex' }}>
-      {args.content.images.map((image, index) => {
+    <div style={{ display: "flex" }}>
+      {args?.content.images.map((image, index) => {
         return (
-          <div style={{ margin: '0 0.1em', flex: 1 }} key={index}>
-            <ClickableImage content={{ image }} onClick={() => args.onClick(index)} />
+          <div style={{ margin: "0 0.1em", flex: 1 }} key={index}>
+            <ClickableImage
+              content={{ image }}
+              onClick={() => args?.onClick(index)}
+              isActive={args?.isActive}
+              isCircular={args?.isCircular}
+              withColor={args?.withColor}
+            />
           </div>
-        )
+        );
       })}
     </div>
   );
@@ -193,11 +197,17 @@ WithSlide.args = {
       "https://images.unsplash.com/photo-1648138754702-de8f199972b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
     ],
   },
+  isCircular: false,
+  isActive: false,
+  withColor:{
+    borderColor:'#fcbf49'
+  }
 };
 WithSlide.parameters = {
   docs: {
     description: {
-      story: "Use to Show the ClickableImage index output with itiration provided by the user.",
+      story:
+        "Use to Show the ClickableImage index output with itiration provided by the user.",
     },
     source: {
       code: `<ClickableImage {...${JSON.stringify(WithSlide.args, null, 2)}}/>`,
