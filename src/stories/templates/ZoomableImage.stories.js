@@ -48,12 +48,6 @@ export default {
                 defaultValue: false,
             },
         },
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
-            },
-        },
     },
     decorators: [
         (story) => (
@@ -185,7 +179,7 @@ DefaultWithImage.args = {
 DefaultWithImage.parameters = {
     docs: {
         description: {
-            story: "ZoomableImage component have clickable images in between SliderHeader and TextBlock",
+            story: "ZoomableImage component have image in between SliderHeader and TextBlock",
         },
         source: {
             code: `<ZoomableImage {...${JSON.stringify(DefaultWithImage.args, null, 2)}}/>`,
@@ -248,7 +242,7 @@ ZoomableImageWithPresenter.args = {
 ZoomableImageWithPresenter.parameters = {
     docs: {
         description: {
-            story: "ZoomableImage component have image in between SliderHeader and TextBlock.",
+            story: "ZoomableImage component have presenter image",
         },
         source: {
             code: `<ZoomableImage {...${JSON.stringify(ZoomableImageWithPresenter.args, null, 2)}}/>`,

@@ -90,10 +90,6 @@ ZoomableImage.propTypes = {
       Use to enable/disable the component
       */
     isDisabled: PropTypes.bool,
-    /**
-      ZoomableImage component must have the onClick function passed as props
-      */
-    onClick: PropTypes.func.isRequired,
 };
 
 ZoomableImage.defaultProps = {
@@ -129,7 +125,7 @@ ZoomableImage.defaultProps = {
 - Displays a ZoomableImage with TextBlock, Image and a SlideHeader
 **/
 export default function ZoomableImage(props) {
-    const { data, withColor, imageLibrary, slideId } = props;
+    const { data, withColor, imageLibrary, slideId, asVariant } = props;
 
     const [fullScreen, setfullScreen] = useState(false);
     const [pinch, setPinch] = useState(false);
@@ -154,7 +150,7 @@ export default function ZoomableImage(props) {
     // Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "zoomable-image");
-
+    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     //  Setting the colors of imported components
     //-------------------------------------------------------------------
@@ -188,13 +184,11 @@ export default function ZoomableImage(props) {
                                 <div className="qui-pinchview-zoomable-icon">
                                     <Button
                                         withIcon={{ icon: "fa fa-times", size: "1em", position: "left" }}
-                                        asVariant={"warning"}
+                                        asVariant={asVariant}
                                         onClick={() => toggleFullscreen(false)}
                                     />
                                 </div>
-
                                 {pinch && <img className="qui-pinchview-zoomable-hint" src={PinchImage} alt="" />}
-
                                 {data?.zoomableImage && (
                                     <img className="qui-pinchview-zoomable-image" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
                                 )}
@@ -221,11 +215,10 @@ export default function ZoomableImage(props) {
                         <div className="qui-zoomable-icon">
                             {<Button
                                 withIcon={{ icon: "fas fa-expand", size: "1em", position: "left" }}
-                                asVariant={"warning"}
+                                asVariant={asVariant}
                                 onClick={() => toggleFullscreen(true)}
                             />}
                         </div>
-
                         {data?.image && (
                             <img className="qui-header-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
                         )}
@@ -259,12 +252,11 @@ export default function ZoomableImage(props) {
                                 <div className="qui-pinchview-zoomable-icon">
                                     <Button
                                         withIcon={{ icon: "fa fa-times", size: "1em", position: "left" }}
-                                        asVariant={"warning"}
+                                        asVariant={asVariant}
                                         onClick={() => toggleFullscreen(false)}
                                     />
                                 </div>
                                 {pinch && <img className="qui-pinchview-zoomable-hint" src={PinchImage} alt="" />}
-
                                 {data?.zoomableImage && (
                                     <img className="qui-pinchview-zoomable-image" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
                                 )}
@@ -300,7 +292,7 @@ export default function ZoomableImage(props) {
                     <div className="qui-zoomable-icon">
                         {<Button
                             withIcon={{ icon: "fas fa-expand", size: "1em", position: "left" }}
-                            asVariant={"warning"}
+                            asVariant={asVariant}
                             onClick={() => toggleFullscreen(true)}
                         />}
                     </div>
@@ -311,7 +303,6 @@ export default function ZoomableImage(props) {
                             <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
                         )}
                     </div>
-
                     <div className="qui-zoomable-image-presenter-caption">
                         <TextBlock {...props}
                             content={data?.caption}
