@@ -9,18 +9,18 @@ import {
 } from "../../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./PictureFuddleWithFeedback.scss";
+import "./PictureFuddle.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
 import InputField from "../../InputField/InputField.react";
 import Button from "../../Buttons/Button/Button.react";
 
-PictureFuddleWithFeedback.propTypes = {
+PictureFuddle.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-    PictureFuddleWithFeedback data should be passed in data field and it is a required field
+    PictureFuddle data should be passed in data field and it is a required field
     */
     data: PropTypes.shape({
         title: PropTypes.string,
@@ -32,12 +32,12 @@ PictureFuddleWithFeedback.propTypes = {
         purpose: PropTypes.string,
     }).isRequired,
     /**
-    PictureFuddleWithFeedback should have imageLibrary array
+    PictureFuddle should have imageLibrary array
     */
     imageLibrary: PropTypes.array,
     slideId: PropTypes.number,
     /**
-    PictureFuddleWithFeedback component must have the trackInteraction function passed as props
+    PictureFuddle component must have the trackInteraction function passed as props
     */
     trackInteraction: PropTypes.func,
     //=======================================
@@ -97,7 +97,7 @@ PictureFuddleWithFeedback.propTypes = {
     isHidden: PropTypes.bool
 };
 
-PictureFuddleWithFeedback.defaultProps = {
+PictureFuddle.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -120,12 +120,12 @@ PictureFuddleWithFeedback.defaultProps = {
 - component is used to show the question with the input field, user need to submit the 
   answer using the input field.
 **/
-export default function PictureFuddleWithFeedback(props) {
+export default function PictureFuddle(props) {
     let { data, withColor, imageLibrary } = props
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "picture-fuddle-with-feedback");
+    let quommonClasses = getQuommons(props, "picture-fuddle");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 2. Get animation of the component
@@ -182,27 +182,27 @@ export default function PictureFuddleWithFeedback(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             {data &&
-                <div className="qui-picture-fuddle-with-feedback-card" style={{ ...background }}>
+                <div className="qui-picture-fuddle-card" style={{ ...background }}>
                     {!data?.image && (data?.title || data?.subtitle) && (
                         <SlideHeader
                             content={{ title: data?.title, subTitle: data?.subtitle }}
                             withColor={slideHeaderColors} />
                     )}
                     {data?.image && (
-                        <img className="qui-picture-fuddle-with-feedback-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
+                        <img className="qui-picture-fuddle-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
                     )}
                     <div
-                        className={`qui-picture-fuddle-with-feedback-label variant-${props.asVariant}-text`}
+                        className={`qui-picture-fuddle-label variant-${props.asVariant}-text`}
                         style={{ color: props.withColor?.questionColor }}
-                        key={"picture-fuddle-with-feedback-label-" + props.slideId}>
+                        key={"picture-fuddle-label-" + props.slideId}>
                         {props.data?.question}
                     </div>
-                    <div className="qui-picture-fuddle-with-feedback-input-button-container">
+                    <div className="qui-picture-fuddle-input-button-container">
                         <InputField {...props}
                             content={{ label: props.data?.answer ? props.data?.answer : "Answer" }}
                             withColor={inputFieldColors}
                             onClick={(name, value) => changeText(value)}
-                            name="picture-fuddle-with-feedback-input-field" />
+                            name="picture-fuddle-input-field" />
                         <Button {...props}
                             content={buttonText}
                             withColor={buttonColors}
