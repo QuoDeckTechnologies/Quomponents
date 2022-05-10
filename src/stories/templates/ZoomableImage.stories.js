@@ -90,13 +90,12 @@ Default.args = {
             id: "zoomable-image",
         },
     },
-
     imageLibrary: [{
         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
         id: "background-image",
     }, {
         image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        id: "image",
+        id: "header-image",
     }, {
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWCSoAcwVcztL6bDnd9BCVb6xaov4RFH7aDw&usqp=CAU",
         id: "zoomable-image",
@@ -110,7 +109,7 @@ Default.args = {
         slideHeaderBackgroundColor: "#ad292980",
         textBlockBackgroundColor: "#AD292980",
         textBlockTextColor: "#ffffff",
-        backgroundColor: "#ecf0efe8"
+        backgroundColor: ""
     },
     withAnimation: {
         animation: "zoom",
@@ -146,13 +145,12 @@ DefaultWithImage.args = {
         },
         image: {
             extention: "",
-            id: "image",
+            id: "header-image",
         },
         backgroundImage: {
             extention: "",
             id: "background-image",
         },
-        presenter: "",
     },
     imageLibrary: [{
 
@@ -160,7 +158,7 @@ DefaultWithImage.args = {
         id: "background-image",
     }, {
         image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        id: "image",
+        id: "header-image",
     }, {
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWCSoAcwVcztL6bDnd9BCVb6xaov4RFH7aDw&usqp=CAU",
         id: "zoomable-image",
@@ -187,7 +185,7 @@ DefaultWithImage.args = {
 DefaultWithImage.parameters = {
     docs: {
         description: {
-            story: "ZoomableImage component have clickable images in between SliderHeader and TextBlock.",
+            story: "ZoomableImage component have clickable images in between SliderHeader and TextBlock",
         },
         source: {
             code: `<ZoomableImage {...${JSON.stringify(DefaultWithImage.args, null, 2)}}/>`,
@@ -203,10 +201,6 @@ ZoomableImageWithPresenter.args = {
         title: "Neque porro quisquam est qui dolorem",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
-        image: {
-            extention: "",
-            id: "image",
-        },
         zoomableImage: {
             extention: "",
             id: "zoomable-image",
@@ -225,9 +219,6 @@ ZoomableImageWithPresenter.args = {
         {
             image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
             id: "background-image",
-        }, {
-            image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-            id: "image",
         }, {
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWCSoAcwVcztL6bDnd9BCVb6xaov4RFH7aDw&usqp=CAU",
             id: "zoomable-image",
@@ -257,7 +248,7 @@ ZoomableImageWithPresenter.args = {
 ZoomableImageWithPresenter.parameters = {
     docs: {
         description: {
-            story: "ZoomableImage component have clickable images in between SliderHeader and TextBlock.",
+            story: "ZoomableImage component have image in between SliderHeader and TextBlock.",
         },
         source: {
             code: `<ZoomableImage {...${JSON.stringify(ZoomableImageWithPresenter.args, null, 2)}}/>`,

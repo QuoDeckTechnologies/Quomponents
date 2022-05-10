@@ -1,8 +1,8 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { motion } from "framer-motion";
+import { PinchView } from "react-pinch-zoom-pan";
 import {
     getAnimation,
     getQuommons,
@@ -15,6 +15,7 @@ import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
 import TextBlock from "../../TextBlock/TextBlock.react";
 import Button from "../../Buttons/Button/Button.react";
+import PinchImage from "../../../assets/pinch.png"
 
 ZoomableImage.propTypes = {
     //=======================================
@@ -107,13 +108,13 @@ ZoomableImage.defaultProps = {
         image: "",
         backgroundImage: {},
         zoomable: [],
-        presenter: "",
+        presenter: {},
     },
     slideId: 0,
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "primary",
+    asVariant: "warning",
     withColor: null,
     withAnimation: null,
     isHidden: false,
@@ -129,6 +130,18 @@ ZoomableImage.defaultProps = {
 **/
 export default function ZoomableImage(props) {
     const { data, withColor, imageLibrary, slideId } = props;
+
+    const [fullScreen, setfullScreen] = useState(false);
+    const [pinch, setPinch] = useState(false);
+
+    const toggleFullscreen = (visible) => {
+        setfullScreen(visible);
+        setPinch(true)
+        setTimeout(() => {
+            setPinch(false);
+        }, 1000);
+    }
+
     //-------------------------------------------------------------------
     // Variable to set presenter image
     //-------------------------------------------------------------------
@@ -141,7 +154,6 @@ export default function ZoomableImage(props) {
     // Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "zoomable-image");
-    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
 
     //-------------------------------------------------------------------
     //  Setting the colors of imported components
@@ -161,95 +173,163 @@ export default function ZoomableImage(props) {
     }
     //-------------------------------------------------------------------
     // Function to return a view for zoomable image
-    //-------------------------------------------------------------------
+    //------------------------------------------------------------------
     const zoomabelImage = (data) => {
-        return (
-            <div className="qui-zoomable-image-card" key={"zoomable-image-slide-" + slideId} style={{
-                ...background,
-                backgroundColor: withColor?.backgroundColor,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-            }}>
-                <div className={`${quommonClasses.childClasses}`} key={"zoomable-image" + slideId}>
-                    {!data?.image && (data?.title || data?.subtitle) && (
-                        <SlideHeader
-                            content={SlideHeaderText}
-                            withColor={slideHeaderColors} />
-                    )}
+        if (fullScreen) {
+            return (
+                <PinchView
+                    backgroundColor="#666"
+                    maxScale={4}
+                    containerRatio={(400 / 600) * 100}
+                >
+                    <div className="qui-zoomable-image-segment">
+                        <div className={`${quommonClasses.childClasses}`} key={"zoomable-image" + slideId}>
+                            <div className="qui-zoomable-image-conteiner">
+                                <div className="qui-pinchview-zoomable-icon">
+                                    <Button
+                                        withIcon={{ icon: "fa fa-times", size: "1em", position: "left" }}
+                                        asVariant={"warning"}
+                                        onClick={() => toggleFullscreen(false)}
+                                    />
+                                </div>
 
-                    <div className="qui-zoomable-icon">
-                        {<Button {...props}
-                            content={"X"}
-                            onClick={props.onClick}
-                        />}
+                                {pinch && <img className="qui-pinchview-zoomable-hint" src={PinchImage} alt="" />}
+
+                                {data?.zoomableImage && (
+                                    <img className="qui-pinchview-zoomable-image" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                                )}
+                            </div>
+                        </div>
                     </div>
+                </PinchView>
+            );
+        }
+        else {
+            return (
+                <div className="qui-zoomable-image-card" key={"zoomable-image-slide-" + slideId} style={{
+                    ...background,
+                    backgroundColor: withColor?.backgroundColor,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                }}>
+                    <div className={`${quommonClasses.childClasses}`} key={"zoomable-image" + slideId}>
+                        {!data?.image && (data?.title || data?.subtitle) && (
+                            <SlideHeader
+                                content={SlideHeaderText}
+                                withColor={slideHeaderColors} />
+                        )}
+                        <div className="qui-zoomable-icon">
+                            {<Button
+                                withIcon={{ icon: "fas fa-expand", size: "1em", position: "left" }}
+                                asVariant={"warning"}
+                                onClick={() => toggleFullscreen(true)}
+                            />}
+                        </div>
 
-                    {data?.image && (
-                        <img className="qui-header-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
-                    )}
+                        {data?.image && (
+                            <img className="qui-header-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
+                        )}
+                        <div className="qui-pinchview-zoom">
+                            {pinch && <img className="qui-pinchview-image" src={PinchImage} alt="" />}
 
-                    {data?.zoomableImage && (
-                        <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
-                    )}
-                    <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+                            {data?.zoomableImage && (
+                                <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                            )}
+                        </div>
+                        <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+                    </div>
                 </div>
-            </div>
-        );
+            )
+        }
     };
     //-------------------------------------------------------------------
     // Function to return a view for zoomable with presenter
     //-------------------------------------------------------------------
     const zoomableImagePresenterView = (data) => {
-        return (
-            <div className="qui-zoomable-image-presenter-container"
-                style={{
-                    ...background,
-                    backgroundColor: withColor?.backgroundColor,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                }}
-            >
-                <div className="qui-zoomable-image-presenter-title" >
-                    <TextBlock {...props}
-                        content={data?.title}
-                        asFloated="left"
-                        withColor={textBlockColors} />
-                </div>
-                <div className="qui-zoomable-image-presenter-sub-title">
-                    <TextBlock {...props}
-                        content={data?.subtitle}
-                        asFloated="left"
-                        withColor={textBlockColors} />
-                </div>
-                <div className="qui-zoomable-icon">
-                    {<Button {...props}
-                        content={"X"}
-                        onClick={props.onClick}
-                        withIcon={"fa fa-close"}
-                    />}
-                </div>
-                {data?.zoomableImage && (
-                    <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
-                )}
+        if (fullScreen) {
+            return (
+                <PinchView
+                    backgroundColor="#666"
+                    maxScale={4}
+                    containerRatio={(400 / 600) * 100}
+                >
+                    <div className="qui-zoomable-image-segment">
+                        <div className={`${quommonClasses.childClasses}`} key={"zoomable-image" + slideId}>
+                            <div className="qui-zoomable-image-container">
+                                <div className="qui-pinchview-zoomable-icon">
+                                    <Button
+                                        withIcon={{ icon: "fa fa-times", size: "1em", position: "left" }}
+                                        asVariant={"warning"}
+                                        onClick={() => toggleFullscreen(false)}
+                                    />
+                                </div>
+                                {pinch && <img className="qui-pinchview-zoomable-hint" src={PinchImage} alt="" />}
 
-                <div className="qui-zoomable-image-presenter-caption">
-                    <TextBlock {...props}
-                        content={data?.caption}
-                        asFloated="left"
-                        conversation={true}
-                        position="right-bottom"
-                        withColor={textBlockColors} />
-                </div>
-                {hasPresenter && (
-                    <img
-                        className="qui-zoomable-image-presenter"
-                        src={resolveImage(data.presenter.id, imageLibrary)}
-                        alt=""
-                    />
-                )}
-            </div>
+                                {data?.zoomableImage && (
+                                    <img className="qui-pinchview-zoomable-image" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                                )}
+                            </div>
+                        </div>
+                    </div >
+                </PinchView >
+            );
+        }
+        else {
+            return (
 
-        );
+                <div className="qui-zoomable-image-presenter-container"
+                    style={{
+                        ...background,
+                        backgroundColor: withColor?.backgroundColor,
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                    }}
+                >
+                    <div className="qui-zoomable-image-presenter-title" >
+                        <TextBlock {...props}
+                            content={data?.title}
+                            asFloated="left"
+                            withColor={textBlockColors} />
+                    </div>
+                    <div className="qui-zoomable-image-presenter-sub-title">
+                        <TextBlock {...props}
+                            content={data?.subtitle}
+                            asFloated="left"
+                            withColor={textBlockColors} />
+                    </div>
+                    <div className="qui-zoomable-icon">
+                        {<Button
+                            withIcon={{ icon: "fas fa-expand", size: "1em", position: "left" }}
+                            asVariant={"warning"}
+                            onClick={() => toggleFullscreen(true)}
+                        />}
+                    </div>
+                    <div className="qui-pinchview-zoom">
+                        {pinch && <img className="qui-pinchview-image" src={PinchImage} alt="" />}
+
+                        {data?.zoomableImage && (
+                            <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                        )}
+                    </div>
+
+                    <div className="qui-zoomable-image-presenter-caption">
+                        <TextBlock {...props}
+                            content={data?.caption}
+                            asFloated="left"
+                            conversation={true}
+                            position="right-bottom"
+                            withColor={textBlockColors} />
+                    </div>
+                    {hasPresenter && (
+                        <img
+                            className="qui-zoomable-image-presenter"
+                            src={resolveImage(data.presenter.id, imageLibrary)}
+                            alt=""
+                        />
+                    )}
+                </div>
+            );
+        }
     };
     //-------------------------------------------------------------------
     //  Get animation of the component

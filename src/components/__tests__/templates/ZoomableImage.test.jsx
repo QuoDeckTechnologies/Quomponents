@@ -6,13 +6,16 @@ import { shallow } from "enzyme";
 // Import Components
 // -------------------------------------
 import ZoomableImage from "../../Templates/ZoomableImage/ZoomableImage.react";
-import SlideHeader from "../../SlideHeader/SlideHeader.react"
+import SlideHeader from "../../SlideHeader/SlideHeader.react";
+import Button from "../../Buttons/Button/Button.react";
+import { PinchView } from "react-pinch-zoom-pan";
 
 describe("ZoomableImage", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
+    let toggleFullscreen = jest.fn()
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -51,7 +54,7 @@ describe("ZoomableImage", () => {
                 isHidden={false}
                 isDisabled={false}
                 onClick={() => {
-                    console.log("test");
+                    toggleFullscreen(true)
                 }}
             />
         );
@@ -59,6 +62,53 @@ describe("ZoomableImage", () => {
     it("should render correctly without throwing error", () => {
         expect(component.exists()).toBe(true);
     });
+    // it("should call toggleFullScreen when click", () => {
+    //     component = shallow(<ZoomableImage
+    //         data={{
+    //             title: "This is Title",
+    //             subtitle: "This is Subtitle",
+    //             zoomableImage: {
+    //                 extention: "",
+    //                 id: "header-image",
+    //             },
+    //             imageLibrary: [{
+    //                 id: "header-image",
+    //                 image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
+    //             }],
+    //             caption: "caption",
+    //         }}
+    //         slideId={0}
+    //         onClick={() => {
+    //             toggleFullscreen(false)
+    //         }}
+    //     />);
+    //     component.find(Button).simulate("click");
+    //     component.find(Button).simulate("click");
+    // });
+    it("should call toggleFullScreen when click", () => {
+        component = shallow(<ZoomableImage
+            data={{
+                title: "This is Title",
+                subtitle: "This is Subtitle",
+                zoomableImage: {
+                    extention: "",
+                    id: "header-image",
+                },
+                imageLibrary: [{
+                    id: "header-image",
+                    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg"
+                }],
+                caption: "caption",
+            }}
+            slideId={0}
+            onClick={() => {
+                toggleFullscreen(false)
+            }}
+        />);
+        component.find(Button).simulate("click");
+        component.find(Button).simulate("click");
+    });
+
     it("should render correctly with empty content", () => {
         component.setProps({
             data: {},

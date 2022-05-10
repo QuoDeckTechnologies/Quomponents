@@ -3,12 +3,14 @@
 //----------------------------------
 .qui .qui-zoomable-image-card {
     min-height: 30em;
-    background-color: #ffffff;
     padding: 1.5em;
+    background-color: white;
     border-radius: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
     .qui-side-header {
         width: 10em;
     }
@@ -46,16 +48,61 @@
     .qui-zoomable-icon {
         position: absolute;
         z-index: 1;
-        top: 42%;
-        left: 6%;
         border: none;
+        left: 3em;
+        top: 15em;
     }
 }
 
 .qui .qui-zoomable-icon button {
-    padding: 0.5em 2em;
+    padding: 0.7em 1.5em;
 }
 
+.qui .qui-zoomable-image-container {
+    z-index: 1;
+    width: "100%";
+    height: "100%";
+    top: "0";
+    left: "0";
+    display: "flex";
+    align-items: center;
+    justify-content: center;
+    border-radius: 5em;
+}
+.qui .qui-zoomable-image-segment {
+    padding: "0";
+    width: "100%";
+    height: "100%";
+}
+.qui .qui-pinchview-zoomable-image {
+    height: 64vw;
+    width: 100vw;
+}
+.qui .qui-pinchview-zoomable-hint {
+    position: absolute;
+    z-index: 1;
+    width: 80%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.qui .qui-pinchview-zoomable-icon {
+    position: absolute;
+    z-index: 1;
+    top: 5%;
+    left: 5%;
+    border: none;
+}
+.qui .qui-pinchview-zoomable-icon button {
+    padding: 0.7em 1.5em;
+}
+
+.qui .qui-pinchview-zoom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 //-----------------------------------------
 // Zoomable-image presenter styles
 //-----------------------------------------
@@ -144,6 +191,12 @@
             max-height: 13em;
             border-radius: 1em;
         }
+        .qui-pinchview-image {
+            position: absolute;
+            z-index: 1;
+            width: 50vw;
+            height: 25vh;
+        }
     }
     .qui-zoomable-image-presenter-container {
         .qui-zoomable-picture {
@@ -188,5 +241,12 @@
             border-radius: 1em;
             max-height: 13em;
         }
+        .qui-pinchview-image {
+            position: absolute;
+            z-index: 1;
+            width: 35vw;
+            height: 16vh;
+        }
     }
 }
+
