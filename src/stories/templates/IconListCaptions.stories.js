@@ -8,13 +8,6 @@ export default {
     data: {},
     imageLibrary: [{}],
     slideId: 0,
-    asVariant: {
-      control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     withColor: {
       table: {
         category: "with-Params",
@@ -138,7 +131,6 @@ Default.args = {
     image: "https://i.pinimg.com/564x/09/03/8c/09038c92e5e2422e369816d50b16cd3f.jpg",
   },],
   slideId: 0,
-  asVariant: "warning",
   withColor: {
     slideHeaderTextColor: "#FFFFFF",
     slideHeaderAccentColor: "#AD2929",
@@ -230,7 +222,6 @@ IconListCaptionsWithImage.args = {
     image: "https://i.pinimg.com/564x/64/57/dc/6457dc8f063f284fe17e519dc28b5437.jpg",
   },],
   slideId: 0,
-  asVariant: "warning",
   withColor: {
     slideHeaderTextColor: "#FFFFFF",
     slideHeaderAccentColor: "#AD2929",

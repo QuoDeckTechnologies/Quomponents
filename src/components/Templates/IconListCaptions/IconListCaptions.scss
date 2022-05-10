@@ -24,6 +24,17 @@
     width: auto;
     margin: 4em 0 0 0;
   }
+  .qui .qui-clicked-on-image {
+    margin: auto;
+    width: 4em;
+    height: 4em;
+  }
+  .qui-active-image-click.is-circular{
+    width: 3.8em;
+    height: 3.8em;
+    border:0.2em solid;
+  }
+  
   .qui-icon-list-captions-image {
     width: 99%;
     border-radius: 1em;
@@ -31,13 +42,6 @@
     filter: drop-shadow(0px 5px 2px #3a3939);
   }
   .qui-fixed-clickable-images-container {
-    .qui-active-index{
-      border-radius: 50%;
-      padding-left: 2%;
-      .qui-clickable-image{
-        border:0.2em solid
-      }
-    }
     position: absolute;
     bottom: 2%;
     .qui-icon-list-captions-track {
@@ -48,30 +52,15 @@
       bottom: 50%;
     }
   }
+
   .qui-slide-clickable-images {
-    border-radius: 50%;
-    display: flex;
-    justify-items: center;
-    align-items: center;
     filter: drop-shadow(0px 5px 2px #3a3939);
-    img {
-      border-radius: 50%;
-    }
   }
 }
 @media only screen and (min-width: 320px) {
   .qui .qui-icon-list-captions-card {
     .qui-fixed-clickable-images-container {
       width: 85%;
-      .qui-clickable-image {
-        width: 3.5em;
-        height: 3.5em;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-    }
-    .slick-track {
-      padding-left: 1%;
     }
   }
 }
@@ -79,15 +68,6 @@
   .qui .qui-icon-list-captions-card {
     .qui-fixed-clickable-images-container {
       width: 87%;
-      .qui-clickable-image {
-        width: 3.8em;
-        height: 3.8em;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-    }
-    .slick-track {
-      padding-left: 3.5%;
     }
   }
   .qui .qui-icon-list-captions-card {

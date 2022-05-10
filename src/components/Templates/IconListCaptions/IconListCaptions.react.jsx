@@ -45,16 +45,6 @@ IconListCaptions.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to define standard component type
-    */
-  asVariant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "error",
-  ]),
-  /**
     Use to override component colors and behavior
     */
   withColor: PropTypes.shape({
@@ -114,7 +104,6 @@ IconListCaptions.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asVariant: "primary",
   withColor: null,
   withAnimation: null,
   isHidden: false,
@@ -130,13 +119,12 @@ IconListCaptions.defaultProps = {
 export default function IconListCaptions(props) {
   let { data, withColor, imageLibrary } = props
   const [state, setState] = useState(0)
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeImage, setActiveImage] = useState(0)
   const sliderRef = useRef();
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "icon-list-captions");
-  quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
   //-------------------------------------------------------------------
   //  Get animation of the component
   //-------------------------------------------------------------------
@@ -170,6 +158,7 @@ export default function IconListCaptions(props) {
   function handleClick(e) {
     props.onClick(e)
     setState(e)
+    setActiveImage(e)
   }
 
   var settings = {
@@ -217,15 +206,12 @@ export default function IconListCaptions(props) {
             <Slider ref={sliderRef} {...settings}>
               {_.map(data?.cards, (image, index) => {
                 return (
-                  <div className={`${index === activeIndex ? "qui-active-index" : "qui-slide-clickable-images"}`}
-                    key={"icon-list-captions-image" + index}
-                    onClick={() => setActiveIndex(index)}
-                  >
-                    <ClickableImage {...props}
-                      content={{ image: resolveImage(image.image?.id ? image.image?.id : "", imageLibrary) }}
-                      onClick={() => handleClick(index)}
-                      style={{ borderColor: withColor?.iconlistTrackColor }} />
-                  </div>
+                  <ClickableImage
+                    content={{ image: resolveImage(image.image?.id ? image.image?.id : "", imageLibrary) }}
+                    isActive={activeImage === index ? true : false}
+                    isCircular={true}
+                    onClick={() => handleClick(index)}
+                    style={{ borderColor: "red" }} />
                 );
               })}
             </Slider>
