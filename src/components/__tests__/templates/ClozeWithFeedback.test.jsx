@@ -45,9 +45,6 @@ describe("ClozeWithFeedback", () => {
                 withColor={null}
                 isHidden={false}
                 isDisabled={false}
-                onClick={(e) => {
-                    console.log(e);
-                }}
             />
         );
     });
@@ -156,7 +153,7 @@ describe("ClozeWithFeedback", () => {
                     buttonHoverBackgroundColor: "ffff00",
                     buttonHoverTextColor: "ff00ff",
                 }}
-                onClick={() => console.log("testing")}
+                onClick={jest.fn()}
             />
         );
         const tree = component.toJSON();
@@ -173,14 +170,18 @@ describe("ClozeWithFeedback", () => {
             purpose: "quiz",
         }
         let colors = {
-            slideHeaderTextColor: "#FFFFFF",
+            questionColor: "#000000",
+            slideHeaderTextColor: "#ffffff",
             slideHeaderAccentColor: "#AD2929",
-            slideHeaderBackgroundColor: "#ad292980",
-            textBlockBackgroundColor: "#2d92a4",
-            textBlockTextColor: "#fff",
-            bulletBlockTextColor: "#ffffff",
-            bulletBlockBackgroundColor: "#ad292980",
-            backgroundColor: "#fff"
+            slideHeaderBackgroundColor: "#AD292980",
+            inputFieldTextColor: "#000000",
+            inputFieldAccentColor: "#AD292980",
+            inputFieldBackgroundColor: "#ffffff",
+            buttonTextColor: "#ffffff",
+            buttonBackgroundColor: "#AD292980",
+            buttonHoverBackgroundColor: "#ffffff",
+            buttonHoverTextColor: "#AD292980",
+            backgroundColor: "#ffffff",
         }
         component.setProps({ data: data, withColor: colors })
         expect(component.exists()).toBe(true);
@@ -201,23 +202,13 @@ describe("ClozeWithFeedback", () => {
             id: "background-image",
             image: 'test-image'
         }]
-        let colors = {
-            slideHeaderTextColor: "#FFFFFF",
-            slideHeaderAccentColor: "#AD2929",
-            slideHeaderBackgroundColor: "#ad292980",
-            textBlockBackgroundColor: "#2d92a4",
-            textBlockTextColor: "#fff",
-            bulletBlockTextColor: "#ffffff",
-            bulletBlockBackgroundColor: "#ad292980",
-            backgroundColor: "#fff"
-        }
-        component.setProps({ data: data, withColor: colors, imageLibrary: imageLibrary })
+
+        component.setProps({ data: data, imageLibrary: imageLibrary })
         expect(component.exists()).toBe(true);
     });
 
     it('should simulate the submit button', () => {
-        const handleSubmit = jest.fn();
-        const button = shallow((<ClozeWithFeedback onClick={handleSubmit} trackInteraction={jest.fn()} />));
+        const button = shallow((<ClozeWithFeedback trackInteraction={jest.fn()} />));
         button.find('Button').simulate('click');
         expect(component.exists()).toBe(true);
     });

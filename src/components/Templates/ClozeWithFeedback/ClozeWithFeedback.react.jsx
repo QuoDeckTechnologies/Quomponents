@@ -94,11 +94,7 @@ ClozeWithFeedback.propTypes = {
     /**
     Use to show/hide the component
     */
-    isHidden: PropTypes.bool,
-    /**
-    ClozeWithFeedback component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
+    isHidden: PropTypes.bool
 };
 
 ClozeWithFeedback.defaultProps = {
