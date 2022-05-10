@@ -45,7 +45,6 @@ describe("PictureFuddle", () => {
                 withColor={null}
                 isHidden={false}
                 isDisabled={false}
-                onClick={jest.fn()}
             />
         );
     });
@@ -153,7 +152,6 @@ describe("PictureFuddle", () => {
                     buttonHoverBackgroundColor: "ffff00",
                     buttonHoverTextColor: "ff00ff",
                 }}
-                onClick={jest.fn()}
             />
         );
         const tree = component.toJSON();
@@ -196,8 +194,7 @@ describe("PictureFuddle", () => {
     });
 
     it('should simulate the submit button', () => {
-        const handleSubmit = jest.fn();
-        const button = shallow((<PictureFuddle onClick={handleSubmit} trackInteraction={jest.fn()} />));
+        const button = shallow((<PictureFuddle trackInteraction={jest.fn()} />));
         button.find('Button').simulate('click');
         expect(component.exists()).toBe(true);
     });

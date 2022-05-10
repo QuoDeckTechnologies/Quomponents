@@ -94,11 +94,7 @@ PictureFuddleWithFeedback.propTypes = {
     /**
     Use to show/hide the component
     */
-    isHidden: PropTypes.bool,
-    /**
-    PictureFuddleWithFeedback component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
+    isHidden: PropTypes.bool
 };
 
 PictureFuddleWithFeedback.defaultProps = {
