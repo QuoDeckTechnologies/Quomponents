@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import _ from "lodash";
 import PropTypes from "prop-types";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -34,7 +37,7 @@ ImageCards.propTypes = {
 
     }).isRequired,
     /**
-    ImageCards can set image, backgroundImage & cards's image from imageLibrary array
+    ImageCards can set HeaderImage, backgroundImage & cards's image from imageLibrary array
     */
     imageLibrary: PropTypes.array,
     /**
@@ -104,7 +107,7 @@ ImageCards.defaultProps = {
 };
 /**
 ## Notes
-- Displays a ImageCards with Image, TextBlock, SlideHeader & ClickableImage
+- Displays a ImageCards with Image Tag, TextBlock, SlideHeader & ClickableImage
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
@@ -132,14 +135,30 @@ export default function ImageCards(props) {
         backgroundColor: withColor?.textBlockBackgroundColor
     }
     //-------------------------------------------------------------------
-    // 4. Function to set click on ClickableImage
+    // 4. Function to set click on ClickableImage and manage slider settings
     //-------------------------------------------------------------------
-    const [state, setState] = useState(0)
+    const [state, setState] = useState(0);
+    const sliderRef = useRef();
 
     function handleClick(e) {
         props.onClick(e)
         setState(e)
     }
+
+    var settings = {
+        dots: false,
+        speed: 500,
+        initialSlide: 1,
+        slidesToScroll: 1,
+        slidesToShow: 4,
+        centerMode: true,
+        arrows: false,
+        infinite: true,
+        autoplay: false,
+        pauseOnHover: true,
+        centerPadding: "0%",
+        swipeToSlide: true,
+    };
     //-------------------------------------------------------------------
     // 5. Function to set background
     //-------------------------------------------------------------------
@@ -191,28 +210,31 @@ export default function ImageCards(props) {
                 <div className="qui-image-cards-container">
                     {_.map(data?.cards, (image, index) => {
                         return (
-                            <div>
+                            <div key={'image-cards-display-image' + index}>
                                 {state === index &&
                                     <img
                                         className="qui-image-cards-display-image"
                                         src={resolveImage(image?.image?.id, imageLibrary)}
-                                        alt=""
+                                        alt="ImageCards"
                                     />
                                 }
                             </div>
                         );
                     })}
-                    <div className="qui-image-cards-clickable-images-container">
-                        <div className="qui-image-cards-clickable-images">
+                    <div
+                        className="qui-image-cards-clickable-images-container"
+                    >
+                        <Slider ref={sliderRef} {...settings}>
                             {_.map(data?.cards, (image, index) => {
                                 return (
-                                    <ClickableImage {...props}
+                                    <ClickableImage
+                                        key={'ClickableImage' + index}
                                         content={{ image: resolveImage(image?.image?.id, imageLibrary) }}
                                         onClick={() => handleClick(index)}
                                     />
                                 );
                             })}
-                        </div>
+                        </Slider>
                     </div>
                     {_.map(data?.cards, (image, index) => {
                         return (

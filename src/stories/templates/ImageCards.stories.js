@@ -81,35 +81,67 @@ Default.args = {
         cards: [
             {
                 image: { id: "cards-image-1", extention: "" },
-                text: "Neque porro quisquam est qui dolorem",
+                text: "First Neque porro quisquam est qui dolorem",
             },
             {
                 image: { id: "cards-image-2", extention: "" },
-                text: "Quisque sed turpis vel lectus suscipit auctor.",
+                text: "Second Neque porro quisquam est qui dolorem",
             },
             {
-                image: { id: "header-image", extention: "" },
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                image: { id: "cards-image-3", extention: "" },
+                text: "Third Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "cards-image-4", extention: "" },
+                text: "Fourth Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "cards-image-5", extention: "" },
+                text: "Fivth Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "cards-image-6", extention: "" },
+                text: "Sixth Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "cards-image-1", extention: "" },
+                text: "Seventh Neque porro quisquam est qui dolorem",
             },
             {
                 image: { id: "cards-image-2", extention: "" },
-                text: "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor",
+                text: "Eighth Neque porro quisquam est qui dolorem",
             },
         ],
     },
     imageLibrary: [
         {
-            id: "header-image",
-            image:
-                "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+            image: "https://i.pinimg.com/564x/02/58/79/025879fc48f8d5a2a30e37ad1a847c11.jpg",
+            id: "cards-image-1",
         },
         {
-            id: "cards-image-1",
+            image: "https://i.pinimg.com/564x/64/57/dc/6457dc8f063f284fe17e519dc28b5437.jpg",
+            id: "cards-image-2",
+        },
+        {
+            image: "https://i.pinimg.com/564x/9a/db/19/9adb19d50115e570142a7937a00550ae.jpg",
+            id: "cards-image-3",
+        },
+        {
+            image: "https://i.pinimg.com/564x/09/03/8c/09038c92e5e2422e369816d50b16cd3f.jpg",
+            id: "cards-image-4",
+        },
+        {
+            id: "cards-image-5",
             image: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
         },
         {
-            id: "cards-image-2",
+            id: "cards-image-6",
             image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+        },
+        {
+            id: "header-image",
+            image:
+                "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
         },
         {
             id: "background-image",
