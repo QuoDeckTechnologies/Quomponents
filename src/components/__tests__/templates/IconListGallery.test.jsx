@@ -26,17 +26,9 @@ describe("IconListGallery", () => {
                     backgroundImage: { id: "background-image", extention: "" },
                     cards: [
                         {
-                            image: { id: "cards-image-1", extention: "" },
+                            image: { id: "iconlist-image-1", extention: "" },
                             text: "Neque porro quisquam est qui dolorem",
                         },
-                        // {
-                        //     image: { id: "cards-image-2", extention: "" },
-                        //     text: "Neque porro quisquam est qui dolorem",
-                        // },
-                        // {
-                        //     image: { id: "cards-image-3", extention: "" },
-                        //     text: "Neque porro quisquam est qui dolorem",
-                        // }
                     ],
                 }}
                 imageLibrary={[
@@ -85,25 +77,20 @@ describe("IconListGallery", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly without throwing error when clicked on image", () => {
+    it("should render correctly without throwing error when clicked on ClickableImage", () => {
         component.find("ClickableImage").simulate("click");
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asFloated prop as none", () => {
-        component.setProps({ asFloated: "none" })
         expect(component.exists()).toBe(true);
     });
 
     it("should render correctly when passed withColor props", () => {
         let colors = {
-            backgroundColor: "#fff",
-            slideHeaderTextColor: "#FFFFFF",
+            backgroundColor: "#ffffff",
+            slideHeaderTextColor: "#ffffff",
             slideHeaderAccentColor: "#AD2929",
-            slideHeaderBackgroundColor: "#ad292980",
-            textBlockBackgroundColor: "#ad292980",
-            textBlockTextColor: "#fff",
-            iconlistTrackColor: "#ff0000",
+            slideHeaderBackgroundColor: "#C98787",
+            textBlockTextColor: "#454545",
+            textBlockBackgroundColor: "#FFFF",
+            iconlistgalleryTrackColor: "#AD2929",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);

@@ -1,23 +1,21 @@
-// Import npm packages
 import React, { useState, useRef } from "react";
-import PropTypes from "prop-types";
 import _ from "lodash";
-import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
     resolveImage,
 } from "../../../common/javascripts/helpers";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./IconListGallery.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
-import TextBlock from "../../TextBlock/TextBlock.react";
 import ClickableImage from "../../ClickableImage/ClickableImage.react";
+import TextBlock from "../../TextBlock/TextBlock.react"
 
 IconListGallery.propTypes = {
     //=======================================
@@ -39,7 +37,7 @@ IconListGallery.propTypes = {
 
     }).isRequired,
     /**
-    IconListGallery can set header image, backgroundImage & cards's image from imageLibrary array
+    IconListGallery can set HeaderImage, backgroundImage & cards's image from imageLibrary array
     */
     imageLibrary: PropTypes.array,
     /**
@@ -53,13 +51,13 @@ IconListGallery.propTypes = {
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
+        backgroundColor: PropTypes.string,
         slideHeaderTextColor: PropTypes.string,
-        slideHeaderAccentColor: PropTypes.string,
         slideHeaderBackgroundColor: PropTypes.string,
+        slideHeaderAccentColor: PropTypes.string,
         textBlockTextColor: PropTypes.string,
         textBlockBackgroundColor: PropTypes.string,
-        iconlistTrackColor: PropTypes.string,
-        backgroundColor: PropTypes.string,
+        iconlistgalleryTrackColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -79,13 +77,13 @@ IconListGallery.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show/hide the componentresolveImage
+    */
+    isHidden: PropTypes.bool,
+    /**
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
-    /**
-    Use to show/hide the component
-    */
-    isHidden: PropTypes.bool,
     /**
     IconListGallery component must have the onClick function passed as props
     */
@@ -97,7 +95,7 @@ IconListGallery.defaultProps = {
     // Component Specific props
     //=======================================
     data: {},
-    imageLibrary: [],
+    imageLibrary: null,
     slideId: 0,
     //=======================================
     // Quommon props
@@ -110,7 +108,7 @@ IconListGallery.defaultProps = {
 };
 /**
 ## Notes
-- Displays a IconListGallery with Image, TextBlock, SlideHeader & ClickableImage
+- Displays a IconListGallery with Image Tag, TextBlock, SlideHeader & ClickableImage
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
@@ -128,20 +126,21 @@ export default function IconListGallery(props) {
     // 3. Use to set Color of the imported components
     //-------------------------------------------------------------------
     let slideHeaderColors = {
-        textColor: props.withColor?.slideHeaderTextColor,
-        accentColor: props.withColor?.slideHeaderAccentColor,
-        backgroundColor: props.withColor?.slideHeaderBackgroundColor
+        textColor: withColor?.slideHeaderTextColor,
+        accentColor: withColor?.slideHeaderAccentColor,
+        backgroundColor: withColor?.slideHeaderBackgroundColor
     }
+
     let textBlockColors = {
-        textColor: props.withColor?.textBlockTextColor,
-        backgroundColor: props.withColor?.textBlockBackgroundColor
+        textColor: withColor?.textBlockTextColor,
+        backgroundColor: withColor?.textBlockBackgroundColor
     }
-    let SlideHeaderText = {
-        title: props.data?.title,
-        subTitle: props.data?.subtitle,
+
+    let trackColor = {
+        backgroundColor: withColor?.iconlistgalleryTrackColor
     }
     //-------------------------------------------------------------------
-    // 4. Function to set handle click on image
+    // 4. Function to set click on ClickableImage and manage slider settings
     //-------------------------------------------------------------------
     const [state, setState] = useState(0);
     const sliderRef = useRef();
@@ -189,73 +188,79 @@ export default function IconListGallery(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
+            style={{
+                ...background,
+                backgroundColor: withColor?.backgroundColor,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+            }}
         >
             <div
                 className={`qui-icon-list-gallery-card ${quommonClasses.childClasses}`}
-                key={"icon-list-gallery-" + slideId}
-                style={{
-                    ...background,
-                    backgroundColor: withColor?.backgroundColor,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                }}
+                key={"icon-list-gallery" + slideId}
             >
                 {!data?.image && (data?.title || data?.subtitle) && (
-                    <SlideHeader
-                        content={SlideHeaderText}
+                    <SlideHeader {...props}
+                        content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors}
                     />
                 )}
                 {data?.image && (
                     <img
                         className="qui-icon-list-gallery-image"
-                        src={resolveImage(data?.image.id, imageLibrary)}
+                        src={resolveImage(data?.image?.id, imageLibrary)}
                         alt="IconListGallery"
                     />
                 )}
                 <div className="qui-icon-list-gallery-container">
                     {_.map(data?.cards, (image, index) => {
                         return (
-                            <div>
+                            <div key={'icon-list-gallery-display-image' + index}>
                                 {state === index &&
                                     <img
                                         className="qui-icon-list-gallery-display-image"
                                         src={resolveImage(image?.image?.id, imageLibrary)}
-                                        alt="IconListGalleryDisplayImage"
+                                        alt="IconListGallery"
                                     />
                                 }
                             </div>
                         );
                     })}
-                    <div className="qui-icon-list-gallery-clickableimages-container">
+                    <div
+                        className="qui-icon-list-gallery-clickable-images-container"
+                    >
                         <div
                             className="qui-icon-list-gallery-track"
-                            style={{ backgroundColor: withColor?.iconlistTrackColor }}
+                            style={trackColor}
                         />
                         <Slider ref={sliderRef} {...settings}>
                             {_.map(data?.cards, (image, index) => {
                                 return (
                                     <ClickableImage
-                                        content={{ image: resolveImage(image.image?.id, imageLibrary) }}
-                                        isCircular={true}
+                                        key={'ClickableImage' + index}
+                                        content={{ image: resolveImage(image?.image?.id, imageLibrary) }}
                                         onClick={() => handleClick(index)}
-                                    // style={{ borderColor: "red" }}
+                                        isCircular={true}
                                     />
                                 );
                             })}
                         </Slider>
                     </div>
-                    <div className="qui-icon-list-gallery-display-text">
-                        {_.map(data?.cards, (image, index) => {
-                            return (
-                                <div key={'textblock' + index}>
-                                    {state === index &&
-                                        <TextBlock {...props} content={image?.text} withColor={textBlockColors} asFloated={"left"} />
-                                    }
-                                </div>
-                            );
-                        })}
-                    </div>
+                    {_.map(data?.cards, (image, index) => {
+                        return (
+                            <div key={'text' + index}>
+                                {state === index &&
+                                    <div className="qui-icon-list-gallery-display-text">
+                                        <TextBlock {...props}
+                                            content={image?.text}
+                                            withColor={textBlockColors}
+                                            withAnimation={null}
+                                        />
+                                    </div>
+                                }
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </motion.div >
