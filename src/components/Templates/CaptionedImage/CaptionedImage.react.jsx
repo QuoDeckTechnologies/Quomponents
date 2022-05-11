@@ -1,7 +1,6 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { motion } from "framer-motion";
 import {
   getAnimation,
@@ -26,7 +25,6 @@ CaptionedImage.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    caption: PropTypes.string,
     image: PropTypes.object,
     backgroundImage: PropTypes.object,
     captionedImage: PropTypes.object,
@@ -102,7 +100,6 @@ CaptionedImage.defaultProps = {
   data: {
     title: "",
     subtitle: "",
-    caption: "",
     image: "",
     backgroundImage: {},
     data: {},
