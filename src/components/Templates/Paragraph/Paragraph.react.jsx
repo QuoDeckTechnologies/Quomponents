@@ -30,7 +30,7 @@ Paragraph.propTypes = {
     presenter: PropTypes.object,
   }),
   /**
-    Paragraph can set presenter image from imageLibrary array
+    Paragraph can set presenter and background image from imageLibrary array
     */
   imageLibrary: PropTypes.array,
   //=======================================
@@ -130,56 +130,46 @@ export default function Paragraph(props) {
     }
   };
   //-------------------------------------------------------------------
-  // 4. Function to return a view for paragraph with presenter
+  // 4. Function to return a TextBlock component
+  //-------------------------------------------------------------------
+  const getTextBlock = (content, conversation, position) => {
+    return (
+      <TextBlock
+        content={content}
+        conversation={conversation}
+        position={position}
+        asFloated="left"
+        withColor={{
+          backgroundColor: withColor?.textBlockBackgroundColor,
+          textColor: withColor?.textBlockTextColor,
+        }}
+      />
+    );
+  };
+  //-------------------------------------------------------------------
+  // 5. Function to return a view for paragraph with presenter
   //-------------------------------------------------------------------
   const getPresenterView = (data) => {
     return (
       <div className="qui-paragraph-text-block">
         <div className="qui-paragraph-block-header">
-          <TextBlock
-            content={data?.title}
-            conversation={false}
-            asFloated="left"
-            withColor={{
-              backgroundColor: withColor?.textBlockBackgroundColor,
-              textColor: withColor?.textBlockTextColor,
-            }}
-          />
+          {getTextBlock(data?.title, false)}
         </div>
         <div className="qui-paragraph-block-subtitle">
-          <TextBlock
-            content={data?.subtitle}
-            conversation={false}
-            asFloated="left"
-            asSize="small"
-            withColor={{
-              backgroundColor: withColor?.textBlockBackgroundColor,
-              textColor: withColor?.textBlockTextColor,
-            }}
-          />
+          {getTextBlock(data?.subtitle, false)}
         </div>
         <div className="qui-paragraph-block-paragraph">
-          <TextBlock
-            content={data?.paragraph}
-            conversation={true}
-            position="right-bottom"
-            asFloated="left"
-            asSize="small"
-            withColor={{
-              backgroundColor: withColor?.textBlockBackgroundColor,
-              textColor: withColor?.textBlockTextColor,
-            }}
-          />
+          {getTextBlock(data?.paragraph, true, "right-bottom")}
         </div>
       </div>
     );
   };
   //-------------------------------------------------------------------
-  // 5. Get animation of the component
+  // 6. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 6. Functions to set background for the template
+  // 7. Functions to set background for the template
   //-------------------------------------------------------------------
   const getBackground = () => {
     if (data?.backgroundImage) {
@@ -193,7 +183,7 @@ export default function Paragraph(props) {
   };
   const background = getBackground();
   //-------------------------------------------------------------------
-  // 7. Variable to set presenter image
+  // 8. Variable to set presenter image
   //-------------------------------------------------------------------
   let hasPresenter =
     data?.presenter !== undefined &&

@@ -70,7 +70,7 @@ const Template = (args) => <Paragraph {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   data: {
-    title: "Neque porro quisquam est qui dolorem",
+    title: "Neque porro quisquam est qui dolorem.",
     subtitle:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     paragraph:
@@ -106,7 +106,7 @@ Default.parameters = {
 export const ParagraphWithBackgroundimage = Template.bind({});
 ParagraphWithBackgroundimage.args = {
   data: {
-    title: "Neque porro quisquam est qui dolorem",
+    title: "Neque porro quisquam est qui dolorem.",
     subtitle:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     paragraph:
@@ -155,8 +155,9 @@ export const ParagraphWithPresenter = Template.bind({});
 ParagraphWithPresenter.args = {
   ...Default.args,
   data: {
-    title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    title: "Neque porro quisquam est qui dolorem.",
+    subtitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     paragraph:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula. ",
     backgroundImage: { id: "background-image", extention: "" },
@@ -196,8 +197,9 @@ export const ColoredParagraph = Template.bind({});
 ColoredParagraph.args = {
   ...Default.args,
   data: {
-    title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    title: "Neque porro quisquam est qui dolorem.",
+    subtitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     paragraph:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula. ",
   },

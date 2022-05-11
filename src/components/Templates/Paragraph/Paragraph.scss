@@ -81,7 +81,8 @@
       width: 85%;
     }
     .qui-block-text {
-      font-size: 0.8em;
+      font-size: 1em;
+      font-weight: 100;
     }
   }
   .qui-block-text {
@@ -99,6 +100,7 @@
     width: 8em;
     .qui-block-text {
       font-weight: 300;
+      font-size: 0.6em;
     }
   }
   .qui.qui-text-block-container {
@@ -130,13 +132,27 @@
     min-height: 31em;
   }
   .qui .qui-paragraph-block-paragraph .qui .qui-text-block-area {
-    font-size: 0.27em;
+    font-size: 0.3em;
+  }
+  .qui .qui-paragraph-text-block {
+    .qui-paragraph-block-header {
+      .qui-block-text {
+        font-size: 0.6em;
+      }
+    }
   }
 }
 
 @media only screen and (min-width: 481px) {
   .qui .qui-paragraph-block-paragraph .qui .qui-text-block-area {
-    font-size: 0.35em;
+    font-size: 0.36em;
+  }
+  .qui .qui-paragraph-text-block {
+    .qui-paragraph-block-header {
+      .qui-block-text {
+        font-size: 0.8em;
+      }
+    }
   }
 }
 
