@@ -72,7 +72,7 @@ Default.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem.",
     subtitle:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem curabitur ip.",
     paragraph:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula. ",
   },
@@ -108,7 +108,7 @@ ParagraphWithBackgroundimage.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem.",
     subtitle:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem curabitur ip.",
     paragraph:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula. ",
     image: { id: "header-image", extention: "" },
@@ -157,7 +157,7 @@ ParagraphWithPresenter.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem.",
     subtitle:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem curabitur ip.",
     paragraph:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula. ",
     backgroundImage: { id: "background-image", extention: "" },
@@ -199,7 +199,7 @@ ColoredParagraph.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem.",
     subtitle:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem curabitur ip.",
     paragraph:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula. ",
   },
