@@ -1,0 +1,79 @@
+/* ================================================= */
+/* Ribbon Menu Styling Definitions */
+/* ================================================= */
+.qui-ribbon-menu {
+    height: 112px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    background-color: #e8e8e8;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    overflow: visible;
+
+    .qui .tilt {
+        transform: rotate(0deg);
+    }
+
+    .qui-iconlink-icon:hover {
+        color: #000
+    }
+}
+
+/* ================================================= */
+/* Labels styling of all Ribbon Menu component */
+/* ================================================= */
+.qui-ribbon-menu-label,
+.qui-ribbon-menu-tool-label {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    color: #666666;
+    cursor: pointer;
+}
+
+.qui-ribbon-menu-tool-label {
+    margin-left: 5px;
+}
+
+.qui-ribbon-menu-label:hover,
+.qui-ribbon-menu-tool-label:hover {
+    color: #000;
+}
+
+.qui-ribbon-menu-label-file {
+    position: relative;
+    font-size: 10px;
+    top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666666;
+}
+
+/* ================================================= */
+/* Verticle lines between components */
+/* ================================================= */
+.qui-ribbon-menu-parent-vertical-line {
+    height: 86.01px;
+    border: 1px solid #dddddd;
+}
+
+.qui-ribbon-menu-child-vertical-line {
+    height: 38px;
+    border: 1px solid #dddddd;
+}
+
+/* ================================================= */
+/* Icons Styling */
+/* ================================================= */
+.qui-ribbon-file-right-icons {
+    padding: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qui-ribbon-file-right-icons:hover {
+    color: #000;
+}
