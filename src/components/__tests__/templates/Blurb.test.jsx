@@ -5,131 +5,168 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import CaptionedParagraph from "../../Templates/CaptionedParagraph/CaptionedParagraph.react";
+import Blurb from "../../Templates/Blurb/Blurb.react";
 
-describe("CaptionedParagraph", () => {
-    // -------------------------------------
-    // Setup definitions for the test suite
-    // -------------------------------------
-    let component;
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <CaptionedParagraph
-                data={{
-                    title: "This is Title",
-                    subtitle: "This is Subtitle",
-                    label: "this is caption",
-                    caption: "this is caption",
-                }}
-                slideId={0}
-                asVariant="primary"
-                withColor={null}
-                isHidden={false}
-            />
-        );
-    });
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly with empty content", () => {
-        component.setProps({
-            data: {},
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when passed withColor props if backgroundImage removed from data props", () => {
-        let data = {
-            title: "This is Title",
-            subtitle: "This is Subtitle",
-            label: "this is caption",
-            caption: "this is caption",
-        }
-        let colors = {
-            backgroundColor: "7d8384",
-            slideHeaderTextColor: "ff0000",
-            slideHeaderAccentColor: "23ff00",
-            slideHeaderBackgroundColor: "00ff00",
-            captionTextColor: "ff0000",
-            captionAccentColor: "23ff00",
-            captionBackgroundColor: "00ff00",
-        }
-        component.setProps({ withColor: colors, data: data })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed withColor props if backgroundImage pass from data props", () => {
-        let data = {
-            title: "This is Title",
-            subtitle: "This is Subtitle",
-            label: "this is caption",
-            caption: "this is caption",
-            image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-            backgroundImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        }
-        let colors = {
-            backgroundColor: "",
-            slideHeaderTextColor: "ff0000",
-            slideHeaderAccentColor: "23ff00",
-            slideHeaderBackgroundColor: "00ff00",
-            captionTextColor: "ff0000",
-            captionAccentColor: "23ff00",
-            captionBackgroundColor: "00ff00",
-        }
-        component.setProps({ withColor: colors, data: data })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed withAnimation props", () => {
-        let animation = {
-            animation: "zoom",
-            duration: 0.5,
-            delay: 0,
-        }
-        component.setProps({ withAnimation: animation })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed answer props as null", () => {
-        component.setProps({ answer: null })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asVariant prop as primary", () => {
-        component.setProps({ asVariant: "primary" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asVariant prop as secondary", () => {
-        component.setProps({ asVariant: "secondary" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asVariant prop as warning", () => {
-        component.setProps({ asVariant: "warning" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asVariant prop as error", () => {
-        component.setProps({ asVariant: "error" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asVariant prop as success", () => {
-        component.setProps({ asVariant: "success" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed image prop as null", () => {
-        let data = {
-            title: "This is Title",
-            subtitle: "This is Subtitle",
-            image: "",
-            caption: "this is caption"
-        }
-        component.setProps({ data: data })
-        expect(component.exists()).toBe(true);
+describe("Blurb", () => {
+  // -------------------------------------
+  // Setup definitions for the test suite
+  // -------------------------------------
+  let component;
 
+  beforeEach(() => {
+    jest.resetAllMocks();
+    component = shallow(
+      <Blurb
+        data={{
+          title: "test title",
+          subtitle: "test subtitle",
+          icon: "test-icon",
+          image: {},
+        }}
+      />
+    );
+  });
+
+  it("should render correctly without throwing error", () => {
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withAnimation props", () => {
+    component.setProps({
+      withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      },
     });
+    expect(component.exists()).toBe(true);
+  });
 
+  it("should render correctly when passed asFloated props is left", () => {
+    component.setProps({
+      asFloated: "left",
+    });
+    expect(component.exists()).toBe(true);
+  });
 
+  it("should render correctly when passed asFloated props is right", () => {
+    component.setProps({
+      asFloated: "right",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed asFloated props is inline", () => {
+    component.setProps({
+      asFloated: "inline",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed asFloated props is none", () => {
+    component.setProps({
+      asFloated: "none",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isHidden props is false", () => {
+    component.setProps({
+      isHidden: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isCircular props is true", () => {
+    component.setProps({
+      isHidden: true,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isCircular props is false", () => {
+    component.setProps({
+      isHidden: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withColor", () => {
+    component.setProps({
+      withColor: {
+        backgroundColor: "#ffffff",
+        textColor: "#ffffff",
+        slideHeaderAccentColor: "#ffffff",
+        slideHeaderBackgroundColor: "#ffffff",
+        slideHeaderTextColor: "#ffffff",
+        textBlockBackgroundColor: "#fffff",
+        textBlockTextColor: "#ffffff",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when image is not defined", () => {
+    component.setProps({
+      data: {
+        title: "test title",
+        subtitle: "test subtitle",
+        icon: "test-icon",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when data is null", () => {
+    component.setProps({
+      data: null,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when icon is provided with presenter object", () => {
+    component.setProps({
+      data: {
+        title: "test title",
+        icon: "test-icon",
+        presenter: {
+          extention: "",
+          id: "default43",
+        },
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when presenter id is given in imageLibrary array", () => {
+    component.setProps({
+      data: {
+        title: "test title",
+        icon: "test-icon",
+        presenter: {
+          extention: "",
+          id: "test",
+        },
+      },
+      imageLibrary: [{ id: "test", image: "test.png" }],
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when background image is provided", () => {
+    component.setProps({
+      data: {
+        title: "test title",
+        icon: "test-icon",
+        backgroundImage: {
+          id: "background-image",
+          extention: "",
+        },
+      },
+      imageLibrary: [{ id: "background-image", image: "test.png" }],
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  
 });
