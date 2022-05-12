@@ -31,81 +31,6 @@ describe("LinkWithSlide", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error when image is not defined", () => {
-    component.setProps({
-      data: {
-        title: "test title",
-        subtitle: "test subtitle",
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error when data is null", () => {
-    component.setProps({
-      data: null,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error when icon is provided with presenter object", () => {
-    component.setProps({
-      data: {
-        title: "test title",
-        presenter: {
-          extention: "",
-          id: "default43",
-        },
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error when presenter id is given in imageLibrary array", () => {
-    component.setProps({
-      data: {
-        title: "test title",
-        presenter: {
-          extention: "",
-          id: "test",
-        },
-      },
-      imageLibrary: [{ id: "test", image: "test.png" }],
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error when background image is provided", () => {
-    component.setProps({
-      data: {
-        title: "test title",
-        backgroundImage: {
-          id: "background-image",
-          extention: "",
-        },
-      },
-      imageLibrary: [{ id: "background-image", image: "test.png" }],
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error when clicked on the button", () => {
-    component.setProps({
-      data: {
-        gotoSlide: 3,
-      },
-    });
-    component.find(".qui-link-with-slide-button").children().simulate("click");
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed withColor props", () => {
-    let colors = {
-      borderColor: "#ff0000",
-    };
-    component.setProps({ withColor: colors });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly when passed withAnimation props", () => {
     component.setProps({
       withAnimation: {
@@ -173,6 +98,74 @@ describe("LinkWithSlide", () => {
         buttonHoverTextColor: "",
       },
     });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when image is not defined", () => {
+    component.setProps({
+      data: {
+        title: "test title",
+        subtitle: "test subtitle",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when data is null", () => {
+    component.setProps({
+      data: null,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when icon is provided with presenter object", () => {
+    component.setProps({
+      data: {
+        title: "test title",
+        presenter: {
+          extention: "",
+          id: "default43",
+        },
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when presenter id is given in imageLibrary array", () => {
+    component.setProps({
+      data: {
+        title: "test title",
+        presenter: {
+          extention: "",
+          id: "test",
+        },
+      },
+      imageLibrary: [{ id: "test", image: "test.png" }],
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when background image is provided", () => {
+    component.setProps({
+      data: {
+        title: "test title",
+        backgroundImage: {
+          id: "background-image",
+          extention: "",
+        },
+      },
+      imageLibrary: [{ id: "background-image", image: "test.png" }],
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when clicked on the button", () => {
+    component.setProps({
+      data: {
+        gotoSlide: 3,
+      },
+    });
+    component.find(".qui-link-with-slide-button").children().simulate("click");
     expect(component.exists()).toBe(true);
   });
 });

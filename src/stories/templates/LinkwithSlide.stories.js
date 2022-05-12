@@ -127,6 +127,7 @@ LinkWithSlideHeaderImage.args = {
       id: "header-image",
       extention: "",
     },
+    gotoSlide:0
   },
   imageLibrary: [
     {
@@ -163,6 +164,7 @@ LinkWithSlideBackgroundImage.args = {
       id: "background-image",
       extention: "",
     },
+    gotoSlide:0
   },
   imageLibrary: [
     {
