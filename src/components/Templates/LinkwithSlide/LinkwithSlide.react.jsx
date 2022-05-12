@@ -12,6 +12,7 @@ import "../../../common/stylesheets/common.css";
 import "./LinkwithSlide.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
+import Button from "../../Buttons/Button/Button.react";
 
 LinkwithSlide.propTypes = {
   //=======================================
@@ -181,6 +182,9 @@ export default function LinkwithSlide(props) {
         >
           {data?.paragraph}
         </p>
+      </div>
+      <div className="qui-link-with-slide-button">
+        <Button content={"go"} asFloated="inline" />
       </div>
     </motion.div>
   );

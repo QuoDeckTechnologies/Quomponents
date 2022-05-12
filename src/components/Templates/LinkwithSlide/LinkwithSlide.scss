@@ -8,10 +8,12 @@
   .qui .qui-title {
     font-size: 2.4em;
     padding: 0 0 0.2em 0;
+    width: 100%;
   }
-//   .qui .qui-sub-title {
-//     font-size: 1.3em;
-//   }
+  .qui .qui-sub-title {
+    width: 75%;
+    font-weight: bold;
+  }
 }
 
 .qui .qui-link-with-slide-slide-header .qui-link-with-slide-image {
@@ -33,7 +35,7 @@
 
 .qui .qui-link-with-slide-subtitle {
   margin: 0;
-//   font-size: 1.1em;
+  //   font-size: 1.1em;
   text-align: center;
   width: 80%;
 }
@@ -62,6 +64,14 @@
 //     display: block;
 //     font-size: 1.2em;
 //   }
+
+.qui .qui-link-with-slide-button {
+  display: flex;
+  .qui.qui-button {
+    overflow: visible;
+    width: 100%;
+  }
+}
 
 .qui .qui-link-with-slide-text-block {
   margin-top: 1em;
@@ -120,12 +130,12 @@
 @media only screen and (min-width: 428px) {
   .qui.qui-link-with-slide-card {
     .qui .qui-title {
-      font-size: 1.8em;
+      font-size: 1.6em;
     }
   }
   .qui.qui-link-with-slide-card {
     .qui .qui-sub-title {
-      font-size: 1.3em;
+      font-size: 1.1em;
     }
   }
   .qui .qui-link-with-slide-subtitle {
