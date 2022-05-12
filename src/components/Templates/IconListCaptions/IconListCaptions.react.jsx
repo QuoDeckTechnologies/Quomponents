@@ -207,11 +207,12 @@ export default function IconListCaptions(props) {
               {_.map(data?.cards, (image, index) => {
                 return (
                   <ClickableImage
+                    key={"clickableImage: " + index}
                     content={{ image: resolveImage(image.image?.id ? image.image?.id : "", imageLibrary) }}
                     isActive={activeImage === index ? true : false}
                     isCircular={true}
                     onClick={() => handleClick(index)}
-                    style={{ borderColor: "red" }} />
+                    withColor={{ borderColor: props.withColor?.iconlistTrackColor }} />
                 );
               })}
             </Slider>

@@ -99,42 +99,6 @@ describe("IconListCaptions", () => {
         })
         component.find(ClickableImage).at(0).simulate('click', 0)
     });
-    it("should render with click on qui-clickable-image-container class", () => {
-        component.setProps({
-            data: {
-                cards: [{
-                    text: "This is text",
-                    image: {
-                        id: "image",
-                        extention: ""
-                    }
-                }, {
-                    text: "This is text",
-                    image: {
-                        id: "image",
-                        extention: ""
-                    }
-                }],
-            },
-            withcolor: {
-                slideHeaderTextColor: "#FFFFFF",
-                slideHeaderAccentColor: "#AD2929",
-                slideHeaderBackgroundColor: "#ad292980",
-                textBlockBackgroundColor: "#ad292980",
-                textBlockTextColor: "#fff",
-                iconlistTrackColor: "#ff0000",
-                backgroundColor: "#fff",
-            },
-            imageLibrary: [{
-                id: "image",
-                image: "test.png"
-            }, {
-                id: "image",
-                image: "test.png"
-            }]
-        })
-        component.find(".qui-clickable-image-container").simulate('click')
-    });
     it("should render with click on Clickable Image with borderColor", () => {
         component.setProps({
             data: {
