@@ -137,7 +137,8 @@ export default function IconListGallery(props) {
     }
 
     let trackColor = {
-        backgroundColor: withColor?.iconlistgalleryTrackColor
+        backgroundColor: withColor?.iconlistgalleryTrackColor,
+        borderColor: withColor?.iconlistgalleryTrackColor
     }
     //-------------------------------------------------------------------
     // 4. Function to set click on ClickableImage and manage slider settings
@@ -244,8 +245,7 @@ export default function IconListGallery(props) {
                                         onClick={() => handleClick(index)}
                                         isCircular={true}
                                         isActive={activeImage === index ? true : false}
-                                        style={{ borderColor: "red" }}
-                                        // isActive={true}
+                                        withColor={trackColor}
                                     />
                                 );
                             })}

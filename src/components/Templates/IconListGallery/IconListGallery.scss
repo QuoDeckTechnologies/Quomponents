@@ -37,7 +37,7 @@
         .qui-icon-list-gallery-display-image {
             width: 100%;
             border-radius: 1em;
-            max-height: 12em;
+            height: 12em;
             filter: drop-shadow(0px 5px 2px #a09797);
         }
         .qui-icon-list-gallery-clickable-images-container {
@@ -53,16 +53,16 @@
         }
         .qui-clicked-on-image {
             margin: auto;
-            border-radius: 0.5em;
+            border-radius: 50%;
             width: 1em;
             height: 1em;
             filter: drop-shadow(0px 3px 1px #a09797);
         }
-        .qui-active-image-click.is-circular {
-            width: 1em;
-            height: 1em;
-            border: 0.1em solid #ad2929;
-        }
+        // .qui-active-image-click.is-circular {
+        //     width: 0.9em;
+        //     height: 0.9em;
+        //     border: 0.1em solid #ad2929;
+        // }
     }
 }
 /* ================================================= */
@@ -72,15 +72,23 @@
     .qui.qui-icon-list-gallery {
         width: auto;
         .qui-icon-list-gallery-container {
-            .qui-clicked-on-image {
+            .qui-icon-list-gallery-display-image {
                 border-radius: 1em;
-                width: 2em;
-                height: 2em;
+                height: 10em;
+            }
+            .qui-icon-list-gallery-clickable-images-container {
+                .qui-icon-list-gallery-track {
+                    height: 0.35em;
+                }
+            }
+            .qui-clicked-on-image {
+                width: 2.1em;
+                height: 2.1em;
             }
             .qui-active-image-click {
-                width: 2.2em;
-                height: 2.2em;
-                border: 0.2em solid #ad2929;
+                width: 1.9em;
+                height: 1.9em;
+                border: 0.25em solid #ad2929;
             }
         }
     }
@@ -91,13 +99,12 @@
         width: 20em;
         .qui-icon-list-gallery-container {
             .qui-clicked-on-image {
-                // border-radius: 0.75em;
                 width: 1.5em;
                 height: 1.5em;
             }
             .qui-active-image-click.is-circular {
-                width: 1.5em;
-                height: 1.5em;
+                width: 1.35em;
+                height: 1.35em;
                 border: 0.15em solid #ad2929;
             }
         }
@@ -108,13 +115,12 @@
     .qui.qui-icon-list-gallery {
         .qui-icon-list-gallery-container {
             .qui-clicked-on-image {
-                border-radius: 0.5em;
                 width: 1em;
                 height: 1em;
             }
             .qui-active-image-click.is-circular {
-                width: 1em;
-                height: 1em;
+                width: 0.9em;
+                height: 0.9em;
                 border: 0.1em solid #ad2929;
             }
         }
@@ -125,13 +131,12 @@
     .qui.qui-icon-list-gallery {
         .qui-icon-list-gallery-container {
             .qui-clicked-on-image {
-                border-radius: 0.5em;
                 width: 1em;
                 height: 1em;
             }
             .qui-active-image-click.is-circular {
-                width: 1em;
-                height: 1em;
+                width: 0.9em;
+                height: 0.9em;
                 border: 0.1em solid #ad2929;
             }
         }
