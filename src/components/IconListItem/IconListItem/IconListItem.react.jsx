@@ -8,7 +8,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./IconListItem.scss";
 import "../../../common/stylesheets/overrule.scss";
-import DefaultImage from "../../../assets/default.jpeg"
 
 IconListItem.propTypes = {
   //=======================================

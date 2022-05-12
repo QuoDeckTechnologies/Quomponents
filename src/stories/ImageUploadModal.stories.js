@@ -59,6 +59,12 @@ export default {
         defaultValue: null,
       },
     },
+    onClose: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
   },
   decorators: [
     (story) => (
