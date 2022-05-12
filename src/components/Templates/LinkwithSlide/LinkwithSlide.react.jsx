@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
+  getTranslation,
   resolveImage,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -36,6 +37,16 @@ LinkwithSlide.propTypes = {
   //=======================================
   // Quommon props
   //=======================================
+  /**
+    Use to define standard component type
+    */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
   /**
     Use to float the component in parent container
     */
@@ -72,6 +83,14 @@ LinkwithSlide.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
@@ -90,9 +109,11 @@ LinkwithSlide.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asVariant: "warning",
   asFloated: "left",
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
   isHidden: false,
 };
 /**
@@ -141,7 +162,18 @@ export default function LinkwithSlide(props) {
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 5. Functions to set background for the template
+  // 5. Translate the text objects in case their is a dictionary provided
+  //-------------------------------------------------------------------
+  let tObj;
+  if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+  ) {
+    tObj = getTranslation(props.withTranslation);
+  }
+  //-------------------------------------------------------------------
+  // 6. Functions to set background for the template
   //-------------------------------------------------------------------
   const getBackground = () => {
     if (data?.backgroundImage) {
@@ -174,8 +206,8 @@ export default function LinkwithSlide(props) {
         className={`qui-link-with-slide-container ${quommonClasses.childClasses}`}
       >
         <div
-          className={`qui-link-with-slide-slide-header ${
-            data?.presenter ? "qui-link-with-slide-slide-header-presenter" : ""
+          className={`qui-link-with-slide-header ${
+            data?.presenter ? "qui-link-with-slide-header-presenter" : ""
           }`}
         >
           {getView(data)}
@@ -191,9 +223,9 @@ export default function LinkwithSlide(props) {
       </div>
       <div className="qui-link-with-slide-button">
         <Button
-          content={"go"}
+          content={tObj ? tObj.button : "go"}
           asFloated="inline"
-          asVariant="warning"
+          asVariant={props.asVariant}
           onClick={() => props.onClick(data?.gotoSlide)}
           withColor={{
             backgroundColor: withColor?.buttonBackgroundColor,

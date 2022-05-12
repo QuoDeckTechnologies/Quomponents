@@ -13,6 +13,12 @@ describe("LinkWithSlide", () => {
   // -------------------------------------
   let component;
 
+  const dictionary = JSON.stringify({
+    hi: {
+      linkwithslide: { button: "जाएँ" },
+    },
+  });
+
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -28,6 +34,52 @@ describe("LinkWithSlide", () => {
   });
 
   it("should render correctly without throwing error", () => {
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when translation is used", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "linkwithslide",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed asVariant props as primary", () => {
+    component.setProps({
+      asVariant: "primary",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed asVariant props as secondary", () => {
+    component.setProps({
+      asVariant: "secondary",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed asVariant props as warning", () => {
+    component.setProps({
+      asVariant: "warning",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed asVariant props as success", () => {
+    component.setProps({
+      asVariant: "success",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed asVariant props as error", () => {
+    component.setProps({
+      asVariant: "error",
+    });
     expect(component.exists()).toBe(true);
   });
 

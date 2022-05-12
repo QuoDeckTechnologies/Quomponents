@@ -1,6 +1,12 @@
 import React from "react";
 import LinkwithSlide from "../../components/Templates/LinkwithSlide/LinkwithSlide.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    linkwithslide: { button: "जाएँ" },
+  },
+});
+
 export default {
   title: "Design System/Templates/LinkwithSlide/LinkwithSlide",
   component: LinkwithSlide,
@@ -15,6 +21,13 @@ export default {
       },
     },
     imageLibrary: [],
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     asFloated: {
       control: "select",
       options: ["left", "right", "none", "inline"],
@@ -45,6 +58,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -85,6 +108,7 @@ Default.args = {
     gotoSlide: 0,
   },
   imageLibrary: [{}],
+  asVariant: "warning",
   asFloated: "none",
   withColor: {
     backgroundColor: "",
@@ -101,6 +125,11 @@ Default.args = {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "linkwithslide",
+    dictionary: dictionary,
   },
   isHidden: false,
 };
@@ -127,7 +156,7 @@ LinkWithSlideHeaderImage.args = {
       id: "header-image",
       extention: "",
     },
-    gotoSlide:0
+    gotoSlide: 0,
   },
   imageLibrary: [
     {
@@ -164,7 +193,7 @@ LinkWithSlideBackgroundImage.args = {
       id: "background-image",
       extention: "",
     },
-    gotoSlide:0
+    gotoSlide: 0,
   },
   imageLibrary: [
     {
@@ -242,6 +271,29 @@ AnimatedLinkwithSlide.parameters = {
     source: {
       code: `<LinkwithSlide {...${JSON.stringify(
         AnimatedLinkwithSlide.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Translated LinkwithSlide
+// -------------------------------------------------------------
+export const TranslatedLinkwithSlide = Template.bind({});
+TranslatedLinkwithSlide.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "linkwithslide",
+    dictionary: dictionary,
+  },
+};
+TranslatedLinkwithSlide.parameters = {
+  docs: {
+    source: {
+      code: `<LinkwithSlide {...${JSON.stringify(
+        TranslatedLinkwithSlide.args,
         null,
         2
       )}}/>`,
