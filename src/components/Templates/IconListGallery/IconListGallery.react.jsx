@@ -77,7 +77,7 @@ IconListGallery.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-    Use to show/hide the componentresolveImage
+    Use to show/hide the component
     */
     isHidden: PropTypes.bool,
     /**
