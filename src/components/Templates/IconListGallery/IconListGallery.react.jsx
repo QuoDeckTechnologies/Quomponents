@@ -143,11 +143,13 @@ export default function IconListGallery(props) {
     // 4. Function to set click on ClickableImage and manage slider settings
     //-------------------------------------------------------------------
     const [state, setState] = useState(0);
+    const [activeImage, setActiveImage] = useState(0)
     const sliderRef = useRef();
 
     function handleClick(e) {
         props.onClick(e)
         setState(e)
+        setActiveImage(e)
     }
 
     var settings = {
@@ -241,6 +243,9 @@ export default function IconListGallery(props) {
                                         content={{ image: resolveImage(image?.image?.id, imageLibrary) }}
                                         onClick={() => handleClick(index)}
                                         isCircular={true}
+                                        isActive={activeImage === index ? true : false}
+                                        style={{ borderColor: "red" }}
+                                        // isActive={true}
                                     />
                                 );
                             })}
