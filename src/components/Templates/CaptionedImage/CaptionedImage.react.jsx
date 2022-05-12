@@ -114,7 +114,6 @@ CaptionedImage.defaultProps = {
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
-
 };
 /**
 ## Notes
@@ -132,51 +131,72 @@ export default function CaptionedImage(props) {
     data?.presenter !== undefined &&
     data?.presenter.id !== undefined &&
     data?.presenter.id !== "default43";
-
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "CaptionedImage");
   quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
-
   //-------------------------------------------------------------------
   //  Setting the colors of imported components
   //-------------------------------------------------------------------
   let slideHeaderColors = {
     textColor: props.withColor?.slideHeaderTextColor,
     accentColor: props.withColor?.slideHeaderAccentColor,
-    backgroundColor: props.withColor?.slideHeaderBackgroundColor
-  }
+    backgroundColor: props.withColor?.slideHeaderBackgroundColor,
+  };
   let textBlockColors = {
     textColor: props.withColor?.textBlockTextColor,
-    backgroundColor: props.withColor?.textBlockBackgroundColor
-  }
+    backgroundColor: props.withColor?.textBlockBackgroundColor,
+  };
   let SlideHeaderText = {
     title: data?.title,
     subTitle: data?.subtitle,
-  }
+  };
   //-------------------------------------------------------------------
   // Function to return a view for CaptionedImage
   //-------------------------------------------------------------------
   const CaptionedImageView = (data) => {
     return (
-      <div className="qui-captioned-image-card" key={"captioned-image-slide-" + props.slideId} style={{
-        ...background,
-        backgroundColor: withColor?.backgroundColor,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}>
-        <div className={`${quommonClasses.childClasses}`} key={"captioned-image-" + props.slideId}>
+      <div
+        className="qui-captioned-image-card"
+        key={"captioned-image-slide-" + props.slideId}
+        style={{
+          ...background,
+          backgroundColor: withColor?.backgroundColor,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <div
+          className={`${quommonClasses.childClasses}`}
+          key={"captioned-image-" + props.slideId}
+        >
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
               content={SlideHeaderText}
-              withColor={slideHeaderColors} />
+              withColor={slideHeaderColors}
+            />
           )}
           {data?.image && (
-            <img className="qui-captioned-image-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
+            <img
+              className="qui-captioned-image-image"
+              src={resolveImage(data.image.id, imageLibrary)}
+              alt=""
+            />
           )}
-          <ClickableImage {...props} content={{ image: resolveImage(data?.data?.image.id, imageLibrary) }} onClick={(e) => props.onClick(e)} isActive={false} />
-          <TextBlock {...props} content={data?.data.caption} withColor={textBlockColors} />
+          <ClickableImage
+            {...props}
+            content={{
+              image: resolveImage(data?.data?.image.id, imageLibrary),
+            }}
+            onClick={props.onClick}
+            isActive={false}
+          />
+          <TextBlock
+            {...props}
+            content={data?.data.caption}
+            withColor={textBlockColors}
+          />
         </div>
       </div>
     );
@@ -186,7 +206,8 @@ export default function CaptionedImage(props) {
   //-------------------------------------------------------------------
   const CaptionedImagePresenterView = (data) => {
     return (
-      <div className="qui-captioned-image-presenter-container"
+      <div
+        className="qui-captioned-image-presenter-container"
         style={{
           ...background,
           backgroundColor: withColor?.backgroundColor,
@@ -194,26 +215,36 @@ export default function CaptionedImage(props) {
           backgroundSize: "cover",
         }}
       >
-        <div className="qui-captioned-image-presenter-title" >
-          <TextBlock {...props}
+        <div className="qui-captioned-image-presenter-title">
+          <TextBlock
+            {...props}
             content={data?.title}
             asFloated="left"
-            withColor={textBlockColors} />
+            withColor={textBlockColors}
+          />
         </div>
         <div className="qui-captioned-image-presenter-sub-title">
-          <TextBlock {...props}
+          <TextBlock
+            {...props}
             content={data?.subtitle}
             asFloated="left"
-            withColor={textBlockColors} />
+            withColor={textBlockColors}
+          />
         </div>
-        <ClickableImage {...props} content={{ image: resolveImage(data?.data?.image.id, imageLibrary) }} onClick={(e) => props.onClick(e)} />
+        <ClickableImage
+          {...props}
+          content={{ image: resolveImage(data?.data?.image.id, imageLibrary) }}
+          onClick={(e) => props.onClick(e)}
+        />
         <div className="qui-captioned-image-presenter-caption">
-          <TextBlock {...props}
+          <TextBlock
+            {...props}
             content={data?.data.caption}
             asFloated="left"
             conversation={true}
             position="right-bottom"
-            withColor={textBlockColors} />
+            withColor={textBlockColors}
+          />
         </div>
         {hasPresenter && (
           <img
@@ -223,7 +254,6 @@ export default function CaptionedImage(props) {
           />
         )}
       </div>
-
     );
   };
   //-------------------------------------------------------------------
@@ -254,18 +284,25 @@ export default function CaptionedImage(props) {
       };
     }
   };
-  const background = data?.presenter ? getPresenterBackground() : getBackground();
+  const background = data?.presenter
+    ? getPresenterBackground()
+    : getBackground();
 
   // ========================= Render Function =================================
+
   return (
     <motion.div
       initial={animate.from}
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses} `}
     >
-      {data && <div>
-        {data?.presenter ? CaptionedImagePresenterView(data) : CaptionedImageView(data)}
-      </div>}
+      {data && (
+        <div>
+          {data?.presenter
+            ? CaptionedImagePresenterView(data)
+            : CaptionedImageView(data)}
+        </div>
+      )}
     </motion.div>
   );
 }
