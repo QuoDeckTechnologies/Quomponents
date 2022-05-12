@@ -103,8 +103,8 @@ Default.parameters = {
 // -------------------------------------------------------------
 // Paragraph with background image
 // -------------------------------------------------------------
-export const ParagraphWithBackgroundimage = Template.bind({});
-ParagraphWithBackgroundimage.args = {
+export const ParagraphWithBackgroundImage = Template.bind({});
+ParagraphWithBackgroundImage.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem.",
     subtitle:
@@ -137,11 +137,11 @@ ParagraphWithBackgroundimage.args = {
   },
   isHidden: false,
 };
-ParagraphWithBackgroundimage.parameters = {
+ParagraphWithBackgroundImage.parameters = {
   docs: {
     source: {
       code: `<Title {...${JSON.stringify(
-        ParagraphWithBackgroundimage.args,
+        ParagraphWithBackgroundImage.args,
         null,
         2
       )}}/>`,
