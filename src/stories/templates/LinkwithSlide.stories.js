@@ -228,8 +228,8 @@ LinkWithSlideBackgroundImage.parameters = {
 // -------------------------------------------------------------
 // Colored LinkwithSlide
 // -------------------------------------------------------------
-export const ColoredLinkwithSlide = Template.bind({});
-ColoredLinkwithSlide.args = {
+export const ColoredLinkWithSlide = Template.bind({});
+ColoredLinkWithSlide.args = {
   ...Default.args,
   withColor: {
     textColor: "#ced4da",
@@ -243,11 +243,11 @@ ColoredLinkwithSlide.args = {
     buttonHoverTextColor: "#ffffff",
   },
 };
-ColoredLinkwithSlide.parameters = {
+ColoredLinkWithSlide.parameters = {
   docs: {
     source: {
       code: `<LinkwithSlide {...${JSON.stringify(
-        ColoredLinkwithSlide.args,
+        ColoredLinkWithSlide.args,
         null,
         2
       )}}/>`,
@@ -257,8 +257,8 @@ ColoredLinkwithSlide.parameters = {
 // -------------------------------------------------------------
 // Animated LinkwithSlide
 // -------------------------------------------------------------
-export const AnimatedLinkwithSlide = Template.bind({});
-AnimatedLinkwithSlide.args = {
+export const AnimatedLinkWithSlide = Template.bind({});
+AnimatedLinkWithSlide.args = {
   ...Default.args,
   withAnimation: {
     animation: "fade",
@@ -266,11 +266,11 @@ AnimatedLinkwithSlide.args = {
     delay: 0,
   },
 };
-AnimatedLinkwithSlide.parameters = {
+AnimatedLinkWithSlide.parameters = {
   docs: {
     source: {
       code: `<LinkwithSlide {...${JSON.stringify(
-        AnimatedLinkwithSlide.args,
+        AnimatedLinkWithSlide.args,
         null,
         2
       )}}/>`,
@@ -280,8 +280,8 @@ AnimatedLinkwithSlide.parameters = {
 // -------------------------------------------------------------
 // Translated LinkwithSlide
 // -------------------------------------------------------------
-export const TranslatedLinkwithSlide = Template.bind({});
-TranslatedLinkwithSlide.args = {
+export const TranslatedLinkWithSlide = Template.bind({});
+TranslatedLinkWithSlide.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
@@ -289,11 +289,11 @@ TranslatedLinkwithSlide.args = {
     dictionary: dictionary,
   },
 };
-TranslatedLinkwithSlide.parameters = {
+TranslatedLinkWithSlide.parameters = {
   docs: {
     source: {
       code: `<LinkwithSlide {...${JSON.stringify(
-        TranslatedLinkwithSlide.args,
+        TranslatedLinkWithSlide.args,
         null,
         2
       )}}/>`,
