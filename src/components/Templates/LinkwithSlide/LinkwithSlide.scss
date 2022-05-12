@@ -3,7 +3,7 @@
   border-radius: 1em;
   .qui .qui-title-block {
     min-width: 12em;
-    min-height: 12em;
+    min-height: 10em;
   }
   .qui .qui-title {
     font-size: 2.4em;
@@ -19,7 +19,7 @@
 .qui .qui-link-with-slide-slide-header .qui-link-with-slide-image {
   box-shadow: 0px 4px 10px #8b8b8b;
   min-width: 12em;
-  height: 15em;
+  height: 11em;
   object-fit: cover;
 }
 
@@ -31,45 +31,35 @@
 .qui .qui-link-with-slide-card-subtitle {
   display: flex;
   justify-content: center;
+  margin-top: 0.5em;
 }
 
 .qui .qui-link-with-slide-subtitle {
   margin: 0;
-  //   font-size: 1.1em;
   text-align: center;
   width: 80%;
 }
 
-//   .qui .qui-link-with-slide-slide-header.qui-title-slide-header-presenter {
-//     position: relative;
-//     padding: 0;
-//   }
 .qui .qui-link-with-slide-slide-header {
   position: relative;
-  padding: 1.8em;
+  padding: 1em;
 }
-
-//   .qui .qui-title-icon-block {
-//     position: relative;
-//     bottom: 1.8em;
-//     width: 100%;
-//     display: flex;
-//     justify-content: center;
-//     font-size: 1.2em;
-//   }
-
-//   .qui .qui-title-icon-block.qui-title-icon-block-presenter {
-//     bottom: -1em;
-//     left: 0;
-//     display: block;
-//     font-size: 1.2em;
-//   }
 
 .qui .qui-link-with-slide-button {
   display: flex;
+  margin-top: 1em;
   .qui.qui-button {
     overflow: visible;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    .qui-label {
+      display: none;
+    }
+    .qui-btn {
+      width: 85%;
+      padding: 0.5em;
+    }
   }
 }
 
@@ -96,17 +86,6 @@
     }
   }
 }
-
-//   .qui .qui-title-presenter-image {
-//     position: absolute;
-//     bottom: 0;
-//     right: 0;
-//     height: 50%;
-//   }
-
-//   .qui .qui-title-presenter-image {
-//     object-fit: cover;
-//   }
 
 @media only screen and (min-width: 320px) {
   .qui.qui-link-with-slide-card {
@@ -135,11 +114,11 @@
   }
   .qui.qui-link-with-slide-card {
     .qui .qui-sub-title {
-      font-size: 1.1em;
+      font-size: 1em;
     }
   }
   .qui .qui-link-with-slide-subtitle {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 }
 

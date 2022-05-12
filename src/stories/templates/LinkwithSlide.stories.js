@@ -31,10 +31,10 @@ export default {
           slideHeaderAccentColor: "",
           slideHeaderBackgroundColor: "",
           slideHeaderTextColor: "",
-          textBlockBackgroundColor: "",
-          textBlockTextColor: "",
-          iconBlockBackgroundColor: "",
-          iconBlockAccentColor: "",
+          buttonBackgroundColor: "",
+          buttonTextColor: "",
+          buttonHoverBackgroundColor: "",
+          buttonHoverTextColor: "",
         },
       },
     },
@@ -54,6 +54,12 @@ export default {
         defaultValue: false,
       },
     },
+    onClick: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
   },
   parameters: {
     componentSubtitle: "Displays a LinkwithSlide component",
@@ -71,18 +77,14 @@ const Template = (args) => <LinkwithSlide {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   data: {
-    title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    title: "Neque porro quisquam est qui dolorem est",
+    subtitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit adipiscing elit adipisl?",
     paragraph:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula. ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula ligula ligula ligula.",
+    gotoSlide: 0,
   },
-  imageLibrary: [
-    {
-      id: "header-image",
-      image:
-        "https://images.unsplash.com/photo-1650958287606-a0c5d2fda0d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
-    },
-  ],
+  imageLibrary: [{}],
   asFloated: "none",
   withColor: {
     backgroundColor: "",
@@ -90,10 +92,10 @@ Default.args = {
     slideHeaderAccentColor: "#AD2929",
     slideHeaderBackgroundColor: "#ad292980",
     slideHeaderTextColor: "#ffffff",
-    textBlockBackgroundColor: "",
-    textBlockTextColor: "#ffffff",
-    iconBlockBackgroundColor: "",
-    iconBlockAccentColor: "",
+    buttonBackgroundColor: "",
+    buttonTextColor: "",
+    buttonHoverBackgroundColor: "",
+    buttonHoverTextColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -110,39 +112,82 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// LinkwithSlide
+// LinkwithSlide and header image
 // -------------------------------------------------------------
-export const DefaultLinkwithSlide = Template.bind({});
-DefaultLinkwithSlide.args = {
+export const LinkWithSlideHeaderImage = Template.bind({});
+LinkWithSlideHeaderImage.args = {
+  ...Default.args,
   data: {
-    title: "Neque porro quisquam est qui dolorem",
-    icon: "fas fa-book-open",
+    title: "Neque porro quisquam est qui dolorem est",
+    subtitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit adipiscing elit adipisl?",
+    paragraph:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula ligula ligula ligula.",
+    image: {
+      id: "header-image",
+      extention: "",
+    },
   },
-  imageLibrary: [{}],
-  asFloated: "none",
-  withColor: {
-    backgroundColor: "",
-    textColor: "",
-    slideHeaderAccentColor: "#AD2929",
-    slideHeaderBackgroundColor: "#ad292980",
-    slideHeaderTextColor: "#ffffff",
-    textBlockBackgroundColor: "",
-    textBlockTextColor: "#ffffff",
-    iconBlockBackgroundColor: "",
-    iconBlockAccentColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
-  },
-  isHidden: false,
+  imageLibrary: [
+    {
+      id: "header-image",
+      image:
+        "https://images.unsplash.com/photo-1650958287606-a0c5d2fda0d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+    },
+  ],
 };
-DefaultLinkwithSlide.parameters = {
+LinkWithSlideHeaderImage.parameters = {
   docs: {
     source: {
       code: `<LinkwithSlide {...${JSON.stringify(
-        DefaultLinkwithSlide.args,
+        LinkWithSlideHeaderImage.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// LinkwithSlide and background image
+// -------------------------------------------------------------
+export const LinkWithSlideBackgroundImage = Template.bind({});
+LinkWithSlideBackgroundImage.args = {
+  ...Default.args,
+  data: {
+    title: "Neque porro quisquam est qui dolorem est",
+    subtitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit adipiscing elit adipisl?",
+    paragraph:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula ligula ligula ligula.",
+    backgroundImage: {
+      id: "background-image",
+      extention: "",
+    },
+  },
+  imageLibrary: [
+    {
+      id: "background-image",
+      image:
+        "https://images.unsplash.com/photo-1652229914166-44733f7d06d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNDB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    },
+  ],
+  withColor: {
+    backgroundColor: "",
+    textColor: "#ffffff",
+    slideHeaderAccentColor: "#AD2929",
+    slideHeaderBackgroundColor: "#ad292980",
+    slideHeaderTextColor: "#ffffff",
+    buttonBackgroundColor: "",
+    buttonTextColor: "",
+    buttonHoverBackgroundColor: "",
+    buttonHoverTextColor: "",
+  },
+};
+LinkWithSlideBackgroundImage.parameters = {
+  docs: {
+    source: {
+      code: `<LinkwithSlide {...${JSON.stringify(
+        LinkWithSlideBackgroundImage.args,
         null,
         2
       )}}/>`,
@@ -155,21 +200,16 @@ DefaultLinkwithSlide.parameters = {
 export const ColoredLinkwithSlide = Template.bind({});
 ColoredLinkwithSlide.args = {
   ...Default.args,
-  data: {
-    title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    icon: "fas fa-book-open",
-  },
   withColor: {
-    backgroundColor: "#14213d",
     textColor: "#ced4da",
     slideHeaderAccentColor: "#ffba08",
+    backgroundColor: "#14213d",
     slideHeaderBackgroundColor: "#8c9ea3",
     slideHeaderTextColor: "#ffffff",
-    textBlockBackgroundColor: "#ee9b00",
-    textBlockTextColor: "#ffffff",
-    iconBlockBackgroundColor: "#e5e5e5",
-    iconBlockAccentColor: "#14213d",
+    buttonBackgroundColor: "#8c9ea3",
+    buttonTextColor: "#ffba08",
+    buttonHoverBackgroundColor: "#14213d",
+    buttonHoverTextColor: "#ffffff",
   },
 };
 ColoredLinkwithSlide.parameters = {

@@ -25,6 +25,7 @@ LinkwithSlide.propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
     paragraph: PropTypes.string,
+    gotoSlide: PropTypes.number,
     image: PropTypes.object,
     backgroundImage: PropTypes.object,
   }),
@@ -48,10 +49,10 @@ LinkwithSlide.propTypes = {
     slideHeaderAccentColor: PropTypes.string,
     slideHeaderBackgroundColor: PropTypes.string,
     slideHeaderTextColor: PropTypes.string,
-    textBlockBackgroundColor: PropTypes.string,
-    textBlockTextColor: PropTypes.string,
-    iconBlockBackgroundColor: PropTypes.string,
-    iconBlockAccentColor: PropTypes.string,
+    buttonBackgroundColor: PropTypes.string,
+    buttonTextColor: PropTypes.string,
+    buttonHoverBackgroundColor: PropTypes.string,
+    buttonHoverTextColor: PropTypes.string,
   }),
   /**
     Use to define the entry animation of the component
@@ -74,6 +75,10 @@ LinkwithSlide.propTypes = {
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
+  /**
+    LinkwithSlide component must have the onClick function passed as props
+    */
+  onClick: PropTypes.func.isRequired,
 };
 
 LinkwithSlide.defaultProps = {
@@ -92,6 +97,7 @@ LinkwithSlide.defaultProps = {
 };
 /**
 ## Notes
+- The design system used for this component is Material UI (@mui/material)
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
@@ -131,11 +137,11 @@ export default function LinkwithSlide(props) {
     }
   };
   //-------------------------------------------------------------------
-  // 5. Get animation of the component
+  // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 6. Functions to set background for the template
+  // 5. Functions to set background for the template
   //-------------------------------------------------------------------
   const getBackground = () => {
     if (data?.backgroundImage) {
@@ -184,7 +190,18 @@ export default function LinkwithSlide(props) {
         </p>
       </div>
       <div className="qui-link-with-slide-button">
-        <Button content={"go"} asFloated="inline" />
+        <Button
+          content={"go"}
+          asFloated="inline"
+          asVariant="warning"
+          onClick={() => props.onClick(data?.gotoSlide)}
+          withColor={{
+            backgroundColor: withColor?.buttonBackgroundColor,
+            textColor: withColor?.buttonTextColor,
+            hoverBackgroundColor: withColor?.buttonHoverBackgroundColor,
+            hoverTextColor: withColor?.buttonHoverTextColor,
+          }}
+        />
       </div>
     </motion.div>
   );
