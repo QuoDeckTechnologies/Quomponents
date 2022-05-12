@@ -7,7 +7,6 @@ import { shallow } from "enzyme";
 // -------------------------------------
 import CaptionedImage from "../../Templates/CaptionedImage/CaptionedImage.react";
 import ClickableImage from "../../ClickableImage/ClickableImage.react"
-import SlideHeader from "../../SlideHeader/SlideHeader.react"
 
 describe("CaptionedImage", () => {
     // -------------------------------------
