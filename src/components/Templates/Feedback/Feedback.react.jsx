@@ -86,7 +86,7 @@ Feedback.propTypes = {
     /**
      Feedback component must have the onClick function passed as props
      */
-    gotoNextSlide: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
 };
 
 Feedback.defaultProps = {
@@ -146,28 +146,28 @@ export default function Feedback(props) {
             header: "",
             icon: "",
             text: fb,
-            backgroundColor: ""
+            colorClass: ""
         };
         if (index === 0) {
             res = {
                 ...res,
                 header: "Correct!",
                 icon: "fa fa-check",
-                backgroundColor: "#000000"
+                colorClass: "qui-feedback-correct",
             };
         } else if (index === 1) {
             res = {
                 ...res,
                 header: "Incorrect!",
                 icon: "fa fa-times",
-                backgroundColor: "#000000"
+                colorClass: "qui-feedback-incorrect"
             };
         } else {
             res = {
                 ...res,
                 header: "Thank You!",
                 icon: "fa fa-thumbs-up",
-                backgroundColor: "#000000"
+                colorClass: "qui-feedback-thank-you"
             };
         }
         return res;
@@ -205,13 +205,13 @@ export default function Feedback(props) {
                 {_.map(refinedFeedback, (feedback, index) => {
                     return (
                         <div
+                            key={index}
                             className={
                                 data?.selectedIndex === index ? "qui-show-feedback" : "qui-hide-feedback"
                             }
                             fb={"card_" + index}
                         >
-                            <i className={`qui-feedback-icon ${feedback["icon"]}`}></i>
-                            {/* ${feedback["backgroundColor"]} */}
+                            <i className={`qui-feedback-icon ${feedback["icon"]} ${feedback["colorClass"]}`}></i>
                             <div className="qui-feedback-header">
                                 <TextBlock {...props}
                                     content={feedback["header"]}
@@ -226,13 +226,14 @@ export default function Feedback(props) {
                             </div>
                             <div className="qui-feedback-button">
                                 <Button
-                                    onClick={props.gotoNextSlide}
+                                    {...props}
+                                    content={"Continue"}
+                                    onClick={props.onClick}
                                     asVariant={asVariant}
                                     asFloated={"inline"}
                                     withColor={buttonColors}
-                                >
-                                    Continue
-                                </Button>
+
+                                />
                             </div>
                         </div>
                     )

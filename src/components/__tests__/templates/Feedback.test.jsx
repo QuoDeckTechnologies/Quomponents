@@ -28,6 +28,9 @@ describe("Feedback", () => {
                 withColor={null}
                 withAnimation={null}
                 isHidden={false}
+                onClick={(e) => {
+                    console.log(e);
+                }}
             />
         );
     });
@@ -35,6 +38,7 @@ describe("Feedback", () => {
     it("should render correctly without throwing error", () => {
         expect(component.exists()).toBe(true);
     });
+
     it("should render correctly when passed asVariant prop as primary", () => {
         component.setProps({ asVariant: "primary" })
         expect(component.exists()).toBe(true);
@@ -89,6 +93,12 @@ describe("Feedback", () => {
 
     it("should render correctly when passed isHidden props as true", () => {
         component.setProps({ isHidden: true })
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly when data pass as empty object", () => {
+        let data = {
+        }
+        component.setProps({ data: data })
         expect(component.exists()).toBe(true);
     });
 });

@@ -2,13 +2,17 @@
     padding: 1.5em;
     border-radius: 1em;
     min-height: 30em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     .qui-feedback-icon {
         border-radius: 50%;
         padding: 0.5em;
         height: 1em;
         width: 1em;
         font-size: 2em;
-        background-color: red;
+        background-color: green;
     }
     .qui-text-block-area {
         width: fit-content;
@@ -31,6 +35,24 @@
     }
     .qui-feedback-header {
         font-size: 2em;
+        .qui-text-block-area {
+            padding: 0;
+        }
+    }
+    .qui-feedback-correct {
+        background-color: #5dbb46;
+        border: 0.1em solid #40831a;
+        color: #ffffff;
+    }
+    .qui-feedback-incorrect {
+        background-color: #dc2c29;
+        border: 0.1em solid #b32111;
+        color: #ffffff;
+    }
+    .qui-feedback-thank-you {
+        background-color: #f6bd32;
+        border: 0.1em solid #fdf841;
+        color: #ffffff;
     }
 }
 
