@@ -189,7 +189,7 @@ export default function Popuplist(props) {
     // 6. Variable for ButtonBank content props
     //-------------------------------------------------------------------
     let optionsArray = [];
-    data?.popupitems?.forEach((item) => optionsArray.push(item?.text?.toLowerCase()));
+    data?.popupitems?.forEach((item) => optionsArray.push(item?.option?.toLowerCase()));
 
     // ========================= Render Function =================================
     return (

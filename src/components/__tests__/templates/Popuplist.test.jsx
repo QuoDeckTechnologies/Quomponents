@@ -19,11 +19,38 @@ describe("Popuplist", () => {
 		subtitle:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
 		backgroundImage: { id: "", extention: "" },
-		popupitems: [
-			{ correct: "checked", text: "Item 1" },
-			{ correct: "", text: "Item 2" },
-			{ correct: "", text: "Item 3" },
-			{ correct: "", text: "Item 4" }
+		popupitems: [{
+			option: "Item 1",
+			image: {
+				id: "image-1",
+				extension: ".png"
+			},
+			caption: " Please put in a caption",
+		},
+		{
+			option: "Item 2",
+			image: {
+				id: "image-2",
+				extension: ".png"
+			},
+			caption: " Please put in a caption",
+		},
+		{
+			option: "Item 3",
+			image: {
+				id: "image-3",
+				extension: ".png"
+			},
+			caption: " Please put in a caption",
+		},
+		{
+			option: "Item 4",
+			image: {
+				id: "image-4",
+				extension: ".png"
+			},
+			caption: " Please put in a caption",
+		},
 		],
 	}
 
@@ -233,10 +260,38 @@ describe("Popuplist", () => {
 	it("should return the index of selected option", () => {
 		component.setProps({
 			popupitems: [
-				{ correct: "checked", text: "Item 1" },
-				{ correct: "", text: "Item 2" },
-				{ correct: "", text: "Item 3" },
-				{ correct: "", text: "Item 4" }
+				{
+					option: "Item 1",
+					image: {
+						id: "image-1",
+						extension: ".png"
+					},
+					caption: " Please put in a caption",
+				},
+				{
+					option: "Item 2",
+					image: {
+						id: "image-2",
+						extension: ".png"
+					},
+					caption: " Please put in a caption",
+				},
+				{
+					option: "Item 3",
+					image: {
+						id: "image-3",
+						extension: ".png"
+					},
+					caption: " Please put in a caption",
+				},
+				{
+					option: "Item 4",
+					image: {
+						id: "image-4",
+						extension: ".png"
+					},
+					caption: " Please put in a caption",
+				},
 			]
 		})
 		let onClick = jest.fn();

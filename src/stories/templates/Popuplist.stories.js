@@ -84,7 +84,7 @@ export default {
 	],
 	parameters: {
 		componentSubtitle:
-			"Displays a Popuplist with a Title and Subtitle, the user can navigate through each options by clicking on the buttons, we can switch between the image and SlideHeader by adding or removing the image prop",
+			"Displays a Popuplist with a Title and Subtitle, the user can navigate through each options by clicking on the buttons and see its given image and caption, we can switch between the image and SlideHeader by adding or removing the image prop",
 		a11y: { disable: true },
 		docs: {
 			iframeHeight: 650,
@@ -104,10 +104,38 @@ Default.args = {
 		image: { id: "header-image", extension: "" },
 		backgroundImage: { id: "", extention: "" },
 		popupitems: [
-			{ correct: "checked", text: "Item 1" },
-			{ correct: "", text: "Item 2" },
-			{ correct: "", text: "Item 3" },
-			{ correct: "", text: "Item 4" }
+			{
+				option: "Item 1",
+				image: {
+					id: "image-1",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
+			{
+				option: "Item 2",
+				image: {
+					id: "image-2",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
+			{
+				option: "Item 3",
+				image: {
+					id: "image-3",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
+			{
+				option: "Item 4",
+				image: {
+					id: "image-4",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
 		],
 	},
 	slideId: 0,
@@ -115,7 +143,23 @@ Default.args = {
 		id: "header-image",
 		image:
 			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-	}],
+	}, {
+		id: "image-1",
+		image:
+			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+	}, {
+		id: "image-2",
+		image:
+			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+	}, {
+		id: "image-3",
+		image:
+			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+	}, {
+		id: "image-4",
+		image:
+			"https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+	},],
 	asVariant: "warning",
 	withColor: {
 		slideHeaderTextColor: "#ffffff",
@@ -154,10 +198,38 @@ PopuplistWithSlideHeader.args = {
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
 		backgroundImage: { id: "", extention: "" },
 		popupitems: [
-			{ correct: "checked", text: "Item 1" },
-			{ correct: "", text: "Item 2" },
-			{ correct: "", text: "Item 3" },
-			{ correct: "", text: "Item 4" }
+			{
+				option: "Item 1",
+				image: {
+					id: "image-1",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
+			{
+				option: "Item 2",
+				image: {
+					id: "image-2",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
+			{
+				option: "Item 3",
+				image: {
+					id: "image-3",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
+			{
+				option: "Item 4",
+				image: {
+					id: "image-4",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
 		],
 	},
 	slideId: 0,
@@ -204,10 +276,38 @@ EmphasisPopuplist.args = {
 		image: { id: "header-image", extension: "" },
 		backgroundImage: { id: "", extention: "" },
 		popupitems: [
-			{ correct: "checked", text: "Item 1" },
-			{ correct: "", text: "Item 2" },
-			{ correct: "", text: "Item 3" },
-			{ correct: "", text: "Item 4" }
+			{
+				option: "Item 1",
+				image: {
+					id: "image-1",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
+			{
+				option: "Item 2",
+				image: {
+					id: "image-2",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
+			{
+				option: "Item 3",
+				image: {
+					id: "image-3",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
+			{
+				option: "Item 4",
+				image: {
+					id: "image-4",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
 		],
 	},
 	slideId: 0,
@@ -259,10 +359,38 @@ ColoredPopuplist.args = {
 		image: { id: "header-image", extension: "" },
 		backgroundImage: { id: "", extention: "" },
 		popupitems: [
-			{ correct: "checked", text: "Item 1" },
-			{ correct: "", text: "Item 2" },
-			{ correct: "", text: "Item 3" },
-			{ correct: "", text: "Item 4" }
+			{
+				option: "Item 1",
+				image: {
+					id: "image-1",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
+			{
+				option: "Item 2",
+				image: {
+					id: "image-2",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
+			{
+				option: "Item 3",
+				image: {
+					id: "image-3",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
+			{
+				option: "Item 4",
+				image: {
+					id: "image-4",
+					extension: ".png"
+				},
+				caption: " Please put in a caption",
+			},
 		],
 	},
 	slideId: 0,
