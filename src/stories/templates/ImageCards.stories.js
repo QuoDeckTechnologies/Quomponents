@@ -240,19 +240,23 @@ WithHeaderImageImageCards.args = {
         cards: [
             {
                 image: { id: "cards-image-1", extention: "" },
-                text: "Neque porro quisquam est qui dolorem",
+                text: "First Neque porro quisquam est qui dolorem",
             },
             {
                 image: { id: "cards-image-2", extention: "" },
-                text: "Quisque sed turpis vel lectus suscipit auctor.",
+                text: "Second Neque porro quisquam est qui dolorem",
             },
             {
-                image: { id: "header-image", extention: "" },
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                image: { id: "cards-image-3", extention: "" },
+                text: "Third Neque porro quisquam est qui dolorem",
             },
             {
-                image: { id: "cards-image-2", extention: "" },
-                text: "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor",
+                image: { id: "cards-image-4", extention: "" },
+                text: "Fourth Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "cards-image-5", extention: "" },
+                text: "Fivth Neque porro quisquam est qui dolorem",
             },
         ],
     },
@@ -288,19 +292,23 @@ WithBackgroundImageImageCards.args = {
         cards: [
             {
                 image: { id: "cards-image-1", extention: "" },
-                text: "Neque porro quisquam est qui dolorem",
+                text: "First Neque porro quisquam est qui dolorem",
             },
             {
                 image: { id: "cards-image-2", extention: "" },
-                text: "Quisque sed turpis vel lectus suscipit auctor.",
+                text: "Second Neque porro quisquam est qui dolorem",
             },
             {
-                image: { id: "header-image", extention: "" },
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                image: { id: "cards-image-3", extention: "" },
+                text: "Third Neque porro quisquam est qui dolorem",
             },
             {
-                image: { id: "cards-image-2", extention: "" },
-                text: "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor",
+                image: { id: "cards-image-4", extention: "" },
+                text: "Fourth Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "cards-image-5", extention: "" },
+                text: "Fivth Neque porro quisquam est qui dolorem",
             },
         ]
     },
@@ -324,7 +332,7 @@ WithBackgroundImageImageCards.parameters = {
     },
 };
 // -------------------------------------------------------------
-// With Background Image ImageCards
+// With Background And Header Image Image ImageCards
 // -------------------------------------------------------------
 export const WithBackgroundImageAndHeaderImageImageCards = Template.bind({});
 WithBackgroundImageAndHeaderImageImageCards.args = {
@@ -337,19 +345,23 @@ WithBackgroundImageAndHeaderImageImageCards.args = {
         cards: [
             {
                 image: { id: "cards-image-1", extention: "" },
-                text: "Neque porro quisquam est qui dolorem",
+                text: "First Neque porro quisquam est qui dolorem",
             },
             {
                 image: { id: "cards-image-2", extention: "" },
-                text: "Quisque sed turpis vel lectus suscipit auctor.",
+                text: "Second Neque porro quisquam est qui dolorem",
             },
             {
-                image: { id: "header-image", extention: "" },
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                image: { id: "cards-image-3", extention: "" },
+                text: "Third Neque porro quisquam est qui dolorem",
             },
             {
-                image: { id: "cards-image-2", extention: "" },
-                text: "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor",
+                image: { id: "cards-image-4", extention: "" },
+                text: "Fourth Neque porro quisquam est qui dolorem",
+            },
+            {
+                image: { id: "cards-image-5", extention: "" },
+                text: "Fivth Neque porro quisquam est qui dolorem",
             },
         ]
     },

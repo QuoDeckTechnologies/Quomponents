@@ -76,7 +76,7 @@ ImageCards.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-    Use to show/hide the componentresolveImage
+    Use to show/hide the component
     */
     isHidden: PropTypes.bool,
     /**
@@ -150,7 +150,7 @@ export default function ImageCards(props) {
         speed: 500,
         initialSlide: 1,
         slidesToScroll: 1,
-        slidesToShow: 4,
+        slidesToShow: 4.2,
         centerMode: true,
         arrows: false,
         infinite: true,
