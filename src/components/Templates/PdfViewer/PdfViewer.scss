@@ -1,12 +1,11 @@
-
-.qui-pdf-viewer{
-}
 .qui .qui-pdf-viewer-card {
   min-height: 30em;
   padding: 1.5em;
   border-radius: 1em;
 }
-@media only screen and (min-width: 481px) {
-  .qui .qui-pdf-viewer-card {
-  }
+.react-pdf {
+  background-color: red;
+}
+.react-pdf__Page{
+ width: 50%; 
 }

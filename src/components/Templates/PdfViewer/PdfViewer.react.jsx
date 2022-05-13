@@ -14,7 +14,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./PdfViewer.scss";
 import "../../../common/stylesheets/overrule.scss";
-import sample from "./sample.pdf"
 PdfViewer.propTypes = {
   //=======================================
   // Component Specific props
@@ -23,9 +22,12 @@ PdfViewer.propTypes = {
     PdfViewer data should be passed in data field and it is a required field
     */
   data: PropTypes.shape({
-    url: PropTypes.string.isRequired,
+    pdf: PropTypes.object,
+    backgroundImage: PropTypes.object,
     editorWidth: PropTypes.bool
   }),
+
+  docLibrary: PropTypes.array,
   /**
     PdfViewer slideId should be passed with props, to specify the slide.
     */
@@ -84,6 +86,7 @@ PdfViewer.defaultProps = {
     PdfViewer component must have the onClick function passed as props
     */
   imageLibrary: [{}],
+  docLibrary: [{}],
   slideId: 0,
   //=======================================
   // Quommon props
@@ -105,91 +108,16 @@ export default function PdfViewer(props) {
   let { data, withColor, imageLibrary } = props
 
   const [numPages, setNumPages] = useState(null);
-  const [fetch, setFetch] = useState(true);
-  const [blobData, setBlobData] = useState("");
-  const [pageNumber, setPageNumber] = useState(1);
-  const [pageScale, setPageScale] = useState(10);
-  const [showInfo, setShowInfo] = useState(true);
-  const [fullScreenOpen, setFullScreenOpen] = useState(false);
-  const [showControl, setShowControl] = useState(false);
-  const [noPdfMessage, setNoPdfMessage] = useState("loading pdf please wait...");
-  const [seenPages, setSeenPages] = useState(0);
+  // const [fetch, setFetch] = useState(true);
+  // const [blobData, setBlobData] = useState("");
+  // const [pageNumber, setPageNumber] = useState(1);
+  // const [pageScale, setPageScale] = useState(10);
+  // const [showInfo, setShowInfo] = useState(true);
+  // const [fullScreenOpen, setFullScreenOpen] = useState(false);
+  // const [showControl, setShowControl] = useState(false);
+  // const [noPdfMessage, setNoPdfMessage] = useState("loading pdf please wait...");
+  // const [seenPages, setSeenPages] = useState(0);
 
-  function onDocumentLoadSuccess(numPages) {
-    setNumPages(numPages);
-  }
-
-  // function componentDidMount() {
-  //   this.fetchAsset()
-  //     .then(blob => {
-  //       if (blob !== 0) {
-  //         this.setState({
-  //           blobData: blob,
-  //           noPdfMessage: "Loading PDF",
-  //           fetching: false
-  //         });
-  //       }
-  //     })
-  //     .catch(err => {
-  //       setNoPdfMessage("No pdf found...")
-  //     });
-  // }
-
-  let handleCompletion = (currentPage, totalPages) => {
-    //logic for individual pdf slide to be added
-  };
-
-
-  let onDocumentLoad = (numPages) => {
-    setNumPages(
-      handleCompletion(
-        seenPages + 1,
-        numPages
-      )
-    )
-  };
-
-  function fetchAsset() {
-    let pdfData = props.url;
-    if (pdfData && pdfData.indexOf(";base64,") > -1) {
-      return Promise.resolve(pdfData);
-    } else if (pdfData && pdfData.indexOf("http") > -1) {
-      return Promise.resolve(pdfData);
-    } else {
-      return Promise.reject(0);
-    }
-  }
-  function messageDom(message) {
-    return <div style={{ width: "100vw" }}>{message}</div>;
-  }
-
-  let handleRangeChange = (e) => {
-    setPageScale(parseInt(e.target.value, 0))
-  }
-
-  let handleFullScreenOpen = () => {
-    setFullScreenOpen(!fullScreenOpen)
-    setPageScale(10)
-  }
-
-  let handleControlOpen = () => { setShowControl(!showControl); }
-
-  let handleScroll = (event) => {
-    let pageHeight =
-      Math.floor(
-        document.getElementsByClassName("ReactPDF__Document")[0]
-          .clientHeight / numPages,
-        0
-      ) - 5;
-    if (
-      event.target.scrollTop + window.innerHeight >
-      (seenPages + 1) * pageHeight ||
-      event.target.scrollLeft + window.innerWidth >
-      (seenPages + 1) * pageHeight
-    ) {
-      setSeenPages(seenPages + 1)
-    }
-  };
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -212,148 +140,63 @@ export default function PdfViewer(props) {
     ? getBackground()
     : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
 
-
-  //---------------------
-  // Component Styles
-  //---------------------
-
-  let isPortrait = window.innerHeight > window.innerWidth;
-  let wrapperStyle = {
-    height: "100%",
-    width: "100%",
-    textAlign: "center",
-    position: "relative",
-    background: "#666",
-    overflow: "hidden"
-  };
-  let defaultStyle = {
-    height: "100%",
-    width: "100%"
-  };
-  let controlStyle = {
-    position: "fixed",
-    bottom: "0",
-    height: "7vh",
-    padding: "15px 10px",
-    width: "100%",
-    background: "#333333",
-    zIndex: "1004",
-    display: showControl ? "block" : "none"
-  };
-  let zoomSlider = {
-    width: isPortrait ? "85%" : "100%",
-    float: "left",
-    display: !fullScreenOpen ? "block" : "none"
-  };
-  let fullScreenIcon = {
-    float: "right",
-    color: "white"
-  };
-  let modalStyle = {
-    position: "fixed",
-    top: "0",
-    left: "0",
-    width: "100vw",
-    height: "100vh",
-    overflow: "auto hidden",
-    padding: "0",
-    margin: "0",
-    zIndex: "1003",
-    background: "#666666"
-  };
-  let rotated = {
-    position: "absolute",
-    top: "22vh",
-    left: "22vh",
-    width: "100vw",
-    height: "100vh",
-    transform: "rotate(-90deg)"
-  };
-  let unrotated = {
-    display: "block",
-    height: "100%",
-    overflowY: "scroll",
-    overflowX: isPortrait ? "scroll" : "hidden"
-  };
-
-  let pdfDocument = () => {
-    <Document
-      file={sample}
-      onLoadSuccess={onDocumentLoad}
-      loading={messageDom("loading pdf please wait...")}
-      noData={messageDom(noPdfMessage)}
-    >
-      {_.times(numPages, num => {
-        return (
-          <Page
-            key={"page-" + num}
-            pageNumber={num + 1}
-            width={
-              ((fullScreenOpen
-                ? 450
-                : props.editorWidth
-                  ? 330
-                  : 290) *
-                pageScale) /
-              10
-            }
-            onClick={handleControlOpen}
-          />
-        );
-      })}
-    </Document>
-  };
-  function showPdf() {
-    <div style={wrapperStyle}>
-      <div
-        style={
-          fullScreenOpen
-            ? modalStyle
-            : defaultStyle
-        }
-        onScroll={handleScroll}
-      >
-        <div
-          style={
-            fullScreenOpen ? rotated : unrotated
-          }
-        >
-          {pdfDocument}
-        </div>
-      </div>
-      {isPortrait && (
-        <div style={controlStyle}>
-          <div style={zoomSlider}>
-            <input
-              type="range"
-              min="5"
-              max="25"
-              step="5"
-              value={pageScale}
-              className="slider"
-              onChange={handleRangeChange}
-            />
-          </div>
-          {/* <Icon
-              name="expand"
-              size="large"
-              style={fullScreenIcon}
-              onClick={handleFullScreenOpen}
-            /> */}
-        </div>
-      )}
-    </div>
+  function onDocumentLoadSuccess1({ numPages }) {
+    setNumPages(numPages);
   }
+
+  let resolveDocument = (pdf, library) => {
+    if (library !== undefined && library.length > 0) {
+      if (pdf.id !== "") {
+        let data = library.find((doc) => doc.id === pdf.id);
+        if (data) {
+          return data.doc;
+        } else {
+          if (typeof props.data.pdf === "object") {
+            return props.data.pdf.id.toString()
+          } else {
+            return props.data.pdf;
+          }
+        }
+      } else {
+        return "";
+      }
+    } else {
+      if (typeof props.data.pdf === "object") {
+        return props.data.pdf.id.toString()
+      } else {
+        return props.data.pdf;
+      }
+    }
+  }
+  let card = () => {
+    return (
+      <div className="qui-pdf-viewer-card" style={{ ...background }} />
+    )
+  }
+
   // ========================= Render Function =================================
   return (
     <motion.div
       initial={animate.from}
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
-    >{data &&
-      <div className="qui-pdf-viewer-card" style={{ ...background }}>
-        {fetch ? showPdf() : "no pdf"}
-      </div>}
+    >{data && data.pdf ?
+      <Document
+        file={resolveDocument(data.pdf, props.docLibrary)}
+        options={{ workerSrc: "/pdf.worker.js" }}
+        onLoadSuccess={onDocumentLoadSuccess1}
+      >
+        {Array.from(new Array(numPages), (el, index) => (
+          <Page
+            // width={400}
+            // wrap={true}
+            size="A4"
+            key={`page_${index + 1}`} pageNumber={index + 1} />
+        ))}
+      </Document>
+      :
+      card()
+      }
     </motion.div>
   );
 }
