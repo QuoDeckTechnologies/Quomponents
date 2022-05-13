@@ -1,165 +1,170 @@
+/* ================================================= */
+/* Blurb Definitions */
+/* ================================================= */
 .qui.qui-blurb-card {
-    background-color: #ffffff;
-    border-radius: 1em;
-    .qui .qui-title-block {
-      min-width: 12em;
-      min-height: 10em;
-    }
-    .qui .qui-title {
-      font-size: 2.4em;
-      padding: 0 0 0.2em 0;
-    }
-    .qui .qui-sub-title {
-      font-size: 1em;
-    }
-    .qui .qui-title {
-      font-size: 1.5em;
-    }
-  }
-  
-  .qui-Blurb-container.qui-blurb-presenter {
-    padding-left: 1em;
-  }
-  
-  .qui .qui-Blurb-slide-header .qui-blurb-image {
-    box-shadow: 0px 4px 10px #8b8b8b;
+  background-color: #ffffff;
+  border-radius: 1em;
+  .qui .qui-title-block {
     min-width: 12em;
-    height: 15em;
-    object-fit: cover;
+    min-height: 10em;
   }
-  
-  .qui .qui-Blurb-image {
-    width: 100%;
-    border-radius: 1em;
+  .qui .qui-title {
+    font-size: 2.4em;
+    padding: 0 0 0.2em 0;
   }
-  
-  .qui .qui-Blurb-card-subtitle {
-    display: flex;
-    justify-content: center;
-    margin-top: 1em;
+  .qui .qui-sub-title {
+    font-size: 1em;
   }
-  
-  .qui .qui-Blurb-subtitle {
+  .qui .qui-title {
+    font-size: 1.5em;
+  }
+}
+
+.qui-blurb-container.qui-blurb-presenter {
+  padding-left: 1em;
+}
+
+.qui .qui-blurb-slide-header .qui-blurb-image {
+  box-shadow: 0px 4px 10px #8b8b8b;
+  min-width: 12em;
+  height: 15em;
+  object-fit: cover;
+}
+
+.qui .qui-blurb-image {
+  width: 100%;
+  border-radius: 1em;
+}
+
+.qui .qui-blurb-card-subtitle {
+  min-height: 10em;
+  display: flex;
+  justify-content: center;
+  margin: 4em 1em 0;
+}
+
+.qui .qui-blurb-subtitle {
+  margin: 0;
+  font-size: 1em;
+  text-align: center;
+}
+
+.qui .qui-blurb-slide-header.qui-blurb-slide-header-presenter {
+  position: relative;
+  padding: 0;
+}
+
+.qui .qui-blurb-slide-header {
+  position: relative;
+  padding: 1.1em;
+}
+
+.qui .qui-blurb-text-block {
+  margin-top: 1em;
+  font-size: 2em;
+  padding-left: 1em;
+  .qui .qui-text-block-area {
+    padding: 0.2em;
     margin: 0;
-    font-size: 1.1em;
-    text-align: center;
-    width: 70%;
+    border-radius: 0.2em;
+    width: 85%;
   }
-  
-  .qui .qui-Blurb-slide-header.qui-Blurb-slide-header-presenter {
-    position: relative;
-    padding: 0;
+  .qui-blurb-block-header {
+    .qui-block-text {
+      font-size: 0.8em;
+    }
   }
-  
-  .qui .qui-Blurb-slide-header {
-    position: relative;
-    padding: 1.1em;
-  }
-  
-  .qui .qui-Blurb-text-block {
-    margin-top: 1em;
-    font-size: 2em;
-    padding-left: 1em;
+  .qui-blurb-block-subtitle {
+    width: 60%;
+    font-size: 0.5em;
+    font-weight: 300;
     .qui .qui-text-block-area {
-      padding: 0.2em;
-      margin: 0;
-      border-radius: 0.2em;
+      padding: 0.5em 0.5em 0.5em 0.7em;
+      border-radius: 0.4em;
       width: 85%;
     }
-    .qui-Blurb-block-header {
+    .qui-block-text {
+      font-size: 1em;
+      font-weight: 100;
+    }
+  }
+  .qui-block-text {
+    font-size: 0.7em;
+  }
+}
+
+.qui .qui-blurb-block-blurb {
+  font-size: 2em;
+  position: absolute;
+  bottom: 0.5em;
+  left: 0.5em;
+  z-index: 99;
+  .qui .qui-text-block-area {
+    width: 8em;
+    .qui-block-text {
+      font-weight: 300;
+      font-size: 0.6em;
+    }
+  }
+  .qui.qui-text-block-container {
+    overflow: visible;
+    position: relative;
+    .qui-text-block-chat-arrow.qui-arrow-right-bottom {
+      right: -0.2em;
+      bottom: 0.5em;
+      border-top: 0.1em solid transparent;
+      border-bottom: 0.1em solid transparent;
+      border-left: 0.2em solid #ad292980;
+    }
+  }
+}
+
+.qui .qui-blurb-presenter-image {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 50%;
+}
+
+.qui .qui-blurb-presenter-image {
+  object-fit: cover;
+}
+/* ================================================= */
+/* Blurb Sizing Definitions */
+/* ================================================= */
+@media only screen and (min-width: 320px) {
+  .qui.qui-blurb-card {
+    min-height: 31em;
+    width: auto;
+  }
+  .qui .qui-blurb-block-blurb .qui .qui-text-block-area {
+    font-size: 0.3em;
+  }
+  .qui .qui-blurb-text-block {
+    .qui-blurb-block-header {
+      .qui-block-text {
+        font-size: 0.6em;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .qui .qui-blurb-block-blurb .qui .qui-text-block-area {
+    font-size: 0.36em;
+  }
+  .qui .qui-blurb-text-block {
+    .qui-blurb-block-header {
       .qui-block-text {
         font-size: 0.8em;
       }
     }
-    .qui-Blurb-block-subtitle {
-      width: 60%;
-      font-size: 0.5em;
-      font-weight: 300;
-      .qui .qui-text-block-area {
-        padding: 0.5em 0.5em 0.5em 0.7em;
-        border-radius: 0.4em;
-        width: 85%;
-      }
-      .qui-block-text {
-        font-size: 1em;
-        font-weight: 100;
-      }
-    }
-    .qui-block-text {
-      font-size: 0.7em;
-    }
   }
-  
-  .qui .qui-Blurb-block-Blurb {
-    font-size: 2em;
-    position: absolute;
-    bottom: 0.5em;
-    left: 0.5em;
-    z-index: 99;
-    .qui .qui-text-block-area {
-      width: 8em;
-      .qui-block-text {
-        font-weight: 300;
-        font-size: 0.6em;
-      }
-    }
-    .qui.qui-text-block-container {
-      overflow: visible;
-      position: relative;
-      .qui-text-block-chat-arrow.qui-arrow-right-bottom {
-        right: -0.2em;
-        bottom: 0.5em;
-        border-top: 0.1em solid transparent;
-        border-bottom: 0.1em solid transparent;
-        border-left: 0.2em solid #ad292980;
-      }
-    }
+}
+
+@media only screen and (min-width: 720px) {
+  .qui.qui-blurb-card {
+    min-height: 33.7em;
+    max-width: 23em;
   }
-  
-  .qui .qui-Blurb-presenter-image {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 50%;
-  }
-  
-  .qui .qui-Blurb-presenter-image {
-    object-fit: cover;
-  }
-  
-  @media only screen and (min-width: 320px) {
-    .qui.qui-Blurb-card {
-      min-height: 31em;
-    }
-    .qui .qui-Blurb-block-Blurb .qui .qui-text-block-area {
-      font-size: 0.3em;
-    }
-    .qui .qui-Blurb-text-block {
-      .qui-Blurb-block-header {
-        .qui-block-text {
-          font-size: 0.6em;
-        }
-      }
-    }
-  }
-  
-  @media only screen and (min-width: 481px) {
-    .qui .qui-Blurb-block-Blurb .qui .qui-text-block-area {
-      font-size: 0.36em;
-    }
-    .qui .qui-Blurb-text-block {
-      .qui-Blurb-block-header {
-        .qui-block-text {
-          font-size: 0.8em;
-        }
-      }
-    }
-  }
-  
-  @media only screen and (min-width: 720px) {
-    .qui.qui-Blurb-card {
-      min-height: 33.7em;
-      max-width: 23em;
-    }
-  }
-  
+}

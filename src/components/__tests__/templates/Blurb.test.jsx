@@ -18,11 +18,20 @@ describe("Blurb", () => {
     component = shallow(
       <Blurb
         data={{
-          title: "test title",
-          subtitle: "test subtitle",
-          icon: "test-icon",
-          image: {},
+          defaultValue: {
+            title: "",
+            subtitle: "",
+            image: {},
+            blurb: "",
+            backgroundImage: {},
+            presenter: {},
+          },
         }}
+        imageLibrary={null}
+        slideId={0}
+        withColor={null}
+        withAnimation={null}
+        isHidden={false}
       />
     );
   });
@@ -31,87 +40,11 @@ describe("Blurb", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is left", () => {
-    component.setProps({
-      asFloated: "left",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is right", () => {
-    component.setProps({
-      asFloated: "right",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is inline", () => {
-    component.setProps({
-      asFloated: "inline",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is none", () => {
-    component.setProps({
-      asFloated: "none",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isCircular props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isCircular props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withColor", () => {
-    component.setProps({
-      withColor: {
-        backgroundColor: "#ffffff",
-        textColor: "#ffffff",
-        slideHeaderAccentColor: "#ffffff",
-        slideHeaderBackgroundColor: "#ffffff",
-        slideHeaderTextColor: "#ffffff",
-        textBlockBackgroundColor: "#fffff",
-        textBlockTextColor: "#ffffff",
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly without throwing error when image is not defined", () => {
     component.setProps({
       data: {
         title: "test title",
         subtitle: "test subtitle",
-        icon: "test-icon",
       },
     });
     expect(component.exists()).toBe(true);
@@ -128,7 +61,6 @@ describe("Blurb", () => {
     component.setProps({
       data: {
         title: "test title",
-        icon: "test-icon",
         presenter: {
           extention: "",
           id: "default43",
@@ -142,7 +74,6 @@ describe("Blurb", () => {
     component.setProps({
       data: {
         title: "test title",
-        icon: "test-icon",
         presenter: {
           extention: "",
           id: "test",
@@ -157,7 +88,6 @@ describe("Blurb", () => {
     component.setProps({
       data: {
         title: "test title",
-        icon: "test-icon",
         backgroundImage: {
           id: "background-image",
           extention: "",
@@ -168,5 +98,43 @@ describe("Blurb", () => {
     expect(component.exists()).toBe(true);
   });
 
-  
+  it("should render correctly when passed withColor", () => {
+    component.setProps({
+      withColor: {
+        backgroundColor: "#F3E5F5",
+        slideHeaderTextColor: "#FFFF",
+        slideHeaderAccentColor: "#9C27B0",
+        slideHeaderBackgroundColor: "#AB47BC",
+        textBlockTextColor: "#454545",
+        textBlockBackgroundColor: "#FFFF",
+        textColor: "#121212",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withAnimation props", () => {
+    component.setProps({
+      withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isHidden props is true", () => {
+    component.setProps({
+      isHidden: true,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isHidden props is false", () => {
+    component.setProps({
+      isHidden: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
 });
