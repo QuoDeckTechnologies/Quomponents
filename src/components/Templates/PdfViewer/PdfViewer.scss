@@ -3,9 +3,6 @@
   padding: 1.5em;
   border-radius: 1em;
 }
-.react-pdf {
-  background-color: red;
-}
-.react-pdf__Page{
- width: 50%; 
+.react-pdf__Page.pdf-doc{
+  border-radius: 10em;
 }

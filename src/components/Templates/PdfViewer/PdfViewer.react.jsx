@@ -1,9 +1,10 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 // import { Document, Page } from "react-pdf";
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
+// import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 import { motion } from "framer-motion";
 import {
   getAnimation,
@@ -108,6 +109,8 @@ export default function PdfViewer(props) {
   let { data, withColor, imageLibrary } = props
 
   const [numPages, setNumPages] = useState(null);
+
+
   // const [fetch, setFetch] = useState(true);
   // const [blobData, setBlobData] = useState("");
   // const [pageNumber, setPageNumber] = useState(1);
@@ -188,8 +191,8 @@ export default function PdfViewer(props) {
       >
         {Array.from(new Array(numPages), (el, index) => (
           <Page
-            // width={400}
-            // wrap={true}
+            className={"pdf-doc"}
+            width={400}
             size="A4"
             key={`page_${index + 1}`} pageNumber={index + 1} />
         ))}
