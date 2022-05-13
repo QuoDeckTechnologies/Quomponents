@@ -158,7 +158,7 @@ export default function IconListGallery(props) {
         speed: 500,
         initialSlide: 1,
         slidesToScroll: 1,
-        slidesToShow: 4,
+        slidesToShow: 4.3,
         centerMode: true,
         arrows: false,
         infinite: true,

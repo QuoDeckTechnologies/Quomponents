@@ -329,7 +329,7 @@ WithBackgroundImageIconListGallery.parameters = {
     },
 };
 // -------------------------------------------------------------
-// With Background Image IconListGallery
+// With Background And Header Image Image IconListGallery
 // -------------------------------------------------------------
 export const WithBackgroundImageAndHeaderImageIconListGallery = Template.bind({});
 WithBackgroundImageAndHeaderImageIconListGallery.args = {
