@@ -146,7 +146,7 @@ AnimatedOptionItemThree.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Multiple Option Item Two
+// Multiple Option Item Three
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
   const [contentArr, setContentArr] = useState([...args.multiContent]);
@@ -236,8 +236,8 @@ const MultipleTemplate = (args) => {
     </div>
   );
 };
-export const MultipleOptionItemTwo = MultipleTemplate.bind({});
-MultipleOptionItemTwo.args = {
+export const MultipleOptionItemThree = MultipleTemplate.bind({});
+MultipleOptionItemThree.args = {
   ...Default.args,
   multiContent: [
     {
@@ -257,11 +257,11 @@ MultipleOptionItemTwo.args = {
     },
   ],
 };
-MultipleOptionItemTwo.parameters = {
+MultipleOptionItemThree.parameters = {
   docs: {
     source: {
       code: `<OptionItemTwo {...${JSON.stringify(
-        MultipleOptionItemTwo.args,
+        MultipleOptionItemThree.args,
         null,
         2
       )}}/>`,
