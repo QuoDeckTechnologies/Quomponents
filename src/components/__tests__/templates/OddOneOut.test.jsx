@@ -239,12 +239,14 @@ describe("OddOneOut", () => {
 
 	it("should return the index of selected option", () => {
 		component.setProps({
-			options: [
-				{ correct: "checked", text: "Item 1" },
-				{ correct: "", text: "Item 2" },
-				{ correct: "", text: "Item 3" },
-				{ correct: "", text: "Item 4" }
-			]
+			data: {
+				options: [
+					{ correct: "checked", text: "Item 1" },
+					{ correct: "", text: "Item 2" },
+					{ correct: "", text: "Item 3" },
+					{ correct: "", text: "Item 4" }
+				]
+			}
 		})
 		let onClick = jest.fn();
 		component.setProps({ onClick: onClick })
