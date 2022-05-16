@@ -233,7 +233,7 @@ export default function IconListGallery(props) {
                         className="qui-icon-list-gallery-clickable-images-container"
                     >
                         <div
-                            className="qui-icon-list-gallery-track"
+                            className="qui-icon-list-gallery-item"
                             style={activeItemStyle}
                         />
                         <Slider ref={sliderRef} {...settings}>
