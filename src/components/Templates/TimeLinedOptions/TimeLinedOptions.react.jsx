@@ -144,7 +144,9 @@ export default function TimeLinedOptions(props) {
 
     const getBackground = () => {
         return {
-            background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)}) no-repeat cover center`
+            backgroundImage: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center"
         };
     };
     const background = data?.backgroundImage
