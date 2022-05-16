@@ -59,14 +59,14 @@ describe("ClozeQuestion", () => {
 			slideHeaderTextColor: "#ffffff",
 			slideHeaderAccentColor: "#AD2929",
 			slideHeaderBackgroundColor: "#AD292980",
-			inputFieldTextColor: "#ffffff",
+			inputFieldTextColor: "#000000",
 			inputFieldAccentColor: "#AD292980",
-			inputFieldBackgroundColor: "#ffffff",
+			inputFieldBackgroundColor: "",
 			buttonTextColor: "#AD292980",
-			buttonBackgroundColor: "#AD29298",
-			buttonHoverBackgroundColor: "#AD2929",
+			buttonBackgroundColor: "#000000",
+			buttonHoverBackgroundColor: "#AD292980",
 			buttonHoverTextColor: "#000000",
-			backgroundColor: "#ffffff"
+			backgroundColor: "#fff",
 		}
 		component.setProps({ withColor: colors })
 		expect(component.exists()).toBe(true);
