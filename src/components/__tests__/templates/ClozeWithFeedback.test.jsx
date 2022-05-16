@@ -55,19 +55,18 @@ describe("ClozeWithFeedback", () => {
 
     it("should render correctly when passed withColor props", () => {
         let colors = {
-            captionColor: "#ff0000",
-            labelColor: "#000000",
-            slideHeaderTextColor: "ff0000",
-            slideHeaderAccentColor: "23ff00",
-            slideHeaderBackgroundColor: "00ff00",
-            inputFieldTextColor: "ff0000",
-            inputFieldAccentColor: "23ff00",
-            inputFieldBackgroundColor: "00ff00",
-            buttonTextColor: "ff0023",
-            buttonBackgroundColor: "ff0ff0",
-            buttonHoverBackgroundColor: "ffff00",
-            buttonHoverTextColor: "ff00ff",
-            backgroundColor: "",
+            questionColor: "#000000",
+            slideHeaderTextColor: "#ffffff",
+            slideHeaderAccentColor: "#AD2929",
+            slideHeaderBackgroundColor: "#AD292980",
+            inputFieldTextColor: "#000000",
+            inputFieldAccentColor: "#AD292980",
+            inputFieldBackgroundColor: "",
+            buttonTextColor: "#AD292980",
+            buttonBackgroundColor: "#000000",
+            buttonHoverBackgroundColor: "#AD292980",
+            buttonHoverTextColor: "#000000",
+            backgroundColor: "#fff",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
@@ -176,12 +175,12 @@ describe("ClozeWithFeedback", () => {
             slideHeaderBackgroundColor: "#AD292980",
             inputFieldTextColor: "#000000",
             inputFieldAccentColor: "#AD292980",
-            inputFieldBackgroundColor: "#ffffff",
-            buttonTextColor: "#ffffff",
-            buttonBackgroundColor: "#AD292980",
-            buttonHoverBackgroundColor: "#ffffff",
-            buttonHoverTextColor: "#AD292980",
-            backgroundColor: "#ffffff",
+            inputFieldBackgroundColor: "",
+            buttonTextColor: "#AD292980",
+            buttonBackgroundColor: "#000000",
+            buttonHoverBackgroundColor: "#AD292980",
+            buttonHoverTextColor: "#000000",
+            backgroundColor: "#fff",
         }
         component.setProps({ data: data, withColor: colors })
         expect(component.exists()).toBe(true);

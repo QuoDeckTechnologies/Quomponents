@@ -96,10 +96,6 @@ Default.args = {
     data: {
         title: "Neque porro quisquam est qui dolorem",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-        backgroundImage: {
-            id: "background-image",
-            extention: ""
-        },
         image: {
             id: "header-image",
             extention: ""

@@ -165,9 +165,9 @@ export default function ClozeWithFeedback(props) {
 
     const getBackground = () => {
         return {
-            background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
+            backgroundImage: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundPosition: "center"
         };
     };
     const background = data?.backgroundImage
