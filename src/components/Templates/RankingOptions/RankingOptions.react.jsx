@@ -90,11 +90,7 @@ RankingOptions.propTypes = {
     /**
     Use to show/hide the component
     */
-    isHidden: PropTypes.bool,
-    /**
-    RankingOptions component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
+    isHidden: PropTypes.bool
 };
 
 RankingOptions.defaultProps = {
@@ -138,6 +134,12 @@ export default function RankingOptions(props) {
         textColor: props.withColor?.slideHeaderTextColor,
         accentColor: props.withColor?.slideHeaderAccentColor,
         backgroundColor: props.withColor?.slideHeaderBackgroundColor
+    };
+    let orderingListColors = {
+        textColor: props.withColor?.buttonTextColor,
+        backgroundColor: props.withColor?.buttonBackgroundColor,
+        hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
+        hoverTextColor: props.withColor?.buttonHoverTextColor,
     }
 
     const getBackground = () => {
@@ -175,7 +177,7 @@ export default function RankingOptions(props) {
                         {props.data?.question}
                     </div>
                     <div className="qui-ranking-options-button-container">
-                        <OrderingList content={props.data?.bullets} onClick={(items) => props.trackInteraction(items)} />
+                        <OrderingList withColor={orderingListColors} content={props.data?.bullets} onClick={(items) => props.trackInteraction(items)} />
                     </div>
                 </div>}
         </motion.div>
