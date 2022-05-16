@@ -57,6 +57,7 @@ ImageCards.propTypes = {
         slideHeaderAccentColor: PropTypes.string,
         textBlockTextColor: PropTypes.string,
         textBlockBackgroundColor: PropTypes.string,
+        iconListActiveItemColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -134,15 +135,21 @@ export default function ImageCards(props) {
         textColor: withColor?.textBlockTextColor,
         backgroundColor: withColor?.textBlockBackgroundColor
     }
+
+    let activeItemStyle = {
+        borderColor: withColor?.iconListActiveItemColor
+    }
     //-------------------------------------------------------------------
     // 4. Function to set click on ClickableImage and manage slider settings
     //-------------------------------------------------------------------
-    const [state, setState] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeImage, setActiveImage] = useState(0)
     const sliderRef = useRef();
 
     function handleClick(e) {
         props.onClick(e)
-        setState(e)
+        setActiveIndex(e)
+        setActiveImage(e)
     }
 
     var settings = {
@@ -211,7 +218,7 @@ export default function ImageCards(props) {
                     {_.map(data?.cards, (image, index) => {
                         return (
                             <div key={'image-cards-display-image' + index}>
-                                {state === index &&
+                                {activeIndex === index &&
                                     <img
                                         className="qui-image-cards-display-image"
                                         src={resolveImage(image?.image?.id, imageLibrary)}
@@ -221,9 +228,7 @@ export default function ImageCards(props) {
                             </div>
                         );
                     })}
-                    <div
-                        className="qui-image-cards-clickable-images-container"
-                    >
+                    <div className="qui-image-cards-clickable-images-container">
                         <Slider ref={sliderRef} {...settings}>
                             {_.map(data?.cards, (image, index) => {
                                 return (
@@ -231,6 +236,8 @@ export default function ImageCards(props) {
                                         key={'ClickableImage' + index}
                                         content={{ image: resolveImage(image?.image?.id, imageLibrary) }}
                                         onClick={() => handleClick(index)}
+                                        isActive={activeImage === index ? true : false}
+                                        withColor={activeItemStyle}
                                     />
                                 );
                             })}
@@ -239,7 +246,7 @@ export default function ImageCards(props) {
                     {_.map(data?.cards, (image, index) => {
                         return (
                             <div key={'text' + index}>
-                                {state === index &&
+                                {activeIndex === index &&
                                     <div className="qui-image-cards-display-text">
                                         <TextBlock {...props}
                                             content={image?.text}

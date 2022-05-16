@@ -2,7 +2,7 @@
 /* ImageCards Definitions */
 /* ================================================= */
 .qui.qui-image-cards {
-    // background-color: #fff;
+    background-color: #fff;
     padding: 1.5em;
     border-radius: 1em;
     min-height: 30em;
@@ -51,6 +51,16 @@
             height: 1em;
             filter: drop-shadow(0px 5px 2px #a09797);
         }
+        .qui-image-clickable {
+            margin: auto;
+            width: 1em;
+            height: 1em;
+        }
+        .qui-active-image-click {
+            margin: auto;
+            border: 0.2em solid;
+            filter: drop-shadow(0px 5px 2px #a09797);
+        }
     }
 }
 /* ================================================= */
@@ -68,6 +78,14 @@
                 width: 2em;
                 height: 2em;
             }
+            .qui-image-clickable {
+                border-radius: 0.2em;
+                width: 1.9em;
+                height: 1.9em;
+            }
+            .qui-active-image-click {
+                border: 0.3em solid;
+            }
         }
     }
 }
@@ -84,6 +102,14 @@
                 width: 1.5em;
                 height: 1.5em;
             }
+            .qui-image-clickable {
+                border-radius: 0.15em;
+                width: 1.3em;
+                height: 1.3em;
+            }
+            .qui-active-image-click {
+                border: 0.2em solid;
+            }
         }
     }
 }
@@ -96,6 +122,14 @@
                 width: 1em;
                 height: 1em;
             }
+            .qui-image-clickable {
+                border-radius: 0.1em;
+                width: 1.1em;
+                height: 1.1em;
+            }
+            .qui-active-image-click {
+                border: 0.23em solid;
+            }
         }
     }
 }
@@ -107,6 +141,14 @@
                 border-radius: 0.1em;
                 width: 1em;
                 height: 1em;
+            }
+            .qui-image-clickable {
+                border-radius: 0.1em;
+                width: 1.1em;
+                height: 1.1em;
+            }
+            .qui-active-image-click {
+                border: 0.23em solid;
             }
         }
     }

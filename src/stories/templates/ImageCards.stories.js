@@ -24,6 +24,7 @@ export default {
                     slideHeaderAccentColor: "",
                     textBlockTextColor: "",
                     textBlockBackgroundColor: "",
+                    iconListActiveItemColor: "",
                 },
             },
         },
@@ -156,6 +157,7 @@ Default.args = {
         slideHeaderBackgroundColor: "#C98787",
         textBlockTextColor: "#454545",
         textBlockBackgroundColor: "#FFFF",
+        iconListActiveItemColor: "#ad2929",
     },
     withAnimation: {
         animation: "zoom",
@@ -185,6 +187,7 @@ ColoredImageCards.args = {
         slideHeaderBackgroundColor: "#AB47BC",
         textBlockTextColor: "#fff",
         textBlockBackgroundColor: "#AD292980",
+        iconListActiveItemColor: "#AB47BC",
     },
 };
 ColoredImageCards.parameters = {
@@ -267,6 +270,7 @@ WithHeaderImageImageCards.args = {
         slideHeaderBackgroundColor: "#C98787",
         textBlockTextColor: "#fff",
         textBlockBackgroundColor: "#AD292980",
+        iconListActiveItemColor: "#AB47BC",
     },
 };
 WithHeaderImageImageCards.parameters = {
@@ -319,6 +323,7 @@ WithBackgroundImageImageCards.args = {
         slideHeaderBackgroundColor: "#C98787",
         textBlockTextColor: "#fff",
         textBlockBackgroundColor: "#AD292980",
+        iconListActiveItemColor: "#C98787",
     }
 };
 WithBackgroundImageImageCards.parameters = {
@@ -372,6 +377,7 @@ WithBackgroundImageAndHeaderImageImageCards.args = {
         slideHeaderBackgroundColor: "#C98787",
         textBlockTextColor: "#fff",
         textBlockBackgroundColor: "#AD292980",
+        iconListActiveItemColor: "#C98787",
     }
 };
 WithBackgroundImageAndHeaderImageImageCards.parameters = {

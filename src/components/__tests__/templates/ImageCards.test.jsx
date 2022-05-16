@@ -90,6 +90,7 @@ describe("ImageCards", () => {
             slideHeaderBackgroundColor: "#C98787",
             textBlockTextColor: "#454545",
             textBlockBackgroundColor: "#FFFF",
+            iconListActiveItemColor: "#454545",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
