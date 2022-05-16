@@ -92,7 +92,7 @@ OrderingList.defaultProps = {
 - The design system used for this component is fontawesome Icons
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- props are not being passed to the NavBar. Please speak to the admin to handle any new prop.
+- Component is used to rank/ arrange the options using up and down buttons and submit the arranged response.
 **/
 export default function OrderingList(props) {
   const [shuffle, setShuffle] = useState(_.shuffle(props.content));

@@ -74,8 +74,11 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic Icon and content for general-purpose use",
+        componentSubtitle: "Display Options with up and down buttons to rank/ arrange options and submit the arranged options",
         a11y: { disable: true },
+        docs: {
+            iframeHeight: 550,
+        },
     },
 };
 const Template = (args) => <OrderingList {...args} />;
