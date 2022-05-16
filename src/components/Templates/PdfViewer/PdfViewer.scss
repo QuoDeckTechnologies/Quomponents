@@ -1,8 +1,20 @@
+.qui.qui-pdf-viewer {
+  width: fit-content;
+  .react-pdf__canvas {
+    width: 100px;
+  }
+}
 .qui .qui-pdf-viewer-card {
   min-height: 30em;
   padding: 1.5em;
   border-radius: 1em;
 }
-.react-pdf__Page.pdf-doc{
-  border-radius: 10em;
+@media only screen and (min-width: 320px) {
+  .react-pdf__Document {
+    .react-pdf__Page {
+      .react-pdf__Page__canvas {
+        width: auto !important;
+      }
+    }
+  }
 }

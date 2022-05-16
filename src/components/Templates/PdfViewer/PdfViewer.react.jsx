@@ -2,9 +2,7 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
-// import { Document, Page } from "react-pdf";
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
-// import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 import { motion } from "framer-motion";
 import {
   getAnimation,
@@ -109,6 +107,7 @@ export default function PdfViewer(props) {
   let { data, withColor, imageLibrary } = props
 
   const [numPages, setNumPages] = useState(null);
+  const [zoom, setZoom] = useState(10);
 
 
   // const [fetch, setFetch] = useState(true);
@@ -183,22 +182,23 @@ export default function PdfViewer(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
-    >{data && data.pdf ?
-      <Document
-        file={resolveDocument(data.pdf, props.docLibrary)}
-        options={{ workerSrc: "/pdf.worker.js" }}
-        onLoadSuccess={onDocumentLoadSuccess1}
-      >
-        {Array.from(new Array(numPages), (el, index) => (
-          <Page
-            className={"pdf-doc"}
-            width={400}
-            size="A4"
-            key={`page_${index + 1}`} pageNumber={index + 1} />
-        ))}
-      </Document>
-      :
-      card()
+    >
+      {data && data.pdf ?
+        <div className="qui-pdf-viewer-container">
+          <Document
+            file={resolveDocument(data.pdf, props.docLibrary)}
+            options={{ workerSrc: "/pdf.worker.js" }}
+            onLoadSuccess={onDocumentLoadSuccess1}
+          >
+            {Array.from(new Array(numPages), (el, index) => (
+              <Page
+                size="A4"
+                key={`page_${index + 1}`} pageNumber={index + 1} />
+            ))}
+          </Document>
+        </div>
+        :
+        card()
       }
     </motion.div>
   );
