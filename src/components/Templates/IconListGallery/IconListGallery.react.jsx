@@ -57,7 +57,7 @@ IconListGallery.propTypes = {
         slideHeaderAccentColor: PropTypes.string,
         textBlockTextColor: PropTypes.string,
         textBlockBackgroundColor: PropTypes.string,
-        iconlistgalleryTrackColor: PropTypes.string,
+        iconListActiveItemColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -136,20 +136,20 @@ export default function IconListGallery(props) {
         backgroundColor: withColor?.textBlockBackgroundColor
     }
 
-    let trackColor = {
-        backgroundColor: withColor?.iconlistgalleryTrackColor,
-        borderColor: withColor?.iconlistgalleryTrackColor
+    let activeItemStyle = {
+        backgroundColor: withColor?.iconListActiveItemColor,
+        borderColor: withColor?.iconListActiveItemColor
     }
     //-------------------------------------------------------------------
     // 4. Function to set click on ClickableImage and manage slider settings
     //-------------------------------------------------------------------
-    const [state, setState] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(0);
     const [activeImage, setActiveImage] = useState(0)
     const sliderRef = useRef();
 
     function handleClick(e) {
         props.onClick(e)
-        setState(e)
+        setActiveIndex(e)
         setActiveImage(e)
     }
 
@@ -219,7 +219,7 @@ export default function IconListGallery(props) {
                     {_.map(data?.cards, (image, index) => {
                         return (
                             <div key={'icon-list-gallery-display-image' + index}>
-                                {state === index &&
+                                {activeIndex === index &&
                                     <img
                                         className="qui-icon-list-gallery-display-image"
                                         src={resolveImage(image?.image?.id, imageLibrary)}
@@ -234,7 +234,7 @@ export default function IconListGallery(props) {
                     >
                         <div
                             className="qui-icon-list-gallery-track"
-                            style={trackColor}
+                            style={activeItemStyle}
                         />
                         <Slider ref={sliderRef} {...settings}>
                             {_.map(data?.cards, (image, index) => {
@@ -245,7 +245,7 @@ export default function IconListGallery(props) {
                                         onClick={() => handleClick(index)}
                                         isCircular={true}
                                         isActive={activeImage === index ? true : false}
-                                        withColor={trackColor}
+                                        withColor={activeItemStyle}
                                     />
                                 );
                             })}
@@ -254,7 +254,7 @@ export default function IconListGallery(props) {
                     {_.map(data?.cards, (image, index) => {
                         return (
                             <div key={'text' + index}>
-                                {state === index &&
+                                {activeIndex === index &&
                                     <div className="qui-icon-list-gallery-display-text">
                                         <TextBlock {...props}
                                             content={image?.text}

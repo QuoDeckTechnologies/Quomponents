@@ -111,7 +111,7 @@ describe("IconListGallery", () => {
             slideHeaderBackgroundColor: "#C98787",
             textBlockTextColor: "#454545",
             textBlockBackgroundColor: "#FFFF",
-            iconlistgalleryTrackColor: "#AD2929",
+            iconListActiveItemColor: "#AD2929",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);

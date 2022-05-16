@@ -24,7 +24,7 @@ export default {
                     slideHeaderAccentColor: "",
                     textBlockTextColor: "",
                     textBlockBackgroundColor: "",
-                    iconlistgalleryTrackColor: "",
+                    iconListActiveItemColor: "",
                 },
             },
         },
@@ -157,7 +157,7 @@ Default.args = {
         slideHeaderBackgroundColor: "#C98787",
         textBlockTextColor: "#454545",
         textBlockBackgroundColor: "#FFFF",
-        iconlistgalleryTrackColor: "#AD2929",
+        iconListActiveItemColor: "#AD2929",
     },
     withAnimation: {
         animation: "zoom",
@@ -187,7 +187,7 @@ ColoredIconListGallery.args = {
         slideHeaderBackgroundColor: "#AB47BC",
         textBlockTextColor: "#fff",
         textBlockBackgroundColor: "#AD292980",
-        iconlistgalleryTrackColor: "#AD2929",
+        iconListActiveItemColor: "#AD2929",
     },
 };
 ColoredIconListGallery.parameters = {
@@ -266,7 +266,7 @@ WithHeaderImageIconListGallery.args = {
         slideHeaderBackgroundColor: "#C98787",
         textBlockTextColor: "#fff",
         textBlockBackgroundColor: "#AD292980",
-        iconlistgalleryTrackColor: "#AD2929",
+        iconListActiveItemColor: "#AD2929",
     },
 };
 WithHeaderImageIconListGallery.parameters = {
@@ -315,7 +315,7 @@ WithBackgroundImageIconListGallery.args = {
         slideHeaderBackgroundColor: "#C98787",
         textBlockTextColor: "#fff",
         textBlockBackgroundColor: "#AD292980",
-        iconlistgalleryTrackColor: "#AD2929",
+        iconListActiveItemColor: "#AD2929",
     }
 };
 WithBackgroundImageIconListGallery.parameters = {
@@ -365,7 +365,7 @@ WithBackgroundImageAndHeaderImageIconListGallery.args = {
         slideHeaderBackgroundColor: "#C98787",
         textBlockTextColor: "#fff",
         textBlockBackgroundColor: "#AD292980",
-        iconlistgalleryTrackColor: "#AD2929",
+        iconListActiveItemColor: "#AD2929",
     }
 };
 WithBackgroundImageAndHeaderImageIconListGallery.parameters = {
