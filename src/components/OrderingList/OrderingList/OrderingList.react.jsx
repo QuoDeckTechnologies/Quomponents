@@ -50,6 +50,15 @@ OrderingList.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+  Use to override component colors and behavior
+  */
+  withColor: PropTypes.shape({
+    backgroundColor: "",
+    textColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: ""
+  }),
+  /**
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
@@ -122,6 +131,14 @@ export default function OrderingList(props) {
   // 2. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
+
+  //-------------------------------------------------------------------
+  // 3. Setting the colors of the imported components
+  //-------------------------------------------------------------------
+  let orderingListstyle = {
+    color: props.withColor?.textColor,
+    backgroundColor: props.withColor?.backgroundColor
+  }
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -129,49 +146,49 @@ export default function OrderingList(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses} `}
     >
-    <div className="qui-ordering-list-parent-container">
-      {_.map(shuffle, ((item, index) => (
-        <div key={index}>
-          <div className={`qui-ordering-list ${quommonClasses.childClasses}`}>
-            <div
-              className="qui-ordering-btn"
-              onClick={() => upClick(index, shuffle)}
-            >
-              <div className="qui-ordering-border-up">
-                <div className="qui-ordering-dotted-up">
-                  <button className={`qui-ordering-btn-icon fa fa-arrow-up `}></button>
+      <div className="qui-ordering-list-parent-container">
+        {_.map(shuffle, ((item, index) => (
+          <div key={index}>
+            <div className={`qui-ordering-list ${quommonClasses.childClasses}`}>
+              <div
+                className="qui-ordering-btn"
+                onClick={() => upClick(index, shuffle)}
+              >
+                <div className="qui-ordering-border-up">
+                  <div className="qui-ordering-dotted-up">
+                    <button className={`qui-ordering-btn-icon fa fa-arrow-up `}></button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              className={`qui-btn qui-ordering-title-bttn ${quommonClasses.childClasses}`}
-            >
-              <div className={`qui-ordering-title-content`}>{item}</div>
-            </div>
-            <div
-              className={`qui-ordering-btn`}
-              onClick={() => downClick(index, shuffle)}
-            >
-              <div className="qui-ordering-border-down">
-                <div className="qui-ordering-dotted-down">
-                  <button
-                    className={`qui-ordering-btn-icon fa fa-arrow-down`}
-                  ></button>
+              <div
+                className={`qui-btn qui-ordering-title-bttn ${quommonClasses.childClasses}`}
+                style={orderingListstyle} >
+                <div className={`qui-ordering-title-content`} >{item}</div>
+              </div>
+              <div
+                className={`qui-ordering-btn`}
+                onClick={() => downClick(index, shuffle)}
+              >
+                <div className="qui-ordering-border-down">
+                  <div className="qui-ordering-dotted-down">
+                    <button
+                      className={`qui-ordering-btn-icon fa fa-arrow-down`}
+                    ></button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        )))}
+        <div className="qui-submit">
+          {<Button
+            {...props}
+            asFloated="none"
+            onClick={() => handleSubmit()}
+            content={"Submit Answer"}
+          />}
         </div>
-      )))}
-      <div className="qui-submit">
-        {<Button
-          {...props}
-          asFloated="none"
-          onClick={() => handleSubmit()}
-          content={"Submit Answer"}
-        />}
       </div>
-    </div>
     </motion.div>
   );
 }

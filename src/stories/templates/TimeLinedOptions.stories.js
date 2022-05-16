@@ -62,15 +62,9 @@ export default {
                 defaultValue: false,
             },
         },
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
-            },
-        },
         trackInteraction: {
             action: 'trackInteraction'
-        },
+        }
     },
     decorators: [
         (story) => (
@@ -101,10 +95,6 @@ Default.args = {
     data: {
         title: "Neque porro quisquam est qui dolorem",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-        backgroundImage: {
-            id: "background-image",
-            extention: ""
-        },
         image: {
             id: "header-image",
             extention: ""
@@ -114,9 +104,6 @@ Default.args = {
         bullets: ["Item 1", "Item 2", "Item 3"]
     },
     imageLibrary: [{
-        id: "background-image",
-        image: ""
-    }, {
         id: "header-image",
         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
     }],

@@ -90,11 +90,7 @@ TimeLinedOptions.propTypes = {
     /**
     Use to show/hide the component
     */
-    isHidden: PropTypes.bool,
-    /**
-    TimeLinedOptions component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
+    isHidden: PropTypes.bool
 };
 
 TimeLinedOptions.defaultProps = {
@@ -138,13 +134,17 @@ export default function TimeLinedOptions(props) {
         textColor: props.withColor?.slideHeaderTextColor,
         accentColor: props.withColor?.slideHeaderAccentColor,
         backgroundColor: props.withColor?.slideHeaderBackgroundColor
+    };
+    let orderingListColors = {
+        textColor: props.withColor?.buttonTextColor,
+        backgroundColor: props.withColor?.buttonBackgroundColor,
+        hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
+        hoverTextColor: props.withColor?.buttonHoverTextColor,
     }
 
     const getBackground = () => {
         return {
-            background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center"
+            background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)}) no-repeat cover center`
         };
     };
     const background = data?.backgroundImage
@@ -175,7 +175,7 @@ export default function TimeLinedOptions(props) {
                         {props.data?.question}
                     </div>
                     <div className="qui-time-lined-options-button-container">
-                        <OrderingList content={props.data?.bullets} onClick={(items) => props.trackInteraction(items)} />
+                        <OrderingList withColor={orderingListColors} content={props.data?.bullets} onClick={(items) => props.trackInteraction(items)} />
                     </div>
                 </div>}
         </motion.div>

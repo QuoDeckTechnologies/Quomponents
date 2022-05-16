@@ -20,6 +20,17 @@ export default {
                 category: "as-Flags",
             },
         },
+        withColor: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    backgroundColor: "",
+                    textColor: "",
+                    hoverBackgroundColor: "",
+                    hoverTextColor: "",
+                },
+            },
+        },
         withAnimation: {
             table: {
                 category: "with-Params",
@@ -76,6 +87,12 @@ Default.args = {
     asVariant: "warning",
     asFloated: "none",
     content: ["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"],
+    withColor: {
+        backgroundColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+    },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
