@@ -1,0 +1,130 @@
+.qui.qui-link-with-slide-card {
+  background-color: #ffffff;
+  border-radius: 1em;
+  .qui .qui-title-block {
+    min-width: 12em;
+    min-height: 10em;
+  }
+  .qui .qui-title {
+    font-size: 2.4em;
+    padding: 0 0 0.2em 0;
+    width: 100%;
+  }
+  .qui .qui-sub-title {
+    width: 75%;
+    font-weight: bold;
+  }
+}
+
+.qui .qui-link-with-slide-header .qui-link-with-slide-image {
+  box-shadow: 0px 4px 10px #8b8b8b;
+  min-width: 12em;
+  height: 11em;
+  object-fit: cover;
+}
+
+.qui .qui-link-with-slide-image {
+  width: 100%;
+  border-radius: 1em;
+}
+
+.qui .qui-link-with-slide-card-subtitle {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+
+.qui .qui-link-with-slide-subtitle {
+  margin: 0;
+  text-align: center;
+  width: 80%;
+}
+
+.qui .qui-link-with-slide-header {
+  position: relative;
+  padding: 1em;
+}
+
+.qui .qui-link-with-slide-button {
+  display: flex;
+  margin-top: 1em;
+  .qui.qui-button {
+    overflow: visible;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .qui-label {
+      display: none;
+    }
+    .qui-btn {
+      width: 85%;
+      padding: 0.5em;
+    }
+  }
+}
+
+.qui .qui-link-with-slide-text-block {
+  margin-top: 1em;
+  font-size: 2em;
+  .qui .qui-text-block-area {
+    padding: 0.5em;
+    margin: 0;
+    border-radius: 0;
+    border-top-right-radius: 0.2em;
+    border-bottom-right-radius: 0.2em;
+    width: 85%;
+  }
+  .qui-link-with-slide-block-subtitle {
+    width: 60%;
+    font-size: 0.5em;
+    font-weight: 300;
+    .qui .qui-text-block-area {
+      padding: 0.5em 0.5em 0.5em 0.7em;
+      border-radius: 0;
+      border-top-right-radius: 0.4em;
+      border-bottom-right-radius: 0.4em;
+    }
+  }
+}
+
+@media only screen and (min-width: 320px) {
+  .qui.qui-link-with-slide-card {
+    .qui .qui-title {
+      font-size: 1.5em;
+    }
+  }
+  .qui.qui-link-with-slide-card {
+    min-height: 31em;
+  }
+  .qui.qui-link-with-slide-card {
+    .qui .qui-sub-title {
+      font-size: 1em;
+    }
+  }
+  .qui .qui-link-with-slide-subtitle {
+    font-size: 0.9em;
+  }
+}
+
+@media only screen and (min-width: 428px) {
+  .qui.qui-link-with-slide-card {
+    .qui .qui-title {
+      font-size: 1.6em;
+    }
+  }
+  .qui.qui-link-with-slide-card {
+    .qui .qui-sub-title {
+      font-size: 1em;
+    }
+  }
+  .qui .qui-link-with-slide-subtitle {
+    font-size: 1em;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .qui.qui-link-with-slide-card {
+    min-height: 33.7em;
+    max-width: 23em;
+  }
+}
