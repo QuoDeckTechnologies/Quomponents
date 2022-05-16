@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     .qui-side-header {
         width: 10em;
@@ -17,6 +16,7 @@
     .qui-title-block {
         min-width: 12em;
         min-height: 10em;
+        margin: 0em 0em 1em 0em;
     }
     .qui-title {
         font-size: 1.5em;
@@ -33,29 +33,30 @@
     }
     .qui-zoomable-picture {
         border-radius: 1em;
-        max-height: 13em;
-        margin: 1em 0em;
+        max-height: 11em;
+        margin: -2.5em 0em 1em 0em;
         width: 97%;
         filter: drop-shadow(0px 5px 2px #a09797);
     }
     .qui-header-image {
         width: 100%;
         border-radius: 1em;
-        max-height: 10em;
-        margin: 0.5em 0em;
+        max-height: 12em;
+        margin: 0em 0em 1em 0em;
         filter: drop-shadow(0px 5px 2px #a09797);
     }
     .qui-zoomable-icon {
-        position: absolute;
+        position: relative;
         z-index: 1;
         border: none;
-        left: 3em;
-        top: 15em;
+        top: 1em;
+        left: 1.5em;
     }
 }
 
 .qui .qui-zoomable-icon button {
     padding: 0.7em 1.5em;
+    z-index: 1;
 }
 
 .qui .qui-zoomable-image-container {
@@ -89,23 +90,25 @@
     transform: rotate(-90deg);
 }
 
-.qui .qui-pinchview-zoomable-icon {
-    position: absolute;
-    z-index: 1;
-    top: 5%;
-    left: 5%;
-    border: none;
-}
-
 .qui .qui-pinchview-zoomable-icon button {
     padding: 0.7em 1.5em;
+}
+
+.qui .qui-pinchview-zoomable-icon {
+    position: absolute;
+    top: 1em;
+    left: 1em;
 }
 
 .qui .qui-pinchview-zoom {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+}
+.qui .qui-pinchview-zoom .qui-pinchview-image {
+    position: absolute;
+    height: 11em;
+    z-index: 1;
 }
 //-----------------------------------------
 // Zoomable-image presenter styles
@@ -118,11 +121,18 @@
     display: flex;
     flex-direction: column;
     .qui-zoomable-picture {
-        margin: 0em 0em 1em 0em;
+        margin: -2em 0em 1em 0em;
         filter: drop-shadow(0px 5px 2px #302f2f8e);
         border-radius: 1em;
         max-height: 13em;
         width: 97%;
+    }
+    .qui-zoomable-icon {
+        position: relative;
+        z-index: 1;
+        border: none;
+        top: 1.5em;
+        left: 1.5em;
     }
 
     .qui-zoomable-image-presenter-title {
@@ -166,6 +176,7 @@
             }
         }
     }
+
     .qui-text-block-tringle {
         .qui-arrow-right-bottom {
             z-index: 1;
@@ -187,12 +198,6 @@
             max-height: 13em;
             border-radius: 1em;
         }
-        .qui-pinchview-image {
-            position: absolute;
-            z-index: 1;
-            width: 50vw;
-            height: 23vh;
-        }
     }
     .qui-zoomable-image-presenter-container {
         .qui-zoomable-picture {
@@ -200,19 +205,6 @@
         }
         .qui-text-block-area {
             font-weight: lighter;
-        }
-        .qui-pinchview-image {
-            position: absolute;
-            z-index: 1;
-            width: 50vw;
-            height: 23vh;
-        }
-        .qui-zoomable-icon {
-            position: absolute;
-            z-index: 1;
-            top: 16.5em;
-            left: 3em;
-            border: none;
         }
     }
     .qui-zoomable-image-presenter {
@@ -223,27 +215,10 @@
         border-bottom-right-radius: 1em;
     }
 }
-@media only screen and (min-width: 375px) {
-    .qui-zoomable-image-presenter-container {
-        .qui-zoomable-icon {
-            position: absolute;
-            z-index: 1;
-            top: 14em;
-            left: 3em;
-            border: none;
-        }
-    }
-}
 @media only screen and (min-width: 481px) {
     .qui .qui-zoomable-image-card,
     .qui-zoomable-image-presenter-container {
         width: 22em;
-        .qui-pinchview-image {
-            position: absolute;
-            z-index: 1;
-            width: 25vw;
-            height: 15vh;
-        }
     }
     .qui-zoomable-image-presenter-container {
         .qui-zoomable-picture {

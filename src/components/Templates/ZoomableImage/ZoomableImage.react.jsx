@@ -212,6 +212,9 @@ export default function ZoomableImage(props) {
                                 content={SlideHeaderText}
                                 withColor={slideHeaderColors} />
                         )}
+                        {data?.image && (
+                            <img className="qui-header-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
+                        )}
                         <div className="qui-zoomable-icon">
                             {<Button
                                 withIcon={{ icon: "fas fa-expand", size: "1em", position: "left" }}
@@ -219,9 +222,8 @@ export default function ZoomableImage(props) {
                                 onClick={() => toggleFullscreen(true)}
                             />}
                         </div>
-                        {data?.image && (
-                            <img className="qui-header-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
-                        )}
+
+
                         <div className="qui-pinchview-zoom">
                             {pinch && <img className="qui-pinchview-image" src={PinchImage} alt="" />}
 
@@ -311,13 +313,14 @@ export default function ZoomableImage(props) {
                             position="right-bottom"
                             withColor={textBlockColors} />
                     </div>
-                    {hasPresenter && (
+                    <div>{hasPresenter && (
                         <img
                             className="qui-zoomable-image-presenter"
                             src={resolveImage(data.presenter.id, imageLibrary)}
                             alt=""
                         />
                     )}
+                    </div>
                 </div>
             );
         }
