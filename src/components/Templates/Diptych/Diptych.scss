@@ -33,6 +33,10 @@
     max-height: 13em;
     filter: drop-shadow(0px 5px 2px #a09797);
   }
+  .qui-clickable-image {
+    display: block;
+    width: 100%;
+  }
   .qui-clicked-on-image {
     width: inherit;
   }
@@ -149,6 +153,9 @@
       right: 0.1em;
     }
   }
+  .qui.qui-clickable-image {
+    display: block;
+  }
 }
 .qui-diptych-presenter-clickable-images {
   display: flex;
@@ -192,7 +199,7 @@
   }
   .qui-diptych-presenter-container {
     .qui-clickable-image {
-      height: 13em;
+      height: 8em;
     }
     .qui-diptych-presenter-caption .qui-text-block-area {
       width: 14em;
@@ -207,7 +214,17 @@
   }
   .qui .qui-diptych-card {
     .qui-clickable-image {
-      height: 13em;
+      height: 8em;
+      width: 100%;
     }
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .qui .qui-diptych-card .qui-clickable-image {
+    height: 5em;
+  }
+  .qui-diptych-presenter-container .qui-clickable-image {
+    height: 5em;
   }
 }
