@@ -1,0 +1,153 @@
+/* ================================================= */
+/* IconListGallery Definitions */
+/* ================================================= */
+.qui.qui-icon-list-gallery {
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 1em;
+    min-height: 30em;
+    .qui .qui-title-block {
+        min-width: 12em;
+        min-height: 10em;
+    }
+    .qui .qui-title {
+        font-size: 1.5em;
+        padding: 0 0 0.2em 0;
+    }
+    .qui .qui-sub-title {
+        font-size: 1em;
+    }
+    .qui-icon-list-gallery-image {
+        width: 100%;
+        border-radius: 1em;
+        max-height: 15em;
+        filter: drop-shadow(0px 5px 2px #a09797);
+    }
+    .qui-icon-list-gallery-container {
+        margin: 1em 0.5em;
+        .qui-icon-list-gallery-display-text {
+            .qui-block-text {
+                font-weight: 100;
+            }
+            .qui-text-block-area {
+                width: fit-content;
+                text-align: center;
+            }
+        }
+        .qui-icon-list-gallery-display-image {
+            width: 100%;
+            border-radius: 1em;
+            height: 12em;
+            filter: drop-shadow(0px 5px 2px #a09797);
+        }
+        .qui-icon-list-gallery-clickable-images-container {
+            transform: translateY(-60%);
+            margin: 0 1.5em;
+            .qui-icon-list-gallery-item {
+                width: 100%;
+                height: 0.5em;
+                background-color: #ad2929;
+                position: absolute;
+                bottom: 50%;
+                transform: translateY(50%);
+            }
+        }
+        .qui-clicked-on-image {
+            margin: auto;
+            border-radius: 50%;
+            width: 1em;
+            height: 1em;
+            filter: drop-shadow(0px 3px 1px #a09797);
+        }
+        .qui-active-image-click.is-circular {
+            width: 1.1em;
+            height: 1.1em;
+            margin: auto;
+            border: 0.13em solid #ad2929;
+        }
+    }
+}
+/* ================================================= */
+/* IconListGallery Sizing Definitions */
+/* ================================================= */
+@media only screen and (min-width: 320px) {
+    .qui.qui-icon-list-gallery {
+        width: auto;
+        .qui-icon-list-gallery-container {
+            .qui-icon-list-gallery-display-image {
+                height: 10em;
+            }
+            .qui-icon-list-gallery-clickable-images-container {
+                .qui-icon-list-gallery-item {
+                    height: 0.35em;
+                }
+            }
+            .qui-clicked-on-image {
+                width: 2em;
+                height: 2em;
+            }
+            .qui-active-image-click.is-circular {
+                width: 2.1em;
+                height: 2.1em;
+                border: 0.35em solid #ad2929;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 481px) {
+    .qui.qui-icon-list-gallery {
+        width: 20em;
+        .qui-icon-list-gallery-container {
+            .qui-icon-list-gallery-display-image {
+                height: 13em;
+            }
+            .qui-icon-list-gallery-clickable-images-container {
+                .qui-icon-list-gallery-item {
+                    height: 0.5em;
+                }
+            }
+            .qui-clicked-on-image {
+                width: 1.5em;
+                height: 1.5em;
+            }
+            .qui-active-image-click.is-circular {
+                width: 1.6em;
+                height: 1.6em;
+                border: 0.19em solid #ad2929;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .qui.qui-icon-list-gallery {
+        .qui-icon-list-gallery-container {
+            .qui-clicked-on-image {
+                width: 1em;
+                height: 1em;
+            }
+            .qui-active-image-click.is-circular {
+                width: 1.1em;
+                height: 1.1em;
+                border: 0.13em solid #ad2929;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .qui.qui-icon-list-gallery {
+        .qui-icon-list-gallery-container {
+            .qui-clicked-on-image {
+                width: 1em;
+                height: 1em;
+            }
+            .qui-active-image-click.is-circular {
+                width: 1.1em;
+                height: 1.1em;
+                border: 0.13em solid #ad2929;
+            }
+        }
+    }
+}
