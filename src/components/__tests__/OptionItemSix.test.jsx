@@ -24,6 +24,7 @@ describe("Option Item Six", () => {
           targetName: "name",
           value: "",
           placeholder: "placeholder",
+          captionName: "caption",
           maxLength: 300,
         }}
         withColor={{
@@ -171,6 +172,17 @@ describe("Option Item Six", () => {
 
   it("should render correctly when passed isDisabled props as true", () => {
     component.setProps({ isDisabled: true });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when targetName is not specified", () => {
+    component.setProps({
+      content: {
+        value: "optionItem",
+        placeholder: "placeholder",
+        maxLength: 300,
+      },
+    });
     expect(component.exists()).toBe(true);
   });
 });

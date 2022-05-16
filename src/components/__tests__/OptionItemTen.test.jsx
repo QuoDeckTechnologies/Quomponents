@@ -21,16 +21,23 @@ describe("Option Item Ten", () => {
     component = shallow(
       <OptionItemTen
         content={{
-          targetName: "target",
-          value: "",
-          placeholder: "Option A",
-          headerName: "header",
-          headerValue: "",
-          headerPlaceholder: "Header for Option A",
-          messageName: "message",
-          messageValue: "",
-          messagePlaceholder: "Message for Option A",
-          maxLength: 300,
+          option: {
+            targetName: "target",
+            value: "",
+            placeholder: "Option A",
+          },
+          header: {
+            targetName: "header",
+            value: "",
+            placeholder: "Header for Option A",
+            maxLength: 300,
+          },
+          message: {
+            targetName: "message",
+            value: "",
+            placeholder: "Message for Option A",
+            maxLength: 300,
+          },
         }}
         withColor={{
           backgroundColor: "",
@@ -111,16 +118,23 @@ describe("Option Item Ten", () => {
     let component = mount(
       <OptionItemTen
         content={{
-          targetName: "target",
-          value: "",
-          placeholder: "Option A",
-          headerName: "header",
-          headerValue: "",
-          headerPlaceholder: "Header for Option A",
-          messageName: "message",
-          messageValue: "",
-          messagePlaceholder: "Message for Option A",
-          maxLength: 300,
+          option: {
+            targetName: "target",
+            value: "",
+            placeholder: "Option A",
+          },
+          header: {
+            targetName: "header",
+            value: "",
+            placeholder: "Header for Option A",
+            maxLength: 300,
+          },
+          message: {
+            targetName: "message",
+            value: "",
+            placeholder: "Message for Option A",
+            maxLength: 300,
+          },
         }}
         onInput={() => {}}
         onHeader={() => {}}
@@ -186,6 +200,45 @@ describe("Option Item Ten", () => {
   it("should render correctly when file is uploaded", async () => {
     component.find("OptionalImageField").simulate("click", {});
     await pauseFor(100);
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when header targetName is not specified", () => {
+    component.setProps({
+      content: {
+        header: {
+          value: "optionItem",
+          placeholder: "placeholder",
+          maxLength: 300,
+        },
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when option targetName is not specified", () => {
+    component.setProps({
+      content: {
+        option: {
+          value: "optionItem",
+          placeholder: "placeholder",
+          maxLength: 300,
+        },
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when message targetName is not specified", () => {
+    component.setProps({
+      content: {
+        message: {
+          value: "optionItem",
+          placeholder: "placeholder",
+          maxLength: 300,
+        },
+      },
+    });
     expect(component.exists()).toBe(true);
   });
 });

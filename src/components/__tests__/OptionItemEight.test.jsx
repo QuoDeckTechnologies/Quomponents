@@ -49,9 +49,11 @@ describe("Option Item Eight", () => {
   it("should render correctly without throwing error when withColor prop is passed", () => {
     component.setProps({
       withColor: {
-        backgroundColor: "#8c9ea3",
-        accentColor: "#597387",
-        textColor: "#bac2c8",
+        backgroundColor: "#fff",
+        accentColor: "#FF0000",
+        textColor: "#00FFFF",
+        hoverBackgroundColor: "#0000FF",
+        hoverTextColor: "	#00008B",
       },
     });
     expect(component.exists()).toBe(true);
@@ -106,45 +108,14 @@ describe("Option Item Eight", () => {
       .simulate("click", { target: { dataset: { id: "name" } } });
   });
 
-  it("should render correctly when passed withColor props", () => {
-    let colors = {
-      backgroundColor: "#fff",
-      accentColor: "#FF0000",
-      textColor: "#00FFFF",
-      hoverBackgroundColor: "#0000FF",
-      hoverTextColor: "	#00008B",
-    };
-    component.setProps({ withColor: colors });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    };
-    component.setProps({ withAnimation: animation });
-    expect(component.exists()).toBe(true);
-  });
-  
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
+  it("should render correctly when targetName is not specified", () => {
+    component.setProps({
+      content: {
+        value: "optionItem",
+        placeholder: "placeholder",
+        maxLength: 300,
+      },
+    });
     expect(component.exists()).toBe(true);
   });
 });

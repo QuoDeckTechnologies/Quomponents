@@ -22,14 +22,20 @@ describe("Option Item Two", () => {
     component = shallow(
       <OptionItemNine
         content={{
-          targetNameShortFieldOne: "ShortFieldOne",
-          targetNameShortFieldTwo: "ShortFieldTwo",
-          targetName: "Target Name",
-          valueShortFieldOne: "0",
-          valueShortFieldTwo: "0",
-          value: "",
-          placeholder: "Message for Quiz Result",
-          maxLength: 300,
+          shortFieldOne: {
+            targetName: "ShortFieldOne",
+            value: "0",
+          },
+          shortFieldTwo: {
+            targetName: "ShortFieldTwo",
+            value: "0",
+          },
+          message: {
+            targetName: "Target Name",
+            value: "",
+            placeholder: "Message for Quiz Result",
+            maxLength: 300,
+          },
         }}
         withColor={null}
         withAnimation={null}
@@ -135,7 +141,7 @@ describe("Option Item Two", () => {
     component.setProps({ isHidden: false });
     expect(component.exists()).toBe(true);
   });
-  
+
   it("should render correctly when passed isHidden props as true", () => {
     component.setProps({ isHidden: true });
     expect(component.exists()).toBe(true);
@@ -148,6 +154,45 @@ describe("Option Item Two", () => {
 
   it("should render correctly when passed isDisabled props as true", () => {
     component.setProps({ isDisabled: true });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when shortFieldOne targetName is not specified", () => {
+    component.setProps({
+      content: {
+        shortFieldOne: {
+          value: "optionItem",
+          placeholder: "placeholder",
+          maxLength: 300,
+        },
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when shortFieldTwo targetName is not specified", () => {
+    component.setProps({
+      content: {
+        shortFieldTwo: {
+          value: "optionItem",
+          placeholder: "placeholder",
+          maxLength: 300,
+        },
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when message targetName is not specified", () => {
+    component.setProps({
+      content: {
+        message: {
+          value: "optionItem",
+          placeholder: "placeholder",
+          maxLength: 300,
+        },
+      },
+    });
     expect(component.exists()).toBe(true);
   });
 });

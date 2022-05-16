@@ -120,4 +120,15 @@ describe("Option Item Two", () => {
     await pauseFor(100);
     expect(component.exists()).toBe(true);
   });
+
+  it("should render correctly when targetName is not specified", () => {
+    component.setProps({
+      content: {
+        value: "optionItem",
+        placeholder: "placeholder",
+        maxLength: 300,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
 });

@@ -181,4 +181,15 @@ describe("Option Item Seven", () => {
     component.setProps({ isDisabled: true });
     expect(component.exists()).toBe(true);
   });
+
+  it("should render correctly when targetName is not specified", () => {
+    component.setProps({
+      content: {
+        value: "optionItem",
+        placeholder: "placeholder",
+        maxLength: 300,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
 });

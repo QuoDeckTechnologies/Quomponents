@@ -114,4 +114,15 @@ describe("Option Item Two", () => {
       .find(".fa-times")
       .simulate("click", { target: { dataset: { id: "name" } } });
   });
+
+  it("should render correctly when targetName is not specified", () => {
+    component.setProps({
+      content: {
+        value: "optionItem",
+        placeholder: "placeholder",
+        maxLength: 300,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
 });
