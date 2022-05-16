@@ -126,7 +126,7 @@ export default function OptionItemTwo(props) {
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     setValue(value);
-    props.onInput(content?.targetName, value, isChecked);
+    props.onInput(name, value, isChecked);
   };
 
   // ========================= Render Function =================================
@@ -141,7 +141,9 @@ export default function OptionItemTwo(props) {
         <div className="qui-option-item-radio-container">
           <FormControlLabel
             className="qui-option-item-radio"
-            value={content?.targetName}
+            value={
+              content?.targetName ? content?.targetName : "default-target-name"
+            }
             control={
               <Radio
                 checked={isChecked}
@@ -153,7 +155,9 @@ export default function OptionItemTwo(props) {
           />
         </div>
         <InputField
-          name={content?.targetName}
+          name={
+            content?.targetName ? content?.targetName : "default-target-name"
+          }
           content={{
             value: content?.value,
             placeholder: content?.placeholder,
@@ -166,7 +170,9 @@ export default function OptionItemTwo(props) {
         <div className="qui-single-select-close-icon">
           <i
             className="qui-single-select-icon fas fa-times"
-            data-id={content?.targetName}
+            data-id={
+              content?.targetName ? content?.targetName : "default-target-name"
+            }
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>
         </div>

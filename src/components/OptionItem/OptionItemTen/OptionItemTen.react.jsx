@@ -162,7 +162,11 @@ export default function OptionItemTen(props) {
       <div className="qui-option-item-ten-container">
         <div className="qui-option-item-inputfieldone">
           <InputField
-            name={content?.option?.targetName}
+            name={
+              content?.option?.targetName
+                ? content?.option?.targetName
+                : "default-option-target-name"
+            }
             content={{
               value: content?.option?.value,
               placeholder: content?.option?.placeholder,
@@ -181,7 +185,11 @@ export default function OptionItemTen(props) {
         </div>
         <div className="qui-option-item-inputfieldtwo">
           <InputField
-            name={content?.header?.targetName}
+            name={
+              content?.header?.targetName
+                ? content?.header?.targetName
+                : "default-header-target-name"
+            }
             content={{
               value: content?.header?.value,
               placeholder: content?.header?.placeholder,
@@ -202,7 +210,11 @@ export default function OptionItemTen(props) {
       </div>
       <div className="qui-option-item-inputfieldthree">
         <InputField
-          name={content?.message?.targetName}
+          name={
+            content?.message?.targetName
+              ? content?.message?.targetName
+              : "default-message-target-name"
+          }
           content={{
             value: content?.message?.value,
             placeholder: content?.message?.placeholder,

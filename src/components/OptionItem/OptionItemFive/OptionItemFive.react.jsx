@@ -123,7 +123,7 @@ export default function OptionItemFive(props) {
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     setValue(value);
-    props.onInput(content?.targetName, image, value);
+    props.onInput(name, image, value);
   };
 
   // ========================= Render Function =================================
@@ -143,7 +143,9 @@ export default function OptionItemFive(props) {
           />
         </div>
         <InputField
-          name={content?.targetName}
+          name={
+            content?.targetName ? content?.targetName : "default-target-name"
+          }
           content={{
             value: content?.value,
             placeholder: content?.placeholder,

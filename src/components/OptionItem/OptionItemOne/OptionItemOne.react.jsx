@@ -111,7 +111,9 @@ export default function OptionItemOne(props) {
     >
       <div className="qui-inline-option-container">
         <InputField
-          name={content?.targetName}
+          name={
+            content?.targetName ? content?.targetName : "default-target-name"
+          }
           content={{
             value: content?.value,
             placeholder: content?.placeholder,

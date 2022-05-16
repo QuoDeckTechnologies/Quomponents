@@ -123,13 +123,13 @@ export default function OptionItemSix(props) {
   // 5. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
-    props.onInput(content?.targetName, value);
+    props.onInput(name, value);
   };
   //-------------------------------------------------------------------
   // 6. Function to return caption value of the component
   //-------------------------------------------------------------------
   const handleCaptionValue = (name, captionValue) => {
-    props.onCaption(content?.captionName, captionValue);
+    props.onCaption(name, captionValue);
   };
 
   // ========================= Render Function =================================
@@ -152,7 +152,11 @@ export default function OptionItemSix(props) {
             </div>
             <div className="qui-optionitem-six-inputfieldone">
               <InputField
-                name={content?.targetName}
+                name={
+                  content?.targetName
+                    ? content?.targetName
+                    : "default-target-name"
+                }
                 content={{
                   value: content?.value,
                   placeholder: content?.placeholder,
@@ -166,7 +170,11 @@ export default function OptionItemSix(props) {
           </div>
           <div className="qui-optionitem-flexthree">
             <InputField
-              name={content?.captionName}
+              name={
+                content?.captionName
+                  ? content?.captionName
+                  : "default-caption-target-name"
+              }
               content={{
                 value: content?.captionValue,
                 placeholder: content?.captionPlaceholder,

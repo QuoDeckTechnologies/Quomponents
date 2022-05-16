@@ -121,7 +121,7 @@ export default function OptionItemFour(props) {
   // 6. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
-    onInput(content?.targetName, value);
+    onInput(name, value);
   };
 
   // ========================= Render Function =================================
@@ -145,7 +145,9 @@ export default function OptionItemFour(props) {
           />
         </div>
         <InputField
-          name={content?.targetName}
+          name={
+            content?.targetName ? content?.targetName : "default-target-name"
+          }
           content={{
             value: content?.value,
             placeholder: content?.placeholder,

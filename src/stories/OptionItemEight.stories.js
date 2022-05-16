@@ -220,16 +220,19 @@ MultipleOptionItemEight.args = {
       targetName: "TargetNameOne",
       value: "",
       placeholder: "Placeholder Eight",
+      buttonText: "Button One",
     },
     {
       targetName: "TargetNameTwo",
       value: "",
       placeholder: "Placeholder Two",
+      buttonText: "Button Two",
     },
     {
       targetName: "TargetNameThree",
       value: "Default Value",
       placeholder: "Placeholder Three",
+      buttonText: "Button Three",
     },
   ],
 };

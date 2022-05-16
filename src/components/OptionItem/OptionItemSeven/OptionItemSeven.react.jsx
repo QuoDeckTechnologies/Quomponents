@@ -131,7 +131,7 @@ export default function OptionItemSeven(props) {
   // 6. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
-    props.onInput(content?.targetName, value);
+    props.onInput(name, value);
   };
   //-------------------------------------------------------------------
   // 7. Function to update value of the input field
@@ -152,7 +152,9 @@ export default function OptionItemSeven(props) {
         <div className="qui-option-item-radio-container">
           <FormControlLabel
             className="qui-option-item-radio"
-            value={content?.targetName}
+            value={
+              content?.targetName ? content?.targetName : "default-target-name"
+            }
             control={
               <Radio
                 checked={isChecked}
@@ -171,7 +173,9 @@ export default function OptionItemSeven(props) {
           />
         </div>
         <InputField
-          name={content?.targetName}
+          name={
+            content?.targetName ? content?.targetName : "default-target-name"
+          }
           content={{
             value: content?.value,
             placeholder: content?.placeholder,
@@ -184,7 +188,9 @@ export default function OptionItemSeven(props) {
         <div className="qui-option-item-seven-close-icon">
           <i
             className="qui-option-item-seven-icon fas fa-times"
-            data-id={content?.targetName}
+            data-id={
+              content?.targetName ? content?.targetName : "default-target-name"
+            }
             onClick={(e) => props.onClose(e.target.dataset.id)}
           ></i>
         </div>

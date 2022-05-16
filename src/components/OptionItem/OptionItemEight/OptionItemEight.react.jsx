@@ -109,7 +109,7 @@ export default function OptionItemEight(props) {
   // 4. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
-    props.onInput(content?.targetName, value);
+    props.onInput(name, value);
   };
 
   // ========================= Render Function =================================
@@ -122,7 +122,9 @@ export default function OptionItemEight(props) {
     >
       <div className="qui-option-item-eight-container">
         <InputField
-          name={content?.targetName}
+          name={
+            content?.targetName ? content?.targetName : "default-target-name"
+          }
           content={{
             value: content?.value,
             placeholder: content?.placeholder,
