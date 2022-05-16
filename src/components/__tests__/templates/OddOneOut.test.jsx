@@ -20,10 +20,10 @@ describe("OddOneOut", () => {
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
 		backgroundImage: { id: "", extention: "" },
 		options: [
-			{ correct: "checked", text: "Item 1" },
-			{ correct: "", text: "Item 2" },
-			{ correct: "", text: "Item 3" },
-			{ correct: "", text: "Item 4" }
+			{ correct: "checked", text: "<< List item 1. Replace with your own text >>" },
+			{ correct: "", text: "<< List item 2. Replace with your own text >>" },
+			{ correct: "", text: "<< List item 3. Replace with your own text >>" },
+			{ correct: "", text: "<< List item 4. Replace with your own text >>" }
 		],
 	}
 
@@ -31,7 +31,11 @@ describe("OddOneOut", () => {
 		slideHeaderTextColor: "#ffffff",
 		slideHeaderAccentColor: "#AD2929",
 		slideHeaderBackgroundColor: "#AD292980",
-		backgroundColor: "#fff",
+		buttonBackgroundColor: "",
+		buttonTextColor: "",
+		buttonHoverBackgroundColor: "",
+		buttonHoverTextColor: "",
+		backgroundColor: "#AD292"
 	};
 
 	beforeEach(() => {
@@ -45,7 +49,7 @@ describe("OddOneOut", () => {
 				withAnimation={null}
 				isHidden={false}
 				isDisabled={false}
-				onClick={() => console.log("OddOneOut Testing")}
+				onClick={jest.fn()}
 			/>
 		);
 	});
@@ -59,10 +63,11 @@ describe("OddOneOut", () => {
 			slideHeaderTextColor: "#ffffff",
 			slideHeaderAccentColor: "#AD2929",
 			slideHeaderBackgroundColor: "#AD292980",
-			buttonBackgroundColor: "#AD2929",
-			buttonTextColor: "#ffffff",
-			buttonHoverBackgroundColor: "#AD292980",
-			buttonHoverTextColor: "#AD2929"
+			buttonBackgroundColor: "",
+			buttonTextColor: "",
+			buttonHoverBackgroundColor: "",
+			buttonHoverTextColor: "",
+			backgroundColor: "#AD292"
 		}
 		component.setProps({ asEmphasis: "text" })
 		component.setProps({ withColor: colors })
@@ -74,10 +79,11 @@ describe("OddOneOut", () => {
 			slideHeaderTextColor: "#ffffff",
 			slideHeaderAccentColor: "#AD2929",
 			slideHeaderBackgroundColor: "#AD292980",
-			buttonBackgroundColor: "#AD2929",
-			buttonTextColor: "#ffffff",
-			buttonHoverBackgroundColor: "#AD292980",
-			buttonHoverTextColor: "#AD2929"
+			buttonBackgroundColor: "",
+			buttonTextColor: "",
+			buttonHoverBackgroundColor: "",
+			buttonHoverTextColor: "",
+			backgroundColor: "#AD292"
 		}
 		component.setProps({ asEmphasis: "contained" })
 		component.setProps({ withColor: colors })
@@ -89,10 +95,11 @@ describe("OddOneOut", () => {
 			slideHeaderTextColor: "#ffffff",
 			slideHeaderAccentColor: "#AD2929",
 			slideHeaderBackgroundColor: "#AD292980",
-			buttonBackgroundColor: "#AD2929",
-			buttonTextColor: "#ffffff",
-			buttonHoverBackgroundColor: "#AD292980",
-			buttonHoverTextColor: "#AD2929"
+			buttonBackgroundColor: "",
+			buttonTextColor: "",
+			buttonHoverBackgroundColor: "",
+			buttonHoverTextColor: "",
+			backgroundColor: "#AD292"
 		}
 		component.setProps({ asEmphasis: "outlined" })
 		component.setProps({ withColor: colors })

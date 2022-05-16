@@ -102,7 +102,6 @@ Default.args = {
         subtitle:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         image: { id: "header-image", extension: "" },
-        backgroundImage: { id: "", extention: "" },
         options: [
             { correct: "checked", text: "Item 1" },
             { correct: "", text: "Item 2" },
@@ -152,7 +151,6 @@ OddOneOutWithSlideHeader.args = {
         title: "Neque porro quisquam est qui dolorem",
         subtitle:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-        backgroundImage: { id: "", extention: "" },
         options: [
             { correct: "checked", text: "Item 1" },
             { correct: "", text: "Item 2" },
@@ -161,6 +159,11 @@ OddOneOutWithSlideHeader.args = {
         ],
     },
     slideId: 0,
+    imageLibrary: [{
+        id: "header-image",
+        image:
+            "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    }],
     asVariant: "primary",
     withColor: {
         slideHeaderTextColor: "#ffffff",
@@ -168,7 +171,7 @@ OddOneOutWithSlideHeader.args = {
         slideHeaderBackgroundColor: "#AD292980",
         buttonBackgroundColor: "",
         buttonTextColor: "",
-        buttonHoverBackgroundColor: "",
+        buttonHoverBackgroundColor: "#AD292980",
         buttonHoverTextColor: "",
         backgroundColor: "#AD292"
     },
@@ -177,7 +180,7 @@ OddOneOutWithSlideHeader.args = {
         duration: 0.5,
         delay: 0,
     },
-    asEmphasis: "contained",
+    asEmphasis: "outlined",
     isDisabled: false,
     isHidden: false,
 };
@@ -192,68 +195,56 @@ OddOneOutWithSlideHeader.parameters = {
         },
     },
 };
+
 // -------------------------------------------------------------
-// EmphasisOddOneOut
+// OddOneOutWithSlideHeaderAndBackgroundImage
 // -------------------------------------------------------------
-export const EmphasisOddOneOut = (args) => {
-    const baseObj1 = {
-        ...Object.assign({}, Default.args, {
-            asVariant: "primary",
-            asEmphasis: "outlined",
-            withColor: {
-                slideHeaderTextColor: "#ffffff",
-                slideHeaderAccentColor: "#AD2929",
-                slideHeaderBackgroundColor: "#AD292980",
-                buttonBackgroundColor: "#AD2929",
-                buttonTextColor: "#ffffff",
-                buttonHoverBackgroundColor: "#AD292980",
-                buttonHoverTextColor: "#AD2929",
-                backgroundColor: "#AD292"
-            },
-            withAnimation: {
-                animation: "slideRight",
-                duration: 0.5,
-                delay: 0,
-            },
-            onClick: (value) => { return value }
-        })
-    };
-    return (
-        <OddOneOut
-            {...Object.assign({}, baseObj1, {
-            })}
-        />
-    );
+export const OddOneOutWithSlideHeaderAndBackgroundImage = Template.bind({});
+OddOneOutWithSlideHeaderAndBackgroundImage.args = {
+    data: {
+        title: "Neque porro quisquam est qui dolorem",
+        subtitle:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+        backgroundImage: { id: "background-image", extention: "" },
+        options: [
+            { correct: "checked", text: "Item 1" },
+            { correct: "", text: "Item 2" },
+            { correct: "", text: "Item 3" },
+            { correct: "", text: "Item 4" }
+        ],
+    },
+    imageLibrary: [{
+        id: 'background-image',
+        image: "https://media.istockphoto.com/vectors/question-mark-3d-seamless-wallpaper-pattern-vector-id494094966?k=20&m=494094966&s=612x612&w=0&h=tXbLXNlUjL-jLsZOm7VBjDKY-Pp4yXJRwKv2pmi3TII=",
+    }],
+    slideId: 0,
+    asVariant: "primary",
+    withColor: {
+        questionColor: "#000000",
+        slideHeaderTextColor: "#ffffff",
+        slideHeaderAccentColor: "#AD2929",
+        slideHeaderBackgroundColor: "#AD292980",
+        inputFieldTextColor: "",
+        inputFieldAccentColor: "#AD292980",
+        inputFieldBackgroundColor: "#ffffff",
+        buttonTextColor: "",
+        buttonBackgroundColor: "",
+        buttonHoverBackgroundColor: "",
+        buttonHoverTextColor: "",
+        backgroundColor: "#ffffff",
+    },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+    isDisabled: false,
+    isHidden: false,
 };
-// -------------------------------------------------------------
-// ColoredOddOneOut
-// -------------------------------------------------------------
-export const ColoredOddOneOut = (args) => {
-    const baseObj1 = {
-        ...Object.assign({}, Default.args, {
-            asVariant: "primary",
-            withColor: {
-                slideHeaderTextColor: "#ffffff",
-                slideHeaderAccentColor: "#AD2929",
-                slideHeaderBackgroundColor: "#AD292980",
-                buttonBackgroundColor: "#AD2929",
-                buttonTextColor: "#ffffff",
-                buttonHoverBackgroundColor: "#AD292980",
-                buttonHoverTextColor: "#AD2929",
-                backgroundColor: "#AD292"
-            },
-            withAnimation: {
-                animation: "slideRight",
-                duration: 0.5,
-                delay: 0,
-            },
-            onClick: (value) => { return value }
-        })
-    };
-    return (
-        <OddOneOut
-            {...Object.assign({}, baseObj1, {
-            })}
-        />
-    );
+OddOneOutWithSlideHeaderAndBackgroundImage.parameters = {
+    docs: {
+        source: {
+            code: `<ClozeWithFeedback {...${JSON.stringify(OddOneOutWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+        },
+    },
 };

@@ -146,6 +146,7 @@ export default function OddOneOut(props) {
         if ((!data?.image || data?.image?.id === "") && (data?.title || data?.subtitle)) {
             return (
                 <SlideHeader
+                    {...props}
                     content={{ title: data?.title, subTitle: data?.subtitle }}
                     withColor={slideHeaderColors}
                 />
