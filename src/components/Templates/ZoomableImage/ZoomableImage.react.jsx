@@ -188,10 +188,12 @@ export default function ZoomableImage(props) {
                                         onClick={() => toggleFullscreen(false)}
                                     />
                                 </div>
-                                {pinch && <img className="qui-pinchview-zoomable-hint" src={PinchImage} alt="" />}
-                                {data?.zoomableImage && (
-                                    <img className="qui-pinchview-zoomable-image" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
-                                )}
+                                <div className="qui-pinchview-zoom">
+                                    {pinch && <img className="qui-pinchview-zoomable-hint" src={PinchImage} alt="" />}
+                                    {data?.zoomableImage && (
+                                        <img className="qui-pinchview-zoomable-image" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -258,10 +260,12 @@ export default function ZoomableImage(props) {
                                         onClick={() => toggleFullscreen(false)}
                                     />
                                 </div>
-                                {pinch && <img className="qui-pinchview-zoomable-hint" src={PinchImage} alt="" />}
-                                {data?.zoomableImage && (
-                                    <img className="qui-pinchview-zoomable-image" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
-                                )}
+                                <div className="qui-pinchview-zoom">
+                                    {pinch && <img className="qui-pinchview-zoomable-hint" src={PinchImage} alt="" />}
+                                    {data?.zoomableImage && (
+                                        <img className="qui-pinchview-zoomable-image" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div >

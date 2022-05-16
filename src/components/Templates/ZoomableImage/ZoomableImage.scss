@@ -59,7 +59,7 @@
     z-index: 1;
 }
 
-.qui .qui-zoomable-image-container {
+.qui.qui-zoomable-image-container .qui-pinchview-zoomable-hint {
     z-index: 1;
     width: "100%";
     height: "100%";
@@ -107,7 +107,6 @@
 }
 .qui .qui-pinchview-zoom .qui-pinchview-image {
     position: absolute;
-    height: 11em;
     z-index: 1;
 }
 //-----------------------------------------
@@ -214,6 +213,20 @@
         height: 12em;
         border-bottom-right-radius: 1em;
     }
+    .qui .qui-pinchview-zoom .qui-pinchview-image {
+        position: absolute;
+        z-index: 1;
+        height: 8.5em;
+        margin-top: -1em;
+    }
+}
+@media only screen and (min-width: 375px) {
+    .qui .qui-pinchview-zoom .qui-pinchview-image {
+        position: absolute;
+        z-index: 1;
+        height: 10em;
+        margin-top: -1em;
+    }
 }
 @media only screen and (min-width: 481px) {
     .qui .qui-zoomable-image-card,
@@ -241,5 +254,11 @@
             border-radius: 1em;
             max-height: 13em;
         }
+    }
+    .qui .qui-pinchview-zoom .qui-pinchview-image {
+        position: absolute;
+        z-index: 1;
+        height: 10em;
+        margin-top: -1em;
     }
 }
