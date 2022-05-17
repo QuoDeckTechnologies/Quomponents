@@ -1,0 +1,116 @@
+.qui .qui-time-lined-options-card {
+    min-height: 30em;
+    padding: 1.5em;
+    border-radius: 1em;
+
+    .qui-banner-card {
+        box-shadow: 0px 4px 5px 1px #918686;
+        border-radius: 1em;
+    }
+
+    .qui-title-block {
+        min-width: 12em;
+        min-height: 10em;
+    }
+
+    .qui-title {
+        font-size: 1.5em;
+        padding: 0 0 0.2em 0;
+    }
+
+    .qui-sub-title {
+        font-size: 1em;
+    }
+
+    .qui-time-lined-options-label {
+        margin-top: 1em;
+    }
+
+    .qui-time-lined-options-image {
+        width: 100%;
+        border-radius: 1em;
+        max-height: 17em;
+        filter: drop-shadow(0px 5px 2px #a09797);
+    }
+
+    .qui .qui-ordering-title-bttn {
+        overflow: hidden;
+        word-break: break-word;
+    }
+}
+
+.qui-time-lined-options-button-container {
+    margin-top: 1em;
+    font-size: 1.5em;
+}
+
+@media only screen and (min-width: 320px) {
+    .qui .qui-time-lined-options-label {
+        font-size: 1.2em;
+        width: auto;
+    }
+
+    .qui .qui-submit Button {
+        align-items: center;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .qui-time-lined-options-button-container {
+        font-size: 1.25em;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .qui-time-lined-options-button-container {
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (min-width: 412px) {
+    .qui-time-lined-options-button-container {
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (min-width: 481px) {
+    .qui-time-lined-options-label {
+        font-size: 1.3em;
+    }
+
+    .qui .qui-time-lined-options-card {
+        width: 20em;
+
+        .qui-button button {
+            width: 15em;
+            padding: 0.7em;
+        }
+    }
+}
+
+@media only screen and (min-width: 540px) {
+    .qui-time-lined-options-button-container {
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (min-width: 720px) {
+    .qui-time-lined-options-button-container {
+        font-size: 0.35em;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .qui .qui-time-lined-options-label {
+        font-size: 1.4em;
+    }
+
+    .qui .qui-time-lined-options-card {
+        width: 20em;
+    }
+
+    .qui-time-lined-options-button-container {
+        margin-top: 2.5em;
+        font-size: 0.35em;
+    }
+}
