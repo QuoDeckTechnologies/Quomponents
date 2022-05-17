@@ -34,27 +34,6 @@ describe("Option Item Two", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error", () => {
-    let component = mount(
-      <OptionItemFour
-        content={{
-          targetName: "name",
-          value: "",
-          placeholder: "placeholder",
-          checked: false,
-        }}
-        onInput={() => {}}
-        onSelect={() => {}}
-        onClose={() => {}}
-      />
-    );
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error when wriiten in input field", () => {
-    component.find("InputField").simulate("click");
-  });
-
   it("should render correctly without throwing error when withColor prop is passed", () => {
     component.setProps({
       withColor: {
@@ -103,6 +82,27 @@ describe("Option Item Two", () => {
       isHidden: true,
     });
     expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error", () => {
+    let component = mount(
+      <OptionItemFour
+        content={{
+          targetName: "name",
+          value: "",
+          placeholder: "placeholder",
+          checked: false,
+        }}
+        onInput={() => {}}
+        onSelect={() => {}}
+        onClose={() => {}}
+      />
+    );
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when wriiten in input field", () => {
+    component.find("InputField").simulate("click");
   });
 
   it("should render correctly without throwing error when checkbox is used", () => {

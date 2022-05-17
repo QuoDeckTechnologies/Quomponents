@@ -70,8 +70,7 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle:
-      "Displays a optionitemten with inputField and buttons for general-purpose use..",
+    componentSubtitle: "Displays OptionItemTen component.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
@@ -127,7 +126,7 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Colored Option Item Ten
+// Colored OptionItem Ten
 // -------------------------------------------------------------
 export const ColoredOptionItemTen = Template.bind({});
 ColoredOptionItemTen.args = {
@@ -150,7 +149,7 @@ ColoredOptionItemTen.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Animated Option Item Ten
+// Animated OptionItem Ten
 // -------------------------------------------------------------
 export const AnimatedOptionItemTen = Template.bind({});
 AnimatedOptionItemTen.args = {
@@ -174,7 +173,7 @@ AnimatedOptionItemTen.parameters = {
 };
 
 // -------------------------------------------------------------
-// Multiple Option Item Ten
+// Multiple OptionItem Ten
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
   const [contentArr, setContentArr] = useState(args.multiContent);

@@ -63,7 +63,7 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a InlineEdit with remove button.",
+    componentSubtitle: "Displays a OptionItemNine component.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
@@ -115,7 +115,7 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Colored Single Select
+// Colored OptionItem Nine
 // -------------------------------------------------------------
 export const ColoredOptionItemNine = Template.bind({});
 ColoredOptionItemNine.args = {
@@ -137,7 +137,7 @@ ColoredOptionItemNine.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Animated Single Select
+// Animated OptionItem Nine
 // -------------------------------------------------------------
 export const AnimatedOptionItemNine = Template.bind({});
 AnimatedOptionItemNine.args = {
@@ -161,7 +161,7 @@ AnimatedOptionItemNine.parameters = {
 };
 
 // -------------------------------------------------------------
-// Multiple Option Item Two
+// Multiple OptionItem Nine
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
   const [contentArr, setContentArr] = useState([...args.multiContent]);

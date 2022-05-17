@@ -57,8 +57,7 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle:
-      "Displays a optionitemeight with inputField and buttons for general-purpose use.",
+    componentSubtitle: "Displays an OptionItemEight component.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
@@ -146,7 +145,7 @@ AnimatedOptionItemEight.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Multiple Option Item Eight
+// Multiple OptionItem Eight
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
   const [contentArr, setContentArr] = useState(args.multiContent);

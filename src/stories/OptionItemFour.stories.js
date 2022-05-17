@@ -57,7 +57,7 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a Option Item Four.",
+    componentSubtitle: "Displays a OptionItemFour component.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
@@ -100,7 +100,7 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Colored Option Item Four
+// Colored OptionItem Four
 // -------------------------------------------------------------
 export const ColoredOptionItemFour = Template.bind({});
 ColoredOptionItemFour.args = {
@@ -122,7 +122,7 @@ ColoredOptionItemFour.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Animated Option Item Four
+// Animated OptionItem Four
 // -------------------------------------------------------------
 export const AnimatedOptionItemFour = Template.bind({});
 AnimatedOptionItemFour.args = {
@@ -145,7 +145,7 @@ AnimatedOptionItemFour.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Multiple Option Item Four
+// Multiple OptionItem Four
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
   const [contentArr, setContentArr] = useState(args.multiContent);
