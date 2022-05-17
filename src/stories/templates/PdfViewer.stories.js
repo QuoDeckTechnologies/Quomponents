@@ -14,6 +14,7 @@ export default {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "#fff",
+          sliderBackgroundColor: "#fff",
         },
       },
     },
@@ -73,7 +74,7 @@ const Template = (args) => <PdfViewer {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   data: {
-    editorWidth: false,
+    title: 'Test Pdf',
     pdf: {
       id: "default-pdf",
       extention: ""
@@ -98,6 +99,7 @@ Default.args = {
   slideId: 0,
   withColor: {
     backgroundColor: "#fff",
+    sliderBackgroundColor: "#3a3636a6",
   },
   withAnimation: {
     animation: "zoom",

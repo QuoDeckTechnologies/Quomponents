@@ -1,6 +1,7 @@
 // Import npm packages
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import Slider from "../../Slider/Slider.react";
 import _ from "lodash";
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import { motion } from "framer-motion";
@@ -21,9 +22,9 @@ PdfViewer.propTypes = {
     PdfViewer data should be passed in data field and it is a required field
     */
   data: PropTypes.shape({
+    title: PropTypes.string,
     pdf: PropTypes.object,
     backgroundImage: PropTypes.object,
-    editorWidth: PropTypes.bool
   }),
 
   docLibrary: PropTypes.array,
@@ -39,6 +40,7 @@ PdfViewer.propTypes = {
     */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
+    sliderBackgroundColor: PropTypes.string,
   }),
 
   /**
@@ -77,8 +79,8 @@ PdfViewer.defaultProps = {
   // Component Specific props
   //=======================================
   data: {
+    title: "",
     url: "",
-    editorWidth: false,
     backgroundImage: {},
   },
   /**
@@ -107,22 +109,14 @@ export default function PdfViewer(props) {
   let { data, withColor, imageLibrary } = props
 
   const [numPages, setNumPages] = useState(null);
-  const [zoom, setZoom] = useState(10);
-
-
-  // const [fetch, setFetch] = useState(true);
-  // const [blobData, setBlobData] = useState("");
-  // const [pageNumber, setPageNumber] = useState(1);
-  // const [pageScale, setPageScale] = useState(10);
-  // const [showInfo, setShowInfo] = useState(true);
-  // const [fullScreenOpen, setFullScreenOpen] = useState(false);
-  // const [showControl, setShowControl] = useState(false);
-  // const [noPdfMessage, setNoPdfMessage] = useState("loading pdf please wait...");
-  // const [seenPages, setSeenPages] = useState(0);
-
+  const [zoom, setZoom] = useState(22);
+  const [showSlider, setShowSlider] = useState(false);
+  const [rotate, setRotate] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth <= 320 ? 560 : window.innerWidth <= 481 ? 660 : window.innerWidth <= 540 ? 700 : window.innerWidth <= 769 ? 700 : 700);
+  // const [landscapeWidth, setLandscapeWidth] = useState(window.innerHeight <= 568 ? 650 : window.innerHeight <= 481 ? 960 : window.innerHeight <= 540 ? 700 : window.innerHeight <= 769 ? 700 : 700);
   //-------------------------------------------------------------------
   // Set the classes
-  //-------------------------------------------------------------------
+  //-------------------------------------------------------------------  innerHeight
   let quommonClasses = getQuommons(props, "pdf-viewer");
   quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
   //-------------------------------------------------------------------
@@ -145,6 +139,47 @@ export default function PdfViewer(props) {
   function onDocumentLoadSuccess1({ numPages }) {
     setNumPages(numPages);
   }
+
+  // const resizeRotatedWidth = () => {
+  //   if (rotate) {
+  //     if (window.innerHeight <= 320) {
+  //       setLandscapeWidth(250);
+  //       setZoom(15)
+  //     } if (window.innerHeight <= 540) {
+  //       setLandscapeWidth(650);
+  //       setZoom(22)
+  //     } else {
+  //       setWidth(700);
+  //     }
+  //   }
+  // };
+  // useEffect(() => {
+  //   window.addEventListener("resize", resizeRotatedWidth);
+  //   return () => {
+  //     window.removeEventListener("resize", resizeRotatedWidth);
+  //   };
+  // }, []);
+  const resizeHandler = () => {
+    if (window.innerWidth <= 320) {
+      setWidth(560);
+    } else if (window.innerWidth <= 481) {
+      setWidth(660);
+    } else if (window.innerWidth <= 540) {
+      setWidth(700);
+    } else if (window.innerWidth <= 769) {
+      setWidth(700);
+    } else {
+      setWidth(700);
+    }
+  };
+  useEffect(() => {
+    console.log(zoom)
+    window.addEventListener("resize", resizeHandler);
+    setZoom(zoom)
+    return () => {
+      window.removeEventListener("resize", resizeHandler);
+    };
+  }, [zoom]);
 
   let resolveDocument = (pdf, library) => {
     if (library !== undefined && library.length > 0) {
@@ -169,13 +204,13 @@ export default function PdfViewer(props) {
         return props.data.pdf;
       }
     }
-  }
+
+  };
   let card = () => {
     return (
       <div className="qui-pdf-viewer-card" style={{ ...background }} />
     )
   }
-
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -183,23 +218,43 @@ export default function PdfViewer(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      {data && data.pdf ?
-        <div className="qui-pdf-viewer-container">
-          <Document
-            file={resolveDocument(data.pdf, props.docLibrary)}
-            options={{ workerSrc: "/pdf.worker.js" }}
-            onLoadSuccess={onDocumentLoadSuccess1}
-          >
-            {Array.from(new Array(numPages), (el, index) => (
-              <Page
-                size="A4"
-                key={`page_${index + 1}`} pageNumber={index + 1} />
-            ))}
-          </Document>
-        </div>
-        :
-        card()
-      }
+      <div className={`qui-pdf-viewer-outer-container`} style={{ ...background }}>
+        {data && data.pdf ?
+          <div className={`qui-pdf-viewer-container`}>
+            <div className={`${rotate ? "qui-rotate-title" : "qui-pdf-title"}`}>
+              {rotate ? "" : data?.title}
+            </div>
+            <Document
+              title={data?.title}
+              file={resolveDocument(data?.pdf, props?.docLibrary)}
+              onLoadSuccess={onDocumentLoadSuccess1}
+            >
+              {Array.from(new Array(numPages), (el, index) => (
+                <Page
+                  scale={rotate ? 50 / 50 : zoom >= 22 ? zoom / 50 : 22 / 50}
+                  size="A4"
+                  width={width}
+                  rotate={rotate ? 90 : 0}
+                  className={`${rotate ? "qui-rotated-page" : ""}`}
+                  key={`page_${index + 1}`} pageNumber={index + 1} />
+              ))}
+            </Document>{rotate ? "" :
+              <i className={`qui-pdf-zoom-icon ${showSlider ? "fas fa-search-minus" : "fas fa-search-plus"}`} onClick={() => setShowSlider(preState => !preState)} />}
+
+            {showSlider &&
+              <div
+                className={"qui-footer-slider-icon-container"}
+                style={{ backgroundColor: props.withColor.sliderBackgroundColor }}>
+                {rotate ? "" : <Slider initialValue={22} onClick={(value) => setZoom(value)} />}
+                <i className={`qui-pdf-rotate-icon ${rotate ? "fas fa-compress" : "fas fa-expand"}`} onClick={() => setRotate(prevState => !prevState)} />
+              </div>
+            }
+          </div>
+          :
+          card()
+        }
+      </div>
+
     </motion.div>
   );
 }
