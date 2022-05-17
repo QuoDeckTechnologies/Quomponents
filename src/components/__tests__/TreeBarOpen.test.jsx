@@ -2,7 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -43,7 +43,7 @@ describe("TreeBarOpen", () => {
               published: true,
               tags: [],
               _id: "622eeb5ede595f24b7aadd6e",
-              name: "Sedding Dummy Test Article",
+              name: "Seeding Dummy Test Article",
               category: "article",
               summary: "",
               identifier: "2Dpr5SmeY",
@@ -86,7 +86,7 @@ describe("TreeBarOpen", () => {
           ],
         },
       ],
-      toggled: true
+      toggled: true,
     },
   };
 
@@ -108,7 +108,7 @@ describe("TreeBarOpen", () => {
             published: true,
             tags: [],
             _id: "622eeb5ede595f24b7aadd6e",
-            name: "Sedding Dummy Test Article",
+            name: "Seeding Dummy Test Article",
             category: "article",
             summary: "",
             identifier: "2Dpr5SmeY",
@@ -129,7 +129,7 @@ describe("TreeBarOpen", () => {
             id: "622b4534a2d4393e6ce1c3ba",
           },
         ],
-        toggled: true
+        toggled: true,
       },
       {
         id: "category-1",
@@ -157,7 +157,7 @@ describe("TreeBarOpen", () => {
     toggled: true,
   };
 
-  let onSelectData = jest.fn();
+  let onClick = jest.fn();
   beforeEach(() => {
     jest.resetAllMocks();
 
@@ -175,9 +175,8 @@ describe("TreeBarOpen", () => {
         isDisabled={false}
         isClosed={null}
         isFluid={null}
-        onClick={() => console.log("test")}
         placeHolder="Search..."
-        onSelectData={onSelectData}
+        onClick={onClick}
       />
     );
   });
@@ -291,19 +290,19 @@ describe("TreeBarOpen", () => {
 
   it("should render Treebar without throwing error", () => {
     let onToggle = jest.fn();
-    let onSelectData = jest.fn();
+    let onClick = jest.fn();
     const { getByText } = render(
       <Treebeard
         data={nodeData}
         onToggle={onToggle}
         decorators={decorators}
-        onSelectData={onSelectData}
+        onClick={onClick}
       />
     );
   });
 
   it("should render tree bar when click on search", () => {
-    let inputData = "Sedding Dummy Test Article";
+    let inputData = "Seeding Dummy Test Article";
     component.setProps({ filter: inputData });
     component.setProps({ content: content, cursor: true });
     component.setProps({ onClick: jest.fn() });
@@ -321,16 +320,16 @@ describe("TreeBarOpen", () => {
 
   it("should toggle the treebeard", () => {
     let toggled = false;
-    let onSelectData = jest.fn();
+    let onClick = jest.fn();
     component.find(".qui-treebar-searchbar").children().simulate("click");
     component.setProps({
       node: nodeData,
       toggled: toggled,
-      onSelectData: onSelectData,
+      onClick: onClick,
     });
     component.setProps({ data: nodeData });
     let treeBeard = component.find(Treebeard);
     treeBeard.simulate("toggle", nodeData, toggled);
-    expect(onSelectData).toHaveBeenCalledWith(nodeData);
+    expect(onClick).toHaveBeenCalledWith(nodeData);
   });
 });
