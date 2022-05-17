@@ -95,8 +95,260 @@ export default function DeckAnalysisModal(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
+    // getSlidesCheck = () => {
+    //     return (
+    //         content.length > 9 &&
+    //         content.length < 41
+    //     );
+    // };
 
-    const [openUploadModal, setOpenUploadModal] = useState(props.isOpen);
+    // getTextCheck = () => {
+    //     let textCheck = true;
+    //     let culpritSlideText = [];
+    //     let defaultText = 0;
+    //     _.each(content, slide => {
+    //         _.each(_.toPairs(slide.data), component => {
+    //             switch (ComponentInputs[component[0]].type) {
+    //                 case "text":
+    //                 case "textarea":
+    //                     /* istanbul ignore next - Implicit check */
+    //                     if (
+    //                         component[1].indexOf("<<") !== -1 ||
+    //                         component[1].indexOf(">>") !== -1
+    //                     ) {
+    //                         textCheck = false;
+    //                         culpritSlideText.push(slide.slideSeq + 1);
+    //                         defaultText++;
+    //                     }
+    //                     break;
+    //                 case "bullets":
+    //                     _.each(component[1], li => {
+    //                         /* istanbul ignore next - Implicit check */
+    //                         if (
+    //                             li.indexOf("<<") !== -1 ||
+    //                             li.indexOf(">>") !== -1
+    //                         ) {
+    //                             textCheck = false;
+    //                             culpritSlideText.push(slide.slideSeq + 1);
+    //                             defaultText++;
+    //                         }
+    //                     });
+    //                     break;
+    //                 case "imagelist":
+    //                 case "radiolist":
+    //                 case "checklist":
+    //                     _.each(component[1], li => {
+    //                         /* istanbul ignore next - Implicit check */
+    //                         if (
+    //                             li.text.indexOf("<<") !== -1 ||
+    //                             li.text.indexOf(">>") !== -1
+    //                         ) {
+    //                             textCheck = false;
+    //                             culpritSlideText.push(slide.slideSeq + 1);
+    //                             defaultText++;
+    //                         }
+    //                     });
+    //                     break;
+    //                 default:
+    //             }
+    //         });
+    //     });
+    //     return {
+    //         status: textCheck,
+    //         errorCount: defaultText,
+    //         culprit: _.uniq(culpritSlideText)
+    //     };
+    // };
+
+    // getImagesCheck = () => {
+    //     let imagesCheck = true;
+    //     let culpritSlideImage = [];
+    //     let defaultImages = 0;
+    //     _.each(content, slide => {
+    //         _.each(_.toPairs(slide.data), component => {
+    //             switch (ComponentInputs[component[0]].type) {
+    //                 case "image":
+    //                     /* istanbul ignore next - Implicit check */
+    //                     if (
+    //                         ComponentInputs[component[0]].name !==
+    //                         "Presenter Character" &&
+    //                         (component[1] === "default11" ||
+    //                             component[1] === "default43")
+    //                     ) {
+    //                         imagesCheck = false;
+    //                         culpritSlideImage.push(slide.slideSeq + 1);
+    //                         defaultImages++;
+    //                     }
+    //                     break;
+    //                 case "imagelist":
+    //                 case "optionimages":
+    //                     _.each(component[1], li => {
+    //                         /* istanbul ignore next - Implicit check */
+    //                         if (
+    //                             li.image === "default11" ||
+    //                             li.image === "default43"
+    //                         ) {
+    //                             imagesCheck = false;
+    //                             culpritSlideImage.push(slide.slideSeq + 1);
+    //                             defaultImages++;
+    //                         }
+    //                     });
+    //                     break;
+    //                 default:
+    //             }
+    //         });
+    //     });
+    //     return {
+    //         status: imagesCheck,
+    //         errorCount: defaultImages,
+    //         culprit: _.uniq(culpritSlideImage)
+    //     };
+    // };
+
+    // getVideoCheck = () => {
+    //     let videoCheck = true;
+    //     let culpritSlideVideo = [];
+    //     let defaultVideos = 0;
+    //     _.each(content, slide => {
+    //         _.each(_.toPairs(slide.data), component => {
+    //             if (component[0] === "video")
+    //                 if (component[1].indexOf("NpEaa2P7qZI") !== -1) {
+    //                     videoCheck = false;
+    //                     culpritSlideVideo.push(slide.slideSeq + 1);
+    //                     defaultVideos++;
+    //                 }
+    //         });
+    //     });
+    //     return {
+    //         status: videoCheck,
+    //         errorCount: defaultVideos,
+    //         culprit: _.uniq(culpritSlideVideo)
+    //     };
+    // };
+
+    // getCommentsCheck = () => {
+    //     let commentsCheck = true;
+    //     let culpritSlideComments = [];
+    //     let openComments = 0;
+    //     _.each(content, slide => {
+    //         _.each(slide.comments, comment => {
+    //             if (!comment.status) {
+    //                 commentsCheck = false;
+    //                 culpritSlideComments.push(slide.slideSeq + 1);
+    //                 openComments++;
+    //             }
+    //         });
+    //     });
+    //     return {
+    //         status: commentsCheck,
+    //         errorCount: openComments,
+    //         culprit: _.uniq(culpritSlideComments)
+    //     };
+    // };
+
+    // getVoCheck = () => {
+    //     let voCheck = true;
+    //     let culpritSlideVo = [];
+    //     let missingVo = 0;
+    //     if (voEnabled)
+    //         _.each(content, slide => {
+    //             if (slide.voiceover === null) {
+    //                 voCheck = false;
+    //                 culpritSlideVo.push(slide.slideSeq + 1);
+    //                 missingVo++;
+    //             }
+    //         });
+    //     return {
+    //         status: voCheck,
+    //         errorCount: missingVo,
+    //         culprit: _.uniq(culpritSlideVo)
+    //     };
+    // };
+
+    // getVisualCheck = () => {
+    //     let visualTotal = 0;
+    //     let visualTemplates = _.map(
+    //         _.filter(TemplateList, tmpl => {
+    //             return tmpl.audit.visual === true;
+    //         }),
+    //         "key"
+    //     );
+    //     _.each(content, slide => {
+    //         if (visualTemplates.indexOf(slide.template) !== -1) visualTotal++;
+    //     });
+    //     let visualScore = Math.round(
+    //         (100 * visualTotal) / content.length
+    //     );
+    //     let visualCheck = visualScore > 30;
+
+    //     return {
+    //         status: visualCheck,
+    //         score: visualScore
+    //     };
+    // };
+
+    // getInteractiveCheck = () => {
+    //     let interactiveTotal = 0;
+    //     let interactiveTemplates = _.map(
+    //         _.filter(TemplateList, tmpl => {
+    //             return tmpl.audit.interactive === true;
+    //         }),
+    //         "key"
+    //     );
+    //     _.each(content, slide => {
+    //         if (interactiveTemplates.indexOf(slide.template) !== -1)
+    //             interactiveTotal++;
+    //     });
+    //     let interactiveScore = Math.round(
+    //         (100 * interactiveTotal) / content.length
+    //     );
+    //     let interactiveCheck = interactiveScore > 30;
+
+    //     return {
+    //         status: interactiveCheck,
+    //         score: interactiveScore
+    //     };
+    // };
+
+    // getVerbosityCheck = () => {
+    //     let verbosityTotal = 0;
+    //     let verboseTemplates = _.map(
+    //         _.filter(TemplateList, tmpl => {
+    //             return tmpl.audit.verbose === true;
+    //         }),
+    //         "key"
+    //     );
+    //     _.each(content, slide => {
+    //         if (verboseTemplates.indexOf(slide.template) !== -1)
+    //             verbosityTotal++;
+    //     });
+    //     let verbosityScore = Math.round(
+    //         (100 * verbosityTotal) / content.length
+    //     );
+    //     let verbosityCheck = verbosityScore < 30;
+
+    //     return {
+    //         status: verbosityCheck,
+    //         score: verbosityScore
+    //     };
+    // };
+
+    // getAllCheck = () => {
+    //     let allCheck =
+    //         getSlidesCheck() &
+    //         getTextCheck().status &
+    //         getImagesCheck().status &
+    //         getVideoCheck().status &
+    //         getCommentsCheck().status &
+    //         getInteractiveCheck().status &
+    //         getVerbosityCheck().status &
+    //         getVisualCheck().status;
+    //     if (voEnabled)
+    //         allCheck = allCheck & getVoCheck().status;
+    //     return allCheck === 1;
+    // };
+
+    const [openUploadModal, setOpenModal] = useState(props.isOpen);
 
     // ========================= Render Function =================================
     return (
@@ -111,16 +363,14 @@ export default function DeckAnalysisModal(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div
-                className={`qui-deck-analysis-modal-container`}
+                className={`qui-deck-analysis-modal-container ${quommonClasses.childClasses}`}
             >
                 <div
-                    className={`qui-deck-analysis-modal-heading ${quommonClasses.childClasses}`}
+                    className={`qui-deck-analysis-modal-heading`}
                 >
                     <h2>{"Deck Analysis"}</h2>
                 </div>
-                <div
-                    className={`qui-deck-analysis-modal-blocks ${quommonClasses.childClasses}`}
-                >
+                <div className="qui-deck-analysis-modal-block">
                     <DeckAnalysisBlock
                         {...props}
                         content={{
@@ -131,112 +381,108 @@ export default function DeckAnalysisModal(props) {
                             icon: " fa fa-desktop",
                             slideCount: 18,
                             status: true,
-
                         }}
                     /><DeckAnalysisBlock
                         {...props}
                         content={{
-                            header: "SLIDES",
-                            fheader: "SLIDES",
+                            header: "Comments",
+                            fheader: "COMMENTS",
                             message:
-                                "Deck Should have 10 to 40 slides",
+                                "Deck should have no open review comments",
                             icon: " fa fa-desktop",
-                            slideCount: 18,
+                            slideCount: 6,
                             status: true,
                         }}
                     /><DeckAnalysisBlock
                         {...props}
                         content={{
-                            header: " Voiceover",
+                            header: " Voiceovers",
                             fheader: "Vo's",
                             message:
-                                "Deck Should have 10 to 40 slides",
+                                "All slides should have voiceovers",
                             icon: " fa fa-desktop",
-                            slideCount: 18,
+                            slideCount: 2,
                             status: false,
                         }}
                     /><DeckAnalysisBlock
                         {...props}
                         content={{
-                            header: " Voiceover",
-                            fheader: "Vo's",
+                            header: " Text",
+                            fheader: "DEFAULTS",
                             message:
-                                "Deck Should have 10 to 40 slides",
+                                "Deck should have no placeholder texts",
                             icon: " fa fa-desktop",
-                            slideCount: 18,
+                            slideCount: 7,
                             status: true,
                         }}
                     /><DeckAnalysisBlock
                         {...props}
                         content={{
-                            header: " Voiceover",
-                            fheader: "Vo's",
+                            header: " Images",
+                            fheader: "DEFAULTS",
                             message:
-                                "Deck Should have 10 to 40 slides",
+                                "Deck should have no placeholder images",
                             icon: " fa fa-desktop",
-                            slideCount: 18,
+                            slideCount: 1,
                             status: true,
                         }}
                     /><DeckAnalysisBlock
                         {...props}
                         content={{
-                            header: " Voiceover",
-                            fheader: "Vo's",
+                            header: " Videos",
+                            fheader: "DEFAULTS",
                             message:
-                                "Deck Should have 10 to 40 slides",
+                                "Deck should have no placeholder videos",
                             icon: " fa fa-desktop",
-                            slideCount: 18,
+                            slideCount: 3,
                             status: true,
                         }}
                     /><DeckAnalysisBlock
                         {...props}
                         content={{
-                            header: " Voiceover",
-                            fheader: "Vo's",
+                            header: " Visuality",
+                            fheader: "PERCENT",
                             message:
-                                "Deck Should have 10 to 40 slides",
+                                "At least 30% slides have images or videos",
                             icon: " fa fa-desktop",
-                            slideCount: 18,
+                            slideCount: 10,
                             status: true,
                         }}
                     /><DeckAnalysisBlock
                         {...props}
                         content={{
-                            header: " Voiceover",
-                            fheader: "Vo's",
+                            header: "Interactivity",
+                            fheader: "PERCENT",
                             message:
-                                "Deck Should have 10 to 40 slides",
+                                "At least 30%+ slides are interactive",
                             icon: " fa fa-desktop",
-                            slideCount: 18,
+                            slideCount: 5,
                             status: false,
                         }}
                     /><DeckAnalysisBlock
                         {...props}
                         content={{
-                            header: " Voiceover",
-                            fheader: "Vo's",
+                            header: " Verbosity",
+                            fheader: "PERCENT",
                             message:
-                                "Deck Should have 10 to 40 slides",
+                                "At most 30% slides are text heavy",
                             icon: " fa fa-desktop",
-                            slideCount: 18,
+                            slideCount: 0,
                             status: false,
                         }}
                     />
                 </div>
-                <div className="qui-deck-analysis-modal-close-btn">
-                    <h2>Status :</h2>
+                <div className="qui-deck-analysis-modal-close-icon-btn">
+                    <h2><i className="fa fa-times"></i>Status : Failed</h2>
 
                     <Button
                         {...props}
-                        asSize="normal"
                         content={"Close"}
                         asVariant="warning"
                         asEmphasis="conatined"
                         asFloated="right"
-                        withTranslation={null}
-                        withAnimation={null}
                         onClick={() => {
-                            setOpenUploadModal(false);
+                            setOpenModal(false);
                         }} />
                 </div>
                 <ArcMenu
@@ -245,10 +491,10 @@ export default function DeckAnalysisModal(props) {
                     arcIcon="close"
                     position="top-right"
                     onClick={() => {
-                        setOpenUploadModal(false);
+                        setOpenModal(false);
                     }}
                 />
             </div>
-        </Modal>
+        </Modal >
     );
 }

@@ -101,7 +101,7 @@ DeckAnalysis.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "primary",
-    asFloated:"left",
+    asFloated: "left",
     withColor: null,
     withAnimation: null,
     withTranslation: null,
@@ -183,7 +183,7 @@ export default function DeckAnalysis(props) {
                             <h1 className={`qui-deckblock-slidecount`}>{content?.slideCount}</h1>
                             <i className={`qui-deckblock-icon ${content?.icon}`}></i>
                         </div>
-                        <h1 className="qui-fheader">{labelContent?.fheader}</h1>
+                        <h2 className="qui-fheader">{labelContent?.fheader}</h2>
                     </div>
                     <div className="qui-deckblock-header-message" >
                         <h1>{labelContent?.header}</h1>
