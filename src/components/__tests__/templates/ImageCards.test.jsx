@@ -82,6 +82,27 @@ describe("ImageCards", () => {
         expect(component.exists()).toBe(true);
     });
 
+    it("should render with click on active index class", () => {
+        component.setProps({
+            data: {
+                cards: [{
+                    text: "This is text",
+                    image: {
+                        id: "image",
+                        extention: ""
+                    }
+                }, {
+                    text: "This is text",
+                    image: {
+                        id: "image",
+                        extention: ""
+                    }
+                }],
+            },
+        })
+        component.find(".qui-image-cards-clickable-images-container").simulate('click')
+    });
+
     it("should render correctly when passed withColor props", () => {
         let colors = {
             backgroundColor: "#ffffff",
