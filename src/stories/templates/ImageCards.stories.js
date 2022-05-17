@@ -323,7 +323,7 @@ WithBackgroundImageImageCards.args = {
         slideHeaderBackgroundColor: "#C98787",
         textBlockTextColor: "#fff",
         textBlockBackgroundColor: "#AD292980",
-        iconListActiveItemColor: "#C98787",
+        iconListActiveItemColor: "#ad2929",
     }
 };
 WithBackgroundImageImageCards.parameters = {
@@ -377,7 +377,7 @@ WithBackgroundImageAndHeaderImageImageCards.args = {
         slideHeaderBackgroundColor: "#C98787",
         textBlockTextColor: "#fff",
         textBlockBackgroundColor: "#AD292980",
-        iconListActiveItemColor: "#C98787",
+        iconListActiveItemColor: "#ad2929",
     }
 };
 WithBackgroundImageAndHeaderImageImageCards.parameters = {
