@@ -7,11 +7,12 @@ export default {
   argTypes: {
     data: {
       defaultValue: {
-        backgroundImage: "",
         title: "",
         subtitle: "",
-        question: "",
-        options: [],
+        paragraph: "",
+        brancher: [],
+        image: "",
+        backgroundImage: "",
       },
     },
     imageLibrary: [],
@@ -19,6 +20,13 @@ export default {
       table: {
         category: "is-Toggles",
         defaultValue: false,
+      },
+    },
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
       },
     },
     asFloated: {
@@ -92,7 +100,7 @@ Default.args = {
     image: { id: "header-image", extention: "" },
     title: "Lorem ipsum dolor sit amet",
     subtitle: "",
-    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     brancher: [
       { slideLink: 1, text: "Slide 1" },
       { slideLink: 1, text: "Slide 2" },
@@ -109,6 +117,7 @@ Default.args = {
   ],
   slideId: 0,
   isCircular: false,
+  asVariant: "warning",
   asFloated: "none",
   withColor: {
     backgroundColor: "",
@@ -146,7 +155,7 @@ BrancherWithSlideHeader.args = {
     title: "Neque porro quisquam est qui dolorem qui",
     subtitle:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     brancher: [
       { slideLink: 1, text: "Slide 1" },
       { slideLink: 1, text: "Slide 2" },
@@ -178,7 +187,7 @@ BrancherWithBackgroundImage.args = {
     title: "Neque porro quisquam est qui dolorem qui",
     subtitle:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     brancher: [
       { slideLink: 1, text: "Slide 1" },
       { slideLink: 1, text: "Slide 2" },
@@ -220,7 +229,7 @@ ColoredBrancher.args = {
     title: "Neque porro quisquam est qui dolorem qui",
     subtitle:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     brancher: [
       { slideLink: 1, text: "Slide 1" },
       { slideLink: 1, text: "Slide 2" },

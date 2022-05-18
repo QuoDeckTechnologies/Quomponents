@@ -26,7 +26,7 @@ Brancher.propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
     backgroundImage: PropTypes.object,
-    question: PropTypes.string,
+    paragraph: PropTypes.string,
     brancher: PropTypes.array,
   }).isRequired,
   /**
@@ -76,6 +76,16 @@ Brancher.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+    Use to define standard component type
+    */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
+  /**
     Use to float the component in parent container
     */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
@@ -102,6 +112,7 @@ Brancher.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asVariant: "warning",
   asFloated: "left",
   withColor: null,
   withAnimation: null,
@@ -119,7 +130,7 @@ export default function Brancher(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { data, withColor, slideId, imageLibrary } = props;
+  const { data, withColor, slideId, imageLibrary, asVariant } = props;
   //-------------------------------------------------------------------
   // 2. Variable for ButtonBank content props
   //-------------------------------------------------------------------
@@ -159,6 +170,7 @@ export default function Brancher(props) {
       props.onClick(slideSeq);
     }
   };
+
   // ========================= Render Function =================================
 
   return (
@@ -194,16 +206,16 @@ export default function Brancher(props) {
           )}
         </div>
         <p
-          className={`qui-brancher-question`}
+          className={`qui-brancher-paragraph`}
           style={{ color: withColor?.textColor }}
-          key={`brancher-question-${slideId}`}
+          key={`brancher-paragraph-${slideId}`}
         >
-          {data?.question}
+          {data?.paragraph}
         </p>
         <ButtonBank
           {...props}
           content={optionsArray}
-          asVariant="warning"
+          asVariant={asVariant}
           asFloated="none"
           withColor={{
             backgroundColor: withColor?.buttonBackgroundColor,
