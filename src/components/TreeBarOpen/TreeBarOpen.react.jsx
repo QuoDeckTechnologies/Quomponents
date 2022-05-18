@@ -31,7 +31,7 @@ TreeItem.propTypes = {
     Treebar pass tree folder structure data
     */
   content: PropTypes.shape({}),
-
+  //=======================================
   // Quommon props
   //=======================================
 
@@ -63,24 +63,22 @@ TreeItem.propTypes = {
   isFluid: PropTypes.bool,
 
   /**
-    Button component must have the onClick function passed as props
+    TreeItem component must have the onClick function passed as props
     */
   onClick: PropTypes.func.isRequired,
 };
 
 TreeItem.defaultProps = {
+  //=======================================
   // Component Specific props
   //=======================================
   pageHeader: "Page Header",
   content: {},
-
+  //=======================================
   // Quommon props
   //=======================================
-
   asFloated: "none",
-
   withTranslation: null,
-
   isHidden: false,
   isDisabled: false,
   isFluid: false,
@@ -142,15 +140,13 @@ export default function TreeItem(props) {
   // Treebar toggle selected node
   //-------------------------------------------------------------------
   const onToggle = (node, toggled) => {
-    if (cursor) {
-      cursor.active = false;
-    }
+    cursor.active = false;
     node.active = true;
     if (node.children) {
       node.toggled = toggled;
     }
     setCursor(Object.assign({}, cursor));
-    props.onSelectData(node);
+    props.onClick(node);
   };
 
   //-------------------------------------------------------------------
@@ -272,18 +268,18 @@ export const filterTree = (node, filter, matcher = defaultMatcher) => {
 
 export const expandFilteredNodes = (node, filter, matcher = defaultMatcher) => {
   let children = node.children;
-  if (!children || children.length === 0) {
-    return Object.assign({}, node, { toggled: false });
-  }
-  const childrenWithMatches = node.children.filter((child) =>
+  const childrenWithMatches = node.children?.filter((child) =>
     findNode(child, filter, matcher)
   );
-  const shouldExpand = childrenWithMatches.length > 0;
+  const shouldExpand = childrenWithMatches?.length > 0;
   // If im going to expand, go through all the matches and see if thier children need to expand
   if (shouldExpand) {
     children = childrenWithMatches.map((child) => {
       return expandFilteredNodes(child, filter, matcher);
     });
+  }
+  if (!children || children?.length === 0) {
+    return Object.assign({}, node, { toggled: false });
   }
   return Object.assign({}, node, {
     children: children,
