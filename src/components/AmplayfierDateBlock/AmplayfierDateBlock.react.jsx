@@ -124,27 +124,38 @@ export default function AmplayfierDateBlock(props) {
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
   //-------------------------------------------------------------------
-  // 4. Function to return suffix of date
+  // 4. Function to return suffix
   //-------------------------------------------------------------------
-  const getSuffix = (date) => {
-    if (date !== undefined && !tObj) {
-      let d = date?.split("");
-      if (d[0] === "1") {
-        return "th";
-      }
-      if (d[1] === "1") {
+  const getSuffix = (digit) => {
+    if (!tObj) {
+      if (digit === "1") {
         return "st";
       }
-      if (d[1] === "2") {
+      if (digit === "2") {
         return "nd";
       }
-      if (d[1] === "3") {
+      if (digit === "3") {
         return "rd";
       } else return "th";
     } else return "";
   };
   //-------------------------------------------------------------------
-  // 5. Function to return translated month if translation props is provided
+  // 5. Function to return date with suffix
+  //-------------------------------------------------------------------
+  const getDateWithSuffix = (date) => {
+    if (date) {
+      let d = date?.split("");
+      if (d[0] === "0") {
+        return `${d[1]}${getSuffix(d[1])}`;
+      } else if (d[0] === "1") {
+        return `${date}${getSuffix("")}`;
+      } else {
+        return `${date}${getSuffix(d[1])}`;
+      }
+    } else return "";
+  };
+  //-------------------------------------------------------------------
+  // 6. Function to return translated month if translation props is provided
   //-------------------------------------------------------------------
   const getMonth = (month) => {
     if (tObj) {
@@ -153,18 +164,17 @@ export default function AmplayfierDateBlock(props) {
     return month;
   };
   //-------------------------------------------------------------------
-  // 6. Function to handle date string
+  // 7. Function to handle date string
   //-------------------------------------------------------------------
   const getDate = () => {
     let dateSplit = date?.split(" ");
     let month = dateSplit[1];
-    let currentDate = dateSplit[2];
     let year = dateSplit[3];
-    let suffix = getSuffix(currentDate);
-    return `${currentDate}${suffix} ${getMonth(month)} ${year}`;
+    let currentDate = getDateWithSuffix(dateSplit[2]);
+    return `${currentDate} ${getMonth(month)} ${year}`;
   };
   //-------------------------------------------------------------------
-  // 7. Get animation of the component
+  // 8. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
 
@@ -175,12 +185,12 @@ export default function AmplayfierDateBlock(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
-      style={{ backgroundColor: withColor.backgroundColor }}
+      style={{ backgroundColor: withColor?.backgroundColor }}
     >
       <div
         className={`${quommonClasses.childClasses} qui-amplayfier-date-block-container`}
         style={{
-          color: withColor.textColor,
+          color: withColor?.textColor,
         }}
       >
         <h2>{getDate()}</h2>
