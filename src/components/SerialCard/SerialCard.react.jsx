@@ -94,7 +94,7 @@ SerialCard.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "primary",
+    asVariant: "error",
     withColor: null,
     withAnimation: null,
     withTranslation: null,

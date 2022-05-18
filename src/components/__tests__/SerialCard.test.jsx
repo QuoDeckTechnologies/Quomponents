@@ -2,7 +2,6 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-import renderer from "react-test-renderer";
 //--------------------------------------
 // Import from Config
 // -------------------------------------
@@ -54,8 +53,8 @@ describe("SerialCard", () => {
                     delay: 0,
                 }}
                 withTranslation={{
-                    lang: "hi",
-                    tgt: "SerialCard",
+                    lang: "en",
+                    tgt: "",
                     dictionary: dictionary,
                 }}
                 isDisabled={false}
