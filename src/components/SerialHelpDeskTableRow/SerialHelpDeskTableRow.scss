@@ -1,0 +1,58 @@
+/* ================================================= */
+/* SerialHelpDeskTableRow Container Definitions */
+/* ================================================= */
+.qui .qui-serial-helpdesk-table-row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 2em;
+    .qui-serial-helpdesk-table-row-label {
+        margin-left: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+    }
+    .qui-serial-helpdesk-table-row-date {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+    }
+    .qui-serial-helpdesk-table-row-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.5em;
+        margin-right: 0.3em;
+        .qui .fa-check-square {
+            filter: none;
+        }
+    }
+}
+/* ================================================= */
+/* SerialHelpDeskTableRow Sizing Definitions */
+/* ================================================= */
+@media only screen and (min-width: 320px) {
+    .qui .qui-serial-helpdesk-table-row-container {
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (min-width: 481px) {
+    .qui .qui-serial-helpdesk-table-row-container {
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .qui .qui-serial-helpdesk-table-row-container {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .qui .qui-serial-helpdesk-table-row-container {
+        font-size: 2em;
+    }
+}
