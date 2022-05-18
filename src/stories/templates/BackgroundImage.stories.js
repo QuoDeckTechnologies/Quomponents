@@ -181,3 +181,264 @@ WithBackgroundAndPositionBackgroundImage.parameters = {
         },
     },
 };
+//-------------------------------------------------------------
+// Top Left Paragraph Position BackgroundImage
+// -------------------------------------------------------------
+export const WithTopLeftPositionBackgroundImage = Template.bind({});
+WithTopLeftPositionBackgroundImage.args = {
+    ...Default.args,
+    data: {
+        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula.",
+        background: {
+            id: "background-image",
+            extention: "",
+        },
+        position: "top-left"
+    },
+};
+WithTopLeftPositionBackgroundImage.parameters = {
+    docs: {
+        description: {
+            story: "We can change Paragraph's position in BackgroundImage as shown above",
+        },
+        source: {
+            code: `<BackgroundImage {...${JSON.stringify(
+                WithTopLeftPositionBackgroundImage.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+//-------------------------------------------------------------
+// Top Center Paragraph Position BackgroundImage
+// -------------------------------------------------------------
+export const WithTopCenterPositionBackgroundImage = Template.bind({});
+WithTopCenterPositionBackgroundImage.args = {
+    ...Default.args,
+    data: {
+        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula.",
+        background: {
+            id: "background-image",
+            extention: "",
+        },
+        position: "top-center"
+    },
+};
+WithTopCenterPositionBackgroundImage.parameters = {
+    docs: {
+        description: {
+            story: "We can change Paragraph's position in BackgroundImage as shown above",
+        },
+        source: {
+            code: `<BackgroundImage {...${JSON.stringify(
+                WithTopCenterPositionBackgroundImage.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+//-------------------------------------------------------------
+// Top Right Paragraph Position BackgroundImage
+// -------------------------------------------------------------
+export const WithTopRightPositionBackgroundImage = Template.bind({});
+WithTopRightPositionBackgroundImage.args = {
+    ...Default.args,
+    data: {
+        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula.",
+        background: {
+            id: "background-image",
+            extention: "",
+        },
+        position: "top-right"
+    },
+};
+WithTopRightPositionBackgroundImage.parameters = {
+    docs: {
+        description: {
+            story: "We can change Paragraph's position in BackgroundImage as shown above",
+        },
+        source: {
+            code: `<BackgroundImage {...${JSON.stringify(
+                WithTopRightPositionBackgroundImage.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+//-------------------------------------------------------------
+// Center left Paragraph Position BackgroundImage
+// -------------------------------------------------------------
+export const WithCenterLeftPositionBackgroundImage = Template.bind({});
+WithCenterLeftPositionBackgroundImage.args = {
+    ...Default.args,
+    data: {
+        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula.",
+        background: {
+            id: "background-image",
+            extention: "",
+        },
+        position: "center-left"
+    },
+};
+WithCenterLeftPositionBackgroundImage.parameters = {
+    docs: {
+        description: {
+            story: "We can change Paragraph's position in BackgroundImage as shown above",
+        },
+        source: {
+            code: `<BackgroundImage {...${JSON.stringify(
+                WithCenterLeftPositionBackgroundImage.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+//-------------------------------------------------------------
+// Center Center Paragraph Position BackgroundImage
+// -------------------------------------------------------------
+export const WithCenterCenterPositionBackgroundImage = Template.bind({});
+WithCenterCenterPositionBackgroundImage.args = {
+    ...Default.args,
+    data: {
+        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula.",
+        background: {
+            id: "background-image",
+            extention: "",
+        },
+        position: "center-center"
+    },
+};
+WithCenterCenterPositionBackgroundImage.parameters = {
+    docs: {
+        description: {
+            story: "We can change Paragraph's position in BackgroundImage as shown above",
+        },
+        source: {
+            code: `<BackgroundImage {...${JSON.stringify(
+                WithCenterCenterPositionBackgroundImage.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+//-------------------------------------------------------------
+// Center Right Paragraph Position BackgroundImage
+// -------------------------------------------------------------
+export const WithCenterRightPositionBackgroundImage = Template.bind({});
+WithCenterRightPositionBackgroundImage.args = {
+    ...Default.args,
+    data: {
+        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula.",
+        background: {
+            id: "background-image",
+            extention: "",
+        },
+        position: "center-right"
+    },
+};
+WithCenterRightPositionBackgroundImage.parameters = {
+    docs: {
+        description: {
+            story: "We can change Paragraph's position in BackgroundImage as shown above",
+        },
+        source: {
+            code: `<BackgroundImage {...${JSON.stringify(
+                WithCenterRightPositionBackgroundImage.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+//-------------------------------------------------------------
+// Bottom left Paragraph Position BackgroundImage
+// -------------------------------------------------------------
+export const WithBottomLeftPositionBackgroundImage = Template.bind({});
+WithBottomLeftPositionBackgroundImage.args = {
+    ...Default.args,
+    data: {
+        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula.",
+        background: {
+            id: "background-image",
+            extention: "",
+        },
+        position: "bottom-left"
+    },
+};
+WithBottomLeftPositionBackgroundImage.parameters = {
+    docs: {
+        description: {
+            story: "We can change Paragraph's position in BackgroundImage as shown above",
+        },
+        source: {
+            code: `<BackgroundImage {...${JSON.stringify(
+                WithBottomLeftPositionBackgroundImage.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+//-------------------------------------------------------------
+// Bottom Center Paragraph Position BackgroundImage
+// -------------------------------------------------------------
+export const WithBottomCenterPositionBackgroundImage = Template.bind({});
+WithBottomCenterPositionBackgroundImage.args = {
+    ...Default.args,
+    data: {
+        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula.",
+        background: {
+            id: "background-image",
+            extention: "",
+        },
+        position: "bottom-center"
+    },
+};
+WithBottomCenterPositionBackgroundImage.parameters = {
+    docs: {
+        description: {
+            story: "We can change Paragraph's position in BackgroundImage as shown above",
+        },
+        source: {
+            code: `<BackgroundImage {...${JSON.stringify(
+                WithBottomCenterPositionBackgroundImage.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+//-------------------------------------------------------------
+// Bottom Right Paragraph Position BackgroundImage
+// -------------------------------------------------------------
+export const WithBottomRightPositionBackgroundImage = Template.bind({});
+WithBottomRightPositionBackgroundImage.args = {
+    ...Default.args,
+    data: {
+        paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula.",
+        background: {
+            id: "background-image",
+            extention: "",
+        },
+        position: "bottom-right"
+    },
+};
+WithBottomRightPositionBackgroundImage.parameters = {
+    docs: {
+        description: {
+            story: "We can change Paragraph's position in BackgroundImage as shown above",
+        },
+        source: {
+            code: `<BackgroundImage {...${JSON.stringify(
+                WithBottomRightPositionBackgroundImage.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};

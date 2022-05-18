@@ -16,7 +16,7 @@ BackgroundImage.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    BackgroundImage data should be passed in data field and it is a required field
+    BackgroundImage data should be passed in data field and position props define the position of textblock component and it is a required field
     */
     data: PropTypes.shape({
         paragraph: PropTypes.string,
@@ -119,10 +119,11 @@ export default function BackgroundImage(props) {
 
     const background = getBackground();
     //-------------------------------------------------------------------
-    // 5. Function to set custom styling 
+    // 5. Function to set custom styling
     //-------------------------------------------------------------------
     const getTextPosition = (position) => {
-        return `qui-position-${position}`
+        let lowerCase = position?.toLowerCase()
+        return `qui-position-${lowerCase}`
     };
     //-------------------------------------------------------------------
     // 6. Get animation of the component
