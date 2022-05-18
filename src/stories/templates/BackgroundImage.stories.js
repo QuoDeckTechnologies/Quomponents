@@ -170,7 +170,7 @@ WithBackgroundAndPositionBackgroundImage.args = {
 WithBackgroundAndPositionBackgroundImage.parameters = {
     docs: {
         description: {
-            story: "We can change Background & Paragraph's position in BackgroundImage",
+            story: "We can change Background & paragraph position in BackgroundImage",
         },
         source: {
             code: `<BackgroundImage {...${JSON.stringify(
@@ -182,7 +182,7 @@ WithBackgroundAndPositionBackgroundImage.parameters = {
     },
 };
 //-------------------------------------------------------------
-// Top Left Paragraph Position BackgroundImage
+// Top-Left Paragraph Position BackgroundImage
 // -------------------------------------------------------------
 export const WithTopLeftPositionBackgroundImage = Template.bind({});
 WithTopLeftPositionBackgroundImage.args = {
@@ -199,7 +199,7 @@ WithTopLeftPositionBackgroundImage.args = {
 WithTopLeftPositionBackgroundImage.parameters = {
     docs: {
         description: {
-            story: "We can change Paragraph's position in BackgroundImage as shown above",
+            story: "We can change paragraph position in BackgroundImage as shown above",
         },
         source: {
             code: `<BackgroundImage {...${JSON.stringify(
@@ -211,7 +211,7 @@ WithTopLeftPositionBackgroundImage.parameters = {
     },
 };
 //-------------------------------------------------------------
-// Top Center Paragraph Position BackgroundImage
+// Top-Center Paragraph Position BackgroundImage
 // -------------------------------------------------------------
 export const WithTopCenterPositionBackgroundImage = Template.bind({});
 WithTopCenterPositionBackgroundImage.args = {
@@ -228,7 +228,7 @@ WithTopCenterPositionBackgroundImage.args = {
 WithTopCenterPositionBackgroundImage.parameters = {
     docs: {
         description: {
-            story: "We can change Paragraph's position in BackgroundImage as shown above",
+            story: "We can change paragraph position in BackgroundImage as shown above",
         },
         source: {
             code: `<BackgroundImage {...${JSON.stringify(
@@ -240,7 +240,7 @@ WithTopCenterPositionBackgroundImage.parameters = {
     },
 };
 //-------------------------------------------------------------
-// Top Right Paragraph Position BackgroundImage
+// Top-Right Paragraph Position BackgroundImage
 // -------------------------------------------------------------
 export const WithTopRightPositionBackgroundImage = Template.bind({});
 WithTopRightPositionBackgroundImage.args = {
@@ -257,7 +257,7 @@ WithTopRightPositionBackgroundImage.args = {
 WithTopRightPositionBackgroundImage.parameters = {
     docs: {
         description: {
-            story: "We can change Paragraph's position in BackgroundImage as shown above",
+            story: "We can change paragraph position in BackgroundImage as shown above",
         },
         source: {
             code: `<BackgroundImage {...${JSON.stringify(
@@ -269,7 +269,7 @@ WithTopRightPositionBackgroundImage.parameters = {
     },
 };
 //-------------------------------------------------------------
-// Center left Paragraph Position BackgroundImage
+// Center-left Paragraph Position BackgroundImage
 // -------------------------------------------------------------
 export const WithCenterLeftPositionBackgroundImage = Template.bind({});
 WithCenterLeftPositionBackgroundImage.args = {
@@ -286,7 +286,7 @@ WithCenterLeftPositionBackgroundImage.args = {
 WithCenterLeftPositionBackgroundImage.parameters = {
     docs: {
         description: {
-            story: "We can change Paragraph's position in BackgroundImage as shown above",
+            story: "We can change paragraph position in BackgroundImage as shown above",
         },
         source: {
             code: `<BackgroundImage {...${JSON.stringify(
@@ -298,7 +298,7 @@ WithCenterLeftPositionBackgroundImage.parameters = {
     },
 };
 //-------------------------------------------------------------
-// Center Center Paragraph Position BackgroundImage
+// Center-Center Paragraph Position BackgroundImage
 // -------------------------------------------------------------
 export const WithCenterCenterPositionBackgroundImage = Template.bind({});
 WithCenterCenterPositionBackgroundImage.args = {
@@ -315,7 +315,7 @@ WithCenterCenterPositionBackgroundImage.args = {
 WithCenterCenterPositionBackgroundImage.parameters = {
     docs: {
         description: {
-            story: "We can change Paragraph's position in BackgroundImage as shown above",
+            story: "We can change paragraph position in BackgroundImage as shown above",
         },
         source: {
             code: `<BackgroundImage {...${JSON.stringify(
@@ -327,7 +327,7 @@ WithCenterCenterPositionBackgroundImage.parameters = {
     },
 };
 //-------------------------------------------------------------
-// Center Right Paragraph Position BackgroundImage
+// Center-Right Paragraph Position BackgroundImage
 // -------------------------------------------------------------
 export const WithCenterRightPositionBackgroundImage = Template.bind({});
 WithCenterRightPositionBackgroundImage.args = {
@@ -344,7 +344,7 @@ WithCenterRightPositionBackgroundImage.args = {
 WithCenterRightPositionBackgroundImage.parameters = {
     docs: {
         description: {
-            story: "We can change Paragraph's position in BackgroundImage as shown above",
+            story: "We can change paragraph position in BackgroundImage as shown above",
         },
         source: {
             code: `<BackgroundImage {...${JSON.stringify(
@@ -356,7 +356,7 @@ WithCenterRightPositionBackgroundImage.parameters = {
     },
 };
 //-------------------------------------------------------------
-// Bottom left Paragraph Position BackgroundImage
+// Bottom-left Paragraph Position BackgroundImage
 // -------------------------------------------------------------
 export const WithBottomLeftPositionBackgroundImage = Template.bind({});
 WithBottomLeftPositionBackgroundImage.args = {
@@ -373,7 +373,7 @@ WithBottomLeftPositionBackgroundImage.args = {
 WithBottomLeftPositionBackgroundImage.parameters = {
     docs: {
         description: {
-            story: "We can change Paragraph's position in BackgroundImage as shown above",
+            story: "We can change paragraph position in BackgroundImage as shown above",
         },
         source: {
             code: `<BackgroundImage {...${JSON.stringify(
@@ -385,7 +385,7 @@ WithBottomLeftPositionBackgroundImage.parameters = {
     },
 };
 //-------------------------------------------------------------
-// Bottom Center Paragraph Position BackgroundImage
+// Bottom-Center Paragraph Position BackgroundImage
 // -------------------------------------------------------------
 export const WithBottomCenterPositionBackgroundImage = Template.bind({});
 WithBottomCenterPositionBackgroundImage.args = {
@@ -402,7 +402,7 @@ WithBottomCenterPositionBackgroundImage.args = {
 WithBottomCenterPositionBackgroundImage.parameters = {
     docs: {
         description: {
-            story: "We can change Paragraph's position in BackgroundImage as shown above",
+            story: "We can change paragraph position in BackgroundImage as shown above",
         },
         source: {
             code: `<BackgroundImage {...${JSON.stringify(
@@ -414,7 +414,7 @@ WithBottomCenterPositionBackgroundImage.parameters = {
     },
 };
 //-------------------------------------------------------------
-// Bottom Right Paragraph Position BackgroundImage
+// Bottom-Right Paragraph Position BackgroundImage
 // -------------------------------------------------------------
 export const WithBottomRightPositionBackgroundImage = Template.bind({});
 WithBottomRightPositionBackgroundImage.args = {
@@ -431,7 +431,7 @@ WithBottomRightPositionBackgroundImage.args = {
 WithBottomRightPositionBackgroundImage.parameters = {
     docs: {
         description: {
-            story: "We can change Paragraph's position in BackgroundImage as shown above",
+            story: "We can change paragraph position in BackgroundImage as shown above",
         },
         source: {
             code: `<BackgroundImage {...${JSON.stringify(
