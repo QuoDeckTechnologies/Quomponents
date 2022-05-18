@@ -1,0 +1,94 @@
+.qui-redeem-card {
+    padding: 1em;
+    .qui .qui-point-container {
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        font-size: 0.9em;
+        font-weight: bold;
+        align-self: flex-start;
+        width: auto;
+    }
+    .qui .qui-point-container .qui-point {
+        padding-top: 0.1em;
+        color: #fff;
+    }
+    color: #fff;
+}
+.qui-redeem-card-container {
+    display: flex;
+    width: 15.625em;
+    height: 19.125em;
+    background-color: #222a35;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0.6em;
+    mix-blend-mode: normal;
+    padding: 0.5em 1.5em;
+}
+.qui-redeem-card-name {
+    font-size: 1.2em;
+    align-self: flex-start;
+}
+.qui-redeem-card-image {
+    height: 6.17125em;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.qui-redeem-card-cost-stock-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.qui-redeem-card-accent-line {
+    width: 4.308125em;
+    align-self: flex-start;
+    .qui .qui-accentline {
+        border-bottom: 0.7em solid;
+    }
+}
+
+.qui-redeem-card-label {
+    text-align: left;
+    align-self: flex-start;
+    font-size: 0.85em;
+}
+.qui-redeem-card-status {
+    text-align: right;
+    align-self: flex-end;
+    line-height: 1.5em;
+}
+.qui-redeem-card-redeem-process ,
+.qui-redeem-card-redeem-success {
+    font-size: 0.8em;
+    width: 60%;
+}
+.qui-redeem-card-redeem-process {
+    color: #ffbf00;
+}
+.qui-redeem-card-redeem-success {
+    color: rgb(193, 220, 158);
+}
+.qui-redeem-card-stock {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 320px) {
+    .qui-redeem-card {
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .qui-redeem-card {
+        font-size: 1rem;
+    }
+}
