@@ -130,7 +130,7 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Default With Header Image
+// Default Image With Header Image
 // -------------------------------------------------------------
 export const DefaultWithHeaderImage = Template.bind({});
 DefaultWithHeaderImage.args = {

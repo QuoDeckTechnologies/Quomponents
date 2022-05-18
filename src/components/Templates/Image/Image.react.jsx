@@ -13,7 +13,6 @@ import "./Image.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
 import TextBlock from "../../TextBlock/TextBlock.react";
-import ClickableImage from "../../ClickableImage/ClickableImage.react";
 
 Image.propTypes = {
   //=======================================
@@ -77,10 +76,6 @@ Image.propTypes = {
     Use to enable/disable the component
     */
   isDisabled: PropTypes.bool,
-  /**
-    Image component must have the onClick function passed as props
-    */
-  onClick: PropTypes.func.isRequired,
 };
 
 Image.defaultProps = {
@@ -141,6 +136,18 @@ export default function Image(props) {
     subTitle: data?.subtitle,
   };
   //-------------------------------------------------------------------
+  // Function to return a content
+  //-------------------------------------------------------------------
+  const getContentImage = () => {
+    return (
+      <img
+        className="qui-image-content-image"
+        src={resolveImage(data?.contentImage?.id, imageLibrary)}
+        alt="Content"
+      />
+    );
+  };
+  //-------------------------------------------------------------------
   // Function to return a view for Image
   //-------------------------------------------------------------------
   const ImageView = (data) => {
@@ -172,14 +179,7 @@ export default function Image(props) {
               alt=""
             />
           )}
-          <ClickableImage
-            {...props}
-            content={{
-              image: resolveImage(data?.contentImage?.id, imageLibrary),
-            }}
-            onClick={props.onClick}
-            isActive={false}
-          />
+          {getContentImage()}
         </div>
       </div>
     );
@@ -214,11 +214,7 @@ export default function Image(props) {
             withColor={textBlockColors}
           />
         </div>
-        <ClickableImage
-          {...props}
-          content={{ image: resolveImage(data?.contentImage?.id, imageLibrary) }}
-          onClick={props.onClick}
-        />
+        {getContentImage()}
         {hasPresenter && (
           <img
             className="qui-image-presenter"
