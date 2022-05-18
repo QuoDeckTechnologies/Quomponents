@@ -68,7 +68,7 @@ Default.args = {
     data: {
         paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl, ut aliquet orci. Mauris id sapien felis. Nullam elementum enim tincidunt, facilisis lacus vitae, volutpat ligula.",
         background: { id: "background-image", extention: "" },
-        position: "",
+        position: "top-left",
     },
     imageLibrary: [
         {
