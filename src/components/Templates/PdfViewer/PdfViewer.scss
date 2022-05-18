@@ -1,10 +1,16 @@
 .qui-pdf-zoom-icon {
   cursor: pointer;
 }
+.qui.qui-pdf-viewer {
+  width: fit-content;
+}
 .qui .qui-pdf-viewer-card {
-  min-height: 30em;
+  min-height: 33em;
   padding: 1.5em;
   border-radius: 1em;
+}
+.react-pdf__Page__annotations.annotationLayer {
+  display: none;
 }
 .react-pdf__Page:first-child {
   margin-top: 2em;
@@ -35,6 +41,7 @@
 .qui-pdf-viewer-outer-container {
   padding: 1em;
   border-radius: 1em;
+  min-height: 30em;
 }
 .qui-pdf-viewer-container {
   height: 30em;
@@ -121,6 +128,15 @@
   .qui-pdf-viewer-outer-container {
     width: 18.5em;
   }
+  .qui-pdf-title {
+    width: 18.1em;
+  }
+  .qui-pdf-zoom-icon {
+    position: fixed;
+    top: 2.5em;
+    left: 18.5em;
+    z-index: 11;
+  }
   .qui-footer-slider-icon-container {
     background-color: cornflowerblue;
     position: fixed;
@@ -197,7 +213,7 @@
     z-index: 11;
   }
   .qui-pdf-title {
-    width: 19.2em;
+    width: 19.25em;
   }
   .qui-footer-slider-icon-container {
     background-color: cornflowerblue;
