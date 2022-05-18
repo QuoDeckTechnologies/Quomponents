@@ -16,7 +16,7 @@ BackgroundImage.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    BackgroundImage data should be passed in data field and position props define the position of textblock(top-left,top-center, top-right, center-left, center-center, center-right, bottom-left, bottom-center, bottom-right) component and it is a required field
+    BackgroundImage data should be passed in data field and position define the position of textblock(top-left,top-center, top-right, center-left, center-center, center-right, bottom-left, bottom-center, bottom-right) component and it is a required field
     */
     data: PropTypes.shape({
         paragraph: PropTypes.string,
