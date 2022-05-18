@@ -1,4 +1,3 @@
-import { fontSize } from "@mui/system";
 import React from "react";
 import SerialPlayerAnalyticsTableRow from "../../components/Templates/SerialPlayerAnalyticsTableRow/SerialPlayerAnalyticsTableRow.react";
 
