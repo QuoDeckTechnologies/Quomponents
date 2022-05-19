@@ -52,7 +52,6 @@ Feedback.propTypes = {
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         textblockTextColor: PropTypes.string,
-        textblockBackgroundColor: PropTypes.string,
         buttonTextColor: PropTypes.string,
         buttonBackgroundColor: PropTypes.string,
         buttonHoverBackgroundColor: PropTypes.string,
@@ -131,7 +130,6 @@ export default function Feedback(props) {
     //-------------------------------------------------------------------
     let textblockColors = {
         textColor: withColor?.textblockTextColor,
-        backgroundColor: withColor?.textblockBackgroundColor,
     }
 
     let buttonColors = {

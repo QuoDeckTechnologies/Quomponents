@@ -27,7 +27,6 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     textblockTextColor: "",
-                    textblockBackgroundColor: "",
                     backgroundColor: "",
                     buttonTextColor: "",
                     buttonBackgroundColor: "",
@@ -110,7 +109,6 @@ Default.args = {
     withColor: {
         backgroundColor: "#ffffff",
         textblockTextColor: "#121212",
-        textblockBackgroundColor: "#ffffff",
         buttonTextColor: "#121212",
         buttonBackgroundColor: "#F6BF33",
         buttonHoverBackgroundColor: "#121212",
@@ -142,7 +140,6 @@ ColoredFeedback.args = {
     withColor: {
         backgroundColor: "#F3E5F5",
         textblockTextColor: "#454545",
-        textblockBackgroundColor: "#DBDBDB",
         buttonTextColor: "#F6BF33",
         buttonBackgroundColor: "#121212",
         buttonHoverBackgroundColor: "#F6BF33",
@@ -207,7 +204,6 @@ FeedbackWithBackgroundImage.args = {
     withColor: {
         backgroundColor: "",
         textblockTextColor: "#454545",
-        textblockBackgroundColor: "",
         buttonTextColor: "#F6BF33",
         buttonBackgroundColor: "#121212",
         buttonHoverBackgroundColor: "#F6BF33",
