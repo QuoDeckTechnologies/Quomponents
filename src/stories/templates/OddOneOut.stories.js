@@ -244,7 +244,7 @@ OddOneOutWithSlideHeaderAndBackgroundImage.args = {
 OddOneOutWithSlideHeaderAndBackgroundImage.parameters = {
     docs: {
         source: {
-            code: `<ClozeWithFeedback {...${JSON.stringify(OddOneOutWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+            code: `<OddOneOut {...${JSON.stringify(OddOneOutWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
         },
     },
 };
