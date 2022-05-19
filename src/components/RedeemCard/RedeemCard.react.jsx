@@ -1,5 +1,5 @@
 // Import npm packages
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { getQuommons } from "../../common/javascripts/helpers.js";
@@ -24,7 +24,7 @@ RedeemCard.propTypes = {
     content: PropTypes.shape({
         name: PropTypes.string,
         image: PropTypes.string,
-        cost: PropTypes.string,
+        cost: PropTypes.number,
         stock: PropTypes.shape({
             left: PropTypes.number,
             total: PropTypes.number
@@ -39,7 +39,13 @@ RedeemCard.propTypes = {
     Use to set Colors for accent line
     */
     withColor: PropTypes.shape({
+        textColor: PropTypes.string,
         accentColor: PropTypes.string,
+        buttonTextColor: PropTypes.string,
+        buttonBackgroundColor: PropTypes.string,
+        buttonHoverBackgroundColor: PropTypes.string,
+        buttonHoverTextColor: PropTypes.string,
+        backgroundColor: PropTypes.string,
     }),
     /**
     Use to float the component in parent container
@@ -85,14 +91,41 @@ export default function RedeemCard(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "redeem-card");
 
+    const [expandTags, setExpandTags] = useState(false);
+    const [showMoreBtn, setShowMoreBtn] = useState(true);
+    const [stockStyle, setStockStyle] = useState('qui-redeem-card-cost-stock-container-row')
 
+    useEffect(() => {
+        let cost = props.content?.cost?.toString();
+        let left = props.content?.stock?.left?.toString();
+        let total = props.content?.stock?.total?.toString();
+        props.content?.label?.length > 113 ? setShowMoreBtn(true) : setShowMoreBtn(false);
+
+        cost?.length > 5 || left?.length > 6 || total?.length > 6 ? setStockStyle("qui-redeem-card-cost-stock-container-column") : setStockStyle("qui-redeem-card-cost-stock-container-row");
+    }, [showMoreBtn, props.content?.label, props.content?.cost, props.content?.stock?.left, props.content?.stock?.total]);
+
+    function handleLessTags() {
+        setExpandTags(false)
+    }
+    function handleMoreTags() {
+        setExpandTags(true)
+    }
+
+    let labelStyle = expandTags ? "qui-redeem-card-label-show-more-active" : "qui-redeem-card-label-show-more-non-active"
     let backgroundImage = props.content?.image === "" ? defaultImage : props.content?.image;
+
+    let buttonStyle = {
+        textColor: props.withColor?.buttonTextColor,
+        hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
+        hoverTextColor: props.withColor?.buttonHoverTextColor,
+        backgroundColor: props.withColor?.buttonBackgroundColor,
+    }
     //-------------------------------------------------------------------
     // 9. Get the RedeemCard Component
     //-------------------------------------------------------------------
     const redeemCard = () => {
         return (<div>
-            {props.content && <div className={`qui-redeem-card-container`}>
+            {props.content && <div className={`qui-redeem-card-container`} style={{ color: props.withColor?.textColor, backgroundColor: props.withColor?.backgroundColor }}>
                 {props.content?.name &&
                     <div className={`qui-redeem-card-name`}>
                         {props.content?.name}
@@ -100,9 +133,11 @@ export default function RedeemCard(props) {
                 {backgroundImage &&
                     <div className={`qui-redeem-card-image`} style={{ backgroundImage: `url(${backgroundImage})` }}>
                     </div>}
-                <div className={`qui-redeem-card-cost-stock-container`}>
+                <div className={`qui-redeem-card-cost-stock-container ${stockStyle}`}>
                     {props.content?.cost &&
-                        <Reward content={{ point: props.content?.cost }} />
+                        <div className={`qui-redeem-card-cost`}>
+                            <Reward content={{ point: props.content?.cost?.toString() }} withColor={{ accentColor: props.withColor?.textColor }} />
+                        </div>
                     }
                     {props.content?.stock &&
                         <div className={`qui-redeem-card-stock`}>
@@ -118,13 +153,20 @@ export default function RedeemCard(props) {
                 <div className={`qui-redeem-card-accent-line`}>
                     <AccentLine withColor={{ accentColor: props.withColor?.accentColor }} />
                 </div>
-                <div className={`qui-redeem-card-label`}>
-                    {props.content?.label}
+                <div className={`qui-redeem-card-label-container`}>
+                    <div className={`${labelStyle}`}>
+                        {props.content?.label}
+                    </div>
+                    {showMoreBtn && <button
+                        className={`qui-redeem-card-show-more`}
+                        onClick={expandTags ? handleLessTags : handleMoreTags}
+                    >
+                        <i className={expandTags ? "fas fa-angle-up" : "fas fa-angle-down"} />
+                    </button>}
                 </div>
-
                 {props.content?.redemptionStatus === "redeem" &&
                     <div className={`qui-redeem-card-status`}>
-                        <Button content="Redeem" onClick={props.onClick} />
+                        <Button isDisabled={props.isDisabled} withColor={buttonStyle} content="Redeem" onClick={props.onClick} />
                     </div>
                 }
                 {props.content?.redemptionStatus === "process" &&
@@ -134,7 +176,7 @@ export default function RedeemCard(props) {
                 }
                 {props.content?.redemptionStatus === "complete" &&
                     <div className={`qui-redeem-card-status qui-redeem-card-redeem-success`}>
-                    YOU HAVE REDEEMED THIS OFFER
+                        YOU HAVE REDEEMED THIS OFFER !!
                     </div>
                 }
             </div>}

@@ -11,13 +11,17 @@
     .qui .qui-point-container .qui-point {
         padding-top: 0.1em;
         color: #fff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 11ch;
     }
     color: #fff;
 }
 .qui-redeem-card-container {
     display: flex;
     width: 15.625em;
-    height: 19.125em;
+    min-height: 19.125em;
     background-color: #222a35;
     flex-direction: column;
     align-items: center;
@@ -30,6 +34,11 @@
 .qui-redeem-card-name {
     font-size: 1.2em;
     align-self: flex-start;
+    max-width: 22ch;
+    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .qui-redeem-card-image {
     height: 6.17125em;
@@ -37,14 +46,27 @@
     background-position: center;
     background-size: cover;
 }
-
 .qui-redeem-card-cost-stock-container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     justify-content: space-between;
 }
-
+.qui-redeem-card-cost-stock-container-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.qui-redeem-card-cost-stock-container-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding-top: 0.5em;
+}
+.qui-redeem-card-cost {
+    flex: 1;
+}
 .qui-redeem-card-accent-line {
     width: 4.308125em;
     align-self: flex-start;
@@ -52,8 +74,23 @@
         border-bottom: 0.7em solid;
     }
 }
+.qui-redeem-card-label-container {
+    display: flex;
+    margin-top: 0.3em;
+}
+.qui-redeem-card-label-show-more-non-active {
+    text-align: left;
+    align-self: flex-start;
+    font-size: 0.85em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
 
-.qui-redeem-card-label {
+.qui-redeem-card-label-show-more-active {
     text-align: left;
     align-self: flex-start;
     font-size: 0.85em;
@@ -61,9 +98,9 @@
 .qui-redeem-card-status {
     text-align: right;
     align-self: flex-end;
-    line-height: 1.5em;
+    line-height: 1.3em;
 }
-.qui-redeem-card-redeem-process ,
+.qui-redeem-card-redeem-process,
 .qui-redeem-card-redeem-success {
     font-size: 0.8em;
     width: 60%;
@@ -75,12 +112,23 @@
     color: rgb(193, 220, 158);
 }
 .qui-redeem-card-stock {
+    margin-top: 0.5em;
     display: flex;
+    flex: 1;
     flex-direction: column;
     text-align: right;
     font-weight: bold;
+    word-break: break-all;
+    overflow: hidden;
+    // text-overflow: ellipsis;
 }
-
+.qui-redeem-card-show-more {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+}
 @media only screen and (min-width: 320px) {
     .qui-redeem-card {
         font-size: 0.8rem;

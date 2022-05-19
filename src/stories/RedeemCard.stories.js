@@ -17,7 +17,13 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
+                    textColor: "",
                     accentColor: "",
+                    buttonTextColor: "",
+                    buttonBackgroundColor: "",
+                    buttonHoverBackgroundColor: "",
+                    buttonHoverTextColor: "",
+                    backgroundColor: "#fff",
                 },
             },
         },
@@ -75,8 +81,8 @@ export const Default = Template.bind({});
 Default.args = {
     content: {
         name: "Yamaha FZ16 Bike",
-        image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-        cost: "500",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
+        cost: 500,
         stock: {
             left: 500,
             total: 1000
@@ -85,7 +91,13 @@ Default.args = {
         redemptionStatus: "redeem"
     },
     withColor: {
-        accentColor: "#AD2929"
+        textColor: "",
+        accentColor: "#AD2929",
+        buttonTextColor: "",
+        buttonBackgroundColor: "",
+        buttonHoverBackgroundColor: "",
+        buttonHoverTextColor: "",
+        backgroundColor: "",
     },
     asFloated: "inline",
     isDisabled: false,
