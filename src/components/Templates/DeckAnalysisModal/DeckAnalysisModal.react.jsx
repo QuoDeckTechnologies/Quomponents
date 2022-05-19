@@ -475,12 +475,11 @@ export default function DeckAnalysisModal(props) {
                 </div>
                 <div className="qui-deck-analysis-modal-close-icon-btn">
                     <h3><i className={getAllCheck() ? "fa fa-check" : "fa fa-times"}></i>Status : {getAllCheck() ? "OK" : "Failed"}</h3>
-
                     <Button
                         {...props}
                         content={"Close"}
                         asVariant="warning"
-                        asEmphasis="conatined"
+                        asEmphasis="contained"
                         asFloated="right"
                         onClick={() => {
                             setOpenModal(false);
