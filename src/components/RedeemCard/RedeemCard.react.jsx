@@ -12,14 +12,14 @@ import "../../common/stylesheets/overrule.scss";
 import Reward from "../Reward/Reward.react"
 import defaultImage from "../../assets/default.jpeg";
 import AccentLine from "../AccentLine/AccentLine.react"
-import Button from "../Buttons/Button/Button.react"
+import Button from "../Buttons/Button/Button.react";
 
 RedeemCard.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-    Content props consist of all the data which are required for Nugget Card component
+    Content props consist of all the data which are required for Nugget Card component. redemptionStatus consist of 3 options to display the card accordingly.
     */
     content: PropTypes.shape({
         name: PropTypes.string,
@@ -30,7 +30,7 @@ RedeemCard.propTypes = {
             total: PropTypes.number
         }),
         label: PropTypes.string,
-        redemptionStatus: PropTypes.oneOf(["redeem", "process", "completed"])
+        redemptionStatus: PropTypes.oneOf(["redeem", "process", "success"])
     }),
 
     // Quommon props
@@ -60,9 +60,9 @@ RedeemCard.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    Component must have the onClick function passed as props
+    Component should have the onClick function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
 };
 
 RedeemCard.defaultProps = {
@@ -83,6 +83,7 @@ RedeemCard.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 - Pass all the required props to the component.
+- redemptionStatus consist of 3 options('redeem', 'process','success') to display the card accordingly.
 **/
 
 export default function RedeemCard(props) {
@@ -91,18 +92,28 @@ export default function RedeemCard(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "redeem-card");
 
+    //-------------------------------------------------------------------
+    // 2. State Definitions
+    //-------------------------------------------------------------------
     const [expandTags, setExpandTags] = useState(false);
     const [showMoreBtn, setShowMoreBtn] = useState(true);
-    const [stockStyle, setStockStyle] = useState('qui-redeem-card-cost-stock-container-row')
+    const [stockStyle, setStockStyle] = useState('qui-redeem-card-cost-stock-container-row');
 
+    //-------------------------------------------------------------------
+    // 4. Conditional class definitions and visiblity of show more button depending on the latest length of data using useEffect
+    //-------------------------------------------------------------------
     useEffect(() => {
         let cost = props.content?.cost?.toString();
         let left = props.content?.stock?.left?.toString();
         let total = props.content?.stock?.total?.toString();
         props.content?.label?.length > 113 ? setShowMoreBtn(true) : setShowMoreBtn(false);
-
-        cost?.length > 5 || left?.length > 6 || total?.length > 6 ? setStockStyle("qui-redeem-card-cost-stock-container-column") : setStockStyle("qui-redeem-card-cost-stock-container-row");
+        cost?.length > 5 || left?.length > 5 || total?.length > 5 ? setStockStyle("qui-redeem-card-cost-stock-container-column") : setStockStyle("qui-redeem-card-cost-stock-container-row");
     }, [showMoreBtn, props.content?.label, props.content?.cost, props.content?.stock?.left, props.content?.stock?.total]);
+
+    //-------------------------------------------------------------------
+    // 3. Conditional class definiction of show more button and Handle show more button action
+    //-------------------------------------------------------------------
+    let labelStyle = expandTags ? "qui-redeem-card-label-show-more-active" : "qui-redeem-card-label-show-more-non-active"
 
     function handleLessTags() {
         setExpandTags(false)
@@ -111,9 +122,14 @@ export default function RedeemCard(props) {
         setExpandTags(true)
     }
 
-    let labelStyle = expandTags ? "qui-redeem-card-label-show-more-active" : "qui-redeem-card-label-show-more-non-active"
+    //-------------------------------------------------------------------
+    // 4. Conditional handling of backgroundImage
+    //-------------------------------------------------------------------
     let backgroundImage = props.content?.image === "" ? defaultImage : props.content?.image;
 
+    //-------------------------------------------------------------------
+    // 5. Get Button Styling
+    //-------------------------------------------------------------------
     let buttonStyle = {
         textColor: props.withColor?.buttonTextColor,
         hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
@@ -121,7 +137,7 @@ export default function RedeemCard(props) {
         backgroundColor: props.withColor?.buttonBackgroundColor,
     }
     //-------------------------------------------------------------------
-    // 9. Get the RedeemCard Component
+    // 6. Get the RedeemCard Component
     //-------------------------------------------------------------------
     const redeemCard = () => {
         return (<div>
@@ -174,7 +190,7 @@ export default function RedeemCard(props) {
                         YOUR REDEMPTION REQUEST IS IN PROCESS
                     </div>
                 }
-                {props.content?.redemptionStatus === "complete" &&
+                {props.content?.redemptionStatus === "success" &&
                     <div className={`qui-redeem-card-status qui-redeem-card-redeem-success`}>
                         YOU HAVE REDEEMED THIS OFFER !!
                     </div>
