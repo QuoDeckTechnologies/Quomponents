@@ -20,6 +20,17 @@ export default {
                 category: "as-Flags",
             },
         },
+        withColor: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    backgroundColor: "",
+                    textColor: "",
+                    hoverBackgroundColor: "",
+                    hoverTextColor: "",
+                },
+            },
+        },
         withAnimation: {
             table: {
                 category: "with-Params",
@@ -63,8 +74,11 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic Icon and content for general-purpose use",
+        componentSubtitle: "Display Options with up and down buttons to rank/ arrange options and submit the arranged options",
         a11y: { disable: true },
+        docs: {
+            iframeHeight: 550,
+        },
     },
 };
 const Template = (args) => <OrderingList {...args} />;
@@ -76,6 +90,12 @@ Default.args = {
     asVariant: "warning",
     asFloated: "none",
     content: ["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"],
+    withColor: {
+        backgroundColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+    },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
