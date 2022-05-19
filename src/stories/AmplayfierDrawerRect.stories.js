@@ -57,12 +57,6 @@ export default {
         defaultValue: false,
       },
     },
-    isFluid: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
   },
   decorators: [
     (story) => (
@@ -102,7 +96,6 @@ Default.args = {
   },
   isDisabled: false,
   isHidden: false,
-  isFluid: false,
 };
 Default.parameters = {
   docs: {
@@ -122,58 +115,114 @@ export const AmplayfierDrawerWithOtherComponent = Template.bind({});
 AmplayfierDrawerWithOtherComponent.args = {
   ...Default.args,
   content: (
-    <>
-      <div style={{ marginBottom: "1em" }}>
-        <LearnerTableRow
-          content={[
-            {
-              _id: "",
-              username: "user one",
-              first_name: "System",
-              last_name: "Administrator",
-            },
-          ]}
-          onUnenrollLearner={() => {}}
-          onSendMessage={() => {}}
-        />
-      </div>
-      <div style={{ marginBottom: "1em" }}>
-        <LearnerTableRow
-          content={[
-            {
-              _id: "",
-              username: "user two",
-              first_name: "",
-              last_name: "Manager",
-            },
-          ]}
-          onUnenrollLearner={() => {}}
-          onSendMessage={() => {}}
-        />
-      </div>
-      <div style={{ marginBottom: "1em" }}>
-        <LearnerTableRow
-          content={[
-            {
-              _id: "",
-              username: "user three",
-              first_name: "",
-              last_name: "Learner",
-            },
-          ]}
-          onUnenrollLearner={() => {}}
-          onSendMessage={() => {}}
-        />
-      </div>
-    </>
+    <div>
+      <LearnerTableRow
+        content={[
+          {
+            _id: "",
+            username: "user one",
+            first_name: "System",
+            last_name: "Administrator",
+          },
+        ]}
+        onUnenrollLearner={() => {}}
+        onSendMessage={() => {}}
+      />
+      <LearnerTableRow
+        content={[
+          {
+            _id: "",
+            username: "user two",
+            first_name: "",
+            last_name: "Manager",
+          },
+        ]}
+        onUnenrollLearner={() => {}}
+        onSendMessage={() => {}}
+      />
+      <LearnerTableRow
+        content={[
+          {
+            _id: "",
+            username: "user three",
+            first_name: "",
+            last_name: "Learner",
+          },
+        ]}
+        onUnenrollLearner={() => {}}
+        onSendMessage={() => {}}
+      />
+    </div>
   ),
   asPadded: "relaxed",
+  isCircular: true,
 };
 AmplayfierDrawerWithOtherComponent.parameters = {
   docs: {
     source: {
       code: `<AmplayfierDrawerRect {...${JSON.stringify(
         AmplayfierDrawerWithOtherComponent.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Floated AmplayfierDrawerRect
+// -------------------------------------------------------------
+export const FloatedAmplayfierDrawer = Template.bind({});
+FloatedAmplayfierDrawer.args = {
+  ...AmplayfierDrawerWithOtherComponent.args,
+  asFloated: "none",
+};
+FloatedAmplayfierDrawer.parameters = {
+  docs: {
+    source: {
+      code: `<AmplayfierDrawerRect {...${JSON.stringify(
+        FloatedAmplayfierDrawer.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Colored AmplayfierDrawerRect
+// -------------------------------------------------------------
+export const ColoredAmplayfierDrawer = Template.bind({});
+ColoredAmplayfierDrawer.args = {
+  ...AmplayfierDrawerWithOtherComponent.args,
+  withColor: { backgroundColor: "#f8af09" },
+};
+ColoredAmplayfierDrawer.parameters = {
+  docs: {
+    source: {
+      code: `<AmplayfierDrawerRect {...${JSON.stringify(
+        ColoredAmplayfierDrawer.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Animated AmplayfierDrawerRect
+// -------------------------------------------------------------
+export const AnimatedAmplayfierDrawer = Template.bind({});
+AnimatedAmplayfierDrawer.args = {
+  ...AmplayfierDrawerWithOtherComponent.args,
+  withAnimation: {
+    animation: "fade",
+    duration: 0.5,
+    delay: 0,
+  },
+};
+AnimatedAmplayfierDrawer.parameters = {
+  docs: {
+    source: {
+      code: `<AmplayfierDrawerRect {...${JSON.stringify(
+        AnimatedAmplayfierDrawer.args,
         null,
         2
       )}}/>`,

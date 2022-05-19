@@ -62,16 +62,13 @@ AmplayfierDrawerRect.propTypes = {
     Use to enable/disable the component
     */
   isDisabled: PropTypes.bool,
-  /**
-    Use to toggle the component taking the full width of the parent container
-    */
-  isFluid: PropTypes.bool,
 };
 
 AmplayfierDrawerRect.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
+  content: {},
   isCircular: false,
   //=======================================
   // Quommon props
@@ -82,7 +79,6 @@ AmplayfierDrawerRect.defaultProps = {
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
-  isFluid: false,
 };
 /**
 ## Notes
@@ -109,7 +105,7 @@ export default function AmplayfierDrawerRect(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
-      style={{ backgroundColor: withColor.backgroundColor }}
+      style={{ backgroundColor: withColor?.backgroundColor }}
     >
       <div
         className={`qui-amplayfier-drawer-rect-container ${quommonClasses.childClasses}`}
