@@ -148,7 +148,26 @@ AnimatedOptionItemEight.parameters = {
 // Multiple OptionItem Eight
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  const [contentArr, setContentArr] = useState(args.multiContent);
+  const [contentArr, setContentArr] = useState([
+    {
+      targetName: "TargetNameOne",
+      value: "",
+      placeholder: "Placeholder Eight",
+      buttonText: "Button One",
+    },
+    {
+      targetName: "TargetNameTwo",
+      value: "",
+      placeholder: "Placeholder Two",
+      buttonText: "Button Two",
+    },
+    {
+      targetName: "TargetNameThree",
+      value: "Default Value",
+      placeholder: "Placeholder Three",
+      buttonText: "Button Three",
+    },
+  ]);
   // -------------------------------------------------------------
   // Hook to return modified content object
   // -------------------------------------------------------------
@@ -214,26 +233,6 @@ const MultipleTemplate = (args) => {
 export const MultipleOptionItemEight = MultipleTemplate.bind({});
 MultipleOptionItemEight.args = {
   ...Default.args,
-  multiContent: [
-    {
-      targetName: "TargetNameOne",
-      value: "",
-      placeholder: "Placeholder Eight",
-      buttonText: "Button One",
-    },
-    {
-      targetName: "TargetNameTwo",
-      value: "",
-      placeholder: "Placeholder Two",
-      buttonText: "Button Two",
-    },
-    {
-      targetName: "TargetNameThree",
-      value: "Default Value",
-      placeholder: "Placeholder Three",
-      buttonText: "Button Three",
-    },
-  ],
 };
 MultipleOptionItemEight.parameters = {
   docs: {

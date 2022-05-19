@@ -162,7 +162,38 @@ AnimatedOptionItemSix.parameters = {
 // Multiple OptionItem Six
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  const [contentArr, setContentArr] = useState(args.multiContent);
+  const [contentArr, setContentArr] = useState([
+    {
+      targetName: "target A",
+      value: "",
+      placeholder: "This is option A",
+      captionName: "caption A",
+      captionValue: "",
+      captionPlaceholder: "Caption For Option A",
+      image: {},
+      maxLength: 300,
+    },
+    {
+      targetName: "target B",
+      value: "",
+      placeholder: "This is option B",
+      captionName: "caption B",
+      captionValue: "",
+      captionPlaceholder: "Caption For Option B",
+      image: {},
+      maxLength: 300,
+    },
+    {
+      targetName: "target C",
+      value: "",
+      placeholder: "This is option C",
+      captionName: "caption C",
+      captionValue: "",
+      captionPlaceholder: "Caption For Option C",
+      image: {},
+      maxLength: 300,
+    },
+  ]);
   // -------------------------------------------------------------
   // Hook to return modified content object
   // -------------------------------------------------------------
@@ -271,38 +302,6 @@ const MultipleTemplate = (args) => {
 export const MultipleOptionItemSix = MultipleTemplate.bind({});
 MultipleOptionItemSix.args = {
   ...Default.args,
-  multiContent: [
-    {
-      targetName: "target A",
-      value: "",
-      placeholder: "This is option A",
-      captionName: "caption A",
-      captionValue: "",
-      captionPlaceholder: "Caption For Option A",
-      image: {},
-      maxLength: 300,
-    },
-    {
-      targetName: "target B",
-      value: "",
-      placeholder: "This is option B",
-      captionName: "caption B",
-      captionValue: "",
-      captionPlaceholder: "Caption For Option B",
-      image: {},
-      maxLength: 300,
-    },
-    {
-      targetName: "target C",
-      value: "",
-      placeholder: "This is option C",
-      captionName: "caption C",
-      captionValue: "",
-      captionPlaceholder: "Caption For Option C",
-      image: {},
-      maxLength: 300,
-    },
-  ],
 };
 MultipleOptionItemSix.parameters = {
   docs: {

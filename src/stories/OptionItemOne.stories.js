@@ -141,7 +141,23 @@ AnimatedOptionItemOne.parameters = {
 // Multiple OptionItem One
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  const [contentArr, setContentArr] = useState(args.multiContent);
+  const [contentArr, setContentArr] = useState([
+    {
+      targetName: "TargetNameOne",
+      value: "",
+      placeholder: "Placeholder One",
+    },
+    {
+      targetName: "TargetNameTwo",
+      value: "",
+      placeholder: "Placeholder Two",
+    },
+    {
+      targetName: "TargetNameThree",
+      value: "Default Value",
+      placeholder: "Placeholder Three",
+    },
+  ]);
   // -------------------------------------------------------------
   // Hook to return modified content object
   // -------------------------------------------------------------
@@ -189,7 +205,7 @@ const MultipleTemplate = (args) => {
 
   return (
     <div>
-      {contentArr.map((content, index) => {
+      {contentArr?.map((content, index) => {
         return (
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemOne
@@ -207,23 +223,6 @@ const MultipleTemplate = (args) => {
 export const MultipleOptionItemOne = MultipleTemplate.bind({});
 MultipleOptionItemOne.args = {
   ...Default.args,
-  multiContent: [
-    {
-      targetName: "TargetNameOne",
-      value: "",
-      placeholder: "Placeholder One",
-    },
-    {
-      targetName: "TargetNameTwo",
-      value: "",
-      placeholder: "Placeholder Two",
-    },
-    {
-      targetName: "TargetNameThree",
-      value: "Default Value",
-      placeholder: "Placeholder Three",
-    },
-  ],
 };
 MultipleOptionItemOne.parameters = {
   docs: {

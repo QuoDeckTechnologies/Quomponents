@@ -164,7 +164,56 @@ AnimatedOptionItemNine.parameters = {
 // Multiple OptionItem Nine
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  const [contentArr, setContentArr] = useState([...args.multiContent]);
+  const [contentArr, setContentArr] = useState([
+    {
+      shortFieldOne: {
+        targetName: "ShortFieldOne A",
+        value: "0",
+      },
+      shortFieldTwo: {
+        targetName: "ShortFieldTwo A",
+        value: "0",
+      },
+      message: {
+        targetName: "Target Name A",
+        value: "",
+        placeholder: "Message for Quiz Result",
+        maxLength: 300,
+      },
+    },
+    {
+      shortFieldOne: {
+        targetName: "ShortFieldOne B",
+        value: "0",
+      },
+      shortFieldTwo: {
+        targetName: "ShortFieldTwo B",
+        value: "0",
+      },
+      message: {
+        targetName: "Target Name B",
+        value: "",
+        placeholder: "Message for Quiz Result",
+        maxLength: 300,
+      },
+    },
+    {
+      shortFieldOne: {
+        targetName: "ShortFieldOne C",
+        value: "0",
+      },
+      shortFieldTwo: {
+        targetName: "ShortFieldTwo C",
+        value: "0",
+      },
+      message: {
+        targetName: "Target Name C",
+        value: "",
+        placeholder: "Message for Quiz Result",
+        maxLength: 300,
+      },
+    },
+  ]);
   // -------------------------------------------------------------
   // Hook to return modified content object
   // -------------------------------------------------------------
@@ -251,7 +300,7 @@ const MultipleTemplate = (args) => {
 
   return (
     <div>
-      {contentArr.map((content, index) => {
+      {contentArr?.map((content, index) => {
         return (
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemNine
@@ -275,56 +324,6 @@ const MultipleTemplate = (args) => {
 export const MultipleOptionItemNine = MultipleTemplate.bind({});
 MultipleOptionItemNine.args = {
   ...Default.args,
-  multiContent: [
-    {
-      shortFieldOne: {
-        targetName: "ShortFieldOne A",
-        value: "0",
-      },
-      shortFieldTwo: {
-        targetName: "ShortFieldTwo A",
-        value: "0",
-      },
-      message: {
-        targetName: "Target Name A",
-        value: "",
-        placeholder: "Message for Quiz Result",
-        maxLength: 300,
-      },
-    },
-    {
-      shortFieldOne: {
-        targetName: "ShortFieldOne B",
-        value: "0",
-      },
-      shortFieldTwo: {
-        targetName: "ShortFieldTwo B",
-        value: "0",
-      },
-      message: {
-        targetName: "Target Name B",
-        value: "",
-        placeholder: "Message for Quiz Result",
-        maxLength: 300,
-      },
-    },
-    {
-      shortFieldOne: {
-        targetName: "ShortFieldOne C",
-        value: "0",
-      },
-      shortFieldTwo: {
-        targetName: "ShortFieldTwo C",
-        value: "0",
-      },
-      message: {
-        targetName: "Target Name C",
-        value: "",
-        placeholder: "Message for Quiz Result",
-        maxLength: 300,
-      },
-    },
-  ],
 };
 MultipleOptionItemNine.parameters = {
   docs: {

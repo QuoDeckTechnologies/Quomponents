@@ -158,7 +158,32 @@ AnimatedOptionItemSeven.parameters = {
 // Multiple OptionItem Seven
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  const [contentArr, setContentArr] = useState([...args.multiContent]);
+  const [contentArr, setContentArr] = useState([
+    {
+      targetName: "Target Name A",
+      value: "",
+      placeholder: "This is Option A",
+      checked: false,
+      image: {},
+      maxLength: 300,
+    },
+    {
+      targetName: "Target Name B",
+      value: "",
+      placeholder: "This is Option B",
+      checked: true,
+      image: {},
+      maxLength: 300,
+    },
+    {
+      targetName: "Target Name C",
+      value: "",
+      placeholder: "This is Option C",
+      checked: false,
+      image: {},
+      maxLength: 300,
+    },
+  ]);
   // -------------------------------------------------------------
   // Hook to return modified content object
   // -------------------------------------------------------------
@@ -245,7 +270,7 @@ const MultipleTemplate = (args) => {
 
   return (
     <div>
-      {contentArr.map((content, index) => {
+      {contentArr?.map((content, index) => {
         return (
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemSeven
@@ -267,32 +292,6 @@ const MultipleTemplate = (args) => {
 export const MultipleOptionItemSeven = MultipleTemplate.bind({});
 MultipleOptionItemSeven.args = {
   ...Default.args,
-  multiContent: [
-    {
-      targetName: "Target Name A",
-      value: "",
-      placeholder: "This is Option A",
-      checked: false,
-      image: {},
-      maxLength: 300,
-    },
-    {
-      targetName: "Target Name B",
-      value: "",
-      placeholder: "This is Option B",
-      checked: true,
-      image: {},
-      maxLength: 300,
-    },
-    {
-      targetName: "Target Name C",
-      value: "",
-      placeholder: "This is Option C",
-      checked: false,
-      image: {},
-      maxLength: 300,
-    },
-  ],
 };
 MultipleOptionItemSeven.parameters = {
   docs: {

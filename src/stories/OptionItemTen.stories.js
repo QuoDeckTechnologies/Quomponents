@@ -176,7 +176,65 @@ AnimatedOptionItemTen.parameters = {
 // Multiple OptionItem Ten
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  const [contentArr, setContentArr] = useState(args.multiContent);
+  const [contentArr, setContentArr] = useState([
+    {
+      option: {
+        targetName: "target A",
+        value: "",
+        placeholder: "Option A",
+      },
+      header: {
+        targetName: "header A",
+        value: "",
+        placeholder: "Header for Option A",
+        maxLength: 300,
+      },
+      message: {
+        targetName: "message",
+        value: "",
+        placeholder: "Message for Option A",
+        maxLength: 300,
+      },
+    },
+    {
+      option: {
+        targetName: "target B",
+        value: "",
+        placeholder: "Option B",
+      },
+      header: {
+        targetName: "header B",
+        value: "",
+        placeholder: "Header for Option B",
+        maxLength: 300,
+      },
+      message: {
+        targetName: "message B",
+        value: "",
+        placeholder: "Message for Option B",
+        maxLength: 300,
+      },
+    },
+    {
+      option: {
+        targetName: "target C",
+        value: "",
+        placeholder: "Option C",
+      },
+      header: {
+        targetName: "header C",
+        value: "",
+        placeholder: "Header for Option C",
+        maxLength: 300,
+      },
+      message: {
+        targetName: "message C",
+        value: "",
+        placeholder: "Message for Option C",
+        maxLength: 300,
+      },
+    },
+  ]);
   // -------------------------------------------------------------
   // Hook to return modified content object
   // -------------------------------------------------------------
@@ -308,65 +366,6 @@ const MultipleTemplate = (args) => {
 export const MultipleOptionItemTen = MultipleTemplate.bind({});
 MultipleOptionItemTen.args = {
   ...Default.args,
-  multiContent: [
-    {
-      option: {
-        targetName: "target A",
-        value: "",
-        placeholder: "Option A",
-      },
-      header: {
-        targetName: "header A",
-        value: "",
-        placeholder: "Header for Option A",
-        maxLength: 300,
-      },
-      message: {
-        targetName: "message",
-        value: "",
-        placeholder: "Message for Option A",
-        maxLength: 300,
-      },
-    },
-    {
-      option: {
-        targetName: "target B",
-        value: "",
-        placeholder: "Option B",
-      },
-      header: {
-        targetName: "header B",
-        value: "",
-        placeholder: "Header for Option B",
-        maxLength: 300,
-      },
-      message: {
-        targetName: "message B",
-        value: "",
-        placeholder: "Message for Option B",
-        maxLength: 300,
-      },
-    },
-    {
-      option: {
-        targetName: "target C",
-        value: "",
-        placeholder: "Option C",
-      },
-      header: {
-        targetName: "header C",
-        value: "",
-        placeholder: "Header for Option C",
-        maxLength: 300,
-      },
-      message: {
-        targetName: "message C",
-        value: "",
-        placeholder: "Message for Option C",
-        maxLength: 300,
-      },
-    },
-  ],
 };
 MultipleOptionItemTen.parameters = {
   docs: {

@@ -148,7 +148,26 @@ AnimatedOptionItemFour.parameters = {
 // Multiple OptionItem Four
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  const [contentArr, setContentArr] = useState(args.multiContent);
+  const [contentArr, setContentArr] = useState([
+    {
+      targetName: "TargetNameOne",
+      value: "",
+      placeholder: "Placeholder One",
+      checked: false,
+    },
+    {
+      targetName: "TargetNameTwo",
+      value: "",
+      placeholder: "Placeholder Two",
+      checked: true,
+    },
+    {
+      targetName: "TargetNameThree",
+      value: "Default Value",
+      placeholder: "Placeholder Three",
+      checked: false,
+    },
+  ]);
   // -------------------------------------------------------------
   // Hook to return modified content object
   // -------------------------------------------------------------
@@ -236,26 +255,6 @@ const MultipleTemplate = (args) => {
 export const MultipleOptionItemFour = MultipleTemplate.bind({});
 MultipleOptionItemFour.args = {
   ...Default.args,
-  multiContent: [
-    {
-      targetName: "TargetNameOne",
-      value: "",
-      placeholder: "Placeholder One",
-      checked: false,
-    },
-    {
-      targetName: "TargetNameTwo",
-      value: "",
-      placeholder: "Placeholder Two",
-      checked: true,
-    },
-    {
-      targetName: "TargetNameThree",
-      value: "Default Value",
-      placeholder: "Placeholder Three",
-      checked: false,
-    },
-  ],
 };
 MultipleOptionItemFour.parameters = {
   docs: {

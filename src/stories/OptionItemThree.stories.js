@@ -149,7 +149,23 @@ AnimatedOptionItemThree.parameters = {
 // Multiple OptionItem Three
 // -------------------------------------------------------------
 const MultipleTemplate = (args) => {
-  const [contentArr, setContentArr] = useState([...args.multiContent]);
+  const [contentArr, setContentArr] = useState([
+    {
+      targetName: "TargetNameOne",
+      image: {},
+      checked: false,
+    },
+    {
+      targetName: "TargetNameTwo",
+      image: {},
+      checked: true,
+    },
+    {
+      targetName: "TargetNameThree",
+      image: {},
+      checked: false,
+    },
+  ]);
   // -------------------------------------------------------------
   // Hook to return modified content object
   // -------------------------------------------------------------
@@ -216,7 +232,7 @@ const MultipleTemplate = (args) => {
 
   return (
     <div>
-      {contentArr.map((content, index) => {
+      {contentArr?.map((content, index) => {
         return (
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemThree
@@ -239,23 +255,6 @@ const MultipleTemplate = (args) => {
 export const MultipleOptionItemThree = MultipleTemplate.bind({});
 MultipleOptionItemThree.args = {
   ...Default.args,
-  multiContent: [
-    {
-      targetName: "TargetNameOne",
-      image: {},
-      checked: false,
-    },
-    {
-      targetName: "TargetNameTwo",
-      image: {},
-      checked: true,
-    },
-    {
-      targetName: "TargetNameThree",
-      image: {},
-      checked: false,
-    },
-  ],
 };
 MultipleOptionItemThree.parameters = {
   docs: {
