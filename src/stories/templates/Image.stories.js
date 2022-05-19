@@ -109,7 +109,7 @@ Default.parameters = {
   docs: {
     description: {
       story:
-        "Image component have image in between SliderHeader and TextBlock.",
+        "Image component have an image beneath SliderHeader or Header image.",
     },
     source: {
       code: `<Image {...${JSON.stringify(Default.args, null, 2)}}/>`,
@@ -151,8 +151,7 @@ DefaultWithHeaderImage.args = {
 DefaultWithHeaderImage.parameters = {
   docs: {
     description: {
-      story:
-        "Image component have image in between SliderHeader and TextBlock.",
+      story: "Image component with Header image and an image.",
     },
     source: {
       code: `<Image {...${JSON.stringify(
@@ -198,8 +197,7 @@ ImageWithPresenter.args = {
 ImageWithPresenter.parameters = {
   docs: {
     description: {
-      story:
-        "Image component have image in between SliderHeader and TextBlock.",
+      story: "Image component with presenter.",
     },
     source: {
       code: `<Image {...${JSON.stringify(ImageWithPresenter.args, null, 2)}}/>`,
@@ -256,8 +254,7 @@ ImageWithPresenterAndBackgroundImage.args = {
 ImageWithPresenterAndBackgroundImage.parameters = {
   docs: {
     description: {
-      story:
-        "Image component have image in between SliderHeader and TextBlock.",
+      story: "Image component with presenter and background image.",
     },
     source: {
       code: `<Image {...${JSON.stringify(
@@ -301,8 +298,7 @@ ColoredImage.args = {
 ColoredImage.parameters = {
   docs: {
     description: {
-      story:
-        "Image component have image in between SliderHeader and TextBlock.",
+      story: "Image component using withColor props.",
     },
     source: {
       code: `<Image {...${JSON.stringify(ColoredImage.args, null, 2)}}/>`,
@@ -340,8 +336,7 @@ AnimatedImage.args = {
 AnimatedImage.parameters = {
   docs: {
     description: {
-      story:
-        "Image component have image in between SliderHeader and TextBlock.",
+      story: "Image component using withAnimation props.",
     },
     source: {
       code: `<Image {...${JSON.stringify(AnimatedImage.args, null, 2)}}/>`,

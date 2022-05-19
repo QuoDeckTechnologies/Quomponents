@@ -99,7 +99,7 @@ Image.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Displays a Image with TextBlock, clickableImages and a SlideHeader
+- Displays a Image with TextBlock, images and a SlideHeader
 **/
 export default function Image(props) {
   const { data, withColor, imageLibrary } = props;
