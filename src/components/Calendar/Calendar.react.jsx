@@ -3,16 +3,17 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import {
     getAnimation,
     getQuommons,
 } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
-import "./Calender.scss";
+import "./Calendar.scss";
 import "../../common/stylesheets/overrule.scss";
 
-Calender.propTypes = {
+Calendar.propTypes = {
     //=======================================
     // Quommon props
     //=======================================
@@ -73,7 +74,7 @@ Calender.propTypes = {
     isHidden: PropTypes.bool,
 };
 
-Calender.defaultProps = {
+Calendar.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -113,16 +114,12 @@ function getColors(colors) {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function Calender(props) {
+export default function Calendar(props) {
     const [currentStep, updateCurrentStep] = useState(1);
-    //-------------------------------------------------------------------
-    // 1. Destructuring content from props
-    //-------------------------------------------------------------------
-    let { content } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "calender");
+    let quommonClasses = getQuommons(props, "calendar");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 3. Set the component colors
@@ -139,11 +136,9 @@ export default function Calender(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            style={colors?.backColors}
         >
-            <div className={`qui-calender-container ${quommonClasses.childClasses}`}>
+            <div className={`qui-calendar-container ${quommonClasses.childClasses}`}>
                 <Calendar />
-
             </div>
         </motion.div>
     );

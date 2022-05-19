@@ -1,0 +1,32 @@
+.qui .qui-calendar-container {
+    padding: 1em;
+    border-radius: 1em;
+    .react-calendar {
+        background-color: #121212;
+        color: #fff;
+        border-radius: 1em;
+        padding: 2em;
+        font-size: 1em;
+        width: 50%;
+        .react-calendar__navigation__next2-button,
+        .react-calendar__navigation__prev2-button {
+            display: none;
+        }
+    }
+    .react-calendar button {
+        padding: 1.5em;
+        font-size: 1em;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .react-calendar__tile--now {
+        background-color: #f6bf33;
+        border-radius: 50%;
+        padding: 1em;
+    }
+    .react-calendar__month-view__days__day--weekend {
+        color: #ffff;
+    }
+}

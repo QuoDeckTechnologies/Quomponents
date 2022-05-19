@@ -1,19 +1,10 @@
 import React from "react";
-import Calender from "../components/Calender/Calender.react";
+import Calendar from "../components/Calendar/Calendar.react";
 
 export default {
-    title: "Design System/Calender/Calender",
-    component: Calender,
+    title: "Design System/Calendar/Calendar",
+    component: Calendar,
     argTypes: {
-        content: {
-            table: {
-                defaultValue: {
-                    leftIcon: "",
-                    rightIcon: "",
-                },
-                stepArray:[],
-            },
-        },
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -76,7 +67,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a Calender with Buttons & Steps for general-purpose use",
+        componentSubtitle: "Displays a Calendar with Buttons & Steps for general-purpose use",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -88,18 +79,12 @@ export default {
 // Default
 // -------------------------------------------------------------
 const Template = (args) => {
-    return <Calender {...args} />;
+    return <Calendar {...args} />;
 };
 
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        leftIcon: "fa fa-arrow-alt-circle-left",
-        rightIcon: "fa fa-arrow-alt-circle-right",
-        stepArray:["step1", "step2", "step3", "step4", "step5"],
-    },
     asVariant: "primary",
-    asSize: "normal",
     withColor: {
         backgroundColor: "",
         accentColor: "#808080",
@@ -117,16 +102,16 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<Calender {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<Calendar {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
 
 //-------------------------------------------------------------
-// Colored Progressbar
+// Colored Calendar
 // -------------------------------------------------------------
-export const ColoredProgressbar = Template.bind({});
-ColoredProgressbar.args = {
+export const ColoredCalendar = Template.bind({});
+ColoredCalendar.args = {
     ...Default.args,
     withColor: {
         backgroundColor: "#C98787",
@@ -135,38 +120,14 @@ ColoredProgressbar.args = {
         textColor: "#ffffff",
     },
 };
-ColoredProgressbar.parameters = {
+ColoredCalendar.parameters = {
     docs: {
         description: {
-            story: "Use to override the standard colors of the content.",
+            story: "We can animate the appearance of Calendar",
         },
         source: {
-            code: `<Progressbar withColor={{backgroundColor: "#C98787", accentColor: "#D3D3D3",
-            lineColor: "#E82E19", textColor: "#ffffff"}}}/>`,
-        },
-    },
-};
-
-//-------------------------------------------------------------
-// Animated Progressbar
-// -------------------------------------------------------------
-export const AnimatedProgressbar = Template.bind({});
-AnimatedProgressbar.args = {
-    ...Default.args,
-    withAnimation: {
-        animation: "fade",
-        duration: 2,
-        delay: 0,
-    },
-};
-AnimatedProgressbar.parameters = {
-    docs: {
-        description: {
-            story: "We can animate the appearance of Progressbar",
-        },
-        source: {
-            code: `<Progressbar {...${JSON.stringify(
-                AnimatedProgressbar.args,
+            code: `<Calendar {...${JSON.stringify(
+                ColoredCalendar.args,
                 null,
                 2
             )}}/>`,
@@ -174,42 +135,29 @@ AnimatedProgressbar.parameters = {
     },
 };
 
+//-------------------------------------------------------------
+// Animated Calendar
 // -------------------------------------------------------------
-// AllVariants
-// -------------------------------------------------------------
-const AllVariantsTemplate = (args) => {
-    const baseObj = {
-        ...Object.assign({}, Default.args, args, {
-        }),
-    };
-    return (
-        <div>
-            <Calender
-                {...Object.assign({}, baseObj, {
-                    asVariant: "primary",
-                })}
-            />
-            <Calender
-                {...Object.assign({}, baseObj, {
-                    withColor: {
-                        backgroundColor: "#C98787",
-                        accentColor: "#D3D3D3",
-                        lineColor: "#E82E19",
-                        textColor: "#ffffff",
-                    },
-                })}
-            />
-        </div>
-    );
+export const AnimatedCalendar = Template.bind({});
+AnimatedCalendar.args = {
+    ...Default.args,
+    withAnimation: {
+        animation: "fade",
+        duration: 2,
+        delay: 0,
+    },
 };
-export const AllVariants = AllVariantsTemplate.bind({});
-AllVariants.parameters = {
+AnimatedCalendar.parameters = {
     docs: {
         description: {
-            story: "All variants are supported in Calender.",
+            story: "We can animate the appearance of Calendar",
         },
         source: {
-            code: `<Calender content:{}/>`,
+            code: `<Calendar {...${JSON.stringify(
+                AnimatedCalendar.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };
