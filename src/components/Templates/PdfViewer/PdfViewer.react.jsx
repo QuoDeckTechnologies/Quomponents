@@ -175,7 +175,7 @@ export default function PdfViewer(props) {
             }
           }
         } else {
-          return "";
+          return "NO pdf file";
         }
       } else {
         if (typeof data?.pdf === "object") {
@@ -205,7 +205,7 @@ export default function PdfViewer(props) {
             }
             <Document
               title={data?.title}
-              file={resolveDocument(data?.pdf, props?.docLibrary)}
+              file={data?.pdf?.id ? resolveDocument(data?.pdf, props?.docLibrary) : "NO file"}
               onLoadSuccess={onDocumentLoadSuccess}
             >
               {Array.from(new Array(numPages), (el, index) => (
