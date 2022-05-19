@@ -11,6 +11,20 @@ export default {
             cost: "",
             stock: {},
         },
+        asEmphasis: {
+            control: "select",
+            options: ["default", "blankRewardCard", "soldOutRewardCard"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asFloated: {
+            control: "select",
+            options: ["left", "right", "none", "inline"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -21,11 +35,14 @@ export default {
                 },
             },
         },
-        asFloated: {
-            control: "select",
-            options: ["left", "right", "inline", "none"],
+        withAnimation: {
             table: {
-                category: "as-Flags",
+                category: "with-Params",
+                defaultValue: {
+                    animation: "",
+                    duration: 0,
+                    delay: 0,
+                },
             },
         },
         isHidden: {
@@ -48,7 +65,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a RewardCard",
+        componentSubtitle: "Default RewardCard for general purpose use",
         a11y: { disable: true },
         docs: { iframeHeight: 570 },
     },
@@ -69,18 +86,129 @@ Default.args = {
             total: 1000
         },
     },
+    asEmphasis: "default",
+    asFloated: "inline",
     withColor: {
         textColor: "",
         accentColor: "#AD2929",
         backgroundColor: "",
     },
-    asFloated: "inline",
+    withAnimation: {
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
+    },
     isHidden: false,
 };
 Default.parameters = {
     docs: {
         source: {
             code: `<RewardCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Colored RewardCard
+// -------------------------------------------------------------
+export const ColoredRewardCard = Template.bind({});
+ColoredRewardCard.args = {
+    ...Default.args,
+    withColor: {
+        backgroundColor: "#666666",
+        textColor: "#fffff",
+        accentColor: "#ffbf00",
+    },
+};
+ColoredRewardCard.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to override the standard colors of the RewardCard.",
+        },
+        source: {
+            code: `<ColoredRewardCard {...${JSON.stringify(
+                ColoredRewardCard.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Animated RewardCard
+// -------------------------------------------------------------
+export const AnimatedRewardCard = Template.bind({});
+AnimatedRewardCard.args = {
+    ...Default.args,
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+};
+AnimatedRewardCard.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to animate the entry of the RewardCard with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        },
+        source: {
+            code: `<AnimatedRewardCard {...${JSON.stringify(
+                AnimatedRewardCard.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Sold Out RewardCard
+// -------------------------------------------------------------
+export const SoldOutRewardCard = Template.bind({});
+SoldOutRewardCard.args = {
+    ...Default.args,
+    asEmphasis: "soldOutRewardCard",
+    withColor: {
+        textColor: "#fffff",
+        accentColor: "#AD2929",
+        backgroundColor: "#E8E8E8",
+    },
+};
+SoldOutRewardCard.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to override the standard colors of the RewardCard.",
+        },
+        source: {
+            code: `<SoldOutRewardCard {...${JSON.stringify(
+                SoldOutRewardCard.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Blank RewardCard
+// -------------------------------------------------------------
+export const BlankRewardCard = Template.bind({});
+BlankRewardCard.args = {
+    ...Default.args,
+    asEmphasis: "blankRewardCard",
+};
+BlankRewardCard.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to override the standard colors of the RewardCard.",
+        },
+        source: {
+            code: `<BlankRewardCard {...${JSON.stringify(
+                BlankRewardCard.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };
