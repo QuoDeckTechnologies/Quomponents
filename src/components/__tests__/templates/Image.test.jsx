@@ -45,10 +45,6 @@ describe("Image", () => {
         withColor={null}
         withAnimation={null}
         isHidden={false}
-        isDisabled={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
       />
     );
   });
@@ -86,16 +82,6 @@ describe("Image", () => {
 
   it("should render correctly when passed isHidden props as true", () => {
     component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
     expect(component.exists()).toBe(true);
   });
 

@@ -35,12 +35,6 @@ export default {
         defaultValue: false,
       },
     },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
   },
   decorators: [
     (story) => (
@@ -56,7 +50,7 @@ export default {
   ],
   parameters: {
     componentSubtitle:
-      "Displays a Image Slide having  clickable image and TextBoxes, we can switch the slideHeader into header image by giving image prop and we can switch the slide into presenter view by adding presenter image to presenter prop ",
+      "Displays a Image Slide having image and TextBoxes, we can switch the slideHeader into header image by giving image prop and we can switch the slide into presenter view by adding presenter image to presenter prop ",
     a11y: { disable: true },
     docs: {
       iframeHeight: 700,
@@ -110,13 +104,12 @@ Default.args = {
     delay: 0,
   },
   isHidden: false,
-  isDisabled: false,
 };
 Default.parameters = {
   docs: {
     description: {
       story:
-        "Image component have clickable images in between SliderHeader and TextBlock.",
+        "Image component have image in between SliderHeader and TextBlock.",
     },
     source: {
       code: `<Image {...${JSON.stringify(Default.args, null, 2)}}/>`,
@@ -159,7 +152,7 @@ DefaultWithHeaderImage.parameters = {
   docs: {
     description: {
       story:
-        "Image component have clickable images in between SliderHeader and TextBlock.",
+        "Image component have image in between SliderHeader and TextBlock.",
     },
     source: {
       code: `<Image {...${JSON.stringify(
@@ -206,14 +199,10 @@ ImageWithPresenter.parameters = {
   docs: {
     description: {
       story:
-        "CaptionedImage component have clickable images in between SliderHeader and TextBlock.",
+        "Image component have image in between SliderHeader and TextBlock.",
     },
     source: {
-      code: `<CaptionedImage {...${JSON.stringify(
-        ImageWithPresenter.args,
-        null,
-        2
-      )}}/>`,
+      code: `<Image {...${JSON.stringify(ImageWithPresenter.args, null, 2)}}/>`,
     },
   },
 };
@@ -268,10 +257,10 @@ ImageWithPresenterAndBackgroundImage.parameters = {
   docs: {
     description: {
       story:
-        "CaptionedImage component have clickable images in between SliderHeader and TextBlock.",
+        "Image component have image in between SliderHeader and TextBlock.",
     },
     source: {
-      code: `<CaptionedImage {...${JSON.stringify(
+      code: `<Image {...${JSON.stringify(
         ImageWithPresenterAndBackgroundImage.args,
         null,
         2
@@ -313,14 +302,10 @@ ColoredImage.parameters = {
   docs: {
     description: {
       story:
-        "CaptionedImage component have clickable images in between SliderHeader and TextBlock.",
+        "Image component have image in between SliderHeader and TextBlock.",
     },
     source: {
-      code: `<CaptionedImage {...${JSON.stringify(
-        ColoredImage.args,
-        null,
-        2
-      )}}/>`,
+      code: `<Image {...${JSON.stringify(ColoredImage.args, null, 2)}}/>`,
     },
   },
 };
@@ -356,14 +341,10 @@ AnimatedImage.parameters = {
   docs: {
     description: {
       story:
-        "CaptionedImage component have clickable images in between SliderHeader and TextBlock.",
+        "Image component have image in between SliderHeader and TextBlock.",
     },
     source: {
-      code: `<CaptionedImage {...${JSON.stringify(
-        AnimatedImage.args,
-        null,
-        2
-      )}}/>`,
+      code: `<Image {...${JSON.stringify(AnimatedImage.args, null, 2)}}/>`,
     },
   },
 };

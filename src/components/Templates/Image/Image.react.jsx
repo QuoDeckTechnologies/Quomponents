@@ -72,10 +72,6 @@ Image.propTypes = {
     Use to show/hide the component
   */
   isHidden: PropTypes.bool,
-  /**
-    Use to enable/disable the component
-    */
-  isDisabled: PropTypes.bool,
 };
 
 Image.defaultProps = {
@@ -86,8 +82,8 @@ Image.defaultProps = {
     title: "",
     subtitle: "",
     image: "",
+    contentImage: {},
     backgroundImage: {},
-    data: {},
     presenter: "",
   },
   slideId: 0,
@@ -97,7 +93,6 @@ Image.defaultProps = {
   withColor: null,
   withAnimation: null,
   isHidden: false,
-  isDisabled: false,
 };
 /**
 ## Notes
@@ -176,7 +171,7 @@ export default function Image(props) {
             <img
               className="qui-image-component-image"
               src={resolveImage(data.image?.id, imageLibrary)}
-              alt=""
+              alt="Header"
             />
           )}
           {getContentImage()}
@@ -219,7 +214,7 @@ export default function Image(props) {
           <img
             className="qui-image-presenter"
             src={resolveImage(data.presenter?.id, imageLibrary)}
-            alt=""
+            alt="Presenter"
           />
         )}
       </div>
