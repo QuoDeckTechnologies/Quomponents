@@ -12,13 +12,6 @@ import "../../common/stylesheets/overrule.scss";
 
 OTPFields.propTypes = {
     //=======================================
-    // Component Specific props
-    //=======================================
-    /**
-    Use to define name's ID
-    */
-    name: PropTypes.string.isRequired,
-    //=======================================
     // Quommon props
     //=======================================
     /**
@@ -26,7 +19,7 @@ OTPFields.propTypes = {
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-    Use to set Colors for accent line
+    Use to set Colors
     */
     withColor: PropTypes.shape({
         accentColor: PropTypes.string,
@@ -111,7 +104,7 @@ export default function OTPFields(props) {
                 <div className="qui-otp-fields">
                     <InputField {...props}
                         InputProps={{ inputProps: { min: 0, max: 9 } }}
-                        name={"0"}
+                        name={"one"}
                         content={{
                             value: "1"
                         }}
@@ -123,7 +116,7 @@ export default function OTPFields(props) {
                         }
                     />
                     <InputField
-                        name={"1"}
+                        name={"two"}
                         content={{
                             value: "2"
                         }}
@@ -135,7 +128,7 @@ export default function OTPFields(props) {
                         }
                     />
                     <InputField
-                        name={"2"}
+                        name={"three"}
                         content={{
                             value: "3"
                         }}
@@ -147,7 +140,7 @@ export default function OTPFields(props) {
                         }
                     />
                     <InputField
-                        name={"4"}
+                        name={"four"}
                         content={{
                             value: "4"
                         }}
@@ -159,7 +152,7 @@ export default function OTPFields(props) {
                         }
                     />
                     <InputField
-                        name={"4"}
+                        name={"five"}
                         content={{
                             value: "5"
                         }}
