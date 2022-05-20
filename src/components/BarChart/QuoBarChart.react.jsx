@@ -12,6 +12,7 @@ import {
     LineChart, Line,
     AreaChart, Area,
     CartesianGrid,
+    ResponsiveContainer,
     Cell,
     Bar,
 } from "recharts";
@@ -173,7 +174,6 @@ export default function QuoBarChart(props) {
                     />
                     <Tooltip />
                 </PieChart>
-
                 <br />
                 <h3>AreaChart</h3>
                 <AreaChart
