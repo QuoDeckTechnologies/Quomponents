@@ -50,7 +50,7 @@ export default {
   ],
   parameters: {
     componentSubtitle:
-      "Displays a Image Slide having image and TextBoxes, we can switch the slideHeader into header image by giving image prop and we can switch the slide into presenter view by adding presenter image to presenter prop ",
+      "Displays a Image Slide having image, SlideHeader or header image, we can switch the slideHeader into header image by giving image prop and we can switch the slide into presenter view by adding presenter image to presenter prop ",
     a11y: { disable: true },
     docs: {
       iframeHeight: 700,
@@ -109,7 +109,7 @@ Default.parameters = {
   docs: {
     description: {
       story:
-        "Image component have an image beneath SliderHeader or Header image.",
+        "Image component having SliderHeader or Header image with an image.",
     },
     source: {
       code: `<Image {...${JSON.stringify(Default.args, null, 2)}}/>`,
