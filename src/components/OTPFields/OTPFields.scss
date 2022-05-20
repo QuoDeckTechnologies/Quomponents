@@ -1,0 +1,20 @@
+/* ================================================= */
+/* OTPFields Container Definitions */
+/* ================================================= */
+.qui .qui-otp-fields-container {
+  // width: auto;
+  width: 20em;
+}
+
+.qui .qui-otp-fields {
+  width: 100%;
+  display: flex;
+  gap: 0.5em;
+  .css-c5v1qu-MuiInputBase-input-MuiFilledInput-input {
+    padding-top: 1em;
+  }
+  // .qui-input-field-container {
+  //   // width: 2em;
+  //   align-items: center;
+  // }
+}
