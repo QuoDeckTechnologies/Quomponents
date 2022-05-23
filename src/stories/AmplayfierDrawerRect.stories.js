@@ -6,7 +6,6 @@ export default {
   title: "Design System/AmplayfierDrawerRect/AmplayfierDrawerRect",
   component: AmplayfierDrawerRect,
   argTypes: {
-    content: "AmplayfierDrawerRect",
     isCircular: {
       table: {
         category: "is-Toggles",
@@ -74,15 +73,21 @@ export default {
     componentSubtitle:
       "Displays a basic AmplayfierDrawerRect for general-purpose use",
     a11y: { disable: true },
+    docs: {
+      iframeHeight: 500,
+    },
   },
 };
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <AmplayfierDrawerRect {...args} />;
+const Template = (args) => (
+  <AmplayfierDrawerRect {...args}>
+    <div style={{ height: "25em", width: "30em" }}></div>
+  </AmplayfierDrawerRect>
+);
 export const Default = Template.bind({});
 Default.args = {
-  content: <div style={{ height: "25em", width: "30em" }}></div>,
   isCircular: false,
   asFloated: "inline",
   asPadded: "normal",
@@ -111,10 +116,8 @@ Default.parameters = {
 // -------------------------------------------------------------
 // AmplayfierDrawerRect with other component
 // -------------------------------------------------------------
-export const AmplayfierDrawerWithOtherComponent = Template.bind({});
-AmplayfierDrawerWithOtherComponent.args = {
-  ...Default.args,
-  content: (
+const AmplayfierDrawerWithOtherComponentTemplate = (args) => (
+  <AmplayfierDrawerRect {...args}>
     <div>
       <LearnerTableRow
         content={[
@@ -153,7 +156,13 @@ AmplayfierDrawerWithOtherComponent.args = {
         onSendMessage={() => {}}
       />
     </div>
-  ),
+  </AmplayfierDrawerRect>
+);
+export const AmplayfierDrawerWithOtherComponent = AmplayfierDrawerWithOtherComponentTemplate.bind(
+  {}
+);
+AmplayfierDrawerWithOtherComponent.args = {
+  ...Default.args,
   asPadded: "relaxed",
   isCircular: true,
 };

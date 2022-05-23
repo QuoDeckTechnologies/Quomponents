@@ -13,11 +13,11 @@ AmplayfierDrawerRect.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    AmplayfierDrawerRect children component has to be in content prop.
+    AmplayfierDrawerRect will wrap children component.
     */
-  content: PropTypes.element,
+  children: PropTypes.element,
   /**
-    Use for rounded corners
+    Use for rounded bottom corners
     */
   isCircular: PropTypes.bool,
   //=======================================
@@ -68,7 +68,6 @@ AmplayfierDrawerRect.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
   isCircular: false,
   //=======================================
   // Quommon props
@@ -87,7 +86,7 @@ AmplayfierDrawerRect.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function AmplayfierDrawerRect(props) {
-  const { content, withColor } = props;
+  const { children, withColor } = props;
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
@@ -110,7 +109,7 @@ export default function AmplayfierDrawerRect(props) {
       <div
         className={`qui-amplayfier-drawer-rect-container ${quommonClasses.childClasses}`}
       >
-        {content}
+        {children}
       </div>
     </motion.div>
   );
