@@ -67,7 +67,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a RedeemCard with offer details and display redemptionStatus as 'redeem','process','success'",
+        componentSubtitle: "Displays a RedeemCard with offer details and display redemptionStatus as 'redeem','inprogress','completed'",
         a11y: { disable: true },
         docs: { iframeHeight: 570 }
     },
@@ -197,7 +197,7 @@ export const AllVariantsTemplate = (args) => {
                 total: 1000
             },
             label: "A beast on the road, this motorbike commands respect.",
-            redemptionStatus: "process"
+            redemptionStatus: "inprogress"
         },
         withColor: {
             textColor: "",
@@ -227,7 +227,7 @@ export const AllVariantsTemplate = (args) => {
                 total: 1000
             },
             label: "A beast on the road, this motorbike commands respect.",
-            redemptionStatus: "success"
+            redemptionStatus: "completed"
         },
         withColor: {
             textColor: "",

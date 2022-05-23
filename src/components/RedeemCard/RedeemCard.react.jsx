@@ -30,7 +30,7 @@ RedeemCard.propTypes = {
             total: PropTypes.number
         }),
         label: PropTypes.string,
-        redemptionStatus: PropTypes.oneOf(["redeem", "process", "success"])
+        redemptionStatus: PropTypes.oneOf(["redeem", "inprogress", "completed"])
     }),
 
     // Quommon props
@@ -83,7 +83,7 @@ RedeemCard.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 - Pass all the required props to the component.
-- redemptionStatus consist of 3 options('redeem', 'process','success') to display the card accordingly.
+- redemptionStatus consist of 3 options('redeem', 'inprogress','completed') to display the card accordingly.
 **/
 
 export default function RedeemCard(props) {
@@ -185,14 +185,14 @@ export default function RedeemCard(props) {
                         <Button isDisabled={props.isDisabled} withColor={buttonStyle} content="Redeem" onClick={props.onClick} />
                     </div>
                 }
-                {props.content?.redemptionStatus === "process" &&
-                    <div className={`qui-redeem-card-status qui-redeem-card-redeem-process`}>
+                {props.content?.redemptionStatus === "inprogress" &&
+                    <div className={`qui-redeem-card-status qui-redeem-card-redeem-inprogress`}>
                         YOUR REDEMPTION REQUEST IS IN PROCESS
                     </div>
                 }
-                {props.content?.redemptionStatus === "success" &&
-                    <div className={`qui-redeem-card-status qui-redeem-card-redeem-success`}>
-                        YOU HAVE REDEEMED THIS OFFER !!
+                {props.content?.redemptionStatus === "completed" &&
+                    <div className={`qui-redeem-card-status qui-redeem-card-redeem-completed`}>
+                        YOU HAVE REDEEMED THIS OFFER!!
                     </div>
                 }
             </div>}
