@@ -71,6 +71,9 @@ export default {
   parameters: {
     componentSubtitle: "Displays a basic Segment for general-purpose use",
     a11y: { disable: true },
+    docs: {
+      iframeHeight: 500,
+    },
   },
 };
 // -------------------------------------------------------------
@@ -78,7 +81,7 @@ export default {
 // -------------------------------------------------------------
 const Template = (args) => (
   <Segment {...args}>
-    <div style={{ height: "85vh", width: "40vw" }}></div>
+    <div style={{ height: "40em", width: "30em" }}></div>
   </Segment>
 );
 export const Default = Template.bind({});
