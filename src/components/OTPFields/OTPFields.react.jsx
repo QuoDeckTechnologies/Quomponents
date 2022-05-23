@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import InputField from "../InputField/InputField.react"
+import TextField from '@mui/material/TextField';
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -67,8 +67,6 @@ OTPFields.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
-
-    onClick: null,
 };
 /**
 ## Notes
@@ -90,6 +88,102 @@ export default function OTPFields(props) {
         accentColor: props.withColor?.accentColor,
     };
     //-------------------------------------------------------------------
+    // 2. Use to set OTPFields Color
+    //-------------------------------------------------------------------
+    const [inputOne, setInputOne] = useState(null);
+    const [inputTwo, setInputTwo] = useState(null);
+    const [inputThree, setInputThree] = useState(null);
+    const [inputFour, setInputFour] = useState(null);
+    const [inputFive, setInputFive] = useState(null);
+
+    function handleCondition(e) {
+        if (e.key === "Enter") {
+            e.target.blur()
+            props.onClick(e.target.name, e.target.value);
+        }
+        if (e.key === "Escape") {
+            e.target.value = ""
+        }
+    }
+
+    const re = new RegExp(/^$|^[0-9]$/)
+
+    function handleChangeOne(e) {
+        if (re.test(e.target.value)) {
+            setInputOne(e.target.value);
+        }
+        handleCondition(e)
+    }
+
+    function handleChangeTwo(e) {
+        if (re.test(e.target.value)) {
+            setInputTwo(e.target.value);
+        }
+        handleCondition(e)
+    }
+
+    function handleChangeThree(e) {
+        if (re.test(e.target.value)) {
+            setInputThree(e.target.value);
+        }
+        handleCondition(e)
+    }
+
+    function handleChangeFour(e) {
+        if (re.test(e.target.value)) {
+            setInputFour(e.target.value);
+        }
+        handleCondition(e)
+    }
+
+    function handleChangeFive(e) {
+        if (re.test(e.target.value)) {
+            setInputFive(e.target.value);
+        }
+        handleCondition(e)
+    }
+    //-------------------------------------------------------------------
+    // 2. Use to set OTPFields Color
+    //-------------------------------------------------------------------
+    let inputOneRef = React.useRef();
+    let inputTwoRef = React.useRef();
+    let inputThreeRef = React.useRef();
+    let inputFourRef = React.useRef();
+    let inputFiveRef = React.useRef();
+
+    let changeFocus = () => {
+        if (inputOneRef.current.focus) {
+            inputOneRef.current.style.backgroundColor = props.withColor?.backgroundColor
+        }
+        if (inputTwoRef.current.focus) {
+            inputTwoRef.current.style.backgroundColor = props.withColor?.backgroundColor
+        }
+        if (inputThreeRef.current.focus) {
+            inputThreeRef.current.style.backgroundColor = props.withColor?.backgroundColor
+        }
+        if (inputFourRef.current.focus) {
+            inputFourRef.current.style.backgroundColor = props.withColor?.backgroundColor
+        }
+        if (inputFiveRef.current.focus) {
+            inputFiveRef.current.style.backgroundColor = props.withColor?.backgroundColor
+        }
+    };
+
+    let changeBlur = (e) => {
+        inputOneRef.current.style.backgroundColor = "#d4d3cf"
+        inputTwoRef.current.style.backgroundColor = "#d4d3cf"
+        inputThreeRef.current.style.backgroundColor = "#d4d3cf"
+        inputFourRef.current.style.backgroundColor = "#d4d3cf"
+        inputFiveRef.current.style.backgroundColor = "#d4d3cf"
+        props.onClick(e.target.name, e.target.value);
+    };
+
+    let outlineStyle = {
+        "& .MuiFilledInput-root:after": {
+            borderBottom: `0.3em solid ${props.withColor?.accentColor ? props.withColor?.accentColor : "#ffab00"}`,
+        },
+    };
+    //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
@@ -102,66 +196,80 @@ export default function OTPFields(props) {
         >
             <div className={`qui-otp-fields-container ${quommonClasses.childClasses}`}>
                 <div className="qui-otp-fields">
-                    <InputField {...props}
+                    <TextField
+                        className="qui-otp-fields-textField"
+                        sx={outlineStyle}
+                        type="number"
                         InputProps={{ inputProps: { min: 0, max: 9 } }}
+                        size={"small"}
+                        variant="filled"
+                        value={inputOne}
                         name={"one"}
-                        content={{
-                            value: "1"
-                        }}
-                        asEmphasis="shortField"
-                        asFloated="left"
-                        withColor={OTPFieldsColors}
-                        onClick={(name, value) =>
-                            props.onClick(name, value)
-                        }
+                        ref={inputOneRef}
+                        onFocus={changeFocus}
+                        onBlur={changeBlur}
+                        onChange={handleChangeOne}
+                        onKeyDown={handleChangeOne}
                     />
-                    <InputField
+                    <TextField
+                        className="qui-otp-fields-textField"
+                        sx={outlineStyle}
+                        type="number"
+                        InputProps={{ inputProps: { min: 0, max: 9 } }}
+                        size={"small"}
+                        variant="filled"
+                        value={inputTwo}
                         name={"two"}
-                        content={{
-                            value: "2"
-                        }}
-                        asEmphasis="shortField"
-                        asFloated="left"
-                        withColor={OTPFieldsColors}
-                        onClick={(name, value) =>
-                            props.onClick(name, value)
-                        }
+                        ref={inputTwoRef}
+                        onFocus={changeFocus}
+                        onBlur={changeBlur}
+                        onChange={handleChangeTwo}
+                        onKeyDown={handleChangeTwo}
                     />
-                    <InputField
+                    <TextField
+                        className="qui-otp-fields-textField"
+                        sx={outlineStyle}
+                        type="number"
+                        InputProps={{ inputProps: { min: 0, max: 9 } }}
+                        size={"small"}
+                        variant="filled"
+                        value={inputThree}
                         name={"three"}
-                        content={{
-                            value: "3"
-                        }}
-                        asEmphasis="shortField"
-                        asFloated="left"
-                        withColor={OTPFieldsColors}
-                        onClick={(name, value) =>
-                            props.onClick(name, value)
-                        }
+                        ref={inputThreeRef}
+                        onFocus={changeFocus}
+                        onBlur={changeBlur}
+                        onChange={handleChangeThree}
+                        onKeyDown={handleChangeThree}
                     />
-                    <InputField
+                    <TextField
+                        className="qui-otp-fields-textField"
+                        sx={outlineStyle}
+                        type="number"
+                        InputProps={{ inputProps: { min: 0, max: 9 } }}
+                        size={"small"}
+                        variant="filled"
+                        value={inputFour}
                         name={"four"}
-                        content={{
-                            value: "4"
-                        }}
-                        asEmphasis="shortField"
-                        asFloated="left"
-                        withColor={OTPFieldsColors}
-                        onClick={(name, value) =>
-                            props.onClick(name, value)
-                        }
+                        ref={inputFourRef}
+                        onFocus={changeFocus}
+                        onBlur={changeBlur}
+                        onChange={handleChangeFour}
+                        onKeyDown={handleChangeFour}
                     />
-                    <InputField
+                    <TextField
+                        className="qui-otp-fields-textField"
+                        sx={outlineStyle}
+                        type="number"
+                        InputProps={{ inputProps: { min: 0, max: 9 } }}
+                        size={"small"}
+                        variant="filled"
+                        value={inputFive}
                         name={"five"}
-                        content={{
-                            value: "5"
-                        }}
-                        asEmphasis="shortField"
-                        asFloated="left"
-                        withColor={OTPFieldsColors}
-                        onClick={(name, value) =>
-                            props.onClick(name, value)
-                        }
+                        ref={inputFiveRef}
+                        onFocus={changeFocus}
+                        onBlur={changeBlur}
+                        onChange={handleChangeFive}
+                        onKeyDown={handleChangeFive}
                     />
                 </div>
             </div>

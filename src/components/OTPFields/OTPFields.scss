@@ -9,12 +9,37 @@
 .qui .qui-otp-fields {
   width: 100%;
   display: flex;
-  gap: 0.5em;
-  .css-c5v1qu-MuiInputBase-input-MuiFilledInput-input {
-    padding-top: 1em;
-  }
-  // .qui-input-field-container {
-  //   // width: 2em;
-  //   align-items: center;
+  gap: 0.7em;
+  // .css-c5v1qu-MuiInputBase-input-MuiFilledInput-input {
+  //   padding-top: 1em;
   // }
+  .qui-otp-fields-textField {
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+  }
+}
+/* ================================================= */
+/* Mui Override Definitions */
+/* ================================================= */
+.qui .MuiFilledInput-root:after {
+  animation: none;
+  transition: none;
+  outline: none;
+}
+.qui .MuiFilledInput-root:before {
+  border-bottom: 0.3em solid #8c8c89;
+  animation: none;
+  transition: none;
+  outline: none;
+}
+.qui .MuiFilledInput-root:hover:not(.Mui-disable):before {
+  border-bottom: 0.3em solid #8c8c89;
+}
+.qui .MuiFilledInput-root {
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  // background-color: #d4d3cf;
+}
+.qui .MuiInputBase-input.MuiFilledInput-input {
+  margin-bottom: 0.2em;
 }
