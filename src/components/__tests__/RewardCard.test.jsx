@@ -26,11 +26,12 @@ describe("RewardCard", () => {
                     cost: 0,
                     stock: {},
                 }}
-                asEmphasis="default"
+                status="default"
                 asFloated="none"
                 withColor={null}
                 withAnimation={null}
                 isHidden={false}
+                isDisabled={false}
                 onClick={onClick}
             />
         );
@@ -55,8 +56,8 @@ describe("RewardCard", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed content prop with values if asEmphasis as soldOutRewardCard", () => {
-        component.setProps({ asEmphasis: "soldOutRewardCard" })
+    it("should render correctly when passed content prop with values if status as soldOutRewardCard", () => {
+        component.setProps({ status: "soldOutRewardCard" })
         let value = {
             name: "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
@@ -71,18 +72,18 @@ describe("RewardCard", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed asEmphasis prop as default", () => {
-        component.setProps({ asEmphasis: "default" })
+    it("should render correctly when passed status prop as default", () => {
+        component.setProps({ status: "default" })
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed asEmphasis prop as blankRewardCard", () => {
-        component.setProps({ asEmphasis: "blankRewardCard" })
+    it("should render correctly when passed status prop as blankRewardCard", () => {
+        component.setProps({ status: "blankRewardCard" })
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed asEmphasis prop as soldOutRewardCard", () => {
-        component.setProps({ asEmphasis: "soldOutRewardCard" })
+    it("should render correctly when passed status prop as soldOutRewardCard", () => {
+        component.setProps({ status: "soldOutRewardCard" })
         expect(component.exists()).toBe(true);
     });
 
@@ -110,10 +111,12 @@ describe("RewardCard", () => {
         let colors = {
             textColor: "#FFFF",
             accentColor: "#AD2929",
-            backgroundColor: "",
+            backgroundColor: "#121212",
             soldTextColor: "#fffff",
             soldAccentColor: "#AD2929",
             soldBackgroundColor: "#E8E8E8",
+            blankTextColor: "#FFFF",
+            blankBackgroundColor: "#121212",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
@@ -138,4 +141,15 @@ describe("RewardCard", () => {
         component.setProps({ isHidden: true })
         expect(component.exists()).toBe(true);
     });
+
+    it("should render correctly when passed isDisabled props as false", () => {
+        component.setProps({ isDisabled: false })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed isDisabled props as true", () => {
+        component.setProps({ isDisabled: true })
+        expect(component.exists()).toBe(true);
+    });
 });
+

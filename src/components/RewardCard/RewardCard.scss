@@ -1,3 +1,6 @@
+/* ================================================= */
+/* RewardCard Definitions */
+/* ================================================= */
 .qui-reward-card {
     padding: 1em;
     .qui .qui-point-container {
@@ -18,10 +21,11 @@
     }
     color: #fff;
 }
-.qui-reward-card-container {
+
+.qui .qui-reward-card-container {
+    cursor: pointer;
     display: flex;
     width: 15.625em;
-    // height: auto;
     min-height: 19.125em;
     background-color: #222a35;
     flex-direction: column;
@@ -32,7 +36,8 @@
     mix-blend-mode: normal;
     padding: 0.5em 1.5em;
 }
-.qui-reward-card-name {
+
+.qui .qui-reward-card-name {
     margin: 1em 0;
     font-size: 1.2em;
     align-self: flex-start;
@@ -42,42 +47,52 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.qui-reward-card-image {
+
+.qui .qui-reward-card-image {
+    position: relative;
     height: 6.17125em;
     width: 100%;
     background-position: center;
     background-size: cover;
+    .qui-reward-card-image-caption {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        font-weight: 700;
+        font-size: 2em;
+        color: #ffbf00;
+    }
 }
-.qui-reward-card-cost-stock-container {
+
+.qui .qui-reward-card-cost-stock-container {
     display: flex;
     align-items: flex-start;
     width: 100%;
     justify-content: space-between;
 }
-.qui-reward-card-cost-stock-container-row {
+
+.qui .qui-reward-card-cost-stock-container-row {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
 }
-.qui-reward-card-cost-stock-container-column {
+
+.qui .qui-reward-card-cost-stock-container-column {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
     padding-top: 0.5em;
 }
-.qui-reward-card-cost {
+
+.qui .qui-reward-card-cost {
     flex: 1;
 }
-.qui-reward-card-accent-line {
-    width: 4.5em;
-    align-self: flex-start;
-    margin-bottom: 2em;
-    .qui .qui-accentline {
-        border-bottom: 0.7em solid;
-    }
-}
-.qui-reward-card-stock {
+
+.qui .qui-reward-card-stock {
     margin-top: 0.5em;
     display: flex;
     flex: 1;
@@ -88,22 +103,33 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.qui .qui-reward-card-accent-line {
+    width: 4.5em;
+    align-self: flex-start;
+    margin-bottom: 2em;
+    .qui .qui-accentline {
+        border-bottom: 0.7em solid;
+    }
+}
+
 .qui .qui-blank-reward-card-icon {
     font-size: 6em;
     -webkit-text-stroke: 0.1em;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 }
-
+/* ================================================= */
+/* Styling Definitions for different resolution */
+/* ================================================= */
 @media only screen and (min-width: 320px) {
     .qui-reward-card {
-        font-size: 0.8rem;
+        font-size: 0.9em;
     }
 }
 
-@media only screen and (min-width: 375px) {
+@media only screen and (min-width: 481px) {
     .qui-reward-card {
-        font-size: 1rem;
+        font-size: 1.1em;
     }
 }
