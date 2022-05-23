@@ -1,4 +1,4 @@
-.qui-serialcard {
+.qui-serialcard-container {
     background-color: #ffffff;
     border-radius: 1em;
     box-shadow: 0px 10px 20px #d2d2d2;
@@ -22,10 +22,17 @@
         height: 7em;
         width: 7em;
         border-radius: 1em;
-        .qui-serialcard-name {
-            margin-top: -1em;
-        }
     }
+    .qui-serialcard-name {
+        margin-top: -2em;
+        -webkit-box-orient: vertical;
+        display: block;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+    }
+
     .qui-serialcard-player {
         margin-left: 4em;
         font-size: 2em;
