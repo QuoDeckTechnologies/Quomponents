@@ -1,8 +1,9 @@
 // Import npm packages
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import _ from "lodash";
 import Slider from "../../Slider/Slider.react";
-import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
+import { Document, Page, pdfjs } from 'react-pdf';
 import { motion } from "framer-motion";
 import {
   getAnimation,
@@ -22,11 +23,17 @@ PdfViewer.propTypes = {
     */
   data: PropTypes.shape({
     title: PropTypes.string,
-    pdf: PropTypes.object.isRequired,
+    pdf: PropTypes.object,
     backgroundImage: PropTypes.object,
   }),
-
+  /**
+    PdfViewer data should be passed in docLibrary for checking the given id of the document passed in pdf prop
+    */
   docLibrary: PropTypes.array,
+  /**
+    PdfViewer data should be passed in imageLibrary for checking the given id of the document passed in background-image prop
+    */
+  imageLibrary: PropTypes.array,
   /**
     PdfViewer slideId should be passed with props, to specify the slide.
     */
@@ -102,7 +109,7 @@ PdfViewer.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Displays a Open Answer slide withSlideHeader , TextBlock, inputFiled, and a Button
+- Displays a pdf viewer using react-pdf
 **/
 export default function PdfViewer(props) {
   let { data, withColor, imageLibrary } = props
@@ -120,7 +127,7 @@ export default function PdfViewer(props) {
   //  Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   //-------------------------------------------------------------------
   //  Setting the colors of imported components
   //-------------------------------------------------------------------
@@ -131,13 +138,9 @@ export default function PdfViewer(props) {
       backgroundPosition: "50% 50%"
     };
   };
-  const background = data?.pdf
+  const background = data?.pdf && props.docLibrary
     ? { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" }
     : getBackground();
-
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
 
   const resizeHandler = () => {
     if (window.innerWidth <= 320) {
@@ -161,32 +164,12 @@ export default function PdfViewer(props) {
   }, [zoom]);
 
   let resolveDocument = (pdf, library) => {
-    if (data?.pdf) {
-      if (library !== undefined && library.length > 0) {
-        if (pdf?.id !== "") {
-          let data = library.find((doc) => doc.id === pdf?.id);
-          if (data) {
-            return data.doc;
-          } else {
-            if (typeof data?.pdf === "object") {
-              return data?.pdf?.id.toString()
-            } else {
-              return data?.pdf;
-            }
-          }
-        } else {
-          return "NO pdf file";
-        }
-      } else {
-        if (typeof data?.pdf === "object") {
-          return data?.pdf?.id.toString()
-        } else {
-          return data?.pdf;
-        }
-      }
+    let libraryDoc = _.find(library, { id: pdf });
+    if (libraryDoc?.id !== pdf || libraryDoc === null || library.length === 0) {
+      return getBackground()
     }
+    return libraryDoc?.doc
   };
-
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -195,34 +178,34 @@ export default function PdfViewer(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div className={`qui-pdf-viewer-outer-container`} style={{ ...background }}>
-        {data &&
-          <div className={`qui-pdf-viewer-container`}>
+        {data && data?.docLibrary !== null &&
+          < div className={`qui-pdf-viewer-container`}>
             {
-              data?.pdf &&
+              data?.pdf && props?.docLibrary &&
               <div className={`${rotate ? "qui-rotate-title" : "qui-pdf-title"}`}>
                 {rotate ? "" : data?.title}
               </div>
-            }
-            <Document
-              title={data?.title}
-              file={data?.pdf?.id ? resolveDocument(data?.pdf, props?.docLibrary) : "NO file"}
-              onLoadSuccess={onDocumentLoadSuccess}
-            >
-              {Array.from(new Array(numPages), (el, index) => (
-                <Page
-                  scale={rotate ? 50 / 50 : zoom >= 22 ? zoom / 50 : 22 / 50}
-                  size="A4"
-                  rotate={rotate ? 90 : 0}
-                  width={width}
-                  className={`${rotate ? "qui-rotated-page" : ""}`}
-                  key={`page_${index + 1}`} pageNumber={index + 1} />
-              ))}
-            </Document>
-            {data?.pdf &&
+            }{props?.docLibrary &&
+              < Document
+                title={data?.title}
+                file={data?.pdf?.id ? resolveDocument(data.pdf?.id, props?.docLibrary) : "No data"}
+                onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+              >
+                {Array.from(new Array(numPages), (el, index) => (
+                  <Page
+                    scale={rotate ? 50 / 50 : zoom >= 22 ? zoom / 50 : 22 / 50}
+                    size="A4"
+                    rotate={rotate ? 90 : 0}
+                    width={width}
+                    className={`${rotate ? "qui-rotated-page" : ""}`}
+                    key={`page_${index + 1}`} pageNumber={index + 1} />
+                ))}
+              </Document>}
+            {data?.pdf && props?.docLibrary &&
               <div>
                 {rotate ? "" :
                   <i
-                    className={`qui-pdf-zoom-icon ${showSlider ? "fas fa-toggle-on" : "fas fa-toggle-off"}`}
+                    className={`qui-pdf-toggle-icon ${showSlider ? "fas fa-toggle-on" : "fas fa-toggle-off"}`}
                     onClick={() => setShowSlider(preState => !preState)} />}
               </div>}
 
@@ -243,6 +226,6 @@ export default function PdfViewer(props) {
           </div>}
       </div>
 
-    </motion.div>
+    </motion.div >
   );
 }

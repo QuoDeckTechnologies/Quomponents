@@ -1,4 +1,4 @@
-.qui-pdf-zoom-icon {
+.qui-pdf-toggle-icon {
   cursor: pointer;
 }
 .qui.qui-pdf-viewer {
@@ -71,6 +71,7 @@
     position: absolute;
     right: 0.5em;
     bottom: 30%;
+    cursor: pointer;
   }
 }
 @media only screen and (max-width: 320px) {
@@ -92,7 +93,7 @@
   .qui-pdf-title {
     width: 15.4em;
   }
-  .qui-pdf-zoom-icon {
+  .qui-pdf-toggle-icon {
     position: fixed;
     top: 2.5em;
     left: 15.5em;
@@ -131,7 +132,7 @@
   .qui-pdf-title {
     width: 18.1em;
   }
-  .qui-pdf-zoom-icon {
+  .qui-pdf-toggle-icon {
     position: fixed;
     top: 2.5em;
     left: 18.5em;
@@ -167,7 +168,7 @@
   .qui-pdf-viewer-outer-container {
     width: 19.5em;
   }
-  .qui-pdf-zoom-icon {
+  .qui-pdf-toggle-icon {
     position: fixed;
     top: 2.5em;
     left: 19.2em;
@@ -206,7 +207,7 @@
   .qui-pdf-viewer-outer-container {
     width: 19.5em;
   }
-  .qui-pdf-zoom-icon {
+  .qui-pdf-toggle-icon {
     position: fixed;
     top: 2.5em;
     left: 19.5em;

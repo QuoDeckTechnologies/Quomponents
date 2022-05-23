@@ -8,6 +8,7 @@ export default {
     data: {
     },
     docLibrary: [{}],
+    imageLibrary: [{}],
     slideId: 0,
     withColor: {
       table: {
@@ -60,7 +61,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a PdfViewer with a question and jumbled answer, the user need to submit the correct word as answer, we can switch between the image and SlideHeader by adding or removing the image prop",
+    componentSubtitle: "Displays a PdfViewer",
     a11y: { disable: true },
     docs: {
       iframeHeight: 650,
