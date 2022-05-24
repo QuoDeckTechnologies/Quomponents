@@ -50,7 +50,8 @@ describe("ImageUploadModal", () => {
         withTranslation={null}
         isDisabled={false}
         isHidden={false}
-        onSave={() => {}}
+        onClick={() => {}}
+        onClose={() => {}}
       />
     );
   });
@@ -75,7 +76,8 @@ describe("ImageUploadModal", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onSave={() => {}}
+        onClick={() => {}}
+        onClose={() => {}}
       />
     );
   });
@@ -96,7 +98,8 @@ describe("ImageUploadModal", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onSave={() => {}}
+        onClick={() => {}}
+        onClose={() => {}}
       />
     );
     unmount();
