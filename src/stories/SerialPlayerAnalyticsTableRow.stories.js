@@ -95,9 +95,9 @@ const Custom = (args) => {
   return (
     <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly" }}>
 
-      <div style={{ border: "0.2em solid #00ff00", borderRadius: "1em", height: "30em", width: "22em", padding: "2.5em 0.5em 0.5em 0.5em", position: "relative" }}>
-        <div style={{ border: "0.1em solid #00ff00", top: "2em", height: "27em", width: "21.7em", position: "absolute" }}> </div>
-        <div style={{ position: "absolute", top: "0", fontWeight: "bold", left: "17%", paddingTop: "0.5em", fontSize: "0.8em", color: "#00ff00" }}>SerialPlayerAnalyticsTableRow-M</div>
+      <div style={{ border: "0.2em solid #000000", borderRadius: "1em", height: "30em", width: "22em", padding: "2.5em 0.5em 0.5em 0.5em", position: "relative" }}>
+        <div style={{ border: "0.1em solid #000000", top: "2em", height: "27em", width: "21.7em", position: "absolute" }}> </div>
+        <div style={{ position: "absolute", top: "0", fontWeight: "bold", left: "23%", paddingTop: "0.5em", fontSize: "0.8em", color: "#000000" }}>SerialPlayerAnalyticsTableRow-M</div>
         <SerialPlayerAnalyticsTableRow
           {...Object.assign({}, baseObj, {
             content: {
@@ -108,11 +108,11 @@ const Custom = (args) => {
             withAnimation: null
           })}
         />
-        <div style={{ border: "0.2em solid #00ff00", borderRadius: "50%", bottom: "0.4em", left: "45%", width: "2.5em", height: "2.5em", position: "absolute" }}></div>
+        <div style={{ border: "0.2em solid #000000", borderRadius: "50%", bottom: "0.4em", left: "45%", width: "2.5em", height: "2.5em", position: "absolute" }}></div>
       </div>
-      <div style={{ border: "0.2em solid #00ff00", borderRadius: "1em", height: "30em", width: "40em", padding: "2.5em 0.5em 0.5em 0.5em", position: "relative" }}>
-        <div style={{ border: "0.1em solid #00ff00", top: "2em", height: "27em", width: "39.6em", position: "absolute" }}> </div>
-        <div style={{ position: "absolute", top: "0", fontWeight: "bold", left: "35%", paddingTop: "0.5em", fontSize: "0.8em", color: "#00ff00" }}>SerialPlayerAnalyticsTableRow-D</div>
+      <div style={{ border: "0.2em solid #000000", borderRadius: "1em", height: "30em", width: "40em", padding: "2.5em 0.5em 0.5em 0.5em", position: "relative" }}>
+        <div style={{ border: "0.1em solid #000000", top: "2em", height: "27em", width: "39.6em", position: "absolute" }}> </div>
+        <div style={{ position: "absolute", top: "0", fontWeight: "bold", left: "35%", paddingTop: "0.5em", fontSize: "0.8em", color: "#000000" }}>SerialPlayerAnalyticsTableRow-D</div>
         <SerialPlayerAnalyticsTableRow
           {...Object.assign({}, baseObj, {
             content: {
@@ -125,7 +125,7 @@ const Custom = (args) => {
             withAnimation: null
           })}
         />
-        <div style={{ border: "0.2em solid #00ff00", borderRadius: "50%", bottom: "0.4em", left: "47%", width: "2.5em", height: "2.5em", position: "absolute" }}></div>
+        <div style={{ border: "0.2em solid #000000", borderRadius: "50%", bottom: "0.4em", left: "47%", width: "2.5em", height: "2.5em", position: "absolute" }}></div>
       </div>
     </div>
   );

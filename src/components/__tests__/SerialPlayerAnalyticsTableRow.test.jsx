@@ -5,8 +5,7 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import SerialPlayerAnalyticsTableRow from "../../SerialPlayerAnalyticsTableRow/SerialPlayerAnalyticsTableRow.react";
-import Button from "../../Buttons/Button/Button.react";
+import SerialPlayerAnalyticsTableRow from "../SerialPlayerAnalyticsTableRow/SerialPlayerAnalyticsTableRow.react";
 
 describe("SerialPlayerAnalyticsTableRow", () => {
     // -------------------------------------
