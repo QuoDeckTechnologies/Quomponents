@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
-  resolveImage,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -24,16 +23,11 @@ PdfViewer.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
     pdf: PropTypes.object,
-    backgroundImage: PropTypes.object,
-  }),
+  }).isRequired,
   /**
     PdfViewer data should be passed in docLibrary for checking the given id of the document passed in pdf prop
     */
   docLibrary: PropTypes.array,
-  /**
-    PdfViewer data should be passed in imageLibrary for checking the given id of the document passed in background-image prop
-    */
-  imageLibrary: PropTypes.array,
   /**
     PdfViewer slideId should be passed with props, to specify the slide.
     */
@@ -87,12 +81,10 @@ PdfViewer.defaultProps = {
   data: {
     title: "",
     url: "",
-    backgroundImage: {},
   },
   /**
     PdfViewer component must have the onClick function passed as props
     */
-  imageLibrary: [{}],
   docLibrary: [{}],
   slideId: 0,
   //=======================================
@@ -112,12 +104,12 @@ PdfViewer.defaultProps = {
 - Displays a pdf viewer using react-pdf
 **/
 export default function PdfViewer(props) {
-  let { data, withColor, imageLibrary } = props
+  let { data, withColor } = props
   const [numPages, setNumPages] = useState(null);
   const [zoom, setZoom] = useState(22);
   const [showSlider, setShowSlider] = useState(false);
   const [rotate, setRotate] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth <= 320 ? 560 : window.innerWidth <= 481 ? 660 : window.innerWidth <= 540 ? 700 : window.innerWidth <= 769 ? 700 : 700);
+  const [width, setWidth] = useState(window.innerWidth <= 320 ? 560 : window.innerWidth <= 481 ? window.innerWidth * 2 : window.innerWidth <= 540 ? 700 : window.innerWidth <= 769 ? 700 : 700);
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------  innerHeight
@@ -133,7 +125,7 @@ export default function PdfViewer(props) {
   //-------------------------------------------------------------------
   const getBackground = () => {
     return {
-      background: `url(${resolveImage(data?.backgroundImage?.id, imageLibrary)})`,
+      background: `url(https://icon-library.com/images/pdf-icon-free/pdf-icon-free-15.jpg)`,
       backgroundSize: "cover",
       backgroundPosition: "50% 50%"
     };
@@ -182,8 +174,8 @@ export default function PdfViewer(props) {
           < div className={`qui-pdf-viewer-container`}>
             {
               data?.pdf && props?.docLibrary &&
-              <div className={`${rotate ? "qui-rotate-title" : "qui-pdf-title"}`}>
-                {rotate ? "" : data?.title}
+              <div className="qui-pdf-header">
+                <div className="qui-pdf-title"  >{rotate ? "" : data?.title}</div>
               </div>
             }{props?.docLibrary &&
               < Document

@@ -1,8 +1,10 @@
 .qui-pdf-toggle-icon {
   cursor: pointer;
+  font-size: 1.5em;
 }
 .qui.qui-pdf-viewer {
-  width: fit-content;
+  // width: fit-content;
+  width: 100%;
 }
 .qui .qui-pdf-viewer-card {
   min-height: 33em;
@@ -50,11 +52,19 @@
   .qui-rotate-title {
     display: none;
   }
-  .qui-pdf-title {
+  .qui-pdf-header {
     position: fixed;
     z-index: 11;
     background-color: rgb(253, 253, 253);
     padding: 0.5em 0 0.5em 0;
+    .qui-pdf-title {
+      background-color: transparent;
+      width: 26ch;
+      margin: auto;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 }
 .qui-footer-slider-icon-container {
@@ -90,14 +100,15 @@
       width: 18.3em;
     }
   }
-  .qui-pdf-title {
+  .qui-pdf-header {
     width: 15.4em;
   }
   .qui-pdf-toggle-icon {
     position: fixed;
-    top: 2.5em;
-    left: 15.5em;
+    top: 2.2em;
+    left: 14em;
     z-index: 11;
+    font-size: 1.1em;
   }
   .qui-footer-slider-icon-container {
     background-color: cornflowerblue;
@@ -127,16 +138,17 @@
 }
 @media only screen and (min-width: 321px) and (max-width: 480px) {
   .qui-pdf-viewer-outer-container {
-    width: 18.5em;
+    width: 90%;
   }
-  .qui-pdf-title {
+  .qui-pdf-header {
     width: 18.1em;
   }
   .qui-pdf-toggle-icon {
     position: fixed;
-    top: 2.5em;
-    left: 18.5em;
+    top: 2em;
+    left: 15em;
     z-index: 11;
+    font-size: 1.2em;
   }
   .qui-footer-slider-icon-container {
     background-color: cornflowerblue;
@@ -166,15 +178,16 @@
 }
 @media only screen and (min-width: 481px) and (max-width: 767px) {
   .qui-pdf-viewer-outer-container {
-    width: 19.5em;
+    width:93%;
   }
   .qui-pdf-toggle-icon {
     position: fixed;
-    top: 2.5em;
-    left: 19.2em;
+    top: 2em;
+    left: 15.5em;
     z-index: 11;
+    font-size: 1.2em;
   }
-  .qui-pdf-title {
+  .qui-pdf-header {
     width: 19.25em;
   }
   .qui-footer-slider-icon-container {
@@ -205,15 +218,16 @@
 }
 @media only screen and (min-width: 768px) {
   .qui-pdf-viewer-outer-container {
-    width: 19.5em;
+    width: 95%;
   }
   .qui-pdf-toggle-icon {
     position: fixed;
-    top: 2.5em;
-    left: 19.5em;
+    top: 2em;
+    left: 15.5em;
     z-index: 11;
+    font-size: 1.2em;
   }
-  .qui-pdf-title {
+  .qui-pdf-header {
     width: 19.25em;
   }
   .qui-footer-slider-icon-container {
