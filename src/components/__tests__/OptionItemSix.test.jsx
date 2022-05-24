@@ -21,10 +21,13 @@ describe("Option Item Six", () => {
     component = shallow(
       <OptionItemSix
         content={{
-          targetName: "name",
+          targetName: "target",
           value: "",
-          placeholder: "placeholder",
+          placeholder: "This is option A",
           captionName: "caption",
+          captionValue: "",
+          captionPlaceholder: "Caption For Option A",
+          image: {},
           maxLength: 300,
         }}
         withColor={{

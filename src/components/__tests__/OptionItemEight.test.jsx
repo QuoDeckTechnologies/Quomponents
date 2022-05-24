@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Component
 // -------------------------------------
@@ -22,6 +22,7 @@ describe("Option Item Eight", () => {
           value: "optionItem",
           placeholder: "placeholder",
           maxLength: 300,
+          buttonText: "Button Text",
         }}
         withColor={{
           backgroundColor: "",

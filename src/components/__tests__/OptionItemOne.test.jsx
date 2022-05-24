@@ -16,7 +16,12 @@ describe("Option Item One", () => {
     jest.resetAllMocks();
     component = shallow(
       <OptionItemOne
-        content={{ targetName: "name", value: "", placeholder: "placeholder" }}
+        content={{
+          targetName: "name",
+          value: "",
+          placeholder: "placeholder",
+          maxLength: 300,
+        }}
         onInput={() => {}}
         onClose={() => {}}
       />

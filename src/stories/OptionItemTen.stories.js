@@ -70,7 +70,8 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays OptionItemTen component.",
+    componentSubtitle:
+      "Displays OptionItemTen component contains an option field, a header field and a message field.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
