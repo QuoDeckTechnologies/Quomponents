@@ -1,12 +1,11 @@
 import React from "react";
-import SerialPlayerAnalyticsTableRow from "../../components/Templates/SerialPlayerAnalyticsTableRow/SerialPlayerAnalyticsTableRow.react";
+import SerialPlayerAnalyticsTableRow from "../components/SerialPlayerAnalyticsTableRow/SerialPlayerAnalyticsTableRow.react";
 
 export default {
-  title: "Design System/Templates/SerialPlayerAnalyticsTableRow/SerialPlayerAnalyticsTableRow",
+  title: "Design System/SerialPlayerAnalyticsTableRow/SerialPlayerAnalyticsTableRow",
   component: SerialPlayerAnalyticsTableRow,
   argTypes: {
     content: {},
-    slideId: 0,
     withColor: {
       table: {
         category: "with-Params",
@@ -45,7 +44,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a SerialPlayerAnalyticsTableRow with name, id , contact number , company name and points, in mobile view it only shows name, id , and points.",
+    componentSubtitle: "Displays a SerialPlayerAnalyticsTableRow with name, id , phone number , cohort name and wallet, in mobile view it only shows name, id , and wallet.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 650,
@@ -60,10 +59,10 @@ export const Default = Template.bind({});
 Default.args = {
   content: {
     name: "Kardin Herwitz",
-    id: "12",
-    contact: "0000000000",
-    company: "Unilever",
-    points: "53000"
+    phone: "0000000000",
+    daysPlayed: "12",
+    cohort: "Unilever",
+    wallet: "53000"
   },
   withColor: {
     textColor: "#000"
@@ -103,8 +102,8 @@ const Custom = (args) => {
           {...Object.assign({}, baseObj, {
             content: {
               name: "Kardin Herwitz",
-              id: "12",
-              points: "53000"
+              daysPlayed: "12",
+              wallet: "53000"
             },
             withAnimation: null
           })}
@@ -118,10 +117,10 @@ const Custom = (args) => {
           {...Object.assign({}, baseObj, {
             content: {
               name: "Kardin Herwitz",
-              id: "12",
-              contact: "0000000000",
-              company: "Unilever",
-              points: "53000"
+              daysPlayed: "12",
+              phone: "0000000000",
+              cohort: "Unilever",
+              wallet: "53000"
             },
             withAnimation: null
           })}

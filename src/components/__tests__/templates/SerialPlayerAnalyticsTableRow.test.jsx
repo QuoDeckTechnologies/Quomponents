@@ -5,7 +5,7 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import SerialPlayerAnalyticsTableRow from "../../Templates/SerialPlayerAnalyticsTableRow/SerialPlayerAnalyticsTableRow.react";
+import SerialPlayerAnalyticsTableRow from "../../SerialPlayerAnalyticsTableRow/SerialPlayerAnalyticsTableRow.react";
 import Button from "../../Buttons/Button/Button.react";
 
 describe("SerialPlayerAnalyticsTableRow", () => {
@@ -19,10 +19,10 @@ describe("SerialPlayerAnalyticsTableRow", () => {
             <SerialPlayerAnalyticsTableRow
                 content={{
                     name: "Kardin Herwitz",
-                    id: "12",
-                    contact: "0000000000",
-                    company: "Unilever",
-                    points: "53000"
+                    daysPlayed: "12",
+                    phone: "0000000000",
+                    cohort: "Unilever",
+                    wallet: "53000"
                 }}
                 withColor={null}
                 isHidden={false}

@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
-} from "../../../common/javascripts/helpers.js";
+} from "../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../../common/stylesheets/common.css";
+import "../../common/stylesheets/common.css";
 import "./SerialPlayerAnalyticsTableRow.scss";
-import "../../../common/stylesheets/overrule.scss";
+import "../../common/stylesheets/overrule.scss";
 SerialPlayerAnalyticsTableRow.propTypes = {
   //=======================================
   // Component Specific props
@@ -19,10 +19,10 @@ SerialPlayerAnalyticsTableRow.propTypes = {
     */
   content: PropTypes.shape({
     name: PropTypes.string,
-    contact: PropTypes.string,
-    id: PropTypes.string,
-    company: PropTypes.string,
-    points: PropTypes.string,
+    phone: PropTypes.string,
+    daysPlayed: PropTypes.string,
+    cohort: PropTypes.string,
+    wallet: PropTypes.string,
   }).isRequired,
   //=======================================
   // Quommon props
@@ -73,7 +73,7 @@ SerialPlayerAnalyticsTableRow.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Displays a SerialPlayerAnalyticsTableRow with name, id , contact number , company name and points.
+- Displays a SerialPlayerAnalyticsTableRow with name, id , phone number , cohort name and wallet.
 **/
 export default function SerialPlayerAnalyticsTableRow(props) {
   let { content, withColor } = props
@@ -96,10 +96,10 @@ export default function SerialPlayerAnalyticsTableRow(props) {
     >
       <div className="qui-spa-table-row-card">
         <div className="qui-spa-name" style={{ color: withColor?.textColor }}>{content?.name}</div>
-        <div className="qui-spa-contact" style={{ color: withColor?.textColor }}>{content?.contact}</div>
-        <div className="qui-spa-id" style={{ color: withColor?.textColor }}>{content?.id}</div>
-        <div className="qui-spa-company" style={{ color: withColor?.textColor }}>{content?.company}</div>
-        <div className="qui-spa-points" style={{ color: withColor?.textColor }}>{content?.points}</div>
+        <div className="qui-spa-phone" style={{ color: withColor?.textColor }}>{content?.phone}</div>
+        <div className="qui-spa-days-played" style={{ color: withColor?.textColor }}>{content?.daysPlayed}</div>
+        <div className="qui-spa-cohort" style={{ color: withColor?.textColor }}>{content?.cohort}</div>
+        <div className="qui-spa-wallet" style={{ color: withColor?.textColor }}>{content?.wallet}</div>
       </div>
     </motion.div>
   );
