@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Calendar from 'react-calendar';
@@ -13,7 +13,7 @@ import "../../common/stylesheets/common.css";
 import "./Calendar.scss";
 import "../../common/stylesheets/overrule.scss";
 
-Calendar.propTypes = {
+Calender.propTypes = {
     //=======================================
     // Quommon props
     //=======================================
@@ -74,7 +74,7 @@ Calendar.propTypes = {
     isHidden: PropTypes.bool,
 };
 
-Calendar.defaultProps = {
+Calender.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -98,9 +98,6 @@ function getColors(colors) {
         accentColors: {
             backgroundColor: colors.accentColor,
         },
-        lineColors: {
-            backgroundColor: colors.lineColor,
-        },
         backColors: {
             backgroundColor: colors.backgroundColor,
         },
@@ -114,19 +111,18 @@ function getColors(colors) {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function Calendar(props) {
-    const [currentStep, updateCurrentStep] = useState(1);
+export default function Calender(props) {
     //-------------------------------------------------------------------
-    // 2. Set the classes
+    // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "calendar");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
-    // 3. Set the component colors
+    // 2. Set the component colors
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor) : {};
     //-------------------------------------------------------------------
-    // 4. Get animation of the component
+    // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
