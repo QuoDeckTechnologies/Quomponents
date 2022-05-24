@@ -63,7 +63,8 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a OptionItemNine component.",
+    componentSubtitle:
+      "Displays a OptionItem component with two ShortField and an InputField component.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,

@@ -45,7 +45,7 @@ describe("Option Item Six", () => {
         onInput={() => {}}
         onCaption={() => {}}
         onUpload={() => {}}
-        onClose={() => {}}
+        onClick={() => {}}
       />
     );
   });
@@ -115,7 +115,7 @@ describe("Option Item Six", () => {
         onInput={() => {}}
         onCaption={() => {}}
         onUpload={() => {}}
-        onClose={() => {}}
+        onClick={() => {}}
       />
     );
     expect(component.exists()).toBe(true);

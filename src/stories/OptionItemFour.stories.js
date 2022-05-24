@@ -57,7 +57,8 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a OptionItemFour component.",
+    componentSubtitle:
+      "Displays an OptionItem component with CheckBox and an InputField component.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,

@@ -37,8 +37,8 @@ describe("Option Item Eight", () => {
         isDisabled={false}
         isHidden={false}
         onInput={() => {}}
-        onClose={() => {}}
         onClick={onClick}
+        onSubmit={() => {}}
       />
     );
   });
@@ -52,9 +52,6 @@ describe("Option Item Eight", () => {
       withColor: {
         backgroundColor: "#fff",
         accentColor: "#FF0000",
-        textColor: "#00FFFF",
-        hoverBackgroundColor: "#0000FF",
-        hoverTextColor: "	#00008B",
       },
     });
     expect(component.exists()).toBe(true);

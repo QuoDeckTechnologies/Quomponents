@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Component
 // -------------------------------------
@@ -16,7 +16,7 @@ describe("Option Item Two", () => {
   let onShortFieldOneInput = jest.fn();
   let onShortFieldTwoInput = jest.fn();
   let onInput = jest.fn();
-  let onClose = jest.fn();
+
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -45,7 +45,6 @@ describe("Option Item Two", () => {
         onShortFieldOneInput={onShortFieldOneInput}
         onShortFieldTwoInput={onShortFieldTwoInput}
         onInput={onInput}
-        onClose={onClose}
       />
     );
   });
@@ -59,7 +58,6 @@ describe("Option Item Two", () => {
       withColor: {
         backgroundColor: "#8c9ea3",
         accentColor: "#597387",
-        textColor: "#bac2c8",
       },
     });
     expect(component.exists()).toBe(true);
@@ -115,46 +113,6 @@ describe("Option Item Two", () => {
     component
       .find(".fa-times")
       .simulate("click", { target: { dataset: { id: "name" } } });
-  });
-
-  it("should render correctly when passed withColor props", () => {
-    let colors = {
-      backgroundColor: "#fff",
-      accentColor: "#FF0000",
-      textColor: "#00FFFF",
-    };
-    component.setProps({ withColor: colors });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    };
-    component.setProps({ withAnimation: animation });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when shortFieldOne targetName is not specified", () => {

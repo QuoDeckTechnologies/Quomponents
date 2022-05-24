@@ -71,7 +71,7 @@ export default {
   },
   parameters: {
     componentSubtitle:
-      "Displays OptionItemTen component contains an option field, a header field and a message field.",
+      "Displays OptionItem component with OptionalImageField for image upload and InputField for an option,a header and a message.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,

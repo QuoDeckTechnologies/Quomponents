@@ -58,7 +58,8 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a OptionItemFive component.",
+    componentSubtitle:
+      "Displays an OptionItem component with an OptionImageField and InputField component.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,

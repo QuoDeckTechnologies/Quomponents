@@ -55,7 +55,7 @@ describe("Option Item Ten", () => {
         onHeader={() => {}}
         onMessage={() => {}}
         onUpload={() => {}}
-        onClose={() => {}}
+        onClick={() => {}}
       />
     );
   });
@@ -140,7 +140,7 @@ describe("Option Item Ten", () => {
         onHeader={() => {}}
         onMessage={() => {}}
         onUpload={() => {}}
-        onClose={() => {}}
+        onClick={() => {}}
       />
     );
     expect(component.exists()).toBe(true);

@@ -23,7 +23,7 @@ describe("Option Item One", () => {
           maxLength: 300,
         }}
         onInput={() => {}}
-        onClose={() => {}}
+        onClick={() => {}}
       />
     );
   });
@@ -37,7 +37,6 @@ describe("Option Item One", () => {
       withColor: {
         backgroundColor: "#8c9ea3",
         accentColor: "#597387",
-        textColor: "#bac2c8",
       },
     });
     expect(component.exists()).toBe(true);

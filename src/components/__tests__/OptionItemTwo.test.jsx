@@ -25,7 +25,7 @@ describe("Option Item Two", () => {
         }}
         onInput={() => {}}
         onSelect={() => {}}
-        onClose={() => {}}
+        onClick={() => {}}
       />
     );
   });
@@ -39,7 +39,6 @@ describe("Option Item Two", () => {
       withColor: {
         backgroundColor: "#8c9ea3",
         accentColor: "#597387",
-        textColor: "#bac2c8",
       },
     });
     expect(component.exists()).toBe(true);
@@ -95,7 +94,7 @@ describe("Option Item Two", () => {
         }}
         onInput={() => {}}
         onSelect={() => {}}
-        onClose={() => {}}
+        onClick={() => {}}
       />
     );
     expect(component.exists()).toBe(true);

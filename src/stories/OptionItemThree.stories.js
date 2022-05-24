@@ -58,7 +58,8 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a OptionItemThree component.",
+    componentSubtitle:
+      "Displays a OptionItem component with a radio button and OptionalImageField component.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 250,
