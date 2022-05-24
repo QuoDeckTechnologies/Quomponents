@@ -80,9 +80,9 @@ OptionItemNine.propTypes = {
     */
   onShortFieldTwoInput: PropTypes.func.isRequired,
   /**
-      OptionItemNine component must have the onClose function passed as props
+      OptionItemNine component must have the onClick function passed as props
     */
-  onClose: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 OptionItemNine.defaultProps = {
@@ -189,7 +189,7 @@ export default function OptionItemNine(props) {
           <i
             className="qui-option-item-nine-with-remove-button-icon fas fa-times"
             data-id={content?.message?.targetName}
-            onClick={(e) => props.onClose(e.target.dataset.id)}
+            onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>

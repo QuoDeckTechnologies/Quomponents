@@ -75,9 +75,9 @@ OptionItemSix.propTypes = {
       */
   onUpload: PropTypes.func.isRequired,
   /**
-      OptionItemSix component must have the onClose function passed as props
+      OptionItemSix component must have the onClick function passed as props
       */
-  onClose: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 OptionItemSix.defaultProps = {
@@ -190,7 +190,7 @@ export default function OptionItemSix(props) {
           <i
             className="fas fa-times"
             data-id={content?.targetName}
-            onClick={(e) => props.onClose(e.target.dataset.id)}
+            onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>

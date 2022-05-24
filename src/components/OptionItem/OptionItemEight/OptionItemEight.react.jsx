@@ -63,13 +63,13 @@ OptionItemEight.propTypes = {
       */
   onInput: PropTypes.func.isRequired,
   /**
-      OptionItemEight component must have the onClose function passed as props
-      */
-  onClose: PropTypes.func.isRequired,
-  /**
       OptionItemEight component must have the onClick function passed as props
       */
   onClick: PropTypes.func.isRequired,
+  /**
+      OptionItemEight component must have the onClick function passed as props
+      */
+  onSubmit: PropTypes.func.isRequired,
 };
 
 OptionItemEight.defaultProps = {
@@ -141,7 +141,7 @@ export default function OptionItemEight(props) {
               borderColor: props.withColor.accentColor,
               color: props.withColor.accentColor,
             }}
-            onClick={props.onClick}
+            onClick={props.onSubmit}
           >
             {content.buttonText}
           </Button>
@@ -151,7 +151,7 @@ export default function OptionItemEight(props) {
           <i
             className="qui-option-item-eight-icon fas fa-times"
             data-id={content?.targetName}
-            onClick={(e) => props.onClose(e.target.dataset.id)}
+            onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>

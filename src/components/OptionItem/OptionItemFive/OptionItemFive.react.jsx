@@ -68,9 +68,9 @@ OptionItemFive.propTypes = {
     */
   onInput: PropTypes.func.isRequired,
   /**
-    OptionItemFive component must have the onClose function passed as props
+    OptionItemFive component must have the onClick function passed as props
     */
-  onClose: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 OptionItemFive.defaultProps = {
@@ -159,7 +159,7 @@ export default function OptionItemFive(props) {
           <i
             className="qui-option-item-five-icon fas fa-times"
             data-id={content?.targetName}
-            onClick={(e) => props.onClose(e.target.dataset.id)}
+            onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>

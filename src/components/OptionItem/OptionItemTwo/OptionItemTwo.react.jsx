@@ -68,9 +68,9 @@ OptionItemTwo.propTypes = {
     */
   onSelect: PropTypes.func.isRequired,
   /**
-    OptionItemTwo component must have the onClose function passed as props
+    OptionItemTwo component must have the onClick function passed as props
     */
-  onClose: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 OptionItemTwo.defaultProps = {
@@ -173,7 +173,7 @@ export default function OptionItemTwo(props) {
             data-id={
               content?.targetName ? content?.targetName : "default-target-name"
             }
-            onClick={(e) => props.onClose(e.target.dataset.id)}
+            onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>

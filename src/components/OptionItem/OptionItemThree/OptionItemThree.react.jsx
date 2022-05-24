@@ -66,9 +66,9 @@ OptionItemThree.propTypes = {
     */
   onSelect: PropTypes.func.isRequired,
   /**
-    OptionItemThree component must have the onClose function passed as props
+    OptionItemThree component must have the onClick function passed as props
     */
-  onClose: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 OptionItemThree.defaultProps = {
@@ -161,7 +161,7 @@ export default function OptionItemThree(props) {
           <i
             className="qui-option-item-three-icon fas fa-times"
             data-id={content?.targetName}
-            onClick={(e) => props.onClose(e.target.dataset.id)}
+            onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>

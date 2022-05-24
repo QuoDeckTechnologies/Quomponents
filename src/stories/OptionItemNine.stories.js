@@ -55,7 +55,7 @@ export default {
         defaultValue: null,
       },
     },
-    onClose: {
+    onClick: {
       table: {
         category: "Events",
         defaultValue: null,
@@ -313,7 +313,7 @@ const MultipleTemplate = (args) => {
                 handleShortFieldTwo(targetName, value)
               }
               onInput={(targetName, value) => handleInput(targetName, value)}
-              onClose={handleRemove}
+              onClick={handleRemove}
             />
           </div>
         );

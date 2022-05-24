@@ -91,7 +91,7 @@ OptionItemTen.propTypes = {
   /**
       OptionItemTen component must have the onClick function passed as props
       */
-  onClose: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 OptionItemTen.defaultProps = {
@@ -204,7 +204,7 @@ export default function OptionItemTen(props) {
           <i
             className="fas fa-times"
             data-id={content?.option?.targetName}
-            onClick={(e) => props.onClose(e.target.dataset.id)}
+            onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>

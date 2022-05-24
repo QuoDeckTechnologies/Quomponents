@@ -74,9 +74,9 @@ OptionItemSeven.propTypes = {
       */
   onUpload: PropTypes.func.isRequired,
   /**
-      OptionItemSeven component must have the onClose function passed as props
+      OptionItemSeven component must have the onClick function passed as props
       */
-  onClose: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 OptionItemSeven.defaultProps = {
@@ -191,7 +191,7 @@ export default function OptionItemSeven(props) {
             data-id={
               content?.targetName ? content?.targetName : "default-target-name"
             }
-            onClick={(e) => props.onClose(e.target.dataset.id)}
+            onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>

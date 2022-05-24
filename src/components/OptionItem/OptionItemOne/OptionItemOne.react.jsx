@@ -62,9 +62,9 @@ OptionItemOne.propTypes = {
     */
   onInput: PropTypes.func.isRequired,
   /**
-    OptionItemOne component must have the onClose function passed as props
+    OptionItemOne component must have the onClick function passed as props
     */
-  onClose: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 OptionItemOne.defaultProps = {
@@ -127,7 +127,7 @@ export default function OptionItemOne(props) {
           <i
             className="qui-inline-edit-with-remove-button-icon fas fa-times"
             data-id={content?.targetName}
-            onClick={(e) => props.onClose(e.target.dataset.id)}
+            onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>

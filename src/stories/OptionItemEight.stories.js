@@ -43,13 +43,13 @@ export default {
         defaultValue: null,
       },
     },
-    onClose: {
+    onClick: {
       table: {
         category: "Events",
         defaultValue: null,
       },
     },
-    onClick: {
+    onSubmit: {
       table: {
         category: "Events",
         defaultValue: null,
@@ -222,7 +222,7 @@ const MultipleTemplate = (args) => {
               {...args}
               content={{ ...content }}
               onInput={(targetName, value) => handleInput(targetName, value)}
-              onClose={handleRemove}
+              onClick={handleRemove}
             />
           </div>
         );

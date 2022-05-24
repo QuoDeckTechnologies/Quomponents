@@ -49,7 +49,7 @@ export default {
         defaultValue: null,
       },
     },
-    onClose: {
+    onClick: {
       table: {
         category: "Events",
         defaultValue: null,
@@ -244,7 +244,7 @@ const MultipleTemplate = (args) => {
                 handleSelect(targetName, checked)
               }
               onInput={(targetName, value) => handleInput(targetName, value)}
-              onClose={handleRemove}
+              onClick={handleRemove}
             />
           </div>
         );

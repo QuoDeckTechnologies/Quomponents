@@ -56,7 +56,7 @@ export default {
         defaultValue: null,
       },
     },
-    onClose: {
+    onClick: {
       table: {
         category: "Events",
         defaultValue: null,
@@ -291,7 +291,7 @@ const MultipleTemplate = (args) => {
               onCaption={(captionName, captionValue) =>
                 handleCaption(captionName, captionValue)
               }
-              onClose={handleRemove}
+              onClick={handleRemove}
             />
           </div>
         );

@@ -50,7 +50,7 @@ export default {
         defaultValue: null,
       },
     },
-    onClose: {
+    onClick: {
       table: {
         category: "Events",
         defaultValue: null,
@@ -244,7 +244,7 @@ const MultipleTemplate = (args) => {
               onUpload={(targetName, image, checked) =>
                 handleUpload(targetName, image, checked)
               }
-              onClose={handleRemove}
+              onClick={handleRemove}
             />
           </div>
         );
