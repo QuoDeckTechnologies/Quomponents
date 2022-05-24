@@ -1,21 +1,16 @@
 import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
-// import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import {
-    PieChart,
-    Pie,
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
     Tooltip,
-    BarChart,
-    XAxis,
-    YAxis,
     Legend,
-    LineChart, Line,
-    AreaChart, Area,
-    CartesianGrid,
-    ResponsiveContainer,
-    Cell,
-    Bar,
-} from "recharts";
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+import faker from 'faker';
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -25,7 +20,7 @@ import "../../common/stylesheets/common.css";
 import "./QuoBarChart.scss";
 import "../../common/stylesheets/overrule.scss";
 
-BarChart.propTypes = {
+QuoBarChart.propTypes = {
     //=======================================
     // component specific props
     //=======================================
@@ -94,7 +89,7 @@ BarChart.propTypes = {
     isFluid: PropTypes.bool,
 };
 
-BarChart.defaultProps = {
+QuoBarChart.defaultProps = {
     data: [],
     //=======================================
     // Quommon props
@@ -125,12 +120,47 @@ export default function QuoBarChart(props) {
     const handleClick = useCallback((index) => {
         setActiveIndex(index);
     }, [activeIndex]);
-    const data1 = [
-        { name: "Facebook", users: 2000000000 },
-        { name: "Instagram", users: 1500000000 },
-        { name: "Twiter", users: 1000000000 },
-        { name: "Telegram", users: 500000000 },
-    ];
+
+    ChartJS.register(
+        CategoryScale,
+        LinearScale,
+        BarElement,
+        Title,
+        Tooltip,
+        Legend
+    );
+
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Chart.js Bar Chart',
+            },
+        },
+    };
+
+    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    const barData = {
+        labels,
+        datasets: [
+            {
+                label: 'Dataset 1',
+                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            },
+            {
+                label: 'Dataset 2',
+                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+                backgroundColor: 'rgba(53, 162, 235, 0.5)',
+            },
+        ],
+    };
+
+
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -140,135 +170,8 @@ export default function QuoBarChart(props) {
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
     return (
-        // <div>
-        //     <p>Click each rectangle </p>
-        //     <BarChart width={600} height={300} data={data}>
-        //         <Bar dataKey={"data.uv"} >
-        //             {data.map((entry, index) => (
-        //                 <Cell
-        //                     onClick={(index) => handleClick(index)}
-        //                     cursor="pointer"
-        //                     fill={index === activeIndex ? "#82ca9d" : "#8884d8"}
-        //                     key={`cell-${index}`}
-        //                 />
-        //             ))}
-        //         </Bar>
-        //     </BarChart>
-        //     <p className="content">{`Uv of "${activeItem.name}": ${activeItem.uv}`}</p>
-        // </div>
-        <div style={{ textAlign: "center" }}>
-            <h1>Recharts</h1>
-            <div className="App">
-                <br />
-                <h3>PieChart</h3>
-                <PieChart width={400} height={400}>
-                    <Pie
-                        dataKey="uv"
-                        isAnimationActive={false}
-                        data={data}
-                        cx={200}
-                        cy={200}
-                        outerRadius={80}
-                        fill="#8884d8"
-                        label
-                    />
-                    <Tooltip />
-                </PieChart>
-                <br />
-                <h3>AreaChart</h3>
-                <AreaChart
-                    width={500}
-                    height={400}
-                    data={data}
-                    margin={{
-                        top: 10,
-                        right: 30,
-                        left: 0,
-                        bottom: 0,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Area type="monotone" dataKey="uv" stackId="1" stroke="#8884d8" fill="#8884d8" />
-                    <Area type="monotone" dataKey="pv" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-                    <Area type="monotone" dataKey="amt" stackId="1" stroke="#ffc658" fill="#ffc658" />
-                </AreaChart>
-                <br />
-                <h3>LineChart</h3>
-                <LineChart
-                    width={500}
-                    height={300}
-                    data={data}
-                    margin={{
-                        top: 5,
-                        right: 30,
-                        left: 20,
-                        bottom: 5,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeDasharray="5 5" />
-                    <Line type="monotone" dataKey="uv" stroke="#82ca9d" strokeDasharray="3 4 5 2" />
-                </LineChart>
-                <br />
-                <h3>BarChart</h3>
-                <BarChart width={150} height={40} data={data}>
-                    <Bar dataKey="uv" fill="#8884d8" />
-                </BarChart>
-                <BarChart
-                    width={500}
-                    height={300}
-                    data={data}
-                    margin={{
-                        top: 5,
-                        right: 30,
-                        left: 20,
-                        bottom: 5,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="uv" fill="#8884d8" background={{ fill: "#eee" }} >
-                        {data.map((entry, index) => (
-                            <Cell
-                                cursor="pointer"
-                            // fill={index === activeIndex ? "yellow" : "gray"}
-                            // key={`cell-${index}`}
-                            />
-                        ))}
-                    </Bar>
-                    <Bar dataKey="pv" fill="#8884d8" background={{ fill: "#eee" }} />
-                    <Bar dataKey="amt" fill="#8884d8" background={{ fill: "#eee" }} />
-                </BarChart>
-                <br />
-                <h3>AreaChart</h3>
-                <AreaChart
-                    width={500}
-                    height={400}
-                    data={data}
-                    margin={{
-                        top: 10,
-                        right: 30,
-                        left: 0,
-                        bottom: 0,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
-                </AreaChart>
-            </div>
+        <div>
+            <Bar options={options} data={barData} />;
         </div>
     );
 }
