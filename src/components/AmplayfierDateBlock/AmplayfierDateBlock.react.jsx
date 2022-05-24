@@ -11,6 +11,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./AmplayfierDateBlock.scss";
 import "../../common/stylesheets/overrule.scss";
+import AmplayfierDrawerRect from "../AmplayfierDrawerRect/AmplayfierDrawerRect.react";
 
 AmplayfierDateBlock.propTypes = {
   //=======================================
@@ -20,9 +21,17 @@ AmplayfierDateBlock.propTypes = {
     AmplayfierDateBlock date has to be in content and passed as date string if not passed current date will be displayed
     */
   content: PropTypes.string,
+  /**
+    Use for rounded bottom corners
+    */
+  isCircular: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
+  /**
+    Use to define component padding in increasing order
+    */
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
   /**
     Use to define component text size in increasing order
     */
@@ -89,9 +98,11 @@ AmplayfierDateBlock.defaultProps = {
   // Component Specific props
   //=======================================
   content: null,
+  isCircular: false,
   //=======================================
   // Quommon props
   //=======================================
+  asPadded:'normal',
   asSize: "normal",
   asFloated: "none",
   withColor: null,
@@ -185,16 +196,17 @@ export default function AmplayfierDateBlock(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
-      style={{ backgroundColor: withColor?.backgroundColor }}
     >
-      <div
-        className={`${quommonClasses.childClasses} qui-amplayfier-date-block-container`}
-        style={{
-          color: withColor?.textColor,
-        }}
-      >
-        <h2>{getDate()}</h2>
-      </div>
+      <AmplayfierDrawerRect {...props}>
+        <div
+          className={`${quommonClasses.childClasses} qui-amplayfier-date-block-container`}
+          style={{
+            color: withColor?.textColor,
+          }}
+        >
+          <h2>{getDate()}</h2>
+        </div>
+      </AmplayfierDrawerRect>
     </motion.div>
   );
 }

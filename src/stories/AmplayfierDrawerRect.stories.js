@@ -50,12 +50,6 @@ export default {
         defaultValue: false,
       },
     },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
   },
   decorators: [
     (story) => (
@@ -99,7 +93,6 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
-  isDisabled: false,
   isHidden: false,
 };
 Default.parameters = {

@@ -27,6 +27,19 @@ export default {
   component: AmplayfierDateBlock,
   argTypes: {
     content: "",
+    isCircular: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
+    asPadded: {
+      control: "select",
+      options: ["fitted", "compact", "normal", "relaxed"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     asSize: {
       control: "select",
       options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -114,6 +127,8 @@ const Template = (args) => <AmplayfierDateBlock {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: "",
+  isCircular: false,
+  asPadded: "normal",
   asSize: "normal",
   asFloated: "left",
   withColor: {

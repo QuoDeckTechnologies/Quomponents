@@ -13,7 +13,7 @@ AmplayfierDrawerRect.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    AmplayfierDrawerRect will wrap children component.
+    Wrap AmplayfierDrawerRect across child component to use.
     */
   children: PropTypes.element,
   /**
@@ -58,10 +58,6 @@ AmplayfierDrawerRect.propTypes = {
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
-  /**
-    Use to enable/disable the component
-    */
-  isDisabled: PropTypes.bool,
 };
 
 AmplayfierDrawerRect.defaultProps = {
@@ -77,7 +73,6 @@ AmplayfierDrawerRect.defaultProps = {
   withColor: null,
   withAnimation: null,
   isHidden: false,
-  isDisabled: false,
 };
 /**
 ## Notes
