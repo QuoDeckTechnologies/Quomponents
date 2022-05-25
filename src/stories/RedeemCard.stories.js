@@ -167,7 +167,7 @@ export const AllVariantsTemplate = (args) => {
                 left: 1,
                 total: 1000
             },
-            status: "Redeem"
+            status: "Pending"
         },
         withColor: {
             textColor: "",
