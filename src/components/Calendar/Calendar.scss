@@ -1,16 +1,15 @@
 .qui .qui-calendar-container {
-    padding: 0.5em;
-    border-radius: 1em;
     .react-calendar {
         background-color: #121212;
         color: #fff;
         border-radius: 1em;
+        padding: 1em;
         .react-calendar__navigation__next2-button,
         .react-calendar__navigation__prev2-button {
             display: none;
         }
         button {
-            padding: 0.5em;
+            padding: 0.8em;
             font-size: 1em;
             color: #fff;
             display: flex;
@@ -20,7 +19,7 @@
         .react-calendar__tile--now {
             background-color: #f6bf33;
             border-radius: 50%;
-            padding: 1em;
+            padding: 0.8em;
         }
     }
     .react-calendar__month-view__weekdays abbr {

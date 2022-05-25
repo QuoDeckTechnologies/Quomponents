@@ -18,35 +18,9 @@ Calender.propTypes = {
     // Quommon props
     //=======================================
     /**
-      Use to define standard component type
-      */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
-    /**
-      Use to define component size in increasing order
-      */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
-      Use to override component colors and behavior
-      */
-    withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
-        lineColor: PropTypes.string,
-        textColor: PropTypes.string,
-    }),
+   Use to float the component in parent container
+   */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
       Use to define the entry animation of the component
       */
@@ -76,34 +50,14 @@ Calender.propTypes = {
 
 Calender.defaultProps = {
     //=======================================
-    // Component Specific props
-    //=======================================
-    content: {},
-    //=======================================
     // Quommon props
     //=======================================
-    asVariant: "primary",
-    asSize: "normal",
-    withColor: null,
+    asFloated: "left",
     withAnimation: null,
     isDisabled: false,
     isHidden: false,
 };
 
-function getColors(colors) {
-    let colorStyle = {
-        textColors: {
-            color: colors.textColor,
-        },
-        accentColors: {
-            backgroundColor: colors.accentColor,
-        },
-        backColors: {
-            backgroundColor: colors.backgroundColor,
-        },
-    };
-    return colorStyle;
-}
 /**
 ## Notes
 - The design system used for this component is Fontawesome Icon
@@ -118,11 +72,7 @@ export default function Calender(props) {
     let quommonClasses = getQuommons(props, "calendar");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
-    // 2. Set the component colors
-    //-------------------------------------------------------------------
-    let colors = props.withColor ? getColors(props.withColor) : {};
-    //-------------------------------------------------------------------
-    // 3. Get animation of the component
+    // 2. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 

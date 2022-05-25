@@ -5,29 +5,11 @@ export default {
     title: "Design System/Calendar/Calendar",
     component: Calendar,
     argTypes: {
-        asVariant: {
+        asFloated: {
             control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
+            options: ["left", "right", "none", "inline"],
             table: {
                 category: "as-Flags",
-            },
-        },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        withColor: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    backgroundColor: "",
-                    accentColor: "",
-                    lineColor: "",
-                    textColor: "",
-                },
             },
         },
         withAnimation: {
@@ -40,7 +22,6 @@ export default {
                 },
             },
         },
-
         isDisabled: {
             table: {
                 category: "is-Toggles",
@@ -67,7 +48,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a Calendar with Buttons & Steps for general-purpose use",
+        componentSubtitle: "Displays a Calendar for general-purpose use",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -84,13 +65,7 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    asVariant: "primary",
-    withColor: {
-        backgroundColor: "",
-        accentColor: "#808080",
-        lineColor: "#E82E19",
-        textColor: "",
-    },
+    asFloated: "left",
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -103,34 +78,6 @@ Default.parameters = {
     docs: {
         source: {
             code: `<Calendar {...${JSON.stringify(Default.args, null, 2)}}/>`,
-        },
-    },
-};
-
-//-------------------------------------------------------------
-// Colored Calendar
-// -------------------------------------------------------------
-export const ColoredCalendar = Template.bind({});
-ColoredCalendar.args = {
-    ...Default.args,
-    withColor: {
-        backgroundColor: "#C98787",
-        accentColor: "#D3D3D3",
-        lineColor: "#E82E19",
-        textColor: "#ffffff",
-    },
-};
-ColoredCalendar.parameters = {
-    docs: {
-        description: {
-            story: "We can animate the appearance of Calendar",
-        },
-        source: {
-            code: `<Calendar {...${JSON.stringify(
-                ColoredCalendar.args,
-                null,
-                2
-            )}}/>`,
         },
     },
 };
