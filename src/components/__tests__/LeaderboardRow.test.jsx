@@ -21,7 +21,7 @@ describe("LeaderboardRow", () => {
         jest.resetAllMocks();
         component = shallow(
             <LeaderboardRow
-                position={0}
+                rank={0}
                 record={{
                     name: 'Rohit Dhende',
                     points: 1000
@@ -74,7 +74,7 @@ describe("LeaderboardRow", () => {
     it("should render the component without points and align the name text to the right", () => {
         expect(component.find('.qui-leaderboard-row-name').props().style.textAlign).toBe('left');
         component.setProps({
-            position: 4,
+            rank: 4,
             record: {
                 name: 'Rohit Dhende'
             }
@@ -84,9 +84,9 @@ describe("LeaderboardRow", () => {
         expect(component.find('.qui-leaderboard-row-points').exists()).toBe(false);
     });
 
-    it("should render the component with correct styles when passed positions between 0 to 2", () => {
+    it("should render the component with correct styles when passed ranks between 0 to 2", () => {
         component.setProps({
-            position: 0,
+            rank: 0,
             record: {
                 name: 'Rohit Dhende',
                 points: 1000
@@ -102,9 +102,9 @@ describe("LeaderboardRow", () => {
         expect(component.find('.qui-leaderboard-row-points').text()).toBe("1000");
     });
 
-    it("should render the component with correct styles when passed positions greater than 2", () => {
+    it("should render the component with correct styles when passed ranks greater than 2", () => {
         component.setProps({
-            position: 3,
+            rank: 3,
             record: {
                 name: 'Rohit Dhende'
             },
@@ -118,7 +118,7 @@ describe("LeaderboardRow", () => {
 
     it("should render the component with first place gold medalist player", () => {
         component.setProps({
-            position: 0,
+            rank: 0,
             record: {
                 name: 'Rohit Dhende'
             }
@@ -128,7 +128,7 @@ describe("LeaderboardRow", () => {
 
     it("should render the component with second place silver medalist player", () => {
         component.setProps({
-            position: 1,
+            rank: 1,
             record: {
                 name: 'Rohit Dhende'
             }
@@ -138,7 +138,7 @@ describe("LeaderboardRow", () => {
 
     it("should render the component with third place bronze medalist player", () => {
         component.setProps({
-            position: 2,
+            rank: 2,
             record: {
                 name: 'Rohit Dhende'
             }
@@ -148,7 +148,7 @@ describe("LeaderboardRow", () => {
 
     it("should render the component with the player who is not in the first 3 place", () => {
         component.setProps({
-            position: 3,
+            rank: 3,
             record: {
                 name: 'Rohit Dhende'
             }

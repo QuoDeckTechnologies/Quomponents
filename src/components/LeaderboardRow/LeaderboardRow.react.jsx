@@ -22,9 +22,9 @@ LeaderboardRow.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Use to set define the position(rank) of user
+    Use to define the rank of user
     */
-    position: PropTypes.number,
+    rank: PropTypes.number,
     /**
     Contains the users records such as name and points
     */
@@ -68,7 +68,7 @@ LeaderboardRow.propTypes = {
 LeaderboardRow.defaultProps = {
     // Component Specific props
     //=======================================
-    position: "",
+    rank: "",
     record: {},
 
     // Quommon props
@@ -84,7 +84,7 @@ LeaderboardRow.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Pass position and record props to display the LeaderboardRow component.
+- Pass rank and record props to display the LeaderboardRow component.
 - Pass withColor props to change the styling of component.
 **/
 export default function LeaderboardRow(props) {
@@ -103,14 +103,14 @@ export default function LeaderboardRow(props) {
     // 3. Conditional styling
     //-------------------------------------------------------------------
     let recordStyle = {
-        backgroundColor: (props.position === 0 || props.position === 1 || props.position === 2) && props.withColor?.backgroundColor ? props.withColor?.backgroundColor : '#454545',
-        color: (props.position === 0 || props.position === 1 || props.position === 2) ? props.withColor?.textColor ? props.withColor?.textColor : '#FFBF00' : props.withColor?.backgroundColor ? props.withColor?.backgroundColor : '#FFBF00'
+        backgroundColor: (props.rank === 0 || props.rank === 1 || props.rank === 2) && props.withColor?.backgroundColor ? props.withColor?.backgroundColor : '#454545',
+        color: (props.rank === 0 || props.rank === 1 || props.rank === 2) ? props.withColor?.textColor ? props.withColor?.textColor : '#FFBF00' : props.withColor?.backgroundColor ? props.withColor?.backgroundColor : '#FFBF00'
     }
 
     //-------------------------------------------------------------------
-    // 4. Set medals according to the positions
+    // 4. Set medals according to the ranks
     //-------------------------------------------------------------------
-    let positionImage = props.position === 0 ? goldMedal : props.position === 1 ? silverMedal : props.position === 2 ? bronzeMedal : unRank;
+    let rankImage = props.rank === 0 ? goldMedal : props.rank === 1 ? silverMedal : props.rank === 2 ? bronzeMedal : unRank;
 
     return (
         <motion.div
@@ -119,8 +119,8 @@ export default function LeaderboardRow(props) {
             className={`qui ${quommonClasses.parentClasses} qui-leaderboard-row-parent-class`}>
             {props.record && <div className={`${quommonClasses.childClasses}`} >
                 <div className={`qui-leaderboard-row-container`} style={recordStyle}>
-                    <div className={`qui-leaderboard-row-position-container`}>
-                        <img alt={'medal'} src={positionImage} className={`qui-leaderboard-row-medal`} />
+                    <div className={`qui-leaderboard-row-rank-container`}>
+                        <img alt={'medal'} src={rankImage} className={`qui-leaderboard-row-medal`} />
                     </div>
                     <div className={`qui-leaderboard-row-name`} style={{ color: recordStyle?.color, textAlign: props.record?.points ? 'left' : 'right', marginRight: props.record?.points ? '0.5em' : '1.5em' }}>{props.record?.name}</div>
                     {props.record?.points && <div className={`qui-leaderboard-row-points`} style={{ color: recordStyle?.color }}>{props.record?.points}</div>}
