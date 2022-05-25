@@ -7,11 +7,11 @@ export default {
     argTypes: {
         content: {
             name: "",
+            description: "",
             image: "",
             cost: "",
             stock: {},
-            label: "",
-            redemptionStatus: false
+            status: false
         },
         withColor: {
             table: {
@@ -67,7 +67,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a RedeemCard with offer details and display redemptionStatus as 'redeem','inprogress','completed'",
+        componentSubtitle: "Displays a RedeemCard with offer details and display status as 'Pending','InProgress','Completed'",
         a11y: { disable: true },
         docs: { iframeHeight: 570 }
     },
@@ -87,8 +87,8 @@ Default.args = {
             left: 500,
             total: 1000
         },
-        label: "A beast on the road, this motorbike commands respect.",
-        redemptionStatus: "redeem"
+        description: "A beast on the road, this motorbike commands respect.",
+        status: "Pending"
     },
     withColor: {
         textColor: "",
@@ -123,8 +123,8 @@ ColoredRedeemCard.args = {
             left: 1,
             total: 1000
         },
-        label: "A beast on the road, this motorbike commands respect.",
-        redemptionStatus: "redeem"
+        description: "A beast on the road, this motorbike commands respect.",
+        status: "Pending"
     },
     withColor: {
         textColor: "#000",
@@ -160,14 +160,14 @@ export const AllVariantsTemplate = (args) => {
     const baseObj1 = {
         content: {
             name: "Yamaha FZ16 Bike",
+            description: "A beast on the road, this motorbike commands respect.",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
             cost: 600,
             stock: {
                 left: 1,
                 total: 1000
             },
-            label: "A beast on the road, this motorbike commands respect.",
-            redemptionStatus: "redeem"
+            status: "Redeem"
         },
         withColor: {
             textColor: "",
@@ -190,14 +190,14 @@ export const AllVariantsTemplate = (args) => {
     const baseObj2 = {
         content: {
             name: "Yamaha FZ16 Bike",
+            description: "A beast on the road, this motorbike commands respect.",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
             cost: 600,
             stock: {
                 left: 1,
                 total: 1000
             },
-            label: "A beast on the road, this motorbike commands respect.",
-            redemptionStatus: "inprogress"
+            status: "InProgress"
         },
         withColor: {
             textColor: "",
@@ -226,8 +226,8 @@ export const AllVariantsTemplate = (args) => {
                 left: 1,
                 total: 1000
             },
-            label: "A beast on the road, this motorbike commands respect.",
-            redemptionStatus: "completed"
+            description: "A beast on the road, this motorbike commands respect.",
+            status: "Completed"
         },
         withColor: {
             textColor: "",

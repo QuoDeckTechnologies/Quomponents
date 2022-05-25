@@ -22,14 +22,14 @@ describe("RedeemCard", () => {
             <RedeemCard
                 content={{
                     name: "Yamaha FZ16 Bike",
+                    description: "A beast on the road, this motorbike commands respect.",
                     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
                     cost: 600,
                     stock: {
                         left: 1,
                         total: 1000
                     },
-                    label: "A beast on the road, this motorbike commands respect.",
-                    redemptionStatus: "redeem"
+                    status: "Pending"
                 }}
                 withColor={{
                     textColor: "",
@@ -117,8 +117,8 @@ describe("RedeemCard", () => {
                         left: 1000000,
                         total: 1000000
                     },
-                    label: "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
-                    redemptionStatus: "redeem"
+                    description: "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
+                    status: "Pending"
                 }}
                 onClick={jest.fn()}
             />
@@ -128,11 +128,11 @@ describe("RedeemCard", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render RedeemCard with Redeem status", () => {
+    it("should render RedeemCard with Pending status", () => {
         let component = mount(
             <RedeemCard
                 content={{
-                    redemptionStatus: "redeem"
+                    status: "Pending"
                 }}
                 onClick={jest.fn()}
             />
@@ -141,11 +141,11 @@ describe("RedeemCard", () => {
         expect(component.find(Button).text()).toBe("Redeem");
     });
 
-    it("should render RedeemCard with Process status", () => {
+    it("should render RedeemCard with InProgress status", () => {
         let component = mount(
             <RedeemCard
                 content={{
-                    redemptionStatus: "inprogress"
+                    status: "InProgress"
                 }}
                 onClick={jest.fn()}
             />
@@ -153,11 +153,11 @@ describe("RedeemCard", () => {
         expect(component.find(".qui-redeem-card-redeem-inprogress").text()).toBe("YOUR REDEMPTION REQUEST IS IN PROCESS");
     });
 
-    it("should render RedeemCard with Success status", () => {
+    it("should render RedeemCard with Completed status", () => {
         let component = mount(
             <RedeemCard
                 content={{
-                    redemptionStatus: "completed"
+                    status: "Completed"
                 }}
                 onClick={jest.fn()}
             />
@@ -177,7 +177,7 @@ describe("RedeemCard", () => {
         expect(component.find(".qui-redeem-card-image").props().style.backgroundImage).toBe(`url(${defaultImage})`);
     });
 
-    it("should render RedeemCard with Image passed image in the image props", () => {
+    it("should render RedeemCard with Image when passed image in the image props", () => {
         let component = mount(
             <RedeemCard
                 content={{
