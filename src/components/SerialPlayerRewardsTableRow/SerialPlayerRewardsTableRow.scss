@@ -7,27 +7,40 @@
   .qui-spr-name {
     font-weight: bold;
   }
-  .qui .qui-label {
-    display: none;
-  }
   button {
     font-size: 0.8em;
   }
 }
 @media only screen and (min-width: 320px) {
   .qui .qui-spr-table-row-card {
-    .qui-spr-company {
+    .qui-spr-name {
+      font-weight: bold;
+      width: 30%;
+      word-wrap: break-word;
+    }
+    .qui .qui-reward {
+      width: 30%;
+      word-wrap: break-word;
+    }
+    .qui-spr-cohort {
       display: none;
     }
-    .qui-spr-contact {
+    .qui-spr-phone {
       display: none;
     }
     button {
       font-size: 0.8em;
       display: none;
     }
-    .qui-spr-input-radio {
-      display: block;
+    .qui-spr-button-m {
+      .qui-icon-button-container {
+        font-size: 0.7em;
+        box-shadow: 1px 2px 4px 0px #888888;
+        display: block;
+      }
+      .qui .qui-btn.is-circular.is-only-icon {
+        padding: 0.5em;
+      }
     }
     input {
       margin: 0;
@@ -36,21 +49,46 @@
 }
 @media only screen and (min-width: 481px) {
   .qui .qui-spr-table-row-card {
-    .qui-spr-company {
+    .qui-spr-name {
+      width: 17%;
+      word-wrap: break-word;
+    }
+    .qui .qui-reward {
+      width: 17%;
+      word-wrap: break-word;
+    }
+    .qui-spr-cohort {
+      width: 17%;
+      word-wrap: break-word;
       display: block;
     }
-    .qui-spr-contact {
+    .qui-spr-phone {
+      width: 17%;
+      word-wrap: break-word;
       display: block;
     }
     button {
-      margin: 0.5em 0.3em 0.5em 0.2em;
+      margin: 0.5em 0.3em 0.5em 2.2em;
+      font-size: 0.8em;
+      display: block;
+      padding: 0.2em 1.3em 0.2em 1.3em;
+      box-shadow: 1px 2px 4px 0px #888888;
+    }
+    .qui-spr-button-m {
+      .qui-icon-button-container {
+        display: none;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 769px) {
+  .qui .qui-spr-table-row-card {
+    button {
+      margin: 0.5em 0.3em 0.5em 5.2em;
       font-size: 0.8em;
       display: block;
       padding: 0.2em 2em 0.2em 2em;
       box-shadow: 1px 2px 4px 0px #888888;
-    }
-    .qui-spr-input-radio {
-      display: none;
     }
   }
 }

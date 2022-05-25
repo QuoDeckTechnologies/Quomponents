@@ -6,8 +6,9 @@ import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import SerialPlayerRewardsTableRow from "../../Templates/SerialPlayerRewardsTableRow/SerialPlayerRewardsTableRow.react";
-import Button from "../../Buttons/Button/Button.react";
+import SerialPlayerRewardsTableRow from "../SerialPlayerRewardsTableRow/SerialPlayerRewardsTableRow.react";
+import Button from "../Buttons/Button/Button.react";
+import IconBlock from "../IconBlock/IconBlock.react";
 
 describe("SerialPlayerRewardsTableRow", () => {
     // -------------------------------------
@@ -20,11 +21,12 @@ describe("SerialPlayerRewardsTableRow", () => {
             <SerialPlayerRewardsTableRow
                 content={{
                     name: "Kardin Herwitz",
-                    label: "12",
-                    contact: "0000000000",
-                    company: "Unilever",
+                    reward: "12",
+                    phone: "0000000000",
+                    cohort: "Unilever",
                 }}
                 withColor={null}
+                withIcon={null}
                 isHidden={false}
                 isDisabled={false}
                 onClick={(e) => {
@@ -43,8 +45,11 @@ describe("SerialPlayerRewardsTableRow", () => {
         expect(component.exists()).toBe(true);
     });
     it('Test click event Button', () => {
-        const button = shallow((<SerialPlayerRewardsTableRow onClick={() => console.log("testing")} />));
+        const button = shallow((<SerialPlayerRewardsTableRow onClick={() => console.log("testing click on Button")} />));
         button.find('Button').simulate('click');
+    });
+    it('Test click event IconBlock', () => {
+        component.find(IconBlock).simulate('click')
     });
     it("should render correctly when passed withColor props", () => {
         let colors = {
@@ -57,12 +62,42 @@ describe("SerialPlayerRewardsTableRow", () => {
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
     })
+    it("should render correctly with backgroundColor when status is set to dispatch", () => {
+        component.setProps({
+            content: {
+                status: "dispatch"
+            },
+            withColor: {
+                textColor: "#fff",
+                buttonTextColor: "ff0023",
+                buttonBackgroundColor: "ff0ff0",
+                buttonHoverBackgroundColor: "ffff00",
+                buttonHoverTextColor: "ff00ff",
+            }
+        })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly with backgroundColor when status is set to dispatched", () => {
+        component.setProps({
+            content: {
+                status: "dispatched"
+            },
+            withColor: {
+                textColor: "#fff",
+                buttonTextColor: "ff0023",
+                buttonBackgroundColor: "ff0ff0",
+                buttonHoverBackgroundColor: "ffff00",
+                buttonHoverTextColor: "ff00ff",
+            }
+        })
+        expect(component.exists()).toBe(true);
+    })
     it("should render correctly with withColor prop when hovered on Button", () => {
         const component = renderer.create(
             <Button
                 withColor={{
                     buttonTextColor: "ff0023",
-                    buttonBackgroundColor: "ff0ff0",
+                    dispatchedButtonBackgroundColor: "ff0ff0",
                     buttonHoverBackgroundColor: "ffff00",
                     buttonHoverTextColor: "ff00ff",
                 }}
@@ -81,6 +116,24 @@ describe("SerialPlayerRewardsTableRow", () => {
             delay: 0,
         }
         component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed withIcon prop", () => {
+        component.setProps({
+            withIcon: {
+                name: 'testIcon',
+                size: "1em",
+                position: "left"
+            }
+        })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed isDisabled props as false", () => {
+        component.setProps({ isDisabled: false })
+        expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed isDisabled props as true", () => {
+        component.setProps({ isDisabled: true })
         expect(component.exists()).toBe(true);
     })
     it("should render correctly when passed isHidden props as false", () => {
