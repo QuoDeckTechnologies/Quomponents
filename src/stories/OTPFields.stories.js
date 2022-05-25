@@ -5,6 +5,7 @@ export default {
     title: "Design System/OTPFields/OTPFields",
     component: OTPFields,
     argTypes: {
+        numFields: 5,
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
@@ -73,6 +74,7 @@ export default {
 const Template = (args) => <OTPFields {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+    numFields: 5,
     asFloated: "inline",
     withColor: {
         accentColor: "",
