@@ -25,7 +25,7 @@ describe("SerialCard", () => {
             },
         },
     });
-
+    let handelevent = jest.fn();
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -59,7 +59,7 @@ describe("SerialCard", () => {
                 }}
                 isDisabled={false}
                 isHidden={false}
-                onClick={() => console.log("EanrCard testing")}
+                onClick={() => { }}
             />
         );
     });
@@ -141,4 +141,9 @@ describe("SerialCard", () => {
         component.setProps({ asVariant: "success" })
         expect(component.exists()).toBe(true);
     })
+    it("should call onMouseDown when click", () => {
+        component.find(".qui-serialcard-icon").at(0).simulate("mousedown");
+        component.find(".qui-serialcard-icon").at(1).simulate("mousedown");
+        component.find(".qui-serialcard-icon").at(2).simulate("mousedown");
+    });
 });

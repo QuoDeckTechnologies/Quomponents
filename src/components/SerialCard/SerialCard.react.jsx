@@ -132,7 +132,7 @@ export default function SerialCard(props) {
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "serialcard");
+    let quommonClasses = getQuommons(props, "serial-card");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 3. Set the component colors
@@ -170,18 +170,13 @@ export default function SerialCard(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
             style={colors.cardColors}
-            onClick={props.onClick}
         >
             <div className={`qui-serialcard-container ${quommonClasses.childClasses}`}>
                 <div className="qui-serialcard-top">
                     <img className="qui-serialcard-backimg" src={content?.backImage} alt="" />
                     <div className="qui-serialcard-date-name" style={colors.textColors}>
-                        <div className="qui-serialcard-date">
-                            <h3>{labelContent?.title}</h3>
-                        </div>
-                        <div className="qui-serialcard-name">
-                            <h1>{labelContent?.description}</h1>
-                        </div>
+                        <span>{labelContent?.title}</span>
+                        <h1>{labelContent?.description}</h1>
                     </div>
                 </div>
                 <div className="qui-serialcard-bottom">
@@ -197,6 +192,7 @@ export default function SerialCard(props) {
                                     <i
                                         className={`qui-serialcard-icon ${icons}`}
                                         style={colors.accentColors}
+                                        onMouseDown={() => props.onClick(index)}
                                     >
                                     </i>
                                 </div>

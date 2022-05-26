@@ -1,19 +1,43 @@
-.qui-serialcard-container {
+.qui.qui-serial-card {
+    box-shadow: 0px 4px 5px 1px #918686;
     background-color: #ffffff;
     border-radius: 1em;
-    box-shadow: 0px 10px 20px #d2d2d2;
     padding-bottom: 1em;
-    min-height: 17em;
+    min-height: 15em;
+    color: #666666;
+}
+.qui .qui-serialcard-container {
     .qui-serialcard-top {
         display: flex;
+        color: "#666666";
     }
     .qui-serialcard-bottom {
         display: flex;
         padding: 1em 0 0 0;
     }
     .qui-serialcard-date-name {
-        width: 50%;
-        margin: 0% 4%;
+        width: 60%;
+        margin: 2.5%;
+        span {
+            font-size: 2em;
+            font-weight: 100;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            display: block;
+            display: -webkit-box;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 1;
+        }
+        h1 {
+            text-align: left;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            display: block;
+            display: -webkit-box;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+            margin-top: -0.025em;
+        }
     }
     .qui-serialcard-frontimg {
         position: absolute;
@@ -23,28 +47,24 @@
         width: 7em;
         border-radius: 1em;
     }
-    .qui-serialcard-name {
-        margin-top: -2em;
-        -webkit-box-orient: vertical;
-        display: block;
-        display: -webkit-box;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -webkit-line-clamp: 2;
-    }
 
     .qui-serialcard-player {
         margin-left: 4em;
         font-size: 2em;
+        display: flex;
         .qui-serialcard-player-icon {
             padding: 0 0.5em;
+        }
+        span {
+            font-weight: 100;
         }
     }
     .qui-serialcard-icons {
         display: flex;
         position: absolute;
         right: 1.5em;
-        bottom: 1.5em;
+        bottom: 1em;
+        cursor: pointer;
     }
     .qui-serialcard-icon {
         float: right;
@@ -52,49 +72,26 @@
         padding: 0 0 0 0.5em;
     }
     .qui-serialcard-backimg {
-        height: 14em;
-        width: 50%;
-    }
-    .qui-serialcard-date h1 {
-        margin-top: 5px;
-        font-weight: 200;
-        overflow: hidden;
-        -webkit-box-orient: vertical;
-        display: block;
-        display: -webkit-box;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -webkit-line-clamp: 1;
-    }
-    .qui-serialcard-name h3 {
-        color: black;
-        text-align: left;
-        margin-top: -0.1em;
-        font-weight: 100;
-        overflow: hidden;
-        -webkit-box-orient: vertical;
-        display: block;
-        display: -webkit-box;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -webkit-line-clamp: 2;
+        height: 12em;
+        border-top-left-radius: 1em;
+        width: 40%;
     }
 }
 
 @media only screen and (min-width: 320px) {
-    .qui-serialcard {
-        font-size: 0.5em;
+    .qui-serial-card {
+        font-size: 0.4em;
     }
 }
 
 @media only screen and (min-width: 481px) {
-    .qui-serialcard {
-        font-size: 0.8em;
+    .qui-serial-card {
+        font-size: 0.7em;
     }
 }
 
 @media only screen and (min-width: 769px) {
-    .qui-serialcard {
+    .qui-serial-card {
         font-size: 1em;
     }
 }

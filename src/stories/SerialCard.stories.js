@@ -136,6 +136,11 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "hi",
+        tgt: "SerialCard",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
