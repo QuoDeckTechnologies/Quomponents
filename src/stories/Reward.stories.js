@@ -1,6 +1,6 @@
 import React from "react";
 import Reward from "../components/Reward/Reward.react";
-import rewardImage from "../assets/rewardImage.png";
+import rewardImage from "../assets/coin.png";
 
 export default {
     title: "Design System/Reward/Reward",
