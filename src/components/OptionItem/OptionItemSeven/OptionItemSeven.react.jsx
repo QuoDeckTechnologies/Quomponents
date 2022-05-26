@@ -2,7 +2,11 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  getTranslation,
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OptionItemSeven.scss";
@@ -54,6 +58,14 @@ OptionItemSeven.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
     Use to enable/disable the component
    */
   isDisabled: PropTypes.bool,
@@ -90,6 +102,7 @@ OptionItemSeven.defaultProps = {
   //=======================================
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
@@ -117,6 +130,10 @@ export default function OptionItemSeven(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "option-item-seven");
   //-------------------------------------------------------------------
+  // 3. Translate the text objects in case their is a dictionary provided
+  //-------------------------------------------------------------------
+  let tObj = getTranslation(props.withTranslation);
+  //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
@@ -138,6 +155,13 @@ export default function OptionItemSeven(props) {
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
     props.onUpload(content?.targetName, image);
+  };
+  //-------------------------------------------------------------------
+  // 8. Function to return label of the checkbox
+  //-------------------------------------------------------------------
+  const getLabel = () => {
+    if (tObj) return isChecked ? tObj.correct : tObj.incorrect;
+    else return isChecked ? "Correct" : "Incorrect";
   };
 
   // ========================= Render Function =================================
@@ -161,13 +185,16 @@ export default function OptionItemSeven(props) {
                 style={{ color: props.withColor?.accentColor }}
               />
             }
-            label={isChecked ? "Correct" : "Incorrect"}
+            label={getLabel()}
             onChange={handleRadio}
           />
         </div>
         <div className="qui-option-item-upload-button">
           <OptionalImageField
-            content={{ icon: "fas fa-upload" }}
+            content={{
+              title: tObj ? tObj.uploadButton : null,
+              icon: "fas fa-upload",
+            }}
             onClick={(image) => handleImageUpload(image)}
             withColor={{ ...props.withColor }}
           />
@@ -178,7 +205,7 @@ export default function OptionItemSeven(props) {
           }
           content={{
             value: content?.value,
-            placeholder: content?.placeholder,
+            placeholder: tObj ? tObj.placeholder : content?.placeholder,
             maxLength: content?.maxLength,
           }}
           asEmphasis="listInput"

@@ -140,6 +140,9 @@ export default function OptionItemFour(props) {
   const handleValue = (name, value) => {
     onInput(name, value);
   };
+  //-------------------------------------------------------------------
+  // 8. Function to return label of the checkbox
+  //-------------------------------------------------------------------
   const getLabel = () => {
     if (tObj) return isChecked ? tObj.correct : tObj.incorrect;
     else return isChecked ? "Correct" : "Incorrect";

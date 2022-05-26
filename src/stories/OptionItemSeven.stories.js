@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from "react";
 import OptionItemSeven from "../components/OptionItem/OptionItemSeven/OptionItemSeven.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    optionitemseven: {
+      placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
+      correct: "सही",
+      incorrect: "ग़लत",
+      uploadButton: "अपलोड",
+    },
+  },
+});
+
 export default {
   title: "Design System/OptionItem/OptionItemSeven",
   component: OptionItemSeven,
@@ -23,6 +34,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -99,6 +120,11 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "optionitemseven",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -149,6 +175,29 @@ AnimatedOptionItemSeven.parameters = {
     source: {
       code: `<OptionItemSeven {...${JSON.stringify(
         AnimatedOptionItemSeven.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Translated OptionItem Seven
+// -------------------------------------------------------------
+export const TranslatedOptionItemSeven = Template.bind({});
+TranslatedOptionItemSeven.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "optionitemseven",
+    dictionary: dictionary,
+  },
+};
+TranslatedOptionItemSeven.parameters = {
+  docs: {
+    source: {
+      code: `<OptionItemSeven {...${JSON.stringify(
+        TranslatedOptionItemSeven.args,
         null,
         2
       )}}/>`,

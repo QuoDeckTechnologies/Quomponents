@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import OptionItemOne from "../components/OptionItem/OptionItemOne/OptionItemOne.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    optionitemone: {
+      placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
+    },
+  },
+});
+
 export default {
   title: "Design System/OptionItem/OptionItemOne",
   component: OptionItemOne,
@@ -22,6 +30,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -83,6 +101,11 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "optionitemone",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -132,6 +155,29 @@ AnimatedOptionItemOne.parameters = {
     source: {
       code: `<OptionItemOne {...${JSON.stringify(
         AnimatedOptionItemOne.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Translated OptionItem One
+// -------------------------------------------------------------
+export const TranslatedOptionItemOne = Template.bind({});
+TranslatedOptionItemOne.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "optionitemone",
+    dictionary: dictionary,
+  },
+};
+TranslatedOptionItemOne.parameters = {
+  docs: {
+    source: {
+      code: `<OptionItemOne {...${JSON.stringify(
+        TranslatedOptionItemOne.args,
         null,
         2
       )}}/>`,
