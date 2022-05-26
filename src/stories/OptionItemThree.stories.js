@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OptionItemThree from "../components/OptionItem/OptionItemThree/OptionItemThree.react";
+
 const dictionary = JSON.stringify({
   hi: {
     optionitemthree: {
@@ -7,6 +8,7 @@ const dictionary = JSON.stringify({
     },
   },
 });
+
 export default {
   title: "Design System/OptionItem/OptionItemThree",
   component: OptionItemThree,
