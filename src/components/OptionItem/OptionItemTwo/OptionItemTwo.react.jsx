@@ -145,6 +145,13 @@ export default function OptionItemTwo(props) {
     setValue(value);
     props.onInput(name, value, isChecked);
   };
+  //-------------------------------------------------------------------
+  // 8. Function to return label of the checkbox
+  //-------------------------------------------------------------------
+  const getLabel = () => {
+    if (tObj) return isChecked ? tObj.correct : tObj.incorrect;
+    else return isChecked ? "Correct" : "Incorrect";
+  };
 
   // ========================= Render Function =================================
 
@@ -167,7 +174,7 @@ export default function OptionItemTwo(props) {
                 style={{ color: props.withColor?.accentColor }}
               />
             }
-            label={isChecked ? "Correct" : "Incorrect"}
+            label={getLabel()}
             onChange={handleRadio}
           />
         </div>

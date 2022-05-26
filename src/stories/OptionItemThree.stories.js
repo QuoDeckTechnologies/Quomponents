@@ -5,6 +5,8 @@ const dictionary = JSON.stringify({
   hi: {
     optionitemthree: {
       uploadButton: "अपलोड",
+      correct: "सही",
+      incorrect: "ग़लत",
     },
   },
 });

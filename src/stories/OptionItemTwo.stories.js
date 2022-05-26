@@ -5,6 +5,8 @@ const dictionary = JSON.stringify({
   hi: {
     optionitemtwo: {
       placeholder: "यह विकल्प ए है",
+      correct: "सही",
+      incorrect: "ग़लत",
     },
   },
 });
