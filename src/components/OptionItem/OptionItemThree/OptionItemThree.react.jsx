@@ -117,14 +117,22 @@ export default function OptionItemThree(props) {
   //-------------------------------------------------------------------
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
-    props.onSelect(content?.targetName, image, e.target.checked);
+    props.onSelect(
+      content?.targetName ? content?.targetName : "default-target-name",
+      image,
+      e.target.checked
+    );
   };
   //-------------------------------------------------------------------
   // 6. Function to update value of the input field
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
     setImage(image);
-    props.onUpload(content?.targetName, image, isChecked);
+    props.onUpload(
+      content?.targetName ? content?.targetName : "default-target-name",
+      image,
+      isChecked
+    );
   };
 
   // ========================= Render Function =================================
@@ -142,6 +150,7 @@ export default function OptionItemThree(props) {
             value={content?.targetName}
             control={
               <Radio
+                name={props.targetName}
                 checked={isChecked}
                 style={{ color: props.withColor?.accentColor }}
               />
