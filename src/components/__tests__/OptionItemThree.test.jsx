@@ -13,6 +13,14 @@ describe("Option Item Two", () => {
   // -------------------------------------
   let component;
 
+  const dictionary = JSON.stringify({
+    hi: {
+      optionitemthree: {
+        uploadButton: "अपलोड",
+      },
+    },
+  });
+
   const pauseFor = (milliseconds) =>
     new Promise((resolve) => setTimeout(resolve, milliseconds));
 
@@ -58,6 +66,17 @@ describe("Option Item Two", () => {
     expect(component.exists()).toBe(true);
   });
 
+  it("should render correctly without throwing error when withTranslation prop is passed", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "optionitemthree",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
   it("should render correctly without throwing error when isDisabled prop is true", () => {
     component.setProps({
       isDisabled: true,
@@ -83,6 +102,31 @@ describe("Option Item Two", () => {
     component.setProps({
       isHidden: true,
     });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when target name is not provided and radio button is used", () => {
+    component.setProps({
+      content: {
+        image: {},
+        checked: false,
+      },
+    });
+    component
+      .find(".qui-option-item-three-radio")
+      .simulate("change", { target: { checked: true } });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when target name is not provided and file is uploaded", async () => {
+    component.setProps({
+      content: {
+        image: {},
+        checked: false,
+      },
+    });
+    component.find("OptionalImageField").simulate("click", {});
+    await pauseFor(100);
     expect(component.exists()).toBe(true);
   });
 

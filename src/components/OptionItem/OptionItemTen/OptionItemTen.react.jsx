@@ -30,13 +30,13 @@ OptionItemTen.propTypes = {
     header: PropTypes.shape({
       targetName: PropTypes.string,
       value: PropTypes.string,
-      headerPlaceholder: PropTypes.string,
+      placeholder: PropTypes.string,
       maxLength: PropTypes.number,
     }),
     message: PropTypes.shape({
       targetName: PropTypes.string,
       value: PropTypes.string,
-      messagePlaceholder: PropTypes.string,
+      placeholder: PropTypes.string,
       maxLength: PropTypes.number,
     }),
     image: PropTypes.object,
@@ -116,6 +116,7 @@ OptionItemTen.defaultProps = {
   //=======================================
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
@@ -185,7 +186,9 @@ export default function OptionItemTen(props) {
             }
             content={{
               value: content?.option?.value,
-              placeholder: tObj ? tObj.placeholder : content?.placeholder,
+              placeholder: tObj
+                ? tObj.placeholder
+                : content?.option?.placeholder,
             }}
             asEmphasis="listInput"
             withColor={props.withColor}
@@ -196,7 +199,7 @@ export default function OptionItemTen(props) {
           <OptionalImageField
             content={{
               title: tObj ? tObj.uploadButton : content?.uploadButton,
-              icon: "fas fa-upload"
+              icon: "fas fa-upload",
             }}
             onClick={(image) => handleImageUpload(image)}
             withColor={{ ...props.withColor }}
@@ -211,7 +214,9 @@ export default function OptionItemTen(props) {
             }
             content={{
               value: content?.header?.value,
-              placeholder: tObj ? tObj.placeholder : content?.headerPlaceholder,
+              placeholder: tObj
+                ? tObj.headerPlaceholder
+                : content?.header?.placeholder,
               maxLength: content?.header?.maxLength,
             }}
             asEmphasis="listInput"
@@ -236,7 +241,9 @@ export default function OptionItemTen(props) {
           }
           content={{
             value: content?.message?.value,
-            placeholder: tObj ? tObj.placeholder : content?.messagePlaceholder,
+            placeholder: tObj
+              ? tObj.messagePlaceholder
+              : content?.message?.placeholder,
             maxLength: content?.message?.maxLength,
           }}
           asEmphasis="listInput"

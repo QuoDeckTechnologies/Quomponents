@@ -5,8 +5,8 @@ const dictionary = JSON.stringify({
   hi: {
     optionitemten: {
       placeholder: "विकल्प ए",
-      headerPalceholder: "विकल्प ए के लिए हैडर",
-      messagePalceholder: "विकल्प ए के लिए संदेश",
+      headerPlaceholder: "विकल्प ए के लिए हैडर",
+      messagePlaceholder: "विकल्प ए के लिए संदेश",
       uploadButton: "अपलोड",
     },
   },
@@ -117,13 +117,13 @@ Default.args = {
     header: {
       targetName: "header",
       value: "",
-      headerplaceholder: "Header for Option A",
+      placeholder: "Header for Option A",
       maxLength: 300,
     },
     message: {
       targetName: "message",
       value: "",
-      messageplaceholder: "Message for Option A",
+      placeholder: "Message for Option A",
       maxLength: 300,
     },
   },
