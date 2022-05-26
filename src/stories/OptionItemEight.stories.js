@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import OptionItemEight from "../components/OptionItem/OptionItemEight/OptionItemEight.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    optionitemeight: {
+      placeholder: "यह विकल्प ए है",
+      buttonText: "रेखांकित बटन",
+    },
+  },
+});
+
 export default {
   title: "Design System/OptionItem/OptionItemEight",
   component: OptionItemEight,
@@ -22,6 +31,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -139,6 +158,29 @@ AnimatedOptionItemEight.parameters = {
     source: {
       code: `<OptionItemEight {...${JSON.stringify(
         AnimatedOptionItemEight.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Translated OptionItem Eight
+// -------------------------------------------------------------
+export const TranslatedOptionItemEight = Template.bind({});
+TranslatedOptionItemEight.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "optionitemeight",
+    dictionary: dictionary,
+  },
+};
+TranslatedOptionItemEight.parameters = {
+  docs: {
+    source: {
+      code: `<OptionItemEight {...${JSON.stringify(
+        TranslatedOptionItemEight.args,
         null,
         2
       )}}/>`,
