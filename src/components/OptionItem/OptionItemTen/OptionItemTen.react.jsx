@@ -2,7 +2,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  getTranslation,
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OptionItemTen.scss";
@@ -26,13 +30,13 @@ OptionItemTen.propTypes = {
     header: PropTypes.shape({
       targetName: PropTypes.string,
       value: PropTypes.string,
-      placeholder: PropTypes.string,
+      headerPlaceholder: PropTypes.string,
       maxLength: PropTypes.number,
     }),
     message: PropTypes.shape({
       targetName: PropTypes.string,
       value: PropTypes.string,
-      placeholder: PropTypes.string,
+      messagePlaceholder: PropTypes.string,
       maxLength: PropTypes.number,
     }),
     image: PropTypes.object,
@@ -63,6 +67,14 @@ OptionItemTen.propTypes = {
     ]),
     duration: PropTypes.number,
     delay: PropTypes.number,
+  }),
+  /**
+   Use to show a translated version of the component text. Dictionary must be valid JSON. 
+   */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
   }),
   /**
     Use to enable/disable the component
@@ -128,25 +140,29 @@ export default function OptionItemTen(props) {
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 4. Function to update value of the input field
+  // 4. Translate the text objects in case their is a dictionary provided
+  //-------------------------------------------------------------------
+  let tObj = getTranslation(props.withTranslation);
+  //-------------------------------------------------------------------
+  // 5. Function to update value of the input field
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
     props.onUpload(content?.option?.targetName, image);
   };
   //-------------------------------------------------------------------
-  // 5. Function to return input value of the component
+  // 6. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     props.onInput(name, value);
   };
   //-------------------------------------------------------------------
-  // 6. Function to return header value of the component
+  // 7. Function to return header value of the component
   //-------------------------------------------------------------------
   const handleHeaderValue = (name, headerValue) => {
     props.onHeader(name, headerValue);
   };
   //-------------------------------------------------------------------
-  // 7. Function to return message value of the component
+  // 8. Function to return message value of the component
   //-------------------------------------------------------------------
   const handleMessageValue = (name, messageValue) => {
     props.onMessage(name, messageValue);
@@ -169,7 +185,7 @@ export default function OptionItemTen(props) {
             }
             content={{
               value: content?.option?.value,
-              placeholder: content?.option?.placeholder,
+              placeholder: tObj ? tObj.placeholder : content?.placeholder,
             }}
             asEmphasis="listInput"
             withColor={props.withColor}
@@ -178,7 +194,10 @@ export default function OptionItemTen(props) {
         </div>
         <div className="qui-option-item-upload-button">
           <OptionalImageField
-            content={{ icon: "fas fa-upload" }}
+            content={{
+              title: tObj ? tObj.uploadButton : content?.uploadButton,
+              icon: "fas fa-upload"
+            }}
             onClick={(image) => handleImageUpload(image)}
             withColor={{ ...props.withColor }}
           />
@@ -192,7 +211,7 @@ export default function OptionItemTen(props) {
             }
             content={{
               value: content?.header?.value,
-              placeholder: content?.header?.placeholder,
+              placeholder: tObj ? tObj.placeholder : content?.headerPlaceholder,
               maxLength: content?.header?.maxLength,
             }}
             asEmphasis="listInput"
@@ -217,7 +236,7 @@ export default function OptionItemTen(props) {
           }
           content={{
             value: content?.message?.value,
-            placeholder: content?.message?.placeholder,
+            placeholder: tObj ? tObj.placeholder : content?.messagePlaceholder,
             maxLength: content?.message?.maxLength,
           }}
           asEmphasis="listInput"

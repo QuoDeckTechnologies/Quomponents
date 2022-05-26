@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from "react";
 import OptionItemTen from "../components/OptionItem/OptionItemTen/OptionItemTen.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    optionitemten: {
+      placeholder: "विकल्प ए",
+      headerPalceholder: "विकल्प ए के लिए हैडर",
+      messagePalceholder: "विकल्प ए के लिए संदेश",
+      uploadButton: "अपलोड",
+    },
+  },
+});
+
 export default {
   title: "Design System/OptionItem/OptionItemTen",
   component: OptionItemTen,
@@ -23,6 +34,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -96,13 +117,13 @@ Default.args = {
     header: {
       targetName: "header",
       value: "",
-      placeholder: "Header for Option A",
+      headerplaceholder: "Header for Option A",
       maxLength: 300,
     },
     message: {
       targetName: "message",
       value: "",
-      placeholder: "Message for Option A",
+      messageplaceholder: "Message for Option A",
       maxLength: 300,
     },
   },
@@ -115,6 +136,11 @@ Default.args = {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "optionitemten",
+    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,
@@ -166,6 +192,29 @@ AnimatedOptionItemTen.parameters = {
     source: {
       code: `<OptionItemTen {...${JSON.stringify(
         AnimatedOptionItemTen.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Translated OptionItem Ten
+// -------------------------------------------------------------
+export const TranslatedOptionItemTen = Template.bind({});
+TranslatedOptionItemTen.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "optionitemten",
+    dictionary: dictionary,
+  },
+};
+TranslatedOptionItemTen.parameters = {
+  docs: {
+    source: {
+      code: `<OptionItemTen {...${JSON.stringify(
+        TranslatedOptionItemTen.args,
         null,
         2
       )}}/>`,

@@ -2,7 +2,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  getTranslation,
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OptionItemSix.scss";
@@ -55,6 +59,14 @@ OptionItemSix.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
     Use to enable/disable the component
    */
   isDisabled: PropTypes.bool,
@@ -90,6 +102,7 @@ OptionItemSix.defaultProps = {
   //=======================================
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
@@ -116,17 +129,22 @@ export default function OptionItemSix(props) {
   //-------------------------------------------------------------------
   // 4. Function to update value of the input field
   //-------------------------------------------------------------------
+  //-------------------------------------------------------------------
+  // 5. Translate the text objects in case their is a dictionary provided
+  //-------------------------------------------------------------------
+  let tObj = getTranslation(props.withTranslation);
+
   const handleImageUpload = (image) => {
     props.onUpload(content?.targetName, image);
   };
   //-------------------------------------------------------------------
-  // 5. Function to return input value of the component
+  // 6. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     props.onInput(name, value);
   };
   //-------------------------------------------------------------------
-  // 6. Function to return caption value of the component
+  // 7. Function to return caption value of the component
   //-------------------------------------------------------------------
   const handleCaptionValue = (name, captionValue) => {
     props.onCaption(name, captionValue);
@@ -145,7 +163,10 @@ export default function OptionItemSix(props) {
           <div className="qui-optionitem-flextwo">
             <div className="qui-option-item-upload-button">
               <OptionalImageField
-                content={{ icon: "fas fa-upload" }}
+                content={{
+                  title: tObj ? tObj.uploadButton : content?.uploadButton,
+                  icon: "fas fa-upload"
+                }}
                 onClick={(image) => handleImageUpload(image)}
                 withColor={{ ...props.withColor }}
               />
@@ -159,7 +180,7 @@ export default function OptionItemSix(props) {
                 }
                 content={{
                   value: content?.value,
-                  placeholder: content?.placeholder,
+                  placeholder: tObj ? tObj.placeholder : content?.placeholder,
                   maxLength: content?.maxLength,
                 }}
                 asEmphasis="listInput"
@@ -177,7 +198,7 @@ export default function OptionItemSix(props) {
               }
               content={{
                 value: content?.captionValue,
-                placeholder: content?.captionPlaceholder,
+                placeholder: tObj ? tObj.captionPlaceholder : content?.captionPlaceholder,
                 maxLength: content?.maxLength,
               }}
               asEmphasis="listInput"

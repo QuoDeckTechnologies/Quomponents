@@ -2,7 +2,11 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  getTranslation,
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OptionItemTwo.scss";
@@ -52,6 +56,14 @@ OptionItemTwo.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+   Use to show a translated version of the component text. Dictionary must be valid JSON. 
+   */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
   Use to enable/disable the component
  */
   isDisabled: PropTypes.bool,
@@ -83,6 +95,7 @@ OptionItemTwo.defaultProps = {
   //=======================================
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
@@ -115,14 +128,18 @@ export default function OptionItemTwo(props) {
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 5. Function to return checked value of the component
+  // 5. Translate the text objects in case their is a dictionary provided
+  //-------------------------------------------------------------------
+  let tObj = getTranslation(props.withTranslation);
+  //-------------------------------------------------------------------
+  // 6. Function to return checked value of the component
   //-------------------------------------------------------------------
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
     props.onSelect(content?.targetName, value, e.target.checked);
   };
   //-------------------------------------------------------------------
-  // 6. Function to return input value of the component
+  // 7. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     setValue(value);
@@ -160,7 +177,7 @@ export default function OptionItemTwo(props) {
           }
           content={{
             value: content?.value,
-            placeholder: content?.placeholder,
+            placeholder: tObj ? tObj.placeholder : content?.placeholder,
             maxLength: content?.maxLength,
           }}
           asEmphasis="listInput"

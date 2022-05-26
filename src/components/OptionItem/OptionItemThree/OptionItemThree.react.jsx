@@ -3,7 +3,11 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { FormControlLabel, Radio } from "@mui/material";
-import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  getTranslation,
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OptionItemThree.scss";
@@ -48,6 +52,14 @@ OptionItemThree.propTypes = {
     ]),
     duration: PropTypes.number,
     delay: PropTypes.number,
+  }),
+  /**
+   Use to show a translated version of the component text. Dictionary must be valid JSON. 
+   */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
   }),
   /**
   Use to enable/disable the component
@@ -113,8 +125,13 @@ export default function OptionItemThree(props) {
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 5. Function to change checked state of the component
+  // 5. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
+  let tObj = getTranslation(props.withTranslation);
+  //-------------------------------------------------------------------
+  // 6. Function to change checked state of the component
+  //-------------------------------------------------------------------
+
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
     props.onSelect(
@@ -124,7 +141,7 @@ export default function OptionItemThree(props) {
     );
   };
   //-------------------------------------------------------------------
-  // 6. Function to update value of the input field
+  // 7. Function to update value of the input field
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
     setImage(image);
@@ -161,7 +178,10 @@ export default function OptionItemThree(props) {
         </div>
         <div className="qui-option-item-three-upload-button">
           <OptionalImageField
-            content={{ icon: "fas fa-upload" }}
+            content={{
+              title: tObj ? tObj.uploadButton : content?.uploadButton,
+              icon: "fas fa-upload"
+            }}
             onClick={(image) => handleImageUpload(image)}
             withColor={{ ...props.withColor }}
           />

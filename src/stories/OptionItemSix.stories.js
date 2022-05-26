@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import OptionItemSix from "../components/OptionItem/OptionItemSix/OptionItemSix.react";
-
+const dictionary = JSON.stringify({
+  hi: {
+    optionitemsix: {
+      placeholder: "यह विकल्प ए है",
+      captionPlaceholder: "विकल्प ए के लिए कैप्शन",
+      uploadButton: "अपलोड",
+    },
+  },
+});
 export default {
   title: "Design System/OptionItem/OptionItemSix",
   component: OptionItemSix,
@@ -23,6 +31,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -101,6 +119,11 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "optionitemsix",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -158,7 +181,29 @@ AnimatedOptionItemSix.parameters = {
     },
   },
 };
-
+// -------------------------------------------------------------
+// Translated OptionItem Six
+// -------------------------------------------------------------
+export const TranslatedOptionItemSix = Template.bind({});
+TranslatedOptionItemSix.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "optionitemsix",
+    dictionary: dictionary,
+  },
+};
+TranslatedOptionItemSix.parameters = {
+  docs: {
+    source: {
+      code: `<OptionItemSix {...${JSON.stringify(
+        TranslatedOptionItemSix.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
 // -------------------------------------------------------------
 // Multiple OptionItem Six
 // -------------------------------------------------------------

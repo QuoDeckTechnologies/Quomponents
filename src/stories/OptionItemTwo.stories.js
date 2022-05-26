@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import OptionItemTwo from "../components/OptionItem/OptionItemTwo/OptionItemTwo.react";
-
+const dictionary = JSON.stringify({
+  hi: {
+    optionitemtwo: {
+      placeholder: "यह विकल्प ए है",
+    },
+  },
+});
 export default {
   title: "Design System/OptionItem/OptionItemTwo",
   component: OptionItemTwo,
@@ -22,6 +28,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -85,6 +101,11 @@ Default.args = {
     backgroundColor: "#ffab000d",
     accentColor: "",
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "optionitemtwo",
+    dictionary: dictionary,
+  },
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
@@ -139,6 +160,29 @@ AnimatedOptionItemTwo.parameters = {
     source: {
       code: `<OptionItemTwo {...${JSON.stringify(
         AnimatedOptionItemTwo.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Translated OptionItem Two
+// -------------------------------------------------------------
+export const TranslatedOptionItemTwo = Template.bind({});
+TranslatedOptionItemTwo.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "optionitemtwo",
+    dictionary: dictionary,
+  },
+};
+TranslatedOptionItemTwo.parameters = {
+  docs: {
+    source: {
+      code: `<OptionItemTwo {...${JSON.stringify(
+        TranslatedOptionItemTwo.args,
         null,
         2
       )}}/>`,
