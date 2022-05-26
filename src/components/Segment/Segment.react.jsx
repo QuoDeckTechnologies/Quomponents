@@ -13,7 +13,7 @@ Segment.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    Segment can recieve children as props
+    Segment can recieve children as props, wrap child component with Segment component to use.
     */
   children: PropTypes.element,
   /**
@@ -58,17 +58,12 @@ Segment.propTypes = {
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
-  /**
-    Use to enable/disable the component
-    */
-  isDisabled: PropTypes.bool,
 };
 
 Segment.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  //   children: <></>,
   isCircular: false,
   //=======================================
   // Quommon props
@@ -78,7 +73,6 @@ Segment.defaultProps = {
   withColor: null,
   withAnimation: null,
   isHidden: false,
-  isDisabled: false,
 };
 /**
 ## Notes
@@ -107,9 +101,7 @@ export default function Segment(props) {
       className={`qui ${quommonClasses.parentClasses}`}
       style={{ backgroundColor: withColor?.backgroundColor }}
     >
-      <div
-        className={`qui-segment-container ${quommonClasses.childClasses}`}
-      >
+      <div className={`qui-segment-container ${quommonClasses.childClasses}`}>
         {children}
       </div>
     </motion.div>
