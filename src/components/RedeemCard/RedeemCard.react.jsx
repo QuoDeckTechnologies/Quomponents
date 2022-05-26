@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import { getQuommons } from "../../common/javascripts/helpers.js";
+import { getQuommons, getTranslation } from "../../common/javascripts/helpers.js";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -13,6 +13,8 @@ import Reward from "../Reward/Reward.react"
 import defaultImage from "../../assets/default.jpeg";
 import AccentLine from "../AccentLine/AccentLine.react"
 import Button from "../Buttons/Button/Button.react";
+
+import rewardImage from "../../assets/coin.png";
 
 RedeemCard.propTypes = {
     //=======================================
@@ -48,6 +50,14 @@ RedeemCard.propTypes = {
         backgroundColor: PropTypes.string,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "inline"]),
@@ -72,6 +82,7 @@ RedeemCard.defaultProps = {
 
     // Quommon props
     //=======================================
+    withTranslation: null,
     asFloated: "inline",
     isHidden: false,
     isDisabled: false,
@@ -136,8 +147,14 @@ export default function RedeemCard(props) {
         hoverTextColor: props.withColor?.buttonHoverTextColor,
         backgroundColor: props.withColor?.buttonBackgroundColor,
     }
+
     //-------------------------------------------------------------------
-    // 6. Get the RedeemCard Component
+    // 6. Get translation of the component
+    //-------------------------------------------------------------------
+    let tObj = getTranslation(props.withTranslation);;
+
+    //-------------------------------------------------------------------
+    // 7. Get the RedeemCard Component
     //-------------------------------------------------------------------
     const redeemCard = () => {
         return (<div>
@@ -152,22 +169,22 @@ export default function RedeemCard(props) {
                 <div className={`qui-redeem-card-cost-stock-container ${stockStyle}`}>
                     {props.content?.cost &&
                         <div className={`qui-redeem-card-cost`}>
-                            <Reward content={{ point: props.content?.cost?.toString() }} withColor={{ accentColor: props.withColor?.textColor }} />
+                            <Reward content={{ point: props.content?.cost?.toString(), image: rewardImage }} withColor={{ accentColor: props.withColor?.textColor }} />
+                            <div className={`qui-redeem-card-accent-line`}>
+                                <AccentLine withColor={{ accentColor: props.withColor?.accentColor }} />
+                            </div>
                         </div>
                     }
                     {props.content?.stock &&
                         <div className={`qui-redeem-card-stock`}>
                             <div>
-                                {props.content?.stock?.left} / {props.content?.stock?.total}
+                                {props.content?.stock?.left}/{props.content?.stock?.total}
                             </div>
                             <div>
-                                Left
+                                left
                             </div>
                         </div>
                     }
-                </div>
-                <div className={`qui-redeem-card-accent-line`}>
-                    <AccentLine withColor={{ accentColor: props.withColor?.accentColor }} />
                 </div>
                 <div className={`qui-redeem-card-description-container`}>
                     <div className={`${descriptionStyle}`}>
@@ -182,7 +199,7 @@ export default function RedeemCard(props) {
                 </div>
                 {props.content?.status?.toLowerCase() === "pending" &&
                     <div className={`qui-redeem-card-status`}>
-                        <Button isDisabled={props.isDisabled} withColor={buttonStyle} content="Redeem" onClick={props.onClick} />
+                        <Button isDisabled={props.isDisabled} withColor={buttonStyle} content={tObj ? tObj.button : "Redeem"} onClick={props.onClick} />
                     </div>
                 }
                 {props.content?.status?.toLowerCase() === "inprogress" &&

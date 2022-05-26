@@ -1,6 +1,14 @@
 import React from "react";
 import RedeemCard from "../components/RedeemCard/RedeemCard.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        RedeemCard: {
+            button: "मोचन"
+        }
+    },
+});
+
 export default {
     title: "Design System/RedeemCard/RedeemCard",
     component: RedeemCard,
@@ -24,6 +32,16 @@ export default {
                     buttonHoverBackgroundColor: "",
                     buttonHoverTextColor: "",
                     backgroundColor: "#fff"
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -99,6 +117,11 @@ Default.args = {
         buttonHoverTextColor: "",
         backgroundColor: ""
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "RedeemCard",
+        dictionary: dictionary,
+    },
     asFloated: "inline",
     isDisabled: false,
     isHidden: false
@@ -134,6 +157,11 @@ ColoredRedeemCard.args = {
         buttonHoverBackgroundColor: "",
         buttonHoverTextColor: "",
         backgroundColor: "#FFE77AFF"
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "RedeemCard",
+        dictionary: dictionary,
     },
     withAnimation: {
         animation: "zoom",
@@ -178,6 +206,11 @@ export const AllVariantsTemplate = (args) => {
             buttonHoverTextColor: "",
             backgroundColor: "",
         },
+        withTranslation: {
+            lang: "en",
+            tgt: "RedeemCard",
+            dictionary: dictionary,
+        },
         withAnimation: {
             animation: "zoom",
             duration: 0.5,
@@ -207,6 +240,11 @@ export const AllVariantsTemplate = (args) => {
             buttonHoverBackgroundColor: "",
             buttonHoverTextColor: "",
             backgroundColor: "",
+        },
+        withTranslation: {
+            lang: "en",
+            tgt: "RedeemCard",
+            dictionary: dictionary,
         },
         withAnimation: {
             animation: "zoom",
@@ -238,6 +276,11 @@ export const AllVariantsTemplate = (args) => {
             buttonHoverTextColor: "",
             backgroundColor: "",
         },
+        withTranslation: {
+            lang: "en",
+            tgt: "RedeemCard",
+            dictionary: dictionary,
+        },
         withAnimation: {
             animation: "zoom",
             duration: 0.5,
@@ -263,4 +306,32 @@ export const AllVariantsTemplate = (args) => {
             />
         </div>
     );
+};
+
+// -------------------------------------------------------------
+// Translated RedeemCard
+// -------------------------------------------------------------
+export const TranslatedRedeemCard = Template.bind({});
+TranslatedRedeemCard.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "RedeemCard",
+        dictionary: dictionary,
+    },
+};
+TranslatedRedeemCard.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in. To make this work for the RedeemCard, add a content:{text:{title, subTitle},label} value to the dictionary.",
+        },
+        source: {
+            code: `<RedeemCard {...${JSON.stringify(
+                TranslatedRedeemCard.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
 };

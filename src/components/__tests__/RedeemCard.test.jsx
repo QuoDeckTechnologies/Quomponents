@@ -15,7 +15,13 @@ describe("RedeemCard", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-
+    const dictionary = JSON.stringify({
+        hi: {
+            RedeemCard: {
+                button: "मोचन"
+            }
+        },
+    });
     beforeEach(() => {
         jest.resetAllMocks();
         component = mount(
@@ -45,6 +51,7 @@ describe("RedeemCard", () => {
                     duration: 0.5,
                     delay: 0,
                 }}
+                withTranslation={null}
                 asFloated="inline"
                 isHidden={false}
                 isDisabled={false}
@@ -71,6 +78,28 @@ describe("RedeemCard", () => {
         expect(component.exists()).toBe(true);
     });
 
+    it("should render correctly with withTranslation prop", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "RedeemCard",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly if translation object is not returned",
+        () => {
+            component.setProps({
+                withTranslation: {
+                    lang: "hi",
+                    tgt: "",
+                    dictionary: dictionary,
+                }
+            });
+            expect(component.exists()).toBe(true);
+        });
     it("should render correctly when passed asFloated prop as left", () => {
         component.setProps({ asFloated: "left" });
         expect(component.exists()).toBe(true);
