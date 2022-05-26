@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -12,6 +12,33 @@ describe("ArcMenu", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
+
+  const dictionary = JSON.stringify({
+    hi: {
+      arcmenu: {
+        menuContent: [
+          {
+            header: "सीखें",
+            list: [
+              "अपलोड scorm",
+              "अपलोड pdf",
+              "वीडियो लिंक जोड़ें",
+              "qdf डेक बनाएं",
+            ],
+          },
+          {
+            header: "मूल्यांकन",
+            list: ["सर्वेक्षण बनाएं", "प्रश्नोत्तरी बनाएँ", "एक खेल जोड़ें"],
+          },
+          {
+            header: "पुरस्कृत",
+            list: ["प्रमाण पत्र दो", "एक बैज दें", "इनाम दो"],
+          },
+        ],
+      },
+    },
+  });
+
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -56,6 +83,92 @@ describe("ArcMenu", () => {
   });
 
   it("should render correctly without throwing error", () => {
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withAnimation props", () => {
+    component.setProps({
+      withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withColor", () => {
+    component.setProps({
+      withColor: {
+        backgroundColor: "#ffffff",
+        accentColor: "#ffffff",
+        textColor: "#ffffff",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withTranslation", () => {
+    let wrapper = mount(
+      <ArcMenu
+        menuContent={[
+          {
+            header: "learning",
+            list: [
+              "upload scorm",
+              "upload pdf",
+              "add video link",
+              "create qdf deck",
+            ],
+          },
+          {
+            header: "evaluating",
+            list: ["create survey", "create quiz", "add a game"],
+          },
+          {
+            header: "rewarding",
+            list: ["give a certificate", "give a badge", "give a reward"],
+          },
+        ]}
+        nuggetContent={[
+          { image: "" },
+          { image: "" },
+          { image: "" },
+          { image: "" },
+          { image: "" },
+          { image: "" },
+        ]}
+        menuType="close"
+        arcIcon="menu"
+        position="top-right"
+        asVariant="primary"
+        asSize="normal"
+        isDisabled={false}
+        isHidden={false}
+        onClick={() => {}}
+      />
+    );
+    wrapper.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "arcmenu",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isHidden props is false", () => {
+    component.setProps({
+      isHidden: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isCircular props is true", () => {
+    component.setProps({
+      isHidden: true,
+    });
     expect(component.exists()).toBe(true);
   });
 

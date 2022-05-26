@@ -1,10 +1,10 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Backdrop from "@mui/material/Backdrop";
 import _ from "lodash";
-import { getQuommons } from "../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ArcMenu.scss";
@@ -148,11 +148,21 @@ export default function ArcMenu(props) {
   // 1. Destructuring props and defining states
   //-------------------------------------------------------------------
   const { menuContent, nuggetContent, arcIcon, withColor } = props;
+  const [menuContentArr, setMenuContentArr] = useState({ ...menuContent });
   const [openMenu, setOpenMenu] = useState(false);
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "arc-menu");
+  //-------------------------------------------------------------------
+  // 5. Translate the text objects in case their is a dictionary provided
+  //-------------------------------------------------------------------
+  let tObj = getTranslation(props.withTranslation);
+  useEffect(() => {
+    if (tObj) {
+      setMenuContentArr({ ...tObj.menuContent });
+    } else setMenuContentArr({ ...menuContent });
+  }, [props.withTranslation]);
   //-------------------------------------------------------------------
   // 3. Get icon for button
   //-------------------------------------------------------------------
@@ -185,7 +195,7 @@ export default function ArcMenu(props) {
   //-------------------------------------------------------------------
   const getMenu = (menu) => {
     if (menu === "menu") {
-      return _.map(menuContent, (dataObj, i) => {
+      return _.map(menuContentArr, (dataObj, i) => {
         return (
           <div
             className={`qui-menu-button qui-arc-menu-header ${quommonClasses.childClasses}`}
