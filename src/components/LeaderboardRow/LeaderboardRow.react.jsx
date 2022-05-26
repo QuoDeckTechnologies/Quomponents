@@ -26,12 +26,12 @@ LeaderboardRow.propTypes = {
     */
     rank: PropTypes.number,
     /**
-    Contains the users records such as name and points
+    Contains the users contents such as name and points
     */
-    record: PropTypes.shape({
+    content: PropTypes.shape({
         name: PropTypes.string,
         points: PropTypes.number
-    }),
+    }).isRequired,
 
     // Quommon props
     //=======================================
@@ -60,23 +60,22 @@ LeaderboardRow.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-    Use to enable/disable the component
+    Use to show/hide the component
     */
-    isDisabled: PropTypes.bool
+    isHidden: PropTypes.bool
 };
 
 LeaderboardRow.defaultProps = {
     // Component Specific props
     //=======================================
     rank: "",
-    record: {},
+    content: {},
 
     // Quommon props
     //=======================================
     withColor: null,
     withAnimation: null,
-    isHidden: false,
-    isDisabled: false
+    isHidden: false
 };
 
 /**
@@ -84,15 +83,14 @@ LeaderboardRow.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Pass rank and record props to display the LeaderboardRow component.
+- Pass rank and content props to display the LeaderboardRow component.
 - Pass withColor props to change the styling of component.
 **/
 export default function LeaderboardRow(props) {
-
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "action-button");
+    let quommonClasses = getQuommons(props, "leaderboard-row");
 
     //-------------------------------------------------------------------
     // 2. Get animation of the component
@@ -102,7 +100,7 @@ export default function LeaderboardRow(props) {
     //-------------------------------------------------------------------
     // 3. Conditional styling
     //-------------------------------------------------------------------
-    let recordStyle = {
+    let contentStyle = {
         backgroundColor: (props.rank === 0 || props.rank === 1 || props.rank === 2) && props.withColor?.backgroundColor ? props.withColor?.backgroundColor : '#454545',
         color: (props.rank === 0 || props.rank === 1 || props.rank === 2) ? props.withColor?.textColor ? props.withColor?.textColor : '#FFBF00' : props.withColor?.backgroundColor ? props.withColor?.backgroundColor : '#FFBF00'
     }
@@ -117,13 +115,13 @@ export default function LeaderboardRow(props) {
             initial={animate?.from}
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses} qui-leaderboard-row-parent-class`}>
-            {props.record && <div className={`${quommonClasses.childClasses}`} >
-                <div className={`qui-leaderboard-row-container`} style={recordStyle}>
+            {props.content && <div className={`${quommonClasses.childClasses}`} >
+                <div className={`qui-leaderboard-row-container`} style={contentStyle}>
                     <div className={`qui-leaderboard-row-rank-container`}>
                         <img alt={'medal'} src={rankImage} className={`qui-leaderboard-row-medal`} />
                     </div>
-                    <div className={`qui-leaderboard-row-name`} style={{ color: recordStyle?.color, textAlign: props.record?.points ? 'left' : 'right', marginRight: props.record?.points ? '0.5em' : '1.5em' }}>{props.record?.name}</div>
-                    {props.record?.points && <div className={`qui-leaderboard-row-points`} style={{ color: recordStyle?.color }}>{props.record?.points}</div>}
+                    <div className={`qui-leaderboard-row-name`} style={{ color: contentStyle?.color, textAlign: props.content?.points ? 'left' : 'right', marginRight: props.content?.points ? '0.5em' : '1.5em' }}>{props.content?.name}</div>
+                    {props.content?.points && <div className={`qui-leaderboard-row-points`} style={{ color: contentStyle?.color }}>{props.content?.points}</div>}
                 </div>
             </div>}
         </motion.div>

@@ -23,15 +23,24 @@
     text-align: left;
 }
 .qui-leaderboard-row-name {
+    align-self: left;
     padding: 0.7em 0.3em 0.7em 0;
+    flex: 2;
     text-align: left;
     margin-right: 1.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .qui-leaderboard-row-points {
     margin-right: 1.5em;
     text-align: right;
     padding: 0.7em 0.3em 0.7em 0;
     flex: 1;
+    max-width: 15ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .qui-leaderboard-row-medal {
     width: 30px;

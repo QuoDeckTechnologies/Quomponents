@@ -6,7 +6,7 @@ export default {
     component: LeaderboardRow,
     argTypes: {
         rank: 0,
-        record: {},
+        content: {},
         withColor: {
             table: {
                 category: "with-Params",
@@ -27,12 +27,6 @@ export default {
             },
         },
         isHidden: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        isDisabled: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
@@ -65,7 +59,7 @@ const Template = (args) => <LeaderboardRow {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     rank: 0,
-    record: {
+    content: {
         name: 'Rohit Dhende',
         points: 1000
     },
@@ -78,7 +72,6 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-    isDisabled: false,
     isHidden: false,
 };
 Default.parameters = {
@@ -95,70 +88,70 @@ export const MultipleLeaderboardRow = (args) => {
     let users = [
         {
             rank: 0,
-            record: {
+            content: {
                 name: 'Rohit Dhende',
                 points: 5000
             }
         },
         {
             rank: 1,
-            record: {
+            content: {
                 name: 'Rahul Verma',
                 points: 4500
             }
         },
         {
             rank: 2,
-            record: {
+            content: {
                 name: 'Krishna Pant',
                 points: 3900
             }
         },
         {
             rank: 3,
-            record: {
+            content: {
                 name: 'Udhav Varma',
                 points: 3900
             }
         },
         {
             rank: 4,
-            record: {
+            content: {
                 name: 'Ganesh Devkar',
                 points: 3611
             }
         },
         {
             rank: 5,
-            record: {
+            content: {
                 name: 'Apurva Surve',
                 points: 3244
             }
         },
         {
             rank: 7,
-            record: {
+            content: {
                 name: 'Shobha Shelke',
                 points: 3000
             }
         },
         {
             rank: 8,
-            record: {
+            content: {
                 name: 'Prabhat Pandey',
                 points: 2900
             }
         },
         {
             rank: 9,
-            record: {
+            content: {
                 name: 'Ravi Singh',
                 points: 2500
             }
         },
         {
             rank: 10,
-            record: {
+            content: {
                 name: 'Samuel James Dharmavaram',
                 points: 2400
             }
@@ -172,7 +165,7 @@ export const MultipleLeaderboardRow = (args) => {
                         <LeaderboardRow
                             key={index}
                             rank={user.rank}
-                            record={user.record}
+                            content={user.content}
                             withColor={{
                                 backgroundColor: '#FFBF00',
                                 textColor: '#000'
@@ -196,61 +189,61 @@ export const MultipleLeaderboardRowsWithoutPoints = (args) => {
     let users = [
         {
             rank: 0,
-            record: {
+            content: {
                 name: 'Rohit Dhende'
             }
         },
         {
             rank: 1,
-            record: {
+            content: {
                 name: 'Rahul Verma'
             }
         },
         {
             rank: 2,
-            record: {
+            content: {
                 name: 'Krishna Pant'
             }
         },
         {
             rank: 3,
-            record: {
+            content: {
                 name: 'Udhav Varma'
             }
         },
         {
             rank: 4,
-            record: {
+            content: {
                 name: 'Ganesh Devkar'
             }
         },
         {
             rank: 5,
-            record: {
+            content: {
                 name: 'Apurva Surve'
             }
         },
         {
             rank: 7,
-            record: {
+            content: {
                 name: 'Shobha Shelke'
             }
         },
         {
             rank: 8,
-            record: {
+            content: {
                 name: 'Prabhat Pandey'
             }
         },
         {
             rank: 9,
-            record: {
+            content: {
                 name: 'Ravi Singh'
             }
         },
         {
             rank: 10,
-            record: {
+            content: {
                 name: 'Samuel James Dharmavaram'
             }
         },
@@ -263,7 +256,7 @@ export const MultipleLeaderboardRowsWithoutPoints = (args) => {
                         <LeaderboardRow
                             key={index}
                             rank={user.rank}
-                            record={user.record}
+                            content={user.content}
                             withColor={{
                                 backgroundColor: '#FFBF00',
                                 textColor: '#000'
@@ -287,61 +280,61 @@ export const MultipleLeaderboardRowsWithoutPointsAndFixedDivSize = (args) => {
     let users = [
         {
             rank: 0,
-            record: {
+            content: {
                 name: 'Rohit Dhende'
             }
         },
         {
             rank: 1,
-            record: {
+            content: {
                 name: 'Rahul Verma'
             }
         },
         {
             rank: 2,
-            record: {
+            content: {
                 name: 'Krishna Pant'
             }
         },
         {
             rank: 3,
-            record: {
+            content: {
                 name: 'Udhav Varma'
             }
         },
         {
             rank: 4,
-            record: {
+            content: {
                 name: 'Ganesh Devkar'
             }
         },
         {
             rank: 5,
-            record: {
+            content: {
                 name: 'Apurva Surve'
             }
         },
         {
             rank: 7,
-            record: {
+            content: {
                 name: 'Shobha Shelke'
             }
         },
         {
             rank: 8,
-            record: {
+            content: {
                 name: 'Prabhat Pandey'
             }
         },
         {
             rank: 9,
-            record: {
+            content: {
                 name: 'Ravi Singh'
             }
         },
         {
             rank: 10,
-            record: {
+            content: {
                 name: 'Samuel James Dharmavaram'
             }
         },
@@ -354,7 +347,7 @@ export const MultipleLeaderboardRowsWithoutPointsAndFixedDivSize = (args) => {
                         <LeaderboardRow
                             key={index}
                             rank={user.rank}
-                            record={user.record}
+                            content={user.content}
                             withColor={{
                                 backgroundColor: '#FFBF00',
                                 textColor: '#000'
@@ -378,70 +371,70 @@ export const MultipleLeaderboardRowsWithFixedDivSize = (args) => {
     let users = [
         {
             rank: 0,
-            record: {
+            content: {
                 name: 'Rohit Dhende',
                 points: 5000
             }
         },
         {
             rank: 1,
-            record: {
+            content: {
                 name: 'Rahul Verma',
                 points: 4500
             }
         },
         {
             rank: 2,
-            record: {
+            content: {
                 name: 'Krishna Pant',
                 points: 3900
             }
         },
         {
             rank: 3,
-            record: {
+            content: {
                 name: 'Udhav Varma',
                 points: 3900
             }
         },
         {
             rank: 4,
-            record: {
+            content: {
                 name: 'Ganesh Devkar',
                 points: 3611
             }
         },
         {
             rank: 5,
-            record: {
+            content: {
                 name: 'Apurva Surve',
                 points: 3244
             }
         },
         {
             rank: 7,
-            record: {
+            content: {
                 name: 'Shobha Shelke',
                 points: 3000
             }
         },
         {
             rank: 8,
-            record: {
+            content: {
                 name: 'Prabhat Pandey',
                 points: 2900
             }
         },
         {
             rank: 9,
-            record: {
+            content: {
                 name: 'Ravi Singh',
                 points: 2500
             }
         },
         {
             rank: 10,
-            record: {
+            content: {
                 name: 'Samuel James Dharmavaram',
                 points: 2400
             }
@@ -455,7 +448,7 @@ export const MultipleLeaderboardRowsWithFixedDivSize = (args) => {
                         <LeaderboardRow
                             key={index}
                             rank={user.rank}
-                            record={user.record}
+                            content={user.content}
                             withColor={{
                                 backgroundColor: '#FFBF00',
                                 textColor: '#000'

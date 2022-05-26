@@ -22,7 +22,7 @@ describe("LeaderboardRow", () => {
         component = shallow(
             <LeaderboardRow
                 rank={0}
-                record={{
+                content={{
                     name: 'Rohit Dhende',
                     points: 1000
                 }}
@@ -31,7 +31,6 @@ describe("LeaderboardRow", () => {
                     duration: 0.5,
                     delay: 0,
                 }}
-                isDisabled={false}
                 isHidden={false}
             />
         );
@@ -61,21 +60,11 @@ describe("LeaderboardRow", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true });
-        expect(component.exists()).toBe(true);
-    });
-
     it("should render the component without points and align the name text to the right", () => {
         expect(component.find('.qui-leaderboard-row-name').props().style.textAlign).toBe('left');
         component.setProps({
             rank: 4,
-            record: {
+            content: {
                 name: 'Rohit Dhende'
             }
         })
@@ -87,7 +76,7 @@ describe("LeaderboardRow", () => {
     it("should render the component with correct styles when passed ranks between 0 to 2", () => {
         component.setProps({
             rank: 0,
-            record: {
+            content: {
                 name: 'Rohit Dhende',
                 points: 1000
             },
@@ -105,7 +94,7 @@ describe("LeaderboardRow", () => {
     it("should render the component with correct styles when passed ranks greater than 2", () => {
         component.setProps({
             rank: 3,
-            record: {
+            content: {
                 name: 'Rohit Dhende'
             },
             withColor: {
@@ -119,7 +108,7 @@ describe("LeaderboardRow", () => {
     it("should render the component with first place gold medalist player", () => {
         component.setProps({
             rank: 0,
-            record: {
+            content: {
                 name: 'Rohit Dhende'
             }
         })
@@ -129,7 +118,7 @@ describe("LeaderboardRow", () => {
     it("should render the component with second place silver medalist player", () => {
         component.setProps({
             rank: 1,
-            record: {
+            content: {
                 name: 'Rohit Dhende'
             }
         })
@@ -139,7 +128,7 @@ describe("LeaderboardRow", () => {
     it("should render the component with third place bronze medalist player", () => {
         component.setProps({
             rank: 2,
-            record: {
+            content: {
                 name: 'Rohit Dhende'
             }
         })
@@ -149,7 +138,7 @@ describe("LeaderboardRow", () => {
     it("should render the component with the player who is not in the first 3 place", () => {
         component.setProps({
             rank: 3,
-            record: {
+            content: {
                 name: 'Rohit Dhende'
             }
         })
