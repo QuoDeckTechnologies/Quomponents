@@ -13,6 +13,15 @@ describe("Option Item Two", () => {
   // -------------------------------------
   let component;
 
+  const dictionary = JSON.stringify({
+    hi: {
+      optionitemfive: {
+        placeholder: "विकल्प आइटम पांच",
+        uploadButton: "अपलोड",
+      },
+    },
+  });
+
   const pauseFor = (milliseconds) =>
     new Promise((resolve) => setTimeout(resolve, milliseconds));
 
@@ -55,6 +64,17 @@ describe("Option Item Two", () => {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when withTranslation prop is passed", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "optionitemfive",
+        dictionary: dictionary,
       },
     });
     expect(component.exists()).toBe(true);

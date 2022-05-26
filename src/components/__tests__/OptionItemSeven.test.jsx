@@ -13,6 +13,17 @@ describe("Option Item Seven", () => {
   // -------------------------------------
   let component;
 
+  const dictionary = JSON.stringify({
+    hi: {
+      optionitemseven: {
+        placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
+        correct: "सही",
+        incorrect: "ग़लत",
+        uploadButton: "अपलोड",
+      },
+    },
+  });
+
   const pauseFor = (milliseconds) =>
     new Promise((resolve) => setTimeout(resolve, milliseconds));
 
@@ -74,6 +85,17 @@ describe("Option Item Seven", () => {
     expect(component.exists()).toBe(true);
   });
 
+  it("should render correctly without throwing error when withTranslation prop is passed", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "optionitemseven",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
   it("should render correctly without throwing error when isDisabled prop is true", () => {
     component.setProps({
       isDisabled: true,
@@ -117,6 +139,20 @@ describe("Option Item Seven", () => {
         onClick={() => {}}
       />
     );
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when withTranslation prop is passed and radio button is used", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "optionitemseven",
+        dictionary: dictionary,
+      },
+    });
+    component
+      .find(".qui-option-item-radio")
+      .simulate("change", { target: { checked: true } });
     expect(component.exists()).toBe(true);
   });
 

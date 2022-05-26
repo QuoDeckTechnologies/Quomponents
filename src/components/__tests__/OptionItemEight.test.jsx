@@ -12,6 +12,16 @@ describe("Option Item Eight", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
+
+  const dictionary = JSON.stringify({
+    hi: {
+      optionitemeight: {
+        placeholder: "यह विकल्प ए है",
+        buttonText: "रेखांकित बटन",
+      },
+    },
+  });
+
   let onClick = jest.fn();
   beforeEach(() => {
     jest.resetAllMocks();
@@ -33,6 +43,11 @@ describe("Option Item Eight", () => {
           animation: "zoom",
           duration: 0.5,
           delay: 0,
+        }}
+        withTranslation={{
+          lang: "en",
+          tgt: "optionitemeight",
+          dictionary: dictionary,
         }}
         isDisabled={false}
         isHidden={false}
@@ -63,6 +78,17 @@ describe("Option Item Eight", () => {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when withTranslation prop is passed", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "optionitemeight",
+        dictionary: dictionary,
       },
     });
     expect(component.exists()).toBe(true);

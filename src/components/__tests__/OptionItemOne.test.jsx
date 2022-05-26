@@ -12,6 +12,15 @@ describe("Option Item One", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
+
+  const dictionary = JSON.stringify({
+    hi: {
+      optionitemone: {
+        placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
+      },
+    },
+  });
+
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -48,6 +57,17 @@ describe("Option Item One", () => {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when withTranslation prop is passed", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "optionitemone",
+        dictionary: dictionary,
       },
     });
     expect(component.exists()).toBe(true);

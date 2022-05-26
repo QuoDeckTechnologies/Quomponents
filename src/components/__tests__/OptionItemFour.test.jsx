@@ -12,6 +12,17 @@ describe("Option Item Two", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
+
+  const dictionary = JSON.stringify({
+    hi: {
+      optionitemfour: {
+        placeholder: "विकल्प आइटम पांच",
+        correct: "सही",
+        incorrect: "ग़लत",
+      },
+    },
+  });
+
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -50,6 +61,17 @@ describe("Option Item Two", () => {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when withTranslation prop is passed", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "optionitemfour",
+        dictionary: dictionary,
       },
     });
     expect(component.exists()).toBe(true);
@@ -102,6 +124,18 @@ describe("Option Item Two", () => {
 
   it("should render correctly without throwing error when wriiten in input field", () => {
     component.find("InputField").simulate("click");
+  });
+
+  it("should render correctly without throwing error when withTranslation prop is passed and check box is toggled", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "optionitemfour",
+        dictionary: dictionary,
+      },
+    });
+    component.find("CheckBox").simulate("click", { checked: true });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when checkbox is used", () => {

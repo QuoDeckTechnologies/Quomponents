@@ -12,6 +12,15 @@ describe("Option Item Two", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
+
+  const dictionary = JSON.stringify({
+    hi: {
+      optionitemnine: {
+        placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
+      },
+    },
+  });
+
   let onClick = jest.fn();
   let onShortFieldOneInput = jest.fn();
   let onShortFieldTwoInput = jest.fn();
@@ -69,6 +78,17 @@ describe("Option Item Two", () => {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when withTranslation prop is passed", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "optionitemnine",
+        dictionary: dictionary,
       },
     });
     expect(component.exists()).toBe(true);
