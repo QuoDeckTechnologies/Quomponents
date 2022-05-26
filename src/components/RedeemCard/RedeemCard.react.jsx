@@ -14,14 +14,12 @@ import defaultImage from "../../assets/default.jpeg";
 import AccentLine from "../AccentLine/AccentLine.react"
 import Button from "../Buttons/Button/Button.react";
 
-import rewardImage from "../../assets/coin.png";
-
 RedeemCard.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-    Content props consist of all the data which are required for Nugget Card component. status consist of 3 options to display the card accordingly.
+    Content props consist of all the data which are required for RedeemCard component. status consist of 3 options to display the card accordingly.
     */
     content: PropTypes.shape({
         name: PropTypes.string,
@@ -181,7 +179,7 @@ export default function RedeemCard(props) {
                 <div className={`qui-redeem-card-cost-stock-container ${stockStyle}`}>
                     {props.content?.cost &&
                         <div className={`qui-redeem-card-cost`}>
-                            <Reward content={{ point: props.content?.cost?.toString(), image: rewardImage }} withColor={{ accentColor: props.withColor?.textColor }} />
+                            <Reward content={{ point: props.content?.cost?.toString() }} withColor={{ accentColor: props.withColor?.textColor }} />
                             <div className={`qui-redeem-card-accent-line`}>
                                 <AccentLine withColor={{ accentColor: props.withColor?.accentColor }} />
                             </div>
