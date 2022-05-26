@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import OptionItemNine from "../components/OptionItem/OptionItemNine/OptionItemNine.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    optionitemnine: {
+      placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
+    },
+  },
+});
+
 export default {
   title: "Design System/OptionItem/OptionItemNine",
   component: OptionItemNine,
@@ -22,6 +30,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -105,6 +123,11 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "optionitemnine",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -160,7 +183,29 @@ AnimatedOptionItemNine.parameters = {
     },
   },
 };
-
+// -------------------------------------------------------------
+// Translated OptionItem Nine
+// -------------------------------------------------------------
+export const TranslatedOptionItemNine = Template.bind({});
+TranslatedOptionItemNine.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "optionitemnine",
+    dictionary: dictionary,
+  },
+};
+TranslatedOptionItemNine.parameters = {
+  docs: {
+    source: {
+      code: `<OptionItemNine {...${JSON.stringify(
+        TranslatedOptionItemNine.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
 // -------------------------------------------------------------
 // Multiple OptionItem Nine
 // -------------------------------------------------------------

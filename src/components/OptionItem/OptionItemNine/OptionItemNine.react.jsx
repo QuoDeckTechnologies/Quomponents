@@ -2,7 +2,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  getTranslation,
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OptionItemNine.scss";
@@ -60,6 +64,14 @@ OptionItemNine.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
     Use to enable/disable the component
    */
   isDisabled: PropTypes.bool,
@@ -95,6 +107,7 @@ OptionItemNine.defaultProps = {
   //=======================================
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
@@ -115,10 +128,16 @@ export default function OptionItemNine(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "option-item-nine");
   //-------------------------------------------------------------------
-  // 3. Get animation of the component
+  // 3. Translate the text objects in case their is a dictionary provided
+  //-------------------------------------------------------------------
+  let tObj = getTranslation(props.withTranslation);
+  //-------------------------------------------------------------------
+  // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
+
   // ========================= Render Function =================================
+
   return (
     <motion.div
       initial={animate.from}
@@ -175,7 +194,9 @@ export default function OptionItemNine(props) {
                 }
                 content={{
                   value: content?.message?.value,
-                  placeholder: content?.message?.placeholder,
+                  placeholder: tObj
+                    ? tObj.placeholder
+                    : content?.message?.placeholder,
                   maxLength: content?.message?.maxLength,
                 }}
                 asEmphasis="listInput"

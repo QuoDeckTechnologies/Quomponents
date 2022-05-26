@@ -2,7 +2,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  getTranslation,
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OptionItemFour.scss";
@@ -52,6 +56,14 @@ OptionItemFour.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
   Use to enable/disable the component
  */
   isDisabled: PropTypes.bool,
@@ -83,6 +95,7 @@ OptionItemFour.defaultProps = {
   //=======================================
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
@@ -107,21 +120,29 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "option-item-four");
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 4. Translate the text objects in case their is a dictionary provided
+  //-------------------------------------------------------------------
+  let tObj = getTranslation(props.withTranslation);
+  //-------------------------------------------------------------------
+  // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 5. Function to return checked value of the component
+  // 6. Function to return checked value of the component
   //-------------------------------------------------------------------
   const handleCheckBox = (data) => {
     setIsChecked(data?.checked);
     onSelect(content?.targetName, data?.checked);
   };
   //-------------------------------------------------------------------
-  // 6. Function to return input value of the component
+  // 7. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     onInput(name, value);
+  };
+  const getLabel = () => {
+    if (tObj) return isChecked ? tObj.correct : tObj.incorrect;
+    else return isChecked ? "Correct" : "Incorrect";
   };
 
   // ========================= Render Function =================================
@@ -139,7 +160,7 @@ export default function OptionItemFour(props) {
             content={{
               name: content?.targetName,
               checked: isChecked,
-              label: isChecked ? "Correct" : "Incorrect",
+              label: getLabel(),
             }}
             withColor={{ ...props.withColor }}
           />
@@ -150,7 +171,7 @@ export default function OptionItemFour(props) {
           }
           content={{
             value: content?.value,
-            placeholder: content?.placeholder,
+            placeholder: tObj ? tObj.placeholder : content?.placeholder,
             maxLength: content?.maxLength,
           }}
           asEmphasis="listInput"

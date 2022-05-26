@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import OptionItemFour from "../components/OptionItem/OptionItemFour/OptionItemFour.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    optionitemfour: {
+      placeholder: "विकल्प आइटम पांच",
+      correct: "सही",
+      incorrect: "ग़लत",
+    },
+  },
+});
+
 export default {
   title: "Design System/OptionItem/OptionItemFour",
   component: OptionItemFour,
@@ -22,6 +32,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -90,6 +110,11 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "optionitemfour",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -139,6 +164,29 @@ AnimatedOptionItemFour.parameters = {
     source: {
       code: `<OptionItemFour {...${JSON.stringify(
         AnimatedOptionItemFour.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Translated OptionItem Four
+// -------------------------------------------------------------
+export const TranslatedOptionItemFour = Template.bind({});
+TranslatedOptionItemFour.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "optionitemfour",
+    dictionary: dictionary,
+  },
+};
+TranslatedOptionItemFour.parameters = {
+  docs: {
+    source: {
+      code: `<OptionItemFour {...${JSON.stringify(
+        TranslatedOptionItemFour.args,
         null,
         2
       )}}/>`,

@@ -115,15 +115,15 @@ export default function OptionItemEight(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "option-item-eight");
   //-------------------------------------------------------------------
-  // 5. Translate the text objects in case their is a dictionary provided
+  // 3. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
   //-------------------------------------------------------------------
-  // 3. Get animation of the component
+  // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 4. Function to return input value of the component
+  // 5. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     props.onInput(name, value);
