@@ -151,8 +151,20 @@ export default function RedeemCard(props) {
     //-------------------------------------------------------------------
     // 6. Get translation of the component
     //-------------------------------------------------------------------
-    let tObj = getTranslation(props.withTranslation);;
-
+    let tObj = null;
+    let buttonText = "Redeem";
+    let inProgressText = "YOUR REDEMPTION REQUEST IS IN PROCESS";
+    let completedText = "YOU HAVE REDEEMED THIS OFFER";
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        buttonText = tObj.button;
+        inProgressText = tObj.inprogress;
+        completedText = tObj.completed;
+    }
     //-------------------------------------------------------------------
     // 7. Get the RedeemCard Component
     //-------------------------------------------------------------------
@@ -199,17 +211,17 @@ export default function RedeemCard(props) {
                 </div>
                 {props.content?.status?.toLowerCase() === "pending" &&
                     <div className={`qui-redeem-card-status`}>
-                        <Button isDisabled={props.isDisabled} withColor={buttonStyle} content={tObj ? tObj.button : "Redeem"} onClick={props.onClick} />
+                        <Button isDisabled={props.isDisabled} withColor={buttonStyle} content={buttonText} onClick={props.onClick} />
                     </div>
                 }
                 {props.content?.status?.toLowerCase() === "inprogress" &&
                     <div className={`qui-redeem-card-status qui-redeem-card-redeem-inprogress`}>
-                        YOUR REDEMPTION REQUEST IS IN PROCESS
+                        {inProgressText}
                     </div>
                 }
                 {props.content?.status?.toLowerCase() === "completed" &&
                     <div className={`qui-redeem-card-status qui-redeem-card-redeem-completed`}>
-                        YOU HAVE REDEEMED THIS OFFER!!
+                        {completedText}
                     </div>
                 }
             </div>}

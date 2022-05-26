@@ -4,9 +4,18 @@ import RedeemCard from "../components/RedeemCard/RedeemCard.react";
 const dictionary = JSON.stringify({
     hi: {
         RedeemCard: {
-            button: "मोचन"
+            button: "मोचन",
+            inprogress: "आपका मोचन अनुरोध प्रक्रिया में है",
+            completed: "आपने इस ऑफ़र को भुना लिया है"
         }
     },
+    en: {
+        RedeemCard: {
+            button: "Redeem",
+            inprogress: "YOUR REDEMPTION REQUEST IS IN PROCESS",
+            completed: "YOU HAVE REDEEMED THIS OFFER"
+        }
+    }
 });
 
 export default {

@@ -18,9 +18,18 @@ describe("RedeemCard", () => {
     const dictionary = JSON.stringify({
         hi: {
             RedeemCard: {
-                button: "मोचन"
+                button: "मोचन",
+                inprogress: "आपका मोचन अनुरोध प्रक्रिया में है",
+                completed: "आपने इस ऑफ़र को भुना लिया है"
             }
         },
+        en: {
+            RedeemCard: {
+                button: "Redeem",
+                inprogress: "YOUR REDEMPTION REQUEST IS IN PROCESS",
+                completed: "YOU HAVE REDEEMED THIS OFFER"
+            }
+        }
     });
     beforeEach(() => {
         jest.resetAllMocks();
@@ -86,20 +95,20 @@ describe("RedeemCard", () => {
                 dictionary: dictionary,
             },
         });
-        expect(component.exists()).toBe(true);
+        expect(component.find(".qui-redeem-card-status").text()).toBe("मोचन");
     });
 
-    it("should render correctly if translation object is not returned",
-        () => {
-            component.setProps({
-                withTranslation: {
-                    lang: "hi",
-                    tgt: "",
-                    dictionary: dictionary,
-                }
-            });
-            expect(component.exists()).toBe(true);
+    it("should render correctly with withTranslation with tgt null", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "en",
+                tgt: "RedeemCard",
+                dictionary: dictionary,
+            },
         });
+        expect(component.find(".qui-redeem-card-status").text()).toBe("Redeem");
+    });
+
     it("should render correctly when passed asFloated prop as left", () => {
         component.setProps({ asFloated: "left" });
         expect(component.exists()).toBe(true);
@@ -191,7 +200,7 @@ describe("RedeemCard", () => {
                 onClick={jest.fn()}
             />
         );
-        expect(component.find(".qui-redeem-card-redeem-completed").text()).toBe("YOU HAVE REDEEMED THIS OFFER!!");
+        expect(component.find(".qui-redeem-card-redeem-completed").text()).toBe("YOU HAVE REDEEMED THIS OFFER");
     });
 
     it("should render RedeemCard with default Image when nothing passed in the image props", () => {
