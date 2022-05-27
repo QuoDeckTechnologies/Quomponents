@@ -3,7 +3,7 @@ import OptionItemEight from "../components/OptionItem/OptionItemEight/OptionItem
 
 const dictionary = JSON.stringify({
   hi: {
-    optionitemeight: {
+    optionItemEight: {
       placeholder: "यह विकल्प ए है",
       buttonText: "रेखांकित बटन",
     },
@@ -90,7 +90,6 @@ export default {
 const Template = (args) => {
   return <OptionItemEight {...args} />;
 };
-
 export const Default = Template.bind({});
 Default.args = {
   content: {
@@ -111,7 +110,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "optionitemeight",
+    tgt: "optionItemEight",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -177,7 +176,7 @@ TranslatedOptionItemEight.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "optionitemeight",
+    tgt: "optionItemEight",
     dictionary: dictionary,
   },
 };
@@ -260,7 +259,6 @@ const MultipleTemplate = (args) => {
     });
     setContentArr([...tmp_arr]);
   };
-
   return (
     <div>
       {contentArr.map((content, index) => {

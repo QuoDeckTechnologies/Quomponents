@@ -3,7 +3,7 @@ import OptionItemSix from "../components/OptionItem/OptionItemSix/OptionItemSix.
 
 const dictionary = JSON.stringify({
   hi: {
-    optionitemsix: {
+    optionItemSix: {
       placeholder: "यह विकल्प ए है",
       captionPlaceholder: "विकल्प ए के लिए कैप्शन",
       uploadButton: "अपलोड",
@@ -98,7 +98,6 @@ export default {
 const Template = (args) => {
   return <OptionItemSix {...args} />;
 };
-
 export const Default = Template.bind({});
 Default.args = {
   content: {
@@ -123,7 +122,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "optionitemsix",
+    tgt: "optiontemSix",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -136,7 +135,6 @@ Default.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
 // Colored OptionItem Six
 // -------------------------------------------------------------
@@ -191,7 +189,7 @@ TranslatedOptionItemSix.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "optionitemsix",
+    tgt: "optionItemSix",
     dictionary: dictionary,
   },
 };
@@ -325,7 +323,6 @@ const MultipleTemplate = (args) => {
     });
     setContentArr([...tmp_arr]);
   };
-
   return (
     <div>
       {contentArr.map((content, index) => {

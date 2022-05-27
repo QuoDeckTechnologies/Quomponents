@@ -7,7 +7,7 @@ import { shallow, mount } from "enzyme";
 // -------------------------------------
 import OptionItemTwo from "../OptionItem/OptionItemTwo/OptionItemTwo.react";
 
-describe("Option Item Seven", () => {
+describe("Option Item Two", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -15,7 +15,7 @@ describe("Option Item Seven", () => {
 
   const dictionary = JSON.stringify({
     hi: {
-      optionitemTwo: {
+      optionItemTwo: {
         placeholder: "यह विकल्प ए है",
         correct: "सही",
         incorrect: "ग़लत",
@@ -84,7 +84,7 @@ describe("Option Item Seven", () => {
     component.setProps({
       withTranslation: {
         lang: "hi",
-        tgt: "optionitemTwo",
+        tgt: "optionItemTwo",
         dictionary: dictionary,
       },
     });
@@ -141,7 +141,7 @@ describe("Option Item Seven", () => {
     component.setProps({
       withTranslation: {
         lang: "hi",
-        tgt: "optionitemTwo",
+        tgt: "optionItemTwo",
         dictionary: dictionary,
       },
     });

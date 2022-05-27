@@ -15,7 +15,7 @@ describe("Option Item Seven", () => {
 
   const dictionary = JSON.stringify({
     hi: {
-      optionitemseven: {
+      optionItemSeven: {
         placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
         correct: "सही",
         incorrect: "ग़लत",
@@ -89,7 +89,7 @@ describe("Option Item Seven", () => {
     component.setProps({
       withTranslation: {
         lang: "hi",
-        tgt: "optionitemseven",
+        tgt: "optionItemSeven",
         dictionary: dictionary,
       },
     });
@@ -146,7 +146,7 @@ describe("Option Item Seven", () => {
     component.setProps({
       withTranslation: {
         lang: "hi",
-        tgt: "optionitemseven",
+        tgt: "optionItemSeven",
         dictionary: dictionary,
       },
     });

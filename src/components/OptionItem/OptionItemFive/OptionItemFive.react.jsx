@@ -32,8 +32,8 @@ OptionItemFive.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to override component colors
-    */
+  Use to override component colors
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
@@ -56,8 +56,8 @@ OptionItemFive.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,

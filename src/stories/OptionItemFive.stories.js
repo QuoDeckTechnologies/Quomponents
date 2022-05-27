@@ -3,7 +3,7 @@ import OptionItemFive from "../components/OptionItem/OptionItemFive/OptionItemFi
 
 const dictionary = JSON.stringify({
   hi: {
-    optionitemfive: {
+    optionItemFive: {
       placeholder: "विकल्प आइटम पांच",
       uploadButton: "अपलोड",
     },
@@ -91,7 +91,6 @@ export default {
 const Template = (args) => {
   return <OptionItemFive {...args} />;
 };
-
 export const Default = Template.bind({});
 Default.args = {
   content: {
@@ -113,7 +112,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "optionitemfive",
+    tgt: "optionItemFive",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -180,7 +179,7 @@ TranslatedOptionItemFive.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "optionitemfive",
+    tgt: "optionItemFive",
     dictionary: dictionary,
   },
 };
@@ -282,7 +281,6 @@ const MultipleTemplate = (args) => {
     });
     setContentArr([...tmp_arr]);
   };
-
   return (
     <div>
       {contentArr.map((content, index) => {
