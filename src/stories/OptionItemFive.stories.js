@@ -140,7 +140,7 @@ ColoredOptionItemFive.args = {
 ColoredOptionItemFive.parameters = {
   docs: {
     source: {
-      code: `<OptionItemFive{...${JSON.stringify(
+      code: `<OptionItemFive {...${JSON.stringify(
         ColoredOptionItemFive.args,
         null,
         2
