@@ -102,7 +102,7 @@ AmplayfierDateBlock.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asPadded:'normal',
+  asPadded: "normal",
   asSize: "normal",
   asFloated: "none",
   withColor: null,
@@ -197,7 +197,7 @@ export default function AmplayfierDateBlock(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <AmplayfierDrawerRect {...props}>
+      <AmplayfierDrawerRect {...props} isFluid={false}>
         <div
           className={`${quommonClasses.childClasses} qui-amplayfier-date-block-container`}
           style={{

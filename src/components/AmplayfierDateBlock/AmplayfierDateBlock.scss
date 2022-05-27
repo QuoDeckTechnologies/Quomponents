@@ -1,3 +1,13 @@
+.qui.qui-amplayfier-date-block .is-fluid {
+  width: auto;
+  min-width: auto;
+}
+.qui.qui-amplayfier-date-block.is-fluid {
+  .qui-amplayfier-drawer-rect {
+    width: 100%;
+  }
+}
+
 .qui .qui-amplayfier-date-block-container {
   color: white;
 }
