@@ -122,9 +122,21 @@ export default function AmplayfierDateBlock(props) {
   // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "amplayfier-date-block");
-  let date = content
-    ? new Date(content).toDateString()
-    : new Date().toDateString();
+  let date;
+  if (
+    content === "" ||
+    content === "''" ||
+    content === "'" ||
+    content === null ||
+    content === undefined
+  ) {
+    date = new Date().toDateString();
+  } else {
+    date = new Date(content).toDateString();
+  }
+  // let date = content
+  //   ? new Date(content).toDateString()
+  //   : new Date().toDateString();
   //-------------------------------------------------------------------
   // 3. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
