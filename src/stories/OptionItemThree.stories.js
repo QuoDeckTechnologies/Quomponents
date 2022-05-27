@@ -3,7 +3,7 @@ import OptionItemThree from "../components/OptionItem/OptionItemThree/OptionItem
 
 const dictionary = JSON.stringify({
   hi: {
-    optionitemthree: {
+    optionItemThree: {
       uploadButton: "अपलोड",
       correct: "सही",
       incorrect: "ग़लत",
@@ -92,7 +92,6 @@ export default {
 const Template = (args) => {
   return <OptionItemThree {...args} />;
 };
-
 export const Default = Template.bind({});
 Default.args = {
   content: {
@@ -112,7 +111,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "optionitemthree",
+    tgt: "optionItemThree",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -179,7 +178,7 @@ TranslatedOptionItemThree.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "optionitemthree",
+    tgt: "optionItemThree",
     dictionary: dictionary,
   },
 };
@@ -278,7 +277,6 @@ const MultipleTemplate = (args) => {
     });
     setContentArr([...tmp_arr]);
   };
-
   return (
     <div>
       {contentArr?.map((content, index) => {

@@ -3,7 +3,7 @@ import OptionItemSeven from "../components/OptionItem/OptionItemSeven/OptionItem
 
 const dictionary = JSON.stringify({
   hi: {
-    optionitemseven: {
+    optionItemSeven: {
       placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
       correct: "सही",
       incorrect: "ग़लत",
@@ -99,7 +99,6 @@ export default {
 const Template = (args) => {
   return <OptionItemSeven {...args} />;
 };
-
 export const Default = Template.bind({});
 Default.args = {
   content: {
@@ -122,7 +121,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "optionitemseven",
+    tgt: "optionItemSeven",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -189,7 +188,7 @@ TranslatedOptionItemSeven.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "optionitemseven",
+    tgt: "optionItemSeven",
     dictionary: dictionary,
   },
 };
@@ -317,7 +316,6 @@ const MultipleTemplate = (args) => {
     });
     setContentArr([...tmp_arr]);
   };
-
   return (
     <div>
       {contentArr?.map((content, index) => {

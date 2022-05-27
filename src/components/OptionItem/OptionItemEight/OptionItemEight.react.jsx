@@ -161,10 +161,13 @@ export default function OptionItemEight(props) {
             }}
             onClick={props.onSubmit}
           >
-            {tObj ? tObj.buttonText : content?.buttonText}
+            {tObj
+              ? tObj.buttonText
+              : content?.buttonText
+              ? content?.buttonText
+              : "Outlined button"}
           </Button>
         </div>
-
         <div className="qui-option-item-eight-close-icon">
           <i
             className="qui-option-item-eight-icon fas fa-times"

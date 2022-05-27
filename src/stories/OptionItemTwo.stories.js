@@ -3,7 +3,7 @@ import OptionItemTwo from "../components/OptionItem/OptionItemTwo/OptionItemTwo.
 
 const dictionary = JSON.stringify({
   hi: {
-    optionitemtwo: {
+    optionItemTwo: {
       placeholder: "यह विकल्प ए है",
       correct: "सही",
       incorrect: "ग़लत",
@@ -91,7 +91,6 @@ export default {
 const Template = (args) => {
   return <OptionItemTwo {...args} />;
 };
-
 export const Default = Template.bind({});
 Default.args = {
   content: {
@@ -107,7 +106,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "optionitemtwo",
+    tgt: "optionItemTwo",
     dictionary: dictionary,
   },
   withAnimation: {
@@ -178,7 +177,7 @@ TranslatedOptionItemTwo.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "optionitemtwo",
+    tgt: "optionItemTwo",
     dictionary: dictionary,
   },
 };
@@ -280,7 +279,6 @@ const MultipleTemplate = (args) => {
     });
     setContentArr([...tmp_arr]);
   };
-
   return (
     <div>
       {contentArr?.map((content, index) => {

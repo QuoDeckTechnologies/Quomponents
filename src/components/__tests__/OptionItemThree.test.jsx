@@ -15,7 +15,7 @@ describe("Option Item Three", () => {
 
   const dictionary = JSON.stringify({
     hi: {
-      optionitemThree: {
+      optionItemThree: {
         correct: "सही",
         incorrect: "ग़लत",
         uploadButton: "अपलोड",
@@ -84,7 +84,7 @@ describe("Option Item Three", () => {
     component.setProps({
       withTranslation: {
         lang: "hi",
-        tgt: "optionitemThree",
+        tgt: "optionItemThree",
         dictionary: dictionary,
       },
     });
@@ -138,7 +138,7 @@ describe("Option Item Three", () => {
     component.setProps({
       withTranslation: {
         lang: "hi",
-        tgt: "optionitemThree",
+        tgt: "optionItemThree",
         dictionary: dictionary,
       },
     });
