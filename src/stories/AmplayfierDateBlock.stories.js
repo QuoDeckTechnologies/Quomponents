@@ -126,7 +126,7 @@ export default {
 const Template = (args) => <AmplayfierDateBlock {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: "",
+  content: "1 Jan 2002",
   isCircular: false,
   asPadded: "normal",
   asSize: "normal",

@@ -84,10 +84,6 @@ AmplayfierDateBlock.propTypes = {
     */
   isHidden: PropTypes.bool,
   /**
-    Use to enable/disable the component
-    */
-  isDisabled: PropTypes.bool,
-  /**
     Use to toggle the component taking the full width of the parent container
     */
   isFluid: PropTypes.bool,
@@ -109,7 +105,6 @@ AmplayfierDateBlock.defaultProps = {
   withAnimation: null,
   withTranslation: null,
   isHidden: false,
-  isDisabled: false,
   isFluid: false,
 };
 /**

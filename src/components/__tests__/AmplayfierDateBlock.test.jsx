@@ -45,7 +45,6 @@ describe("AmplayfierDateBlock", () => {
         withAnimation={null}
         withTranslation={null}
         isHidden={false}
-        isDisabled={false}
         isFluid={false}
       />
     );
@@ -97,20 +96,6 @@ describe("AmplayfierDateBlock", () => {
   it("should render correctly when passed isHidden props is false", () => {
     component.setProps({
       isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props is true", () => {
-    component.setProps({
-      isDisabled: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props is false", () => {
-    component.setProps({
-      isDisabled: false,
     });
     expect(component.exists()).toBe(true);
   });
