@@ -36,6 +36,7 @@ OptionItemEight.propTypes = {
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
+    textColor:PropTypes.string,
   }),
   /**
     Use to define the entry animation of the component
@@ -155,8 +156,8 @@ export default function OptionItemEight(props) {
           <Button
             variant="outlined"
             style={{
-              borderColor: props.withColor.accentColor,
-              color: props.withColor.accentColor,
+              borderColor: props.withColor?.accentColor,
+              color: props.withColor?.accentColor,
             }}
             onClick={props.onSubmit}
           >

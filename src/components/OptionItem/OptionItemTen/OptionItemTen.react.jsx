@@ -50,6 +50,7 @@ OptionItemTen.propTypes = {
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
+    textColor: PropTypes.string,
   }),
   /**
     Use to define the entry animation of the component
@@ -177,7 +178,7 @@ export default function OptionItemTen(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div className="qui-option-item-ten-container">
-        <div className="qui-option-item-inputfieldone">
+        <div className="qui-option-item-ten-inputfield-one">
           <InputField
             name={
               content?.option?.targetName
@@ -205,7 +206,7 @@ export default function OptionItemTen(props) {
             withColor={{ ...props.withColor }}
           />
         </div>
-        <div className="qui-option-item-inputfieldtwo">
+        <div className="qui-option-item-ten-inputfield-two">
           <InputField
             name={
               content?.header?.targetName
@@ -232,7 +233,7 @@ export default function OptionItemTen(props) {
           ></i>
         </div>
       </div>
-      <div className="qui-option-item-inputfieldthree">
+      <div className="qui-option-item-ten-inputfield-three">
         <InputField
           name={
             content?.message?.targetName
