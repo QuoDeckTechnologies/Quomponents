@@ -170,7 +170,7 @@ export default function Triptych(props) {
                         {_.map(data?.triptych, (image, index) => {
                             return (
                                 <div className="qui-clickable-image-container" key={"triptych-image" + index}>
-                                    <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={(e) => props.onClick(e)} />
+                                    <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
                                 </div>
                             );
                         })}
@@ -209,7 +209,7 @@ export default function Triptych(props) {
                     {_.map(data?.triptych, (image, index) => {
                         return (
                             <div className="qui-clickable-image-container" key={"triptych-image" + index}>
-                                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={(e) => props.onClick(e)} />
+                                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
                             </div>
                         );
                     })}
