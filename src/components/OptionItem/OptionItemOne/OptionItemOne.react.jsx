@@ -18,8 +18,8 @@ OptionItemOne.propTypes = {
   // Component Specific props
   //=======================================
   /**
-     OptionItemOne targetName, value, placeholder should be passed in content object
-    */
+  OptionItemOne targetName, value, placeholder should be passed in content object
+  */
   content: PropTypes.shape({
     targetName: PropTypes.string,
     value: PropTypes.string,
@@ -30,8 +30,8 @@ OptionItemOne.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to override component colors
-    */
+  Use to override component colors
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
@@ -54,8 +54,8 @@ OptionItemOne.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
@@ -63,19 +63,19 @@ OptionItemOne.propTypes = {
   }),
   /**
   Use to enable/disable the component
- */
+  */
   isDisabled: PropTypes.bool,
   /**
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
   /**
-    OptionItemOne component must have the onInput function passed as props
-    */
+  OptionItemOne component must have the onInput function passed as props
+  */
   onInput: PropTypes.func.isRequired,
   /**
-    OptionItemOne component must have the onClick function passed as props
-    */
+  OptionItemOne component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 

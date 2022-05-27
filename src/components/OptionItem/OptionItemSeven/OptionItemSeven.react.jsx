@@ -20,8 +20,8 @@ OptionItemSeven.propTypes = {
   // Component Specific props
   //=======================================
   /**
-      OptionItemSeven data should be passed in content object
-      */
+  OptionItemSeven data should be passed in content object
+  */
   content: PropTypes.shape({
     targetName: PropTypes.string,
     value: PropTypes.string,
@@ -34,16 +34,16 @@ OptionItemSeven.propTypes = {
   // Quommon props
   //=======================================
   /**
-      Use to override component colors
-      */
+  Use to override component colors
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -59,36 +59,36 @@ OptionItemSeven.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-    Use to enable/disable the component
-   */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-      OptionItemSeven component must have the onInput function passed as props
-      */
+  OptionItemSeven component must have the onInput function passed as props
+  */
   onInput: PropTypes.func.isRequired,
   /**
-      OptionItemSeven component must have the onSelect function passed as props
-      */
+  OptionItemSeven component must have the onSelect function passed as props
+  */
   onSelect: PropTypes.func.isRequired,
   /**
-      OptionItemSeven component must have the onUpload function passed as props
-      */
+  OptionItemSeven component must have the onUpload function passed as props
+  */
   onUpload: PropTypes.func.isRequired,
   /**
-      OptionItemSeven component must have the onClick function passed as props
-      */
+  OptionItemSeven component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -131,34 +131,34 @@ export default function OptionItemSeven(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "option-item-seven");
   //-------------------------------------------------------------------
-  // 3. Translate the text objects in case their is a dictionary provided
+  // 4. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 5. Function to return checked value of the component
+  // 6. Function to return checked value of the component
   //-------------------------------------------------------------------
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
     props.onSelect(content?.targetName, e.target.checked);
   };
   //-------------------------------------------------------------------
-  // 6. Function to return input value of the component
+  // 7. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     props.onInput(name, value);
   };
   //-------------------------------------------------------------------
-  // 7. Function to update value of the input field
+  // 8. Function to upload image to content array
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
     props.onUpload(content?.targetName, image);
   };
   //-------------------------------------------------------------------
-  // 8. Function to return label of the checkbox
+  // 9. Function to return label of the checkbox
   //-------------------------------------------------------------------
   const getLabel = () => {
     if (tObj) return isChecked ? tObj.correct : tObj.incorrect;

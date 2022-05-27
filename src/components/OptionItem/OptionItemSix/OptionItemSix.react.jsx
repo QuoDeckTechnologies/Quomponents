@@ -19,8 +19,8 @@ OptionItemSix.propTypes = {
   // Component Specific props
   //=======================================
   /**
-      OptionItemSix data should be passed in content field and it is a required field
-      */
+  OptionItemSix data should be passed in content field and it is a required field
+  */
   content: PropTypes.shape({
     targetName: PropTypes.string,
     value: PropTypes.string,
@@ -35,16 +35,16 @@ OptionItemSix.propTypes = {
   // Quommon props
   //=======================================
   /**
-      Use to override component colors
-      */
+  Use to override component colors
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -60,36 +60,36 @@ OptionItemSix.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-    Use to enable/disable the component
-   */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-      OptionItemSix component must have the onInput function passed as props
-      */
+  OptionItemSix component must have the onInput function passed as props
+  */
   onInput: PropTypes.func.isRequired,
   /**
-      OptionItemSix component must have the onInput function passed as props
-      */
+  OptionItemSix component must have the onInput function passed as props
+  */
   onCaption: PropTypes.func.isRequired,
   /**
-      OptionItemSix component must have the onUpload function passed as props
-      */
+  OptionItemSix component must have the onUpload function passed as props
+  */
   onUpload: PropTypes.func.isRequired,
   /**
-      OptionItemSix component must have the onClick function passed as props
-      */
+  OptionItemSix component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -134,18 +134,20 @@ export default function OptionItemSix(props) {
   // 5. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
-
+  //-------------------------------------------------------------------
+  // 6. Function to upload image to content array
+  //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
     props.onUpload(content?.targetName, image);
   };
   //-------------------------------------------------------------------
-  // 6. Function to return input value of the component
+  // 7. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
     props.onInput(name, value);
   };
   //-------------------------------------------------------------------
-  // 7. Function to return caption value of the component
+  // 8. Function to return caption value of the component
   //-------------------------------------------------------------------
   const handleCaptionValue = (name, captionValue) => {
     props.onCaption(name, captionValue);

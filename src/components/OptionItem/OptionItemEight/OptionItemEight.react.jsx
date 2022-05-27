@@ -18,8 +18,8 @@ OptionItemEight.propTypes = {
   // Component Specific props
   //=======================================
   /**
-      OptionItemEight data should be passed in content object
-      */
+  OptionItemEight data should be passed in content object
+  */
   content: PropTypes.shape({
     targetName: PropTypes.string,
     value: PropTypes.string,
@@ -31,16 +31,16 @@ OptionItemEight.propTypes = {
   // Quommon props
   //=======================================
   /**
-      Use to override component colors
-      */
+  Use to override component colors
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
-    textColor:PropTypes.string,
+    textColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -56,32 +56,32 @@ OptionItemEight.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-    Use to enable/disable the component
-   */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-      OptionItemEight component must have the onInput function passed as props
-      */
+  OptionItemEight component must have the onInput function passed as props
+  */
   onInput: PropTypes.func.isRequired,
   /**
-      OptionItemEight component must have the onClick function passed as props
-      */
+  OptionItemEight component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
   /**
-      OptionItemEight component must have the onClick function passed as props
-      */
+  OptionItemEight component must have the onClick function passed as props
+  */
   onSubmit: PropTypes.func.isRequired,
 };
 
@@ -164,8 +164,8 @@ export default function OptionItemEight(props) {
             {tObj
               ? tObj.buttonText
               : content?.buttonText
-              ? content?.buttonText
-              : "Outlined button"}
+                ? content?.buttonText
+                : "Outlined button"}
           </Button>
         </div>
         <div className="qui-option-item-eight-close-icon">

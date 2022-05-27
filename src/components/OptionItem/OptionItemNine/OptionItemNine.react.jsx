@@ -18,8 +18,8 @@ OptionItemNine.propTypes = {
   // Component Specific props
   //=======================================
   /**
-       OptionItemNine targetName, value, placeholder should be passed in content object
-    */
+  ptionItemNine targetName, value, placeholder should be passed in content object
+  */
   content: PropTypes.shape({
     shortFieldOne: PropTypes.shape({
       targetName: PropTypes.string,
@@ -40,15 +40,15 @@ OptionItemNine.propTypes = {
   // Quommon props
   //=======================================
   /**
-      Use to override component colors
-      */
+  Use to override component colors
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -64,36 +64,36 @@ OptionItemNine.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-    Use to enable/disable the component
-   */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-      OptionItemNine component must have the onInput function passed as props
-    */
+  OptionItemNine component must have the onInput function passed as props
+  */
   onInput: PropTypes.func.isRequired,
   /**
-      OptionItemNine component must have the onShortFieldOneInput function passed as props
-    */
+  OptionItemNine component must have the onShortFieldOneInput function passed as props
+  */
   onShortFieldOneInput: PropTypes.func.isRequired,
   /**
-      OptionItemNine component must have the onShortFieldTwoInput function passed as props
-    */
+  OptionItemNine component must have the onShortFieldTwoInput function passed as props
+  */
   onShortFieldTwoInput: PropTypes.func.isRequired,
   /**
-      OptionItemNine component must have the onClick function passed as props
-    */
+  OptionItemNine component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 

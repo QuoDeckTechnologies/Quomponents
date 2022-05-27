@@ -19,8 +19,8 @@ OptionItemTwo.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    OptionItemTwo targetName, value, placeholder, checked should be passed in content object
-    */
+  OptionItemTwo targetName, value, placeholder, checked should be passed in content object
+  */
   content: PropTypes.shape({
     targetName: PropTypes.string,
     value: PropTypes.string,
@@ -32,8 +32,8 @@ OptionItemTwo.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to override component colors
-    */
+  Use to override component colors
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
@@ -56,8 +56,8 @@ OptionItemTwo.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-   Use to show a translated version of the component text. Dictionary must be valid JSON. 
-   */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
@@ -65,23 +65,23 @@ OptionItemTwo.propTypes = {
   }),
   /**
   Use to enable/disable the component
- */
+  */
   isDisabled: PropTypes.bool,
   /**
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
   /**
-    OptionItemTwo component must have the onInput function passed as props
-    */
+  OptionItemTwo component must have the onInput function passed as props
+  */
   onInput: PropTypes.func.isRequired,
   /**
-    OptionItemTwo component must have the onSelect function passed as props
-    */
+  OptionItemTwo component must have the onSelect function passed as props
+  */
   onSelect: PropTypes.func.isRequired,
   /**
-    OptionItemTwo component must have the onClick function passed as props
-    */
+  OptionItemTwo component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 

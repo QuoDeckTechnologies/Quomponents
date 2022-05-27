@@ -19,8 +19,8 @@ OptionItemTen.propTypes = {
   // Component Specific props
   //=======================================
   /**
-      OptionItemTen data should be passed in content field and it is a required field
-      */
+  OptionItemTen data should be passed in content field and it is a required field
+  */
   content: PropTypes.shape({
     option: PropTypes.shape({
       targetName: PropTypes.string,
@@ -45,16 +45,16 @@ OptionItemTen.propTypes = {
   // Quommon props
   //=======================================
   /**
-      Use to override component colors
-      */
+  Use to override component colors
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -70,40 +70,40 @@ OptionItemTen.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-   Use to show a translated version of the component text. Dictionary must be valid JSON. 
-   */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-    Use to enable/disable the component
-   */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-      OptionItemTen component must have the onClick function passed as props
-      */
+  OptionItemTen component must have the onClick function passed as props
+  */
   onInput: PropTypes.func.isRequired,
   /**
-      OptionItemTen component must have the onClick function passed as props
-      */
+  OptionItemTen component must have the onClick function passed as props
+  */
   onHeader: PropTypes.func.isRequired,
   /**
-      OptionItemTen component must have the onClick function passed as props
-      */
+  OptionItemTen component must have the onClick function passed as props
+  */
   onMessage: PropTypes.func.isRequired,
   /**
-      OptionItemTen component must have the onUpload function passed as props
-      */
+  OptionItemTen component must have the onUpload function passed as props
+  */
   onUpload: PropTypes.func.isRequired,
   /**
-      OptionItemTen component must have the onClick function passed as props
-      */
+  OptionItemTen component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -146,7 +146,7 @@ export default function OptionItemTen(props) {
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
   //-------------------------------------------------------------------
-  // 5. Function to update value of the input field
+  // 5. Function to upload image to content array
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
     props.onUpload(content?.option?.targetName, image);

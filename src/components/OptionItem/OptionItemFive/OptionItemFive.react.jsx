@@ -19,8 +19,8 @@ OptionItemFive.propTypes = {
   // Component Specific props
   //=======================================
   /**
-     OptionItemFive targetName, value, placeholder should be passed in content object
-    */
+  OptionItemFive targetName, value, placeholder should be passed in content object
+  */
   content: PropTypes.shape({
     targetName: PropTypes.string,
     value: PropTypes.string,
@@ -66,23 +66,23 @@ OptionItemFive.propTypes = {
   }),
   /**
   Use to enable/disable the component
- */
+  */
   isDisabled: PropTypes.bool,
   /**
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
   /**
-    OptionItemFive component must have the onUpload function passed as props
-    */
+  OptionItemFive component must have the onUpload function passed as props
+  */
   onUpload: PropTypes.func.isRequired,
   /**
-    OptionItemFive component must have the onInput function passed as props
-    */
+  OptionItemFive component must have the onInput function passed as props
+  */
   onInput: PropTypes.func.isRequired,
   /**
-    OptionItemFive component must have the onClick function passed as props
-    */
+  OptionItemFive component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -130,7 +130,7 @@ export default function OptionItemFive(props) {
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
   //-------------------------------------------------------------------
-  // 6. Function to update value of the input field
+  // 6. Function to upload image to content array
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
     setImage(image);

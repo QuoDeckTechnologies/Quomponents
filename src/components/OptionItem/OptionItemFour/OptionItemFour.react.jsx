@@ -32,8 +32,8 @@ OptionItemFour.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to override component colors
-    */
+  Use to override component colors
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
@@ -56,8 +56,8 @@ OptionItemFour.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
@@ -65,23 +65,23 @@ OptionItemFour.propTypes = {
   }),
   /**
   Use to enable/disable the component
- */
+  */
   isDisabled: PropTypes.bool,
   /**
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
   /**
-    OptionItemFour component must have the onSelect function passed as props
-    */
+  OptionItemFour component must have the onSelect function passed as props
+  */
   onSelect: PropTypes.func.isRequired,
   /**
-    OptionItemFour component must have the onInput function passed as props
-    */
+  OptionItemFour component must have the onInput function passed as props
+  */
   onInput: PropTypes.func.isRequired,
   /**
-    OptionItemFour component must have the onClick function passed as props
-    */
+  OptionItemFour component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
