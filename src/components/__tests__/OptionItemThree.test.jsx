@@ -47,9 +47,9 @@ describe("Option Item Three", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onSelect={() => { }}
-        onUpload={() => { }}
-        onClick={() => { }}
+        onSelect={() => {}}
+        onUpload={() => {}}
+        onClick={() => {}}
       />
     );
   });
@@ -126,9 +126,9 @@ describe("Option Item Three", () => {
           targetName: "name",
           checked: false,
         }}
-        onSelect={() => { }}
-        onUpload={() => { }}
-        onClick={() => { }}
+        onSelect={() => {}}
+        onUpload={() => {}}
+        onClick={() => {}}
       />
     );
     expect(component.exists()).toBe(true);
@@ -147,10 +147,24 @@ describe("Option Item Three", () => {
       .simulate("change", { target: { checked: true } });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly without throwing error when radio button is used", () => {
     component
       .find(".qui-option-item-three-radio")
       .simulate("change", { target: { checked: true } });
+  });
+
+  it("should render correctly without throwing error when radio and upload button is used and target name is not provided", async () => {
+    component.setProps({
+      content: {
+        checked: false,
+      },
+    });
+    component
+      .find(".qui-option-item-three-radio")
+      .simulate("change", { target: { checked: true } });
+    component.find("OptionalImageField").simulate("click", {});
+    await pauseFor(100);
   });
 
   it("should render correctly without throwing error when clicked on close icon", () => {
