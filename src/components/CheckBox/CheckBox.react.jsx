@@ -17,6 +17,7 @@ CheckBox.propTypes = {
     CheckBox Text has to be in content prop.
     */
   content: PropTypes.shape({
+    name: PropTypes.string,
     label: PropTypes.string,
     checked: PropTypes.bool,
   }),
@@ -133,7 +134,7 @@ export default function CheckBox(props) {
           <Checkbox
             style={{ color: withColor?.accentColor }}
             checked={isChecked}
-            id="qui-check-box-element"
+            id={`qui-check-box-element-${content?.name}`}
             disabled={props.isDisabled}
             size={getSize()}
             value={content?.label}
@@ -147,7 +148,7 @@ export default function CheckBox(props) {
           />
         )}
         <label
-          htmlFor="qui-check-box-element"
+          htmlFor={`qui-check-box-element-${content?.name}`}
           className="qui-check-box-element"
         >
           <h4 style={{ color: withColor?.textColor }}>{content?.label}</h4>
