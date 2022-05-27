@@ -55,7 +55,7 @@ describe("InputField", () => {
                 label: "Input new Name",
                 value: "text here",
                 placeholder: "Options",
-                maxLength: 10,
+                maxLength: 0,
             },
             asEmphasis: "charLimited"
         })
@@ -68,7 +68,7 @@ describe("InputField", () => {
                 label: "Input new Name",
                 value: "text here",
                 placeholder: "Options",
-                maxLength: 10,
+                maxLength: 0,
             },
             asEmphasis: "listInput"
         })
