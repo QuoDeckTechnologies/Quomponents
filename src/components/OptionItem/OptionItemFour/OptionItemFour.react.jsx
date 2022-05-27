@@ -19,8 +19,8 @@ OptionItemFour.propTypes = {
   // Component Specific props
   //=======================================
   /**
-     OptionItemFour targetName, value, placeholder should be passed in content object
-    */
+  OptionItemFour targetName, value, placeholder should be passed in content object
+  */
   content: PropTypes.shape({
     targetName: PropTypes.string,
     value: PropTypes.string,

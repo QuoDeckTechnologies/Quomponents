@@ -13,6 +13,7 @@ import "./OptionItemEight.scss";
 import "../../../common/stylesheets/overrule.scss";
 import InputField from "../../InputField/InputField.react";
 import Button from "@mui/material/Button";
+
 OptionItemEight.propTypes = {
   //=======================================
   // Component Specific props
@@ -164,8 +165,8 @@ export default function OptionItemEight(props) {
             {tObj
               ? tObj.buttonText
               : content?.buttonText
-                ? content?.buttonText
-                : "Outlined button"}
+              ? content?.buttonText
+              : "Outlined button"}
           </Button>
         </div>
         <div className="qui-option-item-eight-close-icon">

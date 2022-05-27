@@ -18,7 +18,7 @@ OptionItemNine.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  ptionItemNine targetName, value, placeholder should be passed in content object
+  OptionItemNine targetName, value, placeholder should be passed in content object
   */
   content: PropTypes.shape({
     shortFieldOne: PropTypes.shape({

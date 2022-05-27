@@ -19,8 +19,8 @@ OptionItemThree.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    OptionItemThree targetName, value, placeholder, checked should be passed in content object
-    */
+  OptionItemThree targetName, value, placeholder, checked should be passed in content object
+  */
   content: PropTypes.shape({
     targetName: PropTypes.string,
     image: PropTypes.object,
@@ -35,7 +35,7 @@ OptionItemThree.propTypes = {
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
-    textColor:PropTypes.string,
+    textColor: PropTypes.string,
   }),
   /**
   Use to define the entry animation of the component
@@ -132,7 +132,6 @@ export default function OptionItemThree(props) {
   //-------------------------------------------------------------------
   // 6. Function to change checked state of the component
   //-------------------------------------------------------------------
-
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
     props.onSelect(
@@ -188,7 +187,7 @@ export default function OptionItemThree(props) {
           <OptionalImageField
             content={{
               title: tObj ? tObj.uploadButton : content?.uploadButton,
-              icon: "fas fa-upload"
+              icon: "fas fa-upload",
             }}
             onClick={(image) => handleImageUpload(image)}
             withColor={{ ...props.withColor }}
