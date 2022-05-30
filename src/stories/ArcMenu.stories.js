@@ -9,6 +9,32 @@ import Nugget_Game from "../assets/nuggets/nugget_game.png";
 import Nugget_Article from "../assets/nuggets/nugget_article.png";
 import Nugget_Feedback from "../assets/nuggets/nugget_feedback.png";
 
+const dictionary = JSON.stringify({
+  hi: {
+    arcmenu: {
+      menuContent: [
+        {
+          header: "सीखें",
+          list: [
+            "अपलोड scorm",
+            "अपलोड pdf",
+            "वीडियो लिंक जोड़ें",
+            "qdf डेक बनाएं",
+          ],
+        },
+        {
+          header: "मूल्यांकन",
+          list: ["सर्वेक्षण बनाएं", "प्रश्नोत्तरी बनाएँ", "एक खेल जोड़ें"],
+        },
+        {
+          header: "पुरस्कृत",
+          list: ["प्रमाण पत्र दो", "एक बैज दें", "इनाम दो"],
+        },
+      ],
+    },
+  },
+});
+
 export default {
   title: "Design System/ArcMenu/ArcMenu",
   component: ArcMenu,
@@ -34,6 +60,16 @@ export default {
           backgroundColor: "",
           accentColor: "",
           textColor: "",
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -104,6 +140,11 @@ Default.args = {
     accentColor: "",
     textColor: "",
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "arcmenu",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -173,7 +214,30 @@ MenuButton.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Menu button
+// Translated Menu button
+// -------------------------------------------------------------
+export const TranslatedMenuButton = Template.bind({});
+TranslatedMenuButton.args = {
+  ...MenuButton.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "arcmenu",
+    dictionary: dictionary,
+  },
+};
+TranslatedMenuButton.parameters = {
+  docs: {
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(
+        TranslatedMenuButton.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Add button
 // -------------------------------------------------------------
 export const AddButton = Template.bind({});
 AddButton.args = {
