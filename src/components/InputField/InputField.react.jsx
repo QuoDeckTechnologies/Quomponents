@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import TextField from '@mui/material/TextField';
 import { motion } from "framer-motion";
@@ -117,8 +117,14 @@ export default function InputField(props) {
     //-------------------------------------------------------------------
     // 2. Declaration of InputField's value
     //-------------------------------------------------------------------
-    const [input, setInput] = useState(props.content?.value);
-    const [count, setCount] = useState(props.content?.maxLength);
+    let [input, setInput] = useState(props.content?.value);
+
+    let inputCountLength = input?.length;
+    let [count, setCount] = useState(inputCountLength);
+
+    useEffect(() => {
+        setInput(props.content?.value)
+    }, [props.content?.value])
 
     function handleChange(e) {
         setInput(e.target.value);
@@ -183,7 +189,7 @@ export default function InputField(props) {
         if (asEmphasis === "charLimited") {
             return (
                 <div className="qui-char-limited-container">
-                    <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>
+                    {(props.content?.maxLength || props.content?.maxLength >= 0) && <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>}
                     <TextField
                         className="qui-char-limited"
                         InputLabelProps={inputlabelColor}
@@ -205,12 +211,12 @@ export default function InputField(props) {
         if (asEmphasis === "listInput") {
             return (
                 <div className="qui-list-input-container">
-                    <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>
+                    {(props.content?.maxLength || props.content?.maxLength >= 0) && < div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>}
                     <TextField
                         className="qui-list-input"
                         sx={outlineStyle}
                         placeholder={props.content?.placeholder}
-                        multiline={true}
+                        multiline={false}
                         size="small"
                         variant="filled"
                         value={input}
@@ -221,7 +227,7 @@ export default function InputField(props) {
                         onChange={handleChange}
                         onKeyDown={handleChange}
                     />
-                </div>
+                </div >
             )
         }
         else {
