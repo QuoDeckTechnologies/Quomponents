@@ -109,52 +109,15 @@ describe("ArcMenu", () => {
   });
 
   it("should render correctly when passed withTranslation", () => {
-    let wrapper = mount(
-      <ArcMenu
-        menuContent={[
-          {
-            header: "learning",
-            list: [
-              "upload scorm",
-              "upload pdf",
-              "add video link",
-              "create qdf deck",
-            ],
-          },
-          {
-            header: "evaluating",
-            list: ["create survey", "create quiz", "add a game"],
-          },
-          {
-            header: "rewarding",
-            list: ["give a certificate", "give a badge", "give a reward"],
-          },
-        ]}
-        nuggetContent={[
-          { image: "" },
-          { image: "" },
-          { image: "" },
-          { image: "" },
-          { image: "" },
-          { image: "" },
-        ]}
-        menuType="close"
-        arcIcon="menu"
-        position="top-right"
-        asVariant="primary"
-        asSize="normal"
-        isDisabled={false}
-        isHidden={false}
-        onClick={() => {}}
-      />
-    );
-    wrapper.setProps({
+    component.setProps({
+      menuType: "menu",
       withTranslation: {
         lang: "hi",
         tgt: "arcmenu",
         dictionary: dictionary,
       },
     });
+    component.find(".qui-arc-menu-button").simulate("click");
     expect(component.exists()).toBe(true);
   });
 
