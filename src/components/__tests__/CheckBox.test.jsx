@@ -2,6 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow, mount } from "enzyme";
+import { fireEvent, render, screen } from "@testing-library/react";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -11,21 +12,113 @@ describe("CheckBox", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
-
   let component;
+  const dictionary = JSON.stringify({
+    hi: {
+      checkBox: {
+        label: "डिफ़ॉल्ट चेकबॉक्स",
+      },
+    },
+  });
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
       <CheckBox
         content={{ label: "Default Label", checked: false }}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        onClick={() => {}}
       />
     );
   });
 
   it("should render correctly without throwing error", () => {
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withAnimation props", () => {
+    component.setProps({
+      withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withTranslation props", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "checkBox",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withColor", () => {
+    component.setProps({
+      withColor: {
+        accentColor: "#ffffff",
+        textColor: "#ffffff",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed asFloated props is left", () => {
+    component.setProps({
+      asFloated: "left",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed asFloated props is right", () => {
+    component.setProps({
+      asFloated: "right",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed asFloated props is inline", () => {
+    component.setProps({
+      asFloated: "inline",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed asFloated props is none", () => {
+    component.setProps({
+      asFloated: "none",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isHidden props is false", () => {
+    component.setProps({
+      isHidden: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isHidden props is true", () => {
+    component.setProps({
+      isHidden: true,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isDisabled props is true", () => {
+    component.setProps({
+      isDisabled: true,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isDisabled props is false", () => {
+    component.setProps({
+      isDisabled: false,
+    });
     expect(component.exists()).toBe(true);
   });
 
@@ -51,12 +144,16 @@ describe("CheckBox", () => {
   });
 
   it("should render correctly without throwing error", () => {
-    component
-      .find("#qui-check-box-element")
-      .at(0)
-      .simulate("change", {
-        target: { value: "Enable Checkbox", checked: true },
-      });
+    render(
+      <CheckBox
+        content={{ label: "Default Label", checked: false }}
+        onClick={(e) => {
+          console.log(e);
+        }}
+      />
+    );
+    let label = screen.getByRole("checkbox", { name: "Default Label" });
+    fireEvent.click(label);
   });
 
   it("should render correctly without throwing error", () => {
