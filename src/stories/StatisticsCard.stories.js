@@ -79,6 +79,7 @@ export default {
     parameters: {
         componentSubtitle: "Displays a basic StatisticsCard for general-purpose use",
         a11y: { disable: true },
+        docs: { iframeHeight: 300 },
     },
 };
 // -------------------------------------------------------------
@@ -90,7 +91,7 @@ const Template = (args) => (
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        players: "Players",
+        players: "PLAYERS",
         playerIcon: "fas fa-users",
         playerNum: "20,539"
     },

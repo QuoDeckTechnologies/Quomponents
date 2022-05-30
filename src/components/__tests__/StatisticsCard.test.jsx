@@ -33,6 +33,62 @@ describe("StatisticsCard", () => {
         expect(component.exists()).toBe(true);
     });
 
+    it("should render correctly when passed asFloated props is none", () => {
+        component.setProps({
+            asFloated: "none",
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asFloated props is left", () => {
+        component.setProps({
+            asFloated: "left",
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asFloated props is right", () => {
+        component.setProps({
+            asFloated: "right",
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asFloated props is inline", () => {
+        component.setProps({
+            asFloated: "inline",
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asPadded props is fitted", () => {
+        component.setProps({
+            asPadded: "fitted",
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asPadded props is compact", () => {
+        component.setProps({
+            asPadded: "compact",
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asPadded props is normal", () => {
+        component.setProps({
+            asPadded: "normal",
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asPadded props is relaxed", () => {
+        component.setProps({
+            asPadded: "relaxed",
+        });
+        expect(component.exists()).toBe(true);
+    });
+
     it("should render correctly when passed withColor props", () => {
         component.setProps({
             withColor: {
@@ -93,62 +149,6 @@ describe("StatisticsCard", () => {
     it("should render correctly when passed isDisabled props is true", () => {
         component.setProps({
             isDisabled: true,
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asFloated props is none", () => {
-        component.setProps({
-            asFloated: "none",
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asFloated props is left", () => {
-        component.setProps({
-            asFloated: "left",
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asFloated props is right", () => {
-        component.setProps({
-            asFloated: "right",
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asFloated props is inline", () => {
-        component.setProps({
-            asFloated: "inline",
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asPadded props is fitted", () => {
-        component.setProps({
-            asPadded: "fitted",
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asPadded props is compact", () => {
-        component.setProps({
-            asPadded: "compact",
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asPadded props is normal", () => {
-        component.setProps({
-            asPadded: "normal",
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asPadded props is relaxed", () => {
-        component.setProps({
-            asPadded: "relaxed",
         });
         expect(component.exists()).toBe(true);
     });

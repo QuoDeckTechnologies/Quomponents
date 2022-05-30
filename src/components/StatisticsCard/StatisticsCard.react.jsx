@@ -127,20 +127,19 @@ export default function StatisticsCard(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            style={colors?.backgroundColors}
         >
-            <Segment {...props} className={`qui-statistics-crad-container ${quommonClasses.childClasses}`}             style={colors?.backgroundColors}
->
+            <Segment {...props} className={`qui-statistics-crad-container ${quommonClasses.childClasses}`} style={colors?.backgroundColors}
+            >
                 <>
                     <i className={`qui-statistics-crad-icon ${content?.playerIcon}`}
                         style={colors?.accentColors}>
                     </i>
-                    <p className="qui-statistics-crad-number" style={colors?.textColors}>
+                    <h1 className="qui-statistics-crad-number" style={colors?.textColors}>
                         {content?.playerNum}
-                    </p>
-                    <p className="qui-statistics-crad-players" style={colors?.textColors}>
+                    </h1>
+                    <h3 className="qui-statistics-crad-players" style={colors?.textColors}>
                         {content?.players}
-                    </p>
+                    </h3>
                 </>
             </Segment>
         </motion.div>
