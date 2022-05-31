@@ -1,6 +1,27 @@
 import React from "react";
 import WalletRow from "../components/WalletRow/WalletRow.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        WalletRow: {
+            months: {
+                Jan: "जनवरी",
+                Feb: "फ़रवरी",
+                Mar: "मार्च",
+                Apr: "अप्रैल",
+                May: "मई",
+                Jun: "जून",
+                Jul: "जुलाई",
+                Aug: "अगस्त",
+                Sep: "सितम्बर",
+                Oct: "अक्टूबर",
+                Nov: "नवम्बर",
+                Dec: "दिसम्बर",
+            },
+            coins: "सिक्के"
+        },
+    },
+});
 export default {
     title: "Design System/WalletRow/WalletRow",
     component: WalletRow,
@@ -25,6 +46,16 @@ export default {
                 },
             },
         },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
+                },
+            },
+        },
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -46,7 +77,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a WalletRow",
+        componentSubtitle: "Displays a WalletRow with date and player's coins",
         a11y: { disable: true },
         docs: { iframeHeight: 500 },
     },
@@ -69,6 +100,11 @@ Default.args = {
         animation: "slideDown",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "WalletRow",
+        dictionary: dictionary,
     },
     isHidden: false
 };
@@ -144,6 +180,11 @@ export const MultipleWalletRow = (args) => {
                                 duration: 0.5,
                                 delay: 0,
                             }}
+                            withTranslation={{
+                                lang: "en",
+                                tgt: "WalletRow",
+                                dictionary: dictionary,
+                            }}
                         />
                     )
                 })
@@ -216,10 +257,38 @@ export const MultipleWalletRowsWithFixedDivSize = (args) => {
                                 duration: 0.5,
                                 delay: 0,
                             }}
+                            withTranslation={{
+                                lang: "en",
+                                tgt: "WalletRow",
+                                dictionary: dictionary,
+                            }}
                         />
                     )
                 })
             }
         </div>
     );
+};
+// -------------------------------------------------------------
+// Translated AmplayfierDateBlock
+// -------------------------------------------------------------
+export const TranslatedWalletRow = Template.bind({});
+TranslatedWalletRow.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "WalletRow",
+        dictionary: dictionary,
+    },
+};
+TranslatedWalletRow.parameters = {
+    docs: {
+        source: {
+            code: `<TranslatedWalletRow {...${JSON.stringify(
+                TranslatedWalletRow.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
 };
