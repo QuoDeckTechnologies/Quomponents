@@ -1,9 +1,11 @@
 // Import npm packages
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+
 import _ from "lodash";
-import Slider from "../../Slider/Slider.react";
 import { Document, Page, pdfjs } from 'react-pdf';
+import Slider from "../../Slider/Slider.react";
+
 import { motion } from "framer-motion";
 import {
   getAnimation,
@@ -21,7 +23,6 @@ PdfViewer.propTypes = {
     PdfViewer data should be passed in data field and it is a required field
     */
   data: PropTypes.shape({
-    title: PropTypes.string,
     pdf: PropTypes.object,
   }).isRequired,
   /**
@@ -79,7 +80,6 @@ PdfViewer.defaultProps = {
   // Component Specific props
   //=======================================
   data: {
-    title: "",
     url: "",
   },
   /**
@@ -101,7 +101,7 @@ PdfViewer.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Displays a pdf viewer using react-pdf
+- This template component is to be used to show pdf.
 **/
 export default function PdfViewer(props) {
   let { data, withColor } = props
@@ -109,7 +109,9 @@ export default function PdfViewer(props) {
   const [zoom, setZoom] = useState(22);
   const [showSlider, setShowSlider] = useState(false);
   const [rotate, setRotate] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth <= 320 ? 560 : window.innerWidth <= 481 ? window.innerWidth * 2 : window.innerWidth <= 540 ? 700 : window.innerWidth <= 769 ? 700 : 700);
+  const [width, setWidth] = useState(window.innerWidth * 2)
+  const [rotatedWidth, setRotatedWidth] = useState(window.innerHeight * 1.4)
+
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------  innerHeight
@@ -131,29 +133,28 @@ export default function PdfViewer(props) {
     };
   };
   const background = data?.pdf && props.docLibrary
-    ? { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" }
+    ? { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#ddd6d600" }
     : getBackground();
 
   const resizeHandler = () => {
-    if (window.innerWidth <= 320) {
-      setWidth(560);
-    } else if (window.innerWidth <= 481) {
-      setWidth(660);
-    } else if (window.innerWidth <= 540) {
-      setWidth(700);
-    } else if (window.innerWidth <= 769) {
-      setWidth(700);
-    } else {
-      setWidth(700);
-    }
-  };
+    setWidth(window.innerWidth * 2)
+  }
   useEffect(() => {
     window.addEventListener("resize", resizeHandler);
-    setZoom(zoom)
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
-  }, [zoom]);
+  }, []);
+
+  const resizeHandlerRotated = () => {
+    setRotatedWidth(window.innerHeight * 1.4)
+  }
+  useEffect(() => {
+    window.addEventListener("resize", resizeHandlerRotated);
+    return () => {
+      window.removeEventListener("resize", resizeHandlerRotated);
+    };
+  }, []);
 
   let resolveDocument = (pdf, library) => {
     let libraryDoc = _.find(library, { id: pdf });
@@ -169,41 +170,27 @@ export default function PdfViewer(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <div className={`qui-pdf-viewer-outer-container`} style={{ ...background }}>
+      <div className={`qui-pdf-viewer-outer-container`}>
         {data && data?.docLibrary !== null &&
-          < div className={`qui-pdf-viewer-container`}>
-            {
-              data?.pdf && props?.docLibrary &&
-              <div className="qui-pdf-header">
-                <div className="qui-pdf-title"  >{rotate ? "" : data?.title}</div>
-              </div>
-            }{props?.docLibrary &&
+          < div className={`qui-pdf-viewer-container ${rotate ? '-rotated' : ''}`}>
+            {props?.docLibrary &&
               < Document
-                title={data?.title}
                 file={data?.pdf?.id ? resolveDocument(data.pdf?.id, props?.docLibrary) : "No data"}
                 onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+                onClick={() => setShowSlider(preState => !preState)}
               >
                 {Array.from(new Array(numPages), (el, index) => (
                   <Page
                     scale={rotate ? 50 / 50 : zoom >= 22 ? zoom / 50 : 22 / 50}
                     size="A4"
                     rotate={rotate ? 90 : 0}
-                    width={width}
-                    className={`${rotate ? "qui-rotated-page" : ""}`}
+                    width={rotate ? rotatedWidth : width}
                     key={`page_${index + 1}`} pageNumber={index + 1} />
                 ))}
               </Document>}
-            {data?.pdf && props?.docLibrary &&
-              <div>
-                {rotate ? "" :
-                  <i
-                    className={`qui-pdf-toggle-icon ${showSlider ? "fas fa-toggle-on" : "fas fa-toggle-off"}`}
-                    onClick={() => setShowSlider(preState => !preState)} />}
-              </div>}
-
             {data?.pdf &&
               <div>
-                {showSlider &&
+                {window.innerWidth <= 480 && showSlider &&
                   <div
                     className={"qui-footer-slider-icon-container"}
                     style={rotate ? { backgroundColor: "#55555500" } : { backgroundColor: props.withColor.sliderBackgroundColor }}>
@@ -217,7 +204,8 @@ export default function PdfViewer(props) {
               </div>}
           </div>}
       </div>
-
+      {!data?.pdf || !data?.docLibrary &&
+        <img src="https://icon-library.com/images/pdf-icon-free/pdf-icon-free-15.jpg" className="qui-pdf-background" />}
     </motion.div >
   );
 }

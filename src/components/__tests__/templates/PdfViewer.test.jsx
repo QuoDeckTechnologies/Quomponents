@@ -21,7 +21,6 @@ describe("PdfViewer", () => {
     component = shallow(
       <PdfViewer
         data={{
-          title: "This is Title",
           backgroundImage: {
             id: 'background-image',
             extention: ""
@@ -47,7 +46,6 @@ describe("PdfViewer", () => {
   });
   it("should render correctly when passed backgroundImage prop", () => {
     let data = {
-      title: "This is Title",
       backgroundImage: {
         id: 'background-image',
         extention: ""
@@ -80,7 +78,6 @@ describe("PdfViewer", () => {
     component = mount(
       <PdfViewer
         data={{
-          title: "This is Title",
           backgroundImage: {
             id: 'background-image',
             extention: ""
@@ -129,12 +126,10 @@ describe("PdfViewer", () => {
       global.dispatchEvent(new Event("resize"));
     });
   });
-
   it("should render correctly without throwing error when component unmounts", () => {
     const { unmount } = render(
       <PdfViewer
         data={{
-          title: "This is Title",
           backgroundImage: {
             id: 'background-image',
             extention: ""
@@ -167,7 +162,6 @@ describe("PdfViewer", () => {
   it("should render correctly without throwing error when data is passed", () => {
     component.setProps({
       data: {
-        title: "This is Title",
         backgroundImage: {
           id: 'background-image',
           extention: ""
@@ -178,85 +172,6 @@ describe("PdfViewer", () => {
         },
       }
     })
-  });
-  it("should render correctly without throwing error when clicked on zoom icon", () => {
-    component.setProps({
-      data: {
-        pdf: {
-          id: 'default-pdf',
-          extention: ""
-        },
-      },
-      docLibrary:
-        [{
-          id: 'default-pdf',
-          doc: "test.pdf"
-        }],
-      withColor: {
-        sliderBackgroundColor: "#fff"
-      }
-    })
-    component.find(".qui-pdf-toggle-icon").simulate('click')
-  });
-  it("should render correctly without throwing error when clicked on slider ", () => {
-    component.setProps({
-      data: {
-        pdf: {
-          id: 'default-pdf',
-          extention: ""
-        },
-      },
-      docLibrary:
-        [{
-          id: 'default-pdf',
-          doc: "test.pdf"
-        }],
-      withColor: {
-        sliderBackgroundColor: "#fff"
-      }
-    })
-    component.find(".qui-pdf-toggle-icon").simulate('click')
-    component.find(Slider).simulate('click', 50)
-  });
-  it("should render correctly without throwing error when clicked on rotate icon ", () => {
-    component.setProps({
-      data: {
-        pdf: {
-          id: 'default-pdf',
-          extention: ""
-        },
-      },
-      docLibrary:
-        [{
-          id: 'default-pdf',
-          doc: "test.pdf"
-        }],
-      withColor: {
-        sliderBackgroundColor: "#fff"
-      }
-    })
-    component.find(".qui-pdf-toggle-icon").simulate('click')
-    component.find(".qui-pdf-rotate-icon").simulate('click')
-  });
-  it("should render correctly without throwing error when clicked on slider ", () => {
-    component.setProps({
-      data: {
-        pdf: {
-          id: 'default-pdf',
-          extention: ""
-        },
-      },
-      docLibrary:
-        [{
-          id: 'default-pdf',
-          doc: "test.pdf"
-        }],
-      withColor: {
-        sliderBackgroundColor: "#fff"
-      }
-    })
-    component.find(".qui-pdf-toggle-icon").simulate('click')
-    component.find(Slider).simulate('click', 20)
   });
   it("should render correctly without throwing error when document gets loaded to screen", () => {
     component.setProps({
@@ -277,14 +192,12 @@ describe("PdfViewer", () => {
   it("should render correctly without throwing error when pdf is not passed", () => {
     component.setProps({
       data: {
-        title: 'this is title'
       }
     })
   });
   it("should render correctly without throwing error when pdf passed", () => {
     component.setProps({
       data: {
-        title: 'this is title',
         pdf: {
           id: "default-pdf",
           extention: "pdf"
@@ -295,7 +208,6 @@ describe("PdfViewer", () => {
   it("should render correctly without throwing error when pdf is passed and given background color", () => {
     component.setProps({
       data: {
-        title: 'this is title',
         pdf: {
           id: 'default',
           extention: "pdf"
@@ -323,6 +235,61 @@ describe("PdfViewer", () => {
         id: "back"
       },
       docLibrary: null
+    })
+  });
+  it("should render correctly without throwing error when clicked on slider ", () => {
+    component.setProps({
+      data: {
+        pdf: {
+          id: 'default-pdf',
+          extention: ""
+        },
+      },
+      docLibrary:
+        [{
+          id: 'default-pdf',
+          doc: "test.pdf"
+        }],
+      withColor: {
+        sliderBackgroundColor: "#fff"
+      }
+    })
+    component.find(Document).simulate('click')
+  });
+  it("should render correctly without throwing error when clicked on rotate icon and slider ", () => {
+    component.setProps({
+      data: {
+        pdf: {
+          id: 'default-pdf',
+          extention: ""
+        },
+      },
+      docLibrary:
+        [{
+          id: 'default-pdf',
+          doc: "test.pdf"
+        }],
+      withColor: {
+        sliderBackgroundColor: "#fff"
+      }
+    })
+    global.innerWidth = 480;
+    act(() => {
+      global.dispatchEvent(new Event("resize"));
+    });
+    component.find(Document).simulate('click')
+    component.find(Slider).simulate('click')
+    component.find(".qui-pdf-rotate-icon").simulate('click')
+  });
+  it("should render correctly without throwing error when pdf or docLibrary is not found ", () => {
+    component.setProps({
+      data: {
+        pdf: null,
+      },
+      docLibrary: null,
+      withColor: {
+        sliderBackgroundColor: "#fff"
+      }
     })
   });
 });

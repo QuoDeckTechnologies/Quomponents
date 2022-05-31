@@ -60,7 +60,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a PdfViewer",
+    componentSubtitle: "This template component is to be used to show pdf",
     a11y: { disable: true },
     docs: {
       iframeHeight: 650,
@@ -74,7 +74,6 @@ const Template = (args) => <PdfViewer {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   data: {
-    title: 'Test Pdf',
     pdf: {
       id: "default-pdf",
       extention: ""
@@ -86,7 +85,7 @@ Default.args = {
   }],
   slideId: 0,
   withColor: {
-    backgroundColor: "#ddd6d6",
+    backgroundColor: "#ddd6d600",
     sliderBackgroundColor: "#3a3636a6",
   },
   withAnimation: {
