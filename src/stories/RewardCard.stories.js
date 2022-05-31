@@ -1,6 +1,22 @@
 import React from "react";
 import RewardCard from "../components/RewardCard/RewardCard.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        RewardCard: {
+            name: "ब्रांडेड पेन",
+            soldout: "बिक चुका है!",
+            left: "शेष"
+        }
+    },
+    en: {
+        RewardCard: {
+            name: "Branded Pen",
+            soldout: "SOLD OUT!",
+            left: "left"
+        }
+    }
+});
 export default {
     title: "Design System/RewardCard/RewardCard",
     component: RewardCard,
@@ -11,9 +27,9 @@ export default {
             cost: 0,
             stock: {},
         },
-        status: {
+        asEmphasis: {
             control: "select",
-            options: ["default", "blankRewardCard", "soldOutRewardCard"],
+            options: ["default", "soldout", "blank"],
         },
         asFloated: {
             control: "select",
@@ -29,11 +45,6 @@ export default {
                     textColor: "",
                     accentColor: "",
                     backgroundColor: "",
-                    soldTextColor: "",
-                    soldAccentColor: "",
-                    soldBackgroundColor: "",
-                    blankTextColor: "",
-                    blankBackgroundColor: "",
                 },
             },
         },
@@ -44,6 +55,16 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -81,7 +102,7 @@ export default {
     parameters: {
         componentSubtitle: "Default RewardCard for general purpose use",
         a11y: { disable: true },
-        docs: { iframeHeight: 570 },
+        docs: { iframeHeight: 500 },
     },
 };
 
@@ -100,22 +121,22 @@ Default.args = {
             total: 1000
         },
     },
-    status: "default",
+    asEmphasis: "default",
     asFloated: "inline",
     withColor: {
         textColor: "",
         accentColor: "#AD2929",
         backgroundColor: "",
-        soldTextColor: "#fffff",
-        soldAccentColor: "#AD2929",
-        soldBackgroundColor: "#E8E8E8",
-        blankTextColor: "",
-        blankBackgroundColor: "",
     },
     withAnimation: {
         animation: "collapse",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "RewardCard",
+        dictionary: dictionary,
     },
     isHidden: false,
     isDisabled: false,
@@ -134,9 +155,9 @@ export const ColoredRewardCard = Template.bind({});
 ColoredRewardCard.args = {
     ...Default.args,
     withColor: {
-        backgroundColor: "#666666",
         textColor: "#fffff",
         accentColor: "#ffbf00",
+        backgroundColor: "#666666",
     },
 };
 ColoredRewardCard.parameters = {
@@ -146,7 +167,7 @@ ColoredRewardCard.parameters = {
                 "Use to override the standard colors of the RewardCard.",
         },
         source: {
-            code: `<ColoredRewardCard {...${JSON.stringify(
+            code: `<RewardCard {...${JSON.stringify(
                 ColoredRewardCard.args,
                 null,
                 2
@@ -173,8 +194,35 @@ AnimatedRewardCard.parameters = {
                 "Use to animate the entry of the RewardCard with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<AnimatedRewardCard {...${JSON.stringify(
+            code: `<RewardCard {...${JSON.stringify(
                 AnimatedRewardCard.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Translated RewardCard
+// -------------------------------------------------------------
+export const TranslatedRewardCard = Template.bind({});
+TranslatedRewardCard.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "RewardCard",
+        dictionary: dictionary,
+    },
+};
+TranslatedRewardCard.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in. To make this work for the RewardCard, add a RewardCard: { left } value to the dictionary.",
+        },
+        source: {
+            code: `<RewardCard {...${JSON.stringify(
+                TranslatedRewardCard.args,
                 null,
                 2
             )}}/>`,
@@ -187,7 +235,12 @@ AnimatedRewardCard.parameters = {
 export const SoldOutRewardCard = Template.bind({});
 SoldOutRewardCard.args = {
     ...Default.args,
-    status: "soldOutRewardCard",
+    asEmphasis: "soldout",
+    withColor: {
+        textColor: "#fffff",
+        accentColor: "#AD2929",
+        backgroundColor: "#E8E8E8",
+    },
 };
 SoldOutRewardCard.parameters = {
     docs: {
@@ -196,7 +249,7 @@ SoldOutRewardCard.parameters = {
                 "Use to override the standard colors of the RewardCard.",
         },
         source: {
-            code: `<SoldOutRewardCard {...${JSON.stringify(
+            code: `<RewardCard {...${JSON.stringify(
                 SoldOutRewardCard.args,
                 null,
                 2
@@ -210,7 +263,7 @@ SoldOutRewardCard.parameters = {
 export const BlankRewardCard = Template.bind({});
 BlankRewardCard.args = {
     ...Default.args,
-    status: "blankRewardCard",
+    asEmphasis: "blank",
 };
 BlankRewardCard.parameters = {
     docs: {
@@ -219,7 +272,7 @@ BlankRewardCard.parameters = {
                 "Use to override the standard colors of the RewardCard.",
         },
         source: {
-            code: `<BlankRewardCard {...${JSON.stringify(
+            code: `<RewardCard {...${JSON.stringify(
                 BlankRewardCard.args,
                 null,
                 2

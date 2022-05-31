@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    getTranslation
 } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -28,11 +29,11 @@ RewardCard.propTypes = {
             left: PropTypes.number,
             total: PropTypes.number
         }),
-    }),
+    }).isRequired,
     /**
     Use to set the state of RewardCard 
     */
-    status: PropTypes.oneOf(["default", "blankRewardCard", "soldOutRewardCard"]),
+    asEmphasis: PropTypes.oneOf(["default", "soldout", "blank"]),
     //=======================================
     // Quommon props
     //=======================================
@@ -47,11 +48,6 @@ RewardCard.propTypes = {
         textColor: PropTypes.string,
         accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
-        soldTextColor: PropTypes.string,
-        soldAccentColor: PropTypes.string,
-        soldBackgroundColor: PropTypes.string,
-        blankTextColor: PropTypes.string,
-        blankBackgroundColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -89,7 +85,7 @@ RewardCard.defaultProps = {
     // Component Specific props
     //=======================================
     content: {},
-    status: "default",
+    asEmphasis: "default",
     //=======================================
     // Quommon props
     //=======================================
@@ -113,7 +109,7 @@ export default function RewardCard(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring props
     //-------------------------------------------------------------------
-    let { content, withColor, status } = props;
+    let { content, withColor, asEmphasis } = props;
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -133,30 +129,47 @@ export default function RewardCard(props) {
 
     let rewardImage = content?.image === "" ? defaultImage : content?.image;
     //-------------------------------------------------------------------
-    // 2. Use to the state of RewardCard Component
+    // 3. Get translation of the component
     //-------------------------------------------------------------------
-    const getRewardCard = (status) => {
-        if (status === "blankRewardCard") {
+    let tObj = null;
+    let contentName = content?.name;
+    let soldoutText = "SOLD OUT!";
+    let leftText = "left";
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation)
+        contentName = tObj.name
+        soldoutText = tObj.soldout
+        leftText = tObj.left
+    }
+    //-------------------------------------------------------------------
+    // 4. Use to the state of RewardCard Component
+    //-------------------------------------------------------------------
+    const getRewardCard = (asEmphasis) => {
+        if (asEmphasis === "blank") {
             return (
                 <div
                     className="qui-reward-card-container"
-                    style={{ color: withColor?.blankTextColor, backgroundColor: withColor?.blankBackgroundColor }}
+                    style={{ color: withColor?.textColor, backgroundColor: withColor?.backgroundColor }}
                     onClick={props.onClick}
                 >
                     <i className="fas fa-plus-square qui-blank-reward-card-icon" />
-                </div >
+                </div>
             )
         }
-        if (status === "soldOutRewardCard") {
+        if (asEmphasis === "soldout") {
             return (
                 <div
                     className="qui-reward-card-container"
-                    style={{ color: withColor?.soldTextColor, backgroundColor: withColor?.soldBackgroundColor }}
+                    style={{ color: withColor?.textColor, backgroundColor: withColor?.backgroundColor }}
                     onClick={props.onClick}
                 >
                     {content?.name &&
                         <div className="qui-reward-card-name">
-                            {content?.name}
+                            {contentName}
                         </div>
                     }
                     {rewardImage &&
@@ -165,7 +178,7 @@ export default function RewardCard(props) {
                             style={{ backgroundImage: `url(${rewardImage})` }}
                         >
                             <div className="qui-reward-card-image-caption">
-                                SOLD OUT!
+                                {soldoutText}
                             </div>
                         </div>
                     }
@@ -174,7 +187,7 @@ export default function RewardCard(props) {
                             <div className="qui-reward-card-cost">
                                 <Reward
                                     content={{ point: content?.cost?.toString() }}
-                                    withColor={{ accentColor: withColor?.soldTextColor }}
+                                    withColor={{ accentColor: withColor?.textColor }}
                                 />
                             </div>
                         }
@@ -184,7 +197,7 @@ export default function RewardCard(props) {
                                     {content?.stock?.left} / {content?.stock?.total}
                                 </div>
                                 <div>
-                                    left
+                                    {leftText}
                                 </div>
                             </div>
                         }
@@ -192,7 +205,7 @@ export default function RewardCard(props) {
                     {content &&
                         <div className="qui-reward-card-accent-line">
                             <AccentLine
-                                withColor={{ accentColor: withColor?.soldAccentColor }}
+                                withColor={{ accentColor: withColor?.accentColor }}
                             />
                         </div>
                     }
@@ -208,7 +221,7 @@ export default function RewardCard(props) {
                 >
                     {content?.name &&
                         <div className="qui-reward-card-name">
-                            {content?.name}
+                            {contentName}
                         </div>
                     }
                     {rewardImage &&
@@ -233,7 +246,7 @@ export default function RewardCard(props) {
                                     {content?.stock?.left} / {content?.stock?.total}
                                 </div>
                                 <div>
-                                    left
+                                    {leftText}
                                 </div>
                             </div>
                         }
@@ -245,7 +258,7 @@ export default function RewardCard(props) {
                             />
                         </div>
                     }
-                </div >
+                </div>
             )
         }
     }
@@ -260,9 +273,9 @@ export default function RewardCard(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`${quommonClasses.childClasses}`}>
-                {getRewardCard(status)}
-            </div>
+            {content && <div className={`${quommonClasses.childClasses}`}>
+                {getRewardCard(asEmphasis)}
+            </div>}
         </motion.div>
     );
 }

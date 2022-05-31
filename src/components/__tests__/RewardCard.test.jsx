@@ -13,6 +13,22 @@ describe("RewardCard", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
+    const dictionary = JSON.stringify({
+        hi: {
+            RewardCard: {
+                name: "ब्रांडेड पेन",
+                soldout: "बिक चुका है!",
+                left: "शेष"
+            }
+        },
+        en: {
+            RewardCard: {
+                name: "Branded Pen",
+                soldout: "SOLD OUT!",
+                left: "left"
+            }
+        }
+    });
     let onClick = jest.fn();
 
     beforeEach(() => {
@@ -22,14 +38,14 @@ describe("RewardCard", () => {
                 content={{
                     name: "",
                     image: "",
-                    soldImage: "",
                     cost: 0,
                     stock: {},
                 }}
-                status="default"
+                asEmphasis="default"
                 asFloated="none"
                 withColor={null}
                 withAnimation={null}
+                withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
                 onClick={onClick}
@@ -45,7 +61,6 @@ describe("RewardCard", () => {
         let value = {
             name: "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-            soldImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
             cost: 1000000,
             stock: {
                 left: 1000000,
@@ -56,12 +71,11 @@ describe("RewardCard", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed content prop with values if status as soldOutRewardCard", () => {
-        component.setProps({ status: "soldOutRewardCard" })
+    it("should render correctly when passed content prop with values if asEmphasis as soldout", () => {
+        component.setProps({ asEmphasis: "soldout" })
         let value = {
             name: "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-            soldImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
             cost: 1000000,
             stock: {
                 left: 1000000,
@@ -72,18 +86,18 @@ describe("RewardCard", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed status prop as default", () => {
-        component.setProps({ status: "default" })
+    it("should render correctly when passed asEmphasis prop as default", () => {
+        component.setProps({ asEmphasis: "default" })
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed status prop as blankRewardCard", () => {
-        component.setProps({ status: "blankRewardCard" })
+    it("should render correctly when passed asEmphasis prop as blank", () => {
+        component.setProps({ asEmphasis: "blank" })
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed status prop as soldOutRewardCard", () => {
-        component.setProps({ status: "soldOutRewardCard" })
+    it("should render correctly when passed asEmphasis prop as soldout", () => {
+        component.setProps({ asEmphasis: "soldout" })
         expect(component.exists()).toBe(true);
     });
 
@@ -112,11 +126,6 @@ describe("RewardCard", () => {
             textColor: "#FFFF",
             accentColor: "#AD2929",
             backgroundColor: "#121212",
-            soldTextColor: "#fffff",
-            soldAccentColor: "#AD2929",
-            soldBackgroundColor: "#E8E8E8",
-            blankTextColor: "#FFFF",
-            blankBackgroundColor: "#121212",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
@@ -129,6 +138,17 @@ describe("RewardCard", () => {
             delay: 0,
         }
         component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly with withTranslation prop", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "RewardCard",
+                dictionary: dictionary,
+            },
+        });
         expect(component.exists()).toBe(true);
     });
 
