@@ -8,7 +8,7 @@ import {
 import "../../common/stylesheets/common.css";
 import "./Reward.scss";
 import "../../common/stylesheets/overrule.scss";
-import rewardImage from "../../assets/rewardImage.png";
+import rewardImage from "../../assets/coin.png";
 
 Reward.propTypes = {
     //=======================================
@@ -127,7 +127,7 @@ export default function Reward(props) {
                         {rewardContent?.label}
                     </div>
                     <div className={`qui-point-container`}>
-                    <div className="qui-point" style={pointColor}>
+                        <div className="qui-point" style={pointColor}>
                             {rewardContent?.point}
                         </div>
                         <div>
