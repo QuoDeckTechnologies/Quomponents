@@ -8,6 +8,7 @@ export default {
     content: {
       table: {
         defaultValue: {
+          name: "",
           label: "",
           checked: false,
         },
@@ -33,7 +34,6 @@ export default {
         defaultValue: {
           accentColor: "",
           textColor: "",
-
         },
       },
     },
@@ -79,6 +79,7 @@ const Template = (args) => <CheckBox {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: {
+    name: "checkbox",
     label: "Default Checkbox",
     checked: false,
   },
@@ -110,6 +111,7 @@ export const ReadOnlyCheckBox = Template.bind({});
 ReadOnlyCheckBox.args = {
   ...Default.args,
   content: {
+    name: "checkbox",
     label: "Read Only Checkbox",
     checked: true,
   },
@@ -138,6 +140,7 @@ export const DisabledCheckBox = Template.bind({});
 DisabledCheckBox.args = {
   ...Default.args,
   content: {
+    name: "checkbox",
     label: "Disabled Checkbox",
     checked: false,
   },
@@ -167,12 +170,12 @@ const MultipleTemplate = (args) => {
     <div>
       <CheckBox
         {...args}
-        content={{ label: args.label[0], checked: true }}
+        content={{ name: "checkbox A", label: args.label[0], checked: true }}
         asFloated="none"
       />
       <CheckBox
         {...args}
-        content={{ label: args.label[1], checked: false }}
+        content={{ name: "checkbox B", label: args.label[1], checked: false }}
         asFloated="none"
       />
     </div>
@@ -206,12 +209,12 @@ const MultipleTemplateInline = (args) => {
     <div>
       <CheckBox
         {...args}
-        content={{ label: args.label[0], checked: true }}
+        content={{ name: "checkbox A", label: args.label[0], checked: true }}
         asFloated="inline"
       />
       <CheckBox
         {...args}
-        content={{ label: args.label[1], checked: false }}
+        content={{ name: "checkbox B", label: args.label[1], checked: false }}
         asFloated="inline"
       />
     </div>
