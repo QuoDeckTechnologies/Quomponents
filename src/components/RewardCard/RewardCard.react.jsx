@@ -67,6 +67,14 @@ RewardCard.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -93,6 +101,7 @@ RewardCard.defaultProps = {
 
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
@@ -111,11 +120,11 @@ export default function RewardCard(props) {
     //-------------------------------------------------------------------
     let { content, withColor, asEmphasis } = props;
     //-------------------------------------------------------------------
-    // 1. Set the classes
+    // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "reward-card");
     //-------------------------------------------------------------------
-    // 2. Conditinal class rendering
+    // 3. Conditinal class rendering
     //-------------------------------------------------------------------
     const [stockStyle, setStockStyle] = useState('qui-reward-card-cost-stock-container-row')
 
@@ -129,7 +138,7 @@ export default function RewardCard(props) {
 
     let rewardImage = content?.image === "" ? defaultImage : content?.image;
     //-------------------------------------------------------------------
-    // 3. Get translation of the component
+    // 4. Get translation of the component
     //-------------------------------------------------------------------
     let tObj = null;
     let contentName = content?.name;
@@ -146,7 +155,7 @@ export default function RewardCard(props) {
         leftText = tObj.left
     }
     //-------------------------------------------------------------------
-    // 4. Use to the state of RewardCard Component
+    // 5. Use to the state of RewardCard Component
     //-------------------------------------------------------------------
     const getRewardCard = (asEmphasis) => {
         if (asEmphasis === "blank") {
@@ -263,7 +272,7 @@ export default function RewardCard(props) {
         }
     }
     //-------------------------------------------------------------------
-    // 4. Get animation of the component
+    // 6. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
