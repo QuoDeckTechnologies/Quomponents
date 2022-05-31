@@ -93,7 +93,6 @@ describe("ClozeQuestion", () => {
 		expect(component.exists()).toBe(true);
 	});
 
-
 	it("should render translation of Check Answer with withTranslation prop and when passed purpose as quiz", () => {
 		component.setProps({
 			data: {
@@ -121,6 +120,7 @@ describe("ClozeQuestion", () => {
 		});
 		expect(component.find(Button).props().content).toBe("उत्तर सबमिट करें");
 	});
+
 	it("should render correctly if translation object is not returned", () => {
 		component.setProps({
 			withTranslation: {

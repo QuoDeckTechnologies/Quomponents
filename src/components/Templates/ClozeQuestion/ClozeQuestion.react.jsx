@@ -89,8 +89,8 @@ ClozeQuestion.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-Use to show a translated version of the component text. Dictionary must be valid JSON. 
-*/
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
     withTranslation: PropTypes.shape({
         lang: PropTypes.string,
         tgt: PropTypes.string,
@@ -118,6 +118,7 @@ ClozeQuestion.defaultProps = {
     asVariant: "primary",
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
     isDisabled: false,
     isHidden: false,
 };
@@ -131,11 +132,13 @@ ClozeQuestion.defaultProps = {
 **/
 export default function ClozeQuestion(props) {
     let { data, withColor, imageLibrary } = props
+
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "cloze-question");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
+
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
@@ -144,6 +147,7 @@ export default function ClozeQuestion(props) {
     function handleSubmit() {
         props.trackInteraction(answer)
     }
+
     //-------------------------------------------------------------------
     // 3. Setting the colors of the imported components
     //-------------------------------------------------------------------
@@ -163,6 +167,7 @@ export default function ClozeQuestion(props) {
         accentColor: props.withColor?.slideHeaderAccentColor,
         backgroundColor: props.withColor?.slideHeaderBackgroundColor
     }
+
     //-------------------------------------------------------------------
     // 4. Conditional text display on the submit button
     //-------------------------------------------------------------------
@@ -180,10 +185,12 @@ export default function ClozeQuestion(props) {
         tObj = getTranslation(props.withTranslation);
         if (buttonText && tObj?.button) buttonText = data?.purpose === "quiz" ? tObj.button?.checkAnswer : tObj.button?.submitAnswer;
     }
+
     //-------------------------------------------------------------------
     // 6. Hide the placeholder text
     //-------------------------------------------------------------------
     let answerText = props.data?.answer?.toString().trim().replace(/[a-z0-9&_]/gi, "*");
+
     //-------------------------------------------------------------------
     // 7. Get the card backgroundImage
     //-------------------------------------------------------------------

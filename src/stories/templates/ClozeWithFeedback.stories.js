@@ -1,6 +1,16 @@
 import React from "react";
 import ClozeWithFeedback from "../../components/Templates/ClozeWithFeedback/ClozeWithFeedback.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        ClozeWithFeedback: {
+            button: {
+                checkAnswer: "जवाब की जांच करो",
+                submitAnswer: "उत्तर सबमिट करें"
+            }
+        }
+    }
+});
 export default {
     title: "Design System/Templates/ClozeWithFeedback/ClozeWithFeedback",
     component: ClozeWithFeedback,
@@ -51,6 +61,16 @@ export default {
                 },
             },
         },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
+                },
+            },
+        },
         isDisabled: {
             table: {
                 category: "is-Toggles",
@@ -88,6 +108,7 @@ export default {
     },
 };
 const Template = (args) => <ClozeWithFeedback {...args} />;
+
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -132,6 +153,11 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "ClozeWithFeedback",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -175,6 +201,11 @@ ClozeWithFeedbackWithSlideHeader.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "ClozeWithFeedback",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -228,6 +259,11 @@ ClozeWithFeedbackWithSlideHeaderAndBackgroundImage.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "ClozeWithFeedback",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -235,6 +271,34 @@ ClozeWithFeedbackWithSlideHeaderAndBackgroundImage.parameters = {
     docs: {
         source: {
             code: `<ClozeWithFeedback {...${JSON.stringify(ClozeWithFeedbackWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Translated ClozeWithFeedback
+// -------------------------------------------------------------
+export const TranslatedClozeWithFeedback = Template.bind({});
+TranslatedClozeWithFeedback.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "ClozeWithFeedback",
+        dictionary: dictionary
+    },
+};
+TranslatedClozeWithFeedback.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in. To make this work for the ClozeWithFeedback, add a content:{text:{title, subTitle},label} value to the dictionary.",
+        },
+        source: {
+            code: `<ClozeWithFeedback {...${JSON.stringify(
+                TranslatedClozeWithFeedback.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };
