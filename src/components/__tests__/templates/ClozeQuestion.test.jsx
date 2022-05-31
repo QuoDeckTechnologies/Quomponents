@@ -40,6 +40,7 @@ describe("ClozeQuestion", () => {
 						extention: ""
 					},
 					question: "Question",
+					answer: "Answer",
 					purpose: "",
 				}}
 				imageLibrary={[{
@@ -148,6 +149,11 @@ describe("ClozeQuestion", () => {
 
 	it("should render correctly when passed isDisabled props as true", () => {
 		component.setProps({ isDisabled: true })
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when passed answer props as null", () => {
+		component.setProps({ answer: null })
 		expect(component.exists()).toBe(true);
 	});
 

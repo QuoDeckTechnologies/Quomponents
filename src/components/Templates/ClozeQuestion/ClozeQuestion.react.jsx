@@ -29,6 +29,7 @@ ClozeQuestion.propTypes = {
         image: PropTypes.object,
         backgroundImage: PropTypes.object,
         question: PropTypes.string,
+        answer: PropTypes.string,
         purpose: PropTypes.string,
     }).isRequired,
     /**
@@ -162,7 +163,6 @@ export default function ClozeQuestion(props) {
         accentColor: props.withColor?.slideHeaderAccentColor,
         backgroundColor: props.withColor?.slideHeaderBackgroundColor
     }
-
     //-------------------------------------------------------------------
     // 4. Conditional text display on the submit button
     //-------------------------------------------------------------------
@@ -172,7 +172,6 @@ export default function ClozeQuestion(props) {
     // 5. Get translation of the component
     //-------------------------------------------------------------------
     let tObj = null;
-
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
@@ -181,7 +180,13 @@ export default function ClozeQuestion(props) {
         tObj = getTranslation(props.withTranslation);
         if (buttonText && tObj?.button) buttonText = data?.purpose === "quiz" ? tObj.button?.checkAnswer : tObj.button?.submitAnswer;
     }
-
+    //-------------------------------------------------------------------
+    // 6. Hide the placeholder text
+    //-------------------------------------------------------------------
+    let answerText = props.data?.answer?.toString().trim().replace(/[a-z0-9&_]/gi, "*");
+    //-------------------------------------------------------------------
+    // 7. Get the card backgroundImage
+    //-------------------------------------------------------------------
     const getBackground = () => {
         return {
             backgroundImage: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
@@ -218,7 +223,7 @@ export default function ClozeQuestion(props) {
                     </div>
                     <div className="qui-cloze-question-input-button-container">
                         <InputField {...props}
-                            content={{ placeholder: "******" }}
+                            content={{ placeholder: answerText }}
                             withColor={inputFieldColors}
                             onClick={(name, value) => setAnswer(value)}
                             name="cloze-question-input-field"

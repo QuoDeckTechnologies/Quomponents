@@ -21,6 +21,7 @@ export default {
       image: {},
       backgroundImage: {},
       question: "",
+      answer: "",
       purpose: "",
     },
     slideId: 0,
@@ -120,6 +121,7 @@ Default.args = {
       extention: ""
     },
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    answer: "Answer",
     purpose: ""
   },
   imageLibrary: [{
@@ -175,6 +177,7 @@ ClozeQuestionWithSlideHeader.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    answer: "Answer",
     purpose: ""
   },
   slideId: 0,
@@ -227,6 +230,7 @@ ClozeQuestionWithSlideHeaderAndBackgroundImage.args = {
       extention: ""
     },
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    answer: "Answer",
     purpose: ""
   },
   imageLibrary: [{
