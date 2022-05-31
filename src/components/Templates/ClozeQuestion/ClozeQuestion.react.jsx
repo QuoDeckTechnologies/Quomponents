@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
     resolveImage,
 } from "../../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -28,7 +29,6 @@ ClozeQuestion.propTypes = {
         image: PropTypes.object,
         backgroundImage: PropTypes.object,
         question: PropTypes.string,
-        answer: PropTypes.string,
         purpose: PropTypes.string,
     }).isRequired,
     /**
@@ -86,6 +86,14 @@ ClozeQuestion.propTypes = {
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
+    }),
+    /**
+Use to show a translated version of the component text. Dictionary must be valid JSON. 
+*/
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
     }),
     /**
     Use to enable/disable the component
@@ -160,6 +168,20 @@ export default function ClozeQuestion(props) {
     //-------------------------------------------------------------------
     let buttonText = data?.purpose === "quiz" ? "Check Answer" : "Submit Answer";
 
+    //-------------------------------------------------------------------
+    // 5. Get translation of the component
+    //-------------------------------------------------------------------
+    let tObj = null;
+
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        if (buttonText && tObj?.button) buttonText = data?.purpose === "quiz" ? tObj.button?.checkAnswer : tObj.button?.submitAnswer;
+    }
+
     const getBackground = () => {
         return {
             backgroundImage: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
@@ -196,11 +218,12 @@ export default function ClozeQuestion(props) {
                     </div>
                     <div className="qui-cloze-question-input-button-container">
                         <InputField {...props}
-                            content={{ label: props.data?.answer ? props.data?.answer : "Answer" }}
+                            content={{ placeholder: "******" }}
                             withColor={inputFieldColors}
                             onClick={(name, value) => setAnswer(value)}
-                            name="cloze-question-input-field" />
-                        <Button {...props}
+                            name="cloze-question-input-field"
+                            asEmphasis="listInput" />
+                        <Button
                             content={buttonText}
                             withColor={buttonColors}
                             onClick={() => handleSubmit()} >

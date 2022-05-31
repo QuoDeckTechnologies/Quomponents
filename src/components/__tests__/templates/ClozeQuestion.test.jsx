@@ -14,6 +14,16 @@ describe("ClozeQuestion", () => {
 	// Setup definitions for the test suite
 	// -------------------------------------
 	let component;
+	const dictionary = JSON.stringify({
+		hi: {
+			ClozeQuestion: {
+				button: {
+					checkAnswer: "जवाब की जांच करो",
+					submitAnswer: "उत्तर सबमिट करें"
+				}
+			}
+		},
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
@@ -30,8 +40,7 @@ describe("ClozeQuestion", () => {
 						extention: ""
 					},
 					question: "Question",
-					answer: "Answer",
-					purpose: "quiz",
+					purpose: "",
 				}}
 				imageLibrary={[{
 					id: 'background-image',
@@ -43,6 +52,7 @@ describe("ClozeQuestion", () => {
 				slideId={0}
 				asVariant="primary"
 				withColor={null}
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 			/>
@@ -82,6 +92,45 @@ describe("ClozeQuestion", () => {
 		expect(component.exists()).toBe(true);
 	});
 
+
+	it("should render translation of Check Answer with withTranslation prop and when passed purpose as quiz", () => {
+		component.setProps({
+			data: {
+				purpose: "quiz"
+			},
+			withTranslation: {
+				lang: "hi",
+				tgt: "ClozeQuestion",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.find(Button).props().content).toBe("जवाब की जांच करो");
+	});
+
+	it("should render submitAnswer translation with withTranslation prop and when passed nothing in the purpose props", () => {
+		component.setProps({
+			data: {
+				purpose: ""
+			},
+			withTranslation: {
+				lang: "hi",
+				tgt: "ClozeQuestion",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.find(Button).props().content).toBe("उत्तर सबमिट करें");
+	});
+	it("should render correctly if translation object is not returned", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "",
+				dictionary: dictionary,
+			}
+		});
+		expect(component.exists()).toBe(true);
+	});
+
 	it("should render correctly when passed isHidden props as false", () => {
 		component.setProps({ isHidden: false })
 		expect(component.exists()).toBe(true);
@@ -99,11 +148,6 @@ describe("ClozeQuestion", () => {
 
 	it("should render correctly when passed isDisabled props as true", () => {
 		component.setProps({ isDisabled: true })
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed answer props as null", () => {
-		component.setProps({ answer: null })
 		expect(component.exists()).toBe(true);
 	});
 

@@ -1,6 +1,16 @@
 import React from "react";
 import ClozeQuestion from "../../components/Templates/ClozeQuestion/ClozeQuestion.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    ClozeQuestion: {
+      button: {
+        checkAnswer: "जवाब की जांच करो",
+        submitAnswer: "उत्तर सबमिट करें"
+      }
+    }
+  }
+});
 export default {
   title: "Design System/Templates/ClozeQuestion/ClozeQuestion",
   component: ClozeQuestion,
@@ -11,7 +21,6 @@ export default {
       image: {},
       backgroundImage: {},
       question: "",
-      answer: "",
       purpose: "",
     },
     slideId: 0,
@@ -48,6 +57,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -101,7 +120,6 @@ Default.args = {
       extention: ""
     },
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    answer: "Answer",
     purpose: ""
   },
   imageLibrary: [{
@@ -132,6 +150,11 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "ClozeQuestion",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -152,7 +175,6 @@ ClozeQuestionWithSlideHeader.args = {
     title: "Neque porro quisquam est qui dolorem",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    answer: "Answer",
     purpose: ""
   },
   slideId: 0,
@@ -175,6 +197,11 @@ ClozeQuestionWithSlideHeader.args = {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "ClozeQuestion",
+    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,
@@ -200,7 +227,6 @@ ClozeQuestionWithSlideHeaderAndBackgroundImage.args = {
       extention: ""
     },
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    answer: "Answer",
     purpose: ""
   },
   imageLibrary: [{
@@ -228,6 +254,11 @@ ClozeQuestionWithSlideHeaderAndBackgroundImage.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "ClozeQuestion",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -235,6 +266,33 @@ ClozeQuestionWithSlideHeaderAndBackgroundImage.parameters = {
   docs: {
     source: {
       code: `<ClozeQuestion {...${JSON.stringify(ClozeQuestionWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Translated ClozeQuestion
+// -------------------------------------------------------------
+export const TranslatedClozeQuestion = Template.bind({});
+TranslatedClozeQuestion.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "ClozeQuestion",
+    dictionary: dictionary
+  },
+};
+TranslatedClozeQuestion.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in. To make this work for the ClozeQuestion, add a content:{text:{title, subTitle},label} value to the dictionary.",
+    },
+    source: {
+      code: `<ClozeQuestion {...${JSON.stringify(
+        TranslatedClozeQuestion.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
