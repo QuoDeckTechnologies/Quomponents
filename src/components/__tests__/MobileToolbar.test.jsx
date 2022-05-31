@@ -3,15 +3,31 @@
 // -------------------------------------
 import { shallow } from 'enzyme';
 
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import MobileToolbar from '../MobileToolbar/MobileToolbar.react'
 import ArcMenu from "../ArcMenu/ArcMenu.react"
 import IconLink from '../Buttons/IconLink/IconLink.react'
+
 describe("MobileToolbar", () => {
     let component;
+
+    const dictionary = JSON.stringify({
+        hi: {
+            mobiletoolbar: {
+                title: "संपादन मोड",
+                content: [
+                    { label: "पाठ्यक्रम" },
+                    { label: "नगेट्स" },
+                    { label: "परीक्षण" },
+                    { label: "प्रतियोगिता" },
+                    { label: "संदेश" },
+                ]
+            },
+        },
+    });
+
     let setState = jest.fn();
     beforeEach(() => {
         jest.resetAllMocks();
@@ -47,18 +63,9 @@ describe("MobileToolbar", () => {
                 currentLink="https://quodeck.com/"
                 asEmphasis="editing"
                 asVariant="primary"
-                withColor={{
-                    backgroundColor: "",
-                    accentColor: "",
-                    textColor: "",
-                    hoverBackgroundColor: "",
-                    hoverTextColor: "",
-                }}
-                withAnimation={{
-                    animation: "zoom",
-                    duration: 0.5,
-                    delay: 0,
-                }}
+                withColor={null}
+                withAnimation={null}
+                withTranslation={null}
                 isDisabled={false}
                 isHidden={false}
                 isCircular={true}
@@ -66,6 +73,26 @@ describe("MobileToolbar", () => {
         );
     });
     it("should render correctly without throwing error", () => {
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly with withTranslation prop", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "mobiletoolbar",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly without tgt", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: null,
+                dictionary: dictionary,
+            },
+        });
         expect(component.exists()).toBe(true);
     });
     it("should call setState when click", () => {

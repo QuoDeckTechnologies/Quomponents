@@ -1,8 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
-import renderer, { act } from "react-test-renderer";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import from Config
 // -------------------------------------
@@ -21,6 +20,7 @@ describe("NavBar", () => {
         hi: {
             navbar: {
                 title: "कमाये",
+                content: "कॅटलॉग",
             },
         },
     });

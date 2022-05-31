@@ -1,6 +1,20 @@
 import React from "react";
 import ActionMenu from "../components/ActionMenu/ActionMenu.react";
-
+const dictionary = JSON.stringify({
+  hi: {
+    actions: {
+      content: [
+        { title: "खुला डेक" },
+        { title: "डेक संपादित करें" },
+        { title: "डेक ऊपर ले जाएँ" },
+        { title: "डेक नीचे ले जाएँ" },
+        { title: "विषय पर जाएं" },
+        { title: "डेक को अप्रकाशित करें" },
+        { title: "डेक हटाएं" },
+      ]
+    },
+  },
+});
 export default {
   title: "Design System/ActionMenu/ActionMenu",
   component: ActionMenu,
@@ -28,6 +42,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -121,6 +145,11 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "actions",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -175,6 +204,34 @@ AnimatedActionMenu.parameters = {
     source: {
       code: `<ActionMenu {...${JSON.stringify(
         AnimatedActionMenu.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+
+// -------------------------------------------------------------
+// TranslatedActionMenu
+// -------------------------------------------------------------
+export const TranslatedActionMenu = Template.bind({});
+TranslatedActionMenu.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "actions",
+    dictionary: dictionary,
+  },
+};
+TranslatedActionMenu.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in ActionMenu."
+    },
+    source: {
+      code: `<TranslatedActionMenu {...${JSON.stringify(
+        TranslatedActionMenu.args,
         null,
         2
       )}}/>`,

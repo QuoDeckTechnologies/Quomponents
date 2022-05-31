@@ -1,10 +1,12 @@
 import React from "react";
 import NavBar from "../components/NavBar/NavBar/NavBar.react";
 import ShortLogo from "../assets/amplayfier-logo-short.png"
+
 const dictionary = JSON.stringify({
     hi: {
         navbar: {
             title: "कमाये",
+            content: "कॅटलॉग",
         },
     },
 });
@@ -222,7 +224,6 @@ AllVariants.parameters = {
         },
     },
 }
-
 //-------------------------------------------------------------
 // Animated Navbar
 // -------------------------------------------------------------
