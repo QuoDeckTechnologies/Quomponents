@@ -3,11 +3,6 @@ import React from "react";
 // Import from NPM
 // -------------------------------------
 import { shallow, mount, render } from "enzyme";
-
-//--------------------------------------
-// Import from Config
-// -------------------------------------
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -18,15 +13,11 @@ describe("MenuBlock", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-
   const dictionary = JSON.stringify({
-    en: {
-      button: {
-        text: "Button",
-      },
-    },
     hi: {
-      button: { text: "होम", label: "होम" },
+      menuBlock: {
+        content: "सूची",
+      },
     },
   });
   beforeEach(() => {
@@ -51,13 +42,64 @@ describe("MenuBlock", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly with translation", () => {
+
+  it("should render correctly when passed withAnimation props", () => {
+    component.setProps({
+      withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withTranslation", () => {
     component.setProps({
       withTranslation: {
-        lang: "en",
-        tgt: "button:",
+        lang: "hi",
+        tgt: "menuBlock",
         dictionary: dictionary,
       },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withColor", () => {
+    component.setProps({
+      withColor: {
+        backgroundColor: "#ffffff",
+        accentColor: "#ffffff",
+        textColor: "#ffffff",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isHidden props is false", () => {
+    component.setProps({
+      isHidden: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isCircular props is true", () => {
+    component.setProps({
+      isHidden: true,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isDisabled props is false", () => {
+    component.setProps({
+      isDisabled: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isDisabled props is true", () => {
+    component.setProps({
+      isDisabled: true,
     });
     expect(component.exists()).toBe(true);
   });
@@ -73,20 +115,21 @@ describe("MenuBlock", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly if translation object is not returned", () => {
+  it("should render correctly when wihtLabel props is provided", () => {
     component.setProps({
-      withColor: {
-        backgroundColor: "red",
-        textColor: "yellow",
+      withLabel: {
+        format: "caption",
+        content: "This is lable",
+        textColor: "red",
       },
     });
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly if translation object is not returned", () => {
+  it("should render correctly when wihtLabel props match with position", () => {
     component.setProps({
       withLabel: {
-        format: "caption",
+        format: "label",
         content: "This is lable",
         textColor: "red",
       },
