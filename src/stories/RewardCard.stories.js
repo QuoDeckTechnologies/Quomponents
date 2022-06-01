@@ -218,7 +218,7 @@ TranslatedRewardCard.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the text appears in. To make this work for the RewardCard, add a RewardCard: { left } value to the dictionary.",
+                "Use to change the language that the text appears in. To make this work for the RewardCard, add a RewardCard: {name, soldout, left } value to the dictionary.",
         },
         source: {
             code: `<RewardCard {...${JSON.stringify(
@@ -251,6 +251,39 @@ SoldOutRewardCard.parameters = {
         source: {
             code: `<RewardCard {...${JSON.stringify(
                 SoldOutRewardCard.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Translated SoldOutRewardCard
+// -------------------------------------------------------------
+export const TranslatedSoldOutRewardCard = Template.bind({});
+TranslatedSoldOutRewardCard.args = {
+    ...Default.args,
+    asEmphasis: "soldout",
+    withColor: {
+        textColor: "#fffff",
+        accentColor: "#AD2929",
+        backgroundColor: "#E8E8E8",
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "RewardCard",
+        dictionary: dictionary,
+    },
+};
+TranslatedSoldOutRewardCard.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in. To make this work for the RewardCard, add a RewardCard: {name, soldout, left } value to the dictionary.",
+        },
+        source: {
+            code: `<RewardCard {...${JSON.stringify(
+                TranslatedSoldOutRewardCard.args,
                 null,
                 2
             )}}/>`,
