@@ -54,12 +54,20 @@ ArcMenu.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to override component colors of menu when `menuType` is `menu`
-    */
+  Use to override component colors of menu when `menuType` is `menu`
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
+  }),
+  /**
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
   }),
   /**
   Use to enable/disable the component
@@ -89,6 +97,7 @@ ArcMenu.defaultProps = {
   // Quommon props
   //=======================================
   withColor: null,
+  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
