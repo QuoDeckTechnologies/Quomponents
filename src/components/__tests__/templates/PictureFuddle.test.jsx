@@ -14,6 +14,16 @@ describe("PictureFuddle", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
+    const dictionary = JSON.stringify({
+        hi: {
+            PictureFuddle: {
+                button: {
+                    checkAnswer: "जवाब की जांच करो",
+                    submitAnswer: "उत्तर सबमिट करें"
+                }
+            }
+        },
+    });
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -41,7 +51,6 @@ describe("PictureFuddle", () => {
                     image: "test-image2.png"
                 }]}
                 slideId={0}
-                asVariant="primary"
                 withColor={null}
                 isHidden={false}
                 isDisabled={false}
@@ -79,6 +88,45 @@ describe("PictureFuddle", () => {
             delay: 0,
         }
         component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render translation of Check Answer with withTranslation prop and when passed purpose as quiz", () => {
+        component.setProps({
+            data: {
+                purpose: "quiz"
+            },
+            withTranslation: {
+                lang: "hi",
+                tgt: "PictureFuddle",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.find(Button).props().content).toBe("जवाब की जांच करो");
+    });
+
+    it("should render submitAnswer translation with withTranslation prop and when passed nothing in the purpose props", () => {
+        component.setProps({
+            data: {
+                purpose: ""
+            },
+            withTranslation: {
+                lang: "hi",
+                tgt: "PictureFuddle",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.find(Button).props().content).toBe("उत्तर सबमिट करें");
+    });
+
+    it("should render correctly if translation object is not returned", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "",
+                dictionary: dictionary,
+            }
+        });
         expect(component.exists()).toBe(true);
     });
 

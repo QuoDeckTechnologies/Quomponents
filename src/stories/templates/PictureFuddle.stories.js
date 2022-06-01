@@ -1,6 +1,16 @@
 import React from "react";
 import PictureFuddle from "../../components/Templates/PictureFuddle/PictureFuddle.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        PictureFuddle: {
+            button: {
+                checkAnswer: "जवाब की जांच करो",
+                submitAnswer: "उत्तर सबमिट करें"
+            }
+        }
+    }
+});
 export default {
     title: "Design System/Templates/PictureFuddle/PictureFuddle",
     component: PictureFuddle,
@@ -48,6 +58,16 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -136,6 +156,11 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "PictureFuddle",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -179,6 +204,11 @@ PictureFuddleWithSlideHeader.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "PictureFuddle",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -232,6 +262,11 @@ PictureFuddleWithSlideHeaderAndBackgroundImage.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "PictureFuddle",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -239,6 +274,34 @@ PictureFuddleWithSlideHeaderAndBackgroundImage.parameters = {
     docs: {
         source: {
             code: `<PictureFuddle {...${JSON.stringify(PictureFuddleWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Translated PictureFuddle
+// -------------------------------------------------------------
+export const TranslatedPictureFuddle = Template.bind({});
+TranslatedPictureFuddle.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "PictureFuddle",
+        dictionary: dictionary
+    },
+};
+TranslatedPictureFuddle.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in. To make this work for the PictureFuddle, add a content:{text:{title, subTitle},label} value to the dictionary.",
+        },
+        source: {
+            code: `<PictureFuddle {...${JSON.stringify(
+                TranslatedPictureFuddle.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
     resolveImage,
 } from "../../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -88,6 +89,14 @@ PictureFuddle.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+ Use to show a translated version of the component text. Dictionary must be valid JSON. 
+ */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
@@ -163,6 +172,24 @@ export default function PictureFuddle(props) {
     //-------------------------------------------------------------------
     let buttonText = data?.purpose === "quiz" ? "Check Answer" : "Submit Answer";
 
+    //-------------------------------------------------------------------
+    // 5. Get translation of the component
+    //-------------------------------------------------------------------
+    let tObj = null;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        if (buttonText && tObj?.button) buttonText = data?.purpose === "quiz" ? tObj.button?.checkAnswer : tObj.button?.submitAnswer;
+    }
+
+    //-------------------------------------------------------------------
+    // 6. Hide the placeholder text
+    //-------------------------------------------------------------------
+    let answerText = props.data?.answer?.toString().trim().replace(/[a-z0-9&_]/gi, "*");
+
     const getBackground = () => {
         return {
             background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
@@ -199,11 +226,12 @@ export default function PictureFuddle(props) {
                     </div>
                     <div className="qui-picture-fuddle-input-button-container">
                         <InputField {...props}
-                            content={{ label: props.data?.answer ? props.data?.answer : "Answer" }}
+                            content={{ placeholder: answerText }}
                             withColor={inputFieldColors}
                             onClick={(name, value) => changeText(value)}
-                            name="picture-fuddle-input-field" />
-                        <Button {...props}
+                            name="picture-fuddle-input-field"
+                            asEmphasis="listInput" />
+                        <Button
                             content={buttonText}
                             withColor={buttonColors}
                             onClick={() => handleSubmit()} >
