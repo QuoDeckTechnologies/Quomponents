@@ -291,7 +291,7 @@ TranslatedClozeWithFeedback.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the text appears in. To make this work for the ClozeWithFeedback, add a content:{text:{title, subTitle},label} value to the dictionary.",
+                "Use to change the language that the text appears in. To make this work for the ClozeWithFeedback, add a ClozeWithFeedback:{button:{checkAnswer, submitAnswer}} value to the dictionary.",
         },
         source: {
             code: `<ClozeWithFeedback {...${JSON.stringify(

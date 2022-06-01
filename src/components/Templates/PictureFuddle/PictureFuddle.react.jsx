@@ -62,7 +62,6 @@ PictureFuddle.propTypes = {
         slideHeaderTextColor: PropTypes.string,
         slideHeaderAccentColor: PropTypes.string,
         slideHeaderBackgroundColor: PropTypes.string,
-        inputFieldTextColor: PropTypes.string,
         inputFieldAccentColor: PropTypes.string,
         inputFieldBackgroundColor: PropTypes.string,
         buttonTextColor: PropTypes.string,
@@ -89,8 +88,8 @@ PictureFuddle.propTypes = {
         delay: PropTypes.number,
     }),
     /**
- Use to show a translated version of the component text. Dictionary must be valid JSON. 
- */
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
     withTranslation: PropTypes.shape({
         lang: PropTypes.string,
         tgt: PropTypes.string,
@@ -118,6 +117,7 @@ PictureFuddle.defaultProps = {
     asVariant: "primary",
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
     isDisabled: false,
     isHidden: false,
 };

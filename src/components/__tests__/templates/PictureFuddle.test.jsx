@@ -52,6 +52,7 @@ describe("PictureFuddle", () => {
                 }]}
                 slideId={0}
                 withColor={null}
+                withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
             />

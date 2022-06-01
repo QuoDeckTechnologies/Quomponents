@@ -1,6 +1,16 @@
 import React from "react";
 import PictureFuddleWithFeedback from "../../components/Templates/PictureFuddleWithFeedback/PictureFuddleWithFeedback.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        PictureFuddleWithFeedback: {
+            button: {
+                checkAnswer: "जवाब की जांच करो",
+                submitAnswer: "उत्तर सबमिट करें"
+            }
+        }
+    }
+});
 export default {
     title: "Design System/Templates/PictureFuddleWithFeedback/PictureFuddleWithFeedback",
     component: PictureFuddleWithFeedback,
@@ -48,6 +58,16 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -136,6 +156,11 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "PictureFuddleWithFeedback",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -179,6 +204,11 @@ PictureFuddleWithFeedbackWithSlideHeader.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "PictureFuddleWithFeedback",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -232,6 +262,11 @@ PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "PictureFuddleWithFeedback",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -239,6 +274,34 @@ PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.parameters = {
     docs: {
         source: {
             code: `<PictureFuddleWithFeedback {...${JSON.stringify(PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Translated PictureFuddle
+// -------------------------------------------------------------
+export const TranslatedPictureFuddleWithFeedback = Template.bind({});
+TranslatedPictureFuddleWithFeedback.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "PictureFuddleWithFeedback",
+        dictionary: dictionary
+    },
+};
+TranslatedPictureFuddleWithFeedback.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in. To make this work for the PictureFuddleWithFeedback, add a PictureFuddleWithFeedback:{button:{checkAnswer, submitAnswer}} value to the dictionary.",
+        },
+        source: {
+            code: `<PictureFuddleWithFeedback {...${JSON.stringify(
+                TranslatedPictureFuddleWithFeedback.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };

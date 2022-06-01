@@ -291,7 +291,7 @@ TranslatedClozeQuestion.parameters = {
   docs: {
     description: {
       story:
-        "Use to change the language that the text appears in. To make this work for the ClozeQuestion, add a content:{text:{title, subTitle},label} value to the dictionary.",
+        "Use to change the language that the text appears in. To make this work for the ClozeQuestion, add a ClozeQuestion:{button:{checkAnswer, submitAnswer}} value to the dictionary.",
     },
     source: {
       code: `<ClozeQuestion {...${JSON.stringify(
