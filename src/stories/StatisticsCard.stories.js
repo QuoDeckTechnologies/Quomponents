@@ -6,9 +6,9 @@ export default {
     component: StatisticsCard,
     argTypes: {
         content: {
-            players: "",
-            playerIcon: "",
-            playerNum: ""
+            title: "",
+            icon: "",
+            value: ""
 
         },
         isCircular: {
@@ -91,9 +91,9 @@ const Template = (args) => (
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        players: "PLAYERS",
-        playerIcon: "fas fa-users",
-        playerNum: "20,539"
+        title: "PLAYERS",
+        icon: "fas fa-users",
+        value: "20,539"
     },
     isCircular: true,
     asFloated: "inline",
@@ -121,8 +121,8 @@ Default.parameters = {
 // -------------------------------------------------------------
 // Colored StatisticsCard
 // -------------------------------------------------------------
-export const ColoredSegment = Template.bind({});
-ColoredSegment.args = {
+export const ColoredStatisticsCard = Template.bind({});
+ColoredStatisticsCard.args = {
     ...Default.args,
     withColor: {
         backgroundColor: "#F3E5F5",
@@ -130,18 +130,18 @@ ColoredSegment.args = {
         textColor: "#3A8080",
     },
 };
-ColoredSegment.parameters = {
+ColoredStatisticsCard.parameters = {
     docs: {
         source: {
-            code: `<StatisticsCard {...${JSON.stringify(ColoredSegment.args, null, 2)}}/>`,
+            code: `<StatisticsCard {...${JSON.stringify(ColoredStatisticsCard.args, null, 2)}}/>`,
         },
     },
 };
 // -------------------------------------------------------------
 // Animated StatisticsCard
 // -------------------------------------------------------------
-export const AnimatedSegment = Template.bind({});
-AnimatedSegment.args = {
+export const AnimatedStatisticsCard = Template.bind({});
+AnimatedStatisticsCard.args = {
     ...Default.args,
     withAnimation: {
         animation: "fade",
@@ -149,10 +149,10 @@ AnimatedSegment.args = {
         delay: 0,
     },
 };
-AnimatedSegment.parameters = {
+AnimatedStatisticsCard.parameters = {
     docs: {
         source: {
-            code: `<StatisticsCard {...${JSON.stringify(AnimatedSegment.args, null, 2)}}/>`,
+            code: `<StatisticsCard {...${JSON.stringify(AnimatedStatisticsCard.args, null, 2)}}/>`,
         },
     },
 };
