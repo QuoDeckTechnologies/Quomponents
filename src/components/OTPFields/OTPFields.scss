@@ -3,74 +3,20 @@
 /* ================================================= */
 .qui .qui-otp-fields-container {
   width: auto;
-  // width: 20em;
-}
-
-.qui .qui-otp-fields {
-  width: 100%;
-  display: flex;
-  gap: 0.7em;
-  .css-c5v1qu-MuiInputBase-input-MuiFilledInput-input {
-    // padding-top: 1em;
-    padding: 0.5em 0 0.2em 0;
-    font-size: 1.5em;
+  .qui-otp-fields-otp-input-container-style {
+    display: flex;
+    justify-content: center;
+    gap: 0.7em;
   }
-
-  .qui-otp-fields-textField {
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
+  .qui-otp-fields-otp-input-style {
+    font-size: 2.5em;
+    height: 0.8em;
+    padding: 0.2em 0;
+    background-color: #4545453b;
+    border-color: #8c8c898c;
+    border: none;
+    border-bottom: 0.1em solid #8c8c898c;
+    border-radius: 0.3em 0.3em 0em 0em;
+    caret-color: transparent;
   }
-}
-/* ================================================= */
-/* Mui Override Definitions */
-/* ================================================= */
-.qui .MuiFilledInput-root:after {
-  animation: none;
-  transition: none;
-  outline: none;
-}
-.qui .MuiFilledInput-root:before {
-  border-bottom: 0.3em solid #8c8c89;
-  animation: none;
-  transition: none;
-  outline: none;
-}
-.qui .MuiFilledInput-root:hover:not(.Mui-disable):before {
-  border-bottom: 0.3em solid #8c8c89;
-}
-.qui .MuiFilledInput-root {
-  border-top-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
-  background-color: #d4d3cf;
-}
-.qui .MuiInputBase-input.MuiFilledInput-input {
-  margin-bottom: 0.2em;
-}
-/* ================================================= */
-/* OTPFields Container Definitions using input*/
-/* ================================================= */
-.qui .qui-otp-fields-input {
-  padding: 0.4em 0 0 0.1em;
-  width: 3em;
-  outline: 0;
-  border-width: 0 0 0.3em;
-  border-color: #8c8c89;
-  background-color: #b5b5b1;
-  border-top-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
-  font-size: 1.5em;
-  text-indent: 1em;
-}
-/* Chrome, Safari, Edge, Opera */
-.qui .qui-otp-fields-input::-webkit-outer-spin-button,
-.qui .qui-otp-fields-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-/* Firefox */
-.qui .qui-otp-fields-input[type="number"] {
-  -moz-appearance: textfield;
-}
-.qui .qui-otp-fields-input:focus {
-  border-bottom: 0.3em solid;
 }

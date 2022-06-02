@@ -77,8 +77,8 @@ Default.args = {
     numFields: 5,
     asFloated: "inline",
     withColor: {
-        accentColor: "",
-        backgroundColor: ""
+        accentColor: "#FFAB00",
+        backgroundColor: "#ffab000d",
     },
     withAnimation: {
         animation: "zoom",
