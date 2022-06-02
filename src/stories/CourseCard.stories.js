@@ -1,6 +1,39 @@
 import React from "react";
 import CourseCard from "../components/CourseCard/CourseCard.react";
 
+const dictionary = JSON.stringify({
+	hi: {
+		CourseCard: {
+			isSequential: {
+				true: "अनुक्रमिक पाठ्यक्रम",
+				false: "गैर अनुक्रमिक पाठ्यक्रम"
+			},
+			months: {
+				Jan: "जनवरी",
+				Feb: "फ़रवरी",
+				Mar: "मार्च",
+				Apr: "अप्रैल",
+				May: "मई",
+				Jun: "जून",
+				Jul: "जुलाई",
+				Aug: "अगस्त",
+				Sep: "सितम्बर",
+				Oct: "अक्टूबर",
+				Nov: "नवम्बर",
+				Dec: "दिसम्बर",
+			},
+			share: "शेयर",
+			rewardLabel: "पूर्ण करे जीतने के लिए",
+			menu: [
+				"विवरण संपादित करें",
+				"सामग्री संपादित करें",
+				"शिक्षार्थियों को प्रबंधित करें",
+				"विश्लेषण देखें",
+				"पाठ्यक्रम हटाएं"
+			]
+		}
+	}
+});
 export default {
 	title: "Design System/CourseCard/CourseCard",
 	component: CourseCard,
@@ -13,7 +46,7 @@ export default {
 			courseName: "",
 			description: "",
 			courseImage: "",
-			points: "",
+			points: null,
 			identifier: "",
 			date: {
 				start_date: "",
@@ -21,21 +54,21 @@ export default {
 			},
 			sequential: false,
 		},
-		withAnimation: {
-			table: {
-				courseType: "with-Params",
-				defaultValue: {
-					animation: "",
-					duration: 0,
-					delay: 0,
-				},
-			},
-		},
 		asFloated: {
 			control: "select",
 			options: ["left", "right", "inline"],
 			table: {
 				category: "as-Flags",
+			},
+		},
+		withTranslation: {
+			table: {
+				category: "with-Params",
+				defaultValue: {
+					lang: "",
+					tgt: "",
+					dictionary: "",
+				},
 			},
 		},
 		isHidden: {
@@ -91,7 +124,7 @@ Default.args = {
 		courseName: "Measure your sales readiness",
 		description: "Take this quick profile test to check how well you are prepared for a sales job",
 		courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-		points: "200",
+		points: 200,
 		identifier: "XrPmy_OAK",
 		date: {
 			start_date: "2016-01-04 10:34:23",
@@ -99,10 +132,10 @@ Default.args = {
 		},
 		sequential: false,
 	},
-	withAnimation: {
-		animation: "zoom",
-		duration: 0.5,
-		delay: 0,
+	withTranslation: {
+		lang: "en",
+		tgt: "CourseCard",
+		dictionary: dictionary,
 	},
 	asFloated: "inline",
 	isDisabled: false,
@@ -130,7 +163,7 @@ export const CourseCardWithManyTags = (args) => {
 				courseName: "Measure your sales readiness",
 				description: "Take this quick profile test to check how well you are prepared for a sales job",
 				courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-				points: "200",
+				points: 200,
 				identifier: "XrPmy_OAK",
 				date: {
 					start_date: "2016-01-04 10:34:23",
@@ -138,10 +171,10 @@ export const CourseCardWithManyTags = (args) => {
 				},
 				sequential: false,
 			},
-			withAnimation: {
-				animation: "zoom",
-				duration: 0.5,
-				delay: 0,
+			withTranslation: {
+				lang: "en",
+				tgt: "CourseCard",
+				dictionary: dictionary,
 			},
 			asFloated: "inline",
 			isDisabled: false,
@@ -169,7 +202,7 @@ export const PublsihedCourseCard = (args) => {
 				courseName: "Measure your sales readiness",
 				description: "Take this quick profile test to check how well you are prepared for a sales job",
 				courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-				points: "200",
+				points: 200,
 				identifier: "XrPmy_OAK",
 				date: {
 					start_date: "2016-01-04 10:34:23",
@@ -177,10 +210,10 @@ export const PublsihedCourseCard = (args) => {
 				},
 				sequential: false,
 			},
-			withAnimation: {
-				animation: "zoom",
-				duration: 0.5,
-				delay: 0,
+			withTranslation: {
+				lang: "en",
+				tgt: "CourseCard",
+				dictionary: dictionary,
 			},
 			asFloated: "inline",
 			isDisabled: false,
@@ -208,7 +241,7 @@ export const CourseCardWithExtraContent = (args) => {
 				courseName: "Measure your sales readiness Measure your sales readiness",
 				description: "Take this quick profile test to check how well you are prepared for a sales job.Take this quick profile test to check how well you are prepared for a sales job",
 				courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-				points: "200",
+				points: 200,
 				identifier: "XrPmy_OAK",
 				date: {
 					start_date: "2016-01-04 10:34:23",
@@ -216,10 +249,10 @@ export const CourseCardWithExtraContent = (args) => {
 				},
 				sequential: false,
 			},
-			withAnimation: {
-				animation: "zoom",
-				duration: 0.5,
-				delay: 0,
+			withTranslation: {
+				lang: "en",
+				tgt: "CourseCard",
+				dictionary: dictionary,
 			},
 			asFloated: "inline",
 			isDisabled: false,
@@ -231,4 +264,32 @@ export const CourseCardWithExtraContent = (args) => {
 			<CourseCard {...Object.assign({}, baseObj1, {})} />
 		</div>
 	);
+};
+
+// -------------------------------------------------------------
+// Translated CourseCard
+// -------------------------------------------------------------
+export const TranslatedCourseCard = Template.bind({});
+TranslatedCourseCard.args = {
+	...Default.args,
+	withTranslation: {
+		lang: "hi",
+		tgt: "CourseCard",
+		dictionary: dictionary
+	},
+};
+TranslatedCourseCard.parameters = {
+	docs: {
+		description: {
+			story:
+				"Use to change the language that the text appears in. To make this work for the CourseCard, add a CourseCard:{isSequential:{true, false}} value to the dictionary.",
+		},
+		source: {
+			code: `<CourseCard {...${JSON.stringify(
+				TranslatedCourseCard.args,
+				null,
+				2
+			)}}/>`,
+		},
+	},
 };
