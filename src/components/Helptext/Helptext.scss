@@ -1,0 +1,20 @@
+.qui.qui-helptext {
+  display: flex;
+  overflow: visible;
+  transform-origin: left;
+  transform: rotate(90deg);
+}
+
+.qui.qui-helptext.is-hidden {
+  display: none;
+}
+
+.qui .qui-helptext-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.qui-helptext-text {
+  margin: 0;
+  margin-right: 0.1em;
+}
