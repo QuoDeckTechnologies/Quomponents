@@ -2,6 +2,8 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
+
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -17,7 +19,11 @@ describe("StatisticsCard", () => {
         jest.resetAllMocks();
         component = shallow(
             <StatisticsCard
-                content={null}
+                content={{
+                    title: "players",
+                    icon: "fa fa-home",
+                    value: "2222"
+                }}
                 isCircular={false}
                 asPadded="normal"
                 asFloated="none"
@@ -92,7 +98,7 @@ describe("StatisticsCard", () => {
     it("should render correctly when passed withColor props", () => {
         component.setProps({
             withColor: {
-                backgroundColor: "",
+                backgroundColor: "pink",
                 accentClor: "",
                 textColor: "",
             },
@@ -152,5 +158,13 @@ describe("StatisticsCard", () => {
         });
         expect(component.exists()).toBe(true);
     });
+    it("should render correctly when set value in content props properly",
+        () => {
+            const component = renderer.create(<StatisticsCard
+                content={{
+                    value: "202,0202"
+                }}
+            />)
+        });
 });
 

@@ -14,35 +14,35 @@ StatisticsCard.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      StatisticsCard can recieve content as props
-      */
+    StatisticsCard can recieve content as props
+    */
     content: PropTypes.object,
     /**
-      Use for rounded corners
-      */
+    Use for rounded corners
+    */
     isCircular: PropTypes.bool,
     //=======================================
     // Quommon props
     //=======================================
     /**
-      Use to define component padding in increasing order
-      */
+    Use to define component padding in increasing order
+    */
     asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
     /**
-      Use to float the component in parent container
-      */
+    Use to float the component in parent container
+    */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-      Use to override component colors and behavior
-      */
+    Use to override component colors and behavior
+    */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
         textColor: PropTypes.string,
     }),
     /**
-      Use to define the entry animation of the component
-      */
+    Use to define the entry animation of the component
+    */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -58,12 +58,12 @@ StatisticsCard.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to show/hide the component
-      */
+    Use to show/hide the component
+    */
     isHidden: PropTypes.bool,
     /**
-      Use to enable/disable the component
-      */
+    Use to enable/disable the component
+    */
     isDisabled: PropTypes.bool,
 };
 
@@ -104,6 +104,7 @@ function getColors(colors) {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function StatisticsCard(props) {
+
     const { content } = props;
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -114,7 +115,6 @@ export default function StatisticsCard(props) {
     // 2. Set the component colors
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor) : {};
-
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
@@ -134,7 +134,7 @@ export default function StatisticsCard(props) {
                     <i className={`qui-statistics-card-icon ${content?.icon}`}
                         style={colors?.accentColors}>
                     </i>
-                    <h1 className="qui-statistics-card-number" style={colors?.textColors}>
+                    <h1 className={props.content?.value.length >= 7 ? "qui-statistics-card-numbers" : "qui-statistics-card-number"} style={colors?.textColors}>
                         {content?.value}
                     </h1>
                     <h3 className="qui-statistics-card-players" style={colors?.textColors}>

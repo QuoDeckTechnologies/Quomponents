@@ -8,7 +8,7 @@ export default {
         content: {
             title: "",
             icon: "",
-            value: ""
+            value: "",
 
         },
         isCircular: {
@@ -93,7 +93,7 @@ Default.args = {
     content: {
         title: "PLAYERS",
         icon: "fas fa-users",
-        value: "20,539"
+        value: "20,539",
     },
     isCircular: true,
     asFloated: "inline",
