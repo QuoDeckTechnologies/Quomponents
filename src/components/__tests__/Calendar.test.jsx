@@ -21,6 +21,7 @@ describe("Calendar", () => {
                 withAnimation={null}
                 isDisabled={false}
                 isHidden={false}
+                onClick={() => { }}
             />
         );
     });

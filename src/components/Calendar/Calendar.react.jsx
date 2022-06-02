@@ -1,5 +1,5 @@
 // Import npm packages
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Calendar from 'react-calendar';
@@ -46,6 +46,10 @@ Calender.propTypes = {
       Use to show/hide the component
       */
     isHidden: PropTypes.bool,
+    /**
+    Calendar component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 };
 
 Calender.defaultProps = {
@@ -66,6 +70,8 @@ Calender.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function Calender(props) {
+    const [value, onChange] = useState(new Date());
+
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -84,7 +90,10 @@ export default function Calender(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-calendar-container ${quommonClasses.childClasses}`}>
-                <Calendar />
+                <Calendar
+                    onClick={props.onClick(value)}
+                    onChange={onChange} value={value}
+                />
             </div>
         </motion.div>
     );
