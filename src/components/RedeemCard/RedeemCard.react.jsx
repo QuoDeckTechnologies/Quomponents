@@ -153,6 +153,7 @@ export default function RedeemCard(props) {
     let buttonText = "Redeem";
     let inProgressText = "YOUR REDEMPTION REQUEST IS IN PROCESS";
     let completedText = "YOU HAVE REDEEMED THIS OFFER";
+    let leftText = "left";
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
@@ -162,6 +163,7 @@ export default function RedeemCard(props) {
         buttonText = tObj.button;
         inProgressText = tObj.inprogress;
         completedText = tObj.completed;
+        leftText = tObj.left
     }
     //-------------------------------------------------------------------
     // 7. Get the RedeemCard Component
@@ -191,7 +193,7 @@ export default function RedeemCard(props) {
                                 {props.content?.stock?.left}/{props.content?.stock?.total}
                             </div>
                             <div>
-                                left
+                                {leftText}
                             </div>
                         </div>
                     }

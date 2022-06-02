@@ -6,14 +6,16 @@ const dictionary = JSON.stringify({
         RedeemCard: {
             button: "मोचन",
             inprogress: "आपका मोचन अनुरोध प्रक्रिया में है",
-            completed: "आपने इस ऑफ़र को भुना लिया है"
+            completed: "आपने इस ऑफ़र को भुना लिया है",
+            left: "शेष"
         }
     },
     en: {
         RedeemCard: {
             button: "Redeem",
             inprogress: "YOUR REDEMPTION REQUEST IS IN PROCESS",
-            completed: "YOU HAVE REDEEMED THIS OFFER"
+            completed: "YOU HAVE REDEEMED THIS OFFER",
+            left: "left"
         }
     }
 });
@@ -333,7 +335,7 @@ TranslatedRedeemCard.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the text appears in. To make this work for the RedeemCard, add a content:{text:{title, subTitle},label} value to the dictionary.",
+                "Use to change the language that the text appears in. To make this work for the RedeemCard, add a  RedeemCard: {button, inprogress, completed, left } value to the dictionary.",
         },
         source: {
             code: `<RedeemCard {...${JSON.stringify(
