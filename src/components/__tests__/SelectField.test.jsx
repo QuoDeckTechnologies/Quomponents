@@ -15,6 +15,20 @@ describe("SelectField", () => {
     // -------------------------------------
     let component;
     let onClick = jest.fn();
+    const dictionary = JSON.stringify({
+        hi: {
+            SelectField: {
+                label: "पाठ्यक्रम श्रेणी",
+                placeHolder: "चुनें..."
+            }
+        },
+        en: {
+            SelectField: {
+                label: "Course Category",
+                placeHolder: "",
+            }
+        }
+    });
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -28,6 +42,7 @@ describe("SelectField", () => {
                 asPadded="normal"
                 withColor={null}
                 withAnimation={null}
+                withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
                 onClick={onClick}
@@ -78,6 +93,17 @@ describe("SelectField", () => {
         component.setProps({ withAnimation: animation })
         expect(component.exists()).toBe(true);
     })
+
+    it("should render correctly with withTranslation prop", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "SelectField",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
 
     it("it should render correctly when passed isHidden props as false", () => {
         component.setProps({ isHidden: false })

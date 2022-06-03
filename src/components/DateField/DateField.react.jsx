@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./DateField.scss";
@@ -52,6 +53,14 @@ DateField.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -77,6 +86,7 @@ DateField.defaultProps = {
 
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
@@ -112,7 +122,20 @@ export default function DateField(props) {
         borderBottomColor: `${props.withColor?.accentColor}`,
     };
     //-------------------------------------------------------------------
-    // 4. Get animation of the component
+    // 4. Get translation of the component
+    //-------------------------------------------------------------------
+    let tObj = null;
+    let label = props.label;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation)
+        label = tObj.label
+    }
+    //-------------------------------------------------------------------
+    // 5. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
@@ -125,7 +148,7 @@ export default function DateField(props) {
             <div className={`qui-date-field-container ${quommonClasses.childClasses}`} >
                 <div className="qui-date-field" style={Color}>
                     <div className="qui-date-field-label">
-                        {props.label}
+                        {label}
                     </div>
                     <div>
                         <i className={`far fa-calendar qui-calendar-icon`}

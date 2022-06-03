@@ -1,6 +1,21 @@
 import React from "react";
 import SelectField from "../components/SelectField/SelectField.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        SelectField: {
+            label: "पाठ्यक्रम श्रेणी",
+            placeHolder: "चुनें..."
+        }
+    },
+    en: {
+        SelectField: {
+            label: "Course Category",
+            placeHolder: "",
+        }
+    }
+});
+
 export default {
     title: "Design System/SelectField/SelectField",
     component: SelectField,
@@ -34,6 +49,16 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -91,6 +116,11 @@ Default.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "SelectField",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -155,4 +185,31 @@ AnimatedSelectField.parameters = {
             )}}/>`,
         },
     },
-}; 
+};
+// -------------------------------------------------------------
+// Translated SelectField
+// -------------------------------------------------------------
+export const TranslatedSelectField = Template.bind({});
+TranslatedSelectField.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "SelectField",
+        dictionary: dictionary,
+    },
+};
+TranslatedSelectField.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in SelectField.",
+        },
+        source: {
+            code: `<SelectField {...${JSON.stringify(
+                TranslatedSelectField.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};

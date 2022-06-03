@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./InputField.scss";
@@ -69,6 +70,14 @@ InputField.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -96,6 +105,7 @@ InputField.defaultProps = {
 
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
@@ -162,7 +172,23 @@ export default function InputField(props) {
         },
     };
     //-------------------------------------------------------------------
-    // 4. Use to set state of InputField.
+    // 4. Get translation of the component
+    //-------------------------------------------------------------------
+    let tObj = null;
+    let label = props.content?.label;
+    let placeholder = props.content?.placeholder;
+
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation)
+        label = tObj.label
+        placeholder = tObj.placeholder
+    }
+    //-------------------------------------------------------------------
+    // 5. Use to set state of InputField.
     //-------------------------------------------------------------------
     const { asEmphasis } = props;
 
@@ -174,7 +200,7 @@ export default function InputField(props) {
                     InputLabelProps={inputlabelColor}
                     sx={outlineStyle}
                     multiline={true}
-                    label={props.content?.label}
+                    label={label}
                     variant="filled"
                     value={input}
                     name={props.name}
@@ -195,7 +221,7 @@ export default function InputField(props) {
                         InputLabelProps={inputlabelColor}
                         sx={outlineStyle}
                         multiline={true}
-                        label={props.content?.label}
+                        label={label}
                         variant="filled"
                         value={input}
                         name={props.name}
@@ -215,7 +241,7 @@ export default function InputField(props) {
                     <TextField
                         className="qui-list-input"
                         sx={outlineStyle}
-                        placeholder={props.content?.placeholder}
+                        placeholder={placeholder}
                         multiline={false}
                         size="small"
                         variant="filled"
@@ -251,7 +277,7 @@ export default function InputField(props) {
         }
     }
     //-------------------------------------------------------------------
-    // 5. Get animation of the component
+    // 6. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================

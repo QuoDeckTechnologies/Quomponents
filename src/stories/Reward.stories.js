@@ -2,6 +2,19 @@ import React from "react";
 import Reward from "../components/Reward/Reward.react";
 import rewardImage from "../assets/coin.png";
 
+const dictionary = JSON.stringify({
+    hi: {
+        Reward: {
+            label: "जीतने के लिए पूर्ण करें",
+        }
+    },
+    en: {
+        Reward: {
+            label: "Complete to win",
+        }
+    }
+});
+
 export default {
     title: "Design System/Reward/Reward",
     component: Reward,
@@ -56,6 +69,16 @@ export default {
                 },
             },
         },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
+                },
+            },
+        },
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -105,6 +128,11 @@ Default.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "Reward",
+        dictionary: dictionary,
     },
     isHidden: false,
 };
@@ -188,6 +216,33 @@ LabelColor.parameters = {
         source: {
             code: `<LabelColor {...${JSON.stringify(
                 LabelColor.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Translated Reward
+// -------------------------------------------------------------
+export const TranslatedReward = Template.bind({});
+TranslatedReward.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "Reward",
+        dictionary: dictionary,
+    },
+};
+TranslatedReward.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in Reward.",
+        },
+        source: {
+            code: `<Reward {...${JSON.stringify(
+                TranslatedReward.args,
                 null,
                 2
             )}}/>`,

@@ -17,6 +17,20 @@ describe("InputField", () => {
     let onChange = jest.fn();
     let onBlur = jest.fn();
     let onClick = jest.fn();
+    const dictionary = JSON.stringify({
+        hi: {
+            InputField: {
+                label: "इनपुट नाम",
+                placeholder: "विकल्प",
+            }
+        },
+        en: {
+            InputField: {
+                label: "Input Name",
+                placeholder: "Options",
+            }
+        }
+    });
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -132,6 +146,17 @@ describe("InputField", () => {
             delay: 0,
         }
         component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly with withTranslation prop", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "InputField",
+                dictionary: dictionary,
+            },
+        });
         expect(component.exists()).toBe(true);
     });
 

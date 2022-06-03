@@ -1,6 +1,21 @@
 import React from "react";
 import InputField from "../components/InputField/InputField.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    InputField: {
+      label: "इनपुट नाम",
+      placeholder: "विकल्प",
+    }
+  },
+  en: {
+    InputField: {
+      label: "Input Name",
+      placeholder: "Options",
+    }
+  }
+});
+
 export default {
   title: "Design System/InputField/InputField",
   component: InputField,
@@ -47,6 +62,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -111,6 +136,11 @@ Default.args = {
     animation: "collapse",
     duration: 0.5,
     delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "InputField",
+    dictionary: dictionary,
   },
   isHidden: false,
   isDisabled: false,
@@ -193,6 +223,94 @@ ShortFieldField.parameters = {
     source: {
       code: `<ShortFieldField {...${JSON.stringify(
         ShortFieldField.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Default Translated InputField
+// -------------------------------------------------------------
+export const TranslatedInputField = Template.bind({});
+TranslatedInputField.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "InputField",
+    dictionary: dictionary,
+  },
+};
+TranslatedInputField.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in InputField.",
+    },
+    source: {
+      code: `<InputField {...${JSON.stringify(
+        TranslatedInputField.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// charLimited Translated InputField
+// -------------------------------------------------------------
+export const TranslatedCharLimited = Template.bind({});
+TranslatedCharLimited.args = {
+  ...Default.args,
+  asEmphasis: "charLimited",
+  withTranslation: {
+    lang: "hi",
+    tgt: "InputField",
+    dictionary: dictionary,
+  },
+};
+TranslatedCharLimited.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in charLimited InputField.",
+    },
+    source: {
+      code: `<InputField {...${JSON.stringify(
+        TranslatedCharLimited.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// listInput Translated InputField
+// -------------------------------------------------------------
+export const TranslatedListInput = Template.bind({});
+TranslatedListInput.args = {
+  ...Default.args,
+  content: {
+    value: "",
+    placeholder: "Options",
+    maxLength: 300,
+  },
+  asEmphasis: "listInput",
+  withTranslation: {
+    lang: "hi",
+    tgt: "InputField",
+    dictionary: dictionary,
+  },
+};
+TranslatedListInput.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in listInput InputField.",
+    },
+    source: {
+      code: `<InputField {...${JSON.stringify(
+        TranslatedListInput.args,
         null,
         2
       )}}/>`,

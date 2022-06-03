@@ -1,6 +1,19 @@
 import React from "react";
 import DateField from "../components/DateField/DateField.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        DateField: {
+            label: "आरंभ करने की तिथि",
+        }
+    },
+    en: {
+        DateField: {
+            label: "Start Date",
+        }
+    }
+});
+
 export default {
     title: "Design System/DateField/DateField",
     component: DateField,
@@ -30,6 +43,16 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -83,6 +106,11 @@ Default.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "DateField",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -147,4 +175,31 @@ AnimatedDateField.parameters = {
             )}}/>`,
         },
     },
-}; 
+};
+// -------------------------------------------------------------
+// Translated DateField
+// -------------------------------------------------------------
+export const TranslatedDateField = Template.bind({});
+TranslatedDateField.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "DateField",
+        dictionary: dictionary,
+    },
+};
+TranslatedDateField.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in DateField.",
+        },
+        source: {
+            code: `<DateField {...${JSON.stringify(
+                TranslatedDateField.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};

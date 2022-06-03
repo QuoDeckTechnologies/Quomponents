@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./Reward.scss";
@@ -61,6 +62,14 @@ Reward.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -76,6 +85,7 @@ Reward.defaultProps = {
     //=======================================
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
 
     isHidden: false,
 };
@@ -110,6 +120,19 @@ export default function Reward(props) {
     //-------------------------------------------------------------------
     let rewardContent = Object.assign({}, props.content);
     //-------------------------------------------------------------------
+    // 4. Get translation of the component
+    //-------------------------------------------------------------------
+    let tObj = null;
+    let label = rewardContent?.label;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation)
+        label = tObj.label
+    }
+    //-------------------------------------------------------------------
     // 5. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
@@ -124,7 +147,7 @@ export default function Reward(props) {
             <div className={` ${quommonClasses.childClasses}`}>
                 <div className={`qui-reward-container ${props.asSize}`}>
                     <div className={`qui-label-container`} style={labelColors}>
-                        {rewardContent?.label}
+                        {label}
                     </div>
                     <div className={`qui-point-container`}>
                         <div className="qui-point" style={pointColor}>
