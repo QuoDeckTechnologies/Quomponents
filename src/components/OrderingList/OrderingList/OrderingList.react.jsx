@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import { motion } from "framer-motion";
-import { getQuommons, getAnimation } from "../../../common/javascripts/helpers";
+import { getQuommons, getAnimation, getTranslation } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OrderingList.scss";
@@ -15,6 +15,10 @@ OrderingList.propTypes = {
   OrderingList title data should be passed in content field and it is required field  
   */
   content: PropTypes.arrayOf(PropTypes.string),
+  /**
+  Purpose defines the text which is to be displayed in the submit button, if you pass quiz then it will show check anwer otherwise submit answer.
+  */
+  purpose: PropTypes.string,
   //=======================================
   // Quommon props
   //=======================================
@@ -32,6 +36,14 @@ OrderingList.propTypes = {
   Use to float the component in parent container
   */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+  /**
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
   /**
   Use to define the entry animation of the component
   */
@@ -76,6 +88,7 @@ OrderingList.defaultProps = {
   // Component Specific props
   //=======================================
   content: [],
+  purpose: "",
   //=======================================
   // Quommon props
   //=======================================
@@ -139,6 +152,20 @@ export default function OrderingList(props) {
     color: props.withColor?.textColor,
     backgroundColor: props.withColor?.backgroundColor
   }
+
+  //-------------------------------------------------------------------
+  // 4. Get translation of the component
+  //-------------------------------------------------------------------
+  let tObj = null;
+  let submitButtonText = props.purpose === "quiz" ? "Check Answer" : "Submit Answer";
+  if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+  ) {
+    tObj = getTranslation(props.withTranslation);
+    submitButtonText = props.purpose === "quiz" ? tObj.checkAnswer : tObj.submitAnswer;
+  }
   // ========================= Render Function =================================
   return (
     <motion.div
@@ -183,9 +210,10 @@ export default function OrderingList(props) {
         <div className="qui-submit">
           {<Button
             {...props}
+            withTranslation={null}
             asFloated="none"
             onClick={() => handleSubmit()}
-            content={"Submit Answer"}
+            content={submitButtonText}
           />}
         </div>
       </div>

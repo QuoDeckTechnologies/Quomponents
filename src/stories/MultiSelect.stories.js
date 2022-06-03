@@ -1,6 +1,25 @@
 import React from "react";
 import MultiSelect from "../components/MultiSelect/MultiSelect.react";
 
+const dictionary = JSON.stringify({
+  en: {
+    templateActions: {
+      checkAnswer: 'Check Answer',
+      submitAnswer: 'Submit Answer',
+      thanks: 'Thanks for your response',
+      go: 'Go',
+    }
+  },
+  hi: {
+    templateActions: {
+      checkAnswer: 'अपना उत्तर जाँच लें',
+      submitAnswer: 'अपना जवाब सबमिट करें',
+      thanks: 'आपके उत्तर के लिए धन्यवाद',
+      go: 'आगे बढ़ें',
+    }
+  }
+});
+
 export default {
   title: "Design System/MultiSelect/MultiSelect",
   component: MultiSelect,
@@ -57,6 +76,16 @@ export default {
         defaultValue: {
           backgroundColor: "",
           textColor: "",
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -146,6 +175,11 @@ Default.args = {
     hoverBackgroundColor: "",
     hoverTextColor: "",
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "MultiSelect",
+    dictionary: dictionary,
+  },
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
@@ -196,6 +230,11 @@ const AllVariantTemplate = (args) => {
           ],
           purpose: "",
           asVariant: "primary",
+          withTranslation: {
+            lang: "en",
+            tgt: "MultiSelect",
+            dictionary: dictionary,
+          },
           withAnimation: {
             animation: "slideDown",
             duration: 0.5,
@@ -225,6 +264,11 @@ const AllVariantTemplate = (args) => {
           ],
           purpose: "",
           asVariant: "secondary",
+          withTranslation: {
+            lang: "en",
+            tgt: "MultiSelect",
+            dictionary: dictionary,
+          },
           withAnimation: {
             animation: "slideDown",
             duration: 0.5,
@@ -254,6 +298,11 @@ const AllVariantTemplate = (args) => {
           ],
           purpose: "",
           asVariant: "success",
+          withTranslation: {
+            lang: "en",
+            tgt: "MultiSelect",
+            dictionary: dictionary,
+          },
           withAnimation: {
             animation: "slideDown",
             duration: 0.5,
@@ -283,6 +332,11 @@ const AllVariantTemplate = (args) => {
           ],
           purpose: "",
           asVariant: "warning",
+          withTranslation: {
+            lang: "en",
+            tgt: "MultiSelect",
+            dictionary: dictionary,
+          },
           withAnimation: {
             animation: "slideDown",
             duration: 0.5,
@@ -312,6 +366,11 @@ const AllVariantTemplate = (args) => {
           ],
           purpose: "",
           asVariant: "error",
+          withTranslation: {
+            lang: "en",
+            tgt: "MultiSelect",
+            dictionary: dictionary,
+          },
           withAnimation: {
             animation: "slideDown",
             duration: 0.5,
@@ -328,6 +387,34 @@ AllVariants.parameters = {
     description: {
       story:
         "5 variants  is supported. Use as per purpose noted here.",
+    },
+  },
+};
+
+// -------------------------------------------------------------
+// Translated MultiSelect
+// -------------------------------------------------------------
+export const TranslatedMultiSelect = Template.bind({});
+TranslatedMultiSelect.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "templateActions",
+    dictionary: dictionary
+  },
+};
+TranslatedMultiSelect.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in. To make this work for the MultiSelect, add a templateActions:{} value to the dictionary.",
+    },
+    source: {
+      code: `<MultiSelect {...${JSON.stringify(
+        TranslatedMultiSelect.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

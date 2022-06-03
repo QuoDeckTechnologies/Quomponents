@@ -15,7 +15,25 @@ describe("MultiSelect", () => {
   content = [{
     name: "Primary",
     isSelected: true
-  }]
+  }];
+  const dictionary = JSON.stringify({
+    en: {
+      templateActions: {
+        checkAnswer: 'Check Answer',
+        submitAnswer: 'Submit Answer',
+        thanks: 'Thanks for your response',
+        go: 'Go',
+      }
+    },
+    hi: {
+      templateActions: {
+        checkAnswer: 'अपना उत्तर जाँच लें',
+        submitAnswer: 'अपना जवाब सबमिट करें',
+        thanks: 'आपके उत्तर के लिए धन्यवाद',
+        go: 'आगे बढ़ें',
+      }
+    }
+  });
   beforeEach(() => {
     jest.resetAllMocks();
     let handleSubmit = jest.fn()
@@ -38,6 +56,26 @@ describe("MultiSelect", () => {
     );
   });
   it("should render correctly without throwing error", () => {
+    expect(component.exists()).toBe(true);
+  });
+  it("should render translation of Check Answer with withTranslation prop and when passed purpose as quiz", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+  it("should render submitAnswer translation with withTranslation prop and when passed nothing in the purpose props", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      },
+    });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly onClick for Check true", () => {
@@ -180,5 +218,25 @@ describe("MultiSelect", () => {
   it("should render check answer text in the submit button", () => {
     component.setProps({ purpose: "quiz" })
     expect(component.find("button").at(1).text()).toBe("Check Answer")
+  });
+  it("should render submit answer text in hindi", () => {
+    component.setProps({
+      purpose: "", withTranslation: {
+        lang: "hi",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      },
+    })
+    expect(component.find("button").at(1).text()).toBe("अपना जवाब सबमिट करें")
   })
+  it("should render check answer text in hindi", () => {
+    component.setProps({
+      purpose: "quiz", withTranslation: {
+        lang: "hi",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      },
+    })
+    expect(component.find("button").at(1).text()).toBe("अपना उत्तर जाँच लें")
+  });
 });

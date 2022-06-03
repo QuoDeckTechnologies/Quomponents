@@ -1,11 +1,30 @@
 import React from "react";
 import OrderingList from "../components/OrderingList/OrderingList/OrderingList.react";
 
+const dictionary = JSON.stringify({
+    en: {
+        templateActions: {
+            checkAnswer: 'Check Answer',
+            submitAnswer: 'Submit Answer',
+            thanks: 'Thanks for your response',
+            go: 'Go',
+        }
+    },
+    hi: {
+        templateActions: {
+            checkAnswer: 'अपना उत्तर जाँच लें',
+            submitAnswer: 'अपना जवाब सबमिट करें',
+            thanks: 'आपके उत्तर के लिए धन्यवाद',
+            go: 'आगे बढ़ें',
+        }
+    }
+});
 export default {
     title: "Design System/OrderingList/OrderingList",
     component: OrderingList,
     argTypes: {
         content: [],
+        purpose: "",
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -28,6 +47,16 @@ export default {
                     textColor: "",
                     hoverBackgroundColor: "",
                     hoverTextColor: "",
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -87,6 +116,7 @@ const Template = (args) => <OrderingList {...args} />;
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
+    purpose: "",
     asVariant: "warning",
     asFloated: "none",
     content: ["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"],
@@ -95,6 +125,11 @@ Default.args = {
         textColor: "",
         hoverBackgroundColor: "",
         hoverTextColor: "",
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "OrderingList",
+        dictionary: dictionary,
     },
     withAnimation: {
         animation: "zoom",
@@ -128,11 +163,13 @@ const AllVariantsTemplate = (args) => {
             <OrderingList
                 {...Object.assign({}, baseObj, {
                     asVariant: "primary",
+                    purpose: "quiz",
                 })}
             />
             <OrderingList
                 {...Object.assign({}, baseObj, {
                     asVariant: "secondary",
+                    purpose: "",
                 })}
             />
             <OrderingList
@@ -161,6 +198,34 @@ AllVariants.parameters = {
         },
         source: {
             code: `<OrderingList asVariant="primary"/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Translated OrderingList
+// -------------------------------------------------------------
+export const TranslatedOrderingList = Template.bind({});
+TranslatedOrderingList.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "templateActions",
+        dictionary: dictionary
+    },
+};
+TranslatedOrderingList.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in. To make this work for the OrderingList, add a templateActions:{} value to the dictionary.",
+        },
+        source: {
+            code: `<OrderingList {...${JSON.stringify(
+                TranslatedOrderingList.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };

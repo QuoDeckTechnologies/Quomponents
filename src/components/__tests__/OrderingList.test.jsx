@@ -10,12 +10,31 @@ import { mount } from "enzyme";
 // Import Components
 // -------------------------------------
 import OrderingList from "../OrderingList/OrderingList/OrderingList.react";
+import Button from "../Buttons/Button/Button.react"
 
 describe("OrderingList", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
+    const dictionary = JSON.stringify({
+        en: {
+            templateActions: {
+                checkAnswer: 'Check Answer',
+                submitAnswer: 'Submit Answer',
+                thanks: 'Thanks for your response',
+                go: 'Go',
+            }
+        },
+        hi: {
+            templateActions: {
+                checkAnswer: 'अपना उत्तर जाँच लें',
+                submitAnswer: 'अपना जवाब सबमिट करें',
+                thanks: 'आपके उत्तर के लिए धन्यवाद',
+                go: 'आगे बढ़ें',
+            }
+        }
+    });
     beforeEach(() => {
         jest.resetAllMocks();
         component = mount(
@@ -31,13 +50,36 @@ describe("OrderingList", () => {
                 }}
                 isDisabled={false}
                 isHidden={false}
-                onClick={() => console.log("OrderingList testing")}
+                onClick={jest.fn()}
             />
         );
     });
     it("should render correctly without throwing error", () => {
         expect(component.exists()).toBe(true);
     });
+
+    it("should render translation of Check Answer with withTranslation prop and when passed purpose as quiz", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "templateActions",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render submitAnswer translation with withTranslation prop and when passed nothing in the purpose props", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "templateActions",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+
     it("should render correctly when passed asVariant prop as primary", () => {
         component.setProps({ asVariant: "primary" })
         expect(component.exists()).toBe(true);
@@ -127,5 +169,27 @@ describe("OrderingList", () => {
         component.find('.qui-btn').at(5).simulate("click");
         component.find('.qui-btn').at(6).simulate("click");
         component.find('.qui-btn').at(7).simulate("click");
+    });
+
+    it("should render submit answer text in hindi", () => {
+        component.setProps({
+            purpose: "", withTranslation: {
+                lang: "hi",
+                tgt: "templateActions",
+                dictionary: dictionary,
+            },
+        })
+        expect(component.find(Button).text()).toBe("अपना जवाब सबमिट करें")
+    });
+
+    it("should render check answer text in hindi", () => {
+        component.setProps({
+            purpose: "quiz", withTranslation: {
+                lang: "hi",
+                tgt: "templateActions",
+                dictionary: dictionary,
+            },
+        })
+        expect(component.find(Button).text()).toBe("अपना उत्तर जाँच लें")
     });
 });
