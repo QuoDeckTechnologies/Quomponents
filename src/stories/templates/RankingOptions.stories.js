@@ -1,6 +1,24 @@
 import React from "react";
 import RankingOptions from "../../components/Templates/RankingOptions/RankingOptions.react";
 
+const dictionary = JSON.stringify({
+    en: {
+        templateActions: {
+            checkAnswer: 'Check Answer',
+            submitAnswer: 'Submit Answer',
+            thanks: 'Thanks for your response',
+            go: 'Go',
+        }
+    },
+    hi: {
+        templateActions: {
+            checkAnswer: 'अपना उत्तर जाँच लें',
+            submitAnswer: 'अपना जवाब सबमिट करें',
+            thanks: 'आपके उत्तर के लिए धन्यवाद',
+            go: 'आगे बढ़ें',
+        }
+    }
+});
 export default {
     title: "Design System/Templates/RankingOptions/RankingOptions",
     component: RankingOptions,
@@ -37,6 +55,16 @@ export default {
                     buttonHoverBackgroundColor: "",
                     buttonHoverTextColor: "",
                     backgroundColor: "#fff",
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -120,6 +148,11 @@ Default.args = {
         buttonHoverTextColor: "",
         backgroundColor: "#fff",
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "RankingOptions",
+        dictionary: dictionary,
+    },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -160,6 +193,11 @@ RankingOptionsWithSlideHeader.args = {
         buttonHoverBackgroundColor: "",
         buttonHoverTextColor: "",
         backgroundColor: "#ffffff",
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "RankingOptions",
+        dictionary: dictionary,
     },
     withAnimation: {
         animation: "zoom",
@@ -210,6 +248,11 @@ RankingOptionsWithSlideHeaderAndBackgroundImage.args = {
         buttonHoverTextColor: "",
         backgroundColor: "#ffffff",
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "RankingOptions",
+        dictionary: dictionary,
+    },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -222,6 +265,34 @@ RankingOptionsWithSlideHeaderAndBackgroundImage.parameters = {
     docs: {
         source: {
             code: `<RankingOptions {...${JSON.stringify(RankingOptionsWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Translated RankingOptions
+// -------------------------------------------------------------
+export const TranslatedRankingOptions = Template.bind({});
+TranslatedRankingOptions.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "templateActions",
+        dictionary: dictionary
+    },
+};
+TranslatedRankingOptions.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in. To make this work for the RankingOptions, add a templateActions:{} value to the dictionary.",
+        },
+        source: {
+            code: `<RankingOptions {...${JSON.stringify(
+                TranslatedRankingOptions.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };

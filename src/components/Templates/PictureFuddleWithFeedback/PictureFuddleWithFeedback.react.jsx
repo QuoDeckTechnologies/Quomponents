@@ -182,7 +182,7 @@ export default function PictureFuddleWithFeedback(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        if (buttonText && tObj?.button) buttonText = data?.purpose === "quiz" ? tObj.button?.checkAnswer : tObj.button?.submitAnswer;
+        buttonText = data?.purpose === "quiz" ? tObj?.checkAnswer : tObj?.submitAnswer;
     }
 
     //-------------------------------------------------------------------

@@ -2,12 +2,20 @@ import React from "react";
 import ClozeQuestion from "../../components/Templates/ClozeQuestion/ClozeQuestion.react";
 
 const dictionary = JSON.stringify({
+  en: {
+    templateActions: {
+      checkAnswer: 'Check Answer',
+      submitAnswer: 'Submit Answer',
+      thanks: 'Thanks for your response',
+      go: 'Go',
+    }
+  },
   hi: {
-    ClozeQuestion: {
-      button: {
-        checkAnswer: "जवाब की जांच करो",
-        submitAnswer: "उत्तर सबमिट करें"
-      }
+    templateActions: {
+      checkAnswer: 'अपना उत्तर जाँच लें',
+      submitAnswer: 'अपना जवाब सबमिट करें',
+      thanks: 'आपके उत्तर के लिए धन्यवाद',
+      go: 'आगे बढ़ें',
     }
   }
 });
@@ -155,7 +163,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "ClozeQuestion",
+    tgt: "templateActions",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -204,7 +212,7 @@ ClozeQuestionWithSlideHeader.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "ClozeQuestion",
+    tgt: "templateActions",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -261,7 +269,7 @@ ClozeQuestionWithSlideHeaderAndBackgroundImage.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "ClozeQuestion",
+    tgt: "templateActions",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -283,7 +291,7 @@ TranslatedClozeQuestion.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "ClozeQuestion",
+    tgt: "templateActions",
     dictionary: dictionary
   },
 };
@@ -291,7 +299,7 @@ TranslatedClozeQuestion.parameters = {
   docs: {
     description: {
       story:
-        "Use to change the language that the text appears in. To make this work for the ClozeQuestion, add a ClozeQuestion:{button:{checkAnswer, submitAnswer}} value to the dictionary.",
+        "Use to change the language that the text appears in. To make this work for the ClozeQuestion, add a temaplteActions:{} value to the dictionary.",
     },
     source: {
       code: `<ClozeQuestion {...${JSON.stringify(

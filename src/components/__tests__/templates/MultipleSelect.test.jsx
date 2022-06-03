@@ -13,6 +13,24 @@ describe("MultipleSelect", () => {
 	// Setup definitions for the test suite
 	// -------------------------------------
 	let component, data;
+	const dictionary = JSON.stringify({
+		en: {
+			templateActions: {
+				checkAnswer: 'Check Answer',
+				submitAnswer: 'Submit Answer',
+				thanks: 'Thanks for your response',
+				go: 'Go',
+			}
+		},
+		hi: {
+			templateActions: {
+				checkAnswer: 'अपना उत्तर जाँच लें',
+				submitAnswer: 'अपना जवाब सबमिट करें',
+				thanks: 'आपके उत्तर के लिए धन्यवाद',
+				go: 'आगे बढ़ें',
+			}
+		}
+	});
 	data = {
 		title: "Neque porro quisquam est qui dolorem",
 		subtitle:
@@ -65,6 +83,28 @@ describe("MultipleSelect", () => {
 	});
 
 	it("should render correctly without throwing error", () => {
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of Check Answer with withTranslation prop and when passed purpose as quiz", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "templateActions",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render submitAnswer translation with withTranslation prop and when passed nothing in the purpose props", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "templateActions",
+				dictionary: dictionary,
+			},
+		});
 		expect(component.exists()).toBe(true);
 	});
 
@@ -286,6 +326,28 @@ describe("MultipleSelect", () => {
 			purpose: "quiz"
 		}
 		component.setProps({ data: data });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render submit answer text in hindi", () => {
+		component.setProps({
+			purpose: "", withTranslation: {
+				lang: "hi",
+				tgt: "templateActions",
+				dictionary: dictionary,
+			},
+		})
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render check answer text in hindi", () => {
+		component.setProps({
+			purpose: "quiz", withTranslation: {
+				lang: "hi",
+				tgt: "templateActions",
+				dictionary: dictionary,
+			},
+		})
 		expect(component.exists()).toBe(true);
 	});
 });

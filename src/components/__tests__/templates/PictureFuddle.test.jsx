@@ -15,14 +15,22 @@ describe("PictureFuddle", () => {
     // -------------------------------------
     let component;
     const dictionary = JSON.stringify({
-        hi: {
-            PictureFuddle: {
-                button: {
-                    checkAnswer: "जवाब की जांच करो",
-                    submitAnswer: "उत्तर सबमिट करें"
-                }
+        en: {
+            templateActions: {
+                checkAnswer: 'Check Answer',
+                submitAnswer: 'Submit Answer',
+                thanks: 'Thanks for your response',
+                go: 'Go',
             }
         },
+        hi: {
+            templateActions: {
+                checkAnswer: 'अपना उत्तर जाँच लें',
+                submitAnswer: 'अपना जवाब सबमिट करें',
+                thanks: 'आपके उत्तर के लिए धन्यवाद',
+                go: 'आगे बढ़ें',
+            }
+        }
     });
     beforeEach(() => {
         jest.resetAllMocks();
@@ -40,8 +48,7 @@ describe("PictureFuddle", () => {
                         extention: ""
                     },
                     question: "Question",
-                    answer: "Answer",
-                    purpose: "quiz",
+                    answer: "Answer"
                 }}
                 imageLibrary={[{
                     id: 'background-image',
@@ -99,11 +106,11 @@ describe("PictureFuddle", () => {
             },
             withTranslation: {
                 lang: "hi",
-                tgt: "PictureFuddle",
+                tgt: "templateActions",
                 dictionary: dictionary,
             },
         });
-        expect(component.find(Button).props().content).toBe("जवाब की जांच करो");
+        expect(component.find(Button).props().content).toBe("अपना उत्तर जाँच लें");
     });
 
     it("should render submitAnswer translation with withTranslation prop and when passed nothing in the purpose props", () => {
@@ -113,11 +120,11 @@ describe("PictureFuddle", () => {
             },
             withTranslation: {
                 lang: "hi",
-                tgt: "PictureFuddle",
+                tgt: "templateActions",
                 dictionary: dictionary,
             },
         });
-        expect(component.find(Button).props().content).toBe("उत्तर सबमिट करें");
+        expect(component.find(Button).props().content).toBe("अपना जवाब सबमिट करें");
     });
 
     it("should render correctly if translation object is not returned", () => {

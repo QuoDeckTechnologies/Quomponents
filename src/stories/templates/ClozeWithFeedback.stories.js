@@ -2,12 +2,20 @@ import React from "react";
 import ClozeWithFeedback from "../../components/Templates/ClozeWithFeedback/ClozeWithFeedback.react";
 
 const dictionary = JSON.stringify({
+    en: {
+        templateActions: {
+            checkAnswer: 'Check Answer',
+            submitAnswer: 'Submit Answer',
+            thanks: 'Thanks for your response',
+            go: 'Go',
+        }
+    },
     hi: {
-        ClozeWithFeedback: {
-            button: {
-                checkAnswer: "जवाब की जांच करो",
-                submitAnswer: "उत्तर सबमिट करें"
-            }
+        templateActions: {
+            checkAnswer: 'अपना उत्तर जाँच लें',
+            submitAnswer: 'अपना जवाब सबमिट करें',
+            thanks: 'आपके उत्तर के लिए धन्यवाद',
+            go: 'आगे बढ़ें',
         }
     }
 });
@@ -155,7 +163,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "ClozeWithFeedback",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -204,7 +212,7 @@ ClozeWithFeedbackWithSlideHeader.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "ClozeWithFeedback",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -261,7 +269,7 @@ ClozeWithFeedbackWithSlideHeaderAndBackgroundImage.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "ClozeWithFeedback",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -283,7 +291,7 @@ TranslatedClozeWithFeedback.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "ClozeWithFeedback",
+        tgt: "templateActions",
         dictionary: dictionary
     },
 };

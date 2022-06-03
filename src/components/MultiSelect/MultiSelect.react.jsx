@@ -157,7 +157,7 @@ export default function MultiSelect(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        submitButtonText = props.purpose === "quiz" ? tObj.checkAnswer : tObj.submitAnswer;
+        submitButtonText = props.purpose === "quiz" ? tObj?.checkAnswer : tObj?.submitAnswer;
     }
     //-------------------------------------------------------------------
     // 2. Set the classes

@@ -2,12 +2,20 @@ import React from "react";
 import PictureFuddle from "../../components/Templates/PictureFuddle/PictureFuddle.react";
 
 const dictionary = JSON.stringify({
+    en: {
+        templateActions: {
+            checkAnswer: 'Check Answer',
+            submitAnswer: 'Submit Answer',
+            thanks: 'Thanks for your response',
+            go: 'Go',
+        }
+    },
     hi: {
-        PictureFuddle: {
-            button: {
-                checkAnswer: "जवाब की जांच करो",
-                submitAnswer: "उत्तर सबमिट करें"
-            }
+        templateActions: {
+            checkAnswer: 'अपना उत्तर जाँच लें',
+            submitAnswer: 'अपना जवाब सबमिट करें',
+            thanks: 'आपके उत्तर के लिए धन्यवाद',
+            go: 'आगे बढ़ें',
         }
     }
 });
@@ -158,7 +166,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "PictureFuddle",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -207,7 +215,7 @@ PictureFuddleWithSlideHeader.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "PictureFuddle",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -264,7 +272,7 @@ PictureFuddleWithSlideHeaderAndBackgroundImage.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "PictureFuddle",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -286,7 +294,7 @@ TranslatedPictureFuddle.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "PictureFuddle",
+        tgt: "templateActions",
         dictionary: dictionary
     },
 };
@@ -294,7 +302,7 @@ TranslatedPictureFuddle.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the text appears in. To make this work for the PictureFuddle, add a content:{text:{title, subTitle},label} value to the dictionary.",
+                "Use to change the language that the text appears in. To make this work for the PictureFuddle, add a temaplteActions:{} value to the dictionary.",
         },
         source: {
             code: `<PictureFuddle {...${JSON.stringify(

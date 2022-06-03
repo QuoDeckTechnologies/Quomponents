@@ -2,12 +2,20 @@ import React from "react";
 import PictureFuddleWithFeedback from "../../components/Templates/PictureFuddleWithFeedback/PictureFuddleWithFeedback.react";
 
 const dictionary = JSON.stringify({
+    en: {
+        templateActions: {
+            checkAnswer: 'Check Answer',
+            submitAnswer: 'Submit Answer',
+            thanks: 'Thanks for your response',
+            go: 'Go',
+        }
+    },
     hi: {
-        PictureFuddleWithFeedback: {
-            button: {
-                checkAnswer: "जवाब की जांच करो",
-                submitAnswer: "उत्तर सबमिट करें"
-            }
+        templateActions: {
+            checkAnswer: 'अपना उत्तर जाँच लें',
+            submitAnswer: 'अपना जवाब सबमिट करें',
+            thanks: 'आपके उत्तर के लिए धन्यवाद',
+            go: 'आगे बढ़ें',
         }
     }
 });
@@ -158,7 +166,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "PictureFuddleWithFeedback",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -207,7 +215,7 @@ PictureFuddleWithFeedbackWithSlideHeader.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "PictureFuddleWithFeedback",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -264,7 +272,7 @@ PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "PictureFuddleWithFeedback",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -286,7 +294,7 @@ TranslatedPictureFuddleWithFeedback.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "PictureFuddleWithFeedback",
+        tgt: "templateActions",
         dictionary: dictionary
     },
 };
