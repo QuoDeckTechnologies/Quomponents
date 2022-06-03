@@ -60,7 +60,7 @@ OTPFields.propTypes = {
     /**
     OTPFields component must have the onClick function passed as props
     */
-    onClick: PropTypes.func,
+    onClick: PropTypes.func.isRequired,
 };
 
 OTPFields.defaultProps = {
@@ -109,7 +109,7 @@ export default function OTPFields(props) {
     //-------------------------------------------------------------------
     let otpFieldsFocusStyle = {
         outline: 'none',
-        borderBottom: `0.1em solid ${withColor?.accentColor}`,
+        borderBottom: `0.2em solid ${withColor?.accentColor}`,
         backgroundColor: `${withColor?.backgroundColor}`
     };
     //-------------------------------------------------------------------
@@ -127,8 +127,6 @@ export default function OTPFields(props) {
                 <OtpInput
                     value={otpValue}
                     onChange={handleChange}
-                    // onChange={(value) => { setOtpValue(value) }}
-                    // onComplete={() => { props.onClick(otpValue) }}
                     numInputs={numFields}
                     containerStyle="qui-otp-fields-otp-input-container-style"
                     inputStyle="qui-otp-fields-otp-input-style"

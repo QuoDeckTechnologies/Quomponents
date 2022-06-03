@@ -13,7 +13,7 @@ describe("OTPFields", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-    let OnClick = jest.fn();
+    let onClick = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -25,7 +25,7 @@ describe("OTPFields", () => {
                 withAnimation={null}
                 isHidden={false}
                 isDisabled={false}
-                OnClick={OnClick}
+                onClick={onClick}
             />
         );
     });
@@ -37,11 +37,6 @@ describe("OTPFields", () => {
     it("it should pass the value to the OtpField", () => {
         let OtpField = component.find("OtpInput");
         component.find('OtpInput').simulate('change')
-        expect(component.exists()).toBe(true);
-    });
-    it("it should pass the value to the OtpField", () => {
-        let OtpField = component.find("OtpInput");
-        component.find('OtpInput').simulate('click')
         expect(component.exists()).toBe(true);
     });
 
