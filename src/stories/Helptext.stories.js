@@ -11,7 +11,7 @@ export default {
   title: "Design System/Helptext/Helptext",
   component: Helptext,
   argTypes: {
-    content: "This is what your learners see ",
+    content: "This is what your learners see",
     asSize: {
       control: "select",
       options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -62,12 +62,6 @@ export default {
         defaultValue: false,
       },
     },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
   },
   parameters: {
     componentSubtitle: "Displays a basic Helptext for general-purpose use",
@@ -80,7 +74,7 @@ export default {
 const Template = (args) => <Helptext {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: "This is what your learners see ",
+  content: "This is what your learners see",
   asSize: "normal",
   asPadded: "normal",
   withColor: {
@@ -98,7 +92,6 @@ Default.args = {
     tgt: "helptext",
     dictionary: dictionary,
   },
-  isDisabled: false,
   isHidden: false,
 };
 Default.parameters = {

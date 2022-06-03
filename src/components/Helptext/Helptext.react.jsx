@@ -1,7 +1,6 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -71,10 +70,6 @@ Helptext.propTypes = {
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
-  /**
-  Use to enable/disable the component
-  */
-  isDisabled: PropTypes.bool,
 };
 
 Helptext.defaultProps = {
@@ -91,7 +86,6 @@ Helptext.defaultProps = {
   withAnimation: null,
   withTranslation: null,
   isHidden: false,
-  isDisabled: false,
 };
 
 /**
