@@ -1,5 +1,17 @@
 import React from "react";
 import HtmlCarousel from "../components/Carousel/HtmlCarousel/HtmlCarousel.react";
+const dictionary = JSON.stringify({
+    hi: {
+        htmlCarousel: {
+            tag: {
+                new: "नया",
+                restricted: "प्रतिबंधित",
+                premium: "अधिमूल्य",
+                free: "नि: शुल्क"
+            }
+        }
+    },
+});
 export default {
     title: "Design System/Carousel/HtmlCarousel",
     component: HtmlCarousel,
@@ -15,6 +27,16 @@ export default {
         table: {
             category: "Events",
             defaultValue: null,
+        },
+    },
+    withTranslation: {
+        table: {
+            category: "with-Params",
+            defaultValue: {
+                lang: "",
+                tgt: "",
+                dictionary: "",
+            },
         },
     },
     decorators: [
@@ -74,6 +96,11 @@ Default.args = {
             asVariant: "warning",
         }
     }],
+    withTranslation: {
+        lang: "hi",
+        tgt: "htmlCarousel",
+        dictionary: dictionary,
+    },
 };
 Default.parameters = {
     docs: {
@@ -252,7 +279,7 @@ const MultipleHtmlCarouselsTemplate = (args) => {
                         }
                     },
                     {
-                        image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",   
+                        image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
                         tag: "restricted",
                         content: "This is HtmlCarousel, Imported from banner card.",
                         props: {

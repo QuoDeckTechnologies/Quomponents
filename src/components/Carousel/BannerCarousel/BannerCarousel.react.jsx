@@ -38,7 +38,14 @@ BannerCarousel.propTypes = {
         content: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
-
+    /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
 
 };
 
@@ -46,6 +53,7 @@ BannerCarousel.defaultProps = {
     // Component Specific props
     //=======================================
     content: [],
+    withTranslation: null,
 };
 
 /**
@@ -89,7 +97,7 @@ export default function BannerCarousel(props) {
                                 key={"slider-" + index + Math.random()}
                                 className={`qui-slide`}
                             >
-                                <BannerCard {...slide.props} content={slide} onClick={props.onClick}/>
+                                <BannerCard {...slide.props} content={slide} onClick={props.onClick} withTranslation={props.withTranslation} />
                             </div>
                         </div>
                     );

@@ -12,6 +12,15 @@ describe("FeedbackForm", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component
+    const dictionary = JSON.stringify({
+        hi: {
+            feedbackForm: {
+                content: "प्रतिक्रिया दिखाएं",
+                correct: "यदि सही है",
+                incorrect: "यदि गलत है"
+            }
+        },
+    });
     beforeEach(() => {
         jest.resetAllMocks();
         component = mount(
@@ -22,6 +31,7 @@ describe("FeedbackForm", () => {
                     delay: 0,
                 }}
                 withColor={null}
+                withTranslation={null}
                 isDisabled={false}
                 isHidden={false}
                 onClick={() => console.log("FeedbackForm testing")}
@@ -64,7 +74,7 @@ describe("FeedbackForm", () => {
     });
     it('should render and handle click event', () => {
         const wrapper = shallow(<FeedbackForm onClick={() => console.log("Testing FeedbackForm")} />);
-        wrapper.find("legend").children().simulate('click'); 
+        wrapper.find("legend").children().simulate('click');
     });
     it('should render when content is null', () => {
         component.setProps({ content: "" })
@@ -74,5 +84,16 @@ describe("FeedbackForm", () => {
         component.setProps({ content: "Show Content" })
         expect(component.exists()).toBe(true);
     });
-
+    it("should render translation  with withTranslation prop ", () => {
+        component.setProps({
+            data: {
+                content: "Show Feedback"
+            },
+            withTranslation: {
+                lang: "hi",
+                tgt: "feedbackForm",
+                dictionary: dictionary,
+            },
+        });
+    });
 });
