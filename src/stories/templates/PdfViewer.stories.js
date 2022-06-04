@@ -13,7 +13,6 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          backgroundColor: "#fff",
           sliderBackgroundColor: "#fff",
         },
       },
@@ -40,12 +39,9 @@ export default {
         defaultValue: false,
       },
     },
-    onClick: {
-      table: {
-        category: "Events",
-        defaultValue: null,
-      },
-    },
+    handleCompletion: {
+      action: 'handleCompletion'
+    }
   },
   decorators: [
     (story) => (
@@ -85,7 +81,6 @@ Default.args = {
   }],
   slideId: 0,
   withColor: {
-    backgroundColor: "#ddd6d600",
     sliderBackgroundColor: "#3a3636a6",
   },
   withAnimation: {

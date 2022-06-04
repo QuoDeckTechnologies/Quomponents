@@ -1,8 +1,16 @@
-.qui-pdf-viewer-outer-container {
-  overflow-x: scroll;
-  /* Track */
-  ::-webkit-scrollbar-track {
+.qui.qui-pdf-viewer {
+  overflow: scroll;
+  .qui-pdf-container {
+    height: 100vh;
+  }
+  .react-pdf__Page {
+    display: inline-block;
+  }
+  .react-pdf__Page__annotations.annotationLayer {
     display: none;
+  }
+  .qui-pdf-background {
+    width: 99%;
   }
 }
 /* width */
@@ -25,19 +33,9 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-.react-pdf__Page {
-  display: inline-block;
-}
-.react-pdf__Page__annotations.annotationLayer {
-  display: none;
-}
-.qui-pdf-background {
-  width: 100%;
-  height: auto;
-}
 
 @media only screen and (max-width: 320px) {
-  .qui-pdf-viewer-outer-container {
+  .qui.qui-pdf-viewer {
     .qui.qui-slider .rangeslider-horizontal {
       height: 0.5em;
     }

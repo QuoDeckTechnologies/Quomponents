@@ -1,4 +1,3 @@
-// Import npm packages
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
@@ -33,6 +32,10 @@ PdfViewer.propTypes = {
     PdfViewer slideId should be passed with props, to specify the slide.
     */
   slideId: PropTypes.number,
+  /**
+    handleCompletion should be passed with props.
+    */
+  handleCompletion: PropTypes.func,
   //=======================================
   // Quommon props
   //=======================================
@@ -40,7 +43,6 @@ PdfViewer.propTypes = {
     Use to override component colors and behavior
     */
   withColor: PropTypes.shape({
-    backgroundColor: PropTypes.string,
     sliderBackgroundColor: PropTypes.string,
   }),
 
@@ -69,10 +71,6 @@ PdfViewer.propTypes = {
     Use to enable/disable the component
     */
   isDisabled: PropTypes.bool,
-  /**
-    PdfViewer component must have the onClick function passed as props
-    */
-  onClick: PropTypes.func.isRequired,
 };
 
 PdfViewer.defaultProps = {
@@ -104,38 +102,17 @@ PdfViewer.defaultProps = {
 - This template component is to be used to show pdf.
 **/
 export default function PdfViewer(props) {
-  let { data, withColor } = props
+  let { data, handleCompletion, docLibrary } = props
   const [numPages, setNumPages] = useState(null);
+  const [seenPages, setSeenPages] = useState(1);
   const [zoom, setZoom] = useState(22);
   const [showSlider, setShowSlider] = useState(false);
   const [rotate, setRotate] = useState(false);
   const [width, setWidth] = useState(window.innerWidth * 2)
   const [rotatedWidth, setRotatedWidth] = useState(window.innerHeight * 1.4)
-
-  //-------------------------------------------------------------------
-  // Set the classes
-  //-------------------------------------------------------------------  innerHeight
-  let quommonClasses = getQuommons(props, "pdf-viewer");
-  quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
-  //-------------------------------------------------------------------
-  //  Get animation of the component
-  //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
-  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-  //-------------------------------------------------------------------
-  //  Setting the colors of imported components
-  //-------------------------------------------------------------------
-  const getBackground = () => {
-    return {
-      background: `url(https://icon-library.com/images/pdf-icon-free/pdf-icon-free-15.jpg)`,
-      backgroundSize: "cover",
-      backgroundPosition: "50% 50%"
-    };
-  };
-  const background = data?.pdf && props.docLibrary
-    ? { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#ddd6d600" }
-    : getBackground();
-
+  //------------------------------------------------------------------------------------
+  // Resizing the component width when in portrait
+  //-----------------------------------------------------------------------------------
   const resizeHandler = () => {
     setWidth(window.innerWidth * 2)
   }
@@ -146,6 +123,9 @@ export default function PdfViewer(props) {
     };
   }, []);
 
+  //------------------------------------------------------------------------------------
+  //Resizing the component width when rotated
+  //-----------------------------------------------------------------------------------
   const resizeHandlerRotated = () => {
     setRotatedWidth(window.innerHeight * 1.4)
   }
@@ -155,57 +135,96 @@ export default function PdfViewer(props) {
       window.removeEventListener("resize", resizeHandlerRotated);
     };
   }, []);
-
+  //------------------------------------------------------------------------------------
+  //Rendering pdf using this function, checking the pdf-id is present in library or not 
+  //-----------------------------------------------------------------------------------
   let resolveDocument = (pdf, library) => {
     let libraryDoc = _.find(library, { id: pdf });
-    if (libraryDoc?.id !== pdf || libraryDoc === null || library.length === 0) {
-      return getBackground()
+    if (libraryDoc?.id !== pdf || libraryDoc === null || library.length === 0 || pdf === "") {
+      return "No Pdf File Specified"
     }
     return libraryDoc?.doc
   };
+  //-------------------------------------------------------------------
+  //Getting page count of the document when document is loaded 
+  //------------------------------------------------------------------- 
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages)
+    handleCompletion(seenPages, numPages)
+  }
+  //-------------------------------------------------------------------
+  //  handleScroll is used when user scrolling through document 
+  //------------------------------------------------------------------- 
+  let handleScroll = (event) => {
+    if (data?.pdf) {
+      let pageHeight =
+        Math.floor(
+          document.getElementsByClassName("react-pdf__Document")[0]
+            .clientHeight / numPages,
+          0
+        ) - 5;
+      if (
+        event.target.scrollTop + window.innerHeight >
+        (seenPages + 1) * pageHeight ||
+        event.target.scrollLeft + window.innerWidth >
+        (seenPages + 1) * pageHeight
+      ) {
+        setSeenPages(seenPages + 1)
+        handleCompletion(seenPages + 1, numPages);
+      }
+    }
+  };
+  //-------------------------------------------------------------------
+  // Set the classes
+  //------------------------------------------------------------------- 
+  let quommonClasses = getQuommons(props, "pdf-viewer");
+  quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
+  //-------------------------------------------------------------------
+  //  Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props.withAnimation);
+  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   // ========================= Render Function =================================
   return (
     <motion.div
       initial={animate.from}
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
-    >
-      <div className={`qui-pdf-viewer-outer-container`}>
-        {data && data?.docLibrary !== null &&
-          < div className={`qui-pdf-viewer-container ${rotate ? '-rotated' : ''}`}>
-            {props?.docLibrary &&
-              < Document
-                file={data?.pdf?.id ? resolveDocument(data.pdf?.id, props?.docLibrary) : "No data"}
-                onLoadSuccess={({ numPages }) => setNumPages(numPages)}
-                onClick={() => setShowSlider(preState => !preState)}
-              >
-                {Array.from(new Array(numPages), (el, index) => (
-                  <Page
-                    scale={rotate ? 50 / 50 : zoom >= 22 ? zoom / 50 : 22 / 50}
-                    size="A4"
-                    rotate={rotate ? 90 : 0}
-                    width={rotate ? rotatedWidth : width}
-                    key={`page_${index + 1}`} pageNumber={index + 1} />
-                ))}
-              </Document>}
-            {data?.pdf &&
-              <div>
-                {window.innerWidth <= 480 && showSlider &&
-                  <div
-                    className={"qui-footer-slider-icon-container"}
-                    style={rotate ? { backgroundColor: "#55555500" } : { backgroundColor: props.withColor.sliderBackgroundColor }}>
-                    {rotate ? "" : <Slider
-                      initialValue={22}
-                      onClick={(value) => setZoom(value)} />}
-                    <i
-                      className={`qui-pdf-rotate-icon ${rotate ? "fas fa-compress" : "fas fa-expand"}`} onClick={() => setRotate(prevState => !prevState)} />
-                  </div>
-                }
-              </div>}
+      onScroll={handleScroll}
+    >{data && data?.pdf && docLibrary ?
+      <div className="qui-pdf-container">
+        < Document
+          file={data?.pdf?.id ? resolveDocument(data.pdf?.id, props?.docLibrary) : "No data"}
+          onLoadSuccess={onDocumentLoadSuccess}
+          onClick={() => setShowSlider(preState => !preState)}
+        >
+          {Array.from(new Array(numPages), (el, index) => (
+            <Page
+              scale={rotate ? 50 / 50 : zoom >= 22 ? zoom / 50 : 22 / 50}
+              size="A4"
+              rotate={rotate ? 90 : 0}
+              width={rotate ? rotatedWidth : width}
+              key={`page_${index + 1}`}
+              pageNumber={index + 1} />
+          ))}
+        </Document>
+        {data?.pdf &&
+          <div>
+            {window.innerWidth <= 480 && showSlider &&
+              <div
+                className={"qui-footer-slider-icon-container"}
+                style={rotate ? { backgroundColor: "#55555500" } : { backgroundColor: props.withColor.sliderBackgroundColor }}>
+                {rotate ? "" : <Slider
+                  initialValue={22}
+                  onClick={(value) => setZoom(value)} />}
+                <i
+                  className={`qui-pdf-rotate-icon ${rotate ? "fas fa-compress" : "fas fa-expand"}`} onClick={() => setRotate(prevState => !prevState)} />
+              </div>
+            }
           </div>}
-      </div>
-      {!data?.pdf || !data?.docLibrary &&
-        <img src="https://icon-library.com/images/pdf-icon-free/pdf-icon-free-15.jpg" className="qui-pdf-background" />}
+      </div> :
+      <img src="http://clevedonarttrail.co.nz/wp-content/uploads/pdf-icon.jpg" className="qui-pdf-background" alt="" />
+      }
     </motion.div >
   );
 }

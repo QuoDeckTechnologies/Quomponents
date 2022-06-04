@@ -35,9 +35,7 @@ describe("PdfViewer", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        handleCompletion={jest.fn()}
       />
     );
   });
@@ -56,7 +54,6 @@ describe("PdfViewer", () => {
       image: 'test-image'
     }]
     let colors = {
-      backgroundColor: "#fff",
       sliderBackgroundColor: "#fff",
     }
     component.setProps({ data: data, withColor: colors, imageLibrary: imageLibrary })
@@ -173,22 +170,7 @@ describe("PdfViewer", () => {
       }
     })
   });
-  it("should render correctly without throwing error when document gets loaded to screen", () => {
-    component.setProps({
-      data: {
-        pdf: {
-          id: "pdf",
-          extention: "pdf"
-        }
-      },
-      docLibrary: [{
-        id: "pdf",
-        doc: "test.pdf"
-      }]
-    })
-    expect(component.find(Document).exists()).toBe(true)
-    component.find(Document).simulate('loadSuccess', 1)
-  });
+
   it("should render correctly without throwing error when pdf is not passed", () => {
     component.setProps({
       data: {
@@ -202,19 +184,6 @@ describe("PdfViewer", () => {
           id: "default-pdf",
           extention: "pdf"
         }
-      }
-    })
-  });
-  it("should render correctly without throwing error when pdf is passed and given background color", () => {
-    component.setProps({
-      data: {
-        pdf: {
-          id: 'default',
-          extention: "pdf"
-        }
-      },
-      withColor: {
-        backgroundColor: "#ff0000"
       }
     })
   });
@@ -292,4 +261,67 @@ describe("PdfViewer", () => {
       }
     })
   });
+  it("should render correctly when passed isHidden props as false", () => {
+    component.setProps({ isHidden: false })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isHidden props as true", () => {
+    component.setProps({ isHidden: true })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isDisabled props as false", () => {
+    component.setProps({ isDisabled: false })
+    expect(component.exists()).toBe(true);
+  })
+  it("should render correctly when passed isDisabled props as true", () => {
+    component.setProps({ isDisabled: true })
+    expect(component.exists()).toBe(true);
+  })
+  it('should render correctly when scroll gets trigger', () => {
+    // const mEvent = {
+    //   target: { scrollTop: 100, scrollLeft: 50, clientHeight: 100 },
+    // };
+    component.find('.qui-pdf-viewer').simulate('scroll')
+    // component.find('.qui-pdf-viewer').simulate('scroll', mEvent)
+    // component.find('.qui-pdf-viewer').simulate('scroll', mEvent)
+  });
+  it('should run on handleScroll', () => {
+    const pdf = shallow((<PdfViewer handleCompletion={jest.fn()} />));
+    pdf.find('.qui-pdf-viewer').simulate('scroll');
+    expect(component.exists()).toBe(true);
+  });
+  it("should render correctly without throwing error when document gets loaded to screen", () => {
+    component.setProps({
+      data: {
+        pdf: {
+          id: "pdf",
+          extention: "pdf"
+        }
+      },
+      docLibrary: [{
+        id: "pdf",
+        doc: "test.pdf"
+      }]
+    })
+    expect(component.find(Document).exists()).toBe(true)
+    let data = {
+      seenPages: 1, numPages: 23
+    }
+    component.find(Document).simulate('loadSuccess', data)
+  });
+  it("should render when page height gets set", () => {
+    component.setProps({
+      data: {
+        pdf: {
+          id: "pdf",
+          extention: "pdf"
+        }
+      },
+      docLibrary: [{
+        id: "pdf",
+        doc: "test.pdf"
+      }]
+    })
+    component.find(".react-Pdf__Document")
+  })
 });
