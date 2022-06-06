@@ -95,7 +95,7 @@ HCardWithButton.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  content: null,
   imageLibrary: [],
   asEmphasis: "contained",
   isCircular: false,
@@ -175,7 +175,7 @@ export default function HCardWithButton(props) {
         className="qui-h-card-container"
         style={{
           backgroundColor: withColor?.backgroundColor,
-          color: withColor.textColor,
+          color: withColor?.textColor,
         }}
         onClick={handleClick}
       >
@@ -190,7 +190,7 @@ export default function HCardWithButton(props) {
         >
           <div
             className="qui-h-card-checkbox-container"
-            style={{ backgroundColor: withColor.accentBackgroundColor }}
+            style={{ backgroundColor: withColor?.accentBackgroundColor }}
           >
             <i
               className={
