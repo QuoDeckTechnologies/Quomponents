@@ -99,11 +99,11 @@ export default function HelpText(props) {
   //-------------------------------------------------------------------
   const { content, withColor } = props;
   //-------------------------------------------------------------------
-  // 1. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "helptext");
   //-------------------------------------------------------------------
-  // 2. Translate the text objects in case their is a dictionary provided
+  // 3. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
   let textContent = content;
