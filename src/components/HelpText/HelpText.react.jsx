@@ -4,15 +4,15 @@ import PropTypes from "prop-types";
 import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
-import "./Helptext.scss";
+import "./HelpText.scss";
 import "../../common/stylesheets/overrule.scss";
 
-Helptext.propTypes = {
+HelpText.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
   /**
-  Help Text has to be in content props.
+  Use to define component content.
   */
   content: PropTypes.string,
   //=======================================
@@ -38,7 +38,6 @@ Helptext.propTypes = {
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
   /**
@@ -72,7 +71,7 @@ Helptext.propTypes = {
   isHidden: PropTypes.bool,
 };
 
-Helptext.defaultProps = {
+HelpText.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
@@ -94,7 +93,7 @@ Helptext.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function Helptext(props) {
+export default function HelpText(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content and withColor props
   //-------------------------------------------------------------------
@@ -107,6 +106,10 @@ export default function Helptext(props) {
   // 2. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
+  let textContent = content;
+  if (tObj) {
+    textContent = tObj.content;
+  }
 
   // ========================= Render Function =================================
 
@@ -119,10 +122,12 @@ export default function Helptext(props) {
           color: withColor?.textColor,
         }}
       >
-        <p className="qui-helptext-text">{tObj ? tObj.content : content}</p>
+        <p className="qui-helptext-text">
+          {textContent ? textContent : "This is what your learners see"}
+        </p>
         <i
           className="fas fa-angle-down"
-          style={{ color: withColor?.accentColor }}
+          style={{ color: withColor?.textColor }}
         ></i>
       </div>
     </div>

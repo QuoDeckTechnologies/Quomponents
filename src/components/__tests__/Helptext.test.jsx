@@ -5,7 +5,7 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Helptext from "../Helptext/Helptext.react";
+import Helptext from "../HelpText/HelpText.react";
 
 describe("Helptext", () => {
   // -------------------------------------
@@ -30,7 +30,6 @@ describe("Helptext", () => {
         withAnimation={null}
         withTranslation={null}
         isHidden={false}
-        isDisabled={false}
       />
     );
   });
@@ -143,7 +142,7 @@ describe("Helptext", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when passed when content is provided", () => {
+  it("should render correctly when content is provided", () => {
     component.setProps({
       content: "This is what your learners see",
     });

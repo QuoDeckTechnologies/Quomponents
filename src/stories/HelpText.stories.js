@@ -1,15 +1,15 @@
 import React from "react";
-import Helptext from "../components/Helptext/Helptext.react";
+import HelpText from "../components/HelpText/HelpText.react";
 
 const dictionary = JSON.stringify({
   hi: {
-    helptext: { content: "आपके शिक्षार्थी यही देखते हैं" },
+    helpText: { content: "आपके शिक्षार्थी यही देखते हैं" },
   },
 });
 
 export default {
-  title: "Design System/Helptext/Helptext",
-  component: Helptext,
+  title: "Design System/HelpText/HelpText",
+  component: HelpText,
   argTypes: {
     content: "This is what your learners see",
     asSize: {
@@ -31,7 +31,6 @@ export default {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
-          accentColor: "",
           textColor: "",
         },
       },
@@ -64,14 +63,17 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a basic Helptext for general-purpose use",
+    componentSubtitle: "Displays a basic HelpText for general-purpose use",
     a11y: { disable: true },
+    docs: {
+      iframeHeight: 500,
+    },
   },
 };
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <Helptext {...args} />;
+const Template = (args) => <HelpText {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: "This is what your learners see",
@@ -79,7 +81,6 @@ Default.args = {
   asPadded: "normal",
   withColor: {
     backgroundColor: "",
-    accentColor: "",
     textColor: "",
   },
   withAnimation: {
@@ -89,7 +90,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "helptext",
+    tgt: "helpText",
     dictionary: dictionary,
   },
   isHidden: false,
@@ -97,46 +98,45 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<Helptext {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<HelpText {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Colored Helptext
+// Colored HelpText
 // -------------------------------------------------------------
-export const ColoredHelptext = Template.bind({});
-ColoredHelptext.args = {
+export const ColoredHelpText = Template.bind({});
+ColoredHelpText.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#edf2f4",
-    accentColor: "#540b0e",
     textColor: "#fca311",
   },
 };
-ColoredHelptext.parameters = {
+ColoredHelpText.parameters = {
   docs: {
     source: {
-      code: `<Helptext {...${JSON.stringify(ColoredHelptext.args, null, 2)}}/>`,
+      code: `<HelpText {...${JSON.stringify(ColoredHelpText.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Translated Helptext
+// Translated HelpText
 // -------------------------------------------------------------
-export const TranslatedHelptext = Template.bind({});
-TranslatedHelptext.args = {
+export const TranslatedHelpText = Template.bind({});
+TranslatedHelpText.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "helptext",
+    tgt: "helpText",
     dictionary: dictionary,
   },
 };
-TranslatedHelptext.parameters = {
+TranslatedHelpText.parameters = {
   docs: {
     source: {
-      code: `<Helptext {...${JSON.stringify(
-        TranslatedHelptext.args,
+      code: `<HelpText {...${JSON.stringify(
+        TranslatedHelpText.args,
         null,
         2
       )}}/>`,
