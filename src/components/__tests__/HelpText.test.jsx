@@ -15,7 +15,7 @@ describe("HelpText", () => {
 
   const dictionary = JSON.stringify({
     hi: {
-      helptext: { content: "आपके शिक्षार्थी यही देखते हैं" },
+      helpText: { content: "आपके शिक्षार्थी यही देखते हैं" },
     },
   });
 
@@ -123,7 +123,7 @@ describe("HelpText", () => {
     component.setProps({
       withTranslation: {
         lang: "hi",
-        tgt: "helptext",
+        tgt: "helpText",
         dictionary: dictionary,
       },
     });
