@@ -5,9 +5,9 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Helptext from "../HelpText/HelpText.react";
+import HelpText from "../HelpText/HelpText.react";
 
-describe("Helptext", () => {
+describe("HelpText", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -22,7 +22,7 @@ describe("Helptext", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <Helptext
+      <HelpText
         content=""
         asSize="normal"
         asPadded="normal"
