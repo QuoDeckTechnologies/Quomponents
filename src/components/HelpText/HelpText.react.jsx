@@ -41,23 +41,6 @@ HelpText.propTypes = {
     textColor: PropTypes.string,
   }),
   /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
-  /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
   */
   withTranslation: PropTypes.shape({
@@ -82,7 +65,6 @@ HelpText.defaultProps = {
   asSize: "normal",
   asPadded: "normal",
   withColor: null,
-  withAnimation: null,
   withTranslation: null,
   isHidden: false,
 };

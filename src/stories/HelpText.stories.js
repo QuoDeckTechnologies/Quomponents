@@ -35,16 +35,6 @@ export default {
         },
       },
     },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
-        },
-      },
-    },
     withTranslation: {
       table: {
         category: "with-Params",
@@ -82,11 +72,6 @@ Default.args = {
   withColor: {
     backgroundColor: "",
     textColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
   },
   withTranslation: {
     lang: "en",

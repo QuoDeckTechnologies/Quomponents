@@ -27,7 +27,6 @@ describe("Helptext", () => {
         asSize="normal"
         asPadded="normal"
         withColor={null}
-        withAnimation={null}
         withTranslation={null}
         isHidden={false}
       />
@@ -35,17 +34,6 @@ describe("Helptext", () => {
   });
 
   it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
     expect(component.exists()).toBe(true);
   });
 
