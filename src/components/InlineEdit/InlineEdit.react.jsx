@@ -148,7 +148,7 @@ export default function InlineEdit(props) {
 
     useEffect(() => {
         onInput(inputRef.current);
-    }, [onInput, inputRef]);
+    }, [inputRef]);
 
     const changeFocus = () => {
         inputRef.current.style.borderColor = props.withColor?.accentColor
