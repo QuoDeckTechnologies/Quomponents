@@ -21,7 +21,24 @@ describe("DeckSettingsSection", () => {
 		snEnabled: false,
 		voEnabled: false
 	};
-
+	const dictionary = JSON.stringify({
+		en: {
+			DeckSettingsSection: {
+				settings: 'Settings',
+				enableNavigation: "Enable Navigation",
+				enableSlideList: "Enable Slide List",
+				enableVoiceovers: "Enable Voiceovers"
+			}
+		},
+		hi: {
+			DeckSettingsSection: {
+				settings: 'समायोजन',
+				enableNavigation: "पथ प्रदर्शन सक्षम करें",
+				enableSlideList: "स्लाइड सूची सक्षम करें",
+				enableVoiceovers: "वॉयस ओवर सक्षम करें"
+			}
+		}
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
@@ -29,6 +46,7 @@ describe("DeckSettingsSection", () => {
 				actions={actions}
 				deck={deck}
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
@@ -53,6 +71,19 @@ describe("DeckSettingsSection", () => {
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
 		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of component in hindi", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "DeckSettingsSection",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.find(".qui-ribbon-menu-label").at(0).text()).toBe("पथ प्रदर्शन सक्षम करें");
+		expect(component.find(".qui-ribbon-menu-label").at(1).text()).toBe("स्लाइड सूची सक्षम करें");
+		expect(component.find(".qui-ribbon-menu-label").at(2).text()).toBe("वॉयस ओवर सक्षम करें");
 	});
 
 	it("should render correctly when passed isHidden props as false", () => {
