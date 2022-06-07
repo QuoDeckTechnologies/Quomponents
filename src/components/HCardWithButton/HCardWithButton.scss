@@ -46,8 +46,12 @@
   font-size: 1.1em;
 }
 
+.qui .qui-h-card-title {
+  white-space: normal;
+}
+
 .qui .qui-h-card-text-container {
-  width: 50%;
+  width: 100%;
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -55,11 +59,21 @@
 }
 
 .qui .qui-h-card-text-container h4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
   margin: 0;
   color: #666666;
+  width: 100%;
 }
 
 .qui .qui-h-card-text-container p {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
   margin: 0.5em 0;
   font-size: 1.1em;
   color: #666666;
@@ -74,7 +88,7 @@
   }
   .qui .qui-h-card-image-container {
     height: auto;
-    width: 5em;
+    width: 7em;
   }
   .qui .qui-h-card-text-container h4 {
     font-size: 1em;
@@ -95,7 +109,7 @@
     display: flex;
   }
   .qui .qui-h-card-image-container {
-    width: 13em;
+    width: 20em;
   }
   .qui.qui-h-card-with-button .qui .qui-btn {
     display: block;

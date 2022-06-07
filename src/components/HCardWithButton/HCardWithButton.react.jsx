@@ -105,7 +105,13 @@ HCardWithButton.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: null,
+  content: {
+    name: "",
+    description: "",
+    buttonText: "",
+    checked: "",
+    image: "",
+  },
   imageLibrary: [],
   asEmphasis: "contained",
   isCircular: false,
@@ -191,17 +197,17 @@ export default function HCardWithButton(props) {
             backgroundSize: "cover",
           }}
         >
-          <div
-            className="qui-h-card-checkbox-container"
-            style={{ backgroundColor: withColor?.accentBackgroundColor }}
-          >
-            {content?.checked && (
+          {content?.checked && (
+            <div
+              className="qui-h-card-checkbox-container"
+              style={{ backgroundColor: withColor?.accentBackgroundColor }}
+            >
               <i
                 className="fas fa-check-square"
                 style={{ color: withColor?.accentColor }}
               ></i>
-            )}
-          </div>
+            </div>
+          )}
         </div>
         <div className="qui-h-card-text-container">
           <div className="qui-h-card-text">
