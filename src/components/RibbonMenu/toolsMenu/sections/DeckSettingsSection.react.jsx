@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { getQuommons } from "../../../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../../common/stylesheets/common.css";
@@ -38,6 +38,14 @@ DeckSettingsSection.propTypes = {
 	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
+	Use to show a translated version of the component text. Dictionary must be valid JSON. 
+	*/
+	withTranslation: PropTypes.shape({
+		lang: PropTypes.string,
+		tgt: PropTypes.string,
+		dictionary: PropTypes.string,
+	}),
+	/**
 	Use to show/hide the component
 	*/
 	isHidden: PropTypes.bool,
@@ -59,6 +67,29 @@ export default function DeckSettingsSection(props) {
 		props,
 		"ribbon-tools-menu-deck-settings-section-parent"
 	);
+
+	let deckSettingsSection = {
+		settings: "Settings",
+		enableNavigation: "Enable Navigation",
+		enableSlideList: "Enable Slide List",
+		enableVoiceovers: "Enable Voiceovers"
+	}
+
+	//-------------------------------------------------------------------
+	// 5. Get translation of the component
+	//-------------------------------------------------------------------
+	let tObj = null;
+	if (
+		props.withTranslation?.lang &&
+		props.withTranslation.lang !== "" &&
+		props.withTranslation.lang !== "en"
+	) {
+		tObj = getTranslation(props.withTranslation);
+		deckSettingsSection.settings = tObj?.settings;
+		deckSettingsSection.enableNavigation = tObj?.enableNavigation;
+		deckSettingsSection.enableSlideList = tObj?.enableSlideList;
+		deckSettingsSection.enableVoiceovers = tObj?.enableVoiceovers;
+	}
 
 	//-------------------------------------------------------------------
 	// 2. Handle states of Navigation, SlideList and Voiceover checkboxes
@@ -116,7 +147,7 @@ export default function DeckSettingsSection(props) {
 										})
 									}}
 								>
-									Enable Navigation
+									{deckSettingsSection.enableNavigation}
 								</div>
 							</div>
 							<div className="qui-ribbon-menu-settings-section-right-content">
@@ -147,7 +178,7 @@ export default function DeckSettingsSection(props) {
 										})
 									}}
 								>
-									Enable Slide List
+									{deckSettingsSection.enableSlideList}
 								</div>
 							</div>
 							<div className="qui-ribbon-menu-settings-section-right-content">
@@ -180,12 +211,12 @@ export default function DeckSettingsSection(props) {
 										})
 									}}
 								>
-									Enable Voiceovers
+									{deckSettingsSection.enableVoiceovers}
 								</div>
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">Settings</div>
+					<div className="qui-ribbon-menu-label-file">{deckSettingsSection.settings}</div>
 				</div>
 			</div>
 		</div>

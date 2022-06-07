@@ -14,12 +14,24 @@ describe("QuestionBankSection", () => {
 	// Setup definitions for the test suite
 	// -------------------------------------
 	let component;
-
+	const dictionary = JSON.stringify({
+		en: {
+			QuestionBankSection: {
+				questionBank: 'Question Bank'
+			}
+		},
+		hi: {
+			QuestionBankSection: {
+				questionBank: 'प्रश्न बैंक'
+			}
+		}
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<QuestionBankSection
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
@@ -44,6 +56,17 @@ describe("QuestionBankSection", () => {
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
 		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of component in hindi", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "QuestionBankSection",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.find(".qui-ribbon-menu-label").text()).toBe("प्रश्न बैंक");
 	});
 
 	it("should render correctly when passed isHidden props as false", () => {

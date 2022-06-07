@@ -1,6 +1,18 @@
 import React from "react";
 import AnalysisSection from "../components/RibbonMenu/toolsMenu/sections/AnalysisSection.react";
 
+const dictionary = JSON.stringify({
+	en: {
+		AnalysisSection: {
+			analysis: 'Analysis'
+		}
+	},
+	hi: {
+		AnalysisSection: {
+			analysis: 'विश्लेषण'
+		}
+	}
+});
 export default {
 	title: "Design System/RibbonMenu/RibbonToolsMenu/AnalysisSection",
 	component: AnalysisSection,
@@ -10,6 +22,16 @@ export default {
 			options: ["left", "right", "inline"],
 			table: {
 				category: "as-Flags",
+			},
+		},
+		withTranslation: {
+			table: {
+				category: "with-Params",
+				defaultValue: {
+					lang: "",
+					tgt: "",
+					dictionary: "",
+				},
 			},
 		},
 		isHidden: {
@@ -60,6 +82,11 @@ const Template = (args) => <AnalysisSection {...args} />;
 export const Default = Template.bind({});
 Default.args = {
 	asFloated: "left",
+	withTranslation: {
+		lang: "en",
+		tgt: "AnalysisSection",
+		dictionary: dictionary,
+	},
 	isDisabled: false,
 	isHidden: false,
 };
@@ -67,6 +94,34 @@ Default.parameters = {
 	docs: {
 		source: {
 			code: `<AnalysisSection {...${JSON.stringify(Default.args, null, 2)}}/>`,
+		},
+	},
+};
+
+// -------------------------------------------------------------
+// Translated AnalysisSection
+// -------------------------------------------------------------
+export const TranslatedAnalysisSection = Template.bind({});
+TranslatedAnalysisSection.args = {
+	...Default.args,
+	withTranslation: {
+		lang: "hi",
+		tgt: "AnalysisSection",
+		dictionary: dictionary
+	},
+};
+TranslatedAnalysisSection.parameters = {
+	docs: {
+		description: {
+			story:
+				"Use to change the language that the text appears in. To make this work for the AnalysisSection, add a AnalysisSection:{} value to the dictionary.",
+		},
+		source: {
+			code: `<AnalysisSection {...${JSON.stringify(
+				TranslatedAnalysisSection.args,
+				null,
+				2
+			)}}/>`,
 		},
 	},
 };
