@@ -110,7 +110,8 @@ const Template = (args) => <HCardWithButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    title: "BALLOON BURST",
+    id: "default-id",
+    name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",
@@ -163,7 +164,7 @@ export const HCardWithoutImage = Template.bind({});
 HCardWithoutImage.args = {
   ...Default.args,
   content: {
-    title: "BALLOON BURST",
+    name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",
@@ -189,7 +190,7 @@ export const UncheckedHCardWithButton = Template.bind({});
 UncheckedHCardWithButton.args = {
   ...Default.args,
   content: {
-    title: "BALLOON BURST",
+    name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",

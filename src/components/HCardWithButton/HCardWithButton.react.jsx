@@ -106,11 +106,12 @@ HCardWithButton.defaultProps = {
   // Component Specific props
   //=======================================
   content: {
+    id: "",
     name: "",
     description: "",
     buttonText: "",
-    checked: "",
-    image: "",
+    checked: true,
+    image: { id: "", extention: "" },
   },
   imageLibrary: [],
   asEmphasis: "contained",
@@ -143,7 +144,7 @@ export default function HCardWithButton(props) {
   //-------------------------------------------------------------------
   const handleClick = () => {
     if (window.innerWidth <= 481) {
-      onClick();
+      onClick(content);
     }
   };
   //-------------------------------------------------------------------
@@ -216,7 +217,7 @@ export default function HCardWithButton(props) {
                 color: withColor?.textColor,
               }}
             >
-              {content?.title}
+              {content?.name}
             </h4>
             <p
               style={{
@@ -241,6 +242,7 @@ export default function HCardWithButton(props) {
               backgroundColor: withColor?.buttonBackgroundColor,
               textColor: withColor?.buttonTextColor,
             }}
+            onClick={() => onClick(content)}
           />
         </div>
       </div>

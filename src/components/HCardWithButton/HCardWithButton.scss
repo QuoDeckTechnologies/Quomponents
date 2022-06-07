@@ -99,6 +99,9 @@
   .qui.qui-h-card-with-button .qui .qui-btn {
     display: none;
   }
+  .qui.qui-h-card-with-button {
+    cursor: pointer;
+  }
 }
 
 @media only screen and (min-width: 481px) {
@@ -113,5 +116,8 @@
   }
   .qui.qui-h-card-with-button .qui .qui-btn {
     display: block;
+  }
+  .qui.qui-h-card-with-button {
+    cursor: auto;
   }
 }
