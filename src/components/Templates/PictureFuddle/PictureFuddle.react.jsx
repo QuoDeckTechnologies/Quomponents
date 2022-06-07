@@ -30,6 +30,24 @@ PictureFuddle.propTypes = {
         question: PropTypes.string,
         answer: PropTypes.string,
         purpose: PropTypes.string,
+        filter: PropTypes.oneOf(["None",
+            "none",
+            "Blur",
+            "blur",
+            "Brighten",
+            "brighten",
+            "Contrast",
+            "contrast",
+            "Rotate-Hue",
+            "rotate-hue",
+            "Invert",
+            "invert",
+            "Saturate",
+            "saturate",
+            "Greyscale",
+            "greyscale",
+            "Sepia",
+            "sepia"])
     }).isRequired,
     /**
     PictureFuddle should have imageLibrary array
@@ -165,7 +183,7 @@ export default function PictureFuddle(props) {
 
     const getBackground = () => {
         return {
-            background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
+            backgroundImage: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
             backgroundSize: "cover",
             backgroundPosition: "center"
         };
@@ -189,7 +207,7 @@ export default function PictureFuddle(props) {
                             withColor={slideHeaderColors} />
                     )}
                     {data?.image && (
-                        <img className="qui-picture-fuddle-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
+                        <img className={`qui-picture-fuddle-image qui-picture-fuddle-${props.data?.filter?.toLowerCase()}`} src={resolveImage(data?.image.id, imageLibrary)} alt="" />
                     )}
                     <div
                         className={`qui-picture-fuddle-label variant-${props.asVariant}-text`}
@@ -203,7 +221,7 @@ export default function PictureFuddle(props) {
                             withColor={inputFieldColors}
                             onClick={(name, value) => changeText(value)}
                             name="picture-fuddle-input-field" />
-                        <Button {...props}
+                        <Button
                             content={buttonText}
                             withColor={buttonColors}
                             onClick={() => handleSubmit()} >

@@ -30,6 +30,24 @@ PictureFuddleWithFeedback.propTypes = {
         question: PropTypes.string,
         answer: PropTypes.string,
         purpose: PropTypes.string,
+        filter: PropTypes.oneOf(["None",
+            "none",
+            "Blur",
+            "blur",
+            "Brighten",
+            "brighten",
+            "Contrast",
+            "contrast",
+            "Rotate-Hue",
+            "rotate-hue",
+            "Invert",
+            "invert",
+            "Saturate",
+            "saturate",
+            "Greyscale",
+            "greyscale",
+            "Sepia",
+            "sepia"])
     }).isRequired,
     /**
     PictureFuddleWithFeedback should have imageLibrary array
@@ -165,7 +183,7 @@ export default function PictureFuddleWithFeedback(props) {
 
     const getBackground = () => {
         return {
-            background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
+            backgroundImage: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
             backgroundSize: "cover",
             backgroundPosition: "center"
         };
@@ -189,7 +207,7 @@ export default function PictureFuddleWithFeedback(props) {
                             withColor={slideHeaderColors} />
                     )}
                     {data?.image && (
-                        <img className="qui-picture-fuddle-with-feedback-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
+                        <img className={`qui-picture-fuddle-with-feedback-image qui-picture-fuddle-with-feedback-${props.data?.filter?.toLowerCase()}`} src={resolveImage(data?.image.id, imageLibrary)} alt="" />
                     )}
                     <div
                         className={`qui-picture-fuddle-with-feedback-label variant-${props.asVariant}-text`}
@@ -203,7 +221,7 @@ export default function PictureFuddleWithFeedback(props) {
                             withColor={inputFieldColors}
                             onClick={(name, value) => changeText(value)}
                             name="picture-fuddle-with-feedback-input-field" />
-                        <Button {...props}
+                        <Button
                             content={buttonText}
                             withColor={buttonColors}
                             onClick={() => handleSubmit()} >

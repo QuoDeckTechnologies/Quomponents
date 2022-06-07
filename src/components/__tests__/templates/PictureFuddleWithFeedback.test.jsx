@@ -32,6 +32,7 @@ describe("PictureFuddleWithFeedback", () => {
                     question: "Question",
                     answer: "Answer",
                     purpose: "quiz",
+                    filter: "none"
                 }}
                 imageLibrary={[{
                     id: 'background-image',
