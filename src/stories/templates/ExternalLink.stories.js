@@ -1,6 +1,12 @@
 import React from "react";
 import ExternalLink from "../../components/Templates/ExternalLink/ExternalLink.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+      externallink: { button: "जाएँ" },
+    },
+}); 
+
 export default {
     title: "Design System/Templates/ExternalLink/ExternalLink",
     component: ExternalLink,
@@ -47,6 +53,16 @@ export default {
                     duration: 0,
                     delay: 0,
                 },
+            },
+        },
+        withTranslation: {
+            table: {
+              category: "with-Params",
+              defaultValue: {
+                lang: "",
+                tgt: "",
+                dictionary: "",
+              },
             },
         },
         isHidden: {
@@ -118,6 +134,11 @@ Default.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "externallink",
+        dictionary: dictionary,
     },
     isHidden: false,
 };
@@ -220,3 +241,27 @@ ExternalLinkWithHeaderImageAndBackgroundImage.parameters = {
         },
     },
 };
+// -------------------------------------------------------------
+// Translated Externallink
+// -------------------------------------------------------------
+export const TranslatedExternallink = Template.bind({});
+TranslatedExternallink.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "externallink",
+    dictionary: dictionary,
+  },
+};
+TranslatedExternallink.parameters = {
+  docs: {
+    source: {
+      code: `<Externallink {...${JSON.stringify(
+        TranslatedExternallink.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+

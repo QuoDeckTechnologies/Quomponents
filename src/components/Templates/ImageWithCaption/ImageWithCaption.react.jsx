@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
     getAnimation,
+    getTranslation,
     getQuommons,
     resolveImage,
 } from "../../../common/javascripts/helpers";
@@ -20,8 +21,8 @@ ImageWithCaption.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      ImageWithCaption content should be passed in data field and it is a required field
-      */
+    ImageWithCaption content should be passed in data field and it is a required field
+    */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
@@ -30,8 +31,8 @@ ImageWithCaption.propTypes = {
         backgroundImage: PropTypes.object,
     }).isRequired,
     /**
-   ImageWithCaption can set image & backgroundImage from imageLibrary.
-   */
+    ImageWithCaption can set image & backgroundImage from imageLibrary.
+    */
     imageLibrary: PropTypes.array,
     /**
     slideId can be used if same template is used continueously for multiple slides.
@@ -41,8 +42,8 @@ ImageWithCaption.propTypes = {
     // Quommon props
     //=======================================
     /**
-      Use to define standard component type
-      */
+    Use to define standard component type
+    */
     asVariant: PropTypes.oneOf([
         "primary",
         "secondary",
@@ -55,8 +56,8 @@ ImageWithCaption.propTypes = {
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-      Use to override component colors and behavior
-      */
+    Use to override component colors and behavior
+    */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         slideHeaderTextColor: PropTypes.string,
@@ -70,8 +71,8 @@ ImageWithCaption.propTypes = {
         buttonHoverTextColor: PropTypes.string,
     }),
     /**
-      Use to define the entry animation of the component
-      */
+    Use to define the entry animation of the component
+    */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -87,16 +88,24 @@ ImageWithCaption.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to enable/disable the component
-      */
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
+    Use to enable/disable the component
+    */
     isDisabled: PropTypes.bool,
     /**
-      Use to show/hide the component
-      */
+    Use to show/hide the component
+    */
     isHidden: PropTypes.bool,
     /**
-      ImageWithCaption component must have the onClick function passed as props
-      */
+    ImageWithCaption component must have the onClick function passed as props
+    */
     onClick: PropTypes.func.isRequired,
 };
 
@@ -113,6 +122,7 @@ ImageWithCaption.defaultProps = {
     asFloated: "left",
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
     isDisabled: false,
     isHidden: false,
 };
@@ -156,7 +166,18 @@ export default function ImageWithCaption(props) {
         backgroundColor: withColor?.slideHeaderBackgroundColor
     }
     //-------------------------------------------------------------------
-    // 5. Set background image and color for card
+    // 5. Translate the text objects in case their is a dictionary provided
+    //-------------------------------------------------------------------
+    let tObj;
+    if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+    ) {
+    tObj = getTranslation(props.withTranslation);
+    }
+    //-------------------------------------------------------------------
+    // 6. Set background image and color for card
     //-------------------------------------------------------------------
     const getBackground = () => {
         if (data?.backgroundImage) {
@@ -186,6 +207,7 @@ export default function ImageWithCaption(props) {
             <div className={`qui-image-with-caption-card ${quommonClasses.childClasses}`}>
                 {!data?.image && (data?.title || data?.subtitle) && (
                     <SlideHeader
+                        {...props}
                         content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors} />
                 )}
@@ -200,12 +222,12 @@ export default function ImageWithCaption(props) {
                     content={data?.caption}
                     withColor={captionColors}
                 />
-                {<Button {...props}
-                    content={"Continue"}
+                <Button
+                    content={tObj ? tObj.button : "Continue"}
                     asFloated={"inline"}
                     onClick={props.onClick}
                     withColor={buttonColors}
-                />}
+                />
             </div>
         </motion.div>
     );

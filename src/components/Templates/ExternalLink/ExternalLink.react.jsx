@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
     resolveImage
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -20,8 +21,8 @@ ExternalLink.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      ExternalLink content should be passed in data field and it is a required field
-      */
+    ExternalLink content should be passed in data field and it is a required field
+    */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
@@ -31,19 +32,19 @@ ExternalLink.propTypes = {
         backgroundImage: PropTypes.object,
     }).isRequired,
     /**
-      ExternalLink can set image & backgroundImage from imageLibrary.
-      */
+    ExternalLink can set image & backgroundImage from imageLibrary.
+    */
     imageLibrary: PropTypes.array,
     /**
-      slideId can be used if same template is used continueously for multiple slides.
-      */
+    slideId can be used if same template is used continueously for multiple slides.
+    */
     slideId: PropTypes.number,
     //=======================================
     // Quommon props
     //=======================================
     /**
-      Use to define standard component type
-      */
+    Use to define standard component type
+    */
     asVariant: PropTypes.oneOf([
         "primary",
         "secondary",
@@ -67,8 +68,8 @@ ExternalLink.propTypes = {
         buttonHoverTextColor: PropTypes.string,
     }),
     /**
-      Use to define the entry animation of the component
-      */
+    Use to define the entry animation of the component
+    */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -84,16 +85,24 @@ ExternalLink.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to enable/disable the component
-      */
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+    }),
+    /**
+    Use to enable/disable the component
+    */
     isDisabled: PropTypes.bool,
     /**
-      Use to show/hide the component
-      */
+    Use to show/hide the component
+    */
     isHidden: PropTypes.bool,
     /**
-      ExternalLink component must have the onClick function passed as props
-      */
+    ExternalLink component must have the onClick function passed as props
+    */
     onClick: PropTypes.func.isRequired,
 };
 
@@ -109,6 +118,7 @@ ExternalLink.defaultProps = {
     asVariant: "warning",
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
     isDisabled: false,
     isHidden: false,
 };
@@ -152,7 +162,18 @@ export default function ExternalLink(props) {
         backgroundColor: withColor?.slideHeaderBackgroundColor
     }
     //-------------------------------------------------------------------
-    // 5. Set background image and color for card
+    // 5. Translate the text objects in case their is a dictionary provided
+    //-------------------------------------------------------------------
+    let tObj;
+    if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+    ) {
+    tObj = getTranslation(props.withTranslation);
+    }
+    //-------------------------------------------------------------------
+    // 6. Set background image and color for card
     //-------------------------------------------------------------------
     const getBackground = () => {
         if (data?.backgroundImage) {
@@ -181,7 +202,7 @@ export default function ExternalLink(props) {
             <div className={`qui-external-link-card ${quommonClasses.childClasses}`} key={"External-link" + slideId}
             >
                 {!data?.image && (data?.title || data?.subtitle) && (
-                    <SlideHeader
+                    <SlideHeader {...props}
                         content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors} />
                 )}
@@ -195,11 +216,11 @@ export default function ExternalLink(props) {
                     withColor={captionColors}
                 />
                 <a href={data?.link} className="qui-external-link-address">
-                    {<Button {...props}
-                        content={"Go"}
+                    <Button 
+                        content={tObj ? tObj.button : "Go"}
                         onClick={props.onClick}
                         withColor={buttonColors}
-                    />}
+                    />
                 </a>
             </div>
         </motion.div>

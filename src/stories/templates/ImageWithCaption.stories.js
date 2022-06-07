@@ -1,6 +1,12 @@
 import React from "react";
 import ImageWithCaption from "../../components/Templates/ImageWithCaption/ImageWithCaption.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+      imagewithcaption: { button: "जारी रखें" },
+    },
+});  
+
 export default {
     title: "Design System/Templates/ImageWithCaption/ImageWithCaption",
     component: ImageWithCaption,
@@ -53,6 +59,16 @@ export default {
                     duration: 0,
                     delay: 0,
                 },
+            },
+        },
+        withTranslation: {
+            table: {
+              category: "with-Params",
+              defaultValue: {
+                lang: "",
+                tgt: "",
+                dictionary: "",
+              },
             },
         },
         isDisabled: {
@@ -139,6 +155,11 @@ Default.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "imagewithcaption",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -260,6 +281,30 @@ ImagewithcaptionWithHeaderImageAndBackgroundImage.parameters = {
             code: `<ImageWithCaption {...${JSON.stringify(ImagewithcaptionWithHeaderImageAndBackgroundImage.args, null, 2)}}/>`,
         },
     },
+};
+
+// -------------------------------------------------------------
+// Translated ImageWithCation
+// -------------------------------------------------------------
+export const TranslatedImageWithCation = Template.bind({});
+TranslatedImageWithCation.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "imagewithcaption",
+    dictionary: dictionary,
+  },
+};
+TranslatedImageWithCation.parameters = {
+  docs: {
+    source: {
+      code: `<ImageWithCation {...${JSON.stringify(
+        TranslatedImageWithCation.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
 };
 
 
