@@ -14,6 +14,15 @@ describe("Anagram", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
+  const dictionary = JSON.stringify({
+    hi: {
+      anagram: {
+        label: "इनपुट नाम",
+        quizLabel: "उत्तर जांचें",
+        nonQuizLabel: "उत्तर दें"
+      }
+    },
+  });
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -43,6 +52,7 @@ describe("Anagram", () => {
         slideId={0}
         asVariant="primary"
         withColor={null}
+        withTranslation={null}
         isHidden={false}
         isDisabled={false}
         onClick={(e) => {
@@ -216,4 +226,28 @@ describe("Anagram", () => {
     component.setProps({ data: data, withColor: colors, imageLibrary: imageLibrary })
     expect(component.exists()).toBe(true);
   })
+  it("should render translation  with withTranslation prop puprpose passed as quiz", () => {
+    component.setProps({
+      data: {
+        purpose: "quiz",
+      },
+      withTranslation: {
+        lang: "hi",
+        tgt: "anagram",
+        dictionary: dictionary,
+      },
+    });
+  });
+  it("should render translation  with withTranslation prop with no purpose passed ", () => {
+    component.setProps({
+      data: {
+        purpose: "",
+      },
+      withTranslation: {
+        lang: "hi",
+        tgt: "anagram",
+        dictionary: dictionary,
+      },
+    });
+  });
 });
