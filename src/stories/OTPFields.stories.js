@@ -77,8 +77,8 @@ Default.args = {
     numFields: 5,
     asFloated: "inline",
     withColor: {
-        accentColor: "#FFAB00",
-        backgroundColor: "#ffab000d",
+        accentColor: "",
+        backgroundColor: "",
     },
     withAnimation: {
         animation: "zoom",
@@ -129,8 +129,8 @@ export const ColoredOTPFields = Template.bind({});
 ColoredOTPFields.args = {
     ...Default.args,
     withColor: {
-        accentColor: "#065254",
-        backgroundColor: "#34e5eb"
+        accentColor: "#FFAB00",
+        backgroundColor: "#ffab000d"
     }
 };
 ColoredOTPFields.parameters = {
