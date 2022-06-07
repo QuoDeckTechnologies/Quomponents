@@ -65,6 +65,12 @@ export default {
               },
             },
         },
+        isDisabled: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -140,6 +146,7 @@ Default.args = {
         tgt: "externallink",
         dictionary: dictionary,
     },
+    isDisabled: false,
     isHidden: false,
 };
 Default.parameters = {
