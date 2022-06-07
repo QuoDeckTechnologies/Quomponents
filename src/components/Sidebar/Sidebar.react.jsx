@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
     getQuommons,
-    getAnimation
+    getAnimation,
+    getTranslation
 } from "../../common/javascripts/helpers.js";
 import _ from "lodash";
 
@@ -82,6 +83,14 @@ Sidebar.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -110,6 +119,7 @@ Sidebar.defaultProps = {
 
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
@@ -141,13 +151,72 @@ export default function Sidebar(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     //-------------------------------------------------------------------
-    // 3. Get the location of the section 
+    // 3. Get the translation of panelLinks
+    //-------------------------------------------------------------------
+    let TranslatedPanelLinks = {
+        welcome: "Welcome",
+        content: {
+            library: "Library",
+            editor: "Editor",
+            settings: "Settings",
+            enrollment: "Enrollment",
+            preview: "Preview",
+        },
+        admin: {
+            users: "Users",
+            courses: "Courses",
+            branding: "Branding",
+            tags: "Tags",
+            ads: "Ads",
+            ticketCenters: "Ticket Centers",
+        },
+        analytics: {
+            org: "Org",
+            teams: "Teams",
+            trainees: "Trainees",
+            courses: "Courses",
+            articles: "Articles",
+        },
+        blog: {
+            articles: "Articles",
+            editor: "Editor",
+        },
+        social: {
+            text: "Text",
+            link: "Link",
+            image: "Image",
+            gallery: "Gallery",
+            video: "Video",
+        },
+        help: {
+            chatbot: "Chatbot",
+            faq: "FAQ",
+            support: "Support",
+        }
+    }
+    //-------------------------------------------------------------------
+    // Get translation of the component
+    //-------------------------------------------------------------------
+    let editLabel = "Edit Mode"
+    let tObj = null;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        editLabel = tObj?.content
+        TranslatedPanelLinks = tObj?.translatedPanelLinks
+    }
+
+    //-------------------------------------------------------------------
+    // Get the location of the section 
     //-------------------------------------------------------------------
     const panelLinks = {
         welcome: [
             {
                 key: "welcome",
-                name: "Welcome",
+                name: TranslatedPanelLinks.welcome,
                 icon: "fas fa-handshake",
                 show: true,
             },
@@ -155,76 +224,76 @@ export default function Sidebar(props) {
         content: [
             {
                 key: "platforms",
-                name: "Library",
+                name: TranslatedPanelLinks.content.library,
                 icon: "fas fa-sitemap",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType),
             },
             {
                 key: "files",
-                name: "Editor",
+                name: TranslatedPanelLinks.content.editor,
                 icon: "fas fa-desktop",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType) && !props.noCourses,
             },
             {
                 key: "advanced",
-                name: "Settings",
+                name: TranslatedPanelLinks.content.settings,
                 icon: "fas fa-cogs",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType) && !props.noCourses,
             },
             {
                 key: "share",
-                name: "Enrolment",
+                name: TranslatedPanelLinks.content.enrollment,
                 icon: "fa fa-person-booth",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType) && !props.noCourses,
             },
             {
                 key: "preview",
-                name: "Preview",
+                name: TranslatedPanelLinks.content.preview,
                 icon: "fas fa-eye",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType) && !props.noCourses && window.innerHeight > window.innerWidth,
             },
         ],
         admin: [
-            { key: "users", name: "Users", icon: "fas fa-users", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
-            { key: "courses", name: "Courses", icon: "fas fa-book", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "users", name: TranslatedPanelLinks.admin.users, icon: "fas fa-users", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "courses", name: TranslatedPanelLinks.admin.courses, icon: "fas fa-book", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
             {
                 key: "branding",
-                name: "Branding",
+                name: TranslatedPanelLinks.admin.branding,
                 icon: "fas fa-paint-brush",
                 show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType),
             },
-            { key: "tags", name: "Tags", icon: "fas fa-tags", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
-            { key: "adverts", name: "Ads", icon: "fas fa-image", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
-            { key: "tickets", name: "Ticket Centers", icon: "fas fa-envelope-open-text", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "tags", name: TranslatedPanelLinks.admin.tags, icon: "fas fa-tags", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "adverts", name: TranslatedPanelLinks.admin.ads, icon: "fas fa-image", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "tickets", name: TranslatedPanelLinks.admin.ticketCenters, icon: "fas fa-envelope-open-text", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
         ],
         analytics: [
             {
                 key: "organization",
-                name: "Org",
+                name: TranslatedPanelLinks.analytics.org,
                 icon: "fas fa-building",
                 show: ["SuperAdmin", "Admin", "DataAdmin"].includes(props.licenseType),
             },
             {
                 key: "users",
-                name: "Teams",
+                name: TranslatedPanelLinks.analytics.teams,
                 icon: "fa fa-users",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType),
             },
             {
                 key: "trainees",
-                name: "Trainees",
+                name: TranslatedPanelLinks.analytics.trainees,
                 icon: "fas fa-chalkboard-teacher",
                 show: ["SuperAdmin", "Admin", "Trainer"].includes(props.licenseType),
             },
             {
                 key: "courses",
-                name: "Courses",
+                name: TranslatedPanelLinks.analytics.courses,
                 icon: "fas fa-book",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType),
             },
             {
                 key: "articles",
-                name: "Articles",
+                name: TranslatedPanelLinks.analytics.articles,
                 icon: "fas fa-newspaper",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType),
             },
@@ -232,23 +301,23 @@ export default function Sidebar(props) {
         blog: [
             {
                 key: "articles",
-                name: "Articles",
+                name: TranslatedPanelLinks.blog.articles,
                 icon: "fas fa-newspaper",
                 show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType),
             },
-            { key: "editor", name: "Editor", icon: "fas fa-pencil-alt", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "editor", name: TranslatedPanelLinks.blog.editor, icon: "fas fa-pencil-alt", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
         ],
         social: [
-            { key: "text", name: "Text", icon: "fas fa-pencil-alt", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
-            { key: "link", name: "Link", icon: "fas fa-link", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
-            { key: "image", name: "Image", icon: "fas fa-image", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
-            { key: "gallery", name: "Gallery", icon: "fas fa-images", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
-            { key: "video", name: "Video", icon: "fas fa-film", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "text", name: TranslatedPanelLinks.social.text, icon: "fas fa-pencil-alt", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "link", name: TranslatedPanelLinks.social.link, icon: "fas fa-link", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "image", name: TranslatedPanelLinks.social.image, icon: "fas fa-image", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "gallery", name: TranslatedPanelLinks.social.gallery, icon: "fas fa-images", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "video", name: TranslatedPanelLinks.social.video, icon: "fas fa-film", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
         ],
         help: [
-            { key: "chat", name: "Chatbot", icon: "fas fa-comment", show: true },
-            { key: "faq", name: "FAQ", icon: "fas fa-comments", show: true },
-            { key: "ticket", name: "Support", icon: "fas fa-desktop", show: true },
+            { key: "chat", name: TranslatedPanelLinks.help.chatbot, icon: "fas fa-comment", show: true },
+            { key: "faq", name: TranslatedPanelLinks.help.faq, icon: "fas fa-comments", show: true },
+            { key: "ticket", name: TranslatedPanelLinks.help.support, icon: "fas fa-desktop", show: true },
         ]
     };
     function editMode() {
@@ -256,7 +325,7 @@ export default function Sidebar(props) {
             <div className={`qui-side-bar-editmode-container`} style={{ backgroundColor: props.withColor?.backgroundColor }}>
                 <img className="qui-side-bar-logo" src={coloredDefaultLogo} alt="" />
                 <p className={`qui-side-bar-edit-mode-label`} style={{ color: props.withColor?.textColor }}>
-                    {props.label}
+                    {editLabel}
                 </p>
                 <ArcMenu position="bottom-left" menuType="close" arcIcon="close" onClick={props.onClick} />
             </div>
