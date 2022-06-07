@@ -129,8 +129,8 @@ export const ColoredOTPFields = Template.bind({});
 ColoredOTPFields.args = {
     ...Default.args,
     withColor: {
-        accentColor: "#FFAB00",
-        backgroundColor: "#ffab000d"
+        accentColor: "#666666",
+        backgroundColor: "#FFBF00"
     }
 };
 ColoredOTPFields.parameters = {
