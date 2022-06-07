@@ -1,6 +1,15 @@
 import React from "react";
 import DosAndDonts from "../../components/Templates/DosAndDonts/DosAndDonts.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        dosDonts: {
+            dos: "क्या करें",
+            donts: "क्या न करें",
+            tip: "कृपया देखने के लिए ऊपर दिए गए बटन पर क्लिक करें"
+        }
+    },
+});
 export default {
     title: "Design System/Templates/DosAndDonts/DosAndDonts",
     component: DosAndDonts,
@@ -44,6 +53,16 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -119,6 +138,11 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "dosDonts",
+        dictionary: dictionary,
+    },
     isHidden: false,
 };
 Default.parameters = {
@@ -180,6 +204,58 @@ DOsDONTsWithImage.parameters = {
     docs: {
         source: {
             code: `<DosAndDonts {...${JSON.stringify(DOsDONTsWithImage.args, null, 2)}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// TranslatedDOsDON'Ts
+// -------------------------------------------------------------
+export const TranslatedDOsDONTs = Template.bind({});
+TranslatedDOsDONTs.args = {
+    data: {
+        title: "Neque porro quisquam est qui dolorem",
+        subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+        caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
+        bullets: [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "Quisque sed turpis vel lectus suscipit auctor",
+            "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+        ],
+        rebullets: [
+            "R Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "Quisque sed turpis vel lectus suscipit auctor",
+            "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+        ],
+    },
+    isChoice: false,
+    asEmphasis: "contained",
+    slideId: 0,
+    asVariant: "warning",
+    withColor: {
+        slideHeaderTextColor: "#FFFFFF",
+        slideHeaderAccentColor: "#AD2929",
+        slideHeaderBackgroundColor: "#ad292980",
+        textBlockBackgroundColor: "#ff000000",
+        bulletBlockTextColor: "#ffffff",
+        bulletBlockBackgroundColor: "#ad292980",
+        backgroundColor: "",
+    },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "dosDonts",
+        dictionary: dictionary,
+    },
+    isHidden: false,
+};
+TranslatedDOsDONTs.parameters = {
+    docs: {
+        source: {
+            code: `<DosAndDonts {...${JSON.stringify(TranslatedDOsDONTs.args, null, 2)}}/>`,
         },
     },
 };

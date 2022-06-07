@@ -60,6 +60,16 @@ export default {
         },
       },
     },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
+        },
+      },
+    },
     isDisabled: {
       table: {
         category: "is-Toggles",
@@ -148,16 +158,6 @@ Default.args = {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
-  },
-  withTranslation: {
-    table: {
-      category: "with-Params",
-      defaultValue: {
-        lang: "",
-        tgt: "",
-        dictionary: "",
-      },
-    },
   },
   withTranslation: {
     lang: "en",
