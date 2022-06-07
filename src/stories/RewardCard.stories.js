@@ -1,5 +1,6 @@
 import React from "react";
 import RewardCard from "../components/RewardCard/RewardCard.react";
+import Grid from '@mui/material/Grid';
 
 const dictionary = JSON.stringify({
     hi: {
@@ -105,7 +106,6 @@ export default {
         docs: { iframeHeight: 500 },
     },
 };
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -322,138 +322,156 @@ const MultipleRewardCardTemplate = (args) => {
         }),
     };
     return (
-        <div style={{ backgroundColor: "#c7cdd6" }}>
-            <RewardCard
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        name: "Branded Pen",
-                        image: "https://cdn.shopify.com/s/files/1/0692/4767/articles/fountain_pen_brand_breakdown_wood_background_square_1024x.jpeg?v=1559925214",
-                        cost: 500,
-                        stock: {
-                            left: 530,
-                            total: 1000
+        <Grid container spacing={0} backgroundColor={"#c7cdd6"}>
+            <Grid item xs={4}>
+                <RewardCard
+                    {...Object.assign({}, baseObj, {
+                        content: {
+                            name: "Branded Pen",
+                            image: "https://cdn.shopify.com/s/files/1/0692/4767/articles/fountain_pen_brand_breakdown_wood_background_square_1024x.jpeg?v=1559925214",
+                            cost: 500,
+                            stock: {
+                                left: 530,
+                                total: 1000
+                            },
+                        }
+                    })}
+                />
+            </Grid>
+            <Grid item xs={4}>
+                <RewardCard
+                    {...Object.assign({}, baseObj, {
+                        content: {
+                            name: "Branded Mug",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi57-E_KehoAoGN1-WQhwvD1C4ZQ_S1nun60I2wF4YIA&s",
+                            cost: 750,
+                            stock: {
+                                left: 490,
+                                total: 500
+                            },
+                        }
+                    })}
+                />
+            </Grid>
+            <Grid item xs={4}>
+                <RewardCard
+                    {...Object.assign({}, baseObj, {
+                        content: {
+                            name: "Branded T-shirt",
+                            image: "https://images.meesho.com/images/products/9467959/0178a_512.jpg",
+                            cost: 900,
+                            stock: {
+                                left: 130,
+                                total: 250
+                            },
                         },
-                    }
-                })}
-            />
-            <RewardCard
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        name: "Branded Mug",
-                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi57-E_KehoAoGN1-WQhwvD1C4ZQ_S1nun60I2wF4YIA&s",
-                        cost: 750,
-                        stock: {
-                            left: 490,
-                            total: 500
+                        asEmphasis: ""
+                    })}
+                />
+            </Grid>
+            <Grid item xs={4}>
+                <RewardCard
+                    {...Object.assign({}, baseObj, {
+                        content: {
+                            name: "Gift Voucher 500",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKWwSxxZ9aQ8i9SGKPDAglh3Zs7l_va5PtmDssQRLv&s",
+                            cost: 1000,
+                            stock: {
+                                left: 0,
+                                total: 1000
+                            },
                         },
-                    }
-                })}
-            />
-            <RewardCard
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        name: "Branded T-shirt",
-                        image: "https://images.meesho.com/images/products/9467959/0178a_512.jpg",
-                        cost: 900,
-                        stock: {
-                            left: 130,
-                            total: 250
+                        asEmphasis: "soldout",
+                        withColor: {
+                            textColor: "#fffff",
+                            accentColor: "#AD2929",
+                            backgroundColor: "#E8E8E8",
                         },
-                    },
-                    asEmphasis: ""
-                })}
-            />
-            <RewardCard
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        name: "Gift Voucher 500",
-                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKWwSxxZ9aQ8i9SGKPDAglh3Zs7l_va5PtmDssQRLv&s",
-                        cost: 1000,
-                        stock: {
-                            left: 0,
-                            total: 1000
+                    })}
+                />
+            </Grid>
+            <Grid item xs={4}>
+                <RewardCard
+                    {...Object.assign({}, baseObj, {
+                        content: {
+                            name: "Gift Voucher 1000",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKWwSxxZ9aQ8i9SGKPDAglh3Zs7l_va5PtmDssQRLv&s",
+                            cost: 1500,
+                            stock: {
+                                left: 9,
+                                total: 100
+                            },
+                        }
+                    })}
+                />
+            </Grid>
+            <Grid item xs={4}>
+                <RewardCard
+                    {...Object.assign({}, baseObj, {
+                        content: {
+                            name: "Gift Voucher 5000",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi57-E_KehoAoGN1-WQhwvD1C4ZQ_S1nun60I2wF4YIA&s",
+                            cost: 2500,
+                            stock: {
+                                left: 0,
+                                total: 1000
+                            },
                         },
-                    },
-                    asEmphasis: "soldout",
-                    withColor: {
-                        textColor: "#fffff",
-                        accentColor: "#AD2929",
-                        backgroundColor: "#E8E8E8",
-                    },
-                })}
-            />
-            <RewardCard
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        name: "Gift Voucher 1000",
-                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKWwSxxZ9aQ8i9SGKPDAglh3Zs7l_va5PtmDssQRLv&s",
-                        cost: 1500,
-                        stock: {
-                            left: 9,
-                            total: 100
+                        asEmphasis: "soldout",
+                        withColor: {
+                            textColor: "#fffff",
+                            accentColor: "#AD2929",
+                            backgroundColor: "#E8E8E8",
                         },
-                    }
-                })}
-            />
-            <RewardCard
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        name: "Gift Voucher 5000",
-                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi57-E_KehoAoGN1-WQhwvD1C4ZQ_S1nun60I2wF4YIA&s",
-                        cost: 2500,
-                        stock: {
-                            left: 0,
-                            total: 1000
-                        },
-                    },
-                    asEmphasis: "soldout",
-                    withColor: {
-                        textColor: "#fffff",
-                        accentColor: "#AD2929",
-                        backgroundColor: "#E8E8E8",
-                    },
-                })}
-            />
-            <RewardCard
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        name: "Vivo V23",
-                        image: "https://image.shutterstock.com/image-photo/bangkok-thailand-vivo-launch-new-260nw-1454610803.jpg",
-                        cost: 5000,
-                        stock: {
-                            left: 19,
-                            total: 20
-                        },
-                    }
-                })}
-            />
-            <RewardCard
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        name: "One Plus Nord",
-                        image: "https://image.shutterstock.com/image-photo/bangkok-thailand-vivo-launch-new-600w-1836683437.jpg",
-                        cost: 10000,
-                        stock: {
-                            left: 4,
-                            total: 10
-                        },
-                    }
-                })}
-            />
-            <RewardCard
-                {...Object.assign({}, baseObj, {
-                    content: {
-                        name: "Yamaha FZ16 Bike",
-                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-                        cost: 2000,
-                        stock: {
-                            left: 1,
-                            total: 1
-                        },
-                    }
-                })}
-            />
-        </div>
+                    })}
+                />
+            </Grid>
+            <Grid item xs={4}>
+                <RewardCard
+                    {...Object.assign({}, baseObj, {
+                        content: {
+                            name: "Vivo V23",
+                            image: "https://image.shutterstock.com/image-photo/bangkok-thailand-vivo-launch-new-260nw-1454610803.jpg",
+                            cost: 5000,
+                            stock: {
+                                left: 19,
+                                total: 20
+                            },
+                        }
+                    })}
+                />
+            </Grid>
+            <Grid item xs={4}>
+                <RewardCard
+                    {...Object.assign({}, baseObj, {
+                        content: {
+                            name: "One Plus Nord",
+                            image: "https://image.shutterstock.com/image-photo/bangkok-thailand-vivo-launch-new-600w-1836683437.jpg",
+                            cost: 10000,
+                            stock: {
+                                left: 4,
+                                total: 10
+                            },
+                        }
+                    })}
+                />
+            </Grid>
+            <Grid item xs={4}>
+                <RewardCard
+                    {...Object.assign({}, baseObj, {
+                        content: {
+                            name: "Yamaha FZ16 Bike",
+                            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
+                            cost: 2000,
+                            stock: {
+                                left: 1,
+                                total: 1
+                            },
+                        }
+                    })}
+                />
+            </Grid>
+        </Grid >
     );
 };
 export const MultipleRewardCard = MultipleRewardCardTemplate.bind({});
