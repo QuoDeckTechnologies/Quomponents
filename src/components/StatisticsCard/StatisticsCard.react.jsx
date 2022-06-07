@@ -16,7 +16,11 @@ StatisticsCard.propTypes = {
     /**
     StatisticsCard can recieve content as props
     */
-    content: PropTypes.object,
+    content: PropTypes.shape({
+        title: PropTypes.string,
+        icon:PropTypes.string,
+        value:PropTypes.string,
+    }).isRequired,
     /**
     Use for rounded corners
     */
@@ -61,10 +65,6 @@ StatisticsCard.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
-    /**
-    Use to enable/disable the component
-    */
-    isDisabled: PropTypes.bool,
 };
 
 StatisticsCard.defaultProps = {
@@ -81,7 +81,6 @@ StatisticsCard.defaultProps = {
     withColor: null,
     withAnimation: null,
     isHidden: false,
-    isDisabled: false,
 };
 function getColors(colors) {
     let colorStyle = {
@@ -134,10 +133,10 @@ export default function StatisticsCard(props) {
                     <i className={`qui-statistics-card-icon ${content?.icon}`}
                         style={colors?.accentColors}>
                     </i>
-                    <h1 className={props.content?.value.length >= 7 ? "qui-statistics-card-numbers" : "qui-statistics-card-number"} style={colors?.textColors}>
+                    <h1 className={props.content?.value.length >= 7 ? "qui-statistics-card-values" : "qui-statistics-card-value"} style={colors?.textColors}>
                         {content?.value}
                     </h1>
-                    <h3 className="qui-statistics-card-players" style={colors?.textColors}>
+                    <h3 className={props.content?.title.length >= 7 ? "qui-statistics-card-titles" : "qui-statistics-card-title"} style={colors?.textColors}>
                         {content?.title}
                     </h3>
                 </>

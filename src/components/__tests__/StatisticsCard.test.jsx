@@ -20,7 +20,7 @@ describe("StatisticsCard", () => {
         component = shallow(
             <StatisticsCard
                 content={{
-                    title: "players",
+                    title: "play",
                     icon: "fa fa-home",
                     value: "2222"
                 }}
@@ -144,25 +144,13 @@ describe("StatisticsCard", () => {
         });
         expect(component.exists()).toBe(true);
     });
-
-    it("should render correctly when passed isDisabled props is false", () => {
-        component.setProps({
-            isDisabled: false,
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isDisabled props is true", () => {
-        component.setProps({
-            isDisabled: true,
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when set value in content props properly",
+    
+    it("should render correctly when set value and title in content props properly",
         () => {
             const component = renderer.create(<StatisticsCard
                 content={{
-                    value: "202,0202"
+                    value: "202,0202",
+                    title:"playersIcon"
                 }}
             />)
         });
