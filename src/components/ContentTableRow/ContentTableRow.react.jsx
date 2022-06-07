@@ -200,6 +200,7 @@ export default function ContentTableRow(props) {
             <div className="qui-content-table-row-action-menu">
               <ActionMenu
                 {...props}
+                withTranslation={null}
                 content={tObj ? tObj.menuData : content?.menuData}
                 withColor={{ backgroundColor: "#ffffff" }}
                 withAnimation={{
