@@ -3,10 +3,6 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
-// Import from Config
-// -------------------------------------
-
-//--------------------------------------
 // Import Components
 // -------------------------------------
 import HCardWithButton from "../HCardWithButton/HCardWithButton.react";
@@ -20,9 +16,6 @@ describe("HCardWithButton", () => {
   const dictionary = JSON.stringify({
     hi: {
       hCardWithButton: {
-        title: "बेलून बर्स्ट",
-        description:
-          "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
         buttonText: "प्रयत्न करें",
       },
     },
@@ -144,7 +137,7 @@ describe("HCardWithButton", () => {
           "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
         buttonText: "try game",
         checked: true,
-        backgroundImage: { id: "background-image", extention: "" },
+        image: { id: "background-image", extention: "" },
       },
       imageLibrary: [
         {

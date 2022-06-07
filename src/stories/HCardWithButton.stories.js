@@ -4,9 +4,6 @@ import HCardWithButton from "../components/HCardWithButton/HCardWithButton.react
 const dictionary = JSON.stringify({
   hi: {
     hCardWithButton: {
-      title: "बेलून बर्स्ट",
-      description:
-        "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
       buttonText: "प्रयत्न करें",
     },
   },
@@ -98,8 +95,11 @@ export default {
   },
   parameters: {
     componentSubtitle:
-      "Displays a basic HCardWithButton for general-purpose use",
+      "Displays a basic HCardWithButton and HCardWithButtonWithoutButton for general-purpose use.",
     a11y: { disable: true },
+    docs: {
+      iframeHeight: 500,
+    },
   },
 };
 
@@ -115,7 +115,7 @@ Default.args = {
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",
     checked: true,
-    backgroundImage: { id: "background-image", extention: "" },
+    image: { id: "background-image", extention: "" },
   },
   imageLibrary: [
     {
@@ -157,10 +157,10 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// HCard without background image 
+// HCard without background image
 // -------------------------------------------------------------
-export const HCardWithoutBackgroundImage = Template.bind({});
-HCardWithoutBackgroundImage.args = {
+export const HCardWithoutImage = Template.bind({});
+HCardWithoutImage.args = {
   ...Default.args,
   content: {
     title: "BALLOON BURST",
@@ -168,14 +168,14 @@ HCardWithoutBackgroundImage.args = {
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",
     checked: true,
-    backgroundImage: { id: "background-", extention: "" },
+    image: { id: "background-", extention: "" },
   },
 };
-HCardWithoutBackgroundImage.parameters = {
+HCardWithoutImage.parameters = {
   docs: {
     source: {
       code: `<HCardWithButton {...${JSON.stringify(
-        HCardWithoutBackgroundImage.args,
+        HCardWithoutImage.args,
         null,
         2
       )}}/>`,
@@ -194,7 +194,7 @@ UncheckedHCardWithButton.args = {
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",
     checked: false,
-    backgroundImage: { id: "background-", extention: "" },
+    image: { id: "background-", extention: "" },
   },
 };
 UncheckedHCardWithButton.parameters = {

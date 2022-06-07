@@ -19,11 +19,11 @@ HCardWithButton.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  HCard component text has to be in content props.
+  HCardWithButton component data has to be in content props.
   */
   content: PropTypes.object,
   /**
-  H Card can set background image from imageLibrary array
+  HCardWithButton can set image from imageLibrary array
   */
   imageLibrary: PropTypes.array,
   /**
@@ -31,12 +31,22 @@ HCardWithButton.propTypes = {
   */
   asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
   /**
-  Use for rounded corners or circular icon button 
+  Use for rounded corners or circular button 
   */
   isCircular: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
+  /**
+  Use to define standard component type
+  */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
   /**
   Use to float the component in parent container
   */
@@ -141,21 +151,15 @@ export default function HCardWithButton(props) {
   //-------------------------------------------------------------------
   // 5. Get translation of the component
   //-------------------------------------------------------------------
-  let cardContent = {};
   let tObj = getTranslation(props.withTranslation);
-  if (tObj) {
-    cardContent = { ...tObj };
-  } else {
-    cardContent = { ...content };
-  }
   //-------------------------------------------------------------------
   // 6. Function to set image of the card
   //-------------------------------------------------------------------
   const getBackground = () => {
-    if (content?.backgroundImage) {
+    if (content?.image) {
       return {
         backgroundImage: `url(${resolveImage(
-          content?.backgroundImage.id,
+          content?.image.id,
           imageLibrary
         )})`,
       };
@@ -175,7 +179,6 @@ export default function HCardWithButton(props) {
         className="qui-h-card-container"
         style={{
           backgroundColor: withColor?.backgroundColor,
-          color: withColor?.textColor,
         }}
         onClick={handleClick}
       >
@@ -192,22 +195,40 @@ export default function HCardWithButton(props) {
             className="qui-h-card-checkbox-container"
             style={{ backgroundColor: withColor?.accentBackgroundColor }}
           >
-            <i
-              className={
-                content?.checked ? "fas fa-check-square" : "far fa-square"
-              }
-              style={{ color: withColor?.accentColor }}
-            ></i>
+            {content?.checked && (
+              <i
+                className="fas fa-check-square"
+                style={{ color: withColor?.accentColor }}
+              ></i>
+            )}
           </div>
         </div>
         <div className="qui-h-card-text-container">
           <div className="qui-h-card-text">
-            <h4>{cardContent?.title}</h4>
-            <p>{cardContent?.description}</p>
+            <h4
+              style={{
+                color: withColor?.textColor,
+              }}
+            >
+              {content?.title}
+            </h4>
+            <p
+              style={{
+                color: withColor?.textColor,
+              }}
+            >
+              {content?.description}
+            </p>
           </div>
           <Button
             {...props}
-            content={cardContent?.buttonText}
+            content={
+              tObj
+                ? tObj.buttonText
+                : content?.buttonText
+                ? content?.buttonText
+                : "click here"
+            }
             isFluid={false}
             withTranslation={null}
             withColor={{
