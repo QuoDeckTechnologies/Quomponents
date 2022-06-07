@@ -150,7 +150,6 @@ export default function RewardCard(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation)
-        contentName = tObj.name
         soldoutText = tObj.soldout
         leftText = tObj.left
     }

@@ -5,14 +5,12 @@ import Grid from '@mui/material/Grid';
 const dictionary = JSON.stringify({
     hi: {
         RewardCard: {
-            name: "ब्रांडेड पेन",
             soldout: "बिक चुका है!",
             left: "शेष"
         }
     },
     en: {
         RewardCard: {
-            name: "Branded Pen",
             soldout: "SOLD OUT!",
             left: "left"
         }
