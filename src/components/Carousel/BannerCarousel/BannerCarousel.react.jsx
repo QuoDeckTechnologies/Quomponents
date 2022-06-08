@@ -10,7 +10,6 @@ import {
     getQuommons,
 } from "../../../common/javascripts/helpers";
 
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./BannerCarousel.scss";
@@ -38,14 +37,6 @@ BannerCarousel.propTypes = {
         content: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
-    /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
 
 };
 

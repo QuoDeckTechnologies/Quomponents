@@ -115,8 +115,8 @@ export default function SquareCarousel(props) {
                             <div
                                 className={`qui-square-slide`}
                             >
-                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick}
-/>
+                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} withTranslation={props.withTranslation}
+                                />
                             </div>
                         </div>
                     );

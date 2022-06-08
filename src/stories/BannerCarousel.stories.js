@@ -5,7 +5,7 @@ import BackgroundImage from "../components/Carousel/Image.png"
 const dictionary = JSON.stringify({
     hi: {
         loading: "बस एक मिनट...",
-        bannercard: { header: "बातचीत कक्ष", content: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
+        bannercard: { header: "", content: "" },
         ribbon: {
             new: "नया",
             restricted: "प्रतिबंधित",
@@ -68,11 +68,6 @@ let dataprops = {
         duration: 0.5,
         delay: 0,
     },
-    withTranslation: {
-        lang: "en",
-        tgt: "button",
-        dictionary: dictionary,
-    },
     isDisabled: false,
     isHidden: false
 }
@@ -100,7 +95,12 @@ Default.args = {
         content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
         props: {
             ...dataprops,
-        }
+        },
+        withTranslation: {
+            lang: "en",
+            tgt: "bannercard",
+            dictionary: dictionary,
+        },
     },
     {
         image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",

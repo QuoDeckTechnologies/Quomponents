@@ -1,14 +1,14 @@
 import React from "react";
 import HtmlCarousel from "../components/Carousel/HtmlCarousel/HtmlCarousel.react";
+
 const dictionary = JSON.stringify({
     hi: {
-        htmlCarousel: {
-            tag: {
-                new: "नया",
-                restricted: "प्रतिबंधित",
-                premium: "अधिमूल्य",
-                free: "नि: शुल्क"
-            }
+        bannercard: { header: "", content: "" },
+        ribbon: {
+            new: "नया",
+            restricted: "प्रतिबंधित",
+            premium: "अधिमूल्य",
+            free: "नि: शुल्क"
         }
     },
 });
@@ -97,7 +97,7 @@ Default.args = {
         }
     }],
     withTranslation: {
-        lang: "hi",
+        lang: "en",
         tgt: "htmlCarousel",
         dictionary: dictionary,
     },
@@ -106,6 +106,51 @@ Default.parameters = {
     docs: {
         source: {
             code: `<HtmlCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// TranslatedHtmlCarousel
+// -------------------------------------------------------------
+export const TranslatedHtmlCarousel = Template.bind({});
+TranslatedHtmlCarousel.args = {
+    content: [{
+        image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+        content: "This is HtmlCarousel, Imported from banner card.",
+        tag: "new",
+        props: {
+            ...dataprops,
+            asVariant: "primary",
+        }
+    },
+    {
+        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+        tag: "premium",
+        content: "This is HtmlCarousel, Imported from banner card.",
+        props: {
+            ...dataprops,
+            asVariant: "secondary",
+        }
+    },
+    {
+        image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+        tag: "restricted",
+        content: "This is HtmlCarousel, Imported from banner card.",
+        props: {
+            ...dataprops,
+            asVariant: "warning",
+        }
+    }],
+    withTranslation: {
+        lang: "hi",
+        tgt: "htmlCarousel",
+        dictionary: dictionary,
+    },
+};
+TranslatedHtmlCarousel.parameters = {
+    docs: {
+        source: {
+            code: `<HtmlCarousel {...${JSON.stringify(TranslatedHtmlCarousel.args, null, 2)}}/>`,
         },
     },
 };

@@ -9,6 +9,17 @@ import SquareCarousel from '../Carousel/SquareCarousel/SquareCarousel.react'
 
 describe('SquareCarousel', () => {
     let component, content;
+    const dictionary = JSON.stringify({
+        hi: {
+            bannercard: { header: "", content: "" },
+            ribbon: {
+                new: "नया",
+                restricted: "प्रतिबंधित",
+                premium: "अधिमूल्य",
+                free: "नि: शुल्क"
+            }
+        },
+    });
     content = [{
         image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
         tag: "new",
@@ -29,4 +40,16 @@ describe('SquareCarousel', () => {
         () => {
             expect(component.exists()).toBe(true);
         });
+    it("should render translation  with withTranslation prop with no purpose passed ", () => {
+        component.setProps({
+            data: {
+                purpose: "",
+            },
+            withTranslation: {
+                lang: "hi",
+                tgt: "bannercard",
+                dictionary: dictionary,
+            },
+        });
+    });
 })

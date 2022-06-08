@@ -1,7 +1,17 @@
 import React from "react";
 import SquareCarousel from "../components/Carousel/SquareCarousel/SquareCarousel.react";
 
-
+const dictionary = JSON.stringify({
+    hi: {
+        bannercard: { header: "", content: "" },
+        ribbon: {
+            new: "नया",
+            restricted: "प्रतिबंधित",
+            premium: "अधिमूल्य",
+            free: "नि: शुल्क"
+        }
+    },
+});
 export default {
     title: "Design System/Carousel/SquareCarousel",
     component: SquareCarousel,
@@ -103,12 +113,70 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "bannercard",
+        dictionary: dictionary,
+    },
 
 };
 Default.parameters = {
     docs: {
         source: {
             code: `<SquareCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// TranslatedSquareCarousel
+// -------------------------------------------------------------
+export const TranslatedSquareCarousel = Template.bind({});
+TranslatedSquareCarousel.args = {
+    content: [{
+        header: "Negotiation Room",
+        content: "Play and win the competition to win Flipkart vouchers.",
+        image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
+        tag: "new",
+        props: {
+            ...dataprops,
+            asVariant: "secondary"
+        }
+    },
+    {
+        image: "https://i.pinimg.com/564x/d7/eb/54/d7eb54f1760884ebea92519ac653aa19.jpg",
+        tag: "premium",
+        header: "ਗੱਲਬਾਤ ਦਾ ਕਮਰਾ",
+        content: "Flipkart ਵਾਊਚਰ ਹਾਸਲ ਕਰਨ ਲਈ ਮੁਕਾਬਲਾ ਖੇਡੋ ਅਤੇ ਜਿੱਤੋ। ",
+        props: {
+            ...dataprops,
+        }
+    },
+    {
+        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+        tag: "restricted",
+        header: "निगोशिएशन रूम",
+        content: "फ्लिपकार्ट व्हाउचर मिळवण्यासाठी स्पर्धा खेळा आणि जिंका.",
+        props: {
+            ...dataprops,
+        }
+    }],
+
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "bannercard",
+        dictionary: dictionary,
+    },
+
+};
+TranslatedSquareCarousel.parameters = {
+    docs: {
+        source: {
+            code: `<SquareCarousel {...${JSON.stringify(TranslatedSquareCarousel.args, null, 2)}}/>`,
         },
     },
 };

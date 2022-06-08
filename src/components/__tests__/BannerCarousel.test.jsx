@@ -6,9 +6,9 @@ import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import PortraitCarousel from '../Carousel/PortraitCarousel/PortraitCarousel.react'
+import BannerCarousel from '../Carousel/BannerCarousel/BannerCarousel.react'
 
-describe('PortraitCarousel', () => {
+describe('BannerCarousel', () => {
     let component, content;
     const dictionary = JSON.stringify({
         hi: {
@@ -26,52 +26,33 @@ describe('PortraitCarousel', () => {
         tag: "new",
         header: "Component",
         content: "subtitle",
-        selected: true,
     }]
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
-            <PortraitCarousel
+            <BannerCarousel
                 content={content}
                 onClick={() => console.log("Tesing Carousel")}
             />
         );
     });
-    it("should render correctly without throwing error",
-        () => {
-            expect(component.exists()).toBe(true);
-        });
-    it('should pass conditional true when the slide is selected {true} from the props ', () => {
+    it("should render correctly without throwing error", () => {
+        expect(component.exists()).toBe(true);
+    });
+    it('should render correctly when content passed ', () => {
         component.setProps({
             content: [{
                 image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
                 tag: "new",
                 header: "Component",
                 content: "subtitle",
-                selected: true,
-                props: {
-                    asVariant: "primary",
-                }
             }, {
                 image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
                 tag: "new",
                 header: "Component",
                 content: "subtitle",
-                selected: false,
-                props: {
-                    asVariant: "primary",
-                }
             }]
         })
-        expect(component.find(".qui-portrait-checkbox").props().children.props.className).toBe("fas fa-check-square")
-    });
-    it('should render and handle click event slickPrev on previous arrows', () => {
-        const wrapper = shallow(<PortraitCarousel onClick={() => console.log("Testing SlickPrev")} />);
-        wrapper.find(".qui-portrait-slick-prev").simulate('click');
-    });
-    it('should render and handle click event slickNext on next arrow', () => {
-        const wrapper = shallow(<PortraitCarousel onClick={() => console.log("Testing slickNext")} />);
-        wrapper.find(".qui-portrait-slick-next").simulate('click');
     });
     it("should render translation  with withTranslation prop with no purpose passed ", () => {
         component.setProps({

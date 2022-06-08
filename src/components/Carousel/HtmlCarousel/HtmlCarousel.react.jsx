@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
     getQuommons,
-    getTranslation,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -33,15 +32,6 @@ HtmlCarousel.propTypes = {
         content: PropTypes.string,
         props: PropTypes.object
     })).isRequired,
-
-    /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
     /**
     Button component must have the onClick function passed as props
     */
@@ -63,19 +53,6 @@ export default function HtmlCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
     let quommonClasses = getQuommons(props, "html-carousel");
-    //-------------------------------------------------------------------
-    // Translate the text objects in case their is a dictionary provided
-    //-------------------------------------------------------------------
-    let ribbonText = content?.tag;
-    if (
-        props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        let tobj = getTranslation(props.withTranslation, "ribbon");
-        // ribbonText = tobj[content.tag] ? tobj[content.tag] : content.tag;
-        console.log(tobj)
-    }
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -105,7 +82,7 @@ export default function HtmlCarousel(props) {
                         <div className="qui-html-slide-container"
                             key={"slider-" + index + Math.random()}>
                             <div className={`qui-html-slide`}>
-                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
+                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} withTranslation={props.withTranslation} />
                             </div>
                         </div>
                     );

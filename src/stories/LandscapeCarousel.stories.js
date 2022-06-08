@@ -1,7 +1,17 @@
 import React from "react";
 import LandscapeCarousel from "../components/Carousel/LandscapeCarousel/LandscapeCarousel.react";
 
-
+const dictionary = JSON.stringify({
+    hi: {
+        bannercard: { header: "", content: "" },
+        ribbon: {
+            new: "नया",
+            restricted: "प्रतिबंधित",
+            premium: "अधिमूल्य",
+            free: "नि: शुल्क"
+        }
+    },
+});
 export default {
     title: "Design System/Carousel/LandscapeCarousel",
     component: LandscapeCarousel,
@@ -82,11 +92,58 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "bannercard",
+        dictionary: dictionary,
+    },
 };
 Default.parameters = {
     docs: {
         source: {
             code: `<LandscapeCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// TranslatedLandscapeCarousel
+// -------------------------------------------------------------
+export const TranslatedLandscapeCarousel = Template.bind({});
+TranslatedLandscapeCarousel.args = {
+    content: [{
+        image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+        header: "Balloon Burst",
+        tag: "new",
+        selected: true,
+
+    },
+    {
+        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+        tag: "premium",
+        selected: true,
+        header: "Cityscape",
+    },
+    {
+        image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+        tag: "restricted",
+        selected: false,
+        header: "GhostBuster",
+    }],
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "bannercard",
+        dictionary: dictionary,
+    },
+};
+TranslatedLandscapeCarousel.parameters = {
+    docs: {
+        source: {
+            code: `<LandscapeCarousel {...${JSON.stringify(TranslatedLandscapeCarousel.args, null, 2)}}/>`,
         },
     },
 };
@@ -190,7 +247,7 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
                 header: "Balloon Burst",
                 tag: "new",
                 selected: true,
-        
+
             },
             {
                 image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
@@ -203,7 +260,7 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
                 tag: "restricted",
                 selected: false,
                 header: "GhostBuster",
-            }], 
+            }],
         }),
     };
     return (
@@ -215,7 +272,7 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
                         header: "Balloon Burst",
                         tag: "new",
                         selected: true,
-                
+
                     },
                     {
                         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
@@ -228,7 +285,7 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
                         tag: "restricted",
                         selected: false,
                         header: "GhostBuster",
-                    }], 
+                    }],
 
                 })}
             />
@@ -238,7 +295,7 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
                         image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
                         header: "Balloon Burst",
                         selected: true,
-                
+
                     },
                     {
                         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
@@ -249,7 +306,7 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
                         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
                         selected: false,
                         header: "GhostBuster",
-                    }], 
+                    }],
 
                 })}
             />
@@ -258,7 +315,7 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
                     content: [{
                         image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
                         tag: "new",
-                
+
                     },
                     {
                         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
@@ -267,7 +324,7 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
                     {
                         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
                         tag: "restricted",
-                    }], 
+                    }],
 
                 })}
             />
