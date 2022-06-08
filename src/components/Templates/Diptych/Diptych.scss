@@ -40,7 +40,14 @@
   .qui-clicked-on-image {
     width: inherit;
   }
-  .qui-diptych-clickable-images {
+  .qui-diptych-clickable-images-split {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 1em 0em;
+    filter: drop-shadow(0px 5px 2px #a09797);
+  }
+  .qui-diptych-clickable-images-full {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -79,7 +86,14 @@
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  .qui-diptych-clickable-images {
+  .qui-diptych-clickable-images-split {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0em 0em 1em 0em;
+    filter: drop-shadow(0px 5px 2px #302f2f8e);
+  }
+  .qui-diptych-clickable-images-full {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -167,13 +181,33 @@
 
 @media only screen and (min-width: 320px) {
   .qui .qui-diptych-card {
-    .qui-clickable-image {
-      height: 12em;
+    .qui-diptych-clickable-images-split {
+      .qui-clickable-image {
+        height: 15em;
+      }
+    }
+    .qui-diptych-clickable-images-full {
+      .qui-clickable-image {
+        height: 8em;
+        .qui-image-clickable {
+          object-fit: fill;
+        }
+      }
     }
   }
   .qui-diptych-presenter-container {
-    .qui-clickable-image {
-      height: 12em;
+    .qui-diptych-clickable-images-split {
+      .qui-clickable-image {
+        height: 15em;
+      }
+    }
+    .qui-diptych-clickable-images-full {
+      .qui-clickable-image {
+        height: 9em;
+        .qui-image-clickable {
+          object-fit: fill;
+        }
+      }
     }
     .qui-text-block-area {
       font-weight: lighter;
@@ -198,8 +232,18 @@
     max-height: 16em;
   }
   .qui-diptych-presenter-container {
-    .qui-clickable-image {
-      height: 8em;
+    .qui-diptych-clickable-images-split {
+      .qui-clickable-image {
+        height: 7em;
+      }
+    }
+    .qui-diptych-clickable-images-full {
+      .qui-clickable-image {
+        height: 4em;
+        .qui-image-clickable {
+          object-fit: fill;
+        }
+      }
     }
     .qui-diptych-presenter-caption .qui-text-block-area {
       width: 14em;
@@ -213,18 +257,51 @@
     border-bottom-right-radius: 1em;
   }
   .qui .qui-diptych-card {
-    .qui-clickable-image {
-      height: 8em;
-      width: 100%;
+    .qui-diptych-clickable-images-split {
+      .qui-clickable-image {
+        height: 8em;
+        width: 100%;
+      }
+    }
+    .qui-diptych-clickable-images-full {
+      .qui-clickable-image {
+        height: 5em;
+        .qui-image-clickable {
+          object-fit: fill;
+        }
+      }
     }
   }
 }
 
 @media only screen and (min-width: 769px) {
-  .qui .qui-diptych-card .qui-clickable-image {
-    height: 5em;
+  .qui .qui-diptych-card .qui-clickable-image-container:first-child img {
+    border-top-left-radius: 0.2em;
+    border-bottom-left-radius: 0.2em;
   }
-  .qui-diptych-presenter-container .qui-clickable-image {
-    height: 5em;
+  .qui .qui-diptych-card .qui-clickable-image-container:last-child img {
+    border-top-right-radius: 0.2em;
+    border-bottom-right-radius: 0.2em;
+  }
+  .qui .qui-diptych-card .qui-diptych-clickable-images-split {
+    .qui-clickable-image {
+      height: 5em;
+    }
+  }
+  .qui .qui-diptych-card .qui-diptych-clickable-images-full .qui-clickable-image {
+    height: 3em;
+  }
+  .qui-diptych-presenter-container .qui-diptych-clickable-images-split {
+    .qui-clickable-image {
+      height: 5.5em;
+    }
+  }
+  .qui-diptych-clickable-images-full {
+    .qui-clickable-image {
+      height: 4em;
+      .qui-image-clickable {
+        object-fit: fill;
+      }
+    }
   }
 }

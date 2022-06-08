@@ -40,6 +40,13 @@ Diptych.propTypes = {
     Diptych slideId should be passed with props, to specify the slide.
     */
   slideId: PropTypes.number,
+  /**
+  Use to define standard component type
+  */
+  layout: PropTypes.oneOf([
+    "side by side split",
+    "side by side full"
+  ]),
   //=======================================
   // Quommon props
   //=======================================
@@ -108,6 +115,7 @@ Diptych.defaultProps = {
     diptych: [],
     presenter: "",
   },
+  layout: "side by side split",
   slideId: 0,
   //=======================================
   // Quommon props
@@ -117,7 +125,6 @@ Diptych.defaultProps = {
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
-
 };
 /**
 ## Notes
@@ -178,10 +185,10 @@ export default function Diptych(props) {
           {data?.image && (
             <img className="qui-diptych-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
           )}
-          <div className="qui-diptych-clickable-images">
+          <div className={`qui-diptych-clickable-images${props.layout === "side by side split" ? "-split" : "-full"}`}>
             {_.map(data?.diptych, (image, index) => {
               return (
-                <div className="qui-clickable-image-container" key={"diptych-image" + index}>
+                <div className={`qui-clickable-image-container`} key={"diptych-image" + index}>
                   <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
                 </div>
               );
@@ -217,7 +224,7 @@ export default function Diptych(props) {
             asFloated="left"
             withColor={textBlockColors} />
         </div>
-        <div className="qui-diptych-clickable-images">
+        <div className={`qui-diptych-clickable-images${props.layout === "side by side split" ? "-split" : "-full"}`}>
           {_.map(data?.diptych, (image, index) => {
             return (
               <div className="qui-clickable-image-container" key={"diptych-image" + index}>
