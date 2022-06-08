@@ -362,8 +362,7 @@ const MultipleRewardCardTemplate = (args) => {
                                 left: 130,
                                 total: 250
                             },
-                        },
-                        asEmphasis: ""
+                        }
                     })}
                 />
             </Grid>
@@ -377,7 +376,7 @@ const MultipleRewardCardTemplate = (args) => {
                             stock: {
                                 left: 0,
                                 total: 1000
-                            },
+                            }
                         },
                         asEmphasis: "soldout",
                         withColor: {
@@ -398,7 +397,7 @@ const MultipleRewardCardTemplate = (args) => {
                             stock: {
                                 left: 9,
                                 total: 100
-                            },
+                            }
                         }
                     })}
                 />
@@ -413,7 +412,7 @@ const MultipleRewardCardTemplate = (args) => {
                             stock: {
                                 left: 0,
                                 total: 1000
-                            },
+                            }
                         },
                         asEmphasis: "soldout",
                         withColor: {
@@ -434,7 +433,7 @@ const MultipleRewardCardTemplate = (args) => {
                             stock: {
                                 left: 19,
                                 total: 20
-                            },
+                            }
                         }
                     })}
                 />
@@ -449,7 +448,7 @@ const MultipleRewardCardTemplate = (args) => {
                             stock: {
                                 left: 4,
                                 total: 10
-                            },
+                            }
                         }
                     })}
                 />
@@ -464,7 +463,7 @@ const MultipleRewardCardTemplate = (args) => {
                             stock: {
                                 left: 1,
                                 total: 1
-                            },
+                            }
                         }
                     })}
                 />
