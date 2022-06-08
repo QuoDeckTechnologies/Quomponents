@@ -161,6 +161,9 @@ AmplayfierDrawerWithOtherComponent.args = {
 };
 AmplayfierDrawerWithOtherComponent.parameters = {
   docs: {
+    description: {
+      story: "Displays AmplayfierDrawerRect wrapping other component",
+    },
     source: {
       code: `<AmplayfierDrawerRect {...${JSON.stringify(
         AmplayfierDrawerWithOtherComponent.args,
@@ -180,6 +183,9 @@ FloatedAmplayfierDrawer.args = {
 };
 FloatedAmplayfierDrawer.parameters = {
   docs: {
+    description: {
+      story: "Use to float AmplayfierDrawerRect left, right, inline or none",
+    },
     source: {
       code: `<AmplayfierDrawerRect {...${JSON.stringify(
         FloatedAmplayfierDrawer.args,
@@ -199,6 +205,9 @@ ColoredAmplayfierDrawer.args = {
 };
 ColoredAmplayfierDrawer.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<AmplayfierDrawerRect {...${JSON.stringify(
         ColoredAmplayfierDrawer.args,
@@ -222,6 +231,9 @@ AnimatedAmplayfierDrawer.args = {
 };
 AnimatedAmplayfierDrawer.parameters = {
   docs: {
+    description: {
+      story: "We can animate the appearance of AmplayfierDateBlock",
+    },
     source: {
       code: `<AmplayfierDrawerRect {...${JSON.stringify(
         AnimatedAmplayfierDrawer.args,

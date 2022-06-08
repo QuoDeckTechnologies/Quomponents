@@ -95,7 +95,7 @@ export default {
   },
   parameters: {
     componentSubtitle:
-      "Displays a basic HCardWithButton and HCardWithButtonWithoutButton for general-purpose use.",
+      "Displays a basic HCardWithButton and HCardWithoutButton for general-purpose use.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 500,
@@ -158,7 +158,7 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// HCard without background image
+// HCard without image
 // -------------------------------------------------------------
 export const HCardWithoutImage = Template.bind({});
 HCardWithoutImage.args = {
@@ -174,6 +174,9 @@ HCardWithoutImage.args = {
 };
 HCardWithoutImage.parameters = {
   docs: {
+    description: {
+      story: "Displays a HCardWithButton without image/default image",
+    },
     source: {
       code: `<HCardWithButton {...${JSON.stringify(
         HCardWithoutImage.args,
@@ -200,6 +203,9 @@ UncheckedHCardWithButton.args = {
 };
 UncheckedHCardWithButton.parameters = {
   docs: {
+    description: {
+      story: "Displays a HCardWithButton with checked props set as false",
+    },
     source: {
       code: `<HCardWithButton {...${JSON.stringify(
         UncheckedHCardWithButton.args,
@@ -226,6 +232,9 @@ ColoredHCardWithButton.args = {
 };
 ColoredHCardWithButton.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<HCardWithButton {...${JSON.stringify(
         ColoredHCardWithButton.args,
@@ -249,6 +258,9 @@ TranslatedHCardWithButton.args = {
 };
 TranslatedHCardWithButton.parameters = {
   docs: {
+    description: {
+      story: "Use to change the language that the text appears in.",
+    },
     source: {
       code: `<HCardWithButton {...${JSON.stringify(
         TranslatedHCardWithButton.args,
