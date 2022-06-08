@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
+  getTranslation,
   resolveImage,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -95,6 +96,14 @@ DosAndDonts.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
     Use to show/hide the component
   */
   isHidden: PropTypes.bool,
@@ -125,6 +134,7 @@ DosAndDonts.defaultProps = {
   asVariant: "primary",
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
   isHidden: false,
 };
 /**
@@ -137,6 +147,24 @@ DosAndDonts.defaultProps = {
 export default function DosAndDonts(props) {
   let { data, withColor, imageLibrary } = props
   const [active, setActive] = useState("none")
+
+  //-------------------------------------------------------------------
+  // Get translation of the component
+  //-------------------------------------------------------------------
+  let Dos = "DOs"
+  let Donts = "DON'Ts"
+  let Tip = "Click on the buttons above to view"
+  let tObj = null;
+  if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+  ) {
+    tObj = getTranslation(props.withTranslation);
+    Dos = tObj?.dos
+    Donts = tObj?.donts
+    Tip = tObj?.tip
+  }
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -176,7 +204,7 @@ export default function DosAndDonts(props) {
   }
   const getBackground = () => {
     return {
-      background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
+      backgroundImage: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
       backgroundSize: "cover",
     };
   };
@@ -206,10 +234,10 @@ export default function DosAndDonts(props) {
           <Choice {...props}
             options={[
               {
-                text: "DOs",
+                text: Dos,
               },
               {
-                text: "DON'Ts",
+                text: Donts,
               },
             ]}
             asSize="normal"
@@ -224,7 +252,7 @@ export default function DosAndDonts(props) {
             style={{
               color: slideHeaderColors.textColor
             }}>
-            Click on the buttons above to view
+            {Tip}
           </h3>
         )}
       </div>
