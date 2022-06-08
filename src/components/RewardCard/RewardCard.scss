@@ -28,8 +28,6 @@
 .qui .qui-reward-card-container {
     cursor: pointer;
     display: flex;
-    width: 15.625em;
-    min-height: 15.625em;
     background-color: #222a35;
     flex-direction: column;
     align-items: center;
@@ -43,7 +41,7 @@
 .qui .qui-reward-card-name {
     font-size: 1.2em;
     align-self: flex-start;
-    max-width: 24ch;
+    width: 100%;
     word-break: break-word;
     white-space: nowrap;
     overflow: hidden;
@@ -131,28 +129,63 @@
     .qui-reward-card {
         font-size: 0.3em;
     }
-}
-
-@media only screen and (min-width: 390px) {
-    .qui-reward-card {
-        font-size: 0.4em;
+    .qui .qui-reward-card-container {
+        width: 15em;
+        min-width: 17em;
+    }
+    .qui .qui-reward-card-name {
+        font-size: 1.7em;
+    }
+    .qui .qui-reward-card-stock {
+        font-size: 1.5em;
+    }
+    .qui-reward-card .qui .qui-point-container .qui-point {
+        padding-top: 0.2em;
+        padding-left: 0em;
     }
 }
 
 @media only screen and (min-width: 481px) {
     .qui-reward-card {
-        font-size: 0.55em;
+        font-size: 0.45em;
+    }
+    .qui .qui-reward-card-container {
+        width: 19em;
+    }
+    .qui .qui-reward-card-name {
+        font-size: 1.85em;
+    }
+    .qui .qui-reward-card-stock {
+        font-size: 1.45em;
     }
 }
 
 @media only screen and (min-width: 769px) {
     .qui-reward-card {
-        font-size: 0.9em;
+        font-size: 0.7em;
+    }
+    .qui .qui-reward-card-container {
+        width: 20em;
+    }
+    .qui .qui-reward-card-name {
+        font-size: 2em;
+    }
+    .qui .qui-reward-card-stock {
+        font-size: 1.55em;
     }
 }
 
 @media only screen and (min-width: 1024px) {
     .qui-reward-card {
-        font-size: 1.1em;
+        font-size: 0.85em;
+    }
+    .qui .qui-reward-card-container {
+        width: 21em;
+    }
+    .qui .qui-reward-card-name {
+        font-size: 2em;
+    }
+    .qui .qui-reward-card-stock {
+        font-size: 1.6em;
     }
 }
