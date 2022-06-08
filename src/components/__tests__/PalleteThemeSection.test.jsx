@@ -19,13 +19,33 @@ describe("PalleteThemeSection", () => {
 	actions = {
 		updateDeck: jest.fn()
 	}
-
+	const dictionary = JSON.stringify({
+		en: {
+			PalleteThemeSection: {
+				settings: "Settings",
+				pageColor: "Page Color",
+				primaryColor: "Primary Color",
+				accentColor: "Accent Color",
+				secondaryColor: "Secondary Color"
+			}
+		},
+		hi: {
+			PalleteThemeSection: {
+				settings: "समायोजन",
+				pageColor: "पृष्ठ रंग",
+				primaryColor: "प्राथमिक रंग",
+				accentColor: "स्वरोंका रंग",
+				secondaryColor: "द्वितीयक रंग"
+			}
+		}
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<PalleteThemeSection
 				actions={actions}
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
@@ -49,6 +69,17 @@ describe("PalleteThemeSection", () => {
 
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of component in hindi", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "PalleteThemeSection",
+				dictionary: dictionary,
+			},
+		});
 		expect(component.exists()).toBe(true);
 	});
 

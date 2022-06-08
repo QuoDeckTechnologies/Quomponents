@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { getQuommons } from "../../../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../../common/stylesheets/common.css";
@@ -29,6 +29,14 @@ OverlayBackground.propTypes = {
 	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
+	Use to show a translated version of the component text. Dictionary must be valid JSON. 
+	*/
+	withTranslation: PropTypes.shape({
+		lang: PropTypes.string,
+		tgt: PropTypes.string,
+		dictionary: PropTypes.string,
+	}),
+	/**
 	Use to show/hide the component
 	*/
 	isHidden: PropTypes.bool,
@@ -55,6 +63,25 @@ export default function OverlayBackground(props) {
 		"ribbon-design-menu-overlay-background-parent"
 	);
 
+	let OverlayBackground = {
+		overlayBackground: "Overlay Background",
+		setBackground: "Set",
+		removeBackground: "Remove"
+	}
+
+	//-------------------------------------------------------------------
+	// 5. Get translation of the component
+	//-------------------------------------------------------------------
+	let tObj = null;
+	if (
+		props.withTranslation?.lang &&
+		props.withTranslation.lang !== "" &&
+		props.withTranslation.lang !== "en"
+	) {
+		tObj = getTranslation(props.withTranslation);
+		OverlayBackground = tObj;
+	}
+
 	const [isImageModalOpen, setImageModalOpen] = useState(false);
 
 	function handleModalOpen() {
@@ -78,12 +105,12 @@ export default function OverlayBackground(props) {
 						<div className="qui-ribbon-menu-slide-background-section-child">
 							<div className="qui-ribbon-menu-set-remove"></div>
 							<div className="qui-ribbon-menu-label-set-remove-container">
-								<div className="qui-ribbon-menu-label-set" onClick={handleModalOpen}>Set</div>
-								<div className="qui-ribbon-menu-label-remove" onClick={removeBackground}> Remove</div>
+								<div className="qui-ribbon-menu-label-set" onClick={handleModalOpen}>{OverlayBackground.setBackground}</div>
+								<div className="qui-ribbon-menu-label-remove" onClick={removeBackground}> {OverlayBackground.removeBackground}</div>
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">Overlay Background</div>
+					<div className="qui-ribbon-menu-label-file">{OverlayBackground.overlayBackground}</div>
 				</div>
 				{isImageModalOpen &&
 					<div>

@@ -1,6 +1,26 @@
 import React from "react";
 import PalleteThemeSection from "../components/RibbonMenu/designMenu/sections/PalleteThemeSection.react";
 
+const dictionary = JSON.stringify({
+	en: {
+		PalleteThemeSection: {
+			settings: "Settings",
+			pageColor: "Page Color",
+			primaryColor: "Primary Color",
+			accentColor: "Accent Color",
+			secondaryColor: "Secondary Color"
+		}
+	},
+	hi: {
+		PalleteThemeSection: {
+			settings: "समायोजन",
+			pageColor: "पृष्ठ रंग",
+			primaryColor: "प्राथमिक रंग",
+			accentColor: "स्वरोंका रंग",
+			secondaryColor: "द्वितीयक रंग"
+		}
+	}
+});
 export default {
 	title: "Design System/RibbonMenu/RibbonDesignMenu/PalleteThemeSection",
 	component: PalleteThemeSection,
@@ -11,6 +31,16 @@ export default {
 			options: ["left", "right", "inline"],
 			table: {
 				category: "as-Flags",
+			},
+		},
+		withTranslation: {
+			table: {
+				category: "with-Params",
+				defaultValue: {
+					lang: "",
+					tgt: "",
+					dictionary: "",
+				},
 			},
 		},
 		isHidden: {
@@ -61,9 +91,14 @@ const Template = (args) => <PalleteThemeSection {...args} />;
 export const Default = Template.bind({});
 Default.args = {
 	actions: {
-		updateDeck:(value)=>{return console.log(value)}
+		updateDeck: (value) => { return console.log(value) }
 	},
-	asFloated:"left",
+	asFloated: "left",
+	withTranslation: {
+		lang: "en",
+		tgt: "PalleteThemeSection",
+		dictionary: dictionary
+	},
 	isDisabled: false,
 	isHidden: false,
 };
@@ -71,6 +106,34 @@ Default.parameters = {
 	docs: {
 		source: {
 			code: `<PalleteThemeSection {...${JSON.stringify(Default.args, null, 2)}}/>`,
+		},
+	},
+};
+
+// -------------------------------------------------------------
+// Translated PalleteThemeSection
+// -------------------------------------------------------------
+export const TranslatedPalleteThemeSection = Template.bind({});
+TranslatedPalleteThemeSection.args = {
+	...Default.args,
+	withTranslation: {
+		lang: "hi",
+		tgt: "PalleteThemeSection",
+		dictionary: dictionary
+	},
+};
+TranslatedPalleteThemeSection.parameters = {
+	docs: {
+		description: {
+			story:
+				"Use to change the language that the text appears in. To make this work for the PalleteThemeSection, add a PalleteThemeSection:{} value to the dictionary.",
+		},
+		source: {
+			code: `<PalleteThemeSection {...${JSON.stringify(
+				TranslatedPalleteThemeSection.args,
+				null,
+				2
+			)}}/>`,
 		},
 	},
 };

@@ -20,7 +20,22 @@ describe("OverlayBackground", () => {
 	deck = {
 		backgroundImage: ""
 	}
-
+	const dictionary = JSON.stringify({
+		en: {
+			OverlayBackground: {
+				overlayBackground: "Overlay Background",
+				setBackground: "Set",
+				removeBackground: "Remove"
+			}
+		},
+		hi: {
+			OverlayBackground: {
+				overlayBackground: "उपरिशायी पृष्ठभूमि",
+				setBackground: "सेट",
+				removeBackground: "निकाले"
+			}
+		}
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
@@ -28,6 +43,7 @@ describe("OverlayBackground", () => {
 				actions={actions}
 				deck={deck}
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
@@ -51,6 +67,17 @@ describe("OverlayBackground", () => {
 
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of component in hindi", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "OverlayBackground",
+				dictionary: dictionary,
+			},
+		});
 		expect(component.exists()).toBe(true);
 	});
 

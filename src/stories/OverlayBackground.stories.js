@@ -1,6 +1,22 @@
 import React from "react";
 import OverlayBackground from "../components/RibbonMenu/designMenu/sections/OverlayBackground.react";
 
+const dictionary = JSON.stringify({
+	en: {
+		OverlayBackground: {
+			overlayBackground: "Overlay Background",
+			setBackground: "Set",
+			removeBackground: "Remove"
+		}
+	},
+	hi: {
+		OverlayBackground: {
+			overlayBackground: "उपरिशायी पृष्ठभूमि",
+			setBackground: "सेट",
+			removeBackground: "निकाले"
+		}
+	}
+});
 export default {
 	title: "Design System/RibbonMenu/RibbonDesignMenu/OverlayBackground",
 	component: OverlayBackground,
@@ -11,6 +27,16 @@ export default {
 			options: ["left", "right", "inline"],
 			table: {
 				category: "as-Flags",
+			},
+		},
+		withTranslation: {
+			table: {
+				category: "with-Params",
+				defaultValue: {
+					lang: "",
+					tgt: "",
+					dictionary: "",
+				},
 			},
 		},
 		isHidden: {
@@ -61,9 +87,14 @@ const Template = (args) => <OverlayBackground {...args} />;
 export const Default = Template.bind({});
 Default.args = {
 	actions: {
-		updateDeck:(value)=>{return value}
+		updateDeck: (value) => { return value }
 	},
 	asFloated: "left",
+	withTranslation: {
+		lang: "en",
+		tgt: "OverlayBackground",
+		dictionary: dictionary,
+	},
 	isDisabled: false,
 	isHidden: false,
 };
@@ -71,6 +102,34 @@ Default.parameters = {
 	docs: {
 		source: {
 			code: `<OverlayBackground {...${JSON.stringify(Default.args, null, 2)}}/>`,
+		},
+	},
+};
+
+// -------------------------------------------------------------
+// Translated OverlayBackground
+// -------------------------------------------------------------
+export const TranslatedOverlayBackground = Template.bind({});
+TranslatedOverlayBackground.args = {
+	...Default.args,
+	withTranslation: {
+		lang: "hi",
+		tgt: "OverlayBackground",
+		dictionary: dictionary
+	},
+};
+TranslatedOverlayBackground.parameters = {
+	docs: {
+		description: {
+			story:
+				"Use to change the language that the text appears in. To make this work for the OverlayBackground, add a OverlayBackground:{} value to the dictionary.",
+		},
+		source: {
+			code: `<OverlayBackground {...${JSON.stringify(
+				TranslatedOverlayBackground.args,
+				null,
+				2
+			)}}/>`,
 		},
 	},
 };
