@@ -1,0 +1,49 @@
+/* ================================================= */
+/* CategoryCard Container Definitions */
+/* ================================================= */
+.qui .qui-category-card-container {
+    width: 20em;
+    // width: auto;
+    .pad-normal {
+        padding: 0;
+    }
+    .qui-category-card-image {
+        width: 100%;
+        height: 8em;
+    }
+    .qui-category-card-label {
+        width: 20ch;
+        color: white;
+        font-size: 1.5em;
+        font-weight: bold;
+        line-height: 1em;
+        text-align: left;
+        margin: 0.2em 0em 0.5em 1em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .qui-category-card-cost {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0.1em 0.5em 1em 1.5em;
+        align-items: center;
+        .qui-category-card-cost-icon {
+            color: blue;
+            font-size: 2.5em;
+        }
+        .qui-category-card-cost-percentage {
+            color: white;
+            padding-right: 1em;
+            font-size: 2em;
+            font-weight: 900;
+        }
+        .qui-category-card-cost-accent-line {
+            width: 6em;
+            .qui .qui-accentline {
+                border-bottom: 0.6em solid;
+            }
+        }
+    }
+}
