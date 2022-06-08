@@ -13,12 +13,29 @@ describe("VoiceoverSection", () => {
 	// Setup definitions for the test suite
 	// -------------------------------------
 	let component;
-
+	const dictionary = JSON.stringify({
+		en: {
+			VoiceoverSection: {
+				upload: "Upload",
+				copySlidesToScript: "Copy Slides to Script",
+				downloadScript: "Download Script"
+			}
+		},
+		hi: {
+			VoiceoverSection: {
+				voiceover: "पार्श्व स्वर",
+				upload: "अपलोड",
+				copySlidesToScript: "स्लाइड को स्क्रिप्ट में कॉपी करें",
+				downloadScript: "स्क्रिप्ट डाउनलोड करें"
+			}
+		}
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<VoiceoverSection
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
@@ -43,6 +60,20 @@ describe("VoiceoverSection", () => {
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
 		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of component in hindi", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "VoiceoverSection",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.find(".qui-ribbon-menu-label-file").text()).toBe("पार्श्व स्वर");
+		expect(component.find(".qui-ribbon-menu-label").text()).toBe("अपलोड");
+		expect(component.find(".qui-ribbon-menu-tool-label").at(0).text()).toBe("स्लाइड को स्क्रिप्ट में कॉपी करें");
+		expect(component.find(".qui-ribbon-menu-tool-label").at(1).text()).toBe("स्क्रिप्ट डाउनलोड करें");
 	});
 
 	it("should render correctly when passed isHidden props as false", () => {
