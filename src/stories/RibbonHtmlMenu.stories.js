@@ -1,6 +1,26 @@
 import React from "react";
 import RibbonHtmlMenu from "../components/RibbonMenu/htmlMenu//RibbonHtmlMenu.react";
 
+const dictionary = JSON.stringify({
+	en: {
+		RibbonHtmlMenu: {
+			saveExit: "Save & Exit",
+			upload: "Upload",
+			download: "Download",
+			save: "Save",
+			file: "File"
+		}
+	},
+	hi: {
+		RibbonHtmlMenu: {
+			saveExit: "सेहेजे & बाहर निकले",
+			upload: "अपलोड",
+			download: "डाउनलोड",
+			save: "सहेजें",
+			file: "फ़ाइल"
+		}
+	}
+});
 export default {
 	title: "Design System/RibbonMenu/RibbonHtmlMenu",
 	component: RibbonHtmlMenu,
@@ -11,6 +31,16 @@ export default {
 			options: ["left", "right", "inline"],
 			table: {
 				category: "as-Flags",
+			},
+		},
+		withTranslation: {
+			table: {
+				category: "with-Params",
+				defaultValue: {
+					lang: "",
+					tgt: "",
+					dictionary: "",
+				},
 			},
 		},
 		isHidden: {
@@ -61,6 +91,11 @@ const Template = (args) => <RibbonHtmlMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
 	asFloated: "left",
+	withTranslation: {
+		lang: "en",
+		tgt: "RibbonHtmlMenu",
+		dictionary: dictionary,
+	},
 	isDisabled: false,
 	isHidden: false,
 };
@@ -68,6 +103,34 @@ Default.parameters = {
 	docs: {
 		source: {
 			code: `<RibbonHtmlMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
+		},
+	},
+};
+
+// -------------------------------------------------------------
+// Translated RibbonHtmlMenu
+// -------------------------------------------------------------
+export const TranslatedRibbonHtmlMenu = Template.bind({});
+TranslatedRibbonHtmlMenu.args = {
+	...Default.args,
+	withTranslation: {
+		lang: "hi",
+		tgt: "RibbonHtmlMenu",
+		dictionary: dictionary
+	},
+};
+TranslatedRibbonHtmlMenu.parameters = {
+	docs: {
+		description: {
+			story:
+				"Use to change the language that the text appears in. To make this work for the RibbonHtmlMenu, add a RibbonHtmlMenu:{} value to the dictionary.",
+		},
+		source: {
+			code: `<RibbonHtmlMenu {...${JSON.stringify(
+				TranslatedRibbonHtmlMenu.args,
+				null,
+				2
+			)}}/>`,
 		},
 	},
 };

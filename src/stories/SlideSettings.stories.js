@@ -1,6 +1,22 @@
 import React from "react";
 import SlideSettings from "../components/RibbonMenu/homeMenu/sections/SlideSettings.react";
 
+const dictionary = JSON.stringify({
+	en: {
+		SlideSettings: {
+			settings: "Settings",
+			enableBackArrow: "Enable Back Arrow",
+			enableNextArrow: "Enable Next Arrow"
+		}
+	},
+	hi: {
+		SlideSettings: {
+			settings: 'समायोजन',
+			enableBackArrow: "वापस तीर सक्षम करें",
+			enableNextArrow: "अगला तीर सक्षम करें"
+		}
+	}
+});
 export default {
 	title: "Design System/RibbonMenu/RibbonHomeMenu/SlideSettings",
 	component: SlideSettings,
@@ -12,6 +28,16 @@ export default {
 			options: ["left", "right", "inline"],
 			table: {
 				category: "as-Flags",
+			},
+		},
+		withTranslation: {
+			table: {
+				category: "with-Params",
+				defaultValue: {
+					lang: "",
+					tgt: "",
+					dictionary: "",
+				},
 			},
 		},
 		isHidden: {
@@ -67,6 +93,11 @@ Default.args = {
 		currentSlide: 1
 	},
 	asFloated: "left",
+	withTranslation: {
+		lang: "en",
+		tgt: "SlideSettings",
+		dictionary: dictionary,
+	},
 	isDisabled: false,
 	isHidden: false,
 };
@@ -194,6 +225,33 @@ WhenAtFirstSlide.parameters = {
 		},
 		source: {
 			code: `<SlideSettings {...${JSON.stringify(Default.args, null, 2)}}/>`,
+		},
+	},
+};
+// -------------------------------------------------------------
+// Translated SlideSettings
+// -------------------------------------------------------------
+export const TranslatedSlideSettings = Template.bind({});
+TranslatedSlideSettings.args = {
+	...Default.args,
+	withTranslation: {
+		lang: "hi",
+		tgt: "SlideSettings",
+		dictionary: dictionary
+	},
+};
+TranslatedSlideSettings.parameters = {
+	docs: {
+		description: {
+			story:
+				"Use to change the language that the text appears in. To make this work for the SlideSettings, add a SlideSettings:{} value to the dictionary.",
+		},
+		source: {
+			code: `<SlideSettings {...${JSON.stringify(
+				TranslatedSlideSettings.args,
+				null,
+				2
+			)}}/>`,
 		},
 	},
 };

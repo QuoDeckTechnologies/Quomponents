@@ -14,11 +14,24 @@ describe("SaveExitSection", () => {
 	// Setup definitions for the test suite
 	// -------------------------------------
 	let component;
+	const dictionary = JSON.stringify({
+		en: {
+			SaveExitSection: {
+				saveExit: "Save & Exit"
+			}
+		},
+		hi: {
+			SaveExitSection: {
+				saveExit: "सेहेजे & बाहर निकले"
+			}
+		}
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<SaveExitSection
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
@@ -42,6 +55,17 @@ describe("SaveExitSection", () => {
 
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of component in hindi", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "SaveExitSection",
+				dictionary: dictionary,
+			},
+		});
 		expect(component.exists()).toBe(true);
 	});
 

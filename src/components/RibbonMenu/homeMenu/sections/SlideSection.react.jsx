@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { getQuommons } from "../../../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../../common/stylesheets/common.css";
@@ -38,6 +38,14 @@ SlideSection.propTypes = {
 	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
+	Use to show a translated version of the component text. Dictionary must be valid JSON. 
+	*/
+	withTranslation: PropTypes.shape({
+		lang: PropTypes.string,
+		tgt: PropTypes.string,
+		dictionary: PropTypes.string,
+	}),
+	/**
 	Use to show/hide the component
 	*/
 	isHidden: PropTypes.bool,
@@ -57,6 +65,26 @@ export default function SlideSection(props) {
 	//-------------------------------------------------------------------
 	let quommonClasses = getQuommons(props, "ribbon-menu-slide-section-parent");
 
+	let SlideSection = {
+		slide: "Slide",
+		newSlide: "New Slide",
+		duplicateSlide: "Duplicate Slide",
+		deleteSlide: "Delete Slide"
+	}
+
+	//-------------------------------------------------------------------
+	// 2. Get translation of the component
+	//-------------------------------------------------------------------
+	let tObj = null;
+	if (
+		props.withTranslation?.lang &&
+		props.withTranslation.lang !== "" &&
+		props.withTranslation.lang !== "en"
+	) {
+		tObj = getTranslation(props.withTranslation);
+		SlideSection = tObj;
+	}
+
 	// ========================= Render Function =================================
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
@@ -75,7 +103,7 @@ export default function SlideSection(props) {
 								withIcon={{ icon: "fas fa-plus" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={props.actions?.addSlide}>
-								New Slide
+								{SlideSection.newSlide}
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
@@ -95,7 +123,7 @@ export default function SlideSection(props) {
 									className="qui-ribbon-menu-slide-label"
 									onClick={props.actions?.duplicateSlide}
 								>
-									Duplicate Slide
+									{SlideSection.duplicateSlide}
 								</div>
 							</div>
 							<div className="qui-ribbon-menu-slide-section-right-content"
@@ -115,12 +143,12 @@ export default function SlideSection(props) {
 									className="qui-ribbon-menu-slide-label"
 									onClick={props.actions?.deleteSlide}
 								>
-									Delete Slide
+									{SlideSection.deleteSlide}
 								</div>
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">Slide</div>
+					<div className="qui-ribbon-menu-label-file">{SlideSection.slide}</div>
 				</div>
 			</div>
 		</div>

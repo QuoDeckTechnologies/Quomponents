@@ -14,12 +14,30 @@ describe("SaveSection", () => {
 	// Setup definitions for the test suite
 	// -------------------------------------
 	let component;
-
+	const dictionary = JSON.stringify({
+		en: {
+			SaveSection: {
+				upload: "Upload",
+				download: "Download",
+				save: "Save",
+				file: "File"
+			}
+		},
+		hi: {
+			SaveSection: {
+				upload: "अपलोड",
+				download: "डाउनलोड",
+				save: "सहेजें",
+				file: "फ़ाइल"
+			}
+		}
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<SaveSection
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
@@ -43,6 +61,17 @@ describe("SaveSection", () => {
 
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of component in hindi", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "SaveSection",
+				dictionary: dictionary,
+			},
+		});
 		expect(component.exists()).toBe(true);
 	});
 

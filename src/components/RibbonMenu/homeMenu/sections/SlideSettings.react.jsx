@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { getQuommons } from "../../../../common/javascripts/helpers";
+import { getQuommons ,getTranslation } from "../../../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../../common/stylesheets/common.css";
@@ -37,6 +37,14 @@ SlideSettings.propTypes = {
 	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
+	Use to show a translated version of the component text. Dictionary must be valid JSON. 
+	*/
+	withTranslation: PropTypes.shape({
+		lang: PropTypes.string,
+		tgt: PropTypes.string,
+		dictionary: PropTypes.string,
+	}),
+	/**
 	Use to show/hide the component
 	*/
 	isHidden: PropTypes.bool,
@@ -59,8 +67,27 @@ export default function SlideSettings(props) {
 		"ribbon-home-menu-slide-setting-section-parent"
 	);
 
+	let SlideSettings = {
+		settings: "Settings",
+		enableBackArrow: "Enable Back Arrow",
+		enableNextArrow: "Enable Next Arrow"
+	}
+
 	//-------------------------------------------------------------------
-	// 2. Toggle the state of Back and Next checkboxes
+	// 2. Get translation of the component
+	//-------------------------------------------------------------------
+	let tObj = null;
+	if (
+		props.withTranslation?.lang &&
+		props.withTranslation.lang !== "" &&
+		props.withTranslation.lang !== "en"
+	) {
+		tObj = getTranslation(props.withTranslation);
+		SlideSettings = tObj;
+	}
+
+	//-------------------------------------------------------------------
+	// 3. Toggle the state of Back and Next checkboxes
 	//-------------------------------------------------------------------
 	const [isBackChecked, setBakChecked] = useState(false);
 	const [isNextChecked, setNextChecked] = useState(false);
@@ -116,7 +143,7 @@ export default function SlideSettings(props) {
 										})
 									}}
 								>
-									Enable Back Arrow
+									{SlideSettings.enableBackArrow}
 								</div>
 							</div>
 							<div className="qui-ribbon-menu-settings-section-right-content"
@@ -151,12 +178,12 @@ export default function SlideSettings(props) {
 										})
 									}}
 								>
-									Enable Next Arrow
+									{SlideSettings.enableNextArrow}
 								</div>
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">Settings</div>
+					<div className="qui-ribbon-menu-label-file">{SlideSettings.settings}</div>
 				</div>
 			</div>
 		</div>

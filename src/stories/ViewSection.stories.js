@@ -1,6 +1,26 @@
 import React from "react";
 import ViewSection from "../components/RibbonMenu/homeMenu/sections/ViewSection.react";
 
+const dictionary = JSON.stringify({
+	en: {
+		ViewSection: {
+			view: "View",
+			sorter: "Sorter",
+			mobile: "Mobile",
+			desktop: "Desktop",
+			comments: "Comments"
+		}
+	},
+	hi: {
+		ViewSection: {
+			view: "दृश्य",
+			sorter: "छँटाईकर्ता",
+			mobile: "मोबाइल",
+			desktop: "डेस्कटॉप",
+			comments: "टिप्पणियाँ"
+		}
+	}
+});
 export default {
 	title: "Design System/RibbonMenu/RibbonHomeMenu/ViewSection",
 	component: ViewSection,
@@ -11,6 +31,16 @@ export default {
 			options: ["left", "right", "inline"],
 			table: {
 				category: "as-Flags",
+			},
+		},
+		withTranslation: {
+			table: {
+				category: "with-Params",
+				defaultValue: {
+					lang: "",
+					tgt: "",
+					dictionary: "",
+				},
 			},
 		},
 		isHidden: {
@@ -64,6 +94,11 @@ Default.args = {
 		setUserOptions: (view) => { return view }
 	},
 	asFloated: "left",
+	withTranslation: {
+		lang: "en",
+		tgt: "ViewSection",
+		dictionary: dictionary,
+	},
 	isDisabled: false,
 	isHidden: false,
 };
@@ -71,6 +106,34 @@ Default.parameters = {
 	docs: {
 		source: {
 			code: `<ViewSection {...${JSON.stringify(Default.args, null, 2)}}/>`,
+		},
+	},
+};
+
+// -------------------------------------------------------------
+// Translated ViewSection
+// -------------------------------------------------------------
+export const TranslatedViewSection = Template.bind({});
+TranslatedViewSection.args = {
+	...Default.args,
+	withTranslation: {
+		lang: "hi",
+		tgt: "ViewSection",
+		dictionary: dictionary
+	},
+};
+TranslatedViewSection.parameters = {
+	docs: {
+		description: {
+			story:
+				"Use to change the language that the text appears in. To make this work for the ViewSection, add a ViewSection:{} value to the dictionary.",
+		},
+		source: {
+			code: `<ViewSection {...${JSON.stringify(
+				TranslatedViewSection.args,
+				null,
+				2
+			)}}/>`,
 		},
 	},
 };

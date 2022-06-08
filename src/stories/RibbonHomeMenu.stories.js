@@ -1,6 +1,50 @@
 import React from "react";
 import RibbonHomeMenu from "../components/RibbonMenu/homeMenu//RibbonHomeMenu.react";
 
+const dictionary = JSON.stringify({
+	en: {
+		RibbonHomeMenu: {
+			slide: "Slide",
+			newSlide: "New Slide",
+			duplicateSlide: "Duplicate Slide",
+			deleteSlide: "Delete Slide",
+			view: "View",
+			sorter: "Sorter",
+			mobile: "Mobile",
+			desktop: "Desktop",
+			comments: "Comments",
+			settings: "Settings",
+			enableBackArrow: "Enable Back Arrow",
+			enableNextArrow: "Enable Next Arrow",
+			saveExit: "Save & Exit",
+			upload: "Upload",
+			download: "Download",
+			save: "Save",
+			file: "File"
+		}
+	},
+	hi: {
+		RibbonHomeMenu: {
+			slide: "स्लाइड",
+			newSlide: "नई स्लाइड",
+			duplicateSlide: "स्लाइड प्रतिलिपि करे",
+			deleteSlide: "स्लाइड हटाए",
+			view: "दृश्य",
+			sorter: "छँटाईकर्ता",
+			mobile: "मोबाइल",
+			desktop: "डेस्कटॉप",
+			comments: "टिप्पणियाँ",
+			settings: 'समायोजन',
+			enableBackArrow: "वापस तीर सक्षम करें",
+			enableNextArrow: "अगला तीर सक्षम करें",
+			saveExit: "सेहेजे & बाहर निकले",
+			upload: "अपलोड",
+			download: "डाउनलोड",
+			save: "सहेजें",
+			file: "फ़ाइल"
+		}
+	}
+});
 export default {
 	title: "Design System/RibbonMenu/RibbonHomeMenu",
 	component: RibbonHomeMenu,
@@ -11,6 +55,16 @@ export default {
 			options: ["left", "right", "inline"],
 			table: {
 				category: "as-Flags",
+			},
+		},
+		withTranslation: {
+			table: {
+				category: "with-Params",
+				defaultValue: {
+					lang: "",
+					tgt: "",
+					dictionary: "",
+				},
 			},
 		},
 		isHidden: {
@@ -72,6 +126,11 @@ Default.args = {
 		currentSlide: 1
 	},
 	asFloated: "left",
+	withTranslation: {
+		lang: "en",
+		tgt: "RibbonHomeMenu",
+		dictionary: dictionary,
+	},
 	isDisabled: false,
 	isHidden: false,
 };
@@ -79,6 +138,34 @@ Default.parameters = {
 	docs: {
 		source: {
 			code: `<RibbonHomeMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
+		},
+	},
+};
+
+// -------------------------------------------------------------
+// Translated RibbonHomeMenu
+// -------------------------------------------------------------
+export const TranslatedRibbonHomeMenu = Template.bind({});
+TranslatedRibbonHomeMenu.args = {
+	...Default.args,
+	withTranslation: {
+		lang: "hi",
+		tgt: "RibbonHomeMenu",
+		dictionary: dictionary
+	},
+};
+TranslatedRibbonHomeMenu.parameters = {
+	docs: {
+		description: {
+			story:
+				"Use to change the language that the text appears in. To make this work for the RibbonHomeMenu, add a RibbonHomeMenu:{} value to the dictionary.",
+		},
+		source: {
+			code: `<RibbonHomeMenu {...${JSON.stringify(
+				TranslatedRibbonHomeMenu.args,
+				null,
+				2
+			)}}/>`,
 		},
 	},
 };

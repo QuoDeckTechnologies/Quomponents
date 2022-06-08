@@ -23,6 +23,22 @@ describe("SlideSettings", () => {
 		content: [{}, {}, {}]
 	};
 
+	const dictionary = JSON.stringify({
+		en: {
+			SlideSettings: {
+				settings: "Settings",
+				enableBackArrow: "Enable Back Arrow",
+				enableNextArrow: "Enable Next Arrow"
+			}
+		},
+		hi: {
+			SlideSettings: {
+				settings: 'समायोजन',
+				enableBackArrow: "वापस तीर सक्षम करें",
+				enableNextArrow: "अगला तीर सक्षम करें"
+			}
+		}
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
@@ -30,6 +46,7 @@ describe("SlideSettings", () => {
 				actions={actions}
 				deck={deck}
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
@@ -53,6 +70,17 @@ describe("SlideSettings", () => {
 
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of component in hindi", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "SlideSettings",
+				dictionary: dictionary,
+			},
+		});
 		expect(component.exists()).toBe(true);
 	});
 

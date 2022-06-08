@@ -1,6 +1,24 @@
 import React from "react";
 import SaveSection from "../components/RibbonMenu/htmlMenu/sections/SaveSection.react";
 
+const dictionary = JSON.stringify({
+	en: {
+		SaveSection: {
+			upload: "Upload",
+			download: "Download",
+			save: "Save",
+			file: "File"
+		}
+	},
+	hi: {
+		SaveSection: {
+			upload: "अपलोड",
+			download: "डाउनलोड",
+			save: "सहेजें",
+			file: "फ़ाइल"
+		}
+	}
+});
 export default {
 	title: "Design System/RibbonMenu/RibbonHtmlMenu/SaveSection",
 	component: SaveSection,
@@ -10,6 +28,16 @@ export default {
 			options: ["left", "right", "inline"],
 			table: {
 				category: "as-Flags",
+			},
+		},
+		withTranslation: {
+			table: {
+				category: "with-Params",
+				defaultValue: {
+					lang: "",
+					tgt: "",
+					dictionary: "",
+				},
 			},
 		},
 		isHidden: {
@@ -60,6 +88,11 @@ const Template = (args) => <SaveSection {...args} />;
 export const Default = Template.bind({});
 Default.args = {
 	asFloated: "left",
+	withTranslation: {
+		lang: "en",
+		tgt: "SaveSection",
+		dictionary: dictionary
+	},
 	isDisabled: false,
 	isHidden: false,
 };
@@ -67,6 +100,34 @@ Default.parameters = {
 	docs: {
 		source: {
 			code: `<SaveSection {...${JSON.stringify(Default.args, null, 2)}}/>`,
+		},
+	},
+};
+
+// -------------------------------------------------------------
+// Translated SaveSection
+// -------------------------------------------------------------
+export const TranslatedSaveSection = Template.bind({});
+TranslatedSaveSection.args = {
+	...Default.args,
+	withTranslation: {
+		lang: "hi",
+		tgt: "SaveSection",
+		dictionary: dictionary
+	},
+};
+TranslatedSaveSection.parameters = {
+	docs: {
+		description: {
+			story:
+				"Use to change the language that the text appears in. To make this work for the SaveSection, add a SaveSection:{} value to the dictionary.",
+		},
+		source: {
+			code: `<SaveSection {...${JSON.stringify(
+				TranslatedSaveSection.args,
+				null,
+				2
+			)}}/>`,
 		},
 	},
 };

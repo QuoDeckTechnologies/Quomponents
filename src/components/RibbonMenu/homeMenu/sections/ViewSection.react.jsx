@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { getQuommons } from "../../../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../../common/stylesheets/common.css";
@@ -30,6 +30,14 @@ ViewSection.propTypes = {
 	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
+	Use to show a translated version of the component text. Dictionary must be valid JSON. 
+	*/
+	withTranslation: PropTypes.shape({
+		lang: PropTypes.string,
+		tgt: PropTypes.string,
+		dictionary: PropTypes.string,
+	}),
+	/**
 	Use to show/hide the component
 	*/
 	isHidden: PropTypes.bool,
@@ -52,6 +60,27 @@ export default function ViewSection(props) {
 		"ribbon-home-menu-view-section-parent"
 	);
 
+	let ViewSection = {
+		view: "View",
+		sorter: "Sorter",
+		mobile: "Mobile",
+		desktop: "Desktop",
+		comments: "Comments"
+	}
+
+	//-------------------------------------------------------------------
+	// 2. Get translation of the component
+	//-------------------------------------------------------------------
+	let tObj = null;
+	if (
+		props.withTranslation?.lang &&
+		props.withTranslation.lang !== "" &&
+		props.withTranslation.lang !== "en"
+	) {
+		tObj = getTranslation(props.withTranslation);
+		ViewSection = tObj;
+	}
+
 	function setPreview(view) {
 		props.actions.setUserOptions({ preferredView: view })
 	}
@@ -73,7 +102,7 @@ export default function ViewSection(props) {
 								withIcon={{ icon: "fas fa-filter" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("sorter") }}>
-								Sorter
+								{ViewSection.sorter}
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
@@ -89,7 +118,7 @@ export default function ViewSection(props) {
 								withIcon={{ icon: "fas fa-mobile-alt" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("mobile") }}>
-								Mobile
+								{ViewSection.mobile}
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
@@ -105,7 +134,7 @@ export default function ViewSection(props) {
 								withIcon={{ icon: "fas fa-laptop" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("desktop") }}>
-								Desktop
+								{ViewSection.desktop}
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
@@ -121,11 +150,11 @@ export default function ViewSection(props) {
 								withIcon={{ icon: "fas fa-comments" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("comments") }}>
-								Comments
+								{ViewSection.comments}
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">View</div>
+					<div className="qui-ribbon-menu-label-file">{ViewSection.view}</div>
 				</div>
 			</div>
 		</div>

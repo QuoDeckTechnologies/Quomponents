@@ -1,6 +1,24 @@
 import React from "react";
 import SlideSection from "../components/RibbonMenu/homeMenu/sections/SlideSection.react";
 
+const dictionary = JSON.stringify({
+	en: {
+		SlideSection: {
+			slide: "Slide",
+			newSlide: "New Slide",
+			duplicateSlide: "Duplicate Slide",
+			deleteSlide: "Delete Slide"
+		}
+	},
+	hi: {
+		SlideSection: {
+			slide: "स्लाइड",
+			newSlide: "नई स्लाइड",
+			duplicateSlide: "स्लाइड प्रतिलिपि करे",
+			deleteSlide: "स्लाइड हटाए"
+		}
+	}
+});
 export default {
 	title: "Design System/RibbonMenu/RibbonHomeMenu/SlideSection",
 	component: SlideSection,
@@ -12,6 +30,16 @@ export default {
 			options: ["left", "right", "inline"],
 			table: {
 				category: "as-Flags",
+			},
+		},
+		withTranslation: {
+			table: {
+				category: "with-Params",
+				defaultValue: {
+					lang: "",
+					tgt: "",
+					dictionary: "",
+				},
 			},
 		},
 		isHidden: {
@@ -70,6 +98,11 @@ Default.args = {
 		content: [{}, {}]
 	},
 	asFloated: "left",
+	withTranslation: {
+		lang: "en",
+		tgt: "SlideSection",
+		dictionary: dictionary,
+	},
 	isDisabled: false,
 	isHidden: false,
 };
@@ -105,6 +138,34 @@ SlideSectionWithOneContent.parameters = {
 		},
 		source: {
 			code: `<SlideSection {...${JSON.stringify(Default.args, null, 2)}}/>`,
+		},
+	},
+};
+
+// -------------------------------------------------------------
+// Translated SlideSection
+// -------------------------------------------------------------
+export const TranslatedSlideSection = Template.bind({});
+TranslatedSlideSection.args = {
+	...Default.args,
+	withTranslation: {
+		lang: "hi",
+		tgt: "SlideSection",
+		dictionary: dictionary
+	},
+};
+TranslatedSlideSection.parameters = {
+	docs: {
+		description: {
+			story:
+				"Use to change the language that the text appears in. To make this work for the SlideSection, add a SlideSection:{} value to the dictionary.",
+		},
+		source: {
+			code: `<SlideSection {...${JSON.stringify(
+				TranslatedSlideSection.args,
+				null,
+				2
+			)}}/>`,
 		},
 	},
 };

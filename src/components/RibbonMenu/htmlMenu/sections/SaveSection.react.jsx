@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { getQuommons } from "../../../../common/javascripts/helpers";
+import { getQuommons , getTranslation} from "../../../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../../common/stylesheets/common.css";
@@ -24,6 +24,14 @@ SaveSection.propTypes = {
 	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
+	Use to show a translated version of the component text. Dictionary must be valid JSON. 
+	*/
+	withTranslation: PropTypes.shape({
+		lang: PropTypes.string,
+		tgt: PropTypes.string,
+		dictionary: PropTypes.string,
+	}),
+	/**
 	Use to show/hide the component
 	*/
 	isHidden: PropTypes.bool,
@@ -43,22 +51,42 @@ export default function SaveSection(props) {
 	//-------------------------------------------------------------------
 	let quommonClasses = getQuommons(props, "ribbon-menu-save-section-parent");
 
+	let SaveSection = {
+		upload: "Upload",
+		download: "Download",
+		save: "Save",
+		file: "File"
+	}
+
 	//-------------------------------------------------------------------
-	// 2. Save function
+	// 2. Get translation of the component
+	//-------------------------------------------------------------------
+	let tObj = null;
+	if (
+		props.withTranslation?.lang &&
+		props.withTranslation.lang !== "" &&
+		props.withTranslation.lang !== "en"
+	) {
+		tObj = getTranslation(props.withTranslation);
+		SaveSection = tObj;
+	}
+
+	//-------------------------------------------------------------------
+	// 3. Save function
 	//-------------------------------------------------------------------
 	const handleSave = () => {
 		// Logic here
 	};
 
 	//-------------------------------------------------------------------
-	// 3. Upload function
+	// 4. Upload function
 	//-------------------------------------------------------------------
 	const handleUpload = () => {
 		// Logic here
 	};
 
 	//-------------------------------------------------------------------
-	// 4. Download function
+	// 5. Download function
 	//-------------------------------------------------------------------
 	const handleDownload = () => {
 		// Logic here
@@ -82,7 +110,7 @@ export default function SaveSection(props) {
 								withIcon={{ icon: "fas fa-file-upload" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={handleUpload}>
-								Upload
+								{SaveSection.upload}
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
@@ -98,7 +126,7 @@ export default function SaveSection(props) {
 								withIcon={{ icon: "fas fa-download" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={handleDownload}>
-								Download
+								{SaveSection.download}
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
@@ -114,11 +142,11 @@ export default function SaveSection(props) {
 								withIcon={{ icon: "far fa-file-alt" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={handleSave}>
-								Save
+								{SaveSection.save}
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">File</div>
+					<div className="qui-ribbon-menu-label-file">{SaveSection.file}</div>
 				</div>
 			</div>
 		</div>

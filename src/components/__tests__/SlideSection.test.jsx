@@ -22,7 +22,24 @@ describe("SlideSection", () => {
 	deck = {
 		content: [{}, {}]
 	};
-
+	const dictionary = JSON.stringify({
+		en: {
+			SlideSection: {
+				slide: "Slide",
+				newSlide: "New Slide",
+				duplicateSlide: "Duplicate Slide",
+				deleteSlide: "Delete Slide"
+			}
+		},
+		hi: {
+			SlideSection: {
+				slide: "स्लाइड",
+				newSlide: "नई स्लाइड",
+				duplicateSlide: "स्लाइड प्रतिलिपि करे",
+				deleteSlide: "स्लाइड हटाए"
+			}
+		}
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
@@ -30,6 +47,7 @@ describe("SlideSection", () => {
 				actions={actions}
 				deck={deck}
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
@@ -53,6 +71,17 @@ describe("SlideSection", () => {
 
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of component in hindi", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "SlideSection",
+				dictionary: dictionary,
+			},
+		});
 		expect(component.exists()).toBe(true);
 	});
 
