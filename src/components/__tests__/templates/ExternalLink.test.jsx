@@ -13,6 +13,11 @@ describe("ExternalLink", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
+    const dictionary = JSON.stringify({
+        hi: {
+          externallink: { button: "जाएँ" },
+        },
+    });
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -32,6 +37,7 @@ describe("ExternalLink", () => {
                 asFloated="left"
                 withColor={null}
                 withAnimation={null}
+                withTranslation={null}
                 isHidden={false}
                 onClick={(e) => {
                     console.log(e);
@@ -107,6 +113,18 @@ describe("ExternalLink", () => {
         component.setProps({ withAnimation: animation })
         expect(component.exists()).toBe(true);
     });
+
+    it("should render correctly when translation is used", () => {
+        component.setProps({
+          withTranslation: {
+            lang: "hi",
+            tgt: "externallink",
+            dictionary: dictionary,
+          },
+        });
+        expect(component.exists()).toBe(true);
+    });
+    
 
     it("should render correctly when passed isHidden props as false", () => {
         component.setProps({ isHidden: false })

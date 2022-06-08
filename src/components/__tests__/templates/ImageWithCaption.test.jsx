@@ -14,6 +14,12 @@ describe("ImageWithCaption", () => {
     // -------------------------------------
     let component;
 
+    const dictionary = JSON.stringify({
+        hi: {
+          imagewithcaption: { button: "जारी रखें" },
+        },
+    });
+    
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -30,6 +36,7 @@ describe("ImageWithCaption", () => {
                 asFloated="left"
                 withColor={null}
                 withAnimation={null}
+                withTranslation={null}
                 isHidden={false}
                 onClick={(e) => {
                     console.log(e);
@@ -104,6 +111,17 @@ describe("ImageWithCaption", () => {
             delay: 0,
         }
         component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when translation is used", () => {
+        component.setProps({
+          withTranslation: {
+            lang: "hi",
+            tgt: "imagewithcaption",
+            dictionary: dictionary,
+          },
+        });
         expect(component.exists()).toBe(true);
     });
 

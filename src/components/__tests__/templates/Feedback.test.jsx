@@ -13,7 +13,11 @@ describe("Feedback", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-
+    const dictionary = JSON.stringify({
+        hi: {
+          feedback: { button: "जारी रखें" },
+        },
+    });
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -27,6 +31,7 @@ describe("Feedback", () => {
                 asVariant="warning"
                 withColor={null}
                 withAnimation={null}
+                withTranslation={null}
                 isHidden={false}
                 onClick={(e) => {
                     console.log(e);
@@ -83,6 +88,17 @@ describe("Feedback", () => {
             delay: 0,
         }
         component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when translation is used", () => {
+        component.setProps({
+          withTranslation: {
+            lang: "hi",
+            tgt: "feedback",
+            dictionary: dictionary,
+          },
+        });
         expect(component.exists()).toBe(true);
     });
 

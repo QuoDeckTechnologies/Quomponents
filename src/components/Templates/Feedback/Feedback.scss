@@ -2,16 +2,14 @@
     padding: 1.5em;
     border-radius: 1em;
     min-height: 30em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    
     .qui-feedback-icon {
         border-radius: 50%;
         padding: 0.5em;
         height: 1em;
         width: 1em;
         font-size: 2em;
+        margin-top: 2em;
     }
     .qui-text-block-area {
         width: fit-content;

@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
     getAnimation,
-    getTranslation,
     getQuommons,
-    resolveImage,
+    getTranslation,
+    resolveImage
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -91,9 +91,9 @@ ImageWithCaption.propTypes = {
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
     */
     withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
     }),
     /**
     Use to enable/disable the component
@@ -119,7 +119,7 @@ ImageWithCaption.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "warning",
-    asFloated: "left",
+    asFloated:"left",
     withColor: null,
     withAnimation: null,
     withTranslation: null,
@@ -190,7 +190,6 @@ export default function ImageWithCaption(props) {
         }
     };
     const background = getBackground();
-
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -201,28 +200,27 @@ export default function ImageWithCaption(props) {
                 ...background,
                 backgroundColor: withColor?.backgroundColor,
                 backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
+                backgroundSize: "cover"
             }}
         >
-            <div className={`qui-image-with-caption-card ${quommonClasses.childClasses}`}>
+            <div className={`qui-image-with-caption-card ${quommonClasses.childClasses}`} key={"Image-with-caption" + slideId}
+            >
                 {!data?.image && (data?.title || data?.subtitle) && (
-                    <SlideHeader
-                        {...props}
+                    <SlideHeader {...props}
                         content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors} />
                 )}
-
                 {data?.image && (
                     <img className="qui-image-with-caption-image"
                         src={resolveImage(data?.image.id, imageLibrary)}
-                        alt="ImageWithCaption" />
+                        alt="image" />
                 )}
                 <TextBlock {...props}
                     key={slideId}
-                    content={data?.caption}
+                    content={props.data?.caption}
                     withColor={captionColors}
                 />
-                <Button
+                <Button 
                     content={tObj ? tObj.button : "Continue"}
                     asFloated={"inline"}
                     onClick={props.onClick}
