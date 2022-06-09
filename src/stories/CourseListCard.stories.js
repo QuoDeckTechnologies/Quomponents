@@ -4,7 +4,7 @@ import CourseListCard from "../components/CourseListCard/CourseListCard.react";
 const dictionary = JSON.stringify({
   hi: {
     courseListCard: {
-      title: "बेलून बर्स्ट",
+      name: "बेलून बर्स्ट",
       description:
         "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
       buttonText: "प्रयत्न करें",
@@ -110,12 +110,13 @@ const Template = (args) => <CourseListCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    title: "BALLOON BURST",
+    name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",
     checked: true,
-    backgroundImage: { id: "background-image", extention: "" },
+    percent: "50",
+    image: { id: "background-image", extention: "" },
   },
   imageLibrary: [
     {

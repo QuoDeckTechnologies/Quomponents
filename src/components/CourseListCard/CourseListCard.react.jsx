@@ -12,6 +12,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./CourseListCard.scss";
 import "../../common/stylesheets/overrule.scss";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 CourseListCard.propTypes = {
   //=======================================
@@ -86,7 +88,14 @@ CourseListCard.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: null,
+  content: {
+    id: "",
+    name: "",
+    description: "",
+    buttonText: "",
+    checked: true,
+    image: { id: "", extention: "" },
+  },
   imageLibrary: [],
   //=======================================
   // Quommon props
@@ -140,16 +149,18 @@ export default function CourseListCard(props) {
   // 6. Function to set image of the card
   //-------------------------------------------------------------------
   const getBackground = () => {
-    if (content?.backgroundImage) {
+    if (content?.image) {
       return {
         backgroundImage: `url(${resolveImage(
-          content?.backgroundImage.id,
+          content?.image.id,
           imageLibrary
         )})`,
       };
     }
   };
   const background = getBackground();
+
+  // const percentage = 66;
 
   // ========================= Render Function =================================
 
@@ -176,33 +187,35 @@ export default function CourseListCard(props) {
             backgroundSize: "cover",
           }}
         >
-          <div
-            className="qui-course-list-card-checkbox-container"
-            style={{ backgroundColor: withColor?.accentBackgroundColor }}
-          >
-            <i
-              className={
-                content?.checked ? "fas fa-check-square" : "far fa-square"
-              }
-              style={{ color: withColor?.accentColor }}
-            ></i>
-          </div>
+          {content?.checked && (
+            <div
+              className="qui-course-list-card-checkbox-container"
+              style={{ backgroundColor: withColor?.accentBackgroundColor }}
+            >
+              <i
+                className="fas fa-check-square"
+                style={{ color: withColor?.accentColor }}
+              ></i>
+            </div>
+          )}
         </div>
         <div className="qui-course-list-card-text-container">
           <div className="qui-course-list-card-text">
-            <h4>{cardContent?.title}</h4>
+            <h4>{cardContent?.name}</h4>
             <p>{cardContent?.description}</p>
           </div>
-          {/* <Button
-            {...props}
-            content={cardContent?.buttonText}
-            isFluid={false}
-            withTranslation={null}
-            withColor={{
-              backgroundColor: withColor?.buttonBackgroundColor,
-              textColor: withColor?.buttonTextColor,
-            }}
-          /> */}
+          <div className="qui-course-list-card-chart-container">
+            <div className="qui-course-list-card-doughnut-chart">
+              <CircularProgressbar
+                value={content?.percent}
+                strokeWidth={30}
+                styles={buildStyles({
+                  strokeLinecap: "butt",
+                })}
+              />
+            </div>
+            <p className="qui-course-list-card-percentage-completion">{`${content?.percent}%`}</p>
+          </div>
         </div>
       </div>
     </motion.div>
