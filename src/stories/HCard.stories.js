@@ -94,8 +94,7 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle:
-      "Displays a basic HCardWithButton and HCardWithoutButton for general-purpose use.",
+    componentSubtitle: "Displays a basic HCard for general-purpose use.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 500,
