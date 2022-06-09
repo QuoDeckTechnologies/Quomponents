@@ -18,9 +18,6 @@ describe("CourseListCard", () => {
     component = shallow(
       <CourseListCard
         imageLibrary={[]}
-        asEmphasis="contained"
-        isCircular={false}
-        asVariant="primary"
         asFloated="none"
         withColor={null}
         withAnimation={null}
@@ -115,7 +112,6 @@ describe("CourseListCard", () => {
         name: "BALLOON BURST",
         description:
           "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-        buttonText: "try game",
         checked: true,
         viewedPercentage: "100",
         image: { id: "background-image", extention: "" },
@@ -138,7 +134,6 @@ describe("CourseListCard", () => {
         name: "BALLOON BURST",
         description:
           "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-        buttonText: "try game",
         viewedPercentage: "100",
         checked: true,
       },

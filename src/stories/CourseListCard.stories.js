@@ -75,7 +75,6 @@ Default.args = {
     name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-    buttonText: "try game",
     checked: true,
     viewedPercentage: 80,
     image: { id: "background-image", extention: "" },
@@ -121,7 +120,6 @@ CourselistcardWithoutImage.args = {
     name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-    buttonText: "try game",
     checked: true,
     viewedPercentage: 80,
     image: { id: "background-", extention: "" },
@@ -152,7 +150,6 @@ UncheckedCourselistcard.args = {
     name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-    buttonText: "try game",
     checked: false,
     viewedPercentage: 80,
     image: { id: "background-image", extention: "" },

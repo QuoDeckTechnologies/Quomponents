@@ -2,6 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import {
   getQuommons,
   getAnimation,
@@ -11,7 +12,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./CourseListCard.scss";
 import "../../common/stylesheets/overrule.scss";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 CourseListCard.propTypes = {
@@ -82,10 +82,9 @@ CourseListCard.defaultProps = {
     id: "",
     name: "",
     description: "",
-    buttonText: "",
     checked: true,
     viewedPercentage: 80,
-    image: { id: "background-image", extention: "" },
+    image: { id: "", extention: "" },
   },
   imageLibrary: [],
   //=======================================
@@ -171,6 +170,7 @@ export default function CourseListCard(props) {
         <div className="qui-course-list-card-text-container">
           <div className="qui-course-list-card-text">
             <h4
+              className="qui-course-list-card-name"
               style={{
                 color: withColor?.textColor,
               }}
@@ -178,6 +178,7 @@ export default function CourseListCard(props) {
               {content?.name}
             </h4>
             <p
+              className="qui-course-list-card-description"
               style={{
                 color: withColor?.textColor,
               }}
