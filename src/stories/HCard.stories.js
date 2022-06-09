@@ -159,8 +159,8 @@ Default.parameters = {
 // -------------------------------------------------------------
 // HCard without image
 // -------------------------------------------------------------
-export const HCardWithoutImage = Template.bind({});
-HCardWithoutImage.args = {
+export const HcardWithoutImage = Template.bind({});
+HcardWithoutImage.args = {
   ...Default.args,
   content: {
     id: "",
@@ -172,21 +172,21 @@ HCardWithoutImage.args = {
     image: { id: "background-", extention: "" },
   },
 };
-HCardWithoutImage.parameters = {
+HcardWithoutImage.parameters = {
   docs: {
     description: {
       story: "Displays a HCard without image/default image",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(HCardWithoutImage.args, null, 2)}}/>`,
+      code: `<HCard {...${JSON.stringify(HcardWithoutImage.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
 // Unchecked HCard
 // -------------------------------------------------------------
-export const UncheckedHCard = Template.bind({});
-UncheckedHCard.args = {
+export const UncheckedHcard = Template.bind({});
+UncheckedHcard.args = {
   ...Default.args,
   content: {
     id: "",
@@ -198,21 +198,21 @@ UncheckedHCard.args = {
     image: { id: "background-", extention: "" },
   },
 };
-UncheckedHCard.parameters = {
+UncheckedHcard.parameters = {
   docs: {
     description: {
       story: "Displays a HCard with checked props set as false",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(UncheckedHCard.args, null, 2)}}/>`,
+      code: `<HCard {...${JSON.stringify(UncheckedHcard.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
 // Colored HCard
 // -------------------------------------------------------------
-export const ColoredHCard = Template.bind({});
-ColoredHCard.args = {
+export const ColoredHcard = Template.bind({});
+ColoredHcard.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#fefae0",
@@ -223,21 +223,21 @@ ColoredHCard.args = {
     buttonTextColor: "#dda15e",
   },
 };
-ColoredHCard.parameters = {
+ColoredHcard.parameters = {
   docs: {
     description: {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(ColoredHCard.args, null, 2)}}/>`,
+      code: `<HCard {...${JSON.stringify(ColoredHcard.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
 // Translated HCard
 // -------------------------------------------------------------
-export const TranslatedHCard = Template.bind({});
-TranslatedHCard.args = {
+export const TranslatedHcard = Template.bind({});
+TranslatedHcard.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
@@ -245,13 +245,13 @@ TranslatedHCard.args = {
     dictionary: dictionary,
   },
 };
-TranslatedHCard.parameters = {
+TranslatedHcard.parameters = {
   docs: {
     description: {
       story: "Use to change the language that the text appears in.",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(TranslatedHCard.args, null, 2)}}/>`,
+      code: `<HCard {...${JSON.stringify(TranslatedHcard.args, null, 2)}}/>`,
     },
   },
 };
