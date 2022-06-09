@@ -168,6 +168,9 @@ LinkWithSlideHeaderImage.args = {
 };
 LinkWithSlideHeaderImage.parameters = {
   docs: {
+    description: {
+      story: "Displays LinkWithSlide component with header image",
+    },
     source: {
       code: `<LinkwithSlide {...${JSON.stringify(
         LinkWithSlideHeaderImage.args,
@@ -216,6 +219,9 @@ LinkWithSlideBackgroundImage.args = {
 };
 LinkWithSlideBackgroundImage.parameters = {
   docs: {
+    description: {
+      story: "Displays LinkWithSlide component with background image",
+    },
     source: {
       code: `<LinkwithSlide {...${JSON.stringify(
         LinkWithSlideBackgroundImage.args,
@@ -245,6 +251,9 @@ ColoredLinkWithSlide.args = {
 };
 ColoredLinkWithSlide.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<LinkwithSlide {...${JSON.stringify(
         ColoredLinkWithSlide.args,
@@ -268,6 +277,9 @@ AnimatedLinkWithSlide.args = {
 };
 AnimatedLinkWithSlide.parameters = {
   docs: {
+    description: {
+      story: "We can animate the appearance of AmplayfierDateBlock",
+    },
     source: {
       code: `<LinkwithSlide {...${JSON.stringify(
         AnimatedLinkWithSlide.args,
@@ -291,6 +303,9 @@ TranslatedLinkWithSlide.args = {
 };
 TranslatedLinkWithSlide.parameters = {
   docs: {
+    description: {
+      story: "Use to change the language that the text appears in.",
+    },
     source: {
       code: `<LinkwithSlide {...${JSON.stringify(
         TranslatedLinkWithSlide.args,

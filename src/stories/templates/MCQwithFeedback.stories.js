@@ -170,6 +170,9 @@ SlideHeaderMcqWithFeedback.args = {
 };
 SlideHeaderMcqWithFeedback.parameters = {
   docs: {
+    description: {
+      story: "Displays MCQ with Feedback component with Slide header",
+    },
     source: {
       code: `<SlideHeaderMcqWithFeedback {...${JSON.stringify(
         SlideHeaderMcqWithFeedback.args,
@@ -182,8 +185,8 @@ SlideHeaderMcqWithFeedback.parameters = {
 // -------------------------------------------------------------
 // MCQ with Feedback and background image
 // -------------------------------------------------------------
-export const McqWithFeedbackAndBackgroundimage = Template.bind({});
-McqWithFeedbackAndBackgroundimage.args = {
+export const McqWithFeedbackAndBackgroundImage = Template.bind({});
+McqWithFeedbackAndBackgroundImage.args = {
   ...Default.args,
   data: {
     image: { id: "header-image", extention: "" },
@@ -207,15 +210,19 @@ McqWithFeedbackAndBackgroundimage.args = {
     },
     {
       id: "background-image",
-      image: "https://images.unsplash.com/photo-1536566482680-fca31930a0bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+      image:
+        "https://images.unsplash.com/photo-1536566482680-fca31930a0bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
     },
   ],
 };
-McqWithFeedbackAndBackgroundimage.parameters = {
+McqWithFeedbackAndBackgroundImage.parameters = {
   docs: {
+    description: {
+      story: "Displays MCQ with Feedback component with background image",
+    },
     source: {
       code: `<MCQwithFeedback {...${JSON.stringify(
-        McqWithFeedbackAndBackgroundimage.args,
+        McqWithFeedbackAndBackgroundImage.args,
         null,
         2
       )}}/>`,
@@ -242,6 +249,9 @@ ColoredMcqWithFeedback.args = {
 };
 ColoredMcqWithFeedback.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<ColoredMcqWithFeedback {...${JSON.stringify(
         ColoredMcqWithFeedback.args,
@@ -265,6 +275,9 @@ AnimatedMcqWithFeedback.args = {
 };
 AnimatedMcqWithFeedback.parameters = {
   docs: {
+    description: {
+      story: "We can animate the appearance of AmplayfierDateBlock",
+    },
     source: {
       code: `<AnimatedMcqWithFeedback {...${JSON.stringify(
         AnimatedMcqWithFeedback.args,
