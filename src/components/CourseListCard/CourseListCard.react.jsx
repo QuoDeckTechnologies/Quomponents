@@ -19,11 +19,11 @@ CourseListCard.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  HCard component text has to be in content props.
+  CourseListCard component text has to be in content props.
   */
   content: PropTypes.object,
   /**
-  H Card can set background image from imageLibrary array
+  CourseListCard can set background image from imageLibrary array
   */
   imageLibrary: PropTypes.array,
   //=======================================
@@ -42,7 +42,6 @@ CourseListCard.propTypes = {
     accentBackgroundColor: PropTypes.string,
     textColor: PropTypes.string,
     pathColor: PropTypes.string,
-    trailColor: PropTypes.string,
   }),
   /**
   Use to define the entry animation of the component
@@ -85,6 +84,7 @@ CourseListCard.defaultProps = {
     description: "",
     buttonText: "",
     checked: true,
+    viewedPercentage: 80,
     image: { id: "", extention: "" },
   },
   imageLibrary: [],
@@ -144,7 +144,6 @@ export default function CourseListCard(props) {
         className="qui-course-list-card-container"
         style={{
           backgroundColor: withColor?.backgroundColor,
-          color: withColor?.textColor,
         }}
         onClick={() => props.onClick(content)}
       >
@@ -171,23 +170,34 @@ export default function CourseListCard(props) {
         </div>
         <div className="qui-course-list-card-text-container">
           <div className="qui-course-list-card-text">
-            <h4>{content?.name}</h4>
-            <p>{content?.description}</p>
+            <h4
+              style={{
+                color: withColor?.textColor,
+              }}
+            >
+              {content?.name}
+            </h4>
+            <p
+              style={{
+                color: withColor?.textColor,
+              }}
+            >
+              {content?.description}
+            </p>
           </div>
-          {content?.percent && (
+          {content?.viewedPercentage && (
             <div className="qui-course-list-card-chart-container">
               <div className="qui-course-list-card-doughnut-chart">
                 <CircularProgressbar
-                  value={content.percent}
+                  value={content.viewedPercentage}
                   strokeWidth={30}
                   styles={buildStyles({
                     strokeLinecap: "butt",
                     pathColor: withColor?.pathColor,
-                    trailColor: withColor?.trailColor,
                   })}
                 />
               </div>
-              <h2 className="qui-course-list-card-percentage-completion">{`${content.percent}%`}</h2>
+              <h2 className="qui-course-list-card-percentage-completion">{`${content.viewedPercentage}%`}</h2>
             </div>
           )}
         </div>

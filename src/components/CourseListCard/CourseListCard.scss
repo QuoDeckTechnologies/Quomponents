@@ -57,17 +57,28 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
 
 .qui .qui-course-list-card-text-container h4 {
   margin: 0;
   color: #666666;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  width: 100%;
 }
 
 .qui .qui-course-list-card-text-container p {
   margin: 0.5em 0;
   font-size: 1.1em;
   color: #666666;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
 }
 
 .qui .qui-course-list-card-chart-container {
@@ -99,13 +110,13 @@
   }
   .qui .qui-course-list-card-image-container {
     height: auto;
-    width: 15em;
+    width: 10em;
   }
   .qui .qui-course-list-card-text-container h4 {
     font-size: 1em;
   }
   .qui .qui-course-list-card-text-container p {
-    font-size: 1em;
+    font-size: 0.9em;
   }
 }
 
@@ -117,6 +128,9 @@
     display: flex;
   }
   .qui .qui-course-list-card-image-container {
-    width: 25em;
+    width: 22em;
+  }
+  .qui .qui-course-list-card-text-container p {
+    font-size: 1em;
   }
 }

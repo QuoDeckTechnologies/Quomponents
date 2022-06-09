@@ -22,7 +22,6 @@ export default {
           accentBackgroundColor: "",
           textColor: "",
           pathColor: "",
-          trailColor: "",
         },
       },
     },
@@ -59,6 +58,9 @@ export default {
     componentSubtitle:
       "Displays a basic CourseListCard for general-purpose use",
     a11y: { disable: true },
+    docs: {
+      iframeHeight: 250,
+    },
   },
 };
 
@@ -75,7 +77,7 @@ Default.args = {
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",
     checked: true,
-    percent: "80",
+    viewedPercentage: 80,
     image: { id: "background-image", extention: "" },
   },
   imageLibrary: [
@@ -92,7 +94,6 @@ Default.args = {
     accentBackgroundColor: "",
     textColor: "",
     pathColor: "",
-    trailColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -122,7 +123,7 @@ CourselistcardWithoutImage.args = {
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",
     checked: true,
-    percent: "80",
+    viewedPercentage: 80,
     image: { id: "background-", extention: "" },
   },
 };
@@ -153,7 +154,7 @@ UncheckedCourselistcard.args = {
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",
     checked: false,
-    percent: "80",
+    viewedPercentage: 80,
     image: { id: "background-image", extention: "" },
   },
 };
@@ -182,8 +183,7 @@ ColoredCourselistcard.args = {
     accentColor: "#606c38",
     accentBackgroundColor: "#fefae0",
     textColor: "#bc6c25",
-    pathColor: "#00bcd4",
-    trailColor: "#3f51b5",
+    pathColor: "#606c38",
   },
 };
 ColoredCourselistcard.parameters = {
@@ -194,6 +194,32 @@ ColoredCourselistcard.parameters = {
     source: {
       code: `<CourseListCard {...${JSON.stringify(
         ColoredCourselistcard.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Animated Course List Card
+// -------------------------------------------------------------
+export const AnimatedCourselistcard = Template.bind({});
+AnimatedCourselistcard.args = {
+  ...Default.args,
+  withAnimation: {
+    animation: "fade",
+    duration: 0.5,
+    delay: 0,
+  },
+};
+AnimatedCourselistcard.parameters = {
+  docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
+    source: {
+      code: `<CourseListCard {...${JSON.stringify(
+        AnimatedCourselistcard.args,
         null,
         2
       )}}/>`,

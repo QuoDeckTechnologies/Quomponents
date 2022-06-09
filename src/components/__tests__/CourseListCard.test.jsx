@@ -101,7 +101,6 @@ describe("CourseListCard", () => {
         backgroundColor: "#ffffff",
         pathColor: "#ffffff",
         textColor: "#ffffff",
-        trailColor: "#ffffff",
         accentColor: "#ffffff",
         accentBackgroundColor: "#ffffff",
       },
@@ -118,7 +117,7 @@ describe("CourseListCard", () => {
           "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
         buttonText: "try game",
         checked: true,
-        percent: "100",
+        viewedPercentage: "100",
         image: { id: "background-image", extention: "" },
       },
       imageLibrary: [
@@ -140,7 +139,7 @@ describe("CourseListCard", () => {
         description:
           "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
         buttonText: "try game",
-        percent: "100",
+        viewedPercentage: "100",
         checked: true,
       },
       imageLibrary: [
