@@ -10,20 +10,20 @@ import {
 } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
-import "./HCardWithButton.scss";
+import "./HCard.scss";
 import "../../common/stylesheets/overrule.scss";
 import Button from "../Buttons/Button/Button.react";
 
-HCardWithButton.propTypes = {
+HCard.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
   /**
-  HCardWithButton component data has to be in content props.
+  HCard component data has to be in content props.
   */
   content: PropTypes.object,
   /**
-  HCardWithButton can set image from imageLibrary array
+  HCard can set image from imageLibrary array
   */
   imageLibrary: PropTypes.array,
   /**
@@ -96,12 +96,12 @@ HCardWithButton.propTypes = {
   */
   isDisabled: PropTypes.bool,
   /**
-  HCardWithButton component must have the onClick function passed as props
+  HCard component must have the onClick function passed as props
   */
   onClick: PropTypes.func.isRequired,
 };
 
-HCardWithButton.defaultProps = {
+HCard.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
@@ -134,7 +134,7 @@ HCardWithButton.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function HCardWithButton(props) {
+export default function HCard(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------

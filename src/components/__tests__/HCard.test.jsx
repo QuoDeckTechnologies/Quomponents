@@ -5,9 +5,9 @@ import { shallow } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import HCardWithButton from "../HCardWithButton/HCardWithButton.react";
+import HCard from "../HCard/HCard.react";
 
-describe("HCardWithButton", () => {
+describe("HCard", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -15,7 +15,7 @@ describe("HCardWithButton", () => {
 
   const dictionary = JSON.stringify({
     hi: {
-      hCardWithButton: {
+      hCard: {
         buttonText: "प्रयत्न करें",
       },
     },
@@ -24,7 +24,7 @@ describe("HCardWithButton", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <HCardWithButton
+      <HCard
         imageLibrary={[]}
         asEmphasis="contained"
         isCircular={false}
@@ -59,7 +59,7 @@ describe("HCardWithButton", () => {
     component.setProps({
       withTranslation: {
         lang: "hi",
-        tgt: "hCardWithButton",
+        tgt: "hCard",
         dictionary: dictionary,
       },
     });

@@ -1,17 +1,17 @@
 import React from "react";
-import HCardWithButton from "../components/HCardWithButton/HCardWithButton.react";
+import HCard from "../components/HCard/HCard.react";
 
 const dictionary = JSON.stringify({
   hi: {
-    hCardWithButton: {
+    hCard: {
       buttonText: "प्रयत्न करें",
     },
   },
 });
 
 export default {
-  title: "Design System/HCardWithButton/HCardWithButton",
-  component: HCardWithButton,
+  title: "Design System/HCard/HCard",
+  component: HCard,
   argTypes: {
     content: {},
     asEmphasis: {
@@ -106,7 +106,7 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <HCardWithButton {...args} />;
+const Template = (args) => <HCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: {
@@ -144,7 +144,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "hCardWithButton",
+    tgt: "hCard",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -153,7 +153,7 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<HCardWithButton {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<HCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
   },
 };
@@ -164,6 +164,7 @@ export const HCardWithoutImage = Template.bind({});
 HCardWithoutImage.args = {
   ...Default.args,
   content: {
+    id: "",
     name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
@@ -175,24 +176,21 @@ HCardWithoutImage.args = {
 HCardWithoutImage.parameters = {
   docs: {
     description: {
-      story: "Displays a HCardWithButton without image/default image",
+      story: "Displays a HCard without image/default image",
     },
     source: {
-      code: `<HCardWithButton {...${JSON.stringify(
-        HCardWithoutImage.args,
-        null,
-        2
-      )}}/>`,
+      code: `<HCard {...${JSON.stringify(HCardWithoutImage.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Unchecked HCardwithButton
+// Unchecked HCard
 // -------------------------------------------------------------
-export const UncheckedHCardWithButton = Template.bind({});
-UncheckedHCardWithButton.args = {
+export const UncheckedHCard = Template.bind({});
+UncheckedHCard.args = {
   ...Default.args,
   content: {
+    id: "",
     name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
@@ -201,25 +199,21 @@ UncheckedHCardWithButton.args = {
     image: { id: "background-", extention: "" },
   },
 };
-UncheckedHCardWithButton.parameters = {
+UncheckedHCard.parameters = {
   docs: {
     description: {
-      story: "Displays a HCardWithButton with checked props set as false",
+      story: "Displays a HCard with checked props set as false",
     },
     source: {
-      code: `<HCardWithButton {...${JSON.stringify(
-        UncheckedHCardWithButton.args,
-        null,
-        2
-      )}}/>`,
+      code: `<HCard {...${JSON.stringify(UncheckedHCard.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Colored HCardWithButton
+// Colored HCard
 // -------------------------------------------------------------
-export const ColoredHCardWithButton = Template.bind({});
-ColoredHCardWithButton.args = {
+export const ColoredHCard = Template.bind({});
+ColoredHCard.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#fefae0",
@@ -230,43 +224,35 @@ ColoredHCardWithButton.args = {
     buttonTextColor: "#dda15e",
   },
 };
-ColoredHCardWithButton.parameters = {
+ColoredHCard.parameters = {
   docs: {
     description: {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<HCardWithButton {...${JSON.stringify(
-        ColoredHCardWithButton.args,
-        null,
-        2
-      )}}/>`,
+      code: `<HCard {...${JSON.stringify(ColoredHCard.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Translated HCardWithButton
+// Translated HCard
 // -------------------------------------------------------------
-export const TranslatedHCardWithButton = Template.bind({});
-TranslatedHCardWithButton.args = {
+export const TranslatedHCard = Template.bind({});
+TranslatedHCard.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "hCardWithButton",
+    tgt: "hCard",
     dictionary: dictionary,
   },
 };
-TranslatedHCardWithButton.parameters = {
+TranslatedHCard.parameters = {
   docs: {
     description: {
       story: "Use to change the language that the text appears in.",
     },
     source: {
-      code: `<HCardWithButton {...${JSON.stringify(
-        TranslatedHCardWithButton.args,
-        null,
-        2
-      )}}/>`,
+      code: `<HCard {...${JSON.stringify(TranslatedHCard.args, null, 2)}}/>`,
     },
   },
 };
