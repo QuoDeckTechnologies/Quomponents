@@ -85,7 +85,7 @@ CourseListCard.defaultProps = {
     buttonText: "",
     checked: true,
     viewedPercentage: 80,
-    image: { id: "", extention: "" },
+    image: { id: "background-image", extention: "" },
   },
   imageLibrary: [],
   //=======================================
