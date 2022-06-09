@@ -5,6 +5,10 @@
   }
 }
 
+.qui.qui-course-list-card {
+  overflow: visible;
+}
+
 .qui.qui-course-list-card .qui .qui-btn {
   width: 100%;
   padding: 0.6em;
@@ -35,6 +39,8 @@
   display: flex;
   background-color: #ffffff;
   border-radius: 0.6em;
+  box-shadow: 0px 7px 10px #00000033;
+  cursor: pointer;
 }
 
 .qui .qui-course-list-card-checkbox-container .fas.fa-check-square {
@@ -47,7 +53,6 @@
 }
 
 .qui .qui-course-list-card-text-container {
-  width: 50%;
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -68,14 +73,16 @@
 .qui .qui-course-list-card-chart-container {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   margin-top: 0.5em;
 }
 
 .qui
   .qui-course-list-card-chart-container
   .qui-course-list-card-percentage-completion {
+  margin: 0;
   margin-left: 0.5em;
-  font-weight: 800;
+  color: #454545;
 }
 
 .qui .qui-course-list-card-doughnut-chart {
@@ -92,7 +99,7 @@
   }
   .qui .qui-course-list-card-image-container {
     height: auto;
-    width: 5em;
+    width: 15em;
   }
   .qui .qui-course-list-card-text-container h4 {
     font-size: 1em;
@@ -110,6 +117,6 @@
     display: flex;
   }
   .qui .qui-course-list-card-image-container {
-    width: 13em;
+    width: 25em;
   }
 }

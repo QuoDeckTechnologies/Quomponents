@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
   getQuommons,
-  getTranslation,
   getAnimation,
   resolveImage,
 } from "../../common/javascripts/helpers";
@@ -42,8 +41,8 @@ CourseListCard.propTypes = {
     accentColor: PropTypes.string,
     accentBackgroundColor: PropTypes.string,
     textColor: PropTypes.string,
-    buttonBackgroundColor: PropTypes.string,
-    buttonTextColor: PropTypes.string,
+    pathColor: PropTypes.string,
+    trailColor: PropTypes.string,
   }),
   /**
   Use to define the entry animation of the component
@@ -61,14 +60,6 @@ CourseListCard.propTypes = {
     ]),
     duration: PropTypes.number,
     delay: PropTypes.number,
-  }),
-  /**
-  Use to show a translated version of the component text. Dictionary must be valid JSON. 
-  */
-  withTranslation: PropTypes.shape({
-    lang: PropTypes.string,
-    tgt: PropTypes.string,
-    dictionary: PropTypes.string,
   }),
   /**
   Use to show/hide the component
@@ -103,7 +94,6 @@ CourseListCard.defaultProps = {
   asFloated: "none",
   withColor: null,
   withAnimation: null,
-  withTranslation: null,
   isHidden: false,
   isDisabled: false,
 };
@@ -120,33 +110,15 @@ export default function CourseListCard(props) {
   //-------------------------------------------------------------------
   const { content, withColor, imageLibrary, onClick } = props;
   //-------------------------------------------------------------------
-  // 2. Function to handle click
-  //-------------------------------------------------------------------
-  const handleClick = () => {
-    if (window.innerWidth <= 481) {
-      onClick();
-    }
-  };
-  //-------------------------------------------------------------------
-  // 3. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "course-list-card");
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 3. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 5. Get translation of the component
-  //-------------------------------------------------------------------
-  let cardContent = {};
-  let tObj = getTranslation(props.withTranslation);
-  if (tObj) {
-    cardContent = { ...tObj };
-  } else {
-    cardContent = { ...content };
-  }
-  //-------------------------------------------------------------------
-  // 6. Function to set image of the card
+  // 4. Function to set image of the card
   //-------------------------------------------------------------------
   const getBackground = () => {
     if (content?.image) {
@@ -159,8 +131,6 @@ export default function CourseListCard(props) {
     }
   };
   const background = getBackground();
-
-  // const percentage = 66;
 
   // ========================= Render Function =================================
 
@@ -176,7 +146,7 @@ export default function CourseListCard(props) {
           backgroundColor: withColor?.backgroundColor,
           color: withColor?.textColor,
         }}
-        onClick={handleClick}
+        onClick={() => props.onClick(content)}
       >
         <div
           className="qui-course-list-card-image-container"
@@ -201,21 +171,25 @@ export default function CourseListCard(props) {
         </div>
         <div className="qui-course-list-card-text-container">
           <div className="qui-course-list-card-text">
-            <h4>{cardContent?.name}</h4>
-            <p>{cardContent?.description}</p>
+            <h4>{content?.name}</h4>
+            <p>{content?.description}</p>
           </div>
-          <div className="qui-course-list-card-chart-container">
-            <div className="qui-course-list-card-doughnut-chart">
-              <CircularProgressbar
-                value={content?.percent}
-                strokeWidth={30}
-                styles={buildStyles({
-                  strokeLinecap: "butt",
-                })}
-              />
+          {content?.percent && (
+            <div className="qui-course-list-card-chart-container">
+              <div className="qui-course-list-card-doughnut-chart">
+                <CircularProgressbar
+                  value={content.percent}
+                  strokeWidth={30}
+                  styles={buildStyles({
+                    strokeLinecap: "butt",
+                    pathColor: withColor?.pathColor,
+                    trailColor: withColor?.trailColor,
+                  })}
+                />
+              </div>
+              <h2 className="qui-course-list-card-percentage-completion">{`${content.percent}%`}</h2>
             </div>
-            <p className="qui-course-list-card-percentage-completion">{`${content?.percent}%`}</p>
-          </div>
+          )}
         </div>
       </div>
     </motion.div>

@@ -1,42 +1,11 @@
 import React from "react";
 import CourseListCard from "../components/CourseListCard/CourseListCard.react";
 
-const dictionary = JSON.stringify({
-  hi: {
-    courseListCard: {
-      name: "बेलून बर्स्ट",
-      description:
-        "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
-      buttonText: "प्रयत्न करें",
-    },
-  },
-});
-
 export default {
   title: "Design System/CourseListCard/CourseListCard",
   component: CourseListCard,
   argTypes: {
     content: {},
-    asEmphasis: {
-      control: "select",
-      options: ["text", "outlined", "contained"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    isCircular: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    asVariant: {
-      control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     asFloated: {
       control: "select",
       options: ["left", "right", "none", "inline"],
@@ -52,8 +21,8 @@ export default {
           accentColor: "",
           accentBackgroundColor: "",
           textColor: "",
-          buttonBackgroundColor: "",
-          buttonTextColor: "",
+          pathColor: "",
+          trailColor: "",
         },
       },
     },
@@ -64,16 +33,6 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
-        },
-      },
-    },
-    withTranslation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          lang: "",
-          tgt: "",
-          dictionary: "",
         },
       },
     },
@@ -110,12 +69,13 @@ const Template = (args) => <CourseListCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: {
+    id: "1",
     name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",
     checked: true,
-    percent: "50",
+    percent: "80",
     image: { id: "background-image", extention: "" },
   },
   imageLibrary: [
@@ -125,27 +85,19 @@ Default.args = {
         "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     },
   ],
-  asEmphasis: "contained",
-  isCircular: false,
-  asVariant: "warning",
   asFloated: "none",
   withColor: {
     backgroundColor: "",
     accentColor: "",
     accentBackgroundColor: "",
     textColor: "",
-    buttonBackgroundColor: "",
-    buttonTextColor: "",
+    pathColor: "",
+    trailColor: "",
   },
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
-  },
-  withTranslation: {
-    lang: "en",
-    tgt: "courseListCard",
-    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,
@@ -154,6 +106,97 @@ Default.parameters = {
   docs: {
     source: {
       code: `<CourseListCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Course List Card without image
+// -------------------------------------------------------------
+export const CourselistcardWithoutImage = Template.bind({});
+CourselistcardWithoutImage.args = {
+  ...Default.args,
+  content: {
+    id: "",
+    name: "BALLOON BURST",
+    description:
+      "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+    buttonText: "try game",
+    checked: true,
+    percent: "80",
+    image: { id: "background-", extention: "" },
+  },
+};
+CourselistcardWithoutImage.parameters = {
+  docs: {
+    description: {
+      story: "Displays a CourseListCard without image/default image",
+    },
+    source: {
+      code: `<CourseListCard {...${JSON.stringify(
+        CourselistcardWithoutImage.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Unchecked Course List Card
+// -------------------------------------------------------------
+export const UncheckedCourselistcard = Template.bind({});
+UncheckedCourselistcard.args = {
+  ...Default.args,
+  content: {
+    id: "",
+    name: "BALLOON BURST",
+    description:
+      "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+    buttonText: "try game",
+    checked: false,
+    percent: "80",
+    image: { id: "background-image", extention: "" },
+  },
+};
+UncheckedCourselistcard.parameters = {
+  docs: {
+    description: {
+      story: "Displays a CourseListCard with checked props set as false",
+    },
+    source: {
+      code: `<CourseListCard {...${JSON.stringify(
+        UncheckedCourselistcard.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Colored Course List Card
+// -------------------------------------------------------------
+export const ColoredCourselistcard = Template.bind({});
+ColoredCourselistcard.args = {
+  ...Default.args,
+  withColor: {
+    backgroundColor: "#fefae0",
+    accentColor: "#606c38",
+    accentBackgroundColor: "#fefae0",
+    textColor: "#bc6c25",
+    pathColor: "#00bcd4",
+    trailColor: "#3f51b5",
+  },
+};
+ColoredCourselistcard.parameters = {
+  docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
+    source: {
+      code: `<CourseListCard {...${JSON.stringify(
+        ColoredCourselistcard.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
