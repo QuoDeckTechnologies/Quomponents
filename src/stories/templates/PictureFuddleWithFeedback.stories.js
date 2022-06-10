@@ -13,7 +13,7 @@ export default {
             question: "",
             answer: "",
             purpose: "",
-            filter:""
+            filter: ""
         },
         slideId: 0,
         asVariant: {
@@ -108,7 +108,7 @@ Default.args = {
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         answer: "Answer",
         purpose: "",
-        filter:"None"
+        filter: "None"
     },
     imageLibrary: [{
         id: "background-image",
@@ -160,7 +160,7 @@ PictureFuddleWithFeedbackWithSlideHeader.args = {
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         answer: "Answer",
         purpose: "",
-        filter:"None"
+        filter: "None"
     },
     slideId: 0,
     asVariant: "warning",
@@ -209,7 +209,7 @@ PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.args = {
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         answer: "Answer",
         purpose: "",
-        filter:"None"
+        filter: "None"
     },
     imageLibrary: [{
         id: 'background-image',
