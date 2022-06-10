@@ -11,19 +11,26 @@
     border-radius: 5px;
     font-size: 0.8em;
     justify-content: space-between;
+    cursor: pointer;
 }
-.qui-content-line-icon {
+.qui-content-line-icon-text-container {
     align-self: left;
     padding: 0.7em 0.3em 0.7em 0;
     min-width: fit-content;
     text-align: left;
-    margin: 0 1em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: flex;
+}
+.qui-content-line-text{
     display: flex;
     justify-content: center;
     align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.qui-content-line-icon{
+    margin: 0 0.5em;
+    font-size: 1.3em;
 }
 .qui-content-line-coins {
     display: flex;

@@ -4,16 +4,13 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
     getQuommons,
-    getAnimation,
-    getTranslation
+    getAnimation
 } from "../../common/javascripts/helpers.js";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ContentLine.scss";
 import "../../common/stylesheets/overrule.scss";
-
-import IconBlock from "../IconBlock/IconBlock.react"
 
 ContentLine.propTypes = {
     //=======================================
@@ -115,8 +112,8 @@ export default function ContentLine(props) {
     // 3. Conditional styling
     //-------------------------------------------------------------------
     let contentStyle = {
-        backgroundColor: props.withColor?.backgroundColor ? props.withColor?.backgroundColor : '#454545',
-        color: props.withColor?.textColor ? props.withColor?.textColor : '#FFBF00'
+        backgroundColor: props.isDisabled ? '#E8E8E8' : props.isActive ?  props.withColor?.backgroundColor ? props.withColor?.backgroundColor : '#FFBF00CC': '#FFFFFF',
+        color: props.withColor?.textColor ? props.withColor?.textColor : '#454545'
     }
 
     return (
@@ -127,9 +124,9 @@ export default function ContentLine(props) {
             {props.content &&
                 <div className={`${quommonClasses.childClasses}`} >
                     <div className={`qui-content-line-container`} style={contentStyle}>
-                        <div className={`qui-content-line-icon`} style={{ color: contentStyle?.color }}>
-                        <i className={`${props.content?.icon}`}></i>
-                            {props.content?.name}</div>
+                        <div className={`qui-content-line-icon-text-container`} style={{ color: contentStyle?.color }}>
+                        <i className={`${props.content?.icon} qui-content-line-icon`}></i>
+                          <div className={`qui-content-line-text`}>{props.content?.name}</div>  </div>
                         <div className="qui-content-line-coins-text"><i className={`fas fa-angle-right`} style={{ color:props.withColor?.textColor}}></i></div>
                     </div>
                 </div>}

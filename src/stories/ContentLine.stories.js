@@ -13,6 +13,7 @@ export default {
     component: ContentLine,
     argTypes: {
         content: {},
+        isActive:false,
         withColor: {
             table: {
                 category: "with-Params",
@@ -90,6 +91,7 @@ Default.args = {
         name: "What is Sales Pitching?",
         icon: "fas fa-book"
     },
+    isActive:false,
     withColor: {
         backgroundColor: "",
         textColor: "",
@@ -104,189 +106,13 @@ Default.args = {
         tgt: "ContentLine",
         dictionary: dictionary,
     },
-    isHidden: false
+    isHidden: false,
+    isDisabled: false
 };
 Default.parameters = {
     docs: {
         source: {
             code: `<ContentLine {...${JSON.stringify(Default.args, null, 2)}}/>`,
-        },
-    },
-};
-// -------------------------------------------------------------
-// MultipleContentLine
-// -------------------------------------------------------------
-export const MultipleContentLine = (args) => {
-    let data = [
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        },
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        },
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        },
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        },
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        },
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        },
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            }
-        }
-    ]
-    return (
-        <div>
-            {
-                data.map((user, index) => {
-                    return (
-                        <ContentLine
-                            key={index}
-                            content={user.content}
-                            withColor={{
-                                backgroundColor: '#FFBF00',
-                                textColor: '#000'
-                            }}
-                            withAnimation={{
-                                animation: "zoom",
-                                duration: 0.5,
-                                delay: 0,
-                            }}
-                            withTranslation={{
-                                lang: "en",
-                                tgt: "ContentLine",
-                                dictionary: dictionary,
-                            }}
-                        />
-                    )
-                })
-            }
-        </div>
-    );
-};
-// -------------------------------------------------------------
-// MultipleContentLinesWithFixedDivSize
-// -------------------------------------------------------------
-export const MultipleContentLinesWithFixedDivSize = (args) => {
-    let data = [
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        },
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        },
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        },
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        },
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        },
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        },
-        {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-        }
-    ]
-    return (
-        <div style={{ width: "290px" }}>
-            {
-                data.map((user, index) => {
-                    return (
-                        <ContentLine
-                            key={index}
-                            content={user.content}
-                            withColor={{
-                                backgroundColor: '#FFBF00',
-                                textColor: '#000'
-                            }}
-                            withAnimation={{
-                                animation: "zoom",
-                                duration: 0.5,
-                                delay: 0,
-                            }}
-                            withTranslation={{
-                                lang: "en",
-                                tgt: "ContentLine",
-                                dictionary: dictionary,
-                            }}
-                        />
-                    )
-                })
-            }
-        </div>
-    );
-};
-// -------------------------------------------------------------
-// Translated AmplayfierDateBlock
-// -------------------------------------------------------------
-export const TranslatedContentLine = Template.bind({});
-TranslatedContentLine.args = {
-    ...Default.args,
-    withTranslation: {
-        lang: "hi",
-        tgt: "ContentLine",
-        dictionary: dictionary,
-    },
-};
-TranslatedContentLine.parameters = {
-    docs: {
-        source: {
-            code: `<TranslatedContentLine {...${JSON.stringify(
-                TranslatedContentLine.args,
-                null,
-                2
-            )}}/>`,
         },
     },
 };
