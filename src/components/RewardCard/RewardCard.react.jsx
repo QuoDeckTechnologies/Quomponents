@@ -159,22 +159,14 @@ export default function RewardCard(props) {
     const getRewardCard = (asEmphasis) => {
         if (asEmphasis === "blank") {
             return (
-                <div
-                    className="qui-reward-card-container"
-                    style={{ color: withColor?.textColor, backgroundColor: withColor?.backgroundColor }}
-                    onClick={props.onClick}
-                >
+                <div>
                     <i className="fas fa-plus-square qui-blank-reward-card-icon" />
                 </div>
             )
         }
         if (asEmphasis === "soldout") {
             return (
-                <div
-                    className="qui-reward-card-container"
-                    style={{ color: withColor?.textColor, backgroundColor: withColor?.backgroundColor }}
-                    onClick={props.onClick}
-                >
+                <div>
                     {content?.name &&
                         <div className="qui-reward-card-name">
                             {contentName}
@@ -222,11 +214,7 @@ export default function RewardCard(props) {
         }
         else {
             return (
-                <div
-                    className="qui-reward-card-container"
-                    style={{ color: withColor?.textColor, backgroundColor: withColor?.backgroundColor }}
-                    onClick={props.onClick}
-                >
+                <div>
                     {content?.name &&
                         <div className="qui-reward-card-name">
                             {contentName}
@@ -281,9 +269,13 @@ export default function RewardCard(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            {content && <div className={`${quommonClasses.childClasses}`}>
-                {getRewardCard(asEmphasis)}
-            </div>}
+            {content &&
+                <div
+                    style={{ color: withColor?.textColor, backgroundColor: withColor?.backgroundColor }}
+                    onClick={props.onClick}
+                    className={`qui-reward-card-container ${quommonClasses.childClasses}`}>
+                    {getRewardCard(asEmphasis)}
+                </div>}
         </motion.div>
     );
 }

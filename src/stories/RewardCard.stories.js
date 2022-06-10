@@ -320,7 +320,7 @@ const MultipleRewardCardTemplate = (args) => {
         }),
     };
     return (
-        <Grid container spacing={0} backgroundColor={"#c7cdd6"}>
+        <Grid container spacing={0.5} backgroundColor={"#c7cdd6"}>
             <Grid item xs={4}>
                 <RewardCard
                     {...Object.assign({}, baseObj, {
