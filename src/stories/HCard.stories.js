@@ -157,7 +157,7 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// HCard without image
+// HCard with default image
 // -------------------------------------------------------------
 export const HcardWithDefaultImage = Template.bind({});
 HcardWithDefaultImage.args = {
