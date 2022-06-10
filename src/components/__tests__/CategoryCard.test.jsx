@@ -72,6 +72,7 @@ describe("CategoryCard", () => {
             textColor: "#121212",
             backgroundColor: "#34e5eb",
             accentColor: "#065254",
+            pathColor: "#121212"
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);

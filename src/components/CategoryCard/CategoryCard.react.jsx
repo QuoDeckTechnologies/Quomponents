@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -38,6 +39,7 @@ CategoryCard.propTypes = {
         textColor: PropTypes.string,
         backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
+        pathColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -111,19 +113,35 @@ export default function CategoryCard(props) {
                         src={content?.image ? content?.image : defaultImage}
                         alt="categoryCard"
                     />
-                    {content?.label && <div className="qui-category-card-label" style={{ color: withColor?.textColor }}>
-                        {content?.label}
-                    </div>}
-                    <div className="qui-category-card-cost">
-                        <div className="qui-category-card-cost-icon">
-                            <i class="fas fa-chart-pie"></i>
+                    {content?.label &&
+                        <div
+                            className="qui-category-card-label"
+                            style={{ color: withColor?.textColor }}
+                        >
+                            {content?.label}
                         </div>
-                        {content?.percentage && <div className="qui-category-card-cost-percentage">
-                            {content?.percentage}%
-                        </div>}
-                        <div className={`qui-category-card-cost-accent-line`}>
-                            <AccentLine withColor={{ accentColor: withColor?.accentColor }} />
-                        </div>
+                    }
+                    <div className="qui-category-card">
+                        {content?.percentage && (
+                            <div className="qui-category-card-pie-chart-container">
+                                <div className="qui-category-card-pie-chart">
+                                    <CircularProgressbar
+                                        value={content.percentage}
+                                        strokeWidth={30}
+                                        styles={buildStyles({
+                                            strokeLinecap: "butt",
+                                            pathColor: withColor?.pathColor,
+                                        })}
+                                    />
+                                </div>
+                                <h2 className="qui-category-card-pie-chart-percentage">
+                                    {`${content?.percentage}%`}
+                                </h2>
+                                <div className={`qui-category-card-accent-line`}>
+                                    <AccentLine withColor={{ accentColor: withColor?.accentColor }} />
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </AmplayfierDrawerRect>
             </div >}

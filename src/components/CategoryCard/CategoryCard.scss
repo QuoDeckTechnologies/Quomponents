@@ -3,7 +3,6 @@
 /* ================================================= */
 .qui .qui-category-card-container {
     width: 20em;
-    // width: auto;
     .pad-normal {
         padding: 0;
     }
@@ -23,26 +22,30 @@
         text-overflow: ellipsis;
         overflow: hidden;
     }
-    .qui-category-card-cost {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin: 0.1em 0.5em 1em 1.5em;
-        align-items: center;
-        .qui-category-card-cost-icon {
-            color: blue;
-            font-size: 2.5em;
-        }
-        .qui-category-card-cost-percentage {
-            color: white;
-            padding-right: 1em;
-            font-size: 2em;
-            font-weight: 900;
-        }
-        .qui-category-card-cost-accent-line {
-            width: 6em;
-            .qui .qui-accentline {
-                border-bottom: 0.6em solid;
+    .qui-category-card {
+        width: 100%;
+        margin: 0.1em 0.5em 1.5em 1.5em;
+        .qui-category-card-pie-chart-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 1.5em;
+            .qui-category-card-pie-chart {
+                height: 3em;
+                width: 3em;
+            }
+            .qui-category-card-pie-chart-percentage {
+                color: #ffff;
+                font-size: 2em;
+                margin: 0;
+                margin-left: 0.5em;
+            }
+            .qui-category-card-accent-line {
+                width: 5em;
+                margin: 0 1em 0 3em;
+                .qui .qui-accentline {
+                    border-bottom: 0.6em solid;
+                }
             }
         }
     }
