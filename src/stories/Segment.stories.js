@@ -122,6 +122,9 @@ SegmentWithChildren.args = {
 };
 SegmentWithChildren.parameters = {
   docs: {
+    description: {
+      story: "Displays Segment wrapping other components",
+    },
     source: {
       code: `<Segment {...${JSON.stringify(
         SegmentWithChildren.args,
@@ -141,6 +144,9 @@ FloatedSegment.args = {
 };
 FloatedSegment.parameters = {
   docs: {
+    description: {
+      story: "Use to float a component left, right, inline or none.",
+    },
     source: {
       code: `<Segment {...${JSON.stringify(FloatedSegment.args, null, 2)}}/>`,
     },
@@ -156,6 +162,9 @@ ColoredSegment.args = {
 };
 ColoredSegment.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<Segment {...${JSON.stringify(ColoredSegment.args, null, 2)}}/>`,
     },
@@ -175,6 +184,9 @@ AnimatedSegment.args = {
 };
 AnimatedSegment.parameters = {
   docs: {
+    description: {
+      story: "We can animate the appearance of Segment component",
+    },
     source: {
       code: `<Segment {...${JSON.stringify(AnimatedSegment.args, null, 2)}}/>`,
     },
