@@ -31,23 +31,15 @@ PictureFuddle.propTypes = {
         answer: PropTypes.string,
         purpose: PropTypes.string,
         filter: PropTypes.oneOf(["None",
-            "none",
             "Blur",
-            "blur",
             "Brighten",
-            "brighten",
             "Contrast",
-            "contrast",
             "Rotate-Hue",
-            "rotate-hue",
             "Invert",
-            "invert",
             "Saturate",
-            "saturate",
             "Greyscale",
-            "greyscale",
             "Sepia",
-            "sepia"])
+        ])
     }).isRequired,
     /**
     PictureFuddle should have imageLibrary array
