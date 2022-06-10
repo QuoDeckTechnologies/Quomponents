@@ -129,6 +129,9 @@ SplashWithBackgroundImage.args = {
 };
 SplashWithBackgroundImage.parameters = {
   docs: {
+    description: {
+      story: "Displays a Spash component with background image",
+    },
     source: {
       code: `<Splash {...${JSON.stringify(
         SplashWithBackgroundImage.args,
@@ -165,6 +168,9 @@ SplashWithPresenter.args = {
 };
 SplashWithPresenter.parameters = {
   docs: {
+    description: {
+      story: "Displays a Spash component with presenter image",
+    },
     source: {
       code: `<Splash {...${JSON.stringify(
         SplashWithPresenter.args,
@@ -207,6 +213,9 @@ SplashWithPresenterAndBackgroundImage.args = {
 };
 SplashWithPresenterAndBackgroundImage.parameters = {
   docs: {
+    description: {
+      story: "Displays aSpash component with presenter and background image",
+    },
     source: {
       code: `<Splash {...${JSON.stringify(
         SplashWithPresenterAndBackgroundImage.args,
@@ -231,6 +240,9 @@ ColoredSplash.args = {
 };
 ColoredSplash.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<Splash {...${JSON.stringify(ColoredSplash.args, null, 2)}}/>`,
     },
@@ -250,6 +262,9 @@ AnimatedSplash.args = {
 };
 AnimatedSplash.parameters = {
   docs: {
+    description: {
+      story: "We can animate the appearance of AmplayfierDateBlock",
+    },
     source: {
       code: `<Splash {...${JSON.stringify(AnimatedSplash.args, null, 2)}}/>`,
     },

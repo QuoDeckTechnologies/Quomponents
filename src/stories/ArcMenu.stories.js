@@ -135,6 +135,9 @@ NuggetMenuButton.args = {
 };
 NuggetMenuButton.parameters = {
   docs: {
+    description: {
+      story: "Displays ArcMenu using nugget block",
+    },
     source: {
       code: `<ArcMenu {...${JSON.stringify(NuggetMenuButton.args, null, 2)}}/>`,
     },
@@ -167,13 +170,16 @@ MenuButton.args = {
 };
 MenuButton.parameters = {
   docs: {
+    description: {
+      story: "Displays ArcMenu used as menu",
+    },
     source: {
       code: `<ArcMenu {...${JSON.stringify(MenuButton.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Menu button
+// Add button
 // -------------------------------------------------------------
 export const AddButton = Template.bind({});
 AddButton.args = {
@@ -184,6 +190,9 @@ AddButton.args = {
 };
 AddButton.parameters = {
   docs: {
+    description: {
+      story: "Display ArcMenu used as Add button",
+    },
     source: {
       code: `<ArcMenu {...${JSON.stringify(AddButton.args, null, 2)}}/>`,
     },
@@ -306,6 +315,9 @@ const ExampleTemplate = (args) => {
 export const AddCloseButtonUseCase = ExampleTemplate.bind({});
 AddCloseButtonUseCase.parameters = {
   docs: {
+    description: {
+      story: "Displays a use of ArcMenu as a close and add button",
+    },
     source: {
       code: `<ArcMenu {...${JSON.stringify(
         AddCloseButtonUseCase.args,
@@ -393,6 +405,9 @@ const ExampleTemplateMenu = (args) => {
 export const MenuUseCase = ExampleTemplateMenu.bind({});
 MenuUseCase.parameters = {
   docs: {
+    description: {
+      story: "Displays a use case where ArcMenu is used as menu button",
+    },
     source: {
       code: `<ArcMenu {...${JSON.stringify(MenuUseCase.args, null, 2)}}/>`,
     },
@@ -446,6 +461,9 @@ const ExampleTemplateNugget = (args) => {
 export const NuggetMenuUseCase = ExampleTemplateNugget.bind({});
 NuggetMenuUseCase.parameters = {
   docs: {
+    description: {
+      story: "Displays a use case where ArcMenu is used as nuggetMenu",
+    },
     source: {
       code: `<ArcMenu {...${JSON.stringify(
         NuggetMenuUseCase.args,
