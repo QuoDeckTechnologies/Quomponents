@@ -113,7 +113,7 @@ describe("CourseListCard", () => {
         description:
           "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
         checked: true,
-        viewedPercentage: "100",
+        viewedPercentage: 100,
         image: { id: "background-image", extention: "" },
       },
       imageLibrary: [
@@ -134,7 +134,7 @@ describe("CourseListCard", () => {
         name: "BALLOON BURST",
         description:
           "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-        viewedPercentage: "100",
+        viewedPercentage: 100,
         checked: true,
       },
       imageLibrary: [

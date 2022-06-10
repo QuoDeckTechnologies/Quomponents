@@ -112,8 +112,8 @@ Default.parameters = {
 // -------------------------------------------------------------
 // Course List Card without image
 // -------------------------------------------------------------
-export const CourselistcardWithoutImage = Template.bind({});
-CourselistcardWithoutImage.args = {
+export const CourselistcardDefaultImage = Template.bind({});
+CourselistcardDefaultImage.args = {
   ...Default.args,
   content: {
     id: "",
@@ -125,14 +125,15 @@ CourselistcardWithoutImage.args = {
     image: { id: "background-", extention: "" },
   },
 };
-CourselistcardWithoutImage.parameters = {
+CourselistcardDefaultImage.parameters = {
   docs: {
     description: {
-      story: "Displays a CourseListCard without image/default image",
+      story:
+        "Displays a CourseListCard with default image when image is not provided in image library",
     },
     source: {
       code: `<CourseListCard {...${JSON.stringify(
-        CourselistcardWithoutImage.args,
+        CourselistcardDefaultImage.args,
         null,
         2
       )}}/>`,
