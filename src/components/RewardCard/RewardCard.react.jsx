@@ -38,10 +38,6 @@ RewardCard.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to float the component in parent container
-    */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
     Use to set Color in RewardCard component
     */
     withColor: PropTypes.shape({
@@ -97,8 +93,6 @@ RewardCard.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asFloated: "none",
-
     withColor: null,
     withAnimation: null,
     withTranslation: null,

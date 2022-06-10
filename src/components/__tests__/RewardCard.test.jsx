@@ -40,7 +40,6 @@ describe("RewardCard", () => {
                     stock: {},
                 }}
                 asEmphasis="default"
-                asFloated="none"
                 withColor={null}
                 withAnimation={null}
                 withTranslation={null}

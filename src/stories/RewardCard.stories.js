@@ -30,13 +30,6 @@ export default {
             control: "select",
             options: ["default", "soldout", "blank"],
         },
-        asFloated: {
-            control: "select",
-            options: ["left", "right", "none", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -91,7 +84,6 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "center",
                 }}
             >
                 {story()}
@@ -120,7 +112,6 @@ Default.args = {
         },
     },
     asEmphasis: "default",
-    asFloated: "inline",
     withColor: {
         textColor: "",
         accentColor: "#AD2929",
