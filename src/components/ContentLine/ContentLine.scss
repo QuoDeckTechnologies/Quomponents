@@ -1,0 +1,54 @@
+.qui-content-line-parent-class {
+    width: 100%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin: 5px 0;
+}
+.qui-content-line-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 0.8em;
+    justify-content: space-between;
+}
+.qui-content-line-icon {
+    align-self: left;
+    padding: 0.7em 0.3em 0.7em 0;
+    min-width: fit-content;
+    text-align: left;
+    margin: 0 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.qui-content-line-coins {
+    display: flex;
+    margin-right: 1em;
+    text-align: right;
+    padding: 0.7em 0.3em 0.7em 0;
+    flex: 1;
+    justify-content: flex-end;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.qui-content-line-coins-text {
+    margin:0 1em;
+    text-align: right;
+    color: rgb(82, 81, 81);
+    padding:0.2em 0.5em;
+    border-radius: 20%;
+    background-color:rgb(185, 185, 185);
+    font-size: 0.8em;
+    opacity: 0.6;
+    font-weight: bolder;
+}
+.qui-content-line-coins-number {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
