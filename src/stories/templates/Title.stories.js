@@ -141,6 +141,9 @@ DefaultTitle.args = {
 };
 DefaultTitle.parameters = {
   docs: {
+    description: {
+      story: "Displays a default Title component",
+    },
     source: {
       code: `<Title {...${JSON.stringify(DefaultTitle.args, null, 2)}}/>`,
     },
@@ -178,6 +181,9 @@ DefaultTitleWithSubTitle.args = {
 };
 DefaultTitleWithSubTitle.parameters = {
   docs: {
+    description: {
+      story: "Displays a Title component with subtitle",
+    },
     source: {
       code: `<Title {...${JSON.stringify(
         DefaultTitleWithSubTitle.args,
@@ -217,6 +223,9 @@ TitleWithPresenter.args = {
 };
 TitleWithPresenter.parameters = {
   docs: {
+    description: {
+      story: "Displays a Title component with presenter image",
+    },
     source: {
       code: `<Title {...${JSON.stringify(TitleWithPresenter.args, null, 2)}}/>`,
     },
@@ -253,6 +262,9 @@ TitleSubtitleWithPresenter.args = {
 };
 TitleSubtitleWithPresenter.parameters = {
   docs: {
+    description: {
+      story: "Displays a Title component with presenter and background image",
+    },
     source: {
       code: `<Title {...${JSON.stringify(
         TitleSubtitleWithPresenter.args,
@@ -287,6 +299,9 @@ ColoredTitle.args = {
 };
 ColoredTitle.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<Title {...${JSON.stringify(ColoredTitle.args, null, 2)}}/>`,
     },
@@ -306,6 +321,9 @@ AnimatedTitle.args = {
 };
 AnimatedTitle.parameters = {
   docs: {
+    description: {
+      story: "We can animate the appearance of Title component",
+    },
     source: {
       code: `<Title {...${JSON.stringify(AnimatedTitle.args, null, 2)}}/>`,
     },

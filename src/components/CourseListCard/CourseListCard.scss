@@ -1,0 +1,122 @@
+.qui.qui-course-list-card {
+  overflow: visible;
+}
+
+.qui .qui-course-list-card-image-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-top-left-radius: 0.6em;
+  border-bottom-left-radius: 0.6em;
+}
+
+.qui .qui-course-list-card-checkbox-container {
+  height: 2.5em;
+  width: 5em;
+  background-color: #666666;
+  color: #ffbf00;
+  border-top-left-radius: 7.5em;
+  border-top-right-radius: 7.5em;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.qui .qui-course-list-card-container {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 0.6em;
+  box-shadow: 0px 7px 10px #00000033;
+  cursor: pointer;
+}
+
+.qui .qui-course-list-card-checkbox-container .fas.fa-check-square {
+  filter: none;
+}
+
+.qui .qui-course-list-card-checkbox-container .fas.fa-check-square {
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
+}
+
+.qui .qui-course-list-card-text-container {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.qui .qui-course-list-card-text-container .qui-course-list-card-name {
+  margin: 0;
+  color: #666666;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  width: 100%;
+}
+
+.qui .qui-course-list-card-text-container .qui-course-list-card-description {
+  margin: 0.5em 0;
+  font-size: 1.1em;
+  color: #666666;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+.qui .qui-course-list-card-chart-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0.5em;
+}
+
+.qui
+  .qui-course-list-card-chart-container
+  .qui-course-list-card-percentage-completion {
+  margin: 0;
+  margin-left: 0.5em;
+  color: #454545;
+}
+
+.qui .qui-course-list-card-doughnut-chart {
+  height: 2em;
+  width: 2em;
+}
+
+@media only screen and (min-width: 320px) {
+  .qui .qui-course-list-card-container {
+    width: 100%;
+  }
+  .qui .qui-course-list-card-checkbox-container {
+    display: none;
+  }
+  .qui .qui-course-list-card-image-container {
+    height: auto;
+    width: 10em;
+  }
+  .qui .qui-course-list-card-text-container .qui-course-list-card-name {
+    font-size: 1em;
+  }
+  .qui .qui-course-list-card-text-container .qui-course-list-card-description {
+    font-size: 0.9em;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .qui .qui-course-list-card-container {
+    width: 28em;
+  }
+  .qui .qui-course-list-card-checkbox-container {
+    display: flex;
+  }
+  .qui .qui-course-list-card-image-container {
+    width: 22em;
+  }
+  .qui .qui-course-list-card-text-container .qui-course-list-card-description {
+    font-size: 1em;
+  }
+}
