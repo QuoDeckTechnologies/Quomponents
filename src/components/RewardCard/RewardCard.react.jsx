@@ -22,6 +22,7 @@ RewardCard.propTypes = {
     Content props consist of all the data which are required for RewardCard component
     */
     content: PropTypes.shape({
+        id: PropTypes.string,
         name: PropTypes.string,
         image: PropTypes.string,
         cost: PropTypes.number,

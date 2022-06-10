@@ -34,6 +34,7 @@ describe("RewardCard", () => {
         component = mount(
             <RewardCard
                 content={{
+                    id: "",
                     name: "",
                     image: "",
                     cost: 0,
@@ -56,6 +57,7 @@ describe("RewardCard", () => {
 
     it("should render correctly when passed content prop with values", () => {
         let value = {
+            id: "",
             name: "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
             cost: 1000000,
