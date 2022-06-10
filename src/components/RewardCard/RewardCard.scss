@@ -4,6 +4,7 @@
 .qui-reward-card {
     padding: 0.1em;
     font-size: 0.8em;
+    color: #fff;
     width: 100%;
     .qui .qui-reward-container {
         min-width: 0;
@@ -24,7 +25,6 @@
         text-overflow: ellipsis;
         max-width: 11ch;
     }
-    color: #fff;
 }
 
 .qui .qui-reward-card-container {

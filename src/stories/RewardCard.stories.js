@@ -210,7 +210,7 @@ TranslatedRewardCard.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the text appears in. To make this work for the RewardCard, add a RewardCard: {name, soldout, left } value to the dictionary.",
+                "Use to change the language that the text appears in. To make this work for the RewardCard, add a RewardCard: { left } value to the dictionary.",
         },
         source: {
             code: `<RewardCard {...${JSON.stringify(
@@ -271,7 +271,7 @@ TranslatedSoldOutRewardCard.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the text appears in. To make this work for the RewardCard, add a RewardCard: {name, soldout, left } value to the dictionary.",
+                "Use to change the language that the text appears in. To make this work for the RewardCard, add a RewardCard: { soldout, left } value to the dictionary.",
         },
         source: {
             code: `<RewardCard {...${JSON.stringify(
