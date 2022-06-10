@@ -157,10 +157,10 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// HCard without image
+// HCard with default image
 // -------------------------------------------------------------
-export const HcardWithoutImage = Template.bind({});
-HcardWithoutImage.args = {
+export const HcardWithDefaultImage = Template.bind({});
+HcardWithDefaultImage.args = {
   ...Default.args,
   content: {
     id: "",
@@ -172,13 +172,13 @@ HcardWithoutImage.args = {
     image: { id: "background-", extention: "" },
   },
 };
-HcardWithoutImage.parameters = {
+HcardWithDefaultImage.parameters = {
   docs: {
     description: {
-      story: "Displays a HCard without image/default image",
+      story: "Displays a HCard with default image when image is not provided in image library",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(HcardWithoutImage.args, null, 2)}}/>`,
+      code: `<HCard {...${JSON.stringify(HcardWithDefaultImage.args, null, 2)}}/>`,
     },
   },
 };

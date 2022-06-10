@@ -12,7 +12,7 @@
 .qui.qui-v-card-with-button .qui .qui-btn {
   width: 100%;
   padding: 0.6em;
-  box-shadow: 0px 6px 10px #0000004d;
+  box-shadow: 0px 6px 7px #0000004d;
   margin-top: 1em;
 }
 
@@ -21,7 +21,8 @@
   align-items: flex-end;
   justify-content: center;
   border-top-left-radius: 0.6em;
-  border-bottom-left-radius: 0.6em;
+  border-top-right-radius: 0.6em;
+  height: 15em;
 }
 
 .qui .qui-v-card-checkbox-container {
@@ -31,15 +32,18 @@
   color: #ffbf00;
   border-top-left-radius: 7.5em;
   border-top-right-radius: 7.5em;
+  display: flex;
   align-items: flex-end;
   justify-content: center;
 }
 
 .qui .qui-v-card-container {
   display: flex;
+  flex-direction: column;
   background-color: #ffffff;
   border-radius: 0.6em;
   box-shadow: 0px 5px 10px #0000004a;
+  width: 15em;
 }
 
 .qui .qui-v-card-checkbox-container .fas.fa-check-square {
@@ -56,7 +60,6 @@
 }
 
 .qui .qui-v-card-text-container {
-  width: 100%;
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -71,58 +74,16 @@
   margin: 0;
   color: #666666;
   width: 100%;
+  font-size: 1.2em;
 }
 
 .qui .qui-v-card-text-container p {
   width: 100%;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   overflow: hidden;
   -webkit-box-orient: vertical;
   margin: 0.5em 0;
   font-size: 1.1em;
   color: #666666;
 }
-
-//   @media only screen and (min-width: 320px) {
-//     .qui .qui-v-card-container {
-//       width: 100%;
-//     }
-//     .qui .qui-v-card-checkbox-container {
-//       display: none;
-//     }
-//     .qui .qui-v-card-image-container {
-//       height: auto;
-//       width: 7em;
-//     }
-//     .qui .qui-v-card-text-container h4 {
-//       font-size: 1em;
-//     }
-//     .qui .qui-v-card-text-container p {
-//       font-size: 1em;
-//     }
-//     .qui.qui-v-card-with-button .qui .qui-btn {
-//       display: none;
-//     }
-//     .qui.qui-v-card-with-button {
-//       cursor: pointer;
-//     }
-//   }
-
-//   @media only screen and (min-width: 481px) {
-//     .qui .qui-v-card-container {
-//       width: 30em;
-//     }
-//     .qui .qui-v-card-checkbox-container {
-//       display: flex;
-//     }
-//     .qui .qui-v-card-image-container {
-//       width: 20em;
-//     }
-//     .qui.qui-v-card-with-button .qui .qui-btn {
-//       display: block;
-//     }
-//     .qui.qui-v-card-with-button {
-//       cursor: auto;
-//     }
-//   }

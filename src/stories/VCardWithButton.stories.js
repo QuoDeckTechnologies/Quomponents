@@ -94,7 +94,8 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a basic VCardWithButton for general-purpose use.",
+    componentSubtitle:
+      "Displays a basic VCardWithButton for general-purpose use.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 500,
@@ -157,10 +158,10 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// VCardWithButton without image
+// VCard with default image
 // -------------------------------------------------------------
-export const VCardWithButtonWithoutImage = Template.bind({});
-VCardWithButtonWithoutImage.args = {
+export const VCardWithDefaultImage = Template.bind({});
+VCardWithDefaultImage.args = {
   ...Default.args,
   content: {
     id: "",
@@ -172,13 +173,18 @@ VCardWithButtonWithoutImage.args = {
     image: { id: "background-", extention: "" },
   },
 };
-VCardWithButtonWithoutImage.parameters = {
+VCardWithDefaultImage.parameters = {
   docs: {
     description: {
-      story: "Displays a VCardWithButton without image/default image",
+      story:
+        "Displays a VCardWithButton with default image when image is not provided in image library",
     },
     source: {
-      code: `<VCardWithButton {...${JSON.stringify(VCardWithButtonWithoutImage.args, null, 2)}}/>`,
+      code: `<VCardWithButton {...${JSON.stringify(
+        VCardWithDefaultImage.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -195,7 +201,7 @@ UncheckedVCardWithButton.args = {
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",
     checked: false,
-    image: { id: "background-", extention: "" },
+    image: { id: "background-image", extention: "" },
   },
 };
 UncheckedVCardWithButton.parameters = {
@@ -204,7 +210,11 @@ UncheckedVCardWithButton.parameters = {
       story: "Displays a VCardWithButton with checked props set as false",
     },
     source: {
-      code: `<VCardWithButton {...${JSON.stringify(UncheckedVCardWithButton.args, null, 2)}}/>`,
+      code: `<VCardWithButton {...${JSON.stringify(
+        UncheckedVCardWithButton.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -229,7 +239,11 @@ ColoredVCardWithButton.parameters = {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<VCardWithButton {...${JSON.stringify(ColoredVCardWithButton.args, null, 2)}}/>`,
+      code: `<VCardWithButton {...${JSON.stringify(
+        ColoredVCardWithButton.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -251,7 +265,37 @@ TranslatedVCardWithButton.parameters = {
       story: "Use to change the language that the text appears in.",
     },
     source: {
-      code: `<VCardWithButton {...${JSON.stringify(TranslatedVCardWithButton.args, null, 2)}}/>`,
+      code: `<VCardWithButton {...${JSON.stringify(
+        TranslatedVCardWithButton.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Animated VCardWithButton
+// -------------------------------------------------------------
+export const AnimatedVCardWithButton = Template.bind({});
+AnimatedVCardWithButton.args = {
+  ...Default.args,
+  withAnimation: {
+    animation: "fade",
+    duration: 0.5,
+    delay: 0,
+  },
+};
+AnimatedVCardWithButton.parameters = {
+  docs: {
+    description: {
+      story: "We can animate the appearance of VCardWithButton component",
+    },
+    source: {
+      code: `<VCardWithButton {...${JSON.stringify(
+        AnimatedVCardWithButton.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

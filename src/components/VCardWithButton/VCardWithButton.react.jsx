@@ -140,27 +140,19 @@ export default function VCardWithButton(props) {
   //-------------------------------------------------------------------
   const { content, withColor, imageLibrary, onClick } = props;
   //-------------------------------------------------------------------
-  // 2. Function to handle click
-  //-------------------------------------------------------------------
-  const handleClick = () => {
-    if (window.innerWidth <= 481) {
-      onClick(content);
-    }
-  };
-  //-------------------------------------------------------------------
-  // 3. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "v-card-with-button");
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 3. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 5. Get translation of the component
+  // 4. Get translation of the component
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
   //-------------------------------------------------------------------
-  // 6. Function to set image of the card
+  // 5. Function to set image of the card
   //-------------------------------------------------------------------
   const getBackground = () => {
     if (content?.image) {
@@ -187,7 +179,6 @@ export default function VCardWithButton(props) {
         style={{
           backgroundColor: withColor?.backgroundColor,
         }}
-        onClick={handleClick}
       >
         <div
           className="qui-v-card-image-container"
