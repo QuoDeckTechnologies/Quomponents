@@ -108,7 +108,7 @@ Default.args = {
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         answer: "Answer",
         purpose: "",
-        filter:""
+        filter:"None"
     },
     imageLibrary: [{
         id: "background-image",
@@ -160,7 +160,7 @@ PictureFuddleWithFeedbackWithSlideHeader.args = {
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         answer: "Answer",
         purpose: "",
-        filter:""
+        filter:"None"
     },
     slideId: 0,
     asVariant: "warning",
@@ -209,7 +209,7 @@ PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.args = {
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         answer: "Answer",
         purpose: "",
-        filter:""
+        filter:"None"
     },
     imageLibrary: [{
         id: 'background-image',
@@ -259,7 +259,7 @@ PictureFuddleWithFeedbackWithFilter.args = {
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         answer: "Answer",
         purpose: "",
-        filter: "blur"
+        filter: "Blur"
     },
     imageLibrary: [{
         id: "header-image",
