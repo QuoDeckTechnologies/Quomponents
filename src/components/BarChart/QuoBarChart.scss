@@ -1,3 +1,64 @@
-/* ================================================= */
-/* AccentLine Container Definitions */
-/* ================================================= */
+.qui-barchart-container {
+    background-color: #ffffff;
+    border-radius: 2em;
+    position: relative;
+    .qui-bar-player-count {
+        display: inline-block;
+        margin: 0.2em;
+    }
+    .qui-custom-tooltip {
+        position: relative;
+        background-color: black;
+        color: white;
+        border-radius: 0.5em;
+        width: fit-content;
+        height: fit-content;
+        padding: 0.5em;
+    }
+    .qui-tooltip-tringle {
+        position: absolute;
+        bottom: -0.6em;
+        left: 35%;
+        .qui-custom-tooltip-arrow {
+            border-left: 0.6em solid transparent;
+            border-right: 0.6em solid transparent;
+            border-top: 0.6em solid rgb(0, 0, 0);
+            z-index: 2;
+        }
+    }
+    .qui-barchart-active-month {
+        position: absolute;
+        top: 0.1em;
+        left: 1em;
+        width: fit-content;
+        font-weight: bolder;
+        font-family: "sans-serif";
+        transform: scaleY(1.3);
+        letter-spacing: -2px;
+    }
+    .qui-barchart-active-players {
+        position: absolute;
+        top: 3.2em;
+        left: 1.5em;
+        color: #aaaaaa;
+        width: fit-content;
+        font-weight: bold;
+        font-family: "sans-serif";
+    }
+}
+@media only screen and (min-width: 320px) {
+    .qui-barchart-active-month {
+        font-size: 1.5em;
+    }
+    .qui-barchart-active-players {
+        font-size: 0.9em;
+    }
+}
+@media only screen and (min-width: 418px) {
+    .qui-barchart-active-month {
+        font-size: 2em;
+    }
+    .qui-barchart-active-players {
+        font-size: 1.3em;
+    }
+}

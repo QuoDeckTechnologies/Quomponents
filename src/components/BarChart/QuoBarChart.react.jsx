@@ -1,20 +1,17 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
     Tooltip,
-    Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import faker from 'faker';
-import { motion } from "framer-motion";
+    BarChart,
+    XAxis,
+    Bar,
+    Cell,
+    ResponsiveContainer
+} from "recharts";
 import {
-    getAnimation,
     getQuommons,
+    getTranslation,
+
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./QuoBarChart.scss";
@@ -27,151 +24,152 @@ QuoBarChart.propTypes = {
     /**
        Barchart data should be passed in content field and it is required field  
       */
+    activeMonth: PropTypes.string,
     data: PropTypes.array,
     //=======================================
     // Quommon props
     //=======================================
     /**
-    Use to define standard component type
-    */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
-    /**
-    Use to define component size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
-    Use to float the component in parent container
-    */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
     Use to set Colors for accent line
     */
     withColor: PropTypes.shape({
-        accentColor: PropTypes.string,
+        activeBarColor: PropTypes.string,
+        barColor: PropTypes.string,
+        backgroundColor: PropTypes.string,
     }),
     /**
-    Use to define the entry animation of the component
-     */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-            "",
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
     }),
     /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
-    /**
-    Use to toggle the component taking the full width of the parent container
-    */
-    isFluid: PropTypes.bool,
+
 };
 
 QuoBarChart.defaultProps = {
-    data: [],
-    //=======================================
+    activeMonth: "January",
+    data: [{}],
+    //============================
     // Quommon props
     //=======================================
-    asVariant: "warning",
-    asSize: "normal",
-    asFloated: "none",
-
     withColor: null,
-    withAnimation: null,
-
+    withTranslation: null,
     isHidden: false,
-    isFluid: false,
 };
-
-
 /**
 ## Notes
-- The design system used for this component is HTML and CSS
-- The animation system used for this component is Framer Motion (framer-motion)
+- The design system used for this component is recharts
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function QuoBarChart(props) {
-    let { data } = props;
-    const [activeIndex, setActiveIndex] = useState(0)
-    const activeItem = data[activeIndex];
-    const handleClick = useCallback((index) => {
-        setActiveIndex(index);
-    }, [activeIndex]);
+    let { data, withColor } = props;
+    let [posData, setposData] = useState({});
+    const [newData, setNewData] = useState({ data, activeIndex: 0 });
 
-    ChartJS.register(
-        CategoryScale,
-        LinearScale,
-        BarElement,
-        Title,
-        Tooltip,
-        Legend
-    );
-
-    const options = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Chart.js Bar Chart',
-            },
-        },
-    };
-
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-    const barData = {
-        labels,
-        datasets: [
-            {
-                label: 'Dataset 1',
-                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            },
-            {
-                label: 'Dataset 2',
-                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-                backgroundColor: 'rgba(53, 162, 235, 0.5)',
-            },
-        ],
-    };
-
-
+    //-------------------------------------------------------------------
+    // Translate the text objects in case their is a dictionary provided
+    //-------------------------------------------------------------------
+    let monthName = props.activeMonth
+    let activePlayers = "Active Players"
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        let tObj = getTranslation(props.withTranslation);
+        if (tObj && props.activeMonth && props.activeMonth !== "") {
+            if (monthName === "January") monthName = tObj.months.january
+            if (monthName === "February") monthName = tObj.months.february
+            if (monthName === "March") monthName = tObj.months.march
+            if (monthName === "April") monthName = tObj.months.april
+            if (monthName === "May") monthName = tObj.months.may
+            if (monthName === "June") monthName = tObj.months.june
+            if (monthName === "July") monthName = tObj.months.july
+            if (monthName === "August") monthName = tObj.months.august
+            if (monthName === "September") monthName = tObj.months.september
+            if (monthName === "October") monthName = tObj.months.october
+            if (monthName === "November") monthName = tObj.months.november
+            if (monthName === "December") monthName = tObj.months.december
+        }
+        if (tObj && activePlayers !== "") {
+            activePlayers = tObj.activePlayers
+        }
+    }
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "bar-chart");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
 
-    const animate = getAnimation(props.withAnimation);
+    const customTooltip = ({ payload }) => {
+        return (
+            <div className="qui-custom-tooltip">
+                <div className={`qui-tooltip-tringle`}>
+                    <div className={`qui-custom-tooltip-arrow`} />
+                </div>
+                <i className="fas fa-users"></i>
+                <p className="qui-bar-player-count">{`${payload[0]?.value}`}</p>
+            </div>
+        );
+        return null;
+    };
+    const handleClick = (i) => {
+        let temp = {
+            ...newData
+        }
+        temp.activeIndex = i
+        setNewData(temp)
+    }
     // ========================= Render Function =================================
     return (
-        <div>
-            <Bar options={options} data={barData} />;
+        <div className="qui-barchart-container" style={{ backgroundColor: withColor?.backgroundColor }}>
+            <p className="qui-barchart-active-month">{monthName}</p>
+            <p className="qui-barchart-active-players">{activePlayers}</p>
+            <ResponsiveContainer height={500} >
+                <BarChart
+                    data={data}
+                    margin={{
+                        top: 110,
+                        right: 40,
+                        left: 40,
+                        bottom: 5,
+                    }}
+                    barSize={50}
+                >
+                    <XAxis
+                        tickLine={false}
+                        axisLine={false}
+                        dataKey="date"
+                        scale="point"
+                        padding={{ left: 10, right: 10 }}
+                    />
+                    <Tooltip
+                        position={{ x: posData.x - 20, y: posData.y - 60 }}
+                        content={customTooltip} />
+                    <Bar
+                        radius={10}
+                        onMouseOver={(data) => {
+                            setposData(data);
+                        }}
+                        dataKey="activePlayer"
+                        onClick={(data, i) => handleClick(i)}
+                    >
+                        {newData.data.map((entry, index) => (
+                            <Cell
+                                key={`cell-${index + 1}`}
+                                fill={index === newData.activeIndex ? withColor?.activeBarColor : withColor?.barColor}
+                            />
+                        ))}
+                    </Bar>
+                </BarChart>
+            </ResponsiveContainer>
         </div>
     );
 }

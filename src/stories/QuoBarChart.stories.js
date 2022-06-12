@@ -1,37 +1,40 @@
 import React from "react";
-import BarChart from "../components/BarChart/QuoBarChart.react";
+import QuoBarChart from "../components/BarChart/QuoBarChart.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        barchart: {
+            months: {
+                january: "जनवरी",
+                february: "फरवरी",
+                march: "मार्च",
+                april: "अप्रैल",
+                may: "मई",
+                june: "जून",
+                july: "जुलाई",
+                august: "अगस्त",
+                september: "सितम्बर",
+                october: "अक्टूबर",
+                november: "नवम्बर",
+                december: "दिसंबर"
+            },
+            activePlayers: "सक्रिय खिलाड़ी"
+        },
+    },
+});
 export default {
     title: "Design System/BarChart/BarChart",
-    component: BarChart,
+    component: QuoBarChart,
     argTypes: {
-        data: [],
-        asVariant: {
-            control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asSize: {
-            control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asFloated: {
-            control: "select",
-            options: ["left", "right", "none", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
+        activeMonth: "",
+        data: [{}],
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    accentColor: "",
+                    activeBarColor: "",
+                    barColor: "",
+                    backgroundColor: "",
                 },
             },
         },
@@ -51,12 +54,6 @@ export default {
                 defaultValue: false,
             },
         },
-        isFluid: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
     },
     decorators: [
         (story) => (
@@ -71,7 +68,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic BarChart for general-purpose use",
+        componentSubtitle: "Displays a BarChart for showing active players by date of perticular month",
         a11y: { disable: true },
         docs: { iframeHeight: 200 },
     },
@@ -79,121 +76,176 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <BarChart {...args} />;
+const Template = (args) => <QuoBarChart {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-        data: [{
-            name: 'Page A',
-            uv: 4000,
-            pv: 2400,
-            amt: 2400,
-        },
-        {
-            name: 'Page B',
-            uv: 3000,
-            pv: 1398,
-            amt: 2210,
-        },
-        {
-            name: 'Page C',
-            uv: 2000,
-            pv: 9800,
-            amt: 2290,
-        },
-        {
-            name: 'Page D',
-            uv: 2780,
-            pv: 3908,
-            amt: 2000,
-        },
-        {
-            name: 'Page E',
-            uv: 1890,
-            pv: 4800,
-            amt: 2181,
-        },
-        {
-            name: 'Page F',
-            uv: 2390,
-            pv: 3800,
-            amt: 2500,
-        },
-        {
-            name: 'Page G',
-            uv: 3490,
-            pv: 4300,
-            amt: 2100,
-        },],
-    asVariant: "warning",
-    asSize: "normal",
-    asFloated: "inline",
+    activeMonth: "June",
+    data: [
+        { date: "10", activePlayer: 260 },
+        { date: "11", activePlayer: 150 },
+        { date: "12", activePlayer: 130 },
+        { date: "13", activePlayer: 550 },
+        { date: "14", activePlayer: 200 },
+        { date: "15", activePlayer: 350 },
+        { date: "16", activePlayer: 200 },
+        { date: "17", activePlayer: 520 },
+        { date: "18", activePlayer: 210 },
+        { date: "19", activePlayer: 150 },
+        { date: "20", activePlayer: 150 },
+        { date: "21", activePlayer: 490 },
+    ],
     withColor: {
-        accentColor: "",
+        backgroundColor: "",
+        activeBarColor: "#FFBF00",
+        barColor: "#DDDDDD",
     },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
+    withTranslation: {
+        lang: "en",
+        tgt: "barchart",
+        dictionary: dictionary,
     },
     isHidden: false,
-    isFluid: false,
 };
 Default.parameters = {
     docs: {
         source: {
-            code: `<BarChart {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<QuoBarChart {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
 // -------------------------------------------------------------
-// Animated BarChart
+// Translated Bar Chart
 // -------------------------------------------------------------
-export const AnimatedBarChart = Template.bind({});
-AnimatedBarChart.args = {
-    ...Default.args,
-    withAnimation: {
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
+export const TranslatedBarChart = Template.bind({});
+TranslatedBarChart.args = {
+    activeMonth: "June",
+    data: [
+        { date: "10", activePlayer: 260 },
+        { date: "11", activePlayer: 150 },
+        { date: "12", activePlayer: 130 },
+        { date: "13", activePlayer: 550 },
+        { date: "14", activePlayer: 200 },
+        { date: "15", activePlayer: 350 },
+        { date: "16", activePlayer: 200 },
+        { date: "17", activePlayer: 520 },
+        { date: "18", activePlayer: 210 },
+        { date: "19", activePlayer: 150 },
+        { date: "20", activePlayer: 150 },
+        { date: "21", activePlayer: 590 },
+    ],
+    withColor: {
+        backgroundColor: "",
+        activeBarColor: "#FFBF00",
+        barColor: "#DDDDDD",
     },
+    withTranslation: {
+        lang: "hi",
+        tgt: "barchart",
+        dictionary: dictionary,
+    },
+    isHidden: false,
 };
-AnimatedBarChart.parameters = {
+TranslatedBarChart.parameters = {
     docs: {
-        description: {
-            story:
-                "Use to animate the entry of the BarChart with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
-        },
         source: {
-            code: `<AnimatedBarChart {...${JSON.stringify(
-                AnimatedBarChart.args,
-                null,
-                2
-            )}}/>`,
+            code: `<QuoBarChart {...${JSON.stringify(TranslatedBarChart.args, null, 2)}}/>`,
         },
     },
 };
 // -------------------------------------------------------------
-// Colored BarChart
+// colored Bar Chart
 // -------------------------------------------------------------
 export const ColoredBarChart = Template.bind({});
 ColoredBarChart.args = {
-    ...Default.args,
+    activeMonth: "June",
+    data: [
+        { date: "10", activePlayer: 260 },
+        { date: "11", activePlayer: 150 },
+        { date: "12", activePlayer: 130 },
+        { date: "13", activePlayer: 550 },
+        { date: "14", activePlayer: 200 },
+        { date: "15", activePlayer: 350 },
+        { date: "16", activePlayer: 200 },
+        { date: "17", activePlayer: 520 },
+        { date: "18", activePlayer: 210 },
+        { date: "19", activePlayer: 150 },
+        { date: "20", activePlayer: 150 },
+        { date: "21", activePlayer: 590 },
+    ],
     withColor: {
-        accentColor: "#ff1a1a",
-    }
+        backgroundColor: "#d5f1a8",
+        activeBarColor: "#000000",
+        barColor: "#FFBF00",
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "barchart",
+        dictionary: dictionary,
+    },
+    isHidden: false,
 };
 ColoredBarChart.parameters = {
     docs: {
-        description: {
-            story:
-                "Use to override the standard colors of the BarChart.",
-        },
         source: {
-            code: `<ColoredBarChart {...${JSON.stringify(
-                ColoredBarChart.args,
-                null,
-                2
-            )}}/>`,
+            code: `<QuoBarChart {...${JSON.stringify(ColoredBarChart.args, null, 2)}}/>`,
         },
     },
-}; 
+};
+// -------------------------------------------------------------
+// BarChartWith31Bars
+// -------------------------------------------------------------
+export const BarChartWith31Bars = Template.bind({});
+BarChartWith31Bars.args = {
+    activeMonth: "June",
+    data: [
+        { date: "1", activePlayer: 260 },
+        { date: "2", activePlayer: 150 },
+        { date: "3", activePlayer: 130 },
+        { date: "4", activePlayer: 550 },
+        { date: "5", activePlayer: 200 },
+        { date: "6", activePlayer: 350 },
+        { date: "7", activePlayer: 200 },
+        { date: "8", activePlayer: 520 },
+        { date: "9", activePlayer: 210 },
+        { date: "10", activePlayer: 150 },
+        { date: "11", activePlayer: 150 },
+        { date: "12", activePlayer: 590 },
+        { date: "13", activePlayer: 260 },
+        { date: "14", activePlayer: 150 },
+        { date: "15", activePlayer: 130 },
+        { date: "16", activePlayer: 550 },
+        { date: "17", activePlayer: 200 },
+        { date: "18", activePlayer: 350 },
+        { date: "19", activePlayer: 200 },
+        { date: "20", activePlayer: 520 },
+        { date: "21", activePlayer: 210 },
+        { date: "22", activePlayer: 150 },
+        { date: "23", activePlayer: 150 },
+        { date: "24", activePlayer: 590 },
+        { date: "25", activePlayer: 520 },
+        { date: "26", activePlayer: 210 },
+        { date: "27", activePlayer: 150 },
+        { date: "28", activePlayer: 150 },
+        { date: "29", activePlayer: 590 },
+        { date: "30", activePlayer: 150 },
+        { date: "31", activePlayer: 150 },
+    ],
+    withColor: {
+        backgroundColor: "#d5f1a8",
+        activeBarColor: "#000000",
+        barColor: "#FFBF00",
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "barchart",
+        dictionary: dictionary,
+    },
+    isHidden: false,
+};
+BarChartWith31Bars.parameters = {
+    docs: {
+        source: {
+            code: `<QuoBarChart {...${JSON.stringify(BarChartWith31Bars.args, null, 2)}}/>`,
+        },
+    },
+};
