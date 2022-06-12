@@ -1,24 +1,20 @@
 // Import npm packages
-import React, { useState ,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Button as MUIBTn, getAccordionUtilityClass } from "@mui/material";
 import { motion } from "framer-motion";
 import {
     getQuommons,
-    getTranslation,
     getAnimation,
 } from "../../../common/javascripts/helpers";
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./Icon.scss";
 import "../../../common/stylesheets/overrule.scss";
-import { Typography } from "@mui/material";
+
 Icon.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-
     /**
     Button Text has to be in content or passed as children to the component. Is optional if you only want an icon.
     */
@@ -31,10 +27,8 @@ Icon.propTypes = {
     Use for rounded corners or circular icon button 
     */
     isCircular: PropTypes.bool,
-
     // Quommon props
     //=======================================
-
     /**
     Use to define standard component type
     */
@@ -137,7 +131,6 @@ Icon.propTypes = {
     Use to toggle a loading state for the component
     */
     isLoading: PropTypes.bool,
-
     /**
     Button component must have the onClick function passed as props
     */
@@ -149,7 +142,6 @@ Icon.defaultProps = {
     //=======================================
     asEmphasis: "contained",
     isCircular: false,
-
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -170,40 +162,32 @@ Icon.defaultProps = {
     isLoading: false,
 };
 
-export default function Icon(props){
-    const[tilt,setTilt] = useState(false)
+export default function Icon(props) {
+    const [tilt, setTilt] = useState(false)
     useEffect(() => {
-        console.log(tilt)
     }, [tilt])
 
-    const handleTilt =() =>{
+    const handleTilt = () => {
         setTilt(true)
-        setTimeout(()=>{
+        setTimeout(() => {
             setTilt(false)
-        },300)
-        // props.onClick()
-    }
-    const check = () => {
-        // console.log("this")
-        props.onClick()
+        }, 300)
     }
 
     let quommonClasses = getQuommons(props);
-    if(props.isCircular)
-    quommonClasses.childClasses += `is-circular ${props.content === "" && props.withIcon ? "is-only-icon": ""}`;
+    if (props.isCircular)
+        quommonClasses.childClasses += `is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""}`;
 
-    // check();
     const animate = getAnimation(props.withAnimation);
 
-    //change in code not using the button anymore
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div onClick={handleTilt} className={`qui qui-btn ${quommonClasses.childClasses} ${quommonClasses.parentClasses} ${props.asEmphasis} ${props.asVariant}`}><div className ={`${tilt ? 'tilt':'notilt'} ${quommonClasses.childClasses}`}>{!props.isLoading && <i className={props.withIcon.icon}></i>}{props.isLoading && <div className="qui loading"><i className="fas fa-spinner"></i>PLEASE WAIT...</div>}</div>{!props.isLoading && <div className = {quommonClasses.childClasses}><p className= "qui-text">{props.content}</p></div>}
-                </div>
+            <div onClick={handleTilt} className={`qui qui-btn ${quommonClasses.childClasses} ${quommonClasses.parentClasses} ${props.asEmphasis} ${props.asVariant}`}><div className={`${tilt ? 'tilt' : 'notilt'} ${quommonClasses.childClasses}`}>{!props.isLoading && <i className={props.withIcon.icon}></i>}{props.isLoading && <div className="qui loading"><i className="fas fa-spinner"></i>PLEASE WAIT...</div>}</div>{!props.isLoading && <div className={quommonClasses.childClasses}><p className="qui-text">{props.content}</p></div>}
+            </div>
         </motion.div>
     )
 }

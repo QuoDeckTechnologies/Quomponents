@@ -169,6 +169,9 @@ ColoredAmplayfierDateBlock.args = {
 };
 ColoredAmplayfierDateBlock.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<ColoredAmplayfierDateBlock {...${JSON.stringify(
         ColoredAmplayfierDateBlock.args,
@@ -188,6 +191,9 @@ FloatedAmplayfierDateBlock.args = {
 };
 FloatedAmplayfierDateBlock.parameters = {
   docs: {
+    description: {
+      story: "Use to float a component left, right, inline or none.",
+    },
     source: {
       code: `<FloatedAmplayfierDateBlock {...${JSON.stringify(
         FloatedAmplayfierDateBlock.args,
@@ -207,6 +213,9 @@ CustomAmplayfierDateBlock.args = {
 };
 CustomAmplayfierDateBlock.parameters = {
   docs: {
+    description: {
+      story: "Use to provide date to component.",
+    },
     source: {
       code: `<CustomAmplayfierDateBlock {...${JSON.stringify(
         CustomAmplayfierDateBlock.args,
@@ -230,6 +239,9 @@ AnimatedAmplayfierDateBlock.args = {
 };
 AnimatedAmplayfierDateBlock.parameters = {
   docs: {
+    description: {
+      story: "We can animate the appearance of AmplayfierDateBlock",
+    },
     source: {
       code: `<AnimatedAmplayfierDateBlock {...${JSON.stringify(
         AnimatedAmplayfierDateBlock.args,
@@ -253,6 +265,9 @@ TranslatedAmplayfierDateBlock.args = {
 };
 TranslatedAmplayfierDateBlock.parameters = {
   docs: {
+    description: {
+      story: "Use to change the language that the text appears in.",
+    },
     source: {
       code: `<TranslatedAmplayfierDateBlock {...${JSON.stringify(
         TranslatedAmplayfierDateBlock.args,
