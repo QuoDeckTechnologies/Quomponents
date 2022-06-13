@@ -55,14 +55,6 @@ ContentLine.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
-    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -71,7 +63,7 @@ ContentLine.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    ContentLine component must have the onClick function passed as props to return label of the checkbox and checked/unchecked status
+    ContentLine component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
 };
@@ -85,7 +77,6 @@ ContentLine.defaultProps = {
     //=======================================
     withColor: null,
     withAnimation: null,
-    withTranslation: null,
     isHidden: false
 };
 
@@ -96,6 +87,7 @@ ContentLine.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 - Content props to display the ContentLine component.
 - Pass withColor props to change the styling of component.
+- If you pass icon in the content it will make the component as DeckLine component and if you  do not pass the icon it will make the component as TopicLine component.
 **/
 export default function ContentLine(props) {
     //-------------------------------------------------------------------
@@ -112,8 +104,8 @@ export default function ContentLine(props) {
     // 3. Conditional styling
     //-------------------------------------------------------------------
     let contentStyle = {
-        backgroundColor: props.isDisabled ? '#E8E8E8' : props.isActive ?  props.withColor?.backgroundColor ? props.withColor?.backgroundColor : '#FFBF00CC': '#FFFFFF',
-        color: props.withColor?.textColor ? props.withColor?.textColor : '#454545'
+        backgroundColor: props.isDisabled ? '#E8E8E8' : props.isActive ? props.withColor?.backgroundColor ? props.withColor?.backgroundColor : '#FFBF00CC' : '#FFFFFF',
+        color: props.isDisabled ? '#454545' : props.isActive ? props.withColor?.textColor ? props.withColor?.textColor : '#454545' : '#454545'
     }
 
     return (
@@ -123,11 +115,12 @@ export default function ContentLine(props) {
             className={`qui ${quommonClasses.parentClasses} qui-content-line-parent-class`}>
             {props.content &&
                 <div className={`${quommonClasses.childClasses}`} >
-                    <div className={`qui-content-line-container`} style={contentStyle}>
-                        <div className={`qui-content-line-icon-text-container`} style={{ color: contentStyle?.color }}>
-                        <i className={`${props.content?.icon} qui-content-line-icon`}></i>
-                          <div className={`qui-content-line-text`}>{props.content?.name}</div>  </div>
-                        <div className="qui-content-line-coins-text"><i className={`fas fa-angle-right`} style={{ color:props.withColor?.textColor}}></i></div>
+                    <div className={`qui-content-line-container`} style={contentStyle} onClick={props.onClick}>
+                        {props.content?.icon && <i className={`${props.content?.icon} qui-content-line-icon`}></i>}
+                        <div className={`qui-content-line-text`}>{props.content?.name}</div>
+                        <div className="qui-content-line-right-arrow">
+                            <i className={`fas fa-angle-right`} style={{ color: contentStyle.color }}></i>
+                        </div>
                     </div>
                 </div>}
         </motion.div>
