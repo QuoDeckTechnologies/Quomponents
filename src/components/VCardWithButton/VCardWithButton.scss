@@ -12,8 +12,8 @@
 .qui.qui-v-card-with-button .qui .qui-btn {
   width: 100%;
   padding: 0.6em;
-  box-shadow: 0px 6px 7px #0000004d;
-  margin-top: 1em;
+  box-shadow: 1px 5px 8px #0000003d;
+  margin: 0.5em 0 0.15em 0;
 }
 
 .qui .qui-v-card-image-container {
@@ -43,14 +43,10 @@
   background-color: #ffffff;
   border-radius: 0.6em;
   box-shadow: 0px 5px 10px #0000004a;
-  width: 15em;
 }
 
 .qui .qui-v-card-checkbox-container .fas.fa-check-square {
   filter: none;
-}
-
-.qui .qui-v-card-checkbox-container i {
   margin-bottom: 0.5em;
   font-size: 1.1em;
 }
@@ -66,7 +62,7 @@
   justify-content: space-between;
 }
 
-.qui .qui-v-card-text-container h4 {
+.qui .qui-v-card-text-container .qui-v-card-title {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   overflow: hidden;
@@ -77,13 +73,31 @@
   font-size: 1.2em;
 }
 
-.qui .qui-v-card-text-container p {
+.qui .qui-v-card-text-container .qui-v-card-description {
   width: 100%;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  margin: 0.5em 0;
+  margin: 0.3em 0 0.5em 0;
   font-size: 1.1em;
   color: #666666;
+}
+
+@media only screen and (min-width: 320px) {
+  .qui .qui-v-card-container {
+    width: 100%;
+  }
+  .qui .qui-v-card-text-container .qui-v-card-description {
+    font-size: 0.95em;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .qui .qui-v-card-container {
+    width: 14.5em;
+  }
+  .qui .qui-v-card-text-container .qui-v-card-description {
+    font-size: 1em;
+  }
 }

@@ -164,7 +164,7 @@ export const VCardWithDefaultImage = Template.bind({});
 VCardWithDefaultImage.args = {
   ...Default.args,
   content: {
-    id: "",
+    id: "default-id",
     name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
@@ -195,7 +195,7 @@ export const UncheckedVCardWithButton = Template.bind({});
 UncheckedVCardWithButton.args = {
   ...Default.args,
   content: {
-    id: "",
+    id: "default-id",
     name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",

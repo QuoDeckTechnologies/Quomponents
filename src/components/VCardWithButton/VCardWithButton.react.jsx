@@ -204,6 +204,7 @@ export default function VCardWithButton(props) {
         <div className="qui-v-card-text-container">
           <div className="qui-v-card-text">
             <h4
+              className="qui-v-card-title"
               style={{
                 color: withColor?.textColor,
               }}
@@ -211,6 +212,7 @@ export default function VCardWithButton(props) {
               {content?.name}
             </h4>
             <p
+              className="qui-v-card-description"
               style={{
                 color: withColor?.textColor,
               }}

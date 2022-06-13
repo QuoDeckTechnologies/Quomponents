@@ -132,7 +132,7 @@ describe("VCardWithButton", () => {
   it("should render correctly when passed content props", () => {
     component.setProps({
       content: {
-        id: "",
+        id: "default-id",
         name: "BALLOON BURST",
         description:
           "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
@@ -154,7 +154,7 @@ describe("VCardWithButton", () => {
   it("should render correctly when image key is not provided in content props", () => {
     component.setProps({
       content: {
-        id: "",
+        id: "default-id",
         name: "BALLOON BURST",
         description:
           "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
