@@ -155,18 +155,13 @@ export default function PdfViewer(props) {
   //-------------------------------------------------------------------
   //  handleScroll is used when user scrolling through document 
   //------------------------------------------------------------------- 
+  let pageRef = React.useRef()
   let handleScroll = (event) => {
     if (data?.pdf) {
       let pageHeight =
-        Math.floor(
-          document.getElementsByClassName("react-pdf__Document")[0]
-            .clientHeight / numPages,
-          0
-        ) - 5;
+        document.getElementsByClassName('react-pdf__div')[0]?.clientHeight - 5
       if (
-        event.target.scrollTop + window.innerHeight >
-        (seenPages + 1) * pageHeight ||
-        event.target.scrollLeft + window.innerWidth >
+        event?.target.scrollTop + window.innerHeight >
         (seenPages + 1) * pageHeight
       ) {
         setSeenPages(seenPages + 1)
@@ -199,13 +194,16 @@ export default function PdfViewer(props) {
           onClick={() => setShowSlider(preState => !preState)}
         >
           {Array.from(new Array(numPages), (el, index) => (
-            <Page
-              scale={rotate ? 50 / 50 : zoom >= 22 ? zoom / 50 : 22 / 50}
-              size="A4"
-              rotate={rotate ? 90 : 0}
-              width={rotate ? rotatedWidth : width}
-              key={`page_${index + 1}`}
-              pageNumber={index + 1} />
+            <div className="react-pdf__div" key={`div_${index + 1}`}>
+              <Page
+                ref={pageRef}
+                scale={rotate ? 50 / 50 : zoom >= 22 ? zoom / 50 : 22 / 50}
+                size="A4"
+                rotate={rotate ? 90 : 0}
+                width={rotate ? rotatedWidth : width}
+                key={`page_${index + 1}`}
+                pageNumber={index + 1} />
+            </div>
           ))}
         </Document>
         {data?.pdf &&

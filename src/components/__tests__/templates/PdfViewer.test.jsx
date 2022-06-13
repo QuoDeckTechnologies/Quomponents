@@ -9,13 +9,16 @@ import { render } from "@testing-library/react";
 // -------------------------------------
 import PdfViewer from "../../Templates/PdfViewer/PdfViewer.react";
 import Slider from "../../Slider/Slider.react";
-import { Document } from 'react-pdf';
+import { Document, Page } from 'react-pdf';
 
 describe("PdfViewer", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
+  const setState = jest.fn();
+  const useStateSpy = jest.spyOn(React, 'useState');
+  useStateSpy.mockImplementation(initialState => [initialState, setState]);
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -277,19 +280,6 @@ describe("PdfViewer", () => {
     component.setProps({ isDisabled: true })
     expect(component.exists()).toBe(true);
   })
-  it('should render correctly when scroll gets trigger', () => {
-    // const mEvent = {
-    //   target: { scrollTop: 100, scrollLeft: 50, clientHeight: 100 },
-    // };
-    component.find('.qui-pdf-viewer').simulate('scroll')
-    // component.find('.qui-pdf-viewer').simulate('scroll', mEvent)
-    // component.find('.qui-pdf-viewer').simulate('scroll', mEvent)
-  });
-  it('should run on handleScroll', () => {
-    const pdf = shallow((<PdfViewer handleCompletion={jest.fn()} />));
-    pdf.find('.qui-pdf-viewer').simulate('scroll');
-    expect(component.exists()).toBe(true);
-  });
   it("should render correctly without throwing error when document gets loaded to screen", () => {
     component.setProps({
       data: {
@@ -324,4 +314,42 @@ describe("PdfViewer", () => {
     })
     component.find(".react-Pdf__Document")
   })
+  it("should render when page height gets set", () => {
+    component.setProps({
+      data: {
+        pdf: {
+          id: "pdf",
+          extention: ".pdf"
+        }
+      },
+      docLibrary: [{
+        id: "pdf",
+        doc: "test.pdf"
+      }]
+    })
+  })
+  it('should run on handleScroll', () => {
+    const pdfDoc = shallow((<PdfViewer handleCompletion={jest.fn()}
+      data={{
+        pdf: {
+          id: "pdf",
+          extention: ".pdf"
+        }
+      }}
+      docLibrary={[{
+        id: "pdf",
+        doc: "test.pdf"
+      }]}
+    />));
+    const mEvent = {
+      target: {
+        scrollWidth: 100,
+        scrollTop: 1200,
+        scrollLeft: 50,
+        clientWidth: 50,
+      },
+    };
+    pdfDoc.find('.qui-pdf-viewer').simulate('scroll', mEvent);
+    // pdfDoc.find(".qui-pdf-viewer").props("handleCompletion")({ target: { value: 12 } })
+  });
 });
