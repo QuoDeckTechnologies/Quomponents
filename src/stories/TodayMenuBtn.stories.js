@@ -5,12 +5,17 @@ export default {
     title: "Design System/TodayMenuBtn/TodayMenuBtn",
     component: TodayMenuBtn,
     argTypes: {
-        content: {},
+        content: "",
         withIcon: "",
-        isActive:{
+        asEmphasis: {
+            control: "select",
+            options: ["Default", "Complete", "Active"]
+        },
+        asFloated: {
+            control: "select",
+            options: ["left", "right", "none", "inline"],
             table: {
-                category: "is-Toggles",
-                defaultValue: false,
+                category: "as-Flags",
             },
         },
         withColor: {
@@ -19,6 +24,17 @@ export default {
                 defaultValue: {
                     backgroundColor: "",
                     textColor: "",
+                    iconColor: ""
+                },
+            },
+        },
+        withAnimation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    animation: "",
+                    duration: 0,
+                    delay: 0,
                 },
             },
         },
@@ -70,8 +86,9 @@ const Template = (args) => <TodayMenuBtn {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: "Home",
-    withIcon: "",
-    isActive:false,
+    withIcon: "fas fa-certificate",
+    asEmphasis: "Default",
+    asFloated: "none",
     withColor: {
         backgroundColor: "",
         textColor: "",

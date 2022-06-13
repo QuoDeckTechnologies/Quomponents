@@ -25,9 +25,9 @@ TodayMenuBtn.propTypes = {
     */
     withIcon: PropTypes.string,
     /**
-    Use to define the state of component
+    Set action emphasis in increasing order 
     */
-    isActive: PropTypes.bool,
+    asEmphasis: PropTypes.oneOf(["Default", "Complete", "Active"]),
 
     // Quommon props
     //=======================================
@@ -39,6 +39,10 @@ TodayMenuBtn.propTypes = {
         textColor: PropTypes.string,
         iconColor: PropTypes.string
     }),
+    /**
+    Use to float the component in parent container
+    */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
     Use to show/hide the component
     */
@@ -56,12 +60,16 @@ TodayMenuBtn.propTypes = {
 TodayMenuBtn.defaultProps = {
     // Component Specific props
     //=======================================
-    content: {},
+    content: "Home",
+    withIcon: "fas fa-home",
+    asEmphasis:"Default",
 
     // Quommon props
     //=======================================
+    asFloated:"left",
     withColor: null,
-    isHidden: false
+    isHidden: false,
+    isDisabled:false
 };
 
 /**
@@ -70,7 +78,7 @@ TodayMenuBtn.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 - Content props to display the TodayMenuBtn component.
-- Pass withColor props to change the styling of component.
+- Pass withColor props to change the styling of default component and the rest of emphasis component has static stylings i.e. for active and complete.
 **/
 export default function TodayMenuBtn(props) {
     //-------------------------------------------------------------------
@@ -83,14 +91,45 @@ export default function TodayMenuBtn(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
+    //-------------------------------------------------------------------
+    // 3. Conditional styling
+    //-------------------------------------------------------------------
+    let defaultBackgroundColor, completeColor, activeColor, defaultIconColor, completeIconColor, activeIconColor, defaultTextColor, completeTextColor, activeTextColor;
+    defaultBackgroundColor = props.withColor?.backgroundColor ? props.withColor?.backgroundColor : "#ED6E6E";
+    completeColor = "#C1DC9E";
+    activeColor = "#222A35";
+    defaultIconColor = props.withColor?.iconColor ? props.withColor?.iconColor : "#FFFFFF";
+    completeIconColor = "#52AF50";
+    activeIconColor = "#FFCA36";
+    defaultTextColor = props.withColor?.textColor ? props.withColor?.textColor : "#FFFFFF";
+    completeTextColor = "#454545";
+    activeTextColor = "#FFFFFF";
+
+    let colors = {
+        backgroundColor: props.asEmphasis === "Active" ? activeColor : props.asEmphasis === "Complete" ? completeColor : defaultBackgroundColor,
+        textColor: props.asEmphasis === "Active" ? activeTextColor : props.asEmphasis === "Complete" ? completeTextColor : defaultTextColor,
+        iconColor: props.asEmphasis === "Active" ? activeIconColor : props.asEmphasis === "Complete" ? completeIconColor : defaultIconColor
+    }
+
+    //-------------------------------------------------------------------
+    // 4. Conditional Icons
+    //-------------------------------------------------------------------
+    let icon = props.asEmphasis === "Active" ? "fas fa-certificate" : props.asEmphasis === "Complete" ? "fas fa-check-circle" : props.withIcon;
+
     return (
         <motion.div
             initial={animate?.from}
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}>
-            {props.content &&
-                <div className={`${quommonClasses.childClasses}`} >
-                {props.content}
+            {(props.content || props.withIcon) &&
+                <div className={`${quommonClasses.childClasses} qui-today-menu-btn-container`} style={{ backgroundColor: colors.backgroundColor }}
+                    onClick={props.onClick}>
+                    {props.withIcon && <i className={`${icon} qui-content-line-icon`} style={{ color: colors?.iconColor }} />}
+                    {props.content !== "" &&
+                        <div className={`qui-content-line-text`} style={{ color: colors?.textColor, marginLeft: props.withIcon ? " 0.5em" : "0" }} >
+                            {props.content}
+                        </div>
+                    }
                 </div>}
         </motion.div>
     );
