@@ -37,14 +37,28 @@
     }
   }
 }
-@media only screen and (min-width: 321px) {
+@media only screen and (min-width: 320px) {
   .qui .qui-h-card-image-container {
     height: auto;
-    width: 5em;
+    width: 30%;
+  }
+  .qui .qui-h-card-text-container {
+    width: 70%;
+    font-size: 0.8em;
   }
 }
 @media only screen and (min-width: 481px) {
   .qui .qui-h-card-image-container {
     width: 20em;
+  }
+  .qui .qui-h-card-text-container {
+    width: auto;
+    font-size: 1em;
+  }
+  .qui.qui-h-card-with-button .qui .qui-btn {
+    font-size: 0.8em;
+  }
+  .qui .qui-mobile-slide-container .qui-h-card-container {
+    height: 10em;
   }
 }

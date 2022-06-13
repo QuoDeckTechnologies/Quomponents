@@ -17,6 +17,7 @@ describe('MobileCarousel', () => {
         },
         name: "Component",
         description: "subtitle",
+        buttonText: "Check",
     }]
     beforeEach(() => {
         jest.resetAllMocks();

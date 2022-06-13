@@ -26,6 +26,7 @@ MobileCarousel.propTypes = {
         image: PropTypes.object,
         name: PropTypes.string,
         description: PropTypes.string,
+        buttonText: PropTypes.string,
     })).isRequired,
     /**
     MobileCarousel data should be passed imageLibrary
@@ -119,12 +120,11 @@ export default function MobileCarousel(props) {
         initialSlide: 1,
         slidesToScroll: 1,
         slidesToShow: 2,
-        centerMode: false,
+        centerMode: true,
         arrows: false,
         infinite: true,
         autoplay: false,
         autplaySpeed: 1000,
-        centerMode: true,
         pauseOnHover: false,
         centerPadding: "10",
         swipeToSlide: true,
@@ -142,7 +142,7 @@ export default function MobileCarousel(props) {
                         <div className="qui-mobile-slide-container "
                             key={"slider-" + index + Math.random()}>
                             <div className={`qui-mobile-slide `}>
-                                <HCard  {...props} content={slide} onClick={props.onClick} asVariant={props.asVariant} />
+                                <HCard  {...props} content={slide} onClick={props.onClick} asVariant={props.asVariant} buttonText={content?.buttonText} />
                             </div>
                         </div>
                     );

@@ -114,6 +114,7 @@ Default.args = {
         },
         name: "Sales Readiness",
         description: "Understand how to prepare yourself for that sale",
+        buttonText: "Submit",
     },
     {
         image: {
@@ -122,7 +123,7 @@ Default.args = {
         },
         name: "Pipeline Tracking",
         description: "Some important tips to optimize and power up your pipeline",
-
+        buttonText: "Try Again",
     },
     {
         image: {
@@ -131,7 +132,7 @@ Default.args = {
         },
         name: "GhostBuster",
         description: "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-
+        buttonText: "Check",
     }],
     imageLibrary: [
         {
