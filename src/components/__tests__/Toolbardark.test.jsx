@@ -79,34 +79,34 @@ describe("ToolbarDark", () => {
                 isHidden={false}
                 isFluid={false}
                 isCircular={true}
-                onClick={() => {}} />
+                onClick={() => { }} />
         );
     });
 
     it("ToolbarDark", () => {
-        component = shallow(<ToolbarDark onClick={() => {}} />);
+        component = shallow(<ToolbarDark onClick={() => { }} />);
 
     });
 
     it("should render correctly without throwing error",
         () => {
-        expect(component.exists()).toBe(true);
-    });
+            expect(component.exists()).toBe(true);
+        });
 
     it("should render correctly if variant is 'primary' and size is 'normal' ",
         () => {
-        component.setProps({
+            component.setProps({
                 asVariant: "primary",
                 asSize: "normal",
+            });
+            expect(component.exists()).toBe(true);
         });
-        expect(component.exists()).toBe(true);
-    });
 
     it("should render correctly if withColor props define null",
         () => {
-        component.setProps({ withColor: null });
-        expect(component.exists()).toBe(true);
-    });
+            component.setProps({ withColor: null });
+            expect(component.exists()).toBe(true);
+        });
 
     it("should render correctly without withColor prop", () => {
         component.setProps({
@@ -186,26 +186,26 @@ describe("ToolbarDark", () => {
 
     it("should render correctly with translation",
         () => {
-        component.setProps({
+            component.setProps({
                 withTranslation: {
                     lang: "hi",
                     tgt: "ToolbarDark",
                     dictionary: dictionary,
                 },
+            });
+            expect(component.exists()).toBe(true);
         });
-        expect(component.exists()).toBe(true);
-    });
 
     it("should render correctly with translation",
         () => {
-        component.setProps({
+            component.setProps({
                 withTranslation: {
                     lang: "hi",
                     tgt: "",
                     dictionary: dictionary,
                 },
+            });
+            expect(component.exists()).toBe(true);
         });
-        expect(component.exists()).toBe(true);
-    });
 });
 
