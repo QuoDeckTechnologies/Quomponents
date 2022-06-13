@@ -1,0 +1,50 @@
+.qui.qui-mobile-carousel-container.qui-mobile-carousel {
+  .slick-slider {
+    .slick-slide {
+      padding-bottom: 1em;
+    }
+  }
+  .qui-mobile-slide {
+    padding: 0.2em;
+  }
+}
+.qui .qui-mobile-slide-container {
+  .qui-h-card-container {
+    width: 100%;
+  }
+  .qui .qui-h-card-text-container {
+    padding: 0.5em 1em 1em 1em;
+    .qui-h-card-text {
+      height: 4em;
+      p {
+        display: -webkit-box;
+        -webkit-line-clamp: var(--line-clamp, 3);
+        -webkit-box-orient: vertical;
+        word-break: var(--word-break, "none");
+        overflow: hidden;
+        hyphens: auto;
+        text-align: var(--align, left);
+      }
+      h4 {
+        display: -webkit-box;
+        -webkit-line-clamp: var(--line-clamp, 1);
+        -webkit-box-orient: vertical;
+        word-break: var(--word-break, "none");
+        overflow: hidden;
+        hyphens: auto;
+        text-align: var(--align, left);
+      }
+    }
+  }
+}
+@media only screen and (min-width: 321px) {
+  .qui .qui-h-card-image-container {
+    height: auto;
+    width: 5em;
+  }
+}
+@media only screen and (min-width: 481px) {
+  .qui .qui-h-card-image-container {
+    width: 20em;
+  }
+}
