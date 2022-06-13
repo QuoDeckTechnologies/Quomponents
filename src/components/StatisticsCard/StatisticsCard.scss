@@ -1,9 +1,10 @@
-   .qui.qui-statistics-card {
+.qui.qui-statistics-card {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     color: #666666;
+    overflow:visible;
     .qui-segment {
         padding: 1em;
         width:7em ;
@@ -22,7 +23,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    .qui-statistics-card-title {
+    .qui-statistics-card-label {
         font-size: 1.25em;
         margin: 0;
         width: 100%;
@@ -38,7 +39,7 @@
         overflow: hidden;
         text-overflow: ellipsis;     
     }
-    .qui-statistics-card-titles {
+    .qui-statistics-card-labels {
         font-size: 1em;
         margin: 0;
         width: 100%;
@@ -46,5 +47,44 @@
         overflow: hidden;
         text-overflow: ellipsis;     
     }
+    .valuetooltip {
+        position: relative;
+        display: block;
+    }
+      
+    .valuetooltip .tooltipvalue {
+        visibility: hidden;
+        width: auto;
+        padding: 0.2em;
+        border-radius: 5px;
+        background-color: #121212;
+        color: #ffffff;
+        position: absolute;
+        left: 0;
+        z-index: 1;
+    }
+      
+    .valuetooltip:hover .tooltipvalue {
+        visibility: visible;
+    }
     
+    .labeltooltip {
+        position: relative;
+        display: block;
+    }
+    .labeltooltip .tooltiplabel {
+        visibility: hidden;
+        padding: 0.2em;
+        border-radius: 5px;
+        width: auto;
+        background-color: #121212;
+        color: #ffffff;
+        position: absolute;
+        left: 0;
+        z-index: 1;
+    }
+      
+    .labeltooltip:hover .tooltiplabel {
+        visibility: visible;
+    }    
 }

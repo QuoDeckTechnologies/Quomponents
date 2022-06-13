@@ -6,7 +6,7 @@ export default {
     component: StatisticsCard,
     argTypes: {
         content: {
-            title: "",
+            label: "",
             icon: "",
             value: "",
 
@@ -71,7 +71,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic StatisticsCard for general-purpose use",
+        componentSublabel: "Displays a basic StatisticsCard for general-purpose use",
         a11y: { disable: true },
         docs: { iframeHeight: 300 },
     },
@@ -85,7 +85,7 @@ const Template = (args) => (
 export const Default = Template.bind({});
 Default.args = {
     content: {
-        title: "PLAYERS",
+        label: "PLAYERS",
         icon: "fas fa-users",
         value: "20,539",
     },

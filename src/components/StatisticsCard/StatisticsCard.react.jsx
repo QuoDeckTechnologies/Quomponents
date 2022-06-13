@@ -8,6 +8,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./StatisticsCard.scss";
 import "../../common/stylesheets/overrule.scss";
+import { tooltipClasses } from "@mui/material";
 
 StatisticsCard.propTypes = {
     //=======================================
@@ -17,7 +18,7 @@ StatisticsCard.propTypes = {
     StatisticsCard can recieve content as props
     */
     content: PropTypes.shape({
-        title: PropTypes.string,
+        label: PropTypes.string,
         icon:PropTypes.string,
         value:PropTypes.string,
     }).isRequired,
@@ -103,7 +104,6 @@ function getColors(colors) {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function StatisticsCard(props) {
-
     const { content } = props;
     //-------------------------------------------------------------------
     // 1. Set the classes
@@ -133,12 +133,19 @@ export default function StatisticsCard(props) {
                     <i className={`qui-statistics-card-icon ${content?.icon}`}
                         style={colors?.accentColors}>
                     </i>
+                    <div className="valuetooltip">
                     <h1 className={props.content?.value.length >= 7 ? "qui-statistics-card-values" : "qui-statistics-card-value"} style={colors?.textColors}>
                         {content?.value}
                     </h1>
-                    <h3 className={props.content?.title.length >= 7 ? "qui-statistics-card-titles" : "qui-statistics-card-title"} style={colors?.textColors}>
-                        {content?.title}
+                    <span className="tooltipvalue">{content?.value}</span>
+                    </div>
+
+                    <div className="labeltooltip">
+                    <h3 className={props.content?.label.length >= 7 ? "qui-statistics-card-labels" : "qui-statistics-card-label"} style={colors?.textColors}>
+                        {content?.label}
                     </h3>
+                    <span className="tooltiplabel">{content?.label}</span>
+                    </div>
                 </>
             </Segment>
         </motion.div>

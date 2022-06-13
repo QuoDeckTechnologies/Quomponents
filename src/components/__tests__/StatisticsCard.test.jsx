@@ -20,7 +20,7 @@ describe("StatisticsCard", () => {
         component = shallow(
             <StatisticsCard
                 content={{
-                    title: "play",
+                    label: "play",
                     icon: "fa fa-home",
                     value: "2222"
                 }}
@@ -145,12 +145,12 @@ describe("StatisticsCard", () => {
         expect(component.exists()).toBe(true);
     });
     
-    it("should render correctly when set value and title in content props properly",
+    it("should render correctly when set value and label in content props properly",
         () => {
             const component = renderer.create(<StatisticsCard
                 content={{
                     value: "202,0202",
-                    title:"playersIcon"
+                    label:"playersIcon"
                 }}
             />)
         });
