@@ -13,16 +13,25 @@ describe("CategoryCard", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
+    let onClick = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
             <CategoryCard
                 content={null}
+                imageLibrary={[
+                    {
+                        id: "categorycard-image",
+                        image: "categorycard-image.png",
+                    },
+                ]}
                 asFloated="none"
                 withColor={null}
                 withAnimation={null}
                 isHidden={false}
+                isDisabled={false}
+                onClick={onClick}
             />
         );
     });
@@ -33,9 +42,10 @@ describe("CategoryCard", () => {
 
     it("should render correctly when passed content prop contain value", () => {
         let contentData = {
-            label: "Regulatory",
-            image: "img.png",
-            percentage: 80,
+            id: "categorycard",
+            name: "Regulatory",
+            image: { id: "categorycard-image", extention: "" },
+            viewedPercentage: 80,
         }
         component.setProps({ content: contentData })
         expect(component.exists()).toBe(true);
@@ -95,6 +105,16 @@ describe("CategoryCard", () => {
 
     it("should render correctly when passed isHidden props as true", () => {
         component.setProps({ isHidden: true })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed isDisabled props as false", () => {
+        component.setProps({ isDisabled: false })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed isDisabled props as true", () => {
+        component.setProps({ isDisabled: true })
         expect(component.exists()).toBe(true);
     });
 });
