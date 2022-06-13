@@ -12,6 +12,7 @@ describe("DataExporter", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
+    global.URL.createObjectURL = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();

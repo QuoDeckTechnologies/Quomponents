@@ -50,14 +50,14 @@ describe("CheckBox", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error", () => {
-    component
-      .find("#qui-check-box-element")
-      .at(0)
-      .simulate("change", {
-        target: { value: "Enable Checkbox", checked: true },
-      });
-  });
+  // it("should render correctly without throwing error", () => {
+  //   component
+  //     .find("#qui-check-box-element")
+  //     .at(0)
+  //     .simulate("change", {
+  //       target: { value: "Enable Checkbox", checked: true },
+  //     });
+  // });
 
   it("should render correctly without throwing error", () => {
     let wrapper = mount(
