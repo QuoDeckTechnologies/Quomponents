@@ -100,6 +100,9 @@ ColoredHelpText.args = {
 };
 ColoredHelpText.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<HelpText {...${JSON.stringify(ColoredHelpText.args, null, 2)}}/>`,
     },
@@ -119,6 +122,9 @@ TranslatedHelpText.args = {
 };
 TranslatedHelpText.parameters = {
   docs: {
+    description: {
+      story: "Use to change the language that the text appears in.",
+    },
     source: {
       code: `<HelpText {...${JSON.stringify(
         TranslatedHelpText.args,

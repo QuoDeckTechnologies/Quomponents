@@ -151,6 +151,9 @@ WithoutActionButton.args = {
 };
 WithoutActionButton.parameters = {
   docs: {
+    description: {
+      story: "Displays a OptionalImageField without action button",
+    },
     source: {
       code: `<OptionalImageField {...${JSON.stringify(
         WithoutActionButton.args,
@@ -173,6 +176,9 @@ WithoutIcon.args = {
 };
 WithoutIcon.parameters = {
   docs: {
+    description: {
+      story: "Displays a OptionalImageField without icon button",
+    },
     source: {
       code: `<OptionalImageField {...${JSON.stringify(
         WithoutIcon.args,
@@ -196,6 +202,9 @@ WithCustomIcon.args = {
 };
 WithCustomIcon.parameters = {
   docs: {
+    description: {
+      story: "Displays a OptionalImageField with custom icon button",
+    },
     source: {
       code: `<OptionalImageField {...${JSON.stringify(
         WithCustomIcon.args,
@@ -219,6 +228,9 @@ ColoredOptionalImageField.args = {
 };
 ColoredOptionalImageField.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<OptionalImageField {...${JSON.stringify(
         ColoredOptionalImageField.args,
@@ -265,6 +277,9 @@ AnimatedOptionalImageField.args = {
 };
 AnimatedOptionalImageField.parameters = {
   docs: {
+    description: {
+      story: "We can animate the appearance of OptionalImageField",
+    },
     source: {
       code: `<OptionalImageField {...${JSON.stringify(
         AnimatedOptionalImageField.args,
