@@ -8,20 +8,16 @@ import "./Avatar.scss";
 import "../../../common/stylesheets/overrule.scss";
 
 Avatar.propTypes = {
-    
-    
     //=======================================
     // Component specific prop
     //=======================================
     /**
     Use to define component user image
     */
-    withUser : PropTypes.string,
-
+    withUser: PropTypes.string,
     //=======================================
     // Quommon props
     //=======================================
-
     /**
     Use to define standard component type
     */
@@ -75,8 +71,7 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-
-    withUser : "",
+    withUser: "",
     // ======================================
     // Quommon props
     //=======================================
@@ -90,19 +85,15 @@ Avatar.defaultProps = {
     isHidden: false,
     isDisabled: false,
 };
-
-
 /**
 ## Notes
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function Avatar(props) {
-
     //-------------------------------------------------------------------
     // 1. Set the color
     //-------------------------------------------------------------------
-
     let colors = {
         backgroundColor: props.withColor?.backgroundColor,
         color: props.withColor?.textColor
@@ -111,14 +102,11 @@ export default function Avatar(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
-    
     quommonClasses.childClasses += ` emp-contained`;
-
     //-------------------------------------------------------------------
     // 2. Get Avatar if provided, default is icon
     //-------------------------------------------------------------------
     const getAvatar = (icon, avatar) => {
-        let imgClasses = getQuommons(props);
         if (avatar) {
             return (
                 <img className={`qui-image `} src={avatar} alt='avatar' />
@@ -131,17 +119,14 @@ export default function Avatar(props) {
             )
         }
     }
-
     // ========================= Render Function =================================
-
-
     return (
-
-        <div className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`}
-        onClick={props.onClick}
+        <div
+            className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`}
+            onClick={props.onClick}
         >
             <div className={`qui-container qui-icon-container size-${props.asSize} variant-${props.asVariant}`}>
-                {getAvatar(props.withIcon,props.withUser)}
+                {getAvatar(props.withIcon, props.withUser)}
             </div>
         </div>
     );
