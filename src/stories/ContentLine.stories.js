@@ -59,7 +59,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a ContentLine with date and player's coins",
+        componentSubtitle: "Displays a DeckLine if we pass icon and Displays TopicLine if we do not pass icon",
         a11y: { disable: true },
         docs: { iframeHeight: 500 },
     },

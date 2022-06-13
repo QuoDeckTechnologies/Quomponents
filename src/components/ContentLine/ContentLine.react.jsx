@@ -71,13 +71,14 @@ ContentLine.propTypes = {
 ContentLine.defaultProps = {
     // Component Specific props
     //=======================================
-    content: {},
+    isActive: false,
 
     // Quommon props
     //=======================================
     withColor: null,
     withAnimation: null,
-    isHidden: false
+    isHidden: false,
+    isDisabled: false
 };
 
 /**
