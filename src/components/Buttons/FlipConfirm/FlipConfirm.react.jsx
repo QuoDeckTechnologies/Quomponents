@@ -195,14 +195,15 @@ export default function FlipConfirm(props) {
     let withConfirmation = props.withConfirmation;
     const [mode, setMode] = useState(false);
     const buttonRef = useRef(null);
+
     // Click Handlers
     // ----------------------
     function frontClick(event) {
-        var mx = event.clientX - buttonRef.current?.offsetLeft,
-            my = event.clientY - buttonRef.current?.offsetTop;
+        var mx = event.clientX - buttonRef.current.offsetLeft,
+            my = event.clientY - buttonRef.current.offsetTop;
 
-        var w = buttonRef.current?.offsetWidth,
-            h = buttonRef.current?.offsetHeight;
+        var w = buttonRef.current.offsetWidth,
+            h = buttonRef.current.offsetHeight;
 
         var directions = [
             { id: "top", x: w / 2, y: 0 },
@@ -215,7 +216,7 @@ export default function FlipConfirm(props) {
             return distance(mx, my, a.x, a.y) - distance(mx, my, b.x, b.y);
         });
 
-        buttonRef.current?.setAttribute("data-direction", directions.shift().id);
+        buttonRef.current.setAttribute("data-direction", directions.shift().id);
         setMode(true);
     }
 
