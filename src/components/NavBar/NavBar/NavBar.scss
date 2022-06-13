@@ -1,68 +1,108 @@
 .qui .qui-navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .qui .qui-left-navbar {
-    display: flex;
-    align-items: center;
-    width: auto;
+  display: flex;
+  align-items: center;
+  width: auto;
 }
+
+.qui.qui-NavBar .qui-left-navbar .qui-btn {
+  padding: 0;
+}
+
+.qui.qui-NavBar .qui-left-navbar .qui.qui-icon-link {
+  overflow: visible;
+  margin-right: 0.4em;
+  .qui-btn {
+    min-height: 0;
+  }
+}
+
 .qui .qui-right-navbar {
-    display: flex;
-    align-items: center;
-    width: auto;
-    padding-right: .5em;
+  display: flex;
+  align-items: center;
+  width: auto;
 }
-.qui .logoimg {
-    margin-left: 0.35em;
-    height: 3em;
-    width: 2.7em;
-    filter: drop-shadow(1px 1px 0.8px rgb(150, 146, 146));
+
+.qui .qui-logo-img {
+  height: 3em;
+  margin: 0 0.3em 0 0;
+  filter: drop-shadow(1px 1px 0.8px #0000002a);
 }
+
+.qui .qui-full-logo-img {
+  height: 3em;
+}
+
 .qui .qui-content {
-    font-weight: bolder;
-    color: #000000;
-    margin-left: 2.2em;
-    transform: scale(2, 3.45);
-    text-transform: uppercase;
-    filter: drop-shadow(1px 1px 0.8px rgb(150, 146, 146));
+  font-weight: bolder;
+  font-size: 2em;
+  color: #000000;
+  text-transform: uppercase;
+  transform: scaleY(1.5);
+  filter: drop-shadow(1px 1px 0.8px rgb(150, 146, 146));
+  .qui-nav-bar-title {
+    margin: 0;
+    margin-bottom: 0.05em;
+    color: #222a35;
+  }
 }
+
 .qui .qui-searching {
-    font-size: 1em;
-    margin-right: 1em;
-    transform: scale(2.25, 2.5);
-    filter: drop-shadow(2.5px 2.5px 1.2px rgb(150, 146, 146));
+  font-size: 2.6em;
+  margin-right: 0.3em;
+  filter: drop-shadow(5px 5px 1.5px #0000003a);
 }
+
 .qui .qui-right-navbar .qui-AppMenu {
-    font-size: 1em;
-    filter: drop-shadow(1px 1px 2px rgb(150, 146, 146));
+  font-size: 1em;
+  filter: drop-shadow(1px 1px 2px rgb(150, 146, 146));
 }
+
 .qui .qui-navbar-container {
-    width: 100%;
+  width: 100%;
 }
+
 .qui .size-normal .fa-angle-left {
-    font-size: 3.5em;
-    margin-top: -0.01em;
-    margin-right: -0.1em;
+  //   font-size: 3.5em;
+  //   margin-top: -0.01em;
+  margin-right: 0em;
 }
+
+.qui .qui-nav-bar-menu-icon-element {
+  height: 0.3em;
+  width: 2em;
+  background-color: #ed6e6e;
+  border-radius: 0.2em;
+  &.qui-nav-bar-menu-element-middle {
+    margin: 0.3em 0;
+    background-color: #ed6e6e9a;
+  }
+}
+
 .qui .qui-appMenuContainer {
-    display: flex;
-    border-radius: 20%;
+  display: flex;
+  border-radius: 20%;
 }
 
 @media screen and (min-width: 320px) {
-    .qui-navbar-container {
-        font-size: 0.55em;
-    }
+  .qui-navbar-container {
+    font-size: 0.55em;
+  }
 }
+
 @media screen and (min-width: 481px) {
-    .qui-navbar-container {
-        font-size: .8em;
-    }
+  .qui-navbar-container {
+    font-size: 0.8em;
+  }
 }
+
 @media screen and (min-width: 769px) {
-    .qui-navbar-container {
-        font-size: 1.2em;
-    }
+  .qui-navbar-container {
+    font-size: 1.2em;
+  }
 }
