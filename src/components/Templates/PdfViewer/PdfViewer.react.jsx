@@ -189,7 +189,7 @@ export default function PdfViewer(props) {
     >{data && data?.pdf && docLibrary ?
       <div className="qui-pdf-container">
         < Document
-          file={data?.pdf?.id ? resolveDocument(data.pdf?.id, props?.docLibrary) : "No data"}
+          file={resolveDocument(data.pdf?.id, props?.docLibrary)}
           onLoadSuccess={onDocumentLoadSuccess}
           onClick={() => setShowSlider(preState => !preState)}
         >
