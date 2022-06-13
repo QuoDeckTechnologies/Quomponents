@@ -1,0 +1,128 @@
+.qui.qui-h-card-with-button {
+  overflow: visible;
+}
+
+.qui.qui-h-card-with-button .qui.qui-button {
+  overflow: visible;
+  .MuiButton-root.MuiButton-text {
+    box-shadow: none;
+  }
+}
+
+.qui.qui-h-card-with-button .qui .qui-btn {
+  width: 100%;
+  padding: 0.6em;
+  box-shadow: 0px 6px 10px #0000004d;
+  margin-top: 1em;
+}
+
+.qui .qui-h-card-image-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-top-left-radius: 0.6em;
+  border-bottom-left-radius: 0.6em;
+}
+
+.qui .qui-h-card-checkbox-container {
+  height: 2.5em;
+  width: 5em;
+  background-color: #666666;
+  color: #ffbf00;
+  border-top-left-radius: 7.5em;
+  border-top-right-radius: 7.5em;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.qui .qui-h-card-container {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 0.6em;
+  box-shadow: 0px 5px 10px #0000004a;
+}
+
+.qui .qui-h-card-checkbox-container .fas.fa-check-square {
+  filter: none;
+}
+
+.qui .qui-h-card-checkbox-container i {
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
+}
+
+.qui .qui-h-card-title {
+  white-space: normal;
+}
+
+.qui .qui-h-card-text-container {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.qui .qui-h-card-text-container h4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  margin: 0;
+  color: #666666;
+  width: 100%;
+}
+
+.qui .qui-h-card-text-container p {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  margin: 0.5em 0;
+  font-size: 1.1em;
+  color: #666666;
+}
+
+@media only screen and (min-width: 320px) {
+  .qui .qui-h-card-container {
+    width: 100%;
+  }
+  .qui .qui-h-card-checkbox-container {
+    display: none;
+  }
+  .qui .qui-h-card-image-container {
+    height: auto;
+    width: 7em;
+  }
+  .qui .qui-h-card-text-container h4 {
+    font-size: 1em;
+  }
+  .qui .qui-h-card-text-container p {
+    font-size: 1em;
+  }
+  .qui.qui-h-card-with-button .qui .qui-btn {
+    display: none;
+  }
+  .qui.qui-h-card-with-button {
+    cursor: pointer;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .qui .qui-h-card-container {
+    width: 30em;
+  }
+  .qui .qui-h-card-checkbox-container {
+    display: flex;
+  }
+  .qui .qui-h-card-image-container {
+    width: 20em;
+  }
+  .qui.qui-h-card-with-button .qui .qui-btn {
+    display: block;
+  }
+  .qui.qui-h-card-with-button {
+    cursor: auto;
+  }
+}

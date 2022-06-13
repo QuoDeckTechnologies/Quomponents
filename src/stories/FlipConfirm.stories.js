@@ -428,7 +428,7 @@ TranslatedFlipButton.parameters = {
                             yes: "हां",
                             no: "नहीं",
                         },
-                
+
                     },
                 }
             )}}}}/>`,
