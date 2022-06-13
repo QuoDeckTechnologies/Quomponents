@@ -1,0 +1,19 @@
+/* ================================================= */
+/* Tag Definitions */
+/* ================================================= */
+.qui .qui-tag-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.6em;
+}
+.qui .qui-tag-label {
+    font-size: 1.2em;
+    padding: 0.2em 0.2em;
+    max-width: 37ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    font-weight: bold;
+    text-align: left;
+}

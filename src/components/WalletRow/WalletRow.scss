@@ -1,0 +1,44 @@
+.qui-wallet-row-parent-class {
+    width: 100%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin: 5px 0;
+}
+.qui-wallet-row-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 0.8em;
+    justify-content: space-between;
+}
+.qui-wallet-row-date {
+    align-self: left;
+    padding: 0.7em 0.3em 0.7em 0;
+    min-width: fit-content;
+    text-align: left;
+    margin: 0 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.qui-wallet-row-coins {
+    display: flex;
+    margin-right: 1em;
+    text-align: right;
+    padding: 0.7em 0.3em 0.7em 0;
+    flex: 1;
+    justify-content: flex-end;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.qui-wallet-row-coins-text {
+    margin-left: 0.2em;
+    text-align: right;
+}
+.qui-wallet-row-coins-number {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
