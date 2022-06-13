@@ -20,12 +20,10 @@ OverlayMenu.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-
     /**
     Use to define user image to component
     */
     withUser: PropTypes.string,
-
     /**
     Use to define buttons to component
     */
@@ -39,7 +37,6 @@ OverlayMenu.propTypes = {
     //=======================================
     // Quommon props
     //=======================================
-
     /**
     Use to define standard component type
     */
@@ -113,7 +110,6 @@ OverlayMenu.propTypes = {
         tgt: PropTypes.string,
         dictionary: PropTypes.string,
     }),
-
     /**
     Use to show/hide the component
     */
@@ -129,18 +125,16 @@ OverlayMenu.propTypes = {
 };
 
 OverlayMenu.defaultProps = {
-
-
     //=======================================
     // Component Specific props
     //=======================================
     /**
     In content you  can pass buttons as Grid Item
-     */
+    */
     content: [],
     /**
-     withUser contains the link to the progile image that can replace the profile default icon.
-     */
+    withUser contains the link to the progile image that can replace the profile default icon.
+    */
     withUser: "",
     //=======================================
     // Quommon props
@@ -176,8 +170,6 @@ export default function OverlayMenu(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props);
-
-
     //-------------------------------------------------------------------
     // 2. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
@@ -199,7 +191,6 @@ export default function OverlayMenu(props) {
     let colors = {
         backgroundColor: props.withColor?.backgroundColor,
     }
-
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -217,7 +208,6 @@ export default function OverlayMenu(props) {
                 initial={animate.from}
                 animate={animate.to}
                 className={` ${quommonClasses.parentClasses}`}
-
             >
                 <div className="qui-card">
                     <div className={"av-contain"} style={colors}>

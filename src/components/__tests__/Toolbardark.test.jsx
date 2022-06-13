@@ -1,5 +1,4 @@
-import { shallow, mount, render } from 'enzyme';
-import renderer from "react-test-renderer";
+import { shallow } from 'enzyme';
 
 //--------------------------------------
 // Import Components
@@ -188,7 +187,6 @@ describe("ToolbarDark", () => {
     it("should render correctly with translation",
         () => {
         component.setProps({
-
                 withTranslation: {
                     lang: "hi",
                     tgt: "ToolbarDark",
@@ -199,45 +197,15 @@ describe("ToolbarDark", () => {
     });
 
     it("should render correctly with translation",
-    () => {
-    component.setProps({
-
-            withTranslation: {
-                lang: "hi",
-                tgt: "",
-                dictionary: dictionary,
-            },
-    });
-          expect(component.exists()).toBe(true);
-   });
-    it("should render correctly with translation",
         () => {
-         component.setProps({
+        component.setProps({
                 withTranslation: {
-                    lang: "en",
-                    tgt: "ToolbarDark",
+                    lang: "hi",
+                    tgt: "",
                     dictionary: dictionary,
                 },
+        });
+        expect(component.exists()).toBe(true);
     });
-         expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly without tgt",
-    () => {
-     component.setProps({
-            withTranslation: {
-                lang: "en",
-                tgt: "",
-                dictionary: dictionary,
-            },
-            content: [
-                { label: "Certificate" },
-                { label: "Wallet" },
-                { label: "Rewards" },
-                { label: "Reports" },
-            ]
-    });
-     expect(component.exists()).toBe(true);
-});
 });
 

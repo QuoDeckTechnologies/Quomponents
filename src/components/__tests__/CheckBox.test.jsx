@@ -17,10 +17,8 @@ describe("CheckBox", () => {
     jest.resetAllMocks();
     component = shallow(
       <CheckBox
-        content={{ label: "Default Label", checked: false }}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        content={{ name: "Default Label", checked: false }}
+        onClick={() => {}}
       />
     );
   });
@@ -50,22 +48,78 @@ describe("CheckBox", () => {
     expect(component.exists()).toBe(true);
   });
 
+  it("should render correctly when asFloated is left", () => {
+    component.setProps({
+      asFloated: "left",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when asFloated is right", () => {
+    component.setProps({
+      asFloated: "right",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when asFloated is none", () => {
+    component.setProps({
+      asFloated: "none",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when asFloated is inline", () => {
+    component.setProps({
+      asFloated: "inline",
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isHidden props is false", () => {
+    component.setProps({
+      isHidden: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isCircular props is true", () => {
+    component.setProps({
+      isHidden: true,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isDisabled props is false", () => {
+    component.setProps({
+      isDisabled: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isDisabled props is true", () => {
+    component.setProps({
+      isDisabled: true,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
   it("should render correctly without throwing error", () => {
-    component
-      .find("#qui-check-box-element")
-      .at(0)
-      .simulate("change", {
-        target: { value: "Enable Checkbox", checked: true },
-      });
+    component.setProps({
+      content: {
+        name: "default-name",
+      },
+    });
+    component.find("#qui-check-box-element-default-name").simulate("change", {
+      target: { value: "Enable Checkbox", checked: true },
+    });
   });
 
   it("should render correctly without throwing error", () => {
     let wrapper = mount(
       <CheckBox
-        content={{ label: "Default Label", checked: false }}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        content={{ name: "Default Label", checked: false }}
+        onClick={() => {}}
       />
     );
     expect(wrapper.exists()).toBe(true);

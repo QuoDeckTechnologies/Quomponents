@@ -67,21 +67,6 @@ Ribbon.defaultProps = {
     isHidden: false,
 };
 
-function getColors(colors, hovered) {
-    let colorStyle = hovered
-        ? {
-            background: colors.hoverBackgroundColor,
-            color: colors.hoverTextColor,
-        }
-        : {
-            background: colors.backgroundColor,
-            color: colors.textColor,
-        }
-    if (!hovered)
-        colorStyle.borderColor = colors.backgroundColor
-    return colorStyle;
-}
-
 /**
 ## Notes
 - Pass inline styles to the component to override any of the component css
@@ -98,7 +83,7 @@ export default function Ribbon(props) {
     //-------------------------------------------------------------------
     // 2. Set the component colors
     //-------------------------------------------------------------------
-    let colors = props.withColor ? getColors(props.withColor) : {};
+    let colors = props.withColor;
 
     //-------------------------------------------------------------------
     // 3. Translate the text objects in case their is a dictionary provided
@@ -109,7 +94,7 @@ export default function Ribbon(props) {
         props.withTranslation.lang !== "en"
     ) {
         let tobj = getTranslation(props.withTranslation, "ribbon");
-        ribbonText = tobj[props.asEmphasis] ? tobj[props.asEmphasis] : props.asEmphasis;
+        ribbonText = tobj[props.asEmphasis];
     }
     
     // ========================= Render Function =================================
