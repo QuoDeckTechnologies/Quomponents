@@ -17,10 +17,8 @@ describe("CheckBox", () => {
     jest.resetAllMocks();
     component = shallow(
       <CheckBox
-        content={{ label: "Default Label", checked: false }}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        content={{ name: "Default Label", checked: false }}
+        onClick={() => {}}
       />
     );
   });
@@ -50,22 +48,22 @@ describe("CheckBox", () => {
     expect(component.exists()).toBe(true);
   });
 
-  // it("should render correctly without throwing error", () => {
-  //   component
-  //     .find("#qui-check-box-element")
-  //     .at(0)
-  //     .simulate("change", {
-  //       target: { value: "Enable Checkbox", checked: true },
-  //     });
-  // });
+  it("should render correctly without throwing error", () => {
+    component.setProps({
+      content: {
+        name: "default-name",
+      },
+    });
+    component.find("#qui-check-box-element-default-name").simulate("change", {
+      target: { value: "Enable Checkbox", checked: true },
+    });
+  });
 
   it("should render correctly without throwing error", () => {
     let wrapper = mount(
       <CheckBox
-        content={{ label: "Default Label", checked: false }}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        content={{ name: "Default Label", checked: false }}
+        onClick={() => {}}
       />
     );
     expect(wrapper.exists()).toBe(true);
