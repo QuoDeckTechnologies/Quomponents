@@ -60,11 +60,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 10.5em;
 }
 
 .qui .qui-v-card-text-container .qui-v-card-title {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   overflow: hidden;
   -webkit-box-orient: vertical;
   margin: 0;
