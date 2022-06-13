@@ -151,6 +151,9 @@ export default function Feedback(props) {
     //-------------------------------------------------------------------
     // 5. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
+    let correct ="Correct";
+    let incorrect ="Incorrect";
+    let thankyou ="Thankyou";
     let tObj;
     if (
     props.withTranslation?.lang &&
@@ -158,6 +161,9 @@ export default function Feedback(props) {
     props.withTranslation.lang !== "en"
     ) {
     tObj = getTranslation(props.withTranslation);
+    correct =tObj?.correct
+    incorrect =tObj?.incorrect
+    thankyou =tObj?.thankyou
     }
 
     let refinedFeedback = _.map(data?.feedback, (fb, index) => {
@@ -170,21 +176,21 @@ export default function Feedback(props) {
         if (index === 0) {
             res = {
                 ...res,
-                header: "Correct!",
+                header: correct,
                 icon: "fa fa-check",
                 colorClass: "qui-feedback-correct",
             };
         } else if (index === 1) {
             res = {
                 ...res,
-                header: "Incorrect!",
+                header: incorrect,
                 icon: "fa fa-times",
                 colorClass: "qui-feedback-incorrect"
             };
         } else {
             res = {
                 ...res,
-                header: "Thank You!",
+                header: thankyou,
                 icon: "fa fa-thumbs-up",
                 colorClass: "qui-feedback-thank-you"
             };

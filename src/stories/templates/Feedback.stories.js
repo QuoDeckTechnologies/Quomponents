@@ -3,9 +3,14 @@ import Feedback from "../../components/Templates/Feedback/Feedback.react";
 
 const dictionary = JSON.stringify({
     hi: {
-      feedback: { button: "जारी रखें" },
+        feedback: {
+            thankyou: "धन्यवाद",
+            correct: "सही",
+            incorrect: "गलत",
+            button:"जारी रखें",
+        }
     },
-});  
+});
 
 export default {
     title: "Design System/Templates/Feedback/Feedback",
