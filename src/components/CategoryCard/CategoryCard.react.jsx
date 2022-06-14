@@ -166,26 +166,24 @@ export default function CategoryCard(props) {
                                 </div>
                             }
                             <div className="qui-category-card">
-                                {content?.viewedPercentage && (
-                                    <div className="qui-category-card-pie-chart-container">
-                                        <div className="qui-category-card-pie-chart">
-                                            <CircularProgressbar
-                                                value={content.viewedPercentage}
-                                                strokeWidth={30}
-                                                styles={buildStyles({
-                                                    strokeLinecap: "butt",
-                                                    pathColor: withColor?.pathColor,
-                                                })}
-                                            />
-                                        </div>
-                                        <h2 className="qui-category-card-pie-chart-viewed-percentage">
-                                            {`${content?.viewedPercentage}%`}
-                                        </h2>
-                                        <div className={`qui-category-card-accent-line`}>
-                                            <AccentLine withColor={{ accentColor: withColor?.accentColor }} />
-                                        </div>
+                                <div className="qui-category-card-pie-chart-container">
+                                    <div className="qui-category-card-pie-chart">
+                                        <CircularProgressbar
+                                            value={content?.viewedPercentage}
+                                            strokeWidth={30}
+                                            styles={buildStyles({
+                                                strokeLinecap: "butt",
+                                                pathColor: withColor?.pathColor,
+                                            })}
+                                        />
                                     </div>
-                                )}
+                                    <h2 className="qui-category-card-pie-chart-viewed-percentage">
+                                        {`${content?.viewedPercentage}%`}
+                                    </h2>
+                                    <div className={`qui-category-card-accent-line`}>
+                                        <AccentLine withColor={{ accentColor: withColor?.accentColor }} />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </AmplayfierDrawerRect>
