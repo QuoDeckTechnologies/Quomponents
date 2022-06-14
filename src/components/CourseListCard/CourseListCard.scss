@@ -87,12 +87,16 @@
   width: 2em;
 }
 
+.qui .qui-course-list-card-checkbox-container {
+  display: flex;
+}
+
 @media only screen and (min-width: 320px) {
   .qui .qui-course-list-card-container {
     width: 100%;
   }
   .qui .qui-course-list-card-checkbox-container {
-    display: none;
+    font-size: 0.5em;
   }
   .qui .qui-course-list-card-image-container {
     height: auto;
@@ -111,7 +115,7 @@
     width: 28em;
   }
   .qui .qui-course-list-card-checkbox-container {
-    display: flex;
+    font-size: 1em;
   }
   .qui .qui-course-list-card-image-container {
     width: 22em;
