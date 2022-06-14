@@ -174,71 +174,73 @@ export default function VCardWithButton(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <div
-        className="qui-v-card-container"
-        style={{
-          backgroundColor: withColor?.backgroundColor,
-        }}
-      >
+      {content && (
         <div
-          className="qui-v-card-image-container"
+          className="qui-v-card-container"
           style={{
-            ...background,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundSize: "cover",
+            backgroundColor: withColor?.backgroundColor,
           }}
         >
-          {content?.checked && (
-            <div
-              className="qui-v-card-checkbox-container"
-              style={{ backgroundColor: withColor?.accentBackgroundColor }}
-            >
-              <i
-                className="fas fa-check-square"
-                style={{ color: withColor?.accentColor }}
-              ></i>
-            </div>
-          )}
-        </div>
-        <div className="qui-v-card-text-container">
-          <div className="qui-v-card-text">
-            <h4
-              className="qui-v-card-title"
-              style={{
-                color: withColor?.textColor,
-              }}
-            >
-              {content?.name}
-            </h4>
-            <p
-              className="qui-v-card-description"
-              style={{
-                color: withColor?.textColor,
-              }}
-            >
-              {content?.description}
-            </p>
-          </div>
-          <Button
-            {...props}
-            content={
-              tObj
-                ? tObj.buttonText
-                : content?.buttonText
-                ? content?.buttonText
-                : "click here"
-            }
-            isFluid={false}
-            withTranslation={null}
-            withColor={{
-              backgroundColor: withColor?.buttonBackgroundColor,
-              textColor: withColor?.buttonTextColor,
+          <div
+            className="qui-v-card-image-container"
+            style={{
+              ...background,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
             }}
-            onClick={() => onClick(content)}
-          />
+          >
+            {content?.checked && (
+              <div
+                className="qui-v-card-checkbox-container"
+                style={{ backgroundColor: withColor?.accentBackgroundColor }}
+              >
+                <i
+                  className="fas fa-check-square"
+                  style={{ color: withColor?.accentColor }}
+                ></i>
+              </div>
+            )}
+          </div>
+          <div className="qui-v-card-text-container">
+            <div className="qui-v-card-text">
+              <h4
+                className="qui-v-card-title"
+                style={{
+                  color: withColor?.textColor,
+                }}
+              >
+                {content?.name}
+              </h4>
+              <p
+                className="qui-v-card-description"
+                style={{
+                  color: withColor?.textColor,
+                }}
+              >
+                {content?.description}
+              </p>
+            </div>
+            <Button
+              {...props}
+              content={
+                tObj
+                  ? tObj.buttonText
+                  : content?.buttonText
+                  ? content?.buttonText
+                  : "click here"
+              }
+              isFluid={false}
+              withTranslation={null}
+              withColor={{
+                backgroundColor: withColor?.buttonBackgroundColor,
+                textColor: withColor?.buttonTextColor,
+              }}
+              onClick={() => onClick(content)}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </motion.div>
   );
 }
