@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -166,24 +167,27 @@ export default function CategoryCard(props) {
                                 </div>
                             }
                             <div className="qui-category-card">
-                                <div className="qui-category-card-pie-chart-container">
-                                    <div className="qui-category-card-pie-chart">
-                                        <CircularProgressbar
-                                            value={content?.viewedPercentage}
-                                            strokeWidth={30}
-                                            styles={buildStyles({
-                                                strokeLinecap: "butt",
-                                                pathColor: withColor?.pathColor,
-                                            })}
-                                        />
-                                    </div>
-                                    <h2 className="qui-category-card-pie-chart-viewed-percentage">
-                                        {`${content?.viewedPercentage}%`}
-                                    </h2>
-                                    <div className={`qui-category-card-accent-line`}>
-                                        <AccentLine withColor={{ accentColor: withColor?.accentColor }} />
-                                    </div>
-                                </div>
+                                {content?.viewedPercentage !== undefined &&
+                                    content?.viewedPercentage !== '' && (
+                                        <div className="qui-category-card-pie-chart-container">
+                                            <div className="qui-category-card-pie-chart">
+                                                <CircularProgressbar
+                                                    value={content?.viewedPercentage}
+                                                    strokeWidth={30}
+                                                    styles={buildStyles({
+                                                        strokeLinecap: "butt",
+                                                        pathColor: withColor?.pathColor,
+                                                    })}
+                                                />
+                                            </div>
+                                            <h2 className="qui-category-card-pie-chart-viewed-percentage">
+                                                {`${content?.viewedPercentage}%`}
+                                            </h2>
+                                            <div className={`qui-category-card-accent-line`}>
+                                                <AccentLine withColor={{ accentColor: withColor?.accentColor }} />
+                                            </div>
+                                        </div>
+                                    )}
                             </div>
                         </div>
                     </AmplayfierDrawerRect>
