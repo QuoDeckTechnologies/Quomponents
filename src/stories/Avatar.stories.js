@@ -119,7 +119,10 @@ ProfileIcon.args = {
   asVariant: "warning",
   asSize: "normal",
   asFloated: "inline",
-  withIcon: { icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg" },
+  withIcon: {
+    icon:
+      "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+  },
   withColor: {
     backgroundColor: "",
     textColor: "",

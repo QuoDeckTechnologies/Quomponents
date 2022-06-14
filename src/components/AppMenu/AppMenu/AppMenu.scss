@@ -2,11 +2,12 @@
   display: flex;
 }
 
-.qui.qui-AppMenu .qui-app-menu-label {
+.qui.qui-AppMenu .qui-menu-block-label {
   padding-left: 0.5em;
-  .qui-menu-block-seperator {
-    display: none;
-  }
+}
+
+.qui.qui-AppMenu .qui-menu-block-seperator {
+  display: none;
 }
 
 .qui-AppMenu {

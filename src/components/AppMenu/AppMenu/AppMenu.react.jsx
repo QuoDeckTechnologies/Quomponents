@@ -52,7 +52,6 @@ AppMenu.propTypes = {
   Use to add a heading label, a footer caption or a title popover to the component
   */
   withLabel: PropTypes.shape({
-    format: PropTypes.oneOf(["label", "caption", "popover"]),
     content: PropTypes.string,
   }),
   /**

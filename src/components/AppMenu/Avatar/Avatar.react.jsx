@@ -95,7 +95,7 @@ export default function Avatar(props) {
   let quommonClasses = getQuommons(props);
   quommonClasses.childClasses += ` emp-contained`;
   //-------------------------------------------------------------------
-  // 4. Set the user image or icon
+  // 3. Set the user image or icon
   //-------------------------------------------------------------------
   let loadingIcon = props.withIcon?.icon;
   let isImageIcon = null;
