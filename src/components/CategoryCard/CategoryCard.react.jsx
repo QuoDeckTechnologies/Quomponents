@@ -166,7 +166,7 @@ export default function CategoryCard(props) {
                                     {content?.name}
                                 </div>
                             }
-                            <div className="qui-category-card">
+                            <div className="qui-category-card-box">
                                 {content?.viewedPercentage !== undefined &&
                                     content?.viewedPercentage !== '' && (
                                         <div className="qui-category-card-pie-chart-container">
