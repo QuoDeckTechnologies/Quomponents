@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
-import  SliderPackage from "react-rangeslider";
+// import  SliderPackage from "react-rangeslider";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./Slider.scss";
@@ -90,7 +90,7 @@ export default function Slider(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div className={`qui-slider-container ${quommonClasses.childClasses}`}>
-        <SliderPackage
+        {/* <SliderPackage
           min={0}
           max={100}
           value={slideValue}
@@ -98,7 +98,7 @@ export default function Slider(props) {
             setSlideValue(value);
             props.onClick(slideValue);
           }}
-        />
+        /> */}
       </div>
     </motion.div>
   );

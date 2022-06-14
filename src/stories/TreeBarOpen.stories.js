@@ -17,7 +17,7 @@ export default {
   component: TreeBarOpen,
   argTypes: {
     pageHeader: "Page Header",
-    content: { TreeData: {}, props: {} },
+    content: { treeData: {}, props: {} },
     asFloated: {
       control: "select",
       options: ["left", "right", "none", "inline"],
@@ -109,7 +109,7 @@ export const Default = Template.bind({});
 Default.args = {
   pageHeader: "Courses",
   content: {
-    TreeData: {
+    treeData: {
       id: "allArticles",
       parentId: null,
       name: "Courses",
@@ -215,7 +215,7 @@ export const TranslatedTreeBar = Template.bind({});
 TranslatedTreeBar.args = {
   ...Default.args,
   content: {
-    TreeData: {
+    treeData: {
       id: "allArticles",
       parentId: null,
       name: "All Articles",

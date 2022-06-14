@@ -1,17 +1,17 @@
 import React from "react";
-import HCard from "../components/HCard/HCard.react";
+import VCardWithButton from "../components/VCardWithButton/VCardWithButton.react";
 
 const dictionary = JSON.stringify({
   hi: {
-    hCard: {
+    vCardWithButton: {
       buttonText: "प्रयत्न करें",
     },
   },
 });
 
 export default {
-  title: "Design System/HCard/HCard",
-  component: HCard,
+  title: "Design System/VCardWithButton/VCardWithButton",
+  component: VCardWithButton,
   argTypes: {
     content: {},
     asEmphasis: {
@@ -94,7 +94,8 @@ export default {
     },
   },
   parameters: {
-    componentSubtitle: "Displays a basic HCard for general-purpose use.",
+    componentSubtitle:
+      "Displays a basic VCardWithButton for general-purpose use.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 500,
@@ -105,7 +106,7 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <HCard {...args} />;
+const Template = (args) => <VCardWithButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: {
@@ -143,7 +144,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "hCard",
+    tgt: "vCardWithButton",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -152,18 +153,18 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<HCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<VCardWithButton {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// HCard with default image
+// VCard with default image
 // -------------------------------------------------------------
-export const HcardWithDefaultImage = Template.bind({});
-HcardWithDefaultImage.args = {
+export const VCardWithDefaultImage = Template.bind({});
+VCardWithDefaultImage.args = {
   ...Default.args,
   content: {
-    id: "",
+    id: "default-id",
     name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
@@ -172,47 +173,56 @@ HcardWithDefaultImage.args = {
     image: { id: "background-", extention: "" },
   },
 };
-HcardWithDefaultImage.parameters = {
+VCardWithDefaultImage.parameters = {
   docs: {
     description: {
-      story: "Displays a HCard with default image when image is not provided in image library",
+      story:
+        "Displays a VCardWithButton with default image when image is not provided in image library",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(HcardWithDefaultImage.args, null, 2)}}/>`,
+      code: `<VCardWithButton {...${JSON.stringify(
+        VCardWithDefaultImage.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Unchecked HCard
+// Unchecked VCardWithButton
 // -------------------------------------------------------------
-export const UncheckedHcard = Template.bind({});
-UncheckedHcard.args = {
+export const UncheckedVCardWithButton = Template.bind({});
+UncheckedVCardWithButton.args = {
   ...Default.args,
   content: {
-    id: "",
+    id: "default-id",
     name: "BALLOON BURST",
     description:
       "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
     buttonText: "try game",
     checked: false,
-    image: { id: "background-", extention: "" },
+    image: { id: "background-image", extention: "" },
   },
 };
-UncheckedHcard.parameters = {
+UncheckedVCardWithButton.parameters = {
   docs: {
     description: {
-      story: "Displays a HCard with checked props set as false",
+      story: "Displays a VCardWithButton with checked props set as false",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(UncheckedHcard.args, null, 2)}}/>`,
+      code: `<VCardWithButton {...${JSON.stringify(
+        UncheckedVCardWithButton.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Colored HCard
+// Colored VCardWithButton
 // -------------------------------------------------------------
-export const ColoredHcard = Template.bind({});
-ColoredHcard.args = {
+export const ColoredVCardWithButton = Template.bind({});
+ColoredVCardWithButton.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#fefae0",
@@ -223,35 +233,69 @@ ColoredHcard.args = {
     buttonTextColor: "#dda15e",
   },
 };
-ColoredHcard.parameters = {
+ColoredVCardWithButton.parameters = {
   docs: {
     description: {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(ColoredHcard.args, null, 2)}}/>`,
+      code: `<VCardWithButton {...${JSON.stringify(
+        ColoredVCardWithButton.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Translated HCard
+// Translated VCardWithButton
 // -------------------------------------------------------------
-export const TranslatedHcard = Template.bind({});
-TranslatedHcard.args = {
+export const TranslatedVCardWithButton = Template.bind({});
+TranslatedVCardWithButton.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "hCard",
+    tgt: "vCardWithButton",
     dictionary: dictionary,
   },
 };
-TranslatedHcard.parameters = {
+TranslatedVCardWithButton.parameters = {
   docs: {
     description: {
       story: "Use to change the language that the text appears in.",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(TranslatedHcard.args, null, 2)}}/>`,
+      code: `<VCardWithButton {...${JSON.stringify(
+        TranslatedVCardWithButton.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Animated VCardWithButton
+// -------------------------------------------------------------
+export const AnimatedVCardWithButton = Template.bind({});
+AnimatedVCardWithButton.args = {
+  ...Default.args,
+  withAnimation: {
+    animation: "fade",
+    duration: 0.5,
+    delay: 0,
+  },
+};
+AnimatedVCardWithButton.parameters = {
+  docs: {
+    description: {
+      story: "We can animate the appearance of VCardWithButton component",
+    },
+    source: {
+      code: `<VCardWithButton {...${JSON.stringify(
+        AnimatedVCardWithButton.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
