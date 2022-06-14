@@ -116,7 +116,6 @@ Default.args = {
   },
   withLabel: {
     content: "Catalog",
-    textColor: "#000000",
   },
   withTranslation: {
     lang: "en",
