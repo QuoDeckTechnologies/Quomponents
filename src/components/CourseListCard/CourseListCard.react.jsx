@@ -186,21 +186,22 @@ export default function CourseListCard(props) {
               {content?.description}
             </p>
           </div>
-          {content?.viewedPercentage && (
-            <div className="qui-course-list-card-chart-container">
-              <div className="qui-course-list-card-doughnut-chart">
-                <CircularProgressbar
-                  value={content.viewedPercentage}
-                  strokeWidth={30}
-                  styles={buildStyles({
-                    strokeLinecap: "butt",
-                    pathColor: withColor?.pathColor,
-                  })}
-                />
+          {content?.viewedPercentage !== undefined &&
+            content?.viewedPercentage !== '' && (
+              <div className="qui-course-list-card-chart-container">
+                <div className="qui-course-list-card-doughnut-chart">
+                  <CircularProgressbar
+                    value={content.viewedPercentage}
+                    strokeWidth={30}
+                    styles={buildStyles({
+                      strokeLinecap: "butt",
+                      pathColor: withColor?.pathColor,
+                    })}
+                  />
+                </div>
+                <h2 className="qui-course-list-card-percentage-completion">{`${content.viewedPercentage}%`}</h2>
               </div>
-              <h2 className="qui-course-list-card-percentage-completion">{`${content.viewedPercentage}%`}</h2>
-            </div>
-          )}
+            )}
         </div>
       </div>
     </motion.div>
