@@ -1,0 +1,104 @@
+.qui.qui-v-card-with-button {
+  overflow: visible;
+}
+
+.qui.qui-v-card-with-button .qui.qui-button {
+  overflow: visible;
+  .MuiButton-root.MuiButton-text {
+    box-shadow: none;
+  }
+}
+
+.qui.qui-v-card-with-button .qui .qui-btn {
+  width: 100%;
+  padding: 0.6em;
+  box-shadow: 1px 5px 8px #0000003d;
+  margin: 0.5em 0 0.15em 0;
+}
+
+.qui .qui-v-card-image-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-top-left-radius: 0.6em;
+  border-top-right-radius: 0.6em;
+  height: 15em;
+}
+
+.qui .qui-v-card-checkbox-container {
+  height: 2.5em;
+  width: 5em;
+  background-color: #666666;
+  color: #ffbf00;
+  border-top-left-radius: 7.5em;
+  border-top-right-radius: 7.5em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.qui .qui-v-card-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 0.6em;
+  box-shadow: 0px 5px 10px #0000004a;
+}
+
+.qui .qui-v-card-checkbox-container .fas.fa-check-square {
+  filter: none;
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
+}
+
+.qui .qui-v-card-title {
+  white-space: normal;
+}
+
+.qui .qui-v-card-text-container {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 10.5em;
+}
+
+.qui .qui-v-card-text-container .qui-v-card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  margin: 0;
+  color: #666666;
+  width: 100%;
+  font-size: 1.2em;
+}
+
+.qui .qui-v-card-text-container .qui-v-card-description {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  margin: 0.3em 0 0.5em 0;
+  font-size: 1.1em;
+  color: #666666;
+}
+
+@media only screen and (min-width: 320px) {
+  .qui .qui-v-card-container {
+    width: 100%;
+  }
+  .qui .qui-v-card-text-container .qui-v-card-description {
+    font-size: 0.95em;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .qui .qui-v-card-container {
+    width: 14.5em;
+  }
+  .qui .qui-v-card-text-container .qui-v-card-description {
+    font-size: 1em;
+  }
+}
