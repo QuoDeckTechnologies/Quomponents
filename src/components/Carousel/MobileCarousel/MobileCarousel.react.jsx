@@ -53,15 +53,9 @@ MobileCarousel.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-    Use to define standard component type
+    Set action emphasis in increasing order 
     */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
+    asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
     /**
     Use to override component colors and behavior
     */
@@ -82,18 +76,30 @@ MobileCarousel.propTypes = {
         dictionary: PropTypes.string,
     }),
     /**
+      Use to enable/disable the component
+      */
+    isDisabled: PropTypes.bool,
+    /**
+      Use to show/hide the component
+      */
+    isHidden: PropTypes.bool,
+    /**
     Button component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
 };
 MobileCarousel.defaultProps = {
+    //======================================
     // Component Specific props
     //=======================================
     content: [],
-    asVariant: "primary",
+    imageLibrary:[{}],
+    //======================================
+    // Quommon props
+    //=======================================
     withColor: null,
     withAnimation: null,
-    withTranslation: null,
+    asEmphasis: "contained",
     isHidden: false,
     isDisabled: false,
 };
@@ -119,7 +125,7 @@ export default function MobileCarousel(props) {
         speed: 500,
         initialSlide: 1,
         slidesToScroll: 1,
-        slidesToShow: 2,
+        slidesToShow: 1,
         centerMode: true,
         arrows: false,
         infinite: true,
@@ -142,7 +148,7 @@ export default function MobileCarousel(props) {
                         <div className="qui-mobile-slide-container "
                             key={"slider-" + index + Math.random()}>
                             <div className={`qui-mobile-slide `}>
-                                <HCard  {...props} content={slide} onClick={props.onClick} asVariant={props.asVariant} buttonText={content?.buttonText} />
+                                <HCard  {...props} content={slide} onClick={props.onClick} buttonText={content?.buttonText} checked={true} />
                             </div>
                         </div>
                     );

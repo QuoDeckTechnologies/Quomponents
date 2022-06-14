@@ -3,7 +3,7 @@ import MobileCarousel from "../components/Carousel/MobileCarousel/MobileCarousel
 const dictionary = JSON.stringify({
     hi: {
         mobileCarousel: {
-            buttonText: "प्रयत्न करें",
+            buttonText: "देखें",
         },
     },
 });
@@ -13,6 +13,13 @@ export default {
     argTypes: {
         content: [{}],
     },
+    asEmphasis: {
+        control: "select",
+        options: ["text", "outlined", "contained"],
+        table: {
+            category: "as-Flags",
+        },
+    },
     withAnimation: {
         table: {
             category: "with-Params",
@@ -21,33 +28,6 @@ export default {
                 duration: 0,
                 delay: 0,
             },
-        },
-    },
-    asEmphasis: {
-        control: "select",
-        options: ["text", "outlined", "contained"],
-        table: {
-            category: "as-Flags",
-        },
-    },
-    isCircular: {
-        table: {
-            category: "is-Toggles",
-            defaultValue: false,
-        },
-    },
-    asVariant: {
-        control: "select",
-        options: ["primary", "secondary", "success", "warning", "error"],
-        table: {
-            category: "as-Flags",
-        },
-    },
-    asFloated: {
-        control: "select",
-        options: ["left", "right", "none", "inline"],
-        table: {
-            category: "as-Flags",
         },
     },
     withColor: {
@@ -71,6 +51,24 @@ export default {
                 tgt: "",
                 dictionary: "",
             },
+        },
+    },
+    isDisabled: {
+        table: {
+            category: "is-Toggles",
+            defaultValue: false,
+        },
+    },
+    isCircular: {
+        table: {
+            category: "is-Toggles",
+            defaultValue: false,
+        },
+    },
+    isHidden: {
+        table: {
+            category: "is-Toggles",
+            defaultValue: false,
         },
     },
     decorators: [
@@ -114,7 +112,7 @@ Default.args = {
         },
         name: "Sales Readiness",
         description: "Understand how to prepare yourself for that sale",
-        buttonText: "Submit",
+        buttonText: "Check",
     },
     {
         image: {
@@ -123,7 +121,7 @@ Default.args = {
         },
         name: "Pipeline Tracking",
         description: "Some important tips to optimize and power up your pipeline",
-        buttonText: "Try Again",
+        buttonText: "Check",
     },
     {
         image: {
@@ -149,8 +147,6 @@ Default.args = {
     ],
     asEmphasis: "contained",
     isCircular: false,
-    asVariant: "warning",
-    asFloated: "none",
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -169,11 +165,88 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    isDisabled: false,
+    isHidden: false,
 };
 Default.parameters = {
     docs: {
         source: {
             code: `<MobileCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// TranslatedMobileCarousel
+// -------------------------------------------------------------
+export const TranslatedMobileCarousel = Template.bind({});
+TranslatedMobileCarousel.args = {
+    content: [{
+        image: {
+            id: "image-1",
+            extention: "",
+        },
+        name: "Sales Readiness",
+        description: "Understand how to prepare yourself for that sale",
+        buttonText: "Check",
+    },
+    {
+        image: {
+            id: "image-2",
+            extention: "",
+        },
+        name: "Pipeline Tracking",
+        description: "Some important tips to optimize and power up your pipeline",
+        buttonText: "Check",
+    },
+    {
+        image: {
+            id: "image-3",
+            extention: "",
+        },
+        name: "GhostBuster",
+        description: "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+        buttonText: "Check",
+    }],
+    imageLibrary: [
+        {
+            id: "image-1",
+            image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+        }, {
+            id: "image-2",
+            image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+
+        }, {
+            id: "image-3",
+            image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+        },
+    ],
+    asEmphasis: "contained",
+    isCircular: false,
+    withColor: {
+        backgroundColor: "",
+        accentColor: "",
+        accentBackgroundColor: "",
+        textColor: "",
+        buttonBackgroundColor: "",
+        buttonTextColor: "",
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "mobileCarousel",
+        dictionary: dictionary,
+    },
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+    isDisabled: false,
+    isHidden: false,
+};
+TranslatedMobileCarousel.parameters = {
+    docs: {
+        source: {
+            code: `<MobileCarousel {...${JSON.stringify(TranslatedMobileCarousel.args, null, 2)}}/>`,
         },
     },
 };
