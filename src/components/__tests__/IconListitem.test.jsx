@@ -94,32 +94,32 @@ describe("IconListItem", () => {
         component.setProps({ withAnimation: animation })
         expect(component.exists()).toBe(true);
     });
-    it("should render correctly without throwing error when pass content", () => {
-        let value = [{
-            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-            text: "The boot space in Hyundai Elantra is 420 L"
-        },
-        {
-            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-            text: "The boot space in Hyundai Elantra is 420 L"
-        },
-        {
-            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-            text: "The boot space in Hyundai Elantra is 420 L"
-        },]
+    // it("should render correctly without throwing error when pass content", () => {
+    //     let value = [{
+    //         image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+    //         text: "The boot space in Hyundai Elantra is 420 L"
+    //     },
+    //     {
+    //         image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+    //         text: "The boot space in Hyundai Elantra is 420 L"
+    //     },
+    //     {
+    //         image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+    //         text: "The boot space in Hyundai Elantra is 420 L"
+    //     },]
 
-        component.setProps({ content: value })
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly without throwing error when content props passed and asEmphasis as list", () => {
-        let value = [{
-            image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-            text: "The boot space in Hyundai Elantra is 420 L"
-        },]
-        component.setProps({ asEmphasis: "list" })
-        component.setProps({ content: value })
-        expect(component.exists()).toBe(true);
-    });
+    //     component.setProps({ content: value })
+    //     expect(component.exists()).toBe(true);
+    // });
+    // it("should render correctly without throwing error when content props passed and asEmphasis as list", () => {
+    //     let value = [{
+    //         image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+    //         text: "The boot space in Hyundai Elantra is 420 L"
+    //     },]
+    //     component.setProps({ asEmphasis: "list" })
+    //     component.setProps({ content: value })
+    //     expect(component.exists()).toBe(true);
+    // });
     it("should render correctly without throwing error when content props passed as null and asEmphasis as list ", () => {
         let item = [{
             image: {},
