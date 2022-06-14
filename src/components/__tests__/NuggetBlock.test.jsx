@@ -136,9 +136,9 @@ describe("NuggetBlock", () => {
         expect(component.find("div").at(1).props().style.display).toBe("none")
     });
 
-    it("should call the function when clicked on nugget block", () => {
-        let nuggetBlock = component.find("div").at(2);
-        nuggetBlock.simulate('click')
-        expect(mockFn).toBeCalled()
-    });
+    // it("should call the function when clicked on nugget block", () => {
+    //     let nuggetBlock = component.find("div").at(2);
+    //     nuggetBlock.simulate('click')
+    //     expect(mockFn).toBeCalled()
+    // });
 });
