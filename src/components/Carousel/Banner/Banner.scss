@@ -1,5 +1,33 @@
 .qui-banner {
   overflow: inherit;
+
+  .qui-banner-card {
+    box-shadow: none;
+  }
+  .qui-banner-card .qui-slider-card-box {
+    width: 100%;
+    max-width: 100%;
+    bottom: 0;
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .qui-banner-card .qui-slider-card-box-header {
+    max-width: 55%;
+    background-color: #ffbf00cc;
+    padding: 0.5em;
+    border-top-right-radius: 1em;
+    margin: 0;
+  }
+
+  .qui-banner-card .qui-slider-card-box-content {
+    display: block;
+    background-color: #454545;
+    max-width: 100%;
+    padding: 0.5em;
+    opacity: 1;
+    min-height: 5em;
+  }
 }
 
 .qui-banner .qui-banner-container {
@@ -16,22 +44,28 @@
   display: none;
 }
 
+.qui-banner .slick-dots {
+  bottom: 30%;
+  left: 40%;
+}
+
 .qui-banner .slick-dots li button:before {
   font-size: 9px;
+  color: #ffff;
 }
 
 .qui-banner .slick-dots li.slick-active button:before {
   font-size: 12px;
-  color: #a6a6a6;
+  color: #ffff;
 }
 
 .qui-banner .slick-dots li {
-  // margin: 0 -4px;
-    margin: 0 -4px;
+  margin: 0 -4px;
 }
 
 .qui-banner .slick-slide {
   transform: scaleY(0);
+  width: 100%;
 
   .qui-card-label {
     display: none;
