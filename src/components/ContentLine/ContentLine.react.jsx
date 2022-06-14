@@ -71,6 +71,10 @@ ContentLine.propTypes = {
 ContentLine.defaultProps = {
     // Component Specific props
     //=======================================
+    cotnent: {
+        name: "What is Sales Pitching?",
+        icon: "fas fa-home"
+    },
     isActive: false,
 
     // Quommon props
