@@ -163,7 +163,7 @@ export default function MobileToolbar(props) {
     ) {
         tObj = getTranslation(props.withTranslation);
         iconLabel = tObj?.content;
-        if (labelContent && tObj?.label) labelContent.content = tObj.label;
+        labelContent.content = tObj?.label;
     }
     //-------------------------------------------------------------------
     // 4. Use to set styling for MobileToolbar.
@@ -213,7 +213,7 @@ export default function MobileToolbar(props) {
     const animate = getAnimation(props.withAnimation);
 
     // ========================= Render Function =================================
-    
+
     return (
         <motion.div
             initial={animate.from}

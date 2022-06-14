@@ -151,19 +151,19 @@ export default function Feedback(props) {
     //-------------------------------------------------------------------
     // 5. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
-    let correct ="Correct";
-    let incorrect ="Incorrect";
-    let thankyou ="Thankyou";
+    let correct = "Correct!";
+    let incorrect = "Incorrect!";
+    let thankyou = "Thank You!";
     let tObj;
     if (
-    props.withTranslation?.lang &&
-    props.withTranslation.lang !== "" &&
-    props.withTranslation.lang !== "en"
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
     ) {
-    tObj = getTranslation(props.withTranslation);
-    correct =tObj?.correct
-    incorrect =tObj?.incorrect
-    thankyou =tObj?.thankyou
+        tObj = getTranslation(props.withTranslation);
+        correct = tObj?.correct
+        incorrect = tObj?.incorrect
+        thankyou = tObj?.thankyou
     }
 
     let refinedFeedback = _.map(data?.feedback, (fb, index) => {

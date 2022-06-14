@@ -4,10 +4,10 @@ import Feedback from "../../components/Templates/Feedback/Feedback.react";
 const dictionary = JSON.stringify({
     hi: {
         feedback: {
-            thankyou: "धन्यवाद",
-            correct: "सही",
-            incorrect: "गलत",
-            button:"जारी रखें",
+            thankyou: "धन्यवाद!",
+            correct: "सही!",
+            incorrect: "गलत!",
+            button: "जारी रखें",
         }
     },
 });
@@ -58,12 +58,12 @@ export default {
         },
         withTranslation: {
             table: {
-              category: "with-Params",
-              defaultValue: {
-                lang: "",
-                tgt: "",
-                dictionary: "",
-              },
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
+                },
             },
         },
         isDisabled: {
@@ -249,21 +249,21 @@ FeedbackWithBackgroundImage.parameters = {
 // -------------------------------------------------------------
 export const TranslatedFeedback = Template.bind({});
 TranslatedFeedback.args = {
-  ...Default.args,
-  withTranslation: {
-    lang: "hi",
-    tgt: "feedback",
-    dictionary: dictionary,
-  },
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "feedback",
+        dictionary: dictionary,
+    },
 };
 TranslatedFeedback.parameters = {
-  docs: {
-    source: {
-      code: `<Feedback {...${JSON.stringify(
-        TranslatedFeedback.args,
-        null,
-        2
-      )}}/>`,
+    docs: {
+        source: {
+            code: `<Feedback {...${JSON.stringify(
+                TranslatedFeedback.args,
+                null,
+                2
+            )}}/>`,
+        },
     },
-  },
 };

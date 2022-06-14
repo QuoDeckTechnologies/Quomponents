@@ -135,7 +135,7 @@ export default function ActionMenu(props) {
   ) {
     tObj = getTranslation(props.withTranslation);
     iconLabel = tObj?.content;
-    if (labelContent && tObj?.title) labelContent.content = tObj?.title;
+    labelContent.content = tObj?.title;
   }
   //-------------------------------------------------------------------
   // 4. Get animation of the component
@@ -143,7 +143,7 @@ export default function ActionMenu(props) {
   const animate = getAnimation(props.withAnimation);
 
   // ========================= Render Function =================================
-  
+
   return (
     <motion.div
       initial={animate.from}

@@ -2,7 +2,7 @@
     padding: 1.5em;
     border-radius: 1em;
     min-height: 30em;
-    
+
     .qui-feedback-icon {
         border-radius: 50%;
         padding: 0.5em;
@@ -11,45 +11,57 @@
         font-size: 2em;
         margin-top: 2em;
     }
+
     .qui-text-block-area {
         width: fit-content;
         background-color: transparent;
     }
+
     .qui-show-feedback {
         display: block;
     }
+
     .qui-hide-feedback {
         display: none;
     }
+
     .qui-feedback-button {
         filter: drop-shadow(0px 5px 2px #a09797);
         margin-top: 3.5em;
     }
+
     .qui-feedback-text {
         margin-top: -1em;
+
         .qui-block-text {
             font-weight: normal;
         }
     }
+
     .qui-feedback-header {
         font-size: 2em;
+
         .qui-text-block-area {
             padding: 0;
         }
-        .qui-block-test{
+
+        .qui-block-text {
             padding: 0.5em;
         }
     }
+
     .qui-feedback-correct {
         background-color: #5dbb46;
         border: 0.1em solid #40831a;
         color: #ffffff;
     }
+
     .qui-feedback-incorrect {
         background-color: #dc2c29;
         border: 0.1em solid #b32111;
         color: #ffffff;
     }
+
     .qui-feedback-thank-you {
         background-color: #f6bd32;
         border: 0.1em solid #fdf841;

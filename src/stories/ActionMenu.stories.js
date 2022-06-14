@@ -4,7 +4,7 @@ const dictionary = JSON.stringify({
   hi: {
     actions: {
       content: [
-        { title: "खुला डेक" },
+        { title: "डेक खोलो" },
         { title: "डेक संपादित करें" },
         { title: "डेक ऊपर ले जाएँ" },
         { title: "डेक नीचे ले जाएँ" },
