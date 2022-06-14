@@ -6,12 +6,10 @@ import {
     XAxis,
     Bar,
     Cell,
-    ResponsiveContainer
 } from "recharts";
 import {
     getQuommons,
     getTranslation,
-
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./QuoBarChart.scss";
@@ -22,9 +20,12 @@ QuoBarChart.propTypes = {
     // component specific props
     //=======================================
     /**
-       Barchart data should be passed in content field and it is required field  
-      */
+      Barchart active month should be passed 
+     */
     activeMonth: PropTypes.string,
+    /**
+       Barchart data should be passed in content field 
+      */
     data: PropTypes.array,
     //=======================================
     // Quommon props
@@ -70,36 +71,51 @@ QuoBarChart.defaultProps = {
 **/
 export default function QuoBarChart(props) {
     let { data, withColor } = props;
-    let [posData, setposData] = useState({});
     const [newData, setNewData] = useState({ data, activeIndex: 0 });
+    const [width, setWidth] = useState(window.innerWidth <= 481 ? window.innerWidth * 0.94 : window.innerWidth <= 834 ? window.innerWidth * 0.96 : window.innerWidth * 0.97)
+    const [position, setPosition] = useState(null);
 
+    const resizeHandler = () => {
+        if (window.innerWidth <= 481) {
+            setWidth(window.innerWidth * 0.94)
+        } if (window.innerWidth <= 834) {
+            setWidth(window.innerWidth * 0.96)
+        } else {
+            setWidth(window.innerWidth * 0.97)
+        }
+    }
+    useEffect(() => {
+        window.addEventListener("resize", resizeHandler);
+        return () => {
+            window.removeEventListener("resize", resizeHandler);
+        };
+    }, []);
+    useEffect(() => {
+        const tooltip = document.querySelector(".recharts-tooltip-wrapper");
+        if (!tooltip) return;
+        const tooltipHeight = tooltip.getBoundingClientRect().height;
+        const tooltipWidth = tooltip.getBoundingClientRect().width;
+        const spaceForLittleTriangle = 10;
+        tooltip.style = `
+      transform: translate(${position?.data.x}px, ${position?.data.y}px);
+      pointer-events: none;  position: absolute;
+      top: -${tooltipHeight + spaceForLittleTriangle + 15}px;
+      left: -${tooltipWidth / 2 - position?.data.width / 2}px;
+   
+      transition: all 400ms ease 0s;
+    `;
+    }, [position]);
     //-------------------------------------------------------------------
     // Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
     let monthName = props.activeMonth
     let activePlayers = "Active Players"
-    if (
-        props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        let tObj = getTranslation(props.withTranslation);
-        if (tObj && props.activeMonth && props.activeMonth !== "") {
-            if (monthName === "January") monthName = tObj.months.january
-            if (monthName === "February") monthName = tObj.months.february
-            if (monthName === "March") monthName = tObj.months.march
-            if (monthName === "April") monthName = tObj.months.april
-            if (monthName === "May") monthName = tObj.months.may
-            if (monthName === "June") monthName = tObj.months.june
-            if (monthName === "July") monthName = tObj.months.july
-            if (monthName === "August") monthName = tObj.months.august
-            if (monthName === "September") monthName = tObj.months.september
-            if (monthName === "October") monthName = tObj.months.october
-            if (monthName === "November") monthName = tObj.months.november
-            if (monthName === "December") monthName = tObj.months.december
-        }
-        if (tObj && activePlayers !== "") {
-            activePlayers = tObj.activePlayers
+    let tObj = getTranslation(props.withTranslation);
+    const getMonthName = (monthName) => {
+        if (tObj) {
+            return tObj.months[monthName.toLowerCase()]
+        } else {
+            return monthName
         }
     }
     //-------------------------------------------------------------------
@@ -118,7 +134,6 @@ export default function QuoBarChart(props) {
                 <p className="qui-bar-player-count">{`${payload[0]?.value}`}</p>
             </div>
         );
-        return null;
     };
     const handleClick = (i) => {
         let temp = {
@@ -130,46 +145,48 @@ export default function QuoBarChart(props) {
     // ========================= Render Function =================================
     return (
         <div className="qui-barchart-container" style={{ backgroundColor: withColor?.backgroundColor }}>
-            <p className="qui-barchart-active-month">{monthName}</p>
+            <p className="qui-barchart-active-month">{getMonthName(monthName)}</p>
             <p className="qui-barchart-active-players">{activePlayers}</p>
-            <ResponsiveContainer height={500} >
-                <BarChart
-                    data={data}
-                    margin={{
-                        top: 110,
-                        right: 40,
-                        left: 40,
-                        bottom: 5,
+            <BarChart
+                width={width}
+                height={500}
+                data={data}
+                margin={{
+                    top: 110,
+                    right: 30,
+                    left: window.innerWidth <= 540 ? 15 : 30,
+                    bottom: 5,
+                }}
+                barSize={50}
+            >
+                <XAxis
+                    tickLine={false}
+                    axisLine={false}
+                    dataKey="date"
+                    scale="point"
+                    padding={{ left: 10, right: 10 }}
+                />
+                <Tooltip
+                    position={{
+                        x: position?.data.x ?? 30,
+                        y: position?.data.y ?? 30
                     }}
-                    barSize={50}
+                    content={customTooltip} />
+                <Bar
+                    className="qui-bar"
+                    radius={10}
+                    onMouseOver={(data) => setPosition({ data: data, show: true })}
+                    dataKey="activePlayer"
+                    onClick={(data, i) => handleClick(i)}
                 >
-                    <XAxis
-                        tickLine={false}
-                        axisLine={false}
-                        dataKey="date"
-                        scale="point"
-                        padding={{ left: 10, right: 10 }}
-                    />
-                    <Tooltip
-                        position={{ x: posData.x - 20, y: posData.y - 60 }}
-                        content={customTooltip} />
-                    <Bar
-                        radius={10}
-                        onMouseOver={(data) => {
-                            setposData(data);
-                        }}
-                        dataKey="activePlayer"
-                        onClick={(data, i) => handleClick(i)}
-                    >
-                        {newData.data.map((entry, index) => (
-                            <Cell
-                                key={`cell-${index + 1}`}
-                                fill={index === newData.activeIndex ? withColor?.activeBarColor : withColor?.barColor}
-                            />
-                        ))}
-                    </Bar>
-                </BarChart>
-            </ResponsiveContainer>
+                    {newData.data.map((entry, index) => (
+                        <Cell
+                            key={`cell-${index + 1}`}
+                            fill={index === newData.activeIndex ? withColor?.activeBarColor : withColor?.barColor}
+                        />
+                    ))}
+                </Bar>
+            </BarChart>
         </div>
     );
 }

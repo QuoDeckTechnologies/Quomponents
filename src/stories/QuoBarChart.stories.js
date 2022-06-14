@@ -38,16 +38,6 @@ export default {
                 },
             },
         },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
-                },
-            },
-        },
         isHidden: {
             table: {
                 category: "is-Toggles",
