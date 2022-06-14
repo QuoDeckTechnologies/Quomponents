@@ -58,6 +58,7 @@ describe("ContentLine", () => {
         component.setProps({ isHidden: false });
         expect(component.exists()).toBe(true);
     });
+    
     it("should render correctly when passed isHidden props as true", () => {
         component.setProps({ isHidden: true });
         expect(component.exists()).toBe(true);
@@ -98,6 +99,24 @@ describe("ContentLine", () => {
     it("should render inactive content line", () => {
         component.setProps({ isActive: false, isDisabled: false });
         expect(component.find(".qui-content-line-container").props().style).toStrictEqual({ "backgroundColor": "#FFFFFF", "color": "#454545" });
+    });
+
+    it("should render Deck component when passed both, name and icon in the content props", () => {
+        let content = {
+            name: "This is DeckLine",
+            icon: "fas fa-book"
+        }
+        component.setProps({ content: content });
+        expect(component.find(".qui-deck-line").exists()).toBe(true);
+    });
+
+    it("should render TopicLine compponent when only passing the name in the content props", () => {
+        let content = {
+            name: "This is TopicLine",
+            icon: ""
+        }
+        component.setProps({ content: content });
+        expect(component.find(".qui-topic-line").exists()).toBe(true);
     });
 
     it("should simulate the content line component", () => {

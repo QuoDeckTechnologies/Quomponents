@@ -71,7 +71,7 @@ ContentLine.propTypes = {
 ContentLine.defaultProps = {
     // Component Specific props
     //=======================================
-    cotnent: {
+    content: {
         name: "",
         icon: ""
     },
@@ -113,18 +113,29 @@ export default function ContentLine(props) {
         color: props.isDisabled ? '#454545' : props.isActive ? props.withColor?.textColor ? props.withColor?.textColor : '#454545' : '#454545'
     }
 
+    //-------------------------------------------------------------------
+    // 4. Conditional text renders for TopicLine and DeckLine components
+    //-------------------------------------------------------------------
+    function getName() {
+        if (props.content?.icon && props.content?.name) {
+            return <div className={`qui-content-line-text`}>{props.content?.name}</div>
+        } else {
+            return <h6 className={`qui-content-line-text`}>{props.content?.name}</h6>
+        }
+    }
+
     return (
         <motion.div
             initial={animate?.from}
             animate={animate?.to}
-            className={`qui ${quommonClasses.parentClasses} qui-content-line-parent-class`}>
+            className={`qui ${quommonClasses.parentClasses} qui-content-line-parent-class qt-shadow`}>
             {props.content &&
                 <div className={`${quommonClasses.childClasses}`} >
-                    <div className={`qui-content-line-container`} style={contentStyle} onClick={props.onClick}>
+                    <div className={`qui-content-line-container ${props.content?.icon && props.content?.name ? 'qui-deck-line' : 'qui-topic-line'}`} style={contentStyle} onClick={props.onClick}>
                         {props.content?.icon && <i className={`${props.content?.icon} qui-content-line-icon`}></i>}
-                        <div className={`qui-content-line-text`}>{props.content?.name}</div>
+                        {getName()}
                         <div className="qui-content-line-right-arrow">
-                            <i className={`fas fa-angle-right`} style={{ color: contentStyle.color }}></i>
+                            <i className={`fas fa-angle-right ${props.content?.icon && props.content?.name ? 'qui-deck-line-icon' : 'qui-topic-line-icon'}`} style={{ color: contentStyle.color }}></i>
                         </div>
                     </div>
                 </div>}
