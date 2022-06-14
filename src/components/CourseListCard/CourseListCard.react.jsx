@@ -139,70 +139,72 @@ export default function CourseListCard(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <div
-        className="qui-course-list-card-container"
-        style={{
-          backgroundColor: withColor?.backgroundColor,
-        }}
-        onClick={() => onClick(content)}
-      >
+      {content && (
         <div
-          className="qui-course-list-card-image-container"
+          className="qui-course-list-card-container"
           style={{
-            ...background,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundSize: "cover",
+            backgroundColor: withColor?.backgroundColor,
           }}
+          onClick={() => onClick(content)}
         >
-          {content?.checked && (
-            <div
-              className="qui-course-list-card-checkbox-container"
-              style={{ backgroundColor: withColor?.accentBackgroundColor }}
-            >
-              <i
-                className="fas fa-check-square"
-                style={{ color: withColor?.accentColor }}
-              ></i>
-            </div>
-          )}
-        </div>
-        <div className="qui-course-list-card-text-container">
-          <div className="qui-course-list-card-text">
-            <h4
-              className="qui-course-list-card-name"
-              style={{
-                color: withColor?.textColor,
-              }}
-            >
-              {content?.name}
-            </h4>
-            <p
-              className="qui-course-list-card-description"
-              style={{
-                color: withColor?.textColor,
-              }}
-            >
-              {content?.description}
-            </p>
-          </div>
-          {content?.viewedPercentage && (
-            <div className="qui-course-list-card-chart-container">
-              <div className="qui-course-list-card-doughnut-chart">
-                <CircularProgressbar
-                  value={content.viewedPercentage}
-                  strokeWidth={30}
-                  styles={buildStyles({
-                    strokeLinecap: "butt",
-                    pathColor: withColor?.pathColor,
-                  })}
-                />
+          <div
+            className="qui-course-list-card-image-container"
+            style={{
+              ...background,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+          >
+            {content?.checked && (
+              <div
+                className="qui-course-list-card-checkbox-container"
+                style={{ backgroundColor: withColor?.accentBackgroundColor }}
+              >
+                <i
+                  className="fas fa-check-square"
+                  style={{ color: withColor?.accentColor }}
+                ></i>
               </div>
-              <h2 className="qui-course-list-card-percentage-completion">{`${content.viewedPercentage}%`}</h2>
+            )}
+          </div>
+          <div className="qui-course-list-card-text-container">
+            <div className="qui-course-list-card-text">
+              <h4
+                className="qui-course-list-card-name"
+                style={{
+                  color: withColor?.textColor,
+                }}
+              >
+                {content?.name}
+              </h4>
+              <p
+                className="qui-course-list-card-description"
+                style={{
+                  color: withColor?.textColor,
+                }}
+              >
+                {content?.description}
+              </p>
             </div>
-          )}
+            {content?.viewedPercentage && (
+              <div className="qui-course-list-card-chart-container">
+                <div className="qui-course-list-card-doughnut-chart">
+                  <CircularProgressbar
+                    value={content.viewedPercentage}
+                    strokeWidth={30}
+                    styles={buildStyles({
+                      strokeLinecap: "butt",
+                      pathColor: withColor?.pathColor,
+                    })}
+                  />
+                </div>
+                <h2 className="qui-course-list-card-percentage-completion">{`${content.viewedPercentage}%`}</h2>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </motion.div>
   );
 }
