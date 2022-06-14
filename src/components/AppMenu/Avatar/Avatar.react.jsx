@@ -9,13 +9,6 @@ import "../../../common/stylesheets/overrule.scss";
 
 Avatar.propTypes = {
   //=======================================
-  // Component specific prop
-  //=======================================
-  /**
-  Use to define component user image
-  */
-  withUser: PropTypes.string,
-  //=======================================
   // Quommon props
   //=======================================
   /**
@@ -71,10 +64,6 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-  //=======================================
-  // Component specific prop
-  //=======================================
-  withUser: "",
   // ======================================
   // Quommon props
   //=======================================
@@ -106,22 +95,15 @@ export default function Avatar(props) {
   let quommonClasses = getQuommons(props);
   quommonClasses.childClasses += ` emp-contained`;
   //-------------------------------------------------------------------
-  // 3. Get Avatar if provided, default is icon
+  // 4. Set the user image or icon
   //-------------------------------------------------------------------
-  const getAvatar = (icon, avatar) => {
-    if (avatar) {
-      return <img className={`qui-image `} src={avatar} alt="avatar" />;
-    } else {
-      return (
-        <div
-          style={colors}
-          className={`qui-icon qui-btn ${quommonClasses.childClasses}`}
-        >
-          <i className={`${icon?.icon}`}></i>
-        </div>
-      );
-    }
-  };
+  let loadingIcon = props.withIcon?.icon;
+  let isImageIcon = null;
+  if (loadingIcon) {
+    isImageIcon = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(
+      loadingIcon
+    );
+  }
 
   // ========================= Render Function =================================
 
@@ -133,7 +115,16 @@ export default function Avatar(props) {
       <div
         className={`qui-container qui-icon-container size-${props.asSize} variant-${props.asVariant}`}
       >
-        {getAvatar(props.withIcon, props.withUser)}
+        {isImageIcon ? (
+          <img className={`qui-image `} src={loadingIcon} alt="avatar" />
+        ) : (
+          <div
+            style={colors}
+            className={`qui-icon qui-btn ${quommonClasses.childClasses}`}
+          >
+            <i className={loadingIcon}></i>
+          </div>
+        )}
       </div>
     </div>
   );
