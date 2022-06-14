@@ -72,8 +72,8 @@ ContentLine.defaultProps = {
     // Component Specific props
     //=======================================
     cotnent: {
-        name: "What is Sales Pitching?",
-        icon: "fas fa-home"
+        name: "",
+        icon: ""
     },
     isActive: false,
 
