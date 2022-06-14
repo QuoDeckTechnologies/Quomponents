@@ -177,7 +177,7 @@ export default function BannerCard(props) {
 
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}
-            style={{ backgroundImage: content ? `url(${content.image})` : "" }}
+            style={{ backgroundImage: `url(${content?.image})` }}
             onClick={props.onClick}
         >
             {content && content.tag && content.tag !== "" &&
