@@ -2,33 +2,51 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import {
   getQuommons,
+  getTranslation,
   getAnimation,
   resolveImage,
 } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
-import "./CourseListCard.scss";
+import "./VCardWithButton.scss";
 import "../../common/stylesheets/overrule.scss";
-import "react-circular-progressbar/dist/styles.css";
+import Button from "../Buttons/Button/Button.react";
 
-CourseListCard.propTypes = {
+VCardWithButton.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
   /**
-  CourseListCard component text has to be in content props.
+  VCardWithButton component data has to be in content props.
   */
   content: PropTypes.object,
   /**
-  CourseListCard can set background image from imageLibrary array
+  VCardWithButton can set image from imageLibrary array
   */
   imageLibrary: PropTypes.array,
+  /**
+  Set action emphasis in increasing order 
+  */
+  asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
+  /**
+  Use for rounded corners or circular button 
+  */
+  isCircular: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
+  /**
+  Use to define standard component type
+  */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
   /**
   Use to float the component in parent container
   */
@@ -41,7 +59,8 @@ CourseListCard.propTypes = {
     accentColor: PropTypes.string,
     accentBackgroundColor: PropTypes.string,
     textColor: PropTypes.string,
-    pathColor: PropTypes.string,
+    buttonBackgroundColor: PropTypes.string,
+    buttonTextColor: PropTypes.string,
   }),
   /**
   Use to define the entry animation of the component
@@ -61,6 +80,14 @@ CourseListCard.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
@@ -69,12 +96,12 @@ CourseListCard.propTypes = {
   */
   isDisabled: PropTypes.bool,
   /**
-  CourseListCard component must have the onClick function passed as props
+  VCardWithButton component must have the onClick function passed as props
   */
   onClick: PropTypes.func.isRequired,
 };
 
-CourseListCard.defaultProps = {
+VCardWithButton.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
@@ -82,17 +109,21 @@ CourseListCard.defaultProps = {
     id: "",
     name: "",
     description: "",
+    buttonText: "",
     checked: true,
-    viewedPercentage: 80,
     image: { id: "", extention: "" },
   },
   imageLibrary: [],
+  asEmphasis: "contained",
+  isCircular: false,
   //=======================================
   // Quommon props
   //=======================================
+  asVariant: "primary",
   asFloated: "none",
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
   isHidden: false,
   isDisabled: false,
 };
@@ -103,7 +134,7 @@ CourseListCard.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function CourseListCard(props) {
+export default function VCardWithButton(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
@@ -111,13 +142,17 @@ export default function CourseListCard(props) {
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "course-list-card");
+  let quommonClasses = getQuommons(props, "v-card-with-button");
   //-------------------------------------------------------------------
   // 3. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 4. Function to set image of the card
+  // 4. Get translation of the component
+  //-------------------------------------------------------------------
+  let tObj = getTranslation(props.withTranslation);
+  //-------------------------------------------------------------------
+  // 5. Function to set image of the card
   //-------------------------------------------------------------------
   const getBackground = () => {
     if (content?.image) {
@@ -141,14 +176,13 @@ export default function CourseListCard(props) {
     >
       {content && (
         <div
-          className="qui-course-list-card-container"
+          className="qui-v-card-container"
           style={{
             backgroundColor: withColor?.backgroundColor,
           }}
-          onClick={() => onClick(content)}
         >
           <div
-            className="qui-course-list-card-image-container"
+            className="qui-v-card-image-container"
             style={{
               ...background,
               backgroundRepeat: "no-repeat",
@@ -158,7 +192,7 @@ export default function CourseListCard(props) {
           >
             {content?.checked && (
               <div
-                className="qui-course-list-card-checkbox-container"
+                className="qui-v-card-checkbox-container"
                 style={{ backgroundColor: withColor?.accentBackgroundColor }}
               >
                 <i
@@ -168,10 +202,10 @@ export default function CourseListCard(props) {
               </div>
             )}
           </div>
-          <div className="qui-course-list-card-text-container">
-            <div className="qui-course-list-card-text">
+          <div className="qui-v-card-text-container">
+            <div className="qui-v-card-text">
               <h4
-                className="qui-course-list-card-name"
+                className="qui-v-card-title"
                 style={{
                   color: withColor?.textColor,
                 }}
@@ -179,7 +213,7 @@ export default function CourseListCard(props) {
                 {content?.name}
               </h4>
               <p
-                className="qui-course-list-card-description"
+                className="qui-v-card-description"
                 style={{
                   color: withColor?.textColor,
                 }}
@@ -187,21 +221,23 @@ export default function CourseListCard(props) {
                 {content?.description}
               </p>
             </div>
-            {content?.viewedPercentage && (
-              <div className="qui-course-list-card-chart-container">
-                <div className="qui-course-list-card-doughnut-chart">
-                  <CircularProgressbar
-                    value={content.viewedPercentage}
-                    strokeWidth={30}
-                    styles={buildStyles({
-                      strokeLinecap: "butt",
-                      pathColor: withColor?.pathColor,
-                    })}
-                  />
-                </div>
-                <h2 className="qui-course-list-card-percentage-completion">{`${content.viewedPercentage}%`}</h2>
-              </div>
-            )}
+            <Button
+              {...props}
+              content={
+                tObj
+                  ? tObj.buttonText
+                  : content?.buttonText
+                  ? content?.buttonText
+                  : "click here"
+              }
+              isFluid={false}
+              withTranslation={null}
+              withColor={{
+                backgroundColor: withColor?.buttonBackgroundColor,
+                textColor: withColor?.buttonTextColor,
+              }}
+              onClick={() => onClick(content)}
+            />
           </div>
         </div>
       )}
