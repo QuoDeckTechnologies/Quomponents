@@ -13,12 +13,6 @@ export default {
   title: "Design System/Appmenu/Appmenu",
   component: AppMenu,
   argTypes: {
-    withUser: {
-      table: {
-        category: "with-Params",
-        defaultValue: "",
-      },
-    },
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
@@ -115,8 +109,7 @@ Default.args = {
   asVariant: "primary",
   asSize: "normal",
   asFloated: "inline",
-  withIcon: { icon: "fas fa-ellipsis-v" },
-  withUser: "",
+  withIcon: { icon: "fas fa-user" },
   withColor: {
     backgroundColor: "",
     textColor: "",
@@ -152,9 +145,10 @@ UserImage.args = {
   asVariant: "warning",
   asSize: "normal",
   asFloated: "inline",
-  withIcon: { icon: "fas fa-ellipsis-v" },
-  withUser:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPOVdk7wUJEgo42hvQ3g2Ge2DIDRuEI8x6Q&usqp=CAU",
+  withIcon: {
+    icon:
+      "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+  },
   withColor: {
     backgroundColor: "",
     textColor: "",
@@ -181,9 +175,7 @@ DisabledIcon.args = {
   asVariant: "warning",
   asSize: "normal",
   asFloated: "inline",
-
-  withIcon: { icon: "fas fa-ellipsis-v" },
-  withUser: "",
+  withIcon: { icon: "fas fa-user" },
   withColor: {
     backgroundColor: "",
     textColor: "",
@@ -312,8 +304,6 @@ const AllSizesProfileTemplate = (args) => {
           asVariant: "secondary",
           asSize: "tiny",
           withIcon: { icon: "fas fa-adjust" },
-          withUser:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPOVdk7wUJEgo42hvQ3g2Ge2DIDRuEI8x6Q&usqp=CAU",
         })}
       />
       <AppMenu
@@ -321,8 +311,6 @@ const AllSizesProfileTemplate = (args) => {
           asVariant: "secondary",
           asSize: "small",
           withIcon: { icon: "fas fa-ellipsis-v" },
-          withUser:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvYkGF0Ud1YgHVp6s5t_pxfM1IhN2cFHXatWVxZ85E5RicO_nH1v_-vx8vR2fs04mLVJM&usqp=CAU",
         })}
       />
       <AppMenu
@@ -330,8 +318,6 @@ const AllSizesProfileTemplate = (args) => {
           asVariant: "secondary",
           asSize: "normal",
           withIcon: { icon: "fas fa-ellipsis-h" },
-          withUser:
-            "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80",
         })}
       />
       <AppMenu
@@ -339,8 +325,6 @@ const AllSizesProfileTemplate = (args) => {
           asVariant: "secondary",
           asSize: "big",
           withIcon: { icon: "fas fa-home" },
-          withUser:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdeQ7X80OQWIXQ612o74Kh6v9BGRPbr9GULkFxc2y6zy9G5NaS80cMb6uoVpPTkU3zCkc&usqp=CAU",
         })}
       />
       <AppMenu
@@ -348,8 +332,6 @@ const AllSizesProfileTemplate = (args) => {
           asVariant: "secondary",
           asSize: "huge",
           withIcon: { icon: "fas fa-igloo" },
-          withUser:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5Q7CkkW5095kwPCWreq6GQWl06Aed2VeIT_hNyvOIR4TFa36csqbXVzr_zJwQbinzcOM&usqp=CAU",
         })}
       />
       <AppMenu
@@ -357,8 +339,6 @@ const AllSizesProfileTemplate = (args) => {
           asVariant: "secondary",
           asSize: "massive",
           withIcon: { icon: "fas fa-bus" },
-          withUser:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqhyluh4Mj0f6TTDPzbcS7JbU-bIJ4aFLquGxlrWlvweoStUxXhO99NAPcRw2Smo-E3Wo&usqp=CAU",
         })}
       />
     </div>
@@ -391,35 +371,35 @@ const AllVariantsTemplate = (args) => {
         {...Object.assign({}, baseObj, {
           asVariant: "primary",
           asSize: "normal",
-          withIcon: { icon: "fas fa-ellipsis-v" },
+          withIcon: { icon: "fas fa-user" },
         })}
       />
       <AppMenu
         {...Object.assign({}, baseObj, {
           asVariant: "secondary",
           asSize: "normal",
-          withIcon: { icon: "fas fa-ellipsis-v" },
+          withIcon: { icon: "fas fa-user" },
         })}
       />
       <AppMenu
         {...Object.assign({}, baseObj, {
           asVariant: "success",
           asSize: "normal",
-          withIcon: { icon: "fas fa-ellipsis-v" },
+          withIcon: { icon: "fas fa-user" },
         })}
       />
       <AppMenu
         {...Object.assign({}, baseObj, {
           asVariant: "warning",
           asSize: "normal",
-          withIcon: { icon: "fas fa-ellipsis-v" },
+          withIcon: { icon: "fas fa-user" },
         })}
       />
       <AppMenu
         {...Object.assign({}, baseObj, {
           asVariant: "error",
           asSize: "normal",
-          withIcon: { icon: "fas fa-ellipsis-v" },
+          withIcon: { icon: "fas fa-user" },
         })}
       />
     </div>

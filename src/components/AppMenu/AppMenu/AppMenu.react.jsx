@@ -14,13 +14,6 @@ import Avatar from "../Avatar/Avatar.react";
 
 AppMenu.propTypes = {
   //=======================================
-  // Component specific prop
-  //=======================================
-  /**
-  Use to define component user image
-  */
-  withUser: PropTypes.string,
-  //=======================================
   // Quommon props
   //=======================================
   /**
@@ -92,10 +85,6 @@ AppMenu.propTypes = {
 };
 
 AppMenu.defaultProps = {
-  //=======================================
-  // Component specific prop
-  //=======================================
-  withUser: "",
   //=======================================
   // Quommon props
   //=======================================
@@ -170,12 +159,15 @@ export default function AppMenu(props) {
           >
             <Avatar
               {...props}
-              withIcon={{ icon: "fas fa-user" }}
-              withUser={props.withUser}
+              withIcon={props.withIcon}
             />
           </div>
           <div className="qui-menuIconContainer">
-            <MenuBlock {...props} withLabel={{ content: "" }} />
+            <MenuBlock
+              {...props}
+              withIcon={{ icon: "fas fa-ellipsis-v" }}
+              withLabel={{ content: "" }}
+            />
           </div>
         </div>
       </div>
