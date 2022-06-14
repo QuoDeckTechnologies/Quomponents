@@ -53,10 +53,6 @@ MobileCarousel.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-    Set action emphasis in increasing order 
-    */
-    asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
-    /**
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
@@ -76,6 +72,10 @@ MobileCarousel.propTypes = {
         dictionary: PropTypes.string,
     }),
     /**
+    Set action emphasis in increasing order 
+    */
+    asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
+    /**
       Use to enable/disable the component
       */
     isDisabled: PropTypes.bool,
@@ -93,13 +93,14 @@ MobileCarousel.defaultProps = {
     // Component Specific props
     //=======================================
     content: [],
-    imageLibrary:[{}],
+    imageLibrary: [{}],
     //======================================
     // Quommon props
     //=======================================
-    withColor: null,
-    withAnimation: null,
     asEmphasis: "contained",
+    withColor: null,
+    isCircular: false,
+    withAnimation: null,
     isHidden: false,
     isDisabled: false,
 };

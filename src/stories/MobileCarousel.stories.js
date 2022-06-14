@@ -220,7 +220,6 @@ TranslatedMobileCarousel.args = {
             image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
         },
     ],
-    asEmphasis: "contained",
     isCircular: false,
     withColor: {
         backgroundColor: "",
