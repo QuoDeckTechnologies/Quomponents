@@ -109,3 +109,54 @@ Default.parameters = {
         },
     },
 };
+
+// -------------------------------------------------------------
+// TodayMenu
+// -------------------------------------------------------------
+export const TodayMenu = (args) => {
+    const baseObj1 = {
+        ...Object.assign({}, Default.args, args, {
+            content: "",
+            withIcon:"fas fa-home"
+        }),
+    };
+    const baseObj2 = {
+        ...Object.assign({}, Default.args, args, {
+            content: "LEARN",
+            withIcon:"fas fa-certificate"
+        }),
+    };
+    const baseObj3 = {
+        ...Object.assign({}, Default.args, args, {
+            content: "PLAY",
+            withIcon:"fas fa-gamepad"
+        }),
+    };
+    const baseObj4 = {
+        ...Object.assign({}, Default.args, args, {
+            content: "WIN",
+            withIcon:"fas fa-trophy"
+        }),
+    };
+    return (
+        <div style={{display:"flex"}}>
+            <TodayMenuBtn
+                {...Object.assign({}, baseObj1, {
+                    withIcon:"fas fa-home"
+                })}
+            />
+            <TodayMenuBtn
+                {...Object.assign({}, baseObj2, {
+                })}
+            />
+            <TodayMenuBtn
+                {...Object.assign({}, baseObj3, {
+                })}
+            />
+            <TodayMenuBtn
+                {...Object.assign({}, baseObj4, {
+                })}
+            />
+        </div>
+    );
+};
