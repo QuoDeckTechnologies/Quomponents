@@ -3,7 +3,6 @@ import BannerCard from "../components/Carousel/BannerCard/BannerCard.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        loading: "बस एक मिनट...",
         bannercard: { header: "बातचीत कक्ष", content: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
         ribbon: {
             new: "नया",
