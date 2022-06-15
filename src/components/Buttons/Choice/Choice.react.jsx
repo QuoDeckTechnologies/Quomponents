@@ -179,13 +179,12 @@ export default function Choice(props) {
 	//-------------------------------------------------------------------
 	let options = props.options;
 	if (
-		options &&
 		props.withTranslation &&
 		props.withTranslation.lang !== "" &&
 		props.withTranslation.lang !== "en"
 	) {
 		let tObj = getTranslation(props.withTranslation);
-		options = Object.assign(options, tObj);
+		options = tObj;
 	}
 
 	//-------------------------------------------------------------------
