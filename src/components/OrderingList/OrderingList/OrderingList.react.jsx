@@ -53,10 +53,10 @@ OrderingList.propTypes = {
   Use to override component colors and behavior
   */
   withColor: PropTypes.shape({
-    backgroundColor: "",
-    textColor: "",
-    hoverBackgroundColor: "",
-    hoverTextColor: ""
+    backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string
   }),
   /**
   Use to show/hide the component
