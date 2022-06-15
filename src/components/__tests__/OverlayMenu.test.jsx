@@ -1,7 +1,8 @@
 // Import from NPM
 // -------------------------------------
 import React from "react";
-import { shallow, mount, render } from "enzyme";
+import { shallow, mount } from "enzyme";
+import { render } from "@testing-library/react";
 
 // Import Components
 // -------------------------------------
@@ -12,9 +13,6 @@ describe("OverlayMenu", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-  let onClick = jest.fn();
-  const mockFn = jest.fn();
-
   const dictionary = JSON.stringify({
     hi: {
       OverlayMenu: {
@@ -38,6 +36,7 @@ describe("OverlayMenu", () => {
     jest.resetAllMocks();
     component = shallow(
       <OverlayMenu
+        isOpen={true}
         content={[]}
         withUser=""
         asVariant="primary"
@@ -49,12 +48,58 @@ describe("OverlayMenu", () => {
         withTranslation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => {}}
+        onClick={() => { }}
+        onClose={() => { }}
       />
     );
   });
   it("OverlayMenu should render correctly without throwing an error", () => {
     expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when component mounts", () => {
+    component = mount(
+      <OverlayMenu
+        content={[]}
+        isOpen={true}
+        asVariant="primary"
+        asSize="normal"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={{
+          lang: "en",
+          tgt: "OverlayMenu",
+          dictionary: dictionary,
+        }}
+        isDisabled={false}
+        isHidden={false}
+        onClick={() => { }}
+        onClose={() => { }}
+      />
+    );
+  });
+
+  it("should render correctly without throwing error when component unmounts", () => {
+    const { unmount } = render(
+      <OverlayMenu
+        content={[]}
+        isOpen={true}
+        asVariant="primary"
+        asSize="normal"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={{
+          lang: "en",
+          tgt: "OverlayMenu",
+          dictionary: dictionary,
+        }}
+        isDisabled={false}
+        isHidden={false}
+        onClick={() => { }}
+        onClose={() => { }}
+      />
+    );
+    unmount();
   });
 
   it("should call setState when click", () => {
@@ -66,29 +111,12 @@ describe("OverlayMenu", () => {
             label: "Certificate",
             format: "caption",
           },
-          {
-            icon: "fa fa-wallet",
-            label: "Wallet",
-            format: "caption",
-          },
-          {
-            icon: "fa fa-gift",
-            label: "Rewards",
-            format: "caption",
-          },
-          {
-            icon: "fa fa-chart-pie",
-            label: "Reports",
-            format: "caption",
-          },
         ]}
-        onClick={() => {}}
+        onClick={() => { }}
+        onClose={() => { }}
       />
     );
     component.find("IconLink").at(0).simulate("click");
-    component.find("IconLink").at(1).simulate("click");
-    component.find("IconLink").at(2).simulate("click");
-    component.find("IconLink").at(3).simulate("click");
   });
 
   it("OverlayMenu should render correctly without throwing an error if Avatar is present", () => {
@@ -111,7 +139,7 @@ describe("OverlayMenu", () => {
     expect(divTag.children).toBe("Aruna Asrani");
   });
 
-  it("should render correctly with translation", () => {
+  it("should render correctly with translation and withLabel", () => {
     component.setProps({
       withLabel: {
         format: "label",
@@ -119,7 +147,7 @@ describe("OverlayMenu", () => {
         textColor: "Black",
       },
       withTranslation: {
-        lang: "en",
+        lang: "hi",
         tgt: "OverlayMenu",
         dictionary: dictionary,
       },
@@ -129,8 +157,13 @@ describe("OverlayMenu", () => {
 
   it("should render correctly with translation", () => {
     component.setProps({
-      content: [],
-      withUser: "",
+      content: [
+        {
+          icon: "fa fa-share",
+          label: "Certificate",
+          format: "caption",
+        },
+      ],
       withTranslation: {
         lang: "hi",
         tgt: "OverlayMenu",
@@ -139,16 +172,9 @@ describe("OverlayMenu", () => {
     });
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly with translation", () => {
-    component.setProps({
-      content: [],
-      withUser: "",
-      withTranslation: {
-        lang: "hi",
-        tgt: "OverlayMenu",
-        dictionary: dictionary,
-      },
-    });
+
+  it("should render correctly without throwing error when clicked close icon", () => {
+    component.find(".cross-icon").simulate("click");
     expect(component.exists()).toBe(true);
   });
 });

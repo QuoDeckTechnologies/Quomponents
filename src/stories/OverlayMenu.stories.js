@@ -4,18 +4,18 @@ import OverlayMenu from "../components/OverlayMenu/OverlayMenu.react";
 const dictionary = JSON.stringify({
 
     hi: {
-        OverlayMenu: { 
-            label: "अरुणा असरानी" ,
-            content:[
-                {label:"प्रोफ़ाइल संपादित करें"},
-                {label:"खाता"},
-                {label:"प्रोफ़ाइल संपादित करें"},
-                {label:"खाता"},
-                {label:"प्रोफ़ाइल संपादित करें"},
-                {label:"खाता"},
-                {label:"खाता"},
-                {label:"प्रोफ़ाइल संपादित करें"},
-                {label:"खाता"},
+        OverlayMenu: {
+            label: "अरुणा असरानी",
+            content: [
+                { label: "प्रोफ़ाइल संपादित करें" },
+                { label: "खाता" },
+                { label: "प्रोफ़ाइल संपादित करें" },
+                { label: "खाता" },
+                { label: "प्रोफ़ाइल संपादित करें" },
+                { label: "खाता" },
+                { label: "खाता" },
+                { label: "प्रोफ़ाइल संपादित करें" },
+                { label: "खाता" },
             ]
         },
     },
@@ -25,6 +25,9 @@ export default {
     title: "Design System/OverlayMenu/OverlayMenu",
     component: OverlayMenu,
     argTypes: {
+        isOpen: {
+            defaultValue: true,
+        },
         content: [
             {
                 icon: "",
@@ -129,6 +132,12 @@ export default {
                 defaultValue: null,
             },
         },
+        onClose: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        },
     },
     decorators: [
         (story) => (
@@ -146,13 +155,14 @@ export default {
         a11y: { disable: true },
         docs: { iframeHeight: 700 },
     },
- };
+};
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
 const Template = (args) => <OverlayMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+    isOpen: true,
     content: [
         {
             icon: "fas fa-user-edit",
