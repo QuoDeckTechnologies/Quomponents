@@ -83,11 +83,6 @@ export const Default = Template.bind({});
 Default.args = {
     content: [
         {
-            image: "https://www.gannett-cdn.com/media/2019/01/18/USATODAY/usatsports/gettyimages-500740897.jpg?crop=1365,768,x0,y0&width=660&height=372&format=pjpg&auto=webp",
-            header: "Welcome to the Learning Library",
-            content: "There is always something new to learn here. Articles, games, the whole kitchen sink. Just click to enter and have fun...",
-        },
-        {
             image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
             header: "What is Lorem Ipsum?",
             content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -95,10 +90,15 @@ Default.args = {
         {
             image: "https://www.gannett-cdn.com/media/2019/01/18/USATODAY/usatsports/gettyimages-500740897.jpg?crop=1365,768,x0,y0&width=660&height=372&format=pjpg&auto=webp",
             header: "Welcome to the Learning Library",
-            content: "There is always something new to learn here. Articles, games, the whole kitchen sink. Just click to enter and have fun...There is always something new to learn here. Articles, games, the whole kitchen sink. Just click to enter and have fun...There is always something new to learn here. Articles, games, the whole kitchen sink. Just click to enter and have fun...There is always something new to learn here. Articles, games, the whole kitchen sink. Just click to enter and have fun...",
+            content: "There is always something new to learn here. Articles, games, the whole kitchen sink. Just click to enter and have fun...",
+        },
+        {
+            image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+            header: "BALLOON BURST",
+            content: "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
         },
     ],
-    asVariant: "primary",
+    asVariant: "warning",
     withColor: {
         backgroundColor: "",
         accentColor: "",
@@ -119,3 +119,57 @@ Default.parameters = {
         },
     },
 };
+// -------------------------------------------------------------
+// Animated Banner
+// -------------------------------------------------------------
+export const AnimatedBanner = Template.bind({});
+AnimatedBanner.args = {
+    ...Default.args,
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+};
+AnimatedBanner.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to animate the entry of the Banner with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        },
+        source: {
+            code: `<Banner {...${JSON.stringify(
+                AnimatedBanner.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Colored Banner
+// -------------------------------------------------------------
+export const ColoredBanner = Template.bind({});
+ColoredBanner.args = {
+    ...Default.args,
+    withColor: {
+        textColor: "#023047",
+        backgroundColor: "#ffb703",
+        accentColor: "#8ecae6",
+    }
+};
+ColoredBanner.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to override the standard colors of the Banner.",
+        },
+        source: {
+            code: `<Banner {...${JSON.stringify(
+                ColoredBanner.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+}; 

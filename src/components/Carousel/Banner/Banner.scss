@@ -4,20 +4,24 @@
 .qui-banner {
   overflow: inherit;
   .qui-banner-container {
-    background-color: #454545;
     border-radius: 0.5em;
-    .qui-banner-content {
-      font-size: 1em;
-      font-weight: 400;
-      text-align: left;
-      color: #fff;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      display: -webkit-box !important;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      white-space: normal;
-      margin: 1em;
+    .qui-banner-content-container {
+      padding: 1em;
+      margin-top: -0.25em;
+      background-color: #454545;
+      border-radius: 0 0 0.5em 0.5em;
+      .qui-banner-content {
+        font-size: 1em;
+        font-weight: 400;
+        text-align: left;
+        color: #fff;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+      }
     }
   }
   .qui-banner-card {
@@ -32,7 +36,6 @@
     max-width: 60%;
     bottom: 0;
     padding: 0;
-    background-color: #ffbf00cc;
     border: 0;
     border-radius: 0 0.5em 0 0;
   }
@@ -89,8 +92,10 @@
 @media only screen and (min-width: 320px) {
   .qui-banner {
     .qui-banner-container {
-      .qui-banner-content {
-        font-size: 0.61em;
+      .qui-banner-content-container {
+        .qui-banner-content {
+          font-size: 0.65em;
+        }
       }
     }
   }
@@ -102,25 +107,29 @@
 @media only screen and (min-width: 481px) {
   .qui-banner {
     .qui-banner-container {
-      .qui-banner-content {
-        font-size: 0.75em;
+      .qui-banner-content-container {
+        .qui-banner-content {
+          font-size: 0.75em;
+        }
       }
     }
   }
   .qui-banner .slick-dots {
-    bottom: 4.2em;
+    bottom: 4em;
   }
 }
 
 @media only screen and (min-width: 769px) {
   .qui-banner {
     .qui-banner-container {
-      .qui-banner-content {
-        font-size: 1.2em;
+      .qui-banner-content-container {
+        .qui-banner-content {
+          font-size: 1.2em;
+        }
       }
     }
   }
   .qui-banner .slick-dots {
-    bottom: 6em;
+    bottom: 5.2em;
   }
 }

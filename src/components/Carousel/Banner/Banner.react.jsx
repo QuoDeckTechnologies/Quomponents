@@ -145,9 +145,6 @@ export default function Banner(props) {
                 {_.map(content, (slide, index) => {
                     return (
                         <div className="qui-banner-container"
-                            style={{
-                                backgroundColor: withColor?.backgroundColor
-                            }}
                             key={"bannerData-" + index + Math.random()}
                         >
                             <div
@@ -158,17 +155,23 @@ export default function Banner(props) {
                                     content={slide}
                                     asVariant={asVariant}
                                     withColor={{
-                                        textColor: withColor?.textColor
+                                        textColor: withColor?.textColor,
+                                        backgroundColor: withColor?.accentColor
                                     }}
                                     onClick={props.onClick}
                                 />
                             </div>
                             <div
-                                className="qui-banner-content"
-                                style={{ color: withColor?.textColor }}
+                                className="qui-banner-content-container"
+                                style={{ backgroundColor: withColor?.backgroundColor }}
                                 key={"bannerContent-" + index + Math.random()}
                             >
-                                {slide?.content}
+                                <div
+                                    className="qui-banner-content"
+                                    style={{ color: withColor?.textColor }}
+                                >
+                                    {slide?.content}
+                                </div>
                             </div>
                         </div>
                     );
