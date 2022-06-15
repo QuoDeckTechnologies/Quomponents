@@ -32,7 +32,7 @@ describe("QuoBarChart", () => {
                     november: "नवम्बर",
                     december: "दिसंबर"
                 },
-                activePlayers: "सक्रिय खिलाड़ी"
+                sutitle: "सक्रिय खिलाड़ी"
             },
         },
     });
@@ -40,20 +40,20 @@ describe("QuoBarChart", () => {
         jest.resetAllMocks();
         component = shallow(
             <QuoBarChart
-                activeMonth="June"
+                title="June"
                 data={[
-                    { date: "10", activePlayer: 260 },
-                    { date: "11", activePlayer: 150 },
-                    { date: "12", activePlayer: 130 },
-                    { date: "13", activePlayer: 550 },
-                    { date: "14", activePlayer: 200 },
-                    { date: "15", activePlayer: 350 },
-                    { date: "16", activePlayer: 200 },
-                    { date: "17", activePlayer: 520 },
-                    { date: "18", activePlayer: 210 },
-                    { date: "19", activePlayer: 150 },
-                    { date: "20", activePlayer: 150 },
-                    { date: "21", activePlayer: 590 },
+                    { label: "10", count: 260 },
+                    { label: "11", count: 150 },
+                    { label: "12", count: 130 },
+                    { label: "13", count: 550 },
+                    { label: "14", count: 200 },
+                    { label: "15", count: 350 },
+                    { label: "16", count: 200 },
+                    { label: "17", count: 520 },
+                    { label: "18", count: 210 },
+                    { label: "19", count: 150 },
+                    { label: "20", count: 150 },
+                    { label: "21", count: 590 },
                 ]}
                 withColor={null}
                 isHidden={false}
@@ -83,8 +83,8 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "January",
-            activePlayer: "activePlayer",
+            title: "January",
+            subtitle: "activePlayer",
             withTranslation: {
                 lang: "hi",
                 tgt: "barchart",
@@ -95,7 +95,7 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "January",
+            title: "January",
             withTranslation: {
                 lang: "hi",
                 tgt: "",
@@ -106,7 +106,7 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "February",
+            title: "February",
             withTranslation: {
                 lang: "hi",
                 tgt: "barchart",
@@ -117,7 +117,7 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "March",
+            title: "March",
             withTranslation: {
                 lang: "hi",
                 tgt: "barchart",
@@ -128,7 +128,7 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "April",
+            title: "April",
             withTranslation: {
                 lang: "hi",
                 tgt: "barchart",
@@ -139,7 +139,7 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "May",
+            title: "May",
             withTranslation: {
                 lang: "hi",
                 tgt: "barchart",
@@ -150,7 +150,7 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "June",
+            title: "June",
             withTranslation: {
                 lang: "hi",
                 tgt: "barchart",
@@ -161,7 +161,7 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "July",
+            title: "July",
             withTranslation: {
                 lang: "hi",
                 tgt: "barchart",
@@ -172,7 +172,7 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "August",
+            title: "August",
             withTranslation: {
                 lang: "hi",
                 tgt: "barchart",
@@ -183,7 +183,7 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "September",
+            title: "September",
             withTranslation: {
                 lang: "hi",
                 tgt: "barchart",
@@ -194,7 +194,7 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "October",
+            title: "October",
             withTranslation: {
                 lang: "hi",
                 tgt: "barchart",
@@ -205,7 +205,7 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "November",
+            title: "November",
             withTranslation: {
                 lang: "hi",
                 tgt: "barchart",
@@ -216,7 +216,7 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly with withTranslation prop", () => {
         component.setProps({
-            activeMonth: "December",
+            title: "December",
             withTranslation: {
                 lang: "hi",
                 tgt: "barchart",
@@ -233,11 +233,11 @@ describe("QuoBarChart", () => {
             data: {
                 x: 619.9545454545455,
                 y: 115.91666666666669,
-                activePlayer: 590,
-                date: 29,
+                count: 590,
+                label: 29,
                 payload: {
-                    date: 21,
-                    activePlayer: 590
+                    label: 21,
+                    count: 590
                 }
             },
             show: true
@@ -251,11 +251,11 @@ describe("QuoBarChart", () => {
             data: {
                 x: 6,
                 y: 1,
-                activePlayer: 590,
-                date: 29,
+                count: 590,
+                label: 29,
                 payload: {
-                    date: 21,
-                    activePlayer: 590
+                    label: 21,
+                    count: 590
                 }
             },
             show: false
@@ -266,20 +266,20 @@ describe("QuoBarChart", () => {
     });
     it("should render tooltip data when hover on bar", () => {
         let wrapper = mount(<QuoBarChart
-            activeMonth="June"
+            title="June"
             data={[
-                { date: "10", activePlayer: 260 },
-                { date: "11", activePlayer: 150 },
-                { date: "12", activePlayer: 130 },
-                { date: "13", activePlayer: 550 },
-                { date: "14", activePlayer: 200 },
-                { date: "15", activePlayer: 350 },
-                { date: "16", activePlayer: 200 },
-                { date: "17", activePlayer: 520 },
-                { date: "18", activePlayer: 210 },
-                { date: "19", activePlayer: 150 },
-                { date: "20", activePlayer: 150 },
-                { date: "21", activePlayer: 590 },
+                { label: "10", count: 260 },
+                { label: "11", count: 150 },
+                { label: "12", count: 130 },
+                { label: "13", count: 550 },
+                { label: "14", count: 200 },
+                { label: "15", count: 350 },
+                { label: "16", count: 200 },
+                { label: "17", count: 520 },
+                { label: "18", count: 210 },
+                { label: "19", count: 150 },
+                { label: "20", count: 150 },
+                { label: "21", count: 590 },
             ]}
             withColor={null}
             isHidden={false}
@@ -302,24 +302,40 @@ describe("QuoBarChart", () => {
         act(() => {
             global.dispatchEvent(new Event("resize"));
         });
+        global.innerHeight = 300;
+        act(() => {
+            global.dispatchEvent(new Event("resize"));
+        });
+        global.innerHeight = 600;
+        act(() => {
+            global.dispatchEvent(new Event("resize"));
+        });
+        global.innerHeight = 1000;
+        act(() => {
+            global.dispatchEvent(new Event("resize"));
+        });
+        global.innerHeight = 1200;
+        act(() => {
+            global.dispatchEvent(new Event("resize"));
+        });
     });
     it("should render correctly without throwing error when component unmounts", () => {
         const { unmount } = render(
             <QuoBarChart
-                activeMonth="June"
+                title="June"
                 data={[
-                    { date: "10", activePlayer: 260 },
-                    { date: "11", activePlayer: 150 },
-                    { date: "12", activePlayer: 130 },
-                    { date: "13", activePlayer: 550 },
-                    { date: "14", activePlayer: 200 },
-                    { date: "15", activePlayer: 350 },
-                    { date: "16", activePlayer: 200 },
-                    { date: "17", activePlayer: 520 },
-                    { date: "18", activePlayer: 210 },
-                    { date: "19", activePlayer: 150 },
-                    { date: "20", activePlayer: 150 },
-                    { date: "21", activePlayer: 590 },
+                    { label: "10", count: 260 },
+                    { label: "11", count: 150 },
+                    { label: "12", count: 130 },
+                    { label: "13", count: 550 },
+                    { label: "14", count: 200 },
+                    { label: "15", count: 350 },
+                    { label: "16", count: 200 },
+                    { label: "17", count: 520 },
+                    { label: "18", count: 210 },
+                    { label: "19", count: 150 },
+                    { label: "20", count: 150 },
+                    { label: "21", count: 590 },
                 ]}
                 withColor={null}
                 isHidden={false}
@@ -336,6 +352,18 @@ describe("QuoBarChart", () => {
     });
     it("should render correctly without throwing error when window is resized to larger viewport", () => {
         global.innerWidth = 1200;
+        act(() => {
+            global.dispatchEvent(new Event("resize"));
+        });
+    });
+    it("should render correctly without throwing error when window is resized", () => {
+        global.innerHeight = 300;
+        act(() => {
+            global.dispatchEvent(new Event("resize"));
+        });
+    });
+    it("should render correctly without throwing error when window is resized to larger viewport", () => {
+        global.innerHeight = 600;
         act(() => {
             global.dispatchEvent(new Event("resize"));
         });

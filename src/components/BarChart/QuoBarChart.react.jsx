@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import {
     Tooltip,
@@ -20,9 +20,13 @@ QuoBarChart.propTypes = {
     // component specific props
     //=======================================
     /**
-      Barchart active month should be passed 
+      Barchart Title should be passed 
      */
-    activeMonth: PropTypes.string,
+    title: PropTypes.string,
+    /**   /**
+      Barchart subtitle hould be passed 
+     */
+    subtitle: PropTypes.string,
     /**
        Barchart data should be passed in content field 
       */
@@ -54,7 +58,8 @@ QuoBarChart.propTypes = {
 };
 
 QuoBarChart.defaultProps = {
-    activeMonth: "January",
+    title: "January",
+    subtitle: "Active Player",
     data: [{}],
     //============================
     // Quommon props
@@ -72,24 +77,44 @@ QuoBarChart.defaultProps = {
 export default function QuoBarChart(props) {
     let { data, withColor } = props;
     const [newData, setNewData] = useState({ data, activeIndex: 0 });
-    const [width, setWidth] = useState(window.innerWidth <= 481 ? window.innerWidth * 0.94 : window.innerWidth <= 834 ? window.innerWidth * 0.96 : window.innerWidth * 0.97)
+    const [width, setWidth] = useState(window.innerWidth <= 481 ? window.innerWidth * 2 : window.innerWidth <= 834 ? window.innerWidth * 1.5 : window.innerWidth * 1.5)
+    const [height, setHeight] = useState(window.innerWidth <= 481 ? 250 : window.innerWidth <= 834 ? 320 : 400)
     const [position, setPosition] = useState(null);
 
-    const resizeHandler = () => {
+    const resizeWidth = () => {
         if (window.innerWidth <= 481) {
-            setWidth(window.innerWidth * 0.94)
+            setWidth(window.innerWidth * 2)
         } if (window.innerWidth <= 834) {
-            setWidth(window.innerWidth * 0.96)
+            setWidth(window.innerWidth * 1.5)
         } else {
-            setWidth(window.innerWidth * 0.97)
+            setWidth(window.innerWidth * 1.5)
+            setHeight(400)
         }
     }
     useEffect(() => {
-        window.addEventListener("resize", resizeHandler);
+        window.addEventListener("resize", resizeWidth);
         return () => {
-            window.removeEventListener("resize", resizeHandler);
+            window.removeEventListener("resize", resizeWidth);
         };
     }, []);
+
+    const resizeHeight = () => {
+        if (window.innerWidth <= 481) {
+            setHeight(250)
+        }
+        if (window.innerWidth <= 831) {
+            setHeight(320)
+        } else {
+            setHeight(400)
+        }
+    }
+    useEffect(() => {
+        window.addEventListener("resize", resizeHeight);
+        return () => {
+            window.removeEventListener("resize", resizeWidth);
+        };
+    }, []);
+
     useEffect(() => {
         const tooltip = document.querySelector(".recharts-tooltip-wrapper");
         if (!tooltip) return;
@@ -108,12 +133,15 @@ export default function QuoBarChart(props) {
     //-------------------------------------------------------------------
     // Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
-    let monthName = props.activeMonth
-    let activePlayers = "Active Players"
+    let monthName = props?.title
+    let activePlayers = props?.subtitle
     let tObj = getTranslation(props.withTranslation);
+    if (tObj && activePlayers !== "") activePlayers = tObj.activePlayers
     const getMonthName = (monthName) => {
         if (tObj) {
-            return tObj.months[monthName.toLowerCase()]
+            return (
+                tObj.months[monthName.toLowerCase()]
+            )
         } else {
             return monthName
         }
@@ -142,6 +170,7 @@ export default function QuoBarChart(props) {
         temp.activeIndex = i
         setNewData(temp)
     }
+    const ref = useRef(null);
     // ========================= Render Function =================================
     return (
         <div className="qui-barchart-container" style={{ backgroundColor: withColor?.backgroundColor }}>
@@ -149,7 +178,7 @@ export default function QuoBarChart(props) {
             <p className="qui-barchart-active-players">{activePlayers}</p>
             <BarChart
                 width={width}
-                height={500}
+                height={height}
                 data={data}
                 margin={{
                     top: 110,
@@ -157,12 +186,13 @@ export default function QuoBarChart(props) {
                     left: window.innerWidth <= 540 ? 15 : 30,
                     bottom: 5,
                 }}
-                barSize={50}
+                barSize={window.innerWidth <= 540 ? 40 : 50}
+                barGap={50}
             >
                 <XAxis
                     tickLine={false}
                     axisLine={false}
-                    dataKey="date"
+                    dataKey="label"
                     scale="point"
                     padding={{ left: 10, right: 10 }}
                 />
@@ -176,7 +206,7 @@ export default function QuoBarChart(props) {
                     className="qui-bar"
                     radius={10}
                     onMouseOver={(data) => setPosition({ data: data, show: true })}
-                    dataKey="activePlayer"
+                    dataKey="count"
                     onClick={(data, i) => handleClick(i)}
                 >
                     {newData.data.map((entry, index) => (
