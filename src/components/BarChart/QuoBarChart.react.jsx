@@ -78,7 +78,7 @@ export default function QuoBarChart(props) {
     let { data, withColor } = props;
     const [newData, setNewData] = useState({ data, activeIndex: 0 });
     const [width, setWidth] = useState(window.innerWidth <= 481 ? window.innerWidth * 2 : window.innerWidth <= 834 ? window.innerWidth * 1.5 : window.innerWidth * 1.5)
-    const [height, setHeight] = useState(window.innerWidth <= 481 ? 250 : window.innerWidth <= 834 ? 320 : 400)
+    const [height, setHeight] = useState(window.innerHeight <= 600 ? 180 : window.innerHeight <= 900 ? 220 : 300)
     const [position, setPosition] = useState(null);
 
     const resizeWidth = () => {
@@ -88,7 +88,6 @@ export default function QuoBarChart(props) {
             setWidth(window.innerWidth * 1.5)
         } else {
             setWidth(window.innerWidth * 1.5)
-            setHeight(400)
         }
     }
     useEffect(() => {
@@ -99,13 +98,13 @@ export default function QuoBarChart(props) {
     }, []);
 
     const resizeHeight = () => {
-        if (window.innerWidth <= 481) {
-            setHeight(250)
+        if (window.innerHeight <= 600) {
+            setHeight(180)
         }
-        if (window.innerWidth <= 831) {
-            setHeight(320)
+        if (window.innerHeight <= 900) {
+            setHeight(220)
         } else {
-            setHeight(400)
+            setHeight(300)
         }
     }
     useEffect(() => {
@@ -181,7 +180,7 @@ export default function QuoBarChart(props) {
                 height={height}
                 data={data}
                 margin={{
-                    top: 110,
+                    top: 10,
                     right: 30,
                     left: window.innerWidth <= 540 ? 15 : 30,
                     bottom: 5,

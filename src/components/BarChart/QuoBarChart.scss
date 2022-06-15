@@ -48,8 +48,7 @@
         }
     }
     .qui-barchart-active-month {
-        position: absolute;
-        top: 0.1em;
+        position: sticky;
         left: 1em;
         width: fit-content;
         font-weight: bolder;
@@ -58,8 +57,7 @@
         letter-spacing: -2px;
     }
     .qui-barchart-active-players {
-        position: absolute;
-        top: 3.2em;
+        position: sticky;
         left: 1.5em;
         color: #aaaaaa;
         width: fit-content;

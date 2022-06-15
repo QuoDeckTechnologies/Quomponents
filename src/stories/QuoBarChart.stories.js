@@ -271,3 +271,48 @@ BarChartWith31Bars.parameters = {
         },
     },
 };
+
+// -------------------------------------------------------------
+// Different Variants QuoBarChart
+// -------------------------------------------------------------
+const Trail = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            withColor: null,
+            asFloated: "inline",
+        }),
+    };
+    return (
+        <div style={{ displaye: "flex", flexDirection: "column" }}>
+            <div style={{ width: "300px", height: "200px" }}>
+                <QuoBarChart
+                    {...Object.assign({}, baseObj, {
+
+                    })}
+                />{" "}
+            </div>
+            <div style={{ width: "300px", height: "200px", marginTop: "4em" }}>
+                <QuoBarChart
+                    {...Object.assign({}, baseObj, {
+                        withColor: {
+                            backgroundColor: "#d5f1a8",
+                            activeBarColor: "#000000",
+                            barColor: "#FFBF00",
+                        },
+                    })}
+                />{" "}
+            </div>
+        </div>
+    );
+};
+export const TrialVar = Trail.bind({});
+TrialVar.parameters = {
+    docs: {
+        description: {
+            story: "Variants and Size are supported with Animation. Use as per purpose noted here.",
+        },
+        source: {
+            code: ``,
+        },
+    },
+};
