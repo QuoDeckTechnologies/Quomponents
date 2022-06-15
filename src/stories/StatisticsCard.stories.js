@@ -17,13 +17,6 @@ export default {
                 defaultValue: false,
             },
         },
-        asPadded: {
-            control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
@@ -91,7 +84,6 @@ Default.args = {
     },
     isCircular: true,
     asFloated: "inline",
-    asPadded: "normal",
     withColor: {
         backgroundColor: "",
         accentColor: "",

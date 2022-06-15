@@ -5,14 +5,12 @@
     flex-direction: column;
     color: #666666;
     .qui-segment {
-        padding: 1.5em 1em;
+        padding: 1.5em;
         width:7em ;
     }
-
     .qui{
         overflow: visible;
     }
-
     .qui-statistics-card-icon {
         font-size: 2.5em;
         margin-bottom: 0.2em;
@@ -54,22 +52,7 @@
         position: relative;
         display: block;
     }
-
-    .tooltiplabels{
-        display: none;
-    }
-
-    .tooltipvalues{
-        display: none;
-    }
-    .tooltiplabel{
-        display:block;
-    }
     
-    .tooltipvalue{
-        display:block;
-    }
-      
     .valuetooltip .tooltipvalue {
         visibility: hidden;
         width: auto;

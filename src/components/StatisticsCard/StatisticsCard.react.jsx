@@ -30,10 +30,6 @@ StatisticsCard.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define component padding in increasing order
-    */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
@@ -77,7 +73,6 @@ StatisticsCard.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asPadded: "normal",
     asFloated: "none",
     withColor: null,
     withAnimation: null,

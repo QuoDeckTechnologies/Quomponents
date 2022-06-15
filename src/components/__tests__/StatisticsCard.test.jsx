@@ -25,7 +25,6 @@ describe("StatisticsCard", () => {
                     value: "2222"
                 }}
                 isCircular={false}
-                asPadded="normal"
                 asFloated="none"
                 withColor={null}
                 withAnimation={null}
@@ -63,34 +62,6 @@ describe("StatisticsCard", () => {
     it("should render correctly when passed asFloated props is inline", () => {
         component.setProps({
             asFloated: "inline",
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asPadded props is fitted", () => {
-        component.setProps({
-            asPadded: "fitted",
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asPadded props is compact", () => {
-        component.setProps({
-            asPadded: "compact",
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asPadded props is normal", () => {
-        component.setProps({
-            asPadded: "normal",
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asPadded props is relaxed", () => {
-        component.setProps({
-            asPadded: "relaxed",
         });
         expect(component.exists()).toBe(true);
     });
