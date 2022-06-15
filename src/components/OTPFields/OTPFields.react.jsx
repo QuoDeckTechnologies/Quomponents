@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import OtpInput from "react-otp-input";
+// import OtpInput from "react-otp-input";
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -124,7 +124,7 @@ export default function OTPFields(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-otp-fields-container ${quommonClasses.childClasses}`}>
-                <OtpInput
+                {/* <OtpInput
                     value={otpValue}
                     onChange={handleChange}
                     numInputs={numFields}
@@ -133,7 +133,7 @@ export default function OTPFields(props) {
                     isInputNum={true}
                     shouldAutoFocus={true}
                     focusStyle={otpFieldsFocusStyle}
-                />
+                /> */}
             </div>
         </motion.div>
     );
