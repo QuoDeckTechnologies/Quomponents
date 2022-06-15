@@ -21,6 +21,12 @@ export default {
         category: "as-Flags",
       },
     },
+    isButton: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
     isCircular: {
       table: {
         category: "is-Toggles",
@@ -121,9 +127,10 @@ Default.args = {
     {
       id: "background-image",
       image:
-        "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     },
   ],
+  isButton: true,
   asEmphasis: "contained",
   isCircular: false,
   asVariant: "warning",

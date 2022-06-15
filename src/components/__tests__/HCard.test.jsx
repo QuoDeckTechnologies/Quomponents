@@ -25,6 +25,7 @@ describe("HCard", () => {
     jest.resetAllMocks();
     component = shallow(
       <HCard
+        isButton={false}
         imageLibrary={[]}
         asEmphasis="contained"
         isCircular={false}
@@ -57,6 +58,7 @@ describe("HCard", () => {
 
   it("should render correctly without throwing error when withTranslation prop is passed", () => {
     component.setProps({
+      isButton: true,
       withTranslation: {
         lang: "hi",
         tgt: "hCard",
@@ -136,10 +138,11 @@ describe("HCard", () => {
         name: "BALLOON BURST",
         description:
           "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-        buttonText: "try game",
+        buttonText: null,
         checked: true,
         image: { id: "background-image", extention: "" },
       },
+      isButton: true,
       imageLibrary: [
         {
           id: "background-image",
@@ -161,6 +164,7 @@ describe("HCard", () => {
         buttonText: "try game",
         checked: true,
       },
+      isButton: true,
       imageLibrary: [
         {
           id: "background-image",
@@ -172,19 +176,23 @@ describe("HCard", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when clicked on card with smaller window", () => {
-    global.innerWidth = 200;
+  it("should render correctly when clicked on card", () => {
+    component.find(".qui-h-card-container").simulate("click");
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when clicked on card when isButton is true", () => {
+    component.setProps({
+      isButton: true,
+    });
     component.find(".qui-h-card-container").simulate("click");
     expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when clicked on card with larger window", () => {
-    global.innerWidth = 800;
-    component.find(".qui-h-card-container").simulate("click");
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when clicked on card with larger window", () => {
+    component.setProps({
+      isButton: true,
+    });
     component.find("Button").simulate("click");
     expect(component.exists()).toBe(true);
   });
