@@ -60,16 +60,16 @@ TodayMenuBtn.propTypes = {
 TodayMenuBtn.defaultProps = {
     // Component Specific props
     //=======================================
-    content: "Home",
-    withIcon: "fas fa-home",
-    asEmphasis:"Default",
+    content: "",
+    withIcon: "",
+    asEmphasis: "Default",
 
     // Quommon props
     //=======================================
-    asFloated:"left",
+    asFloated: "left",
     withColor: null,
     isHidden: false,
-    isDisabled:false
+    isDisabled: false
 };
 
 /**
@@ -124,11 +124,11 @@ export default function TodayMenuBtn(props) {
             {(props.content || props.withIcon) &&
                 <div className={`${quommonClasses.childClasses} qui-today-menu-btn-container`} style={{ backgroundColor: colors.backgroundColor }}
                     onClick={props.onClick}>
-                    {props.withIcon && <i className={`${icon} qui-content-line-icon`} style={{ color: colors?.iconColor }} />}
+                    {props.withIcon && <i className={`${icon} qui-today-menu-btn-icon`} style={{ color: colors?.iconColor }} />}
                     {props.content !== "" &&
-                        <div className={`qui-content-line-text`} style={{ color: colors?.textColor, marginLeft: props.withIcon ? " 0.5em" : "0" }} >
+                        <h6 className={`qui-today-menu-btn-text`} style={{ color: colors?.textColor, marginLeft: props.withIcon ? " 0.5em" : "0" }} >
                             {props.content}
-                        </div>
+                        </h6>
                     }
                 </div>}
         </motion.div>

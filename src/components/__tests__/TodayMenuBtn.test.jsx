@@ -87,47 +87,47 @@ describe("TodayMenuBtn", () => {
 
     it("should render only Icon when passed withIcon", () => {
         component.setProps({ asEmphasis: "Default", withIcon: "fas fa-home" });
-        expect(component.find(".qui-content-line-text").exists()).toBe(false);
-        expect(component.find(".qui-content-line-icon").exists()).toBe(true);
+        expect(component.find(".qui-today-menu-btn-text").exists()).toBe(false);
+        expect(component.find(".qui-today-menu-btn-icon").exists()).toBe(true);
     });
 
     it("should render only Text when passed content", () => {
         component.setProps({ asEmphasis: "Default", content: "Home" });
-        expect(component.find(".qui-content-line-text").exists()).toBe(true);
-        expect(component.find(".qui-content-line-icon").exists()).toBe(false);
+        expect(component.find(".qui-today-menu-btn-text").exists()).toBe(true);
+        expect(component.find(".qui-today-menu-btn-icon").exists()).toBe(false);
     });
 
     it("should render both when passed withIcon and content", () => {
         component.setProps({ asEmphasis: "Default", content: "Home", withIcon: "fas fa-home" });
-        expect(component.find(".qui-content-line-text").exists()).toBe(true);
-        expect(component.find(".qui-content-line-icon").exists()).toBe(true);
+        expect(component.find(".qui-today-menu-btn-text").exists()).toBe(true);
+        expect(component.find(".qui-today-menu-btn-icon").exists()).toBe(true);
     });
 
     it("should render correct styling when passed withColor props to default component", () => {
         component.setProps({ asEmphasis: "Default", withColor: { backgroundColor: "#fff", textColor: "#000", iconColor: "#000" }, content: "Home", withIcon: "fas fa-home" });
         expect(component.find(".qui-today-menu-btn-container").props().style.backgroundColor).toBe("#fff");
-        expect(component.find(".qui-content-line-text").props().style.color).toBe("#000");
-        expect(component.find(".qui-content-line-icon").props().style.color).toBe("#000");
+        expect(component.find(".qui-today-menu-btn-text").props().style.color).toBe("#000");
+        expect(component.find(".qui-today-menu-btn-icon").props().style.color).toBe("#000");
     });
 
     it("should render correct styling of component when passed Complete in asEmphasis props", () => {
         component.setProps({ asEmphasis: "Complete", content: "Home", withIcon: "fas fa-home" });
         expect(component.find(".qui-today-menu-btn-container").props().style.backgroundColor).toBe("#C1DC9E");
-        expect(component.find(".qui-content-line-text").props().style.color).toBe("#454545");
-        expect(component.find(".qui-content-line-icon").props().style.color).toBe("#52AF50");
+        expect(component.find(".qui-today-menu-btn-text").props().style.color).toBe("#454545");
+        expect(component.find(".qui-today-menu-btn-icon").props().style.color).toBe("#52AF50");
     });
 
     it("should render correct styling of component when passed Active in asEmphasis props", () => {
         component.setProps({ asEmphasis: "Active", content: "Home", withIcon: "fas fa-home" });
         expect(component.find(".qui-today-menu-btn-container").props().style.backgroundColor).toBe("#222A35");
-        expect(component.find(".qui-content-line-text").props().style.color).toBe("#FFFFFF");
-        expect(component.find(".qui-content-line-icon").props().style.color).toBe("#FFCA36");
+        expect(component.find(".qui-today-menu-btn-text").props().style.color).toBe("#FFFFFF");
+        expect(component.find(".qui-today-menu-btn-icon").props().style.color).toBe("#FFCA36");
     });
 
     it("should render correct styling of component when passed Default in asEmphasis props", () => {
         component.setProps({ asEmphasis: "Default", content: "Home", withIcon: "fas fa-home" });
         expect(component.find(".qui-today-menu-btn-container").props().style.backgroundColor).toBe("#ED6E6E");
-        expect(component.find(".qui-content-line-text").props().style.color).toBe("#FFFFFF");
-        expect(component.find(".qui-content-line-icon").props().style.color).toBe("#FFFFFF");
+        expect(component.find(".qui-today-menu-btn-text").props().style.color).toBe("#FFFFFF");
+        expect(component.find(".qui-today-menu-btn-icon").props().style.color).toBe("#FFFFFF");
     });
 });
