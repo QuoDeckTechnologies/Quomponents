@@ -20,6 +20,7 @@ describe("Banner", () => {
         component = shallow(
             <Banner
                 content={[]}
+                asVariant="secondary"
                 withColor={null}
                 withAnimation={null}
                 isDisabled={false}
@@ -45,6 +46,31 @@ describe("Banner", () => {
             content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         }]
         component.setProps({ content: data })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asVariant prop as primary", () => {
+        component.setProps({ asVariant: "primary" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asVariant prop as secondary", () => {
+        component.setProps({ asVariant: "secondary" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asVariant prop as warning", () => {
+        component.setProps({ asVariant: "warning" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asVariant prop as error", () => {
+        component.setProps({ asVariant: "error" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asVariant prop as success", () => {
+        component.setProps({ asVariant: "success" })
         expect(component.exists()).toBe(true);
     });
 

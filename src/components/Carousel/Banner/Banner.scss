@@ -29,17 +29,22 @@
   .qui-banner-card .qui-slider-card-box {
     display: none;
     width: 100%;
-    max-width: 100%;
+    max-width: 60%;
     bottom: 0;
-    background-color: transparent;
     padding: 0;
+    background-color: #ffbf00cc;
+    border: 0;
+    border-radius: 0 0.5em 0 0;
   }
   .qui-banner-card .qui-slider-card-box-header {
-    max-width: 55%;
-    background-color: #ffbf00cc;
-    padding: 0.5em;
-    border-top-right-radius: 1em;
-    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    border-top-right-radius: 0.5em;
+    margin: 0.5em;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 /* ================================================= */
@@ -89,6 +94,9 @@
       }
     }
   }
+  .qui-banner .slick-dots {
+    bottom: 3.3em;
+  }
 }
 
 @media only screen and (min-width: 481px) {
@@ -99,6 +107,9 @@
       }
     }
   }
+  .qui-banner .slick-dots {
+    bottom: 4.2em;
+  }
 }
 
 @media only screen and (min-width: 769px) {
@@ -108,5 +119,8 @@
         font-size: 1.2em;
       }
     }
+  }
+  .qui-banner .slick-dots {
+    bottom: 6em;
   }
 }
