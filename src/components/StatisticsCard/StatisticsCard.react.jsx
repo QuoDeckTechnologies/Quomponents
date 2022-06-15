@@ -8,7 +8,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./StatisticsCard.scss";
 import "../../common/stylesheets/overrule.scss";
-import { tooltipClasses } from "@mui/material";
 
 StatisticsCard.propTypes = {
     //=======================================
@@ -128,18 +127,18 @@ export default function StatisticsCard(props) {
                     <i className={`qui-statistics-card-icon ${content?.icon}`}
                         style={colors?.accentColors}>
                     </i>
-                    <div className="valuetooltip">
+                    <div className="qui-statistics-card-valuetooltip">
                         <h1 className={props.content?.value.length >= 7 ? "qui-statistics-card-values" : "qui-statistics-card-value"} style={colors?.textColors}>
                             {content?.value}
                         </h1>
-                        <span className="tooltipvalue">{content?.value}</span>
+                        <span className="qui-statistics-card-tooltipvalue">{content?.value}</span>
                     </div>
 
-                    <div className="labeltooltip">
+                    <div className="qui-statistics-card-labeltooltip">
                         <h3 className={props.content?.label.length >= 7 ? "qui-statistics-card-labels" : "qui-statistics-card-label"} style={colors?.textColors}>
                             {content?.label}
                         </h3>
-                        <span className="tooltiplabel">{content?.label}</span>
+                        <span className="qui-statistics-card-tooltiplabel">{content?.label}</span>
                     </div>
                 </>
             </Segment>

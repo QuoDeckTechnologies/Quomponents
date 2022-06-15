@@ -4,13 +4,16 @@
     justify-content: center;
     flex-direction: column;
     color: #666666;
+
     .qui-segment {
         padding: 1.5em;
-        width:7em ;
+        width: 7em;
     }
-    .qui{
+
+    .qui {
         overflow: visible;
     }
+
     .qui-statistics-card-icon {
         font-size: 2.5em;
         margin-bottom: 0.2em;
@@ -24,36 +27,40 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
     .qui-statistics-card-label {
         font-size: 1.25em;
         margin: 0;
         width: 100%;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;     
+        text-overflow: ellipsis;
     }
+
     .qui-statistics-card-values {
         font-size: 1em;
         margin: 0;
         width: 100%;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;     
+        text-overflow: ellipsis;
     }
+
     .qui-statistics-card-labels {
         font-size: 1em;
         margin: 0;
         width: 100%;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;     
+        text-overflow: ellipsis;
     }
-    .valuetooltip {
+
+    .qui-statistics-card-valuetooltip {
         position: relative;
         display: block;
     }
-    
-    .valuetooltip .tooltipvalue {
+
+    .qui-statistics-card-valuetooltip .qui-statistics-card-tooltipvalue {
         visibility: hidden;
         width: auto;
         padding: 0.2em;
@@ -64,16 +71,17 @@
         left: 0;
         z-index: 1;
     }
-      
-    .valuetooltip:hover .tooltipvalue {
+
+    .qui-statistics-card-valuetooltip:hover .qui-statistics-card-tooltipvalue {
         visibility: visible;
     }
-    
-    .labeltooltip {
+
+    .qui-statistics-card-labeltooltip {
         position: relative;
         display: block;
     }
-    .labeltooltip .tooltiplabel {
+
+    .qui-statistics-card-labeltooltip .qui-statistics-card-tooltiplabel {
         visibility: hidden;
         padding: 0.2em;
         border-radius: 5px;
@@ -84,8 +92,8 @@
         left: 0;
         z-index: 1;
     }
-      
-    .labeltooltip:hover .tooltiplabel {
+
+    .qui-statistics-card-labeltooltip:hover .qui-statistics-card-tooltiplabel {
         visibility: visible;
-    }    
+    }
 }
