@@ -13,7 +13,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./Banner.scss";
 import "../../../common/stylesheets/overrule.scss";
-
 import BannerCard from "../BannerCard/BannerCard.react";
 
 Banner.propTypes = {
@@ -41,7 +40,6 @@ Banner.propTypes = {
         "warning",
         "error",
     ]),
-
     /**
     Use to override component colors and behavior
     */
@@ -114,19 +112,7 @@ export default function Banner(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "banner");
     //-------------------------------------------------------------------
-    // 3. Use to set Color in Banner
-    //-------------------------------------------------------------------
-    let Color = {
-        backgroundColor: props.withColor?.backgroundColor,
-        color: props.withColor?.textColor,
-        borderBottomColor: `${props.withColor?.accentColor}`,
-    };
-    //-------------------------------------------------------------------
-    // 4. Get animation of the component
-    //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
-    //-------------------------------------------------------------------
-    // 5. Use to Set the settings for slider in the Component
+    // 3. Use to Set the settings for slider in the Component
     //-------------------------------------------------------------------u
     const sliderRef = useRef();
 
@@ -144,6 +130,10 @@ export default function Banner(props) {
         centerPadding: "0",
         swipeToSlide: true,
     };
+    //-------------------------------------------------------------------
+    // 4. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -155,13 +145,30 @@ export default function Banner(props) {
                 {_.map(content, (slide, index) => {
                     return (
                         <div className="qui-banner-container"
+                            style={{
+                                backgroundColor: withColor?.backgroundColor
+                            }}
                             key={"bannerData-" + index + Math.random()}
                         >
                             <div
                                 key={"banner-" + index + Math.random()}
                                 className={`qui-banner`}
                             >
-                                <BannerCard {...slide.props} content={slide} onClick={props.onClick} />
+                                <BannerCard
+                                    content={slide}
+                                    asVariant={asVariant}
+                                    withColor={{
+                                        textColor: withColor?.textColor
+                                    }}
+                                    onClick={props.onClick}
+                                />
+                            </div>
+                            <div
+                                className="qui-banner-content"
+                                style={{ color: withColor?.textColor }}
+                                key={"bannerContent-" + index + Math.random()}
+                            >
+                                {slide?.content}
                             </div>
                         </div>
                     );

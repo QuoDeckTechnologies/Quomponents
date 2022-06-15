@@ -1,17 +1,39 @@
+// /* ================================================= */
+// /* Banner Container Definitions */
+// /* ================================================= */
 .qui-banner {
   overflow: inherit;
-
+  .qui-banner-container {
+    background-color: #454545;
+    border-radius: 0.5em;
+    .qui-banner-content {
+      font-size: 1em;
+      font-weight: 400;
+      text-align: left;
+      color: #fff;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      white-space: normal;
+      margin: 1em;
+    }
+  }
   .qui-banner-card {
     box-shadow: none;
+    border-radius: 0;
+    border-top-right-radius: 0.5em;
+    border-top-left-radius: 0.5em;
   }
   .qui-banner-card .qui-slider-card-box {
+    display: none;
     width: 100%;
     max-width: 100%;
     bottom: 0;
     background-color: transparent;
     padding: 0;
   }
-
   .qui-banner-card .qui-slider-card-box-header {
     max-width: 55%;
     background-color: #ffbf00cc;
@@ -19,44 +41,27 @@
     border-top-right-radius: 1em;
     margin: 0;
   }
-
-  .qui-banner-card .qui-slider-card-box-content {
-    display: block;
-    background-color: #454545;
-    max-width: 100%;
-    padding: 0.5em;
-    opacity: 1;
-    min-height: 5em;
-  }
 }
-
-.qui-banner .qui-banner-container {
-  width: 99%;
-}
-
-.qui-banner .qui-banner {
-  height: 40vh;
-  width: 99%;
-  margin: 0px 1px;
-}
-
-.qui-banner .qui-slider-card-box {
-  display: none;
-}
-
+/* ================================================= */
+/* slick Definitions */
+/* ================================================= */
 .qui-banner .slick-dots {
-  bottom: 30%;
-  left: 40%;
+  position: absolute;
+  width: auto;
+  bottom: 5.5em;
+  right: 1em;
 }
 
 .qui-banner .slick-dots li button:before {
   font-size: 9px;
   color: #ffff;
+  opacity: 1;
 }
 
 .qui-banner .slick-dots li.slick-active button:before {
   font-size: 12px;
   color: #ffff;
+  opacity: 1;
 }
 
 .qui-banner .slick-dots li {
@@ -66,29 +71,42 @@
 .qui-banner .slick-slide {
   transform: scaleY(0);
   width: 100%;
-
-  .qui-card-label {
-    display: none;
-  }
-
   &.slick-active {
     transform: scaleY(1);
     .qui-slider-card-box {
       display: inline-block;
     }
-
-    .qui-card-label {
-      display: inline;
+  }
+}
+/* ================================================= */
+/* Styling Definitions for different resolution */
+/* ================================================= */
+@media only screen and (min-width: 320px) {
+  .qui-banner {
+    .qui-banner-container {
+      .qui-banner-content {
+        font-size: 0.61em;
+      }
     }
   }
 }
 
-@media only screen and (orientation: portrait) and (max-width: 1024px) {
-  .qui-banner .qui-banner-container {
-    height: 18vh;
+@media only screen and (min-width: 481px) {
+  .qui-banner {
+    .qui-banner-container {
+      .qui-banner-content {
+        font-size: 0.75em;
+      }
+    }
   }
-  .qui-banner .qui-banner {
-    height: 25vh;
-    width: 96%;
+}
+
+@media only screen and (min-width: 769px) {
+  .qui-banner {
+    .qui-banner-container {
+      .qui-banner-content {
+        font-size: 1.2em;
+      }
+    }
   }
 }
