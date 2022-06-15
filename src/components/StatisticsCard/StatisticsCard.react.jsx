@@ -19,8 +19,8 @@ StatisticsCard.propTypes = {
     */
     content: PropTypes.shape({
         label: PropTypes.string,
-        icon:PropTypes.string,
-        value:PropTypes.string,
+        icon: PropTypes.string,
+        value: PropTypes.string,
     }).isRequired,
     /**
     Use for rounded corners
@@ -134,17 +134,17 @@ export default function StatisticsCard(props) {
                         style={colors?.accentColors}>
                     </i>
                     <div className="valuetooltip">
-                    <h1 className={props.content?.value.length >= 7 ? "qui-statistics-card-values" : "qui-statistics-card-value"} style={colors?.textColors}>
-                        {content?.value}
-                    </h1>
-                    <span className="tooltipvalue">{content?.value}</span>
+                        <h1 className={props.content?.value.length >= 7 ? "qui-statistics-card-values" : "qui-statistics-card-value"} style={colors?.textColors}>
+                            {content?.value}
+                        </h1>
+                        <span className="tooltipvalue">{content?.value}</span>
                     </div>
 
                     <div className="labeltooltip">
-                    <h3 className={props.content?.label.length >= 7 ? "qui-statistics-card-labels" : "qui-statistics-card-label"} style={colors?.textColors}>
-                        {content?.label}
-                    </h3>
-                    <span className="tooltiplabel">{content?.label}</span>
+                        <h3 className={props.content?.label.length >= 7 ? "qui-statistics-card-labels" : "qui-statistics-card-label"} style={colors?.textColors}>
+                            {content?.label}
+                        </h3>
+                        <span className="tooltiplabel">{content?.label}</span>
                     </div>
                 </>
             </Segment>
