@@ -20,7 +20,6 @@
 }
 .qui-barchart-container {
     background-color: #ffffff;
-    border-radius: 2em;
     position: relative;
     overflow-x: scroll;
     .qui-bar-player-count {
@@ -51,6 +50,7 @@
         position: sticky;
         left: 1em;
         width: fit-content;
+        margin-bottom: 0;
         font-weight: bolder;
         font-family: "sans-serif";
         transform: scaleY(1.3);
@@ -72,6 +72,9 @@
     .qui-barchart-active-players {
         font-size: 0.9em;
     }
+    .qui-barchart-container {
+        border-radius: 1.5em;
+    }
 }
 @media only screen and (min-width: 418px) {
     .qui-barchart-active-month {
@@ -79,5 +82,8 @@
     }
     .qui-barchart-active-players {
         font-size: 1.3em;
+    }
+    .qui-barchart-container {
+        border-radius: 2em;
     }
 }

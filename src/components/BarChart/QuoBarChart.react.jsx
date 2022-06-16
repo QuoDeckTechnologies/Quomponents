@@ -78,7 +78,7 @@ export default function QuoBarChart(props) {
     let { data, withColor } = props;
     const [newData, setNewData] = useState({ data, activeIndex: 0 });
     const [width, setWidth] = useState(window.innerWidth <= 481 ? window.innerWidth * 2 : window.innerWidth <= 834 ? window.innerWidth * 1.5 : window.innerWidth * 1.5)
-    const [height, setHeight] = useState(window.innerHeight <= 600 ? 180 : window.innerHeight <= 900 ? 220 : 300)
+    const [height, setHeight] = useState(window.innerHeight <= 600 ? 150 : window.innerHeight <= 900 ? 220 : 300)
     const [position, setPosition] = useState(null);
 
     const resizeWidth = () => {
@@ -99,7 +99,7 @@ export default function QuoBarChart(props) {
 
     const resizeHeight = () => {
         if (window.innerHeight <= 600) {
-            setHeight(180)
+            setHeight(150)
         }
         if (window.innerHeight <= 900) {
             setHeight(220)
