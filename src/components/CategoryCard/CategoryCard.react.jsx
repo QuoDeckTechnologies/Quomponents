@@ -192,9 +192,9 @@ export default function CategoryCard(props) {
                                                     })}
                                                 />
                                             </div>
-                                            <h2 className="qui-category-card-pie-chart-viewed-percentage">
+                                            <h5 className="qui-category-card-pie-chart-viewed-percentage">
                                                 {`${content?.viewedPercentage}%`}
-                                            </h2>
+                                            </h5>
                                             <div className={`qui-category-card-accent-line`}>
                                                 <AccentLine withColor={{ accentColor: withColor?.accentColor }} />
                                             </div>
