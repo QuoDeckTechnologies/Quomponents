@@ -5,7 +5,16 @@ export default {
     title: "Design System/Marker/Marker",
     component: Marker,
     argTypes: {
-        isActive: false,
+        content: {
+            inset: 0,
+        },
+        status: {
+            control: "select",
+            options: ["current", "incomplete"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -82,12 +91,15 @@ export default {
 const Template = (args) => <Marker {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    isActive: true,
+    content: {
+        inset: 1
+    },
+    status: "current",
     asSize: "normal",
     asFloated: "inline",
     withColor: {
         textColor: "#FFF",
-        activeTextColor: "#FFAB00"
+        activeTextColor: "#121212"
     },
     withAnimation: {
         animation: "collapse",

@@ -8,12 +8,23 @@ import {
 import "../../common/stylesheets/common.css";
 import "./Marker.scss";
 import "../../common/stylesheets/overrule.scss";
+import Active from "../../assets/active.png"
+import Inactive from "../../assets/inactive.png"
 
 Marker.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
-    isActive: PropTypes.bool,
+    content: PropTypes.shape({
+        inset: PropTypes.number,
+    }),
+    /**
+    Use to set the state of MobileToolbar 
+    */
+    status: PropTypes.oneOf([
+        "current",
+        "incomplete",
+    ]),
     //=======================================
     // Quommon props
     //=======================================
@@ -73,8 +84,8 @@ Marker.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: "",
-    isActive: true,
+    content: {},
+    status: "current",
     //=======================================
     // Quommon props
     //=======================================
@@ -96,11 +107,15 @@ Marker.defaultProps = {
 **/
 export default function Marker(props) {
     //-------------------------------------------------------------------
-    // 1. Set the classes
+    // 1. Destructuring content from props
+    //-------------------------------------------------------------------
+    let { content } = props;
+    //-------------------------------------------------------------------
+    // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "marker");
     //-------------------------------------------------------------------
-    // 2. Use to set Color in Marker Component
+    // 3. Use to set Color in Marker Component
     //-------------------------------------------------------------------
     let activeColor = {
         color: props.withColor?.activeTextColor,
@@ -109,7 +124,7 @@ export default function Marker(props) {
         color: props.withColor?.textColor,
     };
     //-------------------------------------------------------------------
-    // 3. Get animation of the component
+    // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
@@ -118,10 +133,15 @@ export default function Marker(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`qui-btn ${props.isActive ? "qui-marker-block" : 'qui-marker-block qui-marker-decativated'} ${quommonClasses.childClasses}`} style={props.isActive ? activeColor : deactivatedColor}
+            <div className={`${quommonClasses.childClasses}`} style={props.status ? activeColor : deactivatedColor}
                 onClick={props.onClick}>
-                <div className="qui-marker-label">
-                    <i className="fas fa-map-marker	"></i>
+                <div>
+                    {props.status==="current" ? <img src={Active} alt="Logo" className="qui-marker-current" />
+                        : <img src={Inactive} alt="Logo" className="qui-marker-incomplete" />
+                    }
+                </div>
+                <div className="qui-marker-inset">
+                    {content?.inset}
                 </div>
             </div>
         </motion.div>
