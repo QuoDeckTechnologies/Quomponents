@@ -147,8 +147,8 @@ export default function QuoBarChart(props) {
     // ========================= Render Function =================================
     return (
         <div className="qui-barchart-container" style={{ backgroundColor: withColor?.backgroundColor }}>
-            <p className="qui-barchart-active-month">{props?.title}</p>
-            <p className="qui-barchart-active-players">{props?.subtitle}</p>
+            <h3 className="qui-barchart-active-month">{props?.title}</h3>
+            <h5 className="qui-barchart-active-players">{props?.subtitle}</h5>
             <BarChart
                 width={width}
                 height={height}
