@@ -179,4 +179,55 @@ ColoredCategoryCard.parameters = {
             )}}/>`,
         },
     },
-}; 
+};
+// -------------------------------------------------------------
+// Different Size CategoryCard
+// -------------------------------------------------------------
+const AllSizeTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            asFloated: "inline",
+        }),
+    };
+    return (
+        <div>
+            <CategoryCard
+                {...Object.assign({}, baseObj, {
+                    asSize: "tiny",
+                })}
+            />{" "}
+            <CategoryCard
+                {...Object.assign({}, baseObj, {
+                    asSize: "small",
+
+                })}
+            />{" "}
+            <CategoryCard
+                {...Object.assign({}, baseObj, {
+                    asSize: "big",
+                })}
+            />{" "}
+            <CategoryCard
+                {...Object.assign({}, baseObj, {
+                    asSize: "huge",
+                })}
+            />{" "}
+            <CategoryCard
+                {...Object.assign({}, baseObj, {
+                    asSize: "massive",
+                })}
+            />{" "}
+        </div>
+    );
+};
+export const DifferentSizeCategoryCard = AllSizeTemplate.bind({});
+DifferentSizeCategoryCard.parameters = {
+    docs: {
+        description: {
+            story: "Size are supported. Use as per purpose noted here.",
+        },
+        source: {
+            code: `<CategoryCard asSize: "massive"/>`,
+        },
+    },
+};
