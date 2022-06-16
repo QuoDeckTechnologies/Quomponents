@@ -161,12 +161,12 @@ export default function Banner(props) {
                                 />
                             </div>
                             <div
-                                className="qui-banner-content-container"
+                                className="qui-banner-description-container"
                                 style={{ backgroundColor: withColor?.backgroundColor }}
                                 key={"bannerContent-" + index + Math.random()}
                             >
                                 <div
-                                    className="qui-banner-content"
+                                    className="qui-banner-description .qt-sm"
                                     style={{ color: withColor?.textColor }}
                                 >
                                     {slide?.description}
