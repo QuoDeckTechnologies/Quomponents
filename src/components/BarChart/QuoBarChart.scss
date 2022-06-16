@@ -1,0 +1,85 @@
+/* width */
+::-webkit-scrollbar {
+    width: 0.2em;
+    height: 0.2em;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f100;
+    width: fit-content;
+    // margin-right: 1em;
+    z-index: 11;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 0);
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.qui-barchart-container {
+    background-color: #ffffff;
+    position: relative;
+    overflow-x: scroll;
+    .qui-bar-player-count {
+        display: inline-block;
+        margin: 0.2em;
+    }
+    .qui-custom-tooltip {
+        position: relative;
+        background-color: black;
+        color: white;
+        border-radius: 0.5em;
+        width: fit-content;
+        height: fit-content;
+        padding: 0.5em;
+    }
+    .qui-tooltip-tringle {
+        position: absolute;
+        bottom: -0.6em;
+        left: 35%;
+        .qui-custom-tooltip-arrow {
+            border-left: 0.6em solid transparent;
+            border-right: 0.6em solid transparent;
+            border-top: 0.6em solid rgb(0, 0, 0);
+            z-index: 2;
+        }
+    }
+    .qui-barchart-active-month {
+        position: sticky;
+        left: 1em;
+        width: fit-content;
+        margin-bottom: 0;
+        transform: scaleY(1.3);
+    }
+    .qui-barchart-active-players {
+        position: sticky;
+        left: 1.5em;
+        color: #aaaaaa;
+        width: fit-content;
+        margin-top: 0.5em;
+    }
+}
+@media only screen and (min-width: 320px) {
+    .qui-barchart-active-month {
+        font-size: 1.5em;
+    }
+    .qui-barchart-active-players {
+        font-size: 0.9em;
+    }
+    .qui-barchart-container {
+        border-radius: 1.5em;
+    }
+}
+@media only screen and (min-width: 418px) {
+    .qui-barchart-active-month {
+        font-size: 2em;
+    }
+    .qui-barchart-active-players {
+        font-size: 1.3em;
+    }
+    .qui-barchart-container {
+        border-radius: 2em;
+    }
+}

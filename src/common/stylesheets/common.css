@@ -15,14 +15,17 @@
     float: none;
     display: block;
 }
+
 .qui.float-left {
     float: left;
     display: block;
 }
+
 .qui.float-right {
     float: right;
     display: block;
 }
+
 .qui.float-inline {
     float: none;
     display: inline-block;
@@ -34,16 +37,20 @@
 .qui.is-hidden {
     display: none;
 }
+
 .qui.is-disabled {
     pointer-events: none;
 }
+
 .qui.is-loading {
     pointer-events: none;
 }
+
 .qui.is-fluid {
     width: 100%;
     min-width: 100%;
 }
+
 .qui .is-fluid {
     width: 100%;
     min-width: 100%;
@@ -56,22 +63,27 @@
     font-size: 2em;
     line-height: 1.2;
 }
+
 .qui .size-huge {
     font-size: 1.5em;
     line-height: 1.2;
 }
+
 .qui .size-big {
     font-size: 1.25em;
     line-height: 1.2;
 }
+
 .qui .size-normal {
     font-size: 1em;
     line-height: 1.2;
 }
+
 .qui .size-small {
     font-size: 0.85em;
     line-height: 1.2;
 }
+
 .qui .size-tiny {
     font-size: 0.7em;
     line-height: 1.2;
@@ -83,17 +95,21 @@
 .qui .pad-fitted {
     padding: 2px 4px;
 }
+
 .qui .pad-compact {
     padding: 4px 8px;
 }
+
 .qui .pad-normal {
     padding: 6px 12px;
 }
+
 .qui .pad-relaxed,
 .qui .pad-normal.size-huge,
 .qui .pad-normal.size-massive {
     padding: 10px 20px;
 }
+
 .qui .pad-relaxed.size-huge,
 .qui .pad-relaxed.size-massive {
     padding: 15px 30px;
@@ -105,9 +121,11 @@
 .qui .left-aligned {
     text-align: left;
 }
+
 .qui .right-aligned {
     text-align: right;
 }
+
 .qui .center-aligned {
     text-align: center;
 }
@@ -115,28 +133,35 @@
 /* ================================================= */
 /* Font Style Definitions */
 /* ================================================= */
-.qui.qt-lbl {
+.qui.qt-lbl,
+.qui .qt-lbl {
     font-family: "Oswald Regular";
     font-style: normal;
     font-weight: 400;
     font-size: 11px;
     line-height: 13px;
 }
-.qui.qt-sm {
+
+.qui.qt-sm,
+.qui .qt-lbl {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
     font-size: 11px;
     line-height: 13px;
 }
-.qui.qt-mn {
+
+.qui.qt-mn,
+.qui .qt-lbl {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
     font-size: 9px;
     line-height: 9px;
 }
-.qui.qt-utn {
+
+.qui.qt-utn,
+.qui .qt-lbl {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
@@ -147,6 +172,7 @@
 /* ================================================= */
 /* Box Shadow Definitions */
 /* ================================================= */
-.qui.qt-shadow {
+.qui.qt-shadow,
+.qui .qt-shadow {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
