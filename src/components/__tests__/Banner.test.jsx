@@ -38,12 +38,12 @@ describe("Banner", () => {
         let data = [{
             image: "https://www.gannett-cdn.com/media/2019/01/18/USATODAY/usatsports/gettyimages-500740897.jpg?crop=1365,768,x0,y0&width=660&height=372&format=pjpg&auto=webp",
             header: "Welcome to the Learning Library",
-            content: "There is always something new to learn here. Articles, games, the whole kitchen sink. Just click to enter and have fun...",
+            description: "There is always something new to learn here. Articles, games, the whole kitchen sink. Just click to enter and have fun...",
         },
         {
             image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
             header: "What is Lorem Ipsum?",
-            content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         }]
         component.setProps({ content: data })
         expect(component.exists()).toBe(true);

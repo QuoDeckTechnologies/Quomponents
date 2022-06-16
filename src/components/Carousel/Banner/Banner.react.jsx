@@ -25,7 +25,7 @@ Banner.propTypes = {
     content: PropTypes.arrayOf(PropTypes.shape({
         image: PropTypes.string,
         header: PropTypes.string,
-        content: PropTypes.string,
+        description: PropTypes.string,
     })).isRequired,
     //=======================================
     // Quommon props
@@ -96,11 +96,10 @@ Banner.defaultProps = {
 };
 /**
 ## Notes
-- The design system used for this component is Material UI (@mui/material)
+- The design system used for this component is HTML and CSS
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function Banner(props) {
     //-------------------------------------------------------------------
@@ -170,7 +169,7 @@ export default function Banner(props) {
                                     className="qui-banner-content"
                                     style={{ color: withColor?.textColor }}
                                 >
-                                    {slide?.content}
+                                    {slide?.description}
                                 </div>
                             </div>
                         </div>
