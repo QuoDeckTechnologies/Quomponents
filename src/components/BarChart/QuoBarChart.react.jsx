@@ -9,7 +9,6 @@ import {
 } from "recharts";
 import {
     getQuommons,
-    getTranslation,
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./QuoBarChart.scss";
@@ -43,14 +42,6 @@ QuoBarChart.propTypes = {
         backgroundColor: PropTypes.string,
     }),
     /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
-    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -65,7 +56,6 @@ QuoBarChart.defaultProps = {
     // Quommon props
     //=======================================
     withColor: null,
-    withTranslation: null,
     isHidden: false,
 };
 /**
@@ -130,22 +120,6 @@ export default function QuoBarChart(props) {
     `;
     }, [position]);
     //-------------------------------------------------------------------
-    // Translate the text objects in case their is a dictionary provided
-    //-------------------------------------------------------------------
-    let monthName = props?.title
-    let activePlayers = props?.subtitle
-    let tObj = getTranslation(props.withTranslation);
-    if (tObj && activePlayers !== "") activePlayers = tObj.activePlayers
-    const getMonthName = (monthName) => {
-        if (tObj) {
-            return (
-                tObj.months[monthName.toLowerCase()]
-            )
-        } else {
-            return monthName
-        }
-    }
-    //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "bar-chart");
@@ -173,8 +147,8 @@ export default function QuoBarChart(props) {
     // ========================= Render Function =================================
     return (
         <div className="qui-barchart-container" style={{ backgroundColor: withColor?.backgroundColor }}>
-            <p className="qui-barchart-active-month">{getMonthName(monthName)}</p>
-            <p className="qui-barchart-active-players">{activePlayers}</p>
+            <p className="qui-barchart-active-month">{props?.title}</p>
+            <p className="qui-barchart-active-players">{props?.subtitle}</p>
             <BarChart
                 width={width}
                 height={height}

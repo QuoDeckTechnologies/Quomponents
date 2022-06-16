@@ -1,27 +1,6 @@
 import React from "react";
 import QuoBarChart from "../components/BarChart/QuoBarChart.react";
 
-const dictionary = JSON.stringify({
-    hi: {
-        barchart: {
-            months: {
-                january: "जनवरी",
-                february: "फरवरी",
-                march: "मार्च",
-                april: "अप्रैल",
-                may: "मई",
-                june: "जून",
-                july: "जुलाई",
-                august: "अगस्त",
-                september: "सितम्बर",
-                october: "अक्टूबर",
-                november: "नवम्बर",
-                december: "दिसंबर"
-            },
-            activePlayers: "सक्रिय खिलाड़ी"
-        },
-    },
-});
 export default {
     title: "Design System/BarChart/BarChart",
     component: QuoBarChart,
@@ -100,66 +79,12 @@ Default.args = {
         activeBarColor: "#FFBF00",
         barColor: "#DDDDDD",
     },
-    withTranslation: {
-        lang: "en",
-        tgt: "barchart",
-        dictionary: dictionary,
-    },
     isHidden: false,
 };
 Default.parameters = {
     docs: {
         source: {
             code: `<QuoBarChart {...${JSON.stringify(Default.args, null, 2)}}/>`,
-        },
-    },
-};
-// -------------------------------------------------------------
-// Translated Bar Chart
-// -------------------------------------------------------------
-export const TranslatedBarChart = Template.bind({});
-TranslatedBarChart.args = {
-    title: "June",
-    subtitle: "Active Players",
-    data: [
-        { label: "1", count: 2000 },
-        { label: "2", count: 2500 },
-        { label: "3", count: 3000 },
-        { label: "4", count: 2500 },
-        { label: "5", count: 2000 },
-        { label: "6", count: 2000 },
-        { label: "7", count: 2500 },
-        { label: "8", count: 3000 },
-        { label: "9", count: 2500 },
-        { label: "10", count: 2000 },
-        { label: "11", count: 2000 },
-        { label: "12", count: 2500 },
-        { label: "13", count: 3000 },
-        { label: "14", count: 2500 },
-        { label: "15", count: 2000 },
-        { label: "16", count: 2000 },
-        { label: "17", count: 2500 },
-        { label: "18", count: 3000 },
-        { label: "19", count: 2500 },
-        { label: "20", count: 2000 },
-        { label: "21", count: 2000 },
-    ],
-    withColor: {
-        backgroundColor: "",
-        activeBarColor: "#FFBF00",
-        barColor: "#DDDDDD",
-    },
-    withTranslation: {
-        lang: "hi",
-        tgt: "barchart",
-        dictionary: dictionary,
-    },
-    isHidden: false,
-};
-TranslatedBarChart.parameters = {
-    docs: {
-        source: {
-            code: `<QuoBarChart {...${JSON.stringify(TranslatedBarChart.args, null, 2)}}/>`,
         },
     },
 };
@@ -197,11 +122,6 @@ ColoredBarChart.args = {
         backgroundColor: "#d5f1a8",
         activeBarColor: "#000000",
         barColor: "#FFBF00",
-    },
-    withTranslation: {
-        lang: "en",
-        tgt: "barchart",
-        dictionary: dictionary,
     },
     isHidden: false,
 };
@@ -256,11 +176,6 @@ BarChartWith31Bars.args = {
         backgroundColor: "#d5f1a8",
         activeBarColor: "#000000",
         barColor: "#FFBF00",
-    },
-    withTranslation: {
-        lang: "en",
-        tgt: "barchart",
-        dictionary: dictionary,
     },
     isHidden: false,
 };
