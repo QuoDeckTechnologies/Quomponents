@@ -30,6 +30,17 @@ CategoryCard.propTypes = {
     // Quommon props
     //=======================================
     /**
+    Use to define component size in increasing order
+    */
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
+    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
@@ -87,6 +98,7 @@ CategoryCard.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
+    asSize: "normal",
     asFloated: "none",
 
     withColor: null,

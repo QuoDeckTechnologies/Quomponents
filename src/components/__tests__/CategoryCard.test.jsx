@@ -26,6 +26,7 @@ describe("CategoryCard", () => {
                         image: "categorycard-image.png",
                     },
                 ]}
+                asSize="normal"
                 asFloated="none"
                 withColor={null}
                 withAnimation={null}
@@ -54,6 +55,36 @@ describe("CategoryCard", () => {
     it("should render correctly when passed content prop is null", () => {
         let contentData = {}
         component.setProps({ content: contentData })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as tiny", () => {
+        component.setProps({ asSize: "tiny" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as small", () => {
+        component.setProps({ asSize: "small" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as normal", () => {
+        component.setProps({ asSize: "normal" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as big", () => {
+        component.setProps({ asSize: "big" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as huge", () => {
+        component.setProps({ asSize: "huge" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as massive", () => {
+        component.setProps({ asSize: "massive" })
         expect(component.exists()).toBe(true);
     });
 
