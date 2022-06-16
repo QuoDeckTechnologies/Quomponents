@@ -2,7 +2,7 @@ import React from "react";
 import ActionMenu from "../components/ActionMenu/ActionMenu.react";
 const dictionary = JSON.stringify({
   hi: {
-    actions: {
+    actionMenus: {
       content: [
         { title: "डेक खोलो" },
         { title: "डेक संपादित करें" },
@@ -147,7 +147,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "actions",
+    tgt: "actionMenus",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -179,7 +179,11 @@ ColoredActionMenu.parameters = {
       story: "Use to override the standard colors of the Icon & Contents.",
     },
     source: {
-      code: `<ActionMenu withColor={{backgroundColor: "lightblue", textColor: "#666666",accentColor: "#666666"}}}/>`,
+      code: `<ActionMenu {...${JSON.stringify(
+        ColoredActionMenu.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -219,7 +223,7 @@ TranslatedActionMenu.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "actions",
+    tgt: "actionMenus",
     dictionary: dictionary,
   },
 };
