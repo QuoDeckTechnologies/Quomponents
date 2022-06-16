@@ -119,6 +119,8 @@ NavBar.defaultProps = {
   // Component Specific props
   //=======================================
   content: {},
+  isSearch: true,
+  isLoggedIn: true,
   headerPath: "",
   //=======================================
   // Quommon props
@@ -126,6 +128,7 @@ NavBar.defaultProps = {
   asVariant: "primary",
   isHidden: false,
   isDisabled: false,
+  withColor: null,
   withTranslation: null,
 };
 /**
@@ -156,6 +159,7 @@ export default function NavBar(props) {
   //-------------------------------------------------------------------
   let labelContent = {
     title: content?.title,
+    menuTitle : content?.menuTitle
   };
   let tObj = null;
   if (
@@ -166,28 +170,34 @@ export default function NavBar(props) {
     tObj = getTranslation(props.withTranslation);
     if (labelContent && tObj) {
       labelContent.title = tObj.title;
+      labelContent.menuTitle = tObj.menuTitle;
     }
   }
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-
+  //--------------------------------------------------------------------
+  // 5. Function to return back button
+  //-------------------------------------------------------------------
   const getBackButton = () => {
     if (!content?.title && !isLoggedIn) {
       if (headerPath !== "back-menu-button") return;
     }
     return (
       <IconLink
+        {...props}
+        asPadded="fitted"
         content={{ link: content?.iconLink?.link }}
         withIcon={{ icon: content?.iconLink?.icon }}
         withColor={{ backgroundColor: withColor?.backIconColor }}
-        asPadded="fitted"
         onClick={props.onClick}
       />
     );
   };
-
+  //-------------------------------------------------------------------
+  // 6. Function to return menu icon
+  //-------------------------------------------------------------------
   const getMenu = () => {
     if (!content?.title && !isLoggedIn) {
       if (headerPath === "none") return;
@@ -221,8 +231,10 @@ export default function NavBar(props) {
       <div className={`qui-navbar-container ${quommonClasses.childClasses}`}>
         <div className="qui-left-navbar">
           {getBackButton()}
-          <img src={content?.shortLogo} className="qui-logo-img" alt="Logo" />
-          {(!content?.title && !tObj?.title) && (
+          {content?.shortLogo && (
+            <img src={content?.shortLogo} className="qui-logo-img" alt="Logo" />
+          )}
+          {!labelContent?.title && (
             <img
               src={content?.fullLogo}
               className="qui-full-logo-img"
@@ -247,7 +259,7 @@ export default function NavBar(props) {
             <AppMenu
               {...props}
               withLabel={{
-                content: tObj ? tObj?.menuTitle : content?.menuTitle,
+                content: labelContent?.menuTitle,
               }}
               withIcon={withIcon}
               withColor={{

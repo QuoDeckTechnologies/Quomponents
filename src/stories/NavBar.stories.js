@@ -5,7 +5,7 @@ import FullLogo from "../assets/FullLogo.png";
 
 const dictionary = JSON.stringify({
   hi: {
-    navbar: {
+    navBar: {
       title: "कमाये",
       menuTitle: "सूची",
     },
@@ -128,7 +128,7 @@ export default {
   ],
   parameters: {
     componentSubtitle:
-      "Displays NavBar with AppMenu, Icons and Image for general-purpose use",
+      "Displays NavBar with AppMenu for general-purpose use",
     a11y: { disable: true },
     docs: { iframeHeight: 150 },
   },
@@ -170,7 +170,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "navbar",
+    tgt: "navBar",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -350,7 +350,7 @@ TranslatedNavBar.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "navbar",
+    tgt: "navBar",
     dictionary: dictionary,
   },
 };
