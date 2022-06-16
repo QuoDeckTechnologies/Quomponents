@@ -146,7 +146,7 @@ CompleteTodayMenuBtn.parameters = {
                 "Shows Complete TodayMenuBtn component",
         },
         source: {
-            code: `<CompleteTodayMenuBtn {...${JSON.stringify(
+            code: `<TodayMenuBtn {...${JSON.stringify(
                 CompleteTodayMenuBtn.args,
                 null,
                 2
@@ -180,7 +180,7 @@ ActiveTodayMenuBtn.parameters = {
                 "Shows Active TodayMenuBtn component",
         },
         source: {
-            code: `<ActiveTodayMenuBtn {...${JSON.stringify(
+            code: `<TodayMenuBtn {...${JSON.stringify(
                 ActiveTodayMenuBtn.args,
                 null,
                 2
