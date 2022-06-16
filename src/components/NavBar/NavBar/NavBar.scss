@@ -1,3 +1,7 @@
+.qui.qui-NavBar {
+  overflow: visible;
+}
+
 .qui .qui-navbar-container {
   display: flex;
   justify-content: space-between;
@@ -13,6 +17,10 @@
 .qui.qui-NavBar .qui-left-navbar .qui-btn {
   padding: 0;
 }
+
+// .qui.qui-NavBar .qui.qui-AppMenu .qui-main-container .qui-menuBlock {
+//   border-top-left-radius: 1em;
+// }
 
 .qui.qui-NavBar .qui-left-navbar .qui.qui-icon-link {
   overflow: visible;
@@ -56,6 +64,7 @@
   font-size: 2.6em;
   margin-right: 0.3em;
   filter: drop-shadow(5px 5px 1.5px #0000003a);
+  cursor: pointer;
 }
 
 .qui .qui-right-navbar .qui-AppMenu {
@@ -68,8 +77,6 @@
 }
 
 .qui .size-normal .fa-angle-left {
-  //   font-size: 3.5em;
-  //   margin-top: -0.01em;
   margin-right: 0em;
 }
 
@@ -84,9 +91,13 @@
   }
 }
 
+.qui .qui-nav-bar-menu-icon {
+  cursor: pointer;
+}
+
 .qui .qui-appMenuContainer {
   display: flex;
-  border-radius: 20%;
+  // border-radius: 20%;
 }
 
 @media screen and (min-width: 320px) {

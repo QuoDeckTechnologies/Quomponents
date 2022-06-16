@@ -48,8 +48,6 @@ export default {
         category: "with-Params",
         defaultValue: {
           icon: "",
-          userImage: "",
-          position: "left",
         },
       },
     },

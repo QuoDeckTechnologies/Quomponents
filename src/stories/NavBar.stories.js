@@ -7,6 +7,7 @@ const dictionary = JSON.stringify({
   hi: {
     navbar: {
       title: "कमाये",
+      menuTitle: "सूची",
     },
   },
 });
@@ -21,11 +22,16 @@ export default {
           title: "",
           shortLogo: "",
           fullLogo: "",
-          iconlink: [],
+          iconLink: {},
         },
       },
     },
-    isSearchLogo: {
+    headerPath: {
+      table: {
+        defaultValue: "",
+      },
+    },
+    isSearch: {
       table: {
         defaultValue: false,
       },
@@ -35,17 +41,19 @@ export default {
         defaultValue: false,
       },
     },
-    withUser: {
-      table: {
-        category: "with-Params",
-        defaultValue: "",
-      },
-    },
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
       table: {
         category: "as-Flags",
+      },
+    },
+    withIcon: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          icon: "",
+        },
       },
     },
     withAnimation: {
@@ -86,6 +94,24 @@ export default {
         defaultValue: null,
       },
     },
+    onSearch: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+    onMenuClick: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+    onAppMenuClick: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
   },
   decorators: [
     (story) => (
@@ -104,34 +130,39 @@ export default {
     componentSubtitle:
       "Displays NavBar with AppMenu, Icons and Image for general-purpose use",
     a11y: { disable: true },
-    docs: { iframeHeight: 700 },
+    docs: { iframeHeight: 150 },
   },
 };
 
-const Template = (args) => <NavBar {...args} />;
 //----------------------------------------------------------
 // Default
 //----------------------------------------------------------
+const Template = (args) => <NavBar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: {
     title: "earn",
     shortLogo: ShortLogo,
     fullLogo: FullLogo,
-    iconlink: [
-      {
-        icon: "fas fa-angle-left",
-        link: "https://www.google.com/",
-      },
-    ],
+    menuTitle: "Catalog",
+    iconLink: {
+      icon: "fas fa-angle-left",
+      link: "https://www.google.com/",
+    },
   },
-  isSearchLogo: true,
+  isSearch: true,
   isLoggedIn: true,
-  withUser: "",
-  withLabel: {
-    content: "Catalog",
-  },
   asVariant: "primary",
+  withIcon: {
+    icon: "fas fa-user",
+  },
+  withColor: {
+    menuBackgroundColor: "",
+    menuAccentColor: "",
+    backIconColor: "",
+    searchIconColor: "",
+    textColor: "",
+  },
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
@@ -147,50 +178,36 @@ Default.args = {
 };
 Default.parameters = {
   docs: {
-    description: {
-      story:
-        "Any free fontawesome icon can be used as the NavBar icon definition.",
-    },
     source: {
       code: `<NavBar {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
   },
 };
 //----------------------------------------------------------
-// With UserNavBar
+// UserNavBar
 //----------------------------------------------------------
 export const UserNavbar = Template.bind({});
 UserNavbar.args = {
+  ...Default.args,
   content: {
     title: "earn",
     shortLogo: ShortLogo,
     fullLogo: FullLogo,
-    iconlink: [
-      {
-        icon: "fas fa-angle-left",
-        link: "https://www.google.com/",
-      },
-    ],
+    menuTitle: "Catalog",
+    iconLink: {
+      icon: "fas fa-angle-left",
+      link: "https://www.google.com/",
+    },
   },
-  isSearchLogo: true,
-  isLoggedIn: true,
-  withUser:
-    "https://dp-client.com/CMS-NEW/assets/images/user/user11605616227.png",
-  withLabel: {
-    content: "",
+  withIcon: {
+    icon:
+      "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
   },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
-  },
-  isDisabled: false,
-  isHidden: false,
 };
 UserNavbar.parameters = {
   docs: {
     description: {
-      story: "Any image can be used as the NavBar image definition.",
+      story: "Any image can be used as the NavBar logo image.",
     },
     source: {
       code: `<NavBar {...${JSON.stringify(UserNavbar.args, null, 2)}}/>`,
@@ -198,7 +215,7 @@ UserNavbar.parameters = {
   },
 };
 //----------------------------------------------------------
-// With Amplayfier Header
+// Amplayfier Header
 //----------------------------------------------------------
 export const AmplayfierHeader = Template.bind({});
 AmplayfierHeader.args = {
@@ -206,14 +223,14 @@ AmplayfierHeader.args = {
   content: {
     shortLogo: ShortLogo,
     fullLogo: FullLogo,
-    iconlink: [
-      {
-        icon: "fas fa-angle-left",
-        link: "https://www.google.com/",
-      },
-    ],
+    menuTitle: "Catalog",
+    iconLink: {
+      icon: "fas fa-angle-left",
+      link: "https://www.google.com/",
+    },
   },
-  isSearchLogo: false,
+  headerPath: "back-menu-button",
+  isSearch: false,
   isLoggedIn: false,
   isDisabled: false,
   isHidden: false,
@@ -228,55 +245,77 @@ AmplayfierHeader.parameters = {
     },
   },
 };
-// -------------------------------------------------------------
-// AllVariants
-// -------------------------------------------------------------
-const AllVariantsTemplate = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args, {}),
-  };
-  return (
-    <div>
-      <NavBar
-        {...Object.assign({}, baseObj, {
-          asVariant: "primary",
-        })}
-      />
-      <NavBar
-        {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
-        })}
-      />
-      <NavBar
-        {...Object.assign({}, baseObj, {
-          asVariant: "success",
-        })}
-      />
-      <NavBar
-        {...Object.assign({}, baseObj, {
-          asVariant: "warning",
-        })}
-      />
-      <NavBar
-        {...Object.assign({}, baseObj, {
-          asVariant: "error",
-        })}
-      />
-    </div>
-  );
+//----------------------------------------------------------
+// Amplayfier Header without back button
+//----------------------------------------------------------
+export const AmplayfierHeaderWithoutBackButton = Template.bind({});
+AmplayfierHeaderWithoutBackButton.args = {
+  ...AmplayfierHeader.args,
+  headerPath: "menu-button",
 };
-export const AllVariants = AllVariantsTemplate.bind({});
-AllVariants.parameters = {
+AmplayfierHeaderWithoutBackButton.parameters = {
   docs: {
     description: {
-      story: "All variants are supported. Use as per purpose noted here.",
+      story:
+        "Use this to display Amplayfier Header without back button component.",
     },
     source: {
-      code: `<NavBar asVariant="primary"/>`,
+      code: `<NavBar {...${JSON.stringify(
+        AmplayfierHeaderWithoutBackButton.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
-
+//----------------------------------------------------------
+// Amplayfier Header without back and menu button
+//----------------------------------------------------------
+export const AmplayfierHeaderWithoutBackAndMenuButton = Template.bind({});
+AmplayfierHeaderWithoutBackAndMenuButton.args = {
+  ...AmplayfierHeader.args,
+  headerPath: "none",
+};
+AmplayfierHeaderWithoutBackAndMenuButton.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use this to display Amplayfier Header without back and menu button component.",
+    },
+    source: {
+      code: `<NavBar {...${JSON.stringify(
+        AmplayfierHeaderWithoutBackAndMenuButton.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+//----------------------------------------------------------
+// Colored NavBar
+//----------------------------------------------------------
+export const ColoredNavBar = Template.bind({});
+ColoredNavBar.args = {
+  ...Default.args,
+  withColor: {
+    menuBackgroundColor: "#C1DC9E",
+    menuAccentColor: "#AAAAAA",
+    backIconColor: "#FFBF00",
+    searchIconColor: "#FFBF00",
+    textColor: "#AAAAAA",
+  },
+};
+ColoredNavBar.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use this to display Amplayfier Header without back and menu button component.",
+    },
+    source: {
+      code: `<NavBar {...${JSON.stringify(ColoredNavBar.args, null, 2)}}/>`,
+    },
+  },
+};
 //-------------------------------------------------------------
 // Animated Navbar
 // -------------------------------------------------------------
