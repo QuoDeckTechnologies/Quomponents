@@ -6,11 +6,6 @@ export default {
     component: TodayMenuBtn,
     argTypes: {
         content: "",
-        withIcon: "",
-        asEmphasis: {
-            control: "select",
-            options: ["Default", "Complete", "Active"]
-        },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
@@ -25,6 +20,16 @@ export default {
                     backgroundColor: "",
                     textColor: "",
                     iconColor: ""
+                },
+            },
+        },
+        withIcon: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    name: "",
+                    size: "",
+                    position: ""
                 },
             },
         },
@@ -86,13 +91,16 @@ const Template = (args) => <TodayMenuBtn {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: "Learn",
-    withIcon: "fas fa-certificate",
-    asEmphasis: "Default",
     asFloated: "none",
     withColor: {
         backgroundColor: "",
         textColor: "",
         iconColor: ""
+    },
+    withIcon: {
+        name: "fas fa-book",
+        size: "1em",
+        position: "left"
     },
     withAnimation: {
         animation: "zoom",
@@ -116,14 +124,13 @@ export const CompleteTodayMenuBtn = Template.bind({});
 CompleteTodayMenuBtn.args = {
     ...Default.args,
     content: "LEARN",
-    withIcon: "fas fa-certificate",
-    asEmphasis: "Complete",
     asFloated: "none",
     withColor: {
-        backgroundColor: "",
-        textColor: "",
-        iconColor: ""
+        backgroundColor: "#C1DC9E",
+        textColor: "#454545",
+        iconColor: "#52AF50"
     },
+    withIcon: { name: "fas fa-check-circle", size: "1em", position: "left" },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -151,14 +158,13 @@ export const ActiveTodayMenuBtn = Template.bind({});
 ActiveTodayMenuBtn.args = {
     ...Default.args,
     content: "LEARN",
-    withIcon: "fas fa-certificate",
-    asEmphasis: "Active",
     asFloated: "none",
     withColor: {
-        backgroundColor: "",
-        textColor: "",
-        iconColor: ""
+        backgroundColor: "#222A35",
+        textColor: "#FFFFFF",
+        iconColor: "#FFCA36"
     },
+    withIcon: { name: "fas fa-book", size: "1em", position: "left" },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -187,11 +193,6 @@ ActiveTodayMenuBtn.parameters = {
 // Different Variants TodayMenuBtn
 // -------------------------------------------------------------
 const TodayMenuTemplate = (args) => {
-    const baseObj = {
-        ...Object.assign({}, Default.args, args, {
-            withColor: null,
-        }),
-    };
     return (
         <div style={{
             overflowY: "none",
@@ -200,9 +201,9 @@ const TodayMenuTemplate = (args) => {
         }}>
             <div style={{ margin: "0 0.1em" }}>
                 <TodayMenuBtn
-                    {...Object.assign({}, baseObj, {
+                    {...Object.assign({}, {
                         content: "",
-                        withIcon: "fas fa-home",
+                        withIcon: { name: "fas fa-home", size: "1em", position: "left" },
                         withAnimation: {
                             animation: "slideLeft",
                             duration: 0.5,
@@ -213,9 +214,9 @@ const TodayMenuTemplate = (args) => {
             </div>
             <div style={{ margin: "0 0.1em" }}>
                 <TodayMenuBtn
-                    {...Object.assign({}, baseObj, {
+                    {...Object.assign({}, {
                         content: "Learn",
-                        withIcon: "fas fa-certificate",
+                        withIcon: { name: "fas fa-certificate", size: "1em", position: "left" },
                         withAnimation: {
                             animation: "slideLeft",
                             duration: 0.5,
@@ -225,9 +226,9 @@ const TodayMenuTemplate = (args) => {
                 /></div>
             <div style={{ margin: "0 0.1em" }}>
                 <TodayMenuBtn
-                    {...Object.assign({}, baseObj, {
+                    {...Object.assign({}, {
                         content: "Play",
-                        withIcon: "fas fa-gamepad",
+                        withIcon: { name: "fas fa-gamepad", size: "1em", position: "left" },
                         withAnimation: {
                             animation: "slideLeft",
                             duration: 0.5,
@@ -237,9 +238,9 @@ const TodayMenuTemplate = (args) => {
                 /></div>
             <div style={{ margin: "0 0.1em" }}>
                 <TodayMenuBtn
-                    {...Object.assign({}, baseObj, {
+                    {...Object.assign({}, {
                         content: "Win",
-                        withIcon: "fas fa-trophy",
+                        withIcon: { name: "fas fa-trophy", size: "1em", position: "left" },
                         withAnimation: {
                             animation: "slideLeft",
                             duration: 0.5,

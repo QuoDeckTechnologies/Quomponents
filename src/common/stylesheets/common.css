@@ -115,28 +115,32 @@
 /* ================================================= */
 /* Font Style Definitions */
 /* ================================================= */
-.qui.qt-lbl, .qui .qt-lbl {
+.qui.qt-lbl,
+.qui .qt-lbl {
     font-family: "Oswald Regular";
     font-style: normal;
     font-weight: 400;
     font-size: 11px;
     line-height: 13px;
 }
-.qui.qt-sm, .qui .qt-lbl {
+.qui.qt-sm,
+.qui .qt-lbl {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
     font-size: 11px;
     line-height: 13px;
 }
-.qui.qt-mn, .qui .qt-lbl {
+.qui.qt-mn,
+.qui .qt-lbl {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
     font-size: 9px;
     line-height: 9px;
 }
-.qui.qt-utn, .qui .qt-lbl {
+.qui.qt-utn,
+.qui .qt-lbl {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
@@ -147,6 +151,7 @@
 /* ================================================= */
 /* Box Shadow Definitions */
 /* ================================================= */
-.qui.qt-shadow, .qui .qt-shadow {
+.qui.qt-shadow,
+.qui .qt-shadow {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }

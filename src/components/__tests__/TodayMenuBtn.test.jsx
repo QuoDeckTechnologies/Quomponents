@@ -21,8 +21,11 @@ describe("TodayMenuBtn", () => {
         component = shallow(
             <TodayMenuBtn
                 content=""
-                withIcon=""
-                asEmphasis="Default"
+                withIcon={{
+                    name: "",
+                    size: "",
+                    position: ""
+                }}
                 asFloated="none"
                 withColor={{
                     backgroundColor: "",
@@ -86,48 +89,51 @@ describe("TodayMenuBtn", () => {
     });
 
     it("should render only Icon when passed withIcon", () => {
-        component.setProps({ asEmphasis: "Default", withIcon: "fas fa-home" });
+        component.setProps({
+            withIcon: {
+                name: "fas fa-home",
+                size: "1em",
+                position: "left"
+            }
+        });
         expect(component.find(".qui-today-menu-btn-text").exists()).toBe(false);
         expect(component.find(".qui-today-menu-btn-icon").exists()).toBe(true);
     });
 
     it("should render only Text when passed content", () => {
-        component.setProps({ asEmphasis: "Default", content: "Home" });
+        component.setProps({ content: "Home" });
         expect(component.find(".qui-today-menu-btn-text").exists()).toBe(true);
         expect(component.find(".qui-today-menu-btn-icon").exists()).toBe(false);
     });
 
     it("should render both when passed withIcon and content", () => {
-        component.setProps({ asEmphasis: "Default", content: "Home", withIcon: "fas fa-home" });
+        component.setProps({
+            content: "Home",
+            withIcon: {
+                name: "fas fa-home",
+                size: "1em",
+                position: "left"
+            }
+        });
         expect(component.find(".qui-today-menu-btn-text").exists()).toBe(true);
         expect(component.find(".qui-today-menu-btn-icon").exists()).toBe(true);
     });
 
-    it("should render correct styling when passed withColor props to default component", () => {
-        component.setProps({ asEmphasis: "Default", withColor: { backgroundColor: "#fff", textColor: "#000", iconColor: "#000" }, content: "Home", withIcon: "fas fa-home" });
-        expect(component.find(".qui-today-menu-btn-container").props().style.backgroundColor).toBe("#fff");
-        expect(component.find(".qui-today-menu-btn-text").props().style.color).toBe("#000");
-        expect(component.find(".qui-today-menu-btn-icon").props().style.color).toBe("#000");
-    });
-
-    it("should render correct styling of component when passed Complete in asEmphasis props", () => {
-        component.setProps({ asEmphasis: "Complete", content: "Home", withIcon: "fas fa-home" });
-        expect(component.find(".qui-today-menu-btn-container").props().style.backgroundColor).toBe("#C1DC9E");
-        expect(component.find(".qui-today-menu-btn-text").props().style.color).toBe("#454545");
-        expect(component.find(".qui-today-menu-btn-icon").props().style.color).toBe("#52AF50");
-    });
-
-    it("should render correct styling of component when passed Active in asEmphasis props", () => {
-        component.setProps({ asEmphasis: "Active", content: "Home", withIcon: "fas fa-home" });
-        expect(component.find(".qui-today-menu-btn-container").props().style.backgroundColor).toBe("#222A35");
-        expect(component.find(".qui-today-menu-btn-text").props().style.color).toBe("#FFFFFF");
-        expect(component.find(".qui-today-menu-btn-icon").props().style.color).toBe("#FFCA36");
-    });
-
-    it("should render correct styling of component when passed Default in asEmphasis props", () => {
-        component.setProps({ asEmphasis: "Default", content: "Home", withIcon: "fas fa-home" });
-        expect(component.find(".qui-today-menu-btn-container").props().style.backgroundColor).toBe("#ED6E6E");
-        expect(component.find(".qui-today-menu-btn-text").props().style.color).toBe("#FFFFFF");
-        expect(component.find(".qui-today-menu-btn-icon").props().style.color).toBe("#FFFFFF");
+    it("should render correctly when passed withColor props", () => {
+        component.setProps({
+            content: "Home",
+            withIcon: {
+                name: "fas fa-home",
+                size: "1em",
+                position: "left"
+            },
+            withColor: {
+                backgroundColor: "#C1DC9E",
+                textColor: "#FFFFFF",
+                iconColor: "#000000"
+            }
+        });
+        expect(component.find(".qui-today-menu-btn-text").exists()).toBe(true);
+        expect(component.find(".qui-today-menu-btn-icon").exists()).toBe(true);
     });
 });
