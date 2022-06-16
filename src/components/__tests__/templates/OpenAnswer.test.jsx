@@ -16,7 +16,9 @@ describe("OpenAnswer", () => {
   let component;
   const dictionary = JSON.stringify({
     hi: {
-      openAnswer: { button: "उत्तर सबमिट करें" },
+      openAnswer: {
+        button: "उत्तर सबमिट करें", label: "इनपुट नाम",
+      },
     },
   });
   beforeEach(() => {

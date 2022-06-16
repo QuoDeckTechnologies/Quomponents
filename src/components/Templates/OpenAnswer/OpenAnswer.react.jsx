@@ -137,6 +137,8 @@ export default function OpenAnswer(props) {
   //  Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
+  let inputName = "Input Name"
+  if (tObj && inputName !== "") inputName = tObj.label
   //-------------------------------------------------------------------
   //  Get animation of the component
   //-------------------------------------------------------------------
@@ -170,7 +172,7 @@ export default function OpenAnswer(props) {
   };
   const getBackground = () => {
     return {
-      background: `url(${resolveImage(
+      backgroundImage: `url(${resolveImage(
         data?.backgroundImage.id,
         imageLibrary
       )})`,
@@ -180,10 +182,10 @@ export default function OpenAnswer(props) {
   const background = data?.backgroundImage
     ? getBackground()
     : {
-        backgroundColor: withColor?.backgroundColor
-          ? withColor?.backgroundColor
-          : "#fff",
-      };
+      backgroundColor: withColor?.backgroundColor
+        ? withColor?.backgroundColor
+        : "#fff",
+    };
 
   const [state, setState] = useState();
   function handleSubmit() {
@@ -222,9 +224,10 @@ export default function OpenAnswer(props) {
             />
             <InputField
               {...props}
-              content={{ label: "Input Name" }}
+              content={{ label: inputName }}
               withColor={inputFieldColors}
               onClick={(name, value) => setState(value)}
+              withTranslation={props.withTranslation}
               name="open-answer-input-field"
             />
             <Button

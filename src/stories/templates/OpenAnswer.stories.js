@@ -3,7 +3,10 @@ import OpenAnswer from "../../components/Templates/OpenAnswer/OpenAnswer.react";
 
 const dictionary = JSON.stringify({
   hi: {
-    openAnswer: { button: "उत्तर सबमिट करें" },
+    openAnswer: {
+      label: "इनपुट नाम",
+      button: "उत्तर सबमिट करें"
+    },
   },
 });
 
@@ -117,7 +120,7 @@ Default.args = {
     {
       id: "background-image",
       image:
-        "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+        "https://i.pinimg.com/564x/c9/0b/00/c90b000dd68cd72450fb1075c5db4820.jpg",
     },
   ],
   slideId: 0,
@@ -201,6 +204,11 @@ OpenAnswerWithImage.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "openAnswer",
+    dictionary: dictionary,
+  },
   isHidden: false,
   isDisabled: false,
 };
@@ -230,7 +238,7 @@ OpenAnswerWithTranslation.args = {
     {
       id: "background-image",
       image:
-        "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+        "https://i.pinimg.com/564x/c9/0b/00/c90b000dd68cd72450fb1075c5db4820.jpg",
     },
   ],
   slideId: 0,
@@ -294,7 +302,7 @@ OpenAnswerWithBackgroundImage.args = {
     {
       id: "background-image",
       image:
-        "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+        "https://i.pinimg.com/564x/c9/0b/00/c90b000dd68cd72450fb1075c5db4820.jpg",
     },
   ],
   asVariant: "warning",
@@ -317,6 +325,11 @@ OpenAnswerWithBackgroundImage.args = {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "openAnswer",
+    dictionary: dictionary,
   },
   isHidden: false,
   isDisabled: false,
