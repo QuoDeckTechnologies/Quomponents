@@ -4,8 +4,7 @@ import OverlayMenu from "../components/OverlayMenu/OverlayMenu.react";
 const dictionary = JSON.stringify({
 
     hi: {
-        OverlayMenu: {
-            label: "अरुणा असरानी",
+        overlayMenu: {
             content: [
                 { label: "प्रोफ़ाइल संपादित करें" },
                 { label: "खाता" },
@@ -217,7 +216,6 @@ Default.args = {
 
     withUser: "https://i.pinimg.com/564x/66/b7/b0/66b7b0cc1927986a85a41d754a360727.jpg",
 
-
     asVariant: "primary",
     asSize: "normal",
     asFloated: "none",
@@ -241,7 +239,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "icon",
+        tgt: "overlayMenu",
         dictionary: dictionary,
     },
 
@@ -266,7 +264,7 @@ TranslatedOverlayMenu.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "OverlayMenu",
+        tgt: "overlayMenu",
         dictionary: dictionary,
     },
 };

@@ -163,9 +163,6 @@ OverlayMenu.defaultProps = {
     isDisabled: false,
 };
 
-function getLabel(labelObj, position) {
-    return labelObj?.format === position ? labelObj.content : "";
-}
 /**
 ## Notes
 - The design system used for this component is fontawesome Icons
@@ -179,6 +176,9 @@ export default function OverlayMenu(props) {
     useEffect(() => {
         setOpenModal(props.isOpen);
     }, [props.isOpen]);
+
+    let { content, withLabel } = props;
+
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -211,7 +211,6 @@ export default function OverlayMenu(props) {
     //-------------------------------------------------------------------
     // 5. Destructure content prop to itirate
     //-------------------------------------------------------------------
-    let { content } = props;
     return (
         <Modal className="qui qui-modal"
             open={openModal}
@@ -230,15 +229,15 @@ export default function OverlayMenu(props) {
                             }} />
                         <div
                             className={`qui-contain qui-profileContainer`}
-                            title={getLabel(labelContent, "popover")}
+                            title={withLabel?.format === "popover" ? withLabel?.content : ""}
                         >
                             <div className={`qui-profileAvatar `}>
                                 <div className="qui-profileCaption">
-                                    {getLabel(labelContent, "label")}
+                                    {withLabel?.format === "label" ? withLabel?.content : ""}
                                 </div>
                                 <Avatar {...props} withUser={props.withUser} />
                                 <div className={`qui-profileCaption size-${props.asSize}`}>
-                                    {getLabel(labelContent, "caption")}
+                                    {withLabel?.format === "caption" ? withLabel?.content : ""}
                                 </div>
                             </div>
                         </div>

@@ -15,8 +15,7 @@ describe("OverlayMenu", () => {
   let component;
   const dictionary = JSON.stringify({
     hi: {
-      OverlayMenu: {
-        label: "अरुणा असरानी",
+      overlayMenu: {
         content: [
           { label: "प्रोफ़ाइल संपादित करें" },
           { label: "खाता" },
@@ -68,7 +67,7 @@ describe("OverlayMenu", () => {
         withAnimation={null}
         withTranslation={{
           lang: "en",
-          tgt: "OverlayMenu",
+          tgt: "overlayMenu",
           dictionary: dictionary,
         }}
         isDisabled={false}
@@ -90,7 +89,7 @@ describe("OverlayMenu", () => {
         withAnimation={null}
         withTranslation={{
           lang: "en",
-          tgt: "OverlayMenu",
+          tgt: "overlayMenu",
           dictionary: dictionary,
         }}
         isDisabled={false}
@@ -102,7 +101,25 @@ describe("OverlayMenu", () => {
     unmount();
   });
 
-  it("should call setState when click", () => {
+  it("should render correctly with translation", () => {
+    component.setProps({
+      content: [
+        {
+          icon: "fa fa-share",
+          label: "Certificate",
+          format: "caption",
+        },
+      ],
+      withTranslation: {
+        lang: "hi",
+        tgt: "overlayMenu",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should call IconLink when click", () => {
     component = shallow(
       <OverlayMenu
         content={[
@@ -127,47 +144,34 @@ describe("OverlayMenu", () => {
     expect(component.find("i").exists()).toBe(true);
   });
 
-  it("OverlayMenu should render correctly if label isequal to 'Aruna Asrani' ", () => {
+  it("OverlayMenu should render correctly if pass withLabel caption  ", () => {
     component.setProps({
       withLabel: {
         format: "label",
-        content: "Aruna Asrani",
+        content: "",
         textColor: "Black",
-      },
-    });
-    const divTag = component.find("div").at(4).props();
-    expect(divTag.children).toBe("Aruna Asrani");
-  });
-
-  it("should render correctly with translation and withLabel", () => {
-    component.setProps({
-      withLabel: {
-        format: "label",
-        content: "Aruna Asrani",
-        textColor: "Black",
-      },
-      withTranslation: {
-        lang: "hi",
-        tgt: "OverlayMenu",
-        dictionary: dictionary,
       },
     });
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly with translation", () => {
+  it("OverlayMenu should render correctly if pass withLabel label  ", () => {
     component.setProps({
-      content: [
-        {
-          icon: "fa fa-share",
-          label: "Certificate",
-          format: "caption",
-        },
-      ],
-      withTranslation: {
-        lang: "hi",
-        tgt: "OverlayMenu",
-        dictionary: dictionary,
+      withLabel: {
+        format: "caption",
+        content: "",
+        textColor: "Black",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("OverlayMenu should render correctly if pass withLabel popover  ", () => {
+    component.setProps({
+      withLabel: {
+        format: "popover",
+        content: "",
+        textColor: "Black",
       },
     });
     expect(component.exists()).toBe(true);
