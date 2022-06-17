@@ -12,6 +12,7 @@ describe("AccentLine", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
+    
     let component;
 
     beforeEach(() => {
