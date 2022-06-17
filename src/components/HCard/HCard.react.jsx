@@ -227,7 +227,7 @@ export default function HCard(props) {
               {content?.name}
             </h6>
             <p
-              className="qt-sm qui-h-card-description"
+              className="qui qt-sm qui-h-card-description"
               style={{
                 color: withColor?.textColor,
               }}
