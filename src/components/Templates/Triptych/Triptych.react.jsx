@@ -194,7 +194,9 @@ export default function Triptych(props) {
               );
             })}
           </div>
-          <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+          <div className="qui qt-sm">
+            <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+          </div>
         </div>
       </div>
     );
@@ -218,7 +220,7 @@ export default function Triptych(props) {
             asFloated="left"
             withColor={textBlockColors} />
         </div>
-        <div className="qui-triptych-presenter-sub-title">
+        <div className="qui qui-triptych-presenter-sub-title qt-sm">
           <TextBlock {...props}
             content={data?.subtitle}
             asFloated="left"
@@ -233,7 +235,7 @@ export default function Triptych(props) {
             );
           })}
         </div>
-        <div className="qui-triptych-presenter-caption">
+        <div className="qui qui-triptych-presenter-caption qt-sm">
           <TextBlock {...props}
             content={data?.caption}
             asFloated="left"

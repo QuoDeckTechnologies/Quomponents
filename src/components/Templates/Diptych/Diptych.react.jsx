@@ -194,7 +194,9 @@ export default function Diptych(props) {
               );
             })}
           </div>
-          <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+          <div className="qui qt-sm">
+            <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+          </div>
         </div>
       </div>
     );
@@ -212,13 +214,13 @@ export default function Diptych(props) {
           backgroundSize: "cover",
         }}
       >
-        <div className="qui-diptych-presenter-title" >
+        <div className="qui qui-diptych-presenter-title" >
           <TextBlock {...props}
             content={data?.title}
             asFloated="left"
             withColor={textBlockColors} />
         </div>
-        <div className="qui-diptych-presenter-sub-title">
+        <div className="qui qui-diptych-presenter-sub-title qt-sm">
           <TextBlock {...props}
             content={data?.subtitle}
             asFloated="left"
@@ -233,7 +235,7 @@ export default function Diptych(props) {
             );
           })}
         </div>
-        <div className="qui-diptych-presenter-caption">
+        <div className="qui qui-diptych-presenter-caption qt-sm">
           <TextBlock {...props}
             content={data?.caption}
             asFloated="left"
