@@ -3,7 +3,7 @@ import ExternalLink from "../../components/Templates/ExternalLink/ExternalLink.r
 
 const dictionary = JSON.stringify({
     hi: {
-      externallink: { button: "जाएँ" },
+      externalLink: { button: "जाएँ" },
     },
 }); 
 
@@ -155,7 +155,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "externallink",
+        tgt: "externalLink",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -268,7 +268,7 @@ TranslatedExternallink.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "externallink",
+    tgt: "externalLink",
     dictionary: dictionary,
   },
 };

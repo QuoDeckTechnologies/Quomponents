@@ -4,7 +4,7 @@ import ShortLogo from "../assets/amplayfier-logo-short.png"
 
 const dictionary = JSON.stringify({
     hi: {
-        navbar: {
+        navBar: {
             title: "कमाये",
             content: "कॅटलॉग",
         },
@@ -160,6 +160,11 @@ UserNavbar.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "navBar",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -258,7 +263,7 @@ TranslatedNavBar.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "navbar",
+        tgt: "navBar",
         dictionary: dictionary,
     },
 };

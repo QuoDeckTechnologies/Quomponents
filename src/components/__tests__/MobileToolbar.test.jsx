@@ -15,7 +15,7 @@ describe("MobileToolbar", () => {
 
     const dictionary = JSON.stringify({
         hi: {
-            mobiletoolbar: {
+            mobileToolbar: {
                 title: "संपादन मोड",
                 content: [
                     { label: "पाठ्यक्रम" },
@@ -85,7 +85,7 @@ describe("MobileToolbar", () => {
             asEmphasis: "default",
             withTranslation: {
                 lang: "hi",
-                tgt: "mobiletoolbar",
+                tgt: "mobileToolbar",
                 dictionary: dictionary,
             },
         });
@@ -97,7 +97,7 @@ describe("MobileToolbar", () => {
             asEmphasis: "editing",
             withTranslation: {
                 lang: "hi",
-                tgt: "mobiletoolbar",
+                tgt: "mobileToolbar",
                 dictionary: dictionary,
             },
         });

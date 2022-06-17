@@ -14,7 +14,7 @@ describe("ActionMenu", () => {
   let component;
   const dictionary = JSON.stringify({
     hi: {
-      actions: {
+      actionMenus: {
         content: [
           { title: "डेक खोलो" },
           { title: "डेक संपादित करें" },
@@ -99,7 +99,7 @@ describe("ActionMenu", () => {
     component.setProps({
       withTranslation: {
         lang: "hi",
-        tgt: "actions",
+        tgt: "actionMenus",
         dictionary: dictionary,
       },
     });

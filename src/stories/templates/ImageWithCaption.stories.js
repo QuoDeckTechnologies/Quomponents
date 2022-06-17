@@ -3,7 +3,7 @@ import ImageWithCaption from "../../components/Templates/ImageWithCaption/ImageW
 
 const dictionary = JSON.stringify({
     hi: {
-        imagewithcaption: { button: "जारी रखें" },
+        imageWithCaption: { button: "जारी रखें" },
     },
 });
 
@@ -158,7 +158,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "imagewithcaption",
+        tgt: "imageWithCaption",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -294,7 +294,7 @@ TranslatedImageWithCation.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "imagewithcaption",
+        tgt: "imageWithCaption",
         dictionary: dictionary,
     },
 };
