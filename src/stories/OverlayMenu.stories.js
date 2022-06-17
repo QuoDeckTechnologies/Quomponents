@@ -4,18 +4,17 @@ import OverlayMenu from "../components/OverlayMenu/OverlayMenu.react";
 const dictionary = JSON.stringify({
 
     hi: {
-        OverlayMenu: { 
-            label: "अरुणा असरानी" ,
-            content:[
-                {label:"प्रोफ़ाइल संपादित करें"},
-                {label:"खाता"},
-                {label:"प्रोफ़ाइल संपादित करें"},
-                {label:"खाता"},
-                {label:"प्रोफ़ाइल संपादित करें"},
-                {label:"खाता"},
-                {label:"खाता"},
-                {label:"प्रोफ़ाइल संपादित करें"},
-                {label:"खाता"},
+        overlayMenu: {
+            content: [
+                { label: "प्रोफ़ाइल संपादित करें" },
+                { label: "खाता" },
+                { label: "प्रोफ़ाइल संपादित करें" },
+                { label: "खाता" },
+                { label: "प्रोफ़ाइल संपादित करें" },
+                { label: "खाता" },
+                { label: "खाता" },
+                { label: "प्रोफ़ाइल संपादित करें" },
+                { label: "खाता" },
             ]
         },
     },
@@ -25,6 +24,9 @@ export default {
     title: "Design System/OverlayMenu/OverlayMenu",
     component: OverlayMenu,
     argTypes: {
+        isOpen: {
+            defaultValue: true,
+        },
         content: [
             {
                 icon: "",
@@ -129,6 +131,12 @@ export default {
                 defaultValue: null,
             },
         },
+        onClose: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        },
     },
     decorators: [
         (story) => (
@@ -146,13 +154,14 @@ export default {
         a11y: { disable: true },
         docs: { iframeHeight: 700 },
     },
- };
+};
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
 const Template = (args) => <OverlayMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+    isOpen: true,
     content: [
         {
             icon: "fas fa-user-edit",
@@ -207,7 +216,6 @@ Default.args = {
 
     withUser: "https://i.pinimg.com/564x/66/b7/b0/66b7b0cc1927986a85a41d754a360727.jpg",
 
-
     asVariant: "primary",
     asSize: "normal",
     asFloated: "none",
@@ -231,7 +239,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "icon",
+        tgt: "overlayMenu",
         dictionary: dictionary,
     },
 
@@ -256,7 +264,7 @@ TranslatedOverlayMenu.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "OverlayMenu",
+        tgt: "overlayMenu",
         dictionary: dictionary,
     },
 };
