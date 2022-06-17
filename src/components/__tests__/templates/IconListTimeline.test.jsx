@@ -77,10 +77,19 @@ describe("IconListTimeline", () => {
         expect(component.exists()).toBe(true);
     });
 
-    // it("should render correctly without throwing error when clicked on image", () => {
-    //     component.find(".qui-iconlisttime-image").simulate("click");
-    //     expect(component.exists()).toBe(true);
-    // });
+    it("should render correctly without throwing error when clicked on image", () => {
+        let data = {
+            iconlist: [
+                {
+                    image: { id: "iconlist-image-1", extention: "" },
+                    text: "Neque porro quisquam est qui dolorem",
+                },
+            ],
+        }
+        component.setProps({ data: data })
+        component.find(".qui-icon-list-timeline-image").at(0).simulate("click");
+        expect(component.exists()).toBe(true);
+    });
 
     it("should render correctly when passed asFloated prop as inline", () => {
         component.setProps({ asFloated: "inline" })
