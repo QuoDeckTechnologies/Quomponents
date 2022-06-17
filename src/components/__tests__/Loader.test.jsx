@@ -10,9 +10,9 @@ import { shallow, mount, render } from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import FlipConfirm from '../Loader/Loader.react';
+import Loader from '../Loaders/Loader/Loader.react';
 
-describe("FlipConfirm", () => {
+describe("Loader", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -21,7 +21,7 @@ describe("FlipConfirm", () => {
 
     beforeEach(() => {
         jest.resetAllMocks();
-        component = shallow(<FlipConfirm
+        component = shallow(<Loader
             label="Loading"
             icon={false}
             color="primary"
