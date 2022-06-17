@@ -83,7 +83,7 @@ describe("CheckBox", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when passed isCircular props is true", () => {
+  it("should render correctly when passed isHidden props is true", () => {
     component.setProps({
       isHidden: true,
     });
