@@ -144,7 +144,7 @@ export default function CourseListCard(props) {
         style={{
           backgroundColor: withColor?.backgroundColor,
         }}
-        onClick={() => props.onClick(content)}
+        onClick={() => onClick(content)}
       >
         <div
           className="qui-course-list-card-image-container"

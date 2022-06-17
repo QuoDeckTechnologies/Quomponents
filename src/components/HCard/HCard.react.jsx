@@ -27,6 +27,10 @@ HCard.propTypes = {
   */
   imageLibrary: PropTypes.array,
   /**
+  Use for show or hide button 
+  */
+  isButton: PropTypes.bool,
+  /**
   Set action emphasis in increasing order 
   */
   asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
@@ -114,6 +118,7 @@ HCard.defaultProps = {
     image: { id: "", extention: "" },
   },
   imageLibrary: [],
+  isButton: true,
   asEmphasis: "contained",
   isCircular: false,
   //=======================================
@@ -138,12 +143,12 @@ export default function HCard(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { content, withColor, imageLibrary, onClick } = props;
+  const { content, withColor, imageLibrary, isButton, onClick } = props;
   //-------------------------------------------------------------------
   // 2. Function to handle click
   //-------------------------------------------------------------------
   const handleClick = () => {
-    if (window.innerWidth <= 481) {
+    if (!isButton) {
       onClick(content);
     }
   };
@@ -183,7 +188,9 @@ export default function HCard(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div
-        className="qui-h-card-container"
+        className={`qui-h-card-container ${
+          isButton ? "qui-h-card-with-button-container" : "qui-h-card-without-button-container"
+        } qt-shadow`}
         style={{
           backgroundColor: withColor?.backgroundColor,
         }}
@@ -212,14 +219,15 @@ export default function HCard(props) {
         </div>
         <div className="qui-h-card-text-container">
           <div className="qui-h-card-text">
-            <h4
+            <h6 className="qui-h-card-title"
               style={{
                 color: withColor?.textColor,
               }}
             >
               {content?.name}
-            </h4>
+            </h6>
             <p
+              className="qui qt-sm qui-h-card-description"
               style={{
                 color: withColor?.textColor,
               }}
@@ -227,23 +235,25 @@ export default function HCard(props) {
               {content?.description}
             </p>
           </div>
-          <Button
-            {...props}
-            content={
-              tObj
-                ? tObj.buttonText
-                : content?.buttonText
-                ? content?.buttonText
-                : "click here"
-            }
-            isFluid={false}
-            withTranslation={null}
-            withColor={{
-              backgroundColor: withColor?.buttonBackgroundColor,
-              textColor: withColor?.buttonTextColor,
-            }}
-            onClick={() => onClick(content)}
-          />
+          {isButton && (
+            <Button
+              {...props}
+              content={
+                tObj
+                  ? tObj.buttonText
+                  : content?.buttonText
+                  ? content?.buttonText
+                  : "click here"
+              }
+              isFluid={false}
+              withTranslation={null}
+              withColor={{
+                backgroundColor: withColor?.buttonBackgroundColor,
+                textColor: withColor?.buttonTextColor,
+              }}
+              onClick={() => onClick(content)}
+            />
+          )}
         </div>
       </div>
     </motion.div>
