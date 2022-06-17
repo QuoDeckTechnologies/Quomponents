@@ -103,6 +103,12 @@
   .qui .qui-h-card-container {
     width: 100%;
   }
+  .qui .qui-h-card-container.qui-h-card-without-button-container {
+    height: 5em;
+  }
+  .qui .qui-h-card-container.qui-h-card-with-button-container {
+    height: 8.5em;
+  }
   .qui .qui-h-card-with-button-container .qui-h-card-checkbox-container {
     font-size: 0.8em;
   }
