@@ -133,7 +133,7 @@ export default function AppMenu(props) {
   // ========================= Render Function =================================
 
   return (
-    <div className={`qui ${quommonClasses.parentClasses}`}>
+    <div className={`qui ${quommonClasses.parentClasses} qt-shadow`}>
       <div className="qui-main-container">
         <div
           style={colors}

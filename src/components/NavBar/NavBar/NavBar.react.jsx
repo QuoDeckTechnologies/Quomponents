@@ -159,7 +159,7 @@ export default function NavBar(props) {
   //-------------------------------------------------------------------
   let labelContent = {
     title: content?.title,
-    menuTitle : content?.menuTitle
+    menuTitle: content?.menuTitle,
   };
   let tObj = null;
   if (
@@ -242,7 +242,11 @@ export default function NavBar(props) {
             />
           )}
           <div className="qui-content">
-            <h4 className="qui-nav-bar-title">{labelContent?.title}</h4>
+            {isSearch ? (
+              <h3 className="qui-nav-bar-title">{labelContent?.title}</h3>
+            ) : (
+              <h4 className="qui-nav-bar-title">{labelContent?.title}</h4>
+            )}
           </div>
         </div>
         <div className="qui-right-navbar">
