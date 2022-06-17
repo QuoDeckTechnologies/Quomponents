@@ -189,8 +189,8 @@ export default function HCard(props) {
     >
       <div
         className={`qui-h-card-container ${
-          !isButton ? "qui-h-card-container-cursor" : null
-        }`}
+          isButton ? "qui-h-card-with-button-container" : "qui-h-card-without-button-container"
+        } qt-shadow`}
         style={{
           backgroundColor: withColor?.backgroundColor,
         }}
@@ -219,14 +219,15 @@ export default function HCard(props) {
         </div>
         <div className="qui-h-card-text-container">
           <div className="qui-h-card-text">
-            <h4
+            <h6 className="qui-h-card-title"
               style={{
                 color: withColor?.textColor,
               }}
             >
               {content?.name}
-            </h4>
+            </h6>
             <p
+              className="qt-sm qui-h-card-description"
               style={{
                 color: withColor?.textColor,
               }}

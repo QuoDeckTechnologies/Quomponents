@@ -7,12 +7,15 @@
   .MuiButton-root.MuiButton-text {
     box-shadow: none;
   }
+  &.is-disabled .qui-btn {
+    box-shadow: none;
+  }
 }
 
 .qui.qui-h-card-with-button .qui .qui-btn {
   width: 100%;
   padding: 0.6em;
-  box-shadow: 0px 6px 10px #0000004d;
+  box-shadow: 0px 6px 6px #0000002e;
   margin-top: 1em;
 }
 
@@ -22,6 +25,14 @@
   justify-content: center;
   border-top-left-radius: 0.6em;
   border-bottom-left-radius: 0.6em;
+}
+
+.qui .qui-h-card-without-button-container .qui-h-card-image-container {
+  width: 10em;
+}
+
+.qui .qui-h-card-without-button-container {
+  cursor: pointer;
 }
 
 .qui .qui-h-card-checkbox-container {
@@ -40,7 +51,6 @@
   display: flex;
   background-color: #ffffff;
   border-radius: 0.6em;
-  box-shadow: 0px 5px 10px #0000004a;
 }
 
 .qui .qui-h-card-checkbox-container .fas.fa-check-square {
@@ -61,7 +71,7 @@
   justify-content: space-between;
 }
 
-.qui .qui-h-card-text-container h4 {
+.qui .qui-h-card-text-container .qui-h-card-title {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   overflow: hidden;
@@ -69,9 +79,10 @@
   margin: 0;
   color: #666666;
   width: 100%;
+  font-size: 1.2em;
 }
 
-.qui .qui-h-card-text-container p {
+.qui .qui-h-card-text-container .qui-h-card-description {
   width: 100%;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -90,17 +101,24 @@
   .qui .qui-h-card-container {
     width: 100%;
   }
-  .qui .qui-h-card-checkbox-container {
-    font-size: 0.5em;
+  .qui .qui-h-card-with-button-container .qui-h-card-checkbox-container {
+    font-size: 0.8em;
   }
-  .qui .qui-h-card-image-container {
+  .qui .qui-h-card-without-button-container .qui-h-card-checkbox-container {
+    font-size: 0.6em;
+  }
+  .qui .qui-h-card-with-button-container .qui-h-card-image-container {
     height: auto;
-    width: 7em;
+    width: 80%;
   }
-  .qui .qui-h-card-text-container h4 {
+  .qui .qui-h-card-without-button-container .qui-h-card-image-container {
+    height: auto;
+    width: 40%;
+  }
+  .qui .qui-h-card-text-container .qui-h-card-title {
     font-size: 1em;
   }
-  .qui .qui-h-card-text-container p {
+  .qui .qui-h-card-text-container .qui-h-card-description {
     font-size: 1em;
   }
 }
@@ -109,8 +127,11 @@
   .qui .qui-h-card-container {
     width: 30em;
   }
-  .qui .qui-h-card-checkbox-container {
+  .qui .qui-h-card-with-button-container .qui-h-card-checkbox-container {
     font-size: 1em;
+  }
+  .qui .qui-h-card-without-button-container .qui-h-card-checkbox-container {
+    font-size: 0.7em;
   }
   .qui .qui-h-card-image-container {
     width: 20em;
