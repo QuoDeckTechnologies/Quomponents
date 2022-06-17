@@ -1,5 +1,4 @@
-import { shallow, mount, render } from 'enzyme';
-import renderer from "react-test-renderer";
+import { shallow } from 'enzyme';
 
 //--------------------------------------
 // Import Components
@@ -80,12 +79,12 @@ describe("ToolbarDark", () => {
                 isHidden={false}
                 isFluid={false}
                 isCircular={true}
-                onClick={() => console.log("ToolbarDark testing")} />
+                onClick={() => { }} />
         );
     });
 
     it("ToolbarDark", () => {
-        component = shallow(<ToolbarDark onClick={() => console.log("ToolbarDark testing")} />);
+        component = shallow(<ToolbarDark onClick={() => { }} />);
 
     });
 
@@ -108,23 +107,6 @@ describe("ToolbarDark", () => {
             component.setProps({ withColor: null });
             expect(component.exists()).toBe(true);
         });
-
-    // it('renders children when passed in', () => {
-    //     const component = shallow((
-    //         <ToolbarDark onClick={() => console.log("ToolbarDark testing")}>
-    //             <div className="qui-icon" />
-    //         </ToolbarDark>
-    //     ));
-    //     expect(component.contains(<div className="qui-icon" />)).toEqual(true);
-    // });
-
-    // it('component have one qui-icon class ', () => {
-    //     expect(component.find('.qui-icon').exists()).toBe(true)
-    // })
-
-    it('Each component must have a one `qui` parent class', () => {
-        expect(component.find('.qui').exists()).toBe(true)
-    })
 
     it("should render correctly without withColor prop", () => {
         component.setProps({
@@ -157,6 +139,7 @@ describe("ToolbarDark", () => {
         });
         expect(component.exists()).toBe(true);
     });
+
     it("should render correctly with different animation", () => {
         component.setProps({
             withAnimation: {
@@ -188,6 +171,7 @@ describe("ToolbarDark", () => {
         });
         expect(component.exists()).toBe(true);
     });
+
     it("should render correctly with empty props which are not required", () => {
         component.setProps({
             content: [],
@@ -203,40 +187,25 @@ describe("ToolbarDark", () => {
     it("should render correctly with translation",
         () => {
             component.setProps({
-
                 withTranslation: {
                     lang: "hi",
                     tgt: "ToolbarDark",
                     dictionary: dictionary,
                 },
-                content: [
-                    { label: "प्रमाणपत्र" },
-                    { label: "बटुआ" },
-                    { label: "पुरस्कार" },
-                    { label: "रिपोर्ट" },
-                ]
             });
             expect(component.exists()).toBe(true);
         });
+
     it("should render correctly with translation",
         () => {
             component.setProps({
-
                 withTranslation: {
-                    lang: "en",
-                    tgt: "ToolbarDark",
+                    lang: "hi",
+                    tgt: "",
                     dictionary: dictionary,
                 },
-                content: [
-                    { label: "Certificate" },
-                    { label: "Wallet" },
-                    { label: "Rewards" },
-                    { label: "Reports" },
-                ]
             });
             expect(component.exists()).toBe(true);
         });
-
-
 });
 
