@@ -80,7 +80,6 @@
   margin: 0;
   color: #666666;
   width: 100%;
-  // font-size: 1.2em;
 }
 
 .qui .qui-h-card-text-container .qui-h-card-description {
@@ -90,7 +89,6 @@
   overflow: hidden;
   -webkit-box-orient: vertical;
   margin: 0.5em 0;
-  // font-size: 1.1em;
   color: #666666;
 }
 
@@ -110,23 +108,17 @@
   }
   .qui .qui-h-card-with-button-container .qui-h-card-image-container {
     height: auto;
-    width: 80%;
+    width: 75%;
   }
   .qui .qui-h-card-without-button-container .qui-h-card-image-container {
     height: auto;
     width: 40%;
   }
-  .qui .qui-h-card-text-container .qui-h-card-title {
-    // font-size: 1em;
-  }
-  .qui .qui-h-card-text-container .qui-h-card-description {
-    // font-size: 1em;
-  }
 }
 
 @media only screen and (min-width: 481px) {
   .qui .qui-h-card-container {
-    width: 30em;
+    width: 20em;
   }
   .qui .qui-h-card-with-button-container .qui-h-card-checkbox-container {
     font-size: 1em;
