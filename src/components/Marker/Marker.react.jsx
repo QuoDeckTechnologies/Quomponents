@@ -133,13 +133,11 @@ export default function Marker(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`${quommonClasses.childClasses}`} style={props.status ? activeColor : deactivatedColor}
+            <div className={`${quommonClasses.childClasses}`} style={props.status === "current" ? activeColor : deactivatedColor}
                 onClick={props.onClick}>
-                <div>
-                    {props.status==="current" ? <img src={Active} alt="Logo" className="qui-marker-current" />
-                        : <img src={Inactive} alt="Logo" className="qui-marker-incomplete" />
-                    }
-                </div>
+                {props.status === "current" ? <img src={Active} alt="Logo" className="qui-marker-current" />
+                    : <img src={Inactive} alt="Logo" className="qui-marker-incomplete" />
+                }
                 <div className="qui-marker-inset">
                     {content?.inset}
                 </div>
