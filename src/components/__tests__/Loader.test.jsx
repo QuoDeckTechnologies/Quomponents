@@ -154,8 +154,14 @@ describe("Loader", () => {
         expect(component.exists()).toBe(true);
     })
 
-    it("should render correctly when passed withIcon props", () => {
+    it("should render correctly when passed withIcon props with font awesome icon", () => {
         let icon = { icon: "fa fa-asterisk fa-spin", size: "10px" }
+        component.setProps({ withIcon: icon })
+        expect(component.exists()).toBe(true);
+    })
+
+    it("should render correctly when passed withIcon props with image or gif extention", () => {
+        let icon = { icon: "https://acegif.com/wp-content/uploads/loading-42.gif", size: "1em" }
         component.setProps({ withIcon: icon })
         expect(component.exists()).toBe(true);
     })
