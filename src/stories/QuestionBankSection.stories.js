@@ -3,12 +3,12 @@ import QuestionBankSection from "../components/RibbonMenu/toolsMenu/sections/Que
 
 const dictionary = JSON.stringify({
 	en: {
-		QuestionBankSection: {
+		questionBankSection: {
 			questionBank: 'Question Bank'
 		}
 	},
 	hi: {
-		QuestionBankSection: {
+		questionBankSection: {
 			questionBank: 'प्रश्न बैंक'
 		}
 	}
@@ -84,7 +84,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "QuestionBankSection",
+		tgt: "questionBankSection",
 		dictionary: dictionary
 	},
 	isDisabled: false,
@@ -106,7 +106,7 @@ TranslatedQuestionBankSection.args = {
 	...Default.args,
 	withTranslation: {
 		lang: "hi",
-		tgt: "QuestionBankSection",
+		tgt: "questionBankSection",
 		dictionary: dictionary
 	},
 };

@@ -3,7 +3,7 @@ import ViewSection from "../components/RibbonMenu/homeMenu/sections/ViewSection.
 
 const dictionary = JSON.stringify({
 	en: {
-		ViewSection: {
+		viewSection: {
 			view: "View",
 			sorter: "Sorter",
 			mobile: "Mobile",
@@ -12,7 +12,7 @@ const dictionary = JSON.stringify({
 		}
 	},
 	hi: {
-		ViewSection: {
+		viewSection: {
 			view: "दृश्य",
 			sorter: "छँटाईकर्ता",
 			mobile: "मोबाइल",
@@ -96,7 +96,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "ViewSection",
+		tgt: "viewSection",
 		dictionary: dictionary,
 	},
 	isDisabled: false,
@@ -118,7 +118,7 @@ TranslatedViewSection.args = {
 	...Default.args,
 	withTranslation: {
 		lang: "hi",
-		tgt: "ViewSection",
+		tgt: "viewSection",
 		dictionary: dictionary
 	},
 };

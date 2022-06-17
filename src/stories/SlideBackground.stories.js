@@ -3,14 +3,14 @@ import SlideBackground from "../components/RibbonMenu/designMenu/sections/SlideB
 
 const dictionary = JSON.stringify({
 	en: {
-		SlideBackground: {
+		slideBackground: {
 			slideBackground: "Slide Background",
 			setBackground: "Set",
 			removeBackground: "Remove"
 		}
 	},
 	hi: {
-		SlideBackground: {
+		slideBackground: {
 			slideBackground: "स्लाइड पृष्ठभूमि",
 			setBackground: "सेट",
 			removeBackground: "निकाले"
@@ -102,7 +102,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "SlideBackground",
+		tgt: "slideBackground",
 		dictionary: dictionary,
 	},
 	isDisabled: false,
@@ -152,7 +152,7 @@ TranslatedSlideBackground.args = {
 	...Default.args,
 	withTranslation: {
 		lang: "hi",
-		tgt: "SlideBackground",
+		tgt: "slideBackground",
 		dictionary: dictionary
 	},
 };

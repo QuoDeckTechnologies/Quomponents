@@ -3,7 +3,7 @@ import DeckSettingsSection from "../components/RibbonMenu/toolsMenu/sections/Dec
 
 const dictionary = JSON.stringify({
 	en: {
-		DeckSettingsSection: {
+		deckSettingsSection: {
 			settings: 'Settings',
 			enableNavigation: "Enable Navigation",
 			enableSlideList: "Enable Slide List",
@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
 		}
 	},
 	hi: {
-		DeckSettingsSection: {
+		deckSettingsSection: {
 			settings: 'समायोजन',
 			enableNavigation: "पथ प्रदर्शन सक्षम करें",
 			enableSlideList: "स्लाइड सूची सक्षम करें",
@@ -99,7 +99,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "DeckSettingsSection",
+		tgt: "deckSettingsSection",
 		dictionary: dictionary,
 	  },
 	isDisabled: false,
@@ -121,7 +121,7 @@ TranslatedDeckSettingsSection.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "DeckSettingsSection",
+    tgt: "deckSettingsSection",
     dictionary: dictionary
   },
 };

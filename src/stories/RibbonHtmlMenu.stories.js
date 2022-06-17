@@ -3,7 +3,7 @@ import RibbonHtmlMenu from "../components/RibbonMenu/htmlMenu//RibbonHtmlMenu.re
 
 const dictionary = JSON.stringify({
 	en: {
-		RibbonHtmlMenu: {
+		ribbonHtmlMenu: {
 			saveExit: "Save & Exit",
 			upload: "Upload",
 			download: "Download",
@@ -12,7 +12,7 @@ const dictionary = JSON.stringify({
 		}
 	},
 	hi: {
-		RibbonHtmlMenu: {
+		ribbonHtmlMenu: {
 			saveExit: "सेहेजे & बाहर निकले",
 			upload: "अपलोड",
 			download: "डाउनलोड",
@@ -93,7 +93,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "RibbonHtmlMenu",
+		tgt: "ribbonHtmlMenu",
 		dictionary: dictionary,
 	},
 	isDisabled: false,
@@ -115,7 +115,7 @@ TranslatedRibbonHtmlMenu.args = {
 	...Default.args,
 	withTranslation: {
 		lang: "hi",
-		tgt: "RibbonHtmlMenu",
+		tgt: "ribbonHtmlMenu",
 		dictionary: dictionary
 	},
 };

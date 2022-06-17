@@ -3,7 +3,7 @@ import PalleteThemeSection from "../components/RibbonMenu/designMenu/sections/Pa
 
 const dictionary = JSON.stringify({
 	en: {
-		PalleteThemeSection: {
+		palleteThemeSection: {
 			settings: "Settings",
 			pageColor: "Page Color",
 			primaryColor: "Primary Color",
@@ -12,7 +12,7 @@ const dictionary = JSON.stringify({
 		}
 	},
 	hi: {
-		PalleteThemeSection: {
+		palleteThemeSection: {
 			settings: "समायोजन",
 			pageColor: "पृष्ठ रंग",
 			primaryColor: "प्राथमिक रंग",
@@ -96,7 +96,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "PalleteThemeSection",
+		tgt: "palleteThemeSection",
 		dictionary: dictionary
 	},
 	isDisabled: false,
@@ -118,7 +118,7 @@ TranslatedPalleteThemeSection.args = {
 	...Default.args,
 	withTranslation: {
 		lang: "hi",
-		tgt: "PalleteThemeSection",
+		tgt: "palleteThemeSection",
 		dictionary: dictionary
 	},
 };

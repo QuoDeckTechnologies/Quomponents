@@ -3,7 +3,7 @@ import SlideSection from "../components/RibbonMenu/homeMenu/sections/SlideSectio
 
 const dictionary = JSON.stringify({
 	en: {
-		SlideSection: {
+		slideSection: {
 			slide: "Slide",
 			newSlide: "New Slide",
 			duplicateSlide: "Duplicate Slide",
@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
 		}
 	},
 	hi: {
-		SlideSection: {
+		slideSection: {
 			slide: "स्लाइड",
 			newSlide: "नई स्लाइड",
 			duplicateSlide: "स्लाइड प्रतिलिपि करे",
@@ -100,7 +100,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "SlideSection",
+		tgt: "slideSection",
 		dictionary: dictionary,
 	},
 	isDisabled: false,

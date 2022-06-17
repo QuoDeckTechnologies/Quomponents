@@ -148,7 +148,7 @@ export default function CourseCard(props) {
 		points = points?.toLocaleString("hi-u-nu-deva");
 		shareLabel = tObj?.share;
 		rewardLabel = tObj?.rewardLabel;
-		menu = tObj?.menu;
+		menu = tObj?.arcMenu;
 	} else {
 		points = points?.toLocaleString("en");
 	}

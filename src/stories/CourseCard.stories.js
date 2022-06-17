@@ -3,7 +3,7 @@ import CourseCard from "../components/CourseCard/CourseCard.react";
 
 const dictionary = JSON.stringify({
 	hi: {
-		CourseCard: {
+		courseCard: {
 			isSequential: {
 				true: "अनुक्रमिक पाठ्यक्रम",
 				false: "गैर अनुक्रमिक पाठ्यक्रम"
@@ -24,7 +24,7 @@ const dictionary = JSON.stringify({
 			},
 			share: "शेयर",
 			rewardLabel: "पूर्ण करे जीतने के लिए",
-			menu: [
+			arcMenu: [
 				"विवरण संपादित करें",
 				"सामग्री संपादित करें",
 				"शिक्षार्थियों को प्रबंधित करें",
@@ -134,7 +134,7 @@ Default.args = {
 	},
 	withTranslation: {
 		lang: "en",
-		tgt: "CourseCard",
+		tgt: "courseCard",
 		dictionary: dictionary,
 	},
 	asFloated: "inline",
@@ -294,7 +294,7 @@ TranslatedCourseCard.args = {
 	...Default.args,
 	withTranslation: {
 		lang: "hi",
-		tgt: "CourseCard",
+		tgt: "courseCard",
 		dictionary: dictionary
 	},
 };
