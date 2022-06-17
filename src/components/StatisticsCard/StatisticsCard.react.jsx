@@ -121,23 +121,23 @@ export default function StatisticsCard(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <Segment {...props} className={`qui-statistics-card-container ${quommonClasses.childClasses}`} style={colors?.backgroundColors}
+            <Segment {...props} className={`${quommonClasses.childClasses}`} style={colors?.backgroundColors}
             >
                 <>
                     <i className={`qui-statistics-card-icon ${content?.icon}`}
                         style={colors?.accentColors}>
                     </i>
                     <div className="qui-statistics-card-valuetooltip">
-                        <h1 className={props.content?.value.length >= 7 ? "qui-statistics-card-values" : "qui-statistics-card-value"} style={colors?.textColors}>
+                        <h4 className={"qui-statistics-card-value"} style={colors?.textColors}>
                             {content?.value}
-                        </h1>
+                        </h4>
                         <span className="qui-statistics-card-tooltipvalue">{content?.value}</span>
                     </div>
 
                     <div className="qui-statistics-card-labeltooltip">
-                        <h3 className={props.content?.label.length >= 7 ? "qui-statistics-card-labels" : "qui-statistics-card-label"} style={colors?.textColors}>
+                        <h6 className={"qui-statistics-card-label"} style={colors?.textColors}>
                             {content?.label}
-                        </h3>
+                        </h6>
                         <span className="qui-statistics-card-tooltiplabel">{content?.label}</span>
                     </div>
                 </>

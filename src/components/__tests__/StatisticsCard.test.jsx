@@ -2,7 +2,6 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-import renderer from "react-test-renderer";
 
 //--------------------------------------
 // Import Components
@@ -115,15 +114,5 @@ describe("StatisticsCard", () => {
         });
         expect(component.exists()).toBe(true);
     });
-
-    it("should render correctly when set value and label in content props properly",
-        () => {
-            const component = renderer.create(<StatisticsCard
-                content={{
-                    value: "202,0202",
-                    label: "playersIcon"
-                }}
-            />)
-        });
 });
 
