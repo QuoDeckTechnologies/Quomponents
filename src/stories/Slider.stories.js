@@ -6,6 +6,21 @@ export default {
   component: Slider,
   argTypes: {
     initialValue: 10,
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          backgroundColor: "",
+        },
+      },
+    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -40,7 +55,7 @@ export default {
     (story) => (
       <div
         style={{
-          paddingTop: "2em",
+          paddingTop: "1em",
         }}
       >
         {story()}
@@ -60,6 +75,10 @@ const Template = (args) => <Slider {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   initialValue: 10,
+  asVariant: "primary",
+  withColor: {
+    backgroundColor: "#FFBF00",
+  },
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
