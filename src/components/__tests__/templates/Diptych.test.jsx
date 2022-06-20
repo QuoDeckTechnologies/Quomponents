@@ -48,6 +48,7 @@ describe("Diptych", () => {
                     },],
                     caption: "caption",
                 }}
+                layout="side by side split"
                 slideId={0}
                 asVariant="primary"
                 withColor={null}
@@ -186,6 +187,100 @@ describe("Diptych", () => {
         }
         component.setProps({ withAnimation: animation })
         expect(component.exists()).toBe(true);
+    })
+    it("should render correctly when passed layout props with presenter", () => {
+        component.setProps({
+            data: {
+                presenter: {
+                    extention: "",
+                    id: "presenter-image"
+                },
+                diptych: [{
+                    image: {
+                        extention: "",
+                        id: "image-1",
+                    },
+                    image: {
+                        extention: "",
+                        id: "image-2",
+                    }
+                }],
+            },
+            imageLibrary: [
+                { id: "presenter-image", image: "test0.png" },
+                { id: "image-1", image: "test.png" },
+                { id: "image-2", image: "test2.png" }],
+            layout: "side by side split"
+        })
+        component.find('.qui-diptych-clickable-images-split')
+    })
+    it("should render correctly when passed layout props with presenter", () => {
+        component.setProps({
+            data: {
+                presenter: {
+                    extention: "",
+                    id: "presenter-image"
+                },
+                diptych: [{
+                    image: {
+                        extention: "",
+                        id: "image-1",
+                    },
+                    image: {
+                        extention: "",
+                        id: "image-2",
+                    }
+                }],
+            },
+            imageLibrary: [
+                { id: "presenter-image", image: "test0.png" },
+                { id: "image-1", image: "test.png" },
+                { id: "image-2", image: "test2.png" }],
+            layout: "side by side full"
+        })
+        component.find('.qui-diptych-clickable-images-full')
+    })
+    it("should render correctly when passed layout props without presenter", () => {
+        component.setProps({
+            data: {
+                diptych: [{
+                    image: {
+                        extention: "",
+                        id: "image-1",
+                    },
+                    image: {
+                        extention: "",
+                        id: "image-2",
+                    }
+                }],
+            },
+            imageLibrary: [
+                { id: "image-1", image: "test.png" },
+                { id: "image-2", image: "test2.png" }],
+            layout: "side by side full"
+        })
+        component.find('.qui-diptych-clickable-images-full')
+    })
+    it("should render correctly when passed layout props without presenter", () => {
+        component.setProps({
+            data: {
+                diptych: [{
+                    image: {
+                        extention: "",
+                        id: "image-1",
+                    },
+                    image: {
+                        extention: "",
+                        id: "image-2",
+                    }
+                }],
+            },
+            imageLibrary: [
+                { id: "image-1", image: "test.png" },
+                { id: "image-2", image: "test2.png" }],
+            layout: "side by side split"
+        })
+        component.find('.qui-diptych-clickable-images-split')
     })
     it("should render correctly when passed data as null", () => {
         component.setProps({ data: {} })
