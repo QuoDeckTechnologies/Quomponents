@@ -1,43 +1,33 @@
 .qui.qui-marker {
 
-    .qui-marker-block {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .qui-marker-current {
-        height: 4em;
-        width: 4em;
-        animation: qui-marker-current 1s ease infinite;
-    }
-
-    .qui-marker-incomplete {
-        height: 4em;
-        width: 4em;
-    }
-
-    .qui-marker-inset {
-        position: absolute;
-        width: 5em;
-        height: auto;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50px, -15px);
-        z-index: 9999;
-        text-align: center;
-        font-size: 1.25em;
-        font-weight: bolder;
-    }
-}
-@keyframes qui-marker-current {
-    0% {
-      transform: scale(1, 1);
-    }
-    50% {
-      transform: scale(1.1, 1.1);
-    }
-    100% {
-      transform: scale(1, 1);
-    }
+  .qui-marker-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
+  .markertext {
+    position: absolute;
+    width: 5em;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50px, -15px);
+    z-index: 9999;
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bolder;
+  }
+
+  .markerstyle {
+    position: absolute;
+    width: 10em;
+    height: 10em;
+    top: 10em;
+    left: 10em;
+    transform: translate(-24px, -64px);
+    z-index: 999;
+    opacity: 1;
+    background-color: red;
+  }
+}

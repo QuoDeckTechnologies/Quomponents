@@ -8,21 +8,23 @@ import {
 import "../../common/stylesheets/common.css";
 import "./Marker.scss";
 import "../../common/stylesheets/overrule.scss";
-import Active from "../../assets/active.png"
-import Inactive from "../../assets/inactive.png"
+import { WrapperList } from "../../common/schema/WrapperSchema.react";
 
 Marker.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     content: PropTypes.shape({
-        inset: PropTypes.number,
+        wrapper: PropTypes.string,
+        inset: PropTypes.number
     }),
+
     /**
     Use to set the state of MobileToolbar 
     */
     status: PropTypes.oneOf([
         "current",
+        "complete",
         "incomplete",
     ]),
     //=======================================
@@ -86,6 +88,7 @@ Marker.defaultProps = {
     //=======================================
     content: {},
     status: "current",
+
     //=======================================
     // Quommon props
     //=======================================
@@ -109,19 +112,55 @@ export default function Marker(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
     //-------------------------------------------------------------------
-    let { content } = props;
+    let { content, status } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "marker");
     //-------------------------------------------------------------------
     // 3. Use to set Color in Marker Component
-    //-------------------------------------------------------------------
-    let activeColor = {
-        color: props.withColor?.activeTextColor,
-    };
-    let deactivatedColor = {
-        color: props.withColor?.textColor,
+    //------------------------------------------------------------------className="markerstyle"= {
+
+    let markerBlock = (
+        <div className="absolutediv">
+            <img
+                src={
+                    WrapperList[content?.wrapper]?.customMarker
+                        ? "assets/images/courses/" +
+                        content?.wrapper +
+                        "/markers/" +
+                        status +
+                        ".png"
+                        : "assets/images/configurable/wrapperIcons/" +
+                        status +
+                        ".png"
+                }
+            />
+            {WrapperList[content?.wrapper]?.sequenceInset && (
+                <div className="markertext">{content?.inset}</div>
+            )}
+        </div>
+    );
+
+
+    let marker = (status) => {
+        if (status === "current") {
+            return (
+                <div className="markerstyle">
+                    <div
+                    // animation={{ scale: 1.1 }}
+                    // duration={500}
+                    // loop={true}
+                    // runOnMount
+                    >
+                        {markerBlock}
+                    </div>
+                </div>
+            )
+        }
+        else (
+            <div className="markerstyle">{markerBlock}</div>
+        );
     };
     //-------------------------------------------------------------------
     // 4. Get animation of the component
@@ -133,16 +172,9 @@ export default function Marker(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`${quommonClasses.childClasses}`} style={props.status === "current" ? activeColor : deactivatedColor}
-                onClick={props.onClick}>
-                {props.status === "current" ? <img src={Active} alt="Logo" className="qui-marker-current" />
-                    : <img src={Inactive} alt="Logo" className="qui-marker-incomplete" />
-                }
-                <div className="qui-marker-inset">
-                    {content?.inset}
-                </div>
+            <div>
+                {marker}
             </div>
         </motion.div>
     );
-}
-
+    };

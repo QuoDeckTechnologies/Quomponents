@@ -6,11 +6,12 @@ export default {
     component: Marker,
     argTypes: {
         content: {
+            wrapper: "",
             inset: 0,
         },
         status: {
             control: "select",
-            options: ["current", "incomplete"],
+            options: ["current", "complete", "incomplete"],
             table: {
                 category: "as-Flags",
             },
@@ -92,6 +93,7 @@ const Template = (args) => <Marker {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: {
+        wrapper: "carnival",
         inset: 1
     },
     status: "current",
