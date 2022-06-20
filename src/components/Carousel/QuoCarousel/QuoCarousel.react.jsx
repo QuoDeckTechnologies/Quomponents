@@ -11,47 +11,31 @@ import {
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./MobileCarousel.scss";
-import "../../../common/stylesheets/overrule.scss";
-import HCard from "../../HCard/HCard.react";
+import "./QuoCarousel.scss";
+import "../../../common/stylesheets/overrule.scss"
 
-MobileCarousel.propTypes = {
+QuoCarousel.propTypes = {
     //======================================
     //component specific props
     //======================================
     /**
-    MobileCarousel data should be passed in content field and it is required field
+    QuoCarousel data should be passed in content field and it is required field
     */
-    content: PropTypes.arrayOf(PropTypes.shape({
-        image: PropTypes.object,
-        name: PropTypes.string,
-        description: PropTypes.string,
-        buttonText: PropTypes.string,
-    })).isRequired,
+    content: PropTypes.array,
+    arrows: PropTypes.bool,
+    autoPlay: PropTypes.bool,
+    dots: PropTypes.bool,
+    infinite: PropTypes.bool,
+    slidesToShow: PropTypes.number,
+    initialSlide: PropTypes.number,
+    asNavFor: PropTypes.string,
     /**
-    MobileCarousel data should be passed imageLibrary
+    QuoCarousel data should be passed imageLibrary
     */
     imageLibrary: PropTypes.array,
     //=======================================
     // Quommon props
     //=======================================
-    /**
-    Use to define the entry animation of the component
-    */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-            ""
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
-    }),
     /**
     Use to override component colors and behavior
     */
@@ -88,7 +72,7 @@ MobileCarousel.propTypes = {
     */
     onClick: PropTypes.func.isRequired,
 };
-MobileCarousel.defaultProps = {
+QuoCarousel.defaultProps = {
     //======================================
     // Component Specific props
     //=======================================
@@ -100,7 +84,6 @@ MobileCarousel.defaultProps = {
     asEmphasis: "contained",
     withColor: null,
     isCircular: false,
-    withAnimation: null,
     isHidden: false,
     isDisabled: false,
 };
@@ -109,28 +92,27 @@ MobileCarousel.defaultProps = {
 - The design system used for this component is Slick-slider ("react-slick")
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
-- Or add custom css in overrule.scss to override the component css
-- Set true or false to the selected prop for select/deselect the slide .
+- Or add custom css in overrule.scss to override the component css.
 
 **/
-export default function MobileCarousel(props) {
+export default function QuoCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
-    let quommonClasses = getQuommons(props, "mobile-carousel");
+    let quommonClasses = getQuommons(props, "quo-carousel");
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     var settings = {
-        dots: false,
+        dots: props.dots,
         speed: 500,
-        initialSlide: 1,
+        initialSlide: props.initialSlide,
         slidesToScroll: 1,
-        slidesToShow: 1,
+        slidesToShow: props.slidesToShow,
         centerMode: true,
         arrows: false,
-        infinite: true,
-        autoplay: false,
+        infinite: props.infinite,
+        autoplay: props.autoPlay,
         autplaySpeed: 1000,
         pauseOnHover: false,
         centerPadding: "10",
@@ -141,20 +123,30 @@ export default function MobileCarousel(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui qui-mobile-carousel-container ${quommonClasses.parentClasses}`}
+            className={`qui qui-quo-carousel-container ${quommonClasses.parentClasses}`}
         >
             <Slider ref={sliderRef} {...settings}>
-                {_.map(content, (slide, index) => {
+                {_.map(content, (component, index) => {
                     return (
-                        <div className="qui-mobile-slide-container "
+                        <div className="qui-quo-carousel-slide-container "
                             key={"slider-" + index + Math.random()}>
-                            <div className={`qui-mobile-slide `}>
-                                <HCard  {...props} content={slide} onClick={props.onClick} buttonText={content?.buttonText} checked={true} />
+                            <div className={`qui-quo-carousel-slide `}>
+                                {component}
                             </div>
                         </div>
                     );
                 })}
             </Slider>
+            {props.arrows ? <div className="qui-carousel-slick-arrows">
+                <div className="qui-carousel-slick-prev"
+                    onClick={() => sliderRef.current?.slickPrev()}>
+                    <i className="fas fa-arrow-alt-circle-left"></i>
+                </div>
+                <div className="qui-carousel-slick-next"
+                    onClick={() => sliderRef.current?.slickNext()}>
+                    <i className="fas fa-arrow-alt-circle-right"></i>
+                </div>
+            </div> : " "}
         </motion.div>
     );
 }

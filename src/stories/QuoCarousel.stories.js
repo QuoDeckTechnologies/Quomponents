@@ -1,17 +1,27 @@
 import React from "react";
-import MobileCarousel from "../components/Carousel/MobileCarousel/MobileCarousel.react";
+import QuoCarousel from "../components/Carousel/QuoCarousel/QuoCarousel.react";
+import HCard from "../components/HCard/HCard.react"
+import VCardWithButton from "../components/VCardWithButton/VCardWithButton.react"
+
 const dictionary = JSON.stringify({
     hi: {
-        mobileCarousel: {
+        quoCarousel: {
             buttonText: "देखें",
         },
     },
 });
 export default {
-    title: "Design System/Carousel/MobileCarousel",
-    component: MobileCarousel,
+    title: "Design System/Carousel/QuoCarousel",
+    component: QuoCarousel,
     argTypes: {
         content: [{}],
+        arrows: false,
+        dots: false,
+        autoPlay: false,
+        infinite: true,
+        slidesToShow: 1,
+        initialSlide: 1,
+        asNavFor: "",
     },
     asEmphasis: {
         control: "select",
@@ -90,7 +100,7 @@ export default {
         },
     },
     parameters: {
-        componentSubheader: "Displays a mobile carousel with HCards.",
+        componentSubheader: "Displays a carousel with content.",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -102,10 +112,10 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <MobileCarousel {...args} />;
+const Template = (args) => <QuoCarousel {...args} />
 export const Default = Template.bind({});
 Default.args = {
-    content: [{
+    content: [<HCard onClick={() => { }} content={{
         image: {
             id: "image-1",
             extention: "",
@@ -113,38 +123,48 @@ Default.args = {
         name: "Sales Readiness",
         description: "Understand how to prepare yourself for that sale",
         buttonText: "Check",
-    },
-    {
+    }}
+        imageLibrary={[
+            {
+                id: "image-1",
+                image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            }]} />,
+    <HCard onClick={() => { }} content={{
         image: {
-            id: "image-2",
-            extention: "",
-        },
-        name: "Pipeline Tracking",
-        description: "Some important tips to optimize and power up your pipeline",
-        buttonText: "Check",
-    },
-    {
-        image: {
-            id: "image-3",
-            extention: "",
-        },
-        name: "GhostBuster",
-        description: "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-        buttonText: "Check",
-    }],
-    imageLibrary: [
-        {
             id: "image-1",
-            image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-        }, {
-            id: "image-2",
-            image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-
-        }, {
-            id: "image-3",
-            image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            extention: "",
         },
-    ],
+        name: "Sales Readiness",
+        description: "Understand how to prepare yourself for that sale",
+        buttonText: "Check",
+    }}
+        imageLibrary={[
+            {
+                id: "image-1",
+                image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            }]} />,
+    <HCard onClick={() => { }} content={{
+        image: {
+            id: "image-1",
+            extention: "",
+        },
+        name: "Sales Readiness",
+        description: "Understand how to prepare yourself for that sale",
+        buttonText: "Check",
+    }}
+        imageLibrary={[
+            {
+                id: "image-1",
+                image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            }]}
+    />],
+    arrows: false,
+    autoPlay: false,
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    initialSlide: 1,
+    asNavFor: "",
     asEmphasis: "contained",
     isCircular: false,
     withColor: {
@@ -157,7 +177,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "mobileCarousel",
+        tgt: "quoCarousel",
         dictionary: dictionary,
     },
     withAnimation: {
@@ -171,16 +191,17 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<MobileCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<QuoCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
+
 // -------------------------------------------------------------
-// TranslatedMobileCarousel
+// VCard
 // -------------------------------------------------------------
-export const TranslatedMobileCarousel = Template.bind({});
-TranslatedMobileCarousel.args = {
-    content: [{
+export const VCard = Template.bind({});
+VCard.args = {
+    content: [<VCardWithButton onClick={() => { }} content={{
         image: {
             id: "image-1",
             extention: "",
@@ -188,38 +209,79 @@ TranslatedMobileCarousel.args = {
         name: "Sales Readiness",
         description: "Understand how to prepare yourself for that sale",
         buttonText: "Check",
-    },
-    {
+    }}
+        imageLibrary={[
+            {
+                id: "image-1",
+                image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            }]} />,
+    <VCardWithButton onClick={() => { }} content={{
         image: {
-            id: "image-2",
-            extention: "",
-        },
-        name: "Pipeline Tracking",
-        description: "Some important tips to optimize and power up your pipeline",
-        buttonText: "Check",
-    },
-    {
-        image: {
-            id: "image-3",
-            extention: "",
-        },
-        name: "GhostBuster",
-        description: "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-        buttonText: "Check",
-    }],
-    imageLibrary: [
-        {
             id: "image-1",
-            image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-        }, {
-            id: "image-2",
-            image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-
-        }, {
-            id: "image-3",
-            image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            extention: "",
         },
-    ],
+        name: "Sales Readiness",
+        description: "Understand how to prepare yourself for that sale",
+        buttonText: "Check",
+    }}
+        imageLibrary={[
+            {
+                id: "image-1",
+                image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            }]} />,
+    <VCardWithButton onClick={() => { }} content={{
+        image: {
+            id: "image-1",
+            extention: "",
+        },
+        name: "Sales Readiness",
+        description: "Understand how to prepare yourself for that sale",
+        buttonText: "Check",
+    }}
+        imageLibrary={[
+            {
+                id: "image-1",
+                image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            }]}
+    />,
+    <VCardWithButton onClick={() => { }} content={{
+        image: {
+            id: "image-1",
+            extention: "",
+        },
+        name: "Sales Readiness",
+        description: "Understand how to prepare yourself for that sale",
+        buttonText: "Check",
+    }}
+        imageLibrary={[
+            {
+                id: "image-1",
+                image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            }]}
+    />,
+    <VCardWithButton onClick={() => { }} content={{
+        image: {
+            id: "image-1",
+            extention: "",
+        },
+        name: "Sales Readiness",
+        description: "Understand how to prepare yourself for that sale",
+        buttonText: "Check",
+    }}
+        imageLibrary={[
+            {
+                id: "image-1",
+                image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            }]}
+    />,],
+    arrows: true,
+    autoPlay: false,
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    initialSlide: 1,
+    asNavFor: "",
+    asEmphasis: "contained",
     isCircular: false,
     withColor: {
         backgroundColor: "",
@@ -230,8 +292,8 @@ TranslatedMobileCarousel.args = {
         buttonTextColor: "",
     },
     withTranslation: {
-        lang: "hi",
-        tgt: "mobileCarousel",
+        lang: "en",
+        tgt: "quoCarousel",
         dictionary: dictionary,
     },
     withAnimation: {
@@ -242,10 +304,10 @@ TranslatedMobileCarousel.args = {
     isDisabled: false,
     isHidden: false,
 };
-TranslatedMobileCarousel.parameters = {
+VCard.parameters = {
     docs: {
         source: {
-            code: `<MobileCarousel {...${JSON.stringify(TranslatedMobileCarousel.args, null, 2)}}/>`,
+            code: `<QuoCarousel {...${JSON.stringify(VCard.args, null, 2)}}/>`,
         },
     },
 };

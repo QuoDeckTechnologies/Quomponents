@@ -6,15 +6,15 @@ import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import MobileCarousel from '../Carousel/MobileCarousel/MobileCarousel.react'
+import QuoCarousel from '../Carousel/QuoCarousel/QuoCarousel.react'
 const dictionary = JSON.stringify({
     hi: {
-        mobileCarousel: {
+        quoCarousel: {
             buttonText: "देखें",
         },
     },
 });
-describe('MobileCarousel', () => {
+describe('QuoCarousel', () => {
     let component, content;
     content = [{
         image: {
@@ -28,7 +28,7 @@ describe('MobileCarousel', () => {
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
-            <MobileCarousel
+            <QuoCarousel
                 content={content}
                 imageLibrary={[{
                     id: "image",
@@ -151,10 +151,20 @@ describe('MobileCarousel', () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "mobileCarousel",
+                tgt: "quoCarousel",
                 dictionary: dictionary,
             },
         });
         expect(component.exists()).toBe(true);
+    });
+
+    it('should render and handle click event slickPrev on previous arrows', () => {
+        const wrapper = shallow(<QuoCarousel onClick={() => { }} arrows={true}
+        />);
+        wrapper.find(".qui-carousel-slick-prev").simulate('click');
+    });
+    it('should render and handle click event slickNext', () => {
+        const wrapper = shallow(<QuoCarousel onClick={() => { }} arrows={true} />);
+        wrapper.find(".qui-carousel-slick-next").simulate('click');
     });
 });
