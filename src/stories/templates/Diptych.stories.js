@@ -7,7 +7,11 @@ export default {
     argTypes: {
         data: {},
         slideId: 0,
-        asVariant: {
+        layout: {
+            control: "select",
+            options: ["side by side split", "side by side full"],
+
+        }, asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
             table: {
@@ -96,6 +100,7 @@ Default.args = {
             },
         ],
     },
+    layout: "side by side split",
     imageLibrary: [{
         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
         id: "background-image",
@@ -242,6 +247,7 @@ DiptychWithPresenter.args = {
             id: "presenter-image"
         },
     },
+    layout: "side by side split",
     imageLibrary: [{
         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
         id: "background-image",
