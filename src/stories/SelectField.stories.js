@@ -3,13 +3,13 @@ import SelectField from "../components/SelectField/SelectField.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        SelectField: {
+        selectField: {
             label: "पाठ्यक्रम श्रेणी",
             placeHolder: "चुनें..."
         }
     },
     en: {
-        SelectField: {
+        selectField: {
             label: "Course Category",
             placeHolder: "",
         }
@@ -119,7 +119,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "SelectField",
+        tgt: "selectField",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -194,7 +194,7 @@ TranslatedSelectField.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "SelectField",
+        tgt: "selectField",
         dictionary: dictionary,
     },
 };

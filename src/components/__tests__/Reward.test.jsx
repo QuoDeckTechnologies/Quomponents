@@ -14,12 +14,12 @@ describe("Reward", () => {
     let component;
     const dictionary = JSON.stringify({
         hi: {
-            Reward: {
+            reward: {
                 label: "जीतने के लिए पूर्ण करें",
             }
         },
         en: {
-            Reward: {
+            reward: {
                 label: "Complete to win",
             }
         }
@@ -74,7 +74,7 @@ describe("Reward", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "Reward",
+                tgt: "reward",
                 dictionary: dictionary,
             },
         });

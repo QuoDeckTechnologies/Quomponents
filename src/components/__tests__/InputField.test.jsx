@@ -19,13 +19,13 @@ describe("InputField", () => {
     let onClick = jest.fn();
     const dictionary = JSON.stringify({
         hi: {
-            InputField: {
+            inputField: {
                 label: "इनपुट नाम",
                 placeholder: "विकल्प",
             }
         },
         en: {
-            InputField: {
+            inputField: {
                 label: "Input Name",
                 placeholder: "Options",
             }
@@ -153,7 +153,7 @@ describe("InputField", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "InputField",
+                tgt: "inputField",
                 dictionary: dictionary,
             },
         });

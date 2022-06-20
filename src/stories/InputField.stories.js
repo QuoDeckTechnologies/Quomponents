@@ -3,13 +3,13 @@ import InputField from "../components/InputField/InputField.react";
 
 const dictionary = JSON.stringify({
   hi: {
-    InputField: {
+    inputField: {
       label: "इनपुट नाम",
       placeholder: "विकल्प",
     }
   },
   en: {
-    InputField: {
+    inputField: {
       label: "Input Name",
       placeholder: "Options",
     }
@@ -139,7 +139,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "InputField",
+    tgt: "inputField",
     dictionary: dictionary,
   },
   isHidden: false,
@@ -237,7 +237,7 @@ TranslatedInputField.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "InputField",
+    tgt: "inputField",
     dictionary: dictionary,
   },
 };
@@ -265,7 +265,7 @@ TranslatedCharLimited.args = {
   asEmphasis: "charLimited",
   withTranslation: {
     lang: "hi",
-    tgt: "InputField",
+    tgt: "inputField",
     dictionary: dictionary,
   },
 };
@@ -298,7 +298,7 @@ TranslatedListInput.args = {
   asEmphasis: "listInput",
   withTranslation: {
     lang: "hi",
-    tgt: "InputField",
+    tgt: "inputField",
     dictionary: dictionary,
   },
 };

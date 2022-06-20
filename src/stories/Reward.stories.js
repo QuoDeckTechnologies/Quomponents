@@ -4,12 +4,12 @@ import rewardImage from "../assets/coin.png";
 
 const dictionary = JSON.stringify({
     hi: {
-        Reward: {
+        reward: {
             label: "जीतने के लिए पूर्ण करें",
         }
     },
     en: {
-        Reward: {
+        reward: {
             label: "Complete to win",
         }
     }
@@ -131,7 +131,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "Reward",
+        tgt: "reward",
         dictionary: dictionary,
     },
     isHidden: false,
@@ -230,7 +230,7 @@ TranslatedReward.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "Reward",
+        tgt: "reward",
         dictionary: dictionary,
     },
 };

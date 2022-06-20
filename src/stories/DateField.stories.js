@@ -3,12 +3,12 @@ import DateField from "../components/DateField/DateField.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        DateField: {
+        dateField: {
             label: "आरंभ करने की तिथि",
         }
     },
     en: {
-        DateField: {
+        dateField: {
             label: "Start Date",
         }
     }
@@ -109,7 +109,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "DateField",
+        tgt: "dateField",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -184,7 +184,7 @@ TranslatedDateField.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "DateField",
+        tgt: "dateField",
         dictionary: dictionary,
     },
 };

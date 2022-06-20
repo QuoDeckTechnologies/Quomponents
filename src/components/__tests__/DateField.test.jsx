@@ -17,12 +17,12 @@ describe("DateField", () => {
     let preventDefault = jest.fn();
     const dictionary = JSON.stringify({
         hi: {
-            DateField: {
+            dateField: {
                 label: "आरंभ करने की तिथि",
             }
         },
         en: {
-            DateField: {
+            dateField: {
                 label: "Start Date",
             }
         }
@@ -113,7 +113,7 @@ describe("DateField", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "DateField",
+                tgt: "dateField",
                 dictionary: dictionary,
             },
         });

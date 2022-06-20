@@ -17,13 +17,13 @@ describe("SelectField", () => {
     let onClick = jest.fn();
     const dictionary = JSON.stringify({
         hi: {
-            SelectField: {
+            selectField: {
                 label: "पाठ्यक्रम श्रेणी",
                 placeHolder: "चुनें..."
             }
         },
         en: {
-            SelectField: {
+            selectField: {
                 label: "Course Category",
                 placeHolder: "",
             }
@@ -98,7 +98,7 @@ describe("SelectField", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "SelectField",
+                tgt: "selectField",
                 dictionary: dictionary,
             },
         });
