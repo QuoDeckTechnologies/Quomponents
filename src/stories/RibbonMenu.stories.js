@@ -3,7 +3,7 @@ import RibbonMenu from "../components/RibbonMenu/RibbonMenu.react";
 
 const dictionary = JSON.stringify({
     en: {
-        RibbonMenu: {
+        ribbonMenu: {
             questionBank: 'Question Bank',
             upload: "Upload",
             copySlidesToScript: "Copy Slides to Script",
@@ -39,7 +39,7 @@ const dictionary = JSON.stringify({
         }
     },
     hi: {
-        RibbonMenu: {
+        ribbonMenu: {
             questionBank: 'प्रश्न बैंक',
             voiceover: "पार्श्व स्वर",
             upload: "अपलोड",
@@ -164,7 +164,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "RibbonMenu",
+        tgt: "ribbonMenu",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -186,7 +186,7 @@ TranslatedRibbonMenu.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "RibbonMenu",
+        tgt: "ribbonMenu",
         dictionary: dictionary
     },
 };

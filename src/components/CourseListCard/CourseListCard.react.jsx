@@ -139,55 +139,55 @@ export default function CourseListCard(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      {content && (
+      <div
+        className="qui-course-list-card-container"
+        style={{
+          backgroundColor: withColor?.backgroundColor,
+        }}
+        onClick={() => onClick(content)}
+      >
         <div
-          className="qui-course-list-card-container"
+          className="qui-course-list-card-image-container"
           style={{
-            backgroundColor: withColor?.backgroundColor,
+            ...background,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
           }}
-          onClick={() => onClick(content)}
         >
-          <div
-            className="qui-course-list-card-image-container"
-            style={{
-              ...background,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
-          >
-            {content?.checked && (
-              <div
-                className="qui-course-list-card-checkbox-container"
-                style={{ backgroundColor: withColor?.accentBackgroundColor }}
-              >
-                <i
-                  className="fas fa-check-square"
-                  style={{ color: withColor?.accentColor }}
-                ></i>
-              </div>
-            )}
-          </div>
-          <div className="qui-course-list-card-text-container">
-            <div className="qui-course-list-card-text">
-              <h4
-                className="qui-course-list-card-name"
-                style={{
-                  color: withColor?.textColor,
-                }}
-              >
-                {content?.name}
-              </h4>
-              <p
-                className="qui-course-list-card-description"
-                style={{
-                  color: withColor?.textColor,
-                }}
-              >
-                {content?.description}
-              </p>
+          {content?.checked && (
+            <div
+              className="qui-course-list-card-checkbox-container"
+              style={{ backgroundColor: withColor?.accentBackgroundColor }}
+            >
+              <i
+                className="fas fa-check-square"
+                style={{ color: withColor?.accentColor }}
+              ></i>
             </div>
-            {content?.viewedPercentage && (
+          )}
+        </div>
+        <div className="qui-course-list-card-text-container">
+          <div className="qui-course-list-card-text">
+            <h4
+              className="qui-course-list-card-name"
+              style={{
+                color: withColor?.textColor,
+              }}
+            >
+              {content?.name}
+            </h4>
+            <p
+              className="qui-course-list-card-description"
+              style={{
+                color: withColor?.textColor,
+              }}
+            >
+              {content?.description}
+            </p>
+          </div>
+          {content?.viewedPercentage !== undefined &&
+            content?.viewedPercentage !== '' && (
               <div className="qui-course-list-card-chart-container">
                 <div className="qui-course-list-card-doughnut-chart">
                   <CircularProgressbar
@@ -202,9 +202,8 @@ export default function CourseListCard(props) {
                 <h2 className="qui-course-list-card-percentage-completion">{`${content.viewedPercentage}%`}</h2>
               </div>
             )}
-          </div>
         </div>
-      )}
+      </div>
     </motion.div>
   );
 }

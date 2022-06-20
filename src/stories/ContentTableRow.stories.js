@@ -184,6 +184,9 @@ TranslatedContentTableRow.args = {
 };
 TranslatedContentTableRow.parameters = {
   docs: {
+    description: {
+      story: "Use to change the language that the text appears in.",
+    },
     source: {
       code: `<ContentTableRow {...${JSON.stringify(
         TranslatedContentTableRow.args,

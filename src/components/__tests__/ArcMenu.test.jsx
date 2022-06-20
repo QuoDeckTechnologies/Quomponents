@@ -15,7 +15,7 @@ describe("ArcMenu", () => {
 
   const dictionary = JSON.stringify({
     hi: {
-      arcmenu: {
+      arcMenu: {
         menuContent: [
           {
             header: "सीखें",
@@ -113,7 +113,7 @@ describe("ArcMenu", () => {
       menuType: "menu",
       withTranslation: {
         lang: "hi",
-        tgt: "arcmenu",
+        tgt: "arcMenu",
         dictionary: dictionary,
       },
     });

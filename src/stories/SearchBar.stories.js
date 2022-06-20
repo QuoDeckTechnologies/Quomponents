@@ -3,7 +3,7 @@ import SearchBar from "../components/SearchBar/SearchBar.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        SearchBar: {
+        searchBar: {
             placeHolder: "खोजें...",
         }
     },
@@ -126,7 +126,7 @@ Default.args = {
     isHidden: false,
     withTranslation: {
         lang: "",
-        tgt: "SearchBar",
+        tgt: "searchBar",
         dictionary: dictionary,
     },
 };
@@ -180,7 +180,7 @@ TranslatedSearchBar.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "SearchBar",
+        tgt: "searchBar",
         dictionary: dictionary,
     },
 };

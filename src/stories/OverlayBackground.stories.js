@@ -3,14 +3,14 @@ import OverlayBackground from "../components/RibbonMenu/designMenu/sections/Over
 
 const dictionary = JSON.stringify({
 	en: {
-		OverlayBackground: {
+		overlayBackground: {
 			overlayBackground: "Overlay Background",
 			setBackground: "Set",
 			removeBackground: "Remove"
 		}
 	},
 	hi: {
-		OverlayBackground: {
+		overlayBackground: {
 			overlayBackground: "उपरिशायी पृष्ठभूमि",
 			setBackground: "सेट",
 			removeBackground: "निकाले"
@@ -92,7 +92,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "OverlayBackground",
+		tgt: "overlayBackground",
 		dictionary: dictionary,
 	},
 	isDisabled: false,
@@ -114,7 +114,7 @@ TranslatedOverlayBackground.args = {
 	...Default.args,
 	withTranslation: {
 		lang: "hi",
-		tgt: "OverlayBackground",
+		tgt: "overlayBackground",
 		dictionary: dictionary
 	},
 };

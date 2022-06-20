@@ -16,7 +16,7 @@ describe("ImageWithCaption", () => {
 
     const dictionary = JSON.stringify({
         hi: {
-          imagewithcaption: { button: "जारी रखें" },
+          imageWithCaption: { button: "जारी रखें" },
         },
     });
     
@@ -118,7 +118,7 @@ describe("ImageWithCaption", () => {
         component.setProps({
           withTranslation: {
             lang: "hi",
-            tgt: "imagewithcaption",
+            tgt: "imageWithCaption",
             dictionary: dictionary,
           },
         });

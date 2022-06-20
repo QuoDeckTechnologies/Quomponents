@@ -3,7 +3,7 @@ import SaveSection from "../components/RibbonMenu/htmlMenu/sections/SaveSection.
 
 const dictionary = JSON.stringify({
 	en: {
-		SaveSection: {
+		saveSection: {
 			upload: "Upload",
 			download: "Download",
 			save: "Save",
@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
 		}
 	},
 	hi: {
-		SaveSection: {
+		saveSection: {
 			upload: "अपलोड",
 			download: "डाउनलोड",
 			save: "सहेजें",
@@ -90,7 +90,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "SaveSection",
+		tgt: "saveSection",
 		dictionary: dictionary
 	},
 	isDisabled: false,
@@ -112,7 +112,7 @@ TranslatedSaveSection.args = {
 	...Default.args,
 	withTranslation: {
 		lang: "hi",
-		tgt: "SaveSection",
+		tgt: "saveSection",
 		dictionary: dictionary
 	},
 };

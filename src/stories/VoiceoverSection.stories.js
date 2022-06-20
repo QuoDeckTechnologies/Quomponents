@@ -3,7 +3,7 @@ import VoiceoverSection from "../components/RibbonMenu/toolsMenu/sections/Voiceo
 
 const dictionary = JSON.stringify({
 	en: {
-		VoiceoverSection: {
+		voiceoverSection: {
 			voiceover: "Voiceover",
 			upload: "Upload",
 			copySlidesToScript: "Copy Slides to Script",
@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
 		}
 	},
 	hi: {
-		VoiceoverSection: {
+		voiceoverSection: {
 			voiceover: "पार्श्व स्वर",
 			upload: "अपलोड",
 			copySlidesToScript: "स्लाइड को स्क्रिप्ट में कॉपी करें",
@@ -90,7 +90,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "VoiceoverSection",
+		tgt: "voiceoverSection",
 		dictionary: dictionary
 	},
 	isDisabled: false,
@@ -112,7 +112,7 @@ TranslatedVoiceoverSection.args = {
 	...Default.args,
 	withTranslation: {
 		lang: "hi",
-		tgt: "VoiceoverSection",
+		tgt: "voiceoverSection",
 		dictionary: dictionary
 	},
 };

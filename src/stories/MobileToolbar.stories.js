@@ -2,7 +2,7 @@ import React from "react";
 import MobileToolbar from "../components/MobileToolbar/MobileToolbar.react";
 const dictionary = JSON.stringify({
     hi: {
-        mobiletoolbar: {
+        mobileToolbar: {
             title: "संपादन मोड",
             content: [
                 { label: "पाठ्यक्रम" },
@@ -171,7 +171,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "mobiletoolbar",
+        tgt: "mobileToolbar",
         dictionary: dictionary,
     },
     isCircular: false,
@@ -283,7 +283,7 @@ TranslatedMobileToolbar.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "mobiletoolbar",
+        tgt: "mobileToolbar",
         dictionary: dictionary,
     },
 };

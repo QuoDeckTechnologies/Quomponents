@@ -3,7 +3,7 @@ import RibbonDesignMenu from "../components/RibbonMenu/designMenu/RibbonDesignMe
 
 const dictionary = JSON.stringify({
     en: {
-        RibbonDesignMenu: {
+        ribbonDesignMenu: {
             overlayBackground: "Overlay Background",
             slideBackground: "Slide Background",
             setBackground: "Set",
@@ -16,7 +16,7 @@ const dictionary = JSON.stringify({
         }
     },
     hi: {
-        RibbonDesignMenu: {
+        ribbonDesignMenu: {
             overlayBackground: "उपरिशायी पृष्ठभूमि",
             slideBackground: "स्लाइड पृष्ठभूमि",
             setBackground: "सेट",
@@ -104,7 +104,7 @@ Default.args = {
     asFloated: "left",
     withTranslation: {
         lang: "en",
-        tgt: "RibbonDesignMenu",
+        tgt: "ribbonDesignMenu",
         dictionary: dictionary
     },
     isDisabled: false,
@@ -126,7 +126,7 @@ TranslatedRibbonDesignMenu.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "RibbonDesignMenu",
+        tgt: "ribbonDesignMenu",
         dictionary: dictionary
     },
 };

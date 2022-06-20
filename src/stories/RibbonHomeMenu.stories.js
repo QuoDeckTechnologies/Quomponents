@@ -3,7 +3,7 @@ import RibbonHomeMenu from "../components/RibbonMenu/homeMenu//RibbonHomeMenu.re
 
 const dictionary = JSON.stringify({
 	en: {
-		RibbonHomeMenu: {
+		ribbonHomeMenu: {
 			slide: "Slide",
 			newSlide: "New Slide",
 			duplicateSlide: "Duplicate Slide",
@@ -24,7 +24,7 @@ const dictionary = JSON.stringify({
 		}
 	},
 	hi: {
-		RibbonHomeMenu: {
+		ribbonHomeMenu: {
 			slide: "स्लाइड",
 			newSlide: "नई स्लाइड",
 			duplicateSlide: "स्लाइड प्रतिलिपि करे",
@@ -128,7 +128,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "RibbonHomeMenu",
+		tgt: "ribbonHomeMenu",
 		dictionary: dictionary,
 	},
 	isDisabled: false,
@@ -150,7 +150,7 @@ TranslatedRibbonHomeMenu.args = {
 	...Default.args,
 	withTranslation: {
 		lang: "hi",
-		tgt: "RibbonHomeMenu",
+		tgt: "ribbonHomeMenu",
 		dictionary: dictionary
 	},
 };

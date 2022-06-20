@@ -3,12 +3,12 @@ import SaveExitSection from "../components/RibbonMenu/htmlMenu/sections/SaveExit
 
 const dictionary = JSON.stringify({
 	en: {
-		SaveExitSection: {
+		saveExitSection: {
 			saveExit: "Save & Exit"
 		}
 	},
 	hi: {
-		SaveExitSection: {
+		saveExitSection: {
 			saveExit: "सेहेजे & बाहर निकले"
 		}
 	}
@@ -85,7 +85,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "SaveExitSection",
+		tgt: "saveExitSection",
 		dictionary: dictionary
 	},
 	isDisabled: false,
@@ -107,7 +107,7 @@ TranslatedSaveExitSection.args = {
 	...Default.args,
 	withTranslation: {
 		lang: "hi",
-		tgt: "SaveExitSection",
+		tgt: "saveExitSection",
 		dictionary: dictionary
 	},
 };

@@ -15,7 +15,7 @@ describe("ExternalLink", () => {
     let component;
     const dictionary = JSON.stringify({
         hi: {
-          externallink: { button: "जाएँ" },
+          externalLink: { button: "जाएँ" },
         },
     });
 
@@ -118,7 +118,7 @@ describe("ExternalLink", () => {
         component.setProps({
           withTranslation: {
             lang: "hi",
-            tgt: "externallink",
+        tgt: "externalLink",
             dictionary: dictionary,
           },
         });

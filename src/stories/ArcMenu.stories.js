@@ -11,7 +11,7 @@ import Nugget_Feedback from "../assets/nuggets/nugget_feedback.png";
 
 const dictionary = JSON.stringify({
   hi: {
-    arcmenu: {
+    arcMenu: {
       menuContent: [
         {
           header: "सीखें",
@@ -142,7 +142,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "arcmenu",
+    tgt: "arcMenu",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -227,12 +227,15 @@ TranslatedMenuButton.args = {
   ...MenuButton.args,
   withTranslation: {
     lang: "hi",
-    tgt: "arcmenu",
+    tgt: "arcMenu",
     dictionary: dictionary,
   },
 };
 TranslatedMenuButton.parameters = {
   docs: {
+    description: {
+      story: "Use to change the language that the text appears in.",
+    },
     source: {
       code: `<ArcMenu {...${JSON.stringify(
         TranslatedMenuButton.args,

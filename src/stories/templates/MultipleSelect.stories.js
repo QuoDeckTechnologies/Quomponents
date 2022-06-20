@@ -178,7 +178,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "MultipleSelect",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     withAnimation: {
@@ -243,7 +243,7 @@ MultipleSelectWithSlideHeader.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "MultipleSelect",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     withAnimation: {
@@ -318,7 +318,7 @@ EmphasisMultipleSelect.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "MultipleSelect",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     withAnimation: {
@@ -391,7 +391,7 @@ ColoredMultipleSelect.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "MultipleSelect",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     withAnimation: {

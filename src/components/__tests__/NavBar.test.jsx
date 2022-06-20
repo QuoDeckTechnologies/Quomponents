@@ -18,7 +18,7 @@ describe("NavBar", () => {
     let component, ShortLogo;
     const dictionary = JSON.stringify({
         hi: {
-            navbar: {
+            navBar: {
                 title: "कमाये",
                 content: "कॅटलॉग",
             },
@@ -63,7 +63,7 @@ describe("NavBar", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "navbar",
+                tgt: "navBar",
                 dictionary: dictionary,
             },
         });

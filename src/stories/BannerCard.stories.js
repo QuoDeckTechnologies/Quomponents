@@ -3,7 +3,7 @@ import BannerCard from "../components/Carousel/BannerCard/BannerCard.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        bannercard: { header: "बातचीत कक्ष", content: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
+        bannerCard: { header: "बातचीत कक्ष", content: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
         ribbon: {
             new: "नया",
             restricted: "प्रतिबंधित",
@@ -136,7 +136,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "button",
+        tgt: "bannerCard",
         dictionary: dictionary,
     },
 
@@ -199,7 +199,7 @@ TranslatedCard.args = {
     },
     withTranslation: {
         lang: "hi",
-        tgt: "bannercard",
+        tgt: "bannerCard",
         dictionary: dictionary,
     },
 };

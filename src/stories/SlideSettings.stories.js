@@ -3,14 +3,14 @@ import SlideSettings from "../components/RibbonMenu/homeMenu/sections/SlideSetti
 
 const dictionary = JSON.stringify({
 	en: {
-		SlideSettings: {
+		slideSettings: {
 			settings: "Settings",
 			enableBackArrow: "Enable Back Arrow",
 			enableNextArrow: "Enable Next Arrow"
 		}
 	},
 	hi: {
-		SlideSettings: {
+		slideSettings: {
 			settings: 'समायोजन',
 			enableBackArrow: "वापस तीर सक्षम करें",
 			enableNextArrow: "अगला तीर सक्षम करें"
@@ -95,7 +95,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "SlideSettings",
+		tgt: "slideSettings",
 		dictionary: dictionary,
 	},
 	isDisabled: false,
