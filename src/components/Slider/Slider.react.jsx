@@ -1,11 +1,9 @@
 // Import npm packages
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
-// import  SliderPackage from "react-rangeslider";
 import SliderPackage from "@mui/material/Slider";
-import { styled } from "@mui/material/styles";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./Slider.scss";
@@ -22,16 +20,6 @@ Slider.propTypes = {
   //=======================================
   // Quommon props
   //=======================================
-  /**
-    Use to define standard component type
-    */
-  asVariant: PropTypes.oneOf(["primary", "secondary"]),
-  /**
-    Use to override component colors and behavior
-    */
-  withColor: PropTypes.shape({
-    backgroundColor: PropTypes.string,
-  }),
   /**
     Use to define the entry animation of the component
     */
@@ -71,8 +59,6 @@ Slider.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asVariant: "secondary",
-  withColor: null,
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
@@ -88,28 +74,13 @@ export default function Slider(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { initialValue, withColor, asVariant, onClick } = props;
+  const { initialValue, onClick } = props;
   //-------------------------------------------------------------------
-  // 2. Making a custom slider component from MUI slider
-  //-------------------------------------------------------------------
-  const CustomSlider = styled(SliderPackage)({
-    color: withColor?.backgroundColor,
-    height: "0.6em",
-    "& .MuiSlider-thumb": {
-      "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
-        boxShadow: "0 0 0 8px rgba(0, 0, 0, 0.08)",
-      },
-      "&:hover": {
-        boxShadow: "0 0 0 8px rgba(0, 0, 0, 0.16)",
-      },
-    },
-  });
-  //-------------------------------------------------------------------
-  // 3. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "slider");
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 3. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
 
@@ -122,13 +93,12 @@ export default function Slider(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div className={`qui-slider-container ${quommonClasses.childClasses}`}>
-        <CustomSlider
+        <SliderPackage
           min={0}
           max={100}
-          color={asVariant}
           defaultValue={initialValue}
-          onChange={(e, value) => {
-            onClick(value);
+          onChange={(e) => {
+            onClick(e.target.value);
           }}
         />
       </div>
