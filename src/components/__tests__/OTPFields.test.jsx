@@ -34,9 +34,20 @@ describe("OTPFields", () => {
         expect(component.exists()).toBe(true);
     });
 
+    // it("it should pass the value to the OtpField", () => {
+    //     let OtpField = component.find("OtpInput");
+    //     component.find('OtpInput').simulate('change')
+    //     expect(component.exists()).toBe(true);
+    // });
+
     it("it should pass the value to the OtpField", () => {
-        let OtpField = component.find("OtpInput");
-        component.find('OtpInput').simulate('change')
+        let OtpField = component.find("input");
+        component.find('input').simulate('change')
+        expect(component.exists()).toBe(true);
+    });
+
+    it("it should render correct props when focus on OTPField", () => {
+        component.find('input').simulate('focus').at(0)
         expect(component.exists()).toBe(true);
     });
 
@@ -63,7 +74,9 @@ describe("OTPFields", () => {
     it("should render correctly when passed withColor props", () => {
         let colors = {
             accentColor: "#065254",
-            backgroundColor: "#34e5eb"
+            backgroundColor: "#34e5eb",
+            focusAccentColor: "#ffff",
+            focusBackgroundColor: "#121212",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);

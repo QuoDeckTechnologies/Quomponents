@@ -3,20 +3,24 @@
 /* ================================================= */
 .qui .qui-otp-fields-container {
   width: auto;
-  .qui-otp-fields-otp-input-container-style {
-    display: flex;
-    justify-content: center;
-    gap: 0.4em;
-  }
   .qui-otp-fields-otp-input-style {
-    font-size: 1.2em;
+    width: 1.5em;
     height: 1em;
+    text-align: center;
+    font-size: 1.2em;
     font-weight: 100;
-    padding: 0.2em 0.3em 0.1em;
+    padding: 0.2em 0.2em 0.1em;
+    margin: 0 0.1em;
     background-color: #4545453b;
     border-color: #8c8c898c;
     border: none;
-    border-bottom: 0.2em solid #8c8c898c;
+    border-bottom: 0.2em solid;
     border-radius: 0.3em 0.3em 0em 0em;
+  }
+  .qui-otp-fields-otp-input-style:focus {
+    outline: none;
+    border-bottom: 0.2em solid;
+    // border-color: red;
+    // background-color: yellow;
   }
 }

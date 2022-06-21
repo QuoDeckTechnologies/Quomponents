@@ -18,7 +18,9 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     accentColor: "",
-                    backgroundColor: ""
+                    backgroundColor: "",
+                    focusAccentColor: "",
+                    focusBackgroundColor: ""
                 },
             },
         },
@@ -77,8 +79,10 @@ Default.args = {
     numFields: 5,
     asFloated: "inline",
     withColor: {
-        accentColor: "",
-        backgroundColor: "",
+        accentColor: "#8c8c898c",
+        backgroundColor: "#4545453b",
+        focusAccentColor: "",
+        focusBackgroundColor: "",
     },
     withAnimation: {
         animation: "zoom",
@@ -130,7 +134,9 @@ ColoredOTPFields.args = {
     ...Default.args,
     withColor: {
         accentColor: "#AAAAAA",
-        backgroundColor: "#FFBF00"
+        backgroundColor: "#FFBF00",
+        focusAccentColor: "",
+        focusBackgroundColor: "",
     }
 };
 ColoredOTPFields.parameters = {

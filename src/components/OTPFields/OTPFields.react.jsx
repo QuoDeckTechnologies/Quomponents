@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-// import OtpInput from "react-otp-input";
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -31,6 +30,8 @@ OTPFields.propTypes = {
     withColor: PropTypes.shape({
         accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
+        focusAccentColor: PropTypes.string,
+        focusBackgroundColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -98,19 +99,25 @@ export default function OTPFields(props) {
     //-------------------------------------------------------------------
     // 2.Declaration of OTPFields's value
     //-------------------------------------------------------------------
-    const [otpValue, setOtpValue] = useState(null);
-
-    let handleChange = (value) => {
-        setOtpValue(value)
-        props.onClick(value);
+    const [otpValue, setOtpValue] = useState(new Array(numFields).fill(""));
+    const handleChange = (element, index) => {
+        if (isNaN(element.value)) return false;
+        setOtpValue([...otpValue.map((d, idx) => (idx === index ? element.value : d))]);
+        //Focus next input
+        if (element.nextSibling) {
+            element.nextSibling.focus();
+        }
     }
     //-------------------------------------------------------------------
     // 3. Use to set styling for OTPFields.
     //-------------------------------------------------------------------
-    let otpFieldsFocusStyle = {
-        outline: 'none',
-        borderBottom: `0.2em solid ${withColor?.accentColor}`,
-        backgroundColor: `${withColor?.backgroundColor}`
+    let style = {
+        backgroundColor: withColor?.backgroundColor,
+        borderColor: withColor?.accentColor,
+        ':focus': {
+            borderColor: withColor?.focusAccentColor,
+            backgroundColor: withColor?.focusBackgroundColor,
+        }
     };
     //-------------------------------------------------------------------
     // 5. Get animation of the component
@@ -124,17 +131,22 @@ export default function OTPFields(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-otp-fields-container ${quommonClasses.childClasses}`}>
-                {/* <OtpInput
-                    value={otpValue}
-                    onChange={handleChange}
-                    numInputs={numFields}
-                    containerStyle="qui-otp-fields-otp-input-container-style"
-                    inputStyle="qui-otp-fields-otp-input-style"
-                    isInputNum={true}
-                    shouldAutoFocus={true}
-                    focusStyle={otpFieldsFocusStyle}
-                /> */}
+                {otpValue.map((data, index) => {
+                    return (
+                        <input
+                            className="qui-otp-fields-otp-input-style"
+                            type="text"
+                            name="otp"
+                            maxLength="1"
+                            key={index}
+                            value={data}
+                            onChange={e => handleChange(e.target, index)}
+                            onFocus={e => e.target.select()}
+                            style={style}
+                        />
+                    );
+                })}
             </div>
-        </motion.div>
+        </motion.div >
     );
 }
