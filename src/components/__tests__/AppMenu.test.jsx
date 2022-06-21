@@ -126,4 +126,18 @@ describe("AppMenu", () => {
     component.setProps({ asSize: "huge" });
     expect(component.exists()).toBe(true);
   });
+
+  it("should render correctly when passed isCircular props is false", () => {
+    component.setProps({
+      isCircular: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isCircular props is true", () => {
+    component.setProps({
+      isCircular: true,
+    });
+    expect(component.exists()).toBe(true);
+  });
 });

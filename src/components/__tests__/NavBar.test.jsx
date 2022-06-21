@@ -36,7 +36,7 @@ describe("NavBar", () => {
           duration: 0.5,
           delay: 0,
         }}
-        headerPath={null}
+        isMenuBar={null}
         isSearch={null}
         isLoggedIn={null}
         isDisabled={false}
@@ -180,24 +180,18 @@ describe("NavBar", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when header path is `back-menu-button`", () => {
+  it("should render correctly when isMenuBar is true", () => {
     component.setProps({
-      headerPath: "back-menu-button",
+      isMenuBar: true,
     });
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when header path is `menu-button`", () => {
+  it("should render correctly when isMenuBar is false", () => {
     component.setProps({
-      headerPath: "menu-button",
+      isMenuBar: false,
     });
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when header path is `none`", () => {
-    component.setProps({
-      headerPath: "none",
-    });
-    expect(component.exists()).toBe(true);
-  });
 });
