@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import Backdrop from '@mui/material/Backdrop'
+import Backdrop from "@mui/material/Backdrop";
 import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -15,8 +15,8 @@ ContentTableRow.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    ContentTableRow data should be passed in content field and it is a required field
-    */
+  ContentTableRow data should be passed in content field and it is a required field
+  */
   content: PropTypes.shape({
     name: PropTypes.string,
     readerType: PropTypes.string,
@@ -25,8 +25,12 @@ ContentTableRow.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define component padding in increasing order
+  */
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+  /**
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -42,16 +46,16 @@ ContentTableRow.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to enable/disable the component
-    */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
-    */
+  Button component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -63,6 +67,7 @@ ContentTableRow.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asPadded: "normal",
   withAnimation: null,
   isDisabled: false,
   isHidden: false,
@@ -150,7 +155,7 @@ export default function ContentTableRow(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <Backdrop open={showMenu} sx={{zIndex:10}}/>
+      <Backdrop open={showMenu} sx={{ zIndex: 10 }} />
       <div
         className={`qui-table-content-row-container ${quommonClasses.childClasses}`}
       >
