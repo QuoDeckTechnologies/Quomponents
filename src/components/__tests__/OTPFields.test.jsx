@@ -14,10 +14,13 @@ describe("OTPFields", () => {
     // -------------------------------------
     let component;
     let onClick = jest.fn();
+    let changeFocus = jest.fn();
+    let changeBlur = jest.fn();
+    let handleChange = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
-        component = shallow(
+        component = mount(
             <OTPFields
                 numFields={5}
                 asFloated="none"
@@ -26,6 +29,9 @@ describe("OTPFields", () => {
                 isHidden={false}
                 isDisabled={false}
                 onClick={onClick}
+                handleChange={handleChange}
+                changeFocus={changeFocus}
+                changeBlur={changeBlur}
             />
         );
     });
@@ -34,20 +40,28 @@ describe("OTPFields", () => {
         expect(component.exists()).toBe(true);
     });
 
-    // it("it should pass the value to the OtpField", () => {
-    //     let OtpField = component.find("OtpInput");
-    //     component.find('OtpInput').simulate('change')
-    //     expect(component.exists()).toBe(true);
-    // });
-
     it("it should pass the value to the OtpField", () => {
-        let OtpField = component.find("input");
-        component.find('input').simulate('change')
+        component.find('input').at(1).simulate('change')
+        component.find('input').at(1).simulate('change', { target: { value: '12345' } })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("it should render correct props when click on OTPField", () => {
+        component.setProps({ numFields: 5 })
+        component.find('input').at(1).simulate('change', { target: { value: '12345' } })
+        // expect(component.find('input').at(1).value).toEqual('12345');
+        component.find('input').at(1).simulate('blur')
+        component.find('input').at(1).simulate('click')
         expect(component.exists()).toBe(true);
     });
 
     it("it should render correct props when focus on OTPField", () => {
-        component.find('input').simulate('focus').at(0)
+        component.find('input').at(1).simulate('focus')
+        expect(component.exists()).toBe(true);
+    });
+
+    it("it should render correct props when blur on OTPField", () => {
+        component.find('input').at(1).simulate('blur')
         expect(component.exists()).toBe(true);
     });
 

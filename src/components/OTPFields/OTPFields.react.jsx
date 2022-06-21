@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
@@ -108,17 +108,28 @@ export default function OTPFields(props) {
             element.nextSibling.focus();
         }
     }
+
+    useEffect(() => {
+        setOtpValue(new Array(numFields).fill(""))
+    }, [numFields])
     //-------------------------------------------------------------------
     // 3. Use to set styling for OTPFields.
     //-------------------------------------------------------------------
-    let style = {
-        backgroundColor: withColor?.backgroundColor,
-        borderColor: withColor?.accentColor,
-        ':focus': {
-            borderColor: withColor?.focusAccentColor,
-            backgroundColor: withColor?.focusBackgroundColor,
+    let changeFocus = (element) => {
+        element.select()
+        element.style.borderColor = withColor?.focusAccentColor
+        element.style.backgroundColor = withColor?.focusBackgroundColor
+    }
+
+    let changeBlur = (element) => {
+        element.style.borderColor = withColor?.accentColor
+        element.style.backgroundColor = withColor?.backgroundColor
+
+        let otpLength = otpValue.join("")
+        if (numFields === otpLength.length) {
+            props.onClick(otpLength)
         }
-    };
+    }
     //-------------------------------------------------------------------
     // 5. Get animation of the component
     //-------------------------------------------------------------------
@@ -141,8 +152,8 @@ export default function OTPFields(props) {
                             key={index}
                             value={data}
                             onChange={e => handleChange(e.target, index)}
-                            onFocus={e => e.target.select()}
-                            style={style}
+                            onFocus={(e) => changeFocus(e.target)}
+                            onBlur={(e) => changeBlur(e.target)}
                         />
                     );
                 })}
