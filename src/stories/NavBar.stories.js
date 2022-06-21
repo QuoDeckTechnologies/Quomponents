@@ -26,9 +26,9 @@ export default {
         },
       },
     },
-    headerPath: {
+    isBackButton: {
       table: {
-        defaultValue: "",
+        defaultValue: true,
       },
     },
     isSearch: {
@@ -36,7 +36,7 @@ export default {
         defaultValue: false,
       },
     },
-    isLoggedIn: {
+    isMenuBar: {
       table: {
         defaultValue: false,
       },
@@ -46,6 +46,17 @@ export default {
       options: ["primary", "secondary", "success", "warning", "error"],
       table: {
         category: "as-Flags",
+      },
+    },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          menuBackgroundColor: "",
+          backIconColor: "",
+          searchIconColor: "",
+          textColor: "",
+        },
       },
     },
     withIcon: {
@@ -127,8 +138,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle:
-      "Displays NavBar with AppMenu for general-purpose use",
+    componentSubtitle: "Displays NavBar with AppMenu for general-purpose use",
     a11y: { disable: true },
     docs: { iframeHeight: 150 },
   },
@@ -150,15 +160,16 @@ Default.args = {
       link: "https://www.google.com/",
     },
   },
+  isCircular: true,
   isSearch: true,
-  isLoggedIn: true,
+  isMenuBar: true,
+  isBackButton: true,
   asVariant: "primary",
   withIcon: {
     icon: "fas fa-user",
   },
   withColor: {
     menuBackgroundColor: "",
-    menuAccentColor: "",
     backIconColor: "",
     searchIconColor: "",
     textColor: "",
@@ -193,16 +204,16 @@ UserNavbar.args = {
     title: "earn",
     shortLogo: ShortLogo,
     fullLogo: FullLogo,
-    menuTitle: "Catalog",
+    menuTitle: "",
     iconLink: {
       icon: "fas fa-angle-left",
       link: "https://www.google.com/",
     },
   },
   withIcon: {
-    icon:
-      "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+    icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
   },
+  isCircular: false,
 };
 UserNavbar.parameters = {
   docs: {
@@ -229,9 +240,9 @@ AmplayfierHeader.args = {
       link: "https://www.google.com/",
     },
   },
-  headerPath: "back-menu-button",
+  isBackButton: true,
   isSearch: false,
-  isLoggedIn: false,
+  isMenuBar: false,
   isDisabled: false,
   isHidden: false,
 };
@@ -251,7 +262,7 @@ AmplayfierHeader.parameters = {
 export const AmplayfierHeaderWithoutBackButton = Template.bind({});
 AmplayfierHeaderWithoutBackButton.args = {
   ...AmplayfierHeader.args,
-  headerPath: "menu-button",
+  isBackButton: false,
 };
 AmplayfierHeaderWithoutBackButton.parameters = {
   docs: {
@@ -269,29 +280,6 @@ AmplayfierHeaderWithoutBackButton.parameters = {
   },
 };
 //----------------------------------------------------------
-// Amplayfier Header without back and menu button
-//----------------------------------------------------------
-export const AmplayfierHeaderWithoutBackAndMenuButton = Template.bind({});
-AmplayfierHeaderWithoutBackAndMenuButton.args = {
-  ...AmplayfierHeader.args,
-  headerPath: "none",
-};
-AmplayfierHeaderWithoutBackAndMenuButton.parameters = {
-  docs: {
-    description: {
-      story:
-        "Use this to display Amplayfier Header without back and menu button component.",
-    },
-    source: {
-      code: `<NavBar {...${JSON.stringify(
-        AmplayfierHeaderWithoutBackAndMenuButton.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-//----------------------------------------------------------
 // Colored NavBar
 //----------------------------------------------------------
 export const ColoredNavBar = Template.bind({});
@@ -299,7 +287,6 @@ ColoredNavBar.args = {
   ...Default.args,
   withColor: {
     menuBackgroundColor: "#C1DC9E",
-    menuAccentColor: "#AAAAAA",
     backIconColor: "#FFBF00",
     searchIconColor: "#FFBF00",
     textColor: "#AAAAAA",
@@ -334,11 +321,7 @@ AnimatedNavbar.parameters = {
       story: "We can animate the appearance of Navbar",
     },
     source: {
-      code: `<NavbarDark {...${JSON.stringify(
-        AnimatedNavbar.args,
-        null,
-        2
-      )}}/>`,
+      code: `<Navbar {...${JSON.stringify(AnimatedNavbar.args, null, 2)}}/>`,
     },
   },
 };
@@ -361,7 +344,7 @@ TranslatedNavBar.parameters = {
         "We can translate the language of NavBar if dictionary is provided",
     },
     source: {
-      code: `<TranslatedNavBar {...${JSON.stringify(TranslatedNavBar.args, {
+      code: `<NavBar {...${JSON.stringify(TranslatedNavBar.args, {
         navbar: { content: "कमाये" },
       })}}/>`,
     },

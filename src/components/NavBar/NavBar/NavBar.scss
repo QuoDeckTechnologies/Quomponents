@@ -1,4 +1,4 @@
-.qui.qui-NavBar {
+.qui.qui-navbar {
   overflow: visible;
 }
 
@@ -14,11 +14,11 @@
   width: auto;
 }
 
-.qui.qui-NavBar .qui-left-navbar .qui-btn {
+.qui.qui-navbar .qui-left-navbar .qui-btn {
   padding: 0;
 }
 
-.qui.qui-NavBar .qui-left-navbar .qui.qui-icon-link {
+.qui.qui-navbar .qui-left-navbar .qui.qui-icon-link {
   overflow: visible;
   margin-right: 0.4em;
   .qui-btn {
@@ -52,7 +52,6 @@
     margin: 0;
     margin-bottom: 0.05em;
     color: #222a35;
-    font-size: 1em;
   }
 }
 
@@ -75,19 +74,11 @@
   margin-right: 0em;
 }
 
-.qui .qui-nav-bar-menu-icon-element {
-  height: 0.3em;
-  width: 2em;
-  background-color: #ed6e6e;
-  border-radius: 0.2em;
-  &.qui-nav-bar-menu-element-middle {
-    margin: 0.3em 0;
-    background-color: #ed6e6e9a;
-  }
-}
-
-.qui .qui-nav-bar-menu-icon {
+.qui-nav-bar-menu-icon-container {
   cursor: pointer;
+  .qui-nav-bar-icon {
+    font-size: 2em;
+  }
 }
 
 .qui .qui-appMenuContainer {

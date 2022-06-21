@@ -16,7 +16,7 @@ import AppMenu from "../../AppMenu/AppMenu/AppMenu.react";
 
 NavBar.propTypes = {
   //=======================================
-  // Component specific prop
+  // Component specific props
   //=======================================
   /**
   NavBar Text has to be in content or passed as children to the component.
@@ -29,11 +29,15 @@ NavBar.propTypes = {
   /**
   Use to show AppMenu Component if user is logged in.
   */
-  isLoggedIn: PropTypes.bool,
+  isMenuBar: PropTypes.bool,
   /**
   Use to set header type for different locations.
   */
-  headerPath: PropTypes.string,
+  isBackButton: PropTypes.bool,
+  /**
+  Use for rounded corners or circular icon button 
+  */
+  isCircular: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
@@ -58,7 +62,6 @@ NavBar.propTypes = {
   */
   withColor: PropTypes.shape({
     menuBackgroundColor: PropTypes.string,
-    menuAccentColor: PropTypes.string,
     backIconColor: PropTypes.string,
     searchIconColor: PropTypes.string,
     textColor: PropTypes.string,
@@ -120,8 +123,9 @@ NavBar.defaultProps = {
   //=======================================
   content: {},
   isSearch: true,
-  isLoggedIn: true,
-  headerPath: "",
+  isMenuBar: true,
+  isBackButton: true,
+  isCircular: true,
   //=======================================
   // Quommon props
   //=======================================
@@ -141,18 +145,12 @@ export default function NavBar(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content from props
   //-------------------------------------------------------------------
-  let {
-    content,
-    headerPath,
-    isSearch,
-    isLoggedIn,
-    withIcon,
-    withColor,
-  } = props;
+  let { content, isBackButton, isSearch, isMenuBar, withIcon, withColor } =
+    props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "NavBar");
+  let quommonClasses = getQuommons(props, "navbar");
   quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
   //-------------------------------------------------------------------
   // 3. Translate the text objects in case their is a dictionary provided
@@ -177,45 +175,19 @@ export default function NavBar(props) {
   // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
-  //--------------------------------------------------------------------
-  // 5. Function to return back button
   //-------------------------------------------------------------------
-  const getBackButton = () => {
-    if (!content?.title && !isLoggedIn) {
-      if (headerPath !== "back-menu-button") return;
-    }
-    return (
-      <IconLink
-        {...props}
-        asPadded="fitted"
-        content={{ link: content?.iconLink?.link }}
-        withIcon={{ icon: content?.iconLink?.icon }}
-        withColor={{ backgroundColor: withColor?.backIconColor }}
-        onClick={props.onClick}
-      />
-    );
-  };
-  //-------------------------------------------------------------------
-  // 6. Function to return menu icon
+  // 5. Function to return menu icon
   //-------------------------------------------------------------------
   const getMenu = () => {
-    if (!content?.title && !isLoggedIn) {
-      if (headerPath === "none") return;
-    }
     return (
-      <div className="qui-nav-bar-menu-icon" onClick={props.onMenuClick}>
-        <div
-          className="qui-nav-bar-menu-icon-element qui-nav-bar-menu-element-top"
-          style={{ backgroundColor: withColor?.menuBackgroundColor }}
-        ></div>
-        <div
-          className="qui-nav-bar-menu-icon-element qui-nav-bar-menu-element-middle"
-          style={{ backgroundColor: withColor?.menuAccentColor }}
-        ></div>
-        <div
-          className="qui-nav-bar-menu-icon-element qui-nav-bar-menu-element-bottom"
-          style={{ backgroundColor: withColor?.menuBackgroundColor }}
-        ></div>
+      <div
+        className="qui-nav-bar-menu-icon-container"
+        onClick={props.onMenuClick}
+      >
+        <i
+          className="fas fa-bars qui-nav-bar-icon"
+          style={{ color: props.withColor?.menuBackgroundColor }}
+        ></i>
       </div>
     );
   };
@@ -230,7 +202,16 @@ export default function NavBar(props) {
     >
       <div className={`qui-navbar-container ${quommonClasses.childClasses}`}>
         <div className="qui-left-navbar">
-          {getBackButton()}
+          {isBackButton && (
+            <IconLink
+              {...props}
+              asPadded="fitted"
+              content={{ link: content?.iconLink?.link }}
+              withIcon={{ icon: content?.iconLink?.icon }}
+              withColor={{ backgroundColor: withColor?.backIconColor }}
+              onClick={props.onClick}
+            />
+          )}
           {content?.shortLogo && (
             <img src={content?.shortLogo} className="qui-logo-img" alt="Logo" />
           )}
@@ -243,9 +224,9 @@ export default function NavBar(props) {
           )}
           <div className="qui-content">
             {isSearch ? (
-              <h3 className="qui-nav-bar-title">{labelContent?.title}</h3>
-            ) : (
               <h4 className="qui-nav-bar-title">{labelContent?.title}</h4>
+            ) : (
+              <h3 className="qui-nav-bar-title">{labelContent?.title}</h3>
             )}
           </div>
         </div>
@@ -259,7 +240,7 @@ export default function NavBar(props) {
               <i className="fas fa-search"></i>
             </div>
           )}
-          {isLoggedIn ? (
+          {isMenuBar ? (
             <AppMenu
               {...props}
               withLabel={{

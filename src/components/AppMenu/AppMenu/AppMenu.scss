@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.qui.qui-AppMenu .qui-container.is-circular {
+  border-radius: 0;
+}
+
 .qui.qui-AppMenu .qui-menu-block-label {
   padding-left: 0.5em;
 }
@@ -66,8 +70,15 @@
   border-radius: 0%;
 }
 
+// .qui .qui-appMenuContainer.is-circular .qui{
+//   border-radius: 0 2em 2em 0;
+// }
+
 .qui-AppMenu {
-  border-radius: 2em;
+  border-radius: 2em 1.3em 1.3em 2em;
+  &.qui-app-menu-circular {
+    border-radius: 2em;
+  }
 }
 
 .qui-catalogContainer .qui-catalogLabel {

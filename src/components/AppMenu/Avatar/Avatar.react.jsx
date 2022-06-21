@@ -97,11 +97,11 @@ export default function Avatar(props) {
   //-------------------------------------------------------------------
   // 3. Set the user image or icon
   //-------------------------------------------------------------------
-  let loadingIcon = props.withIcon?.icon;
+  let icon = props.withIcon?.icon;
   let isImageIcon = null;
-  if (loadingIcon) {
+  if (icon) {
     isImageIcon = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(
-      loadingIcon
+      icon
     );
   }
 
@@ -116,13 +116,13 @@ export default function Avatar(props) {
         className={`qui-container qui-icon-container size-${props.asSize} variant-${props.asVariant}`}
       >
         {isImageIcon ? (
-          <img className={`qui-image `} src={loadingIcon} alt="avatar" />
+          <img className={`qui-image `} src={icon} alt="avatar" />
         ) : (
           <div
             style={colors}
             className={`qui-icon qui-btn ${quommonClasses.childClasses}`}
           >
-            <i className={loadingIcon}></i>
+            <i className={icon}></i>
           </div>
         )}
       </div>

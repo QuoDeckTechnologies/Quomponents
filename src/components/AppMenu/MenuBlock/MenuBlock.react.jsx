@@ -58,14 +58,11 @@ MenuBlock.propTypes = {
   */
   withIcon: PropTypes.shape({
     icon: PropTypes.string,
-    size: PropTypes.string,
-    position: PropTypes.oneOf(["left", "right"]),
   }),
   /**
   Use to add a heading label, a footer caption or a title popover to the component
   */
   withLabel: PropTypes.shape({
-    format: PropTypes.oneOf(["label", "caption", "popover"]),
     content: PropTypes.string,
     textColor: PropTypes.string,
   }),
@@ -110,9 +107,9 @@ MenuBlock.defaultProps = {
   isDisabled: false,
 };
 
-function getLabel(labelObj, position) {
-  return labelObj?.format === position ? labelObj.content : "";
-}
+// function getLabel(labelObj, position) {
+//   return labelObj?.format === position ? labelObj.content : "";
+// }
 
 /**
 ## Notes
@@ -168,7 +165,7 @@ export default function MenuBlock(props) {
                 className={`qui-menu-block-label${quommonClasses.childClasses}`}
                 style={labelStyle}
               >
-                <p>{getLabel(labelContent, "label")}</p>
+                <p>{labelContent?.content}</p>
                 <p className="qui-menu-block-seperator"></p>
               </div>
             </div>

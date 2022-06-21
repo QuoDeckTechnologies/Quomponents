@@ -14,6 +14,13 @@ import Avatar from "../Avatar/Avatar.react";
 
 AppMenu.propTypes = {
   //=======================================
+  // Component Specific props
+  //=======================================
+  /**
+  Use for rounded corners or circular icon button 
+  */
+  isCircular: PropTypes.bool,
+  //=======================================
   // Quommon props
   //=======================================
   /**
@@ -84,6 +91,10 @@ AppMenu.propTypes = {
 
 AppMenu.defaultProps = {
   //=======================================
+  // Component Specific props
+  //=======================================
+  isCircular: true,
+  //=======================================
   // Quommon props
   //=======================================
   asVariant: "primary",
@@ -111,6 +122,7 @@ export default function AppMenu(props) {
   // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "AppMenu");
+  if (props.isCircular) quommonClasses.childClasses += ` is-circular`;
   //-------------------------------------------------------------------
   // 3. Set the color
   //-------------------------------------------------------------------
@@ -133,12 +145,15 @@ export default function AppMenu(props) {
   // ========================= Render Function =================================
 
   return (
-    <div className={`qui ${quommonClasses.parentClasses} qt-shadow`}>
+    <div
+      className={`qui ${quommonClasses.parentClasses} ${
+        props.isCircular ? "qui-app-menu-circular" : ""
+      } qt-shadow`}
+    >
       <div className="qui-main-container">
         <div
           style={colors}
-          className={`qui-container qui-menuBlock qui-btn size-${props.asSize} 
-            variant-${props.asVariant} emp-${props.asEmphasis} `}
+          className={`qui-container qui-menuBlock qui-btn ${quommonClasses.childClasses} `}
         >
           <div className="qui-iconContainer">
             <div className="qui-catalogContainer">
@@ -162,6 +177,7 @@ export default function AppMenu(props) {
               {...props}
               withIcon={{ icon: "fas fa-ellipsis-v" }}
               withLabel={{ content: "" }}
+              withTranslation={null}
             />
           </div>
         </div>

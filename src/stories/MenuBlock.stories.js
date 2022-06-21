@@ -54,7 +54,6 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          format: "",
           content: "",
           textColor: "",
         },
@@ -65,8 +64,6 @@ export default {
         category: "with-Params",
         defaultValue: {
           icon: "",
-          size: "",
-          position: "left",
         },
       },
     },
@@ -127,13 +124,12 @@ Default.args = {
   asVariant: "primary",
   asSize: "normal",
   asFloated: "inline",
-  withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "left" },
+  withIcon: { icon: "fas fa-ellipsis-v" },
   withColor: {
     backgroundColor: "",
     textColor: "",
   },
   withLabel: {
-    format: "label",
     content: "Catalog",
     textColor: "",
   },
