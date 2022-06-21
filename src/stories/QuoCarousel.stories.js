@@ -3,13 +3,6 @@ import QuoCarousel from "../components/Carousel/QuoCarousel/QuoCarousel.react";
 import HCard from "../components/HCard/HCard.react"
 import VCardWithButton from "../components/VCardWithButton/VCardWithButton.react"
 
-const dictionary = JSON.stringify({
-    hi: {
-        quoCarousel: {
-            buttonText: "देखें",
-        },
-    },
-});
 export default {
     title: "Design System/Carousel/QuoCarousel",
     component: QuoCarousel,
@@ -23,53 +16,7 @@ export default {
         initialSlide: 1,
         asNavFor: "",
     },
-    asEmphasis: {
-        control: "select",
-        options: ["text", "outlined", "contained"],
-        table: {
-            category: "as-Flags",
-        },
-    },
-    withAnimation: {
-        table: {
-            category: "with-Params",
-            defaultValue: {
-                animation: "",
-                duration: 0,
-                delay: 0,
-            },
-        },
-    },
-    withColor: {
-        table: {
-            category: "with-Params",
-            defaultValue: {
-                backgroundColor: "",
-                accentColor: "",
-                accentBackgroundColor: "",
-                textColor: "",
-                buttonBackgroundColor: "",
-                buttonTextColor: "",
-            },
-        },
-    },
-    withTranslation: {
-        table: {
-            category: "with-Params",
-            defaultValue: {
-                lang: "",
-                tgt: "",
-                dictionary: "",
-            },
-        },
-    },
     isDisabled: {
-        table: {
-            category: "is-Toggles",
-            defaultValue: false,
-        },
-    },
-    isCircular: {
         table: {
             category: "is-Toggles",
             defaultValue: false,
@@ -93,12 +40,6 @@ export default {
             </div>
         ),
     ],
-    onClick: {
-        table: {
-            category: "Events",
-            defaultValue: null,
-        },
-    },
     parameters: {
         componentSubheader: "Displays a carousel with content.",
         a11y: { disable: true },
@@ -107,7 +48,6 @@ export default {
         }
     },
 };
-
 
 // -------------------------------------------------------------
 // Default
@@ -165,26 +105,6 @@ Default.args = {
     slidesToShow: 1,
     initialSlide: 1,
     asNavFor: "",
-    asEmphasis: "contained",
-    isCircular: false,
-    withColor: {
-        backgroundColor: "",
-        accentColor: "",
-        accentBackgroundColor: "",
-        textColor: "",
-        buttonBackgroundColor: "",
-        buttonTextColor: "",
-    },
-    withTranslation: {
-        lang: "en",
-        tgt: "quoCarousel",
-        dictionary: dictionary,
-    },
-    withAnimation: {
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-    },
     isDisabled: false,
     isHidden: false,
 };
@@ -281,26 +201,6 @@ VCard.args = {
     slidesToShow: 3,
     initialSlide: 1,
     asNavFor: "",
-    asEmphasis: "contained",
-    isCircular: false,
-    withColor: {
-        backgroundColor: "",
-        accentColor: "",
-        accentBackgroundColor: "",
-        textColor: "",
-        buttonBackgroundColor: "",
-        buttonTextColor: "",
-    },
-    withTranslation: {
-        lang: "en",
-        tgt: "quoCarousel",
-        dictionary: dictionary,
-    },
-    withAnimation: {
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-    },
     isDisabled: false,
     isHidden: false,
 };

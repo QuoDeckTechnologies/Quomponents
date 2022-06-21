@@ -12,30 +12,6 @@
   .qui-h-card-container {
     width: 100%;
   }
-  .qui .qui-h-card-text-container {
-    padding: 0.5em 1em 1em 1em;
-    .qui-h-card-text {
-      height: 4em;
-      p {
-        display: -webkit-box;
-        -webkit-line-clamp: var(--line-clamp, 3);
-        -webkit-box-orient: vertical;
-        word-break: var(--word-break, "none");
-        overflow: hidden;
-        hyphens: auto;
-        text-align: var(--align, left);
-      }
-      h4 {
-        display: -webkit-box;
-        -webkit-line-clamp: var(--line-clamp, 1);
-        -webkit-box-orient: vertical;
-        word-break: var(--word-break, "none");
-        overflow: hidden;
-        hyphens: auto;
-        text-align: var(--align, left);
-      }
-    }
-  }
   .qui .qui-v-card-container {
     width: auto;
   }
@@ -45,11 +21,6 @@
     height: auto;
     width: 30%;
   }
-  .qui .qui-h-card-text-container {
-    width: 70%;
-    font-size: 0.8em;
-  }
-
   .qui-quo-carousel .qui-carousel-slick-arrows {
     position: relative;
     bottom: 0.8em;
@@ -86,10 +57,6 @@
 @media only screen and (min-width: 481px) {
   .qui .qui-h-card-image-container {
     width: 20em;
-  }
-  .qui .qui-h-card-text-container {
-    width: auto;
-    font-size: 1em;
   }
   .qui.qui-h-card-with-button .qui .qui-btn {
     font-size: 0.8em;
