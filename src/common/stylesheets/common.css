@@ -8,6 +8,39 @@
 }
 
 /* ================================================= */
+/* Header style h1, h2, h3, h4, h5, h6*/
+/* ================================================= */
+h1{
+    font-weight: 400;
+    font-size: 3.5em;
+}
+
+h2{
+    font-weight: 300;
+    font-size: 3em;
+}
+
+h3{
+    font-weight:400;
+    font-size: 2em;
+}
+
+h4{
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+h5{
+    font-weight: 700;
+    font-size: 1.12em;
+}
+
+h6{
+    font-weight: 700;
+    font-size: 0.75em;
+}
+
+/* ================================================= */
 /* Float State Definitions*/
 /* ================================================= */
 
