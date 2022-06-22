@@ -296,7 +296,7 @@ export default function Button(props) {
                 color={props.asVariant}
                 title={getLabel(labelContent, "popover")}
                 disabled={props.isDisabled}
-                className={`qui-btn ${quommonClasses.childClasses}`}
+                className={`qui-btn ${props.isDisabled ? "qui-btn-disabled" : ''} ${quommonClasses.childClasses}`}
                 style={Object.assign({}, colors, props.style)}
                 onClick={props.onClick}
             >

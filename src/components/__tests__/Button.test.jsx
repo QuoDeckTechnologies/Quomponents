@@ -119,6 +119,7 @@ describe("Button", () => {
   it("should render correctly with asEmphasis `outlined`", () => {
     component.setProps({
       asEmphasis: "outlined",
+      isDisabled: true,
       withColor: {
         backgroundColor: "#ffc900",
         textColor: "#666666",
