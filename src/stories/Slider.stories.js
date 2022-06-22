@@ -40,7 +40,7 @@ export default {
     (story) => (
       <div
         style={{
-          paddingTop: "2em",
+          paddingTop: "1em",
         }}
       >
         {story()}
