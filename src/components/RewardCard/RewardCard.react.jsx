@@ -39,6 +39,17 @@ RewardCard.propTypes = {
     // Quommon props
     //=======================================
     /**
+    Use to define component size in increasing order
+    */
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
+    /**
     Use to set Color in RewardCard component
     */
     withColor: PropTypes.shape({
@@ -94,6 +105,8 @@ RewardCard.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
+    asSize: "normal",
+
     withColor: null,
     withAnimation: null,
     withTranslation: null,

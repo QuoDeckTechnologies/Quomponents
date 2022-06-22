@@ -31,6 +31,13 @@ export default {
             control: "select",
             options: ["default", "soldout", "blank"],
         },
+        asSize: {
+            control: "select",
+            options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -115,6 +122,7 @@ Default.args = {
         },
     },
     asEmphasis: "default",
+    asSize: "normal",
     withColor: {
         textColor: "",
         accentColor: "#AD2929",
