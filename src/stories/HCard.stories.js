@@ -21,6 +21,12 @@ export default {
         category: "as-Flags",
       },
     },
+    isButton: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
     isCircular: {
       table: {
         category: "is-Toggles",
@@ -121,9 +127,10 @@ Default.args = {
     {
       id: "background-image",
       image:
-        "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     },
   ],
+  isButton: true,
   asEmphasis: "contained",
   isCircular: false,
   asVariant: "warning",
@@ -157,10 +164,10 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// HCard without image
+// HCard with default image
 // -------------------------------------------------------------
-export const HcardWithoutImage = Template.bind({});
-HcardWithoutImage.args = {
+export const HcardWithDefaultImage = Template.bind({});
+HcardWithDefaultImage.args = {
   ...Default.args,
   content: {
     id: "",
@@ -172,13 +179,13 @@ HcardWithoutImage.args = {
     image: { id: "background-", extention: "" },
   },
 };
-HcardWithoutImage.parameters = {
+HcardWithDefaultImage.parameters = {
   docs: {
     description: {
-      story: "Displays a HCard without image/default image",
+      story: "Displays a HCard with default image when image is not provided in image library",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(HcardWithoutImage.args, null, 2)}}/>`,
+      code: `<HCard {...${JSON.stringify(HcardWithDefaultImage.args, null, 2)}}/>`,
     },
   },
 };

@@ -26,7 +26,7 @@ describe("TreeBarOpen", () => {
     },
   });
   let content = {
-    TreeData: {
+    treeData: {
       id: "allArticles",
       parentId: null,
       name: "All Articles",
@@ -274,8 +274,8 @@ describe("TreeBarOpen", () => {
     component
       .find(".qui-treebar-content")
       .children(0)
-      .simulate("toggle", { content: { TreeData: {} } });
-    component.setProps({ content: { TreeData: {} } });
+      .simulate("toggle", { content: { treeData: {} } });
+    component.setProps({ content: { treeData: {} } });
   });
 
   it("should toggle the treebeard", () => {

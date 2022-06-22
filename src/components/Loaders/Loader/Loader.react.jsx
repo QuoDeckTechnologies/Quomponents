@@ -272,7 +272,7 @@ export default function Loader(props) {
                 <motion.div
                     initial={animateIcon.from}
                     animate={animateIcon.to}
-                    className="qui-label"
+                    className="qui-loader-label"
                     style={labelStyle}
                 >
                     {isImageIcon ? (
@@ -299,7 +299,7 @@ export default function Loader(props) {
                 <motion.div
                     initial={animate.from}
                     animate={animate.to}
-                    className="qui-caption"
+                    className="qui-loader-caption"
                     style={labelStyle}
                 >
                     {getLabel(labelContent, "caption", props)}
