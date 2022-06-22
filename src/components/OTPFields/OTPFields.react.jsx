@@ -21,6 +21,17 @@ OTPFields.propTypes = {
     // Quommon props
     //=======================================
     /**
+    Use to define component size in increasing order
+    */
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
+    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
@@ -72,6 +83,7 @@ OTPFields.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
+    asSize: "normal",
     asFloated: "none",
 
     withColor: null,
@@ -93,11 +105,11 @@ export default function OTPFields(props) {
     //-------------------------------------------------------------------
     let { numFields, withColor } = props;
     //-------------------------------------------------------------------
-    // 1. Set the classes
+    // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "otp-fields");
     //-------------------------------------------------------------------
-    // 2.Declaration of OTPFields's value
+    // 3.Declaration of OTPFields's value
     //-------------------------------------------------------------------
     const [otpValue, setOtpValue] = useState(new Array(numFields).fill(""));
     const handleChange = (element, index) => {
@@ -113,7 +125,7 @@ export default function OTPFields(props) {
         setOtpValue(new Array(numFields).fill(""))
     }, [numFields])
     //-------------------------------------------------------------------
-    // 3. Use to set styling for OTPFields.
+    // 4. Use to set styling for OTPFields.
     //-------------------------------------------------------------------
     let changeFocus = (element) => {
         element.select()

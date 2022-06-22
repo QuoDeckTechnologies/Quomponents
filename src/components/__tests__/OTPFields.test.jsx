@@ -23,6 +23,7 @@ describe("OTPFields", () => {
         component = mount(
             <OTPFields
                 numFields={5}
+                asSize="normal"
                 asFloated="none"
                 withColor={null}
                 withAnimation={null}
@@ -47,9 +48,8 @@ describe("OTPFields", () => {
     });
 
     it("it should render correct props when click on OTPField", () => {
-        component.setProps({ numFields: 5 })
-        component.find('input').at(1).simulate('change', { target: { value: '12345' } })
-        // expect(component.find('input').at(1).value).toEqual('12345');
+        component.find('input').at(1).simulate('change', { target: { value: "12345" } })
+        component.find('input').at(1).simulate('change', { target: { value: "string" } })
         component.find('input').at(1).simulate('blur')
         component.find('input').at(1).simulate('click')
         expect(component.exists()).toBe(true);
@@ -62,6 +62,36 @@ describe("OTPFields", () => {
 
     it("it should render correct props when blur on OTPField", () => {
         component.find('input').at(1).simulate('blur')
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as tiny", () => {
+        component.setProps({ asSize: "tiny" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as small", () => {
+        component.setProps({ asSize: "small" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as normal", () => {
+        component.setProps({ asSize: "normal" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as big", () => {
+        component.setProps({ asSize: "big" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as huge", () => {
+        component.setProps({ asSize: "huge" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as massive", () => {
+        component.setProps({ asSize: "massive" })
         expect(component.exists()).toBe(true);
     });
 

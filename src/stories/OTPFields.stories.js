@@ -6,6 +6,13 @@ export default {
     component: OTPFields,
     argTypes: {
         numFields: 5,
+        asSize: {
+            control: "select",
+            options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
@@ -67,7 +74,7 @@ export default {
     parameters: {
         componentSubtitle: "Displays a basic OTPFields for general-purpose use",
         a11y: { disable: true },
-        docs: { iframeHeight: 100 },
+        docs: { iframeHeight: 300 },
     },
 };
 // -------------------------------------------------------------
@@ -77,12 +84,13 @@ const Template = (args) => <OTPFields {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     numFields: 5,
+    asSize: "normal",
     asFloated: "inline",
     withColor: {
         accentColor: "#8c8c898c",
         backgroundColor: "#4545453b",
-        focusAccentColor: "",
-        focusBackgroundColor: "",
+        focusAccentColor: "#AAAAAA",
+        focusBackgroundColor: "#FFBF00",
     },
     withAnimation: {
         animation: "zoom",
@@ -135,8 +143,8 @@ ColoredOTPFields.args = {
     withColor: {
         accentColor: "#AAAAAA",
         backgroundColor: "#FFBF00",
-        focusAccentColor: "",
-        focusBackgroundColor: "",
+        focusAccentColor: "#8c8c898c",
+        focusBackgroundColor: "#4545453b",
     }
 };
 ColoredOTPFields.parameters = {
@@ -153,4 +161,55 @@ ColoredOTPFields.parameters = {
             )}}/>`,
         },
     },
-}; 
+};
+// -------------------------------------------------------------
+// Different Size OTPFields
+// -------------------------------------------------------------
+const AllSizeTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+            asFloated: "inline",
+        }),
+    };
+    return (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+            <OTPFields
+                {...Object.assign({}, baseObj, {
+                    asSize: "tiny",
+                })}
+            /><br />
+            <OTPFields
+                {...Object.assign({}, baseObj, {
+                    asSize: "small",
+
+                })}
+            /><br />
+            <OTPFields
+                {...Object.assign({}, baseObj, {
+                    asSize: "big",
+                })}
+            /><br />
+            <OTPFields
+                {...Object.assign({}, baseObj, {
+                    asSize: "huge",
+                })}
+            /><br />
+            <OTPFields
+                {...Object.assign({}, baseObj, {
+                    asSize: "massive",
+                })}
+            /><br />
+        </div>
+    );
+};
+export const DifferentSizeOTPFields = AllSizeTemplate.bind({});
+DifferentSizeOTPFields.parameters = {
+    docs: {
+        description: {
+            story: "Size are supported. Use as per purpose noted here.",
+        },
+        source: {
+            code: `<OTPFields asSize: "small"/>`,
+        },
+    },
+};
