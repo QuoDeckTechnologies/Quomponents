@@ -21,6 +21,14 @@ ImageUploadModal.propTypes = {
     Use to define if modal is open
     */
   isOpen: PropTypes.bool.isRequired,
+  /**
+    Use to define aspect ratio of the image editor
+    */
+  aspectRatio: PropTypes.number,
+  /**
+    Use to provide initial image to image editor
+    */
+  image: PropTypes.string,
   //=======================================
   // Quommon props
   //=======================================
@@ -61,7 +69,7 @@ ImageUploadModal.propTypes = {
     imageUploadModal component must have the onClick function passed as props
     */
   onClick: PropTypes.func.isRequired,
-    /**
+  /**
     imageUploadModal component should have the onClose function passed as props
     */
   onClose: PropTypes.func,
@@ -72,6 +80,8 @@ ImageUploadModal.defaultProps = {
   // Component Specific props
   //=======================================
   isOpen: true,
+  aspectRatio: 1,
+  image: null,
   //=======================================
   // Quommon props
   //=======================================
@@ -97,10 +107,10 @@ export default function ImageUploadModal(props) {
   // 2. Defining state and variable
   //-------------------------------------------------------------------
   const [zoom, setZoom] = useState(10);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(props.image ? props.image : null);
   const [imageType, setImageType] = useState(null);
   const [openUploadModal, setOpenUploadModal] = useState(props.isOpen);
-  const [width, setWidth] = useState(window.innerWidth >= 768 ? 440 : 240);
+  const [width, setWidth] = useState(window.innerWidth >= 768 ? 300 : 170);
   useEffect(() => {
     setOpenUploadModal(props.isOpen);
   }, [props.isOpen]);
@@ -109,9 +119,9 @@ export default function ImageUploadModal(props) {
   //-------------------------------------------------------------------
   const resizeHandler = () => {
     if (window.innerWidth >= 768) {
-      setWidth(480);
+      setWidth(300);
     } else {
-      setWidth(240);
+      setWidth(170);
     }
   };
   useEffect(() => {
@@ -120,6 +130,9 @@ export default function ImageUploadModal(props) {
       window.removeEventListener("resize", resizeHandler);
     };
   }, []);
+  useEffect(() => {
+    setImage(props.image);
+  }, [props.image]);
   //-------------------------------------------------------------------
   // 4. Defining functions for file upload
   //-------------------------------------------------------------------
@@ -154,16 +167,15 @@ export default function ImageUploadModal(props) {
       }
       // If the image uploaded is not a gif, convert it to a jpg with 80% compression, or to a png
       // and then a Base64 string with canvas
-      if (imageType === "image/jpeg") {
+      else if (imageType === "image/jpeg") {
         let image = editorRef.current?.getImage().toDataURL("image/jpeg", 0.8);
         props.onClick(image);
-      }
-      if (imageType === "image/png") {
+      } else if (imageType === "image/png") {
         let image = editorRef.current?.getImage().toDataURL("image/png");
         props.onClick(image);
-      }
+      } else props.onClick(image);
+      setOpenUploadModal(false);
     }
-    setOpenUploadModal(false)
   };
   //-------------------------------------------------------------------
   // 7. Set the classes
@@ -182,6 +194,7 @@ export default function ImageUploadModal(props) {
   }
 
   // ========================= Render Function =================================
+
   return (
     <Modal
       open={openUploadModal}
@@ -193,10 +206,7 @@ export default function ImageUploadModal(props) {
       }}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <div
-        className={`qui-image-upload-modal-container`}
-        style={{ width: width }}
-      >
+      <div className={`qui-image-upload-modal-container`}>
         <div
           className={`qui-image-modal-upload-header ${quommonClasses.childClasses}`}
         >
@@ -232,8 +242,8 @@ export default function ImageUploadModal(props) {
                 className="qui-image-preview"
                 ref={editorRef}
                 width={width}
-                height={width / 1.15}
-                image={image.file}
+                height={width / (props.aspectRatio > 0 ? props.aspectRatio : 1)}
+                image={image.file ? image.file : image}
                 border={0}
                 scale={zoom / 10}
               />
@@ -241,7 +251,11 @@ export default function ImageUploadModal(props) {
             {!image && (
               <img
                 className="qui-avatar-default-image"
-                style={{ width: width, height: width / 1.15 }}
+                style={{
+                  width: width,
+                  height:
+                    width / (props.aspectRatio > 0 ? props.aspectRatio : 1),
+                }}
                 src={defaultImage}
                 alt="default"
               />
@@ -249,7 +263,11 @@ export default function ImageUploadModal(props) {
             {image && imageType === "image/gif" && (
               <img
                 className="qui-avatar-default-image"
-                style={{ width: width, height: width / 1.15 }}
+                style={{
+                  width: width,
+                  height:
+                    width / (props.aspectRatio > 0 ? props.aspectRatio : 1),
+                }}
                 src={image?.base64}
                 alt="default"
               />
@@ -266,7 +284,9 @@ export default function ImageUploadModal(props) {
               asFloated="left"
               withTranslation={null}
               withAnimation={null}
-              onClick={() => setImage(null)}
+              onClick={() => {
+                setImage(null);
+              }}
             />
             <Button
               {...props}
@@ -288,7 +308,7 @@ export default function ImageUploadModal(props) {
           position="top-right"
           onClick={() => {
             setOpenUploadModal(false);
-            props.onClose(false)
+            props.onClose(false);
           }}
         />
       </div>

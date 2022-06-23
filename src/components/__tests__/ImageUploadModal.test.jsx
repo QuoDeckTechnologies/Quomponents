@@ -42,6 +42,7 @@ describe("ImageUploadModal", () => {
           header: "Upload Image",
           buttons: ["choose file", "cancel", "save"],
         }}
+        image={null}
         isOpen={true}
         asVariant="primary"
         asSize="normal"
@@ -201,6 +202,9 @@ describe("ImageUploadModal", () => {
       .find(".qui-image-upload-field")
       .simulate("change", { target: { files: [file] } });
     await pauseFor(100);
+    component.setProps({
+      aspectRatio: 0,
+    });
     component.find("Button").at(2).simulate("click");
     expect(component.exists()).toBe(true);
   });
@@ -217,5 +221,79 @@ describe("ImageUploadModal", () => {
     await pauseFor(100);
     component.find("Button").at(2).simulate("click");
     expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when image is provided in props and saved", () => {
+    let wrapper = shallow(
+      <ImageUploadModal
+        content={{ header: "Upload image" }}
+        image="test.png"
+        isOpen={true}
+        asVariant="primary"
+        asSize="normal"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={{
+          lang: "en",
+          tgt: "imageuploadmodal",
+          dictionary: dictionary,
+        }}
+        isDisabled={false}
+        isHidden={false}
+        onClick={() => {}}
+        onClose={() => {}}
+      />
+    );
+    wrapper.find("Button").at(2).simulate("click");
+    expect(wrapper.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when aspect ratio is zero or null", () => {
+    let wrapper = shallow(
+      <ImageUploadModal
+        content={{ header: "Upload image" }}
+        image="test.png"
+        aspectRatio={0}
+        isOpen={true}
+        asVariant="primary"
+        asSize="normal"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={{
+          lang: "en",
+          tgt: "imageuploadmodal",
+          dictionary: dictionary,
+        }}
+        isDisabled={false}
+        isHidden={false}
+        onClick={() => {}}
+        onClose={() => {}}
+      />
+    );
+    expect(wrapper.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when image is not provided", () => {
+    let wrapper = shallow(
+      <ImageUploadModal
+        content={{ header: "Upload image" }}
+        aspectRatio={0}
+        isOpen={true}
+        asVariant="primary"
+        asSize="normal"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={{
+          lang: "en",
+          tgt: "imageuploadmodal",
+          dictionary: dictionary,
+        }}
+        isDisabled={false}
+        isHidden={false}
+        onClick={() => {}}
+        onClose={() => {}}
+      />
+    );
+    expect(wrapper.exists()).toBe(true);
   });
 });
