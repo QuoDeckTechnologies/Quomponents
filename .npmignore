@@ -8,8 +8,7 @@
 /src/__snapshots__
 
 # production
-/build
-/dist
+/builds
 
 # misc
 .DS_Store
