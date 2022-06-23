@@ -57,7 +57,7 @@
         "chromatic-dev": "npx chromatic --project-token=c349e143ef76",
         "chromatic": "chromatic --exit-zero-on-changes",
         "build-storybook-docs": "build-storybook  --docs",
-        "npm-publish": "npm run clean && npm run build && rimraf dist/components/__tests__ && rimraf dist/stories && npm publish"
+        "npm-publish": "npm run build && rimraf dist/components/__tests__ && rimraf dist/stories && npm publish"
     },
     "eslintConfig": {
         "extends": [
