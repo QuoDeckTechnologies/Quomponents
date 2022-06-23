@@ -158,6 +158,7 @@ import VoiceoverSection from './components/RibbonMenu/toolsMenu/sections/Voiceov
 import RibbonToolsMenu from './components/RibbonMenu/toolsMenu/RibbonToolsMenu.react';
 import RibbonMenu from './components/RibbonMenu/RibbonMenu.react';
 import ThemeSet from './components/RibbonMenu/ThemeSet.react';
+import QuoCarousel from './components/Carousel/QuoCarousel/QuoCarousel.react';
 
 export {
     AccentLine,
@@ -318,5 +319,6 @@ export {
     VoiceoverSection,
     RibbonToolsMenu,
     RibbonMenu,
-    ThemeSet
+    ThemeSet,
+    QuoCarousel
 };
