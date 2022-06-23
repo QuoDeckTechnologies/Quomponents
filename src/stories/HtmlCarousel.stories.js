@@ -3,7 +3,7 @@ import HtmlCarousel from "../components/Carousel/HtmlCarousel/HtmlCarousel.react
 
 const dictionary = JSON.stringify({
     hi: {
-        bannercard: { header: "", content: "" },
+        bannerCard: { header: "", content: "" },
         ribbon: {
             new: "नया",
             restricted: "प्रतिबंधित",
@@ -98,7 +98,7 @@ Default.args = {
     }],
     withTranslation: {
         lang: "en",
-        tgt: "htmlCarousel",
+        tgt: "bannerCard",
         dictionary: dictionary,
     },
 };
@@ -143,7 +143,7 @@ TranslatedHtmlCarousel.args = {
     }],
     withTranslation: {
         lang: "hi",
-        tgt: "htmlCarousel",
+        tgt: "bannerCard",
         dictionary: dictionary,
     },
 };

@@ -3,7 +3,7 @@ import LandscapeCarousel from "../components/Carousel/LandscapeCarousel/Landscap
 
 const dictionary = JSON.stringify({
     hi: {
-        bannercard: { header: "", content: "" },
+        bannerCard: { header: "", content: "" },
         ribbon: {
             new: "नया",
             restricted: "प्रतिबंधित",
@@ -61,7 +61,6 @@ export default {
     },
 };
 
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -94,7 +93,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "bannercard",
+        tgt: "bannerCard",
         dictionary: dictionary,
     },
 };
@@ -105,6 +104,7 @@ Default.parameters = {
         },
     },
 };
+
 // -------------------------------------------------------------
 // TranslatedLandscapeCarousel
 // -------------------------------------------------------------
@@ -115,7 +115,6 @@ TranslatedLandscapeCarousel.args = {
         header: "Balloon Burst",
         tag: "new",
         selected: true,
-
     },
     {
         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
@@ -136,7 +135,7 @@ TranslatedLandscapeCarousel.args = {
     },
     withTranslation: {
         lang: "hi",
-        tgt: "bannercard",
+        tgt: "bannerCard",
         dictionary: dictionary,
     },
 };
@@ -147,6 +146,7 @@ TranslatedLandscapeCarousel.parameters = {
         },
     },
 };
+
 // -------------------------------------------------------------
 // LandscapeCarouselWithoutBox
 // -------------------------------------------------------------
@@ -164,6 +164,11 @@ LandscapeCarouselWithoutBox.args = {
         image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
         tag: "restricted",
     }],
+    withTranslation: {
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+    },
 
 };
 LandscapeCarouselWithoutBox.parameters = {
@@ -176,7 +181,6 @@ LandscapeCarouselWithoutBox.parameters = {
         },
     },
 };
-
 
 // -------------------------------------------------------------
 // LandscapeCarouselWithoutTag
@@ -195,6 +199,11 @@ LandscapeCarouselWithoutTag.args = {
         image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
         header: "What is Negotiation Room?",
     }],
+    withTranslation: {
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+    },
 
 };
 LandscapeCarouselWithoutTag.parameters = {
@@ -207,8 +216,6 @@ LandscapeCarouselWithoutTag.parameters = {
         },
     },
 };
-
-
 export const AnimatedLandscapeCarousel = Template.bind({});
 AnimatedLandscapeCarousel.args = {
     ...Default.args,
@@ -216,6 +223,11 @@ AnimatedLandscapeCarousel.args = {
         animation: "slideRight",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
     },
 };
 AnimatedLandscapeCarousel.parameters = {
@@ -233,8 +245,6 @@ AnimatedLandscapeCarousel.parameters = {
         },
     },
 };
-
-
 
 // -------------------------------------------------------------
 // MultipleLandscapeCarousels
@@ -261,6 +271,11 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
                 selected: false,
                 header: "GhostBuster",
             }],
+            withTranslation: {
+                lang: "en",
+                tgt: "bannerCard",
+                dictionary: dictionary,
+            },
         }),
     };
     return (
@@ -331,8 +346,6 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
         </div>
     );
 };
-
-
 export const MultipleLandscapeCarousels = MultipleLandscapeCarouselsTemplate.bind({});
 MultipleLandscapeCarousels.parameters = {
     docs: {

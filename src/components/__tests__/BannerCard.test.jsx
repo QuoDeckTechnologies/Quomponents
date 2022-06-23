@@ -20,7 +20,7 @@ describe("BannerCard", () => {
         header: "Component",
         content: "subtitle",
     }
-    const dictionary = JSON.stringify({
+    const dictionary1 = JSON.stringify({
         hi: {
             bannerCard: { header: "बातचीत कक्ष", content: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
             ribbon: {
@@ -31,7 +31,7 @@ describe("BannerCard", () => {
             }
         },
     });
-    const dictionary1 = JSON.stringify({
+    const dictionary2 = JSON.stringify({
         hi: {
             bannerCard: { header: "", content: "" },
             ribbon: {
@@ -62,21 +62,7 @@ describe("BannerCard", () => {
         () => {
             expect(component.exists()).toBe(true);
         });
-
-    it("should render translation  with withTranslation prop with no purpose passed ", () => {
-        component.setProps({
-            content: {
-                header: "",
-                content: "",
-            },
-            withTranslation: {
-                lang: "hi",
-                tgt: "bannerCard",
-                dictionary: dictionary1,
-            },
-        });
-    });
-    it("should render translation  with withTranslation prop with no purpose passed ", () => {
+    it("should render translation  with withTranslation prop ", () => {
         component.setProps({
             content: {
                 header: "header",
@@ -86,15 +72,29 @@ describe("BannerCard", () => {
             withTranslation: {
                 lang: "hi",
                 tgt: "bannerCard",
-                dictionary: dictionary,
+                dictionary: dictionary1,
+            },
+        });
+    });
+    it("should render translation  with withTranslation prop ", () => {
+        component.setProps({
+            content: {
+                header: "header",
+                content: "content",
+                image: "test.jpg"
+            },
+            withTranslation: {
+                lang: "hi",
+                tgt: "bannerCard",
+                dictionary: dictionary2,
             },
         });
     });
     it("should render with empty header and content ", () => {
         component.setProps({
             content: {
-                header: "header",
-                content: "content",
+                header: "",
+                content: "",
                 image: "test.jpg"
             },
         });

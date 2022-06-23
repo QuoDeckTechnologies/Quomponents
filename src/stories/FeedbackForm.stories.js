@@ -98,6 +98,11 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "feedbackForm",
+        dictionary: dictionary,
+    },
     withColor: {
         toggleBarColor: "#454545",
         toggleActiveColor: "#FFAB00",

@@ -3,7 +3,7 @@ import SquareCarousel from "../components/Carousel/SquareCarousel/SquareCarousel
 
 const dictionary = JSON.stringify({
     hi: {
-        bannercard: { header: "", content: "" },
+        bannerCard: { header: "", content: "" },
         ribbon: {
             new: "नया",
             restricted: "प्रतिबंधित",
@@ -107,7 +107,6 @@ Default.args = {
             ...dataprops,
         }
     }],
-
     withAnimation: {
         animation: "slideRight",
         duration: 0.5,
@@ -115,10 +114,9 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "bannercard",
+        tgt: "bannerCard",
         dictionary: dictionary,
     },
-
 };
 Default.parameters = {
     docs: {
@@ -160,7 +158,6 @@ TranslatedSquareCarousel.args = {
             ...dataprops,
         }
     }],
-
     withAnimation: {
         animation: "slideRight",
         duration: 0.5,
@@ -168,10 +165,9 @@ TranslatedSquareCarousel.args = {
     },
     withTranslation: {
         lang: "hi",
-        tgt: "bannercard",
+        tgt: "bannerCard",
         dictionary: dictionary,
     },
-
 };
 TranslatedSquareCarousel.parameters = {
     docs: {
@@ -207,7 +203,16 @@ SquareCarouselWithoutBox.args = {
             ...dataprops,
         }
     }],
-
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+    },
 };
 SquareCarouselWithoutBox.parameters = {
     docs: {
@@ -219,7 +224,6 @@ SquareCarouselWithoutBox.parameters = {
         },
     },
 };
-
 
 // -------------------------------------------------------------
 // SquareCarouselWithoutTag
@@ -251,7 +255,16 @@ SquareCarouselWithoutTag.args = {
             ...dataprops,
         }
     }],
-
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+    },
 };
 SquareCarouselWithoutTag.parameters = {
     docs: {
@@ -264,11 +277,9 @@ SquareCarouselWithoutTag.parameters = {
     },
 };
 
-
 // -------------------------------------------------------------
 // AnimatedSquareCarousel
 // -------------------------------------------------------------
-
 export const AnimatedSquareCarousel = Template.bind({});
 AnimatedSquareCarousel.args = {
     ...Default.args,

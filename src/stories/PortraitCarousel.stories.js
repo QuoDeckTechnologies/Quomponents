@@ -2,7 +2,7 @@ import React from "react";
 import PortraitCarousel from "../components/Carousel/PortraitCarousel/PortraitCarousel.react";
 const dictionary = JSON.stringify({
     hi: {
-        bannercard: { header: "", content: "" },
+        bannerCard: { header: "", content: "" },
         ribbon: {
             new: "नया",
             restricted: "प्रतिबंधित",
@@ -90,7 +90,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "bannercard",
+        tgt: "bannerCard",
         dictionary: dictionary,
     },
 };
@@ -131,7 +131,7 @@ TranslatedPortraitCarousel.args = {
     },
     withTranslation: {
         lang: "hi",
-        tgt: "bannercard",
+        tgt: "bannerCard",
         dictionary: dictionary,
     },
 };
@@ -159,6 +159,16 @@ PortraitCarouselWithoutBox.args = {
         image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
         tag: "restricted",
     }],
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+    },
 
 };
 PortraitCarouselWithoutBox.parameters = {
@@ -190,6 +200,16 @@ PortraitCarouselWithoutTag.args = {
         image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
         header: "What is Negotiation Room?",
     }],
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+    },
 
 };
 PortraitCarouselWithoutTag.parameters = {
@@ -254,6 +274,16 @@ const MultiplePortraitCarouselsTemplate = (args) => {
                 selected: false,
                 header: "GhostBuster",
             }],
+            withAnimation: {
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            },
+            withTranslation: {
+                lang: "en",
+                tgt: "bannerCard",
+                dictionary: dictionary,
+            },
         }),
     };
     return (

@@ -4,7 +4,6 @@ import BackgroundImage from "../components/Carousel/Image.png"
 
 const dictionary = JSON.stringify({
     hi: {
-        loading: "बस एक मिनट...",
         bannerCard: { header: "", content: "" },
         ribbon: {
             new: "नया",
