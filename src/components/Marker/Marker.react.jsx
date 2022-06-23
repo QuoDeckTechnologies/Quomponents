@@ -31,27 +31,9 @@ Marker.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define component size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
-    Use to define component backgroundColor and textColor Color 
-    */
-    withColor: PropTypes.shape({
-        textColor: PropTypes.string,
-        activeTextColor: PropTypes.string,
-    }),
     /**
     Use to define the entry animation of the component
     */
@@ -92,10 +74,8 @@ Marker.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asSize: "normal",
     asFloated: "none",
 
-    withColor: null,
     withAnimation: null,
 
     isHidden: false,
@@ -118,17 +98,19 @@ export default function Marker(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "marker");
     //-------------------------------------------------------------------
-    // 3. Use to set Color in Marker Component
-    //------------------------------------------------------------------className="markerstyle"= {
-
+    // 3. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props.withAnimation);
+    //-------------------------------------------------------------------
+    // 4. Use to set Color in Marker Component
+    //------------------------------------------------------------------
     let markerBlock = (
-        <div className="absolutediv">
-            <img
+        <div className={`qui ${quommonClasses.parentClasses}`} onClick={props.onClick}>
+            <img className="qui-marker-img"
                 src={
                     WrapperList[content?.wrapper]?.customMarker
-                        ? "assets/images/courses/" +
+                        ? "assets/courses/" +
                         content?.wrapper +
-                        "/markers/" +
                         status +
                         ".png"
                         : "assets/images/configurable/wrapperIcons/" +
@@ -137,44 +119,28 @@ export default function Marker(props) {
                 }
             />
             {WrapperList[content?.wrapper]?.sequenceInset && (
-                <div className="markertext">{content?.inset}</div>
+                <div className="qui-marker-text">
+                    <h6>{content?.inset}</h6>
+                </div>
             )}
         </div>
     );
 
-
-    let marker = (status) => {
-        if (status === "current") {
-            return (
-                <div className="markerstyle">
-                    <div
-                    // animation={{ scale: 1.1 }}
-                    // duration={500}
-                    // loop={true}
-                    // runOnMount
-                    >
-                        {markerBlock}
-                    </div>
-                </div>
-            )
-        }
-        else (
-            <div className="markerstyle">{markerBlock}</div>
-        );
-    };
-    //-------------------------------------------------------------------
-    // 4. Get animation of the component
-    //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
-    return (
-        <motion.div
-            initial={animate.from}
-            animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}>
-            <div>
-                {marker}
-            </div>
-        </motion.div>
-    );
-    };
+    return status === "current" ? (
+        <div className="qui-marker-style">
+            <motion.div
+                initial={animate.from}
+                className={`qui ${quommonClasses.parentClasses}`}
+                animate={{ scale: [1, 1.15, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+            >
+                <div className={`${quommonClasses.childClasses}`}>
+                    {markerBlock}
+                </div>
+            </motion.div>
+        </div>
+    ) : (
+        <div className="qui-marker-style">{markerBlock}</div>
+    )
+};
