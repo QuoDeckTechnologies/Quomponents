@@ -110,8 +110,13 @@ Default.args = {
 };
 Default.parameters = {
     docs: {
+        description: {
+            story:
+                "HCard passed as child of carousel",
+
+        },
         source: {
-            code: `<QuoCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<HCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
@@ -206,8 +211,12 @@ VCard.args = {
 };
 VCard.parameters = {
     docs: {
+        description: {
+            story:
+                "VCard passed as child of carousel",
+        },
         source: {
-            code: `<QuoCarousel {...${JSON.stringify(VCard.args, null, 2)}}/>`,
+            code: `<VCard {...${JSON.stringify(VCard.args, null, 2)}}/>`,
         },
     },
 };
