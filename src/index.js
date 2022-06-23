@@ -94,7 +94,7 @@ import CaptionedImage from './components/Templates/CaptionedImage/CaptionedImage
 import CaptionedParagraph from './components/Templates/CaptionedParagraph/CaptionedParagraph.react';
 import CaptionedVideo from './components/Templates/CaptionedVideo/CaptionedVideo.react';
 import CarouselList from './components/Templates/CarouselList/CarouselList.react';
-import Choice from './components/Templates/Choice/Choice.react';
+import SlideChoice from './components/Templates/Choice/Choice.react';
 import ClozeQuestion from './components/Templates/ClozeQuestion/ClozeQuestion.react';
 import ClozeWithFeedback from './components/Templates/ClozeWithFeedback/ClozeWithFeedback.react';
 import Conversation from './components/Templates/Conversation/Conversation.react';
@@ -255,7 +255,7 @@ export {
     CaptionedParagraph,
     CaptionedVideo,
     CarouselList,
-    Choice,
+    SlideChoice,
     ClozeQuestion,
     ClozeWithFeedback,
     Conversation,
