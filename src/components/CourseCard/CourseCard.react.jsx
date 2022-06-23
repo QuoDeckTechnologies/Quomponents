@@ -10,7 +10,7 @@ import "../../common/stylesheets/common.css";
 import "./CourseCard.scss";
 import "../../common/stylesheets/overrule.scss";
 
-import NuggetBlock from "../NuggetBlock/NuggetBlock.react.jsx";
+import NuggetBlock from "../NuggetBlock/NuggetBlock.react";
 import Tag from "../Tag/Tag.react";
 import Reward from "../Reward/Reward.react";
 import IconBlock from "../IconBlock/IconBlock.react";
