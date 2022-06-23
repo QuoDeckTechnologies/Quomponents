@@ -12,7 +12,7 @@ import "../../../common/stylesheets/common.css";
 import "./MultipleSelect.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
-import MultiSelect from "../../MultiSelect/MultiSelect.react.jsx";
+import MultiSelect from "../../MultiSelect/MultiSelect.react";
 
 MultipleSelect.propTypes = {
     //=======================================
