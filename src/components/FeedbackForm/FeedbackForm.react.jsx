@@ -57,9 +57,9 @@ FeedbackForm.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    FeedbackForm component must have the onClick function passed as props
+    FeedbackForm component must have the onSubmit function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
 };
 
 FeedbackForm.defaultProps = {
@@ -74,6 +74,7 @@ FeedbackForm.defaultProps = {
     withAnimation: null,
     isHidden: false,
     isDisabled: false,
+    onSubmit: null,
 };
 
 /**
@@ -128,7 +129,7 @@ export default function FeedbackForm(props) {
                     {toggle &&
                         <div className="qui-feedback-input-field-container">
                             <InputField {...props} content={{ label: "If Correct" }} withColor={InputFieldColors} name={"correct"} />
-                            <InputField {...props} content={{ label: "If InCorrect" }} withColor={InputFieldColors} name={"incorrect"} />
+                            <InputField {...props} content={{ label: "If Incorrect" }} withColor={InputFieldColors} name={"incorrect"} />
                         </div>
                     }
                 </fieldset>

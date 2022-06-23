@@ -17,7 +17,7 @@ describe("InlineEdit", () => {
     let onChange = jest.fn();
     let onBlur = jest.fn();
     let onInput = jest.fn();
-    let onClick = jest.fn();
+    let onSubmit = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -36,7 +36,7 @@ describe("InlineEdit", () => {
             onChange={onChange}
             onBlur={onBlur}
             onInput={onInput}
-            onClick={onClick}
+            onSubmit={onSubmit}
         />);
     })
 

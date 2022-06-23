@@ -62,7 +62,7 @@ export default {
         defaultValue: false,
       },
     },
-    onClick: {
+    onSubmit: {
       table: {
         category: "Events",
         defaultValue: null,

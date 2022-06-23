@@ -77,9 +77,9 @@ InputField.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    InputField component must have the onClick function passed as props
+    InputField component must have the onSubmit function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
 };
 
 InputField.defaultProps = {
@@ -100,7 +100,7 @@ InputField.defaultProps = {
     isHidden: false,
     isDisabled: false,
 
-    onClick: null,
+    onSubmit: null,
 };
 /**
 ## Notes
@@ -132,7 +132,7 @@ export default function InputField(props) {
 
         if (e.key === "Enter") {
             e.target.blur()
-            props.onClick(e.target.name, e.target.value);
+            props.onSubmit(e.target.name, e.target.value);
         }
         if (e.key === "Escape") {
             e.target.value = ""
@@ -149,7 +149,7 @@ export default function InputField(props) {
 
     let changeBlur = (e) => {
         inputRef.current.style.backgroundColor = "#d4d3cf"
-        props.onClick(e.target.name, e.target.value);
+        props.onSubmit(e.target.name, e.target.value);
     };
 
     let inputlabelColor = {

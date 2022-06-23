@@ -24,12 +24,13 @@ describe("EarnCard", () => {
             last_name: "Administrator",
           },
         ]}
+        asPadded="normal"
         withColor={null}
         withAnimation={null}
         isDisabled={false}
         isHidden={false}
-        onUnenrollLearner={() => {}}
-        onSendMessage={() => {}}
+        onUnenrollLearner={() => { }}
+        onSendMessage={() => { }}
       />
     );
   });
