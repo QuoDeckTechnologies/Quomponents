@@ -26,3 +26,5 @@ yarn-error.log*
 /config/jest
 /src/stories
 /src/components/__tests__
+dist/stories
+dist/components/__tests__
