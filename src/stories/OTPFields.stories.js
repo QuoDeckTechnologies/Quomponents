@@ -24,6 +24,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
+                    textColor: "",
                     accentColor: "",
                     backgroundColor: "",
                     focusAccentColor: "",
@@ -87,6 +88,7 @@ Default.args = {
     asSize: "normal",
     asFloated: "inline",
     withColor: {
+        textColor: "",
         accentColor: "#8c8c898c",
         backgroundColor: "#4545453b",
         focusAccentColor: "#AAAAAA",
@@ -141,6 +143,7 @@ export const ColoredOTPFields = Template.bind({});
 ColoredOTPFields.args = {
     ...Default.args,
     withColor: {
+        textColor: "#AD2929",
         accentColor: "#AAAAAA",
         backgroundColor: "#FFBF00",
         focusAccentColor: "#8c8c898c",

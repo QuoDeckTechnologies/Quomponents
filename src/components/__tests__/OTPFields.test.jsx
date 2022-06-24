@@ -22,7 +22,7 @@ describe("OTPFields", () => {
         jest.resetAllMocks();
         component = mount(
             <OTPFields
-                numFields={5}
+                numFields={3}
                 asSize="normal"
                 asFloated="none"
                 withColor={null}
@@ -48,10 +48,17 @@ describe("OTPFields", () => {
     });
 
     it("it should render correct props when click on OTPField", () => {
-        component.find('input').at(1).simulate('change', { target: { value: "12345" } })
-        component.find('input').at(1).simulate('change', { target: { value: "string" } })
+        component.find('input').at(0).simulate('change', { target: { value: 0 } })
+        component.find('input').at(0).simulate('blur')
+        component.find('input').at(0).simulate('click')
+
+        component.find('input').at(1).simulate('change', { target: { value: 1 } })
         component.find('input').at(1).simulate('blur')
         component.find('input').at(1).simulate('click')
+
+        component.find('input').at(2).simulate('change', { target: { value: 2 } })
+        component.find('input').at(2).simulate('blur')
+        component.find('input').at(2).simulate('click')
         expect(component.exists()).toBe(true);
     });
 
@@ -117,6 +124,7 @@ describe("OTPFields", () => {
 
     it("should render correctly when passed withColor props", () => {
         let colors = {
+            textColor: "#0000",
             accentColor: "#065254",
             backgroundColor: "#34e5eb",
             focusAccentColor: "#ffff",

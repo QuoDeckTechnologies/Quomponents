@@ -39,6 +39,7 @@ OTPFields.propTypes = {
     Use to set Colors
     */
     withColor: PropTypes.shape({
+        textColor: PropTypes.string,
         accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
         focusAccentColor: PropTypes.string,
@@ -112,9 +113,11 @@ export default function OTPFields(props) {
     // 3.Declaration of OTPFields's value
     //-------------------------------------------------------------------
     const [otpValue, setOtpValue] = useState(new Array(numFields).fill(""));
+    const re = new RegExp(/^$|^[0-9]$/)
     const handleChange = (element, index) => {
-        if (isNaN(element.value)) return false;
-        setOtpValue([...otpValue.map((d, idx) => (idx === index ? element.value : d))]);
+        if (re.test(element.value)) {
+            setOtpValue([...otpValue.map((d, idx) => (idx === index ? element.value : d))]);
+        }
         //Focus next input
         if (element.nextSibling) {
             element.nextSibling.focus();
@@ -158,7 +161,9 @@ export default function OTPFields(props) {
                     return (
                         <input
                             className="qui-otp-fields-otp-input-style"
-                            type="text"
+                            type="number"
+                            min="0"
+                            max="9"
                             name="otp"
                             maxLength="1"
                             key={index}
@@ -166,10 +171,11 @@ export default function OTPFields(props) {
                             onChange={e => handleChange(e.target, index)}
                             onFocus={(e) => changeFocus(e.target)}
                             onBlur={(e) => changeBlur(e.target)}
+                            style={{ color: withColor?.textColor }}
                         />
                     );
                 })}
             </div>
-        </motion.div >
+        </motion.div>
     );
 }
