@@ -15,6 +15,10 @@ IconLink.propTypes = {
     // Component Specific props
     //=======================================
     /**
+    Set content in iconLink 
+    */
+    link: PropTypes.string,
+    /**
     Set action emphasis in increasing order 
     */
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
@@ -121,6 +125,7 @@ IconLink.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
+    link: "",
     asEmphasis: "text",
     isCircular: false,
     //=======================================
@@ -209,7 +214,7 @@ export default function IconLink(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props, "icon-link");
     if (props.isCircular)
         quommonClasses.childClasses += ` is-circular`;
 
@@ -251,7 +256,7 @@ export default function IconLink(props) {
             onMouseLeave={() => setHovered(false)}
             onMouseDown={() => setTilt(true)}
             onMouseUp={() => setTilt(false)}
-        >   <a href={props.content?.link} className="qui-link">
+        >   <a  className="qui-iconlink-anchor">
                 <div
                     className={`qui-btn ${quommonClasses.childClasses} qui-iconlink`}
                     title={getLabel(labelContent, "popover")}

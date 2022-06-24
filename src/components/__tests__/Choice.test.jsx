@@ -24,17 +24,12 @@ describe("Choice", () => {
 	];
 	const dictionary = JSON.stringify({
 		hi: {
-			options: [
-				{
-					correct: "checked",
-					text: "वस्तु 1",
-				},
-				{
-					correct: "",
-					text: "वस्तु 2",
-				},
-			],
-		},
+			options: [{
+				text1: "वस्तु 1",
+			}, {
+				text2: "वस्तु 2",
+			}]
+		}
 	});
 	let colors = {
 		primaryBackgroundColor: "red",

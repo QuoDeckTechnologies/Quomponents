@@ -182,7 +182,7 @@ function getColors(colors, emphasis, hovered) {
         }
         : {
             background: emphasis !== "contained" ? "transparent" : colors.backgroundColor,
-            color: emphasis !== "contained" ? colors.backgroundColor : colors.textColor,
+            color: emphasis !== "contained" ? colors.textColor : colors.textColor,
         }
     if (!hovered && emphasis === "outlined")
         colorStyle.borderColor = colors.backgroundColor

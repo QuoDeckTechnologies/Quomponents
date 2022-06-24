@@ -1,36 +1,34 @@
-.qui .qui-iconlink {
+.qui.qui-icon-link {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 3.5em;
-  min-height: 3.5em;
-}
-.qui .qui-btn.is-circular {
-  border-radius: 10%;
-}
-.qui .tilt {
-  transform: rotate(10deg);
-  transition: all ease-in-out;
-}
-.qui .qui-link {
-  text-decoration: none;
-}
-.qui .qui-icon-label {
-  font-weight: normal;
-}
-.qui .qui-icon-caption {
-  font-style: normal;
-}
-.qui .qui-iconlink .qui-iconlink-icon {
-  font-size: 2.5em;
-}
-.qui .size-huge.qui-iconlink {
-  min-width: 2.5em;
-}
-.qui .size-massive.qui-iconlink {
-  min-width: 3em;
-}
-.qui .qui-btn.is-circular.circular-without-label {
-  border-radius: 50%;
+  text-transform: uppercase;
+  .qui-btn {
+    width: 5em;
+    &.is-circular {
+      border-radius: 10%;
+    }
+    &.is-circular.circular-without-label {
+      border-radius: 50%;
+      padding: 1em 0.3em;
+    }
+  }
+  .qui-iconlink-anchor {
+    text-decoration: none;
+  }
+  .tilt {
+    transform: rotate(10deg);
+    transition: all ease-in-out;
+  }
+  .qui-icon-label {
+    font-weight: normal;
+  }
+  .qui-icon-caption {
+    font-style: normal;
+    margin-top: 0.3em;
+  }
+  .qui-iconlink-icon {
+    font-size: 2.5em;
+  }
 }

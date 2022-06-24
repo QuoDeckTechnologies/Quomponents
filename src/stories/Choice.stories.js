@@ -2,24 +2,13 @@ import React from "react";
 import Choice from "../components/Buttons/Choice/Choice.react";
 
 const dictionary = JSON.stringify({
-  en: {
-    options: [{
-      correct: "checked",
-      text: "Item 1",
-    }, {
-      correct: "",
-      text: "Item 2",
-    }]
-  },
   hi: {
     options: [{
-      correct: "checked",
-      text: "वस्तु 1",
+      text1: "वस्तु 1",
     }, {
-      correct: "",
-      text: "वस्तु 2",
+      text2: "वस्तु 2",
     }]
-  },
+  }
 });
 export default {
   title: "Design System/Buttons/Choice",

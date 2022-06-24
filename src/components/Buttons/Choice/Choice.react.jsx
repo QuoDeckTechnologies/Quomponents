@@ -169,6 +169,7 @@ function getSecondaryButtonColors(colors, emphasis) {
 }
 
 export default function Choice(props) {
+	let { options } = props;
 	//-------------------------------------------------------------------
 	// 1. Set the classes
 	//-------------------------------------------------------------------
@@ -177,15 +178,19 @@ export default function Choice(props) {
 	//-------------------------------------------------------------------
 	// 2. Translate the text objects in case their is a dictionary provided
 	//-------------------------------------------------------------------
-	let options = props.options;
+	let text1 = options[0]?.text;
+	let text2 = options[1]?.text;
+	let tObj = getTranslation(props.withTranslation);
 	if (
 		options &&
 		props.withTranslation &&
 		props.withTranslation.lang !== "" &&
 		props.withTranslation.lang !== "en"
 	) {
-		let tObj = getTranslation(props.withTranslation);
-		options = Object.assign(options, tObj);
+		if (tObj && text1 && text2) {
+			text1 = tObj[0]?.text1
+			text2 = tObj[1]?.text2
+		}
 	}
 
 	//-------------------------------------------------------------------
@@ -223,7 +228,7 @@ export default function Choice(props) {
 							style={Object.assign({}, primaryButtonStyle)}
 							onClick={() => { handleClick(0) }}
 						>
-							{options[0]?.text}
+							{text1}
 						</div>
 						<div className="qui-or" style={Object.assign({}, orStyle)}>
 							OR
@@ -233,7 +238,7 @@ export default function Choice(props) {
 							style={Object.assign({}, secondaryButtonStyle)}
 							onClick={() => { handleClick(1) }}
 						>
-							{options[1]?.text}
+							{text2}
 						</div>
 					</div>
 				)}

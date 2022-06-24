@@ -6,13 +6,13 @@ import {
   getQuommons,
   getTranslation,
   getAnimation,
-} from "../../../common/javascripts/helpers";
+} from "../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../../common/stylesheets/common.css";
+import "../../common/stylesheets/common.css";
 import "./ToolbarDark.scss";
-import "../../../common/stylesheets/overrule.scss";
-import IconLink from "../IconLink/IconLink.react";
+import "../../common/stylesheets/overrule.scss";
+import IconLink from "../Buttons/IconLink/IconLink.react";
 
 ToolbarDark.propTypes = {
   //=======================================
@@ -202,6 +202,7 @@ export default function ToolbarDark(props) {
                   {...props}
                   content={{ link: icon.link }}
                   withIcon={{ icon: icon.icon }}
+                  // asSize={"tiny"}
                   withLabel={{
                     content: tObj ? iconLabel[index]["label"] : icon.label,
                     format: icon.format,

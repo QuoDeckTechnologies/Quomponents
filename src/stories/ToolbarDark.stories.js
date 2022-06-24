@@ -1,5 +1,5 @@
 import React from "react";
-import ToolbarDark from "../components/Buttons/ToolbarDark/ToolbarDark.react";
+import ToolbarDark from "../components/ToolbarDark/ToolbarDark.react";
 const dictionary = JSON.stringify({
 
   hi: {
@@ -14,7 +14,7 @@ const dictionary = JSON.stringify({
   },
 });
 export default {
-  title: "Design System/Buttons/ToolbarDark",
+  title: "Design System/ToolbarDark/ToolbarDark",
   component: ToolbarDark,
   argTypes: {
     content: [
@@ -169,9 +169,7 @@ Default.args = {
       link: "https://www.youtube.com/",
     },
   ],
-
   asEmphasis: "text",
-
   asVariant: "primary",
   asSize: "normal",
   asPadded: "normal",
@@ -194,7 +192,6 @@ Default.args = {
     tgt: "ToolbarDark",
     dictionary: dictionary,
   },
-
   isDisabled: false,
   isHidden: false,
   isFluid: false,
@@ -240,7 +237,7 @@ AnimatedToolbar.args = {
   ...Default.args,
   withAnimation: {
     animation: "slideDown",
-    duration: 3,
+    duration: 0.5,
     delay: 0,
   },
 };
@@ -307,6 +304,140 @@ WithoutLabelToolbardark.parameters = {
     },
   },
 };
+
+// -------------------------------------------------------------
+// IconsWithPopoverFormat
+// -------------------------------------------------------------
+export const IconsWithPopoverFormat = Template.bind({});
+IconsWithPopoverFormat.args = {
+  content: [
+    {
+      icon: "fa fa-certificate",
+      label: "Certificate",
+      format: "popover",
+      link: "https://quodeck.com/",
+    },
+    {
+      icon: "fa fa-wallet",
+      label: "Wallet",
+      format: "popover",
+      link: "https://www.google.com/",
+    },
+    {
+      icon: "fa fa-gift",
+      label: "Rewards",
+      format: "popover",
+      link: "https://github.com/",
+    },
+    {
+      icon: "fa fa-chart-pie",
+      label: "Reports",
+      format: "popover",
+      link: "https://www.youtube.com/",
+    },
+  ],
+  asEmphasis: "text",
+  asVariant: "primary",
+  asSize: "normal",
+  asPadded: "normal",
+  asAligned: "center",
+
+  withColor: {
+    backgroundColor: "",
+    accentColor: "",
+    textColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
+  },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "ToolbarDark",
+    dictionary: dictionary,
+  },
+
+  isDisabled: false,
+  isHidden: false,
+  isFluid: false,
+};
+IconsWithPopoverFormat.parameters = {
+  docs: {
+    source: {
+      code: `<ToolbarDark {...${JSON.stringify(IconsWithPopoverFormat.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// IconsWithLabelFormat
+// -------------------------------------------------------------
+export const IconsWithLabelFormat = Template.bind({});
+IconsWithLabelFormat.args = {
+  content: [
+    {
+      icon: "fa fa-certificate",
+      label: "Certificate",
+      format: "label",
+      link: "https://quodeck.com/",
+    },
+    {
+      icon: "fa fa-wallet",
+      label: "Wallet",
+      format: "label",
+      link: "https://www.google.com/",
+    },
+    {
+      icon: "fa fa-gift",
+      label: "Rewards",
+      format: "label",
+      link: "https://github.com/",
+    },
+    {
+      icon: "fa fa-chart-pie",
+      label: "Reports",
+      format: "label",
+      link: "https://www.youtube.com/",
+    },
+  ],
+  asEmphasis: "text",
+  asVariant: "primary",
+  asSize: "normal",
+  asPadded: "normal",
+  asAligned: "center",
+
+  withColor: {
+    backgroundColor: "",
+    accentColor: "",
+    textColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
+  },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "ToolbarDark",
+    dictionary: dictionary,
+  },
+
+  isDisabled: false,
+  isHidden: false,
+  isFluid: false,
+};
+IconsWithLabelFormat.parameters = {
+  docs: {
+    source: {
+      code: `<ToolbarDark {...${JSON.stringify(IconsWithLabelFormat.args, null, 2)}}/>`,
+    },
+  },
+};
+
 // -------------------------------------------------------------
 // TranslatedToolbardark
 // -------------------------------------------------------------

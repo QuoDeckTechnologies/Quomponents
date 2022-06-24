@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import ToolbarDark from '../Buttons/ToolbarDark/ToolbarDark.react'
+import ToolbarDark from '../ToolbarDark/ToolbarDark.react'
 describe("ToolbarDark", () => {
     const dictionary = JSON.stringify({
 
