@@ -26,11 +26,7 @@ describe("NavBar", () => {
       <NavBar
         content={null}
         asVariant="primary"
-        withColor={{
-          backgroundColor: "",
-          accentColor: "",
-          textColor: "#b60d17",
-        }}
+        withColor={null}
         withAnimation={{
           animation: "zoom",
           duration: 0.5,
@@ -57,7 +53,6 @@ describe("NavBar", () => {
     component.setProps({
       withColor: {
         menuBackgroundColor: "#C1DC9E",
-        menuAccentColor: "#AAAAAA",
         backIconColor: "#FFBF00",
         searchIconColor: "#FFBF00",
         textColor: "#AAAAAA",

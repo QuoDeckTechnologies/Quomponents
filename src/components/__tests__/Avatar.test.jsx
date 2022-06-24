@@ -3,11 +3,6 @@ import React from "react";
 // Import from NPM
 // -------------------------------------
 import { shallow, mount, render } from "enzyme";
-
-//--------------------------------------
-// Import from Config
-// -------------------------------------
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -18,7 +13,6 @@ describe("Avatar", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-  // let onClick = jest.fn();
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(

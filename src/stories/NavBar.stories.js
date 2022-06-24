@@ -41,6 +41,11 @@ export default {
         defaultValue: false,
       },
     },
+    isCircular: {
+      table: {
+        defaultValue: true,
+      },
+    },
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
@@ -151,7 +156,7 @@ const Template = (args) => <NavBar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: {
-    title: "earn",
+    title: "Earn",
     shortLogo: ShortLogo,
     fullLogo: FullLogo,
     menuTitle: "Catalog",
@@ -201,7 +206,7 @@ export const UserNavbar = Template.bind({});
 UserNavbar.args = {
   ...Default.args,
   content: {
-    title: "earn",
+    title: "Earn",
     shortLogo: ShortLogo,
     fullLogo: FullLogo,
     menuTitle: "",

@@ -92,7 +92,7 @@ export default function Avatar(props) {
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props);
+  let quommonClasses = getQuommons(props, "avatar");
   quommonClasses.childClasses += ` emp-contained`;
   //-------------------------------------------------------------------
   // 3. Set the user image or icon
@@ -109,11 +109,11 @@ export default function Avatar(props) {
 
   return (
     <div
-      className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`}
+      className={`qui ${quommonClasses.parentClasses} qui-avatarContainer`}
       onClick={props.onClick}
     >
       <div
-        className={`qui-container qui-icon-container size-${props.asSize} variant-${props.asVariant}`}
+        className={`qui-avatar-container qui-icon-container size-${props.asSize} variant-${props.asVariant}`}
       >
         {isImageIcon ? (
           <img className={`qui-image `} src={icon} alt="avatar" />

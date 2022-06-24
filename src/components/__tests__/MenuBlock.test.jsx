@@ -69,7 +69,6 @@ describe("MenuBlock", () => {
     component.setProps({
       withColor: {
         backgroundColor: "#ffffff",
-        accentColor: "#ffffff",
         textColor: "#ffffff",
       },
     });
@@ -118,7 +117,6 @@ describe("MenuBlock", () => {
   it("should render correctly when wihtLabel props is provided", () => {
     component.setProps({
       withLabel: {
-        format: "caption",
         content: "This is lable",
         textColor: "red",
       },
@@ -129,7 +127,6 @@ describe("MenuBlock", () => {
   it("should render correctly when wihtLabel props match with position", () => {
     component.setProps({
       withLabel: {
-        format: "label",
         content: "This is lable",
         textColor: "red",
       },

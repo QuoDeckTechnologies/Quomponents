@@ -201,7 +201,7 @@ export default function NavBar(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div className={`qui-navbar-container ${quommonClasses.childClasses}`}>
-        <div className="qui-left-navbar">
+        <div className="qui-navbar-left">
           {isBackButton && (
             <IconLink
               {...props}

@@ -31,7 +31,6 @@ describe("AppMenu", () => {
         withIcon={null}
         isHidden={false}
         isDisabled={false}
-        withUser={""}
         onClick={() => {}}
       />
     );
@@ -67,7 +66,6 @@ describe("AppMenu", () => {
     component.setProps({
       withColor: {
         backgroundColor: "#ffffff",
-        accentColor: "#ffffff",
         textColor: "#ffffff",
       },
     });
@@ -116,7 +114,15 @@ describe("AppMenu", () => {
     component.setProps({
       withLabel: {
         content: "Catalog",
-        textColor: "#000000",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing an error withIcon props is passed", () => {
+    component.setProps({
+      withIcon: {
+        icon: "fas fa-user",
       },
     });
     expect(component.exists()).toBe(true);

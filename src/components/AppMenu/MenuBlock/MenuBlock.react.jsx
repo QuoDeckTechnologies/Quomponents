@@ -60,7 +60,7 @@ MenuBlock.propTypes = {
     icon: PropTypes.string,
   }),
   /**
-  Use to add a heading label, a footer caption or a title popover to the component
+  Use to add a text title to the component
   */
   withLabel: PropTypes.shape({
     content: PropTypes.string,
@@ -106,11 +106,6 @@ MenuBlock.defaultProps = {
   isHidden: false,
   isDisabled: false,
 };
-
-// function getLabel(labelObj, position) {
-//   return labelObj?.format === position ? labelObj.content : "";
-// }
-
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
@@ -123,7 +118,7 @@ export default function MenuBlock(props) {
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props);
+  let quommonClasses = getQuommons(props, "menu-block");
   //-------------------------------------------------------------------
   // 2. Set the label/caption/popover and loading text
   //-------------------------------------------------------------------
@@ -156,7 +151,7 @@ export default function MenuBlock(props) {
     <div className={`qui ${quommonClasses.parentClasses}`}>
       <div className={` float-${props.asFloated}`} onClick={props.onClick}>
         <div
-          className={`qui-container qui-menuBlock qui-btn size-${props.asSize} 
+          className={`qui-menu-block-container qui-menuBlock qui-btn size-${props.asSize} 
             variant-${props.asVariant} emp-${props.asEmphasis} `}
         >
           <div style={colors} className="qui-iconContainer">

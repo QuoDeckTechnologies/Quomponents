@@ -8,17 +8,17 @@
   align-items: center;
 }
 
-.qui .qui-left-navbar {
+.qui .qui-navbar-left {
   display: flex;
   align-items: center;
   width: auto;
 }
 
-.qui.qui-navbar .qui-left-navbar .qui-btn {
+.qui.qui-navbar .qui-navbar-left .qui-btn {
   padding: 0;
 }
 
-.qui.qui-navbar .qui-left-navbar .qui.qui-icon-link {
+.qui.qui-navbar .qui-navbar-left .qui.qui-icon-link {
   overflow: visible;
   margin-right: 0.4em;
   .qui-btn {
@@ -46,7 +46,6 @@
   font-weight: bolder;
   font-size: 2em;
   color: #000000;
-  text-transform: uppercase;
   filter: drop-shadow(1px 1px 0.8px rgb(150, 146, 146));
   .qui-nav-bar-title {
     margin: 0;

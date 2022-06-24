@@ -56,7 +56,7 @@ AppMenu.propTypes = {
     textColor: PropTypes.string,
   }),
   /**
-  Use to add a heading label, a footer caption or a title popover to the component
+  Use to add text title in the component
   */
   withLabel: PropTypes.shape({
     content: PropTypes.string,
@@ -121,7 +121,7 @@ export default function AppMenu(props) {
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "AppMenu");
+  let quommonClasses = getQuommons(props, "app-menu");
   if (props.isCircular) quommonClasses.childClasses += ` is-circular`;
   //-------------------------------------------------------------------
   // 3. Set the color
@@ -150,10 +150,10 @@ export default function AppMenu(props) {
         props.isCircular ? "qui-app-menu-circular" : ""
       } qt-shadow`}
     >
-      <div className="qui-main-container">
+      <div className="qui-app-menu-container">
         <div
           style={colors}
-          className={`qui-container qui-menuBlock qui-btn ${quommonClasses.childClasses} `}
+          className={`qui-app-menu-inner-container qui-btn ${quommonClasses.childClasses} `}
         >
           <div className="qui-iconContainer">
             <div className="qui-catalogContainer">
@@ -170,7 +170,12 @@ export default function AppMenu(props) {
             style={colors}
             className={`qui-appMenuAvatar qui-btn variant-${props.asVariant}`}
           >
-            <Avatar {...props} withIcon={props.withIcon} />
+            <Avatar
+              {...props}
+              withIcon={
+                props.withIcon ? props.withIcon : { icon: "fas fa-user" }
+              }
+            />
           </div>
           <div className="qui-menuIconContainer">
             <MenuBlock
