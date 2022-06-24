@@ -1,4 +1,37 @@
 /* ================================================= */
+/* Header style h1, h2, h3, h4, h5, h6*/
+/* ================================================= */
+h1 {
+    font-weight: 400;
+    font-size: 3.5em;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 3em;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 2em;
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+h5 {
+    font-weight: 700;
+    font-size: 1.12em;
+}
+
+h6 {
+    font-weight: 700;
+    font-size: 0.75em;
+}
+
+/* ================================================= */
 /* Container Style */
 /* ================================================= */
 .qui {
@@ -133,46 +166,46 @@
 /* ================================================= */
 /* Font Style Definitions */
 /* ================================================= */
-.qui.qt-lbl,
-.qui .qt-lbl {
-    font-family: "Oswald Regular";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 13px;
+.prifont {
+    font-family: "Arial", sans-serif;
 }
 
-.qui.qt-sm,
-.qui .qt-lbl {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 13px;
+.secfont {
+    font-family: "Arial", sans-serif;
 }
 
-.qui.qt-mn,
-.qui .qt-lbl {
-    font-family: "Roboto";
+.qui .qt-lbl,
+.qui.qt-lbl {
     font-style: normal;
     font-weight: 400;
-    font-size: 9px;
-    line-height: 9px;
+    font-size: 0.8em;
 }
 
-.qui.qt-utn,
-.qui .qt-lbl {
-    font-family: "Roboto";
+.qui .qt-sm,
+.qui.qt-sm {
     font-style: normal;
     font-weight: 400;
-    font-size: 10px;
-    line-height: 10px;
+    font-size: 0.7em;
+}
+
+.qui .qt-mn,
+.qui.qt-mn {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.5em;
+}
+
+.qui .qt-utn,
+.qui.qt-utn {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.6em;
 }
 
 /* ================================================= */
 /* Box Shadow Definitions */
 /* ================================================= */
-.qui.qt-shadow,
-.qui .qt-shadow {
+.qui .qt-shadow,
+.qui.qt-shadow {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
