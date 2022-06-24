@@ -1,11 +1,11 @@
-.qui .qui-menuBlock {
+.qui .qui-menu-block-container {
   border-top-right-radius: 1.5em;
   border-top-left-radius: 1.5em;
   border-bottom-right-radius: 1.5em;
   border-bottom-left-radius: 1.5em;
 }
 
-.qui-iconContainer {
+.qui-app-menu-icon-container {
   display: flex;
   align-items: center;
   height: 100%;
@@ -21,6 +21,6 @@
   margin-right: 0.5em;
 }
 
-.qui-app-menu-container .qui-iconContainer {
+.qui-app-menu-container .qui-app-menu-icon-container {
   padding: 0;
 }

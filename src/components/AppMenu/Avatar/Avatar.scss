@@ -6,26 +6,26 @@
 /* ================================================= */
 /* Padding Definitions */
 /* ================================================= */
-.qui .qui-avatarContainer.pad-fitted {
+.qui .qui-avatar-wrapper.pad-fitted {
   padding: 0px 0px;
 }
 
-.qui .qui-avatarContainer.pad-compact {
+.qui .qui-avatar-wrapper.pad-compact {
   padding: 0px 0px;
 }
 
-.qui .qui-avatarContainer.pad-normal {
+.qui .qui-avatar-wrapper.pad-normal {
   padding: 0px 0px;
 }
 
-.qui .qui-avatarContainer.pad-relaxed,
-.qui .qui-avatarContainer.pad-normal.size-huge,
-.qui .qui-avatarContainer.pad-normal.size-massive {
+.qui .qui-avatar-wrapper.pad-relaxed,
+.qui .qui-avatar-wrapper.pad-normal.size-huge,
+.qui .qui-avatar-wrapper.pad-normal.size-massive {
   padding: 0px 0px;
 }
 
-.qui .qui-avatarContainer.pad-relaxed.size-huge,
-.qui .qui-avatarContainer.pad-relaxed.size-massive {
+.qui .qui-avatar-wrapper.pad-relaxed.size-huge,
+.qui .qui-avatar-wrapper.pad-relaxed.size-massive {
   padding: 0px 0px;
 }
 /* ================================================= */
@@ -101,7 +101,7 @@
   width: 5em;
 }
 
-.qui-icon {
+.qui-avatar-icon-container {
   height: 100%;
   padding: 0;
   display: flex;

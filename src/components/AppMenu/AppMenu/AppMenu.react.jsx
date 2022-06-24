@@ -155,20 +155,22 @@ export default function AppMenu(props) {
           style={colors}
           className={`qui-app-menu-inner-container qui-btn ${quommonClasses.childClasses} `}
         >
-          <div className="qui-iconContainer">
-            <div className="qui-catalogContainer">
+          <div className="qui-app-menu-icon-container">
+            <div className="qui-app-menu-catalog-container">
               {tObj || props.withLabel?.content ? (
-                <p className="qui-catalogLabel">
+                <p className="qui-app-menu-catalog-label">
                   {tObj ? tObj.content : withLabel?.content}{" "}
                 </p>
               ) : null}
             </div>
           </div>
         </div>
-        <div className={`qui-appMenuContainer float-${props.asFloated}`}>
+        <div
+          className={`qui-qui-app-menu-avatar-container float-${props.asFloated}`}
+        >
           <div
             style={colors}
-            className={`qui-appMenuAvatar qui-btn variant-${props.asVariant}`}
+            className={`qui-app-menu-avatar qui-btn variant-${props.asVariant}`}
           >
             <Avatar
               {...props}
@@ -177,7 +179,7 @@ export default function AppMenu(props) {
               }
             />
           </div>
-          <div className="qui-menuIconContainer">
+          <div className="qui-app-menu-icon-container">
             <MenuBlock
               {...props}
               withIcon={{ icon: "fas fa-ellipsis-v" }}
