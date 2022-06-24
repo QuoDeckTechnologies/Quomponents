@@ -218,11 +218,11 @@ export default function NavBar(props) {
           {!labelContent?.title && (
             <img
               src={content?.fullLogo}
-              className="qui-full-logo-img"
+              className="qui-avatar-full-logo-img"
               alt="Logo"
             />
           )}
-          <div className="qui-content">
+          <div className="qui-navbar-content">
             {isSearch ? (
               <h4 className="qui-nav-bar-title">{labelContent?.title}</h4>
             ) : (
@@ -233,7 +233,7 @@ export default function NavBar(props) {
         <div className="qui-right-navbar">
           {isSearch && (
             <div
-              className="qui-searching"
+              className="qui-navbar-searching-icon-container"
               style={{ color: withColor?.searchIconColor }}
               onClick={props.onSearch}
             >
