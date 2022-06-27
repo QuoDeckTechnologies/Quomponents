@@ -116,7 +116,60 @@ Default.parameters = {
 
         },
         source: {
-            code: `<HCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<QuoCarousel 
+            content: [<HCard onClick={() => { }} content={{
+                image: {
+                    id: "image-1",
+                    extention: "",
+                },
+                name: "Sales Readiness",
+                description: "Understand how to prepare yourself for that sale",
+                buttonText: "Check",
+            }}
+                imageLibrary={[
+                    {
+                        id: "image-1",
+                        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                    }]} />,
+            <HCard onClick={() => { }} content={{
+                image: {
+                    id: "image-1",
+                    extention: "",
+                },
+                name: "Sales Readiness",
+                description: "Understand how to prepare yourself for that sale",
+                buttonText: "Check",
+            }}
+                imageLibrary={[
+                    {
+                        id: "image-1",
+                        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                    }]} />,
+            <HCard onClick={() => { }} content={{
+                image: {
+                    id: "image-1",
+                    extention: "",
+                },
+                name: "Sales Readiness",
+                description: "Understand how to prepare yourself for that sale",
+                buttonText: "Check",
+            }}
+                imageLibrary={[
+                    {
+                        id: "image-1",
+                        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                    }]}
+            />],
+            arrows: false,
+            autoPlay: false,
+            dots: false,
+            infinite: true,
+            slidesToShow: 1,
+            initialSlide: 1,
+            asNavFor: "",
+            isDisabled: false,
+            isHidden: false,
+            />`,
         },
     },
 };
@@ -216,7 +269,89 @@ VCard.parameters = {
                 "VCard passed as child of carousel",
         },
         source: {
-            code: `<VCard {...${JSON.stringify(VCard.args, null, 2)}}/>`,
+            code: `<QuoCarousel 
+            content: [<VCardWithButton onClick={() => { }} content={{
+                image: {
+                    id: "image-1",
+                    extention: "",
+                },
+                name: "Sales Readiness",
+                description: "Understand how to prepare yourself for that sale",
+                buttonText: "Check",
+            }}
+                imageLibrary={[
+                    {
+                        id: "image-1",
+                        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                    }]} />,
+            <VCardWithButton onClick={() => { }} content={{
+                image: {
+                    id: "image-1",
+                    extention: "",
+                },
+                name: "Sales Readiness",
+                description: "Understand how to prepare yourself for that sale",
+                buttonText: "Check",
+            }}
+                imageLibrary={[
+                    {
+                        id: "image-1",
+                        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                    }]} />,
+            <VCardWithButton onClick={() => { }} content={{
+                image: {
+                    id: "image-1",
+                    extention: "",
+                },
+                name: "Sales Readiness",
+                description: "Understand how to prepare yourself for that sale",
+                buttonText: "Check",
+            }}
+                imageLibrary={[
+                    {
+                        id: "image-1",
+                        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                    }]}
+            />,
+            <VCardWithButton onClick={() => { }} content={{
+                image: {
+                    id: "image-1",
+                    extention: "",
+                },
+                name: "Sales Readiness",
+                description: "Understand how to prepare yourself for that sale",
+                buttonText: "Check",
+            }}
+                imageLibrary={[
+                    {
+                        id: "image-1",
+                        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                    }]}
+            />,
+            <VCardWithButton onClick={() => { }} content={{
+                image: {
+                    id: "image-1",
+                    extention: "",
+                },
+                name: "Sales Readiness",
+                description: "Understand how to prepare yourself for that sale",
+                buttonText: "Check",
+            }}
+                imageLibrary={[
+                    {
+                        id: "image-1",
+                        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                    }]}
+            />,],
+            arrows: true,
+            autoPlay: false,
+            dots: true,
+            infinite: true,
+            slidesToShow: 3,
+            initialSlide: 1,
+            asNavFor: "",
+            isDisabled: false,
+            isHidden: false,/>`,
         },
     },
 };
