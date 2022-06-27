@@ -14,18 +14,25 @@ describe("OTPFields", () => {
     // -------------------------------------
     let component;
     let onClick = jest.fn();
+    let changeFocus = jest.fn();
+    let changeBlur = jest.fn();
+    let handleChange = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
-        component = shallow(
+        component = mount(
             <OTPFields
-                numFields={5}
+                numFields={3}
+                asSize="normal"
                 asFloated="none"
                 withColor={null}
                 withAnimation={null}
                 isHidden={false}
                 isDisabled={false}
                 onClick={onClick}
+                handleChange={handleChange}
+                changeFocus={changeFocus}
+                changeBlur={changeBlur}
             />
         );
     });
@@ -35,8 +42,63 @@ describe("OTPFields", () => {
     });
 
     it("it should pass the value to the OtpField", () => {
-        let OtpField = component.find("OtpInput");
-        component.find('OtpInput').simulate('change')
+        component.find('input').at(1).simulate('change')
+        component.find('input').at(1).simulate('change', { target: { value: '12345' } })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("it should render correct props when click on OTPField", () => {
+        component.find('input').at(0).simulate('change', { target: { value: 0 } })
+        component.find('input').at(0).simulate('blur')
+        component.find('input').at(0).simulate('click')
+
+        component.find('input').at(1).simulate('change', { target: { value: 1 } })
+        component.find('input').at(1).simulate('blur')
+        component.find('input').at(1).simulate('click')
+
+        component.find('input').at(2).simulate('change', { target: { value: 2 } })
+        component.find('input').at(2).simulate('blur')
+        component.find('input').at(2).simulate('click')
+        expect(component.exists()).toBe(true);
+    });
+
+    it("it should render correct props when focus on OTPField", () => {
+        component.find('input').at(1).simulate('focus')
+        expect(component.exists()).toBe(true);
+    });
+
+    it("it should render correct props when blur on OTPField", () => {
+        component.find('input').at(1).simulate('blur')
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as tiny", () => {
+        component.setProps({ asSize: "tiny" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as small", () => {
+        component.setProps({ asSize: "small" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as normal", () => {
+        component.setProps({ asSize: "normal" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as big", () => {
+        component.setProps({ asSize: "big" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as huge", () => {
+        component.setProps({ asSize: "huge" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as massive", () => {
+        component.setProps({ asSize: "massive" })
         expect(component.exists()).toBe(true);
     });
 
@@ -62,8 +124,11 @@ describe("OTPFields", () => {
 
     it("should render correctly when passed withColor props", () => {
         let colors = {
+            textColor: "#0000",
             accentColor: "#065254",
-            backgroundColor: "#34e5eb"
+            backgroundColor: "#34e5eb",
+            focusAccentColor: "#ffff",
+            focusBackgroundColor: "#121212",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
