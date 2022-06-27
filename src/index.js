@@ -1,4 +1,6 @@
-
+//---------------------------------------------------------------------
+// Quomponents
+//---------------------------------------------------------------------
 import AccentLine from './components/AccentLine/AccentLine.react';
 import ActionMenu from './components/ActionMenu/ActionMenu.react';
 import AmplayfierDateBlock from './components/AmplayfierDateBlock/AmplayfierDateBlock.react';
@@ -158,8 +160,18 @@ import VoiceoverSection from './components/RibbonMenu/toolsMenu/sections/Voiceov
 import RibbonToolsMenu from './components/RibbonMenu/toolsMenu/RibbonToolsMenu.react';
 import RibbonMenu from './components/RibbonMenu/RibbonMenu.react';
 import ThemeSet from './components/RibbonMenu/ThemeSet.react';
+import ConfirmationOverlay from './components/ConfirmationOverlay/ConfirmationOverlay.react';
+
+//---------------------------------------------------------------------
+//From NPM packages
+//---------------------------------------------------------------------
+import ButtonGroup from '@mui/material/ButtonGroup';
+import TextField from '@mui/material/TextField';
 
 export {
+    //---------------------------------------------------------------------
+    // Quomponents
+    //---------------------------------------------------------------------
     AccentLine,
     ActionMenu,
     AmplayfierDateBlock,
@@ -318,5 +330,12 @@ export {
     VoiceoverSection,
     RibbonToolsMenu,
     RibbonMenu,
-    ThemeSet
+    ThemeSet,
+    ConfirmationOverlay,
+
+    //---------------------------------------------------------------------
+    //From NPM packages
+    //----------------------------------------------
+    ButtonGroup,
+    TextField
 };
