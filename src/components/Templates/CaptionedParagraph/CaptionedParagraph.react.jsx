@@ -188,11 +188,12 @@ export default function CaptionedParagraph(props) {
                         withColor={textblockColors}
                     />
                 </div>
-                <TextBlock {...props}
-                    content={props.data?.caption}
-                    withColor={captionColors}
-                />
-
+                <div className="qt-sm">
+                    <TextBlock {...props}
+                        content={props.data?.caption}
+                        withColor={captionColors}
+                    />
+                </div>
             </div>
         </motion.div>
     );

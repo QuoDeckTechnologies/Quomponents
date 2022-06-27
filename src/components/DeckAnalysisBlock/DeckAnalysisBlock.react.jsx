@@ -174,20 +174,20 @@ export default function DeckAnalysis(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}
+            className={`qui qt-shadow ${quommonClasses.parentClasses}`}
         >
             <div className={`qui qui-main-deckblock ${quommonClasses.childClasses}`} style={colors.textColors}>
                 <div className="qui-deckblock-top">
                     <div className="qui-deckblock-header">
                         <div className="qui-deckblock-rtop">
-                            <h1 className={`qui-deckblock-slidecount`}>{content?.slideCount}</h1>
+                            <h3 className={`qui-deckblock-slidecount`}>{content?.slideCount}</h3>
                             <i className={`qui-deckblock-icon ${content?.icon}`}></i>
                         </div>
-                        <h1 className="qui-fheader">{labelContent?.fheader}</h1>
+                        <h5 className="qui-fheader">{labelContent?.fheader}</h5>
                     </div>
                     <div className="qui-deckblock-header-message" >
-                        <h1>{labelContent?.header}</h1>
-                        <p>{labelContent?.message}</p>
+                        <h5>{labelContent?.header}</h5>
+                        <span>{labelContent?.message}</span>
                     </div>
                 </div>
                 <div className="qui-deckblock-bottom" style={props.content?.status === true ? { backgroundColor: "#C1DC9E" } : { backgroundColor: "#D97575" }} >

@@ -195,11 +195,13 @@ export default function ImageWithCaption(props) {
                         src={resolveImage(data?.image.id, imageLibrary)}
                         alt="ImageWithCaption" />
                 )}
+                <div className="qui qt-sm">
                 <TextBlock {...props}
                     key={slideId}
                     content={data?.caption}
                     withColor={captionColors}
                 />
+                </div>
                 {<Button {...props}
                     content={"Continue"}
                     asFloated={"inline"}

@@ -135,7 +135,7 @@ export default function ActionMenu(props) {
                 style={colors.accentColors}
               ></i>
             </div>
-            <div className={`qui-actionmenu-titles `} style={colors.textColors}>
+            <div className={`qui qt-sm qui-actionmenu-titles `} style={colors.textColors}>
               {content.title}
             </div>
           </div>

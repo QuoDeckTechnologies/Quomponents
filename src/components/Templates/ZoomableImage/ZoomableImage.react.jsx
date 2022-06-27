@@ -233,7 +233,9 @@ export default function ZoomableImage(props) {
                                 <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
                             )}
                         </div>
+                        <div className="qt-sm">
                         <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+                        </div>
                     </div>
                 </div>
             )
@@ -309,7 +311,7 @@ export default function ZoomableImage(props) {
                             <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
                         )}
                     </div>
-                    <div className="qui-zoomable-image-presenter-caption">
+                    <div className="qt-sm qui-zoomable-image-presenter-caption">
                         <TextBlock {...props}
                             content={data?.caption}
                             asFloated="left"
