@@ -23,11 +23,6 @@
 }
 
 .qui-app-menu {
-  .qui-app-menu-container {
-    .qui-app-menu-icon-container .qui-app-menu-icon-container {
-      padding: 0 1em 0 0;
-    }
-  }
   .qui .qui-menu-block-container {
     border-radius: 0;
   }
@@ -56,10 +51,6 @@
 
 .qui-app-menu-container {
   display: flex;
-}
-
-.qui-app-menu-icon-container .qui-app-menu-icon-container {
-  padding: 0 1em 0 0.5em;
 }
 
 .qui-app-menu-container .qui-app-menu-inner-container {
