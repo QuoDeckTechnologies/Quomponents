@@ -8,7 +8,7 @@ Include popular React components in your React projects easily with Quomponents.
 npm i quomponents
 ```
 
-##Usage
+## Usage
 ```markdown
 import { AccentLine } from 'quomponents';
 
