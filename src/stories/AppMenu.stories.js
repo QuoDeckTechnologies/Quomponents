@@ -67,6 +67,14 @@ export default {
         },
       },
     },
+    withLabel: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          content: "",
+        },
+      },
+    },
     isHidden: {
       table: {
         category: "is-Toggles",

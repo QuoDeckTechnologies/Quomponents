@@ -166,7 +166,7 @@ export default function AppMenu(props) {
           </div>
         </div>
         <div
-          className={`qui-qui-app-menu-avatar-container float-${props.asFloated}`}
+          className={`qui-app-menu-avatar-container float-${props.asFloated}`}
         >
           <div
             style={colors}

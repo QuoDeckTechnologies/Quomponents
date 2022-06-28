@@ -127,14 +127,7 @@ export default function MenuBlock(props) {
     ? { color: labelContent.textColor }
     : {};
   //-------------------------------------------------------------------
-  // 3. Set the color
-  //-------------------------------------------------------------------
-  let colors = {
-    backgroundColor: props.withColor?.backgroundColor,
-    color: props.withColor?.textColor,
-  };
-  //-------------------------------------------------------------------
-  // 4. Translate the text objects in case their is a dictionary provided
+  // 3. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   if (
     props.withTranslation?.lang &&
@@ -153,8 +146,12 @@ export default function MenuBlock(props) {
         <div
           className={`qui-menu-block-container qui-btn size-${props.asSize} 
             variant-${props.asVariant} emp-${props.asEmphasis} `}
+          style={{
+            backgroundColor: props.withColor?.backgroundColor,
+            color: props.withColor?.textColor,
+          }}
         >
-          <div style={colors} className="qui-menu-block-icon-container">
+          <div className="qui-menu-block-icon-container">
             <div className="qui-menu-block-catalog">
               <div
                 className={`qui-menu-block-label${quommonClasses.childClasses}`}
