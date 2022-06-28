@@ -211,7 +211,7 @@ export default function PictureFuddle(props) {
                         <InputField {...props}
                             content={{ label: props.data?.answer ? props.data?.answer : "Answer" }}
                             withColor={inputFieldColors}
-                            onClick={(name, value) => changeText(value)}
+                            onSubmit={(name, value) => changeText(value)}
                             name="picture-fuddle-input-field" />
                         <Button
                             content={buttonText}

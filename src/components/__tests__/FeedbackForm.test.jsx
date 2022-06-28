@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
+import { shallow, mount } from "enzyme";
 //--------------------------------------
 // Import Components
 // -------------------------------------

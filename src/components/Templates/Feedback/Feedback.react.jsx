@@ -20,8 +20,8 @@ Feedback.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      Feedback data should be passed in data field and it is a required field
-      */
+    Feedback data should be passed in data field and it is a required field
+    */
     data: PropTypes.shape({
         feedback: PropTypes.arrayOf(
             PropTypes.string
@@ -37,8 +37,8 @@ Feedback.propTypes = {
     // Quommon props
     //=======================================
     /**
-      Use to define standard component type
-      */
+    Use to define standard component type
+    */
     asVariant: PropTypes.oneOf([
         "primary",
         "secondary",
@@ -58,8 +58,8 @@ Feedback.propTypes = {
         buttonHoverTextColor: PropTypes.string,
     }),
     /**
-      Use to define the entry animation of the component
-      */
+    Use to define the entry animation of the component
+    */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -75,16 +75,16 @@ Feedback.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to enable/disable the component
-      */
+    Use to enable/disable the component
+    */
     isDisabled: PropTypes.bool,
     /**
-      Use to show/hide the component
-      */
+    Use to show/hide the component
+    */
     isHidden: PropTypes.bool,
     /**
-     Feedback component must have the onClick function passed as props
-     */
+    Feedback component must have the onClick function passed as props
+    */
     onClick: PropTypes.func,
 };
 
@@ -170,7 +170,6 @@ export default function Feedback(props) {
         }
         return res;
     });
-
     //-------------------------------------------------------------------
     // 5. Set background image and color for card
     //-------------------------------------------------------------------

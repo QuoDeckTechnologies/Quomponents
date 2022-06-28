@@ -101,7 +101,7 @@ DeckAnalysis.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "primary",
-    asFloated:"left",
+    asFloated: "left",
     withColor: null,
     withAnimation: null,
     withTranslation: null,

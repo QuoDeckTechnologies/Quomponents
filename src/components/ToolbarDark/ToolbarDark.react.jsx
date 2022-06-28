@@ -202,7 +202,6 @@ export default function ToolbarDark(props) {
                   {...props}
                   content={{ link: icon.link }}
                   withIcon={{ icon: icon.icon }}
-                  // asSize={"tiny"}
                   withLabel={{
                     content: tObj ? iconLabel[index]["label"] : icon.label,
                     format: icon.format,

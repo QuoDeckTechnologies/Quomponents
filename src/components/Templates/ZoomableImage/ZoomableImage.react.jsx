@@ -234,7 +234,7 @@ export default function ZoomableImage(props) {
                             )}
                         </div>
                         <div className="qt-sm">
-                        <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+                            <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
                         </div>
                     </div>
                 </div>

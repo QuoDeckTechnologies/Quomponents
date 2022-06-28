@@ -264,13 +264,13 @@ export default function IconLink(props) {
                 >
                     <div
                         className={`qui-btn qui-icon-label emp-text`} style={Object.assign({}, colors.lableHandle)}>
-                        <div className="qui qt-tn">{getLabel(labelContent, "label")}</div>
+                        <div className="qui qt-utn">{getLabel(labelContent, "label")}</div>
                     </div>
                     <i onClick={props.onClick} className={`${props.withIcon?.icon} qui-iconlink-icon  ${tilt ? 'tilt' : ''}`}>
                     </i>
                     <div
                         className={`qui-btn qui-icon-caption emp-text`} style={Object.assign({}, colors.lableHandle)}>
-                        <div className="qui qt-tn">{getLabel(labelContent, "caption")}</div>
+                        <div className="qui qt-utn">{getLabel(labelContent, "caption")}</div>
                     </div>
                 </div>
             </a >
