@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Button from "../components/Buttons/Button/Button.react";
 import ClickableImage from "../components/ClickableImage/ClickableImage.react";
 
 export default {
@@ -199,9 +200,9 @@ WithSlide.args = {
   },
   isCircular: false,
   isActive: false,
-  withColor:{
-    borderColor:'#fcbf49'
-  }
+  withColor: {
+    borderColor: "#fcbf49",
+  },
 };
 WithSlide.parameters = {
   docs: {
@@ -211,6 +212,82 @@ WithSlide.parameters = {
     },
     source: {
       code: `<ClickableImage {...${JSON.stringify(WithSlide.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Light Box story
+// -------------------------------------------------------------
+const LightBoxTemplate = (args) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      style={{
+        border: "0.1em solid black",
+        display: "inline-block",
+        height: "25em",
+      }}
+    >
+      {!open && (
+        <div style={{ width: "15em" }}>
+          <ClickableImage
+            content={{ image: args?.content.image }}
+            onClick={() => setOpen(true)}
+            isActive={args?.isActive}
+            isCircular={args?.isCircular}
+            withColor={args?.withColor}
+          />
+        </div>
+      )}
+      {open && (
+        <div
+          style={{
+            width: "15em",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Button
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            content="Continue"
+            onClick={() => setOpen(false)}
+          />
+        </div>
+      )}
+    </div>
+  );
+};
+export const WithLighBox = LightBoxTemplate.bind({});
+WithLighBox.args = {
+  ...Default.args,
+  content: {
+    image:
+      "https://images.unsplash.com/photo-1647339490516-b835c0408b71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  },
+  isCircular: false,
+  isActive: false,
+  withColor: {
+    borderColor: "#fcbf49",
+  },
+};
+WithLighBox.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to Show the ClickableImage with a another component(LightBox).",
+    },
+    source: {
+      code: `<ClickableImage {...${JSON.stringify(
+        WithLighBox.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
