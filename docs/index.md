@@ -5,7 +5,7 @@ Include popular React components in your React projects easily with Quomponents.
 ## Installation (for standard modern project)
 
 ```markdown
-npm i quomponents
+npm install quomponents --save
 ```
 
 ## Usage
