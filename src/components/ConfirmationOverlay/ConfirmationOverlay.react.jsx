@@ -188,11 +188,13 @@ export default function ConfirmationOverlay(props) {
                     content={withConfirmation && withConfirmation.yes ? withConfirmation.yes : "Yes"}
                     withColor={confirmColors}
                     onClick={yesClick}
+                    asSize="big"
                 />
                 <Button
                     content={withConfirmation && withConfirmation.no ? withConfirmation.no : "No"}
                     onClick={noClick}
                     withColor={cancelColors}
+                    asSize="big"
                 />
             </ButtonGroup>
         </motion.div>
