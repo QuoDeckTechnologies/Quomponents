@@ -2,7 +2,7 @@ import React from "react";
 import ActionMenu from "../components/ActionMenu/ActionMenu.react";
 const dictionary = JSON.stringify({
   hi: {
-    actionMenus: {
+    actionMenu: {
       content: [
         { title: "डेक खोलो" },
         { title: "डेक संपादित करें" },
@@ -147,7 +147,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "actionMenus",
+    tgt: "actionMenu",
     dictionary: dictionary,
   },
   isDisabled: false,
@@ -223,7 +223,7 @@ TranslatedActionMenu.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "actionMenus",
+    tgt: "actionMenu",
     dictionary: dictionary,
   },
 };
