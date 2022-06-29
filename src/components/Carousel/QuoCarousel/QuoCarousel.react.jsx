@@ -56,7 +56,7 @@ QuoCarousel.defaultProps = {
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css.
-
+- We can use any component as a child of carousel
 **/
 export default function QuoCarousel(props) {
     const sliderRef = useRef();

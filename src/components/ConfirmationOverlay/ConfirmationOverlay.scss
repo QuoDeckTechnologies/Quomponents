@@ -1,0 +1,31 @@
+.qui-confirmation-overlay-container {
+    border-radius: 5px;
+    background: #EFEFEF;
+    color: #666666;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 287px;
+    height: 131px;
+
+    .qui-confirmation-overlay-group {
+        position: relative;
+        font-size: 0.75em;
+
+        .qui-overlay-header {
+            display: -webkit-box;
+            max-width: 94%;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin: 21px auto;
+        }
+
+        .qui-button {
+            padding: 0 2px;
+        }
+    }
+}
