@@ -67,13 +67,17 @@ SquareWrapperCarousel.defaultProps = {
 **/
 export default function SquareWrapperCarousel(props) {
   //-------------------------------------------------------------------
+  // 1. Destructuring props
+  //-------------------------------------------------------------------
+  const { content, onClick } = props;
+  //-------------------------------------------------------------------
   // 1. Defining Ref
   //-------------------------------------------------------------------
   const sliderRef = useRef();
   //-------------------------------------------------------------------
   // 2. Defining states
   //-------------------------------------------------------------------
-  const [carouselContent, setCarouselContent] = useState(props.content);
+  const [carouselContent, setCarouselContent] = useState(content);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -82,11 +86,11 @@ export default function SquareWrapperCarousel(props) {
   // 4. Defining hook for component updates
   //-------------------------------------------------------------------
   useEffect(() => {
-    setCarouselContent(props.content);
-  }, [props.content]);
+    setCarouselContent(content);
+  }, [content]);
   useEffect(() => {
-    props.onClick(carouselContent);
-  }, [carouselContent]);
+    onClick(carouselContent);
+  }, [carouselContent, onClick]);
   //-------------------------------------------------------------------
   // 5. Function to handle slide selection
   //-------------------------------------------------------------------

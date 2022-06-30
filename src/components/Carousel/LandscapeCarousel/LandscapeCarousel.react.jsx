@@ -67,28 +67,32 @@ LandscapeCarousel.defaultProps = {
 **/
 export default function LandscapeCarousel(props) {
   //-------------------------------------------------------------------
-  // 1. Defining Ref
+  // 1. Destructuring props
+  //-------------------------------------------------------------------
+  const { content, onClick } = props;
+  //-------------------------------------------------------------------
+  // 2. Defining Ref
   //-------------------------------------------------------------------
   const sliderRef = useRef();
   //-------------------------------------------------------------------
-  // 2. Defining states
+  // 3. Defining states
   //-------------------------------------------------------------------
-  const [carouselContent, setCarouselContent] = useState(props.content);
+  const [carouselContent, setCarouselContent] = useState(content);
   //-------------------------------------------------------------------
-  // 3. Set the classes
+  // 4. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "landscape-carousel");
   //-------------------------------------------------------------------
-  // 4. Defining hook for component updates
+  // 5. Defining hook for component updates
   //-------------------------------------------------------------------
   useEffect(() => {
-    setCarouselContent(props.content);
-  }, [props.content]);
+    setCarouselContent(content);
+  }, [content]);
   useEffect(() => {
-    props.onClick(carouselContent);
-  }, [carouselContent]);
+    onClick(carouselContent);
+  }, [carouselContent, onClick]);
   //-------------------------------------------------------------------
-  // 5. Function to handle slide selection
+  // 6. Function to handle slide selection
   //-------------------------------------------------------------------
   const handleSelect = (data) => {
     let tmp_state = carouselContent;
@@ -109,7 +113,7 @@ export default function LandscapeCarousel(props) {
     setCarouselContent([...tmp_arr]);
   };
   //-------------------------------------------------------------------
-  // 6. Get animation of the component
+  // 7. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   var settings = {
