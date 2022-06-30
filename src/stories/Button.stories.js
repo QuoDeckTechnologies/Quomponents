@@ -75,7 +75,6 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
-                    accentColor: "",
                     textColor: "",
                     hoverBackgroundColor: "",
                     hoverTextColor: "",
@@ -199,7 +198,6 @@ Default.args = {
     withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
-        accentColor: "",
         textColor: "",
         hoverBackgroundColor: "",
         hoverTextColor: "",
@@ -251,7 +249,6 @@ DisabledButton.args = {
     withIcon: { icon: "fas fa-minus-circle", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
-        accentColor: "",
         textColor: "",
         hoverBackgroundColor: "",
         hoverTextColor: "",
