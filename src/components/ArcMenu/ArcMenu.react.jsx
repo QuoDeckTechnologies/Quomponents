@@ -21,7 +21,12 @@ ArcMenu.propTypes = {
   menuContent: PropTypes.arrayOf(
     PropTypes.shape({
       header: PropTypes.string,
-      list: PropTypes.arrayOf(PropTypes.string),
+      list: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+          func: PropTypes.func,
+        })
+      ),
     })
   ),
   /**
@@ -31,6 +36,7 @@ ArcMenu.propTypes = {
     PropTypes.shape({
       name: PropTypes.string,
       image: PropTypes.string,
+      func: PropTypes.func,
     })
   ),
   /**
@@ -192,22 +198,22 @@ export default function ArcMenu(props) {
             key={i}
             style={{ color: withColor?.accentColor }}
           >
-            {dataObj.header?.toUpperCase()}
+            {dataObj.header}
             <div className="qui-arc-menu-list-item-container">
               {dataObj.list.map((listItem, index) => (
                 <div
                   className="qui-arc-menu-list-item"
                   onMouseDown={() => {
-                    props.onClick(listItem);
+                    listItem.func();
                     setOpenMenu(false);
                   }}
-                  key={listItem + index}
+                  key={listItem.title + index}
                   style={{
                     backgroundColor: withColor?.backgroundColor,
                     color: withColor?.textColor,
                   }}
                 >
-                  {listItem.toUpperCase()}
+                  {listItem.title}
                 </div>
               ))}
             </div>
@@ -227,7 +233,7 @@ export default function ArcMenu(props) {
               asSize="huge"
               asPadded="fitted"
               onClick={() => {
-                props.onClick(dataObj?.name);
+                dataObj.func();
                 setOpenMenu(false);
               }}
             />

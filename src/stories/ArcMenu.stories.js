@@ -77,24 +77,49 @@ Default.args = {
   menuContent: [
     {
       header: "learning",
-      list: ["upload scorm", "upload pdf", "add video link", "create qdf deck"],
+      list: [
+        { title: "upload scorm", func: () => {} },
+        { title: "upload pdf", func: () => {} },
+        { title: "add video link", func: () => {} },
+        {
+          title: "create qdf deck",
+          func: () => {},
+        },
+      ],
     },
     {
       header: "evaluating",
-      list: ["create survey", "create quiz", "add a game"],
+      list: [
+        {
+          title: "create survey",
+          func: () => {},
+        },
+        {
+          title: "create quiz",
+          func: () => {},
+        },
+        {
+          title: "add a game",
+          func: () => {},
+        },
+      ],
     },
     {
       header: "rewarding",
-      list: ["give a certificate", "give a badge", "give a reward"],
+      list: [
+        { title: "give a certificate", func: () => {} },
+        { title: "give a badge", func: () => {} },
+        { title: "give a reward", func: () => {} },
+      ],
     },
   ],
   nuggetContent: [
-    { name: "nugget story", image: Nugget_Story },
-    { name: "nugget quiz", image: Nugget_Quiz },
-    { name: "nugget assessment", image: Nugget_Assessment },
-    { name: "nugget game", image: Nugget_Game },
-    { name: "nugget article", image: Nugget_Article },
-    { name: "nugget feedback", image: Nugget_Feedback },
+    { name: "nugget story", image: Nugget_Story, func: () => {} },
+    { name: "nugget quiz", image: Nugget_Quiz, func: () => {} },
+    { name: "nugget assessment", image: Nugget_Assessment, func: () => {} },
+    { name: "nugget game", image: Nugget_Game, func: () => {} },
+    { name: "nugget article", image: Nugget_Article, func: () => {} },
+    { name: "nugget feedback", image: Nugget_Feedback, func: () => {} },
   ],
   menuType: "close",
   arcIcon: "close",
@@ -121,12 +146,12 @@ export const NuggetMenuButton = Template.bind({});
 NuggetMenuButton.args = {
   ...Default.args,
   nuggetContent: [
-    { name: "nugget story", image: Nugget_Story },
-    { name: "nugget quiz", image: Nugget_Quiz },
-    { name: "nugget assessment", image: Nugget_Assessment },
-    { name: "nugget game", image: Nugget_Game },
-    { name: "nugget article", image: Nugget_Article },
-    { name: "nugget feedback", image: Nugget_Feedback },
+    { name: "nugget story", image: Nugget_Story, func: () => {} },
+    { name: "nugget quiz", image: Nugget_Quiz, func: () => {} },
+    { name: "nugget assessment", image: Nugget_Assessment, func: () => {} },
+    { name: "nugget game", image: Nugget_Game, func: () => {} },
+    { name: "nugget article", image: Nugget_Article, func: () => {} },
+    { name: "nugget feedback", image: Nugget_Feedback, func: () => {} },
   ],
   menuContent: [],
   menuType: "nugget-menu",
@@ -152,15 +177,40 @@ MenuButton.args = {
   menuContent: [
     {
       header: "learning",
-      list: ["upload scorm", "upload pdf", "add video link", "create qdf deck"],
+      list: [
+        { title: "upload scorm", func: () => {} },
+        { title: "upload pdf", func: () => {} },
+        { title: "add video link", func: () => {} },
+        {
+          title: "create qdf deck",
+          func: () => {},
+        },
+      ],
     },
     {
       header: "evaluating",
-      list: ["create survey", "create quiz", "add a game"],
+      list: [
+        {
+          title: "create survey",
+          func: () => {},
+        },
+        {
+          title: "create quiz",
+          func: () => {},
+        },
+        {
+          title: "add a game",
+          func: () => {},
+        },
+      ],
     },
     {
       header: "rewarding",
-      list: ["give a certificate", "give a badge", "give a reward"],
+      list: [
+        { title: "give a certificate", func: () => {} },
+        { title: "give a badge", func: () => {} },
+        { title: "give a reward", func: () => {} },
+      ],
     },
   ],
   nuggetContent: [],
@@ -391,7 +441,15 @@ const ExampleTemplateMenu = (args) => {
         menuContent={[
           {
             header: "learning",
-            list: ["google", "youtube", "github", "modal"],
+            list: [
+              { title: "upload scorm", func: () => {} },
+              { title: "upload pdf", func: () => {} },
+              { title: "add video link", func: () => {} },
+              {
+                title: "create qdf deck",
+                func: () => {},
+              },
+            ],
           },
         ]}
         menuType="menu"
@@ -446,9 +504,13 @@ const ExampleTemplateNugget = (args) => {
     >
       <ArcMenu
         nuggetContent={[
-          { name: "nugget story", image: Nugget_Story },
-          { name: "nugget quiz", image: Nugget_Quiz },
-          { name: "nugget assessment", image: Nugget_Assessment },
+          { name: "nugget story", image: Nugget_Story, func: () => {} },
+          { name: "nugget quiz", image: Nugget_Quiz, func: () => {} },
+          {
+            name: "nugget assessment",
+            image: Nugget_Assessment,
+            func: () => {},
+          },
         ]}
         menuType="nugget-menu"
         arcIcon="menu"
