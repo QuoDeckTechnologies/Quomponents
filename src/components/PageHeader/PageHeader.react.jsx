@@ -146,7 +146,7 @@ export default function PageHeader(props) {
         props.withTranslation.lang !== "en"
     ) {
         let tObj = getTranslation(props.withTranslation);
-        headerText = tObj.text ? tObj.text : "";
+        headerText = tObj?.text || "";
     }
     // ========================= Render Function =================================
     return (

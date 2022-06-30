@@ -6,18 +6,12 @@ export default {
   component: InputField,
   argTypes: {
     name: "",
-    content: {
-      table: {
-        defaultValue: {
-          label: "Input Name",
-          value: "Please input your text here",
-          placeholder: "Options",
-          maxLength: 1,
-          type: "text",
-          multiLine: false
-        },
-      },
-    },
+    label: "",
+    value: "",
+    placeholder: "",
+    maxLength: 0,
+    type: "text",
+    multiline: false,
     asEmphasis: {
       control: "select",
       options: ["filled", "charLimited", "listInput", "shortField"],
@@ -39,6 +33,9 @@ export default {
           textColor: "",
           accentColor: "",
           backgroundColor: "",
+          onSelectTextColor: "",
+          onSelectAccentColor: "",
+          onSelectBackgroundColor: "",
         },
       },
     },
@@ -95,14 +92,12 @@ export default {
 const Template = (args) => <InputField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    label: "Input Name",
-    value: "Please input your text here",
-    placeholder: "Options",
-    maxLength: 300,
-    type: "text",
-    multiLine: false
-  },
+  label: "Input Name",
+  value: "Please input your text here",
+  placeholder: "Options",
+  maxLength: 300,
+  type: "text",
+  multiline: false,
   name: "testing_id",
   asEmphasis: "filled",
   asFloated: "none",
@@ -110,6 +105,9 @@ Default.args = {
     textColor: "#666666",
     accentColor: "#ffab00",
     backgroundColor: "#ffab000d",
+    onSelectTextColor: "",
+    onSelectAccentColor: "",
+    onSelectBackgroundColor: "",
   },
   withAnimation: {
     animation: "collapse",
@@ -155,13 +153,11 @@ charLimitedField.parameters = {
 export const listInputField = Template.bind({});
 listInputField.args = {
   ...Default.args,
-  content: {
-    value: "",
-    placeholder: "Options",
-    maxLength: 300,
-    type: "text",
-    multiLine: false
-  },
+  value: "",
+  placeholder: "Options",
+  maxLength: 300,
+  type: "text",
+  multiline: false,
   asEmphasis: "listInput",
 };
 listInputField.parameters = {
@@ -185,9 +181,7 @@ listInputField.parameters = {
 export const ShortFieldField = Template.bind({});
 ShortFieldField.args = {
   ...Default.args,
-  content: {
-    value: "0",
-  },
+  value: "0",
   asEmphasis: "shortField",
 };
 ShortFieldField.parameters = {
