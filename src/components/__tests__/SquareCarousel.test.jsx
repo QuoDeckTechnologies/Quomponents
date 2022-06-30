@@ -11,7 +11,7 @@ describe('SquareCarousel', () => {
     let component, content;
     const dictionary = JSON.stringify({
         hi: {
-            bannercard: { header: "", content: "" },
+            bannerCard: { header: "", content: "" },
             ribbon: {
                 new: "नया",
                 restricted: "प्रतिबंधित",
@@ -47,7 +47,7 @@ describe('SquareCarousel', () => {
             },
             withTranslation: {
                 lang: "hi",
-                tgt: "bannercard",
+                tgt: "bannerCard",
                 dictionary: dictionary,
             },
         });

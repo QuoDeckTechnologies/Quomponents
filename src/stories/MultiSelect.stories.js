@@ -177,7 +177,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "MultiSelect",
+    tgt: "templateActions",
     dictionary: dictionary,
   },
   withAnimation: {
@@ -232,7 +232,7 @@ const AllVariantTemplate = (args) => {
           asVariant: "primary",
           withTranslation: {
             lang: "en",
-            tgt: "MultiSelect",
+            tgt: "templateActions",
             dictionary: dictionary,
           },
           withAnimation: {
@@ -266,7 +266,7 @@ const AllVariantTemplate = (args) => {
           asVariant: "secondary",
           withTranslation: {
             lang: "en",
-            tgt: "MultiSelect",
+            tgt: "templateActions",
             dictionary: dictionary,
           },
           withAnimation: {
@@ -300,7 +300,7 @@ const AllVariantTemplate = (args) => {
           asVariant: "success",
           withTranslation: {
             lang: "en",
-            tgt: "MultiSelect",
+            tgt: "templateActions",
             dictionary: dictionary,
           },
           withAnimation: {
@@ -334,7 +334,7 @@ const AllVariantTemplate = (args) => {
           asVariant: "warning",
           withTranslation: {
             lang: "en",
-            tgt: "MultiSelect",
+            tgt: "templateActions",
             dictionary: dictionary,
           },
           withAnimation: {
@@ -368,7 +368,7 @@ const AllVariantTemplate = (args) => {
           asVariant: "error",
           withTranslation: {
             lang: "en",
-            tgt: "MultiSelect",
+            tgt: "templateActions",
             dictionary: dictionary,
           },
           withAnimation: {

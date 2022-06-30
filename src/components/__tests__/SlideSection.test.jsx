@@ -24,7 +24,7 @@ describe("SlideSection", () => {
 	};
 	const dictionary = JSON.stringify({
 		en: {
-			SlideSection: {
+			slideSection: {
 				slide: "Slide",
 				newSlide: "New Slide",
 				duplicateSlide: "Duplicate Slide",
@@ -32,7 +32,7 @@ describe("SlideSection", () => {
 			}
 		},
 		hi: {
-			SlideSection: {
+			slideSection: {
 				slide: "स्लाइड",
 				newSlide: "नई स्लाइड",
 				duplicateSlide: "स्लाइड प्रतिलिपि करे",
@@ -78,7 +78,7 @@ describe("SlideSection", () => {
 		component.setProps({
 			withTranslation: {
 				lang: "hi",
-				tgt: "SlideSection",
+				tgt: "slideSection",
 				dictionary: dictionary,
 			},
 		});

@@ -19,7 +19,7 @@ Object.assign(navigator, {
 
 const dictionary = JSON.stringify({
 	hi: {
-		CourseCard: {
+		courseCard: {
 			isSequential: {
 				true: "अनुक्रमिक पाठ्यक्रम",
 				false: "गैर अनुक्रमिक पाठ्यक्रम"
@@ -96,7 +96,7 @@ describe("CourseCard", () => {
 		component.setProps({
 			withTranslation: {
 				lang: "hi",
-				tgt: "CourseCard",
+				tgt: "courseCard",
 				dictionary: dictionary,
 			},
 		});
@@ -107,7 +107,7 @@ describe("CourseCard", () => {
 		component.setProps({
 			withTranslation: {
 				lang: "hi",
-				tgt: "CourseCard",
+				tgt: "courseCard",
 				dictionary: dictionary,
 			},
 		});
@@ -270,7 +270,7 @@ describe("CourseCard", () => {
 			content: { sequential: true },
 			withTranslation: {
 				lang: "hi",
-				tgt: "CourseCard",
+				tgt: "courseCard",
 				dictionary: dictionary,
 			},
 		});
@@ -282,7 +282,7 @@ describe("CourseCard", () => {
 			content: { sequential: false },
 			withTranslation: {
 				lang: "hi",
-				tgt: "CourseCard",
+				tgt: "courseCard",
 				dictionary: dictionary,
 			},
 		});

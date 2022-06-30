@@ -25,14 +25,14 @@ describe("SlideSettings", () => {
 
 	const dictionary = JSON.stringify({
 		en: {
-			SlideSettings: {
+			slideSettings: {
 				settings: "Settings",
 				enableBackArrow: "Enable Back Arrow",
 				enableNextArrow: "Enable Next Arrow"
 			}
 		},
 		hi: {
-			SlideSettings: {
+			slideSettings: {
 				settings: 'समायोजन',
 				enableBackArrow: "वापस तीर सक्षम करें",
 				enableNextArrow: "अगला तीर सक्षम करें"
@@ -77,7 +77,7 @@ describe("SlideSettings", () => {
 		component.setProps({
 			withTranslation: {
 				lang: "hi",
-				tgt: "SlideSettings",
+				tgt: "slideSettings",
 				dictionary: dictionary,
 			},
 		});

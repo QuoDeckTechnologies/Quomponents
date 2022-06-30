@@ -5,8 +5,8 @@ const dictionary = JSON.stringify({
     anagram: {
       label: "इनपुट नाम",
       quizLabel: "उत्तर जांचें",
-      nonQuizLabel: "उत्तर दें"
-    }
+      nonQuizLabel: "उत्तर दें",
+    },
   },
 });
 export default {
@@ -102,7 +102,8 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a Anagram with a question and jumbled answer, the user need to submit the correct word as answer, we can switch between the image and SlideHeader by adding or removing the image prop",
+    componentSubtitle:
+      "Displays a Anagram with a question and jumbled answer, the user need to submit the correct word as answer, we can switch between the image and SlideHeader by adding or removing the image prop",
     a11y: { disable: true },
     docs: {
       iframeHeight: 650,
@@ -117,26 +118,31 @@ export const Default = Template.bind({});
 Default.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    subtitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     backgroundImage: {
       id: "background-image",
-      extention: ""
+      extention: "",
     },
     image: {
       id: "header-image",
-      extention: ""
+      extention: "",
     },
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     answer: "Answer",
-    purpose: ""
+    purpose: "",
   },
-  imageLibrary: [{
-    id: "background-image",
-    image: ""
-  }, {
-    id: "header-image",
-    image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-  }],
+  imageLibrary: [
+    {
+      id: "background-image",
+      image: "",
+    },
+    {
+      id: "header-image",
+      image:
+        "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+    },
+  ],
   slideId: 0,
   asVariant: "warning",
   withColor: {
@@ -182,10 +188,11 @@ export const AnagramWithSlideHeader = Template.bind({});
 AnagramWithSlideHeader.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    subtitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     answer: "Answer",
-    purpose: ""
+    purpose: "",
   },
   slideId: 0,
   asVariant: "warning",
@@ -209,13 +216,22 @@ AnagramWithSlideHeader.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "anagram",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
 AnagramWithSlideHeader.parameters = {
   docs: {
     source: {
-      code: `<Anagram {...${JSON.stringify(AnagramWithSlideHeader.args, null, 2)}}/>`,
+      code: `<Anagram {...${JSON.stringify(
+        AnagramWithSlideHeader.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -227,10 +243,11 @@ export const TranslatedAnagramWithSlideHeader = Template.bind({});
 TranslatedAnagramWithSlideHeader.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    subtitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     answer: "Answer",
-    purpose: ""
+    purpose: "",
   },
   slideId: 0,
   asVariant: "warning",
@@ -265,7 +282,11 @@ TranslatedAnagramWithSlideHeader.args = {
 TranslatedAnagramWithSlideHeader.parameters = {
   docs: {
     source: {
-      code: `<Anagram {...${JSON.stringify(TranslatedAnagramWithSlideHeader.args, null, 2)}}/>`,
+      code: `<Anagram {...${JSON.stringify(
+        TranslatedAnagramWithSlideHeader.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -277,19 +298,23 @@ export const AnagramWithSlideHeaderAndBackgroundImage = Template.bind({});
 AnagramWithSlideHeaderAndBackgroundImage.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    subtitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     backgroundImage: {
       id: "background-image",
-      extention: ""
+      extention: "",
     },
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     answer: "Answer",
-    purpose: ""
+    purpose: "",
   },
-  imageLibrary: [{
-    id: 'background-image',
-    image: "https://i.pinimg.com/564x/76/69/37/766937c25ef31dbe9e62a74c91108594.jpg",
-  }],
+  imageLibrary: [
+    {
+      id: "background-image",
+      image:
+        "https://i.pinimg.com/564x/76/69/37/766937c25ef31dbe9e62a74c91108594.jpg",
+    },
+  ],
   slideId: 0,
   asVariant: "warning",
   withColor: {
@@ -312,13 +337,22 @@ AnagramWithSlideHeaderAndBackgroundImage.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "anagram",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
 AnagramWithSlideHeaderAndBackgroundImage.parameters = {
   docs: {
     source: {
-      code: `<Anagram {...${JSON.stringify(AnagramWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+      code: `<Anagram {...${JSON.stringify(
+        AnagramWithSlideHeaderAndBackgroundImage.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

@@ -19,14 +19,14 @@ describe("SlideBackground", () => {
 	};
 	const dictionary = JSON.stringify({
 		en: {
-			SlideBackground: {
+			slideBackground: {
 				slideBackground: "Slide Background",
 				setBackground: "Set",
 				removeBackground: "Remove"
 			}
 		},
 		hi: {
-			SlideBackground: {
+			slideBackground: {
 				slideBackground: "स्लाइड पृष्ठभूमि",
 				setBackground: "सेट",
 				removeBackground: "निकाले"
@@ -70,7 +70,7 @@ describe("SlideBackground", () => {
 		component.setProps({
 			withTranslation: {
 				lang: "hi",
-				tgt: "SlideBackground",
+				tgt: "slideBackground",
 				dictionary: dictionary,
 			},
 		});

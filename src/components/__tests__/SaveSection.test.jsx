@@ -16,7 +16,7 @@ describe("SaveSection", () => {
 	let component;
 	const dictionary = JSON.stringify({
 		en: {
-			SaveSection: {
+			saveSection: {
 				upload: "Upload",
 				download: "Download",
 				save: "Save",
@@ -24,7 +24,7 @@ describe("SaveSection", () => {
 			}
 		},
 		hi: {
-			SaveSection: {
+			saveSection: {
 				upload: "अपलोड",
 				download: "डाउनलोड",
 				save: "सहेजें",
@@ -68,7 +68,7 @@ describe("SaveSection", () => {
 		component.setProps({
 			withTranslation: {
 				lang: "hi",
-				tgt: "SaveSection",
+				tgt: "saveSection",
 				dictionary: dictionary,
 			},
 		});

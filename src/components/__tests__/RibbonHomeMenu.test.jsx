@@ -26,7 +26,7 @@ describe("RibbonHomeMenu", () => {
 	}
 	const dictionary = JSON.stringify({
 		en: {
-			RibbonHomeMenu: {
+			ribbonHomeMenu: {
 				slide: "Slide",
 				newSlide: "New Slide",
 				duplicateSlide: "Duplicate Slide",
@@ -47,7 +47,7 @@ describe("RibbonHomeMenu", () => {
 			}
 		},
 		hi: {
-			RibbonHomeMenu: {
+			ribbonHomeMenu: {
 				slide: "स्लाइड",
 				newSlide: "नई स्लाइड",
 				duplicateSlide: "स्लाइड प्रतिलिपि करे",
@@ -104,7 +104,7 @@ describe("RibbonHomeMenu", () => {
 		component.setProps({
 			withTranslation: {
 				lang: "hi",
-				tgt: "RibbonHomeMenu",
+				tgt: "ribbonHomeMenu",
 				dictionary: dictionary,
 			},
 		});

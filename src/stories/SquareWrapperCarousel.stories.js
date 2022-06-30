@@ -3,7 +3,7 @@ import SquareWrapperCarousel from "../components/Carousel/SquareWrapperCarousel/
 
 const dictionary = JSON.stringify({
     hi: {
-        bannercard: { header: "", content: "" },
+        bannerCard: { header: "", content: "" },
         ribbon: {
             new: "नया",
             restricted: "प्रतिबंधित",
@@ -92,7 +92,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "bannercard",
+        tgt: "bannerCard",
         dictionary: dictionary,
     },
 };
@@ -134,7 +134,7 @@ TranslatedSquareWrapper.args = {
     },
     withTranslation: {
         lang: "hi",
-        tgt: "bannercard",
+        tgt: "bannerCard",
         dictionary: dictionary,
     },
 };

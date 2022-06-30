@@ -20,7 +20,7 @@ describe("ViewSection", () => {
 	onClick = jest.fn();
 	const dictionary = JSON.stringify({
 		en: {
-			ViewSection: {
+			viewSection: {
 				view: "View",
 				sorter: "Sorter",
 				mobile: "Mobile",
@@ -29,7 +29,7 @@ describe("ViewSection", () => {
 			}
 		},
 		hi: {
-			ViewSection: {
+			viewSection: {
 				view: "दृश्य",
 				sorter: "छँटाईकर्ता",
 				mobile: "मोबाइल",
@@ -75,7 +75,7 @@ describe("ViewSection", () => {
 		component.setProps({
 			withTranslation: {
 				lang: "hi",
-				tgt: "ViewSection",
+				tgt: "viewSection",
 				dictionary: dictionary,
 			},
 		});
