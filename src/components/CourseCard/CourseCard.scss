@@ -10,6 +10,7 @@
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
+  padding-bottom: 0.5em;
 }
 .qui-course-card-body {
   display: flex;
@@ -122,7 +123,7 @@
   margin-top: -0.1em;
   margin-right: -1.5em;
   margin-bottom: -0.6em;
-  height: 5em;
+  height: 2.2em;
 }
 .qui-course-card-reward {
   width: 50%;
@@ -201,6 +202,9 @@
   .qui-course-card-show-more-date-container {
     font-size: 0.65em;
   }
+  .qui-course-card-container {
+    padding-bottom: 0.6em;
+  }
   .qui-course-card-body {
     margin: 0.3em 1em 0 1em;
   }
@@ -221,9 +225,6 @@
   .qui-course-card-title {
     font-size: 1em;
     font-weight: bold;
-  }
-  .qui-course-card-share-block {
-    margin-bottom: 1em;
   }
   .qui-course-card-description {
     font-size: 0.6em;
@@ -308,9 +309,6 @@
   .qui-course-card-container {
     font-size: 1.3em;
   }
-  .qui-course-card-share-block {
-    margin-bottom: 1em;
-  }
   .qui-course-card-reward {
     font-size: 0.6em;
   }
@@ -322,6 +320,9 @@
   }
   .qui-course-card-share-widget {
     font-size: 1.1em;
+  }
+  .qui-course-card-name {
+    font-size: 0.8em;
   }
   .qui-course-card .qui-arc {
     height: 2.5em;
@@ -378,7 +379,7 @@
     font-size: 0.8em;
   }
   .qui-course-card-share-block {
-    margin-bottom: 0.7em;
+    margin-bottom: 0em;
   }
   .qui-course-card-share-widget {
     margin-right: -1em;
@@ -600,6 +601,9 @@
     width: 360px;
     min-height: 500px;
   }
+  .qui-course-card-container {
+    padding-bottom: 0.4em;
+  }
   .qui-course-card-body {
     margin: 0.5em 1em 0 1em;
   }
@@ -625,6 +629,7 @@
   .qui-course-card-share-widget {
     font-size: 0.5em;
     margin-right: -1.5em;
+    height: 2.5em;
   }
   .qui-course-card-link-container {
     font-size: 1em;
@@ -696,6 +701,7 @@
   .qui-course-card-share-widget {
     font-size: 0.3em;
     margin-right: -3em;
+    height: 3.2em;
   }
   .qui-course-card-link-container {
     font-size: 1em;
@@ -751,9 +757,6 @@
   .qui-course-card-tag-container {
     font-size: 0.9em;
   }
-  .qui-course-card-share-block {
-    margin-bottom: 0.5em;
-  }
   .qui-course-card-name {
     font-size: 0.7em;
   }
@@ -766,6 +769,7 @@
   .qui-course-card-share-widget {
     font-size: 0.3em;
     margin-right: -3em;
+    height: 5em;
   }
   .qui-course-card-link-container {
     font-size: 1em;

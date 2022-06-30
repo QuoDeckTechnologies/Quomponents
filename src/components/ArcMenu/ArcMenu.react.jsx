@@ -80,7 +80,7 @@ ArcMenu.propTypes = {
   For `nugget-menu` menuType, it return name of nugget images provided
   For `menu` menuType, it return title of the list item
   */
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 ArcMenu.defaultProps = {
