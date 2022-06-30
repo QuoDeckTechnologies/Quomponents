@@ -11,7 +11,7 @@ export default {
                     leftIcon: "",
                     rightIcon: "",
                 },
-                stepArray:[],
+                count: 5,
             },
         },
         asVariant: {
@@ -96,7 +96,7 @@ Default.args = {
     content: {
         leftIcon: "fa fa-arrow-alt-circle-left",
         rightIcon: "fa fa-arrow-alt-circle-right",
-        stepArray:["step1", "step2", "step3", "step4", "step5"],
+        count: 5,
     },
     asVariant: "primary",
     asSize: "normal",
