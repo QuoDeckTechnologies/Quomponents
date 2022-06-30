@@ -193,7 +193,7 @@ export default function OptionItemSeven(props) {
         <div className="qui-option-item-upload-button">
           <OptionalImageField
             content={{
-              title: tObj ? tObj.uploadButton : null,
+              title: tObj?.uploadButton || null,
               icon: "fas fa-upload",
             }}
             onClick={(image) => handleImageUpload(image)}
@@ -206,7 +206,7 @@ export default function OptionItemSeven(props) {
           }
           content={{
             value: content?.value,
-            placeholder: tObj ? tObj.placeholder : content?.placeholder,
+            placeholder: tObj?.placeholder || content?.placeholder,
             maxLength: content?.maxLength,
           }}
           asEmphasis="listInput"

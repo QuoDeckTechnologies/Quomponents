@@ -115,6 +115,11 @@ Default.args = {
     withColor: {
         textColor: "#AAAAAA",
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "pageheader",
+        dictionary: dictionary,
+    },
     withAnimation: {
         animation: "collapse",
         duration: 0.5,

@@ -15,7 +15,7 @@ describe("ShareWidget", () => {
     let component;
     const dictionary = JSON.stringify({
         hi: {
-            ShareWidget: {
+            shareWidget: {
                 label: "शेयर",
             },
         },
@@ -95,7 +95,7 @@ describe("ShareWidget", () => {
             component.setProps({
                 withTranslation: {
                     lang: "hi",
-                    tgt: "ShareWidget",
+                    tgt: "shareWidget",
                     dictionary: dictionary,
                 }
             });

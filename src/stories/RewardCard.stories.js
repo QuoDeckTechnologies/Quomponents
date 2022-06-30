@@ -4,13 +4,13 @@ import Grid from '@mui/material/Grid';
 
 const dictionary = JSON.stringify({
     hi: {
-        RewardCard: {
+        rewardCard: {
             soldout: "बिक चुका है!",
             left: "शेष"
         }
     },
     en: {
-        RewardCard: {
+        rewardCard: {
             soldout: "SOLD OUT!",
             left: "left"
         }
@@ -127,7 +127,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "RewardCard",
+        tgt: "rewardCard",
         dictionary: dictionary,
     },
     isHidden: false,
@@ -202,7 +202,7 @@ TranslatedRewardCard.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "RewardCard",
+        tgt: "rewardCard",
         dictionary: dictionary,
     },
 };
@@ -263,7 +263,7 @@ TranslatedSoldOutRewardCard.args = {
     },
     withTranslation: {
         lang: "hi",
-        tgt: "RewardCard",
+        tgt: "rewardCard",
         dictionary: dictionary,
     },
 };

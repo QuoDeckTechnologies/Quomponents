@@ -174,7 +174,7 @@ export default function OTPFields(props) {
                             style={{
                                 color: withColor?.textColor,
                                 backgroundColor: withColor?.backgroundColor,
-                                borderBottom: `3px solid ${withColor.accentColor}`
+                                borderBottom: `3px solid ${withColor?.accentColor}`
                             }}
                         />
                     );
