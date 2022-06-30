@@ -108,6 +108,10 @@ ToolbarDark.propTypes = {
     Use to toggle the component taking the full width of the parent container
     */
   isFluid: PropTypes.bool,
+  /**
+  Use for rounded corners or circular icon button 
+  */
+  isCircular: PropTypes.bool,
 
   /**
     ToolbarDark component must have the onClick function passed as props
@@ -137,6 +141,7 @@ ToolbarDark.defaultProps = {
   isHidden: false,
   isDisabled: false,
   isFluid: false,
+  isCircular: false,
 };
 
 /**
@@ -207,6 +212,7 @@ export default function ToolbarDark(props) {
                     format: icon.format,
                   }}
                   withColor={{ ...props.withColor }}
+                  isCircular={props.isCircular}
                 />
               </motion.div>
             );

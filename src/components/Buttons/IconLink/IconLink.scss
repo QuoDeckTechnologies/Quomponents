@@ -4,14 +4,17 @@
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  .pad-normal {
+    padding: 1.5em 0.5em;
+  }
   .qui-btn {
     width: 5em;
     &.is-circular {
-      border-radius: 10%;
+      border-radius: 0.5em;
     }
     &.is-circular.circular-without-label {
       border-radius: 50%;
-      padding: 1em 0.3em;
+      padding: 1.3em 0.3em;
     }
   }
   .qui-iconlink-anchor {
