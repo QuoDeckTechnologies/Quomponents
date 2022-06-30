@@ -256,7 +256,7 @@ export default function IconLink(props) {
             onMouseLeave={() => setHovered(false)}
             onMouseDown={() => setTilt(true)}
             onMouseUp={() => setTilt(false)}
-        >   <a  className="qui-iconlink-anchor">
+        >   <a className="qui-iconlink-anchor" href={props.link}>
                 <div
                     className={`qui-btn ${quommonClasses.childClasses} qui-iconlink`}
                     title={getLabel(labelContent, "popover")}
@@ -264,13 +264,13 @@ export default function IconLink(props) {
                 >
                     <div
                         className={`qui-btn qui-icon-label emp-text`} style={Object.assign({}, colors.lableHandle)}>
-                        {getLabel(labelContent, "label")}
+                        <div className="qui qt-utn">{getLabel(labelContent, "label")}</div>
                     </div>
                     <i onClick={props.onClick} className={`${props.withIcon?.icon} qui-iconlink-icon  ${tilt ? 'tilt' : ''}`}>
                     </i>
                     <div
                         className={`qui-btn qui-icon-caption emp-text`} style={Object.assign({}, colors.lableHandle)}>
-                        {getLabel(labelContent, "caption")}
+                        <div className="qui qt-utn">{getLabel(labelContent, "caption")}</div>
                     </div>
                 </div>
             </a >

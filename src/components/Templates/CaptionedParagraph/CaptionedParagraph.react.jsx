@@ -19,8 +19,8 @@ CaptionedParagraph.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      CaptionedParagraph content should be passed in data field and it is a required field
-      */
+    CaptionedParagraph content should be passed in data field and it is a required field
+    */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
@@ -30,8 +30,8 @@ CaptionedParagraph.propTypes = {
         backgroundImage: PropTypes.object,
     }).isRequired,
     /**
-   CaptionedParagraph can set image & backgroundImage from imageLibrary.
-   */
+    CaptionedParagraph can set image & backgroundImage from imageLibrary.
+    */
     imageLibrary: PropTypes.array,
     /**
     slideId can be used if same template is used continueously for multiple slides.
@@ -41,8 +41,8 @@ CaptionedParagraph.propTypes = {
     // Quommon props
     //=======================================
     /**
-      Use to define standard component type
-      */
+    Use to define standard component type
+    */
     asVariant: PropTypes.oneOf([
         "primary",
         "secondary",
@@ -55,8 +55,8 @@ CaptionedParagraph.propTypes = {
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-      Use to override component colors and behavior
-      */
+    Use to override component colors and behavior
+    */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         slideHeaderTextColor: PropTypes.string,
@@ -68,8 +68,8 @@ CaptionedParagraph.propTypes = {
         textblockBackgroundColor: PropTypes.string,
     }),
     /**
-      Use to define the entry animation of the component
-      */
+    Use to define the entry animation of the component
+    */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -85,8 +85,8 @@ CaptionedParagraph.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to show/hide the component
-      */
+    Use to show/hide the component
+    */
     isHidden: PropTypes.bool,
 };
 
@@ -168,7 +168,6 @@ export default function CaptionedParagraph(props) {
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover"
             }}
-
         >
             <div className={`qui-captioned-paragraph-card ${quommonClasses.childClasses}`} key={"captioned paragraph" + slideId}>
                 {!data?.image && (data?.title || data?.subtitle) && (
@@ -176,7 +175,6 @@ export default function CaptionedParagraph(props) {
                         content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors} />
                 )}
-
                 {data?.image && (
                     <img className="qui-captioned-paragraph-image"
                         src={resolveImage(data?.image.id, imageLibrary)}
@@ -188,11 +186,12 @@ export default function CaptionedParagraph(props) {
                         withColor={textblockColors}
                     />
                 </div>
-                <TextBlock {...props}
-                    content={props.data?.caption}
-                    withColor={captionColors}
-                />
-
+                <div className="qt-sm">
+                    <TextBlock {...props}
+                        content={props.data?.caption}
+                        withColor={captionColors}
+                    />
+                </div>
             </div>
         </motion.div>
     );

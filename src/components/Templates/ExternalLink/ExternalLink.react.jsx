@@ -188,7 +188,7 @@ export default function ExternalLink(props) {
                 {data?.image && (
                     <img className="qui-external-link-image"
                         src={resolveImage(data?.image.id, imageLibrary)}
-                        alt="ImageWithCaption" />
+                        alt="link" />
                 )}
                 <TextBlock {...props}
                     content={props.data?.paragraph}

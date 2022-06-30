@@ -20,8 +20,8 @@ ImageWithCaption.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      ImageWithCaption content should be passed in data field and it is a required field
-      */
+    ImageWithCaption content should be passed in data field and it is a required field
+    */
     data: PropTypes.shape({
         title: PropTypes.string,
         subtitle: PropTypes.string,
@@ -30,8 +30,8 @@ ImageWithCaption.propTypes = {
         backgroundImage: PropTypes.object,
     }).isRequired,
     /**
-   ImageWithCaption can set image & backgroundImage from imageLibrary.
-   */
+    ImageWithCaption can set image & backgroundImage from imageLibrary.
+    */
     imageLibrary: PropTypes.array,
     /**
     slideId can be used if same template is used continueously for multiple slides.
@@ -41,8 +41,8 @@ ImageWithCaption.propTypes = {
     // Quommon props
     //=======================================
     /**
-      Use to define standard component type
-      */
+    Use to define standard component type
+    */
     asVariant: PropTypes.oneOf([
         "primary",
         "secondary",
@@ -55,8 +55,8 @@ ImageWithCaption.propTypes = {
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-      Use to override component colors and behavior
-      */
+    Use to override component colors and behavior
+    */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         slideHeaderTextColor: PropTypes.string,
@@ -70,8 +70,8 @@ ImageWithCaption.propTypes = {
         buttonHoverTextColor: PropTypes.string,
     }),
     /**
-      Use to define the entry animation of the component
-      */
+    Use to define the entry animation of the component
+    */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -87,16 +87,16 @@ ImageWithCaption.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to enable/disable the component
-      */
+    Use to enable/disable the component
+    */
     isDisabled: PropTypes.bool,
     /**
-      Use to show/hide the component
-      */
+    Use to show/hide the component
+    */
     isHidden: PropTypes.bool,
     /**
-      ImageWithCaption component must have the onClick function passed as props
-      */
+    ImageWithCaption component must have the onClick function passed as props
+    */
     onClick: PropTypes.func.isRequired,
 };
 
@@ -195,11 +195,13 @@ export default function ImageWithCaption(props) {
                         src={resolveImage(data?.image.id, imageLibrary)}
                         alt="ImageWithCaption" />
                 )}
-                <TextBlock {...props}
-                    key={slideId}
-                    content={data?.caption}
-                    withColor={captionColors}
-                />
+                <div className="qui qt-sm">
+                    <TextBlock {...props}
+                        key={slideId}
+                        content={data?.caption}
+                        withColor={captionColors}
+                    />
+                </div>
                 {<Button {...props}
                     content={"Continue"}
                     asFloated={"inline"}

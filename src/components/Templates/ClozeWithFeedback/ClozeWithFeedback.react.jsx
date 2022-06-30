@@ -201,7 +201,7 @@ export default function ClozeWithFeedback(props) {
                         <InputField {...props}
                             content={{ label: props.data?.answer ? props.data?.answer : "Answer" }}
                             withColor={inputFieldColors}
-                            onClick={(name, value) => changeText(value)}
+                            onSubmit={(name, value) => changeText(value)}
                             name="cloze-with-feedback-input-field" />
                         <Button {...props}
                             content={buttonText}

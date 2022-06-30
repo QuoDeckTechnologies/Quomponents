@@ -198,6 +198,7 @@ export default function InlineEdit(props) {
     // 5. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
+
     // ========================= Render Function =================================
     return (
         <motion.div

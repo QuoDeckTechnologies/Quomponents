@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    align-content: center;
 
     .qui-feedback-icon {
         border-radius: 50%;
@@ -12,43 +13,52 @@
         height: 1em;
         width: 1em;
         font-size: 2em;
+        margin-bottom: -2em;
     }
+
     .qui-text-block-area {
         width: fit-content;
         background-color: transparent;
     }
+
     .qui-show-feedback {
         display: block;
     }
+
     .qui-hide-feedback {
         display: none;
     }
+
     .qui-feedback-button {
-        filter: drop-shadow(0px 5px 2px #a09797);
         margin-top: 3.5em;
     }
+
     .qui-feedback-text {
-        margin-top: -1em;
+        padding: 0;
+        margin-top: -4em;
         .qui-block-text {
             font-weight: normal;
         }
     }
+
     .qui-feedback-header {
-        font-size: 2em;
         .qui-text-block-area {
             padding: 0;
         }
     }
+
     .qui-feedback-correct {
         background-color: #5dbb46;
         border: 0.1em solid #40831a;
         color: #ffffff;
     }
+
     .qui-feedback-incorrect {
         background-color: #dc2c29;
         border: 0.1em solid #b32111;
         color: #ffffff;
     }
+
     .qui-feedback-thank-you {
         background-color: #f6bd32;
         border: 0.1em solid #fdf841;
