@@ -22,6 +22,8 @@ InputField.propTypes = {
         value: PropTypes.string,
         placeholder: PropTypes.string,
         maxLength: PropTypes.number,
+        type: PropTypes.string,
+        multiLine: PropTypes.bool
     }),
     /**
     Use to define name's ID
@@ -148,8 +150,7 @@ export default function InputField(props) {
     };
 
     let changeBlur = (e) => {
-        inputRef.current.style.backgroundColor = "#d4d3cf"
-        props.onSubmit(e.target.name, e.target.value);
+        props.onClick(e.target.name, e.target.value);
     };
 
     let inputlabelColor = {
@@ -172,9 +173,15 @@ export default function InputField(props) {
                 <TextField
                     className="qui-filled"
                     InputLabelProps={inputlabelColor}
+                    InputProps={{
+                        inputProps: { min: 0 },
+                        style: inputlabelColor.style
+                    }}
+                    type={props.content?.type}
                     sx={outlineStyle}
-                    multiline={true}
+                    multiline={props.content?.multiLine}
                     label={props.content?.label}
+                    placeholder={props.content?.placeholder}
                     variant="filled"
                     value={input}
                     name={props.name}
@@ -193,9 +200,15 @@ export default function InputField(props) {
                     <TextField
                         className="qui-char-limited"
                         InputLabelProps={inputlabelColor}
+                        InputProps={{
+                            inputProps: { min: 0 },
+                            style: inputlabelColor.style
+                        }}
                         sx={outlineStyle}
-                        multiline={true}
+                        multiline={props.content?.multiLine}
                         label={props.content?.label}
+                        placeholder={props.content?.placeholder}
+                        type={props.content?.type}
                         variant="filled"
                         value={input}
                         name={props.name}
@@ -216,7 +229,12 @@ export default function InputField(props) {
                         className="qui-list-input"
                         sx={outlineStyle}
                         placeholder={props.content?.placeholder}
-                        multiline={false}
+                        InputProps={{
+                            inputProps: { min: 0 },
+                            style: inputlabelColor.style
+                        }}
+                        type={props.content?.type}
+                        multiline={props.content?.multiLine}
                         size="small"
                         variant="filled"
                         value={input}
@@ -236,7 +254,10 @@ export default function InputField(props) {
                     className="qui-short-field"
                     sx={outlineStyle}
                     type="number"
-                    InputProps={{ inputProps: { min: 0 } }}
+                    InputProps={{
+                        inputProps: { min: 0 },
+                        style: inputlabelColor.style
+                    }}
                     size={"small"}
                     variant="filled"
                     value={input}
