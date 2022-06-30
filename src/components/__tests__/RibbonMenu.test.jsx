@@ -54,7 +54,7 @@ describe("RibbonMenu", () => {
       },
     },
     hi: {
-      RibbonMenu: {
+      ribbonMenu: {
         questionBank: "प्रश्न बैंक",
         voiceover: "पार्श्व स्वर",
         upload: "अपलोड",
