@@ -16,7 +16,7 @@ describe("InputField", () => {
     let onFocus = jest.fn();
     let onChange = jest.fn();
     let onBlur = jest.fn();
-    let onClick = jest.fn();
+    let onSubmit = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -44,7 +44,7 @@ describe("InputField", () => {
             onFocus={onFocus}
             onChange={onChange}
             onBlur={onBlur}
-            onClick={onClick}
+            onSubmit={onSubmit}
         />);
     })
 
