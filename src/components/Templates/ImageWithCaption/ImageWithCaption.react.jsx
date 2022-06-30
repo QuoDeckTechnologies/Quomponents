@@ -213,7 +213,7 @@ export default function ImageWithCaption(props) {
                 {data?.image && (
                     <img className="qui-image-with-caption-image"
                         src={resolveImage(data?.image.id, imageLibrary)}
-                        alt="image" />
+                        alt="headerimg" />
                 )}
                 <TextBlock {...props}
                     key={slideId}
