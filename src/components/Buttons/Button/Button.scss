@@ -1,7 +1,6 @@
 .qui .qui-btn {
     min-width: 0;
     cursor: pointer;
-    margin-bottom: 0.5em;
 }
 .qui .qui-btn.qui-btn-disabled {
     background-color: #aaaaaa;
@@ -34,14 +33,12 @@
 }
 
 .qui .qui-label {
-    font-size: 1.25em;
     margin-left: 5px;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
 .qui .qui-caption {
-    font-size: 0.85em;
     margin-top: 5px;
     margin-left: 3px;
     font-style: italic;

@@ -287,7 +287,7 @@ export default function Button(props) {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
-            <div className="qui-label" style={labelStyle}>
+            <div className="qui-label qt-lbl" style={labelStyle}>
                 {getLabel(labelContent, "label")}
             </div>
             <MUIButton
@@ -304,7 +304,7 @@ export default function Button(props) {
                 {buttonText}
                 {getIcon(props.withIcon, "right", iconOnly)}
             </MUIButton>
-            <div className="qui-caption" style={labelStyle}>
+            <div className="qui-caption qt-lbl" style={labelStyle}>
                 {getLabel(labelContent, "caption")}
             </div>
         </motion.div>
