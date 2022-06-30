@@ -162,6 +162,14 @@ export default function SelectField(props) {
                         defaultValue="none"
                         value={selectValue}
                         onChange={handleChange}
+                        sx={{
+                            '.MuiSelect-icon': {
+                                color: props.withColor?.textColor
+                            },
+                            ".MuiSelect-outlined": {
+                                color: props.withColor?.textColor
+                            }
+                        }}
                     >
                         <MenuItem disabled value="none" >
                             <div className="qui-select-field-menu-item">

@@ -28,6 +28,8 @@ export default {
           value: "Please input your text here",
           placeholder: "Options",
           maxLength: 1,
+          type: "text",
+          multiLine: false
         },
       },
     },
@@ -123,6 +125,8 @@ Default.args = {
     value: "Please input your text here",
     placeholder: "Options",
     maxLength: 300,
+    type: "text",
+    multiLine: false
   },
   name: "testing_id",
   asEmphasis: "filled",
@@ -185,6 +189,8 @@ listInputField.args = {
     value: "",
     placeholder: "Options",
     maxLength: 300,
+    type: "text",
+    multiLine: false
   },
   asEmphasis: "listInput",
 };

@@ -40,6 +40,8 @@ describe("InputField", () => {
                 value: "Please input your text here",
                 placeholder: "Options",
                 maxLength: 30,
+                type: "text",
+                multiLine: true
             }}
             name=""
             asEmphasis="filled"
@@ -70,6 +72,8 @@ describe("InputField", () => {
                 value: "text here",
                 placeholder: "Options",
                 maxLength: 0,
+                type: "text",
+                multiLine: true
             },
             asEmphasis: "charLimited"
         })
@@ -83,6 +87,8 @@ describe("InputField", () => {
                 value: "text here",
                 placeholder: "Options",
                 maxLength: 0,
+                type: "text",
+                multiLine: false
             },
             asEmphasis: "listInput"
         })
