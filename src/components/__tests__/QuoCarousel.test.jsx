@@ -7,33 +7,52 @@ import { shallow } from 'enzyme';
 // Import Components
 // -------------------------------------
 import QuoCarousel from '../Carousel/QuoCarousel/QuoCarousel.react'
+import HCard from '../HCard/HCard.react'
 describe('QuoCarousel', () => {
     let component, content;
-    content = [{
+    content = [<HCard onClick={() => { }} content={{
         image: {
-            id: "image",
+            id: "image-1",
             extention: "",
         },
-        name: "Component",
-        description: "subtitle",
+        name: "Sales Readiness",
+        description: "Understand how to prepare yourself for that sale",
         buttonText: "Check",
-    }, {
+    }}
+        imageLibrary={[
+            {
+                id: "image-1",
+                image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            }]} />,
+    <HCard onClick={() => { }} content={{
         image: {
-            id: "image",
+            id: "image-1",
             extention: "",
         },
-        name: "Component",
-        description: "subtitle",
+        name: "Sales Readiness",
+        description: "Understand how to prepare yourself for that sale",
         buttonText: "Check",
-    }, {
+    }}
+        imageLibrary={[
+            {
+                id: "image-1",
+                image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            }]} />,
+    <HCard onClick={() => { }} content={{
         image: {
-            id: "image",
+            id: "image-1",
             extention: "",
         },
-        name: "Component",
-        description: "subtitle",
+        name: "Sales Readiness",
+        description: "Understand how to prepare yourself for that sale",
         buttonText: "Check",
-    },]
+    }}
+        imageLibrary={[
+            {
+                id: "image-1",
+                image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            }]}
+    />]
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -69,5 +88,9 @@ describe('QuoCarousel', () => {
     it('should render and handle click event slickNext', () => {
         const wrapper = shallow(<QuoCarousel arrows={true} />);
         wrapper.find(".qui-carousel-slick-next").simulate('click');
+    });
+    it("should render correctly when passed isDisabled props as false", () => {
+        component.setProps({ isDisabled: false })
+        expect(component.exists()).toBe(true);
     });
 });
