@@ -172,14 +172,12 @@ export default function OptionItemFour(props) {
           name={
             content?.targetName ? content?.targetName : "default-target-name"
           }
-          content={{
-            value: content?.value,
-            placeholder: tObj?.placeholder || content?.placeholder,
-            maxLength: content?.maxLength,
-          }}
+          value={content?.value}
+          placeholder={tObj?.placeholder || content?.placeholder}
+          maxLength={content?.maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
-          onClick={handleValue}
+          onSubmit={handleValue}
         />
         <div className="qui-option-item-four-close-icon">
           <i

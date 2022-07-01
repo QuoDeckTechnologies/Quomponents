@@ -232,9 +232,9 @@ export default function Anagram(props) {
             {jumbledWords(data?.answer)}
           </p>
           <InputField {...props}
-            content={{ label: inputFieldLable }}
+            label= {inputFieldLable}
             withColor={inputFieldColors}
-            onClick={(name, value) => setState(value)}
+            onSubmit={(name, value) => setState(value)}
             name="anagram-input-field"
             withTranslation={props.withTranslation} />
           <Button

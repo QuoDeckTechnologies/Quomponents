@@ -154,13 +154,11 @@ export default function OptionItemNine(props) {
                     ? content?.shortFieldOne?.targetName
                     : "default-short-field-one-target-name"
                 }
-                content={{
-                  value: content?.shortFieldOne?.value,
-                }}
+                value={content?.shortFieldOne?.value}
                 asEmphasis="shortField"
                 asFloated="left"
                 withColor={props.withColor}
-                onClick={(name, value) =>
+                onSubmit={(name, value) =>
                   props.onShortFieldOneInput(name, value)
                 }
               />
@@ -172,13 +170,11 @@ export default function OptionItemNine(props) {
                     ? content?.shortFieldTwo?.targetName
                     : "default-short-field-two-target-name"
                 }
-                content={{
-                  value: content?.shortFieldTwo?.value,
-                }}
+                value={content?.shortFieldTwo?.value}
                 asEmphasis="shortField"
                 asFloated="left"
                 withColor={props.withColor}
-                onClick={(name, value) =>
+                onSubmit={(name, value) =>
                   props.onShortFieldTwoInput(name, value)
                 }
               />
@@ -192,14 +188,12 @@ export default function OptionItemNine(props) {
                     ? content?.message?.targetName
                     : "default-message-target-name"
                 }
-                content={{
-                  value: content?.message?.value,
-                  placeholder: tObj?.placeholder || content?.message?.placeholder,
-                  maxLength: content?.message?.maxLength,
-                }}
+                value={content?.message?.value}
+                placeholder={tObj?.placeholder || content?.message?.placeholder}
+                maxLength={content?.message?.maxLength}
                 asEmphasis="listInput"
                 withColor={props.withColor}
-                onClick={(name, value) => props.onInput(name, value)}
+                onSubmit={(name, value) => props.onInput(name, value)}
               />
             </div>
           </div>

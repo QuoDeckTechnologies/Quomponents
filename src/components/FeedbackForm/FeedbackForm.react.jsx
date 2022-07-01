@@ -153,8 +153,8 @@ export default function FeedbackForm(props) {
                     </legend>
                     {toggle &&
                         <div className="qui-feedback-input-field-container">
-                            <InputField {...props} content={{ label: inputFieldLable1 }} withColor={InputFieldColors} name={"correct"} withTranslation={null} />
-                            <InputField {...props} content={{ label: inputFieldLable2 }} withColor={InputFieldColors} name={"incorrect"} withTranslation={null} />
+                            <InputField {...props} onSubmit={props.onClick} label={inputFieldLable1} withColor={InputFieldColors} name={"correct"} withTranslation={null} />
+                            <InputField {...props} onSubmit={props.onClick} label= {inputFieldLable2} withColor={InputFieldColors} name={"incorrect"} withTranslation={null} />
                         </div>
                     }
                 </fieldset>
