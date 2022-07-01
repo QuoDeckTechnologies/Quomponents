@@ -233,7 +233,7 @@ export default function SlideChoice(props) {
 								}}
 								asEmphasis={props.asEmphasis}
 								asPadded="fitted"
-								asSize="huge"
+								asSize="normal"
 								options={[
 									{
 										correct: data?.choice[0]?.correct,
