@@ -270,7 +270,7 @@ describe("ClozeQuestion", () => {
 	});
 
 	it('should simulate the input field', () => {
-		component.find('InputField').simulate('click');
+		component.find('InputField').simulate('submit');
 		expect(component.exists()).toBe(true);
 	});
 });

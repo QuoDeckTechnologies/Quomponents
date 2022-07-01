@@ -123,9 +123,9 @@ describe("Option Item Nine", () => {
   });
 
   it("should render correctly without throwing error when clicked on inputfield", () => {
-    component.find("InputField").at(0).simulate("click");
-    component.find("InputField").at(1).simulate("click");
-    component.find("InputField").at(2).simulate("click");
+    component.find("InputField").at(0).simulate("submit");
+    component.find("InputField").at(1).simulate("submit");
+    component.find("InputField").at(2).simulate("submit");
     expect(component.exists()).toBe(true);
   });
 

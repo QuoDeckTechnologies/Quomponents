@@ -207,6 +207,6 @@ describe("OpenAnswer", () => {
     expect(handleSubmit.mock.calls.length).toEqual(1);
   });
   it("Test click event on InputField", () => {
-    component.find("InputField").simulate("click");
+    component.find("InputField").simulate("submit");
   });
 });
