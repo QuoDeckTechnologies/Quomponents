@@ -1,6 +1,12 @@
 import React from "react";
 import PageHeader from "../components/PageHeader/PageHeader.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        pageheader: { text: "शीर्षणी" },
+    },
+});
+
 export default {
     title: "Design System/PageHeader/PageHeader",
     component: PageHeader,
@@ -59,6 +65,16 @@ export default {
                 },
             },
         },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
+                },
+            },
+        },
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -98,6 +114,11 @@ Default.args = {
     asAligned: "center",
     withColor: {
         textColor: "#AAAAAA",
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "pageheader",
+        dictionary: dictionary,
     },
     withAnimation: {
         animation: "collapse",
@@ -162,6 +183,36 @@ AnimatedPageHeader.parameters = {
                 null,
                 2
             )}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Translated PageHeader
+// -------------------------------------------------------------
+export const TranslatedPageHeader = Template.bind({});
+TranslatedPageHeader.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "pageheader",
+        dictionary: dictionary,
+    },
+};
+TranslatedPageHeader.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to animate the entry of the PageHeader with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        },
+        source: {
+            code: `<PageHeader 
+            withTranslation={{
+                lang: "en",
+                tgt: "button",
+                dictionary: dictionary,
+            }}
+            />`,
         },
     },
 }; 

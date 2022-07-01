@@ -15,16 +15,16 @@ InputField.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Use to define InputField's value
+    Use to below fields to decide InputField's properties
     */
-    content: PropTypes.shape({
-        label: PropTypes.string,
-        value: PropTypes.string,
-        placeholder: PropTypes.string,
-        maxLength: PropTypes.number,
-    }),
+    label: PropTypes.string,
+    value: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
+    type: PropTypes.string,
+    multiline: PropTypes.bool,
+    maxLength: PropTypes.number,
     /**
-    Use to define name's ID
+    Use to define referance name
     */
     name: PropTypes.string.isRequired,
     /**
@@ -50,6 +50,9 @@ InputField.propTypes = {
         textColor: PropTypes.string,
         accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
+        onSelectTextColor: PropTypes.string,
+        onSelectAccentColor: PropTypes.string,
+        onSelectBackgroundColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -77,18 +80,24 @@ InputField.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    InputField component must have the onClick function passed as props
+    InputField component must have the onSubmit function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
 };
 
 InputField.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: null,
+    label: "",
+    value: "",
+    placeholder: undefined,
+    type: "text",
+    multiline: false,
+    maxLength: 0,
     name: "",
     asEmphasis: "filled",
+
     //=======================================
     // Quommon props
     //=======================================
@@ -100,7 +109,7 @@ InputField.defaultProps = {
     isHidden: false,
     isDisabled: false,
 
-    onClick: null,
+    onSubmit: null,
 };
 /**
 ## Notes
@@ -117,14 +126,9 @@ export default function InputField(props) {
     //-------------------------------------------------------------------
     // 2. Declaration of InputField's value
     //-------------------------------------------------------------------
-    let [input, setInput] = useState(props.content?.value);
-
+    let [input, setInput] = useState(props.value);
     let inputCountLength = input?.length;
     let [count, setCount] = useState(inputCountLength);
-
-    useEffect(() => {
-        setInput(props.content?.value)
-    }, [props.content?.value])
 
     function handleChange(e) {
         setInput(e.target.value);
@@ -132,120 +136,117 @@ export default function InputField(props) {
 
         if (e.key === "Enter") {
             e.target.blur()
-            props.onClick(e.target.name, e.target.value);
+            props.onSubmit(e.target.name, e.target.value);
         }
         if (e.key === "Escape") {
             e.target.value = ""
         }
     }
+
+    let changeBlur = (e) => {
+        props.onSubmit(e.target.name, e.target.value);
+    };
+
     //-------------------------------------------------------------------
     // 3. Use to set styling for InputField.
     //-------------------------------------------------------------------
-    let inputRef = useRef();
-
-    let changeFocus = () => {
-        inputRef.current.style.backgroundColor = props.withColor?.backgroundColor
-    };
-
-    let changeBlur = (e) => {
-        inputRef.current.style.backgroundColor = "#d4d3cf"
-        props.onClick(e.target.name, e.target.value);
-    };
-
-    let inputlabelColor = {
-        style: { color: props.withColor?.textColor ? props.withColor?.textColor : "#666666" },
-    };
 
     let outlineStyle = {
-        "& .MuiFilledInput-root:after": {
-            borderBottom: `0.3em solid ${props.withColor?.accentColor ? props.withColor?.accentColor : "#ffab00"}`
+        //accent line color
+        "& .MuiFilledInput-root:before": {
+            borderBottom: `0.3em solid ${props.withColor?.accentColor || "#AAAAAA"}`
         },
+        "& .MuiFilledInput-root:hover:not(.Mui-disable):before": {
+            borderBottom: `0.3em solid ${props.withColor?.accentColor || "#AAAAAA"}`
+        },
+        "& .MuiFilledInput-root:after": {
+            borderBottom: `0.3em solid ${props.withColor?.onSelectAccentColor || props.withColor?.accentColor || "#FFBF00"}`
+        },
+
+        //input field background and color
+        "& .MuiFilledInput-root": {
+            backgroundColor: props.withColor?.backgroundColor || "#AAAAAA29",
+            color: props.withColor?.textColor || "#666666"
+        },
+        "& .MuiFilledInput-root:hover": {
+            backgroundColor: props.withColor?.backgroundColor || "#AAAAAA29",
+            color: props.withColor?.textColor || "#666666"
+        },
+        "& .MuiFilledInput-root.Mui-focused": {
+            backgroundColor: props.withColor?.onSelectBackgroundColor || props.withColor?.backgroundColor || "#AAAAAA29",
+            color: props.withColor?.onSelectTextColor || props.withColor?.textColor || "#666666"
+        },
+
+        //input field label color
+        '& .MuiFormLabel-root': {
+            color: props.withColor?.textColor || "#454545"
+        },
+        '& .MuiFormLabel-root.Mui-focused': {
+            color: props.withColor?.onSelectTextColor || props.withColor?.textColor || "#454545"
+        }
     };
     //-------------------------------------------------------------------
     // 4. Use to set state of InputField.
     //-------------------------------------------------------------------
     const { asEmphasis } = props;
 
+    let commonProperties = {
+        sx: outlineStyle,
+        value: input,
+        placeholder: props.placeholder,
+        type: props.type,
+        multiline: props.multiline,
+        variant: "filled",
+        name: props.name,
+        onBlur: changeBlur,
+        onChange: handleChange,
+        onKeyDown: handleChange
+    }
+
     const getInput = (asEmphasis) => {
         if (asEmphasis === "filled") {
             return (
                 <TextField
+                    {...commonProperties}
                     className="qui-filled"
-                    InputLabelProps={inputlabelColor}
-                    sx={outlineStyle}
-                    multiline={true}
-                    label={props.content?.label}
-                    variant="filled"
-                    value={input}
-                    name={props.name}
-                    ref={inputRef}
-                    onFocus={changeFocus}
-                    onBlur={changeBlur}
-                    onChange={handleChange}
-                    onKeyDown={handleChange}
+                    label={props.label}
                 />
             )
-        }
-        if (asEmphasis === "charLimited") {
+        } else if (asEmphasis === "charLimited") {
             return (
                 <div className="qui-char-limited-container">
-                    {(props.content?.maxLength || props.content?.maxLength >= 0) && <div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>}
+                    {(props.maxLength || props.maxLength >= 0) &&
+                        <div
+                            className={props.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>
+                            {`${count}/${props.maxLength}`}
+                        </div>}
                     <TextField
+                        {...commonProperties}
                         className="qui-char-limited"
-                        InputLabelProps={inputlabelColor}
-                        sx={outlineStyle}
-                        multiline={true}
-                        label={props.content?.label}
                         variant="filled"
-                        value={input}
-                        name={props.name}
-                        ref={inputRef}
-                        onFocus={changeFocus}
-                        onBlur={changeBlur}
-                        onChange={handleChange}
-                        onKeyDown={handleChange}
+                        label={props.label}
                     />
                 </div>
             )
-        }
-        if (asEmphasis === "listInput") {
+        } else if (asEmphasis === "listInput") {
             return (
                 <div className="qui-list-input-container">
-                    {(props.content?.maxLength || props.content?.maxLength >= 0) && < div className={props.content?.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>{`${count}/${props.content?.maxLength}`}</div>}
+                    {(props.maxLength || props.maxLength >= 0) &&
+                        <div
+                            className={props.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>
+                            {`${count}/${props.maxLength}`}
+                        </div>}
                     <TextField
+                        {...commonProperties}
                         className="qui-list-input"
-                        sx={outlineStyle}
-                        placeholder={props.content?.placeholder}
-                        multiline={false}
-                        size="small"
-                        variant="filled"
-                        value={input}
-                        name={props.name}
-                        ref={inputRef}
-                        onFocus={changeFocus}
-                        onBlur={changeBlur}
-                        onChange={handleChange}
-                        onKeyDown={handleChange}
                     />
                 </div >
             )
-        }
-        else {
+        } else {
             return (
                 <TextField
+                    {...commonProperties}
                     className="qui-short-field"
-                    sx={outlineStyle}
-                    type="number"
-                    InputProps={{ inputProps: { min: 0 } }}
-                    size={"small"}
-                    variant="filled"
-                    value={input}
-                    name={props.name}
-                    ref={inputRef}
-                    onFocus={changeFocus}
-                    onBlur={changeBlur}
-                    onChange={handleChange}
-                    onKeyDown={handleChange}
                 />
             )
         }

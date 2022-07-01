@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    getTranslation
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./PageHeader.scss";
@@ -77,6 +78,15 @@ PageHeader.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -86,7 +96,7 @@ PageHeader.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: "",
+    content: "Header",
     //=======================================
     // Quommon props
     //=======================================
@@ -98,6 +108,7 @@ PageHeader.defaultProps = {
 
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
 
     isHidden: false,
 };
@@ -109,6 +120,7 @@ PageHeader.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function PageHeader(props) {
+    let headerText = props.content;
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -124,6 +136,18 @@ export default function PageHeader(props) {
     // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
+
+    //-------------------------------------------------------------------
+    // 4. Translate the text objects in case their is a dictionary provided
+    //-------------------------------------------------------------------
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        let tObj = getTranslation(props.withTranslation);
+        headerText = tObj?.text || "";
+    }
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -133,7 +157,7 @@ export default function PageHeader(props) {
         >
             <div className={`qui-page-header-container ${quommonClasses.childClasses}`}>
                 <div className="qui-page-header-label" style={Color}>
-                    {props.content}
+                    {headerText}
                 </div>
             </div>
         </motion.div >

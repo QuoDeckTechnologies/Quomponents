@@ -3,10 +3,10 @@ import TreeBarOpen from "../components/TreeBarOpen/TreeBarOpen.react";
 
 const dictionary = JSON.stringify({
   hi: {
-    TreeBarOpen: {
+    treeBarOpen: {
       pageHeader: "पाठ्यक्रम",
     },
-    SearchBar: {
+    searchBar: {
       placeHolder: "यहां पाठ्यक्रम चुनें...",
     },
   },
@@ -96,12 +96,7 @@ let dataprops = {
   isDisabled: false,
   isFluid: false,
   isClosed: false,
-  isHidden: false,
-  withTranslation: {
-    lang: "",
-    tgt: "SearchBar",
-    dictionary: dictionary,
-  },
+  isHidden: false
 };
 
 const Template = (args) => <TreeBarOpen {...args} style={{ width: "30%" }} />;
@@ -195,8 +190,8 @@ Default.args = {
   isFluid: false,
   isHidden: false,
   withTranslation: {
-    lang: "",
-    tgt: "TreeBarOpen",
+    lang: "en",
+    tgt: "treeBarOpen",
     dictionary: dictionary,
   },
 };
@@ -286,17 +281,12 @@ TranslatedTreeBar.args = {
       isDisabled: false,
       isFluid: false,
       isClosed: false,
-      isHidden: false,
-      withTranslation: {
-        lang: "hi",
-        tgt: "SearchBar",
-        dictionary: dictionary,
-      },
+      isHidden: false
     },
   },
   withTranslation: {
     lang: "hi",
-    tgt: "TreeBarOpen",
+    tgt: "treeBarOpen",
     dictionary: dictionary,
   },
 };

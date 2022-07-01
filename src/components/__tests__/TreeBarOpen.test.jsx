@@ -20,7 +20,7 @@ describe("TreeBarOpen", () => {
   let component;
   const dictionary = JSON.stringify({
     hi: {
-      TreeBarOpen: {
+      treeBarOpen: {
         placeHolder: "खोजें...",
       },
     },
@@ -230,7 +230,7 @@ describe("TreeBarOpen", () => {
     component.setProps({
       withTranslation: {
         lang: "hi",
-        tgt: "TreeBarOpen",
+        tgt: "treeBarOpen",
         dictionary: dictionary,
       },
     });
@@ -241,7 +241,7 @@ describe("TreeBarOpen", () => {
     component.setProps({
       withTranslation: {
         lang: "",
-        tgt: "TreeBarOpen",
+        tgt: "treeBarOpen",
         dictionary: dictionary,
       },
     });

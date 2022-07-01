@@ -14,7 +14,7 @@ describe("WalletRow", () => {
     let component;
     const dictionary = JSON.stringify({
         hi: {
-            WalletRow: {
+            walletRow: {
                 months: {
                     Jan: "जनवरी",
                     Feb: "फ़रवरी",
@@ -71,7 +71,7 @@ describe("WalletRow", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "WalletRow",
+                tgt: "walletRow",
                 dictionary: dictionary,
             },
         });

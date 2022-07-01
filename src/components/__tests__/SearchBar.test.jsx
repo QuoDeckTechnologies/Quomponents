@@ -18,7 +18,7 @@ describe("SearchBar", () => {
     handleButtonPress = jest.fn();
     const dictionary = JSON.stringify({
         hi: {
-            SearchBar: {
+            searchBar: {
                 placeHolder: "खोजें...",
             }
         },
@@ -135,7 +135,7 @@ describe("SearchBar", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "SearchBar",
+                tgt: "searchBar",
                 dictionary: dictionary,
             },
         });

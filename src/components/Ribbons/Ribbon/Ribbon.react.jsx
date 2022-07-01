@@ -89,7 +89,7 @@ export default function Ribbon(props) {
     props.withTranslation.lang !== "en"
   ) {
     let tobj = getTranslation(props.withTranslation, "ribbon");
-    ribbonText = tobj[props.asEmphasis];
+    ribbonText = tobj?.[props.asEmphasis] || props.asEmphasis;
   }
 
   // ========================= Render Function =================================

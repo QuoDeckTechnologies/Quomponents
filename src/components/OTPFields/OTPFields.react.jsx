@@ -171,7 +171,11 @@ export default function OTPFields(props) {
                             onChange={e => handleChange(e.target, index)}
                             onFocus={(e) => changeFocus(e.target)}
                             onBlur={(e) => changeBlur(e.target)}
-                            style={{ color: withColor?.textColor }}
+                            style={{
+                                color: withColor?.textColor,
+                                backgroundColor: withColor?.backgroundColor,
+                                borderBottom: `3px solid ${withColor?.accentColor}`
+                            }}
                         />
                     );
                 })}

@@ -145,7 +145,6 @@ export default function CertificateCard(props) {
   //-------------------------------------------------------------------
   // 5. Get translation of the component
   //-------------------------------------------------------------------
-  let labelContent = Object.assign({}, props.withLabel);
   let tObj = null;
 
   if (
@@ -154,7 +153,6 @@ export default function CertificateCard(props) {
     props.withTranslation.lang !== "en"
   ) {
     tObj = getTranslation(props.withTranslation);
-    if (labelContent && tObj?.label) labelContent.content = tObj.label;
   }
   //-------------------------------------------------------------------
   // 6. Get Status Card of the component
@@ -217,7 +215,7 @@ export default function CertificateCard(props) {
             className={`qui-courseHeader variant-${props.asVariant}-text`}
             style={headerColors}
           >
-            <p>{labelContent?.content}</p>
+            <p>{props.withLabel?.content}</p>
           </div>
         </div>
         <div className="qui-imageCard">

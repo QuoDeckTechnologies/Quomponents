@@ -3,7 +3,7 @@ import WalletRow from "../components/WalletRow/WalletRow.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        WalletRow: {
+        walletRow: {
             months: {
                 Jan: "जनवरी",
                 Feb: "फ़रवरी",
@@ -103,7 +103,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "WalletRow",
+        tgt: "walletRow",
         dictionary: dictionary,
     },
     isHidden: false
@@ -182,7 +182,7 @@ export const MultipleWalletRow = (args) => {
                             }}
                             withTranslation={{
                                 lang: "en",
-                                tgt: "WalletRow",
+                                tgt: "walletRow",
                                 dictionary: dictionary,
                             }}
                         />
@@ -259,7 +259,7 @@ export const MultipleWalletRowsWithFixedDivSize = (args) => {
                             }}
                             withTranslation={{
                                 lang: "en",
-                                tgt: "WalletRow",
+                                tgt: "walletRow",
                                 dictionary: dictionary,
                             }}
                         />
@@ -277,7 +277,7 @@ TranslatedWalletRow.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "WalletRow",
+        tgt: "walletRow",
         dictionary: dictionary,
     },
 };

@@ -3,7 +3,7 @@ import ToolbarDark from "../components/Buttons/ToolbarDark/ToolbarDark.react";
 const dictionary = JSON.stringify({
 
   hi: {
-    ToolbarDark: {
+    toolbarDark: {
       content: [
         { label: "प्रमाणपत्र" },
         { label: "बटुआ" },
@@ -191,7 +191,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "ToolbarDark",
+    tgt: "toolbarDark",
     dictionary: dictionary,
   },
 
@@ -315,7 +315,7 @@ TranslatedToolbardark.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "ToolbarDark",
+    tgt: "toolbarDark",
     dictionary: dictionary,
   },
 };

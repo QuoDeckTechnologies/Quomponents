@@ -159,7 +159,7 @@ import QuestionBankSection from './components/RibbonMenu/toolsMenu/sections/Ques
 import VoiceoverSection from './components/RibbonMenu/toolsMenu/sections/VoiceoverSection.react';
 import RibbonToolsMenu from './components/RibbonMenu/toolsMenu/RibbonToolsMenu.react';
 import RibbonMenu from './components/RibbonMenu/RibbonMenu.react';
-import ThemeSet from './components/RibbonMenu/ThemeSet.react';
+import { ThemeSet } from './components/RibbonMenu/ThemeSet.react';
 import ConfirmationOverlay from './components/ConfirmationOverlay/ConfirmationOverlay.react';
 
 //---------------------------------------------------------------------

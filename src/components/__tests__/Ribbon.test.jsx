@@ -92,6 +92,17 @@ describe("Ribbon", () => {
         expect(component.find(".qui-ribbon-text").text()).toBe("नया");
     });
 
+    it("should render render correctly with lang null", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "mr", 
+                tgt: "ribbon",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.find(".qui-ribbon-text").text()).toBe("new");
+    });
+
     it("should render correctly when passed isHidden props as false", () => {
         component.setProps({ isHidden: false })
         expect(component.exists()).toBe(true);
