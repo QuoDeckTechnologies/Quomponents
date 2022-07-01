@@ -88,9 +88,9 @@ ExternalLink.propTypes = {
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
     */
     withTranslation: PropTypes.shape({
-    lang: PropTypes.string,
-    tgt: PropTypes.string,
-    dictionary: PropTypes.string,
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
     }),
     /**
     Use to enable/disable the component
@@ -166,11 +166,11 @@ export default function ExternalLink(props) {
     //-------------------------------------------------------------------
     let tObj;
     if (
-    props.withTranslation?.lang &&
-    props.withTranslation.lang !== "" &&
-    props.withTranslation.lang !== "en"
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
     ) {
-    tObj = getTranslation(props.withTranslation);
+        tObj = getTranslation(props.withTranslation);
     }
     //-------------------------------------------------------------------
     // 6. Set background image and color for card
@@ -216,8 +216,8 @@ export default function ExternalLink(props) {
                     withColor={captionColors}
                 />
                 <a href={data?.link} className="qui-external-link-address">
-                    <Button 
-                        content={tObj ? tObj.button : "Go"}
+                    <Button
+                        content={tObj?.button || "Go"}
                         onClick={props.onClick}
                         withColor={buttonColors}
                     />

@@ -105,6 +105,17 @@ describe("SelectField", () => {
         expect(component.exists()).toBe(true);
     });
 
+    it("should render correctly if translation object and data is not defined", () => {
+        component.setProps({
+          withTranslation: {
+            lang: "mr",
+            tgt: "selectField",
+            dictionary: dictionary,
+          },
+        });
+        expect(component.exists()).toBe(true);
+      });
+    
     it("it should render correctly when passed isHidden props as false", () => {
         component.setProps({ isHidden: false })
         expect(component.exists()).toBe(true);

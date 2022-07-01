@@ -60,7 +60,7 @@ export default function PalleteThemeSection(props) {
 		"ribbon-design-menu-pallete-theme-section-parent"
 	);
 
-	let PalleteThemeSection = {
+	let palleteThemeSection = {
 		settings: "Settings",
 		pageColor: "Page Color",
 		primaryColor: "Primary Color",
@@ -78,7 +78,7 @@ export default function PalleteThemeSection(props) {
 		props.withTranslation.lang !== "en"
 	) {
 		tObj = getTranslation(props.withTranslation);
-		PalleteThemeSection = tObj;
+		palleteThemeSection = tObj;
 	}
 
 	//----------------------------------------------------------------------------
@@ -174,7 +174,7 @@ export default function PalleteThemeSection(props) {
 								);
 							})}
 						</div>
-						<div className="qui-ribbon-menu-label-file">{PalleteThemeSection.settings}</div>
+						<div className="qui-ribbon-menu-label-file">{palleteThemeSection?.settings || "Settings"}</div>
 					</div>
 					<div className={`qui-ribbon-menu-custom-color-container`} ref={box}>
 						<div className="qui-ribbon-design-menu-color-picker-container">
@@ -188,7 +188,7 @@ export default function PalleteThemeSection(props) {
 										onClick={() => setPageShowColorPicker(true)}
 									/>
 									<div className="qui-ribbon-design-menu-custom-color-title">
-										{PalleteThemeSection.pageColor}
+										{palleteThemeSection?.pageColor || "Page Color"}
 									</div>
 								</div>
 								{showPageColorPicker && (
@@ -213,7 +213,7 @@ export default function PalleteThemeSection(props) {
 										onClick={() => setPrimaryColorPicker(true)}
 									/>
 									<div className="qui-ribbon-design-menu-custom-color-title">
-										{PalleteThemeSection.primaryColor}
+										{palleteThemeSection?.primaryColor || "Primary Color"}
 									</div>
 								</div>
 								{showPrimaryColorPicker && (
@@ -238,7 +238,7 @@ export default function PalleteThemeSection(props) {
 										onClick={() => setAccentColorPicker(true)}
 									/>
 									<div className="qui-ribbon-design-menu-custom-color-title">
-										{PalleteThemeSection.accentColor}
+										{palleteThemeSection?.accentColor || "Accent Color"}
 									</div>
 								</div>
 								{showAccentColorPicker && (
@@ -263,7 +263,7 @@ export default function PalleteThemeSection(props) {
 										onClick={() => setSecondaryColorPicker(true)}
 									/>
 									<div className="qui-ribbon-design-menu-custom-color-title">
-										{PalleteThemeSection.secondaryColor}
+										{palleteThemeSection?.secondaryColor || "Secondary Color"}
 									</div>
 								</div>
 								{showSecondaryColorPicker && (

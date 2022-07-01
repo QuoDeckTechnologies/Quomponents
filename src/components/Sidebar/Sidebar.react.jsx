@@ -153,7 +153,7 @@ export default function Sidebar(props) {
     //-------------------------------------------------------------------
     // 3. Get the translation of panelLinks
     //-------------------------------------------------------------------
-    let TranslatedPanelLinks = {
+    let translatedPanelLinks = {
         welcome: "Welcome",
         content: {
             library: "Library",
@@ -206,7 +206,7 @@ export default function Sidebar(props) {
     ) {
         tObj = getTranslation(props.withTranslation);
         editLabel = tObj?.content
-        TranslatedPanelLinks = tObj?.translatedPanelLinks
+        translatedPanelLinks = tObj?.translatedPanelLinks
     }
 
     //-------------------------------------------------------------------
@@ -216,7 +216,7 @@ export default function Sidebar(props) {
         welcome: [
             {
                 key: "welcome",
-                name: TranslatedPanelLinks.welcome,
+                name: translatedPanelLinks?.welcome,
                 icon: "fas fa-handshake",
                 show: true,
             },
@@ -224,76 +224,76 @@ export default function Sidebar(props) {
         content: [
             {
                 key: "platforms",
-                name: TranslatedPanelLinks.content.library,
+                name: translatedPanelLinks?.content?.library,
                 icon: "fas fa-sitemap",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType),
             },
             {
                 key: "files",
-                name: TranslatedPanelLinks.content.editor,
+                name: translatedPanelLinks?.content?.editor,
                 icon: "fas fa-desktop",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType) && !props.noCourses,
             },
             {
                 key: "advanced",
-                name: TranslatedPanelLinks.content.settings,
+                name: translatedPanelLinks?.content?.settings,
                 icon: "fas fa-cogs",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType) && !props.noCourses,
             },
             {
                 key: "share",
-                name: TranslatedPanelLinks.content.enrollment,
+                name: translatedPanelLinks?.content?.enrollment,
                 icon: "fa fa-person-booth",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType) && !props.noCourses,
             },
             {
                 key: "preview",
-                name: TranslatedPanelLinks.content.preview,
+                name: translatedPanelLinks?.content?.preview,
                 icon: "fas fa-eye",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType) && !props.noCourses && window.innerHeight > window.innerWidth,
             },
         ],
         admin: [
-            { key: "users", name: TranslatedPanelLinks.admin.users, icon: "fas fa-users", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
-            { key: "courses", name: TranslatedPanelLinks.admin.courses, icon: "fas fa-book", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "users", name: translatedPanelLinks?.admin?.users, icon: "fas fa-users", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "courses", name: translatedPanelLinks?.admin?.courses, icon: "fas fa-book", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
             {
                 key: "branding",
-                name: TranslatedPanelLinks.admin.branding,
+                name: translatedPanelLinks?.admin?.branding,
                 icon: "fas fa-paint-brush",
                 show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType),
             },
-            { key: "tags", name: TranslatedPanelLinks.admin.tags, icon: "fas fa-tags", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
-            { key: "adverts", name: TranslatedPanelLinks.admin.ads, icon: "fas fa-image", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
-            { key: "tickets", name: TranslatedPanelLinks.admin.ticketCenters, icon: "fas fa-envelope-open-text", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "tags", name: translatedPanelLinks?.admin?.tags, icon: "fas fa-tags", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "adverts", name: translatedPanelLinks?.admin?.ads, icon: "fas fa-image", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
+            { key: "tickets", name: translatedPanelLinks?.admin?.ticketCenters, icon: "fas fa-envelope-open-text", show: ["SuperAdmin", "Admin",].includes(props.licenseType), },
         ],
         analytics: [
             {
                 key: "organization",
-                name: TranslatedPanelLinks.analytics.org,
+                name: translatedPanelLinks?.analytics?.org,
                 icon: "fas fa-building",
                 show: ["SuperAdmin", "Admin", "DataAdmin"].includes(props.licenseType),
             },
             {
                 key: "users",
-                name: TranslatedPanelLinks.analytics.teams,
+                name: translatedPanelLinks?.analytics?.teams,
                 icon: "fa fa-users",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType),
             },
             {
                 key: "trainees",
-                name: TranslatedPanelLinks.analytics.trainees,
+                name: translatedPanelLinks?.analytics?.trainees,
                 icon: "fas fa-chalkboard-teacher",
                 show: ["SuperAdmin", "Admin", "Trainer"].includes(props.licenseType),
             },
             {
                 key: "courses",
-                name: TranslatedPanelLinks.analytics.courses,
+                name: translatedPanelLinks?.analytics?.courses,
                 icon: "fas fa-book",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType),
             },
             {
                 key: "articles",
-                name: TranslatedPanelLinks.analytics.articles,
+                name: translatedPanelLinks?.analytics?.articles,
                 icon: "fas fa-newspaper",
                 show: ["SuperAdmin", "Admin", "Creator", "Manager", "Trainer"].includes(props.licenseType),
             },
@@ -301,23 +301,23 @@ export default function Sidebar(props) {
         blog: [
             {
                 key: "articles",
-                name: TranslatedPanelLinks.blog.articles,
+                name: translatedPanelLinks?.blog?.articles,
                 icon: "fas fa-newspaper",
                 show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType),
             },
-            { key: "editor", name: TranslatedPanelLinks.blog.editor, icon: "fas fa-pencil-alt", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "editor", name: translatedPanelLinks?.blog?.editor, icon: "fas fa-pencil-alt", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
         ],
         social: [
-            { key: "text", name: TranslatedPanelLinks.social.text, icon: "fas fa-pencil-alt", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
-            { key: "link", name: TranslatedPanelLinks.social.link, icon: "fas fa-link", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
-            { key: "image", name: TranslatedPanelLinks.social.image, icon: "fas fa-image", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
-            { key: "gallery", name: TranslatedPanelLinks.social.gallery, icon: "fas fa-images", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
-            { key: "video", name: TranslatedPanelLinks.social.video, icon: "fas fa-film", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "text", name: translatedPanelLinks?.social?.text, icon: "fas fa-pencil-alt", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "link", name: translatedPanelLinks?.social?.link, icon: "fas fa-link", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "image", name: translatedPanelLinks?.social?.image, icon: "fas fa-image", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "gallery", name: translatedPanelLinks?.social?.gallery, icon: "fas fa-images", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
+            { key: "video", name: translatedPanelLinks?.social?.video, icon: "fas fa-film", show: ["SuperAdmin", "Admin", "Creator"].includes(props.licenseType), },
         ],
         help: [
-            { key: "chat", name: TranslatedPanelLinks.help.chatbot, icon: "fas fa-comment", show: true },
-            { key: "faq", name: TranslatedPanelLinks.help.faq, icon: "fas fa-comments", show: true },
-            { key: "ticket", name: TranslatedPanelLinks.help.support, icon: "fas fa-desktop", show: true },
+            { key: "chat", name: translatedPanelLinks?.help?.chatbot, icon: "fas fa-comment", show: true },
+            { key: "faq", name: translatedPanelLinks?.help?.faq, icon: "fas fa-comments", show: true },
+            { key: "ticket", name: translatedPanelLinks?.help?.support, icon: "fas fa-desktop", show: true },
         ]
     };
     function editMode() {

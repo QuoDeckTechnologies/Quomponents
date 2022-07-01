@@ -130,7 +130,7 @@ export default function Reward(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation)
-        label = tObj.label
+        label = tObj?.label || rewardContent?.label
     }
     //-------------------------------------------------------------------
     // 5. Get animation of the component

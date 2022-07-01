@@ -91,9 +91,9 @@ ImageWithCaption.propTypes = {
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
     */
     withTranslation: PropTypes.shape({
-    lang: PropTypes.string,
-    tgt: PropTypes.string,
-    dictionary: PropTypes.string,
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
     }),
     /**
     Use to enable/disable the component
@@ -119,7 +119,7 @@ ImageWithCaption.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "warning",
-    asFloated:"left",
+    asFloated: "left",
     withColor: null,
     withAnimation: null,
     withTranslation: null,
@@ -170,11 +170,11 @@ export default function ImageWithCaption(props) {
     //-------------------------------------------------------------------
     let tObj;
     if (
-    props.withTranslation?.lang &&
-    props.withTranslation.lang !== "" &&
-    props.withTranslation.lang !== "en"
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
     ) {
-    tObj = getTranslation(props.withTranslation);
+        tObj = getTranslation(props.withTranslation);
     }
     //-------------------------------------------------------------------
     // 6. Set background image and color for card
@@ -220,8 +220,8 @@ export default function ImageWithCaption(props) {
                     content={props.data?.caption}
                     withColor={captionColors}
                 />
-                <Button 
-                    content={tObj ? tObj.button : "Continue"}
+                <Button
+                    content={tObj?.button || "Continue"}
                     asFloated={"inline"}
                     onClick={props.onClick}
                     withColor={buttonColors}

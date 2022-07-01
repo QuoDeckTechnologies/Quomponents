@@ -108,9 +108,9 @@ export default function FeedbackForm(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        toggleLabel = tObj?.content
-        inputFieldLable1 = tObj?.correct
-        inputFieldLable2 = tObj?.incorrect
+        toggleLabel = tObj?.content || "Show Feedback"
+        inputFieldLable1 = tObj?.correct || "If Correct"
+        inputFieldLable2 = tObj?.incorrect || "If Incorrect"
     }
     //------------------------------------------------------------------
     // 1. Set the classes
@@ -154,7 +154,7 @@ export default function FeedbackForm(props) {
                     {toggle &&
                         <div className="qui-feedback-input-field-container">
                             <InputField {...props} onSubmit={props.onClick} label={inputFieldLable1} withColor={InputFieldColors} name={"correct"} withTranslation={null} />
-                            <InputField {...props} onSubmit={props.onClick} label= {inputFieldLable2} withColor={InputFieldColors} name={"incorrect"} withTranslation={null} />
+                            <InputField {...props} onSubmit={props.onClick} label={inputFieldLable2} withColor={InputFieldColors} name={"incorrect"} withTranslation={null} />
                         </div>
                     }
                 </fieldset>

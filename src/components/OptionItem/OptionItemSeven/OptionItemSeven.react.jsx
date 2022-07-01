@@ -178,7 +178,7 @@ export default function OptionItemSeven(props) {
           <FormControlLabel
             className="qui-option-item-radio"
             value={
-              content?.targetName ? content?.targetName : "default-target-name"
+              content?.targetName || "default-target-name"
             }
             control={
               <Radio

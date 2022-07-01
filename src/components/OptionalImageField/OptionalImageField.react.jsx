@@ -230,15 +230,14 @@ export default function OptionalImageField(props) {
             style={colors.button}
             onClick={uploadFile}
           >
-            {tObj ? tObj.title : content?.title ? content.title : "Upload"}
+            {tObj?.title || content?.title || "Upload"}
           </Button>
         </div>
       </div>
       {content?.actionButton && (
         <div
-          className={`qui-optional-image-field-action-icon ${
-            file ? "qui-uploaded" : ""
-          }`}
+          className={`qui-optional-image-field-action-icon ${file ? "qui-uploaded" : ""
+            }`}
           onClick={() => {
             setFile(false);
           }}

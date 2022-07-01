@@ -122,7 +122,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "navbar",
+        tgt: "navBar",
         dictionary: dictionary,
     },
     isDisabled: false,

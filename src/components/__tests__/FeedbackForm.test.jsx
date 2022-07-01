@@ -96,4 +96,17 @@ describe("FeedbackForm", () => {
             },
         });
     });
+
+    it("should render correctly if translation is not defined ", () => {
+        component.setProps({
+            data: {
+                content: "Show Feedback"
+            },
+            withTranslation: {
+                lang: "mr",
+                tgt: "feedbackForm",
+                dictionary: dictionary,
+            },
+        });
+    });
 });

@@ -85,10 +85,10 @@ export default function DeckSettingsSection(props) {
 		props.withTranslation.lang !== "en"
 	) {
 		tObj = getTranslation(props.withTranslation);
-		deckSettingsSection.settings = tObj?.settings;
-		deckSettingsSection.enableNavigation = tObj?.enableNavigation;
-		deckSettingsSection.enableSlideList = tObj?.enableSlideList;
-		deckSettingsSection.enableVoiceovers = tObj?.enableVoiceovers;
+		deckSettingsSection.settings = tObj?.settings || "Settings";
+		deckSettingsSection.enableNavigation = tObj?.enableNavigation || "Enable Navigation";
+		deckSettingsSection.enableSlideList = tObj?.enableSlideList || "Enable Slide List";
+		deckSettingsSection.enableVoiceovers = tObj?.enableVoiceovers || "Enable Voiceovers";
 	}
 
 	//-------------------------------------------------------------------

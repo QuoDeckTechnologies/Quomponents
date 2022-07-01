@@ -56,7 +56,7 @@ export default function SlideBackground(props) {
 		"ribbon-design-menu-slide-background-parent"
 	);
 
-	let SlideBackground = {
+	let slide_Background = {
 		slideBackground: "Slide Background",
 		setBackground: "Set",
 		removeBackground: "Remove"
@@ -72,7 +72,7 @@ export default function SlideBackground(props) {
 		props.withTranslation.lang !== "en"
 	) {
 		tObj = getTranslation(props.withTranslation);
-		SlideBackground = tObj;
+		slide_Background = tObj;
 	}
 
 	const [isImageModalOpen, setImageModalOpen] = useState(false);
@@ -109,12 +109,12 @@ export default function SlideBackground(props) {
 								)}
 							</div>
 							<div className="qui-ribbon-menu-label-set-remove-container">
-								<div className="qui-ribbon-menu-label-set" onClick={handleModalOpen}>{SlideBackground.setBackground}</div>
-								<div className="qui-ribbon-menu-label-remove" onClick={removeBackground}>{SlideBackground.removeBackground}</div>
+								<div className="qui-ribbon-menu-label-set" onClick={handleModalOpen}>{slide_Background?.setBackground || "Set"}</div>
+								<div className="qui-ribbon-menu-label-remove" onClick={removeBackground}>{slide_Background?.removeBackground || "Remove"}</div>
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">{SlideBackground.slideBackground}</div>
+					<div className="qui-ribbon-menu-label-file">{slide_Background?.slideBackground || "Slide Background"}</div>
 				</div>
 			</div>
 			{isImageModalOpen &&

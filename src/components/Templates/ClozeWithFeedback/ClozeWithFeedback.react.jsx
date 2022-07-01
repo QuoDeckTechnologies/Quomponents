@@ -185,7 +185,7 @@ export default function ClozeWithFeedback(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        buttonText = data?.purpose === "quiz" ? tObj?.checkAnswer : tObj?.submitAnswer;
+        buttonText = data?.purpose === "quiz" ? tObj?.checkAnswer || "Submit Answer" : tObj?.submitAnswer || "Submit Answer";
     }
 
     //-------------------------------------------------------------------

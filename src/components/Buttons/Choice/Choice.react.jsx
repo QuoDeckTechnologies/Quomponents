@@ -184,7 +184,7 @@ export default function Choice(props) {
 		props.withTranslation.lang !== "en"
 	) {
 		let tObj = getTranslation(props.withTranslation);
-		options = tObj;
+		options = tObj || props.options;
 	}
 
 	//-------------------------------------------------------------------
@@ -222,7 +222,7 @@ export default function Choice(props) {
 							style={Object.assign({}, primaryButtonStyle)}
 							onClick={() => { handleClick(0) }}
 						>
-							{options[0]?.text}
+							{options?.[0].text}
 						</div>
 						<div className="qui-or" style={Object.assign({}, orStyle)}>
 							OR
@@ -232,7 +232,7 @@ export default function Choice(props) {
 							style={Object.assign({}, secondaryButtonStyle)}
 							onClick={() => { handleClick(1) }}
 						>
-							{options[1]?.text}
+							{options?.[1].text}
 						</div>
 					</div>
 				)}

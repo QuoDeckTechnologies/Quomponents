@@ -164,7 +164,7 @@ export default function OrderingList(props) {
     props.withTranslation.lang !== "en"
   ) {
     tObj = getTranslation(props.withTranslation);
-    submitButtonText = props.purpose === "quiz" ? tObj.checkAnswer : tObj.submitAnswer;
+    submitButtonText = props.purpose === "quiz" ? tObj?.checkAnswer || "Check Answer" : tObj?.submitAnswer || "Submit Answer";
   }
   // ========================= Render Function =================================
   return (

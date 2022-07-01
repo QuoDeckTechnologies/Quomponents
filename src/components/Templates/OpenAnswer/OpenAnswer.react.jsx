@@ -224,7 +224,7 @@ export default function OpenAnswer(props) {
             />
             <InputField
               {...props}
-              label= {inputName}
+              label={inputName}
               withColor={inputFieldColors}
               onSubmit={(name, value) => setState(value)}
               withTranslation={props.withTranslation}
@@ -233,7 +233,7 @@ export default function OpenAnswer(props) {
             <Button
               {...props}
               withTranslation={null}
-              content={tObj ? tObj.button : "Submit Answer"}
+              content={tObj?.button || "Submit Answer"}
               withColor={buttonColors}
               onClick={() => handleSubmit()}
             ></Button>

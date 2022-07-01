@@ -128,9 +128,7 @@ export default function OptionItemOne(props) {
     >
       <div className="qui-inline-option-container">
         <InputField
-          name={
-            content?.targetName ? content?.targetName : "default-target-name"
-          }
+          name={content?.targetName || "default-target-name"}
           value={content?.value}
           placeholder={tObj?.placeholder || content?.placeholder}
           maxLength={content?.maxLength}

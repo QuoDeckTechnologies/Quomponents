@@ -118,8 +118,6 @@ InputField.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
-
-    onSubmit: null,
 };
 /**
 ## Notes
@@ -208,8 +206,8 @@ export default function InputField(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation)
-        label = tObj.label
-        placeholder = tObj.placeholder
+        label = tObj?.label || props.label
+        placeholder = tObj?.placeholder || props.placeholder
     }
     //-------------------------------------------------------------------
     // 5. Use to set state of InputField.
@@ -219,7 +217,7 @@ export default function InputField(props) {
     let commonProperties = {
         sx: outlineStyle,
         value: input,
-        placeholder: props.placeholder,
+        placeholder: placeholder,
         type: props.type,
         multiline: props.multiline,
         variant: "filled",
@@ -235,7 +233,7 @@ export default function InputField(props) {
                 <TextField
                     {...commonProperties}
                     className="qui-filled"
-                    label={props.label}
+                    label={label}
                 />
             )
         } else if (asEmphasis === "charLimited") {
@@ -250,7 +248,7 @@ export default function InputField(props) {
                         {...commonProperties}
                         className="qui-char-limited"
                         variant="filled"
-                        label={props.label}
+                        label={label}
                     />
                 </div>
             )

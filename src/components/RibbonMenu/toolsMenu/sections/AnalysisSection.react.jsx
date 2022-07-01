@@ -63,7 +63,7 @@ export default function AnalysisSection(props) {
 		props.withTranslation.lang !== "en"
 	) {
 		tObj = getTranslation(props.withTranslation);
-		analysis = tObj?.analysis;
+		analysis = tObj?.analysis || "Analysis";
 	}
 
 	//-------------------------------------------------------------------

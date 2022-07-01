@@ -132,7 +132,7 @@ export default function DateField(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation)
-        label = tObj.label
+        label = tObj?.label || props.label;
     }
     //-------------------------------------------------------------------
     // 5. Get animation of the component

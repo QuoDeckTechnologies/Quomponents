@@ -66,7 +66,7 @@ export default function QuestionBankSection(props) {
 		props.withTranslation.lang !== "en"
 	) {
 		tObj = getTranslation(props.withTranslation);
-		questionBank = tObj?.questionBank;
+		questionBank = tObj?.questionBank || "Question Bank";
 	}
 
 	//-------------------------------------------------------------------

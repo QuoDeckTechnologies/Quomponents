@@ -143,6 +143,34 @@ describe("PictureFuddle", () => {
     expect(component.exists()).toBe(true);
   });
 
+  it("should render correctly if translation object and data is null", () => {
+    component.setProps({
+      data: {
+        purpose: ""
+      },
+      withTranslation: {
+        lang: "mr",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly if translation object is not defined", () => {
+    component.setProps({
+      data: {
+        purpose: "quiz"
+      },
+      withTranslation: {
+        lang: "mr",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
   it("should render correctly when passed isHidden props as false", () => {
     component.setProps({ isHidden: false });
     expect(component.exists()).toBe(true);

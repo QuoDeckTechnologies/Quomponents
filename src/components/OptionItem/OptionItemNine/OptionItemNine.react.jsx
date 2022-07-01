@@ -149,11 +149,7 @@ export default function OptionItemNine(props) {
           <div className="qui-short-field-inner-container">
             <div className="qui-short-field-one">
               <InputField
-                name={
-                  content?.shortFieldOne?.targetName
-                    ? content?.shortFieldOne?.targetName
-                    : "default-short-field-one-target-name"
-                }
+                name={content?.shortFieldOne?.targetName || "default-short-field-one-target-name"}
                 value={content?.shortFieldOne?.value}
                 asEmphasis="shortField"
                 asFloated="left"
@@ -165,11 +161,7 @@ export default function OptionItemNine(props) {
             </div>
             <div className="qui-short-field-two">
               <InputField
-                name={
-                  content?.shortFieldTwo?.targetName
-                    ? content?.shortFieldTwo?.targetName
-                    : "default-short-field-two-target-name"
-                }
+                name={content?.shortFieldTwo?.targetName || "default-short-field-two-target-name"}
                 value={content?.shortFieldTwo?.value}
                 asEmphasis="shortField"
                 asFloated="left"
@@ -183,11 +175,7 @@ export default function OptionItemNine(props) {
           <div className="qui-option-item-nine-input-field">
             <div className="qui-list-input-three">
               <InputField
-                name={
-                  content?.message?.targetName
-                    ? content?.message?.targetName
-                    : "default-message-target-name"
-                }
+                name={content?.message?.targetName || "default-message-target-name"}
                 value={content?.message?.value}
                 placeholder={tObj?.placeholder || content?.message?.placeholder}
                 maxLength={content?.message?.maxLength}

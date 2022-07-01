@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { getQuommons ,getTranslation} from "../../../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../../common/stylesheets/common.css";
@@ -54,7 +54,7 @@ export default function SaveExitSection(props) {
 		"ribbon-menu-exit-save-section-parent"
 	);
 
-	let SaveExitSection = {
+	let saveExitSection = {
 		saveExit: "Save & Exit"
 	}
 
@@ -68,7 +68,7 @@ export default function SaveExitSection(props) {
 		props.withTranslation.lang !== "en"
 	) {
 		tObj = getTranslation(props.withTranslation);
-		SaveExitSection = tObj;
+		saveExitSection = tObj;
 	}
 
 	//-------------------------------------------------------------------
@@ -94,7 +94,7 @@ export default function SaveExitSection(props) {
 						withIcon={{ icon: "fa fa-sign-out-alt" }}
 					/>
 					<div className="qui-ribbon-menu-label" onClick={handleSave}>
-						{SaveExitSection.saveExit}
+						{saveExitSection?.saveExit || "Save & Exit"}
 					</div>
 				</div>
 			</div>

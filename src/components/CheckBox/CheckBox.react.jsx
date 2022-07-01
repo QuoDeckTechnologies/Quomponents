@@ -169,7 +169,7 @@ export default function CheckBox(props) {
           className="qui-check-box-element"
         >
           <h4 style={{ color: withColor?.textColor }}>
-            {tObj ? tObj.label : content?.label}
+            {tObj?.label || content?.label}
           </h4>
         </label>
       </div>

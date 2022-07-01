@@ -139,8 +139,8 @@ export default function SelectField(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation)
-        label = tObj.label
-        placeHolder = tObj.placeHolder;
+        label = tObj?.label || props.content?.label
+        placeHolder = tObj?.placeHolder || props.content?.placeHolder;
     }
     //-------------------------------------------------------------------
     // 5. Get animation of the component

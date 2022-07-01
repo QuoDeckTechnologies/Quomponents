@@ -70,6 +70,16 @@ describe("AnalysisSection", () => {
       "अपना उत्तर जाँच लें"
     );
   });
+  it("should render correctly when translation is not defined", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "mr",
+        tgt: "analysisSection",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
 
   it("should render correctly when passed isHidden props as false", () => {
     component.setProps({ isHidden: false });

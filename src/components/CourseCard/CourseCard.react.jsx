@@ -144,11 +144,11 @@ export default function CourseCard(props) {
 		props.withTranslation.lang !== "en"
 	) {
 		tObj = getTranslation(props.withTranslation);
-		isSequential = props.content?.sequential ? tObj.isSequential?.true : tObj.isSequential?.false;
+		isSequential = props.content?.sequential ? tObj?.isSequential?.true || "Sequential Course" : tObj?.isSequential?.false || "Non Sequential Course";
 		points = points?.toLocaleString("hi-u-nu-deva");
-		shareLabel = tObj?.share;
-		rewardLabel = tObj?.rewardLabel;
-		menu = tObj?.arcMenu;
+		shareLabel = tObj?.share || "Share";
+		rewardLabel = tObj?.rewardLabel || "Complete to win";
+		menu = tObj?.arcMenu || menu;
 	} else {
 		points = points?.toLocaleString("en");
 	}

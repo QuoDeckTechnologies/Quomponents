@@ -128,7 +128,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "OrderingList",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     withAnimation: {

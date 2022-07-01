@@ -16,16 +16,16 @@ SlideSection.propTypes = {
   // Component Specific props
   //=======================================
   /** 
-	The Actions object is received from DeckEditorContainer for use.
-	*/
+  The Actions object is received from DeckEditorContainer for use.
+  */
   actions: PropTypes.shape({
     addSlide: PropTypes.func,
     duplicateSlide: PropTypes.func,
     deleteSlide: PropTypes.func,
   }),
   /** 
-	The Deck state is handed down from DeckEditorContainer for use.
-	*/
+  The Deck state is handed down from DeckEditorContainer for use.
+  */
   deck: PropTypes.shape({
     content: PropTypes.array,
   }),
@@ -34,28 +34,28 @@ SlideSection.propTypes = {
   // Quommon props
   //=======================================
   /**
-	Use to float the component in parent container
-	*/
+  Use to float the component in parent container
+  */
   asFloated: PropTypes.oneOf(["left", "right", "inline"]),
   /**
-	Use to show a translated version of the component text. Dictionary must be valid JSON. 
-	*/
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-	Use to show/hide the component
-	*/
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-	Use to enable/disable the component
-	*/
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-	SlideSection component must have the onClick function passed as props
-	*/
+  SlideSection component must have the onClick function passed as props
+  */
   onClick: PropTypes.func,
 };
 
@@ -65,7 +65,7 @@ export default function SlideSection(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "ribbon-menu-slide-section-parent");
 
-  let SlideSection = {
+  let slideSection = {
     slide: "Slide",
     newSlide: "New Slide",
     duplicateSlide: "Duplicate Slide",
@@ -82,7 +82,7 @@ export default function SlideSection(props) {
     props.withTranslation.lang !== "en"
   ) {
     tObj = getTranslation(props.withTranslation);
-    SlideSection = tObj;
+    slideSection = tObj;
   }
 
   // ========================= Render Function =================================
@@ -106,7 +106,7 @@ export default function SlideSection(props) {
                 className="qui-ribbon-menu-label"
                 onClick={props.actions?.addSlide}
               >
-                {SlideSection?.newSlide}
+                {slideSection?.newSlide || "New Slide"}
               </div>
             </div>
             <div className="qui-ribbon-menu-child-vertical-line"></div>
@@ -126,7 +126,7 @@ export default function SlideSection(props) {
                   className="qui-ribbon-menu-slide-label"
                   onClick={props.actions?.duplicateSlide}
                 >
-                  {SlideSection?.duplicateSlide}
+                  {slideSection?.duplicateSlide || "Duplicate Slide"}
                 </div>
               </div>
               <div
@@ -152,12 +152,12 @@ export default function SlideSection(props) {
                   className="qui-ribbon-menu-slide-label"
                   onClick={props.actions?.deleteSlide}
                 >
-                  {SlideSection?.deleteSlide}
+                  {slideSection?.deleteSlide || "Delete Slide"}
                 </div>
               </div>
             </div>
           </div>
-          <div className="qui-ribbon-menu-label-file">{SlideSection?.slide}</div>
+          <div className="qui-ribbon-menu-label-file">{slideSection?.slide || "Slide"}</div>
         </div>
       </div>
     </div>

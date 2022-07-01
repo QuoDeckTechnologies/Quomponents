@@ -17,14 +17,14 @@ SlideSettings.propTypes = {
   // Component Specific props
   //=======================================
   /** 
-	The Actions object is received from DeckEditorContainer for use.
-	*/
+  The Actions object is received from DeckEditorContainer for use.
+  */
   actions: PropTypes.shape({
     changeSlideNav: PropTypes.func,
   }),
   /** 
-	The Deck state is handed down from DeckEditorContainer for use.
-	*/
+  The Deck state is handed down from DeckEditorContainer for use.
+  */
   deck: PropTypes.shape({
     currentSlide: PropTypes.number,
     content: PropTypes.array,
@@ -34,28 +34,28 @@ SlideSettings.propTypes = {
   // Quommon props
   //=======================================
   /**
-	Use to float the component in parent container
-	*/
+  Use to float the component in parent container
+  */
   asFloated: PropTypes.oneOf(["left", "right", "inline"]),
   /**
-	Use to show a translated version of the component text. Dictionary must be valid JSON. 
-	*/
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-	Use to show/hide the component
-	*/
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-	Use to enable/disable the component
-	*/
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-	SlideSettings component must have the onClick function passed as props
-	*/
+  SlideSettings component must have the onClick function passed as props
+  */
   onClick: PropTypes.func,
 };
 
@@ -68,7 +68,7 @@ export default function SlideSettings(props) {
     "ribbon-home-menu-slide-setting-section-parent"
   );
 
-  let SlideSettings = {
+  let slideSettings = {
     settings: "Settings",
     enableBackArrow: "Enable Back Arrow",
     enableNextArrow: "Enable Next Arrow",
@@ -84,7 +84,7 @@ export default function SlideSettings(props) {
     props.withTranslation.lang !== "en"
   ) {
     tObj = getTranslation(props.withTranslation);
-    SlideSettings = tObj;
+    slideSettings = tObj;
   }
 
   //-------------------------------------------------------------------
@@ -129,9 +129,8 @@ export default function SlideSettings(props) {
                     hoverTextColor: "#666666",
                   }}
                   withIcon={{
-                    icon: `qui-ribbon-file-right-icons ${
-                      isBackChecked ? "far fa-check-square" : "far fa-square"
-                    }`,
+                    icon: `qui-ribbon-file-right-icons ${isBackChecked ? "far fa-check-square" : "far fa-square"
+                      }`,
                   }}
                   onClick={() => {
                     toggleBackState();
@@ -151,7 +150,7 @@ export default function SlideSettings(props) {
                     });
                   }}
                 >
-                  {SlideSettings?.enableBackArrow}
+                  {slideSettings?.enableBackArrow || "Enable Back Arrow"}
                 </div>
               </div>
               <div
@@ -175,9 +174,8 @@ export default function SlideSettings(props) {
                     hoverTextColor: "#666666",
                   }}
                   withIcon={{
-                    icon: `qui-ribbon-file-right-icons ${
-                      isNextChecked ? "far fa-check-square" : "far fa-square"
-                    }`,
+                    icon: `qui-ribbon-file-right-icons ${isNextChecked ? "far fa-check-square" : "far fa-square"
+                      }`,
                   }}
                   onClick={() => {
                     toggleNextState();
@@ -197,13 +195,13 @@ export default function SlideSettings(props) {
                     });
                   }}
                 >
-                  {SlideSettings?.enableNextArrow}
+                  {slideSettings?.enableNextArrow || "Enable Next Arrow"}
                 </div>
               </div>
             </div>
           </div>
           <div className="qui-ribbon-menu-label-file">
-            {SlideSettings?.settings}
+            {slideSettings?.settings || "Settings"}
           </div>
         </div>
       </div>

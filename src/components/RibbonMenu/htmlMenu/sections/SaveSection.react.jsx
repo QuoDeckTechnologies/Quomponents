@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { getQuommons , getTranslation} from "../../../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../../common/stylesheets/common.css";
@@ -51,7 +51,7 @@ export default function SaveSection(props) {
 	//-------------------------------------------------------------------
 	let quommonClasses = getQuommons(props, "ribbon-menu-save-section-parent");
 
-	let SaveSection = {
+	let saveSection = {
 		upload: "Upload",
 		download: "Download",
 		save: "Save",
@@ -68,7 +68,7 @@ export default function SaveSection(props) {
 		props.withTranslation.lang !== "en"
 	) {
 		tObj = getTranslation(props.withTranslation);
-		SaveSection = tObj;
+		saveSection = tObj;
 	}
 
 	//-------------------------------------------------------------------
@@ -110,7 +110,7 @@ export default function SaveSection(props) {
 								withIcon={{ icon: "fas fa-file-upload" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={handleUpload}>
-								{SaveSection.upload}
+								{saveSection?.upload || "Upload"}
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
@@ -126,7 +126,7 @@ export default function SaveSection(props) {
 								withIcon={{ icon: "fas fa-download" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={handleDownload}>
-								{SaveSection.download}
+								{saveSection?.download || "Download"}
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
@@ -142,11 +142,11 @@ export default function SaveSection(props) {
 								withIcon={{ icon: "far fa-file-alt" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={handleSave}>
-								{SaveSection.save}
+								{saveSection?.save || "Save"}
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">{SaveSection.file}</div>
+					<div className="qui-ribbon-menu-label-file">{saveSection?.file || "File"}</div>
 				</div>
 			</div>
 		</div>

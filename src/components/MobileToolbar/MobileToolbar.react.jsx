@@ -202,7 +202,7 @@ export default function MobileToolbar(props) {
                         position="bottom-left" arcIcon="close"
                         onClick={props.onClick}
                     />
-                    <h2 className="qui-editing-title" style={colors.textColors}>{tObj ? tObj.title : title}</h2>
+                    <h2 className="qui-editing-title" style={colors.textColors}>{tObj?.title || title}</h2>
                 </div>
             )
         }

@@ -60,7 +60,7 @@ export default function ViewSection(props) {
 		"ribbon-home-menu-view-section-parent"
 	);
 
-	let ViewSection = {
+	let viewSection = {
 		view: "View",
 		sorter: "Sorter",
 		mobile: "Mobile",
@@ -78,7 +78,7 @@ export default function ViewSection(props) {
 		props.withTranslation.lang !== "en"
 	) {
 		tObj = getTranslation(props.withTranslation);
-		ViewSection = tObj;
+		viewSection = tObj;
 	}
 
 	function setPreview(view) {
@@ -102,7 +102,7 @@ export default function ViewSection(props) {
 								withIcon={{ icon: "fas fa-filter" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("sorter") }}>
-								{ViewSection.sorter}
+								{viewSection?.sorter || "Sorter"}
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
@@ -118,7 +118,7 @@ export default function ViewSection(props) {
 								withIcon={{ icon: "fas fa-mobile-alt" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("mobile") }}>
-								{ViewSection.mobile}
+								{viewSection?.mobile || "Mobile"}
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
@@ -134,7 +134,7 @@ export default function ViewSection(props) {
 								withIcon={{ icon: "fas fa-laptop" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("desktop") }}>
-								{ViewSection.desktop}
+								{viewSection?.desktop || "Desktop"}
 							</div>
 						</div>
 						<div className="qui-ribbon-menu-child-vertical-line"></div>
@@ -150,11 +150,11 @@ export default function ViewSection(props) {
 								withIcon={{ icon: "fas fa-comments" }}
 							/>
 							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("comments") }}>
-								{ViewSection.comments}
+								{viewSection?.comments || "Comments"}
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">{ViewSection.view}</div>
+					<div className="qui-ribbon-menu-label-file">{viewSection?.view || "View"}</div>
 				</div>
 			</div>
 		</div>

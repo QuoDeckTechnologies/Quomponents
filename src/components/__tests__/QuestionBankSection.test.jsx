@@ -69,6 +69,17 @@ describe("QuestionBankSection", () => {
     expect(component.find(".qui-ribbon-menu-label").text()).toBe("प्रश्न बैंक");
   });
 
+  it("should render correctly if translation is not defined", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "mr",
+        tgt: "questionBankSection",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
   it("should render correctly when passed isHidden props as false", () => {
     component.setProps({ isHidden: false });
     expect(component.exists()).toBe(true);

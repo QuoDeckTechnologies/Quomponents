@@ -80,6 +80,17 @@ describe("MultiSelect", () => {
     });
     expect(component.exists()).toBe(true);
   });
+  it("should render component if translation is not defined", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "mr",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
   it("should render correctly onClick for Check true", () => {
     component.find(".qui-btn").at(1).simulate("click");
   });

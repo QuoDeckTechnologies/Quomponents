@@ -128,6 +128,7 @@ PictureFuddleWithFeedback.defaultProps = {
     asVariant: "primary",
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
     isDisabled: false,
     isHidden: false,
 };
@@ -192,7 +193,7 @@ export default function PictureFuddleWithFeedback(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        buttonText = data?.purpose === "quiz" ? tObj?.checkAnswer : tObj?.submitAnswer;
+        buttonText = data?.purpose === "quiz" ? tObj?.checkAnswer || "Submit Answer" : tObj?.submitAnswer || "Submit Answer";
     }
 
     //-------------------------------------------------------------------
@@ -236,7 +237,7 @@ export default function PictureFuddleWithFeedback(props) {
                     </div>
                     <div className="qui-picture-fuddle-with-feedback-input-button-container">
                         <InputField {...props}
-                            placeholder= {answerText}
+                            placeholder={answerText}
                             withColor={inputFieldColors}
                             onSubmit={(name, value) => changeText(value)}
                             name="picture-fuddle-with-feedback-input-field" />

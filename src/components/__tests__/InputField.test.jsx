@@ -9,6 +9,21 @@ import { shallow, mount, enzyme } from 'enzyme';
 import InputField from '../InputField/InputField.react'
 
 describe("InputField", () => {
+
+    const dictionary = JSON.stringify({
+        hi: {
+            inputField: {
+                label: "इनपुट नाम",
+                placeholder: "विकल्प",
+            }
+        },
+        en: {
+            inputField: {
+                label: "Input Name",
+                placeholder: "Options",
+            }
+        }
+    });
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -138,6 +153,17 @@ describe("InputField", () => {
             delay: 0,
         }
         component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly if translation object is not defined", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "mr",
+                tgt: "",
+                dictionary: dictionary,
+            }
+        });
         expect(component.exists()).toBe(true);
     });
 

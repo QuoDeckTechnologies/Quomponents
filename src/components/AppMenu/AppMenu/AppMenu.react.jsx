@@ -144,7 +144,7 @@ export default function AppMenu(props) {
             <div className="qui-catalogContainer">
               {tObj || props.withLabel?.content ? (
                 <p className="qui-catalogLabel">
-                  {tObj ? tObj.content : withLabel?.content}{" "}
+                  {tObj?.content || withLabel?.content}{" "}
                 </p>
               ) : null}
             </div>

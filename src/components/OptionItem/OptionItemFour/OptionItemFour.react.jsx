@@ -169,9 +169,7 @@ export default function OptionItemFour(props) {
           />
         </div>
         <InputField
-          name={
-            content?.targetName ? content?.targetName : "default-target-name"
-          }
+          name={content?.targetName || "default-target-name"}
           value={content?.value}
           placeholder={tObj?.placeholder || content?.placeholder}
           maxLength={content?.maxLength}

@@ -173,9 +173,8 @@ export default function ContentTableRow(props) {
       >
         <div className="qui-content-table-checkbox-container">
           <i
-            className={`${
-              isChecked ? "far fa-square" : "fas fa-check-square"
-            } qui-content-checkbox`}
+            className={`${isChecked ? "far fa-square" : "fas fa-check-square"
+              } qui-content-checkbox`}
             onClick={() => setIsChecked((prevState) => !prevState)}
           ></i>
         </div>
@@ -201,7 +200,7 @@ export default function ContentTableRow(props) {
               <ActionMenu
                 {...props}
                 withTranslation={null}
-                content={tObj ? tObj.menuData : content?.menuData}
+                content={tObj?.menuData || content?.menuData}
                 withColor={{ backgroundColor: "#ffffff" }}
                 withAnimation={{
                   animation: "slideDown",

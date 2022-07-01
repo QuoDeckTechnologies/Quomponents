@@ -164,11 +164,6 @@ describe("OrderingList", () => {
         component.find('.qui-btn').at(0).simulate("click");
         component.find('.qui-btn').at(1).simulate("click");
         component.find('.qui-btn').at(2).simulate("click");
-        component.find('.qui-btn').at(3).simulate("click");
-        component.find('.qui-btn').at(4).simulate("click");
-        component.find('.qui-btn').at(5).simulate("click");
-        component.find('.qui-btn').at(6).simulate("click");
-        component.find('.qui-btn').at(7).simulate("click");
     });
 
     it("should render submit answer text in hindi", () => {
@@ -181,6 +176,17 @@ describe("OrderingList", () => {
         })
         expect(component.find(Button).text()).toBe("अपना जवाब सबमिट करें")
     });
+
+    it("should render correctly if translation is not defined", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "mr",
+				tgt: "templateActions",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.exists()).toBe(true);
+	});
 
     it("should render check answer text in hindi", () => {
         component.setProps({

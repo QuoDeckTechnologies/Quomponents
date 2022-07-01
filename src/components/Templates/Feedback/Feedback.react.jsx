@@ -251,7 +251,7 @@ export default function Feedback(props) {
                             </div>
                             <div className="qui-feedback-button">
                                 <Button
-                                    content={tObj ? tObj.button : "Continue"}
+                                    content={tObj?.button || "Continue"}
                                     onClick={props.onClick}
                                     asVariant={asVariant}
                                     asFloated={"inline"}

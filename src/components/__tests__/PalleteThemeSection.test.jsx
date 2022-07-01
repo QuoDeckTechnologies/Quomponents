@@ -21,7 +21,7 @@ describe("PalleteThemeSection", () => {
 	}
 	const dictionary = JSON.stringify({
 		en: {
-			PalleteThemeSection: {
+			palleteThemeSection: {
 				settings: "Settings",
 				pageColor: "Page Color",
 				primaryColor: "Primary Color",
@@ -30,7 +30,7 @@ describe("PalleteThemeSection", () => {
 			}
 		},
 		hi: {
-			PalleteThemeSection: {
+			palleteThemeSection: {
 				settings: "समायोजन",
 				pageColor: "पृष्ठ रंग",
 				primaryColor: "प्राथमिक रंग",
@@ -76,7 +76,19 @@ describe("PalleteThemeSection", () => {
 		component.setProps({
 			withTranslation: {
 				lang: "hi",
-				tgt: "PalleteThemeSection",
+				tgt: "palleteThemeSection",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+
+	it("should render correctly if translation is not defined", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "mr",
+				tgt: "palleteThemeSection",
 				dictionary: dictionary,
 			},
 		});

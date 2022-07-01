@@ -192,7 +192,7 @@ export default function Anagram(props) {
   ) {
     tObj = getTranslation(props.withTranslation);
     inputFieldLable = tObj?.label
-    buttonText = data?.purpose === "quiz" ? tObj?.quizLabel : tObj?.nonQuizLabel
+    buttonText = data?.purpose === "quiz" ? tObj?.quizLabel || "Check Answer" : tObj?.nonQuizLabel || "Submit Answer"
   }
   const getBackground = () => {
     return {
@@ -232,7 +232,7 @@ export default function Anagram(props) {
             {jumbledWords(data?.answer)}
           </p>
           <InputField {...props}
-            label= {inputFieldLable}
+            label={inputFieldLable}
             withColor={inputFieldColors}
             onSubmit={(name, value) => setState(value)}
             name="anagram-input-field"

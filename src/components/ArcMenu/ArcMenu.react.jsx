@@ -198,7 +198,7 @@ export default function ArcMenu(props) {
   //-------------------------------------------------------------------
   const getMenu = (menu) => {
     if (menu === "menu") {
-      return _.map(tObj ? tObj.menuContent : menuContent, (dataObj, i) => {
+      return _.map(tObj?.menuContent || menuContent, (dataObj, i) => {
         return (
           <div
             className={`qui-menu-button qui-arc-menu-header ${quommonClasses.childClasses}`}

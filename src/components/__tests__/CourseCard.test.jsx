@@ -289,6 +289,30 @@ describe("CourseCard", () => {
 		expect(component.find(".qui-course-card-name").text()).toBe("गैर अनुक्रमिक पाठ्यक्रम");
 	});
 
+	it("should render correctly when translation lang is not matched and sequential is false", () => {
+		component.setProps({
+			content: { sequential: false },
+			withTranslation: {
+				lang: "mr",
+				tgt: "courseCard",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when translation lang is not matched and sequential is true", () => {
+		component.setProps({
+			content: { sequential: true },
+			withTranslation: {
+				lang: "mr",
+				tgt: "courseCard",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.exists()).toBe(true);
+	});
+
 	it("should render correctly when date is provided in content props", () => {
 		component.setProps({
 			content: {
