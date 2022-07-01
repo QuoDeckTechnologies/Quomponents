@@ -123,7 +123,7 @@ describe("Option Item Eight", () => {
   });
 
   it("should render correctly without throwing error when wriiten in input field", () => {
-    component.find("InputField").simulate("click");
+    component.find("InputField").simulate("submit");
   });
 
   it("should render correctly without throwing error when clicked on close icon", () => {
