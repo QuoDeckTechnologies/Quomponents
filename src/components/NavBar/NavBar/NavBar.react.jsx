@@ -157,7 +157,6 @@ export default function NavBar(props) {
   //-------------------------------------------------------------------
   let labelContent = {
     title: content?.title,
-    menuTitle: content?.menuTitle,
   };
   let tObj = null;
   if (
@@ -168,7 +167,6 @@ export default function NavBar(props) {
     tObj = getTranslation(props.withTranslation);
     if (labelContent && tObj) {
       labelContent.title = tObj.title;
-      labelContent.menuTitle = tObj.menuTitle;
     }
   }
   //-------------------------------------------------------------------
@@ -213,7 +211,7 @@ export default function NavBar(props) {
             />
           )}
           {content?.shortLogo && (
-            <img src={content?.shortLogo} className="qui-logo-img" alt="Logo" />
+            <img src={content?.shortLogo} className="qui-navbar-logo-img" alt="Logo" />
           )}
           {!labelContent?.title && (
             <img
@@ -237,15 +235,12 @@ export default function NavBar(props) {
               style={{ color: withColor?.searchIconColor }}
               onClick={props.onSearch}
             >
-              <i className="fas fa-search"></i>
+              <i className="fas fa-search qui-navbar-search-icon"></i>
             </div>
           )}
           {isMenuBar ? (
             <AppMenu
               {...props}
-              withLabel={{
-                content: labelContent?.menuTitle,
-              }}
               withIcon={withIcon}
               withColor={{
                 backgroundColor: withColor?.menuBackgroundColor,

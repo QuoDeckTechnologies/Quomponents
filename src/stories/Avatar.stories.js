@@ -68,7 +68,6 @@ export default {
         style={{
           width: "100%",
           textAlign: "center",
-          fontSize: "1.25em",
         }}
       >
         {story()}

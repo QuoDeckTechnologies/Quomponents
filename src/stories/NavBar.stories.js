@@ -7,7 +7,6 @@ const dictionary = JSON.stringify({
   hi: {
     navBar: {
       title: "कमाये",
-      menuTitle: "सूची",
     },
   },
 });
@@ -135,7 +134,6 @@ export default {
         style={{
           width: "100%",
           textAlign: "center",
-          fontSize: "1.25em",
         }}
       >
         {story()}
@@ -159,13 +157,12 @@ Default.args = {
     title: "Earn",
     shortLogo: ShortLogo,
     fullLogo: FullLogo,
-    menuTitle: "Catalog",
     iconLink: {
       icon: "fas fa-angle-left",
       link: "https://www.google.com/",
     },
   },
-  isCircular: true,
+  isCircular: false,
   isSearch: true,
   isMenuBar: true,
   isBackButton: true,
@@ -209,7 +206,6 @@ UserNavbar.args = {
     title: "Earn",
     shortLogo: ShortLogo,
     fullLogo: FullLogo,
-    menuTitle: "",
     iconLink: {
       icon: "fas fa-angle-left",
       link: "https://www.google.com/",
@@ -239,7 +235,6 @@ AmplayfierHeader.args = {
   content: {
     shortLogo: ShortLogo,
     fullLogo: FullLogo,
-    menuTitle: "Catalog",
     iconLink: {
       icon: "fas fa-angle-left",
       link: "https://www.google.com/",

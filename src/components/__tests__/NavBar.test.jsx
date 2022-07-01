@@ -128,7 +128,6 @@ describe("NavBar", () => {
         title: "earn",
         shortLogo: "xyz.jpg",
         fullLogo: "xyz.jpg",
-        menuTitle: "Catalog",
         iconLink: {
           icon: "fas fa-angle-left",
           link: "https://www.google.com/",
@@ -144,7 +143,6 @@ describe("NavBar", () => {
         title: null,
         shortLogo: "xyz.jpg",
         fullLogo: null,
-        menuTitle: "Catalog",
         iconLink: {
           icon: "fas fa-angle-left",
           link: "https://www.google.com/",
