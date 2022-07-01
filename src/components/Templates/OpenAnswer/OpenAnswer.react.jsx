@@ -224,9 +224,9 @@ export default function OpenAnswer(props) {
             />
             <InputField
               {...props}
-              content={{ label: inputName }}
+              label= {inputName}
               withColor={inputFieldColors}
-              onClick={(name, value) => setState(value)}
+              onSubmit={(name, value) => setState(value)}
               withTranslation={props.withTranslation}
               name="open-answer-input-field"
             />

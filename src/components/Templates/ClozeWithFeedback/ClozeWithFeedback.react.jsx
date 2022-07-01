@@ -232,9 +232,9 @@ export default function ClozeWithFeedback(props) {
                     </div>
                     <div className="qui-cloze-with-feedback-input-button-container">
                         <InputField {...props}
-                            content={{ placeholder: answerText }}
+                            placeholder= {answerText}
                             withColor={inputFieldColors}
-                            onClick={(name, value) => changeText(value)}
+                            onSubmit={(name, value) => changeText(value)}
                             name="cloze-with-feedback-input-field"
                             asEmphasis="listInput"
                         />

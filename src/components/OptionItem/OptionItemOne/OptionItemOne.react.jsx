@@ -131,14 +131,12 @@ export default function OptionItemOne(props) {
           name={
             content?.targetName ? content?.targetName : "default-target-name"
           }
-          content={{
-            value: content?.value,
-            placeholder: tObj?.placeholder || content?.placeholder,
-            maxLength: content?.maxLength,
-          }}
+          value={content?.value}
+          placeholder={tObj?.placeholder || content?.placeholder}
+          maxLength={content?.maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
-          onClick={(name, value) => props.onInput(name, value)}
+          onSubmit={(name, value) => props.onInput(name, value)}
         />
         <div className="qui-inline-edit-with-remove-button-close-icon">
           <i

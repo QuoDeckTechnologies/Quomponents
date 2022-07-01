@@ -230,9 +230,9 @@ export default function ClozeQuestion(props) {
                     </div>
                     <div className="qui-cloze-question-input-button-container">
                         <InputField {...props}
-                            content={{ placeholder: answerText }}
+                            placeholder= {answerText}
                             withColor={inputFieldColors}
-                            onClick={(name, value) => setAnswer(value)}
+                            onSubmit={(name, value) => setAnswer(value)}
                             name="cloze-question-input-field"
                             asEmphasis="listInput" />
                         <Button
