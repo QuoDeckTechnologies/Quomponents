@@ -182,7 +182,7 @@ export const MultipleWalletRow = (args) => {
                             }}
                             withTranslation={{
                                 lang: "en",
-                                tgt: "WalletRow",
+                                tgt: "walletRow",
                                 dictionary: dictionary,
                             }}
                         />
@@ -259,7 +259,7 @@ export const MultipleWalletRowsWithFixedDivSize = (args) => {
                             }}
                             withTranslation={{
                                 lang: "en",
-                                tgt: "WalletRow",
+                                tgt: "walletRow",
                                 dictionary: dictionary,
                             }}
                         />

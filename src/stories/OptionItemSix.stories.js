@@ -122,7 +122,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "optiontemSix",
+    tgt: "optionItemSix",
     dictionary: dictionary,
   },
   isDisabled: false,

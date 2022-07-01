@@ -149,22 +149,9 @@ export default function BannerCard(props) {
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
-        let tObj = getTranslation(props.withTranslation, "bannerCard");
-        let boxHeaderNull = () => {
-            if (tObj?.header === "") {
-                return boxHeader
-            } else {
-                return boxHeader = tObj?.header
-            }
-        }; let boxContentNull = () => {
-            if (tObj?.content === "") {
-                return boxContent
-            } else {
-                return boxContent = tObj?.content
-            }
-        };
-        boxHeader = boxHeaderNull();
-        boxContent = boxContentNull();
+        let tObj = getTranslation(props.withTranslation, "bannercard");
+        boxHeader = tObj?.header;
+        boxContent = tObj?.content;
     }
 
     //-------------------------------------------------------------------

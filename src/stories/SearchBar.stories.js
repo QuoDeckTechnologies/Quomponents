@@ -125,7 +125,7 @@ Default.args = {
     isClosed: false,
     isHidden: false,
     withTranslation: {
-        lang: "",
+        lang: "en",
         tgt: "searchBar",
         dictionary: dictionary,
     },

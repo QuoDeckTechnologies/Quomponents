@@ -184,7 +184,7 @@ export default function OptionItemTwo(props) {
           }
           content={{
             value: content?.value,
-            placeholder: tObj ? tObj.placeholder : content?.placeholder,
+            placeholder: tObj?.placeholder || content?.placeholder,
             maxLength: content?.maxLength,
           }}
           asEmphasis="listInput"
