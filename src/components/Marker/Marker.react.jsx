@@ -130,7 +130,6 @@ export default function Marker(props) {
     return status === "current" ? (
         <div className="qui-marker-style">
             <motion.div
-                initial={animate.from}
                 className={`qui ${quommonClasses.parentClasses}`}
                 animate={{ scale: [1, 1.15, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}

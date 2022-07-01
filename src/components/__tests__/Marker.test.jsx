@@ -13,10 +13,7 @@ describe("Marker", () => {
         jest.resetAllMocks();
         component = shallow(
             <Marker
-                content={{
-                    inset: 1,
-                    wrapper: "carnival"
-                }}
+                content={null}
                 status="current"
                 withAnimation={null}
                 isDisabled={false}
@@ -43,7 +40,7 @@ describe("Marker", () => {
         };
         let status = "current";
         component.setProps({ content: content, status: status });
-        expect(component.find(".qui-marker-img").props().src).toBe('assets/courses/carnival/current.png');
+        expect(component.find(".qui-marker-img").props().src).toBe('assets/images/configurable/wrapperIcons/current.png');
     });
     it("should render correctly if pass imgae src", () => {
         let content = {
