@@ -187,9 +187,7 @@ export default function OptionItemTen(props) {
             }
             content={{
               value: content?.option?.value,
-              placeholder: tObj
-                ? tObj.placeholder
-                : content?.option?.placeholder,
+              placeholder: tObj?.placeholder || content?.option?.placeholder,
             }}
             asEmphasis="listInput"
             withColor={props.withColor}
@@ -199,7 +197,7 @@ export default function OptionItemTen(props) {
         <div className="qui-option-item-upload-button">
           <OptionalImageField
             content={{
-              title: tObj ? tObj.uploadButton : content?.uploadButton,
+              title: tObj?.uploadButton || content?.uploadButton,
               icon: "fas fa-upload",
             }}
             onClick={(image) => handleImageUpload(image)}
@@ -215,9 +213,7 @@ export default function OptionItemTen(props) {
             }
             content={{
               value: content?.header?.value,
-              placeholder: tObj
-                ? tObj.headerPlaceholder
-                : content?.header?.placeholder,
+              placeholder: tObj?.headerPlaceholder || content?.header?.placeholder,
               maxLength: content?.header?.maxLength,
             }}
             asEmphasis="listInput"
@@ -242,9 +238,7 @@ export default function OptionItemTen(props) {
           }
           content={{
             value: content?.message?.value,
-            placeholder: tObj
-              ? tObj.messagePlaceholder
-              : content?.message?.placeholder,
+            placeholder: tObj?.messagePlaceholder || content?.message?.placeholder,
             maxLength: content?.message?.maxLength,
           }}
           asEmphasis="listInput"

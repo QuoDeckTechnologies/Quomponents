@@ -16,15 +16,6 @@ describe("SerialCard", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-    const dictionary = JSON.stringify({
-        hi: {
-            SerialCard: {
-                title: "5 मई 2022",
-                description:
-                    "म्यूचुअल फंड क्या हैं?",
-            },
-        },
-    });
     let handelevent = jest.fn();
     beforeEach(() => {
         jest.resetAllMocks();
@@ -52,11 +43,6 @@ describe("SerialCard", () => {
                     duration: 0.5,
                     delay: 0,
                 }}
-                withTranslation={{
-                    lang: "en",
-                    tgt: "",
-                    dictionary: dictionary,
-                }}
                 isDisabled={false}
                 isHidden={false}
                 onClick={() => { }}
@@ -65,26 +51,6 @@ describe("SerialCard", () => {
     });
 
     it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly with withTranslation prop", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "hi",
-                tgt: "SerialCard",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly without target", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "hi",
-                tgt: "",
-                dictionary: dictionary,
-            },
-        });
         expect(component.exists()).toBe(true);
     });
     it("should render correctly when passed withColor props", () => {

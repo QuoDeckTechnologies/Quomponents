@@ -8,7 +8,7 @@ describe("ToolbarDark", () => {
     const dictionary = JSON.stringify({
 
         hi: {
-            ToolbarDark: {
+            toolbarDark: {
                 content: [
                     { label: "प्रमाणपत्र" },
                     { label: "बटुआ" },
@@ -71,7 +71,7 @@ describe("ToolbarDark", () => {
                 }}
                 withTranslation={{
                     lang: "hi",
-                    tgt: "ToolbarDark",
+                    tgt: "toolbarDark",
                     dictionary: dictionary,
                 }}
 
@@ -189,7 +189,7 @@ describe("ToolbarDark", () => {
             component.setProps({
                 withTranslation: {
                     lang: "hi",
-                    tgt: "ToolbarDark",
+                    tgt: "toolbarDark",
                     dictionary: dictionary,
                 },
             });
