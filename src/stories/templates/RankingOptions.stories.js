@@ -150,7 +150,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "RankingOptions",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     withAnimation: {
@@ -196,7 +196,7 @@ RankingOptionsWithSlideHeader.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "RankingOptions",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     withAnimation: {
@@ -250,7 +250,7 @@ RankingOptionsWithSlideHeaderAndBackgroundImage.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "RankingOptions",
+        tgt: "templateActions",
         dictionary: dictionary,
     },
     withAnimation: {

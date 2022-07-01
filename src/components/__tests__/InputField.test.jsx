@@ -160,7 +160,7 @@ describe("InputField", () => {
         component.setProps({
             withTranslation: {
                 lang: "mr",
-                tgt: "",
+                tgt: "inputField",
                 dictionary: dictionary,
             }
         });

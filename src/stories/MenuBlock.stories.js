@@ -175,7 +175,7 @@ TranslatedMenuBlock.parameters = {
         "Use to change the language that the text appears in. To make this work for the button, add a button:{text,label} value to the dictionary.",
     },
     source: {
-      code: `<MenuBlock withTranslation={{lang: "hi", tgt: "button", dictionary: ${JSON.stringify(
+      code: `<MenuBlock withTranslation={{lang: "hi", tgt: "menuBlock", dictionary: ${JSON.stringify(
         {
           hi: {
             button: {

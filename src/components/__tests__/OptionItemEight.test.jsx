@@ -46,7 +46,7 @@ describe("Option Item Eight", () => {
         }}
         withTranslation={{
           lang: "en",
-          tgt: "optionitemeight",
+          tgt: "optionItemEight",
           dictionary: dictionary,
         }}
         isDisabled={false}

@@ -257,7 +257,7 @@ describe("Anagram", () => {
         },
         withTranslation: {
             lang: "mr",
-            tgt: "templateActions",
+            tgt: "anagram",
             dictionary: dictionary,
         },
     });
@@ -271,7 +271,7 @@ it("should render correctly if translation object is not defined", () => {
         },
         withTranslation: {
             lang: "mr",
-            tgt: "templateActions",
+            tgt: "anagram",
             dictionary: dictionary,
         },
     });

@@ -3,12 +3,12 @@ import AnalysisSection from "../components/RibbonMenu/toolsMenu/sections/Analysi
 
 const dictionary = JSON.stringify({
 	en: {
-		AnalysisSection: {
+		analysisSection: {
 			analysis: 'Analysis'
 		}
 	},
 	hi: {
-		AnalysisSection: {
+		analysisSection: {
 			analysis: 'विश्लेषण'
 		}
 	}
@@ -84,7 +84,7 @@ Default.args = {
 	asFloated: "left",
 	withTranslation: {
 		lang: "en",
-		tgt: "AnalysisSection",
+		tgt: "analysisSection",
 		dictionary: dictionary,
 	},
 	isDisabled: false,
@@ -106,7 +106,7 @@ TranslatedAnalysisSection.args = {
 	...Default.args,
 	withTranslation: {
 		lang: "hi",
-		tgt: "AnalysisSection",
+		tgt: "analysisSection",
 		dictionary: dictionary
 	},
 };
