@@ -2,7 +2,6 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-import renderer, { act } from "react-test-renderer";
 
 //--------------------------------------
 // Import Common Tests
@@ -16,24 +15,8 @@ import Button from "../Buttons/Button/Button.react";
 
 describe("Button", () => {
     // -------------------------------------
-    // Setup definitions for the test suite
+    // Run common tests
     // -------------------------------------
-    let component;
-    const dictionary = JSON.stringify({
-        hi: {
-            loading: "बस एक मिनट...",
-            button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
-        },
-    });
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <Button
-                content="Testing Button"
-                onClick={() => console.log("Button Testing")}
-            />
-        );
-    });
 
     const args = {
         target: Button,
@@ -44,128 +27,63 @@ describe("Button", () => {
         translations: {
             tgt: "button",
             lang: { valid: "hi", invalid: "xx" },
-            dictionary: dictionary,
+            dictionary: JSON.stringify({
+                hi: {
+                    loading: "बस एक मिनट...",
+                    button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+                },
+            }),
         },
     };
 
     hasValid("defaults", args);
+
     hasValid("variants", args);
     hasValid("sizes", args);
     hasValid("positions", args);
     hasValid("padding", args);
     hasValid("alignment", args);
-    hasValid("toggles", args);
+
     hasValid("colors", args);
     hasValid("labels", args);
     hasValid("animations", args);
     hasValid("icons", args);
     hasValid("translations", args);
 
-    it("should render correctly with isCircular set and empty content", () => {
-        component.setProps({
-            isCircular: true,
-            content: "Content",
-            withIcon: {
-                icon: "fas",
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly with isCircular set and empty content", () => {
-        component.setProps({
-            isCircular: true,
-            content: "",
-            withIcon: {
-                icon: "fas",
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly with isLoading set", () => {
-        component.setProps({
-            isLoading: true,
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly with content", () => {
-        component.setProps({
-            content: "",
-            children: "Children",
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly with withTranslation prop", () => {
-        component.setProps({
-            content: "Content",
-            withTranslation: {
-                lang: "hi",
-                tgt: "button",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly with withTranslation and withLabel prop", () => {
-        component.setProps({
-            withLabel: {
-                format: "caption",
-                content: "Content",
-                textColor: "black",
-            },
-            withTranslation: {
-                lang: "hi",
-                tgt: "",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly with withIcon prop", () => {
-        component.setProps({
-            withIcon: {
-                icon: "fas fa-desktop",
-                position: "left",
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly with asEmphasis `outlined`", () => {
-        component.setProps({
-            asEmphasis: "outlined",
-            withColor: {
-                backgroundColor: "#ffc900",
-                textColor: "#666666",
-                hoverBackgroundColor: "#666666",
-                hoverTextColor: "#ffc900",
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when hovered", () => {
-        const component = renderer.create(
-            <Button onClick={() => console.log("testing")} />
-        );
-        const tree = component.toJSON();
-        act(() => {
-            tree.props.onMouseEnter();
-            tree.props.onMouseLeave();
-        });
-    });
-    it("should render correctly with withColor prop when hovered", () => {
-        const component = renderer.create(
+    hasValid("toggles", args);
+
+    // -------------------------------------
+    // Run component specific tests
+    // -------------------------------------
+
+    let component;
+    beforeEach(() => {
+        jest.resetAllMocks();
+        component = shallow(
             <Button
-                withColor={{
-                    backgroundColor: "#ffc900",
-                    textColor: "#666666",
-                    hoverBackgroundColor: "#666666",
-                    hoverTextColor: "#ffc900",
-                }}
-                onClick={() => console.log("testing")}
+                content="Testing Button"
+                onClick={() => console.log("Button Testing")}
             />
         );
-        const tree = component.toJSON();
-        act(() => {
-            tree.props.onMouseEnter();
+    });
+
+    it("should render correctly with isCircular", () => {
+        component.setProps({
+            isCircular: true,
         });
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly with isCircular and empty content", () => {
+        component.setProps({
+            isCircular: true,
+            content: "",
+        });
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly with asEmphasis", () => {
+        component.setProps({
+            asEmphasis: "outlined",
+        });
+        expect(component.exists()).toBe(true);
     });
 });

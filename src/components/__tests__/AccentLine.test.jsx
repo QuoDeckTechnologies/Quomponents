@@ -2,7 +2,7 @@ import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -14,22 +14,28 @@ import AccentLine from "../AccentLine/AccentLine.react";
 
 describe("AccentLine", () => {
     // -------------------------------------
-    // Setup definitions for the test suite
+    // Run common tests
     // -------------------------------------
 
-    let component;
+    const args = { target: AccentLine, required: {}, translations: {} };
 
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(<AccentLine />);
-    });
+    hasValid("defaults", args);
 
-    const args = { target: AccentLine };
-
-    hasValid("existence", args);
     hasValid("variants", args);
     hasValid("sizes", args);
     hasValid("positions", args);
+    hasValid("padding", args);
+    // hasValid("alignment", args);
+
+    hasValid("colors", args);
+    // hasValid("labels", args);
+    hasValid("animations", args);
+    // hasValid("icons", args);
+    // hasValid("translations", args);
+
     hasValid("toggles", args);
-    hasValid("modifiers", args);
+
+    // -------------------------------------
+    // Run component specific tests
+    // -------------------------------------
 });
