@@ -9,7 +9,10 @@ export function getQuommons(props, component) {
     if (props.asPadded) childArray.push(`pad-${props.asPadded}`);
     if (props.asAligned) childArray.push(`${props.asAligned}-aligned`);
     if (props.asFloated) parentArray.push(`float-${props.asFloated}`);
-    if (props.asVariant) childArray.push(`variant-${props.asVariant}`);
+    if (props.asVariant) {
+        childArray.push(`variant-${props.asVariant}`);
+        childArray.push(`variant-${props.asVariant}-text`);
+    }
 
     if (props.isHidden) parentArray.push("is-hidden");
     if (props.isDisabled) parentArray.push("is-disabled");
@@ -121,26 +124,27 @@ export const resolveImage = (srcImg, imgLibrary) => {
         let img = Array.isArray(srcImg)
             ? srcImg[0]
             : typeof srcImg === "object"
-                ? srcImg["image"]
-                : srcImg;
+            ? srcImg["image"]
+            : srcImg;
         let libraryImg = _.find(imgLibrary, { id: img });
 
         if (libraryImg != null) {
             return libraryImg.image;
         } else {
-            return img.indexOf("data:") !== -1 || img.indexOf("assets/images/") !== -1
+            return img.indexOf("data:") !== -1 ||
+                img.indexOf("assets/images/") !== -1
                 ? img
                 : img.indexOf(".jpg") !== -1 ||
-                    img.indexOf(".JPG") !== -1 ||
-                    img.indexOf(".jpeg") !== -1 ||
-                    img.indexOf(".JPEG") !== -1 ||
-                    img.indexOf(".gif") !== -1 ||
-                    img.indexOf(".GIF") !== -1 ||
-                    img.indexOf(".png") !== -1 ||
-                    img.indexOf(".PNG") !== -1 ||
-                    img.indexOf(".svg") !== -1
-                    ? defaultImage
-                    : defaultImage;
+                  img.indexOf(".JPG") !== -1 ||
+                  img.indexOf(".jpeg") !== -1 ||
+                  img.indexOf(".JPEG") !== -1 ||
+                  img.indexOf(".gif") !== -1 ||
+                  img.indexOf(".GIF") !== -1 ||
+                  img.indexOf(".png") !== -1 ||
+                  img.indexOf(".PNG") !== -1 ||
+                  img.indexOf(".svg") !== -1
+                ? defaultImage
+                : defaultImage;
         }
     }
 };

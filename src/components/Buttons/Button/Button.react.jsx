@@ -22,7 +22,7 @@ Button.propTypes = {
     /**
     Button Text has to be in content or passed as children to the component. Is optional if you only want an icon.
     */
-    content: PropTypes.string,
+    content: PropTypes.string.isRequired,
     /**
     Set action emphasis in increasing order 
     */
@@ -107,7 +107,7 @@ Button.propTypes = {
             "slideUp",
             "slideLeft",
             "slideRight",
-            ""
+            "",
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
@@ -177,28 +177,35 @@ function getLabel(labelObj, position) {
 function getColors(colors, emphasis, hovered) {
     let colorStyle = hovered
         ? {
-            background: colors.hoverBackgroundColor,
-            color: colors.hoverTextColor,
-        }
+              background: colors.hoverBackgroundColor,
+              color: colors.hoverTextColor,
+          }
         : {
-            background: emphasis !== "contained" ? "transparent" : colors.backgroundColor,
-            color: emphasis !== "contained" ? colors.backgroundColor : colors.textColor,
-        }
+              background:
+                  emphasis !== "contained"
+                      ? "transparent"
+                      : colors.backgroundColor,
+              color:
+                  emphasis !== "contained"
+                      ? colors.backgroundColor
+                      : colors.textColor,
+          };
     if (!hovered && emphasis === "outlined")
-        colorStyle.borderColor = colors.backgroundColor
+        colorStyle.borderColor = colors.backgroundColor;
     return colorStyle;
 }
 
 function getIcon(iconObj, position, iconOnly) {
+    let iconPosition = iconObj?.position || "left";
     let iconMargin = iconOnly
         ? "0"
         : position === "left"
-            ? "0 0.5em 0 0"
-            : "0 0 0 0.5em";
+        ? "0 0.5em 0 0"
+        : "0 0 0 0.5em";
 
     return (
         iconObj?.icon &&
-        iconObj?.position === position && (
+        iconPosition === position && (
             <i
                 className={`qui-icon ${iconObj.icon}`}
                 style={{ fontSize: iconObj.size, margin: iconMargin }}
@@ -223,14 +230,17 @@ export default function Button(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "button");
     if (props.isCircular)
-        quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
-            }`;
+        quommonClasses.childClasses += ` is-circular ${
+            props.content === "" && props.withIcon ? "is-only-icon" : ""
+        }`;
 
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
     //-------------------------------------------------------------------
     // 2. Set the component colors
     //-------------------------------------------------------------------
-    let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
+    let colors = props.withColor
+        ? getColors(props.withColor, props.asEmphasis, hovered)
+        : {};
 
     //-------------------------------------------------------------------
     // 3. Set the button text
@@ -238,8 +248,8 @@ export default function Button(props) {
     let buttonText = props.content
         ? props.content
         : props.children
-            ? props.children
-            : "";
+        ? props.children
+        : "";
     let iconOnly = buttonText === "";
 
     //-------------------------------------------------------------------
