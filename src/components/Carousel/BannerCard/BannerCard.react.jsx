@@ -143,8 +143,8 @@ export default function BannerCard(props) {
     props.withTranslation.lang !== "en"
   ) {
     let tObj = getTranslation(props.withTranslation, "bannercard");
-    boxHeader = tObj.header;
-    boxContent = tObj.content;
+    boxHeader = tObj?.header;
+    boxContent = tObj?.content;
   }
 
   //-------------------------------------------------------------------
@@ -159,7 +159,7 @@ export default function BannerCard(props) {
     <div
       className={`qt-shadow qui ${quommonClasses.parentClasses}`}
       style={{ backgroundImage: content ? `url(${content.image})` : "" }}
-      onClick={() => props.onClick(props)}
+      onClick={props.onClick}
     >
       {content && content.tag && content.tag !== "" && (
         <div className="qui-card-label">
@@ -179,6 +179,21 @@ export default function BannerCard(props) {
         >
           <div className="qui-slider-card-box-header line-clamp">
             <h6>{boxHeader}</h6>
+          </div>
+          <div className="qui-slider-card-box-content line-clamp">
+            {boxContent}
+          </div>
+        </motion.div>
+      )}
+      {content && showBox && (
+        <motion.div
+          initial={animate.from}
+          animate={animate.to}
+          className={`qui-carousel qui-slider-card-box ${quommonClasses.childClasses}`}
+          style={Object.assign({}, colors, props.style)}
+        >
+          <div className="qui-slider-card-box-header line-clamp">
+            {boxHeader}
           </div>
           <div className="qui-slider-card-box-content line-clamp">
             {boxContent}

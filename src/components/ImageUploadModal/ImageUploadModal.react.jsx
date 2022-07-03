@@ -70,8 +70,8 @@ ImageUploadModal.propTypes = {
     */
   onClick: PropTypes.func.isRequired,
   /**
-    imageUploadModal component should have the onClose function passed as props
-    */
+  imageUploadModal component should have the onClose function passed as props
+  */
   onClose: PropTypes.func,
 };
 
@@ -210,7 +210,7 @@ export default function ImageUploadModal(props) {
         <div
           className={`qui-image-modal-upload-header ${quommonClasses.childClasses}`}
         >
-          <h2>{tObj ? tObj.header : "Upload Image"}</h2>
+          <h2>{tObj?.header || "Upload Image"}</h2>
         </div>
         <div className={`qui-image-cropper ${quommonClasses.childClasses}`}>
           <div className="qui-image-upload-button">
@@ -225,7 +225,7 @@ export default function ImageUploadModal(props) {
               />
               <Button
                 {...props}
-                content={tObj ? tObj.buttons.chooseFile : "choose file"}
+                content={tObj?.buttons?.chooseFile || "choose file"}
                 asVariant="warning"
                 withTranslation={null}
                 withAnimation={null}
@@ -278,7 +278,7 @@ export default function ImageUploadModal(props) {
             <Button
               {...props}
               asSize="normal"
-              content={tObj ? tObj.buttons.cancel : "cancel"}
+              content={tObj?.buttons?.cancel || "cancel"}
               asVariant="warning"
               asEmphasis="text"
               asFloated="left"
@@ -291,7 +291,7 @@ export default function ImageUploadModal(props) {
             <Button
               {...props}
               asSize="normal"
-              content={tObj ? tObj.buttons.save : "save"}
+              content={tObj?.buttons?.save || "save"}
               asVariant="warning"
               withTranslation={null}
               withAnimation={null}

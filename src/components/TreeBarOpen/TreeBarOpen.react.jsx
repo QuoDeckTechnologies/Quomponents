@@ -164,7 +164,7 @@ export default function TreeItem(props) {
     props.withTranslation.lang !== "" &&
     props.withTranslation.lang !== "en"
   ) {
-    tObj = getTranslation(props.withTranslation);
+    tObj = getTranslation(props.withTranslation, "treeBarOpen");
   }
   if (tObj && props.pageHeader) {
     pageHeaderTitle = tObj.pageHeader;
@@ -218,7 +218,11 @@ export default function TreeItem(props) {
           <div className="qui-treebar-pageheader">{pageHeaderTitle}</div>
         )}
         <div className="qui-treebar-searchbar">
-          <SearchBar {...props.content.props} onClick={startSearch} />
+          <SearchBar
+            {...props.content.props}
+            withTranslation={props.withTranslation}
+            onClick={startSearch}
+          />
         </div>
         {props.content?.treeData && (
           <div>

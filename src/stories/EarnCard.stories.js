@@ -192,6 +192,11 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "earncard",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };

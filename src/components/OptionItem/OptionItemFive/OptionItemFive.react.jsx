@@ -156,7 +156,7 @@ export default function OptionItemFive(props) {
         <div className="qui-option-item-five-upload-button">
           <OptionalImageField
             content={{
-              title: tObj ? tObj.uploadButton : content?.uploadButton,
+              title: tObj?.uploadButton || content?.uploadButton,
               icon: "fas fa-upload",
             }}
             onClick={(image) => handleImageUpload(image)}
@@ -165,11 +165,11 @@ export default function OptionItemFive(props) {
         </div>
         <InputField
           name={
-            content?.targetName ? content?.targetName : "default-target-name"
+            content?.targetName || "default-target-name"
           }
           content={{
             value: content?.value,
-            placeholder: tObj ? tObj.placeholder : content?.placeholder,
+            placeholder: tObj?.placeholder || content?.placeholder,
             maxLength: content?.maxLength,
           }}
           asEmphasis="listInput"

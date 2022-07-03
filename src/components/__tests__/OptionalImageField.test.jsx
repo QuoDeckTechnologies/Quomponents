@@ -88,4 +88,24 @@ describe("OptionalImageField", () => {
     await pauseFor(100);
     expect(component.exists()).toBe(true);
   });
+
+  it("should render correctly when passed isHidden props as false", () => {
+    component.setProps({ isHidden: false })
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isHidden props as true", () => {
+    component.setProps({ isHidden: true })
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isDisabled props as false", () => {
+    component.setProps({ isDisabled: false })
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isDisabled props as true", () => {
+    component.setProps({ isDisabled: true })
+    expect(component.exists()).toBe(true);
+  });
 });

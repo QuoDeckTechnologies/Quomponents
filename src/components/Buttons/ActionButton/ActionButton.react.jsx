@@ -177,8 +177,8 @@ export default function ActionButton(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj?.title) labelContent.title = tObj.title;
-        if (labelContent && tObj?.subTitle) labelContent.subTitle = tObj.subTitle;
+        labelContent.title = tObj?.title|| props.content?.title;
+        labelContent.subTitle = tObj?.subTitle || props.content?.subTitle;
     }
 
     //-------------------------------------------------------------------

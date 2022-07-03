@@ -16,7 +16,7 @@ describe("ToggleButton", () => {
 
   const dictionary = JSON.stringify({
     hi: {
-      ToggleButton: { label: "सक्रिय" },
+      toggleButton: { label: "सक्रिय" },
     },
   });
   beforeEach(() => {
@@ -43,7 +43,7 @@ describe("ToggleButton", () => {
       component.setProps({
         withTranslation: {
           lang: "hi",
-          tgt: "ToggleButton",
+          tgt: "toggleButton",
           dictionary: dictionary,
         }
       });

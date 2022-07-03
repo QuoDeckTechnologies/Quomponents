@@ -15,13 +15,13 @@ describe("RewardCard", () => {
     let component;
     const dictionary = JSON.stringify({
         hi: {
-            RewardCard: {
+            rewardCard: {
                 soldout: "बिक चुका है!",
                 left: "शेष"
             }
         },
         en: {
-            RewardCard: {
+            rewardCard: {
                 soldout: "SOLD OUT!",
                 left: "left"
             }
@@ -176,7 +176,18 @@ describe("RewardCard", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "RewardCard",
+                tgt: "rewardCard",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render render correctly with lang null", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "mr", 
+                tgt: "rewardCard",
                 dictionary: dictionary,
             },
         });

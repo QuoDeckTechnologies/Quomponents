@@ -42,11 +42,8 @@
     width: 1.7em;
     font-size: 1.4em;
   }
-  .qui.qui.qui-option-item-four
-    .qui-option-item-four-container
-    .qui.qui-check-box
-    .qui-check-box-element
-    h4 {
+
+  .qui.qui.qui-option-item-four .qui-option-item-four-container .qui.qui-check-box .qui-check-box-element h4 {
     display: none;
   }
 }
@@ -54,13 +51,12 @@
 @media only screen and (min-width: 481px) {
   .qui .qui-option-item-four-checkbox {
     min-width: 7.5em;
+    padding-right: 0.5em;
   }
-  .qui.qui.qui-option-item-four
-    .qui-option-item-four-container
-    .qui.qui-check-box
-    .qui-check-box-element
-    h4 {
+
+  .qui.qui.qui-option-item-four .qui-option-item-four-container .qui.qui-check-box .qui-check-box-element h4 {
     display: block;
+    gap: 0.5em;
   }
 }
 
