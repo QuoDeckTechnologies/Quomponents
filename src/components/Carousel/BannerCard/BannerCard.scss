@@ -7,7 +7,6 @@
   border-radius: 0.5em;
   background-repeat: no-repeat;
   background-size: cover;
-  box-shadow: 1px 2px 3px 2px #666666;
 }
 
 .qui-banner-card .qui-slider-card-box {
@@ -23,7 +22,10 @@
 }
 
 .qui-banner-card .qui-slider-card-box-header {
-  font-size: 1.1em;
+  h6{
+    padding: 0;
+    margin: 0;
+  }
   font-weight: bold;
   line-height: 1.1;
   text-align: left;
@@ -37,7 +39,6 @@
 }
 
 .qui-banner-card .qui-slider-card-box-content {
-  font-size: 1em;
   font-weight: normal;
   line-height: 1.1;
   text-align: left;

@@ -32,13 +32,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        asFloated: {
-            control: "select",
-            options: ["left", "right", "none", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -68,22 +61,10 @@ export default {
                 },
             },
         },
-        isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
         isHidden: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
-            },
-        },
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
             },
         },
     },
@@ -125,7 +106,6 @@ Default.args = {
         status: true,
     },
     asVariant: "success",
-    asFloated: "left",
     withColor: {
         textColor: "",
         accentColor: "",
@@ -141,7 +121,6 @@ Default.args = {
         tgt: "deckanalysis",
         dictionary: dictionary,
     },
-    isDisabled: false,
     isHidden: false,
 };
 Default.parameters = {
@@ -226,7 +205,6 @@ TranslatedDeck.parameters = {
     },
 };
 
-
 // -------------------------------------------------------------
 // AllVariants
 // -------------------------------------------------------------
@@ -237,14 +215,6 @@ const AllVariantBlocks = (args) => {
     };
     return (
         <div>
-            <DeckAnalysisBlock
-                {...Object.assign({}, baseObj, {
-                    withColor: {
-                        textColor: "#3A8080",
-                        accentColor: "#EB6346",
-                    },
-                })}
-            />
             <DeckAnalysisBlock
                 {...Object.assign({}, baseObj, {
                     asVariant: "primary"
@@ -262,6 +232,15 @@ const AllVariantBlocks = (args) => {
             />
             <DeckAnalysisBlock
                 {...Object.assign({}, baseObj, {
+                    content: {
+                        header: "VOICEOVERS",
+                        fheader: "Vo's",
+                        message:
+                            "Deck Should have 10 to 40 slides",
+                        icon: " fa fa-desktop",
+                        slideCount: 5,
+                        status: false,
+                    },
                     withAnimation: {
                         animation: "collapse",
                         duration: 1,
@@ -272,8 +251,6 @@ const AllVariantBlocks = (args) => {
         </div>
     );
 };
-
-
 export const AllVariantsBlocks = AllVariantBlocks.bind({});
 AllVariantsBlocks.parameters = {
     docs: {
@@ -281,7 +258,7 @@ AllVariantsBlocks.parameters = {
             story: "All variants are supported in DeckAnalysisBlock.",
         },
         source: {
-            code: `<DeckAnalysisBlock asVariant=""/>`,
+            code: `<DeckAnalysisBlock {...${JSON.stringify(TranslatedDeck.args, null, 2)}}/>`,
         },
     },
 };

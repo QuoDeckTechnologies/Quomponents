@@ -191,7 +191,7 @@ export default function ImageWithCaption(props) {
                 )}
 
                 {data?.image && (
-                    <img className="qui-image-with-caption-image"
+                    <img className="qui-image-with-caption-image qt-shadow"
                         src={resolveImage(data?.image.id, imageLibrary)}
                         alt="ImageWithCaption" />
                 )}
@@ -202,12 +202,12 @@ export default function ImageWithCaption(props) {
                         withColor={captionColors}
                     />
                 </div>
-                {<Button {...props}
-                    content={"Continue"}
-                    asFloated={"inline"}
-                    onClick={props.onClick}
-                    withColor={buttonColors}
-                />}
+                    {<Button {...props}
+                        content={"Continue"}
+                        asFloated={"inline"}
+                        onClick={props.onClick}
+                        withColor={buttonColors}
+                    />}
             </div>
         </motion.div>
     );

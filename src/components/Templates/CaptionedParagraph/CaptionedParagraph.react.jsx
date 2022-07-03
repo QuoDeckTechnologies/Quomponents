@@ -176,7 +176,7 @@ export default function CaptionedParagraph(props) {
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (
-                    <img className="qui-captioned-paragraph-image"
+                    <img className="qui-captioned-paragraph-image qt-shadow"
                         src={resolveImage(data?.image.id, imageLibrary)}
                         alt="ImageWithCaption" />
                 )}

@@ -170,7 +170,7 @@ export default function Conversation(props) {
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (
-                    <img className="qui-icon-bullet-list-image"
+                    <img className="qui-icon-bullet-list-image qt-shadow"
                         src={resolveImage(data?.image.id, imageLibrary)}
                         alt="Conversation" />
                 )}

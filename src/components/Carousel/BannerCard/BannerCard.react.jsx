@@ -157,7 +157,7 @@ export default function BannerCard(props) {
 
   return (
     <div
-      className={`qui ${quommonClasses.parentClasses}`}
+      className={`qt-shadow qui ${quommonClasses.parentClasses}`}
       style={{ backgroundImage: content ? `url(${content.image})` : "" }}
       onClick={() => props.onClick(props)}
     >
@@ -178,7 +178,7 @@ export default function BannerCard(props) {
           style={Object.assign({}, colors, props.style)}
         >
           <div className="qui-slider-card-box-header line-clamp">
-            {boxHeader}
+            <h6>{boxHeader}</h6>
           </div>
           <div className="qui-slider-card-box-content line-clamp">
             {boxContent}

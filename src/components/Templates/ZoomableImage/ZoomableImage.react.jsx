@@ -215,7 +215,7 @@ export default function ZoomableImage(props) {
                                 withColor={slideHeaderColors} />
                         )}
                         {data?.image && (
-                            <img className="qui-header-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
+                            <img className="qui-header-image qt-shadow" src={resolveImage(data.image.id, imageLibrary)} alt="" />
                         )}
                         <div className="qui-zoomable-icon">
                             {<Button
@@ -230,7 +230,7 @@ export default function ZoomableImage(props) {
                             {pinch && <img className="qui-pinchview-image" src={PinchImage} alt="" />}
 
                             {data?.zoomableImage && (
-                                <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                                <img className="qui-zoomable-picture qt-shadow" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
                             )}
                         </div>
                         <div className="qt-sm">
@@ -308,7 +308,7 @@ export default function ZoomableImage(props) {
                         {pinch && <img className="qui-pinchview-image" src={PinchImage} alt="" />}
 
                         {data?.zoomableImage && (
-                            <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                            <img className="qui-zoomable-picture qt-shadow" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
                         )}
                     </div>
                     <div className="qt-sm qui-zoomable-image-presenter-caption">

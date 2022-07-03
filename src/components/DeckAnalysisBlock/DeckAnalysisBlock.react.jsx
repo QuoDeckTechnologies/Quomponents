@@ -42,10 +42,6 @@ DeckAnalysis.propTypes = {
         "error",
     ]),
     /**
-     Use to float the component in parent container
-     */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
       Use to override component colors and behavior
       */
     withColor: PropTypes.shape({
@@ -79,17 +75,9 @@ DeckAnalysis.propTypes = {
         dictionary: PropTypes.string,
     }),
     /**
-      Use to enable/disable the component
-      */
-    isDisabled: PropTypes.bool,
-    /**
       Use to show/hide the component
       */
     isHidden: PropTypes.bool,
-    /**
-      DeckAnalysisBlock component must have the onClick function passed as props
-      */
-    onClick: PropTypes.func.isRequired,
 };
 
 DeckAnalysis.defaultProps = {
@@ -101,11 +89,9 @@ DeckAnalysis.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "primary",
-    asFloated: "left",
     withColor: null,
     withAnimation: null,
     withTranslation: null,
-    isDisabled: false,
     isHidden: false,
 };
 
@@ -191,8 +177,13 @@ export default function DeckAnalysis(props) {
                     </div>
                 </div>
                 <div className="qui-deckblock-bottom" style={props.content?.status === true ? { backgroundColor: "#C1DC9E" } : { backgroundColor: "#D97575" }} >
-                    <i className="fas fa-ellipsis-h" style={colors.accentColors}
-                        onClick={props.onClick}></i>
+                    <h5> {
+                        props.content?.status
+                            ? "Check Slides: " +
+                            props.content?.slideCount
+                            : "..."
+                    }
+                    </h5>
                 </div>
             </div>
         </motion.div>
