@@ -11,7 +11,8 @@
 /* max and ideal Definitions */
 /* ================================================= */
 .qui .qui-char-limit-max-length {
-  background-color: #aaaaaa;
+  background: #AAAAAA29;
+  color: #666666;
   width: fit-content;
   padding: 0.2em 0.9em 0.1em 0.9em;
   font-size: 1em;
@@ -23,6 +24,7 @@
 }
 .qui .qui-char-limit-ideal-length {
   background-color: #f80909;
+  color: #666666;
   width: fit-content;
   padding: 0.2em 0.9em 0.1em 0.9em;
   font-size: 1em;
@@ -95,9 +97,9 @@
   transition: none;
   outline: none;
 }
-.qui .MuiFilledInput-root:hover:not(.Mui-disable):before {
-  border-bottom: 0.3em solid #8c8c89;
-}
+// .qui .MuiFilledInput-root:hover:not(.Mui-disable):before {
+//   border-bottom: 0.3em solid #8c8c89;
+// }
 .qui .MuiFilledInput-root {
   border-top-left-radius: 0.5em;
   border-top-right-radius: 0.5em;

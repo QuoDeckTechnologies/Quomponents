@@ -16,19 +16,17 @@ describe("InputField", () => {
     let onFocus = jest.fn();
     let onChange = jest.fn();
     let onBlur = jest.fn();
-    let onClick = jest.fn();
+    let onSubmit = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
         component = mount(<InputField
-            content={{
-                label: "Input Name",
-                value: "Please input your text here",
-                placeholder: "Options",
-                maxLength: 30,
-                type: "text",
-                multiLine: true
-            }}
+            label="Input Name"
+            value="Please input your text here"
+            placeholder="Options"
+            maxLength={30}
+            type="text"
+            multiline={true}
             name=""
             asEmphasis="filled"
             asFloated="none"
@@ -36,6 +34,9 @@ describe("InputField", () => {
                 textColor: "",
                 accentColor: "",
                 backgroundColor: "",
+                onSelectTextColor: "",
+                onSelectAccentColor: "",
+                onSelectBackgroundColor: "",
             }}
             withAnimation={null}
             isDisabled={false}
@@ -43,7 +44,7 @@ describe("InputField", () => {
             onFocus={onFocus}
             onChange={onChange}
             onBlur={onBlur}
-            onClick={onClick}
+            onSubmit={onSubmit}
         />);
     })
 
@@ -53,14 +54,12 @@ describe("InputField", () => {
 
     it("it should render the class of character limit the input is under limit correctly when passed asEmphasis prop as charLimited", () => {
         component.setProps({
-            content: {
-                label: "Input new Name",
-                value: "text here",
-                placeholder: "Options",
-                maxLength: 0,
-                type: "text",
-                multiLine: true
-            },
+            label: "Input new Name",
+            value: "text here",
+            placeholder: "Options",
+            maxLength: 0,
+            type: "text",
+            multiline: true,
             asEmphasis: "charLimited"
         })
         expect(component.exists()).toBe(true);
@@ -68,14 +67,12 @@ describe("InputField", () => {
 
     it("it should render the class of character limit the input is under limit correctly when passed asEmphasis prop as listInput", () => {
         component.setProps({
-            content: {
-                label: "Input new Name",
-                value: "text here",
-                placeholder: "Options",
-                maxLength: 0,
-                type: "text",
-                multiLine: false
-            },
+            label: "Input new Name",
+            value: "text here",
+            placeholder: "Options",
+            maxLength: 0,
+            type: "text",
+            multiline: false,
             asEmphasis: "listInput"
         })
         expect(component.exists()).toBe(true);
@@ -123,9 +120,12 @@ describe("InputField", () => {
 
     it("it should render correctly when passed withColor props", () => {
         let colors = {
-            textColor: "#fff",
-            backgroundColor: "#fff",
-            accentColor: "#FF0000",
+            textColor: "#666666",
+            accentColor: "#ffab00",
+            backgroundColor: "#ffab000d",
+            onSelectTextColor: "#666666",
+            onSelectAccentColor: "#ffab00",
+            onSelectBackgroundColor: "#ffab000d",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);

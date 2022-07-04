@@ -3,7 +3,7 @@ import RedeemCard from "../components/RedeemCard/RedeemCard.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        RedeemCard: {
+        redeemCard: {
             button: "मोचन",
             inprogress: "आपका मोचन अनुरोध प्रक्रिया में है",
             completed: "आपने इस ऑफ़र को भुना लिया है",
@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
         }
     },
     en: {
-        RedeemCard: {
+        redeemCard: {
             button: "Redeem",
             inprogress: "YOUR REDEMPTION REQUEST IS IN PROCESS",
             completed: "YOU HAVE REDEEMED THIS OFFER",
@@ -130,7 +130,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "RedeemCard",
+        tgt: "redeemCard",
         dictionary: dictionary,
     },
     asFloated: "inline",
@@ -171,7 +171,7 @@ ColoredRedeemCard.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "RedeemCard",
+        tgt: "redeemCard",
         dictionary: dictionary,
     },
     withAnimation: {
@@ -219,7 +219,7 @@ export const AllVariantsTemplate = (args) => {
         },
         withTranslation: {
             lang: "en",
-            tgt: "RedeemCard",
+            tgt: "redeemCard",
             dictionary: dictionary,
         },
         withAnimation: {
@@ -254,7 +254,7 @@ export const AllVariantsTemplate = (args) => {
         },
         withTranslation: {
             lang: "en",
-            tgt: "RedeemCard",
+            tgt: "redeemCard",
             dictionary: dictionary,
         },
         withAnimation: {
@@ -289,7 +289,7 @@ export const AllVariantsTemplate = (args) => {
         },
         withTranslation: {
             lang: "en",
-            tgt: "RedeemCard",
+            tgt: "redeemCard",
             dictionary: dictionary,
         },
         withAnimation: {
@@ -327,7 +327,7 @@ TranslatedRedeemCard.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "RedeemCard",
+        tgt: "redeemCard",
         dictionary: dictionary,
     },
 };

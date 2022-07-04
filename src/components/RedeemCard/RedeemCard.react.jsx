@@ -160,10 +160,10 @@ export default function RedeemCard(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        buttonText = tObj.button;
-        inProgressText = tObj.inprogress;
-        completedText = tObj.completed;
-        leftText = tObj.left
+        buttonText = tObj?.button || buttonText;
+        inProgressText = tObj?.inprogress || inProgressText;
+        completedText = tObj?.completed || completedText;
+        leftText = tObj?.left || leftText
     }
     //-------------------------------------------------------------------
     // 7. Get the RedeemCard Component

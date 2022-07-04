@@ -8,8 +8,7 @@ const dictionary = JSON.stringify({
         notstarted: "शुरू नही हुआ",
         inprogress: "चालू है",
         completed: "पूरा है",
-      },
-      label: "बातचीत कौशल 101",
+      }
     },
   },
 });
