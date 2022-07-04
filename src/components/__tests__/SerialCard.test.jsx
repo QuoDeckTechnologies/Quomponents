@@ -16,21 +16,21 @@ describe("SerialCard", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-    let handelevent = jest.fn();
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
             <SerialCard
-                content={{
-                    title: "5th May 2022",
-                    description:
-                        "What are Mutual Funds?",
-                    image: "image",
-                    backImage: "image",
-                    playerIcon: "fa fa-users",
-                    playersValue: 20539,
-                    iconOpt: ["fa fa-book", "fa fa-gamepad", "fa fa-trophy"]
-                }}
+                title="5th May 2022"
+                description="What are Mutual Funds?"
+                image="image"
+                backImage="image"
+                playerIcon="fa fa-users"
+                playersValue={20539}
+                iconOpt={[
+                    {
+                        icon: "fa fa-book",
+                        func: () => { },
+                    }]}
                 asVariant="primary"
                 asSize="normal"
                 let colors={{
@@ -45,7 +45,6 @@ describe("SerialCard", () => {
                 }}
                 isDisabled={false}
                 isHidden={false}
-                onClick={() => { }}
             />
         );
     });
@@ -108,8 +107,6 @@ describe("SerialCard", () => {
         expect(component.exists()).toBe(true);
     })
     it("should call onMouseDown when click", () => {
-        component.find(".qui-serialcard-icon").at(0).simulate("mousedown");
-        component.find(".qui-serialcard-icon").at(1).simulate("mousedown");
-        component.find(".qui-serialcard-icon").at(2).simulate("mousedown");
+        component.find(".qui-serialcard-icon").simulate("mousedown");
     });
 });
