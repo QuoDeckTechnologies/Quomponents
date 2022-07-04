@@ -20,11 +20,9 @@ describe("SelectField", () => {
         jest.resetAllMocks();
         component = shallow(
             <SelectField
-                content={{
-                    label: "Course Category",
-                    categoryOptions: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
-                    placeHolder: "Choose...",
-                }}
+                label="Course Category"
+                categoryOptions={["Sales Training", "Tech Training", "HR Training", "Graphic Training"]}
+                placeHolder="Choose..."
                 asPadded="normal"
                 withColor={null}
                 withAnimation={null}
@@ -36,6 +34,21 @@ describe("SelectField", () => {
     });
 
     it("it should render correctly without throwing error", () => {
+        expect(component.exists()).toBe(true);
+    })
+
+    it("it should render correctly when passed label prop pass empty", () => {
+        component.setProps({ label: "" })
+        expect(component.exists()).toBe(true);
+    })
+
+    it("it should render correctly when passed categoryOptions prop pass empty", () => {
+        component.setProps({ categoryOptions: [] })
+        expect(component.exists()).toBe(true);
+    })
+
+    it("it should render correctly when passed placeHolder prop pass empty", () => {
+        component.setProps({ placeHolder: "" })
         expect(component.exists()).toBe(true);
     })
 
