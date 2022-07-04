@@ -25,7 +25,9 @@ describe("ShareWidget", () => {
         jest.resetAllMocks();
         component = shallow(
             <ShareWidget
-                content={null}
+                label=""
+                url=""
+                asSize="normal"
                 asFloated="none"
                 withColor={null}
                 withAnimation={null}
@@ -36,21 +38,55 @@ describe("ShareWidget", () => {
         );
     });
 
-    it("should render correctly without throwing error",
-        () => {
-            expect(component.exists()).toBe(true);
-        });
+    it("should render correctly without throwing error", () => {
+        expect(component.exists()).toBe(true);
+    });
 
-    it("should render correctly if Content set Value",
-        () => {
-            component.setProps({
-                content: {
-                    label: "Share",
-                    url: "www.quodeck.com",
-                },
-            });
-            expect(component.exists()).toBe(true);
+    it("should render correctly if label & url has some value", () => {
+        component.setProps({
+            label: "Share",
+            url: "www.quodeck.com",
         });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly if label & url has empty value", () => {
+        component.setProps({
+            label: "",
+            url: "",
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as tiny", () => {
+        component.setProps({ asSize: "tiny" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as small", () => {
+        component.setProps({ asSize: "small" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as normal", () => {
+        component.setProps({ asSize: "normal" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as big", () => {
+        component.setProps({ asSize: "big" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as huge", () => {
+        component.setProps({ asSize: "huge" })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed asSize prop as massive", () => {
+        component.setProps({ asSize: "massive" })
+        expect(component.exists()).toBe(true);
+    });
 
     it("should render correctly when passed asFloated prop as left", () => {
         component.setProps({ asFloated: "left" })
@@ -90,29 +126,32 @@ describe("ShareWidget", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly with translation",
-        () => {
-            component.setProps({
-                withTranslation: {
-                    lang: "hi",
-                    tgt: "shareWidget",
-                    dictionary: dictionary,
-                }
-            });
-            expect(component.exists()).toBe(true);
+    it("should render correctly when withTranslation props is passed", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "shareWidget",
+                dictionary: dictionary,
+            },
         });
+        expect(component.exists()).toBe(true);
+    });
 
-    it("should render correctly if translation object is not returned",
-        () => {
-            component.setProps({
-                withTranslation: {
-                    lang: "hi",
-                    tgt: "",
-                    dictionary: dictionary,
-                }
-            });
-            expect(component.exists()).toBe(true);
+    it("should render correctly when withTranslation props is passed and dictionary does not have target value", () => {
+        const dictionary = JSON.stringify({
+            hi: {
+                shareWidget: {},
+            },
         });
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "shareWidget",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
 
     it("should render correctly when passed isHidden props as false", () => {
         component.setProps({ isHidden: false })
