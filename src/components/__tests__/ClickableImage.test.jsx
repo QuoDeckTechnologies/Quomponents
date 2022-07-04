@@ -30,9 +30,7 @@ describe("Clickable Image", () => {
 
   it("should render correctly when image is provided", () => {
     component.setProps({
-      content: {
-        image: "xyz.jpeg",
-      },
+      image: "xyz.jpeg",
     });
     expect(component.exists()).toBe(true);
   });
