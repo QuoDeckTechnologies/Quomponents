@@ -192,10 +192,10 @@ export default function BannerCard(props) {
           className={`qui-carousel qui-slider-card-box ${quommonClasses.childClasses}`}
           style={Object.assign({}, colors, props.style)}
         >
-          <div className="qui-slider-card-box-header line-clamp">
+          <h6 className="qui-slider-card-box-header line-clamp">
             {boxHeader}
-          </div>
-          <div className="qui-slider-card-box-content line-clamp">
+          </h6>
+          <div className="qui-slider-card-box-content line-clamp qt-sm">
             {boxContent}
           </div>
         </motion.div>

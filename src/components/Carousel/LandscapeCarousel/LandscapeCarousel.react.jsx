@@ -147,7 +147,7 @@ export default function LandscapeCarousel(props) {
               className="qui-landscape-slide-container "
               key={"slider-" + index + Math.random()}
             >
-              <div className={`qui-landscape-slide `}>
+              <div className={`qui-landscape-slide`}>
                 {slide.selected && (
                   <div className="qui-mid-circle">
                     <div className="qui-landscape-checkbox">

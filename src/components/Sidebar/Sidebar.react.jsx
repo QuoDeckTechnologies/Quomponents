@@ -255,9 +255,9 @@ export default function Sidebar(props) {
         return (
             <div className={`qui-side-bar-editmode-container`} style={{ backgroundColor: props.withColor?.backgroundColor }}>
                 <img className="qui-side-bar-logo" src={coloredDefaultLogo} alt="" />
-                <p className={`qui-side-bar-edit-mode-label`} style={{ color: props.withColor?.textColor }}>
+                <h2 className={`qui-side-bar-edit-mode-label`} style={{ color: props.withColor?.textColor }}>
                     {props.label}
-                </p>
+                </h2>
                 <ArcMenu position="bottom-left" menuType="close" arcIcon="close" onClick={props.onClick} />
             </div>
         )
@@ -273,7 +273,7 @@ export default function Sidebar(props) {
                             (sections, index) => {
                                 return (
                                     <div
-                                        className={`qui-side-bar-sections`}
+                                        className={`qui-side-bar-sections qt-utn`}
                                         onClick={() => { setState(sections.key); }}
                                         key={`panellink-${index}`}
                                     >
