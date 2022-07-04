@@ -33,13 +33,11 @@ describe("RewardCard", () => {
         jest.resetAllMocks();
         component = mount(
             <RewardCard
-                content={{
-                    id: "",
-                    name: "",
-                    image: "",
-                    cost: 0,
-                    stock: {},
-                }}
+                id=""
+                name=""
+                image=""
+                cost={0}
+                stock={{}}
                 asEmphasis="default"
                 asSize="normal"
                 withColor={null}
@@ -56,34 +54,32 @@ describe("RewardCard", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed content prop with values", () => {
-        let value = {
+    it("should render correctly when passed name,image,cost & stock prop with values", () => {
+        component.setProps({
             id: "",
             name: "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-            cost: 1000000,
+            cost: 10000000,
             stock: {
-                left: 1000000,
-                total: 1000000
+                left: 10000000,
+                total: 10000000
             }
-        }
-        component.setProps({ content: value })
+        })
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed content prop with values if asEmphasis as soldout", () => {
+    it("should render correctly when passed name,image,cost & stock prop with values if asEmphasis as soldout", () => {
         component.setProps({ asEmphasis: "soldout" })
-        let value = {
+        component.setProps({
             id: "",
             name: "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-            cost: 1000000,
+            cost: 10000000,
             stock: {
-                left: 1000000,
-                total: 1000000
+                left: 10000000,
+                total: 10000000
             }
-        }
-        component.setProps({ content: value })
+        })
         expect(component.exists()).toBe(true);
     });
 
@@ -186,7 +182,7 @@ describe("RewardCard", () => {
     it("should render render correctly with lang null", () => {
         component.setProps({
             withTranslation: {
-                lang: "mr", 
+                lang: "mr",
                 tgt: "rewardCard",
                 dictionary: dictionary,
             },
