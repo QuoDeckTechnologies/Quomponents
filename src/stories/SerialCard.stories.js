@@ -2,16 +2,6 @@ import React from "react";
 import SerialCard from "../components/SerialCard/SerialCard.react";
 import Image from "../assets/GameImage.png";
 
-const dictionary = JSON.stringify({
-    hi: {
-        SerialCard: {
-            title: "5 मई 2022",
-            description:
-                "म्यूचुअल फंड क्या हैं?",
-        },
-    },
-});
-
 export default {
     title: "Design System/SerialCard/SerialCard",
     component: SerialCard,
@@ -53,16 +43,6 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
-                },
-            },
-        },
-        withTranslation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    lang: "",
-                    tgt: "",
-                    dictionary: "",
                 },
             },
         },
@@ -136,11 +116,6 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-    withTranslation: {
-        lang: "hi",
-        tgt: "SerialCard",
-        dictionary: dictionary,
-    },
     isDisabled: false,
     isHidden: false,
 };
@@ -203,30 +178,6 @@ AnimatedSerialcard.parameters = {
                 null,
                 2
             )}}/>`,
-        },
-    },
-};
-
-//-------------------------------------------------------------
-// Translated SerialCard
-// -------------------------------------------------------------
-export const TranslatedSerialcard = Template.bind({});
-TranslatedSerialcard.args = {
-    ...Default.args,
-    withTranslation: {
-        lang: "hi",
-        tgt: "SerialCard",
-        dictionary: dictionary,
-    },
-};
-TranslatedSerialcard.parameters = {
-    docs: {
-        description: {
-            story:
-                "We can translate the language of SerialCard if dictionary is provided",
-        },
-        source: {
-            code: `<SerialCard {...${JSON.stringify(TranslatedSerialcard.args, null, 2)}}/>`,
         },
     },
 };

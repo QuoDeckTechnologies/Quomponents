@@ -194,9 +194,7 @@ export default function OptionItemNine(props) {
                 }
                 content={{
                   value: content?.message?.value,
-                  placeholder: tObj
-                    ? tObj.placeholder
-                    : content?.message?.placeholder,
+                  placeholder: tObj?.placeholder || content?.message?.placeholder,
                   maxLength: content?.message?.maxLength,
                 }}
                 asEmphasis="listInput"
