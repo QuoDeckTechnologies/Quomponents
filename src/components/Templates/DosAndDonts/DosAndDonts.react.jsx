@@ -151,9 +151,9 @@ export default function DosAndDonts(props) {
   //-------------------------------------------------------------------
   // Get translation of the component
   //-------------------------------------------------------------------
-  let Dos = "DOs"
-  let Donts = "DON'Ts"
-  let Tip = "Click on the buttons above to view"
+  let dos = "DOs"
+  let donts = "DON'Ts"
+  let tip = "Click on the buttons above to view"
   let tObj = null;
   if (
     props.withTranslation?.lang &&
@@ -161,9 +161,9 @@ export default function DosAndDonts(props) {
     props.withTranslation.lang !== "en"
   ) {
     tObj = getTranslation(props.withTranslation);
-    Dos = tObj?.dos
-    Donts = tObj?.donts
-    Tip = tObj?.tip
+    dos = tObj?.dos || "DOs"
+    donts = tObj?.donts || "DON'Ts"
+    tip = tObj?.tip || "Click on the buttons above to view"
   }
   //-------------------------------------------------------------------
   // Set the classes
@@ -234,12 +234,13 @@ export default function DosAndDonts(props) {
           <Choice {...props}
             options={[
               {
-                text: Dos,
+                text: dos,
               },
               {
-                text: Donts,
+                text: donts,
               },
             ]}
+            withTranslation={null}
             asSize="normal"
             onClick={(value) => handleClick(value)} />
         </div>
@@ -252,7 +253,7 @@ export default function DosAndDonts(props) {
             style={{
               color: slideHeaderColors.textColor
             }}>
-            {Tip}
+            {tip}
           </h3>
         )}
       </div>

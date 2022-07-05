@@ -247,10 +247,19 @@ describe("DosAndDonts", () => {
       }]
     })
   })
-  it("should render translation  with withTranslation prop ", () => {
+  it("should render translation with withTranslation prop ", () => {
     component.setProps({
       withTranslation: {
         lang: "hi",
+        tgt: "dosDonts",
+        dictionary: dictionary,
+      },
+    });
+  });
+  it("should render correctly if with withTranslation prop language is not defined ", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "mr",
         tgt: "dosDonts",
         dictionary: dictionary,
       },

@@ -153,10 +153,10 @@ Default.parameters = {
     },
 };
 // -------------------------------------------------------------
-// DOsDON'TsWithImage
+// Dos Don'ts WithImage
 // -------------------------------------------------------------
-export const DOsDONTsWithImage = Template.bind({});
-DOsDONTsWithImage.args = {
+export const DosDontsWithImage = Template.bind({});
+DosDontsWithImage.args = {
     data: {
         title: "Neque porro quisquam est qui dolorem",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
@@ -200,18 +200,18 @@ DOsDONTsWithImage.args = {
     },
     isHidden: false,
 };
-DOsDONTsWithImage.parameters = {
+DosDontsWithImage.parameters = {
     docs: {
         source: {
-            code: `<DosAndDonts {...${JSON.stringify(DOsDONTsWithImage.args, null, 2)}}/>`,
+            code: `<DosAndDonts {...${JSON.stringify(DosDontsWithImage.args, null, 2)}}/>`,
         },
     },
 };
 // -------------------------------------------------------------
 // TranslatedDOsDON'Ts
 // -------------------------------------------------------------
-export const TranslatedDOsDONTs = Template.bind({});
-TranslatedDOsDONTs.args = {
+export const TranslatedDosDonts = Template.bind({});
+TranslatedDosDonts.args = {
     data: {
         title: "Neque porro quisquam est qui dolorem",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
@@ -252,18 +252,18 @@ TranslatedDOsDONTs.args = {
     },
     isHidden: false,
 };
-TranslatedDOsDONTs.parameters = {
+TranslatedDosDonts.parameters = {
     docs: {
         source: {
-            code: `<DosAndDonts {...${JSON.stringify(TranslatedDOsDONTs.args, null, 2)}}/>`,
+            code: `<DosAndDonts {...${JSON.stringify(TranslatedDosDonts.args, null, 2)}}/>`,
         },
     },
 };
 // -------------------------------------------------------------
-// DosDontswithBackgroundImage
+// DosDontsWithBackgroundImage
 // -------------------------------------------------------------
-export const DosDontswithBackgroundImage = Template.bind({});
-DosDontswithBackgroundImage.args = {
+export const DosDontsWithBackgroundImage = Template.bind({});
+DosDontsWithBackgroundImage.args = {
     data: {
         title: "Neque porro quisquam est qui dolorem",
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
@@ -307,10 +307,10 @@ DosDontswithBackgroundImage.args = {
     },
     isHidden: false,
 };
-DosDontswithBackgroundImage.parameters = {
+DosDontsWithBackgroundImage.parameters = {
     docs: {
         source: {
-            code: `<DosAndDonts {...${JSON.stringify(DosDontswithBackgroundImage.args, null, 2)}}/>`,
+            code: `<DosAndDonts {...${JSON.stringify(DosDontsWithBackgroundImage.args, null, 2)}}/>`,
         },
     },
 };

@@ -14,6 +14,9 @@ FeedbackForm.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+    /**
+    Title data should be pass in content field
+    */
     content: PropTypes.string,
     //=======================================
     // Quommon props
@@ -99,8 +102,8 @@ export default function FeedbackForm(props) {
     // Get translation of the component
     //-------------------------------------------------------------------
     let toggleLabel = "Show Feedback"
-    let inputFieldLable1 = "If Correct"
-    let inputFieldLable2 = "If Incorrect"
+    let inputFieldLableOne = "If Correct"
+    let inputFieldLableTwo = "If Incorrect"
     let tObj = null;
     if (
         props.withTranslation?.lang &&
@@ -109,8 +112,8 @@ export default function FeedbackForm(props) {
     ) {
         tObj = getTranslation(props.withTranslation);
         toggleLabel = tObj?.content || "Show Feedback"
-        inputFieldLable1 = tObj?.correct || "If Correct"
-        inputFieldLable2 = tObj?.incorrect || "If Incorrect"
+        inputFieldLableOne = tObj?.correct || "If Correct"
+        inputFieldLableTwo = tObj?.incorrect || "If Incorrect"
     }
     //------------------------------------------------------------------
     // 1. Set the classes
@@ -153,8 +156,8 @@ export default function FeedbackForm(props) {
                     </legend>
                     {toggle &&
                         <div className="qui-feedback-input-field-container">
-                            <InputField {...props} onSubmit={props.onClick} label={inputFieldLable1} withColor={InputFieldColors} name={"correct"} withTranslation={null} />
-                            <InputField {...props} onSubmit={props.onClick} label={inputFieldLable2} withColor={InputFieldColors} name={"incorrect"} withTranslation={null} />
+                            <InputField {...props} onSubmit={props.onClick} label={inputFieldLableOne} withColor={InputFieldColors} name={"correct"} withTranslation={null} />
+                            <InputField {...props} onSubmit={props.onClick} label={inputFieldLableTwo} withColor={InputFieldColors} name={"incorrect"} withTranslation={null} />
                         </div>
                     }
                 </fieldset>
