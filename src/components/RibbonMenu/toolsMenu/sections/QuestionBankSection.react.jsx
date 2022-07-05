@@ -69,7 +69,7 @@ export default function QuestionBankSection(props) {
 						withIcon={{ icon: "fab fa-stack-exchange" }}
 					/>
 					<div className="qui-ribbon-menu-label" onClick={handleQuestionBank}>
-						Question Bank
+						<span className="qt-lbl">Question Bank</span>
 					</div>
 				</div>
 			</div>

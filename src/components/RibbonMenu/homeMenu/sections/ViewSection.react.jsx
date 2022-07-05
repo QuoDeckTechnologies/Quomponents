@@ -72,7 +72,7 @@ export default function ViewSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-filter" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("sorter") }}>
+							<div className="qt-utn qui-ribbon-menu-label" onClick={() => { setPreview("sorter") }}>
 								Sorter
 							</div>
 						</div>
@@ -88,7 +88,7 @@ export default function ViewSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-mobile-alt" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("mobile") }}>
+							<div className="qt-utn qui-ribbon-menu-label" onClick={() => { setPreview("mobile") }}>
 								Mobile
 							</div>
 						</div>
@@ -104,7 +104,7 @@ export default function ViewSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-laptop" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("desktop") }}>
+							<div className="qt-utn qui-ribbon-menu-label" onClick={() => { setPreview("desktop") }}>
 								Desktop
 							</div>
 						</div>
@@ -120,12 +120,12 @@ export default function ViewSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-comments" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={() => { setPreview("comments") }}>
+							<div className="qt-utn qui-ribbon-menu-label" onClick={() => { setPreview("comments") }}>
 								Comments
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">View</div>
+					<div className="qt-sm qui-ribbon-menu-label-file">View</div>
 				</div>
 			</div>
 		</div>

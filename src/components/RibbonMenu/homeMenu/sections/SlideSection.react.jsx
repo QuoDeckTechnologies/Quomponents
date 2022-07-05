@@ -74,7 +74,7 @@ export default function SlideSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-plus" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={props.actions?.addSlide}>
+							<div className="qt-utn qui-ribbon-menu-label" onClick={props.actions?.addSlide}>
 								New Slide
 							</div>
 						</div>
@@ -92,7 +92,7 @@ export default function SlideSection(props) {
 									withIcon={{ icon: "far fa-copy" }}
 								/>
 								<div
-									className="qui-ribbon-menu-slide-label"
+									className="qt-utn qui-ribbon-menu-slide-label"
 									onClick={props.actions?.duplicateSlide}
 								>
 									Duplicate Slide
@@ -110,9 +110,9 @@ export default function SlideSection(props) {
 									}}
 									isDisabled={props.deck?.content?.length === 1 ? true : false}
 									withIcon={{ icon: "fas fa-trash" }}
-								/>
+								/> 
 								<div
-									className="qui-ribbon-menu-slide-label"
+									className="qt-utn qui-ribbon-menu-slide-label"
 									onClick={props.actions?.deleteSlide}
 								>
 									Delete Slide
@@ -120,7 +120,7 @@ export default function SlideSection(props) {
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">Slide</div>
+					<div className="qt-sm qui-ribbon-menu-label-file">Slide</div>
 				</div>
 			</div>
 		</div>

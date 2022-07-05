@@ -66,7 +66,7 @@ export default function AnalysisSection(props) {
 						withIcon={{ icon: "fas fa-chart-area" }}
 					/>
 					<div className="qui-ribbon-menu-label" onClick={handleModalOpen}>
-						Analysis
+						<span className="qt-lbl">Analysis</span>
 					</div>
 				</div>
 			</div>

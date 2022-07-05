@@ -69,7 +69,7 @@ export default function SaveSection(props) {
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className="qui-ribbon-menu-save-section">
-					<div className="qui-ribbon-menu-save-section-child-container">
+					<div className="qt-shadow qui-ribbon-menu-save-section-child-container">
 						<div className="qui-ribbon-menu-save-section-child">
 							<IconLink
 								onClick={handleUpload}
@@ -81,7 +81,7 @@ export default function SaveSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-file-upload" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={handleUpload}>
+							<div className="qt-utn qui-ribbon-menu-label" onClick={handleUpload}>
 								Upload
 							</div>
 						</div>
@@ -97,7 +97,7 @@ export default function SaveSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-download" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={handleDownload}>
+							<div className="qt-utn qui-ribbon-menu-label" onClick={handleDownload}>
 								Download
 							</div>
 						</div>
@@ -113,12 +113,12 @@ export default function SaveSection(props) {
 								}}
 								withIcon={{ icon: "far fa-file-alt" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={handleSave}>
+							<div className="qt-utn qui-ribbon-menu-label" onClick={handleSave}>
 								Save
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">File</div>
+					<div className="qt-sm qui-ribbon-menu-label-file">File</div>
 				</div>
 			</div>
 		</div>

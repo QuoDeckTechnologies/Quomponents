@@ -108,7 +108,7 @@ export default function DeckSettingsSection(props) {
 									}}
 								/>
 								<div
-									className="qui-ribbon-menu-label"
+									className="qt-utn qui-ribbon-menu-label"
 									onClick={() => {
 										toggleNavigationChecked();
 										handleChangeDeckSettings({
@@ -139,7 +139,7 @@ export default function DeckSettingsSection(props) {
 									}}
 								/>
 								<div
-									className="qui-ribbon-menu-label"
+									className="qt-utn qui-ribbon-menu-label"
 									onClick={() => {
 										toggleSlideChecked();
 										handleChangeDeckSettings({
@@ -172,7 +172,7 @@ export default function DeckSettingsSection(props) {
 									}}
 								/>
 								<div
-									className="qui-ribbon-menu-label"
+									className="qt-utn qui-ribbon-menu-label"
 									onClick={() => {
 										toggleVoiceoverChecked();
 										handleChangeDeckSettings({
@@ -185,7 +185,7 @@ export default function DeckSettingsSection(props) {
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">Settings</div>
+					<div className="qt-sm qui-ribbon-menu-label-file">Settings</div>
 				</div>
 			</div>
 		</div>
