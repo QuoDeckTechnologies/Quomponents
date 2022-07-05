@@ -3,6 +3,11 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import LeaderboardRow from "../LeaderboardRow/LeaderboardRow.react";
@@ -13,6 +18,26 @@ import bronzeMedal from "../../assets/icons8_3rd_place_medal_96px.png";
 import unRank from "../../assets/icons8_un_rank_medal_96px.png";
 
 describe("LeaderboardRow", () => {
+    // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+
+    const args = {
+        target: LeaderboardRow,
+        required: {
+            content: {
+                name: 'name',
+                points: 1000
+            },
+        },
+    };
+
+    hasValid("defaults", args);
+    hasValid("colors", args);
+    hasValid("animations", args);
+
+    hasValid("toggles", args);
+
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -34,30 +59,6 @@ describe("LeaderboardRow", () => {
                 isHidden={false}
             />
         );
-    });
-
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withAnimation props", () => {
-        let animation = {
-            animation: "zoom",
-            duration: 0.5,
-            delay: 0,
-        }
-        component.setProps({ withAnimation: animation })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true });
-        expect(component.exists()).toBe(true);
     });
 
     it("should render the component without points and align the name text to the right", () => {

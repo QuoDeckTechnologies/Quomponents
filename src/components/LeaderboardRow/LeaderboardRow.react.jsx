@@ -68,7 +68,6 @@ LeaderboardRow.propTypes = {
 LeaderboardRow.defaultProps = {
     // Component Specific props
     //=======================================
-    rank: "",
     content: {},
 
     // Quommon props

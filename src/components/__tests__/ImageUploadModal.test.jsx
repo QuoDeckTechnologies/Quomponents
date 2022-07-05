@@ -4,23 +4,54 @@
 import { shallow, mount } from "enzyme";
 import { render } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
+
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import ImageUploadModal from "../ImageUploadModal/ImageUploadModal.react";
 
 describe("ImageUploadModal", () => {
+
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+
+  const args = {
+    target: ImageUploadModal,
+    required: {
+      isOpen: true,
+      onClick: () => { },
+    },
+    translations: {
+      tgt: "butimageuploadmodalton",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          imageuploadmodal: {
+            header: "तस्वीर अपलोड करें",
+            buttons: ["फाइलें चुनें", "रद्द करें", "स्वीकार"],
+          },
+        },
+      })
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("toggles", args);
+
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
-  const dictionary = JSON.stringify({
-    hi: {
-      imageuploadmodal: {
-        header: "तस्वीर अपलोड करें",
-        buttons: ["फाइलें चुनें", "रद्द करें", "स्वीकार"],
-      },
-    },
-  });
   let component;
   const parts = [
     new Blob(["construct a file..."], {}),
@@ -43,15 +74,9 @@ describe("ImageUploadModal", () => {
           buttons: ["choose file", "cancel", "save"],
         }}
         isOpen={true}
-        asVariant="primary"
-        asSize="normal"
         withColor={null}
-        withAnimation={null}
-        withTranslation={null}
-        isDisabled={false}
-        isHidden={false}
-        onClick={() => {}}
-        onClose={() => {}}
+        onClick={() => { }}
+        onClose={() => { }}
       />
     );
   });
@@ -65,19 +90,9 @@ describe("ImageUploadModal", () => {
       <ImageUploadModal
         content={{ header: "Upload image" }}
         isOpen={true}
-        asVariant="primary"
-        asSize="normal"
         withColor={null}
-        withAnimation={null}
-        withTranslation={{
-          lang: "en",
-          tgt: "imageuploadmodal",
-          dictionary: dictionary,
-        }}
-        isDisabled={false}
-        isHidden={false}
-        onClick={() => {}}
-        onClose={() => {}}
+        onClick={() => { }}
+        onClose={() => { }}
       />
     );
   });
@@ -87,19 +102,9 @@ describe("ImageUploadModal", () => {
       <ImageUploadModal
         content={{ header: "Upload image" }}
         isOpen={true}
-        asVariant="primary"
-        asSize="normal"
         withColor={null}
-        withAnimation={null}
-        withTranslation={{
-          lang: "en",
-          tgt: "imageuploadmodal",
-          dictionary: dictionary,
-        }}
-        isDisabled={false}
-        isHidden={false}
-        onClick={() => {}}
-        onClose={() => {}}
+        onClick={() => { }}
+        onClose={() => { }}
       />
     );
     unmount();
@@ -155,26 +160,6 @@ describe("ImageUploadModal", () => {
     component.find("Button").at(1).simulate("click");
     component.find("Button").at(2).simulate("click");
     expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error with translation", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "imageuploadmodal",
-        dictionary: dictionary,
-      },
-    });
-  });
-
-  it("should render correctly without throwing error with translation when target is not provided", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "",
-        dictionary: dictionary,
-      },
-    });
   });
 
   it("should render correctly when jpeg or jpg file is uploaded and saved", async () => {
