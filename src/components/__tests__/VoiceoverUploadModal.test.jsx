@@ -3,13 +3,44 @@
 // -------------------------------------
 import { shallow, mount } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import VoiceoverUploadModal from "../VoiceoverUploadModal/VoiceoverUploadModal.react";
 
 describe("VoiceoverUploadModal", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: VoiceoverUploadModal,
+    required: {
+      isOpen: true,
+      onClick: () => console.log("Button Testing"),
+    },
+    translations: {
+      tgt: "voiceoveruploadmodal",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          voiceoveruploadmodal: {
+            header: "तस्वीर अपलोड करें",
+            buttons: ["फाइलें चुनें", "रद्द करें", "स्वीकार"],
+          },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+  hasValid("toggles", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   const dictionary = JSON.stringify({
     hi: {
@@ -42,10 +73,6 @@ describe("VoiceoverUploadModal", () => {
     );
   });
 
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly without throwing error when clicked close icon", () => {
     component.find("ArcMenu").simulate("click");
     expect(component.exists()).toBe(true);
@@ -56,16 +83,6 @@ describe("VoiceoverUploadModal", () => {
     component.find("Button").at(1).simulate("click");
     component.find("Button").at(2).simulate("click");
     expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error with translation", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "voiceoveruploadmodal",
-        dictionary: dictionary,
-      },
-    });
   });
 
   it("should render correctly without throwing error with translation when target is not provided", () => {
