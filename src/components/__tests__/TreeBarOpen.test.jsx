@@ -4,6 +4,10 @@
 import { shallow } from "enzyme";
 import { render } from "@testing-library/react";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import TreeBarOpen from "../TreeBarOpen/TreeBarOpen.react";
@@ -15,7 +19,34 @@ import SearchBar from "../SearchBar/SearchBar.react";
 
 describe("TreeBarOpen", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: SearchBar,
+    required: {
+      content: "Testing Button",
+      onClick: () => console.log("Button Testing"),
+    },
+    translations: {
+      tgt: "treeBarOpen",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          treeBarOpen: {
+            placeHolder: "खोजें...",
+          },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("positions", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+  hasValid("toggles", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component;
   const dictionary = JSON.stringify({
