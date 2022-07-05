@@ -13,7 +13,7 @@ import Title from "../../Templates/Title/Title.react";
 
 describe("Title", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
   const args = {
     target: Title,
@@ -36,7 +36,9 @@ describe("Title", () => {
   hasValid("colors", args);
   hasValid("animations", args);
   hasValid("toggles", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component;
 
   beforeEach(() => {

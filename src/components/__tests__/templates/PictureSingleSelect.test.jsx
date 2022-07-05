@@ -14,9 +14,8 @@ import ClickableImage from "../../ClickableImage/ClickableImage.react";
 
 describe("PictureSingleSelect", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
-
   const args = {
     target: PictureSingleSelect,
     required: {
@@ -68,7 +67,9 @@ describe("PictureSingleSelect", () => {
   hasValid("padding", args);
   hasValid("animations", args);
   hasValid("toggles", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component;
   beforeEach(() => {
     jest.resetAllMocks();

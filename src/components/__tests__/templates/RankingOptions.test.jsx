@@ -17,9 +17,8 @@ import SlideHeader from "../../SlideHeader/SlideHeader.react";
 
 describe("RankingOptions", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
-
   const args = {
     target: RankingOptions,
     required: {
@@ -63,7 +62,9 @@ describe("RankingOptions", () => {
   hasValid("defaults", args);
   hasValid("animations", args);
   hasValid("translations", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component, bullets;
   const dictionary = JSON.stringify({
     en: {

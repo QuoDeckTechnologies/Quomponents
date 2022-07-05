@@ -14,9 +14,8 @@ import Paragraph from "../../Templates/Paragraph/Paragraph.react";
 
 describe("Paragraph", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
-
   const args = {
     target: Paragraph,
     required: {
@@ -43,7 +42,9 @@ describe("Paragraph", () => {
   hasValid("positions", args);
   hasValid("animations", args);
   hasValid("toggles", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component;
 
   beforeEach(() => {

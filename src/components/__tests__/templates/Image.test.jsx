@@ -3,13 +3,42 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import Image from "../../Templates/Image/Image.react";
 
 describe("Image", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: Image,
+    required: {
+      data: {
+        title: "Lorem ipsum dolor sit amet",
+        subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        image: { id: "header-image", extention: "" },
+        backgroundImage: { id: "background-image", extention: "" },
+        cards: [
+          {
+            image: { id: "iconlist-image-1", extention: "" },
+            text: "Neque porro quisquam est qui dolorem",
+          },
+        ],
+      },
+      onClick: () => {},
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("animations", args);
+  hasValid("toggles", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component;
   beforeEach(() => {
@@ -47,10 +76,6 @@ describe("Image", () => {
         isHidden={false}
       />
     );
-  });
-
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when passed withColor props", () => {

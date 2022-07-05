@@ -15,9 +15,8 @@ import Button from "../../Buttons/Button/Button.react";
 
 describe("PictureFuddleWithFeedback", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
-
   const args = {
     target: PictureFuddleWithFeedback,
     required: {
@@ -43,7 +42,9 @@ describe("PictureFuddleWithFeedback", () => {
   hasValid("defaults", args);
   hasValid("animations", args);
   hasValid("translations", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component;
   const dictionary = JSON.stringify({
     en: {

@@ -3,6 +3,10 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import MultipleSelect from "../../Templates/MultipleSelect/MultipleSelect.react";
@@ -10,7 +14,59 @@ import SlideHeader from "../../SlideHeader/SlideHeader.react";
 
 describe("MultipleSelect", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: MultipleSelect,
+    required: {
+      data: {
+        title: "Neque porro quisquam est qui dolorem",
+        subtitle:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+        backgroundImage: { id: "", extention: "" },
+        question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        multiselect: [
+          {
+            name: "Item 1",
+            isSelected: false,
+          },
+          {
+            name: "Item 2",
+            isSelected: false,
+          },
+          {
+            name: "Item 3",
+            isSelected: false,
+          },
+          {
+            name: "Item 4",
+            isSelected: false,
+          },
+        ],
+      },
+      onClick: () => {},
+    },
+    translations: {
+      tgt: "templateActions",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          templateActions: {
+            checkAnswer: "अपना उत्तर जाँच लें",
+            submitAnswer: "अपना जवाब सबमिट करें",
+            thanks: "आपके उत्तर के लिए धन्यवाद",
+            go: "आगे बढ़ें",
+          },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component, data;
   const dictionary = JSON.stringify({

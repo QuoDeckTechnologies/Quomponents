@@ -14,7 +14,7 @@ import Video from "../../Templates/Video/Video.react";
 
 describe("Video", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
   const args = {
     target: Video,
@@ -41,7 +41,9 @@ describe("Video", () => {
   hasValid("colors", args);
   hasValid("animations", args);
   hasValid("toggles", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component;
 
   beforeEach(() => {

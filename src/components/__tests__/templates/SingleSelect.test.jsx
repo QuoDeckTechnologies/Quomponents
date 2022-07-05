@@ -15,9 +15,8 @@ import ButtonBank from "../../ButtonBank/ButtonBank.react";
 
 describe("SingleSelect", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
-
   const args = {
     target: SingleSelect,
     required: {
@@ -36,7 +35,9 @@ describe("SingleSelect", () => {
   hasValid("defaults", args);
   hasValid("positions", args);
   hasValid("animations", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component, data;
   data = {
     title: "Neque porro quisquam est qui dolorem",

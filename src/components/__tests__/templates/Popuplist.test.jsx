@@ -15,9 +15,8 @@ import ButtonBank from "../../ButtonBank/ButtonBank.react";
 
 describe("Popuplist", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
-
   const args = {
     target: Popuplist,
     required: {
@@ -68,7 +67,9 @@ describe("Popuplist", () => {
 
   hasValid("defaults", args);
   hasValid("animations", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component, data;
   data = {
     title: "Neque porro quisquam est qui dolorem",

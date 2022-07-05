@@ -13,9 +13,8 @@ import Splash from "../../Templates/Splash/Splash.react";
 
 describe("Splash", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
-
   const args = {
     target: Splash,
     required: {
@@ -33,7 +32,9 @@ describe("Splash", () => {
   hasValid("colors", args);
   hasValid("animations", args);
   hasValid("toggles", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component;
 
   beforeEach(() => {
@@ -47,7 +48,7 @@ describe("Splash", () => {
       />
     );
   });
-  
+
   it("should render correctly without throwing error when presenter view is selected", () => {
     component.setProps({
       data: {

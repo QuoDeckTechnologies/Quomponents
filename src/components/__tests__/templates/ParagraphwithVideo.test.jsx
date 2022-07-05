@@ -13,9 +13,8 @@ import ParagraphwithVideo from "../../Templates/ParagraphwithVideo/Paragraphwith
 
 describe("ParagraphwithVideo", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
-
   const args = {
     target: ParagraphwithVideo,
     required: {
@@ -29,7 +28,9 @@ describe("ParagraphwithVideo", () => {
 
   hasValid("animations", args);
   hasValid("toggles", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component;
 
   beforeEach(() => {

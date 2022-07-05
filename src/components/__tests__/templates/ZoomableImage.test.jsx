@@ -14,7 +14,7 @@ import SlideHeader from "../../SlideHeader/SlideHeader.react";
 
 describe("ZoomableImage", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
   const args = {
     target: ZoomableImage,
@@ -67,7 +67,9 @@ describe("ZoomableImage", () => {
   hasValid("colors", args);
   hasValid("animations", args);
   hasValid("toggles", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component;
   const pauseFor = (milliseconds) =>
     new Promise((resolve) => setTimeout(resolve, milliseconds));

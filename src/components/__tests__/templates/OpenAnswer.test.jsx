@@ -15,7 +15,7 @@ import Button from "../../Buttons/Button/Button.react";
 
 describe("OpenAnswer", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
   const args = {
     target: OpenAnswer,
@@ -44,7 +44,9 @@ describe("OpenAnswer", () => {
   hasValid("animations", args);
   hasValid("translations", args);
   hasValid("toggles", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component;
   const dictionary = JSON.stringify({
     hi: {

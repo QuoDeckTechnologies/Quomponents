@@ -13,9 +13,8 @@ import TitlewithVideo from "../../Templates/TitlewithVideo/TitlewithVideo.react"
 
 describe("TitlewithVideo", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
-
   const args = {
     target: TitlewithVideo,
     required: {
@@ -44,7 +43,9 @@ describe("TitlewithVideo", () => {
   hasValid("animations", args);
   hasValid("translations", args);
   hasValid("toggles", args);
-
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   let component;
 
   beforeEach(() => {
