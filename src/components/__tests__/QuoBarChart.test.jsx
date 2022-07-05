@@ -6,14 +6,33 @@ import { shallow, mount } from 'enzyme';
 import { act } from "react-dom/test-utils";
 import { render } from "@testing-library/react";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import QuoBarChart from "../BarChart/QuoBarChart.react"
 
 describe("QuoBarChart", () => {
     // -------------------------------------
-    // Setup definitions for the test suite
+    // Run common tests
     // -------------------------------------
+
+    const args = {
+        target: QuoBarChart,
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("colors", args);
+
+    hasValid("toggles", args);
+
+    // -------------------------------------
+    // Run component specific tests
+    // -------------------------------------
+   
     let component;
     beforeEach(() => {
         jest.resetAllMocks();
@@ -35,30 +54,10 @@ describe("QuoBarChart", () => {
                     { label: "21", count: 590 },
                 ]}
                 withColor={null}
-                isHidden={false}
-                isFluid={false}
+                // isHidden={false}
+                // isFluid={false}
             />
         );
-    });
-    it("should render correctly without throwing error",
-        () => {
-            expect(component.exists()).toBe(true);
-        });
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            accentColor: "#FF0000",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true })
-        expect(component.exists()).toBe(true);
     });
     it("should render correctly when click on Bar", () => {
         component.find("Bar").simulate('click')
@@ -117,8 +116,8 @@ describe("QuoBarChart", () => {
                 { label: "21", count: 590 },
             ]}
             withColor={null}
-            isHidden={false}
-            isFluid={false}
+            // isHidden={false}
+            // isFluid={false}
         />)
         wrapper.find(".recharts-tooltip-wrapper")
         global.innerWidth = 1200;
@@ -173,8 +172,8 @@ describe("QuoBarChart", () => {
                     { label: "21", count: 590 },
                 ]}
                 withColor={null}
-                isHidden={false}
-                isFluid={false}
+                // isHidden={false}
+                // isFluid={false}
             />
         );
         unmount();

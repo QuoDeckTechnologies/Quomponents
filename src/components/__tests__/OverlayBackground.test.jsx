@@ -4,6 +4,10 @@ import React from "react";
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import OverlayBackground from "../RibbonMenu/designMenu/sections/OverlayBackground.react";
@@ -11,8 +15,49 @@ import ImageUploadModal from "../ImageUploadModal/ImageUploadModal.react";
 
 describe("OverlayBackground", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+    // Run common tests
+    // -------------------------------------
+
+    const args = {
+      target: OverlayBackground,
+      required: {
+          
+          onClick: () => {},
+      },
+      translations: {
+          tgt: "overlayBackground",
+          lang: { valid: "hi", invalid: "xx" },
+          dictionary: JSON.stringify({
+            en: {
+              overlayBackground: {
+                overlayBackground: "Overlay Background",
+                setBackground: "Set",
+                removeBackground: "Remove",
+              },
+            },
+            hi: {
+              overlayBackground: {
+                overlayBackground: "उपरिशायी पृष्ठभूमि",
+                setBackground: "सेट",
+                removeBackground: "निकाले",
+              },
+            },
+          }),
+      },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("positions", args);
+
+  hasValid("translations", args);
+
+  hasValid("toggles", args);
+
   // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
+
   let component, actions, deck;
   actions = {
     updateDeck: jest.fn(),
@@ -20,22 +65,6 @@ describe("OverlayBackground", () => {
   deck = {
     backgroundImage: "",
   };
-  const dictionary = JSON.stringify({
-    en: {
-      overlayBackground: {
-        overlayBackground: "Overlay Background",
-        setBackground: "Set",
-        removeBackground: "Remove",
-      },
-    },
-    hi: {
-      overlayBackground: {
-        overlayBackground: "उपरिशायी पृष्ठभूमि",
-        setBackground: "सेट",
-        removeBackground: "निकाले",
-      },
-    },
-  });
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -49,67 +78,6 @@ describe("OverlayBackground", () => {
         onClick={jest.fn()}
       />
     );
-  });
-
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated prop as left", () => {
-    component.setProps({ asFloated: "left" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated prop as right", () => {
-    component.setProps({ asFloated: "right" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated prop as inline", () => {
-    component.setProps({ asFloated: "inline" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render translation of component in hindi", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "overlayBackground",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly if translation is not defined", () => {
-		component.setProps({
-			withTranslation: {
-				lang: "mr",
-				tgt: "overlayBackground",
-				dictionary: dictionary,
-			},
-		});
-		expect(component.exists()).toBe(true);
-	});
-
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
-    expect(component.exists()).toBe(true);
   });
 
   it("should open image modal when clicked on set button", () => {

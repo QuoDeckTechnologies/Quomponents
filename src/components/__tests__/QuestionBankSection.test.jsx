@@ -4,6 +4,10 @@ import React from "react";
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import QuestionBankSection from "../RibbonMenu/toolsMenu/sections/QuestionBankSection.react";
@@ -11,21 +15,42 @@ import IconLink from "../Buttons/IconLink/IconLink.react";
 
 describe("QuestionBankSection", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
+
+  const args = {
+    target: QuestionBankSection,
+    translations: {
+      tgt: "questionBankSection",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        en: {
+          questionBankSection: {
+            questionBank: "Question Bank",
+          },
+        },
+        hi: {
+          questionBankSection: {
+            questionBank: "प्रश्न बैंक",
+          },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("positions", args);
+
+  hasValid("translations", args);
+
+  hasValid("toggles", args);
+
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
+
   let component;
-  const dictionary = JSON.stringify({
-    en: {
-      questionBankSection: {
-        questionBank: "Question Bank",
-      },
-    },
-    hi: {
-      questionBankSection: {
-        questionBank: "प्रश्न बैंक",
-      },
-    },
-  });
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -37,67 +62,6 @@ describe("QuestionBankSection", () => {
         onClick={jest.fn()}
       />
     );
-  });
-
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated prop as left", () => {
-    component.setProps({ asFloated: "left" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated prop as right", () => {
-    component.setProps({ asFloated: "right" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated prop as inline", () => {
-    component.setProps({ asFloated: "inline" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render translation of component in hindi", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "questionBankSection",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.find(".qui-ribbon-menu-label").text()).toBe("प्रश्न बैंक");
-  });
-
-  it("should render correctly if translation is not defined", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "mr",
-        tgt: "questionBankSection",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
-    expect(component.exists()).toBe(true);
   });
 
   it("should simulate question bank button", () => {
