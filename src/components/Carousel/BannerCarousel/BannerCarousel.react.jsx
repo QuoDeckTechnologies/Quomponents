@@ -10,7 +10,6 @@ import {
     getQuommons,
 } from "../../../common/javascripts/helpers";
 
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./BannerCarousel.scss";
@@ -39,13 +38,13 @@ BannerCarousel.propTypes = {
         props: PropTypes.object
     })).isRequired,
 
-
 };
 
 BannerCarousel.defaultProps = {
     // Component Specific props
     //=======================================
     content: [],
+    withTranslation: null,
 };
 
 /**
@@ -89,7 +88,7 @@ export default function BannerCarousel(props) {
                                 key={"slider-" + index + Math.random()}
                                 className={`qui-slide`}
                             >
-                                <BannerCard {...slide.props} content={slide} onClick={props.onClick}/>
+                                <BannerCard {...slide.props} content={slide} onClick={props.onClick} withTranslation={props.withTranslation} />
                             </div>
                         </div>
                     );

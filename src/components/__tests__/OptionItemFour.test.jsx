@@ -123,7 +123,7 @@ describe("Option Item Four", () => {
   });
 
   it("should render correctly without throwing error when wriiten in input field", () => {
-    component.find("InputField").simulate("click");
+    component.find("InputField").simulate("submit");
   });
 
   it("should render correctly without throwing error when withTranslation prop is passed and check box is toggled", () => {

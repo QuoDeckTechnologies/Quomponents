@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   getAnimation,
   getQuommons,
+  getTranslation,
   resolveImage,
 } from "../../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -85,6 +86,14 @@ Anagram.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
     Use to enable/disable the component
     */
   isDisabled: PropTypes.bool,
@@ -110,6 +119,7 @@ Anagram.defaultProps = {
   asVariant: "primary",
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
@@ -169,11 +179,24 @@ export default function Anagram(props) {
         .join("")
     }
   };
+  //-------------------------------------------------------------------
+  // Get translation of the component
+  //-------------------------------------------------------------------
   let buttonText = data?.purpose === "quiz" ? "Check Answer" : "Submit Answer"
-
+  let inputFieldLable = "Input Name"
+  let tObj = null;
+  if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+  ) {
+    tObj = getTranslation(props.withTranslation);
+    inputFieldLable = tObj?.label
+    buttonText = data?.purpose === "quiz" ? tObj?.quizLabel || "Check Answer" : tObj?.nonQuizLabel || "Submit Answer"
+  }
   const getBackground = () => {
     return {
-      background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
+      backgroundImage: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
       backgroundSize: "cover",
     };
   };
@@ -209,14 +232,17 @@ export default function Anagram(props) {
             {jumbledWords(data?.answer)}
           </p>
           <InputField {...props}
-            content={{ label: "Input Name" }}
+            label={inputFieldLable}
             withColor={inputFieldColors}
-            onClick={(name, value) => setState(value)}
-            name="anagram-input-field" />
-          <Button {...props}
+            onSubmit={(name, value) => setState(value)}
+            name="anagram-input-field"
+            withTranslation={props.withTranslation} />
+          <Button
             content={buttonText}
             withColor={buttonColors}
-            onClick={() => handleSubmit()} >
+            asVariant={props.asVariant}
+            onClick={() => handleSubmit()}
+          >
           </Button>
         </div>}
     </motion.div>

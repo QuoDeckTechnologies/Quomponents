@@ -83,7 +83,7 @@ describe("FlipConfirm", () => {
             component.setProps({
                 withTranslation: {
                     lang: "en",
-                    tgt: "FlipConfirm:",
+                    tgt: "flipConfirm:",
                     dictionary: dictionary,
                 },
             });

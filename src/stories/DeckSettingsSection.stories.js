@@ -1,6 +1,24 @@
 import React from "react";
 import DeckSettingsSection from "../components/RibbonMenu/toolsMenu/sections/DeckSettingsSection.react";
 
+const dictionary = JSON.stringify({
+	en: {
+		deckSettingsSection: {
+			settings: 'Settings',
+			enableNavigation: "Enable Navigation",
+			enableSlideList: "Enable Slide List",
+			enableVoiceovers: "Enable Voiceovers"
+		}
+	},
+	hi: {
+		deckSettingsSection: {
+			settings: 'समायोजन',
+			enableNavigation: "पथ प्रदर्शन सक्षम करें",
+			enableSlideList: "स्लाइड सूची सक्षम करें",
+			enableVoiceovers: "वॉयस ओवर सक्षम करें"
+		}
+	}
+});
 export default {
 	title: "Design System/RibbonMenu/RibbonToolsMenu/DeckSettingsSection",
 	component: DeckSettingsSection,
@@ -11,6 +29,16 @@ export default {
 			options: ["left", "right", "inline"],
 			table: {
 				category: "as-Flags",
+			},
+		},
+		withTranslation: {
+			table: {
+				category: "with-Params",
+				defaultValue: {
+					lang: "",
+					tgt: "",
+					dictionary: "",
+				},
 			},
 		},
 		isHidden: {
@@ -69,6 +97,11 @@ Default.args = {
 		voEnabled: false
 	},
 	asFloated: "left",
+	withTranslation: {
+		lang: "en",
+		tgt: "deckSettingsSection",
+		dictionary: dictionary,
+	  },
 	isDisabled: false,
 	isHidden: false,
 };
@@ -78,4 +111,32 @@ Default.parameters = {
 			code: `<DeckSettingsSection {...${JSON.stringify(Default.args, null, 2)}}/>`,
 		},
 	},
+};
+
+// -------------------------------------------------------------
+// Translated DeckSettingsSection
+// -------------------------------------------------------------
+export const TranslatedDeckSettingsSection = Template.bind({});
+TranslatedDeckSettingsSection.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "deckSettingsSection",
+    dictionary: dictionary
+  },
+};
+TranslatedDeckSettingsSection.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in. To make this work for the DeckSettingsSection, add a DeckSettingsSection:{} value to the dictionary.",
+    },
+    source: {
+      code: `<DeckSettingsSection {...${JSON.stringify(
+        TranslatedDeckSettingsSection.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
 };
