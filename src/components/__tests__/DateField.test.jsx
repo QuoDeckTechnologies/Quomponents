@@ -15,6 +15,18 @@ describe("DateField", () => {
     let onClick = jest.fn();
     let handleClickDatepickerIcon = jest.fn();
     let preventDefault = jest.fn();
+    const dictionary = JSON.stringify({
+        hi: {
+            dateField: {
+                label: "आरंभ करने की तिथि",
+            }
+        },
+        en: {
+            dateField: {
+                label: "Start Date",
+            }
+        }
+    });
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -24,6 +36,7 @@ describe("DateField", () => {
                 asPadded="normal"
                 withColor={null}
                 withAnimation={null}
+                withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
                 onClick={onClick}
@@ -95,6 +108,28 @@ describe("DateField", () => {
         component.setProps({ withAnimation: animation })
         expect(component.exists()).toBe(true);
     })
+
+    it("should render correctly with withTranslation prop", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "dateField",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when withTranslation lang is not defined", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "mr",
+                tgt: "dateField",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
 
     it("should render correctly when passed isHidden props as false", () => {
         component.setProps({ isHidden: false })

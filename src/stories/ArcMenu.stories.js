@@ -9,6 +9,32 @@ import Nugget_Game from "../assets/nuggets/nugget_game.png";
 import Nugget_Article from "../assets/nuggets/nugget_article.png";
 import Nugget_Feedback from "../assets/nuggets/nugget_feedback.png";
 
+const dictionary = JSON.stringify({
+  hi: {
+    arcMenu: {
+      menuContent: [
+        {
+          header: "सीखें",
+          list: [
+            "अपलोड scorm",
+            "अपलोड pdf",
+            "वीडियो लिंक जोड़ें",
+            "qdf डेक बनाएं",
+          ],
+        },
+        {
+          header: "मूल्यांकन",
+          list: ["सर्वेक्षण बनाएं", "प्रश्नोत्तरी बनाएँ", "एक खेल जोड़ें"],
+        },
+        {
+          header: "पुरस्कृत",
+          list: ["प्रमाण पत्र दो", "एक बैज दें", "इनाम दो"],
+        },
+      ],
+    },
+  },
+});
+
 export default {
   title: "Design System/ArcMenu/ArcMenu",
   component: ArcMenu,
@@ -34,6 +60,16 @@ export default {
           backgroundColor: "",
           accentColor: "",
           textColor: "",
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -103,6 +139,11 @@ Default.args = {
     backgroundColor: "",
     accentColor: "",
     textColor: "",
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "arcMenu",
+    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,
@@ -175,6 +216,32 @@ MenuButton.parameters = {
     },
     source: {
       code: `<ArcMenu {...${JSON.stringify(MenuButton.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Translated Menu button
+// -------------------------------------------------------------
+export const TranslatedMenuButton = Template.bind({});
+TranslatedMenuButton.args = {
+  ...MenuButton.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "arcMenu",
+    dictionary: dictionary,
+  },
+};
+TranslatedMenuButton.parameters = {
+  docs: {
+    description: {
+      story: "Use to change the language that the text appears in.",
+    },
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(
+        TranslatedMenuButton.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

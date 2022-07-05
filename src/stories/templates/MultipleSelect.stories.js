@@ -1,6 +1,24 @@
 import React from "react";
 import MultipleSelect from "../../components/Templates/MultipleSelect/MultipleSelect.react";
 
+const dictionary = JSON.stringify({
+    en: {
+        templateActions: {
+            checkAnswer: 'Check Answer',
+            submitAnswer: 'Submit Answer',
+            thanks: 'Thanks for your response',
+            go: 'Go',
+        }
+    },
+    hi: {
+        templateActions: {
+            checkAnswer: 'अपना उत्तर जाँच लें',
+            submitAnswer: 'अपना जवाब सबमिट करें',
+            thanks: 'आपके उत्तर के लिए धन्यवाद',
+            go: 'आगे बढ़ें',
+        }
+    }
+});
 export default {
     title: "Design System/Templates/MultipleSelect/MultipleSelect",
     component: MultipleSelect,
@@ -37,6 +55,16 @@ export default {
                     buttonTextColor: "",
                     buttonHoverBackgroundColor: "",
                     buttonHoverTextColor: ""
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -148,6 +176,11 @@ Default.args = {
         buttonHoverTextColor: "",
         backgroundColor: "#AD292"
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "templateActions",
+        dictionary: dictionary,
+    },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -208,6 +241,11 @@ MultipleSelectWithSlideHeader.args = {
         buttonHoverTextColor: "",
         backgroundColor: "#AD292"
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "templateActions",
+        dictionary: dictionary,
+    },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -229,10 +267,10 @@ MultipleSelectWithSlideHeader.parameters = {
     },
 };
 // -------------------------------------------------------------
-// EmphasisMultiSelect
+// EmphasisMultipleSelect
 // -------------------------------------------------------------
-export const EmphasisMultiSelect = Template.bind({});
-EmphasisMultiSelect.args = {
+export const EmphasisMultipleSelect = Template.bind({});
+EmphasisMultipleSelect.args = {
     data: {
         title: "Neque porro quisquam est qui dolorem",
         subtitle:
@@ -278,6 +316,11 @@ EmphasisMultiSelect.args = {
         buttonHoverTextColor: "",
         backgroundColor: "#AD292"
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "templateActions",
+        dictionary: dictionary,
+    },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -287,11 +330,11 @@ EmphasisMultiSelect.args = {
     isDisabled: false,
     isHidden: false,
 };
-EmphasisMultiSelect.parameters = {
+EmphasisMultipleSelect.parameters = {
     docs: {
         source: {
-            code: `<MultiSelect {...${JSON.stringify(
-                EmphasisMultiSelect.args,
+            code: `<MultipleSelect {...${JSON.stringify(
+                EmphasisMultipleSelect.args,
                 null,
                 2
             )}}/>`,
@@ -299,10 +342,10 @@ EmphasisMultiSelect.parameters = {
     },
 };
 // -------------------------------------------------------------
-// ColoredMultiSelect
+// ColoredMultipleSelect
 // -------------------------------------------------------------
-export const ColoredMultiSelect = Template.bind({});
-ColoredMultiSelect.args = {
+export const ColoredMultipleSelect = Template.bind({});
+ColoredMultipleSelect.args = {
     data: {
         title: "Neque porro quisquam est qui dolorem",
         subtitle:
@@ -346,6 +389,11 @@ ColoredMultiSelect.args = {
         buttonHoverTextColor: "#AD2929",
         backgroundColor: "#AD292"
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "templateActions",
+        dictionary: dictionary,
+    },
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -355,11 +403,39 @@ ColoredMultiSelect.args = {
     isDisabled: false,
     isHidden: false,
 };
-ColoredMultiSelect.parameters = {
+ColoredMultipleSelect.parameters = {
     docs: {
         source: {
-            code: `<MultiSelect {...${JSON.stringify(
-                ColoredMultiSelect.args,
+            code: `<MultipleSelect {...${JSON.stringify(
+                ColoredMultipleSelect.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Translated MultipleSelect
+// -------------------------------------------------------------
+export const TranslatedMultipleSelect = Template.bind({});
+TranslatedMultipleSelect.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "templateActions",
+        dictionary: dictionary
+    },
+};
+TranslatedMultipleSelect.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in. To make this work for the MultipleSelect, add a templateActions:{} value to the dictionary.",
+        },
+        source: {
+            code: `<MultipleSelect {...${JSON.stringify(
+                TranslatedMultipleSelect.args,
                 null,
                 2
             )}}/>`,

@@ -6,6 +6,7 @@ import _ from "lodash";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./SelectField.scss";
@@ -57,6 +58,14 @@ SelectField.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -82,6 +91,7 @@ SelectField.defaultProps = {
 
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
@@ -116,8 +126,24 @@ export default function SelectField(props) {
         color: props.withColor?.textColor,
         borderBottomColor: `${props.withColor?.accentColor}`,
     };
+
     //-------------------------------------------------------------------
-    // 4. Get animation of the component
+    // 4. Get translation of the component
+    //-------------------------------------------------------------------
+    let tObj = null;
+    let label = props.content?.label;
+    let placeHolder = props.content?.placeHolder;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation)
+        label = tObj?.label || props.content?.label
+        placeHolder = tObj?.placeHolder || props.content?.placeHolder;
+    }
+    //-------------------------------------------------------------------
+    // 5. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     // ========================= Render Function =================================
@@ -130,7 +156,7 @@ export default function SelectField(props) {
             <div className={`qui-select-field-container ${quommonClasses.childClasses}`} style={Color}>
                 <div className="qui-select-field">
                     <div className="qui-select-field-label">
-                        {props.content?.label}
+                        {label}
                     </div>
                     <Select className="qui-select-field-select"
                         defaultValue="none"
@@ -147,7 +173,7 @@ export default function SelectField(props) {
                     >
                         <MenuItem disabled value="none" >
                             <div className="qui-select-field-menu-item">
-                                {props.content?.placeHolder}
+                                {placeHolder}
                             </div>
                         </MenuItem>
                         {props.content?.categoryOptions?.map((option) => (

@@ -185,13 +185,11 @@ export default function OptionItemTen(props) {
                 ? content?.option?.targetName
                 : "default-option-target-name"
             }
-            content={{
-              value: content?.option?.value,
-              placeholder: tObj?.placeholder || content?.option?.placeholder,
-            }}
+            value={content?.option?.value}
+            placeholder={tObj?.placeholder || content?.option?.placeholder}
             asEmphasis="listInput"
             withColor={props.withColor}
-            onClick={handleValue}
+            onSubmit={handleValue}
           />
         </div>
         <div className="qui-option-item-upload-button">
@@ -211,14 +209,14 @@ export default function OptionItemTen(props) {
                 ? content?.header?.targetName
                 : "default-header-target-name"
             }
-            content={{
-              value: content?.header?.value,
-              placeholder: tObj?.headerPlaceholder || content?.header?.placeholder,
-              maxLength: content?.header?.maxLength,
-            }}
+            value={content?.header?.value}
+            placeholder={
+              tObj?.headerPlaceholder || content?.header?.placeholder
+            }
+            maxLength={content?.header?.maxLength}
             asEmphasis="listInput"
             withColor={props.withColor}
-            onClick={handleHeaderValue}
+            onSubmit={handleHeaderValue}
           />
         </div>
         <div className="qui-option-item-ten-close-icon">
@@ -236,14 +234,14 @@ export default function OptionItemTen(props) {
               ? content?.message?.targetName
               : "default-message-target-name"
           }
-          content={{
-            value: content?.message?.value,
-            placeholder: tObj?.messagePlaceholder || content?.message?.placeholder,
-            maxLength: content?.message?.maxLength,
-          }}
+          value={content?.message?.value}
+          placeholder={
+            tObj?.messagePlaceholder || content?.message?.placeholder
+          }
+          maxLength={content?.message?.maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
-          onClick={handleMessageValue}
+          onSubmit={handleMessageValue}
         />
       </div>
     </motion.div>

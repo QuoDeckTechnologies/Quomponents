@@ -12,7 +12,11 @@ describe("PageHeader", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-
+    const dictionary = JSON.stringify({
+        hi: {
+            pageheader: { text: "शीर्षणी" },
+        },
+    });
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(<PageHeader

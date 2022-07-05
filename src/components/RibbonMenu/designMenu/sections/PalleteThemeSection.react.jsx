@@ -3,7 +3,7 @@ import { ChromePicker } from "react-color";
 import _ from "lodash";
 import PropTypes from "prop-types";
 
-import { getQuommons } from "../../../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../../common/stylesheets/common.css";
@@ -30,6 +30,14 @@ PalleteThemeSection.propTypes = {
 	*/
 	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
 	/**
+	Use to show a translated version of the component text. Dictionary must be valid JSON. 
+	*/
+	withTranslation: PropTypes.shape({
+		lang: PropTypes.string,
+		tgt: PropTypes.string,
+		dictionary: PropTypes.string,
+	}),
+	/**
 	Use to show/hide the component
 	*/
 	isHidden: PropTypes.bool,
@@ -51,6 +59,27 @@ export default function PalleteThemeSection(props) {
 		props,
 		"ribbon-design-menu-pallete-theme-section-parent"
 	);
+
+	let palleteThemeSection = {
+		settings: "Settings",
+		pageColor: "Page Color",
+		primaryColor: "Primary Color",
+		accentColor: "Accent Color",
+		secondaryColor: "Secondary Color"
+	}
+
+	//-------------------------------------------------------------------
+	// 5. Get translation of the component
+	//-------------------------------------------------------------------
+	let tObj = null;
+	if (
+		props.withTranslation?.lang &&
+		props.withTranslation.lang !== "" &&
+		props.withTranslation.lang !== "en"
+	) {
+		tObj = getTranslation(props.withTranslation);
+		palleteThemeSection = tObj;
+	}
 
 	//----------------------------------------------------------------------------
 	// 2. Declaration of states of color set and setting the initial value for each
@@ -145,7 +174,7 @@ export default function PalleteThemeSection(props) {
 								);
 							})}
 						</div>
-						<div className="qui-ribbon-menu-label-file">Settings</div>
+						<div className="qui-ribbon-menu-label-file">{palleteThemeSection?.settings || "Settings"}</div>
 					</div>
 					<div className={`qui-ribbon-menu-custom-color-container`} ref={box}>
 						<div className="qui-ribbon-design-menu-color-picker-container">
@@ -159,7 +188,7 @@ export default function PalleteThemeSection(props) {
 										onClick={() => setPageShowColorPicker(true)}
 									/>
 									<div className="qui-ribbon-design-menu-custom-color-title">
-										Page Color
+										{palleteThemeSection?.pageColor || "Page Color"}
 									</div>
 								</div>
 								{showPageColorPicker && (
@@ -184,7 +213,7 @@ export default function PalleteThemeSection(props) {
 										onClick={() => setPrimaryColorPicker(true)}
 									/>
 									<div className="qui-ribbon-design-menu-custom-color-title">
-										Primary Color
+										{palleteThemeSection?.primaryColor || "Primary Color"}
 									</div>
 								</div>
 								{showPrimaryColorPicker && (
@@ -209,7 +238,7 @@ export default function PalleteThemeSection(props) {
 										onClick={() => setAccentColorPicker(true)}
 									/>
 									<div className="qui-ribbon-design-menu-custom-color-title">
-										Accent Color
+										{palleteThemeSection?.accentColor || "Accent Color"}
 									</div>
 								</div>
 								{showAccentColorPicker && (
@@ -234,7 +263,7 @@ export default function PalleteThemeSection(props) {
 										onClick={() => setSecondaryColorPicker(true)}
 									/>
 									<div className="qui-ribbon-design-menu-custom-color-title">
-										Secondary Color
+										{palleteThemeSection?.secondaryColor || "Secondary Color"}
 									</div>
 								</div>
 								{showSecondaryColorPicker && (

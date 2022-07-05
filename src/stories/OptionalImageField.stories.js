@@ -1,6 +1,14 @@
 import React from "react";
 import OptionalImageField from "../components/OptionalImageField/OptionalImageField.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    optionalImageField: {
+      title: "अपलोड",
+    },
+  },
+});
+
 export default {
   title: "Design System/OptionalImageField/OptionalImageField",
   component: OptionalImageField,
@@ -43,6 +51,16 @@ export default {
         },
       },
     },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
+        },
+      },
+    },
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -73,7 +91,6 @@ export default {
     a11y: { disable: true },
   },
 };
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -95,6 +112,16 @@ Default.args = {
     accentColor: "",
     textColor: "",
   },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "optionalImageField",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
   isFluid: false,
@@ -110,7 +137,6 @@ Default.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
 // Without ActionButton
 // -------------------------------------------------------------
@@ -137,7 +163,6 @@ WithoutActionButton.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
 // Without Icon
 // -------------------------------------------------------------
@@ -163,7 +188,6 @@ WithoutIcon.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
 // With Custom Icon
 // -------------------------------------------------------------
@@ -190,7 +214,6 @@ WithCustomIcon.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
 // Colored OptionalImageField
 // -------------------------------------------------------------
@@ -217,7 +240,29 @@ ColoredOptionalImageField.parameters = {
     },
   },
 };
-
+// -------------------------------------------------------------
+// Translated OptionalImageField
+// -------------------------------------------------------------
+export const TranslatedOptionalImageField = Template.bind({});
+TranslatedOptionalImageField.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "optionalImageField",
+    dictionary: dictionary,
+  },
+};
+TranslatedOptionalImageField.parameters = {
+  docs: {
+    source: {
+      code: `<OptionalImageField {...${JSON.stringify(
+        TranslatedOptionalImageField.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
 // -------------------------------------------------------------
 // Animated OptionalImageField
 // -------------------------------------------------------------
@@ -225,7 +270,7 @@ export const AnimatedOptionalImageField = Template.bind({});
 AnimatedOptionalImageField.args = {
   ...Default.args,
   withAnimation: {
-    animation: "zoom",
+    animation: "fade",
     duration: 0.5,
     delay: 0,
   },

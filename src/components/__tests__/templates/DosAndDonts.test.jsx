@@ -13,6 +13,14 @@ describe("DosAndDonts", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
+  const dictionary = JSON.stringify({
+    hi: {
+      dosDonts: {
+        dos: "क्या करें",
+        donts: "क्या न करें",
+      }
+    },
+  });
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -41,6 +49,7 @@ describe("DosAndDonts", () => {
           duration: 0.5,
           delay: 0,
         }}
+        withTranslation={null}
         isHidden={false}
         isDisabled={false}
         onClick={(e) => {
@@ -238,4 +247,22 @@ describe("DosAndDonts", () => {
       }]
     })
   })
+  it("should render translation with withTranslation prop ", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "dosDonts",
+        dictionary: dictionary,
+      },
+    });
+  });
+  it("should render correctly if with withTranslation prop language is not defined ", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "mr",
+        tgt: "dosDonts",
+        dictionary: dictionary,
+      },
+    });
+  });
 });

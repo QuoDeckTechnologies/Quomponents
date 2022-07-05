@@ -92,7 +92,7 @@ describe("ActionButton", () => {
         component.setProps({
             withTranslation: {
                 lang: "mr",
-                tgt: "ribbon",
+                tgt: "actionButton",
                 dictionary: dictionary,
             },
         });

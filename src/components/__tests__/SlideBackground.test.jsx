@@ -17,13 +17,29 @@ describe("SlideBackground", () => {
 	actions = {
 		updateDeck: jest.fn()
 	};
-
+	const dictionary = JSON.stringify({
+		en: {
+			slideBackground: {
+				slideBackground: "Slide Background",
+				setBackground: "Set",
+				removeBackground: "Remove"
+			}
+		},
+		hi: {
+			slideBackground: {
+				slideBackground: "स्लाइड पृष्ठभूमि",
+				setBackground: "सेट",
+				removeBackground: "निकाले"
+			}
+		}
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<SlideBackground
 				actions={actions}
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
@@ -47,6 +63,28 @@ describe("SlideBackground", () => {
 
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of component in hindi", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "slideBackground",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly if translation is not defined", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "mr",
+				tgt: "slideBackground",
+				dictionary: dictionary,
+			},
+		});
 		expect(component.exists()).toBe(true);
 	});
 
