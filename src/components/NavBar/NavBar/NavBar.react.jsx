@@ -19,9 +19,21 @@ NavBar.propTypes = {
   // Component specific props
   //=======================================
   /**
-  NavBar Text has to be in content or passed as children to the component.
+  NavBar Title has to be in title props.
   */
-  content: PropTypes.object,
+  title: PropTypes.string,
+  /**
+  NavBar small logo has to be in shortLogo props.
+  */
+  shortLogo: PropTypes.string,
+  /**
+  NavBar full lenght Logo has to be in fullLogo props.
+  */
+  fullLogo: PropTypes.string,
+  /**
+  NavBar back icon and its link has to be in iconLink props.
+  */
+  iconLink: PropTypes.object,
   /**
   Use to show search icon in NavBar component.
   */
@@ -121,7 +133,10 @@ NavBar.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  title: "",
+  shortLogo: "",
+  fullLogo: "",
+  iconLink: "",
   isSearch: true,
   isMenuBar: true,
   isBackButton: true,
@@ -145,8 +160,17 @@ export default function NavBar(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content from props
   //-------------------------------------------------------------------
-  let { content, isBackButton, isSearch, isMenuBar, withIcon, withColor } =
-    props;
+  let {
+    title,
+    shortLogo,
+    fullLogo,
+    iconLink,
+    isBackButton,
+    isSearch,
+    isMenuBar,
+    withIcon,
+    withColor,
+  } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -155,9 +179,7 @@ export default function NavBar(props) {
   //-------------------------------------------------------------------
   // 3. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
-  let labelContent = {
-    title: content?.title,
-  };
+  let labelContent = title;
   let tObj = null;
   if (
     props.withTranslation?.lang &&
@@ -166,7 +188,7 @@ export default function NavBar(props) {
   ) {
     tObj = getTranslation(props.withTranslation);
     if (labelContent && tObj) {
-      labelContent.title = tObj.title;
+      labelContent = tObj.title;
     }
   }
   //-------------------------------------------------------------------
@@ -204,27 +226,27 @@ export default function NavBar(props) {
             <IconLink
               {...props}
               asPadded="fitted"
-              content={{ link: content?.iconLink?.link }}
-              withIcon={{ icon: content?.iconLink?.icon }}
+              content={{ link: iconLink?.link }}
+              withIcon={{ icon: iconLink?.icon }}
               withColor={{ backgroundColor: withColor?.backIconColor }}
               onClick={props.onClick}
             />
           )}
-          {content?.shortLogo && (
-            <img src={content?.shortLogo} className="qui-navbar-logo-img" alt="Logo" />
+          {shortLogo && (
+            <img src={shortLogo} className="qui-navbar-logo-img" alt="Logo" />
           )}
-          {!labelContent?.title && (
+          {!labelContent && (
             <img
-              src={content?.fullLogo}
+              src={fullLogo}
               className="qui-avatar-full-logo-img"
               alt="Logo"
             />
           )}
           <div className="qui-navbar-content">
             {isSearch ? (
-              <h4 className="qui-nav-bar-title">{labelContent?.title}</h4>
+              <h4 className="qui-nav-bar-title">{labelContent}</h4>
             ) : (
-              <h3 className="qui-nav-bar-title">{labelContent?.title}</h3>
+              <h3 className="qui-nav-bar-title">{labelContent}</h3>
             )}
           </div>
         </div>

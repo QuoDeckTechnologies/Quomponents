@@ -24,7 +24,10 @@ describe("NavBar", () => {
     jest.resetAllMocks();
     component = shallow(
       <NavBar
-        content={null}
+        title={null}
+        shortLogo={null}
+        fullLogo={null}
+        iconLink={null}
         asVariant="primary"
         withColor={null}
         withAnimation={{
@@ -102,6 +105,7 @@ describe("NavBar", () => {
 
   it("should render correctly with withTranslation prop", () => {
     component.setProps({
+      title: "earn",
       withTranslation: {
         lang: "hi",
         tgt: "navBar",
@@ -124,14 +128,12 @@ describe("NavBar", () => {
 
   it("should render correctly when content props is provided", () => {
     component.setProps({
-      content: {
-        title: "earn",
-        shortLogo: "xyz.jpg",
-        fullLogo: "xyz.jpg",
-        iconLink: {
-          icon: "fas fa-angle-left",
-          link: "https://www.google.com/",
-        },
+      title: "earn",
+      shortLogo: "xyz.jpg",
+      fullLogo: "xyz.jpg",
+      iconLink: {
+        icon: "fas fa-angle-left",
+        link: "https://www.google.com/",
       },
     });
     expect(component.exists()).toBe(true);
@@ -139,14 +141,12 @@ describe("NavBar", () => {
 
   it("should render correctly when fullLog props is not provided", () => {
     component.setProps({
-      content: {
-        title: null,
-        shortLogo: "xyz.jpg",
-        fullLogo: null,
-        iconLink: {
-          icon: "fas fa-angle-left",
-          link: "https://www.google.com/",
-        },
+      title: null,
+      shortLogo: "xyz.jpg",
+      fullLogo: null,
+      iconLink: {
+        icon: "fas fa-angle-left",
+        link: "https://www.google.com/",
       },
     });
     expect(component.exists()).toBe(true);
@@ -186,5 +186,4 @@ describe("NavBar", () => {
     });
     expect(component.exists()).toBe(true);
   });
-
 });

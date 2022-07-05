@@ -15,16 +15,10 @@ export default {
   title: "Design System/NavBar/NavBar",
   component: NavBar,
   argTypes: {
-    content: {
-      table: {
-        defaultValue: {
-          title: "",
-          shortLogo: "",
-          fullLogo: "",
-          iconLink: {},
-        },
-      },
-    },
+    title: "",
+    shortLogo: "",
+    fullLogo: "",
+    iconLink: {},
     isBackButton: {
       table: {
         defaultValue: true,
@@ -153,14 +147,12 @@ export default {
 const Template = (args) => <NavBar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    title: "Earn",
-    shortLogo: ShortLogo,
-    fullLogo: FullLogo,
-    iconLink: {
-      icon: "fas fa-angle-left",
-      link: "https://www.google.com/",
-    },
+  title: "Earn",
+  shortLogo: ShortLogo,
+  fullLogo: FullLogo,
+  iconLink: {
+    icon: "fas fa-angle-left",
+    link: "https://www.google.com/",
   },
   isCircular: false,
   isSearch: true,
@@ -202,14 +194,12 @@ Default.parameters = {
 export const UserNavbar = Template.bind({});
 UserNavbar.args = {
   ...Default.args,
-  content: {
-    title: "Earn",
-    shortLogo: ShortLogo,
-    fullLogo: FullLogo,
-    iconLink: {
-      icon: "fas fa-angle-left",
-      link: "https://www.google.com/",
-    },
+  title: "Earn",
+  shortLogo: ShortLogo,
+  fullLogo: FullLogo,
+  iconLink: {
+    icon: "fas fa-angle-left",
+    link: "https://www.google.com/",
   },
   withIcon: {
     icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
@@ -232,13 +222,11 @@ UserNavbar.parameters = {
 export const AmplayfierHeader = Template.bind({});
 AmplayfierHeader.args = {
   ...Default.args,
-  content: {
-    shortLogo: ShortLogo,
-    fullLogo: FullLogo,
-    iconLink: {
-      icon: "fas fa-angle-left",
-      link: "https://www.google.com/",
-    },
+  shortLogo: ShortLogo,
+  fullLogo: FullLogo,
+  iconLink: {
+    icon: "fas fa-angle-left",
+    link: "https://www.google.com/",
   },
   isBackButton: true,
   isSearch: false,
@@ -345,7 +333,7 @@ TranslatedNavBar.parameters = {
     },
     source: {
       code: `<NavBar {...${JSON.stringify(TranslatedNavBar.args, {
-        navbar: { content: "कमाये" },
+        navbar: { title: "कमाये" },
       })}}/>`,
     },
   },
