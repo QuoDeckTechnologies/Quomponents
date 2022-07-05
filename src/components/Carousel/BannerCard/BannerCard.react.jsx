@@ -150,8 +150,8 @@ export default function BannerCard(props) {
         props.withTranslation.lang !== "en"
     ) {
         let tObj = getTranslation(props.withTranslation, "bannercard");
-        boxHeader = tObj.header;
-        boxContent = tObj.content;
+        boxHeader = tObj?.header;
+        boxContent = tObj?.content;
     }
 
     //-------------------------------------------------------------------
@@ -164,7 +164,7 @@ export default function BannerCard(props) {
 
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}
-            style={{ backgroundImage: content ? `url(${content.image})` : "" }}
+            style={{ backgroundImage: `url(${content?.image})` }}
             onClick={props.onClick}
         >
             {content && content.tag && content.tag !== "" &&

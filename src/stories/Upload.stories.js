@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
     // },
     hi: {
         loading: "बस एक मिनट...",
-        button: { text: "अपलोड", label: "फ़ाइल अपलोड करें" },
+        upload: { text: "अपलोड", label: "फ़ाइल अपलोड करें" },
     },
 });
 

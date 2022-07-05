@@ -8,12 +8,15 @@ import "../../common/stylesheets/common.css";
 import "./FeedbackForm.scss";
 import "../../common/stylesheets/overrule.scss";
 import { motion } from "framer-motion";
-import { getQuommons, getAnimation, } from "../../common/javascripts/helpers";
+import { getQuommons, getAnimation, getTranslation } from "../../common/javascripts/helpers";
 
 FeedbackForm.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+    /**
+    Title data should be pass in content field
+    */
     content: PropTypes.string,
     //=======================================
     // Quommon props
@@ -34,6 +37,14 @@ FeedbackForm.propTypes = {
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
+    }),
+    /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
     }),
     /**
     Use to override component colors and behavior
@@ -72,10 +83,10 @@ FeedbackForm.defaultProps = {
     //=======================================
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
     isHidden: false,
     isDisabled: false,
 };
-
 /**
 ## Notes
 - Pass inline styles to the component to override any of the component css
@@ -86,6 +97,24 @@ FeedbackForm.defaultProps = {
 
 export default function FeedbackForm(props) {
     const [toggle, setToggle] = useState(false);
+
+    //-------------------------------------------------------------------
+    // Get translation of the component
+    //-------------------------------------------------------------------
+    let toggleLabel = "Show Feedback"
+    let inputFieldLableOne = "If Correct"
+    let inputFieldLableTwo = "If Incorrect"
+    let tObj = null;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        toggleLabel = tObj?.content || "Show Feedback"
+        inputFieldLableOne = tObj?.correct || "If Correct"
+        inputFieldLableTwo = tObj?.incorrect || "If Incorrect"
+    }
     //------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -122,13 +151,13 @@ export default function FeedbackForm(props) {
                 <fieldset className={fieldsetClasses}>
                     <legend>
                         <ToggleButton {...props} onClick={() => setToggle(prevState => !prevState)}
-                            label={props.content ? props.content : "Show Feedback"}
-                            withColor={ToggleColors} />
+                            label={toggleLabel}
+                            withColor={ToggleColors} withTranslation={null} />
                     </legend>
                     {toggle &&
                         <div className="qui-feedback-input-field-container">
-                            <InputField {...props} content={{ label: "If Correct" }} withColor={InputFieldColors} name={"correct"} />
-                            <InputField {...props} content={{ label: "If InCorrect" }} withColor={InputFieldColors} name={"incorrect"} />
+                            <InputField {...props} onSubmit={props.onClick} label={inputFieldLableOne} withColor={InputFieldColors} name={"correct"} withTranslation={null} />
+                            <InputField {...props} onSubmit={props.onClick} label={inputFieldLableTwo} withColor={InputFieldColors} name={"incorrect"} withTranslation={null} />
                         </div>
                     }
                 </fieldset>

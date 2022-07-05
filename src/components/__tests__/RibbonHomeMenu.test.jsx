@@ -24,13 +24,58 @@ describe("RibbonHomeMenu", () => {
 		content: [{}, {}],
 		currentSlide: 0
 	}
-
+	const dictionary = JSON.stringify({
+		en: {
+			ribbonHomeMenu: {
+				slide: "Slide",
+				newSlide: "New Slide",
+				duplicateSlide: "Duplicate Slide",
+				deleteSlide: "Delete Slide",
+				view: "View",
+				sorter: "Sorter",
+				mobile: "Mobile",
+				desktop: "Desktop",
+				comments: "Comments",
+				settings: "Settings",
+				enableBackArrow: "Enable Back Arrow",
+				enableNextArrow: "Enable Next Arrow",
+				saveExit: "Save & Exit",
+				upload: "Upload",
+				download: "Download",
+				save: "Save",
+				file: "File"
+			}
+		},
+		hi: {
+			ribbonHomeMenu: {
+				slide: "स्लाइड",
+				newSlide: "नई स्लाइड",
+				duplicateSlide: "स्लाइड प्रतिलिपि करे",
+				deleteSlide: "स्लाइड हटाए",
+				view: "दृश्य",
+				sorter: "छँटाईकर्ता",
+				mobile: "मोबाइल",
+				desktop: "डेस्कटॉप",
+				comments: "टिप्पणियाँ",
+				settings: 'समायोजन',
+				enableBackArrow: "वापस तीर सक्षम करें",
+				enableNextArrow: "अगला तीर सक्षम करें",
+				saveExit: "सेहेजे & बाहर निकले",
+				upload: "अपलोड",
+				download: "डाउनलोड",
+				save: "सहेजें",
+				file: "फ़ाइल"
+			}
+		}
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<RibbonHomeMenu
 				actions={actions}
 				deck={deck}
+				asFloated="left"
+				withTranslation={null}
 				onClick={jest.fn()}
 			/>
 		);
@@ -52,6 +97,17 @@ describe("RibbonHomeMenu", () => {
 
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of component in hindi", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "ribbonHomeMenu",
+				dictionary: dictionary,
+			},
+		});
 		expect(component.exists()).toBe(true);
 	});
 

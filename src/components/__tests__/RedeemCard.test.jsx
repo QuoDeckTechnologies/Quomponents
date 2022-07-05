@@ -17,14 +17,14 @@ describe("RedeemCard", () => {
     let component;
     const dictionary = JSON.stringify({
         hi: {
-            RedeemCard: {
+            redeemCard: {
                 button: "मोचन",
                 inprogress: "आपका मोचन अनुरोध प्रक्रिया में है",
                 completed: "आपने इस ऑफ़र को भुना लिया है"
             }
         },
         en: {
-            RedeemCard: {
+            redeemCard: {
                 button: "Redeem",
                 inprogress: "YOUR REDEMPTION REQUEST IS IN PROCESS",
                 completed: "YOU HAVE REDEEMED THIS OFFER"
@@ -91,7 +91,7 @@ describe("RedeemCard", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "RedeemCard",
+                tgt: "redeemCard",
                 dictionary: dictionary,
             },
         });
@@ -102,7 +102,19 @@ describe("RedeemCard", () => {
         component.setProps({
             withTranslation: {
                 lang: "en",
-                tgt: "RedeemCard",
+                tgt: "redeemCard",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.find(".qui-redeem-card-status").text()).toBe("Redeem");
+    });
+
+
+    it("should render render correctly with lang null", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "mr", 
+                tgt: "redeemCard",
                 dictionary: dictionary,
             },
         });

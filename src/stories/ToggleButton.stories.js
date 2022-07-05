@@ -3,7 +3,7 @@ import ToggleButton from "../components/ToggleButton/ToggleButton.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        ToggleButton: {
+        toggleButton: {
             label: "सक्रिय",
         }
     },
@@ -98,7 +98,11 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-
+    withTranslation: {
+        lang: "en",
+        tgt: "toggleButton",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -117,7 +121,7 @@ TranslatedToggleButton.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "ToggleButton",
+        tgt: "toggleButton",
         dictionary: dictionary,
     },
 };

@@ -169,9 +169,9 @@ describe("Option Item Ten", () => {
   });
 
   it("should render correctly without throwing error when wriiten in input field", () => {
-    component.find("InputField").at(0).simulate("click");
-    component.find("InputField").at(1).simulate("click");
-    component.find("InputField").at(2).simulate("click");
+    component.find("InputField").at(0).simulate("submit");
+    component.find("InputField").at(1).simulate("submit");
+    component.find("InputField").at(2).simulate("submit");
   });
   it("should render correctly without throwing error when clicked on close icon", () => {
     component

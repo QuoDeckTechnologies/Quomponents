@@ -12,7 +12,11 @@ describe("PageHeader", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-
+    const dictionary = JSON.stringify({
+        hi: {
+            pageheader: { text: "शीर्षणी" },
+        },
+    });
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(<PageHeader
@@ -173,4 +177,37 @@ describe("PageHeader", () => {
         component.setProps({ isHidden: true })
         expect(component.exists()).toBe(true);
     });
+
+    it("should render correctly when withTranslation props is passed", () => {
+        const dictionary = JSON.stringify({
+            hi: {
+                pageheader: { text: "शीर्षणी" },
+            },
+        });
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "pageheader",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when withTranslation props is passed and dictionary does not have target value", () => {
+        const dictionary = JSON.stringify({
+            hi: {
+                pageheader: {},
+            },
+        });
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "pageheader",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+
 });

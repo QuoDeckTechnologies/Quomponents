@@ -120,7 +120,7 @@ export default function SearchBar(props) {
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
-    ) tObj = getTranslation(props.withTranslation);
+    ) tObj = getTranslation(props.withTranslation, "searchBar");
     if (tObj && props.placeHolder && props.placeHolder !== "") {
         searchPlaceHolder = tObj.placeHolder;
     }

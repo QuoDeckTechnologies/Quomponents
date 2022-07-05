@@ -19,7 +19,7 @@ describe("ActionButton", () => {
     }
     const dictionary = JSON.stringify({
         hi: {
-            ActionButton: {
+            actionButton: {
                 title: "ख़रीदे",
                 subTitle: "रु. ७५",
             }
@@ -70,23 +70,34 @@ describe("ActionButton", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "ActionButton",
+                tgt: "actionButton",
                 dictionary: dictionary,
             },
         });
         expect(component.exists()).toBe(true);
     });
-    it("should render correctly if translation object is not returned",
-        () => {
-            component.setProps({
-                withTranslation: {
-                    lang: "hi",
-                    tgt: "",
-                    dictionary: dictionary,
-                }
-            });
-            expect(component.exists()).toBe(true);
+
+    it("should render correctly if translation object is not returned", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "",
+                dictionary: dictionary,
+            }
         });
+        expect(component.exists()).toBe(true);
+    });
+    
+    it("should render render correctly with lang null", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "mr",
+                tgt: "actionButton",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
 
     it("should render responsive-text button correctly when passed length of button more", () => {
         component.setProps({

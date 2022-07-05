@@ -55,7 +55,6 @@
     clear: none;
     font-size: 0.85em;
     top: 3px;
-    width: 50%;
     text-align: center;
 }
 .qui-course-card-date-container {
@@ -65,6 +64,7 @@
     min-width: 45%;
     font-size: 0.7em;
     color: #666666;
+    align-self: flex-end;
 }
 .qui-course-block-styling {
     margin-left: -0.5em;
@@ -123,6 +123,7 @@
 .qui-course-card-name {
     font-size: 1.1em;
     color: #aaaaaa;
+    margin-bottom: 0.2em;
 }
 .qui-course-card .qui-banner-card {
     margin-top: 1.3em;
@@ -201,6 +202,9 @@
     }
     .qui-course-card-reward {
         font-size: 0.7em;
+        .qui .qui-label-container {
+            padding-top: 0.2em;
+        }
     }
     .qui-course-card .qui-banner-card .qui-slider-card-box {
         height: 1.2em;
@@ -290,7 +294,7 @@
     .qui-course-card-link-container {
         margin-right: -0.8em;
     }
-    .qui-course-card-ame {
+    .qui-course-card-name {
         font-size: 0.8em;
     }
     .qui-course-card-link {
@@ -351,6 +355,11 @@
     }
     .qui-course-card-body {
         margin: 0.3em 1em 0 1em;
+    }
+    .qui-course-card-reward {
+        .qui .qui-label-container {
+            padding-top: 0.2em;
+        }
     }
     .qui-course-block-styling {
         font-size: 0.7em;

@@ -1,8 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
-import renderer, { act } from "react-test-renderer";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import from Config
 // -------------------------------------
@@ -19,8 +18,9 @@ describe("NavBar", () => {
     let component, ShortLogo;
     const dictionary = JSON.stringify({
         hi: {
-            navbar: {
+            navBar: {
                 title: "कमाये",
+                content: "कॅटलॉग",
             },
         },
     });
@@ -63,7 +63,7 @@ describe("NavBar", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "navbar",
+                tgt: "navBar",
                 dictionary: dictionary,
             },
         });
