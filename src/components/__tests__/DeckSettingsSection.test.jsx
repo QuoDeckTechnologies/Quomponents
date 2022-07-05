@@ -3,12 +3,63 @@ import React from "react";
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
+
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import DeckSettingsSection from "../RibbonMenu/toolsMenu/sections/DeckSettingsSection.react";
 
 describe("DeckSettingsSection", () => {
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+
+  const args = {
+    target: DeckSettingsSection,
+    required: {
+    },
+    translations: {
+      tgt: "deckSettingsSection",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        en: {
+          deckSettingsSection: {
+            settings: "Settings",
+            enableNavigation: "Enable Navigation",
+            enableSlideList: "Enable Slide List",
+            enableVoiceovers: "Enable Voiceovers",
+          },
+        },
+        hi: {
+          deckSettingsSection: {
+            settings: "समायोजन",
+            enableNavigation: "पथ प्रदर्शन सक्षम करें",
+            enableSlideList: "स्लाइड सूची सक्षम करें",
+            enableVoiceovers: "वॉयस ओवर सक्षम करें",
+          },
+        },
+      })
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("variants", args);
+  hasValid("sizes", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
+  hasValid("alignment", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("toggles", args);
+
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -23,24 +74,6 @@ describe("DeckSettingsSection", () => {
     snEnabled: false,
     voEnabled: false,
   };
-  const dictionary = JSON.stringify({
-    en: {
-      deckSettingsSection: {
-        settings: "Settings",
-        enableNavigation: "Enable Navigation",
-        enableSlideList: "Enable Slide List",
-        enableVoiceovers: "Enable Voiceovers",
-      },
-    },
-    hi: {
-      deckSettingsSection: {
-        settings: "समायोजन",
-        enableNavigation: "पथ प्रदर्शन सक्षम करें",
-        enableSlideList: "स्लाइड सूची सक्षम करें",
-        enableVoiceovers: "वॉयस ओवर सक्षम करें",
-      },
-    },
-  });
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -74,57 +107,6 @@ describe("DeckSettingsSection", () => {
     component.setProps({ asFloated: "inline" });
     expect(component.exists()).toBe(true);
   });
-
-  it("should render translation of component in hindi", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "deckSettingsSection",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.find(".qui-ribbon-menu-label").at(0).text()).toBe(
-      "पथ प्रदर्शन सक्षम करें"
-    );
-    expect(component.find(".qui-ribbon-menu-label").at(1).text()).toBe(
-      "स्लाइड सूची सक्षम करें"
-    );
-    expect(component.find(".qui-ribbon-menu-label").at(2).text()).toBe(
-      "वॉयस ओवर सक्षम करें"
-    );
-  });
-
-  it("should render correctly if translation is not defined", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "mr",
-        tgt: "deckSettingsSection",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should enable navigation by clicking on Icon", () => {
     let backArrow = component.find("IconLink").at(0);
     backArrow.simulate("click");
