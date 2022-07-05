@@ -3,11 +3,69 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import Choice from "../Buttons/Choice/Choice.react";
 
 describe("Choice", () => {
+
+	// -------------------------------------
+	// Run common tests
+	// -------------------------------------
+
+	const args = {
+		target: Choice,
+		required: {
+			options: [
+				{
+					correct: "checked",
+					text: "Item1",
+				},
+				{
+					correct: "",
+					text: "Item2",
+				},
+			],
+			onClick: () => { },
+		},
+		translations: {
+			tgt: "options",
+			lang: { valid: "hi", invalid: "xx" },
+			dictionary: JSON.stringify({
+				hi: {
+					options: [
+						{
+							correct: "checked",
+							text: "वस्तु 1",
+						},
+						{
+							correct: "",
+							text: "वस्तु 2",
+						},
+					],
+				},
+			}),
+		},
+	};
+
+	hasValid("defaults", args);
+
+	hasValid("variants", args);
+	hasValid("sizes", args);
+	hasValid("positions", args);
+	hasValid("padding", args);
+	hasValid("alignment", args);
+
+	hasValid("colors", args);
+	hasValid("animations", args);
+	hasValid("translations", args);
+
+	hasValid("toggles", args);
+
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
@@ -22,20 +80,6 @@ describe("Choice", () => {
 			text: "Item2",
 		},
 	];
-	const dictionary = JSON.stringify({
-		hi: {
-			options: [
-				{
-					correct: "checked",
-					text: "वस्तु 1",
-				},
-				{
-					correct: "",
-					text: "वस्तु 2",
-				},
-			],
-		},
-	});
 	let colors = {
 		primaryBackgroundColor: "red",
 		secondaryBackgroundColor: "green",
@@ -53,19 +97,9 @@ describe("Choice", () => {
 				options={options}
 				isChoice={false}
 				asEmphasis="contained"
-				asSize="normal"
-				asFloated="inline"
-				withAnimation={null}
-				withTranslation={null}
-				isHidden={false}
-				isDisabled={false}
-				onClick={() => console.log("Choice Testing")}
+				onClick={() => { }}
 			/>
 		);
-	});
-
-	it("should render correctly without throwing error", () => {
-		expect(component.exists()).toBe(true);
 	});
 
 	it("should render correctly when passed asEmphasis prop as text", () => {
@@ -107,61 +141,6 @@ describe("Choice", () => {
 		expect(component.exists()).toBe(true);
 	})
 
-	it("should render correctly when passed asSize prop as tiny", () => {
-		component.setProps({ asSize: "tiny" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asSize prop as small", () => {
-		component.setProps({ asSize: "small" })
-		expect(component.exists()).toBe(true);
-	})
-
-	it("should render correctly when passed asSize prop as normal", () => {
-		component.setProps({ asSize: "normal" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asSize prop as big", () => {
-		component.setProps({ asSize: "big" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asSize prop as huge", () => {
-		component.setProps({ asSize: "huge" });
-		expect(component.exists()).toBe(true);
-	})
-
-	it("should render correctly when passed asSize prop as massive", () => {
-		component.setProps({ asSize: "massive" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asFloated prop as left", () => {
-		component.setProps({ asFloated: "left" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asFloated prop as right", () => {
-		component.setProps({ asFloated: "right" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asFloated prop as inline", () => {
-		component.setProps({ asFloated: "inline" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed withAnimation props", () => {
-		let animation = {
-			animation: "zoom",
-			duration: 0.5,
-			delay: 0,
-		};
-		component.setProps({ withAnimation: animation });
-		expect(component.exists()).toBe(true);
-	});
-
 	it("should call choice1 function with the parameter when click on choice1 button", () => {
 		component.setProps({ onClick: choice1 });
 		let choicebtn = component.find(".qui-choice1");
@@ -174,31 +153,6 @@ describe("Choice", () => {
 		let choicebtn = component.find(".qui-choice2");
 		choicebtn.simulate("click");
 		expect(choice2).toBeCalledWith(1);
-	});
-
-	it("should render correctly with withTranslation prop", () => {
-		expect(component.find(".qui-choice1").text()).toBe("Item1");
-		expect(component.find(".qui-choice2").text()).toBe("Item2");
-		component.setProps({
-			withTranslation: {
-				lang: "hi",
-				tgt: "options",
-				dictionary: dictionary,
-			},
-		});
-		expect(component.find(".qui-choice1").text()).toBe("वस्तु 1");
-		expect(component.find(".qui-choice2").text()).toBe("वस्तु 2");
-	});
-
-	it("should render correctly when passed withTranslation Props", () => {
-		component.setProps({
-			withTranslation: {
-				lang: "hi",
-				tgt: "",
-				dictionary: dictionary,
-			},
-		});
-		expect(component.find("div").at(4).text().placeholder).toBe(undefined);
 	});
 
 	it("should render correctly when passed text in asEmphasis props", () => {
