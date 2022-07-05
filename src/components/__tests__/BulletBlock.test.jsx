@@ -3,6 +3,11 @@
 // -------------------------------------
 import { shallow, mount, render } from "enzyme";
 import renderer, { act } from "react-test-renderer";
+
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
 //--------------------------------------
 // Import from Config
 // -------------------------------------
@@ -13,6 +18,27 @@ import renderer, { act } from "react-test-renderer";
 import BulletBlock from "../BulletBlock/BulletBlock.react";
 
 describe("BulletBlock", () => {
+
+    // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+
+    const args = {
+        target: BulletBlock,
+        required: {
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("variants", args);
+    hasValid("sizes", args);
+
+    hasValid("colors", args);
+    hasValid("animations", args);
+
+    hasValid("toggles", args);
+
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -27,33 +53,13 @@ describe("BulletBlock", () => {
                     "Quisque sed turpis vel lectus suscipit auctor",
                     "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
                 ]}
-                asVariant="primary"
-                asSize="normal"
                 let colors={{
                     backgroundColor: "red",
                     accentColor: "green",
                     textColor: "blue",
                 }}
-                withAnimation={{
-                    animation: "zoom",
-                    duration: 0.5,
-                    delay: 0,
-                }}
-                isHidden={false}
             />
         );
-    });
-
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly with empty props which are not required", () => {
-        component.setProps({
-            withColor: {},
-            withAnimation: {},
-            isHidden: null
-        });
-        expect(component.exists()).toBe(true);
     });
     it("should render correctly with withColor prop ",
         () => {

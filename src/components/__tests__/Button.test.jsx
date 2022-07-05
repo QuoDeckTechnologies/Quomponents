@@ -17,7 +17,7 @@ describe("Button", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
+    
     const args = {
         target: Button,
         required: {

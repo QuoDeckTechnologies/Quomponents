@@ -2,12 +2,55 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
+
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import ActionButton from "../Buttons/ActionButton/ActionButton.react";
 
 describe("ActionButton", () => {
+    const args = {
+        target: ActionButton,
+        required: {
+            content: {
+                title: "BUY",
+                subTitle: "Rs. 75",
+                image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png"
+            },
+            onClick: () => console.log("action button Testing"),
+        },
+        translations: {
+            tgt: "ActionButton",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+                hi: {
+                    ActionButton: {
+                        title: "ख़रीदे",
+                        subTitle: "रु. ७५",
+                    }
+                },
+            }),
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("variants", args);
+    hasValid("sizes", args);
+    hasValid("positions", args);
+    hasValid("padding", args);
+    hasValid("alignment", args);
+
+    hasValid("colors", args);
+    hasValid("animations", args);
+    hasValid("translations", args);
+
+    hasValid("toggles", args);
+
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -19,7 +62,7 @@ describe("ActionButton", () => {
     }
     const dictionary = JSON.stringify({
         hi: {
-            actionButton: {
+            ActionButton: {
                 title: "ख़रीदे",
                 subTitle: "रु. ७५",
             }
@@ -70,34 +113,23 @@ describe("ActionButton", () => {
         component.setProps({
             withTranslation: {
                 lang: "hi",
-                tgt: "actionButton",
+                tgt: "ActionButton",
                 dictionary: dictionary,
             },
         });
         expect(component.exists()).toBe(true);
     });
-
-    it("should render correctly if translation object is not returned", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "hi",
-                tgt: "",
-                dictionary: dictionary,
-            }
+    it("should render correctly if translation object is not returned",
+        () => {
+            component.setProps({
+                withTranslation: {
+                    lang: "hi",
+                    tgt: "",
+                    dictionary: dictionary,
+                }
+            });
+            expect(component.exists()).toBe(true);
         });
-        expect(component.exists()).toBe(true);
-    });
-    
-    it("should render render correctly with lang null", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "mr",
-                tgt: "actionButton",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
 
     it("should render responsive-text button correctly when passed length of button more", () => {
         component.setProps({
