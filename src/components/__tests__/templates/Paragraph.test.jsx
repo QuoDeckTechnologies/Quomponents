@@ -3,6 +3,11 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import Paragraph from "../../Templates/Paragraph/Paragraph.react";
@@ -11,6 +16,34 @@ describe("Paragraph", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
+
+  const args = {
+    target: Paragraph,
+    required: {
+      data: {
+        title: "test title",
+        subtitle: "test subtitle",
+        icon: "test-icon",
+        image: {},
+      },
+    },
+    translations: {
+      tgt: "button",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          loading: "बस एक मिनट...",
+          button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("positions", args);
+  hasValid("animations", args);
+  hasValid("toggles", args);
+
   let component;
 
   beforeEach(() => {
@@ -25,70 +58,6 @@ describe("Paragraph", () => {
         }}
       />
     );
-  });
-
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is left", () => {
-    component.setProps({
-      asFloated: "left",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is right", () => {
-    component.setProps({
-      asFloated: "right",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is inline", () => {
-    component.setProps({
-      asFloated: "inline",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is none", () => {
-    component.setProps({
-      asFloated: "none",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isCircular props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isCircular props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when passed withColor", () => {
@@ -167,6 +136,4 @@ describe("Paragraph", () => {
     });
     expect(component.exists()).toBe(true);
   });
-
-  
 });
