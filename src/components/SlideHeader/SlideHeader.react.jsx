@@ -119,12 +119,12 @@ export default function SlideHeader(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-title-block ${quommonClasses.childClasses}`} style={Color}>
-                <div className="qui-title" >
+                <h4 className="qui-title" >
                     {defaultText?.title}
-                </div>
-                <div className="qui-sub-title">
+                </h4>
+                <h6 className="qui-sub-title">
                     {defaultText?.subTitle}
-                </div>
+                </h6>
             </div>
         </motion.div>
     );

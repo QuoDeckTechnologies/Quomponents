@@ -178,7 +178,7 @@ export default function BannerCard(props) {
           style={Object.assign({}, colors, props.style)}
         >
           <div className="qui-slider-card-box-header line-clamp">
-            <h6>{boxHeader}</h6>
+            {boxHeader}
           </div>
           <div className="qui-slider-card-box-content line-clamp">
             {boxContent}
@@ -192,9 +192,9 @@ export default function BannerCard(props) {
           className={`qui-carousel qui-slider-card-box ${quommonClasses.childClasses}`}
           style={Object.assign({}, colors, props.style)}
         >
-          <h6 className="qui-slider-card-box-header line-clamp">
+          <div className="qui-slider-card-box-header line-clamp">
             {boxHeader}
-          </h6>
+          </div>
           <div className="qui-slider-card-box-content line-clamp qt-sm">
             {boxContent}
           </div>
