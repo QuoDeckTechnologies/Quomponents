@@ -300,8 +300,8 @@ export default function Button(props) {
 
     return (
         <motion.div
-            initial={animate.from}
-            animate={animate.to}
+            initial={animate?.from}
+            animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}

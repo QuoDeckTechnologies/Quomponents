@@ -38,13 +38,13 @@ export function getTranslation(tObj, key) {
 
 export function getAnimation(props) {
     let animObj = props.withAnimation;
-    if (props.zoom) animObj.animation = "zoom";
-    else if (props.fade) animObj.animation = "fade";
-    else if (props.slideDown) animObj.animation = "slideDown";
-    else if (props.slideUp) animObj.animation = "slideUp";
-    else if (props.slideLeft) animObj.animation = "slideLeft";
-    else if (props.slideRight) animObj.animation = "slideRight";
-    else if (props.collapse) animObj.animation = "collapse";
+    if (props.zoom) animObj?.animation = "zoom";
+    else if (props.fade) animObj?.animation = "fade";
+    else if (props.slideDown) animObj?.animation = "slideDown";
+    else if (props.slideUp) animObj?.animation = "slideUp";
+    else if (props.slideLeft) animObj?.animation = "slideLeft";
+    else if (props.slideRight) animObj?.animation = "slideRight";
+    else if (props.collapse) animObj?.animation = "collapse";
     
     if (animObj?.animation) {
         const initialVariants = {
