@@ -33,11 +33,9 @@ describe("OptionalImageField", () => {
   };
 
   hasValid("defaults", args);
-
   hasValid("colors", args);
   hasValid("animations", args);
   hasValid("translations", args);
-
   hasValid("fluid", args);
   hasValid("hidden", args);
   hasValid("disabled", args);

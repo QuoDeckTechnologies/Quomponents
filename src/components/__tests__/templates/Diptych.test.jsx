@@ -136,22 +136,10 @@ describe("Diptych", () => {
       />
     );
   });
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
   it("should render correctly with empty content", () => {
     component.setProps({
       data: {},
     });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    };
-    component.setProps({ withAnimation: animation });
     expect(component.exists()).toBe(true);
   });
   it("Test click event on first ClickableImage when passed presenter prop", () => {
@@ -259,15 +247,6 @@ describe("Diptych", () => {
       textBlockTextColor: "#fff",
     };
     component.setProps({ withColor: colors });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    };
-    component.setProps({ withAnimation: animation });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly when passed layout props with presenter", () => {
@@ -378,42 +357,6 @@ describe("Diptych", () => {
   });
   it("should render correctly when passed data as null", () => {
     component.setProps({ data: {} });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as primary", () => {
-    component.setProps({ asVariant: "primary" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as secondary", () => {
-    component.setProps({ asVariant: "secondary" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as warning", () => {
-    component.setProps({ asVariant: "warning" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as error", () => {
-    component.setProps({ asVariant: "error" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as success", () => {
-    component.setProps({ asVariant: "success" });
     expect(component.exists()).toBe(true);
   });
 });

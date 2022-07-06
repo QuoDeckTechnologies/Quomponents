@@ -24,13 +24,6 @@ export default {
         category: "as-Flags",
       },
     },
-    asVariant: {
-      control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     asSize: {
       control: "select",
       options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -115,7 +108,6 @@ export default {
 const Template = (args) => <CertificateCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  asVariant: "primary",
   asStatus: "completed",
   asSize: "normal",
   withLabel: {
@@ -126,8 +118,8 @@ Default.args = {
       "https://media.istockphoto.com/vectors/certificate-template-vector-id1097299164",
   },
   withColor: {
-    accentColor: "",
-    textColor: "",
+    accentColor: "#ed6e6e",
+    textColor: "#ed6e6e",
   },
   withAnimation: {
     animation: "collapse",

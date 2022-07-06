@@ -8,10 +8,8 @@
   margin-bottom: 0.5em;
 }
 
-.qui.qui-optional-image-field.is-fluid {
-  .qui-optional-image-field-wrapper {
-    flex: 1;
-  }
+.qui.qui-optional-image-field .is-fluid {
+  min-width: auto;
 }
 
 .qui.qui-optional-image-field.is-fluid {

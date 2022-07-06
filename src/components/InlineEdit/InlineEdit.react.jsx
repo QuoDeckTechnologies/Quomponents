@@ -167,7 +167,7 @@ export default function InlineEdit(props) {
         if (asEmphasis === "multiLine") {
             return (
                 <textarea
-                    className={`qui-textarea-field ${props.asAligned}-aligned`}
+                    className="qui-textarea-field"
                     value={input}
                     name={props.name}
                     ref={inputRef}
@@ -182,7 +182,7 @@ export default function InlineEdit(props) {
         else {
             return (
                 <input
-                    className={`qui-input-field ${props.asAligned}-aligned`}
+                    className="qui-input-field"
                     value={input}
                     name={props.name}
                     ref={inputRef}

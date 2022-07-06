@@ -34,6 +34,7 @@ describe("Brancher", () => {
   };
 
   hasValid("defaults", args);
+  hasValid("positions", args);
   hasValid("animations", args);
   hasValid("hidden", args);
   hasValid("disabled", args);
@@ -58,70 +59,6 @@ describe("Brancher", () => {
         onClick={() => {}}
       />
     );
-  });
-
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is left", () => {
-    component.setProps({
-      asFloated: "left",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is right", () => {
-    component.setProps({
-      asFloated: "right",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is inline", () => {
-    component.setProps({
-      asFloated: "inline",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is none", () => {
-    component.setProps({
-      asFloated: "none",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isCircular props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isCircular props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when passed withColor", () => {
