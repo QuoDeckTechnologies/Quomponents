@@ -32,7 +32,7 @@ describe("QuoBarChart", () => {
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-   
+
     let component;
     beforeEach(() => {
         jest.resetAllMocks();
@@ -54,8 +54,8 @@ describe("QuoBarChart", () => {
                     { label: "21", count: 590 },
                 ]}
                 withColor={null}
-                // isHidden={false}
-                // isFluid={false}
+                isHidden={false}
+                isFluid={false}
             />
         );
     });
@@ -116,8 +116,8 @@ describe("QuoBarChart", () => {
                 { label: "21", count: 590 },
             ]}
             withColor={null}
-            // isHidden={false}
-            // isFluid={false}
+            isHidden={false}
+            isFluid={false}
         />)
         wrapper.find(".recharts-tooltip-wrapper")
         global.innerWidth = 1200;
@@ -172,8 +172,8 @@ describe("QuoBarChart", () => {
                     { label: "21", count: 590 },
                 ]}
                 withColor={null}
-                // isHidden={false}
-                // isFluid={false}
+                isHidden={false}
+                isFluid={false}
             />
         );
         unmount();

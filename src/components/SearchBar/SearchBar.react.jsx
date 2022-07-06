@@ -28,11 +28,7 @@ SearchBar.propTypes = {
     /**
     Use to float the component in parent container
     */
-<<<<<<< HEAD
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-=======
     asFloated: PropTypes.oneOf(["left", "right", "inline","none"]),
->>>>>>> d9f5af88dffeb18825bb385f6778508708ddb016
     /**
     Use to define component text size in increasing order
     */
