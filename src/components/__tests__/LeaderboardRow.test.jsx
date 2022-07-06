@@ -36,7 +36,7 @@ describe("LeaderboardRow", () => {
     hasValid("colors", args);
     hasValid("animations", args);
 
-    hasValid("toggles", args);
+    hasValid("hidden", args);
 
     // -------------------------------------
     // Setup definitions for the test suite

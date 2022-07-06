@@ -38,8 +38,9 @@ describe("OptionalImageField", () => {
   hasValid("animations", args);
   hasValid("translations", args);
 
-  //hasValid("toggles", args);
-
+  hasValid("fluid", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

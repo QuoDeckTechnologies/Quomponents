@@ -13,35 +13,36 @@ import { hasValid } from "./common";
 import OverlayMenu from "../OverlayMenu/OverlayMenu.react";
 
 describe("OverlayMenu", () => {
-   // -------------------------------------
-    // Run common tests
-    // -------------------------------------
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
 
-    const args = {
-        target: OverlayMenu,
-        required: {
-            content: [],
-            onClick: () =>{},
-        },
-    };
+  const args = {
+    target: OverlayMenu,
+    required: {
+      content: [],
+      onClick: () => { },
+    },
+  };
 
-    hasValid("defaults", args);
+  hasValid("defaults", args);
 
-    hasValid("variants", args);
-    hasValid("sizes", args);
-    hasValid("positions", args);
-  
-    hasValid("colors", args);
-    hasValid("labels", args);
-    hasValid("animations", args);
-    hasValid("icons", args);
-    //hasValid("translations", args);
+  hasValid("variants", args);
+  hasValid("sizes", args);
+  hasValid("positions", args);
 
-    hasValid("toggles", args);
+  hasValid("colors", args);
+  hasValid("labels", args);
+  hasValid("animations", args);
+  hasValid("icons", args);
+  //hasValid("translations", args);
 
-    // -------------------------------------
-    // Run component specific tests
-    // -------------------------------------
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
 
   let component;
   const dictionary = JSON.stringify({
@@ -83,7 +84,7 @@ describe("OverlayMenu", () => {
       />
     );
   });
-  
+
   it("should render correctly without throwing error when component mounts", () => {
     component = mount(
       <OverlayMenu

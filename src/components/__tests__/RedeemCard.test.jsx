@@ -46,11 +46,12 @@ describe("RedeemCard", () => {
     hasValid("defaults", args);
 
     hasValid("positions", args);
-   
+
     hasValid("colors", args);
     hasValid("translations", args);
 
-    hasValid("toggles", args);
+    hasValid("hidden", args);
+    hasValid("disabled", args);
 
     // -------------------------------------
     // Run component specific tests
@@ -94,7 +95,7 @@ describe("RedeemCard", () => {
             />
         );
     });
-    
+
     it("should render correctly when passed extra content and should also display showmore button", () => {
         let component = mount(
             <RedeemCard

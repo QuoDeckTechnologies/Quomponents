@@ -46,12 +46,13 @@ describe("RewardCard", () => {
     hasValid("defaults", args);
 
     hasValid("positions", args);
-   
+
     hasValid("colors", args);
     hasValid("animations", args);
     hasValid("translations", args);
 
-    hasValid("toggles", args);
+    hasValid("hidden", args);
+    hasValid("disabled", args);
 
     // -------------------------------------
     // Run component specific tests
@@ -128,5 +129,5 @@ describe("RewardCard", () => {
         expect(component.exists()).toBe(true);
     });
 
-   });
+});
 

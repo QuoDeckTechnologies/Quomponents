@@ -17,20 +17,20 @@ import PalleteThemeSection from "../RibbonMenu/designMenu/sections/PalleteThemeS
 
 describe("PalleteThemeSection", () => {
 	// -------------------------------------
-    // Run common tests
-    // -------------------------------------
+	// Run common tests
+	// -------------------------------------
 
-    const args = {
-        target: PalleteThemeSection,
-        required: {
-            content: "Testing Button",
-            onClick: () => console.log("Button Testing"),
-        },
-        translations: {
-            tgt: "palleteThemeSection",
-            lang: { valid: "hi", invalid: "xx" },
-            dictionary: JSON.stringify({
-                en: {
+	const args = {
+		target: PalleteThemeSection,
+		required: {
+			content: "Testing Button",
+			onClick: () => console.log("Button Testing"),
+		},
+		translations: {
+			tgt: "palleteThemeSection",
+			lang: { valid: "hi", invalid: "xx" },
+			dictionary: JSON.stringify({
+				en: {
 					palleteThemeSection: {
 						settings: "Settings",
 						pageColor: "Page Color",
@@ -48,21 +48,22 @@ describe("PalleteThemeSection", () => {
 						secondaryColor: "द्वितीयक रंग"
 					}
 				}
-            }),
-        },
-    };
+			}),
+		},
+	};
 
-    hasValid("defaults", args);
+	hasValid("defaults", args);
 
-    hasValid("positions", args);
+	hasValid("positions", args);
 
-    hasValid("translations", args);
+	hasValid("translations", args);
 
-    hasValid("toggles", args);
+	hasValid("hidden", args);
+	hasValid("disabled", args);
 
-    // -------------------------------------
-    // Run component specific tests
-    // -------------------------------------
+	// -------------------------------------
+	// Run component specific tests
+	// -------------------------------------
 
 	let component, actions;
 	actions = {

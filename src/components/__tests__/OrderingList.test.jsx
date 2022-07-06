@@ -36,7 +36,8 @@ describe("OrderingList", () => {
 
   hasValid("animations", args);
 
-  hasValid("toggles", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
 
   // -------------------------------------
   // Run component specific tests
@@ -72,7 +73,7 @@ describe("OrderingList", () => {
         withTranslation={null}
         isDisabled={false}
         isHidden={false}
-        onClick={() => {}}
+        onClick={() => { }}
       />
     );
   });
@@ -87,7 +88,7 @@ describe("OrderingList", () => {
         withTranslation={null}
         isDisabled={false}
         isHidden={false}
-        onClick={() => {}}
+        onClick={() => { }}
       />
     );
     unmount();

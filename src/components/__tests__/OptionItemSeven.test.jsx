@@ -12,18 +12,18 @@ import { hasValid } from "./common";
 import OptionItemSeven from "../OptionItem/OptionItemSeven/OptionItemSeven.react";
 
 describe("Option Item Seven", () => {
-   // -------------------------------------
-    // Run common tests
-    // -------------------------------------
-    
-    const args = {
-      target: OptionItemSeven,
-      required: {
-        onInput:() => {},
-        onSelect:() => {},
-        onUpload:() => {},
-        onClick:() => {},
-      },
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+
+  const args = {
+    target: OptionItemSeven,
+    required: {
+      onInput: () => { },
+      onSelect: () => { },
+      onUpload: () => { },
+      onClick: () => { },
+    },
   };
 
   hasValid("defaults", args);
@@ -31,7 +31,8 @@ describe("Option Item Seven", () => {
   hasValid("colors", args);
   hasValid("animations", args);
 
-  hasValid("toggles", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
 
   // -------------------------------------
   // Run component specific tests
@@ -77,10 +78,10 @@ describe("Option Item Seven", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onInput={() => {}}
-        onSelect={() => {}}
-        onUpload={() => {}}
-        onClick={() => {}}
+        onInput={() => { }}
+        onSelect={() => { }}
+        onUpload={() => { }}
+        onClick={() => { }}
       />
     );
   });
@@ -105,10 +106,10 @@ describe("Option Item Seven", () => {
           placeholder: "placeholder",
           checked: false,
         }}
-        onInput={() => {}}
-        onSelect={() => {}}
-        onUpload={() => {}}
-        onClick={() => {}}
+        onInput={() => { }}
+        onSelect={() => { }}
+        onUpload={() => { }}
+        onClick={() => { }}
       />
     );
     expect(component.exists()).toBe(true);

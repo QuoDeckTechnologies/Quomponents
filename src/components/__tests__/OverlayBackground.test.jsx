@@ -15,35 +15,35 @@ import ImageUploadModal from "../ImageUploadModal/ImageUploadModal.react";
 
 describe("OverlayBackground", () => {
   // -------------------------------------
-    // Run common tests
-    // -------------------------------------
+  // Run common tests
+  // -------------------------------------
 
-    const args = {
-      target: OverlayBackground,
-      required: {
-          
-          onClick: () => {},
-      },
-      translations: {
-          tgt: "overlayBackground",
-          lang: { valid: "hi", invalid: "xx" },
-          dictionary: JSON.stringify({
-            en: {
-              overlayBackground: {
-                overlayBackground: "Overlay Background",
-                setBackground: "Set",
-                removeBackground: "Remove",
-              },
-            },
-            hi: {
-              overlayBackground: {
-                overlayBackground: "उपरिशायी पृष्ठभूमि",
-                setBackground: "सेट",
-                removeBackground: "निकाले",
-              },
-            },
-          }),
-      },
+  const args = {
+    target: OverlayBackground,
+    required: {
+
+      onClick: () => { },
+    },
+    translations: {
+      tgt: "overlayBackground",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        en: {
+          overlayBackground: {
+            overlayBackground: "Overlay Background",
+            setBackground: "Set",
+            removeBackground: "Remove",
+          },
+        },
+        hi: {
+          overlayBackground: {
+            overlayBackground: "उपरिशायी पृष्ठभूमि",
+            setBackground: "सेट",
+            removeBackground: "निकाले",
+          },
+        },
+      }),
+    },
   };
 
   hasValid("defaults", args);
@@ -52,7 +52,8 @@ describe("OverlayBackground", () => {
 
   hasValid("translations", args);
 
-  hasValid("toggles", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
 
   // -------------------------------------
   // Run component specific tests
