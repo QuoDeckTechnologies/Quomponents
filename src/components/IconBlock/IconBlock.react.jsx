@@ -73,7 +73,7 @@ IconBlock.propTypes = {
     /**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+    asFloated: PropTypes.oneOf(["left", "right", "inline", "none"]),
     /**
     Use to show/hide the component
     */

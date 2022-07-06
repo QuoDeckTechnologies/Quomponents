@@ -2,6 +2,12 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
+
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -52,6 +58,42 @@ const dictionary = JSON.stringify({
 });
 
 describe("CourseCard", () => {
+
+	// -------------------------------------
+	// Run common tests
+	// -------------------------------------
+
+	const args = {
+		target: CourseCard,
+		required: {
+			onClick: () => { },
+		},
+		translations: {
+			tgt: "button",
+			lang: { valid: "hi", invalid: "xx" },
+			dictionary: JSON.stringify({
+				hi: {
+					loading: "बस एक मिनट...",
+					button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+				},
+			}),
+		},
+	};
+
+	hasValid("defaults", args);
+
+	hasValid("variants", args);
+	hasValid("sizes", args);
+	hasValid("positions", args);
+	hasValid("padding", args);
+	hasValid("alignment", args);
+
+	hasValid("colors", args);
+	hasValid("animations", args);
+	hasValid("translations", args);
+
+	hasValid("toggles", args);
+
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
@@ -113,38 +155,6 @@ describe("CourseCard", () => {
 		});
 		expect(component.exists()).toBe(true);
 	});
-
-	it("should render correctly when passed asFloated prop as left", () => {
-		component.setProps({ asFloated: "left" });
-		expect(component.exists()).toBe(true);
-	});
-	it("should render correctly when passed asFloated prop as right", () => {
-		component.setProps({ asFloated: "right" });
-		expect(component.exists()).toBe(true);
-	});
-	it("should render correctly when passed asFloated prop as inline", () => {
-		component.setProps({ asFloated: "inline" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isHidden props as false", () => {
-		component.setProps({ isHidden: false });
-		expect(component.exists()).toBe(true);
-	});
-	it("should render correctly when passed isHidden props as true", () => {
-		component.setProps({ isHidden: true });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isDisabled props as false", () => {
-		component.setProps({ isDisabled: false });
-		expect(component.exists()).toBe(true);
-	});
-	it("should render correctly when passed isDisabled props as true", () => {
-		component.setProps({ isDisabled: true });
-		expect(component.exists()).toBe(true);
-	});
-
 	it("should simulate the ArcMenu on click", () => {
 		component.setProps({ arcFn: jest.fn() });
 		let arcMenu = component.find(ArcMenu);

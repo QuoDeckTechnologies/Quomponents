@@ -4,8 +4,10 @@
 import { shallow, mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import { render, screen, fireEvent } from "@testing-library/react";
-
-
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
 
 //--------------------------------------
 // Import from Config
@@ -18,35 +20,62 @@ import FlipConfirm from '../Buttons/FlipConfirm/FlipConfirm.react';
 
 describe("FlipConfirm", () => {
     // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+
+    const args = {
+        target: FlipConfirm,
+        required: {
+            content: "Testing Button",
+            onClick: () => console.log("Button Testing"),
+        },
+        translations: {
+            tgt: "flipconfirm",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+                en: {
+                    loading: "Please wait...",
+                    flipconfirm: {
+                        text: "Button",
+                        label: "Do not press this repeatedly...",
+                        header: "Are you sure you want to do that?",
+                        yes: "Yes",
+                        no: "No",
+                    }
+                },
+                hi: {
+                    loading: "बस एक मिनट...",
+                    flipconfirm: {
+                        text: "बटन",
+                        label: "इसे बार-बार न दबाएं...",
+                        header: "क्या वाकई आपकी इसे करने की इच्छा है?",
+                        yes: "हां",
+                        no: "नहीं",
+                    }
+
+                },
+            }),
+
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("variants", args);
+    hasValid("sizes", args);
+    hasValid("positions", args);
+    hasValid("padding", args);
+    hasValid("alignment", args);
+
+    hasValid("colors", args);
+    hasValid("animations", args);
+    hasValid("translations", args);
+
+    hasValid("toggles", args);
+    // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-    let frontClick = jest.fn
-
-    const dictionary = JSON.stringify({
-        en: {
-            loading: "Please wait...",
-            flipconfirm: {
-                text: "Button",
-                label: "Do not press this repeatedly...",
-                header: "Are you sure you want to do that?",
-                yes: "Yes",
-                no: "No",
-            }
-        },
-        hi: {
-            loading: "बस एक मिनट...",
-            flipconfirm: {
-                text: "बटन",
-                label: "इसे बार-बार न दबाएं...",
-                header: "क्या वाकई आपकी इसे करने की इच्छा है?",
-                yes: "हां",
-                no: "नहीं",
-            }
-
-        },
-    });
-
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -71,55 +100,6 @@ describe("FlipConfirm", () => {
             onClick={() => console.log("")}
         />);
     })
-
-    it("it should render correctly without throwing an error ",
-        () => {
-            expect(component.exists()).toBe(true);
-        });
-
-
-    it("should render correctly with translation",
-        () => {
-            component.setProps({
-                withTranslation: {
-                    lang: "en",
-                    tgt: "flipConfirm:",
-                    dictionary: dictionary,
-                },
-            });
-            expect(component.exists()).toBe(true);
-        });
-
-
-    it("should render correctly with translation",
-        () => {
-            component.setProps({
-                withConfirmation: {
-                    header: "Are you sure you want to do that?",
-                    yes: "Yes",
-                    no: "No",
-                },
-            }),
-                expect(component.exists()).toBe(true);
-        });
-
-    it("should render correctly if translation object is not returned",
-        () => {
-            component.setProps({
-                withTranslation: {
-                    lang: "hi",
-                    tgt: "",
-                    dictionary: dictionary,
-                },
-                withConfirmation: {
-                    header: "Are you sure you want to do that?",
-                    yes: "Yes",
-                    no: "No",
-                },
-            });
-            expect(component.exists()).toBe(true);
-        });
-
     it("Click testing", () => {
         let wrapper = shallow(<FlipConfirm onClick={() => console.log("")}
         />);

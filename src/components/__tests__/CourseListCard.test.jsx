@@ -3,11 +3,36 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import CourseListCard from "../CourseListCard/CourseListCard.react";
 
 describe("CourseListCard", () => {
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+
+  const args = {
+    target: CourseListCard,
+    required: {
+      onClick: () => console.log("Button Testing"),
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("positions", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+
+  hasValid("toggles", args);
+
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -18,12 +43,8 @@ describe("CourseListCard", () => {
     component = shallow(
       <CourseListCard
         imageLibrary={[]}
-        asFloated="none"
         withColor={null}
-        withAnimation={null}
-        isHidden={false}
-        isDisabled={false}
-        onClick={() => {}}
+        onClick={() => { }}
       />
     );
   });
@@ -39,41 +60,6 @@ describe("CourseListCard", () => {
         duration: 0.5,
         delay: 0,
       },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is left", () => {
-    component.setProps({
-      asFloated: "left",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is right", () => {
-    component.setProps({
-      asFloated: "right",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is inline", () => {
-    component.setProps({
-      asFloated: "inline",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is none", () => {
-    component.setProps({
-      asFloated: "none",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
     });
     expect(component.exists()).toBe(true);
   });

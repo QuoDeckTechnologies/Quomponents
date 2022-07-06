@@ -3,16 +3,43 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import Brancher from "../../Templates/Brancher/Brancher.react";
 
 describe("Brancher", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: Brancher,
+    required: {
+      content: "Testing Button",
+      onClick: () => console.log("Button Testing"),
+    },
+    translations: {
+      tgt: "button",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          loading: "बस एक मिनट...",
+          button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("animations", args);
+  hasValid("toggles", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component;
-
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(

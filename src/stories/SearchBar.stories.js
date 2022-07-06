@@ -15,7 +15,11 @@ export default {
     argTypes: {
         asFloated: {
             control: "select",
+<<<<<<< HEAD
             options: ["left", "right", "none", "inline"],
+=======
+            options: ["left", "right", "inline","none"],
+>>>>>>> d9f5af88dffeb18825bb385f6778508708ddb016
             table: {
                 category: "as-Flags",
             },

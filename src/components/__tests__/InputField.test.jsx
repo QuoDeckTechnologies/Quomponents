@@ -4,26 +4,59 @@
 import React from 'react';
 import { shallow, mount, enzyme } from 'enzyme';
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import InputField from '../InputField/InputField.react'
 
 describe("InputField", () => {
+    // -------------------------------------
+    // Run common tests
+    // -------------------------------------
 
-    const dictionary = JSON.stringify({
-        hi: {
-            inputField: {
-                label: "इनपुट नाम",
-                placeholder: "विकल्प",
-            }
+    const args = {
+        target: InputField,
+        required: {
+            value: "Please input your text here",
+            name: "",
+            onSubmit: () => { }
+
         },
-        en: {
-            inputField: {
-                label: "Input Name",
-                placeholder: "Options",
-            }
-        }
-    });
+        translations: {
+            tgt: "inputField",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+                hi: {
+                    inputField: {
+                        label: "इनपुट नाम",
+                        placeholder: "विकल्प",
+                    }
+                },
+                en: {
+                    inputField: {
+                        label: "Input Name",
+                        placeholder: "Options",
+                    }
+                }
+            })
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("sizes", args);
+    hasValid("positions", args);
+    hasValid("alignment", args);
+
+    hasValid("colors", args);
+    hasValid("animations", args);
+    hasValid("translations", args);
+
+    hasValid("toggles", args);
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -53,9 +86,6 @@ describe("InputField", () => {
                 onSelectAccentColor: "",
                 onSelectBackgroundColor: "",
             }}
-            withAnimation={null}
-            isDisabled={false}
-            isHidden={false}
             onFocus={onFocus}
             onChange={onChange}
             onBlur={onBlur}
@@ -113,25 +143,6 @@ describe("InputField", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("it should render correctly when passed asFloated prop as left", () => {
-        component.setProps({ asFloated: "left" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asFloated prop as right", () => {
-        component.setProps({ asFloated: "right" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asFloated prop as inline", () => {
-        component.setProps({ asFloated: "inline" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asFloated prop as none", () => {
-        component.setProps({ asFloated: "none" })
-        expect(component.exists()).toBe(true);
-    });
 
     it("it should render correctly when passed withColor props", () => {
         let colors = {
@@ -143,47 +154,6 @@ describe("InputField", () => {
             onSelectBackgroundColor: "#ffab000d",
         }
         component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed withAnimation props", () => {
-        let animation = {
-            animation: "zoom",
-            duration: 0.5,
-            delay: 0,
-        }
-        component.setProps({ withAnimation: animation })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly if translation object is not defined", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "mr",
-                tgt: "inputField",
-                dictionary: dictionary,
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true })
         expect(component.exists()).toBe(true);
     });
 

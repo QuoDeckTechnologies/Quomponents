@@ -4,13 +4,44 @@ import React from "react";
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import VoiceoverSection from "../RibbonMenu/toolsMenu/sections/VoiceoverSection.react";
 
 describe("VoiceoverSection", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: VoiceoverSection,
+    required: {
+      onClick: () => {},
+    },
+    translations: {
+      tgt: "voiceoverSection",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          voiceoverSection: {
+            voiceover: "पार्श्व स्वर",
+            upload: "अपलोड",
+            copySlidesToScript: "स्लाइड को स्क्रिप्ट में कॉपी करें",
+            downloadScript: "स्क्रिप्ट डाउनलोड करें",
+          },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("translations", args);
+  hasValid("toggles", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component;
   const dictionary = JSON.stringify({
@@ -43,25 +74,6 @@ describe("VoiceoverSection", () => {
     );
   });
 
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated prop as left", () => {
-    component.setProps({ asFloated: "left" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated prop as right", () => {
-    component.setProps({ asFloated: "right" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated prop as inline", () => {
-    component.setProps({ asFloated: "inline" });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render translation of component in hindi", () => {
     component.setProps({
       withTranslation: {
@@ -80,37 +92,6 @@ describe("VoiceoverSection", () => {
     expect(component.find(".qui-ribbon-menu-tool-label").at(1).text()).toBe(
       "स्क्रिप्ट डाउनलोड करें"
     );
-  });
-
-  it("should render correctly if translation is not defined", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "mr",
-        tgt: "voiceoverSection",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
-    expect(component.exists()).toBe(true);
   });
 
   it("should enable navigation by clicking on Icon", () => {
