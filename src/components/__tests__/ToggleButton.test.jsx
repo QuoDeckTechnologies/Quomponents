@@ -19,7 +19,7 @@ describe("ToggleButton", () => {
   const args = {
     target: ToggleButton,
     required: {
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "toggleButton",
@@ -29,7 +29,7 @@ describe("ToggleButton", () => {
           toggleButton: { label: "सक्रिय" },
         },
       }),
-  },
+    },
   };
 
   hasValid("defaults", args);
@@ -47,6 +47,13 @@ describe("ToggleButton", () => {
   // -------------------------------------
   let component,
     onChange = jest.fn();
+  const dictionary = JSON.stringify({
+    hi: {
+      toggleButton: {
+        label: "सक्रिय",
+      },
+    },
+  });
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -63,31 +70,26 @@ describe("ToggleButton", () => {
       />
     );
   });
-  // it("should render correctly without throwing error", () => {
-  //   expect(component.exists()).toBe(true);
-  // });
-  // it("should render correctly if translation object is not returned",
-  //   () => {
-  //     component.setProps({
-  //       withTranslation: {
-  //         lang: "hi",
-  //         tgt: "toggleButton",
-  //         dictionary: dictionary,
-  //       }
-  //     });
-  //     expect(component.exists()).toBe(true);
-  //   });
-  it("should render correctly  with onChange function",
-    () => {
-      let toggleSwitch = component.find("div").at(0).children().at(0)
-      toggleSwitch.simulate('change', { target: { checked: true } })
+  it("should render correctly if translation object is not returned", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "toggleButton",
+        dictionary: dictionary,
+      },
     });
+    expect(component.exists()).toBe(true);
+  });
+  it("should render correctly  with onChange function", () => {
+    let toggleSwitch = component.find("div").at(0).children().at(0);
+    toggleSwitch.simulate("change", { target: { checked: true } });
+  });
   it("should render correctly when label is passed", () => {
-    component.setProps({ label: "Not Active" })
+    component.setProps({ label: "Not Active" });
     expect(component.exists()).toBe(true);
-  })
+  });
   it("should render correctly when label is null", () => {
-    component.setProps({ label: "" })
+    component.setProps({ label: "" });
     expect(component.exists()).toBe(true);
-  })
+  });
 });
