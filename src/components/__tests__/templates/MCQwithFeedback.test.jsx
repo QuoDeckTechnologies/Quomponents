@@ -38,7 +38,8 @@ describe("MCQ with Feedback", () => {
   hasValid("variants", args);
   hasValid("positions", args);
   hasValid("animations", args);
-  hasValid("toggles", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

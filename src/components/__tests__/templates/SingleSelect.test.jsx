@@ -2,6 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
+import { render } from "@testing-library/react";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -35,6 +36,8 @@ describe("SingleSelect", () => {
   hasValid("defaults", args);
   hasValid("positions", args);
   hasValid("animations", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

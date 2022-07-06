@@ -41,7 +41,7 @@ describe("LinkWithSlide", () => {
   hasValid("positions", args);
   hasValid("animations", args);
   hasValid("translations", args);
-  hasValid("toggles", args);
+  hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

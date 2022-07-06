@@ -57,7 +57,8 @@ describe("ClozeQuestion", () => {
   hasValid("variants", args);
   hasValid("animations", args);
   hasValid("translations", args);
-  hasValid("toggles", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
@@ -286,7 +287,21 @@ describe("ClozeQuestion", () => {
   });
 
   it("should simulate the submit button", () => {
-    const button = shallow(<ClozeQuestion trackInteraction={jest.fn()} />);
+    const button = shallow(
+      <ClozeQuestion
+        data={{
+          title: "This is Title",
+          subtitle: "This is Subtitle",
+          backgroundImage: {
+            id: "background-image",
+            extention: "",
+          },
+          question: "Question",
+          purpose: "quiz",
+        }}
+        trackInteraction={jest.fn()}
+      />
+    );
     button.find("Button").simulate("click");
     expect(component.exists()).toBe(true);
   });

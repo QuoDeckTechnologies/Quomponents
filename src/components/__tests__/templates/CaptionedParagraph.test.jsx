@@ -38,7 +38,7 @@ describe("CaptionedParagraph", () => {
   hasValid("variants", args);
   hasValid("positions", args);
   hasValid("animations", args);
-  hasValid("toggles", args);
+  hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

@@ -42,7 +42,7 @@ describe("CaptionedBulletList", () => {
 
   hasValid("defaults", args);
   hasValid("variants", args);
-  hasValid("toggles", args);
+  hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

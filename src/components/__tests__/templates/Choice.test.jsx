@@ -48,6 +48,8 @@ describe("Choice", () => {
 
   hasValid("defaults", args);
   hasValid("animations", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

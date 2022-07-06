@@ -35,7 +35,7 @@ describe("Title", () => {
   hasValid("alignment", args);
   hasValid("colors", args);
   hasValid("animations", args);
-  hasValid("toggles", args);
+  hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

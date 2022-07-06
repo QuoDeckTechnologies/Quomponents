@@ -42,6 +42,8 @@ describe("PictureFuddleWithFeedback", () => {
   hasValid("defaults", args);
   hasValid("animations", args);
   hasValid("translations", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

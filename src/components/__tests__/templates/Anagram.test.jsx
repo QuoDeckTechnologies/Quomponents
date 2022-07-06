@@ -54,6 +54,8 @@ describe("Anagram", () => {
 
   hasValid("defaults", args);
   hasValid("animations", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
@@ -208,6 +210,7 @@ describe("Anagram", () => {
   it("should render correctly with withColor prop when hovered on Button", () => {
     const component = renderer.create(
       <Button
+        content="content"
         withColor={{
           buttonTextColor: "ff0023",
           buttonBackgroundColor: "ff0ff0",
