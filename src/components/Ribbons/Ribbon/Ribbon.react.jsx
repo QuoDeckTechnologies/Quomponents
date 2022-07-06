@@ -24,7 +24,7 @@ Ribbon.propTypes = {
   /**
     Use to float the component in parent container
     */
-  asFloated: PropTypes.oneOf(["left", "right"]),
+  asFloated: PropTypes.oneOf(["left", "right", "none"]),
 
   /**
     Use to override component colors and behavior

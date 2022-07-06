@@ -40,7 +40,7 @@ ToolbarDark.propTypes = {
   /**
     Use to define standard component type
     */
-  asVariant: PropTypes.oneOf(["primary", "secondary", "success", "warning"]),
+  asVariant: PropTypes.oneOf(["primary", "secondary", "success", "warning", "error"]),
   /**
     Use to define component text size in increasing order
     */

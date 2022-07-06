@@ -3,19 +3,41 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import Slider from "../Slider/Slider.react";
 
 describe("Slider", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
+
+  const args = {
+    target: Slider,
+    required: {
+      onClick: () => { },
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("animations", args);
+
+  hasValid("toggles", args);
+
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
+
   let component;
 
   beforeEach(() => {
     jest.resetAllMocks();
-    component = shallow(<Slider initialValue={null} onClick={() => {}} />);
+    component = shallow(<Slider initialValue={null} onClick={() => { }} />);
   });
 
   it("should render correctly without throwing error", () => {
