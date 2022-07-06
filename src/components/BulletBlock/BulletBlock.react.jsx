@@ -140,10 +140,10 @@ export default function BulletBlock(props) {
             className={`qui ${quommonClasses.parentClasses}`}
             style={colors.backgroundColors}
         >
-            <div>
+            <div className={` ${quommonClasses.childClasses}`}>
                 {_.map(props.content, (item, index) => {
                     return (
-                        <div className={`li ${quommonClasses.childClasses}`}
+                        <div className="li"
                             style={colors.textColors}
                             key={index}>
                             <ul>
