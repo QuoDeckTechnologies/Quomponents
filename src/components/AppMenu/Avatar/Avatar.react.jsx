@@ -113,14 +113,14 @@ export default function Avatar(props) {
       onClick={props.onClick}
     >
       <div
-        className={`qui-container qui-icon-container size-${props.asSize} variant-${props.asVariant}`}
+        className={`qui-container qui-icon-container qui-btn ${quommonClasses.childClasses}`}
       >
         {isImageIcon ? (
           <img className={`qui-image `} src={loadingIcon} alt="avatar" />
         ) : (
           <div
             style={colors}
-            className={`qui-icon qui-btn ${quommonClasses.childClasses}`}
+            className={`qui-icon`}
           >
             <i className={loadingIcon}></i>
           </div>
