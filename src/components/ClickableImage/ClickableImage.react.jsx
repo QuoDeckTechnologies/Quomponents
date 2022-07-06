@@ -99,7 +99,7 @@ export default function ClickableImage(props) {
   //-------------------------------------------------------------------
   // 2. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   const [isActive, setisActive] = useState(props.isActive);
   useEffect(() => {
     setisActive(props.isActive);

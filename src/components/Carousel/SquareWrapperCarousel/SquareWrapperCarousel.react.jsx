@@ -71,7 +71,7 @@ export default function SquareWrapperCarousel(props) {
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   var settings = {
     dots: true,
@@ -89,7 +89,7 @@ export default function SquareWrapperCarousel(props) {
   };
 
   // ========================= Render Function =================================
-  
+
   return (
     <motion.div
       initial={animate.from}

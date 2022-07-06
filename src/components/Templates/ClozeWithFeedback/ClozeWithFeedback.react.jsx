@@ -141,7 +141,7 @@ export default function ClozeWithFeedback(props) {
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     const [answer, setAnswer] = useState();
     function handleSubmit() {
         props.trackInteraction(answer)

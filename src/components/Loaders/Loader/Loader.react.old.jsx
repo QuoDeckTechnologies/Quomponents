@@ -175,7 +175,7 @@ export default function Loader(props) {
     //-------------------------------------------------------------------
     // Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     //-------------------------------------------------------------------
     //  Set the component standard colors 
     //-------------------------------------------------------------------

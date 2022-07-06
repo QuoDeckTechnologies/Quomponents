@@ -50,7 +50,10 @@ describe("Button", () => {
     hasValid("icons", args);
     hasValid("translations", args);
 
-    hasValid("toggles", args);
+    hasValid("fluid", args);
+    hasValid("hidden", args);
+    hasValid("disabled", args);
+    hasValid("loading", args);
 
     // -------------------------------------
     // Run component specific tests

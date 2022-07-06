@@ -142,6 +142,14 @@ Button.propTypes = {
     Button component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
+
+    /**
+    Togglers for common props
+    */
+    primary: PropTypes.bool,
+    secondary: PropTypes.bool,
+    zoom: PropTypes.bool,
+    slideDown: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -286,14 +294,14 @@ export default function Button(props) {
     //-------------------------------------------------------------------
     // 7. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     // ========================= Render Function =================================
 
     return (
         <motion.div
-            initial={animate.from}
-            animate={animate.to}
+            initial={animate?.from}
+            animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}

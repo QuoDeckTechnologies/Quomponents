@@ -141,7 +141,7 @@ export default function Anagram(props) {
   //-------------------------------------------------------------------
   // Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   const [state, setState] = useState();
   function handleSubmit() {
     props.onClick(state)
