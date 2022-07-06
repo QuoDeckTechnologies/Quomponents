@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from 'enzyme';
+import { shallow, mount, render } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -10,10 +10,9 @@ import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import CategoryCard from "../CategoryCard/CategoryCard.react"
+import CategoryCard from "../CategoryCard/CategoryCard.react";
 
 describe("CategoryCard", () => {
-
     // -------------------------------------
     // Run common tests
     // -------------------------------------
@@ -27,7 +26,7 @@ describe("CategoryCard", () => {
                 image: { id: "categorycard-image", extention: "" },
                 viewedPercentage: 80,
             },
-            onClick: () => { },
+            onClick: () => {},
         },
     };
 
@@ -39,7 +38,10 @@ describe("CategoryCard", () => {
     hasValid("colors", args);
     hasValid("animations", args);
 
-    hasValid("toggles", args);
+    hasValid("disabled", args);
+    hasValid("hidden", args);
+    hasValid("loading", args);
+    hasValid("fluid", args);
 
     // -------------------------------------
     // Setup definitions for the test suite
@@ -74,14 +76,14 @@ describe("CategoryCard", () => {
             name: "Regulatory",
             image: { id: "categorycard-image", extention: "" },
             viewedPercentage: 80,
-        }
-        component.setProps({ content: contentData })
+        };
+        component.setProps({ content: contentData });
         expect(component.exists()).toBe(true);
     });
 
     it("should render correctly when passed content prop is null", () => {
-        let contentData = {}
-        component.setProps({ content: contentData })
+        let contentData = {};
+        component.setProps({ content: contentData });
         expect(component.exists()).toBe(true);
     });
     it("should render correctly when passed withColor props", () => {
@@ -89,9 +91,9 @@ describe("CategoryCard", () => {
             textColor: "#121212",
             backgroundColor: "#34e5eb",
             accentColor: "#065254",
-            pathColor: "#121212"
-        }
-        component.setProps({ withColor: colors })
+            pathColor: "#121212",
+        };
+        component.setProps({ withColor: colors });
         expect(component.exists()).toBe(true);
     });
 });

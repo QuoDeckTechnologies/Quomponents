@@ -48,7 +48,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "rm -rf dist && npm run clean && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__",
-        "test": "react-scripts test --setupFilesAfterEnv='<rootDir>/config/jest/setupEnzyme.js'",
+        "test": "react-scripts test --setupFilesAfterEnv='<rootDir>/config/jest/setupEnzyme.js' --testPathIgnorePatterns=common",
         "eject": "react-scripts eject",
         "storybook": "start-storybook -p 6006 -s public",
         "build-storybook": "build-storybook -s public",

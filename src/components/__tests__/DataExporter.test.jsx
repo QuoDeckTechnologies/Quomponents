@@ -77,7 +77,10 @@ describe("DataExporter", () => {
   hasValid("animations", args);
   hasValid("translations", args);
 
-  hasValid("toggles", args);
+  hasValid("disabled", args);
+hasValid("hidden", args);
+hasValid("loading", args);
+hasValid("fluid", args);
 
   // -------------------------------------
   // Setup definitions for the test suite
