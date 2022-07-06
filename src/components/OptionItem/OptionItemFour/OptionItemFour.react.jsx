@@ -126,7 +126,7 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   // 5. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 6. Function to return checked value of the component
   //-------------------------------------------------------------------

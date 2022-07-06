@@ -125,7 +125,7 @@ export default function RankingOptions(props) {
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     //-------------------------------------------------------------------
     // 3. Setting the colors of the imported components

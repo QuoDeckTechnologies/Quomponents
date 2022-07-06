@@ -140,7 +140,7 @@ export default function OptionItemTen(props) {
   //-------------------------------------------------------------------
   // 3. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 4. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------

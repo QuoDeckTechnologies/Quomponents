@@ -140,7 +140,7 @@ export default function ContentTableRow(props) {
   //-------------------------------------------------------------------
   // 5. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
 

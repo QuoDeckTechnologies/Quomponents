@@ -88,7 +88,7 @@ export default function TodayMenuBtn(props) {
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     let colors = {
         backgroundColor: props.isDisabled ? "#454545" : props.withColor?.backgroundColor ? props.withColor?.backgroundColor : "#ED6E6E",

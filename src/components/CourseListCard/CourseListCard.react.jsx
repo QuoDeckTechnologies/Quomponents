@@ -115,7 +115,7 @@ export default function CourseListCard(props) {
   //-------------------------------------------------------------------
   // 3. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 4. Function to set image of the card
   //-------------------------------------------------------------------

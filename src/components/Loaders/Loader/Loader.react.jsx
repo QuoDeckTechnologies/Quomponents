@@ -221,7 +221,7 @@ export default function Loader(props) {
     //-------------------------------------------------------------------
     // 6. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     const animateIcon = getAnimation({
         animation: "zoom",
         duration: 0.5,
