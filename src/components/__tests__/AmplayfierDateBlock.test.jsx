@@ -59,8 +59,9 @@ describe("AmplayfierDateBlock", () => {
   hasValid("animations", args);
   hasValid("translations", args);
 
-  hasValid("toggles", args);
-
+  hasValid("fluid", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------

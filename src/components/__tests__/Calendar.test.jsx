@@ -30,8 +30,8 @@ describe("Calendar", () => {
     hasValid("positions", args);
     hasValid("animations", args);
 
-    hasValid("toggles", args);
-
+    hasValid("hidden", args);
+    hasValid("disabled", args);
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------

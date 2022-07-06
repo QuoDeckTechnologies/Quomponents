@@ -49,8 +49,8 @@ describe("CheckBox", () => {
   hasValid("animations", args);
   hasValid("translations", args);
 
-  hasValid("toggles", args);
-
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------

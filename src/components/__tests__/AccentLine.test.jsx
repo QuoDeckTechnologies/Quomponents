@@ -29,8 +29,8 @@ describe("AccentLine", () => {
     hasValid("colors", args);
     hasValid("animations", args);
 
-    hasValid("toggles", args);
-
+    hasValid("fluid", args);
+    hasValid("hidden", args);
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------

@@ -22,7 +22,7 @@ describe("ButtonBank", () => {
       content: [
         "Primary Button",
       ],
-      onClick: () => {},
+      onClick: () => { },
     },
   };
 
@@ -34,8 +34,8 @@ describe("ButtonBank", () => {
   hasValid("alignment", args);
   hasValid("colors", args);
   hasValid("animations", args);
-  hasValid("toggles", args);
-
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   let component;
 
   beforeEach(() => {
@@ -57,7 +57,7 @@ describe("ButtonBank", () => {
         withAnimation={null}
         isHidden={null}
         isDisabled={false}
-        onClick={() => {}}
+        onClick={() => { }}
       />
     );
   });

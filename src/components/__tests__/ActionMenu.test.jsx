@@ -76,6 +76,8 @@ describe("ActionMenu", () => {
   hasValid("animations", args);
   hasValid("translations", args);
 
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------

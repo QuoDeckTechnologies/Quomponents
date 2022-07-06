@@ -51,8 +51,8 @@ describe('CertificateCard', () => {
     hasValid("animations", args);
     hasValid("translations", args);
 
-    hasValid("toggles", args);
-
+    hasValid("hidden", args);
+    hasValid("disabled", args);
     let component;
     beforeEach(() => {
         jest.resetAllMocks();

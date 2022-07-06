@@ -42,7 +42,7 @@ describe("HelpText", () => {
   hasValid("animations", args);
   hasValid("translations", args);
 
-  hasValid("toggles", args);
+  hasValid("hidden", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
