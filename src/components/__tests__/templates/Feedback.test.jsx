@@ -91,35 +91,6 @@ describe("Feedback", () => {
     );
   });
 
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as primary", () => {
-    component.setProps({ asVariant: "primary" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as secondary", () => {
-    component.setProps({ asVariant: "secondary" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as warning", () => {
-    component.setProps({ asVariant: "warning" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as error", () => {
-    component.setProps({ asVariant: "error" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as success", () => {
-    component.setProps({ asVariant: "success" });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly when passed withColor props", () => {
     let colors = {
       backgroundColor: "#ffffff",
@@ -131,37 +102,7 @@ describe("Feedback", () => {
     component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
   });
-
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    };
-    component.setProps({ withAnimation: animation });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when translation is used", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "feedback",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
+  
   it("should render correctly when data pass as empty object", () => {
     let data = {};
     component.setProps({ data: data });

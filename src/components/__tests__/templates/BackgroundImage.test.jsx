@@ -48,10 +48,6 @@ describe("BackgroundImage", () => {
     );
   });
 
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly without throwing error when background is not provided", () => {
     component.setProps({
       data: {
@@ -95,31 +91,6 @@ describe("BackgroundImage", () => {
         textBlockTextColor: "#454545",
         textBlockBackgroundColor: "#FFFF",
       },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
     });
     expect(component.exists()).toBe(true);
   });

@@ -125,25 +125,7 @@ describe("SingleSelect", () => {
     component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.find(".is-hidden").length).toBe(0);
-  });
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.find(".is-hidden").length).toBe(1);
-  });
-
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.find(".is-disabled").length).toBe(0);
-  });
-
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
-    expect(component.find(".is-disabled").length).toBe(1);
-  });
-
+ 
   it("should render title and subtitle when we doesn't pass image", () => {
     component.setProps({
       data: {

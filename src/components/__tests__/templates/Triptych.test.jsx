@@ -351,15 +351,6 @@ describe("Triptych", () => {
     component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    };
-    component.setProps({ withAnimation: animation });
-    expect(component.exists()).toBe(true);
-  });
   it("should render correctly when passed data as null", () => {
     component.setProps({ data: {} });
     expect(component.exists()).toBe(true);
