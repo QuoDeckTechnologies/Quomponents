@@ -78,12 +78,12 @@ export default function OverlayBackground(props) {
 						<div className="qui-ribbon-menu-slide-background-section-child">
 							<div className="qui-ribbon-menu-set-remove"></div>
 							<div className="qui-ribbon-menu-label-set-remove-container">
-								<div className="qui-ribbon-menu-label-set" onClick={handleModalOpen}>Set</div>
-								<div className="qui-ribbon-menu-label-remove" onClick={removeBackground}> Remove</div>
+								<div className="qt-utn qui-ribbon-menu-label-set" onClick={handleModalOpen}>Set</div>
+								<div className="qt-utn qui-ribbon-menu-label-remove" onClick={removeBackground}> Remove</div>
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">Overlay Background</div>
+					<div className="qt-sm qui-ribbon-menu-label-file">Overlay Background</div>
 				</div>
 				{isImageModalOpen &&
 					<div>

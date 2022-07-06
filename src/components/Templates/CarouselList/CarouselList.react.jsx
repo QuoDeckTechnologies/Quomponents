@@ -196,10 +196,12 @@ export default function CarouselList(props) {
         }}
       >
         <div className="qui-carousel-list-presenter-title" >
-          <TextBlock {...props}
-            content={data?.title}
-            asFloated="left"
-            withColor={textBlockColors} />
+          <h4>
+            <TextBlock {...props}
+              content={data?.title}
+              asFloated="left"
+              withColor={textBlockColors} />
+          </h4>
         </div>
         <div className="qui-carousel-list-presenter-sub-title">
           <TextBlock {...props}

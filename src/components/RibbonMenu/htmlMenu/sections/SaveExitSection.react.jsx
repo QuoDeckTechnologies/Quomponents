@@ -55,7 +55,7 @@ export default function SaveExitSection(props) {
 
 	// ========================= Render Function =================================
 	return (
-		<div className={`qui ${quommonClasses.parentClasses}`}>
+		<div className={`qui qt-shadow ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className="qui-ribbon-exit-save-section">
 					<IconLink
@@ -69,7 +69,7 @@ export default function SaveExitSection(props) {
 						withIcon={{ icon: "fa fa-sign-out-alt" }}
 					/>
 					<div className="qui-ribbon-menu-label" onClick={handleSave}>
-						Save & Exit
+						<span className="qt-lbl">Save & Exit</span>
 					</div>
 				</div>
 			</div>

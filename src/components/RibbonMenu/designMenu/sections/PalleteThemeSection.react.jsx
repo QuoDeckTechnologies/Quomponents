@@ -145,7 +145,7 @@ export default function PalleteThemeSection(props) {
 								);
 							})}
 						</div>
-						<div className="qui-ribbon-menu-label-file">Settings</div>
+						<div className="qt-sm qui-ribbon-menu-label-file">Color Palette</div>
 					</div>
 					<div className={`qui-ribbon-menu-custom-color-container`} ref={box}>
 						<div className="qui-ribbon-design-menu-color-picker-container">
@@ -158,7 +158,7 @@ export default function PalleteThemeSection(props) {
 										style={{ backgroundColor: selectedPageColor }}
 										onClick={() => setPageShowColorPicker(true)}
 									/>
-									<div className="qui-ribbon-design-menu-custom-color-title">
+									<div className="qt-mn qui-ribbon-design-menu-custom-color-title">
 										Page Color
 									</div>
 								</div>
@@ -183,7 +183,7 @@ export default function PalleteThemeSection(props) {
 										style={{ backgroundColor: selectedPrimaryColor }}
 										onClick={() => setPrimaryColorPicker(true)}
 									/>
-									<div className="qui-ribbon-design-menu-custom-color-title">
+									<div className="qt-mn qui-ribbon-design-menu-custom-color-title">
 										Primary Color
 									</div>
 								</div>
@@ -208,7 +208,7 @@ export default function PalleteThemeSection(props) {
 										style={{ backgroundColor: selectedAccentColor }}
 										onClick={() => setAccentColorPicker(true)}
 									/>
-									<div className="qui-ribbon-design-menu-custom-color-title">
+									<div className="qt-mn qui-ribbon-design-menu-custom-color-title">
 										Accent Color
 									</div>
 								</div>
@@ -233,7 +233,7 @@ export default function PalleteThemeSection(props) {
 										style={{ backgroundColor: selectedSecondaryColor }}
 										onClick={() => setSecondaryColorPicker(true)}
 									/>
-									<div className="qui-ribbon-design-menu-custom-color-title">
+									<div className="qt-mn qui-ribbon-design-menu-custom-color-title">
 										Secondary Color
 									</div>
 								</div>

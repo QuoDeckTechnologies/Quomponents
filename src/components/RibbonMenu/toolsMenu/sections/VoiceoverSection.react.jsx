@@ -83,7 +83,7 @@ export default function VoiceoverSection(props) {
 								}}
 								withIcon={{ icon: "fas fa-file-upload" }}
 							/>
-							<div className="qui-ribbon-menu-label" onClick={handleVoModalOpen}>
+							<div className="qt-utn qui-ribbon-menu-label" onClick={handleVoModalOpen}>
 								Upload
 							</div>
 						</div>
@@ -101,7 +101,7 @@ export default function VoiceoverSection(props) {
 									withIcon={{ icon: "far fa-copy" }}
 								/>
 								<div
-									className="qui-ribbon-menu-tool-label"
+									className="qt-utn qui-ribbon-menu-tool-label"
 									onClick={copySlideToVoiceover}
 								>
 									Copy Slides to Script
@@ -119,7 +119,7 @@ export default function VoiceoverSection(props) {
 									withIcon={{ icon: "fas fa-download" }}
 								/>
 								<div
-									className="qui-ribbon-menu-tool-label"
+									className="qt-utn qui-ribbon-menu-tool-label"
 									onClick={handleVoiceoverSave}
 								>
 									Download Script
@@ -127,7 +127,7 @@ export default function VoiceoverSection(props) {
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">
+					<div className="qt-sm qui-ribbon-menu-label-file">
 						Voiceovers
 					</div>
 				</div>

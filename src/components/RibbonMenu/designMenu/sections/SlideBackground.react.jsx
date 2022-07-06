@@ -81,12 +81,12 @@ export default function SlideBackground(props) {
 								)}
 							</div>
 							<div className="qui-ribbon-menu-label-set-remove-container">
-								<div className="qui-ribbon-menu-label-set" onClick={handleModalOpen}>Set</div>
-								<div className="qui-ribbon-menu-label-remove" onClick={removeBackground}> Remove</div>
+								<div className="qt-utn qui-ribbon-menu-label-set" onClick={handleModalOpen}>Set</div>
+								<div className="qt-utn qui-ribbon-menu-label-remove" onClick={removeBackground}> Remove</div>
 							</div>
 						</div>
 					</div>
-					<div className="qui-ribbon-menu-label-file">Slide Background</div>
+					<div className="qt-sm qui-ribbon-menu-label-file">Slide Background</div>
 				</div>
 			</div>
 			{isImageModalOpen &&
