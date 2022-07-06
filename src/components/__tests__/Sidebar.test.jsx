@@ -84,8 +84,8 @@ describe("Sidebar", () => {
     hasValid("animations", args);
     hasValid("translations", args);
 
-    hasValid("toggles", args);
-
+    hasValid("disabled", args);
+    hasValid("hidden", args);
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
@@ -143,15 +143,15 @@ describe("Sidebar", () => {
         component.setProps({ licenseType: "Trainer" })
         expect(component.exists()).toBe(true);
     })
-    // it("should render correctly when passed asEmphasis prop as default ", () => {
-    //     let colors = {
-    //         backgroundColor: "#fff",
-    //         textColor: "#00FFFF",
-    //     }
-    //     component.setProps({ asEmphasis: "default" })
-    //     component.setProps({ withColor: colors })
-    //     expect(component.exists()).toBe(true);
-    // })
+    it("should render correctly when passed asEmphasis prop as default ", () => {
+        let colors = {
+            backgroundColor: "#fff",
+            textColor: "#00FFFF",
+        }
+        component.setProps({ asEmphasis: "default" })
+        component.setProps({ withColor: colors })
+        expect(component.exists()).toBe(true);
+    })
     it("should render correctly when passed asEmphasis prop as editMode", () => {
         component.setProps({
             asEmphasis: "editMode"

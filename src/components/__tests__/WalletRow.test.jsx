@@ -22,7 +22,7 @@ describe("WalletRow", () => {
         date: "2016-01-04 10:34:23",
         coins: 1000,
       },
-      onClick: () => {},
+      onClick: () => { },
     },
     translations: {
       tgt: "walletRow",
@@ -54,7 +54,7 @@ describe("WalletRow", () => {
   hasValid("defaults", args);
   hasValid("animations", args);
   hasValid("translations", args);
-  hasValid("toggles", args);
+  hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

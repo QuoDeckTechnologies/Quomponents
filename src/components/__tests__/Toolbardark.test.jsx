@@ -30,8 +30,9 @@ describe("ToolbarDark", () => {
     hasValid("colors", args);
     hasValid("animations", args);
 
-    hasValid("toggles", args);
-
+    hasValid("disabled", args);
+    hasValid("hidden", args);
+    hasValid("fluid", args);
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------

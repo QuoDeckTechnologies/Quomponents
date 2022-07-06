@@ -28,8 +28,8 @@ describe("Segment", () => {
 
   hasValid("animations", args);
 
-  hasValid("toggles", args);
-
+  hasValid("disabled", args);
+  hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

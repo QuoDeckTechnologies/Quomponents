@@ -23,7 +23,7 @@ describe("ViewSection", () => {
       actions: {
         setUserOptions: jest.fn(),
       },
-      onClick: () => {},
+      onClick: () => { },
     },
     translations: {
       tgt: "viewSection",
@@ -44,7 +44,8 @@ describe("ViewSection", () => {
 
   hasValid("defaults", args);
   hasValid("translations", args);
-  hasValid("toggles", args);
+  hasValid("disabled", args);
+  hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

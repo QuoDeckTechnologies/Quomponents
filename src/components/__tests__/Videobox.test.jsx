@@ -31,6 +31,8 @@ describe("Videobox", () => {
 
   hasValid("defaults", args);
   hasValid("animations", args);
+  hasValid("disabled", args);
+  hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

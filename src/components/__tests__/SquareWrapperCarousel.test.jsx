@@ -44,9 +44,6 @@ describe('SquareWrapperCarousel', () => {
 
     hasValid("animations", args);
     hasValid("translations", args);
-
-    hasValid("toggles", args);
-
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------

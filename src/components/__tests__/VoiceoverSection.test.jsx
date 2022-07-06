@@ -19,7 +19,7 @@ describe("VoiceoverSection", () => {
   const args = {
     target: VoiceoverSection,
     required: {
-      onClick: () => {},
+      onClick: () => { },
     },
     translations: {
       tgt: "voiceoverSection",
@@ -39,7 +39,8 @@ describe("VoiceoverSection", () => {
 
   hasValid("defaults", args);
   hasValid("translations", args);
-  hasValid("toggles", args);
+  hasValid("disabled", args);
+  hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

@@ -30,8 +30,7 @@ describe("StatisticsCard", () => {
     hasValid("colors", args);
     hasValid("animations", args);
 
-    hasValid("toggles", args);
-
+    hasValid("hidden", args);
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
@@ -52,7 +51,6 @@ describe("StatisticsCard", () => {
                 withColor={null}
                 withAnimation={null}
                 isHidden={false}
-                isDisabled={false}
             ></StatisticsCard>
         );
     });

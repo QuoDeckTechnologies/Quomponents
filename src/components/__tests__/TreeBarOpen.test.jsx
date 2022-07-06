@@ -44,7 +44,9 @@ describe("TreeBarOpen", () => {
   hasValid("positions", args);
   hasValid("animations", args);
   hasValid("translations", args);
-  hasValid("toggles", args);
+  hasValid("disabled", args);
+  hasValid("hidden", args);
+  hasValid("fluid", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

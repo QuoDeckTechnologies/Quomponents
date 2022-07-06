@@ -38,7 +38,8 @@ describe("VoiceoverUploadModal", () => {
   hasValid("defaults", args);
   hasValid("animations", args);
   hasValid("translations", args);
-  hasValid("toggles", args);
+  hasValid("disabled", args);
+  hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
@@ -67,8 +68,8 @@ describe("VoiceoverUploadModal", () => {
         withTranslation={null}
         isDisabled={false}
         isHidden={false}
-        onClick={() => {}}
-        onClose={() => {}}
+        onClick={() => { }}
+        onClose={() => { }}
       />
     );
   });
@@ -96,7 +97,7 @@ describe("VoiceoverUploadModal", () => {
   });
 
   it("should render correctly when component mounts", async () => {
-    let wrapper = mount(<VoiceoverUploadModal onClick={() => {}} />);
+    let wrapper = mount(<VoiceoverUploadModal onClick={() => { }} />);
     expect(wrapper.exists()).toBe(true);
   });
 

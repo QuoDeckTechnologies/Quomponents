@@ -40,8 +40,8 @@ describe("ShareWidget", () => {
     hasValid("animations", args);
     hasValid("translations", args);
 
-    hasValid("toggles", args);
-
+    hasValid("disabled", args);
+    hasValid("hidden", args);
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------

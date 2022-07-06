@@ -46,6 +46,8 @@ describe("VCardWithButton", () => {
   hasValid("positions", args);
   hasValid("animations", args);
   hasValid("translations", args);
+  hasValid("disabled", args);
+  hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
