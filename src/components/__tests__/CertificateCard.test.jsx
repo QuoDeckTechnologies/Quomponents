@@ -45,7 +45,6 @@ describe('CertificateCard', () => {
 
     hasValid("defaults", args);
 
-    hasValid("variants", args);
     hasValid("sizes", args);
     hasValid("colors", args);
     hasValid("animations", args);
