@@ -56,11 +56,7 @@ AppMenu.propTypes = {
     textColor: PropTypes.string,
   }),
   /**
-<<<<<<< HEAD
   Use to add text title in the component
-=======
-  Use to add a heading label, a footer caption or a title popover to the component
->>>>>>> da6e92aa207e8304f59e69141d3529cf953eef2e
   */
   withLabel: PropTypes.shape({
     content: PropTypes.string,
