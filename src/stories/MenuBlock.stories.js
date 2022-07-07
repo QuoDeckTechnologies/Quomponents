@@ -54,7 +54,6 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          format: "",
           content: "",
           textColor: "",
         },
@@ -65,8 +64,6 @@ export default {
         category: "with-Params",
         defaultValue: {
           icon: "",
-          size: "",
-          position: "left",
         },
       },
     },
@@ -113,7 +110,7 @@ export default {
   ],
   parameters: {
     componentSubtitle:
-      "Displays a basic data exporter button for general-purpose use.",
+      "Displays a MenuBlock component for general-purpose use.",
     a11y: { disable: true },
   },
 };
@@ -127,13 +124,12 @@ Default.args = {
   asVariant: "primary",
   asSize: "normal",
   asFloated: "inline",
-  withIcon: { icon: "fas fa-ellipsis-v", size: "1em", position: "left" },
+  withIcon: { icon: "fas fa-ellipsis-v" },
   withColor: {
     backgroundColor: "",
     textColor: "",
   },
   withLabel: {
-    format: "label",
     content: "Catalog",
     textColor: "",
   },
@@ -175,16 +171,11 @@ TranslatedMenuBlock.parameters = {
         "Use to change the language that the text appears in. To make this work for the button, add a button:{text,label} value to the dictionary.",
     },
     source: {
-      code: `<MenuBlock withTranslation={{lang: "hi", tgt: "menuBlock", dictionary: ${JSON.stringify(
-        {
-          hi: {
-            button: {
-              text: "बटन",
-              label: "इसे बार-बार न दबाएं...",
-            },
-          },
-        }
-      )}}}}/>`,
+      code: `<MenuBlock {...${JSON.stringify(
+        TranslatedMenuBlock.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -245,7 +236,50 @@ AllSizes.parameters = {
       story: "6 sizes are supported. Use as per purpose noted here.",
     },
     source: {
-      code: `<MenuBlock asVariant="secondary"/>`,
+      code: `
+      const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+          asFloated: "inline",
+        }),
+      };
+      <div>
+        <MenuBlock
+          {...Object.assign({}, baseObj, {
+            asVariant: "primary",
+            asSize: "tiny",
+          })}
+        />
+        <MenuBlock
+          {...Object.assign({}, baseObj, {
+            asVariant: "secondary",
+            asSize: "small",
+          })}
+        />
+        <MenuBlock
+          {...Object.assign({}, baseObj, {
+            asVariant: "success",
+            asSize: "normal",
+          })}
+        />
+        <MenuBlock
+          {...Object.assign({}, baseObj, {
+            asVariant: "warning",
+            asSize: "big",
+          })}
+        />
+        <MenuBlock
+          {...Object.assign({}, baseObj, {
+            asVariant: "error",
+            asSize: "huge",
+          })}
+        />
+        <MenuBlock
+          {...Object.assign({}, baseObj, {
+            asVariant: "primary",
+            asSize: "massive",
+          })}
+        />
+      </div>`,
     },
   },
 };
@@ -305,7 +339,49 @@ AllVariants.parameters = {
       story: "5 variants are supported. Use as per purpose noted here.",
     },
     source: {
-      code: `<MenuBlock asVariant="primary"/>`,
+      code: `
+      const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+          asFloated: "inline",
+        }),
+      };
+      <div>
+        <MenuBlock
+          {...Object.assign({}, baseObj, {
+            asVariant: "primary",
+            asSize: "normal",
+            withIcon: { icon: "fas fa-ellipsis-v" },
+          })}
+        />
+        <MenuBlock
+          {...Object.assign({}, baseObj, {
+            asVariant: "secondary",
+            asSize: "normal",
+            withIcon: { icon: "fas fa-ellipsis-v" },
+          })}
+        />
+        <MenuBlock
+          {...Object.assign({}, baseObj, {
+            asVariant: "success",
+            asSize: "normal",
+            withIcon: { icon: "fas fa-ellipsis-v" },
+          })}
+        />
+        <MenuBlock
+          {...Object.assign({}, baseObj, {
+            asVariant: "warning",
+            asSize: "normal",
+            withIcon: { icon: "fas fa-ellipsis-v" },
+          })}
+        />
+        <MenuBlock
+          {...Object.assign({}, baseObj, {
+            asVariant: "error",
+            asSize: "normal",
+            withIcon: { icon: "fas fa-ellipsis-v" },
+          })}
+        />
+      </div>`,
     },
   },
 };
