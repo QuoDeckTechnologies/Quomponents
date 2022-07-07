@@ -1,5 +1,16 @@
 import React from "react";
 import PortraitCarousel from "../components/Carousel/PortraitCarousel/PortraitCarousel.react";
+const dictionary = JSON.stringify({
+    hi: {
+        bannerCard: { header: "", content: "" },
+        ribbon: {
+            new: "नया",
+            restricted: "प्रतिबंधित",
+            premium: "अधिमूल्य",
+            free: "नि: शुल्क"
+        }
+    },
+});
 export default {
     title: "Design System/Carousel/PortraitCarousel",
     component: PortraitCarousel,
@@ -77,11 +88,57 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+    },
 };
 Default.parameters = {
     docs: {
         source: {
             code: `<PortraitCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// TranslatedPortraitCarousel
+// -------------------------------------------------------------
+export const TranslatedPortraitCarousel = Template.bind({});
+TranslatedPortraitCarousel.args = {
+    content: [{
+        image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+        header: "Balloon Burst",
+        tag: "new",
+        selected: true,
+    },
+    {
+        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+        tag: "premium",
+        selected: true,
+        header: "Cityscape",
+    },
+    {
+        image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+        tag: "restricted",
+        selected: false,
+        header: "GhostBuster",
+    }],
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+    },
+};
+TranslatedPortraitCarousel.parameters = {
+    docs: {
+        source: {
+            code: `<PortraitCarousel {...${JSON.stringify(TranslatedPortraitCarousel.args, null, 2)}}/>`,
         },
     },
 };
@@ -102,6 +159,16 @@ PortraitCarouselWithoutBox.args = {
         image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
         tag: "restricted",
     }],
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+    },
 
 };
 PortraitCarouselWithoutBox.parameters = {
@@ -133,6 +200,16 @@ PortraitCarouselWithoutTag.args = {
         image: "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
         header: "What is Negotiation Room?",
     }],
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+    },
 
 };
 PortraitCarouselWithoutTag.parameters = {
@@ -183,7 +260,7 @@ const MultiplePortraitCarouselsTemplate = (args) => {
                 header: "Balloon Burst",
                 tag: "new",
                 selected: true,
-        
+
             },
             {
                 image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
@@ -196,7 +273,17 @@ const MultiplePortraitCarouselsTemplate = (args) => {
                 tag: "restricted",
                 selected: false,
                 header: "GhostBuster",
-            }], 
+            }],
+            withAnimation: {
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            },
+            withTranslation: {
+                lang: "en",
+                tgt: "bannerCard",
+                dictionary: dictionary,
+            },
         }),
     };
     return (
@@ -208,7 +295,7 @@ const MultiplePortraitCarouselsTemplate = (args) => {
                         header: "Balloon Burst",
                         tag: "new",
                         selected: true,
-                
+
                     },
                     {
                         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
@@ -221,7 +308,7 @@ const MultiplePortraitCarouselsTemplate = (args) => {
                         tag: "restricted",
                         selected: false,
                         header: "GhostBuster",
-                    }], 
+                    }],
 
                 })}
             />
@@ -231,7 +318,7 @@ const MultiplePortraitCarouselsTemplate = (args) => {
                         image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
                         header: "Balloon Burst",
                         selected: true,
-                
+
                     },
                     {
                         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
@@ -242,7 +329,7 @@ const MultiplePortraitCarouselsTemplate = (args) => {
                         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
                         selected: false,
                         header: "GhostBuster",
-                    }], 
+                    }],
 
                 })}
             />
@@ -251,7 +338,7 @@ const MultiplePortraitCarouselsTemplate = (args) => {
                     content: [{
                         image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
                         tag: "new",
-                
+
                     },
                     {
                         image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
@@ -260,7 +347,7 @@ const MultiplePortraitCarouselsTemplate = (args) => {
                     {
                         image: "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
                         tag: "restricted",
-                    }], 
+                    }],
 
                 })}
             />

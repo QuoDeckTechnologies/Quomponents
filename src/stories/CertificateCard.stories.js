@@ -3,13 +3,12 @@ import CertificateCard from "../components/CertificateCard/CertificateCard.react
 
 const dictionary = JSON.stringify({
   hi: {
-    CertificateCard: {
+    certificateCard: {
       text: {
         notstarted: "शुरू नही हुआ",
         inprogress: "चालू है",
         completed: "पूरा है",
-      },
-      label: "बातचीत कौशल 101",
+      }
     },
   },
 });
@@ -137,7 +136,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "CertificateCard",
+    tgt: "certificateCard",
     dictionary: dictionary,
   },
   isHidden: false,
@@ -249,7 +248,7 @@ TranslatedCard.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "CertificateCard",
+    tgt: "certificateCard",
     dictionary: dictionary,
   },
 };

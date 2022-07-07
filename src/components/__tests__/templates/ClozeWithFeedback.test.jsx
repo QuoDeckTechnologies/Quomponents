@@ -14,6 +14,24 @@ describe("ClozeWithFeedback", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
+    const dictionary = JSON.stringify({
+        en: {
+            templateActions: {
+                checkAnswer: 'Check Answer',
+                submitAnswer: 'Submit Answer',
+                thanks: 'Thanks for your response',
+                go: 'Go',
+            }
+        },
+        hi: {
+            templateActions: {
+                checkAnswer: 'अपना उत्तर जाँच लें',
+                submitAnswer: 'अपना जवाब सबमिट करें',
+                thanks: 'आपके उत्तर के लिए धन्यवाद',
+                go: 'आगे बढ़ें',
+            }
+        }
+    });
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -30,8 +48,7 @@ describe("ClozeWithFeedback", () => {
                         extention: ""
                     },
                     question: "Question",
-                    answer: "Answer",
-                    purpose: "quiz",
+                    answer: "Answer"
                 }}
                 imageLibrary={[{
                     id: 'background-image',
@@ -43,6 +60,7 @@ describe("ClozeWithFeedback", () => {
                 slideId={0}
                 asVariant="primary"
                 withColor={null}
+                withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
             />
@@ -79,6 +97,73 @@ describe("ClozeWithFeedback", () => {
             delay: 0,
         }
         component.setProps({ withAnimation: animation })
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render translation of Check Answer with withTranslation prop and when passed purpose as quiz", () => {
+        component.setProps({
+            data: {
+                purpose: "quiz"
+            },
+            withTranslation: {
+                lang: "hi",
+                tgt: "templateActions",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.find(Button).props().content).toBe("अपना उत्तर जाँच लें");
+    });
+
+    it("should render submitAnswer translation with withTranslation prop and when passed nothing in the purpose props", () => {
+        component.setProps({
+            data: {
+                purpose: ""
+            },
+            withTranslation: {
+                lang: "hi",
+                tgt: "templateActions",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.find(Button).props().content).toBe("अपना जवाब सबमिट करें");
+    });
+
+    it("should render correctly if translation object is not returned", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "",
+                dictionary: dictionary,
+            }
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly if translation object and data is null", () => {
+        component.setProps({
+            data: {
+                purpose: ""
+            },
+            withTranslation: {
+                lang: "mr",
+                tgt: "templateActions",
+                dictionary: dictionary,
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly if translation object is not defined", () => {
+        component.setProps({
+            data: {
+                purpose: "quiz"
+            },
+            withTranslation: {
+                lang: "mr",
+                tgt: "templateActions",
+                dictionary: dictionary,
+            },
+        });
         expect(component.exists()).toBe(true);
     });
 
@@ -167,7 +252,7 @@ describe("ClozeWithFeedback", () => {
             subtitle: "This is Subtitle",
             question: "Question",
             purpose: "quiz",
-        }
+        };
         let colors = {
             questionColor: "#000000",
             slideHeaderTextColor: "#ffffff",
@@ -181,7 +266,7 @@ describe("ClozeWithFeedback", () => {
             buttonHoverBackgroundColor: "#AD292980",
             buttonHoverTextColor: "#000000",
             backgroundColor: "#fff",
-        }
+        };
         component.setProps({ data: data, withColor: colors })
         expect(component.exists()).toBe(true);
     });
@@ -200,8 +285,7 @@ describe("ClozeWithFeedback", () => {
         let imageLibrary = [{
             id: "background-image",
             image: 'test-image'
-        }]
-
+        }];
         component.setProps({ data: data, imageLibrary: imageLibrary })
         expect(component.exists()).toBe(true);
     });
@@ -213,7 +297,7 @@ describe("ClozeWithFeedback", () => {
     });
 
     it('should simulate the input field', () => {
-        component.find('InputField').simulate('click');
+        component.find('InputField').simulate('submit');
         expect(component.exists()).toBe(true);
     });
 });

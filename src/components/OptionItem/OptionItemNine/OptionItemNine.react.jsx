@@ -149,36 +149,24 @@ export default function OptionItemNine(props) {
           <div className="qui-short-field-inner-container">
             <div className="qui-short-field-one">
               <InputField
-                name={
-                  content?.shortFieldOne?.targetName
-                    ? content?.shortFieldOne?.targetName
-                    : "default-short-field-one-target-name"
-                }
-                content={{
-                  value: content?.shortFieldOne?.value,
-                }}
+                name={content?.shortFieldOne?.targetName || "default-short-field-one-target-name"}
+                value={content?.shortFieldOne?.value}
                 asEmphasis="shortField"
                 asFloated="left"
                 withColor={props.withColor}
-                onClick={(name, value) =>
+                onSubmit={(name, value) =>
                   props.onShortFieldOneInput(name, value)
                 }
               />
             </div>
             <div className="qui-short-field-two">
               <InputField
-                name={
-                  content?.shortFieldTwo?.targetName
-                    ? content?.shortFieldTwo?.targetName
-                    : "default-short-field-two-target-name"
-                }
-                content={{
-                  value: content?.shortFieldTwo?.value,
-                }}
+                name={content?.shortFieldTwo?.targetName || "default-short-field-two-target-name"}
+                value={content?.shortFieldTwo?.value}
                 asEmphasis="shortField"
                 asFloated="left"
                 withColor={props.withColor}
-                onClick={(name, value) =>
+                onSubmit={(name, value) =>
                   props.onShortFieldTwoInput(name, value)
                 }
               />
@@ -187,21 +175,13 @@ export default function OptionItemNine(props) {
           <div className="qui-option-item-nine-input-field">
             <div className="qui-list-input-three">
               <InputField
-                name={
-                  content?.message?.targetName
-                    ? content?.message?.targetName
-                    : "default-message-target-name"
-                }
-                content={{
-                  value: content?.message?.value,
-                  placeholder: tObj
-                    ? tObj.placeholder
-                    : content?.message?.placeholder,
-                  maxLength: content?.message?.maxLength,
-                }}
+                name={content?.message?.targetName || "default-message-target-name"}
+                value={content?.message?.value}
+                placeholder={tObj?.placeholder || content?.message?.placeholder}
+                maxLength={content?.message?.maxLength}
                 asEmphasis="listInput"
                 withColor={props.withColor}
-                onClick={(name, value) => props.onInput(name, value)}
+                onSubmit={(name, value) => props.onInput(name, value)}
               />
             </div>
           </div>

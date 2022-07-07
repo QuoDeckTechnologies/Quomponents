@@ -192,19 +192,18 @@ export default function VoiceoverUploadModal(props) {
         <div
           className={`qui-voiceover-upload-modal-header ${quommonClasses.childClasses}`}
         >
-          <h2>{tObj ? tObj.header : "Upload Voiceovers"}</h2>
+          <h2>{tObj?.header || "Upload Voiceovers"}</h2>
         </div>
 
         <div className="qui-voiceover-text-message">
-          {tObj ? (
-            tObj.text
-          ) : (
+          {
+            tObj?.text ||
             <p>
               Create MP3 files for each slide individually and name them as the
               slide numbers they correspond to. e.g. 1.mp3, 2.mp3, etc. You can
               upload voiceovers for one or more slides in this fashion...
             </p>
-          )}
+          }
         </div>
         <div className={`qui-image-cropper ${quommonClasses.childClasses}`}>
           <div className="qui-voiceover-upload-button">
@@ -221,7 +220,7 @@ export default function VoiceoverUploadModal(props) {
               />
               <Button
                 {...props}
-                content={tObj ? tObj.buttons.chooseFile : "choose files"}
+                content={tObj?.buttons?.chooseFile || "choose files"}
                 withTranslation={null}
                 withAnimation={null}
                 asEmphasis="outlined"
@@ -235,7 +234,7 @@ export default function VoiceoverUploadModal(props) {
             <Button
               {...props}
               asSize="normal"
-              content={tObj ? tObj.buttons.cancel : "cancel"}
+              content={tObj?.buttons?.cancel || "cancel"}
               asEmphasis="text"
               asFloated="left"
               withTranslation={null}
@@ -249,7 +248,7 @@ export default function VoiceoverUploadModal(props) {
             <Button
               {...props}
               asSize="normal"
-              content={tObj ? tObj.buttons.save : "save"}
+              content={tObj?.buttons?.save || "save"}
               withTranslation={null}
               withAnimation={null}
               asEmphasis="contained"

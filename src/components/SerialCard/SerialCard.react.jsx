@@ -5,8 +5,7 @@ import { motion } from "framer-motion";
 import _ from "lodash";
 import {
     getAnimation,
-    getQuommons,
-    getTranslation,
+    getQuommons
 } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -69,14 +68,6 @@ SerialCard.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to show a translated version of the component text. Dictionary must be valid JSON. 
-      */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
-    /**
       Use to enable/disable the component
       */
     isDisabled: PropTypes.bool,
@@ -97,7 +88,6 @@ SerialCard.defaultProps = {
     asVariant: "error",
     withColor: null,
     withAnimation: null,
-    withTranslation: null,
     isDisabled: false,
     isHidden: false,
 };
@@ -139,27 +129,7 @@ export default function SerialCard(props) {
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor) : {};
     //-------------------------------------------------------------------
-    // 4. Get translation of the component
-    //-------------------------------------------------------------------
-    let labelContent = {
-        title: content?.title,
-        description: content?.description,
-    };
-    let tObj = null;
-
-    if (
-        props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj) {
-            labelContent.title = tObj?.title;
-            labelContent.description = tObj?.description;
-        }
-    }
-    //-------------------------------------------------------------------
-    // 5. Get animation of the component
+    // 4. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
 
@@ -175,8 +145,8 @@ export default function SerialCard(props) {
                 <div className="qui-serialcard-top">
                     <img className="qui-serialcard-backimg" src={content?.backImage} alt="" />
                     <div className="qui-serialcard-date-name" style={colors.textColors}>
-                        <span>{labelContent?.title}</span>
-                        <h1>{labelContent?.description}</h1>
+                        <span>{content?.title}</span>
+                        <h1>{content?.description}</h1>
                     </div>
                 </div>
                 <div className="qui-serialcard-bottom">

@@ -111,7 +111,7 @@ export default function PortraitCarousel(props) {
                                         </i>
                                     </div>
                                 </div>}
-                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
+                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} withTranslation={props.withTranslation} />
                             </div>
                         </div>
                     );

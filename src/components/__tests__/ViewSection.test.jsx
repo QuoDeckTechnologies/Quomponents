@@ -18,13 +18,33 @@ describe("ViewSection", () => {
 		setUserOptions: jest.fn()
 	}
 	onClick = jest.fn();
-
+	const dictionary = JSON.stringify({
+		en: {
+			viewSection: {
+				view: "View",
+				sorter: "Sorter",
+				mobile: "Mobile",
+				desktop: "Desktop",
+				comments: "Comments"
+			}
+		},
+		hi: {
+			viewSection: {
+				view: "दृश्य",
+				sorter: "छँटाईकर्ता",
+				mobile: "मोबाइल",
+				desktop: "डेस्कटॉप",
+				comments: "टिप्पणियाँ"
+			}
+		}
+	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<ViewSection
 				actions={actions}
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={onClick}
@@ -48,6 +68,28 @@ describe("ViewSection", () => {
 
 	it("should render correctly when passed asFloated prop as inline", () => {
 		component.setProps({ asFloated: "inline" });
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of component in hindi", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "viewSection",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly if translation is not defined", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "mr",
+				tgt: "viewSection",
+				dictionary: dictionary,
+			},
+		});
 		expect(component.exists()).toBe(true);
 	});
 

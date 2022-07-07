@@ -1,6 +1,14 @@
 import React from "react";
 import CheckBox from "../components/CheckBox/CheckBox.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    checkBox: {
+      label: "डिफ़ॉल्ट चेकबॉक्स",
+    },
+  },
+});
+
 export default {
   title: "Design System/CheckBox/CheckBox",
   component: CheckBox,
@@ -44,6 +52,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -93,6 +111,11 @@ Default.args = {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "checkBox",
+    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,
@@ -233,6 +256,64 @@ InlineMultipleCheckBox.parameters = {
     source: {
       code: `<CheckBox {...${JSON.stringify(
         InlineMultipleCheckBox.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Colored checkbox
+// -------------------------------------------------------------
+export const ColoredCheckBox = Template.bind({});
+ColoredCheckBox.args = {
+  ...Default.args,
+  content: {
+    name: "checkbox",
+    label: "Colored Checkbox",
+    checked: false,
+  },
+  withColor: {
+    accentColor: "#14213d",
+    textColor: "#14213d",
+  },
+};
+ColoredCheckBox.parameters = {
+  docs: {
+    description: {
+      story: "Colored checkbox can be created by using withColor props",
+    },
+    source: {
+      code: `<CheckBox {...${JSON.stringify(ColoredCheckBox.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Translated checkbox
+// -------------------------------------------------------------
+export const TranslatedCheckBox = Template.bind({});
+TranslatedCheckBox.args = {
+  ...Default.args,
+  content: {
+    name: "checkbox",
+    label: "Translated Checkbox",
+    checked: false,
+  },
+  withTranslation: {
+    lang: "hi",
+    tgt: "checkBox",
+    dictionary: dictionary,
+  },
+};
+TranslatedCheckBox.parameters = {
+  docs: {
+    description: {
+      story:
+        "Translated checkbox can be created by using withTranslation props",
+    },
+    source: {
+      code: `<CheckBox {...${JSON.stringify(
+        TranslatedCheckBox.args,
         null,
         2
       )}}/>`,

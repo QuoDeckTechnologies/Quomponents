@@ -145,7 +145,6 @@ export default function CertificateCard(props) {
   //-------------------------------------------------------------------
   // 5. Get translation of the component
   //-------------------------------------------------------------------
-  let labelContent = Object.assign({}, props.withLabel);
   let tObj = null;
 
   if (
@@ -154,7 +153,6 @@ export default function CertificateCard(props) {
     props.withTranslation.lang !== "en"
   ) {
     tObj = getTranslation(props.withTranslation);
-    if (labelContent && tObj?.label) labelContent.content = tObj.label;
   }
   //-------------------------------------------------------------------
   // 6. Get Status Card of the component
@@ -165,7 +163,7 @@ export default function CertificateCard(props) {
     if (status === "not started") iconClass = "far fa-circle";
     if (status === "completed") iconClass = "fas fa-check-circle";
 
-    if (status === "completed" && certificate?.icon !== "") {
+    if (status === "completed" && certificate?.icon !== "" && certificate?.icon !== undefined) {
       return (
         <>
           {certificate?.icon && (
@@ -181,11 +179,7 @@ export default function CertificateCard(props) {
       return (
         <div className="qui-status">
           <div className={`qui-statusInner ${quommonClasses.childClasses}`}>
-            {tObj ? (
-              <p>{tObj?.text[status.replace(" ", "")]}</p>
-            ) : (
-              <p>{status.toUpperCase()}</p>
-            )}
+            <p>{tObj?.text[status.replace(" ", "")] || status.toUpperCase()}</p>
             <i
               className={`${iconClass} variant-${props.asVariant}-text`}
               style={accentColors}
@@ -217,7 +211,7 @@ export default function CertificateCard(props) {
             className={`qui-courseHeader variant-${props.asVariant}-text`}
             style={headerColors}
           >
-            <p>{labelContent?.content}</p>
+            <p>{props.withLabel?.content}</p>
           </div>
         </div>
         <div className="qui-imageCard">

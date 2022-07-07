@@ -1,6 +1,24 @@
 import React from "react";
 import PictureFuddle from "../../components/Templates/PictureFuddle/PictureFuddle.react";
 
+const dictionary = JSON.stringify({
+    en: {
+        templateActions: {
+            checkAnswer: 'Check Answer',
+            submitAnswer: 'Submit Answer',
+            thanks: 'Thanks for your response',
+            go: 'Go',
+        }
+    },
+    hi: {
+        templateActions: {
+            checkAnswer: 'अपना उत्तर जाँच लें',
+            submitAnswer: 'अपना जवाब सबमिट करें',
+            thanks: 'आपके उत्तर के लिए धन्यवाद',
+            go: 'आगे बढ़ें',
+        }
+    }
+});
 export default {
     title: "Design System/Templates/PictureFuddle/PictureFuddle",
     component: PictureFuddle,
@@ -49,6 +67,16 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -138,6 +166,11 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "templateActions",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -182,6 +215,11 @@ PictureFuddleWithSlideHeader.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "templateActions",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -235,6 +273,11 @@ PictureFuddleWithSlideHeaderAndBackgroundImage.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "templateActions",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,

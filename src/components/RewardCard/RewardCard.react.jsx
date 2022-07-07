@@ -145,8 +145,8 @@ export default function RewardCard(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation)
-        soldoutText = tObj.soldout
-        leftText = tObj.left
+        soldoutText = tObj?.soldout || soldoutText
+        leftText = tObj?.left || leftText
     }
     //-------------------------------------------------------------------
     // 5. Use to the state of RewardCard Component

@@ -3,7 +3,7 @@ import ShareWidget from "../components/ShareWidget/ShareWidget.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        ShareWidget: {
+        shareWidget: {
             label: "शेयर",
         },
     },
@@ -111,7 +111,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "ShareWidget",
+        tgt: "shareWidget",
         dictionary: dictionary,
     },
     isHidden: false,
@@ -159,7 +159,7 @@ TranslatedShareWidget.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "ShareWidget",
+        tgt: "shareWidget",
         dictionary: dictionary,
     },
 };
@@ -192,7 +192,7 @@ const AllVariantsTemplate = (args) => {
                 {...Object.assign({}, baseObj, {
                     withTranslation: {
                         lang: "en",
-                        tgt: "ShareWidget",
+                        tgt: "shareWidget",
                         dictionary: dictionary,
                     }
                 })}
@@ -202,7 +202,7 @@ const AllVariantsTemplate = (args) => {
                 {...Object.assign({}, baseObj, {
                     withTranslation: {
                         lang: "hi",
-                        tgt: "ShareWidget",
+                        tgt: "shareWidget",
                         dictionary: dictionary,
                     },
                 })}
