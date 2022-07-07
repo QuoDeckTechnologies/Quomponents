@@ -334,7 +334,7 @@ export default function Sidebar(props) {
     const sidebar = (asEmphasis) => {
         if (asEmphasis === "default") {
             return (
-                <div className={`qui-side-bar-default-container`}>
+                <div className={`qui-side-bar-default-container ${quommonClasses.childClasses}`}>
                     <img className="qui-side-bar-logo" src={coloredDefaultLogo} alt="" />
                     <div
                         className={`qui-side-bar-sections-container`}>
