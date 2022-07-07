@@ -159,7 +159,7 @@ export default function BannerCard(props) {
     <div
       className={`qt-shadow qui ${quommonClasses.parentClasses}`}
       style={{ backgroundImage: content ? `url(${content.image})` : "" }}
-      onClick={props.onClick}
+      onClick={()=>props.onClick(props)}
     >
       {content && content.tag && content.tag !== "" && (
         <div className="qui-card-label">
