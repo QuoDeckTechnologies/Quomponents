@@ -38,7 +38,6 @@ describe("MenuBlock", () => {
 
   hasValid("variants", args);
   hasValid("sizes", args);
-  hasValid("positions", args);
 
   hasValid("colors", args);
   hasValid("animations", args);

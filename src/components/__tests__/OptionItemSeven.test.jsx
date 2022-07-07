@@ -19,6 +19,14 @@ describe("Option Item Seven", () => {
   const args = {
     target: OptionItemSeven,
     required: {
+      content: {
+        targetName: "name",
+        value: "",
+        image: {},
+        placeholder: "placeholder",
+        checked: false,
+        maxLength: 300,
+      },
       onInput: () => { },
       onSelect: () => { },
       onUpload: () => { },
