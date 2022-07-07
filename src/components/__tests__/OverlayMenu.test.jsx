@@ -32,10 +32,8 @@ describe("OverlayMenu", () => {
   hasValid("positions", args);
 
   hasValid("colors", args);
-  hasValid("labels", args);
   hasValid("animations", args);
-  hasValid("icons", args);
-  //hasValid("translations", args);
+  hasValid("translations", args);
 
   hasValid("hidden", args);
   hasValid("disabled", args);
