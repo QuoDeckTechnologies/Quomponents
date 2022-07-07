@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 
 //--------------------------------------
 // Import Components
@@ -17,13 +17,11 @@ describe("ProgressBar", () => {
     let decrement = jest.fn();
     beforeEach(() => {
         jest.resetAllMocks();
-        component = shallow(
+        component = mount(
             <ProgressBar
-                content={{
-                    leftIcon: "fa fa-arrow-alt-circle-left",
-                    rightIcon: "fa fa-arrow-alt-circle-right",
-                    count: 5,
-                }}
+                leftIcon="fa fa-arrow-alt-circle-left"
+                rightIcon="fa fa-arrow-alt-circle-right"
+                count={5}
                 asVariant="primary"
                 asSize="normal"
                 withColor={{
@@ -51,11 +49,9 @@ describe("ProgressBar", () => {
     });
     it("should call decrement when click", () => {
         component = shallow(<ProgressBar
-            content={{
-                leftIcon: "fa fa-arrow-alt-circle-left",
-                rightIcon: "fa fa-arrow-alt-circle-right",
-                count: 5,
-            }}
+            leftIcon="fa fa-arrow-alt-circle-left"
+            rightIcon="fa fa-arrow-alt-circle-right"
+            count={5}
             onClick={decrement} />);
         let leftarrow = component.find(".qui-progressbaricons").at(1);
         leftarrow.simulate("click");
@@ -64,21 +60,17 @@ describe("ProgressBar", () => {
     });
     it("should call decrement when click", () => {
         component = shallow(<ProgressBar
-            content={{
-                leftIcon: "fa fa-arrow-alt-circle-left",
-                rightIcon: "fa fa-arrow-alt-circle-right",
-                count: 5,
-            }}
+            leftIcon="fa fa-arrow-alt-circle-left"
+            rightIcon="fa fa-arrow-alt-circle-right"
+            count={5}
             onClick={decrement} />);
         component.find(".qui-progressbaricons").at(0).simulate("click");
     });
     it("should call increment when click", () => {
         component = shallow(<ProgressBar
-            content={{
-                leftIcon: "fa fa-arrow-alt-circle-left",
-                rightIcon: "fa fa-arrow-alt-circle-right",
-                count: 1,
-            }}
+            leftIcon="fa fa-arrow-alt-circle-left"
+            rightIcon="fa fa-arrow-alt-circle-right"
+            count={1}
             onClick={increment} />);
         component.find(".qui-progressbaricons").at(1).simulate("click");
     });

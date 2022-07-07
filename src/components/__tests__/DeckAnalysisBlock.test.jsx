@@ -26,15 +26,12 @@ describe("DeckAnalysis", () => {
         jest.resetAllMocks();
         component = shallow(
             <DeckAnalysis
-                content={{
-                    header: "SLIDES",
-                    fheader: "SLIDES",
-                    message:
-                        "Deck Should have 10 to 40 slides",
-                    icon: "fas fa-ellipsis-h",
-                    slideCount: 18,
-                    status: true,
-                }}
+                header="SLIDES"
+                fheader="SLIDES"
+                message="Deck Should have 10 to 40 slides"
+                icon="fas fa-ellipsis-h"
+                slideCount={18}
+                status={true}
                 asVariant="primary"
                 let colors={{
                     textColor: "#b60d17",
@@ -55,15 +52,13 @@ describe("DeckAnalysis", () => {
 
     it("should render correctly when passed withColor props", () => {
         component.setProps({
-            content: {
-                header: "SLIDES",
-                fheader: "SLIDES",
-                message:
-                    "Deck Should have 10 to 40 slides",
-                icon: "fas fa-ellipsis-h",
-                slideCount: 18,
-                status: false,
-            },
+            header: "SLIDES",
+            fheader: "SLIDES",
+            message:
+                "Deck Should have 10 to 40 slides",
+            icon: "fas fa-ellipsis-h",
+            slideCount: 18,
+            status: false,
         });
     });
 

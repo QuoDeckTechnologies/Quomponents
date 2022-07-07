@@ -13,18 +13,14 @@ export default {
     title: "Design System/DeckAnalysisBlock/DeckAnalysis",
     component: DeckAnalysisBlock,
     argTypes: {
-        content: {
-            table: {
-                defaultValue: {
-                    header: "",
-                    fheader: "",
-                    message: "",
-                    icon: "",
-                    slideCount: null,
-                    status: null,
-                },
-            },
-        },
+
+        header: "",
+        fheader: "",
+        message: "",
+        icon: "",
+        slideCount: 10,
+        status: false,
+
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -96,15 +92,13 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        header: "SLIDES",
-        fheader: "SLIDES",
-        message:
-            "Deck Should have 10 to 40 slides",
-        icon: " fa fa-desktop",
-        slideCount: 18,
-        status: true,
-    },
+    header: "SLIDES",
+    fheader: "SLIDES",
+    message:
+        "Deck Should have 10 to 40 slides",
+    icon: " fa fa-desktop",
+    slideCount: 18,
+    status: true,
     asVariant: "success",
     withColor: {
         textColor: "",
@@ -232,15 +226,13 @@ const AllVariantBlocks = (args) => {
             />
             <DeckAnalysisBlock
                 {...Object.assign({}, baseObj, {
-                    content: {
-                        header: "VOICEOVERS",
-                        fheader: "Vo's",
-                        message:
-                            "Deck Should have 10 to 40 slides",
-                        icon: " fa fa-desktop",
-                        slideCount: 5,
-                        status: false,
-                    },
+                    header: "VOICEOVERS",
+                    fheader: "Vo's",
+                    message:
+                        "Deck Should have 10 to 40 slides",
+                    icon: " fa fa-desktop",
+                    slideCount: 5,
+                    status: false,
                     withAnimation: {
                         animation: "collapse",
                         duration: 1,

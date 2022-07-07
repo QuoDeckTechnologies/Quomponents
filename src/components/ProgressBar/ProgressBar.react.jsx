@@ -19,11 +19,9 @@ ProgressBar.propTypes = {
     /**
     ProgressBar data should be passed in content field and it is a required field
     */
-    content: PropTypes.shape({
-        leftIcon: PropTypes.string,
-        rightIcon: PropTypes.string,
-        count: PropTypes.number,
-    }),
+    leftIcon: PropTypes.string,
+    rightIcon: PropTypes.string,
+    count: PropTypes.number,
     //=======================================
     // Quommon props
     //=======================================
@@ -86,10 +84,6 @@ ProgressBar.propTypes = {
 
 ProgressBar.defaultProps = {
     //=======================================
-    // Component Specific props
-    //=======================================
-    content: {},
-    //=======================================
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -126,21 +120,17 @@ function getColors(colors) {
 **/
 export default function ProgressBar(props) {
     //-------------------------------------------------------------------
-    // 1. Destructuring content from props
-    //-------------------------------------------------------------------
-    let { content } = props;
-    //-------------------------------------------------------------------
-    // 2. Set the classes
+    // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "progressbar");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
-    // 3. Use to set styling for ProgressBar
+    // 2. Use to set styling for ProgressBar
     //-------------------------------------------------------------------
     const [currentIndex, setCurrentIndex] = useState(1);
 
     function increment() {
-        if (content?.count !== currentIndex) {
+        if (props.count !== currentIndex) {
             setCurrentIndex(nextState => nextState + 1)
         }
     }
@@ -152,18 +142,19 @@ export default function ProgressBar(props) {
     }
 
     let rightArrowStyle = {
-        color: (content?.count === 1) || (currentIndex === content?.count) ? "#aaaaaa" : props.withColor?.textColor
+        color: (props.count === 1) || (currentIndex === props.count) ? "#aaaaaa" : props.withColor?.textColor
     }
 
     let leftArrowStyle = {
-        color: (content?.count === 1) || (currentIndex === 1) ? "#aaaaaa" : props.withColor?.textColor
+        color: (props.count === 1) || (currentIndex === 1) ? "#aaaaaa" : props.withColor?.textColor
     }
 
     let colors = props.withColor ? getColors(props.withColor) : {};
     //-------------------------------------------------------------------
-    // 4. Get animation of the component
+    // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
+
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -175,14 +166,14 @@ export default function ProgressBar(props) {
             <div className={`qui-progressbar${quommonClasses.childClasses}`}>
                 <div>
                     <i
-                        className={`qui-progressbaricons ${content?.leftIcon ? content?.leftIcon : "fa fa-arrow-alt-circle-left"}`}
+                        className={`qui-progressbaricons ${props.leftIcon ? props.leftIcon : "fa fa-arrow-alt-circle-left"}`}
                         style={leftArrowStyle}
                         onClick={() => decrement()}
                     >
                     </i>
                 </div>
                 <div className="qui-progressbarmiddle">
-                    {_.times(props.content?.count, (index) => {
+                    {_.times(props.count, (index) => {
                         return (
                             <div
                                 className="qui-currentstep"
@@ -194,7 +185,7 @@ export default function ProgressBar(props) {
                     })}
                 </div>
                 <div>
-                    <i className={`qui-progressbaricons ${content?.rightIcon ? content?.rightIcon : "fa fa-arrow-alt-circle-left"}`}
+                    <i className={`qui-progressbaricons ${props.rightIcon ? props.rightIcon : "fa fa-arrow-alt-circle-left"}`}
                         style={rightArrowStyle}
                         onClick={() => increment()}
                     >

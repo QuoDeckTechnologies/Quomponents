@@ -19,15 +19,13 @@ DeckAnalysis.propTypes = {
     /**
       DeckAnalysis data should be passed in content field and it is a required field
       */
-    content: PropTypes.shape({
-        header: PropTypes.string,
-        fheader: PropTypes.string,
-        message: PropTypes.string,
-        icon: PropTypes.string,
-        image: PropTypes.string,
-        slideCount: PropTypes.number,
-        status: PropTypes.bool,
-    }).isRequired,
+    header: PropTypes.string,
+    fheader: PropTypes.string,
+    message: PropTypes.string,
+    icon: PropTypes.string,
+    image: PropTypes.string,
+    slideCount: PropTypes.number,
+    status: PropTypes.bool,
     //=======================================
     // Quommon props
     //=======================================
@@ -84,7 +82,13 @@ DeckAnalysis.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: {},
+    header: "SLIDES",
+    fheader: "SLIDES",
+    message:
+        "Deck Should have 10 to 40 slides",
+    icon: " fa fa-desktop",
+    slideCount: 18,
+    status: true,
     //=======================================
     // Quommon props
     //=======================================
@@ -118,7 +122,7 @@ export default function DeckAnalysis(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
     //-------------------------------------------------------------------
-    let { content } = props;
+    let { header, fheader, message } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -131,11 +135,10 @@ export default function DeckAnalysis(props) {
     //-------------------------------------------------------------------
     // 4. Get translation of the component
     //-------------------------------------------------------------------
-    let labelContent = {
-        header: content?.header,
-        fheader: content?.fheader,
-        message: content?.message,
-    };
+
+    let tHeader = header
+    let tFheader = fheader
+    let tMessage = message
     let tObj = null;
 
     if (
@@ -144,10 +147,10 @@ export default function DeckAnalysis(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj) {
-            labelContent.header = tObj.header;
-            labelContent.fheader = tObj.fheader;
-            labelContent.message = tObj.message;
+        if (tObj) {
+            tHeader = tObj.header;
+            tFheader = tObj.fheader;
+            tMessage = tObj.message;
         }
     }
     //-------------------------------------------------------------------
@@ -166,21 +169,21 @@ export default function DeckAnalysis(props) {
                 <div className="qui-deckblock-top">
                     <div className="qui-deckblock-header">
                         <div className="qui-deckblock-rtop">
-                            <h3 className={`qui-deckblock-slidecount`}>{content?.slideCount}</h3>
-                            <i className={`qui-deckblock-icon ${content?.icon}`}></i>
+                            <h3 className={`qui-deckblock-slidecount`}>{props?.slideCount}</h3>
+                            <i className={`qui-deckblock-icon ${props?.icon}`}></i>
                         </div>
-                        <h5 className="qui-fheader">{labelContent?.fheader}</h5>
+                        <h5 className="qui-fheader">{tFheader}</h5>
                     </div>
                     <div className="qui-deckblock-header-message" >
-                        <h5>{labelContent?.header}</h5>
-                        <span>{labelContent?.message}</span>
+                        <h5>{tHeader}</h5>
+                        <span>{tMessage}</span>
                     </div>
                 </div>
-                <div className="qui-deckblock-bottom" style={props.content?.status === true ? { backgroundColor: "#C1DC9E" } : { backgroundColor: "#D97575" }} >
+                <div className="qui-deckblock-bottom" style={props?.status === true ? { backgroundColor: "#C1DC9E" } : { backgroundColor: "#D97575" }} >
                     <h5> {
-                        props.content?.status
+                        props?.status
                             ? "Check Slides: " +
-                            props.content?.slideCount
+                            props?.slideCount
                             : "..."
                     }
                     </h5>
