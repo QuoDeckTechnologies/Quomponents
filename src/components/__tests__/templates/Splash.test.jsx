@@ -25,14 +25,10 @@ describe("Splash", () => {
   };
 
   hasValid("defaults", args);
-  hasValid("variants", args);
-  hasValid("sizes", args);
   hasValid("positions", args);
-  hasValid("alignment", args);
   hasValid("colors", args);
   hasValid("animations", args);
   hasValid("hidden", args);
-  hasValid("disabled", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------

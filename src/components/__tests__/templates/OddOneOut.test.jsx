@@ -49,6 +49,8 @@ describe("OddOneOut", () => {
   };
 
   hasValid("defaults", args);
+  hasValid("variants", args);
+
   hasValid("animations", args);
   hasValid("hidden", args);
   hasValid("disabled", args);

@@ -118,6 +118,7 @@ describe("Button", () => {
     it("should render correctly with withColor prop when hovered", () => {
         const component = renderer.create(
             <Button
+                content="test"
                 withColor={{
                     backgroundColor: "#ffc900",
                     textColor: "#666666",

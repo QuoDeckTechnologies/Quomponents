@@ -63,6 +63,8 @@ describe("MultipleSelect", () => {
   };
 
   hasValid("defaults", args);
+  hasValid("variants", args);
+
   hasValid("animations", args);
   hasValid("translations", args);
   hasValid("hidden", args);

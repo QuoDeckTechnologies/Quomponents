@@ -34,6 +34,8 @@ describe("BulletList", () => {
   };
 
   hasValid("defaults", args);
+  hasValid("variants", args);
+
   hasValid("animations", args);
   hasValid("hidden", args);
   //--------------------------------------

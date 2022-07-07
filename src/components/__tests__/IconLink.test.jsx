@@ -17,7 +17,9 @@ describe("IconLink", () => {
     const args = {
         target: IconLink,
         required: {
-            content: "Testing Button",
+            content: {
+                link:"www.quodeck.com"
+            },
             onClick: () => console.log("Button Testing"),
         },
         translations: {

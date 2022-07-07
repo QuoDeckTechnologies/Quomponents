@@ -60,16 +60,12 @@ describe("Triptych", () => {
       },
       layout: "side by side split",
       slideId: 0,
-      onClick: () => {},
+      onClick: () => { },
     },
   };
 
   hasValid("defaults", args);
   hasValid("variants", args);
-  hasValid("sizes", args);
-  hasValid("positions", args);
-  hasValid("padding", args);
-  hasValid("alignment", args);
   hasValid("colors", args);
   hasValid("animations", args);
   hasValid("hidden", args);
@@ -127,7 +123,6 @@ describe("Triptych", () => {
         isHidden={false}
         isDisabled={false}
         onClick={() => {
-          console.log("test");
         }}
       />
     );

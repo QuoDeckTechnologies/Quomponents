@@ -24,7 +24,6 @@ describe("AccentLine", () => {
     hasValid("variants", args);
     hasValid("sizes", args);
     hasValid("positions", args);
-    hasValid("padding", args);
 
     hasValid("colors", args);
     hasValid("animations", args);

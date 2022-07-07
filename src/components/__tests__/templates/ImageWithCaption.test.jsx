@@ -77,7 +77,6 @@ describe("ImageWithCaption", () => {
         withTranslation={null}
         isHidden={false}
         onClick={(e) => {
-          console.log(e);
         }}
       />
     );
