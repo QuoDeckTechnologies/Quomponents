@@ -16,7 +16,7 @@ describe("AppMenu", () => {
   const args = {
     target: AppMenu,
     required: {
-      onClick: () => console.log("AppMenu Testing"),
+      onClick: () => { },
     },
     translations: {
       tgt: "appMenu",

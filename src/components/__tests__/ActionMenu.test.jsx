@@ -46,7 +46,7 @@ describe("ActionMenu", () => {
           icon: "fas fa-trash",
         },
       ],
-      onClick: () => console.log("ActionMenu Testing"),
+      onClick: () => { },
     },
     translations: {
       tgt: "actionMenu",

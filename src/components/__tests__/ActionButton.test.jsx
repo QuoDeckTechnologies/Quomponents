@@ -21,7 +21,7 @@ describe("ActionButton", () => {
                 subTitle: "Rs. 75",
                 image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png"
             },
-            onClick: () => console.log("action button Testing"),
+            onClick: () => { },
         },
         translations: {
             tgt: "ActionButton",
@@ -87,7 +87,7 @@ describe("ActionButton", () => {
                 withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
-                onClick={() => { console.log("Testing ActionButton") }}
+                onClick={() => { }}
             />
         );
     });

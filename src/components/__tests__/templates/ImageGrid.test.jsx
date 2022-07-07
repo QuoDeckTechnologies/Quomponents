@@ -54,7 +54,7 @@ describe("ImageGrid", () => {
         ],
         caption: "caption",
       },
-      onClick: () => {},
+      onClick: () => { },
     },
   };
 
@@ -111,9 +111,7 @@ describe("ImageGrid", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        onClick={(e) => { }}
       />
     );
   });

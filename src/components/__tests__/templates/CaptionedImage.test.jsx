@@ -56,7 +56,7 @@ describe("CaptionedImage", () => {
         ],
         caption: "caption",
       },
-      onClick: () => {},
+      onClick: () => { },
     },
   };
 
@@ -116,9 +116,7 @@ describe("CaptionedImage", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        onClick={(e) => { }}
       />
     );
   });

@@ -64,12 +64,12 @@ describe("ToggleButton", () => {
         withTranslation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => console.log("ToggleButton Testing")}
+        onClick={() => { }}
         onChange={onChange}
       />
     );
   });
-  
+
   it("should render correctly  with onChange function", () => {
     let toggleSwitch = component.find("div").at(0).children().at(0);
     toggleSwitch.simulate("change", { target: { checked: true } });
@@ -86,14 +86,14 @@ describe("ToggleButton", () => {
   });
 
   it("should render correctly with translation",
-  () => {
+    () => {
       component.setProps({
-          withTranslation: {
-              lang: "hi",
-              tgt: "toggleButton",
-              dictionary: dictionary,
-          },
+        withTranslation: {
+          lang: "hi",
+          tgt: "toggleButton",
+          dictionary: dictionary,
+        },
       });
       expect(component.exists()).toBe(true);
-  });
+    });
 });

@@ -24,7 +24,7 @@ describe("IconListCaptions", () => {
         subtitle: "subtitle",
         cards: [],
       },
-      onClick: () => {},
+      onClick: () => { },
     },
   };
 
@@ -50,9 +50,7 @@ describe("IconListCaptions", () => {
         withColor={null}
         isHidden={false}
         isDisabled={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        onClick={(e) => { }}
       />
     );
   });

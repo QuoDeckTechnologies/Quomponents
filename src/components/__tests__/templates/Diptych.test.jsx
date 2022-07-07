@@ -58,7 +58,7 @@ describe("Diptych", () => {
         ],
         caption: "caption",
       },
-      onClick: () => console.log("Button Testing"),
+      onClick: () => { },
     },
     translations: {
       tgt: "button",
@@ -130,9 +130,7 @@ describe("Diptych", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        onClick={(e) => { }}
       />
     );
   });
