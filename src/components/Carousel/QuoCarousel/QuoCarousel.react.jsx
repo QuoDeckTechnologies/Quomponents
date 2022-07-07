@@ -150,7 +150,7 @@ export default function QuoCarousel(props) {
     };
 
     let showleftNav = props.infinite ? true : activeSlide !== 0 ? true : false;
-    let shoeRightNav = props.infinite ?
+    let showRightNav = props.infinite ?
         true : activeSlide !== (content.length - 1) ?
             true : onRightNavigation !== null && onRightNavigation !== undefined ?
                 true : false;
@@ -184,7 +184,7 @@ export default function QuoCarousel(props) {
                     className="qui-carousel-slick-next"
                     onClick={() => sliderRef.current?.slickNext()}
                 >
-                    <i className={shoeRightNav ? "fas fa-arrow-alt-circle-right" :
+                    <i className={showRightNav ? "fas fa-arrow-alt-circle-right" :
                         "fas fa-arrow-alt-circle-right qui-disabled-arrow"} />
                 </div>
             </div> : " "
