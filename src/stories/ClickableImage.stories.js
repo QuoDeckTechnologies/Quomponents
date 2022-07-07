@@ -6,13 +6,7 @@ export default {
   title: "Design System/ClickableImage/ClickableImage",
   component: ClickableImage,
   argTypes: {
-    content: {
-      table: {
-        defaultValue: {
-          image: "",
-        },
-      },
-    },
+    image: "",
     isActive: false,
     withAnimation: {
       table: {
