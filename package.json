@@ -111,5 +111,17 @@
         "enzyme-to-json": "^3.6.2",
         "jest": "26.6.0",
         "storybook-addon-turbo-build": "^1.1.0"
+    },
+    "majestic": {
+        "args": [
+            "--setupFilesAfterEnv='<rootDir>/config/jest/setupEnzyme.js' --testPathIgnorePatterns=common"
+        ]
+    },
+    "jest": {
+        "coveragePathIgnorePatterns": [
+            "<rootDir>/src/components/__tests__/common",
+            "<rootDir>/src/common",
+            "<rootDir>/src/stories"
+        ]
     }
 }
