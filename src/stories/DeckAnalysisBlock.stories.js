@@ -6,6 +6,7 @@ const dictionary = JSON.stringify({
             header: "स्लाइड्स",
             fheader: "स्लाइड्स",
             message: "डेक में 10 से 40 स्लाइड होनी चाहिए",
+            checkSlide: "स्लाइड चेक करें :",
         },
     },
 });

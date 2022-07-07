@@ -139,6 +139,8 @@ export default function DeckAnalysis(props) {
     let tHeader = header
     let tFheader = fheader
     let tMessage = message
+    let checkSlide = "Check Slides :";
+
     let tObj = null;
 
     if (
@@ -148,9 +150,10 @@ export default function DeckAnalysis(props) {
     ) {
         tObj = getTranslation(props.withTranslation);
         if (tObj) {
-            tHeader = tObj.header;
-            tFheader = tObj.fheader;
-            tMessage = tObj.message;
+            checkSlide = tObj?.checkSlide;
+            tHeader = tObj?.header;
+            tFheader = tObj?.fheader;
+            tMessage = tObj?.message;
         }
     }
     //-------------------------------------------------------------------
@@ -181,10 +184,7 @@ export default function DeckAnalysis(props) {
                 </div>
                 <div className="qui-deckblock-bottom" style={props?.status === true ? { backgroundColor: "#C1DC9E" } : { backgroundColor: "#D97575" }} >
                     <h5> {
-                        props?.status
-                            ? "Check Slides: " +
-                            props?.slideCount
-                            : "..."
+                        props?.status ? tObj?.checkSlide + props?.slideCount : "..."
                     }
                     </h5>
                 </div>
