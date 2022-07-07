@@ -121,7 +121,8 @@ export default function QuoCarousel(props) {
     //  Function to jump to the last slide
     //-------------------------------------------------------------------
     let jumpToEnd = () => {
-        sliderRef.current.slickGoTo(content.length - 1);
+        if (sliderRef.current)
+            sliderRef.current.slickGoTo(content.length - 1);
     };
 
     //-------------------------------------------------------------------
