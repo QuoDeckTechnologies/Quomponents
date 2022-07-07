@@ -1,10 +1,24 @@
 import React from "react";
 import MobileToolbar from "../components/MobileToolbar/MobileToolbar.react";
+const dictionary = JSON.stringify({
+    hi: {
+        mobileToolbar: {
+            title: "संपादन मोड",
+            content: [
+                { label: "पाठ्यक्रम" },
+                { label: "नगेट्स" },
+                { label: "परीक्षण" },
+                { label: "प्रतियोगिता" },
+                { label: "संदेश" },
+            ]
+        },
+    },
+});
 export default {
     title: "Design System/MobileToolbar/MobileToolbar",
     component: MobileToolbar,
     argTypes: {
-        label: "Edit Mode",
+        title: "Edit Mode",
         content: [
             {
                 icon: "",
@@ -45,6 +59,16 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -98,7 +122,7 @@ export default {
 const Template = (args) => <MobileToolbar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    label: "Edit Mode",
+    title: "Edit Mode",
     content: [
         {
             icon: "fa fa-receipt",
@@ -145,7 +169,12 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-    isCircular: true,
+    withTranslation: {
+        lang: "en",
+        tgt: "mobileToolbar",
+        dictionary: dictionary,
+    },
+    isCircular: false,
     isHidden: false,
     isDisabled: false,
 };
@@ -396,6 +425,34 @@ MobileToolbarWithAllVariants.parameters = {
         },
         source: {
             code: `<MobileToolbar asEmphasis=""/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// TranslatedMobileToolbar
+// -------------------------------------------------------------
+export const TranslatedMobileToolbar = Template.bind({});
+TranslatedMobileToolbar.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "mobileToolbar",
+        dictionary: dictionary,
+    },
+};
+TranslatedMobileToolbar.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in MobileToolbar. ",
+        },
+        source: {
+            code: `<TranslatedMobileToolbar {...${JSON.stringify(
+                TranslatedMobileToolbar.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };

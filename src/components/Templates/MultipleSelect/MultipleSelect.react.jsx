@@ -84,6 +84,14 @@ MultipleSelect.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
@@ -109,6 +117,7 @@ MultipleSelect.defaultProps = {
     //=======================================
     asVariant: "primary",
     withColor: null,
+    withTranslation: null,
     withAnimation: null,
     isDisabled: false,
     isHidden: false,

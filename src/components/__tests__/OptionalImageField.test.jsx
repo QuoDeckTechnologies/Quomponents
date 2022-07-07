@@ -12,6 +12,13 @@ describe("OptionalImageField", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
+  const dictionary = JSON.stringify({
+    hi: {
+      optionalImageField: {
+        title: "अपलोड",
+      },
+    },
+  });
   const parts = [
     new Blob(["construct a file..."], {}),
     "blob",
@@ -46,20 +53,84 @@ describe("OptionalImageField", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when content prop is null", () => {
+  it("should render correctly when passed withAnimation props", () => {
     component.setProps({
-      content: null,
+      withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      },
     });
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when using withColor prop", () => {
+  it("should render correctly when passed withTranslation props", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "optionalImageField",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withColor", () => {
     component.setProps({
       withColor: {
-        backgroundColor: "red",
-        accentColor: "red",
-        textColor: "red",
+        backgroundColor: "#ffffff",
+        accentColor: "#ffffff",
+        textColor: "#ffffff",
       },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isFluid props is true", () => {
+    component.setProps({
+      isFluid: true,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isFluid props is false", () => {
+    component.setProps({
+      isFluid: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isHidden props is false", () => {
+    component.setProps({
+      isHidden: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isHidden props is true", () => {
+    component.setProps({
+      isHidden: true,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isDisabled props is true", () => {
+    component.setProps({
+      isDisabled: true,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isDisabled props is false", () => {
+    component.setProps({
+      isDisabled: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when content prop is null", () => {
+    component.setProps({
+      content: null,
     });
     expect(component.exists()).toBe(true);
   });

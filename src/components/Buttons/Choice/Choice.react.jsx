@@ -182,7 +182,6 @@ export default function Choice(props) {
 	let text2 = options[1]?.text;
 	let tObj = getTranslation(props.withTranslation);
 	if (
-		options &&
 		props.withTranslation &&
 		props.withTranslation.lang !== "" &&
 		props.withTranslation.lang !== "en"

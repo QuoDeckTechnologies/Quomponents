@@ -1,10 +1,12 @@
 import React from "react";
 import NavBar from "../components/NavBar/NavBar/NavBar.react";
 import ShortLogo from "../assets/amplayfier-logo-short.png"
+
 const dictionary = JSON.stringify({
     hi: {
-        navbar: {
+        navBar: {
             title: "कमाये",
+            content: "कॅटलॉग",
         },
     },
 });
@@ -120,7 +122,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "navbar",
+        tgt: "navBar",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -157,6 +159,11 @@ UserNavbar.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "navBar",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -222,7 +229,6 @@ AllVariants.parameters = {
         },
     },
 }
-
 //-------------------------------------------------------------
 // Animated Navbar
 // -------------------------------------------------------------
@@ -257,7 +263,7 @@ TranslatedNavBar.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "navbar",
+        tgt: "navBar",
         dictionary: dictionary,
     },
 };

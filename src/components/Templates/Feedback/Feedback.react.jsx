@@ -6,6 +6,7 @@ import _ from "lodash";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
     resolveImage
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -75,6 +76,14 @@ Feedback.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
@@ -99,6 +108,7 @@ Feedback.defaultProps = {
     asVariant: "warning",
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
     isDisabled: false,
     isHidden: false,
 };
@@ -138,6 +148,23 @@ export default function Feedback(props) {
         hoverBackgroundColor: withColor?.buttonHoverBackgroundColor,
         hoverTextColor: withColor?.buttonHoverTextColor
     }
+    //-------------------------------------------------------------------
+    // 5. Translate the text objects in case their is a dictionary provided
+    //-------------------------------------------------------------------
+    let correct = "Correct!";
+    let incorrect = "Incorrect!";
+    let thankyou = "Thank You!";
+    let tObj;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        correct = tObj?.correct
+        incorrect = tObj?.incorrect
+        thankyou = tObj?.thankyou
+    }
 
     let refinedFeedback = _.map(data?.feedback, (fb, index) => {
         var res = {
@@ -149,21 +176,21 @@ export default function Feedback(props) {
         if (index === 0) {
             res = {
                 ...res,
-                header: "Correct!",
+                header: correct,
                 icon: "fa fa-check",
                 colorClass: "qui-feedback-correct",
             };
         } else if (index === 1) {
             res = {
                 ...res,
-                header: "Incorrect!",
+                header: incorrect,
                 icon: "fa fa-times",
                 colorClass: "qui-feedback-incorrect"
             };
         } else {
             res = {
                 ...res,
-                header: "Thank You!",
+                header: thankyou,
                 icon: "fa fa-thumbs-up",
                 colorClass: "qui-feedback-thank-you"
             };
@@ -223,8 +250,7 @@ export default function Feedback(props) {
                             </div>
                             <div className="qui-feedback-button">
                                 <Button
-                                    {...props}
-                                    content={"Continue"}
+                                    content={tObj?.button || "Continue"}
                                     onClick={props.onClick}
                                     asVariant={asVariant}
                                     asFloated={"inline"}

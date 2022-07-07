@@ -2,33 +2,50 @@
   border-top-right-radius: 1.5em;
   border-top-left-radius: 1.5em;
   border-bottom-right-radius: 1.5em;
-  border-bottom-left-radius: 1.5em; 
+  border-bottom-left-radius: 1.5em;
 }
+
 .qui-iconContainer {
-  display:flex;
-  align-items:center;
-  height:100%;
-  padding-right:1em;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-right: 1em;
 }
+
+.qui .qui-labql {
+  display: flex;
+  padding-left: 1em;
+}
+
+.qui .qui-menu-block-seperator {
+  margin-right: 0.5em;
+}
+
 .qui .qui-container.size-tiny.qui-menuBlock {
   height: 2em;
 }
+
 .qui .qui-container.size-small.qui-menuBlock {
   height: 2.5em;
 }
+
 .qui .qui-container.size-normal.qui-menuBlock {
   height: 3em;
 }
+
 .qui .qui-container.size-big.qui-menuBlock {
   height: 3.5em;
 }
+
 .qui .qui-container.size-huge.qui-menuBlock {
   height: 4em;
 }
+
 .qui .qui-container.size-massive.qui-menuBlock {
   height: 5em;
   min-width: 7.75em;
 }
+
 .qui-main-container .qui-iconContainer {
-  padding:0;
+  padding: 0;
 }

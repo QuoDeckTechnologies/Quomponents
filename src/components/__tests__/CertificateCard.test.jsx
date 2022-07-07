@@ -17,7 +17,7 @@ describe('CertificateCard',()=>{
     let component;
     const dictionary = JSON.stringify({
         hi: {
-          CertificateCard: {
+          certificateCard: {
             text: {
               notstarted: "शुरू नही हुआ",
               inprogress: "चालू है",
@@ -72,7 +72,7 @@ describe('CertificateCard',()=>{
               },
             withTranslation: {
                 lang: "hi",
-                tgt: "CertificateCard",
+                tgt: "certificateCard",
                 dictionary: dictionary,
             }
         });

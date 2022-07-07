@@ -29,7 +29,7 @@ describe("Option Item Two", () => {
       <OptionItemTwo
         content={{
           targetName: "name",
-          value: "",
+          value: "value",
           image: {},
           placeholder: "placeholder",
           checked: false,
@@ -47,9 +47,9 @@ describe("Option Item Two", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onInput={() => { }}
-        onSelect={() => { }}
-        onClick={() => { }}
+        onInput={() => {}}
+        onSelect={() => {}}
+        onClick={() => {}}
       />
     );
   });
@@ -128,10 +128,10 @@ describe("Option Item Two", () => {
           placeholder: "placeholder",
           checked: false,
         }}
-        onInput={() => { }}
-        onSelect={() => { }}
-        onUpload={() => { }}
-        onClick={() => { }}
+        onInput={() => {}}
+        onSelect={() => {}}
+        onUpload={() => {}}
+        onClick={() => {}}
       />
     );
     expect(component.exists()).toBe(true);
@@ -152,7 +152,7 @@ describe("Option Item Two", () => {
   });
 
   it("should render correctly without throwing error when wriiten in input field", () => {
-    component.find("InputField").simulate("click");
+    component.find("InputField").simulate("submit");
   });
 
   it("should render correctly without throwing error when radio button is used", () => {

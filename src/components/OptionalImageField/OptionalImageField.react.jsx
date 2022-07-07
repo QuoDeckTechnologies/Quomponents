@@ -3,7 +3,11 @@ import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Button from "@mui/material/Button";
-import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
+import {
+  getQuommons,
+  getAnimation,
+  getTranslation,
+} from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./OptionalImageField.scss";
@@ -62,8 +66,16 @@ OptionalImageField.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-  Use to show/hide the component
-  */
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
+   Use to show/hide the component
+   */
   isHidden: PropTypes.bool,
   /**
   Use to enable/disable the component
@@ -91,6 +103,7 @@ OptionalImageField.defaultProps = {
   //=======================================
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
   isHidden: false,
   isDisabled: false,
   isFluid: false,
@@ -138,11 +151,15 @@ export default function OptionalImageField(props) {
   //-------------------------------------------------------------------
   let colors = props.withColor ? getColors(props.withColor) : {};
   //-------------------------------------------------------------------
-  // 5. Get animation of the component
+  // 5. Translate the text objects in case their is a dictionary provided
+  //-------------------------------------------------------------------
+  let tObj = getTranslation(props.withTranslation);
+  //-------------------------------------------------------------------
+  // 6. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 6. File upload handlers
+  // 7. File upload handlers
   //-------------------------------------------------------------------
   const uploadFile = () => {
     fileRef.current.click();
@@ -227,7 +244,7 @@ export default function OptionalImageField(props) {
             style={colors.button}
             onClick={uploadFile}
           >
-            {content?.title ? content.title : "Upload"}
+            {tObj?.title || content?.title || "Upload"}
           </Button>
         </div>
       </div>

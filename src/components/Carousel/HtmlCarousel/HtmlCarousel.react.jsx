@@ -82,7 +82,7 @@ export default function HtmlCarousel(props) {
                         <div className="qui-html-slide-container"
                             key={"slider-" + index + Math.random()}>
                             <div className={`qui-html-slide`}>
-                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} />
+                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} withTranslation={props.withTranslation} />
                             </div>
                         </div>
                     );

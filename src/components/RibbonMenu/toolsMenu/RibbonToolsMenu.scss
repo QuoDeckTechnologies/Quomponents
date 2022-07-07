@@ -14,7 +14,7 @@
     }
 
     .qui .qui-iconlink .qui-iconlink-icon:hover {
-        color: #000
+        color: #000;
     }
 }
 
@@ -76,7 +76,7 @@
     }
 
     .qui .qui-iconlink .qui-iconlink-icon:hover {
-        color: #000
+        color: #000;
     }
 }
 
@@ -128,7 +128,7 @@
     }
 
     .qui .qui-iconlink .qui-iconlink-icon:hover {
-        color: #000
+        color: #000;
     }
 }
 
@@ -161,8 +161,13 @@
     width: 100px;
 }
 
+.qui-vo-section-right-container-parent {
+    display: flex;
+    flex-direction: column;
+}
+
 .qui-vo-section-right-content {
-    width: 130px;
+    min-width: 130px;
     display: flex;
     align-items: center;
     font-size: 0.8em;

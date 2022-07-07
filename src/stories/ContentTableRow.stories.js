@@ -1,6 +1,43 @@
 import React from "react";
 import ContentTableRow from "../components/ContentTableRow/ContentTableRow.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    contentTableRow: {
+      menuData: [
+        {
+          title: "डेक खोले",
+          icon: "fas fa-book-open",
+        },
+        {
+          title: "डेक संपादित करें",
+          icon: "fas fa-edit",
+        },
+        {
+          title: "डेक ऊपर ले जाएँ",
+          icon: "fas fa-chevron-up",
+        },
+        {
+          title: "डेक नीचे ले जाएँ",
+          icon: "fas fa-chevron-down",
+        },
+        {
+          title: "विषय पर जाएं",
+          icon: "fas fa-retweet",
+        },
+        {
+          title: "डेक अप्रकाशित करें",
+          icon: "fas fa-eye-slash",
+        },
+        {
+          title: "डेक हटाएं",
+          icon: "fas fa-trash-alt",
+        },
+      ],
+    },
+  },
+});
+
 export default {
   title: "Design System/ContentTableRow/ContentTableRow",
   component: ContentTableRow,
@@ -26,6 +63,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -116,6 +163,11 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "contentTableRow",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -126,7 +178,32 @@ Default.parameters = {
     },
   },
 };
-
+// -------------------------------------------------------------
+// Translated content table row
+// -------------------------------------------------------------
+export const TranslatedContentTableRow = Template.bind({});
+TranslatedContentTableRow.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "contentTableRow",
+    dictionary: dictionary,
+  },
+};
+TranslatedContentTableRow.parameters = {
+  docs: {
+    description: {
+      story: "Use to change the language that the text appears in.",
+    },
+    source: {
+      code: `<ContentTableRow {...${JSON.stringify(
+        TranslatedContentTableRow.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
 // -------------------------------------------------------------
 // ContentTableRow
 // -------------------------------------------------------------

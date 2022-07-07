@@ -1,13 +1,14 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
+import React from 'react';
 import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import SquareCarousel from '../Carousel/SquareCarousel/SquareCarousel.react'
+import BannerCarousel from '../Carousel/BannerCarousel/BannerCarousel.react'
 
-describe('SquareCarousel', () => {
+describe('BannerCarousel', () => {
     let component, content;
     const dictionary = JSON.stringify({
         hi: {
@@ -25,21 +26,34 @@ describe('SquareCarousel', () => {
         tag: "new",
         header: "Component",
         content: "subtitle",
-        props: null
     }]
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
-            <SquareCarousel
+            <BannerCarousel
                 content={content}
                 onClick={() => console.log("Tesing Carousel")}
             />
         );
     });
-    it("should render correctly without throwing error",
-        () => {
-            expect(component.exists()).toBe(true);
-        });
+    it("should render correctly without throwing error", () => {
+        expect(component.exists()).toBe(true);
+    });
+    it('should render correctly when content passed ', () => {
+        component.setProps({
+            content: [{
+                image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
+                tag: "new",
+                header: "Component",
+                content: "subtitle",
+            }, {
+                image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
+                tag: "new",
+                header: "Component",
+                content: "subtitle",
+            }]
+        })
+    });
     it("should render translation  with withTranslation prop with no purpose passed ", () => {
         component.setProps({
             data: {

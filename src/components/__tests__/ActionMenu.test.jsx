@@ -12,6 +12,21 @@ describe("ActionMenu", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
+  const dictionary = JSON.stringify({
+    hi: {
+      actionMenu: {
+        content: [
+          { title: "डेक खोलो" },
+          { title: "डेक संपादित करें" },
+          { title: "डेक ऊपर ले जाएँ" },
+          { title: "डेक नीचे ले जाएँ" },
+          { title: "विषय पर जाएं" },
+          { title: "डेक को अप्रकाशित करें" },
+          { title: "डेक हटाएं" },
+        ]
+      },
+    },
+  });
   let handelevent = jest.fn();
   beforeEach(() => {
     jest.resetAllMocks();
@@ -56,6 +71,7 @@ describe("ActionMenu", () => {
         ]}
         withColor={null}
         withAnimation={null}
+        withTranslation={null}
         isDisabled={false}
         isHidden={false}
         onClick={() => { }}
@@ -84,6 +100,26 @@ describe("ActionMenu", () => {
       delay: 0,
     };
     component.setProps({ withAnimation: animation });
+    expect(component.exists()).toBe(true);
+  });
+  it("should render correctly with withTranslation prop", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "actionMenu",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+  it("should render correctly without tgt", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: null,
+        dictionary: dictionary,
+      },
+    });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly when passed isHidden props as true", () => {

@@ -10,6 +10,17 @@ import PortraitCarousel from '../Carousel/PortraitCarousel/PortraitCarousel.reac
 
 describe('PortraitCarousel', () => {
     let component, content;
+    const dictionary = JSON.stringify({
+        hi: {
+            bannerCard: { header: "", content: "" },
+            ribbon: {
+                new: "नया",
+                restricted: "प्रतिबंधित",
+                premium: "अधिमूल्य",
+                free: "नि: शुल्क"
+            }
+        },
+    });
     content = [{
         image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
         tag: "new",
@@ -61,5 +72,17 @@ describe('PortraitCarousel', () => {
     it('should render and handle click event slickNext on next arrow', () => {
         const wrapper = shallow(<PortraitCarousel onClick={() => console.log("Testing slickNext")} />);
         wrapper.find(".qui-portrait-slick-next").simulate('click');
+    });
+    it("should render translation  with withTranslation prop with no purpose passed ", () => {
+        component.setProps({
+            data: {
+                purpose: "",
+            },
+            withTranslation: {
+                lang: "hi",
+                tgt: "bannerCard",
+                dictionary: dictionary,
+            },
+        });
     });
 })

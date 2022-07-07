@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Backdrop from "@mui/material/Backdrop";
 import _ from "lodash";
-import { getQuommons } from "../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ArcMenu.scss";
@@ -60,12 +60,20 @@ ArcMenu.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to override component colors of menu when `menuType` is `menu`
-    */
+  Use to override component colors of menu when `menuType` is `menu`
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
+  }),
+  /**
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
   }),
   /**
   Use to enable/disable the component
@@ -95,6 +103,7 @@ ArcMenu.defaultProps = {
   // Quommon props
   //=======================================
   withColor: null,
+  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
@@ -160,7 +169,11 @@ export default function ArcMenu(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "arc-menu");
   //-------------------------------------------------------------------
-  // 3. Get icon for button
+  // 3. Translate the text objects in case their is a dictionary provided
+  //-------------------------------------------------------------------
+  let tObj = getTranslation(props.withTranslation);
+  //-------------------------------------------------------------------
+  // 4. Get icon for button
   //-------------------------------------------------------------------
   const getIcon = (icon) => {
     if (icon === "menu") {
@@ -187,11 +200,11 @@ export default function ArcMenu(props) {
     );
   };
   //-------------------------------------------------------------------
-  // 4. Get menu according to menuType selected
+  // 5. Get menu according to menuType selected
   //-------------------------------------------------------------------
   const getMenu = (menu) => {
     if (menu === "menu") {
-      return _.map(menuContent, (dataObj, i) => {
+      return _.map(tObj?.menuContent || menuContent, (dataObj, i) => {
         return (
           <div
             className={`qui-menu-button qui-arc-menu-header ${quommonClasses.childClasses}`}

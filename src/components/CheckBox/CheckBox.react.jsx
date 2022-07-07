@@ -3,7 +3,11 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { Checkbox } from "@mui/material";
-import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
+import {
+  getQuommons,
+  getAnimation,
+  getTranslation,
+} from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./CheckBox.scss";
@@ -61,8 +65,16 @@ CheckBox.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-  Use to show/hide the component
-  */
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
+    Use to show/hide the component
+    */
   isHidden: PropTypes.bool,
   /**
   Use to enable/disable the component
@@ -88,6 +100,7 @@ CheckBox.defaultProps = {
   asFloated: "left",
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
   isHidden: false,
   isDisabled: false,
 };
@@ -100,7 +113,7 @@ export default function CheckBox(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring name, checked, label and withColor prop
   //-------------------------------------------------------------------
-  const { withColor, name, checked, label } = props;
+  const { content, withColor, name, checked, label } = props;
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
@@ -113,11 +126,15 @@ export default function CheckBox(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "check-box");
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 4. Translate the text objects in case their is a dictionary provided
+  //-------------------------------------------------------------------
+  let tObj = getTranslation(props.withTranslation);
+  //-------------------------------------------------------------------
+  // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
   //-------------------------------------------------------------------
-  // 5. Get size of the chekbox
+  // 6. Get size of the chekbox
   //-------------------------------------------------------------------
   const getSize = () => {
     if (props.asSize === "tiny") return "small";
@@ -156,7 +173,9 @@ export default function CheckBox(props) {
           htmlFor={`qui-check-box-element-${name}`}
           className="qui-check-box-element"
         >
-          <h4 style={{ color: withColor?.textColor }}>{label}</h4>
+          <h4 style={{ color: withColor?.textColor }}>
+            {tObj?.label || label}
+          </h4>
         </label>
       </div>
     </motion.div>
