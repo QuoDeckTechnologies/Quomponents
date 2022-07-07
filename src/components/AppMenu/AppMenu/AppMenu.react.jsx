@@ -14,6 +14,13 @@ import Avatar from "../Avatar/Avatar.react";
 
 AppMenu.propTypes = {
   //=======================================
+  // Component Specific props
+  //=======================================
+  /**
+  Use for rounded corners or circular icon button 
+  */
+  isCircular: PropTypes.bool,
+  //=======================================
   // Quommon props
   //=======================================
   /**
@@ -49,7 +56,7 @@ AppMenu.propTypes = {
     textColor: PropTypes.string,
   }),
   /**
-  Use to add a heading label, a footer caption or a title popover to the component
+  Use to add text title in the component
   */
   withLabel: PropTypes.shape({
     content: PropTypes.string,
@@ -84,6 +91,10 @@ AppMenu.propTypes = {
 
 AppMenu.defaultProps = {
   //=======================================
+  // Component Specific props
+  //=======================================
+  isCircular: true,
+  //=======================================
   // Quommon props
   //=======================================
   asVariant: "primary",
@@ -110,7 +121,8 @@ export default function AppMenu(props) {
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "AppMenu");
+  let quommonClasses = getQuommons(props, "app-menu");
+  if (props.isCircular) quommonClasses.childClasses += ` is-circular`;
   //-------------------------------------------------------------------
   // 3. Set the color
   //-------------------------------------------------------------------
@@ -133,38 +145,46 @@ export default function AppMenu(props) {
   // ========================= Render Function =================================
 
   return (
-    <div className={`qui ${quommonClasses.parentClasses}`}>
-      <div className="qui-main-container">
+    <div
+      className={`qui ${quommonClasses.parentClasses} ${
+        props.isCircular ? "qui-app-menu-circular" : ""
+      } qt-shadow`}
+    >
+      <div className="qui-app-menu-container">
         <div
           style={colors}
-          className={`qui-container qui-menuBlock qui-btn size-${props.asSize} 
-            variant-${props.asVariant} emp-${props.asEmphasis} `}
+          className={`qui-app-menu-inner-container qui-btn ${quommonClasses.childClasses} `}
         >
-          <div className="qui-iconContainer">
-            <div className="qui-catalogContainer">
+          <div className="qui-app-menu-icon-container">
+            <div className="qui-app-menu-catalog-container">
               {tObj || props.withLabel?.content ? (
-                <p className="qui-catalogLabel">
-                  {tObj?.content || withLabel?.content}{" "}
+                <p className="qui-app-menu-catalog-label">
+                  {tObj ? tObj.content : withLabel?.content}{" "}
                 </p>
               ) : null}
             </div>
           </div>
         </div>
-        <div className={`qui-appMenuContainer float-${props.asFloated}`}>
+        <div
+          className={`qui-app-menu-avatar-container float-${props.asFloated}`}
+        >
           <div
             style={colors}
-            className={`qui-appMenuAvatar qui-btn variant-${props.asVariant}`}
+            className={`qui-app-menu-avatar qui-btn variant-${props.asVariant}`}
           >
             <Avatar
               {...props}
-              withIcon={props.withIcon}
+              withIcon={
+                props.withIcon ? props.withIcon : { icon: "fas fa-user" }
+              }
             />
           </div>
-          <div className="qui-menuIconContainer">
+          <div className="qui-app-menu-icon-container">
             <MenuBlock
               {...props}
               withIcon={{ icon: "fas fa-ellipsis-v" }}
               withLabel={{ content: "" }}
+              withTranslation={null}
             />
           </div>
         </div>

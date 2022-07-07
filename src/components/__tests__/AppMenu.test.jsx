@@ -31,7 +31,6 @@ describe("AppMenu", () => {
         withIcon={null}
         isHidden={false}
         isDisabled={false}
-        withUser={""}
         onClick={() => {}}
       />
     );
@@ -67,7 +66,6 @@ describe("AppMenu", () => {
     component.setProps({
       withColor: {
         backgroundColor: "#ffffff",
-        accentColor: "#ffffff",
         textColor: "#ffffff",
       },
     });
@@ -116,7 +114,15 @@ describe("AppMenu", () => {
     component.setProps({
       withLabel: {
         content: "Catalog",
-        textColor: "#000000",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing an error withIcon props is passed", () => {
+    component.setProps({
+      withIcon: {
+        icon: "fas fa-user",
       },
     });
     expect(component.exists()).toBe(true);
@@ -124,6 +130,20 @@ describe("AppMenu", () => {
 
   it("should render correctly without throwing an error if AsSize props is passed", () => {
     component.setProps({ asSize: "huge" });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isCircular props is false", () => {
+    component.setProps({
+      isCircular: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isCircular props is true", () => {
+    component.setProps({
+      isCircular: true,
+    });
     expect(component.exists()).toBe(true);
   });
 });
