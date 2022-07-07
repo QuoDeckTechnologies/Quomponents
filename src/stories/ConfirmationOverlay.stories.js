@@ -2,13 +2,6 @@ import React from "react";
 import ConfirmationOverlay from "../components/ConfirmationOverlay/ConfirmationOverlay.react";
 
 const dictionary = JSON.stringify({
-    en: {
-        confirmationoverlay: {
-            header: "Are you sure you want to do that?",
-            yes: "Yes",
-            no: "No",
-        }
-    },
     hi: {
         confirmationoverlay: {
             header: "क्या वाकई आपकी इसे करने की इच्छा है?",

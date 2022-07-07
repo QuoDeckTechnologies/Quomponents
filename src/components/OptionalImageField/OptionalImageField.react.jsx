@@ -209,7 +209,7 @@ export default function OptionalImageField(props) {
         hidden
       />
       <div
-        className="qui-optional-image-field-wrapper"
+        className={`qui-optional-image-field-wrapper ${quommonClasses.childClasses}`}
         style={colors.iconBoundries}
       >
         {content?.icon && (
@@ -236,8 +236,9 @@ export default function OptionalImageField(props) {
       </div>
       {content?.actionButton && (
         <div
-          className={`qui-optional-image-field-action-icon ${file ? "qui-uploaded" : ""
-            }`}
+          className={`qui-optional-image-field-action-icon ${
+            file ? "qui-uploaded" : ""
+          }`}
           onClick={() => {
             setFile(false);
           }}

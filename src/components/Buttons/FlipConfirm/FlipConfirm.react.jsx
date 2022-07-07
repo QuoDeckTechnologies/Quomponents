@@ -1,18 +1,14 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
-import {
-    getTranslation,
-} from "../../../common/javascripts/helpers";
+import { getTranslation } from "../../../common/javascripts/helpers";
 
 import Button from "../Button/Button.react";
-import ButtonGroup from '@mui/material/ButtonGroup';
+import ButtonGroup from "@mui/material/ButtonGroup";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./FlipConfirm.scss";
 import "../../../common/stylesheets/overrule.scss";
-
-
 
 FlipConfirm.propTypes = {
     //=======================================
@@ -150,8 +146,6 @@ FlipConfirm.propTypes = {
     Button component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
-
-
 };
 
 FlipConfirm.defaultProps = {
@@ -167,7 +161,6 @@ FlipConfirm.defaultProps = {
     asPadded: "normal",
     asFloated: "none",
     asAligned: "center",
-
 
     withConfirmation: null,
     withColor: null,
@@ -215,7 +208,10 @@ export default function FlipConfirm(props) {
             return distance(mx, my, a.x, a.y) - distance(mx, my, b.x, b.y);
         });
 
-        buttonRef.current?.setAttribute("data-direction", directions.shift().id);
+        buttonRef.current?.setAttribute(
+            "data-direction",
+            directions.shift().id
+        );
         setMode(true);
     }
 
@@ -236,14 +232,20 @@ export default function FlipConfirm(props) {
         props.withTranslation.lang !== "en"
     ) {
         let tObj = getTranslation(props.withTranslation);
-        withConfirmation = Object.assign(withConfirmation, tObj)
+        withConfirmation = Object.assign(withConfirmation, tObj);
     }
-
 
     return (
         <div className={`qui-fc-btn-main`}>
-            <div className={`qui-fc-btn ${mode ? "is-open" : ""}`} ref={buttonRef}>
-                <div className={`qui-fc-btn-back ${mode ? "is-enable" : "qui is-hidden"}`}>
+            <div
+                className={`qui-fc-btn ${mode ? "is-open" : ""}`}
+                ref={buttonRef}
+            >
+                <div
+                    className={`qui-fc-btn-back ${
+                        mode ? "is-enable" : "qui is-hidden"
+                    }`}
+                >
                     <p>{withConfirmation?.header}</p>
                     <ButtonGroup>
                         <Button
@@ -262,11 +264,7 @@ export default function FlipConfirm(props) {
                         </Button>
                     </ButtonGroup>
                 </div>
-                <Button
-                    {...props}
-                    onClick={frontClick}
-                >
-                </Button>
+                <Button {...props} onClick={frontClick}></Button>
             </div>
         </div>
     );

@@ -4,300 +4,303 @@
 import { shallow } from "enzyme";
 import renderer, { act } from "react-test-renderer";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import ClozeWithFeedback from "../../Templates/ClozeWithFeedback/ClozeWithFeedback.react";
 import Button from "../../Buttons/Button/Button.react";
 
 describe("ClozeWithFeedback", () => {
-    // -------------------------------------
-    // Setup definitions for the test suite
-    // -------------------------------------
-    let component;
-    const dictionary = JSON.stringify({
-        en: {
-            templateActions: {
-                checkAnswer: 'Check Answer',
-                submitAnswer: 'Submit Answer',
-                thanks: 'Thanks for your response',
-                go: 'Go',
-            }
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: ClozeWithFeedback,
+    required: {
+      data: {
+        title: "This is Title",
+        subtitle: "This is Subtitle",
+        image: {
+          id: "header-image",
+          extention: "",
         },
+        backgroundImage: {
+          id: "background-image",
+          extention: "",
+        },
+        question: "Question",
+        answer: "Answer",
+      },
+      onClick: () => {},
+    },
+    translations: {
+      tgt: "button",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
         hi: {
-            templateActions: {
-                checkAnswer: 'अपना उत्तर जाँच लें',
-                submitAnswer: 'अपना जवाब सबमिट करें',
-                thanks: 'आपके उत्तर के लिए धन्यवाद',
-                go: 'आगे बढ़ें',
-            }
-        }
-    });
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <ClozeWithFeedback
-                data={{
-                    title: "This is Title",
-                    subtitle: "This is Subtitle",
-                    image: {
-                        id: 'header-image',
-                        extention: ""
-                    },
-                    backgroundImage: {
-                        id: 'background-image',
-                        extention: ""
-                    },
-                    question: "Question",
-                    answer: "Answer"
-                }}
-                imageLibrary={[{
-                    id: 'background-image',
-                    image: "test-image1.png"
-                }, {
-                    id: 'header-image',
-                    image: "test-image2.png"
-                }]}
-                slideId={0}
-                asVariant="primary"
-                withColor={null}
-                withTranslation={null}
-                isHidden={false}
-                isDisabled={false}
-            />
-        );
-    });
+          templateActions: {
+            checkAnswer: "अपना उत्तर जाँच लें",
+            submitAnswer: "अपना जवाब सबमिट करें",
+            thanks: "आपके उत्तर के लिए धन्यवाद",
+            go: "आगे बढ़ें",
+          },
+        },
+      }),
+    },
+  };
 
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            questionColor: "#000000",
-            slideHeaderTextColor: "#ffffff",
-            slideHeaderAccentColor: "#AD2929",
-            slideHeaderBackgroundColor: "#AD292980",
-            inputFieldTextColor: "#000000",
-            inputFieldAccentColor: "#AD292980",
-            inputFieldBackgroundColor: "",
-            buttonTextColor: "#AD292980",
-            buttonBackgroundColor: "#000000",
-            buttonHoverBackgroundColor: "#AD292980",
-            buttonHoverTextColor: "#000000",
-            backgroundColor: "#fff",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withAnimation props", () => {
-        let animation = {
-            animation: "zoom",
-            duration: 0.5,
-            delay: 0,
-        }
-        component.setProps({ withAnimation: animation })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render translation of Check Answer with withTranslation prop and when passed purpose as quiz", () => {
-        component.setProps({
-            data: {
-                purpose: "quiz"
-            },
-            withTranslation: {
-                lang: "hi",
-                tgt: "templateActions",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.find(Button).props().content).toBe("अपना उत्तर जाँच लें");
-    });
-
-    it("should render submitAnswer translation with withTranslation prop and when passed nothing in the purpose props", () => {
-        component.setProps({
-            data: {
-                purpose: ""
-            },
-            withTranslation: {
-                lang: "hi",
-                tgt: "templateActions",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.find(Button).props().content).toBe("अपना जवाब सबमिट करें");
-    });
-
-    it("should render correctly if translation object is not returned", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "hi",
-                tgt: "",
-                dictionary: dictionary,
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly if translation object and data is null", () => {
-        component.setProps({
-            data: {
-                purpose: ""
-            },
-            withTranslation: {
-                lang: "mr",
-                tgt: "templateActions",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly if translation object is not defined", () => {
-        component.setProps({
-            data: {
-                purpose: "quiz"
-            },
-            withTranslation: {
-                lang: "mr",
-                tgt: "templateActions",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed answer props as null", () => {
-        component.setProps({ answer: null })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asVariant prop as primary", () => {
-        component.setProps({ asVariant: "primary" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asVariant prop as secondary", () => {
-        component.setProps({ asVariant: "secondary" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asVariant prop as warning", () => {
-        component.setProps({ asVariant: "warning" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asVariant prop as error", () => {
-        component.setProps({ asVariant: "error" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asVariant prop as success", () => {
-        component.setProps({ asVariant: "success" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed image prop as null", () => {
-        let data = {
-            title: "This is Title",
-            subtitle: "This is Subtitle",
-            question: "Question",
-            purpose: "quiz",
-        }
-        component.setProps({ data: data })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly with withColor prop when hovered on Button", () => {
-        const component = renderer.create(
-            <Button
-                withColor={{
-                    buttonTextColor: "ff0023",
-                    buttonBackgroundColor: "ff0ff0",
-                    buttonHoverBackgroundColor: "ffff00",
-                    buttonHoverTextColor: "ff00ff",
-                }}
-                onClick={jest.fn()}
-            />
-        );
-        const tree = component.toJSON();
-        act(() => {
-            tree.props.onMouseEnter();
-        });
-    });
-
-    it("should render correctly when passed backgroundImage prop as null and backgroundColor is passed", () => {
-        let data = {
-            title: "This is Title",
-            subtitle: "This is Subtitle",
-            question: "Question",
-            purpose: "quiz",
-        };
-        let colors = {
-            questionColor: "#000000",
-            slideHeaderTextColor: "#ffffff",
-            slideHeaderAccentColor: "#AD2929",
-            slideHeaderBackgroundColor: "#AD292980",
-            inputFieldTextColor: "#000000",
-            inputFieldAccentColor: "#AD292980",
-            inputFieldBackgroundColor: "",
-            buttonTextColor: "#AD292980",
-            buttonBackgroundColor: "#000000",
-            buttonHoverBackgroundColor: "#AD292980",
-            buttonHoverTextColor: "#000000",
-            backgroundColor: "#fff",
-        };
-        component.setProps({ data: data, withColor: colors })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed backgroundImage prop", () => {
-        let data = {
-            title: "This is Title",
-            subtitle: "This is Subtitle",
-            backgroundImage: {
-                id: 'background-image',
-                extention: ""
-            },
-            question: "Question",
-            purpose: "quiz",
-        }
-        let imageLibrary = [{
+  hasValid("defaults", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+  //--------------------------------------
+  // Run component specific tests
+  // -------------------------------------
+  let component;
+  const dictionary = JSON.stringify({
+    en: {
+      templateActions: {
+        checkAnswer: "Check Answer",
+        submitAnswer: "Submit Answer",
+        thanks: "Thanks for your response",
+        go: "Go",
+      },
+    },
+    hi: {
+      templateActions: {
+        checkAnswer: "अपना उत्तर जाँच लें",
+        submitAnswer: "अपना जवाब सबमिट करें",
+        thanks: "आपके उत्तर के लिए धन्यवाद",
+        go: "आगे बढ़ें",
+      },
+    },
+  });
+  beforeEach(() => {
+    jest.resetAllMocks();
+    component = shallow(
+      <ClozeWithFeedback
+        data={{
+          title: "This is Title",
+          subtitle: "This is Subtitle",
+          image: {
+            id: "header-image",
+            extention: "",
+          },
+          backgroundImage: {
             id: "background-image",
-            image: 'test-image'
-        }];
-        component.setProps({ data: data, imageLibrary: imageLibrary })
-        expect(component.exists()).toBe(true);
-    });
+            extention: "",
+          },
+          question: "Question",
+          answer: "Answer",
+        }}
+        imageLibrary={[
+          {
+            id: "background-image",
+            image: "test-image1.png",
+          },
+          {
+            id: "header-image",
+            image: "test-image2.png",
+          },
+        ]}
+        slideId={0}
+        asVariant="primary"
+        withColor={null}
+        withTranslation={null}
+        isHidden={false}
+        isDisabled={false}
+      />
+    );
+  });
 
-    it('should simulate the submit button', () => {
-        const button = shallow((<ClozeWithFeedback trackInteraction={jest.fn()} />));
-        button.find('Button').simulate('click');
-        expect(component.exists()).toBe(true);
-    });
+  it("should render correctly without throwing error", () => {
+    expect(component.exists()).toBe(true);
+  });
 
-    it('should simulate the input field', () => {
-        component.find('InputField').simulate('submit');
-        expect(component.exists()).toBe(true);
+  it("should render correctly when passed withColor props", () => {
+    let colors = {
+      questionColor: "#000000",
+      slideHeaderTextColor: "#ffffff",
+      slideHeaderAccentColor: "#AD2929",
+      slideHeaderBackgroundColor: "#AD292980",
+      inputFieldTextColor: "#000000",
+      inputFieldAccentColor: "#AD292980",
+      inputFieldBackgroundColor: "",
+      buttonTextColor: "#AD292980",
+      buttonBackgroundColor: "#000000",
+      buttonHoverBackgroundColor: "#AD292980",
+      buttonHoverTextColor: "#000000",
+      backgroundColor: "#fff",
+    };
+    component.setProps({ withColor: colors });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withAnimation props", () => {
+    let animation = {
+      animation: "zoom",
+      duration: 0.5,
+      delay: 0,
+    };
+    component.setProps({ withAnimation: animation });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render translation of Check Answer with withTranslation prop and when passed purpose as quiz", () => {
+    component.setProps({
+      data: {
+        purpose: "quiz",
+      },
+      withTranslation: {
+        lang: "hi",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      },
     });
+    expect(component.find(Button).props().content).toBe("अपना उत्तर जाँच लें");
+  });
+
+  it("should render submitAnswer translation with withTranslation prop and when passed nothing in the purpose props", () => {
+    component.setProps({
+      data: {
+        purpose: "",
+      },
+      withTranslation: {
+        lang: "hi",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.find(Button).props().content).toBe("अपना जवाब सबमिट करें");
+  });
+
+  it("should render correctly if translation object is not returned", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly if translation object and data is null", () => {
+    component.setProps({
+      data: {
+        purpose: "",
+      },
+      withTranslation: {
+        lang: "mr",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly if translation object is not defined", () => {
+    component.setProps({
+      data: {
+        purpose: "quiz",
+      },
+      withTranslation: {
+        lang: "mr",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed image prop as null", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
+      question: "Question",
+      purpose: "quiz",
+    };
+    component.setProps({ data: data });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly with withColor prop when hovered on Button", () => {
+    const component = renderer.create(
+      <Button
+        content="content"
+        withColor={{
+          buttonTextColor: "ff0023",
+          buttonBackgroundColor: "ff0ff0",
+          buttonHoverBackgroundColor: "ffff00",
+          buttonHoverTextColor: "ff00ff",
+        }}
+        onClick={jest.fn()}
+      />
+    );
+    const tree = component.toJSON();
+    act(() => {
+      tree.props.onMouseEnter();
+    });
+  });
+
+  it("should render correctly when passed backgroundImage prop as null and backgroundColor is passed", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
+      question: "Question",
+      purpose: "quiz",
+    };
+    let colors = {
+      questionColor: "#000000",
+      slideHeaderTextColor: "#ffffff",
+      slideHeaderAccentColor: "#AD2929",
+      slideHeaderBackgroundColor: "#AD292980",
+      inputFieldTextColor: "#000000",
+      inputFieldAccentColor: "#AD292980",
+      inputFieldBackgroundColor: "",
+      buttonTextColor: "#AD292980",
+      buttonBackgroundColor: "#000000",
+      buttonHoverBackgroundColor: "#AD292980",
+      buttonHoverTextColor: "#000000",
+      backgroundColor: "#fff",
+    };
+    component.setProps({ data: data, withColor: colors });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed backgroundImage prop", () => {
+    let data = {
+      title: "This is Title",
+      subtitle: "This is Subtitle",
+      backgroundImage: {
+        id: "background-image",
+        extention: "",
+      },
+      question: "Question",
+      purpose: "quiz",
+    };
+    let imageLibrary = [
+      {
+        id: "background-image",
+        image: "test-image",
+      },
+    ];
+    component.setProps({ data: data, imageLibrary: imageLibrary });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should simulate the submit button", () => {
+    const button = shallow(<ClozeWithFeedback trackInteraction={jest.fn()} />);
+    button.find("Button").simulate("click");
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should simulate the input field", () => {
+    component.find("InputField").simulate("submit");
+    expect(component.exists()).toBe(true);
+  });
 });

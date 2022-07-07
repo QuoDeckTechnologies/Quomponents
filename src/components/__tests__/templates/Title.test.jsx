@@ -3,13 +3,41 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import Title from "../../Templates/Title/Title.react";
 
 describe("Title", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: Title,
+    required: {
+      data: {
+        title: "test title",
+        subtitle: "test subtitle",
+        icon: "test-icon",
+        image: {},
+      },
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("variants", args);
+  hasValid("sizes", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
+  hasValid("alignment", args);
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("hidden", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component;
 
@@ -25,10 +53,6 @@ describe("Title", () => {
         }}
       />
     );
-  });
-
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when image is not defined", () => {

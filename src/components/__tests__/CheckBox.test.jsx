@@ -3,57 +3,66 @@
 // -------------------------------------
 import { shallow, mount } from "enzyme";
 import { fireEvent, render, screen } from "@testing-library/react";
+
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import CheckBox from "../CheckBox/CheckBox.react";
 
 describe("CheckBox", () => {
+
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+
+  const args = {
+    target: CheckBox,
+    required: {
+      content: { name: "Default Label", checked: false },
+      onClick: () => { },
+    },
+    translations: {
+      tgt: "checkBox",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          checkBox: {
+            label: "डिफ़ॉल्ट चेकबॉक्स",
+          },
+        },
+      })
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("variants", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
+  hasValid("alignment", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-  const dictionary = JSON.stringify({
-    hi: {
-      checkBox: {
-        label: "डिफ़ॉल्ट चेकबॉक्स",
-      },
-    },
-  });
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
       <CheckBox
         content={{ name: "Default Label", checked: false }}
-        onClick={() => {}}
+        onClick={() => { }}
       />
     );
-  });
-
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withTranslation props", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "checkBox",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when passed withColor", () => {
@@ -62,62 +71,6 @@ describe("CheckBox", () => {
         accentColor: "#ffffff",
         textColor: "#ffffff",
       },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is left", () => {
-    component.setProps({
-      asFloated: "left",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is right", () => {
-    component.setProps({
-      asFloated: "right",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is inline", () => {
-    component.setProps({
-      asFloated: "inline",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is none", () => {
-    component.setProps({
-      asFloated: "none",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props is true", () => {
-    component.setProps({
-      isDisabled: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props is false", () => {
-    component.setProps({
-      isDisabled: false,
     });
     expect(component.exists()).toBe(true);
   });
@@ -142,63 +95,6 @@ describe("CheckBox", () => {
     });
     expect(component.exists()).toBe(true);
   });
-
-  it("should render correctly when asFloated is left", () => {
-    component.setProps({
-      asFloated: "left",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when asFloated is right", () => {
-    component.setProps({
-      asFloated: "right",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when asFloated is none", () => {
-    component.setProps({
-      asFloated: "none",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when asFloated is inline", () => {
-    component.setProps({
-      asFloated: "inline",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props is false", () => {
-    component.setProps({
-      isDisabled: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props is true", () => {
-    component.setProps({
-      isDisabled: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly without throwing error", () => {
     component.setProps({
       content: {
@@ -214,7 +110,7 @@ describe("CheckBox", () => {
     let wrapper = mount(
       <CheckBox
         content={{ name: "Default Label", checked: false }}
-        onClick={() => {}}
+        onClick={() => { }}
       />
     );
     expect(wrapper.exists()).toBe(true);

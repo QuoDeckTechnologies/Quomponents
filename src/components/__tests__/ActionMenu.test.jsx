@@ -2,12 +2,82 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
+
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import ActionMenu from "../ActionMenu/ActionMenu.react";
 
 describe("ActionMenu", () => {
+  const args = {
+    target: ActionMenu,
+    required: {
+      content: [
+        {
+          title: "Open Deck",
+          icon: "fas fa-book-open",
+        },
+        {
+          title: "Edit Deck",
+          icon: "fas fa-edit",
+        },
+        {
+          title: "Move Deck Up",
+          icon: "fas fa-angle-up",
+        },
+        {
+          title: "Move Deck Down",
+          icon: "fas fa-angle-down",
+        },
+        {
+          title: "Move to Topic",
+          icon: "fas fa-square",
+        },
+        {
+          title: "Unpublish Deck",
+          icon: "fas fa-eye-slash",
+        },
+        {
+          title: "Delete Deck",
+          icon: "fas fa-trash",
+        },
+      ],
+      onClick: () => console.log("ActionMenu Testing"),
+    },
+    translations: {
+      tgt: "actionMenu",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          actionMenu: {
+            content: [
+              { title: "डेक खोलो" },
+              { title: "डेक संपादित करें" },
+              { title: "डेक ऊपर ले जाएँ" },
+              { title: "डेक नीचे ले जाएँ" },
+              { title: "विषय पर जाएं" },
+              { title: "डेक को अप्रकाशित करें" },
+              { title: "डेक हटाएं" },
+            ]
+          },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("positions", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -84,44 +154,6 @@ describe("ActionMenu", () => {
       hoverTextColor: "	#00008B",
     };
     component.setProps({ withColor: colors });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    };
-    component.setProps({ withAnimation: animation });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly with withTranslation prop", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "actionMenu",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly without tgt", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: null,
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly if content are not specified", () => {

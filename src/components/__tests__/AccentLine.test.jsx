@@ -25,16 +25,12 @@ describe("AccentLine", () => {
     hasValid("sizes", args);
     hasValid("positions", args);
     hasValid("padding", args);
-    // hasValid("alignment", args);
 
     hasValid("colors", args);
-    // hasValid("labels", args);
     hasValid("animations", args);
-    // hasValid("icons", args);
-    // hasValid("translations", args);
 
-    hasValid("toggles", args);
-
+    hasValid("fluid", args);
+    hasValid("hidden", args);
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------

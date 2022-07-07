@@ -2,7 +2,10 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -10,8 +13,28 @@ import ProgressBar from "../ProgressBar/ProgressBar.react";
 
 describe("ProgressBar", () => {
     // -------------------------------------
-    // Setup definitions for the test suite
+    // Run common tests
     // -------------------------------------
+
+    const args = {
+        target: ProgressBar,
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("variants", args);
+    hasValid("sizes", args);
+
+    hasValid("colors", args);
+    hasValid("animations", args);
+
+    hasValid("hidden", args);
+    hasValid("disabled", args);
+
+    // -------------------------------------
+    // Run component specific tests
+    // -------------------------------------
+
     let component;
     let increment = jest.fn();
     let decrement = jest.fn();

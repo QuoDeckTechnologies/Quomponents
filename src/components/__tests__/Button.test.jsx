@@ -2,6 +2,8 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
+import renderer, { act } from "react-test-renderer";
+
 
 //--------------------------------------
 // Import Common Tests
@@ -21,7 +23,7 @@ describe("Button", () => {
     const args = {
         target: Button,
         required: {
-            content: "Testing Button",
+            content: "",
             onClick: () => console.log("Button Testing"),
         },
         translations: {
@@ -86,6 +88,65 @@ describe("Button", () => {
     it("should render correctly with asEmphasis", () => {
         component.setProps({
             asEmphasis: "outlined",
+        });
+        expect(component.exists()).toBe(true);
+    }); it("should render correctly with asEmphasis `outlined`", () => {
+        component.setProps({
+            asEmphasis: "outlined",
+            isDisabled: true,
+            withColor: {
+                backgroundColor: "#ffc900",
+                textColor: "#666666",
+                hoverBackgroundColor: "#666666",
+                hoverTextColor: "#ffc900",
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when hovered", () => {
+        const component = renderer.create(
+            <Button onClick={() => console.log("testing")} />
+        );
+        const tree = component.toJSON();
+        act(() => {
+            tree.props.onMouseEnter();
+            tree.props.onMouseLeave();
+        });
+    });
+
+    it("should render correctly with withColor prop when hovered", () => {
+        const component = renderer.create(
+            <Button
+                withColor={{
+                    backgroundColor: "#ffc900",
+                    textColor: "#666666",
+                    hoverBackgroundColor: "#666666",
+                    hoverTextColor: "#ffc900",
+                }}
+                onClick={() => console.log("testing")}
+            />
+        );
+        const tree = component.toJSON();
+        act(() => {
+            tree.props.onMouseEnter();
+        });
+    });
+    it("should render correctly with isCircular set and empty content", () => {
+        component.setProps({
+            isCircular: true,
+            content: "",
+            withIcon: {
+                icon: "fas",
+            },
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly with content", () => {
+        component.setProps({
+            content: "",
+            children: "Children",
         });
         expect(component.exists()).toBe(true);
     });

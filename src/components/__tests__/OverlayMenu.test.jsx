@@ -3,6 +3,10 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
 import { render } from "@testing-library/react";
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
 
 // Import Components
 // -------------------------------------
@@ -10,8 +14,36 @@ import OverlayMenu from "../OverlayMenu/OverlayMenu.react";
 
 describe("OverlayMenu", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
+
+  const args = {
+    target: OverlayMenu,
+    required: {
+      content: [],
+      onClick: () => { },
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("variants", args);
+  hasValid("sizes", args);
+  hasValid("positions", args);
+
+  hasValid("colors", args);
+  hasValid("labels", args);
+  hasValid("animations", args);
+  hasValid("icons", args);
+  //hasValid("translations", args);
+
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
+
   let component;
   const dictionary = JSON.stringify({
     hi: {
@@ -51,9 +83,6 @@ describe("OverlayMenu", () => {
         onClose={() => { }}
       />
     );
-  });
-  it("OverlayMenu should render correctly without throwing an error", () => {
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when component mounts", () => {
@@ -138,10 +167,6 @@ describe("OverlayMenu", () => {
 
   it("OverlayMenu should render correctly without throwing an error if Avatar is present", () => {
     expect(component.find("Avatar").exists()).toBe(true);
-  });
-
-  it("OverlayMenu should render correctly without throwing an error if i tag is present", () => {
-    expect(component.find("i").exists()).toBe(true);
   });
 
   it("OverlayMenu should render correctly if pass withLabel caption  ", () => {

@@ -3,22 +3,47 @@
 // -------------------------------------
 import { mount } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import OptionalImageField from "../OptionalImageField/OptionalImageField.react";
 
 describe("OptionalImageField", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
-  let component;
-  const dictionary = JSON.stringify({
-    hi: {
-      optionalImageField: {
-        title: "अपलोड",
-      },
+
+  const args = {
+    target: OptionalImageField,
+    required: {
+      onClick: () => { },
     },
-  });
+    translations: {
+      tgt: "optionalImageField",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          title: "अपलोड",
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+  hasValid("fluid", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
+
+  let component;
   const parts = [
     new Blob(["construct a file..."], {}),
     "blob",
@@ -45,45 +70,9 @@ describe("OptionalImageField", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => {}}
+        onClick={() => { }}
       />
     );
-  });
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withTranslation props", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "optionalImageField",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withColor", () => {
-    component.setProps({
-      withColor: {
-        backgroundColor: "#ffffff",
-        accentColor: "#ffffff",
-        textColor: "#ffffff",
-      },
-    });
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when passed isFluid props is true", () => {
@@ -96,41 +85,6 @@ describe("OptionalImageField", () => {
   it("should render correctly when passed isFluid props is false", () => {
     component.setProps({
       isFluid: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props is true", () => {
-    component.setProps({
-      isDisabled: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props is false", () => {
-    component.setProps({
-      isDisabled: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when content prop is null", () => {
-    component.setProps({
-      content: null,
     });
     expect(component.exists()).toBe(true);
   });

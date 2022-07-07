@@ -2,10 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import {
-    getQuommons,
-    getAnimation,
-} from "../../common/javascripts/helpers";
+import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -13,89 +10,89 @@ import "./TextBlock.scss";
 import "../../common/stylesheets/overrule.scss";
 
 TextBlock.propTypes = {
-    //=======================================
-    // Component Specific props
-    //======================================
-    /**
+  //=======================================
+  // Component Specific props
+  //======================================
+  /**
     toggle the conversation prop to see the component as chat conversation
     */
-    conversation: PropTypes.bool,
-    /**
+  conversation: PropTypes.bool,
+  /**
     TextBlock Text has to be in content or passed as string to the component.
     */
-    content: PropTypes.string,
+  content: PropTypes.string,
 
-    /**
+  /**
     Use to toggle position of text-block conversation
     */
-    position: PropTypes.oneOf([
-        "right-top",
-        "right-bottom",
-        "left-top",
-        "left-bottom",
-    ]),
-    // Quommon props
-    //=======================================
-    /**
+  position: PropTypes.oneOf([
+    "right-top",
+    "right-bottom",
+    "left-top",
+    "left-bottom",
+  ]),
+  // Quommon props
+  //=======================================
+  /**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
-    /**
+  asFloated: PropTypes.oneOf(["left", "right", "inline", "none"]),
+  /**
     Use to define component text size in increasing order
     */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
+  asSize: PropTypes.oneOf([
+    "tiny",
+    "small",
+    "normal",
+    "big",
+    "huge",
+    "massive",
+  ]),
+  /**
     Use to override component colors and behavior
     */
-    withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-        textColor: PropTypes.string,
-    }),
-    /**
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
+  }),
+  /**
     Use to define the entry animation of the component
     */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
-    }),
-    /**
+  withAnimation: PropTypes.shape({
+    animation: PropTypes.oneOf([
+      "zoom",
+      "collapse",
+      "fade",
+      "slideDown",
+      "slideUp",
+      "slideLeft",
+      "slideRight",
+    ]),
+    duration: PropTypes.number,
+    delay: PropTypes.number,
+  }),
+  /**
     Use to show/hide the component
     */
-    isHidden: PropTypes.bool,
+  isHidden: PropTypes.bool,
 };
 
 TextBlock.defaultProps = {
-    // Component Specific props
-    //=======================================
-    content: "",
-    position: "left-top",
-    conversation: false,
-    // Quommon props
-    //=======================================
-    asFloated: "inline",
-    asSize: "normal",
+  // Component Specific props
+  //=======================================
+  content: "",
+  position: "left-top",
+  conversation: false,
+  // Quommon props
+  //=======================================
+  asFloated: "inline",
+  asSize: "normal",
 
-    withColor: null,
-    withAnimation: null,
+  withColor: null,
+  withAnimation: null,
 
-    isHidden: false,
-    isDisabled: false,
+  isHidden: false,
+  isDisabled: false,
 };
 /**
 ## Notes
@@ -106,56 +103,68 @@ TextBlock.defaultProps = {
 - Conversation props passed as true/false
 **/
 export default function TextBlock(props) {
-    let { content } = props
-    //-------------------------------------------------------------------
-    // 1. Set the classes
-    //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "text-block");
-    //-------------------------------------------------------------------
-    // 2. Get custom styling 
-    //-------------------------------------------------------------------
-    const getArrowPosition = (position) => {
-        if (position === "right-bottom") {
-            return "qui-arrow-right-bottom";
-        }
-        if (position === "left-bottom") {
-            return "qui-arrow-left-bottom";
-        }
-        if (position === "right-top") {
-            return "qui-arrow-right-top";
-        }
-        else {
-            return "qui-arrow-left-top";
-        }
-    };
-    if (content === "") {
-        return props.isHidden === true
+  let { content } = props;
+  //-------------------------------------------------------------------
+  // 1. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "text-block");
+  //-------------------------------------------------------------------
+  // 2. Get custom styling
+  //-------------------------------------------------------------------
+  const getArrowPosition = (position) => {
+    if (position === "right-bottom") {
+      return "qui-arrow-right-bottom";
     }
-    //-------------------------------------------------------------------
-    // 3. Get animation of the component
-    //-------------------------------------------------------------------
-    const animate = getAnimation(props);
+    if (position === "left-bottom") {
+      return "qui-arrow-left-bottom";
+    }
+    if (position === "right-top") {
+      return "qui-arrow-right-top";
+    } else {
+      return "qui-arrow-left-top";
+    }
+  };
+  //-------------------------------------------------------------------
+  // 3. Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props);
 
-    // ========================= Render Function =================================
-    return (
-        <motion.div
-            initial={animate.from}
-            animate={animate.to}
-            className={`qui qui-text-block-container ${quommonClasses.parentClasses}`}>
-            <div className={`qui-text-block-area`} style={{ backgroundColor: props.withColor?.backgroundColor }}>
-                <div className={`qui-block-text size-${props.asSize} ${quommonClasses.childClasses} `} style={{ color: props.withColor?.textColor }} >
-                    {content}
-                </div>
+  // ========================= Render Function =================================
+  return (
+    <motion.div
+      initial={animate.from}
+      animate={animate.to}
+      className={`qui qui-text-block-container ${quommonClasses.parentClasses}`}
+    >
+      {content && (
+        <div className={`${quommonClasses.childClasses}`}>
+          <div
+            className={`qui-text-block-area`}
+            style={{ backgroundColor: props.withColor?.backgroundColor }}
+          >
+            <div
+              className={`qui-block-text`}
+              style={{ color: props.withColor?.textColor }}
+            >
+              {content}
             </div>
-            {props.conversation && <div className={`qui-text-block-tringle`}>
-                <div className={`qui-text-block-chat-arrow ${getArrowPosition(props.position)}`}
-                    style={{
-                        opacity: props.opacity,
-                        borderRightColor: props.withColor?.backgroundColor,
-                        borderLeftColor: props.withColor?.backgroundColor
-                    }}>
-                </div>
-            </div>}
-        </motion.div >
-    );
+          </div>
+          {props.conversation && (
+            <div className={`qui-text-block-tringle`}>
+              <div
+                className={`qui-text-block-chat-arrow ${getArrowPosition(
+                  props.position
+                )}`}
+                style={{
+                  opacity: props.opacity,
+                  borderRightColor: props.withColor?.backgroundColor,
+                  borderLeftColor: props.withColor?.backgroundColor,
+                }}
+              ></div>
+            </div>
+          )}
+        </div>
+      )}
+    </motion.div>
+  );
 }

@@ -3,6 +3,10 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import MultipleSelect from "../../Templates/MultipleSelect/MultipleSelect.react";
@@ -10,7 +14,61 @@ import SlideHeader from "../../SlideHeader/SlideHeader.react";
 
 describe("MultipleSelect", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: MultipleSelect,
+    required: {
+      data: {
+        title: "Neque porro quisquam est qui dolorem",
+        subtitle:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+        backgroundImage: { id: "", extention: "" },
+        question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        multiselect: [
+          {
+            name: "Item 1",
+            isSelected: false,
+          },
+          {
+            name: "Item 2",
+            isSelected: false,
+          },
+          {
+            name: "Item 3",
+            isSelected: false,
+          },
+          {
+            name: "Item 4",
+            isSelected: false,
+          },
+        ],
+      },
+      onClick: () => {},
+    },
+    translations: {
+      tgt: "templateActions",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          templateActions: {
+            checkAnswer: "अपना उत्तर जाँच लें",
+            submitAnswer: "अपना जवाब सबमिट करें",
+            thanks: "आपके उत्तर के लिए धन्यवाद",
+            go: "आगे बढ़ें",
+          },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component, data;
   const dictionary = JSON.stringify({
@@ -85,29 +143,7 @@ describe("MultipleSelect", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-
-  it("should render translation of Check Answer with withTranslation prop and when passed purpose as quiz", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "templateActions",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render submitAnswer translation with withTranslation prop and when passed nothing in the purpose props", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "templateActions",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
+  
   it("should render correctly when passed asEmphasis prop as text", () => {
     let colors = {
       slideHeaderTextColor: "#ffffff",
@@ -150,59 +186,6 @@ describe("MultipleSelect", () => {
     };
     component.setProps({ asEmphasis: "outlined" });
     component.setProps({ withColor: colors });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as primary", () => {
-    component.setProps({ asVariant: "primary" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as secondary", () => {
-    component.setProps({ asVariant: "secondary" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as warning", () => {
-    component.setProps({ asVariant: "warning" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as error", () => {
-    component.setProps({ asVariant: "error" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as success", () => {
-    component.setProps({ asVariant: "success" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    };
-    component.setProps({ withAnimation: animation });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
     expect(component.exists()).toBe(true);
   });
 

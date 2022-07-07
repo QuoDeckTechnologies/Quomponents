@@ -114,7 +114,7 @@ export default function IconListItem(props) {
             return (
               <motion.div initial={animate.from} animate={animate.to} key={index}>
                 <div className={`qui-icon-list-item ${quommonClasses.childClasses}`}>
-                  <div className={`qui-icon-list-item-text`} style={{ order: index % 2 === 0 ? 2 : 1, color: withColor.textColor }} >
+                  <div className={`qui-icon-list-item-text`} style={{ order: index % 2 === 0 ? 2 : 1, color: withColor?.textColor }} >
                     {item?.text}
                   </div>
                   <img
@@ -143,7 +143,7 @@ export default function IconListItem(props) {
                     src={resolveImage(item?.image.id, imageLibrary)}
                     alt="iconlist"
                   />
-                  <div className="qui-icon-list-item-text" style={{ color: withColor.textColor }}>
+                  <div className="qui-icon-list-item-text" style={{ color: withColor?.textColor }}>
                     {item?.text}
                   </div>
                 </div>

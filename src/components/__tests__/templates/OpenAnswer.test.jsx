@@ -4,6 +4,10 @@
 import { shallow } from "enzyme";
 import renderer, { act } from "react-test-renderer";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import OpenAnswer from "../../Templates/OpenAnswer/OpenAnswer.react";
@@ -11,13 +15,45 @@ import Button from "../../Buttons/Button/Button.react";
 
 describe("OpenAnswer", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: OpenAnswer,
+    required: {
+      data: {
+        title: "This is Title",
+        subtitle: "This is Subtitle",
+        question: "This is question",
+      },
+      onClick: () => {},
+    },
+    translations: {
+      tgt: "openAnswer",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        openAnswer: {
+          button: "उत्तर सबमिट करें",
+          label: "इनपुट नाम",
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("variants", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component;
   const dictionary = JSON.stringify({
     hi: {
       openAnswer: {
-        button: "उत्तर सबमिट करें", label: "इनपुट नाम",
+        button: "उत्तर सबमिट करें",
+        label: "इनपुट नाम",
       },
     },
   });
@@ -40,9 +76,7 @@ describe("OpenAnswer", () => {
       />
     );
   });
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
+
   it("should render correctly with empty content", () => {
     component.setProps({
       data: {},
@@ -77,51 +111,6 @@ describe("OpenAnswer", () => {
         dictionary: dictionary,
       },
     });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    };
-    component.setProps({ withAnimation: animation });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as primary", () => {
-    component.setProps({ asVariant: "primary" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as secondary", () => {
-    component.setProps({ asVariant: "secondary" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as warning", () => {
-    component.setProps({ asVariant: "warning" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as error", () => {
-    component.setProps({ asVariant: "error" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as success", () => {
-    component.setProps({ asVariant: "success" });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly when passed image prop as null", () => {
@@ -186,6 +175,7 @@ describe("OpenAnswer", () => {
   it("should render correctly with withColor prop when hovered on Button", () => {
     const component = renderer.create(
       <Button
+        content="content"
         withColor={{
           buttonTextColor: "ff0023",
           buttonBackgroundColor: "ff0ff0",

@@ -163,8 +163,8 @@ export default function OrderingList(props) {
     props.withTranslation.lang !== "" &&
     props.withTranslation.lang !== "en"
   ) {
-    tObj = getTranslation(props.withTranslation);
-    submitButtonText = props.purpose === "quiz" ? tObj?.checkAnswer || "Check Answer" : tObj?.submitAnswer || "Submit Answer";
+    tObj = getTranslation(props.withTranslation);    submitButtonText = props.purpose === "quiz" ? tObj?.checkAnswer : tObj?.submitAnswer;
+
   }
   // ========================= Render Function =================================
   return (

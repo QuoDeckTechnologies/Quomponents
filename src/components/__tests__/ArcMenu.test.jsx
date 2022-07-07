@@ -3,41 +3,68 @@
 // -------------------------------------
 import { shallow, mount } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import ArcMenu from "../ArcMenu/ArcMenu.react";
 
 describe("ArcMenu", () => {
+
+  const args = {
+    target: ArcMenu,
+    required: {
+      arcIcon: "menu",
+      onClick: () => console.log("arcMenu Testing"),
+    },
+    translations: {
+      tgt: "arcMenu",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          arcMenu: {
+            menuContent: [
+              {
+                header: "सीखें",
+                list: [
+                  "अपलोड scorm",
+                  "अपलोड pdf",
+                  "वीडियो लिंक जोड़ें",
+                  "qdf डेक बनाएं",
+                ],
+              },
+              {
+                header: "मूल्यांकन",
+                list: ["सर्वेक्षण बनाएं", "प्रश्नोत्तरी बनाएँ", "एक खेल जोड़ें"],
+              },
+              {
+                header: "पुरस्कृत",
+                list: ["प्रमाण पत्र दो", "एक बैज दें", "इनाम दो"],
+              },
+            ],
+          },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("positions", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
 
-  const dictionary = JSON.stringify({
-    hi: {
-      arcMenu: {
-        menuContent: [
-          {
-            header: "सीखें",
-            list: [
-              "अपलोड scorm",
-              "अपलोड pdf",
-              "वीडियो लिंक जोड़ें",
-              "qdf डेक बनाएं",
-            ],
-          },
-          {
-            header: "मूल्यांकन",
-            list: ["सर्वेक्षण बनाएं", "प्रश्नोत्तरी बनाएँ", "एक खेल जोड़ें"],
-          },
-          {
-            header: "पुरस्कृत",
-            list: ["प्रमाण पत्र दो", "एक बैज दें", "इनाम दो"],
-          },
-        ],
-      },
-    },
-  });
 
   beforeEach(() => {
     jest.resetAllMocks();
@@ -73,27 +100,12 @@ describe("ArcMenu", () => {
         menuType="close"
         arcIcon="menu"
         position="top-right"
-        asVariant="primary"
-        asSize="normal"
-        isDisabled={false}
-        isHidden={false}
-        onClick={() => {}}
+        onClick={() => { }}
       />
     );
   });
 
   it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
     expect(component.exists()).toBe(true);
   });
 
@@ -104,26 +116,6 @@ describe("ArcMenu", () => {
         accentColor: "#ffffff",
         textColor: "#ffffff",
       },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withTranslation", () => {
-    component.setProps({
-      menuType: "menu",
-      withTranslation: {
-        lang: "hi",
-        tgt: "arcMenu",
-        dictionary: dictionary,
-      },
-    });
-    component.find(".qui-arc-menu-button").simulate("click");
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
     });
     expect(component.exists()).toBe(true);
   });

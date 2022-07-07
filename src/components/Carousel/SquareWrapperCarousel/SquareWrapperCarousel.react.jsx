@@ -65,13 +65,13 @@ SquareWrapperCarousel.defaultProps = {
 - Set true or false to the selected prop for select/deselect the slide .
 **/
 export default function SquareWrapperCarousel(props) {
-    const sliderRef = useRef();
-    let { content } = props;
-    let quommonClasses = getQuommons(props, "square-wrapper-carousel");
-    //-------------------------------------------------------------------
-    // 4. Get animation of the component
-    //-------------------------------------------------------------------
-    const animate = getAnimation(props);
+  const sliderRef = useRef();
+  let { content } = props;
+  let quommonClasses = getQuommons(props, "square-wrapper-carousel");
+  //-------------------------------------------------------------------
+  // 4. Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props);
 
   var settings = {
     dots: true,
@@ -89,7 +89,7 @@ export default function SquareWrapperCarousel(props) {
   };
 
   // ========================= Render Function =================================
-  
+
   return (
     <motion.div
       initial={animate.from}

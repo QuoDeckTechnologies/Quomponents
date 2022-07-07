@@ -40,7 +40,7 @@ ToolbarDark.propTypes = {
   /**
     Use to define standard component type
     */
-  asVariant: PropTypes.oneOf(["primary", "secondary", "success", "warning"]),
+  asVariant: PropTypes.oneOf(["primary", "secondary", "success", "warning", "error"]),
   /**
     Use to define component text size in increasing order
     */
@@ -187,7 +187,7 @@ export default function ToolbarDark(props) {
         className={`qui-toolbar-dark-backbar`}
         style={{ backgroundColor: props.withColor?.accentColor }}
       >
-        <div className={`qui-toolbar-dark-icon`}>
+        <div className={`qui-toolbar-dark-icon ${quommonClasses.childClasses}`}>
           {_.map(content, (icon, index) => {
             return (
               <motion.div

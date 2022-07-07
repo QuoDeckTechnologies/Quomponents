@@ -3,13 +3,45 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import MCQwithFeedback from "../../Templates/MCQwithFeedback/MCQwithFeedback.react";
 
 describe("MCQ with Feedback", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: MCQwithFeedback,
+    required: {
+      data: {
+        title: "test title",
+        subtitle: "test subtitle",
+        icon: "test-icon",
+        backgroundImage: {},
+        options: [
+          { correct: "", text: "button name" },
+          { correct: "", text: "button name" },
+          { correct: "", text: "button name" },
+        ],
+      },
+      onClick: () => {},
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("variants", args);
+  hasValid("positions", args);
+  hasValid("animations", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component;
 
@@ -21,7 +53,7 @@ describe("MCQ with Feedback", () => {
           title: "test title",
           subtitle: "test subtitle",
           icon: "test-icon",
-          backgroundImage:{},
+          backgroundImage: {},
           options: [
             { correct: "", text: "button name" },
             { correct: "", text: "button name" },
@@ -31,10 +63,6 @@ describe("MCQ with Feedback", () => {
         onClick={() => {}}
       />
     );
-  });
-
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when image is not defined", () => {

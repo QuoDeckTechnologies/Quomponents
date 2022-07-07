@@ -3,11 +3,67 @@
 // -------------------------------------
 import { mount, shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import MultiSelect from "../MultiSelect/MultiSelect.react";
 
 describe("MultiSelect", () => {
+
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+
+  const args = {
+    target: MultiSelect,
+    required: {
+      content: [
+        {
+          name: "Primary",
+          isSelected: true,
+        },
+      ],
+      onClick: () => console.log("Button Testing"),
+    },
+    translations: {
+      tgt: "templateActions",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        en: {
+          templateActions: {
+            checkAnswer: "Check Answer",
+            submitAnswer: "Submit Answer",
+            thanks: "Thanks for your response",
+            go: "Go",
+          },
+        },
+        hi: {
+          templateActions: {
+            checkAnswer: "अपना उत्तर जाँच लें",
+            submitAnswer: "अपना जवाब सबमिट करें",
+            thanks: "आपके उत्तर के लिए धन्यवाद",
+            go: "आगे बढ़ें",
+          },
+        },
+      })
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("variants", args);
+  hasValid("positions", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -35,7 +91,7 @@ describe("MultiSelect", () => {
         go: "आगे बढ़ें",
       },
     },
-  });
+  })
   beforeEach(() => {
     jest.resetAllMocks();
     let handleSubmit = jest.fn();
@@ -44,14 +100,9 @@ describe("MultiSelect", () => {
         content={content}
         asEmphasis="contained"
         isCircular={false}
-        asVariant="primary"
-        asSize="normal"
-        asFloated="none"
         withColor={null}
         withLabel={null}
         withAnimation={null}
-        isHidden={false}
-        isDisabled={false}
         onClick={() => console.log(" Multiselect Testing")}
         onclick={handleSubmit}
       />
@@ -141,42 +192,6 @@ describe("MultiSelect", () => {
     component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly when passed asVariant prop as primary", () => {
-    component.setProps({ asVariant: "primary" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as secondary", () => {
-    component.setProps({ asVariant: "secondary" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as warning", () => {
-    component.setProps({ asVariant: "warning" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as error", () => {
-    component.setProps({ asVariant: "error" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asVariant prop as success", () => {
-    component.setProps({ asVariant: "success" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asFloated prop as left", () => {
-    component.setProps({ asFloated: "left" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asFloated prop as right", () => {
-    component.setProps({ asFloated: "right" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asFloated prop as inline", () => {
-    component.setProps({ asFloated: "inline" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asFloated prop as none", () => {
-    component.setProps({ asFloated: "none" });
-    expect(component.exists()).toBe(true);
-  });
   it("should render correctly when passed withColor props", () => {
     let colors = {
       backgroundColor: "#fff",
@@ -186,31 +201,6 @@ describe("MultiSelect", () => {
       hoverTextColor: "	#00008B",
     };
     component.setProps({ withColor: colors });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    };
-    component.setProps({ withAnimation: animation });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly with isCircular set content", () => {

@@ -60,7 +60,7 @@ ActionButton.propTypes = {
     /**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+    asFloated: PropTypes.oneOf(["left", "right", "inline", "none"]),
     /**
     Use to align content within the component container
     */
@@ -177,7 +177,7 @@ export default function ActionButton(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        labelContent.title = tObj?.title|| props.content?.title;
+        labelContent.title = tObj?.title || props.content?.title;
         labelContent.subTitle = tObj?.subTitle || props.content?.subTitle;
     }
 
