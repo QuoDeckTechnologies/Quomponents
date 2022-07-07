@@ -184,7 +184,7 @@ export default function IconListGallery(props) {
     //-------------------------------------------------------------------
     // 6. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     // ========================= Render Function =================================
     return (
         <motion.div

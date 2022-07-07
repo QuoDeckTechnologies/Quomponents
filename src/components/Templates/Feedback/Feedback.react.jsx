@@ -134,7 +134,7 @@ export default function Feedback(props) {
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     //-------------------------------------------------------------------
     // 4. Setting the colors of the imported components
     //-------------------------------------------------------------------

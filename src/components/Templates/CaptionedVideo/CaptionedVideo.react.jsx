@@ -239,7 +239,7 @@ export default function CaptionedVideo(props) {
     //-------------------------------------------------------------------
     // 8. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     // ========================= Render Function =================================
     return (
         <motion.div

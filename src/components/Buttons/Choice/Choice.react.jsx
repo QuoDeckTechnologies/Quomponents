@@ -202,7 +202,7 @@ export default function Choice(props) {
 	//-------------------------------------------------------------------
 	// 4. Get animation of the component
 	//-------------------------------------------------------------------
-	const animate = getAnimation(props.withAnimation);
+	const animate = getAnimation(props);
 
 	function handleClick(index) {
 		props.onClick(index)

@@ -178,7 +178,7 @@ export default function Icon(props) {
     if (props.isCircular)
         quommonClasses.childClasses += `is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""}`;
 
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     return (
         <motion.div
