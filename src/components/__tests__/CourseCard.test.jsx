@@ -17,6 +17,40 @@ Object.assign(navigator, {
 	},
 });
 
+const dictionary = JSON.stringify({
+	hi: {
+		courseCard: {
+			isSequential: {
+				true: "अनुक्रमिक पाठ्यक्रम",
+				false: "गैर अनुक्रमिक पाठ्यक्रम"
+			},
+			months: {
+				Jan: "जनवरी",
+				Feb: "फ़रवरी",
+				Mar: "मार्च",
+				Apr: "अप्रैल",
+				May: "मई",
+				Jun: "जून",
+				Jul: "जुलाई",
+				Aug: "अगस्त",
+				Sep: "सितम्बर",
+				Oct: "अक्टूबर",
+				Nov: "नवम्बर",
+				Dec: "दिसम्बर",
+			},
+			share: "शेयर",
+			rewardLabel: "पूर्ण करे जीतने के लिए",
+			menu: [
+				"विवरण संपादित करें",
+				"सामग्री संपादित करें",
+				"शिक्षार्थियों को प्रबंधित करें",
+				"विश्लेषण देखें",
+				"पाठ्यक्रम हटाएं"
+			]
+		}
+	}
+});
+
 describe("CourseCard", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
@@ -30,7 +64,7 @@ describe("CourseCard", () => {
 		courseName: "Measure your sales readiness",
 		description: "Take this quick profile test to check how well you are prepared for a sales job",
 		courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-		points: "200",
+		points: 200,
 		identifier: "XrPmy_OAK",
 		date: {
 			start_date: "2016-01-04 10:34:23",
@@ -55,6 +89,28 @@ describe("CourseCard", () => {
 	});
 
 	it("should render correctly without throwing error", () => {
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render translation of Check Answer with withTranslation prop and when passed purpose as quiz", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "courseCard",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render submitAnswer translation with withTranslation prop and when passed nothing in the purpose props", () => {
+		component.setProps({
+			withTranslation: {
+				lang: "hi",
+				tgt: "courseCard",
+				dictionary: dictionary,
+			},
+		});
 		expect(component.exists()).toBe(true);
 	});
 
@@ -199,13 +255,145 @@ describe("CourseCard", () => {
 		expect(component.find(NuggetBlock).props().status).toBe("published");
 	});
 
-	it("should show sequential course card", () => {
+	it("should show sequential course card in english", () => {
 		component.setProps({ content: { sequential: true } });
 		expect(component.find(".qui-course-card-name").text()).toBe("Sequential Course");
 	});
 
-	it("should show non sequential course card", () => {
+	it("should show non sequential course card in english", () => {
 		component.setProps({ content: { sequential: false } });
 		expect(component.find(".qui-course-card-name").text()).toBe("Non Sequential Course");
+	});
+
+	it("should show sequential course card in hindi", () => {
+		component.setProps({
+			content: { sequential: true },
+			withTranslation: {
+				lang: "hi",
+				tgt: "courseCard",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.find(".qui-course-card-name").text()).toBe("अनुक्रमिक पाठ्यक्रम");
+	});
+
+	it("should show non sequential course card in hindi", () => {
+		component.setProps({
+			content: { sequential: false },
+			withTranslation: {
+				lang: "hi",
+				tgt: "courseCard",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.find(".qui-course-card-name").text()).toBe("गैर अनुक्रमिक पाठ्यक्रम");
+	});
+
+	it("should render correctly when translation lang is not matched and sequential is false", () => {
+		component.setProps({
+			content: { sequential: false },
+			withTranslation: {
+				lang: "mr",
+				tgt: "courseCard",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when translation lang is not matched and sequential is true", () => {
+		component.setProps({
+			content: { sequential: true },
+			withTranslation: {
+				lang: "mr",
+				tgt: "courseCard",
+				dictionary: dictionary,
+			},
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when date is provided in content props", () => {
+		component.setProps({
+			content: {
+				date: {
+					start_date: "2021-05-5T12:55:18.154Z",
+					end_date: "2021-05-10T12:55:18.154Z",
+				}
+			}
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render the suffix as 'st' when date of yyyy/mm/01 format is provided in content props", () => {
+		component.setProps({
+			content: {
+				date: {
+					start_date: "2022-02-01",
+					end_date: "2022-05-01",
+				}
+			}
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render the suffix as 'nd' when date of yyyy/mm/02 format is provided in content props", () => {
+		component.setProps({
+			content: {
+				date: {
+					start_date: "2022-02-02",
+					end_date: "2022-05-02",
+				}
+			}
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render the suffix as 'rd' when date of yyyy/mm/03 format is provided in content props", () => {
+		component.setProps({
+			content: {
+				date: {
+					start_date: "2022-05-03",
+					end_date: "2022-05-04",
+				}
+			}
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render the suffix as 'th' when date of yyyy/mm/05 format is provided in content props", () => {
+		component.setProps({
+			content: {
+				date: {
+					start_date: "2022-05-05",
+					end_date: "2022-05-05",
+				}
+			}
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render the suffix as 'st' when date of yyyy/mm/31 format is provided in content props", () => {
+		component.setProps({
+			content: {
+				date: {
+					start_date: "2022-05-31",
+					end_date: "2022-05-31",
+				}
+			}
+		});
+		expect(component.exists()).toBe(true);
+	});
+
+	it("should render correctly when invalid date is provided in content props", () => {
+		component.setProps({
+			content: {
+				date: {
+					start_date: "abc",
+					end_date: "xyz",
+				}
+			}
+		});
+		expect(component.exists()).toBe(true);
 	});
 });

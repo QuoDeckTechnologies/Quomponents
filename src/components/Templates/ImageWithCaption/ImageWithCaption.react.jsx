@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
-    resolveImage,
+    getTranslation,
+    resolveImage
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -87,6 +88,17 @@ ImageWithCaption.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+<<<<<<< HEAD
+=======
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
+>>>>>>> da6e92aa207e8304f59e69141d3529cf953eef2e
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
@@ -113,6 +125,7 @@ ImageWithCaption.defaultProps = {
     asFloated: "left",
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
     isDisabled: false,
     isHidden: false,
 };
@@ -156,7 +169,18 @@ export default function ImageWithCaption(props) {
         backgroundColor: withColor?.slideHeaderBackgroundColor
     }
     //-------------------------------------------------------------------
-    // 5. Set background image and color for card
+    // 5. Translate the text objects in case their is a dictionary provided
+    //-------------------------------------------------------------------
+    let tObj;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+    }
+    //-------------------------------------------------------------------
+    // 6. Set background image and color for card
     //-------------------------------------------------------------------
     const getBackground = () => {
         if (data?.backgroundImage) {
@@ -169,7 +193,6 @@ export default function ImageWithCaption(props) {
         }
     };
     const background = getBackground();
-
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -180,34 +203,32 @@ export default function ImageWithCaption(props) {
                 ...background,
                 backgroundColor: withColor?.backgroundColor,
                 backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
+                backgroundSize: "cover"
             }}
         >
-            <div className={`qui-image-with-caption-card ${quommonClasses.childClasses}`}>
+            <div className={`qui-image-with-caption-card ${quommonClasses.childClasses}`} key={"Image-with-caption" + slideId}
+            >
                 {!data?.image && (data?.title || data?.subtitle) && (
-                    <SlideHeader
+                    <SlideHeader {...props}
                         content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors} />
                 )}
-
                 {data?.image && (
                     <img className="qui-image-with-caption-image qt-shadow"
                         src={resolveImage(data?.image.id, imageLibrary)}
-                        alt="ImageWithCaption" />
+                        alt="headerimg" />
                 )}
-                <div className="qui qt-sm">
-                    <TextBlock {...props}
-                        key={slideId}
-                        content={data?.caption}
-                        withColor={captionColors}
-                    />
-                </div>
-                    {<Button {...props}
-                        content={"Continue"}
-                        asFloated={"inline"}
-                        onClick={props.onClick}
-                        withColor={buttonColors}
-                    />}
+                <TextBlock {...props}
+                    key={slideId}
+                    content={props.data?.caption}
+                    withColor={captionColors}
+                />
+                <Button
+                    content={tObj?.button || "Continue"}
+                    asFloated={"inline"}
+                    onClick={props.onClick}
+                    withColor={buttonColors}
+                />
             </div>
         </motion.div>
     );

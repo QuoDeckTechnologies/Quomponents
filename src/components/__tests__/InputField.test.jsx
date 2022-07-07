@@ -9,6 +9,21 @@ import { shallow, mount } from 'enzyme';
 import InputField from '../InputField/InputField.react'
 
 describe("InputField", () => {
+
+    const dictionary = JSON.stringify({
+        hi: {
+            inputField: {
+                label: "इनपुट नाम",
+                placeholder: "विकल्प",
+            }
+        },
+        en: {
+            inputField: {
+                label: "Input Name",
+                placeholder: "Options",
+            }
+        }
+    });
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -141,6 +156,17 @@ describe("InputField", () => {
         expect(component.exists()).toBe(true);
     });
 
+    it("should render correctly if translation object is not defined", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "mr",
+                tgt: "inputField",
+                dictionary: dictionary,
+            }
+        });
+        expect(component.exists()).toBe(true);
+    });
+
     it("it should render correctly when passed isDisabled props as false", () => {
         component.setProps({ isDisabled: false })
         expect(component.exists()).toBe(true);
@@ -190,5 +216,3 @@ describe("InputField", () => {
         expect(component.exists()).toBe(true);
     });
 });
-
-

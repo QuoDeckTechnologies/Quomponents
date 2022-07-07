@@ -1,6 +1,22 @@
 import React from "react";
 import SlideBackground from "../components/RibbonMenu/designMenu/sections/SlideBackground.react";
 
+const dictionary = JSON.stringify({
+	en: {
+		slideBackground: {
+			slideBackground: "Slide Background",
+			setBackground: "Set",
+			removeBackground: "Remove"
+		}
+	},
+	hi: {
+		slideBackground: {
+			slideBackground: "स्लाइड पृष्ठभूमि",
+			setBackground: "सेट",
+			removeBackground: "निकाले"
+		}
+	}
+});
 export default {
 	title: "Design System/RibbonMenu/RibbonDesignMenu/SlideBackground",
 	component: SlideBackground,
@@ -12,6 +28,16 @@ export default {
 			options: ["left", "right", "inline"],
 			table: {
 				category: "as-Flags",
+			},
+		},
+		withTranslation: {
+			table: {
+				category: "with-Params",
+				defaultValue: {
+					lang: "",
+					tgt: "",
+					dictionary: "",
+				},
 			},
 		},
 		isHidden: {
@@ -70,10 +96,15 @@ Default.args = {
 	actions: {
 		updateDeck: (value) => { return value }
 	},
-	deck:{
-		backgroundImage:""
+	deck: {
+		backgroundImage: ""
 	},
 	asFloated: "left",
+	withTranslation: {
+		lang: "en",
+		tgt: "slideBackground",
+		dictionary: dictionary,
+	},
 	isDisabled: false,
 	isHidden: false,
 };
@@ -89,7 +120,7 @@ export const SlideWithBackgroundImage = (args) => {
 	const baseObj1 = {
 		...Object.assign({}, Default.args, args, {
 			deck: {
-				backgroundImage:"https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg"
+				backgroundImage: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg"
 			},
 		}),
 	};
@@ -109,6 +140,34 @@ SlideWithBackgroundImage.parameters = {
 		},
 		source: {
 			code: `<SlideBackground {...${JSON.stringify(Default.args, null, 2)}}/>`,
+		},
+	},
+};
+
+// -------------------------------------------------------------
+// Translated SlideBackground
+// -------------------------------------------------------------
+export const TranslatedSlideBackground = Template.bind({});
+TranslatedSlideBackground.args = {
+	...Default.args,
+	withTranslation: {
+		lang: "hi",
+		tgt: "slideBackground",
+		dictionary: dictionary
+	},
+};
+TranslatedSlideBackground.parameters = {
+	docs: {
+		description: {
+			story:
+				"Use to change the language that the text appears in. To make this work for the SlideBackground, add a SlideBackground:{} value to the dictionary.",
+		},
+		source: {
+			code: `<SlideBackground {...${JSON.stringify(
+				TranslatedSlideBackground.args,
+				null,
+				2
+			)}}/>`,
 		},
 	},
 };

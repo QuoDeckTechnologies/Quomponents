@@ -163,7 +163,7 @@ export default function CertificateCard(props) {
     if (status === "not started") iconClass = "far fa-circle";
     if (status === "completed") iconClass = "fas fa-check-circle";
 
-    if (status === "completed" && certificate?.icon !== "") {
+    if (status === "completed" && certificate?.icon !== "" && certificate?.icon !== undefined) {
       return (
         <>
           {certificate?.icon && (
@@ -179,11 +179,7 @@ export default function CertificateCard(props) {
       return (
         <div className="qui-status">
           <div className={`qui-statusInner ${quommonClasses.childClasses}`}>
-            {tObj ? (
-              <p>{tObj?.text[status.replace(" ", "")]}</p>
-            ) : (
-              <p>{status.toUpperCase()}</p>
-            )}
+            <p>{tObj?.text[status.replace(" ", "")] || status.toUpperCase()}</p>
             <i
               className={`${iconClass} variant-${props.asVariant}-text`}
               style={accentColors}

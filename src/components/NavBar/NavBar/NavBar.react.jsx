@@ -73,8 +73,8 @@ NavBar.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-  Use to show a translated version of the component text. Dictionary must be valid JSON. 
-  */
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
     withTranslation: PropTypes.shape({
         lang: PropTypes.string,
         tgt: PropTypes.string,
@@ -117,7 +117,7 @@ export default function NavBar(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
     //-------------------------------------------------------------------
-    let { content } = props;
+    let { content, withLabel } = props;
     // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "NavBar");
@@ -127,6 +127,7 @@ export default function NavBar(props) {
     //-------------------------------------------------------------------
     let labelContent = {
         title: content?.title,
+        content: withLabel?.content
     };
     let tObj = null;
     if (
@@ -137,6 +138,7 @@ export default function NavBar(props) {
         tObj = getTranslation(props.withTranslation);
         if (labelContent && tObj) {
             labelContent.title = tObj.title;
+            labelContent.content = tObj.content;
         }
     }
     //-------------------------------------------------------------------
@@ -170,7 +172,7 @@ export default function NavBar(props) {
                 </div>
                 <div className="qui-right-navbar" >
                     <div className="qui-searching" onClick={props.onClick}><i class="fas fa-search"></i></div>
-                    <AppMenu {...props} withIcon={{ icon: 'fas fa-ellipsis-v' }} />
+                    <AppMenu {...props} withLabel={{ content: labelContent?.content }} withIcon={{ icon: 'fas fa-ellipsis-v' }} />
                 </div>
             </div>
         </motion.div>

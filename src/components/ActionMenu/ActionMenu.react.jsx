@@ -3,7 +3,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import _ from "lodash";
-import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getTranslation,
+  getQuommons
+} from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ActionMenu.scss";
@@ -14,8 +18,8 @@ ActionMenu.propTypes = {
   // Component Specific props
   //=======================================
   /**
-      ActionMenu data should be passed in content field and it is a required field
-      */
+  ActionMenu data should be passed in content field and it is a required field
+  */
   content: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -27,17 +31,16 @@ ActionMenu.propTypes = {
   // Quommon props
   //=======================================
   /**
-      Use to override component colors and behavior
-      */
+  Use to override component colors and behavior
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
-
   /**
-      Use to define the entry animation of the component
-      */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -53,12 +56,20 @@ ActionMenu.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-      Use to enable/disable the component
-      */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-      Use to show/hide the component
-      */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
 };
 
@@ -72,6 +83,8 @@ ActionMenu.defaultProps = {
   //=======================================
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
+
   isDisabled: false,
   isHidden: false,
 };
@@ -107,11 +120,27 @@ export default function ActionMenu(props) {
   //-------------------------------------------------------------------
   let colors = props.withColor ? getColors(props.withColor) : {};
   //-------------------------------------------------------------------
-  // 3. Get animation of the component
+  // 3. Get translation of the component
+  //-------------------------------------------------------------------
+  let labelContent = Object.assign({}, props.content);
+  let iconLabel;
+  let tObj;
+  if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+  ) {
+    tObj = getTranslation(props.withTranslation);
+    iconLabel = tObj?.content;
+    labelContent.content = tObj?.title;
+  }
+  //-------------------------------------------------------------------
+  // 4. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props.withAnimation);
 
   // ========================= Render Function =================================
+
   return (
     <motion.div
       initial={animate.from}
@@ -132,8 +161,8 @@ export default function ActionMenu(props) {
                 style={colors.accentColors}
               ></i>
             </div>
-            <div className={`qui qt-sm qui-actionmenu-titles `} style={colors.textColors}>
-              {content.title}
+            <div className={`qui-actionmenu-titles `} style={colors.textColors}>
+              {tObj ? iconLabel[index]["title"] : content.title}
             </div>
           </div>
         );

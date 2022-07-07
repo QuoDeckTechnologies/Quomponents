@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./InputField.scss";
@@ -72,6 +73,14 @@ InputField.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -105,11 +114,10 @@ InputField.defaultProps = {
 
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
-
-    onSubmit: null,
 };
 /**
 ## Notes
@@ -186,14 +194,30 @@ export default function InputField(props) {
         }
     };
     //-------------------------------------------------------------------
-    // 4. Use to set state of InputField.
+    // 4. Get translation of the component
+    //-------------------------------------------------------------------
+    let tObj = null;
+    let label = props.content?.label;
+    let placeholder = props.content?.placeholder;
+
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation)
+        label = tObj?.label || props.label
+        placeholder = tObj?.placeholder || props.placeholder
+    }
+    //-------------------------------------------------------------------
+    // 5. Use to set state of InputField.
     //-------------------------------------------------------------------
     const { asEmphasis } = props;
 
     let commonProperties = {
         sx: outlineStyle,
         value: input,
-        placeholder: props.placeholder,
+        placeholder: placeholder,
         type: props.type,
         multiline: props.multiline,
         variant: "filled",
@@ -209,7 +233,7 @@ export default function InputField(props) {
                 <TextField
                     {...commonProperties}
                     className="qui-filled"
-                    label={props.label}
+                    label={label}
                 />
             )
         } else if (asEmphasis === "charLimited") {
@@ -224,7 +248,7 @@ export default function InputField(props) {
                         {...commonProperties}
                         className="qui-char-limited"
                         variant="filled"
-                        label={props.label}
+                        label={label}
                     />
                 </div>
             )
@@ -252,7 +276,7 @@ export default function InputField(props) {
         }
     }
     //-------------------------------------------------------------------
-    // 5. Get animation of the component
+    // 6. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
     
