@@ -21,7 +21,7 @@ describe("Option Item Seven", () => {
     required: {
       content: {
         targetName: "name",
-        value: "",
+        value: "value",
         image: {},
         placeholder: "placeholder",
         checked: false,
@@ -67,7 +67,7 @@ describe("Option Item Seven", () => {
     component = shallow(
       <OptionItemSeven
         content={{
-          targetName: "name",
+          targetName: "",
           value: "",
           image: {},
           placeholder: "placeholder",
@@ -110,7 +110,7 @@ describe("Option Item Seven", () => {
       <OptionItemSeven
         content={{
           targetName: "name",
-          value: "",
+          value: "value",
           placeholder: "placeholder",
           checked: false,
         }}

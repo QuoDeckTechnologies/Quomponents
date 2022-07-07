@@ -171,7 +171,7 @@ export default function NavBar(props) {
                     </div>
                 </div>
                 <div className="qui-right-navbar" >
-                    <div className="qui-searching" onClick={props.onClick}><i class="fas fa-search"></i></div>
+                    <div className="qui-searching" onClick={props.onClick}><i className="fas fa-search"></i></div>
                     <AppMenu {...props} withLabel={{ content: labelContent?.content }} withIcon={{ icon: 'fas fa-ellipsis-v' }} />
                 </div>
             </div>
