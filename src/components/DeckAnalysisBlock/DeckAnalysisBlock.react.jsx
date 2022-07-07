@@ -23,7 +23,6 @@ DeckAnalysis.propTypes = {
     fheader: PropTypes.string,
     message: PropTypes.string,
     icon: PropTypes.string,
-    image: PropTypes.string,
     slideCount: PropTypes.number,
     status: PropTypes.bool,
     //=======================================
@@ -160,7 +159,6 @@ export default function DeckAnalysis(props) {
     // 5. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -183,10 +181,10 @@ export default function DeckAnalysis(props) {
                     </div>
                 </div>
                 <div className="qui-deckblock-bottom" style={props?.status === true ? { backgroundColor: "#C1DC9E" } : { backgroundColor: "#D97575" }} >
-                    <h5> {
-                        props?.status ? tObj?.checkSlide + props?.slideCount : "..."
+                    <h6> {
+                        props?.status ? checkSlide + props?.slideCount : "..."
                     }
-                    </h5>
+                    </h6>
                 </div>
             </div>
         </motion.div>

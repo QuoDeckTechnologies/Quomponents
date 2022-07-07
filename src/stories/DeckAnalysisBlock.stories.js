@@ -14,14 +14,12 @@ export default {
     title: "Design System/DeckAnalysisBlock/DeckAnalysis",
     component: DeckAnalysisBlock,
     argTypes: {
-
         header: "",
         fheader: "",
         message: "",
         icon: "",
         slideCount: 10,
         status: false,
-
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -79,7 +77,7 @@ export default {
         componentSubtitle: "Displays a DeckAnalysisBlock with image, icon and text content.",
         a11y: { disable: true },
         docs: {
-            iframeHeight: 600,
+            iframeHeight: 500,
         },
     },
 };
