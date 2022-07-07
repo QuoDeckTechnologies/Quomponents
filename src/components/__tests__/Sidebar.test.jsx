@@ -9,6 +9,54 @@ import Sidebar from '../Sidebar/Sidebar.react'
 import ArcMenu from "../ArcMenu/ArcMenu.react"
 describe("Sidebar", () => {
     let component
+    const dictionary = JSON.stringify({
+        hi: {
+            sideBar: {
+                content: "संपादन मोड",
+                translatedPanelLinks: {
+                    welcome: "स्वागत",
+                    content: {
+                        library: "पुस्तकालय",
+                        editor: "संपादक",
+                        settings: "समायोजन",
+                        enrollment: "उपस्थिति पंजी",
+                        preview: "पूर्वावलोकन",
+                    },
+                    admin: {
+                        users: "उपयोगकर्ता",
+                        courses: "पाठ्यक्रम",
+                        branding: "ब्रांडिंग",
+                        tags: "टैग",
+                        ads: "विज्ञापन",
+                        ticketCenters: "टिकट केंद्र",
+                    },
+                    analytics: {
+                        org: "संगठन",
+                        teams: "टीम",
+                        trainees: "ट्रेनी",
+                        courses: "पाठ्यक्रम",
+                        articles: "लेख",
+                    },
+                    blog: {
+                        articles: "लेख",
+                        editor: "संपादक",
+                    },
+                    social: {
+                        text: "पाठ",
+                        link: "संपर्क",
+                        image: "छवि",
+                        gallery: "गेलरी",
+                        video: "वीडियो",
+                    },
+                    help: {
+                        chatbot: "चैटबोट",
+                        faq: "सामान्य प्रश्न",
+                        support: "सहायता",
+                    }
+                }
+            }
+        },
+    });
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -25,6 +73,7 @@ describe("Sidebar", () => {
                 withColor={null}
                 withIcon={null}
                 withAnimation={null}
+                withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
                 onClick={() => console.log("Testing Sidebar")} />
@@ -152,5 +201,15 @@ describe("Sidebar", () => {
         component.setProps({ asFloated: "inline" })
         expect(component.exists()).toBe(true);
     })
+    it("should render translation  with withTranslation prop ", () => {
+        component.setProps({
+            label: "Edit Mode",
+            withTranslation: {
+                lang: "hi",
+                tgt: "sideBar",
+                dictionary: dictionary,
+            },
+        });
+    });
 });
 

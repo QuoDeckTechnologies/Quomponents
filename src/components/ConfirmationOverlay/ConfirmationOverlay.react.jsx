@@ -180,18 +180,18 @@ export default function ConfirmationOverlay(props) {
             style={mainColors}
         >
             <h5 className="qui-overlay-header">
-                {withConfirmation && withConfirmation.header ? withConfirmation.header : "Are you sure?"}
+                {withConfirmation?.header || "Are you sure?"}
             </h5>
             <ButtonGroup className="qui-confirmation-overlay-group">
                 <Button
                     asEmphasis="outlined"
-                    content={withConfirmation && withConfirmation.yes ? withConfirmation.yes : "Yes"}
+                    content={withConfirmation?.yes || "Yes"}
                     withColor={confirmColors}
                     onClick={yesClick}
                     asSize="big"
                 />
                 <Button
-                    content={withConfirmation && withConfirmation.no ? withConfirmation.no : "No"}
+                    content={withConfirmation?.no || "No"}
                     onClick={noClick}
                     withColor={cancelColors}
                     asSize="big"

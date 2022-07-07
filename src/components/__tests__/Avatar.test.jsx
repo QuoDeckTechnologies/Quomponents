@@ -17,10 +17,6 @@ describe("Avatar", () => {
     jest.resetAllMocks();
     component = shallow(
       <Avatar
-        asVariant="primary"
-        asSize="normal"
-        asFloated="none"
-        withColor={null}
         withIcon={null}
         isHidden={false}
         isDisabled={false}

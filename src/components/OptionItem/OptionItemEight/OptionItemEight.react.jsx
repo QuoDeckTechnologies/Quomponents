@@ -141,17 +141,13 @@ export default function OptionItemEight(props) {
     >
       <div className="qui-option-item-eight-container">
         <InputField
-          name={
-            content?.targetName || "default-target-name"
-          }
-          content={{
-            value: content?.value,
-            placeholder: tObj?.placeholder || content?.placeholder,
-            maxLength: content?.maxLength,
-          }}
+          name={content?.targetName || "default-target-name"}
+          value={content?.value}
+          placeholder={tObj?.placeholder || content?.placeholder}
+          maxLength={content?.maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
-          onClick={handleValue}
+          onSubmit={handleValue}
         />
         <div className="qui-option-item-button">
           <Button

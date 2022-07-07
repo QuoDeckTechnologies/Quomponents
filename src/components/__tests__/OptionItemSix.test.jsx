@@ -143,8 +143,8 @@ describe("Option Item Six", () => {
   });
 
   it("should render correctly without throwing error when wriiten in input field", () => {
-    component.find("InputField").at(0).simulate("click");
-    component.find("InputField").at(1).simulate("click");
+    component.find("InputField").at(0).simulate("submit");
+    component.find("InputField").at(1).simulate("submit");
   });
 
   it("should render correctly when file is uploaded", async () => {
