@@ -19,7 +19,7 @@ describe("ToggleButton", () => {
   const args = {
     target: ToggleButton,
     required: {
-      onClick: () => {},
+      onClick: () => { },
     },
     translations: {
       tgt: "toggleButton",
@@ -45,6 +45,12 @@ describe("ToggleButton", () => {
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
+  const dictionary = JSON.stringify({
+    hi: {
+      toggleButton: { label: "सक्रिय" },
+    },
+  });
+
   let component,
     onChange = jest.fn();
   beforeEach(() => {
@@ -63,16 +69,31 @@ describe("ToggleButton", () => {
       />
     );
   });
+  
   it("should render correctly  with onChange function", () => {
     let toggleSwitch = component.find("div").at(0).children().at(0);
     toggleSwitch.simulate("change", { target: { checked: true } });
   });
+
   it("should render correctly when label is passed", () => {
     component.setProps({ label: "Not Active" });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when label is null", () => {
     component.setProps({ label: "" });
     expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly with translation",
+  () => {
+      component.setProps({
+          withTranslation: {
+              lang: "hi",
+              tgt: "toggleButton",
+              dictionary: dictionary,
+          },
+      });
+      expect(component.exists()).toBe(true);
   });
 });
