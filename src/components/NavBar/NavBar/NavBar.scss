@@ -97,11 +97,29 @@
     font-size: 0.8em;
   }
   .qui .qui-navbar-left .qui-nav-bar-title {
-    font-size: 2em;
-    max-width: 4em;
+    font-size: 1.8em;
+    max-width: 4.5em;
   }
   .qui .qui-navbar-search-icon {
-    font-size: 1.9em;
+    font-size: 1.5em;
+  }
+  .qui .qui-right-navbar .qui-app-menu {
+    font-size: 0.7em;
+  }
+  .qui .qui-nav-bar-icon {
+    font-size: 1.3em;
+  }
+}
+
+@media screen and (min-width: 360px) {
+  .qui .qui-navbar-left .qui-icon-link {
+    font-size: 0.85em;
+  }
+  .qui .qui-navbar-logo-img {
+    font-size: 0.8em;
+  }
+  .qui .qui-navbar-left .qui-nav-bar-title {
+    max-width: 6em;
   }
   .qui .qui-right-navbar .qui-app-menu {
     font-size: 0.7em;
@@ -120,10 +138,10 @@
   }
   .qui .qui-navbar-left .qui-nav-bar-title {
     font-size: 2.5em;
-    max-width: 10em;
+    max-width: 7.5em;
   }
   .qui .qui-navbar-search-icon {
-    font-size: 2.5em;
+    font-size: 2em;
   }
   .qui .qui-right-navbar .qui-app-menu {
     font-size: 0.9em;
@@ -145,7 +163,7 @@
     max-width: 10em;
   }
   .qui .qui-navbar-search-icon {
-    font-size: 2.7em;
+    font-size: 2.2em;
   }
   .qui .qui-right-navbar .qui-app-menu {
     font-size: 1em;
