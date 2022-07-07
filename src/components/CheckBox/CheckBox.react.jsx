@@ -113,7 +113,7 @@ export default function CheckBox(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring name, checked, label and withColor prop
   //-------------------------------------------------------------------
-  const { content, withColor, name, checked, label } = props;
+  const { withColor, name, checked, label } = props;
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------

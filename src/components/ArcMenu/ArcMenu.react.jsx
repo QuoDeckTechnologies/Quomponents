@@ -270,7 +270,7 @@ export default function ArcMenu(props) {
         <div className={`qui-arc ${getPosition(props.position)}`}>
           {(props.menuType === "nugget-menu" || props.menuType === "menu") && (
             <button
-              className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
+              className={`qui-arc-menu-button qt-shadow qui-btn ${quommonClasses.childClasses}`}
               onClick={() => setOpenMenu((prevState) => !prevState)}
             >
               {getIcon(arcIcon)}
@@ -278,7 +278,7 @@ export default function ArcMenu(props) {
           )}
           {(props.menuType === "close" || props.menuType === "add") && (
             <button
-              className={`qui-arc-menu-button qui-arc-menu-${props.menuType}-button ${quommonClasses.childClasses}`}
+              className={`qui-arc-menu-button qt-shadow qui-arc-menu-${props.menuType}-button ${quommonClasses.childClasses}`}
               onClick={(e) => props.onClick(e)}
             >
               {getIcon(arcIcon)}

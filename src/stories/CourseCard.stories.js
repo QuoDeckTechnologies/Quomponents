@@ -163,7 +163,7 @@ CourseCardWithManyTags.args = {
 		courseName: "Measure your sales readiness",
 		description: "Take this quick profile test to check how well you are prepared for a sales job",
 		courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-		points: "200",
+		points: 200,
 		identifier: "XrPmy_OAK",
 		date: {
 			start_date: "2016-01-04 10:34:23",
@@ -209,7 +209,7 @@ PublishedCourseCard.args = {
 		courseName: "Measure your sales readiness",
 		description: "Take this quick profile test to check how well you are prepared for a sales job",
 		courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-		points: "200",
+		points: 200,
 		identifier: "XrPmy_OAK",
 		date: {
 			start_date: "2016-01-04 10:34:23",
@@ -255,7 +255,7 @@ CourseCardWithExtraContent.args = {
 		courseName: "Measure your sales readiness",
 		description: "Take this quick profile test to check how well you are prepared for a sales job",
 		courseImage: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-		points: "200",
+		points: 200,
 		identifier: "XrPmy_OAK",
 		date: {
 			start_date: "2016-01-04 10:34:23",
