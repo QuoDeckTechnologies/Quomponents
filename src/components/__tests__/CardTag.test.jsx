@@ -25,6 +25,15 @@ describe("CardTag", () => {
             content: "Testing CardTag",
             onClick: () => { },
         },
+        translations: {
+            tgt: "cardTag",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+                hi: {
+                    cardTag: { content: "विषय", loading: "लोड हो रहा है...", },
+                },
+            })
+        },
     };
 
     hasValid("defaults", args);
@@ -37,9 +46,12 @@ describe("CardTag", () => {
 
     hasValid("colors", args);
     hasValid("animations", args);
+    hasValid("icons", args);
+    hasValid("translations", args);
 
     hasValid("hidden", args);
     hasValid("disabled", args);
+    hasValid("loading", args);
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -52,6 +64,12 @@ describe("CardTag", () => {
                 content=""
                 withColor={null}
                 isActive={false}
+                isLeft={true}
+                withIcon={{
+                    icon: "fas fa-bullseye",
+                    size: "1em",
+                    position: "left"
+                }}
                 onClick={() => console.log("CardTag Testing")}
             />
         );
@@ -61,23 +79,12 @@ describe("CardTag", () => {
         () => {
             expect(component.exists()).toBe(true);
         });
-
-    it("should render correct content to CardTag", () => {
-        component.setProps({ content: "CardTag" })
-        expect(component.find('div').at(1).props().children).toEqual("CardTag");
-    });
-
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            backgroundColor: "#fff",
-            textColor: "#00FFFF",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    });
-
     it("should render correctly when passed active props as true", () => {
         component.setProps({ isActive: true })
+        expect(component.exists()).toBe(true);
+    });
+    it("should render correctly when passed left props as true", () => {
+        component.setProps({ isLeft: true })
         expect(component.exists()).toBe(true);
     });
 });

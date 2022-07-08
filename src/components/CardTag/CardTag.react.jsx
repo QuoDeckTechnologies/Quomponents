@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+import { getAnimation, getQuommons, getTranslation } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./CardTag.scss";
 import "../../common/stylesheets/overrule.scss";
@@ -36,6 +36,10 @@ CardTag.propTypes = {
     "error",
   ]),
   /**
+  Use to define component padding in increasing order
+  */
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+  /**
   Use to define component size in increasing order
   */
   asSize: PropTypes.oneOf([
@@ -51,6 +55,11 @@ CardTag.propTypes = {
   */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
+  Use to align content within the component container
+  */
+  asAligned: PropTypes.oneOf(["left", "right", "center"]),
+
+  /**
   Use to define component backgroundColor and textColor Color 
   */
   withColor: PropTypes.shape({
@@ -58,6 +67,14 @@ CardTag.propTypes = {
     textColor: PropTypes.string,
     activeBackroundColor: PropTypes.string,
     activeTextColor: PropTypes.string,
+  }),
+  /**
+  Use to add an icon to the component
+  */
+  withIcon: PropTypes.shape({
+    icon: PropTypes.string,
+    size: PropTypes.string,
+    position: PropTypes.oneOf(["left", "right"]),
   }),
   /**
   Use to define the entry animation of the component
@@ -75,6 +92,18 @@ CardTag.propTypes = {
     duration: PropTypes.number,
     delay: PropTypes.number,
   }),
+  /**
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
+  Use to toggle a loading state for the component
+  */
+  isLoading: PropTypes.bool,
   /**
   Use to show/hide the component
   */
@@ -100,11 +129,16 @@ CardTag.defaultProps = {
   // Quommon props
   //=======================================
   asVariant: "primary",
+  asPadded: "normal",
   asSize: "normal",
   asFloated: "none",
+  asAligned: "center",
   withColor: null,
   withAnimation: null,
+  withTranslation: null,
+
   isHidden: false,
+  isLoading: false,
   isDisabled: false,
 };
 /**
@@ -133,7 +167,49 @@ export default function CardTag(props) {
   //-------------------------------------------------------------------
   // 3. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
+
+  function getIcon(iconObj, position, iconOnly) {
+    let iconPosition = iconObj?.position || "left";
+    return (
+      iconObj?.icon &&
+      iconPosition === position && (
+        <i
+          className={`qui-icon ${iconObj.icon}`}
+          style={{ fontSize: iconObj.size }}
+        ></i>
+      )
+    );
+  }
+  //-------------------------------------------------------------------
+  // Set the card text
+  //-------------------------------------------------------------------
+  let cardTagText = props.content
+    ? props.content
+    : "";
+  let iconOnly = cardTagText === "";
+  let loadingText = "Please Wait...";
+
+  //-------------------------------------------------------------------
+  //  Translate the text objects in case their is a dictionary provided
+  //-------------------------------------------------------------------
+  if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+  ) {
+    let tObj = getTranslation(props.withTranslation);
+    if (tObj && props.content && props.content !== "") {
+      cardTagText = tObj.content;
+      loadingText = tObj.loading
+    }
+  }
+
+  //-------------------------------------------------------------------
+  // 6. Provide loading text if loading is clicked
+  //-------------------------------------------------------------------
+  cardTagText = props.isLoading ? loadingText : cardTagText;
+
 
   // ========================= Render Function =================================
 
@@ -144,17 +220,19 @@ export default function CardTag(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div
-        className={`qui-btn ${
-          props.isActive
-            ? "qui-card-tag-block"
-            : "qui-card-tag-block qui-card-tag-decativated"
-        } ${quommonClasses.childClasses} ${
-          props.isLeft ? "qui-card-tag-left-orientation" : ""
-        }`}
+        className={`qui-btn ${props.isActive
+          ? "qui-card-tag-block"
+          : "qui-card-tag-block qui-card-tag-decativated"
+          } ${quommonClasses.childClasses} ${props.isLeft ? "qui-card-tag-left-orientation" : ""
+          }`}
         style={props.isActive ? activeColor : deactivatedColor}
         onClick={props.onClick}
       >
-        <div className="qui-card-tag-label">{props.content}</div>
+        <div className="qui-card-tag-label">
+          {props.isLoading ? <i className="icon-loader fa fa-spinner fa-spin"></i>
+            : getIcon(props.withIcon, "left", iconOnly)}
+          <span className="qui-card-tag-content">{cardTagText}</span>
+        </div>
       </div>
     </motion.div>
   );

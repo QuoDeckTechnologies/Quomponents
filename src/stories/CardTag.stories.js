@@ -1,6 +1,12 @@
 import React from "react";
 import CardTag from "../components/CardTag/CardTag.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    cardTag: { content: "विषय", loading: "लोड हो रहा है...", },
+  },
+});
+
 export default {
   title: "Design System/CardTag/CardTag",
   component: CardTag,
@@ -29,6 +35,20 @@ export default {
         category: "as-Flags",
       },
     },
+    asPadded: {
+      control: "select",
+      options: ["fitted", "compact", "normal", "relaxed"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+    asAligned: {
+      control: "select",
+      options: ["left", "right", "center"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     withColor: {
       table: {
         category: "with-Params",
@@ -37,6 +57,16 @@ export default {
           textColor: "",
           activeBackgroundColor: "",
           activeTextColor: "",
+        },
+      },
+    },
+    withIcon: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          icon: "",
+          size: "",
+          position: "left",
         },
       },
     },
@@ -50,10 +80,26 @@ export default {
         },
       },
     },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
+        },
+      },
+    },
     onClick: {
       table: {
         category: "Events",
         defaultValue: null,
+      },
+    },
+    isLoading: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
       },
     },
     isHidden: {
@@ -94,10 +140,13 @@ export const Default = Template.bind({});
 Default.args = {
   content: "Content",
   isActive: true,
-  isLeft: false,
+  isLeft: true,
   asVariant: "warning",
   asSize: "normal",
   asFloated: "inline",
+  asPadded: "normal",
+  asAligned: "center",
+  withIcon: { icon: "fas fa-bullseye", size: "1em", position: "left" },
   withColor: {
     backgroundColor: "#AAAAAA",
     textColor: "#FFF",
@@ -109,6 +158,12 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "cardTag",
+    dictionary: dictionary,
+  },
+  isLoading: false,
   isHidden: false,
   isDisabled: false,
 };
@@ -146,6 +201,84 @@ ColoredCardTag.parameters = {
     },
   },
 };
+// -------------------------------------------------------------
+// TranslatedCardTag
+// -------------------------------------------------------------
+export const TranslatedCardTag = Template.bind({});
+TranslatedCardTag.args = {
+  ...Default.args,
+  withColor: {
+    backgroundColor: "#AAAAAA",
+    textColor: "#FFF",
+    activeBackgroundColor: "#88ee88",
+    activeTextColor: "#37285f",
+  },
+  withTranslation: {
+    lang: "hi",
+    tgt: "cardTag",
+    dictionary: dictionary,
+  },
+};
+TranslatedCardTag.parameters = {
+  docs: {
+    description: {
+      story: "Use to override the standard colors of the CardTag.",
+    },
+    source: {
+      code: `<ColoredCardTag {...${JSON.stringify(
+        TranslatedCardTag.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+
+// -------------------------------------------------------------
+// LoadingCardTag
+// -------------------------------------------------------------
+export const LoadingCardTag = Template.bind({});
+LoadingCardTag.args = {
+  ...Default.args,
+  isLoading: true,
+};
+LoadingCardTag.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to indicate a loading state for the cardTag when it stops being clickable. The loading text can be customized with the withTranslation option through a common loading:'' value in the dictionary.",
+    },
+    source: {
+      code: `<CardTag isLoading={true}/>`,
+    },
+  },
+};
+
+// -------------------------------------------------------------
+// TranslatedLoadingCardTag
+// -------------------------------------------------------------
+export const TranslatedLoadingCardTag = Template.bind({});
+TranslatedLoadingCardTag.args = {
+  ...Default.args,
+  isLoading: true,
+  withTranslation: {
+    lang: "hi",
+    tgt: "cardTag",
+    dictionary: dictionary,
+  },
+};
+TranslatedLoadingCardTag.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to indicate a loading state for the cardTag when it stops being clickable. The loading text can be customized with the withTranslation option through a common loading:'' value in the dictionary.",
+    },
+    source: {
+      code: `<CardTag isLoading={true}/>`,
+    },
+  },
+};
+
 // -------------------------------------------------------------
 // Different Variants CardTag
 // -------------------------------------------------------------
