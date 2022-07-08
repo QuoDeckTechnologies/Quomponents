@@ -16,7 +16,6 @@ describe("ShareWidget", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: ShareWidget,
         translations: {
@@ -34,6 +33,7 @@ describe("ShareWidget", () => {
 
     hasValid("defaults", args);
 
+    hasValid("sizes", args);
     hasValid("positions", args);
 
     hasValid("colors", args);
@@ -45,7 +45,6 @@ describe("ShareWidget", () => {
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component;
 
     beforeEach(() => {
@@ -65,14 +64,19 @@ describe("ShareWidget", () => {
         );
     });
 
-    it("should render correctly if Content set Value",
-        () => {
-            component.setProps({
-                content: {
-                    label: "Share",
-                    url: "www.quodeck.com",
-                },
-            });
-            expect(component.exists()).toBe(true);
+    it("should render correctly if label & url has some value", () => {
+        component.setProps({
+            label: "Share",
+            url: "www.quodeck.com",
         });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly if label & url has empty value", () => {
+        component.setProps({
+            label: "",
+            url: "",
+        });
+        expect(component.exists()).toBe(true);
+    });
 });

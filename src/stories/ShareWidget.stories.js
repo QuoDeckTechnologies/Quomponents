@@ -13,7 +13,6 @@ export default {
     title: "Design System/ShareWidget/ShareWidget",
     component: ShareWidget,
     argTypes: {
-
         label: "",
         url: "",
         asSize: {
