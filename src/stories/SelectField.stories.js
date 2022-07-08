@@ -5,13 +5,13 @@ const dictionary = JSON.stringify({
     hi: {
         selectField: {
             label: "पाठ्यक्रम श्रेणी",
-            placeHolder: "चुनें..."
+            placeholder: "चुनें..."
         }
     },
     en: {
         selectField: {
             label: "Course Category",
-            placeHolder: "",
+            placeholder: "",
         }
     }
 });
@@ -21,8 +21,8 @@ export default {
     component: SelectField,
     argTypes: {
         label: "",
-        categoryOptions: [],
-        placeHolder: "",
+        options: [],
+        placeholder: "",
         asPadded: {
             control: "select",
             options: ["fitted", "compact", "normal", "relaxed"],
@@ -66,12 +66,6 @@ export default {
                 defaultValue: false,
             },
         },
-        isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
         onClick: {
             table: {
                 category: "Events",
@@ -100,8 +94,8 @@ const Template = (args) => <SelectField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     label: "Course Category",
-    categoryOptions: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
-    placeHolder: "Choose...",
+    options: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
+    placeholder: "Choose...",
     asPadded: "normal",
     withColor: {
         backgroundColor: "#aaaaaa",
@@ -118,7 +112,6 @@ Default.args = {
         tgt: "selectField",
         dictionary: dictionary,
     },
-    isDisabled: false,
     isHidden: false,
 };
 Default.parameters = {

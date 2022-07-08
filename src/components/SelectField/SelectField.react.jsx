@@ -17,11 +17,11 @@ SelectField.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Use to define label, categoryOptions & placeholder in SelectField
+    Use to define label, options & placeholder in SelectField
     */
     label: PropTypes.string,
-    categoryOptions: PropTypes.array,
-    placeHolder: PropTypes.string,
+    options: PropTypes.array,
+    placeholder: PropTypes.string,
     //=======================================
     // Quommon props
     //=======================================
@@ -67,10 +67,6 @@ SelectField.propTypes = {
     */
     isHidden: PropTypes.bool,
     /**
-    Use to enable/disable the component
-    */
-    isDisabled: PropTypes.bool,
-    /**
     SelecField component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
@@ -81,8 +77,8 @@ SelectField.defaultProps = {
     // Component Specific props
     //=======================================
     label: "",
-    categoryOptions: [],
-    placeHolder: "",
+    options: [],
+    placeholder: "",
     //=======================================
     // Quommon props
     //=======================================
@@ -93,7 +89,6 @@ SelectField.defaultProps = {
     withTranslation: null,
 
     isHidden: false,
-    isDisabled: false,
 };
 /**
 ## Notes
@@ -130,16 +125,16 @@ export default function SelectField(props) {
     // 4. Get translation of the component
     //-------------------------------------------------------------------
     let tObj = null;
-    let label = props.content?.label;
-    let placeHolder = props.content?.placeHolder;
+    let label = props.label;
+    let placeholder = props.placeholder;
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation)
-        label = tObj?.label || props.content?.label
-        placeHolder = tObj?.placeHolder || props.content?.placeHolder;
+        label = tObj?.label || props.label
+        placeholder = tObj?.placeholder || props.placeholder;
     }
     //-------------------------------------------------------------------
     // 5. Get animation of the component
@@ -154,8 +149,8 @@ export default function SelectField(props) {
         >
             <div className={`qui-select-field-container ${quommonClasses.childClasses}`} style={Color}>
                 <div className="qui-select-field">
-                    <div className="qui-select-field-label">
-                        {props.label}
+                    <div className="qui-select-field-label qt-sm">
+                        {label}
                     </div>
                     <Select className="qui-select-field-select"
                         defaultValue="none"
@@ -172,10 +167,10 @@ export default function SelectField(props) {
                     >
                         <MenuItem disabled value="none" >
                             <div className="qui-select-field-menu-item">
-                                {props.placeHolder ? props.placeHolder : "Choose..."}
+                                {placeholder ? placeholder : "Choose..."}
                             </div>
                         </MenuItem>
-                        {props.categoryOptions?.map((option) => (
+                        {props.options?.map((option) => (
                             <MenuItem
                                 key={option}
                                 value={option}
