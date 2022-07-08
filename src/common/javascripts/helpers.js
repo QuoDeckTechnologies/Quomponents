@@ -5,38 +5,35 @@ export function getQuommons(props, component) {
     let parentArray = [`qui-${component}`],
         childArray = [""];
 
-    if (props.asSize) childArray.push(`size-${props.asSize}`);
-    else if (props.massive) childArray.push(`size-massive`);
+    if (props.massive) childArray.push(`size-massive`);
     else if (props.huge) childArray.push(`size-huge`);
     else if (props.big) childArray.push(`size-big`);
     else if (props.normal) childArray.push(`size-normal`);
     else if (props.small) childArray.push(`size-small`);
     else if (props.tiny) childArray.push(`size-tiny`);
+    else if (props.asSize) childArray.push(`size-${props.asSize}`);
 
-    if (props.asPadded) childArray.push(`pad-${props.asPadded}`);
-    else if (props.compact) childArray.push(`pad-compact`);
+    if (props.compact) childArray.push(`pad-compact`);
     else if (props.fitted) childArray.push(`pad-fitted`);
     else if (props.relaxed) childArray.push(`pad-relaxed`);
     else if (props.padded) childArray.push(`pad-padded`);
+    else if (props.asPadded) childArray.push(`pad-${props.asPadded}`);
 
-    if (props.asAligned) childArray.push(`${props.asAligned}-aligned`);
-    else if (props["center-aligned"] || props["center-align"])
+    if (props["center-aligned"] || props["center-align"])
         childArray.push(`center-aligned`);
     else if (props["left-aligned"] || props["left-align"])
         childArray.push(`left-aligned`);
     else if (props["right-aligned"] || props["right-align"])
         childArray.push(`right-aligned`);
+    else if (props.asAligned) childArray.push(`${props.asAligned}-aligned`);
 
-    if (props.asFloated) parentArray.push(`float-${props.asFloated}`);
-    else if (props["float-left"]) childArray.push(`float-left`);
+    if (props["float-left"]) childArray.push(`float-left`);
     else if (props["float-right"]) childArray.push(`float-right`);
     else if (props["float-inline"]) childArray.push(`float-inline`);
     else if (props["float-none"]) childArray.push(`float-none`);
+    else if (props.asFloated) parentArray.push(`float-${props.asFloated}`);
 
-    if (props.asVariant) {
-        childArray.push(`variant-${props.asVariant}`);
-        childArray.push(`variant-${props.asVariant}-text`);
-    } else if (props.primary) {
+    if (props.primary) {
         childArray.push(`variant-primary`);
         childArray.push(`variant-primary-text`);
     } else if (props.secondary) {
@@ -54,15 +51,18 @@ export function getQuommons(props, component) {
     } else if (props.info) {
         childArray.push(`variant-info`);
         childArray.push(`variant-info-text`);
+    } else if (props.asVariant) {
+        childArray.push(`variant-${props.asVariant}`);
+        childArray.push(`variant-${props.asVariant}-text`);
     }
 
-    if (props.isHidden) parentArray.push("is-hidden");
-    if (props.isDisabled) parentArray.push("is-disabled");
-    if (props.isFluid) {
+    if (props.isHidden || props.hidden) parentArray.push("is-hidden");
+    if (props.isDisabled || props.disabled) parentArray.push("is-disabled");
+    if (props.isFluid || props.fluid) {
         parentArray.push("is-fluid");
         childArray.push("is-fluid");
     }
-    if (props.isLoading) parentArray.push("is-loading");
+    if (props.isLoading || props.loading) parentArray.push("is-loading");
 
     return {
         parentClasses: parentArray.join(" "),
