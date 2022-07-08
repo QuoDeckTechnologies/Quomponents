@@ -1,24 +1,32 @@
-.qui-AppMenu .float-none {
+.qui-app-menu {
+  overflow: hidden;
+  .qui-app-menu-avatar {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.qui-app-menu .float-none {
   display: flex;
 }
 
-.qui.qui-AppMenu .qui-labql {
-  padding-left: 0.5em;
-  .qui-menu-block-seperator {
-    display: none;
-  }
+.qui.qui-app-menu .qui-app-menu-inner-container.is-circular {
+  border-radius: 0;
 }
 
-.qui-AppMenu {
-  .qui-main-container {
-    .qui-menuIconContainer .qui-iconContainer {
-      padding: 0 1em 0 0;
-    }
-  }
-  .qui .qui-menuBlock {
+.qui.qui-app-menu .qui-menu-block-label {
+  padding-left: 0.5em;
+}
+
+.qui.qui-app-menu .qui-menu-block-seperator {
+  display: none;
+}
+
+.qui-app-menu {
+  .qui .qui-menu-block-container {
     border-radius: 0;
   }
-  .qui-container.qui-menuBlock {
+  .qui-app-menu-inner-container.qui-menu-block-container {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -26,45 +34,40 @@
   }
 }
 
-.qui-AppMenu .float-left {
+.qui-app-menu .float-left {
   display: flex;
   justify-content: flex-start;
 }
 
-.qui-AppMenu .float-inline {
+.qui-app-menu .float-inline {
   display: flex;
   justify-content: center;
 }
 
-.qui-AppMenu .float-right {
+.qui-app-menu .float-right {
   display: flex;
   justify-content: flex-end;
 }
 
-.qui-avatarContainer {
-  z-index: 2;
-}
-
-.qui .qui-catalog-container {
-  transform: translateX(100%);
-}
-
-.qui-main-container {
+.qui-app-menu-container {
   display: flex;
 }
 
-.qui-menuIconContainer .qui-iconContainer {
-  padding: 0 1em 0 0.5em;
-}
-
-.qui-main-container .qui-container {
+.qui-app-menu-container .qui-app-menu-inner-container {
   border-radius: 0%;
 }
 
-.qui-AppMenu {
-  border-radius: 2em;
+.qui-app-menu {
+  border-radius: 2em 1em 1em 2em;
+  &.qui-app-menu-circular {
+    border-radius: 2em;
+  }
 }
 
-.qui-catalogContainer .qui-catalogLabel {
+.qui-app-menu-catalog-container .qui-app-menu-catalog-label {
   padding: 0 0.5em 0 0.8em;
+}
+
+.qui.qui-app-menu .qui.qui-menu-block {
+  height: 100%;
 }

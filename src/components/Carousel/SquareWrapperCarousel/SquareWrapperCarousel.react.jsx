@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import { motion } from "framer-motion";
@@ -46,11 +46,12 @@ SquareWrapperCarousel.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Button component must have the onClick function passed as props
+    SquareWrapperCarousel component must have the onClick function passed as props
     */
   onClick: PropTypes.func.isRequired,
 };
 SquareWrapperCarousel.defaultProps = {
+  //=======================================
   // Component Specific props
   //=======================================
   content: [],
@@ -65,14 +66,56 @@ SquareWrapperCarousel.defaultProps = {
 - Set true or false to the selected prop for select/deselect the slide .
 **/
 export default function SquareWrapperCarousel(props) {
+  //-------------------------------------------------------------------
+  // 1. Destructuring props
+  //-------------------------------------------------------------------
+  const { content, onClick } = props;
+  //-------------------------------------------------------------------
+  // 1. Defining Ref
+  //-------------------------------------------------------------------
   const sliderRef = useRef();
-  let { content } = props;
+  //-------------------------------------------------------------------
+  // 2. Defining states
+  //-------------------------------------------------------------------
+  const [carouselContent, setCarouselContent] = useState(content);
+  //-------------------------------------------------------------------
+  // 3. Set the classes
+  //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "square-wrapper-carousel");
   //-------------------------------------------------------------------
-  // 4. Get animation of the component
+  // 4. Defining hook for component updates
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
+  useEffect(() => {
+    setCarouselContent(content);
+  }, [content]);
+  useEffect(() => {
+    onClick(carouselContent);
+  }, [carouselContent, onClick]);
+  //-------------------------------------------------------------------
+  // 5. Function to handle slide selection
+  //-------------------------------------------------------------------
+  const handleSelect = (data) => {
+    let tmp_state = carouselContent;
+    let tmp_arr = [];
+    let tmp_obj = {};
 
+    tmp_state.forEach((dataObj) => {
+      if (dataObj?.id === data.content.id) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.selected = true;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_obj.selected = false;
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setCarouselContent([...tmp_arr]);
+  };
+  //-------------------------------------------------------------------
+  // 6. Get animation of the component
+  //-------------------------------------------------------------------
   var settings = {
     dots: true,
     speed: 500,
@@ -87,9 +130,7 @@ export default function SquareWrapperCarousel(props) {
     centerPadding: "0%",
     swipeToSlide: true,
   };
-
   // ========================= Render Function =================================
-  
   return (
     <motion.div
       initial={animate.from}
@@ -97,7 +138,7 @@ export default function SquareWrapperCarousel(props) {
       className={`qui qui-square-wrapper-carousel-container ${quommonClasses.parentClasses}`}
     >
       <Slider ref={sliderRef} {...settings}>
-        {_.map(content, (slide, index) => {
+        {_.map(carouselContent, (slide, index) => {
           return (
             <div
               className="qui-square-wrapper-slide-container qui-banner"
@@ -114,8 +155,7 @@ export default function SquareWrapperCarousel(props) {
                 <BannerCard
                   {...slide.props}
                   content={slide}
-                  onClick={props.onClick}
-                  withTranslation={props.withTranslation}
+                  onClick={(slideData) => handleSelect(slideData)}
                 />
               </div>
             </div>

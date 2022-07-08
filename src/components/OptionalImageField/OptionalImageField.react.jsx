@@ -18,40 +18,39 @@ OptionalImageField.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    OptionalImageField title, icon and actionButton has to be in content.
-    */
+  OptionalImageField title, icon and actionButton has to be in content.
+  */
   content: PropTypes.shape({
     title: PropTypes.string,
     icon: PropTypes.string,
     actionButton: PropTypes.bool,
   }),
   /**
-    Use to define the file type which is supported to upload.
-    Suppoted file type image/*.
+  Use to define the file type which is supported to upload.
+  Suppoted file type image/*.
   */
   withFile: PropTypes.shape({
     type: PropTypes.string,
     capture: PropTypes.string,
   }),
   /**
-   Use to toggle a multiple to upload more than one images
- */
+  Use to toggle a multiple to upload more than one images
+  */
   isMultiple: PropTypes.bool,
-
   //=======================================
   // Quommon props
   //=======================================
   /**
-    Use to override component colors
-    */
+  Use to override component colors
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -79,16 +78,16 @@ OptionalImageField.propTypes = {
    */
   isHidden: PropTypes.bool,
   /**
-   Use to enable/disable the component
-   */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to toggle the component taking the full width of the parent container
-    */
+  Use to toggle the component taking the full width of the parent container
+  */
   isFluid: PropTypes.bool,
   /**
-    OptionalImageField component must have the onClick function passed as props
-    */
+  OptionalImageField component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -99,7 +98,6 @@ OptionalImageField.defaultProps = {
   content: {},
   withFile: null,
   isMultiple: false,
-
   //=======================================
   // Quommon props
   //=======================================
@@ -139,6 +137,7 @@ export default function OptionalImageField(props) {
   //-------------------------------------------------------------------
   const fileRef = useRef();
   const [file, setFile] = useState(false);
+  const [baseFile, setBaseFile] = useState("")
   //-------------------------------------------------------------------
   // 2. Destructuring props
   //-------------------------------------------------------------------
@@ -158,7 +157,7 @@ export default function OptionalImageField(props) {
   //-------------------------------------------------------------------
   // 6. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 7. File upload handlers
   //-------------------------------------------------------------------
@@ -182,12 +181,17 @@ export default function OptionalImageField(props) {
         };
         allFiles.push(fileInfo);
         if (allFiles.length === files.length) {
-          if (props.isMultiple) props.onClick(allFiles);
-          else props.onClick(allFiles[0]);
+          if (props.isMultiple) {
+            props.onClick(allFiles);
+          }
+          else {
+            setBaseFile(allFiles[0].base64)
+            props.onClick(allFiles[0]);
+          }
         }
       };
+      setFile(true);
     }
-    setFile(true);
   };
   // ========================= Render Function =================================
 
@@ -209,12 +213,22 @@ export default function OptionalImageField(props) {
         hidden
       />
       <div
-        className="qui-optional-image-field-wrapper"
+        className={`qui-optional-image-field-wrapper ${quommonClasses.childClasses}`}
         style={colors.iconBoundries}
       >
         {content?.icon && (
-          <div className="qui-optional-image-field-icon" onClick={uploadFile}>
-            <i className={content.icon}></i>
+          <div className="qui-optional-image-field-container" onClick={uploadFile}>
+            {baseFile ?
+              <div
+                className="qui-optional-image-field-image"
+                style={{
+                  backgroundImage: `url(${baseFile})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  backgroundSize: "cover",
+                }}>
+              </div> : <i className={`qui-optional-image-field-icon ${content?.icon}`}></i>
+            }
           </div>
         )}
         {content?.icon && (
@@ -236,10 +250,12 @@ export default function OptionalImageField(props) {
       </div>
       {content?.actionButton && (
         <div
-          className={`qui-optional-image-field-action-icon ${file ? "qui-uploaded" : ""
-            }`}
+          className={`qui-optional-image-field-action-icon ${
+            file ? "qui-uploaded" : ""
+          }`}
           onClick={() => {
             setFile(false);
+            setBaseFile("");
           }}
         >
           <i className={file ? "fas fa-times" : "fas fa-angle-left"}></i>

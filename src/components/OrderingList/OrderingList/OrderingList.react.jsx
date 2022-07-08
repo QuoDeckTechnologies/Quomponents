@@ -143,7 +143,7 @@ export default function OrderingList(props) {
   quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
   // 2. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   //-------------------------------------------------------------------
   // 3. Setting the colors of the imported components
@@ -163,8 +163,8 @@ export default function OrderingList(props) {
     props.withTranslation.lang !== "" &&
     props.withTranslation.lang !== "en"
   ) {
-    tObj = getTranslation(props.withTranslation);
-    submitButtonText = props.purpose === "quiz" ? tObj?.checkAnswer || "Check Answer" : tObj?.submitAnswer || "Submit Answer";
+    tObj = getTranslation(props.withTranslation);    submitButtonText = props.purpose === "quiz" ? tObj?.checkAnswer : tObj?.submitAnswer;
+
   }
   // ========================= Render Function =================================
   return (

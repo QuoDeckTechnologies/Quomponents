@@ -42,7 +42,7 @@ Conversation.propTypes = {
     // Quommon props
     //=======================================
     /**
-      Use to define standard component type
+    Use to define standard component type
     */
     asVariant: PropTypes.oneOf([
         "primary",
@@ -56,7 +56,7 @@ Conversation.propTypes = {
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-      Use to override component colors and behavior
+    Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
@@ -66,8 +66,8 @@ Conversation.propTypes = {
         iconListItemTextColor: PropTypes.string,
     }),
     /**
-      Use to define the entry animation of the component
-      */
+    Use to define the entry animation of the component
+    */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -83,8 +83,8 @@ Conversation.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to show/hide the component
-      */
+    Use to show/hide the component
+    */
     isHidden: PropTypes.bool,
 };
 
@@ -148,7 +148,7 @@ export default function Conversation(props) {
     //-------------------------------------------------------------------
     // 5. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -169,7 +169,7 @@ export default function Conversation(props) {
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (
-                    <img className="qui-icon-bullet-list-image"
+                    <img className="qui-icon-bullet-list-image qt-shadow"
                         src={resolveImage(data?.image.id, imageLibrary)}
                         alt="Conversation" />
                 )}

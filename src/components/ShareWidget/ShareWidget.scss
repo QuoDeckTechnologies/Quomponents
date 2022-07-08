@@ -12,7 +12,6 @@
 .qui .qui-share-label {
     width: 100%;
     height: 100%;
-    font-size: 1.2em;
 }
 
 .qui .qui-shareicon-container {
@@ -22,42 +21,15 @@
     align-items: center;
 }
 .qui .qui-shareicon-container button {
-    height: 1.2em;
-    width: 1.2em;
+    height: 1em;
+    width: 1em;
 }
 .qui .qui-share-icon {
     display: flex;
     align-items: center;
-    margin-right: 0.5em;
+    margin-right: 0.3em;
 }
 .qui .qui-share-icon-disabled {
     pointer-events: none;
     opacity: 0.5;
-}
-
-/* ================================================= */
-/* ShareWidget Sizing Definitions */
-/* ================================================= */
-@media only screen and (min-width: 320px) {
-    .qui-share-widget {
-        font-size: 1.2em;
-    }
-}
-
-@media only screen and (min-width: 481px) {
-    .qui-share-widget {
-        font-size: 2em;
-    }
-}
-
-@media only screen and (min-width: 769px) {
-    .qui-share-widget {
-        font-size: 3em;
-    }
-}
-
-@media only screen and (min-width: 1024px) {
-    .qui-share-widget {
-        font-size: 4em;
-    }
 }

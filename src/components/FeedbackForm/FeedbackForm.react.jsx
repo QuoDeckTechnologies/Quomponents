@@ -68,9 +68,9 @@ FeedbackForm.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    FeedbackForm component must have the onClick function passed as props
+    FeedbackForm component must have the onSubmit function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
 };
 
 FeedbackForm.defaultProps = {
@@ -86,6 +86,7 @@ FeedbackForm.defaultProps = {
     withTranslation: null,
     isHidden: false,
     isDisabled: false,
+    onSubmit: null,
 };
 /**
 ## Notes
@@ -94,7 +95,6 @@ FeedbackForm.defaultProps = {
 - FeedbackForm is used to take feedback from the user and appears when user toggle the switch
 - The feedback form will appear by switching the toggle button , in form one can enter the data in 2  different different input fields which will  be used as per requirment  , by clicking outside the input field or entering on it the entered data will be saved. 
 **/
-
 export default function FeedbackForm(props) {
     const [toggle, setToggle] = useState(false);
 
@@ -120,7 +120,7 @@ export default function FeedbackForm(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "feedback-form");
     //------------------------------------------------------------------
-    // 1. Set the colors of ToggleButton
+    // 2. Set the colors of ToggleButton
     //-------------------------------------------------------------------
     let ToggleColors = {
         backgroundColor: props.withColor?.toggleBarColor,
@@ -128,7 +128,7 @@ export default function FeedbackForm(props) {
         textColor: props.withColor?.toggleLabelColor
     }
     //------------------------------------------------------------------
-    // 1. Set the colors of InputField
+    // 3. Set the colors of InputField
     //-------------------------------------------------------------------
     let InputFieldColors = {
         backgroundColor: props.withColor?.inputBackgroundColor,
@@ -136,11 +136,12 @@ export default function FeedbackForm(props) {
         textColor: props.withColor?.inputTextColor
     }
     //-------------------------------------------------------------------
-    // 2. Get animation of the component
+    // 4. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     // ========================= Render Function =================================
 
+    // ========================= Render Function =================================
     let fieldsetClasses = toggle ? "qui-feedback-fieldset" : "qui-feedback-fieldset qui-feedback-de-active";
     return (
         <motion.div

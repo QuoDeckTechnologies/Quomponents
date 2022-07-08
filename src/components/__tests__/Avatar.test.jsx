@@ -5,6 +5,10 @@ import React from "react";
 import { shallow, mount, render } from "enzyme";
 
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import from Config
 // -------------------------------------
 
@@ -14,22 +18,48 @@ import { shallow, mount, render } from "enzyme";
 import Avatar from "../AppMenu/Avatar/Avatar.react";
 
 describe("Avatar", () => {
+
+  const args = {
+    target: Avatar,
+    required: {
+      content: "Testing Button",
+      onClick: () => console.log("Avatar Testing"),
+    },
+    translations: {
+      tgt: "button",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          loading: "बस एक मिनट...",
+          button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("variants", args);
+  hasValid("sizes", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
+  hasValid("alignment", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-  // let onClick = jest.fn();
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
       <Avatar
-        asVariant="primary"
-        asSize="normal"
-        asFloated="none"
         withColor={null}
-        withIcon={null}
-        isHidden={false}
-        isDisabled={false}
         onClick={() => console.log("Avatar testing")}
       />
     );
@@ -49,21 +79,6 @@ describe("Avatar", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly if asVariantProp get selected to Secondary", () => {
-    component.setProps({ asVariant: "secondary" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly if asVariantProp get selected to Success", () => {
-    component.setProps({ asVariant: "success" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly if asFloatedProp get selected to Inline", () => {
-    component.setProps({ asFloated: "inline" });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly if withColor set to any color prop", () => {
     component.setProps({ withColor: { backgroundColor: "purple" } });
     expect(component.exists()).toBe(true);
@@ -77,16 +92,6 @@ describe("Avatar", () => {
   it("should render correctly if withIcon set to any other icon from font-awesome", () => {
     component.setProps({ withIcon: { icon: "fas fa-home" } });
     component.update();
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly if isHidden toggled as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly if isDisabled toggled as true", () => {
-    component.setProps({ isDisabled: true });
     expect(component.exists()).toBe(true);
   });
 });

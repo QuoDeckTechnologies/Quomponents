@@ -109,30 +109,37 @@ Default.args = {
     {
       title: "Open Deck",
       icon: "fas fa-book-open",
+      func: () => { },
     },
     {
       title: "Edit Deck",
       icon: "fas fa-edit",
+      func: () => { },
     },
     {
       title: "Move Deck Up",
       icon: "fas fa-chevron-up",
+      func: () => { },
     },
     {
       title: "Move Deck Down",
       icon: "fas fa-chevron-down",
+      func: () => { },
     },
     {
       title: "Move to Topic",
       icon: "fas fa-retweet",
+      func: () => { },
     },
     {
       title: "Unpublish Deck",
       icon: "fas fa-eye-slash",
+      func: () => { },
     },
     {
       title: "Delete Deck",
       icon: "fas fa-trash-alt",
+      func: () => { },
     },
   ],
   withColor: {

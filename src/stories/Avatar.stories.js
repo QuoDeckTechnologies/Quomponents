@@ -68,7 +68,6 @@ export default {
         style={{
           width: "100%",
           textAlign: "center",
-          fontSize: "1.25em",
         }}
       >
         {story()}
@@ -119,7 +118,9 @@ ProfileIcon.args = {
   asVariant: "warning",
   asSize: "normal",
   asFloated: "inline",
-  withIcon: { icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg" },
+  withIcon: {
+    icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+  },
   withColor: {
     backgroundColor: "",
     textColor: "",
@@ -158,7 +159,7 @@ DisabledIcon.parameters = {
   docs: {
     description: {
       story:
-        "Profile default icon can change to profile image , Onclick is disabled",
+        "Profile default icon can change to profile image , onClick is disabled",
     },
     source: {
       code: `<Avatar {...${JSON.stringify(DisabledIcon.args, null, 2)}}/>`,
@@ -231,7 +232,56 @@ AllSizes.parameters = {
         "6 sizes are supported with the different different fontawesome icons. Use as per purpose noted here.",
     },
     source: {
-      code: `<Avatar asVariant="secondary"/>`,
+      code: `
+      const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+          asFloated: "inline",
+        }),
+      };
+      <div>
+        <Avatar
+          {...Object.assign({}, baseObj, {
+            asVariant: "secondary",
+            asSize: "tiny",
+            withIcon: { icon: "fas fa-user" },
+          })}
+        />
+        <Avatar
+          {...Object.assign({}, baseObj, {
+            asVariant: "secondary",
+            asSize: "small",
+            withIcon: { icon: "fas fa-user" },
+          })}
+        />
+        <Avatar
+          {...Object.assign({}, baseObj, {
+            asVariant: "secondary",
+            asSize: "normal",
+            withIcon: { icon: "fas fa-user" },
+          })}
+        />
+        <Avatar
+          {...Object.assign({}, baseObj, {
+            asVariant: "secondary",
+            asSize: "big",
+            withIcon: { icon: "fas fa-user" },
+          })}
+        />
+        <Avatar
+          {...Object.assign({}, baseObj, {
+            asVariant: "secondary",
+            asSize: "huge",
+            withIcon: { icon: "fas fa-user" },
+          })}
+        />
+        <Avatar
+          {...Object.assign({}, baseObj, {
+            asVariant: "secondary",
+            asSize: "massive",
+            withIcon: { icon: "fas fa-user" },
+          })}
+        />
+      </div>`,
     },
   },
 };
@@ -293,7 +343,49 @@ AllVariants.parameters = {
       story: "5 variants are supported. Use as per purpose noted here.",
     },
     source: {
-      code: `<Avatar asVariant="primary"/>`,
+      code: `
+      const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+          asFloated: "inline",
+        }),
+      };
+      <div>
+        <Avatar
+          {...Object.assign({}, baseObj, {
+            asVariant: "primary",
+            asSize: "normal",
+            withIcon: { icon: "fas fa-user" },
+          })}
+        />
+        <Avatar
+          {...Object.assign({}, baseObj, {
+            asVariant: "secondary",
+            asSize: "normal",
+            withIcon: { icon: "fas fa-user" },
+          })}
+        />
+        <Avatar
+          {...Object.assign({}, baseObj, {
+            asVariant: "success",
+            asSize: "normal",
+            withIcon: { icon: "fas fa-user" },
+          })}
+        />
+        <Avatar
+          {...Object.assign({}, baseObj, {
+            asVariant: "warning",
+            asSize: "normal",
+            withIcon: { icon: "fas fa-user" },
+          })}
+        />
+        <Avatar
+          {...Object.assign({}, baseObj, {
+            asVariant: "error",
+            asSize: "normal",
+            withIcon: { icon: "fas fa-user" },
+          })}
+        />
+      </div>`,
     },
   },
 };

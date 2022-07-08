@@ -2,6 +2,17 @@
     min-width: 0;
     cursor: pointer;
 }
+.qui .qui-btn.qui-btn-disabled {
+    background-color: #aaaaaa;
+    color: #fff;
+    &.emp-text {
+        color: #aaaaaa;
+    }
+    &.emp-outlined {
+        color: #aaaaaa;
+        border: 1px solid #aaaaaa;
+    }
+}
 
 .qui .qui-btn.is-circular {
     border-radius: 50px;
@@ -22,14 +33,12 @@
 }
 
 .qui .qui-label {
-    font-size: 1.25em;
     margin-left: 5px;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
 .qui .qui-caption {
-    font-size: 0.85em;
     margin-top: 5px;
     margin-left: 3px;
     font-style: italic;

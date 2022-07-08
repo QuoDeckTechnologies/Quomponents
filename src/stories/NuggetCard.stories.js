@@ -17,7 +17,7 @@ export default {
 		},
 		asFloated: {
 			control: "select",
-			options: ["left", "right", "inline"],
+			options: ["left", "right","none", "inline"],
 			table: {
 				category: "as-Flags",
 			},
@@ -67,26 +67,38 @@ export default {
 const Template = (args) => <NuggetCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-	content: {
-		published: false,
-		tags: ["Sales"],
-		category: "profiler",
-		name: "Measure your sales readiness",
-		description: "Take this quick profile test to check how well you are prepared for a sales job",
-		image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
-		points: "200",
-		identifier: "XrPmy_OAK",
-	},
-	asFloated: "inline",
-	isDisabled: false,
-	isHidden: false,
+  content: {
+    published: false,
+    tags: ["Sales"],
+    category: "profiler",
+    name: "Measure your sales readiness",
+    description:
+      "Take this quick profile test to check how well you are prepared for a sales job",
+    image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
+    points: "200",
+    identifier: "XrPmy_OAK",
+    menuContent: [
+      {
+        list: [
+          { title: "EDIT DETAILS", func: () => {} },
+          { title: "EDIT CONTENT", func: () => {} },
+          { title: "MANAGE LEARNERS", func: () => {} },
+          { title: "VIEW ANALYTICS", func: () => {} },
+          { title: "DELETE COURSE", func: () => {} },
+        ],
+      },
+    ],
+  },
+  asFloated: "inline",
+  isDisabled: false,
+  isHidden: false,
 };
 Default.parameters = {
-	docs: {
-		source: {
-			code: `<NuggetCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
-		},
-	},
+  docs: {
+    source: {
+      code: `<NuggetCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
 };
 
 // -------------------------------------------------------------

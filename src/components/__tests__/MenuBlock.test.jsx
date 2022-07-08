@@ -4,22 +4,51 @@ import React from "react";
 // -------------------------------------
 import { shallow, mount, render } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import MenuBlock from "../AppMenu/MenuBlock/MenuBlock.react";
 
 describe("MenuBlock", () => {
   // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: MenuBlock,
+    required: {
+      onClick: () => { },
+    },
+    translations: {
+      tgt: "menuBlock",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          menuBlock: {
+            content: "सूची",
+          },
+        },
+      })
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("variants", args);
+  hasValid("sizes", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+  // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-  const dictionary = JSON.stringify({
-    hi: {
-      menuBlock: {
-        content: "सूची",
-      },
-    },
-  });
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -43,45 +72,16 @@ describe("MenuBlock", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withTranslation", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "menuBlock",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly when passed withColor", () => {
     component.setProps({
       withColor: {
         backgroundColor: "#ffffff",
-        accentColor: "#ffffff",
         textColor: "#ffffff",
       },
     });
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
 
   it("should render correctly when passed isCircular props is true", () => {
     component.setProps({
@@ -90,35 +90,9 @@ describe("MenuBlock", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when passed isDisabled props is false", () => {
-    component.setProps({
-      isDisabled: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props is true", () => {
-    component.setProps({
-      isDisabled: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly if translation object is not returned", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly when wihtLabel props is provided", () => {
     component.setProps({
       withLabel: {
-        format: "caption",
         content: "This is lable",
         textColor: "red",
       },
@@ -126,10 +100,9 @@ describe("MenuBlock", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when wihtLabel props match with position", () => {
+  it("should render correctly when withLabel props match with position", () => {
     component.setProps({
       withLabel: {
-        format: "label",
         content: "This is lable",
         textColor: "red",
       },

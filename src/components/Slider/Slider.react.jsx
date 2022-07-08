@@ -21,6 +21,16 @@ Slider.propTypes = {
   // Quommon props
   //=======================================
   /**
+    Use to define standard component type
+    */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
+  /**
     Use to define the entry animation of the component
     */
   withAnimation: PropTypes.shape({
@@ -59,6 +69,7 @@ Slider.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asVariant: "primary",
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
@@ -82,7 +93,7 @@ export default function Slider(props) {
   //-------------------------------------------------------------------
   // 3. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
 
@@ -97,6 +108,7 @@ export default function Slider(props) {
           min={0}
           max={100}
           defaultValue={initialValue}
+          color={props.asVariant}
           onChange={(e) => {
             onClick(e.target.value);
           }}

@@ -13,6 +13,12 @@ export default {
   title: "Design System/Appmenu/Appmenu",
   component: AppMenu,
   argTypes: {
+    isCircular: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
@@ -48,8 +54,6 @@ export default {
         category: "with-Params",
         defaultValue: {
           icon: "",
-          userImage: "",
-          position: "left",
         },
       },
     },
@@ -60,6 +64,14 @@ export default {
           lang: "",
           tgt: "",
           dictionary: "",
+        },
+      },
+    },
+    withLabel: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          content: "",
         },
       },
     },
@@ -106,6 +118,7 @@ export default {
 const Template = (args) => <AppMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+  isCircular: true,
   asVariant: "primary",
   asSize: "normal",
   asFloated: "inline",
@@ -141,19 +154,13 @@ Default.parameters = {
 //---------------------------------------------------------
 export const UserImage = Template.bind({});
 UserImage.args = {
+  ...Default.args,
+  isCircular: false,
   asVariant: "warning",
-  asSize: "normal",
-  asFloated: "inline",
+  withLabel: { content: "" },
   withIcon: {
-    icon:
-      "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+    icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
   },
-  withColor: {
-    backgroundColor: "",
-    textColor: "",
-  },
-  isDisabled: false,
-  isHidden: false,
 };
 UserImage.parameters = {
   docs: {
@@ -171,6 +178,8 @@ UserImage.parameters = {
 //---------------------------------------------------------
 export const DisabledIcon = Template.bind({});
 DisabledIcon.args = {
+  ...Default.args,
+  isCircular: false,
   asVariant: "warning",
   asSize: "normal",
   asFloated: "inline",
@@ -194,7 +203,7 @@ DisabledIcon.parameters = {
   },
 };
 //----------------------------------------------------------
-// Disabled Avatar Icon
+// Translated Avatar Icon
 //---------------------------------------------------------
 export const TranslatedAppMenu = Template.bind({});
 TranslatedAppMenu.args = {
@@ -281,74 +290,6 @@ AllSizes.parameters = {
   docs: {
     description: {
       story: "6 sizes are supported. Use as per purpose noted here.",
-    },
-    source: {
-      code: `<AppMenu asVariant="secondary"/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// AllSizesProfileIcon
-// -------------------------------------------------------------
-const AllSizesProfileTemplate = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args, {
-      asFloated: "inline",
-    }),
-  };
-  return (
-    <div>
-      <AppMenu
-        {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
-          asSize: "tiny",
-          withIcon: { icon: "fas fa-adjust" },
-        })}
-      />
-      <AppMenu
-        {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
-          asSize: "small",
-          withIcon: { icon: "fas fa-ellipsis-v" },
-        })}
-      />
-      <AppMenu
-        {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
-          asSize: "normal",
-          withIcon: { icon: "fas fa-ellipsis-h" },
-        })}
-      />
-      <AppMenu
-        {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
-          asSize: "big",
-          withIcon: { icon: "fas fa-home" },
-        })}
-      />
-      <AppMenu
-        {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
-          asSize: "huge",
-          withIcon: { icon: "fas fa-igloo" },
-        })}
-      />
-      <AppMenu
-        {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
-          asSize: "massive",
-          withIcon: { icon: "fas fa-bus" },
-        })}
-      />
-    </div>
-  );
-};
-export const AllSizesWithProfileIcon = AllSizesProfileTemplate.bind({});
-AllSizesWithProfileIcon.parameters = {
-  docs: {
-    description: {
-      story:
-        "6 sizes are supported with the profile image. Use as per purpose noted here.",
     },
     source: {
       code: `<AppMenu asVariant="secondary"/>`,

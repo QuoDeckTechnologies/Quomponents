@@ -3,11 +3,43 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import LearnerTableRow from "../LearnerTableRow/LearnerTableRow.react";
 
-describe("EarnCard", () => {
+describe("LearnerTableRow", () => {
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+
+  const args = {
+    target: LearnerTableRow,
+    required: {
+      content: [
+        {
+          _id: "",
+          username: "sysadmin",
+          first_name: "System",
+          last_name: "Administrator",
+        },
+      ],
+      onUnenrollLearner: () => { },
+      onSendMessage: () => { }
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+
+  hasValid("hidden", args);
+    hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -24,12 +56,13 @@ describe("EarnCard", () => {
             last_name: "Administrator",
           },
         ]}
+        asPadded="normal"
         withColor={null}
         withAnimation={null}
         isDisabled={false}
         isHidden={false}
-        onUnenrollLearner={() => {}}
-        onSendMessage={() => {}}
+        onUnenrollLearner={() => { }}
+        onSendMessage={() => { }}
       />
     );
   });

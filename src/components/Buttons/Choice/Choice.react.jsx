@@ -50,7 +50,7 @@ Choice.propTypes = {
 	/**
 	Use to float the component in parent container
 	*/
-	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+	asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
 	/**
 	Use to override component colors and behavior
 	*/
@@ -169,6 +169,7 @@ function getSecondaryButtonColors(colors, emphasis) {
 }
 
 export default function Choice(props) {
+	let { options } = props;
 	//-------------------------------------------------------------------
 	// 1. Set the classes
 	//-------------------------------------------------------------------
@@ -177,14 +178,18 @@ export default function Choice(props) {
 	//-------------------------------------------------------------------
 	// 2. Translate the text objects in case their is a dictionary provided
 	//-------------------------------------------------------------------
-	let options = props.options;
+	let text1 = options[0]?.text;
+	let text2 = options[1]?.text;
+	let tObj = getTranslation(props.withTranslation);
 	if (
 		props.withTranslation &&
 		props.withTranslation.lang !== "" &&
 		props.withTranslation.lang !== "en"
 	) {
-		let tObj = getTranslation(props.withTranslation);
-		options = tObj || props.options;
+		if (tObj && text1 && text2) {
+			text1 = tObj[0]?.text1
+			text2 = tObj[1]?.text2
+		}
 	}
 
 	//-------------------------------------------------------------------
@@ -202,7 +207,7 @@ export default function Choice(props) {
 	//-------------------------------------------------------------------
 	// 4. Get animation of the component
 	//-------------------------------------------------------------------
-	const animate = getAnimation(props.withAnimation);
+	const animate = getAnimation(props);
 
 	function handleClick(index) {
 		props.onClick(index)
@@ -222,7 +227,7 @@ export default function Choice(props) {
 							style={Object.assign({}, primaryButtonStyle)}
 							onClick={() => { handleClick(0) }}
 						>
-							{options[0].text}
+							{text1}
 						</div>
 						<div className="qui-or" style={Object.assign({}, orStyle)}>
 							OR
@@ -232,7 +237,7 @@ export default function Choice(props) {
 							style={Object.assign({}, secondaryButtonStyle)}
 							onClick={() => { handleClick(1) }}
 						>
-							{options[1].text}
+							{text2}
 						</div>
 					</div>
 				)}

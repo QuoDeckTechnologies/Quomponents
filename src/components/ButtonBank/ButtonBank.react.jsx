@@ -14,79 +14,13 @@ ButtonBank.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    Each button Text has to be in content array.
-    */
-  content: PropTypes.arrayOf(PropTypes.string).isRequired,
+  Each Button props has to be in content array.
+  */
+  content: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
-    Use for rounded corners or circular icon button 
-    */
-  isCircular: PropTypes.bool,
-  //=======================================
-  // Quommon props
-  //=======================================
-  /**
-    Use to define standard component type
-    */
-  asVariant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "error",
-  ]),
-  /**
-    Use to define component text size in increasing order
-    */
-  asSize: PropTypes.oneOf([
-    "tiny",
-    "small",
-    "normal",
-    "big",
-    "huge",
-    "massive",
-  ]),
-  /**
-    Use to float the component in parent container
-    */
-  asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-  /**
-    Use to override component colors and behavior
-    */
-  withColor: PropTypes.shape({
-    backgroundColor: PropTypes.string,
-    textColor: PropTypes.string,
-    hoverBackgroundColor: PropTypes.string,
-    hoverTextColor: PropTypes.string,
-  }),
-  /**
-    Use to define the entry animation of the component
-    */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
-  /**
-    Use to show/hide the component
-    */
-  isHidden: PropTypes.bool,
-  /**
-    Use to enable/disable the component
-    */
-  isDisabled: PropTypes.bool,
-  /**
-    Button component must have the onClick function passed as props
-    */
-  onClick: PropTypes.func.isRequired,
+  Use to set Button in horizontal direction.
+  */
+  isHorizontal: PropTypes.bool,
 };
 
 ButtonBank.defaultProps = {
@@ -94,20 +28,7 @@ ButtonBank.defaultProps = {
   // Component Specific props
   //=======================================
   content: [],
-  isCircular: false,
-  //=======================================
-  // Quommon props
-  //=======================================
-  asVariant: "primary",
-  asSize: "normal",
-  asFloated: "none",
-
-  withColor: null,
-  withLabel: null,
-  withAnimation: null,
-
-  isHidden: false,
-  isDisabled: false,
+  isHorizontal: false,
 };
 
 /**
@@ -121,28 +42,25 @@ export default function ButtonBank(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content from props
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { content, isHorizontal } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "button-bank");
 
   return (
-    <div className={`qui ${quommonClasses.parentClasses}`}>
-      {_.map(content, (buttonText, i) => {
+    <div
+      className={`qui ${quommonClasses.parentClasses} ${
+        isHorizontal ? "qui-button-bank-horizontal" : ""
+      }`}
+    >
+      {_.map(content, (buttonProps, i) => {
         return (
           <div
             className={`qui-button-bank-single-button ${quommonClasses.childClasses}`}
             key={i}
           >
-            {
-              <Button
-                {...props}
-                withTranslation={null}
-                content={buttonText}
-                onClick={(e) => props.onClick(e)}
-              />
-            }
+            {<Button {...buttonProps} />}
           </div>
         );
       })}

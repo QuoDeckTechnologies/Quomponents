@@ -1,89 +1,93 @@
-import React from 'react';
+import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from 'enzyme';
+import { shallow, mount, render } from "enzyme";
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Video from "../../Templates/Video/Video.react"
+import Video from "../../Templates/Video/Video.react";
 
 describe("Video", () => {
-    // -------------------------------------
-    // Setup definitions for the test suite
-    // -------------------------------------
-    let component;
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: Video,
+    required: {
+      data: {
+        title: "Neque porro quisquam est qui dolorem",
+        subtitle:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+        image: { id: "header-image", extention: "" },
+        backgroundImage: { id: "background-image", extention: "" },
+        video: "",
+      },
+      imageLibrary: [],
+      slideId: 0,
+    },
+  };
 
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <Video
-                data={{
-                    title: "Neque porro quisquam est qui dolorem",
-                    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-                    image: { id: "header-image", extention: "" },
-                    backgroundImage: { id: "background-image", extention: "" },
-                    video: "",
-                }}
-                imageLibrary={[]}
-                slideId={0}
-                withColor={null}
-                withAnimation={null}
-                isHidden={false}
-            />
-        );
-    });
+  hasValid("defaults", args);
+  hasValid("animations", args);
+  hasValid("hidden", args);
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
+  let component;
 
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
+  beforeEach(() => {
+    jest.resetAllMocks();
+    component = shallow(
+      <Video
+        data={{
+          title: "Neque porro quisquam est qui dolorem",
+          subtitle:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+          image: { id: "header-image", extention: "" },
+          backgroundImage: { id: "background-image", extention: "" },
+          video: "",
+        }}
+        imageLibrary={[]}
+        slideId={0}
+        withColor={null}
+        withAnimation={null}
+        isHidden={false}
+      />
+    );
+  });
 
-    it("should render correctly when title and subtitle is not defined in data prop", () => {
-        let data = {
-            title: "",
-            subtitle: "",
-        }
-        component.setProps({ data: data })
-        expect(component.exists()).toBe(true);
-    });
+  it("should render correctly when title and subtitle is not defined in data prop", () => {
+    let data = {
+      title: "",
+      subtitle: "",
+    };
+    component.setProps({ data: data });
+    expect(component.exists()).toBe(true);
+  });
 
-    it("should render correctly when image is not defined in data prop", () => {
-        let data = {
-            title: "Neque porro quisquam est qui dolorem",
-            subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-        }
-        component.setProps({ data: data })
-        expect(component.exists()).toBe(true);
-    });
+  it("should render correctly when image is not defined in data prop", () => {
+    let data = {
+      title: "Neque porro quisquam est qui dolorem",
+      subtitle:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    };
+    component.setProps({ data: data });
+    expect(component.exists()).toBe(true);
+  });
 
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            backgroundColor: "#ffffff",
-            slideHeaderTextColor: "#ffffff",
-            slideHeaderBackgroundColor: "#ad292980",
-            slideHeaderAccentColor: "#AD2929",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withAnimation props", () => {
-        let animation = {
-            animation: "zoom",
-            duration: 0.5,
-            delay: 0,
-        }
-        component.setProps({ withAnimation: animation })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true })
-        expect(component.exists()).toBe(true);
-    });
+  it("should render correctly when passed withColor props", () => {
+    let colors = {
+      backgroundColor: "#ffffff",
+      slideHeaderTextColor: "#ffffff",
+      slideHeaderBackgroundColor: "#ad292980",
+      slideHeaderAccentColor: "#AD2929",
+    };
+    component.setProps({ withColor: colors });
+    expect(component.exists()).toBe(true);
+  });
 });

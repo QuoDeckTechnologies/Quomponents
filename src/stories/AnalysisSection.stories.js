@@ -19,7 +19,7 @@ export default {
 	argTypes: {
 		asFloated: {
 			control: "select",
-			options: ["left", "right", "inline"],
+			options: ["left", "right", "inline", "none"],
 			table: {
 				category: "as-Flags",
 			},

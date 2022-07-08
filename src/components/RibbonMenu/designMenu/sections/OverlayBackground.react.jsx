@@ -27,7 +27,7 @@ OverlayBackground.propTypes = {
 	/**
 	Use to float the component in parent container
 	*/
-	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+	asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
 	/**
 	Use to show a translated version of the component text. Dictionary must be valid JSON. 
 	*/

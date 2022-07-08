@@ -22,7 +22,7 @@ SaveSection.propTypes = {
 	/**
 	Use to float the component in parent container
 	*/
-	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+	asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
 	/**
 	Use to show a translated version of the component text. Dictionary must be valid JSON. 
 	*/
@@ -97,7 +97,7 @@ export default function SaveSection(props) {
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className="qui-ribbon-menu-save-section">
-					<div className="qui-ribbon-menu-save-section-child-container">
+					<div className="qt-shadow qui-ribbon-menu-save-section-child-container">
 						<div className="qui-ribbon-menu-save-section-child">
 							<IconLink
 								onClick={handleUpload}

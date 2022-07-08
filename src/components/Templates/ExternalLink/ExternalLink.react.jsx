@@ -142,7 +142,7 @@ export default function ExternalLink(props) {
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     //-------------------------------------------------------------------
     // 4. Setting the colors of the imported components
     //-------------------------------------------------------------------
@@ -207,9 +207,9 @@ export default function ExternalLink(props) {
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (
-                    <img className="qui-external-link-image"
+                    <img className="qui-external-link-image qt-shadow"
                         src={resolveImage(data?.image.id, imageLibrary)}
-                        alt="ImageWithCaption" />
+                        alt="link" />
                 )}
                 <TextBlock {...props}
                     content={props.data?.paragraph}

@@ -145,7 +145,7 @@ export default function Brancher(props) {
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 6. Functions to set background for the template
   //-------------------------------------------------------------------

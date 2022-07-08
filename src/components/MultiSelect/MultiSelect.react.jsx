@@ -30,10 +30,6 @@ MultiSelect.propTypes = {
     Set action emphasis in increasing order 
     */
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
-    /**
-    Use for rounded corners or circular icon button 
-    */
-    isCircular: PropTypes.bool,
     //=======================================
     // Quommon props
     //=======================================
@@ -47,6 +43,10 @@ MultiSelect.propTypes = {
         "warning",
         "error",
     ]),
+    /**
+    Use to define component padding in increasing order
+    */
+    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
     /**
     Use to float the component in parent container
     */
@@ -106,9 +106,9 @@ MultiSelect.defaultProps = {
     // Quommon props
     //=======================================
     asEmphasis: "contained",
-    isCircular: false,
     asVariant: "primary",
     asFloated: "none",
+    asPadded: "normal",
     withColor: null,
     withTranslation: null,
     withLabel: null,
@@ -157,7 +157,7 @@ export default function MultiSelect(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        submitButtonText = props.purpose === "quiz" ? tObj?.checkAnswer || "Check Answer" : tObj?.submitAnswer || "Submit Answer";
+        submitButtonText = props.purpose === "quiz" ? tObj?.checkAnswer : tObj?.submitAnswer;
     }
     //-------------------------------------------------------------------
     // 2. Set the classes

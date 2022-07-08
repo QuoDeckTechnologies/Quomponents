@@ -4,43 +4,73 @@ import React from 'react';
 // -------------------------------------
 import { shallow, mount, render } from 'enzyme';
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import RewardCard from "../RewardCard/RewardCard.react"
 
 describe("RewardCard", () => {
     // -------------------------------------
-    // Setup definitions for the test suite
+    // Run common tests
     // -------------------------------------
-    let component;
-    const dictionary = JSON.stringify({
-        hi: {
-            rewardCard: {
-                soldout: "बिक चुका है!",
-                left: "शेष"
-            }
-        },
-        en: {
-            rewardCard: {
-                soldout: "SOLD OUT!",
-                left: "left"
-            }
-        }
-    });
-    let onClick = jest.fn();
 
+    const args = {
+        target: RewardCard,
+        required: {
+            content: {},
+            onClick: () => console.log("Button Testing"),
+        },
+        translations: {
+            tgt: "rewardCard",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+                hi: {
+                    rewardCard: {
+                        soldout: "बिक चुका है!",
+                        left: "शेष"
+                    }
+                },
+                en: {
+                    rewardCard: {
+                        soldout: "SOLD OUT!",
+                        left: "left"
+                    }
+                }
+            }),
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("positions", args);
+
+    hasValid("colors", args);
+    hasValid("animations", args);
+    hasValid("translations", args);
+
+    hasValid("hidden", args);
+    hasValid("disabled", args);
+
+    // -------------------------------------
+    // Run component specific tests
+    // -------------------------------------
+
+    let component;
+    let onClick = jest.fn();
     beforeEach(() => {
         jest.resetAllMocks();
         component = mount(
             <RewardCard
-                content={{
-                    id: "",
-                    name: "",
-                    image: "",
-                    cost: 0,
-                    stock: {},
-                }}
+                id=""
+                name=""
+                image=""
+                cost={0}
+                stock={{}}
                 asEmphasis="default"
+                asSize="normal"
                 withColor={null}
                 withAnimation={null}
                 withTranslation={null}
@@ -51,38 +81,33 @@ describe("RewardCard", () => {
         );
     });
 
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
 
-    it("should render correctly when passed content prop with values", () => {
-        let value = {
+    it("should render correctly when passed name,image,cost & stock prop with values", () => {
+        component.setProps({
             id: "",
             name: "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-            cost: 1000000,
+            cost: 10000000,
             stock: {
-                left: 1000000,
-                total: 1000000
+                left: 10000000,
+                total: 10000000
             }
-        }
-        component.setProps({ content: value })
+        })
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed content prop with values if asEmphasis as soldout", () => {
+    it("should render correctly when passed name,image,cost & stock prop with values if asEmphasis as soldout", () => {
         component.setProps({ asEmphasis: "soldout" })
-        let value = {
+        component.setProps({
             id: "",
             name: "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-            cost: 1000000,
+            cost: 10000000,
             stock: {
-                left: 1000000,
-                total: 1000000
+                left: 10000000,
+                total: 10000000
             }
-        }
-        component.setProps({ content: value })
+        })
         expect(component.exists()).toBe(true);
     });
 
@@ -101,86 +126,5 @@ describe("RewardCard", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed asFloated prop as left", () => {
-        component.setProps({ asFloated: "left" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asFloated prop as right", () => {
-        component.setProps({ asFloated: "right" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asFloated prop as inline", () => {
-        component.setProps({ asFloated: "inline" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asFloated prop as none", () => {
-        component.setProps({ asFloated: "none" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            textColor: "#FFFF",
-            accentColor: "#AD2929",
-            backgroundColor: "#121212",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withAnimation props", () => {
-        let animation = {
-            animation: "zoom",
-            duration: 0.5,
-            delay: 0,
-        }
-        component.setProps({ withAnimation: animation })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly with withTranslation prop", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "hi",
-                tgt: "rewardCard",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render render correctly with lang null", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "mr", 
-                tgt: "rewardCard",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true })
-        expect(component.exists()).toBe(true);
-    });
 });
 
