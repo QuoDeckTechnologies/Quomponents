@@ -17,18 +17,15 @@ SerialCard.propTypes = {
     // Component Specific props
     //=======================================
     /**
-      SerialCard data should be passed in content field and it is a required field
-      */
-    content: PropTypes.shape({
-        title: PropTypes.string,
-        description: PropTypes.string,
-        backImage: PropTypes.string,
-        image: PropTypes.string,
-        playerIcon: PropTypes.string,
-        playersValue: PropTypes.number,
-        iconOpt: PropTypes.array,
-    }).isRequired,
-
+    Use to below fields to decide SerialCard's properties
+    */
+    title: PropTypes.string,
+    description: PropTypes.string,
+    backImage: PropTypes.string,
+    image: PropTypes.string,
+    playerIcon: PropTypes.string,
+    playersValue: PropTypes.number,
+    iconOpt: PropTypes.array,
     //=======================================
     // Quommon props
     //=======================================
@@ -78,7 +75,7 @@ SerialCard.propTypes = {
     /**
       SerialCard component must have the onClick function passed as props
       */
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func
 };
 
 SerialCard.defaultProps = {
@@ -116,53 +113,49 @@ function getColors(colors) {
 **/
 export default function SerialCard(props) {
     //-------------------------------------------------------------------
-    // 1. Destructuring content from props
-    //-------------------------------------------------------------------
-    let { content } = props;
-    //-------------------------------------------------------------------
-    // 2. Set the classes
+    // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "serial-card");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
-    // 3. Set the component colors
+    // 2. Set the component colors
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor) : {};
     //-------------------------------------------------------------------
-    // 4. Get animation of the component
+    // 3. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     // ========================= Render Function =================================
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}
+            className={`qui qt-shadow ${quommonClasses.parentClasses}`}
             style={colors.cardColors}
         >
             <div className={`qui-serialcard-container ${quommonClasses.childClasses}`}>
                 <div className="qui-serialcard-top">
-                    <img className="qui-serialcard-backimg" src={content?.backImage} alt="" />
+                    <img className="qui-serialcard-backimg" src={props.backImage} alt="" />
                     <div className="qui-serialcard-date-name" style={colors.textColors}>
-                        <span>{content?.title}</span>
-                        <h1>{content?.description}</h1>
+                        <span className="qt-sm">{props.title}</span>
+                        <h6>{props.description}</h6>
                     </div>
                 </div>
                 <div className="qui-serialcard-bottom">
-                    <img className="qui-serialcard-frontimg" src={content?.image} alt="" />
+                    <img className="qui-serialcard-frontimg" src={props.image} alt="" />
                     <div className={"qui-serialcard-player"}>
-                        <i className={`qui-serialcard-player-icon ${content?.playerIcon}`} style={colors.accentColors} />
-                        <span style={colors.textColors}>{content?.playersValue}</span>
+                        <i className={`qui-serialcard-player-icon ${props.playerIcon}`} style={colors.accentColors} />
+                        <span className="qt-sm" style={colors.textColors}>{props.playersValue}</span>
                     </div>
                     <div className="qui-serialcard-icons">
-                        {_.map(content?.iconOpt, (icons, index) => {
+                        {_.map(props.iconOpt, (icons, index) => {
                             return (
                                 <div key={index}>
                                     <i
-                                        className={`qui-serialcard-icon ${icons}`}
+                                        className={`qui-serialcard-icon ${icons.icon}`}
                                         style={colors.accentColors}
-                                        onMouseDown={() => props.onClick(index)}
+                                        onMouseDown={() =>{icons.func()}}
                                     >
                                     </i>
                                 </div>

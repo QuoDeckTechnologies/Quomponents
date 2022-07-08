@@ -22,7 +22,7 @@ SaveExitSection.propTypes = {
 	/**
 	Use to float the component in parent container
 	*/
-	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+	asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
 	/**
 	Use to show a translated version of the component text. Dictionary must be valid JSON. 
 	*/
@@ -80,7 +80,7 @@ export default function SaveExitSection(props) {
 
 	// ========================= Render Function =================================
 	return (
-		<div className={`qui ${quommonClasses.parentClasses}`}>
+		<div className={`qui qt-shadow ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className="qui-ribbon-exit-save-section">
 					<IconLink

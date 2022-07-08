@@ -18,6 +18,7 @@ export default {
   argTypes: {
     content: [
       {
+        id: "",
         image: "",
         tag: "",
         selected: "",
@@ -71,6 +72,7 @@ export const Default = Template.bind({});
 Default.args = {
   content: [
     {
+      id: "first-slide",
       image:
         "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
       header: "Balloon Burst",
@@ -78,13 +80,15 @@ Default.args = {
       selected: true,
     },
     {
+      id: "second-slide",
       image:
         "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
       tag: "premium",
-      selected: true,
+      selected: false,
       header: "Cityscape",
     },
     {
+      id: "third-slide",
       image:
         "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
       tag: "restricted",
@@ -122,6 +126,7 @@ export const TranslatedLandscapeCarousel = Template.bind({});
 TranslatedLandscapeCarousel.args = {
   content: [
     {
+      id: "first-slide",
       image:
         "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
       header: "Balloon Burst",
@@ -129,13 +134,15 @@ TranslatedLandscapeCarousel.args = {
       selected: true,
     },
     {
+      id: "second-slide",
       image:
         "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
       tag: "premium",
-      selected: true,
+      selected: false,
       header: "Cityscape",
     },
     {
+      id: "third-slide",
       image:
         "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
       tag: "restricted",
@@ -173,19 +180,28 @@ export const LandscapeCarouselWithoutBox = Template.bind({});
 LandscapeCarouselWithoutBox.args = {
   content: [
     {
+      id: "first-slide",
       image:
-        "https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
+        "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+      header: "Balloon Burst",
       tag: "new",
+      selected: true,
     },
     {
+      id: "second-slide",
       image:
-        "https://i.pinimg.com/564x/68/ed/88/68ed881d5ff0dbe232ff8d4d2e186a99.jpg",
+        "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
       tag: "premium",
+      selected: false,
+      header: "Cityscape",
     },
     {
+      id: "third-slide",
       image:
-        "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
+        "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
       tag: "restricted",
+      selected: false,
+      header: "GhostBuster",
     },
   ],
   withTranslation: {
@@ -221,16 +237,19 @@ export const LandscapeCarouselWithoutTag = Template.bind({});
 LandscapeCarouselWithoutTag.args = {
   content: [
     {
+      id: "first-slide",
       image:
         " https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
       header: "The Negotiation Room",
     },
     {
+      id: "second-slide",
       image:
         "https://i.pinimg.com/564x/68/ed/88/68ed881d5ff0dbe232ff8d4d2e186a99.jpg",
       header: "The Negotiation Room",
     },
     {
+      id: "third-slide",
       image:
         "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
       header: "What is Negotiation Room?",
@@ -299,6 +318,7 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
     ...Object.assign({}, Default.args, args, {
       content: [
         {
+          id: "first-slide",
           image:
             "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
           header: "Balloon Burst",
@@ -306,13 +326,15 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
           selected: true,
         },
         {
+          id: "second-slide",
           image:
             "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
           tag: "premium",
-          selected: true,
+          selected: false,
           header: "Cityscape",
         },
         {
+          id: "third-slide",
           image:
             "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
           tag: "restricted",
@@ -333,6 +355,7 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
         {...Object.assign({}, baseObj, {
           content: [
             {
+              id: "first-slide",
               image:
                 "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
               header: "Balloon Burst",
@@ -340,13 +363,15 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
               selected: true,
             },
             {
+              id: "second-slide",
               image:
                 "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
               tag: "premium",
-              selected: true,
+              selected: false,
               header: "Cityscape",
             },
             {
+              id: "third-slide",
               image:
                 "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
               tag: "restricted",
@@ -360,20 +385,26 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
         {...Object.assign({}, baseObj, {
           content: [
             {
+              id: "first-slide",
               image:
                 "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
               header: "Balloon Burst",
+              tag: "new",
               selected: true,
             },
             {
+              id: "second-slide",
               image:
                 "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-              selected: true,
+              tag: "premium",
+              selected: false,
               header: "Cityscape",
             },
             {
+              id: "third-slide",
               image:
                 "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+              tag: "restricted",
               selected: false,
               header: "GhostBuster",
             },
@@ -384,16 +415,19 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
         {...Object.assign({}, baseObj, {
           content: [
             {
+              id: "first-slide",
               image:
                 "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
               tag: "new",
             },
             {
+              id: "second-slide",
               image:
                 "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
               tag: "premium",
             },
             {
+              id: "third-slide",
               image:
                 "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
               tag: "restricted",

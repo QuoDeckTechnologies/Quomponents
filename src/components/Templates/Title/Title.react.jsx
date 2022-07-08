@@ -167,7 +167,7 @@ export default function Title(props) {
   //-------------------------------------------------------------------
   // 5. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 6. Functions to set background for the template
   //-------------------------------------------------------------------

@@ -3,13 +3,48 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import CaptionedBulletList from "../../Templates/CaptionedBulletList/CaptionedBulletList.react";
 
 describe("CaptionedBulletList", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: CaptionedBulletList,
+    required: {
+      data: {
+        title: "This is Title",
+        subtitle: "This is Subtitle",
+        image: {
+          id: "header-image",
+          extention: "",
+        },
+        caption: "caption",
+        backgroundImage: {
+          id: "background-image",
+          extention: "",
+        },
+        bullets: [
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "Quisque sed turpis vel lectus suscipit auctor",
+          "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor.",
+        ],
+      },
+      onClick: () => console.log("Button Testing"),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("variants", args);
+  hasValid("hidden", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component;
   beforeEach(() => {
@@ -20,27 +55,29 @@ describe("CaptionedBulletList", () => {
           title: "This is Title",
           subtitle: "This is Subtitle",
           image: {
-            id: 'header-image',
-            extention: ""
+            id: "header-image",
+            extention: "",
           },
           caption: "caption",
           backgroundImage: {
-            id: 'background-image',
-            extention: ""
+            id: "background-image",
+            extention: "",
           },
           bullets: [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             "Quisque sed turpis vel lectus suscipit auctor",
-            "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
+            "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor.",
           ],
         }}
-        imageLibrary={[{
-          id: "background-image",
-          image: 'test-1.png'
-        }, {
-          id: "header-image",
-          image: 'test-2.png'
-        },
+        imageLibrary={[
+          {
+            id: "background-image",
+            image: "test-1.png",
+          },
+          {
+            id: "header-image",
+            image: "test-2.png",
+          },
         ]}
         slideId={0}
         asVariant="primary"
@@ -52,7 +89,7 @@ describe("CaptionedBulletList", () => {
           textBlockTextColor: "",
           bulletBlockTextColor: "",
           bulletBlockBackgroundColor: "",
-          backgroundColor: ""
+          backgroundColor: "",
         }}
         isHidden={false}
         isDisabled={false}
@@ -80,60 +117,15 @@ describe("CaptionedBulletList", () => {
       textBlockTextColor: "#fff",
       bulletBlockTextColor: "#ffffff",
       bulletBlockBackgroundColor: "#ad292980",
-      backgroundColor: "#fff"
-    }
-    component.setProps({ withColor: colors })
+      backgroundColor: "#fff",
+    };
+    component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    }
-    component.setProps({ withAnimation: animation })
-    expect(component.exists()).toBe(true);
-  })
+  });
   it("should render correctly when passed data as null", () => {
-    component.setProps({ data: {} })
+    component.setProps({ data: {} });
     expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false })
-    expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true })
-    expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false })
-    expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true })
-    expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed asVariant prop as primary", () => {
-    component.setProps({ asVariant: "primary" })
-    expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed asVariant prop as secondary", () => {
-    component.setProps({ asVariant: "secondary" })
-    expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed asVariant prop as warning", () => {
-    component.setProps({ asVariant: "warning" })
-    expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed asVariant prop as error", () => {
-    component.setProps({ asVariant: "error" })
-    expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed asVariant prop as success", () => {
-    component.setProps({ asVariant: "success" })
-    expect(component.exists()).toBe(true);
-  })
+  });
   it("should render correctly when passed image prop as null", () => {
     let data = {
       title: "This is Title",
@@ -142,12 +134,12 @@ describe("CaptionedBulletList", () => {
       bullets: [
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "Quisque sed turpis vel lectus suscipit auctor",
-        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-      ]
-    }
-    component.setProps({ data: data })
+        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor.",
+      ],
+    };
+    component.setProps({ data: data });
     expect(component.exists()).toBe(true);
-  })
+  });
   it("should render correctly when passed backgroundImage prop as null and backgroundColor is passed", () => {
     let data = {
       title: "This is Title",
@@ -156,9 +148,9 @@ describe("CaptionedBulletList", () => {
       bullets: [
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "Quisque sed turpis vel lectus suscipit auctor",
-        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-      ]
-    }
+        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor.",
+      ],
+    };
     let colors = {
       slideHeaderTextColor: "#FFFFFF",
       slideHeaderAccentColor: "#AD2929",
@@ -167,9 +159,9 @@ describe("CaptionedBulletList", () => {
       textBlockTextColor: "#fff",
       bulletBlockTextColor: "#ffffff",
       bulletBlockBackgroundColor: "#ad292980",
-      backgroundColor: "#fff"
-    }
-    component.setProps({ data: data, withColor: colors })
+      backgroundColor: "#fff",
+    };
+    component.setProps({ data: data, withColor: colors });
     expect(component.exists()).toBe(true);
-  })
+  });
 });

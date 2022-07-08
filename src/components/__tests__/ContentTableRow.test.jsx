@@ -4,27 +4,63 @@
 import { shallow, mount } from "enzyme";
 import { fireEvent, render, screen } from "@testing-library/react";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import ContentTableRow from "../ContentTableRow/ContentTableRow.react";
 
 describe("ContentTableRow", () => {
+
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
-  let component;
-  const dictionary = JSON.stringify({
-    hi: {
-      contentTableRow: {
+
+  const args = {
+    target: ContentTableRow,
+    required: {
+      content: {
+        name: "dummy file-name.pdf",
+        readerType: "videck",
         menuData: [
           {
-            title: "डेक खोले",
+            title: "Open Deck",
             icon: "fas fa-book-open",
           },
         ],
       },
+      onClick: () => { },
     },
-  });
+    translations: {
+      tgt: "contentTableRow",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          contentTableRow: {
+            menuData: [
+              {
+                title: "डेक खोले",
+                icon: "fas fa-book-open",
+              },
+            ],
+          },
+        },
+      })
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("hidden", args);
+  hasValid("disabled", args);  // -------------------------------------
+  // Setup definitions for the test suite
+  // -------------------------------------
+  let component;
   beforeEach(() => {
     jest.resetAllMocks();
     component = mount(
@@ -39,70 +75,10 @@ describe("ContentTableRow", () => {
             },
           ],
         }}
-        withAnimation={null}
-        withTranslation={null}
-        isDisabled={false}
-        isHidden={false}
-        onClick={() => {}}
+        onClick={() => { }}
       />
     );
   });
-
-  it("it should render correctly without throwing an error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withTranslation props", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "contentTableRow",
-        dictionary: dictionary,
-      },
-    });
-    component.find(".qui-content-menu").simulate("click");
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props is true", () => {
-    component.setProps({
-      isDisabled: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props is false", () => {
-    component.setProps({
-      isDisabled: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
   it("it should render correctly without throwing an error with docdeck readerType", () => {
     component.setProps({
       content: {
@@ -242,9 +218,7 @@ describe("ContentTableRow", () => {
           readerType: "videck",
         }}
         withAnimation={null}
-        isDisabled={false}
-        isHidden={false}
-        onClick={() => {}}
+        onClick={() => { }}
       />
     );
     const button = screen.getByRole("button");

@@ -33,7 +33,7 @@ export default {
         },
         asFloated: {
             control: "select",
-            options: ["left", "right"],
+            options: ["left", "right", "none"],
             table: {
                 category: "as-Flags",
             },
@@ -74,7 +74,6 @@ export default {
         }
     },
 };
-
 
 // -------------------------------------------------------------
 // Default

@@ -142,7 +142,7 @@ export default function ClozeQuestion(props) {
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     const [answer, setAnswer] = useState();
     function handleSubmit() {
         props.trackInteraction(answer)
@@ -183,7 +183,7 @@ export default function ClozeQuestion(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        buttonText = data?.purpose === "quiz" ? tObj?.checkAnswer || "Check Answer" : tObj?.submitAnswer || "Submit Answer";
+        buttonText = data?.purpose === "quiz" ? tObj?.checkAnswer : tObj?.submitAnswer ;
     }
 
     //-------------------------------------------------------------------

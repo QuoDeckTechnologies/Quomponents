@@ -50,7 +50,7 @@ CourseCard.propTypes = {
 	/**
 	Use to float the component in parent container
 	*/
-	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+	asFloated: PropTypes.oneOf(["left", "right", "inline", "none"]),
 	/**
 	Use to show a translated version of the component text. Dictionary must be valid JSON. 
 	*/
@@ -353,11 +353,7 @@ export default function CourseCard(props) {
 				<div className="qui-course-card-footer">
 					<div className={`qui-course-card-arc-menu`}>
 						<ArcMenu
-							menuContent={[
-								{
-									list: menu,
-								},
-							]}
+							menuContent={props.content?.menuContent}
 							menuType="menu"
 							arcIcon="menu"
 							position="bottom-left"

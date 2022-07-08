@@ -19,6 +19,10 @@ LearnerTableRow.propTypes = {
   //=======================================
   // Quommon props
   //=======================================
+  /**
+    Use to define component padding in increasing order
+    */
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
 
   /**
     Use to override component colors and behavior
@@ -71,6 +75,7 @@ LearnerTableRow.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asPadded: "normal",
   withColor: null,
   withAnimation: null,
   isDisabled: false,
@@ -101,7 +106,7 @@ export default function LearnerTableRow(props) {
   //-------------------------------------------------------------------
   // 5. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
   return (
@@ -115,15 +120,14 @@ export default function LearnerTableRow(props) {
         enrolledLearners.map((learner, index) => {
           return (
             <div
-              className="qui-learner-list-element"
+              className={`qui-learner-list-element ${quommonClasses.childClasses}`}
               key={index}
               style={{ color: props.withColor?.textColor }}
             >
               <div className="qui-learner-checkbox-container">
                 <i
-                  className={`${
-                    isChecked ? "fas fa-check-square" : "far fa-square"
-                  } qui-learner-checkbox`}
+                  className={`${isChecked ? "fas fa-check-square" : "far fa-square"
+                    } qui-learner-checkbox`}
                   onClick={() => setIsChecked((prevState) => !prevState)}
                 ></i>
               </div>

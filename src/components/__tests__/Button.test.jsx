@@ -3,6 +3,12 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 import renderer, { act } from "react-test-renderer";
+
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -10,115 +16,90 @@ import Button from "../Buttons/Button/Button.react";
 
 describe("Button", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
-  let component;
+
+  const args = {
+    target: Button,
+    required: {
+      content: "",
+      onClick: () => console.log("Button Testing"),
+    },
+    translations: {
+      tgt: "button",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          loading: "बस एक मिनट...",
+          button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("variants", args);
+  hasValid("sizes", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
+  hasValid("alignment", args);
+
+  hasValid("colors", args);
+  hasValid("labels", args);
+  hasValid("animations", args);
+  hasValid("icons", args);
+  hasValid("translations", args);
+
+  hasValid("fluid", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+  hasValid("loading", args);
+
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
   const dictionary = JSON.stringify({
     hi: {
       loading: "बस एक मिनट...",
       button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
     },
   });
+
+  let component;
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
       <Button
-        asEmphasis="contained"
-        isCircular={false}
-        asVariant="primary"
-        asSize="normal"
-        asPadded="normal"
-        asFloated="none"
-        asAligned="center"
-        withColor={null}
-        withIcon={null}
-        withLabel={null}
-        withAnimation={null}
-        withTranslation={null}
-        isHidden={false}
-        isDisabled={false}
-        isFluid={false}
-        isLoading={false}
+        content="Testing Button"
         onClick={() => console.log("Button Testing")}
       />
     );
   });
 
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly with isCircular set and empty content", () => {
+  it("should render correctly with isCircular", () => {
     component.setProps({
       isCircular: true,
-      content: "Content",
-      withIcon: {
-        icon: "fas",
-      },
     });
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly with isCircular set and empty content", () => {
+  it("should render correctly with isCircular and empty content", () => {
     component.setProps({
       isCircular: true,
       content: "",
-      withIcon: {
-        icon: "fas",
-      },
     });
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly with isLoading set", () => {
+  it("should render correctly with asEmphasis", () => {
     component.setProps({
-      isLoading: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly with content", () => {
-    component.setProps({
-      content: "",
-      children: "Children",
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly with withTranslation prop", () => {
-    component.setProps({
-      content: "Content",
-      withTranslation: {
-        lang: "hi",
-        tgt: "button",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly with withTranslation and withLabel prop", () => {
-    component.setProps({
-      withLabel: {
-        format: "caption",
-        content: "Content",
-        textColor: "black",
-      },
-      withTranslation: {
-        lang: "hi",
-        tgt: "",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly with withIcon prop", () => {
-    component.setProps({
-      withIcon: {
-        icon: "fas fa-desktop",
-        position: "left",
-      },
+      asEmphasis: "outlined",
     });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly with asEmphasis `outlined`", () => {
     component.setProps({
       asEmphasis: "outlined",
+      isDisabled: true,
       withColor: {
         backgroundColor: "#ffc900",
         textColor: "#666666",
@@ -128,9 +109,10 @@ describe("Button", () => {
     });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when hovered", () => {
     const component = renderer.create(
-      <Button onClick={() => console.log("testing")} />
+      <Button content="content" onClick={() => console.log("testing")} />
     );
     const tree = component.toJSON();
     act(() => {
@@ -138,9 +120,11 @@ describe("Button", () => {
       tree.props.onMouseLeave();
     });
   });
+
   it("should render correctly with withColor prop when hovered", () => {
     const component = renderer.create(
       <Button
+        content="test"
         withColor={{
           backgroundColor: "#ffc900",
           textColor: "#666666",
@@ -154,5 +138,40 @@ describe("Button", () => {
     act(() => {
       tree.props.onMouseEnter();
     });
+  });
+  it("should render correctly with isCircular set and empty content", () => {
+    component.setProps({
+      isCircular: true,
+      content: "",
+      withIcon: {
+        icon: "fas",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+  it("should render translation  with withTranslation prop puprpose passed as quiz", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "hi",
+        tgt: "button",
+        dictionary: dictionary,
+      },
+    });
+  });
+  it("should render translation  with withTranslation prop puprpose passed as quiz", () => {
+    component.setProps({
+      withTranslation: {
+        lang: "",
+        tgt: "button",
+        dictionary: dictionary,
+      },
+    });
+  });
+  it("should render correctly with content", () => {
+    component.setProps({
+      content: "",
+      children: "Children",
+    });
+    expect(component.exists()).toBe(true);
   });
 });

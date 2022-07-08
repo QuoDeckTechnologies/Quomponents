@@ -6,6 +6,7 @@ const dictionary = JSON.stringify({
             header: "स्लाइड्स",
             fheader: "स्लाइड्स",
             message: "डेक में 10 से 40 स्लाइड होनी चाहिए",
+            checkSlide: "स्लाइड चेक करें :",
         },
     },
 });
@@ -13,28 +14,15 @@ export default {
     title: "Design System/DeckAnalysisBlock/DeckAnalysis",
     component: DeckAnalysisBlock,
     argTypes: {
-        content: {
-            table: {
-                defaultValue: {
-                    header: "",
-                    fheader: "",
-                    message: "",
-                    icon: "",
-                    slideCount: null,
-                    status: null,
-                },
-            },
-        },
+        header: "",
+        fheader: "",
+        message: "",
+        icon: "",
+        slideCount: 10,
+        status: false,
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asFloated: {
-            control: "select",
-            options: ["left", "right", "none", "inline"],
             table: {
                 category: "as-Flags",
             },
@@ -68,22 +56,10 @@ export default {
                 },
             },
         },
-        isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
         isHidden: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
-            },
-        },
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
             },
         },
     },
@@ -101,7 +77,7 @@ export default {
         componentSubtitle: "Displays a DeckAnalysisBlock with image, icon and text content.",
         a11y: { disable: true },
         docs: {
-            iframeHeight: 600,
+            iframeHeight: 500,
         },
     },
 };
@@ -115,17 +91,14 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        header: "SLIDES",
-        fheader: "SLIDES",
-        message:
-            "Deck Should have 10 to 40 slides",
-        icon: " fa fa-desktop",
-        slideCount: 18,
-        status: true,
-    },
+    header: "SLIDES",
+    fheader: "SLIDES",
+    message:
+        "Deck Should have 10 to 40 slides",
+    icon: " fa fa-desktop",
+    slideCount: 18,
+    status: true,
     asVariant: "success",
-    asFloated: "left",
     withColor: {
         textColor: "",
         accentColor: "",
@@ -141,7 +114,6 @@ Default.args = {
         tgt: "deckanalysis",
         dictionary: dictionary,
     },
-    isDisabled: false,
     isHidden: false,
 };
 Default.parameters = {
@@ -226,7 +198,6 @@ TranslatedDeck.parameters = {
     },
 };
 
-
 // -------------------------------------------------------------
 // AllVariants
 // -------------------------------------------------------------
@@ -237,14 +208,6 @@ const AllVariantBlocks = (args) => {
     };
     return (
         <div>
-            <DeckAnalysisBlock
-                {...Object.assign({}, baseObj, {
-                    withColor: {
-                        textColor: "#3A8080",
-                        accentColor: "#EB6346",
-                    },
-                })}
-            />
             <DeckAnalysisBlock
                 {...Object.assign({}, baseObj, {
                     asVariant: "primary"
@@ -262,6 +225,13 @@ const AllVariantBlocks = (args) => {
             />
             <DeckAnalysisBlock
                 {...Object.assign({}, baseObj, {
+                    header: "VOICEOVERS",
+                    fheader: "Vo's",
+                    message:
+                        "Deck Should have 10 to 40 slides",
+                    icon: " fa fa-desktop",
+                    slideCount: 5,
+                    status: false,
                     withAnimation: {
                         animation: "collapse",
                         duration: 1,
@@ -272,8 +242,6 @@ const AllVariantBlocks = (args) => {
         </div>
     );
 };
-
-
 export const AllVariantsBlocks = AllVariantBlocks.bind({});
 AllVariantsBlocks.parameters = {
     docs: {
@@ -281,7 +249,7 @@ AllVariantsBlocks.parameters = {
             story: "All variants are supported in DeckAnalysisBlock.",
         },
         source: {
-            code: `<DeckAnalysisBlock asVariant=""/>`,
+            code: `<DeckAnalysisBlock {...${JSON.stringify(TranslatedDeck.args, null, 2)}}/>`,
         },
     },
 };

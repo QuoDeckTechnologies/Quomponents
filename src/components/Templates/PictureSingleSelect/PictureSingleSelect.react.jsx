@@ -136,7 +136,7 @@ export default function PictureSingleSelect(props) {
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     //-------------------------------------------------------------------
     // 4. Setting the colors of the imported components
     //-------------------------------------------------------------------
@@ -183,9 +183,8 @@ export default function PictureSingleSelect(props) {
                         content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors} />
                 )}
-
                 {data?.image && (
-                    <img className="qui-picture-single-select-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
+                    <img className="qui-picture-single-select-image qt-shadow" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
                 )}
                 <TextBlock {...props}
                     content={props.data?.question}

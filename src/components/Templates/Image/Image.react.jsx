@@ -222,7 +222,7 @@ export default function Image(props) {
   //-------------------------------------------------------------------
   //  Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // Function to set background for presenter view
   //-------------------------------------------------------------------

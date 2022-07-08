@@ -3,13 +3,42 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import Image from "../../Templates/Image/Image.react";
 
 describe("Image", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: Image,
+    required: {
+      data: {
+        title: "Lorem ipsum dolor sit amet",
+        subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        image: { id: "header-image", extention: "" },
+        backgroundImage: { id: "background-image", extention: "" },
+        cards: [
+          {
+            image: { id: "iconlist-image-1", extention: "" },
+            text: "Neque porro quisquam est qui dolorem",
+          },
+        ],
+      },
+      onClick: () => {},
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("animations", args);
+  hasValid("hidden", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component;
   beforeEach(() => {
@@ -49,10 +78,6 @@ describe("Image", () => {
     );
   });
 
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly when passed withColor props", () => {
     let colors = {
       background: "#ffffff",
@@ -62,51 +87,6 @@ describe("Image", () => {
       slideHeaderBackgroundColor: "#ad292980",
     };
     component.setProps({ withColor: colors });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    };
-    component.setProps({ withAnimation: animation });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as primary", () => {
-    component.setProps({ asVariant: "primary" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as secondary", () => {
-    component.setProps({ asVariant: "secondary" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as warning", () => {
-    component.setProps({ asVariant: "warning" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as error", () => {
-    component.setProps({ asVariant: "error" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant prop as success", () => {
-    component.setProps({ asVariant: "success" });
     expect(component.exists()).toBe(true);
   });
 

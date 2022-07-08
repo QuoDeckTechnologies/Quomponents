@@ -6,6 +6,13 @@ export default {
   component: Slider,
   argTypes: {
     initialValue: 10,
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -60,6 +67,7 @@ const Template = (args) => <Slider {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   initialValue: 10,
+  asVariant: "warning",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,

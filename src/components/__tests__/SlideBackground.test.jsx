@@ -4,35 +4,60 @@ import React from "react";
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import SlideBackground from "../RibbonMenu/designMenu/sections/SlideBackground.react";
 import ImageUploadModal from "../ImageUploadModal/ImageUploadModal.react";
 
 describe("SlideBackground", () => {
-	// -------------------------------------
-	// Setup definitions for the test suite
-	// -------------------------------------
+	 // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+    
+    const args = {
+        target: SlideBackground,
+        translations: {
+            tgt: "slideBackground",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+				en: {
+					slideBackground: {
+						slideBackground: "Slide Background",
+						setBackground: "Set",
+						removeBackground: "Remove"
+					}
+				},
+				hi: {
+					slideBackground: {
+						slideBackground: "स्लाइड पृष्ठभूमि",
+						setBackground: "सेट",
+						removeBackground: "निकाले"
+					}
+				}
+            }),
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("positions", args);
+
+    hasValid("translations", args);
+
+	hasValid("disabled", args);
+    hasValid("hidden", args);
+    // -------------------------------------
+    // Run component specific tests
+    // -------------------------------------
+
 	let component, actions;
 	actions = {
 		updateDeck: jest.fn()
 	};
-	const dictionary = JSON.stringify({
-		en: {
-			slideBackground: {
-				slideBackground: "Slide Background",
-				setBackground: "Set",
-				removeBackground: "Remove"
-			}
-		},
-		hi: {
-			slideBackground: {
-				slideBackground: "स्लाइड पृष्ठभूमि",
-				setBackground: "सेट",
-				removeBackground: "निकाले"
-			}
-		}
-	});
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
@@ -45,67 +70,6 @@ describe("SlideBackground", () => {
 				onClick={jest.fn()}
 			/>
 		);
-	});
-
-	it("should render correctly without throwing error", () => {
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asFloated prop as left", () => {
-		component.setProps({ asFloated: "left" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asFloated prop as right", () => {
-		component.setProps({ asFloated: "right" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asFloated prop as inline", () => {
-		component.setProps({ asFloated: "inline" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render translation of component in hindi", () => {
-		component.setProps({
-			withTranslation: {
-				lang: "hi",
-				tgt: "slideBackground",
-				dictionary: dictionary,
-			},
-		});
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly if translation is not defined", () => {
-		component.setProps({
-			withTranslation: {
-				lang: "mr",
-				tgt: "slideBackground",
-				dictionary: dictionary,
-			},
-		});
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isHidden props as false", () => {
-		component.setProps({ isHidden: false });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isHidden props as true", () => {
-		component.setProps({ isHidden: true });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isDisabled props as false", () => {
-		component.setProps({ isDisabled: false });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isDisabled props as true", () => {
-		component.setProps({ isDisabled: true });
-		expect(component.exists()).toBe(true);
 	});
 
 	it("should open image modal when clicked on set button", () => {

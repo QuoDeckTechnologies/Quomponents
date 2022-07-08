@@ -3,13 +3,34 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import Splash from "../../Templates/Splash/Splash.react";
 
 describe("Splash", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: Splash,
+    required: {
+      data: {
+        splash: "test title",
+      },
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("positions", args);
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("hidden", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component;
 
@@ -25,14 +46,10 @@ describe("Splash", () => {
     );
   });
 
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly without throwing error when presenter view is selected", () => {
     component.setProps({
       data: {
-        presenter: {id:'test_id'},
+        presenter: { id: "test_id" },
       },
     });
     expect(component.exists()).toBe(true);

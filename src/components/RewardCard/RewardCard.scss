@@ -93,16 +93,14 @@
 }
 
 .qui .qui-reward-card-stock {
-    margin-top: 0.5em;
+    margin-top: 0.9em;
     display: flex;
     flex: 1;
     flex-direction: column;
     text-align: right;
-    font-weight: bold;
     word-break: break-all;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 0.9em;
 }
 
 .qui .qui-reward-card-accent-line {
@@ -138,9 +136,6 @@
     }
     .qui .qui-reward-image {
         width: 2em;
-    }
-    .qui .qui-reward-card-stock {
-        font-size: 1em;
     }
 }
 

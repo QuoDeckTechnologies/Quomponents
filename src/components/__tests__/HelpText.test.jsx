@@ -3,29 +3,56 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import HelpText from "../HelpText/HelpText.react";
 
 describe("HelpText", () => {
   // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+
+  const args = {
+    target: HelpText,
+    required: {
+
+    },
+    translations: {
+      tgt: "helpText",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          helpText: { content: "आपके शिक्षार्थी यही देखते हैं" },
+        },
+      })
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("sizes", args);
+  hasValid("padding", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("hidden", args);
+  // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-
-  const dictionary = JSON.stringify({
-    hi: {
-      helpText: { content: "आपके शिक्षार्थी यही देखते हैं" },
-    },
-  });
 
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
       <HelpText
         content=""
-        asSize="normal"
-        asPadded="normal"
         withColor={null}
         withTranslation={null}
         isHidden={false}
@@ -36,14 +63,6 @@ describe("HelpText", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly when passed isCircular props is true", () => {
     component.setProps({
       isHidden: true,
@@ -58,73 +77,12 @@ describe("HelpText", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when passed asSize prop as tiny", () => {
-    component.setProps({ asSize: "tiny" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asSize prop as small", () => {
-    component.setProps({ asSize: "small" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asSize prop as normal", () => {
-    component.setProps({ asSize: "normal" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asSize prop as big", () => {
-    component.setProps({ asSize: "big" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asSize prop as huge", () => {
-    component.setProps({ asSize: "huge" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asSize prop as massive", () => {
-    component.setProps({ asSize: "massive" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asPadded prop as massive", () => {
-    component.setProps({ asPadded: "fitted" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asPadded prop as massive", () => {
-    component.setProps({ asPadded: "compact" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asPadded prop as massive", () => {
-    component.setProps({ asPadded: "normal" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asPadded prop as massive", () => {
-    component.setProps({ asPadded: "relaxed" });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly when passed withColor", () => {
     component.setProps({
       withColor: {
         backgroundColor: "#ffffff",
         accentColor: "#fffffff",
         textColor: "#ffffff",
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error when withTranslation prop is passed", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "helpText",
-        dictionary: dictionary,
       },
     });
     expect(component.exists()).toBe(true);

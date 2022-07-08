@@ -125,7 +125,7 @@ export default function TimeLinedOptions(props) {
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     //-------------------------------------------------------------------
     // 3. Setting the colors of the imported components
@@ -177,7 +177,7 @@ export default function TimeLinedOptions(props) {
                         {props.data?.question}
                     </div>
                     <div className="qui-time-lined-options-button-container">
-                        <OrderingList withColor={orderingListColors} content={props.data?.bullets} onClick={(items) => props.trackInteraction(items)} />
+                        <OrderingList asVariant={props.asVariant} withColor={orderingListColors} content={props.data?.bullets} onClick={(items) => props.trackInteraction(items)} />
                     </div>
                 </div>}
         </motion.div>
