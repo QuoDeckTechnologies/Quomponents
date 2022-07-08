@@ -19,6 +19,13 @@ export default {
                 category: "as-Flags",
             },
         },
+        asPadded: {
+            control: "select",
+            options: ["fitted", "compact", "normal", "relaxed"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
@@ -83,6 +90,7 @@ export const Default = Template.bind({});
 Default.args = {
     asVariant: "warning",
     asSize: "normal",
+    asPadded: "normal",
     asFloated: "inline",
     withColor: {
         accentColor: "",
