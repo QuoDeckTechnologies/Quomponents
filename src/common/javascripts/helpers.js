@@ -6,12 +6,54 @@ export function getQuommons(props, component) {
         childArray = [""];
 
     if (props.asSize) childArray.push(`size-${props.asSize}`);
+    else if (props.massive) childArray.push(`size-massive`);
+    else if (props.huge) childArray.push(`size-huge`);
+    else if (props.big) childArray.push(`size-big`);
+    else if (props.normal) childArray.push(`size-normal`);
+    else if (props.small) childArray.push(`size-small`);
+    else if (props.tiny) childArray.push(`size-tiny`);
+
     if (props.asPadded) childArray.push(`pad-${props.asPadded}`);
+    else if (props.compact) childArray.push(`pad-compact`);
+    else if (props.fitted) childArray.push(`pad-fitted`);
+    else if (props.relaxed) childArray.push(`pad-relaxed`);
+    else if (props.padded) childArray.push(`pad-padded`);
+
     if (props.asAligned) childArray.push(`${props.asAligned}-aligned`);
+    else if (props["center-aligned"] || props["center-align"])
+        childArray.push(`center-aligned`);
+    else if (props["left-aligned"] || props["left-align"])
+        childArray.push(`left-aligned`);
+    else if (props["right-aligned"] || props["right-align"])
+        childArray.push(`right-aligned`);
+
     if (props.asFloated) parentArray.push(`float-${props.asFloated}`);
+    else if (props["float-left"]) childArray.push(`float-left`);
+    else if (props["float-right"]) childArray.push(`float-right`);
+    else if (props["float-inline"]) childArray.push(`float-inline`);
+    else if (props["float-none"]) childArray.push(`float-none`);
+
     if (props.asVariant) {
         childArray.push(`variant-${props.asVariant}`);
         childArray.push(`variant-${props.asVariant}-text`);
+    } else if (props.primary) {
+        childArray.push(`variant-primary`);
+        childArray.push(`variant-primary-text`);
+    } else if (props.secondary) {
+        childArray.push(`variant-secondary`);
+        childArray.push(`variant-secondary-text`);
+    } else if (props.positive) {
+        childArray.push(`variant-positive`);
+        childArray.push(`variant-positive-text`);
+    } else if (props.warning) {
+        childArray.push(`variant-warning`);
+        childArray.push(`variant-warning-text`);
+    } else if (props.negative) {
+        childArray.push(`variant-negative`);
+        childArray.push(`variant-negative-text`);
+    } else if (props.info) {
+        childArray.push(`variant-info`);
+        childArray.push(`variant-info-text`);
     }
 
     if (props.isHidden) parentArray.push("is-hidden");
@@ -45,7 +87,7 @@ export function getAnimation(props) {
     else if (props.slideLeft) animObj.animation = "slideLeft";
     else if (props.slideRight) animObj.animation = "slideRight";
     else if (props.collapse) animObj.animation = "collapse";
-    
+
     if (animObj?.animation) {
         const initialVariants = {
             zoom: {
