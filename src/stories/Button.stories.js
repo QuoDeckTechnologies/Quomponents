@@ -187,7 +187,7 @@ Default.args = {
     asVariant: "primary",
     asSize: "normal",
     asFloated: "none",
-    asPadded: "normal",
+    asPadded: "fitted",
     asAligned: "center",
 
     withLabel: {
