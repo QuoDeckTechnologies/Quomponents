@@ -29,7 +29,7 @@ export function getQuommons(props, component) {
 
     if (props["float-left"]) childArray.push(`float-left`);
     else if (props["float-right"]) childArray.push(`float-right`);
-    else if (props["float-inline"]) childArray.push(`float-inline`);
+    else if (props["inline"]) childArray.push(`float-inline`);
     else if (props["float-none"]) childArray.push(`float-none`);
     else if (props.asFloated) parentArray.push(`float-${props.asFloated}`);
 
