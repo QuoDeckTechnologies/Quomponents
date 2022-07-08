@@ -108,7 +108,7 @@ Default.args = {
   isCircular: false,
   asVariant: "warning",
   asSize: "normal",
-  asFloated: "none",
+  asFloated: "inline",
 
   withColor: {
     backgroundColor: "",

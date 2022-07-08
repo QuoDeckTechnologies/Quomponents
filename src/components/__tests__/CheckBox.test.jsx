@@ -97,9 +97,7 @@ describe("CheckBox", () => {
   });
   it("should render correctly without throwing error", () => {
     component.setProps({
-      content: {
-        name: "default-name",
-      },
+      name: "default-name",
     });
     component.find("#qui-check-box-element-default-name").simulate("change", {
       target: { value: "Enable Checkbox", checked: true },
@@ -108,10 +106,14 @@ describe("CheckBox", () => {
 
   it("should render correctly without throwing error", () => {
     let wrapper = mount(
+<<<<<<< HEAD
       <CheckBox
         content={{ name: "Default Label", checked: false }}
         onClick={() => { }}
       />
+=======
+      <CheckBox name="Default Label" checked={false} onClick={() => {}} />
+>>>>>>> 2ebbd60935aaf38fd18d7b8a6e465e229144ad3e
     );
     expect(wrapper.exists()).toBe(true);
   });

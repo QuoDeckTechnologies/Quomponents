@@ -20,11 +20,9 @@ export default {
     title: "Design System/SelectField/SelectField",
     component: SelectField,
     argTypes: {
-        content: {
-            label: "",
-            categoryOptions: [],
-            placeHolder: ""
-        },
+        label: "",
+        categoryOptions: [],
+        placeHolder: "",
         asPadded: {
             control: "select",
             options: ["fitted", "compact", "normal", "relaxed"],
@@ -101,11 +99,9 @@ export default {
 const Template = (args) => <SelectField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        label: "Course Category",
-        categoryOptions: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
-        placeHolder: "Choose...",
-    },
+    label: "Course Category",
+    categoryOptions: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
+    placeHolder: "Choose...",
     asPadded: "normal",
     withColor: {
         backgroundColor: "#aaaaaa",

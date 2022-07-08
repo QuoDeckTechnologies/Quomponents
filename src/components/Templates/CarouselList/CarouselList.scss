@@ -8,11 +8,7 @@
     min-height: 10em;
   }
   .qui-title {
-    font-size: 1.5em;
     padding: 0 0 0.2em 0;
-  }
-  .qui-sub-title {
-    font-size: 1em;
   }
   .qui-carousel-list-image {
     width: 100%;
@@ -68,7 +64,6 @@
       margin: 0 1em 0 0em;
       text-align: left;
       font-weight: bolder;
-      font-size: 1.5em;
       .qui-block-text {
         padding: 0.2em;
         transform: scaleY(1.3);
@@ -80,7 +75,6 @@
       width: 60%;
       margin: 0 1em 0 0em;
       text-align: left;
-      font-size: 1.1em;
       .qui-block-text {
         padding: 0.2em;
         transform: scaleY(1.2);
@@ -144,7 +138,6 @@
     }
     .qui-text-block-area {
       font-weight: lighter;
-      font-size: 1em;
     }
   }
 }
@@ -158,9 +151,6 @@
       position: relative;
       font-size: 2em;
       z-index: 1;
-    }
-    .qui-html-slide-container .qui-banner-card .qui-slider-card-box-content {
-      font-size: 1.6em;
     }
   }
 
@@ -193,9 +183,6 @@
     }
     .qui-carousel-list-presenter-caption .qui-text-block-area {
       width: 14em;
-    }
-    .qui-html-slide-container .qui-banner-card .qui-slider-card-box-content {
-      font-size: 1.4em;
     }
   }
 }

@@ -74,7 +74,6 @@ Button.propTypes = {
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
         textColor: PropTypes.string,
         hoverBackgroundColor: PropTypes.string,
         hoverTextColor: PropTypes.string,
@@ -189,15 +188,9 @@ function getColors(colors, emphasis, hovered) {
               color: colors.hoverTextColor,
           }
         : {
-              background:
-                  emphasis !== "contained"
-                      ? "transparent"
-                      : colors.backgroundColor,
-              color:
-                  emphasis !== "contained"
-                      ? colors.backgroundColor
-                      : colors.textColor,
-          };
+            background: emphasis !== "contained" ? "transparent" : colors.backgroundColor,
+            color: emphasis !== "contained" ? colors.textColor : colors.textColor,
+        }
     if (!hovered && emphasis === "outlined")
         colorStyle.borderColor = colors.backgroundColor;
     return colorStyle;
@@ -306,7 +299,7 @@ export default function Button(props) {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
-            <div className="qui-label" style={labelStyle}>
+            <div className="qui-label qt-lbl" style={labelStyle}>
                 {getLabel(labelContent, "label")}
             </div>
             <MUIButton
@@ -314,7 +307,7 @@ export default function Button(props) {
                 color={props.asVariant}
                 title={getLabel(labelContent, "popover")}
                 disabled={props.isDisabled}
-                className={`qui-btn ${quommonClasses.childClasses}`}
+                className={`qui-btn ${props.isDisabled ? "qui-btn-disabled" : ''} ${quommonClasses.childClasses}`}
                 style={Object.assign({}, colors, props.style)}
                 onClick={props.onClick}
             >
@@ -323,7 +316,7 @@ export default function Button(props) {
                 {buttonText}
                 {getIcon(props.withIcon, "right", iconOnly)}
             </MUIButton>
-            <div className="qui-caption" style={labelStyle}>
+            <div className="qui-caption qt-lbl" style={labelStyle}>
                 {getLabel(labelContent, "caption")}
             </div>
         </motion.div>

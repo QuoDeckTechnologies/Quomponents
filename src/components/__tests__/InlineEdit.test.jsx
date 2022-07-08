@@ -2,7 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import React from 'react';
-import { shallow, mount, enzyme } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -48,7 +48,7 @@ describe("InlineEdit", () => {
     let onChange = jest.fn();
     let onBlur = jest.fn();
     let onInput = jest.fn();
-    let onClick = jest.fn();
+    let onSubmit = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -60,7 +60,7 @@ describe("InlineEdit", () => {
             onChange={onChange}
             onBlur={onBlur}
             onInput={onInput}
-            onClick={onClick}
+            onSubmit={onSubmit}
         />);
     })
 

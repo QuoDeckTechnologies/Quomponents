@@ -19,8 +19,8 @@ ContentTableRow.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    ContentTableRow data should be passed in content field and it is a required field
-    */
+  ContentTableRow data should be passed in content field and it is a required field
+  */
   content: PropTypes.shape({
     name: PropTypes.string,
     readerType: PropTypes.string,
@@ -29,8 +29,12 @@ ContentTableRow.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define component padding in increasing order
+  */
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+  /**
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -58,12 +62,12 @@ ContentTableRow.propTypes = {
     */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
-    */
+  Button component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -75,6 +79,7 @@ ContentTableRow.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asPadded: "normal",
   withAnimation: null,
   withTranslation: null,
   isDisabled: false,

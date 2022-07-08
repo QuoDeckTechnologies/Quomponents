@@ -77,7 +77,7 @@ describe("FeedbackForm", () => {
         expect(component.exists()).toBe(true);
     })
     it('should render and handle click event', () => {
-        const wrapper = shallow(<FeedbackForm onClick={() => console.log("Testing FeedbackForm")} />);
+        const wrapper = shallow(<FeedbackForm onSubmit={() => console.log("Testing FeedbackForm")} />);
         wrapper.find("legend").children().simulate('click');
     });
     it('should render when content is null', () => {

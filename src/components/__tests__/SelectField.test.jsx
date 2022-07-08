@@ -64,11 +64,9 @@ describe("SelectField", () => {
         jest.resetAllMocks();
         component = shallow(
             <SelectField
-                content={{
-                    label: "Course Category",
-                    categoryOptions: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
-                    placeHolder: "Choose...",
-                }}
+                label="Course Category"
+                categoryOptions={["Sales Training", "Tech Training", "HR Training", "Graphic Training"]}
+                placeHolder="Choose..."
                 asPadded="normal"
                 withColor={null}
                 withAnimation={null}

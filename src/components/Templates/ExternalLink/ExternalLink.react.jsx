@@ -207,9 +207,9 @@ export default function ExternalLink(props) {
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (
-                    <img className="qui-external-link-image"
+                    <img className="qui-external-link-image qt-shadow"
                         src={resolveImage(data?.image.id, imageLibrary)}
-                        alt="ImageWithCaption" />
+                        alt="link" />
                 )}
                 <TextBlock {...props}
                     content={props.data?.paragraph}

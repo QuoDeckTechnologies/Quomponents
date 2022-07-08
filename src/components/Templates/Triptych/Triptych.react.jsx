@@ -183,7 +183,7 @@ export default function Triptych(props) {
               withColor={slideHeaderColors} />
           )}
           {data?.image && (
-            <img className="qui-triptych-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
+            <img className="qui-triptych-image qt-shadow" src={resolveImage(data.image.id, imageLibrary)} alt="" />
           )}
           <div className={`qui-triptych-clickable-images${props.layout === "side by side split" ? "-split" : "-full"}`}>
             {_.map(data?.triptych, (image, index) => {

@@ -156,9 +156,9 @@ export default function PageHeader(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-page-header-container ${quommonClasses.childClasses}`}>
-                <div className="qui-page-header-label" style={Color}>
+                <h1 className="qui-page-header-label" style={Color}>
                     {headerText}
-                </div>
+                </h1>
             </div>
         </motion.div >
     );

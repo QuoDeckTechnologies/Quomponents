@@ -106,30 +106,37 @@ describe("ActionMenu", () => {
           {
             title: "Open Deck",
             icon: "fas fa-book-open",
+            func: () => { },
           },
           {
             title: "Edit Deck",
             icon: "fas fa-edit",
+            func: () => { },
           },
           {
             title: "Move Deck Up",
-            icon: "fas fa-angle-up",
+            icon: "fas fa-chevron-up",
+            func: () => { },
           },
           {
             title: "Move Deck Down",
-            icon: "fas fa-angle-down",
+            icon: "fas fa-chevron-down",
+            func: () => { },
           },
           {
             title: "Move to Topic",
-            icon: "fas fa-square",
+            icon: "fas fa-retweet",
+            func: () => { },
           },
           {
             title: "Unpublish Deck",
             icon: "fas fa-eye-slash",
+            func: () => { },
           },
           {
             title: "Delete Deck",
-            icon: "fas fa-trash",
+            icon: "fas fa-trash-alt",
+            func: () => { },
           },
         ]}
         withColor={null}

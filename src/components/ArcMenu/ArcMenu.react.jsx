@@ -21,7 +21,12 @@ ArcMenu.propTypes = {
   menuContent: PropTypes.arrayOf(
     PropTypes.shape({
       header: PropTypes.string,
-      list: PropTypes.arrayOf(PropTypes.string),
+      list: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+          func: PropTypes.func,
+        })
+      ),
     })
   ),
   /**
@@ -31,6 +36,7 @@ ArcMenu.propTypes = {
     PropTypes.shape({
       name: PropTypes.string,
       image: PropTypes.string,
+      func: PropTypes.func,
     })
   ),
   /**
@@ -82,7 +88,7 @@ ArcMenu.propTypes = {
   For `nugget-menu` menuType, it return name of nugget images provided
   For `menu` menuType, it return title of the list item
   */
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 ArcMenu.defaultProps = {
@@ -205,22 +211,22 @@ export default function ArcMenu(props) {
             key={i}
             style={{ color: withColor?.accentColor }}
           >
-            {dataObj.header?.toUpperCase()}
+            {dataObj.header}
             <div className="qui-arc-menu-list-item-container">
               {dataObj.list.map((listItem, index) => (
                 <div
                   className="qui-arc-menu-list-item"
                   onMouseDown={() => {
-                    props.onClick(listItem);
+                    listItem.func();
                     setOpenMenu(false);
                   }}
-                  key={listItem + index}
+                  key={listItem.title + index}
                   style={{
                     backgroundColor: withColor?.backgroundColor,
                     color: withColor?.textColor,
                   }}
                 >
-                  {listItem.toUpperCase()}
+                  {listItem.title}
                 </div>
               ))}
             </div>
@@ -240,7 +246,7 @@ export default function ArcMenu(props) {
               asSize="huge"
               asPadded="fitted"
               onClick={() => {
-                props.onClick(dataObj?.name);
+                dataObj.func();
                 setOpenMenu(false);
               }}
             />
@@ -264,7 +270,7 @@ export default function ArcMenu(props) {
         <div className={`qui-arc ${getPosition(props.position)}`}>
           {(props.menuType === "nugget-menu" || props.menuType === "menu") && (
             <button
-              className={`qui-arc-menu-button qui-btn ${quommonClasses.childClasses}`}
+              className={`qui-arc-menu-button qt-shadow qui-btn ${quommonClasses.childClasses}`}
               onClick={() => setOpenMenu((prevState) => !prevState)}
             >
               {getIcon(arcIcon)}
@@ -272,7 +278,7 @@ export default function ArcMenu(props) {
           )}
           {(props.menuType === "close" || props.menuType === "add") && (
             <button
-              className={`qui-arc-menu-button qui-arc-menu-${props.menuType}-button ${quommonClasses.childClasses}`}
+              className={`qui-arc-menu-button qt-shadow qui-arc-menu-${props.menuType}-button ${quommonClasses.childClasses}`}
               onClick={(e) => props.onClick(e)}
             >
               {getIcon(arcIcon)}

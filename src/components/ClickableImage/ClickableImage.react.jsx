@@ -14,21 +14,19 @@ ClickableImage.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    ClickableImage image has to be in content.
-    */
-  content: PropTypes.shape({
-    image: PropTypes.string,
-  }),
+  ClickableImage image string has to be in image props.
+  */
+  image: PropTypes.string,
   /**
-    Use to show the selection of the component
-    */
+  Use to show the selection of the component
+  */
   isActive: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -44,26 +42,26 @@ ClickableImage.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to override component colors and behavior
-    */
+  Use to override component colors and behavior
+  */
   withColor: PropTypes.shape({
     borderColor: PropTypes.string,
   }),
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
   Use for rounded corners or circular icon button 
   */
   isCircular: PropTypes.bool,
   /**
-    Use to enable/disable the component
-    */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    ClickableImage component must have the onClick function passed as props
-    */
+  ClickableImage component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -71,7 +69,7 @@ ClickableImage.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  image: "",
   isActive: false,
   //=======================================
   // Quommon props
@@ -90,7 +88,7 @@ ClickableImage.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function ClickableImage(props) {
-  const { content } = props;
+  const { image } = props;
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
@@ -117,10 +115,9 @@ export default function ClickableImage(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <img
-        src={content?.image ? content.image : defaultImage}
-        className={`${quommonClasses.childClasses} ${
-          isActive ? `qui-active-image-click` : `qui-clicked-on-image`
-        } qui-image-clickable`}
+        src={image ? image : defaultImage}
+        className={`${quommonClasses.childClasses} ${isActive ? `qui-active-image-click` : `qui-clicked-on-image`
+          } qui-image-clickable qt-shadow`}
         alt="ClickableImage"
         onClick={(e) => handleClick(e)}
         style={{ borderColor: props.withColor?.borderColor }}

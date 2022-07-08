@@ -66,6 +66,12 @@ export default {
         defaultValue: false,
       },
     },
+    onSubmit: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
   },
   decorators: [
     (story) => (

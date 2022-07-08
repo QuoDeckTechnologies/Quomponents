@@ -19,18 +19,16 @@ RewardCard.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Content props consist of all the data which are required for RewardCard component
+    id,name,image,cost & stock props consist all the data which are required for RewardCard component
     */
-    content: PropTypes.shape({
-        id: PropTypes.string,
-        name: PropTypes.string,
-        image: PropTypes.string,
-        cost: PropTypes.number,
-        stock: PropTypes.shape({
-            left: PropTypes.number,
-            total: PropTypes.number
-        }),
-    }).isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    image: PropTypes.string,
+    cost: PropTypes.number,
+    stock: PropTypes.shape({
+        left: PropTypes.number,
+        total: PropTypes.number
+    }),
     /**
     Use to set the state of RewardCard 
     */
@@ -38,6 +36,17 @@ RewardCard.propTypes = {
     //=======================================
     // Quommon props
     //=======================================
+    /**
+    Use to define component size in increasing order
+    */
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
     /**
     Use to set Color in RewardCard component
     */
@@ -89,11 +98,17 @@ RewardCard.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: {},
+    id: "",
+    name: "",
+    image: "",
+    cost: 500,
+    stock: {},
     asEmphasis: "default",
     //=======================================
     // Quommon props
     //=======================================
+    asSize: "normal",
+
     withColor: null,
     withAnimation: null,
     withTranslation: null,
@@ -113,7 +128,7 @@ export default function RewardCard(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring props
     //-------------------------------------------------------------------
-    let { content, withColor, asEmphasis } = props;
+    let { withColor, asEmphasis } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -124,19 +139,19 @@ export default function RewardCard(props) {
     const [stockStyle, setStockStyle] = useState('qui-reward-card-cost-stock-container-row')
 
     useEffect(() => {
-        let cost = content?.cost?.toString();
-        let left = content?.stock?.left?.toString();
-        let total = content?.stock?.total?.toString();
+        let cost = props.cost?.toString();
+        let left = props.stock?.left?.toString();
+        let total = props.stock?.total?.toString();
 
-        cost?.length > 5 || left?.length > 5 || total?.length > 5 ? setStockStyle("qui-reward-card-cost-stock-container-column") : setStockStyle("qui-reward-card-cost-stock-container-row");
-    }, [content?.cost, content?.stock?.left, content?.stock?.total]);
+        cost?.length > 7 || left?.length > 7 || total?.length > 7 ? setStockStyle("qui-reward-card-cost-stock-container-column") : setStockStyle("qui-reward-card-cost-stock-container-row");
+    }, [props.cost, props.stock?.left, props.stock?.total]);
 
-    let rewardImage = content?.image === "" ? defaultImage : content?.image;
+    let rewardImage = props.image === "" ? defaultImage : props.image;
     //-------------------------------------------------------------------
     // 4. Get translation of the component
     //-------------------------------------------------------------------
     let tObj = null;
-    let contentName = content?.name;
+    let contentName = props.name;
     let soldoutText = "SOLD OUT!";
     let leftText = "left";
     if (
@@ -162,7 +177,7 @@ export default function RewardCard(props) {
         if (asEmphasis === "soldout") {
             return (
                 <div>
-                    {content?.name &&
+                    {contentName &&
                         <div className="qui-reward-card-name">
                             {contentName}
                         </div>
@@ -178,18 +193,18 @@ export default function RewardCard(props) {
                         </div>
                     }
                     <div className={`qui-reward-card-cost-stock-container ${stockStyle}`}>
-                        {content?.cost &&
+                        {props.cost !== undefined && props.cost !== '' &&
                             <div className="qui-reward-card-cost">
                                 <Reward
-                                    content={{ point: content?.cost?.toString() }}
+                                    content={{ point: props.cost?.toString() }}
                                     withColor={{ accentColor: withColor?.textColor }}
                                 />
                             </div>
                         }
-                        {content?.stock &&
-                            <div className="qui-reward-card-stock">
+                        {props.stock &&
+                            <div className="qui-reward-card-stock qt-sm">
                                 <div>
-                                    {content?.stock?.left} / {content?.stock?.total}
+                                    {props.stock?.left} / {props.stock?.total}
                                 </div>
                                 <div>
                                     {leftText}
@@ -197,20 +212,18 @@ export default function RewardCard(props) {
                             </div>
                         }
                     </div>
-                    {content &&
-                        <div className="qui-reward-card-accent-line">
-                            <AccentLine
-                                withColor={{ accentColor: withColor?.accentColor }}
-                            />
-                        </div>
-                    }
+                    <div className="qui-reward-card-accent-line">
+                        <AccentLine
+                            withColor={{ accentColor: withColor?.accentColor }}
+                        />
+                    </div>
                 </div>
             )
         }
         else {
             return (
                 <div>
-                    {content?.name &&
+                    {contentName &&
                         <div className="qui-reward-card-name">
                             {contentName}
                         </div>
@@ -223,18 +236,18 @@ export default function RewardCard(props) {
                         </div>
                     }
                     <div className={`qui-reward-card-cost-stock-container ${stockStyle}`}>
-                        {content?.cost &&
+                        {props.cost !== undefined && props.cost !== '' &&
                             <div className="qui-reward-card-cost">
                                 <Reward
-                                    content={{ point: content?.cost?.toString() }}
+                                    content={{ point: props.cost?.toString() }}
                                     withColor={{ accentColor: withColor?.textColor }}
                                 />
                             </div>
                         }
-                        {content?.stock &&
-                            <div className="qui-reward-card-stock">
+                        {props.stock &&
+                            <div className="qui-reward-card-stock qt-sm">
                                 <div>
-                                    {content?.stock?.left} / {content?.stock?.total}
+                                    {props.stock?.left} / {props.stock?.total}
                                 </div>
                                 <div>
                                     {leftText}
@@ -242,13 +255,11 @@ export default function RewardCard(props) {
                             </div>
                         }
                     </div>
-                    {content &&
-                        <div className="qui-reward-card-accent-line">
-                            <AccentLine
-                                withColor={{ accentColor: withColor?.accentColor }}
-                            />
-                        </div>
-                    }
+                    <div className="qui-reward-card-accent-line">
+                        <AccentLine
+                            withColor={{ accentColor: withColor?.accentColor }}
+                        />
+                    </div>
                 </div>
             )
         }
@@ -264,13 +275,12 @@ export default function RewardCard(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            {content &&
-                <div
-                    style={{ color: withColor?.textColor, backgroundColor: withColor?.backgroundColor }}
-                    onClick={props.onClick}
-                    className={`qui-reward-card-container ${quommonClasses.childClasses}`}>
-                    {getRewardCard(asEmphasis)}
-                </div>}
+            <div
+                style={{ color: withColor?.textColor, backgroundColor: withColor?.backgroundColor }}
+                onClick={props.onClick}
+                className={`qui-reward-card-container ${quommonClasses.childClasses}`}>
+                {getRewardCard(asEmphasis)}
+            </div>
         </motion.div>
     );
 }

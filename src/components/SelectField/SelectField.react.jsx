@@ -17,14 +17,11 @@ SelectField.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Use to define Content in component
+    Use to define label, categoryOptions & placeholder in SelectField
     */
-    content: PropTypes.shape({
-        label: PropTypes.string,
-        categoryOptions: PropTypes.array,
-        placeHolder: PropTypes.string,
-    }
-    ).isRequired,
+    label: PropTypes.string,
+    categoryOptions: PropTypes.array,
+    placeHolder: PropTypes.string,
     //=======================================
     // Quommon props
     //=======================================
@@ -83,7 +80,9 @@ SelectField.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: [],
+    label: "",
+    categoryOptions: [],
+    placeHolder: "",
     //=======================================
     // Quommon props
     //=======================================
@@ -156,7 +155,7 @@ export default function SelectField(props) {
             <div className={`qui-select-field-container ${quommonClasses.childClasses}`} style={Color}>
                 <div className="qui-select-field">
                     <div className="qui-select-field-label">
-                        {label}
+                        {props.label}
                     </div>
                     <Select className="qui-select-field-select"
                         defaultValue="none"
@@ -173,10 +172,10 @@ export default function SelectField(props) {
                     >
                         <MenuItem disabled value="none" >
                             <div className="qui-select-field-menu-item">
-                                {placeHolder}
+                                {props.placeHolder ? props.placeHolder : "Choose..."}
                             </div>
                         </MenuItem>
-                        {props.content?.categoryOptions?.map((option) => (
+                        {props.categoryOptions?.map((option) => (
                             <MenuItem
                                 key={option}
                                 value={option}

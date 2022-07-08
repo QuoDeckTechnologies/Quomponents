@@ -14,6 +14,7 @@ export default {
     title: "Design System/Buttons/IconLink",
     component: IconLink,
     argTypes: {
+        link: "",
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
@@ -149,6 +150,7 @@ export default {
 const Template = (args) => <IconLink {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+    link: "https://quodeck.com/",
     asEmphasis: "contained",
     isCircular: false,
 
@@ -159,10 +161,10 @@ Default.args = {
 
     withLabel: {
         format: "caption",
-        content: "Home",
+        content: "Label",
     },
     withIcon: {
-        icon: "fa fa-home",
+        icon: "fa fa-paste",
     },
     withColor: {
         backgroundColor: "",

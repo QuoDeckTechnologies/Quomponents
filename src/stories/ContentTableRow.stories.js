@@ -49,6 +49,13 @@ export default {
         menuData: [],
       },
     },
+    asPadded: {
+      control: "select",
+      options: ["fitted", "compact", "normal", "relaxed"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -150,6 +157,7 @@ Default.args = {
       },
     ],
   },
+  asPadded: "normal",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,

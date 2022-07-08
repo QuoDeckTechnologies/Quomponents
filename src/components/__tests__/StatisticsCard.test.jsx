@@ -41,11 +41,9 @@ describe("StatisticsCard", () => {
         jest.resetAllMocks();
         component = shallow(
             <StatisticsCard
-                content={{
-                    label: "play",
-                    icon: "fa fa-home",
-                    value: "2222"
-                }}
+                label="play"
+                icon="fa fa-home"
+                value="2222"
                 isCircular={false}
                 asFloated="none"
                 withColor={null}

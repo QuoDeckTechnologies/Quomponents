@@ -56,6 +56,7 @@ describe("LearnerTableRow", () => {
             last_name: "Administrator",
           },
         ]}
+        asPadded="normal"
         withColor={null}
         withAnimation={null}
         isDisabled={false}

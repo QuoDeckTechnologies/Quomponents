@@ -80,7 +80,7 @@ export default function SaveExitSection(props) {
 
 	// ========================= Render Function =================================
 	return (
-		<div className={`qui ${quommonClasses.parentClasses}`}>
+		<div className={`qui qt-shadow ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className="qui-ribbon-exit-save-section">
 					<IconLink

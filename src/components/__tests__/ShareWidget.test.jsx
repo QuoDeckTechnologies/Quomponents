@@ -52,7 +52,9 @@ describe("ShareWidget", () => {
         jest.resetAllMocks();
         component = shallow(
             <ShareWidget
-                content={null}
+                label=""
+                url=""
+                asSize="normal"
                 asFloated="none"
                 withColor={null}
                 withAnimation={null}

@@ -80,9 +80,9 @@ InlineEdit.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    InlineEdit component must have the onClick function passed as props
+    InlineEdit component must have the onSubmit function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
 };
 
 InlineEdit.defaultProps = {
@@ -105,7 +105,7 @@ InlineEdit.defaultProps = {
     isHidden: false,
     isDisabled: false,
 
-    onClick: null,
+    onSubmit: null,
 };
 /**
 ## Notes
@@ -128,7 +128,7 @@ export default function InlineEdit(props) {
         setInput(e.target.value);
         if (e.key === "Enter" && e.target.value !== "") {
             e.target.blur()
-            props.onClick(e.target.name, e.target.value);
+            props.onSubmit(e.target.name, e.target.value);
         }
         if (e.key === "Escape") {
             e.target.value = ""
@@ -157,7 +157,7 @@ export default function InlineEdit(props) {
 
     const changeBlur = (e) => {
         inputRef.current.style.backgroundColor = "transparent"
-        props.onClick(e.target.name, e.target.value);
+        props.onSubmit(e.target.name, e.target.value);
     }
     //-------------------------------------------------------------------
     // 4. Use to set state of InlineEdit.

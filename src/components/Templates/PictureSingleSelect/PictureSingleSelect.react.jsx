@@ -183,9 +183,8 @@ export default function PictureSingleSelect(props) {
                         content={{ title: data?.title, subTitle: data?.subtitle }}
                         withColor={slideHeaderColors} />
                 )}
-
                 {data?.image && (
-                    <img className="qui-picture-single-select-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
+                    <img className="qui-picture-single-select-image qt-shadow" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
                 )}
                 <TextBlock {...props}
                     content={props.data?.question}
