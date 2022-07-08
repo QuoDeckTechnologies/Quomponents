@@ -79,7 +79,7 @@ export function getTranslation(tObj, key) {
 }
 
 export function getAnimation(props) {
-    let animObj = props.withAnimation;
+    let animObj = props.withAnimation || {};
     if (props.zoom) animObj.animation = "zoom";
     else if (props.fade) animObj.animation = "fade";
     else if (props.slideDown) animObj.animation = "slideDown";
