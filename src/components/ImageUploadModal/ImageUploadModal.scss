@@ -10,6 +10,12 @@
   box-shadow: 0 6px 6px 0px #00000052;
 }
 
+.qui.qui-image-upload-modal.is-fluid {
+  .qui-image-upload-modal-container{
+    width: 75%;
+  }
+}
+
 .qui .qui-image-upload-modal-container .qui.qui-button {
   overflow: visible;
 }

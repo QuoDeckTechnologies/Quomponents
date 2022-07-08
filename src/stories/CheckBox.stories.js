@@ -30,6 +30,20 @@ export default {
         category: "as-Flags",
       },
     },
+    asPadded: {
+      control: "select",
+      options: ["fitted", "compact", "normal", "relaxed"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+    asAligned: {
+      control: "select",
+      options: ["left", "right", "center"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     withColor: {
       table: {
         category: "with-Params",
@@ -71,6 +85,12 @@ export default {
         defaultValue: false,
       },
     },
+    isFluid: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
     onClick: {
       table: {
         category: "Events",
@@ -95,6 +115,8 @@ Default.args = {
   checked: false,
   asSize: "normal",
   asFloated: "left",
+  asPadded: "normal",
+  asAligned: "left",
   withColor: {
     accentColor: "",
     textColor: "",
@@ -111,6 +133,7 @@ Default.args = {
   },
   isDisabled: false,
   isHidden: false,
+  isFluid: false,
 };
 Default.parameters = {
   docs: {
@@ -264,11 +287,9 @@ InlineMultipleCheckBox.parameters = {
 export const ColoredCheckBox = Template.bind({});
 ColoredCheckBox.args = {
   ...Default.args,
-  content: {
-    name: "checkbox",
-    label: "Colored Checkbox",
-    checked: false,
-  },
+  name: "checkbox",
+  label: "Colored Checkbox",
+  checked: false,
   withColor: {
     accentColor: "#14213d",
     textColor: "#14213d",
@@ -290,11 +311,9 @@ ColoredCheckBox.parameters = {
 export const TranslatedCheckBox = Template.bind({});
 TranslatedCheckBox.args = {
   ...Default.args,
-  content: {
-    name: "checkbox",
-    label: "Translated Checkbox",
-    checked: false,
-  },
+  name: "checkbox",
+  label: "Translated Checkbox",
+  checked: false,
   withTranslation: {
     lang: "hi",
     tgt: "checkBox",

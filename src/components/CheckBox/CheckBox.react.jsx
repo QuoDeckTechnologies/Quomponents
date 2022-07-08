@@ -37,9 +37,17 @@ CheckBox.propTypes = {
   */
   asSize: PropTypes.oneOf(["tiny", "normal", "huge"]),
   /**
+    Use to define component padding in increasing order
+    */
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+  /**
   Use to float the component in parent container
   */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+  /**
+  Use to align content within the component container
+  */
+  asAligned: PropTypes.oneOf(["left", "right", "center"]),
   /**
   Use to override component colors 
   */
@@ -65,21 +73,25 @@ CheckBox.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
   Use to enable/disable the component
   */
   isDisabled: PropTypes.bool,
+  /**
+  Use to toggle the component taking the full width of the parent container
+  */
+  isFluid: PropTypes.bool,
   /**
   CheckBox component must have the onClick function passed as props to return label of the checkbox and checked/unchecked status
   */
@@ -98,6 +110,8 @@ CheckBox.defaultProps = {
   //=======================================
   asSize: "normal",
   asFloated: "left",
+  asPadded: "normal",
+  asAligned: "left",
   withColor: null,
   withAnimation: null,
   withTranslation: null,
@@ -173,9 +187,7 @@ export default function CheckBox(props) {
           htmlFor={`qui-check-box-element-${name}`}
           className="qui-check-box-element"
         >
-          <h4 style={{ color: withColor?.textColor }}>
-            {tObj?.label || label}
-          </h4>
+          <p style={{ color: withColor?.textColor }}>{tObj?.label || label}</p>
         </label>
       </div>
     </motion.div>

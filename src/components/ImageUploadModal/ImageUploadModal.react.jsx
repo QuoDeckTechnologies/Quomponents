@@ -33,6 +33,18 @@ ImageUploadModal.propTypes = {
   // Quommon props
   //=======================================
   /**
+    Use to override component colors and behavior
+    */
+  withColor: PropTypes.shape({
+    arcButtonColor: PropTypes.string,
+    arcIconColor: PropTypes.string,
+    arcColor: PropTypes.string,
+    textColor: PropTypes.string,
+    buttonColor: PropTypes.string,
+    hoverButtonColor: PropTypes.string,
+    sliderColor: PropTypes.string,
+  }),
+  /**
     Use to define the entry animation of the component
     */
   withAnimation: PropTypes.shape({
@@ -58,21 +70,21 @@ ImageUploadModal.propTypes = {
     dictionary: PropTypes.string,
   }),
   /**
-    Use to enable/disable the component
-    */
-  isDisabled: PropTypes.bool,
-  /**
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
+  /**
+    Use to toggle the component taking the full width of the parent container
+    */
+  isFluid: PropTypes.bool,
   /**
     imageUploadModal component must have the onClick function passed as props
     */
   onClick: PropTypes.func.isRequired,
   /**
-  imageUploadModal component should have the onClose function passed as props
+  imageUploadModal component should have the onChange function passed as props
   */
-  onClose: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 ImageUploadModal.defaultProps = {
@@ -85,10 +97,11 @@ ImageUploadModal.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  withColor: null,
   withAnimation: null,
   withTranslation: null,
-  isDisabled: false,
   isHidden: false,
+  isFluid: false,
 };
 /**
 ## Notes
@@ -98,6 +111,7 @@ ImageUploadModal.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function ImageUploadModal(props) {
+  const { withColor } = props;
   //-------------------------------------------------------------------
   // 1. useRef hook for file upload
   //-------------------------------------------------------------------
@@ -210,7 +224,9 @@ export default function ImageUploadModal(props) {
         <div
           className={`qui-image-modal-upload-header ${quommonClasses.childClasses}`}
         >
-          <h2>{tObj?.header || "Upload Image"}</h2>
+          <h2 style={{ color: withColor?.textColor }}>
+            {tObj?.header || "Upload Image"}
+          </h2>
         </div>
         <div className={`qui-image-cropper ${quommonClasses.childClasses}`}>
           <div className="qui-image-upload-button">
@@ -224,11 +240,14 @@ export default function ImageUploadModal(props) {
                 hidden
               />
               <Button
-                {...props}
                 content={tObj?.buttons?.chooseFile || "choose file"}
                 asVariant="warning"
                 withTranslation={null}
                 withAnimation={null}
+                withColor={{
+                  backgroundColor: withColor?.buttonColor,
+                  hoverBackgroundColor: withColor?.hoverButtonColor,
+                }}
                 asEmphasis="outlined"
                 isFluid={true}
                 asPadded="normal"
@@ -276,7 +295,6 @@ export default function ImageUploadModal(props) {
           <Slider initialValue={10} onClick={(value) => setZoom(value)} />
           <div className="qui-image-upload-buttons">
             <Button
-              {...props}
               asSize="normal"
               content={tObj?.buttons?.cancel || "cancel"}
               asVariant="warning"
@@ -284,17 +302,24 @@ export default function ImageUploadModal(props) {
               asFloated="left"
               withTranslation={null}
               withAnimation={null}
+              withColor={{
+                textColor: withColor?.buttonColor,
+                hoverTextColor: withColor?.hoverButtonColor,
+              }}
               onClick={() => {
                 setImage(null);
               }}
             />
             <Button
-              {...props}
               asSize="normal"
               content={tObj?.buttons?.save || "save"}
               asVariant="warning"
               withTranslation={null}
               withAnimation={null}
+              withColor={{
+                backgroundColor: withColor?.buttonColor,
+                hoverBackgroundColor: withColor?.hoverButtonColor,
+              }}
               asEmphasis="contained"
               asFloated="left"
               onClick={handleSave}
@@ -303,12 +328,17 @@ export default function ImageUploadModal(props) {
         </div>
         <ArcMenu
           {...props}
+          withColor={{
+            backgroundColor: withColor?.arcButtonColor,
+            iconColor: withColor?.arcIconColor,
+            arcColor: withColor?.arcColor,
+          }}
           type="close"
           arcIcon="close"
           position="top-right"
           onClick={() => {
             setOpenUploadModal(false);
-            props.onClose(false);
+            props.onChange(false);
           }}
         />
       </div>

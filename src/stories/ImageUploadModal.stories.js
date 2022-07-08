@@ -27,6 +27,20 @@ export default {
     image: {
       defaultValue: null,
     },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          arcButtonColor: "",
+          arcIconColor: "",
+          arcColor: "",
+          textColor: "",
+          buttonColor: "",
+          hoverButtonColor: "",
+          sliderColor: "",
+        },
+      },
+    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -47,13 +61,13 @@ export default {
         },
       },
     },
-    isDisabled: {
+    isHidden: {
       table: {
         category: "is-Toggles",
         defaultValue: false,
       },
     },
-    isHidden: {
+    isFluid: {
       table: {
         category: "is-Toggles",
         defaultValue: false,
@@ -65,25 +79,13 @@ export default {
         defaultValue: null,
       },
     },
-    onClose: {
+    onChange: {
       table: {
         category: "Events",
         defaultValue: null,
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
   parameters: {
     componentSubtitle: "Displays a Image Upload Modal Component.",
     a11y: { disable: true },
@@ -115,8 +117,17 @@ Default.args = {
     tgt: "imageuploadmodal",
     dictionary: dictionary,
   },
-  isDisabled: false,
+  withColor: {
+    arcButtonColor: "",
+    arcIconColor: "",
+    arcColor: "",
+    textColor: "",
+    buttonColor: "",
+    hoverButtonColor: "",
+    sliderColor: "",
+  },
   isHidden: false,
+  isFluid: false,
 };
 Default.parameters = {
   docs: {

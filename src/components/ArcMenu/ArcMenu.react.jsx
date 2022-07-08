@@ -64,8 +64,13 @@ ArcMenu.propTypes = {
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
+    iconColor: PropTypes.string,
+    arcColor: PropTypes.string,
+    menuBackgroundColor: PropTypes.string,
     textColor: PropTypes.string,
+    headingTextColor: PropTypes.string,
+    accentColorPrimary: PropTypes.string,
+    accecntColorSecondary: PropTypes.string,
   }),
   /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -180,22 +185,42 @@ export default function ArcMenu(props) {
       return (
         <div className="qui-arc-icon-menu-wrapper">
           <div className="qui-arc-icon-fragment-top">
-            <div className="qui-arc-icon-fragment-left"></div>
-            <div className="qui-arc-icon-fragment-right"></div>
+            <div
+              style={{ backgroundColor: withColor?.accentColorPrimary }}
+              className="qui-arc-icon-fragment-left"
+            ></div>
+            <div
+              style={{ backgroundColor: withColor?.accecntColorSecondary }}
+              className="qui-arc-icon-fragment-right"
+            ></div>
           </div>
           <div className="qui-arc-icon-fragment-bottom">
-            <div className="qui-arc-icon-fragment-right"></div>
-            <div className="qui-arc-icon-fragment-left"></div>
+            <div
+              style={{ backgroundColor: withColor?.accecntColorSecondary }}
+              className="qui-arc-icon-fragment-right"
+            ></div>
+            <div
+              style={{ backgroundColor: withColor?.accentColorPrimary }}
+              className="qui-arc-icon-fragment-left"
+            ></div>
           </div>
         </div>
       );
     }
     if (icon === "close") {
-      return <i className={`qui-arc-icon qui-arc-close-icon fas fa-times`}></i>;
+      return (
+        <i
+          style={{ color: withColor?.iconColor }}
+          className={`qui-arc-icon qui-arc-close-icon fas fa-times`}
+        ></i>
+      );
     }
     return (
       <div className="qui-add-icon-wrapper">
-        <i className={`qui-arc-icon fas fa-plus`}></i>
+        <i
+          style={{ color: withColor?.iconColor }}
+          className={`qui-arc-icon fas fa-plus`}
+        ></i>
       </div>
     );
   };
@@ -208,8 +233,8 @@ export default function ArcMenu(props) {
         return (
           <div
             className={`qui-menu-button qui-arc-menu-header ${quommonClasses.childClasses}`}
+            style={{ color: withColor?.headingTextColor }}
             key={i}
-            style={{ color: withColor?.accentColor }}
           >
             {dataObj.header}
             <div className="qui-arc-menu-list-item-container">
@@ -222,7 +247,7 @@ export default function ArcMenu(props) {
                   }}
                   key={listItem.title + index}
                   style={{
-                    backgroundColor: withColor?.backgroundColor,
+                    backgroundColor: withColor?.menuBackgroundColor,
                     color: withColor?.textColor,
                   }}
                 >
@@ -267,9 +292,13 @@ export default function ArcMenu(props) {
         sx={{ zIndex: 10 }}
       ></Backdrop>
       <div className={quommonClasses.childClasses}>
-        <div className={`qui-arc ${getPosition(props.position)}`}>
+        <div
+          style={{ borderColor: withColor?.arcColor }}
+          className={`qui-arc ${getPosition(props.position)}`}
+        >
           {(props.menuType === "nugget-menu" || props.menuType === "menu") && (
             <button
+              style={{ backgroundColor: withColor?.backgroundColor }}
               className={`qui-arc-menu-button qt-shadow qui-btn ${quommonClasses.childClasses}`}
               onClick={() => setOpenMenu((prevState) => !prevState)}
             >
@@ -278,6 +307,7 @@ export default function ArcMenu(props) {
           )}
           {(props.menuType === "close" || props.menuType === "add") && (
             <button
+              style={{ backgroundColor: withColor?.backgroundColor }}
               className={`qui-arc-menu-button qt-shadow qui-arc-menu-${props.menuType}-button ${quommonClasses.childClasses}`}
               onClick={(e) => props.onClick(e)}
             >

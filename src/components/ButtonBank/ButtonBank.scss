@@ -8,9 +8,13 @@
 
 .qui .qui-button-bank-single-button .qui-button button {
   padding: 0.6em;
-  width: 20em;
+  min-width: 20em;
   height: 2.5em;
   font-size: 1.2em;
+}
+
+.qui.qui-button-bank.qui-button-bank-horizontal {
+  display: flex;
 }
 
 @media only screen and (min-width: 320px) {
