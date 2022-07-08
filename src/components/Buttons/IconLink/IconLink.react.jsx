@@ -209,7 +209,7 @@ export default function IconLink(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props,'icon-link');
     if (props.isCircular)
         quommonClasses.childClasses += ` is-circular`;
 
