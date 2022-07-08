@@ -26,9 +26,11 @@ describe("ToggleButton", () => {
       lang: { valid: "hi", invalid: "xx" },
       dictionary: JSON.stringify({
         hi: {
-          toggleButton: { label: "सक्रिय" },
+          toggleButton: {
+            label: "सक्रिय",
+          }
         },
-      }),
+      })
     },
   };
 
@@ -44,7 +46,7 @@ describe("ToggleButton", () => {
   hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
-  // -------------------------------------
+  // ------------------------------------
   const dictionary = JSON.stringify({
     hi: {
       toggleButton: { label: "सक्रिय" },
@@ -58,12 +60,8 @@ describe("ToggleButton", () => {
     component = shallow(
       <ToggleButton
         label="Active"
-        asFloated="inline"
-        withColor={null}
-        withAnimation={null}
         withTranslation={null}
-        isHidden={false}
-        isDisabled={false}
+
         onClick={() => { }}
         onChange={onChange}
       />
@@ -94,6 +92,6 @@ describe("ToggleButton", () => {
           dictionary: dictionary,
         },
       });
-      expect(component.exists()).toBe(true);
+      expect(component.find(".qui-toggle-button-title").text()).toBe("सक्रिय");
     });
 });
