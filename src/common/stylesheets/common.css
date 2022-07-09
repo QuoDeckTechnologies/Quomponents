@@ -152,16 +152,16 @@ h6 {
 /* ================================================= */
 /* Margin Definitions */
 /* ================================================= */
-.qui .margin-spaced {
+.qui.margin-spaced {
     margin: 7.5px;
 }
-.qui .margin-snug {
+.qui.margin-snug {
     margin: 2.5px;
 }
-.qui .margin-normal {
+.qui.margin-normal {
     margin: 0;
 }
-.qui .gutter-down {
+.qui.gutter-down {
     margin-bottom: 15px !important;
 }
 
