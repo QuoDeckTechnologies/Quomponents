@@ -19,6 +19,13 @@ export function getQuommons(props, component) {
     else if (props.padded) childArray.push(`pad-padded`);
     else if (props.asPadded) childArray.push(`pad-${props.asPadded}`);
 
+    if (props.spaced) parentArray.push(`margin-spaced`);
+    else if (props.snug) parentArray.push(`margin-snug`);
+    else if (props.normal) parentArray.push(`margin-normal`);
+    else if (props.asMargin) parentArray.push(`margin-${props.asMargin}`);
+
+    if (props.gutter) parentArray.push(`gutter-down`);
+
     if (props["center-aligned"] || props["center-align"])
         childArray.push(`center-aligned`);
     else if (props["left-aligned"] || props["left-align"])
