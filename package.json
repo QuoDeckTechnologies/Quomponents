@@ -2,7 +2,7 @@
     "name": "quomponents",
     "description": "The library of react components being used in the QuoDeck product suite",
     "main": "dist/index.js",
-    "version": "0.1.16",
+    "version": "0.1.17",
     "private": false,
     "files": [
         "dist",
