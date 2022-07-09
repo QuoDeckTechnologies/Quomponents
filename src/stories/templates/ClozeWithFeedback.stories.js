@@ -20,7 +20,7 @@ const dictionary = JSON.stringify({
     }
 });
 export default {
-    title: "Design System/Templates/ClozeWithFeedback/ClozeWithFeedback",
+    title: "Design System/Templates/ClozeWithFeedback",
     component: ClozeWithFeedback,
     argTypes: {
         data: {

@@ -2,7 +2,7 @@ import React from "react";
 import TitlewithVideo from "../../components/Templates/TitlewithVideo/TitlewithVideo.react";
 
 export default {
-    title: "Design System/Templates/TitlewithVideo/TitlewithVideo",
+    title: "Design System/Templates/TitlewithVideo",
     component: TitlewithVideo,
     argTypes: {
         data: {

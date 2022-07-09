@@ -21,7 +21,7 @@ const dictionary = JSON.stringify({
 
 
 export default {
-    title: "Design System/Ribbons/Ribbon",
+    title: "Design System/Ribbon",
     component: Ribbon,
     argTypes: {
         asEmphasis: {

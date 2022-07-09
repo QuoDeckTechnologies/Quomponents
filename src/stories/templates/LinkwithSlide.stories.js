@@ -8,7 +8,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/Templates/LinkwithSlide/LinkwithSlide",
+  title: "Design System/Templates/LinkwithSlide",
   component: LinkwithSlide,
   argTypes: {
     data: {

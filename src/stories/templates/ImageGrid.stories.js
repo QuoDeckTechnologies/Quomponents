@@ -2,7 +2,7 @@ import React from "react";
 import ImageGrid from "../../components/Templates/ImageGrid/ImageGrid.react";
 
 export default {
-    title: "Design System/Templates/ImageGrid/ImageGrid",
+    title: "Design System/Templates/ImageGrid",
     component: ImageGrid,
     argTypes: {
         data: {},

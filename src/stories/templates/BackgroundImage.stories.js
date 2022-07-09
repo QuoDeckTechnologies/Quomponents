@@ -2,7 +2,7 @@ import React from "react";
 import BackgroundImage from "../../components/Templates/BackgroundImage/BackgroundImage.react";
 
 export default {
-    title: "Design System/Templates/BackgroundImage/BackgroundImage",
+    title: "Design System/Templates/BackgroundImage",
     component: BackgroundImage,
     argTypes: {
         data: {

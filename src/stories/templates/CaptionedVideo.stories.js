@@ -2,7 +2,7 @@ import React from "react";
 import CaptionedVideo from "../../components/Templates/CaptionedVideo/CaptionedVideo.react";
 
 export default {
-    title: "Design System/Templates/CaptionedVideo/CaptionedVideo",
+    title: "Design System/Templates/CaptionedVideo",
     component: CaptionedVideo,
     argTypes: {
         data: {

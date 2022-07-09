@@ -10,7 +10,7 @@ const dictionary = JSON.stringify({
   },
 });
 export default {
-  title: "Design System/Templates/Anagram/Anagram",
+  title: "Design System/Templates/Anagram",
   component: Anagram,
   argTypes: {
     data: {

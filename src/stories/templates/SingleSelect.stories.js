@@ -2,7 +2,7 @@ import React from "react";
 import SingleSelect from "../../components/Templates/SingleSelect/SingleSelect.react";
 
 export default {
-	title: "Design System/Templates/SingleSelect/SingleSelect",
+	title: "Design System/Templates/SingleSelect",
 	component: SingleSelect,
 	argTypes: {
 		data: {
