@@ -6,7 +6,7 @@
   min-height: 0;
 }
 
-.qui.qui-check-box.is-fluid .qui-check-box-inner-container h4 {
+.qui.qui-check-box.is-fluid .qui-check-box-inner-container p {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -17,28 +17,29 @@
   align-items: center;
 }
 
-.qui .qui-check-box-element {
-  flex: 1;
-}
-
-.qui .qui-check-box-inner-container h4 {
+.qui .qui-check-box-inner-container p {
   margin: 0;
   font-weight: 500;
   color: #454545;
   cursor: pointer;
 }
 
-@media only screen and (min-width: 320px) {
-  .qui.qui-check-box .qui-check-box-element h4 {
-    max-width: 10em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.qui.qui-check-box.float-none {
+  .qui-check-box-inner-container.left-aligned {
+    justify-content: flex-start;
+  }
+  .qui-check-box-inner-container.right-aligned {
+    justify-content: flex-end;
+  }
+  .qui-check-box-inner-container.center-aligned {
+    justify-content: center;
   }
 }
 
-@media only screen and (min-width: 481px) {
-  .qui.qui-check-box .qui-check-box-element h4 {
-    max-width: 20em;
+@media only screen and (min-width: 320px) {
+  .qui.qui-check-box .qui-check-box-element p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

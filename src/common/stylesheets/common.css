@@ -1,43 +1,43 @@
 /* ================================================= */
+/* Header style h1, h2, h3, h4, h5, h6*/
+/* ================================================= */
+h1 {
+    font-weight: 400;
+    font-size: 3.5em;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 3em;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 2em;
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+h5 {
+    font-weight: 700;
+    font-size: 1.12em;
+}
+
+h6 {
+    font-weight: 700;
+    font-size: 0.8em;
+}
+
+/* ================================================= */
 /* Container Style */
 /* ================================================= */
 .qui {
     position: relative;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
-}
-
-/* ================================================= */
-/* Header style h1, h2, h3, h4, h5, h6*/
-/* ================================================= */
-h1{
-    font-weight: 400;
-    font-size: 3.5em;
-}
-
-h2{
-    font-weight: 300;
-    font-size: 3em;
-}
-
-h3{
-    font-weight:400;
-    font-size: 2em;
-}
-
-h4{
-    font-weight: 400;
-    font-size: 1.5em;
-}
-
-h5{
-    font-weight: 700;
-    font-size: 1.12em;
-}
-
-h6{
-    font-weight: 700;
-    font-size: 0.75em;
 }
 
 /* ================================================= */
@@ -166,35 +166,37 @@ h6{
 /* ================================================= */
 /* Font Style Definitions */
 /* ================================================= */
-
 .prifont {
-    font-family: "Roboto";
+    font-family: "Arial", sans-serif;
 }
 
 .secfont {
-    font-family: "Oswald";
+    font-family: "Arial", sans-serif;
 }
 
-.qt-lbl {
-
+.qui .qt-lbl,
+.qui.qt-lbl {
     font-style: normal;
     font-weight: 400;
     font-size: 0.8em;
 }
 
-.qt-sm {
+.qui .qt-sm,
+.qui.qt-sm {
     font-style: normal;
     font-weight: 400;
     font-size: 0.7em;
 }
 
-.qt-mn {
+.qui .qt-mn,
+.qui.qt-mn {
     font-style: normal;
     font-weight: 400;
     font-size: 0.5em;
 }
 
-.qt-utn {
+.qui .qt-utn,
+.qui.qt-utn {
     font-style: normal;
     font-weight: 400;
     font-size: 0.6em;
@@ -203,6 +205,7 @@ h6{
 /* ================================================= */
 /* Box Shadow Definitions */
 /* ================================================= */
-.qt-shadow {
+.qui .qt-shadow,
+.qui.qt-shadow {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }

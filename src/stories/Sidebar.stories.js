@@ -1,6 +1,53 @@
 import React from "react";
 import Sidebar from "../components/Sidebar/Sidebar.react";
-
+const dictionary = JSON.stringify({
+    hi: {
+        sideBar: {
+            content: "संपादन मोड",
+            translatedPanelLinks: {
+                welcome: "स्वागत",
+                content: {
+                    library: "पुस्तकालय",
+                    editor: "संपादक",
+                    settings: "समायोजन",
+                    enrollment: "उपस्थिति पंजी",
+                    preview: "पूर्वावलोकन",
+                },
+                admin: {
+                    users: "उपयोगकर्ता",
+                    courses: "पाठ्यक्रम",
+                    branding: "ब्रांडिंग",
+                    tags: "टैग",
+                    ads: "विज्ञापन",
+                    ticketCenters: "टिकट केंद्र",
+                },
+                analytics: {
+                    org: "संगठन",
+                    teams: "टीम",
+                    trainees: "ट्रेनी",
+                    courses: "पाठ्यक्रम",
+                    articles: "लेख",
+                },
+                blog: {
+                    articles: "लेख",
+                    editor: "संपादक",
+                },
+                social: {
+                    text: "पाठ",
+                    link: "संपर्क",
+                    image: "छवि",
+                    gallery: "गेलरी",
+                    video: "वीडियो",
+                },
+                help: {
+                    chatbot: "चैटबोट",
+                    faq: "सामान्य प्रश्न",
+                    support: "सहायता",
+                }
+            }
+        }
+    },
+});
 export default {
     title: "Design System/Sidebar/Sidebar",
     component: Sidebar,
@@ -22,7 +69,7 @@ export default {
         },
         asFloated: {
             control: "select",
-            options: ["left", "right", "inline"],
+            options: ["left", "right","none", "inline"],
             table: {
                 category: "as-Flags",
             },
@@ -43,6 +90,16 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -107,6 +164,11 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "sideBar",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -114,6 +176,42 @@ Default.parameters = {
     docs: {
         source: {
             code: `<Sidebar {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// TranslatedDefault
+// -------------------------------------------------------------
+export const TranslatedDefault = Template.bind({});
+TranslatedDefault.args = {
+    licenseType: "SuperAdmin",
+    asEmphasis: "default",
+    label: "Edit Mode",
+    noCourses: false,
+    sidebarLocation: "welcome",
+    asVariant: "primary",
+    asFloated: "inline",
+    withColor: {
+        backgroundColor: "",
+        textColor: "",
+    },
+    withAnimation: {
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "sideBar",
+        dictionary: dictionary,
+    },
+    isDisabled: false,
+    isHidden: false,
+};
+TranslatedDefault.parameters = {
+    docs: {
+        source: {
+            code: `<Sidebar {...${JSON.stringify(TranslatedDefault.args, null, 2)}}/>`,
         },
     },
 };
@@ -138,6 +236,11 @@ EditMode.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "sideBar",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -148,7 +251,42 @@ EditMode.parameters = {
         },
     },
 };
-// -----
+// -------------------------------------------------------------
+// TranslatedEditMode
+// -------------------------------------------------------------
+export const TranslatedEditMode = Template.bind({});
+TranslatedEditMode.args = {
+    licenseType: "SuperAdmin",
+    asEmphasis: "editMode",
+    label: "Edit Mode",
+    noCourses: false,
+    sidebarLocation: "welcome",
+    asVariant: "primary",
+    asFloated: "inline",
+    withColor: {
+        backgroundColor: "",
+        textColor: "",
+    },
+    withAnimation: {
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "hi",
+        tgt: "sideBar",
+        dictionary: dictionary,
+    },
+    isDisabled: false,
+    isHidden: false,
+};
+TranslatedEditMode.parameters = {
+    docs: {
+        source: {
+            code: `<Sidebar {...${JSON.stringify(TranslatedEditMode.args, null, 2)}}/>`,
+        },
+    },
+};
 // -------------------------------------------------------------
 // variants
 // -------------------------------------------------------------
@@ -814,6 +952,769 @@ const LocationTemplate = (args) => {
 };
 export const LocationsByLicenseType = LocationTemplate.bind({});
 LocationsByLicenseType.parameters = {
+    docs: {
+        description: {
+            story: "6 license types are supported with different different sidebar locations.",
+        },
+        source: {
+            code: `<Sidebar asEmphasis={"default"}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// DifferentLocations
+// -------------------------------------------------------------
+const TranslatedLocationTemplate = (args) => {
+    const baseObj = {
+        ...Object.assign({}, Default.args, args, {
+        }),
+    };
+    return (
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%" }}>
+            <h2>SuperAdmin</h2>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", width: "100%", }}>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >स्वागत</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "welcome",
+                            withAnimation: {
+                                animation: "slideRight",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >पाठ्यक्रम के बिना</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "content",
+                            noCourses: true,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }}>पाठ्यक्रम के साथ</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "content",
+                            noCourses: false,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >ब्लॉग</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "blog",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >सामाजिक</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "social",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >व्यवस्थापक</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "admin",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >विश्लेषकी</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "analytics",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >मदद</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "SuperAdmin",
+                            sidebarLocation: "help",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+            <br></br>
+
+            <h2>Admin</h2>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", width: "100%", }}>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }}>स्वागत</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "welcome",
+                            withAnimation: {
+                                animation: "slideRight",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >पाठ्यक्रम के बिना</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "content",
+                            noCourses: true,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >पाठ्यक्रम के साथ </h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "content",
+                            noCourses: false,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >ब्लॉग</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "blog",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >सामाजिक</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "social",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >व्यवस्थापक</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "admin",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >विश्लेषकी</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "analytics",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >मदद</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Admin",
+                            sidebarLocation: "help",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+            <br></br>
+
+            <h2>Trainer</h2>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", width: "100%", }}>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >स्वागत</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Trainer",
+                            sidebarLocation: "welcome",
+                            withAnimation: {
+                                animation: "slideRight",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >पाठ्यक्रम के बिना</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Trainer",
+                            sidebarLocation: "content",
+                            noCourses: true,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >पाठ्यक्रम के साथ</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Trainer",
+                            sidebarLocation: "content",
+                            noCourses: false,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >विश्लेषकी</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Trainer",
+                            sidebarLocation: "analytics",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >मदद</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Trainer",
+                            sidebarLocation: "help",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+            <br></br>
+
+            <h2>Manager</h2>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", width: "100%", }}>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >स्वागत</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Manager",
+                            sidebarLocation: "welcome",
+                            withAnimation: {
+                                animation: "slideRight",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >content without courses</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Manager",
+                            sidebarLocation: "content",
+                            noCourses: true,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >पाठ्यक्रम के साथ </h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Manager",
+                            sidebarLocation: "content",
+                            noCourses: false,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >विश्लेषकी</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Manager",
+                            sidebarLocation: "analytics",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >मदद</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Manager",
+                            sidebarLocation: "help",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+            <br></br>
+
+            <h2>Creator</h2>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", width: "100%", }}>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >स्वागत</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "welcome",
+                            withAnimation: {
+                                animation: "slideRight",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >पाठ्यक्रम के बिना</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "content",
+                            noCourses: true,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >content with courses</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "content",
+                            noCourses: false,
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >ब्लॉग</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "blog",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >सामाजिक</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "social",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >विश्लेषकी</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "analytics",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >मदद</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "Creator",
+                            sidebarLocation: "help",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+            <br></br>
+
+            <h2>DataAdmin</h2>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-evenly", width: "100%", }}>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >स्वागत</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "DataAdmin",
+                            sidebarLocation: "welcome",
+                            withAnimation: {
+                                animation: "slideRight",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+                <div style={{ position: "relative" }} >
+                    <h3 style={{ position: "absolute", right: "0em", bottom: "0.4em", zIndex: 3, writingMode: "vertical-lr", transform: "rotate(180deg)" }} >विश्लेषकी</h3>
+                    <Sidebar
+                        {...Object.assign({}, baseObj, {
+                            asEmphasis: "default",
+                            licenseType: "DataAdmin",
+                            sidebarLocation: "analytics",
+                            withAnimation: {
+                                animation: "slideLeft",
+                                duration: 0.5,
+                                delay: 0,
+                            },
+                            withTranslation: {
+                                lang: "hi",
+                                tgt: "sideBar",
+                                dictionary: dictionary,
+                            },
+                        })}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
+export const TranslatedLocationsByLicenseType = TranslatedLocationTemplate.bind({});
+TranslatedLocationsByLicenseType.parameters = {
     docs: {
         description: {
             story: "6 license types are supported with different different sidebar locations.",

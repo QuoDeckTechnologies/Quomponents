@@ -35,6 +35,10 @@ AccentLine.propTypes = {
         "massive",
     ]),
     /**
+    Use to define component padding in increasing order
+    */
+    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
@@ -76,6 +80,7 @@ AccentLine.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "warning",
+    asPadded: "normal",
     asSize: "normal",
     asFloated: "none",
 
@@ -107,7 +112,7 @@ export default function AccentLine(props) {
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     // ========================= Render Function =================================
     return (
         <motion.div

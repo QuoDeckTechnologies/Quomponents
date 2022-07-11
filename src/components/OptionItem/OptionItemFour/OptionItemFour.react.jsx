@@ -126,7 +126,7 @@ export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
   // 5. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 6. Function to return checked value of the component
   //-------------------------------------------------------------------
@@ -169,17 +169,13 @@ export default function OptionItemFour(props) {
           />
         </div>
         <InputField
-          name={
-            content?.targetName ? content?.targetName : "default-target-name"
-          }
-          content={{
-            value: content?.value,
-            placeholder: tObj ? tObj.placeholder : content?.placeholder,
-            maxLength: content?.maxLength,
-          }}
+          name={content?.targetName || "default-target-name"}
+          value={content?.value}
+          placeholder={tObj?.placeholder || content?.placeholder}
+          maxLength={content?.maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
-          onClick={handleValue}
+          onSubmit={handleValue}
         />
         <div className="qui-option-item-four-close-icon">
           <i

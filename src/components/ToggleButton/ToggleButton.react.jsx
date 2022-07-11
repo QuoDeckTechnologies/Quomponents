@@ -119,7 +119,7 @@ export default function ToggleButton(props) {
     //-------------------------------------------------------------------
     // 7. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     const [toggle, setToggle] = useState(false)
     const handleChange = (e) => {
         setToggle((prevState) => !prevState);

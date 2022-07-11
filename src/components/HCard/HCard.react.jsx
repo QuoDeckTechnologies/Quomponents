@@ -159,7 +159,7 @@ export default function HCard(props) {
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 5. Get translation of the component
   //-------------------------------------------------------------------
@@ -188,9 +188,8 @@ export default function HCard(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div
-        className={`qui-h-card-container ${
-          isButton ? "qui-h-card-with-button-container" : "qui-h-card-without-button-container"
-        } qt-shadow`}
+        className={`qui-h-card-container ${isButton ? "qui-h-card-with-button-container" : "qui-h-card-without-button-container"
+          } qt-shadow`}
         style={{
           backgroundColor: withColor?.backgroundColor,
         }}
@@ -239,11 +238,7 @@ export default function HCard(props) {
             <Button
               {...props}
               content={
-                tObj
-                  ? tObj.buttonText
-                  : content?.buttonText
-                  ? content?.buttonText
-                  : "click here"
+                tObj?.buttonText || content?.buttonText || "click here"
               }
               isFluid={false}
               withTranslation={null}

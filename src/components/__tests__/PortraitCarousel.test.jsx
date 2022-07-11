@@ -4,11 +4,52 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import PortraitCarousel from '../Carousel/PortraitCarousel/PortraitCarousel.react'
 
 describe('PortraitCarousel', () => {
+    // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+
+    const args = {
+        target: PortraitCarousel,
+        required: {
+            content: [],
+            onClick: () => { },
+        },
+        translations: {
+            tgt: "bannerCard",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+                hi: {
+                    bannerCard: { header: "", content: "" },
+                    ribbon: {
+                        new: "नया",
+                        restricted: "प्रतिबंधित",
+                        premium: "अधिमूल्य",
+                        free: "नि: शुल्क"
+                    }
+                },
+            }),
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("animations", args);
+
+    hasValid("translations", args);
+
+    // -------------------------------------
+    // Run component specific tests
+    // -------------------------------------
+
     let component, content;
     content = [{
         image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
@@ -26,10 +67,7 @@ describe('PortraitCarousel', () => {
             />
         );
     });
-    it("should render correctly without throwing error",
-        () => {
-            expect(component.exists()).toBe(true);
-        });
+
     it('should pass conditional true when the slide is selected {true} from the props ', () => {
         component.setProps({
             content: [{

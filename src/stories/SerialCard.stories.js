@@ -2,33 +2,17 @@ import React from "react";
 import SerialCard from "../components/SerialCard/SerialCard.react";
 import Image from "../assets/GameImage.png";
 
-const dictionary = JSON.stringify({
-    hi: {
-        SerialCard: {
-            title: "5 मई 2022",
-            description:
-                "म्यूचुअल फंड क्या हैं?",
-        },
-    },
-});
-
 export default {
     title: "Design System/SerialCard/SerialCard",
     component: SerialCard,
     argTypes: {
-        content: {
-            table: {
-                defaultValue: {
-                    title: "",
-                    description: "",
-                    backImage: "",
-                    image: "",
-                    playerIcon: "",
-                    playersValue: 1,
-                    iconOpt: [],
-                },
-            },
-        },
+        title: "",
+        description: "",
+        backImage: "",
+        image: "",
+        playerIcon: "",
+        playersValue: 1,
+        iconOpt: [],
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -53,16 +37,6 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
-                },
-            },
-        },
-        withTranslation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    lang: "",
-                    tgt: "",
-                    dictionary: "",
                 },
             },
         },
@@ -115,16 +89,18 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        title: "5th May 2022",
-        description:
-            "What are Mutual Funds?",
-        image: Image,
-        backImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        playerIcon: "fa fa-users",
-        playersValue: 20539,
-        iconOpt: ["fa fa-book", "fa fa-gamepad", "fa fa-trophy"]
-    },
+    title: "5th May 2022",
+    description:
+        "What are Mutual Funds?",
+    image: Image,
+    backImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    playerIcon: "fa fa-users",
+    playersValue: 20539,
+    iconOpt: [
+        { icon: "fa fa-book", func: () => { } },
+        { icon: "fa fa-gamepad", func: () => { } },
+        { icon: "fa fa-trophy", func: () => { } },
+    ],
     asVariant: "error",
     withColor: {
         backgroundColor: "",
@@ -135,11 +111,6 @@ Default.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
-    },
-    withTranslation: {
-        lang: "hi",
-        tgt: "SerialCard",
-        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -203,30 +174,6 @@ AnimatedSerialcard.parameters = {
                 null,
                 2
             )}}/>`,
-        },
-    },
-};
-
-//-------------------------------------------------------------
-// Translated SerialCard
-// -------------------------------------------------------------
-export const TranslatedSerialcard = Template.bind({});
-TranslatedSerialcard.args = {
-    ...Default.args,
-    withTranslation: {
-        lang: "hi",
-        tgt: "SerialCard",
-        dictionary: dictionary,
-    },
-};
-TranslatedSerialcard.parameters = {
-    docs: {
-        description: {
-            story:
-                "We can translate the language of SerialCard if dictionary is provided",
-        },
-        source: {
-            code: `<SerialCard {...${JSON.stringify(TranslatedSerialcard.args, null, 2)}}/>`,
         },
     },
 };

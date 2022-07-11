@@ -4,6 +4,10 @@ import React from "react";
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import SlideSettings from "../RibbonMenu/homeMenu/sections/SlideSettings.react";
@@ -11,8 +15,45 @@ import IconLink from "../Buttons/IconLink/IconLink.react";
 
 describe("SlideSettings", () => {
 	// -------------------------------------
-	// Setup definitions for the test suite
+	// Run common tests
 	// -------------------------------------
+
+	const args = {
+		target: SlideSettings,
+		translations: {
+			tgt: "slideSettings",
+			lang: { valid: "hi", invalid: "xx" },
+			dictionary: JSON.stringify({
+				en: {
+					slideSettings: {
+						settings: "Settings",
+						enableBackArrow: "Enable Back Arrow",
+						enableNextArrow: "Enable Next Arrow"
+					}
+				},
+				hi: {
+					slideSettings: {
+						settings: 'समायोजन',
+						enableBackArrow: "वापस तीर सक्षम करें",
+						enableNextArrow: "अगला तीर सक्षम करें"
+					}
+				}
+			}),
+		},
+	};
+
+	hasValid("defaults", args);
+
+	hasValid("positions", args);
+
+	hasValid("translations", args);
+
+	hasValid("disabled", args);
+    hasValid("hidden", args);
+	// -------------------------------------
+	// Run component specific tests
+	// -------------------------------------
+
 	let component, actions, deck;
 	actions = {
 		changeSlideNav: jest.fn()
@@ -30,50 +71,12 @@ describe("SlideSettings", () => {
 				actions={actions}
 				deck={deck}
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
 			/>
 		);
-	});
-
-	it("should render correctly without throwing error", () => {
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asFloated prop as left", () => {
-		component.setProps({ asFloated: "left" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asFloated prop as right", () => {
-		component.setProps({ asFloated: "right" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asFloated prop as inline", () => {
-		component.setProps({ asFloated: "inline" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isHidden props as false", () => {
-		component.setProps({ isHidden: false });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isHidden props as true", () => {
-		component.setProps({ isHidden: true });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isDisabled props as false", () => {
-		component.setProps({ isDisabled: false });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isDisabled props as true", () => {
-		component.setProps({ isDisabled: true });
-		expect(component.exists()).toBe(true);
 	});
 
 	it("should enable back arrow by clicking on Icon", () => {

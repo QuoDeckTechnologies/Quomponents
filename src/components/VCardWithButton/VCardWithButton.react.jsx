@@ -146,7 +146,7 @@ export default function VCardWithButton(props) {
   //-------------------------------------------------------------------
   // 3. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 4. Get translation of the component
   //-------------------------------------------------------------------
@@ -224,11 +224,7 @@ export default function VCardWithButton(props) {
             <Button
               {...props}
               content={
-                tObj
-                  ? tObj.buttonText
-                  : content?.buttonText
-                  ? content?.buttonText
-                  : "click here"
+                tObj?.buttonText || content?.buttonText || "click here"
               }
               isFluid={false}
               withTranslation={null}

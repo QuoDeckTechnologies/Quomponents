@@ -3,12 +3,40 @@
 // -------------------------------------
 import { mount } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import ClickableImage from "../ClickableImage/ClickableImage.react";
 
 describe("Clickable Image", () => {
+
   // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+
+  const args = {
+    target: ClickableImage,
+    required: {
+      onClick: () => { },
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("variants", args);
+  hasValid("sizes", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
+  hasValid("alignment", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+
+  hasValid("hidden", args);
+  hasValid("disabled", args);  // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
@@ -16,8 +44,7 @@ describe("Clickable Image", () => {
     jest.resetAllMocks();
     component = mount(
       <ClickableImage
-        onClick={() => {}}
-        isCircular={false}
+        onClick={() => { }}
         isActive={false}
         withColor={null}
       />
@@ -30,9 +57,7 @@ describe("Clickable Image", () => {
 
   it("should render correctly when image is provided", () => {
     component.setProps({
-      content: {
-        image: "xyz.jpeg",
-      },
+      image: "xyz.jpeg",
     });
     expect(component.exists()).toBe(true);
   });
@@ -67,45 +92,6 @@ describe("Clickable Image", () => {
       borderColor: "#ff0000",
     };
     component.setProps({ withColor: colors });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isCircular props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isCircular props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
     expect(component.exists()).toBe(true);
   });
 });

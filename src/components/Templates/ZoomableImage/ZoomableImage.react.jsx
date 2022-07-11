@@ -215,7 +215,7 @@ export default function ZoomableImage(props) {
                                 withColor={slideHeaderColors} />
                         )}
                         {data?.image && (
-                            <img className="qui-header-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
+                            <img className="qui-header-image qt-shadow" src={resolveImage(data.image.id, imageLibrary)} alt="" />
                         )}
                         <div className="qui-zoomable-icon">
                             {<Button
@@ -230,10 +230,12 @@ export default function ZoomableImage(props) {
                             {pinch && <img className="qui-pinchview-image" src={PinchImage} alt="" />}
 
                             {data?.zoomableImage && (
-                                <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                                <img className="qui-zoomable-picture qt-shadow" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
                             )}
                         </div>
-                        <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+                        <div className="qt-sm">
+                            <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+                        </div>
                     </div>
                 </div>
             )
@@ -306,10 +308,10 @@ export default function ZoomableImage(props) {
                         {pinch && <img className="qui-pinchview-image" src={PinchImage} alt="" />}
 
                         {data?.zoomableImage && (
-                            <img className="qui-zoomable-picture" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
+                            <img className="qui-zoomable-picture qt-shadow" src={resolveImage(data.zoomableImage.id, imageLibrary)} alt="" />
                         )}
                     </div>
-                    <div className="qui-zoomable-image-presenter-caption">
+                    <div className="qt-sm qui-zoomable-image-presenter-caption">
                         <TextBlock {...props}
                             content={data?.caption}
                             asFloated="left"
@@ -332,7 +334,7 @@ export default function ZoomableImage(props) {
     //-------------------------------------------------------------------
     //  Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     //-------------------------------------------------------------------
     // Function to set background for presenter view

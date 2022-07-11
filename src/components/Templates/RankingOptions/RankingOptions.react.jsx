@@ -67,6 +67,14 @@ RankingOptions.propTypes = {
         backgroundColor: PropTypes.string,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to define the entry animation of the component
     */
     withAnimation: PropTypes.shape({
@@ -104,6 +112,7 @@ RankingOptions.defaultProps = {
     //=======================================
     asVariant: "primary",
     withColor: null,
+    withTranslation: null,
     withAnimation: null,
     isDisabled: false,
     isHidden: false,
@@ -125,7 +134,7 @@ export default function RankingOptions(props) {
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     //-------------------------------------------------------------------
     // 3. Setting the colors of the imported components
@@ -177,7 +186,7 @@ export default function RankingOptions(props) {
                         {props.data?.question}
                     </div>
                     <div className="qui-ranking-options-button-container">
-                        <OrderingList withColor={orderingListColors} content={props.data?.bullets} onClick={(items) => props.trackInteraction(items)} />
+                        <OrderingList {...props} withColor={orderingListColors} purpose={data?.purpose} content={props.data?.bullets} onClick={(items) => props.trackInteraction(items)} />
                     </div>
                 </div>}
         </motion.div>

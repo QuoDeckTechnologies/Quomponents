@@ -4,98 +4,93 @@ import React from 'react';
 // -------------------------------------
 import { shallow, mount, render } from 'enzyme';
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import OTPFields from "../OTPFields/OTPFields.react"
 
 describe("OTPFields", () => {
     // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+    const args = {
+        target: OTPFields,
+        required: {
+            numFields: 5,
+            onClick: () => { },
+        }
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("sizes", args);
+    hasValid("positions", args);
+
+    hasValid("colors", args);
+    hasValid("animations", args);
+
+    hasValid("hidden", args);
+    hasValid("disabled", args);
+    // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
     let onClick = jest.fn();
+    let changeFocus = jest.fn();
+    let changeBlur = jest.fn();
+    let handleChange = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
-        component = shallow(
+        component = mount(
             <OTPFields
-                numFields={5}
+                numFields={3}
+                asSize="normal"
                 asFloated="none"
                 withColor={null}
                 withAnimation={null}
                 isHidden={false}
                 isDisabled={false}
                 onClick={onClick}
+                handleChange={handleChange}
+                changeFocus={changeFocus}
+                changeBlur={changeBlur}
             />
         );
     });
 
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
-
     it("it should pass the value to the OtpField", () => {
-        let OtpField = component.find("OtpInput");
-        component.find('OtpInput').simulate('change')
+        component.find('input').at(1).simulate('change')
+        component.find('input').at(1).simulate('change', { target: { value: '12345' } })
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed asFloated prop as left", () => {
-        component.setProps({ asFloated: "left" })
+    it("it should render correct props when click on OTPField", () => {
+        component.find('input').at(0).simulate('change', { target: { value: 0 } })
+        component.find('input').at(0).simulate('blur')
+        component.find('input').at(0).simulate('click')
+
+        component.find('input').at(1).simulate('change', { target: { value: 1 } })
+        component.find('input').at(1).simulate('blur')
+        component.find('input').at(1).simulate('click')
+
+        component.find('input').at(2).simulate('change', { target: { value: 2 } })
+        component.find('input').at(2).simulate('blur')
+        component.find('input').at(2).simulate('click')
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed asFloated prop as right", () => {
-        component.setProps({ asFloated: "right" })
+    it("it should render correct props when focus on OTPField", () => {
+        component.find('input').at(1).simulate('focus')
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed asFloated prop as inline", () => {
-        component.setProps({ asFloated: "inline" })
+    it("it should render correct props when blur on OTPField", () => {
+        component.find('input').at(1).simulate('blur')
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly when passed asFloated prop as none", () => {
-        component.setProps({ asFloated: "none" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            accentColor: "#065254",
-            backgroundColor: "#34e5eb"
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withAnimation props", () => {
-        let animation = {
-            animation: "zoom",
-            duration: 0.5,
-            delay: 0,
-        }
-        component.setProps({ withAnimation: animation })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true })
-        expect(component.exists()).toBe(true);
-    });
 });

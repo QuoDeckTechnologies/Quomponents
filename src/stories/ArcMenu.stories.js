@@ -9,6 +9,40 @@ import Nugget_Game from "../assets/nuggets/nugget_game.png";
 import Nugget_Article from "../assets/nuggets/nugget_article.png";
 import Nugget_Feedback from "../assets/nuggets/nugget_feedback.png";
 
+const dictionary = JSON.stringify({
+  hi: {
+    arcMenu: {
+      menuContent: [
+        {
+          header: "सीखें",
+          list: [
+            { title: "अपलोड scorm", func: () => {} },
+            { title: "अपलोड pdf", func: () => {} },
+            { title: "वीडियो लिंक जोड़ें", func: () => {} },
+            { title: "qdf डेक बनाएं", func: () => {} },
+          ],
+        },
+        {
+          header: "मूल्यांकन",
+          list: [
+            { title: "सर्वेक्षण बनाएं", func: () => {} },
+            { title: "प्रश्नोत्तरी बनाएँ", func: () => {} },
+            { title: "एक खेल जोड़ें", func: () => {} },
+          ],
+        },
+        {
+          header: "पुरस्कृत",
+          list: [
+            { title: "प्रमाण पत्र दो", func: () => {} },
+            { title: "एक बैज दें", func: () => {} },
+            { title: "इनाम दो", func: () => {} },
+          ],
+        },
+      ],
+    },
+  },
+});
+
 export default {
   title: "Design System/ArcMenu/ArcMenu",
   component: ArcMenu,
@@ -32,8 +66,23 @@ export default {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
-          accentColor: "",
+          iconColor: "",
+          arcColor: "",
+          menuBackgroundColor: "",
           textColor: "",
+          headingTextColor: "",
+          accentColorPrimary: "",
+          accecntColorSecondary: "",
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -77,32 +126,67 @@ Default.args = {
   menuContent: [
     {
       header: "learning",
-      list: ["upload scorm", "upload pdf", "add video link", "create qdf deck"],
+      list: [
+        { title: "upload scorm", func: () => {} },
+        { title: "upload pdf", func: () => {} },
+        { title: "add video link", func: () => {} },
+        {
+          title: "create qdf deck",
+          func: () => {},
+        },
+      ],
     },
     {
       header: "evaluating",
-      list: ["create survey", "create quiz", "add a game"],
+      list: [
+        {
+          title: "create survey",
+          func: () => {},
+        },
+        {
+          title: "create quiz",
+          func: () => {},
+        },
+        {
+          title: "add a game",
+          func: () => {},
+        },
+      ],
     },
     {
       header: "rewarding",
-      list: ["give a certificate", "give a badge", "give a reward"],
+      list: [
+        { title: "give a certificate", func: () => {} },
+        { title: "give a badge", func: () => {} },
+        { title: "give a reward", func: () => {} },
+      ],
     },
   ],
   nuggetContent: [
-    { name: "nugget story", image: Nugget_Story },
-    { name: "nugget quiz", image: Nugget_Quiz },
-    { name: "nugget assessment", image: Nugget_Assessment },
-    { name: "nugget game", image: Nugget_Game },
-    { name: "nugget article", image: Nugget_Article },
-    { name: "nugget feedback", image: Nugget_Feedback },
+    { name: "nugget story", image: Nugget_Story, func: () => {} },
+    { name: "nugget quiz", image: Nugget_Quiz, func: () => {} },
+    { name: "nugget assessment", image: Nugget_Assessment, func: () => {} },
+    { name: "nugget game", image: Nugget_Game, func: () => {} },
+    { name: "nugget article", image: Nugget_Article, func: () => {} },
+    { name: "nugget feedback", image: Nugget_Feedback, func: () => {} },
   ],
   menuType: "close",
   arcIcon: "close",
   position: "top-right",
   withColor: {
     backgroundColor: "",
-    accentColor: "",
+    iconColor: "",
+    arcColor: "",
+    menuBackgroundColor: "",
     textColor: "",
+    headingTextColor: "",
+    accentColorPrimary: "",
+    accecntColorSecondary: "",
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "arcMenu",
+    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,
@@ -121,12 +205,12 @@ export const NuggetMenuButton = Template.bind({});
 NuggetMenuButton.args = {
   ...Default.args,
   nuggetContent: [
-    { name: "nugget story", image: Nugget_Story },
-    { name: "nugget quiz", image: Nugget_Quiz },
-    { name: "nugget assessment", image: Nugget_Assessment },
-    { name: "nugget game", image: Nugget_Game },
-    { name: "nugget article", image: Nugget_Article },
-    { name: "nugget feedback", image: Nugget_Feedback },
+    { name: "nugget story", image: Nugget_Story, func: () => {} },
+    { name: "nugget quiz", image: Nugget_Quiz, func: () => {} },
+    { name: "nugget assessment", image: Nugget_Assessment, func: () => {} },
+    { name: "nugget game", image: Nugget_Game, func: () => {} },
+    { name: "nugget article", image: Nugget_Article, func: () => {} },
+    { name: "nugget feedback", image: Nugget_Feedback, func: () => {} },
   ],
   menuContent: [],
   menuType: "nugget-menu",
@@ -152,15 +236,40 @@ MenuButton.args = {
   menuContent: [
     {
       header: "learning",
-      list: ["upload scorm", "upload pdf", "add video link", "create qdf deck"],
+      list: [
+        { title: "upload scorm", func: () => {} },
+        { title: "upload pdf", func: () => {} },
+        { title: "add video link", func: () => {} },
+        {
+          title: "create qdf deck",
+          func: () => {},
+        },
+      ],
     },
     {
       header: "evaluating",
-      list: ["create survey", "create quiz", "add a game"],
+      list: [
+        {
+          title: "create survey",
+          func: () => {},
+        },
+        {
+          title: "create quiz",
+          func: () => {},
+        },
+        {
+          title: "add a game",
+          func: () => {},
+        },
+      ],
     },
     {
       header: "rewarding",
-      list: ["give a certificate", "give a badge", "give a reward"],
+      list: [
+        { title: "give a certificate", func: () => {} },
+        { title: "give a badge", func: () => {} },
+        { title: "give a reward", func: () => {} },
+      ],
     },
   ],
   nuggetContent: [],
@@ -175,6 +284,32 @@ MenuButton.parameters = {
     },
     source: {
       code: `<ArcMenu {...${JSON.stringify(MenuButton.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Translated Menu button
+// -------------------------------------------------------------
+export const TranslatedMenuButton = Template.bind({});
+TranslatedMenuButton.args = {
+  ...MenuButton.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "arcMenu",
+    dictionary: dictionary,
+  },
+};
+TranslatedMenuButton.parameters = {
+  docs: {
+    description: {
+      story: "Use to change the language that the text appears in.",
+    },
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(
+        TranslatedMenuButton.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -391,7 +526,15 @@ const ExampleTemplateMenu = (args) => {
         menuContent={[
           {
             header: "learning",
-            list: ["google", "youtube", "github", "modal"],
+            list: [
+              { title: "upload scorm", func: () => {} },
+              { title: "upload pdf", func: () => {} },
+              { title: "add video link", func: () => {} },
+              {
+                title: "create qdf deck",
+                func: () => {},
+              },
+            ],
           },
         ]}
         menuType="menu"
@@ -446,9 +589,13 @@ const ExampleTemplateNugget = (args) => {
     >
       <ArcMenu
         nuggetContent={[
-          { name: "nugget story", image: Nugget_Story },
-          { name: "nugget quiz", image: Nugget_Quiz },
-          { name: "nugget assessment", image: Nugget_Assessment },
+          { name: "nugget story", image: Nugget_Story, func: () => {} },
+          { name: "nugget quiz", image: Nugget_Quiz, func: () => {} },
+          {
+            name: "nugget assessment",
+            image: Nugget_Assessment,
+            func: () => {},
+          },
         ]}
         menuType="nugget-menu"
         arcIcon="menu"

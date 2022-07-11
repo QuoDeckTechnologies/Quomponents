@@ -2,7 +2,12 @@
 // Import from NPM
 // -------------------------------------
 import React from 'react';
-import { shallow, mount, enzyme } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -10,23 +15,67 @@ import InputField from '../InputField/InputField.react'
 
 describe("InputField", () => {
     // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+
+    const args = {
+        target: InputField,
+        required: {
+            value: "Please input your text here",
+            name: "",
+            onSubmit: () => { }
+
+        },
+        translations: {
+            tgt: "inputField",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+                hi: {
+                    inputField: {
+                        label: "इनपुट नाम",
+                        placeholder: "विकल्प",
+                    }
+                },
+                en: {
+                    inputField: {
+                        label: "Input Name",
+                        placeholder: "Options",
+                    }
+                }
+            })
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("sizes", args);
+    hasValid("positions", args);
+    hasValid("alignment", args);
+
+    hasValid("colors", args);
+    hasValid("animations", args);
+    hasValid("translations", args);
+
+    hasValid("hidden", args);
+    hasValid("disabled", args);
+    // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component
     let onFocus = jest.fn();
     let onChange = jest.fn();
     let onBlur = jest.fn();
-    let onClick = jest.fn();
+    let onSubmit = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
         component = mount(<InputField
-            content={{
-                label: "Input Name",
-                value: "Please input your text here",
-                placeholder: "Options",
-                maxLength: 30,
-            }}
+            label="Input Name"
+            value="Please input your text here"
+            placeholder="Options"
+            maxLength={30}
+            type="text"
+            multiline={true}
             name=""
             asEmphasis="filled"
             asFloated="none"
@@ -34,14 +83,14 @@ describe("InputField", () => {
                 textColor: "",
                 accentColor: "",
                 backgroundColor: "",
+                onSelectTextColor: "",
+                onSelectAccentColor: "",
+                onSelectBackgroundColor: "",
             }}
-            withAnimation={null}
-            isDisabled={false}
-            isHidden={false}
             onFocus={onFocus}
             onChange={onChange}
             onBlur={onBlur}
-            onClick={onClick}
+            onSubmit={onSubmit}
         />);
     })
 
@@ -51,12 +100,12 @@ describe("InputField", () => {
 
     it("it should render the class of character limit the input is under limit correctly when passed asEmphasis prop as charLimited", () => {
         component.setProps({
-            content: {
-                label: "Input new Name",
-                value: "text here",
-                placeholder: "Options",
-                maxLength: 0,
-            },
+            label: "Input new Name",
+            value: "text here",
+            placeholder: "Options",
+            maxLength: 0,
+            type: "text",
+            multiline: true,
             asEmphasis: "charLimited"
         })
         expect(component.exists()).toBe(true);
@@ -64,12 +113,12 @@ describe("InputField", () => {
 
     it("it should render the class of character limit the input is under limit correctly when passed asEmphasis prop as listInput", () => {
         component.setProps({
-            content: {
-                label: "Input new Name",
-                value: "text here",
-                placeholder: "Options",
-                maxLength: 0,
-            },
+            label: "Input new Name",
+            value: "text here",
+            placeholder: "Options",
+            maxLength: 0,
+            type: "text",
+            multiline: false,
             asEmphasis: "listInput"
         })
         expect(component.exists()).toBe(true);
@@ -95,63 +144,17 @@ describe("InputField", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("it should render correctly when passed asFloated prop as left", () => {
-        component.setProps({ asFloated: "left" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asFloated prop as right", () => {
-        component.setProps({ asFloated: "right" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asFloated prop as inline", () => {
-        component.setProps({ asFloated: "inline" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asFloated prop as none", () => {
-        component.setProps({ asFloated: "none" })
-        expect(component.exists()).toBe(true);
-    });
 
     it("it should render correctly when passed withColor props", () => {
         let colors = {
-            textColor: "#fff",
-            backgroundColor: "#fff",
-            accentColor: "#FF0000",
+            textColor: "#666666",
+            accentColor: "#ffab00",
+            backgroundColor: "#ffab000d",
+            onSelectTextColor: "#666666",
+            onSelectAccentColor: "#ffab00",
+            onSelectBackgroundColor: "#ffab000d",
         }
         component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed withAnimation props", () => {
-        let animation = {
-            animation: "zoom",
-            duration: 0.5,
-            delay: 0,
-        }
-        component.setProps({ withAnimation: animation })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true })
         expect(component.exists()).toBe(true);
     });
 
@@ -184,5 +187,3 @@ describe("InputField", () => {
         expect(component.exists()).toBe(true);
     });
 });
-
-

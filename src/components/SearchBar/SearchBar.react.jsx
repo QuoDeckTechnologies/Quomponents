@@ -28,7 +28,7 @@ SearchBar.propTypes = {
     /**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+    asFloated: PropTypes.oneOf(["left", "right", "inline","none"]),
     /**
     Use to define component text size in increasing order
     */
@@ -120,7 +120,7 @@ export default function SearchBar(props) {
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
-    ) tObj = getTranslation(props.withTranslation);
+    ) tObj = getTranslation(props.withTranslation, "searchBar");
     if (tObj && props.placeHolder && props.placeHolder !== "") {
         searchPlaceHolder = tObj.placeHolder;
     }

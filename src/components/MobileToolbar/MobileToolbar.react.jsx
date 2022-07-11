@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
     getQuommons,
     getAnimation,
+    getTranslation
 } from "../../common/javascripts/helpers.js";
 import _ from "lodash";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -18,7 +19,7 @@ MobileToolbar.propTypes = {
     /**
     Use to define MobileToolbar's value
     */
-    label: PropTypes.string,
+    title: PropTypes.string,
 
     content: PropTypes.arrayOf(
         PropTypes.shape({
@@ -69,6 +70,14 @@ MobileToolbar.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -90,7 +99,7 @@ MobileToolbar.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    label: "Edit Mode",
+    title: "Edit Mode",
     content: [],
     asEmphasis: "default",
     //=======================================
@@ -100,8 +109,9 @@ MobileToolbar.defaultProps = {
 
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
 
-    isCircular: true,
+    isCircular: false,
     isHidden: false,
     isDisabled: false,
 
@@ -141,9 +151,24 @@ export default function MobileToolbar(props) {
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor) : {};
     //-------------------------------------------------------------------
-    // 3. Use to set styling for MobileToolbar.
+    // 3. Get animation of the component
     //-------------------------------------------------------------------
-    const { asEmphasis, content, label } = props
+    let labelContent = Object.assign({}, props.withLabel);
+    let iconLabel;
+    let tObj;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        iconLabel = tObj?.content;
+        labelContent.content = tObj?.label;
+    }
+    //-------------------------------------------------------------------
+    // 4. Use to set styling for MobileToolbar.
+    //-------------------------------------------------------------------
+    const { asEmphasis, content, title } = props
     const getInput = (asEmphasis) => {
         if (asEmphasis === "default") {
             return (
@@ -157,7 +182,7 @@ export default function MobileToolbar(props) {
                                     content={{ link: item.link }}
                                     withIcon={{ icon: item.icon }}
                                     withLabel={{
-                                        content: item.label,
+                                        content: tObj ? iconLabel[index]["label"] : item.label,
                                         format: item.format,
                                     }}
                                     onClick={() => {
@@ -177,16 +202,17 @@ export default function MobileToolbar(props) {
                         position="bottom-left" arcIcon="close"
                         onClick={props.onClick}
                     />
-                    <h2 className="qui-editing-title" style={colors.textColors}>{label}</h2>
+                    <h2 className="qui-editing-title" style={colors.textColors}>{tObj?.title || title}</h2>
                 </div>
             )
         }
     }
     //-------------------------------------------------------------------
-    // 4. Get animation of the component
+    // 5. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     // ========================= Render Function =================================
+
     return (
         <motion.div
             initial={animate.from}

@@ -194,7 +194,7 @@ export default function AmplayfierDateBlock(props) {
   //-------------------------------------------------------------------
   // 8. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
 
@@ -211,7 +211,7 @@ export default function AmplayfierDateBlock(props) {
             color: withColor?.textColor,
           }}
         >
-          <h2>{getDate()}</h2>
+          <h5 className="qui-amplayfier-date-block-title">{getDate()}</h5>
         </div>
       </AmplayfierDrawerRect>
     </motion.div>

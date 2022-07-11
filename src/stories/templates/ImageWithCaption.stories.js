@@ -1,6 +1,12 @@
 import React from "react";
 import ImageWithCaption from "../../components/Templates/ImageWithCaption/ImageWithCaption.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        imageWithCaption: { button: "जारी रखें" },
+    },
+});
+
 export default {
     title: "Design System/Templates/ImageWithCaption/ImageWithCaption",
     component: ImageWithCaption,
@@ -52,6 +58,16 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -139,6 +155,11 @@ Default.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "imageWithCaption",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -256,8 +277,38 @@ ImagewithcaptionWithHeaderImageAndBackgroundImage.args = {
 };
 ImagewithcaptionWithHeaderImageAndBackgroundImage.parameters = {
     docs: {
+        description: {
+            story: "We can display the header image and background image in ImageWithCaption",
+        },
         source: {
             code: `<ImageWithCaption {...${JSON.stringify(ImagewithcaptionWithHeaderImageAndBackgroundImage.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Translated ImageWithCation
+// -------------------------------------------------------------
+export const TranslatedImageWithCation = Template.bind({});
+TranslatedImageWithCation.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "imageWithCaption",
+        dictionary: dictionary,
+    },
+};
+TranslatedImageWithCation.parameters = {
+    docs: {
+        description: {
+            story: "Use to change the language that the text appears in ImageWIthCaption.",
+        },
+        source: {
+            code: `<ImageWithCation {...${JSON.stringify(
+                TranslatedImageWithCation.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };

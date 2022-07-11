@@ -173,8 +173,6 @@ export default function EarnCard(props) {
   // 4. Get translation of the component
   //-------------------------------------------------------------------
   let labelContent = {
-    title: content?.title,
-    description: content?.description,
     dates: {
       end_date: content?.dates?.end_date,
       start_date: content?.dates?.start_date,
@@ -189,15 +187,13 @@ export default function EarnCard(props) {
   ) {
     tObj = getTranslation(props.withTranslation);
     if (labelContent && tObj) {
-      labelContent.title = tObj.title;
-      labelContent.description = tObj.description;
       labelContent.dates = Object.assign({}, tObj.dates);
     }
   }
   //-------------------------------------------------------------------
   // 5. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
   return (
@@ -239,11 +235,11 @@ export default function EarnCard(props) {
       </div>
       <div className={`qui-right-side ${quommonClasses.childClasses}`}>
         <div className="qui-course-header" style={colors.textColors}>
-          <h1>{labelContent?.title}</h1>
+          <h1>{content?.title}</h1>
           <div className="qui-course-banner" style={colors.bannerColors}></div>
         </div>
         <div className="qui-course-description">
-          <h3>{labelContent?.description}</h3>
+          <h3>{content?.description}</h3>
         </div>
     </div>
     </motion.div>

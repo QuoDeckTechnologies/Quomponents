@@ -215,10 +215,12 @@ export default function Diptych(props) {
         }}
       >
         <div className="qui qui-diptych-presenter-title" >
-          <TextBlock {...props}
-            content={data?.title}
-            asFloated="left"
-            withColor={textBlockColors} />
+          <h4>
+            <TextBlock {...props}
+              content={data?.title}
+              asFloated="left"
+              withColor={textBlockColors} />
+          </h4>
         </div>
         <div className="qui qui-diptych-presenter-sub-title qt-sm">
           <TextBlock {...props}
@@ -257,7 +259,7 @@ export default function Diptych(props) {
   //-------------------------------------------------------------------
   //  Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   //-------------------------------------------------------------------
   // Function to set background for presenter view

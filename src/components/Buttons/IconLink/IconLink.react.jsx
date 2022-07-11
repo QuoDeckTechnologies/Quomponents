@@ -15,6 +15,10 @@ IconLink.propTypes = {
     // Component Specific props
     //=======================================
     /**
+    Set content in iconLink 
+    */
+    link: PropTypes.string,
+    /**
     Set action emphasis in increasing order 
     */
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
@@ -121,6 +125,7 @@ IconLink.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
+    link: "",
     asEmphasis: "text",
     isCircular: false,
     //=======================================
@@ -209,7 +214,7 @@ export default function IconLink(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props);
+    let quommonClasses = getQuommons(props, "icon-link");
     if (props.isCircular)
         quommonClasses.childClasses += ` is-circular`;
 
@@ -238,7 +243,7 @@ export default function IconLink(props) {
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     // ========================= Render Function =================================
 
@@ -251,7 +256,7 @@ export default function IconLink(props) {
             onMouseLeave={() => setHovered(false)}
             onMouseDown={() => setTilt(true)}
             onMouseUp={() => setTilt(false)}
-        >   <a href={props.content?.link} className="qui-link">
+        >   <a className="qui-iconlink-anchor" href={props.link}>
                 <div
                     className={`qui-btn ${quommonClasses.childClasses} qui-iconlink`}
                     title={getLabel(labelContent, "popover")}
@@ -259,13 +264,13 @@ export default function IconLink(props) {
                 >
                     <div
                         className={`qui-btn qui-icon-label emp-text`} style={Object.assign({}, colors.lableHandle)}>
-                        {getLabel(labelContent, "label")}
+                        <div className="qui qt-utn">{getLabel(labelContent, "label")}</div>
                     </div>
                     <i onClick={props.onClick} className={`${props.withIcon?.icon} qui-iconlink-icon  ${tilt ? 'tilt' : ''}`}>
                     </i>
                     <div
                         className={`qui-btn qui-icon-caption emp-text`} style={Object.assign({}, colors.lableHandle)}>
-                        {getLabel(labelContent, "caption")}
+                        <div className="qui qt-utn">{getLabel(labelContent, "caption")}</div>
                     </div>
                 </div>
             </a >

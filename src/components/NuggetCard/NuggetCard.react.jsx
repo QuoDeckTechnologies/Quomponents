@@ -84,7 +84,7 @@ NuggetCard.propTypes = {
 	/**
 	Use to float the component in parent container
 	*/
-	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+	asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
 	/**
 	Use to show/hide the component
 	*/
@@ -284,18 +284,7 @@ export default function NuggetCard(props) {
 				<div className="qui-nugget-card-footer">
 					<div className={`qui-nugget-card-arc-menu`}>
 						<ArcMenu
-							menuContent={[
-								{
-									list: [
-										"EDIT DETAILS",
-										"EDIT CONTENT",
-										"DESIGN NUGGET",
-										"PUBLISH NUGGET",
-										"VIEW ANALYTICS",
-										"DELETE NUGGET",
-									],
-								},
-							]}
+							menuContent={props.content?.menuContent}
 							menuType="menu"
 							arcIcon="menu"
 							position="bottom-left"

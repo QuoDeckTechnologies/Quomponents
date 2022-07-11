@@ -24,16 +24,6 @@ CertificateCard.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to define component header and icon color
-    */
-  asVariant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "error",
-  ]),
-  /**
     Use to define component text and icon size in increasing order
     */
   asSize: PropTypes.oneOf([
@@ -102,7 +92,6 @@ CertificateCard.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asVariant: "primary",
 
   withColor: null,
   withIcon: null,
@@ -145,7 +134,6 @@ export default function CertificateCard(props) {
   //-------------------------------------------------------------------
   // 5. Get translation of the component
   //-------------------------------------------------------------------
-  let labelContent = Object.assign({}, props.withLabel);
   let tObj = null;
 
   if (
@@ -154,7 +142,6 @@ export default function CertificateCard(props) {
     props.withTranslation.lang !== "en"
   ) {
     tObj = getTranslation(props.withTranslation);
-    if (labelContent && tObj?.label) labelContent.content = tObj.label;
   }
   //-------------------------------------------------------------------
   // 6. Get Status Card of the component
@@ -165,7 +152,7 @@ export default function CertificateCard(props) {
     if (status === "not started") iconClass = "far fa-circle";
     if (status === "completed") iconClass = "fas fa-check-circle";
 
-    if (status === "completed" && certificate?.icon !== "") {
+    if (status === "completed" && certificate?.icon !== "" && certificate?.icon !== undefined) {
       return (
         <>
           {certificate?.icon && (
@@ -180,14 +167,10 @@ export default function CertificateCard(props) {
     } else {
       return (
         <div className="qui-status">
-          <div className={`qui-statusInner ${quommonClasses.childClasses}`}>
-            {tObj ? (
-              <p>{tObj?.text[status.replace(" ", "")]}</p>
-            ) : (
-              <p>{status.toUpperCase()}</p>
-            )}
+          <div className={`qui-statusInner`}>
+            <p style={headerColors}>{tObj?.text[status.replace(" ", "")] || status.toUpperCase()}</p>
             <i
-              className={`${iconClass} variant-${props.asVariant}-text`}
+              className={`${iconClass}`}
               style={accentColors}
             ></i>
           </div>
@@ -198,7 +181,7 @@ export default function CertificateCard(props) {
   //-------------------------------------------------------------------
   // 7. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
   return (
@@ -207,17 +190,17 @@ export default function CertificateCard(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <div className="qui-certificate-card">
+      <div className={`qui-certificate-card  ${quommonClasses.childClasses}`}>
         <div className="qui-header">
           <div
-            className={`qui-colorBanner qui-btn ${quommonClasses.childClasses}`}
+            className={`qui-colorBanner`}
             style={bannerColors}
           ></div>
           <div
-            className={`qui-courseHeader variant-${props.asVariant}-text`}
+            className={`qui-courseHeader`}
             style={headerColors}
           >
-            <p>{labelContent?.content}</p>
+            <p>{props.withLabel?.content}</p>
           </div>
         </div>
         <div className="qui-imageCard">

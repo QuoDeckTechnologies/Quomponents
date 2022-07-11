@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-// import OtpInput from "react-otp-input";
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -22,6 +21,17 @@ OTPFields.propTypes = {
     // Quommon props
     //=======================================
     /**
+    Use to define component size in increasing order
+    */
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
+    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
@@ -29,8 +39,11 @@ OTPFields.propTypes = {
     Use to set Colors
     */
     withColor: PropTypes.shape({
+        textColor: PropTypes.string,
         accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
+        focusAccentColor: PropTypes.string,
+        focusBackgroundColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -71,6 +84,7 @@ OTPFields.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
+    asSize: "normal",
     asFloated: "none",
 
     withColor: null,
@@ -92,30 +106,49 @@ export default function OTPFields(props) {
     //-------------------------------------------------------------------
     let { numFields, withColor } = props;
     //-------------------------------------------------------------------
-    // 1. Set the classes
+    // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "otp-fields");
     //-------------------------------------------------------------------
-    // 2.Declaration of OTPFields's value
+    // 3.Declaration of OTPFields's value
     //-------------------------------------------------------------------
-    const [otpValue, setOtpValue] = useState(null);
-
-    let handleChange = (value) => {
-        setOtpValue(value)
-        props.onClick(value);
+    const [otpValue, setOtpValue] = useState(new Array(numFields).fill(""));
+    const re = new RegExp(/^$|^[0-9]$/)
+    const handleChange = (element, index) => {
+        if (re.test(element.value)) {
+            setOtpValue([...otpValue.map((d, idx) => (idx === index ? element.value : d))]);
+        }
+        //Focus next input
+        if (element.nextSibling) {
+            element.nextSibling.focus();
+        }
     }
+
+    useEffect(() => {
+        setOtpValue(new Array(numFields).fill(""))
+    }, [numFields])
     //-------------------------------------------------------------------
-    // 3. Use to set styling for OTPFields.
+    // 4. Use to set styling for OTPFields.
     //-------------------------------------------------------------------
-    let otpFieldsFocusStyle = {
-        outline: 'none',
-        borderBottom: `0.2em solid ${withColor?.accentColor}`,
-        backgroundColor: `${withColor?.backgroundColor}`
-    };
+    let changeFocus = (element) => {
+        element.select()
+        element.style.borderColor = withColor?.focusAccentColor
+        element.style.backgroundColor = withColor?.focusBackgroundColor
+    }
+
+    let changeBlur = (element) => {
+        element.style.borderColor = withColor?.accentColor
+        element.style.backgroundColor = withColor?.backgroundColor
+
+        let otpLength = otpValue.join("")
+        if (numFields === otpLength.length) {
+            props.onClick(otpLength)
+        }
+    }
     //-------------------------------------------------------------------
     // 5. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -124,16 +157,28 @@ export default function OTPFields(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-otp-fields-container ${quommonClasses.childClasses}`}>
-                {/* <OtpInput
-                    value={otpValue}
-                    onChange={handleChange}
-                    numInputs={numFields}
-                    containerStyle="qui-otp-fields-otp-input-container-style"
-                    inputStyle="qui-otp-fields-otp-input-style"
-                    isInputNum={true}
-                    shouldAutoFocus={true}
-                    focusStyle={otpFieldsFocusStyle}
-                /> */}
+                {otpValue.map((data, index) => {
+                    return (
+                        <input
+                            className="qui-otp-fields-otp-input-style"
+                            type="number"
+                            min="0"
+                            max="9"
+                            name="otp"
+                            maxLength="1"
+                            key={index}
+                            value={data}
+                            onChange={e => handleChange(e.target, index)}
+                            onFocus={(e) => changeFocus(e.target)}
+                            onBlur={(e) => changeBlur(e.target)}
+                            style={{
+                                color: withColor?.textColor,
+                                backgroundColor: withColor?.backgroundColor,
+                                borderBottom: `3px solid ${withColor?.accentColor}`
+                            }}
+                        />
+                    );
+                })}
             </div>
         </motion.div>
     );

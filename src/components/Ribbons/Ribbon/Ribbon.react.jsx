@@ -24,7 +24,7 @@ Ribbon.propTypes = {
   /**
     Use to float the component in parent container
     */
-  asFloated: PropTypes.oneOf(["left", "right"]),
+  asFloated: PropTypes.oneOf(["left", "right", "none"]),
 
   /**
     Use to override component colors and behavior
@@ -89,7 +89,7 @@ export default function Ribbon(props) {
     props.withTranslation.lang !== "en"
   ) {
     let tobj = getTranslation(props.withTranslation, "ribbon");
-    ribbonText = tobj[props.asEmphasis];
+    ribbonText = tobj?.[props.asEmphasis] || props.asEmphasis;
   }
 
   // ========================= Render Function =================================
