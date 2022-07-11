@@ -14,9 +14,9 @@ OTPFields.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Use to define number of Fields in OTPFields
+    Use to define number of Inputs in OTPFields
     */
-    numFields: PropTypes.number.isRequired,
+    numInputs: PropTypes.number.isRequired,
     //=======================================
     // Quommon props
     //=======================================
@@ -71,6 +71,10 @@ OTPFields.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
+    Use to toggle the component taking the full width of the parent container
+    */
+    isFluid: PropTypes.bool,
+    /**
     OTPFields component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
@@ -80,7 +84,7 @@ OTPFields.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    numFields: 5,
+    numInputs: 5,
     //=======================================
     // Quommon props
     //=======================================
@@ -92,6 +96,7 @@ OTPFields.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
+    isFluid: false,
 };
 /**
 ## Notes
@@ -104,7 +109,7 @@ export default function OTPFields(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring props
     //-------------------------------------------------------------------
-    let { numFields, withColor } = props;
+    let { numInputs, withColor } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -112,7 +117,7 @@ export default function OTPFields(props) {
     //-------------------------------------------------------------------
     // 3.Declaration of OTPFields's value
     //-------------------------------------------------------------------
-    const [otpValue, setOtpValue] = useState(new Array(numFields).fill(""));
+    const [otpValue, setOtpValue] = useState(new Array(numInputs).fill(""));
     const re = new RegExp(/^$|^[0-9]$/)
     const handleChange = (element, index) => {
         if (re.test(element.value)) {
@@ -125,8 +130,8 @@ export default function OTPFields(props) {
     }
 
     useEffect(() => {
-        setOtpValue(new Array(numFields).fill(""))
-    }, [numFields])
+        setOtpValue(new Array(numInputs).fill(""))
+    }, [numInputs])
     //-------------------------------------------------------------------
     // 4. Use to set styling for OTPFields.
     //-------------------------------------------------------------------
@@ -141,7 +146,7 @@ export default function OTPFields(props) {
         element.style.backgroundColor = withColor?.backgroundColor
 
         let otpLength = otpValue.join("")
-        if (numFields === otpLength.length) {
+        if (numInputs === otpLength.length) {
             props.onClick(otpLength)
         }
     }

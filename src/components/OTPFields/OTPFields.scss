@@ -3,6 +3,9 @@
 /* ================================================= */
 .qui .qui-otp-fields-container {
   width: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   .qui-otp-fields-otp-input-style {
     width: 1.5em;
     height: 1em;

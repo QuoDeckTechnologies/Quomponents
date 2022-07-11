@@ -5,7 +5,7 @@ export default {
     title: "Design System/OTPFields/OTPFields",
     component: OTPFields,
     argTypes: {
-        numFields: 5,
+        numInputs: 5,
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -54,6 +54,12 @@ export default {
                 defaultValue: false,
             },
         },
+        isFluid: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
         onClick: {
             table: {
                 category: "Events",
@@ -84,7 +90,7 @@ export default {
 const Template = (args) => <OTPFields {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    numFields: 5,
+    numInputs: 5,
     asSize: "normal",
     asFloated: "inline",
     withColor: {
@@ -101,6 +107,7 @@ Default.args = {
     },
     isHidden: false,
     isDisabled: false,
+    isFluid: false,
 };
 Default.parameters = {
     docs: {

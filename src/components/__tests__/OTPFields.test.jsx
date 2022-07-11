@@ -19,7 +19,7 @@ describe("OTPFields", () => {
     const args = {
         target: OTPFields,
         required: {
-            numFields: 5,
+            numInputs: 5,
             onClick: () => { },
         }
     };
@@ -34,6 +34,7 @@ describe("OTPFields", () => {
 
     hasValid("hidden", args);
     hasValid("disabled", args);
+    hasValid("fluid", args);
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -47,7 +48,7 @@ describe("OTPFields", () => {
         jest.resetAllMocks();
         component = mount(
             <OTPFields
-                numFields={3}
+                numInputs={3}
                 asSize="normal"
                 asFloated="none"
                 withColor={null}
