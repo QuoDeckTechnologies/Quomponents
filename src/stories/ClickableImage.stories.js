@@ -7,7 +7,14 @@ export default {
   component: ClickableImage,
   argTypes: {
     image: "",
-    isActive: false,
+    active: false,
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -65,6 +72,7 @@ const Template = (args) => <ClickableImage {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   image: "",
+  asVariant: "primary",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
@@ -76,7 +84,7 @@ Default.args = {
   isDisabled: false,
   isHidden: false,
   isCircular: false,
-  isActive: false,
+  active: false,
 };
 Default.parameters = {
   docs: {
@@ -166,7 +174,7 @@ const SlideTemplate = (args) => {
             <ClickableImage
               image={image}
               onClick={() => args?.onClick(index)}
-              isActive={args?.isActive}
+              active={args?.active}
               isCircular={args?.isCircular}
               withColor={args?.withColor}
             />
@@ -179,13 +187,13 @@ const SlideTemplate = (args) => {
 export const WithSlide = SlideTemplate.bind({});
 WithSlide.args = {
   ...Default.args,
-    images: [
-      "https://images.unsplash.com/photo-1647339490516-b835c0408b71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "https://images.unsplash.com/photo-1648285191822-1b02b816cd78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
-      "https://images.unsplash.com/photo-1648138754702-de8f199972b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
-    ],
+  images: [
+    "https://images.unsplash.com/photo-1647339490516-b835c0408b71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    "https://images.unsplash.com/photo-1648285191822-1b02b816cd78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
+    "https://images.unsplash.com/photo-1648138754702-de8f199972b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+  ],
   isCircular: false,
-  isActive: false,
+  active: false,
   withColor: {
     borderColor: "#fcbf49",
   },
@@ -217,9 +225,9 @@ const LightBoxTemplate = (args) => {
       {!open && (
         <div style={{ width: "15em" }}>
           <ClickableImage
-            image= {args.image }
+            image={args.image}
             onClick={() => setOpen(true)}
-            isActive={args?.isActive}
+            active={args?.active}
             isCircular={args?.isCircular}
             withColor={args?.withColor}
           />
@@ -253,9 +261,9 @@ export const WithLighBox = LightBoxTemplate.bind({});
 WithLighBox.args = {
   ...Default.args,
   image:
-      "https://images.unsplash.com/photo-1647339490516-b835c0408b71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    "https://images.unsplash.com/photo-1647339490516-b835c0408b71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
   isCircular: false,
-  isActive: false,
+  active: false,
   withColor: {
     borderColor: "#fcbf49",
   },

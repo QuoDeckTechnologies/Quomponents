@@ -18,23 +18,23 @@ ImageUploadModal.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    Use to define if modal is open
-    */
+  Use to define if modal is open
+  */
   isOpen: PropTypes.bool.isRequired,
   /**
-    Use to define aspect ratio of the image editor
-    */
+  Use to define aspect ratio of the image editor
+  */
   aspectRatio: PropTypes.number,
   /**
-    Use to provide initial image to image editor
-    */
+  Use to provide initial image to image editor
+  */
   image: PropTypes.string,
   //=======================================
   // Quommon props
   //=======================================
   /**
-    Use to override component colors and behavior
-    */
+  Use to override component colors and behavior
+  */
   withColor: PropTypes.shape({
     arcButtonColor: PropTypes.string,
     arcIconColor: PropTypes.string,
@@ -45,8 +45,8 @@ ImageUploadModal.propTypes = {
     sliderColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -62,27 +62,23 @@ ImageUploadModal.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    Use to toggle the component taking the full width of the parent container
-    */
-  isFluid: PropTypes.bool,
-  /**
-    imageUploadModal component must have the onClick function passed as props
-    */
+  ImageUploadModal component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
   /**
-  imageUploadModal component should have the onChange function passed as props
+  ImageUploadModal component should have the onChange function passed as props
   */
   onChange: PropTypes.func,
 };
@@ -101,7 +97,6 @@ ImageUploadModal.defaultProps = {
   withAnimation: null,
   withTranslation: null,
   isHidden: false,
-  isFluid: false,
 };
 /**
 ## Notes
@@ -292,7 +287,15 @@ export default function ImageUploadModal(props) {
               />
             )}
           </div>
-          <Slider initialValue={10} onClick={(value) => setZoom(value)} />
+          <Slider
+            initialValue={10}
+            withColor={{
+              backgroundColor: "#FFBF00",
+              trackColor: "#FFBF00",
+              accentColor:'#FFBF0026',
+            }}
+            onClick={(value) => setZoom(value)}
+          />
           <div className="qui-image-upload-buttons">
             <Button
               asSize="normal"

@@ -13,6 +13,16 @@ export default {
         category: "as-Flags",
       },
     },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          backgroundColor: "",
+          trackColor: "",
+          accentColor: "",
+        },
+      },
+    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -67,11 +77,15 @@ const Template = (args) => <Slider {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   initialValue: 10,
-  asVariant: "warning",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
+  },
+  withColor: {
+    backgroundColor: "",
+    trackColor: "",
+    accentColor: "",
   },
   isDisabled: false,
   isHidden: false,
@@ -80,6 +94,33 @@ Default.parameters = {
   docs: {
     source: {
       code: `<Slider {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+
+// -------------------------------------------------------------
+// Colored Slider
+// -------------------------------------------------------------
+export const ColoredSlider = Template.bind({});
+ColoredSlider.args = {
+  initialValue: 10,
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  withColor: {
+    backgroundColor: "#00153E",
+    trackColor: "#00153E",
+    accentColor: "#00153E26",
+  },
+  isDisabled: false,
+  isHidden: false,
+};
+ColoredSlider.parameters = {
+  docs: {
+    source: {
+      code: `<Slider {...${JSON.stringify(ColoredSlider.args, null, 2)}}/>`,
     },
   },
 };

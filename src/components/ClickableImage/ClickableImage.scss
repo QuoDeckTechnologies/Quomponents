@@ -7,6 +7,15 @@
 
 .qui .qui-active-image-click {
   border: 0.5em solid;
+  .variant-primary {
+    border-color: #ed6e6e;
+  }
+  .variant-secondary {
+    border-color: #3e587a;
+  }
+  .variant-warning {
+    border-color: #ffbf00;
+  }
 }
 
 .qui .qui-image-clickable {

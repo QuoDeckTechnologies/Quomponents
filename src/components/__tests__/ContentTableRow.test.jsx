@@ -1,8 +1,9 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from "enzyme";
+import { mount } from "enzyme";
 import { fireEvent, render, screen } from "@testing-library/react";
+import ActionMenu from "../ActionMenu/ActionMenu.react";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -13,7 +14,6 @@ import { hasValid } from "./common";
 import ContentTableRow from "../ContentTableRow/ContentTableRow.react";
 
 describe("ContentTableRow", () => {
-
   // -------------------------------------
   // Run common tests
   // -------------------------------------
@@ -24,14 +24,11 @@ describe("ContentTableRow", () => {
       content: {
         name: "dummy file-name.pdf",
         readerType: "videck",
-        menuData: [
-          {
-            title: "Open Deck",
-            icon: "fas fa-book-open",
-          },
-        ],
       },
-      onClick: () => { },
+      onChange: () => {},
+      onContentUpdate: () => {},
+      onChecked: () => {},
+      onUnchecked: () => {},
     },
     translations: {
       tgt: "contentTableRow",
@@ -47,17 +44,15 @@ describe("ContentTableRow", () => {
             ],
           },
         },
-      })
+      }),
     },
   };
 
   hasValid("defaults", args);
-  hasValid("colors", args);
   hasValid("animations", args);
+  hasValid("padding", args);
   hasValid("translations", args);
-
-  hasValid("hidden", args);
-  hasValid("disabled", args);  // -------------------------------------
+  // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
@@ -68,14 +63,11 @@ describe("ContentTableRow", () => {
         content={{
           name: "dummy file-name.pdf",
           readerType: "videck",
-          menuData: [
-            {
-              title: "Open Deck",
-              icon: "fas fa-book-open",
-            },
-          ],
         }}
-        onClick={() => { }}
+        onChange={() => {}}
+        onContentUpdate={() => {}}
+        onChecked={() => {}}
+        onUnchecked={() => {}}
       />
     );
   });
@@ -218,8 +210,63 @@ describe("ContentTableRow", () => {
           readerType: "videck",
         }}
         withAnimation={null}
-        onClick={() => { }}
-      />
+        onChange={() => {}}
+        onContentUpdate={() => {}}
+        onChecked={() => {}}
+        onUnchecked={() => {}}
+      >
+        <ActionMenu
+          content={[
+            {
+              title: "Open Deck",
+              icon: "fas fa-book-open",
+              func: () => {},
+            },
+            {
+              title: "Edit Deck",
+              icon: "fas fa-edit",
+              func: () => {},
+            },
+            {
+              title: "Move Deck Up",
+              icon: "fas fa-chevron-up",
+              func: () => {},
+            },
+            {
+              title: "Move Deck Down",
+              icon: "fas fa-chevron-down",
+              func: () => {},
+            },
+            {
+              title: "Move to Topic",
+              icon: "fas fa-retweet",
+              func: () => {},
+            },
+            {
+              title: "Unpublish Deck",
+              icon: "fas fa-eye-slash",
+              func: () => {},
+            },
+            {
+              title: "Delete Deck",
+              icon: "fas fa-trash-alt",
+              func: () => {},
+            },
+          ]}
+          withColor={{
+            backgroundColor: "#ffffff",
+            textColor: "",
+            accentColor: "",
+          }}
+          withAnimation={{
+            animation: "slideDown",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isDisabled={false}
+          isHidden={false}
+        />
+      </ContentTableRow>
     );
     const button = screen.getByRole("button");
     const input = screen.getByRole("textbox");

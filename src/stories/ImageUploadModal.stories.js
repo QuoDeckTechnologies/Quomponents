@@ -67,12 +67,6 @@ export default {
         defaultValue: false,
       },
     },
-    isFluid: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
     onClick: {
       table: {
         category: "Events",
@@ -127,7 +121,6 @@ Default.args = {
     sliderColor: "",
   },
   isHidden: false,
-  isFluid: false,
 };
 Default.parameters = {
   docs: {

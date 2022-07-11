@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
+import _ from "lodash";
 import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -13,54 +14,9 @@ EnrollmentRuleRow.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  EnrollmentRuleRow will take new rule from enrollmentRule props.
+  EnrollmentRuleRow will take criteria from criteria props.
   */
-  enrollmentRule: PropTypes.shape({}),
-  /**
-  EnrollmentRuleRow will take existing rules data from allRules props.
-  */
-  allRules: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string,
-      criteria: PropTypes.shape({}),
-    })
-  ),
-  //=======================================
-  // Quommon props
-  //=======================================
-  /**
-  Use to override component colors
-  */
-  withColor: PropTypes.shape({
-    backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
-    textColor: PropTypes.string,
-  }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
-  /**
-  Use to enable/disable the component
-  */
-  isDisabled: PropTypes.bool,
-  /**
-  Use to show/hide the component
-  */
-  isHidden: PropTypes.bool,
+  criteria: PropTypes.object,
   /**
   EnrollmentRuleRow component must have the onRunRule function passed as props
   */
@@ -75,15 +31,7 @@ EnrollmentRuleRow.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  enrollmentRule: {},
-  allRules: [],
-  //=======================================
-  // Quommon props
-  //=======================================
-  withColor: null,
-  withAnimation: null,
-  isDisabled: false,
-  isHidden: false,
+  criteria: {},
 };
 /**
 ## Notes
@@ -96,39 +44,13 @@ export default function EnrollmentRuleRow(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring enrollmentRule, allRules prop
   //-------------------------------------------------------------------
-  const { enrollmentRule, allRules } = props;
+  const { criteria } = props;
   //-------------------------------------------------------------------
-  // 2. Defining variables and states
-  //-------------------------------------------------------------------
-  const [allRulesArr, setAllRulesArr] = useState(allRules);
-  //-------------------------------------------------------------------
-  // 3. useEffect hook to mimic submit of enrollment rules
-  //-------------------------------------------------------------------
-  useEffect(() => {
-    let criteria = enrollmentRule;
-    let temp = {};
-    let allKeys;
-    let keys;
-    if (criteria) {
-      allKeys = Object.keys(criteria);
-      keys = allKeys.filter((key) => {
-        return criteria[key] !== "";
-      });
-    }
-    if (keys?.length !== 0) {
-      keys?.forEach((key) => {
-        temp[key] = criteria[key];
-      });
-      let newRule = { criteria: temp };
-      setAllRulesArr((prevState) => [...prevState, newRule]);
-    }
-  }, [enrollmentRule]);
-  //-------------------------------------------------------------------
-  // 4. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "enrollment-rule-row");
   //-------------------------------------------------------------------
-  // 5. Get animation of the component
+  // 3. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props);
 
@@ -140,48 +62,37 @@ export default function EnrollmentRuleRow(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      {allRulesArr &&
-        allRulesArr.map((item, index) => {
-          let data = Object.values(item.criteria);
-          if (data.length) {
+      <div
+        className="qui-enrollment-list-element"
+        style={{ backgroundColor: props.withColor?.backgroundColor }}
+      >
+        <div className="qui-enrollment-rule-criteria-container">
+          {_.map(criteria && Object.values(criteria), (element, index) => {
             return (
-              <div
-                className="qui-enrollment-list-element"
+              <p
+                className="qui-enrollment-rule"
                 key={index}
-                style={{ backgroundColor: props.withColor?.backgroundColor }}
+                style={{
+                  backgroundColor: props.withColor?.accentColor,
+                  color: props.withColor?.textColor,
+                }}
               >
-                <div className="qui-enrollment-rules">
-                  {data.map((item, index) => {
-                    return (
-                      <p
-                        className="qui-enrollment-rule"
-                        key={index}
-                        style={{
-                          backgroundColor: props.withColor?.accentColor,
-                          color: props.withColor?.textColor,
-                        }}
-                      >
-                        {item}
-                      </p>
-                    );
-                  })}
-                </div>
-                <div className="qui-enrollment-icons">
-                  <i
-                    className="fas fa-play"
-                    onClick={(e) => props.onRunRule(allRulesArr)}
-                  ></i>
-                  <i
-                    className="fas fa-times"
-                    onClick={(e) => props.onRemoveRule(item)}
-                  ></i>
-                </div>
-              </div>
+                {element}
+              </p>
             );
-          } else {
-            return null;
-          }
-        })}
+          })}
+        </div>
+        <div className="qui-enrollment-icons">
+          <i
+            className="fas fa-play"
+            onClick={(e) => props.onRunRule(criteria)}
+          ></i>
+          <i
+            className="fas fa-times"
+            onClick={(e) => props.onRemoveRule(criteria)}
+          ></i>
+        </div>
+      </div>
     </motion.div>
   );
 }

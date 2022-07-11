@@ -21,15 +21,13 @@ Slider.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to define standard component type
+    Use to override component colors and behavior
     */
-  asVariant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "error",
-  ]),
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    trackColor: PropTypes.string,
+    accentColor: PropTypes.string,
+  }),
   /**
     Use to define the entry animation of the component
     */
@@ -85,7 +83,7 @@ export default function Slider(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { initialValue, onClick } = props;
+  const { withColor, initialValue, onClick } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -107,8 +105,32 @@ export default function Slider(props) {
         <SliderPackage
           min={0}
           max={100}
+          sx={{
+            "& .MuiSlider-track": {
+              color: withColor?.backgroundColor
+                ? withColor?.backgroundColor
+                : "#FFBF00",
+            },
+            "& .MuiSlider-thumb": {
+              color: withColor?.backgroundColor
+                ? withColor?.backgroundColor
+                : "#FFBF00",
+              "&:hover": {
+                boxShadow: `0px 0px 0px 8px ${
+                  withColor?.accentColor ? withColor?.accentColor : "#FFBF0026"
+                }`,
+              },
+              "&.Mui-focusVisible": {
+                boxShadow: `0px 0px 0px 8px ${
+                  withColor?.accentColor ? withColor?.accentColor : "#FFBF0026"
+                }`,
+              },
+            },
+            "& .MuiSlider-rail": {
+              color: withColor?.trackColor ? withColor?.trackColor : "#FFBF00",
+            },
+          }}
           defaultValue={initialValue}
-          color={props.asVariant}
           onChange={(e) => {
             onClick(e.target.value);
           }}
