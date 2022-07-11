@@ -22,7 +22,7 @@ Button.propTypes = {
     /**
     Button Text has to be in content or passed as children to the component. Is optional if you only want an icon.
     */
-    content: PropTypes.string.isRequired,
+    content: PropTypes.string,
     /**
     Set action emphasis in increasing order 
     */
