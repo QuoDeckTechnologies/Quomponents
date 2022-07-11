@@ -34,7 +34,6 @@ describe("IconListItem", () => {
     hasValid("animations", args);
 
     hasValid("hidden", args);
-
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -63,14 +62,6 @@ describe("IconListItem", () => {
                 }}
             />
         );
-    });
-
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            textColor: "#ffffff",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
     });
 
     it("should render correctly when passed asEmphasis prop as conversation", () => {
