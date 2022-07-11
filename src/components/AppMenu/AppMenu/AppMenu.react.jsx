@@ -1,9 +1,11 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 import {
   getQuommons,
   getTranslation,
+  getAnimation
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -76,6 +78,23 @@ AppMenu.propTypes = {
     dictionary: PropTypes.string,
   }),
   /**
+  Use to define the entry animation of the component
+  */
+  withAnimation: PropTypes.shape({
+    animation: PropTypes.oneOf([
+      "zoom",
+      "collapse",
+      "fade",
+      "slideDown",
+      "slideUp",
+      "slideLeft",
+      "slideRight",
+      "",
+    ]),
+    duration: PropTypes.number,
+    delay: PropTypes.number,
+  }),
+  /**
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
@@ -102,6 +121,7 @@ AppMenu.defaultProps = {
   withColor: null,
   withIcon: null,
   withTranslation: null,
+  withAnimation: null,
   isHidden: false,
   isDisabled: false,
 };
@@ -141,14 +161,19 @@ export default function AppMenu(props) {
   ) {
     tObj = getTranslation(props.withTranslation);
   }
+  //-------------------------------------------------------------------
+  // 5. Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
 
   return (
-    <div
-      className={`qui ${quommonClasses.parentClasses} ${
-        props.isCircular ? "qui-app-menu-circular" : ""
-      } qt-shadow`}
+    <motion.div
+      initial={animate?.from}
+      animate={animate?.to}
+      className={`qui ${quommonClasses.parentClasses} ${props.isCircular ? "qui-app-menu-circular" : ""
+        } qt-shadow`}
     >
       <div className="qui-app-menu-container">
         <div
@@ -189,6 +214,6 @@ export default function AppMenu(props) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

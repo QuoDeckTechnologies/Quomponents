@@ -75,6 +75,16 @@ export default {
         },
       },
     },
+    withAnimation: {
+        table: {
+            category: "with-Params",
+            defaultValue: {
+                animation: "",
+                duration: 0,
+                delay: 0,
+            },
+        },
+    },
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -134,6 +144,11 @@ Default.args = {
     lang: "en",
     tgt: "appMenu",
     dictionary: dictionary,
+  },
+  withAnimation: {
+      animation: "zoom",
+      duration: 0.5,
+      delay: 0,
   },
   isDisabled: false,
   isHidden: false,

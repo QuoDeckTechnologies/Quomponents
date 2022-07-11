@@ -15,11 +15,11 @@ describe("Sidebar", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-    
+
     const args = {
         target: Sidebar,
         required: {
-        onClick: () =>{},
+            onClick: () => { },
         },
         translations: {
             tgt: "sideBar",
@@ -79,7 +79,7 @@ describe("Sidebar", () => {
 
     hasValid("variants", args);
     hasValid("positions", args);
-    
+
     hasValid("colors", args);
     hasValid("animations", args);
     hasValid("translations", args);
@@ -96,21 +96,12 @@ describe("Sidebar", () => {
         component = shallow(
             <Sidebar
                 asEmphasis="default"
-                sidebarLocation='welcome'
+                location='welcome'
                 licenseType='SuperAdmin'
                 noCourses={false}
                 label="EditMode"
-                asVariant="primary"
-                asSize="normal"
-                asFloated="inline"
-                asAligned="center"
-                withColor={null}
                 withIcon={null}
-                withAnimation={null}
-                withTranslation={null}
-                isHidden={false}
-                isDisabled={false}
-                onClick={() => console.log("Testing Sidebar")} />
+                onClick={() => { }} />
         );
     });
     it("should call setState when click on div", () => {
@@ -159,7 +150,7 @@ describe("Sidebar", () => {
         component.update();
         expect(component.find(ArcMenu).exists()).toBe(true);
     });
-    
+
     it("should render correctly when passed noCourses props as true", () => {
         component.setProps({ noCourses: true })
         expect(component.exists()).toBe(true);

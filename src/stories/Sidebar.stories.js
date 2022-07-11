@@ -59,7 +59,7 @@ export default {
         },
         label: "",
         noCourses: false,
-        sidebarLocation: "",
+        location: "",
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -152,7 +152,7 @@ Default.args = {
     asEmphasis: "default",
     label: "Edit Mode",
     noCourses: false,
-    sidebarLocation: "welcome",
+    location: "welcome",
     asVariant: "primary",
     asFloated: "inline",
     withColor: {
@@ -188,7 +188,7 @@ TranslatedDefault.args = {
     asEmphasis: "default",
     label: "Edit Mode",
     noCourses: false,
-    sidebarLocation: "welcome",
+    location: "welcome",
     asVariant: "primary",
     asFloated: "inline",
     withColor: {
@@ -224,7 +224,7 @@ EditMode.args = {
     asEmphasis: "editMode",
     label: "Edit Mode",
     noCourses: false,
-    sidebarLocation: "welcome",
+    location: "welcome",
     asVariant: "primary",
     asFloated: "inline",
     withColor: {
@@ -260,7 +260,7 @@ TranslatedEditMode.args = {
     asEmphasis: "editMode",
     label: "Edit Mode",
     noCourses: false,
-    sidebarLocation: "welcome",
+    location: "welcome",
     asVariant: "primary",
     asFloated: "inline",
     withColor: {
@@ -392,7 +392,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "welcome",
+                            location: "welcome",
                             withAnimation: {
                                 animation: "slideRight",
                                 duration: 0.5,
@@ -407,7 +407,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: true,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -423,7 +423,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: false,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -439,7 +439,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "blog",
+                            location: "blog",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -454,7 +454,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "social",
+                            location: "social",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -469,7 +469,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "admin",
+                            location: "admin",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -484,7 +484,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "analytics",
+                            location: "analytics",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -499,7 +499,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "help",
+                            location: "help",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -519,7 +519,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "welcome",
+                            location: "welcome",
                             withAnimation: {
                                 animation: "slideRight",
                                 duration: 0.5,
@@ -534,7 +534,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: true,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -550,7 +550,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: false,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -566,7 +566,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "blog",
+                            location: "blog",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -581,7 +581,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "social",
+                            location: "social",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -596,7 +596,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "admin",
+                            location: "admin",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -611,7 +611,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "analytics",
+                            location: "analytics",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -626,7 +626,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "help",
+                            location: "help",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -646,7 +646,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Trainer",
-                            sidebarLocation: "welcome",
+                            location: "welcome",
                             withAnimation: {
                                 animation: "slideRight",
                                 duration: 0.5,
@@ -661,7 +661,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Trainer",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: true,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -677,7 +677,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Trainer",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: false,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -693,7 +693,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Trainer",
-                            sidebarLocation: "analytics",
+                            location: "analytics",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -708,7 +708,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Trainer",
-                            sidebarLocation: "help",
+                            location: "help",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -728,7 +728,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Manager",
-                            sidebarLocation: "welcome",
+                            location: "welcome",
                             withAnimation: {
                                 animation: "slideRight",
                                 duration: 0.5,
@@ -743,7 +743,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Manager",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: true,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -759,7 +759,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Manager",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: false,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -775,7 +775,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Manager",
-                            sidebarLocation: "analytics",
+                            location: "analytics",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -790,7 +790,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Manager",
-                            sidebarLocation: "help",
+                            location: "help",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -810,7 +810,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "welcome",
+                            location: "welcome",
                             withAnimation: {
                                 animation: "slideRight",
                                 duration: 0.5,
@@ -825,7 +825,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: true,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -841,7 +841,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: false,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -857,7 +857,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "blog",
+                            location: "blog",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -872,7 +872,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "social",
+                            location: "social",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -887,7 +887,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "analytics",
+                            location: "analytics",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -902,7 +902,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "help",
+                            location: "help",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -922,7 +922,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "DataAdmin",
-                            sidebarLocation: "welcome",
+                            location: "welcome",
                             withAnimation: {
                                 animation: "slideRight",
                                 duration: 0.5,
@@ -937,7 +937,7 @@ const LocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "DataAdmin",
-                            sidebarLocation: "analytics",
+                            location: "analytics",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -980,7 +980,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "welcome",
+                            location: "welcome",
                             withAnimation: {
                                 animation: "slideRight",
                                 duration: 0.5,
@@ -1000,7 +1000,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: true,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -1021,7 +1021,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: false,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -1042,7 +1042,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "blog",
+                            location: "blog",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1062,7 +1062,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "social",
+                            location: "social",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1082,7 +1082,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "admin",
+                            location: "admin",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1102,7 +1102,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "analytics",
+                            location: "analytics",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1122,7 +1122,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "SuperAdmin",
-                            sidebarLocation: "help",
+                            location: "help",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1147,7 +1147,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "welcome",
+                            location: "welcome",
                             withAnimation: {
                                 animation: "slideRight",
                                 duration: 0.5,
@@ -1167,7 +1167,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: true,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -1188,7 +1188,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: false,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -1209,7 +1209,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "blog",
+                            location: "blog",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1229,7 +1229,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "social",
+                            location: "social",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1249,7 +1249,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "admin",
+                            location: "admin",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1269,7 +1269,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "analytics",
+                            location: "analytics",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1289,7 +1289,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Admin",
-                            sidebarLocation: "help",
+                            location: "help",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1314,7 +1314,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Trainer",
-                            sidebarLocation: "welcome",
+                            location: "welcome",
                             withAnimation: {
                                 animation: "slideRight",
                                 duration: 0.5,
@@ -1334,7 +1334,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Trainer",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: true,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -1355,7 +1355,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Trainer",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: false,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -1376,7 +1376,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Trainer",
-                            sidebarLocation: "analytics",
+                            location: "analytics",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1396,7 +1396,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Trainer",
-                            sidebarLocation: "help",
+                            location: "help",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1421,7 +1421,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Manager",
-                            sidebarLocation: "welcome",
+                            location: "welcome",
                             withAnimation: {
                                 animation: "slideRight",
                                 duration: 0.5,
@@ -1441,7 +1441,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Manager",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: true,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -1462,7 +1462,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Manager",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: false,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -1483,7 +1483,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Manager",
-                            sidebarLocation: "analytics",
+                            location: "analytics",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1503,7 +1503,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Manager",
-                            sidebarLocation: "help",
+                            location: "help",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1528,7 +1528,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "welcome",
+                            location: "welcome",
                             withAnimation: {
                                 animation: "slideRight",
                                 duration: 0.5,
@@ -1548,7 +1548,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: true,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -1569,7 +1569,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "content",
+                            location: "content",
                             noCourses: false,
                             withAnimation: {
                                 animation: "slideLeft",
@@ -1590,7 +1590,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "blog",
+                            location: "blog",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1610,7 +1610,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "social",
+                            location: "social",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1630,7 +1630,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "analytics",
+                            location: "analytics",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1650,7 +1650,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "Creator",
-                            sidebarLocation: "help",
+                            location: "help",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,
@@ -1675,7 +1675,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "DataAdmin",
-                            sidebarLocation: "welcome",
+                            location: "welcome",
                             withAnimation: {
                                 animation: "slideRight",
                                 duration: 0.5,
@@ -1695,7 +1695,7 @@ const TranslatedLocationTemplate = (args) => {
                         {...Object.assign({}, baseObj, {
                             asEmphasis: "default",
                             licenseType: "DataAdmin",
-                            sidebarLocation: "analytics",
+                            location: "analytics",
                             withAnimation: {
                                 animation: "slideLeft",
                                 duration: 0.5,

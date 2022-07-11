@@ -41,7 +41,7 @@ Sidebar.propTypes = {
     /**
      Use to define the location of the sidebar
      */
-    sidebarLocation: PropTypes.string,
+    location: PropTypes.string,
     // Quommon props
     //=======================================
     /**
@@ -111,7 +111,7 @@ Sidebar.defaultProps = {
     asEmphasis: "default",
     label: "",
     noCourses: false,
-    sidebarLocation: "",
+    location: "",
     // Quommon props
     //=======================================
     asVariant: "primary",
@@ -325,7 +325,7 @@ export default function Sidebar(props) {
             <div className={`qui-side-bar-editmode-container`} style={{ backgroundColor: props.withColor?.backgroundColor }}>
                 <img className="qui-side-bar-logo" src={coloredDefaultLogo} alt="" />
                 <h3 className={`qui-side-bar-edit-mode-label`} style={{ color: props.withColor?.textColor }}>
-                    {props.label}
+                    {editLabel}
                 </h3>
                 <ArcMenu position="bottom-left" menuType="close" arcIcon="close" onClick={props.onClick} />
             </div>
@@ -338,7 +338,7 @@ export default function Sidebar(props) {
                     <img className="qui-side-bar-logo" src={coloredDefaultLogo} alt="" />
                     <div
                         className={`qui-side-bar-sections-container`}>
-                        {_.map(_.filter(panelLinks[props.sidebarLocation], (l) => l.show),
+                        {_.map(_.filter(panelLinks[props.location], (l) => l.show),
                             (sections, index) => {
                                 return (
                                     <div
