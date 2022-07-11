@@ -153,13 +153,12 @@ describe("IconLink", () => {
     it("should render correctly when passed withColor props", () => {
         component.setProps({ isActive: false })
         let colors = {
-            activeBackgroundColor: "#666666",
-            activeTextColor: "pink",
+            accentColor: "#666666",
         }
         component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
     })
-    
+
     it("should render correctly with withColor prop when hovered", () => {
         const component = renderer.create(
             <IconLink

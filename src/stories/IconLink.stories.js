@@ -69,8 +69,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    activeTextColor: "",
-                    activeBackgroundColor: "",
+                    accentColor: "",
                     backgroundColor: "",
                     textColor: "",
                     hoverBackgroundColor: "",
@@ -179,8 +178,7 @@ Default.args = {
         icon: "fa fa-paste",
     },
     withColor: {
-        activeBackgroundColor: "blue",
-        activeTextColor: "pink",
+        accentColor: "#666666",
         backgroundColor: "",
         textColor: "",
         hoverBackgroundColor: "",
@@ -215,12 +213,11 @@ export const ColoredIconlink = Template.bind({});
 ColoredIconlink.args = {
     ...Default.args,
     withColor: {
-        activeBackgroundColor: "red",
-        activeTextColor: "pink",
-        backgroundColor: "orange",
-        textColor: "gray",
-        hoverBackgroundColor: "gray",
-        hoverTextColor: "orange",
+        accentColor: "#666666",
+        backgroundColor: "#FFA500",
+        textColor: "#E5E5E5",
+        hoverBackgroundColor: "#E5E5E5",
+        hoverTextColor: "#FFA500",
     },
 };
 ColoredIconlink.parameters = {
@@ -229,7 +226,7 @@ ColoredIconlink.parameters = {
             story: "Use to override the standard colors of the Icon.",
         },
         source: {
-            code: `<IconLink withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
+            code: `<IconLink {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
@@ -253,7 +250,7 @@ WithoutLabelledIconlink.parameters = {
                 "Use to provide a header callout (format:label) above the icon. Or use as an information caption (format:caption) below the icon. Or use as an information label (format:label) top the icon. The text here can be customized through the withTranslation option.",
         },
         source: {
-            code: `<IconLink withLabel={{format: "label",content: "Home",textColor: ""}}/>`,
+            code: `<IconLink {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
@@ -277,7 +274,7 @@ AnimatedIconlink.parameters = {
                 "Use to animate the entry of the Icon with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<IconLink withAnimation={{animation: "collapse", duration: 0.8, delay: 0}}}/>`,
+            code: `<IconLink {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };

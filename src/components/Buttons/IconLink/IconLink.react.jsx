@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
@@ -71,10 +71,9 @@ IconLink.propTypes = {
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
-        activeBackgroundColor: PropTypes.string,
-        activeTextColor: PropTypes.string,
         backgroundColor: PropTypes.string,
         textColor: PropTypes.string,
+        accentColor: PropTypes.string,
         hoverBackgroundColor: PropTypes.string,
         hoverTextColor: PropTypes.string,
     }),
@@ -218,15 +217,11 @@ function getColors(colors, emphasis, hovered) {
 - props are not being passed to the IconLink. Please speak to the admin to handle any new prop.
 **/
 export default function IconLink(props) {
-    const { isActive, onClick } = props;
+    const { isActive } = props;
 
     const [tilt, setTilt] = useState(false);
     const [hovered, setHovered] = useState(false);
-    const [active, setActive] = useState(isActive);
-    useEffect(() => {
-        setActive(isActive);
-    }, [isActive]);
-    
+
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -261,10 +256,6 @@ export default function IconLink(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props);
 
-    let activeColor = {
-        backgroundColor: props.withColor?.activeBackgroundColor,
-        //color: props.withColor?.activeTextColor,
-    };
     // ========================= Render Function =================================
 
     return (
@@ -277,27 +268,26 @@ export default function IconLink(props) {
             onMouseDown={() => setTilt(true)}
             onMouseUp={() => setTilt(false)}
         >
-            {/* <a className="qui-iconlink-anchor" href={props.link}> */}
+            <a className="qui-iconlink-anchor" href={props.link}>
                 <div
                     className={`qui-btn ${quommonClasses.childClasses} qui-iconlink`}
                     title={getLabel(labelContent, "popover")}
-                    onClick={() => props.onClick(props)}
-
-                    style={props.isActive ? activeColor : Object.assign({}, colors.buttonHandle)}
+                    onClick={props.onClick}
+                    style={isActive ? { backgroundColor: props.withColor?.accentColor } : Object.assign({}, colors.buttonHandle)}
                 >
                     <div
-                        className={`qui-btn qui-icon-label emp-text`} style={Object.assign({}, colors.lableHandle)}>
+                        className={`qui-btn qui-label emp-text`} style={Object.assign({}, colors.lableHandle)}>
                         <div className="qui qt-utn">{getLabel(labelContent, "label")}</div>
                     </div>
 
                     <i className={`${props.withIcon?.icon} qui-iconlink-icon  ${tilt ? 'tilt' : ''}`}>
                     </i>
                     <div
-                        className={`qui-btn qui-icon-caption emp-text`} style={Object.assign({}, colors.lableHandle)}>
+                        className={`qui-btn qui-caption emp-text`} style={Object.assign({}, colors.lableHandle)}>
                         <div className="qui qt-utn">{getLabel(labelContent, "caption")}</div>
                     </div>
                 </div>
-            {/* </a > */}
+            </a>
         </motion.div >
     );
 };

@@ -29,24 +29,6 @@ describe("MobileToolbar", () => {
                     format: "caption",
                     link: "https://quodeck.com/",
                 },
-                {
-                    icon: "fa fa-wallet",
-                    label: "Wallet",
-                    format: "caption",
-                    link: "https://www.google.com/",
-                },
-                {
-                    icon: "fa fa-gift",
-                    label: "Rewards",
-                    format: "caption",
-                    link: "https://github.com/",
-                },
-                {
-                    icon: "fa fa-chart-pie",
-                    label: "Reports",
-                    format: "caption",
-                    link: "https://www.youtube.com/",
-                },
             ],
             onClick: () => { }
         },
@@ -95,24 +77,6 @@ describe("MobileToolbar", () => {
                         format: "caption",
                         link: "https://quodeck.com/",
                     },
-                    {
-                        icon: "fa fa-wallet",
-                        label: "Wallet",
-                        format: "caption",
-                        link: "https://www.google.com/",
-                    },
-                    {
-                        icon: "fa fa-gift",
-                        label: "Rewards",
-                        format: "caption",
-                        link: "https://github.com/",
-                    },
-                    {
-                        icon: "fa fa-chart-pie",
-                        label: "Reports",
-                        format: "caption",
-                        link: "https://www.youtube.com/",
-                    },
                 ]}
                 asEmphasis="editing"
                 asVariant="primary"
@@ -124,10 +88,6 @@ describe("MobileToolbar", () => {
                 isCircular={true}
                 onClick={() => { }} />
         );
-    });
-
-    it("MobileToolbar", () => {
-        component = shallow(<MobileToolbar onClick={() => { }} />);
     });
 
     it("should call setState when click", () => {
@@ -144,43 +104,43 @@ describe("MobileToolbar", () => {
         component.find(IconLink).at(0).simulate("click");
     });
 
-    it("should render correctly when passed asEmphasis prop as default ", () => {
-        let colors = {
-            backgroundColor: "#fff",
-            accentColor: "#FF0000",
-            textColor: "#00FFFF",
-            hoverBackgroundColor: "#0000FF",
-            hoverTextColor: "	#00008B",
-        }
-        component.setProps({ asEmphasis: "default" })
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    })
+    // it("should render correctly when passed asEmphasis prop as default ", () => {
+    //     let colors = {
+    //         backgroundColor: "#fff",
+    //         accentColor: "#FF0000",
+    //         textColor: "#00FFFF",
+    //         hoverBackgroundColor: "#0000FF",
+    //         hoverTextColor: "	#00008B",
+    //     }
+    //     component.setProps({ asEmphasis: "default" })
+    //     component.setProps({ withColor: colors })
+    //     expect(component.exists()).toBe(true);
+    // })
 
-    it("should render correctly when passed asEmphasis prop as editing", () => {
-        component.setProps({
-            asEmphasis: "editing"
-        });
-        component.update();
-        expect(component.find(ArcMenu).exists()).toBe(true);
-    });
+    // it("should render correctly when passed asEmphasis prop as editing", () => {
+    //     component.setProps({
+    //         asEmphasis: "editing"
+    //     });
+    //     component.update();
+    //     expect(component.find(ArcMenu).exists()).toBe(true);
+    // });
 
-    it("should render correctly when passed asVariant prop as success", () => {
-        component.setProps({ asVariant: "success" })
-        expect(component.exists()).toBe(true);
-    })
+    // it("should render correctly when passed asVariant prop as success", () => {
+    //     component.setProps({ asVariant: "success" })
+    //     expect(component.exists()).toBe(true);
+    // })
 
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            backgroundColor: "#fff",
-            accentColor: "#FF0000",
-            textColor: "#00FFFF",
-            hoverBackgroundColor: "#0000FF",
-            hoverTextColor: "	#00008B",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    })
+    // it("should render correctly when passed withColor props", () => {
+    //     let colors = {
+    //         backgroundColor: "#fff",
+    //         accentColor: "#FF0000",
+    //         textColor: "#00FFFF",
+    //         hoverBackgroundColor: "#0000FF",
+    //         hoverTextColor: "	#00008B",
+    //     }
+    //     component.setProps({ withColor: colors })
+    //     expect(component.exists()).toBe(true);
+    // })
 });
 
 
