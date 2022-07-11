@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
+import { motion, MotionConfig } from "framer-motion";
+import _ from "lodash";
 import {
     getAnimation,
     getQuommons,
@@ -18,7 +19,6 @@ Marker.propTypes = {
         wrapper: PropTypes.string,
         inset: PropTypes.number
     }),
-
     /**
     Use to set the state of MobileToolbar 
     */
@@ -101,45 +101,169 @@ export default function Marker(props) {
     // 3. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props.withAnimation);
-    //-------------------------------------------------------------------
-    // 4. Use to set Color in Marker Component
-    //------------------------------------------------------------------
+
+
+    // ========================= Render Function =================================
+
+    let node_list = content?.node?.contentList.length;
+    let isPortrait = window.innerHeight > window.innerWidth;
+
+    const iconWrapper = {
+        float: "right",
+        marginTop: "6px",
+        color: "#121212",
+    };
+    let gameList = {
+        marginTop: 0,
+        height: node_list > 4 ? "23vh" : "",
+        overflow: "auto",
+    };
+
+    let indicator = (deck) => {
+        return props.completion[deck.deckId] === 100 ? (
+            <i className="qui-indicator" name={"check circle"} />
+        ) : (
+            <i className="qui-indicator" name={"bullseye"} />
+        );
+    };
+    let iconName = (readerType) => {
+        switch (readerType) {
+            case "videck":
+                return "video";
+            case "docdeck":
+                return "file pdf outline";
+            case "assessment":
+                return "treatment";
+            case "survey":
+                return "wpforms";
+            case "adaptive":
+                return "random";
+            case "quiz":
+                return "question circle outline";
+            case "casestudy":
+                return "archive";
+            case "dialogue":
+                return "talking outline";
+            case "qdf":
+                return "file outline";
+            case "game":
+                return "game";
+            default:
+                return "file outline";
+        }
+    };
     let markerBlock = (
-        <div className={`qui ${quommonClasses.parentClasses}`} onClick={props.onClick}>
-            <img className="qui-marker-img"
+        <div className="absoluteDiv">
+            <img
+                className="qui-marker-img"
                 src={
                     WrapperList[content?.wrapper]?.customMarker
                         ? "assets/courses/" +
                         content?.wrapper +
+                        "/markers/" +
                         status +
                         ".png"
-                        : "assets/images/configurable/wrapperIcons/" +
+                        : "assets/images/configurable/wrappericons/" +
                         status +
                         ".png"
                 }
             />
             {WrapperList[content?.wrapper]?.sequenceInset && (
-                <div className="qui-marker-text">
-                    <h6>{content?.inset}</h6>
-                </div>
+                <div className="qui-marker-text">{content?.inset}</div>
             )}
         </div>
     );
-
-    // ========================= Render Function =================================
-    return status === "current" ? (
-        <div className="qui-marker-style">
-            <motion.div
-                className={`qui ${quommonClasses.parentClasses}`}
-                animate={{ scale: [1, 1.15, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-            >
-                <div className={`${quommonClasses.childClasses}`}>
+    let prevComplete = 0;
+    let currComplete = 0;
+    let marker =
+        status === "current" ? (
+            <div className="qui-marker-style">
+                <motion.div
+                    animate={{ scale: [1, 1.15, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                >
                     {markerBlock}
-                </div>
-            </motion.div>
-        </div>
+                </motion.div>
+            </div>
+        ) : (
+            <div className="qui-marker-style">
+                <motion.div
+                    animate={{ scale: [1, 1.15, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                >
+                    {markerBlock}
+                </motion.div>
+            </div>
+        );
+    return isPortrait || status === "incomplete" ? (
+        marker
     ) : (
-        <div className="qui-marker-style">{markerBlock}</div>
-    )
-};
+        <div trigger={marker} on="click" className="qui-marker-popup">
+            <img
+                src={
+                    "assets/courses/" +
+                    content?.wrapper +
+                    "/header.jpg"
+                }
+                alt=""
+                className="qui-marker-imagestyle"
+            />
+            <div className="qui-marker-wellstyle">
+                <h2 className="qui-marker-header">{content?.node?.name}</h2>
+                <p className="qui-marker-desc">
+                    {content?.node?.description}
+                </p>
+            </div>
+
+            <ul key={'list-' + Math.random()} divided style={gameList}>
+                {_.map(content?.node?.contentList, (deck, index) => {
+                    prevComplete = currComplete !== undefined ? currComplete : 0;
+                    currComplete = props.completion[deck._id];
+                    return (
+                        <li
+                            key={`deckitem-${deck._id}`}
+                            style={{
+                                padding: "5px 10px",
+                                opacity: props.sequential && index !== 0
+                                    ? prevComplete === 100 ? "none" : "0.3" : "none",
+                                background: props.sequential && index !== 0
+                                    ? prevComplete === 100 ? "none" : "#e8e8e8" : "none"
+                            }}
+                            onClick={props.sequential && index !== 0 ? prevComplete > 80 ?
+                                () => props.openDeck(
+                                    {
+                                        deckId: deck._id,
+                                        readerType: deck.readerType,
+                                    },
+                                    content?.inset - 1
+                                ) : null :
+                                () => props.openDeck(
+                                    {
+                                        deckId: deck._id,
+                                        readerType: deck.readerType,
+                                    },
+                                    content?.inset - 1
+                                )
+                            }
+                        >
+                            <div className="qui-itemcontent">
+                                {indicator({
+                                    deckId: deck._id,
+                                    readerType: deck.readerType,
+                                })}
+                                {deck.name}
+                            </div>
+                            <div style={iconWrapper}>
+                                <i
+                                    name={iconName(deck.readerType)}
+                                    size="small"
+                                />
+                                <i name="chevron right" size="small" />
+                            </div>
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
+    );
+}

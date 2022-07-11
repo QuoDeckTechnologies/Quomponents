@@ -40,7 +40,7 @@ describe("Marker", () => {
         };
         let status = "current";
         component.setProps({ content: content, status: status });
-        expect(component.find(".qui-marker-img").props().src).toBe('assets/images/configurable/wrapperIcons/current.png');
+        expect(component.find("img").src).toBe('assets/images/configurable/wrapperIcons/current.png');
     });
     it("should render correctly if pass imgae src", () => {
         let content = {
@@ -49,7 +49,7 @@ describe("Marker", () => {
         };
         let status = "current";
         component.setProps({ content: content, status: status });
-        expect(component.find(".qui-marker-img").props().src).toBe('assets/images/configurable/wrapperIcons/current.png');
+        expect(component.find("img").src).toBe('assets/images/configurable/wrapperIcons/current.png');
     });
     it("should render correctly when passed status prop as incomplete", () => {
         component.setProps({ status: "incomplete" })

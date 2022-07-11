@@ -20,4 +20,44 @@
     width: 3.5em;
     height: 3.5em;
   }
+
+  .qui-marker-popup {
+    padding: 15px;
+  }
+
+  .qui-marker-imagestyle {
+    width: 100%;
+  }
+
+  .qui-marker-wellstyle {
+    padding: 10px;
+    margin-top: -10px;
+  }
+
+  .qui-marker-header {
+    padding: 0 10px;
+    margin: 5px 0;
+    font-weight: normal;
+  }
+
+  .qui-marker-desc {
+    padding: 0 10px;
+    font-size: 0.8em;
+    line-height: 1.2;
+    margin: 10px 0;
+  }
+
+  .qui-itemcontent {
+    width: 79%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    margin-top: 7px;
+  }
+
+  .qui-indicator {
+    font-size: 1.1em;
+    margin-right: 7px;
+  }
 }
