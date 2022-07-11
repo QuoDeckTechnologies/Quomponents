@@ -28,6 +28,8 @@ describe("Calendar", () => {
     hasValid("defaults", args);
 
     hasValid("positions", args);
+    hasValid("padding", args);
+    
     hasValid("animations", args);
 
     hasValid("hidden", args);

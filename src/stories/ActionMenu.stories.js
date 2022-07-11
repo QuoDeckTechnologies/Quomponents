@@ -19,12 +19,23 @@ export default {
   title: "Design System/ActionMenu/ActionMenu",
   component: ActionMenu,
   argTypes: {
-    content: [
-      {
-        title: "label1",
-        icon: "",
+    content: [],
+
+    asPadded: {
+      control: "select",
+      options: ["fitted", "compact", "normal", "relaxed"],
+      table: {
+        category: "as-Flags",
       },
-    ],
+    },
+    asAligned: {
+      control: "select",
+      options: ["left", "right", "center"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+
     withColor: {
       table: {
         category: "with-Params",
@@ -55,18 +66,13 @@ export default {
         },
       },
     },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
     isHidden: {
       table: {
         category: "is-Toggles",
         defaultValue: false,
       },
     },
+
     onClick: {
       table: {
         category: "Events",
@@ -109,39 +115,48 @@ Default.args = {
     {
       title: "Open Deck",
       icon: "fas fa-book-open",
-      func: () => { },
+      popover: "Open Deck...",
+      onClick: () => { },
     },
     {
       title: "Edit Deck",
       icon: "fas fa-edit",
-      func: () => { },
+      popover: "Edit Deck...",
+      onClick: () => { },
     },
     {
       title: "Move Deck Up",
       icon: "fas fa-chevron-up",
-      func: () => { },
+      popover: "Move Deck Up...",
+      onClick: () => { },
     },
     {
       title: "Move Deck Down",
       icon: "fas fa-chevron-down",
-      func: () => { },
+      popover: "Move Deck Down...",
+      onClick: () => { },
     },
     {
       title: "Move to Topic",
       icon: "fas fa-retweet",
-      func: () => { },
+      popover: "Move to Topic...",
+      onClick: () => { },
     },
     {
       title: "Unpublish Deck",
       icon: "fas fa-eye-slash",
-      func: () => { },
+      popover: "Unpublish Deck...",
+      onClick: () => { },
     },
     {
       title: "Delete Deck",
       icon: "fas fa-trash-alt",
-      func: () => { },
+      popover: "Delete Deck...",
+      onClick: () => { },
     },
   ],
+  asPadded: "normal",
+  asAligned: "left",
   withColor: {
     backgroundColor: "#ffffff",
     textColor: "",
@@ -157,7 +172,6 @@ Default.args = {
     tgt: "actionMenu",
     dictionary: dictionary,
   },
-  isDisabled: false,
   isHidden: false,
 };
 Default.parameters = {

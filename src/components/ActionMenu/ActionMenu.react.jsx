@@ -22,14 +22,23 @@ ActionMenu.propTypes = {
   */
   content: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string,
       icon: PropTypes.string,
-      func: PropTypes.func,
+      title: PropTypes.string,
+      popover: PropTypes.string,
+      onClick: PropTypes.func,
     })
   ).isRequired,
   //=======================================
   // Quommon props
   //=======================================
+  /**
+  Use to define component padding in increasing order
+  */
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+  /**
+  Use to align content within the component container
+  */
+  asAligned: PropTypes.oneOf(["left", "right", "center"]),
   /**
   Use to override component colors and behavior
   */
@@ -64,10 +73,6 @@ ActionMenu.propTypes = {
     dictionary: PropTypes.string,
   }),
   /**
-  Use to enable/disable the component
-  */
-  isDisabled: PropTypes.bool,
-  /**
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
@@ -81,11 +86,12 @@ ActionMenu.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asPadded: "normal",
+  asAligned: "left",
   withColor: null,
   withAnimation: null,
   withTranslation: null,
 
-  isDisabled: false,
   isHidden: false,
 };
 
@@ -114,7 +120,7 @@ export default function ActionMenu(props) {
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props, "actionmenu");
+  let quommonClasses = getQuommons(props, "action-menu");
   //-------------------------------------------------------------------
   // 2. Set the component colors
   //-------------------------------------------------------------------
@@ -150,19 +156,20 @@ export default function ActionMenu(props) {
       {_.map(props.content, (content, index) => {
         return (
           <div
-            className={`qui-actionmenu-items`}
-            onMouseDown={() => content.func()}
+            className={` qui-action-menu-items  ${quommonClasses.childClasses}`}
+            onMouseDown={() => content.onClick()}
             key={index}
             style={colors.backgroundColors}
           >
-            <div className="qui-actionmenu-icon">
+            <div className="popover">
               <i
-                className={`qui-actionmenu-icons ${content.icon}`}
+                className={`qui-actionmenu-icons ${content?.icon}`}
                 style={colors.accentColors}
               ></i>
-            </div>
-            <div className={`qui-actionmenu-titles `} style={colors.textColors}>
-              {tObj ? iconLabel[index]["title"] : content.title}
+              <span className={`qui-actionmenu-titles qt-sm`} style={colors.textColors}>
+                {tObj ? iconLabel[index]["title"] : content?.title}
+              </span>
+              <span className="qui-action-menu-popover">{content?.popover}</span>
             </div>
           </div>
         );

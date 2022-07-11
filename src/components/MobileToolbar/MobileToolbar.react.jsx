@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
@@ -25,6 +25,7 @@ MobileToolbar.propTypes = {
         PropTypes.shape({
             icon: PropTypes.string,
             label: PropTypes.string,
+            isActive: PropTypes.string,
             link: PropTypes.string,
         })
     ).isRequired,
@@ -46,6 +47,8 @@ MobileToolbar.propTypes = {
     Use to set Colors in component 
     */
     withColor: PropTypes.shape({
+        activeBackgroundColor: PropTypes.string,
+        activeTextColor: PropTypes.string,
         textColor: PropTypes.string,
         accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
@@ -141,7 +144,32 @@ function getColors(colors) {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function MobileToolbar(props) {
-    const [state, setState] = useState("")
+    const { onClick, title, asEmphasis } = props;
+
+    const [content, setContent] = useState(props.content);
+    
+    useEffect(() => {
+        onClick(content);
+    }, [content, onClick]);
+
+    const handleSelect = (data) => {
+        let tmp_state = content;
+        let tmp_arr = [];
+        let tmp_obj = {};
+
+        tmp_state.forEach((dataObj) => {
+            if (dataObj?.link === data.content?.link) {
+                tmp_obj = { ...dataObj };
+                tmp_obj.isActive = true;
+                tmp_arr.push(tmp_obj);
+            } else {
+                tmp_obj = { ...dataObj };
+                tmp_obj.isActive = false;
+                tmp_arr.push(tmp_obj);
+            }
+        });
+        setContent([...tmp_arr]);
+    };
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -168,7 +196,6 @@ export default function MobileToolbar(props) {
     //-------------------------------------------------------------------
     // 4. Use to set styling for MobileToolbar.
     //-------------------------------------------------------------------
-    const { asEmphasis, content, title } = props
     const getInput = (asEmphasis) => {
         if (asEmphasis === "default") {
             return (
@@ -178,16 +205,20 @@ export default function MobileToolbar(props) {
                             <div key={index} className="qui-iconlink-toolbar">
                                 <IconLink
                                     {...props}
-                                    asEmphasis={item.link === state ? "contained" : "text"}
-                                    content={{ link: item.link }}
+                                    asEmphasis="text"
+                                    isActive={item.isActive}
+                                    link={item.link}
                                     withIcon={{ icon: item.icon }}
                                     withLabel={{
                                         content: tObj ? iconLabel[index]["label"] : item.label,
                                         format: item.format,
                                     }}
-                                    onClick={() => {
-                                        setState(item.link);
+                                    withColor={{
+                                        activeBackgroundColor: props.withColor?.activeBackgroundColor,
+                                        activeTextColor: props.withColor?.activeTextColor,
                                     }}
+                                    isCircular={true}
+                                    onClick={(data) => handleSelect(data)}
                                 />
                             </div>
                         );

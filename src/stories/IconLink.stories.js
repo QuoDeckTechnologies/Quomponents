@@ -15,6 +15,7 @@ export default {
     component: IconLink,
     argTypes: {
         link: "",
+        isActive: false,
         asEmphasis: {
             control: "select",
             options: ["text", "outlined", "contained"],
@@ -56,11 +57,20 @@ export default {
                 category: "as-Flags",
             },
         },
+        asAligned: {
+            control: "select",
+            options: ["left", "right", "center"],
+            table: {
+                category: "as-Flags",
+            },
+        },
 
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
+                    activeTextColor: "",
+                    activeBackgroundColor: "",
                     backgroundColor: "",
                     textColor: "",
                     hoverBackgroundColor: "",
@@ -140,7 +150,7 @@ export default {
     parameters: {
         componentSubtitle: "Displays icon with a link",
         a11y: { disable: true },
-        // controls: { expanded: true }
+        docs: { iframeHeight: 300 },
     },
 };
 
@@ -153,11 +163,13 @@ Default.args = {
     link: "https://quodeck.com/",
     asEmphasis: "contained",
     isCircular: false,
+    isActive: false,
 
     asVariant: "primary",
     asSize: "normal",
-    asFloated: "inline",
     asPadded: "normal",
+    asFloated: "inline",
+    asAligned: "center",
 
     withLabel: {
         format: "caption",
@@ -167,6 +179,8 @@ Default.args = {
         icon: "fa fa-paste",
     },
     withColor: {
+        activeBackgroundColor: "blue",
+        activeTextColor: "pink",
         backgroundColor: "",
         textColor: "",
         hoverBackgroundColor: "",
@@ -201,6 +215,8 @@ export const ColoredIconlink = Template.bind({});
 ColoredIconlink.args = {
     ...Default.args,
     withColor: {
+        activeBackgroundColor: "red",
+        activeTextColor: "pink",
         backgroundColor: "orange",
         textColor: "gray",
         hoverBackgroundColor: "gray",

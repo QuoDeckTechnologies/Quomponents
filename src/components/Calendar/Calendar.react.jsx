@@ -18,12 +18,16 @@ Calender.propTypes = {
     // Quommon props
     //=======================================
     /**
-   Use to float the component in parent container
-   */
+    Use to define component padding in increasing order
+    */
+    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+    /**
+    Use to float the component in parent container
+    */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
-      Use to define the entry animation of the component
-      */
+    Use to define the entry animation of the component
+    */
     withAnimation: PropTypes.shape({
         animation: PropTypes.oneOf([
             "zoom",
@@ -39,12 +43,12 @@ Calender.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-      Use to enable/disable the component
-      */
+    Use to enable/disable the component
+    */
     isDisabled: PropTypes.bool,
     /**
-      Use to show/hide the component
-      */
+    Use to show/hide the component
+    */
     isHidden: PropTypes.bool,
     /**
     Calendar component must have the onClick function passed as props
@@ -56,6 +60,7 @@ Calender.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
+    asPadded: "normal",
     asFloated: "left",
     withAnimation: null,
     isDisabled: false,
@@ -71,12 +76,20 @@ Calender.defaultProps = {
 **/
 export default function Calender(props) {
     const [value, onChange] = useState(new Date());
+    const [month, onMonthChange] = useState(new Date());
+    const [year, onYearChange] = useState(new Date());
+
+    // handleMonthChange = (date) => {
+    //     console.log('onMonthChange', date);
+    // };
+    // handleYearChange = (date) => {
+    //     console.log('onYearChange', date);
+    // };
 
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "calendar");
-    quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
@@ -91,8 +104,11 @@ export default function Calender(props) {
         >
             <div className={`qui-calendar-container ${quommonClasses.childClasses}`}>
                 <Calendar
-                    onClick={props.onClick(value)}
-                    onChange={onChange} value={value}
+                    onClick={props.onClick(month)}
+                    value={value}
+                    onChange={onChange}
+                    onMonthChange={onMonthChange}
+                    onYearChange={onYearChange}
                 />
             </div>
         </motion.div>

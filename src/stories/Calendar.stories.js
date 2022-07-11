@@ -5,6 +5,13 @@ export default {
     title: "Design System/Calendar/Calendar",
     component: Calendar,
     argTypes: {
+        asPadded: {
+            control: "select",
+            options: ["fitted", "compact", "normal", "relaxed"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
@@ -71,6 +78,7 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
+    asPadded: "normal",
     asFloated: "left",
     withAnimation: {
         animation: "zoom",
