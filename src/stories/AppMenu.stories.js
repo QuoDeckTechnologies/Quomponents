@@ -20,13 +20,6 @@ export default {
         defaultValue: false,
       },
     },
-    asVariant: {
-      control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     asSize: {
       control: "select",
       options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -131,7 +124,6 @@ export const Default = Template.bind({});
 Default.args = {
   avatar: "",
   isCircular: true,
-  asVariant: "primary",
   asSize: "normal",
   asFloated: "inline",
   withIcon: { icon: "fas fa-ellipsis-v" },
@@ -174,7 +166,6 @@ UserImage.args = {
   ...Default.args,
   avatar: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
   isCircular: false,
-  asVariant: "warning",
   withLabel: { content: "" },
   withIcon: {
     icon: "",
@@ -199,7 +190,6 @@ DisabledIcon.args = {
   ...Default.args,
   avatar: "",
   isCircular: false,
-  asVariant: "warning",
   asSize: "normal",
   asFloated: "inline",
   withIcon: { icon: "fas fa-ellipsis-v" },
@@ -261,42 +251,36 @@ const AllSizesTemplate = (args) => {
     <div>
       <AppMenu
         {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
           asSize: "tiny",
           withIcon: { icon: "fas fa-adjust" },
         })}
       />
       <AppMenu
         {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
           asSize: "small",
           withIcon: { icon: "fas fa-ellipsis-v" },
         })}
       />
       <AppMenu
         {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
           asSize: "normal",
           withIcon: { icon: "fas fa-ellipsis-h" },
         })}
       />
       <AppMenu
         {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
           asSize: "big",
           withIcon: { icon: "fas fa-home" },
         })}
       />
       <AppMenu
         {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
           asSize: "huge",
           withIcon: { icon: "fas fa-igloo" },
         })}
       />
       <AppMenu
         {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
           asSize: "massive",
           withIcon: { icon: "fas fa-bus" },
         })}
@@ -311,7 +295,7 @@ AllSizes.parameters = {
       story: "6 sizes are supported. Use as per purpose noted here.",
     },
     source: {
-      code: `<AppMenu asVariant="secondary"/>`,
+      code: `<AppMenu />`,
     },
   },
 };

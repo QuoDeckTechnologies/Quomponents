@@ -27,16 +27,6 @@ AppMenu.propTypes = {
   // Quommon props
   //=======================================
   /**
-  Use to define standard component type
-  */
-  asVariant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "error",
-  ]),
-  /**
   Use to define component text size in increasing order
   */
   asSize: PropTypes.oneOf([
@@ -118,7 +108,6 @@ AppMenu.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asVariant: "primary",
   asSize: "normal",
   withColor: null,
   withIcon: null,
@@ -197,7 +186,7 @@ export default function AppMenu(props) {
         >
           <div
             style={colors}
-            className={`qui-app-menu-avatar qui-btn variant-${props.asVariant}`}
+            className={`qui-app-menu-avatar qui-btn`}
           >
             <Avatar
               {...props}
