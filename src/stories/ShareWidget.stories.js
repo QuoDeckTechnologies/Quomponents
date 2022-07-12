@@ -33,9 +33,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    accentColor: "",
                     textColor: "",
-                    backgroundColor: "",
                 },
             },
         },
