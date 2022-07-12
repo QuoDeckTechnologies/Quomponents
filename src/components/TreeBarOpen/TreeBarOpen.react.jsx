@@ -4,18 +4,15 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { Treebeard, decorators } from "react-treebeard";
 import defaultTheme from "react-treebeard/dist/themes/default";
-
 import {
   getQuommons,
   getTranslation,
   getAnimation,
 } from "../../common/javascripts/helpers";
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./TreeBarOpen.scss";
 import "../../common/stylesheets/overrule.scss";
-
 import SearchBar from "../SearchBar/SearchBar.react";
 
 TreeItem.propTypes = {
@@ -23,48 +20,64 @@ TreeItem.propTypes = {
   // Component Specific props
   //=======================================
   /**
-     TreeBar pass the Page Header.
-   */
-  pageHeader: PropTypes.string.isRequired,
-
+  TreeBar pass the Page Header.
+  */
+  header: PropTypes.string.isRequired,
   /**
-    Treebar pass tree folder structure data
-    */
-  content: PropTypes.shape({}),
+  Treebar pass tree folder structure data
+  */
+  treeData: PropTypes.shape({}),
+  /**
+  TreeBar pass the placeholder for search field.
+  */
+  placeholder: PropTypes.string,
   //=======================================
   // Quommon props
   //=======================================
-
   /**
-    Use to float the component in parent container
-    */
+  Use to float the component in parent container
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
-
   /**
-    Use to show/hide the component
-    */
+  Use to define the entry animation of the component
+  */
+  withAnimation: PropTypes.shape({
+    animation: PropTypes.oneOf([
+      "zoom",
+      "collapse",
+      "fade",
+      "slideDown",
+      "slideUp",
+      "slideLeft",
+      "slideRight",
+      "",
+    ]),
+    duration: PropTypes.number,
+    delay: PropTypes.number,
+  }),
+  /**
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    Use to enable/disable the component
-    */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to toggle the component taking the full width of the parent container
-    */
+  Use to toggle the component taking the full width of the parent container
+  */
   isFluid: PropTypes.bool,
-
   /**
-    TreeItem component must have the onClick function passed as props
-    */
+  TreeItem component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -72,13 +85,14 @@ TreeItem.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  pageHeader: "Page Header",
-  content: {},
+  header: "Page Header",
+  treeData: {},
   //=======================================
   // Quommon props
   //=======================================
   asFloated: "none",
   withTranslation: null,
+  withAnimation: null,
   isHidden: false,
   isDisabled: false,
   isFluid: false,
@@ -119,23 +133,20 @@ decorators.Header = ({ node }) => {
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function TreeItem(props) {
-  const [cursor, setCursor] = useState(props.content?.treeData);
-  const [folderStructure, setfolderStructure] = useState(
-    props.content?.treeData
-  );
+  const [cursor, setCursor] = useState(props.treeData);
+  const [folderStructure, setfolderStructure] = useState(props.treeData);
   //-------------------------------------------------------------------
   // Search the specific data
   //-------------------------------------------------------------------
   const startSearch = (inputData) => {
     let filter = inputData ? inputData : "";
     if (!filter) {
-      return setfolderStructure(props.content?.treeData);
+      return setfolderStructure(props.treeData);
     }
-    let filtered = filterTree(props.content?.treeData, filter);
+    let filtered = filterTree(props.treeData, filter);
     filtered = expandFilteredNodes(filtered, filter);
     setfolderStructure(filtered);
   };
-
   //-------------------------------------------------------------------
   // Treebar toggle selected node
   //-------------------------------------------------------------------
@@ -148,16 +159,14 @@ export default function TreeItem(props) {
     setCursor(Object.assign({}, cursor));
     props.onClick(node);
   };
-
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "treebar");
-
   //-------------------------------------------------------------------
   // 2. Get translation of the component
   //-------------------------------------------------------------------
-  let pageHeaderTitle = props.pageHeader;
+  let headerTitle = props.header;
   let tObj = null;
   if (
     props.withTranslation?.lang &&
@@ -166,15 +175,13 @@ export default function TreeItem(props) {
   ) {
     tObj = getTranslation(props.withTranslation, "treeBarOpen");
   }
-  if (tObj && props.pageHeader) {
-    pageHeaderTitle = tObj.pageHeader;
+  if (tObj && props.header) {
+    headerTitle = tObj.header;
   }
-
   //-------------------------------------------------------------------
   // 3. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props);
-
   //-------------------------------------------------------------------
   // 4. Treebeard default style
   //-------------------------------------------------------------------
@@ -214,17 +221,26 @@ export default function TreeItem(props) {
       className={`qui ${quommonClasses.parentClasses} qui-treebar-parent`}
     >
       <div className={quommonClasses.childClasses}>
-        {props.pageHeader && (
-          <div className="qui-treebar-pageheader">{pageHeaderTitle}</div>
+        {props.header && (
+          <div className="qui-treebar-pageheader">{headerTitle}</div>
         )}
         <div className="qui-treebar-searchbar">
           <SearchBar
-            {...props.content.props}
+            placeHolder={props.placeholder}
+            withIcon={{ name: "fas fa-search" }}
+            withColor={{
+              backgroundColor: "",
+              textColor: "",
+            }}
+            isDisabled={false}
+            isFluid={false}
+            isClosed={false}
+            isHidden={false}
             withTranslation={props.withTranslation}
             onClick={startSearch}
           />
         </div>
-        {props.content?.treeData && (
+        {props.treeData && (
           <div>
             <div className={`qui-treebar-container`}>
               <div className="qui-treebar-content">

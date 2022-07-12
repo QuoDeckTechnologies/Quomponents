@@ -19,34 +19,36 @@ VCardWithButton.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  VCardWithButton component data has to be in content props.
+  VCardWithButton component id has to be in id props.
   */
-  content: PropTypes.object,
+  id: PropTypes.string,
+  /**
+  VCardWithButton component name has to be in name props.
+  */
+  name: PropTypes.string,
+  /**
+  VCardWithButton component description has to be in description props.
+  */
+  description: PropTypes.string,
+  /**
+  VCardWithButton component button text has to be in buttonText props.
+  */
+  buttonText: PropTypes.string,
+  /**
+  Use to set checked VCardWithButton component.
+  */
+  checked: PropTypes.bool,
+  /**
+  VCardWithButton component image has to be in image props.
+  */
+  image: PropTypes.object,
   /**
   VCardWithButton can set image from imageLibrary array
   */
   imageLibrary: PropTypes.array,
-  /**
-  Set action emphasis in increasing order 
-  */
-  asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
-  /**
-  Use for rounded corners or circular button 
-  */
-  isCircular: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
-  /**
-  Use to define standard component type
-  */
-  asVariant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "error",
-  ]),
   /**
   Use to float the component in parent container
   */
@@ -57,10 +59,9 @@ VCardWithButton.propTypes = {
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
-    accentBackgroundColor: PropTypes.string,
     textColor: PropTypes.string,
-    buttonBackgroundColor: PropTypes.string,
-    buttonTextColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to define the entry animation of the component
@@ -105,21 +106,16 @@ VCardWithButton.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {
-    id: "",
-    name: "",
-    description: "",
-    buttonText: "",
-    checked: true,
-    image: { id: "", extention: "" },
-  },
+  id: "",
+  name: "",
+  description: "",
+  buttonText: "",
+  checked: true,
+  image: null,
   imageLibrary: [],
-  asEmphasis: "contained",
-  isCircular: false,
   //=======================================
   // Quommon props
   //=======================================
-  asVariant: "primary",
   asFloated: "none",
   withColor: null,
   withAnimation: null,
@@ -138,7 +134,17 @@ export default function VCardWithButton(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { content, withColor, imageLibrary, onClick } = props;
+  const {
+    id,
+    name,
+    description,
+    buttonText,
+    checked,
+    image,
+    withColor,
+    imageLibrary,
+    onClick,
+  } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -155,12 +161,9 @@ export default function VCardWithButton(props) {
   // 5. Function to set image of the card
   //-------------------------------------------------------------------
   const getBackground = () => {
-    if (content?.image) {
+    if (image) {
       return {
-        backgroundImage: `url(${resolveImage(
-          content?.image.id,
-          imageLibrary
-        )})`,
+        backgroundImage: `url(${resolveImage(image.id, imageLibrary)})`,
       };
     }
   };
@@ -174,69 +177,41 @@ export default function VCardWithButton(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      {content && (
+      <div className="qui-v-card-container qt-shadow">
         <div
-          className="qui-v-card-container"
+          className="qui-v-card-image-container"
           style={{
-            backgroundColor: withColor?.backgroundColor,
+            ...background,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
           }}
         >
-          <div
-            className="qui-v-card-image-container"
-            style={{
-              ...background,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
-          >
-            {content?.checked && (
-              <div
-                className="qui-v-card-checkbox-container"
-                style={{ backgroundColor: withColor?.accentBackgroundColor }}
-              >
-                <i
-                  className="fas fa-check-square"
-                  style={{ color: withColor?.accentColor }}
-                ></i>
-              </div>
-            )}
-          </div>
-          <div className="qui-v-card-text-container">
-            <div className="qui-v-card-text">
-              <h4
-                className="qui-v-card-title"
-                style={{
-                  color: withColor?.textColor,
-                }}
-              >
-                {content?.name}
-              </h4>
-              <p
-                className="qui-v-card-description"
-                style={{
-                  color: withColor?.textColor,
-                }}
-              >
-                {content?.description}
-              </p>
+          {checked && (
+            <div className="qui-v-card-checkbox-container">
+              <i className="fas fa-check-square"></i>
             </div>
-            <Button
-              {...props}
-              content={
-                tObj?.buttonText || content?.buttonText || "click here"
-              }
-              isFluid={false}
-              withTranslation={null}
-              withColor={{
-                backgroundColor: withColor?.buttonBackgroundColor,
-                textColor: withColor?.buttonTextColor,
-              }}
-              onClick={() => onClick(content)}
-            />
-          </div>
+          )}
         </div>
-      )}
+        <div className="qui-v-card-text-container">
+          <div className="qui-v-card-text">
+            <h6 className="qui-v-card-title">{tObj ? tObj.name : name}</h6>
+            <p className="qui-v-card-description qt-sm">
+              {tObj ? tObj.description : description}
+            </p>
+          </div>
+          <Button
+            {...props}
+            content={tObj?.buttonText || buttonText || "click here"}
+            isFluid={false}
+            withTranslation={null}
+            withColor={withColor}
+            onClick={() =>
+              onClick({ id, name, description, buttonText, checked, image })
+            }
+          />
+        </div>
+      </div>
     </motion.div>
   );
 }

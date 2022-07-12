@@ -4,10 +4,10 @@ import TreeBarOpen from "../components/TreeBarOpen/TreeBarOpen.react";
 const dictionary = JSON.stringify({
   hi: {
     treeBarOpen: {
-      pageHeader: "पाठ्यक्रम",
+      header: "पाठ्यक्रम",
     },
     searchBar: {
-      placeHolder: "यहां पाठ्यक्रम चुनें...",
+      placeholder: "यहां पाठ्यक्रम चुनें...",
     },
   },
 });
@@ -16,8 +16,9 @@ export default {
   title: "Design System/TreeBar/TreeBarOpen",
   component: TreeBarOpen,
   argTypes: {
-    pageHeader: "Page Header",
-    content: { treeData: {}, props: {} },
+    header: "Page Header",
+    treeData: {},
+    placeholder: "",
     asFloated: {
       control: "select",
       options: ["left", "right", "none", "inline"],
@@ -32,6 +33,16 @@ export default {
           lang: "",
           tgt: "",
           dictionary: "",
+        },
+      },
+    },
+    withAnimation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          animation: "",
+          duration: 0,
+          delay: 0,
         },
       },
     },
@@ -85,101 +96,83 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-let dataprops = {
-  placeHolder: "Select courses here...",
-  asFloated: "left",
-  withIcon: { name: "fas fa-search" },
-  withColor: {
-    backgroundColor: "",
-    textColor: "",
-  },
-  isDisabled: false,
-  isFluid: false,
-  isClosed: false,
-  isHidden: false
-};
-
 const Template = (args) => <TreeBarOpen {...args} style={{ width: "30%" }} />;
 export const Default = Template.bind({});
 Default.args = {
-  pageHeader: "Courses",
-  content: {
-    treeData: {
-      id: "allArticles",
-      parentId: null,
-      name: "Courses",
-      description: "",
-      children: [
-        {
-          id: "category-0",
-          parentId: "allArticles",
-          name: "Public Library",
-          description: "",
-          children: [
-            {
-              published: true,
-              tags: [],
-              _id: "622eeb5ede595f24b7aadd6e",
-              name: "Seeding Dummy Test Article",
-              category: "article",
-              summary: "",
-              identifier: "2Dpr5SmeY",
-              owner: "622b36ff46e1c31a2e22c42e",
-              createdAt: "2022-03-14T07:14:38.348Z",
-              id: "622eeb5ede595f24b7aadd6e",
-            },
-            {
-              published: true,
-              tags: [],
-              _id: "622b4534a2d4393e6ce1c3ba",
-              name: "New Article",
-              category: "article",
-              summary: "",
-              identifier: "Yeb4B2_bn",
-              owner: "622b36ff46e1c31a2e22c42e",
-              createdAt: "2022-03-11T12:48:52.066Z",
-              id: "622b4534a2d4393e6ce1c3ba",
-            },
-          ],
-        },
-        {
-          id: "category-1",
-          parentId: "allArticles",
-          name: "Induction Program",
-          description: "",
-          children: [
-            {
-              published: true,
-              tags: [],
-              _id: "623da574187838221637bebe",
-              name: "Test News",
-              category: "news",
-              summary: "",
-              identifier: "RnQ5trn7T",
-              owner: "622b36ff46e1c31a2e22c42e",
-              createdAt: "2022-03-25T11:20:20.195Z",
-              id: "623da574187838221637bebe",
-            },
-            {
-              published: true,
-              tags: [],
-              _id: "623da574187838221637bebe@",
-              name: "Testing News",
-              category: "news",
-              summary: "",
-              identifier: "RnQ5trn7T",
-              owner: "622b36ff46e1c31a2e22c42e",
-              createdAt: "2022-03-25T11:20:20.195Z",
-              id: "623da574187838221637bebe",
-            },
-          ],
-        },
-      ],
-    },
-    props: {
-      ...dataprops,
-    },
+  header: "Courses",
+  treeData: {
+    id: "allArticles",
+    parentId: null,
+    name: "Courses",
+    description: "",
+    children: [
+      {
+        id: "category-0",
+        parentId: "allArticles",
+        name: "Public Library",
+        description: "",
+        children: [
+          {
+            published: true,
+            tags: [],
+            _id: "622eeb5ede595f24b7aadd6e",
+            name: "Seeding Dummy Test Article",
+            category: "article",
+            summary: "",
+            identifier: "2Dpr5SmeY",
+            owner: "622b36ff46e1c31a2e22c42e",
+            createdAt: "2022-03-14T07:14:38.348Z",
+            id: "622eeb5ede595f24b7aadd6e",
+          },
+          {
+            published: true,
+            tags: [],
+            _id: "622b4534a2d4393e6ce1c3ba",
+            name: "New Article",
+            category: "article",
+            summary: "",
+            identifier: "Yeb4B2_bn",
+            owner: "622b36ff46e1c31a2e22c42e",
+            createdAt: "2022-03-11T12:48:52.066Z",
+            id: "622b4534a2d4393e6ce1c3ba",
+          },
+        ],
+      },
+      {
+        id: "category-1",
+        parentId: "allArticles",
+        name: "Induction Program",
+        description: "",
+        children: [
+          {
+            published: true,
+            tags: [],
+            _id: "623da574187838221637bebe",
+            name: "Test News",
+            category: "news",
+            summary: "",
+            identifier: "RnQ5trn7T",
+            owner: "622b36ff46e1c31a2e22c42e",
+            createdAt: "2022-03-25T11:20:20.195Z",
+            id: "623da574187838221637bebe",
+          },
+          {
+            published: true,
+            tags: [],
+            _id: "623da574187838221637bebe@",
+            name: "Testing News",
+            category: "news",
+            summary: "",
+            identifier: "RnQ5trn7T",
+            owner: "622b36ff46e1c31a2e22c42e",
+            createdAt: "2022-03-25T11:20:20.195Z",
+            id: "623da574187838221637bebe",
+          },
+        ],
+      },
+    ],
   },
+  placeholder: "Select courses here...",
   asFloated: "left",
   withAnimation: {
     animation: "",
@@ -193,6 +186,11 @@ Default.args = {
     lang: "en",
     tgt: "treeBarOpen",
     dictionary: dictionary,
+  },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
   },
 };
 Default.parameters = {
@@ -209,80 +207,65 @@ Default.parameters = {
 export const TranslatedTreeBar = Template.bind({});
 TranslatedTreeBar.args = {
   ...Default.args,
-  content: {
-    treeData: {
-      id: "allArticles",
-      parentId: null,
-      name: "All Articles",
-      description: "",
-      children: [
-        {
-          id: "category-0",
-          parentId: "allArticles",
-          name: "Article",
-          description: "",
-          children: [
-            {
-              published: true,
-              tags: [],
-              _id: "622eeb5ede595f24b7aadd6e",
-              name: "Seeding Dummy Test Article",
-              category: "article",
-              summary: "",
-              identifier: "2Dpr5SmeY",
-              owner: "622b36ff46e1c31a2e22c42e",
-              createdAt: "2022-03-14T07:14:38.348Z",
-              id: "622eeb5ede595f24b7aadd6e",
-            },
-            {
-              published: true,
-              tags: [],
-              _id: "622b4534a2d4393e6ce1c3ba",
-              name: "New Article",
-              category: "article",
-              summary: "",
-              identifier: "Yeb4B2_bn",
-              owner: "622b36ff46e1c31a2e22c42e",
-              createdAt: "2022-03-11T12:48:52.066Z",
-              id: "622b4534a2d4393e6ce1c3ba",
-            },
-          ],
-        },
-        {
-          id: "category-1",
-          parentId: "allArticles",
-          name: "News",
-          description: "",
-          children: [
-            {
-              published: true,
-              tags: [],
-              _id: "623da574187838221637bebe",
-              name: "Test News",
-              category: "news",
-              summary: "",
-              identifier: "RnQ5trn7T",
-              owner: "622b36ff46e1c31a2e22c42e",
-              createdAt: "2022-03-25T11:20:20.195Z",
-              id: "623da574187838221637bebe",
-            },
-          ],
-        },
-      ],
-    },
-    props: {
-      placeHolder: "Select courses here...",
-      asFloated: "left",
-      withIcon: { name: "fas fa-search" },
-      withColor: {
-        backgroundColor: "",
-        textColor: "",
+  treeData: {
+    id: "allArticles",
+    parentId: null,
+    name: "All Articles",
+    description: "",
+    children: [
+      {
+        id: "category-0",
+        parentId: "allArticles",
+        name: "Article",
+        description: "",
+        children: [
+          {
+            published: true,
+            tags: [],
+            _id: "622eeb5ede595f24b7aadd6e",
+            name: "Seeding Dummy Test Article",
+            category: "article",
+            summary: "",
+            identifier: "2Dpr5SmeY",
+            owner: "622b36ff46e1c31a2e22c42e",
+            createdAt: "2022-03-14T07:14:38.348Z",
+            id: "622eeb5ede595f24b7aadd6e",
+          },
+          {
+            published: true,
+            tags: [],
+            _id: "622b4534a2d4393e6ce1c3ba",
+            name: "New Article",
+            category: "article",
+            summary: "",
+            identifier: "Yeb4B2_bn",
+            owner: "622b36ff46e1c31a2e22c42e",
+            createdAt: "2022-03-11T12:48:52.066Z",
+            id: "622b4534a2d4393e6ce1c3ba",
+          },
+        ],
       },
-      isDisabled: false,
-      isFluid: false,
-      isClosed: false,
-      isHidden: false
-    },
+      {
+        id: "category-1",
+        parentId: "allArticles",
+        name: "News",
+        description: "",
+        children: [
+          {
+            published: true,
+            tags: [],
+            _id: "623da574187838221637bebe",
+            name: "Test News",
+            category: "news",
+            summary: "",
+            identifier: "RnQ5trn7T",
+            owner: "622b36ff46e1c31a2e22c42e",
+            createdAt: "2022-03-25T11:20:20.195Z",
+            id: "623da574187838221637bebe",
+          },
+        ],
+      },
+    ],
   },
   withTranslation: {
     lang: "hi",
@@ -294,7 +277,7 @@ TranslatedTreeBar.parameters = {
   docs: {
     description: {
       story:
-        "Use to change the language that the text appears in. To make this work for the TreebarBar:(pageHeader), add a SearchBar:{placeHolder} value to the dictionary.",
+        "Use to change the language that the text appears in. To make this work for the TreebarBar:(header), add a SearchBar:{placeholder} value to the dictionary.",
     },
     source: {
       code: `<TreeBarOpen {...${JSON.stringify(
@@ -307,21 +290,21 @@ TranslatedTreeBar.parameters = {
 };
 
 // -------------------------------------------------------------
-// Without PageHeader
+// Without header
 // -------------------------------------------------------------
-export const WithoutPageHeader = Template.bind({});
-WithoutPageHeader.args = {
+export const WithoutHeader = Template.bind({});
+WithoutHeader.args = {
   ...Default.args,
-  pageHeader: "",
+  header: "",
 };
-WithoutPageHeader.parameters = {
+WithoutHeader.parameters = {
   docs: {
     description: {
       story: "Use to disable page header.",
     },
     source: {
       code: `<TreeBarOpen {...${JSON.stringify(
-        WithoutPageHeader.args,
+        WithoutHeader.args,
         null,
         2
       )}}/>`,

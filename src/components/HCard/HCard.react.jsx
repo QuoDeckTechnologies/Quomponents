@@ -19,9 +19,29 @@ HCard.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  HCard component data has to be in content props.
+  HCard component id has to be in id props.
   */
-  content: PropTypes.object,
+  id: PropTypes.string,
+  /**
+  HCard component name has to be in name props.
+  */
+  name: PropTypes.string,
+  /**
+  HCard component description has to be in description props.
+  */
+  description: PropTypes.string,
+  /**
+  HCard component button text has to be in buttonText props.
+  */
+  buttonText: PropTypes.string,
+  /**
+  Use to set checked HCard component.
+  */
+  checked: PropTypes.bool,
+  /**
+  HCard component image has to be in image props.
+  */
+  image: PropTypes.object,
   /**
   HCard can set image from imageLibrary array
   */
@@ -29,28 +49,10 @@ HCard.propTypes = {
   /**
   Use for show or hide button 
   */
-  isButton: PropTypes.bool,
-  /**
-  Set action emphasis in increasing order 
-  */
-  asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
-  /**
-  Use for rounded corners or circular button 
-  */
-  isCircular: PropTypes.bool,
+  showButton: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
-  /**
-  Use to define standard component type
-  */
-  asVariant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "error",
-  ]),
   /**
   Use to float the component in parent container
   */
@@ -61,10 +63,9 @@ HCard.propTypes = {
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
-    accentBackgroundColor: PropTypes.string,
     textColor: PropTypes.string,
-    buttonBackgroundColor: PropTypes.string,
-    buttonTextColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to define the entry animation of the component
@@ -109,22 +110,17 @@ HCard.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {
-    id: "",
-    name: "",
-    description: "",
-    buttonText: "",
-    checked: true,
-    image: { id: "", extention: "" },
-  },
+  id: "",
+  name: "",
+  description: "",
+  buttonText: "",
+  checked: true,
+  image: { id: "", extention: "" },
   imageLibrary: [],
-  isButton: true,
-  asEmphasis: "contained",
-  isCircular: false,
+  showButton: true,
   //=======================================
   // Quommon props
   //=======================================
-  asVariant: "primary",
   asFloated: "none",
   withColor: null,
   withAnimation: null,
@@ -143,13 +139,24 @@ export default function HCard(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { content, withColor, imageLibrary, isButton, onClick } = props;
+  const {
+    id,
+    name,
+    description,
+    buttonText,
+    checked,
+    image,
+    withColor,
+    imageLibrary,
+    showButton,
+    onClick,
+  } = props;
   //-------------------------------------------------------------------
   // 2. Function to handle click
   //-------------------------------------------------------------------
   const handleClick = () => {
-    if (!isButton) {
-      onClick(content);
+    if (!showButton) {
+      onClick({ id, name, description, buttonText, checked, image });
     }
   };
   //-------------------------------------------------------------------
@@ -168,12 +175,9 @@ export default function HCard(props) {
   // 6. Function to set image of the card
   //-------------------------------------------------------------------
   const getBackground = () => {
-    if (content?.image) {
+    if (image) {
       return {
-        backgroundImage: `url(${resolveImage(
-          content?.image.id,
-          imageLibrary
-        )})`,
+        backgroundImage: `url(${resolveImage(image.id, imageLibrary)})`,
       };
     }
   };
@@ -188,11 +192,11 @@ export default function HCard(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div
-        className={`qui-h-card-container ${isButton ? "qui-h-card-with-button-container" : "qui-h-card-without-button-container"
-          } qt-shadow`}
-        style={{
-          backgroundColor: withColor?.backgroundColor,
-        }}
+        className={`qui-h-card-container ${
+          showButton
+            ? "qui-h-card-with-button-container"
+            : "qui-h-card-without-button-container"
+        } qt-shadow`}
         onClick={handleClick}
       >
         <div
@@ -204,49 +208,29 @@ export default function HCard(props) {
             backgroundSize: "cover",
           }}
         >
-          {content?.checked && (
-            <div
-              className="qui-h-card-checkbox-container"
-              style={{ backgroundColor: withColor?.accentBackgroundColor }}
-            >
-              <i
-                className="fas fa-check-square"
-                style={{ color: withColor?.accentColor }}
-              ></i>
+          {checked && (
+            <div className="qui-h-card-checkbox-container">
+              <i className="fas fa-check-square"></i>
             </div>
           )}
         </div>
         <div className="qui-h-card-text-container">
           <div className="qui-h-card-text">
-            <h6 className="qui-h-card-title"
-              style={{
-                color: withColor?.textColor,
-              }}
-            >
-              {content?.name}
-            </h6>
-            <p
-              className="qui qt-sm qui-h-card-description"
-              style={{
-                color: withColor?.textColor,
-              }}
-            >
-              {content?.description}
+            <h6 className="qui-h-card-title">{tObj ? tObj.name : name}</h6>
+            <p className="qui qt-sm qui-h-card-description">
+              {tObj ? tObj.description : description}
             </p>
           </div>
-          {isButton && (
+          {showButton && (
             <Button
               {...props}
-              content={
-                tObj?.buttonText || content?.buttonText || "click here"
-              }
+              content={tObj?.buttonText || buttonText || "click here"}
               isFluid={false}
               withTranslation={null}
-              withColor={{
-                backgroundColor: withColor?.buttonBackgroundColor,
-                textColor: withColor?.buttonTextColor,
-              }}
-              onClick={() => onClick(content)}
+              withColor={withColor}
+              onClick={() =>
+                onClick({ id, name, description, buttonText, checked, image })
+              }
             />
           )}
         </div>

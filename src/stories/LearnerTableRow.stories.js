@@ -6,6 +6,13 @@ export default {
   component: LearnerTableRow,
   argTypes: {
     content: [],
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     withColor: {
       table: {
         category: "with-Params",
@@ -13,16 +20,6 @@ export default {
           backgroundColor: "",
           accentColor: "",
           textColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
         },
       },
     },
@@ -101,15 +98,11 @@ Default.args = {
       last_name: "Creator",
     },
   ],
+  asVariant: "primary",
   withColor: {
     backgroundColor: "",
     accentColor: "",
     textColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
   },
   isDisabled: false,
   isHidden: false,
@@ -121,63 +114,6 @@ Default.parameters = {
     },
   },
 };
-// // -------------------------------------------------------------
-// // LearnerTableRow List
-// // -------------------------------------------------------------
-// const ListTemplate = (args) => {
-//   return (
-//     <div className="qui-content-table-row-list">
-//       <LearnerTableRow
-//         {...args}
-//         content={[
-//           {
-//             _id: "",
-//             username: "sysadmin",
-//             first_name: "System",
-//             last_name: "Administrator",
-//           },
-//         ]}
-//       />
-//       <LearnerTableRow
-//         {...args}
-//         content={[
-//           {
-//             _id: "",
-//             username: "john_doe",
-//             first_name: "John",
-//             last_name: "Doe",
-//           },
-//         ]}
-//       />
-//       <LearnerTableRow
-//         {...args}
-//         content={[
-//           {
-//             _id: "",
-//             username: "superadmin",
-//             first_name: "Super",
-//             last_name: "Administrator",
-//           },
-//         ]}
-//       />
-//     </div>
-//   );
-// };
-// export const LearnerTableRowList = ListTemplate.bind({});
-// LearnerTableRowList.parameters = {
-//   docs: {
-//     description: {
-//       story: "Shows a list of LearnerTableRow Component",
-//     },
-//     source: {
-//       code: `<LearnerTableRowList {...${JSON.stringify(
-//         LearnerTableRowList.args,
-//         null,
-//         2
-//       )}}/>`,
-//     },
-//   },
-// };
 //-------------------------------------------------------------
 // Colored LearnerTableRow
 // -------------------------------------------------------------

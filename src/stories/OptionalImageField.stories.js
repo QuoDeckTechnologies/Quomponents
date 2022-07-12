@@ -1,64 +1,18 @@
 import React from "react";
 import OptionalImageField from "../components/OptionalImageField/OptionalImageField.react";
 
-const dictionary = JSON.stringify({
-  hi: {
-    optionalImageField: {
-      title: "अपलोड",
-    },
-  },
-});
-
 export default {
   title: "Design System/OptionalImageField/OptionalImageField",
   component: OptionalImageField,
   argTypes: {
-    content: {
-      defaultValue: {
-        title: "Upload",
-        icon: "fas fa-image",
-        actionButton: true,
-      },
-    },
-    withFile: {
-      defaultValue: {
-        type: "image/*",
-        capture: "",
-      },
-    },
-    isMultiple: {
+    title: "",
+    icon: "",
+    actionButton: true,
+    type: "image/*",
+    capture: "",
+    multiple: {
       table: {
         defaultValue: false,
-      },
-    },
-    withColor: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          backgroundColor: "",
-          accentColor: "",
-          textColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
-        },
-      },
-    },
-    withTranslation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          lang: "",
-          tgt: "",
-          dictionary: "",
-        },
       },
     },
     isHidden: {
@@ -79,7 +33,7 @@ export default {
         defaultValue: false,
       },
     },
-    onClick: {
+    onUpload: {
       table: {
         category: "Events",
         defaultValue: null,
@@ -97,31 +51,12 @@ export default {
 const Template = (args) => <OptionalImageField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    title: "Upload",
-    icon: "fas fa-image",
-    actionButton: true,
-  },
-  withFile: {
-    type: "image/*",
-    capture: "",
-  },
-  isMultiple: false,
-  withColor: {
-    backgroundColor: "",
-    accentColor: "",
-    textColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
-  },
-  withTranslation: {
-    lang: "en",
-    tgt: "optionalImageField",
-    dictionary: dictionary,
-  },
+  title: "Upload",
+  icon: "fas fa-image",
+  actionButton: true,
+  type: "image/*",
+  capture: "",
+  multiple: false,
   isDisabled: false,
   isHidden: false,
   isFluid: false,
@@ -143,11 +78,9 @@ Default.parameters = {
 export const WithoutActionButton = Template.bind({});
 WithoutActionButton.args = {
   ...Default.args,
-  content: {
-    title: "",
-    icon: "fas fa-image",
-    actionButton: false,
-  },
+  title: "",
+  icon: "fas fa-image",
+  actionButton: false,
 };
 WithoutActionButton.parameters = {
   docs: {
@@ -169,10 +102,8 @@ WithoutActionButton.parameters = {
 export const WithoutIcon = Template.bind({});
 WithoutIcon.args = {
   ...Default.args,
-  content: {
-    title: "Upload",
-    actionButton: true,
-  },
+  title: "Upload",
+  actionButton: true,
 };
 WithoutIcon.parameters = {
   docs: {
@@ -194,11 +125,9 @@ WithoutIcon.parameters = {
 export const WithCustomIcon = Template.bind({});
 WithCustomIcon.args = {
   ...Default.args,
-  content: {
-    title: "Upload new file",
-    icon: "fas fa-camera-retro",
-    actionButton: true,
-  },
+  title: "Upload new file",
+  icon: "fas fa-camera-retro",
+  actionButton: true,
 };
 WithCustomIcon.parameters = {
   docs: {
@@ -208,81 +137,6 @@ WithCustomIcon.parameters = {
     source: {
       code: `<OptionalImageField {...${JSON.stringify(
         WithCustomIcon.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Colored OptionalImageField
-// -------------------------------------------------------------
-export const ColoredOptionalImageField = Template.bind({});
-ColoredOptionalImageField.args = {
-  ...Default.args,
-  withColor: {
-    backgroundColor: "#2a9d8f09",
-    accentColor: "#264653",
-    textColor: "#023047",
-  },
-};
-ColoredOptionalImageField.parameters = {
-  docs: {
-    description: {
-      story: "Use to override the standard colors of the component.",
-    },
-    source: {
-      code: `<OptionalImageField {...${JSON.stringify(
-        ColoredOptionalImageField.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Translated OptionalImageField
-// -------------------------------------------------------------
-export const TranslatedOptionalImageField = Template.bind({});
-TranslatedOptionalImageField.args = {
-  ...Default.args,
-  withTranslation: {
-    lang: "hi",
-    tgt: "optionalImageField",
-    dictionary: dictionary,
-  },
-};
-TranslatedOptionalImageField.parameters = {
-  docs: {
-    source: {
-      code: `<OptionalImageField {...${JSON.stringify(
-        TranslatedOptionalImageField.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionalImageField
-// -------------------------------------------------------------
-export const AnimatedOptionalImageField = Template.bind({});
-AnimatedOptionalImageField.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionalImageField.parameters = {
-  docs: {
-    description: {
-      story: "We can animate the appearance of OptionalImageField",
-    },
-    source: {
-      code: `<OptionalImageField {...${JSON.stringify(
-        AnimatedOptionalImageField.args,
         null,
         2
       )}}/>`,

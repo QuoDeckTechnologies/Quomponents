@@ -5,6 +5,9 @@ const dictionary = JSON.stringify({
   hi: {
     vCardWithButton: {
       buttonText: "प्रयत्न करें",
+      name: "बेलून बस्ट",
+      description:
+        "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
     },
   },
 });
@@ -13,27 +16,12 @@ export default {
   title: "Design System/VCardWithButton/VCardWithButton",
   component: VCardWithButton,
   argTypes: {
-    content: {},
-    asEmphasis: {
-      control: "select",
-      options: ["text", "outlined", "contained"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    isCircular: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    asVariant: {
-      control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
+    id: "",
+    name: "",
+    description: "",
+    buttonText: "",
+    checked: false,
+    image: {},
     asFloated: {
       control: "select",
       options: ["left", "right", "none", "inline"],
@@ -47,10 +35,9 @@ export default {
         defaultValue: {
           backgroundColor: "",
           accentColor: "",
-          accentBackgroundColor: "",
           textColor: "",
-          buttonBackgroundColor: "",
-          buttonTextColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -102,22 +89,19 @@ export default {
     },
   },
 };
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
 const Template = (args) => <VCardWithButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    id: "default-id",
-    name: "BALLOON BURST",
-    description:
-      "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-    buttonText: "try game",
-    checked: true,
-    image: { id: "background-image", extention: "" },
-  },
+  id: "default-id",
+  name: "BALLOON BURST",
+  description:
+    "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+  buttonText: "try game",
+  checked: true,
+  image: { id: "background-image", extention: "" },
   imageLibrary: [
     {
       id: "background-image",
@@ -125,17 +109,13 @@ Default.args = {
         "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     },
   ],
-  asEmphasis: "contained",
-  isCircular: false,
-  asVariant: "warning",
   asFloated: "none",
   withColor: {
     backgroundColor: "",
     accentColor: "",
-    accentBackgroundColor: "",
     textColor: "",
-    buttonBackgroundColor: "",
-    buttonTextColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -163,15 +143,13 @@ Default.parameters = {
 export const VCardWithDefaultImage = Template.bind({});
 VCardWithDefaultImage.args = {
   ...Default.args,
-  content: {
-    id: "default-id",
-    name: "BALLOON BURST",
-    description:
-      "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-    buttonText: "try game",
-    checked: true,
-    image: { id: "background-", extention: "" },
-  },
+  id: "default-id",
+  name: "BALLOON BURST",
+  description:
+    "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+  buttonText: "try game",
+  checked: true,
+  image: { id: "background-", extention: "" },
 };
 VCardWithDefaultImage.parameters = {
   docs: {
@@ -194,15 +172,13 @@ VCardWithDefaultImage.parameters = {
 export const UncheckedVCardWithButton = Template.bind({});
 UncheckedVCardWithButton.args = {
   ...Default.args,
-  content: {
-    id: "default-id",
-    name: "BALLOON BURST",
-    description:
-      "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-    buttonText: "try game",
-    checked: false,
-    image: { id: "background-image", extention: "" },
-  },
+  id: "default-id",
+  name: "BALLOON BURST",
+  description:
+    "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+  buttonText: "try game",
+  checked: false,
+  image: { id: "background-image", extention: "" },
 };
 UncheckedVCardWithButton.parameters = {
   docs: {
@@ -227,10 +203,9 @@ ColoredVCardWithButton.args = {
   withColor: {
     backgroundColor: "#fefae0",
     accentColor: "#606c38",
-    accentBackgroundColor: "#fefae0",
     textColor: "#bc6c25",
-    buttonBackgroundColor: "#606c38",
-    buttonTextColor: "#dda15e",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredVCardWithButton.parameters = {
