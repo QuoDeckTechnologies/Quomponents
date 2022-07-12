@@ -32,15 +32,18 @@ ConfirmationOverlay.propTypes = {
     //=======================================
 
     /**
+    Use to define component padding in increasing order
+    */
+    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+    /**
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         textColor: PropTypes.string,
-        confirmBackgroundColor: PropTypes.string,
-        confirmTextColor: PropTypes.string,
-        cancelBackgroundColor: PropTypes.string,
-        cancelTextColor: PropTypes.string,
+        accentColor: PropTypes.string,
+        hoverBackgroundColor: PropTypes.string,
+        hoverTextColor: PropTypes.string,
     }),
 
     /**
@@ -96,6 +99,8 @@ ConfirmationOverlay.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
+    asPadded: "normal",
+
     withColor: null,
     withAnimation: null,
     withTranslation: null,
@@ -107,18 +112,24 @@ ConfirmationOverlay.defaultProps = {
 function getColors(colors, state) {
     if (state === 'confirm') {
         return {
-            backgroundColor: colors.confirmBackgroundColor,
-            textColor: colors.confirmTextColor,
+            backgroundColor: colors.accentColor,
+            textColor: colors.accentColor,
+            hoverBackgroundColor: colors.hoverBackgroundColor,
+            hoverTextColor: colors.hoverTextColor
         }
     } else if (state === 'cancel') {
         return {
-            backgroundColor: colors.cancelBackgroundColor,
-            textColor: colors.cancelTextColor,
+            backgroundColor: colors.accentColor,
+            textColor: colors.textColor,
+            hoverBackgroundColor: colors.hoverBackgroundColor,
+            hoverTextColor: colors.hoverTextColor
         }
     } else {
         return {
             background: colors.backgroundColor,
             color: colors.textColor,
+            hoverBackgroundColor: colors.hoverBackgroundColor,
+            hoverTextColor: colors.hoverTextColor
         }
     }
 }
@@ -184,24 +195,26 @@ export default function ConfirmationOverlay(props) {
             className={`qui qui-confirmation-overlay-container ${quommonClasses.parentClasses}`}
             style={mainColors}
         >
-            <h5 className="qui-overlay-header">
-                {header || "Are you sure?"}
-            </h5>
-            <ButtonGroup className="qui-confirmation-overlay-group">
-                <Button
-                    asEmphasis="outlined"
-                    content={yes || "Yes"}
-                    withColor={confirmColors}
-                    onClick={yesClick}
-                    asSize="big"
-                />
-                <Button
-                    content={no || "No"}
-                    onClick={noClick}
-                    withColor={cancelColors}
-                    asSize="big"
-                />
-            </ButtonGroup>
+            <div className={`qui-confirmation-overlay-group ${quommonClasses.childClasses}`}>
+                <h5 className="qui-overlay-header">
+                    {header || "Are you sure?"}
+                </h5>
+                <ButtonGroup className="qui-confirmation-overlay-group">
+                    <Button
+                        asEmphasis="outlined"
+                        content={yes || "Yes"}
+                        withColor={confirmColors}
+                        onClick={yesClick}
+                        asSize="big"
+                    />
+                    <Button
+                        content={no || "No"}
+                        onClick={noClick}
+                        withColor={cancelColors}
+                        asSize="big"
+                    />
+                </ButtonGroup>
+            </div>
         </motion.div>
     );
 

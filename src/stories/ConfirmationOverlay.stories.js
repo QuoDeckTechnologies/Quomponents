@@ -26,16 +26,22 @@ export default {
                 },
             },
         },
+        asPadded: {
+            control: "select",
+            options: ["fitted", "compact", "normal", "relaxed"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
                     textColor: "",
-                    confirmBackgroundColor: "",
-                    confirmTextColor: "",
-                    cancelBackgroundColor: "",
-                    cancelTextColor: "",
+                    accentColor: "",
+                    hoverBackgroundColor: "",
+                    hoverTextColor: "",
                 },
             },
         },
@@ -109,13 +115,13 @@ Default.args = {
         yes: "Yes",
         no: "No",
     },
+    asPadded: "fitted",
     withColor: {
         backgroundColor: "",
         textColor: "",
-        confirmBackgroundColor: "",
-        confirmTextColor: "",
-        cancelBackgroundColor: "",
-        cancelTextColor: "",
+        accentColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
     },
     withAnimation: {
         animation: "zoom",
@@ -147,10 +153,9 @@ ColoredOverlay.args = {
     withColor: {
         backgroundColor: "#000000",
         textColor: "#ffffff",
-        confirmBackgroundColor: "#ffbf00",
-        confirmTextColor: "#000000",
-        cancelBackgroundColor: "#ffbf00",
-        cancelTextColor: "#000000",
+        accentColor: "#ffbf00",
+        hoverBackgroundColor: "#ffff00",
+        hoverTextColor: "#ff0000",
     },
 };
 ColoredOverlay.parameters = {
@@ -163,10 +168,9 @@ ColoredOverlay.parameters = {
             withColor={{
                 backgroundColor: "#000000",
                 textColor: "#ffffff",
-                confirmBackgroundColor: "#ffbf00",
-                confirmTextColor: "#000000",
-                cancelBackgroundColor: "#ffbf00",
-                cancelTextColor: "#000000",
+                accentColor: "#ffbf00",
+                hoverBackgroundColor: "#ffff00",
+                hoverTextColor: "#ff0000",
             }}
             />`,
         },
