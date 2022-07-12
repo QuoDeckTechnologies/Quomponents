@@ -18,6 +18,7 @@ AppMenu.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
+  avatar: PropTypes.string,
   /**
   Use for rounded corners or circular icon button 
   */
@@ -113,6 +114,7 @@ AppMenu.defaultProps = {
   // Component Specific props
   //=======================================
   isCircular: true,
+  avatar: "",
   //=======================================
   // Quommon props
   //=======================================
@@ -200,14 +202,14 @@ export default function AppMenu(props) {
             <Avatar
               {...props}
               withIcon={
-                props.withIcon ? props.withIcon : { icon: "fas fa-user" }
+                props.avatar ? { icon: props.avatar } : { icon: "fas fa-user" }
               }
             />
           </div>
           <div className="qui-app-menu-icon-container">
             <MenuBlock
               {...props}
-              withIcon={{ icon: "fas fa-ellipsis-v" }}
+              withIcon={props.withIcon ? props.withIcon : { icon: "fas fa-ellipsis-v" }}
               withLabel={{ content: "" }}
               withTranslation={null}
             />

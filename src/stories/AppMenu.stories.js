@@ -13,6 +13,7 @@ export default {
   title: "Design System/Appmenu/Appmenu",
   component: AppMenu,
   argTypes: {
+    avatar: "",
     isCircular: {
       table: {
         category: "is-Toggles",
@@ -76,14 +77,14 @@ export default {
       },
     },
     withAnimation: {
-        table: {
-            category: "with-Params",
-            defaultValue: {
-                animation: "",
-                duration: 0,
-                delay: 0,
-            },
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          animation: "",
+          duration: 0,
+          delay: 0,
         },
+      },
     },
     isHidden: {
       table: {
@@ -128,11 +129,12 @@ export default {
 const Template = (args) => <AppMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+  avatar: "",
   isCircular: true,
   asVariant: "primary",
   asSize: "normal",
   asFloated: "inline",
-  withIcon: { icon: "fas fa-user" },
+  withIcon: { icon: "fas fa-ellipsis-v" },
   withColor: {
     backgroundColor: "",
     textColor: "",
@@ -146,9 +148,9 @@ Default.args = {
     dictionary: dictionary,
   },
   withAnimation: {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
   },
   isDisabled: false,
   isHidden: false,
@@ -170,11 +172,12 @@ Default.parameters = {
 export const UserImage = Template.bind({});
 UserImage.args = {
   ...Default.args,
+  avatar: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
   isCircular: false,
   asVariant: "warning",
   withLabel: { content: "" },
   withIcon: {
-    icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+    icon: "",
   },
 };
 UserImage.parameters = {
@@ -194,11 +197,12 @@ UserImage.parameters = {
 export const DisabledIcon = Template.bind({});
 DisabledIcon.args = {
   ...Default.args,
+  avatar: "",
   isCircular: false,
   asVariant: "warning",
   asSize: "normal",
   asFloated: "inline",
-  withIcon: { icon: "fas fa-user" },
+  withIcon: { icon: "fas fa-ellipsis-v" },
   withColor: {
     backgroundColor: "",
     textColor: "",
@@ -308,66 +312,6 @@ AllSizes.parameters = {
     },
     source: {
       code: `<AppMenu asVariant="secondary"/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// AllVariants
-// -------------------------------------------------------------
-const AllVariantsTemplate = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args, {
-      asFloated: "inline",
-    }),
-  };
-  return (
-    <div>
-      <AppMenu
-        {...Object.assign({}, baseObj, {
-          asVariant: "primary",
-          asSize: "normal",
-          withIcon: { icon: "fas fa-user" },
-        })}
-      />
-      <AppMenu
-        {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
-          asSize: "normal",
-          withIcon: { icon: "fas fa-user" },
-        })}
-      />
-      <AppMenu
-        {...Object.assign({}, baseObj, {
-          asVariant: "success",
-          asSize: "normal",
-          withIcon: { icon: "fas fa-user" },
-        })}
-      />
-      <AppMenu
-        {...Object.assign({}, baseObj, {
-          asVariant: "warning",
-          asSize: "normal",
-          withIcon: { icon: "fas fa-user" },
-        })}
-      />
-      <AppMenu
-        {...Object.assign({}, baseObj, {
-          asVariant: "error",
-          asSize: "normal",
-          withIcon: { icon: "fas fa-user" },
-        })}
-      />
-    </div>
-  );
-};
-export const AllVariants = AllVariantsTemplate.bind({});
-AllVariants.parameters = {
-  docs: {
-    description: {
-      story: "5 variants are supported. Use as per purpose noted here.",
-    },
-    source: {
-      code: `<Avatar asVariant="primary"/>`,
     },
   },
 };
