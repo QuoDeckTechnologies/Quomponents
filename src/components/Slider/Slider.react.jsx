@@ -67,7 +67,6 @@ Slider.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asVariant: "primary",
   withAnimation: null,
   isHidden: false,
   isDisabled: false,

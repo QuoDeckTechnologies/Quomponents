@@ -20,11 +20,6 @@ LearnerTableRow.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to define component padding in increasing order
-    */
-  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-
-  /**
     Use to override component colors and behavior
     */
   withColor: PropTypes.shape({
@@ -75,7 +70,6 @@ LearnerTableRow.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
-  asPadded: "normal",
   withColor: null,
   withAnimation: null,
   isDisabled: false,
@@ -97,8 +91,7 @@ export default function LearnerTableRow(props) {
   //-------------------------------------------------------------------
   // 2. Defining variables and states
   //-------------------------------------------------------------------
-  const [isChecked, setIsChecked] = useState(false);
-  const enrolledLearners = content;
+  const [enrolledLearners, setEnrolledLearners] = useState(content);
   //-------------------------------------------------------------------
   // 4. Set the classes
   //-------------------------------------------------------------------
@@ -108,7 +101,46 @@ export default function LearnerTableRow(props) {
   //-------------------------------------------------------------------
   const animate = getAnimation(props);
 
+  const handleSelect = (data) => {
+    let tmp_state = enrolledLearners;
+    let tmp_arr = [];
+    let tmp_obj = {};
+
+    tmp_state.forEach((dataObj) => {
+      if (dataObj?._id === data._id) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.checked = tmp_obj.checked ? false : true;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setEnrolledLearners([...tmp_arr]);
+  };
+
+  const handleSendMessage = () => {
+    let tmp_arr = [];
+    enrolledLearners.forEach((item) => {
+      if (item.checked) {
+        tmp_arr.push(item.username);
+      }
+    });
+    props.onSendMessage(tmp_arr);
+  };
+
+  const handleUnenrollLearner = () => {
+    let tmp_arr = [];
+    enrolledLearners.forEach((item) => {
+      if (item.checked) {
+        tmp_arr.push(item.username);
+      }
+    });
+    props.onUnenrollLearner(tmp_arr);
+  };
+
   // ========================= Render Function =================================
+
   return (
     <motion.div
       initial={animate.from}
@@ -126,9 +158,10 @@ export default function LearnerTableRow(props) {
             >
               <div className="qui-learner-checkbox-container">
                 <i
-                  className={`${isChecked ? "fas fa-check-square" : "far fa-square"
-                    } qui-learner-checkbox`}
-                  onClick={() => setIsChecked((prevState) => !prevState)}
+                  className={`${
+                    learner.checked ? "fas fa-check-square" : "far fa-square"
+                  } qui-learner-checkbox`}
+                  onClick={() => handleSelect(learner)}
                 ></i>
               </div>
               <div className="qui-learner-username">
@@ -143,11 +176,11 @@ export default function LearnerTableRow(props) {
               >
                 <i
                   className="far fa-comment-alt"
-                  onClick={(e) => props.onSendMessage(e)}
+                  onClick={(e) => handleSendMessage()}
                 ></i>
                 <i
                   className="fas fa-user-minus"
-                  onClick={(e) => props.onUnenrollLearner(e)}
+                  onClick={(e) => handleUnenrollLearner()}
                 ></i>
               </div>
             </div>

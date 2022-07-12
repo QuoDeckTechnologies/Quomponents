@@ -6,13 +6,6 @@ export default {
   component: Slider,
   argTypes: {
     initialValue: 10,
-    asVariant: {
-      control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
-      },
-    },
     withColor: {
       table: {
         category: "with-Params",
