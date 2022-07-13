@@ -37,6 +37,11 @@ LinkIcon.propTypes = {
     width: PropTypes.string,
 
     /**
+    Set title in linkIcon 
+    */
+    title: PropTypes.string,
+
+    /**
     LinkIcon component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
@@ -199,7 +204,7 @@ export default function LinkIcon(props) {
         >
             <div
                 className={`${quommonClasses.childClasses} qui-linkicon-block squared`}
-                title={props.label}
+                title={props.title ? props.title : props.label}
                 style={{
                     width: props.width,
                     maxWidth: props.width,

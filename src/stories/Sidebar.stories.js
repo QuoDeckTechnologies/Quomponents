@@ -10,6 +10,7 @@ export default {
             {
                 icon: "",
                 label: "",
+                title: "",
                 active: false,
                 onClick: () => true,
             },
@@ -85,6 +86,7 @@ Default.args = {
         {
             icon: "fa fa-home",
             label: "Home",
+            title: "Click here to go to the Home Page",
             active: true,
             onClick: () => true,
         },

@@ -30,10 +30,11 @@ Sidebar.propTypes = {
     */
     content: PropTypes.arrayOf(
         PropTypes.shape({
-            icon: PropTypes.string,
-            label: PropTypes.string,
+            icon: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+            title: PropTypes.string,
             active: PropTypes.bool,
-            onClick: PropTypes.func,
+            onClick: PropTypes.func.isRequired,
         })
     ).isRequired,
     /**
@@ -177,6 +178,7 @@ export default function Sidebar(props) {
                                     <LinkIcon
                                         icon={section.icon}
                                         label={section.label}
+                                        title={section.title}
                                         active={section.active}
                                         width={props.width}
                                         asSize={props.asSize}
