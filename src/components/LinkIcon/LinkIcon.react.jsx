@@ -121,7 +121,7 @@ LinkIcon.defaultProps = {
     //=======================================
     asSize: "normal",
     asPadded: "normal",
-    asFloated: "inline",
+    asFloated: "none",
 
     withColor: null,
     withAnimation: null,
@@ -138,7 +138,9 @@ function getColors(colors, hovered, active) {
               color: colors?.hoverTextColor,
           }
         : {
-              background: active ? colors?.accentColor : colors?.backgroundColor,
+              background: active
+                  ? colors?.accentColor
+                  : colors?.backgroundColor,
               color: colors?.textColor,
           };
     return colorStyle;
@@ -213,7 +215,7 @@ export default function LinkIcon(props) {
                     ></i>
                     <br />
                     <div
-                        className={`qui-icon-caption emp-text`}
+                        className={`qui-linkicon-caption`}
                         style={Object.assign({}, colors.textColor)}
                     >
                         <div className="qui qt-utn">{props.label}</div>
