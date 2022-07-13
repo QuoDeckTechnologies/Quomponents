@@ -8,6 +8,13 @@
   background-color: #e8e8e8;
   color: #121212;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.qui .qui-linkicon-block:hover {
+  box-shadow: 0 0 28px rgba(0, 0, 0, 0.25), 0 0 10px rgba(0, 0, 0, 0.22);
+  z-index: 2;
 }
 
 .qui .qui-linkicon-block.active {

@@ -39,7 +39,7 @@ h6 {
 /* ================================================= */
 .qui {
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
     font-family: Arial, Helvetica, sans-serif;
 }
 
