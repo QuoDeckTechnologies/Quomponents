@@ -86,7 +86,7 @@ Sidebar.propTypes = {
 Sidebar.defaultProps = {
     // Component Specific props
     //=======================================
-    width: "64px",
+    width: "80px",
     editMode: {
         active: false,
         label: "Edit Mode",
