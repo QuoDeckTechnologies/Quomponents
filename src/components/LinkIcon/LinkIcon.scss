@@ -1,0 +1,69 @@
+.qui .qui-linkicon-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #e8e8e8;
+  color: #000000;
+  cursor: pointer;
+}
+
+.qui .qui-linkicon-block.active {
+  background-color: #ffab00;
+  color: #000000;
+}
+
+.qui .qui-linkicon-block .qui-linkicon-anchor {
+  width: 100%;
+}
+
+.qui .qui-linkicon-block .qui-linkicon-anchor i {
+  font-size: 2em;
+  margin: 0 auto;
+  margin-bottom: 3px;
+}
+
+.tilt {
+  transform: rotate(10deg);
+  transition: all ease-in-out;
+}
+
+// .qui.qui-icon-link {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   text-transform: uppercase;
+//   .pad-normal {
+//     padding: 1.5em 0.5em;
+//   }
+//   .qui-btn {
+//     width: 5em;
+//     &.is-circular {
+//       border-radius: 0.5em;
+//     }
+//     &.is-circular.circular-without-label {
+//       border-radius: 50%;
+//       padding: 1.3em 0.3em;
+//     }
+//   }
+//   .qui-iconlink-anchor {
+//     text-decoration: none;
+//   }
+//   .tilt {
+//     transform: rotate(10deg);
+//     transition: all ease-in-out;
+//   }
+//   .qui-icon-label {
+//     font-weight: normal;
+//   }
+//   .qui-icon-caption {
+//     font-style: normal;
+//     margin-top: 0.3em;
+//   }
+//   .qui-iconlink-icon {
+//     font-size: 2.5em;
+//   }
+// }
