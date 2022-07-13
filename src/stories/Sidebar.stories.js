@@ -49,7 +49,7 @@ const dictionary = JSON.stringify({
     },
 });
 export default {
-    title: "Design System/Sidebar/Sidebar",
+    title: "Design System/Sidebar",
     component: Sidebar,
     argTypes: {
         licenseType: "admin",

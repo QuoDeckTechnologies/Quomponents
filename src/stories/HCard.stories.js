@@ -10,7 +10,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/HCard/HCard",
+  title: "Design System/HCard",
   component: HCard,
   argTypes: {
     content: {},

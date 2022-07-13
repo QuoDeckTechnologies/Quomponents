@@ -10,7 +10,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/Appmenu/Appmenu",
+  title: "Design System/Appmenu",
   component: AppMenu,
   argTypes: {
     isCircular: {

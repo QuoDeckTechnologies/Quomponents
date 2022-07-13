@@ -2,7 +2,7 @@ import React from "react";
 import StatisticsCard from "../components/StatisticsCard/StatisticsCard.react";
 
 export default {
-    title: "Design System/StatisticsCard/StatisticsCard",
+    title: "Design System/StatisticsCard",
     component: StatisticsCard,
     argTypes: {
         label: "",

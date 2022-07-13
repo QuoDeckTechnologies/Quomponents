@@ -10,7 +10,7 @@ const dictionary = JSON.stringify({
     },
 });
 export default {
-    title: "Design System/FeedbackForm/FeedbackForm",
+    title: "Design System/FeedbackForm",
     component: FeedbackForm,
     argTypes: {
         content: "Show Feedback",

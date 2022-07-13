@@ -2,7 +2,7 @@ import React from "react";
 import ProgressBar from "../components/ProgressBar/ProgressBar.react";
 
 export default {
-    title: "Design System/ProgressBar/ProgressBar",
+    title: "Design System/ProgressBar",
     component: ProgressBar,
     argTypes: {
 
