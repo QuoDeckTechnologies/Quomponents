@@ -27,8 +27,8 @@ export default {
                     textColor: "",
                     accentColor: "",
                     backgroundColor: "",
-                    focusAccentColor: "",
-                    focusBackgroundColor: ""
+                    hoverTextColor: "",
+                    hoverBackgroundColor: ""
                 },
             },
         },
@@ -97,8 +97,8 @@ Default.args = {
         textColor: "",
         accentColor: "#8c8c898c",
         backgroundColor: "#4545453b",
-        focusAccentColor: "#AAAAAA",
-        focusBackgroundColor: "#FFBF00",
+        hoverTextColor: "#AAAAAA",
+        hoverBackgroundColor: "#FFBF00",
     },
     withAnimation: {
         animation: "zoom",
@@ -153,8 +153,8 @@ ColoredOTPFields.args = {
         textColor: "#AD2929",
         accentColor: "#AAAAAA",
         backgroundColor: "#FFBF00",
-        focusAccentColor: "#8c8c898c",
-        focusBackgroundColor: "#4545453b",
+        hoverTextColor: "#8c8c898c",
+        hoverBackgroundColor: "#4545453b",
     }
 };
 ColoredOTPFields.parameters = {

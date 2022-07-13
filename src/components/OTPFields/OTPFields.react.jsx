@@ -42,8 +42,8 @@ OTPFields.propTypes = {
         textColor: PropTypes.string,
         accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
-        focusAccentColor: PropTypes.string,
-        focusBackgroundColor: PropTypes.string,
+        hoverTextColor: PropTypes.string,
+        hoverBackgroundColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -137,8 +137,8 @@ export default function OTPFields(props) {
     //-------------------------------------------------------------------
     let changeFocus = (element) => {
         element.select()
-        element.style.borderColor = withColor?.focusAccentColor
-        element.style.backgroundColor = withColor?.focusBackgroundColor
+        element.style.borderColor = withColor?.hoverTextColor
+        element.style.backgroundColor = withColor?.hoverBackgroundColor
     }
 
     let changeBlur = (element) => {
