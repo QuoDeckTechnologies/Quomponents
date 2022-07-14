@@ -19,8 +19,8 @@ describe("Option Item One", () => {
   const args = {
     target: OptionItemOne,
     required: {
-      onInput: () => { },
-      onClick: () => { },
+      onInput: () => {},
+      onClick: () => {},
     },
     translations: {
       tgt: "optionItemOne",
@@ -36,14 +36,8 @@ describe("Option Item One", () => {
   };
 
   hasValid("defaults", args);
-
   hasValid("colors", args);
-  hasValid("animations", args);
   hasValid("translations", args);
-
-  hasValid("hidden", args);
-    hasValid("disabled", args);
-
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
@@ -60,8 +54,8 @@ describe("Option Item One", () => {
           placeholder: "placeholder",
           maxLength: 300,
         }}
-        onInput={() => { }}
-        onClick={() => { }}
+        onInput={() => {}}
+        onClick={() => {}}
       />
     );
   });

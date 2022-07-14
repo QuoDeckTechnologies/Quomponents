@@ -15,23 +15,20 @@ export default {
   title: "Design System/OptionItem/OptionItemTwo",
   component: OptionItemTwo,
   argTypes: {
-    content: {},
+    targetName: "",
+    value: "",
+    placeholder: "",
+    checked: true,
+    maxLength: 300,
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
+          textColor: "",
           accentColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -43,18 +40,6 @@ export default {
           tgt: "",
           dictionary: "",
         },
-      },
-    },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    isHidden: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
       },
     },
     onInput: {
@@ -93,29 +78,23 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    targetName: "Target Name",
-    value: "",
-    placeholder: "Option Item Two",
-    checked: true,
-    maxLength: 300,
-  },
+  targetName: "Target Name",
+  value: "",
+  placeholder: "Option Item Two",
+  checked: true,
+  maxLength: 300,
   withColor: {
     backgroundColor: "#ffab000d",
+    textColor: "",
     accentColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withTranslation: {
     lang: "en",
     tgt: "optionItemTwo",
     dictionary: dictionary,
   },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
-  },
-  isDisabled: false,
-  isHidden: false,
 };
 Default.parameters = {
   docs: {
@@ -133,6 +112,9 @@ ColoredOptionItemTwo.args = {
   withColor: {
     backgroundColor: "#8c9ea3",
     accentColor: "#597387",
+    textColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemTwo.parameters = {
@@ -140,29 +122,6 @@ ColoredOptionItemTwo.parameters = {
     source: {
       code: `<OptionItemTwo {...${JSON.stringify(
         ColoredOptionItemTwo.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem Two
-// -------------------------------------------------------------
-export const AnimatedOptionItemTwo = Template.bind({});
-AnimatedOptionItemTwo.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemTwo.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemTwo {...${JSON.stringify(
-        AnimatedOptionItemTwo.args,
         null,
         2
       )}}/>`,
@@ -286,7 +245,10 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemTwo
               {...args}
-              content={content}
+              targetName={content.targetName}
+              value={content.value}
+              placeholder={content.placeholder}
+              checked={content.checked}
               onSelect={(targetName, value, checked) =>
                 handleSelect(targetName, value, checked)
               }

@@ -26,6 +26,18 @@ export default {
         category: "as-Flags",
       },
     },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          backgroundColor: "",
+          accentColor: "",
+          textColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
+        },
+      },
+    },
     withTranslation: {
       table: {
         category: "with-Params",
@@ -166,7 +178,7 @@ Default.args = {
             identifier: "RnQ5trn7T",
             owner: "622b36ff46e1c31a2e22c42e",
             createdAt: "2022-03-25T11:20:20.195Z",
-            id: "623da574187838221637bebe",
+            id: "623da574187838221637bebe@",
           },
         ],
       },
@@ -174,6 +186,13 @@ Default.args = {
   },
   placeholder: "Select courses here...",
   asFloated: "left",
+  withColor: {
+    backgroundColor: "",
+    textColor: "",
+    accentColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
+  },
   withAnimation: {
     animation: "",
     duration: 0.5,

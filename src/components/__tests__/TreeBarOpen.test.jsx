@@ -42,6 +42,7 @@ describe("TreeBarOpen", () => {
 
   hasValid("defaults", args);
   hasValid("positions", args);
+  hasValid("colors", args);
   hasValid("animations", args);
   hasValid("translations", args);
   hasValid("disabled", args);
@@ -58,71 +59,6 @@ describe("TreeBarOpen", () => {
       },
     },
   });
-  let content = {
-    treeData: {
-      id: "allArticles",
-      parentId: null,
-      name: "All Articles",
-      description: "",
-      active: true,
-      children: [
-        {
-          id: "category-0",
-          parentId: "allArticles",
-          name: "Article",
-          description: "",
-          children: [
-            {
-              published: true,
-              tags: [],
-              _id: "622eeb5ede595f24b7aadd6e",
-              name: "Seeding Dummy Test Article",
-              category: "article",
-              summary: "",
-              identifier: "2Dpr5SmeY",
-              owner: "622b36ff46e1c31a2e22c42e",
-              createdAt: "2022-03-14T07:14:38.348Z",
-              id: "622eeb5ede595f24b7aadd6e",
-            },
-            {
-              published: true,
-              tags: [],
-              _id: "622b4534a2d4393e6ce1c3ba",
-              name: "New Article",
-              category: "article",
-              summary: "",
-              identifier: "Yeb4B2_bn",
-              owner: "622b36ff46e1c31a2e22c42e",
-              createdAt: "2022-03-11T12:48:52.066Z",
-              id: "622b4534a2d4393e6ce1c3ba",
-            },
-          ],
-        },
-        {
-          id: "category-1",
-          parentId: "allArticles",
-          name: "News",
-          description: "",
-          children: [
-            {
-              published: true,
-              tags: [],
-              _id: "623da574187838221637bebe",
-              name: "Test News",
-              category: "news",
-              summary: "",
-              identifier: "RnQ5trn7T",
-              owner: "622b36ff46e1c31a2e22c42e",
-              createdAt: "2022-03-25T11:20:20.195Z",
-              id: "623da574187838221637bebe",
-            },
-          ],
-        },
-      ],
-      toggled: true,
-    },
-  };
-
   let nodeData = {
     id: "allArticles",
     parentId: null,
@@ -196,17 +132,80 @@ describe("TreeBarOpen", () => {
 
     component = shallow(
       <TreeBarOpen
-        content={content}
-        cursor={true}
-        asSize="normal"
+        treeData={{
+          id: "allArticles",
+          parentId: null,
+          name: "All Articles",
+          description: "",
+          active: true,
+          children: [
+            {
+              id: "category-0",
+              parentId: "allArticles",
+              name: "Article",
+              description: "",
+              children: [
+                {
+                  published: true,
+                  tags: [],
+                  _id: "622eeb5ede595f24b7aadd6e",
+                  name: "Seeding Dummy Test Article",
+                  category: "article",
+                  summary: "",
+                  identifier: "2Dpr5SmeY",
+                  owner: "622b36ff46e1c31a2e22c42e",
+                  createdAt: "2022-03-14T07:14:38.348Z",
+                  id: "622eeb5ede595f24b7aadd6e",
+                },
+                {
+                  published: true,
+                  tags: [],
+                  _id: "622b4534a2d4393e6ce1c3ba",
+                  name: "New Article",
+                  category: "article",
+                  summary: "",
+                  identifier: "Yeb4B2_bn",
+                  owner: "622b36ff46e1c31a2e22c42e",
+                  createdAt: "2022-03-11T12:48:52.066Z",
+                  id: "622b4534a2d4393e6ce1c3ba",
+                },
+              ],
+            },
+            {
+              id: "category-1",
+              parentId: "allArticles",
+              name: "News",
+              description: "",
+              children: [
+                {
+                  published: true,
+                  tags: [],
+                  _id: "623da574187838221637bebe",
+                  name: "Test News",
+                  category: "news",
+                  summary: "",
+                  identifier: "RnQ5trn7T",
+                  owner: "622b36ff46e1c31a2e22c42e",
+                  createdAt: "2022-03-25T11:20:20.195Z",
+                  id: "623da574187838221637bebe",
+                },
+              ],
+            },
+          ],
+          toggled: true,
+        }}
         asFloated="inline"
-        withColor={null}
-        withIcon={null}
+        withColor={{
+          backgroundColor: "#fff",
+          textColor: "#fff",
+          accentColor: "#fff",
+          hoverBackgroundColor: "#fff",
+          hoverTextColor: "#fff",
+        }}
         withAnimation={null}
         withTranslation={null}
         isHidden={false}
         isDisabled={false}
-        isClosed={null}
         isFluid={null}
         placeHolder="Search..."
         onClick={onClick}
@@ -214,66 +213,10 @@ describe("TreeBarOpen", () => {
     );
   });
 
-  it("should render correctly without throwing an error if icon props is false", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated prop as left", () => {
-    component.setProps({ asFloated: "left" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asFloated prop as right", () => {
-    component.setProps({ asFloated: "right" });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed asFloated prop as inline", () => {
-    component.setProps({ asFloated: "inline" });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    let animation = {
-      animation: "zoom",
-      duration: 0.5,
-      delay: 0,
-    };
-    component.setProps({ withAnimation: animation });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly with withTranslation prop", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "treeBarOpen",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly if translation object is not returned", () => {
     component.setProps({
       withTranslation: {
-        lang: "",
+        lang: "hi",
         tgt: "treeBarOpen",
         dictionary: dictionary,
       },
@@ -296,8 +239,6 @@ describe("TreeBarOpen", () => {
 
   it("should render tree bar when click on search", () => {
     let inputData = "Seeding Dummy Test Article";
-    component.setProps({ filter: inputData });
-    component.setProps({ content: content, cursor: true });
     component.setProps({ onClick: jest.fn() });
     let search = component.find(SearchBar);
     search.simulate("click", inputData);
@@ -309,6 +250,12 @@ describe("TreeBarOpen", () => {
       .children(0)
       .simulate("toggle", { content: { treeData: {} } });
     component.setProps({ content: { treeData: {} } });
+  });
+
+  it("should render tree bar when withColor is null", () => {
+    component.setProps({
+      withColor: null,
+    });
   });
 
   it("should toggle the treebeard", () => {
