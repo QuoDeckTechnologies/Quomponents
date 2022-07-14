@@ -20,6 +20,7 @@ import Choice from "./components/Buttons/Choice/Choice.react";
 import DataExporter from "./components/Buttons/DataExporter/DataExporter.react";
 import FlipConfirm from "./components/Buttons/FlipConfirm/FlipConfirm.react";
 import IconLink from "./components/Buttons/IconLink/IconLink.react";
+import LinkIcon from "./components/LinkIcon/LinkIcon.react";
 import Upload from "./components/Buttons/Upload/Upload.react";
 import Calender from "./components/Calendar/Calendar.react";
 import CardTag from "./components/CardTag/CardTag.react";
@@ -283,6 +284,7 @@ export {
     ImageGallery,
     ImageGrid,
     ImageWithCaption,
+    LinkIcon,
     LinkwithSlide,
     MCQwithFeedback,
     MultipleSelect,

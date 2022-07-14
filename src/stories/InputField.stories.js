@@ -17,7 +17,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/InputField/InputField",
+  title: "Design System/InputField",
   component: InputField,
   argTypes: {
     name: "",

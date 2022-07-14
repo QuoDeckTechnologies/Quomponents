@@ -2,7 +2,7 @@ import React from "react";
 import SlideHeader from "../components/SlideHeader/SlideHeader.react";
 
 export default {
-  title: "Design System/SlideHeader/SlideHeader",
+  title: "Design System/SlideHeader",
   component: SlideHeader,
   argTypes: {
     content: {

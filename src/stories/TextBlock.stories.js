@@ -2,7 +2,7 @@ import React from "react";
 import TextBlock from "../components/TextBlock/TextBlock.react";
 
 export default {
-    title: "Design System/TextBlock/TextBlock",
+    title: "Design System/TextBlock",
     component: TextBlock,
     argTypes: {
         content: "TextBlock",

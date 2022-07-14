@@ -2,7 +2,7 @@ import React from "react";
 import BulletBlock from "../components/BulletBlock/BulletBlock.react";
 
 export default {
-    title: "Design System/BulletBlock/BulletBlock",
+    title: "Design System/BulletBlock",
     component: BulletBlock,
     argTypes: {
         content: ["label1"],

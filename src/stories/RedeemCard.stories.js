@@ -21,7 +21,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/RedeemCard/RedeemCard",
+    title: "Design System/RedeemCard",
     component: RedeemCard,
     argTypes: {
         content: {

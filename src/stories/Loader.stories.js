@@ -31,7 +31,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/Loaders/Loader",
+    title: "Design System/Loader",
     component: Loader,
     argTypes: {
         asVariant: {

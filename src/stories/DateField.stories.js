@@ -15,7 +15,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/DateField/DateField",
+    title: "Design System/DateField",
     component: DateField,
     argTypes: {
         label: "",

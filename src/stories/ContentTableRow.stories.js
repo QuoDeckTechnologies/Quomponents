@@ -19,7 +19,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/ContentTableRow/ContentTableRow",
+  title: "Design System/ContentTableRow",
   component: ContentTableRow,
   argTypes: {
     content: {

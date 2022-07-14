@@ -14,7 +14,7 @@ const dictionary = JSON.stringify({
   },
 });
 export default {
-  title: "Design System/ToolbarDark/ToolbarDark",
+  title: "Design System/ToolbarDark",
   component: ToolbarDark,
   argTypes: {
     content: [

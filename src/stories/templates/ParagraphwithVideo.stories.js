@@ -2,7 +2,7 @@ import React from "react";
 import ParagraphwithVideo from "../../components/Templates/ParagraphwithVideo/ParagraphwithVideo.react";
 
 export default {
-    title: "Design System/Templates/ParagraphwithVideo/ParagraphwithVideo",
+    title: "Design System/Templates/ParagraphwithVideo",
     component: ParagraphwithVideo,
     argTypes: {
         data: {

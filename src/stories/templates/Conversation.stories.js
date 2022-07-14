@@ -2,7 +2,7 @@ import React from "react";
 import Conversation from "../../components/Templates/Conversation/Conversation.react";
 
 export default {
-    title: "Design System/Templates/Conversation/Conversation",
+    title: "Design System/Templates/Conversation",
     component: Conversation,
     argTypes: {
         data: {

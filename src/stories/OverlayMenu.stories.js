@@ -21,7 +21,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/OverlayMenu/OverlayMenu",
+    title: "Design System/OverlayMenu",
     component: OverlayMenu,
     argTypes: {
         isOpen: {

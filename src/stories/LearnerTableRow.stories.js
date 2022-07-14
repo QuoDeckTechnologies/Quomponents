@@ -2,7 +2,7 @@ import React from "react";
 import LearnerTableRow from "../components/LearnerTableRow/LearnerTableRow.react";
 
 export default {
-  title: "Design System/LearnerTableRow/LearnerTableRow",
+  title: "Design System/LearnerTableRow",
   component: LearnerTableRow,
   argTypes: {
     content: [],

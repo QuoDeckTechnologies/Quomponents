@@ -39,6 +39,16 @@ TreeItem.propTypes = {
   */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
+  Use to override component colors and behavior
+  */
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
+  }),
+  /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
   */
   withTranslation: PropTypes.shape({
@@ -91,6 +101,7 @@ TreeItem.defaultProps = {
   // Quommon props
   //=======================================
   asFloated: "none",
+  withColor: null,
   withTranslation: null,
   withAnimation: null,
   isHidden: false,
@@ -187,15 +198,21 @@ export default function TreeItem(props) {
   //-------------------------------------------------------------------
   defaultTheme.tree.node.link = {
     ...defaultTheme.tree.node.link,
-    color: "#454545",
+    color: props.withColor?.hoverTextColor
+      ? props.withColor?.hoverTextColor
+      : "#454545",
     background: "#F5F5F5",
     width: "100%",
   };
 
   defaultTheme.tree.node.activeLink = {
     ...defaultTheme.tree.node.activeLink,
-    color: "#454545",
-    background: "#dddddd",
+    color: props.withColor?.hoverTextColor
+      ? props.withColor?.hoverTextColor
+      : "#454545",
+    background: props.withColor?.hoverBackgroundColor
+      ? props.withColor?.hoverBackgroundColor
+      : "#dddddd",
     width: "100%",
   };
 
@@ -222,16 +239,20 @@ export default function TreeItem(props) {
     >
       <div className={quommonClasses.childClasses}>
         {props.header && (
-          <div className="qui-treebar-pageheader">{headerTitle}</div>
+          <div
+            className="qui-treebar-pageheader"
+            style={{
+              backgroundColor: props.withColor?.accentColor,
+              color: props.withColor?.textColor,
+            }}
+          >
+            <h3 className="qui-treebar-pageheader-heading">{headerTitle}</h3>
+          </div>
         )}
         <div className="qui-treebar-searchbar">
           <SearchBar
             placeHolder={props.placeholder}
             withIcon={{ name: "fas fa-search" }}
-            withColor={{
-              backgroundColor: "",
-              textColor: "",
-            }}
             isDisabled={false}
             isFluid={false}
             isClosed={false}
@@ -242,7 +263,10 @@ export default function TreeItem(props) {
         </div>
         {props.treeData && (
           <div>
-            <div className={`qui-treebar-container`}>
+            <div
+              className={`qui-treebar-container`}
+              style={{ backgroundColor: props.withColor?.backgroundColor }}
+            >
               <div className="qui-treebar-content">
                 <Treebeard
                   data={folderStructure}

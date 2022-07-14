@@ -15,7 +15,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/ImageUploadModal/ImageUploadModal",
+  title: "Design System/ImageUploadModal",
   component: ImageUploadModal,
   argTypes: {
     isOpen: {

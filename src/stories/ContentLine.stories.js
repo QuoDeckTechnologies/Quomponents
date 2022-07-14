@@ -2,7 +2,7 @@ import React from "react";
 import ContentLine from "../components/ContentLine/ContentLine.react";
 
 export default {
-    title: "Design System/ContentLine/ContentLine",
+    title: "Design System/ContentLine",
     component: ContentLine,
     argTypes: {
         content: {},

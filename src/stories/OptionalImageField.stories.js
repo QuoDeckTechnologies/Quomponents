@@ -2,7 +2,7 @@ import React from "react";
 import OptionalImageField from "../components/OptionalImageField/OptionalImageField.react";
 
 export default {
-  title: "Design System/OptionalImageField/OptionalImageField",
+  title: "Design System/OptionalImageField",
   component: OptionalImageField,
   argTypes: {
     title: "",

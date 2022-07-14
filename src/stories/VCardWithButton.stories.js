@@ -13,7 +13,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/VCardWithButton/VCardWithButton",
+  title: "Design System/VCardWithButton",
   component: VCardWithButton,
   argTypes: {
     id: "",

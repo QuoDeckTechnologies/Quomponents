@@ -13,23 +13,19 @@ export default {
   title: "Design System/OptionItem/OptionItemOne",
   component: OptionItemOne,
   argTypes: {
-    content: {},
+    targetName: "",
+    value: "",
+    placeholder: "",
+    maxLength: 300,
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
+          textColor: "",
           accentColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -41,18 +37,6 @@ export default {
           tgt: "",
           dictionary: "",
         },
-      },
-    },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    isHidden: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
       },
     },
     onInput: {
@@ -85,28 +69,22 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    targetName: "Target Name",
-    value: "",
-    placeholder: "Option Item One",
-    maxLength: 300,
-  },
+  targetName: "Target Name",
+  value: "",
+  placeholder: "Option Item One",
+  maxLength: 300,
   withColor: {
     backgroundColor: "#ffab000d",
+    textColor: "",
     accentColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withTranslation: {
     lang: "en",
     tgt: "optionItemOne",
     dictionary: dictionary,
   },
-  isDisabled: false,
-  isHidden: false,
 };
 Default.parameters = {
   docs: {
@@ -124,6 +102,9 @@ ColoredOptionItemOne.args = {
   withColor: {
     backgroundColor: "#8c9ea3",
     accentColor: "#597387",
+    textColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemOne.parameters = {
@@ -131,29 +112,6 @@ ColoredOptionItemOne.parameters = {
     source: {
       code: `<OptionItemOne {...${JSON.stringify(
         ColoredOptionItemOne.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem One
-// -------------------------------------------------------------
-export const AnimatedOptionItemOne = Template.bind({});
-AnimatedOptionItemOne.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemOne.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemOne {...${JSON.stringify(
-        AnimatedOptionItemOne.args,
         null,
         2
       )}}/>`,
@@ -255,7 +213,10 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemOne
               {...args}
-              content={{ ...content }}
+              targetName={content.targetName}
+              value={content.value}
+              placeholder={content.placeholder}
+              maxLength={300}
               onInput={(targetName, value) => handleInput(targetName, value)}
               onClick={handleRemove}
             />
