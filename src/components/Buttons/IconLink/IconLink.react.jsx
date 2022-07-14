@@ -27,7 +27,7 @@ IconLink.propTypes = {
     */
     isCircular: PropTypes.bool,
     /**
-    Use to active/deactive CardTag
+    Use to active/deactive IconLink
     */
     isActive: PropTypes.bool,
 
@@ -272,16 +272,16 @@ export default function IconLink(props) {
                 <div
                     className={`qui-btn ${quommonClasses.childClasses} qui-iconlink`}
                     title={getLabel(labelContent, "popover")}
-                    onClick={props.onClick}
-                    style={isActive ? { backgroundColor: props.withColor?.accentColor } : Object.assign({}, colors.buttonHandle)}
+                    onClick={() => props.onClick(props)}
+                    style={isActive ? { backgroundColor: "#666666" } : Object.assign({}, colors.buttonHandle)}
                 >
                     <div
                         className={`qui-btn qui-label emp-text`} style={Object.assign({}, colors.lableHandle)}>
                         <div className="qui qt-utn">{getLabel(labelContent, "label")}</div>
                     </div>
-
-                    <i className={`${props.withIcon?.icon} qui-iconlink-icon  ${tilt ? 'tilt' : ''}`}>
-                    </i>
+                    {props.withIcon?.icon &&
+                        < i className={`qui-icon ${props.withIcon?.icon} qui-iconlink-icon ${tilt ? 'tilt' : ''}`}></i>
+                    }
                     <div
                         className={`qui-btn qui-caption emp-text`} style={Object.assign({}, colors.lableHandle)}>
                         <div className="qui qt-utn">{getLabel(labelContent, "caption")}</div>

@@ -156,7 +156,7 @@ export default function MobileToolbar(props) {
         let tmp_obj = {};
 
         tmp_state.forEach((dataObj) => {
-            if (dataObj?.link === data?.link) {
+            if (dataObj.link === data?.link) {
                 tmp_obj = { ...dataObj };
                 tmp_obj.isActive = true;
                 tmp_arr.push(tmp_obj);
@@ -205,13 +205,13 @@ export default function MobileToolbar(props) {
                                 <IconLink
                                     {...props}
                                     withAnimation={null}
-                                    isActive={item.isActive}
-                                    asEmphasis={"text"}
-                                    link={item.link}
+                                    isActive={item?.isActive}
+                                    asEmphasis="text"
+                                    link={item?.link}
                                     withIcon={{ icon: item.icon }}
                                     withLabel={{
-                                        content: tObj ? iconLabel[index]["label"] : item.label,
-                                        format: item.format,
+                                        content: tObj ? iconLabel[index]["label"] : item?.label,
+                                        format: item?.format,
                                     }}
                                     isCircular={true}
                                     onClick={(data) => handleSelect(data)}

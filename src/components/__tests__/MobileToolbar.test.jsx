@@ -105,6 +105,29 @@ describe("MobileToolbar", () => {
         component.find(IconLink).simulate("click");
         expect(component.exists()).toBe(true);
     });
+
+    it('should pass conditional true when the slide is selected {true} from the props ', () => {
+        component = shallow(<MobileToolbar
+            content={[
+                {
+                    icon: "fa fa-share",
+                    label: "",
+                    format: "label",
+                    isActive: false,
+                    link: "https://www.youtube.com/",
+
+                }, {
+                    icon: "fa fa-share",
+                    label: "",
+                    format: "label",
+                    isActive: true,
+                    link: "https://www.youtube.com/",
+                }]}
+            onClick={() => { handleSelect }} />);
+        component.find(IconLink).at(0).simulate("click");
+        component.find(IconLink).at(1).simulate("click");
+        expect(component.exists()).toBe(true);
+    });
 });
 
 

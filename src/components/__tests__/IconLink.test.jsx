@@ -65,21 +65,16 @@ describe("IconLink", () => {
                 asFloated="none"
                 asPadded="normal"
                 asAligned="center"
+                isActive={false}
 
-                withLabel={{
-                    format: "caption",
-                    content: "ok"
-                }}
-                withIcon={{
-                    icon: "fa fa-paste"
-                }}
+                withLabel={null}
+                withIcon={null}
                 withColors={null}
                 withAnimation={null}
 
                 isDisabled={false}
                 isHidden={false}
                 isFluid={false}
-                isActive={true}
                 isCircular={true}
 
                 onClick={() => { }} />
@@ -139,6 +134,8 @@ describe("IconLink", () => {
     it("should render correctly when hovered & withIcon",
         () => {
             const component = renderer.create(<IconLink
+                link="https://quodeck.com/"
+                isActive={true}
                 withIcon={{
                     icon: "fas fa-desktop"
                 }}
@@ -149,15 +146,6 @@ describe("IconLink", () => {
                 tree.props.onMouseDown()
             })
         });
-
-    it("should render correctly when passed withColor props", () => {
-        component.setProps({ isActive: false })
-        let colors = {
-            accentColor: "#666666",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    })
 
     it("should render correctly with withColor prop when hovered", () => {
         const component = renderer.create(
@@ -177,6 +165,18 @@ describe("IconLink", () => {
             tree.props.onMouseLeave();
             tree.props.onMouseUp();
         });
+    });
+
+    it('should pass conditional true when the slide is selected {true} from the props ', () => {
+        component.setProps({
+            link: "https://quodeck.com/",
+            isActive: true,
+            props: {
+                asVariant: "primary",
+            }
+        })
+        component.find(".qui-iconlink").simulate("click");
+        expect(component.exists()).toBe(true);
     });
 
 });
