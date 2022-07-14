@@ -222,7 +222,7 @@ export default function TreeItem(props) {
             >
                 {props.pageHeader && (
                     <div
-                        className="qui-treebar-pageheader"
+                        className="qui-treebar-pageheader secfont"
                         style={{ height: props.headerHeight }}
                     >
                         {pageHeaderTitle}
