@@ -251,8 +251,8 @@ export default function TreeItem(props) {
         )}
         <div className="qui-treebar-searchbar">
           <SearchBar
-            placeHolder={props.placeholder}
-            withIcon={{ name: "fas fa-search" }}
+            placeholder={props.placeholder}
+            withIcon={{ icon: "fas fa-search" }}
             isDisabled={false}
             isFluid={false}
             isClosed={false}

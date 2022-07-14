@@ -2,20 +2,32 @@ import React from "react";
 import SearchBar from "../components/SearchBar/SearchBar.react";
 
 const dictionary = JSON.stringify({
+    en: {
+        searchBar: {
+            placeholder: "Search..."
+        }
+    },
     hi: {
         searchBar: {
-            placeHolder: "खोजें...",
+            placeholder: "खोजें..."
         }
     },
 });
 export default {
-    title: "Design System/SearchBar",
+    title: "Design System/SearchBar/SearchBar",
     component: SearchBar,
-    placeHolder: "Search...",
+    placeholder: "Search...",
     argTypes: {
+        dictionaryOptions: [],
+        isAutoSearch: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
         asFloated: {
             control: "select",
-            options: ["left", "right", "inline","none"],
+            options: ["left", "right", "none", "inline"],
             table: {
                 category: "as-Flags",
             },
@@ -33,6 +45,7 @@ export default {
                 defaultValue: {
                     backgroundColor: "",
                     textColor: "",
+                    accentColor: "",
                 },
             },
         },
@@ -40,7 +53,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    name: "fas fa-search"
+                    icon: "fas fa-search"
                 },
             },
         },
@@ -99,7 +112,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Display a basic ribbon for general-purpose use",
+        componentSubtitle: "Display a basic SearchBar for general-purpose use",
         a11y: { disable: true },
         docs: {
             iframeHeight: 300,
@@ -112,13 +125,16 @@ export default {
 const Template = (args) => <SearchBar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    placeHolder: "Search...",
+    dictionaryOptions: ['QuoDeck', 'Amplayfy', 'Gamiquo', 'Gamifix', 'Quomponents', 'Demo', 'Migration', 'Explore', 'Sandbox'],
+    placeholder: "Search...",
+    isAutoSearch: false,
     asFloated: "left",
     asSize: "normal",
-    withIcon: { name: "fas fa-search" },
+    withIcon: { icon: "fas fa-search" },
     withColor: {
         backgroundColor: "",
         textColor: "",
+        accentColor: "",
     },
     isDisabled: false,
     isFluid: false,
@@ -151,12 +167,24 @@ ClosedSearchBar.args = {
 export const AllVariantsTemplate = (args) => {
     const baseObj1 = {
         ...Object.assign({}, Default.args, args, {
-            isClosed: false
+            isClosed: false,
+            isAutoSearch: true,
+            withTranslation: {
+                lang: "en",
+                tgt: "searchBar",
+                dictionary: dictionary,
+            },
         }),
     };
     const baseObj2 = {
         ...Object.assign({}, Default.args, args, {
-            isClosed: true
+            isClosed: true,
+            isAutoSearch: false,
+            withTranslation: {
+                lang: "en",
+                tgt: "searchBar",
+                dictionary: dictionary,
+            },
         }),
     };
     return (
@@ -188,7 +216,7 @@ TranslatedSearchBar.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the text appears in. To make this work for the SearchBar, add a SearchBar:{placeHolder} value to the dictionary.",
+                "Use to change the language that the text appears in. To make this work for the SearchBar, add a SearchBar:{placeholder} value to the dictionary.",
         },
         source: {
             code: `<SearchBar {...${JSON.stringify(

@@ -4,7 +4,7 @@
     align-items: center;
     padding: 0 10px;
 }
-.qui .qui-search-bar-container-closed{
+.qui .qui-search-bar-container-closed {
     width: fit-content;
 }
 .qui .qui-search-bar-child-container {
@@ -17,10 +17,6 @@
 }
 .qui .qui-search-bar-input-field {
     width: 100%;
-    border: none;
-    outline: none;
-    height: 100%;
-    padding-left: 1.1em;
 }
 .qui .qui-search-bar-icon {
     display: flex;
@@ -32,6 +28,7 @@
     width: 40px;
     color: white;
     font-size: 16px;
+    border: none;
     cursor: pointer;
 }
 .qui .qui-search-bar-child-container-closed {
@@ -47,7 +44,7 @@
 .qui .qui-search-bar-expand-effect {
     position: absolute;
     width: 2em;
-    height:2em;
+    height: 2em;
     z-index: 1;
     cursor: pointer;
 }
@@ -111,7 +108,7 @@
 .qui .size-big .qui-search-bar-expand-effect {
     position: absolute;
     width: 1.7em;
-    height:1.7em;
+    height: 1.7em;
 }
 
 //Styling Definitions of Component when asSize - huge
@@ -135,7 +132,7 @@
 .qui .size-huge .qui-search-bar-expand-effect {
     position: absolute;
     width: 1.7em;
-    height:1.7em;
+    height: 1.7em;
 }
 
 //Styling Definitions of Component when asSize - massive
@@ -159,5 +156,5 @@
 .qui .size-massive .qui-search-bar-expand-effect {
     position: absolute;
     width: 1.4em;
-    height:1.4em;
+    height: 1.4em;
 }

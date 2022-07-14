@@ -8,27 +8,33 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "../SearchBar/SearchBar.scss";
 import "../../common/stylesheets/overrule.scss";
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 SearchBar.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
+    dictionaryOptions: PropTypes.array,
     /**
     Placeholder value to show the placeholder of input box
     */
-    placeHolder: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
     /**
     Use to toggle the component having expandable effect or not
     */
     isClosed: PropTypes.bool,
-
+    /**
+    Use to toggle the component having autocomplete options or not
+    */
+    isAutoSearch: PropTypes.bool,
     //=======================================
     // Quommon props
     //=======================================
     /**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "inline","none"]),
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
     Use to define component text size in increasing order
     */
@@ -46,12 +52,13 @@ SearchBar.propTypes = {
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         textColor: PropTypes.string,
+        accentColor: PropTypes.string,
     }),
     /**
     Use to add an icon to the component
     */
     withIcon: PropTypes.shape({
-        name: PropTypes.string,
+        icon: PropTypes.string,
     }),
     /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -83,9 +90,10 @@ SearchBar.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    placeHolder: "Search...",
+    dictionaryOptions: [],
+    placeholder: "Search...",
     isClosed: false,
-
+    isAutoSearch: false,
     //=======================================
     // Quommon props
     //=======================================
@@ -110,23 +118,25 @@ export default function SearchBar(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "search-bar");
-
     //-------------------------------------------------------------------
     // 2. Get translation of the component
     //-------------------------------------------------------------------
-    let searchPlaceHolder = props.placeHolder;
-    let tObj = null
+    let searchPlaceHolder = props.placeholder ? props.placeholder : "Search...";
+
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
-    ) tObj = getTranslation(props.withTranslation, "searchBar");
-    if (tObj && props.placeHolder && props.placeHolder !== "") {
-        searchPlaceHolder = tObj.placeHolder;
+    ) {
+        let tObj = getTranslation(props.withTranslation);
+        searchPlaceHolder = tObj?.placeholder || "";
     }
     //-------------------------------------------------------------------
     // 3. Handle Enter and Button Press Events
     //-------------------------------------------------------------------
+    const [value, setValue] = useState('');
+    const [inputValue, setInputValue] = useState('');
+
     const [expandable, setExpandable] = useState(false);
     const input = useRef(null);
     const box = useRef(null);
@@ -136,9 +146,8 @@ export default function SearchBar(props) {
         }
     }
     const handleButtonPress = () => {
-        return props.onClick(input.current?.value);
+        return props.onClick(inputValue);
     }
-
     //-------------------------------------------------------------------
     // 4. Handle Open and Close Input box
     //-------------------------------------------------------------------
@@ -169,29 +178,62 @@ export default function SearchBar(props) {
                 iconStyle = "qui-search-bar-icon-closed";
             }
         }
+
         return (
             <div className={`qui-search-bar-container ${searchBarContainer}`}
                 onClick={() => { setExpandable(true) }}
                 ref={box}>
                 <div className={`qui-search-bar-child-container ${searchBarStyle}`}>
-                    <input
+                    <Autocomplete
                         ref={input}
+                        freeSolo
+                        value={value}
+                        onChange={(event, newValue) => {
+                            setValue(newValue);
+                        }}
+                        inputValue={inputValue}
+                        onInputChange={(event, newInputValue) => {
+                            setInputValue(newInputValue);
+                        }}
+                        onKeyPress={handleKeyPress}
+                        disableClearable
+                        sx={{
+                            width: "100%", minWidth: "200px",
+                            '.MuiOutlinedInput-root .MuiOutlinedInput-input': {
+                                color: props.withColor?.textColor
+                            }
+                        }}
                         className={`qui-search-bar-input-field ${inputStyle}`}
-                        placeholder={searchPlaceHolder}
-                        style={{ color: props.withColor?.textColor }}
-                        onKeyPress={handleKeyPress} />
+                        options={(props.isAutoSearch === true) ? props.dictionaryOptions?.map((option) => option) : []}
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                placeholder={searchPlaceHolder}
+                                InputProps={{
+                                    ...params.InputProps,
+                                    type: 'search',
+                                }}
+                            />
+                        )}
+                    />
                     <button
                         aria-label="Search-Icon"
                         className={`qui-search-bar-icon ${iconStyle}`}
                         onClick={handleButtonPress}
                         style={{ backgroundColor: props.withColor?.backgroundColor }}>
-                        <i className={props.withIcon?.name ? props.withIcon?.name : "fas fa-search"}></i>
+                        {props.withIcon?.icon &&
+                            <i
+                                style={{ color: props.withColor?.accentColor }}
+                                className={`qui-icon ${props.withIcon?.icon}`}
+                            >
+                            </i>
+                        }
                     </button>
                     <div className={`qui-search-bar-expand-effect`}
                         style={{ display: props.isClosed ? expandable ? "none" : "flex" : "none" }}>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
     return (
