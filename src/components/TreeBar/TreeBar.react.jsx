@@ -29,7 +29,7 @@ TreeItem.propTypes = {
     /**
      Page Header Height.
    */
-    height: PropTypes.string,
+    headerHeight: PropTypes.string,
 
     /**
     Treebar pass tree folder structure data
@@ -77,7 +77,7 @@ TreeItem.defaultProps = {
     // Component Specific props
     //=======================================
     pageHeader: "Explore",
-    height: "80px",
+    headerHeight: "80px",
     //=======================================
     // Quommon props
     //=======================================
@@ -205,9 +205,8 @@ export default function TreeItem(props) {
     defaultTheme.tree.node.base = {
         ...defaultTheme.tree.node.base,
         width: "100%",
-        backgroundColor: "#fffff",
+        backgroundColor: "#e8e8e8",
         margin: "0.1em 0",
-        right: "0.7em",
     };
 
     // ========================= Render Function =================================
@@ -219,7 +218,10 @@ export default function TreeItem(props) {
         >
             <div className={quommonClasses.childClasses}>
                 {props.pageHeader && (
-                    <div className="qui-treebar-pageheader">
+                    <div
+                        className="qui-treebar-pageheader"
+                        style={{ height: props.headerHeight }}
+                    >
                         {pageHeaderTitle}
                     </div>
                 )}
