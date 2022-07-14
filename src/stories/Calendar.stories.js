@@ -41,12 +41,30 @@ export default {
                 defaultValue: false,
             },
         },
-        onClick: {
+        defaultDate: {
             table: {
                 category: "Events",
                 defaultValue: null,
             },
         },
+        onDateChange: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        },
+        onMonthChange: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        },
+        onYearChange: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        }
     },
     decorators: [
         (story) => (

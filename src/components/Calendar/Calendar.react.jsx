@@ -51,9 +51,21 @@ Calender.propTypes = {
     */
     isHidden: PropTypes.bool,
     /**
-    Calendar component must have the onClick function passed as props
+    Calendar component have the defaultDate function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    defaultDate: PropTypes.func,
+    /**
+    Calendar component have the onDateChange function passed as props
+    */
+    onDateChange: PropTypes.func,
+    /**
+    Calendar component have the onMonthChange function passed as props
+    */
+    onMonthChange: PropTypes.func,
+    /**
+    Calendar component have the onYearChange function passed as props
+    */
+    onYearChange: PropTypes.func,
 };
 
 Calender.defaultProps = {
@@ -75,17 +87,7 @@ Calender.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function Calender(props) {
-    const [value, onChange] = useState(new Date());
-    const [month, onMonthChange] = useState(new Date());
-    const [year, onYearChange] = useState(new Date());
-
-    // handleMonthChange = (date) => {
-    //     console.log('onMonthChange', date);
-    // };
-    // handleYearChange = (date) => {
-    //     console.log('onYearChange', date);
-    // };
-
+    const [value, onChange] = useState(new Date(2022, 7, 1));
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -104,11 +106,12 @@ export default function Calender(props) {
         >
             <div className={`qui-calendar-container ${quommonClasses.childClasses}`}>
                 <Calendar
-                    onClick={props.onClick(month)}
                     value={value}
                     onChange={onChange}
-                    onMonthChange={onMonthChange}
-                    onYearChange={onYearChange}
+                    onClickDay={props.onDateChange}
+                    onClickMonth={props.onMonthChange}
+                    onClickYear={props.onYearChange}
+                    defaultValue={props.defaultDate}
                 />
             </div>
         </motion.div>

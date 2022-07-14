@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import _ from "lodash";
 import {
-    getAnimation,
     getQuommons,
 } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -18,29 +17,17 @@ BulletBlock.propTypes = {
     //=======================================
 
     /**
-       BulletBlock data should be passed in content field and it is required field  
-      */
+    BulletBlock data should be passed in content field and it is required field  
+    */
     content: PropTypes.arrayOf(
         PropTypes.string
     ),
-
+    //=======================================
+    // Quommon props
+    //=======================================
     /**
-  //=======================================
-  // Quommon props
-  //=======================================
-  /**
-    Use to define standard component type
+    Use to define component text size in increasing order
     */
-    asVariant: PropTypes.oneOf([
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "error",
-    ]),
-    /**
-      Use to define component size in increasing order
-      */
     asSize: PropTypes.oneOf([
         "tiny",
         "small",
@@ -49,35 +36,34 @@ BulletBlock.propTypes = {
         "huge",
         "massive",
     ]),
+    /** 
+    Use to define component padding in increasing order
+    */
+    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
     /**
-      Use to override component colors and behavior
-      */
+    Use to float the component in parent container
+    */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+    /**
+    Use to align content within the component container
+    */
+    asAligned: PropTypes.oneOf(["left", "right", "center"]),
+    /**
+    Use to override component colors and behavior
+    */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
         textColor: PropTypes.string,
     }),
     /**
-      Use to define the entry animation of the component
-      */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-            "",
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
-    }),
-    /**
-      Use to show/hide the component
-      */
+    Use to show/hide the component
+    */
     isHidden: PropTypes.bool,
+    /**
+    Use to toggle the component taking the full width of the parent container
+    */
+    isFluid: PropTypes.bool,
 };
 
 BulletBlock.defaultProps = {
@@ -88,11 +74,13 @@ BulletBlock.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "primary",
     asSize: "normal",
+    asPadded: "normal",
+    asFloated: "none",
+    asAligned: "left",
     withColor: null,
-    withAnimation: null,
     isHidden: false,
+    isFluid: false,
 };
 
 function getColors(colors) {
@@ -127,16 +115,9 @@ export default function BulletBlock(props) {
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor) : {};
 
-    //-------------------------------------------------------------------
-    // 3. Get animation of the component
-    //-------------------------------------------------------------------
-    const animate = getAnimation(props);
-
     // ========================= Render Function =================================
     return (
         <motion.div
-            initial={animate.from}
-            animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
             style={colors.backgroundColors}
         >

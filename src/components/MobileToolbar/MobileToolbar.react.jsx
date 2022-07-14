@@ -25,7 +25,7 @@ MobileToolbar.propTypes = {
         PropTypes.shape({
             icon: PropTypes.string,
             label: PropTypes.string,
-            isActive: PropTypes.string,
+            isActive: PropTypes.bool,
             link: PropTypes.string,
         })
     ).isRequired,
@@ -47,8 +47,6 @@ MobileToolbar.propTypes = {
     Use to set Colors in component 
     */
     withColor: PropTypes.shape({
-        activeBackgroundColor: PropTypes.string,
-        activeTextColor: PropTypes.string,
         textColor: PropTypes.string,
         accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
@@ -147,7 +145,7 @@ export default function MobileToolbar(props) {
     const { onClick, title, asEmphasis } = props;
 
     const [content, setContent] = useState(props.content);
-    
+
     useEffect(() => {
         onClick(content);
     }, [content, onClick]);
@@ -158,7 +156,7 @@ export default function MobileToolbar(props) {
         let tmp_obj = {};
 
         tmp_state.forEach((dataObj) => {
-            if (dataObj?.link === data.content?.link) {
+            if (dataObj?.link === data?.link) {
                 tmp_obj = { ...dataObj };
                 tmp_obj.isActive = true;
                 tmp_arr.push(tmp_obj);
@@ -170,6 +168,7 @@ export default function MobileToolbar(props) {
         });
         setContent([...tmp_arr]);
     };
+
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -205,17 +204,14 @@ export default function MobileToolbar(props) {
                             <div key={index} className="qui-iconlink-toolbar">
                                 <IconLink
                                     {...props}
-                                    asEmphasis="text"
+                                    withAnimation={null}
                                     isActive={item.isActive}
+                                    asEmphasis={"text"}
                                     link={item.link}
                                     withIcon={{ icon: item.icon }}
                                     withLabel={{
                                         content: tObj ? iconLabel[index]["label"] : item.label,
                                         format: item.format,
-                                    }}
-                                    withColor={{
-                                        activeBackgroundColor: props.withColor?.activeBackgroundColor,
-                                        activeTextColor: props.withColor?.activeTextColor,
                                     }}
                                     isCircular={true}
                                     onClick={(data) => handleSelect(data)}
@@ -242,6 +238,7 @@ export default function MobileToolbar(props) {
     // 5. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props);
+
     // ========================= Render Function =================================
 
     return (

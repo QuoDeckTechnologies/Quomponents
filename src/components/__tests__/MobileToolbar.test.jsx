@@ -10,7 +10,6 @@ import { hasValid } from "./common";
 // Import Components
 // -------------------------------------
 import MobileToolbar from '../MobileToolbar/MobileToolbar.react'
-import ArcMenu from "../ArcMenu/ArcMenu.react"
 import IconLink from '../Buttons/IconLink/IconLink.react'
 
 describe("MobileToolbar", () => {
@@ -64,7 +63,7 @@ describe("MobileToolbar", () => {
     hasValid("disabled", args);
     let component;
 
-    let setState = jest.fn();
+    let handleSelect = jest.fn();
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
@@ -75,6 +74,7 @@ describe("MobileToolbar", () => {
                         icon: "fa fa-share",
                         label: "Certificate",
                         format: "caption",
+                        isActive: false,
                         link: "https://quodeck.com/",
                     },
                 ]}
@@ -85,62 +85,26 @@ describe("MobileToolbar", () => {
                 withTranslation={null}
                 isDisabled={false}
                 isHidden={false}
-                isCircular={true}
+                isCircular={false}
                 onClick={() => { }} />
         );
     });
 
-    it("should call setState when click", () => {
+    it("should call handleSelect when click", () => {
         component = shallow(<MobileToolbar
             content={[
                 {
                     icon: "fa fa-share",
                     label: "Certificate",
                     format: "caption",
+                    isActive: true,
                     link: "https://quodeck.com/",
                 },
             ]}
-            onClick={setState} />);
-        component.find(IconLink).at(0).simulate("click");
+            onClick={() => { handleSelect }} />);
+        component.find(IconLink).simulate("click");
+        expect(component.exists()).toBe(true);
     });
-
-    // it("should render correctly when passed asEmphasis prop as default ", () => {
-    //     let colors = {
-    //         backgroundColor: "#fff",
-    //         accentColor: "#FF0000",
-    //         textColor: "#00FFFF",
-    //         hoverBackgroundColor: "#0000FF",
-    //         hoverTextColor: "	#00008B",
-    //     }
-    //     component.setProps({ asEmphasis: "default" })
-    //     component.setProps({ withColor: colors })
-    //     expect(component.exists()).toBe(true);
-    // })
-
-    // it("should render correctly when passed asEmphasis prop as editing", () => {
-    //     component.setProps({
-    //         asEmphasis: "editing"
-    //     });
-    //     component.update();
-    //     expect(component.find(ArcMenu).exists()).toBe(true);
-    // });
-
-    // it("should render correctly when passed asVariant prop as success", () => {
-    //     component.setProps({ asVariant: "success" })
-    //     expect(component.exists()).toBe(true);
-    // })
-
-    // it("should render correctly when passed withColor props", () => {
-    //     let colors = {
-    //         backgroundColor: "#fff",
-    //         accentColor: "#FF0000",
-    //         textColor: "#00FFFF",
-    //         hoverBackgroundColor: "#0000FF",
-    //         hoverTextColor: "	#00008B",
-    //     }
-    //     component.setProps({ withColor: colors })
-    //     expect(component.exists()).toBe(true);
-    // })
 });
 
 

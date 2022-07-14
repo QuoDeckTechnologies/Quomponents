@@ -1,8 +1,8 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
-import renderer, { act } from "react-test-renderer";
+import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 
 //--------------------------------------
 // Import Common Tests
@@ -31,13 +31,15 @@ describe("BulletBlock", () => {
 
     hasValid("defaults", args);
 
-    hasValid("variants", args);
     hasValid("sizes", args);
+    hasValid("positions", args);
+    hasValid("padding", args);
+    hasValid("alignment", args);
 
     hasValid("colors", args);
-    hasValid("animations", args);
 
     hasValid("hidden", args);
+    hasValid("fluid", args);
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -52,22 +54,12 @@ describe("BulletBlock", () => {
                     "Quisque sed turpis vel lectus suscipit auctor",
                     "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
                 ]}
-                let colors={{
-                    backgroundColor: "red",
-                    accentColor: "green",
-                    textColor: "blue",
-                }}
+                asVariant="primary"
+                asSize="normal"
+                withColor={null}
+                withAnimation={null}
+                isHidden={false}
             />
         );
     });
-    it("should render correctly with withColor prop ",
-        () => {
-            component = renderer.create(<BulletBlock
-                withColor={{
-                    backgroundColor: "#C9878",
-                    accentColor: "#ffffff",
-                    textColor: "#b60d17",
-                }}
-            />)
-        });
 });

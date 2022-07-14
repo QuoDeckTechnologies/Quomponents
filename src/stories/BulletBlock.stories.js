@@ -6,13 +6,6 @@ export default {
     component: BulletBlock,
     argTypes: {
         content: ["label1"],
-        asVariant: {
-            control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
-            table: {
-                category: "as-Flags",
-            },
-        },
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -20,6 +13,28 @@ export default {
                 category: "as-Flags",
             },
         },
+        asPadded: {
+            control: "select",
+            options: ["fitted", "compact", "normal", "relaxed"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asFloated: {
+            control: "select",
+            options: ["left", "right", "none", "inline"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asAligned: {
+            control: "select",
+            options: ["left", "right", "center"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+
         withColor: {
             table: {
                 category: "with-Params",
@@ -30,22 +45,20 @@ export default {
                 },
             },
         },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
-                },
-            },
-        },
+
         isHidden: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
             },
         },
+        isFluid: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
+
     },
     decorators: [
         (story) => (
@@ -82,19 +95,20 @@ Default.args = {
         "Quisque sed turpis vel lectus suscipit auctor",
         "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
     ],
-    asVariant: "primary",
+
     asSize: "normal",
+    asFloated: "none",
+    asPadded: "normal",
+    asAligned: "left",
+
     withColor: {
         textColor: "#121212",
         backgroundColor: "",
         accentColor: "",
     },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
+
     isHidden: false,
+    isFluid: false,
 };
 Default.parameters = {
     docs: {
@@ -122,38 +136,7 @@ ColoredBulletblock.parameters = {
             story: "Use to override the standard colors of the contents.",
         },
         source: {
-            code: `<Bulletblock 
-            withColor={{
-            backgroundColor: "#C98787",
-            textColor: "#ffffff",
-            accentColor: "",}}/>`,
-        },
-    },
-};
-
-//-------------------------------------------------------------
-// Animated Toolbar
-// -------------------------------------------------------------
-export const AnimatedBulletblock = Template.bind({});
-AnimatedBulletblock.args = {
-    ...Default.args,
-    withAnimation: {
-        animation: "slideDown",
-        duration: 1,
-        delay: 0,
-    },
-};
-AnimatedBulletblock.parameters = {
-    docs: {
-        description: {
-            story: "We can animate the appearance of BulletBlock",
-        },
-        source: {
-            code: `<Bulletblock {...${JSON.stringify(
-                AnimatedBulletblock.args,
-                null,
-                2
-            )}}/>`,
+            code: `<BulletBlock {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
@@ -170,7 +153,6 @@ const AllvariantTemplate = (args) => {
         <div>
             <BulletBlock
                 {...Object.assign({}, baseObj, {
-                    asVariant: "primary",
                     withColor: {
                         textColor: "#121212",
                         backgroundColor: "",
@@ -181,7 +163,6 @@ const AllvariantTemplate = (args) => {
             />
             <BulletBlock
                 {...Object.assign({}, baseObj, {
-                    asVariant: "secondary",
                     withColor: {
                         backgroundColor: "#C98787",
                         textColor: "#ffffff",
@@ -201,7 +182,7 @@ Allvariant.parameters = {
             story: "All Variants are supported in BulletBock.",
         },
         source: {
-            code: `<AppMenu asVariant="secondary"/>`,
+            code: `<BulletBlock {...${JSON.stringify(Default.args, null, 2)}}/>`,
         },
     },
 };
