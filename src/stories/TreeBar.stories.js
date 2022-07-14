@@ -1,9 +1,9 @@
 import React from "react";
-import TreeBarOpen from "../components/TreeBarOpen/TreeBarOpen.react";
+import TreeBar from "../components/TreeBar/TreeBar.react";
 
 const dictionary = JSON.stringify({
   hi: {
-    treeBarOpen: {
+    TreeBar: {
       pageHeader: "पाठ्यक्रम",
     },
     searchBar: {
@@ -14,7 +14,7 @@ const dictionary = JSON.stringify({
 
 export default {
   title: "Design System/TreeBar",
-  component: TreeBarOpen,
+  component: TreeBar,
   argTypes: {
     pageHeader: "Page Header",
     content: { treeData: {}, props: {} },
@@ -74,7 +74,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a TreeBarOpen for general-purpose use",
+    componentSubtitle: "Displays a TreeBar for general-purpose use",
     a11y: { disable: true },
     docs: {
       iframeHeight: 500,
@@ -99,7 +99,7 @@ let dataprops = {
   isHidden: false
 };
 
-const Template = (args) => <TreeBarOpen {...args} style={{ width: "30%" }} />;
+const Template = (args) => <TreeBar {...args} style={{ width: "30%" }} />;
 export const Default = Template.bind({});
 Default.args = {
   pageHeader: "Courses",
@@ -191,14 +191,14 @@ Default.args = {
   isHidden: false,
   withTranslation: {
     lang: "en",
-    tgt: "treeBarOpen",
+    tgt: "TreeBar",
     dictionary: dictionary,
   },
 };
 Default.parameters = {
   docs: {
     source: {
-      code: `<TreeBarOpen {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<TreeBar {...${JSON.stringify(Default.args, null, 2)}}/>`,
     },
   },
 };
@@ -286,7 +286,7 @@ TranslatedTreeBar.args = {
   },
   withTranslation: {
     lang: "hi",
-    tgt: "treeBarOpen",
+    tgt: "TreeBar",
     dictionary: dictionary,
   },
 };
@@ -297,7 +297,7 @@ TranslatedTreeBar.parameters = {
         "Use to change the language that the text appears in. To make this work for the TreebarBar:(pageHeader), add a SearchBar:{placeHolder} value to the dictionary.",
     },
     source: {
-      code: `<TreeBarOpen {...${JSON.stringify(
+      code: `<TreeBar {...${JSON.stringify(
         TranslatedTreeBar.args,
         null,
         2
@@ -320,7 +320,7 @@ WithoutPageHeader.parameters = {
       story: "Use to disable page header.",
     },
     source: {
-      code: `<TreeBarOpen {...${JSON.stringify(
+      code: `<TreeBar {...${JSON.stringify(
         WithoutPageHeader.args,
         null,
         2
@@ -347,7 +347,7 @@ WithAnimation.parameters = {
       story: "Use to animate Treebar page.",
     },
     source: {
-      code: `<TreeBarOpen {...${JSON.stringify(
+      code: `<TreeBar {...${JSON.stringify(
         WithAnimation.args,
         null,
         2
