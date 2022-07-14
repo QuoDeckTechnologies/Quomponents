@@ -2,7 +2,7 @@ import React from "react";
 import EnrollmentRuleRow from "../components/EnrollmentRuleRow/EnrollmentRuleRow.react";
 
 export default {
-  title: "Design System/EnrollmentRuleRow/EnrollmentRuleRow",
+  title: "Design System/EnrollmentRuleRow",
   component: EnrollmentRuleRow,
   argTypes: {
     criteria: {},

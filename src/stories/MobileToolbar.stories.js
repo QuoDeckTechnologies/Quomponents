@@ -15,7 +15,7 @@ const dictionary = JSON.stringify({
     },
 });
 export default {
-    title: "Design System/MobileToolbar/MobileToolbar",
+    title: "Design System/MobileToolbar",
     component: MobileToolbar,
     argTypes: {
         title: "Edit Mode",

@@ -2,7 +2,7 @@ import React from "react";
 import QuoBarChart from "../components/BarChart/QuoBarChart.react";
 
 export default {
-    title: "Design System/BarChart/BarChart",
+    title: "Design System/BarChart",
     component: QuoBarChart,
     argTypes: {
         title: "",

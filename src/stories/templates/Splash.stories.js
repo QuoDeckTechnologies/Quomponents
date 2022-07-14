@@ -2,7 +2,7 @@ import React from "react";
 import Splash from "../../components/Templates/Splash/Splash.react";
 
 export default {
-  title: "Design System/Templates/Splash/Splash",
+  title: "Design System/Templates/Splash",
   component: Splash,
   argTypes: {
     data: {

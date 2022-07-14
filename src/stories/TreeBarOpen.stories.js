@@ -13,7 +13,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/TreeBar/TreeBarOpen",
+  title: "Design System/TreeBar",
   component: TreeBarOpen,
   argTypes: {
     header: "Page Header",

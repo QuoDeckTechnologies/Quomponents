@@ -2,7 +2,7 @@ import React from "react";
 import Calendar from "../components/Calendar/Calendar.react";
 
 export default {
-    title: "Design System/Calendar/Calendar",
+    title: "Design System/Calendar",
     component: Calendar,
     argTypes: {
         asPadded: {

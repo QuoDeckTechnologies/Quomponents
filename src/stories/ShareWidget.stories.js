@@ -10,7 +10,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/ShareWidget/ShareWidget",
+    title: "Design System/ShareWidget",
     component: ShareWidget,
     argTypes: {
         label: "",

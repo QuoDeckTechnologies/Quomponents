@@ -21,7 +21,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/MultiSelect/MultiSelect",
+  title: "Design System/MultiSelect",
   component: MultiSelect,
   argTypes: {
     content: [

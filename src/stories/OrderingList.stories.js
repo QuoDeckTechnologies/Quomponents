@@ -20,7 +20,7 @@ const dictionary = JSON.stringify({
     }
 });
 export default {
-    title: "Design System/OrderingList/OrderingList",
+    title: "Design System/OrderingList",
     component: OrderingList,
     argTypes: {
         content: [],

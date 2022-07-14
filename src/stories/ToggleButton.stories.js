@@ -9,7 +9,7 @@ const dictionary = JSON.stringify({
     },
 });
 export default {
-    title: "Design System/ToggleButton/ToggleButton",
+    title: "Design System/ToggleButton",
     component: ToggleButton,
     argTypes: {
         label: "Active",

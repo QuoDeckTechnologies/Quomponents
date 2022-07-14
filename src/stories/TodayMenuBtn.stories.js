@@ -2,7 +2,7 @@ import React from "react";
 import TodayMenuBtn from "../components/TodayMenuBtn/TodayMenuBtn.react";
 
 export default {
-    title: "Design System/TodayMenuBtn/TodayMenuBtn",
+    title: "Design System/TodayMenuBtn",
     component: TodayMenuBtn,
     argTypes: {
         content: "",

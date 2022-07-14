@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/Templates/OpenAnswer/OpenAnswer",
+  title: "Design System/Templates/OpenAnswer",
   component: OpenAnswer,
   argTypes: {
     data: {},

@@ -2,7 +2,7 @@ import React from "react";
 import InlineEdit from "../components/InlineEdit/InlineEdit.react";
 
 export default {
-  title: "Design System/InlineEdit/InlineEdit",
+  title: "Design System/InlineEdit",
   component: InlineEdit,
   argTypes: {
     value: "Please input your text here",

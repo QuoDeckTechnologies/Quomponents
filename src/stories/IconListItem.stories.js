@@ -2,7 +2,7 @@ import React from "react";
 import IconListItem from "../components/IconListItem/IconListItem/IconListItem.react";
 
 export default {
-  title: "Design System/IconListItem/IconListItem",
+  title: "Design System/IconListItem",
   component: IconListItem,
   argTypes: {
     content: [],

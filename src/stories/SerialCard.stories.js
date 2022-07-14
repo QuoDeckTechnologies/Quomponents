@@ -3,7 +3,7 @@ import SerialCard from "../components/SerialCard/SerialCard.react";
 import Image from "../assets/GameImage.png";
 
 export default {
-    title: "Design System/SerialCard/SerialCard",
+    title: "Design System/SerialCard",
     component: SerialCard,
     argTypes: {
         title: "",

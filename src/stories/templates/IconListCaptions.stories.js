@@ -2,7 +2,7 @@ import React from "react";
 import IconListCaptions from "../../components/Templates/IconListCaptions/IconListCaptions.react";
 
 export default {
-  title: "Design System/Templates/IconListCaptions/IconListCaptions",
+  title: "Design System/Templates/IconListCaptions",
   component: IconListCaptions,
   argTypes: {
     data: {},

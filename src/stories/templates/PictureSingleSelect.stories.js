@@ -2,7 +2,7 @@ import React from "react";
 import PictureSingleSelect from "../../components/Templates/PictureSingleSelect/PictureSingleSelect.react";
 
 export default {
-    title: "Design System/Templates/PictureSingleSelect/PictureSingleSelect",
+    title: "Design System/Templates/PictureSingleSelect",
     component: PictureSingleSelect,
     argTypes: {
         data: {

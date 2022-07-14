@@ -2,7 +2,7 @@ import React from "react";
 import OTPFields from "../components/OTPFields/OTPFields.react";
 
 export default {
-    title: "Design System/OTPFields/OTPFields",
+    title: "Design System/OTPFields",
     component: OTPFields,
     argTypes: {
         numInputs: 5,

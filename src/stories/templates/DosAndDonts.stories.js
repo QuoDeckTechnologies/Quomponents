@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
     },
 });
 export default {
-    title: "Design System/Templates/DosAndDonts/DosAndDonts",
+    title: "Design System/Templates/DosAndDonts",
     component: DosAndDonts,
     argTypes: {
         data: {},

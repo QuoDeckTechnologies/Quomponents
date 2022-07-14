@@ -2,7 +2,7 @@ import React from "react";
 import CarouselList from "../../components/Templates/CarouselList/CarouselList.react";
 
 export default {
-    title: "Design System/Templates/CarouselList/CarouselList",
+    title: "Design System/Templates/CarouselList",
     component: CarouselList,
     argTypes: {
         data: {},

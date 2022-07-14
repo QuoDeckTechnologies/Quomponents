@@ -17,7 +17,7 @@ const dictionary = JSON.stringify({
     }
 });
 export default {
-    title: "Design System/RewardCard/RewardCard",
+    title: "Design System/RewardCard",
     component: RewardCard,
     argTypes: {
         id: "",

@@ -23,7 +23,7 @@ const dictionary = JSON.stringify({
     },
 });
 export default {
-    title: "Design System/WalletRow/WalletRow",
+    title: "Design System/WalletRow",
     component: WalletRow,
     argTypes: {
         content: {},
