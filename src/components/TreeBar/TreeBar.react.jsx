@@ -216,7 +216,10 @@ export default function TreeItem(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses} qui-treebar-parent`}
         >
-            <div className={quommonClasses.childClasses}>
+            <div
+                className={quommonClasses.childClasses}
+                style={{ height: "100%" }}
+            >
                 {props.pageHeader && (
                     <div
                         className="qui-treebar-pageheader"
