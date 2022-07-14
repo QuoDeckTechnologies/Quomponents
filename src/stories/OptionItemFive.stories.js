@@ -14,7 +14,11 @@ export default {
   title: "Design System/OptionItem/OptionItemFive",
   component: OptionItemFive,
   argTypes: {
-    content: {},
+    targetName: "",
+    value: "",
+    image: {},
+    placeholder: "",
+    maxLength: 300,
     withColor: {
       table: {
         category: "with-Params",
@@ -22,16 +26,6 @@ export default {
           backgroundColor: "",
           accentColor: "",
           textColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
         },
       },
     },
@@ -43,18 +37,6 @@ export default {
           tgt: "",
           dictionary: "",
         },
-      },
-    },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    isHidden: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
       },
     },
     onUpload: {
@@ -93,30 +75,21 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    targetName: "Target Name",
-    value: "",
-    image: {},
-    placeholder: "Option Item Five",
-    maxLength: 300,
-  },
+  targetName: "Target Name",
+  value: "",
+  image: {},
+  placeholder: "Option Item Five",
+  maxLength: 300,
   withColor: {
     backgroundColor: "#ffab000d",
     accentColor: "",
     textColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
   },
   withTranslation: {
     lang: "en",
     tgt: "optionItemFive",
     dictionary: dictionary,
   },
-  isDisabled: false,
-  isHidden: false,
 };
 Default.parameters = {
   docs: {
@@ -142,29 +115,6 @@ ColoredOptionItemFive.parameters = {
     source: {
       code: `<OptionItemFive {...${JSON.stringify(
         ColoredOptionItemFive.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem Five
-// -------------------------------------------------------------
-export const AnimatedOptionItemFive = Template.bind({});
-AnimatedOptionItemFive.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemFive.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemFive {...${JSON.stringify(
-        AnimatedOptionItemFive.args,
         null,
         2
       )}}/>`,
@@ -288,7 +238,11 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemFive
               {...args}
-              content={{ ...content }}
+              targetName={content.targetName}
+              value={content.value}
+              image={content.image}
+              placeholder={content.placeholder}
+              maxLength={content.maxLength}
               onUpload={(targetName, image, value) =>
                 handleUpload(targetName, image, value)
               }

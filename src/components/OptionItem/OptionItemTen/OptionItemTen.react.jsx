@@ -198,7 +198,7 @@ export default function OptionItemTen(props) {
               title: tObj?.uploadButton || content?.uploadButton,
               icon: "fas fa-upload",
             }}
-            onClick={(image) => handleImageUpload(image)}
+            onUpload={(image) => handleImageUpload(image)}
             withColor={{ ...props.withColor }}
           />
         </div>

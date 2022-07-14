@@ -193,11 +193,6 @@ Default.args = {
     hoverBackgroundColor: "",
     hoverTextColor: "",
   },
-  withAnimation: {
-    animation: "",
-    duration: 0.5,
-    delay: 0,
-  },
   isDisabled: false,
   isFluid: false,
   isHidden: false,

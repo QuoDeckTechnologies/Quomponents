@@ -15,23 +15,20 @@ export default {
   title: "Design System/OptionItem/OptionItemFour",
   component: OptionItemFour,
   argTypes: {
-    content: {},
+    targetName: "",
+    value: "",
+    placeholder: "",
+    checked: true,
+    maxLength: 300,
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
+          textColor: "",
           accentColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -43,18 +40,6 @@ export default {
           tgt: "",
           dictionary: "",
         },
-      },
-    },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    isHidden: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
       },
     },
     onSelect: {
@@ -93,29 +78,23 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    targetName: "Target Name",
-    value: "",
-    placeholder: "Option Item Four",
-    checked: true,
-    maxLength: 300,
-  },
+  targetName: "Target Name",
+  value: "",
+  placeholder: "Option Item Four",
+  checked: true,
+  maxLength: 300,
   withColor: {
     backgroundColor: "#ffab000d",
-    accentColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
+    textColor: "",
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withTranslation: {
     lang: "en",
     tgt: "optionItemFour",
     dictionary: dictionary,
   },
-  isDisabled: false,
-  isHidden: false,
 };
 Default.parameters = {
   docs: {
@@ -133,6 +112,9 @@ ColoredOptionItemFour.args = {
   withColor: {
     backgroundColor: "#8c9ea3",
     accentColor: "#597387",
+    textColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemFour.parameters = {
@@ -140,29 +122,6 @@ ColoredOptionItemFour.parameters = {
     source: {
       code: `<OptionItemFour {...${JSON.stringify(
         ColoredOptionItemFour.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem Four
-// -------------------------------------------------------------
-export const AnimatedOptionItemFour = Template.bind({});
-AnimatedOptionItemFour.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemFour.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemFour {...${JSON.stringify(
-        AnimatedOptionItemFour.args,
         null,
         2
       )}}/>`,
@@ -286,7 +245,11 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemFour
               {...args}
-              content={{ ...content }}
+              targetName={content.targetName}
+              value={content.value}
+              placeholder={content.placeholder}
+              checked={content.checked}
+              maxLength={content.maxLength}
               onSelect={(targetName, checked) =>
                 handleSelect(targetName, checked)
               }

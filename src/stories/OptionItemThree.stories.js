@@ -15,24 +15,18 @@ export default {
   title: "Design System/OptionItem/OptionItemThree",
   component: OptionItemThree,
   argTypes: {
-    content: {},
+    targetName: "Target Name",
+    image: {},
+    checked: true,
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
-          accentColor: "",
           textColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
+          accentColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -44,18 +38,6 @@ export default {
           tgt: "",
           dictionary: "",
         },
-      },
-    },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    isHidden: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
       },
     },
     onUpload: {
@@ -94,28 +76,21 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    targetName: "Target Name",
-    image: {},
-    checked: true,
-  },
+  targetName: "Target Name",
+  image: {},
+  checked: true,
   withColor: {
     backgroundColor: "#ffab000d",
-    accentColor: "",
     textColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withTranslation: {
     lang: "en",
     tgt: "optionItemThree",
     dictionary: dictionary,
   },
-  isDisabled: false,
-  isHidden: false,
 };
 Default.parameters = {
   docs: {
@@ -134,6 +109,8 @@ ColoredOptionItemThree.args = {
     backgroundColor: "#8c9ea3",
     accentColor: "#597387",
     textColor: "#bac2c8",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemThree.parameters = {
@@ -141,29 +118,6 @@ ColoredOptionItemThree.parameters = {
     source: {
       code: `<OptionItemThree {...${JSON.stringify(
         ColoredOptionItemThree.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem Three
-// -------------------------------------------------------------
-export const AnimatedOptionItemThree = Template.bind({});
-AnimatedOptionItemThree.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemThree.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemThree {...${JSON.stringify(
-        AnimatedOptionItemThree.args,
         null,
         2
       )}}/>`,
@@ -284,7 +238,9 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemThree
               {...args}
-              content={content}
+              targetName={content.targetName}
+              image={content.image}
+              checked={content.checked}
               onSelect={(targetName, value, checked) =>
                 handleSelect(targetName, value, checked)
               }

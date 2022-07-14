@@ -66,16 +66,8 @@ describe("Option Item Two", () => {
         placeholder="placeholder"
         checked={false}
         maxLength={300}
-        withColor={{
-          backgroundColor: "",
-          accentColor: "",
-          textColor: "",
-        }}
-        withAnimation={{
-          animation: "zoom",
-          duration: 0.5,
-          delay: 0,
-        }}
+        withColor={null}
+        withAnimation={null}
         isDisabled={false}
         isHidden={false}
         onInput={() => {}}
@@ -88,12 +80,10 @@ describe("Option Item Two", () => {
   it("should render correctly without throwing error", () => {
     let component = mount(
       <OptionItemTwo
-        content={{
-          targetName: "name",
-          value: "",
-          placeholder: "placeholder",
-          checked: false,
-        }}
+        targetName="name"
+        value=""
+        placeholder="placeholder"
+        checked={false}
         onInput={() => {}}
         onSelect={() => {}}
         onUpload={() => {}}

@@ -19,13 +19,17 @@ OptionItemThree.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  OptionItemThree targetName, value, placeholder, checked should be passed in content object
+  Use to define OptionItemThree targetName.
   */
-  content: PropTypes.shape({
-    targetName: PropTypes.string,
-    image: PropTypes.object,
-    checked: PropTypes.bool,
-  }),
+  targetName: PropTypes.string,
+  /**
+  Use to define OptionItemThree image.
+  */
+  image: PropTypes.object,
+  /**
+  Use to define OptionItemThree checked props.
+  */
+  checked: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
@@ -34,25 +38,10 @@ OptionItemThree.propTypes = {
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
     textColor: PropTypes.string,
-  }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -62,14 +51,6 @@ OptionItemThree.propTypes = {
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
-  /**
-  Use to enable/disable the component
-  */
-  isDisabled: PropTypes.bool,
-  /**
-  Use to show/hide the component
-  */
-  isHidden: PropTypes.bool,
   /**
   OptionItemThree component must have the onUpload function passed as props
   */
@@ -88,14 +69,14 @@ OptionItemThree.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  targetName: "Target Name",
+  image: null,
+  checked: true,
   //=======================================
   // Quommon props
   //=======================================
   withColor: null,
-  withAnimation: null,
-  isDisabled: false,
-  isHidden: false,
+  withTranslation: null,
 };
 /**
 ## Notes
@@ -108,15 +89,15 @@ export default function OptionItemThree(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { targetName, checked, image } = props;
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  const [image, setImage] = useState(content?.image);
-  const [isChecked, setIsChecked] = useState(content?.checked);
+  const [uploadImage, setUploadImage] = useState(image);
+  const [isChecked, setIsChecked] = useState(checked);
   useEffect(() => {
-    setIsChecked(content?.checked);
-  }, [content?.checked]);
+    setIsChecked(checked);
+  }, [checked]);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -135,8 +116,8 @@ export default function OptionItemThree(props) {
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
     props.onSelect(
-      content?.targetName ? content?.targetName : "default-target-name",
-      image,
+      targetName ? targetName : "default-target-name",
+      uploadImage,
       e.target.checked
     );
   };
@@ -144,9 +125,9 @@ export default function OptionItemThree(props) {
   // 7. Function to update value of the input field
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
-    setImage(image);
+    setUploadImage(image);
     props.onUpload(
-      content?.targetName ? content?.targetName : "default-target-name",
+      targetName ? targetName : "default-target-name",
       image,
       isChecked
     );
@@ -171,7 +152,7 @@ export default function OptionItemThree(props) {
         <div className="qui-option-item-three-radio-container">
           <FormControlLabel
             className="qui-option-item-three-radio"
-            value={content?.targetName}
+            value={targetName}
             control={
               <Radio
                 name={props.targetName}
@@ -185,18 +166,17 @@ export default function OptionItemThree(props) {
         </div>
         <div className="qui-option-item-three-upload-button">
           <OptionalImageField
-            content={{
-              title: tObj?.uploadButton || content?.uploadButton,
-              icon: "fas fa-upload",
-            }}
-            onClick={(image) => handleImageUpload(image)}
+            title={tObj?.uploadButton || "Upload"}
+            icon="fas fa-upload"
+            actionButton={false}
+            onUpload={(image) => handleImageUpload(image)}
             withColor={{ ...props.withColor }}
           />
         </div>
         <div className="qui-option-item-three-close-icon">
           <i
             className="qui-option-item-three-icon fas fa-times"
-            data-id={content?.targetName}
+            data-id={targetName}
             onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>

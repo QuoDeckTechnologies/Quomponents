@@ -86,7 +86,7 @@ Default.args = {
   withColor: {
     backgroundColor: "#ffab000d",
     textColor: "",
-    accentColor: "",
+    accentColor: "#FFBF00",
     hoverBackgroundColor: "",
     hoverTextColor: "",
   },
