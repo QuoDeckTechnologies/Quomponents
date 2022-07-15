@@ -87,7 +87,7 @@ OptionItemThree.defaultProps = {
 **/
 export default function OptionItemThree(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring content prop
+  // 1. Destructuring props
   //-------------------------------------------------------------------
   const { targetName, checked, image } = props;
   //-------------------------------------------------------------------

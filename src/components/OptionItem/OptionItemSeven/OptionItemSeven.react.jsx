@@ -1,9 +1,7 @@
 // Import npm packages
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 import {
-  getAnimation,
   getQuommons,
   getTranslation,
 } from "../../../common/javascripts/helpers";
@@ -20,16 +18,29 @@ OptionItemSeven.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  OptionItemSeven data should be passed in content object
+  Use to define OptionItemSeven target name
   */
-  content: PropTypes.shape({
-    targetName: PropTypes.string,
-    value: PropTypes.string,
-    placeholder: PropTypes.string,
-    checked: PropTypes.bool,
-    image: PropTypes.object,
-    maxLength: PropTypes.number,
-  }),
+  targetName: PropTypes.string,
+  /**
+  Use to define OptionItemSeven value
+  */
+  value: PropTypes.string,
+  /**
+  Use to define OptionItemSeven placeholder
+  */
+  placeholder: PropTypes.string,
+  /**
+  Use to define OptionItemSeven checked props
+  */
+  checked: PropTypes.bool,
+  /**
+  Use to define OptionItemSeven image
+  */
+  image: PropTypes.object,
+  /**
+  Use to define OptionItemSeven max length
+  */
+  maxLength: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
@@ -38,25 +49,10 @@ OptionItemSeven.propTypes = {
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
     textColor: PropTypes.string,
-  }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -66,14 +62,6 @@ OptionItemSeven.propTypes = {
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
-  /**
-  Use to enable/disable the component
-  */
-  isDisabled: PropTypes.bool,
-  /**
-  Use to show/hide the component
-  */
-  isHidden: PropTypes.bool,
   /**
   OptionItemSeven component must have the onInput function passed as props
   */
@@ -96,16 +84,17 @@ OptionItemSeven.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: [],
-  optionType: "title",
+  targetName: "name",
+  value: "value",
+  image: {},
+  placeholder: "placeholder",
+  checked: false,
+  maxLength: 300,
   //=======================================
   // Quommon props
   //=======================================
   withColor: null,
-  withAnimation: null,
   withTranslation: null,
-  isDisabled: false,
-  isHidden: false,
 };
 /**
 ## Notes
@@ -118,14 +107,14 @@ export default function OptionItemSeven(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { targetName, value, placeholder, checked, maxLength } = props;
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  const [isChecked, setIsChecked] = useState(content?.checked);
+  const [isChecked, setIsChecked] = useState(checked);
   useEffect(() => {
-    setIsChecked(content?.checked);
-  }, [content?.checked]);
+    setIsChecked(checked);
+  }, [checked]);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -135,15 +124,11 @@ export default function OptionItemSeven(props) {
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
   //-------------------------------------------------------------------
-  // 5. Get animation of the component
-  //-------------------------------------------------------------------
-  const animate = getAnimation(props);
-  //-------------------------------------------------------------------
   // 6. Function to return checked value of the component
   //-------------------------------------------------------------------
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
-    props.onSelect(content?.targetName, e.target.checked);
+    props.onSelect(targetName, e.target.checked);
   };
   //-------------------------------------------------------------------
   // 7. Function to return input value of the component
@@ -155,7 +140,7 @@ export default function OptionItemSeven(props) {
   // 8. Function to upload image to content array
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
-    props.onUpload(content?.targetName, image);
+    props.onUpload(targetName, image);
   };
   //-------------------------------------------------------------------
   // 9. Function to return label of the checkbox
@@ -168,18 +153,12 @@ export default function OptionItemSeven(props) {
   // ========================= Render Function =================================
 
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
-      className={`qui ${quommonClasses.parentClasses}`}
-    >
+    <div className={`qui ${quommonClasses.parentClasses}`}>
       <div className="qui-option-item-seven-container">
         <div className="qui-option-item-radio-container">
           <FormControlLabel
             className="qui-option-item-radio"
-            value={
-              content?.targetName || "default-target-name"
-            }
+            value={targetName || "default-target-name"}
             control={
               <Radio
                 checked={isChecked}
@@ -192,21 +171,20 @@ export default function OptionItemSeven(props) {
         </div>
         <div className="qui-option-item-upload-button">
           <OptionalImageField
-            content={{
-              title: tObj?.uploadButton || null,
-              icon: "fas fa-upload",
-            }}
-            onClick={(image) => handleImageUpload(image)}
+            title={tObj?.uploadButton || null}
+            icon="fas fa-upload"
+            actionButton={false}
+            onUpload={(image) => handleImageUpload(image)}
             withColor={{ ...props.withColor }}
           />
         </div>
         <InputField
           name={
-            content?.targetName ? content?.targetName : "default-target-name"
+            targetName ? targetName : "default-target-name"
           }
-          value={content?.value}
-          placeholder={tObj?.placeholder || content?.placeholder}
-          maxLength={content?.maxLength}
+          value={value}
+          placeholder={tObj?.placeholder || placeholder}
+          maxLength={maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
           onSubmit={handleValue}
@@ -215,12 +193,12 @@ export default function OptionItemSeven(props) {
           <i
             className="qui-option-item-seven-icon fas fa-times"
             data-id={
-              content?.targetName ? content?.targetName : "default-target-name"
+              targetName ? targetName : "default-target-name"
             }
             onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

@@ -15,14 +15,23 @@ export default {
   title: "Design System/OptionItem/OptionItemSix",
   component: OptionItemSix,
   argTypes: {
-    content: {},
+    targetName: "target",
+    value: "",
+    placeholder: "This is option A",
+    captionName: "caption",
+    captionValue: "",
+    captionPlaceholder: "Caption For Option A",
+    image: {},
+    maxLength: 300,
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
-          accentColor: "",
           textColor: "",
+          accentColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -100,20 +109,20 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    targetName: "target",
-    value: "",
-    placeholder: "This is option A",
-    captionName: "caption",
-    captionValue: "",
-    captionPlaceholder: "Caption For Option A",
-    image: {},
-    maxLength: 300,
-  },
+  targetName: "target",
+  value: "",
+  placeholder: "This is option A",
+  captionName: "caption",
+  captionValue: "",
+  captionPlaceholder: "Caption For Option A",
+  image: {},
+  maxLength: 300,
   withColor: {
     backgroundColor: "#ffab000d",
-    accentColor: "",
     textColor: "",
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -142,9 +151,11 @@ export const ColoredOptionItemSix = Template.bind({});
 ColoredOptionItemSix.args = {
   ...Default.args,
   withColor: {
-    backgroundColor: "#8c9ea3",
-    accentColor: "#597387",
-    textColor: "#bac2c8",
+    backgroundColor: "#ffab000d",
+    textColor: "",
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemSix.parameters = {
@@ -152,29 +163,6 @@ ColoredOptionItemSix.parameters = {
     source: {
       code: `<OptionItemSix {...${JSON.stringify(
         ColoredOptionItemSix.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem Six
-// -------------------------------------------------------------
-export const AnimatedOptionItemSix = Template.bind({});
-AnimatedOptionItemSix.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemSix.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemSix {...${JSON.stringify(
-        AnimatedOptionItemSix.args,
         null,
         2
       )}}/>`,
@@ -330,7 +318,14 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemSix
               {...args}
-              content={{ ...content }}
+              targetName={content.targetName}
+              value={content.value}
+              placeholder={content.placeholder}
+              captionName={content.captionName}
+              captionValue={content.captionValue}
+              captionPlaceholder={content.captionPlaceholder}
+              image={content.image}
+              maxLength={content.maxLength}
               onUpload={(targetName, image) => handleUpload(targetName, image)}
               onInput={(targetName, value) => handleInput(targetName, value)}
               onCaption={(captionName, captionValue) =>

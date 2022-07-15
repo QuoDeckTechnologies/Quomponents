@@ -1,9 +1,7 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 import {
-  getAnimation,
   getQuommons,
   getTranslation,
 } from "../../../common/javascripts/helpers";
@@ -19,18 +17,37 @@ OptionItemSix.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  OptionItemSix data should be passed in content field and it is a required field
+  Use to define OptionItemSix target name
   */
-  content: PropTypes.shape({
-    targetName: PropTypes.string,
-    value: PropTypes.string,
-    placeholder: PropTypes.string,
-    captionName: PropTypes.string,
-    captionValue: PropTypes.string,
-    captionPlaceholder: PropTypes.string,
-    image: PropTypes.object,
-    maxLength: PropTypes.number,
-  }),
+  targetName: PropTypes.string,
+  /**
+  Use to define OptionItemSix value
+  */
+  value: PropTypes.string,
+  /**
+  Use to define OptionItemSix placeholder
+  */
+  placeholder: PropTypes.string,
+  /**
+  Use to define OptionItemSix caption target name
+  */
+  captionName: PropTypes.string,
+  /**
+  Use to define OptionItemSix caption value
+  */
+  captionValue: PropTypes.string,
+  /**
+  Use to define OptionItemSix caption placeholder
+  */
+  captionPlaceholder: PropTypes.string,
+  /**
+  Use to define OptionItemSix image
+  */
+  image: PropTypes.object,
+  /**
+  Use to define OptionItemSix max length
+  */
+  maxLength: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
@@ -39,25 +56,10 @@ OptionItemSix.propTypes = {
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
     textColor: PropTypes.string,
-  }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -97,15 +99,19 @@ OptionItemSix.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  targetName: "",
+  value: "",
+  placeholder: "",
+  captionName: "",
+  captionValue: "",
+  captionPlaceholder: "",
+  image: null,
+  maxLength: 300,
   //=======================================
   // Quommon props
   //=======================================
   withColor: null,
-  withAnimation: null,
   withTranslation: null,
-  isDisabled: false,
-  isHidden: false,
 };
 /**
 ## Notes
@@ -118,18 +124,19 @@ export default function OptionItemSix(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
-  const { content } = props;
+  const {
+    targetName,
+    value,
+    placeholder,
+    captionName,
+    captionValue,
+    captionPlaceholder,
+    maxLength,
+  } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "option-item-six");
-  //-------------------------------------------------------------------
-  // 3. Get animation of the component
-  //-------------------------------------------------------------------
-  const animate = getAnimation(props);
-  //-------------------------------------------------------------------
-  // 4. Function to update value of the input field
-  //-------------------------------------------------------------------
   //-------------------------------------------------------------------
   // 5. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
@@ -138,7 +145,7 @@ export default function OptionItemSix(props) {
   // 6. Function to upload image to content array
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
-    props.onUpload(content?.targetName, image);
+    props.onUpload(targetName, image);
   };
   //-------------------------------------------------------------------
   // 7. Function to return input value of the component
@@ -156,34 +163,25 @@ export default function OptionItemSix(props) {
   // ========================= Render Function =================================
 
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
-      className={`qui ${quommonClasses.parentClasses}`}
-    >
+    <div className={`qui ${quommonClasses.parentClasses}`}>
       <div className="qui-option-item-six-container">
         <div className="qui-optionitem-flexone">
           <div className="qui-optionitem-flextwo">
             <div className="qui-option-item-upload-button">
               <OptionalImageField
-                content={{
-                  title: tObj?.uploadButton || content?.uploadButton,
-                  icon: "fas fa-upload",
-                }}
-                onClick={(image) => handleImageUpload(image)}
+                title={tObj?.uploadButton || "Upload"}
+                icon="fas fa-upload"
+                actionButton={false}
+                onUpload={(image) => handleImageUpload(image)}
                 withColor={{ ...props.withColor }}
               />
             </div>
             <div className="qui-optionitem-six-inputfieldone">
               <InputField
-                name={
-                  content?.targetName
-                    ? content?.targetName
-                    : "default-target-name"
-                }
-                value={content?.value}
-                placeholder={tObj?.placeholder || content?.placeholder}
-                maxLength={content?.maxLength}
+                name={targetName ? targetName : "default-target-name"}
+                value={value}
+                placeholder={tObj?.placeholder || placeholder}
+                maxLength={maxLength}
                 asEmphasis="listInput"
                 withColor={props.withColor}
                 onSubmit={handleValue}
@@ -192,16 +190,10 @@ export default function OptionItemSix(props) {
           </div>
           <div className="qui-optionitem-flexthree">
             <InputField
-              name={
-                content?.captionName
-                  ? content?.captionName
-                  : "default-caption-target-name"
-              }
-              value={content?.captionValue}
-              placeholder={
-                tObj?.captionPlaceholder || content?.captionPlaceholder
-              }
-              maxLength={content?.maxLength}
+              name={captionName ? captionName : "default-caption-target-name"}
+              value={captionValue}
+              placeholder={tObj?.captionPlaceholder || captionPlaceholder}
+              maxLength={maxLength}
               asEmphasis="listInput"
               withColor={props.withColor}
               onSubmit={handleCaptionValue}
@@ -211,11 +203,11 @@ export default function OptionItemSix(props) {
         <div className="qui-option-item-six-close-icon">
           <i
             className="fas fa-times"
-            data-id={content?.targetName}
+            data-id={targetName}
             onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

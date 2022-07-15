@@ -44,8 +44,10 @@ OptionItemFive.propTypes = {
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
     textColor: PropTypes.string,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -93,7 +95,7 @@ OptionItemFive.defaultProps = {
 **/
 export default function OptionItemFive(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring content prop
+  // 1. Destructuring props
   //-------------------------------------------------------------------
   const { targetName, value, placeholder, image, maxLength } = props;
   //-------------------------------------------------------------------

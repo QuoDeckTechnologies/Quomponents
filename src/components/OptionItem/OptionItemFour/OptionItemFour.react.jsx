@@ -95,7 +95,7 @@ OptionItemFour.defaultProps = {
 **/
 export default function OptionItemFour(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring content prop
+  // 1. Destructuring props
   //-------------------------------------------------------------------
   const {
     targetName,

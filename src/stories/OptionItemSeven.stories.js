@@ -16,7 +16,12 @@ export default {
   title: "Design System/OptionItem/OptionItemSeven",
   component: OptionItemSeven,
   argTypes: {
-    content: {},
+    targetName: "name",
+    value: "value",
+    image: {},
+    placeholder: "placeholder",
+    checked: false,
+    maxLength: 300,
     withColor: {
       table: {
         category: "with-Params",
@@ -24,16 +29,6 @@ export default {
           backgroundColor: "",
           accentColor: "",
           textColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
         },
       },
     },
@@ -45,18 +40,6 @@ export default {
           tgt: "",
           dictionary: "",
         },
-      },
-    },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    isHidden: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
       },
     },
     onInput: {
@@ -101,23 +84,18 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    targetName: "Target Name",
-    value: "",
-    placeholder: "This is Option A",
-    checked: true,
-    image: {},
-    maxLength: 300,
-  },
+  targetName: "Target Name",
+  value: "",
+  placeholder: "This is Option A",
+  checked: true,
+  image: {},
+  maxLength: 300,
   withColor: {
     backgroundColor: "#ffab000d",
-    accentColor: "",
     textColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withTranslation: {
     lang: "en",
@@ -141,9 +119,11 @@ export const ColoredOptionItemSeven = Template.bind({});
 ColoredOptionItemSeven.args = {
   ...Default.args,
   withColor: {
-    backgroundColor: "#8c9ea3",
-    accentColor: "#597387",
-    textColor: "#bac2c8",
+    backgroundColor: "#ffab000d",
+    textColor: "",
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemSeven.parameters = {
@@ -151,29 +131,6 @@ ColoredOptionItemSeven.parameters = {
     source: {
       code: `<OptionItemSeven {...${JSON.stringify(
         ColoredOptionItemSeven.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem Seven
-// -------------------------------------------------------------
-export const AnimatedOptionItemSeven = Template.bind({});
-AnimatedOptionItemSeven.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemSeven.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemSeven {...${JSON.stringify(
-        AnimatedOptionItemSeven.args,
         null,
         2
       )}}/>`,
@@ -323,7 +280,12 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemSeven
               {...args}
-              content={content}
+              targetName={content.targetName}
+              value={content.value}
+              placeholder={content.placeholder}
+              checked={content.checked}
+              image={content.image}
+              maxLength={content.maxLength}
               onSelect={(targetName, checked) =>
                 handleSelect(targetName, checked)
               }

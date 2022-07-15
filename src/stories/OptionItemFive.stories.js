@@ -24,8 +24,10 @@ export default {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
-          accentColor: "",
           textColor: "",
+          accentColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -82,8 +84,10 @@ Default.args = {
   maxLength: 300,
   withColor: {
     backgroundColor: "#ffab000d",
-    accentColor: "",
     textColor: "",
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withTranslation: {
     lang: "en",
@@ -108,6 +112,8 @@ ColoredOptionItemFive.args = {
     backgroundColor: "#8c9ea3",
     accentColor: "#597387",
     textColor: "#bac2c8",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemFive.parameters = {

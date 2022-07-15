@@ -49,6 +49,7 @@
 
 .qui .qui-option-item-six-container .qui-optional-image-field-icon {
   padding: 0.04em 0.2em;
+  font-size: 1.5em;
 }
 
 .qui.qui-option-item-six .qui.qui-optional-image-field {
@@ -95,13 +96,21 @@
     display: none;
   }
   .qui .qui-option-item-six-container .qui .qui-optional-image-field-icon {
-    font-size: 1.6em;
+    width: 100%;
+    text-align: center;
   }
   .qui
     .qui-option-item-six-container
     .qui.qui-optional-image-field
     .qui-optional-image-field-middle-border {
     display: none;
+  }
+
+  .qui
+    .qui-option-item-six-container
+    .qui.qui-optional-image-field
+    .qui-optional-image-field-wrapper {
+    height: 2.2em;
   }
 }
 
@@ -141,6 +150,7 @@
     .qui.qui-optional-image-field
     .qui-optional-image-field-wrapper {
     border: 0.18em solid #ffbf00;
+    height: auto;
   }
 }
 
@@ -154,7 +164,7 @@
     font-size: 0.8em;
   }
   .qui .qui-option-item-six-container .qui .qui-optional-image-field-icon {
-    font-size: 1.6em;
+    font-size: 1.5em;
     padding: 0.04em 0.2em;
   }
 }

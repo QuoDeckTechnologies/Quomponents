@@ -85,7 +85,7 @@ OptionItemOne.defaultProps = {
 **/
 export default function OptionItemOne(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring content prop
+  // 1. Destructuring props
   //-------------------------------------------------------------------
   const { targetName, value, placeholder, maxLength } = props;
   //-------------------------------------------------------------------

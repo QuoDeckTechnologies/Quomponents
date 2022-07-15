@@ -95,7 +95,7 @@ OptionItemTwo.defaultProps = {
 **/
 export default function OptionItemTwo(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring content prop
+  // 1. Destructuring props
   //-------------------------------------------------------------------
   const { targetName, value, checked, placeholder, maxLength } = props;
   //-------------------------------------------------------------------
