@@ -18,7 +18,7 @@ import "../../common/stylesheets/overrule.scss";
 
 import SearchBar from "../SearchBar/SearchBar.react";
 
-TreeItem.propTypes = {
+TreeBar.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -66,13 +66,9 @@ TreeItem.propTypes = {
     */
     isFluid: PropTypes.bool,
 
-    /**
-    TreeItem component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
 };
 
-TreeItem.defaultProps = {
+TreeBar.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -122,7 +118,7 @@ decorators.Header = ({ node }) => {
 - Or add custom css in overrule.scss to override the component css
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
-export default function TreeItem(props) {
+export default function TreeBar(props) {
     const [cursor, setCursor] = useState(props.content?.treeData);
     const [folderStructure, setfolderStructure] = useState(
         props.content?.treeData
