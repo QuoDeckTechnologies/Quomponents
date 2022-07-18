@@ -100,6 +100,7 @@ describe("Option Item Six", () => {
   it("should render correctly without throwing error when wriiten in input field", () => {
     component.find("InputField").at(0).simulate("submit");
     component.find("InputField").at(1).simulate("submit");
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when file is uploaded", async () => {
@@ -112,5 +113,6 @@ describe("Option Item Six", () => {
     component
       .find(".fa-times")
       .simulate("click", { target: { dataset: { id: "name" } } });
+    expect(component.exists()).toBe(true);
   });
 });

@@ -95,6 +95,7 @@ describe("Option Item Nine", () => {
     component
       .find(".fa-times")
       .simulate("click", { target: { dataset: { id: "name" } } });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when shortFieldOne targetName is not specified", () => {

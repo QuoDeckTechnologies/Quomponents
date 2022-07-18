@@ -19,29 +19,22 @@ describe("Option Item Seven", () => {
   const args = {
     target: OptionItemSeven,
     required: {
-      content: {
-        targetName: "name",
-        value: "value",
-        image: {},
-        placeholder: "placeholder",
-        checked: false,
-        maxLength: 300,
-      },
-      onInput: () => { },
-      onSelect: () => { },
-      onUpload: () => { },
-      onClick: () => { },
+      targetName: "name",
+      value: "value",
+      image: {},
+      placeholder: "placeholder",
+      checked: false,
+      maxLength: 300,
+      onInput: () => {},
+      onSelect: () => {},
+      onUpload: () => {},
+      onClick: () => {},
     },
   };
 
   hasValid("defaults", args);
-
   hasValid("colors", args);
   hasValid("animations", args);
-
-  hasValid("hidden", args);
-  hasValid("disabled", args);
-
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
@@ -66,14 +59,12 @@ describe("Option Item Seven", () => {
     jest.resetAllMocks();
     component = shallow(
       <OptionItemSeven
-        content={{
-          targetName: "",
-          value: "",
-          image: {},
-          placeholder: "placeholder",
-          checked: false,
-          maxLength: 300,
-        }}
+        targetName=""
+        value=""
+        image={null}
+        placeholder="placeholder"
+        checked={false}
+        maxLength={300}
         withColor={{
           backgroundColor: "",
           accentColor: "",
@@ -86,38 +77,26 @@ describe("Option Item Seven", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onInput={() => { }}
-        onSelect={() => { }}
-        onUpload={() => { }}
-        onClick={() => { }}
+        onInput={() => {}}
+        onSelect={() => {}}
+        onUpload={() => {}}
+        onClick={() => {}}
       />
     );
-  });
-
-  it("should render correctly without throwing error when withTranslation prop is passed", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "optionItemSeven",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error", () => {
     let component = mount(
       <OptionItemSeven
-        content={{
-          targetName: "name",
-          value: "value",
-          placeholder: "placeholder",
-          checked: false,
-        }}
-        onInput={() => { }}
-        onSelect={() => { }}
-        onUpload={() => { }}
-        onClick={() => { }}
+        targetName=""
+        value=""
+        image={null}
+        placeholder="placeholder"
+        checked={false}
+        onInput={() => {}}
+        onSelect={() => {}}
+        onUpload={() => {}}
+        onClick={() => {}}
       />
     );
     expect(component.exists()).toBe(true);
@@ -139,22 +118,25 @@ describe("Option Item Seven", () => {
 
   it("should render correctly without throwing error when wriiten in input field", () => {
     component.find("InputField").simulate("submit");
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when radio button is used", () => {
     component
       .find(".qui-option-item-radio")
       .simulate("change", { target: { checked: true } });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when clicked on close icon", () => {
     component
       .find(".fa-times")
       .simulate("click", { target: { dataset: { id: "name" } } });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when file is uploaded", async () => {
-    component.find("OptionalImageField").simulate("click", {});
+    component.find("OptionalImageField").simulate("upload", {});
     await pauseFor(100);
     expect(component.exists()).toBe(true);
   });

@@ -111,6 +111,7 @@ describe("Option Item Three", () => {
     component
       .find(".qui-option-item-three-radio")
       .simulate("change", { target: { checked: true } });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when radio and upload button is used and target name is not provided", async () => {
@@ -123,12 +124,14 @@ describe("Option Item Three", () => {
       .simulate("change", { target: { checked: true } });
     component.find("OptionalImageField").simulate("upload", {});
     await pauseFor(100);
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when clicked on close icon", () => {
     component
       .find(".fa-times")
       .simulate("click", { target: { dataset: { id: "name" } } });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when file is uploaded", async () => {

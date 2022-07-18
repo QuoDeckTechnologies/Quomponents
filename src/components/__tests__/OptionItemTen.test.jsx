@@ -129,11 +129,14 @@ describe("Option Item Ten", () => {
     component.find("InputField").at(0).simulate("submit");
     component.find("InputField").at(1).simulate("submit");
     component.find("InputField").at(2).simulate("submit");
+    expect(component.exists()).toBe(true);
   });
+
   it("should render correctly without throwing error when clicked on close icon", () => {
     component
       .find(".fa-times")
       .simulate("click", { target: { dataset: { id: "name" } } });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when file is uploaded", async () => {
