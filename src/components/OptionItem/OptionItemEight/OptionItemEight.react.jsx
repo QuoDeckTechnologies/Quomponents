@@ -12,49 +12,54 @@ import "../../../common/stylesheets/common.css";
 import "./OptionItemEight.scss";
 import "../../../common/stylesheets/overrule.scss";
 import InputField from "../../InputField/InputField.react";
-import Button from "@mui/material/Button";
+import Button from "../../Buttons/Button/Button.react";
 
 OptionItemEight.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
   /**
-  OptionItemEight data should be passed in content object
+  Use to define OptionItemEight targetName
   */
-  content: PropTypes.shape({
-    targetName: PropTypes.string,
-    value: PropTypes.string,
-    placeholder: PropTypes.string,
-    maxLength: PropTypes.number,
-    buttonText: PropTypes.string,
-  }),
+  targetName: PropTypes.string,
+  /**
+  Use to define OptionItemEight value
+  */
+  value: PropTypes.string,
+  /**
+  Use to define OptionItemEight placeholder
+  */
+  placeholder: PropTypes.string,
+  /**
+  Use to define OptionItemEight max length
+  */
+  maxLength: PropTypes.number,
+  /**
+  Use to define OptionItemEight button text
+  */
+  buttonText: PropTypes.string,
   //=======================================
   // Quommon props
   //=======================================
+  /**
+  Use to define standard component type
+  */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
   /**
   Use to override component colors
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
     textColor: PropTypes.string,
-  }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -64,14 +69,6 @@ OptionItemEight.propTypes = {
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
-  /**
-  Use to enable/disable the component
-  */
-  isDisabled: PropTypes.bool,
-  /**
-  Use to show/hide the component
-  */
-  isHidden: PropTypes.bool,
   /**
   OptionItemEight component must have the onInput function passed as props
   */
@@ -90,15 +87,17 @@ OptionItemEight.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  targetName: "",
+  value: "",
+  placeholder: "",
+  maxLength: 300,
+  buttonText: "",
   //=======================================
   // Quommon props
   //=======================================
+  asVariant: "primary",
   withColor: null,
-  withAnimation: null,
   withTranslation: null,
-  isDisabled: false,
-  isHidden: false,
 };
 /**
 ## Notes
@@ -111,7 +110,15 @@ export default function OptionItemEight(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
-  const { content } = props;
+  const {
+    targetName,
+    value,
+    placeholder,
+    maxLength,
+    buttonText,
+    asVariant,
+    withColor,
+  } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -141,30 +148,33 @@ export default function OptionItemEight(props) {
     >
       <div className="qui-option-item-eight-container">
         <InputField
-          name={content?.targetName || "default-target-name"}
-          value={content?.value}
-          placeholder={tObj?.placeholder || content?.placeholder}
-          maxLength={content?.maxLength}
+          name={targetName || "default-target-name"}
+          value={value}
+          placeholder={tObj?.placeholder || placeholder}
+          maxLength={maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
           onSubmit={handleValue}
         />
         <div className="qui-option-item-button">
           <Button
-            variant="outlined"
-            style={{
-              borderColor: props.withColor?.accentColor,
-              color: props.withColor?.accentColor,
+            content={buttonText}
+            asEmphasis="outlined"
+            asVariant={asVariant}
+            withColor={{
+              ...withColor,
+              backgroundColor: withColor?.accentColor,
+              textColor: withColor?.accentColor,
             }}
             onClick={props.onSubmit}
           >
-            {tObj?.buttonText || content?.buttonText || "Outlined button"}
+            {tObj?.buttonText || buttonText || "Outlined button"}
           </Button>
         </div>
         <div className="qui-option-item-eight-close-icon">
           <i
             className="qui-option-item-eight-icon fas fa-times"
-            data-id={content?.targetName}
+            data-id={targetName}
             onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>

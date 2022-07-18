@@ -4,15 +4,12 @@
   gap: 0.5em;
 }
 
-.qui .qui-short-field-one {
-  .css-c5v1qu-MuiInputBase-input-MuiFilledInput-input {
-    padding-top: 0.3em;
+.qui .qui-short-field- {
+  &one .qui.qui-input-field .qui-input-field-container input {
+    padding: 0.3em;
   }
-}
-
-.qui .qui-short-field-two {
-  .css-c5v1qu-MuiInputBase-input-MuiFilledInput-input {
-    padding-top: 0.3em;
+  &two .qui.qui-input-field .qui-input-field-container input {
+    padding: 0.3em;
   }
 }
 

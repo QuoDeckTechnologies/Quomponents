@@ -13,13 +13,18 @@ export default {
   title: "Design System/OptionItem/OptionItemNine",
   component: OptionItemNine,
   argTypes: {
-    content: {},
+    shortFieldOne: {},
+    shortFieldTwo: {},
+    message: {},
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
+          textColor: "",
           accentColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -97,38 +102,32 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    shortFieldOne: {
-      targetName: "ShortFieldOne",
-      value: "0",
-    },
-    shortFieldTwo: {
-      targetName: "ShortFieldTwo",
-      value: "0",
-    },
-    message: {
-      targetName: "Target Name",
-      value: "",
-      placeholder: "Message for Quiz Result",
-      maxLength: 300,
-    },
+  shortFieldOne: {
+    targetName: "ShortFieldOne",
+    value: "0",
+  },
+  shortFieldTwo: {
+    targetName: "ShortFieldTwo",
+    value: "0",
+  },
+  message: {
+    targetName: "Target Name",
+    value: "",
+    placeholder: "Message for Quiz Result",
+    maxLength: 300,
   },
   withColor: {
     backgroundColor: "#ffab000d",
-    accentColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
+    accentColor: "#FFBF00",
+    textColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withTranslation: {
     lang: "en",
     tgt: "optionItemNine",
     dictionary: dictionary,
   },
-  isDisabled: false,
-  isHidden: false,
 };
 Default.parameters = {
   docs: {
@@ -153,29 +152,6 @@ ColoredOptionItemNine.parameters = {
     source: {
       code: `<OptionItemNine {...${JSON.stringify(
         ColoredOptionItemNine.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem Nine
-// -------------------------------------------------------------
-export const AnimatedOptionItemNine = Template.bind({});
-AnimatedOptionItemNine.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemNine.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemNine {...${JSON.stringify(
-        AnimatedOptionItemNine.args,
         null,
         2
       )}}/>`,
@@ -349,7 +325,20 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemNine
               {...args}
-              content={content}
+              shortFieldOne={{
+                targetName: content.shortFieldOne.targetName,
+                value: content.shortFieldOne.value,
+              }}
+              shortFieldTwo={{
+                targetName: content.shortFieldTwo.targetName,
+                value: content.shortFieldTwo.value,
+              }}
+              message={{
+                targetName: content.message.targetName,
+                value: content.message.value,
+                placeholder: content.message.placeholder,
+                maxLength: content.message.maxLength,
+              }}
               onShortFieldOneInput={(targetName, value) =>
                 handleShortFieldOne(targetName, value)
               }

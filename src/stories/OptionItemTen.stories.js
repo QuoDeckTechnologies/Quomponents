@@ -16,14 +16,18 @@ export default {
   title: "Design System/OptionItem/OptionItemTen",
   component: OptionItemTen,
   argTypes: {
-    content: {},
+    option: {},
+    header: {},
+    message: {},
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
-          accentColor: "",
           textColor: "",
+          accentColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -107,42 +111,35 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    option: {
-      targetName: "target",
-      value: "",
-      placeholder: "Option A",
-    },
-    header: {
-      targetName: "header",
-      value: "",
-      placeholder: "Header for Option A",
-      maxLength: 300,
-    },
-    message: {
-      targetName: "message",
-      value: "",
-      placeholder: "Message for Option A",
-      maxLength: 300,
-    },
+  option: {
+    targetName: "target",
+    value: "",
+    placeholder: "Option A",
+  },
+  header: {
+    targetName: "header",
+    value: "",
+    placeholder: "Header for Option A",
+    maxLength: 300,
+  },
+  message: {
+    targetName: "message",
+    value: "",
+    placeholder: "Message for Option A",
+    maxLength: 300,
   },
   withColor: {
     backgroundColor: "#ffab000d",
-    accentColor: "",
     textColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withTranslation: {
     lang: "en",
     tgt: "optionItemTen",
     dictionary: dictionary,
   },
-  isDisabled: false,
-  isHidden: false,
 };
 Default.parameters = {
   docs: {
@@ -161,6 +158,8 @@ ColoredOptionItemTen.args = {
     backgroundColor: "#8c9ea3",
     accentColor: "#597387",
     textColor: "#bac2c8",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemTen.parameters = {
@@ -168,29 +167,6 @@ ColoredOptionItemTen.parameters = {
     source: {
       code: `<OptionItemTen {...${JSON.stringify(
         ColoredOptionItemTen.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem Ten
-// -------------------------------------------------------------
-export const AnimatedOptionItemTen = Template.bind({});
-AnimatedOptionItemTen.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemTen.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemTen {...${JSON.stringify(
-        AnimatedOptionItemTen.args,
         null,
         2
       )}}/>`,
@@ -395,7 +371,23 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemTen
               {...args}
-              content={{ ...content }}
+              option={{
+                targetName: "target",
+                value: "",
+                placeholder: "Option A",
+              }}
+              header={{
+                targetName: "header",
+                value: "",
+                placeholder: "Header for Option A",
+                maxLength: 300,
+              }}
+              message={{
+                targetName: "message",
+                value: "",
+                placeholder: "Message for Option A",
+                maxLength: 300,
+              }}
               onUpload={(targetName, image) => handleUpload(targetName, image)}
               onInput={(targetName, value) => handleInput(targetName, value)}
               onHeader={(targetName, value) => handleHeader(targetName, value)}

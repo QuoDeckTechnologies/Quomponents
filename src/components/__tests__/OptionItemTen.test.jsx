@@ -19,11 +19,11 @@ describe("Option Item Ten", () => {
   const args = {
     target: OptionItemTen,
     required: {
-      onInput: () => { },
-      onHeader: () => { },
-      onMessage: () => { },
-      onUpload: () => { },
-      onClick: () => { },
+      onInput: () => {},
+      onHeader: () => {},
+      onMessage: () => {},
+      onUpload: () => {},
+      onClick: () => {},
     },
     translations: {
       tgt: "optionItemTen",
@@ -42,14 +42,8 @@ describe("Option Item Ten", () => {
   };
 
   hasValid("defaults", args);
-
   hasValid("colors", args);
-  hasValid("animations", args);
   hasValid("translations", args);
-
-  hasValid("hidden", args);
-  hasValid("disabled", args);
-
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
@@ -63,24 +57,22 @@ describe("Option Item Ten", () => {
     jest.resetAllMocks();
     component = shallow(
       <OptionItemTen
-        content={{
-          option: {
-            targetName: "target",
-            value: "",
-            placeholder: "Option A",
-          },
-          header: {
-            targetName: "header",
-            value: "",
-            placeholder: "Header for Option A",
-            maxLength: 300,
-          },
-          message: {
-            targetName: "message",
-            value: "",
-            placeholder: "Message for Option A",
-            maxLength: 300,
-          },
+        option={{
+          targetName: "target",
+          value: "",
+          placeholder: "Option A",
+        }}
+        header={{
+          targetName: "header",
+          value: "",
+          placeholder: "Header for Option A",
+          maxLength: 300,
+        }}
+        message={{
+          targetName: "message",
+          value: "",
+          placeholder: "Message for Option A",
+          maxLength: 300,
         }}
         withColor={{
           backgroundColor: "",
@@ -94,11 +86,11 @@ describe("Option Item Ten", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onInput={() => { }}
-        onHeader={() => { }}
-        onMessage={() => { }}
-        onUpload={() => { }}
-        onClick={() => { }}
+        onInput={() => {}}
+        onHeader={() => {}}
+        onMessage={() => {}}
+        onUpload={() => {}}
+        onClick={() => {}}
       />
     );
   });
@@ -106,30 +98,28 @@ describe("Option Item Ten", () => {
   it("should render correctly without throwing error", () => {
     let component = mount(
       <OptionItemTen
-        content={{
-          option: {
-            targetName: "target",
-            value: "",
-            placeholder: "Option A",
-          },
-          header: {
-            targetName: "header",
-            value: "",
-            placeholder: "Header for Option A",
-            maxLength: 300,
-          },
-          message: {
-            targetName: "message",
-            value: "",
-            placeholder: "Message for Option A",
-            maxLength: 300,
-          },
+        option={{
+          targetName: "target",
+          value: "",
+          placeholder: "Option A",
         }}
-        onInput={() => { }}
-        onHeader={() => { }}
-        onMessage={() => { }}
-        onUpload={() => { }}
-        onClick={() => { }}
+        header={{
+          targetName: "header",
+          value: "",
+          placeholder: "Header for Option A",
+          maxLength: 300,
+        }}
+        message={{
+          targetName: "message",
+          value: "",
+          placeholder: "Message for Option A",
+          maxLength: 300,
+        }}
+        onInput={() => {}}
+        onHeader={() => {}}
+        onMessage={() => {}}
+        onUpload={() => {}}
+        onClick={() => {}}
       />
     );
     expect(component.exists()).toBe(true);
@@ -147,7 +137,7 @@ describe("Option Item Ten", () => {
   });
 
   it("should render correctly when file is uploaded", async () => {
-    component.find("OptionalImageField").simulate("click", {});
+    component.find("OptionalImageField").simulate("upload", {});
     await pauseFor(100);
     expect(component.exists()).toBe(true);
   });

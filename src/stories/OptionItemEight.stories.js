@@ -14,13 +14,27 @@ export default {
   title: "Design System/OptionItem/OptionItemEight",
   component: OptionItemEight,
   argTypes: {
-    content: {},
+    targetName: "",
+    value: "",
+    placeholder: "",
+    maxLength: 300,
+    buttonText: "",
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
+          textColor: "",
           accentColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -92,29 +106,24 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    targetName: "Target Name",
-    value: "",
-    placeholder: "This is Option A",
-    maxLength: 300,
-    buttonText: "outlined button",
-  },
+  targetName: "Target Name",
+  value: "",
+  placeholder: "This is Option A",
+  maxLength: 300,
+  buttonText: "outlined button",
+  asVariant: "warning",
   withColor: {
     backgroundColor: "#ffab000d",
-    accentColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
+    textColor: "",
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "#FFBF00",
+    hoverTextColor: "#000",
   },
   withTranslation: {
     lang: "en",
     tgt: "optionItemEight",
     dictionary: dictionary,
   },
-  isDisabled: false,
-  isHidden: false,
 };
 Default.parameters = {
   docs: {
@@ -132,6 +141,9 @@ ColoredOptionItemEight.args = {
   withColor: {
     backgroundColor: "#8c9ea3",
     accentColor: "#597387",
+    textColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemEight.parameters = {
@@ -139,29 +151,6 @@ ColoredOptionItemEight.parameters = {
     source: {
       code: `<OptionItemEight {...${JSON.stringify(
         ColoredOptionItemEight.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem Eight
-// -------------------------------------------------------------
-export const AnimatedOptionItemEight = Template.bind({});
-AnimatedOptionItemEight.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemEight.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemEight {...${JSON.stringify(
-        AnimatedOptionItemEight.args,
         null,
         2
       )}}/>`,
@@ -266,7 +255,11 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemEight
               {...args}
-              content={{ ...content }}
+              targetName={content.targetName}
+              value={content.value}
+              placeholder={content.placeholder}
+              maxLength={content.maxLength}
+              buttonText={content.buttonText}
               onInput={(targetName, value) => handleInput(targetName, value)}
               onClick={handleRemove}
             />

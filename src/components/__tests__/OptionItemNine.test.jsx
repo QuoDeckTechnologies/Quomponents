@@ -19,10 +19,10 @@ describe("Option Item Nine", () => {
   const args = {
     target: OptionItemNine,
     required: {
-      onClick: () => { },
-      onShortFieldOneInput: () => { },
-      onShortFieldTwoInput: () => { },
-      onInput: () => { },
+      onClick: () => {},
+      onShortFieldOneInput: () => {},
+      onShortFieldTwoInput: () => {},
+      onInput: () => {},
     },
     translations: {
       tgt: "OptionItemNine",
@@ -38,14 +38,11 @@ describe("Option Item Nine", () => {
   };
 
   hasValid("defaults", args);
-
   hasValid("colors", args);
   hasValid("animations", args);
   hasValid("translations", args);
-
   hasValid("hidden", args);
-    hasValid("disabled", args);
-
+  hasValid("disabled", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
@@ -61,21 +58,19 @@ describe("Option Item Nine", () => {
     jest.resetAllMocks();
     component = shallow(
       <OptionItemNine
-        content={{
-          shortFieldOne: {
-            targetName: "ShortFieldOne",
-            value: "0",
-          },
-          shortFieldTwo: {
-            targetName: "ShortFieldTwo",
-            value: "0",
-          },
-          message: {
-            targetName: "Target Name",
-            value: "",
-            placeholder: "Message for Quiz Result",
-            maxLength: 300,
-          },
+        shortFieldOne={{
+          targetName: "ShortFieldOne",
+          value: "0",
+        }}
+        shortFieldTwo={{
+          targetName: "ShortFieldTwo",
+          value: "0",
+        }}
+        message={{
+          targetName: "Target Name",
+          value: "",
+          placeholder: "Message for Quiz Result",
+          maxLength: 300,
         }}
         withColor={null}
         withAnimation={null}
@@ -104,12 +99,10 @@ describe("Option Item Nine", () => {
 
   it("should render correctly when shortFieldOne targetName is not specified", () => {
     component.setProps({
-      content: {
-        shortFieldOne: {
-          value: "optionItem",
-          placeholder: "placeholder",
-          maxLength: 300,
-        },
+      shortFieldOne: {
+        value: "optionItem",
+        placeholder: "placeholder",
+        maxLength: 300,
       },
     });
     expect(component.exists()).toBe(true);
@@ -117,12 +110,10 @@ describe("Option Item Nine", () => {
 
   it("should render correctly when shortFieldTwo targetName is not specified", () => {
     component.setProps({
-      content: {
-        shortFieldTwo: {
-          value: "optionItem",
-          placeholder: "placeholder",
-          maxLength: 300,
-        },
+      shortFieldTwo: {
+        value: "optionItem",
+        placeholder: "placeholder",
+        maxLength: 300,
       },
     });
     expect(component.exists()).toBe(true);
