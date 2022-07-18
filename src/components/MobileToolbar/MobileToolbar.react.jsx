@@ -156,7 +156,7 @@ export default function MobileToolbar(props) {
         let tmp_obj = {};
 
         tmp_state.forEach((dataObj) => {
-            if (dataObj.link === data?.link) {
+            if (dataObj?.link === data?.link) {
                 tmp_obj = { ...dataObj };
                 tmp_obj.isActive = true;
                 tmp_arr.push(tmp_obj);
@@ -207,6 +207,7 @@ export default function MobileToolbar(props) {
                                     withAnimation={null}
                                     isActive={item?.isActive}
                                     asEmphasis="text"
+                                    asPadded="fitted"
                                     link={item?.link}
                                     withIcon={{ icon: item.icon }}
                                     withLabel={{

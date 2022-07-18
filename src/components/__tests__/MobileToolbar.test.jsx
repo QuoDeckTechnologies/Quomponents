@@ -21,14 +21,7 @@ describe("MobileToolbar", () => {
     const args = {
         target: MobileToolbar,
         required: {
-            content: [
-                {
-                    icon: "fa fa-share",
-                    label: "Certificate",
-                    format: "caption",
-                    link: "https://quodeck.com/",
-                },
-            ],
+            content: [],
             onClick: () => { }
         },
         translations: {
@@ -69,15 +62,7 @@ describe("MobileToolbar", () => {
         component = shallow(
             <MobileToolbar
                 lable={"Edit"}
-                content={[
-                    {
-                        icon: "fa fa-share",
-                        label: "Certificate",
-                        format: "caption",
-                        isActive: false,
-                        link: "https://quodeck.com/",
-                    },
-                ]}
+                content={[]}
                 asEmphasis="editing"
                 asVariant="primary"
                 withColor={null}
@@ -86,7 +71,7 @@ describe("MobileToolbar", () => {
                 isDisabled={false}
                 isHidden={false}
                 isCircular={false}
-                onClick={() => { }} />
+                onClick={() => { handleSelect }} />
         );
     });
 
@@ -94,11 +79,11 @@ describe("MobileToolbar", () => {
         component = shallow(<MobileToolbar
             content={[
                 {
+                    link: "https://quodeck.com/",
                     icon: "fa fa-share",
                     label: "Certificate",
                     format: "caption",
-                    isActive: true,
-                    link: "https://quodeck.com/",
+                    isActive: false,
                 },
             ]}
             onClick={() => { handleSelect }} />);
@@ -107,25 +92,22 @@ describe("MobileToolbar", () => {
     });
 
     it('should pass conditional true when the slide is selected {true} from the props ', () => {
-        component = shallow(<MobileToolbar
-            content={[
-                {
-                    icon: "fa fa-share",
-                    label: "",
-                    format: "label",
-                    isActive: false,
+        component.setProps({
+            content:
+                [{
                     link: "https://www.youtube.com/",
-
-                }, {
                     icon: "fa fa-share",
-                    label: "",
+                    label: "ok",
                     format: "label",
                     isActive: true,
-                    link: "https://www.youtube.com/",
-                }]}
-            onClick={() => { handleSelect }} />);
-        component.find(IconLink).at(0).simulate("click");
-        component.find(IconLink).at(1).simulate("click");
+                    props: { 
+                        asVariant: "primary",
+                        asEmphasis: "text"
+                     }
+                }],
+            asEmphasis: "default",
+        })
+        expect(component.find(".qui-iconlink-toolbar").at(0).props().children.props.className).toBe("fa");
         expect(component.exists()).toBe(true);
     });
 });

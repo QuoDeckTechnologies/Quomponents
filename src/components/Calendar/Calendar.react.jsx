@@ -14,6 +14,9 @@ import "./Calendar.scss";
 import "../../common/stylesheets/overrule.scss";
 
 Calender.propTypes = {
+
+    defaultDate: PropTypes.string,
+
     //=======================================
     // Quommon props
     //=======================================
@@ -51,10 +54,6 @@ Calender.propTypes = {
     */
     isHidden: PropTypes.bool,
     /**
-    Calendar component have the defaultDate function passed as props
-    */
-    defaultDate: PropTypes.func,
-    /**
     Calendar component have the onDateChange function passed as props
     */
     onDateChange: PropTypes.func,
@@ -69,6 +68,9 @@ Calender.propTypes = {
 };
 
 Calender.defaultProps = {
+
+    defaultDate: null,
+
     //=======================================
     // Quommon props
     //=======================================
@@ -87,7 +89,9 @@ Calender.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function Calender(props) {
-    const [value, onChange] = useState(new Date(2022, 7, 1));
+
+    const [value, onChange] = useState(new Date(props.defaultDate));
+
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -106,12 +110,11 @@ export default function Calender(props) {
         >
             <div className={`qui-calendar-container ${quommonClasses.childClasses}`}>
                 <Calendar
-                    value={value}
                     onChange={onChange}
                     onClickDay={props.onDateChange}
                     onClickMonth={props.onMonthChange}
                     onClickYear={props.onYearChange}
-                    defaultValue={props.defaultDate}
+                    defaultValue={value}
                 />
             </div>
         </motion.div>

@@ -4,10 +4,12 @@
         color: #E9F1F7;
         border-radius: 1em;
         padding: 1em;
+
         .react-calendar__navigation__next2-button,
         .react-calendar__navigation__prev2-button {
             display: none;
         }
+
         button {
             padding: 0.8em;
             font-size: 1em;
@@ -16,12 +18,18 @@
             align-items: center;
             justify-content: center;
         }
+
         .react-calendar__tile--now {
             background-color: #FFBF00;
             border-radius: 50%;
             padding: 0.8em;
         }
+
+        button:hover {
+            color: #121212;
+        }
     }
+
     .react-calendar__month-view__weekdays abbr {
         text-decoration: none;
     }

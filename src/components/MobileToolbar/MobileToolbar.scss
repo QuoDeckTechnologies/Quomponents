@@ -35,14 +35,6 @@
 
 @media screen and (min-width: 320px) {
     .qui-mobile-toolbar {
-        .qui-icon-link .qui-btn {
-            width: 3.5em;
-        }
-
-        .qui-iconlink-toolbar .pad-normal {
-            padding: 0.5em;
-        }
-
         .qui-default-toolbar {
             display: flex;
             align-items: center;
@@ -76,13 +68,6 @@
 
 @media screen and (min-width: 481px) {
     .qui-mobile-toolbar {
-        .qui-icon-link .qui-btn {
-            width: 5em;
-        }
-
-        .qui-iconlink-toolbar .pad-normal {
-            padding: 0.75em;
-        }
 
         .qui-default-toolbar {
             display: flex;

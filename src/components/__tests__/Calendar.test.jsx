@@ -20,16 +20,13 @@ describe("Calendar", () => {
     // -------------------------------------
     const args = {
         target: Calendar,
-        required: {
-            onClick: () => { },
-        },
     };
 
     hasValid("defaults", args);
 
     hasValid("positions", args);
     hasValid("padding", args);
-    
+
     hasValid("animations", args);
 
     hasValid("hidden", args);
@@ -42,8 +39,7 @@ describe("Calendar", () => {
         jest.resetAllMocks();
         component = shallow(
             <Calendar
-                onClick={() => { }}
-            />
+                defaultDate="1 july 2022" />
         );
     });
 });

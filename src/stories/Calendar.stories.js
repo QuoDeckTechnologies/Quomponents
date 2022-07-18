@@ -5,6 +5,7 @@ export default {
     title: "Design System/Calendar",
     component: Calendar,
     argTypes: {
+        defaultDate: "",
         asPadded: {
             control: "select",
             options: ["fitted", "compact", "normal", "relaxed"],
@@ -39,12 +40,6 @@ export default {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
-            },
-        },
-        defaultDate: {
-            table: {
-                category: "Events",
-                defaultValue: null,
             },
         },
         onDateChange: {
@@ -96,6 +91,7 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
+    defaultDate: "10 july 2022",
     asPadded: "normal",
     asFloated: "left",
     withAnimation: {
