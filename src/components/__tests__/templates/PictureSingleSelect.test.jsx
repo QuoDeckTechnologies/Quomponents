@@ -56,15 +56,13 @@ describe("PictureSingleSelect", () => {
         caption: "caption",
       },
       slideId: 0,
-      onClick: () => {},
+      onClick: () => { },
     },
   };
 
   hasValid("defaults", args);
   hasValid("variants", args);
-  hasValid("sizes", args);
   hasValid("positions", args);
-  hasValid("padding", args);
   hasValid("animations", args);
   hasValid("hidden", args);
   hasValid("disabled", args);
@@ -119,7 +117,6 @@ describe("PictureSingleSelect", () => {
         isHidden={false}
         isDisabled={false}
         onClick={(e) => {
-          console.log(e);
         }}
       />
     );

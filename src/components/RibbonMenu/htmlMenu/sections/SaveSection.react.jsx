@@ -97,7 +97,7 @@ export default function SaveSection(props) {
 		<div className={`qui ${quommonClasses.parentClasses}`}>
 			<div className={`${quommonClasses.childClasses}`}>
 				<div className="qui-ribbon-menu-save-section">
-					<div className="qui-ribbon-menu-save-section-child-container">
+					<div className="qt-shadow qui-ribbon-menu-save-section-child-container">
 						<div className="qui-ribbon-menu-save-section-child">
 							<IconLink
 								onClick={handleUpload}

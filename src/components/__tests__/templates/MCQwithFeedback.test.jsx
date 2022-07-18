@@ -35,7 +35,6 @@ describe("MCQ with Feedback", () => {
   };
 
   hasValid("defaults", args);
-  hasValid("variants", args);
   hasValid("positions", args);
   hasValid("animations", args);
   hasValid("hidden", args);

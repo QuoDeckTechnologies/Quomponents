@@ -2,7 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import React from 'react';
-import { shallow, mount, enzyme } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -17,23 +17,16 @@ describe("InlineEdit", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: InlineEdit,
         required: {
-            content: "Testing InlineEdit",
+            value: "Testing InlineEdit",
             name: "Testing",
-            onClick: () => console.log("Button Testing"),
+            onSubmit: () => {},
         },
     };
 
     hasValid("defaults", args);
-
-    hasValid("variants", args);
-    hasValid("sizes", args);
-    hasValid("positions", args);
-    hasValid("padding", args);
-    hasValid("alignment", args);
 
     hasValid("colors", args);
     hasValid("animations", args);
@@ -48,19 +41,19 @@ describe("InlineEdit", () => {
     let onChange = jest.fn();
     let onBlur = jest.fn();
     let onInput = jest.fn();
-    let onClick = jest.fn();
+    let onSubmit = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
         component = mount(<InlineEdit
-            content="Please input your text here"
-            inlineEditID="testing_id"
+            value="Please input your text here"
+            name="testing_id"
             asEmphasis="singleLine"
             onFocus={onFocus}
             onChange={onChange}
             onBlur={onBlur}
             onInput={onInput}
-            onClick={onClick}
+            onSubmit={onSubmit}
         />);
     })
 
@@ -78,16 +71,6 @@ describe("InlineEdit", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("it should render correctly when passed withColor props", () => {
-        let colors = {
-            backgroundColor: "#fff",
-            accentColor: "#FF0000",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    });
-
-    // ---------------------------------
     it("it should pass the value to the InlineEdit", () => {
         component.find('input').simulate('change', { target: { value: 'Please input your text here' } })
         expect(component.find('input').props().value).toEqual('Please input your text here');
@@ -102,7 +85,7 @@ describe("InlineEdit", () => {
         component.find('input').simulate('focus', { style: { accentColor: "#ffbf00" } })
         expect(component.exists()).toBe(true);
     });
-    // ---------------------------------
+
     it("it should pass the value to the InlineEdit when asEmphasis props set as multiLine", () => {
         component.setProps({
             asEmphasis: "multiLine"
@@ -126,7 +109,7 @@ describe("InlineEdit", () => {
         component.find('textarea').simulate('focus', { style: { accentColor: "#ffbf00" } })
         expect(component.exists()).toBe(true);
     });
-    // ---------------------------------
+
     it("it should trigger the escape event when input contain some value", () => {
         let InlineEdit = component.find('input');
         InlineEdit.simulate('change', { target: { value: 'Please input your text here' } });

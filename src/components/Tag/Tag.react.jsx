@@ -130,7 +130,7 @@ export default function Tag(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-tag-block qui-btn ${quommonClasses.childClasses}`} style={Color}>
-                <div className="qui-tag-label">
+                <div className="qui-tag-label qt-lbl">
                     {props?.content}
                 </div>
             </div>

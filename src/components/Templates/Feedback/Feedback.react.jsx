@@ -197,7 +197,6 @@ export default function Feedback(props) {
         }
         return res;
     });
-
     //-------------------------------------------------------------------
     // 5. Set background image and color for card
     //-------------------------------------------------------------------
@@ -237,13 +236,13 @@ export default function Feedback(props) {
                             fb={"card_" + index}
                         >
                             <i className={`qui-feedback-icon ${feedback["icon"]} ${feedback["colorClass"]}`}></i>
-                            <div className="qui-feedback-header">
+                            <h3 className="qui-feedback-header">
                                 <TextBlock {...props}
                                     content={feedback["header"]}
                                     withColor={textblockColors}
                                 />
-                            </div>
-                            <div className="qui-feedback-text">
+                            </h3>
+                            <div className="qui qt-sm qui-feedback-text">
                                 <TextBlock {...props}
                                     content={feedback["text"]}
                                     withColor={textblockColors}
@@ -256,7 +255,6 @@ export default function Feedback(props) {
                                     asVariant={asVariant}
                                     asFloated={"inline"}
                                     withColor={buttonColors}
-
                                 />
                             </div>
                         </div>

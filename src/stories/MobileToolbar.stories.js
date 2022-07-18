@@ -219,7 +219,7 @@ AnimatedToolbar.args = {
     ...Default.args,
     withAnimation: {
         animation: "slideDown",
-        duration: 3,
+        duration: 1,
         delay: 0,
     },
 };
@@ -239,9 +239,163 @@ AnimatedToolbar.parameters = {
 };
 
 // -------------------------------------------------------------
-// AllVariants
+// WithoutLabelMobileToolbar
 // -------------------------------------------------------------
-const AllVariantsTemplate = (args) => {
+export const WithoutLabelMobileToolbar = Template.bind({});
+WithoutLabelMobileToolbar.args = {
+    ...Default.args,
+    label: "",
+    content: [
+        {
+            icon: "fa fa-receipt",
+            label: "",
+            format: "label",
+            link: "https://quodeck.com/",
+        },
+        {
+            icon: "fa fa-crown",
+            label: "",
+            format: "label",
+            link: "https://www.google.com/",
+        },
+        {
+            icon: "fa fa-file",
+            label: "",
+            format: "label",
+            link: "https://github.com/",
+        },
+        {
+            icon: "fa fa-trophy",
+            label: "",
+            format: "label",
+            link: "https://www.youtube.com/",
+        },
+        {
+            icon: "fa fa-envelope-open-text",
+            label: "",
+            format: "label",
+            link: "https://www.whatsapp.com/",
+        },
+    ],
+    asVariant: "warning"
+};
+WithoutLabelMobileToolbar.parameters = {
+    docs: {
+        description: {
+            story:
+                "Show MobileToolbar component without caption/label with asVarient:'warning'",
+        },
+        source: {
+            code: `<MobileToolbar {...${JSON.stringify(
+                WithoutLabelMobileToolbar.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// IconsWithPopoverFormatMobilteToolbar
+// -------------------------------------------------------------
+export const IconsWithPopoverFormatMobilteToolbar = Template.bind({});
+IconsWithPopoverFormatMobilteToolbar.args = {
+    ...Default.args,
+    content: [
+        {
+            icon: "fa fa-receipt",
+            label: "Courses",
+            format: "popover",
+            link: "https://quodeck.com/",
+        },
+        {
+            icon: "fa fa-crown",
+            label: "Nuggets",
+            format: "popover",
+            link: "https://www.google.com/",
+        },
+        {
+            icon: "fa fa-file",
+            label: "Test",
+            format: "popover",
+            link: "https://github.com/",
+        },
+        {
+            icon: "fa fa-trophy",
+            label: "Contest",
+            format: "popover",
+            link: "https://www.youtube.com/",
+        },
+        {
+            icon: "fa fa-envelope-open-text",
+            label: "Post",
+            format: "popover",
+            link: "https://www.whatsapp.com/",
+        },
+    ],
+    asEmphasis: "default",
+};
+IconsWithPopoverFormatMobilteToolbar.parameters = {
+    docs: {
+        source: {
+            code: `<MobileToolbar {...${JSON.stringify(IconsWithPopoverFormatMobilteToolbar.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// IconsWithCaptionMobilteToolbar
+// -------------------------------------------------------------
+export const IconsWithCaptionMobilteToolbar = Template.bind({});
+IconsWithCaptionMobilteToolbar.args = {
+    ...Default.args,
+    content: [
+        {
+            icon: "fa fa-receipt",
+            label: "Courses",
+            format: "label",
+            link: "https://quodeck.com/",
+        },
+        {
+            icon: "fa fa-crown",
+            label: "Nuggets",
+            format: "label",
+            link: "https://www.google.com/",
+        },
+        {
+            icon: "fa fa-file",
+            label: "Test",
+            format: "label",
+            link: "https://github.com/",
+        },
+        {
+            icon: "fa fa-trophy",
+            label: "Contest",
+            format: "label",
+            link: "https://www.youtube.com/",
+        },
+        {
+            icon: "fa fa-envelope-open-text",
+            label: "Post",
+            format: "label",
+            link: "https://www.whatsapp.com/",
+        },
+    ],
+    asEmphasis: "default",
+};
+IconsWithCaptionMobilteToolbar.parameters = {
+    docs: {
+        source: {
+            code: `<MobileToolbar {...${JSON.stringify(IconsWithCaptionMobilteToolbar.args, null, 2)}}/>`,
+        },
+    },
+};
+
+
+// -------------------------------------------------------------
+// MobileToolbarWithAllVariants
+// -------------------------------------------------------------
+const MobileToolbarWithAllVariantsTemplate = (args) => {
     const baseObj = {
         ...Object.assign({}, Default.args, args, {
         }),
@@ -263,8 +417,8 @@ const AllVariantsTemplate = (args) => {
         </div>
     );
 };
-export const AllVariants = AllVariantsTemplate.bind({});
-AllVariants.parameters = {
+export const MobileToolbarWithAllVariants = MobileToolbarWithAllVariantsTemplate.bind({});
+MobileToolbarWithAllVariants.parameters = {
     docs: {
         description: {
             story: "all variants are supported in MobileToolbar.",

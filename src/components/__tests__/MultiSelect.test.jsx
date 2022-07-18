@@ -56,6 +56,7 @@ describe("MultiSelect", () => {
 
   hasValid("variants", args);
   hasValid("positions", args);
+  hasValid("padding", args);
 
   hasValid("colors", args);
   hasValid("animations", args);
@@ -99,49 +100,15 @@ describe("MultiSelect", () => {
       <MultiSelect
         content={content}
         asEmphasis="contained"
-        isCircular={false}
         withColor={null}
-        withLabel={null}
         withAnimation={null}
-        onClick={() => console.log(" Multiselect Testing")}
-        onclick={handleSubmit}
+        onClick={handleSubmit}
       />
     );
   });
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-  it("should render translation of Check Answer with withTranslation prop and when passed purpose as quiz", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "templateActions",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render submitAnswer translation with withTranslation prop and when passed nothing in the purpose props", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "templateActions",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render component if translation is not defined", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "mr",
-        tgt: "templateActions",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly onClick for Check true", () => {
     component.find(".qui-btn").at(1).simulate("click");
   });
@@ -202,17 +169,6 @@ describe("MultiSelect", () => {
     };
     component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
-  });
-  it("should render correctly with isCircular set content", () => {
-    component.setProps({
-      isCircular: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly with isCircular set and empty content", () => {
-    component.setProps({
-      isCircular: true,
-    });
   });
   it("should render with onclick toggleChecked", () => {
     let btn = component.find(".qui-multi-select-checkbox").at(0);

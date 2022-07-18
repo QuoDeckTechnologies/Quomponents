@@ -18,34 +18,46 @@ CheckBox.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    CheckBox Text has to be in content prop.
-    */
-  content: PropTypes.shape({
-    name: PropTypes.string,
-    label: PropTypes.string,
-    checked: PropTypes.bool,
-  }),
+  CheckBox unique name has to be in name props.
+  */
+  name: PropTypes.string,
+  /**
+  CheckBox unique label has to be in label props.
+  */
+  label: PropTypes.string,
+  /**
+  CheckBox unique checked value has to be in checked props.
+  */
+  checked: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
   /**
-    Use to define component text size in increasing order
-    */
+  Use to define component text size in increasing order
+  */
   asSize: PropTypes.oneOf(["tiny", "normal", "huge"]),
   /**
-    Use to float the component in parent container
+    Use to define component padding in increasing order
     */
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+  /**
+  Use to float the component in parent container
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
-    Use to override component colors 
-    */
+  Use to align content within the component container
+  */
+  asAligned: PropTypes.oneOf(["left", "right", "center"]),
+  /**
+  Use to override component colors 
+  */
   withColor: PropTypes.shape({
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -61,24 +73,28 @@ CheckBox.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    Use to enable/disable the component
-    */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-   CheckBox component must have the onClick function passed as props to return label of the checkbox and checked/unchecked status
-    */
+  Use to toggle the component taking the full width of the parent container
+  */
+  isFluid: PropTypes.bool,
+  /**
+  CheckBox component must have the onClick function passed as props to return label of the checkbox and checked/unchecked status
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -86,12 +102,16 @@ CheckBox.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  name: "",
+  label: "",
+  checked: false,
   //=======================================
   // Quommon props
   //=======================================
   asSize: "normal",
   asFloated: "left",
+  asPadded: "normal",
+  asAligned: "left",
   withColor: null,
   withAnimation: null,
   withTranslation: null,
@@ -105,16 +125,16 @@ CheckBox.defaultProps = {
 **/
 export default function CheckBox(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring content and withColor prop
+  // 1. Destructuring name, checked, label and withColor prop
   //-------------------------------------------------------------------
-  const { content, withColor } = props;
+  const { withColor, name, checked, label } = props;
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  const [isChecked, setIsChecked] = useState(content?.checked);
+  const [isChecked, setIsChecked] = useState(checked);
   useEffect(() => {
-    setIsChecked(content?.checked);
-  }, [content?.checked]);
+    setIsChecked(checked);
+  }, [checked]);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -147,30 +167,27 @@ export default function CheckBox(props) {
       <div
         className={`qui-check-box-inner-container ${quommonClasses.childClasses}`}
       >
-        {content && (
-          <Checkbox
-            style={{ color: withColor?.accentColor }}
-            checked={isChecked}
-            id={`qui-check-box-element-${content?.name}`}
-            disabled={props.isDisabled}
-            size={getSize()}
-            value={content?.label}
-            onChange={(e) => {
-              setIsChecked((prevState) => !prevState);
-              props.onClick({
-                value: e.target.value,
-                checked: e.target.checked,
-              });
-            }}
-          />
-        )}
+        <Checkbox
+          style={{ color: withColor?.accentColor }}
+          checked={isChecked}
+          id={`qui-check-box-element-${name}`}
+          disabled={props.isDisabled}
+          size={getSize()}
+          value={label}
+          onChange={(e) => {
+            setIsChecked((prevState) => !prevState);
+            props.onClick({
+              value: e.target.value,
+              checked: e.target.checked,
+            });
+          }}
+        />
+
         <label
-          htmlFor={`qui-check-box-element-${content?.name}`}
+          htmlFor={`qui-check-box-element-${name}`}
           className="qui-check-box-element"
         >
-          <h4 style={{ color: withColor?.textColor }}>
-            {tObj?.label || content?.label}
-          </h4>
+          <p style={{ color: withColor?.textColor }}>{tObj?.label || label}</p>
         </label>
       </div>
     </motion.div>

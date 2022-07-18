@@ -20,22 +20,30 @@ describe("ButtonBank", () => {
     target: ButtonBank,
     required: {
       content: [
-        "Primary Button",
+        {
+          content: "Default Button",
+          asEmphasis: "contained",
+          isCircular: false,
+          asFloated: "none",
+          asPadded: "normal",
+          asAligned: "center",
+          withAnimation: {
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          },
+          isDisabled: false,
+          isLoading: false,
+          isHidden: false,
+          isFluid: false,
+          onClick: () => {},
+        },
       ],
-      onClick: () => { },
     },
   };
 
   hasValid("defaults", args);
-  hasValid("variants", args);
-  hasValid("sizes", args);
-  hasValid("positions", args);
-  hasValid("padding", args);
-  hasValid("alignment", args);
-  hasValid("colors", args);
-  hasValid("animations", args);
-  hasValid("hidden", args);
-  hasValid("disabled", args);
+
   let component;
 
   beforeEach(() => {
@@ -43,28 +51,39 @@ describe("ButtonBank", () => {
     component = shallow(
       <ButtonBank
         content={[
-          "Primary Button",
-          "Primary Button",
-          "Primary Button",
-          "Primary Button",
+          {
+            content: "Default Button",
+            asEmphasis: "contained",
+            isCircular: false,
+            asFloated: "none",
+            asPadded: "normal",
+            asAligned: "center",
+            withAnimation: {
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            },
+            isDisabled: false,
+            isLoading: false,
+            isHidden: false,
+            isFluid: false,
+            onClick: () => {},
+          },
         ]}
-        isCircular={false}
-        asVariant="primary"
-        asSize="normal"
-        asFloated="none"
-        withColor={null}
-        withLabel={null}
-        withAnimation={null}
-        isHidden={null}
-        isDisabled={false}
-        onClick={() => { }}
+        isHorizontal={false}
       />
     );
   });
-  it("should render correctly without throwing error", () => {
+
+  it("should render correctly when isHorizontal props is true", () => {
+    component.setProps({
+      isHorizontal: true,
+    });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly without throwing error", () => {
     component.find("Button").at(0).simulate("click");
+    expect(component.exists()).toBe(true);
   });
 });

@@ -34,7 +34,8 @@ describe("SingleSelect", () => {
   };
 
   hasValid("defaults", args);
-  hasValid("positions", args);
+  hasValid("variants", args);
+
   hasValid("animations", args);
   hasValid("hidden", args);
   hasValid("disabled", args);

@@ -70,7 +70,7 @@ describe("SearchBar", () => {
             isDisabled={false}
             isClosed={null}
             isFluid={null}
-            onClick={() => console.log('test')}
+            onClick={() => { }}
             placeHolder="Search..."
             handleKeyPress={handleKeyPress}
             handleButtonPress={handleButtonPress}
@@ -111,7 +111,7 @@ describe("SearchBar", () => {
     });
 
     it("should pass the value when clicked on button", () => {
-        const { container } = render(<SearchBar onClick={() => { console.log("Testing Search Bar") }} />);
+        const { container } = render(<SearchBar onClick={() => { }} />);
         const inputElement = getByPlaceholderText(container, "Search...");
         let button = component.find("button");
         button.simulate('click');
@@ -121,7 +121,6 @@ describe("SearchBar", () => {
 
     it('should pass the value when pressed Enter', () => {
         const { queryByPlaceholderText } = render(<SearchBar onClick={() => {
-            console.log("Testing SearchBar")
             handleKeyPress = { handleKeyPress }
             handleButtonPress = { handleButtonPress }
         }} />);

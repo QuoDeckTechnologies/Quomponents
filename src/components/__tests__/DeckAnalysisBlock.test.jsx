@@ -2,7 +2,6 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -67,15 +66,12 @@ describe("DeckAnalysis", () => {
         jest.resetAllMocks();
         component = shallow(
             <DeckAnalysis
-                content={{
-                    header: "SLIDES",
-                    fheader: "SLIDES",
-                    message:
-                        "Deck Should have 10 to 40 slides",
-                    icon: "fas fa-ellipsis-h",
-                    slideCount: 18,
-                    status: true,
-                }}
+                header="SLIDES"
+                fheader="SLIDES"
+                message="Deck Should have 10 to 40 slides"
+                icon="fas fa-ellipsis-h"
+                slideCount={18}
+                status={true}
                 asVariant="primary"
                 let colors={{
                     textColor: "#b60d17",
@@ -86,28 +82,26 @@ describe("DeckAnalysis", () => {
                     duration: 0.5,
                     delay: 0,
                 }}
-                isDisabled={false}
                 isHidden={false}
-                onClick={() => console.log("DeckAnalysis testing")}
             />
         );
     });
     it("should render correctly without throwing error", () => {
         expect(component.exists()).toBe(true);
     });
+
     it("should render correctly when passed withColor props", () => {
         component.setProps({
-            content: {
-                header: "SLIDES",
-                fheader: "SLIDES",
-                message:
-                    "Deck Should have 10 to 40 slides",
-                icon: "fas fa-ellipsis-h",
-                slideCount: 18,
-                status: false,
-            },
+            header: "SLIDES",
+            fheader: "SLIDES",
+            message:
+                "Deck Should have 10 to 40 slides",
+            icon: "fas fa-ellipsis-h",
+            slideCount: 18,
+            status: false,
         });
     });
+
     it("should render correctly when passed withColor props", () => {
         let colors = {
             accentColor: "#FF0000",

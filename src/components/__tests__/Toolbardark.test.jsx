@@ -6,7 +6,7 @@ import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import ToolbarDark from '../Buttons/ToolbarDark/ToolbarDark.react'
+import ToolbarDark from '../ToolbarDark/ToolbarDark.react'
 describe("ToolbarDark", () => {
     // -------------------------------------
     // Run common tests

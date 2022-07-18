@@ -284,18 +284,7 @@ export default function NuggetCard(props) {
 				<div className="qui-nugget-card-footer">
 					<div className={`qui-nugget-card-arc-menu`}>
 						<ArcMenu
-							menuContent={[
-								{
-									list: [
-										"EDIT DETAILS",
-										"EDIT CONTENT",
-										"DESIGN NUGGET",
-										"PUBLISH NUGGET",
-										"VIEW ANALYTICS",
-										"DELETE NUGGET",
-									],
-								},
-							]}
+							menuContent={props.content?.menuContent}
 							menuType="menu"
 							arcIcon="menu"
 							position="bottom-left"

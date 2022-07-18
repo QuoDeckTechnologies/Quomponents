@@ -14,13 +14,11 @@ StatisticsCard.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    StatisticsCard can recieve content as props
+    Use to below fields to decide StatisticsCard's properties
     */
-    content: PropTypes.shape({
-        label: PropTypes.string,
-        icon: PropTypes.string,
-        value: PropTypes.string,
-    }).isRequired,
+    label: PropTypes.string,
+    icon: PropTypes.string,
+    value: PropTypes.string,
     /**
     Use for rounded corners
     */
@@ -98,7 +96,6 @@ function getColors(colors) {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function StatisticsCard(props) {
-    const { content } = props;
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -124,21 +121,21 @@ export default function StatisticsCard(props) {
             <Segment {...props} className={`${quommonClasses.childClasses}`} style={colors?.backgroundColors}
             >
                 <>
-                    <i className={`qui-statistics-card-icon ${content?.icon}`}
+                    <i className={`qui-statistics-card-icon ${props.icon}`}
                         style={colors?.accentColors}>
                     </i>
                     <div className="qui-statistics-card-valuetooltip">
                         <h4 className={"qui-statistics-card-value"} style={colors?.textColors}>
-                            {content?.value}
+                            {props.value}
                         </h4>
-                        <span className="qui-statistics-card-tooltipvalue">{content?.value}</span>
+                        <span className="qui-statistics-card-tooltipvalue">{props.value}</span>
                     </div>
 
                     <div className="qui-statistics-card-labeltooltip">
                         <h6 className={"qui-statistics-card-label"} style={colors?.textColors}>
-                            {content?.label}
+                            {props.label}
                         </h6>
-                        <span className="qui-statistics-card-tooltiplabel">{content?.label}</span>
+                        <span className="qui-statistics-card-tooltiplabel">{props.label}</span>
                     </div>
                 </>
             </Segment>

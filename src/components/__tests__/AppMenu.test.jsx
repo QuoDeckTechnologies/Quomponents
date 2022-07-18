@@ -16,7 +16,7 @@ describe("AppMenu", () => {
   const args = {
     target: AppMenu,
     required: {
-      onClick: () => console.log("AppMenu Testing"),
+      onClick: () => { },
     },
     translations: {
       tgt: "appMenu",
@@ -56,8 +56,10 @@ describe("AppMenu", () => {
       <AppMenu
         label="AppMenu"
         withColor={null}
-        withUser={""}
-        onClick={() => { }}
+        withIcon={null}
+        isHidden={false}
+        isDisabled={false}
+        onClick={() => {}}
       />
     );
   });
@@ -69,7 +71,6 @@ describe("AppMenu", () => {
     component.setProps({
       withColor: {
         backgroundColor: "#ffffff",
-        accentColor: "#ffffff",
         textColor: "#ffffff",
       },
     });
@@ -87,8 +88,35 @@ describe("AppMenu", () => {
     component.setProps({
       withLabel: {
         content: "Catalog",
-        textColor: "#000000",
       },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing an error withIcon props is passed", () => {
+    component.setProps({
+      withIcon: {
+        icon: "fas fa-user",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing an error if AsSize props is passed", () => {
+    component.setProps({ asSize: "huge" });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isCircular props is false", () => {
+    component.setProps({
+      isCircular: false,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isCircular props is true", () => {
+    component.setProps({
+      isCircular: true,
     });
     expect(component.exists()).toBe(true);
   });

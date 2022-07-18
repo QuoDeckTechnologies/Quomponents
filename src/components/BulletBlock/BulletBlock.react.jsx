@@ -155,7 +155,6 @@ export default function BulletBlock(props) {
                     )
                 })}
             </div>
-
         </motion.div >
     );
 }

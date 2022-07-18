@@ -88,6 +88,8 @@ ImageWithCaption.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+<<<<<<< HEAD
+=======
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
     */
     withTranslation: PropTypes.shape({
@@ -96,6 +98,7 @@ ImageWithCaption.propTypes = {
         dictionary: PropTypes.string,
     }),
     /**
+>>>>>>> da6e92aa207e8304f59e69141d3529cf953eef2e
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
@@ -211,7 +214,7 @@ export default function ImageWithCaption(props) {
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (
-                    <img className="qui-image-with-caption-image"
+                    <img className="qui-image-with-caption-image qt-shadow"
                         src={resolveImage(data?.image.id, imageLibrary)}
                         alt="headerimg" />
                 )}

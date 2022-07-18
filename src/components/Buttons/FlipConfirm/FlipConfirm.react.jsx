@@ -250,14 +250,14 @@ export default function FlipConfirm(props) {
                     <ButtonGroup>
                         <Button
                             asEmphasis={props.asEmphasis}
-                            asVariant="error"
+                            asVariant={props.asVariant}
                             onClick={yesClick}
                         >
                             {withConfirmation?.yes}
                         </Button>
                         <Button
                             asEmphasis="outlined"
-                            asVariant="primary"
+                            asVariant={props.asVariant}
                             onClick={noClick}
                         >
                             {withConfirmation?.no}

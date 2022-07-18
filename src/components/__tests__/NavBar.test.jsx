@@ -84,8 +84,11 @@ describe("NavBar", () => {
             />
         );
     });
+    expect(component.exists()).toBe(true);
+  });
 
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
+  it("should render correctly when passed isDisabled props is true", () => {
+    component.setProps({
+      isDisabled: true,
     });
 });

@@ -92,16 +92,16 @@ export default function Avatar(props) {
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props);
+  let quommonClasses = getQuommons(props, "avatar");
   quommonClasses.childClasses += ` emp-contained`;
   //-------------------------------------------------------------------
   // 3. Set the user image or icon
   //-------------------------------------------------------------------
-  let loadingIcon = props.withIcon?.icon;
+  let icon = props.withIcon?.icon;
   let isImageIcon = null;
-  if (loadingIcon) {
+  if (icon) {
     isImageIcon = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(
-      loadingIcon
+      icon
     );
   }
 
@@ -109,20 +109,17 @@ export default function Avatar(props) {
 
   return (
     <div
-      className={`qui qui-avatarContainer ${quommonClasses.parentClasses}`}
+      className={`qui ${quommonClasses.parentClasses} qui-avatar-wrapper`}
       onClick={props.onClick}
     >
       <div
-        className={`qui-container qui-icon-container qui-btn ${quommonClasses.childClasses}`}
+        className={`qui-avatar-container qui-icon-container qui-btn ${quommonClasses.childClasses}`}
       >
         {isImageIcon ? (
-          <img className={`qui-image `} src={loadingIcon} alt="avatar" />
+          <img className="qui-avatar-image" src={icon} alt="avatar" />
         ) : (
-          <div
-            style={colors}
-            className={`qui-icon`}
-          >
-            <i className={loadingIcon}></i>
+          <div style={colors} className={`qui-avatar-icon-container `}>
+            <i className={icon}></i>
           </div>
         )}
       </div>

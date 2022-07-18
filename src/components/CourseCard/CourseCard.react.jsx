@@ -353,11 +353,7 @@ export default function CourseCard(props) {
 				<div className="qui-course-card-footer">
 					<div className={`qui-course-card-arc-menu`}>
 						<ArcMenu
-							menuContent={[
-								{
-									list: menu,
-								},
-							]}
+							menuContent={props.content?.menuContent}
 							menuType="menu"
 							arcIcon="menu"
 							position="bottom-left"

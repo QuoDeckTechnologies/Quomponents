@@ -39,7 +39,6 @@
 }
 .qui .qui-side-bar-sections {
     height: 4.2em;
-    font-size: 0.6em;
     cursor: pointer;
     box-shadow: 0px 12px 9px -10px #888 inset;
     background-color: #e8e8e8;
@@ -74,10 +73,9 @@
 .qui .qui-side-bar-edit-mode-label {
     position: absolute;
     color: #fff;
-    font-size: 1.5em;
-    letter-spacing: 0.1em;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    bottom: 3em;
-    left: 15%;
+    bottom: 2em;
+    left: -1em;
+    text-transform: uppercase;
 }

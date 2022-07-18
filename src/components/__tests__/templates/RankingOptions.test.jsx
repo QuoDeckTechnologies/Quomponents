@@ -61,6 +61,8 @@ describe("RankingOptions", () => {
 
   hasValid("defaults", args);
   hasValid("animations", args);
+  hasValid("variants", args);
+
   hasValid("translations", args);
   hasValid("hidden", args);
   hasValid("disabled", args);

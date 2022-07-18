@@ -19,14 +19,13 @@ describe("Slider", () => {
   const args = {
     target: Slider,
     required: {
-      onClick: () => { },
+      onClick: () => {},
     },
   };
 
   hasValid("defaults", args);
-
+  hasValid("variants", args);
   hasValid("animations", args);
-
   hasValid("disabled", args);
   hasValid("hidden", args);
   hasValid("fluid", args);
@@ -38,9 +37,9 @@ describe("Slider", () => {
 
   beforeEach(() => {
     jest.resetAllMocks();
-    component = shallow(<Slider initialValue={null} onClick={() => { }} />);
+    component = shallow(<Slider initialValue={null} onClick={() => {}} />);
   });
-  
+
   it("should render correctly without throwing error when it is slided", () => {
     component.setProps({
       initialValue: 20,

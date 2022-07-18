@@ -19,7 +19,7 @@ describe("AnalysisSection", () => {
   const args = {
     target: AnalysisSection,
     required: {
-      onClick: () => console.log("AnalysisSection Testing"),
+      onClick: () => {},
     },
     translations: {
       tgt: "analysisSection",

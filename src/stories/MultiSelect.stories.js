@@ -50,15 +50,16 @@ export default {
         category: "as-Flags",
       },
     },
-    isCircular: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+    asPadded: {
+      control: "select",
+      options: ["fitted", "compact", "normal", "relaxed"],
       table: {
         category: "as-Flags",
       },
@@ -164,9 +165,9 @@ Default.args = {
   ],
   purpose: "quiz",
   asEmphasis: "contained",
-  isCircular: false,
 
   asVariant: "warning",
+  asPadded: "normal",
   asFloated: "none",
 
   withColor: {

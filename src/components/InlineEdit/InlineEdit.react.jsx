@@ -16,7 +16,7 @@ InlineEdit.propTypes = {
     /**
     Use to define InlineEdit's value
     */
-    content: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
     /**
     Use to define name's ID
     */
@@ -28,25 +28,6 @@ InlineEdit.propTypes = {
     //=======================================
     // Quommon props
     //=======================================
-    /**
-    Use to define component size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
-    Use to float the component in parent container
-    */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
-    Use to align content within the component container
-    */
-    asAligned: PropTypes.oneOf(["left", "right", "center"]),
     /**
     Use to set Colors in component 
     */
@@ -80,32 +61,30 @@ InlineEdit.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    InlineEdit component must have the onClick function passed as props
+    InlineEdit component must have the onFocus,onBlur & onSubmit function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
+    onSubmit: PropTypes.func.isRequired,
 };
 
 InlineEdit.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: "",
+    value: "",
     name: "",
     asEmphasis: "singleLine",
     //=======================================
     // Quommon props
     //=======================================
-    asSize: "normal",
-    asFloated: "none",
-    asAligned: "center",
-
     withColor: null,
     withAnimation: null,
 
     isHidden: false,
     isDisabled: false,
 
-    onClick: null,
+    onSubmit: null,
 };
 /**
 ## Notes
@@ -122,13 +101,13 @@ export default function InlineEdit(props) {
     //-------------------------------------------------------------------
     // 2. Declaration of Input's value
     //-------------------------------------------------------------------
-    const [input, setInput] = useState(props.content);
+    const [input, setInput] = useState(props.value);
 
     function handleChange(e) {
         setInput(e.target.value);
         if (e.key === "Enter" && e.target.value !== "") {
             e.target.blur()
-            props.onClick(e.target.name, e.target.value);
+            props.onSubmit(e.target.name, e.target.value);
         }
         if (e.key === "Escape") {
             e.target.value = ""
@@ -150,14 +129,15 @@ export default function InlineEdit(props) {
         onInput(inputRef.current);
     }, [inputRef]);
 
-    const changeFocus = () => {
+    const changeFocus = (e) => {
         inputRef.current.style.borderColor = props.withColor?.accentColor
         inputRef.current.style.backgroundColor = props.withColor?.backgroundColor
+        props.onFocus(e);
     }
 
     const changeBlur = (e) => {
         inputRef.current.style.backgroundColor = "transparent"
-        props.onClick(e.target.name, e.target.value);
+        props.onBlur(e.target.name, e.target.value);
     }
     //-------------------------------------------------------------------
     // 4. Use to set state of InlineEdit.

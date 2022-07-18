@@ -21,7 +21,28 @@ describe("OverlayMenu", () => {
     target: OverlayMenu,
     required: {
       content: [],
-      onClick: () => { },
+      onClick: () => {},
+    },
+    translations: {
+      tgt: "overlayMenu",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          overlayMenu: {
+            content: [
+              { label: "प्रोफ़ाइल संपादित करें" },
+              { label: "खाता" },
+              { label: "प्रोफ़ाइल संपादित करें" },
+              { label: "खाता" },
+              { label: "प्रोफ़ाइल संपादित करें" },
+              { label: "खाता" },
+              { label: "खाता" },
+              { label: "प्रोफ़ाइल संपादित करें" },
+              { label: "खाता" },
+            ],
+          },
+        },
+      }),
     },
   };
 
@@ -32,10 +53,7 @@ describe("OverlayMenu", () => {
   hasValid("positions", args);
 
   hasValid("colors", args);
-  hasValid("labels", args);
   hasValid("animations", args);
-  hasValid("icons", args);
-  //hasValid("translations", args);
 
   hasValid("hidden", args);
   hasValid("disabled", args);
@@ -79,8 +97,8 @@ describe("OverlayMenu", () => {
         withTranslation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => { }}
-        onClose={() => { }}
+        onClick={() => {}}
+        onClose={() => {}}
       />
     );
   });
@@ -101,8 +119,8 @@ describe("OverlayMenu", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onClick={() => { }}
-        onClose={() => { }}
+        onClick={() => {}}
+        onClose={() => {}}
       />
     );
   });
@@ -123,8 +141,8 @@ describe("OverlayMenu", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onClick={() => { }}
-        onClose={() => { }}
+        onClick={() => {}}
+        onClose={() => {}}
       />
     );
     unmount();
@@ -158,8 +176,8 @@ describe("OverlayMenu", () => {
             format: "caption",
           },
         ]}
-        onClick={() => { }}
-        onClose={() => { }}
+        onClick={() => {}}
+        onClose={() => {}}
       />
     );
     component.find("IconLink").at(0).simulate("click");

@@ -1,4 +1,3 @@
-import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
@@ -23,8 +22,8 @@ describe("AccentLine", () => {
 
     hasValid("variants", args);
     hasValid("sizes", args);
-    hasValid("positions", args);
     hasValid("padding", args);
+    hasValid("positions", args);
 
     hasValid("colors", args);
     hasValid("animations", args);

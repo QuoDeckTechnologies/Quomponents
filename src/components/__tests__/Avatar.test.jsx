@@ -55,7 +55,6 @@ describe("Avatar", () => {
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-  // let onClick = jest.fn();
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(

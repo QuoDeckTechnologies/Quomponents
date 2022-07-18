@@ -24,6 +24,7 @@ ActionMenu.propTypes = {
     PropTypes.shape({
       title: PropTypes.string,
       icon: PropTypes.string,
+      func: PropTypes.func,
     })
   ).isRequired,
   //=======================================
@@ -70,10 +71,6 @@ ActionMenu.propTypes = {
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
-  /**
-  ActionMenu component must have the onClick function passed as props
-  */
-  onClick: PropTypes.func.isRequired,
 };
 
 ActionMenu.defaultProps = {
@@ -154,7 +151,7 @@ export default function ActionMenu(props) {
         return (
           <div
             className={`qui-actionmenu-items`}
-            onMouseDown={() => props.onClick(index)}
+            onMouseDown={() => content.func()}
             key={index}
             style={colors.backgroundColors}
           >

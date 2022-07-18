@@ -1,23 +1,6 @@
 /* ================================================= */
 /* InlineEdit Definitions */
 /* ================================================= */
-.qui.qui-inline-edit {
-  .left-aligned .qui-input-field,
-  .left-aligned .qui-textarea-field {
-    text-align: left;
-  }
-
-  .right-aligned .qui-input-field,
-  .right-aligned .qui-textarea-field {
-    text-align: right;
-  }
-
-  .center-aligned .qui-input-field,
-  .center-aligned .qui-textarea-field {
-    text-align: center;
-  }
-}
-
 .qui .qui-input-field {
   width: 100%;
   border: none;

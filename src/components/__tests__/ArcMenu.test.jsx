@@ -18,7 +18,7 @@ describe("ArcMenu", () => {
     target: ArcMenu,
     required: {
       arcIcon: "menu",
-      onClick: () => console.log("arcMenu Testing"),
+      onClick: () => { },
     },
     translations: {
       tgt: "arcMenu",

@@ -21,7 +21,6 @@ describe("SelectField", () => {
     const args = {
         target: SelectField,
         required: {
-            content: {},
             onClick: () => { },
         },
         translations: {
@@ -31,13 +30,13 @@ describe("SelectField", () => {
                 hi: {
                     selectField: {
                         label: "पाठ्यक्रम श्रेणी",
-                        placeHolder: "चुनें..."
+                        placeholder: "चुनें..."
                     }
                 },
                 en: {
                     selectField: {
                         label: "Course Category",
-                        placeHolder: "",
+                        placeholder: "",
                     }
                 }
             }),
@@ -52,7 +51,6 @@ describe("SelectField", () => {
     hasValid("animations", args);
     hasValid("translations", args);
 
-    hasValid("disabled", args);
     hasValid("hidden", args);
     // -------------------------------------
     // Run component specific tests
@@ -64,17 +62,14 @@ describe("SelectField", () => {
         jest.resetAllMocks();
         component = shallow(
             <SelectField
-                content={{
-                    label: "Course Category",
-                    categoryOptions: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
-                    placeHolder: "Choose...",
-                }}
+                label="Course Category"
+                options={["Sales Training", "Tech Training", "HR Training", "Graphic Training"]}
+                placeholder="Choose..."
                 asPadded="normal"
                 withColor={null}
                 withAnimation={null}
                 withTranslation={null}
                 isHidden={false}
-                isDisabled={false}
                 onClick={onClick}
             />
         );

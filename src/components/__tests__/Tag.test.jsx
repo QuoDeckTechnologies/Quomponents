@@ -16,7 +16,6 @@ describe("Tag", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-    
     const args = {
         target: Tag,
         required: {
@@ -38,7 +37,6 @@ describe("Tag", () => {
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component;
 
     beforeEach(() => {

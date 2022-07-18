@@ -58,14 +58,11 @@ MenuBlock.propTypes = {
   */
   withIcon: PropTypes.shape({
     icon: PropTypes.string,
-    size: PropTypes.string,
-    position: PropTypes.oneOf(["left", "right"]),
   }),
   /**
-  Use to add a heading label, a footer caption or a title popover to the component
+  Use to add a text title to the component
   */
   withLabel: PropTypes.shape({
-    format: PropTypes.oneOf(["label", "caption", "popover"]),
     content: PropTypes.string,
     textColor: PropTypes.string,
   }),
@@ -109,11 +106,6 @@ MenuBlock.defaultProps = {
   isHidden: false,
   isDisabled: false,
 };
-
-function getLabel(labelObj, position) {
-  return labelObj?.format === position ? labelObj.content : "";
-}
-
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
@@ -126,7 +118,7 @@ export default function MenuBlock(props) {
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
-  let quommonClasses = getQuommons(props);
+  let quommonClasses = getQuommons(props, "menu-block");
   //-------------------------------------------------------------------
   // 2. Set the label/caption/popover and loading text
   //-------------------------------------------------------------------
@@ -135,14 +127,7 @@ export default function MenuBlock(props) {
     ? { color: labelContent.textColor }
     : {};
   //-------------------------------------------------------------------
-  // 3. Set the color
-  //-------------------------------------------------------------------
-  let colors = {
-    backgroundColor: props.withColor?.backgroundColor,
-    color: props.withColor?.textColor,
-  };
-  //-------------------------------------------------------------------
-  // 4. Translate the text objects in case their is a dictionary provided
+  // 3. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   if (
     props.withTranslation?.lang &&
@@ -159,16 +144,20 @@ export default function MenuBlock(props) {
     <div className={`qui ${quommonClasses.parentClasses}`}>
       <div className={` float-${props.asFloated}`} onClick={props.onClick}>
         <div
-          className={`qui-container qui-menuBlock qui-btn size-${props.asSize} 
+          className={`qui-menu-block-container qui-btn size-${props.asSize} 
             variant-${props.asVariant} emp-${props.asEmphasis} `}
+          style={{
+            backgroundColor: props.withColor?.backgroundColor,
+            color: props.withColor?.textColor,
+          }}
         >
-          <div style={colors} className="qui-iconContainer">
-            <div className="qui-catalog">
+          <div className="qui-menu-block-icon-container">
+            <div className="qui-menu-block-catalog">
               <div
-                className={`qui-labql${quommonClasses.childClasses}`}
+                className={`qui-menu-block-label${quommonClasses.childClasses}`}
                 style={labelStyle}
               >
-                <p>{getLabel(labelContent, "label")}</p>
+                <p>{labelContent?.content}</p>
                 <p className="qui-menu-block-seperator"></p>
               </div>
             </div>
