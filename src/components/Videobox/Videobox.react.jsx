@@ -25,27 +25,14 @@ Videobox.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to define the entry animation of the component
-    */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-            ""
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
-    }),
-    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
+    /**
+    Use to play auto the component
+    */
     autoplay: PropTypes.bool,
+
     loop: PropTypes.bool,
     /**
     Use to enable/disable the component
@@ -76,12 +63,11 @@ Videobox.defaultProps = {
     url: "https://www.youtube.com/watch?v=NpEaa2P7qZI",
     // Quommon props
     //=======================================
-    withAnimation: null,
+    autoplay: true,
+    loop: false,
 
     isHidden: false,
     isDisabled: false,
-
-    autoplay: true,
 };
 
 /**
@@ -103,7 +89,7 @@ export default function Videobox(props) {
         if (props.onReady) { props.onReady(e) };
     }
 
-    function onPlay(e) { };
+    function onPlay(e) { props.onPlay(e) };
 
     function onEnd(e) {
         if (props.loop) e.target.playVideo();
@@ -216,15 +202,13 @@ export default function Videobox(props) {
 
     // ========================= Render Function =================================
     return (
-        <motion.div
-            initial={animate?.from}
-            animate={animate?.to}
+        <div
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-react-video-player`}>
+            <div className={`qui-react-video-player ${quommonClasses.childClasses}`}>
                 {loadPlayer()}
             </div>
-        </motion.div>
+        </div>
     );
 
 }
