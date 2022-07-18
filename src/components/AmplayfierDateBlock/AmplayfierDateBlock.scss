@@ -1,11 +1,5 @@
-.qui.qui-amplayfier-date-block .is-fluid {
-  width: auto;
-  min-width: auto;
-}
-.qui.qui-amplayfier-date-block.is-fluid {
-  .qui-amplayfier-drawer-rect {
-    width: 100%;
-  }
+.qui.qui-amplayfier-date-block {
+  display: inline-block;
 }
 
 .qui .qui-amplayfier-date-block-container {
@@ -14,4 +8,5 @@
 
 .qui .qui-amplayfier-date-block-container .qui-amplayfier-date-block-title {
   margin: 0.7em 1.5em 1em 1.5em;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.30);
 }
