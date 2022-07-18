@@ -1,11 +1,10 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
-import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { getQuommons, getAnimation } from "../../../common/javascripts/helpers";
+import { getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./SquareCarousel.scss";
@@ -29,24 +28,6 @@ SquareCarousel.propTypes = {
       props: PropTypes.object,
     })
   ).isRequired,
-
-  /**
-    Use to define the entry animation of the component
-    */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
   /**
     Button component must have the onClick function passed as props
     */
@@ -57,7 +38,6 @@ SquareCarousel.defaultProps = {
   // Component Specific props
   //=======================================
   content: [],
-  withAnimation: null,
 };
 
 /**
@@ -76,7 +56,6 @@ export default function SquareCarousel(props) {
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props);
 
   var settings = {
     dots: true,
@@ -94,9 +73,7 @@ export default function SquareCarousel(props) {
   };
   // ========================= Render Function =================================
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
+    <div
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <Slider ref={sliderRef} {...settings}>
@@ -109,7 +86,10 @@ export default function SquareCarousel(props) {
               <div className={`qui-square-slide`}>
                 <BannerCard
                   {...slide.props}
-                  content={slide}
+                  content={slide.content}
+                  header={slide.header}
+                  image={slide.image}
+                  tag={slide.tag}
                   onClick={props.onClick}
                   withTranslation={props.withTranslation}
                 />
@@ -118,6 +98,6 @@ export default function SquareCarousel(props) {
           );
         })}
       </Slider>
-    </motion.div>
+    </div>
   );
 }

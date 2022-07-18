@@ -17,12 +17,16 @@ export default {
     title: "Design System/Carousel/BannerCard",
     component: BannerCard,
     argTypes: {
-        content: {
-            image: "",
-            tag: "",
-            header: "",
-            content: ""
+        image: "",
+        tag: {
+            control: "select",
+            options: ["new", "premium", "restricted", "free", ""],
+            table: {
+                category: "",
+            },
         },
+        header: "",
+        content: "",
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -115,12 +119,10 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        tag: "restricted",
-        header: "The Negotiation Room",
-        content: "Play the contest and win to earn Flipkart vouchers."
-    },
+    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    tag: "restricted",
+    header: "The Negotiation Room",
+    content: "Play the contest and win to earn Flipkart vouchers.",
     asVariant: "warning",
     withColor: {
         backgroundColor: "",
@@ -154,12 +156,10 @@ Default.parameters = {
 export const CardWithoutLabel = Template.bind({});
 CardWithoutLabel.args = {
     ...Default.args,
-    content: {
-        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        tag: "",
-        header: "The Negotiation Room",
-        content: "Play the contest and win to earn Flipkart vouchers."
-    }
+    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    tag: "",
+    header: "The Negotiation Room",
+    content: "Play the contest and win to earn Flipkart vouchers.",
 };
 CardWithoutLabel.parameters = {
     docs: {
@@ -175,10 +175,8 @@ CardWithoutLabel.parameters = {
 export const CardWithoutBox = Template.bind({});
 CardWithoutBox.args = {
     ...Default.args,
-    content: {
-        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        tag: "new"
-    }
+    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    tag: "new",
 };
 CardWithoutBox.parameters = {
     docs: {
@@ -191,12 +189,10 @@ CardWithoutBox.parameters = {
 export const TranslatedCard = Template.bind({});
 TranslatedCard.args = {
     ...Default.args,
-    content: {
-        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        tag: "new",
-        header: "The Negotiation Room",
-        content: "Play the contest and win to earn Flipkart vouchers."
-    },
+    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    tag: "new",
+    header: "The Negotiation Room",
+    content: "Play the contest and win to earn Flipkart vouchers.",
     withTranslation: {
         lang: "hi",
         tgt: "bannerCard",

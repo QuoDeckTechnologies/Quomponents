@@ -12,7 +12,6 @@
   position: relative;
 }
 .qui-portrait-carousel-container .qui-portrait-slide-container .qui-slider-card-box {
-  background-color: #454545;
   opacity: 1;
 }
 .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box-header {
@@ -71,7 +70,7 @@
     margin: auto;
     left: 0%;
     right: 0%;
-    height: 1.3em;
+    height: 2.25em;
     bottom: 0%;
     opacity: 1;
     padding: 0.5em 1em;
@@ -86,14 +85,13 @@
   .qui-portrait-slide .qui-mid-circle {
     width: 4.5em;
     height: 2.2em; /* as the half of the width */
-    background-color: #666666;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
     border-bottom: 0;
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 2.3em;
+    bottom: 2.25em;
     margin: auto;
     z-index: 1;
   }
@@ -140,7 +138,7 @@
     font-size: 1.5em;
   }
   .qui-portrait-slide-container .qui-banner-card .qui-slider-card-box {
-    height: 2.15em;
+    height: 3.15em;
   }
 
   .qui-portrait-slide-container .qui-ribbon-container {
@@ -218,7 +216,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 4.03em;
+    bottom: 3.1em;
     margin: auto;
     z-index: 1;
   }
@@ -265,7 +263,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 4.3em;
+    bottom: 3.4em;
     margin: auto;
     z-index: 1;
   }

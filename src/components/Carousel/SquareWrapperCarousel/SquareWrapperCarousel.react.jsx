@@ -125,7 +125,7 @@ export default function SquareWrapperCarousel(props) {
     centerMode: true,
     arrows: false,
     infinite: true,
-    autoplay: false,
+    autoplay: true,
     pauseOnHover: true,
     centerPadding: "0%",
     swipeToSlide: true,
@@ -146,7 +146,7 @@ export default function SquareWrapperCarousel(props) {
             >
               <div className={`qui-square-wrapper-slide `}>
                 {slide.selected && (
-                  <div className="qui-mid-circle">
+                  <div className={`qui-mid-circle qui-btn variant-${slide.props?.asVariant}`}>
                     <div className="qui-square-wrapper-checkbox">
                       <i className={"fas fa-check-square"}></i>
                     </div>
@@ -154,7 +154,10 @@ export default function SquareWrapperCarousel(props) {
                 )}
                 <BannerCard
                   {...slide.props}
-                  content={slide}
+                  content={slide.content}
+                  header={slide.header}
+                  image={slide.image}
+                  tag={slide.tag}
                   onClick={(slideData) => handleSelect(slideData)}
                 />
               </div>

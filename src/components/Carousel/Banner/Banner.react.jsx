@@ -151,7 +151,9 @@ export default function Banner(props) {
                                 className={`qui-banner`}
                             >
                                 <BannerCard
-                                    content={slide}
+                                    header={slide.header}
+                                    tag={slide.tag}
+                                    image={slide.image}
                                     asVariant={asVariant}
                                     withColor={{
                                         textColor: withColor?.textColor,

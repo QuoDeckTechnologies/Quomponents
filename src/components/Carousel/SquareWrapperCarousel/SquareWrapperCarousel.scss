@@ -6,7 +6,6 @@
   position: relative;
 }
 .qui-square-wrapper-carousel-container .qui-square-wrapper-slide-container .qui-slider-card-box {
-  background-color: #454545;
   opacity: 1;
 }
 .qui-square-wrapper-slide-container .qui-slider-card-box-header {
@@ -106,14 +105,13 @@
   .qui-square-wrapper-carousel .qui-mid-circle {
     width: 4em;
     height: 2em; /* as the half of the width */
-    background-color: #666666;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
     border-bottom: 0;
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 2.15em;
+    bottom: 2.3em;
     margin: auto;
     z-index: 1;
   }
@@ -180,7 +178,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 2.58em;
+    bottom: 1.85em;
     margin: auto;
     z-index: 1;
   }
@@ -258,7 +256,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 2.88em;
+    bottom: 2.1em;
     margin: auto;
     z-index: 1;
   }
@@ -293,11 +291,5 @@
   }
   .qui-square-wrapper-carousel .slick-dots {
     bottom: -35px;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .qui-square-wrapper-carousel .qui-mid-circle {
-    bottom: 2.88em;
   }
 }

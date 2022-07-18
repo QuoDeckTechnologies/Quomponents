@@ -21,13 +21,10 @@ BannerCard.propTypes = {
   /**
     Banner Card data should be passed in content field and it is required field
     */
-  content: PropTypes.shape({
-    image: PropTypes.string,
-    tag: PropTypes.oneOf(["new", "premium", "restricted", "free", ""]),
-    header: PropTypes.string,
-    content: PropTypes.string,
-  }).isRequired,
-
+  image: PropTypes.string,
+  tag: PropTypes.oneOf(["new", "premium", "restricted", "free", ""]),
+  header: PropTypes.string,
+  content: PropTypes.string,
   //=======================================
   // Quommon props
   //=======================================
@@ -95,8 +92,11 @@ BannerCard.propTypes = {
 
 BannerCard.defaultProps = {
   // Component Specific props
+  image: "",
+  tag: "",
+  header: "",
+  content: "",
   //=======================================
-  content: {},
   // Quommon props
   //=======================================
   asVariant: "primary",
@@ -118,9 +118,8 @@ BannerCard.defaultProps = {
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function BannerCard(props) {
-  let { content } = props;
-  let boxHeader = content?.header;
-  let boxContent = content?.content;
+  let boxHeader = props?.header;
+  let boxContent = props?.content;
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
@@ -150,7 +149,7 @@ export default function BannerCard(props) {
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
   let showBox = boxHeader || boxContent;
@@ -158,19 +157,19 @@ export default function BannerCard(props) {
   return (
     <div
       className={`qt-shadow qui ${quommonClasses.parentClasses}`}
-      style={{ backgroundImage: content ? `url(${content.image})` : "" }}
-      onClick={()=>props.onClick(props)}
+      style={{ backgroundImage: props?.image ? `url(${props.image})` : "" }}
+      onClick={() => props.onClick(props)}
     >
-      {content && content.tag && content.tag !== "" && (
+      {props.tag && props.tag !== "" && (
         <div className="qui-card-label">
           <Ribbon
             asFloated="right"
-            asEmphasis={content.tag}
+            asEmphasis={props.tag}
             withTranslation={props.withTranslation}
           />
         </div>
       )}
-      {content && showBox && (
+      {showBox && (
         <motion.div
           initial={animate.from}
           animate={animate.to}
@@ -181,21 +180,6 @@ export default function BannerCard(props) {
             {boxHeader}
           </div>
           <div className="qui-slider-card-box-content line-clamp">
-            {boxContent}
-          </div>
-        </motion.div>
-      )}
-      {content && showBox && (
-        <motion.div
-          initial={animate.from}
-          animate={animate.to}
-          className={`qui-carousel qui-slider-card-box ${quommonClasses.childClasses}`}
-          style={Object.assign({}, colors, props.style)}
-        >
-          <div className="qui-slider-card-box-header line-clamp">
-            {boxHeader}
-          </div>
-          <div className="qui-slider-card-box-content line-clamp qt-sm">
             {boxContent}
           </div>
         </motion.div>

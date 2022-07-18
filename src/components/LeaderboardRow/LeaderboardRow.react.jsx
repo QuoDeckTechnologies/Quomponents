@@ -92,7 +92,7 @@ export default function LeaderboardRow(props) {
   //-------------------------------------------------------------------
   // 2. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   //-------------------------------------------------------------------
   // 3. Conditional styling
@@ -100,7 +100,7 @@ export default function LeaderboardRow(props) {
   let contentStyle = {
     backgroundColor:
       (props.rank === 0 || props.rank === 1 || props.rank === 2) &&
-      props.withColor?.backgroundColor
+        props.withColor?.backgroundColor
         ? props.withColor?.backgroundColor
         : "#454545",
     color:
@@ -109,8 +109,8 @@ export default function LeaderboardRow(props) {
           ? props.withColor?.textColor
           : "#FFBF00"
         : props.withColor?.backgroundColor
-        ? props.withColor?.backgroundColor
-        : "#FFBF00",
+          ? props.withColor?.backgroundColor
+          : "#FFBF00",
   };
 
   //-------------------------------------------------------------------
@@ -120,10 +120,10 @@ export default function LeaderboardRow(props) {
     props.rank === 0
       ? goldMedal
       : props.rank === 1
-      ? silverMedal
-      : props.rank === 2
-      ? bronzeMedal
-      : unRank;
+        ? silverMedal
+        : props.rank === 2
+          ? bronzeMedal
+          : unRank;
 
   return (
     <motion.div

@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
-import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -45,7 +44,6 @@ HtmlCarousel.defaultProps = {
 /**
 ## Notes
 - The design system used for this component is Slick-slider ("react-slick")
-- The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
@@ -53,9 +51,6 @@ export default function HtmlCarousel(props) {
     const sliderRef = useRef();
     let { content } = props;
     let quommonClasses = getQuommons(props, "html-carousel");
-    //-------------------------------------------------------------------
-    // 4. Get animation of the component
-    //-------------------------------------------------------------------
 
     var settings = {
         dots: true,
@@ -73,7 +68,7 @@ export default function HtmlCarousel(props) {
     };
     // ========================= Render Function =================================
     return (
-        <motion.div
+        <div
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <Slider ref={sliderRef} {...settings}>
@@ -82,7 +77,7 @@ export default function HtmlCarousel(props) {
                         <div className="qui-html-slide-container"
                             key={"slider-" + index + Math.random()}>
                             <div className={`qui-html-slide`}>
-                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} withTranslation={props.withTranslation} />
+                                <BannerCard  {...slide.props} content={slide.content} image={slide.image} tag={slide.tag} onClick={props.onClick} />
                             </div>
                         </div>
                     );
@@ -98,6 +93,6 @@ export default function HtmlCarousel(props) {
                     <i className="fas fa-arrow-alt-circle-right"></i>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 }

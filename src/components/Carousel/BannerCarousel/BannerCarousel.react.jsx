@@ -88,7 +88,8 @@ export default function BannerCarousel(props) {
                                 key={"slider-" + index + Math.random()}
                                 className={`qui-slide`}
                             >
-                                <BannerCard {...slide.props} content={slide} onClick={props.onClick} withTranslation={props.withTranslation} />
+                                <BannerCard {...slide.props} image={slide.image} content={slide.content}
+                                    tag={slide.tag} header={slide.header} onClick={props.onClick} withTranslation={props.withTranslation} />
                             </div>
                         </div>
                     );

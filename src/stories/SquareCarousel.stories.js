@@ -1,17 +1,6 @@
 import React from "react";
 import SquareCarousel from "../components/Carousel/SquareCarousel/SquareCarousel.react";
 
-const dictionary = JSON.stringify({
-    hi: {
-        bannerCard: { header: "", content: "" },
-        ribbon: {
-            new: "नया",
-            restricted: "प्रतिबंधित",
-            premium: "अधिमूल्य",
-            free: "नि: शुल्क"
-        }
-    },
-});
 export default {
     title: "Design System/Carousel/SquareCarousel",
     component: SquareCarousel,
@@ -23,16 +12,6 @@ export default {
             content: "",
             props: {}
         }],
-    },
-    withAnimation: {
-        table: {
-            category: "with-Params",
-            defaultValue: {
-                animation: "",
-                duration: 0,
-                delay: 0,
-            },
-        },
     },
     decorators: [
         (story) => (
@@ -59,18 +38,8 @@ let dataprops = {
     asVariant: "warning",
     withColor: {
         backgroundColor: "",
-        accentColor: "",
         textColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
     },
-    withAnimation: {
-        animation: "slideLeft",
-        duration: 0.5,
-        delay: 0,
-    },
-    isDisabled: false,
-    isHidden: false
 }
 
 // -------------------------------------------------------------
@@ -107,72 +76,11 @@ Default.args = {
             ...dataprops,
         }
     }],
-    withAnimation: {
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-    },
-    withTranslation: {
-        lang: "en",
-        tgt: "bannerCard",
-        dictionary: dictionary,
-    },
 };
 Default.parameters = {
     docs: {
         source: {
             code: `<SquareCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
-        },
-    },
-};
-// -------------------------------------------------------------
-// TranslatedSquareCarousel
-// -------------------------------------------------------------
-export const TranslatedSquareCarousel = Template.bind({});
-TranslatedSquareCarousel.args = {
-    content: [{
-        header: "Negotiation Room",
-        content: "Play and win the competition to win Flipkart vouchers.",
-        image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
-        tag: "new",
-        props: {
-            ...dataprops,
-            asVariant: "secondary"
-        }
-    },
-    {
-        image: "https://i.pinimg.com/564x/d7/eb/54/d7eb54f1760884ebea92519ac653aa19.jpg",
-        tag: "premium",
-        header: "ਗੱਲਬਾਤ ਦਾ ਕਮਰਾ",
-        content: "Flipkart ਵਾਊਚਰ ਹਾਸਲ ਕਰਨ ਲਈ ਮੁਕਾਬਲਾ ਖੇਡੋ ਅਤੇ ਜਿੱਤੋ। ",
-        props: {
-            ...dataprops,
-        }
-    },
-    {
-        image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        tag: "restricted",
-        header: "निगोशिएशन रूम",
-        content: "फ्लिपकार्ट व्हाउचर मिळवण्यासाठी स्पर्धा खेळा आणि जिंका.",
-        props: {
-            ...dataprops,
-        }
-    }],
-    withAnimation: {
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-    },
-    withTranslation: {
-        lang: "hi",
-        tgt: "bannerCard",
-        dictionary: dictionary,
-    },
-};
-TranslatedSquareCarousel.parameters = {
-    docs: {
-        source: {
-            code: `<SquareCarousel {...${JSON.stringify(TranslatedSquareCarousel.args, null, 2)}}/>`,
         },
     },
 };
@@ -203,16 +111,6 @@ SquareCarouselWithoutBox.args = {
             ...dataprops,
         }
     }],
-    withAnimation: {
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-    },
-    withTranslation: {
-        lang: "en",
-        tgt: "bannerCard",
-        dictionary: dictionary,
-    },
 };
 SquareCarouselWithoutBox.parameters = {
     docs: {
@@ -255,16 +153,6 @@ SquareCarouselWithoutTag.args = {
             ...dataprops,
         }
     }],
-    withAnimation: {
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-    },
-    withTranslation: {
-        lang: "en",
-        tgt: "bannerCard",
-        dictionary: dictionary,
-    },
 };
 SquareCarouselWithoutTag.parameters = {
     docs: {
@@ -273,34 +161,6 @@ SquareCarouselWithoutTag.parameters = {
         },
         source: {
             code: `<SquareCarousel {...${JSON.stringify(SquareCarouselWithoutTag.args, null, 2)}}/>`,
-        },
-    },
-};
-
-// -------------------------------------------------------------
-// AnimatedSquareCarousel
-// -------------------------------------------------------------
-export const AnimatedSquareCarousel = Template.bind({});
-AnimatedSquareCarousel.args = {
-    ...Default.args,
-    withAnimation: {
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-    },
-};
-AnimatedSquareCarousel.parameters = {
-    docs: {
-        description: {
-            story:
-                "Use to animate the entry of the SquareCarousel with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
-        },
-        source: {
-            code: `<AnimatedSquareCarousel {...${JSON.stringify(
-                AnimatedSquareCarousel.args,
-                null,
-                2
-            )}}/>`,
         },
     },
 };

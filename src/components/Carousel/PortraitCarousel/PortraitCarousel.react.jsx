@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { getQuommons, getAnimation } from "../../../common/javascripts/helpers";
+import { getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./PortraitCarousel.scss";
@@ -28,23 +28,6 @@ PortraitCarousel.propTypes = {
     })
   ).isRequired,
   /**
-    Use to define the entry animation of the component
-    */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
-  /**
     PortraitCarousel component must have the onClick function passed as props
     */
   onClick: PropTypes.func.isRequired,
@@ -54,7 +37,6 @@ PortraitCarousel.defaultProps = {
   // Component Specific props
   //=======================================
   content: [],
-  withAnimation: null,
 };
 /**
 ## Notes
@@ -111,10 +93,6 @@ export default function PortraitCarousel(props) {
     });
     setCarouselContent([...tmp_arr]);
   };
-  //-------------------------------------------------------------------
-  // 7. Get animation of the component
-  //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
   var settings = {
     dots: true,
     speed: 500,
@@ -131,9 +109,7 @@ export default function PortraitCarousel(props) {
   };
   // ========================= Render Function =================================
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
+    <div
       className={`qui qui-portrait-carousel-container ${quommonClasses.parentClasses}`}
     >
       <Slider ref={sliderRef} {...settings}>
@@ -144,10 +120,10 @@ export default function PortraitCarousel(props) {
               key={"slider-" + index + Math.random()}
             >
               <div
-                className={`qui-portrait-slide ${quommonClasses.childClasses} `}
+                className={`qui-portrait-slide`}
               >
                 {slide.selected && (
-                  <div className="qui-mid-circle">
+                  <div className={`qui-mid-circle qui-btn variant-${slide.props?.asVariant}`}>
                     <div className="qui-portrait-checkbox">
                       <i className={"fas fa-check-square"}></i>
                     </div>
@@ -155,7 +131,7 @@ export default function PortraitCarousel(props) {
                 )}
                 <BannerCard
                   {...slide.props}
-                  content={slide}
+                  header={slide?.header} image={slide?.image} tag={slide.tag}
                   onClick={(slideData) => handleSelect(slideData)}
                 />
               </div>
@@ -177,6 +153,6 @@ export default function PortraitCarousel(props) {
           <i className="fas fa-arrow-alt-circle-right"></i>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

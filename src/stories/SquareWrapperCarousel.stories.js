@@ -62,6 +62,9 @@ export default {
   },
 };
 
+let dataprops = {
+  asVariant: "warning",
+};
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -76,6 +79,10 @@ Default.args = {
       header: "Balloon Burst",
       tag: "new",
       selected: true,
+      props: {
+        ...dataprops,
+        asVariant: "primary",
+      },
     },
     {
       id: "second-slide",
@@ -84,6 +91,10 @@ Default.args = {
       tag: "premium",
       selected: false,
       header: "Cityscape",
+      props: {
+        ...dataprops,
+        asVariant: "secondary",
+      },
     },
     {
       id: "third-slide",
@@ -92,6 +103,10 @@ Default.args = {
       tag: "restricted",
       selected: false,
       header: "GhostBuster",
+      props: {
+        ...dataprops,
+        asVariant: "warning",
+      },
     },
   ],
   withAnimation: {
@@ -130,6 +145,10 @@ TranslatedSquareWrapper.args = {
       header: "Balloon Burst",
       tag: "new",
       selected: true,
+      props: {
+        ...dataprops,
+        asVariant: "primary",
+      },
     },
     {
       id: "second-slide",
@@ -138,6 +157,10 @@ TranslatedSquareWrapper.args = {
       tag: "premium",
       selected: false,
       header: "Cityscape",
+      props: {
+        ...dataprops,
+        asVariant: "secondary",
+      },
     },
     {
       id: "third-slide",
@@ -146,6 +169,10 @@ TranslatedSquareWrapper.args = {
       tag: "restricted",
       selected: false,
       header: "GhostBuster",
+      props: {
+        ...dataprops,
+        asVariant: "warning",
+      },
     },
   ],
   withAnimation: {
@@ -219,18 +246,30 @@ SquareWrapperCarouselWithoutTag.args = {
       image:
         " https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
       header: "The Negotiation Room",
+      props: {
+        ...dataprops,
+        asVariant: "primary",
+      },
     },
     {
       id: "second-slide",
       image:
         "https://i.pinimg.com/564x/68/ed/88/68ed881d5ff0dbe232ff8d4d2e186a99.jpg",
       header: "The Negotiation Room",
+      props: {
+        ...dataprops,
+        asVariant: "secondary",
+      },
     },
     {
       id: "third-slide",
       image:
         "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
       header: "What is Negotiation Room?",
+      props: {
+        ...dataprops,
+        asVariant: "warning",
+      },
     },
   ],
 };
