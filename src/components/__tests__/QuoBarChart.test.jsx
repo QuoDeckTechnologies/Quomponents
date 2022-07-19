@@ -22,11 +22,8 @@ describe("QuoBarChart", () => {
     const args = {
         target: QuoBarChart,
     };
-
     hasValid("defaults", args);
-
     hasValid("colors", args);
-
     hasValid("hidden", args);
 
     // -------------------------------------
@@ -53,9 +50,6 @@ describe("QuoBarChart", () => {
                     { label: "20", count: 150 },
                     { label: "21", count: 590 },
                 ]}
-                withColor={null}
-                isHidden={false}
-                isFluid={false}
             />
         );
     });
@@ -115,9 +109,6 @@ describe("QuoBarChart", () => {
                 { label: "20", count: 150 },
                 { label: "21", count: 590 },
             ]}
-            withColor={null}
-            isHidden={false}
-            isFluid={false}
         />)
         wrapper.find(".recharts-tooltip-wrapper")
         global.innerWidth = 1200;
@@ -171,9 +162,6 @@ describe("QuoBarChart", () => {
                     { label: "20", count: 150 },
                     { label: "21", count: 590 },
                 ]}
-                withColor={null}
-                isHidden={false}
-                isFluid={false}
             />
         );
         unmount();

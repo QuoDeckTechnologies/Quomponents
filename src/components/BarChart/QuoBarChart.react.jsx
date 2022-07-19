@@ -37,8 +37,8 @@ QuoBarChart.propTypes = {
     Use to set Colors for accent line
     */
     withColor: PropTypes.shape({
-        activeBarColor: PropTypes.string,
-        barColor: PropTypes.string,
+        accentColor: PropTypes.string,
+        textColor: PropTypes.string,
         backgroundColor: PropTypes.string,
     }),
     /**
@@ -187,7 +187,7 @@ export default function QuoBarChart(props) {
                     {newData.data.map((entry, index) => (
                         <Cell
                             key={`cell-${index + 1}`}
-                            fill={index === newData.activeIndex ? withColor?.activeBarColor : withColor?.barColor}
+                            fill={index === newData.activeIndex ? withColor?.accentColor : withColor?.textColor}
                         />
                     ))}
                 </Bar>

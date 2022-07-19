@@ -12,8 +12,8 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    activeBarColor: "",
-                    barColor: "",
+                    accentColor: "",
+                    textColor: "",
                     backgroundColor: "",
                 },
             },
@@ -76,8 +76,8 @@ Default.args = {
     ],
     withColor: {
         backgroundColor: "",
-        activeBarColor: "#FFBF00",
-        barColor: "#DDDDDD",
+        accentColor: "#FFBF00",
+        textColor: "#DDDDDD",
     },
     isHidden: false,
 };
@@ -120,8 +120,8 @@ ColoredBarChart.args = {
     ],
     withColor: {
         backgroundColor: "#d5f1a8",
-        activeBarColor: "#000000",
-        barColor: "#FFBF00",
+        accentColor: "#000000",
+        textColor: "#FFBF00",
     },
     isHidden: false,
 };
@@ -174,8 +174,8 @@ BarChartWith31Bars.args = {
     ],
     withColor: {
         backgroundColor: "#d5f1a8",
-        activeBarColor: "#000000",
-        barColor: "#FFBF00",
+        accentColor: "#000000",
+        textColor: "#FFBF00",
     },
     isHidden: false,
 };
