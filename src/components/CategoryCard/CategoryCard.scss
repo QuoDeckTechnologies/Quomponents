@@ -8,6 +8,8 @@
         padding: 0;
     }
     .qui-category-card-image {
+        border-top-left-radius: 1em;
+        border-top-right-radius: 1em;
         width: 100%;
         height: 4.6875em;
     }
@@ -45,10 +47,11 @@
                 margin-left: 0.4em;
             }
             .qui-category-card-accent-line {
-                width: 2.2916669845581055em;
+                width: 1.5em;
                 margin: 0 2em 0 1em;
                 .qui .qui-accentline {
                     border-bottom: 0.3em solid;
+                    width: 2.5em;
                 }
             }
         }

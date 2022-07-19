@@ -32,7 +32,7 @@ export default {
                     textColor: "",
                     backgroundColor: "",
                     accentColor: "",
-                    pathColor: "",
+                    hoverBackgroundColor: "",
                 },
             },
         },
@@ -107,8 +107,8 @@ Default.args = {
     withColor: {
         textColor: "",
         backgroundColor: "",
-        accentColor: "",
-        pathColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "",
     },
     withAnimation: {
         animation: "zoom",
@@ -162,7 +162,7 @@ ColoredCategoryCard.args = {
         textColor: "#121212",
         backgroundColor: "#AAAAAA",
         accentColor: "#AD2929",
-        pathColor: "#FFBF00",
+        hoverBackgroundColor: "#FFBF00",
     }
 };
 ColoredCategoryCard.parameters = {

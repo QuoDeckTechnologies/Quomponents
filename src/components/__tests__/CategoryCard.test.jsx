@@ -26,7 +26,7 @@ describe("CategoryCard", () => {
                 image: { id: "categorycard-image", extention: "" },
                 viewedPercentage: 80,
             },
-            onClick: () => {},
+            onClick: () => { },
         },
     };
 
@@ -40,9 +40,6 @@ describe("CategoryCard", () => {
 
     hasValid("disabled", args);
     hasValid("hidden", args);
-    hasValid("loading", args);
-    hasValid("fluid", args);
-
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -60,7 +57,12 @@ describe("CategoryCard", () => {
                         image: "categorycard-image.png",
                     },
                 ]}
+                asSize="normal"
+                asFloated="none"
                 withColor={null}
+                withAnimation={null}
+                isHidden={false}
+                isDisabled={false}
                 onClick={onClick}
             />
         );
@@ -84,16 +86,6 @@ describe("CategoryCard", () => {
     it("should render correctly when passed content prop is null", () => {
         let contentData = {};
         component.setProps({ content: contentData });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            textColor: "#121212",
-            backgroundColor: "#34e5eb",
-            accentColor: "#065254",
-            pathColor: "#121212",
-        };
-        component.setProps({ withColor: colors });
         expect(component.exists()).toBe(true);
     });
 });

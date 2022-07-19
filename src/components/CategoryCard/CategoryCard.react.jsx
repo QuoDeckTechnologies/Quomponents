@@ -51,7 +51,7 @@ CategoryCard.propTypes = {
         textColor: PropTypes.string,
         backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
-        pathColor: PropTypes.string,
+        hoverBackgroundColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -188,7 +188,7 @@ export default function CategoryCard(props) {
                                                     strokeWidth={30}
                                                     styles={buildStyles({
                                                         strokeLinecap: "butt",
-                                                        pathColor: withColor?.pathColor,
+                                                        pathColor: withColor?.hoverBackgroundColor,
                                                     })}
                                                 />
                                             </div>
@@ -196,7 +196,9 @@ export default function CategoryCard(props) {
                                                 {`${content?.viewedPercentage}%`}
                                             </h5>
                                             <div className={`qui-category-card-accent-line`}>
-                                                <AccentLine withColor={{ accentColor: withColor?.accentColor }} />
+                                                <AccentLine
+                                                    withColor={{ accentColor: withColor?.accentColor }}
+                                                />
                                             </div>
                                         </div>
                                     )}
