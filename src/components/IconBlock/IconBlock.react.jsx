@@ -14,15 +14,22 @@ import "../../common/stylesheets/overrule.scss";
 
 IconBlock.propTypes = {
     //=======================================
-    // Component Specific props
-    //=======================================
-
     // Quommon props
     //=======================================
     /**
     Set action emphasis in increasing order 
     */
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
+    /**
+    Use to define standard component type
+    */
+    asVariant: PropTypes.oneOf([
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "error"
+    ]),
     /**
     Use to define component text size in increasing order
     */
@@ -62,7 +69,7 @@ IconBlock.propTypes = {
     Use to add an icon to the component
     */
     withIcon: PropTypes.shape({
-        name: PropTypes.string,
+        icon: PropTypes.string,
         size: PropTypes.string,
         position: PropTypes.string
     }),
@@ -89,12 +96,9 @@ IconBlock.propTypes = {
 };
 
 IconBlock.defaultProps = {
-    // Component Specific props
-    //=======================================
-
-
     // Quommon props
     //=======================================
+    asVariant: "primary",
     asSize: "normal",
     asPadded: "normal",
     asFloated: "inline",
@@ -164,6 +168,7 @@ export default function IconBlock(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "icon-block");
+    quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
 
     //-------------------------------------------------------------------
     // 2. Get animation of the component
@@ -178,24 +183,17 @@ export default function IconBlock(props) {
     //-------------------------------------------------------------------
     // 4. Get the Status of Component
     //-------------------------------------------------------------------
-    const iconBlock = () => {
-        return (
-            <div className={`qui-btn qui-icon-button-container`}
-                style={Object.assign({}, empColors.backgroundHandle)}
-                onClick={props.onClick}>
-                <i className={`${props.withIcon?.name} qui-icon-button-style`}
-                    style={Object.assign({}, empColors.iconColorHandle)}
-                ></i>
-            </div>
-        )
-    }
     return (
         <motion.div
             initial={animate?.from}
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`${quommonClasses.childClasses}`}>
-                {iconBlock()}
+            <div className={`qui-btn qui-icon-button-container ${quommonClasses.childClasses}`}
+                style={Object.assign({}, empColors.backgroundHandle)}
+                onClick={props.onClick}>
+                {props.withIcon?.icon && <i className={`qui-icon ${props.withIcon?.icon} qui-icon-button-style`}
+                    style={Object.assign({}, empColors.iconColorHandle)}
+                ></i>}
             </div>
         </motion.div>
     );
