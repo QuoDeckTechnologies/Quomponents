@@ -13,17 +13,21 @@ export default {
     title: "Design System/FeedbackForm",
     component: FeedbackForm,
     argTypes: {
-        content: "Show Feedback",
+        label: "Show Feedback",
+        asVariant: {
+            control: "select",
+            options: ["primary", "secondary", "success", "warning", "error"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    toggleBarColor: "",
-                    toggleActiveColor: "",
-                    toggleLabelColor: "",
-                    inputBackgroundColor: "",
-                    inputAccentColor: "",
-                    inputTextColor: "",
+                    backgroundColor: "",
+                    accentColor: "",
+                    textColor: "",
                 },
             },
         },
@@ -92,7 +96,7 @@ const Template = (args) => <FeedbackForm {...args} />;
 //---------------------------------------------------------
 export const Default = Template.bind({});
 Default.args = {
-    content: "Show Feedback",
+    label: "Show Feedback",
     withAnimation: {
         animation: "zoom",
         duration: 0.5,
@@ -104,13 +108,11 @@ Default.args = {
         dictionary: dictionary,
     },
     withColor: {
-        toggleBarColor: "#454545",
-        toggleActiveColor: "#FFAB00",
-        toggleLabelColor: "",
-        inputBackgroundColor: "#ffab000d",
-        inputAccentColor: "#ffab00",
-        inputTextColor: "#666666",
+        backgroundColor: "",
+        accentColor: "",
+        textColor: "",
     },
+    asVariant: "primary",
     isDisabled: false,
     isHidden: false,
 };

@@ -100,7 +100,7 @@ InputField.defaultProps = {
     //=======================================
     label: "",
     value: "",
-    placeholder: undefined,
+    placeholder: "",
     type: "text",
     multiline: false,
     maxLength: 0,
@@ -197,8 +197,8 @@ export default function InputField(props) {
     // 4. Get translation of the component
     //-------------------------------------------------------------------
     let tObj = null;
-    let label = props.content?.label;
-    let placeholder = props.content?.placeholder;
+    let label = props?.label;
+    let placeholder = props?.placeholder;
 
     if (
         props.withTranslation?.lang &&

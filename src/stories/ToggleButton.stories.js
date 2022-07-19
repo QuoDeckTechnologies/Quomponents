@@ -20,6 +20,13 @@ export default {
                 category: "as-Flags",
             },
         },
+        asVariant: {
+            control: "select",
+            options: ["primary", "secondary", "success", "warning", "error"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -87,7 +94,7 @@ export const Default = Template.bind({});
 Default.args = {
     label: "Active",
     asFloated: "inline",
-
+    asVariant: "primary",
     withColor: {
         backgroundColor: "#454545",
         accentColor: "#FFAB00",
@@ -119,6 +126,7 @@ Default.parameters = {
 export const TranslatedToggleButton = Template.bind({});
 TranslatedToggleButton.args = {
     ...Default.args,
+    asVariant: "success",
     withTranslation: {
         lang: "hi",
         tgt: "toggleButton",

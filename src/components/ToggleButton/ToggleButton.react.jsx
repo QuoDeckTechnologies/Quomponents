@@ -29,6 +29,16 @@ ToggleButton.propTypes = {
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
+    Use to define standard component type
+    */
+    asVariant: PropTypes.oneOf([
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "error",
+    ]),
+    /**
     Use to override component colors 
     */
     withColor: PropTypes.shape({
@@ -81,6 +91,7 @@ ToggleButton.defaultProps = {
     // Quommon props
     //=======================================
     asFloated: "none",
+    asVariant: "primary",
 
     withColor: null,
     withAnimation: null,
@@ -99,6 +110,7 @@ ToggleButton.defaultProps = {
 - MUI props are not being passed to the ToggleButton. Please speak to the admin to handle any new MUI prop.
 **/
 export default function ToggleButton(props) {
+    let { withColor } = props;
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -131,22 +143,42 @@ export default function ToggleButton(props) {
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}
+            className={`qui ${quommonClasses.parentClasses} `}
         >
-            <div className={`qui-toggle-button-container `} >
+            <div className={`qui-toggle-button-container ${quommonClasses.childClasses}`} >
                 <Switch
                     sx={{
                         '& .MuiSwitch-switchBase': {
-                            color: '#AAAAAA ',
-                            '&.Mui-checked': {
-                                color: props.withColor?.accentColor,
+                            '&.Mui-checked.MuiSwitch-colorPrimary': {
+                                color: withColor?.accentColor ? withColor?.accentColor : '#ed6e6e',
                                 '& + .MuiSwitch-track': {
-                                    backgroundColor: props.withColor?.backgroundColor,
-                                },
+                                    backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : '#ed6e6e',
+                                }
                             },
-                        },
-                        '& .MuiSwitch-track': {
-                            backgroundColor: props.withColor?.backgroundColor,
+                            '&.Mui-checked.MuiSwitch-colorWarning': {
+                                color: withColor?.accentColor ? withColor?.accentColor : '#ffbf00',
+                                '& + .MuiSwitch-track': {
+                                    backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : '#ffbf00',
+                                }
+                            },
+                            '&.Mui-checked.MuiSwitch-colorSuccess': {
+                                color: withColor?.accentColor ? withColor?.accentColor : '#2e7d32',
+                                '& + .MuiSwitch-track': {
+                                    backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : '#2e7d32',
+                                }
+                            },
+                            '&.Mui-checked.MuiSwitch-colorError': {
+                                color: withColor?.accentColor ? withColor?.accentColor : '#d32f2f',
+                                '& + .MuiSwitch-track': {
+                                    backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : '#d32f2f',
+                                }
+                            },
+                            '&.Mui-checked.MuiSwitch-colorSecondary': {
+                                color: withColor?.accentColor ? withColor?.accentColor : '#3e587a',
+                                '& + .MuiSwitch-track': {
+                                    backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : '#3e587a',
+                                }
+                            },
                         },
                     }}
                     onChange={(e) => {
@@ -155,6 +187,7 @@ export default function ToggleButton(props) {
                     id="qui-switch-toggle"
                     disableRipple={true}
                     checked={toggle}
+                    color={props.asVariant}
                 />
                 <label
                     htmlFor="qui-switch-toggle"

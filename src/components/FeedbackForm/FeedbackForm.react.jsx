@@ -15,12 +15,22 @@ FeedbackForm.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Title data should be pass in content field
+    Title data should be pass in label field
     */
-    content: PropTypes.string,
+    label: PropTypes.string,
     //=======================================
     // Quommon props
     //=======================================
+    /**
+    Use to define standard component type
+    */
+    asVariant: PropTypes.oneOf([
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "error",
+    ]),
     /**
     Use to define the entry animation of the component
     */
@@ -51,12 +61,9 @@ FeedbackForm.propTypes = {
     */
     withColor: PropTypes.shape({
         withColor: PropTypes.shape({
-            toggleBarColor: PropTypes.string,
-            toggleActiveColor: PropTypes.string,
-            toggleLabelColor: PropTypes.string,
-            inputBackgroundColor: PropTypes.string,
-            inputAccentColor: PropTypes.string,
-            inputTextColor: PropTypes.string
+            backgroundColor: PropTypes.string,
+            accentColor: PropTypes.string,
+            textColor: PropTypes.string,
         })
     }),
     /**
@@ -68,25 +75,26 @@ FeedbackForm.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    FeedbackForm component must have the onSubmit function passed as props
+    FeedbackForm component must have the onEnter function passed as props
     */
-    onSubmit: PropTypes.func.isRequired,
+    onEnter: PropTypes.func.isRequired,
 };
 
 FeedbackForm.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: "",
+    label: "",
     //=======================================
     // Quommon props
     //=======================================
+    asVariant: "primary",
     withColor: null,
     withAnimation: null,
     withTranslation: null,
     isHidden: false,
     isDisabled: false,
-    onSubmit: null,
+    onEnter: null,
 };
 /**
 ## Notes
@@ -111,7 +119,7 @@ export default function FeedbackForm(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        toggleLabel = tObj?.content || "Show Feedback"
+        toggleLabel = tObj?.label || "Show Feedback"
         inputFieldLableOne = tObj?.correct || "If Correct"
         inputFieldLableTwo = tObj?.incorrect || "If Incorrect"
     }
@@ -119,22 +127,6 @@ export default function FeedbackForm(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "feedback-form");
-    //------------------------------------------------------------------
-    // 2. Set the colors of ToggleButton
-    //-------------------------------------------------------------------
-    let ToggleColors = {
-        backgroundColor: props.withColor?.toggleBarColor,
-        accentColor: props.withColor?.toggleActiveColor,
-        textColor: props.withColor?.toggleLabelColor
-    }
-    //------------------------------------------------------------------
-    // 3. Set the colors of InputField
-    //-------------------------------------------------------------------
-    let InputFieldColors = {
-        backgroundColor: props.withColor?.inputBackgroundColor,
-        accentColor: props.withColor?.inputAccentColor,
-        textColor: props.withColor?.inputTextColor
-    }
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
@@ -153,12 +145,14 @@ export default function FeedbackForm(props) {
                     <legend>
                         <ToggleButton {...props} onClick={() => setToggle(prevState => !prevState)}
                             label={toggleLabel}
-                            withColor={ToggleColors} withTranslation={null} />
+                            withColor={props.withColor} withTranslation={null} />
                     </legend>
                     {toggle &&
                         <div className="qui-feedback-input-field-container">
-                            <InputField {...props} onSubmit={props.onClick} label={inputFieldLableOne} withColor={InputFieldColors} name={"correct"} withTranslation={null} />
-                            <InputField {...props} onSubmit={props.onClick} label={inputFieldLableTwo} withColor={InputFieldColors} name={"incorrect"} withTranslation={null} />
+                            <InputField {...props} onSubmit={props.onEnter} label={inputFieldLableOne}
+                                withColor={props.withColor} name={"correct"} withTranslation={null} />
+                            <InputField {...props} onSubmit={props.onEnter} label={inputFieldLableTwo}
+                                withColor={props.withColor} name={"incorrect"} withTranslation={null} />
                         </div>
                     }
                 </fieldset>
