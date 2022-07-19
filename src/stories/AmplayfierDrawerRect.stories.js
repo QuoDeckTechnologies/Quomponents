@@ -12,6 +12,13 @@ export default {
         defaultValue: false,
       },
     },
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     asPadded: {
       control: "select",
       options: ["fitted", "compact", "normal", "relaxed"],
@@ -84,6 +91,7 @@ export const Default = Template.bind({});
 Default.args = {
   isCircular: false,
   asFloated: "inline",
+  asVariant: "primary",
   asPadded: "normal",
   withColor: {
     backgroundColor: "",
@@ -151,9 +159,8 @@ const AmplayfierDrawerWithOtherComponentTemplate = (args) => (
     </div>
   </AmplayfierDrawerRect>
 );
-export const AmplayfierDrawerWithOtherComponent = AmplayfierDrawerWithOtherComponentTemplate.bind(
-  {}
-);
+export const AmplayfierDrawerWithOtherComponent =
+  AmplayfierDrawerWithOtherComponentTemplate.bind({});
 AmplayfierDrawerWithOtherComponent.args = {
   ...Default.args,
   asPadded: "relaxed",

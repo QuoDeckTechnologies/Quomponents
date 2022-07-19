@@ -1,9 +1,10 @@
-.qui.qui-amplayfier-drawer-rect {
+.qui .qui-amplayfier-drawer-rect-container {
   background-color: #222a35;
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
 }
 
-.qui.qui-amplayfier-drawer-rect.is-circular {
+.qui.qui-amplayfier-drawer-rect.is-circular
+  .qui-amplayfier-drawer-rect-container {
   border-radius: 1em;
 }

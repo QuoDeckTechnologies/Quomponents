@@ -24,6 +24,16 @@ AmplayfierDrawerRect.propTypes = {
   // Quommon props
   //=======================================
   /**
+  Use to define standard component type
+  */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
+  /**
     Use to define component padding in increasing order
     */
   asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
@@ -68,6 +78,7 @@ AmplayfierDrawerRect.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asVariant: "primary",
   asPadded: "normal",
   asFloated: "none",
   withColor: null,
@@ -102,7 +113,7 @@ export default function AmplayfierDrawerRect(props) {
       style={{ backgroundColor: withColor?.backgroundColor }}
     >
       <div
-        className={`qui-amplayfier-drawer-rect-container ${quommonClasses.childClasses}`}
+        className={`qui-amplayfier-drawer-rect-container qui-btn ${quommonClasses.childClasses}`}
       >
         {children}
       </div>
