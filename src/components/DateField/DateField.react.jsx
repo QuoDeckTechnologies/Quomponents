@@ -14,19 +14,23 @@ import "../../common/stylesheets/overrule.scss";
 
 DateField.propTypes = {
     //=======================================
-    // Component Specific props
-    //=======================================
-    /**
-    Use to define label in DateField component
-    */
-    label: PropTypes.string,
-    //=======================================
     // Quommon props
     //=======================================
     /**
-    Use to define component padding in increasing order
+    Use to define component size in increasing order
     */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
+    /**
+    Use to float the component in parent container
+    */
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
     Use to override component colors and behavior
     */
@@ -34,6 +38,12 @@ DateField.propTypes = {
         backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
         textColor: PropTypes.string,
+    }),
+    /**
+    Use to add a label to the component
+    */
+    withLabel: PropTypes.shape({
+        content: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -69,6 +79,10 @@ DateField.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
+    Use to toggle the component taking the full width of the parent container
+    */
+    isFluid: PropTypes.bool,
+    /**
     DateField component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
@@ -76,20 +90,19 @@ DateField.propTypes = {
 
 DateField.defaultProps = {
     //=======================================
-    // Component Specific props
-    //=======================================
-    label: "",
-    //=======================================
     // Quommon props
     //=======================================
-    asPadded: "normal",
+    asSize: "normal",
+    asFloated: "none",
 
     withColor: null,
+    withLabel: null,
     withAnimation: null,
     withTranslation: null,
 
     isHidden: false,
     isDisabled: false,
+    isFluid: false,
 };
 /**
 ## Notes
@@ -125,19 +138,33 @@ export default function DateField(props) {
     // 4. Get translation of the component
     //-------------------------------------------------------------------
     let tObj = null;
-    let label = props.label;
+    let label = props.withLabel?.content;
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation)
-        label = tObj?.label || props.label;
+        label = tObj?.label || props.withLabel?.content;
     }
     //-------------------------------------------------------------------
     // 5. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props);
+    //-------------------------------------------------------------------
+    // 6. Get custom input in the component
+    //-------------------------------------------------------------------
+    const Input = ({ onChange, placeholder, value, isSecure, id, onClick }) => (
+        <input
+            className="qui-date-field-date-picker"
+            onChange={onChange}
+            placeholder={placeholder}
+            value={value}
+            isSecure={isSecure}
+            id={id}
+            onClick={onClick}
+        />
+    );
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -147,7 +174,7 @@ export default function DateField(props) {
         >
             <div className={`qui-date-field-container ${quommonClasses.childClasses}`} >
                 <div className="qui-date-field" style={Color}>
-                    <div className="qui-date-field-label">
+                    <div className="qui-date-field-label qt-sm">
                         {label}
                     </div>
                     <div>
@@ -155,7 +182,8 @@ export default function DateField(props) {
                             onClick={() => handleClickDatepickerIcon()}
                         ></i>
                         <DatePicker
-                            className="qui-date-field-date-picker"
+                            customInput={<Input />}
+                            // className="qui-date-field-date-picker"
                             selected={startDate}
                             onChange={(date) => {
                                 props.onClick(date)

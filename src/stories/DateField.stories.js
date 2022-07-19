@@ -18,10 +18,16 @@ export default {
     title: "Design System/DateField",
     component: DateField,
     argTypes: {
-        label: "",
-        asPadded: {
+        asSize: {
             control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
+            options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asFloated: {
+            control: "select",
+            options: ["left", "right", "none", "inline"],
             table: {
                 category: "as-Flags",
             },
@@ -32,6 +38,15 @@ export default {
                 defaultValue: {
                     backgroundColor: "",
                     accentColor: "",
+                    textColor: "",
+                },
+            },
+        },
+        withLabel: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    content: "",
                     textColor: "",
                 },
             },
@@ -68,6 +83,12 @@ export default {
                 defaultValue: false,
             },
         },
+        isFluid: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
         onClick: {
             table: {
                 category: "Events",
@@ -77,7 +98,10 @@ export default {
     },
     decorators: [
         (story) => (
-            <div>
+            <div style={{
+                width: "100%",
+                // textAlign: "center",
+            }}>
                 {story()}
             </div>
         ),
@@ -95,12 +119,16 @@ export default {
 const Template = (args) => <DateField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    label: "Start Date",
-    asPadded: "normal",
+    asSize: "normal",
+    asFloated: "none",
     withColor: {
         backgroundColor: "#aaaaaa",
         accentColor: "",
         textColor: "#666666",
+    },
+    withLabel: {
+        content: "Start Date",
+        textColor: "",
     },
     withAnimation: {
         animation: "zoom",
@@ -114,6 +142,7 @@ Default.args = {
     },
     isDisabled: false,
     isHidden: false,
+    isFluid: false,
 };
 Default.parameters = {
     docs: {
