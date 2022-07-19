@@ -36,17 +36,10 @@ RewardCard.propTypes = {
     //=======================================
     // Quommon props
     //=======================================
-    /**
-    Use to define component size in increasing order
+    /** 
+    Use to define component padding in increasing order
     */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
+    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
     /**
     Use to set Color in RewardCard component
     */
@@ -107,7 +100,7 @@ RewardCard.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asSize: "normal",
+    asPadded: "normal",
 
     withColor: null,
     withAnimation: null,
@@ -278,7 +271,8 @@ export default function RewardCard(props) {
             <div
                 style={{ color: withColor?.textColor, backgroundColor: withColor?.backgroundColor }}
                 onClick={props.onClick}
-                className={`qui-reward-card-container ${quommonClasses.childClasses}`}>
+                className={`qui-reward-card-container ${quommonClasses.childClasses}`}
+            >
                 {getRewardCard(asEmphasis)}
             </div>
         </motion.div>

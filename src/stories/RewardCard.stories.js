@@ -29,9 +29,9 @@ export default {
             control: "select",
             options: ["default", "soldout", "blank"],
         },
-        asSize: {
+        asPadded: {
             control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            options: ["fitted", "compact", "normal", "relaxed"],
             table: {
                 category: "as-Flags",
             },
@@ -118,7 +118,7 @@ Default.args = {
         total: 1000
     },
     asEmphasis: "default",
-    asSize: "normal",
+    asPadded: "normal",
     withColor: {
         textColor: "",
         accentColor: "#AD2929",
