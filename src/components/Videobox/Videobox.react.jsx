@@ -1,10 +1,8 @@
 // Import npm packages
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 import {
     getQuommons,
-    getAnimation,
 } from "../../common/javascripts/helpers.js";
 import YouTube from "react-youtube";
 import { Player, BigPlayButton } from "video-react";
@@ -195,10 +193,6 @@ export default function Videobox(props) {
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "video-box");
-    //-------------------------------------------------------------------
-    // 2. Get animation of the component
-    //-------------------------------------------------------------------
-    const animate = getAnimation(props);
 
     // ========================= Render Function =================================
     return (

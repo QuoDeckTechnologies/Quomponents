@@ -208,11 +208,11 @@ export default function MobileToolbar(props) {
                                     isActive={item?.isActive}
                                     asEmphasis="text"
                                     asPadded="fitted"
-                                    link={item?.link}
+                                    link={item.link}
                                     withIcon={{ icon: item.icon }}
                                     withLabel={{
-                                        content: tObj ? iconLabel[index]["label"] : item?.label,
-                                        format: item?.format,
+                                        content: tObj ? iconLabel[index]["label"] : item.label,
+                                        format: item.format,
                                     }}
                                     isCircular={true}
                                     onClick={(data) => handleSelect(data)}

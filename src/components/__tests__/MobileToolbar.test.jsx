@@ -54,16 +54,36 @@ describe("MobileToolbar", () => {
 
     hasValid("hidden", args);
     hasValid("disabled", args);
+    const dictionary = JSON.stringify({
+        hi: {
+            mobileToolbar: {
+                title: "संपादन मोड",
+                content: [
+                    { label: "पाठ्यक्रम" },
+                    { label: "नगेट्स" },
+                    { label: "परीक्षण" },
+                    { label: "प्रतियोगिता" },
+                    { label: "संदेश" },
+                ]
+            },
+        },
+    });
     let component;
-
     let handleSelect = jest.fn();
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
             <MobileToolbar
-                lable={"Edit"}
-                content={[]}
-                asEmphasis="editing"
+                title="Edit"
+                content={[{
+                    link: "https://quodeck.com/",
+                    icon: "fa fa-share",
+                    label: "Certificate",
+                    format: "label",
+                    isActive: false
+                }
+                ]}
+                asEmphasis="default"
                 asVariant="primary"
                 withColor={null}
                 withAnimation={null}
@@ -75,39 +95,50 @@ describe("MobileToolbar", () => {
         );
     });
 
-    it("should call handleSelect when click", () => {
+    it("should render correctly when click ArcMenu", () => {
+        component = shallow(<MobileToolbar
+            title="Edit"
+            asEmphasis="editing"
+            onClick={() => { }} />);
+        component.find("ArcMenu").simulate("click");
+        expect(component.exists()).toBe(true);
+    });
+
+    it("shouldrender correctly when call handleSelect when click", () => {
         component = shallow(<MobileToolbar
             content={[
                 {
                     link: "https://quodeck.com/",
                     icon: "fa fa-share",
                     label: "Certificate",
-                    format: "caption",
+                    format: "label",
                     isActive: false,
                 },
             ]}
+            asEmphasis="default"
             onClick={() => { handleSelect }} />);
+        component.find(IconLink).at(0).props().onClick({
+            link: "https://quodeck.com/",
+            icon: "fa fa-share",
+            label: "Certificate",
+            format: "label",
+            isActive: true,
+        });
         component.find(IconLink).simulate("click");
         expect(component.exists()).toBe(true);
     });
-
-    it('should pass conditional true when the slide is selected {true} from the props ', () => {
+    it('should render correctly when pass withtranslation props ', () => {
+        let iconLabel = {
+            label: "Certificate",
+        }
         component.setProps({
-            content:
-                [{
-                    link: "https://www.youtube.com/",
-                    icon: "fa fa-share",
-                    label: "ok",
-                    format: "label",
-                    isActive: true,
-                    props: { 
-                        asVariant: "primary",
-                        asEmphasis: "text"
-                     }
-                }],
-            asEmphasis: "default",
+            withLabel: { content: iconLabel, format: "label" },
+            withTranslation: {
+                lang: "hi",
+                tgt: "mobileToolbar",
+                dictionary: dictionary,
+            },
         })
-        expect(component.find(".qui-iconlink-toolbar").at(0).props().children.props.className).toBe("fa");
         expect(component.exists()).toBe(true);
     });
 });
