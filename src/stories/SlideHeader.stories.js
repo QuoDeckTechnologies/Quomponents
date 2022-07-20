@@ -5,13 +5,13 @@ export default {
   title: "Design System/SlideHeader",
   component: SlideHeader,
   argTypes: {
-    content: {
+    title: "",
+    subtitle: "",
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
       table: {
-        category: "with-Params",
-        defaultValue: {
-          title: "",
-          subTitle: "",
-        },
+        category: "as-Flags",
       },
     },
     asPadded: {
@@ -42,16 +42,6 @@ export default {
           accentColor: "",
           textColor: "",
           backgroundColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
         },
       },
     },
@@ -86,10 +76,9 @@ export default {
 const Template = (args) => <SlideHeader {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    title: "Neque porro quisquam est qui dolorem",
-    subTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-  },
+  title: "Neque porro quisquam est qui dolorem",
+  subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+  asVariant: "primary",
   asFloated: "inline",
   asPadded: "normal",
   asAligned: "center",
@@ -97,11 +86,6 @@ Default.args = {
     accentColor: "#AD2929",
     textColor: "#ffffff",
     backgroundColor: "#ad292980",
-  },
-  withAnimation: {
-    animation: "collapse",
-    duration: 0.5,
-    delay: 0,
   },
   isHidden: false,
 };
@@ -139,30 +123,3 @@ ColoredSlideHeader.parameters = {
     },
   },
 };
-// -------------------------------------------------------------
-// Animated SlideHeader
-// -------------------------------------------------------------
-export const AnimatedSlideHeader = Template.bind({});
-AnimatedSlideHeader.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "slideRight",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedSlideHeader.parameters = {
-  docs: {
-    description: {
-      story:
-        "Use to animate the entry of the SlideHeader with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
-    },
-    source: {
-      code: `<AnimatedSlideHeader {...${JSON.stringify(
-        AnimatedSlideHeader.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-}; 
