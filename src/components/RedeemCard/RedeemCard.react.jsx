@@ -200,9 +200,9 @@ export default function RedeemCard(props) {
                     style={{ color: props.withColor?.textColor, backgroundColor: props.withColor?.backgroundColor }}
                 >
                     {props.name &&
-                        <div className={`qui-redeem-card-name`}>
+                        <h5 className={`qui-redeem-card-name`}>
                             {props.name}
-                        </div>}
+                        </h5>}
                     {backgroundImage &&
                         <div className={`qui-redeem-card-image`} style={{ backgroundImage: `url(${backgroundImage})` }}>
                         </div>}
@@ -219,14 +219,14 @@ export default function RedeemCard(props) {
                             </div>
                         }
                         {props.stock &&
-                            <div className={`qui-redeem-card-stock`}>
+                            <h5 className={`qui-redeem-card-stock`}>
                                 <div>
                                     {props.stock?.left}/{props.stock?.total}
                                 </div>
                                 <div>
                                     {leftText}
                                 </div>
-                            </div>
+                            </h5>
                         }
                     </div>
                     <div className={`qui-redeem-card-description-container`}>
