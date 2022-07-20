@@ -24,25 +24,42 @@ export default {
     title: "Design System/RedeemCard",
     component: RedeemCard,
     argTypes: {
-        content: {
-            name: "",
-            description: "",
-            image: "",
-            cost: "",
-            stock: {},
-            status: false
+        id: "",
+        name: "",
+        description: "",
+        image: "",
+        cost: "",
+        stock: {},
+        status: {
+            control: "select",
+            options: ["Pending", "InProgress", "Completed"]
+        },
+        asPadded: {
+            control: "select",
+            options: ["fitted", "compact", "normal", "relaxed"],
+            table: {
+                category: "as-Flags",
+            },
         },
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    textColor: "",
                     accentColor: "",
-                    buttonTextColor: "",
-                    buttonBackgroundColor: "",
-                    buttonHoverBackgroundColor: "",
-                    buttonHoverTextColor: "",
-                    backgroundColor: "#fff"
+                    textColor: "",
+                    backgroundColor: "#fff",
+                    hoverTextColor: "",
+                    hoverBackgroundColor: "",
+                },
+            },
+        },
+        withAnimation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    animation: "",
+                    duration: 0,
+                    delay: 0,
                 },
             },
         },
@@ -101,32 +118,34 @@ export default {
         docs: { iframeHeight: 570 }
     },
 };
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
 const Template = (args) => <RedeemCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        name: "Yamaha FZ16 Bike",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-        cost: 500,
-        stock: {
-            left: 500,
-            total: 1000
-        },
-        description: "A beast on the road, this motorbike commands respect.",
-        status: "Pending"
+    id: "",
+    name: "Yamaha FZ16 Bike",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
+    cost: 500,
+    stock: {
+        left: 500,
+        total: 1000
     },
+    description: "A beast on the road, this motorbike commands respect.",
+    status: "Pending",
+    asPadded: "normal",
     withColor: {
-        textColor: "",
         accentColor: "#AD2929",
-        buttonTextColor: "",
-        buttonBackgroundColor: "",
-        buttonHoverBackgroundColor: "",
-        buttonHoverTextColor: "",
-        backgroundColor: ""
+        textColor: "#FFFFFF",
+        backgroundColor: "#222A35",
+        hoverTextColor: "",
+        hoverBackgroundColor: "",
+    },
+    withAnimation: {
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
     },
     withTranslation: {
         lang: "en",
@@ -149,25 +168,21 @@ Default.parameters = {
 // -------------------------------------------------------------
 export const ColoredRedeemCard = Template.bind({});
 ColoredRedeemCard.args = {
-    content: {
-        name: "Yamaha FZ16 Bike",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-        cost: 600,
-        stock: {
-            left: 1,
-            total: 1000
-        },
-        description: "A beast on the road, this motorbike commands respect.",
-        status: "Pending"
+    name: "Yamaha FZ16 Bike",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
+    cost: 600,
+    stock: {
+        left: 1,
+        total: 1000
     },
+    description: "A beast on the road, this motorbike commands respect.",
+    status: "Pending",
     withColor: {
-        textColor: "#000",
         accentColor: "#AD2929",
-        buttonTextColor: "",
-        buttonBackgroundColor: "#2C5F2DFF",
-        buttonHoverBackgroundColor: "",
-        buttonHoverTextColor: "",
-        backgroundColor: "#FFE77AFF"
+        textColor: "#000",
+        backgroundColor: "#FFE77AFF",
+        hoverTextColor: "",
+        hoverBackgroundColor: "",
     },
     withTranslation: {
         lang: "en",
@@ -197,25 +212,21 @@ ColoredRedeemCard.parameters = {
 
 export const AllVariantsTemplate = (args) => {
     const baseObj1 = {
-        content: {
-            name: "Yamaha FZ16 Bike",
-            description: "A beast on the road, this motorbike commands respect.",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-            cost: 600,
-            stock: {
-                left: 1,
-                total: 1000
-            },
-            status: "Pending"
+        name: "Yamaha FZ16 Bike",
+        description: "A beast on the road, this motorbike commands respect.",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
+        cost: 600,
+        stock: {
+            left: 1,
+            total: 1000
         },
+        status: "Pending",
         withColor: {
-            textColor: "",
             accentColor: "#AD2929",
-            buttonTextColor: "",
-            buttonBackgroundColor: "#2C5F2DFF",
-            buttonHoverBackgroundColor: "",
-            buttonHoverTextColor: "",
+            textColor: "",
             backgroundColor: "",
+            hoverTextColor: "",
+            hoverBackgroundColor: "",
         },
         withTranslation: {
             lang: "en",
@@ -232,25 +243,21 @@ export const AllVariantsTemplate = (args) => {
         isHidden: false,
     };
     const baseObj2 = {
-        content: {
-            name: "Yamaha FZ16 Bike",
-            description: "A beast on the road, this motorbike commands respect.",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-            cost: 600,
-            stock: {
-                left: 1,
-                total: 1000
-            },
-            status: "InProgress"
+        name: "Yamaha FZ16 Bike",
+        description: "A beast on the road, this motorbike commands respect.",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
+        cost: 600,
+        stock: {
+            left: 1,
+            total: 1000
         },
+        status: "InProgress",
         withColor: {
-            textColor: "",
             accentColor: "#AD2929",
-            buttonTextColor: "",
-            buttonBackgroundColor: "#2C5F2DFF",
-            buttonHoverBackgroundColor: "",
-            buttonHoverTextColor: "",
+            textColor: "",
             backgroundColor: "",
+            hoverTextColor: "",
+            hoverBackgroundColor: "",
         },
         withTranslation: {
             lang: "en",
@@ -267,25 +274,21 @@ export const AllVariantsTemplate = (args) => {
         isHidden: false,
     };
     const baseObj3 = {
-        content: {
-            name: "Yamaha FZ16 Bike",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-            cost: 600,
-            stock: {
-                left: 1,
-                total: 1000
-            },
-            description: "A beast on the road, this motorbike commands respect.",
-            status: "Completed"
+        name: "Yamaha FZ16 Bike",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
+        cost: 600,
+        stock: {
+            left: 1,
+            total: 1000
         },
+        description: "A beast on the road, this motorbike commands respect.",
+        status: "Completed",
         withColor: {
-            textColor: "",
             accentColor: "#AD2929",
-            buttonTextColor: "",
-            buttonBackgroundColor: "#2C5F2DFF",
-            buttonHoverBackgroundColor: "",
-            buttonHoverTextColor: "",
+            textColor: "",
             backgroundColor: "",
+            hoverTextColor: "",
+            hoverBackgroundColor: "",
         },
         withTranslation: {
             lang: "en",
@@ -318,7 +321,6 @@ export const AllVariantsTemplate = (args) => {
         </div>
     );
 };
-
 // -------------------------------------------------------------
 // Translated RedeemCard
 // -------------------------------------------------------------
@@ -340,6 +342,33 @@ TranslatedRedeemCard.parameters = {
         source: {
             code: `<RedeemCard {...${JSON.stringify(
                 TranslatedRedeemCard.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// Animated RedeemCard
+// -------------------------------------------------------------
+export const AnimatedRedeemCard = Template.bind({});
+AnimatedRedeemCard.args = {
+    ...Default.args,
+    withAnimation: {
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+    },
+};
+AnimatedRedeemCard.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to animate the entry of the RedeemCard with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+        },
+        source: {
+            code: `<RedeemCard {...${JSON.stringify(
+                AnimatedRedeemCard.args,
                 null,
                 2
             )}}/>`,
