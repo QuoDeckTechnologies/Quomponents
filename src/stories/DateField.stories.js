@@ -18,6 +18,7 @@ export default {
     title: "Design System/DateField",
     component: DateField,
     argTypes: {
+        label: "",
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -38,15 +39,6 @@ export default {
                 defaultValue: {
                     backgroundColor: "",
                     accentColor: "",
-                    textColor: "",
-                },
-            },
-        },
-        withLabel: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    content: "",
                     textColor: "",
                 },
             },
@@ -89,7 +81,7 @@ export default {
                 defaultValue: false,
             },
         },
-        onClick: {
+        onChange: {
             table: {
                 category: "Events",
                 defaultValue: null,
@@ -100,7 +92,7 @@ export default {
         (story) => (
             <div style={{
                 width: "100%",
-                // textAlign: "center",
+                textAlign: "center",
             }}>
                 {story()}
             </div>
@@ -119,16 +111,13 @@ export default {
 const Template = (args) => <DateField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+    label: "Start Date",
     asSize: "normal",
     asFloated: "none",
     withColor: {
         backgroundColor: "#aaaaaa",
         accentColor: "",
         textColor: "#666666",
-    },
-    withLabel: {
-        content: "Start Date",
-        textColor: "",
     },
     withAnimation: {
         animation: "zoom",

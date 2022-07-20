@@ -14,14 +14,13 @@ import { hasValid } from "./common";
 import DateField from "../DateField/DateField.react";
 
 describe("DateField", () => {
-
     // -------------------------------------
     // Run common tests
     // -------------------------------------
     const args = {
         target: DateField,
         required: {
-            onClick: () => { },
+            onChange: () => { },
         },
         translations: {
             tgt: "dateField",
@@ -43,7 +42,8 @@ describe("DateField", () => {
 
     hasValid("defaults", args);
 
-    hasValid("padding", args);
+    hasValid("sizes", args);
+    hasValid("positions", args);
 
     hasValid("colors", args);
     hasValid("animations", args);
@@ -51,11 +51,12 @@ describe("DateField", () => {
 
     hasValid("hidden", args);
     hasValid("disabled", args);
+    hasValid("fluid", args);
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-    let onClick = jest.fn();
+    let onChange = jest.fn();
     let handleClickDatepickerIcon = jest.fn();
     let preventDefault = jest.fn();
 
@@ -63,22 +64,19 @@ describe("DateField", () => {
         jest.resetAllMocks();
         component = mount(
             <DateField
-                label="Start Date"
-                asPadded="normal"
+                asSize="normal"
+                asFloated="none"
                 withColor={null}
                 withAnimation={null}
                 withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
-                onClick={onClick}
+                isFluid={false}
+                onChange={onChange}
                 handleClickDatepickerIcon={handleClickDatepickerIcon}
                 preventDefault={preventDefault}
             />
         );
-    });
-
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
     });
 
     it("should open Calender card correctly without throwing error", () => {
@@ -99,13 +97,4 @@ describe("DateField", () => {
         component.find('.qui-date-field-date-picker').at(1).props().onKeyDown(e)
         expect(component.exists()).toBe(true);
     });
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            backgroundColor: "#fff",
-            accentColor: "#FF0000",
-            textColor: "#00FFFF",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    })
 });

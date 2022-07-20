@@ -13,6 +13,10 @@ import "./DateField.scss";
 import "../../common/stylesheets/overrule.scss";
 
 DateField.propTypes = {
+    /**
+    Use to define label in DateField component
+    */
+    label: PropTypes.string,
     //=======================================
     // Quommon props
     //=======================================
@@ -38,12 +42,6 @@ DateField.propTypes = {
         backgroundColor: PropTypes.string,
         accentColor: PropTypes.string,
         textColor: PropTypes.string,
-    }),
-    /**
-    Use to add a label to the component
-    */
-    withLabel: PropTypes.shape({
-        content: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -83,12 +81,16 @@ DateField.propTypes = {
     */
     isFluid: PropTypes.bool,
     /**
-    DateField component must have the onClick function passed as props
+    DateField component must have the onChange function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 
 DateField.defaultProps = {
+    //=======================================
+    // Component Specific props
+    //=======================================
+    label: "",
     //=======================================
     // Quommon props
     //=======================================
@@ -96,7 +98,6 @@ DateField.defaultProps = {
     asFloated: "none",
 
     withColor: null,
-    withLabel: null,
     withAnimation: null,
     withTranslation: null,
 
@@ -138,14 +139,14 @@ export default function DateField(props) {
     // 4. Get translation of the component
     //-------------------------------------------------------------------
     let tObj = null;
-    let label = props.withLabel?.content;
+    let label = props.label;
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation)
-        label = tObj?.label || props.withLabel?.content;
+        label = tObj?.label || props.label;
     }
     //-------------------------------------------------------------------
     // 5. Get animation of the component
@@ -154,14 +155,12 @@ export default function DateField(props) {
     //-------------------------------------------------------------------
     // 6. Get custom input in the component
     //-------------------------------------------------------------------
-    const Input = ({ onChange, placeholder, value, isSecure, id, onClick }) => (
+    const Input = ({ onChange, value, onClick }) => (
         <input
             className="qui-date-field-date-picker"
             onChange={onChange}
-            placeholder={placeholder}
+            placeholder={"dd/MM/yyyy hh:mm aaa"}
             value={value}
-            isSecure={isSecure}
-            id={id}
             onClick={onClick}
         />
     );
@@ -183,10 +182,10 @@ export default function DateField(props) {
                         ></i>
                         <DatePicker
                             customInput={<Input />}
-                            // className="qui-date-field-date-picker"
+                            className="qui-date-field-date-picker"
                             selected={startDate}
                             onChange={(date) => {
-                                props.onClick(date)
+                                props.onChange(date)
                                 setStartDate(date)
                             }}
                             onKeyDown={(e) => {
