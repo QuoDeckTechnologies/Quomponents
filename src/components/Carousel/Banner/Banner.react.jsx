@@ -66,10 +66,6 @@ Banner.propTypes = {
         delay: PropTypes.number,
     }),
     /**
-    Use to enable/disable the component
-    */
-    isDisabled: PropTypes.bool,
-    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
@@ -91,7 +87,6 @@ Banner.defaultProps = {
     withColor: null,
     withAnimation: null,
 
-    isDisabled: false,
     isHidden: false
 };
 /**

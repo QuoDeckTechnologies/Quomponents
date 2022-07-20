@@ -43,12 +43,6 @@ export default {
                 defaultValue: false,
             },
         },
-        isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
         onClick: {
             table: {
                 category: "Events",
@@ -110,7 +104,6 @@ Default.args = {
         delay: 0,
     },
     isHidden: false,
-    isDisabled: false,
 };
 Default.parameters = {
     docs: {
