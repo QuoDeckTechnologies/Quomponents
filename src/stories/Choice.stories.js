@@ -3,11 +3,10 @@ import Choice from "../components/Buttons/Choice/Choice.react";
 
 const dictionary = JSON.stringify({
   hi: {
-    options: [{
+    options: {
       text1: "वस्तु 1",
-    }, {
       text2: "वस्तु 2",
-    }]
+    }
   }
 });
 export default {
@@ -21,7 +20,7 @@ export default {
       correct: "",
       text: "Item 2",
     }],
-    isChoice: {
+    textSeparator: {
       table: {
         category: "is-Toggles",
         defaultValue: true,
@@ -41,6 +40,13 @@ export default {
         category: "as-Flags",
       },
     },
+    asPadded: {
+      control: "select",
+      options: ["fitted", "compact", "normal", "relaxed"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     asFloated: {
       control: "select",
       options: ["left", "right", "none", "inline"],
@@ -52,11 +58,11 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          primaryBackgroundColor: "",
-          secondaryBackgroundColor: "",
+          backgroundColor: "",
+          textColor: "",
           accentColor: "",
-          primaryTextColor: "",
-          secondaryTextColor: ""
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -81,6 +87,12 @@ export default {
       },
     },
     isHidden: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
+    isFluid: {
       table: {
         category: "is-Toggles",
         defaultValue: false,
@@ -130,15 +142,17 @@ Default.args = {
     correct: "",
     text: "Item 2",
   }],
+  textSeparator: true,
   asEmphasis: "contained",
   asSize: "normal",
   asFloated: "inline",
+  asPadded: "normal",
   withColor: {
-    primaryBackgroundColor: "",
-    secondaryBackgroundColor: "",
-    accentColor: "",
-    primaryTextColor: "",
-    secondaryTextColor: ""
+    backgroundColor: "#FFBF00",
+    textColor: "#ffffff",
+    accentColor: "#333333",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -151,7 +165,7 @@ Default.args = {
     dictionary: dictionary,
   },
   isDisabled: false,
-  isChoice: true,
+  isFluid: true,
   isHidden: false,
 };
 Default.parameters = {
@@ -170,6 +184,7 @@ Default.parameters = {
 export const TranslatedChoice = Template.bind({});
 TranslatedChoice.args = {
   ...Default.args,
+  textSeparator: true,
   withTranslation: {
     lang: "hi",
     tgt: "options",
@@ -184,6 +199,25 @@ TranslatedChoice.parameters = {
     },
     source: {
       code: `<Choice {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Without Text Separator
+// -------------------------------------------------------------
+export const withoutTextSeparator = Template.bind({});
+withoutTextSeparator.args = {
+  ...Default.args,
+  textSeparator: false,
+};
+withoutTextSeparator.parameters = {
+  docs: {
+    description: {
+      story:
+        "can remove the textSeparator from the component",
+    },
+    source: {
+      code: `<Choice {...${JSON.stringify(withoutTextSeparator.args, null, 2)}}/>`,
     },
   },
 };
