@@ -5,13 +5,20 @@ export default {
     title: "Design System/StatisticsCard",
     component: StatisticsCard,
     argTypes: {
-        label: "",
-        icon: "",
         value: "",
-        isCircular: {
+
+        asVariant: {
+            control: "select",
+            options: ["primary", "secondary", "success", "warning", "error"],
             table: {
-                category: "is-Toggles",
-                defaultValue: false,
+                category: "as-Flags",
+            },
+        },
+        asPadded: {
+            control: "select",
+            options: ["fitted", "compact", "normal", "relaxed"],
+            table: {
+                category: "as-Flags",
             },
         },
         asFloated: {
@@ -21,6 +28,14 @@ export default {
                 category: "as-Flags",
             },
         },
+        asAligned: {
+            control: "select",
+            options: ["left", "right", "center"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+
         withColor: {
             table: {
                 category: "with-Params",
@@ -31,14 +46,31 @@ export default {
                 },
             },
         },
-        withAnimation: {
+        withIcon: {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
+                    icon: "",
+                    size: "",
+                    position: "left",
                 },
+            },
+        },
+        withLabel: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    format: "label",
+                    content: "",
+                    textColor: "",
+                },
+            },
+        },
+
+        isCircular: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
             },
         },
         isHidden: {
@@ -74,21 +106,26 @@ const Template = (args) => (
 );
 export const Default = Template.bind({});
 Default.args = {
-    label: "PLAYERS",
-    icon: "fas fa-users",
     value: "20,539",
-    isCircular: true,
-    asFloated: "inline",
+
+    asVariant: "primary",
+    asFloated: "none",
+    asPadded: "fitted",
+    asAligned: "center",
+
+    withLabel: {
+        format: "caption",
+        content: "PLAYERS",
+        textColor: "#000000",
+    },
+    withIcon: { icon: "fas fa-users", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
         accentColor: "",
         textColor: "",
     },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
+    
+    isCircular: true,
     isHidden: false,
 };
 Default.parameters = {
@@ -117,22 +154,4 @@ ColoredStatisticsCard.parameters = {
         },
     },
 };
-// -------------------------------------------------------------
-// Animated StatisticsCard
-// -------------------------------------------------------------
-export const AnimatedStatisticsCard = Template.bind({});
-AnimatedStatisticsCard.args = {
-    ...Default.args,
-    withAnimation: {
-        animation: "fade",
-        duration: 0.5,
-        delay: 0,
-    },
-};
-AnimatedStatisticsCard.parameters = {
-    docs: {
-        source: {
-            code: `<StatisticsCard {...${JSON.stringify(AnimatedStatisticsCard.args, null, 2)}}/>`,
-        },
-    },
-};
+

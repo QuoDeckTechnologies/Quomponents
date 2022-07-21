@@ -1,8 +1,7 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
-import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
+import { getQuommons } from "../../common/javascripts/helpers";
 import Segment from "../Segment/Segment.react"
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -16,8 +15,6 @@ StatisticsCard.propTypes = {
     /**
     Use to below fields to decide StatisticsCard's properties
     */
-    label: PropTypes.string,
-    icon: PropTypes.string,
     value: PropTypes.string,
     /**
     Use for rounded corners
@@ -27,9 +24,27 @@ StatisticsCard.propTypes = {
     // Quommon props
     //=======================================
     /**
+    Use to define standard component type
+    */
+    asVariant: PropTypes.oneOf([
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "error",
+    ]),
+    /** 
+    Use to define component padding in increasing order
+    */
+    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+    /**
+    Use to align content within the component container
+    */
+    asAligned: PropTypes.oneOf(["left", "right", "center"]),
     /**
     Use to override component colors and behavior
     */
@@ -39,21 +54,20 @@ StatisticsCard.propTypes = {
         textColor: PropTypes.string,
     }),
     /**
-    Use to define the entry animation of the component
+    Use to add an icon to the component
     */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-            "",
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
+    withIcon: PropTypes.shape({
+        icon: PropTypes.string,
+        size: PropTypes.string,
+        position: PropTypes.oneOf(["left", "right"]),
+    }),
+    /**
+    Use to add a heading label, a footer caption or a title popover to the component
+    */
+    withLabel: PropTypes.shape({
+        format: PropTypes.oneOf(["label", "caption", "popover"]),
+        content: PropTypes.string,
+        textColor: PropTypes.string,
     }),
     /**
     Use to show/hide the component
@@ -65,14 +79,20 @@ StatisticsCard.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    //   content: <></>,
+    value: null,
     isCircular: true,
     //=======================================
     // Quommon props
     //=======================================
+    asVariant: "primary",
+    asPadded: "normal",
     asFloated: "none",
+    asAligned: "center",
+
+    withIcon: null,
+    withLabel: null,
     withColor: null,
-    withAnimation: null,
+
     isHidden: false,
 };
 function getColors(colors) {
@@ -105,40 +125,33 @@ export default function StatisticsCard(props) {
     // 2. Set the component colors
     //-------------------------------------------------------------------
     let colors = props.withColor ? getColors(props.withColor) : {};
-    //-------------------------------------------------------------------
-    // 3. Get animation of the component
-    //-------------------------------------------------------------------
-    const animate = getAnimation(props);
 
     // ========================= Render Function =================================
 
     return (
-        <motion.div
-            initial={animate.from}
-            animate={animate.to}
+        <div
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <Segment {...props} className={`${quommonClasses.childClasses}`} style={colors?.backgroundColors}
             >
                 <>
-                    <i className={`qui-statistics-card-icon ${props.icon}`}
+                    {props.withIcon?.icon && <i className={`qui-icon qui-statistics-card-icon ${props.withIcon?.icon}`}
                         style={colors?.accentColors}>
-                    </i>
+                    </i>}
                     <div className="qui-statistics-card-valuetooltip">
                         <h4 className={"qui-statistics-card-value"} style={colors?.textColors}>
                             {props.value}
                         </h4>
                         <span className="qui-statistics-card-tooltipvalue">{props.value}</span>
                     </div>
-
                     <div className="qui-statistics-card-labeltooltip">
-                        <h6 className={"qui-statistics-card-label"} style={colors?.textColors}>
-                            {props.label}
-                        </h6>
-                        <span className="qui-statistics-card-tooltiplabel">{props.label}</span>
+                        {props.withLabel && <h6 className={"qui-statistics-card-label"} style={colors?.textColors}>
+                            {props.withLabel?.content}
+                        </h6>}
+                        <span className="qui-statistics-card-tooltiplabel qui-label qui-caption">{props.withLabel?.content}</span>
                     </div>
                 </>
             </Segment>
-        </motion.div>
+        </div>
     );
 }

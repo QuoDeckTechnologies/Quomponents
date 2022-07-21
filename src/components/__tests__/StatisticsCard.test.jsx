@@ -25,10 +25,14 @@ describe("StatisticsCard", () => {
 
     hasValid("defaults", args);
 
+    hasValid("variants", args);
     hasValid("positions", args);
+    hasValid("padding", args);
+    hasValid("alignment", args);
 
     hasValid("colors", args);
-    hasValid("animations", args);
+    hasValid("labels", args);
+    hasValid("icons", args);
 
     hasValid("hidden", args);
     // -------------------------------------
@@ -41,30 +45,15 @@ describe("StatisticsCard", () => {
         jest.resetAllMocks();
         component = shallow(
             <StatisticsCard
-                label="play"
-                icon="fa fa-home"
                 value="2222"
                 isCircular={false}
                 asFloated="none"
                 withColor={null}
-                withAnimation={null}
+                withIcon={null}
+                withLabel={null}
                 isHidden={false}
             ></StatisticsCard>
         );
-    });
-
-    it("should render correctly when passed isCircular props is true", () => {
-        component.setProps({
-            isCircular: true,
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isCircular props is false", () => {
-        component.setProps({
-            isCircular: false,
-        });
-        expect(component.exists()).toBe(true);
     });
 });
 
