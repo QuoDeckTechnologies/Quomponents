@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import ArcMenu from "../components/ArcMenu/ArcMenu.react";
 import Backdrop from "@mui/material/Backdrop";
+import ActionMenu from "../components/ActionMenu/ActionMenu.react";
+import NuggetBlock from "../components/NuggetBlock/NuggetBlock.react";
+import _ from "lodash";
 
 import Nugget_Story from "../assets/nuggets/nugget_story.png";
 import Nugget_Quiz from "../assets/nuggets/nugget_quiz.png";
@@ -9,80 +12,49 @@ import Nugget_Game from "../assets/nuggets/nugget_game.png";
 import Nugget_Article from "../assets/nuggets/nugget_article.png";
 import Nugget_Feedback from "../assets/nuggets/nugget_feedback.png";
 
-const dictionary = JSON.stringify({
-  hi: {
-    arcMenu: {
-      menuContent: [
-        {
-          header: "सीखें",
-          list: [
-            { title: "अपलोड scorm", func: () => {} },
-            { title: "अपलोड pdf", func: () => {} },
-            { title: "वीडियो लिंक जोड़ें", func: () => {} },
-            { title: "qdf डेक बनाएं", func: () => {} },
-          ],
-        },
-        {
-          header: "मूल्यांकन",
-          list: [
-            { title: "सर्वेक्षण बनाएं", func: () => {} },
-            { title: "प्रश्नोत्तरी बनाएँ", func: () => {} },
-            { title: "एक खेल जोड़ें", func: () => {} },
-          ],
-        },
-        {
-          header: "पुरस्कृत",
-          list: [
-            { title: "प्रमाण पत्र दो", func: () => {} },
-            { title: "एक बैज दें", func: () => {} },
-            { title: "इनाम दो", func: () => {} },
-          ],
-        },
-      ],
-    },
-  },
-});
-
 export default {
   title: "Design System/ArcMenu",
   component: ArcMenu,
   argTypes: {
-    menuContent: [],
-    nuggetContent: [],
-    menuType: {
-      control: "select",
-      options: ["close", "menu", "add", "nugget-menu"],
-    },
-    arcIcon: {
-      control: "select",
-      options: ["close", "menu", "add"],
-    },
-    position: {
+    menuPosition: {
       control: "select",
       options: ["top-right", "top-left", "bottom-right", "bottom-left"],
+    },
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+    withIcon: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          icon: "",
+          size: "",
+        },
+      },
     },
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
-          iconColor: "",
-          arcColor: "",
-          menuBackgroundColor: "",
           textColor: "",
-          headingTextColor: "",
-          accentColorPrimary: "",
-          accecntColorSecondary: "",
+          accentColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
-    withTranslation: {
+    withAnimation: {
       table: {
         category: "with-Params",
         defaultValue: {
-          lang: "",
-          tgt: "",
-          dictionary: "",
+          animation: "",
+          duration: 0,
+          delay: 0,
         },
       },
     },
@@ -118,75 +90,171 @@ export default {
 // Default
 // -------------------------------------------------------------
 const Template = (args) => {
-  return <ArcMenu {...args} />;
+  return (
+    <ArcMenu {...args}>
+      <div style={{ display: "flex", gap: "1em" }}>
+        <div style={{ width: "12em", textAlign: "center" }}>
+          <p style={{ display: "inline-block" }}>Heading 1</p>
+          <ActionMenu
+            content={[
+              {
+                title: "Open Deck",
+                icon: "fas fa-book-open",
+                popover: "Open Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Edit Deck",
+                icon: "fas fa-edit",
+                popover: "Edit Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Move Deck Up",
+                icon: "fas fa-chevron-up",
+                popover: "Move Deck Up...",
+                onClick: () => {},
+              },
+              {
+                title: "Move Deck Down",
+                icon: "fas fa-chevron-down",
+                popover: "Move Deck Down...",
+                onClick: () => {},
+              },
+              {
+                title: "Move to Topic",
+                icon: "fas fa-retweet",
+                popover: "Move to Topic...",
+                onClick: () => {},
+              },
+              {
+                title: "Unpublish Deck",
+                icon: "fas fa-eye-slash",
+                popover: "Unpublish Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Delete Deck",
+                icon: "fas fa-trash-alt",
+                popover: "Delete Deck...",
+                onClick: () => {},
+              },
+            ]}
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              backgroundColor: "#fff",
+              textColor: "",
+              accentColor: "",
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isHidden={false}
+          />
+        </div>
+        <div style={{ width: "12em", textAlign: "center" }}>
+          <p style={{ display: "inline-block" }}>Heading 2</p>
+          <ActionMenu
+            content={[
+              {
+                title: "Open Deck",
+                icon: "fas fa-book-open",
+                popover: "Open Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Edit Deck",
+                icon: "fas fa-edit",
+                popover: "Edit Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Move Deck Up",
+                icon: "fas fa-chevron-up",
+                popover: "Move Deck Up...",
+                onClick: () => {},
+              },
+              {
+                title: "Delete Deck",
+                icon: "fas fa-trash-alt",
+                popover: "Delete Deck...",
+                onClick: () => {},
+              },
+            ]}
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              backgroundColor: "#fff",
+              textColor: "",
+              accentColor: "",
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isHidden={false}
+          />
+        </div>
+        <div style={{ width: "12em", textAlign: "center" }}>
+          <p style={{ display: "inline-block" }}>Heading 3</p>
+          <ActionMenu
+            content={[
+              {
+                title: "Unpublish Deck",
+                icon: "fas fa-eye-slash",
+                popover: "Unpublish Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Delete Deck",
+                icon: "fas fa-trash-alt",
+                popover: "Delete Deck...",
+                onClick: () => {},
+              },
+            ]}
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              backgroundColor: "#fff",
+              textColor: "",
+              accentColor: "",
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isHidden={false}
+          />
+        </div>
+      </div>
+    </ArcMenu>
+  );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  menuContent: [
-    {
-      header: "learning",
-      list: [
-        { title: "upload scorm", func: () => {} },
-        { title: "upload pdf", func: () => {} },
-        { title: "add video link", func: () => {} },
-        {
-          title: "create qdf deck",
-          func: () => {},
-        },
-      ],
-    },
-    {
-      header: "evaluating",
-      list: [
-        {
-          title: "create survey",
-          func: () => {},
-        },
-        {
-          title: "create quiz",
-          func: () => {},
-        },
-        {
-          title: "add a game",
-          func: () => {},
-        },
-      ],
-    },
-    {
-      header: "rewarding",
-      list: [
-        { title: "give a certificate", func: () => {} },
-        { title: "give a badge", func: () => {} },
-        { title: "give a reward", func: () => {} },
-      ],
-    },
-  ],
-  nuggetContent: [
-    { name: "nugget story", image: Nugget_Story, func: () => {} },
-    { name: "nugget quiz", image: Nugget_Quiz, func: () => {} },
-    { name: "nugget assessment", image: Nugget_Assessment, func: () => {} },
-    { name: "nugget game", image: Nugget_Game, func: () => {} },
-    { name: "nugget article", image: Nugget_Article, func: () => {} },
-    { name: "nugget feedback", image: Nugget_Feedback, func: () => {} },
-  ],
-  menuType: "close",
-  arcIcon: "close",
-  position: "top-right",
+  menuPosition: "top-right",
+  asVariant: "primary",
+  withIcon: {
+    icon: "fas fa-outdent",
+    size: "1.5em",
+  },
   withColor: {
     backgroundColor: "",
-    iconColor: "",
-    arcColor: "",
-    menuBackgroundColor: "",
     textColor: "",
-    headingTextColor: "",
-    accentColorPrimary: "",
-    accecntColorSecondary: "",
+    accentColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
-  withTranslation: {
-    lang: "en",
-    tgt: "arcMenu",
-    dictionary: dictionary,
+  withAnimation: {
+    animation: "fade",
+    duration: 0.5,
+    delay: 0,
   },
   isDisabled: false,
   isHidden: false,
@@ -201,21 +269,43 @@ Default.parameters = {
 // -------------------------------------------------------------
 // Nugget Menu button
 // -------------------------------------------------------------
-export const NuggetMenuButton = Template.bind({});
+const NuggetTemplate = (args) => {
+  const nuggetContent = [
+    { image: Nugget_Story, func: () => {} },
+    { image: Nugget_Quiz, func: () => {} },
+    { image: Nugget_Assessment, func: () => {} },
+    { image: Nugget_Game, func: () => {} },
+    { image: Nugget_Article, func: () => {} },
+    { image: Nugget_Feedback, func: () => {} },
+    { image: Nugget_Quiz, func: () => {} },
+    { image: Nugget_Assessment, func: () => {} },
+  ];
+  return (
+    <ArcMenu {...args}>
+      <div style={{ display: "grid", gridTemplateColumns: "auto auto auto" }}>
+        {_.map(nuggetContent, (dataObj, i) => {
+          return (
+            <div key={i}>
+              <NuggetBlock
+                image={dataObj?.image}
+                status="none"
+                asSize="huge"
+                asPadded="fitted"
+                onClick={() => {
+                  dataObj.func();
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
+    </ArcMenu>
+  );
+};
+export const NuggetMenuButton = NuggetTemplate.bind({});
 NuggetMenuButton.args = {
   ...Default.args,
-  nuggetContent: [
-    { name: "nugget story", image: Nugget_Story, func: () => {} },
-    { name: "nugget quiz", image: Nugget_Quiz, func: () => {} },
-    { name: "nugget assessment", image: Nugget_Assessment, func: () => {} },
-    { name: "nugget game", image: Nugget_Game, func: () => {} },
-    { name: "nugget article", image: Nugget_Article, func: () => {} },
-    { name: "nugget feedback", image: Nugget_Feedback, func: () => {} },
-  ],
-  menuContent: [],
-  menuType: "nugget-menu",
-  arcIcon: "menu",
-  position: "bottom-left",
+  menuPosition: "bottom-left",
 };
 NuggetMenuButton.parameters = {
   docs: {
@@ -228,76 +318,206 @@ NuggetMenuButton.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Menu button
-// -------------------------------------------------------------
-export const MenuButton = Template.bind({});
-MenuButton.args = {
-  ...Default.args,
-  menuContent: [
-    {
-      header: "learning",
-      list: [
-        { title: "upload scorm", func: () => {} },
-        { title: "upload pdf", func: () => {} },
-        { title: "add video link", func: () => {} },
-        {
-          title: "create qdf deck",
-          func: () => {},
-        },
-      ],
-    },
-    {
-      header: "evaluating",
-      list: [
-        {
-          title: "create survey",
-          func: () => {},
-        },
-        {
-          title: "create quiz",
-          func: () => {},
-        },
-        {
-          title: "add a game",
-          func: () => {},
-        },
-      ],
-    },
-    {
-      header: "rewarding",
-      list: [
-        { title: "give a certificate", func: () => {} },
-        { title: "give a badge", func: () => {} },
-        { title: "give a reward", func: () => {} },
-      ],
-    },
-  ],
-  nuggetContent: [],
-  menuType: "menu",
-  arcIcon: "menu",
-  position: "bottom-left",
-};
-MenuButton.parameters = {
-  docs: {
-    description: {
-      story: "Displays ArcMenu used as menu",
-    },
-    source: {
-      code: `<ArcMenu {...${JSON.stringify(MenuButton.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
 // Translated Menu button
 // -------------------------------------------------------------
-export const TranslatedMenuButton = Template.bind({});
+const TranslatedTemplate = (args) => {
+  const dictionary1 = JSON.stringify({
+    hi: {
+      actionMenu: {
+        content: [
+          { title: "डेक खोलो" },
+          { title: "डेक संपादित करें" },
+          { title: "डेक ऊपर ले जाएँ" },
+          { title: "डेक नीचे ले जाएँ" },
+          { title: "विषय पर जाएं" },
+          { title: "डेक को अप्रकाशित करें" },
+          { title: "डेक हटाएं" },
+        ],
+      },
+    },
+  });
+  const dictionary2 = JSON.stringify({
+    hi: {
+      actionMenu: {
+        content: [
+          { title: "डेक खोलो" },
+          { title: "डेक संपादित करें" },
+          { title: "डेक ऊपर ले जाएँ" },
+          { title: "डेक नीचे ले जाएँ" },
+        ],
+      },
+    },
+  });
+  const dictionary3 = JSON.stringify({
+    hi: {
+      actionMenu: {
+        content: [{ title: "डेक को अप्रकाशित करें" }, { title: "डेक हटाएं" }],
+      },
+    },
+  });
+  return (
+    <ArcMenu {...args}>
+      <div style={{ display: "flex", gap: "1em" }}>
+        <div style={{ width: "12em", textAlign: "center" }}>
+          <p style={{ display: "inline-block" }}>Heading 1</p>
+          <ActionMenu
+            content={[
+              {
+                title: "Open Deck",
+                icon: "fas fa-book-open",
+                popover: "Open Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Edit Deck",
+                icon: "fas fa-edit",
+                popover: "Edit Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Move Deck Up",
+                icon: "fas fa-chevron-up",
+                popover: "Move Deck Up...",
+                onClick: () => {},
+              },
+              {
+                title: "Move Deck Down",
+                icon: "fas fa-chevron-down",
+                popover: "Move Deck Down...",
+                onClick: () => {},
+              },
+              {
+                title: "Move to Topic",
+                icon: "fas fa-retweet",
+                popover: "Move to Topic...",
+                onClick: () => {},
+              },
+              {
+                title: "Unpublish Deck",
+                icon: "fas fa-eye-slash",
+                popover: "Unpublish Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Delete Deck",
+                icon: "fas fa-trash-alt",
+                popover: "Delete Deck...",
+                onClick: () => {},
+              },
+            ]}
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              backgroundColor: "#fff",
+              textColor: "",
+              accentColor: "",
+            }}
+            withTranslation={{
+              lang: "hi",
+              tgt: "actionMenu",
+              dictionary: dictionary1,
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isHidden={false}
+          />
+        </div>
+        <div style={{ width: "12em", textAlign: "center" }}>
+          <p style={{ display: "inline-block" }}>Heading 2</p>
+          <ActionMenu
+            content={[
+              {
+                title: "Open Deck",
+                icon: "fas fa-book-open",
+                popover: "Open Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Edit Deck",
+                icon: "fas fa-edit",
+                popover: "Edit Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Move Deck Up",
+                icon: "fas fa-chevron-up",
+                popover: "Move Deck Up...",
+                onClick: () => {},
+              },
+              {
+                title: "Delete Deck",
+                icon: "fas fa-trash-alt",
+                popover: "Delete Deck...",
+                onClick: () => {},
+              },
+            ]}
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              backgroundColor: "#fff",
+              textColor: "",
+              accentColor: "",
+            }}
+            withTranslation={{
+              lang: "hi",
+              tgt: "actionMenu",
+              dictionary: dictionary2,
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isHidden={false}
+          />
+        </div>
+        <div style={{ width: "12em", textAlign: "center" }}>
+          <p style={{ display: "inline-block" }}>Heading 3</p>
+          <ActionMenu
+            content={[
+              {
+                title: "Unpublish Deck",
+                icon: "fas fa-eye-slash",
+                popover: "Unpublish Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Delete Deck",
+                icon: "fas fa-trash-alt",
+                popover: "Delete Deck...",
+                onClick: () => {},
+              },
+            ]}
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              backgroundColor: "#fff",
+              textColor: "",
+              accentColor: "",
+            }}
+            withTranslation={{
+              lang: "hi",
+              tgt: "actionMenu",
+              dictionary: dictionary3,
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isHidden={false}
+          />
+        </div>
+      </div>
+    </ArcMenu>
+  );
+};
+export const TranslatedMenuButton = TranslatedTemplate.bind({});
 TranslatedMenuButton.args = {
-  ...MenuButton.args,
-  withTranslation: {
-    lang: "hi",
-    tgt: "arcMenu",
-    dictionary: dictionary,
-  },
+  ...Default.args,
 };
 TranslatedMenuButton.parameters = {
   docs: {
@@ -316,12 +536,15 @@ TranslatedMenuButton.parameters = {
 // -------------------------------------------------------------
 // Add button
 // -------------------------------------------------------------
-export const AddButton = Template.bind({});
+const AddButtonTemplate = (args) => <ArcMenu {...args} />;
+export const AddButton = AddButtonTemplate.bind({});
 AddButton.args = {
   ...Default.args,
-  menuType: "add",
-  arcIcon: "add",
-  position: "bottom-left",
+  menuPosition: "bottom-left",
+  withIcon: {
+    icon: "fas fa-plus",
+    size: "2em",
+  },
 };
 AddButton.parameters = {
   docs: {
@@ -378,7 +601,7 @@ const ExampleTemplate = (args) => {
           >
             Heading
           </div>
-          <a href="http://localhost:6006/?path=/story/design-system-accentline-accentline--default">
+          <a href="http://localhost:6006/?path=/story/design-system-accentline--default">
             <div
               className="qui-test-component-element"
               style={{
@@ -430,18 +653,16 @@ const ExampleTemplate = (args) => {
         >
           <h1>Testing Second Modal</h1>
           <ArcMenu
-            menuType="close"
-            arcIcon="close"
-            position="top-right"
+            menuPosition="top-right"
+            withIcon={{ icon: "fas fa-times", size: "2em" }}
             onClick={() => setOpenModalTwo(false)}
           />
           <button onClick={(e) => args.onClick(e)}>Click</button>
         </div>
       )}
       <ArcMenu
-        menuType="add"
-        arcIcon="add"
-        position="bottom-left"
+        menuPosition="bottom-left"
+        withIcon={{ icon: "fas fa-bars", size: "2em" }}
         onClick={() => setOpenModalOne(true)}
       />
     </div>
@@ -456,164 +677,6 @@ AddCloseButtonUseCase.parameters = {
     source: {
       code: `<ArcMenu {...${JSON.stringify(
         AddCloseButtonUseCase.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-//  Menu Button Use Case
-// -------------------------------------------------------------
-const ExampleTemplateMenu = (args) => {
-  const [openModalOne, setOpenModalOne] = useState(false);
-  const menuHandler = (value) => {
-    /* useHistory or useNavigate can be used here to redirect within the application */
-    if (value === "google") {
-      window.location.href =
-        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
-    }
-    if (value === "youtube") {
-      window.location.href =
-        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
-    }
-    if (value === "github") {
-      window.location.href =
-        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
-    }
-    if (value === "modal") {
-      setOpenModalOne(true);
-    }
-  };
-  return (
-    <div
-      className="qui" /*parent must have a qui class for arcmenu*/
-      style={{
-        height: "90vh",
-        border: "0.1em solid black",
-        borderRadius: "1em",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Backdrop
-        open={openModalOne}
-        sx={{ zIndex: 10 }}
-        onClick={() => setOpenModalOne(false)}
-      />
-      {openModalOne && (
-        <div
-          className="qui qui-second-imported-component"
-          style={{
-            position: "absolute",
-            zIndex: 22,
-            background: "white",
-            padding: "5em",
-          }}
-        >
-          <h1>Testing Second Modal</h1>
-          <ArcMenu
-            menuType="close"
-            arcIcon="close"
-            position="top-right"
-            onClick={() => setOpenModalOne(false)}
-          />
-          <button onClick={(e) => args.onClick(e)}>Click</button>
-        </div>
-      )}
-      <ArcMenu
-        menuContent={[
-          {
-            header: "learning",
-            list: [
-              { title: "upload scorm", func: () => {} },
-              { title: "upload pdf", func: () => {} },
-              { title: "add video link", func: () => {} },
-              {
-                title: "create qdf deck",
-                func: () => {},
-              },
-            ],
-          },
-        ]}
-        menuType="menu"
-        arcIcon="menu"
-        position="bottom-left"
-        onClick={(value) => menuHandler(value)}
-      />
-    </div>
-  );
-};
-export const MenuUseCase = ExampleTemplateMenu.bind({});
-MenuUseCase.parameters = {
-  docs: {
-    description: {
-      story: "Displays a use case where ArcMenu is used as menu button",
-    },
-    source: {
-      code: `<ArcMenu {...${JSON.stringify(MenuUseCase.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-//  Nugget Button Use Case
-// -------------------------------------------------------------
-const ExampleTemplateNugget = (args) => {
-  const menuHandler = (value) => {
-    /* useHistory or useNavigate can be used here to redirect within the application */
-    if (value === "nugget story") {
-      window.location.href =
-        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
-    }
-    if (value === "nugget quiz") {
-      window.location.href =
-        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
-    }
-    if (value === "nugget assessment") {
-      window.location.href =
-        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
-    }
-  };
-  return (
-    <div
-      className="qui" /*parent must have a qui class for arcmenu*/
-      style={{
-        height: "90vh",
-        border: "0.1em solid black",
-        borderRadius: "1em",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <ArcMenu
-        nuggetContent={[
-          { name: "nugget story", image: Nugget_Story, func: () => {} },
-          { name: "nugget quiz", image: Nugget_Quiz, func: () => {} },
-          {
-            name: "nugget assessment",
-            image: Nugget_Assessment,
-            func: () => {},
-          },
-        ]}
-        menuType="nugget-menu"
-        arcIcon="menu"
-        position="bottom-left"
-        onClick={(value) => menuHandler(value)}
-      />
-    </div>
-  );
-};
-export const NuggetMenuUseCase = ExampleTemplateNugget.bind({});
-NuggetMenuUseCase.parameters = {
-  docs: {
-    description: {
-      story: "Displays a use case where ArcMenu is used as nuggetMenu",
-    },
-    source: {
-      code: `<ArcMenu {...${JSON.stringify(
-        NuggetMenuUseCase.args,
         null,
         2
       )}}/>`,

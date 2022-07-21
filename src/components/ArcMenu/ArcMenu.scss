@@ -37,8 +37,8 @@
   border-top-right-radius: 100%;
   border-top: 1px solid #000000;
   border-right: 1px solid #000000;
-  bottom: -1em;
-  left: -1em;
+  bottom: 0em;
+  left: 0em;
 }
 
 .qui .qui-arc .qui-arc-menu-button {
@@ -47,8 +47,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #666666;
-  color: #ffbf00;
   .qui-arc-icon {
     font-size: 1.5em;
   }
@@ -62,7 +60,6 @@
   justify-content: center;
   flex-direction: column;
   border-radius: 50%;
-  background-color: #9b8442;
 }
 
 .qui .qui-arc .qui-arc-menu-button {
@@ -111,12 +108,12 @@
 
 .qui .qui-arc.qui-top-right .qui-arc-menu-buttons,
 .qui .qui-arc.qui-bottom-right .qui-arc-menu-buttons {
-  right: 0%;
+  right: 50%;
 }
 
 .qui .qui-arc.qui-top-left .qui-arc-menu-buttons,
 .qui .qui-arc.qui-bottom-left .qui-arc-menu-buttons {
-  left: 0%;
+  left: 50%;
 }
 
 .qui .qui-menu-button.qui-arc-menu-nugget-menu {
@@ -148,11 +145,7 @@
 
 .qui .qui-arc .qui-arc-menu-button.qui-arc-menu-close-button {
   cursor: pointer;
-  background-color: #f5f5f5;
   border: none;
-  i {
-    color: #ffbf00;
-  }
   .qui-arc-close-icon {
     font-size: 2.5em;
   }
@@ -166,7 +159,6 @@
 .qui .qui-arc-icon-fragment-left {
   height: 1em;
   width: 1em;
-  background-color: #ffbf00;
   border-radius: 50%;
   margin: 0.1em;
 }
@@ -174,7 +166,6 @@
 .qui .qui-arc-icon-fragment-right {
   height: 1em;
   width: 1em;
-  background-color: #9b8442;
   border-radius: 50%;
   margin: 0.1em;
 }
