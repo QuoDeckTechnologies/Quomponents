@@ -29,10 +29,11 @@
   padding-left: 0.2em;
   text-align: left;
   color: #ed6e6e;
-  overflow: hidden;
-  text-overflow: ellipsis;
   .qui-reward-points {
     margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 10em;
   }
 }
 

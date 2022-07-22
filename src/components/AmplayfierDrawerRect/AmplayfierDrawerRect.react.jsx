@@ -110,10 +110,10 @@ export default function AmplayfierDrawerRect(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
-      style={{ backgroundColor: withColor?.backgroundColor }}
     >
       <div
         className={`qui-amplayfier-drawer-rect-container qui-btn ${quommonClasses.childClasses}`}
+        style={{ backgroundColor: withColor?.backgroundColor }}
       >
         {children}
       </div>
