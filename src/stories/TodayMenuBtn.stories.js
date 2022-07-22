@@ -6,6 +6,20 @@ export default {
     component: TodayMenuBtn,
     argTypes: {
         content: "",
+        asVariant: {
+            control: "select",
+            options: ["primary", "secondary", "success", "warning", "error"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asPadded: {
+            control: "select",
+            options: ["fitted", "compact", "normal", "relaxed"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
@@ -19,7 +33,7 @@ export default {
                 defaultValue: {
                     backgroundColor: "",
                     textColor: "",
-                    iconColor: ""
+                    accentColor: ""
                 },
             },
         },
@@ -27,22 +41,13 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    name: "",
+                    icon: "",
                     size: "",
                     position: ""
                 },
             },
         },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
-                },
-            },
-        },
+
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -67,7 +72,7 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "center",
+                    textAlign: "",
                     fontSize: "1.25em",
                 }}
             >
@@ -91,21 +96,18 @@ const Template = (args) => <TodayMenuBtn {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     content: "Learn",
-    asFloated: "none",
+    asVariant: "secondary",
+    asFloated: "inline",
+    asPadded: "normal",
     withColor: {
         backgroundColor: "",
-        textColor: "",
-        iconColor: ""
+        textColor: "#ffffff",
+        accentColor: "#ffffff"
     },
     withIcon: {
-        name: "fas fa-book",
+        icon: "fas fa-book",
         size: "1em",
         position: "left"
-    },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
     },
     isDisabled: false,
     isHidden: false,
@@ -128,14 +130,9 @@ CompleteTodayMenuBtn.args = {
     withColor: {
         backgroundColor: "#C1DC9E",
         textColor: "#454545",
-        iconColor: "#52AF50"
+        accentColor: "#52AF50"
     },
-    withIcon: { name: "fas fa-check-circle", size: "1em", position: "left" },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
+    withIcon: { icon: "fas fa-check-circle", size: "1em", position: "left" },
     isDisabled: false,
     isHidden: false,
 };
@@ -162,14 +159,9 @@ ActiveTodayMenuBtn.args = {
     withColor: {
         backgroundColor: "#222A35",
         textColor: "#FFFFFF",
-        iconColor: "#FFCA36"
+        accentColor: "#FFCA36"
     },
-    withIcon: { name: "fas fa-book", size: "1em", position: "left" },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
+    withIcon: { icon: "fas fa-book", size: "1em", position: "left" },
     isDisabled: false,
     isHidden: false,
 };
@@ -203,12 +195,7 @@ const TodayMenuTemplate = (args) => {
                 <TodayMenuBtn
                     {...Object.assign({}, {
                         content: "",
-                        withIcon: { name: "fas fa-home", size: "1em", position: "left" },
-                        withAnimation: {
-                            animation: "slideLeft",
-                            duration: 0.5,
-                            delay: 0,
-                        },
+                        withIcon: { icon: "fas fa-home", size: "1em", position: "left" },
                     })}
                 />
             </div>
@@ -216,36 +203,21 @@ const TodayMenuTemplate = (args) => {
                 <TodayMenuBtn
                     {...Object.assign({}, {
                         content: "Learn",
-                        withIcon: { name: "fas fa-certificate", size: "1em", position: "left" },
-                        withAnimation: {
-                            animation: "slideLeft",
-                            duration: 0.5,
-                            delay: 0.5,
-                        },
+                        withIcon: { icon: "fas fa-certificate", size: "1em", position: "left" },
                     })}
                 /></div>
             <div style={{ margin: "0 0.1em" }}>
                 <TodayMenuBtn
                     {...Object.assign({}, {
                         content: "Play",
-                        withIcon: { name: "fas fa-gamepad", size: "1em", position: "left" },
-                        withAnimation: {
-                            animation: "slideLeft",
-                            duration: 0.5,
-                            delay: 1,
-                        },
+                        withIcon: { icon: "fas fa-gamepad", size: "1em", position: "left" },
                     })}
                 /></div>
             <div style={{ margin: "0 0.1em" }}>
                 <TodayMenuBtn
                     {...Object.assign({}, {
                         content: "Win",
-                        withIcon: { name: "fas fa-trophy", size: "1em", position: "left" },
-                        withAnimation: {
-                            animation: "slideLeft",
-                            duration: 0.5,
-                            delay: 1.5,
-                        },
+                        withIcon: { icon: "fas fa-trophy", size: "1em", position: "left" },
                     })}
                 />
             </div>

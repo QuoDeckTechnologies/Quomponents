@@ -26,10 +26,12 @@ describe("TodayMenuBtn", () => {
 
     hasValid("defaults", args);
 
+    hasValid("variants", args);
     hasValid("positions", args);
+    hasValid("padding", args);
 
     hasValid("colors", args);
-    hasValid("animations", args);
+    hasValid("icons", args);
 
     hasValid("disabled", args);
     hasValid("hidden", args);
@@ -46,75 +48,15 @@ describe("TodayMenuBtn", () => {
         component = shallow(
             <TodayMenuBtn
                 content=""
-                withIcon={{
-                    name: "",
-                    size: "",
-                    position: ""
-                }}
-                asFloated="none"
-                withColor={{
-                    backgroundColor: "",
-                    textColor: "",
-                    iconColor: ""
-                }}
-                withAnimation={{
-                    animation: "zoom",
-                    duration: 0.5,
-                    delay: 0,
-                }}
+                asVariant="primary"
+                asFloated="inline"
+                asPadded="normal"
+                withIcon={null}
+                withColor={null}
                 isDisabled={false}
                 isHidden={false}
                 onClick={onClick}
             />
         );
-    });
-
-    it("should render only Icon when passed withIcon", () => {
-        component.setProps({
-            withIcon: {
-                name: "fas fa-home",
-                size: "1em",
-                position: "left"
-            }
-        });
-        expect(component.find(".qui-today-menu-btn-text").exists()).toBe(false);
-        expect(component.find(".qui-today-menu-btn-icon").exists()).toBe(true);
-    });
-
-    it("should render only Text when passed content", () => {
-        component.setProps({ content: "Home" });
-        expect(component.find(".qui-today-menu-btn-text").exists()).toBe(true);
-        expect(component.find(".qui-today-menu-btn-icon").exists()).toBe(false);
-    });
-
-    it("should render both when passed withIcon and content", () => {
-        component.setProps({
-            content: "Home",
-            withIcon: {
-                name: "fas fa-home",
-                size: "1em",
-                position: "left"
-            }
-        });
-        expect(component.find(".qui-today-menu-btn-text").exists()).toBe(true);
-        expect(component.find(".qui-today-menu-btn-icon").exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withColor props", () => {
-        component.setProps({
-            content: "Home",
-            withIcon: {
-                name: "fas fa-home",
-                size: "1em",
-                position: "left"
-            },
-            withColor: {
-                backgroundColor: "#C1DC9E",
-                textColor: "#FFFFFF",
-                iconColor: "#000000"
-            }
-        });
-        expect(component.find(".qui-today-menu-btn-text").exists()).toBe(true);
-        expect(component.find(".qui-today-menu-btn-icon").exists()).toBe(true);
     });
 });
