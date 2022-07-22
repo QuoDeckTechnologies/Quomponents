@@ -6,7 +6,8 @@ const dictionary = JSON.stringify({
     options: {
       text1: "वस्तु 1",
       text2: "वस्तु 2",
-    }
+    },
+    loading: "लोड हो रहा है...",
   }
 });
 export default {
@@ -104,6 +105,12 @@ export default {
         defaultValue: false,
       },
     },
+    isLoading: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
     onClick: {
       table: {
         category: "Events",
@@ -165,8 +172,9 @@ Default.args = {
     dictionary: dictionary,
   },
   isDisabled: false,
-  isFluid: true,
+  isFluid: false,
   isHidden: false,
+  isLoading: false,
 };
 Default.parameters = {
   docs: {
