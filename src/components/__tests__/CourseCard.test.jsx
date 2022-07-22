@@ -104,7 +104,7 @@ describe("CourseCard", () => {
     component.setProps({
       tags: [
         "tag",
-        "tag",
+        "tagtagtagtagtagtagtagtagtagtagtagtagtagtag",
         "tag",
         "tag",
         "tag",

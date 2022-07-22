@@ -162,14 +162,9 @@
   overflow: hidden;
   text-transform: capitalize;
 }
-.qui-course-card-truncate {
-  max-width: 10ch;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.qui-course-card-untruncate {
-  height: auto;
+
+.qui .qui-course-card-tag-container.qui-course-card-untruncate {
+  margin-top: 2em;
 }
 .qui-course-card-show-more-container {
   width: fit-content;

@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { getQuommons } from "../../common/javascripts/helpers.js";
 import _ from "lodash";
@@ -228,6 +228,13 @@ export default function CourseCard(props) {
   let showTags = 3;
   const [expandTags, setExpandTags] = useState(false);
   const [itirate, setItirate] = useState(showTags);
+  const [lessTags] = useState(
+    props.tags.slice(0, 3).map((ele) => {
+      if (ele.length > 20) {
+        return ele.slice(0, 20) + "...";
+      } else return ele;
+    })
+  );
 
   const handleLessTags = () => {
     setItirate(minTags);
@@ -292,14 +299,11 @@ export default function CourseCard(props) {
                 </div>
               )}
             </div>
-            <div className="qui-course-card-tag-container">
-              {_.map(props.tags, (tag, index) => {
+            <div className={`qui-course-card-tag-container ${truncate}`}>
+              {_.map(expandTags ? props.tags : lessTags, (tag, index) => {
                 if (index < itirate) {
                   return (
-                    <div
-                      key={index}
-                      className={`qui-course-card-tag ${truncate}`}
-                    >
+                    <div key={index} className={`qui-course-card-tag`}>
                       <Tag
                         asPadded="compact"
                         content={tag}
