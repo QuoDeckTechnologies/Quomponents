@@ -22,7 +22,7 @@ InputField.propTypes = {
     value: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     type: PropTypes.string,
-    multiline: PropTypes.bool,
+    isMultiline: PropTypes.bool,
     maxLength: PropTypes.number,
     /**
     Use to define referance name
@@ -41,19 +41,13 @@ InputField.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to float the component in parent container
-    */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
     Use to set Colors in component 
     */
     withColor: PropTypes.shape({
         textColor: PropTypes.string,
         accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
-        onSelectTextColor: PropTypes.string,
-        onSelectAccentColor: PropTypes.string,
-        onSelectBackgroundColor: PropTypes.string,
+        hoverTextColor: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -89,8 +83,9 @@ InputField.propTypes = {
     */
     isDisabled: PropTypes.bool,
     /**
-    InputField component must have the onSubmit function passed as props
+    InputField component must have the onBlur & onSubmit function passed as props
     */
+    onBlur: PropTypes.func,
     onSubmit: PropTypes.func.isRequired,
 };
 
@@ -102,16 +97,13 @@ InputField.defaultProps = {
     value: "",
     placeholder: "",
     type: "text",
-    multiline: false,
+    isMultiline: false,
     maxLength: 0,
     name: "",
     asEmphasis: "filled",
-
     //=======================================
     // Quommon props
     //=======================================
-    asFloated: "none",
-
     withColor: null,
     withAnimation: null,
     withTranslation: null,
@@ -152,7 +144,7 @@ export default function InputField(props) {
     }
 
     let changeBlur = (e) => {
-        props.onSubmit(e.target.name, e.target.value);
+        props.onBlur(e.target.name, e.target.value);
     };
 
     //-------------------------------------------------------------------
@@ -168,7 +160,7 @@ export default function InputField(props) {
             borderBottom: `0.3em solid ${props.withColor?.accentColor || "#AAAAAA"}`
         },
         "& .MuiFilledInput-root:after": {
-            borderBottom: `0.3em solid ${props.withColor?.onSelectAccentColor || props.withColor?.accentColor || "#FFBF00"}`
+            borderBottom: `0.3em solid ${props.withColor?.hoverTextColor || props.withColor?.accentColor || "#FFBF00"}`
         },
 
         //input field background and color
@@ -180,17 +172,10 @@ export default function InputField(props) {
             backgroundColor: props.withColor?.backgroundColor || "#AAAAAA29",
             color: props.withColor?.textColor || "#666666"
         },
-        "& .MuiFilledInput-root.Mui-focused": {
-            backgroundColor: props.withColor?.onSelectBackgroundColor || props.withColor?.backgroundColor || "#AAAAAA29",
-            color: props.withColor?.onSelectTextColor || props.withColor?.textColor || "#666666"
-        },
 
         //input field label color
         '& .MuiFormLabel-root': {
             color: props.withColor?.textColor || "#454545"
-        },
-        '& .MuiFormLabel-root.Mui-focused': {
-            color: props.withColor?.onSelectTextColor || props.withColor?.textColor || "#454545"
         }
     };
     //-------------------------------------------------------------------
@@ -219,7 +204,7 @@ export default function InputField(props) {
         value: input,
         placeholder: placeholder,
         type: props.type,
-        multiline: props.multiline,
+        multiline: props.isMultiline,
         variant: "filled",
         name: props.name,
         onBlur: changeBlur,

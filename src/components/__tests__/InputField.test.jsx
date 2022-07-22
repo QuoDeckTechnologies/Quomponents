@@ -7,7 +7,6 @@ import { shallow, mount } from 'enzyme';
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -17,7 +16,6 @@ describe("InputField", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: InputField,
         required: {
@@ -48,10 +46,6 @@ describe("InputField", () => {
 
     hasValid("defaults", args);
 
-    hasValid("sizes", args);
-    hasValid("positions", args);
-    hasValid("alignment", args);
-
     hasValid("colors", args);
     hasValid("animations", args);
     hasValid("translations", args);
@@ -62,7 +56,6 @@ describe("InputField", () => {
     // Setup definitions for the test suite
     // -------------------------------------
     let component
-    let onFocus = jest.fn();
     let onChange = jest.fn();
     let onBlur = jest.fn();
     let onSubmit = jest.fn();
@@ -75,28 +68,19 @@ describe("InputField", () => {
             placeholder="Options"
             maxLength={30}
             type="text"
-            multiline={true}
+            isMultiline={true}
             name=""
             asEmphasis="filled"
-            asFloated="none"
-            withColor={{
-                textColor: "",
-                accentColor: "",
-                backgroundColor: "",
-                onSelectTextColor: "",
-                onSelectAccentColor: "",
-                onSelectBackgroundColor: "",
-            }}
-            onFocus={onFocus}
+            withColor={null}
+            withAnimation={null}
+            withTranslation={null}
+            isHidden={false}
+            isDisabled={false}
             onChange={onChange}
             onBlur={onBlur}
             onSubmit={onSubmit}
         />);
     })
-
-    it("it should render correctly without throwing an error", () => {
-        expect(component.exists()).toBe(true);
-    });
 
     it("it should render the class of character limit the input is under limit correctly when passed asEmphasis prop as charLimited", () => {
         component.setProps({
@@ -105,7 +89,7 @@ describe("InputField", () => {
             placeholder: "Options",
             maxLength: 0,
             type: "text",
-            multiline: true,
+            isMultiline: true,
             asEmphasis: "charLimited"
         })
         expect(component.exists()).toBe(true);
@@ -118,7 +102,7 @@ describe("InputField", () => {
             placeholder: "Options",
             maxLength: 0,
             type: "text",
-            multiline: false,
+            isMultiline: false,
             asEmphasis: "listInput"
         })
         expect(component.exists()).toBe(true);
@@ -141,20 +125,6 @@ describe("InputField", () => {
 
     it("it should render correctly when passed asEmphasis prop as shortField", () => {
         component.setProps({ asEmphasis: "shortField" })
-        expect(component.exists()).toBe(true);
-    });
-
-
-    it("it should render correctly when passed withColor props", () => {
-        let colors = {
-            textColor: "#666666",
-            accentColor: "#ffab00",
-            backgroundColor: "#ffab000d",
-            onSelectTextColor: "#666666",
-            onSelectAccentColor: "#ffab00",
-            onSelectBackgroundColor: "#ffab000d",
-        }
-        component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
     });
 

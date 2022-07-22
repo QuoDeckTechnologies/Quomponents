@@ -26,17 +26,10 @@ export default {
     placeholder: "",
     maxLength: 0,
     type: "text",
-    multiline: false,
+    isMultiline: false,
     asEmphasis: {
       control: "select",
       options: ["filled", "charLimited", "listInput", "shortField"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asFloated: {
-      control: "select",
-      options: ["left", "right", "none", "inline"],
       table: {
         category: "as-Flags",
       },
@@ -48,9 +41,7 @@ export default {
           textColor: "",
           accentColor: "",
           backgroundColor: "",
-          onSelectTextColor: "",
-          onSelectAccentColor: "",
-          onSelectBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -84,6 +75,12 @@ export default {
       table: {
         category: "is-Toggles",
         defaultValue: false,
+      },
+    },
+    onBlur: {
+      table: {
+        category: "Events",
+        defaultValue: null,
       },
     },
     onSubmit: {
@@ -122,17 +119,14 @@ Default.args = {
   placeholder: "Options",
   maxLength: 300,
   type: "text",
-  multiline: false,
+  isMultiline: false,
   name: "testing_id",
   asEmphasis: "filled",
-  asFloated: "none",
   withColor: {
     textColor: "#666666",
     accentColor: "#ffab00",
     backgroundColor: "#ffab000d",
-    onSelectTextColor: "",
-    onSelectAccentColor: "",
-    onSelectBackgroundColor: "",
+    hoverTextColor: "",
   },
   withAnimation: {
     animation: "collapse",
@@ -187,7 +181,7 @@ listInputField.args = {
   placeholder: "Options",
   maxLength: 300,
   type: "text",
-  multiline: false,
+  isMultiline: false,
   asEmphasis: "listInput",
 };
 listInputField.parameters = {
