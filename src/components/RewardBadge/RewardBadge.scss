@@ -1,0 +1,17 @@
+/* ================================================= */
+/* AccentLine Container Definitions */
+/* ================================================= */
+.qui .qui-reward-badge-container {
+    min-width: 10em;
+    min-height: 10em;
+    border-radius: 0.5em;
+    h5 {
+        margin-block-end: 1em;
+        margin-block-start: 1em;
+    }
+}
+
+.qui .qui-reward-badge {
+    width: 6em;
+    height: 6em;
+}
