@@ -17,25 +17,31 @@ ContentLine.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Contains the users contents such as name and points
+    Use to define name in the component
     */
-    content: PropTypes.shape({
-        name: PropTypes.string,
-        icon: PropTypes.string
-    }).isRequired,
+    name: PropTypes.string,
     /**
     Use to define the state of component
     */
     isActive: PropTypes.bool,
-
     // Quommon props
     //=======================================
+    /** 
+    Use to define component padding in increasing order
+    */
+    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
     /**
     Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         textColor: PropTypes.string
+    }),
+    /**
+    Use to add an icon to the component
+    */
+    withIcon: PropTypes.shape({
+        icon: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -71,40 +77,36 @@ ContentLine.propTypes = {
 ContentLine.defaultProps = {
     // Component Specific props
     //=======================================
-    content: {
-        name: "",
-        icon: ""
-    },
+    name: "",
     isActive: false,
-
     // Quommon props
     //=======================================
+    asPadded: "fitted",
+
     withColor: null,
+    withIcon: null,
     withAnimation: null,
+
     isHidden: false,
     isDisabled: false
 };
-
 /**
 ## Notes
 - The animation system used for this component is Framer Motion (framer-motion)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
-- Content props to display the ContentLine component.
 - Pass withColor props to change the styling of component.
-- If you pass icon in the content it will make the component as DeckLine component and if you  do not pass the icon it will make the component as TopicLine component.
+- If you pass icon in the component it will make the component as DeckLine component and if you  do not pass the icon it   will make the component as TopicLine component.
 **/
 export default function ContentLine(props) {
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "content-line");
-
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
     const animate = getAnimation(props);
-
     //-------------------------------------------------------------------
     // 3. Conditional styling
     //-------------------------------------------------------------------
@@ -112,15 +114,14 @@ export default function ContentLine(props) {
         backgroundColor: props.isDisabled ? '#E8E8E8' : props.isActive ? props.withColor?.backgroundColor ? props.withColor?.backgroundColor : '#FFBF00CC' : '#FFFFFF',
         color: props.isDisabled ? '#454545' : props.isActive ? props.withColor?.textColor ? props.withColor?.textColor : '#454545' : '#454545'
     }
-
     //-------------------------------------------------------------------
     // 4. Conditional text renders for TopicLine and DeckLine components
     //-------------------------------------------------------------------
     function getName() {
-        if (props.content?.icon && props.content?.name) {
-            return <div className={`qui-content-line-text`}>{props.content?.name}</div>
+        if (props.withIcon?.icon && props?.name) {
+            return <div className={`qui-content-line-text`}>{props?.name}</div>
         } else {
-            return <h6 className={`qui-content-line-text`}>{props.content?.name}</h6>
+            return <h6 className={`qui-content-line-text`}>{props?.name}</h6>
         }
     }
 
@@ -129,16 +130,15 @@ export default function ContentLine(props) {
             initial={animate?.from}
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses} qui-content-line-parent-class qt-shadow`}>
-            {props.content &&
-                <div className={`${quommonClasses.childClasses}`} >
-                    <div className={`qui-content-line-container ${props.content?.icon && props.content?.name ? 'qui-deck-line' : 'qui-topic-line'}`} style={contentStyle} onClick={props.onClick}>
-                        {props.content?.icon && <i className={`${props.content?.icon} qui-content-line-icon`}></i>}
-                        {getName()}
-                        <div className="qui-content-line-right-arrow">
-                            <i className={`fas fa-angle-right ${props.content?.icon && props.content?.name ? 'qui-deck-line-icon' : 'qui-topic-line-icon'}`} style={{ color: contentStyle.color }}></i>
-                        </div>
+            <div className={`${quommonClasses.childClasses}`}>
+                <div className={`qui-content-line-container ${props.withIcon?.icon && props?.name ? 'qui-deck-line' : 'qui-topic-line'}`} style={contentStyle} onClick={props.onClick}>
+                    {props.withIcon?.icon && <i className={`${props.withIcon?.icon} qui-icon qui-content-line-icon`}></i>}
+                    {getName()}
+                    <div className="qui-content-line-right-arrow">
+                        <i className={`fas fa-angle-right ${props.withIcon?.icon && props?.name ? 'qui-deck-line-icon' : 'qui-topic-line-icon'}`} style={{ color: contentStyle.color }}></i>
                     </div>
-                </div>}
+                </div>
+            </div>
         </motion.div>
     );
 }

@@ -5,14 +5,29 @@ export default {
     title: "Design System/ContentLine",
     component: ContentLine,
     argTypes: {
-        content: {},
+        name: "",
         isActive: false,
+        asPadded: {
+            control: "select",
+            options: ["fitted", "compact", "normal", "relaxed"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
                     textColor: "",
+                },
+            },
+        },
+        withIcon: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    icon: "",
                 },
             },
         },
@@ -70,15 +85,14 @@ export default {
 const Template = (args) => <ContentLine {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        name: "What is Sales Pitching?",
-        icon: "fas fa-book"
-    },
+    name: "What is Sales Pitching?",
     isActive: false,
+    asPadded: "fitted",
     withColor: {
         backgroundColor: "",
         textColor: "",
     },
+    withIcon: { icon: "fas fa-book" },
     withAnimation: {
         animation: "slideDown",
         duration: 0.5,
@@ -100,22 +114,11 @@ Default.parameters = {
 export const ActiveContentLine = Template.bind({});
 ActiveContentLine.args = {
     ...Default.args,
-    content: {
-        name: "What is Sales Pitching?",
-        icon: "fas fa-book"
-    },
     isActive: true,
     withColor: {
         backgroundColor: "#ED6E6E",
         textColor: "#FFFFFF",
-    },
-    withAnimation: {
-        animation: "slideDown",
-        duration: 0.5,
-        delay: 0,
-    },
-    isHidden: false,
-    isDisabled: false
+    }
 };
 ActiveContentLine.parameters = {
     docs: {
@@ -133,21 +136,6 @@ ActiveContentLine.parameters = {
 export const DisabledContentLine = Template.bind({});
 DisabledContentLine.args = {
     ...Default.args,
-    content: {
-        name: "What is Sales Pitching?",
-        icon: "fas fa-book"
-    },
-    isActive: false,
-    withColor: {
-        backgroundColor: "",
-        textColor: "",
-    },
-    withAnimation: {
-        animation: "slideDown",
-        duration: 0.5,
-        delay: 0,
-    },
-    isHidden: false,
     isDisabled: true
 };
 DisabledContentLine.parameters = {
@@ -166,7 +154,8 @@ DisabledContentLine.parameters = {
 export const MultipleContentLine = (args) => {
     let data = [
         {
-            content: {
+            name: "What is Topic1",
+            withIcon: {
                 name: "What is Topic1",
                 icon: "fas fa-book"
             },
@@ -174,7 +163,8 @@ export const MultipleContentLine = (args) => {
             isDisabled: false
         },
         {
-            content: {
+            name: "What is Topic2",
+            withIcon: {
                 name: "What is Topic2",
                 icon: "fas fa-book"
             },
@@ -182,7 +172,8 @@ export const MultipleContentLine = (args) => {
             isDisabled: false
         },
         {
-            content: {
+            name: "What is Topic3",
+            withIcon: {
                 name: "What is Topic3",
                 icon: "fas fa-book"
             },
@@ -190,7 +181,8 @@ export const MultipleContentLine = (args) => {
             isDisabled: false
         },
         {
-            content: {
+            name: "What is Topic4",
+            withIcon: {
                 name: "What is Topic4",
                 icon: "fas fa-book"
             },
@@ -198,7 +190,8 @@ export const MultipleContentLine = (args) => {
             isDisabled: true
         },
         {
-            content: {
+            name: "What is Topic5",
+            withIcon: {
                 name: "What is Topic5",
                 icon: "fas fa-book"
             },
@@ -206,7 +199,8 @@ export const MultipleContentLine = (args) => {
             isDisabled: true
         },
         {
-            content: {
+            name: "What is Topic6",
+            withIcon: {
                 name: "What is Topic6",
                 icon: "fas fa-book"
             },
@@ -221,7 +215,8 @@ export const MultipleContentLine = (args) => {
                     return (
                         <ContentLine
                             key={index}
-                            content={data.content}
+                            name={data.name}
+                            withIcon={data.withIcon}
                             isActive={data.isActive}
                             isDisabled={data.isDisabled}
                             withAnimation={{

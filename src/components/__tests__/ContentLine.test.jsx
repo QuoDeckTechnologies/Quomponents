@@ -6,7 +6,6 @@ import { shallow } from "enzyme";
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -19,41 +18,37 @@ describe("ContentLine", () => {
     const args = {
         target: ContentLine,
         required: {
-            content: {
-                name: "What is Sales Pitching?",
-                icon: "fas fa-book"
-            },
-            onClick: () => console.log("Button Testing"),
+            onClick: () => {},
         },
     };
 
     hasValid("defaults", args);
-    hasValid("alignment", args);
+
+    hasValid("padding", args);
 
     hasValid("colors", args);
+    hasValid("icons", args);
     hasValid("animations", args);
 
     hasValid("hidden", args);
-    hasValid("disabled", args);    // -------------------------------------
+    hasValid("disabled", args);
+    // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
-    let component, content;
-    content = {
-        name: "What is Sales Pitching?",
-        icon: "fas fa-book"
-    };
+    let component;
     let mockFn = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
             <ContentLine
-                content={content}
+                name="What is Sales Pitching?"
                 isActive={false}
-                withColor={{
-                    backgroundColor: "",
-                    textColor: ""
-                }}
+                asPadded="normal"
+                withColor={null}
+                withIcon={null}
+                withAnimation={null}
+                isHidden={false}
                 isDisabled={false}
                 onClick={mockFn}
             />
@@ -71,13 +66,7 @@ describe("ContentLine", () => {
     });
 
     it("should render active content line with the default backgroundColor and textColor", () => {
-        component.setProps({
-            isActive: true,
-            withColor: {
-                backgroundColor: "",
-                textColor: ""
-            }
-        });
+        component.setProps({ isActive: true });
         expect(component.find(".qui-content-line-container").props().style).toStrictEqual({ "backgroundColor": "#FFBF00CC", "color": "#454545" });
     });
 
@@ -86,21 +75,13 @@ describe("ContentLine", () => {
         expect(component.find(".qui-content-line-container").props().style).toStrictEqual({ "backgroundColor": "#FFFFFF", "color": "#454545" });
     });
 
-    it("should render Deck component when passed both, name and icon in the content props", () => {
-        let content = {
-            name: "This is DeckLine",
-            icon: "fas fa-book"
-        }
-        component.setProps({ content: content });
+    it("should render Deck component when passed both, name and withIcon props", () => {
+        component.setProps({ name: "This is DeckLine", withIcon: { icon: "fas fa book" } });
         expect(component.find(".qui-deck-line").exists()).toBe(true);
     });
 
-    it("should render TopicLine compponent when only passing the name in the content props", () => {
-        let content = {
-            name: "This is TopicLine",
-            icon: ""
-        }
-        component.setProps({ content: content });
+    it("should render TopicLine compponent when only passing the name props", () => {
+        component.setProps({ name: "This is TopicLine" });
         expect(component.find(".qui-topic-line").exists()).toBe(true);
     });
 
