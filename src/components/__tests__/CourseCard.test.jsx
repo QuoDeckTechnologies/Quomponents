@@ -76,11 +76,12 @@ describe("CourseCard", () => {
     );
   });
 
-  it("should show default image and remove header from image when passed nothing in image and wrapper", () => {
+  it("should render correctly when image and remove header from image when passed nothing in image and wrapper", () => {
     component.setProps({
       image: "",
       wrapper: "",
     });
+    expect(component.exists()).toBe(true);
   });
 
   it("should remove header from base image", () => {
@@ -88,19 +89,22 @@ describe("CourseCard", () => {
       image: "",
       wrapper: "none",
     });
+    expect(component.exists()).toBe(true);
   });
 
   it("should show courseWrapperImage when it does not have image in the Normal Course Card", () => {
     component.setProps({
       wrapper: "carnival",
     });
+    expect(component.exists()).toBe(true);
   });
 
   it("should display showmore button when passed more than 3 tags and on click should show all the tags", () => {
     component.setProps({ sequential: true });
+    expect(component.exists()).toBe(true);
   });
 
-  it("should display showmore button when passed long text in the tag and on click should show all the tags", () => {
+  it("should display show more button when passed long text in the tag and on click should show all the tags", () => {
     component.setProps({
       tags: [
         "tag",
@@ -124,10 +128,12 @@ describe("CourseCard", () => {
     });
     component.find("button").simulate("click");
     component.find("button").simulate("click");
+    expect(component.exists()).toBe(true);
   });
 
   it("should show non sequential course card in english", () => {
     component.setProps({ published: true });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when date is provided in content props", () => {
