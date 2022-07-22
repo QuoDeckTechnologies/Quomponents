@@ -73,10 +73,10 @@ export default function SquareCarousel(props) {
   let { content } = props;
   let quommonClasses = getQuommons(props, "square-carousel");
 
-  //-------------------------------------------------------------------
-  // 4. Get animation of the component
-  //-------------------------------------------------------------------
-  const animate = getAnimation(props);
+    //-------------------------------------------------------------------
+    // 4. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props);
 
   var settings = {
     dots: true,
