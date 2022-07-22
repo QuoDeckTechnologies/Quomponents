@@ -31,7 +31,6 @@ describe("StatisticsCard", () => {
     hasValid("alignment", args);
 
     hasValid("colors", args);
-    hasValid("labels", args);
     hasValid("icons", args);
 
     hasValid("hidden", args);

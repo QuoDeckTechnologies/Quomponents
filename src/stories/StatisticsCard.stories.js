@@ -60,9 +60,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    format: "label",
                     content: "",
-                    textColor: "",
                 },
             },
         },
@@ -114,9 +112,7 @@ Default.args = {
     asAligned: "center",
 
     withLabel: {
-        format: "caption",
         content: "PLAYERS",
-        textColor: "#000000",
     },
     withIcon: { icon: "fas fa-users", size: "1em", position: "left" },
     withColor: {

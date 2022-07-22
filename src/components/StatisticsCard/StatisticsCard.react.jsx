@@ -65,9 +65,7 @@ StatisticsCard.propTypes = {
     Use to add a heading label, a footer caption or a title popover to the component
     */
     withLabel: PropTypes.shape({
-        format: PropTypes.oneOf(["label", "caption", "popover"]),
         content: PropTypes.string,
-        textColor: PropTypes.string,
     }),
     /**
     Use to show/hide the component
@@ -145,10 +143,10 @@ export default function StatisticsCard(props) {
                         <span className="qui-statistics-card-tooltipvalue">{props.value}</span>
                     </div>
                     <div className="qui-statistics-card-labeltooltip">
-                        {props.withLabel && <h6 className={"qui-statistics-card-label"} style={colors?.textColors}>
+                        <h6 className={"qui-statistics-card-label"} style={colors?.textColors}>
                             {props.withLabel?.content}
-                        </h6>}
-                        <span className="qui-statistics-card-tooltiplabel qui-label qui-caption">{props.withLabel?.content}</span>
+                        </h6>
+                        <span className="qui-statistics-card-tooltiplabel">{props.withLabel?.content}</span>
                     </div>
                 </>
             </Segment>

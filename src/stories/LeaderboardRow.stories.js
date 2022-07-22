@@ -6,7 +6,15 @@ export default {
     component: LeaderboardRow,
     argTypes: {
         rank: 0,
-        content: {},
+        firstName: "",
+        lastName: "",
+        asPadded: {
+            control: "select",
+            options: ["fitted", "compact", "normal", "relaxed"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -58,10 +66,10 @@ const Template = (args) => <LeaderboardRow {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     rank: 0,
-    content: {
-        name: 'Rohit Dhende',
-        points: 1000
-    },
+    firstName: "Quodeck",
+    lastName: "Technology",
+    points: null,
+    asPadded: "normal",
     withColor: {
         backgroundColor: "",
         textColor: "",
@@ -87,73 +95,57 @@ export const MultipleLeaderboardRow = (args) => {
     let users = [
         {
             rank: 0,
-            content: {
-                name: 'Rohit Dhende',
-                points: 5000
-            }
+            firstName: "Rohit",
+            lastName: "Dhende",
+            points: 5000,
         },
         {
             rank: 1,
-            content: {
-                name: 'Rahul Verma',
-                points: 4500
-            }
+            firstName: "Rahul",
+            lastName: "Verma",
+            points: 4500,
         },
         {
             rank: 2,
-            content: {
-                name: 'Krishna Pant',
-                points: 3900
-            }
+            firstName: "Krishna",
+            lastName: "Pant",
+            points: 3900,
         },
         {
             rank: 3,
-            content: {
-                name: 'Udhav Varma',
-                points: 3900
-            }
+            firstName: "Udhav",
+            lastName: "Varma",
+            points: 3900,
         },
         {
             rank: 4,
-            content: {
-                name: 'Ganesh Devkar',
-                points: 3611
-            }
+            firstName: "Ganesh",
+            lastName: "Devkar",
+            points: 3611,
         },
         {
             rank: 5,
-            content: {
-                name: 'Apurva Surve',
-                points: 3244
-            }
+            firstName: "Apurva",
+            lastName: "Surve",
+            points: 3244,
         },
         {
             rank: 7,
-            content: {
-                name: 'Shobha Shelke',
-                points: 3000
-            }
+            firstName: "Shobha",
+            lastName: "Shelke",
+            points: 3000,
         },
         {
             rank: 8,
-            content: {
-                name: 'Prabhat Pandey',
-                points: 2900
-            }
+            firstName: "Prabhat",
+            lastName: "Pandey",
+            points: 2900,
         },
         {
             rank: 9,
-            content: {
-                name: 'Ravi Singh',
-                points: 2500
-            }
-        },
-        {
-            rank: 10,
-            content: {
-                name: 'Samuel James Dharmavaram',
-                points: 2400
-            }
+            firstName: "Ravi",
+            lastName: "Singh",
+            points: 2500,
         },
     ]
     return (
@@ -164,7 +156,9 @@ export const MultipleLeaderboardRow = (args) => {
                         <LeaderboardRow
                             key={index}
                             rank={user.rank}
-                            content={user.content}
+                            firstName={user.firstName}
+                            lastName={user.lastName}
+                            points={user.points}
                             withColor={{
                                 backgroundColor: '#FFBF00',
                                 textColor: '#000'
@@ -188,63 +182,48 @@ export const MultipleLeaderboardRowsWithoutPoints = (args) => {
     let users = [
         {
             rank: 0,
-            content: {
-                name: 'Rohit Dhende'
-            }
+            firstName: "Rohit",
+            lastName: "Dhende",
         },
         {
             rank: 1,
-            content: {
-                name: 'Rahul Verma'
-            }
+            firstName: "Rahul",
+            lastName: "Verma",
         },
         {
             rank: 2,
-            content: {
-                name: 'Krishna Pant'
-            }
+            firstName: "Krishna",
+            lastName: "Pant",
         },
         {
             rank: 3,
-            content: {
-                name: 'Udhav Varma'
-            }
+            firstName: "Udhav",
+            lastName: "Varma",
         },
         {
             rank: 4,
-            content: {
-                name: 'Ganesh Devkar'
-            }
+            firstName: "Ganesh",
+            lastName: "Devkar",
         },
         {
             rank: 5,
-            content: {
-                name: 'Apurva Surve'
-            }
+            firstName: "Apurva",
+            lastName: "Surve",
         },
         {
             rank: 7,
-            content: {
-                name: 'Shobha Shelke'
-            }
+            firstName: "Shobha",
+            lastName: "Shelke",
         },
         {
             rank: 8,
-            content: {
-                name: 'Prabhat Pandey'
-            }
+            firstName: "Prabhat",
+            lastName: "Pandey",
         },
         {
             rank: 9,
-            content: {
-                name: 'Ravi Singh'
-            }
-        },
-        {
-            rank: 10,
-            content: {
-                name: 'Samuel James Dharmavaram'
-            }
+            firstName: "Ravi",
+            lastName: "Singh",
         },
     ]
     return (
@@ -255,7 +234,8 @@ export const MultipleLeaderboardRowsWithoutPoints = (args) => {
                         <LeaderboardRow
                             key={index}
                             rank={user.rank}
-                            content={user.content}
+                            firstName={user.firstName}
+                            lastName={user.lastName}
                             withColor={{
                                 backgroundColor: '#FFBF00',
                                 textColor: '#000'
@@ -279,63 +259,48 @@ export const MultipleLeaderboardRowsWithoutPointsAndFixedDivSize = (args) => {
     let users = [
         {
             rank: 0,
-            content: {
-                name: 'Rohit Dhende'
-            }
+            firstName: "Rohit",
+            lastName: "Dhende",
         },
         {
             rank: 1,
-            content: {
-                name: 'Rahul Verma'
-            }
+            firstName: "Rahul",
+            lastName: "Verma",
         },
         {
             rank: 2,
-            content: {
-                name: 'Krishna Pant'
-            }
+            firstName: "Krishna",
+            lastName: "Pant",
         },
         {
             rank: 3,
-            content: {
-                name: 'Udhav Varma'
-            }
+            firstName: "Udhav",
+            lastName: "Varma",
         },
         {
             rank: 4,
-            content: {
-                name: 'Ganesh Devkar'
-            }
+            firstName: "Ganesh",
+            lastName: "Devkar",
         },
         {
             rank: 5,
-            content: {
-                name: 'Apurva Surve'
-            }
+            firstName: "Apurva",
+            lastName: "Surve",
         },
         {
             rank: 7,
-            content: {
-                name: 'Shobha Shelke'
-            }
+            firstName: "Shobha",
+            lastName: "Shelke",
         },
         {
             rank: 8,
-            content: {
-                name: 'Prabhat Pandey'
-            }
+            firstName: "Prabhat",
+            lastName: "Pandey",
         },
         {
             rank: 9,
-            content: {
-                name: 'Ravi Singh'
-            }
-        },
-        {
-            rank: 10,
-            content: {
-                name: 'Samuel James Dharmavaram'
-            }
+            firstName: "Ravi",
+            lastName: "Singh",
         },
     ]
     return (
@@ -346,7 +311,8 @@ export const MultipleLeaderboardRowsWithoutPointsAndFixedDivSize = (args) => {
                         <LeaderboardRow
                             key={index}
                             rank={user.rank}
-                            content={user.content}
+                            firstName={user.firstName}
+                            lastName={user.lastName}
                             withColor={{
                                 backgroundColor: '#FFBF00',
                                 textColor: '#000'
@@ -370,73 +336,57 @@ export const MultipleLeaderboardRowsWithFixedDivSize = (args) => {
     let users = [
         {
             rank: 0,
-            content: {
-                name: 'Rohit Dhende',
-                points: 5000
-            }
+            firstName: "Rohit",
+            lastName: "Dhende",
+            points: 5000,
         },
         {
             rank: 1,
-            content: {
-                name: 'Rahul Verma',
-                points: 4500
-            }
+            firstName: "Rahul",
+            lastName: "Verma",
+            points: 4500,
         },
         {
             rank: 2,
-            content: {
-                name: 'Krishna Pant',
-                points: 3900
-            }
+            firstName: "Krishna",
+            lastName: "Pant",
+            points: 3900,
         },
         {
             rank: 3,
-            content: {
-                name: 'Udhav Varma',
-                points: 3900
-            }
+            firstName: "Udhav",
+            lastName: "Varma",
+            points: 3900,
         },
         {
             rank: 4,
-            content: {
-                name: 'Ganesh Devkar',
-                points: 3611
-            }
+            firstName: "Ganesh",
+            lastName: "Devkar",
+            points: 3611,
         },
         {
             rank: 5,
-            content: {
-                name: 'Apurva Surve',
-                points: 3244
-            }
+            firstName: "Apurva",
+            lastName: "Surve",
+            points: 3244,
         },
         {
             rank: 7,
-            content: {
-                name: 'Shobha Shelke',
-                points: 3000
-            }
+            firstName: "Shobha",
+            lastName: "Shelke",
+            points: 3000,
         },
         {
             rank: 8,
-            content: {
-                name: 'Prabhat Pandey',
-                points: 2900
-            }
+            firstName: "Prabhat",
+            lastName: "Pandey",
+            points: 2900,
         },
         {
             rank: 9,
-            content: {
-                name: 'Ravi Singh',
-                points: 2500
-            }
-        },
-        {
-            rank: 10,
-            content: {
-                name: 'Samuel James Dharmavaram',
-                points: 2400
-            }
+            firstName: "Ravi",
+            lastName: "Singh",
+            points: 2500,
         },
     ]
     return (
@@ -447,7 +397,9 @@ export const MultipleLeaderboardRowsWithFixedDivSize = (args) => {
                         <LeaderboardRow
                             key={index}
                             rank={user.rank}
-                            content={user.content}
+                            firstName={user.firstName}
+                            lastName={user.lastName}
+                            points={user.points}
                             withColor={{
                                 backgroundColor: '#FFBF00',
                                 textColor: '#000'

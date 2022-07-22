@@ -25,14 +25,15 @@ describe("LeaderboardRow", () => {
     const args = {
         target: LeaderboardRow,
         required: {
-            content: {
-                name: 'name',
-                points: 1000
-            },
+            rank: 0,
+            firstName: "Rohit",
+            lastName: "Dhende",
+            points: 5000,
         },
     };
 
     hasValid("defaults", args);
+    hasValid("padding", args);
     hasValid("colors", args);
     hasValid("animations", args);
 
@@ -47,10 +48,8 @@ describe("LeaderboardRow", () => {
         component = shallow(
             <LeaderboardRow
                 rank={0}
-                content={{
-                    name: 'Rohit Dhende',
-                    points: 1000
-                }}
+                firstName="Rohit"
+                lastName="Dhende"
                 withAnimation={{
                     animation: "slideDown",
                     duration: 0.5,
@@ -62,25 +61,33 @@ describe("LeaderboardRow", () => {
     });
 
     it("should render the component without points and align the name text to the right", () => {
-        expect(component.find('.qui-leaderboard-row-name').props().style.textAlign).toBe('left');
         component.setProps({
             rank: 4,
-            content: {
-                name: 'Rohit Dhende'
-            }
+            firstName: "Rohit",
+            lastName: "Dhende"
         })
         expect(component.find('.qui-leaderboard-row-name').props().style.textAlign).toBe('right');
         expect(component.find('.qui-leaderboard-row-name').text()).toBe('Rohit Dhende');
-        expect(component.find('.qui-leaderboard-row-points').exists()).toBe(false);
+        expect(component.exists()).toBe(true);
+    });
+    it("should render the component without points and align the name text to the left", () => {
+        component.setProps({
+            rank: 4,
+            firstName: "Rohit",
+            lastName: "Dhende",
+            points: 1000,
+        })
+        expect(component.find('.qui-leaderboard-row-name').props().style.textAlign).toBe('left');
+        expect(component.find('.qui-leaderboard-row-name').text()).toBe('Rohit Dhende');
+        expect(component.exists()).toBe(true);
     });
 
     it("should render the component with correct styles when passed ranks between 0 to 2", () => {
         component.setProps({
             rank: 0,
-            content: {
-                name: 'Rohit Dhende',
-                points: 1000
-            },
+            firstName: "Rohit",
+            lastName: "Dhende",
+            points: 1000,
             withColor: {
                 backgroundColor: '#454545',
                 textColor: '#000'
@@ -90,14 +97,14 @@ describe("LeaderboardRow", () => {
         expect(component.find('.qui-leaderboard-row-name').props().style.color).toBe('#000');
         expect(component.find('.qui-leaderboard-row-name').text()).toBe('Rohit Dhende');
         expect(component.find('.qui-leaderboard-row-points').text()).toBe("1000");
+        expect(component.exists()).toBe(true);
     });
 
     it("should render the component with correct styles when passed ranks greater than 2", () => {
         component.setProps({
             rank: 3,
-            content: {
-                name: 'Rohit Dhende'
-            },
+            firstName: "Rohit",
+            lastName: "Dhende",
             withColor: {
                 backgroundColor: '#454545',
                 textColor: '#000'
@@ -109,40 +116,40 @@ describe("LeaderboardRow", () => {
     it("should render the component with first place gold medalist player", () => {
         component.setProps({
             rank: 0,
-            content: {
-                name: 'Rohit Dhende'
-            }
+            firstName: "Rohit",
+            lastName: "Dhende"
         })
         expect(component.find("img").props().src).toBe(goldMedal);
+        expect(component.exists()).toBe(true);
     });
 
     it("should render the component with second place silver medalist player", () => {
         component.setProps({
             rank: 1,
-            content: {
-                name: 'Rohit Dhende'
-            }
+            firstName: "Rohit",
+            lastName: "Dhende"
         })
         expect(component.find("img").props().src).toBe(silverMedal);
+        expect(component.exists()).toBe(true);
     });
 
     it("should render the component with third place bronze medalist player", () => {
         component.setProps({
             rank: 2,
-            content: {
-                name: 'Rohit Dhende'
-            }
+            firstName: "Rohit",
+            lastName: "Dhende"
         })
         expect(component.find("img").props().src).toBe(bronzeMedal);
+        expect(component.exists()).toBe(true);
     });
 
     it("should render the component with the player who is not in the first 3 place", () => {
         component.setProps({
             rank: 3,
-            content: {
-                name: 'Rohit Dhende'
-            }
+            firstName: "Rohit",
+            lastName: "Dhende"
         })
         expect(component.find("img").props().src).toBe(unRank);
+        expect(component.exists()).toBe(true);
     });
 });

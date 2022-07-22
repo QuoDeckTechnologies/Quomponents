@@ -25,13 +25,16 @@ LeaderboardRow.propTypes = {
   /**
     Contains the users contents such as name and points
     */
-  content: PropTypes.shape({
-    name: PropTypes.string,
-    points: PropTypes.number,
-  }).isRequired,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  points: PropTypes.number,
 
   // Quommon props
   //=======================================
+  /** 
+  Use to define component padding in increasing order
+  */
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
   /**
     Use to override component colors and behavior
     */
@@ -65,11 +68,14 @@ LeaderboardRow.propTypes = {
 LeaderboardRow.defaultProps = {
   // Component Specific props
   //=======================================
-  rank: "",
-  content: {},
+  rank: 0,
+  firstName: "Quodeck",
+  lastName: "Technology",
+  points: null,
 
   // Quommon props
   //=======================================
+  asPadded: "normal",
   withColor: null,
   withAnimation: null,
   isHidden: false,
@@ -84,6 +90,7 @@ LeaderboardRow.defaultProps = {
 - Pass withColor props to change the styling of component.
 **/
 export default function LeaderboardRow(props) {
+
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
@@ -131,37 +138,35 @@ export default function LeaderboardRow(props) {
       animate={animate?.to}
       className={`qui ${quommonClasses.parentClasses} qui-leaderboard-row-parent-class`}
     >
-      {props.content && (
-        <div className={`${quommonClasses.childClasses}`}>
-          <div className={`qui-leaderboard-row-container`} style={contentStyle}>
-            <div className={`qui-leaderboard-row-rank-container`}>
-              <img
-                alt={"medal"}
-                src={rankImage}
-                className={`qui-leaderboard-row-medal`}
-              />
-            </div>
-            <div
-              className={`qui-leaderboard-row-name qt-sm`}
-              style={{
-                color: contentStyle?.color,
-                textAlign: props.content?.points ? "left" : "right",
-                marginRight: props.content?.points ? "0.5em" : "1.5em",
-              }}
-            >
-              {props.content?.name}
-            </div>
-            {props.content?.points && (
-              <div
-                className={`qui-leaderboard-row-points qt-sm`}
-                style={{ color: contentStyle?.color }}
-              >
-                {props.content?.points}
-              </div>
-            )}
-          </div>
+      <div className={`qui-leaderboard-row-container ${quommonClasses.childClasses}`} style={contentStyle}>
+        <div className={`qui-leaderboard-row-rank-container`}>
+          <img
+            alt={"medal"}
+            src={rankImage}
+            className={`qui-leaderboard-row-medal`}
+          />
         </div>
-      )}
+        <div
+          className={`qui-leaderboard-row-name qt-sm`}
+          style={{
+            color: contentStyle?.color,
+            textAlign: props.points ? "left" : "right",
+            marginRight: props.points ? "0.5em" : "1.5em",
+          }}
+        >
+          <div>{props.firstName} {props.lastName}</div>
+        </div>
+        {props.points && (
+          <div
+            className={`qui-leaderboard-row-points qt-sm`}
+            style={{
+              color: contentStyle?.color,
+            }}
+          >
+            {props.points}
+          </div>
+        )}
+      </div>
     </motion.div>
   );
 }
