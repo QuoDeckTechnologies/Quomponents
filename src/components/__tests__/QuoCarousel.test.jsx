@@ -7,13 +7,13 @@ import { shallow, mount, render } from 'enzyme';
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import QuoCarousel from '../Carousel/QuoCarousel/QuoCarousel.react';
 import HCard from '../HCard/HCard.react';
+import Slider from "react-slick";
+
 
 describe('QuoCarousel', () => {
     // -------------------------------------
@@ -75,7 +75,7 @@ describe('QuoCarousel', () => {
                         }]}
                 />
             ],
-            onClick: () => console.log("Button Testing"),
+            onClick: () => { },
         },
         translations: {
             tgt: "button",
@@ -91,7 +91,6 @@ describe('QuoCarousel', () => {
     hasValid("defaults", args);
 
     hasValid("colors", args);
-    hasValid("animations", args);
     hasValid("translations", args);
 
     hasValid("hidden", args);
@@ -205,7 +204,108 @@ describe('QuoCarousel', () => {
         component.find('Button').simulate('click')
     });
 
+    it('should render when onRightNavigation is not passed', () => {
+        component.setProps({
+            onRightNavigation: null
+        })
+        component.find(Slider).props().beforeChange("", 1)
+    });
+
+    it('should render when onRightNavigation is passed', () => {
+        component.setProps({
+            onRightNavigation: jest.fn()
+        })
+        component.find(Slider).props().beforeChange("", 1)
+    });
+
     it('should render and handle click event slickNext', () => {
-        component.find("Slider").props().beforeChange()
+        component.find(".qui-carousel-slick-next").simulate('click');
+        component.setProps({
+            arrows: true,
+            infinite: false,
+            onRightNavigation: jest.fn()
+        });
+        component.find(Slider).props().beforeChange("", 1)
+    });
+    it('should render when infinite is true', () => {
+        component.setProps({
+            content: [
+                <HCard
+                    onClick={() => { }}
+                    content={{
+                        image: {
+                            id: "image-1",
+                            extention: "",
+                        },
+                        name: "Sales Readiness",
+                        description: "Understand how to prepare yourself for that sale",
+                        buttonText: "Check",
+                    }}
+                    imageLibrary={[
+                        {
+                            id: "image-1",
+                            image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                        }]}
+                />
+            ],
+            arrows: true,
+            infinite: true,
+            onRightNavigation: jest.fn()
+        });
+        component.find(Slider).props().beforeChange("", 1)
+    });
+    it('should render infinite is false ', () => {
+        component.setProps({
+            content: [
+                <HCard
+                    onClick={() => { }}
+                    content={{
+                        image: {
+                            id: "image-1",
+                            extention: "",
+                        },
+                        name: "Sales Readiness",
+                        description: "Understand how to prepare yourself for that sale",
+                        buttonText: "Check",
+                    }}
+                    imageLibrary={[
+                        {
+                            id: "image-1",
+                            image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                        }]}
+                />
+            ],
+            arrows: true,
+            infinite: false,
+            onRightNavigation: jest.fn()
+        });
+        component.find(Slider).props().beforeChange("", 1)
+    });
+    it('should render  when onRightNavigation is null', () => {
+        component.setProps({
+            content: [
+                <HCard
+                    onClick={() => { }}
+                    content={{
+                        image: {
+                            id: "image-1",
+                            extention: "",
+                        },
+                        name: "Sales Readiness",
+                        description: "Understand how to prepare yourself for that sale",
+                        buttonText: "Check",
+                    }}
+                    imageLibrary={[
+                        {
+                            id: "image-1",
+                            image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+                        }]}
+                />
+            ],
+            arrows: true,
+            infinite: false,
+            onRightNavigation: null
+        });
+        component.find(Slider).props().beforeChange("", 1)
     });
 });

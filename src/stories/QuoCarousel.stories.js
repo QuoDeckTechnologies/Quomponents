@@ -69,7 +69,8 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    backgroundColor: "",
+                    hoverBackgroundColor: "",
+                    hoverTextColor: "",
                 },
             },
         },
@@ -119,7 +120,6 @@ export default {
         a11y: { disable: true },
     }
 };
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -138,6 +138,7 @@ Default.args = {
                 description: "Understand how to prepare yourself for that sale",
                 buttonText: "Check",
             }}
+            asVariant="secondary"
             imageLibrary={[
                 {
                     id: "image-1",
@@ -155,6 +156,7 @@ Default.args = {
                 description: "Understand how to prepare yourself for that sale",
                 buttonText: "Check",
             }}
+            asVariant="primary"
             imageLibrary={[
                 {
                     id: "image-1",
@@ -171,6 +173,7 @@ Default.args = {
                 description: "Understand how to prepare yourself for that sale",
                 buttonText: "Check",
             }}
+            asVariant="warning"
             imageLibrary={[
                 {
                     id: "image-1",
@@ -188,7 +191,8 @@ Default.args = {
     addSkipToEnd: true,
     adaptiveHeight: false,
     withColor: {
-        backgroundColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
     },
     withTranslation: {
         lang: "en",
@@ -353,7 +357,8 @@ VCard.args = {
     addSkipToEnd: true,
     adaptiveHeight: false,
     withColor: {
-        backgroundColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
     },
     withTranslation: {
         lang: "en",

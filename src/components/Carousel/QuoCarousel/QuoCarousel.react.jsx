@@ -41,7 +41,8 @@ QuoCarousel.propTypes = {
     * Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string
+        hoverBackgroundColor: PropTypes.string,
+        hoverTextColor: PropTypes.string,
     }),
     /**
     * Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -88,11 +89,8 @@ QuoCarousel.defaultProps = {
     //=======================================
     isHidden: false,
     isDisabled: false,
-
     withTranslation: null,
     withColor: null,
-
-    onRightNavigation: null
 };
 /**
 ## Notes
@@ -115,14 +113,6 @@ export default function QuoCarousel(props) {
         if (onRightNavigation !== undefined && onRightNavigation !== null)
             onRightNavigation(index);
         setActiveSlide(index);
-    };
-
-    //-------------------------------------------------------------------
-    //  Function to jump to the last slide
-    //-------------------------------------------------------------------
-    let jumpToEnd = () => {
-        if (sliderRef.current)
-            sliderRef.current.slickGoTo(content.length - 1);
     };
 
     //-------------------------------------------------------------------
@@ -149,11 +139,11 @@ export default function QuoCarousel(props) {
         }
     };
 
-    let showleftNav = props.infinite ? true : activeSlide !== 0 ? true : false;
+    let showLeftNav = props.infinite ? true : activeSlide !== 0 ? true : false;
     let showRightNav = props.infinite ?
         true : activeSlide !== (content.length - 1) ?
             true : onRightNavigation !== null && onRightNavigation !== undefined ?
-                true : false;
+                false : true;
 
     // ========================= Render Function =================================
     return (
@@ -163,7 +153,7 @@ export default function QuoCarousel(props) {
             <Slider ref={sliderRef} {...settings}>
                 {_.map(content, (component, index) => {
                     return (
-                        <div className="qui-quo-carousel-slide-container "
+                        <div className={`qui-quo-carousel-slide-container `}
                             key={"slider-" + index + Math.random()}>
                             <div className={`qui-quo-carousel-slide `}>
                                 {component}
@@ -177,7 +167,7 @@ export default function QuoCarousel(props) {
                     className="qui-carousel-slick-prev"
                     onClick={() => sliderRef.current?.slickPrev()}
                 >
-                    <i className={showleftNav ? "fas fa-arrow-alt-circle-left" :
+                    <i className={showLeftNav ? "fas fa-arrow-alt-circle-left" :
                         "fas fa-arrow-alt-circle-left qui-disabled-arrow"} />
                 </div>
                 <div
@@ -201,7 +191,8 @@ export default function QuoCarousel(props) {
                         asFloated="none"
                         asAligned="center"
                         withColor={{
-                            backgroundColor: props.withColor?.backgroundColor || "",
+                            hoverBackgroundColor: props.withColor?.hoverBackgroundColor || "",
+                            hoverTextColor: props.withColor?.hoverTextColor || "",
                         }}
                         withAnimation={{
                             animation: "zoom",
@@ -209,7 +200,8 @@ export default function QuoCarousel(props) {
                             delay: 0,
                         }}
                         withTranslation={props.withTranslation || null}
-                        onClick={jumpToEnd}
+                        onClick={() => sliderRef.current?.slickGoTo(content.length - 1)
+                        }
                     />
                 </div>
             }
