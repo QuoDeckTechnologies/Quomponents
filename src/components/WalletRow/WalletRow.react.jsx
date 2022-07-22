@@ -20,13 +20,15 @@ WalletRow.propTypes = {
     /**
     Contains the users contents such as name and points
     */
-    content: PropTypes.shape({
-        date: PropTypes.string,
-        coins: PropTypes.number
-    }).isRequired,
+    date: PropTypes.string,
+    coins: PropTypes.number,
 
     // Quommon props
     //=======================================
+    /** 
+    Use to define component padding in increasing order
+    */
+    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
     /**
     Use to override component colors and behavior
     */
@@ -68,10 +70,11 @@ WalletRow.propTypes = {
 WalletRow.defaultProps = {
     // Component Specific props
     //=======================================
-    content: {},
-
+    date: "",
+    coins: null,
     // Quommon props
     //=======================================
+    asPadded: "normal",
     withColor: null,
     withAnimation: null,
     withTranslation: null,
@@ -110,15 +113,15 @@ export default function WalletRow(props) {
     //-------------------------------------------------------------------
     let date;
     if (
-        props.content?.date === "" ||
-        props.content?.date === "''" ||
-        props.content?.date === "'" ||
-        props.content?.date === null ||
-        props.content?.date === undefined
+        props.date === "" ||
+        props.date === "''" ||
+        props.date === "'" ||
+        props.date === null ||
+        props.date === undefined
     ) {
         date = new Date().toDateString();
     } else {
-        date = new Date(props.content?.date).toDateString();
+        date = new Date(props.date).toDateString();
     }
 
     //-------------------------------------------------------------------
@@ -187,12 +190,10 @@ export default function WalletRow(props) {
             initial={animate?.from}
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses} qui-wallet-row-parent-class`}>
-            {props.content && <div className={`${quommonClasses.childClasses}`} >
-                <div className={`qui-wallet-row-container`} style={contentStyle}>
-                    {props.content?.date && <div className={`qui-wallet-row-date`} style={{ color: contentStyle?.color }}>{getDate()}</div>}
-                    {props.content?.coins && <div className={`qui-wallet-row-coins`}> <div className="qui-wallet-row-coins-number" style={{ color: contentStyle?.color }}>{props.content?.coins}</div><div className="qui-wallet-row-coins-text">{coinsText}</div></div>}
-                </div>
-            </div>}
+            <div className={`${quommonClasses.childClasses} qui-wallet-row-container`} style={contentStyle}>
+                {props.date && <div className={`qui-wallet-row-date`} style={{ color: contentStyle?.color }}>{getDate()}</div>}
+                {props.coins && <div className={`qui-wallet-row-coins`}> <div className="qui-wallet-row-coins-number" style={{ color: contentStyle?.color }}>{props.coins}</div><div className="qui-wallet-row-coins-text">{coinsText}</div></div>}
+            </div>
         </motion.div>
     );
 }

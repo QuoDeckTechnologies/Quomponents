@@ -134,7 +134,7 @@ export default function NuggetBlock(props) {
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses}`}>
-                <div className={`qui-nugget-status`} style={{ backgroundColor: color, display: display }}></div>
+                <div className={`qui-nugget-status qt-shadow`} style={{ backgroundColor: color, display: display }}></div>
                 <div style={{ backgroundImage: `url(${image})` }} alt="nuggetimage" className="qui-nugget-block-image" onClick={() => { return props.onClick() }} />
             </div>
         </motion.div>

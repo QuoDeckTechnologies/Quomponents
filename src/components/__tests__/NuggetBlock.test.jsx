@@ -52,14 +52,6 @@ describe("NuggetBlock", () => {
             />
         );
     });
-    it("should render defaultImage when passed nothing in the image props", () => {
-        component.setProps({ image: "" })
-        expect(component.find("div").at(2).props().style.backgroundImage).toBe("url(default.jpeg)")
-    })
-    it("should render published nugget block when passed status as published", () => {
-        component.setProps({ status: "published" })
-        expect(component.find("div").at(1).props().style.backgroundColor).toBe("#C1DC9E")
-    });
     it("should render unpublished nugget block when passed status as unpublished", () => {
         component.setProps({ status: "unpublished" })
         expect(component.find("div").at(1).props().style.backgroundColor).toBe("#B2B4B3")
@@ -68,7 +60,6 @@ describe("NuggetBlock", () => {
         component.setProps({ status: "none" })
         expect(component.find("div").at(1).props().style.display).toBe("none")
     });
-
     it("should call the function when clicked on nugget block", () => {
         let nuggetBlock = component.find("div").at(2);
         nuggetBlock.simulate('click')

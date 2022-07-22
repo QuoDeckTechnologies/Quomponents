@@ -26,7 +26,15 @@ export default {
     title: "Design System/WalletRow",
     component: WalletRow,
     argTypes: {
-        content: {},
+        date: "",
+        coins: 1000,
+        asPadded: {
+            control: "select",
+            options: ["fitted", "compact", "normal", "relaxed"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         withColor: {
             table: {
                 category: "with-Params",
@@ -88,10 +96,9 @@ export default {
 const Template = (args) => <WalletRow {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        date: '2016-01-04 10:34:23',
-        coins: 1000
-    },
+    date: '2016-01-04 10:34:23',
+    coins: 1000,
+    asPadded: "normal",
     withColor: {
         backgroundColor: "",
         textColor: "",
@@ -121,46 +128,39 @@ Default.parameters = {
 export const MultipleWalletRow = (args) => {
     let data = [
         {
-            content: {
-                date: '2016-01-04 10:34:23',
-                coins: 5000
-            }
+
+            date: '2016-01-04 10:34:23',
+            coins: 5000,
         },
         {
-            content: {
-                date: '2016-01-05 10:34:23',
-                coins: 4500
-            }
+
+            date: '2016-01-05 10:34:23',
+            coins: 4500,
         },
         {
-            content: {
-                date: '2017-04-11 10:34:23',
-                coins: 3900
-            }
+
+            date: '2017-04-11 10:34:23',
+            coins: 3900,
         },
         {
-            content: {
-                date: '2018-12-22 10:34:23',
-                coins: 3900
-            }
+
+            date: '2018-12-22 10:34:23',
+            coins: 3900,
         },
         {
-            content: {
-                date: '2019-11-16 10:34:23',
-                coins: 3611
-            }
+
+            date: '2019-11-16 10:34:23',
+            coins: 3611,
         },
         {
-            content: {
-                date: '2020-12-07 10:34:23',
-                coins: 3244
-            }
+
+            date: '2020-12-07 10:34:23',
+            coins: 3244,
         },
         {
-            content: {
-                date: '2020-01-03 10:34:23',
-                coins: 3000
-            }
+
+            date: '2020-01-03 10:34:23',
+            coins: 3000,
         }
     ]
     return (
@@ -170,7 +170,8 @@ export const MultipleWalletRow = (args) => {
                     return (
                         <WalletRow
                             key={index}
-                            content={user.content}
+                            date={user.date}
+                            coins={user.coins}
                             withColor={{
                                 backgroundColor: '#FFBF00',
                                 textColor: '#000'
@@ -198,46 +199,39 @@ export const MultipleWalletRow = (args) => {
 export const MultipleWalletRowsWithFixedDivSize = (args) => {
     let data = [
         {
-            content: {
-                date: '2016-01-04 10:34:23',
-                coins: 5000
-            }
+
+            date: '2016-01-04 10:34:23',
+            coins: 5000,
         },
         {
-            content: {
-                date: '2016-01-05 10:34:23',
-                coins: 4500
-            }
+
+            date: '2016-01-05 10:34:23',
+            coins: 4500,
         },
         {
-            content: {
-                date: '2017-04-11 10:34:23',
-                coins: 3900
-            }
+
+            date: '2017-04-11 10:34:23',
+            coins: 3900,
         },
         {
-            content: {
-                date: '2018-12-22 10:34:23',
-                coins: 3900
-            }
+
+            date: '2018-12-22 10:34:23',
+            coins: 3900,
         },
         {
-            content: {
-                date: '2019-11-16 10:34:23',
-                coins: 3611
-            }
+
+            date: '2019-11-16 10:34:23',
+            coins: 3611,
         },
         {
-            content: {
-                date: '2020-12-07 10:34:23',
-                coins: 3244
-            }
+
+            date: '2020-12-07 10:34:23',
+            coins: 3244,
         },
         {
-            content: {
-                date: '2020-01-03 10:34:23',
-                coins: 3000
-            }
+
+            date: '2020-01-03 10:34:23',
+            coins: 3000,
         }
     ]
     return (
@@ -247,7 +241,8 @@ export const MultipleWalletRowsWithFixedDivSize = (args) => {
                     return (
                         <WalletRow
                             key={index}
-                            content={user.content}
+                            date={user.date}
+                            coins={user.coins}
                             withColor={{
                                 backgroundColor: '#FFBF00',
                                 textColor: '#000'
