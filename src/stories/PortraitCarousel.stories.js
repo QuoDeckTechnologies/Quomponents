@@ -1,16 +1,5 @@
 import React from "react";
 import PortraitCarousel from "../components/Carousel/PortraitCarousel/PortraitCarousel.react";
-const dictionary = JSON.stringify({
-  hi: {
-    bannerCard: { header: "", content: "" },
-    ribbon: {
-      new: "नया",
-      restricted: "प्रतिबंधित",
-      premium: "अधिमूल्य",
-      free: "नि: शुल्क",
-    },
-  },
-});
 export default {
   title: "Design System/Carousel/PortraitCarousel",
   component: PortraitCarousel,

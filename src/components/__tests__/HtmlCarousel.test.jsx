@@ -35,27 +35,11 @@ describe("HtmlCarousel", () => {
       ],
       onClick: () => { },
     },
-    translations: {
-      tgt: "bannerCard",
-      lang: { valid: "hi", invalid: "xx" },
-      dictionary: JSON.stringify({
-        hi: {
-          bannerCard: { header: "", content: "" },
-          ribbon: {
-            new: "नया",
-            restricted: "प्रतिबंधित",
-            premium: "अधिमूल्य",
-            free: "नि: शुल्क",
-          },
-        },
-      })
-    },
   };
 
   hasValid("defaults", args);
   hasValid("colors", args);
   hasValid("animations", args);
-  hasValid("translations", args);
   let component, content;
   content = [
     {

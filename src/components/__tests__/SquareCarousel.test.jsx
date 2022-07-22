@@ -22,27 +22,11 @@ describe('SquareCarousel', () => {
             content: [],
             onClick: () => { },
         },
-        translations: {
-            tgt: "bannerCard",
-            lang: { valid: "hi", invalid: "xx" },
-            dictionary: JSON.stringify({
-                hi: {
-                    bannerCard: { header: "", content: "" },
-                    ribbon: {
-                        new: "नया",
-                        restricted: "प्रतिबंधित",
-                        premium: "अधिमूल्य",
-                        free: "नि: शुल्क"
-                    }
-                },
-            }),
-        },
     };
 
     hasValid("defaults", args);
 
     hasValid("animations", args);
-    hasValid("translations", args);
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------

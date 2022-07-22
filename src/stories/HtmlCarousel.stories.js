@@ -1,17 +1,5 @@
 import React from "react";
 import HtmlCarousel from "../components/Carousel/HtmlCarousel/HtmlCarousel.react";
-
-const dictionary = JSON.stringify({
-  hi: {
-    bannerCard: { header: "", content: "" },
-    ribbon: {
-      new: "नया",
-      restricted: "प्रतिबंधित",
-      premium: "अधिमूल्य",
-      free: "नि: शुल्क",
-    },
-  },
-});
 export default {
   title: "Design System/Carousel/HtmlCarousel",
   component: HtmlCarousel,

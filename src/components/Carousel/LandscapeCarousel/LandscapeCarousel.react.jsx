@@ -80,7 +80,7 @@ export default function LandscapeCarousel(props) {
     let tmp_obj = {};
 
     tmp_state.forEach((dataObj) => {
-      if (dataObj?.id === data.content.id) {
+      if (dataObj?.id === data.id) {
         tmp_obj = { ...dataObj };
         tmp_obj.selected = true;
         tmp_arr.push(tmp_obj);
@@ -107,7 +107,6 @@ export default function LandscapeCarousel(props) {
     centerPadding: "0%",
     swipeToSlide: true,
   };
-  console.log(content[0].props?.asVariant)
   // ========================= Render Function =================================
 
   return (
@@ -123,7 +122,10 @@ export default function LandscapeCarousel(props) {
             >
               <div className={`qui-landscape-slide`}>
                 {slide.selected && (
-                  <div className={`qui-mid-circle qui-btn variant-${slide.props?.asVariant}`}>
+                  <div className={`qui-mid-circle qui-btn variant-${slide.props?.asVariant}`} style={{
+                    backgroundColor: slide.props?.withColor?.backgroundColor,
+                    color: slide.props?.withColor?.textColor
+                  }}>
                     <div className="qui-landscape-checkbox">
                       <i className={"fas fa-check-square"}></i>
                     </div>
@@ -131,6 +133,7 @@ export default function LandscapeCarousel(props) {
                 )}
                 <BannerCard
                   {...slide.props}
+                  {...slide}
                   header={slide.header}
                   image={slide.image}
                   tag={slide.tag}
