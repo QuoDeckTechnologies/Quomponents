@@ -2,40 +2,42 @@
 /* Reward Container Definitions */
 /* ================================================= */
 .qui .qui-reward-container {
-    min-width: 6rem;
-    display: flex;
-    flex-direction: column;
-
+  min-width: 6rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .qui .qui-label-container {
-    display: flex;
-    justify-content: right;
-    padding-left: 0.5em;
-    text-align: left;
-    font-size: 1.25em;
-    color: #3e587a;
-    
+  display: flex;
+  justify-content: right;
+  padding-left: 0.5em;
+  text-align: left;
+  color: #3e587a;
+  .qui-reward-label {
+    margin: 0;
+  }
 }
 
 .qui .qui-point-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: right;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
 }
 
 .qui .qui-point-container .qui-point {
-    padding-left: 0.2em;
-    text-align: left;
-    font-size: 2.25em;
-    color: #ed6e6e;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  padding-left: 0.2em;
+  text-align: left;
+  color: #ed6e6e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  .qui-reward-points {
+    margin: 0;
+  }
 }
 
 .qui .qui-reward-image {
-    width: 3em;
-    align-self: start;
-    padding: 0.3em;
+  width: 2em;
+  align-self: start;
+  padding: 0.3em;
 }
