@@ -19,7 +19,7 @@
 .qui .qui-ordering-border-up {
     display: flex;
     width: 100%;
-    margin-bottom: 0.4em;
+    margin-bottom: 0.1em;
     border-bottom: 0.2em solid #666666;
 }
 
@@ -33,14 +33,14 @@
 .qui .qui-ordering-border-down {
     display: flex;
     width: 100%;
-    margin-top: 0.4em;
+    margin-top: 0.1em;
     border-top: 0.2em solid #666666;
 }
 
 .qui .qui-ordering-dotted-down {
     display: flex;
     width: 100%;
-    margin-top: 0.2em;
+    margin-top: 0.1em;
     border-top: 0.2em dashed #666666;
     align-items: center;
 }

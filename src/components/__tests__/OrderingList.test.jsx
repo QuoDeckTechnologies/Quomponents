@@ -15,6 +15,7 @@ import { hasValid } from "./common";
 // Import Components
 // -------------------------------------
 import OrderingList from "../OrderingList/OrderingList/OrderingList.react";
+import Button from "../Buttons/Button/Button.react";
 
 describe("OrderingList", () => {
   // -------------------------------------
@@ -31,10 +32,7 @@ describe("OrderingList", () => {
   hasValid("defaults", args);
 
   hasValid("variants", args);
-  hasValid("sizes", args);
   hasValid("positions", args);
-
-  hasValid("animations", args);
 
   hasValid("hidden", args);
   hasValid("disabled", args);
@@ -42,52 +40,27 @@ describe("OrderingList", () => {
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-  const dictionary = JSON.stringify({
-    en: {
-      templateActions: {
-        checkAnswer: 'Check Answer',
-        submitAnswer: 'Submit Answer',
-        thanks: 'Thanks for your response',
-        go: 'Go',
-      }
-    },
-    hi: {
-      templateActions: {
-        checkAnswer: 'अपना उत्तर जाँच लें',
-        submitAnswer: 'अपना जवाब सबमिट करें',
-        thanks: 'आपके उत्तर के लिए धन्यवाद',
-        go: 'आगे बढ़ें',
-      }
-    }
-  });
+
   let component;
   beforeEach(() => {
     jest.resetAllMocks();
     component = mount(
       <OrderingList
         content={["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"]}
-        asVariant="primary"
-        asSize="normal"
-        asFloated="none"
-        withAnimation={null}
-        withTranslation={null}
-        isDisabled={false}
-        isHidden={false}
+        purpose="quiz"
         onClick={() => { }}
       />
     );
+  });
+  it("should render correctly without throwing error when clicked on Submit button", () => {
+    component.setProps({
+      purpose: "quiz"
+    })
   });
   it("should render correctly without throwing error when component unmounts", () => {
     const { unmount } = render(
       <OrderingList
         content={["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"]}
-        asVariant="primary"
-        asSize="normal"
-        asFloated="none"
-        withAnimation={null}
-        withTranslation={null}
-        isDisabled={false}
-        isHidden={false}
         onClick={() => { }}
       />
     );
@@ -112,31 +85,4 @@ describe("OrderingList", () => {
     component.find('.qui-btn').at(6).simulate("click");
     component.find('.qui-btn').at(7).simulate("click");
   });
-  it("should render submit answer text in hindi", () => {
-    component.setProps({
-      purpose: "",
-      withTranslation: {
-        lang: "hi",
-        tgt: "templateActions",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.find("Button").text()).toBe("अपना जवाब सबमिट करें");
-  });
-
-  it("should render check answer text in hindi", () => {
-    component.setProps({
-      purpose: "quiz",
-      withTranslation: {
-        lang: "hi",
-        tgt: "templateActions",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.find("Button").text()).toBe("अपना उत्तर जाँच लें");
-  });
-  it("should render check answer text in hindi", () => {
-    component.find("Button").simulate("click");
-  });
-
 });
