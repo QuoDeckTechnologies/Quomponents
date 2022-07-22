@@ -16,9 +16,9 @@
         font-weight: bold;
         align-self: flex-start;
         width: auto;
+        padding-bottom: 0.25em;
     }
     .qui .qui-point-container .qui-point {
-        padding-top: 0.1em;
         color: #fff;
         white-space: nowrap;
         overflow: hidden;
@@ -131,7 +131,7 @@
         font-size: 0.5em;
     }
     .qui-reward-card .qui .qui-point-container .qui-point {
-        padding-top: 0.2em;
+        padding-top: 0.05em;
         padding-left: 0em;
         font-size: 1.3em;
     }
@@ -139,7 +139,7 @@
         font-size: 1.4em;
     }
     .qui-reward-card .qui .qui-reward-image {
-        width: 2em;
+        width: 2.2em;
     }
 }
 
