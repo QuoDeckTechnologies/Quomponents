@@ -2,16 +2,25 @@
 /* AccentLine Container Definitions */
 /* ================================================= */
 .qui .qui-reward-badge-container {
-    min-width: 10em;
-    min-height: 10em;
+    width: 13em;
+    height: 11em;
+    min-width: 13em;
+    min-height: 13em;
+    padding: 0.5em;
     border-radius: 0.5em;
     h5 {
         margin-block-end: 1em;
         margin-block-start: 1em;
+        width: 10em;
     }
-}
-
-.qui .qui-reward-badge {
-    width: 6em;
-    height: 6em;
+    .qui-badge-label {
+        width: fit-content;
+    }
+    .qui-badge-caption {
+        width: fit-content;
+    }
+    .qui-reward-badge {
+        width: 6em;
+        height: 6em;
+    }
 }

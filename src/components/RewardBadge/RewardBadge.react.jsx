@@ -1,14 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 import {
-    getAnimation,
     getQuommons,
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./RewardBadge.scss";
 import "../../common/stylesheets/overrule.scss";
-import Segment from "../Segment/Segment.react";
 
 
 RewardBadge.propTypes = {
@@ -49,45 +46,25 @@ RewardBadge.propTypes = {
         textColor: PropTypes.string,
     }),
     /**
-    Use to define component padding in increasing order
-    */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-    /**
-    Use to float the component in parent container
-    */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
     Use to set Colors for accent line
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
-    }),
-
-    /**
-    Use to define the entry animation of the component
-     */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-            "",
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
+        textColor: PropTypes.string,
     }),
     /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
     /**
-    Use to toggle the component taking the full width of the parent container
+    Use to show/hide the component
     */
-    isFluid: PropTypes.bool,
+    isDisabled: PropTypes.bool,
+
+    /**
+    Reward Badge component must have the onClick function passed as props
+    */
+    onClick: PropTypes.func.isRequired,
 };
 
 RewardBadge.defaultProps = {
@@ -99,16 +76,13 @@ RewardBadge.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "warning",
-    asPadded: "normal",
     asSize: "normal",
-    asFloated: "none",
 
     withColor: null,
-    withAnimation: null,
     withLabel: null,
 
     isHidden: false,
-    isFluid: false,
+    isDisabled: false,
 };
 /**
 ## Notes
@@ -126,7 +100,6 @@ export default function RewardBadge(props) {
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props);
     let labelContent = Object.assign({}, props.withLabel);
     function getLabel(labelObj, position) {
         return labelObj?.format === position ? labelObj.content : "";
@@ -134,25 +107,27 @@ export default function RewardBadge(props) {
 
     // ========================= Render Function =================================
     return (
-        <motion.div
-            initial={animate.from}
-            animate={animate.to}
+        <div
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-reward-badge-container qui-btn ${quommonClasses.childClasses}`} style={{ backgroundColor: props.withColor?.backgroundColor }}>
-                <h5>
-                    {getLabel(labelContent, "label")}
-                </h5>
+            <div className={`qui-reward-badge-container qui-btn ${quommonClasses.childClasses}`} style={{ backgroundColor: props.withColor?.backgroundColor, color: props.withColor?.textColor }} onClick={() => props.onClick}>
+                <div className="qui-badge-label">
+                    <h5>
+                        {getLabel(labelContent, "label")}
+                    </h5>
+                </div>
                 <img
                     className="qui-reward-badge"
                     src={`${props?.image}`}
                     alt="reward-badge"
                     title={getLabel(labelContent, "popover")}
                 />
-                <h5 >
-                    {getLabel(labelContent, "caption")}
-                </h5>
+                <div className="qui-badge-caption">
+                    <h5>
+                        {getLabel(labelContent, "caption")}
+                    </h5>
+                </div>
             </div>
-        </motion.div>
+        </div>
     );
 }
