@@ -5,7 +5,6 @@ export default {
 	title: "Design System/NuggetCard",
 	component: NuggetCard,
 	argTypes: {
-		content: {
 			published: false,
 			tags: [],
 			category: "",
@@ -14,7 +13,6 @@ export default {
 			image: "",
 			points: "",
 			identifier: "",
-		},
 		asFloated: {
 			control: "select",
 			options: ["left", "right","none", "inline"],
@@ -67,7 +65,6 @@ export default {
 const Template = (args) => <NuggetCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
     published: false,
     tags: ["Sales"],
     category: "profiler",
@@ -88,7 +85,6 @@ Default.args = {
         ],
       },
     ],
-  },
   asFloated: "inline",
   isDisabled: false,
   isHidden: false,
@@ -107,7 +103,6 @@ Default.parameters = {
 export const NuggetCardWithManyTags = Template.bind({});
 NuggetCardWithManyTags.args = {
 	...Default.args,
-	content: {
 		published: false,
 		tags: ["Article", "Cataloing", "Returns Management", "Orders Management", "Payments and Settlements", "Customer", "Latest", "Pneumonoultramicroscopicsilicovolcanoconiosis", "Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5", "Tag 6", "Tag 7", "Tag 8", "Tag 9", "Tag 10", "Tag 11", "Tag 12", "Tag 13", "Tag 14", "Tag 15", "Tag 16", "Tag 17", "Tag 18", "Tag 19", "Tag 20", "Tag 21", "Tag 22", "Tag 23", "Tag 24"],
 		category: "profiler",
@@ -116,7 +111,6 @@ NuggetCardWithManyTags.args = {
 		image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
 		points: "200",
 		identifier: "XrPmy_OAK",
-	},
 	asFloated: "inline",
 	isDisabled: false,
 	isHidden: false,
@@ -141,7 +135,6 @@ NuggetCardWithManyTags.parameters = {
 export const PublishedNuggetCard = Template.bind({});
 PublishedNuggetCard.args = {
 	...Default.args,
-	content: {
 		published: true,
 		tags: ["Sales1", "Sales2"],
 		category: "profiler",
@@ -150,7 +143,6 @@ PublishedNuggetCard.args = {
 		image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
 		points: "200",
 		identifier: "XrPmy_OAK",
-	},
 	asFloated: "inline",
 	isDisabled: false,
 	isHidden: false,
@@ -175,7 +167,6 @@ PublishedNuggetCard.parameters = {
 export const NuggetCardWithExtraContent = Template.bind({});
 NuggetCardWithExtraContent.args = {
 	...Default.args,
-	content: {
 		published: true,
 		tags: ["Sales1", "Sales2"],
 		category: "profiler",
@@ -184,7 +175,6 @@ NuggetCardWithExtraContent.args = {
 		image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
 		points: "200",
 		identifier: "XrPmy_OAK",
-	},
 	asFloated: "inline",
 	isDisabled: false,
 	isHidden: false,

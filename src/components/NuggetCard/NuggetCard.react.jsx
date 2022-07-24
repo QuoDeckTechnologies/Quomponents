@@ -44,41 +44,38 @@ NuggetCard.propTypes = {
 	//=======================================
 	// Component Specific props
 	//=======================================
-	/**
-    Content props consist of all the data which are required for Nugget Card component
-    */
-	content: PropTypes.shape({
-		published: PropTypes.bool,
-		category: PropTypes.oneOf([
-			"quiz",
-			"assessment",
-			"game",
-			"profiler",
-			"recommendation",
-			"calculator",
-			"survey",
-			"poll",
-			"feedback",
-			"submission",
-			"linklist",
-			"article",
-			"document",
-			"video",
-			"story",
-			"event",
-			"news",
-			"webinar",
-			"gallery",
-			"faq",
-		]),
-		tags: PropTypes.arrayOf(PropTypes.string),
-		name: PropTypes.string,
-		description: PropTypes.string,
-		image: PropTypes.string,
-		points: PropTypes.string,
-		identifier: PropTypes.string,
-	}),
-
+	/*
+	consist of all the data which are required for Nugget Card component
+	*/
+	published: PropTypes.bool,
+	category: PropTypes.oneOf([
+		"quiz",
+		"assessment",
+		"game",
+		"profiler",
+		"recommendation",
+		"calculator",
+		"survey",
+		"poll",
+		"feedback",
+		"submission",
+		"linklist",
+		"article",
+		"document",
+		"video",
+		"story",
+		"event",
+		"news",
+		"webinar",
+		"gallery",
+		"faq",
+	]),
+	tags: PropTypes.arrayOf(PropTypes.string),
+	name: PropTypes.string,
+	description: PropTypes.string,
+	image: PropTypes.string,
+	points: PropTypes.string,
+	identifier: PropTypes.string,
 	// Quommon props
 	//=======================================
 	/**
@@ -102,8 +99,6 @@ NuggetCard.propTypes = {
 NuggetCard.defaultProps = {
 	// Component Specific props
 	//=======================================
-	content: {},
-
 	// Quommon props
 	//=======================================
 	asFloated: "inline",
@@ -128,19 +123,19 @@ export default function NuggetCard(props) {
 	//-------------------------------------------------------------------
 	// 2. Get the Image
 	//-------------------------------------------------------------------
-	let image = props.content?.image ? props.content?.image : defaultImage;
+	let image = props?.image ? props?.image : defaultImage;
 
 	//-------------------------------------------------------------------
 	// 3. Get the tag styling
 	//-------------------------------------------------------------------
-	let tagStyle = props.content?.tags ? "flex" : "none";
+	let tagStyle = props?.tags ? "flex" : "none";
 
 	//-------------------------------------------------------------------
 	// 4. Create link of article, based on the identifier
 	//-------------------------------------------------------------------
 	let link;
-	if (props.content?.identifier) {
-		link = "https://www.quodeck.com/" + props.content?.identifier;
+	if (props?.identifier) {
+		link = "https://www.quodeck.com/" + props?.identifier;
 	} else {
 		link = "";
 	}
@@ -148,7 +143,7 @@ export default function NuggetCard(props) {
 	//-------------------------------------------------------------------
 	// 5. Get published status
 	//-------------------------------------------------------------------
-	let status = props.content?.published === true ? "published" : "none";
+	let status = props?.published === true ? "published" : "none";
 
 	//-------------------------------------------------------------------
 	// 6. Get the Nugget Image
@@ -179,18 +174,18 @@ export default function NuggetCard(props) {
 	//-------------------------------------------------------------------
 	// 7. Capitalize first letter of category text
 	//-------------------------------------------------------------------
-	let category = props.content?.category ? props.content?.category?.charAt(0).toUpperCase() + props.content?.category?.slice(1) : "";
+	let category = props?.category ? props?.category?.charAt(0).toUpperCase() + props?.category?.slice(1) : "";
 
 	//-------------------------------------------------------------------
 	// 8. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
 	//-------------------------------------------------------------------
 	let truncate;
-	let tag1Length = props.content?.tags?.length > 0 ? props.content?.tags[0]?.length : "";
-	let tag2Length = props.content?.tags?.length > 0 ? props.content?.tags[1]?.length : "";
-	let tag3Length = props.content?.tags?.length > 0 ? props.content?.tags[2]?.length : "";
+	let tag1Length = props?.tags?.length > 0 ? props?.tags[0]?.length : "";
+	let tag2Length = props?.tags?.length > 0 ? props?.tags[1]?.length : "";
+	let tag3Length = props?.tags?.length > 0 ? props?.tags[2]?.length : "";
 	let showMoreBtn = false;
 	let minTags = 5;
-	let maxTags = props.content?.tags?.length;
+	let maxTags = props?.tags?.length;
 	let showTags = 5;
 
 	const [expandTags, setExpandTags] = useState(false);
@@ -204,7 +199,7 @@ export default function NuggetCard(props) {
 		setItirate(maxTags);
 		setExpandTags(true);
 	};
-	if (tag1Length >= 15 || tag2Length >= 15 || tag3Length >= 15 || props.content?.tags?.length > 5) {
+	if (tag1Length >= 15 || tag2Length >= 15 || tag3Length >= 15 || props?.tags?.length > 5) {
 		showMoreBtn = true;
 		if (expandTags === true) {
 			truncate = "qui-nugget-card-untruncate";
@@ -226,16 +221,16 @@ export default function NuggetCard(props) {
 						<div className={`qui-nugget-block-styling`}>
 							<NuggetBlock
 								status={status}
-								image={nuggetImages[props.content?.category]}
+								image={nuggetImages[props?.category]}
 							/>
 						</div>
-						<div className={`qui-nugget-card-title`}>{props.content?.name}</div>
+						<h5 className={`qui-nugget-card-title`}>{props?.name}</h5>
 					</div>
 					<div className="qui-nugget-card-tag-show-more">
 						<div
-							className={`qui-nugget-card-tag-container`}
+							className={`qui-nugget-card-tag-container qt-lbl`}
 							style={{ display: tagStyle }} >
-							{_.map(props.content?.tags, (tag, index) => {
+							{_.map(props?.tags, (tag, index) => {
 								if (index < itirate) {
 									return (
 										<div
@@ -265,17 +260,17 @@ export default function NuggetCard(props) {
 							)}
 						</div>
 					</div>
-					<BannerCard content={{ image: image }} onClick={() => { }} />
+					<BannerCard image={image} onClick={() => { }} />
 					<div className={`qui-nugget-card-description-container`}>
 						<div className={`qui-nugget-card-description`}>
-							{props.content?.description}
+							{props?.description}
 						</div>
 						<div className={`qui-nugget-card-reward`}>
 							<Reward
-								asSize="tiny"
+								asSize="small"
 								content={{
 									label: "Complete to win",
-									point: props.content?.points,
+									point: props?.points,
 								}}
 							/>
 						</div>
@@ -284,7 +279,14 @@ export default function NuggetCard(props) {
 				<div className="qui-nugget-card-footer">
 					<div className={`qui-nugget-card-arc-menu`}>
 						<ArcMenu
-							menuContent={props.content?.menuContent}
+							withIcon={{ icon: "fas fa-user" }}
+							withColor={{
+								backgroundColor: "#666666",
+								textColor: "#FFBF00",
+								hoverBackgroundColor: "#666666",
+								hoverTextColor: "#FFBF00",
+							}}
+							menuContent={props?.menuContent}
 							menuType="menu"
 							arcIcon="menu"
 							position="bottom-left"
@@ -292,23 +294,23 @@ export default function NuggetCard(props) {
 						/>
 					</div>
 					<div className={`qui-nugget-card-share-block`}>
-						<div className={`qui-nugget-card-name`}>{category}</div>
+						<div className={`qui-nugget-card-name qt-sm`}>{category}</div>
 						<div className={"qui-nugget-card-share-widget"}>
 							<ShareWidget
-								asSize="tiny"
+								asSize="small"
 								withColor={{ textColor: "#AAAAAA" }}
 								content={{ label: "Share", url: link }}
 							/>
 						</div>
 						<div className={"qui-nugget-card-link-container"}>
-							<a className={"qui-nugget-card-link"} href={link}>
+							<a className={"qui-nugget-card-link qt-sm"} href={link}>
 								{link}
 							</a>
 							<div className={`qui-nugget-card-copy-icon-container`}>
 								<IconBlock
 									asSize="small"
 									asEmphasis="text"
-									withIcon={{ name: "fas fa-copy" }}
+									withIcon={{ icon: "fas fa-copy", size: "0.8em" }}
 									withColor={{ accentColor: "#FFBF00" }}
 									asPadded="fitted"
 									onClick={() => {
@@ -323,8 +325,8 @@ export default function NuggetCard(props) {
 		);
 	};
 	return (
-		<div className={`qui ${quommonClasses.parentClasses}`}>
-			<div className={`${quommonClasses.childClasses}`}>{nuggetCard()}</div>
+		<div className={`qui ${quommonClasses.parentClasses} qt-shadow`}>
+			<div className={`${quommonClasses.childClasses}`} >{nuggetCard()}</div>
 		</div>
 	);
 }

@@ -35,35 +35,30 @@ describe("NuggetCard", () => {
 	hasValid("defaults", args);
 
 	hasValid("positions", args);
-
-	hasValid("animations", args);
-
 	hasValid("hidden", args);
-    hasValid("disabled", args);
+	hasValid("disabled", args);
 
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
-	let component, content;
-	content = {
-		published: false,
-		tags: [],
-		category: "profiler",
-		name: "Measure your sales readiness",
-		description:
-			"Take this quick profile test to check how well you are prepared for a sales job",
-		image:
-			"https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg",
-		points: "200",
-		identifier: "XrPmy_OAK",
-	};
+	let component;
+
 	let mockFn = jest.fn();
 	jest.spyOn(navigator.clipboard, "writeText");
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<NuggetCard
-				content={content}
+				published={false}
+				tags={[]}
+				category="profiler"
+				name="Measure your sales readiness"
+				description=
+				"Take this quick profile test to check how well you are prepared for a sales job"
+				image=
+				"https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
+				points="200"
+				identifier="XrPmy_OAK"
 				asFloated="inline"
 				isHidden={false}
 				isDisabled={false}
@@ -74,7 +69,7 @@ describe("NuggetCard", () => {
 
 	it("should copy the link when clicked on copy icon", () => {
 		component.setProps({
-			content: { category: "profiler", identifier: "XrPmy_MND" },
+			category: "profiler", identifier: "XrPmy_MND",
 		});
 		let iconBlock = component.find(IconBlock);
 		iconBlock.simulate("click");
@@ -88,29 +83,27 @@ describe("NuggetCard", () => {
 	});
 
 	it("should show image when passed image", () => {
-		let content = {
+		component.setProps({
 			category: "profiler",
 			image: "https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg"
-		};
-		component.setProps({ content: content });
+		});
 		component.find(BannerCard).simulate("click");
-		expect(component.find(BannerCard).props().content.image).toBe("https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg");
+		expect(component.find(BannerCard).props().image).toBe("https://www.amplayfy.com/public/articleImages/600aa823d7574462d1bab297/6242e5ab08022402d009e90d.jpg");
 	});
 
 	it("should show default image when passed nothing in image", () => {
-		let content = {
+		component.setProps({
 			category: "profiler",
 			image: "",
-		};
-		component.setProps({ content: content });
-		expect(component.find(BannerCard).props().content.image).toBe(
+		});
+		expect(component.find(BannerCard).props().image).toBe(
 			"default.jpeg"
 		);
 	});
 
 	it("should display showmore button when passed more than 5 tags and on click should show all the tags", () => {
 		component.setProps({
-			content: { tags: ["Tag1", "Tag2", "Tag3", "Tag4", "Tag5", "Tag6"] },
+			tags: ["Tag1", "Tag2", "Tag3", "Tag4", "Tag5", "Tag6"]
 		});
 		let showMore = component.find("button");
 		expect(showMore.exists()).toBe(true);
@@ -120,7 +113,7 @@ describe("NuggetCard", () => {
 
 	it("should display showmore button when passed long text in the tag and on click should show all the tags", () => {
 		component.setProps({
-			content: { tags: ["Pneumonoultramicroscopicsilicovolcanoconiosis"] }
+			tags: ["Pneumonoultramicroscopicsilicovolcanoconiosis"]
 		});
 		let showMore = component.find("button");
 		expect(showMore.exists()).toBe(true);
@@ -129,7 +122,7 @@ describe("NuggetCard", () => {
 	});
 
 	it("should show the published nugget card", () => {
-		component.setProps({ content: { published: true } });
+		component.setProps({ published: true });
 		expect(component.find(NuggetBlock).props().status).toBe("published");
 	});
 });
