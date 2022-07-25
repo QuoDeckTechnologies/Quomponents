@@ -23,9 +23,9 @@ Banner.propTypes = {
     Banner data should be passed in content field and it is required field
     */
     content: PropTypes.arrayOf(PropTypes.shape({
-        image: PropTypes.string,
         header: PropTypes.string,
         description: PropTypes.string,
+        image: PropTypes.string,
     })).isRequired,
     //=======================================
     // Quommon props
@@ -163,7 +163,7 @@ export default function Banner(props) {
                                 key={"bannerContent-" + index + Math.random()}
                             >
                                 <div
-                                    className="qui-banner-description qui qt-sm"
+                                    className="qui-banner-description qt-sm"
                                     style={{ color: withColor?.textColor }}
                                 >
                                     {slide?.description}

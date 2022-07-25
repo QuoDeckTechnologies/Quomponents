@@ -6,9 +6,9 @@ export default {
     component: Banner,
     argTypes: {
         content: [{
-            image: "",
             header: "",
             description: "",
+            image: "",
         }],
         asVariant: {
             control: "select",
@@ -77,19 +77,19 @@ export const Default = Template.bind({});
 Default.args = {
     content: [
         {
-            image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
             header: "What is Lorem Ipsum?",
             description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
         },
         {
-            image: "https://www.gannett-cdn.com/media/2019/01/18/USATODAY/usatsports/gettyimages-500740897.jpg?crop=1365,768,x0,y0&width=660&height=372&format=pjpg&auto=webp",
             header: "Welcome to the Learning Library",
             description: "There is always something new to learn here. Articles, games, the whole kitchen sink. Just click to enter and have fun...",
+            image: "https://www.gannett-cdn.com/media/2019/01/18/USATODAY/usatsports/gettyimages-500740897.jpg?crop=1365,768,x0,y0&width=660&height=372&format=pjpg&auto=webp",
         },
         {
-            image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
             header: "BALLOON BURST",
             description: "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+            image: "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
         },
     ],
     asVariant: "warning",
