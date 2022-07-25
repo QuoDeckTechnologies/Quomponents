@@ -100,6 +100,7 @@ export default function OptionalImageField(props) {
   //-------------------------------------------------------------------
   const fileRef = useRef();
   const [file, setFile] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const [baseFile, setBaseFile] = useState("");
   //-------------------------------------------------------------------
   // 2. Destructuring props
@@ -176,6 +177,7 @@ export default function OptionalImageField(props) {
             {icon && (
               <td
                 className="qui-optional-image-field-container"
+                style={{ backgroundColor: withColor?.backgroundColor }}
                 onClick={uploadFile}
               >
                 {baseFile ? (
@@ -200,8 +202,20 @@ export default function OptionalImageField(props) {
               <Button
                 className="qui-optional-image-field-button"
                 variant="outlined"
-                sx={{ backgroundColor: withColor?.backgroundColor }}
+                style={
+                  hovered
+                    ? {
+                        backgroundColor: withColor?.hoverBackgroundColor,
+                        color: withColor?.hoverTextColor,
+                      }
+                    : {
+                        backgroundColor: withColor?.backgroundColor,
+                        color: withColor?.textColor,
+                      }
+                }
                 onClick={uploadFile}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
               >
                 {title || "Upload"}
               </Button>
