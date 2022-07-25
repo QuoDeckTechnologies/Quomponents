@@ -2,19 +2,20 @@
   border-radius: 0.5em;
   margin-bottom: 1em;
   padding: 1em;
-  align-items: center;
-  justify-content: center;
 }
+
 .qui.qui-bulletblock li {
   margin: 0em;
   padding: 0em;
   margin-left: -0.5em;
   margin-bottom: -0.7em;
 }
-.qui .li:last-child {
+
+.qui .qui-bulletblock-item:last-child {
   margin-bottom: -1em;
 }
-.qui.qui-bulletblock  ul {
+
+.qui.qui-bulletblock ul {
   margin-top: -0.1em;
   padding-bottom: 0;
 }
@@ -24,11 +25,13 @@
     font-size: 1em;
   }
 }
+
 @media screen and (min-width: 481px) {
   .qui-bulletblock {
     font-size: 1.5em;
   }
 }
+
 @media screen and (min-width: 769px) {
   .qui-bulletblock {
     font-size: 1.8em;

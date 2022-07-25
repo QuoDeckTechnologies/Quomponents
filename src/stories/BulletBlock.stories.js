@@ -40,7 +40,6 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
-                    accentColor: "",
                     textColor: "",
                 },
             },
@@ -65,7 +64,7 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "",
+                    textAlign: "center",
                 }}
             >
                 {story()}
@@ -96,15 +95,14 @@ Default.args = {
         "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
     ],
 
-    asSize: "normal",
-    asFloated: "none",
+    asSize: "small",
+    asFloated: "inline",
     asPadded: "normal",
     asAligned: "left",
 
     withColor: {
         textColor: "#121212",
         backgroundColor: "",
-        accentColor: "",
     },
 
     isHidden: false,
@@ -125,9 +123,8 @@ export const ColoredBulletblock = Template.bind({});
 ColoredBulletblock.args = {
     ...Default.args,
     withColor: {
-        backgroundColor: "#C98787",
-        textColor: "#ffffff",
-        accentColor: "",
+        backgroundColor: "#14213d",
+        textColor: "#edb51c",
     },
 };
 ColoredBulletblock.parameters = {
@@ -142,41 +139,60 @@ ColoredBulletblock.parameters = {
 };
 
 // -------------------------------------------------------------
-// Allvariant
+// BulletblockWithAllVariant
 // -------------------------------------------------------------
 const AllvariantTemplate = (args) => {
     const baseObj = {
         ...Object.assign({}, Default.args, args, {
         }),
     };
-    return (
+    return (<>
         <div>
             <BulletBlock
                 {...Object.assign({}, baseObj, {
+                    asSize: "tiny",
+                    asAligned: "left",
+                    asFloated: "inline",
                     withColor: {
                         textColor: "#121212",
                         backgroundColor: "",
-                        accentColor: "",
                     },
 
                 })}
-            />
+            /></div>
+        <div>
             <BulletBlock
                 {...Object.assign({}, baseObj, {
+                    asSize: "small",
+                    asAligned: "right",
+                    asFloated: "inline",
                     withColor: {
                         backgroundColor: "#C98787",
                         textColor: "#ffffff",
-                        accentColor: "",
+                    },
+
+                })}
+            /></div>
+        <div>
+            <BulletBlock
+                {...Object.assign({}, baseObj, {
+                    asSize: "normal",
+                    asAligned: "center",
+                    asFloated: "inline",
+                    withColor: {
+                        backgroundColor: "#87b7b6",
+                        textColor: "#14213d",
                     },
 
                 })}
             />
         </div>
+    </>
     );
 };
 
-export const Allvariant = AllvariantTemplate.bind({});
-Allvariant.parameters = {
+export const BulletblockWithAllVariant = AllvariantTemplate.bind({});
+BulletblockWithAllVariant.parameters = {
     docs: {
         description: {
             story: "All Variants are supported in BulletBock.",

@@ -53,7 +53,6 @@ BulletBlock.propTypes = {
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
         textColor: PropTypes.string,
     }),
     /**
@@ -74,9 +73,9 @@ BulletBlock.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asSize: "normal",
+    asSize: "small",
     asPadded: "normal",
-    asFloated: "none",
+    asFloated: "inline",
     asAligned: "left",
     withColor: null,
     isHidden: false,
@@ -87,9 +86,6 @@ function getColors(colors) {
     let colorStyle = {
         textColors: {
             color: colors.textColor,
-        },
-        accentColors: {
-            color: colors.accentColor,
         },
         backgroundColors: {
             backgroundColor: colors.backgroundColor,
@@ -124,7 +120,7 @@ export default function BulletBlock(props) {
             <div className={` ${quommonClasses.childClasses}`}>
                 {_.map(props.content, (item, index) => {
                     return (
-                        <div className="li"
+                        <div className="qui-bulletblock-item"
                             style={colors.textColors}
                             key={index}>
                             <ul>
