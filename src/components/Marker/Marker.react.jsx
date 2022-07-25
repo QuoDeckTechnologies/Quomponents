@@ -31,9 +31,16 @@ Marker.propTypes = {
     // Quommon props
     //=======================================
     /**
-    Use to float the component in parent container
+    Use to define component size in increasing order
     */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
     /**
     Use to define the entry animation of the component
     */
@@ -74,7 +81,7 @@ Marker.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asFloated: "none",
+    asSize: "normal",
 
     withAnimation: null,
 
@@ -153,52 +160,49 @@ export default function Marker(props) {
         }
     };
     let markerBlock = (
-        <div className="absoluteDiv">
-            <img
-                className="qui-marker-img"
-                src={
-                    WrapperList[content?.wrapper]?.customMarker
-                        ? "assets/courses/" +
-                        content?.wrapper +
-                        "/markers/" +
-                        status +
-                        ".png"
-                        : "assets/images/configurable/wrappericons/" +
-                        status +
-                        ".png"
-                }
-            />
-            {WrapperList[content?.wrapper]?.sequenceInset && (
-                <div className="qui-marker-text">{content?.inset}</div>
-            )}
+        <div className={`qui ${quommonClasses.parentClasses}`}>
+            <div className={`qui ${quommonClasses.childClasses}`}>
+                <img
+                    className="qui-marker-img"
+                    src={
+                        WrapperList[content?.wrapper]?.customMarker
+                            ? "assets/courses/" +
+                            content?.wrapper +
+                            "/markers/" +
+                            status +
+                            ".png"
+                            : "assets/images/configurable/wrappericons/" +
+                            status +
+                            ".png"
+                    }
+                />
+                {WrapperList[content?.wrapper]?.sequenceInset && (
+                    <div className="qui-marker-text">{content?.inset}</div>
+                )}
+            </div>
         </div>
     );
     let prevComplete = 0;
     let currComplete = 0;
     let marker =
         status === "current" ? (
-            <div className="qui-marker-style">
-                <motion.div
-                    animate={{ scale: [1, 1.15, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                >
+            <motion.div
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+            >
+                <div className="qui-marker-style">
                     {markerBlock}
-                </motion.div>
-            </div>
+                </div>
+            </motion.div>
         ) : (
             <div className="qui-marker-style">
-                <motion.div
-                    animate={{ scale: [1, 1.15, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                >
-                    {markerBlock}
-                </motion.div>
+                {markerBlock}
             </div>
         );
-    return isPortrait || status === "incomplete" ? (
+    return isPortrait || status !== null ? (
         marker
     ) : (
-        <div trigger={marker} on="click" className="qui-marker-popup">
+        <div trigger={marker} onClick={props.onClick} className="qui-marker-popup">
             <img
                 src={
                     "assets/courses/" +
@@ -256,9 +260,8 @@ export default function Marker(props) {
                             <div style={iconWrapper}>
                                 <i
                                     name={iconName(deck.readerType)}
-                                    size="small"
                                 />
-                                <i name="chevron right" size="small" />
+                                <i className="fa fa share" />
                             </div>
                         </li>
                     );

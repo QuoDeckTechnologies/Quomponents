@@ -15,6 +15,7 @@ describe("Marker", () => {
             <Marker
                 content={null}
                 status="current"
+                asSize="normal"
                 withAnimation={null}
                 isDisabled={false}
                 isHidden={false}

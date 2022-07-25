@@ -16,9 +16,9 @@ export default {
                 category: "as-Flags",
             },
         },
-        asFloated: {
+        asSize: {
             control: "select",
-            options: ["left", "right", "none", "inline"],
+            options: ["tiny", "small", "normal", "big", "huge", "massive"],
             table: {
                 category: "as-Flags",
             },
@@ -81,7 +81,7 @@ Default.args = {
         inset: 1
     },
     status: "current",
-    asFloated: "inline",
+    asSize: "normal",
     withAnimation: {
         animation: "collapse",
         duration: 0.5,
