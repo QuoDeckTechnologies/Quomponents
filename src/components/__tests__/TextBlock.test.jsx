@@ -27,6 +27,7 @@ describe("TextBlock", () => {
 
   hasValid("sizes", args);
   hasValid("positions", args);
+  hasValid("variants", args);
 
   hasValid("colors", args);
   hasValid("animations", args);

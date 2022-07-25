@@ -18,9 +18,23 @@ export default {
                 category: "as-Flags",
             },
         },
+        asVariant: {
+            control: "select",
+            options: ["primary", "secondary", "success", "warning", "error"],
+            table: {
+                category: "as-Flags",
+            },
+        },
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asPadded: {
+            control: "select",
+            options: ["fitted", "compact", "normal", "relaxed"],
             table: {
                 category: "as-Flags",
             },
@@ -84,7 +98,9 @@ Default.args = {
     position: "left-top",
     conversation: true,
     asFloated: "inline",
+    asVariant: "primary",
     asSize: "normal",
+    asPadded: "normal",
     withColor: {
         backgroundColor: "",
         textColor: "#fff",
@@ -114,6 +130,7 @@ export const WithoutConversation = Template.bind({});
 WithoutConversation.args = {
     ...Default.args,
     conversation: false,
+    asVariant: "warning",
     withAnimation: {
         animation: "collapse",
         duration: 0.5,

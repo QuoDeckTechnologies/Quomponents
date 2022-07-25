@@ -38,6 +38,14 @@ TextBlock.propTypes = {
     */
   asFloated: PropTypes.oneOf(["left", "right", "inline", "none"]),
   /**
+    Use to float the component in parent container
+    */
+  asVariant: PropTypes.oneOf(["primary", "secondary", "success", "warning", "error"]),
+  /** 
+  Use to define component padding in increasing order
+  */
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+  /**
     Use to define component text size in increasing order
     */
   asSize: PropTypes.oneOf([
@@ -86,6 +94,8 @@ TextBlock.defaultProps = {
   // Quommon props
   //=======================================
   asFloated: "inline",
+  asPadded: "normal",
+  asVariant: "primary",
   asSize: "normal",
 
   withColor: null,
@@ -137,9 +147,9 @@ export default function TextBlock(props) {
       className={`qui qui-text-block-container ${quommonClasses.parentClasses}`}
     >
       {content && (
-        <div className={`${quommonClasses.childClasses}`}>
+        <div className={`qui-text-block-p ${quommonClasses.childClasses}`}>
           <div
-            className={`qui-text-block-area`}
+            className={`qui-text-block-area qui-btn variant-${props.asVariant} pad-${props.asPadded}`}
             style={{ backgroundColor: props.withColor?.backgroundColor }}
           >
             <div
@@ -152,13 +162,12 @@ export default function TextBlock(props) {
           {props.conversation && (
             <div className={`qui-text-block-tringle`}>
               <div
-                className={`qui-text-block-chat-arrow ${getArrowPosition(
+                className={`qui-text-block-chat-arrow qui-btn variant-${props.asVariant} ${getArrowPosition(
                   props.position
                 )}`}
                 style={{
                   opacity: props.opacity,
-                  borderRightColor: props.withColor?.backgroundColor,
-                  borderLeftColor: props.withColor?.backgroundColor,
+                  backgroundColor: props.withColor?.backgroundColor,
                 }}
               ></div>
             </div>
