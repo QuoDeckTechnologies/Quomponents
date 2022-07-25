@@ -5,10 +5,20 @@ export default {
     title: "Design System/ProgressBar",
     component: ProgressBar,
     argTypes: {
-
         leftIcon: "",
         rightIcon: "",
-        count: 5,
+        totalSlides: 5,
+        activeSlide: 1,
+        enableLeftNavigation: {
+            table: {
+                defaultValue: false,
+            },
+        },
+        enableRightNavigation: {
+            table: {
+                defaultValue: false,
+            },
+        },
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -16,9 +26,16 @@ export default {
                 category: "as-Flags",
             },
         },
-        asSize: {
+        asPadded: {
             control: "select",
-            options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            options: ["fitted", "compact", "normal", "relaxed"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asFloated: {
+            control: "select",
+            options: ["left", "right", "none", "inline"],
             table: {
                 category: "as-Flags",
             },
@@ -27,31 +44,26 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    backgroundColor: "",
                     accentColor: "",
-                    lineColor: "",
+                    backgroundColor: "",
                     textColor: "",
+                    hoverTextColor: "",
                 },
             },
         },
-        withAnimation: {
+        isHidden: {
             table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
-                },
+                category: "is-Toggles",
+                defaultValue: false,
             },
         },
-
         isDisabled: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
             },
         },
-        isHidden: {
+        isFluid: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
@@ -90,22 +102,22 @@ export const Default = Template.bind({});
 Default.args = {
     leftIcon: "fa fa-arrow-alt-circle-left",
     rightIcon: "fa fa-arrow-alt-circle-right",
-    count: 5,
+    totalSlides: 5,
+    activeSlide: 2,
+    enableLeftNavigation: false,
+    enableRightNavigation: false,
     asVariant: "primary",
-    asSize: "normal",
+    asPadded: "normal",
+    asFloated: "inline",
     withColor: {
+        accentColor: "",
         backgroundColor: "",
-        accentColor: "#808080",
-        lineColor: "#E82E19",
-        textColor: "",
+        textColor: "#808080",
+        hoverTextColor: "#E82E19",
     },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
-    isDisabled: false,
     isHidden: false,
+    isDisabled: false,
+    isFluid: false,
 };
 Default.parameters = {
     docs: {
@@ -114,7 +126,6 @@ Default.parameters = {
         },
     },
 };
-
 //-------------------------------------------------------------
 // Colored Progressbar
 // -------------------------------------------------------------
@@ -122,10 +133,10 @@ export const ColoredProgressbar = Template.bind({});
 ColoredProgressbar.args = {
     ...Default.args,
     withColor: {
+        accentColor: "#ffffff",
         backgroundColor: "#C98787",
-        accentColor: "#D3D3D3",
-        lineColor: "#E82E19",
-        textColor: "#ffffff",
+        textColor: "#D3D3D3",
+        hoverTextColor: "#E82E19",
     },
 };
 ColoredProgressbar.parameters = {
@@ -134,39 +145,29 @@ ColoredProgressbar.parameters = {
             story: "Use to override the standard colors of the content.",
         },
         source: {
-            code: `<Progressbar withColor={{backgroundColor: "#C98787", accentColor: "#D3D3D3",
-            lineColor: "#E82E19", textColor: "#ffffff"}}}/>`,
+            code: `<Progressbar withColor={{accentColor: "#ffffff", backgroundColor: "#C98787", textColor: "#D3D3D3",
+            hoverTextColor: "#E82E19"}}}/>`,
         },
     },
 };
-
-//-------------------------------------------------------------
-// Animated Progressbar
 // -------------------------------------------------------------
-export const AnimatedProgressbar = Template.bind({});
-AnimatedProgressbar.args = {
+// Fluid ProgressBar
+// -------------------------------------------------------------
+export const FluidProgressbar = Template.bind({});
+FluidProgressbar.args = {
     ...Default.args,
-    withAnimation: {
-        animation: "fade",
-        duration: 2,
-        delay: 0,
-    },
+    isFluid: true,
 };
-AnimatedProgressbar.parameters = {
+FluidProgressbar.parameters = {
     docs: {
         description: {
-            story: "We can animate the appearance of Progressbar",
-        },
-        source: {
-            code: `<Progressbar {...${JSON.stringify(
-                AnimatedProgressbar.args,
-                null,
-                2
-            )}}/>`,
+            story: "Use to toggle the ProgressBar taking the full width of the parent container"
         },
     },
+    source: {
+        code: `<ProgressBar isFluid={true}/>`,
+    },
 };
-
 // -------------------------------------------------------------
 // AllVariants
 // -------------------------------------------------------------
@@ -185,10 +186,10 @@ const AllVariantsTemplate = (args) => {
             <ProgressBar
                 {...Object.assign({}, baseObj, {
                     withColor: {
+                        accentColor: "#ffffff",
                         backgroundColor: "#C98787",
-                        accentColor: "#D3D3D3",
-                        lineColor: "#E82E19",
-                        textColor: "#ffffff",
+                        textColor: "#D3D3D3",
+                        hoverTextColor: "#E82E19",
                     },
                 })}
             />
@@ -202,7 +203,14 @@ AllVariants.parameters = {
             story: "All variants are supported in ProgressBar.",
         },
         source: {
-            code: `<ProgressBar content:{}/>`,
+            code: `<ProgressBar 
+            asVariant: "primary",
+            withColor: {
+                accentColor: "#ffffff",
+                backgroundColor: "#C98787",
+                textColor: "#D3D3D3",
+                hoverTextColor: "#E82E19",
+            } />`,
         },
     },
 };
