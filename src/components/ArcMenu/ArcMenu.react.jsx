@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Backdrop from "@mui/material/Backdrop";
-import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+import _ from "lodash";
+import { getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ArcMenu.scss";
@@ -14,13 +15,13 @@ ArcMenu.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  ArcMenu component can take children for menu
+  Use to change the type of menu ArcMenu opens, a `close` , `menu`or  `add`
   */
-  children: PropTypes.node,
+  asEmphasis: PropTypes.oneOf(["close", "menu", "add"]),
   /**
   Use to toggle position of ArcMenu
   */
-  menuPosition: PropTypes.oneOf([
+  position: PropTypes.oneOf([
     "top-right",
     "top-left",
     "bottom-right",
@@ -45,10 +46,9 @@ ArcMenu.propTypes = {
   withIcon: PropTypes.shape({
     icon: PropTypes.string,
     size: PropTypes.string,
-    position: PropTypes.oneOf(["left", "right"]),
   }),
   /**
-  Use to override component colors 
+  Use to override component colors of menu when `asEmphasis` is `menu`
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
@@ -56,23 +56,6 @@ ArcMenu.propTypes = {
     accentColor: PropTypes.string,
     hoverBackgroundColor: PropTypes.string,
     hoverTextColor: PropTypes.string,
-  }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
   }),
   /**
   Use to enable/disable the component
@@ -84,6 +67,7 @@ ArcMenu.propTypes = {
   isHidden: PropTypes.bool,
   /**
   ArcMenu component must have the onClick function passed as props
+  For `menu` asEmphasis, it return title of the list item
   */
   onClick: PropTypes.func,
 };
@@ -92,14 +76,15 @@ ArcMenu.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  menuPosition: "top-right",
+  asEmphasis: "close",
+  position: "top-right",
   //=======================================
   // Quommon props
   //=======================================
   asVariant: "primary",
   withIcon: null,
   withColor: null,
-  withAnimation: null,
+  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
@@ -122,7 +107,7 @@ const getPosition = (position) => {
   return "qui-top-right";
 };
 //-------------------------------------------------------------------
-// menu and nugget-menu animation handler
+// menu animation handler
 //-------------------------------------------------------------------
 const getMenuAnimation = (position) => {
   let animate = {
@@ -139,7 +124,7 @@ const getMenuAnimation = (position) => {
       opacity: 0,
     },
   };
-  if (position?.includes("bottom")) {
+  if (position.includes("bottom")) {
     animate.exit.y = "100vh";
   } else {
     animate.exit.y = "-100vh";
@@ -156,38 +141,66 @@ const getMenuAnimation = (position) => {
 **/
 export default function ArcMenu(props) {
   //-------------------------------------------------------------------
-  // 1. Defining component states
+  // 1. Destructuring props and defining states
   //-------------------------------------------------------------------
+  const { withColor, withIcon, asEmphasis } = props;
   const [openMenu, setOpenMenu] = useState(false);
   const [hovered, setHovered] = useState(false);
   //-------------------------------------------------------------------
-  // 2. Destructuring props and defining states
-  //-------------------------------------------------------------------
-  const { withColor, withIcon } = props;
-  //-------------------------------------------------------------------
-  // 3. Set the classes
+  // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "arc-menu");
   //-------------------------------------------------------------------
-  // 4. Function to handle onClick props with children
+  // 4. Get icon for button
   //-------------------------------------------------------------------
-  const handleClick = () => {
-    if (props.children) {
-      setOpenMenu((prevState) => !prevState);
-    } else props.onClick();
+  const getIcon = (icon) => {
+    return withIcon?.icon ? (
+      <i
+        style={{ color: withColor?.textColor, fontSize: withIcon?.size }}
+        className={`qui-arc-icon qui-arc-close-icon ${withIcon?.icon}`}
+      ></i>
+    ) : icon === "menu" ? (
+      <div className="qui-arc-icon-menu-wrapper">
+        <div className="qui-arc-icon-fragment-top">
+          <div
+            style={{ backgroundColor: withColor?.accentColorPrimary }}
+            className="qui-arc-icon-fragment-left"
+          ></div>
+          <div
+            style={{ backgroundColor: withColor?.accecntColorSecondary }}
+            className="qui-arc-icon-fragment-right"
+          ></div>
+        </div>
+        <div className="qui-arc-icon-fragment-bottom">
+          <div
+            style={{ backgroundColor: withColor?.accecntColorSecondary }}
+            className="qui-arc-icon-fragment-right"
+          ></div>
+          <div
+            style={{ backgroundColor: withColor?.accentColorPrimary }}
+            className="qui-arc-icon-fragment-left"
+          ></div>
+        </div>
+      </div>
+    ) : icon === "close" ? (
+      <i
+        style={{ color: withColor?.textColor }}
+        className={`qui-arc-icon qui-arc-close-icon fas fa-times`}
+      ></i>
+    ) : (
+      <div className="qui-add-icon-wrapper">
+        <i
+          style={{ color: withColor?.textColor }}
+          className={`qui-arc-icon fas fa-plus`}
+        ></i>
+      </div>
+    );
   };
-  //-------------------------------------------------------------------
-  // 7. Get animation of the component
-  //-------------------------------------------------------------------
-  const animate = getAnimation(props);
+
   // ========================= Render Function =================================
 
   return (
-    <motion.div
-      initial={animate?.from}
-      animate={animate?.to}
-      className={`qui ${quommonClasses.parentClasses}`}
-    >
+    <div className={`qui ${quommonClasses.parentClasses}`}>
       <Backdrop
         open={openMenu}
         className="qui-arc-menu-backdrop"
@@ -197,43 +210,63 @@ export default function ArcMenu(props) {
       <div className={quommonClasses.childClasses}>
         <div
           style={{ borderColor: withColor?.accentColor }}
-          className={`qui-arc ${getPosition(props.menuPosition)}`}
+          className={`qui-arc ${getPosition(props.position)}`}
         >
-          <button
-            style={
-              hovered
-                ? {
-                    backgroundColor: withColor?.hoverBackgroundColor,
-                    color: withColor?.hoverTextColor,
-                  }
-                : {
-                    backgroundColor: withColor?.backgroundColor,
-                    color: withColor?.textColor,
-                  }
-            }
-            className={`qui-arc-menu-button qt-shadow qui-btn ${quommonClasses.childClasses}`}
-            onClick={handleClick}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-          >
-            {withIcon?.icon && (
-              <i
-                className={`qui-arc-icon qui-icon ${withIcon?.icon}`}
-                style={{ fontSize: withIcon?.size }}
-              ></i>
-            )}
-          </button>
-          <motion.div
-            variants={getMenuAnimation(props.menuPosition)}
-            initial={false}
-            animate={openMenu ? "visible" : "exit"}
-            exit="exit"
-            className={`qui-arc-menu-buttons qui-arc-menu-options`}
-          >
-            {props.children}
-          </motion.div>
+          {props.asEmphasis === "menu" && (
+            <button
+              style={
+                hovered
+                  ? {
+                      backgroundColor: withColor?.hoverBackgroundColor,
+                      color: withColor?.hoverTextColor,
+                    }
+                  : {
+                      backgroundColor: withColor?.backgroundColor,
+                      color: withColor?.textColor,
+                    }
+              }
+              className={`qui-arc-menu-button qt-shadow qui-btn ${quommonClasses.childClasses}`}
+              onClick={() => setOpenMenu((prevState) => !prevState)}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+            >
+              {getIcon(asEmphasis)}
+            </button>
+          )}
+          {(props.asEmphasis === "close" || props.asEmphasis === "add") && (
+            <button
+              style={
+                hovered
+                  ? {
+                      backgroundColor: withColor?.hoverBackgroundColor,
+                      color: withColor?.hoverTextColor,
+                    }
+                  : {
+                      backgroundColor: withColor?.backgroundColor,
+                      color: withColor?.textColor,
+                    }
+              }
+              className={`qui-arc-menu-button qt-shadow qui-arc-menu-${props.asEmphasis}-button qui-btn ${quommonClasses.childClasses}`}
+              onClick={(e) => props.onClick(e)}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+            >
+              {getIcon(asEmphasis)}
+            </button>
+          )}
+          {props.asEmphasis === "menu" && (
+            <motion.div
+              variants={getMenuAnimation(props.position)}
+              initial={false}
+              animate={openMenu ? "visible" : "exit"}
+              exit="exit"
+              className={`qui-arc-menu-buttons qui-arc-${props.asEmphasis}-menu`}
+            >
+              {props.children}
+            </motion.div>
+          )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

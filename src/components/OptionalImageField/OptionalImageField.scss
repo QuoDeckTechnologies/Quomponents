@@ -16,9 +16,14 @@
   min-height: 0;
 }
 
-.qui.qui-optional-image-field.is-fluid 
-.qui-optional-image-field-button-container {
-  flex: 1;
+.qui.qui-optional-image-field.is-fluid
+  .qui-optional-image-field-button-container {
+  padding: 0;
+}
+
+.qui .qui-optional-image-field-button-container {
+  padding: 0;
+  border: 0.2em solid #ffbf00;
 }
 
 .qui.qui-optional-image-field.is-hidden {
@@ -26,8 +31,9 @@
 }
 
 .qui .qui-optional-image-field-wrapper {
-  display: flex;
+  height: 2em;
   border: 0.2em solid #ffbf00;
+  border-collapse: collapse;
 }
 
 .qui .qui-optional-image-field-middle-border {
@@ -37,14 +43,13 @@
 
 .qui .qui-optional-image-field-container {
   width: 2.5em;
-  display: flex;
-  justify-content: center;
+  padding: 0;
   cursor: pointer;
+  background-color: #efefef;
+  text-align: center;
   .qui-optional-image-field-icon {
-    padding: 0.12em;
     font-size: 2em;
     color: #969696;
-    background-color: #efefef;
   }
   .qui-optional-image-field-image {
     width: 100%;

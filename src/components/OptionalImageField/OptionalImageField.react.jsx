@@ -3,10 +3,7 @@ import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Button from "@mui/material/Button";
-import {
-  getQuommons,
-  getAnimation,
-} from "../../common/javascripts/helpers";
+import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./OptionalImageField.scss";
@@ -45,6 +42,16 @@ OptionalImageField.propTypes = {
   // Quommon props
   //=======================================
   /**
+  Use to override component colors and behavior
+  */
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
+  }),
+  /**
    Use to show/hide the component
    */
   isHidden: PropTypes.bool,
@@ -75,6 +82,7 @@ OptionalImageField.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  withColor: null,
   isHidden: false,
   isDisabled: false,
   isFluid: false,
@@ -96,7 +104,8 @@ export default function OptionalImageField(props) {
   //-------------------------------------------------------------------
   // 2. Destructuring props
   //-------------------------------------------------------------------
-  const { title, icon, actionButton, multiple, type, capture } = props;
+  const { title, icon, actionButton, multiple, type, capture, withColor } =
+    props;
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
@@ -158,44 +167,48 @@ export default function OptionalImageField(props) {
         onClick={(e) => (e.target.value = "")}
         hidden
       />
-      <div
+      <table
         className={`qui-optional-image-field-wrapper ${quommonClasses.childClasses}`}
+        style={{ borderColor: withColor?.accentColor }}
       >
-        {icon && (
-          <div
-            className="qui-optional-image-field-container"
-            onClick={uploadFile}
-          >
-            {baseFile ? (
-              <div
-                className="qui-optional-image-field-image"
-                style={{
-                  backgroundImage: `url(${baseFile})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                }}
-              ></div>
-            ) : (
-              <i className={`qui-optional-image-field-icon ${icon}`}></i>
+        <tbody>
+          <tr>
+            {icon && (
+              <td
+                className="qui-optional-image-field-container"
+                onClick={uploadFile}
+              >
+                {baseFile ? (
+                  <div
+                    className="qui-optional-image-field-image"
+                    style={{
+                      backgroundImage: `url(${baseFile})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                ) : (
+                  <i className={`qui-optional-image-field-icon ${icon}`}></i>
+                )}
+              </td>
             )}
-          </div>
-        )}
-        {icon && (
-          <div
-            className="qui-optional-image-field-middle-border"
-          ></div>
-        )}
-        <div className="qui-optional-image-field-button-container">
-          <Button
-            className="qui-optional-image-field-button"
-            variant="outlined"
-            onClick={uploadFile}
-          >
-            {title || "Upload"}
-          </Button>
-        </div>
-      </div>
+            <td
+              className="qui-optional-image-field-button-container"
+              style={{ borderColor: withColor?.accentColor }}
+            >
+              <Button
+                className="qui-optional-image-field-button"
+                variant="outlined"
+                sx={{ backgroundColor: withColor?.backgroundColor }}
+                onClick={uploadFile}
+              >
+                {title || "Upload"}
+              </Button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       {actionButton && (
         <div
           className={`qui-optional-image-field-action-icon ${

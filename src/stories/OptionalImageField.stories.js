@@ -15,6 +15,18 @@ export default {
         defaultValue: false,
       },
     },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          backgroundColor: "",
+          textColor: "",
+          accentColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
+        },
+      },
+    },
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -57,6 +69,13 @@ Default.args = {
   type: "image/*",
   capture: "",
   multiple: false,
+  withColor: {
+    backgroundColor: "",
+    textColor: "",
+    accentColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
+  },
   isDisabled: false,
   isHidden: false,
   isFluid: false,

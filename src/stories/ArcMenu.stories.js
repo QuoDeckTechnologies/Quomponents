@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import _ from "lodash";
 import ArcMenu from "../components/ArcMenu/ArcMenu.react";
 import Backdrop from "@mui/material/Backdrop";
 import ActionMenu from "../components/ActionMenu/ActionMenu.react";
 import NuggetBlock from "../components/NuggetBlock/NuggetBlock.react";
-import _ from "lodash";
 
 import Nugget_Story from "../assets/nuggets/nugget_story.png";
 import Nugget_Quiz from "../assets/nuggets/nugget_quiz.png";
@@ -13,10 +13,14 @@ import Nugget_Article from "../assets/nuggets/nugget_article.png";
 import Nugget_Feedback from "../assets/nuggets/nugget_feedback.png";
 
 export default {
-  title: "Design System/ArcMenu",
+  title: "Design System/ArcMenu/ArcMenu",
   component: ArcMenu,
   argTypes: {
-    menuPosition: {
+    asEmphasis: {
+      control: "select",
+      options: ["close", "menu", "add"],
+    },
+    position: {
       control: "select",
       options: ["top-right", "top-left", "bottom-right", "bottom-left"],
     },
@@ -33,6 +37,7 @@ export default {
         defaultValue: {
           icon: "",
           size: "",
+          position: "left",
         },
       },
     },
@@ -45,16 +50,6 @@ export default {
           accentColor: "",
           hoverBackgroundColor: "",
           hoverTextColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
         },
       },
     },
@@ -238,23 +233,16 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  menuPosition: "top-right",
+  asEmphasis: "close",
+  position: "top-right",
   asVariant: "primary",
-  withIcon: {
-    icon: "fas fa-outdent",
-    size: "1.5em",
-  },
+  withIcon: { icon: "", size: "" },
   withColor: {
-    backgroundColor: "",
-    textColor: "",
+    backgroundColor: "#666666",
+    textColor: "#FFBF00",
     accentColor: "",
-    hoverBackgroundColor: "",
+    hoverBackgroundColor: "#666666",
     hoverTextColor: "",
-  },
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
   },
   isDisabled: false,
   isHidden: false,
@@ -305,7 +293,8 @@ const NuggetTemplate = (args) => {
 export const NuggetMenuButton = NuggetTemplate.bind({});
 NuggetMenuButton.args = {
   ...Default.args,
-  menuPosition: "bottom-left",
+  asEmphasis: "menu",
+  position: "bottom-left",
 };
 NuggetMenuButton.parameters = {
   docs: {
@@ -318,233 +307,32 @@ NuggetMenuButton.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Translated Menu button
+// Menu button
 // -------------------------------------------------------------
-const TranslatedTemplate = (args) => {
-  const dictionary1 = JSON.stringify({
-    hi: {
-      actionMenu: {
-        content: [
-          { title: "डेक खोलो" },
-          { title: "डेक संपादित करें" },
-          { title: "डेक ऊपर ले जाएँ" },
-          { title: "डेक नीचे ले जाएँ" },
-          { title: "विषय पर जाएं" },
-          { title: "डेक को अप्रकाशित करें" },
-          { title: "डेक हटाएं" },
-        ],
-      },
-    },
-  });
-  const dictionary2 = JSON.stringify({
-    hi: {
-      actionMenu: {
-        content: [
-          { title: "डेक खोलो" },
-          { title: "डेक संपादित करें" },
-          { title: "डेक ऊपर ले जाएँ" },
-          { title: "डेक नीचे ले जाएँ" },
-        ],
-      },
-    },
-  });
-  const dictionary3 = JSON.stringify({
-    hi: {
-      actionMenu: {
-        content: [{ title: "डेक को अप्रकाशित करें" }, { title: "डेक हटाएं" }],
-      },
-    },
-  });
-  return (
-    <ArcMenu {...args}>
-      <div style={{ display: "flex", gap: "1em" }}>
-        <div style={{ width: "12em", textAlign: "center" }}>
-          <p style={{ display: "inline-block" }}>Heading 1</p>
-          <ActionMenu
-            content={[
-              {
-                title: "Open Deck",
-                icon: "fas fa-book-open",
-                popover: "Open Deck...",
-                onClick: () => {},
-              },
-              {
-                title: "Edit Deck",
-                icon: "fas fa-edit",
-                popover: "Edit Deck...",
-                onClick: () => {},
-              },
-              {
-                title: "Move Deck Up",
-                icon: "fas fa-chevron-up",
-                popover: "Move Deck Up...",
-                onClick: () => {},
-              },
-              {
-                title: "Move Deck Down",
-                icon: "fas fa-chevron-down",
-                popover: "Move Deck Down...",
-                onClick: () => {},
-              },
-              {
-                title: "Move to Topic",
-                icon: "fas fa-retweet",
-                popover: "Move to Topic...",
-                onClick: () => {},
-              },
-              {
-                title: "Unpublish Deck",
-                icon: "fas fa-eye-slash",
-                popover: "Unpublish Deck...",
-                onClick: () => {},
-              },
-              {
-                title: "Delete Deck",
-                icon: "fas fa-trash-alt",
-                popover: "Delete Deck...",
-                onClick: () => {},
-              },
-            ]}
-            asPadded="normal"
-            asAligned="left"
-            withColor={{
-              backgroundColor: "#fff",
-              textColor: "",
-              accentColor: "",
-            }}
-            withTranslation={{
-              lang: "hi",
-              tgt: "actionMenu",
-              dictionary: dictionary1,
-            }}
-            withAnimation={{
-              animation: "zoom",
-              duration: 0.5,
-              delay: 0,
-            }}
-            isHidden={false}
-          />
-        </div>
-        <div style={{ width: "12em", textAlign: "center" }}>
-          <p style={{ display: "inline-block" }}>Heading 2</p>
-          <ActionMenu
-            content={[
-              {
-                title: "Open Deck",
-                icon: "fas fa-book-open",
-                popover: "Open Deck...",
-                onClick: () => {},
-              },
-              {
-                title: "Edit Deck",
-                icon: "fas fa-edit",
-                popover: "Edit Deck...",
-                onClick: () => {},
-              },
-              {
-                title: "Move Deck Up",
-                icon: "fas fa-chevron-up",
-                popover: "Move Deck Up...",
-                onClick: () => {},
-              },
-              {
-                title: "Delete Deck",
-                icon: "fas fa-trash-alt",
-                popover: "Delete Deck...",
-                onClick: () => {},
-              },
-            ]}
-            asPadded="normal"
-            asAligned="left"
-            withColor={{
-              backgroundColor: "#fff",
-              textColor: "",
-              accentColor: "",
-            }}
-            withTranslation={{
-              lang: "hi",
-              tgt: "actionMenu",
-              dictionary: dictionary2,
-            }}
-            withAnimation={{
-              animation: "zoom",
-              duration: 0.5,
-              delay: 0,
-            }}
-            isHidden={false}
-          />
-        </div>
-        <div style={{ width: "12em", textAlign: "center" }}>
-          <p style={{ display: "inline-block" }}>Heading 3</p>
-          <ActionMenu
-            content={[
-              {
-                title: "Unpublish Deck",
-                icon: "fas fa-eye-slash",
-                popover: "Unpublish Deck...",
-                onClick: () => {},
-              },
-              {
-                title: "Delete Deck",
-                icon: "fas fa-trash-alt",
-                popover: "Delete Deck...",
-                onClick: () => {},
-              },
-            ]}
-            asPadded="normal"
-            asAligned="left"
-            withColor={{
-              backgroundColor: "#fff",
-              textColor: "",
-              accentColor: "",
-            }}
-            withTranslation={{
-              lang: "hi",
-              tgt: "actionMenu",
-              dictionary: dictionary3,
-            }}
-            withAnimation={{
-              animation: "zoom",
-              duration: 0.5,
-              delay: 0,
-            }}
-            isHidden={false}
-          />
-        </div>
-      </div>
-    </ArcMenu>
-  );
-};
-export const TranslatedMenuButton = TranslatedTemplate.bind({});
-TranslatedMenuButton.args = {
+export const MenuButton = Template.bind({});
+MenuButton.args = {
   ...Default.args,
+  asEmphasis: "menu",
+  position: "bottom-left",
 };
-TranslatedMenuButton.parameters = {
+MenuButton.parameters = {
   docs: {
     description: {
-      story: "Use to change the language that the text appears in.",
+      story: "Displays ArcMenu used as menu",
     },
     source: {
-      code: `<ArcMenu {...${JSON.stringify(
-        TranslatedMenuButton.args,
-        null,
-        2
-      )}}/>`,
+      code: `<ArcMenu {...${JSON.stringify(MenuButton.args, null, 2)}}/>`,
     },
   },
 };
 // -------------------------------------------------------------
 // Add button
 // -------------------------------------------------------------
-const AddButtonTemplate = (args) => <ArcMenu {...args} />;
-export const AddButton = AddButtonTemplate.bind({});
+export const AddButton = Template.bind({});
 AddButton.args = {
   ...Default.args,
-  menuPosition: "bottom-left",
-  withIcon: {
-    icon: "fas fa-plus",
-    size: "2em",
-  },
+  asEmphasis: "add",
+  position: "bottom-left",
 };
 AddButton.parameters = {
   docs: {
@@ -601,7 +389,7 @@ const ExampleTemplate = (args) => {
           >
             Heading
           </div>
-          <a href="http://localhost:6006/?path=/story/design-system-accentline--default">
+          <a href="http://localhost:6006/?path=/story/design-system-accentline-accentline--default">
             <div
               className="qui-test-component-element"
               style={{
@@ -653,16 +441,26 @@ const ExampleTemplate = (args) => {
         >
           <h1>Testing Second Modal</h1>
           <ArcMenu
-            menuPosition="top-right"
-            withIcon={{ icon: "fas fa-times", size: "2em" }}
+            asEmphasis="close"
+            position="top-right"
+            withColor={{
+              backgroundColor: "#eee",
+              hoverBackgroundColor: "#eee",
+              textColor: "#FFBF00",
+            }}
             onClick={() => setOpenModalTwo(false)}
           />
           <button onClick={(e) => args.onClick(e)}>Click</button>
         </div>
       )}
       <ArcMenu
-        menuPosition="bottom-left"
-        withIcon={{ icon: "fas fa-bars", size: "2em" }}
+        asEmphasis="add"
+        position="bottom-left"
+        withColor={{
+          backgroundColor: "#666666",
+          hoverBackgroundColor: "#666666",
+          textColor: "#FFBF00",
+        }}
         onClick={() => setOpenModalOne(true)}
       />
     </div>
@@ -677,6 +475,213 @@ AddCloseButtonUseCase.parameters = {
     source: {
       code: `<ArcMenu {...${JSON.stringify(
         AddCloseButtonUseCase.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+//  Menu Button Use Case
+// -------------------------------------------------------------
+const ExampleTemplateMenu = (args) => {
+  const [openModalOne, setOpenModalOne] = useState(false);
+  const menuHandler = (value) => {
+    /* useHistory or useNavigate can be used here to redirect within the application */
+    if (value === "google") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+    if (value === "youtube") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+    if (value === "github") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+    if (value === "modal") {
+      setOpenModalOne(true);
+    }
+  };
+  return (
+    <div
+      className="qui" /*parent must have a qui class for arcmenu*/
+      style={{
+        height: "90vh",
+        border: "0.1em solid black",
+        borderRadius: "1em",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Backdrop
+        open={openModalOne}
+        sx={{ zIndex: 10 }}
+        onClick={() => setOpenModalOne(false)}
+      />
+      {openModalOne && (
+        <div
+          className="qui qui-second-imported-component"
+          style={{
+            position: "absolute",
+            zIndex: 22,
+            background: "white",
+            padding: "5em",
+          }}
+        >
+          <h1>Testing Second Modal</h1>
+          <ArcMenu
+            asEmphasis="close"
+            position="top-right"
+            onClick={() => setOpenModalOne(false)}
+          />
+          <button onClick={(e) => args.onClick(e)}>Click</button>
+        </div>
+      )}
+      <ArcMenu
+        withColor={{
+          backgroundColor: "#666666",
+          hoverBackgroundColor: "#666666",
+        }}
+        asEmphasis="menu"
+        position="bottom-left"
+        onClick={(value) => menuHandler(value)}
+      >
+        {" "}
+        <div style={{ width: "12em", textAlign: "center" }}>
+          <p style={{ display: "inline-block" }}>Heading 2</p>
+          <ActionMenu
+            content={[
+              {
+                title: "Open Deck",
+                icon: "fas fa-book-open",
+                popover: "Open Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Edit Deck",
+                icon: "fas fa-edit",
+                popover: "Edit Deck...",
+                onClick: () => {},
+              },
+              {
+                title: "Move Deck Up",
+                icon: "fas fa-chevron-up",
+                popover: "Move Deck Up...",
+                onClick: () => {},
+              },
+              {
+                title: "Delete Deck",
+                icon: "fas fa-trash-alt",
+                popover: "Delete Deck...",
+                onClick: () => {},
+              },
+            ]}
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              backgroundColor: "#fff",
+              textColor: "",
+              accentColor: "",
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isHidden={false}
+          />
+        </div>
+      </ArcMenu>
+    </div>
+  );
+};
+export const MenuUseCase = ExampleTemplateMenu.bind({});
+MenuUseCase.parameters = {
+  docs: {
+    description: {
+      story: "Displays a use case where ArcMenu is used as menu button",
+    },
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(MenuUseCase.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+//  Nugget Button Use Case
+// -------------------------------------------------------------
+const ExampleTemplateNugget = (args) => {
+  const menuHandler = (value) => {
+    /* useHistory or useNavigate can be used here to redirect within the application */
+    if (value === "nugget story") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+    if (value === "nugget quiz") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+    if (value === "nugget assessment") {
+      window.location.href =
+        "http://localhost:6006/?path=/story/design-system-accentline-accentline--default";
+    }
+  };
+  const nuggetContent = [
+    { image: Nugget_Article, func: () => {} },
+    { image: Nugget_Feedback, func: () => {} },
+    { image: Nugget_Quiz, func: () => {} },
+    { image: Nugget_Assessment, func: () => {} },
+  ];
+  return (
+    <div
+      className="qui" /*parent must have a qui class for arcmenu*/
+      style={{
+        height: "90vh",
+        border: "0.1em solid black",
+        borderRadius: "1em",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <ArcMenu
+        asEmphasis="menu"
+        position="bottom-left"
+        withColor={{ backgroundColor: "#666666" }}
+        onClick={(value) => menuHandler(value)}
+      >
+        <div style={{ display: "grid", gridTemplateColumns: "auto auto auto" }}>
+          {_.map(nuggetContent, (dataObj, i) => {
+            return (
+              <div key={i}>
+                <NuggetBlock
+                  image={dataObj?.image}
+                  status="none"
+                  asSize="huge"
+                  asPadded="fitted"
+                  onClick={() => {
+                    dataObj.func();
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </ArcMenu>
+    </div>
+  );
+};
+export const NuggetMenuUseCase = ExampleTemplateNugget.bind({});
+NuggetMenuUseCase.parameters = {
+  docs: {
+    description: {
+      story: "Displays a use case where ArcMenu is used as nuggetMenu",
+    },
+    source: {
+      code: `<ArcMenu {...${JSON.stringify(
+        NuggetMenuUseCase.args,
         null,
         2
       )}}/>`,
