@@ -3,6 +3,10 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
 import { render } from "@testing-library/react";
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
 
 // Import Components
 // -------------------------------------
@@ -10,8 +14,54 @@ import OverlayMenu from "../OverlayMenu/OverlayMenu.react";
 
 describe("OverlayMenu", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
   // -------------------------------------
+
+  const args = {
+    target: OverlayMenu,
+    required: {
+      content: [],
+      onClick: () => {},
+    },
+    translations: {
+      tgt: "overlayMenu",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          overlayMenu: {
+            content: [
+              { label: "प्रोफ़ाइल संपादित करें" },
+              { label: "खाता" },
+              { label: "प्रोफ़ाइल संपादित करें" },
+              { label: "खाता" },
+              { label: "प्रोफ़ाइल संपादित करें" },
+              { label: "खाता" },
+              { label: "खाता" },
+              { label: "प्रोफ़ाइल संपादित करें" },
+              { label: "खाता" },
+            ],
+          },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("variants", args);
+  hasValid("sizes", args);
+  hasValid("positions", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
+
   let component;
   const dictionary = JSON.stringify({
     hi: {
@@ -47,13 +97,10 @@ describe("OverlayMenu", () => {
         withTranslation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => { }}
-        onClose={() => { }}
+        onClick={() => {}}
+        onClose={() => {}}
       />
     );
-  });
-  it("OverlayMenu should render correctly without throwing an error", () => {
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when component mounts", () => {
@@ -72,8 +119,8 @@ describe("OverlayMenu", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onClick={() => { }}
-        onClose={() => { }}
+        onClick={() => {}}
+        onClose={() => {}}
       />
     );
   });
@@ -94,8 +141,8 @@ describe("OverlayMenu", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onClick={() => { }}
-        onClose={() => { }}
+        onClick={() => {}}
+        onClose={() => {}}
       />
     );
     unmount();
@@ -129,8 +176,8 @@ describe("OverlayMenu", () => {
             format: "caption",
           },
         ]}
-        onClick={() => { }}
-        onClose={() => { }}
+        onClick={() => {}}
+        onClose={() => {}}
       />
     );
     component.find("IconLink").at(0).simulate("click");
@@ -138,10 +185,6 @@ describe("OverlayMenu", () => {
 
   it("OverlayMenu should render correctly without throwing an error if Avatar is present", () => {
     expect(component.find("Avatar").exists()).toBe(true);
-  });
-
-  it("OverlayMenu should render correctly without throwing an error if i tag is present", () => {
-    expect(component.find("i").exists()).toBe(true);
   });
 
   it("OverlayMenu should render correctly if pass withLabel caption  ", () => {

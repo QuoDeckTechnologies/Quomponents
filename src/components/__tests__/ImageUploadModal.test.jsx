@@ -4,6 +4,12 @@
 import { shallow, mount } from "enzyme";
 import { render } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
+
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -11,16 +17,40 @@ import ImageUploadModal from "../ImageUploadModal/ImageUploadModal.react";
 
 describe("ImageUploadModal", () => {
   // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+
+  const args = {
+    target: ImageUploadModal,
+    required: {
+      isOpen: true,
+      onClick: () => {},
+      onChange: () => {},
+    },
+    translations: {
+      tgt: "butimageuploadmodalton",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          imageuploadmodal: {
+            header: "तस्वीर अपलोड करें",
+            buttons: ["फाइलें चुनें", "रद्द करें", "स्वीकार"],
+          },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+
+  // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
-  const dictionary = JSON.stringify({
-    hi: {
-      imageuploadmodal: {
-        header: "तस्वीर अपलोड करें",
-        buttons: ["फाइलें चुनें", "रद्द करें", "स्वीकार"],
-      },
-    },
-  });
   let component;
   const parts = [
     new Blob(["construct a file..."], {}),
@@ -34,6 +64,18 @@ describe("ImageUploadModal", () => {
   });
   const pauseFor = (milliseconds) =>
     new Promise((resolve) => setTimeout(resolve, milliseconds));
+  const dictionary = JSON.stringify({
+    hi: {
+      imageuploadmodal: {
+        header: "तस्वीर अपलोड करें",
+        buttons: {
+          chooseFile: "फाइलें चुनें",
+          cancel: "रद्द करें",
+          save: "स्वीकार",
+        },
+      },
+    },
+  });
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -42,16 +84,11 @@ describe("ImageUploadModal", () => {
           header: "Upload Image",
           buttons: ["choose file", "cancel", "save"],
         }}
+        image={null}
         isOpen={true}
-        asVariant="primary"
-        asSize="normal"
         withColor={null}
-        withAnimation={null}
-        withTranslation={null}
-        isDisabled={false}
-        isHidden={false}
         onClick={() => {}}
-        onClose={() => {}}
+        onChange={() => {}}
       />
     );
   });
@@ -65,19 +102,9 @@ describe("ImageUploadModal", () => {
       <ImageUploadModal
         content={{ header: "Upload image" }}
         isOpen={true}
-        asVariant="primary"
-        asSize="normal"
         withColor={null}
-        withAnimation={null}
-        withTranslation={{
-          lang: "en",
-          tgt: "imageuploadmodal",
-          dictionary: dictionary,
-        }}
-        isDisabled={false}
-        isHidden={false}
         onClick={() => {}}
-        onClose={() => {}}
+        onChange={() => {}}
       />
     );
   });
@@ -87,19 +114,9 @@ describe("ImageUploadModal", () => {
       <ImageUploadModal
         content={{ header: "Upload image" }}
         isOpen={true}
-        asVariant="primary"
-        asSize="normal"
         withColor={null}
-        withAnimation={null}
-        withTranslation={{
-          lang: "en",
-          tgt: "imageuploadmodal",
-          dictionary: dictionary,
-        }}
-        isDisabled={false}
-        isHidden={false}
         onClick={() => {}}
-        onClose={() => {}}
+        onChange={() => {}}
       />
     );
     unmount();
@@ -141,6 +158,7 @@ describe("ImageUploadModal", () => {
     act(() => {
       global.dispatchEvent(new Event("resize"));
     });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when window is resized to larger viewport", () => {
@@ -148,6 +166,7 @@ describe("ImageUploadModal", () => {
     act(() => {
       global.dispatchEvent(new Event("resize"));
     });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when clicked on upload button", () => {
@@ -157,24 +176,19 @@ describe("ImageUploadModal", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error with translation", () => {
+  it("should render correctly without throwing error when withColor props is passed", () => {
     component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "imageuploadmodal",
-        dictionary: dictionary,
+      withColor: {
+        arcButtonColor: "#ffffff",
+        arcIconColor: "#ffffff",
+        arcColor: "#ffffff",
+        textColor: "#ffffff",
+        buttonColor: "#ffffff",
+        hoverButtonColor: "#ffffff",
+        sliderColor: "#ffffff",
       },
     });
-  });
-
-  it("should render correctly without throwing error with translation when target is not provided", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "",
-        dictionary: dictionary,
-      },
-    });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when jpeg or jpg file is uploaded and saved", async () => {
@@ -201,6 +215,9 @@ describe("ImageUploadModal", () => {
       .find(".qui-image-upload-field")
       .simulate("change", { target: { files: [file] } });
     await pauseFor(100);
+    component.setProps({
+      aspectRatio: 0,
+    });
     component.find("Button").at(2).simulate("click");
     expect(component.exists()).toBe(true);
   });
@@ -217,5 +234,79 @@ describe("ImageUploadModal", () => {
     await pauseFor(100);
     component.find("Button").at(2).simulate("click");
     expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when image is provided in props and saved", () => {
+    let wrapper = shallow(
+      <ImageUploadModal
+        content={{ header: "Upload image" }}
+        image="test.png"
+        isOpen={true}
+        asVariant="primary"
+        asSize="normal"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={{
+          lang: "en",
+          tgt: "imageuploadmodal",
+          dictionary: dictionary,
+        }}
+        isDisabled={false}
+        isHidden={false}
+        onClick={() => {}}
+        onChange={() => {}}
+      />
+    );
+    wrapper.find("Button").at(2).simulate("click");
+    expect(wrapper.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when aspect ratio is zero or null", () => {
+    let wrapper = shallow(
+      <ImageUploadModal
+        content={{ header: "Upload image" }}
+        image="test.png"
+        aspectRatio={0}
+        isOpen={true}
+        asVariant="primary"
+        asSize="normal"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={{
+          lang: "en",
+          tgt: "imageuploadmodal",
+          dictionary: dictionary,
+        }}
+        isDisabled={false}
+        isHidden={false}
+        onClick={() => {}}
+        onChange={() => {}}
+      />
+    );
+    expect(wrapper.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when image is not provided", () => {
+    let wrapper = shallow(
+      <ImageUploadModal
+        content={{ header: "Upload image" }}
+        aspectRatio={0}
+        isOpen={true}
+        asVariant="primary"
+        asSize="normal"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={{
+          lang: "en",
+          tgt: "imageuploadmodal",
+          dictionary: dictionary,
+        }}
+        isDisabled={false}
+        isHidden={false}
+        onClick={() => {}}
+        onChange={() => {}}
+      />
+    );
+    expect(wrapper.exists()).toBe(true);
   });
 });

@@ -5,32 +5,11 @@ export default {
   title: "Design System/InlineEdit/InlineEdit",
   component: InlineEdit,
   argTypes: {
-    content: "Please input your text here",
+    value: "Please input your text here",
     name: "",
     asEmphasis: {
       control: "select",
       options: ["singleLine", "multiLine"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asSize: {
-      control: "select",
-      options: ["tiny", "small", "normal", "big", "huge", "massive"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asFloated: {
-      control: "select",
-      options: ["left", "right", "none", "inline"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asAligned: {
-      control: "select",
-      options: ["left", "right", "center"],
       table: {
         category: "as-Flags",
       },
@@ -66,6 +45,24 @@ export default {
         defaultValue: false,
       },
     },
+    onFocus: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+    onBlur: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+    onSubmit: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
   },
   decorators: [
     (story) => (
@@ -91,12 +88,9 @@ export default {
 const Template = (args) => <InlineEdit {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: "Please input your text here",
+  value: "Please input your text here",
   name: "testing_id",
   asEmphasis: "singleLine",
-  asSize: "normal",
-  asFloated: "none",
-  asAligned: "left",
   withColor: {
     accentColor: "#FFAB00",
     backgroundColor: "#ffab000d",
@@ -139,7 +133,6 @@ MultiLineEdit.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
 // Animated InlineEdit
 // -------------------------------------------------------------

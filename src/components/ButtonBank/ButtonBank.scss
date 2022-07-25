@@ -1,13 +1,22 @@
 .qui.qui-button-bank .qui-button {
   overflow: visible;
 }
+
 .qui.qui-button-bank {
   overflow: visible;
 }
+
 .qui .qui-button-bank-single-button .qui-button button {
   padding: 0.6em;
-  width: 20em;
+  min-width: 20em;
+  height: 2.5em;
+  font-size: 1.2em;
 }
+
+.qui.qui-button-bank.qui-button-bank-horizontal {
+  display: flex;
+}
+
 @media only screen and (min-width: 320px) {
   .qui-button-bank {
     .size-tiny {
@@ -23,6 +32,7 @@
       font-size: 0.72em;
     }
     .size-huge {
+      width: 20em;
       font-size: 0.75em;
     }
     .size-massive {
@@ -30,6 +40,7 @@
     }
   }
 }
+
 @media only screen and (min-width: 481px) {
   .qui-button-bank {
     .size-tiny {
@@ -52,6 +63,7 @@
     }
   }
 }
+
 @media only screen and (min-width: 769px) {
   .qui-button-bank {
     .size-normal {

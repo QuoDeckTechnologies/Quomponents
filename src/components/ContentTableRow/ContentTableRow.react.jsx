@@ -2,8 +2,12 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import Backdrop from '@mui/material/Backdrop'
-import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+import Backdrop from "@mui/material/Backdrop";
+import {
+  getAnimation,
+  getQuommons,
+  getTranslation,
+} from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ContentTableRow.scss";
@@ -15,8 +19,8 @@ ContentTableRow.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    ContentTableRow data should be passed in content field and it is a required field
-    */
+  ContentTableRow data should be passed in content field and it is a required field
+  */
   content: PropTypes.shape({
     name: PropTypes.string,
     readerType: PropTypes.string,
@@ -25,8 +29,12 @@ ContentTableRow.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define component padding in increasing order
+  */
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+  /**
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -42,16 +50,24 @@ ContentTableRow.propTypes = {
     delay: PropTypes.number,
   }),
   /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
     Use to enable/disable the component
     */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
-    */
+  Button component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -63,7 +79,9 @@ ContentTableRow.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asPadded: "normal",
   withAnimation: null,
+  withTranslation: null,
   isDisabled: false,
   isHidden: false,
 };
@@ -130,7 +148,7 @@ export default function ContentTableRow(props) {
     };
   }, [showMenu]);
   //-------------------------------------------------------------------
-  // 6. Getting fileicon
+  // 3. Getting fileicon
   //-------------------------------------------------------------------
   let icon = readerType ? getIcon(readerType) : "";
   //-------------------------------------------------------------------
@@ -138,9 +156,13 @@ export default function ContentTableRow(props) {
   //-------------------------------------------------------------------
   const quommonClasses = getQuommons(props, "content-table-row");
   //-------------------------------------------------------------------
-  // 5. Get animation of the component
+  // 5. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  let tObj = getTranslation(props.withTranslation);
+  //-------------------------------------------------------------------
+  // 6. Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
 
@@ -150,15 +172,14 @@ export default function ContentTableRow(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <Backdrop open={showMenu} sx={{zIndex:10}}/>
+      <Backdrop open={showMenu} sx={{ zIndex: 10 }} />
       <div
         className={`qui-table-content-row-container ${quommonClasses.childClasses}`}
       >
         <div className="qui-content-table-checkbox-container">
           <i
-            className={`${
-              isChecked ? "far fa-square" : "fas fa-check-square"
-            } qui-content-checkbox`}
+            className={`${isChecked ? "far fa-square" : "fas fa-check-square"
+              } qui-content-checkbox`}
             onClick={() => setIsChecked((prevState) => !prevState)}
           ></i>
         </div>
@@ -183,7 +204,8 @@ export default function ContentTableRow(props) {
             <div className="qui-content-table-row-action-menu">
               <ActionMenu
                 {...props}
-                content={content?.menuData}
+                withTranslation={null}
+                content={tObj?.menuData || content?.menuData}
                 withColor={{ backgroundColor: "#ffffff" }}
                 withAnimation={{
                   animation: "slideDown",

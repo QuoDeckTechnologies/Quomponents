@@ -3,49 +3,76 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import AmplayfierDateBlock from "../AmplayfierDateBlock/AmplayfierDateBlock.react";
 
 describe("AmplayfierDateBlock", () => {
   // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+
+  const args = {
+    target: AmplayfierDateBlock,
+    required: {
+    },
+    translations: {
+      tgt: "amplayfierdateblock",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          amplayfierdateblock: {
+            months: {
+              Jan: "जनवरी",
+              Feb: "फ़रवरी",
+              Mar: "मार्च",
+              Apr: "अप्रैल",
+              May: "मई",
+              Jun: "जून",
+              Jul: "जुलाई",
+              Aug: "अगस्त",
+              Sep: "सितम्बर",
+              Oct: "अक्टूबर",
+              Nov: "नवम्बर",
+              Dec: "दिसम्बर",
+            },
+          },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("variants", args);
+  hasValid("sizes", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
+  hasValid("alignment", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("fluid", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+  // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-
-  const dictionary = JSON.stringify({
-    hi: {
-      amplayfierdateblock: {
-        months: {
-          Jan: "जनवरी",
-          Feb: "फ़रवरी",
-          Mar: "मार्च",
-          Apr: "अप्रैल",
-          May: "मई",
-          Jun: "जून",
-          Jul: "जुलाई",
-          Aug: "अगस्त",
-          Sep: "सितम्बर",
-          Oct: "अक्टूबर",
-          Nov: "नवम्बर",
-          Dec: "दिसम्बर",
-        },
-      },
-    },
-  });
 
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
       <AmplayfierDateBlock
         content={null}
-        asSize="normal"
-        asFloated="none"
         withColor={null}
-        withAnimation={null}
-        withTranslation={null}
-        isHidden={false}
-        isFluid={false}
       />
     );
   });
@@ -53,77 +80,12 @@ describe("AmplayfierDateBlock", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-
-  it("should render correctly when translation is used", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "amplayfierdateblock",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly when passed withColor props", () => {
     component.setProps({
       withColor: {
         backgroundColor: "#ffffff",
         textColor: "#ffffff",
       },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is none", () => {
-    component.setProps({
-      asFloated: "none",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is left", () => {
-    component.setProps({
-      asFloated: "left",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is right", () => {
-    component.setProps({
-      asFloated: "right",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is inline", () => {
-    component.setProps({
-      asFloated: "inline",
     });
     expect(component.exists()).toBe(true);
   });

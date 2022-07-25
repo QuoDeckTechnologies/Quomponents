@@ -130,7 +130,7 @@ export default function BulletBlock(props) {
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     // ========================= Render Function =================================
     return (
@@ -140,10 +140,10 @@ export default function BulletBlock(props) {
             className={`qui ${quommonClasses.parentClasses}`}
             style={colors.backgroundColors}
         >
-            <div>
+            <div className={` ${quommonClasses.childClasses}`}>
                 {_.map(props.content, (item, index) => {
                     return (
-                        <div className={`li ${quommonClasses.childClasses}`}
+                        <div className="li"
                             style={colors.textColors}
                             key={index}>
                             <ul>
@@ -155,7 +155,6 @@ export default function BulletBlock(props) {
                     )
                 })}
             </div>
-
         </motion.div >
     );
 }

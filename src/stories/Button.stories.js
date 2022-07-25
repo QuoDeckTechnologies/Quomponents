@@ -9,7 +9,7 @@ const dictionary = JSON.stringify({
     //         label: "Do not press this repeatedly...",
     //     },
     // },
-    hi: { 
+    hi: {
         loading: "बस एक मिनट...",
         button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
     },
@@ -75,7 +75,6 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
-                    accentColor: "",
                     textColor: "",
                     hoverBackgroundColor: "",
                     hoverTextColor: "",
@@ -188,7 +187,7 @@ Default.args = {
     asVariant: "primary",
     asSize: "normal",
     asFloated: "none",
-    asPadded: "normal",
+    asPadded: "fitted",
     asAligned: "center",
 
     withLabel: {
@@ -199,7 +198,6 @@ Default.args = {
     withIcon: { icon: "fas fa-share", size: "1em", position: "left" },
     withColor: {
         backgroundColor: "",
-        accentColor: "",
         textColor: "",
         hoverBackgroundColor: "",
         hoverTextColor: "",
@@ -224,6 +222,57 @@ Default.parameters = {
     docs: {
         source: {
             code: `<Button {...${JSON.stringify(Default.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// DisabledButton
+// -------------------------------------------------------------
+export const DisabledButton = Template.bind({});
+DisabledButton.args = {
+    content: "Disabled Button",
+    asEmphasis: "contained",
+    isCircular: false,
+
+    asVariant: "primary",
+    asSize: "normal",
+    asFloated: "none",
+    asPadded: "normal",
+    asAligned: "center",
+
+    withLabel: {
+        format: "label",
+        content: "",
+        textColor: "#000000",
+    },
+    withIcon: { icon: "fas fa-minus-circle", size: "1em", position: "left" },
+    withColor: {
+        backgroundColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+    },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "button",
+        dictionary: dictionary,
+    },
+
+    isDisabled: true,
+    isLoading: false,
+    isHidden: false,
+    isFluid: false,
+};
+DisabledButton.parameters = {
+    docs: {
+        source: {
+            code: `<Button {...${JSON.stringify(DisabledButton.args, null, 2)}}/>`,
         },
     },
 };

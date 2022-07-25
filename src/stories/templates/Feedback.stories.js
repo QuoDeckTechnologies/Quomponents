@@ -1,6 +1,17 @@
 import React from "react";
 import Feedback from "../../components/Templates/Feedback/Feedback.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        feedback: {
+            thankyou: "धन्यवाद!",
+            correct: "सही!",
+            incorrect: "गलत!",
+            button: "जारी रखें",
+        }
+    },
+});
+
 export default {
     title: "Design System/Templates/Feedback/Feedback",
     component: Feedback,
@@ -42,6 +53,16 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -118,6 +139,11 @@ Default.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "feedback",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -214,6 +240,30 @@ FeedbackWithBackgroundImage.parameters = {
     docs: {
         source: {
             code: `<Feedback {...${JSON.stringify(FeedbackWithBackgroundImage.args, null, 2)}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Translated Feedback
+// -------------------------------------------------------------
+export const TranslatedFeedback = Template.bind({});
+TranslatedFeedback.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "feedback",
+        dictionary: dictionary,
+    },
+};
+TranslatedFeedback.parameters = {
+    docs: {
+        source: {
+            code: `<Feedback {...${JSON.stringify(
+                TranslatedFeedback.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };

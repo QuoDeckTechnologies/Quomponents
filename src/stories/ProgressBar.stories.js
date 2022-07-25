@@ -5,15 +5,10 @@ export default {
     title: "Design System/ProgressBar/ProgressBar",
     component: ProgressBar,
     argTypes: {
-        content: {
-            table: {
-                defaultValue: {
-                    leftIcon: "",
-                    rightIcon: "",
-                },
-                stepArray:[],
-            },
-        },
+
+        leftIcon: "",
+        rightIcon: "",
+        count: 5,
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -93,11 +88,9 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        leftIcon: "fa fa-arrow-alt-circle-left",
-        rightIcon: "fa fa-arrow-alt-circle-right",
-        stepArray:["step1", "step2", "step3", "step4", "step5"],
-    },
+    leftIcon: "fa fa-arrow-alt-circle-left",
+    rightIcon: "fa fa-arrow-alt-circle-right",
+    count: 5,
     asVariant: "primary",
     asSize: "normal",
     withColor: {

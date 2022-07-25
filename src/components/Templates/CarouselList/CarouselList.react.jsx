@@ -136,7 +136,7 @@ export default function CarouselList(props) {
   //-------------------------------------------------------------------
   // Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // Setting the colors of the imported components
   //-------------------------------------------------------------------
@@ -196,10 +196,12 @@ export default function CarouselList(props) {
         }}
       >
         <div className="qui-carousel-list-presenter-title" >
-          <TextBlock {...props}
-            content={data?.title}
-            asFloated="left"
-            withColor={textBlockColors} />
+          <h4>
+            <TextBlock {...props}
+              content={data?.title}
+              asFloated="left"
+              withColor={textBlockColors} />
+          </h4>
         </div>
         <div className="qui-carousel-list-presenter-sub-title">
           <TextBlock {...props}

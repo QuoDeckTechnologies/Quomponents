@@ -6,13 +6,13 @@ import {
   getQuommons,
   getTranslation,
   getAnimation,
-} from "../../../common/javascripts/helpers";
+} from "../../common/javascripts/helpers";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../../common/stylesheets/common.css";
+import "../../common/stylesheets/common.css";
 import "./ToolbarDark.scss";
-import "../../../common/stylesheets/overrule.scss";
-import IconLink from "../IconLink/IconLink.react";
+import "../../common/stylesheets/overrule.scss";
+import IconLink from "../Buttons/IconLink/IconLink.react";
 
 ToolbarDark.propTypes = {
   //=======================================
@@ -40,7 +40,7 @@ ToolbarDark.propTypes = {
   /**
     Use to define standard component type
     */
-  asVariant: PropTypes.oneOf(["primary", "secondary", "success", "warning"]),
+  asVariant: PropTypes.oneOf(["primary", "secondary", "success", "warning", "error"]),
   /**
     Use to define component text size in increasing order
     */
@@ -108,6 +108,10 @@ ToolbarDark.propTypes = {
     Use to toggle the component taking the full width of the parent container
     */
   isFluid: PropTypes.bool,
+  /**
+  Use for rounded corners or circular icon button 
+  */
+  isCircular: PropTypes.bool,
 
   /**
     ToolbarDark component must have the onClick function passed as props
@@ -137,6 +141,7 @@ ToolbarDark.defaultProps = {
   isHidden: false,
   isDisabled: false,
   isFluid: false,
+  isCircular: false,
 };
 
 /**
@@ -173,7 +178,7 @@ export default function ToolbarDark(props) {
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 5. Destructure content prop to itirate
   //-------------------------------------------------------------------
@@ -187,7 +192,7 @@ export default function ToolbarDark(props) {
         className={`qui-toolbar-dark-backbar`}
         style={{ backgroundColor: props.withColor?.accentColor }}
       >
-        <div className={`qui-toolbar-dark-icon`}>
+        <div className={`qui-toolbar-dark-icon ${quommonClasses.childClasses}`}>
           {_.map(content, (icon, index) => {
             return (
               <motion.div
@@ -207,6 +212,7 @@ export default function ToolbarDark(props) {
                     format: icon.format,
                   }}
                   withColor={{ ...props.withColor }}
+                  isCircular={props.isCircular}
                 />
               </motion.div>
             );

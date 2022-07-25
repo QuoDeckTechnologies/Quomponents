@@ -135,7 +135,7 @@ export default function PageHeader(props) {
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     //-------------------------------------------------------------------
     // 4. Translate the text objects in case their is a dictionary provided
@@ -146,7 +146,7 @@ export default function PageHeader(props) {
         props.withTranslation.lang !== "en"
     ) {
         let tObj = getTranslation(props.withTranslation);
-        headerText = tObj?.text || "";
+        headerText = tObj?.text || props.content;
     }
     // ========================= Render Function =================================
     return (
@@ -156,9 +156,9 @@ export default function PageHeader(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-page-header-container ${quommonClasses.childClasses}`}>
-                <div className="qui-page-header-label" style={Color}>
+                <h1 className="qui-page-header-label" style={Color}>
                     {headerText}
-                </div>
+                </h1>
             </div>
         </motion.div >
     );

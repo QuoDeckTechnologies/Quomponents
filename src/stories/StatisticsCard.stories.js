@@ -5,12 +5,9 @@ export default {
     title: "Design System/StatisticsCard/StatisticsCard",
     component: StatisticsCard,
     argTypes: {
-        content: {
-            label: "",
-            icon: "",
-            value: "",
-
-        },
+        label: "",
+        icon: "",
+        value: "",
         isCircular: {
             table: {
                 category: "is-Toggles",
@@ -77,11 +74,9 @@ const Template = (args) => (
 );
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        label: "PLAYERS",
-        icon: "fas fa-users",
-        value: "20,539",
-    },
+    label: "PLAYERS",
+    icon: "fas fa-users",
+    value: "20,539",
     isCircular: true,
     asFloated: "inline",
     withColor: {

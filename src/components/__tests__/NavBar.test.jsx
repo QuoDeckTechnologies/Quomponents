@@ -1,8 +1,11 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
-import renderer, { act } from "react-test-renderer";
+import { shallow } from "enzyme";
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
 //--------------------------------------
 // Import from Config
 // -------------------------------------
@@ -14,16 +17,49 @@ import NavBar from "../NavBar/NavBar/NavBar.react";
 
 describe("NavBar", () => {
     // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+
+    const args = {
+        target: NavBar,
+        required: {
+            content: {
+                title: "earn",
+                logoimg: "logo",
+                iconlink: [{
+                    icon: "fas fa-angle-left",
+                    link: "https://www.google.com/",
+                }],
+            },
+            onClick: () => { },
+        },
+        translations: {
+            tgt: "navBar",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+                hi: {
+                    navBar: {
+                        title: "कमाये",
+                        content: "कॅटलॉग",
+                    },
+                },
+            }),
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("variants", args);
+    hasValid("colors", args);
+    hasValid("animations", args);
+    hasValid("translations", args);
+
+    hasValid("hidden", args);
+    hasValid("disabled", args);
+    // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component, ShortLogo;
-    const dictionary = JSON.stringify({
-        hi: {
-            navbar: {
-                title: "कमाये",
-            },
-        },
-    });
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -31,7 +67,7 @@ describe("NavBar", () => {
             <NavBar
                 content={{
                     title: "earn",
-                    logoimg: ShortLogo,
+                    logoimg: "logo",
                     iconlink: [{
                         icon: "fas fa-angle-left",
                         link: "https://www.google.com/",
@@ -44,40 +80,15 @@ describe("NavBar", () => {
                     accentColor: "",
                     textColor: "#b60d17",
                 }}
-                withAnimation={{
-                    animation: "zoom",
-                    duration: 0.5,
-                    delay: 0,
-                }}
-                isDisabled={false}
-                isHidden={false}
                 onClick={() => console.log("NavBar testing")}
             />
         );
     });
+    expect(component.exists()).toBe(true);
+  });
 
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
+  it("should render correctly when passed isDisabled props is true", () => {
+    component.setProps({
+      isDisabled: true,
     });
-    it("should render correctly with withTranslation prop", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "hi",
-                tgt: "navbar",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly without tgt", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "hi",
-                tgt: "",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.exists()).toBe(true);
-    });
-
 });

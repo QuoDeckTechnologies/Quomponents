@@ -123,7 +123,7 @@ export default function OptionItemEight(props) {
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 5. Function to return input value of the component
   //-------------------------------------------------------------------
@@ -141,17 +141,13 @@ export default function OptionItemEight(props) {
     >
       <div className="qui-option-item-eight-container">
         <InputField
-          name={
-            content?.targetName || "default-target-name"
-          }
-          content={{
-            value: content?.value,
-            placeholder: tObj?.placeholder || content?.placeholder,
-            maxLength: content?.maxLength,
-          }}
+          name={content?.targetName || "default-target-name"}
+          value={content?.value}
+          placeholder={tObj?.placeholder || content?.placeholder}
+          maxLength={content?.maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
-          onClick={handleValue}
+          onSubmit={handleValue}
         />
         <div className="qui-option-item-button">
           <Button

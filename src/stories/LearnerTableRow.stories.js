@@ -6,6 +6,13 @@ export default {
   component: LearnerTableRow,
   argTypes: {
     content: [],
+    asPadded: {
+      control: "select",
+      options: ["fitted", "compact", "normal", "relaxed"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     withColor: {
       table: {
         category: "with-Params",
@@ -89,6 +96,7 @@ Default.args = {
       last_name: "Administrator",
     },
   ],
+  asPadded: "normal",
   withColor: {
     backgroundColor: "",
     accentColor: "",

@@ -6,19 +6,13 @@ export default {
     title: "Design System/SerialCard/SerialCard",
     component: SerialCard,
     argTypes: {
-        content: {
-            table: {
-                defaultValue: {
-                    title: "",
-                    description: "",
-                    backImage: "",
-                    image: "",
-                    playerIcon: "",
-                    playersValue: 1,
-                    iconOpt: [],
-                },
-            },
-        },
+        title: "",
+        description: "",
+        backImage: "",
+        image: "",
+        playerIcon: "",
+        playersValue: 1,
+        iconOpt: [],
         asVariant: {
             control: "select",
             options: ["primary", "secondary", "success", "warning", "error"],
@@ -95,16 +89,18 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        title: "5th May 2022",
-        description:
-            "What are Mutual Funds?",
-        image: Image,
-        backImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
-        playerIcon: "fa fa-users",
-        playersValue: 20539,
-        iconOpt: ["fa fa-book", "fa fa-gamepad", "fa fa-trophy"]
-    },
+    title: "5th May 2022",
+    description:
+        "What are Mutual Funds?",
+    image: Image,
+    backImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    playerIcon: "fa fa-users",
+    playersValue: 20539,
+    iconOpt: [
+        { icon: "fa fa-book", func: () => { } },
+        { icon: "fa fa-gamepad", func: () => { } },
+        { icon: "fa fa-trophy", func: () => { } },
+    ],
     asVariant: "error",
     withColor: {
         backgroundColor: "",

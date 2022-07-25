@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { getQuommons } from "../../common/javascripts/helpers.js";
+import { getQuommons, getTranslation } from "../../common/javascripts/helpers.js";
 import _ from "lodash";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -26,8 +26,8 @@ CourseCard.propTypes = {
 	// Component Specific props
 	//=======================================
 	/**
-    Content props consist of all the data which are required for Course Card component
-    */
+	Content props consist of all the data which are required for Course Card component
+	*/
 	content: PropTypes.shape({
 		published: PropTypes.bool,
 		courseType: PropTypes.oneOf(["standard", "exam"]),
@@ -36,7 +36,7 @@ CourseCard.propTypes = {
 		courseName: PropTypes.string,
 		description: PropTypes.string,
 		courseImage: PropTypes.string,
-		points: PropTypes.string,
+		points: PropTypes.number,
 		identifier: PropTypes.string,
 		date: PropTypes.shape({
 			start_date: PropTypes.string,
@@ -50,7 +50,15 @@ CourseCard.propTypes = {
 	/**
 	Use to float the component in parent container
 	*/
-	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+	asFloated: PropTypes.oneOf(["left", "right", "inline", "none"]),
+	/**
+	Use to show a translated version of the component text. Dictionary must be valid JSON. 
+	*/
+	withTranslation: PropTypes.shape({
+		lang: PropTypes.string,
+		tgt: PropTypes.string,
+		dictionary: PropTypes.string,
+	}),
 	/**
 	Use to show/hide the component
 	*/
@@ -73,6 +81,7 @@ CourseCard.defaultProps = {
 	// Quommon props
 	//=======================================
 	asFloated: "inline",
+	withTranslation: null,
 	isHidden: false,
 	isDisabled: false,
 	onClick: null,
@@ -100,7 +109,7 @@ export default function CourseCard(props) {
 			: defaultImage;
 
 	//-------------------------------------------------------------------
-	// 4.  Create link of article based on identifier
+	// 3.  Create link of article based on identifier
 	//-------------------------------------------------------------------
 	let link;
 	if (props.content?.identifier) {
@@ -109,28 +118,110 @@ export default function CourseCard(props) {
 		link = "";
 	}
 	//-------------------------------------------------------------------
-	// 5. Standardize Date
+	// 4. Get the status of Sequential course
 	//-------------------------------------------------------------------
-	let sD, eD, startDay, endDay, startMonth, endMonth, startDate, endDate;
-
-	sD = new Date(props.content?.date?.start_date);
-	eD = new Date(props.content?.date?.end_date);
-	startDay = sD.toLocaleDateString(undefined, { day: "numeric" });
-	startMonth = sD.toLocaleDateString(undefined, { month: "short" });
-
-	endDay = eD.toLocaleDateString(undefined, { day: "numeric" });
-	endMonth = eD.toLocaleDateString(undefined, { month: "short" });
-
-	startDate = props.content?.date?.start_date ? startDay + " " + startMonth : "";
-	endDate = props.content?.date?.end_date ? endDay + " " + endMonth : "";
+	let isSequential = props.content?.sequential
+		? "Sequential Course"
+		: "Non Sequential Course";
 
 	//-------------------------------------------------------------------
-	// 6. Get published status
+	// 5. Get translation of the component
+	//-------------------------------------------------------------------
+	let tObj = null;
+	let points = props.content?.points;
+	let shareLabel = "Share";
+	let rewardLabel = "Complete to win";
+	let menu = [
+		"EDIT DETAILS",
+		"EDIT CONTENT",
+		"MANAGE LEARNERS",
+		"VIEW ANALYTICS",
+		"DELETE COURSE"
+	];
+	if (
+		props.withTranslation?.lang &&
+		props.withTranslation.lang !== "" &&
+		props.withTranslation.lang !== "en"
+	) {
+		tObj = getTranslation(props.withTranslation);
+		isSequential = props.content?.sequential ? tObj?.isSequential?.true || "Sequential Course" : tObj?.isSequential?.false || "Non Sequential Course";
+		points = points?.toLocaleString("hi-u-nu-deva");
+		shareLabel = tObj?.share || "Share";
+		rewardLabel = tObj?.rewardLabel || "Complete to win";
+		menu = tObj?.arcMenu || menu;
+	} else {
+		points = points?.toLocaleString("en");
+	}
+
+	//-------------------------------------------------------------------
+	// 6. Standardize Date
+	//-------------------------------------------------------------------
+	let start_date, end_date;
+	start_date = new Date(props.content?.date?.start_date).toDateString();
+	end_date = new Date(props.content?.date?.end_date).toDateString();
+
+	//-------------------------------------------------------------------
+	// 7. Function to return suffix
+	//-------------------------------------------------------------------
+	const getSuffix = (digit) => {
+		if (!tObj) {
+			if (digit === "1") {
+				return "st";
+			}
+			if (digit === "2") {
+				return "nd";
+			}
+			if (digit === "3") {
+				return "rd";
+			} else return "th";
+		} else return "";
+	};
+
+	//-------------------------------------------------------------------
+	// 8. Function to return date with suffix
+	//-------------------------------------------------------------------
+	const getDateWithSuffix = (date) => {
+		if (date) {
+			let d = date?.split("");
+			if (d[0] === "0") {
+				return `${d[1]}${getSuffix(d[1])}`;
+			} else if (d[0] === "1") {
+				return `${date}${getSuffix("")}`;
+			} else {
+				return `${date}${getSuffix(d[1])}`;
+			}
+		}
+	};
+	//-------------------------------------------------------------------
+	// 9. Function to return translated month if translation props is provided
+	//-------------------------------------------------------------------
+	const getMonth = (month) => {
+		if (tObj) {
+			return tObj?.months[month];
+		}
+		return month;
+	};
+
+	//-------------------------------------------------------------------
+	// 10. Function to handle date string
+	//-------------------------------------------------------------------
+	const getDate = () => {
+		let startDateSplit = start_date?.split(" ");
+		let startMonth = startDateSplit[1];
+		let startDate = getDateWithSuffix(startDateSplit[2]);
+		let endDateSpilt = end_date?.split(" ");
+		let endMonth = endDateSpilt[1];
+		let endDate = getDateWithSuffix(endDateSpilt[2]);
+		return `${startDate} ${getMonth(startMonth)} - ${endDate} ${getMonth(endMonth)}`;
+	};
+
+	//-------------------------------------------------------------------
+	// 11. Get published status
 	//-------------------------------------------------------------------
 	let status = props.content?.published === true ? "published" : "none";
 
 	//-------------------------------------------------------------------
-	// 7. Get header of wrapper
+	// 12. Get header of wrapper
 	//-------------------------------------------------------------------
 	let header = "";
 	if (props.content?.wrapper) {
@@ -142,14 +233,7 @@ export default function CourseCard(props) {
 	}
 
 	//-------------------------------------------------------------------
-	// 8. Get the status of Sequential course
-	//-------------------------------------------------------------------
-	let isSequential = props.content?.sequential
-		? "Sequential Course"
-		: "Non Sequential Course";
-
-	//-------------------------------------------------------------------
-	// 9. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
+	// 13. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
 	//-------------------------------------------------------------------
 	let truncate;
 	let tag1Length = props.content?.tags?.length > 0 ? props.content?.tags[0]?.length : "";
@@ -183,7 +267,7 @@ export default function CourseCard(props) {
 	}
 
 	//-------------------------------------------------------------------
-	// 10. Get the CourseCard Component
+	// 14. Get the CourseCard Component
 	//-------------------------------------------------------------------
 	const CourseCard = () => {
 		return (
@@ -209,7 +293,7 @@ export default function CourseCard(props) {
 									</button>
 								</div>
 							)}
-							{startDate && endDate && (
+							{props.content?.date?.start_date && props.content?.date?.end_date && (
 								<div className="qui-course-card-date-container">
 									<IconBlock
 										asSize="tiny"
@@ -219,7 +303,7 @@ export default function CourseCard(props) {
 										withColor={{ accentColor: "#000" }}
 									/>
 									<div className={`qui-course-card-date`}>
-										{startDate} - {endDate}
+										{getDate()}
 									</div>
 								</div>
 							)}
@@ -259,8 +343,8 @@ export default function CourseCard(props) {
 							<Reward
 								asSize="tiny"
 								content={{
-									label: "Complete to win",
-									point: props.content?.points,
+									label: rewardLabel,
+									point: points?.toString(),
 								}}
 							/>
 						</div>
@@ -269,17 +353,7 @@ export default function CourseCard(props) {
 				<div className="qui-course-card-footer">
 					<div className={`qui-course-card-arc-menu`}>
 						<ArcMenu
-							menuContent={[
-								{
-									list: [
-										"EDIT DETAILS",
-										"EDIT CONTENT",
-										"MANAGE LEARNERS",
-										"VIEW ANALYTICS",
-										"DELETE COURSE",
-									],
-								},
-							]}
+							menuContent={props.content?.menuContent}
 							menuType="menu"
 							arcIcon="menu"
 							position="bottom-left"
@@ -292,7 +366,7 @@ export default function CourseCard(props) {
 							<ShareWidget
 								asSize="tiny"
 								withColor={{ textColor: "#AAAAAA" }}
-								content={{ label: "Share", url: link }}
+								content={{ label: shareLabel, url: link }}
 							/>
 						</div>
 						<div className={"qui-course-card-link-container"}>

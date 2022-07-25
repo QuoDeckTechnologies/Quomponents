@@ -13,13 +13,13 @@ export default {
     title: "Design System/ShareWidget/ShareWidget",
     component: ShareWidget,
     argTypes: {
-        content: {
+        label: "",
+        url: "",
+        asSize: {
+            control: "select",
+            options: ["tiny", "small", "normal", "big", "huge", "massive"],
             table: {
-                category: "with-Params",
-                defaultValue: {
-                    label: "",
-                    url: ""
-                },
+                category: "as-Flags",
             },
         },
         asFloated: {
@@ -96,10 +96,9 @@ export default {
 const Template = (args) => <ShareWidget {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        label: "Share",
-        url: "www.quodeck.com",
-    },
+    label: "Share",
+    url: "www.quodeck.com",
+    asSize: "normal",
     asFloated: "inline",
     withColor: {
         textColor: "#000000",

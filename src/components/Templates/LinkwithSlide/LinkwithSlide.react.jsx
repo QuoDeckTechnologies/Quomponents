@@ -160,7 +160,7 @@ export default function LinkwithSlide(props) {
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 5. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
@@ -206,9 +206,8 @@ export default function LinkwithSlide(props) {
         className={`qui-link-with-slide-container ${quommonClasses.childClasses}`}
       >
         <div
-          className={`qui-link-with-slide-header ${
-            data?.presenter ? "qui-link-with-slide-header-presenter" : ""
-          }`}
+          className={`qui-link-with-slide-header ${data?.presenter ? "qui-link-with-slide-header-presenter" : ""
+            }`}
         >
           {getView(data)}
         </div>
@@ -223,7 +222,7 @@ export default function LinkwithSlide(props) {
       </div>
       <div className="qui-link-with-slide-button">
         <Button
-          content={tObj ? tObj.button : "go"}
+          content={tObj?.button || "go"}
           asFloated="inline"
           asVariant={props.asVariant}
           onClick={() => props.onClick(data?.gotoSlide)}

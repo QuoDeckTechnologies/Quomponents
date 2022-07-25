@@ -151,13 +151,18 @@ export default function ConfirmationOverlay(props) {
     //-------------------------------------------------------------------
     // 2. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
+    let header = withConfirmation?.header;
+    let yes = withConfirmation?.yes;
+    let no = withConfirmation?.no;
     if (
         props.withTranslation &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
         let tObj = getTranslation(props.withTranslation);
-        withConfirmation = Object.assign(withConfirmation, tObj)
+        header = tObj?.header
+        yes = tObj?.yes
+        no = tObj?.no
     }
 
     //-------------------------------------------------------------------
@@ -170,7 +175,7 @@ export default function ConfirmationOverlay(props) {
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     return (
         <motion.div
@@ -180,18 +185,18 @@ export default function ConfirmationOverlay(props) {
             style={mainColors}
         >
             <h5 className="qui-overlay-header">
-                {withConfirmation && withConfirmation.header ? withConfirmation.header : "Are you sure?"}
+                {header || "Are you sure?"}
             </h5>
             <ButtonGroup className="qui-confirmation-overlay-group">
                 <Button
                     asEmphasis="outlined"
-                    content={withConfirmation && withConfirmation.yes ? withConfirmation.yes : "Yes"}
+                    content={yes || "Yes"}
                     withColor={confirmColors}
                     onClick={yesClick}
                     asSize="big"
                 />
                 <Button
-                    content={withConfirmation && withConfirmation.no ? withConfirmation.no : "No"}
+                    content={no || "No"}
                     onClick={noClick}
                     withColor={cancelColors}
                     asSize="big"

@@ -120,7 +120,7 @@ export default function Tag(props) {
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     // ========================= Render Function =================================
     return (
@@ -130,7 +130,7 @@ export default function Tag(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-tag-block qui-btn ${quommonClasses.childClasses}`} style={Color}>
-                <div className="qui-tag-label">
+                <div className="qui-tag-label qt-lbl">
                     {props?.content}
                 </div>
             </div>

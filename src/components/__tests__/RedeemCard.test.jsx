@@ -4,6 +4,10 @@ import React from "react";
 // -------------------------------------
 import { mount } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import RedeemCard from "../RedeemCard/RedeemCard.react";
@@ -12,25 +16,48 @@ import defaultImage from "../../assets/default.jpeg";
 
 describe("RedeemCard", () => {
     // -------------------------------------
-    // Setup definitions for the test suite
+    // Run common tests
     // -------------------------------------
-    let component;
-    const dictionary = JSON.stringify({
-        hi: {
-            redeemCard: {
-                button: "मोचन",
-                inprogress: "आपका मोचन अनुरोध प्रक्रिया में है",
-                completed: "आपने इस ऑफ़र को भुना लिया है"
-            }
+
+    const args = {
+        target: RedeemCard,
+        translations: {
+            tgt: "redeemCard",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+                hi: {
+                    redeemCard: {
+                        button: "मोचन",
+                        inprogress: "आपका मोचन अनुरोध प्रक्रिया में है",
+                        completed: "आपने इस ऑफ़र को भुना लिया है"
+                    }
+                },
+                en: {
+                    redeemCard: {
+                        button: "Redeem",
+                        inprogress: "YOUR REDEMPTION REQUEST IS IN PROCESS",
+                        completed: "YOU HAVE REDEEMED THIS OFFER"
+                    }
+                }
+            }),
         },
-        en: {
-            redeemCard: {
-                button: "Redeem",
-                inprogress: "YOUR REDEMPTION REQUEST IS IN PROCESS",
-                completed: "YOU HAVE REDEEMED THIS OFFER"
-            }
-        }
-    });
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("positions", args);
+
+    hasValid("colors", args);
+    hasValid("translations", args);
+
+    hasValid("hidden", args);
+    hasValid("disabled", args);
+
+    // -------------------------------------
+    // Run component specific tests
+    // -------------------------------------
+
+    let component;
     beforeEach(() => {
         jest.resetAllMocks();
         component = mount(
@@ -67,93 +94,6 @@ describe("RedeemCard", () => {
                 onClick={jest.fn()}
             />
         );
-    });
-
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            textColor: "#2C5F2DFF",
-            accentColor: "#AD2929",
-            buttonTextColor: "#2C5F2DFF",
-            buttonBackgroundColor: "#2C5F2DFF",
-            buttonHoverBackgroundColor: "#2C5F2DFF",
-            buttonHoverTextColor: "#AD2929",
-            backgroundColor: "#2C5F2DFF",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly with withTranslation prop", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "hi",
-                tgt: "redeemCard",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.find(".qui-redeem-card-status").text()).toBe("मोचन");
-    });
-
-    it("should render correctly with withTranslation with tgt null", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "en",
-                tgt: "redeemCard",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.find(".qui-redeem-card-status").text()).toBe("Redeem");
-    });
-
-
-    it("should render render correctly with lang null", () => {
-        component.setProps({
-            withTranslation: {
-                lang: "mr", 
-                tgt: "redeemCard",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.find(".qui-redeem-card-status").text()).toBe("Redeem");
-    });
-
-    it("should render correctly when passed asFloated prop as left", () => {
-        component.setProps({ asFloated: "left" });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asFloated prop as right", () => {
-        component.setProps({ asFloated: "right" });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asFloated prop as inline", () => {
-        component.setProps({ asFloated: "inline" });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true });
-        expect(component.exists()).toBe(true);
     });
 
     it("should render correctly when passed extra content and should also display showmore button", () => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
     Tooltip,
@@ -143,10 +143,12 @@ export default function QuoBarChart(props) {
         temp.activeIndex = i
         setNewData(temp)
     }
-    const ref = useRef(null);
     // ========================= Render Function =================================
     return (
-        <div className="qui-barchart-container" style={{ backgroundColor: withColor?.backgroundColor }}>
+        <div
+            className={`qui qui-barchart-container ${quommonClasses.parentClasses}`}
+            style={{ backgroundColor: withColor?.backgroundColor }}
+        >
             <h3 className="qui-barchart-active-month">{props?.title}</h3>
             <h5 className="qui-barchart-active-players">{props?.subtitle}</h5>
             <BarChart

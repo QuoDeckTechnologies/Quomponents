@@ -2,7 +2,7 @@
     "name": "quomponents",
     "description": "The library of react components being used in the QuoDeck product suite",
     "main": "dist/index.js",
-    "version": "0.1.9",
+    "version": "0.1.10",
     "private": false,
     "files": [
         "dist",
@@ -48,7 +48,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "rm -rf dist && npm run clean && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__",
-        "test": "react-scripts test --setupFilesAfterEnv='<rootDir>/config/jest/setupEnzyme.js'",
+        "test": "react-scripts test --setupFilesAfterEnv='<rootDir>/config/jest/setupEnzyme.js' --testPathIgnorePatterns=common",
         "eject": "react-scripts eject",
         "storybook": "start-storybook -p 6006 -s public",
         "build-storybook": "build-storybook -s public",
@@ -111,5 +111,17 @@
         "enzyme-to-json": "^3.6.2",
         "jest": "26.6.0",
         "storybook-addon-turbo-build": "^1.1.0"
+    },
+    "majestic": {
+        "args": [
+            "--setupFilesAfterEnv='<rootDir>/config/jest/setupEnzyme.js' --testPathIgnorePatterns=common"
+        ]
+    },
+    "jest": {
+        "coveragePathIgnorePatterns": [
+            "<rootDir>/src/components/__tests__/common",
+            "<rootDir>/src/common",
+            "<rootDir>/src/stories"
+        ]
     }
 }

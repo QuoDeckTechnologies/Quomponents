@@ -1,6 +1,20 @@
 import React from "react";
 import ActionMenu from "../components/ActionMenu/ActionMenu.react";
-
+const dictionary = JSON.stringify({
+  hi: {
+    actionMenu: {
+      content: [
+        { title: "डेक खोलो" },
+        { title: "डेक संपादित करें" },
+        { title: "डेक ऊपर ले जाएँ" },
+        { title: "डेक नीचे ले जाएँ" },
+        { title: "विषय पर जाएं" },
+        { title: "डेक को अप्रकाशित करें" },
+        { title: "डेक हटाएं" },
+      ]
+    },
+  },
+});
 export default {
   title: "Design System/ActionMenu/ActionMenu",
   component: ActionMenu,
@@ -28,6 +42,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -85,30 +109,37 @@ Default.args = {
     {
       title: "Open Deck",
       icon: "fas fa-book-open",
+      func: () => { },
     },
     {
       title: "Edit Deck",
       icon: "fas fa-edit",
+      func: () => { },
     },
     {
       title: "Move Deck Up",
       icon: "fas fa-chevron-up",
+      func: () => { },
     },
     {
       title: "Move Deck Down",
       icon: "fas fa-chevron-down",
+      func: () => { },
     },
     {
       title: "Move to Topic",
       icon: "fas fa-retweet",
+      func: () => { },
     },
     {
       title: "Unpublish Deck",
       icon: "fas fa-eye-slash",
+      func: () => { },
     },
     {
       title: "Delete Deck",
       icon: "fas fa-trash-alt",
+      func: () => { },
     },
   ],
   withColor: {
@@ -120,6 +151,11 @@ Default.args = {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "actionMenu",
+    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,
@@ -150,7 +186,11 @@ ColoredActionMenu.parameters = {
       story: "Use to override the standard colors of the Icon & Contents.",
     },
     source: {
-      code: `<ActionMenu withColor={{backgroundColor: "lightblue", textColor: "#666666",accentColor: "#666666"}}}/>`,
+      code: `<ActionMenu {...${JSON.stringify(
+        ColoredActionMenu.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -175,6 +215,34 @@ AnimatedActionMenu.parameters = {
     source: {
       code: `<ActionMenu {...${JSON.stringify(
         AnimatedActionMenu.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+
+// -------------------------------------------------------------
+// TranslatedActionMenu
+// -------------------------------------------------------------
+export const TranslatedActionMenu = Template.bind({});
+TranslatedActionMenu.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "actionMenu",
+    dictionary: dictionary,
+  },
+};
+TranslatedActionMenu.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in ActionMenu."
+    },
+    source: {
+      code: `<TranslatedActionMenu {...${JSON.stringify(
+        TranslatedActionMenu.args,
         null,
         2
       )}}/>`,
