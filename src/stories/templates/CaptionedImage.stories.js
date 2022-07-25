@@ -2,7 +2,7 @@ import React from "react";
 import CaptionedImage from "../../components/Templates/CaptionedImage/CaptionedImage.react";
 
 export default {
-  title: "Design System/Templates/CaptionedImage/CaptionedImage",
+  title: "Design System/Templates/CaptionedImage",
   component: CaptionedImage,
   argTypes: {
     data: {},

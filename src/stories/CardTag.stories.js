@@ -8,7 +8,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/CardTag/CardTag",
+  title: "Design System/CardTag",
   component: CardTag,
   argTypes: {
     content: "Content",

@@ -3,7 +3,7 @@ import Button from "../components/Buttons/Button/Button.react";
 import ClickableImage from "../components/ClickableImage/ClickableImage.react";
 
 export default {
-  title: "Design System/ClickableImage/ClickableImage",
+  title: "Design System/ClickableImage",
   component: ClickableImage,
   argTypes: {
     image: "",

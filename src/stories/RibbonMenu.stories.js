@@ -77,7 +77,7 @@ const dictionary = JSON.stringify({
     }
 });
 export default {
-    title: "Design System/RibbonMenu/RibbonMenu",
+    title: "Design System/RibbonMenu",
     component: RibbonMenu,
     argTypes: {
         actions: {},

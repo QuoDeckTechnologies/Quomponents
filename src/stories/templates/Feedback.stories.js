@@ -13,7 +13,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/Templates/Feedback/Feedback",
+    title: "Design System/Templates/Feedback",
     component: Feedback,
     argTypes: {
         data: {

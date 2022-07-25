@@ -10,7 +10,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/OptionalImageField/OptionalImageField",
+  title: "Design System/OptionalImageField",
   component: OptionalImageField,
   argTypes: {
     content: {

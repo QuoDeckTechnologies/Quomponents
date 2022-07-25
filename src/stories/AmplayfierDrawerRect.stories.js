@@ -3,7 +3,7 @@ import AmplayfierDrawerRect from "../components/AmplayfierDrawerRect/AmplayfierD
 import LearnerTableRow from "../components/LearnerTableRow/LearnerTableRow.react";
 
 export default {
-  title: "Design System/AmplayfierDrawerRect/AmplayfierDrawerRect",
+  title: "Design System/AmplayfierDrawerRect",
   component: AmplayfierDrawerRect,
   argTypes: {
     isCircular: {

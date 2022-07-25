@@ -2,7 +2,7 @@ import React from "react";
 import OddOneOut from "../../components/Templates/OddOneOut/OddOneOut.react";
 
 export default {
-    title: "Design System/Templates/OddOneOut/OddOneOut",
+    title: "Design System/Templates/OddOneOut",
     component: OddOneOut,
     argTypes: {
         data: {

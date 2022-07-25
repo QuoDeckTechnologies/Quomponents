@@ -16,7 +16,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/Reward/Reward",
+    title: "Design System/Reward",
     component: Reward,
     argTypes: {
         content: {

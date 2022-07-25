@@ -2,7 +2,7 @@ import React from "react";
 import Blurb from "../../components/Templates/Blurb/Blurb.react";
 
 export default {
-  title: "Design System/Templates/Blurb/Blurb",
+  title: "Design System/Templates/Blurb",
   component: Blurb,
   argTypes: {
     data: {

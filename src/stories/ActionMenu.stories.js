@@ -16,7 +16,7 @@ const dictionary = JSON.stringify({
   },
 });
 export default {
-  title: "Design System/ActionMenu/ActionMenu",
+  title: "Design System/ActionMenu",
   component: ActionMenu,
   argTypes: {
     content: [

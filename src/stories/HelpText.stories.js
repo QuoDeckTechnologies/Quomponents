@@ -8,7 +8,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/HelpText/HelpText",
+  title: "Design System/HelpText",
   component: HelpText,
   argTypes: {
     content: "This is what your learners see",

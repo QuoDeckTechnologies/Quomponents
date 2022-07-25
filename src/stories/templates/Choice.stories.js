@@ -2,7 +2,7 @@ import React from "react";
 import Choice from "../../components/Templates/Choice/Choice.react";
 
 export default {
-	title: "Design System/Templates/Choice/Choice",
+	title: "Design System/Templates/Choice",
 	component: Choice,
 	argTypes: {
 		data: {

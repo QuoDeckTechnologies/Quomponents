@@ -2,7 +2,7 @@ import React from "react";
 import CourseListCard from "../components/CourseListCard/CourseListCard.react";
 
 export default {
-  title: "Design System/CourseListCard/CourseListCard",
+  title: "Design System/CourseListCard",
   component: CourseListCard,
   argTypes: {
     content: {},

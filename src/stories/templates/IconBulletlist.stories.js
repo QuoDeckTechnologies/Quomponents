@@ -2,7 +2,7 @@ import React from "react";
 import IconBulletlist from "../../components/Templates/IconBulletlist/IconBulletlist.react";
 
 export default {
-    title: "Design System/Templates/IconBulletlist/IconBulletlist",
+    title: "Design System/Templates/IconBulletlist",
     component: IconBulletlist,
     argTypes: {
         data: {

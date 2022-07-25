@@ -35,7 +35,7 @@ const dictionary = JSON.stringify({
 	}
 });
 export default {
-	title: "Design System/CourseCard/CourseCard",
+	title: "Design System/CourseCard",
 	component: CourseCard,
 	argTypes: {
 		content: {

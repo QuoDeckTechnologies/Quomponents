@@ -8,7 +8,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/PageHeader/PageHeader",
+    title: "Design System/PageHeader",
     component: PageHeader,
     argTypes: {
         content: "HEADER",

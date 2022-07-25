@@ -2,7 +2,7 @@ import React from "react";
 import Segment from "../components/Segment/Segment.react";
 
 export default {
-  title: "Design System/Segment/Segment",
+  title: "Design System/Segment",
   component: Segment,
   argTypes: {
     isCircular: {

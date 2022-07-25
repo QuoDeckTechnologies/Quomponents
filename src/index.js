@@ -20,6 +20,7 @@ import Choice from "./components/Buttons/Choice/Choice.react";
 import DataExporter from "./components/Buttons/DataExporter/DataExporter.react";
 import FlipConfirm from "./components/Buttons/FlipConfirm/FlipConfirm.react";
 import IconLink from "./components/Buttons/IconLink/IconLink.react";
+import LinkIcon from "./components/LinkIcon/LinkIcon.react";
 import Upload from "./components/Buttons/Upload/Upload.react";
 import Calender from "./components/Calendar/Calendar.react";
 import CardTag from "./components/CardTag/CardTag.react";
@@ -82,7 +83,7 @@ import RewardCard from "./components/RewardCard/RewardCard.react";
 import WalletRow from "./components/WalletRow/WalletRow.react";
 import VoiceoverUploadModal from "./components/VoiceoverUploadModal/VoiceoverUploadModal.react";
 import Videobox from "./components/Videobox/Videobox.react";
-import TreeBarOpen from "./components/TreeBarOpen/TreeBarOpen.react";
+import TreeBar from "./components/TreeBar/TreeBar.react";
 import ToggleButton from "./components/ToggleButton/ToggleButton.react";
 import TextBlock from "./components/TextBlock/TextBlock.react";
 import Tag from "./components/Tag/Tag.react";
@@ -252,7 +253,7 @@ export {
     WalletRow,
     VoiceoverUploadModal,
     Videobox,
-    TreeBarOpen,
+    TreeBar,
     ToggleButton,
     TextBlock,
     Tag,
@@ -283,6 +284,7 @@ export {
     ImageGallery,
     ImageGrid,
     ImageWithCaption,
+    LinkIcon,
     LinkwithSlide,
     MCQwithFeedback,
     MultipleSelect,

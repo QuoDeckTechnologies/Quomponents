@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+
+* {
+    box-sizing: border-box;
+}
 /* ================================================= */
 /* Header style h1, h2, h3, h4, h5, h6*/
 /* ================================================= */
@@ -36,8 +42,6 @@ h6 {
 /* ================================================= */
 .qui {
     position: relative;
-    overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* ================================================= */
@@ -129,13 +133,21 @@ h6 {
 .qui .pad-fitted {
     padding: 2px 4px;
 }
+.qui .pad-fitted.squared {
+    padding: 4px;
+}
 
 .qui .pad-compact {
     padding: 4px 8px;
 }
-
+.qui .pad-compact.squared {
+    padding: 8px;
+}
 .qui .pad-normal {
     padding: 6px 12px;
+}
+.qui .pad-normal.squared {
+    padding: 12px;
 }
 
 .qui .pad-relaxed,
@@ -144,9 +156,20 @@ h6 {
     padding: 10px 20px;
 }
 
+.qui .pad-relaxed.squared,
+.qui .pad-normal.size-huge.squared,
+.qui .pad-normal.size-massive.squared {
+    padding: 20px;
+}
+
 .qui .pad-relaxed.size-huge,
 .qui .pad-relaxed.size-massive {
     padding: 15px 30px;
+}
+
+.qui .pad-relaxed.size-huge.squared,
+.qui .pad-relaxed.size-massive.squared {
+    padding: 30px;
 }
 
 /* ================================================= */
@@ -184,11 +207,11 @@ h6 {
 /* Font Style Definitions */
 /* ================================================= */
 .prifont {
-    font-family: "Arial", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .secfont {
-    font-family: "Arial", sans-serif;
+    font-family: "Oswald", sans-serif;
 }
 
 .qui .qt-lbl,
