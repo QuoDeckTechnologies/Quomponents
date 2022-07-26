@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { getQuommons } from "../../common/javascripts/helpers";
 import _ from "lodash";
@@ -54,6 +54,14 @@ DesktopNavbar.propTypes = {
   Use to enable/disable the component
   */
   isDisabled: PropTypes.bool,
+  /**
+  DesktopNavbar component must have the onClick function passed as props
+  */
+  onClick: PropTypes.func.isRequired,
+  /**
+  DesktopNavbar component must have the onSearch function passed as props
+  */
+  onSearch: PropTypes.func.isRequired,
 };
 
 DesktopNavbar.defaultProps = {
@@ -125,9 +133,10 @@ export default function DesktopNavbar(props) {
           style={{
             backgroundImage: `url(${icon})`,
           }}
+          onClick={props.onClick}
         ></div>
         <div className="qui-desktop-navabr-search-bar-wrapper">
-          <SearchBar asFloated="none" isFluid={true} onClick={props.onClick} />
+          <SearchBar asFloated="none" isFluid={true} onClick={props.onSearch} />
         </div>
         <div className="qui-desktop-navbar-icon-link-wrapper">
           {_.map(linkData, (link, index) => {
@@ -154,12 +163,20 @@ export default function DesktopNavbar(props) {
           })}
         </div>
         <div className="qui-desktop-navbar-app-menu-wrapper">
-          <p
-            className="qui-desktop-navbar-user-name"
-            style={{ color: withColor?.hoverTextColor }}
-          >
-            {user?.name}
-          </p>
+          <div className="qui-desktop-navbar-name-container">
+            <p
+              className="qui-desktop-navbar-user-name"
+              style={{ color: withColor?.hoverTextColor }}
+            >
+              {user?.first_name}&nbsp;
+            </p>
+            <p
+              className="qui-desktop-navbar-user-name"
+              style={{ color: withColor?.hoverTextColor }}
+            >
+              {user?.last_name}
+            </p>
+          </div>
           <div className="qui-desktop-navbar-app-menu-container">
             <AppMenu
               menu={[
@@ -189,7 +206,7 @@ export default function DesktopNavbar(props) {
               withColor={{
                 backgroundColor: withColor?.hoverBackgroundColor,
               }}
-              withIcon={{ icon: user?.icon }}
+              withIcon={{ icon: user?.icon ? user?.icon : "fas fa-user" }}
               isCircular={false}
               onClick={() => {}}
             />

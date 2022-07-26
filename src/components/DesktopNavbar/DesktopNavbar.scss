@@ -15,17 +15,35 @@
   padding: 0 2em;
 }
 
+.qui .qui-desktop-navbar-name-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .qui .qui-desktop-navbar-app-menu-wrapper {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  flex: 0.3;
+  flex: 0.5;
   margin-right: 1em;
   .qui-desktop-navbar-user-name {
-    margin-right: 1em;
     color: #fff;
     font-size: 1.2em;
+    max-width: 10em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    &:last-child {
+      margin-right: 0.7em;
+    }
   }
+}
+
+.qui-desktop-navabr-search-bar-wrapper
+  .qui-search-bar-container
+  .qui-search-bar-child-container {
+  border-radius: 0.7em;
+  overflow: hidden;
 }
 
 .qui .qui-desktop-navbar-logo {
@@ -34,4 +52,5 @@
   margin-left: 1.5em;
   background-size: 90%;
   background-repeat: no-repeat;
+  cursor: pointer;
 }

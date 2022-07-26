@@ -46,6 +46,12 @@ export default {
         defaultValue: false,
       },
     },
+    onSearch: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
     onClick: {
       table: {
         category: "Events",
@@ -89,7 +95,8 @@ Default.args = {
     },
   ],
   user: {
-    name: "Anita Majithia",
+    first_name: "Anita",
+    last_name: "Majithia",
     icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
   },
   asVariant: "primary",
