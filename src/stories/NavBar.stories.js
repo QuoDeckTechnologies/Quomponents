@@ -12,7 +12,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/NavBar/NavBar",
+  title: "Design System/NavBar",
   component: NavBar,
   argTypes: {
     title: "",

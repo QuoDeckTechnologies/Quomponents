@@ -2,7 +2,7 @@ import React from "react";
 import Popuplist from "../../components/Templates/Popuplist/Popuplist.react";
 
 export default {
-	title: "Design System/Templates/Popuplist/Popuplist",
+	title: "Design System/Templates/Popuplist",
 	component: Popuplist,
 	argTypes: {
 		data: {

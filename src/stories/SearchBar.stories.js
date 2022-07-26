@@ -9,7 +9,7 @@ const dictionary = JSON.stringify({
     },
 });
 export default {
-    title: "Design System/SearchBar/SearchBar",
+    title: "Design System/SearchBar",
     component: SearchBar,
     placeHolder: "Search...",
     argTypes: {

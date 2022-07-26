@@ -2,7 +2,7 @@ import React from "react";
 import Diptych from "../../components/Templates/Diptych/Diptych.react";
 
 export default {
-    title: "Design System/Templates/Diptych/Diptych",
+    title: "Design System/Templates/Diptych",
     component: Diptych,
     argTypes: {
         data: {},

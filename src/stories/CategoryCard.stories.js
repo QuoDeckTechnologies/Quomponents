@@ -2,7 +2,7 @@ import React from "react";
 import CategoryCard from "../components/CategoryCard/CategoryCard.react";
 
 export default {
-    title: "Design System/CategoryCard/CategoryCard",
+    title: "Design System/CategoryCard",
     component: CategoryCard,
     argTypes: {
         content: {

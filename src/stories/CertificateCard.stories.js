@@ -14,7 +14,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/CertificateCard/CertificateCard",
+  title: "Design System/CertificateCard",
   component: CertificateCard,
   argTypes: {
     asStatus: {

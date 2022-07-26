@@ -20,7 +20,7 @@ const dictionary = JSON.stringify({
     }
 });
 export default {
-    title: "Design System/Templates/RankingOptions/RankingOptions",
+    title: "Design System/Templates/RankingOptions",
     component: RankingOptions,
     argTypes: {
         data: {

@@ -2,7 +2,7 @@ import React from "react";
 import Tag from "../components/Tag/Tag.react";
 
 export default {
-    title: "Design System/Tag/Tag",
+    title: "Design System/Tag",
     component: Tag,
     argTypes: {
         content: "Tag",

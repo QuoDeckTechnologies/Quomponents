@@ -2,7 +2,7 @@ import React from "react";
 import ImageCards from "../../components/Templates/ImageCards/ImageCards.react";
 
 export default {
-    title: "Design System/Templates/ImageCards/ImageCards",
+    title: "Design System/Templates/ImageCards",
     component: ImageCards,
     argTypes: {
         data: {

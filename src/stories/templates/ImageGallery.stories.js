@@ -2,7 +2,7 @@ import React from "react";
 import ImageGallery from "../../components/Templates/ImageGallery/ImageGallery.react";
 
 export default {
-    title: "Design System/Templates/ImageGallery/ImageGallery",
+    title: "Design System/Templates/ImageGallery",
     component: ImageGallery,
     argTypes: {
         data: {

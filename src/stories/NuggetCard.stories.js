@@ -2,7 +2,7 @@ import React from "react";
 import NuggetCard from "../components/NuggetCard/NuggetCard.react";
 
 export default {
-	title: "Design System/NuggetCard/NuggetCard",
+	title: "Design System/NuggetCard",
 	component: NuggetCard,
 	argTypes: {
 		content: {
