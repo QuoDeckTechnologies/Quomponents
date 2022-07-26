@@ -162,6 +162,7 @@ import RibbonToolsMenu from "./components/RibbonMenu/toolsMenu/RibbonToolsMenu.r
 import RibbonMenu from "./components/RibbonMenu/RibbonMenu.react";
 import { ThemeSet } from "./components/RibbonMenu/ThemeSet.react";
 import ConfirmationOverlay from "./components/ConfirmationOverlay/ConfirmationOverlay.react";
+import RadioButton from "./components/RadioButton/RadioButton.react";
 
 //---------------------------------------------------------------------
 //From NPM packages
@@ -333,6 +334,7 @@ export {
     RibbonMenu,
     ThemeSet,
     ConfirmationOverlay,
+    RadioButton,
     //---------------------------------------------------------------------
     //From NPM packages
     //----------------------------------------------

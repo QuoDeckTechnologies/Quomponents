@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import RadioButton from "../components/RadioButton/RadioButton.react";
+import RadioGroup from "@mui/material/RadioGroup";
+import _ from "lodash";
 
 const dictionary = JSON.stringify({
   hi: {
-    radioButton: { label: "डिफ़ॉल्ट रेडियो" },
+    radioButton: { content: "डिफ़ॉल्ट रेडियो" },
   },
 });
 
@@ -12,7 +14,7 @@ export default {
   component: RadioButton,
   argTypes: {
     targetName: "target-one",
-    label: "",
+    content: "",
     asSize: {
       control: "select",
       options: ["tiny", "small", "normal", "big", "huge", "massive"],
@@ -102,7 +104,7 @@ const Template = (args) => <RadioButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   targetName: "target-one",
-  label: "Default Radio",
+  content: "Default Radio",
   asSize: "normal",
   asFloated: "none",
   asPadded: "fitted",
@@ -189,6 +191,71 @@ TranslatedRadioButton.parameters = {
     source: {
       code: `<RadioButton {...${JSON.stringify(
         TranslatedRadioButton.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Multiple Radio Button
+// -------------------------------------------------------------
+const MultipleRadioButtonTemplate = (args) => {
+  const defaultProps = {
+    targetName: "target-one",
+    label: "Default Radio",
+    asSize: "normal",
+    asFloated: "none",
+    asPadded: "fitted",
+    asAligned: "left",
+    withColor: {
+      backgroundColor: "",
+      textColor: "#303030",
+      accentColor: "#FFBF00",
+      hoverBackgroundColor: "",
+      hoverTextColor: "",
+    },
+    withAnimation: {
+      animation: "zoom",
+      duration: 0.5,
+      delay: 0,
+    },
+    isHidden: false,
+    isDisabled: false,
+  };
+  const [value, setValue] = useState(args.initialValue);
+  return (
+    <div style={{ display: "inline-block" }}>
+      <RadioGroup value={value}>
+        {_.map(args.radioContent, (radio, index) => {
+          return (
+            <RadioButton
+              key={index}
+              {...defaultProps}
+              targetName={radio.targetName}
+              content={radio.content}
+              onClick={(value, checked) => setValue(value)}
+            />
+          );
+        })}
+      </RadioGroup>
+    </div>
+  );
+};
+export const MultipleRadioButton = MultipleRadioButtonTemplate.bind({});
+MultipleRadioButton.args = {
+  ...Default.args,
+  initialValue: "target-one",
+  radioContent: [
+    { targetName: "target-one", content: "Option A" },
+    { targetName: "target-two", content: "Option B" },
+  ],
+};
+MultipleRadioButton.parameters = {
+  docs: {
+    source: {
+      code: `<RadioButton {...${JSON.stringify(
+        MultipleRadioButton.args,
         null,
         2
       )}}/>`,

@@ -21,9 +21,9 @@ RadioButton.propTypes = {
   */
   targetName: PropTypes.string,
   /**
-  Use to define label of the radio component
+  Use to define content of the radio component
   */
-  label: PropTypes.string,
+  content: PropTypes.string,
   //=======================================
   // Quommon props
   //=======================================
@@ -101,7 +101,7 @@ RadioButton.defaultProps = {
   // Component Specific props
   //=======================================
   targetName: "default-name",
-  label: "radio",
+  content: "radio",
   //=======================================
   // Quommon props
   //=======================================
@@ -128,7 +128,7 @@ export default function RadioButton(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { targetName, label, withColor, asSize } = props;
+  const { targetName, content, withColor, asSize } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -161,7 +161,7 @@ export default function RadioButton(props) {
     }
   };
   //-------------------------------------------------------------------
-  // 6. Function to get label font size
+  // 6. Function to get content font size
   //-------------------------------------------------------------------
   const getFontSize = () => {
     switch (asSize) {
@@ -211,7 +211,7 @@ export default function RadioButton(props) {
               }}
             />
           }
-          label={tObj ? tObj.label : label}
+          label={tObj ? tObj.content : content}
         />
       </div>
     </motion.div>
