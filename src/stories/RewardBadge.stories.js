@@ -93,7 +93,21 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<RewardBadge {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<RewardBadge 
+            image: RewardBadgeImage,
+            asVariant: "secondary",
+            withColor: {
+                backgroundColor: "",
+                textColor: "",
+            },
+            withLabel: {
+                format: "caption",
+                content: "You won the July season!",
+                textColor: "#000000",
+            },
+            isHidden: false,
+            isDisabled: false
+            />`,
         },
     },
 };
@@ -115,11 +129,21 @@ ColoredRewardBadge.parameters = {
                 "Use to override the standard colors of the RewardBadge.",
         },
         source: {
-            code: `<ColoredRewardBadge {...${JSON.stringify(
-                ColoredRewardBadge.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RewardBadge 
+            image: RewardBadgeImage,
+            asVariant: "secondary",
+            withColor: {
+                backgroundColor: "#ff1a1a",
+                textColor: "#ffff00",
+            }
+            withLabel: {
+                format: "caption",
+                content: "You won the July season!",
+                textColor: "#000000",
+            },
+            isHidden: false,
+            isDisabled: false
+            />`,
         },
     },
 };
@@ -143,11 +167,21 @@ DisabledRewardBadge.parameters = {
                 "Used as disabled version of the RewardBadge.",
         },
         source: {
-            code: `<DisabledRewardBadge {...${JSON.stringify(
-                DisabledRewardBadge.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RewardBadge 
+            image: RewardBadgeImage,
+            asVariant: "secondary",
+            withColor: {
+                backgroundColor: "",
+                textColor: "",
+            }
+            withLabel: {
+                format: "caption",
+                content: "You won the July season!",
+                textColor: "#000000",
+            },
+            isHidden: false,
+            isDisabled: true
+            />`,
         },
     },
 };
@@ -176,11 +210,21 @@ RewardBadgeWithCaptionFormat.parameters = {
                 "Use the content of RewardBadge in the caption format from withLable prop.",
         },
         source: {
-            code: `<RewardBadgeWithCaptionFormat {...${JSON.stringify(
-                RewardBadgeWithCaptionFormat.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RewardBadge 
+            image: RewardBadgeImage,
+            asVariant: "secondary",
+            withColor: {
+                backgroundColor: "",
+                textColor: "",
+            },
+            withLabel: {
+                format: "caption",
+                content: "You won the July season!",
+                textColor: "#000000",
+            },
+            isHidden: false,
+            isDisabled: false
+            />`,
         },
     },
 };
@@ -209,11 +253,21 @@ RewardBadgeWithLabelFormat.parameters = {
                 "Use the content of RewardBadge in the label format from withLable prop.",
         },
         source: {
-            code: `<RewardBadgeWithLabelFormat {...${JSON.stringify(
-                RewardBadgeWithLabelFormat.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RewardBadge 
+            image: RewardBadgeImage,
+            asVariant: "secondary",
+            withColor: {
+                backgroundColor: "",
+                textColor: "",
+            },
+            withLabel: {
+                format: "label",
+                content: "You won the July season!",
+                textColor: "#000000",
+            },
+            isHidden: false,
+            isDisabled: false
+            />`,
         },
     },
 };
@@ -242,11 +296,21 @@ RewardBadgeWithPopoverFormat.parameters = {
                 "Use the content of RewardBadge in a popover format from withLable prop that will be shown when user hover over the badge.",
         },
         source: {
-            code: `<RewardBadgeWithPopoverFormat {...${JSON.stringify(
-                RewardBadgeWithPopoverFormat.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RewardBadge 
+            image: RewardBadgeImage,
+            asVariant: "secondary",
+            withColor: {
+                backgroundColor: "",
+                textColor: "",
+            },
+            withLabel: {
+                format: "popover",
+                content: "You won the July season!",
+                textColor: "#000000",
+            },
+            isHidden: false,
+            isDisabled: false
+            />`,
         },
     },
 }; 

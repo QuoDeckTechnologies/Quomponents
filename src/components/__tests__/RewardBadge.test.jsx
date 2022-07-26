@@ -23,6 +23,7 @@ describe("RewardBadge", () => {
     hasValid("defaults", args);
 
     hasValid("variants", args);
+    hasValid("labels", args);
 
     hasValid("colors", args);
     hasValid("disabled", args);
@@ -37,8 +38,9 @@ describe("RewardBadge", () => {
     />);
     it("should click on the badge container div", () => {
         component.setProps({
+            image: "image.jpg",
             withLabel: {
-                format: "label",
+                format: "popover",
                 content: "test"
             }
         })

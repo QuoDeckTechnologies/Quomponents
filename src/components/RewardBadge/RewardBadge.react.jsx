@@ -102,10 +102,10 @@ export default function RewardBadge(props) {
                 className={`qui-reward-badge-container ${props?.withLabel?.format === "popover" ? "popover" : ""}  qui-btn ${quommonClasses.childClasses}`}
                 style={{ backgroundColor: props.withColor?.backgroundColor, color: props.withColor?.textColor }}
                 onClick={() => props.onClick}>
-                <div className="qui-badge-label">
-                    <h5>
+                <div className="qui-badge-label qui-label">
+                    <h4>
                         {getLabel(labelContent, "label")}
-                    </h5>
+                    </h4>
                 </div>
                 {props?.image && <img
                     className="qui-reward-badge"
@@ -113,10 +113,10 @@ export default function RewardBadge(props) {
                     alt="reward-badge"
                     title={getLabel(labelContent, "popover")}
                 />}
-                <div className="qui-badge-caption">
-                    <h5>
+                <div className="qui-badge-caption qui-caption">
+                    <h4>
                         {getLabel(labelContent, "caption")}
-                    </h5>
+                    </h4>
                 </div>
             </div>
         </div>
