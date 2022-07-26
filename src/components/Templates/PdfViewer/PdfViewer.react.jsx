@@ -177,7 +177,7 @@ export default function PdfViewer(props) {
   //-------------------------------------------------------------------
   //  Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   // ========================= Render Function =================================
   return (

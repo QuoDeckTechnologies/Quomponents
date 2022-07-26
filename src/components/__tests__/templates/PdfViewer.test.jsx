@@ -10,12 +10,39 @@ import { render } from "@testing-library/react";
 // -------------------------------------
 import PdfViewer from "../../Templates/PdfViewer/PdfViewer.react";
 import Slider from "../../Slider/Slider.react";
-import { Document, Page } from 'react-pdf';
+import { Document } from 'react-pdf';
+
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "../common";
 
 describe("PdfViewer", () => {
+
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+
+  const args = {
+    target: PdfViewer,
+    required: {
+      data: {
+        pdf: {
+          id: "default-pdf",
+          extention: ""
+        },
+      }, onClick: () => { },
+    },
+  };
+  hasValid("defaults", args);
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+
   // -------------------------------------
   // Setup definitions for the test suite
-  // -------------------------------------
+  // // -------------------------------------
   let component;
   let pdfDocumnet = "data:application/pdf;base64,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"
   const setState = jest.fn();
@@ -26,10 +53,6 @@ describe("PdfViewer", () => {
     component = shallow(
       <PdfViewer
         slideId={0}
-        withColor={null}
-        withAnimation={null}
-        isHidden={false}
-        isDisabled={false}
         handleCompletion={jest.fn()}
       />
     );
@@ -63,10 +86,6 @@ describe("PdfViewer", () => {
           doc: "test.pdf"
         }]}
         slideId={0}
-        withColor={null}
-        withAnimation={null}
-        isHidden={false}
-        isDisabled={false}
         onClick={(e) => {
           console.log(e);
         }}
@@ -115,10 +134,6 @@ describe("PdfViewer", () => {
           doc: "test.pdf"
         }]}
         slideId={0}
-        withColor={null}
-        withAnimation={null}
-        isHidden={false}
-        isDisabled={false}
         onClick={(e) => {
           console.log(e);
         }}
@@ -195,22 +210,6 @@ describe("PdfViewer", () => {
       }
     })
   });
-  it("should render correctly when passed isHidden props as false", () => {
-    component.setProps({ isHidden: false })
-    expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed isHidden props as true", () => {
-    component.setProps({ isHidden: true })
-    expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed isDisabled props as false", () => {
-    component.setProps({ isDisabled: false })
-    expect(component.exists()).toBe(true);
-  })
-  it("should render correctly when passed isDisabled props as true", () => {
-    component.setProps({ isDisabled: true })
-    expect(component.exists()).toBe(true);
-  })
   it("should render correctly without throwing error when document gets loaded to screen", () => {
     component.setProps({
       data: {

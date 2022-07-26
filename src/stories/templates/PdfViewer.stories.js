@@ -94,7 +94,28 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<PdfViewer {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<PdfViewer 
+      data={{
+    pdf: {
+      id: "default-pdf",
+      extention: ""
+    },
+  }},
+  docLibrary= [{
+    id: "default-pdf",
+    doc: 'sample.pdf',
+  }],
+  slideId= 0,
+  withColor= {{
+    sliderBackgroundColor: "#3a3636a6",
+  }},
+  withAnimation= {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  isDisabled= false,
+  isHidden= false, />`,
     },
   },
 };
