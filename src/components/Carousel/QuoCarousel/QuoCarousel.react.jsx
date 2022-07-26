@@ -181,7 +181,7 @@ export default function QuoCarousel(props) {
             </div> : " "
             }
             {props.addSkipToEnd && activeSlide !== content.length - 1 &&
-                <div>
+                <div className="qui-quo-carousel-skip">
                     <Button
                         content="Skip"
                         asEmphasis="text"

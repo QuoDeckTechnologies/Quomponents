@@ -108,8 +108,7 @@ export default {
         (story) => (
             <div
                 style={{
-                    width: "100%",
-                    textAlign: "center",
+                    width: "100%"
                 }}
             >
                 {story()}
