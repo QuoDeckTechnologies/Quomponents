@@ -2,7 +2,7 @@ import React from "react";
 import CaptionedParagraph from "../../components/Templates/CaptionedParagraph/CaptionedParagraph.react";
 
 export default {
-    title: "Design System/Templates/CaptionedParagraph/CaptionedParagraph",
+    title: "Design System/Templates/CaptionedParagraph",
     component: CaptionedParagraph,
     argTypes: {
         data: {

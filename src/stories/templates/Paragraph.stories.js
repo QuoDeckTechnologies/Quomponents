@@ -2,7 +2,7 @@ import React from "react";
 import Paragraph from "../../components/Templates/Paragraph/Paragraph.react";
 
 export default {
-  title: "Design System/Templates/Paragraph/Paragraph",
+  title: "Design System/Templates/Paragraph",
   component: Paragraph,
   argTypes: {
     data: {

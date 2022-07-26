@@ -8,7 +8,7 @@ const dictionary = JSON.stringify({
 }); 
 
 export default {
-    title: "Design System/Templates/ExternalLink/ExternalLink",
+    title: "Design System/Templates/ExternalLink",
     component: ExternalLink,
     argTypes: {
         data: {

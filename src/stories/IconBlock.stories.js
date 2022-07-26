@@ -2,7 +2,7 @@ import React from "react";
 import IconBlock from "../components/IconBlock/IconBlock.react";
 
 export default {
-    title: "Design System/IconBlock/IconBlock",
+    title: "Design System/IconBlock",
     component: IconBlock,
     argTypes: {
         asSize: {

@@ -2,7 +2,7 @@ import React from "react";
 import AccentLine from "../components/AccentLine/AccentLine.react";
 
 export default {
-    title: "Design System/AccentLine/AccentLine",
+    title: "Design System/AccentLine",
     component: AccentLine,
     argTypes: {
         asVariant: {

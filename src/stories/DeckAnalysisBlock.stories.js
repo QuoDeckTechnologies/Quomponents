@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
     },
 });
 export default {
-    title: "Design System/DeckAnalysisBlock/DeckAnalysis",
+    title: "Design System/DeckAnalysisBlock",
     component: DeckAnalysisBlock,
     argTypes: {
         header: "",

@@ -2,7 +2,7 @@ import React from "react";
 import MCQwithFeedback from "../../components/Templates/MCQwithFeedback/MCQwithFeedback.react";
 
 export default {
-  title: "Design System/Templates/MCQwithFeedback/MCQwithFeedback",
+  title: "Design System/Templates/MCQwithFeedback",
   component: MCQwithFeedback,
   argTypes: {
     data: {

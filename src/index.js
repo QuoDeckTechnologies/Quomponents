@@ -2,92 +2,92 @@
 //---------------------------------------------------------------------
 // Quomponents
 //---------------------------------------------------------------------
-import AccentLine from './components/AccentLine/AccentLine.react';
-import ActionMenu from './components/ActionMenu/ActionMenu.react';
-import AmplayfierDateBlock from './components/AmplayfierDateBlock/AmplayfierDateBlock.react';
-import AmplayfierDrawerRect from './components/AmplayfierDrawerRect/AmplayfierDrawerRect.react';
-import AppMenu from './components/AppMenu/AppMenu/AppMenu.react';
-import Avatar from './components/AppMenu/Avatar/Avatar.react';
-import MenuBlock from './components/AppMenu/MenuBlock/MenuBlock.react';
-import ArcMenu from './components/ArcMenu/ArcMenu.react';
-import Badges from './components/Badges/Badges.react';
-import QuoBarChart from './components/BarChart/QuoBarChart.react';
-import BulletBlock from './components/BulletBlock/BulletBlock.react';
-import ButtonBank from './components/ButtonBank/ButtonBank.react';
-import ActionButton from './components/Buttons/ActionButton/ActionButton.react';
-import Button from './components/Buttons/Button/Button.react';
-import Choice from './components/Buttons/Choice/Choice.react';
-import DataExporter from './components/Buttons/DataExporter/DataExporter.react';
-import FlipConfirm from './components/Buttons/FlipConfirm/FlipConfirm.react';
-import IconLink from './components/Buttons/IconLink/IconLink.react';
-import ToolbarDark from './components/Buttons/ToolbarDark/ToolbarDark.react';
-import Upload from './components/Buttons/Upload/Upload.react';
-import Calender from './components/Calendar/Calendar.react';
-import CardTag from './components/CardTag/CardTag.react';
-import Banner from './components/Carousel/Banner/Banner.react';
-import BannerCard from './components/Carousel/BannerCard/BannerCard.react';
-import BannerCarousel from './components/Carousel/BannerCarousel/BannerCarousel.react';
-import HtmlCarousel from './components/Carousel/HtmlCarousel/HtmlCarousel.react';
-import LandscapeCarousel from './components/Carousel/LandscapeCarousel/LandscapeCarousel.react';
-import PortraitCarousel from './components/Carousel/PortraitCarousel/PortraitCarousel.react';
-import SquareCarousel from './components/Carousel/SquareCarousel/SquareCarousel.react';
-import SquareWrapperCarousel from './components/Carousel/SquareWrapperCarousel/SquareWrapperCarousel.react';
-import CategoryCard from './components/CategoryCard/CategoryCard.react';
-import CertificateCard from './components/CertificateCard/CertificateCard.react';
-import CheckBox from './components/CheckBox/CheckBox.react';
-import ClickableImage from './components/ClickableImage/ClickableImage.react';
-import ColorSwatch from './components/ColorSwatch/ColorSwatch.react';
-import ContentLine from './components/ContentLine/ContentLine.react';
-import ContentTableRow from './components/ContentTableRow/ContentTableRow.react';
-import CourseCard from './components/CourseCard/CourseCard.react';
-import CourseListCard from './components/CourseListCard/CourseListCard.react';
-import DateField from './components/DateField/DateField.react';
-import DeckAnalysis from './components/DeckAnalysisBlock/DeckAnalysisBlock.react';
-import EarnCard from './components/EarnCard/EarnCard.react';
-import EnrollmentRuleRow from './components/EnrollmentRuleRow/EnrollmentRuleRow.react';
-import FeedbackForm from './components/FeedbackForm/FeedbackForm.react';
-import HCard from './components/HCard/HCard.react';
-import HelpText from './components/HelpText/HelpText.react';
-import IconBlock from './components/IconBlock/IconBlock.react';
-import IconListItem from './components/IconListItem/IconListItem/IconListItem.react';
-import ImageUploadModal from './components/ImageUploadModal/ImageUploadModal.react';
-import InlineEdit from './components/InlineEdit/InlineEdit.react';
-import InputField from './components/InputField/InputField.react';
-import LeaderboardRow from './components/LeaderboardRow/LeaderboardRow.react';
-import LearnerTableRow from './components/LearnerTableRow/LearnerTableRow.react';
-import Loader from './components/Loaders/Loader/Loader.react';
-import MobileToolbar from './components/MobileToolbar/MobileToolbar.react';
-import MultiSelect from './components/MultiSelect/MultiSelect.react';
-import NavBar from './components/NavBar/NavBar/NavBar.react';
-import NuggetBlock from './components/NuggetBlock/NuggetBlock.react';
-import NuggetCard from './components/NuggetCard/NuggetCard.react';
-import OptionalImageField from './components/OptionalImageField/OptionalImageField.react';
-import OptionItemEight from './components/OptionItem/OptionItemEight/OptionItemEight.react';
-import OptionItemFive from './components/OptionItem/OptionItemFive/OptionItemFive.react';
-import OptionItemFour from './components/OptionItem/OptionItemFour/OptionItemFour.react';
-import OptionItemNine from './components/OptionItem/OptionItemNine/OptionItemNine.react';
-import OptionItemOne from './components/OptionItem/OptionItemOne/OptionItemOne.react';
-import OptionItemSeven from './components/OptionItem/OptionItemSeven/OptionItemSeven.react';
-import OptionItemSix from './components/OptionItem/OptionItemSix/OptionItemSix.react';
-import OptionItemTen from './components/OptionItem/OptionItemTen/OptionItemTen.react';
-import OptionItemThree from './components/OptionItem/OptionItemThree/OptionItemThree.react';
-import OptionItemTwo from './components/OptionItem/OptionItemTwo/OptionItemTwo.react';
-import OrderingList from './components/OrderingList/OrderingList/OrderingList.react';
-import OTPFields from './components/OTPFields/OTPFields.react';
-import OverlayMenu from './components/OverlayMenu/OverlayMenu.react';
-import PageHeader from './components/PageHeader/PageHeader.react';
-import ProgressBar from './components/ProgressBar/ProgressBar.react';
-import RedeemCard from './components/RedeemCard/RedeemCard.react';
-import Reward from './components/Reward/Reward.react';
-import RewardCard from './components/RewardCard/RewardCard.react';
-import WalletRow from './components/WalletRow/WalletRow.react';
-import VoiceoverUploadModal from './components/VoiceoverUploadModal/VoiceoverUploadModal.react';
-import Videobox from './components/Videobox/Videobox.react';
-import TreeBarOpen from './components/TreeBarOpen/TreeBarOpen.react';
-import ToggleButton from './components/ToggleButton/ToggleButton.react';
-import TextBlock from './components/TextBlock/TextBlock.react';
-import Tag from './components/Tag/Tag.react';
-import Anagram from './components/Templates/Anagram/Anagram.react';
+import AccentLine from "./components/AccentLine/AccentLine.react";
+import ActionMenu from "./components/ActionMenu/ActionMenu.react";
+import AmplayfierDateBlock from "./components/AmplayfierDateBlock/AmplayfierDateBlock.react";
+import AmplayfierDrawerRect from "./components/AmplayfierDrawerRect/AmplayfierDrawerRect.react";
+import AppMenu from "./components/AppMenu/AppMenu/AppMenu.react";
+import Avatar from "./components/AppMenu/Avatar/Avatar.react";
+import MenuBlock from "./components/AppMenu/MenuBlock/MenuBlock.react";
+import ArcMenu from "./components/ArcMenu/ArcMenu.react";
+import Badges from "./components/Badges/Badges.react";
+import QuoBarChart from "./components/BarChart/QuoBarChart.react";
+import BulletBlock from "./components/BulletBlock/BulletBlock.react";
+import ButtonBank from "./components/ButtonBank/ButtonBank.react";
+import ActionButton from "./components/Buttons/ActionButton/ActionButton.react";
+import Button from "./components/Buttons/Button/Button.react";
+import Choice from "./components/Buttons/Choice/Choice.react";
+import DataExporter from "./components/Buttons/DataExporter/DataExporter.react";
+import FlipConfirm from "./components/Buttons/FlipConfirm/FlipConfirm.react";
+import IconLink from "./components/Buttons/IconLink/IconLink.react";
+import LinkIcon from "./components/LinkIcon/LinkIcon.react";
+import Upload from "./components/Buttons/Upload/Upload.react";
+import Calender from "./components/Calendar/Calendar.react";
+import CardTag from "./components/CardTag/CardTag.react";
+import Banner from "./components/Carousel/Banner/Banner.react";
+import BannerCard from "./components/Carousel/BannerCard/BannerCard.react";
+import BannerCarousel from "./components/Carousel/BannerCarousel/BannerCarousel.react";
+import HtmlCarousel from "./components/Carousel/HtmlCarousel/HtmlCarousel.react";
+import LandscapeCarousel from "./components/Carousel/LandscapeCarousel/LandscapeCarousel.react";
+import PortraitCarousel from "./components/Carousel/PortraitCarousel/PortraitCarousel.react";
+import SquareCarousel from "./components/Carousel/SquareCarousel/SquareCarousel.react";
+import SquareWrapperCarousel from "./components/Carousel/SquareWrapperCarousel/SquareWrapperCarousel.react";
+import CategoryCard from "./components/CategoryCard/CategoryCard.react";
+import CertificateCard from "./components/CertificateCard/CertificateCard.react";
+import CheckBox from "./components/CheckBox/CheckBox.react";
+import ClickableImage from "./components/ClickableImage/ClickableImage.react";
+import ColorSwatch from "./components/ColorSwatch/ColorSwatch.react";
+import ContentLine from "./components/ContentLine/ContentLine.react";
+import ContentTableRow from "./components/ContentTableRow/ContentTableRow.react";
+import CourseCard from "./components/CourseCard/CourseCard.react";
+import CourseListCard from "./components/CourseListCard/CourseListCard.react";
+import DateField from "./components/DateField/DateField.react";
+import DeckAnalysis from "./components/DeckAnalysisBlock/DeckAnalysisBlock.react";
+import EarnCard from "./components/EarnCard/EarnCard.react";
+import EnrollmentRuleRow from "./components/EnrollmentRuleRow/EnrollmentRuleRow.react";
+import FeedbackForm from "./components/FeedbackForm/FeedbackForm.react";
+import HCard from "./components/HCard/HCard.react";
+import HelpText from "./components/HelpText/HelpText.react";
+import IconBlock from "./components/IconBlock/IconBlock.react";
+import IconListItem from "./components/IconListItem/IconListItem/IconListItem.react";
+import ImageUploadModal from "./components/ImageUploadModal/ImageUploadModal.react";
+import InlineEdit from "./components/InlineEdit/InlineEdit.react";
+import InputField from "./components/InputField/InputField.react";
+import LeaderboardRow from "./components/LeaderboardRow/LeaderboardRow.react";
+import LearnerTableRow from "./components/LearnerTableRow/LearnerTableRow.react";
+import Loader from "./components/Loaders/Loader/Loader.react";
+import MobileToolbar from "./components/MobileToolbar/MobileToolbar.react";
+import MultiSelect from "./components/MultiSelect/MultiSelect.react";
+import NavBar from "./components/NavBar/NavBar/NavBar.react";
+import NuggetBlock from "./components/NuggetBlock/NuggetBlock.react";
+import NuggetCard from "./components/NuggetCard/NuggetCard.react";
+import OptionalImageField from "./components/OptionalImageField/OptionalImageField.react";
+import OptionItemEight from "./components/OptionItem/OptionItemEight/OptionItemEight.react";
+import OptionItemFive from "./components/OptionItem/OptionItemFive/OptionItemFive.react";
+import OptionItemFour from "./components/OptionItem/OptionItemFour/OptionItemFour.react";
+import OptionItemNine from "./components/OptionItem/OptionItemNine/OptionItemNine.react";
+import OptionItemOne from "./components/OptionItem/OptionItemOne/OptionItemOne.react";
+import OptionItemSeven from "./components/OptionItem/OptionItemSeven/OptionItemSeven.react";
+import OptionItemSix from "./components/OptionItem/OptionItemSix/OptionItemSix.react";
+import OptionItemTen from "./components/OptionItem/OptionItemTen/OptionItemTen.react";
+import OptionItemThree from "./components/OptionItem/OptionItemThree/OptionItemThree.react";
+import OptionItemTwo from "./components/OptionItem/OptionItemTwo/OptionItemTwo.react";
+import OrderingList from "./components/OrderingList/OrderingList/OrderingList.react";
+import OTPFields from "./components/OTPFields/OTPFields.react";
+import OverlayMenu from "./components/OverlayMenu/OverlayMenu.react";
+import PageHeader from "./components/PageHeader/PageHeader.react";
+import ProgressBar from "./components/ProgressBar/ProgressBar.react";
+import RedeemCard from "./components/RedeemCard/RedeemCard.react";
+import Reward from "./components/Reward/Reward.react";
+import RewardCard from "./components/RewardCard/RewardCard.react";
+import WalletRow from "./components/WalletRow/WalletRow.react";
+import VoiceoverUploadModal from "./components/VoiceoverUploadModal/VoiceoverUploadModal.react";
+import Videobox from "./components/Videobox/Videobox.react";
+import TreeBar from "./components/TreeBar/TreeBar.react";
+import ToggleButton from "./components/ToggleButton/ToggleButton.react";
+import TextBlock from "./components/TextBlock/TextBlock.react";
+import Tag from "./components/Tag/Tag.react";
+import Anagram from "./components/Templates/Anagram/Anagram.react";
 import BackgroundImage from "./components/Templates/BackgroundImage/BackgroundImage.react";
 import Blurb from './components/Templates/Blurb/Blurb.react';
 import Brancher from './components/Templates/Brancher/Brancher.react';
@@ -167,8 +167,8 @@ import QuoCarousel from './components/Carousel/QuoCarousel/QuoCarousel.react';
 //---------------------------------------------------------------------
 //From NPM packages
 //---------------------------------------------------------------------
-import ButtonGroup from '@mui/material/ButtonGroup';
-import TextField from '@mui/material/TextField';
+import ButtonGroup from "@mui/material/ButtonGroup";
+import TextField from "@mui/material/TextField";
 
 export {
     //---------------------------------------------------------------------
@@ -192,7 +192,6 @@ export {
     DataExporter,
     FlipConfirm,
     IconLink,
-    ToolbarDark,
     Upload,
     Calender,
     CardTag,
@@ -255,7 +254,7 @@ export {
     WalletRow,
     VoiceoverUploadModal,
     Videobox,
-    TreeBarOpen,
+    TreeBar,
     ToggleButton,
     TextBlock,
     Tag,
@@ -286,6 +285,7 @@ export {
     ImageGallery,
     ImageGrid,
     ImageWithCaption,
+    LinkIcon,
     LinkwithSlide,
     MCQwithFeedback,
     MultipleSelect,
@@ -340,5 +340,5 @@ export {
     //From NPM packages
     //----------------------------------------------
     ButtonGroup,
-    TextField
+    TextField,
 };

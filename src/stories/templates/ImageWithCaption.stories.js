@@ -8,7 +8,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/Templates/ImageWithCaption/ImageWithCaption",
+    title: "Design System/Templates/ImageWithCaption",
     component: ImageWithCaption,
     argTypes: {
         data: {

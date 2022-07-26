@@ -2,7 +2,7 @@ import React from "react";
 import TimeLinedOptions from "../../components/Templates/TimeLinedOptions/TimeLinedOptions.react";
 
 export default {
-    title: "Design System/Templates/TimeLinedOptions/TimeLinedOptions",
+    title: "Design System/Templates/TimeLinedOptions",
     component: TimeLinedOptions,
     argTypes: {
         data: {

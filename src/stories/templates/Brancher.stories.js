@@ -2,7 +2,7 @@ import React from "react";
 import Brancher from "../../components/Templates/Brancher/Brancher.react";
 
 export default {
-  title: "Design System/Templates/Brancher/Brancher",
+  title: "Design System/Templates/Brancher",
   component: Brancher,
   argTypes: {
     data: {

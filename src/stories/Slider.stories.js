@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "../components/Slider/Slider.react";
 
 export default {
-  title: "Design System/Slider/Slider",
+  title: "Design System/Slider",
   component: Slider,
   argTypes: {
     initialValue: 10,

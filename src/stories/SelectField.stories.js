@@ -17,7 +17,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-    title: "Design System/SelectField/SelectField",
+    title: "Design System/SelectField",
     component: SelectField,
     argTypes: {
         label: "",

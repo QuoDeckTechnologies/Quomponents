@@ -70,6 +70,8 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     backgroundColor: "",
+                    hoverBackgroundColor: "",
+                    hoverTextColor: "",
                 },
             },
         },
@@ -117,6 +119,9 @@ export default {
     parameters: {
         componentSubtitle: "General purpose carousel",
         a11y: { disable: true },
+        docs: {
+            iframeHeight: 600,
+        },
     }
 };
 // -------------------------------------------------------------
@@ -191,6 +196,8 @@ Default.args = {
     adaptiveHeight: false,
     withColor: {
         backgroundColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
     },
     withTranslation: {
         lang: "en",
@@ -356,6 +363,8 @@ VCard.args = {
     adaptiveHeight: false,
     withColor: {
         backgroundColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
     },
     withTranslation: {
         lang: "en",

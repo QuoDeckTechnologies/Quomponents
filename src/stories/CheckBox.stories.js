@@ -10,7 +10,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/CheckBox/CheckBox",
+  title: "Design System/CheckBox",
   component: CheckBox,
   argTypes: {
     name: "",

@@ -17,7 +17,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/VoiceoverUploadModal/VoiceoverUploadModal",
+  title: "Design System/VoiceoverUploadModal",
   component: VoiceoverUploadModal,
   argTypes: {
     isOpen: {

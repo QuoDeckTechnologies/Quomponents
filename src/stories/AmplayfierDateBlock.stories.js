@@ -23,7 +23,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/AmplayfierDateBlock/AmplayfierDateBlock",
+  title: "Design System/AmplayfierDateBlock",
   component: AmplayfierDateBlock,
   argTypes: {
     content: "",

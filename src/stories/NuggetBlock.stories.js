@@ -23,7 +23,7 @@ import Nugget_Webinar from "../assets/nuggets/nugget_webinar.png";
 import Nugget_Gallery from "../assets/nuggets/nugget_gallery.png";
 
 export default {
-    title: "Design System/NuggetBlock/NuggetBlock",
+    title: "Design System/NuggetBlock",
     component: NuggetBlock,
     argTypes: {
         image: "",

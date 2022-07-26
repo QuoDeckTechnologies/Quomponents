@@ -6,9 +6,11 @@
 
 .qui .qui-treebar-pageheader {
     padding: 0.3em 0.4em;
-    font-size: 1.8em;
+    font-size: 2.4em;
     background: #aaaaaa;
     color: #ffffff;
+    display: flex;
+    align-items: center;
 }
 
 .qui .qui-treebar-searchbar .qui-search-bar-container {
@@ -23,8 +25,8 @@
 }
 
 .qui .qui-treebar-container {
-    width: 102%;
-    height: 70vh;
+    width: 100%;
+    min-height: 100%;
     background: #e5e5e5;
     font-size: 1em;
     overflow: auto;

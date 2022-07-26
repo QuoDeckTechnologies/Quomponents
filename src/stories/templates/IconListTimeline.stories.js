@@ -2,7 +2,7 @@ import React from "react";
 import IconListTimeline from "../../components/Templates/IconListTimeline/IconListTimeline.react";
 
 export default {
-    title: "Design System/Templates/IconListTimeline/IconListTimeline",
+    title: "Design System/Templates/IconListTimeline",
     component: IconListTimeline,
     argTypes: {
         data: {

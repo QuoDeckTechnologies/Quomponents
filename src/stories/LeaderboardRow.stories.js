@@ -2,7 +2,7 @@ import React from "react";
 import LeaderboardRow from "../components/LeaderboardRow/LeaderboardRow.react";
 
 export default {
-    title: "Design System/LeaderboardRow/LeaderboardRow",
+    title: "Design System/LeaderboardRow",
     component: LeaderboardRow,
     argTypes: {
         rank: 0,

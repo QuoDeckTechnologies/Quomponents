@@ -20,7 +20,7 @@ const dictionary = JSON.stringify({
     }
 });
 export default {
-    title: "Design System/Templates/PictureFuddle/PictureFuddle",
+    title: "Design System/Templates/PictureFuddle",
     component: PictureFuddle,
     argTypes: {
         data: {

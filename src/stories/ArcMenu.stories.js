@@ -44,7 +44,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/ArcMenu/ArcMenu",
+  title: "Design System/ArcMenu",
   component: ArcMenu,
   argTypes: {
     menuContent: [],

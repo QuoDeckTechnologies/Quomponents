@@ -75,7 +75,6 @@ describe('QuoCarousel', () => {
                         }]}
                 />
             ],
-            onClick: () => { },
         },
         translations: {
             tgt: "button",
