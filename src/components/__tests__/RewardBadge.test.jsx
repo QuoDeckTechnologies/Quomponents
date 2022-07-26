@@ -23,9 +23,9 @@ describe("RewardBadge", () => {
     hasValid("defaults", args);
 
     hasValid("variants", args);
-    hasValid("sizes", args);
 
     hasValid("colors", args);
+    hasValid("disabled", args);
     hasValid("hidden", args);
     // -------------------------------------
     // Run component specific tests
@@ -35,7 +35,7 @@ describe("RewardBadge", () => {
         image=""
         onClick={() => { }}
     />);
-    it("should show image when passed image", () => {
+    it("should click on the badge container div", () => {
         component.setProps({
             withLabel: {
                 format: "label",

@@ -8,15 +8,28 @@
     min-height: 13em;
     padding: 0.5em;
     border-radius: 0.5em;
+    &.popover {
+        width: 13em;
+        height: 11em;
+        min-width: 10em;
+        min-height: 10em;
+        padding: 0.5em;
+        border-radius: 0.5em;
+        .qui-reward-badge {
+            margin-top: 0.7em;
+        }
+    }
     h5 {
         margin-block-end: 1em;
         margin-block-start: 1em;
         width: 10em;
     }
     .qui-badge-label {
+        margin: auto;
         width: fit-content;
     }
     .qui-badge-caption {
+        margin: auto;
         width: fit-content;
     }
     .qui-reward-badge {

@@ -27,17 +27,6 @@ RewardBadge.propTypes = {
         "error",
     ]),
     /**
-    Use to define component size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
     Use to add a heading label, a footer caption or a title popover to the component
     */
     withLabel: PropTypes.shape({
@@ -64,7 +53,7 @@ RewardBadge.propTypes = {
     /**
     Reward Badge component must have the onClick function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
 };
 
 RewardBadge.defaultProps = {
@@ -76,7 +65,6 @@ RewardBadge.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "warning",
-    asSize: "normal",
 
     withColor: null,
     withLabel: null,
@@ -110,18 +98,21 @@ export default function RewardBadge(props) {
         <div
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-reward-badge-container qui-btn ${quommonClasses.childClasses}`} style={{ backgroundColor: props.withColor?.backgroundColor, color: props.withColor?.textColor }} onClick={() => props.onClick}>
+            <div
+                className={`qui-reward-badge-container ${props?.withLabel?.format === "popover" ? "popover" : ""}  qui-btn ${quommonClasses.childClasses}`}
+                style={{ backgroundColor: props.withColor?.backgroundColor, color: props.withColor?.textColor }}
+                onClick={() => props.onClick}>
                 <div className="qui-badge-label">
                     <h5>
                         {getLabel(labelContent, "label")}
                     </h5>
                 </div>
-                <img
+                {props?.image && <img
                     className="qui-reward-badge"
                     src={`${props?.image}`}
                     alt="reward-badge"
                     title={getLabel(labelContent, "popover")}
-                />
+                />}
                 <div className="qui-badge-caption">
                     <h5>
                         {getLabel(labelContent, "caption")}
