@@ -41,8 +41,7 @@ QuoCarousel.propTypes = {
     * Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
-        hoverBackgroundColor: PropTypes.string,
-        hoverTextColor: PropTypes.string,
+        backgroundColor: PropTypes.string,
     }),
     /**
     * Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -143,7 +142,7 @@ export default function QuoCarousel(props) {
     let showRightNav = props.infinite ?
         true : activeSlide !== (content.length - 1) ?
             true : onRightNavigation !== null && onRightNavigation !== undefined ?
-                false : true;
+                true : false;
 
     // ========================= Render Function =================================
     return (
@@ -190,10 +189,7 @@ export default function QuoCarousel(props) {
                         asPadded="normal"
                         asFloated="none"
                         asAligned="center"
-                        withColor={{
-                            hoverBackgroundColor: props.withColor?.hoverBackgroundColor || "",
-                            hoverTextColor: props.withColor?.hoverTextColor || "",
-                        }}
+                        withColor={{ textColor: props.withColor?.backgroundColor }}
                         withAnimation={{
                             animation: "zoom",
                             duration: 0.5,
