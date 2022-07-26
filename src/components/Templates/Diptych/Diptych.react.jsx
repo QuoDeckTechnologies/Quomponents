@@ -40,6 +40,13 @@ Diptych.propTypes = {
     Diptych slideId should be passed with props, to specify the slide.
     */
   slideId: PropTypes.number,
+  /**
+  Use to define standard component type
+  */
+  layout: PropTypes.oneOf([
+    "side by side split",
+    "side by side full"
+  ]),
   //=======================================
   // Quommon props
   //=======================================
@@ -108,6 +115,7 @@ Diptych.defaultProps = {
     diptych: [],
     presenter: "",
   },
+  layout: "side by side split",
   slideId: 0,
   //=======================================
   // Quommon props
@@ -117,7 +125,6 @@ Diptych.defaultProps = {
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
-
 };
 /**
 ## Notes
@@ -178,16 +185,18 @@ export default function Diptych(props) {
           {data?.image && (
             <img className="qui-diptych-image" src={resolveImage(data.image.id, imageLibrary)} alt="" />
           )}
-          <div className="qui-diptych-clickable-images">
+          <div className={`qui-diptych-clickable-images${props.layout === "side by side split" ? "-split" : "-full"}`}>
             {_.map(data?.diptych, (image, index) => {
               return (
-                <div className="qui-clickable-image-container" key={"diptych-image" + index}>
+                <div className={`qui-clickable-image-container`} key={"diptych-image" + index}>
                   <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
                 </div>
               );
             })}
           </div>
-          <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+          <div className="qui qt-sm">
+            <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+          </div>
         </div>
       </div>
     );
@@ -205,19 +214,21 @@ export default function Diptych(props) {
           backgroundSize: "cover",
         }}
       >
-        <div className="qui-diptych-presenter-title" >
-          <TextBlock {...props}
-            content={data?.title}
-            asFloated="left"
-            withColor={textBlockColors} />
+        <div className="qui qui-diptych-presenter-title" >
+          <h4>
+            <TextBlock {...props}
+              content={data?.title}
+              asFloated="left"
+              withColor={textBlockColors} />
+          </h4>
         </div>
-        <div className="qui-diptych-presenter-sub-title">
+        <div className="qui qui-diptych-presenter-sub-title qt-sm">
           <TextBlock {...props}
             content={data?.subtitle}
             asFloated="left"
             withColor={textBlockColors} />
         </div>
-        <div className="qui-diptych-clickable-images">
+        <div className={`qui-diptych-clickable-images${props.layout === "side by side split" ? "-split" : "-full"}`}>
           {_.map(data?.diptych, (image, index) => {
             return (
               <div className="qui-clickable-image-container" key={"diptych-image" + index}>
@@ -226,7 +237,7 @@ export default function Diptych(props) {
             );
           })}
         </div>
-        <div className="qui-diptych-presenter-caption">
+        <div className="qui qui-diptych-presenter-caption qt-sm">
           <TextBlock {...props}
             content={data?.caption}
             asFloated="left"
@@ -248,7 +259,7 @@ export default function Diptych(props) {
   //-------------------------------------------------------------------
   //  Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   //-------------------------------------------------------------------
   // Function to set background for presenter view

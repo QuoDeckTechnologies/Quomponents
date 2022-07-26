@@ -137,7 +137,7 @@ export default function OptionItemSeven(props) {
   //-------------------------------------------------------------------
   // 5. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 6. Function to return checked value of the component
   //-------------------------------------------------------------------
@@ -178,7 +178,7 @@ export default function OptionItemSeven(props) {
           <FormControlLabel
             className="qui-option-item-radio"
             value={
-              content?.targetName ? content?.targetName : "default-target-name"
+              content?.targetName || "default-target-name"
             }
             control={
               <Radio
@@ -193,7 +193,7 @@ export default function OptionItemSeven(props) {
         <div className="qui-option-item-upload-button">
           <OptionalImageField
             content={{
-              title: tObj ? tObj.uploadButton : null,
+              title: tObj?.uploadButton || null,
               icon: "fas fa-upload",
             }}
             onClick={(image) => handleImageUpload(image)}
@@ -204,14 +204,12 @@ export default function OptionItemSeven(props) {
           name={
             content?.targetName ? content?.targetName : "default-target-name"
           }
-          content={{
-            value: content?.value,
-            placeholder: tObj ? tObj.placeholder : content?.placeholder,
-            maxLength: content?.maxLength,
-          }}
+          value={content?.value}
+          placeholder={tObj?.placeholder || content?.placeholder}
+          maxLength={content?.maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
-          onClick={handleValue}
+          onSubmit={handleValue}
         />
         <div className="qui-option-item-seven-close-icon">
           <i

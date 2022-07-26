@@ -3,12 +3,39 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import ColorSwatch from "../ColorSwatch/ColorSwatch.react";
 
 describe("ColorSwatch", () => {
+
     // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+
+    const args = {
+        target: ColorSwatch,
+        required: {
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("variants", args);
+    hasValid("sizes", args);
+    hasValid("positions", args);
+    hasValid("padding", args);
+    hasValid("alignment", args);
+
+    hasValid("colors", args);
+
+    hasValid("hidden", args);
+    hasValid("disabled", args);    // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component, colors;
@@ -23,13 +50,7 @@ describe("ColorSwatch", () => {
         jest.resetAllMocks();
         component = shallow(
             <ColorSwatch
-                asSize="normal"
-                asPadded="normal"
-                asFloated="inline"
                 withColor={null}
-                isHidden={false}
-                isDisabled={false}
-                onClick={() => { console.log("Testing ColorSwatch") }}
             />
         );
     });

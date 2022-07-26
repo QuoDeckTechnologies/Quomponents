@@ -1,0 +1,143 @@
+.qui.qui-h-card-with-button {
+  overflow: visible;
+}
+
+.qui.qui-h-card-with-button .qui.qui-button {
+  overflow: visible;
+  .MuiButton-root.MuiButton-text {
+    box-shadow: none;
+  }
+  &.is-disabled .qui-btn {
+    box-shadow: none;
+  }
+}
+
+.qui.qui-h-card-with-button .qui .qui-btn {
+  width: 100%;
+  padding: 0.6em;
+  box-shadow: 0px 6px 6px #0000002e;
+  margin-top: 1em;
+  font-size: 0.6875em;
+}
+
+.qui .qui-h-card-image-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-top-left-radius: 0.6em;
+  border-bottom-left-radius: 0.6em;
+}
+
+.qui .qui-h-card-without-button-container .qui-h-card-image-container {
+  width: 10em;
+}
+
+.qui .qui-h-card-without-button-container {
+  cursor: pointer;
+}
+
+.qui .qui-h-card-checkbox-container {
+  height: 2.5em;
+  width: 5em;
+  background-color: #666666;
+  color: #ffbf00;
+  border-top-left-radius: 7.5em;
+  border-top-right-radius: 7.5em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.qui .qui-h-card-container {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 0.6em;
+}
+
+.qui .qui-h-card-checkbox-container .fas.fa-check-square {
+  filter: none;
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
+}
+
+.qui .qui-h-card-title {
+  white-space: normal;
+}
+
+.qui .qui-h-card-text-container {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.qui .qui-h-card-without-button-container .qui-h-card-text-container {
+  padding: 0.5em;
+}
+
+.qui .qui-h-card-text-container .qui-h-card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  margin: 0;
+  color: #666666;
+  width: 100%;
+}
+
+.qui .qui-h-card-text-container .qui-h-card-description {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  margin: 0.5em 0;
+  color: #666666;
+}
+
+.qui .qui-h-card-container-cursor {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 320px) {
+  .qui .qui-h-card-container {
+    width: 100%;
+  }
+  .qui .qui-h-card-container.qui-h-card-without-button-container {
+    height: 5em;
+  }
+  .qui .qui-h-card-container.qui-h-card-with-button-container {
+    height: 8.5em;
+  }
+  .qui .qui-h-card-with-button-container .qui-h-card-checkbox-container {
+    font-size: 0.8em;
+  }
+  .qui .qui-h-card-without-button-container .qui-h-card-checkbox-container {
+    font-size: 0.6em;
+  }
+  .qui .qui-h-card-with-button-container .qui-h-card-image-container {
+    height: auto;
+    width: 75%;
+  }
+  .qui .qui-h-card-without-button-container .qui-h-card-image-container {
+    height: auto;
+    width: 40%;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .qui .qui-h-card-container {
+    width: 20em;
+    height: 8.5em;
+  }
+  .qui .qui-h-card-container.qui-h-card-without-button-container {
+    width: 15em;
+    height: 5em;
+  }
+  .qui .qui-h-card-with-button-container .qui-h-card-checkbox-container {
+    font-size: 1em;
+  }
+  .qui .qui-h-card-image-container {
+    width: 20em;
+  }
+}

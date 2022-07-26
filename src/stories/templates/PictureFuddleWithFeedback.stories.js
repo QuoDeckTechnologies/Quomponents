@@ -1,8 +1,26 @@
 import React from "react";
 import PictureFuddleWithFeedback from "../../components/Templates/PictureFuddleWithFeedback/PictureFuddleWithFeedback.react";
 
+const dictionary = JSON.stringify({
+    en: {
+        templateActions: {
+            checkAnswer: 'Check Answer',
+            submitAnswer: 'Submit Answer',
+            thanks: 'Thanks for your response',
+            go: 'Go',
+        }
+    },
+    hi: {
+        templateActions: {
+            checkAnswer: 'अपना उत्तर जाँच लें',
+            submitAnswer: 'अपना जवाब सबमिट करें',
+            thanks: 'आपके उत्तर के लिए धन्यवाद',
+            go: 'आगे बढ़ें',
+        }
+    }
+});
 export default {
-    title: "Design System/Templates/PictureFuddleWithFeedback/PictureFuddleWithFeedback",
+    title: "Design System/Templates/PictureFuddleWithFeedback",
     component: PictureFuddleWithFeedback,
     argTypes: {
         data: {
@@ -13,6 +31,7 @@ export default {
             question: "",
             answer: "",
             purpose: "",
+            filter: ""
         },
         slideId: 0,
         asVariant: {
@@ -48,6 +67,16 @@ export default {
                     animation: "",
                     duration: 0,
                     delay: 0,
+                },
+            },
+        },
+        withTranslation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
                 },
             },
         },
@@ -106,7 +135,8 @@ Default.args = {
         },
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         answer: "Answer",
-        purpose: ""
+        purpose: "",
+        filter: "None"
     },
     imageLibrary: [{
         id: "background-image",
@@ -136,6 +166,11 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "templateActions",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -157,7 +192,8 @@ PictureFuddleWithFeedbackWithSlideHeader.args = {
         subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         answer: "Answer",
-        purpose: ""
+        purpose: "",
+        filter: "None"
     },
     slideId: 0,
     asVariant: "warning",
@@ -179,6 +215,11 @@ PictureFuddleWithFeedbackWithSlideHeader.args = {
         animation: "zoom",
         duration: 0.5,
         delay: 0,
+    },
+    withTranslation: {
+        lang: "en",
+        tgt: "templateActions",
+        dictionary: dictionary,
     },
     isDisabled: false,
     isHidden: false,
@@ -205,7 +246,8 @@ PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.args = {
         },
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         answer: "Answer",
-        purpose: ""
+        purpose: "",
+        filter: "None"
     },
     imageLibrary: [{
         id: 'background-image',
@@ -232,6 +274,11 @@ PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "templateActions",
+        dictionary: dictionary,
+    },
     isDisabled: false,
     isHidden: false,
 };
@@ -239,6 +286,56 @@ PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.parameters = {
     docs: {
         source: {
             code: `<PictureFuddleWithFeedback {...${JSON.stringify(PictureFuddleWithFeedbackWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+        },
+    },
+};
+// -------------------------------------------------------------
+// PictureFuddleWithSlideHeaderAndBackgroundImage
+// -------------------------------------------------------------
+export const PictureFuddleWithFeedbackWithFilter = Template.bind({});
+PictureFuddleWithFeedbackWithFilter.args = {
+    data: {
+        image: {
+            id: "header-image",
+            extention: ""
+        },
+        question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        answer: "Answer",
+        purpose: "",
+        filter: "Blur"
+    },
+    imageLibrary: [{
+        id: "header-image",
+        image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+    }],
+    slideId: 0,
+    asVariant: "primary",
+    withColor: {
+        questionColor: "#000000",
+        slideHeaderTextColor: "#ffffff",
+        slideHeaderAccentColor: "#AD2929",
+        slideHeaderBackgroundColor: "#AD292980",
+        inputFieldTextColor: "",
+        inputFieldAccentColor: "#AD292980",
+        inputFieldBackgroundColor: "#ffffff",
+        buttonTextColor: "",
+        buttonBackgroundColor: "",
+        buttonHoverBackgroundColor: "",
+        buttonHoverTextColor: "",
+        backgroundColor: "#ffffff",
+    },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
+    isDisabled: false,
+    isHidden: false,
+};
+PictureFuddleWithFeedbackWithFilter.parameters = {
+    docs: {
+        source: {
+            code: `<PictureFuddle {...${JSON.stringify(PictureFuddleWithFeedbackWithFilter.args, null, 2)}}/>`,
         },
     },
 };

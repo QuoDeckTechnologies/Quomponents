@@ -12,9 +12,6 @@ const dictionary = JSON.stringify({
       free: "नि: शुल्क",
     },
     earncard: {
-      title: "क्वोडेक इमर्जिंग लीडरशिप प्रोग्राम",
-      description:
-        "अपने करियर को सितारों तक ले जाने के इस विशेष अवसर के लिए आवेदन करने का मौका जीतें",
       dates: {
         end_date: "3 मई",
         start_date: "28 फरवरी",
@@ -24,7 +21,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/EarnCard/EarnCard",
+  title: "Design System/EarnCard",
   component: EarnCard,
   argTypes: {
     content: {
@@ -191,6 +188,11 @@ Default.args = {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "earncard",
+    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,

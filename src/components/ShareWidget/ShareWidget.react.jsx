@@ -27,15 +27,24 @@ ShareWidget.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Use to define content's value in side the ShareWidget
+    Use to define label & url's value in side the ShareWidget
     */
-    content: PropTypes.shape({
-        label: PropTypes.string,
-        url: PropTypes.string,
-    }),
+    label: PropTypes.string,
+    url: PropTypes.string,
     //=======================================
     // Quommon props
     //=======================================
+    /**
+    Use to define component size in increasing order
+    */
+    asSize: PropTypes.oneOf([
+        "tiny",
+        "small",
+        "normal",
+        "big",
+        "huge",
+        "massive",
+    ]),
     /**
     Use to float the component in parent container
     */
@@ -85,10 +94,12 @@ ShareWidget.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: "",
+    label: "",
+    url: "",
     //=======================================
     // Quommon props
     //=======================================
+    asSize: "normal",
     asFloated: "none",
 
     withColor: null,
@@ -114,16 +125,15 @@ export default function ShareWidget(props) {
     //-------------------------------------------------------------------
     // 2. Get translation of the ShareWidget component
     //-------------------------------------------------------------------
-    let shareContent = Object.assign({}, props.content);
-    let tObj = null;
+    let shareLabel = props.label;
 
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
-        tObj = getTranslation(props.withTranslation);
-        if (shareContent && tObj?.label) shareContent.label = tObj.label;
+        let tObj = getTranslation(props.withTranslation);
+        shareLabel = tObj?.label || "";
     }
     //-------------------------------------------------------------------
     // 3. Use to set label Color in ShareWidget
@@ -134,7 +144,7 @@ export default function ShareWidget(props) {
     //-------------------------------------------------------------------
     // 3. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -143,27 +153,27 @@ export default function ShareWidget(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-sharewidget-container ${quommonClasses.childClasses}`}>
-                <div className="qui-share-label" style={Color}>
-                    {shareContent?.label ? shareContent?.label : "Share"} :
+                <div className="qui-share-label qt-mn" style={Color}>
+                    {shareLabel ? shareLabel : "Share"} :
                 </div>
                 <div className="qui-shareicon-container">
-                    <FacebookShareButton className={`qui-share-icon  ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
+                    <FacebookShareButton className={`qui-share-icon  ${props.url ? "" : "qui-share-icon-disabled"}`} url={props.url}>
                         <FacebookIcon round={true} />
                     </FacebookShareButton>
 
-                    <TwitterShareButton className={`qui-share-icon ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
+                    <TwitterShareButton className={`qui-share-icon ${props.url ? "" : "qui-share-icon-disabled"}`} url={props.url}>
                         <TwitterIcon round={true} />
                     </TwitterShareButton>
 
-                    <LinkedinShareButton className={`qui-share-icon ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
+                    <LinkedinShareButton className={`qui-share-icon ${props.url ? "" : "qui-share-icon-disabled"}`} url={props.url}>
                         <LinkedinIcon round={true} />
                     </LinkedinShareButton>
 
-                    <WhatsappShareButton className={`qui-share-icon ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
+                    <WhatsappShareButton className={`qui-share-icon ${props.url ? "" : "qui-share-icon-disabled"}`} url={props.url}>
                         <WhatsappIcon round={true} />
                     </WhatsappShareButton>
 
-                    <EmailShareButton className={`qui-share-icon ${shareContent?.url ? "" : "qui-share-icon-disabled"}`} url={shareContent?.url}>
+                    <EmailShareButton className={`qui-share-icon ${props.url ? "" : "qui-share-icon-disabled"}`} url={props.url}>
                         <EmailIcon round={true} />
                     </EmailShareButton>
                 </div>

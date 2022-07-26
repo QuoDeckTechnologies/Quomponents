@@ -2,7 +2,7 @@ import React from "react";
 import AccentLine from "../components/AccentLine/AccentLine.react";
 
 export default {
-    title: "Design System/AccentLine/AccentLine",
+    title: "Design System/AccentLine",
     component: AccentLine,
     argTypes: {
         asVariant: {
@@ -15,6 +15,13 @@ export default {
         asSize: {
             control: "select",
             options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asPadded: {
+            control: "select",
+            options: ["fitted", "compact", "normal", "relaxed"],
             table: {
                 category: "as-Flags",
             },
@@ -83,6 +90,7 @@ export const Default = Template.bind({});
 Default.args = {
     asVariant: "warning",
     asSize: "normal",
+    asPadded: "normal",
     asFloated: "inline",
     withColor: {
         accentColor: "",

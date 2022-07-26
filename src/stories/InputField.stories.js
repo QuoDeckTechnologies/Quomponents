@@ -1,21 +1,32 @@
 import React from "react";
 import InputField from "../components/InputField/InputField.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    inputField: {
+      label: "इनपुट नाम",
+      placeholder: "विकल्प",
+    }
+  },
+  en: {
+    inputField: {
+      label: "Input Name",
+      placeholder: "Options",
+    }
+  }
+});
+
 export default {
-  title: "Design System/InputField/InputField",
+  title: "Design System/InputField",
   component: InputField,
   argTypes: {
     name: "",
-    content: {
-      table: {
-        defaultValue: {
-          label: "Input Name",
-          value: "Please input your text here",
-          placeholder: "Options",
-          maxLength: 1,
-        },
-      },
-    },
+    label: "",
+    value: "",
+    placeholder: "",
+    maxLength: 0,
+    type: "text",
+    multiline: false,
     asEmphasis: {
       control: "select",
       options: ["filled", "charLimited", "listInput", "shortField"],
@@ -37,6 +48,9 @@ export default {
           textColor: "",
           accentColor: "",
           backgroundColor: "",
+          onSelectTextColor: "",
+          onSelectAccentColor: "",
+          onSelectBackgroundColor: "",
         },
       },
     },
@@ -47,6 +61,16 @@ export default {
           animation: "",
           duration: 0,
           delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
         },
       },
     },
@@ -62,7 +86,7 @@ export default {
         defaultValue: false,
       },
     },
-    onClick: {
+    onSubmit: {
       table: {
         category: "Events",
         defaultValue: null,
@@ -93,12 +117,12 @@ export default {
 const Template = (args) => <InputField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    label: "Input Name",
-    value: "Please input your text here",
-    placeholder: "Options",
-    maxLength: 300,
-  },
+  label: "Input Name",
+  value: "Please input your text here",
+  placeholder: "Options",
+  maxLength: 300,
+  type: "text",
+  multiline: false,
   name: "testing_id",
   asEmphasis: "filled",
   asFloated: "none",
@@ -106,11 +130,19 @@ Default.args = {
     textColor: "#666666",
     accentColor: "#ffab00",
     backgroundColor: "#ffab000d",
+    onSelectTextColor: "",
+    onSelectAccentColor: "",
+    onSelectBackgroundColor: "",
   },
   withAnimation: {
     animation: "collapse",
     duration: 0.5,
     delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "inputField",
+    dictionary: dictionary,
   },
   isHidden: false,
   isDisabled: false,
@@ -151,11 +183,11 @@ charLimitedField.parameters = {
 export const listInputField = Template.bind({});
 listInputField.args = {
   ...Default.args,
-  content: {
-    value: "",
-    placeholder: "Options",
-    maxLength: 300,
-  },
+  value: "",
+  placeholder: "Options",
+  maxLength: 300,
+  type: "text",
+  multiline: false,
   asEmphasis: "listInput",
 };
 listInputField.parameters = {
@@ -179,9 +211,7 @@ listInputField.parameters = {
 export const ShortFieldField = Template.bind({});
 ShortFieldField.args = {
   ...Default.args,
-  content: {
-    value: "0",
-  },
+  value: "0",
   asEmphasis: "shortField",
 };
 ShortFieldField.parameters = {
@@ -193,6 +223,94 @@ ShortFieldField.parameters = {
     source: {
       code: `<ShortFieldField {...${JSON.stringify(
         ShortFieldField.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Default Translated InputField
+// -------------------------------------------------------------
+export const TranslatedInputField = Template.bind({});
+TranslatedInputField.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "inputField",
+    dictionary: dictionary,
+  },
+};
+TranslatedInputField.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in InputField.",
+    },
+    source: {
+      code: `<InputField {...${JSON.stringify(
+        TranslatedInputField.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// charLimited Translated InputField
+// -------------------------------------------------------------
+export const TranslatedCharLimited = Template.bind({});
+TranslatedCharLimited.args = {
+  ...Default.args,
+  asEmphasis: "charLimited",
+  withTranslation: {
+    lang: "hi",
+    tgt: "inputField",
+    dictionary: dictionary,
+  },
+};
+TranslatedCharLimited.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in charLimited InputField.",
+    },
+    source: {
+      code: `<InputField {...${JSON.stringify(
+        TranslatedCharLimited.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// listInput Translated InputField
+// -------------------------------------------------------------
+export const TranslatedListInput = Template.bind({});
+TranslatedListInput.args = {
+  ...Default.args,
+  content: {
+    value: "",
+    placeholder: "Options",
+    maxLength: 300,
+  },
+  asEmphasis: "listInput",
+  withTranslation: {
+    lang: "hi",
+    tgt: "inputField",
+    dictionary: dictionary,
+  },
+};
+TranslatedListInput.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in listInput InputField.",
+    },
+    source: {
+      code: `<InputField {...${JSON.stringify(
+        TranslatedListInput.args,
         null,
         2
       )}}/>`,

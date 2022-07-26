@@ -56,8 +56,8 @@
 }
 
 .qui.is-fluid .qui-loader-icon,
-.qui.is-fluid .qui-label,
-.qui.is-fluid .qui-caption {
+.qui.is-fluid .qui-loader-label,
+.qui.is-fluid .qui-loader-caption{
     max-width: 256px;
     margin: 7.5px auto;
 }
@@ -85,6 +85,6 @@
 /* Padding Overrides */
 /* ================================================= */
 
-.qui .pad-relaxed {
+.qui.qui-loader .pad-relaxed {
     padding: 30px 30px 45px 30px;
 }

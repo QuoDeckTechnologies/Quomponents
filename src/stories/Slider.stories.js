@@ -2,10 +2,17 @@ import React from "react";
 import Slider from "../components/Slider/Slider.react";
 
 export default {
-  title: "Design System/Slider/Slider",
+  title: "Design System/Slider",
   component: Slider,
   argTypes: {
     initialValue: 10,
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     withAnimation: {
       table: {
         category: "with-Params",
@@ -40,7 +47,7 @@ export default {
     (story) => (
       <div
         style={{
-          paddingTop: "2em",
+          paddingTop: "1em",
         }}
       >
         {story()}
@@ -60,6 +67,7 @@ const Template = (args) => <Slider {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   initialValue: 10,
+  asVariant: "warning",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,

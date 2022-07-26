@@ -6,6 +6,7 @@ import _ from "lodash";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
 } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./SelectField.scss";
@@ -16,14 +17,11 @@ SelectField.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Use to define Content in component
+    Use to define label, options & placeholder in SelectField
     */
-    content: PropTypes.shape({
-        label: PropTypes.string,
-        categoryOptions: PropTypes.array,
-        placeHolder: PropTypes.string,
-    }
-    ).isRequired,
+    label: PropTypes.string,
+    options: PropTypes.array,
+    placeholder: PropTypes.string,
     //=======================================
     // Quommon props
     //=======================================
@@ -57,13 +55,17 @@ SelectField.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
-    /**
-    Use to enable/disable the component
-    */
-    isDisabled: PropTypes.bool,
     /**
     SelecField component must have the onClick function passed as props
     */
@@ -74,7 +76,9 @@ SelectField.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: [],
+    label: "",
+    options: [],
+    placeholder: "",
     //=======================================
     // Quommon props
     //=======================================
@@ -82,9 +86,9 @@ SelectField.defaultProps = {
 
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
 
     isHidden: false,
-    isDisabled: false,
 };
 /**
 ## Notes
@@ -116,10 +120,26 @@ export default function SelectField(props) {
         color: props.withColor?.textColor,
         borderBottomColor: `${props.withColor?.accentColor}`,
     };
+
     //-------------------------------------------------------------------
-    // 4. Get animation of the component
+    // 4. Get translation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    let tObj = null;
+    let label = props.label;
+    let placeholder = props.placeholder;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation)
+        label = tObj?.label || props.label
+        placeholder = tObj?.placeholder || props.placeholder;
+    }
+    //-------------------------------------------------------------------
+    // 5. Get animation of the component
+    //-------------------------------------------------------------------
+    const animate = getAnimation(props);
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -129,20 +149,28 @@ export default function SelectField(props) {
         >
             <div className={`qui-select-field-container ${quommonClasses.childClasses}`} style={Color}>
                 <div className="qui-select-field">
-                    <div className="qui-select-field-label">
-                        {props.content?.label}
+                    <div className="qui-select-field-label qt-sm">
+                        {label}
                     </div>
                     <Select className="qui-select-field-select"
                         defaultValue="none"
                         value={selectValue}
                         onChange={handleChange}
+                        sx={{
+                            '.MuiSelect-icon': {
+                                color: props.withColor?.textColor
+                            },
+                            ".MuiSelect-outlined": {
+                                color: props.withColor?.textColor
+                            }
+                        }}
                     >
                         <MenuItem disabled value="none" >
                             <div className="qui-select-field-menu-item">
-                                {props.content?.placeHolder}
+                                {placeholder ? placeholder : "Choose..."}
                             </div>
                         </MenuItem>
-                        {props.content?.categoryOptions?.map((option) => (
+                        {props.options?.map((option) => (
                             <MenuItem
                                 key={option}
                                 value={option}

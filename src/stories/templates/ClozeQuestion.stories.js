@@ -1,8 +1,26 @@
 import React from "react";
 import ClozeQuestion from "../../components/Templates/ClozeQuestion/ClozeQuestion.react";
 
+const dictionary = JSON.stringify({
+  en: {
+    templateActions: {
+      checkAnswer: 'Check Answer',
+      submitAnswer: 'Submit Answer',
+      thanks: 'Thanks for your response',
+      go: 'Go',
+    }
+  },
+  hi: {
+    templateActions: {
+      checkAnswer: 'अपना उत्तर जाँच लें',
+      submitAnswer: 'अपना जवाब सबमिट करें',
+      thanks: 'आपके उत्तर के लिए धन्यवाद',
+      go: 'आगे बढ़ें',
+    }
+  }
+});
 export default {
-  title: "Design System/Templates/ClozeQuestion/ClozeQuestion",
+  title: "Design System/Templates/ClozeQuestion",
   component: ClozeQuestion,
   argTypes: {
     data: {
@@ -51,6 +69,16 @@ export default {
         },
       },
     },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
+        },
+      },
+    },
     isDisabled: {
       table: {
         category: "is-Toggles",
@@ -88,6 +116,7 @@ export default {
   },
 };
 const Template = (args) => <ClozeQuestion {...args} />;
+
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -132,6 +161,11 @@ Default.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "templateActions",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -175,6 +209,11 @@ ClozeQuestionWithSlideHeader.args = {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "templateActions",
+    dictionary: dictionary,
   },
   isDisabled: false,
   isHidden: false,
@@ -228,6 +267,11 @@ ClozeQuestionWithSlideHeaderAndBackgroundImage.args = {
     duration: 0.5,
     delay: 0,
   },
+  withTranslation: {
+    lang: "en",
+    tgt: "templateActions",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
 };
@@ -235,6 +279,34 @@ ClozeQuestionWithSlideHeaderAndBackgroundImage.parameters = {
   docs: {
     source: {
       code: `<ClozeQuestion {...${JSON.stringify(ClozeQuestionWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+    },
+  },
+};
+
+// -------------------------------------------------------------
+// Translated ClozeQuestion
+// -------------------------------------------------------------
+export const TranslatedClozeQuestion = Template.bind({});
+TranslatedClozeQuestion.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "templateActions",
+    dictionary: dictionary
+  },
+};
+TranslatedClozeQuestion.parameters = {
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in. To make this work for the ClozeQuestion, add a temaplteActions:{} value to the dictionary.",
+    },
+    source: {
+      code: `<ClozeQuestion {...${JSON.stringify(
+        TranslatedClozeQuestion.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

@@ -4,7 +4,7 @@ import PlayBtn from "../assets/play-btn.png"
 
 const dictionary = JSON.stringify({
     hi: {
-        ActionButton: {
+        actionButton: {
             title: "ख़रीदे",
             subTitle: "रु. ७५"
         }
@@ -48,7 +48,7 @@ export default {
         },
         asFloated: {
             control: "select",
-            options: ["left", "right", "inline"],
+            options: ["left", "right", "inline", "none"],
             table: {
                 category: "as-Flags",
             },
@@ -156,7 +156,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "button",
+        tgt: "actionButton",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -198,7 +198,7 @@ TranslatedActionButton.args = {
     },
     withTranslation: {
         lang: "hi",
-        tgt: "ActionButton",
+        tgt: "actionButton",
         dictionary: dictionary,
     },
 };

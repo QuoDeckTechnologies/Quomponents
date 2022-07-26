@@ -3,31 +3,23 @@ import CertificateCard from "../components/CertificateCard/CertificateCard.react
 
 const dictionary = JSON.stringify({
   hi: {
-    CertificateCard: {
+    certificateCard: {
       text: {
         notstarted: "शुरू नही हुआ",
         inprogress: "चालू है",
         completed: "पूरा है",
-      },
-      label: "बातचीत कौशल 101",
+      }
     },
   },
 });
 
 export default {
-  title: "Design System/CertificateCard/CertificateCard",
+  title: "Design System/CertificateCard",
   component: CertificateCard,
   argTypes: {
     asStatus: {
       control: "select",
       options: ["not started", "in progress", "completed"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    asVariant: {
-      control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
       table: {
         category: "as-Flags",
       },
@@ -116,7 +108,6 @@ export default {
 const Template = (args) => <CertificateCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  asVariant: "primary",
   asStatus: "completed",
   asSize: "normal",
   withLabel: {
@@ -127,8 +118,8 @@ Default.args = {
       "https://media.istockphoto.com/vectors/certificate-template-vector-id1097299164",
   },
   withColor: {
-    accentColor: "",
-    textColor: "",
+    accentColor: "#ed6e6e",
+    textColor: "#ed6e6e",
   },
   withAnimation: {
     animation: "collapse",
@@ -137,7 +128,7 @@ Default.args = {
   },
   withTranslation: {
     lang: "en",
-    tgt: "CertificateCard",
+    tgt: "certificateCard",
     dictionary: dictionary,
   },
   isHidden: false,
@@ -249,7 +240,7 @@ TranslatedCard.args = {
   ...Default.args,
   withTranslation: {
     lang: "hi",
-    tgt: "CertificateCard",
+    tgt: "certificateCard",
     dictionary: dictionary,
   },
 };

@@ -19,15 +19,12 @@ DeckAnalysis.propTypes = {
     /**
       DeckAnalysis data should be passed in content field and it is a required field
       */
-    content: PropTypes.shape({
-        header: PropTypes.string,
-        fheader: PropTypes.string,
-        message: PropTypes.string,
-        icon: PropTypes.string,
-        image: PropTypes.string,
-        slideCount: PropTypes.number,
-        status: PropTypes.bool,
-    }).isRequired,
+    header: PropTypes.string,
+    fheader: PropTypes.string,
+    message: PropTypes.string,
+    icon: PropTypes.string,
+    slideCount: PropTypes.number,
+    status: PropTypes.bool,
     //=======================================
     // Quommon props
     //=======================================
@@ -41,10 +38,6 @@ DeckAnalysis.propTypes = {
         "warning",
         "error",
     ]),
-    /**
-     Use to float the component in parent container
-     */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
       Use to override component colors and behavior
       */
@@ -79,33 +72,29 @@ DeckAnalysis.propTypes = {
         dictionary: PropTypes.string,
     }),
     /**
-      Use to enable/disable the component
-      */
-    isDisabled: PropTypes.bool,
-    /**
       Use to show/hide the component
       */
     isHidden: PropTypes.bool,
-    /**
-      DeckAnalysisBlock component must have the onClick function passed as props
-      */
-    onClick: PropTypes.func.isRequired,
 };
 
 DeckAnalysis.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: {},
+    header: "SLIDES",
+    fheader: "SLIDES",
+    message:
+        "Deck Should have 10 to 40 slides",
+    icon: " fa fa-desktop",
+    slideCount: 18,
+    status: true,
     //=======================================
     // Quommon props
     //=======================================
     asVariant: "primary",
-    asFloated:"left",
     withColor: null,
     withAnimation: null,
     withTranslation: null,
-    isDisabled: false,
     isHidden: false,
 };
 
@@ -132,7 +121,7 @@ export default function DeckAnalysis(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
     //-------------------------------------------------------------------
-    let { content } = props;
+    let { header, fheader, message } = props;
     //-------------------------------------------------------------------
     // 2. Set the classes
     //-------------------------------------------------------------------
@@ -145,11 +134,12 @@ export default function DeckAnalysis(props) {
     //-------------------------------------------------------------------
     // 4. Get translation of the component
     //-------------------------------------------------------------------
-    let labelContent = {
-        header: content?.header,
-        fheader: content?.fheader,
-        message: content?.message,
-    };
+
+    let tHeader = header
+    let tFheader = fheader
+    let tMessage = message
+    let checkSlide = "Check Slides :";
+
     let tObj = null;
 
     if (
@@ -158,41 +148,44 @@ export default function DeckAnalysis(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj) {
-            labelContent.header = tObj.header;
-            labelContent.fheader = tObj.fheader;
-            labelContent.message = tObj.message;
+        if (tObj) {
+            checkSlide = tObj?.checkSlide;
+            tHeader = tObj?.header;
+            tFheader = tObj?.fheader;
+            tMessage = tObj?.message;
         }
     }
     //-------------------------------------------------------------------
     // 5. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     // ========================= Render Function =================================
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}
+            className={`qui qt-shadow ${quommonClasses.parentClasses}`}
         >
             <div className={`qui qui-main-deckblock ${quommonClasses.childClasses}`} style={colors.textColors}>
                 <div className="qui-deckblock-top">
                     <div className="qui-deckblock-header">
                         <div className="qui-deckblock-rtop">
-                            <h1 className={`qui-deckblock-slidecount`}>{content?.slideCount}</h1>
-                            <i className={`qui-deckblock-icon ${content?.icon}`}></i>
+                            <h3 className={`qui-deckblock-slidecount`}>{props?.slideCount}</h3>
+                            <i className={`qui-deckblock-icon ${props?.icon}`}></i>
                         </div>
-                        <h1 className="qui-fheader">{labelContent?.fheader}</h1>
+                        <h5 className="qui-fheader">{tFheader}</h5>
                     </div>
                     <div className="qui-deckblock-header-message" >
-                        <h1>{labelContent?.header}</h1>
-                        <p>{labelContent?.message}</p>
+                        <h5>{tHeader}</h5>
+                        <span>{tMessage}</span>
                     </div>
                 </div>
-                <div className="qui-deckblock-bottom" style={props.content?.status === true ? { backgroundColor: "#C1DC9E" } : { backgroundColor: "#D97575" }} >
-                    <i className="fas fa-ellipsis-h" style={colors.accentColors}
-                        onClick={props.onClick}></i>
+                <div className="qui-deckblock-bottom" style={props?.status === true ? { backgroundColor: "#C1DC9E" } : { backgroundColor: "#D97575" }} >
+                    <h6> {
+                        props?.status ? checkSlide + props?.slideCount : "..."
+                    }
+                    </h6>
                 </div>
             </div>
         </motion.div>

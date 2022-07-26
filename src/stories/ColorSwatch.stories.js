@@ -2,7 +2,7 @@ import React from "react";
 import ColorSwatch from "../components/ColorSwatch/ColorSwatch.react";
 
 export default {
-    title: "Design System/ColorSwatch/ColorSwatch",
+    title: "Design System/ColorSwatch",
     component: ColorSwatch,
     argTypes: {
         asSize: {
@@ -21,7 +21,7 @@ export default {
         },
         asFloated: {
             control: "select",
-            options: ["left", "right", "inline"],
+            options: ["left", "right", "inline", "none"],
             table: {
                 category: "as-Flags",
             },

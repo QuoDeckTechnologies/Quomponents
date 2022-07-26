@@ -58,7 +58,7 @@ NuggetBlock.propTypes = {
     /**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
     /**
     Use to show/hide the component
     */
@@ -107,7 +107,7 @@ export default function NuggetBlock(props) {
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     //-------------------------------------------------------------------
     // 3. Get Nugget Image
@@ -135,7 +135,7 @@ export default function NuggetBlock(props) {
             className={`qui ${quommonClasses.parentClasses}`}>
             <div className={`${quommonClasses.childClasses}`}>
                 <div className={`qui-nugget-status`} style={{ backgroundColor: color, display: display }}></div>
-                <div style={{ backgroundImage: `url(${image})` }} alt="nuggetimage" className="qui-nugget-block-image" onMouseDown={() => { return props.onClick() }} />
+                <div style={{ backgroundImage: `url(${image})` }} alt="nuggetimage" className="qui-nugget-block-image" onClick={() => { return props.onClick() }} />
             </div>
         </motion.div>
     );

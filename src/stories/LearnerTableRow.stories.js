@@ -2,10 +2,17 @@ import React from "react";
 import LearnerTableRow from "../components/LearnerTableRow/LearnerTableRow.react";
 
 export default {
-  title: "Design System/LearnerTableRow/LearnerTableRow",
+  title: "Design System/LearnerTableRow",
   component: LearnerTableRow,
   argTypes: {
     content: [],
+    asPadded: {
+      control: "select",
+      options: ["fitted", "compact", "normal", "relaxed"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     withColor: {
       table: {
         category: "with-Params",
@@ -89,6 +96,7 @@ Default.args = {
       last_name: "Administrator",
     },
   ],
+  asPadded: "normal",
   withColor: {
     backgroundColor: "",
     accentColor: "",

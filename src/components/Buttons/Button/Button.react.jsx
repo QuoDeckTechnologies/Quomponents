@@ -74,7 +74,6 @@ Button.propTypes = {
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
-        accentColor: PropTypes.string,
         textColor: PropTypes.string,
         hoverBackgroundColor: PropTypes.string,
         hoverTextColor: PropTypes.string,
@@ -107,7 +106,7 @@ Button.propTypes = {
             "slideUp",
             "slideLeft",
             "slideRight",
-            ""
+            "",
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
@@ -142,6 +141,14 @@ Button.propTypes = {
     Button component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
+
+    /**
+    Togglers for common props
+    */
+    primary: PropTypes.bool,
+    secondary: PropTypes.bool,
+    zoom: PropTypes.bool,
+    slideDown: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -177,28 +184,29 @@ function getLabel(labelObj, position) {
 function getColors(colors, emphasis, hovered) {
     let colorStyle = hovered
         ? {
-            background: colors.hoverBackgroundColor,
-            color: colors.hoverTextColor,
-        }
+              background: colors.hoverBackgroundColor,
+              color: colors.hoverTextColor,
+          }
         : {
             background: emphasis !== "contained" ? "transparent" : colors.backgroundColor,
-            color: emphasis !== "contained" ? colors.backgroundColor : colors.textColor,
+            color: emphasis !== "contained" ? colors.textColor : colors.textColor,
         }
     if (!hovered && emphasis === "outlined")
-        colorStyle.borderColor = colors.backgroundColor
+        colorStyle.borderColor = colors.backgroundColor;
     return colorStyle;
 }
 
 function getIcon(iconObj, position, iconOnly) {
+    let iconPosition = iconObj?.position || "left";
     let iconMargin = iconOnly
         ? "0"
         : position === "left"
-            ? "0 0.5em 0 0"
-            : "0 0 0 0.5em";
+        ? "0 0.5em 0 0"
+        : "0 0 0 0.5em";
 
     return (
         iconObj?.icon &&
-        iconObj?.position === position && (
+        iconPosition === position && (
             <i
                 className={`qui-icon ${iconObj.icon}`}
                 style={{ fontSize: iconObj.size, margin: iconMargin }}
@@ -223,14 +231,17 @@ export default function Button(props) {
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "button");
     if (props.isCircular)
-        quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
-            }`;
+        quommonClasses.childClasses += ` is-circular ${
+            props.content === "" && props.withIcon ? "is-only-icon" : ""
+        }`;
 
     quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
     //-------------------------------------------------------------------
     // 2. Set the component colors
     //-------------------------------------------------------------------
-    let colors = props.withColor ? getColors(props.withColor, props.asEmphasis, hovered) : {};
+    let colors = props.withColor
+        ? getColors(props.withColor, props.asEmphasis, hovered)
+        : {};
 
     //-------------------------------------------------------------------
     // 3. Set the button text
@@ -238,8 +249,8 @@ export default function Button(props) {
     let buttonText = props.content
         ? props.content
         : props.children
-            ? props.children
-            : "";
+        ? props.children
+        : "";
     let iconOnly = buttonText === "";
 
     //-------------------------------------------------------------------
@@ -276,19 +287,19 @@ export default function Button(props) {
     //-------------------------------------------------------------------
     // 7. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     // ========================= Render Function =================================
 
     return (
         <motion.div
-            initial={animate.from}
-            animate={animate.to}
+            initial={animate?.from}
+            animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
-            <div className="qui-label" style={labelStyle}>
+            <div className="qui-label qt-lbl" style={labelStyle}>
                 {getLabel(labelContent, "label")}
             </div>
             <MUIButton
@@ -296,7 +307,7 @@ export default function Button(props) {
                 color={props.asVariant}
                 title={getLabel(labelContent, "popover")}
                 disabled={props.isDisabled}
-                className={`qui-btn ${quommonClasses.childClasses}`}
+                className={`qui-btn ${props.isDisabled ? "qui-btn-disabled" : ''} ${quommonClasses.childClasses}`}
                 style={Object.assign({}, colors, props.style)}
                 onClick={props.onClick}
             >
@@ -305,7 +316,7 @@ export default function Button(props) {
                 {buttonText}
                 {getIcon(props.withIcon, "right", iconOnly)}
             </MUIButton>
-            <div className="qui-caption" style={labelStyle}>
+            <div className="qui-caption qt-lbl" style={labelStyle}>
                 {getLabel(labelContent, "caption")}
             </div>
         </motion.div>

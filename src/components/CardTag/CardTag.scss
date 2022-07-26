@@ -1,14 +1,49 @@
+.qui.qui-card-tag {
+  overflow: visible;
+}
 .qui .qui-card-tag-block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 1em;
-    min-height: 3.5em;
-    padding: 1.5em 1em;
-    border-radius: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 1em;
+  min-height: 3.5em;
+  border-radius: 0.5em;
+  &.qui-card-tag-left-orientation {
+    transform: rotate(180deg);
+  }
+  &.pad-normal {
+    padding: 1.5em 0.6em 1.5em 1em;
+  }
+  &.pad-fitted {
+    padding: 1em 0.2em 1em 0.5em;
+  }
+  &.pad-compact {
+    padding: 1.1em 0.3em 1.1em 0.7em;
+  }
+  &.pad-relaxed {
+    padding: 2em 1em 2em 1.3em;
+  }
 }
 .qui .qui-card-tag-label {
-    writing-mode: vertical-rl;
-    font-size: 1.2em;
-    text-transform: uppercase;
+  writing-mode: vertical-rl;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  .qui-card-tag-content {
+    margin: 0.5em 0 0 0;
+  }
+  i.qui-icon {
+    transform: rotate(90deg);
+    margin-right: 0.5em;
+  }
+
+  .qui.is-loading .qui-icon {
+    display: none;
+  }
+
+  .qui .icon-loader {
+    margin-right: 10px;
+  }
+  .qui:not(.is-loading) .icon-loader {
+    display: none;
+  }
 }

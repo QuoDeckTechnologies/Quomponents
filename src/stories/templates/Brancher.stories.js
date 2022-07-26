@@ -2,7 +2,7 @@ import React from "react";
 import Brancher from "../../components/Templates/Brancher/Brancher.react";
 
 export default {
-  title: "Design System/Templates/Brancher/Brancher",
+  title: "Design System/Templates/Brancher",
   component: Brancher,
   argTypes: {
     data: {
@@ -166,6 +166,9 @@ BrancherWithSlideHeader.args = {
 };
 BrancherWithSlideHeader.parameters = {
   docs: {
+    description: {
+      story: "Displays a Brancher component with Slide header",
+    },
     source: {
       code: `<BrancherWithSlideHeader {...${JSON.stringify(
         BrancherWithSlideHeader.args,
@@ -210,6 +213,9 @@ BrancherWithBackgroundImage.args = {
 };
 BrancherWithBackgroundImage.parameters = {
   docs: {
+    description: {
+      story: "Displays a Brancher component with background image",
+    },
     source: {
       code: `<BrancherWithBackgroundImage {...${JSON.stringify(
         BrancherWithBackgroundImage.args,
@@ -251,6 +257,9 @@ ColoredBrancher.args = {
 };
 ColoredBrancher.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<ColoredBrancher {...${JSON.stringify(
         ColoredBrancher.args,
@@ -274,6 +283,9 @@ AnimatedBrancher.args = {
 };
 AnimatedBrancher.parameters = {
   docs: {
+    description: {
+      story: "We can animate the appearance of Brancher component",
+    },
     source: {
       code: `<AnimatedBrancher {...${JSON.stringify(
         AnimatedBrancher.args,

@@ -1,15 +1,28 @@
 import React from "react";
 import SelectField from "../components/SelectField/SelectField.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+        selectField: {
+            label: "पाठ्यक्रम श्रेणी",
+            placeholder: "चुनें..."
+        }
+    },
+    en: {
+        selectField: {
+            label: "Course Category",
+            placeholder: "",
+        }
+    }
+});
+
 export default {
-    title: "Design System/SelectField/SelectField",
+    title: "Design System/SelectField",
     component: SelectField,
     argTypes: {
-        content: {
-            label: "",
-            categoryOptions: [],
-            placeHolder: ""
-        },
+        label: "",
+        options: [],
+        placeholder: "",
         asPadded: {
             control: "select",
             options: ["fitted", "compact", "normal", "relaxed"],
@@ -37,13 +50,17 @@ export default {
                 },
             },
         },
-        isHidden: {
+        withTranslation: {
             table: {
-                category: "is-Toggles",
-                defaultValue: false,
+                category: "with-Params",
+                defaultValue: {
+                    lang: "",
+                    tgt: "",
+                    dictionary: "",
+                },
             },
         },
-        isDisabled: {
+        isHidden: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
@@ -76,11 +93,9 @@ export default {
 const Template = (args) => <SelectField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        label: "Course Category",
-        categoryOptions: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
-        placeHolder: "Choose...",
-    },
+    label: "Course Category",
+    options: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
+    placeholder: "Choose...",
     asPadded: "normal",
     withColor: {
         backgroundColor: "#aaaaaa",
@@ -92,7 +107,11 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
-    isDisabled: false,
+    withTranslation: {
+        lang: "en",
+        tgt: "selectField",
+        dictionary: dictionary,
+    },
     isHidden: false,
 };
 Default.parameters = {
@@ -155,4 +174,31 @@ AnimatedSelectField.parameters = {
             )}}/>`,
         },
     },
-}; 
+};
+// -------------------------------------------------------------
+// Translated SelectField
+// -------------------------------------------------------------
+export const TranslatedSelectField = Template.bind({});
+TranslatedSelectField.args = {
+    ...Default.args,
+    withTranslation: {
+        lang: "hi",
+        tgt: "selectField",
+        dictionary: dictionary,
+    },
+};
+TranslatedSelectField.parameters = {
+    docs: {
+        description: {
+            story:
+                "Use to change the language that the text appears in SelectField.",
+        },
+        source: {
+            code: `<SelectField {...${JSON.stringify(
+                TranslatedSelectField.args,
+                null,
+                2
+            )}}/>`,
+        },
+    },
+};

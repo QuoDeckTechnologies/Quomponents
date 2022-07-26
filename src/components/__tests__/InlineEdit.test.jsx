@@ -2,13 +2,37 @@
 // Import from NPM
 // -------------------------------------
 import React from 'react';
-import { shallow, mount, enzyme } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import InlineEdit from '../InlineEdit/InlineEdit.react'
 
 describe("InlineEdit", () => {
+    // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+    const args = {
+        target: InlineEdit,
+        required: {
+            value: "Testing InlineEdit",
+            name: "Testing",
+            onSubmit: () => {},
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("colors", args);
+    hasValid("animations", args);
+
+    hasValid("hidden", args);
+    hasValid("disabled", args);
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -17,26 +41,19 @@ describe("InlineEdit", () => {
     let onChange = jest.fn();
     let onBlur = jest.fn();
     let onInput = jest.fn();
-    let onClick = jest.fn();
+    let onSubmit = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
         component = mount(<InlineEdit
-            content="Please input your text here"
-            inlineEditID="testing_id"
+            value="Please input your text here"
+            name="testing_id"
             asEmphasis="singleLine"
-            asSize="normal"
-            asFloated="none"
-            asAligned="center"
-            withColor={null}
-            withAnimation={null}
-            isDisabled={false}
-            isHidden={false}
             onFocus={onFocus}
             onChange={onChange}
             onBlur={onBlur}
             onInput={onInput}
-            onClick={onClick}
+            onSubmit={onSubmit}
         />);
     })
 
@@ -54,110 +71,6 @@ describe("InlineEdit", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("it should render correctly when passed asSize prop as tiny", () => {
-        component.setProps({ asSize: "tiny" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asSize prop as small", () => {
-        component.setProps({ asSize: "small" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asSize prop as normal", () => {
-        component.setProps({ asSize: "normal" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asSize prop as big", () => {
-        component.setProps({ asSize: "big" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asSize prop as huge", () => {
-        component.setProps({ asSize: "huge" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asSize prop as massive", () => {
-        component.setProps({ asSize: "massive" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asFloated prop as left", () => {
-        component.setProps({ asFloated: "left" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asFloated prop as right", () => {
-        component.setProps({ asFloated: "right" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asFloated prop as inline", () => {
-        component.setProps({ asFloated: "inline" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asFloated prop as none", () => {
-        component.setProps({ asFloated: "none" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asAligned prop as left", () => {
-        component.setProps({ asAligned: "left" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asAligned prop as right", () => {
-        component.setProps({ asAligned: "right" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed asAligned prop as center", () => {
-        component.setProps({ asAligned: "center" })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed withColor props", () => {
-        let colors = {
-            backgroundColor: "#fff",
-            accentColor: "#FF0000",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed withAnimation props", () => {
-        let animation = {
-            animation: "zoom",
-            duration: 0.5,
-            delay: 0,
-        }
-        component.setProps({ withAnimation: animation })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("it should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true })
-        expect(component.exists()).toBe(true);
-    });
-    // ---------------------------------
     it("it should pass the value to the InlineEdit", () => {
         component.find('input').simulate('change', { target: { value: 'Please input your text here' } })
         expect(component.find('input').props().value).toEqual('Please input your text here');
@@ -172,7 +85,7 @@ describe("InlineEdit", () => {
         component.find('input').simulate('focus', { style: { accentColor: "#ffbf00" } })
         expect(component.exists()).toBe(true);
     });
-    // ---------------------------------
+
     it("it should pass the value to the InlineEdit when asEmphasis props set as multiLine", () => {
         component.setProps({
             asEmphasis: "multiLine"
@@ -196,7 +109,7 @@ describe("InlineEdit", () => {
         component.find('textarea').simulate('focus', { style: { accentColor: "#ffbf00" } })
         expect(component.exists()).toBe(true);
     });
-    // ---------------------------------
+
     it("it should trigger the escape event when input contain some value", () => {
         let InlineEdit = component.find('input');
         InlineEdit.simulate('change', { target: { value: 'Please input your text here' } });

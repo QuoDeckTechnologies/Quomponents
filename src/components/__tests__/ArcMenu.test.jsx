@@ -1,17 +1,71 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import ArcMenu from "../ArcMenu/ArcMenu.react";
 
 describe("ArcMenu", () => {
+
+  const args = {
+    target: ArcMenu,
+    required: {
+      arcIcon: "menu",
+      onClick: () => { },
+    },
+    translations: {
+      tgt: "arcMenu",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          arcMenu: {
+            menuContent: [
+              {
+                header: "सीखें",
+                list: [
+                  "अपलोड scorm",
+                  "अपलोड pdf",
+                  "वीडियो लिंक जोड़ें",
+                  "qdf डेक बनाएं",
+                ],
+              },
+              {
+                header: "मूल्यांकन",
+                list: ["सर्वेक्षण बनाएं", "प्रश्नोत्तरी बनाएँ", "एक खेल जोड़ें"],
+              },
+              {
+                header: "पुरस्कृत",
+                list: ["प्रमाण पत्र दो", "एक बैज दें", "इनाम दो"],
+              },
+            ],
+          },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("positions", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("hidden", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
+
+
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
@@ -46,16 +100,30 @@ describe("ArcMenu", () => {
         menuType="close"
         arcIcon="menu"
         position="top-right"
-        asVariant="primary"
-        asSize="normal"
-        isDisabled={false}
-        isHidden={false}
-        onClick={() => {}}
+        onClick={() => { }}
       />
     );
   });
 
   it("should render correctly without throwing error", () => {
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed withColor", () => {
+    component.setProps({
+      withColor: {
+        backgroundColor: "#ffffff",
+        accentColor: "#ffffff",
+        textColor: "#ffffff",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when passed isCircular props is true", () => {
+    component.setProps({
+      isHidden: true,
+    });
     expect(component.exists()).toBe(true);
   });
 

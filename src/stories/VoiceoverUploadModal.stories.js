@@ -17,7 +17,7 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/VoiceoverUploadModal/VoiceoverUploadModal",
+  title: "Design System/VoiceoverUploadModal",
   component: VoiceoverUploadModal,
   argTypes: {
     isOpen: {
@@ -151,6 +151,9 @@ ColoredVoiceoverUploadModal.args = {
 };
 ColoredVoiceoverUploadModal.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<VoiceoverUploadModal {...${JSON.stringify(
         ColoredVoiceoverUploadModal.args,
@@ -174,6 +177,9 @@ TranslatedVoiceoverUploadModal.args = {
 };
 TranslatedVoiceoverUploadModal.parameters = {
   docs: {
+    description: {
+      story: "Use to change the language that the text appears in.",
+    },
     source: {
       code: `<VoiceoverUploadModal {...${JSON.stringify(
         TranslatedVoiceoverUploadModal.args,

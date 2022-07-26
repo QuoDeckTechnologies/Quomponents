@@ -7,7 +7,7 @@ import './MultiSelect.scss'
 import "../../common/stylesheets/overrule.scss";
 import Button from "../Buttons/Button/Button.react";
 import _ from "lodash";
-import { getQuommons } from "../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
 
 MultiSelect.propTypes = {
     //=======================================
@@ -30,10 +30,6 @@ MultiSelect.propTypes = {
     Set action emphasis in increasing order 
     */
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
-    /**
-    Use for rounded corners or circular icon button 
-    */
-    isCircular: PropTypes.bool,
     //=======================================
     // Quommon props
     //=======================================
@@ -48,6 +44,10 @@ MultiSelect.propTypes = {
         "error",
     ]),
     /**
+    Use to define component padding in increasing order
+    */
+    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+    /**
     Use to float the component in parent container
     */
     asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
@@ -57,6 +57,14 @@ MultiSelect.propTypes = {
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         textColor: PropTypes.string,
+    }),
+    /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
     }),
     /**
     Use to define the entry animation of the component
@@ -98,10 +106,11 @@ MultiSelect.defaultProps = {
     // Quommon props
     //=======================================
     asEmphasis: "contained",
-    isCircular: false,
     asVariant: "primary",
     asFloated: "none",
+    asPadded: "normal",
     withColor: null,
+    withTranslation: null,
     withLabel: null,
     withAnimation: null,
     isHidden: false,
@@ -136,8 +145,22 @@ export default function MultiSelect(props) {
         tempArr[index] = { ...tempArr[index], isSelected: !tempArr[index].isSelected };
         setData(tempArr);
     }
+
     //-------------------------------------------------------------------
-    // 1. Set the classes
+    // 1. Get translation of the component
+    //-------------------------------------------------------------------
+    let tObj = null;
+    let submitButtonText = props.purpose === "quiz" ? "Check Answer" : "Submit Answer";
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        submitButtonText = props.purpose === "quiz" ? tObj?.checkAnswer : tObj?.submitAnswer;
+    }
+    //-------------------------------------------------------------------
+    // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "multi-select");
 
@@ -153,15 +176,14 @@ export default function MultiSelect(props) {
                                     onClick={() => toggleChecked(index)}>
                                 </i>
                             </div>
-                            {<Button {...props} content={text.name} onClick={() => toggleChecked(index)} />}</div>
+                            {<Button {...props} withTranslation={null} content={text.name} onClick={() => toggleChecked(index)} />}</div>
                     </div>
                 );
             })}
             {<Button {...props}
-                content={props.purpose === "quiz"
-                    ? "Check Answer"
-                    : "Submit Answer"}
+                withTranslation={null}
+                content={submitButtonText}
                 onClick={() => handleSubmit()} />}
-        </div >
+        </div>
     )
 }

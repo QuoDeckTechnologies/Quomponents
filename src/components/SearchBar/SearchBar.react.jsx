@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
-import {
-    getQuommons,
-    getTranslation,
-} from "../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "../SearchBar/SearchBar.scss";
@@ -28,7 +25,7 @@ SearchBar.propTypes = {
     /**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+    asFloated: PropTypes.oneOf(["left", "right", "inline", "none"]),
     /**
     Use to define component text size in increasing order
     */
@@ -96,7 +93,7 @@ SearchBar.defaultProps = {
     withTranslation: null,
     isHidden: false,
     isDisabled: false,
-    isFluid: false
+    isFluid: false,
 };
 /**
 ## Notes
@@ -115,12 +112,13 @@ export default function SearchBar(props) {
     // 2. Get translation of the component
     //-------------------------------------------------------------------
     let searchPlaceHolder = props.placeHolder;
-    let tObj = null
+    let tObj = null;
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
-    ) tObj = getTranslation(props.withTranslation);
+    )
+        tObj = getTranslation(props.withTranslation, "searchBar");
     if (tObj && props.placeHolder && props.placeHolder !== "") {
         searchPlaceHolder = tObj.placeHolder;
     }
@@ -131,13 +129,13 @@ export default function SearchBar(props) {
     const input = useRef(null);
     const box = useRef(null);
     const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === "Enter") {
             handleButtonPress();
         }
-    }
+    };
     const handleButtonPress = () => {
         return props.onClick(input.current?.value);
-    }
+    };
 
     //-------------------------------------------------------------------
     // 4. Handle Open and Close Input box
@@ -147,12 +145,13 @@ export default function SearchBar(props) {
             // Function for click event
             function handleOutsideClick(event) {
                 if (ref.current && !ref.current.contains(event?.target)) {
-                    setExpandable(false)
+                    setExpandable(false);
                 }
             }
             // Adding click event listener
             document.addEventListener("click", handleOutsideClick);
-            return () => document.removeEventListener("click", handleOutsideClick);
+            return () =>
+                document.removeEventListener("click", handleOutsideClick);
         }, [ref]);
     }
     useOutsideAlerter(box);
@@ -170,29 +169,51 @@ export default function SearchBar(props) {
             }
         }
         return (
-            <div className={`qui-search-bar-container ${searchBarContainer}`}
-                onClick={() => { setExpandable(true) }}
-                ref={box}>
-                <div className={`qui-search-bar-child-container ${searchBarStyle}`}>
+            <div
+                className={`qui-search-bar-container ${searchBarContainer}`}
+                onClick={() => {
+                    setExpandable(true);
+                }}
+                ref={box}
+            >
+                <div
+                    className={`qui-search-bar-child-container ${searchBarStyle}`}
+                >
                     <input
                         ref={input}
                         className={`qui-search-bar-input-field ${inputStyle}`}
                         placeholder={searchPlaceHolder}
                         style={{ color: props.withColor?.textColor }}
-                        onKeyPress={handleKeyPress} />
-                    <button
-                        aria-label="Search-Icon"
+                        onKeyPress={handleKeyPress}
+                    />
+                    <div
                         className={`qui-search-bar-icon ${iconStyle}`}
                         onClick={handleButtonPress}
-                        style={{ backgroundColor: props.withColor?.backgroundColor }}>
-                        <i className={props.withIcon?.name ? props.withIcon?.name : "fas fa-search"}></i>
-                    </button>
-                    <div className={`qui-search-bar-expand-effect`}
-                        style={{ display: props.isClosed ? expandable ? "none" : "flex" : "none" }}>
+                        style={{
+                            backgroundColor: props.withColor?.backgroundColor,
+                        }}
+                    >
+                        <i
+                            className={
+                                props.withIcon?.name
+                                    ? props.withIcon?.name
+                                    : "fas fa-search"
+                            }
+                        ></i>
                     </div>
+                    <div
+                        className={`qui-search-bar-expand-effect`}
+                        style={{
+                            display: props.isClosed
+                                ? expandable
+                                    ? "none"
+                                    : "flex"
+                                : "none",
+                        }}
+                    ></div>
                 </div>
             </div>
-        )
+        );
     }
     return (
         <div className={`qui ${quommonClasses.parentClasses}`}>
@@ -200,5 +221,5 @@ export default function SearchBar(props) {
                 {searchBar(props.isClosed)}
             </div>
         </div>
-    )
+    );
 }

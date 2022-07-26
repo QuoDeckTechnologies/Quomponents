@@ -47,6 +47,14 @@ RibbonMenu.propTypes = {
 	// Quommon props
 	//=======================================
 	/**
+	Use to show a translated version of the component text. Dictionary must be valid JSON. 
+	*/
+	withTranslation: PropTypes.shape({
+		lang: PropTypes.string,
+		tgt: PropTypes.string,
+		dictionary: PropTypes.string,
+	}),
+	/**
 	Use to show/hide the component
 	*/
 	isHidden: PropTypes.bool,
@@ -69,6 +77,7 @@ RibbonMenu.defaultProps = {
 	//=======================================
 	// Quommon props
 	//=======================================
+	withTranslation: null,
 	isHidden: false,
 	isDisabled: false,
 
@@ -103,7 +112,7 @@ export default function RibbonMenu(props) {
 	};
 	return (
 		<div className={`qui ${quommonClasses.parentClasses}`}>
-			<div className={`${quommonClasses.childClasses} qui-ribbon-menu`}>
+			<div className={`qt-shadow ${quommonClasses.childClasses} qui-ribbon-menu`}>
 				{ribbonMenu(props.asEmphasis)}
 			</div>
 		</div>

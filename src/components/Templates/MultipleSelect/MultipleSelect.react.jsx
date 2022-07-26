@@ -12,7 +12,7 @@ import "../../../common/stylesheets/common.css";
 import "./MultipleSelect.scss";
 import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
-import MultiSelect from "../../MultiSelect/MultiSelect.react.jsx";
+import MultiSelect from "../../MultiSelect/MultiSelect.react";
 
 MultipleSelect.propTypes = {
     //=======================================
@@ -84,6 +84,14 @@ MultipleSelect.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
@@ -109,6 +117,7 @@ MultipleSelect.defaultProps = {
     //=======================================
     asVariant: "primary",
     withColor: null,
+    withTranslation: null,
     withAnimation: null,
     isDisabled: false,
     isHidden: false,
@@ -132,7 +141,7 @@ export default function MultipleSelect(props) {
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
 
     //-------------------------------------------------------------------
     // 3. Setting the colors of the imported components

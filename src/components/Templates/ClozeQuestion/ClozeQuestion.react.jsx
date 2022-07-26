@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
     resolveImage,
 } from "../../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -88,6 +89,14 @@ ClozeQuestion.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
@@ -109,6 +118,7 @@ ClozeQuestion.defaultProps = {
     asVariant: "primary",
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
     isDisabled: false,
     isHidden: false,
 };
@@ -122,19 +132,22 @@ ClozeQuestion.defaultProps = {
 **/
 export default function ClozeQuestion(props) {
     let { data, withColor, imageLibrary } = props
+
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "cloze-question");
     quommonClasses.childClasses += ` variant-${props.asVariant}-text`;
+
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     const [answer, setAnswer] = useState();
     function handleSubmit() {
         props.trackInteraction(answer)
     }
+
     //-------------------------------------------------------------------
     // 3. Setting the colors of the imported components
     //-------------------------------------------------------------------
@@ -160,6 +173,27 @@ export default function ClozeQuestion(props) {
     //-------------------------------------------------------------------
     let buttonText = data?.purpose === "quiz" ? "Check Answer" : "Submit Answer";
 
+    //-------------------------------------------------------------------
+    // 5. Get translation of the component
+    //-------------------------------------------------------------------
+    let tObj = null;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        buttonText = data?.purpose === "quiz" ? tObj?.checkAnswer : tObj?.submitAnswer ;
+    }
+
+    //-------------------------------------------------------------------
+    // 6. Hide the placeholder text
+    //-------------------------------------------------------------------
+    let answerText = props.data?.answer?.toString().trim().replace(/[a-z0-9&_]/gi, "*");
+
+    //-------------------------------------------------------------------
+    // 7. Get the card backgroundImage
+    //-------------------------------------------------------------------
     const getBackground = () => {
         return {
             backgroundImage: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
@@ -196,11 +230,12 @@ export default function ClozeQuestion(props) {
                     </div>
                     <div className="qui-cloze-question-input-button-container">
                         <InputField {...props}
-                            content={{ label: props.data?.answer ? props.data?.answer : "Answer" }}
+                            placeholder= {answerText}
                             withColor={inputFieldColors}
-                            onClick={(name, value) => setAnswer(value)}
-                            name="cloze-question-input-field" />
-                        <Button {...props}
+                            onSubmit={(name, value) => setAnswer(value)}
+                            name="cloze-question-input-field"
+                            asEmphasis="listInput" />
+                        <Button
                             content={buttonText}
                             withColor={buttonColors}
                             onClick={() => handleSubmit()} >

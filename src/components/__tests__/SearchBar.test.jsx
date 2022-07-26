@@ -4,25 +4,57 @@
 import { mount } from 'enzyme';
 import { render, fireEvent, getByPlaceholderText } from "@testing-library/react";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import SearchBar from '../SearchBar/SearchBar.react';
 
 describe("SearchBar", () => {
     // -------------------------------------
-    // Setup definitions for the test suite
+    // Run common tests
     // -------------------------------------
+
+    const args = {
+        target: SearchBar,
+        required: {
+            placeHolder: "Search...",
+            onClick: () => { },
+        },
+        translations: {
+            tgt: "searchBar",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+                hi: {
+                    searchBar: {
+                        placeHolder: "खोजें...",
+                    }
+                },
+            }),
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("sizes", args);
+    hasValid("positions", args);
+
+    hasValid("colors", args);
+    hasValid("translations", args);
+
+    hasValid("disabled", args);
+    hasValid("hidden", args);
+    hasValid("fluid", args);
+    // -------------------------------------
+    // Run component specific tests
+    // -------------------------------------
+
     let component;
     let handleButtonPress, handleKeyPress;
     handleKeyPress = jest.fn();
     handleButtonPress = jest.fn();
-    const dictionary = JSON.stringify({
-        hi: {
-            SearchBar: {
-                placeHolder: "खोजें...",
-            }
-        },
-    });
 
     beforeEach(() => {
         jest.resetAllMocks();
@@ -38,108 +70,17 @@ describe("SearchBar", () => {
             isDisabled={false}
             isClosed={null}
             isFluid={null}
-            onClick={() => console.log('test')}
+            onClick={() => { }}
             placeHolder="Search..."
             handleKeyPress={handleKeyPress}
             handleButtonPress={handleButtonPress}
         />);
     })
 
-    it("should render correctly without throwing an error if icon props is false", () => {
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asSize prop as tiny", () => {
-        component.setProps({ asSize: "tiny" });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when passed asSize prop as small", () => {
-        component.setProps({ asSize: "small" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asSize prop as normal", () => {
-        component.setProps({ asSize: "normal" });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when passed asSize prop as big", () => {
-        component.setProps({ asSize: "big" });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when passed asSize prop as huge", () => {
-        component.setProps({ asSize: "huge" });
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asSize prop as massive", () => {
-        component.setProps({ asSize: "massive" });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asFloated prop as left", () => {
-        component.setProps({ asFloated: "left" });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when passed asFloated prop as right", () => {
-        component.setProps({ asFloated: "right" });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when passed asFloated prop as inline", () => {
-        component.setProps({ asFloated: "inline" });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            backgroundColor: "#fff",
-            textColor: "#00FFFF",
-        }
-        component.setProps({ withColor: colors });
-        expect(component.exists()).toBe(true);
-    });
-
     it("should render correctly when passed withIcon props", () => {
         let icon = { name: "fas fa-share" }
         component.setProps({ withIcon: icon })
         expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withAnimation props", () => {
-        let animation = {
-            animation: "zoom",
-            duration: 0.5,
-            delay: 0,
-        }
-        component.setProps({ withAnimation: animation })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false });
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when passed withTranslation Props", () => {
-        expect(component.find("input").props().placeholder).toBe("Search...")
-        component.setProps({
-            withTranslation: {
-                lang: "hi",
-                tgt: "SearchBar",
-                dictionary: dictionary,
-            },
-        });
-        expect(component.find("input").props().placeholder).toBe("खोजें...");
     });
 
     it("should render closed Search Bar with closed SearchBar css classes", () => {
@@ -170,7 +111,7 @@ describe("SearchBar", () => {
     });
 
     it("should pass the value when clicked on button", () => {
-        const { container } = render(<SearchBar onClick={() => { console.log("Testing Search Bar") }} />);
+        const { container } = render(<SearchBar onClick={() => { }} />);
         const inputElement = getByPlaceholderText(container, "Search...");
         let button = component.find("button");
         button.simulate('click');
@@ -180,7 +121,6 @@ describe("SearchBar", () => {
 
     it('should pass the value when pressed Enter', () => {
         const { queryByPlaceholderText } = render(<SearchBar onClick={() => {
-            console.log("Testing SearchBar")
             handleKeyPress = { handleKeyPress }
             handleButtonPress = { handleButtonPress }
         }} />);

@@ -128,7 +128,7 @@ export default function IconListCaptions(props) {
   //-------------------------------------------------------------------
   //  Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   //  Setting the colors of imported components
   //-------------------------------------------------------------------

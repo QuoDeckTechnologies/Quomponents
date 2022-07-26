@@ -15,11 +15,31 @@ const dictionary = JSON.stringify({
 });
 
 export default {
-  title: "Design System/ImageUploadModal/ImageUploadModal",
+  title: "Design System/ImageUploadModal",
   component: ImageUploadModal,
   argTypes: {
     isOpen: {
       defaultValue: true,
+    },
+    aspectRatio: {
+      defaultValue: 1,
+    },
+    image: {
+      defaultValue: null,
+    },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          arcButtonColor: "",
+          arcIconColor: "",
+          arcColor: "",
+          textColor: "",
+          buttonColor: "",
+          hoverButtonColor: "",
+          sliderColor: "",
+        },
+      },
     },
     withAnimation: {
       table: {
@@ -41,13 +61,13 @@ export default {
         },
       },
     },
-    isDisabled: {
+    isHidden: {
       table: {
         category: "is-Toggles",
         defaultValue: false,
       },
     },
-    isHidden: {
+    isFluid: {
       table: {
         category: "is-Toggles",
         defaultValue: false,
@@ -59,25 +79,13 @@ export default {
         defaultValue: null,
       },
     },
-    onClose: {
+    onChange: {
       table: {
         category: "Events",
         defaultValue: null,
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
   parameters: {
     componentSubtitle: "Displays a Image Upload Modal Component.",
     a11y: { disable: true },
@@ -97,6 +105,8 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   isOpen: true,
+  aspectRatio: 1,
+  image: "",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
@@ -107,13 +117,63 @@ Default.args = {
     tgt: "imageuploadmodal",
     dictionary: dictionary,
   },
-  isDisabled: false,
+  withColor: {
+    arcButtonColor: "",
+    arcIconColor: "",
+    arcColor: "",
+    textColor: "",
+    buttonColor: "",
+    hoverButtonColor: "",
+    sliderColor: "",
+  },
   isHidden: false,
+  isFluid: false,
 };
 Default.parameters = {
   docs: {
     source: {
       code: `<ImageUploadModal {...${JSON.stringify(Default.args, null, 2)}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// ImageUploadModal with initial image
+// -------------------------------------------------------------
+export const ImageUploadModalWithInitialImage = Template.bind({});
+ImageUploadModalWithInitialImage.args = {
+  ...Default.args,
+  image:
+    "https://images.unsplash.com/photo-1655910299073-9efb4ae052f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+};
+ImageUploadModalWithInitialImage.parameters = {
+  docs: {
+    source: {
+      code: `<ImageUploadModal {...${JSON.stringify(
+        ImageUploadModalWithInitialImage.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// ImageUploadModal with custom aspect ratio
+// -------------------------------------------------------------
+export const ImageUploadModalWithCustomAspectRatio = Template.bind({});
+ImageUploadModalWithCustomAspectRatio.args = {
+  ...Default.args,
+  aspectRatio: 0.66,
+  image:
+    "https://images.unsplash.com/photo-1655910299073-9efb4ae052f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+};
+ImageUploadModalWithCustomAspectRatio.parameters = {
+  docs: {
+    source: {
+      code: `<ImageUploadModal {...${JSON.stringify(
+        ImageUploadModalWithCustomAspectRatio.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };

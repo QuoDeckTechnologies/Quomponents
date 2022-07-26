@@ -1,0 +1,94 @@
+.qui.qui-treebar-parent {
+    height: 100%;
+    text-align: left;
+    box-shadow: 2px 2px 3px #b3b0b0;
+}
+
+.qui .qui-treebar-pageheader {
+    padding: 0.3em 0.4em;
+    font-size: 2.4em;
+    background: #aaaaaa;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.qui .qui-treebar-searchbar .qui-search-bar-container {
+    width: 100%;
+    padding: 0 0;
+    position: relative;
+    height: 1.9em;
+}
+
+.qui .qui-treebar-searchbar .qui-search-bar {
+    width: 100%;
+}
+
+.qui .qui-treebar-container {
+    width: 100%;
+    min-height: 100%;
+    background: #e5e5e5;
+    font-size: 1em;
+    overflow: auto;
+    position: relative;
+}
+
+.qui .qui-treebar-headerStyle {
+    font-size: 1em;
+    display: inline-block;
+}
+
+.qui .qui-treebar-headerStyle-child {
+    font-size: 1em;
+    display: inline-block;
+    margin-left: 1.6em;
+}
+
+.qui .qui-treebar-activeHeaderStyle {
+    font-size: 1em;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.qui .qui-treebar-activeTitleStyle {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 23ch;
+    padding: 0.2em 0;
+}
+
+.qui .qui-treebar-titleStyle {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 23ch;
+    padding: 0.2em 0;
+}
+
+.qui .qui-treebar-iconStyle {
+    margin-right: 0.5em;
+    font-size: 0.9em;
+}
+
+.qui .qui-treebar-iconStyle-children {
+    .qui-treebar-iconStyle {
+        margin-right: 1em;
+        font-size: 0.9em;
+    }
+}
+
+.qui.qui-tree-item,
+.css-f91fgu {
+    height: 100%;
+    background: #e5e5e5 !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.qui .qui-tree-item,
+.css-1u94gzr {
+    display: none;
+}

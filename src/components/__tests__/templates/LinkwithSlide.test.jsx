@@ -3,13 +3,47 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./../common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import LinkwithSlide from "../../Templates/LinkwithSlide/LinkwithSlide.react";
 
 describe("LinkWithSlide", () => {
   // -------------------------------------
-  // Setup definitions for the test suite
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: LinkwithSlide,
+    required: {
+      data: {
+        title: "test title",
+        subtitle: "test subtitle",
+        paragraph: "test paragraph",
+      },
+      onClick: () => {},
+    },
+    translations: {
+      tgt: "linkwithslide",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          linkwithslide: { button: "जाएँ" },
+        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+  hasValid("variants", args);
+  hasValid("positions", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+  hasValid("hidden", args);
+  // -------------------------------------
+  // Run component specific tests
   // -------------------------------------
   let component;
 
@@ -31,109 +65,6 @@ describe("LinkWithSlide", () => {
         onClick={() => {}}
       />
     );
-  });
-
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when translation is used", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "linkwithslide",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant props as primary", () => {
-    component.setProps({
-      asVariant: "primary",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant props as secondary", () => {
-    component.setProps({
-      asVariant: "secondary",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant props as warning", () => {
-    component.setProps({
-      asVariant: "warning",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant props as success", () => {
-    component.setProps({
-      asVariant: "success",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asVariant props as error", () => {
-    component.setProps({
-      asVariant: "error",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withAnimation props", () => {
-    component.setProps({
-      withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isHidden props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is none", () => {
-    component.setProps({
-      asFloated: "none",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is left", () => {
-    component.setProps({
-      asFloated: "left",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is right", () => {
-    component.setProps({
-      asFloated: "right",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed asFloated props is inline", () => {
-    component.setProps({
-      asFloated: "inline",
-    });
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when passed withColor props", () => {

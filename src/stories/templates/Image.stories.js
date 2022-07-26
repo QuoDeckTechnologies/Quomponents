@@ -2,7 +2,7 @@ import React from "react";
 import Image from "../../components/Templates/Image/Image.react";
 
 export default {
-  title: "Design System/Templates/Image/Image",
+  title: "Design System/Templates/Image",
   component: Image,
   argTypes: {
     data: {},

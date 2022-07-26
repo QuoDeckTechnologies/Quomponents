@@ -2,7 +2,7 @@ import React from "react";
 import Paragraph from "../../components/Templates/Paragraph/Paragraph.react";
 
 export default {
-  title: "Design System/Templates/Paragraph/Paragraph",
+  title: "Design System/Templates/Paragraph",
   component: Paragraph,
   argTypes: {
     data: {
@@ -139,6 +139,9 @@ ParagraphWithHeaderImage.args = {
 };
 ParagraphWithHeaderImage.parameters = {
   docs: {
+    description: {
+      story: "Displays a Paragraph component with header image",
+    },
     source: {
       code: `<Title {...${JSON.stringify(
         ParagraphWithHeaderImage.args,
@@ -175,6 +178,9 @@ ParagraphWithPresenter.args = {
 };
 ParagraphWithPresenter.parameters = {
   docs: {
+    description: {
+      story: "Displays a Paragraph component with presenter image",
+    },
     source: {
       code: `<Paragraph {...${JSON.stringify(
         ParagraphWithPresenter.args,
@@ -185,7 +191,7 @@ ParagraphWithPresenter.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Paragraph With Presenter
+// Paragraph With Presenter and background image
 // -------------------------------------------------------------
 export const ParagraphWithPresenterAndBackgroundImage = Template.bind({});
 ParagraphWithPresenterAndBackgroundImage.args = {
@@ -217,6 +223,10 @@ ParagraphWithPresenterAndBackgroundImage.args = {
 };
 ParagraphWithPresenterAndBackgroundImage.parameters = {
   docs: {
+    description: {
+      story:
+        "Displays a Paragraph component with presenter image and background image",
+    },
     source: {
       code: `<Paragraph {...${JSON.stringify(
         ParagraphWithPresenterAndBackgroundImage.args,
@@ -251,6 +261,9 @@ ColoredParagraph.args = {
 };
 ColoredParagraph.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<Paragraph {...${JSON.stringify(
         ColoredParagraph.args,
@@ -274,6 +287,9 @@ AnimatedTitle.args = {
 };
 AnimatedTitle.parameters = {
   docs: {
+    description: {
+      story: "We can animate the appearance of Paragraph component",
+    },
     source: {
       code: `<Title {...${JSON.stringify(AnimatedTitle.args, null, 2)}}/>`,
     },

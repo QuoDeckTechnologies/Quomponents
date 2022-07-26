@@ -3,23 +3,23 @@ import ShareWidget from "../components/ShareWidget/ShareWidget.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        ShareWidget: {
+        shareWidget: {
             label: "शेयर",
         },
     },
 });
 
 export default {
-    title: "Design System/ShareWidget/ShareWidget",
+    title: "Design System/ShareWidget",
     component: ShareWidget,
     argTypes: {
-        content: {
+        label: "",
+        url: "",
+        asSize: {
+            control: "select",
+            options: ["tiny", "small", "normal", "big", "huge", "massive"],
             table: {
-                category: "with-Params",
-                defaultValue: {
-                    label: "",
-                    url: ""
-                },
+                category: "as-Flags",
             },
         },
         asFloated: {
@@ -96,10 +96,9 @@ export default {
 const Template = (args) => <ShareWidget {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        label: "Share",
-        url: "www.quodeck.com",
-    },
+    label: "Share",
+    url: "www.quodeck.com",
+    asSize: "normal",
     asFloated: "inline",
     withColor: {
         textColor: "#000000",
@@ -111,7 +110,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "ShareWidget",
+        tgt: "shareWidget",
         dictionary: dictionary,
     },
     isHidden: false,
@@ -159,7 +158,7 @@ TranslatedShareWidget.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "ShareWidget",
+        tgt: "shareWidget",
         dictionary: dictionary,
     },
 };
@@ -192,7 +191,7 @@ const AllVariantsTemplate = (args) => {
                 {...Object.assign({}, baseObj, {
                     withTranslation: {
                         lang: "en",
-                        tgt: "ShareWidget",
+                        tgt: "shareWidget",
                         dictionary: dictionary,
                     }
                 })}
@@ -202,7 +201,7 @@ const AllVariantsTemplate = (args) => {
                 {...Object.assign({}, baseObj, {
                     withTranslation: {
                         lang: "hi",
-                        tgt: "ShareWidget",
+                        tgt: "shareWidget",
                         dictionary: dictionary,
                     },
                 })}

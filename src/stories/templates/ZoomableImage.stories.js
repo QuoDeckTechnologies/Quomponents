@@ -2,7 +2,7 @@ import React from "react";
 import ZoomableImage from "../../components/Templates/ZoomableImage/ZoomableImage.react";
 
 export default {
-    title: "Design System/Templates/ZoomableImage/ZoomableImage",
+    title: "Design System/Templates/ZoomableImage",
     component: ZoomableImage,
     argTypes: {
         data: {},

@@ -126,7 +126,7 @@ export default function OptionItemSix(props) {
   //-------------------------------------------------------------------
   // 3. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 4. Function to update value of the input field
   //-------------------------------------------------------------------
@@ -167,8 +167,8 @@ export default function OptionItemSix(props) {
             <div className="qui-option-item-upload-button">
               <OptionalImageField
                 content={{
-                  title: tObj ? tObj.uploadButton : content?.uploadButton,
-                  icon: "fas fa-upload"
+                  title: tObj?.uploadButton || content?.uploadButton,
+                  icon: "fas fa-upload",
                 }}
                 onClick={(image) => handleImageUpload(image)}
                 withColor={{ ...props.withColor }}
@@ -181,14 +181,12 @@ export default function OptionItemSix(props) {
                     ? content?.targetName
                     : "default-target-name"
                 }
-                content={{
-                  value: content?.value,
-                  placeholder: tObj ? tObj.placeholder : content?.placeholder,
-                  maxLength: content?.maxLength,
-                }}
+                value={content?.value}
+                placeholder={tObj?.placeholder || content?.placeholder}
+                maxLength={content?.maxLength}
                 asEmphasis="listInput"
                 withColor={props.withColor}
-                onClick={handleValue}
+                onSubmit={handleValue}
               />
             </div>
           </div>
@@ -199,14 +197,14 @@ export default function OptionItemSix(props) {
                   ? content?.captionName
                   : "default-caption-target-name"
               }
-              content={{
-                value: content?.captionValue,
-                placeholder: tObj ? tObj.captionPlaceholder : content?.captionPlaceholder,
-                maxLength: content?.maxLength,
-              }}
+              value={content?.captionValue}
+              placeholder={
+                tObj?.captionPlaceholder || content?.captionPlaceholder
+              }
+              maxLength={content?.maxLength}
               asEmphasis="listInput"
               withColor={props.withColor}
-              onClick={handleCaptionValue}
+              onSubmit={handleCaptionValue}
             />
           </div>
         </div>

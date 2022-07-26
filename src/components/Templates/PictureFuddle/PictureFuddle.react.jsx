@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
+    getTranslation,
     resolveImage,
 } from "../../../common/javascripts/helpers.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -30,6 +31,16 @@ PictureFuddle.propTypes = {
         question: PropTypes.string,
         answer: PropTypes.string,
         purpose: PropTypes.string,
+        filter: PropTypes.oneOf(["None",
+            "Blur",
+            "Brighten",
+            "Contrast",
+            "Rotate-Hue",
+            "Invert",
+            "Saturate",
+            "Greyscale",
+            "Sepia",
+        ])
     }).isRequired,
     /**
     PictureFuddle should have imageLibrary array
@@ -88,6 +99,14 @@ PictureFuddle.propTypes = {
         delay: PropTypes.number,
     }),
     /**
+    Use to show a translated version of the component text. Dictionary must be valid JSON. 
+    */
+    withTranslation: PropTypes.shape({
+        lang: PropTypes.string,
+        tgt: PropTypes.string,
+        dictionary: PropTypes.string,
+    }),
+    /**
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
@@ -109,6 +128,7 @@ PictureFuddle.defaultProps = {
     asVariant: "primary",
     withColor: null,
     withAnimation: null,
+    withTranslation: null,
     isDisabled: false,
     isHidden: false,
 };
@@ -118,7 +138,7 @@ PictureFuddle.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 - component is used to show the question with the input field, user need to submit the 
-  answer using the input field.
+answer using the input field.
 **/
 export default function PictureFuddle(props) {
     let { data, withColor, imageLibrary } = props
@@ -130,7 +150,7 @@ export default function PictureFuddle(props) {
     //-------------------------------------------------------------------
     // 2. Get animation of the component
     //-------------------------------------------------------------------
-    const animate = getAnimation(props.withAnimation);
+    const animate = getAnimation(props);
     const [answer, setAnswer] = useState();
     function handleSubmit() {
         props.trackInteraction(answer)
@@ -163,9 +183,23 @@ export default function PictureFuddle(props) {
     //-------------------------------------------------------------------
     let buttonText = data?.purpose === "quiz" ? "Check Answer" : "Submit Answer";
 
+
+    //-------------------------------------------------------------------
+    // 5. Get translation of the component
+    //-------------------------------------------------------------------
+    let tObj = null;
+    if (
+        props.withTranslation?.lang &&
+        props.withTranslation.lang !== "" &&
+        props.withTranslation.lang !== "en"
+    ) {
+        tObj = getTranslation(props.withTranslation);
+        buttonText = data?.purpose === "quiz" ? tObj?.checkAnswer || "Submit Answer" : tObj?.submitAnswer || "Submit Answer";
+    }
+
     const getBackground = () => {
         return {
-            background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
+            backgroundImage: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
             backgroundSize: "cover",
             backgroundPosition: "center"
         };
@@ -189,7 +223,7 @@ export default function PictureFuddle(props) {
                             withColor={slideHeaderColors} />
                     )}
                     {data?.image && (
-                        <img className="qui-picture-fuddle-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
+                        <img className={`qui-picture-fuddle-image qui-picture-fuddle-${props.data?.filter?.toLowerCase()}`} src={resolveImage(data?.image.id, imageLibrary)} alt="" />
                     )}
                     <div
                         className={`qui-picture-fuddle-label variant-${props.asVariant}-text`}
@@ -199,11 +233,11 @@ export default function PictureFuddle(props) {
                     </div>
                     <div className="qui-picture-fuddle-input-button-container">
                         <InputField {...props}
-                            content={{ label: props.data?.answer ? props.data?.answer : "Answer" }}
+                            label={props.data?.answer ? props.data?.answer : "Answer"}
                             withColor={inputFieldColors}
-                            onClick={(name, value) => changeText(value)}
+                            onSubmit={(name, value) => changeText(value)}
                             name="picture-fuddle-input-field" />
-                        <Button {...props}
+                        <Button
                             content={buttonText}
                             withColor={buttonColors}
                             onClick={() => handleSubmit()} >

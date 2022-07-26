@@ -1,8 +1,16 @@
 import React from "react";
 import OptionalImageField from "../components/OptionalImageField/OptionalImageField.react";
 
+const dictionary = JSON.stringify({
+  hi: {
+    optionalImageField: {
+      title: "अपलोड",
+    },
+  },
+});
+
 export default {
-  title: "Design System/OptionalImageField/OptionalImageField",
+  title: "Design System/OptionalImageField",
   component: OptionalImageField,
   argTypes: {
     content: {
@@ -43,6 +51,16 @@ export default {
         },
       },
     },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
+        },
+      },
+    },
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -73,7 +91,6 @@ export default {
     a11y: { disable: true },
   },
 };
-
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -95,6 +112,16 @@ Default.args = {
     accentColor: "",
     textColor: "",
   },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "optionalImageField",
+    dictionary: dictionary,
+  },
   isDisabled: false,
   isHidden: false,
   isFluid: false,
@@ -110,7 +137,6 @@ Default.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
 // Without ActionButton
 // -------------------------------------------------------------
@@ -125,6 +151,9 @@ WithoutActionButton.args = {
 };
 WithoutActionButton.parameters = {
   docs: {
+    description: {
+      story: "Displays a OptionalImageField without action button",
+    },
     source: {
       code: `<OptionalImageField {...${JSON.stringify(
         WithoutActionButton.args,
@@ -134,7 +163,6 @@ WithoutActionButton.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
 // Without Icon
 // -------------------------------------------------------------
@@ -148,6 +176,9 @@ WithoutIcon.args = {
 };
 WithoutIcon.parameters = {
   docs: {
+    description: {
+      story: "Displays a OptionalImageField without icon button",
+    },
     source: {
       code: `<OptionalImageField {...${JSON.stringify(
         WithoutIcon.args,
@@ -157,7 +188,6 @@ WithoutIcon.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
 // With Custom Icon
 // -------------------------------------------------------------
@@ -172,6 +202,9 @@ WithCustomIcon.args = {
 };
 WithCustomIcon.parameters = {
   docs: {
+    description: {
+      story: "Displays a OptionalImageField with custom icon button",
+    },
     source: {
       code: `<OptionalImageField {...${JSON.stringify(
         WithCustomIcon.args,
@@ -181,7 +214,6 @@ WithCustomIcon.parameters = {
     },
   },
 };
-
 // -------------------------------------------------------------
 // Colored OptionalImageField
 // -------------------------------------------------------------
@@ -196,6 +228,9 @@ ColoredOptionalImageField.args = {
 };
 ColoredOptionalImageField.parameters = {
   docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
     source: {
       code: `<OptionalImageField {...${JSON.stringify(
         ColoredOptionalImageField.args,
@@ -205,7 +240,29 @@ ColoredOptionalImageField.parameters = {
     },
   },
 };
-
+// -------------------------------------------------------------
+// Translated OptionalImageField
+// -------------------------------------------------------------
+export const TranslatedOptionalImageField = Template.bind({});
+TranslatedOptionalImageField.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "optionalImageField",
+    dictionary: dictionary,
+  },
+};
+TranslatedOptionalImageField.parameters = {
+  docs: {
+    source: {
+      code: `<OptionalImageField {...${JSON.stringify(
+        TranslatedOptionalImageField.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
 // -------------------------------------------------------------
 // Animated OptionalImageField
 // -------------------------------------------------------------
@@ -213,13 +270,16 @@ export const AnimatedOptionalImageField = Template.bind({});
 AnimatedOptionalImageField.args = {
   ...Default.args,
   withAnimation: {
-    animation: "zoom",
+    animation: "fade",
     duration: 0.5,
     delay: 0,
   },
 };
 AnimatedOptionalImageField.parameters = {
   docs: {
+    description: {
+      story: "We can animate the appearance of OptionalImageField",
+    },
     source: {
       code: `<OptionalImageField {...${JSON.stringify(
         AnimatedOptionalImageField.args,

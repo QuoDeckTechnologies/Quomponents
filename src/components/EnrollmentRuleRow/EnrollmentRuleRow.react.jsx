@@ -13,31 +13,32 @@ EnrollmentRuleRow.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    EnrollmentRuleRow data should be passed in content field and it is a required field
-    */
-  content: PropTypes.shape({
-    enrollmentRule: PropTypes.shape({}),
-    allRules: PropTypes.arrayOf(
-      PropTypes.shape({
-        _id: PropTypes.string,
-        criteria: PropTypes.shape({}),
-      })
-    ),
-  }).isRequired,
+  EnrollmentRuleRow will take new rule from enrollmentRule props.
+  */
+  enrollmentRule: PropTypes.shape({}),
+  /**
+  EnrollmentRuleRow will take existing rules data from allRules props.
+  */
+  allRules: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+      criteria: PropTypes.shape({}),
+    })
+  ),
   //=======================================
   // Quommon props
   //=======================================
   /**
-    Use to override component colors
-    */
+  Use to override component colors
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -53,20 +54,20 @@ EnrollmentRuleRow.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to enable/disable the component
-    */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    EnrollmentRuleRow component must have the onRunRule function passed as props
-    */
+  EnrollmentRuleRow component must have the onRunRule function passed as props
+  */
   onRunRule: PropTypes.func.isRequired,
   /**
-    EnrollmentRuleRow component must have the onRemoveRule function passed as props
-    */
+  EnrollmentRuleRow component must have the onRemoveRule function passed as props
+  */
   onRemoveRule: PropTypes.func.isRequired,
 };
 
@@ -74,7 +75,8 @@ EnrollmentRuleRow.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  enrollmentRule: {},
+  allRules: [],
   //=======================================
   // Quommon props
   //=======================================
@@ -92,18 +94,18 @@ EnrollmentRuleRow.defaultProps = {
 **/
 export default function EnrollmentRuleRow(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring content prop
+  // 1. Destructuring enrollmentRule, allRules prop
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { enrollmentRule, allRules } = props;
   //-------------------------------------------------------------------
   // 2. Defining variables and states
   //-------------------------------------------------------------------
-  const [allRules, setAllRules] = useState(content?.allRules);
+  const [allRulesArr, setAllRulesArr] = useState(allRules);
   //-------------------------------------------------------------------
   // 3. useEffect hook to mimic submit of enrollment rules
   //-------------------------------------------------------------------
   useEffect(() => {
-    let criteria = content?.enrollmentRule;
+    let criteria = enrollmentRule;
     let temp = {};
     let allKeys;
     let keys;
@@ -118,9 +120,9 @@ export default function EnrollmentRuleRow(props) {
         temp[key] = criteria[key];
       });
       let newRule = { criteria: temp };
-      setAllRules(prevState => [...prevState, newRule]);
+      setAllRulesArr((prevState) => [...prevState, newRule]);
     }
-  },[content?.enrollmentRule]);
+  }, [enrollmentRule]);
   //-------------------------------------------------------------------
   // 4. Set the classes
   //-------------------------------------------------------------------
@@ -128,7 +130,7 @@ export default function EnrollmentRuleRow(props) {
   //-------------------------------------------------------------------
   // 5. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
 
@@ -138,8 +140,8 @@ export default function EnrollmentRuleRow(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      {allRules &&
-        allRules.map((item, index) => {
+      {allRulesArr &&
+        allRulesArr.map((item, index) => {
           let data = Object.values(item.criteria);
           if (data.length) {
             return (
@@ -167,11 +169,11 @@ export default function EnrollmentRuleRow(props) {
                 <div className="qui-enrollment-icons">
                   <i
                     className="fas fa-play"
-                    onClick={(e) => props.onRunRule(e)}
+                    onClick={(e) => props.onRunRule(allRulesArr)}
                   ></i>
                   <i
                     className="fas fa-times"
-                    onClick={(e) => props.onRemoveRule(e)}
+                    onClick={(e) => props.onRemoveRule(item)}
                   ></i>
                 </div>
               </div>

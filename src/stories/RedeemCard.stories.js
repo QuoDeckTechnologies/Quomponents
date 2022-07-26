@@ -3,23 +3,25 @@ import RedeemCard from "../components/RedeemCard/RedeemCard.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        RedeemCard: {
+        redeemCard: {
             button: "मोचन",
             inprogress: "आपका मोचन अनुरोध प्रक्रिया में है",
-            completed: "आपने इस ऑफ़र को भुना लिया है"
+            completed: "आपने इस ऑफ़र को भुना लिया है",
+            left: "शेष"
         }
     },
     en: {
-        RedeemCard: {
+        redeemCard: {
             button: "Redeem",
             inprogress: "YOUR REDEMPTION REQUEST IS IN PROCESS",
-            completed: "YOU HAVE REDEEMED THIS OFFER"
+            completed: "YOU HAVE REDEEMED THIS OFFER",
+            left: "left"
         }
     }
 });
 
 export default {
-    title: "Design System/RedeemCard/RedeemCard",
+    title: "Design System/RedeemCard",
     component: RedeemCard,
     argTypes: {
         content: {
@@ -56,7 +58,7 @@ export default {
         },
         asFloated: {
             control: "select",
-            options: ["left", "right", "inline"],
+            options: ["left", "right", "none", "inline"],
             table: {
                 category: "as-Flags",
             }
@@ -128,7 +130,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "RedeemCard",
+        tgt: "redeemCard",
         dictionary: dictionary,
     },
     asFloated: "inline",
@@ -169,7 +171,7 @@ ColoredRedeemCard.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "RedeemCard",
+        tgt: "redeemCard",
         dictionary: dictionary,
     },
     withAnimation: {
@@ -217,7 +219,7 @@ export const AllVariantsTemplate = (args) => {
         },
         withTranslation: {
             lang: "en",
-            tgt: "RedeemCard",
+            tgt: "redeemCard",
             dictionary: dictionary,
         },
         withAnimation: {
@@ -252,7 +254,7 @@ export const AllVariantsTemplate = (args) => {
         },
         withTranslation: {
             lang: "en",
-            tgt: "RedeemCard",
+            tgt: "redeemCard",
             dictionary: dictionary,
         },
         withAnimation: {
@@ -287,7 +289,7 @@ export const AllVariantsTemplate = (args) => {
         },
         withTranslation: {
             lang: "en",
-            tgt: "RedeemCard",
+            tgt: "redeemCard",
             dictionary: dictionary,
         },
         withAnimation: {
@@ -325,7 +327,7 @@ TranslatedRedeemCard.args = {
     ...Default.args,
     withTranslation: {
         lang: "hi",
-        tgt: "RedeemCard",
+        tgt: "redeemCard",
         dictionary: dictionary,
     },
 };
@@ -333,7 +335,7 @@ TranslatedRedeemCard.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the text appears in. To make this work for the RedeemCard, add a content:{text:{title, subTitle},label} value to the dictionary.",
+                "Use to change the language that the text appears in. To make this work for the RedeemCard, add a  RedeemCard: {button, inprogress, completed, left } value to the dictionary.",
         },
         source: {
             code: `<RedeemCard {...${JSON.stringify(

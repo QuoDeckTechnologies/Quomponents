@@ -2,7 +2,7 @@ import React from "react";
 import IconListGallery from "../../components/Templates/IconListGallery/IconListGallery.react";
 
 export default {
-    title: "Design System/Templates/IconListGallery/IconListGallery",
+    title: "Design System/Templates/IconListGallery",
     component: IconListGallery,
     argTypes: {
         data: {

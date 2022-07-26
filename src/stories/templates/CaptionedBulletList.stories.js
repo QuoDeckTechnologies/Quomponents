@@ -2,7 +2,7 @@ import React from "react";
 import CaptionedBulletList from "../../components/Templates/CaptionedBulletList/CaptionedBulletList.react";
 
 export default {
-  title: "Design System/Templates/CaptionedBulletList/CaptionedBulletList",
+  title: "Design System/Templates/CaptionedBulletList",
   component: CaptionedBulletList,
   argTypes: {
     data: {},

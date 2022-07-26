@@ -2,23 +2,11 @@ import React from "react";
 import EnrollmentRuleRow from "../components/EnrollmentRuleRow/EnrollmentRuleRow.react";
 
 export default {
-  title: "Design System/EnrollmentRuleRow/EnrollmentRuleRow",
+  title: "Design System/EnrollmentRuleRow",
   component: EnrollmentRuleRow,
   argTypes: {
-    content: {
-      table: {
-        defaultValue: {
-          enrollmentRule: {
-            company: "",
-            zone: "",
-            branch: "",
-            department: "",
-            date_of_joining: "",
-          },
-          allRules: [],
-        },
-      },
-    },
+    enrollmentRule: {},
+    allRules: [],
     withColor: {
       table: {
         category: "with-Params",
@@ -94,30 +82,28 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    enrollmentRule: {
-      company: "",
-      zone: "",
-      branch: "",
-      department: "",
-      date_of_joining: "",
-    },
-    allRules: [
-      { _id: "", criteria: { company: "Quodeck", zone: "East" } },
-      { _id: "", criteria: { branch: "Maharashtra", department: "IT" } },
-      { _id: "", criteria: { zone: "West", date_of_joining: "2-03-2022" } },
-      {
-        _id: "",
-        criteria: {
-          company: "Microsoft",
-          zone: "West",
-          branch: "California",
-          department: "IT",
-          date_of_joining: "2-03-2022",
-        },
-      },
-    ],
+  enrollmentRule: {
+    company: "",
+    zone: "",
+    branch: "",
+    department: "",
+    date_of_joining: "",
   },
+  allRules: [
+    { _id: "", criteria: { company: "Quodeck", zone: "East" } },
+    { _id: "", criteria: { branch: "Maharashtra", department: "IT" } },
+    { _id: "", criteria: { zone: "West", date_of_joining: "2-03-2022" } },
+    {
+      _id: "",
+      criteria: {
+        company: "Microsoft",
+        zone: "West",
+        branch: "California",
+        department: "IT",
+        date_of_joining: "2-03-2022",
+      },
+    },
+  ],
   withColor: {
     backgroundColor: "",
     accentColor: "",

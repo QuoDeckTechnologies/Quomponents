@@ -3,63 +3,68 @@
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import RibbonHtmlMenu from "../RibbonMenu/htmlMenu/RibbonHtmlMenu.react";
 
 describe("RibbonHtmlMenu", () => {
-	// -------------------------------------
-	// Setup definitions for the test suite
-	// -------------------------------------
-	let component;
-	beforeEach(() => {
-		jest.resetAllMocks();
-		component = shallow(
-			<RibbonHtmlMenu
-				asFloated="left"
-				isHidden={false}
-				isDisabled={false}
-				onClick={jest.fn()}
-			/>
-		);
-	});
+  // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+    
+    const args = {
+      target: RibbonHtmlMenu,
+      translations: {
+          tgt: "ribbonHtmlMenu",
+          lang: { valid: "hi", invalid: "xx" },
+          dictionary: JSON.stringify({
+            en: {
+              ribbonHtmlMenu: {
+                saveExit: "Save & Exit",
+                upload: "Upload",
+                download: "Download",
+                save: "Save",
+                file: "File",
+              },
+            },
+            hi: {
+              ribbonHtmlMenu: {
+                saveExit: "सेहेजे & बाहर निकले",
+                upload: "अपलोड",
+                download: "डाउनलोड",
+                save: "सहेजें",
+                file: "फ़ाइल",
+              },
+            },
+          }),
+      },
+  };
 
-	it("should render correctly without throwing error", () => {
-		expect(component.exists()).toBe(true);
-	});
+  hasValid("defaults", args);
 
-	it("should render correctly when passed asFloated prop as left", () => {
-		component.setProps({ asFloated: "left" });
-		expect(component.exists()).toBe(true);
-	});
+  hasValid("translations", args);
 
-	it("should render correctly when passed asFloated prop as right", () => {
-		component.setProps({ asFloated: "right" });
-		expect(component.exists()).toBe(true);
-	});
+  hasValid("disabled", args);
+  hasValid("hidden", args);
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
 
-	it("should render correctly when passed asFloated prop as inline", () => {
-		component.setProps({ asFloated: "inline" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isHidden props as false", () => {
-		component.setProps({ isHidden: false });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isHidden props as true", () => {
-		component.setProps({ isHidden: true });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false });
-        expect(component.exists()).toBe(true);
-    });
-	
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true });
-        expect(component.exists()).toBe(true);
-    });
+  let component;
+  beforeEach(() => {
+    jest.resetAllMocks();
+    component = shallow(
+      <RibbonHtmlMenu
+        asFloated="left"
+        withTranslation={null}
+        isHidden={false}
+        isDisabled={false}
+        onClick={jest.fn()}
+      />
+    );
+  });
 });

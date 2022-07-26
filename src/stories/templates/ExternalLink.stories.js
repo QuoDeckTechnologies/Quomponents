@@ -1,8 +1,14 @@
 import React from "react";
 import ExternalLink from "../../components/Templates/ExternalLink/ExternalLink.react";
 
+const dictionary = JSON.stringify({
+    hi: {
+      externalLink: { button: "जाएँ" },
+    },
+}); 
+
 export default {
-    title: "Design System/Templates/ExternalLink/ExternalLink",
+    title: "Design System/Templates/ExternalLink",
     component: ExternalLink,
     argTypes: {
         data: {
@@ -49,11 +55,39 @@ export default {
                 },
             },
         },
+        withTranslation: {
+            table: {
+              category: "with-Params",
+              defaultValue: {
+                lang: "",
+                tgt: "",
+                dictionary: "",
+              },
+            },
+        },
+        isDisabled: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
         isHidden: {
             table: {
                 category: "is-Toggles",
                 defaultValue: false,
             },
+        },
+        onClick: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        },
+    },
+    onClick: {
+        table: {
+            category: "Events",
+            defaultValue: null,
         },
     },
     decorators: [
@@ -119,6 +153,12 @@ Default.args = {
         duration: 0.5,
         delay: 0,
     },
+    withTranslation: {
+        lang: "en",
+        tgt: "externalLink",
+        dictionary: dictionary,
+    },
+    isDisabled: false,
     isHidden: false,
 };
 Default.parameters = {
@@ -220,3 +260,27 @@ ExternalLinkWithHeaderImageAndBackgroundImage.parameters = {
         },
     },
 };
+// -------------------------------------------------------------
+// Translated Externallink
+// -------------------------------------------------------------
+export const TranslatedExternallink = Template.bind({});
+TranslatedExternallink.args = {
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "externalLink",
+    dictionary: dictionary,
+  },
+};
+TranslatedExternallink.parameters = {
+  docs: {
+    source: {
+      code: `<Externallink {...${JSON.stringify(
+        TranslatedExternallink.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+

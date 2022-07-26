@@ -58,7 +58,7 @@ RedeemCard.propTypes = {
     /**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+    asFloated: PropTypes.oneOf(["left", "right","none", "inline"]),
     /**
     Use to show/hide the component
     */
@@ -153,15 +153,17 @@ export default function RedeemCard(props) {
     let buttonText = "Redeem";
     let inProgressText = "YOUR REDEMPTION REQUEST IS IN PROCESS";
     let completedText = "YOU HAVE REDEEMED THIS OFFER";
+    let leftText = "left";
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        buttonText = tObj.button;
-        inProgressText = tObj.inprogress;
-        completedText = tObj.completed;
+        buttonText = tObj?.button || buttonText;
+        inProgressText = tObj?.inprogress || inProgressText;
+        completedText = tObj?.completed || completedText;
+        leftText = tObj?.left || leftText
     }
     //-------------------------------------------------------------------
     // 7. Get the RedeemCard Component
@@ -191,7 +193,7 @@ export default function RedeemCard(props) {
                                 {props.content?.stock?.left}/{props.content?.stock?.total}
                             </div>
                             <div>
-                                left
+                                {leftText}
                             </div>
                         </div>
                     }

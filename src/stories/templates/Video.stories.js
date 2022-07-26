@@ -2,7 +2,7 @@ import React from "react";
 import Video from "../../components/Templates/Video/Video.react";
 
 export default {
-    title: "Design System/Templates/Video/Video",
+    title: "Design System/Templates/Video",
     component: Video,
     argTypes: {
         data: {

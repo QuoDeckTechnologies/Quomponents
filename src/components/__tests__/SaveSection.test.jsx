@@ -4,6 +4,10 @@ import React from "react";
 // -------------------------------------
 import { shallow } from "enzyme";
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import SaveSection from "../RibbonMenu/htmlMenu/sections/SaveSection.react";
@@ -11,59 +15,58 @@ import IconLink from "../Buttons/IconLink/IconLink.react";
 
 describe("SaveSection", () => {
 	// -------------------------------------
-	// Setup definitions for the test suite
+	// Run common tests
 	// -------------------------------------
-	let component;
 
+	const args = {
+		target: SaveSection,
+		translations: {
+			tgt: "saveSection",
+			lang: { valid: "hi", invalid: "xx" },
+			dictionary: JSON.stringify({
+				en: {
+					saveSection: {
+						upload: "Upload",
+						download: "Download",
+						save: "Save",
+						file: "File"
+					}
+				},
+				hi: {
+					saveSection: {
+						upload: "अपलोड",
+						download: "डाउनलोड",
+						save: "सहेजें",
+						file: "फ़ाइल"
+					}
+				}
+			}),
+		},
+	};
+
+	hasValid("defaults", args);
+
+	hasValid("positions", args);
+	hasValid("translations", args);
+
+	hasValid("disabled", args);
+	hasValid("hidden", args);
+	// -------------------------------------
+	// Run component specific tests
+	// -------------------------------------
+
+	let component;
 	beforeEach(() => {
 		jest.resetAllMocks();
 		component = shallow(
 			<SaveSection
 				asFloated="left"
+				withTranslation={null}
 				isHidden={false}
 				isDisabled={false}
 				onClick={jest.fn()}
 			/>
 		);
-	});
-
-	it("should render correctly without throwing error", () => {
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asFloated prop as left", () => {
-		component.setProps({ asFloated: "left" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asFloated prop as right", () => {
-		component.setProps({ asFloated: "right" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed asFloated prop as inline", () => {
-		component.setProps({ asFloated: "inline" });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isHidden props as false", () => {
-		component.setProps({ isHidden: false });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isHidden props as true", () => {
-		component.setProps({ isHidden: true });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isDisabled props as false", () => {
-		component.setProps({ isDisabled: false });
-		expect(component.exists()).toBe(true);
-	});
-
-	it("should render correctly when passed isDisabled props as true", () => {
-		component.setProps({ isDisabled: true });
-		expect(component.exists()).toBe(true);
 	});
 
 	it("should simulate upload button", () => {

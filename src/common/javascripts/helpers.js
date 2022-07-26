@@ -5,19 +5,71 @@ export function getQuommons(props, component) {
     let parentArray = [`qui-${component}`],
         childArray = [""];
 
-    if (props.asSize) childArray.push(`size-${props.asSize}`);
-    if (props.asPadded) childArray.push(`pad-${props.asPadded}`);
-    if (props.asAligned) childArray.push(`${props.asAligned}-aligned`);
-    if (props.asFloated) parentArray.push(`float-${props.asFloated}`);
-    if (props.asVariant) childArray.push(`variant-${props.asVariant}`);
+    if (props.massive) childArray.push(`size-massive`);
+    else if (props.huge) childArray.push(`size-huge`);
+    else if (props.big) childArray.push(`size-big`);
+    else if (props.normal) childArray.push(`size-normal`);
+    else if (props.small) childArray.push(`size-small`);
+    else if (props.tiny) childArray.push(`size-tiny`);
+    else if (props.asSize) childArray.push(`size-${props.asSize}`);
 
-    if (props.isHidden) parentArray.push("is-hidden");
-    if (props.isDisabled) parentArray.push("is-disabled");
-    if (props.isFluid) {
+    if (props.compact) childArray.push(`pad-compact`);
+    else if (props.fitted) childArray.push(`pad-fitted`);
+    else if (props.relaxed) childArray.push(`pad-relaxed`);
+    else if (props.padded) childArray.push(`pad-padded`);
+    else if (props.asPadded) childArray.push(`pad-${props.asPadded}`);
+
+    if (props.spaced) parentArray.push(`margin-spaced`);
+    else if (props.snug) parentArray.push(`margin-snug`);
+    else if (props.normal) parentArray.push(`margin-normal`);
+    else if (props.asMargin) parentArray.push(`margin-${props.asMargin}`);
+
+    if (props.gutter) parentArray.push(`gutter-down`);
+
+    if (props["center-aligned"] || props["center-align"])
+        childArray.push(`center-aligned`);
+    else if (props["left-aligned"] || props["left-align"])
+        childArray.push(`left-aligned`);
+    else if (props["right-aligned"] || props["right-align"])
+        childArray.push(`right-aligned`);
+    else if (props.asAligned) childArray.push(`${props.asAligned}-aligned`);
+
+    if (props["float-left"]) parentArray.push(`float-left`);
+    else if (props["float-right"]) parentArray.push(`float-right`);
+    else if (props["inline"]) parentArray.push(`float-inline`);
+    else if (props["float-none"]) parentArray.push(`float-none`);
+    else if (props.asFloated) parentArray.push(`float-${props.asFloated}`);
+
+    if (props.primary) {
+        childArray.push(`variant-primary`);
+        childArray.push(`variant-primary-text`);
+    } else if (props.secondary) {
+        childArray.push(`variant-secondary`);
+        childArray.push(`variant-secondary-text`);
+    } else if (props.positive) {
+        childArray.push(`variant-positive`);
+        childArray.push(`variant-positive-text`);
+    } else if (props.warning) {
+        childArray.push(`variant-warning`);
+        childArray.push(`variant-warning-text`);
+    } else if (props.negative) {
+        childArray.push(`variant-negative`);
+        childArray.push(`variant-negative-text`);
+    } else if (props.info) {
+        childArray.push(`variant-info`);
+        childArray.push(`variant-info-text`);
+    } else if (props.asVariant) {
+        childArray.push(`variant-${props.asVariant}`);
+        childArray.push(`variant-${props.asVariant}-text`);
+    }
+
+    if (props.isHidden || props.hidden) parentArray.push("is-hidden");
+    if (props.isDisabled || props.disabled) parentArray.push("is-disabled");
+    if (props.isFluid || props.fluid) {
         parentArray.push("is-fluid");
         childArray.push("is-fluid");
     }
-    if (props.isLoading) parentArray.push("is-loading");
+    if (props.isLoading || props.loading) parentArray.push("is-loading");
 
     return {
         parentClasses: parentArray.join(" "),
@@ -33,7 +85,16 @@ export function getTranslation(tObj, key) {
         : null;
 }
 
-export function getAnimation(animObj) {
+export function getAnimation(props) {
+    let animObj = props.withAnimation || {};
+    if (props.zoom) animObj.animation = "zoom";
+    else if (props.fade) animObj.animation = "fade";
+    else if (props.slideDown) animObj.animation = "slideDown";
+    else if (props.slideUp) animObj.animation = "slideUp";
+    else if (props.slideLeft) animObj.animation = "slideLeft";
+    else if (props.slideRight) animObj.animation = "slideRight";
+    else if (props.collapse) animObj.animation = "collapse";
+
     if (animObj?.animation) {
         const initialVariants = {
             zoom: {
@@ -121,26 +182,27 @@ export const resolveImage = (srcImg, imgLibrary) => {
         let img = Array.isArray(srcImg)
             ? srcImg[0]
             : typeof srcImg === "object"
-                ? srcImg["image"]
-                : srcImg;
+            ? srcImg["image"]
+            : srcImg;
         let libraryImg = _.find(imgLibrary, { id: img });
 
         if (libraryImg != null) {
             return libraryImg.image;
         } else {
-            return img.indexOf("data:") !== -1 || img.indexOf("assets/images/") !== -1
+            return img.indexOf("data:") !== -1 ||
+                img.indexOf("assets/images/") !== -1
                 ? img
                 : img.indexOf(".jpg") !== -1 ||
-                    img.indexOf(".JPG") !== -1 ||
-                    img.indexOf(".jpeg") !== -1 ||
-                    img.indexOf(".JPEG") !== -1 ||
-                    img.indexOf(".gif") !== -1 ||
-                    img.indexOf(".GIF") !== -1 ||
-                    img.indexOf(".png") !== -1 ||
-                    img.indexOf(".PNG") !== -1 ||
-                    img.indexOf(".svg") !== -1
-                    ? defaultImage
-                    : defaultImage;
+                  img.indexOf(".JPG") !== -1 ||
+                  img.indexOf(".jpeg") !== -1 ||
+                  img.indexOf(".JPEG") !== -1 ||
+                  img.indexOf(".gif") !== -1 ||
+                  img.indexOf(".GIF") !== -1 ||
+                  img.indexOf(".png") !== -1 ||
+                  img.indexOf(".PNG") !== -1 ||
+                  img.indexOf(".svg") !== -1
+                ? defaultImage
+                : defaultImage;
         }
     }
 };

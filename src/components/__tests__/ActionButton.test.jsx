@@ -2,12 +2,55 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
+
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import ActionButton from "../Buttons/ActionButton/ActionButton.react";
 
 describe("ActionButton", () => {
+    const args = {
+        target: ActionButton,
+        required: {
+            content: {
+                title: "BUY",
+                subTitle: "Rs. 75",
+                image: "https://media.glassdoor.com/sqll/1666177/quodeck-squarelogo-1519202233122.png"
+            },
+            onClick: () => { },
+        },
+        translations: {
+            tgt: "ActionButton",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+                hi: {
+                    ActionButton: {
+                        title: "ख़रीदे",
+                        subTitle: "रु. ७५",
+                    }
+                },
+            }),
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("variants", args);
+    hasValid("sizes", args);
+    hasValid("positions", args);
+    hasValid("padding", args);
+    hasValid("alignment", args);
+
+    hasValid("colors", args);
+    hasValid("animations", args);
+    hasValid("translations", args);
+
+    hasValid("hidden", args);
+    hasValid("disabled", args);
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -44,7 +87,7 @@ describe("ActionButton", () => {
                 withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
-                onClick={() => { console.log("Testing ActionButton") }}
+                onClick={() => { }}
             />
         );
     });
