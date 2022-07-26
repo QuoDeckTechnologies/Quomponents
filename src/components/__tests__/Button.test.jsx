@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -19,7 +19,7 @@ describe("Button", () => {
     target: Button,
     required: {
       content: "",
-      onClick: () => console.log("Button Testing"),
+      onClick: () => { },
     },
     translations: {
       tgt: "button",
@@ -64,7 +64,7 @@ describe("Button", () => {
     component = shallow(
       <Button
         content="Testing Button"
-        onClick={() => console.log("Button Testing")}
+        onClick={() => { }}
       />
     );
   });
@@ -89,9 +89,23 @@ describe("Button", () => {
     expect(component.exists()).toBe(true);
   });
   it("should render correctly with asEmphasis `outlined`", () => {
+    component.find(".qui-button").simulate("mouseenter");
     component.setProps({
       asEmphasis: "outlined",
       isDisabled: true,
+      withColor: {
+        backgroundColor: "#ffc900",
+        textColor: "#666666",
+        hoverBackgroundColor: "#666666",
+        hoverTextColor: "#ffc900",
+      },
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly with asEmphasis `outlined`", () => {
+    component.setProps({
+      asEmphasis: "outlined",
       withColor: {
         backgroundColor: "#ffc900",
         textColor: "#666666",
@@ -160,4 +174,13 @@ describe("Button", () => {
     });
     expect(component.exists()).toBe(true);
   });
+  it("should render correctly without throwing error when component mounts", () => {
+    component = mount(
+      <Button
+        content="Testing Button"
+        onClick={() => { }}
+      />
+    );
+  });
+
 });
