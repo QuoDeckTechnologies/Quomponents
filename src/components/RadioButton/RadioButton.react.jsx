@@ -17,11 +17,11 @@ RadioButton.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  Use to define name of the component
+  Use to define targetName of the radio component
   */
   targetName: PropTypes.string,
   /**
-  Use to define label of the component
+  Use to define label of the radio component
   */
   label: PropTypes.string,
   //=======================================
@@ -54,11 +54,8 @@ RadioButton.propTypes = {
   Use to override component colors and behavior
   */
   withColor: PropTypes.shape({
-    backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
     accentColor: PropTypes.string,
-    hoverBackgroundColor: PropTypes.string,
-    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to define the entry animation of the component

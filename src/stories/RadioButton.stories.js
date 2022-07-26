@@ -45,11 +45,8 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          backgroundColor: "",
           textColor: "",
           accentColor: "",
-          hoverBackgroundColor: "",
-          hoverTextColor: "",
         },
       },
     },
@@ -111,11 +108,8 @@ Default.args = {
   asPadded: "fitted",
   asAligned: "left",
   withColor: {
-    backgroundColor: "",
     textColor: "#303030",
     accentColor: "#FFBF00",
-    hoverBackgroundColor: "",
-    hoverTextColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -144,11 +138,8 @@ export const ColoredRadioButton = Template.bind({});
 ColoredRadioButton.args = {
   ...Default.args,
   withColor: {
-    backgroundColor: "",
     textColor: "#303030AA",
     accentColor: "#86BC25",
-    hoverBackgroundColor: "",
-    hoverTextColor: "",
   },
 };
 ColoredRadioButton.parameters = {
