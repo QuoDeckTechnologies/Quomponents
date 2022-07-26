@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import {
-    getQuommons,
-    getTranslation,
-    getAnimation,
+  getQuommons,
+  getTranslation,
+  getAnimation,
 } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -12,143 +12,141 @@ import "./LinkIcon.scss";
 import "../../common/stylesheets/overrule.scss";
 
 LinkIcon.propTypes = {
-    //=======================================
-    // Component Specific props
-    //=======================================
-    /**
+  //=======================================
+  // Component Specific props
+  //=======================================
+  /**
     Set icon in linkIcon 
     */
-    icon: PropTypes.string.isRequired,
-    /**
+  icon: PropTypes.string.isRequired,
+  /**
     
     /**
     Set label in linkIcon 
     */
-    label: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 
-    /**
+  /**
     Set active state in linkIcon 
     */
-    active: PropTypes.bool,
+  active: PropTypes.bool,
 
-    /**
+  /**
     Set active state in linkIcon 
     */
-    width: PropTypes.string,
+  width: PropTypes.string,
 
-    /**
+  /**
     Set title in linkIcon 
     */
-    title: PropTypes.string,
+  title: PropTypes.string,
 
-    /**
+  /**
     LinkIcon component must have the onClick function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 
-    //=======================================
-    // Quommon props
-    //=======================================
+  //=======================================
+  // Quommon props
+  //=======================================
 
-    /**
+  /**
     Use to define component text size in increasing order
     */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
+  asSize: PropTypes.oneOf([
+    "tiny",
+    "small",
+    "normal",
+    "big",
+    "huge",
+    "massive",
+  ]),
+  /**
     Use to define component padding in increasing order
     */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-    /**
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+  /**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
+  asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+  /**
     Use to override component colors and behavior
     */
-    withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-        textColor: PropTypes.string,
-        accentColor: PropTypes.string,
-        hoverBackgroundColor: PropTypes.string,
-        hoverTextColor: PropTypes.string,
-    }),
-    /**
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
+  }),
+  /**
     Use to define the entry animation of the component
     */
-    withAnimation: PropTypes.shape({
-        animation: PropTypes.oneOf([
-            "zoom",
-            "collapse",
-            "fade",
-            "slideDown",
-            "slideUp",
-            "slideLeft",
-            "slideRight",
-            "",
-        ]),
-        duration: PropTypes.number,
-        delay: PropTypes.number,
-    }),
-    /**
+  withAnimation: PropTypes.shape({
+    animation: PropTypes.oneOf([
+      "zoom",
+      "collapse",
+      "fade",
+      "slideDown",
+      "slideUp",
+      "slideLeft",
+      "slideRight",
+      "",
+    ]),
+    duration: PropTypes.number,
+    delay: PropTypes.number,
+  }),
+  /**
    Use to show a translated version of the component text. Dictionary must be valid JSON. 
    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
-    /**
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
     Use to show/hide the component
     */
-    isHidden: PropTypes.bool,
-    /**
+  isHidden: PropTypes.bool,
+  /**
     Use to enable/disable the component
     */
-    isDisabled: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 LinkIcon.defaultProps = {
-    //=======================================
-    // Component Specific props
-    //=======================================
-    active: false,
-    width: "80px",
+  //=======================================
+  // Component Specific props
+  //=======================================
+  active: false,
+  width: "80px",
 
-    //=======================================
-    // Quommon props
-    //=======================================
-    asSize: "normal",
-    asPadded: "normal",
-    asFloated: "none",
+  //=======================================
+  // Quommon props
+  //=======================================
+  asSize: "normal",
+  asPadded: "normal",
+  asFloated: "none",
 
-    withColor: null,
-    withAnimation: null,
-    withTranslation: null,
+  withColor: null,
+  withAnimation: null,
+  withTranslation: null,
 
-    isHidden: false,
-    isDisabled: false,
+  isHidden: false,
+  isDisabled: false,
 };
 
 function getColors(colors, hovered, active) {
-    let colorStyle = hovered
-        ? {
-              background: colors?.hoverBackgroundColor,
-              color: colors?.hoverTextColor,
-          }
-        : {
-              background: active
-                  ? colors?.accentColor
-                  : colors?.backgroundColor,
-              color: colors?.textColor,
-          };
-    return colorStyle;
+  let colorStyle = hovered
+    ? {
+        background: colors?.hoverBackgroundColor,
+        color: colors?.hoverTextColor,
+      }
+    : {
+        background: active ? colors?.accentColor : colors?.backgroundColor,
+        color: colors?.textColor,
+      };
+  return colorStyle;
 }
 /**
 ## Notes
@@ -159,74 +157,84 @@ function getColors(colors, hovered, active) {
 - props are not being passed to the LinkIcon. Please speak to the admin to handle any new prop.
 **/
 export default function LinkIcon(props) {
-    const [tilt, setTilt] = useState(false);
-    const [hovered, setHovered] = useState(false);
+  const [tilt, setTilt] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
-    //-------------------------------------------------------------------
-    // 1. Set the classes
-    //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "link-icon");
-    if (props.active) quommonClasses.childClasses += ` active`;
+  //-------------------------------------------------------------------
+  // 1. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "link-icon");
+  if (props.active) quommonClasses.childClasses += ` active`;
 
-    //-------------------------------------------------------------------
-    // 2. Set the component colors
-    //-------------------------------------------------------------------
-    let colors = props.withColor ? {} : getColors(props.withColor, hovered);
-    //-------------------------------------------------------------------
-    // 3. Set the label/caption/popover and loading text
-    //-------------------------------------------------------------------
-    let labelContent = Object.assign({}, props.withLabel);
-    let tObj = null;
-    if (
-        props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        tObj = getTranslation(props.withTranslation);
-        if (labelContent && tObj?.label) labelContent.content = tObj.label;
-    }
-    //-------------------------------------------------------------------
-    // 4. Get animation of the component
-    //-------------------------------------------------------------------
-    const animate = getAnimation(props);
+  //-------------------------------------------------------------------
+  // 3. Set the label/caption/popover and loading text
+  //-------------------------------------------------------------------
+  let labelContent = Object.assign({}, props.withLabel);
+  let tObj = null;
+  if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+  ) {
+    tObj = getTranslation(props.withTranslation);
+    if (labelContent && tObj?.label) labelContent.content = tObj.label;
+  }
+  //-------------------------------------------------------------------
+  // 4. Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props);
 
-    // ========================= Render Function =================================
+  const getStyle = () => {
+    return hovered
+      ? {
+          backgroundColor: props.withColor?.hoverBackgroundColor,
+          color: props.withColor?.hoverTextColor,
+        }
+      : {
+          backgroundColor: props.withColor?.backgroundColor,
+          color: props.withColor?.textColor,
+        };
+  };
 
-    return (
-        <motion.div
-            initial={animate.from}
-            animate={animate.to}
-            className={`qui ${quommonClasses.parentClasses}`}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            onMouseDown={() => setTilt(true)}
-            onMouseUp={() => setTilt(false)}
-        >
-            <div
-                className={`${quommonClasses.childClasses} qui-linkicon-block squared`}
-                title={props.title ? props.title : props.label}
-                style={{
-                    width: props.width,
-                    maxWidth: props.width,
-                    height: props.width,
-                    maxHeight: props.width,
-                }}
-            >
-                <a className="qui-linkicon-anchor" onClick={props.onClick}>
-                    <i
-                        className={`${props.icon} qui-linkicon-icon  ${
-                            tilt ? "tilt" : ""
-                        }`}
-                    ></i>
-                    <br />
-                    <div
-                        className={`qui-linkicon-caption secfont`}
-                        style={Object.assign({}, colors.textColor)}
-                    >
-                        {props.label}
-                    </div>
-                </a>
-            </div>
-        </motion.div>
-    );
+  const getColors = () => {
+    return props.active
+      ? { backgroundColor: props.withColor?.accentColor }
+      : { backgroundColor: props.withColor?.backgroundColor };
+  };
+
+  // ========================= Render Function =================================
+
+  return (
+    <motion.div
+      initial={animate.from}
+      animate={animate.to}
+      className={`qui ${quommonClasses.parentClasses}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onMouseDown={() => setTilt(true)}
+      onMouseUp={() => setTilt(false)}
+    >
+      <div
+        className={`${quommonClasses.childClasses} qui-linkicon-block squared`}
+        title={props.title ? props.title : props.label}
+        style={{
+          width: props.width,
+          maxWidth: props.width,
+          height: props.width,
+          maxHeight: props.width,
+          ...getStyle(),
+          ...getColors(),
+        }}
+        onClick={() => props.onClick(props)}
+      >
+        <a className="qui-linkicon-anchor">
+          <i
+            className={`${props.icon} qui-linkicon-icon  ${tilt ? "tilt" : ""}`}
+          ></i>
+          <br />
+          <div className={`qui-linkicon-caption secfont`}>{props.label}</div>
+        </a>
+      </div>
+    </motion.div>
+  );
 }

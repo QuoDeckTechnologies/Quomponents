@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { getQuommons } from "../../common/javascripts/helpers";
 import _ from "lodash";
@@ -17,13 +17,12 @@ DesktopNavbar.propTypes = {
   //=======================================
   links: PropTypes.array,
   user: PropTypes.object,
-
+  //=======================================
   // Quommon props
   //=======================================
-
   /**
-    Use to define standard component type
-    */
+  Use to define standard component type
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -31,14 +30,30 @@ DesktopNavbar.propTypes = {
     "warning",
     "error",
   ]),
-
   /**
-    Use to add an icon to the component
-    */
+  Use to override component colors and behavior
+  */
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
+  }),
+  /**
+  Use to add an icon to the component
+  */
   withIcon: PropTypes.shape({
     icon: PropTypes.string,
-    size: PropTypes.string,
   }),
+  /**
+  Use to show/hide the component
+  */
+  isHidden: PropTypes.bool,
+  /**
+  Use to enable/disable the component
+  */
+  isDisabled: PropTypes.bool,
 };
 
 DesktopNavbar.defaultProps = {
@@ -51,9 +66,11 @@ DesktopNavbar.defaultProps = {
   // Quommon props
   //=======================================
   asVariant: "primary",
+  withColor: null,
   withIcon: null,
+  isDisabled: false,
+  isHidden: false,
 };
-
 /**
 ## Notes
 - Pass inline styles to the component to override any of the component css
@@ -61,35 +78,59 @@ DesktopNavbar.defaultProps = {
 - MUI props are not being passed to the DesktopNavbar. Please speak to the admin to handle any new MUI prop.
 **/
 export default function DesktopNavbar(props) {
-  const { links, user } = props;
-
+  //-------------------------------------------------------------------
+  // 1. Destructuring props
+  //-------------------------------------------------------------------
+  const { links, user, asVariant, withColor } = props;
+  const [linkData, setLinkData] = useState(links);
+  //-------------------------------------------------------------------
+  // 2. Set the classes
+  //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "desktop-navbar");
   //-------------------------------------------------------------------
   // 3. Set the user image or icon
   //-------------------------------------------------------------------
   let icon = props.withIcon?.icon;
-  let isImageIcon = null;
-  if (icon) {
-    isImageIcon = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(
-      icon
-    );
-  }
+  //-------------------------------------------------------------------
+  // 4. LinkIcon click handler
+  //-------------------------------------------------------------------
+  const handelClick = (data) => {
+    let tmp_state = linkData;
+    let tmp_arr = [];
+    let tmp_obj = {};
+
+    tmp_state.forEach((dataObj) => {
+      if (dataObj?.text === data.label) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.active = true;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_obj.active = false;
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setLinkData([...tmp_arr]);
+  };
   // ========================= Render Function =================================
 
   return (
     <div className={`qui qt-shadow ${quommonClasses.parentClasses}`}>
-      <div className="qui-desktop-navbar-wrapper">
+      <div
+        className="qui-desktop-navbar-wrapper"
+        style={{ backgroundColor: withColor?.backgroundColor }}
+      >
         <div
           className="qui-desktop-navbar-logo"
           style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/62a7/fe58/4eecae9f288351910a0eb692d867ee13?Expires=1659916800&Signature=AlWDFcksp3SrNfu0e9xxYSVnvJDtrx0ckNiajI2LAfAuD8Wshhp8KhQwgCx1nyZjuagwO2wW6r8uKC4O6QBeCw1OvYF6L42cuCSZaFqoA-Io74RDywQrgRxCrR3SXRSgamPEhGvwZnlSco~kYXn4DnIhEbtmErawR21H~hFoxTOpTaoVmFw-29dz2SPxj-L1sKZM6kXj1vozhHOzHq6GM5IQLysBP9RJu6jjG4TmVuHQRx9Uy-i9j8he0q00Uvp1HV5-RZLY05dGNHxrQIdVq8UuB3U9P5kStx9dbC286AFVNVZfxky6pgP5ITb~Z~LRa28KqfGBn8ovGOYukrVVQw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA)`,
+            backgroundImage: `url(${icon})`,
           }}
         ></div>
         <div className="qui-desktop-navabr-search-bar-wrapper">
-          <SearchBar asFloated="none" isFluid={false} onClick={props.onClick} />
+          <SearchBar asFloated="none" isFluid={true} onClick={props.onClick} />
         </div>
         <div className="qui-desktop-navbar-icon-link-wrapper">
-          {_.map(links, (link, index) => {
+          {_.map(linkData, (link, index) => {
             return (
               <div
                 className="qui-desktop-navbar-icon-link-container"
@@ -97,15 +138,28 @@ export default function DesktopNavbar(props) {
               >
                 <LinkIcon
                   icon={link.icon}
+                  active={link.active}
+                  withColor={{
+                    backgroundColor: withColor?.backgroundColor,
+                    accentColor: withColor?.accentColor,
+                    textColor: withColor?.textColor,
+                    hoverBackgroundColor: withColor?.backgroundColor,
+                    hoverTextColor: withColor?.textColor,
+                  }}
                   label={link.text}
-                  onClick={() => {}}
+                  onClick={handelClick}
                 />
               </div>
             );
           })}
         </div>
         <div className="qui-desktop-navbar-app-menu-wrapper">
-          <p className="qui-desktop-navbar-user-name">{user.name}</p>
+          <p
+            className="qui-desktop-navbar-user-name"
+            style={{ color: withColor?.hoverTextColor }}
+          >
+            {user?.name}
+          </p>
           <div className="qui-desktop-navbar-app-menu-container">
             <AppMenu
               menu={[
@@ -130,10 +184,14 @@ export default function DesktopNavbar(props) {
                   onClick: () => {},
                 },
               ]}
+              asVariant={asVariant}
               asFloated="inline"
-              withIcon={{ icon: user.icon }}
+              withColor={{
+                backgroundColor: withColor?.hoverBackgroundColor,
+              }}
+              withIcon={{ icon: user?.icon }}
               isCircular={false}
-              onClick={(d) => {console.log(d)}}
+              onClick={() => {}}
             />
           </div>
         </div>
