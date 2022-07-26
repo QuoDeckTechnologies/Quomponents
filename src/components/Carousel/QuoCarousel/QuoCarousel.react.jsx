@@ -42,6 +42,8 @@ QuoCarousel.propTypes = {
     */
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
+        hoverBackgroundColor: PropTypes.string,
+        hoverTextColor: PropTypes.string,
     }),
     /**
     * Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -189,18 +191,21 @@ export default function QuoCarousel(props) {
                         asPadded="normal"
                         asFloated="none"
                         asAligned="center"
-                        withColor={{ textColor: props.withColor?.backgroundColor }}
+                        withColor={{
+                            textColor: props.withColor?.backgroundColor,
+                            hoverBackgroundColor: props.withColor?.hoverBackgroundColor,
+                            hoverTextColor: props.withColor?.hoverTextColor,
+                        }}
                         withAnimation={{
                             animation: "zoom",
                             duration: 0.5,
                             delay: 0,
                         }}
                         withTranslation={props.withTranslation || null}
-                        onClick={() => sliderRef.current?.slickGoTo(content.length - 1)
-                        }
+                        onClick={() => sliderRef.current?.slickGoTo(content.length - 1)}
                     />
                 </div>
             }
-        </div >
+        </div>
     );
 }
