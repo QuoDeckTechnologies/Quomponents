@@ -1,21 +1,27 @@
 // Import npm packages
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { getQuommons } from "../../common/javascripts/helpers";
 import _ from "lodash";
-import SearchBar from "../SearchBar/SearchBar.react";
-import LinkIcon from "../LinkIcon/LinkIcon.react";
-import AppMenu from "../AppMenu/AppMenu/AppMenu.react";
+import { getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./DesktopNavbar.scss";
 import "../../common/stylesheets/overrule.scss";
+import SearchBar from "../SearchBar/SearchBar.react";
+import LinkIcon from "../LinkIcon/LinkIcon.react";
+import AppMenu from "../AppMenu/AppMenu/AppMenu.react";
 
 DesktopNavbar.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
+  /**
+  Use to define links to LinkIcon component in DesktopNavbar
+  */
   links: PropTypes.array,
+  /**
+  Use to define AppMenu component in DesktopNavbar
+  */
   user: PropTypes.object,
   //=======================================
   // Quommon props
@@ -90,17 +96,47 @@ export default function DesktopNavbar(props) {
   // 1. Destructuring props
   //-------------------------------------------------------------------
   const { links, user, asVariant, withColor } = props;
-  const [linkData, setLinkData] = useState(links);
   //-------------------------------------------------------------------
-  // 2. Set the classes
+  // 2. Defining states
+  //-------------------------------------------------------------------
+  const [linkData, setLinkData] = useState(links);
+  const [showNavigation, setShowNavigation] = useState(false);
+  const [scroll, setScroll] = useState(0);
+  const [leftNavigation, setLeftNavigation] = useState(false);
+  const [rightNavigation, setRightNavigation] = useState(true);
+  const ref = useRef();
+  //-------------------------------------------------------------------
+  // 3. useEffect for component update
+  //-------------------------------------------------------------------
+  useEffect(() => {
+    if (ref.current.clientWidth < ref.current.scrollWidth) {
+      setShowNavigation(true);
+    } else setShowNavigation(false);
+  }, [setShowNavigation]);
+
+  useEffect(() => {
+    ref.current.scrollLeft = scroll;
+    if (scroll + ref.current.clientWidth >= ref.current.scrollWidth) {
+      setRightNavigation(false);
+    } else {
+      setRightNavigation(true);
+    }
+    if (scroll <= 0) {
+      setLeftNavigation(false);
+    } else {
+      setLeftNavigation(true);
+    }
+  }, [scroll, setRightNavigation]);
+  //-------------------------------------------------------------------
+  // 4. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "desktop-navbar");
   //-------------------------------------------------------------------
-  // 3. Set the user image or icon
+  // 5. Set the user image or icon
   //-------------------------------------------------------------------
   let icon = props.withIcon?.icon;
   //-------------------------------------------------------------------
-  // 4. LinkIcon click handler
+  // 6. LinkIcon click handler
   //-------------------------------------------------------------------
   const handelClick = (data) => {
     let tmp_state = linkData;
@@ -120,6 +156,45 @@ export default function DesktopNavbar(props) {
     });
     setLinkData([...tmp_arr]);
   };
+  //-------------------------------------------------------------------
+  // 7. Function to handle right click
+  //-------------------------------------------------------------------
+  const handleRight = () => {
+    if (
+      ref.current.scrollLeft + ref.current.clientWidth <
+      ref.current.scrollWidth
+    ) {
+      setScroll(
+        (prevState) => prevState + Math.ceil(ref.current.scrollWidth / 2)
+      );
+    }
+  };
+  //-------------------------------------------------------------------
+  // 8.  Function to handle left click
+  //-------------------------------------------------------------------
+  const handleLeft = () => {
+    if (ref.current.scrollLeft > 0) {
+      setScroll(
+        (prevState) => prevState - Math.ceil(ref.current.scrollWidth / 2)
+      );
+    }
+  };
+  //-------------------------------------------------------------------
+  // 9.  Function to handle scroll event
+  //-------------------------------------------------------------------
+  const handleScroll = (e) => {
+    if (e.target.scrollLeft === 0) {
+      setLeftNavigation(false);
+    } else {
+      setLeftNavigation(true);
+    }
+    if (e.target.scrollLeft + e.target.clientWidth >= e.target.scrollWidth) {
+      setRightNavigation(false);
+    } else {
+      setRightNavigation(true);
+    }
+  };
+
   // ========================= Render Function =================================
 
   return (
@@ -138,29 +213,57 @@ export default function DesktopNavbar(props) {
         <div className="qui-desktop-navabr-search-bar-wrapper">
           <SearchBar asFloated="none" isFluid={true} onClick={props.onSearch} />
         </div>
-        <div className="qui-desktop-navbar-icon-link-wrapper">
-          {_.map(linkData, (link, index) => {
-            return (
-              <div
-                className="qui-desktop-navbar-icon-link-container"
-                key={index}
-              >
-                <LinkIcon
-                  icon={link.icon}
-                  active={link.active}
-                  withColor={{
-                    backgroundColor: withColor?.backgroundColor,
-                    accentColor: withColor?.accentColor,
-                    textColor: withColor?.textColor,
-                    hoverBackgroundColor: withColor?.backgroundColor,
-                    hoverTextColor: withColor?.textColor,
-                  }}
-                  label={link.text}
-                  onClick={handelClick}
-                />
-              </div>
-            );
-          })}
+        <div className="qui-desktop-navbar-navigation-link-icon-wrapper">
+          {showNavigation && (
+            <div
+              className={`qui-desktop-navigation-left-navigation qui-desktop-navigation-navigation ${
+                leftNavigation ? "" : "qui-desktop-navbar-button-disable"
+              }`}
+              style={{ color: withColor?.textColor }}
+              onClick={handleLeft}
+            >
+              <i className="fas fa-angle-left"></i>
+            </div>
+          )}
+          <div
+            className="qui-desktop-navbar-link-icon-wrapper"
+            ref={ref}
+            onScroll={handleScroll}
+          >
+            {_.map(linkData, (link, index) => {
+              return (
+                <div
+                  className="qui-desktop-navbar-link-icon-container"
+                  key={index}
+                >
+                  <LinkIcon
+                    width=""
+                    icon={link.icon}
+                    active={link.active}
+                    withColor={{
+                      backgroundColor: withColor?.backgroundColor,
+                      accentColor: withColor?.accentColor,
+                      textColor: withColor?.textColor,
+                      hoverBackgroundColor: withColor?.backgroundColor,
+                      hoverTextColor: withColor?.textColor,
+                    }}
+                    label={link.text}
+                    onClick={handelClick}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          {showNavigation && (
+            <div
+              className={`qui-desktop-navigation-right-navigation qui-desktop-navigation-navigation ${
+                rightNavigation ? "" : "qui-desktop-navbar-button-disable"
+              }`}
+              style={{ color: withColor?.textColor }}
+            >
+              <i className="fas fa-angle-right" onClick={handleRight}></i>
+            </div>
+          )}
         </div>
         <div className="qui-desktop-navbar-app-menu-wrapper">
           <div className="qui-desktop-navbar-name-container">
@@ -179,28 +282,7 @@ export default function DesktopNavbar(props) {
           </div>
           <div className="qui-desktop-navbar-app-menu-container">
             <AppMenu
-              menu={[
-                {
-                  icon: "fa fa-home",
-                  label: "Home",
-                  onClick: () => {},
-                },
-                {
-                  icon: "fa fa-archive",
-                  label: "Archives",
-                  onClick: () => {},
-                },
-                {
-                  icon: "divider",
-                  label: "",
-                  onClick: () => {},
-                },
-                {
-                  icon: "fa fa-power-off",
-                  label: "Logout",
-                  onClick: () => {},
-                },
-              ]}
+              menu={user?.menu}
               asVariant={asVariant}
               asFloated="inline"
               withColor={{

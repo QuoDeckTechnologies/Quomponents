@@ -98,6 +98,28 @@ Default.args = {
     first_name: "Anita",
     last_name: "Majithia",
     icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+    menu: [
+      {
+        icon: "fa fa-home",
+        label: "Home",
+        onClick: () => {},
+      },
+      {
+        icon: "fa fa-archive",
+        label: "Archives",
+        onClick: () => {},
+      },
+      {
+        icon: "divider",
+        label: "",
+        onClick: () => {},
+      },
+      {
+        icon: "fa fa-power-off",
+        label: "Logout",
+        onClick: () => {},
+      },
+    ],
   },
   asVariant: "primary",
   withColor: {
@@ -121,12 +143,65 @@ Default.parameters = {
   },
 };
 // -------------------------------------------------------------
-// Default
+// Scrollable Desktop Navbar
+// -------------------------------------------------------------
+export const ScrollableDesktopNavbar = Template.bind({});
+ScrollableDesktopNavbar.args = {
+  ...Default.args,
+  links: [
+    {
+      icon: "fas fa-home",
+      text: "home",
+    },
+    {
+      icon: "fas fa-award",
+      text: "my profile",
+    },
+    {
+      icon: "fas fa-chart-pie",
+      text: "my reports",
+    },
+    {
+      icon: "fas fa-bell",
+      text: "notification",
+    },
+    {
+      icon: "fas fa-question-circle",
+      text: "help desk",
+    },
+    {
+      icon: "fas fa-book",
+      text: "Long Text Testing",
+    },
+    {
+      icon: "fas fa-bookmark",
+      text: "bookmarks",
+    },
+    {
+      icon: "fas fa-brush",
+      text: "About",
+    },
+  ],
+};
+ScrollableDesktopNavbar.parameters = {
+  docs: {
+    source: {
+      code: `<DesktopNavbar {...${JSON.stringify(
+        ScrollableDesktopNavbar.args,
+        null,
+        2
+      )}}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Colored Desktop Navbar
 // -------------------------------------------------------------
 export const ColoredDesktopNavbar = Template.bind({});
 ColoredDesktopNavbar.args = {
   ...Default.args,
   user: {
+    ...Default.args.user,
     name: "Anita Majithia",
     icon: "fas fa-user",
   },

@@ -5,19 +5,52 @@
   background-color: black;
 }
 
-.qui .qui-desktop-navbar-icon-link-wrapper {
+.qui .qui-desktop-navbar-link-icon-wrapper {
   display: flex;
-  flex: 0.5;
+  align-items: center;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  width: 40em;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  margin: 0 0.5em;
+}
+
+.qui-desktop-navigation-navigation {
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in;
+}
+
+.qui-desktop-navbar-button-disable {
+  opacity: 0.2;
 }
 
 .qui .qui-desktop-navabr-search-bar-wrapper {
-  flex: 0.35;
-  padding: 0 2em;
+  flex: 0.5;
+  padding: 0 1em 0 0;
+}
+
+.qui-desktop-navbar-navigation-link-icon-wrapper {
+  display: flex;
+  align-items: center;
 }
 
 .qui .qui-desktop-navbar-name-container {
   display: flex;
   justify-content: flex-end;
+}
+
+.qui .qui-desktop-navbar-link-icon-container {
+  .qui-linkicon-caption {
+    white-space: nowrap;
+  }
+  .qui-linkicon-block {
+    min-width: 6em;
+  }
 }
 
 .qui .qui-desktop-navbar-app-menu-wrapper {
@@ -29,7 +62,7 @@
   .qui-desktop-navbar-user-name {
     color: #fff;
     font-size: 1.2em;
-    max-width: 10em;
+    max-width: 6em;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
