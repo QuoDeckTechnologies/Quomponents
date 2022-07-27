@@ -2,6 +2,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
+import Slider from "react-slick";
 import { getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -100,33 +101,9 @@ export default function DesktopNavbar(props) {
   // 2. Defining states
   //-------------------------------------------------------------------
   const [linkData, setLinkData] = useState(links);
-  const [showNavigation, setShowNavigation] = useState(false);
-  const [scroll, setScroll] = useState(0);
-  const [leftNavigation, setLeftNavigation] = useState(false);
-  const [rightNavigation, setRightNavigation] = useState(true);
-  const ref = useRef();
-  //-------------------------------------------------------------------
-  // 3. useEffect for component update
-  //-------------------------------------------------------------------
-  useEffect(() => {
-    if (ref.current.clientWidth < ref.current.scrollWidth) {
-      setShowNavigation(true);
-    } else setShowNavigation(false);
-  }, [setShowNavigation]);
-
-  useEffect(() => {
-    ref.current.scrollLeft = scroll;
-    if (scroll + ref.current.clientWidth >= ref.current.scrollWidth) {
-      setRightNavigation(false);
-    } else {
-      setRightNavigation(true);
-    }
-    if (scroll <= 0) {
-      setLeftNavigation(false);
-    } else {
-      setLeftNavigation(true);
-    }
-  }, [scroll, setRightNavigation]);
+  const [showNavigation] = useState(links?.length > 5);
+  const [index, setIndex] = useState(0);
+  const sliderRef = useRef();
   //-------------------------------------------------------------------
   // 4. Set the classes
   //-------------------------------------------------------------------
@@ -156,45 +133,18 @@ export default function DesktopNavbar(props) {
     });
     setLinkData([...tmp_arr]);
   };
-  //-------------------------------------------------------------------
-  // 7. Function to handle right click
-  //-------------------------------------------------------------------
-  const handleRight = () => {
-    if (
-      ref.current.scrollLeft + ref.current.clientWidth <
-      ref.current.scrollWidth
-    ) {
-      setScroll(
-        (prevState) => prevState + Math.ceil(ref.current.scrollWidth / 2)
-      );
-    }
-  };
-  //-------------------------------------------------------------------
-  // 8.  Function to handle left click
-  //-------------------------------------------------------------------
-  const handleLeft = () => {
-    if (ref.current.scrollLeft > 0) {
-      setScroll(
-        (prevState) => prevState - Math.ceil(ref.current.scrollWidth / 2)
-      );
-    }
-  };
-  //-------------------------------------------------------------------
-  // 9.  Function to handle scroll event
-  //-------------------------------------------------------------------
-  const handleScroll = (e) => {
-    if (e.target.scrollLeft === 0) {
-      setLeftNavigation(false);
-    } else {
-      setLeftNavigation(true);
-    }
-    if (e.target.scrollLeft + e.target.clientWidth >= e.target.scrollWidth) {
-      setRightNavigation(false);
-    } else {
-      setRightNavigation(true);
-    }
-  };
 
+  var settings = {
+    className: "qui-desktop-navabr-slick-slider",
+    arrows: false,
+    dots: false,
+    infinite: false,
+    centerMode: false,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    variableWidth: true,
+    draggable: false,
+  };
   // ========================= Render Function =================================
 
   return (
@@ -213,28 +163,29 @@ export default function DesktopNavbar(props) {
         <div className="qui-desktop-navabr-search-bar-wrapper">
           <SearchBar asFloated="none" isFluid={true} onClick={props.onSearch} />
         </div>
-        <div className="qui-desktop-navbar-navigation-link-icon-wrapper">
-          {showNavigation && (
-            <div
-              className={`qui-desktop-navigation-left-navigation qui-desktop-navigation-navigation ${
-                leftNavigation ? "" : "qui-desktop-navbar-button-disable"
-              }`}
-              style={{ color: withColor?.textColor }}
-              onClick={handleLeft}
-            >
-              <i className="fas fa-angle-left"></i>
-            </div>
-          )}
+        {showNavigation && (
           <div
-            className="qui-desktop-navbar-link-icon-wrapper"
-            ref={ref}
-            onScroll={handleScroll}
+            className={`qui-desktop-navigation-left-navigation qui-desktop-navigation-navigation ${
+              index !== 0 ? "" : "qui-desktop-navbar-button-disable"
+            }`}
+            style={{ color: withColor?.textColor }}
+            onClick={() => sliderRef.current?.slickPrev()}
+          >
+            <i className="fas fa-angle-left"></i>
+          </div>
+        )}
+        <div className="qui-desktop-navbar-navigation-link-icon-wrapper">
+          <Slider
+            ref={sliderRef}
+            {...settings}
+            beforeChange={(oldIndex, newIndex) => setIndex(newIndex)}
           >
             {_.map(linkData, (link, index) => {
               return (
                 <div
                   className="qui-desktop-navbar-link-icon-container"
                   key={index}
+                  style={{ display: "inline-block" }}
                 >
                   <LinkIcon
                     width=""
@@ -253,18 +204,22 @@ export default function DesktopNavbar(props) {
                 </div>
               );
             })}
-          </div>
-          {showNavigation && (
-            <div
-              className={`qui-desktop-navigation-right-navigation qui-desktop-navigation-navigation ${
-                rightNavigation ? "" : "qui-desktop-navbar-button-disable"
-              }`}
-              style={{ color: withColor?.textColor }}
-            >
-              <i className="fas fa-angle-right" onClick={handleRight}></i>
-            </div>
-          )}
+          </Slider>
         </div>
+        {showNavigation && (
+          <div
+            className={`qui-desktop-navigation-right-navigation qui-desktop-navigation-navigation ${
+              index + 3 !== links?.length
+                ? ""
+                : "qui-desktop-navbar-button-disable"
+            }`}
+            style={{ color: withColor?.textColor }}
+            onClick={() => sliderRef.current?.slickNext()}
+          >
+            <i className="fas fa-angle-right"></i>
+          </div>
+        )}
+
         <div className="qui-desktop-navbar-app-menu-wrapper">
           <div className="qui-desktop-navbar-name-container">
             <p

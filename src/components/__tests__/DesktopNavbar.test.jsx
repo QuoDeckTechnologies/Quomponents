@@ -1,10 +1,8 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from "enzyme";
-import renderer, { act } from "react-test-renderer";
-import { render } from "@testing-library/react";
-import React, { useEffect, useRef } from "react";
+import { shallow } from "enzyme";
+import React from "react";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -14,6 +12,7 @@ import { hasValid } from "./common";
 // -------------------------------------
 import DesktopNavbar from "../DesktopNavbar/DesktopNavbar.react";
 import LinkIcon from "../LinkIcon/LinkIcon.react";
+import Slider from "react-slick";
 
 describe("DesktopNavbar", () => {
   // -------------------------------------
@@ -39,10 +38,7 @@ describe("DesktopNavbar", () => {
   let component;
   beforeEach(() => {
     jest.resetAllMocks();
-    // jest.spyOn(DesktopNavbar.prototype, "getRef").mockImplementation(() => {
-    //   ref = { offsetHeight: 100 };
-    // });
-    component = mount(
+    component = shallow(
       <DesktopNavbar
         links={[
           {
@@ -110,23 +106,21 @@ describe("DesktopNavbar", () => {
     );
   });
   it("should render when clicked on LinkIcon", () => {
-    component.find(LinkIcon).at(0).simulate("click", { label: "home" });
+    component.find(LinkIcon).at(1).simulate("click", { label: "home" });
     expect(component.exists()).toBe(true);
   });
-  it("should render when clicked on LinkIcon", () => {
-    component.find('.qui-desktop-navbar-link-icon-wrapper').clientWidth(2000);
+  it("should render when clicked on left navigation button", () => {
+    component.find(".qui-desktop-navigation-left-navigation").simulate("click");
     expect(component.exists()).toBe(true);
   });
-  it("should render when scrolled to left", () => {
+  it("should render when clicked on right navigation button", () => {
     component
-      .find(".qui-desktop-navbar-link-icon-wrapper")
-      .simulate("scroll", { target: { scrollLeft: 0 } });
+      .find(".qui-desktop-navigation-right-navigation")
+      .simulate("click");
     expect(component.exists()).toBe(true);
   });
-  it("should render when scrolled to right", () => {
-    component
-      .find(".qui-desktop-navbar-link-icon-wrapper")
-      .simulate("scroll", { target: { scrollLeft: 200 } });
+  it("should render when slide is changed", () => {
+    component.find(Slider).props().beforeChange(1, 5);
     expect(component.exists()).toBe(true);
   });
 });
