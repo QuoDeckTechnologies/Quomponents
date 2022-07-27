@@ -99,11 +99,45 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<LandscapeCarousel {...${JSON.stringify(
-        Default.args,
-        null,
-        2
-      )}}/>`,
+      code: `<LandscapeCarousel 
+  content= {[
+    {
+      id: "first-slide",
+      image:
+        "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+      header: "Balloon Burst",
+      tag: "new",
+      selected: {true},
+      props: {
+        ...dataprops,
+        asVariant: "primary",
+      },
+    },
+    {
+      id: "second-slide",
+      image:
+        "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+      tag: "premium",
+      selected: {false},
+      header: "Cityscape",
+      props: {
+        ...dataprops,
+        asVariant: "secondary",
+      },
+    },
+    {
+      id: "third-slide",
+      image:
+        "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+      tag: "restricted",
+      selected: {false},
+      header: "GhostBuster",
+      props: {
+        ...dataprops,
+        asVariant: "warning",
+      },
+    },
+  ]}/>`,
     },
   },
 };
@@ -158,11 +192,42 @@ LandscapeCarouselWithoutBox.parameters = {
       story: "We can see the landscape Carousel without any header box",
     },
     source: {
-      code: `<LandscapeCarousel {...${JSON.stringify(
-        LandscapeCarouselWithoutBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<LandscapeCarousel 
+      content= {[
+        {
+          id: "first-slide",
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          tag: "new",
+          selected: {true},
+          props: {
+            ...dataprops,
+            asVariant: "primary",
+          },
+        },
+        {
+          id: "second-slide",
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          tag: "premium",
+          selected: {false},
+          props: {
+            ...dataprops,
+            asVariant: "secondary",
+          },
+        },
+        {
+          id: "third-slide",
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          tag: "restricted",
+          selected: {false},
+          props: {
+            ...dataprops,
+            asVariant: "warning",
+          },
+        },
+      ]}`,
     },
   },
 };
@@ -211,11 +276,42 @@ LandscapeCarouselWithoutTag.parameters = {
       story: "We can see the Landscape Carousel without any Tag",
     },
     source: {
-      code: `<LandscapeCarousel {...${JSON.stringify(
-        LandscapeCarouselWithoutTag.args,
-        null,
-        2
-      )}}/>`,
+      code: `<LandscapeCarousel 
+      content= {[
+        {
+          id: "first-slide",
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          header: "Balloon Burst",
+          selected: {true},
+          props: {
+            ...dataprops,
+            asVariant: "primary",
+          },
+        },
+        {
+          id: "second-slide",
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          selected: {false},
+          header: "Cityscape",
+          props: {
+            ...dataprops,
+            asVariant: "secondary",
+          },
+        },
+        {
+          id: "third-slide",
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          selected: {false},
+          header: "GhostBuster",
+          props: {
+            ...dataprops,
+            asVariant: "warning",
+          },
+        },
+      ]}`,
     },
   },
 };

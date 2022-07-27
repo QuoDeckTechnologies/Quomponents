@@ -25,7 +25,6 @@ export default {
       <div
         style={{
           width: "100%",
-          textAlign: "center",
         }}
       >
         {story()}
@@ -96,7 +95,39 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<PortraitCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<PortraitCarousel
+      content ={[
+        {
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          content: "This is HtmlCarousel, Imported from banner card.",
+          tag: "new",
+          props: {
+            ...dataprops,
+            asVariant: "primary",
+          },
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          tag: "premium",
+          content: "This is HtmlCarousel, Imported from banner card.",
+          props: {
+            ...dataprops,
+            asVariant: "secondary",
+          },
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          tag: "restricted",
+          content: "This is HtmlCarousel, Imported from banner card.",
+          props: {
+            ...dataprops,
+            asVariant: "warning",
+          },
+        },
+      ]}/>`,
     },
   },
 };
@@ -130,7 +161,36 @@ PortraitCarouselWithoutBox.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<PortraitCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<PortraitCarousel
+      content ={[
+        {
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          tag: "new",
+          props: {
+            ...dataprops,
+            asVariant: "primary",
+          },
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          tag: "premium",
+          props: {
+            ...dataprops,
+            asVariant: "secondary",
+          },
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          tag: "restricted",
+          props: {
+            ...dataprops,
+            asVariant: "warning",
+          },
+        },
+      ]}/>`,
     },
   },
 };
@@ -166,11 +226,36 @@ PortraitCarouselWithoutTag.parameters = {
       story: "We can see the Portrait Carousel without any Tag",
     },
     source: {
-      code: `<PortraitCarousel {...${JSON.stringify(
-        PortraitCarouselWithoutTag.args,
-        null,
-        2
-      )}}/>`,
+      code: `<PortraitCarousel
+      content ={[
+        {
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          content: "This is HtmlCarousel, Imported from banner card.",
+          props: {
+            ...dataprops,
+            asVariant: "primary",
+          },
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          content: "This is HtmlCarousel, Imported from banner card.",
+          props: {
+            ...dataprops,
+            asVariant: "secondary",
+          },
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          content: "This is HtmlCarousel, Imported from banner card.",
+          props: {
+            ...dataprops,
+            asVariant: "warning",
+          },
+        },
+      ]}/>`,
     },
   },
 };

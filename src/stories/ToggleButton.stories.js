@@ -71,7 +71,6 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "center",
                     fontSize: "1.25em",
                 }}
             >
@@ -116,7 +115,27 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<ToggleButton {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<ToggleButton 
+            label= "Active"
+            asFloated= "inline"
+            asVariant= "primary"
+            withColor= {{
+                backgroundColor: "#454545",
+                accentColor: "#FFAB00",
+                textColor: "",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "toggleButton",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}/>`
         },
     },
 };
@@ -140,7 +159,27 @@ TranslatedToggleButton.parameters = {
                 "Use to change the language that the text appears in.",
         },
         source: {
-            code: `<ToggleButton {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<ToggleButton 
+            label= "Active"
+            asFloated= "inline"
+            asVariant= "primary"
+            withColor= {{
+                backgroundColor: "#454545",
+                accentColor: "#FFAB00",
+                textColor: "",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "hi",
+                tgt: "toggleButton",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };

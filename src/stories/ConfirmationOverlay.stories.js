@@ -100,6 +100,7 @@ export default {
     parameters: {
         componentSubtitle: "Confirmation overlay is to be used to get confirmations before operations",
         a11y: { disable: true },
+        docs: { iframeHeight: 300 },
         // controls: { expanded: true }
     },
 };
@@ -139,7 +140,32 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<ConfirmationOverlay {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<ConfirmationOverlay 
+                    withConfirmation= {{
+                        header: "Are you sure you want to do that?",
+                        yes: "Yes",
+                        no: "No",
+                    }}
+                    asPadded= "fitted"
+                    withColor= {{
+                        backgroundColor: "",
+                        textColor: "",
+                        accentColor: "",
+                        hoverBackgroundColor: "",
+                        hoverTextColor: "",
+                    }}
+                    withAnimation= {{
+                        animation: "zoom",
+                        duration: 0.5,
+                        delay: 0,
+                    }}
+                    withTranslation= {{
+                        lang: "en",
+                        tgt: "confirmationoverlay",
+                        dictionary: dictionary,
+                    }}
+                    isDisabled= {false}
+                    isHidden= {false}/>`,
         },
     },
 };
@@ -165,6 +191,12 @@ ColoredOverlay.parameters = {
         },
         source: {
             code: `<ConfirmationOverlay 
+            withConfirmation= {{
+                header: "Are you sure you want to do that?",
+                yes: "Yes",
+                no: "No",
+            }}
+            asPadded= "fitted"
             withColor={{
                 backgroundColor: "#000000",
                 textColor: "#ffffff",
@@ -172,7 +204,18 @@ ColoredOverlay.parameters = {
                 hoverBackgroundColor: "#ffff00",
                 hoverTextColor: "#ff0000",
             }}
-            />`,
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "confirmationoverlay",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -196,7 +239,32 @@ AnimatedOverlay.parameters = {
                 "Use to animate the entry of the overlay with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<ConfirmationOverlay withAnimation={{animation: "collapse", duration: 0.5, delay: 0}}}/>`,
+            code: `<ConfirmationOverlay 
+            withConfirmation= {{
+                header: "Are you sure you want to do that?",
+                yes: "Yes",
+                no: "No",
+            }}
+            asPadded= "fitted"
+            withColor={{
+                backgroundColor: "",
+                textColor: "",
+                accentColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "confirmationoverlay",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -221,19 +289,32 @@ TranslatedOverlay.parameters = {
                 "Use to change the language that the text appears in.",
         },
         source: {
-            code: `<ConfirmationOverlay withTranslation={{lang: "hi", tgt: "confirmationoverlay", dictionary: ${JSON.stringify(
-                {
-                    hi: {
-                        loading: "बस एक मिनट...",
-                        confirmationoverlay: {
-                            header: "क्या वाकई आपकी इसे करने की इच्छा है?",
-                            yes: "हां",
-                            no: "नहीं",
-                        },
-
-                    },
-                }
-            )}}}}/>`,
+            code: `<ConfirmationOverlay 
+            withConfirmation= {{
+                header: "Are you sure you want to do that?",
+                yes: "Yes",
+                no: "No",
+            }}
+            asPadded= "fitted"
+            withColor={{
+                backgroundColor: "",
+                textColor: "",
+                accentColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "hi",
+                tgt: "confirmationoverlay",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };

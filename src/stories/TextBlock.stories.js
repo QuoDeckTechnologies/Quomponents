@@ -119,7 +119,24 @@ Default.parameters = {
                 "Use to show the component with all default props",
         },
         source: {
-            code: `<TextBlock {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<TextBlock 
+            content= "Neque porro quisquam est qui dolorem"
+            position= "left-top"
+            conversation= {true}
+            asFloated= "inline"
+            asVariant= "primary"
+            asSize= "normal"
+            asPadded= "normal"
+            withColor= {{
+                backgroundColor: "",
+                textColor: "#fff",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -144,11 +161,24 @@ WithoutConversation.parameters = {
                 "Use to show the component without the conversation toggle on. Can be used as a chat conversation.",
         },
         source: {
-            code: `<WithoutConversation {...${JSON.stringify(
-                WithoutConversation.args,
-                null,
-                2
-            )}}/>`,
+            code: `<TextBlock 
+            content= "Neque porro quisquam est qui dolorem"
+            position= "left-top"
+            conversation= {false}
+            asFloated= "inline"
+            asVariant= "primary"
+            asSize= "normal"
+            asPadded= "normal"
+            withColor= {{
+                backgroundColor: "",
+                textColor: "#fff",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}/>`,
         },
     },
 };

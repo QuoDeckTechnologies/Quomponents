@@ -60,7 +60,6 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "center",
                     fontSize: "1.25em",
                 }}
             >
@@ -118,7 +117,40 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<Sidebar {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<Sidebar 
+            logo= "https://via.placeholder.com/150"
+            content= [
+                {
+                    icon: "fa fa-home",
+                    label: "Home",
+                    title: "Click here to go to the Home Page",
+                    active: {true},
+                    onClick: () => true,
+                },
+                {
+                    icon: "fa fa-archive",
+                    label: "Archives",
+                    active: {false},
+                    onClick: () => true,
+                },
+            ]
+            width= "80px"
+            editMode= {{
+                active: {false},
+                label: "Edit Mode",
+                onClick: () => true,
+            }}
+            asFloated= "left"
+            withColor= {{
+                backgroundColor: "",
+                textColor: "",
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}/>`
         },
     },
 };

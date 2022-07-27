@@ -75,7 +75,6 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "left",
                     fontSize: "1.25em",
                 }}
             >
@@ -123,7 +122,26 @@ Default.parameters = {
                 "The feedback form will appear by switching the toggle button , in form one can enter the data in 2 different different input fields which will  be used as per requirment  , by clicking outside the input field or entering on it the entered data will be saved.",
         },
         source: {
-            code: `<FeedbackForm {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<FeedbackForm 
+            label= "Show Feedback"
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "feedbackForm",
+                dictionary: dictionary,
+            }}
+            withColor= {{
+                backgroundColor: "",
+                accentColor: "",
+                textColor: "",
+            }}
+            asVariant= "primary"
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -146,7 +164,26 @@ TranslatedFeedbackForm.parameters = {
                 "Use to change the language that the text appears in.",
         },
         source: {
-            code: `<FeedbackForm {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<FeedbackForm 
+            label= "Show Feedback"
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "hi",
+                tgt: "feedbackForm",
+                dictionary: dictionary,
+            }}
+            withColor= {{
+                backgroundColor: "",
+                accentColor: "",
+                textColor: "",
+            }}
+            asVariant= "primary"
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };

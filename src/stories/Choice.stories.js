@@ -123,7 +123,6 @@ export default {
       <div
         style={{
           width: "100%",
-          textAlign: "center",
         }}
       >
         {story()}
@@ -182,7 +181,40 @@ Default.parameters = {
       story: "Default component shows features like selected ,not selected , animation in the component",
     },
     source: {
-      code: `<Choice {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<Choice 
+      options= [{
+        correct: "checked",
+        text: "Item 1",
+      }, {
+        correct: "",
+        text: "Item 2",
+      }]
+      textSeparator= {true}
+      asEmphasis= "contained"
+      asSize= "normal"
+      asFloated= "inline"
+      asPadded= "normal"
+      withColor= {{
+        backgroundColor= "#FFBF00",
+        textColor= "#ffffff",
+        accentColor= "#333333",
+        hoverBackgroundColor= "",
+        hoverTextColor= "",
+      }}
+      withAnimation= {{
+        animation= "zoom",
+        duration= 0.5,
+        delay= 0,
+      }}
+      withTranslation= {{
+        lang= "en",
+        tgt= "options",
+        dictionary= dictionary,
+      }}
+      isDisabled= {false}
+      isFluid= {false}
+      isHidden= {false}
+      isLoading= {false}/>`,
     },
   },
 };
@@ -206,7 +238,40 @@ TranslatedChoice.parameters = {
         "Use to change the language that the text appears in. To make this work for the Choice Button, add a Choice:{Choice1,Choice2} value to the dictionary.",
     },
     source: {
-      code: `<Choice {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<Choice 
+      options= [{
+        correct: "checked",
+        text: "Item 1",
+      }, {
+        correct: "",
+        text: "Item 2",
+      }]
+      textSeparator= {true}
+      asEmphasis= "contained"
+      asSize= "normal"
+      asFloated= "inline"
+      asPadded= "normal"
+      withColor= {{
+        backgroundColor= "#FFBF00",
+        textColor= "#ffffff",
+        accentColor= "#333333",
+        hoverBackgroundColor= "",
+        hoverTextColor= "",
+      }}
+      withAnimation= {{
+        animation= "zoom",
+        duration= 0.5,
+        delay= 0,
+      }}
+      withTranslation= {{
+        lang= "hi",
+        tgt= "options",
+        dictionary= dictionary,
+      }}
+      isDisabled= {false}
+      isFluid= {false}
+      isHidden= {false}
+      isLoading= {false}/>`,
     },
   },
 };
@@ -225,7 +290,40 @@ withoutTextSeparator.parameters = {
         "can remove the textSeparator from the component",
     },
     source: {
-      code: `<Choice {...${JSON.stringify(withoutTextSeparator.args, null, 2)}}/>`,
+      code: `<Choice 
+      options= [{
+        correct: "checked",
+        text: "Item 1",
+      }, {
+        correct: "",
+        text: "Item 2",
+      }]
+      textSeparator= {false}
+      asEmphasis= "contained"
+      asSize= "normal"
+      asFloated= "inline"
+      asPadded= "normal"
+      withColor= {{
+        backgroundColor= "#FFBF00",
+        textColor= "#ffffff",
+        accentColor= "#333333",
+        hoverBackgroundColor= "",
+        hoverTextColor= "",
+      }}
+      withAnimation= {{
+        animation= "zoom",
+        duration= 0.5,
+        delay= 0,
+      }}
+      withTranslation= {{
+        lang= "en",
+        tgt= "options",
+        dictionary= dictionary,
+      }}
+      isDisabled= {false}
+      isFluid= {false}
+      isHidden= {false}
+      isLoading= {false}/>`,
     },
   },
 };

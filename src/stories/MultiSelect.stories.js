@@ -124,7 +124,6 @@ export default {
       <div
         style={{
           width: "100%",
-          textAlign: "center",
         }}
       >
         {story()}
@@ -195,7 +194,50 @@ Default.parameters = {
       story: "Default component shows features like selected ,not selected , animation in the component",
     },
     source: {
-      code: `<MultiSelect {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<MultiSelect 
+      content= [
+        {
+          name: "Primary Button",
+          isSelected: {false},
+        },
+        {
+          name: "Primary Button",
+          isSelected: {false},
+        },
+        {
+          name: "Primary Button",
+          isSelected: {false},
+        },
+        {
+          name: "Primary Button",
+          isSelected: {false},
+        },
+      ]
+      purpose= "quiz"
+      asEmphasis= "contained"
+    
+      asVariant= "warning"
+      asPadded= "normal"
+      asFloated= "none"
+    
+      withColor= {{
+        backgroundColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isDisabled= {false}
+      isHidden= {false}/>`,
     },
   },
 };
@@ -411,11 +453,50 @@ TranslatedMultiSelect.parameters = {
         "Use to change the language that the text appears in. To make this work for the MultiSelect, add a templateActions:{} value to the dictionary.",
     },
     source: {
-      code: `<MultiSelect {...${JSON.stringify(
-        TranslatedMultiSelect.args,
-        null,
-        2
-      )}}/>`,
+      code: `<MultiSelect 
+      content= [
+        {
+          name: "Primary Button",
+          isSelected: {false},
+        },
+        {
+          name: "Primary Button",
+          isSelected: {false},
+        },
+        {
+          name: "Primary Button",
+          isSelected: {false},
+        },
+        {
+          name: "Primary Button",
+          isSelected: {false},
+        },
+      ]
+      purpose= "quiz"
+      asEmphasis= "contained"
+    
+      asVariant= "warning"
+      asPadded= "normal"
+      asFloated= "none"
+    
+      withColor= {{
+        backgroundColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      withTranslation= {{
+        lang: "hi",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isDisabled= {false}
+      isHidden= {false}/>`,
     },
   },
 };

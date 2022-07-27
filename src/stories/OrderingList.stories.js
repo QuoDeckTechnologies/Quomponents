@@ -71,7 +71,6 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "center",
                     fontSize: "1.25em",
                 }}
             >
@@ -115,7 +114,21 @@ Default.parameters = {
                 "Any free fontawesome icon can be used as the OrderingList icon definition. This component is combination of the ordering Button  title component  and orderingList buuton  is clickable and ranking the title",
         },
         source: {
-            code: `<OrderingList {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<OrderingList 
+            purpose= ""
+            asVariant= "warning"
+            asFloated= "none"
+            asAligned= "center"
+            asPadded= "fitted"
+            content= ["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"]
+            withColor= {{
+                backgroundColor: "",
+                textColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            }}
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };
