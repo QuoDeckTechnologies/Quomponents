@@ -108,13 +108,13 @@ Default.parameters = {
   withColor= {{
     sliderBackgroundColor: "#3a3636a6",
   }},
-  withAnimation= {
+  withAnimation= {{
     animation: "zoom",
     duration: 0.5,
     delay: 0,
-  },
-  isDisabled= false,
-  isHidden= false, />`,
+  }},
+  isDisabled= {false},
+  isHidden= {false}, />`,
     },
   },
 };
