@@ -169,6 +169,7 @@ import RadioButton from "./components/RadioButton/RadioButton.react";
 //From NPM packages
 //---------------------------------------------------------------------
 import ButtonGroup from "@mui/material/ButtonGroup";
+import RadioGroup  from "@mui/material/RadioGroup";
 import TextField from "@mui/material/TextField";
 
 export {
@@ -342,5 +343,6 @@ export {
     //From NPM packages
     //----------------------------------------------
     ButtonGroup,
+    RadioGroup,
     TextField,
 };
