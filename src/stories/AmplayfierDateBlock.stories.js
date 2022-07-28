@@ -45,7 +45,14 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<Button {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<AmplayfierDateBlock
+          date="1 Jan 2002"
+          asVariant="primary"
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+          }}
+        />`,
     },
   },
 };
@@ -66,11 +73,14 @@ ColoredAmplayfierDateBlock.parameters = {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<ColoredAmplayfierDateBlock {...${JSON.stringify(
-        ColoredAmplayfierDateBlock.args,
-        null,
-        2
-      )}}/>`,
+      code: `<AmplayfierDateBlock
+          date="1 Jan 2002"
+          asVariant="primary"
+          withColor={{
+            backgroundColor: "#ffc857",
+            textColor: "#00509d",
+          }}
+        />`,
     },
   },
 };
@@ -88,11 +98,14 @@ CustomAmplayfierDateBlock.parameters = {
       story: "Use to provide date to component.",
     },
     source: {
-      code: `<CustomAmplayfierDateBlock {...${JSON.stringify(
-        CustomAmplayfierDateBlock.args,
-        null,
-        2
-      )}}/>`,
+      code: `<AmplayfierDateBlock
+          date="2021-05-10T12:55:18.154Z"
+          asVariant="primary"
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+          }}
+        />`,
     },
   },
 };

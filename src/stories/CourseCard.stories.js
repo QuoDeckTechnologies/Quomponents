@@ -83,7 +83,26 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<CourseCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<CourseCard
+          published={false}
+          type="standard"
+          wrapper="carnival"
+          tags={["Tag1", "Tag2"]}
+          name="Measure your sales readiness"
+          description="Take this quick profile test to check how well you are prepared for a sales job"
+          image="https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png"
+          points={200}
+          identifier="XrPmy_OAK"
+          date={{
+            start_date: "2016-01-04 10:34:23",
+            end_date: "2016-03-15 10:34:23",
+          }}
+          sequential={false}
+          asFloated="inline"
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -157,11 +176,64 @@ CourseCardWithManyTags.parameters = {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<CourseCardWithManyTags {...${JSON.stringify(
-        CourseCardWithManyTags.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CourseCard
+          published={false}
+          type="standard"
+          wrapper="carnival"
+          tags={[
+            "Article",
+            "Cataloing",
+            "Returns Management",
+            "Orders Management",
+            "Payments and Settlements",
+            "Customer",
+            "Latest",
+            "Pneumonoultramicroscopicsilicovolcanoconiosis",
+            "Tag 1",
+            "Tag 2",
+            "Tag 3",
+            "Tag 4",
+            "Tag 5",
+            "Tag 6",
+            "Tag 7",
+            "Tag 8",
+            "Tag 9",
+            "Tag 10",
+            "Tag 11",
+            "Tag 12",
+            "Tag 13",
+            "Tag 14",
+            "Tag 15",
+            "Tag 16",
+            "Tag 17",
+            "Tag 18",
+            "Tag 19",
+            "Tag 20",
+            "Tag 21",
+            "Tag 22",
+            "Tag 23",
+            "Tag 24",
+          ]}
+          name="Measure your sales readiness"
+          description="Take this quick profile test to check how well you are prepared for a sales job"
+          image="https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png"
+          points={200}
+          identifier="XrPmy_OAK"
+          date={{
+            start_date: "2016-01-04 10:34:23",
+            end_date: "2016-03-15 10:34:23",
+          }}
+          sequential={false}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          asFloated="inline"
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -202,11 +274,31 @@ PublishedCourseCard.parameters = {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<PublishedCourseCard {...${JSON.stringify(
-        PublishedCourseCard.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CourseCard
+          published={true}
+          type="standard"
+          wrapper="carnival"
+          tags={["Tag1", "Tag2"]}
+          name="Measure your sales readiness"
+          description="Take this quick profile test to check how well you are prepared for a sales job"
+          image="https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png"
+          points={200}
+          identifier="XrPmy_OAK"
+          date={{
+            start_date: "2016-01-04 10:34:23",
+            end_date: "2016-03-15 10:34:23",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          sequential={false}
+          asFloated="inline"
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -247,11 +339,31 @@ CourseCardWithExtraContent.parameters = {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<CourseCardWithExtraContent {...${JSON.stringify(
-        CourseCardWithExtraContent.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CourseCard
+          published={true}
+          type="standard"
+          wrapper="carnival"
+          tags={["Tag1", "Tag2"]}
+          name="Measure your sales readiness"
+          description="Take this quick profile test to check how well you are prepared for a sales job"
+          image="https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png"
+          points={200}
+          identifier="XrPmy_OAK"
+          date={{
+            start_date: "2016-01-04 10:34:23",
+            end_date: "2016-03-15 10:34:23",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          sequential={false}
+          asFloated="inline"
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };

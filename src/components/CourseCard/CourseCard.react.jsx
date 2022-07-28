@@ -344,7 +344,7 @@ export default function CourseCard(props) {
                 hoverBackgroundColor: "#666666",
                 hoverTextColor: "#FFBF00",
               }}
-              menuPosition="bottom-left"
+              position="bottom-left"
               onClick={props.onClick}
             />
           </div>
