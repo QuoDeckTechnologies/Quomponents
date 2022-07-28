@@ -15,8 +15,7 @@ describe("AccentLine", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
-    const args = { target: AccentLine, required: {}, translations: {} };
+    const args = { target: AccentLine, required: {} };
 
     hasValid("defaults", args);
 
@@ -33,4 +32,20 @@ describe("AccentLine", () => {
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
+    let component;
+    beforeEach(() => {
+        jest.resetAllMocks();
+        component = shallow(
+            <AccentLine
+                asVariant="warning"
+                asPadded="normal"
+                asSize="normal"
+                asFloated="none"
+                withColor={null}
+                withAnimation={null}
+                isHidden={false}
+                isFluid={false}
+            />
+        );
+    });
 });
