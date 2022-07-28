@@ -23,9 +23,7 @@
     height: 3.5em;
     cursor: pointer;
   }
-  .qui-marker-imagestyle img{
-    width: 3em;
-  }
+
   .qui-marker-wellstyle {
     padding: 10px;
     margin-top: -10px;
@@ -63,4 +61,8 @@
     margin-top: 6px;
     color: #121212;
   }
+}
+
+.qui-marker-imagestyle {
+  width: 100%;
 }

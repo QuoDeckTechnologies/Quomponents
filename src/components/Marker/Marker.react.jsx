@@ -96,7 +96,7 @@ export default function Marker(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+        if (status === "current" || status === "complete") { setAnchorEl(event.currentTarget); }
     };
     const handleClose = () => {
         setAnchorEl(null);
@@ -163,8 +163,7 @@ export default function Marker(props) {
                 {WrapperList[content?.wrapper]?.sequenceInset && (
                     <div className="qui-marker-text">{content?.inset}</div>
                 )}
-            </div>
-        </div>
+            </div></div>
     );
     let prevComplete = 0;
     let currComplete = 0;
@@ -191,9 +190,7 @@ export default function Marker(props) {
 
     return (
         <div>
-            <div>
-                {marker()}
-            </div>
+            <div>{marker()}</div>
             < Menu id="marker"
                 anchorEl={anchorEl}
                 open={open}
@@ -210,7 +207,7 @@ export default function Marker(props) {
                         maxWidth: "100%",
                         filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                         mt: 1.5,
-                        "& .MuiAvatar-root": {
+                        "& .MuiPaper-root": {
                             width: 32,
                             height: 32,
                             ml: -0.5,
@@ -240,16 +237,14 @@ export default function Marker(props) {
                     vertical: "bottom",
                 }}>
                 <MenuItem>
-                    <div className="qui-marker-imagestyle">
-                        <img
-                            src={
-                                "assets/courses/" +
-                                content?.wrapper +
-                                "/header.jpg"
-                            }
-                            alt="ok"
-                        />
-                    </div>
+                    <img className="qui-marker-imagestyle"
+                        src={
+                            "assets/courses/" +
+                            content?.wrapper +
+                            "/header.jpg"
+                        }
+                        alt="ok"
+                    />
                     <ListItemText>
                         <div className="qui-marker-wellstyle">
                             <h2 className="qui-marker-header">{content?.node?.name}</h2>
