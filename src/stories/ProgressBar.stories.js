@@ -72,12 +72,7 @@ export default {
     },
     decorators: [
         (story) => (
-            <div
-                style={{
-                    width: "100%",
-                    textAlign: "center",
-                }}
-            >
+            <div>
                 {story()}
             </div>
         ),
@@ -108,7 +103,7 @@ Default.args = {
     enableRightNavigation: false,
     asVariant: "primary",
     asPadded: "normal",
-    asFloated: "inline",
+    asFloated: "none",
     withColor: {
         accentColor: "",
         backgroundColor: "",
@@ -122,7 +117,25 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<ProgressBar {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<ProgressBar 
+            leftIcon= "fa fa-arrow-alt-circle-left"
+            rightIcon= "fa fa-arrow-alt-circle-right"
+            totalSlides= {5}
+            activeSlide= {2}
+            enableLeftNavigation= {false}
+            enableRightNavigation= {false}
+            asVariant= "primary"
+            asPadded= "normal"
+            asFloated= "inline"
+            withColor= {{
+                accentColor: "",
+                backgroundColor: "",
+                textColor: "#808080",
+                hoverTextColor: "#E82E19",
+            }}
+            isHidden= {false}
+            isDisabled= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -145,8 +158,25 @@ ColoredProgressbar.parameters = {
             story: "Use to override the standard colors of the content.",
         },
         source: {
-            code: `<Progressbar withColor={{accentColor: "#ffffff", backgroundColor: "#C98787", textColor: "#D3D3D3",
-            hoverTextColor: "#E82E19"}}}/>`,
+            code: `<ProgressBar 
+            leftIcon= "fa fa-arrow-alt-circle-left"
+            rightIcon= "fa fa-arrow-alt-circle-right"
+            totalSlides= {5}
+            activeSlide= {2}
+            enableLeftNavigation= {false}
+            enableRightNavigation= {false}
+            asVariant= "primary"
+            asPadded= "normal"
+            asFloated= "inline"
+            withColor= {{
+                accentColor: "#ffffff",
+                backgroundColor: "#C98787",
+                textColor: "#D3D3D3",
+                hoverTextColor: "#E82E19",
+            }}
+            isHidden= {false}
+            isDisabled= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -165,7 +195,25 @@ FluidProgressbar.parameters = {
         },
     },
     source: {
-        code: `<ProgressBar isFluid={true}/>`,
+        code: `<ProgressBar 
+        leftIcon= "fa fa-arrow-alt-circle-left"
+        rightIcon= "fa fa-arrow-alt-circle-right"
+        totalSlides= {5}
+        activeSlide= {2}
+        enableLeftNavigation= {false}
+        enableRightNavigation= {false}
+        asVariant= "primary"
+        asPadded= "normal"
+        asFloated= "inline"
+        withColor= {{
+            accentColor: "#ffffff",
+            backgroundColor: "#C98787",
+            textColor: "#D3D3D3",
+            hoverTextColor: "#E82E19",
+        }}
+        isHidden= {false}
+        isDisabled= {false}
+        isFluid= {true}/>`,
     },
 };
 // -------------------------------------------------------------
@@ -204,13 +252,13 @@ AllVariants.parameters = {
         },
         source: {
             code: `<ProgressBar 
-            asVariant: "primary",
-            withColor: {
+            asVariant= "primary"
+            withColor= {{
                 accentColor: "#ffffff",
                 backgroundColor: "#C98787",
                 textColor: "#D3D3D3",
                 hoverTextColor: "#E82E19",
-            } />`,
+            }}/>`,
         },
     },
 };

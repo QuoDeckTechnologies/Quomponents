@@ -117,7 +117,26 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<ShareWidget {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<ShareWidget 
+            label= "Share"
+            url= "www.quodeck.com"
+            asSize= "normal"
+            asFloated= "inline"
+            withColor= {{
+                textColor: "#000000",
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "shareWidget",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -140,11 +159,26 @@ AnimatedShareWidget.parameters = {
                 "Use to animate the entry of the ShareWidget with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<AnimatedShareWidget {...${JSON.stringify(
-                AnimatedShareWidget.args,
-                null,
-                2
-            )}}/>`,
+            code: `<ShareWidget 
+            label= "Share"
+            url= "www.quodeck.com"
+            asSize= "normal"
+            asFloated= "inline"
+            withColor= {{
+                textColor: "#000000",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "shareWidget",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -167,11 +201,26 @@ TranslatedShareWidget.parameters = {
                 "Use to change the language that the text appears in. To make this work for the ShareWidget, add a ShareWidget:{label} value to the dictionary.",
         },
         source: {
-            code: `<TranslatedShareWidget {...${JSON.stringify(
-                TranslatedShareWidget.args,
-                null,
-                2
-            )}}/>`,
+            code: `<ShareWidget 
+            label= "Share"
+            url= "www.quodeck.com"
+            asSize= "normal"
+            asFloated= "inline"
+            withColor= {{
+                textColor: "#000000",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "hi",
+                tgt: "shareWidget",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -222,11 +271,15 @@ AllVariants.parameters = {
             story: "variants are supported. Use as per purpose noted here.",
         },
         source: {
-            code: `<AllVariants {...${JSON.stringify(
-                AllVariants.args,
-                null,
-                2
-            )}}/>`,
+            code: `<ShareWidget 
+            withColor= {{
+                textColor: "#00FF00",
+            }}
+            withTranslation= {{
+                lang: "hi",
+                tgt: "shareWidget",
+                dictionary: dictionary,
+            }}/>`,
         },
     },
 };

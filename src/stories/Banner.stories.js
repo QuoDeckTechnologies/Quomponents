@@ -52,11 +52,7 @@ export default {
     },
     decorators: [
         (story) => (
-            <div
-                style={{
-                    width: "100%",
-                }}
-            >
+            <div>
                 {story()}
             </div>
         ),
@@ -108,7 +104,26 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<Banner {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<Banner 
+            content= {[
+                {
+                    header: "header",
+                    description: "description",
+                    image: "",
+                },
+            ]}
+            asVariant= "warning",
+            withColor= {{
+                backgroundColor: "",
+                accentColor: "",
+                textColor: "",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -131,11 +146,26 @@ AnimatedBanner.parameters = {
                 "Use to animate the entry of the Banner with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<Banner {...${JSON.stringify(
-                AnimatedBanner.args,
-                null,
-                2
-            )}}/>`,
+            code: `<Banner 
+            content= {[
+                {
+                    header: "header",
+                    description: "description",
+                    image: "",
+                },
+            ]}
+            asVariant= "warning",
+            withColor= {{
+                backgroundColor: "",
+                accentColor: "",
+                textColor: "",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -158,11 +188,26 @@ ColoredBanner.parameters = {
                 "Use to override the standard colors of the Banner.",
         },
         source: {
-            code: `<Banner {...${JSON.stringify(
-                ColoredBanner.args,
-                null,
-                2
-            )}}/>`,
+            code: `<Banner 
+            content= {[
+                {
+                    header: "header",
+                    description: "description",
+                    image: "",
+                },
+            ]}
+            asVariant= "warning",
+            withColor= {{
+                textColor: "#222A35",
+                backgroundColor: "#ffb703",
+                accentColor: "#ED6E6E",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}/>`,
         },
     },
 }; 

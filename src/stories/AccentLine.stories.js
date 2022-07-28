@@ -106,7 +106,22 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<AccentLine {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `< AccentLine
+            asVariant="warning"
+            asSize="normal"
+            asPadded="normal"
+            asFloated="inline"
+            withColor={{
+                accentColor: ""
+            }}
+            withAnimation={{
+                "animation": "zoom",
+                "duration": 0.5,
+                "delay": 0,
+            }}
+            isHidden={false}
+            isFluid={false}
+            />`,
         },
     },
 };
@@ -129,11 +144,22 @@ AnimatedAccentLine.parameters = {
                 "Use to animate the entry of the AccentLine with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<AnimatedAccentLine {...${JSON.stringify(
-                AnimatedAccentLine.args,
-                null,
-                2
-            )}}/>`,
+            code: `< AccentLine
+            asVariant="warning"
+            asSize="normal"
+            asPadded="normal"
+            asFloated="inline"
+            withColor={{
+                accentColor: ""
+            }}
+            withAnimation={{
+                "animation": "slideRight",
+                "duration": 0.5,
+                "delay": 0,
+            }}
+            isHidden={false}
+            isFluid={false}
+            />`,
         },
     },
 };
@@ -154,11 +180,22 @@ ColoredAccentLine.parameters = {
                 "Use to override the standard colors of the AccentLine.",
         },
         source: {
-            code: `<ColoredAccentLine {...${JSON.stringify(
-                ColoredAccentLine.args,
-                null,
-                2
-            )}}/>`,
+            code: `< AccentLine
+            asVariant="warning"
+            asSize="normal"
+            asPadded="normal"
+            asFloated="inline"
+            withColor={{
+                accentColor: "#ff1a1a"
+            }}
+            withAnimation={{
+                "animation": "slideRight",
+                "duration": 0.5,
+                "delay": 0,
+            }}
+            isHidden={false}
+            isFluid={false}
+            />`,
         },
     },
 }; 

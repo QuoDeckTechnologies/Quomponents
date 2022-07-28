@@ -140,7 +140,34 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<RewardCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<RewardCard
+            id=""
+            name="Branded Pen"
+            image=""
+            cost={500}
+            stock={{
+              left: 530,
+              total: 1000,
+            }}
+            asEmphasis="default"
+            asPadded="normal"
+            withColor={{
+              textColor: "",
+              accentColor: "#AD2929",
+              backgroundColor: "",
+            }}
+            withAnimation={{
+              animation: "collapse",
+              duration: 0.5,
+              delay: 0,
+            }}
+            withTranslation={{
+              lang: "en",
+              tgt: "rewardCard",
+              dictionary: dictionary,
+            }}
+            isHidden={false}
+            isDisabled={false} />`,
         },
     },
 };
@@ -163,11 +190,34 @@ ColoredRewardCard.parameters = {
                 "Use to override the standard colors of the RewardCard.",
         },
         source: {
-            code: `<RewardCard {...${JSON.stringify(
-                ColoredRewardCard.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RewardCard
+            id=""
+            name="Branded Pen"
+            image=""
+            cost={500}
+            stock={{
+              left: 530,
+              total: 1000,
+            }}
+            asEmphasis="default"
+            asPadded="normal"
+            withColor={{
+                textColor: "#fffff",
+                accentColor: "#ffbf00",
+                backgroundColor: "#666666",
+            }}
+            withAnimation={{
+              animation: "collapse",
+              duration: 0.5,
+              delay: 0,
+            }}
+            withTranslation={{
+              lang: "en",
+              tgt: "rewardCard",
+              dictionary: dictionary,
+            }}
+            isHidden={false}
+            isDisabled={false} />`,
         },
     },
 };
@@ -190,11 +240,34 @@ AnimatedRewardCard.parameters = {
                 "Use to animate the entry of the RewardCard with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<RewardCard {...${JSON.stringify(
-                AnimatedRewardCard.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RewardCard
+            id=""
+            name="Branded Pen"
+            image=""
+            cost={500}
+            stock={{
+              left: 530,
+              total: 1000,
+            }}
+            asEmphasis="default"
+            asPadded="normal"
+            withColor={{
+              textColor: "",
+              accentColor: "#AD2929",
+              backgroundColor: "",
+            }}
+            withAnimation={{
+              animation: "slideRight",
+              duration: 0.5,
+              delay: 0,
+            }}
+            withTranslation={{
+              lang: "en",
+              tgt: "rewardCard",
+              dictionary: dictionary,
+            }}
+            isHidden={false}
+            isDisabled={false} />`,
         },
     },
 };
@@ -217,11 +290,34 @@ TranslatedRewardCard.parameters = {
                 "Use to change the language that the text appears in. To make this work for the RewardCard, add a RewardCard: { left } value to the dictionary.",
         },
         source: {
-            code: `<RewardCard {...${JSON.stringify(
-                TranslatedRewardCard.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RewardCard
+            id=""
+            name="Branded Pen"
+            image=""
+            cost={500}
+            stock={{
+              left: 530,
+              total: 1000,
+            }}
+            asEmphasis="default"
+            asPadded="normal"
+            withColor={{
+              textColor: "",
+              accentColor: "#AD2929",
+              backgroundColor: "",
+            }}
+            withAnimation={{
+              animation: "collapse",
+              duration: 0.5,
+              delay: 0,
+            }}
+            withTranslation={{
+              lang: "hi",
+              tgt: "rewardCard",
+              dictionary: dictionary,
+            }}
+            isHidden={false}
+            isDisabled={false} />`,
         },
     },
 };
@@ -245,11 +341,34 @@ SoldOutRewardCard.parameters = {
                 "Use to override the standard colors of the RewardCard.",
         },
         source: {
-            code: `<RewardCard {...${JSON.stringify(
-                SoldOutRewardCard.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RewardCard
+            id= ""
+            name= "Branded Pen"
+            image= "image.png"
+            cost= {500}
+            stock= {{
+                left: 530,
+                total: 1000
+            }}
+            asEmphasis= "soldout"
+            asPadded= "normal"
+            withColor= {{
+                textColor: "#fffff",
+                accentColor: "#AD2929",
+                backgroundColor: "#E8E8E8",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "rewardCard",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -278,11 +397,34 @@ TranslatedSoldOutRewardCard.parameters = {
                 "Use to change the language that the text appears in. To make this work for the RewardCard, add a RewardCard: { soldout, left } value to the dictionary.",
         },
         source: {
-            code: `<RewardCard {...${JSON.stringify(
-                TranslatedSoldOutRewardCard.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RewardCard
+            id= ""
+            name= "Branded Pen"
+            image= "image.png"
+            cost= {500}
+            stock= {{
+                left: 530,
+                total: 1000
+            }}
+            asEmphasis= "soldout"
+            asPadded= "normal"
+            withColor= {{
+                textColor: "#fffff",
+                accentColor: "#AD2929",
+                backgroundColor: "#E8E8E8",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "hi",
+                tgt: "rewardCard",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -301,11 +443,34 @@ BlankRewardCard.parameters = {
                 "Use to override the standard colors of the RewardCard.",
         },
         source: {
-            code: `<RewardCard {...${JSON.stringify(
-                BlankRewardCard.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RewardCard
+            id= ""
+            name= "Branded Pen"
+            image= "image.png"
+            cost= {500}
+            stock= {{
+                left: 530,
+                total: 1000
+            }}
+            asEmphasis= "blank"
+            asPadded= "normal"
+            withColor= {{
+                textColor: "",
+                accentColor: "#AD2929",
+                backgroundColor: "",
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "rewardCard",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -457,19 +622,19 @@ MultipleRewardCard.parameters = {
         },
         source: {
             code: `<RewardCard 
-            name: "Gift Voucher 5000",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi57-E_KehoAoGN1-WQhwvD1C4ZQ_S1nun60I2wF4YIA&s",
-            cost: 2500,
-            stock: {
+            name= "Gift Voucher 5000"
+            image= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi57-E_KehoAoGN1-WQhwvD1C4ZQ_S1nun60I2wF4YIA&s"
+            cost= {2500}
+            stock= {{
                 left: 0,
                 total: 1000
-            },
-            asEmphasis: "soldout",
-            withColor: {
+            }}
+            asEmphasis= "soldout"
+            withColor= {{
                 textColor: "#fffff",
                 accentColor: "#AD2929",
                 backgroundColor: "#E8E8E8",
-            },
+            }}
             />`,
         },
     },

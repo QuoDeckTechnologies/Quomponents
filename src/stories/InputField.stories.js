@@ -92,11 +92,7 @@ export default {
   },
   decorators: [
     (story) => (
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
+      <div>
         {story()}
       </div>
     ),
@@ -144,7 +140,33 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<InputField {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<InputField
+      label="Input Name"
+      value="Please input your text here"
+      placeholder="Options"
+      maxLength={300}
+      type="text"
+      isMultiline={false}
+      name="testing_id"
+      asEmphasis="filled"
+      withColor={{
+        textColor: "#666666",
+        accentColor: "#ffab00",
+        backgroundColo: "#ffab000d",
+        hoverTextColor: ""
+      }}
+      withAnimation={{
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0
+      }}
+      withTranslation={{
+        "lang": "en",
+        "tgt": "inputField",
+        "dictionary": "dictionary"
+      }}
+      isHidden={false}
+      isDisabled={false} />`,
     },
   },
 };
@@ -163,11 +185,33 @@ charLimitedField.parameters = {
         "Use to show the charLimited editing state for the InputField.",
     },
     source: {
-      code: `<charLimitedField {...${JSON.stringify(
-        charLimitedField.args,
-        null,
-        2
-      )}}/>`,
+      code: `<InputField
+      label="Input Name"
+      value="Please input your text here"
+      placeholder="Options"
+      maxLength={300}
+      type="text"
+      isMultiline={false}
+      name="testing_id"
+      asEmphasis="charLimited"
+      withColor={{
+        textColor: "#666666",
+        accentColor: "#ffab00",
+        backgroundColo: "#ffab000d",
+        hoverTextColor: ""
+      }}
+      withAnimation={{
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0
+      }}
+      withTranslation={{
+        "lang": "en",
+        "tgt": "inputField",
+        "dictionary": "dictionary"
+      }}
+      isHidden={false}
+      isDisabled={false} />`,
     },
   },
 };
@@ -191,11 +235,33 @@ listInputField.parameters = {
         "Use to show the listInput editing state for the InputField.",
     },
     source: {
-      code: `<listInputField {...${JSON.stringify(
-        listInputField.args,
-        null,
-        2
-      )}}/>`,
+      code: `<InputField
+      label="Input Name"
+      value=""
+      placeholder="Options"
+      maxLength={300}
+      type="text"
+      isMultiline={false}
+      name="testing_id"
+      asEmphasis="listInput"
+      withColor={{
+        textColor: "#666666",
+        accentColor: "#ffab00",
+        backgroundColo: "#ffab000d",
+        hoverTextColor: ""
+      }}
+      withAnimation={{
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0
+      }}
+      withTranslation={{
+        "lang": "en",
+        "tgt": "inputField",
+        "dictionary": "dictionary"
+      }}
+      isHidden={false}
+      isDisabled={false} />`,
     },
   },
 };
@@ -215,11 +281,33 @@ ShortFieldField.parameters = {
         "Use to show the shortField editing state for the InputField.",
     },
     source: {
-      code: `<ShortFieldField {...${JSON.stringify(
-        ShortFieldField.args,
-        null,
-        2
-      )}}/>`,
+      code: `<InputField
+      label="Input Name"
+      value="0"
+      placeholder="Options"
+      maxLength={300}
+      type="text"
+      isMultiline={false}
+      name="testing_id"
+      asEmphasis="shortField"
+      withColor={{
+        textColor: "#666666",
+        accentColor: "#ffab00",
+        backgroundColo: "#ffab000d",
+        hoverTextColor: ""
+      }}
+      withAnimation={{
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0
+      }}
+      withTranslation={{
+        "lang": "en",
+        "tgt": "inputField",
+        "dictionary": "dictionary"
+      }}
+      isHidden={false}
+      isDisabled={false} />`,
     },
   },
 };
@@ -242,11 +330,33 @@ TranslatedInputField.parameters = {
         "Use to change the language that the text appears in InputField.",
     },
     source: {
-      code: `<InputField {...${JSON.stringify(
-        TranslatedInputField.args,
-        null,
-        2
-      )}}/>`,
+      code: `<InputField
+      label="Input Name"
+      value="Please input your text here"
+      placeholder="Options"
+      maxLength={300}
+      type="text"
+      isMultiline={false}
+      name="testing_id"
+      asEmphasis="filled"
+      withColor={{
+        textColor: "#666666",
+        accentColor: "#ffab00",
+        backgroundColo: "#ffab000d",
+        hoverTextColor: ""
+      }}
+      withAnimation={{
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0
+      }}
+      withTranslation={{
+        "lang": "hi",
+        "tgt": "inputField",
+        "dictionary": "dictionary"
+      }}
+      isHidden={false}
+      isDisabled={false} />`,
     },
   },
 };
@@ -270,11 +380,33 @@ TranslatedCharLimited.parameters = {
         "Use to change the language that the text appears in charLimited InputField.",
     },
     source: {
-      code: `<InputField {...${JSON.stringify(
-        TranslatedCharLimited.args,
-        null,
-        2
-      )}}/>`,
+      code: `<InputField
+      label="Input Name"
+      value="Please input your text here"
+      placeholder="Options"
+      maxLength={300}
+      type="text"
+      isMultiline={false}
+      name="testing_id"
+      asEmphasis="charLimited"
+      withColor={{
+        textColor: "#666666",
+        accentColor: "#ffab00",
+        backgroundColo: "#ffab000d",
+        hoverTextColor: ""
+      }}
+      withAnimation={{
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0
+      }}
+      withTranslation={{
+        "lang": "hi",
+        "tgt": "inputField",
+        "dictionary": "dictionary"
+      }}
+      isHidden={false}
+      isDisabled={false} />`,
     },
   },
 };
@@ -284,11 +416,8 @@ TranslatedCharLimited.parameters = {
 export const TranslatedListInput = Template.bind({});
 TranslatedListInput.args = {
   ...Default.args,
-  content: {
-    value: "",
-    placeholder: "Options",
-    maxLength: 300,
-  },
+  label: "",
+  value: "",
   asEmphasis: "listInput",
   withTranslation: {
     lang: "hi",
@@ -303,11 +432,33 @@ TranslatedListInput.parameters = {
         "Use to change the language that the text appears in listInput InputField.",
     },
     source: {
-      code: `<InputField {...${JSON.stringify(
-        TranslatedListInput.args,
-        null,
-        2
-      )}}/>`,
-    },
+      code: `<InputField
+      label="Input Name"
+      value="Please input your text here"
+      placeholder="Options"
+      maxLength={300}
+      type="text"
+      isMultiline={false}
+      name="testing_id"
+      asEmphasis="listInput"
+      withColor={{
+        textColor: "#666666",
+        accentColor: "#ffab00",
+        backgroundColo: "#ffab000d",
+        hoverTextColor: ""
+      }}
+      withAnimation={{
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0
+      }}
+      withTranslation={{
+        "lang": "hi",
+        "tgt": "inputField",
+        "dictionary": "dictionary"
+      }}
+      isHidden={false}
+      isDisabled={false} />`,
+    }
   },
 };

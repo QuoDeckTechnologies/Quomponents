@@ -103,7 +103,22 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<Tag {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<Tag 
+            content= "Tag"
+            asVariant= "warning"
+            asSize= "normal"
+            asFloated= "inline"
+            asPadded= "normal"
+            withColor= {{
+                textColor: "",
+                backgroundColor: "",
+            }}
+            withAnimation: {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -125,11 +140,22 @@ ColoredTag.parameters = {
                 "Use to override the standard colors of the Tag.",
         },
         source: {
-            code: `<ColoredTag {...${JSON.stringify(
-                ColoredTag.args,
-                null,
-                2
-            )}}/>`,
+            code: `<Tag 
+            content= "Tag"
+            asVariant= "warning"
+            asSize= "normal"
+            asFloated= "inline"
+            asPadded= "normal"
+            withColor= {{
+                backgroundColor: "#666666",
+                textColor: "#FFAB00",
+            }}
+            withAnimation: {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -152,11 +178,22 @@ AnimatedTag.parameters = {
                 "Use to animate the entry of the Tag with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<AnimatedTag {...${JSON.stringify(
-                AnimatedTag.args,
-                null,
-                2
-            )}}/>`,
+            code: `<Tag 
+            content= "Tag"
+            asVariant= "warning"
+            asSize= "normal"
+            asFloated= "inline"
+            asPadded= "normal"
+            withColor= {{
+                backgroundColor: "#666666",
+                textColor: "#FFAB00",
+            }}
+            withAnimation: {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -216,7 +253,10 @@ DifferentSizeTag.parameters = {
             story: "Variants and Size are supported. Use as per purpose noted here.",
         },
         source: {
-            code: `<Tag content: "massive tag", asSize: "massive", asVariant: "warning"/>`,
+            code: `<Tag 
+                content = "massive tag"
+                asSize = "massive" 
+                asVariant = "warning"/>`,
         },
     },
 };

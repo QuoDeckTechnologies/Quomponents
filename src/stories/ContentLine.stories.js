@@ -62,13 +62,7 @@ export default {
     },
     decorators: [
         (story) => (
-            <div
-                style={{
-                    width: "100%",
-                    textAlign: "center",
-                    fontSize: "1.25em",
-                }}
-            >
+            <div>
                 {story()}
             </div>
         ),
@@ -76,7 +70,7 @@ export default {
     parameters: {
         componentSubtitle: "Displays a DeckLine if we pass icon and Displays TopicLine if we do not pass icon",
         a11y: { disable: true },
-        docs: { iframeHeight: 500 },
+        docs: { iframeHeight: 300 },
     },
 };
 // -------------------------------------------------------------
@@ -104,7 +98,22 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<ContentLine {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<ContentLine 
+            name= "What is Sales Pitching?"
+            isActive= {false}
+            asPadded= "fitted"
+            withColor= {{
+                backgroundColor: "",
+                textColor: "",
+            }}
+            withIcon= {{ icon: "fas fa-book" }}
+            withAnimation={{
+                animation: "slideDown",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -126,7 +135,22 @@ ActiveContentLine.parameters = {
             story: "Use to show Active ContentLine.",
         },
         source: {
-            code: `<ContentLine {...${JSON.stringify(ActiveContentLine.args, null, 2)}}/>`,
+            code: `<ContentLine 
+            name= "What is Sales Pitching?"
+            isActive= {true}
+            asPadded= "fitted"
+            withColor= {{
+                backgroundColor: "#ED6E6E",
+                textColor: "#FFFFFF",
+            }}
+            withIcon= {{ icon: "fas fa-book" }}
+            withAnimation={{
+                animation: "slideDown",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -144,7 +168,22 @@ DisabledContentLine.parameters = {
             story: "Use to show Disabled ContentLine.",
         },
         source: {
-            code: `<ContentLine {...${JSON.stringify(DisabledContentLine.args, null, 2)}}/>`,
+            code: `<ContentLine 
+            name= "What is Sales Pitching?"
+            isActive= {true}
+            asPadded= "fitted"
+            withColor= {{
+                backgroundColor: "#ED6E6E",
+                textColor: "#FFFFFF",
+            }}
+            withIcon= {{ icon: "fas fa-book" }}
+            withAnimation={{
+                animation: "slideDown",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}
+            isDisabled= {true}/>`,
         },
     },
 };
@@ -230,4 +269,28 @@ export const MultipleContentLine = (args) => {
             }
         </div>
     );
+};
+MultipleContentLine.parameters = {
+    docs: {
+        description: {
+            story: "Use to show Multiple ContentLine",
+        },
+        source: {
+            code: `<ContentLine
+            key={1}
+            name="name
+            withIcon= {{
+                name: "What is Topic6",
+                icon: "fas fa-book"
+            }}
+            isActive={true}
+            isDisabled={true}
+            withAnimation={{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+        />`,
+        },
+    },
 };

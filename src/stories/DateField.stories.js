@@ -136,7 +136,28 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<DateField {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<DateField 
+            label= "Start Date"
+            asSize= "normal"
+            asFloated= "none"
+            withColor= {{
+                backgroundColor: "#aaaaaa",
+                accentColor: "",
+                textColor: "#666666",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "dateField",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -159,11 +180,28 @@ ColoredDateField.parameters = {
                 "Use to override the standard colors of the DateField.",
         },
         source: {
-            code: `<ColoredDateField {...${JSON.stringify(
-                ColoredDateField.args,
-                null,
-                2
-            )}}/>`,
+            code: `<DateField 
+            label= "Start Date"
+            asSize= "normal"
+            asFloated= "none"
+            withColor= {{
+                backgroundColor: "#666666",
+                textColor: "#ffbf00",
+                accentColor: "#ffbf00",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "dateField",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -186,11 +224,28 @@ AnimatedDateField.parameters = {
                 "Use to animate the entry of the DateField with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<AnimatedDateField {...${JSON.stringify(
-                AnimatedDateField.args,
-                null,
-                2
-            )}}/>`,
+            code: `<DateField 
+            label= "Start Date"
+            asSize= "normal"
+            asFloated= "none"
+            withColor= {{
+                backgroundColor: "#aaaaaa",
+                accentColor: "",
+                textColor: "#666666",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "dateField",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -213,11 +268,28 @@ TranslatedDateField.parameters = {
                 "Use to change the language that the text appears in DateField.",
         },
         source: {
-            code: `<DateField {...${JSON.stringify(
-                TranslatedDateField.args,
-                null,
-                2
-            )}}/>`,
+            code: `<DateField 
+            label= "Start Date"
+            asSize= "normal"
+            asFloated= "none"
+            withColor= {{
+                backgroundColor: "#aaaaaa",
+                accentColor: "",
+                textColor: "#666666",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "hi",
+                tgt: "dateField",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}
+            isFluid= {false}/>`,
         },
     },
 };

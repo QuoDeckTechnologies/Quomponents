@@ -68,12 +68,7 @@ export default {
     },
     decorators: [
         (story) => (
-            <div
-                style={{
-                    width: "100%",
-                    textAlign: "center",
-                }}
-            >
+            <div>
                 {story()}
             </div>
         ),
@@ -112,7 +107,25 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<OTPFields {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<OTPFields 
+            numInputs= {5}
+            asSize= "normal"
+            asFloated= "inline"
+            withColor= {{
+                textColor: "",
+                accentColor: "#8c8c898c",
+                backgroundColor: "#4545453b",
+                hoverTextColor: "#AAAAAA",
+                hoverBackgroundColor: "#FFBF00",
+            }}
+            withAnimation={ {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}
+            isDisabled= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -135,11 +148,25 @@ AnimatedOTPFields.parameters = {
                 "Use to animate the entry of the OTPFields with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<AnimatedOTPFields {...${JSON.stringify(
-                AnimatedOTPFields.args,
-                null,
-                2
-            )}}/>`,
+            code: `<OTPFields 
+            numInputs= {5}
+            asSize= "normal"
+            asFloated= "inline"
+            withColor= {{
+                textColor: "",
+                accentColor: "#8c8c898c",
+                backgroundColor: "#4545453b",
+                hoverTextColor: "#AAAAAA",
+                hoverBackgroundColor: "#FFBF00",
+            }}
+            withAnimation={ {
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}
+            isDisabled= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -164,11 +191,25 @@ ColoredOTPFields.parameters = {
                 "Use to override the standard colors of the OTPFields.",
         },
         source: {
-            code: `<ColoredOTPFields {...${JSON.stringify(
-                ColoredOTPFields.args,
-                null,
-                2
-            )}}/>`,
+            code: `<OTPFields 
+            numInputs= {5}
+            asSize= "normal"
+            asFloated= "inline"
+            withColor= {{
+                textColor: "#AD2929",
+                accentColor: "#AAAAAA",
+                backgroundColor: "#FFBF00",
+                hoverTextColor: "#8c8c898c",
+                hoverBackgroundColor: "#4545453b",
+            }}
+            withAnimation={ {
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}
+            isDisabled= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -219,7 +260,9 @@ DifferentSizeOTPFields.parameters = {
             story: "Size are supported. Use as per purpose noted here.",
         },
         source: {
-            code: `<OTPFields asSize: "small"/>`,
+            code: `<OTPFields 
+            asFloated= "inline" 
+            asSize= "small"/>`,
         },
     },
 };

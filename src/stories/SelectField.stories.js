@@ -84,7 +84,7 @@ export default {
         componentSubtitle:
             "Default SelectField for general purpose use",
         a11y: { disable: true },
-        docs: { iframeHeight: 400 },
+        docs: { iframeHeight: 300 },
     },
 };
 // -------------------------------------------------------------
@@ -117,7 +117,28 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<SelectField {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<SelectField
+            label= "Course Category"
+            options= {["Sales Training", "Tech Training", "HR Training", "Graphic Training"]}
+            placeholder= "Choose..."
+            asPadded= "normal"
+            withColor= {{
+                backgroundColor: "#aaaaaa",
+                accentColor: "",
+                textColor: "#666666",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "selectField",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            onClick={() => {}}/>`,
         },
     },
 };
@@ -140,11 +161,28 @@ ColoredSelectField.parameters = {
                 "Use to override the standard colors of the SelectField.",
         },
         source: {
-            code: `<ColoredSelectField {...${JSON.stringify(
-                ColoredSelectField.args,
-                null,
-                2
-            )}}/>`,
+            code: `<SelectField
+            label= "Course Category"
+            options= {["Sales Training", "Tech Training", "HR Training", "Graphic Training"]}
+            placeholder= "Choose..."
+            asPadded= "normal"
+            withColor= {{
+                backgroundColor: "#666666",
+                textColor: "#ffbf00",
+                accentColor: "#ffbf00",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "selectField",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            onClick={() => {}}/>`,
         },
     },
 };
@@ -167,11 +205,28 @@ AnimatedSelectField.parameters = {
                 "Use to animate the entry of the SelectField with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<AnimatedSelectField {...${JSON.stringify(
-                AnimatedSelectField.args,
-                null,
-                2
-            )}}/>`,
+            code: `<SelectField
+            label= "Course Category"
+            options= {["Sales Training", "Tech Training", "HR Training", "Graphic Training"]}
+            placeholder= "Choose..."
+            asPadded= "normal"
+            withColor= {{
+                backgroundColor: "#aaaaaa",
+                accentColor: "",
+                textColor: "#666666",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "selectField",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            onClick={() => {}}/>`,
         },
     },
 };
@@ -194,11 +249,28 @@ TranslatedSelectField.parameters = {
                 "Use to change the language that the text appears in SelectField.",
         },
         source: {
-            code: `<SelectField {...${JSON.stringify(
-                TranslatedSelectField.args,
-                null,
-                2
-            )}}/>`,
+            code: `<SelectField
+            label= "Course Category"
+            options= {["Sales Training", "Tech Training", "HR Training", "Graphic Training"]}
+            placeholder= "Choose..."
+            asPadded= "normal"
+            withColor= {{
+                backgroundColor: "#aaaaaa",
+                accentColor: "",
+                textColor: "#666666",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "hi",
+                tgt: "selectField",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            onClick={() => {}}/>`,
         },
     },
 };

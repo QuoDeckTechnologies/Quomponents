@@ -115,7 +115,7 @@ export default {
     parameters: {
         componentSubtitle: "Displays a RedeemCard with offer details and display status as 'Pending','InProgress','Completed'",
         a11y: { disable: true },
-        docs: { iframeHeight: 570 }
+        docs: { iframeHeight: 400 }
     },
 };
 // -------------------------------------------------------------
@@ -159,7 +159,38 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<RedeemCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<RedeemCard 
+            id= ""
+            name= "Yamaha FZ16 Bike"
+            image= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU"
+            cost= {500}
+            stock= {{
+                left: 500,
+                total: 1000
+            }}
+            description= "A beast on the road, this motorbike commands respect."
+            status= "Pending"
+            asPadded= "normal"
+            withColor= {{
+                accentColor: "#AD2929",
+                textColor: "#FFFFFF",
+                backgroundColor: "#222A35",
+                hoverTextColor: "",
+                hoverBackgroundColor: "",
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "redeemCard",
+                dictionary: dictionary,
+            }}
+            asFloated= "inline"
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -201,11 +232,38 @@ ColoredRedeemCard.args = {
 ColoredRedeemCard.parameters = {
     docs: {
         source: {
-            code: `<RedeemCard {...${JSON.stringify(
-                ColoredRedeemCard.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RedeemCard 
+            id= ""
+            name= "Yamaha FZ16 Bike"
+            image= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU"
+            cost= {600}
+            stock= {{
+                left: 1,
+                total: 1000
+            }}
+            description= "A beast on the road, this motorbike commands respect."
+            status= "Pending"
+            asPadded= "normal"
+            withColor= {{
+                accentColor: "#AD2929",
+                textColor: "#000",
+                backgroundColor: "#FFE77AFF",
+                hoverTextColor: "",
+                hoverBackgroundColor: "",
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "redeemCard",
+                dictionary: dictionary,
+            }}
+            asFloated= "inline"
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -340,11 +398,38 @@ TranslatedRedeemCard.parameters = {
                 "Use to change the language that the text appears in. To make this work for the RedeemCard, add a  RedeemCard: {button, inprogress, completed, left } value to the dictionary.",
         },
         source: {
-            code: `<RedeemCard {...${JSON.stringify(
-                TranslatedRedeemCard.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RedeemCard 
+            id= ""
+            name= "Yamaha FZ16 Bike"
+            image= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU"
+            cost= {500}
+            stock= {{
+                left: 500,
+                total: 1000
+            }}
+            description= "A beast on the road, this motorbike commands respect."
+            status= "Pending"
+            asPadded= "normal"
+            withColor= {{
+                accentColor: "#AD2929",
+                textColor: "#FFFFFF",
+                backgroundColor: "#222A35",
+                hoverTextColor: "",
+                hoverBackgroundColor: "",
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "hi",
+                tgt: "redeemCard",
+                dictionary: dictionary,
+            }}
+            asFloated= "inline"
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -367,11 +452,38 @@ AnimatedRedeemCard.parameters = {
                 "Use to animate the entry of the RedeemCard with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<RedeemCard {...${JSON.stringify(
-                AnimatedRedeemCard.args,
-                null,
-                2
-            )}}/>`,
+            code: `<RedeemCard 
+            id= ""
+            name= "Yamaha FZ16 Bike"
+            image= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU"
+            cost= {500}
+            stock= {{
+                left: 500,
+                total: 1000
+            }}
+            description= "A beast on the road, this motorbike commands respect."
+            status= "Pending"
+            asPadded= "normal"
+            withColor= {{
+                accentColor: "#AD2929",
+                textColor: "#FFFFFF",
+                backgroundColor: "#222A35",
+                hoverTextColor: "",
+                hoverBackgroundColor: "",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "redeemCard",
+                dictionary: dictionary,
+            }}
+            asFloated= "inline"
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };

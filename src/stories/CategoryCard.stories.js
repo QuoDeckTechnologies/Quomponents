@@ -121,7 +121,34 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<CategoryCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<CategoryCard 
+            content= {{
+                id: "categorycard",
+                name: "Regulatory",
+                image: { id: "categorycard-image", extention: "" },
+                viewedPercentage: 80,
+            }}
+            imageLibrary= {[
+                {
+                    id: "categorycard-image",
+                    image:"img1.png"
+                }
+            ]}
+            asSize= "normal"
+            asFloated= "inline"
+            withColor= {{
+                textColor: "",
+                backgroundColor: "",
+                accentColor: "#FFBF00",
+                hoverBackgroundColor: "",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -144,11 +171,34 @@ AnimatedCategoryCard.parameters = {
                 "Use to animate the entry of the CategoryCard with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<AnimatedCategoryCard {...${JSON.stringify(
-                AnimatedCategoryCard.args,
-                null,
-                2
-            )}}/>`,
+            code: `<CategoryCard 
+            content= {{
+                id: "categorycard",
+                name: "Regulatory",
+                image: { id: "categorycard-image", extention: "" },
+                viewedPercentage: 80,
+            }}
+            imageLibrary= {[
+                {
+                    id: "categorycard-image",
+                    image:"img1.png"
+                }
+            ]}
+            asSize= "normal"
+            asFloated= "inline"
+            withColor= {{
+                textColor: "",
+                backgroundColor: "",
+                accentColor: "#FFBF00",
+                hoverBackgroundColor: "",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -172,11 +222,34 @@ ColoredCategoryCard.parameters = {
                 "Use to override the standard colors of the CategoryCard.",
         },
         source: {
-            code: `<ColoredCategoryCard {...${JSON.stringify(
-                ColoredCategoryCard.args,
-                null,
-                2
-            )}}/>`,
+            code: `<CategoryCard 
+            content= {{
+                id: "categorycard",
+                name: "Regulatory",
+                image: { id: "categorycard-image", extention: "" },
+                viewedPercentage: 80,
+            }}
+            imageLibrary= {[
+                {
+                    id: "categorycard-image",
+                    image:"img1.png"
+                }
+            ]}
+            asSize= "normal"
+            asFloated= "inline"
+            withColor= {{
+                textColor: "#121212",
+                backgroundColor: "#AAAAAA",
+                accentColor: "#AD2929",
+                hoverBackgroundColor: "#FFBF00",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -227,7 +300,9 @@ DifferentSizeCategoryCard.parameters = {
             story: "Size are supported. Use as per purpose noted here.",
         },
         source: {
-            code: `<CategoryCard asSize: "massive"/>`,
+            code: `<CategoryCard 
+            asFloated= "inline" 
+            asSize: "massive"/>`,
         },
     },
 };

@@ -48,11 +48,7 @@ export default {
   },
   decorators: [
     (story) => (
-      <div
-        style={{
-          width: "100%",
-        }}
-      >
+      <div>
         {story()}
       </div>
     ),
@@ -130,7 +126,42 @@ Default.parameters = {
         "Displays a basic image and title for general-purpose use or change it for content image and title by giving a link of image and title in content prop",
     },
     source: {
-      code: `<IconListItem {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<IconListItem
+        asEmphasis="list"
+        content={[
+          {
+            image: {
+              extention: '',
+              id: 'iconlist-image'
+            },
+            text: 'text one'
+          },
+          {
+            image: {
+              extention: '',
+              id: 'iconlistitem'
+            },
+            text: 'text two'
+          }
+        ]}
+        imageLibrary={[
+          {
+            id: 'iconlist-image',
+            image: 'img2.png'
+          },
+          {
+            id: 'iconlistitem',
+            image: 'img2.png'
+          }
+        ]}
+        withAnimation={{
+          animation: 'zoom',
+          delay: 0,
+          duration: 0.5
+        }}
+        withColor={{
+          textColor: '#666666'
+        }}/>`,
     },
   },
 };
@@ -149,11 +180,44 @@ IconListItemAsList.parameters = {
         "Use to show the list state for the IconListItem.",
     },
     source: {
-      code: `<IconListItemAsList {...${JSON.stringify(
-        IconListItemAsList.args,
-        null,
-        2
-      )}}/>`,
+      code: `
+      <IconListItem
+        asEmphasis="list"
+        content={[
+          {
+            image: {
+              extention: '',
+              id: 'iconlist-image'
+            },
+            text: 'text one'
+          },
+          {
+            image: {
+              extention: '',
+              id: 'iconlistitem'
+            },
+            text: 'text two'
+          }
+        ]}
+        imageLibrary={[
+          {
+            id: 'iconlist-image',
+            image: 'img2.png'
+          },
+          {
+            id: 'iconlistitem',
+            image: 'img2.png'
+          }
+        ]}
+        withAnimation={{
+          animation: 'zoom',
+          delay: 0,
+          duration: 0.5
+        }}
+        withColor={{
+          textColor: '#666666'
+        }}
+      />`,
     },
   },
 };

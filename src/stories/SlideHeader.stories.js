@@ -92,7 +92,19 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<SlideHeader {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<SlideHeader 
+      title= "Neque porro quisquam est qui dolorem"
+      subtitle= "Lorem ipsum dolor sit amet consectetur adipiscing elit curabitur ipsum sem"
+      asVariant= "primary"
+      asFloated= "inline"
+      asPadded= "normal"
+      asAligned= "center"
+      withColor= {{
+        accentColor: "#AD2929",
+        textColor: "#ffffff",
+        backgroundColor: "#ad292980",
+      }}
+      isHidden= {false}/>`,
     },
   },
 };
@@ -115,11 +127,19 @@ ColoredSlideHeader.parameters = {
         "Use to override the standard colors of the SliderHeader.",
     },
     source: {
-      code: `<ColoredSlideHeader {...${JSON.stringify(
-        ColoredSlideHeader.args,
-        null,
-        2
-      )}}/>`,
+      code: `<SlideHeader 
+      title= "Neque porro quisquam est qui dolorem"
+      subtitle= "Lorem ipsum dolor sit amet consectetur adipiscing elit curabitur ipsum sem"
+      asVariant= "primary"
+      asFloated= "inline"
+      asPadded= "normal"
+      asAligned= "center"
+      withColor= {{
+        backgroundColor: "#666666",
+        textColor: "#fffff",
+        accentColor: "#ffbf00",
+      }}
+      isHidden= {false}/>`,
     },
   },
 };
