@@ -1,11 +1,15 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Divider from "@mui/material/Divider";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+
 import {
   getQuommons,
   getTranslation,
-  getAnimation
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -18,14 +22,28 @@ AppMenu.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
-  avatar: PropTypes.string,
   /**
   Use for rounded corners or circular icon button 
   */
   isCircular: PropTypes.bool,
+  menu: PropTypes.shape({
+    icon: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
+  }),
   //=======================================
   // Quommon props
   //=======================================
+  /**
+  Use to define standard component type
+  */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
   /**
   Use to define component text size in increasing order
   */
@@ -69,23 +87,6 @@ AppMenu.propTypes = {
     dictionary: PropTypes.string,
   }),
   /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
-  /**
   Use to show/hide the component
   */
   isHidden: PropTypes.bool,
@@ -104,15 +105,14 @@ AppMenu.defaultProps = {
   // Component Specific props
   //=======================================
   isCircular: true,
-  avatar: "",
   //=======================================
   // Quommon props
   //=======================================
+  asVariant: "primary",
   asSize: "normal",
   withColor: null,
   withIcon: null,
   withTranslation: null,
-  withAnimation: null,
   isHidden: false,
   isDisabled: false,
 };
@@ -125,6 +125,15 @@ AppMenu.defaultProps = {
 **/
 
 export default function AppMenu(props) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   //-------------------------------------------------------------------
   // 1. Destructuring withlabel props
   //-------------------------------------------------------------------
@@ -152,19 +161,14 @@ export default function AppMenu(props) {
   ) {
     tObj = getTranslation(props.withTranslation);
   }
-  //-------------------------------------------------------------------
-  // 5. Get animation of the component
-  //-------------------------------------------------------------------
-  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
 
   return (
-    <motion.div
-      initial={animate?.from}
-      animate={animate?.to}
-      className={`qui ${quommonClasses.parentClasses} ${props.isCircular ? "qui-app-menu-circular" : ""
-        } qt-shadow`}
+    <div
+      className={`qui ${quommonClasses.parentClasses} ${
+        props.isCircular ? "qui-app-menu-circular" : ""
+      } qt-shadow`}
     >
       <div className="qui-app-menu-container">
         <div
@@ -186,25 +190,84 @@ export default function AppMenu(props) {
         >
           <div
             style={colors}
-            className={`qui-app-menu-avatar qui-btn`}
+            className={`qui-app-menu-avatar qui-btn variant-${props.asVariant}`}
           >
             <Avatar
               {...props}
               withIcon={
-                props.avatar ? { icon: props.avatar } : { icon: "fas fa-user" }
+                props.withIcon ? props.withIcon : { icon: "fas fa-user" }
               }
             />
           </div>
           <div className="qui-app-menu-icon-container">
             <MenuBlock
               {...props}
-              withIcon={props.withIcon ? props.withIcon : { icon: "fas fa-ellipsis-v" }}
+              withIcon={{ icon: "fas fa-ellipsis-v" }}
               withLabel={{ content: "" }}
               withTranslation={null}
+              onClick={handleClick}
             />
+            <Menu
+              id="app-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "app-menu-button",
+              }}
+              PaperProps={{
+                elevation: 0,
+                sx: {
+                  overflow: "visible",
+                  width: 240,
+                  maxWidth: "100%",
+                  filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                  mt: 1.5,
+                  "& .MuiAvatar-root": {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                  },
+                  "&:before": {
+                    content: '""',
+                    display: "block",
+                    position: "absolute",
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: "background.paper",
+                    transform: "translateY(-50%) rotate(45deg)",
+                    zIndex: 0,
+                  },
+                },
+              }}
+              transformOrigin={{
+                horizontal: "right",
+                vertical: "top",
+              }}
+              anchorOrigin={{
+                horizontal: "right",
+                vertical: "bottom",
+              }}
+            >
+              {props.menu?.map((item) =>
+                item.icon === "divider" ? (
+                  <Divider />
+                ) : (
+                  <MenuItem onClick={item.onClick}>
+                    <ListItemIcon>
+                      <i className={item.icon} />
+                    </ListItemIcon>
+                    <ListItemText>{item.label}</ListItemText>
+                  </MenuItem>
+                )
+              )}
+            </Menu>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

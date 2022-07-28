@@ -83,7 +83,7 @@ import RewardCard from "./components/RewardCard/RewardCard.react";
 import WalletRow from "./components/WalletRow/WalletRow.react";
 import VoiceoverUploadModal from "./components/VoiceoverUploadModal/VoiceoverUploadModal.react";
 import Videobox from "./components/Videobox/Videobox.react";
-import TreeBarOpen from "./components/TreeBarOpen/TreeBarOpen.react";
+import TreeBar from "./components/TreeBar/TreeBar.react";
 import ToggleButton from "./components/ToggleButton/ToggleButton.react";
 import TextBlock from "./components/TextBlock/TextBlock.react";
 import Tag from "./components/Tag/Tag.react";
@@ -253,7 +253,7 @@ export {
     WalletRow,
     VoiceoverUploadModal,
     Videobox,
-    TreeBarOpen,
+    TreeBar,
     ToggleButton,
     TextBlock,
     Tag,

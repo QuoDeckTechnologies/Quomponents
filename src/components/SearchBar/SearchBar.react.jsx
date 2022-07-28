@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
-import {
-    getQuommons,
-    getTranslation,
-} from "../../common/javascripts/helpers";
+import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "../SearchBar/SearchBar.scss";
@@ -34,7 +31,7 @@ SearchBar.propTypes = {
     /**
     Use to float the component in parent container
     */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+    asFloated: PropTypes.oneOf(["left", "right", "inline", "none"]),
     /**
     Use to define component text size in increasing order
     */
@@ -104,7 +101,7 @@ SearchBar.defaultProps = {
     withTranslation: null,
     isHidden: false,
     isDisabled: false,
-    isFluid: false
+    isFluid: false,
 };
 /**
 ## Notes
@@ -141,10 +138,10 @@ export default function SearchBar(props) {
     const input = useRef(null);
     const box = useRef(null);
     const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === "Enter") {
             handleButtonPress();
         }
-    }
+    };
     const handleButtonPress = () => {
         return props.onClick(inputValue);
     }
@@ -156,12 +153,13 @@ export default function SearchBar(props) {
             // Function for click event
             function handleOutsideClick(event) {
                 if (ref.current && !ref.current.contains(event?.target)) {
-                    setExpandable(false)
+                    setExpandable(false);
                 }
             }
             // Adding click event listener
             document.addEventListener("click", handleOutsideClick);
-            return () => document.removeEventListener("click", handleOutsideClick);
+            return () =>
+                document.removeEventListener("click", handleOutsideClick);
         }, [ref]);
     }
     useOutsideAlerter(box);
@@ -232,6 +230,16 @@ export default function SearchBar(props) {
                     <div className={`qui-search-bar-expand-effect`}
                         style={{ display: props.isClosed ? expandable ? "none" : "flex" : "none" }}>
                     </div>
+                    <div
+                        className={`qui-search-bar-expand-effect`}
+                        style={{
+                            display: props.isClosed
+                                ? expandable
+                                    ? "none"
+                                    : "flex"
+                                : "none",
+                        }}
+                    ></div>
                 </div>
             </div >
         )
@@ -242,5 +250,5 @@ export default function SearchBar(props) {
                 {searchBar(props.isClosed)}
             </div>
         </div>
-    )
+    );
 }

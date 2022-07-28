@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { getQuommons } from "../../common/javascripts/helpers.js";
 import _ from "lodash";

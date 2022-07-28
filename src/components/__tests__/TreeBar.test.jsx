@@ -10,14 +10,14 @@ import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import TreeBarOpen from "../TreeBarOpen/TreeBarOpen.react";
+import TreeBar from "../TreeBar/TreeBar.react";
 import { Treebeard, decorators } from "react-treebeard";
 import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/extend-expect";
 
 import SearchBar from "../SearchBar/SearchBar.react";
 
-describe("TreeBarOpen", () => {
+describe("TreeBar", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
@@ -28,11 +28,11 @@ describe("TreeBarOpen", () => {
       onClick: () => console.log("Button Testing"),
     },
     translations: {
-      tgt: "treeBarOpen",
+      tgt: "TreeBar",
       lang: { valid: "hi", invalid: "xx" },
       dictionary: JSON.stringify({
         hi: {
-          treeBarOpen: {
+          TreeBar: {
             placeHolder: "खोजें...",
           },
         },
@@ -54,7 +54,7 @@ describe("TreeBarOpen", () => {
   let component;
   const dictionary = JSON.stringify({
     hi: {
-      treeBarOpen: {
+      TreeBar: {
         placeHolder: "खोजें...",
       },
     },
@@ -246,7 +246,7 @@ describe("TreeBarOpen", () => {
 
   it("should render tree bar when click on search", () => {
     component
-      .find(".qui-treebar-content")
+      .find(".qui-treebar-container")
       .children(0)
       .simulate("toggle", { content: { treeData: {} } });
     component.setProps({ content: { treeData: {} } });
