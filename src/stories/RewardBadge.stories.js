@@ -93,19 +93,19 @@ Default.parameters = {
     docs: {
         source: {
             code: `<RewardBadge 
-            image: RewardBadgeImage,
-            asVariant: "secondary",
-            withColor: {
+            image= RewardBadgeImage
+            asVariant= "secondary"
+            withColor= {{
                 backgroundColor: "",
                 textColor: "",
-            },
-            withLabel: {
+            }}
+            withLabel= {{
                 format: "caption",
                 content: "You won the July season!",
                 textColor: "#000000",
-            },
-            isHidden: false,
-            isDisabled: false
+            }}
+            isHidden= {false}
+            isDisabled= {false}
             />`,
         },
     },
@@ -129,19 +129,19 @@ ColoredRewardBadge.parameters = {
         },
         source: {
             code: `<RewardBadge 
-            image: RewardBadgeImage,
-            asVariant: "secondary",
-            withColor: {
+            image= RewardBadgeImage
+            asVariant= "secondary"
+            withColor= {{
                 backgroundColor: "#ff1a1a",
                 textColor: "#ffff00",
-            }
-            withLabel: {
+            }}
+            withLabel= {{
                 format: "caption",
                 content: "You won the July season!",
                 textColor: "#000000",
-            },
-            isHidden: false,
-            isDisabled: false
+            }}
+            isHidden= {false}
+            isDisabled= {false}
             />`,
         },
     },
@@ -167,19 +167,19 @@ DisabledRewardBadge.parameters = {
         },
         source: {
             code: `<RewardBadge 
-            image: RewardBadgeImage,
-            asVariant: "secondary",
-            withColor: {
-                backgroundColor: "",
-                textColor: "",
-            }
-            withLabel: {
+            image= RewardBadgeImage
+            asVariant= "secondary"
+            withColor= {{
+                backgroundColor: "#ff1a1a",
+                textColor: "#ffff00",
+            }}
+            withLabel= {{
                 format: "caption",
                 content: "You won the July season!",
                 textColor: "#000000",
-            },
-            isHidden: false,
-            isDisabled: true
+            }}
+            isHidden= {false}
+            isDisabled= {true}
             />`,
         },
     },
@@ -210,19 +210,19 @@ RewardBadgeWithCaptionFormat.parameters = {
         },
         source: {
             code: `<RewardBadge 
-            image: RewardBadgeImage,
-            asVariant: "secondary",
-            withColor: {
-                backgroundColor: "",
-                textColor: "",
-            },
-            withLabel: {
+            image= RewardBadgeImage
+            asVariant= "secondary"
+            withColor= {{
+                backgroundColor: "#ff1a1a",
+                textColor: "#ffff00",
+            }}
+            withLabel= {{
                 format: "caption",
                 content: "You won the July season!",
                 textColor: "#000000",
-            },
-            isHidden: false,
-            isDisabled: false
+            }}
+            isHidden= {false}
+            isDisabled= {false}
             />`,
         },
     },
@@ -253,19 +253,19 @@ RewardBadgeWithLabelFormat.parameters = {
         },
         source: {
             code: `<RewardBadge 
-            image: RewardBadgeImage,
-            asVariant: "secondary",
-            withColor: {
-                backgroundColor: "",
-                textColor: "",
-            },
-            withLabel: {
+            image= RewardBadgeImage
+            asVariant= "secondary"
+            withColor= {{
+                backgroundColor: "#ff1a1a",
+                textColor: "#ffff00",
+            }}
+            withLabel= {{
                 format: "label",
                 content: "You won the July season!",
                 textColor: "#000000",
-            },
-            isHidden: false,
-            isDisabled: false
+            }}
+            isHidden= {false}
+            isDisabled= {false}
             />`,
         },
     },
@@ -296,19 +296,19 @@ RewardBadgeWithPopoverFormat.parameters = {
         },
         source: {
             code: `<RewardBadge 
-            image: RewardBadgeImage,
-            asVariant: "secondary",
-            withColor: {
-                backgroundColor: "",
-                textColor: "",
-            },
-            withLabel: {
+            image= RewardBadgeImage
+            asVariant= "secondary"
+            withColor= {{
+                backgroundColor: "#ff1a1a",
+                textColor: "#ffff00",
+            }}
+            withLabel= {{
                 format: "popover",
                 content: "You won the July season!",
                 textColor: "#000000",
-            },
-            isHidden: false,
-            isDisabled: false
+            }}
+            isHidden= {false}
+            isDisabled= {false}
             />`,
         },
     },

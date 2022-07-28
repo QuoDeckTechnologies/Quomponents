@@ -55,8 +55,8 @@ export default {
         defaultValue: {
           backgroundColor: "",
           textColor: "",
-          activeBackgroundColor: "",
-          activeTextColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -149,8 +149,8 @@ Default.args = {
   withColor: {
     backgroundColor: "#AAAAAA",
     textColor: "#FFF",
-    activeBackgroundColor: "#666666",
-    activeTextColor: "#FFAB00",
+    hoverBackgroundColor: "#666666",
+    hoverTextColor: "#FFAB00",
   },
   withAnimation: {
     animation: "collapse",
@@ -182,8 +182,8 @@ Default.parameters = {
       withColor={{
           backgroundColor: "#AAAAAA",
           textColor: "#FFF",
-          activeBackgroundColor: "#666666",
-          activeTextColor: "#FFAB00",
+          hoverBackgroundColor: "#666666",
+          hoverTextColor: "#FFAB00",
       }}
       withAnimation={{
           animation: "collapse",
@@ -210,8 +210,8 @@ ColoredCardTag.args = {
   withColor: {
     backgroundColor: "#AAAAAA",
     textColor: "#FFF",
-    activeBackgroundColor: "#88ee88",
-    activeTextColor: "#37285f",
+    hoverBackgroundColor: "#88ee88",
+    hoverTextColor: "#37285f",
   },
 };
 ColoredCardTag.parameters = {
@@ -233,8 +233,8 @@ ColoredCardTag.parameters = {
       withColor= {{
         backgroundColor: "#AAAAAA",
         textColor: "#FFF",
-        activeBackgroundColor: "#88ee88",
-        activeTextColor: "#37285f",
+        hoverBackgroundColor: "#88ee88",
+        hoverTextColor: "#37285f",
       }},
       withAnimation={{
           animation: "collapse",
@@ -261,8 +261,8 @@ TranslatedCardTag.args = {
   withColor: {
     backgroundColor: "#AAAAAA",
     textColor: "#FFF",
-    activeBackgroundColor: "#88ee88",
-    activeTextColor: "#37285f",
+    hoverBackgroundColor: "#88ee88",
+    hoverTextColor: "#37285f",
   },
   withTranslation: {
     lang: "hi",
@@ -289,8 +289,8 @@ TranslatedCardTag.parameters = {
       withColor= {{
           backgroundColor: "#AAAAAA",
           textColor: "#FFF",
-          activeBackgroundColor: "#88ee88",
-          activeTextColor: "#37285f",
+          hoverBackgroundColor: "#88ee88",
+          hoverTextColor: "#37285f",
       }},
       withTranslation= {{
           lang: "hi",
@@ -337,8 +337,8 @@ LoadingCardTag.parameters = {
       withColor= {{
           backgroundColor: "#AAAAAA",
           textColor: "#FFF",
-          activeBackgroundColor: "#88ee88",
-          activeTextColor: "#37285f",
+          hoverBackgroundColor: "#88ee88",
+          hoverTextColor: "#37285f",
       }},
       withAnimation={{
           animation: "collapse",
@@ -385,8 +385,8 @@ TranslatedLoadingCardTag.parameters = {
       withColor= {{
           backgroundColor: "#AAAAAA",
           textColor: "#FFF",
-          activeBackgroundColor: "#88ee88",
-          activeTextColor: "#37285f",
+          hoverBackgroundColor: "#88ee88",
+          hoverTextColor: "#37285f",
       }},
       withTranslation= {{
           lang: "hi",

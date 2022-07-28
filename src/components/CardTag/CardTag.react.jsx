@@ -65,8 +65,8 @@ CardTag.propTypes = {
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
-    activeBackroundColor: PropTypes.string,
-    activeTextColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to add an icon to the component
@@ -157,8 +157,8 @@ export default function CardTag(props) {
   // 2. Use to set Color in CardTag Component
   //-------------------------------------------------------------------
   let activeColor = {
-    backgroundColor: props.withColor?.activeBackgroundColor,
-    color: props.withColor?.activeTextColor,
+    backgroundColor: props.withColor?.hoverBackgroundColor,
+    color: props.withColor?.hoverTextColor,
   };
   let deactivatedColor = {
     backgroundColor: props.withColor?.backgroundColor,

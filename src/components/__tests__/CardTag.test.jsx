@@ -70,7 +70,7 @@ describe("CardTag", () => {
                     size: "1em",
                     position: "left"
                 }}
-                onClick={() => console.log("CardTag Testing")}
+                onClick={() => { }}
             />
         );
     });

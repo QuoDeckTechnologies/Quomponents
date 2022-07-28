@@ -18,7 +18,6 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "center"
                 }}
             >
                 {story()}
@@ -80,7 +79,35 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<SquareCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<SquareCarousel 
+            content={[{
+                header: "Negotiation Room",
+                content: "Play and win the competition to win Flipkart vouchers.",
+                image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
+                tag: "new",
+                props: {
+                    ...dataprops,
+                    asVariant: "secondary"
+                }
+            },
+            {
+                image: "https://i.pinimg.com/564x/d7/eb/54/d7eb54f1760884ebea92519ac653aa19.jpg",
+                tag: "premium",
+                header: "ਗੱਲਬਾਤ ਦਾ ਕਮਰਾ",
+                content: "Flipkart ਵਾਊਚਰ ਹਾਸਲ ਕਰਨ ਲਈ ਮੁਕਾਬਲਾ ਖੇਡੋ ਅਤੇ ਜਿੱਤੋ। ",
+                props: {
+                    ...dataprops,
+                }
+            },
+            {
+                image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+                tag: "restricted",
+                header: "निगोशिएशन रूम",
+                content: "फ्लिपकार्ट व्हाउचर मिळवण्यासाठी स्पर्धा खेळा आणि जिंका.",
+                props: {
+                    ...dataprops,
+                }
+            }]}/>`,
         },
     },
 };
@@ -118,7 +145,29 @@ SquareCarouselWithoutBox.parameters = {
             story: "We can see the Square Carousel without any Box Header and Content",
         },
         source: {
-            code: `<SquareCarousel {...${JSON.stringify(SquareCarouselWithoutBox.args, null, 2)}}/>`,
+            code: `<SquareCarousel {..<SquareCarousel 
+                content={[{
+                    image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
+                    tag: "new",
+                    props: {
+                        ...dataprops,
+                        asVariant: "secondary"
+                    }
+                },
+                {
+                    image: "https://i.pinimg.com/564x/d7/eb/54/d7eb54f1760884ebea92519ac653aa19.jpg",
+                    tag: "premium",
+                    props: {
+                        ...dataprops,
+                    }
+                },
+                {
+                    image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+                    tag: "restricted",
+                    props: {
+                        ...dataprops,
+                    }
+                }]}/>/>`,
         },
     },
 };
@@ -160,7 +209,32 @@ SquareCarouselWithoutTag.parameters = {
             story: "We can see the Square Carousel without any Tag",
         },
         source: {
-            code: `<SquareCarousel {...${JSON.stringify(SquareCarouselWithoutTag.args, null, 2)}}/>`,
+            code: `<SquareCarousel <SquareCarousel 
+            content={[{
+                header: "Negotiation Room",
+                content: "Play and win the competition to win Flipkart vouchers.",
+                image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
+                props: {
+                    ...dataprops,
+                    asVariant: "secondary"
+                }
+            },
+            {
+                image: "https://i.pinimg.com/564x/d7/eb/54/d7eb54f1760884ebea92519ac653aa19.jpg",
+                header: "ਗੱਲਬਾਤ ਦਾ ਕਮਰਾ",
+                content: "Flipkart ਵਾਊਚਰ ਹਾਸਲ ਕਰਨ ਲਈ ਮੁਕਾਬਲਾ ਖੇਡੋ ਅਤੇ ਜਿੱਤੋ। ",
+                props: {
+                    ...dataprops,
+                }
+            },
+            {
+                image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+                header: "निगोशिएशन रूम",
+                content: "फ्लिपकार्ट व्हाउचर मिळवण्यासाठी स्पर्धा खेळा आणि जिंका.",
+                props: {
+                    ...dataprops,
+                }
+            }]}/>/>`,
         },
     },
 };
