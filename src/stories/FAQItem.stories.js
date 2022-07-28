@@ -83,12 +83,7 @@ export default {
     },
     decorators: [
         (story) => (
-            <div
-                style={{
-                    width: "100%",
-                    textAlign: "center",
-                }}
-            >
+            <div>
                 {story()}
             </div>
         ),
@@ -108,7 +103,7 @@ Default.args = {
     question: "Q. What is the difference between Sales Readiness and Sales Enablement",
     answer: "It can be easy to get lost in the world of sales terminology. As with any field, when you’re first introduced to the lingo, it can feel like learning a new language. Understanding the key differences between similar terms can be a challenge in its own right.",
     asVariant: "warning",
-    asFloated: "inline",
+    asFloated: "none",
     asAligned: "left",
     withColor: {
         accentColor: "#86BC25",
@@ -132,7 +127,30 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<FAQItem {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<FAQItem 
+            question= "Question"
+            answer= "Answer"
+            asVariant= "warning"
+            asFloated= "none"
+            asAligned= "left"
+            withColor= {{
+                accentColor: "#86BC25",
+                textColor: "#000000",
+                backgroundColor: "#EFEFEF",
+                hoverBackgroundColor: "#ffffff",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "faqItem",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -155,11 +173,30 @@ AnimatedFAQItem.parameters = {
                 "Use to animate the entry of the FAQItem with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<FAQItem {...${JSON.stringify(
-                AnimatedFAQItem.args,
-                null,
-                2
-            )}}/>`,
+            code: `<FAQItem 
+            question= "Question"
+            answer= "Answer"
+            asVariant= "warning"
+            asFloated= "none"
+            asAligned= "left"
+            withColor= {{
+                accentColor: "#86BC25",
+                textColor: "#000000",
+                backgroundColor: "#EFEFEF",
+                hoverBackgroundColor: "#ffffff",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "faqItem",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -183,11 +220,30 @@ ColoredFAQItem.parameters = {
                 "Use to override the standard colors of the FAQItem.",
         },
         source: {
-            code: `<FAQItem {...${JSON.stringify(
-                ColoredFAQItem.args,
-                null,
-                2
-            )}}/>`,
+            code: `<FAQItem 
+            question= "Question"
+            answer= "Answer"
+            asVariant= "warning"
+            asFloated= "none"
+            asAligned= "left"
+            withColor= {{
+                accentColor: "#222A35",
+                textColor: "#454545",
+                backgroundColor: "#FFBF00",
+                hoverBackgroundColor: "#E8E8E8",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "faqItem",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
@@ -210,11 +266,30 @@ TranslatedFAQItem.parameters = {
                 "Use to change the language that the text appears in FAQItem.",
         },
         source: {
-            code: `<FAQItem {...${JSON.stringify(
-                TranslatedFAQItem.args,
-                null,
-                2
-            )}}/>`,
+            code: `<FAQItem 
+            question= "Question"
+            answer= "Answer"
+            asVariant= "warning"
+            asFloated= "none"
+            asAligned= "left"
+            withColor= {{
+                accentColor: "#86BC25",
+                textColor: "#000000",
+                backgroundColor: "#EFEFEF",
+                hoverBackgroundColor: "#ffffff",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "hi",
+                tgt: "faqItem",
+                dictionary: dictionary,
+            }}
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
