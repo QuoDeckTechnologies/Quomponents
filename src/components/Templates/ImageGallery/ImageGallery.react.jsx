@@ -192,7 +192,8 @@ export default function ImageGallery(props) {
             >
                 {!data?.image && (data?.title || data?.subtitle) && (
                     <SlideHeader {...props}
-                        content={{ title: data?.title, subTitle: data?.subtitle }}
+                        title={data?.title}
+                        subtitle={data?.subtitle}
                         withColor={slideHeaderColors}
                     />
                 )}
@@ -210,7 +211,7 @@ export default function ImageGallery(props) {
                                 <div key={"slider-" + index + Math.random()}>
                                     <div className={`qui-image-gallery-carousel-image`}>
                                         <BannerCard  {...props}
-                                            content={{ image: resolveImage(slide?.image?.id, imageLibrary) }}
+                                            image={resolveImage(slide?.image?.id, imageLibrary)}
                                             onClick={props.onClick}
                                         />
                                     </div>

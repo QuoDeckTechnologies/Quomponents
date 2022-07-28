@@ -155,7 +155,8 @@ export default function BulletList(props) {
             >
                 {!data?.image && (data?.title || data?.subTitle) && (
                     <SlideHeader {...props}
-                        content={{ title: data?.title, subTitle: data?.subTitle }}
+                        title={data?.title}
+                        subtitle={data?.subTitle}
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (

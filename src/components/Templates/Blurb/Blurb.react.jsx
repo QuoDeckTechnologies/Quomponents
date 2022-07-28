@@ -124,7 +124,8 @@ export default function Blurb(props) {
     if (!data?.image && (data?.title || data?.subtitle)) {
       return (
         <SlideHeader {...props}
-          content={{ title: data?.title, subTitle: data?.subtitle }}
+          title={data?.title}
+          subtitle={data?.subtitle}
           withColor={slideHeaderColors}
         />
       );
