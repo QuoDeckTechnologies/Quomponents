@@ -147,25 +147,6 @@ export default function RadioButton(props) {
   const getSize = () => {
     switch (asSize) {
       case "tiny":
-        return 13;
-      case "small":
-        return 15;
-      case "normal":
-        return 20;
-      case "big":
-        return 25;
-      case "huge":
-        return 30;
-      default:
-        return 35;
-    }
-  };
-  //-------------------------------------------------------------------
-  // 6. Function to get content font size
-  //-------------------------------------------------------------------
-  const getFontSize = () => {
-    switch (asSize) {
-      case "tiny":
         return "0.8em";
       case "small":
         return "0.9em";
@@ -194,7 +175,7 @@ export default function RadioButton(props) {
           value={targetName}
           sx={{
             "& .MuiFormControlLabel-label": {
-              fontSize: getFontSize(),
+              fontSize: getSize(),
             },
           }}
           style={{ color: withColor?.textColor }}
