@@ -13,7 +13,7 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          sliderBackgroundColor: "#fff",
+          backgroundColor: "#fff",
         },
       },
     },
@@ -80,7 +80,7 @@ Default.args = {
   }],
   slideId: 0,
   withColor: {
-    sliderBackgroundColor: "#3a3636a6",
+    backgroundColor: "#3a3636a6",
   },
   withAnimation: {
     animation: "zoom",
@@ -106,7 +106,7 @@ Default.parameters = {
   }],
   slideId= 0,
   withColor= {{
-    sliderBackgroundColor: "#3a3636a6",
+    backgroundColor: "#3a3636a6",
   }},
   withAnimation= {{
     animation: "zoom",

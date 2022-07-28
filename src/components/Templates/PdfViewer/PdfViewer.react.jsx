@@ -43,7 +43,7 @@ PdfViewer.propTypes = {
     Use to override component colors and behavior
     */
   withColor: PropTypes.shape({
-    sliderBackgroundColor: PropTypes.string,
+    backgroundColor: PropTypes.string,
   }),
 
   /**
@@ -211,7 +211,7 @@ export default function PdfViewer(props) {
             {window.innerWidth <= 480 && showSlider &&
               <div
                 className={"qui-footer-slider-icon-container"}
-                style={rotate ? { backgroundColor: "#55555500" } : { backgroundColor: props.withColor.sliderBackgroundColor }}>
+                style={rotate ? { backgroundColor: "#55555500" } : { backgroundColor: props.withColor.backgroundColor }}>
                 {rotate ? "" : <Slider
                   initialValue={22}
                   onClick={(value) => setZoom(value)} />}
