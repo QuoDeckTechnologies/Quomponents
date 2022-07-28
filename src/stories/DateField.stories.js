@@ -90,10 +90,7 @@ export default {
     },
     decorators: [
         (story) => (
-            <div style={{
-                width: "100%",
-                textAlign: "center",
-            }}>
+            <div>
                 {story()}
             </div>
         ),
