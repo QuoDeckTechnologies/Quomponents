@@ -72,11 +72,7 @@ export default {
     },
     decorators: [
         (story) => (
-            <div
-                style={{
-                    textAlign: "center",
-                }}
-            >
+            <div>
                 {story()}
             </div>
         ),
