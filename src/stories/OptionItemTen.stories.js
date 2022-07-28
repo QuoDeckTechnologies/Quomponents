@@ -144,7 +144,36 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<OptionItem {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<OptionItem 
+      option= {{
+        targetName: "target",
+        value: "",
+        placeholder: "Option A",
+      }}
+      header= {{
+        targetName: "header",
+        value: "",
+        placeholder: "Header for Option A",
+        maxLength: 300,
+      }}
+      message= {{
+        targetName: "message",
+        value: "",
+        placeholder: "Message for Option A",
+        maxLength: 300,
+      }}
+      withColor= {{
+        backgroundColor: "#ffab000d",
+        textColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "optionItemTen",
+        dictionary: dictionary,
+      }}/>`,
     },
   },
 };
@@ -165,11 +194,36 @@ ColoredOptionItemTen.args = {
 ColoredOptionItemTen.parameters = {
   docs: {
     source: {
-      code: `<OptionItemTen {...${JSON.stringify(
-        ColoredOptionItemTen.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItem 
+      option= {{
+        targetName: "target",
+        value: "",
+        placeholder: "Option A",
+      }}
+      header= {{
+        targetName: "header",
+        value: "",
+        placeholder: "Header for Option A",
+        maxLength: 300,
+      }}
+      message= {{
+        targetName: "message",
+        value: "",
+        placeholder: "Message for Option A",
+        maxLength: 300,
+      }}
+      withColor= {{
+        backgroundColor: "#8c9ea3",
+        accentColor: "#597387",
+        textColor: "#bac2c8",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "optionItemTen",
+        dictionary: dictionary,
+      }}/>`,
     },
   },
 };
@@ -188,11 +242,36 @@ TranslatedOptionItemTen.args = {
 TranslatedOptionItemTen.parameters = {
   docs: {
     source: {
-      code: `<OptionItemTen {...${JSON.stringify(
-        TranslatedOptionItemTen.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItem 
+      option= {{
+        targetName: "target",
+        value: "",
+        placeholder: "Option A",
+      }}
+      header= {{
+        targetName: "header",
+        value: "",
+        placeholder: "Header for Option A",
+        maxLength: 300,
+      }}
+      message= {{
+        targetName: "message",
+        value: "",
+        placeholder: "Message for Option A",
+        maxLength: 300,
+      }}
+      withColor= {{
+        backgroundColor: "#ffab000d",
+        textColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      withTranslation= {{
+        lang: "hi",
+        tgt: "optionItemTen",
+        dictionary: dictionary,
+      }}/>`,
     },
   },
 };
@@ -409,11 +488,207 @@ MultipleOptionItemTen.args = {
 MultipleOptionItemTen.parameters = {
   docs: {
     source: {
-      code: `<OptionItemTen {...${JSON.stringify(
-        MultipleOptionItemTen.args,
-        null,
-        2
-      )}}/>`,
+      code: `const [contentArr, setContentArr] = useState([
+        {
+          option: {
+            targetName: "target A",
+            value: "",
+            placeholder: "Option A",
+          },
+          header: {
+            targetName: "header A",
+            value: "",
+            placeholder: "Header for Option A",
+            maxLength: 300,
+          },
+          message: {
+            targetName: "message",
+            value: "",
+            placeholder: "Message for Option A",
+            maxLength: 300,
+          },
+        },
+        {
+          option: {
+            targetName: "target B",
+            value: "",
+            placeholder: "Option B",
+          },
+          header: {
+            targetName: "header B",
+            value: "",
+            placeholder: "Header for Option B",
+            maxLength: 300,
+          },
+          message: {
+            targetName: "message B",
+            value: "",
+            placeholder: "Message for Option B",
+            maxLength: 300,
+          },
+        },
+        {
+          option: {
+            targetName: "target C",
+            value: "",
+            placeholder: "Option C",
+          },
+          header: {
+            targetName: "header C",
+            value: "",
+            placeholder: "Header for Option C",
+            maxLength: 300,
+          },
+          message: {
+            targetName: "message C",
+            value: "",
+            placeholder: "Message for Option C",
+            maxLength: 300,
+          },
+        },
+      ]);
+      // -------------------------------------------------------------
+      // Hook to return modified content object
+      // -------------------------------------------------------------
+      useEffect(() => {
+        args.onInput(contentArr);
+      });
+      // -------------------------------------------------------------
+      // Temporary variables for operations
+      // -------------------------------------------------------------
+      let tmp_state = contentArr;
+      let tmp_arr = [];
+      let tmp_obj = {};
+      // -------------------------------------------------------------
+      // Function to remove an object from the array
+      // -------------------------------------------------------------
+      const handleRemove = (dataID) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_state.forEach((dataObj) => {
+          tmp_arr.push({ ...dataObj });
+        });
+        tmp_arr = tmp_state.filter(
+          (dataObj) => dataObj.option.targetName !== dataID
+        );
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to insert image object in the multiContent array
+      // -------------------------------------------------------------
+      const handleUpload = (targetName, image) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.option.targetName === targetName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.image = image;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to put value in the array
+      // -------------------------------------------------------------
+      const handleInput = (targetName, value) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+    
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.option.targetName === targetName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.option.value = value;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to put header value in the array
+      // -------------------------------------------------------------
+      const handleHeader = (headerName, headerValue) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+    
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.header.targetName === headerName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.header.value = headerValue;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to put value in the array
+      // -------------------------------------------------------------
+      const handleMessage = (messageName, messageValue) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+    
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.message.targetName === messageName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.message.value = messageValue;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      return (
+        <div>
+          {contentArr.map((content, index) => {
+            return (
+              <div style={{ marginBottom: "1em" }} key={index}>
+                <OptionItemTen
+                  {...args}
+                  option={{
+                    targetName: "target",
+                    value: "",
+                    placeholder: "Option A",
+                  }}
+                  header={{
+                    targetName: "header",
+                    value: "",
+                    placeholder: "Header for Option A",
+                    maxLength: 300,
+                  }}
+                  message={{
+                    targetName: "message",
+                    value: "",
+                    placeholder: "Message for Option A",
+                    maxLength: 300,
+                  }}
+                  onUpload={(targetName, image) => handleUpload(targetName, image)}
+                  onInput={(targetName, value) => handleInput(targetName, value)}
+                  onHeader={(targetName, value) => handleHeader(targetName, value)}
+                  onMessage={(targetName, value) =>
+                    handleMessage(targetName, value)
+                  }
+                  onClick={handleRemove}
+                />
+              </div>
+            );
+          })}
+        </div>
+      );`,
     },
   },
 };
