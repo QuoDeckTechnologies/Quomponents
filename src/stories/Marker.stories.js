@@ -23,16 +23,6 @@ export default {
                 category: "as-Flags",
             },
         },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
-                },
-            },
-        },
         onClick: {
             table: {
                 category: "Events",
@@ -82,11 +72,6 @@ Default.args = {
     },
     status: "current",
     asSize: "normal",
-    withAnimation: {
-        animation: "collapse",
-        duration: 0.5,
-        delay: 0,
-    },
     isHidden: false,
     isDisabled: false,
 };
