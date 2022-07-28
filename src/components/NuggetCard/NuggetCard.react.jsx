@@ -279,17 +279,17 @@ export default function NuggetCard(props) {
 				<div className="qui-nugget-card-footer">
 					<div className={`qui-nugget-card-arc-menu`}>
 						<ArcMenu
-							withIcon={{ icon: "fas fa-user" }}
 							withColor={{
 								backgroundColor: "#666666",
 								textColor: "#FFBF00",
 								hoverBackgroundColor: "#666666",
 								hoverTextColor: "#FFBF00",
 							}}
+							asEmphasis={"menu"}
 							menuContent={props?.menuContent}
 							menuType="menu"
 							arcIcon="menu"
-							position="bottom-left"
+							position="top-right"
 							onClick={props.onClick}
 						/>
 					</div>

@@ -146,10 +146,7 @@ export default function CaptionedBulletList(props) {
     textColor: props.withColor?.textBlockTextColor,
     backgroundColor: props.withColor?.textBlockBackgroundColor
   }
-  let SlideHeaderText = {
-    title: props.data?.title,
-    subTitle: props.data?.subtitle,
-  }
+
   const getBackground = () => {
     return {
       background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
@@ -171,7 +168,8 @@ export default function CaptionedBulletList(props) {
         <div className={`${quommonClasses.childClasses}`} key={"captioned-bullet-list-" + props.slideId}>
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
-              content={SlideHeaderText}
+              title={data?.title}
+              subtitle={data?.subtitle}
               withColor={slideHeaderColors} />
           )}
           {data?.image && (

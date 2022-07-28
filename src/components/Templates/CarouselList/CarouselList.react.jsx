@@ -149,10 +149,6 @@ export default function CarouselList(props) {
     textColor: props.withColor?.textBlockTextColor,
     backgroundColor: props.withColor?.textBlockBackgroundColor
   }
-  let SlideHeaderText = {
-    title: data?.title,
-    subTitle: data?.subtitle,
-  }
   let carouselClass = data.carouselContent == null ? "qui-carousel-hide" : "qui-carousel-show"
   //-------------------------------------------------------------------
   // Function to return a view for diptych
@@ -167,7 +163,8 @@ export default function CarouselList(props) {
       }}>
         {!data?.image && (data?.title || data?.subtitle) && (
           <SlideHeader
-            content={SlideHeaderText}
+            title={data?.title}
+            subtitle={data?.subtitle}
             withColor={slideHeaderColors} />
         )}
         {data?.image && (

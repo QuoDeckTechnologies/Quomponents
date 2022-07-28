@@ -148,10 +148,6 @@ export default function CaptionedImage(props) {
     textColor: props.withColor?.textBlockTextColor,
     backgroundColor: props.withColor?.textBlockBackgroundColor,
   };
-  let SlideHeaderText = {
-    title: data?.title,
-    subTitle: data?.subtitle,
-  };
   //-------------------------------------------------------------------
   // Function to return a view for CaptionedImage
   //-------------------------------------------------------------------
@@ -173,7 +169,8 @@ export default function CaptionedImage(props) {
         >
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
-              content={SlideHeaderText}
+              title={data?.title}
+              subtitle={data?.subtitle}
               withColor={slideHeaderColors}
             />
           )}

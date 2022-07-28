@@ -186,10 +186,6 @@ export default function DosAndDonts(props) {
     accentColor: props.withColor?.slideHeaderAccentColor,
     backgroundColor: props.withColor?.slideHeaderBackgroundColor
   }
-  let SlideHeaderText = {
-    title: props.data?.title,
-    subTitle: props.data?.subtitle,
-  }
   const lists = (value) => {
     if (value === 0) {
       setActive("do")
@@ -225,7 +221,8 @@ export default function DosAndDonts(props) {
         <div className={`${quommonClasses.childClasses}`} key={"dos-donts-" + props.slideId}>
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
-              content={SlideHeaderText}
+              title={data?.title}
+              subtitle={data?.subtitle}
               withColor={slideHeaderColors} />
           )}
           {data?.image && (

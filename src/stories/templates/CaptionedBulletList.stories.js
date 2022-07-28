@@ -87,7 +87,8 @@ Default.args = {
   },
   imageLibrary: [{
     id: "background-image",
-    image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg"
+    image: "https://i.pinimg.com/564x/76/69/37/766937c25ef31dbe9e62a74c91108594.jpg",
+
   }],
   slideId: 0,
   asVariant: "warning",

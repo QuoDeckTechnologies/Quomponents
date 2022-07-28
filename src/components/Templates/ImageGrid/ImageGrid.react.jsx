@@ -143,10 +143,6 @@ export default function ImageGrid(props) {
         textColor: props.withColor?.textBlockTextColor,
         backgroundColor: props.withColor?.textBlockBackgroundColor
     }
-    let SlideHeaderText = {
-        title: data?.title,
-        subTitle: data?.subtitle,
-    }
     //-------------------------------------------------------------------
     // Function to return a view for ImageGrid
     //-------------------------------------------------------------------
@@ -161,8 +157,8 @@ export default function ImageGrid(props) {
                 <div className={`${quommonClasses.childClasses}`} key={"imageGrid-" + props.slideId}>
                     {!data?.image && (data?.title || data?.subtitle) && (
                         <SlideHeader
-                            content={SlideHeaderText}
-                            withColor={slideHeaderColors} />
+                            title={data?.title}
+                            subtitle={data?.subtitle} />
                     )}
                     {data?.image && (
                         <img className="qui-image-grid-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />

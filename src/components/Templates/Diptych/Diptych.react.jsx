@@ -161,10 +161,6 @@ export default function Diptych(props) {
     textColor: props.withColor?.textBlockTextColor,
     backgroundColor: props.withColor?.textBlockBackgroundColor
   }
-  let SlideHeaderText = {
-    title: data?.title,
-    subTitle: data?.subtitle,
-  }
   //-------------------------------------------------------------------
   // Function to return a view for diptych
   //-------------------------------------------------------------------
@@ -179,7 +175,8 @@ export default function Diptych(props) {
         <div className={`${quommonClasses.childClasses}`} key={"diptych-" + props.slideId}>
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
-              content={SlideHeaderText}
+              title={data?.title}
+              subtitle={data?.subtitle}
               withColor={slideHeaderColors} />
           )}
           {data?.image && (

@@ -166,10 +166,6 @@ export default function OpenAnswer(props) {
     hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
     hoverTextColor: props.withColor?.buttonHoverTextColor,
   };
-  let SlideHeaderText = {
-    title: props.data?.title,
-    subTitle: props.data?.subtitle,
-  };
   const getBackground = () => {
     return {
       backgroundImage: `url(${resolveImage(
@@ -206,7 +202,8 @@ export default function OpenAnswer(props) {
           >
             {!data?.image && (data?.title || data?.subtitle) && (
               <SlideHeader
-                content={SlideHeaderText}
+                title={data?.title}
+                subtitle={data?.subtitle}
                 withColor={slideHeaderColors}
               />
             )}
