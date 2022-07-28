@@ -104,7 +104,6 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "center",
                 }}
             >
                 {story()}
@@ -127,22 +126,22 @@ Default.args = {
         {
             icon: "fa fa-home",
             label: "Home",
-            onClick: () => {},
+            onClick: () => { },
         },
         {
             icon: "fa fa-archive",
             label: "Archives",
-            onClick: () => {},
+            onClick: () => { },
         },
         {
             icon: "divider",
             label: "",
-            onClick: () => {},
+            onClick: () => { },
         },
         {
             icon: "fa fa-power-off",
             label: "Logout",
-            onClick: () => {},
+            onClick: () => { },
         },
     ],
     isCircular: true,
@@ -173,7 +172,50 @@ Default.parameters = {
             story: "Any free fontawesome icon can be used as the Avatar icon definition. This component is combination of the Avatar component on a MenuBlock component, The Avatar icon can be changed with userImage with in withIcon prop , give a link of any profile image and it will replace the icon with it , On the other side which is a Ellipsis icon in menuBlock component which is a part of menu block , this icon can also be change with other , and whole menublock is clickable",
         },
         source: {
-            code: `<AppMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<AppMenu 
+            menu= {[
+                {
+                    icon: "fa fa-home",
+                    label: "Home",
+                    onClick: () => {},
+                },
+                {
+                    icon: "fa fa-archive",
+                    label: "Archives",
+                    onClick: () => {},
+                },
+                {
+                    icon: "divider",
+                    label: "",
+                    onClick: () => {},
+                },
+                {
+                    icon: "fa fa-power-off",
+                    label: "Logout",
+                    onClick: () => {},
+                },
+            ]}
+            isCircular= {true}
+            asVariant= "primary"
+            asSize= "normal"
+            asFloated= "inline"
+            withIcon= {{
+                icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+            }}
+            withColor= {{
+                backgroundColor: "",
+                textColor: "",
+            }}
+            withLabel= {{
+                content: "Catalog",
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "appMenu",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -196,7 +238,50 @@ UserImage.parameters = {
             story: "Any free fontawesome icon can be used as the Avatar icon definition. This component is combination of the Avatar component on a MenuBlock component, The Avatar icon can be changed with userImage with in withIcon prop , here the link if the image is already placed , On the other side which is a Ellipsis icon in menuBlock component which is a part of menu block , this icon can also be change with other , and whole menublock is clickable",
         },
         source: {
-            code: `<AppMenu {...${JSON.stringify(UserImage.args, null, 2)}}/>`,
+            code: `<AppMenu 
+            menu= {[
+                {
+                    icon: "fa fa-home",
+                    label: "Home",
+                    onClick: () => {},
+                },
+                {
+                    icon: "fa fa-archive",
+                    label: "Archives",
+                    onClick: () => {},
+                },
+                {
+                    icon: "divider",
+                    label: "",
+                    onClick: () => {},
+                },
+                {
+                    icon: "fa fa-power-off",
+                    label: "Logout",
+                    onClick: () => {},
+                },
+            ]}
+            isCircular= {true}
+            asVariant= "primary"
+            asSize= "normal"
+            asFloated= "inline"
+            withIcon= {{
+                icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+            }}
+            withColor= {{
+                backgroundColor: "",
+                textColor: "",
+            }}
+            withLabel= {{
+                content: "Catalog",
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "appMenu",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -224,11 +309,50 @@ DisabledIcon.parameters = {
             story: "AppMenu profile icon can change to profile image , Onclick is disabled",
         },
         source: {
-            code: `<AppMenu {...${JSON.stringify(
-                DisabledIcon.args,
-                null,
-                2
-            )}}/>`,
+            code: `<AppMenu 
+            menu= {[
+                {
+                    icon: "fa fa-home",
+                    label: "Home",
+                    onClick: () => {},
+                },
+                {
+                    icon: "fa fa-archive",
+                    label: "Archives",
+                    onClick: () => {},
+                },
+                {
+                    icon: "divider",
+                    label: "",
+                    onClick: () => {},
+                },
+                {
+                    icon: "fa fa-power-off",
+                    label: "Logout",
+                    onClick: () => {},
+                },
+            ]}
+            isCircular= {true}
+            asVariant= "primary"
+            asSize= "normal"
+            asFloated= "inline"
+            withIcon= {{
+                icon: "fas fa-user",
+            }}
+            withColor= {{
+                backgroundColor: "",
+                textColor: "",
+            }}
+            withLabel= {{
+                content: "Catalog",
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "appMenu",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };
@@ -250,11 +374,50 @@ TranslatedAppMenu.parameters = {
             story: "AppMenu profile icon can change to profile image , Onclick is disabled",
         },
         source: {
-            code: `<AppMenu {...${JSON.stringify(
-                TranslatedAppMenu.args,
-                null,
-                2
-            )}}/>`,
+            code: `<AppMenu 
+            menu= {[
+                {
+                    icon: "fa fa-home",
+                    label: "Home",
+                    onClick: () => {},
+                },
+                {
+                    icon: "fa fa-archive",
+                    label: "Archives",
+                    onClick: () => {},
+                },
+                {
+                    icon: "divider",
+                    label: "",
+                    onClick: () => {},
+                },
+                {
+                    icon: "fa fa-power-off",
+                    label: "Logout",
+                    onClick: () => {},
+                },
+            ]}
+            isCircular= {true}
+            asVariant= "primary"
+            asSize= "normal"
+            asFloated= "inline"
+            withIcon= {{
+                icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+            }}
+            withColor= {{
+                backgroundColor: "",
+                textColor: "",
+            }}
+            withLabel= {{
+                content: "Catalog",
+            }}
+            withTranslation= {{
+                lang: "hi",
+                tgt: "appMenu",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };
