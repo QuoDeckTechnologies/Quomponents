@@ -83,11 +83,25 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<OptionalImageField {...${JSON.stringify(
-        Default.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionalImageField
+          title="Upload"
+          icon="fas fa-image"
+          actionButton={true}
+          type="image/*"
+          capture=""
+          multiple={false}
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            accentColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          isDisabled={false}
+          isHidden={false}
+          isFluid={false}
+          onUpload={()=>{}}
+        />`,
     },
   },
 };
@@ -107,11 +121,25 @@ WithoutActionButton.parameters = {
       story: "Displays a OptionalImageField without action button",
     },
     source: {
-      code: `<OptionalImageField {...${JSON.stringify(
-        WithoutActionButton.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionalImageField
+          title=""
+          icon="fas fa-image"
+          actionButton={false}
+          type="image/*"
+          capture=""
+          multiple={false}
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            accentColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          isDisabled={false}
+          isHidden={false}
+          isFluid={false}
+          onUpload={()=>{}}
+        />`,
     },
   },
 };
@@ -130,11 +158,25 @@ WithoutIcon.parameters = {
       story: "Displays a OptionalImageField without icon button",
     },
     source: {
-      code: `<OptionalImageField {...${JSON.stringify(
-        WithoutIcon.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionalImageField
+          title="Upload"
+          actionButton={true}
+          icon="fas fa-image"
+          type="image/*"
+          capture=""
+          multiple={false}
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            accentColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          isDisabled={false}
+          isHidden={false}
+          isFluid={false}
+          onUpload={()=>{}}
+        />`,
     },
   },
 };
@@ -154,11 +196,25 @@ WithCustomIcon.parameters = {
       story: "Displays a OptionalImageField with custom icon button",
     },
     source: {
-      code: `<OptionalImageField {...${JSON.stringify(
-        WithCustomIcon.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionalImageField
+          title="Upload new file"
+          icon="fas fa-camera-retro"
+          actionButton={true}
+          type="image/*"
+          capture=""
+          multiple={false}
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            accentColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          isDisabled={false}
+          isHidden={false}
+          isFluid={false}
+          onUpload={()=>{}}
+        />`,
     },
   },
 };

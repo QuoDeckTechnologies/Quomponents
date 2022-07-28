@@ -25,8 +25,8 @@ Slider.propTypes = {
     */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    trackColor: PropTypes.string,
     accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
   }),
   /**
     Use to define the entry animation of the component
@@ -116,17 +116,17 @@ export default function Slider(props) {
                 : "#FFBF00",
               "&:hover": {
                 boxShadow: `0px 0px 0px 8px ${
-                  withColor?.accentColor ? withColor?.accentColor : "#FFBF0026"
+                  withColor?.hoverBackgroundColor ? withColor?.hoverBackgroundColor : "#FFBF0026"
                 }`,
               },
               "&.Mui-focusVisible": {
                 boxShadow: `0px 0px 0px 8px ${
-                  withColor?.accentColor ? withColor?.accentColor : "#FFBF0026"
+                  withColor?.hoverBackgroundColor ? withColor?.hoverBackgroundColor : "#FFBF0026"
                 }`,
               },
             },
             "& .MuiSlider-rail": {
-              color: withColor?.trackColor ? withColor?.trackColor : "#FFBF00",
+              color: withColor?.accentColor ? withColor?.accentColor : "#FFBF00",
             },
           }}
           defaultValue={initialValue}

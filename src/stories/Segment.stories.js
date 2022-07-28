@@ -50,18 +50,6 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
   parameters: {
     componentSubtitle: "Displays a basic Segment for general-purpose use",
     a11y: { disable: true },
@@ -96,7 +84,22 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<Segment {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<Segment
+          isCircular={false}
+          asFloated="inline"
+          asPadded="normal"
+          withColor={{
+            backgroundColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isHidden={false}
+        >
+          <div style={{ height: "40em", width: "30em" }}></div>
+        </Segment>`,
     },
   },
 };
@@ -126,11 +129,26 @@ SegmentWithChildren.parameters = {
       story: "Displays Segment wrapping other components",
     },
     source: {
-      code: `<Segment {...${JSON.stringify(
-        SegmentWithChildren.args,
-        null,
-        2
-      )}}/>`,
+      code: `<Segment
+          asPadded="normal"
+          isCircular={true}
+          asFloated="inline"
+          withColor={{
+            backgroundColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isHidden={false}
+        >
+          <div style={{ padding: "1em" }}>
+            <i className="fas fa-users" style={{ fontSize: "1.8em" }}></i>
+            <p style={{ margin: 0, fontSize: "1.1em" }}>20,539</p>
+            <p style={{ margin: 0, fontSize: "1.1em" }}>Players</p>
+          </div>
+        </Segment>`,
     },
   },
 };
@@ -148,7 +166,26 @@ FloatedSegment.parameters = {
       story: "Use to float a component left, right, inline or none.",
     },
     source: {
-      code: `<Segment {...${JSON.stringify(FloatedSegment.args, null, 2)}}/>`,
+      code: `<Segment
+          asPadded="normal"
+          isCircular={true}
+          asFloated="none"
+          withColor={{
+            backgroundColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isHidden={false}
+        >
+          <div style={{ padding: "1em" }}>
+            <i className="fas fa-users" style={{ fontSize: "1.8em" }}></i>
+            <p style={{ margin: 0, fontSize: "1.1em" }}>20,539</p>
+            <p style={{ margin: 0, fontSize: "1.1em" }}>Players</p>
+          </div>
+        </Segment>`,
     },
   },
 };
@@ -166,7 +203,22 @@ ColoredSegment.parameters = {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<Segment {...${JSON.stringify(ColoredSegment.args, null, 2)}}/>`,
+      code: `<Segment
+          isCircular={false}
+          asFloated="inline"
+          asPadded="normal"
+          withColor={{
+            backgroundColor: "#f8af09",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isHidden={false}
+        >
+          <div style={{ height: "40em", width: "30em" }}></div>
+        </Segment>`,
     },
   },
 };
@@ -188,7 +240,22 @@ AnimatedSegment.parameters = {
       story: "We can animate the appearance of Segment component",
     },
     source: {
-      code: `<Segment {...${JSON.stringify(AnimatedSegment.args, null, 2)}}/>`,
+      code: `<Segment
+          isCircular={false}
+          asFloated="inline"
+          asPadded="normal"
+          withColor={{
+            backgroundColor: "#f8af09",
+          }}
+          withAnimation={{
+            animation: "fade",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isHidden={false}
+        >
+          <div style={{ height: "40em", width: "30em" }}></div>
+        </Segment>`,
     },
   },
 };

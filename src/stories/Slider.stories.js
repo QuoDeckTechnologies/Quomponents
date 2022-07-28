@@ -11,8 +11,8 @@ export default {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
-          trackColor: "",
           accentColor: "",
+          hoverBackgroundColor: "",
         },
       },
     },
@@ -77,8 +77,8 @@ Default.args = {
   },
   withColor: {
     backgroundColor: "",
-    trackColor: "",
     accentColor: "",
+    hoverBackgroundColor: "",
   },
   isDisabled: false,
   isHidden: false,
@@ -86,7 +86,22 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<Slider {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<Slider
+          initialValue={10}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withColor={{
+            backgroundColor: "",
+            accentColor: "",
+            hoverBackgroundColor: "",
+          }}
+          isDisabled={false}
+          isHidden={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -104,8 +119,8 @@ ColoredSlider.args = {
   },
   withColor: {
     backgroundColor: "#00153E",
-    trackColor: "#00153E",
-    accentColor: "#00153E26",
+    accentColor: "#00153E",
+    hoverBackgroundColor: "#00153E26",
   },
   isDisabled: false,
   isHidden: false,
@@ -113,7 +128,22 @@ ColoredSlider.args = {
 ColoredSlider.parameters = {
   docs: {
     source: {
-      code: `<Slider {...${JSON.stringify(ColoredSlider.args, null, 2)}}/>`,
+      code: `<Slider
+          initialValue={10}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withColor={{
+            backgroundColor: "#00153E",
+            accentColor: "#00153E",
+            hoverBackgroundColor: "#00153E26",
+          }}
+          isDisabled={false}
+          isHidden={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -129,7 +159,22 @@ DisabledSlider.args = {
 DisabledSlider.parameters = {
   docs: {
     source: {
-      code: `<Slider {...${JSON.stringify(DisabledSlider.args, null, 2)}}/>`,
+      code: `<Slider
+          isDisabled={true}
+          initialValue={10}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withColor={{
+            backgroundColor: "",
+            accentColor: "",
+            hoverBackgroundColor: "",
+          }}
+          isHidden={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };

@@ -89,7 +89,23 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<ClickableImage {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<ClickableImage
+          image=""
+          asVariant="primary"
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withColor={{
+            borderColor: "#fcbf49",
+          }}
+          isDisabled={false}
+          isHidden={false}
+          isCircular={false}
+          active={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -108,11 +124,23 @@ WithBase64Image.parameters = {
       story: "Use to Show the ClickableImage with image provided by the user.",
     },
     source: {
-      code: `<ClickableImage {...${JSON.stringify(
-        WithBase64Image.args,
-        null,
-        2
-      )}}/>`,
+      code: `<ClickableImage
+      image="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAEQCAYAAADGRsz8AAAACXBIWXMAACxLAAAsS......"
+      asVariant="primary"
+      withAnimation={{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withColor={{
+        borderColor: "#fcbf49",
+      }}
+      isDisabled={false}
+      isHidden={false}
+      isCircular={false}
+      active={false}
+      onClick={()=>{}}
+    />`,
     },
   },
 };
@@ -131,7 +159,23 @@ WithImage.parameters = {
       story: "Use to Show the ClickableImage with image provided by the user.",
     },
     source: {
-      code: `<ClickableImage {...${JSON.stringify(WithImage.args, null, 2)}}/>`,
+      code: `<ClickableImage
+          image="https://images.unsplash.com/photo-1647339490516-b835c0408b71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          asVariant="primary"
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withColor={{
+            borderColor: "#fcbf49",
+          }}
+          isDisabled={false}
+          isHidden={false}
+          isCircular={false}
+          active={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -146,7 +190,7 @@ const Circular = (args) => {
   };
   return (
     <div>
-      <ClickableImage {...Object.assign({}, baseObj, {})} />{" "}
+      <ClickableImage {...Object.assign({}, baseObj, {})} />
     </div>
   );
 };
@@ -158,7 +202,25 @@ CircularImage.parameters = {
         "Variants and Size are supported with Animation. Use as per purpose noted here.",
     },
     source: {
-      code: ``,
+      code: `<div>
+          <ClickableImage
+            isCircular={true}
+            image=""
+            asVariant="primary"
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            withColor={{
+              borderColor: "#fcbf49",
+            }}
+            isDisabled={false}
+            isHidden={false}
+            active={false}
+            onClick={()=>{}}
+          />
+        </div>`,
     },
   },
 };
@@ -205,7 +267,29 @@ WithSlide.parameters = {
         "Use to Show the ClickableImage index output with itiration provided by the user.",
     },
     source: {
-      code: `<ClickableImage {...${JSON.stringify(WithSlide.args, null, 2)}}/>`,
+      code: `
+      let images: [
+        "https://images.unsplash.com/photo-1647339490516-b835c0408b71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "https://images.unsplash.com/photo-1648285191822-1b02b816cd78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
+        "https://images.unsplash.com/photo-1648138754702-de8f199972b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+      ]
+      return (
+        <div style={{ display: "flex" }}>
+          {images.map((image, index) => {
+            return (
+              <div style={{ margin: "0 0.1em", flex: 1 }} key={index}>
+                <ClickableImage
+                  image={image}
+                  onClick={() => {}}
+                  active={args?.active}
+                  isCircular={args?.isCircular}
+                  withColor={args?.withColor}
+                />
+              </div>
+            );
+          })}
+        </div>
+      );`,
     },
   },
 };
@@ -275,11 +359,49 @@ WithLighBox.parameters = {
         "Use to Show the ClickableImage with a another component(LightBox).",
     },
     source: {
-      code: `<ClickableImage {...${JSON.stringify(
-        WithLighBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `const [open, setOpen] = useState(false);
+      return (
+        <div
+          style={{
+            border: "0.1em solid black",
+            display: "inline-block",
+            height: "25em",
+          }}
+        >
+          {!open && (
+            <div style={{ width: "15em" }}>
+              <ClickableImage
+                image={args.image}
+                onClick={() => setOpen(true)}
+                active={args?.active}
+                isCircular={args?.isCircular}
+                withColor={args?.withColor}
+              />
+            </div>
+          )}
+          {open && (
+            <div
+              style={{
+                width: "15em",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Button
+                withAnimation={{
+                  animation: "zoom",
+                  duration: 0.5,
+                  delay: 0,
+                }}
+                content="Continue"
+                onClick={() => setOpen(false)}
+              />
+            </div>
+          )}
+        </div>
+      );`,
     },
   },
 };

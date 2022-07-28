@@ -192,7 +192,103 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<ContentTableRow {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: (
+        `<ContentTableRow
+          content={{
+            name: "Dummy file-name",
+            readerType: "videck",
+            checked: true,
+          }}
+          asPadded="normal"
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            menuIconColor: "",
+            readerIconColor: "",
+            checkIconColor: "",
+          }}
+          onChange={() => {}}
+          onChecked={() => {}}
+          onUnchecked={() => {}}
+          onContentUpdate={() => {}}
+        >
+          <ActionMenu
+            content={[
+              {
+                title: "Open Deck",
+                icon: "fas fa-book-open",
+                func: () => {},
+              },
+              {
+                title: "Edit Deck",
+                icon: "fas fa-edit",
+                func: () => {},
+              },
+              {
+                title: "Move Deck Up",
+                icon: "fas fa-chevron-up",
+                func: () => {},
+              },
+              {
+                title: "Move Deck Down",
+                icon: "fas fa-chevron-down",
+                func: () => {},
+              },
+              {
+                title: "Move to Topic",
+                icon: "fas fa-retweet",
+                func: () => {},
+              },
+              {
+                title: "Unpublish Deck",
+                icon: "fas fa-eye-slash",
+                func: () => {},
+              },
+              {
+                title: "Delete Deck",
+                icon: "fas fa-trash-alt",
+                func: () => {},
+              },
+            ]}
+            withColor={{
+              backgroundColor: "#ffffff",
+              accentColor: "",
+              textColor: "",
+            }}
+            withAnimation={{
+              animation: "slideDown",
+              duration: 0.5,
+              delay: 0,
+            }}
+            withTranslation={{
+              lang: "en",
+              tgt: "actionMenu",
+              dictionary: ${JSON.stringify({
+                hi: {
+                  actionMenu: {
+                    content: [
+                      { title: "डेक खोलो" },
+                      { title: "डेक संपादित करें" },
+                      { title: "डेक ऊपर ले जाएँ" },
+                      { title: "डेक नीचे ले जाएँ" },
+                      { title: "विषय पर जाएं" },
+                      { title: "डेक को अप्रकाशित करें" },
+                      { title: "डेक हटाएं" },
+                    ],
+                  },
+                },
+              })},,
+            }}
+            isDisabled={false}
+            isHidden={false}
+          />
+        </ContentTableRow>`
+      ),
     },
   },
 };
@@ -267,11 +363,99 @@ TranslatedContentTableRow.parameters = {
       story: "Use to change the language that the text appears in.",
     },
     source: {
-      code: `<ContentTableRow {...${JSON.stringify(
-        TranslatedContentTableRow.args,
-        null,
-        2
-      )}}/>`,
+      code: `<ContentTableRow
+          content={{
+            name: "Dummy file-name",
+            readerType: "videck",
+            checked: true,
+          }}
+          asPadded="normal"
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            menuIconColor: "",
+            readerIconColor: "",
+            checkIconColor: "",
+          }}
+          onChange={() => {}}
+          onChecked={() => {}}
+          onUnchecked={() => {}}
+          onContentUpdate={() => {}}
+        >
+          <ActionMenu
+            content={[
+              {
+                title: "Open Deck",
+                icon: "fas fa-book-open",
+                func: () => {},
+              },
+              {
+                title: "Edit Deck",
+                icon: "fas fa-edit",
+                func: () => {},
+              },
+              {
+                title: "Move Deck Up",
+                icon: "fas fa-chevron-up",
+                func: () => {},
+              },
+              {
+                title: "Move Deck Down",
+                icon: "fas fa-chevron-down",
+                func: () => {},
+              },
+              {
+                title: "Move to Topic",
+                icon: "fas fa-retweet",
+                func: () => {},
+              },
+              {
+                title: "Unpublish Deck",
+                icon: "fas fa-eye-slash",
+                func: () => {},
+              },
+              {
+                title: "Delete Deck",
+                icon: "fas fa-trash-alt",
+                func: () => {},
+              },
+            ]}
+            withColor={{
+              backgroundColor: "#ffffff",
+              textColor: "",
+              accentColor: "",
+            }}
+            withAnimation={{
+              animation: "slideDown",
+              duration: 0.5,
+              delay: 0,
+            }}
+            withTranslation={{
+              lang: "hi",
+              tgt: "actionMenu",
+              dictionary: ${JSON.stringify({
+                hi: {
+                  actionMenu: {
+                    content: [
+                      { title: "डेक खोलो" },
+                      { title: "डेक संपादित करें" },
+                      { title: "डेक ऊपर ले जाएँ" },
+                      { title: "डेक नीचे ले जाएँ" },
+                      { title: "विषय पर जाएं" },
+                      { title: "डेक को अप्रकाशित करें" },
+                      { title: "डेक हटाएं" },
+                    ],
+                  },
+                },
+              })},
+            }}
+          />
+        </ContentTableRow>`,
     },
   },
 };
@@ -295,11 +479,101 @@ ColoredContentTableRow.parameters = {
       story: "Use to change the language that the text appears in.",
     },
     source: {
-      code: `<ContentTableRow {...${JSON.stringify(
-        ColoredContentTableRow.args,
-        null,
-        2
-      )}}/>`,
+      code: `<ContentTableRow
+          content={{
+            name: "Dummy file-name",
+            readerType: "videck",
+            checked: true,
+          }}
+          asPadded="normal"
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withColor={{
+            backgroundColor: "#FFBF00",
+            textColor: "#222A35",
+            menuIconColor: "#00153E",
+            readerIconColor: "#00153E",
+            checkIconColor: "#00153E",
+          }}
+          onChange={() => {}}
+          onChecked={() => {}}
+          onUnchecked={() => {}}
+          onContentUpdate={() => {}}
+        >
+          <ActionMenu
+            content={[
+              {
+                title: "Open Deck",
+                icon: "fas fa-book-open",
+                func: () => {},
+              },
+              {
+                title: "Edit Deck",
+                icon: "fas fa-edit",
+                func: () => {},
+              },
+              {
+                title: "Move Deck Up",
+                icon: "fas fa-chevron-up",
+                func: () => {},
+              },
+              {
+                title: "Move Deck Down",
+                icon: "fas fa-chevron-down",
+                func: () => {},
+              },
+              {
+                title: "Move to Topic",
+                icon: "fas fa-retweet",
+                func: () => {},
+              },
+              {
+                title: "Unpublish Deck",
+                icon: "fas fa-eye-slash",
+                func: () => {},
+              },
+              {
+                title: "Delete Deck",
+                icon: "fas fa-trash-alt",
+                func: () => {},
+              },
+            ]}
+            withColor={{
+              backgroundColor: "#ffffff",
+              accentColor: "",
+              textColor: "",
+            }}
+            withAnimation={{
+              animation: "slideDown",
+              duration: 0.5,
+              delay: 0,
+            }}
+            withTranslation={{
+              lang: "en",
+              tgt: "actionMenu",
+              dictionary: ${JSON.stringify({
+                hi: {
+                  actionMenu: {
+                    content: [
+                      { title: "डेक खोलो" },
+                      { title: "डेक संपादित करें" },
+                      { title: "डेक ऊपर ले जाएँ" },
+                      { title: "डेक नीचे ले जाएँ" },
+                      { title: "विषय पर जाएं" },
+                      { title: "डेक को अप्रकाशित करें" },
+                      { title: "डेक हटाएं" },
+                    ],
+                  },
+                },
+              })},
+            }}
+            isDisabled={false}
+            isHidden={false}
+          />
+        </ContentTableRow>`,
     },
   },
 };

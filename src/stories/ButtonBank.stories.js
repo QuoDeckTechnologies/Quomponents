@@ -88,7 +88,65 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<ButtonBank {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<ButtonBank
+          content={[
+            {
+              content: "Default Button",
+              asEmphasis: "contained",
+              isCircular: false,
+              asFloated: "none",
+              asPadded: "normal",
+              asAligned: "center",
+              withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+              },
+              isDisabled: false,
+              isLoading: false,
+              isHidden: false,
+              isFluid: false,
+              onClick: () => {},
+            },
+            {
+              content: "Default Button",
+              asEmphasis: "contained",
+              isCircular: false,
+              asFloated: "none",
+              asPadded: "normal",
+              asAligned: "center",
+              withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+              },
+              isDisabled: false,
+              isLoading: false,
+              isHidden: false,
+              isFluid: false,
+              onClick: () => {},
+            },
+            {
+              content: "Default Button",
+              asEmphasis: "contained",
+              isCircular: false,
+              asFloated: "none",
+              asPadded: "normal",
+              asAligned: "center",
+              withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+              },
+              isDisabled: false,
+              isLoading: false,
+              isHidden: false,
+              isFluid: false,
+              onClick: () => {},
+            },
+          ]}
+          isHorizontal={false}
+        />`,
     },
   },
 };
@@ -189,11 +247,93 @@ TranslatedButtonBank.parameters = {
       story: "Use to change the language that the text appears in.",
     },
     source: {
-      code: `<ButtonBank {...${JSON.stringify(
-        TranslatedButtonBank.args,
-        null,
-        2
-      )}}/>`,
+      code: `<ButtonBank
+          content={[
+            {
+              content: "Default Button",
+              asEmphasis: "contained",
+              isCircular: false,
+              asFloated: "none",
+              asPadded: "normal",
+              asAligned: "center",
+              withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+              },
+              withTranslation: {
+                lang: "hi",
+                tgt: "button",
+                dictionary: ${JSON.stringify({
+                  hi: {
+                    loading: "बस एक मिनट...",
+                    button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+                  },
+                })}
+              },
+              isDisabled: false,
+              isLoading: false,
+              isHidden: false,
+              isFluid: false,
+            },
+            {
+              content: "Default Button",
+              asEmphasis: "contained",
+              isCircular: false,
+
+              asFloated: "none",
+              asPadded: "normal",
+              asAligned: "center",
+              withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+              },
+              withTranslation: {
+                lang: "hi",
+                tgt: "button",
+                dictionary: ${JSON.stringify({
+                  hi: {
+                    loading: "बस एक मिनट...",
+                    button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+                  },
+                })}
+              },
+              isDisabled: false,
+              isLoading: false,
+              isHidden: false,
+              isFluid: false,
+            },
+            {
+              content: "Default Button",
+              asEmphasis: "contained",
+              isCircular: false,
+              asFloated: "none",
+              asPadded: "normal",
+              asAligned: "center",
+              withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+              },
+              withTranslation: {
+                lang: "hi",
+                tgt: "button",
+                dictionary: ${JSON.stringify({
+                  hi: {
+                    loading: "बस एक मिनट...",
+                    button: { text: "बटन", label: "इसे बार-बार न दबाएं..." },
+                  },
+                })}
+              },
+              isDisabled: false,
+              isLoading: false,
+              isHidden: false,
+              isFluid: false,
+            },
+          ]}
+          isHorizontal={false}
+        />`,
     },
   },
 };
@@ -211,11 +351,65 @@ HorizontalButtonBank.parameters = {
       story: "Use to change the directions of the button.",
     },
     source: {
-      code: `<ButtonBank {...${JSON.stringify(
-        HorizontalButtonBank.args,
-        null,
-        2
-      )}}/>`,
+      code: `<ButtonBank
+          content={[
+            {
+              content: "Default Button",
+              asEmphasis: "contained",
+              isCircular: false,
+              asFloated: "none",
+              asPadded: "normal",
+              asAligned: "center",
+              withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+              },
+              isDisabled: false,
+              isLoading: false,
+              isHidden: false,
+              isFluid: false,
+              onClick: () => {},
+            },
+            {
+              content: "Default Button",
+              asEmphasis: "contained",
+              isCircular: false,
+              asFloated: "none",
+              asPadded: "normal",
+              asAligned: "center",
+              withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+              },
+              isDisabled: false,
+              isLoading: false,
+              isHidden: false,
+              isFluid: false,
+              onClick: () => {},
+            },
+            {
+              content: "Default Button",
+              asEmphasis: "contained",
+              isCircular: false,
+              asFloated: "none",
+              asPadded: "normal",
+              asAligned: "center",
+              withAnimation: {
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+              },
+              isDisabled: false,
+              isLoading: false,
+              isHidden: false,
+              isFluid: false,
+              onClick: () => {},
+            },
+          ]}
+          isHorizontal={true}
+        />`,
     },
   },
 };

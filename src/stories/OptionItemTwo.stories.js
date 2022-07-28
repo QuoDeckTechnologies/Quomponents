@@ -99,7 +99,36 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<OptionItemTwo {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<OptionItemTwo
+          targetName="Target Name"
+          value=""
+          placeholder="Option Item Two"
+          checked={true}
+          maxLength={300}
+          withColor={{
+            backgroundColor: "#ffab000d",
+            textColor: "",
+            accentColor: "#FFBF00",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "optionItemTwo",
+            dictionary: ${JSON.stringify({
+              hi: {
+                optionItemTwo: {
+                  placeholder: "यह विकल्प ए है",
+                  correct: "सही",
+                  incorrect: "ग़लत",
+                },
+              },
+            })},
+          }}
+          onInput={() => {}}
+          onSelect={() => {}}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -120,11 +149,36 @@ ColoredOptionItemTwo.args = {
 ColoredOptionItemTwo.parameters = {
   docs: {
     source: {
-      code: `<OptionItemTwo {...${JSON.stringify(
-        ColoredOptionItemTwo.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItemTwo
+          targetName="Target Name"
+          value=""
+          placeholder="Option Item Two"
+          checked={true}
+          maxLength={300}
+          withColor={{
+            backgroundColor: "#8c9ea3",
+            accentColor: "#597387",
+            textColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "optionItemTwo",
+            dictionary: ${JSON.stringify({
+              hi: {
+                optionItemTwo: {
+                  placeholder: "यह विकल्प ए है",
+                  correct: "सही",
+                  incorrect: "ग़लत",
+                },
+              },
+            })},
+          }}
+          onInput={() => {}}
+          onSelect={() => {}}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -143,11 +197,36 @@ TranslatedOptionItemTwo.args = {
 TranslatedOptionItemTwo.parameters = {
   docs: {
     source: {
-      code: `<OptionItemTwo {...${JSON.stringify(
-        TranslatedOptionItemTwo.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItemTwo
+          targetName="Target Name"
+          value=""
+          placeholder="Option Item Two"
+          checked={true}
+          maxLength={300}
+          withColor={{
+            backgroundColor: "#ffab000d",
+            textColor: "",
+            accentColor: "#FFBF00",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withTranslation={{
+            lang: "hi",
+            tgt: "optionItemTwo",
+            dictionary: ${JSON.stringify({
+              hi: {
+                optionItemTwo: {
+                  placeholder: "यह विकल्प ए है",
+                  correct: "सही",
+                  incorrect: "ग़लत",
+                },
+              },
+            })},
+          }}
+          onInput={() => {}}
+          onSelect={() => {}}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -270,11 +349,113 @@ MultipleOptionItemTwo.args = {
 MultipleOptionItemTwo.parameters = {
   docs: {
     source: {
-      code: `<OptionItemTwo {...${JSON.stringify(
-        MultipleOptionItemTwo.args,
-        null,
-        2
-      )}}/>`,
+      code: `const [contentArr, setContentArr] = useState([
+        {
+          targetName: "TargetNameOne",
+          value: "",
+          placeholder: "Placeholder One",
+          checked: false,
+        },
+        {
+          targetName: "TargetNameTwo",
+          value: "",
+          placeholder: "Placeholder Two",
+          checked: true,
+        },
+        {
+          targetName: "TargetNameThree",
+          value: "Default Value",
+          placeholder: "Placeholder Three",
+          checked: false,
+        },
+      ]);
+      // -------------------------------------------------------------
+      // Hook to return modified content object
+      // -------------------------------------------------------------
+      useEffect(() => {
+        args.onInput(contentArr);
+      });
+      // -------------------------------------------------------------
+      // Temporary variables for operations
+      // -------------------------------------------------------------
+      let tmp_state = contentArr;
+      let tmp_arr = [];
+      let tmp_obj = {};
+      // -------------------------------------------------------------
+      // Function to remove an object from the array
+      // -------------------------------------------------------------
+      const handleRemove = (dataID) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_state.forEach((dataObj) => {
+          tmp_arr.push({ ...dataObj });
+        });
+        tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to set selected option in the content array
+      // -------------------------------------------------------------
+      const handleSelect = (targetName, value, checked) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.targetName === targetName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.checked = checked;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_obj.checked = !checked;
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to put value in the array of objects
+      // -------------------------------------------------------------
+      const handleInput = (targetName, value, checked) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.targetName === targetName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.value = value;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      return (
+        <div>
+          {contentArr?.map((content, index) => {
+            return (
+              <div style={{ marginBottom: "1em" }} key={index}>
+                <OptionItemTwo
+                  {...args}
+                  targetName={content.targetName}
+                  value={content.value}
+                  placeholder={content.placeholder}
+                  checked={content.checked}
+                  onSelect={(targetName, value, checked) =>
+                    handleSelect(targetName, value, checked)
+                  }
+                  onInput={(targetName, value, checked) =>
+                    handleInput(targetName, value, checked)
+                  }
+                  onClick={handleRemove}
+                />
+              </div>
+            );
+          })}
+        </div>
+      );`,
     },
   },
 };

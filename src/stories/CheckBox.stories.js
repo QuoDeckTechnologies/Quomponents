@@ -138,7 +138,39 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<CheckBox {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<CheckBox
+          name="checkbox"
+          label="Default Checkbox"
+          checked={false}
+          asSize="normal"
+          asFloated="left"
+          asPadded="normal"
+          asAligned="left"
+          withColor={{
+            accentColor: "",
+            textColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "checkBox",
+            dictionary: ${JSON.stringify({
+              hi: {
+                checkBox: {
+                  label: "डिफ़ॉल्ट चेकबॉक्स",
+                },
+              },
+            })},
+          }}
+          isDisabled={false}
+          isHidden={false}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -161,11 +193,28 @@ ReadOnlyCheckBox.parameters = {
         "Read Only checkbox can be created by making `isDisabled` prop set to `true` and `checked` state can be as required",
     },
     source: {
-      code: `<CheckBox {...${JSON.stringify(
-        ReadOnlyCheckBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CheckBox
+          name="checkbox"
+          label="Read Only Checkbox"
+          checked={true}
+          isDisabled={true}
+          isHidden={false}
+          asSize="normal"
+          asFloated="left"
+          asPadded="normal"
+          asAligned="left"
+          withColor={{
+            accentColor: "",
+            textColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -188,11 +237,28 @@ DisabledCheckBox.parameters = {
         "Disabled checkbox can be created with `isDisabled` prop set to `true`",
     },
     source: {
-      code: `<CheckBox {...${JSON.stringify(
-        DisabledCheckBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CheckBox
+          name="checkbox"
+          label="Disabled Checkbox"
+          checked={false}
+          isDisabled={true}
+          isHidden={false}
+          asSize="normal"
+          asFloated="left"
+          asPadded="normal"
+          asAligned="left"
+          withColor={{
+            accentColor: "",
+            textColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -231,16 +297,56 @@ MultipleCheckBox.parameters = {
         "Multiple checkboxes can be used which outputs their status and label text to `onClick` prop",
     },
     source: {
-      code: `<CheckBox {...${JSON.stringify(
-        MultipleCheckBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<div>
+          <CheckBox
+            name="checkbox A"
+            label="Option One"
+            checked={true}
+            asFloated="none"
+            asSize="normal"
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              accentColor: "",
+              textColor: "",
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isDisabled={false}
+            isHidden={false}
+            isFluid={false}
+          />
+          <CheckBox
+            name="checkbox B"
+            label="Option Two"
+            checked={false}
+            asFloated="none"
+            asSize="normal"
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              accentColor: "",
+              textColor: "",
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isDisabled={false}
+            isHidden={false}
+            isFluid={false}
+            onClick={()=>{}}
+          />
+        </div>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Multiple CheckBox
+// Multiple CheckBox Inline
 // -------------------------------------------------------------
 const MultipleTemplateInline = (args) => {
   return (
@@ -273,11 +379,51 @@ InlineMultipleCheckBox.parameters = {
       story: "Multiple inline checkboxes can be created when needed",
     },
     source: {
-      code: `<CheckBox {...${JSON.stringify(
-        InlineMultipleCheckBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<div>
+          <CheckBox
+            name="checkbox A"
+            label="Option One"
+            checked={true}
+            asFloated="inline"
+            asSize="normal"
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              accentColor: "",
+              textColor: "",
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isDisabled={false}
+            isHidden={false}
+            isFluid={false}
+          />
+          <CheckBox
+            name="checkbox B"
+            label="Option Two"
+            checked={false}
+            asFloated="inline"
+            asSize="normal"
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              accentColor: "",
+              textColor: "",
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isDisabled={false}
+            isHidden={false}
+            isFluid={false}
+            onClick={()=>{}}
+          />
+        </div>`,
     },
   },
 };
@@ -301,7 +447,28 @@ ColoredCheckBox.parameters = {
       story: "Colored checkbox can be created by using withColor props",
     },
     source: {
-      code: `<CheckBox {...${JSON.stringify(ColoredCheckBox.args, null, 2)}}/>`,
+      code: `<CheckBox
+          name="checkbox"
+          label="Colored Checkbox"
+          checked={false}
+          asSize="normal"
+          asFloated="left"
+          asPadded="normal"
+          asAligned="left"
+          withColor={{
+            accentColor: "#14213d",
+            textColor: "#14213d",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isDisabled={false}
+          isHidden={false}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -327,11 +494,39 @@ TranslatedCheckBox.parameters = {
         "Translated checkbox can be created by using withTranslation props",
     },
     source: {
-      code: `<CheckBox {...${JSON.stringify(
-        TranslatedCheckBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CheckBox
+          name="checkbox"
+          label="Translated Checkbox"
+          checked={false}
+          asSize="normal"
+          asFloated="left"
+          asPadded="normal"
+          asAligned="left"
+          withColor={{
+            accentColor: "",
+            textColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "hi",
+            tgt: "checkBox",
+            dictionary: ${JSON.stringify({
+              hi: {
+                checkBox: {
+                  label: "डिफ़ॉल्ट चेकबॉक्स",
+                },
+              },
+            })},
+          }}
+          isDisabled={false}
+          isHidden={false}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };

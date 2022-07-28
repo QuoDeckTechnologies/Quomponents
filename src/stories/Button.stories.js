@@ -26,7 +26,6 @@ export default {
         defaultValue: false,
       },
     },
-
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
@@ -62,7 +61,6 @@ export default {
         category: "as-Flags",
       },
     },
-
     withColor: {
       table: {
         category: "with-Params",
@@ -114,7 +112,6 @@ export default {
         },
       },
     },
-
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -147,18 +144,6 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
   parameters: {
     componentSubtitle: "Displays a basic button for general-purpose use",
     a11y: { disable: true },
@@ -174,13 +159,11 @@ Default.args = {
   content: "Default Button",
   asEmphasis: "contained",
   isCircular: false,
-
   asVariant: "primary",
   asSize: "normal",
   asFloated: "none",
   asPadded: "fitted",
   asAligned: "center",
-
   withLabel: {
     format: "caption",
     content: "Do not press this button repeatedly...",
@@ -203,7 +186,6 @@ Default.args = {
     tgt: "button",
     dictionary: dictionary,
   },
-
   isDisabled: false,
   isLoading: false,
   isHidden: false,
@@ -212,7 +194,43 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<Button {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<Button
+          content="Default Button"
+          asEmphasis="contained"
+          isCircular={false}
+          asVariant="primary"
+          asSize="normal"
+          asFloated="none"
+          asPadded="fitted"
+          asAligned="center"
+          withLabel={{
+            forma: "caption",
+            conten: "Do not press this button repeatedly...",
+            textColor: "#000000",
+          }}
+          withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "button",
+            dictionary: dictionary,
+          }}
+          isDisabled={false}
+          isLoading={false}
+          isHidden={false}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -225,13 +243,11 @@ DisabledButton.args = {
   content: "Disabled Button",
   asEmphasis: "contained",
   isCircular: false,
-
   asVariant: "primary",
   asSize: "normal",
   asFloated: "none",
   asPadded: "normal",
   asAligned: "center",
-
   withLabel: {
     format: "label",
     content: "",
@@ -254,7 +270,6 @@ DisabledButton.args = {
     tgt: "button",
     dictionary: dictionary,
   },
-
   isDisabled: true,
   isLoading: false,
   isHidden: false,
@@ -263,7 +278,47 @@ DisabledButton.args = {
 DisabledButton.parameters = {
   docs: {
     source: {
-      code: `<Button {...${JSON.stringify(DisabledButton.args, null, 2)}}/>`,
+      code: `<Button
+          content="Disabled Button"
+          asEmphasis="contained"
+          isCircular={false}
+          asVariant="primary"
+          asSize="normal"
+          asFloated="none"
+          asPadded="normal"
+          asAligned="center"
+          withLabel={{
+            format: "label",
+            content: "",
+            textColor: "#000000",
+          }}
+          withIcon={{
+            icon: "fas fa-minus-circle",
+            size: "1em",
+            position: "left",
+          }}
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          wihAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "button",
+            dictionary: dictionary,
+          }}
+          isDisabled={true}
+          isLoading={false}
+          isHidden={false}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -323,7 +378,18 @@ AllVariants.parameters = {
       story: "5 variants are supported. Use as per purpose noted here.",
     },
     source: {
-      code: `<Button asVariant="primary"/>`,
+      code: `<div>
+          <Button content="Primary" asVariant="primary" asFloated="inline" onClick={()=>{}}/>
+          <Button
+            content="Secondary"
+            asVariant="secondary"
+            asFloated="inline"
+            onClick={()=>{}}
+          />
+          <Button content="Success" asVariant="success" asFloated="inline" onClick={()=>{}}/>
+          <Button content="Warning" asVariant="warning" asFloated="inline" onClick={()=>{}}/>
+          <Button content="Error" asVariant="error" asFloated="inline" onClick={()=>{}}/>
+        </div>`,
     },
   },
 };
@@ -350,7 +416,43 @@ IconOnlyButton.parameters = {
         "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of buttons or for standalone floating actions. Use isCircular to toggle the rounding.",
     },
     source: {
-      code: `<Button isCircular={true} withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click to share this...",textColor: ""}}}/>`,
+      code: `<Button
+          content=""
+          isCircular={true}
+          withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}
+          withLabel={{
+            format: "popover",
+            content: "Click to share this...",
+            textColor: "",
+          }}
+          asEmphasis="contained"
+          asVariant="primary"
+          asSize="normal"
+          asFloated="none"
+          asPadded="fitted"
+          asAligned="center"
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "button",
+            dictionary: dictionary,
+          }}
+          isDisabled={false}
+          isLoading={false}
+          isHidden={false}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -371,7 +473,43 @@ FluidButton.parameters = {
     },
   },
   source: {
-    code: `<Button isFluid={true}/>`,
+    code: `<Button
+        content="Fluid Button"
+        isCircular={true}
+        withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}
+        withLabel={{
+          format: "popover",
+          content: "Click to share this...",
+          textColor: "",
+        }}
+        asEmphasis="contained"
+        asVariant="primary"
+        asSize="normal"
+        asFloated="none"
+        asPadded="fitted"
+        asAligned="center"
+        withColor={{
+          backgroundColor: "",
+          textColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
+        }}
+        withAnimation={{
+          animation: "zoom",
+          duration: 0.5,
+          delay: 0,
+        }}
+        withTranslation={{
+          lang: "en",
+          tgt: "button",
+          dictionary: dictionary,
+        }}
+        isDisabled={false}
+        isLoading={false}
+        isHidden={false}
+        isFluid={true}
+        onClick={()=>{}}
+      />`,
   },
 };
 
@@ -396,7 +534,43 @@ LabelledButton.parameters = {
         "Use to provide a header callout (format:label) above the button. Or use as an information caption (format:caption) below the button. Or use as a tooltip (format:tooltip) to explain what the button does. The text here can be customized through the withTranslation option.",
     },
     source: {
-      code: `<Button withLabel={{format: "label",content: "Press to Confirm...",textColor: "#000000"}}}/>`,
+      code: `<Button
+          content="Labelled Button"
+          isCircular={true}
+          withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}
+          withLabel={{
+            format: "label",
+            content: "Press to Confirm...",
+            textColor: "#000000",
+          }}
+          asEmphasis="contained"
+          asVariant="primary"
+          asSize="normal"
+          asFloated="none"
+          asPadded="fitted"
+          asAligned="center"
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "button",
+            dictionary: dictionary,
+          }}
+          isDisabled={false}
+          isLoading={false}
+          isHidden={false}
+          isFluid={true}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -416,7 +590,43 @@ LoadingButton.parameters = {
         "Use to indicate a loading state for the button when it stops being clickable. The loading text can be customized with the withTranslation option through a common loading:'' value in the dictionary.",
     },
     source: {
-      code: `<Button isLoading={true}/>`,
+      code: `<Button
+          content="Labelled Button"
+          isCircular={true}
+          withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}
+          withLabel={{
+            format: "label",
+            content: "Press to Confirm...",
+            textColor: "#000000",
+          }}
+          asEmphasis="contained"
+          asVariant="primary"
+          asSize="normal"
+          asFloated="none"
+          asPadded="fitted"
+          asAligned="center"
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "button",
+            dictionary: dictionary,
+          }}
+          isDisabled={false}
+          isLoading={true}
+          isHidden={false}
+          isFluid={true}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -441,7 +651,43 @@ ColoredButton.parameters = {
       story: "Use to override the standard colors of the button.",
     },
     source: {
-      code: `<Button withColor={{backgroundColor: "#ffc900", textColor: "#666666",hoverBackgroundColor: "#666666", hoverTextColor: "#ffc900"}}}/>`,
+      code: `<Button
+          content="Colored Button"
+          isCircular={true}
+          withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}
+          withLabel={{
+            format: "label",
+            content: "Press to Confirm...",
+            textColor: "#000000",
+          }}
+          asEmphasis="contained"
+          asVariant="primary"
+          asSize="normal"
+          asFloated="none"
+          asPadded="fitted"
+          asAligned="center"
+          withColor={{
+            backgroundColor: "#ffc900",
+            textColor: "#666666",
+            hoverBackgroundColor: "#666666",
+            hoverTextColor: "#ffc900",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "button",
+            dictionary: dictionary,
+          }}
+          isDisabled={false}
+          isLoading={true}
+          isHidden={false}
+          isFluid={true}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -466,7 +712,43 @@ AnimatedButton.parameters = {
         "Use to animate the entry of the button with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
     },
     source: {
-      code: `<Button withAnimation={{animation: "collapse", duration: 0.5, delay: 0}}}/>`,
+      code: `<Button
+          content="Animated Button"
+          isCircular={true}
+          withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}
+          withLabel={{
+            format: "label",
+            content: "Press to Confirm...",
+            textColor: "#000000",
+          }}
+          asEmphasis="contained"
+          asVariant="primary"
+          asSize="normal"
+          asFloated="none"
+          asPadded="fitted"
+          asAligned="center"
+          withColor={{
+            backgroundColor: "#ffc900",
+            textColor: "#666666",
+            hoverBackgroundColor: "#666666",
+            hoverTextColor: "#ffc900",
+          }}
+          withAnimation={{
+            animation: "collapse",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "button",
+            dictionary: dictionary,
+          }}
+          isDisabled={false}
+          isLoading={true}
+          isHidden={false}
+          isFluid={true}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -491,17 +773,51 @@ TranslatedButton.parameters = {
         "Use to change the language that the text appears in. To make this work for the button, add a button:{text,label} value to the dictionary.",
     },
     source: {
-      code: `<Button withTranslation={{lang: "hi", tgt: "button", dictionary: ${JSON.stringify(
-        {
-          hi: {
-            loading: "बस एक मिनट...",
-            button: {
-              text: "बटन",
-              label: "इसे बार-बार न दबाएं...",
-            },
-          },
-        }
-      )}}}}/>`,
+      code: `<Button
+          content="Animated Button"
+          isCircular={true}
+          withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}
+          withLabel={{
+            format: "label",
+            content: "Press to Confirm...",
+            textColor: "#000000",
+          }}
+          asEmphasis="contained"
+          asVariant="primary"
+          asSize="normal"
+          asFloated="none"
+          asPadded="fitted"
+          asAligned="center"
+          withColor={{
+            backgroundColor: "#ffc900",
+            textColor: "#666666",
+            hoverBackgroundColor: "#666666",
+            hoverTextColor: "#ffc900",
+          }}
+          withAnimation={{
+            animation: "collapse",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "hi",
+            tgt: "button",
+            dictionary: ${JSON.stringify({
+              hi: {
+                loading: "बस एक मिनट...",
+                button: {
+                  text: "बटन",
+                  label: "इसे बार-बार न दबाएं...",
+                },
+              },
+            })}},
+          }}
+          isDisabled={false}
+          isLoading={true}
+          isHidden={false}
+          isFluid={true}
+          onClick={()=>{}}
+        />`,
     },
   },
 };

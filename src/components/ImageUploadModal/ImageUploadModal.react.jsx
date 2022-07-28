@@ -36,13 +36,11 @@ ImageUploadModal.propTypes = {
   Use to override component colors and behavior
   */
   withColor: PropTypes.shape({
-    arcButtonColor: PropTypes.string,
-    arcIconColor: PropTypes.string,
-    arcColor: PropTypes.string,
+    backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
-    buttonColor: PropTypes.string,
-    hoverButtonColor: PropTypes.string,
-    sliderColor: PropTypes.string,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to define the entry animation of the component
@@ -219,9 +217,7 @@ export default function ImageUploadModal(props) {
         <div
           className={`qui-image-modal-upload-header ${quommonClasses.childClasses}`}
         >
-          <h2 style={{ color: withColor?.textColor }}>
-            {tObj?.header || "Upload Image"}
-          </h2>
+          <h2>{tObj?.header || "Upload Image"}</h2>
         </div>
         <div className={`qui-image-cropper ${quommonClasses.childClasses}`}>
           <div className="qui-image-upload-button">
@@ -240,8 +236,10 @@ export default function ImageUploadModal(props) {
                 withTranslation={null}
                 withAnimation={null}
                 withColor={{
-                  backgroundColor: withColor?.buttonColor,
-                  hoverBackgroundColor: withColor?.hoverButtonColor,
+                  backgroundColor: withColor?.backgroundColor,
+                  hoverBackgroundColor: withColor?.backgroundColor,
+                  textColor: withColor?.textColor,
+                  hoverTextColor: withColor?.hoverTextColor,
                 }}
                 asEmphasis="outlined"
                 isFluid={true}
@@ -290,9 +288,9 @@ export default function ImageUploadModal(props) {
           <Slider
             initialValue={10}
             withColor={{
-              backgroundColor: "#FFBF00",
-              trackColor: "#FFBF00",
-              accentColor:'#FFBF0026',
+              backgroundColor: withColor?.accentColor,
+              hoverBackgroundColor: withColor?.hoverBackgroundColor,
+              accentColor: withColor?.accentColor,
             }}
             onClick={(value) => setZoom(value)}
           />
@@ -306,8 +304,10 @@ export default function ImageUploadModal(props) {
               withTranslation={null}
               withAnimation={null}
               withColor={{
-                textColor: withColor?.buttonColor,
-                hoverTextColor: withColor?.hoverButtonColor,
+                backgroundColor: withColor?.backgroundColor,
+                hoverBackgroundColor: withColor?.backgroundColor,
+                textColor: withColor?.textColor,
+                hoverTextColor: withColor?.hoverTextColor,
               }}
               onClick={() => {
                 setImage(null);
@@ -320,8 +320,10 @@ export default function ImageUploadModal(props) {
               withTranslation={null}
               withAnimation={null}
               withColor={{
-                backgroundColor: withColor?.buttonColor,
-                hoverBackgroundColor: withColor?.hoverButtonColor,
+                backgroundColor: withColor?.backgroundColor,
+                hoverBackgroundColor: withColor?.backgroundColor,
+                textColor: "#fff",
+                hoverTextColor: "#fff",
               }}
               asEmphasis="contained"
               asFloated="left"
@@ -330,11 +332,8 @@ export default function ImageUploadModal(props) {
           </div>
         </div>
         <ArcMenu
-          {...props}
           withColor={{
-            backgroundColor: withColor?.arcButtonColor,
-            iconColor: withColor?.arcIconColor,
-            arcColor: withColor?.arcColor,
+            textColor: withColor?.accentColor,
           }}
           type="close"
           arcIcon="close"

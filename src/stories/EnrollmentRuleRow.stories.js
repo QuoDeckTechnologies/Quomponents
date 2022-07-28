@@ -60,11 +60,19 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<EnrollmentRuleRow {...${JSON.stringify(
-        Default.args,
-        null,
-        2
-      )}}/>`,
+      code: (
+        `<EnrollmentRuleRow
+          criteria={{
+            company: "Microsoft",
+            zone: "West",
+            branch: "California",
+            department: "IT",
+            date_of_joining: "2-03-2022",
+          }}
+          onRunRule={() => {}}
+          onRemoveRule={() => {}}
+        />`
+      ),
     },
   },
 };
