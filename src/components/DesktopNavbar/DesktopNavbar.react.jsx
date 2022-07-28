@@ -140,7 +140,7 @@ export default function DesktopNavbar(props) {
     dots: false,
     infinite: false,
     centerMode: false,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 3,
     variableWidth: true,
     draggable: false,
@@ -209,7 +209,7 @@ export default function DesktopNavbar(props) {
         {showNavigation && (
           <div
             className={`qui-desktop-navigation-right-navigation qui-desktop-navigation-navigation ${
-              index + 3 !== links?.length
+              index + 4 !== links?.length
                 ? ""
                 : "qui-desktop-navbar-button-disable"
             }`}
