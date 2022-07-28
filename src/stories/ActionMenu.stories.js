@@ -177,7 +177,65 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<ActionMenu {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<ActionMenu 
+      content= {[
+        {
+          title: "Open Deck",
+          icon: "fas fa-book-open",
+          popover: "Open Deck...",
+          onClick: () => { },
+        },
+        {
+          title: "Edit Deck",
+          icon: "fas fa-edit",
+          popover: "Edit Deck...",
+          onClick: () => { },
+        },
+        {
+          title: "Move Deck Up",
+          icon: "fas fa-chevron-up",
+          popover: "Move Deck Up...",
+          onClick: () => { },
+        },
+        {
+          title: "Move Deck Down",
+          icon: "fas fa-chevron-down",
+          popover: "Move Deck Down...",
+          onClick: () => { },
+        },
+        {
+          title: "Move to Topic",
+          icon: "fas fa-retweet",
+          popover: "Move to Topic...",
+          onClick: () => { },
+        },
+        {
+          title: "Unpublish Deck",
+          icon: "fas fa-eye-slash",
+          popover: "Unpublish Deck...",
+          onClick: () => { },
+        },
+        {
+          title: "Delete Deck",
+          icon: "fas fa-trash-alt",
+          popover: "Delete Deck...",
+          onClick: () => { },
+        },
+      ]}
+      asPadded="normal"
+      asAligned="left"
+      withColor={{
+        backgroundColor: "#ffffff",
+        textColor: "",
+        accentColor: "",
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isHidden= {false}
+      />`,
     },
   },
 };
@@ -200,11 +258,65 @@ ColoredActionMenu.parameters = {
       story: "Use to override the standard colors of the Icon & Contents.",
     },
     source: {
-      code: `<ActionMenu {...${JSON.stringify(
-        ColoredActionMenu.args,
-        null,
-        2
-      )}}/>`,
+      code: `<ActionMenu 
+      content= {[
+        {
+          title: "Open Deck",
+          icon: "fas fa-book-open",
+          popover: "Open Deck...",
+          onClick: () => { },
+        },
+        {
+          title: "Edit Deck",
+          icon: "fas fa-edit",
+          popover: "Edit Deck...",
+          onClick: () => { },
+        },
+        {
+          title: "Move Deck Up",
+          icon: "fas fa-chevron-up",
+          popover: "Move Deck Up...",
+          onClick: () => { },
+        },
+        {
+          title: "Move Deck Down",
+          icon: "fas fa-chevron-down",
+          popover: "Move Deck Down...",
+          onClick: () => { },
+        },
+        {
+          title: "Move to Topic",
+          icon: "fas fa-retweet",
+          popover: "Move to Topic...",
+          onClick: () => { },
+        },
+        {
+          title: "Unpublish Deck",
+          icon: "fas fa-eye-slash",
+          popover: "Unpublish Deck...",
+          onClick: () => { },
+        },
+        {
+          title: "Delete Deck",
+          icon: "fas fa-trash-alt",
+          popover: "Delete Deck...",
+          onClick: () => { },
+        },
+      ]}
+      asPadded="normal"
+      asAligned="left"
+      withColor={{
+        backgroundColor: "#D3D3D3",
+        textColor: "#C53816",
+        accentColor: "#F2A52D",
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isHidden= {false}
+      />`,
     },
   },
 };
@@ -227,11 +339,65 @@ AnimatedActionMenu.parameters = {
       story: "We can animate the appearance of ActionMenu",
     },
     source: {
-      code: `<ActionMenu {...${JSON.stringify(
-        AnimatedActionMenu.args,
-        null,
-        2
-      )}}/>`,
+      code: `<ActionMenu 
+      content= {[
+        {
+          title: "Open Deck",
+          icon: "fas fa-book-open",
+          popover: "Open Deck...",
+          onClick: () => { },
+        },
+        {
+          title: "Edit Deck",
+          icon: "fas fa-edit",
+          popover: "Edit Deck...",
+          onClick: () => { },
+        },
+        {
+          title: "Move Deck Up",
+          icon: "fas fa-chevron-up",
+          popover: "Move Deck Up...",
+          onClick: () => { },
+        },
+        {
+          title: "Move Deck Down",
+          icon: "fas fa-chevron-down",
+          popover: "Move Deck Down...",
+          onClick: () => { },
+        },
+        {
+          title: "Move to Topic",
+          icon: "fas fa-retweet",
+          popover: "Move to Topic...",
+          onClick: () => { },
+        },
+        {
+          title: "Unpublish Deck",
+          icon: "fas fa-eye-slash",
+          popover: "Unpublish Deck...",
+          onClick: () => { },
+        },
+        {
+          title: "Delete Deck",
+          icon: "fas fa-trash-alt",
+          popover: "Delete Deck...",
+          onClick: () => { },
+        },
+      ]}
+      asPadded="normal"
+      asAligned="left"
+      withColor={{
+        backgroundColor: "#D3D3D3",
+        textColor: "#C53816",
+        accentColor: "#F2A52D",
+      }}
+      withAnimation= {{
+        animation: "collapse",
+        duration: 1,
+        delay: 0,,
+      }}
+      isHidden= {false}
+      />`,
     },
   },
 };
@@ -255,11 +421,65 @@ TranslatedActionMenu.parameters = {
         "Use to change the language that the text appears in ActionMenu."
     },
     source: {
-      code: `<TranslatedActionMenu {...${JSON.stringify(
-        TranslatedActionMenu.args,
-        null,
-        2
-      )}}/>`,
+      code: `<ActionMenu 
+      content= {[
+        {
+          title: "Open Deck",
+          icon: "fas fa-book-open",
+          popover: "Open Deck...",
+          onClick: () => { },
+        },
+        {
+          title: "Edit Deck",
+          icon: "fas fa-edit",
+          popover: "Edit Deck...",
+          onClick: () => { },
+        },
+        {
+          title: "Move Deck Up",
+          icon: "fas fa-chevron-up",
+          popover: "Move Deck Up...",
+          onClick: () => { },
+        },
+        {
+          title: "Move Deck Down",
+          icon: "fas fa-chevron-down",
+          popover: "Move Deck Down...",
+          onClick: () => { },
+        },
+        {
+          title: "Move to Topic",
+          icon: "fas fa-retweet",
+          popover: "Move to Topic...",
+          onClick: () => { },
+        },
+        {
+          title: "Unpublish Deck",
+          icon: "fas fa-eye-slash",
+          popover: "Unpublish Deck...",
+          onClick: () => { },
+        },
+        {
+          title: "Delete Deck",
+          icon: "fas fa-trash-alt",
+          popover: "Delete Deck...",
+          onClick: () => { },
+        },
+      ]}
+      asPadded="normal"
+      asAligned="left"
+      withColor={{
+        backgroundColor: "#D3D3D3",
+        textColor: "#C53816",
+        accentColor: "#F2A52D",
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isHidden= {false}
+      />`,
     },
   },
 };

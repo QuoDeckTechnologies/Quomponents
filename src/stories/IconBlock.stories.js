@@ -133,7 +133,27 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<IconBlock {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<IconBlock asVariant = "primary"
+            asSize= "normal"
+            asFloated= "inline"
+            asPadded= "normal"
+            asEmphasis= "contained"
+            withColor= {{
+                backgroundColor:"",
+                accentColor:"",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay:0,
+            }}
+            withIcon={{ 
+                icon: "fas fa-book-open" ,
+                size:"1em",
+                position: "left" }}
+            isDisabled= {false}
+            isHidden= {false}
+            />`,
         },
     },
 };

@@ -123,7 +123,19 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<NuggetBlock {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<NuggetBlock image= Nugget_Profiler
+            status= "none"
+            asSize= "normal"
+            asFloated= "inline"
+            asPadded= "normal"
+            withAnimation={{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isDisabled={false}
+            isHidden={false}
+            />`,
         },
     },
 };

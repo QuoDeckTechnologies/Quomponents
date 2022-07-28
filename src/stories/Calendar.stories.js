@@ -105,7 +105,18 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<Calendar {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<Calendar 
+            defaultDate = "10 july 2022"
+            asPadded = "normal"
+            asFloated = "left"
+            withAnimation = {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isDisabled = {false}
+            isHidden = {false}
+            />`,
         },
     },
 };
@@ -128,11 +139,17 @@ AnimatedCalendar.parameters = {
             story: "We can animate the appearance of Calendar",
         },
         source: {
-            code: `<Calendar {...${JSON.stringify(
-                AnimatedCalendar.args,
-                null,
-                2
-            )}}/>`,
+            code: `<Calendar  defaultDate = "10 july 2022"
+            asPadded = "normal"
+            asFloated = "left"
+            withAnimation = {{
+                animation: "fade",
+                duration: 2,
+                delay: 0,
+            }}
+            isDisabled = {false}
+            isHidden = {false}
+            />`,
         },
     },
 };

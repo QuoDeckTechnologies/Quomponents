@@ -45,8 +45,6 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    activeBackgroundColor: "blue",
-                    activeTextColor: "pink",
                     textColor: "",
                     accentColor: "",
                     backgroundColor: "",
@@ -188,7 +186,61 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<MobileToolbar {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<MobileToolbar title= "Edit Mode"
+            content={[
+                {
+                    icon: "fa fa-receipt",
+                    label: "Courses", format: "caption",
+                    isActive: false,
+                    link: "https://quodeck.com/",
+                },
+                {
+                    icon: "fa fa-crown",
+                    label: "Nuggets",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.google.com/",
+                },
+                {
+                    icon: "fa fa-file",
+                    label: "Test",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://github.com/",
+                },
+                {
+                    icon: "fa fa-trophy",
+                    label: "Contest",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.youtube.com/",
+                },
+                {
+                    icon: "fa fa-envelope-open-text",
+                    label: "Post",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.whatsapp.com/",
+                },
+            ]}
+            asEmphasis= "default"
+            asVariant= "primary"
+            withColor={{
+                textColor: "",
+                accentColor: "",
+                backgroundColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isCircular= {false}
+            isHidden= {false}
+            isDisabled= {false}
+            />`,
         },
     },
 };
@@ -213,7 +265,61 @@ ColoredToolbar.parameters = {
             story: "Use to override the standard colors of the component.",
         },
         source: {
-            code: `<MobileToolbar withColor={{backgroundColor: "#D3D3D3" , textColor: "#EB6146", accentColor: "#48D1CC"}}}/>`,
+            code: `<MobileToolbar <MobileToolbar title= "Edit Mode"
+            content={[
+                {
+                    icon: "fa fa-receipt",
+                    label: "Courses", format: "caption",
+                    isActive: false,
+                    link: "https://quodeck.com/",
+                },
+                {
+                    icon: "fa fa-crown",
+                    label: "Nuggets",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.google.com/",
+                },
+                {
+                    icon: "fa fa-file",
+                    label: "Test",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://github.com/",
+                },
+                {
+                    icon: "fa fa-trophy",
+                    label: "Contest",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.youtube.com/",
+                },
+                {
+                    icon: "fa fa-envelope-open-text",
+                    label: "Post",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.whatsapp.com/",
+                },
+            ]}
+            asEmphasis= "default"
+            asVariant= "primary"
+            withColor={{
+                backgroundColor: "#666666",
+                textColor: "#EB6146",
+                accentColor: "#48D1CC",
+                hoverBackgroundColor: "#666666",
+                hoverTextColor: "#EB6146"
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isCircular= {false}
+            isHidden= {false}
+            isDisabled= {false}
+            />/>`,
         },
     },
 };
@@ -236,11 +342,61 @@ AnimatedToolbar.parameters = {
             story: "We can animate the appearance of MobileToolbar",
         },
         source: {
-            code: `<MobileToolbar {...${JSON.stringify(
-                AnimatedToolbar.args,
-                null,
-                2
-            )}}/>`,
+            code: `<MobileToolbar title= "Edit Mode"
+            content={[
+                {
+                    icon: "fa fa-receipt",
+                    label: "Courses", format: "caption",
+                    isActive: false,
+                    link: "https://quodeck.com/",
+                },
+                {
+                    icon: "fa fa-crown",
+                    label: "Nuggets",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.google.com/",
+                },
+                {
+                    icon: "fa fa-file",
+                    label: "Test",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://github.com/",
+                },
+                {
+                    icon: "fa fa-trophy",
+                    label: "Contest",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.youtube.com/",
+                },
+                {
+                    icon: "fa fa-envelope-open-text",
+                    label: "Post",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.whatsapp.com/",
+                },
+            ]}
+            asEmphasis= "default"
+            asVariant= "primary"
+            withColor={{
+                textColor: "",
+                accentColor: "",
+                backgroundColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            }}
+            withAnimation= {{
+                animation: "slideDown",
+                duration: 1,
+                delay: 0,
+            }}
+            isCircular= {false}
+            isHidden= {false}
+            isDisabled= {false}
+            />`,
         },
     },
 };
@@ -298,11 +454,62 @@ WithoutLabelMobileToolbar.parameters = {
                 "Show MobileToolbar component without caption/label with asVarient:'warning'",
         },
         source: {
-            code: `<MobileToolbar {...${JSON.stringify(
-                WithoutLabelMobileToolbar.args,
-                null,
-                2
-            )}}/>`,
+            code: `<MobileToolbar title= "Edit Mode"
+            content={[
+                {
+                    icon: "fa fa-receipt",
+                    label: "", 
+                    format: "label",
+                    isActive: false,
+                    link: "https://quodeck.com/",
+                },
+                {
+                    icon: "fa fa-crown",
+                    label: "",
+                    format: "label",
+                    isActive: false,
+                    link: "https://www.google.com/",
+                },
+                {
+                    icon: "fa fa-file",
+                    label: "",
+                    format: "label",
+                    isActive: false,
+                    link: "https://github.com/",
+                },
+                {
+                    icon: "fa fa-trophy",
+                    label: "",
+                    format: "label",
+                    isActive: false,
+                    link: "https://www.youtube.com/",
+                },
+                {
+                    icon: "fa fa-envelope-open-text",
+                    label: "Post",
+                    format: "label",
+                    isActive: false,
+                    link: "https://www.whatsapp.com/",
+                },
+            ]}
+            asEmphasis= "default"
+            asVariant= "primary"
+            withColor={{
+                textColor: "",
+                accentColor: "",
+                backgroundColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isCircular= {false}
+            isHidden= {false}
+            isDisabled= {false}
+            />`,
         },
     },
 };
@@ -355,7 +562,62 @@ IconsWithPopoverFormatMobilteToolbar.args = {
 IconsWithPopoverFormatMobilteToolbar.parameters = {
     docs: {
         source: {
-            code: `<MobileToolbar {...${JSON.stringify(IconsWithPopoverFormatMobilteToolbar.args, null, 2)}}/>`,
+            code: `<MobileToolbar <MobileToolbar title= "Edit Mode"
+            content={[
+                {
+                    icon: "fa fa-receipt",
+                    label: "Courses", 
+                    format: "popover",
+                    isActive: false,
+                    link: "https://quodeck.com/",
+                },
+                {
+                    icon: "fa fa-crown",
+                    label: "Nuggets",
+                    format: "popover",
+                    isActive: false,
+                    link: "https://www.google.com/",
+                },
+                {
+                    icon: "fa fa-file",
+                    label: "Test",
+                    format: "popover",
+                    isActive: false,
+                    link: "https://github.com/",
+                },
+                {
+                    icon: "fa fa-trophy",
+                    label: "Contest",
+                    format: "popover",
+                    isActive: false,
+                    link: "https://www.youtube.com/",
+                },
+                {
+                    icon: "fa fa-envelope-open-text",
+                    label: "Post",
+                    format: "popover",
+                    isActive: false,
+                    link: "https://www.whatsapp.com/",
+                },
+            ]}
+            asEmphasis= "default"
+            asVariant= "primary"
+            withColor={{
+                textColor: "",
+                accentColor: "",
+                backgroundColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isCircular= {false}
+            isHidden= {false}
+            isDisabled= {false}
+            />/>`,
         },
     },
 };
@@ -408,7 +670,62 @@ IconsWithCaptionMobilteToolbar.args = {
 IconsWithCaptionMobilteToolbar.parameters = {
     docs: {
         source: {
-            code: `<MobileToolbar {...${JSON.stringify(IconsWithCaptionMobilteToolbar.args, null, 2)}}/>`,
+            code: `<MobileToolbar title= "Edit Mode"
+            content={[
+                {
+                    icon: "fa fa-receipt",
+                    label: "Courses", 
+                    format: "label",
+                    isActive: false,
+                    link: "https://quodeck.com/",
+                },
+                {
+                    icon: "fa fa-crown",
+                    label: "Nuggets",
+                    format: "label",
+                    isActive: false,
+                    link: "https://www.google.com/",
+                },
+                {
+                    icon: "fa fa-file",
+                    label: "Test",
+                    format: "label",
+                    isActive: false,
+                    link: "https://github.com/",
+                },
+                {
+                    icon: "fa fa-trophy",
+                    label: "Contest",
+                    format: "label",
+                    isActive: false,
+                    link: "https://www.youtube.com/",
+                },
+                {
+                    icon: "fa fa-envelope-open-text",
+                    label: "Post",
+                    format: "label",
+                    isActive: false,
+                    link: "https://www.whatsapp.com/",
+                },
+            ]}
+            asEmphasis= "default"
+            asVariant= "primary"
+            withColor={{
+                textColor: "",
+                accentColor: "",
+                backgroundColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isCircular= {false}
+            isHidden= {false}
+            isDisabled= {false}
+            />`,
         },
     },
 };
@@ -446,7 +763,62 @@ MobileToolbarWithAllVariants.parameters = {
             story: "all variants are supported in MobileToolbar.",
         },
         source: {
-            code: `<MobileToolbar asEmphasis=""/>`,
+            code: `<MobileToolbar title= "Edit Mode"
+            content={[
+                {
+                    icon: "fa fa-receipt",
+                    label: "Courses", 
+                    format: "caption",
+                    isActive: false,
+                    link: "https://quodeck.com/",
+                },
+                {
+                    icon: "fa fa-crown",
+                    label: "Nuggets",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.google.com/",
+                },
+                {
+                    icon: "fa fa-file",
+                    label: "Test",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://github.com/",
+                },
+                {
+                    icon: "fa fa-trophy",
+                    label: "Contest",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.youtube.com/",
+                },
+                {
+                    icon: "fa fa-envelope-open-text",
+                    label: "Post",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.whatsapp.com/",
+                },
+            ]}
+            asEmphasis= "default"
+            asVariant= "primary"
+            withColor={{
+                textColor: "",
+                accentColor: "",
+                backgroundColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isCircular= {false}
+            isHidden= {false}
+            isDisabled= {false}
+            />`,
         },
     },
 };
@@ -470,11 +842,61 @@ TranslatedMobileToolbar.parameters = {
                 "Use to change the language that the text appears in MobileToolbar. ",
         },
         source: {
-            code: `<TranslatedMobileToolbar {...${JSON.stringify(
-                TranslatedMobileToolbar.args,
-                null,
-                2
-            )}}/>`,
+            code: `<MobileToolbar title= "Edit Mode"
+            content={[
+                {
+                    icon: "fa fa-receipt",
+                    label: "Courses", format: "caption",
+                    isActive: false,
+                    link: "https://quodeck.com/",
+                },
+                {
+                    icon: "fa fa-crown",
+                    label: "Nuggets",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.google.com/",
+                },
+                {
+                    icon: "fa fa-file",
+                    label: "Test",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://github.com/",
+                },
+                {
+                    icon: "fa fa-trophy",
+                    label: "Contest",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.youtube.com/",
+                },
+                {
+                    icon: "fa fa-envelope-open-text",
+                    label: "Post",
+                    format: "caption",
+                    isActive: false,
+                    link: "https://www.whatsapp.com/",
+                },
+            ]}
+            asEmphasis= "default"
+            asVariant= "primary"
+            withColor={{
+                textColor: "",
+                accentColor: "",
+                backgroundColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            }}
+            withAnimation= {{
+                animation: "collapse",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isCircular= {false}
+            isHidden= {false}
+            isDisabled= {false}
+            />`,
         },
     },
 };
