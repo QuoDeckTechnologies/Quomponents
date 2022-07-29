@@ -158,7 +158,7 @@ describe("Button", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render translation  with withTranslation prop puprpose passed as quiz", () => {
+  it("should render translation  with withTranslation prop", () => {
     component.setProps({
       withTranslation: {
         lang: "hi",
