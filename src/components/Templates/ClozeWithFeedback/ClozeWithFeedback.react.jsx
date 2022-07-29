@@ -218,7 +218,8 @@ export default function ClozeWithFeedback(props) {
                 <div className="qui-cloze-with-feedback-card" style={{ ...background }}>
                     {!data?.image && (data?.title || data?.subtitle) && (
                         <SlideHeader
-                            content={{ title: data?.title, subTitle: data?.subtitle }}
+                            title={data?.title}
+                            subtitle={data?.subtitle}
                             withColor={slideHeaderColors} />
                     )}
                     {data?.image && (
@@ -232,7 +233,7 @@ export default function ClozeWithFeedback(props) {
                     </div>
                     <div className="qui-cloze-with-feedback-input-button-container">
                         <InputField {...props}
-                            placeholder= {answerText}
+                            placeholder={answerText}
                             withColor={inputFieldColors}
                             onSubmit={(name, value) => changeText(value)}
                             name="cloze-with-feedback-input-field"

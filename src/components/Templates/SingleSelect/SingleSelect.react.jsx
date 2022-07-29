@@ -150,7 +150,8 @@ export default function SingleSelect(props) {
         if ((!data?.image || data?.image?.id === "") && (data?.title || data?.subtitle)) {
             return (
                 <SlideHeader
-                    content={{ title: data?.title, subTitle: data?.subtitle }}
+                    title={data?.title}
+                    subtitle={data?.subtitle}
                     withColor={slideHeaderColors}
                 />
             );

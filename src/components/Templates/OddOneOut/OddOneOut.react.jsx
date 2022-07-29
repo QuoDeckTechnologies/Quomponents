@@ -147,7 +147,8 @@ export default function OddOneOut(props) {
             return (
                 <SlideHeader
                     {...props}
-                    content={{ title: data?.title, subTitle: data?.subtitle }}
+                    title={data?.title}
+                    subtitle={data?.subtitle}
                     withColor={slideHeaderColors}
                 />
             );

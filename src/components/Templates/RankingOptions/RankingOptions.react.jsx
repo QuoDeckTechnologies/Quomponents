@@ -173,7 +173,8 @@ export default function RankingOptions(props) {
                 <div className="qui-ranking-options-card" style={{ ...background }}>
                     {!data?.image && (data?.title || data?.subtitle) && (
                         <SlideHeader
-                            content={{ title: data?.title, subTitle: data?.subtitle }}
+                            title={data?.title}
+                            subtitle={data?.subtitle}
                             withColor={slideHeaderColors} />
                     )}
                     {data?.image && (

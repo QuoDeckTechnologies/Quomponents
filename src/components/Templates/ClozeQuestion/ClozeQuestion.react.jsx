@@ -183,7 +183,7 @@ export default function ClozeQuestion(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        buttonText = data?.purpose === "quiz" ? tObj?.checkAnswer : tObj?.submitAnswer ;
+        buttonText = data?.purpose === "quiz" ? tObj?.checkAnswer : tObj?.submitAnswer;
     }
 
     //-------------------------------------------------------------------
@@ -216,7 +216,8 @@ export default function ClozeQuestion(props) {
                 <div className="qui-cloze-question-card" style={{ ...background }}>
                     {!data?.image && (data?.title || data?.subtitle) && (
                         <SlideHeader
-                            content={{ title: data?.title, subTitle: data?.subtitle }}
+                            title={data?.title}
+                            subtitle={data?.subtitle}
                             withColor={slideHeaderColors} />
                     )}
                     {data?.image && (
@@ -230,7 +231,7 @@ export default function ClozeQuestion(props) {
                     </div>
                     <div className="qui-cloze-question-input-button-container">
                         <InputField {...props}
-                            placeholder= {answerText}
+                            placeholder={answerText}
                             withColor={inputFieldColors}
                             onSubmit={(name, value) => setAnswer(value)}
                             name="cloze-question-input-field"
