@@ -13,12 +13,11 @@ export default {
   title: "Design System/CheckBox",
   component: CheckBox,
   argTypes: {
-    name: "",
     label: "",
     checked: false,
     asSize: {
       control: "select",
-      options: ["tiny", "normal", "huge"],
+      options: ["tiny", "small", "normal", "big", "huge", "massive"],
       table: {
         category: "as-Flags",
       },
@@ -110,7 +109,6 @@ export default {
 const Template = (args) => <CheckBox {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  name: "checkbox",
   label: "Default Checkbox",
   checked: false,
   asSize: "normal",
@@ -139,7 +137,6 @@ Default.parameters = {
   docs: {
     source: {
       code: `<CheckBox
-          name="checkbox"
           label="Default Checkbox"
           checked={false}
           asSize="normal"
@@ -159,12 +156,12 @@ Default.parameters = {
             lang: "en",
             tgt: "checkBox",
             dictionary: ${JSON.stringify({
-              hi: {
-                checkBox: {
-                  label: "डिफ़ॉल्ट चेकबॉक्स",
-                },
-              },
-            })},
+        hi: {
+          checkBox: {
+            label: "डिफ़ॉल्ट चेकबॉक्स",
+          },
+        },
+      })},
           }}
           isDisabled={false}
           isHidden={false}
@@ -180,11 +177,11 @@ Default.parameters = {
 export const ReadOnlyCheckBox = Template.bind({});
 ReadOnlyCheckBox.args = {
   ...Default.args,
-  name: "checkbox",
   label: "Read Only Checkbox",
   checked: true,
   isDisabled: true,
   isHidden: false,
+  asSize: "massive"
 };
 ReadOnlyCheckBox.parameters = {
   docs: {
@@ -194,7 +191,6 @@ ReadOnlyCheckBox.parameters = {
     },
     source: {
       code: `<CheckBox
-          name="checkbox"
           label="Read Only Checkbox"
           checked={true}
           isDisabled={true}
@@ -224,7 +220,6 @@ ReadOnlyCheckBox.parameters = {
 export const DisabledCheckBox = Template.bind({});
 DisabledCheckBox.args = {
   ...Default.args,
-  name: "checkbox",
   label: "Disabled Checkbox",
   checked: false,
   isDisabled: true,
@@ -238,7 +233,6 @@ DisabledCheckBox.parameters = {
     },
     source: {
       code: `<CheckBox
-          name="checkbox"
           label="Disabled Checkbox"
           checked={false}
           isDisabled={true}
@@ -270,14 +264,12 @@ const MultipleTemplate = (args) => {
     <div>
       <CheckBox
         {...args}
-        name="checkbox A"
         label={args.label[0]}
         checked={true}
         asFloated="none"
       />
       <CheckBox
         {...args}
-        name="checkbox B"
         label={args.label[1]}
         checked={false}
         asFloated="none"
@@ -299,7 +291,6 @@ MultipleCheckBox.parameters = {
     source: {
       code: `<div>
           <CheckBox
-            name="checkbox A"
             label="Option One"
             checked={true}
             asFloated="none"
@@ -320,7 +311,6 @@ MultipleCheckBox.parameters = {
             isFluid={false}
           />
           <CheckBox
-            name="checkbox B"
             label="Option Two"
             checked={false}
             asFloated="none"
@@ -353,14 +343,12 @@ const MultipleTemplateInline = (args) => {
     <div>
       <CheckBox
         {...args}
-        name="checkbox A"
         label={args.label[0]}
         checked={true}
         asFloated="inline"
       />
       <CheckBox
         {...args}
-        name="checkbox B"
         label={args.label[1]}
         checked={false}
         asFloated="inline"
@@ -381,7 +369,6 @@ InlineMultipleCheckBox.parameters = {
     source: {
       code: `<div>
           <CheckBox
-            name="checkbox A"
             label="Option One"
             checked={true}
             asFloated="inline"
@@ -402,7 +389,6 @@ InlineMultipleCheckBox.parameters = {
             isFluid={false}
           />
           <CheckBox
-            name="checkbox B"
             label="Option Two"
             checked={false}
             asFloated="inline"
@@ -433,7 +419,6 @@ InlineMultipleCheckBox.parameters = {
 export const ColoredCheckBox = Template.bind({});
 ColoredCheckBox.args = {
   ...Default.args,
-  name: "checkbox",
   label: "Colored Checkbox",
   checked: false,
   withColor: {
@@ -448,7 +433,6 @@ ColoredCheckBox.parameters = {
     },
     source: {
       code: `<CheckBox
-          name="checkbox"
           label="Colored Checkbox"
           checked={false}
           asSize="normal"
@@ -478,7 +462,6 @@ ColoredCheckBox.parameters = {
 export const TranslatedCheckBox = Template.bind({});
 TranslatedCheckBox.args = {
   ...Default.args,
-  name: "checkbox",
   label: "Translated Checkbox",
   checked: false,
   withTranslation: {
@@ -495,7 +478,6 @@ TranslatedCheckBox.parameters = {
     },
     source: {
       code: `<CheckBox
-          name="checkbox"
           label="Translated Checkbox"
           checked={false}
           asSize="normal"
@@ -515,12 +497,12 @@ TranslatedCheckBox.parameters = {
             lang: "hi",
             tgt: "checkBox",
             dictionary: ${JSON.stringify({
-              hi: {
-                checkBox: {
-                  label: "डिफ़ॉल्ट चेकबॉक्स",
-                },
-              },
-            })},
+        hi: {
+          checkBox: {
+            label: "डिफ़ॉल्ट चेकबॉक्स",
+          },
+        },
+      })},
           }}
           isDisabled={false}
           isHidden={false}
