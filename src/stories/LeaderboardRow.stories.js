@@ -84,7 +84,22 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<LeaderboardRow {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<LeaderboardRow  rank={0}
+            firstName= "Quodeck"
+            lastName= "Technology"
+            points= {null}
+            asPadded= "normal"
+            withColor={{
+                backgroundColor: "",
+                textColor: "",
+            }}
+            withAnimation={{
+                animation: "slideDown",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden={false}
+            />`,
         },
     },
 };

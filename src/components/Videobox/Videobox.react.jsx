@@ -87,7 +87,9 @@ export default function Videobox(props) {
         if (props.onReady) { props.onReady(e) };
     }
 
-    function onPlay(e) { props.onPlay(e) };
+    function onPlay(e) {
+        if (props.onPlay) { props.onPlay(e) };
+    };
 
     function onEnd(e) {
         if (props.loop) e.target.playVideo();

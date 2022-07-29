@@ -72,7 +72,7 @@ export default {
             <div
                 style={{
                     width: "100%",
-                    textAlign: "",
+                    textAlign: "center",
                     fontSize: "1.25em",
                 }}
             >
@@ -115,7 +115,23 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<TodayMenuBtn {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<TodayMenuBtn content= "Learn"
+            asVariant= "secondary"
+            asFloated= "inline"
+            asPadded= "normal"
+            withColor= {{
+                backgroundColor: "",
+                textColor: "#ffffff",
+                accentColor: "#ffffff"
+            }}
+            withIcon={{
+                icon: "fas fa-book",
+                size: "1em",
+                position: "left"
+            }}
+            isDisabled= {false}
+            isHidden= {false}
+            />`,
         },
     },
 };
@@ -127,6 +143,7 @@ CompleteTodayMenuBtn.args = {
     ...Default.args,
     content: "LEARN",
     asFloated: "none",
+    asPadded: "normal",
     withColor: {
         backgroundColor: "#C1DC9E",
         textColor: "#454545",
@@ -143,11 +160,23 @@ CompleteTodayMenuBtn.parameters = {
                 "Shows Complete TodayMenuBtn component",
         },
         source: {
-            code: `<TodayMenuBtn {...${JSON.stringify(
-                CompleteTodayMenuBtn.args,
-                null,
-                2
-            )}}/>`,
+            code: `<TodayMenuBtn content= "Learn"
+            asVariant= "secondary"
+            asFloated= "none"
+            asPadded= "normal"
+            withColor= {{
+                backgroundColor: "#C1DC9E",
+                textColor: "#454545",
+                accentColor: "#52AF50"
+            }}
+            withIcon={{
+                icon: "fas fa-check-circle",
+                size: "1em",
+                position: "left" 
+            }}
+            isDisabled= {false}
+            isHidden= {false}
+            />`,
         },
     },
 };
@@ -156,6 +185,7 @@ ActiveTodayMenuBtn.args = {
     ...Default.args,
     content: "LEARN",
     asFloated: "none",
+    asPadded: "normal",
     withColor: {
         backgroundColor: "#222A35",
         textColor: "#FFFFFF",
@@ -172,11 +202,23 @@ ActiveTodayMenuBtn.parameters = {
                 "Shows Active TodayMenuBtn component",
         },
         source: {
-            code: `<TodayMenuBtn {...${JSON.stringify(
-                ActiveTodayMenuBtn.args,
-                null,
-                2
-            )}}/>`,
+            code: `<TodayMenuBtn content= "Learn"
+            asVariant= "secondary"
+            asFloated= "none"
+            asPadded= "normal"
+            withColor= {{
+                backgroundColor: "#222A35",
+                textColor: "#FFFFFF",
+                accentColor: "#FFCA36"
+            }}
+            withIcon={{
+                icon: "fas fa-book",
+                size: "1em",
+                position: "left"
+            }}
+            isDisabled= {false}
+            isHidden= {false}
+            />`,
         },
     },
 };

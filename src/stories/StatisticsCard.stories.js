@@ -120,14 +120,30 @@ Default.args = {
         accentColor: "",
         textColor: "",
     },
-    
+
     isCircular: true,
     isHidden: false,
 };
 Default.parameters = {
     docs: {
         source: {
-            code: `<StatisticsCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<StatisticsCard value="20,539"
+            asVariant="primary"
+            asFloated="none"
+            asPadded="fitted"
+            asAligned="center"
+            withLabel={{
+                content: "PLAYERS",
+            }}
+            withIcon={{ icon: "fas fa-users", size: "1em", position: "left" }}
+            withColor={{
+                backgroundColor: "",
+                accentColor: "",
+                textColor: "",
+            }}
+            isCircular= {true}
+            isHidden= {false}
+            />`,
         },
     },
 };
@@ -146,7 +162,23 @@ ColoredStatisticsCard.args = {
 ColoredStatisticsCard.parameters = {
     docs: {
         source: {
-            code: `<StatisticsCard {...${JSON.stringify(ColoredStatisticsCard.args, null, 2)}}/>`,
+            code: `<StatisticsCard value="20,539"
+            asVariant="primary"
+            asFloated="none"
+            asPadded="fitted"
+            asAligned="center"
+            withLabel={{
+                content: "PLAYERS",
+            }}
+            withIcon={{ icon: "fas fa-users", size: "1em", position: "left" }}
+            withColor={{
+                backgroundColor: "#F3E5F5",
+                accentColor: "#F2A52D",
+                textColor: "#3A8080",
+            }}
+            isCircular= {true}
+            isHidden= {false}
+            />`,
         },
     },
 };

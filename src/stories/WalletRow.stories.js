@@ -118,7 +118,20 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<WalletRow {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<WalletRow date= '2016-01-04 10:34:23'
+            coins= {1000}
+            asPadded= "normal"
+            withColor={{
+                backgroundColor: "",
+                textColor: "",
+            }}
+            withAnimation={{
+                animation: "slideDown",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden={false}
+            />`,
         },
     },
 };
@@ -279,11 +292,19 @@ TranslatedWalletRow.args = {
 TranslatedWalletRow.parameters = {
     docs: {
         source: {
-            code: `<TranslatedWalletRow {...${JSON.stringify(
-                TranslatedWalletRow.args,
-                null,
-                2
-            )}}/>`,
+            code: `<WalletRow date= '2016-01-04 10:34:23'
+            coins= {1000}
+            asPadded= "normal"
+            withColor={{
+                backgroundColor: "",
+                textColor: "",
+            }}
+            withAnimation={{
+                animation: "slideDown",
+                duration: 0.5,
+                delay: 0,
+            }}
+            isHidden={false}/>`,
         },
     },
 };

@@ -98,7 +98,19 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<OptionItemFive {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<OptionItemFive targetName= "Target Name"
+      value= ""
+      image= ""
+      placeholder= "Option Item Five"
+      maxLength= 300
+      withColor= {{
+        backgroundColor: "#ffab000d",
+        textColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      />`,
     },
   },
 };
@@ -119,11 +131,19 @@ ColoredOptionItemFive.args = {
 ColoredOptionItemFive.parameters = {
   docs: {
     source: {
-      code: `<OptionItemFive {...${JSON.stringify(
-        ColoredOptionItemFive.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItemFive targetName= "Target Name"
+      value= ""
+      image= ""
+      placeholder= "Option Item Five"
+      maxLength= 300
+      withColor= {{
+        backgroundColor: "#8c9ea3",
+        accentColor: "#597387",
+        textColor: "#bac2c8",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      />`,
     },
   },
 };
@@ -142,11 +162,19 @@ TranslatedOptionItemFive.args = {
 TranslatedOptionItemFive.parameters = {
   docs: {
     source: {
-      code: `<OptionItemFive {...${JSON.stringify(
-        TranslatedOptionItemFive.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItemFive targetName= "Target Name"
+      value= ""
+      image= ""
+      placeholder= "Option Item Five"
+      maxLength= 300
+      withColor= {{
+        backgroundColor: "#ffab000d",
+        textColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      />`,
     },
   },
 };
@@ -270,11 +298,115 @@ MultipleOptionItemFive.args = {
 MultipleOptionItemFive.parameters = {
   docs: {
     source: {
-      code: `<OptionItemFive {...${JSON.stringify(
-        MultipleOptionItemFive.args,
-        null,
-        2
-      )}}/>`,
+      code: `const [contentArr, setContentArr] = useState([
+    {
+      targetName: "TargetNameOne",
+      value: "",
+      placeholder: "Placeholder One",
+      image: {},
+    },
+    {
+      targetName: "TargetNameTwo",
+      value: "",
+      placeholder: "Placeholder Two",
+      image: {},
+    },
+    {
+      targetName: "TargetNameThree",
+      value: "Default Value",
+      placeholder: "Placeholder Three",
+      image: {},
+    },
+  ]);
+  // -------------------------------------------------------------
+  // Hook to return modified content object
+  // -------------------------------------------------------------
+  useEffect(() => {
+    args.onInput(contentArr);
+  });
+  // -------------------------------------------------------------
+  // Temporary variables for operations
+  // -------------------------------------------------------------
+  let tmp_state = contentArr;
+  let tmp_arr = [];
+  let tmp_obj = {};
+  // -------------------------------------------------------------
+  // Function to remove an object from the array
+  // -------------------------------------------------------------
+  const handleRemove = (dataID) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_state.forEach((dataObj) => {
+      tmp_arr.push({ ...dataObj });
+    });
+    tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
+    setContentArr([...tmp_arr]);
+  };
+  // -------------------------------------------------------------
+  // Function to insert image object in the multiContent array
+  // -------------------------------------------------------------
+  const handleUpload = (targetName, image, value) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.targetName === targetName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.image = image;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
+  // -------------------------------------------------------------
+  // Function to put value in the array
+  // -------------------------------------------------------------
+  const handleInput = (targetName, image, value) => {
+    tmp_state = contentArr;
+    tmp_arr = [];
+    tmp_obj = {};
+
+    tmp_state.forEach((dataObj) => {
+      if (dataObj.targetName === targetName) {
+        tmp_obj = { ...dataObj };
+        tmp_obj.value = value;
+        tmp_arr.push(tmp_obj);
+      } else {
+        tmp_obj = { ...dataObj };
+        tmp_arr.push(tmp_obj);
+      }
+    });
+    setContentArr([...tmp_arr]);
+  };
+  return (
+    <div>
+      {contentArr.map((content, index) => {
+        return (
+          <div style={{ marginBottom: "1em" }} key={index}>
+            <OptionItemFive
+              {...args}
+              targetName={content.targetName}
+              value={content.value}
+              image={content.image}
+              placeholder={content.placeholder}
+              maxLength={content.maxLength}
+              onUpload={(targetName, image, value) =>
+                handleUpload(targetName, image, value)
+              }
+              onInput={(targetName, image, value) =>
+                handleInput(targetName, image, value)
+              }
+              onClick={handleRemove}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+      `,
     },
   },
 };
