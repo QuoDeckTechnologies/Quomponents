@@ -33,24 +33,6 @@ describe("Marker", () => {
         component.setProps({ status: "incomplete" })
         expect(component.exists()).toBe(true);
     })
-    it("should render correctly if pass imgae src", () => {
-        let content = {
-            wrapper: "carnival",
-            customMarker: true,
-        };
-        let status = "current";
-        component.setProps({ content: content, status: status });
-        expect(component.find("img").src).toBe('assets/images/configurable/wrapperIcons/current.png');
-    });
-    it("should render correctly if pass imgae src", () => {
-        let content = {
-            wrapper: "carnival",
-            customMarker: false,
-        };
-        let status = "current";
-        component.setProps({ content: content, status: status });
-        expect(component.find("img").src).toBe('assets/images/configurable/wrapperIcons/current.png');
-    });
     it("should render correctly when passed status prop as incomplete", () => {
         component.setProps({ status: "incomplete" })
         expect(component.exists()).toBe(true);

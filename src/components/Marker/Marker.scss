@@ -1,68 +1,67 @@
-.qui-marker {
-  overflow: hidden;
+.qui.qui-marker {
 
-  .qui-marker-text {
-    position: absolute;
-    width: fit-content;
-    height: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-0.25em, -0.85em);
-    z-index: 1;
-    font-weight: bolder;
+    .qui-marker-text {
+      position: absolute;
+      width: fit-content;
+      height: auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-0.25em, -0.85em);
+      z-index: 1;
+      font-weight: bolder;
+    }
+
+    .qui-marker-style {
+      position: relative;
+      z-index: 1;
+    }
+
+    .qui-marker-img {
+      width: 3.5em;
+      height: 3.5em;
+      cursor: pointer;
+    }
+
+    .qui-marker-wellstyle {
+      padding: 10px;
+      margin-top: -10px;
+    }
+
+    .qui-marker-header {
+      padding: 0 10px;
+      margin: 5px 0;
+      font-weight: normal;
+    }
+
+    .qui-marker-desc {
+      padding: 0 10px;
+      font-size: 0.8em;
+      line-height: 1.2;
+      margin: 10px 0;
+    }
+
+    .qui-itemcontent {
+      width: 79%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      margin-top: 7px;
+    }
+
+    .qui-indicator {
+      font-size: 1.1em;
+      margin-right: 7px;
+    }
+
+    .qui-iconwrapper {
+      float: right;
+      margin-top: 6px;
+      color: #121212;
+    }
   }
 
-  .qui-marker-style {
-    position: relative;
-    transform: translate(-1.5em, -4em);
-    z-index: 1;
+  .qui-marker-imagestyle {
+    width: 100%;
   }
 
-  .qui-marker-img {
-    width: 3.5em;
-    height: 3.5em;
-    cursor: pointer;
-  }
-
-  .qui-marker-wellstyle {
-    padding: 10px;
-    margin-top: -10px;
-  }
-
-  .qui-marker-header {
-    padding: 0 10px;
-    margin: 5px 0;
-    font-weight: normal;
-  }
-
-  .qui-marker-desc {
-    padding: 0 10px;
-    font-size: 0.8em;
-    line-height: 1.2;
-    margin: 10px 0;
-  }
-
-  .qui-itemcontent {
-    width: 79%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-    margin-top: 7px;
-  }
-
-  .qui-indicator {
-    font-size: 1.1em;
-    margin-right: 7px;
-  }
-
-  .qui-iconwrapper {
-    float: right;
-    margin-top: 6px;
-    color: #121212;
-  }
-}
-
-.qui-marker-imagestyle {
-  width: 100%;
-}

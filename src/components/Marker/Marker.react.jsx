@@ -6,7 +6,6 @@ import MenuItem from "@mui/material/MenuItem";
 // import Divider from "@mui/material/Divider";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-
 import _ from "lodash";
 import {
     getQuommons,
@@ -143,27 +142,26 @@ export default function Marker(props) {
         }
     };
     let markerBlock = (
-        <div className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`qui ${quommonClasses.childClasses}`}>
-                <img onClick={handleClick}
-                    className="qui-marker-img"
-                    src={
-                        WrapperList[content?.wrapper]?.customMarker
-                            ? "assets/courses/" +
-                            content?.wrapper +
-                            "/markers/" +
-                            status +
-                            ".png"
-                            : "assets/images/configurable/wrappericons/" +
-                            status +
-                            ".png"
-                    }
-                    alt="marker"
-                />
-                {WrapperList[content?.wrapper]?.sequenceInset && (
-                    <div className="qui-marker-text">{content?.inset}</div>
-                )}
-            </div></div>
+        <div>
+            <img onClick={handleClick}
+                className="qui-marker-img"
+                src={
+                    WrapperList[content?.wrapper]?.customMarker
+                        ? "assets/courses/" +
+                        content?.wrapper +
+                        "/markers/" +
+                        status +
+                        ".png"
+                        : "assets/images/" +
+                        status +
+                        ".png"
+                }
+                alt="marker"
+            />
+            {WrapperList[content?.wrapper]?.sequenceInset && (
+                <div className="qui-marker-text">{content?.inset}</div>
+            )}
+        </div>
     );
     let prevComplete = 0;
     let currComplete = 0;
@@ -189,126 +187,128 @@ export default function Marker(props) {
     // ========================= Render Function =================================
 
     return (
-        <div>
-            <div>{marker()}</div>
-            < Menu id="marker"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                    "aria-labelledby": "marker-button",
-                }
-                }
-                PaperProps={{
-                    elevation: 0,
-                    sx: {
-                        overflow: "visible",
-                        width: 240,
-                        maxWidth: "100%",
-                        filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                        mt: 1.5,
-                        "& .MuiPaper-root": {
-                            width: 32,
-                            height: 32,
-                            ml: -0.5,
-                            mr: 1,
+        <div className={`qui ${quommonClasses.parentClasses}`}>
+            <div className={`${quommonClasses.childClasses}`}>
+                {marker()}
+                < Menu id="marker"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    MenuListProps={{
+                        "aria-labelledby": "marker-button",
+                    }
+                    }
+                    PaperProps={{
+                        elevation: 0,
+                        sx: {
+                            overflow: "visible",
+                            width: 240,
+                            maxWidth: "100%",
+                            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                            mt: 1.5,
+                            "& .MuiPaper-root": {
+                                width: 32,
+                                height: 32,
+                                ml: -0.5,
+                                mr: 1,
+                            },
+                            "&:before": {
+                                content: '""',
+                                display: "block",
+                                position: "absolute",
+                                top: 0,
+                                right: 14,
+                                width: 10,
+                                height: 10,
+                                bgcolor: "background.paper",
+                                transform:
+                                    "translateY(-50%) rotate(45deg)",
+                                zIndex: 0,
+                            },
                         },
-                        "&:before": {
-                            content: '""',
-                            display: "block",
-                            position: "absolute",
-                            top: 0,
-                            right: 14,
-                            width: 10,
-                            height: 10,
-                            bgcolor: "background.paper",
-                            transform:
-                                "translateY(-50%) rotate(45deg)",
-                            zIndex: 0,
-                        },
-                    },
-                }}
-                transformOrigin={{
-                    horizontal: "right",
-                    vertical: "top",
-                }}
-                anchorOrigin={{
-                    horizontal: "right",
-                    vertical: "bottom",
-                }}>
-                <MenuItem>
-                    <img className="qui-marker-imagestyle"
-                        src={
-                            "assets/courses/" +
-                            content?.wrapper +
-                            "/header.jpg"
-                        }
-                        alt="ok"
-                    />
-                    <ListItemText>
-                        <div className="qui-marker-wellstyle">
-                            <h2 className="qui-marker-header">{content?.node?.name}</h2>
-                            <p className="qui-marker-desc">
-                                {content?.node?.description}
-                            </p>
-                        </div>
-                    </ListItemText>
-                    <ListItemText>
-                        <ul key={'list-' + Math.random()} divided style={gameList}>
-                            {_.map(content?.node?.contentList, (deck, index) => {
-                                prevComplete = currComplete !== undefined ? currComplete : 0;
-                                currComplete = props.completion[deck._id];
-                                return (
-                                    <li
-                                        key={`deckitem-${deck._id}`}
-                                        style={{
-                                            padding: "5px 10px",
-                                            opacity: props.sequential && index !== 0
-                                                ? prevComplete === 100 ? "none" : "0.3" : "none",
-                                            background: props.sequential && index !== 0
-                                                ? prevComplete === 100 ? "none" : "#e8e8e8" : "none"
-                                        }}
-                                        onClick={props.sequential && index !== 0 ? prevComplete > 80 ?
-                                            () => props.openDeck(
-                                                {
+                    }}
+                    transformOrigin={{
+                        horizontal: "right",
+                        vertical: "top",
+                    }}
+                    anchorOrigin={{
+                        horizontal: "right",
+                        vertical: "bottom",
+                    }}>
+                    <MenuItem>
+                        <img className="qui-marker-imagestyle"
+                            src={
+                                "assets/courses/" +
+                                content?.wrapper +
+                                "/header.jpg"
+                            }
+                            alt="ok"
+                        />
+                        <ListItemText>
+                            <div className="qui-marker-wellstyle">
+                                <h2 className="qui-marker-header">{content?.node?.name}</h2>
+                                <p className="qui-marker-desc">
+                                    {content?.node?.description}
+                                </p>
+                            </div>
+                        </ListItemText>
+                        <ListItemText>
+                            <ul key={'list-' + Math.random()} divided style={gameList}>
+                                {_.map(content?.node?.contentList, (deck, index) => {
+                                    prevComplete = currComplete !== undefined ? currComplete : 0;
+                                    currComplete = props.completion[deck._id];
+                                    return (
+                                        <li
+                                            key={`deckitem-${deck._id}`}
+                                            style={{
+                                                padding: "5px 10px",
+                                                opacity: props.sequential && index !== 0
+                                                    ? prevComplete === 100 ? "none" : "0.3" : "none",
+                                                background: props.sequential && index !== 0
+                                                    ? prevComplete === 100 ? "none" : "#e8e8e8" : "none"
+                                            }}
+                                            onClick={props.sequential && index !== 0 ? prevComplete > 80 ?
+                                                () => props.openDeck(
+                                                    {
+                                                        deckId: deck._id,
+                                                        readerType: deck.readerType,
+                                                    },
+                                                    content?.inset - 1
+                                                ) : null :
+                                                () => props.openDeck(
+                                                    {
+                                                        deckId: deck._id,
+                                                        readerType: deck.readerType,
+                                                    },
+                                                    content?.inset - 1
+                                                )
+                                            }
+                                        >
+                                            <div className="qui-itemcontent">
+                                                {indicator({
                                                     deckId: deck._id,
                                                     readerType: deck.readerType,
-                                                },
-                                                content?.inset - 1
-                                            ) : null :
-                                            () => props.openDeck(
-                                                {
-                                                    deckId: deck._id,
-                                                    readerType: deck.readerType,
-                                                },
-                                                content?.inset - 1
-                                            )
-                                        }
-                                    >
-                                        <div className="qui-itemcontent">
-                                            {indicator({
-                                                deckId: deck._id,
-                                                readerType: deck.readerType,
-                                            })}
-                                            {deck.name}
-                                        </div>
-                                        <div className="qui-iconwrapper">
-                                            <ListItemIcon>
-                                                <i
-                                                    className={iconName(deck.readerType)}
-                                                />
-                                            </ListItemIcon>
-                                            <ListItemIcon>
-                                                <i className="fa fa-certificate" />
-                                            </ListItemIcon>
-                                        </div>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </ListItemText>
-                </MenuItem>
-            </Menu >
+                                                })}
+                                                {deck.name}
+                                            </div>
+                                            <div className="qui-iconwrapper">
+                                                <ListItemIcon>
+                                                    <i
+                                                        className={iconName(deck.readerType)}
+                                                    />
+                                                </ListItemIcon>
+                                                <ListItemIcon>
+                                                    <i className="fa fa-certificate" />
+                                                </ListItemIcon>
+                                            </div>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </ListItemText>
+                    </MenuItem>
+                </Menu >
+            </div>
         </div>
     );
 }
