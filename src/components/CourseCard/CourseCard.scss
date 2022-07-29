@@ -22,6 +22,19 @@
   display: flex;
   justify-content: space-between;
   padding: 0 1.5em;
+  .qui-arc {
+    .qui-course-card-arc-menu-child-container {
+      width: 12em;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      background: transparent;
+    }
+    .qui.qui-action-menu .qui-action-menu-items .qui-action-menu-popover {
+      font-size: 0.8em;
+      left: 11em;
+    }
+  }
 }
 .qui-course-card-title-container {
   z-index: 1;

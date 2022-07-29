@@ -130,8 +130,8 @@ export default function CourseCard(props) {
   let image = props.image
     ? props.image
     : props.wrapper
-    ? "assets/courses/" + props.wrapper + "/play_backdrop.jpg"
-    : defaultImage;
+      ? "assets/courses/" + props.wrapper + "/play_backdrop.jpg"
+      : defaultImage;
   //-------------------------------------------------------------------
   // 3.  Create link of article based on identifier
   //-------------------------------------------------------------------
@@ -320,7 +320,7 @@ export default function CourseCard(props) {
               })}
             </div>
           </div>
-          <BannerCard image={image} header={header} onClick={() => {}} />
+          <BannerCard image={image} header={header} onClick={() => { }} />
           <div className={`qui-course-card-description-container`}>
             <div className={`qui-course-card-description`}>
               {props.description}
@@ -339,7 +339,6 @@ export default function CourseCard(props) {
           <div className={`qui-course-card-arc-menu`}>
             <ArcMenu
               asEmphasis="menu"
-              withIcon={{ icon: "fas fa-user" }}
               withColor={{
                 backgroundColor: "#666666",
                 textColor: "#FFBF00",
@@ -349,33 +348,33 @@ export default function CourseCard(props) {
               position="bottom-left"
               onClick={props.onClick}
             >
-              <div style={{ width: "12em", textAlign: "center" }}>
+              <div className="qui-course-card-arc-menu-child-container">
                 <ActionMenu
                   content={[
                     {
                       title: "Edit Deck",
                       popover: "Edit Deck...",
-                      onClick: () => {},
+                      onClick: () => { },
                     },
                     {
                       title: "Edit Content",
                       popover: "Edit Content...",
-                      onClick: () => {},
+                      onClick: () => { },
                     },
                     {
                       title: "Manage Learners",
                       popover: "Manage Learners...",
-                      onClick: () => {},
+                      onClick: () => { },
                     },
                     {
                       title: "View Analytics",
                       popover: "View Analytics...",
-                      onClick: () => {},
+                      onClick: () => { },
                     },
                     {
                       title: "Delete Course",
                       popover: "Delete Course...",
-                      onClick: () => {},
+                      onClick: () => { },
                     },
                   ]}
                   asPadded="normal"

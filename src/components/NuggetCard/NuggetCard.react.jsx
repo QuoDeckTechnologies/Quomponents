@@ -17,6 +17,7 @@ import IconBlock from "../IconBlock/IconBlock.react";
 import ShareWidget from "../ShareWidget/ShareWidget.react";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
 import BannerCard from "../Carousel/BannerCard/BannerCard.react";
+import ActionMenu from "../ActionMenu/ActionMenu.react.jsx";
 
 import defaultImage from "../../assets/default.jpeg";
 import Nugget_Story from "../../assets/nuggets/nugget_story.png";
@@ -289,9 +290,59 @@ export default function NuggetCard(props) {
 							menuContent={props?.menuContent}
 							menuType="menu"
 							arcIcon="menu"
-							position="top-right"
+							position="bottom-left"
 							onClick={props.onClick}
-						/>
+						>
+							<div className="qui-nugget-card-arc-menu-child-container" >
+								<ActionMenu
+									content={[
+										{
+											title: "Edit Details",
+											popover: "Edit Details...",
+											onClick: () => { },
+										},
+										{
+											title: "Edit Content",
+											popover: "Edit Content...",
+											onClick: () => { },
+										},
+										{
+											title: "Design Nugget",
+											popover: "Design Nugget...",
+											onClick: () => { },
+										},
+										{
+											title: "Publish Nugget",
+											popover: "Publish Nugget...",
+											onClick: () => { },
+										},
+										{
+											title: "View Analytics",
+											popover: "View Analytics...",
+											onClick: () => { },
+										},
+										{
+											title: "Delete Nugget",
+											popover: "Delete Nugget...",
+											onClick: () => { },
+										},
+									]}
+									asPadded="normal"
+									asAligned="left"
+									withColor={{
+										backgroundColor: "#666666",
+										textColor: "#ffbf00",
+										accentColor: "",
+									}}
+									withAnimation={{
+										animation: "zoom",
+										duration: 0.5,
+										delay: 0,
+									}}
+									isHidden={false}
+								/>
+							</div>
+						</ArcMenu>
 					</div>
 					<div className={`qui-nugget-card-share-block`}>
 						<div className={`qui-nugget-card-name qt-sm`}>{category}</div>
@@ -303,7 +354,7 @@ export default function NuggetCard(props) {
 							/>
 						</div>
 						<div className={"qui-nugget-card-link-container"}>
-							<a className={"qui-nugget-card-link qt-sm"} href={link}>
+							<a className={"qui-nugget-card-link qt-utn"} href={link}>
 								{link}
 							</a>
 							<div className={`qui-nugget-card-copy-icon-container`}>
