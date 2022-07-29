@@ -165,7 +165,8 @@ export default function Conversation(props) {
             <div className={`qui-icon-bullet-list-card ${quommonClasses.childClasses}`} key={"icon-bullet-list" + slideId}>
                 {!data?.image && (data?.title || data?.subtitle) && (
                     <SlideHeader {...props}
-                        content={{ title: data?.title, subTitle: data?.subtitle }}
+                        title={data?.title}
+                        subtitle={data?.subtitle}
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (

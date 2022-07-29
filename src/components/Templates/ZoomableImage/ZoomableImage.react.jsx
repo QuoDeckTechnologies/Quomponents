@@ -163,10 +163,6 @@ export default function ZoomableImage(props) {
         textColor: props.withColor?.textBlockTextColor,
         backgroundColor: props.withColor?.textBlockBackgroundColor
     }
-    let SlideHeaderText = {
-        title: data?.title,
-        subTitle: data?.subtitle,
-    }
     //-------------------------------------------------------------------
     // Function to return a view for zoomable image
     //------------------------------------------------------------------
@@ -211,7 +207,8 @@ export default function ZoomableImage(props) {
                     <div className={`${quommonClasses.childClasses}`} key={"zoomable-image" + slideId}>
                         {!data?.image && (data?.title || data?.subtitle) && (
                             <SlideHeader
-                                content={SlideHeaderText}
+                                title={data?.title}
+                                subtitle={data?.subtitle}
                                 withColor={slideHeaderColors} />
                         )}
                         {data?.image && (

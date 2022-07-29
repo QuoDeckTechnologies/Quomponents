@@ -161,10 +161,6 @@ export default function Triptych(props) {
     textColor: props.withColor?.textBlockTextColor,
     backgroundColor: props.withColor?.textBlockBackgroundColor
   }
-  let SlideHeaderText = {
-    title: data?.title,
-    subTitle: data?.subtitle,
-  }
   //-------------------------------------------------------------------
   // Function to return a view for Triptych
   //-------------------------------------------------------------------
@@ -179,7 +175,8 @@ export default function Triptych(props) {
         <div className={`${quommonClasses.childClasses}`} key={"triptych-" + props.slideId}>
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
-              content={SlideHeaderText}
+              title={data?.title}
+              subtitle={data?.subtitle}
               withColor={slideHeaderColors} />
           )}
           {data?.image && (

@@ -18,10 +18,6 @@ CheckBox.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  CheckBox unique name has to be in name props.
-  */
-  name: PropTypes.string,
-  /**
   CheckBox unique label has to be in label props.
   */
   label: PropTypes.string,
@@ -35,7 +31,7 @@ CheckBox.propTypes = {
   /**
   Use to define component text size in increasing order
   */
-  asSize: PropTypes.oneOf(["tiny", "normal", "huge"]),
+  asSize: PropTypes.oneOf(["tiny", "small", "normal", "big", "huge", "massive"]),
   /**
     Use to define component padding in increasing order
     */
@@ -102,7 +98,6 @@ CheckBox.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  name: "",
   label: "",
   checked: false,
   //=======================================
@@ -125,9 +120,9 @@ CheckBox.defaultProps = {
 **/
 export default function CheckBox(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring name, checked, label and withColor prop
+  // 1. Destructuring  checked, label and withColor prop
   //-------------------------------------------------------------------
-  const { withColor, name, checked, label } = props;
+  const { withColor, checked, label } = props;
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
@@ -147,14 +142,6 @@ export default function CheckBox(props) {
   // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props);
-  //-------------------------------------------------------------------
-  // 6. Get size of the chekbox
-  //-------------------------------------------------------------------
-  const getSize = () => {
-    if (props.asSize === "tiny") return "small";
-    if (props.asSize === "normal") return "medium";
-    else return "large";
-  };
 
   // ========================= Render Function =================================
 
@@ -170,9 +157,9 @@ export default function CheckBox(props) {
         <Checkbox
           style={{ color: withColor?.accentColor }}
           checked={isChecked}
-          id={`qui-check-box-element-${name}`}
+          id={`qui-check-box-element-${label}`}
           disabled={props.isDisabled}
-          size={getSize()}
+          size={props.asSize}
           value={label}
           onChange={(e) => {
             setIsChecked((prevState) => !prevState);
@@ -184,7 +171,7 @@ export default function CheckBox(props) {
         />
 
         <label
-          htmlFor={`qui-check-box-element-${name}`}
+          htmlFor={`qui-check-box-element-${label}`}
           className="qui-check-box-element"
         >
           <p style={{ color: withColor?.textColor }}>{tObj?.label || label}</p>

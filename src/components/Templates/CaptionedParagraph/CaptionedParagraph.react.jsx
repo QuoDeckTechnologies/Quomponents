@@ -172,7 +172,8 @@ export default function CaptionedParagraph(props) {
             <div className={`qui-captioned-paragraph-card ${quommonClasses.childClasses}`} key={"captioned paragraph" + slideId}>
                 {!data?.image && (data?.title || data?.subtitle) && (
                     <SlideHeader
-                        content={{ title: data?.title, subTitle: data?.subtitle }}
+                        title={data?.title}
+                        subtitle={data?.subtitle}
                         withColor={slideHeaderColors} />
                 )}
                 {data?.image && (
