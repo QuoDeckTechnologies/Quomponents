@@ -16,6 +16,7 @@ import ArcMenu from "../ArcMenu/ArcMenu.react";
 import BannerCard from "../Carousel/BannerCard/BannerCard.react";
 import Nugget_Course from "../../assets/nuggets/nugget_course.png";
 import defaultImage from "../../assets/default.jpeg";
+import ActionMenu from "../ActionMenu/ActionMenu.react.jsx";
 
 CourseCard.propTypes = {
   //=======================================
@@ -188,7 +189,7 @@ export default function CourseCard(props) {
     }
   };
   //-------------------------------------------------------------------
-  // 10. Function to handle date string
+  // 9. Function to handle date string
   //-------------------------------------------------------------------
   const getDate = () => {
     let startDateSplit = start_date?.split(" ");
@@ -200,11 +201,11 @@ export default function CourseCard(props) {
     return `${startDate} ${startMonth} - ${endDate} ${endMonth}`;
   };
   //-------------------------------------------------------------------
-  // 11. Get published status
+  // 10. Get published status
   //-------------------------------------------------------------------
   let status = props.published ? "published" : "none";
   //-------------------------------------------------------------------
-  // 12. Get header of wrapper
+  // 11. Get header of wrapper
   //-------------------------------------------------------------------
   let header = "";
   if (props.wrapper) {
@@ -215,7 +216,7 @@ export default function CourseCard(props) {
     }
   }
   //-------------------------------------------------------------------
-  // 13. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
+  // 12. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
   //-------------------------------------------------------------------
   let truncate;
   let tag1Length = props.tags?.length > 0 ? props.tags[0]?.length : "";
@@ -337,6 +338,7 @@ export default function CourseCard(props) {
         <div className="qui-course-card-footer">
           <div className={`qui-course-card-arc-menu`}>
             <ArcMenu
+              asEmphasis="menu"
               withIcon={{ icon: "fas fa-user" }}
               withColor={{
                 backgroundColor: "#666666",
@@ -346,7 +348,52 @@ export default function CourseCard(props) {
               }}
               position="bottom-left"
               onClick={props.onClick}
-            />
+            >
+              <div style={{ width: "12em", textAlign: "center" }}>
+                <ActionMenu
+                  content={[
+                    {
+                      title: "Edit Deck",
+                      popover: "Edit Deck...",
+                      onClick: () => {},
+                    },
+                    {
+                      title: "Edit Content",
+                      popover: "Edit Content...",
+                      onClick: () => {},
+                    },
+                    {
+                      title: "Manage Learners",
+                      popover: "Manage Learners...",
+                      onClick: () => {},
+                    },
+                    {
+                      title: "View Analytics",
+                      popover: "View Analytics...",
+                      onClick: () => {},
+                    },
+                    {
+                      title: "Delete Course",
+                      popover: "Delete Course...",
+                      onClick: () => {},
+                    },
+                  ]}
+                  asPadded="normal"
+                  asAligned="left"
+                  withColor={{
+                    backgroundColor: "#666666",
+                    textColor: "#ffbf00",
+                    accentColor: "",
+                  }}
+                  withAnimation={{
+                    animation: "zoom",
+                    duration: 0.5,
+                    delay: 0,
+                  }}
+                  isHidden={false}
+                />
+              </div>
+            </ArcMenu>
           </div>
           <div className={`qui-course-card-share-block`}>
             <div className={`qui-course-card-name`}>{isSequential}</div>

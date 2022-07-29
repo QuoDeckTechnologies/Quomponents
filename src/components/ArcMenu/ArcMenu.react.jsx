@@ -260,6 +260,7 @@ export default function ArcMenu(props) {
               animate={openMenu ? "visible" : "exit"}
               exit="exit"
               className={`qui-arc-menu-buttons qui-arc-${props.asEmphasis}-menu`}
+              onMouseUp={() => setOpenMenu(false)}
             >
               {props.children}
             </motion.div>
