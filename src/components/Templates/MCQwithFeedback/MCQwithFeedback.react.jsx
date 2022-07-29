@@ -172,7 +172,8 @@ export default function MCQwithFeedback(props) {
         <div className="qui-mcq-with-feedback-slide-header">
           {!data?.image && (data?.title || data?.subtitle) ? (
             <SlideHeader
-              content={{ title: data?.title, subTitle: data?.subtitle }}
+              title={data?.title}
+              subtitle={data?.subtitle}
               withColor={{
                 accentColor: withColor?.slideHeaderAccentColor,
                 textColor: withColor?.slideHeaderTextColor,
@@ -182,7 +183,7 @@ export default function MCQwithFeedback(props) {
           ) : (
             <img
               className="qui-mcq-with-feedback-image"
-              src={resolveImage(data?.image?.id,imageLibrary)}
+              src={resolveImage(data?.image?.id, imageLibrary)}
               alt="slide"
             />
           )}

@@ -139,7 +139,8 @@ export default function LinkwithSlide(props) {
     if (!data?.image && (data?.title || data?.subtitle)) {
       return (
         <SlideHeader
-          content={{ title: data?.title, subTitle: data?.subtitle }}
+          title={data?.title}
+          subtitle={data?.subtitle}
           withColor={{
             backgroundColor: withColor?.slideHeaderBackgroundColor,
             accentColor: withColor?.slideHeaderAccentColor,

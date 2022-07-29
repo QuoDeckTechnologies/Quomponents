@@ -190,7 +190,8 @@ export default function Brancher(props) {
         <div className="qui-brancher-slide-header">
           {!data?.image && (data?.title || data?.subtitle) ? (
             <SlideHeader
-              content={{ title: data?.title, subTitle: data?.subtitle }}
+              title={data?.title}
+              subtitle={data?.subtitle}
               withColor={{
                 accentColor: withColor?.slideHeaderAccentColor,
                 textColor: withColor?.slideHeaderTextColor,

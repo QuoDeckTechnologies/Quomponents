@@ -114,7 +114,7 @@ export default function Title(props) {
     if (!data?.image && (data?.title || data?.subtitle)) {
       return (
         <SlideHeader
-          content={{ title: data?.title }}
+          title={data?.title}
           withColor={{
             backgroundColor: withColor?.slideHeaderBackgroundColor,
             accentColor: withColor?.slideHeaderAccentColor,
@@ -207,16 +207,14 @@ export default function Title(props) {
     >
       <div className={`qui-title-container ${quommonClasses.childClasses}`}>
         <div
-          className={`qui-title-slide-header ${
-            data?.presenter ? "qui-title-slide-header-presenter" : ""
-          }`}
+          className={`qui-title-slide-header ${data?.presenter ? "qui-title-slide-header-presenter" : ""
+            }`}
         >
           {!data?.presenter && getView(data)}
           {data?.icon && data?.title && (
             <div
-              className={`qui-title-icon-block ${
-                data?.presenter ? "qui-title-icon-block-presenter" : ""
-              }`}
+              className={`qui-title-icon-block ${data?.presenter ? "qui-title-icon-block-presenter" : ""
+                }`}
             >
               <IconBlock
                 withColor={{

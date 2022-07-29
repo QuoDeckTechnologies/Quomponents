@@ -125,10 +125,6 @@ export default function Image(props) {
     textColor: props.withColor?.textBlockTextColor,
     backgroundColor: props.withColor?.textBlockBackgroundColor,
   };
-  let SlideHeaderText = {
-    title: data?.title,
-    subTitle: data?.subtitle,
-  };
   //-------------------------------------------------------------------
   // Function to return a content
   //-------------------------------------------------------------------
@@ -162,7 +158,8 @@ export default function Image(props) {
         >
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
-              content={SlideHeaderText}
+              title={data?.title}
+              subtitle={data?.subtitle}
               withColor={slideHeaderColors}
             />
           )}
