@@ -158,7 +158,8 @@ export default function ImageGrid(props) {
                     {!data?.image && (data?.title || data?.subtitle) && (
                         <SlideHeader
                             title={data?.title}
-                            subtitle={data?.subtitle} />
+                            subtitle={data?.subtitle}
+                            withColor={slideHeaderColors} />
                     )}
                     {data?.image && (
                         <img className="qui-image-grid-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
