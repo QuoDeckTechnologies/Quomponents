@@ -230,7 +230,7 @@ export default function Button(props) {
   //-------------------------------------------------------------------
   // 2. Set the component colors
   //-------------------------------------------------------------------
-  let colors = props.withColor
+  let colors = props.isDisabled ? "" : props.withColor
     ? getColors(props.withColor, props.asEmphasis, hovered)
     : {};
   //-------------------------------------------------------------------

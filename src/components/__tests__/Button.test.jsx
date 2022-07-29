@@ -75,6 +75,7 @@ describe("Button", () => {
     });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly with isCircular and empty content", () => {
     component.setProps({
       isCircular: true,
@@ -82,17 +83,28 @@ describe("Button", () => {
     });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly with asEmphasis", () => {
     component.setProps({
       asEmphasis: "outlined",
     });
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly with asEmphasis `outlined`", () => {
+
+  it("should render correctly with isDisable True and withColor null", () => {
     component.find(".qui-button").simulate("mouseenter");
     component.setProps({
       asEmphasis: "outlined",
       isDisabled: true,
+      withColor: null
+    });
+    expect(component.exists()).toBe(true);
+  });
+  it("should render correctly with asEmphasis `outlined` and mouse hovered", () => {
+    component.find(".qui-button").simulate("mouseenter");
+    component.setProps({
+      asEmphasis: "outlined",
+      isDisabled: false,
       withColor: {
         backgroundColor: "#ffc900",
         textColor: "#666666",
@@ -157,16 +169,6 @@ describe("Button", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render translation  with withTranslation prop puprpose passed as quiz", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "",
-        tgt: "button",
-        dictionary: dictionary,
-      },
-    });
-  });
-
   it("should render correctly with content", () => {
     component.setProps({
       content: "",
@@ -174,6 +176,7 @@ describe("Button", () => {
     });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly without throwing error when component mounts", () => {
     component = mount(
       <Button
