@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-// import Divider from "@mui/material/Divider";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import _ from "lodash";
@@ -21,7 +20,21 @@ Marker.propTypes = {
     //=======================================
     content: PropTypes.shape({
         wrapper: PropTypes.string,
-        inset: PropTypes.number
+        inset: PropTypes.number,
+        completion: PropTypes.number,
+        node: PropTypes.shape({
+            _id: PropTypes.string,
+            name: PropTypes.string,
+            description: PropTypes.string,
+            contentList: PropTypes.arrayOf(
+                PropTypes.shape({
+                    _id: PropTypes.string,
+                    name: PropTypes.string,
+                    readerType: PropTypes.string,
+                    sequence: PropTypes.number,
+                })),
+            sequence: PropTypes.number,
+        })
     }),
     /**
     Use to set the state of MobileToolbar 
@@ -31,6 +44,10 @@ Marker.propTypes = {
         "complete",
         "incomplete",
     ]),
+    /**
+   Use to show/hide the component
+   */
+    sequential: PropTypes.bool,
     //=======================================
     // Quommon props
     //=======================================
@@ -57,6 +74,10 @@ Marker.propTypes = {
     component must have the onClick function passed as props
     */
     onClick: PropTypes.func.isRequired,
+    /**
+    component must have the onClick function passed as props
+    */
+    openDeck: PropTypes.func
 };
 
 Marker.defaultProps = {
@@ -85,7 +106,7 @@ export default function Marker(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
     //-------------------------------------------------------------------
-    let { content, status } = props;
+    let { content, status, openDeck } = props;
 
     //-------------------------------------------------------------------
     // 2. Set the classes
@@ -109,42 +130,42 @@ export default function Marker(props) {
     };
 
     let indicator = (deck) => {
-        return props.completion[deck.deckId] === 100 ? (
-            <i className="qui-indicator fa fa-share" />
+        return props.content?.completion[deck.deckId] === 100 ? (
+            <i className="qui-indicator fa fa-check-circle" />
         ) : (
-            <i className="qui-indicator fa fa-share" />
+            <i className="qui-indicator fa fa-bullseye" />
         );
     };
     let iconName = (readerType) => {
         switch (readerType) {
             case "videck":
-                return "video";
+                return "fa fa-video-camera";
             case "docdeck":
-                return "file pdf outline";
+                return "fa fa-file-zip-o";
             case "assessment":
-                return "treatment";
+                return "fa fa-medkit";
             case "survey":
-                return "wpforms";
+                return "fas fa-poll";
             case "adaptive":
-                return "random";
+                return "fa fa-random";
             case "quiz":
-                return "question circle outline";
+                return "fa fa-question-circle";
             case "casestudy":
-                return "archive";
+                return "fa fa-archive";
             case "dialogue":
-                return "talking outline";
+                return "fa fa-comments-o";
             case "qdf":
-                return "file outline";
+                return "fa fa-file";
             case "game":
                 return "game";
             default:
-                return "file outline";
+                return "fa fa-file";
         }
     };
     let markerBlock = (
-        <div>
-            <img onClick={handleClick}
-                className="qui-marker-img"
+        <div onClick={handleClick}>
+            <img
+                className={"qui-marker-img"}
                 src={
                     WrapperList[content?.wrapper]?.customMarker
                         ? "assets/courses/" +
@@ -169,14 +190,14 @@ export default function Marker(props) {
     let marker = () => {
         return (
             status === "current" ? (
-                <motion.div
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                >
-                    <div className="qui-marker-style">
+                <div className="qui-marker-style">
+                    <motion.div
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                    >
                         {markerBlock}
-                    </div>
-                </motion.div>
+                    </motion.div>
+                </div>
             ) : (
                 <div className="qui-marker-style">
                     {markerBlock}
@@ -244,68 +265,61 @@ export default function Marker(props) {
                             }
                             alt="ok"
                         />
-                        <ListItemText>
-                            <div className="qui-marker-wellstyle">
-                                <h2 className="qui-marker-header">{content?.node?.name}</h2>
-                                <p className="qui-marker-desc">
-                                    {content?.node?.description}
-                                </p>
+                        <div className="qui-marker-wellstyle">
+                            <h5 className="qui-marker-header">
+                                {content?.node?.name}
+                            </h5>
+                            <div className="qui-marker-desc">
+                                {content?.node?.description}
                             </div>
-                        </ListItemText>
-                        <ListItemText>
-                            <ul key={'list-' + Math.random()} divided style={gameList}>
-                                {_.map(content?.node?.contentList, (deck, index) => {
-                                    prevComplete = currComplete !== undefined ? currComplete : 0;
-                                    currComplete = props.completion[deck._id];
-                                    return (
-                                        <li
-                                            key={`deckitem-${deck._id}`}
-                                            style={{
-                                                padding: "5px 10px",
-                                                opacity: props.sequential && index !== 0
-                                                    ? prevComplete === 100 ? "none" : "0.3" : "none",
-                                                background: props.sequential && index !== 0
-                                                    ? prevComplete === 100 ? "none" : "#e8e8e8" : "none"
-                                            }}
-                                            onClick={props.sequential && index !== 0 ? prevComplete > 80 ?
-                                                () => props.openDeck(
-                                                    {
-                                                        deckId: deck._id,
-                                                        readerType: deck.readerType,
-                                                    },
-                                                    content?.inset - 1
-                                                ) : null :
-                                                () => props.openDeck(
-                                                    {
-                                                        deckId: deck._id,
-                                                        readerType: deck.readerType,
-                                                    },
-                                                    content?.inset - 1
-                                                )
-                                            }
-                                        >
-                                            <div className="qui-itemcontent">
-                                                {indicator({
+                        </div>
+                        <div key={'list-' + Math.random()} divided style={gameList}>
+                            {_.map(content?.node?.contentList, (deck, index) => {
+                                prevComplete = currComplete !== undefined ? currComplete : 0;
+                                currComplete = props.content?.completion[deck._id];
+                                return (
+                                    <div className="qui-icons-name"
+                                        key={`deckitem-${deck._id}`}
+                                        style={{
+                                            opacity: props.sequential && index !== 0
+                                                ? prevComplete === 100 ? "none" : "0.3" : "none",
+                                            background: props.sequential && index !== 0
+                                                ? prevComplete === 100 ? "none" : "#e8e8e8" : "none"
+                                        }}
+                                        onClick={props.sequential && index !== 0 ? prevComplete > 80 ?
+                                            () => openDeck(
+                                                {
                                                     deckId: deck._id,
                                                     readerType: deck.readerType,
-                                                })}
-                                                {deck.name}
-                                            </div>
-                                            <div className="qui-iconwrapper">
-                                                <ListItemIcon>
-                                                    <i
-                                                        className={iconName(deck.readerType)}
-                                                    />
-                                                </ListItemIcon>
-                                                <ListItemIcon>
-                                                    <i className="fa fa-certificate" />
-                                                </ListItemIcon>
-                                            </div>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        </ListItemText>
+                                                },
+                                                content?.inset - 1
+                                            ) : null :
+                                            () => openDeck(
+                                                {
+                                                    deckId: deck._id,
+                                                    readerType: deck.readerType,
+                                                },
+                                                content?.inset - 1
+                                            )
+                                        }
+                                    >
+                                        <div className="qui-itemcontent">
+                                            {indicator({
+                                                deckId: deck._id,
+                                                readerType: deck.readerType,
+                                            })}
+                                            {deck.name}
+                                        </div>
+                                        <div className="qui-iconwrapper">
+                                            <i
+                                                className={iconName(deck.readerType)}
+                                            />
+                                            <i className="fa fa-chevron-right" />
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </MenuItem>
                 </Menu >
             </div>

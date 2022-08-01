@@ -4,10 +4,40 @@
 import { shallow } from 'enzyme';
 
 //--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
+
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import Marker from '../Marker/Marker.react'
 describe("Marker", () => {
+    // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+
+    const args = {
+        target: Marker,
+        required: {
+            content: "",
+            onClick: () => { },
+        },
+    };
+
+    hasValid("defaults", args);
+
+    hasValid("sizes", args);
+
+    hasValid("animations", args);
+
+    hasValid("hidden", args);
+    hasValid("disabled", args);
+
+    // -------------------------------------
+    // Run component specific tests
+    // -------------------------------------
+
     let component;
     beforeEach(() => {
         jest.resetAllMocks();
@@ -22,35 +52,16 @@ describe("Marker", () => {
             />
         );
     });
-    it("should render correctly without throwing error", () => {
+    it("should render correctly when passed status prop as current", () => {
+        component.setProps({ status: "current" })
         expect(component.exists()).toBe(true);
-    });
+    })
     it("should render correctly when passed status prop as complete", () => {
         component.setProps({ status: "complete" })
         expect(component.exists()).toBe(true);
     })
     it("should render correctly when passed status prop as incomplete", () => {
         component.setProps({ status: "incomplete" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed status prop as incomplete", () => {
-        component.setProps({ status: "incomplete" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true })
         expect(component.exists()).toBe(true);
     })
 });

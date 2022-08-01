@@ -1,67 +1,91 @@
 .qui.qui-marker {
 
-    .qui-marker-text {
-      position: absolute;
-      width: fit-content;
-      height: auto;
-      top: 50%;
-      left: 50%;
-      transform: translate(-0.25em, -0.85em);
-      z-index: 1;
-      font-weight: bolder;
-    }
+  .qui-marker-text {
+    position: absolute;
+    width: fit-content;
+    height: auto;
+    cursor: pointer;
+    transform: translate(1.5em, -2.75em);
+    z-index: 1;
+    font-weight: bolder;
+  }
 
-    .qui-marker-style {
-      position: relative;
-      z-index: 1;
-    }
+  .qui-marker-style {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    z-index: 1;
 
     .qui-marker-img {
+      position: relative;
       width: 3.5em;
       height: 3.5em;
       cursor: pointer;
     }
+  }
+}
 
-    .qui-marker-wellstyle {
-      padding: 10px;
-      margin-top: -10px;
-    }
+.MuiMenuItem-root {
+  display: flex;
+  flex-direction: column;
+  line-height: 1em;
+  padding: 0em;
 
-    .qui-marker-header {
-      padding: 0 10px;
-      margin: 5px 0;
-      font-weight: normal;
+  .qui-marker-wellstyle {
+    padding: 0.5em 1em;
+    width: 13em;
+    background-color: #121212;
+    color: #ffffff;
+    line-height: 1em;
+
+    h5 {
+      margin: 0;
     }
 
     .qui-marker-desc {
-      padding: 0 10px;
-      font-size: 0.8em;
-      line-height: 1.2;
-      margin: 10px 0;
-    }
-
-    .qui-itemcontent {
-      width: 79%;
-      white-space: nowrap;
+      white-space: pre-wrap;
+      font-size: 0.7em;
+      -webkit-box-orient: vertical;
+      display: block;
+      display: -webkit-box;
       overflow: hidden;
       text-overflow: ellipsis;
-      display: inline-block;
-      margin-top: 7px;
+      -webkit-line-clamp: 2;
     }
+  }
 
-    .qui-indicator {
-      font-size: 1.1em;
-      margin-right: 7px;
-    }
+  .qui-itemcontent {
+    width: 79%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
 
-    .qui-iconwrapper {
-      float: right;
-      margin-top: 6px;
-      color: #121212;
-    }
+  .qui-indicator {
+    font-size: 1em;
+    margin-right: 0.5em;
+  }
+
+  .qui-iconwrapper {
+    float: right;
+    color: #121212;
+    font-size: .85em;
   }
 
   .qui-marker-imagestyle {
     width: 100%;
   }
 
+  .qui-icons-name {
+    display: block;
+    align-items: center;
+    width: 13em;
+    padding-top: 0.2em;
+    line-height: 1;
+
+    .fa-chevron-right {
+      margin-left: 0.5em;
+    }
+  }
+}

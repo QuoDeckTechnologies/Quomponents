@@ -5,15 +5,18 @@ export default {
     title: "Design System/Marker/Marker",
     component: Marker,
     argTypes: {
-        content: {
-            wrapper: "",
-            inset: 0,
-        },
+        content: {},
         status: {
             control: "select",
             options: ["current", "complete", "incomplete"],
             table: {
                 category: "as-Flags",
+            },
+        },
+        sequential: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: true,
             },
         },
         asSize: {
@@ -29,6 +32,7 @@ export default {
                 defaultValue: null,
             },
         },
+        openDeck: {},
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -68,8 +72,22 @@ export const Default = Template.bind({});
 Default.args = {
     content: {
         wrapper: "carnival",
-        inset: 1
+        inset: 1,
+        completion: 100,
+        node: {
+            _id: "",
+            name: "First Topic",
+            description: "This is first new topic of this course",
+            contentList: [{
+                _id: "",
+                name: "Assesment format",
+                readerType: "quiz",
+                sequence: 0,
+            }],
+            sequence: 0,
+        }
     },
+    sequential: true,
     status: "current",
     asSize: "normal",
     isHidden: false,
