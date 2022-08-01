@@ -53,6 +53,16 @@ export default {
         },
       },
     },
+    withAnimation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          animation: "",
+          duration: 0,
+          delay: 0,
+        },
+      },
+    },
     isDisabled: {
       table: {
         category: "is-Toggles",
@@ -243,6 +253,11 @@ Default.args = {
     accentColor: "",
     hoverBackgroundColor: "#666666",
     hoverTextColor: "",
+  },
+  withAnimation: {
+    animation: "zoom",
+    duration: 0.5,
+    delay: 0,
   },
   isDisabled: false,
   isHidden: false,

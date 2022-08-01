@@ -35,7 +35,7 @@ describe("ArcMenu", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <ArcMenu menuPosition="top-right" onClick={() => {}}>
+      <ArcMenu asEmphasis="menu" position="top-right" onClick={() => {}}>
         <ActionMenu
           content={[
             {
@@ -71,34 +71,50 @@ describe("ArcMenu", () => {
 
   it("should render correctly whith top-left position", () => {
     component.setProps({
-      menuPosition: "top-left",
+      position: "top-left",
     });
     expect(component.exists()).toBe(true);
   });
 
   it("should render correctly with bottom-left position", () => {
     component.setProps({
-      menuPosition: "bottom-left",
+      position: "bottom-left",
     });
     expect(component.exists()).toBe(true);
   });
 
   it("should render correctly with bottom-right position", () => {
     component.setProps({
-      menuPosition: "bottom-right",
+      position: "bottom-right",
     });
     expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when position not specified", () => {
     component.setProps({
-      menuPosition: null,
+      position: null,
+    });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly with add emphasis", () => {
+    component.setProps({
+      asEmphasis: "add",
     });
     expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when clicked on button", () => {
     component.find("button").simulate("click");
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when hovered on close button", () => {
+    component.setProps({
+      asEmphasis: "close",
+    });
+    component.find("button").simulate("mouseenter");
+    component.find("button").simulate("mouseleave");
     expect(component.exists()).toBe(true);
   });
 
@@ -109,11 +125,14 @@ describe("ArcMenu", () => {
   });
 
   it("should render correctly when clicked on button", () => {
-    let wrapper = shallow(
-      <ArcMenu menuPosition="top-right" onClick={() => {}} />
-    );
+    let wrapper = shallow(<ArcMenu position="top-right" onClick={() => {}} />);
     wrapper.find("button").simulate("click");
     wrapper.find(".qui-arc-menu-backdrop").simulate("click");
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when clicked on menu items", () => {
+    component.find(".qui-arc-menu-buttons").simulate("mouseup");
     expect(component.exists()).toBe(true);
   });
 });
