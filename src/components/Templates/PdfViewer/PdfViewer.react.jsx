@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import _ from "lodash";
 import { Document, Page, pdfjs } from 'react-pdf';
 import Slider from "../../Slider/Slider.react";
+import DefaultImage from "../../../assets/default.jpeg"
 
 import { motion } from "framer-motion";
 import {
@@ -188,7 +189,7 @@ export default function PdfViewer(props) {
       onScroll={handleScroll}
     >{data && data?.pdf && docLibrary ?
       <div className="qui-pdf-container">
-        < Document
+        <Document
           file={resolveDocument(data.pdf?.id, props?.docLibrary)}
           onLoadSuccess={onDocumentLoadSuccess}
           onClick={() => setShowSlider(preState => !preState)}
@@ -221,7 +222,7 @@ export default function PdfViewer(props) {
             }
           </div>}
       </div> :
-      <img src="http://clevedonarttrail.co.nz/wp-content/uploads/pdf-icon.jpg" className="qui-pdf-background" alt="" />
+      <img src={DefaultImage} className="qui-pdf-background" alt="" />
       }
     </motion.div >
   );

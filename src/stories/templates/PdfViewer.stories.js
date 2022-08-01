@@ -104,7 +104,7 @@ Default.parameters = {
     id: "default-pdf",
     doc: 'sample.pdf',
   }],
-  slideId= 0,
+  slideId= {0},
   withColor= {{
     backgroundColor: "#3a3636a6",
   }},
