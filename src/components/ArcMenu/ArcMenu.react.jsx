@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Backdrop from "@mui/material/Backdrop";
-import { getQuommons } from "../../common/javascripts/helpers";
+import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ArcMenu.scss";
@@ -57,6 +57,23 @@ ArcMenu.propTypes = {
     hoverTextColor: PropTypes.string,
   }),
   /**
+  Use to define the entry animation of the component
+  */
+  withAnimation: PropTypes.shape({
+    animation: PropTypes.oneOf([
+      "zoom",
+      "collapse",
+      "fade",
+      "slideDown",
+      "slideUp",
+      "slideLeft",
+      "slideRight",
+      "",
+    ]),
+    duration: PropTypes.number,
+    delay: PropTypes.number,
+  }),
+  /**
   Use to enable/disable the component
   */
   isDisabled: PropTypes.bool,
@@ -84,6 +101,7 @@ ArcMenu.defaultProps = {
   withIcon: null,
   withColor: null,
   withTranslation: null,
+  withAnimation: null,
   isDisabled: false,
   isHidden: false,
 };
@@ -123,7 +141,7 @@ const getMenuAnimation = (position) => {
       opacity: 0,
     },
   };
-  if (position.includes("bottom")) {
+  if (position?.includes("bottom")) {
     animate.exit.y = "100vh";
   } else {
     animate.exit.y = "-100vh";
@@ -150,13 +168,17 @@ export default function ArcMenu(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "arc-menu");
   //-------------------------------------------------------------------
+  // 7. Get animation of the component
+  //-------------------------------------------------------------------
+  const animate = getAnimation(props);
+  //-------------------------------------------------------------------
   // 4. Get icon for button
   //-------------------------------------------------------------------
   const getIcon = (icon) => {
     return withIcon?.icon ? (
       <i
         style={{ color: withColor?.textColor, fontSize: withIcon?.size }}
-        className={`qui-arc-icon qui-arc-close-icon ${withIcon?.icon}`}
+        className={`qui-arc-icon qui-icon qui-arc-close-icon ${withIcon?.icon}`}
       ></i>
     ) : icon === "menu" ? (
       <div className="qui-arc-icon-menu-wrapper">
@@ -199,7 +221,11 @@ export default function ArcMenu(props) {
   // ========================= Render Function =================================
 
   return (
-    <div className={`qui ${quommonClasses.parentClasses}`}>
+    <motion.div
+      initial={animate?.from}
+      animate={animate?.to}
+      className={`qui ${quommonClasses.parentClasses}`}
+    >
       <Backdrop
         open={openMenu}
         className="qui-arc-menu-backdrop"
@@ -267,6 +293,6 @@ export default function ArcMenu(props) {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
