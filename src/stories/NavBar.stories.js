@@ -127,7 +127,6 @@ export default {
       <div
         style={{
           width: "100%",
-          textAlign: "center",
         }}
       >
         {story()}
@@ -184,7 +183,40 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<NavBar {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<NavBar 
+      title= "Earn"
+      shortLogo= ShortLogo
+      fullLogo= FullLogo
+      iconLink= {{
+        icon: "fas fa-angle-left",
+        link: "https://www.google.com/",
+      }}
+      isCircular= {false}
+      isSearch= {true}
+      isMenuBar= {true}
+      isBackButton= {true}
+      asVariant= "primary"
+      withIcon= {{
+        icon: "fas fa-user",
+      }}
+      withColor= {{
+        menuBackgroundColor: "",
+        backIconColor: "",
+        searchIconColor: "",
+        textColor: "",
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "navBar",
+        dictionary: dictionary,
+      }}
+      isDisabled= {false}
+      isHidden= {false}/>`,
     },
   },
 };
@@ -212,7 +244,39 @@ UserNavbar.parameters = {
       story: "Any image can be used as the NavBar logo image.",
     },
     source: {
-      code: `<NavBar {...${JSON.stringify(UserNavbar.args, null, 2)}}/>`,
+      code: `<NavBar 
+      title= "Earn"
+      shortLogo= ShortLogo
+      fullLogo= FullLogo
+      iconLink= {{
+        icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+      }}
+      isCircular= {false}
+      isSearch= {true}
+      isMenuBar= {true}
+      isBackButton= {true}
+      asVariant= "primary"
+      withIcon= {{
+        icon: "fas fa-user",
+      }}
+      withColor= {{
+        menuBackgroundColor: "",
+        backIconColor: "",
+        searchIconColor: "",
+        textColor: "",
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "navBar",
+        dictionary: dictionary,
+      }}
+      isDisabled= {false}
+      isHidden= {false}/>`,
     },
   },
 };
@@ -240,7 +304,40 @@ AmplayfierHeader.parameters = {
       story: "Use this to display Amplayfier Header component.",
     },
     source: {
-      code: `<NavBar {...${JSON.stringify(AmplayfierHeader.args, null, 2)}}/>`,
+      code: `<NavBar 
+      title= "Earn"
+      shortLogo= ShortLogo
+      fullLogo= FullLogo
+      iconLink= {{
+        icon: "fas fa-angle-left",
+        link: "https://www.google.com/",
+      }}
+      isCircular= {false}
+      isSearch= {true}
+      isMenuBar= {true}
+      isBackButton= {true}
+      asVariant= "primary"
+      withIcon= {{
+        icon: "fas fa-user",
+      }}
+      withColor= {{
+        menuBackgroundColor: "",
+        backIconColor: "",
+        searchIconColor: "",
+        textColor: "",
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "navBar",
+        dictionary: dictionary,
+      }}
+      isDisabled= {false}
+      isHidden= {false}/>`,
     },
   },
 };
@@ -259,11 +356,40 @@ AmplayfierHeaderWithoutBackButton.parameters = {
         "Use this to display Amplayfier Header without back button component.",
     },
     source: {
-      code: `<NavBar {...${JSON.stringify(
-        AmplayfierHeaderWithoutBackButton.args,
-        null,
-        2
-      )}}/>`,
+      code: `<NavBar 
+      title= "Earn"
+      shortLogo= ShortLogo
+      fullLogo= FullLogo
+      iconLink= {{
+        icon: "fas fa-angle-left",
+        link: "https://www.google.com/",
+      }}
+      isCircular= {false}
+      isSearch= {true}
+      isMenuBar= {true}
+      isBackButton= {false}
+      asVariant= "primary"
+      withIcon= {{
+        icon: "fas fa-user",
+      }}
+      withColor= {{
+        menuBackgroundColor: "",
+        backIconColor: "",
+        searchIconColor: "",
+        textColor: "",
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "navBar",
+        dictionary: dictionary,
+      }}
+      isDisabled= {false}
+      isHidden= {false}/>`,
     },
   },
 };
@@ -287,7 +413,40 @@ ColoredNavBar.parameters = {
         "Use this to display Amplayfier Header without back and menu button component.",
     },
     source: {
-      code: `<NavBar {...${JSON.stringify(ColoredNavBar.args, null, 2)}}/>`,
+      code: `<NavBar 
+      title= "Earn"
+      shortLogo= ShortLogo
+      fullLogo= FullLogo
+      iconLink= {{
+        icon: "fas fa-angle-left",
+        link: "https://www.google.com/",
+      }}
+      isCircular= {false}
+      isSearch= {true}
+      isMenuBar= {true}
+      isBackButton= {true}
+      asVariant= "primary"
+      withIcon= {{
+        icon: "fas fa-user",
+      }}
+      withColor= {{
+        menuBackgroundColor: "#C1DC9E",
+        backIconColor: "#FFBF00",
+        searchIconColor: "#FFBF00",
+        textColor: "#AAAAAA",
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "navBar",
+        dictionary: dictionary,
+      }}
+      isDisabled= {false}
+      isHidden= {false}/>`,
     },
   },
 };
@@ -309,7 +468,40 @@ AnimatedNavbar.parameters = {
       story: "We can animate the appearance of Navbar",
     },
     source: {
-      code: `<Navbar {...${JSON.stringify(AnimatedNavbar.args, null, 2)}}/>`,
+      code: `<NavBar 
+      title= "Earn"
+      shortLogo= ShortLogo
+      fullLogo= FullLogo
+      iconLink= {{
+        icon: "fas fa-angle-left",
+        link: "https://www.google.com/",
+      }}
+      isCircular= {false}
+      isSearch= {true}
+      isMenuBar= {true}
+      isBackButton= {true}
+      asVariant= "primary"
+      withIcon= {{
+        icon: "fas fa-user",
+      }}
+      withColor= {{
+        menuBackgroundColor: "#C1DC9E",
+        backIconColor: "#FFBF00",
+        searchIconColor: "#FFBF00",
+        textColor: "#AAAAAA",
+      }}
+      withAnimation= {{
+        animation: "fade",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "navBar",
+        dictionary: dictionary,
+      }}
+      isDisabled= {false}
+      isHidden= {false}/>`,
     },
   },
 };
@@ -332,9 +524,40 @@ TranslatedNavBar.parameters = {
         "We can translate the language of NavBar if dictionary is provided",
     },
     source: {
-      code: `<NavBar {...${JSON.stringify(TranslatedNavBar.args, {
-        navbar: { title: "कमाये" },
-      })}}/>`,
+      code: `<NavBar 
+      title= "Earn"
+      shortLogo= ShortLogo
+      fullLogo= FullLogo
+      iconLink= {{
+        icon: "fas fa-angle-left",
+        link: "https://www.google.com/",
+      }}
+      isCircular= {false}
+      isSearch= {true}
+      isMenuBar= {true}
+      isBackButton= {true}
+      asVariant= "primary"
+      withIcon= {{
+        icon: "fas fa-user",
+      }}
+      withColor= {{
+        menuBackgroundColor: "#C1DC9E",
+        backIconColor: "#FFBF00",
+        searchIconColor: "#FFBF00",
+        textColor: "#AAAAAA",
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withTranslation= {{
+        lang: "hi",
+        tgt: "navBar",
+        dictionary: dictionary,
+      }}
+      isDisabled= {false}
+      isHidden= {false}/>`,
     },
   },
 };

@@ -161,8 +161,7 @@ describe("Choice", () => {
     component.setProps({
       data: {
         title: "Neque porro quisquam est qui dolorem",
-        subtitle:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+        subtitle:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         choice: [
           {
             correct: "checked",
@@ -175,10 +174,10 @@ describe("Choice", () => {
         ],
       },
     });
-    expect(component.find(SlideHeader).props().content.title).toBe(
+    expect(component.find(SlideHeader).props().title).toBe(
       "Neque porro quisquam est qui dolorem"
     );
-    expect(component.find(SlideHeader).props().content.subTitle).toBe(
+    expect(component.find(SlideHeader).props().subtitle).toBe(
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem"
     );
   });

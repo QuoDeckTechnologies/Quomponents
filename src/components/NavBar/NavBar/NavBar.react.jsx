@@ -226,7 +226,7 @@ export default function NavBar(props) {
             <IconLink
               {...props}
               asPadded="fitted"
-              content={{ link: iconLink?.link }}
+              link={iconLink?.link}
               withIcon={{ icon: iconLink?.icon }}
               withColor={{ backgroundColor: withColor?.backIconColor }}
               onClick={props.onClick}

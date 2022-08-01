@@ -23,15 +23,16 @@ describe("NavBar", () => {
     const args = {
         target: NavBar,
         required: {
-            content: {
-                title: "earn",
-                logoimg: "logo",
-                iconlink: [{
-                    icon: "fas fa-angle-left",
-                    link: "https://www.google.com/",
-                }],
+            title: "earn",
+            logoimg: "logo",
+            iconlink: {
+                icon: "fas fa-angle-left",
+                link: "https://www.google.com/",
             },
             onClick: () => { },
+            onSearch: () => { },
+            onMenuClick: () => { },
+            onAppMenuClick: () => { },
         },
         translations: {
             tgt: "navBar",
@@ -59,36 +60,23 @@ describe("NavBar", () => {
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
-    let component, ShortLogo;
-
+    let component;
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
             <NavBar
-                content={{
-                    title: "earn",
-                    logoimg: "logo",
-                    iconlink: [{
-                        icon: "fas fa-angle-left",
-                        link: "https://www.google.com/",
-                    }],
+                title="Earn"
+                shortLogo=""
+                fullLogo=""
+                iconLink={{
+                    icon: "fas fa-angle-left",
+                    link: "https://www.google.com/",
                 }}
-                asVariant="primary"
-                asSize="normal"
-                withColor={{
-                    backgroundColor: "",
-                    accentColor: "",
-                    textColor: "#b60d17",
-                }}
-                onClick={() => console.log("NavBar testing")}
+                isCircular={false}
+                isSearch={true}
+                isMenuBar={true}
+                isBackButton={true}
             />
         );
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isDisabled props is true", () => {
-    component.setProps({
-      isDisabled: true,
     });
 });

@@ -68,7 +68,7 @@ describe("FlipConfirm", () => {
       isDisabled={false}
       isFluid={false}
       isLoading={false}
-      onClick={() => console.log("")}
+      onClick={() => { }}
     />);
   })
 
@@ -121,7 +121,7 @@ describe("FlipConfirm", () => {
     });
 
   it("Click testing", () => {
-    let wrapper = shallow(<FlipConfirm onClick={() => console.log("")}
+    let wrapper = shallow(<FlipConfirm onClick={() => { }}
     />);
     wrapper.find("Button").at(0).simulate('click', { clientX: 100, clientY: 100 });
     wrapper.find("Button").at(1).simulate('click', { clientX: 100, clientY: 100 });
