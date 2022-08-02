@@ -24,22 +24,16 @@ export default {
   title: "Design System/EarnCard",
   component: EarnCard,
   argTypes: {
-    content: {
-      table: {
-        defaultValue: {
-          image: "",
-          tag: "",
-          title: "",
-          description: "",
-          icon: "",
-          dates: {
-            end_date: "",
-            start_date: "",
-          },
-          topics: [],
-        },
-      },
+    image: "",
+    tag: "",
+    title: "",
+    description: "",
+    icon: "",
+    dates: {
+      end_date: "",
+      start_date: "",
     },
+    topics: [],
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
@@ -133,50 +127,48 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    image: "static/media/Image.62bfb45a.png",
-    tag: "restricted",
-    title: "QuoDeck Emerging Leadership Program",
-    description:
-      "Win a chance to apply for this exclusive opportunity for taking your career to the stars",
-    icon: "fas fa-square",
-    dates: {
-      end_date: "3rd May",
-      start_date: "28th Feb",
-    },
-    topics: [
-      {
-        name: "Name One",
-        contentList: [],
-        checked: true,
-      },
-      {
-        name: "Name Two",
-        contentList: [],
-        checked: false,
-      },
-      {
-        name: "Name Three",
-        contentList: [],
-        checked: false,
-      },
-      {
-        name: "Name Four",
-        contentList: [],
-        checked: false,
-      },
-      {
-        name: "Name Five",
-        contentList: [],
-        checked: true,
-      },
-      {
-        name: "Name Six",
-        contentList: [],
-        checked: false,
-      },
-    ],
+  image: "static/media/Image.62bfb45a.png",
+  tag: "restricted",
+  title: "QuoDeck Emerging Leadership Program",
+  description:
+    "Win a chance to apply for this exclusive opportunity for taking your career to the stars",
+  icon: "fas fa-square",
+  dates: {
+    end_date: "3rd May",
+    start_date: "28th Feb",
   },
+  topics: [
+    {
+      name: "Name One",
+      contentList: [],
+      checked: true,
+    },
+    {
+      name: "Name Two",
+      contentList: [],
+      checked: false,
+    },
+    {
+      name: "Name Three",
+      contentList: [],
+      checked: false,
+    },
+    {
+      name: "Name Four",
+      contentList: [],
+      checked: false,
+    },
+    {
+      name: "Name Five",
+      contentList: [],
+      checked: true,
+    },
+    {
+      name: "Name Six",
+      contentList: [],
+      checked: false,
+    },
+  ],
   asVariant: "primary",
   asSize: "normal",
   withColor: {
@@ -284,57 +276,53 @@ TranslatedCard.parameters = {
 export const withoutDates = Template.bind({});
 withoutDates.args = {
   ...Default.args,
-  content: {
-    image: "static/media/Image.62bfb45a.png",
-    tag: "restricted",
-    title: "QuoDeck Emerging Leadership Program",
-    description:
-      "Win a chance to apply for this exclusive opportunity for taking your career to the stars",
-    icon: "fas fa-square",
-    dates: {
-      end_date: "",
-      start_date: "",
-    },
-    topics: [
-      {
-        name: "Name One",
-        contentList: [],
-        checked: true,
-      },
-      {
-        name: "Name Two",
-        contentList: [],
-        checked: false,
-      },
-      {
-        name: "Name Three",
-        contentList: [],
-        checked: false,
-      },
-      {
-        name: "Name Four",
-        contentList: [],
-        checked: false,
-      },
-      {
-        name: "Name Five",
-        contentList: [],
-        checked: true,
-      },
-      {
-        name: "Name Six",
-        contentList: [],
-        checked: false,
-      },
-    ],
+  image: "static/media/Image.62bfb45a.png",
+  tag: "restricted",
+  title: "QuoDeck Emerging Leadership Program",
+  description:
+    "Win a chance to apply for this exclusive opportunity for taking your career to the stars",
+  icon: "fas fa-square",
+  dates: {
+    end_date: "",
+    start_date: "",
   },
-
+  topics: [
+    {
+      name: "Name One",
+      contentList: [],
+      checked: true,
+    },
+    {
+      name: "Name Two",
+      contentList: [],
+      checked: false,
+    },
+    {
+      name: "Name Three",
+      contentList: [],
+      checked: false,
+    },
+    {
+      name: "Name Four",
+      contentList: [],
+      checked: false,
+    },
+    {
+      name: "Name Five",
+      contentList: [],
+      checked: true,
+    },
+    {
+      name: "Name Six",
+      contentList: [],
+      checked: false,
+    },
+  ],
 };
 withoutDates.parameters = {
   docs: {
     description: {
-      story:
-        "We can displays the EarnCard without dates",
+      story: "We can displays the EarnCard without dates",
     },
     source: {
       code: `<EarnCard {...${JSON.stringify(withoutDates.args, null, 2)}}/>`,
@@ -347,60 +335,59 @@ withoutDates.parameters = {
 export const withoutDescription = Template.bind({});
 withoutDescription.args = {
   ...Default.args,
-  content: {
-    image: "static/media/Image.62bfb45a.png",
-    tag: "new",
-    title: "QuoDeck Emerging Leadership Program",
-    description:
-      "",
-    icon: "fas fa-square",
-    dates: {
-      end_date: "3rd May",
-      start_date: "28th Feb",
-    },
-    topics: [
-      {
-        name: "Name One",
-        contentList: [],
-        checked: true,
-      },
-      {
-        name: "Name Two",
-        contentList: [],
-        checked: false,
-      },
-      {
-        name: "Name Three",
-        contentList: [],
-        checked: false,
-      },
-      {
-        name: "Name Four",
-        contentList: [],
-        checked: false,
-      },
-      {
-        name: "Name Five",
-        contentList: [],
-        checked: true,
-      },
-      {
-        name: "Name Six",
-        contentList: [],
-        checked: false,
-      },
-    ],
+  image: "static/media/Image.62bfb45a.png",
+  tag: "new",
+  title: "QuoDeck Emerging Leadership Program",
+  description: "",
+  icon: "fas fa-square",
+  dates: {
+    end_date: "3rd May",
+    start_date: "28th Feb",
   },
-
+  topics: [
+    {
+      name: "Name One",
+      contentList: [],
+      checked: true,
+    },
+    {
+      name: "Name Two",
+      contentList: [],
+      checked: false,
+    },
+    {
+      name: "Name Three",
+      contentList: [],
+      checked: false,
+    },
+    {
+      name: "Name Four",
+      contentList: [],
+      checked: false,
+    },
+    {
+      name: "Name Five",
+      contentList: [],
+      checked: true,
+    },
+    {
+      name: "Name Six",
+      contentList: [],
+      checked: false,
+    },
+  ],
 };
 withoutDescription.parameters = {
   docs: {
     description: {
-      story:
-        "We can displays the EarnCard without description",
+      story: "We can displays the EarnCard without description",
     },
     source: {
-      code: `<EarnCard {...${JSON.stringify(withoutDescription.args, null, 2)}}/>`,
+      code: `<EarnCard {...${JSON.stringify(
+        withoutDescription.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
