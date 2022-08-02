@@ -1,0 +1,98 @@
+.qui.qui-pdf-viewer {
+  overflow: scroll;
+  text-align: center;
+  .qui-pdf-container {
+    height: 100vh;
+  }
+  .react-pdf__Page {
+    display: inline-block;
+  }
+  .react-pdf__Page__annotations.annotationLayer {
+    display: none;
+  }
+  .qui-pdf-background {
+    width: 99%;
+  }
+}
+/* width */
+::-webkit-scrollbar {
+  width: 0.2em;
+  height: 0.2em;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f100;
+  width: fit-content;
+  // margin-right: 1em;
+  z-index: 11;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(136, 136, 136);
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media only screen and (max-width: 320px) {
+  .qui.qui-pdf-viewer {
+    .qui.qui-slider .rangeslider-horizontal {
+      height: 0.5em;
+    }
+    .qui.qui-slider .rangeslider-horizontal .rangeslider__handle {
+      width: 1.3em;
+      height: 1.3em;
+    }
+  }
+  .qui-footer-slider-icon-container {
+    padding: 1em;
+    width: 89%;
+    position: fixed;
+    top: 88%;
+    .qui.qui-slider .rangeslider {
+      margin: 0;
+    }
+    .qui.qui-slider {
+      width: 90%;
+    }
+    .qui-pdf-rotate-icon {
+      position: absolute;
+      right: 0.5em;
+      top: 34%;
+    }
+    .qui.qui-slider .rangeslider-horizontal .rangeslider__handle {
+      width: 1.1em;
+      height: 1.1em;
+    }
+    .qui.qui-slider .rangeslider-horizontal {
+      height: 0.5em;
+    }
+  }
+}
+@media only screen and (min-width: 321px) and (max-width: 480px) {
+  .qui-footer-slider-icon-container {
+    padding: 1em;
+    width: 91%;
+    position: fixed;
+    top: 89%;
+    .qui.qui-slider .rangeslider {
+      margin: 0;
+    }
+    .qui.qui-slider {
+      width: 90%;
+    }
+    .qui-pdf-rotate-icon {
+      position: absolute;
+      right: 0.5em;
+      top: 35%;
+    }
+    .qui.qui-slider .rangeslider-horizontal .rangeslider__handle {
+      width: 1.1em;
+      height: 1.1em;
+    }
+    .qui.qui-slider .rangeslider-horizontal {
+      height: 0.5em;
+    }
+  }
+}
