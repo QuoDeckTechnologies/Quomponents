@@ -107,10 +107,10 @@ Default.args = {
 		backgroundImage: { id: "", extention: "" },
 		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
 		options: [
-			{ correct: "checked", text: "Item 1" },
-			{ correct: "", text: "Item 2" },
-			{ correct: "", text: "Item 3" },
-			{ correct: "", text: "Item 4" }
+			{ correct: "checked", content: "Item 1", onClick: () => { } },
+			{ correct: "", content: "Item 2", onClick: () => { } },
+			{ correct: "", content: "Item 3", onClick: () => { } },
+			{ correct: "", content: "Item 4", onClick: () => { } }
 		],
 	},
 	slideId: 0,
@@ -159,10 +159,10 @@ SingleSelectWithSlideHeader.args = {
 		backgroundImage: { id: "", extention: "" },
 		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
 		options: [
-			{ correct: "checked", text: "Item 1" },
-			{ correct: "", text: "Item 2" },
-			{ correct: "", text: "Item 3" },
-			{ correct: "", text: "Item 4" }
+			{ correct: "checked", content: "Item 1", onClick: () => { } },
+			{ correct: "", content: "Item 2", onClick: () => { } },
+			{ correct: "", content: "Item 3", onClick: () => { } },
+			{ correct: "", content: "Item 4", onClick: () => { } }
 		],
 	},
 	slideId: 0,
@@ -211,10 +211,10 @@ EmphasisSingleSelect.args = {
 		backgroundImage: { id: "", extention: "" },
 		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
 		options: [
-			{ correct: "checked", text: "Item 1" },
-			{ correct: "", text: "Item 2" },
-			{ correct: "", text: "Item 3" },
-			{ correct: "", text: "Item 4" }
+			{ correct: "checked", content: "Item 1", onClick: () => { } },
+			{ correct: "", content: "Item 2", onClick: () => { } },
+			{ correct: "", content: "Item 3", onClick: () => { } },
+			{ correct: "", content: "Item 4", onClick: () => { } }
 		],
 	},
 	slideId: 0,
@@ -268,10 +268,10 @@ ColoredSingleSelect.args = {
 		backgroundImage: { id: "", extention: "" },
 		question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
 		options: [
-			{ correct: "checked", text: "Item 1" },
-			{ correct: "", text: "Item 2" },
-			{ correct: "", text: "Item 3" },
-			{ correct: "", text: "Item 4" }
+			{ correct: "checked", content: "Item 1", onClick: () => { } },
+			{ correct: "", content: "Item 2", onClick: () => { } },
+			{ correct: "", content: "Item 3", onClick: () => { } },
+			{ correct: "", content: "Item 4", onClick: () => { } }
 		],
 	},
 	slideId: 0,

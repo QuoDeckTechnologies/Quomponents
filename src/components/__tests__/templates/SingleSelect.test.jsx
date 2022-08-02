@@ -11,7 +11,6 @@ import { hasValid } from "./../common";
 // Import Components
 // -------------------------------------
 import SingleSelect from "../../Templates/SingleSelect/SingleSelect.react";
-import SlideHeader from "../../SlideHeader/SlideHeader.react";
 import ButtonBank from "../../ButtonBank/ButtonBank.react";
 
 describe("SingleSelect", () => {
@@ -29,12 +28,11 @@ describe("SingleSelect", () => {
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         options: [{ correct: "checked", text: "Item 1" }],
       },
-      onClick: () => {},
+      onClick: () => { },
     },
   };
 
   hasValid("defaults", args);
-  hasValid("variants", args);
 
   hasValid("animations", args);
   hasValid("hidden", args);
@@ -126,22 +124,6 @@ describe("SingleSelect", () => {
     component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
   });
- 
-  it("should render title and subtitle when we doesn't pass image", () => {
-    component.setProps({
-      data: {
-        title: "Neque porro quisquam est qui dolorem",
-        subtitle:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-      },
-    });
-    expect(component.find(SlideHeader).props().content.title).toBe(
-      "Neque porro quisquam est qui dolorem"
-    );
-    expect(component.find(SlideHeader).props().content.subTitle).toBe(
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem"
-    );
-  });
 
   it("should render image instead of title and sutitle", () => {
     component.setProps({
@@ -207,26 +189,5 @@ describe("SingleSelect", () => {
       component.find(".qui-slide-single-select-card").props().style
         .backgroundColor
     ).toBe("#000");
-  });
-
-  it("should return the index of selected option", () => {
-    component.setProps({
-      options: [
-        { correct: "checked", text: "Item 1" },
-        { correct: "", text: "Item 2" },
-        { correct: "", text: "Item 3" },
-        { correct: "", text: "Item 4" },
-      ],
-    });
-    let onClick = jest.fn();
-    component.setProps({ onClick: onClick });
-    component
-      .find(ButtonBank)
-      .simulate("click", { target: { innerText: "Item 4" } });
-    expect(onClick).toBeCalledWith(3);
-    component
-      .find(ButtonBank)
-      .simulate("click", { target: { innerText: "Item 2" } });
-    expect(onClick).toBeCalledWith(1);
   });
 });

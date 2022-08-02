@@ -7,9 +7,11 @@
     color: #fff;
     &.emp-text {
         color: #aaaaaa;
+        background-color: transparent;
     }
     &.emp-outlined {
         color: #aaaaaa;
+        background-color: transparent;
         border: 1px solid #aaaaaa;
     }
 }

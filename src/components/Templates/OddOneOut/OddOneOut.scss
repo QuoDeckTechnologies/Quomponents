@@ -41,6 +41,9 @@
 
 .qui-slide-odd-one-out-container {
     margin-top: 1em;
+    .qui .qui-button-bank-single-button .qui-button button {
+        min-width: 0;
+    }
 }
 
 @media only screen and (min-width: 320px) {

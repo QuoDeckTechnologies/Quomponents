@@ -88,10 +88,6 @@ OddOneOut.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
-    /**
-    OddOneOut component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
 };
 
 OddOneOut.defaultProps = {
@@ -192,7 +188,6 @@ export default function OddOneOut(props) {
     //-------------------------------------------------------------------
     let optionsArray = [];
     data?.options?.forEach((item) => optionsArray.push(item?.text?.toLowerCase()));
-
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -207,10 +202,9 @@ export default function OddOneOut(props) {
                     style={{ ...background }}
                 >
                     {getView(data)}
-                    <div className="qui-slide-odd-one-out-container">
+                    <div className={`qui-slide-odd-one-out-container variant-${props.asVariant}`}>
                         <ButtonBank
-                            {...props}
-                            content={optionsArray}
+                            content={data?.options}
                             asSize="massive"
                             asFloated="none"
                             withColor={{
@@ -220,11 +214,6 @@ export default function OddOneOut(props) {
                                 hoverTextColor: props.withColor?.buttonHoverTextColor,
                             }}
                             withAnimation={null}
-                            onClick={(e) =>
-                                props.onClick(
-                                    optionsArray.indexOf(e.target.innerText?.toLowerCase())
-                                )
-                            }
                         />
                     </div>
                 </div>

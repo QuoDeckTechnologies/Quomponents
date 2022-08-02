@@ -10,7 +10,6 @@ import { hasValid } from "./../common";
 // Import Components
 // -------------------------------------
 import MultipleSelect from "../../Templates/MultipleSelect/MultipleSelect.react";
-import SlideHeader from "../../SlideHeader/SlideHeader.react";
 
 describe("MultipleSelect", () => {
   // -------------------------------------
@@ -44,7 +43,7 @@ describe("MultipleSelect", () => {
           },
         ],
       },
-      onClick: () => {},
+      onClick: () => { },
     },
     translations: {
       tgt: "templateActions",
@@ -145,7 +144,7 @@ describe("MultipleSelect", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-  
+
   it("should render correctly when passed asEmphasis prop as text", () => {
     let colors = {
       slideHeaderTextColor: "#ffffff",
@@ -189,22 +188,6 @@ describe("MultipleSelect", () => {
     component.setProps({ asEmphasis: "outlined" });
     component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
-  });
-
-  it("should render title and subtitle when we doesn't pass image", () => {
-    component.setProps({
-      data: {
-        title: "Neque porro quisquam est qui dolorem",
-        subtitle:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-      },
-    });
-    expect(component.find(SlideHeader).props().title).toBe(
-      "Neque porro quisquam est qui dolorem"
-    );
-    expect(component.find(SlideHeader).props().subTitle).toBe(
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem"
-    );
   });
 
   it("should render image instead of title and sutitle", () => {
