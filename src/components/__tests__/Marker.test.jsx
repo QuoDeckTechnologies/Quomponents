@@ -20,7 +20,7 @@ describe("Marker", () => {
     const args = {
         target: Marker,
         required: {
-            content: "",
+            content: {},
             onClick: () => { },
         },
     };
@@ -37,18 +37,36 @@ describe("Marker", () => {
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
+    let handleSelect = jest.fn();
     let component;
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
             <Marker
-                content={null}
+                content={{
+                    wrapper: "carnival",
+                    inset: 1,
+                    completion: 100,
+                    node: {
+                        _id: "",
+                        name: "First Topic",
+                        description: "This is first new topic of this course",
+                        contentList: [{
+                            _id: "",
+                            name: "Assesment format",
+                            readerType: "quiz",
+                            sequence: 0,
+                        }],
+                        sequence: 0,
+                    }
+                }}
+                sequential={true}
                 status="current"
+
                 asSize="normal"
                 isDisabled={false}
                 isHidden={false}
-                onClick={() => { }}
+                onClick={() => { handleSelect }}
             />
         );
     });
@@ -64,6 +82,21 @@ describe("Marker", () => {
         component.setProps({ status: "incomplete" })
         expect(component.exists()).toBe(true);
     })
+
+    it("should call handleSelect when click", () => {
+        component = shallow(<Marker
+            status="current"
+            onClick={() => { }} />);
+        component.find(".qui-marker-img").simulate("click");
+        expect(component.exists()).toBe(true);
+    });
+    it("should call handleSelect when click", () => {
+        component = shallow(<Marker
+            status="complete"
+            onClick={() => { }} />);
+        component.find(".qui-marker-img").simulate("click");
+        expect(component.exists()).toBe(true);
+    });
 });
 
 

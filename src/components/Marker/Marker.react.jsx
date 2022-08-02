@@ -139,27 +139,30 @@ export default function Marker(props) {
     let iconName = (readerType) => {
         switch (readerType) {
             case "videck":
-                return "fa fa-video-camera";
+                return "fas fa-film";
             case "docdeck":
-                return "fa fa-file-zip-o";
+                return "far fa-file-pdf";
             case "assessment":
-                return "fa fa-medkit";
+                return "fas fa-stethoscope";
             case "survey":
-                return "fas fa-poll";
+                return "fab fa-wpforms";
             case "adaptive":
-                return "fa fa-random";
+                return "fas fa-random";
             case "quiz":
-                return "fa fa-question-circle";
+                return "far fa-question-circle";
             case "casestudy":
-                return "fa fa-archive";
-            case "dialogue":
-                return "fa fa-comments-o";
+                return "fas fa-archive";
+            // case "dialogue":
+            //   return "talking outline";
             case "qdf":
-                return "fa fa-file";
+            case "deck":
+                return "far fa-images";
             case "game":
-                return "game";
+                return "fas fa-gamepad";
+            case "certdeck":
+                return "fas fa-certificate";
             default:
-                return "fa fa-file";
+                return "far fa-file";
         }
     };
     let markerBlock = (

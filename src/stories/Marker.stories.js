@@ -75,13 +75,13 @@ Default.args = {
         inset: 1,
         completion: 100,
         node: {
-            _id: "",
+            _id: "512",
             name: "First Topic",
             description: "This is first new topic of this course",
             contentList: [{
-                _id: "",
+                _id: "512",
                 name: "Assesment format",
-                readerType: "quiz",
+                readerType: "game",
                 sequence: 0,
             }],
             sequence: 0,
