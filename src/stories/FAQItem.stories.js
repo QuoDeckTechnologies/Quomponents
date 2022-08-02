@@ -91,7 +91,7 @@ export default {
     parameters: {
         componentSubtitle: "Displays a basic FAQItem for general-purpose use",
         a11y: { disable: true },
-        docs: { iframeHeight: 250 },
+        docs: { iframeHeight: 200 },
     },
 };
 // -------------------------------------------------------------

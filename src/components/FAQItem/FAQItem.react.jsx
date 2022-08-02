@@ -17,9 +17,12 @@ FAQItem.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    FAQItem's question & answer should be passed use using below props
+    FAQItem's question should be passed use using question props
     */
     question: PropTypes.string,
+    /**
+    FAQItem's answer should be passed use using answer props
+    */
     answer: PropTypes.string,
     //=======================================
     // Quommon props
@@ -122,7 +125,7 @@ export default function FAQItem(props) {
     //-------------------------------------------------------------------
     // 2. Use to set FAQItem Color
     //-------------------------------------------------------------------
-    let FAQItemColors = {
+    let faqItemColors = {
         color: props.withColor?.textColor,
     };
     //-------------------------------------------------------------------
@@ -158,8 +161,8 @@ export default function FAQItem(props) {
     // ========================= Render Function =================================
     return (
         <motion.div
-            initial={animate.from}
-            animate={animate.to}
+            initial={animate?.from}
+            animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className={`qui-faq-item-container ${quommonClasses.childClasses}`}>
@@ -169,7 +172,7 @@ export default function FAQItem(props) {
                 >
                     <div
                         className="qui-faq-item"
-                        style={FAQItemColors}
+                        style={faqItemColors}
                     >
                         <Segment
                             isCircular={true}
@@ -180,7 +183,9 @@ export default function FAQItem(props) {
                                 onClick={() => handleExpand()}
                             >
                                 {faqQuestions}
-                                <i className={`${activeIndex ? "fas fa-minus-circle" : "fas fa-plus-circle"} qui-faq-item-icon-style`} />
+                                <i className={`${activeIndex ?
+                                    "fas fa-minus-circle" : "fas fa-plus-circle"} qui-faq-item-icon-style`}
+                                />
                             </h6>
                             {activeIndex && <div>
                                 <AccentLine withColor={{ accentColor: props.withColor?.accentColor }} />
