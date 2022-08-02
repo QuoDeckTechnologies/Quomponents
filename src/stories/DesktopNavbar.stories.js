@@ -138,7 +138,70 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<DesktopNavbar {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<DesktopNavbar
+          links={[
+            {
+              icon: "fas fa-home",
+              text: "home",
+            },
+            {
+              icon: "fas fa-award",
+              text: "my profile",
+            },
+            {
+              icon: "fas fa-chart-pie",
+              text: "my reports",
+            },
+            {
+              icon: "fas fa-bell",
+              text: "notification",
+            },
+            {
+              icon: "fas fa-question-circle",
+              text: "help desk",
+            },
+          ]}
+          user={{
+            first_name: "Anita",
+            last_name: "Majithia",
+            icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+            menu: [
+              {
+                icon: "fa fa-home",
+                label: "Home",
+                onClick: () => {},
+              },
+              {
+                icon: "fa fa-archive",
+                label: "Archives",
+                onClick: () => {},
+              },
+              {
+                icon: "divider",
+                label: "",
+                onClick: () => {},
+              },
+              {
+                icon: "fa fa-power-off",
+                label: "Logout",
+                onClick: () => {},
+              },
+            ],
+          }}
+          asVariant="primary"
+          withColor={{
+            backgroundColor: "#000000",
+            textColor: "#eee",
+            accentColor: "#666666",
+            hoverBackgroundColor: "#86BC25",
+            hoverTextColor: "#eee",
+          }}
+          withIcon={{
+            icon: "https://s3-alpha-sig.figma.com/img/62a7/fe58/4eecae9f288351910a0eb692d867ee13?Expires=1659916800&Signature=AlWDFcksp3SrNfu0e9xxYSVnvJDtrx0ckNiajI2LAfAuD8Wshhp8KhQwgCx1nyZjuagwO2wW6r8uKC4O6QBeCw1OvYF6L42cuCSZaFqoA-Io74RDywQrgRxCrR3SXRSgamPEhGvwZnlSco~kYXn4DnIhEbtmErawR21H~hFoxTOpTaoVmFw-29dz2SPxj-L1sKZM6kXj1vozhHOzHq6GM5IQLysBP9RJu6jjG4TmVuHQRx9Uy-i9j8he0q00Uvp1HV5-RZLY05dGNHxrQIdVq8UuB3U9P5kStx9dbC286AFVNVZfxky6pgP5ITb~Z~LRa28KqfGBn8ovGOYukrVVQw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+          }}
+          isDisabled={false}
+          isHidden={false}
+        />`,
     },
   },
 };
@@ -186,11 +249,82 @@ ScrollableDesktopNavbar.args = {
 ScrollableDesktopNavbar.parameters = {
   docs: {
     source: {
-      code: `<DesktopNavbar {...${JSON.stringify(
-        ScrollableDesktopNavbar.args,
-        null,
-        2
-      )}}/>`,
+      code: `<DesktopNavbar
+          links={[
+            {
+              icon: "fas fa-home",
+              text: "home",
+            },
+            {
+              icon: "fas fa-award",
+              text: "my profile",
+            },
+            {
+              icon: "fas fa-chart-pie",
+              text: "my reports",
+            },
+            {
+              icon: "fas fa-bell",
+              text: "notification",
+            },
+            {
+              icon: "fas fa-question-circle",
+              text: "help desk",
+            },
+            {
+              icon: "fas fa-book",
+              text: "Long Text Testing",
+            },
+            {
+              icon: "fas fa-bookmark",
+              text: "bookmarks",
+            },
+            {
+              icon: "fas fa-brush",
+              text: "About",
+            },
+          ]}
+          user={{
+            first_name: "Anita",
+            last_name: "Majithia",
+            icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+            menu: [
+              {
+                icon: "fa fa-home",
+                label: "Home",
+                onClick: () => {},
+              },
+              {
+                icon: "fa fa-archive",
+                label: "Archives",
+                onClick: () => {},
+              },
+              {
+                icon: "divider",
+                label: "",
+                onClick: () => {},
+              },
+              {
+                icon: "fa fa-power-off",
+                label: "Logout",
+                onClick: () => {},
+              },
+            ],
+          }}
+          asVariant="primary"
+          withColor={{
+            backgroundColor: "#000000",
+            textColor: "#eee",
+            accentColor: "#666666",
+            hoverBackgroundColor: "#86BC25",
+            hoverTextColor: "#eee",
+          }}
+          withIcon={{
+            icon: "https://s3-alpha-sig.figma.com/img/62a7/fe58/4eecae9f288351910a0eb692d867ee13?Expires=1659916800&Signature=AlWDFcksp3SrNfu0e9xxYSVnvJDtrx0ckNiajI2LAfAuD8Wshhp8KhQwgCx1nyZjuagwO2wW6r8uKC4O6QBeCw1OvYF6L42cuCSZaFqoA-Io74RDywQrgRxCrR3SXRSgamPEhGvwZnlSco~kYXn4DnIhEbtmErawR21H~hFoxTOpTaoVmFw-29dz2SPxj-L1sKZM6kXj1vozhHOzHq6GM5IQLysBP9RJu6jjG4TmVuHQRx9Uy-i9j8he0q00Uvp1HV5-RZLY05dGNHxrQIdVq8UuB3U9P5kStx9dbC286AFVNVZfxky6pgP5ITb~Z~LRa28KqfGBn8ovGOYukrVVQw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+          }}
+          isDisabled={false}
+          isHidden={false}
+        />`,
     },
   },
 };
@@ -202,7 +336,6 @@ ColoredDesktopNavbar.args = {
   ...Default.args,
   user: {
     ...Default.args.user,
-    name: "Anita Majithia",
     icon: "fas fa-user",
   },
   asVariant: "secondary",
@@ -217,11 +350,70 @@ ColoredDesktopNavbar.args = {
 ColoredDesktopNavbar.parameters = {
   docs: {
     source: {
-      code: `<DesktopNavbar {...${JSON.stringify(
-        ColoredDesktopNavbar.args,
-        null,
-        2
-      )}}/>`,
+      code: `<DesktopNavbar
+          links={[
+            {
+              icon: "fas fa-home",
+              text: "home",
+            },
+            {
+              icon: "fas fa-award",
+              text: "my profile",
+            },
+            {
+              icon: "fas fa-chart-pie",
+              text: "my reports",
+            },
+            {
+              icon: "fas fa-bell",
+              text: "notification",
+            },
+            {
+              icon: "fas fa-question-circle",
+              text: "help desk",
+            },
+          ]}
+          user={{
+            first_name: "Anita",
+            last_name: "Majithia",
+            icon: "fas fa-user",
+            menu: [
+              {
+                icon: "fa fa-home",
+                label: "Home",
+                onClick: () => {},
+              },
+              {
+                icon: "fa fa-archive",
+                label: "Archives",
+                onClick: () => {},
+              },
+              {
+                icon: "divider",
+                label: "",
+                onClick: () => {},
+              },
+              {
+                icon: "fa fa-power-off",
+                label: "Logout",
+                onClick: () => {},
+              },
+            ],
+          }}
+          asVariant="primary"
+          withColor={{
+            backgroundColor: "#000000",
+            textColor: "#eee",
+            accentColor: "#666666",
+            hoverBackgroundColor: "#86BC25",
+            hoverTextColor: "#eee",
+          }}
+          withIcon={{
+            icon: "https://s3-alpha-sig.figma.com/img/62a7/fe58/4eecae9f288351910a0eb692d867ee13?Expires=1659916800&Signature=AlWDFcksp3SrNfu0e9xxYSVnvJDtrx0ckNiajI2LAfAuD8Wshhp8KhQwgCx1nyZjuagwO2wW6r8uKC4O6QBeCw1OvYF6L42cuCSZaFqoA-Io74RDywQrgRxCrR3SXRSgamPEhGvwZnlSco~kYXn4DnIhEbtmErawR21H~hFoxTOpTaoVmFw-29dz2SPxj-L1sKZM6kXj1vozhHOzHq6GM5IQLysBP9RJu6jjG4TmVuHQRx9Uy-i9j8he0q00Uvp1HV5-RZLY05dGNHxrQIdVq8UuB3U9P5kStx9dbC286AFVNVZfxky6pgP5ITb~Z~LRa28KqfGBn8ovGOYukrVVQw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+          }}
+          isDisabled={false}
+          isHidden={false}
+        />`,
     },
   },
 };

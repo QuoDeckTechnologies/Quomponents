@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import Slider from "react-slick";

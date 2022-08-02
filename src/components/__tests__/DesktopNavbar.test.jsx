@@ -13,6 +13,7 @@ import { hasValid } from "./common";
 import DesktopNavbar from "../DesktopNavbar/DesktopNavbar.react";
 import LinkIcon from "../LinkIcon/LinkIcon.react";
 import Slider from "react-slick";
+import SearchBar from "../SearchBar/SearchBar.react";
 
 describe("DesktopNavbar", () => {
   // -------------------------------------
@@ -105,22 +106,31 @@ describe("DesktopNavbar", () => {
       />
     );
   });
+
   it("should render when clicked on LinkIcon", () => {
-    component.find(LinkIcon).at(1).simulate("click", { label: "home" });
+    component.find(LinkIcon).at(1).simulate("click", { label: "my profile" });
     expect(component.exists()).toBe(true);
   });
+
+  it("should render when searched on search component", () => {
+    component.find(SearchBar).simulate("click", "search");
+    expect(component.exists()).toBe(true);
+  });
+
   it("should render when clicked on left navigation button", () => {
     component.find(".qui-desktop-navigation-left-navigation").simulate("click");
     expect(component.exists()).toBe(true);
   });
+
   it("should render when clicked on right navigation button", () => {
     component
       .find(".qui-desktop-navigation-right-navigation")
       .simulate("click");
     expect(component.exists()).toBe(true);
   });
+
   it("should render when slide is changed", () => {
-    component.find(Slider).props().beforeChange(1, 5);
+    component.find(Slider).props().beforeChange(1, 4);
     expect(component.exists()).toBe(true);
   });
 });
