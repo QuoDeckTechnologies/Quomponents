@@ -31,6 +31,9 @@
   .qui.qui-button-bank {
     width: 100%;
   }
+  .qui .qui-button-bank-single-button .qui-button button {
+    min-width: 0;
+  }
 }
 
 .qui .qui-brancher-paragraph {

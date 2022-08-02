@@ -101,7 +101,7 @@ export default function SquareWrapperCarousel(props) {
     let tmp_obj = {};
 
     tmp_state.forEach((dataObj) => {
-      if (dataObj?.id === data.content.id) {
+      if (dataObj?.id === data?.id) {
         tmp_obj = { ...dataObj };
         tmp_obj.selected = true;
         tmp_arr.push(tmp_obj);
@@ -154,6 +154,7 @@ export default function SquareWrapperCarousel(props) {
                 )}
                 <BannerCard
                   {...slide.props}
+                  {...slide}
                   content={slide.content}
                   header={slide.header}
                   image={slide.image}

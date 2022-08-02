@@ -24,7 +24,7 @@ describe("PalleteThemeSection", () => {
 		target: PalleteThemeSection,
 		required: {
 			content: "Testing Button",
-			onClick: () => console.log("Button Testing"),
+			onClick: () => { },
 		},
 		translations: {
 			tgt: "palleteThemeSection",

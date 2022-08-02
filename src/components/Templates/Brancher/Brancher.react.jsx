@@ -97,10 +97,6 @@ Brancher.propTypes = {
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
-  /**
-    Brancher component must have the onClick function passed as props
-    */
-  onClick: PropTypes.func.isRequired,
 };
 
 Brancher.defaultProps = {
@@ -132,13 +128,6 @@ export default function Brancher(props) {
   //-------------------------------------------------------------------
   const { data, withColor, slideId, imageLibrary, asVariant } = props;
   //-------------------------------------------------------------------
-  // 2. Variable for ButtonBank content props
-  //-------------------------------------------------------------------
-  let optionsArray = [];
-  data?.brancher?.forEach((item) =>
-    optionsArray.push(item?.text?.toLowerCase())
-  );
-  //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "brancher");
@@ -160,16 +149,7 @@ export default function Brancher(props) {
     }
   };
   const background = getBackground();
-  //-------------------------------------------------------------------
-  // 7. Functions to return slideLink
-  //-------------------------------------------------------------------
-  const handleClick = (index) => {
-    if (data?.brancher) {
-      let slide = data?.brancher;
-      let slideSeq = slide[index]["slideLink"];
-      props.onClick(slideSeq);
-    }
-  };
+
 
   // ========================= Render Function =================================
 
@@ -214,8 +194,7 @@ export default function Brancher(props) {
           {data?.paragraph}
         </p>
         <ButtonBank
-          {...props}
-          content={optionsArray}
+          content={data?.brancher}
           asVariant={asVariant}
           asFloated="none"
           withColor={{
@@ -225,9 +204,6 @@ export default function Brancher(props) {
             hoverTextColor: withColor?.buttonHoverTextColor,
           }}
           withAnimation={null}
-          onClick={(e) =>
-            handleClick(optionsArray.indexOf(e.target.innerText?.toLowerCase()))
-          }
         />
       </div>
     </motion.div>

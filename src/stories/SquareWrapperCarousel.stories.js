@@ -46,7 +46,6 @@ export default {
       <div
         style={{
           width: "100%",
-          textAlign: "center",
         }}
       >
         {story()}
@@ -123,11 +122,55 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<SquareWrapperCarousel {...${JSON.stringify(
-        Default.args,
-        null,
-        2
-      )}}/>`,
+      code: `<SquareWrapperCarousel 
+      content= {[
+        {
+          id: "first-slide",
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          header: "Balloon Burst",
+          tag: "new",
+          selected: {true},
+          props: {
+            ...dataprops,
+            asVariant: "primary",
+          },
+        },
+        {
+          id: "second-slide",
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          tag: "premium",
+          selected: {false},
+          header: "Cityscape",
+          props: {
+            ...dataprops,
+            asVariant: "secondary",
+          },
+        },
+        {
+          id: "third-slide",
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          tag: "restricted",
+          selected: {false},
+          header: "GhostBuster",
+          props: {
+            ...dataprops,
+            asVariant: "warning",
+          },
+        },
+      ]},
+      withAnimation= {{
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+      }}/>`,
     },
   },
 };
@@ -189,11 +232,55 @@ TranslatedSquareWrapper.args = {
 TranslatedSquareWrapper.parameters = {
   docs: {
     source: {
-      code: `<SquareWrapperCarousel {...${JSON.stringify(
-        TranslatedSquareWrapper.args,
-        null,
-        2
-      )}}/>`,
+      code: `<SquareWrapperCarousel
+      content= {[
+        {
+          id: "first-slide",
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          header: "Balloon Burst",
+          tag: "new",
+          selected: {true},
+          props: {
+            ...dataprops,
+            asVariant: "primary",
+          },
+        },
+        {
+          id: "second-slide",
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          tag: "premium",
+          selected: {false},
+          header: "Cityscape",
+          props: {
+            ...dataprops,
+            asVariant: "secondary",
+          },
+        },
+        {
+          id: "third-slide",
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          tag: "restricted",
+          selected: {false},
+          header: "GhostBuster",
+          props: {
+            ...dataprops,
+            asVariant: "warning",
+          },
+        },
+      ]},
+      withAnimation= {{
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withTranslation= {{
+        lang: "hi",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+      }}/>`,
     },
   },
 };
@@ -227,11 +314,52 @@ SquareWrapperCarouselWithoutBox.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<SquareWrapperCarousel {...${JSON.stringify(
-        Default.args,
-        null,
-        2
-      )}}/>`,
+      code: `<SquareWrapperCarousel 
+      content= {[
+        {
+          id: "first-slide",
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          tag: "new",
+          selected: {true},
+          props: {
+            ...dataprops,
+            asVariant: "primary",
+          },
+        },
+        {
+          id: "second-slide",
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          tag: "premium",
+          selected: {false},
+          props: {
+            ...dataprops,
+            asVariant: "secondary",
+          },
+        },
+        {
+          id: "third-slide",
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          tag: "restricted",
+          selected: {false},
+          props: {
+            ...dataprops,
+            asVariant: "warning",
+          },
+        },
+      ]},
+      withAnimation= {{
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+      }}/>`,
     },
   },
 };
@@ -279,11 +407,52 @@ SquareWrapperCarouselWithoutTag.parameters = {
       story: "We can see the SquareWrapper Carousel without any Tag",
     },
     source: {
-      code: `<SquareWrapperCarousel {...${JSON.stringify(
-        SquareWrapperCarouselWithoutTag.args,
-        null,
-        2
-      )}}/>`,
+      code: `<SquareWrapperCarousel
+      content= {[
+        {
+          id: "first-slide",
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          header: "Balloon Burst",
+          selected: {true},
+          props: {
+            ...dataprops,
+            asVariant: "primary",
+          },
+        },
+        {
+          id: "second-slide",
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          selected: {false},
+          header: "Cityscape",
+          props: {
+            ...dataprops,
+            asVariant: "secondary",
+          },
+        },
+        {
+          id: "third-slide",
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          selected: {false},
+          header: "GhostBuster",
+          props: {
+            ...dataprops,
+            asVariant: "warning",
+          },
+        },
+      ]},
+      withAnimation= {{
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+      }}/>`,
     },
   },
 };
@@ -303,11 +472,55 @@ AnimatedSquareWrapperCarousel.parameters = {
         "Use to animate the entry of the SquareWrapperCarousel with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
     },
     source: {
-      code: `<AnimatedSquareWrapperCarousel {...${JSON.stringify(
-        AnimatedSquareWrapperCarousel.args,
-        null,
-        2
-      )}}/>`,
+      code: `<AnimatedSquareWrapperCarousel
+      content= {[
+        {
+          id: "first-slide",
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          header: "Balloon Burst",
+          tag: "new",
+          selected: {true},
+          props: {
+            ...dataprops,
+            asVariant: "primary",
+          },
+        },
+        {
+          id: "second-slide",
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          tag: "premium",
+          selected: {false},
+          header: "Cityscape",
+          props: {
+            ...dataprops,
+            asVariant: "secondary",
+          },
+        },
+        {
+          id: "third-slide",
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          tag: "restricted",
+          selected: {false},
+          header: "GhostBuster",
+          props: {
+            ...dataprops,
+            asVariant: "warning",
+          },
+        },
+      ]},
+      withAnimation= {{
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "bannerCard",
+        dictionary: dictionary,
+      }}/>`,
     },
   },
 };

@@ -146,7 +146,33 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<LinkIcon {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<LinkIcon 
+            icon= "fa fa-home"
+            label= "Home"
+            active= {false}
+        
+            asSize= "normal"
+            asFloated= "inline"
+            asPadded= "normal"
+        
+            withColor= {{
+                backgroundColor: "",
+                textColor: "",
+                hoverBackgroundColor: "",
+                hoverTextColor: "",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "icon",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}/>`,
         },
     },
 };

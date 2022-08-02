@@ -63,7 +63,7 @@ describe("MenuBlock", () => {
         withTranslation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => console.log("MenuBlock testing")}
+        onClick={() => { }}
       />
     );
   });

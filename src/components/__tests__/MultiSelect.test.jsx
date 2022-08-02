@@ -26,7 +26,7 @@ describe("MultiSelect", () => {
           isSelected: true,
         },
       ],
-      onClick: () => console.log("Button Testing"),
+      onClick: () => { },
     },
     translations: {
       tgt: "templateActions",

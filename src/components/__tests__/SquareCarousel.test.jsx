@@ -44,7 +44,7 @@ describe('SquareCarousel', () => {
         component = shallow(
             <SquareCarousel
                 content={content}
-                onClick={() => console.log("Tesing Carousel")}
+                onClick={() => { }}
             />
         );
     });

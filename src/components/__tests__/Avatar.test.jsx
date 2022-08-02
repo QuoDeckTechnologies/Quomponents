@@ -23,7 +23,7 @@ describe("Avatar", () => {
     target: Avatar,
     required: {
       content: "Testing Button",
-      onClick: () => console.log("Avatar Testing"),
+      onClick: () => { },
     },
     translations: {
       tgt: "button",
@@ -60,7 +60,7 @@ describe("Avatar", () => {
     component = shallow(
       <Avatar
         withColor={null}
-        onClick={() => console.log("Avatar testing")}
+        onClick={() => { }}
       />
     );
   });

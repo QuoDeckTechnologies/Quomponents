@@ -19,7 +19,7 @@ describe("LinkIcon", () => {
         required: {
             label: "Home",
             icon: "fa fa-home",
-            onClick: () => console.log("Button Testing"),
+            onClick: () => { },
         },
         translations: {
             tgt: "icon",
@@ -48,4 +48,32 @@ describe("LinkIcon", () => {
 
     hasValid("hidden", args);
     hasValid("disabled", args);
+
+
+    let component;
+
+    beforeEach(() => {
+        jest.resetAllMocks();
+        component = shallow(
+            <LinkIcon
+                icon="fa fa-home"
+                label="Home"
+                active={false}
+                onClick={() => { }} />
+        );
+    });
+    it("should render correctly when hovered with active prop true", () => {
+        component.setProps({
+            active: true,
+            withColor: {
+                hoverBackgroundColor: "#666666",
+                hoverTextColor: "#ffc900",
+            }
+        })
+        component.find(".qui-link-icon").at(0).simulate("mouseenter");
+        component.find(".qui-link-icon").at(0).simulate("mouseleave");
+        component.find(".qui-link-icon").at(0).simulate("mousedown");
+        component.find(".qui-link-icon").at(0).simulate("mouseup");
+        expect(component.exists()).toBe(true);
+    });
 });

@@ -119,14 +119,13 @@ export default function ToggleButton(props) {
     // // 3. Get translation of the component
     // //-------------------------------------------------------------------
     let labelContent = props.label;
-    let tObj = null
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
-    ) tObj = getTranslation(props.withTranslation);
-    if (tObj && props.label && props.label !== "") {
-        labelContent = tObj.label;
+    ) {
+        let tObj = getTranslation(props.withTranslation);
+        labelContent = tObj?.label || labelContent;
     }
     //-------------------------------------------------------------------
     // 7. Get animation of the component

@@ -19,7 +19,7 @@ describe("CourseListCard", () => {
   const args = {
     target: CourseListCard,
     required: {
-      onClick: () => console.log("Button Testing"),
+      onClick: () => { },
     },
   };
 
@@ -37,7 +37,7 @@ describe("CourseListCard", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <CourseListCard imageLibrary={[]} withColor={null} onClick={() => {}} />
+      <CourseListCard imageLibrary={[]} withColor={null} onClick={() => { }} />
     );
   });
 

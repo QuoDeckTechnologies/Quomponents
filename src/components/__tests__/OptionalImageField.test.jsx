@@ -2,7 +2,8 @@
 // Import from NPM
 // -------------------------------------
 import { mount, shallow } from "enzyme";
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import renderer, { act } from "react-test-renderer";
+
 // import { act } from "react-test-renderer";
 //--------------------------------------
 // Import Common Tests
@@ -21,7 +22,7 @@ describe("OptionalImageField", () => {
   const args = {
     target: OptionalImageField,
     required: {
-      onUpload: () => {},
+      onUpload: () => { },
     },
   };
 
@@ -58,7 +59,7 @@ describe("OptionalImageField", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onUpload={() => {}}
+        onUpload={() => { }}
       />
     );
   });
@@ -89,7 +90,7 @@ describe("OptionalImageField", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onUpload={() => {}}
+        onUpload={() => { }}
       />
     );
     wrapper
@@ -104,6 +105,12 @@ describe("OptionalImageField", () => {
     component.setProps({
       title: null,
     });
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when hovered", () => {
+    component.find(".qui-optional-image-field-button").at(0).simulate("mouseenter");
+    component.find(".qui-optional-image-field-button").at(0).simulate("mouseleave");
     expect(component.exists()).toBe(true);
   });
 });

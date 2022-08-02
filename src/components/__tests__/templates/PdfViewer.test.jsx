@@ -87,7 +87,7 @@ describe("PdfViewer", () => {
         }]}
         slideId={0}
         onClick={(e) => {
-          console.log(e);
+          { };
         }}
       />
     );
@@ -135,7 +135,7 @@ describe("PdfViewer", () => {
         }]}
         slideId={0}
         onClick={(e) => {
-          console.log(e);
+          { };
         }}
       />
     );

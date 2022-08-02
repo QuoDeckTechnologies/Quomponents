@@ -59,19 +59,19 @@ describe("HtmlCarousel", () => {
     component = shallow(
       <HtmlCarousel
         content={content}
-        onClick={() => console.log("Tesing Carousel")}
+        onClick={() => { }}
       />
     );
   });
   it("should render and handle click event slickPrev on previous arrows", () => {
     const wrapper = shallow(
-      <HtmlCarousel onClick={() => console.log("Testing SlickPrev")} />
+      <HtmlCarousel onClick={() => { }} />
     );
     wrapper.find(".qui-html-slick-prev").simulate("click");
   });
   it("should render and handle click event slickNext", () => {
     const wrapper = shallow(
-      <HtmlCarousel onClick={() => console.log("Testing SlickNext")} />
+      <HtmlCarousel onClick={() => { }} />
     );
     wrapper.find(".qui-html-slick-next").simulate("click");
   });

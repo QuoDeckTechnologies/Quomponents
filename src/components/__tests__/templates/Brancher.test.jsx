@@ -19,7 +19,6 @@ describe("Brancher", () => {
     target: Brancher,
     required: {
       content: "Testing Button",
-      onClick: () => console.log("Button Testing"),
     },
     translations: {
       tgt: "button",

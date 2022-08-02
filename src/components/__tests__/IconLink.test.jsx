@@ -20,7 +20,7 @@ describe("IconLink", () => {
             content: {
                 link: "www.quodeck.com"
             },
-            onClick: () => console.log("Button Testing"),
+            onClick: () => { },
         },
         translations: {
             tgt: "icon",

@@ -12,7 +12,7 @@ import { hasValid } from "./common";
 import EarnCard from "../EarnCard/EarnCard.react";
 
 describe("EarnCard", () => {
-  
+
   // -------------------------------------
   // Run common tests
   // -------------------------------------
@@ -62,7 +62,7 @@ describe("EarnCard", () => {
           checked: false,
         },
       ],
-      onClick: () => console.log("Button Testing"),
+      onClick: () => { },
     },
     translations: {
       tgt: "earncard",
@@ -156,7 +156,7 @@ describe("EarnCard", () => {
           accentColor: "",
           textColor: "#b60d17",
         }}
-        onClick={() => console.log("EanrCard testing")}
+        onClick={() => { }}
       />
     );
   });
