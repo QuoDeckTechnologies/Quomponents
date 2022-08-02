@@ -65,6 +65,7 @@ describe("Videobox", () => {
     });
     component.update();
     expect(component.find(YouTube).exists()).toBe(true);
+    expect(component.exists()).toBe(true);
   });
   it("should render a video if videoId is provided", () => {
     component.setProps({
@@ -72,6 +73,7 @@ describe("Videobox", () => {
     });
     component.update();
     expect(component.find(YouTube).exists()).toBe(true);
+    expect(component.exists()).toBe(true);
   });
   it("should render a video if videoId not provided", () => {
     component.setProps({
@@ -79,6 +81,7 @@ describe("Videobox", () => {
     });
     component.update();
     expect(component.find(Player).exists()).toBe(true);
+    expect(component.exists()).toBe(true);
   });
   it("should render a video if vimeo url is provided", () => {
     component.setProps({
@@ -86,45 +89,59 @@ describe("Videobox", () => {
     });
     component.update();
     expect(component.find(Vimeo).exists()).toBe(true);
+    expect(component.exists()).toBe(true);
   });
   it("should rednder correctly when call onReady", () => {
     component = shallow(<Videobox autoplay={false} onReady={onReady} />);
     component
       .find(".react-player")
       .simulate("ready", { target: { playVideo: () => { } } });
+      expect(component.exists()).toBe(true);
   });
   it("should rednder correctly when call onReady", () => {
     component = shallow(<Videobox onReady={null} />);
     component
       .find(".react-player")
       .simulate("ready", { target: { playVideo: () => { } } });
+      expect(component.exists()).toBe(true);
   });
   it("should rednder correctly when call onError", () => {
     component = shallow(<Videobox onError={onError} />);
     component.find(".react-player").simulate("error");
-  });
-  it("should rednder correctly when call onPlay", () => {
-    component = shallow(<Videobox onPlay={onPlay} />);
-    component.find(".react-player").simulate("play");
+    expect(component.exists()).toBe(true);
   });
   it("should rednder correctly when call onPause", () => {
     component = shallow(<Videobox onPause={onPause} />);
     component.find(".react-player").simulate("pause", { target: {} });
+    expect(component.exists()).toBe(true);
   });
   it("should rednder correctly when call onPause", () => {
     component = shallow(<Videobox onPause={null} />);
     component.find(".react-player").simulate("pause", { target: {} });
+    expect(component.exists()).toBe(true);
+  });
+  it("should rednder correctly when call onPlay", () => {
+    component = shallow(<Videobox onPlay={onPlay} />);
+    component.find(".react-player").simulate("play", { target: {} });
+    expect(component.exists()).toBe(true);
+  });
+  it("should rednder correctly when call onPlay", () => {
+    component = shallow(<Videobox onPlay={null} />);
+    component.find(".react-player").simulate("play", { target: {} });
+    expect(component.exists()).toBe(true);
   });
   it("should rednder correctly when call onEnd", () => {
     component = shallow(<Videobox loop={true} onEnd={onEnd} />);
     component
       .find(".react-player")
       .simulate("end", { target: { playVideo: () => { } } });
+      expect(component.exists()).toBe(true);
   });
   it("should rednder correctly when call onEnd", () => {
     component = shallow(<Videobox onEnd={null} />);
     component
       .find(".react-player")
       .simulate("end", { target: { playVideo: () => { } } });
+      expect(component.exists()).toBe(true);
   });
 });
