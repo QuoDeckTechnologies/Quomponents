@@ -129,7 +129,34 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<RadioButton {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<RadioButton
+          targetName="target-one"
+          content="Default Radio"
+          asSize="normal"
+          asFloated="none"
+          asPadded="fitted"
+          asAligned="left"
+          withColor={{
+            textColor: "#303030",
+            accentColor: "#FFBF00",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "radioButton",
+            dictionary: ${JSON.stringify({
+              hi: {
+                radioButton: { content: "डिफ़ॉल्ट रेडियो" },
+              },
+            })},
+          }}
+          isHidden={false}
+          isDisabled={false}
+        />`,
     },
   },
 };
@@ -147,11 +174,34 @@ ColoredRadioButton.args = {
 ColoredRadioButton.parameters = {
   docs: {
     source: {
-      code: `<RadioButton {...${JSON.stringify(
-        ColoredRadioButton.args,
-        null,
-        2
-      )}}/>`,
+      code: `<RadioButton
+          targetName="target-one"
+          content="Default Radio"
+          asSize="normal"
+          asFloated="none"
+          asPadded="fitted"
+          asAligned="left"
+          withColor={{
+            textColor: "#303030AA",
+            accentColor: "#86BC25",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "radioButton",
+            dictionary: ${JSON.stringify({
+              hi: {
+                radioButton: { content: "डिफ़ॉल्ट रेडियो" },
+              },
+            })},
+          }}
+          isHidden={false}
+          isDisabled={false}
+        />`,
     },
   },
 };
@@ -166,11 +216,34 @@ AlignedRadioButton.args = {
 AlignedRadioButton.parameters = {
   docs: {
     source: {
-      code: `<RadioButton {...${JSON.stringify(
-        AlignedRadioButton.args,
-        null,
-        2
-      )}}/>`,
+      code: `<RadioButton
+          targetName="target-one"
+          content="Default Radio"
+          asSize="normal"
+          asFloated="none"
+          asPadded="fitted"
+          asAligned="center"
+          withColor={{
+            textColor: "#303030AA",
+            accentColor: "#86BC25",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "radioButton",
+            dictionary: ${JSON.stringify({
+              hi: {
+                radioButton: { content: "डिफ़ॉल्ट रेडियो" },
+              },
+            })},
+          }}
+          isHidden={false}
+          isDisabled={false}
+        />`,
     },
   },
 };
@@ -189,11 +262,34 @@ TranslatedRadioButton.args = {
 TranslatedRadioButton.parameters = {
   docs: {
     source: {
-      code: `<RadioButton {...${JSON.stringify(
-        TranslatedRadioButton.args,
-        null,
-        2
-      )}}/>`,
+      code: `<RadioButton
+          targetName="target-one"
+          content="Default Radio"
+          asSize="normal"
+          asFloated="none"
+          asPadded="fitted"
+          asAligned="center"
+          withColor={{
+            textColor: "#303030AA",
+            accentColor: "#86BC25",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "hi",
+            tgt: "radioButton",
+            dictionary: ${JSON.stringify({
+              hi: {
+                radioButton: { content: "डिफ़ॉल्ट रेडियो" },
+              },
+            })},
+          }}
+          isHidden={false}
+          isDisabled={false}
+        />`,
     },
   },
 };
@@ -251,11 +347,43 @@ MultipleRadioButton.args = {
 MultipleRadioButton.parameters = {
   docs: {
     source: {
-      code: `<RadioButton {...${JSON.stringify(
-        MultipleRadioButton.args,
-        null,
-        2
-      )}}/>`,
+      code: `const defaultProps = {
+        targetName: "target-one",
+        label: "Default Radio",
+        asSize: "normal",
+        asFloated: "none",
+        asPadded: "fitted",
+        asAligned: "left",
+        withColor: {
+          textColor: "#303030",
+          accentColor: "#FFBF00",
+        },
+        withAnimation: {
+          animation: "zoom",
+          duration: 0.5,
+          delay: 0,
+        },
+        isHidden: false,
+        isDisabled: false,
+      };
+      const [value, setValue] = useState(args.initialValue);
+      return (
+        <div style={{ display: "inline-block" }}>
+          <RadioGroup value={value}>
+            {_.map(args.radioContent, (radio, index) => {
+              return (
+                <RadioButton
+                  key={index}
+                  {...defaultProps}
+                  targetName={radio.targetName}
+                  content={radio.content}
+                  onClick={(value, checked) => setValue(value)}
+                />
+              );
+            })}
+          </RadioGroup>
+        </div>
+      );`,
     },
   },
 };
