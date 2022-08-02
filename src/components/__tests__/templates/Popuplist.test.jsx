@@ -10,8 +10,6 @@ import { hasValid } from "./../common";
 // Import Components
 // -------------------------------------
 import Popuplist from "../../Templates/Popuplist/Popuplist.react";
-import SlideHeader from "../../SlideHeader/SlideHeader.react";
-import ButtonBank from "../../ButtonBank/ButtonBank.react";
 
 describe("Popuplist", () => {
   // -------------------------------------
@@ -33,6 +31,7 @@ describe("Popuplist", () => {
               extension: ".png",
             },
             caption: " Please put in a caption",
+            onClick: () => {},
           },
           {
             option: "Item 2",
@@ -41,6 +40,7 @@ describe("Popuplist", () => {
               extension: ".png",
             },
             caption: " Please put in a caption",
+            onClick: () => {},
           },
           {
             option: "Item 3",
@@ -49,6 +49,7 @@ describe("Popuplist", () => {
               extension: ".png",
             },
             caption: " Please put in a caption",
+            onClick: () => {},
           },
           {
             option: "Item 4",
@@ -57,6 +58,7 @@ describe("Popuplist", () => {
               extension: ".png",
             },
             caption: " Please put in a caption",
+            onClick: () => {},
           },
         ],
       },
@@ -67,8 +69,6 @@ describe("Popuplist", () => {
 
   hasValid("defaults", args);
   hasValid("animations", args);
-  hasValid("variants", args);
-
   hasValid("hidden", args);
   hasValid("disabled", args);
   // -------------------------------------
@@ -82,36 +82,40 @@ describe("Popuplist", () => {
     backgroundImage: { id: "", extention: "" },
     popupitems: [
       {
-        option: "Item 1",
+        content: "Item 1",
         image: {
           id: "image-1",
           extension: ".png",
         },
         caption: " Please put in a caption",
+        onClick: () => {},
       },
       {
-        option: "Item 2",
+        content: "Item 2",
         image: {
           id: "image-2",
           extension: ".png",
         },
         caption: " Please put in a caption",
+        onClick: () => {},
       },
       {
-        option: "Item 3",
+        content: "Item 3",
         image: {
           id: "image-3",
           extension: ".png",
         },
         caption: " Please put in a caption",
+        onClick: () => {},
       },
       {
-        option: "Item 4",
+        content: "Item 4",
         image: {
           id: "image-4",
           extension: ".png",
         },
         caption: " Please put in a caption",
+        onClick: () => {},
       },
     ],
   };
@@ -184,22 +188,6 @@ describe("Popuplist", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render title and subtitle when we doesn't pass image", () => {
-    component.setProps({
-      data: {
-        title: "Neque porro quisquam est qui dolorem",
-        subtitle:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-      },
-    });
-    expect(component.find(SlideHeader).props().content.title).toBe(
-      "Neque porro quisquam est qui dolorem"
-    );
-    expect(component.find(SlideHeader).props().content.subTitle).toBe(
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem"
-    );
-  });
-
   it("should render image instead of title and sutitle", () => {
     component.setProps({
       data: {
@@ -262,54 +250,5 @@ describe("Popuplist", () => {
     expect(
       component.find(".qui-slide-popup-list-card").props().style.backgroundColor
     ).toBe("#000");
-  });
-
-  it("should return the index of selected option", () => {
-    component.setProps({
-      popupitems: [
-        {
-          option: "Item 1",
-          image: {
-            id: "image-1",
-            extension: ".png",
-          },
-          caption: " Please put in a caption",
-        },
-        {
-          option: "Item 2",
-          image: {
-            id: "image-2",
-            extension: ".png",
-          },
-          caption: " Please put in a caption",
-        },
-        {
-          option: "Item 3",
-          image: {
-            id: "image-3",
-            extension: ".png",
-          },
-          caption: " Please put in a caption",
-        },
-        {
-          option: "Item 4",
-          image: {
-            id: "image-4",
-            extension: ".png",
-          },
-          caption: " Please put in a caption",
-        },
-      ],
-    });
-    let onClick = jest.fn();
-    component.setProps({ onClick: onClick });
-    component
-      .find(ButtonBank)
-      .simulate("click", { target: { innerText: "Item 4" } });
-    expect(onClick).toBeCalledWith(3);
-    component
-      .find(ButtonBank)
-      .simulate("click", { target: { innerText: "Item 2" } });
-    expect(onClick).toBeCalledWith(1);
   });
 });
