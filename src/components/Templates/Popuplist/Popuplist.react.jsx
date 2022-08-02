@@ -78,10 +78,6 @@ Popuplist.propTypes = {
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
-  /**
-    Popuplist component must have the onClick function passed as props
-    */
-  onClick: PropTypes.func.isRequired,
 };
 
 Popuplist.defaultProps = {

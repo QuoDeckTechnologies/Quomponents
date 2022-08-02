@@ -66,7 +66,6 @@ export default {
         onClick: {
             table: {
                 category: "Events",
-                defaultValue: null,
             },
         },
     },
@@ -103,10 +102,10 @@ Default.args = {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         image: { id: "header-image", extension: "" },
         options: [
-            { correct: "checked", text: "Item 1" },
-            { correct: "", text: "Item 2" },
-            { correct: "", text: "Item 3" },
-            { correct: "", text: "Item 4" }
+            { correct: "checked", content: "Item 1", onClick: () => { } },
+            { correct: "", content: "Item 2", onClick: () => { } },
+            { correct: "", content: "Item 3", onClick: () => { } },
+            { correct: "", content: "Item 4", onClick: () => { } }
         ],
     },
     slideId: 0,
@@ -152,10 +151,10 @@ OddOneOutWithSlideHeader.args = {
         subtitle:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         options: [
-            { correct: "checked", text: "Item 1" },
-            { correct: "", text: "Item 2" },
-            { correct: "", text: "Item 3" },
-            { correct: "", text: "Item 4" }
+            { correct: "checked", content: "Item 1",onClick:()=>{} },
+            { correct: "", content: "Item 2",onClick:()=>{} },
+            { correct: "", content: "Item 3",onClick:()=>{} },
+            { correct: "", content: "Item 4",onClick:()=>{} }
         ],
     },
     slideId: 0,
@@ -207,10 +206,10 @@ OddOneOutWithSlideHeaderAndBackgroundImage.args = {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         backgroundImage: { id: "background-image", extention: "" },
         options: [
-            { correct: "checked", text: "Item 1" },
-            { correct: "", text: "Item 2" },
-            { correct: "", text: "Item 3" },
-            { correct: "", text: "Item 4" }
+            { correct: "checked", content: "Item 1",onClick:()=>{} },
+            { correct: "", content: "Item 2",onClick:()=>{} },
+            { correct: "", content: "Item 3",onClick:()=>{} },
+            { correct: "", content: "Item 4",onClick:()=>{} }
         ],
     },
     imageLibrary: [{

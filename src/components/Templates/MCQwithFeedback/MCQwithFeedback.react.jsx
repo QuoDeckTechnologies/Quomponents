@@ -89,10 +89,6 @@ MCQwithFeedback.propTypes = {
     Use to show/hide the component
     */
   isHidden: PropTypes.bool,
-  /**
-    MCQwithFeedback component must have the onClick function passed as props
-    */
-  onClick: PropTypes.func.isRequired,
 };
 
 MCQwithFeedback.defaultProps = {
@@ -208,8 +204,7 @@ export default function MCQwithFeedback(props) {
           {data?.question}
         </p>
         <ButtonBank
-          {...props}
-          content={optionsArray}
+          content={data?.options}
           asVariant="warning"
           asFloated="none"
           withColor={{
@@ -219,11 +214,6 @@ export default function MCQwithFeedback(props) {
             hoverTextColor: withColor?.buttonHoverTextColor,
           }}
           withAnimation={null}
-          onClick={(e) =>
-            props.onClick(
-              optionsArray.indexOf(e.target.innerText?.toLowerCase())
-            )
-          }
         />
       </div>
     </motion.div>

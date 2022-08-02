@@ -91,10 +91,6 @@ SingleSelect.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
-    /**
-    SingleSelect component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
 };
 
 SingleSelect.defaultProps = {
@@ -190,12 +186,6 @@ export default function SingleSelect(props) {
     };
     const background = getBackground();
 
-    //-------------------------------------------------------------------
-    // 6. Variable for ButtonBank content props
-    //-------------------------------------------------------------------
-    let optionsArray = [];
-    data?.options?.forEach((item) => optionsArray.push(item?.text?.toLowerCase()));
-
     // ========================= Render Function =================================
     return (
         <motion.div
@@ -218,8 +208,7 @@ export default function SingleSelect(props) {
                     </div>
                     <div className="qui-slide-single-select-container">
                         <ButtonBank
-                            {...props}
-                            content={optionsArray}
+                            content={data?.options}
                             asSize="massive"
                             asFloated="none"
                             withColor={{
@@ -229,11 +218,6 @@ export default function SingleSelect(props) {
                                 hoverTextColor: props.withColor?.buttonHoverTextColor,
                             }}
                             withAnimation={null}
-                            onClick={(e) =>
-                                props.onClick(
-                                    optionsArray.indexOf(e.target.innerText?.toLowerCase())
-                                )
-                            }
                         />
                     </div>
                 </div>
