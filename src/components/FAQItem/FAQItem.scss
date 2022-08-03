@@ -21,14 +21,16 @@
             border-bottom: 0.1875em solid;
         }
         .qui-faq-item-question {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.5em;
+            position: relative;
+            padding: 0.5em 3.5em 0.5em 0.5em;
             margin: 0;
             cursor: pointer;
             .qui-faq-item-icon-style {
+                position: absolute;
+                right: 1em;
+                top: 0.5em;
                 font-size: 1.25em;
-                padding-left: 0.7em;
+                margin-left: 2em;
             }
         }
         .qui-faq-item-answer {
