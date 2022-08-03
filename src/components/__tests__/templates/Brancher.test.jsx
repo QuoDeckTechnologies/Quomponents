@@ -106,19 +106,6 @@ describe("Brancher", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error when brancher array is not provided", () => {
-    component.setProps({
-      data: {
-        brancher: null,
-      },
-    });
-    component
-      .find("ButtonBank")
-      .at(0)
-      .simulate("click", { target: { innerText: "button name" } });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly without throwing error when clicked on a button", () => {
     component
       .find("ButtonBank")
