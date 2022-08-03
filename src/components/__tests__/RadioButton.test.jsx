@@ -27,7 +27,7 @@ describe("RadioButton", () => {
       lang: { valid: "hi", invalid: "xx" },
       dictionary: JSON.stringify({
         hi: {
-          radioButton: { label: "डिफ़ॉल्ट रेडियो" },
+          radioButton: { content: "डिफ़ॉल्ट रेडियो" },
         },
       }),
     },
@@ -51,13 +51,13 @@ describe("RadioButton", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <RadioButton targetName="target" label="label" onClick={() => {}} />
+      <RadioButton targetName="target" content="label" onClick={() => {}} />
     );
   });
 
   it("should render correctly when clicked", () => {
     let wrapper = mount(
-      <RadioButton targetName="target" label="label" onClick={() => {}} />
+      <RadioButton targetName="target" content="label" onClick={() => {}} />
     );
     wrapper
       .find(Radio)

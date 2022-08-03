@@ -102,10 +102,10 @@ Default.args = {
     subtitle: "",
     paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     brancher: [
-      { slideLink: 1, content: "Slide 1" },
-      { slideLink: 1, content: "Slide 2" },
-      { slideLink: 1, content: "Slide 3" },
-      { slideLink: 1, content: "Slide 4" },
+      { slideLink: 1, content: "Slide 1", onClick: () => { } },
+      { slideLink: 1, content: "Slide 2", onClick: () => { } },
+      { slideLink: 1, content: "Slide 3", onClick: () => { } },
+      { slideLink: 1, content: "Slide 4", onClick: () => { } },
     ],
   },
   imageLibrary: [
