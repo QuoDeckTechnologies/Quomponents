@@ -79,7 +79,13 @@ export default {
                 category: "is-Toggles",
                 defaultValue: false,
             },
-        }
+        },
+        isFluid: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
     },
     decorators: [
         (story) => (
@@ -123,6 +129,7 @@ Default.args = {
     },
     isHidden: false,
     isDisabled: false,
+    isFluid: false,
 };
 Default.parameters = {
     docs: {
@@ -150,7 +157,8 @@ Default.parameters = {
                 dictionary: dictionary,
             }}
             isHidden= {false}
-            isDisabled= {false}/>`,
+            isDisabled= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -196,7 +204,8 @@ AnimatedFAQItem.parameters = {
                 dictionary: dictionary,
             }}
             isHidden= {false}
-            isDisabled= {false}/>`,
+            isDisabled= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -243,7 +252,8 @@ ColoredFAQItem.parameters = {
                 dictionary: dictionary,
             }}
             isHidden= {false}
-            isDisabled= {false}/>`,
+            isDisabled= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -289,7 +299,50 @@ TranslatedFAQItem.parameters = {
                 dictionary: dictionary,
             }}
             isHidden= {false}
-            isDisabled= {false}/>`,
+            isDisabled= {false}
+            isFluid= {false}/>`,
         },
+    },
+};
+// -------------------------------------------------------------
+// Fluid FAQItem
+// -------------------------------------------------------------
+export const FluidFAQItem = Template.bind({});
+FluidFAQItem.args = {
+    ...Default.args,
+    isFluid: true,
+};
+FluidFAQItem.parameters = {
+    docs: {
+        description: {
+            story: "Typically used as the bottom of a modal or a container.",
+        },
+    },
+    source: {
+        code: `<FAQItem 
+        question= "Question"
+        answer= "Answer"
+        asVariant= "warning"
+        asFloated= "none"
+        asAligned= "left"
+        withColor= {{
+            accentColor: "#86BC25",
+            textColor: "#000000",
+            backgroundColor: "#EFEFEF",
+            hoverBackgroundColor: "#ffffff",
+        }}
+        withAnimation= {{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+        }}
+        withTranslation= {{
+            lang: "hi",
+            tgt: "faqItem",
+            dictionary: dictionary,
+        }}
+        isHidden= {false}
+        isDisabled= {false}
+        isFluid= {true}/>`,
     },
 };

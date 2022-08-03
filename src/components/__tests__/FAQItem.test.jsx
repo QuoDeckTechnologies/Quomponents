@@ -44,6 +44,7 @@ describe("FAQItem", () => {
 
     hasValid("hidden", args);
     hasValid("disabled", args);
+    hasValid("fluid", args);
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
@@ -64,6 +65,7 @@ describe("FAQItem", () => {
                 withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
+                isFluid={false}
                 handleExpand={handleExpand}
             />
         );

@@ -87,6 +87,10 @@ FAQItem.propTypes = {
     Use to enable/disable the component
     */
     isDisabled: PropTypes.bool,
+    /**
+    Use to toggle the component taking the full width of the parent container
+    */
+    isFluid: PropTypes.bool,
 };
 
 FAQItem.defaultProps = {
@@ -108,6 +112,7 @@ FAQItem.defaultProps = {
 
     isHidden: false,
     isDisabled: false,
+    isFluid: false,
 };
 /**
 ## Notes
