@@ -77,7 +77,7 @@ export default {
                 defaultValue: false,
             },
         },
-        onSubmit: {
+        onConfirm: {
             table: {
                 category: "Events",
                 defaultValue: null,

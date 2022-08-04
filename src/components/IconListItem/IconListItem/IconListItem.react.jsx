@@ -157,7 +157,7 @@ export default function IconListItem(props) {
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props);
+  const animate = getAnimation(props) === null || !null;
   // ========================= Render Function =================================
   return (
     <div className={`qui ${quommonClasses.parentClasses}`}>

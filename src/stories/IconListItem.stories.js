@@ -123,7 +123,7 @@ Default.parameters = {
   docs: {
     description: {
       story:
-        "Displays a basic image and title for general-purpose use or change it for content image and title by giving a link of image and title in content prop",
+        "Displays a basic IconListItem for general-purpose use'",
     },
     source: {
       code: `<IconListItem

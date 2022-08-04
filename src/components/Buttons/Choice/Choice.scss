@@ -37,6 +37,9 @@
         &.pad-relaxed {
             padding: 2.5em 3em;
         }
+        &.right-aligned {
+            justify-content: flex-start;
+        }
     }
     .qui-or {
         text-transform: uppercase;

@@ -168,7 +168,7 @@ function getColors(colors, emphasis, hovered) {
         colorStyle.buttonHandle = emphasis === 'text'
             ? {
                 background: 'transparent',
-                color: colors.backgroundColor
+                color: colors.textColor
             }
             : emphasis === 'outlined'
                 ? {
@@ -268,7 +268,7 @@ export default function IconLink(props) {
             onMouseDown={() => setTilt(true)}
             onMouseUp={() => setTilt(false)}
         >
-            <a className="qui-iconlink-anchor" href={props.link}>
+            <a className="qui-iconlink-anchor" href={props.link} style={{ color: props.withColor?.textColor }}>
                 <div
                     className={`qui-btn ${quommonClasses.childClasses} qui-iconlink`}
                     title={getLabel(labelContent, "popover")}

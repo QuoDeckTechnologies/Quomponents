@@ -48,9 +48,7 @@ MobileToolbar.propTypes = {
     */
     withColor: PropTypes.shape({
         textColor: PropTypes.string,
-        accentColor: PropTypes.string,
         backgroundColor: PropTypes.string,
-        hoverBackgroundColor: PropTypes.string,
         hoverTextColor: PropTypes.string,
     }),
     /**
@@ -82,10 +80,7 @@ MobileToolbar.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
-    /**
-    Use for rounded corners or circular icon IconLink 
-    */
-    isCircular: PropTypes.bool,
+
     /**
     Use to enable/disable the component
     */
@@ -112,7 +107,6 @@ MobileToolbar.defaultProps = {
     withAnimation: null,
     withTranslation: null,
 
-    isCircular: false,
     isHidden: false,
     isDisabled: false,
 
@@ -123,9 +117,6 @@ function getColors(colors) {
     let colorStyle = {
         textColors: {
             color: colors.textColor,
-        },
-        accentColors: {
-            color: colors.accentColor,
         },
         backgroundColors: {
             color: colors.backgroundColor,
@@ -206,6 +197,10 @@ export default function MobileToolbar(props) {
                                     {...props}
                                     withAnimation={null}
                                     isActive={item?.isActive}
+                                    // withColor={{
+                                    //     textColor: orps props.withColor?.textColor,
+                                    //     hoverTextColor : 
+                                    // }}
                                     asEmphasis="text"
                                     asPadded="fitted"
                                     link={item.link}
@@ -247,7 +242,7 @@ export default function MobileToolbar(props) {
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
-            style={{ backgroundColor: props.withColor?.accentColor }}
+            style={{ backgroundColor: props.withColor?.backgroundColor }}
         >
             <div className={`${quommonClasses.childClasses}`}>
                 {getInput(asEmphasis)}

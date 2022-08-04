@@ -46,9 +46,7 @@ export default {
                 category: "with-Params",
                 defaultValue: {
                     textColor: "",
-                    accentColor: "",
                     backgroundColor: "",
-                    hoverBackgroundColor: "",
                     hoverTextColor: "",
                 },
             },
@@ -71,12 +69,6 @@ export default {
                     tgt: "",
                     dictionary: "",
                 },
-            },
-        },
-        isCircular: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: true,
             },
         },
         isHidden: {
@@ -163,11 +155,9 @@ Default.args = {
     asEmphasis: "default",
     asVariant: "primary",
     withColor: {
-        textColor: "",
-        accentColor: "",
-        backgroundColor: "",
-        hoverBackgroundColor: "",
-        hoverTextColor: "",
+        textColor: "#ffff00",
+        backgroundColor: "#121212",
+        hoverTextColor: "#ff30ff",
     },
     withAnimation: {
         animation: "collapse",
@@ -179,7 +169,6 @@ Default.args = {
         tgt: "mobileToolbar",
         dictionary: dictionary,
     },
-    isCircular: false,
     isHidden: false,
     isDisabled: false,
 };
@@ -227,9 +216,7 @@ Default.parameters = {
             asVariant= "primary"
             withColor={{
                 textColor: "",
-                accentColor: "",
                 backgroundColor: "",
-                hoverBackgroundColor: "",
                 hoverTextColor: "",
             }}
             withAnimation= {{
@@ -237,7 +224,6 @@ Default.parameters = {
                 duration: 0.5,
                 delay: 0,
             }}
-            isCircular= {false}
             isHidden= {false}
             isDisabled= {false}
             />`,
@@ -254,8 +240,6 @@ ColoredToolbar.args = {
     withColor: {
         backgroundColor: "#666666",
         textColor: "#EB6146",
-        accentColor: "#48D1CC",
-        hoverBackgroundColor: "#666666",
         hoverTextColor: "#EB6146",
     },
 };
@@ -307,8 +291,6 @@ ColoredToolbar.parameters = {
             withColor={{
                 backgroundColor: "#666666",
                 textColor: "#EB6146",
-                accentColor: "#48D1CC",
-                hoverBackgroundColor: "#666666",
                 hoverTextColor: "#EB6146"
             }}
             withAnimation= {{
@@ -316,7 +298,6 @@ ColoredToolbar.parameters = {
                 duration: 0.5,
                 delay: 0,
             }}
-            isCircular= {false}
             isHidden= {false}
             isDisabled= {false}
             />/>`,
@@ -383,9 +364,7 @@ AnimatedToolbar.parameters = {
             asVariant= "primary"
             withColor={{
                 textColor: "",
-                accentColor: "",
                 backgroundColor: "",
-                hoverBackgroundColor: "",
                 hoverTextColor: "",
             }}
             withAnimation= {{
@@ -393,7 +372,6 @@ AnimatedToolbar.parameters = {
                 duration: 1,
                 delay: 0,
             }}
-            isCircular= {false}
             isHidden= {false}
             isDisabled= {false}
             />`,
@@ -496,9 +474,7 @@ WithoutLabelMobileToolbar.parameters = {
             asVariant= "primary"
             withColor={{
                 textColor: "",
-                accentColor: "",
                 backgroundColor: "",
-                hoverBackgroundColor: "",
                 hoverTextColor: "",
             }}
             withAnimation= {{
@@ -506,7 +482,6 @@ WithoutLabelMobileToolbar.parameters = {
                 duration: 0.5,
                 delay: 0,
             }}
-            isCircular= {false}
             isHidden= {false}
             isDisabled= {false}
             />`,
@@ -604,9 +579,7 @@ IconsWithPopoverFormatMobilteToolbar.parameters = {
             asVariant= "primary"
             withColor={{
                 textColor: "",
-                accentColor: "",
                 backgroundColor: "",
-                hoverBackgroundColor: "",
                 hoverTextColor: "",
             }}
             withAnimation= {{
@@ -614,7 +587,6 @@ IconsWithPopoverFormatMobilteToolbar.parameters = {
                 duration: 0.5,
                 delay: 0,
             }}
-            isCircular= {false}
             isHidden= {false}
             isDisabled= {false}
             />/>`,
@@ -712,9 +684,7 @@ IconsWithCaptionMobilteToolbar.parameters = {
             asVariant= "primary"
             withColor={{
                 textColor: "",
-                accentColor: "",
                 backgroundColor: "",
-                hoverBackgroundColor: "",
                 hoverTextColor: "",
             }}
             withAnimation= {{
@@ -722,7 +692,6 @@ IconsWithCaptionMobilteToolbar.parameters = {
                 duration: 0.5,
                 delay: 0,
             }}
-            isCircular= {false}
             isHidden= {false}
             isDisabled= {false}
             />`,
@@ -805,9 +774,7 @@ MobileToolbarWithAllVariants.parameters = {
             asVariant= "primary"
             withColor={{
                 textColor: "",
-                accentColor: "",
                 backgroundColor: "",
-                hoverBackgroundColor: "",
                 hoverTextColor: "",
             }}
             withAnimation= {{
@@ -815,7 +782,6 @@ MobileToolbarWithAllVariants.parameters = {
                 duration: 0.5,
                 delay: 0,
             }}
-            isCircular= {false}
             isHidden= {false}
             isDisabled= {false}
             />`,
@@ -883,9 +849,7 @@ TranslatedMobileToolbar.parameters = {
             asVariant= "primary"
             withColor={{
                 textColor: "",
-                accentColor: "",
                 backgroundColor: "",
-                hoverBackgroundColor: "",
                 hoverTextColor: "",
             }}
             withAnimation= {{
@@ -893,7 +857,6 @@ TranslatedMobileToolbar.parameters = {
                 duration: 0.5,
                 delay: 0,
             }}
-            isCircular= {false}
             isHidden= {false}
             isDisabled= {false}
             />`,

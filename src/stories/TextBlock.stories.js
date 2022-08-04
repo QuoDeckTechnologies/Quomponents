@@ -79,7 +79,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a basic button for general-purpose use",
+        componentSubtitle: "Displays a textBlock for general-purpose use",
         a11y: { disable: true },
         docs: {
             iframeHeight: 500,
@@ -103,7 +103,7 @@ Default.args = {
     asPadded: "normal",
     withColor: {
         backgroundColor: "",
-        textColor: "#fff",
+        textColor: "#000",
     },
     withAnimation: {
         animation: "zoom",
@@ -116,7 +116,7 @@ Default.parameters = {
     docs: {
         description: {
             story:
-                "Use to show the component with all default props",
+                "Use to show the component with Text as conversation or without conversation for general-purpose use",
         },
         source: {
             code: `<TextBlock 
@@ -129,7 +129,7 @@ Default.parameters = {
             asPadded= "normal"
             withColor= {{
                 backgroundColor: "",
-                textColor: "#fff",
+                textColor: "#000",
             }}
             withAnimation= {{
                 animation: "zoom",
@@ -162,17 +162,8 @@ WithoutConversation.parameters = {
         },
         source: {
             code: `<TextBlock 
-            content= "Neque porro quisquam est qui dolorem"
-            position= "left-top"
             conversation= {false}
-            asFloated= "inline"
             asVariant= "primary"
-            asSize= "normal"
-            asPadded= "normal"
-            withColor= {{
-                backgroundColor: "",
-                textColor: "#fff",
-            }}
             withAnimation= {{
                 animation: "zoom",
                 duration: 0.5,

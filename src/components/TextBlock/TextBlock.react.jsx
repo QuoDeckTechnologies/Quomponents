@@ -14,12 +14,8 @@ TextBlock.propTypes = {
   // Component Specific props
   //======================================
   /**
-    toggle the conversation prop to see the component as chat conversation
-    */
-  conversation: PropTypes.bool,
-  /**
-    TextBlock Text has to be in content or passed as string to the component.
-    */
+   TextBlock Text has to be in content or passed as string to the component.
+   */
   content: PropTypes.string,
 
   /**
@@ -31,6 +27,11 @@ TextBlock.propTypes = {
     "left-top",
     "left-bottom",
   ]),
+  /**
+    toggle the conversation prop to see the component as chat conversation
+    */
+  conversation: PropTypes.bool,
+
   // Quommon props
   //=======================================
   /**
@@ -38,7 +39,7 @@ TextBlock.propTypes = {
     */
   asFloated: PropTypes.oneOf(["left", "right", "inline", "none"]),
   /**
-    Use to float the component in parent container
+    Use to define standard component type
     */
   asVariant: PropTypes.oneOf(["primary", "secondary", "success", "warning", "error"]),
   /** 
@@ -142,8 +143,8 @@ export default function TextBlock(props) {
   // ========================= Render Function =================================
   return (
     <motion.div
-      initial={animate.from}
-      animate={animate.to}
+      initial={props.withAnimation ? animate.from : animate.from}
+      animate={props.withAnimation ? animate.to : animate.to}
       className={`qui qui-text-block-container ${quommonClasses.parentClasses}`}
     >
       {content && (
@@ -166,7 +167,6 @@ export default function TextBlock(props) {
                   props.position
                 )}`}
                 style={{
-                  opacity: props.opacity,
                   backgroundColor: props.withColor?.backgroundColor,
                 }}
               ></div>

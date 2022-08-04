@@ -82,7 +82,7 @@ ConfirmationOverlay.propTypes = {
     /**
     Function to be called on acceptance event
     */
-    onSubmit: PropTypes.func,
+    onConfirm: PropTypes.func,
     /**
     Function to be called on denial event
     */
@@ -152,7 +152,7 @@ export default function ConfirmationOverlay(props) {
     let quommonClasses = getQuommons(props, "confirmation-overlay");
 
     function yesClick() {
-        props.onSubmit()
+        props.onConfirm()
     }
 
     function noClick() {

@@ -90,7 +90,6 @@ describe("MobileToolbar", () => {
                 withTranslation={null}
                 isDisabled={false}
                 isHidden={false}
-                isCircular={false}
                 onClick={() => { handleSelect }} />
         );
     });
@@ -104,7 +103,7 @@ describe("MobileToolbar", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("shouldrender correctly when call handleSelect when click", () => {
+    it("should render correctly when call handleSelect when click", () => {
         component = shallow(<MobileToolbar
             content={[
                 {

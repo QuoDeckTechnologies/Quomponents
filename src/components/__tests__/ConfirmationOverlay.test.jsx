@@ -71,7 +71,7 @@ describe("ConfirmationOverlay", () => {
     });
 
     it("on submit event should get called on confirm button click", () => {
-        component.setProps({ onSubmit: mockFn });
+        component.setProps({ onConfirm: mockFn });
         component.find('Button').at(0).simulate('click')
         expect(mockFn).toBeCalled();
     });

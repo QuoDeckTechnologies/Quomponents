@@ -59,6 +59,7 @@ describe("Choice", () => {
 	hasValid("colors", args);
 	hasValid("animations", args);
 	hasValid("translations", args);
+	hasValid("loading", args);
 
 	hasValid("hidden", args);
 	hasValid("disabled", args);
@@ -142,7 +143,7 @@ describe("Choice", () => {
 		let choicebtn = component.find(Button).at(0);
 		choicebtn.simulate("click");
 	});
-	
+
 	it("should call choice2 function with the parameter when click on choice2 button", () => {
 		component.setProps({ onClick: choice2 });
 		let choicebtn = component.find(Button).at(1);

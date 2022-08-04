@@ -30,14 +30,6 @@ Choice.propTypes = {
 	Use to enable/disable the OR tag
 	*/
 	textSeparator: PropTypes.bool,
-	/**
-	Use to define component padding in increasing order
-	*/
-	asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
-	/**
-	Set action emphasis in increasing order 
-	*/
-	asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
 	//=======================================
 	// Quommon props
 	//=======================================
@@ -53,10 +45,25 @@ Choice.propTypes = {
 		"massive",
 	]),
 	/**
+	Use to define standard component type
+	*/
+	asVariant: PropTypes.oneOf(["primary", "secondary", "success", "warning", "error",]),
+	/**
 	Use to float the component in parent container
 	*/
 	asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-
+	/**
+	Use to define component padding in increasing order
+	*/
+	asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+	/**
+	Set action emphasis in increasing order 
+	*/
+	asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
+	/**
+	Use to align content within the component container
+	*/
+	asAligned: PropTypes.oneOf(["left", "right", "center"]),
 	/**
 	Use to override component colors and behavior
 	*/
@@ -74,6 +81,15 @@ Choice.propTypes = {
 		lang: PropTypes.string,
 		tgt: PropTypes.string,
 		dictionary: PropTypes.string,
+	}),
+	/**
+	Use to show label of the component text. 
+	*/
+	withLabel: PropTypes.shape({
+		format: PropTypes.oneOf(["label", "caption", "popover"]),
+		contentOne: PropTypes.string,
+		contentTwo: PropTypes.string,
+		textColor: PropTypes.string,
 	}),
 	/**
 	Use to show/hide the component
@@ -116,9 +132,11 @@ Choice.defaultProps = {
 	//=======================================
 	// Quommon props
 	//=======================================
+	asVariant: "primary",
 	asSize: "normal",
 	asPadded: "normal",
 	asFloated: "inline",
+	asAligned: "center",
 	withColor: null,
 	withTranslation: null,
 	isHidden: false,
@@ -135,39 +153,19 @@ Choice.defaultProps = {
 - Component consist of array of 2 object with the props of correct and text, pass checked in the correct props and string the text props which you want to display on th button.
 **/
 
-// function getPrimaryButtonColors(colors, emphasis) {
-// 	let colorStyleForPrimary;
-// 	colorStyleForPrimary =
-// 		emphasis === "text"
-// 			? {
-// 				background: "transparent",
-// 				boxShadow: "none",
-// 				border: "none",
-// 				color: colors?.primaryTextColor,
-// 			}
-// 			: emphasis === "outlined"
-// 				? {
-// 					background: "transparent",
-// 					boxShadow: "none",
-// 					borderColor: colors?.primaryBackgroundColor,
-// 					color: colors?.primaryBackgroundColor,
-// 				}
-// 				: {
-// 					background: colors?.primaryBackgroundColor,
-// 					color: colors?.primaryTextColor,
-// 					border: "none",
-// 				};
-// 	return colorStyleForPrimary;
-// }
-
-
 export default function Choice(props) {
 	let { options } = props;
-	let orChoiceColor = {
+	let choiceOneColor = {
+		backgroundColor: props?.withColor?.backgroundColor,
+		hoverBackgroundColor: props?.withColor?.hoverBackgroundColor,
+		hoverTextColor: props?.withColor?.hoverTextColor,
+		textColor: props.asEmphasis === "contained" ? props.withColor?.textColor : props.withColor?.backgroundColor
+	}
+	let choiceTwoColor = {
 		backgroundColor: props?.withColor?.accentColor,
 		hoverBackgroundColor: props?.withColor?.hoverBackgroundColor,
 		hoverTextColor: props?.withColor?.hoverTextColor,
-		textColor: props?.withColor?.textColor,
+		textColor: props.asEmphasis === "contained" ? props.withColor?.textColor : props.withColor?.accentColor
 	}
 	//-------------------------------------------------------------------
 	// 1. Set the classes
@@ -208,20 +206,22 @@ export default function Choice(props) {
 				<div className="qui-choice-container">
 					<Button
 						{...props}
+						withColor={choiceOneColor}
 						isFluid={props.isFluid}
 						content={text1}
 						withTranslation={null}
+						withLabel={props.withLabel}
 						onClick={() => { handleClick(0) }} />
 					<div className={`qui-or pad-${props.asPadded}`} style={Object.assign({}, orStyle)}>
 						OR
 					</div>
 					<Button
 						{...props}
-						withColor={orChoiceColor}
+						withColor={choiceTwoColor}
 						isFluid={props.isFluid}
 						content={text2}
 						withTranslation={null}
-						onClick={() => { handleClick(0) }} />
+						onClick={() => { handleClick(1) }} />
 				</div>
 
 			)}
