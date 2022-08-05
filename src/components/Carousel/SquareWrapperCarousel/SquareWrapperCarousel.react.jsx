@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
-import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { getQuommons, getAnimation } from "../../../common/javascripts/helpers";
+import { getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./SquareWrapperCarousel.scss";
@@ -29,21 +28,12 @@ SquareWrapperCarousel.propTypes = {
     })
   ).isRequired,
   /**
-    Use to define the entry animation of the component
-    */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
   }),
   /**
     SquareWrapperCarousel component must have the onClick function passed as props
@@ -55,7 +45,6 @@ SquareWrapperCarousel.defaultProps = {
   // Component Specific props
   //=======================================
   content: [],
-  withAnimation: null,
 };
 /**
 ## Notes
@@ -85,12 +74,15 @@ export default function SquareWrapperCarousel(props) {
   //-------------------------------------------------------------------
   // 4. Defining hook for component updates
   //-------------------------------------------------------------------
-  const animate = getAnimation(props);
   useEffect(() => {
     setCarouselContent(content);
   }, [content]);
   useEffect(() => {
-    onClick(carouselContent);
+    carouselContent.forEach((slide) => {
+      if (slide.selected) {
+        onClick(slide);
+      }
+    })
   }, [carouselContent, onClick]);
   //-------------------------------------------------------------------
   // 5. Function to handle slide selection
@@ -114,7 +106,7 @@ export default function SquareWrapperCarousel(props) {
     setCarouselContent([...tmp_arr]);
   };
   //-------------------------------------------------------------------
-  // 6. Get animation of the component
+  // 6. Get translation of the component
   //-------------------------------------------------------------------
   var settings = {
     dots: true,
@@ -132,9 +124,7 @@ export default function SquareWrapperCarousel(props) {
   };
   // ========================= Render Function =================================
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
+    <div
       className={`qui qui-square-wrapper-carousel-container ${quommonClasses.parentClasses}`}
     >
       <Slider ref={sliderRef} {...settings}>
@@ -145,8 +135,11 @@ export default function SquareWrapperCarousel(props) {
               key={"slider-" + index + Math.random()}
             >
               <div className={`qui-square-wrapper-slide `}>
-                {slide.selected && (
-                  <div className={`qui-mid-circle qui-btn variant-${slide.props?.asVariant}`}>
+                {slide.selected && slide?.header && (
+                  <div className={`qui-mid-circle qui-btn variant-${slide.props?.asVariant}`} style={{
+                    backgroundColor: slide.props?.withColor?.backgroundColor ? slide.props?.withColor?.backgroundColor : "#666",
+                    color: slide.props?.withColor?.textColor
+                  }}>
                     <div className="qui-square-wrapper-checkbox">
                       <i className={"fas fa-check-square"}></i>
                     </div>
@@ -159,6 +152,7 @@ export default function SquareWrapperCarousel(props) {
                   header={slide.header}
                   image={slide.image}
                   tag={slide.tag}
+                  withTranslation={props.withTranslation}
                   onClick={(slideData) => handleSelect(slideData)}
                 />
               </div>
@@ -180,6 +174,6 @@ export default function SquareWrapperCarousel(props) {
           <i className="fas fa-arrow-alt-circle-right"></i>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

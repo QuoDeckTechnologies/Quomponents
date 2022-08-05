@@ -1,17 +1,6 @@
 import React from "react";
 import SquareWrapperCarousel from "../components/Carousel/SquareWrapperCarousel/SquareWrapperCarousel.react";
 
-const dictionary = JSON.stringify({
-  hi: {
-    bannerCard: { header: "", content: "" },
-    ribbon: {
-      new: "नया",
-      restricted: "प्रतिबंधित",
-      premium: "अधिमूल्य",
-      free: "नि: शुल्क",
-    },
-  },
-});
 export default {
   title: "Design System/Carousel/SquareWrapperCarousel",
   component: SquareWrapperCarousel,
@@ -24,16 +13,6 @@ export default {
         header: "",
       },
     ],
-  },
-  withAnimation: {
-    table: {
-      category: "with-Params",
-      defaultValue: {
-        animation: "",
-        duration: 0,
-        delay: 0,
-      },
-    },
   },
   onClick: {
     table: {
@@ -63,6 +42,11 @@ export default {
 
 let dataprops = {
   asVariant: "warning",
+  withColor: {
+    backgroundColor: "",
+    textColor: "",
+    accentColor: ""
+  }
 };
 // -------------------------------------------------------------
 // Default
@@ -103,21 +87,10 @@ Default.args = {
       selected: false,
       header: "GhostBuster",
       props: {
-        ...dataprops,
         asVariant: "warning",
       },
     },
   ],
-  withAnimation: {
-    animation: "slideRight",
-    duration: 0.5,
-    delay: 0,
-  },
-  withTranslation: {
-    lang: "en",
-    tgt: "bannerCard",
-    dictionary: dictionary,
-  },
 };
 Default.parameters = {
   docs: {
@@ -132,8 +105,11 @@ Default.parameters = {
           tag: "new",
           selected: {true},
           props: {
-            ...dataprops,
             asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
@@ -144,8 +120,11 @@ Default.parameters = {
           selected: {false},
           header: "Cityscape",
           props: {
-            ...dataprops,
-            asVariant: "secondary",
+            asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
@@ -156,134 +135,18 @@ Default.parameters = {
           selected: {false},
           header: "GhostBuster",
           props: {
-            ...dataprops,
-            asVariant: "warning",
+            asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
-      ]},
-      withAnimation= {{
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-      }}
-      withTranslation= {{
-        lang: "en",
-        tgt: "bannerCard",
-        dictionary: dictionary,
-      }}/>`,
+      ]},/>`,
     },
   },
 };
 
-// -------------------------------------------------------------
-// Translated Square Wrapper
-// -------------------------------------------------------------
-export const TranslatedSquareWrapper = Template.bind({});
-TranslatedSquareWrapper.args = {
-  content: [
-    {
-      id: "first-slide",
-      image:
-        "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
-      header: "Balloon Burst",
-      tag: "new",
-      selected: true,
-      props: {
-        ...dataprops,
-        asVariant: "primary",
-      },
-    },
-    {
-      id: "second-slide",
-      image:
-        "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-      tag: "premium",
-      selected: false,
-      header: "Cityscape",
-      props: {
-        ...dataprops,
-        asVariant: "secondary",
-      },
-    },
-    {
-      id: "third-slide",
-      image:
-        "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
-      tag: "restricted",
-      selected: false,
-      header: "GhostBuster",
-      props: {
-        ...dataprops,
-        asVariant: "warning",
-      },
-    },
-  ],
-  withAnimation: {
-    animation: "slideRight",
-    duration: 0.5,
-    delay: 0,
-  },
-  withTranslation: {
-    lang: "hi",
-    tgt: "bannerCard",
-    dictionary: dictionary,
-  },
-};
-TranslatedSquareWrapper.parameters = {
-  docs: {
-    source: {
-      code: `<SquareWrapperCarousel
-      content= {[
-        {
-          id: "first-slide",
-          image:
-            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
-          header: "Balloon Burst",
-          tag: "new",
-          selected: {true},
-          props: {
-            ...dataprops,
-            asVariant: "primary",
-          },
-        },
-        {
-          id: "second-slide",
-          image:
-            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-          tag: "premium",
-          selected: {false},
-          header: "Cityscape",
-          props: {
-            ...dataprops,
-            asVariant: "secondary",
-          },
-        },
-        {
-          id: "third-slide",
-          image:
-            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
-          tag: "restricted",
-          selected: {false},
-          header: "GhostBuster",
-          props: {
-            ...dataprops,
-            asVariant: "warning",
-          },
-        },
-      ]},
-      withAnimation= {{
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-      }}
-      withTranslation= {{
-        lang: "hi",
-        tgt: "bannerCard",
-        dictionary: dictionary,
-      }}/>`,
-    },
-  },
-};
 // -------------------------------------------------------------
 // SquareWrapperCarouselWithoutBox
 // -------------------------------------------------------------
@@ -305,11 +168,6 @@ SquareWrapperCarouselWithoutBox.args = {
       header: "GhostBuster",
     },
   ],
-  withAnimation: {
-    animation: "slideRight",
-    duration: 0.5,
-    delay: 0,
-  },
 };
 Default.parameters = {
   docs: {
@@ -323,8 +181,11 @@ Default.parameters = {
           tag: "new",
           selected: {true},
           props: {
-            ...dataprops,
             asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
@@ -334,7 +195,6 @@ Default.parameters = {
           tag: "premium",
           selected: {false},
           props: {
-            ...dataprops,
             asVariant: "secondary",
           },
         },
@@ -345,21 +205,10 @@ Default.parameters = {
           tag: "restricted",
           selected: {false},
           props: {
-            ...dataprops,
             asVariant: "warning",
           },
         },
-      ]},
-      withAnimation= {{
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-      }}
-      withTranslation= {{
-        lang: "en",
-        tgt: "bannerCard",
-        dictionary: dictionary,
-      }}/>`,
+      ]},/>`,
     },
   },
 };
@@ -416,8 +265,11 @@ SquareWrapperCarouselWithoutTag.parameters = {
           header: "Balloon Burst",
           selected: {true},
           props: {
-            ...dataprops,
             asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
@@ -427,100 +279,28 @@ SquareWrapperCarouselWithoutTag.parameters = {
           selected: {false},
           header: "Cityscape",
           props: {
-            ...dataprops,
-            asVariant: "secondary",
-          },
-        },
-        {
-          id: "third-slide",
-          image:
-            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
-          selected: {false},
-          header: "GhostBuster",
-          props: {
-            ...dataprops,
-            asVariant: "warning",
-          },
-        },
-      ]},
-      withAnimation= {{
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-      }}
-      withTranslation= {{
-        lang: "en",
-        tgt: "bannerCard",
-        dictionary: dictionary,
-      }}/>`,
-    },
-  },
-};
-export const AnimatedSquareWrapperCarousel = Template.bind({});
-AnimatedSquareWrapperCarousel.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "slideRight",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedSquareWrapperCarousel.parameters = {
-  docs: {
-    description: {
-      story:
-        "Use to animate the entry of the SquareWrapperCarousel with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
-    },
-    source: {
-      code: `<AnimatedSquareWrapperCarousel
-      content= {[
-        {
-          id: "first-slide",
-          image:
-            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
-          header: "Balloon Burst",
-          tag: "new",
-          selected: {true},
-          props: {
-            ...dataprops,
             asVariant: "primary",
-          },
-        },
-        {
-          id: "second-slide",
-          image:
-            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-          tag: "premium",
-          selected: {false},
-          header: "Cityscape",
-          props: {
-            ...dataprops,
-            asVariant: "secondary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
           id: "third-slide",
           image:
             "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
-          tag: "restricted",
           selected: {false},
           header: "GhostBuster",
           props: {
-            ...dataprops,
-            asVariant: "warning",
+            asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
-      ]},
-      withAnimation= {{
-        animation: "slideRight",
-        duration: 0.5,
-        delay: 0,
-      }}
-      withTranslation= {{
-        lang: "en",
-        tgt: "bannerCard",
-        dictionary: dictionary,
-      }}/>`,
+      ]},/>`,
     },
   },
 };

@@ -35,7 +35,7 @@ export default {
     },
   },
   parameters: {
-    componentSubheader: "Displays a Landscape carousel.",
+    componentSubheader: "Displays a Landscape carousel using react-slick. add content from prop to add more slides to the carosuel.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 600,
@@ -48,7 +48,6 @@ let dataprops = {
   withColor: {
     backgroundColor: "",
     textColor: "",
-    accentColor: ""
   }
 };
 // -------------------------------------------------------------
@@ -109,8 +108,11 @@ Default.parameters = {
       tag: "new",
       selected: {true},
       props: {
-        ...dataprops,
         asVariant: "primary",
+        withColor: {
+          backgroundColor: "",
+          textColor: "",
+        }
       },
     },
     {
@@ -121,8 +123,11 @@ Default.parameters = {
       selected: {false},
       header: "Cityscape",
       props: {
-        ...dataprops,
         asVariant: "secondary",
+        withColor: {
+          backgroundColor: "",
+          textColor: "",
+        }
       },
     },
     {
@@ -133,8 +138,11 @@ Default.parameters = {
       selected: {false},
       header: "GhostBuster",
       props: {
-        ...dataprops,
         asVariant: "warning",
+        withColor: {
+          backgroundColor: "",
+          textColor: "",
+        }
       },
     },
   ]}/>`,
@@ -201,8 +209,11 @@ LandscapeCarouselWithoutBox.parameters = {
           tag: "new",
           selected: {true},
           props: {
-            ...dataprops,
             asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
@@ -212,8 +223,11 @@ LandscapeCarouselWithoutBox.parameters = {
           tag: "premium",
           selected: {false},
           props: {
-            ...dataprops,
             asVariant: "secondary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
@@ -223,8 +237,11 @@ LandscapeCarouselWithoutBox.parameters = {
           tag: "restricted",
           selected: {false},
           props: {
-            ...dataprops,
             asVariant: "warning",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
       ]}`,
@@ -285,8 +302,11 @@ LandscapeCarouselWithoutTag.parameters = {
           header: "Balloon Burst",
           selected: {true},
           props: {
-            ...dataprops,
             asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
@@ -296,8 +316,11 @@ LandscapeCarouselWithoutTag.parameters = {
           selected: {false},
           header: "Cityscape",
           props: {
-            ...dataprops,
             asVariant: "secondary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
@@ -307,8 +330,11 @@ LandscapeCarouselWithoutTag.parameters = {
           selected: {false},
           header: "GhostBuster",
           props: {
-            ...dataprops,
             asVariant: "warning",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
       ]}`,

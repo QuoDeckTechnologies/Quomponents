@@ -20,7 +20,6 @@ describe('LandscapeCarousel', () => {
         withColor: {
             backgroundColor: "",
             textColor: "",
-            accentColor: ""
         }
     };
     // -------------------------------------
@@ -152,7 +151,7 @@ describe('LandscapeCarousel', () => {
         const wrapper = shallow(<LandscapeCarousel onClick={() => { }} />);
         wrapper.find(".qui-landscape-slick-next").simulate('click');
     });
-    it('should render and handle click event slickNext on next arrow', () => {
+    it('should render and handle click event when clicked on BannerCard at 1', () => {
         const wrapper = mount(<LandscapeCarousel
 
             content={[
@@ -207,7 +206,7 @@ describe('LandscapeCarousel', () => {
             },
         });
     });
-    it('should render and handle click event slickNext on next arrow', () => {
+    it('should render and handle click event when clicked on BannerCard at 0 ', () => {
         const wrapper = mount(<LandscapeCarousel
             content={[
                 {
@@ -218,8 +217,11 @@ describe('LandscapeCarousel', () => {
                     tag: "new",
                     selected: true,
                     props: {
-                        ...dataprops,
                         asVariant: "primary",
+                        withColor: {
+                            backgroundColor: "#ffff00",
+                            textColor: "",
+                        }
                     },
                 },
                 {

@@ -68,12 +68,7 @@ export default {
     },
     decorators: [
         (story) => (
-            <div
-                style={{
-                    width: "100%",
-                    fontSize: "1.25em",
-                }}
-            >
+            <div>
                 {story()}
             </div>
         ),

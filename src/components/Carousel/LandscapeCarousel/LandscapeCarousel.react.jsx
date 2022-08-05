@@ -69,7 +69,11 @@ export default function LandscapeCarousel(props) {
     setCarouselContent(content);
   }, [content]);
   useEffect(() => {
-    onClick(carouselContent);
+    carouselContent.forEach((slide) => {
+      if (slide.selected) {
+        onClick(slide);
+      }
+    })
   }, [carouselContent, onClick]);
   //-------------------------------------------------------------------
   // 6. Function to handle slide selection
@@ -121,9 +125,9 @@ export default function LandscapeCarousel(props) {
               key={"slider-" + index + Math.random()}
             >
               <div className={`qui-landscape-slide`}>
-                {slide.selected && (
+                {slide.selected && slide?.header && (
                   <div className={`qui-mid-circle qui-btn variant-${slide.props?.asVariant}`} style={{
-                    backgroundColor: slide.props?.withColor?.backgroundColor,
+                    backgroundColor: slide.props?.withColor?.backgroundColor ? slide.props?.withColor?.backgroundColor : "#666",
                     color: slide.props?.withColor?.textColor
                   }}>
                     <div className="qui-landscape-checkbox">

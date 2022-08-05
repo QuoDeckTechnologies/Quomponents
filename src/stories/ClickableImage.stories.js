@@ -229,10 +229,10 @@ CircularImage.parameters = {
 // -------------------------------------------------------------
 const SlideTemplate = (args) => {
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", width: "fit-content" }}>
       {args?.images.map((image, index) => {
         return (
-          <div style={{ margin: "0 0.1em", flex: 1 }} key={index}>
+          <div style={{ margin: "0 0.1em", flex: 1, width: '6em', height: "6em" }} key={index}>
             <ClickableImage
               image={image}
               onClick={() => args?.onClick(index)}
@@ -301,7 +301,6 @@ const LightBoxTemplate = (args) => {
   return (
     <div
       style={{
-        border: "0.1em solid black",
         display: "inline-block",
         height: "25em",
       }}
@@ -341,8 +340,8 @@ const LightBoxTemplate = (args) => {
     </div>
   );
 };
-export const WithLighBox = LightBoxTemplate.bind({});
-WithLighBox.args = {
+export const WithLightBox = LightBoxTemplate.bind({});
+WithLightBox.args = {
   ...Default.args,
   image:
     "https://images.unsplash.com/photo-1647339490516-b835c0408b71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
@@ -352,11 +351,11 @@ WithLighBox.args = {
     borderColor: "#fcbf49",
   },
 };
-WithLighBox.parameters = {
+WithLightBox.parameters = {
   docs: {
     description: {
       story:
-        "Use to Show the ClickableImage with a another component(LightBox).",
+        "Use to Show the ClickableImage with a another components(LightBox).",
     },
     source: {
       code: `const [open, setOpen] = useState(false);

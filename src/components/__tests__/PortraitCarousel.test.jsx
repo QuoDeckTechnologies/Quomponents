@@ -139,7 +139,7 @@ describe('PortraitCarousel', () => {
         const wrapper = shallow(<PortraitCarousel onClick={() => { }} />);
         wrapper.find(".qui-portrait-slick-next").simulate('click');
     });
-    it('should render and handle click event slickNext on next arrow', () => {
+    it('should render and handle click event when clicked on BannerCard at 1', () => {
         const wrapper = mount(<PortraitCarousel
 
             content={[
@@ -194,7 +194,7 @@ describe('PortraitCarousel', () => {
             },
         });
     });
-    it('should render and handle click event slickNext on next arrow', () => {
+    it('should render and handle click event when clicked on BannerCard at 0', () => {
         const wrapper = mount(<PortraitCarousel
             content={[
                 {
@@ -205,8 +205,11 @@ describe('PortraitCarousel', () => {
                     tag: "new",
                     selected: true,
                     props: {
-                        ...dataprops,
                         asVariant: "primary",
+                        withColor: {
+                            backgroundColor: "#ffff00",
+                            textColor: "",
+                        }
                     },
                 },
                 {

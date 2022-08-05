@@ -31,7 +31,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubheader: "Displays a Html carousel.",
+    componentSubheader: "Displays a Html carousel using react-slick. add content from prop to add more slides to the carosuel",
     a11y: { disable: true },
     docs: {
       iframeHeight: 800,
@@ -96,8 +96,11 @@ Default.parameters = {
           content: "This is HtmlCarousel, Imported from banner card.",
           tag: "new",
           props: {
-            ...dataprops,
             asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
@@ -106,8 +109,11 @@ Default.parameters = {
           tag: "premium",
           content: "This is HtmlCarousel, Imported from banner card.",
           props: {
-            ...dataprops,
             asVariant: "secondary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
@@ -116,8 +122,11 @@ Default.parameters = {
           tag: "restricted",
           content: "This is HtmlCarousel, Imported from banner card.",
           props: {
-            ...dataprops,
             asVariant: "warning",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
       ]}/>`,
@@ -170,8 +179,11 @@ HtmlCarouselWithoutBox.parameters = {
             "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
           tag: "new",
           props: {
-            ...dataprops,
             asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
@@ -179,8 +191,11 @@ HtmlCarouselWithoutBox.parameters = {
             "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
           tag: "premium",
           props: {
-            ...dataprops,
             asVariant: "secondary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
         {
@@ -188,8 +203,11 @@ HtmlCarouselWithoutBox.parameters = {
             "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
           tag: "restricted",
           props: {
-            ...dataprops,
             asVariant: "warning",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
           },
         },
       ]}/>`,
@@ -241,26 +259,35 @@ HtmlCarouselWithoutTag.parameters = {
         {
           image:
             "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
-          props: {
-            ...dataprops,
-            asVariant: "primary",
-          },
+            props: {
+              asVariant: "primary",
+              withColor: {
+                backgroundColor: "",
+                textColor: "",
+              }
+            },
         },
         {
           image:
             "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-          props: {
-            ...dataprops,
-            asVariant: "secondary",
-          },
+            props: {
+              asVariant: "secondary",
+              withColor: {
+                backgroundColor: "",
+                textColor: "",
+              }
+            },
         },
         {
           image:
             "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
-          props: {
-            ...dataprops,
-            asVariant: "warning",
-          },
+            props: {
+              asVariant: "warning",
+              withColor: {
+                backgroundColor: "",
+                textColor: "",
+              }
+            },
         },
       ]}/>`,
     },

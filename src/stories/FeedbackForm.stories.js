@@ -3,7 +3,7 @@ import FeedbackForm from "../components/FeedbackForm/FeedbackForm.react";
 const dictionary = JSON.stringify({
     hi: {
         feedbackForm: {
-            content: "प्रतिक्रिया दिखाएं",
+            label: "प्रतिक्रिया दिखाएं",
             correct: "यदि सही है",
             incorrect: "यदि गलत है"
         }
@@ -72,12 +72,7 @@ export default {
     },
     decorators: [
         (story) => (
-            <div
-                style={{
-                    width: "100%",
-                    fontSize: "1.25em",
-                }}
-            >
+            <div>
                 {story()}
             </div>
         ),

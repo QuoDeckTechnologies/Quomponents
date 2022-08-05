@@ -25,7 +25,7 @@ export default {
         ),
     ],
     parameters: {
-        componentSubheader: "Displays a banner carousel.",
+        componentSubheader: "Displays a Square carousel using react-slick. add content from prop to add more slides to the carosuel.",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -86,9 +86,12 @@ Default.parameters = {
                 image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
                 tag: "new",
                 props: {
-                    ...dataprops,
-                    asVariant: "secondary"
-                }
+                  asVariant: "primary",
+                  withColor: {
+                    backgroundColor: "",
+                    textColor: "",
+                  }
+                },
             },
             {
                 image: "https://i.pinimg.com/564x/d7/eb/54/d7eb54f1760884ebea92519ac653aa19.jpg",
@@ -96,8 +99,12 @@ Default.parameters = {
                 header: "ਗੱਲਬਾਤ ਦਾ ਕਮਰਾ",
                 content: "Flipkart ਵਾਊਚਰ ਹਾਸਲ ਕਰਨ ਲਈ ਮੁਕਾਬਲਾ ਖੇਡੋ ਅਤੇ ਜਿੱਤੋ। ",
                 props: {
-                    ...dataprops,
-                }
+                  asVariant: "primary",
+                  withColor: {
+                    backgroundColor: "",
+                    textColor: "",
+                  }
+                },
             },
             {
                 image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
@@ -105,8 +112,12 @@ Default.parameters = {
                 header: "निगोशिएशन रूम",
                 content: "फ्लिपकार्ट व्हाउचर मिळवण्यासाठी स्पर्धा खेळा आणि जिंका.",
                 props: {
-                    ...dataprops,
-                }
+                  asVariant: "primary",
+                  withColor: {
+                    backgroundColor: "",
+                    textColor: "",
+                  }
+                },
             }]}/>`,
         },
     },
@@ -150,23 +161,34 @@ SquareCarouselWithoutBox.parameters = {
                     image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
                     tag: "new",
                     props: {
-                        ...dataprops,
-                        asVariant: "secondary"
-                    }
+                      asVariant: "primary",
+                      withColor: {
+                        backgroundColor: "",
+                        textColor: "",
+                      }
+                    },
                 },
                 {
                     image: "https://i.pinimg.com/564x/d7/eb/54/d7eb54f1760884ebea92519ac653aa19.jpg",
                     tag: "premium",
                     props: {
-                        ...dataprops,
-                    }
+                      asVariant: "primary",
+                      withColor: {
+                        backgroundColor: "",
+                        textColor: "",
+                      }
+                    },
                 },
                 {
                     image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
                     tag: "restricted",
                     props: {
-                        ...dataprops,
-                    }
+                      asVariant: "primary",
+                      withColor: {
+                        backgroundColor: "",
+                        textColor: "",
+                      }
+                    },
                 }]}/>/>`,
         },
     },
@@ -215,25 +237,36 @@ SquareCarouselWithoutTag.parameters = {
                 content: "Play and win the competition to win Flipkart vouchers.",
                 image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
                 props: {
-                    ...dataprops,
-                    asVariant: "secondary"
-                }
+                  asVariant: "primary",
+                  withColor: {
+                    backgroundColor: "",
+                    textColor: "",
+                  }
+                },
             },
             {
                 image: "https://i.pinimg.com/564x/d7/eb/54/d7eb54f1760884ebea92519ac653aa19.jpg",
                 header: "ਗੱਲਬਾਤ ਦਾ ਕਮਰਾ",
                 content: "Flipkart ਵਾਊਚਰ ਹਾਸਲ ਕਰਨ ਲਈ ਮੁਕਾਬਲਾ ਖੇਡੋ ਅਤੇ ਜਿੱਤੋ। ",
                 props: {
-                    ...dataprops,
-                }
+                  asVariant: "primary",
+                  withColor: {
+                    backgroundColor: "",
+                    textColor: "",
+                  }
+                },
             },
             {
                 image: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
                 header: "निगोशिएशन रूम",
                 content: "फ्लिपकार्ट व्हाउचर मिळवण्यासाठी स्पर्धा खेळा आणि जिंका.",
                 props: {
-                    ...dataprops,
-                }
+                  asVariant: "primary",
+                  withColor: {
+                    backgroundColor: "",
+                    textColor: "",
+                  }
+                },
             }]}/>/>`,
         },
     },

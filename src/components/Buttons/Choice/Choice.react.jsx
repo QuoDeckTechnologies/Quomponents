@@ -167,6 +167,19 @@ export default function Choice(props) {
 		hoverTextColor: props?.withColor?.hoverTextColor,
 		textColor: props.asEmphasis === "contained" ? props.withColor?.textColor : props.withColor?.accentColor
 	}
+
+
+	function getLabelOne(labelObj, position) {
+		return labelObj?.format === position ? labelObj.contentOne : "";
+	}
+	function getLabelTwo(labelObj, position) {
+		return labelObj?.format === position ? labelObj.contentTwo : "";
+	}
+
+	let labelContent = Object.assign({}, props.withLabel);
+	let labelStyle = labelContent?.textColor
+		? { color: labelContent.textColor }
+		: {};
 	//-------------------------------------------------------------------
 	// 1. Set the classes
 	//-------------------------------------------------------------------
@@ -175,8 +188,8 @@ export default function Choice(props) {
 	//-------------------------------------------------------------------
 	// 2. Translate the text objects in case their is a dictionary provided
 	//-------------------------------------------------------------------
-	let text1 = options[0]?.text;
-	let text2 = options[1]?.text;
+	let text1 = labelContent?.contentOne;
+	let text2 = labelContent?.contentTwo;
 	let tObj = getTranslation(props.withTranslation, "options");
 	if (
 		props.withTranslation &&
@@ -204,24 +217,40 @@ export default function Choice(props) {
 		<motion.div initial={animate.from} animate={animate.to} className={`qui ${quommonClasses.parentClasses} `}>
 			{props.options && (
 				<div className="qui-choice-container">
-					<Button
-						{...props}
-						withColor={choiceOneColor}
-						isFluid={props.isFluid}
-						content={text1}
-						withTranslation={null}
-						withLabel={props.withLabel}
-						onClick={() => { handleClick(0) }} />
+					<div style={{ display: "flex", flexDirection: "column" }}>
+						<div className="qui-label qt-lbl" style={labelStyle}>
+							{getLabelOne(labelContent, "label")}
+						</div>
+						<Button
+							{...props}
+							withColor={choiceOneColor}
+							isFluid={props.isFluid}
+							content={text1}
+							withTranslation={null}
+							withLabel={props.withLabel}
+							onClick={() => { handleClick(0) }} />
+						<div className="qui-caption qt-lbl" style={labelStyle}>
+							{getLabelOne(labelContent, "caption")}
+						</div>
+					</div>
 					<div className={`qui-or pad-${props.asPadded}`} style={Object.assign({}, orStyle)}>
 						OR
 					</div>
-					<Button
-						{...props}
-						withColor={choiceTwoColor}
-						isFluid={props.isFluid}
-						content={text2}
-						withTranslation={null}
-						onClick={() => { handleClick(1) }} />
+					<div style={{ display: "flex", flexDirection: "column" }}>
+						<div className="qui-label qt-lbl" style={labelStyle}>
+							{getLabelTwo(labelContent, "label")}
+						</div>
+						<Button
+							{...props}
+							withColor={choiceTwoColor}
+							isFluid={props.isFluid}
+							content={text2}
+							withTranslation={null}
+							onClick={() => { handleClick(1) }} />
+						<div className="qui-caption qt-lbl" style={labelStyle}>
+							{getLabelTwo(labelContent, "caption")}
+						</div>
+					</div>
 				</div>
 
 			)}

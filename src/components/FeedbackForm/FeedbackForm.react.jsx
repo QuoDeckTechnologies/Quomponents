@@ -109,7 +109,7 @@ export default function FeedbackForm(props) {
     //-------------------------------------------------------------------
     // Get translation of the component
     //-------------------------------------------------------------------
-    let toggleLabel = "Show Feedback"
+    let toggleLabel = props?.label
     let inputFieldLableOne = "If Correct"
     let inputFieldLableTwo = "If Incorrect"
     let tObj = null;
@@ -119,9 +119,9 @@ export default function FeedbackForm(props) {
         props.withTranslation.lang !== "en"
     ) {
         tObj = getTranslation(props.withTranslation);
-        toggleLabel = tObj?.label || "Show Feedback"
-        inputFieldLableOne = tObj?.correct || "If Correct"
-        inputFieldLableTwo = tObj?.incorrect || "If Incorrect"
+        toggleLabel = tObj?.label
+        inputFieldLableOne = tObj?.correct
+        inputFieldLableTwo = tObj?.incorrect
     }
     //------------------------------------------------------------------
     // 1. Set the classes
@@ -149,9 +149,9 @@ export default function FeedbackForm(props) {
                     </legend>
                     {toggle &&
                         <div className="qui-feedback-input-field-container">
-                            <InputField {...props} onSubmit={props.onEnter} label={inputFieldLableOne}
+                            <InputField {...props} onSubmit={props.onEnter} onBlur={props.onEnter} label={inputFieldLableOne}
                                 withColor={props.withColor} name={"correct"} withTranslation={null} />
-                            <InputField {...props} onSubmit={props.onEnter} label={inputFieldLableTwo}
+                            <InputField {...props} onSubmit={props.onEnter} onBlur={props.onEnter} label={inputFieldLableTwo}
                                 withColor={props.withColor} name={"incorrect"} withTranslation={null} />
                         </div>
                     }

@@ -43,8 +43,6 @@ describe('SquareWrapperCarousel', () => {
 
     hasValid("defaults", args);
 
-    hasValid("animations", args);
-    hasValid("translations", args);
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
@@ -58,7 +56,11 @@ describe('SquareWrapperCarousel', () => {
         selected: true,
         props: {
             asVariant: "primary",
-        }
+            withColor: {
+                backgroundColor: "#ffffff",
+                textColor: "",
+            }
+        },
     }]
     beforeEach(() => {
         jest.resetAllMocks();

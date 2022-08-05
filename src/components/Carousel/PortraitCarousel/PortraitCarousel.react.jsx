@@ -69,7 +69,11 @@ export default function PortraitCarousel(props) {
     setCarouselContent(content);
   }, [content]);
   useEffect(() => {
-    onClick(carouselContent);
+    carouselContent.forEach((slide) => {
+      if (slide.selected) {
+        onClick(slide);
+      }
+    })
   }, [carouselContent, onClick]);
   //-------------------------------------------------------------------
   // 6. Function to handle slide selection
@@ -101,7 +105,7 @@ export default function PortraitCarousel(props) {
     centerMode: true,
     arrows: false,
     infinite: true,
-    autoplay: true,
+    autoplay: false,
     pauseOnHover: true,
     centerPadding: "0%",
     swipeToSlide: true,
@@ -121,9 +125,9 @@ export default function PortraitCarousel(props) {
               <div
                 className={`qui-portrait-slide`}
               >
-                {slide.selected && (
+                {slide.selected && slide?.header && (
                   <div className={`qui-mid-circle qui-btn variant-${slide.props?.asVariant}`} style={{
-                    backgroundColor: slide.props?.withColor?.backgroundColor,
+                    backgroundColor: slide.props?.withColor?.backgroundColor ? slide.props?.withColor?.backgroundColor : "#666",
                     color: slide.props?.withColor?.textColor
                   }}>
                     <div className="qui-portrait-checkbox">
