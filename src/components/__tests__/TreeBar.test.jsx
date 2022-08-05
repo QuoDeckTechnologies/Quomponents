@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import { render } from "@testing-library/react";
 //--------------------------------------
 // Import Common Tests
@@ -134,6 +134,13 @@ describe("TreeBar", () => {
       },
     ],
   };
+  let nodeDataNull = {
+    id: "allArticles",
+    parentId: null,
+    name: "Courses",
+    description: "",
+    children: null,
+  };
 
   let dataprops = {
     placeHolder: "Select courses here...",
@@ -222,6 +229,7 @@ describe("TreeBar", () => {
     component.setProps({ content: { treeData: {} } });
   });
 
+
   it("should toggle the treebeard", () => {
     let toggled = false;
     let onClick = jest.fn();
@@ -237,19 +245,43 @@ describe("TreeBar", () => {
     expect(onClick).toHaveBeenCalledWith(nodeData);
   });
 
-  it("should toggle the treebeard", () => {
+  it("should toggle the treebeard with node null", () => {
     let toggled = false;
     let onClick = jest.fn();
     component.find(".qui-treebar-searchbar").children().simulate("click");
     component.setProps({
-      node: null,
+      node: nodeDataNull,
       toggled: toggled,
       onClick: onClick,
     });
-    component.setProps({ data: nodeData });
+    component.setProps({ data: nodeDataNull });
     let treeBeard = component.find(Treebeard);
-    treeBeard.simulate("toggle", nodeData, toggled);
-    expect(onClick).toHaveBeenCalledWith(nodeData);
+    treeBeard.simulate("toggle", nodeDataNull, toggled);
+    expect(onClick).toHaveBeenCalledWith(nodeDataNull);
+  });
 
+  it("should render correctly when mount and nodeData is not null", () => {
+    let onToggle = jest.fn();
+    let onClick = jest.fn();
+    component = mount(
+      <Treebeard
+        data={nodeData}
+        onToggle={onToggle}
+        decorators={decorators}
+        onClick={onClick}
+      />
+    )
+  });
+  it("should render correctly when mount and nodeData is null", () => {
+    let onToggle = jest.fn();
+    let onClick = jest.fn();
+    component = mount(
+      <Treebeard
+        data={nodeDataNull}
+        onToggle={onToggle}
+        decorators={decorators}
+        onClick={onClick}
+      />
+    )
   });
 });
