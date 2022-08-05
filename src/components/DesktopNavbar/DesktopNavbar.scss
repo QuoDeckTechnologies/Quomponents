@@ -1,3 +1,11 @@
+.qui {
+  position: relative;
+}
+
+.qui.qui-desktop-navbar {
+  overflow: visible;
+}
+
 .qui .qui-desktop-navbar-wrapper {
   display: flex;
   align-items: center;
@@ -20,6 +28,7 @@
 .qui-desktop-navbar-button-disable {
   opacity: 0.2;
   cursor: auto;
+  pointer-events: none;
 }
 
 .qui .qui-desktop-navabr-search-bar-wrapper {
@@ -29,6 +38,8 @@
 
 .qui-desktop-navbar-navigation-link-icon-wrapper {
   width: 30em;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .qui .qui-desktop-navbar-name-container {
@@ -79,4 +90,55 @@
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
+}
+
+.qui-desktop-navbar-action-menu-modal {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border: 0;
+  padding: 0;
+  width: 13em;
+}
+
+.qui-desktop-navbar-slick-slider .slick-list {
+  overflow: visible;
+}
+
+.qui-desktop-navbar-link-icon-container {
+  position: relative;
+}
+
+.qui-desktop-navbar-action-menu-modal {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-1em) scale(0.95);
+  transition: all 0.5s ease;
+  // &:focus {
+  //   opacity: 1;
+  //   visibility: visible;
+  //   transform: translateY(1em) scale(1);
+  // }
+}
+
+.qui-desktop-navbar-link-icon-button {
+  border: 0;
+  padding: 0;
+  &:focus + .qui-desktop-navbar-action-menu-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(1em) scale(1);
+  }
+}
+
+.qui-desktop-navbar-action-menu-container {
+  .qui-actionmenu-items {
+    border-bottom: none;
+  }
+  // .qui-actionmenu-icon {
+  //   display: none;
+  // }
+  .qui-actionmenu-titles {
+    margin: 0.5em;
+  }
 }

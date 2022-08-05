@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import Slider from "react-slick";
@@ -11,6 +11,7 @@ import "../../common/stylesheets/overrule.scss";
 import SearchBar from "../SearchBar/SearchBar.react";
 import LinkIcon from "../LinkIcon/LinkIcon.react";
 import AppMenu from "../AppMenu/AppMenu/AppMenu.react";
+import ActionMenu from "../ActionMenu/ActionMenu.react";
 
 DesktopNavbar.propTypes = {
   //=======================================
@@ -115,7 +116,10 @@ export default function DesktopNavbar(props) {
   //-------------------------------------------------------------------
   // 6. LinkIcon click handler
   //-------------------------------------------------------------------
-  const handelClick = (data) => {
+  const handelClick = (data, link) => {
+    if (link?.link) {
+      props.onClick(link?.link);
+    }
     let tmp_state = linkData;
     let tmp_arr = [];
     let tmp_obj = {};
@@ -135,13 +139,13 @@ export default function DesktopNavbar(props) {
   };
 
   var settings = {
-    className: "qui-desktop-navabr-slick-slider",
+    className: "qui-desktop-navbar-slick-slider",
     arrows: false,
     dots: false,
     infinite: false,
     centerMode: false,
     slidesToShow: 4,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     variableWidth: true,
     draggable: false,
   };
@@ -158,7 +162,7 @@ export default function DesktopNavbar(props) {
           style={{
             backgroundImage: `url(${icon})`,
           }}
-          onClick={props.onClick}
+          onClick={() => props.onClick("/")}
         ></div>
         <div className="qui-desktop-navabr-search-bar-wrapper">
           <SearchBar asFloated="none" isFluid={true} onClick={props.onSearch} />
@@ -187,20 +191,29 @@ export default function DesktopNavbar(props) {
                   key={index}
                   style={{ display: "inline-block" }}
                 >
-                  <LinkIcon
-                    width=""
-                    icon={link.icon}
-                    active={link.active}
-                    withColor={{
-                      backgroundColor: withColor?.backgroundColor,
-                      accentColor: withColor?.accentColor,
-                      textColor: withColor?.textColor,
-                      hoverBackgroundColor: withColor?.backgroundColor,
-                      hoverTextColor: withColor?.textColor,
-                    }}
-                    label={link.text}
-                    onClick={handelClick}
-                  />
+                  <button className="qui-desktop-navbar-link-icon-button">
+                    <LinkIcon
+                      width=""
+                      icon={link.icon}
+                      active={link.active}
+                      withColor={{
+                        backgroundColor: withColor?.backgroundColor,
+                        accentColor: withColor?.accentColor,
+                        textColor: withColor?.textColor,
+                        hoverBackgroundColor: withColor?.backgroundColor,
+                        hoverTextColor: withColor?.textColor,
+                      }}
+                      label={link.text}
+                      onClick={(data) => handelClick(data, link)}
+                    />
+                  </button>
+                  {link.menu && (
+                    <button className="qui-desktop-navbar-action-menu-modal">
+                      <div className="qui-desktop-navbar-action-menu-container">
+                        <ActionMenu content={link.menu} />
+                      </div>
+                    </button>
+                  )}
                 </div>
               );
             })}
@@ -209,7 +222,7 @@ export default function DesktopNavbar(props) {
         {showNavigation && (
           <div
             className={`qui-desktop-navigation-right-navigation qui-desktop-navigation-navigation ${
-              index + 4 !== links?.length
+              index + 5 !== links?.length
                 ? ""
                 : "qui-desktop-navbar-button-disable"
             }`}

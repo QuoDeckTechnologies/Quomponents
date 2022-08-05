@@ -76,22 +76,94 @@ Default.args = {
     {
       icon: "fas fa-home",
       text: "home",
+      menu: [
+        {
+          title: "Posts ",
+          icon: "fas fa-briefcase",
+          func: () => {},
+        },
+        {
+          title: "Infographics",
+          icon: "fas fa-images",
+          func: () => {},
+        },
+        {
+          title: "Videos",
+          icon: "fas fa-film",
+          func: () => {},
+        },
+        {
+          title: "Presentations",
+          icon: "fas fa-desktop",
+          func: () => {},
+        },
+        {
+          title: "Events",
+          icon: "fas fa-calendar",
+          func: () => {},
+        },
+        {
+          title: "Assessments",
+          icon: "fas fa-question-circle",
+          func: () => {},
+        },
+        {
+          title: "Surveys",
+          icon: "fas fa-poll",
+          func: () => {},
+        },
+        {
+          title: "Games",
+          icon: "fas fa-gamepad",
+          func: () => {},
+        },
+        {
+          title: "Tutorials",
+          icon: "fas fa-file",
+          func: () => {},
+        },
+      ],
     },
     {
       icon: "fas fa-award",
       text: "my profile",
+      link: "/profile",
     },
     {
       icon: "fas fa-chart-pie",
       text: "my reports",
+      menu: [
+        {
+          title: "Open Deck",
+          icon: "fas fa-book-open",
+          func: () => {},
+        },
+        {
+          title: "Edit Deck",
+          icon: "fas fa-edit",
+          func: () => {},
+        },
+        {
+          title: "Move Deck Up",
+          icon: "fas fa-chevron-up",
+          func: () => {},
+        },
+        {
+          title: "Move Deck Down",
+          icon: "fas fa-chevron-down",
+          func: () => {},
+        },
+      ],
     },
     {
       icon: "fas fa-bell",
       text: "notification",
+      link: "/notification",
     },
     {
       icon: "fas fa-question-circle",
       text: "help desk",
+      link: "/help",
     },
   ],
   user: {
@@ -215,34 +287,124 @@ ScrollableDesktopNavbar.args = {
     {
       icon: "fas fa-home",
       text: "home",
+      menu: [
+        {
+          title: "Posts ",
+          icon: "fas fa-briefcase",
+          func: () => {},
+        },
+        {
+          title: "Infographics",
+          icon: "fas fa-images",
+          func: () => {},
+        },
+        {
+          title: "Videos",
+          icon: "fas fa-film",
+          func: () => {},
+        },
+        {
+          title: "Presentations",
+          icon: "fas fa-desktop",
+          func: () => {},
+        },
+        {
+          title: "Events",
+          icon: "fas fa-calendar",
+          func: () => {},
+        },
+        {
+          title: "Assessments",
+          icon: "fas fa-question-circle",
+          func: () => {},
+        },
+        {
+          title: "Surveys",
+          icon: "fas fa-poll",
+          func: () => {},
+        },
+        {
+          title: "Games",
+          icon: "fas fa-gamepad",
+          func: () => {},
+        },
+        {
+          title: "Tutorials",
+          icon: "fas fa-file",
+          func: () => {},
+        },
+      ],
     },
     {
       icon: "fas fa-award",
       text: "my profile",
+      link: "/profile",
     },
     {
       icon: "fas fa-chart-pie",
       text: "my reports",
+      menu: [
+        {
+          title: "Open Deck",
+          icon: "fas fa-book-open",
+          func: () => {},
+        },
+        {
+          title: "Edit Deck",
+          icon: "fas fa-edit",
+          func: () => {},
+        },
+        {
+          title: "Move Deck Up",
+          icon: "fas fa-chevron-up",
+          func: () => {},
+        },
+        {
+          title: "Move Deck Down",
+          icon: "fas fa-chevron-down",
+          func: () => {},
+        },
+        {
+          title: "Move to Topic",
+          icon: "fas fa-retweet",
+          func: () => {},
+        },
+        {
+          title: "Unpublish Deck",
+          icon: "fas fa-eye-slash",
+          func: () => {},
+        },
+        {
+          title: "Delete Deck",
+          icon: "fas fa-trash-alt",
+          func: () => {},
+        },
+      ],
     },
     {
       icon: "fas fa-bell",
       text: "notification",
+      link: "/notification",
     },
     {
       icon: "fas fa-question-circle",
       text: "help desk",
+      link: "/help",
     },
     {
       icon: "fas fa-book",
       text: "Long Text Testing",
+      link: "/Testing",
     },
     {
       icon: "fas fa-bookmark",
       text: "bookmarks",
+      link: "/bookmarks",
     },
     {
       icon: "fas fa-brush",
       text: "About",
+      link: "/About",
     },
   ],
 };

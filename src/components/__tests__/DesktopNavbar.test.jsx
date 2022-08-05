@@ -45,10 +45,23 @@ describe("DesktopNavbar", () => {
           {
             icon: "fas fa-home",
             text: "home",
+            menu: [
+              {
+                title: "Posts ",
+                icon: "fas fa-briefcase",
+                func: () => {},
+              },
+              {
+                title: "Infographics",
+                icon: "fas fa-images",
+                func: () => {},
+              },
+            ],
           },
           {
             icon: "fas fa-award",
             text: "my profile",
+            link: "/profile",
           },
           {
             icon: "fas fa-home",
@@ -108,12 +121,18 @@ describe("DesktopNavbar", () => {
   });
 
   it("should render when clicked on LinkIcon", () => {
+    component.find(LinkIcon).at(0).simulate("click", { label: "home" });
     component.find(LinkIcon).at(1).simulate("click", { label: "my profile" });
     expect(component.exists()).toBe(true);
   });
 
   it("should render when searched on search component", () => {
     component.find(SearchBar).simulate("click", "search");
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render when clicked on logo", () => {
+    component.find(".qui-desktop-navbar-logo").simulate("click");
     expect(component.exists()).toBe(true);
   });
 
@@ -131,6 +150,7 @@ describe("DesktopNavbar", () => {
 
   it("should render when slide is changed", () => {
     component.find(Slider).props().beforeChange(1, 4);
+    component.find(Slider).props().beforeChange(1, 3);
     expect(component.exists()).toBe(true);
   });
 });
