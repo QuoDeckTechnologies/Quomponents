@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import _ from "lodash";
 import {
     getQuommons,
@@ -21,7 +19,6 @@ Marker.propTypes = {
     content: PropTypes.shape({
         wrapper: PropTypes.string,
         inset: PropTypes.number,
-        completion: PropTypes.number,
         node: PropTypes.shape({
             _id: PropTypes.string,
             name: PropTypes.string,
@@ -36,8 +33,11 @@ Marker.propTypes = {
             sequence: PropTypes.number,
         })
     }),
+    completion: PropTypes.shape({
+        _id: PropTypes.number,
+    }),
     /**
-    Use to set the state of MobileToolbar 
+    Use to set the status of marker 
     */
     status: PropTypes.oneOf([
         "current",
@@ -45,8 +45,8 @@ Marker.propTypes = {
         "incomplete",
     ]),
     /**
-   Use to show/hide the component
-   */
+    Use to show course type 
+    */
     sequential: PropTypes.bool,
     //=======================================
     // Quommon props
@@ -77,7 +77,7 @@ Marker.propTypes = {
     /**
     component must have the onClick function passed as props
     */
-    openDeck: PropTypes.func
+    onOpenDeck: PropTypes.func
 };
 
 Marker.defaultProps = {
@@ -106,7 +106,7 @@ export default function Marker(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring content from props
     //-------------------------------------------------------------------
-    let { content, status, openDeck } = props;
+    let { content, status } = props;
 
     //-------------------------------------------------------------------
     // 2. Set the classes
@@ -116,7 +116,7 @@ export default function Marker(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
-        if (status === "current" || status === "complete") { setAnchorEl(event.currentTarget); }
+        if (status === "current" || status === "complete") { setAnchorEl(event.currentTarget) }
     };
     const handleClose = () => {
         setAnchorEl(null);
@@ -130,7 +130,7 @@ export default function Marker(props) {
     };
 
     let indicator = (deck) => {
-        return props.content?.completion[deck.deckId] === 100 ? (
+        return props.completion[deck.deckId] === 100 ? (
             <i className="qui-indicator fa fa-check-circle" />
         ) : (
             <i className="qui-indicator fa fa-bullseye" />
@@ -166,7 +166,7 @@ export default function Marker(props) {
         }
     };
     let markerBlock = (
-        <div onClick={handleClick}>
+        <div onClick={handleClick} className={"qui-marker-clcik"}>
             <img
                 className={"qui-marker-img"}
                 src={
@@ -276,10 +276,10 @@ export default function Marker(props) {
                                 {content?.node?.description}
                             </div>
                         </div>
-                        <div key={'list-' + Math.random()} divided style={gameList}>
+                        <div key={'list-' + Math.random()} style={gameList}>
                             {_.map(content?.node?.contentList, (deck, index) => {
                                 prevComplete = currComplete !== undefined ? currComplete : 0;
-                                currComplete = props.content?.completion[deck._id];
+                                currComplete = props.completion[deck._id];
                                 return (
                                     <div className="qui-icons-name"
                                         key={`deckitem-${deck._id}`}
@@ -289,15 +289,16 @@ export default function Marker(props) {
                                             background: props.sequential && index !== 0
                                                 ? prevComplete === 100 ? "none" : "#e8e8e8" : "none"
                                         }}
-                                        onClick={props.sequential && index !== 0 ? prevComplete > 80 ?
-                                            () => openDeck(
+                                        //onClick={props.onClick}
+                                        onClick={props.sequential ? prevComplete > 80 ?
+                                            () => props.onOpenDeck(
                                                 {
                                                     deckId: deck._id,
                                                     readerType: deck.readerType,
                                                 },
                                                 content?.inset - 1
                                             ) : null :
-                                            () => openDeck(
+                                            () => props.onOpenDeck(
                                                 {
                                                     deckId: deck._id,
                                                     readerType: deck.readerType,

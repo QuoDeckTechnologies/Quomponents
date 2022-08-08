@@ -25,67 +25,72 @@
   }
 }
 
-.MuiMenuItem-root {
-  display: flex;
-  flex-direction: column;
-  line-height: 1em;
-  padding: 0em;
+.css-1n2r62y-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+  .css-6hp17o-MuiList-root-MuiMenu-list {
+    max-height: 15em;
+  }
 
-  .qui-marker-wellstyle {
-    padding: 0.5em 1em;
-    width: 13em;
-    background-color: #121212;
-    color: #ffffff;
-    line-height: 1em;
+  .MuiMenuItem-root {
+    display: flex;
+    flex-direction: column;
 
-    h5 {
-      margin: 0;
+    .qui-marker-wellstyle {
+      padding: 1em;
+      width: 13em;
+      background-color: #121212;
+      color: #ffffff;
+
+      h5 {
+        margin: 0;
+      }
+
+      .qui-marker-desc {
+        padding-top: 1em;
+        white-space: pre-wrap;
+        font-size: 0.7em;
+        -webkit-box-orient: vertical;
+        display: block;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        line-height: 1;
+      }
     }
 
-    .qui-marker-desc {
-      white-space: pre-wrap;
-      font-size: 0.7em;
-      -webkit-box-orient: vertical;
-      display: block;
-      display: -webkit-box;
+    .qui-itemcontent {
+      width: 79%;
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      -webkit-line-clamp: 2;
+      display: inline-block;
     }
-  }
 
-  .qui-itemcontent {
-    width: 79%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-  }
+    .qui-indicator {
+      font-size: 1em;
+      margin-right: 0.5em;
+    }
 
-  .qui-indicator {
-    font-size: 1em;
-    margin-right: 0.5em;
-  }
+    .qui-iconwrapper {
+      float: right;
+      color: #121212;
+      font-size: .85em;
+    }
 
-  .qui-iconwrapper {
-    float: right;
-    color: #121212;
-    font-size: .85em;
-  }
+    .qui-marker-imagestyle {
+      width: 100%;
+    }
 
-  .qui-marker-imagestyle {
-    width: 100%;
-  }
+    .qui-icons-name {
+      display: block;
+      align-items: center;
+      width: 13em;
+      padding-top: 0.5em;
+      height: 2em;
 
-  .qui-icons-name {
-    display: block;
-    align-items: center;
-    width: 13em;
-    padding-top: 0.2em;
-    line-height: 1;
-
-    .fa-chevron-right {
-      margin-left: 0.5em;
+      .fa-chevron-right {
+        margin-left: 0.5em;
+      }
     }
   }
 }

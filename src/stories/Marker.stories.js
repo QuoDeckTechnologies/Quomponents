@@ -32,7 +32,12 @@ export default {
                 defaultValue: null,
             },
         },
-        openDeck: {},
+        onOpenDeck: {
+            table: {
+                category: "Events",
+                defaultValue: null,
+            },
+        },
         isHidden: {
             table: {
                 category: "is-Toggles",
@@ -73,9 +78,8 @@ Default.args = {
     content: {
         wrapper: "carnival",
         inset: 1,
-        completion: 100,
         node: {
-            _id: "512",
+            _id: "511",
             name: "First Topic",
             description: "This is first new topic of this course",
             contentList: [{
@@ -87,6 +91,7 @@ Default.args = {
             sequence: 0,
         }
     },
+    completion: { 512: 90 },
     sequential: true,
     status: "current",
     asSize: "normal",
@@ -96,7 +101,28 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<Marker {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<Marker content = {{
+                wrapper= "carnival"
+                inset= {1}
+                node= {{
+                    _id: "511",
+                    name: "First Topic",
+                    description: "This is first new topic of this course",
+                    contentList: [{
+                        _id: "512",
+                        name: "Assesment format",
+                        readerType: "game",
+                        sequence: 0,
+                    }],
+                    sequence: 0,
+                }}
+            }}
+            completion= { 512= 50 }
+            sequential= true
+            status= "current"
+            asSize= "normal"
+            isHidden= {false}
+            isDisabled= {false}/>`,
         },
     },
 };
