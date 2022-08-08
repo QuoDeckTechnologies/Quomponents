@@ -150,7 +150,7 @@ describe("DesktopNavbar", () => {
 
   it("should render when slide is changed", () => {
     component.find(Slider).props().beforeChange(1, 4);
-    component.find(Slider).props().beforeChange(1, 3);
+    component.find(Slider).props().beforeChange(1, 2);
     expect(component.exists()).toBe(true);
   });
 });

@@ -22,7 +22,7 @@
 .qui-desktop-navigation-navigation {
   font-size: 1.5em;
   cursor: pointer;
-  transition: opacity 0.3s ease-in;
+  transition: opacity 0.2s ease;
 }
 
 .qui-desktop-navbar-button-disable {
@@ -113,12 +113,7 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(-1em) scale(0.95);
-  transition: all 0.5s ease;
-  // &:focus {
-  //   opacity: 1;
-  //   visibility: visible;
-  //   transform: translateY(1em) scale(1);
-  // }
+  transition: all 0.5s ease-in;
 }
 
 .qui-desktop-navbar-link-icon-button {
@@ -135,9 +130,6 @@
   .qui-actionmenu-items {
     border-bottom: none;
   }
-  // .qui-actionmenu-icon {
-  //   display: none;
-  // }
   .qui-actionmenu-titles {
     margin: 0.5em;
   }

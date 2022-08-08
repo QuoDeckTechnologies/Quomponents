@@ -1,5 +1,5 @@
 // Import npm packages
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import Slider from "react-slick";
@@ -182,7 +182,9 @@ export default function DesktopNavbar(props) {
           <Slider
             ref={sliderRef}
             {...settings}
-            beforeChange={(oldIndex, newIndex) => setIndex(newIndex)}
+            beforeChange={(...args) => {
+              setIndex(args[1])
+            }}
           >
             {_.map(linkData, (link, index) => {
               return (
@@ -222,9 +224,9 @@ export default function DesktopNavbar(props) {
         {showNavigation && (
           <div
             className={`qui-desktop-navigation-right-navigation qui-desktop-navigation-navigation ${
-              index + 5 !== links?.length
-                ? ""
-                : "qui-desktop-navbar-button-disable"
+              index + 6  === links?.length
+                ? "qui-desktop-navbar-button-disable"
+                : ""
             }`}
             style={{ color: withColor?.textColor }}
             onClick={() => sliderRef.current?.slickNext()}

@@ -202,7 +202,7 @@ Default.args = {
     hoverTextColor: "#eee",
   },
   withIcon: {
-    icon: "https://s3-alpha-sig.figma.com/img/62a7/fe58/4eecae9f288351910a0eb692d867ee13?Expires=1659916800&Signature=AlWDFcksp3SrNfu0e9xxYSVnvJDtrx0ckNiajI2LAfAuD8Wshhp8KhQwgCx1nyZjuagwO2wW6r8uKC4O6QBeCw1OvYF6L42cuCSZaFqoA-Io74RDywQrgRxCrR3SXRSgamPEhGvwZnlSco~kYXn4DnIhEbtmErawR21H~hFoxTOpTaoVmFw-29dz2SPxj-L1sKZM6kXj1vozhHOzHq6GM5IQLysBP9RJu6jjG4TmVuHQRx9Uy-i9j8he0q00Uvp1HV5-RZLY05dGNHxrQIdVq8UuB3U9P5kStx9dbC286AFVNVZfxky6pgP5ITb~Z~LRa28KqfGBn8ovGOYukrVVQw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+    icon: "https://s3-alpha-sig.figma.com/img/62a7/fe58/4eecae9f288351910a0eb692d867ee13?Expires=1661126400&Signature=Vkz2sFKi7ozK5XJRcMS22sUXMGKJB9JIi~M50PB17c17zT9jHByZL2ieGIM3OeT9d3zzRHwV~lj8cBkRBd2hG8xe-Xx3c2abFKFWWyxIAVpP2MNgFQ5yi-D7xy22Z-s0uBU9teq7-lQOqCq3grJ4nxwf40pJmLo8HAFY7ddD9qeSWBfEvnpG2FcloI-3PN6ape-VlYSQ3VifkSe6kMqJj2JZFCi28s5VffCoVC1P2xil536Qx3jT9-j-HXEoJV1II-w3KLb8Kkkoj6JL9losMMa9lHyDXW3~hNrfx0BzdvC1FLWVg2NibYYFUCVr6-pK6WREdL0U8ARx0lj-WWhBFw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
   },
   isDisabled: false,
   isHidden: false,
