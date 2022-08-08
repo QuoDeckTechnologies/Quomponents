@@ -20,19 +20,52 @@ QuoCarousel.propTypes = {
     //component specific props
     //======================================
     /**
-     *QuoCarousel data should be passed in content field and it is required field
+     *QuoCarousel data should be passed in content field.
      */
     content: PropTypes.array,
+    /**
+     *QuoCarousel arrows be passed in props to enable or disable navigation arrows.
+     */
     arrows: PropTypes.bool,
+    /**
+     *QuoCarousel autoPlay be passed in props to let the carousel run automatically  to the next slide or not.
+     */
     autoPlay: PropTypes.bool,
+    /**
+     *QuoCarousel dots be passed in props to see the slide index in carousel by dots below the slide.
+     */
     dots: PropTypes.bool,
+    /**
+     *QuoCarousel infinite be passed in props to infinitely wrap around contents.
+     */
     infinite: PropTypes.bool,
+    /**
+    *QuoCarousel slldestoShow be passed in props to decalre how many slides to show in one frame
+    */
     slidesToShow: PropTypes.number,
+     /**
+    *QuoCarousel initialSlide be passed in props to index of first slide
+    */
     initialSlide: PropTypes.number,
+    /**
+     *QuoCarousel asNavFor be passed in props to provide ref to another slider and sync it with current slider
+     */
     asNavFor: PropTypes.elementType,
+      /**
+     *QuoCarousel addSkipToEnd be passed in props to provide ref to skip the slides to the last index in carousel
+     */
     addSkipToEnd: PropTypes.bool,
+     /**
+     *QuoCarousel adaptiveHeight be passed in props to adjust the slide's height automatically
+     */
     adaptiveHeight: PropTypes.bool,
+    /**
+     *QuoCarousel centerMode be passed in props to center current slide
+     */
     centerMode: PropTypes.bool,
+     /**
+     *QuoCarousel centerPadding be passed in props to give padding to  current slide from both ends.
+     */
     centerPadding: PropTypes.string,
     //=======================================
     // Quommon props
@@ -41,7 +74,7 @@ QuoCarousel.propTypes = {
     * Use to override component colors and behavior
     */
     withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
+        textColor: PropTypes.string,
         hoverBackgroundColor: PropTypes.string,
         hoverTextColor: PropTypes.string,
     }),
@@ -135,6 +168,9 @@ export default function QuoCarousel(props) {
         asNavFor: props.asNavFor,
         centerPadding: props.centerPadding,
         swipe: !props.addSkipToEnd || activeSlide !== content.length - 1,
+        /**
+         * Index change callback. `(oldIndex, newIndex) => ...`
+         */
         beforeChange: (current, next) => {
             handleCallback(next);
         }
@@ -192,7 +228,7 @@ export default function QuoCarousel(props) {
                         asFloated="none"
                         asAligned="center"
                         withColor={{
-                            textColor: props.withColor?.backgroundColor,
+                            textColor: props.withColor?.textColor,
                             hoverBackgroundColor: props.withColor?.hoverBackgroundColor,
                             hoverTextColor: props.withColor?.hoverTextColor,
                         }}

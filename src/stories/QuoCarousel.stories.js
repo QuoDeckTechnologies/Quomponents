@@ -69,7 +69,7 @@ export default {
             table: {
                 category: "with-Params",
                 defaultValue: {
-                    backgroundColor: "",
+                    textColor: "",
                     hoverBackgroundColor: "",
                     hoverTextColor: "",
                 },
@@ -194,7 +194,7 @@ Default.args = {
     addSkipToEnd: true,
     adaptiveHeight: false,
     withColor: {
-        backgroundColor: "",
+        textColor: "",
         hoverBackgroundColor: "",
         hoverTextColor: "",
     },
@@ -361,7 +361,7 @@ VCard.args = {
     addSkipToEnd: true,
     adaptiveHeight: false,
     withColor: {
-        backgroundColor: "",
+        textColor: "",
         hoverBackgroundColor: "",
         hoverTextColor: "",
     },

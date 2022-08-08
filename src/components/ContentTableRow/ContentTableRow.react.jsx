@@ -33,13 +33,13 @@ ContentTableRow.propTypes = {
   asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
-    menuIconColor: PropTypes.string,
-    readerIconColor: PropTypes.string,
-    checkIconColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    accentColor: PropTypes.string,
   }),
   /**
   Use to define the entry animation of the component
@@ -105,8 +105,6 @@ function getIcon(readerType) {
       return "far fa-question-circle";
     case "casestudy":
       return "fas fa-archive";
-    // case "dialogue":
-    //   return "talking outline";
     case "qdf":
     case "deck":
       return "far fa-images";
@@ -144,7 +142,7 @@ export default function ContentTableRow(props) {
   const [name, setName] = useState(content?.name);
   const [isChecked, setIsChecked] = useState(content?.checked);
   const [showMenu, setShowMenu] = useState(false);
-  const readerType = content.readerType;
+  const readerType = content?.readerType;
   useEffect(() => {
     setName(content?.name);
   }, [content?.name]);
@@ -202,17 +200,16 @@ export default function ContentTableRow(props) {
       >
         <div className="qui-content-table-checkbox-container">
           <i
-            className={`${
-              isChecked ? "fas fa-check-square" : "far fa-square"
-            } qui-content-checkbox`}
-            style={{ color: withColor?.checkIconColor }}
+            className={`${isChecked ? "fas fa-check-square" : "far fa-square"
+              } qui-content-checkbox`}
+            style={{ color: withColor?.accentColor }}
             onClick={() => setIsChecked((prevState) => !prevState)}
           ></i>
         </div>
         <div className="qui-content-table-file-icon">
           <i
             className={`${icon} qui-table-file-icon`}
-            style={{ color: withColor?.readerIconColor }}
+            style={{ color: withColor?.hoverBackgroundColor }}
           ></i>
         </div>
         <input
@@ -234,12 +231,12 @@ export default function ContentTableRow(props) {
           >
             <i
               className="fas fa-ellipsis-v"
-              style={{ color: withColor?.menuIconColor }}
+              style={{ color: withColor?.hoverTextColor }}
             ></i>
           </button>
           {showMenu && (
             <div className="qui-content-table-row-action-menu">
-              {props.children}
+              {props?.children}
             </div>
           )}
         </div>

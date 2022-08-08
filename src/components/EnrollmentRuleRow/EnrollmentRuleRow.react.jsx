@@ -49,20 +49,14 @@ export default function EnrollmentRuleRow(props) {
   // 2. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "enrollment-rule-row");
-  //-------------------------------------------------------------------
-  // 3. Get animation of the component
-  //-------------------------------------------------------------------
-  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
 
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
+    <div
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <div
+      {criteria && <div
         className="qui-enrollment-list-element"
         style={{ backgroundColor: props.withColor?.backgroundColor }}
       >
@@ -92,7 +86,7 @@ export default function EnrollmentRuleRow(props) {
             onClick={(e) => props.onRemoveRule(criteria)}
           ></i>
         </div>
-      </div>
-    </motion.div>
+      </div>}
+    </div>
   );
 }

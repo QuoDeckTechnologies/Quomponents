@@ -2,7 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------

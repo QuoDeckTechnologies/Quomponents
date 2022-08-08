@@ -42,9 +42,9 @@ export default {
         defaultValue: {
           backgroundColor: "",
           textColor: "",
-          menuIconColor: "",
-          readerIconColor: "",
-          checkIconColor: "",
+          hoverTextColor: "",
+          hoverBackgroundColor: "",
+          accentColor: "",
         },
       },
     },
@@ -85,12 +85,7 @@ export default {
   },
   decorators: [
     (story) => (
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
+      <div>
         {story()}
       </div>
     ),
@@ -114,37 +109,37 @@ const Template = (args) => (
         {
           title: "Open Deck",
           icon: "fas fa-book-open",
-          func: () => {},
+          onClick: () => { },
         },
         {
           title: "Edit Deck",
           icon: "fas fa-edit",
-          func: () => {},
+          onClick: () => { },
         },
         {
           title: "Move Deck Up",
           icon: "fas fa-chevron-up",
-          func: () => {},
+          onClick: () => { },
         },
         {
           title: "Move Deck Down",
           icon: "fas fa-chevron-down",
-          func: () => {},
+          onClick: () => { },
         },
         {
           title: "Move to Topic",
           icon: "fas fa-retweet",
-          func: () => {},
+          onClick: () => { },
         },
         {
           title: "Unpublish Deck",
           icon: "fas fa-eye-slash",
-          func: () => {},
+          onClick: () => { },
         },
         {
           title: "Delete Deck",
           icon: "fas fa-trash-alt",
-          func: () => {},
+          onClick: () => { },
         },
       ]}
       withColor={{
@@ -184,9 +179,9 @@ Default.args = {
   withColor: {
     backgroundColor: "",
     textColor: "",
-    menuIconColor: "",
-    readerIconColor: "",
-    checkIconColor: "",
+    hoverTextColor: "",
+    hoverBackgroundColor: "",
+    accentColor: "",
   },
 };
 Default.parameters = {
@@ -208,9 +203,9 @@ Default.parameters = {
           withColor={{
             backgroundColor: "",
             textColor: "",
-            menuIconColor: "",
-            readerIconColor: "",
-            checkIconColor: "",
+            hoverTextColor: "",
+            hoverBackgroundColor: "",
+            accentColor: "",
           }}
           onChange={() => {}}
           onChecked={() => {}}
@@ -222,37 +217,37 @@ Default.parameters = {
               {
                 title: "Open Deck",
                 icon: "fas fa-book-open",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Edit Deck",
                 icon: "fas fa-edit",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Move Deck Up",
                 icon: "fas fa-chevron-up",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Move Deck Down",
                 icon: "fas fa-chevron-down",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Move to Topic",
                 icon: "fas fa-retweet",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Unpublish Deck",
                 icon: "fas fa-eye-slash",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Delete Deck",
                 icon: "fas fa-trash-alt",
-                func: () => {},
+                onClick: () => {},
               },
             ]}
             withColor={{
@@ -269,20 +264,20 @@ Default.parameters = {
               lang: "en",
               tgt: "actionMenu",
               dictionary: ${JSON.stringify({
-                hi: {
-                  actionMenu: {
-                    content: [
-                      { title: "डेक खोलो" },
-                      { title: "डेक संपादित करें" },
-                      { title: "डेक ऊपर ले जाएँ" },
-                      { title: "डेक नीचे ले जाएँ" },
-                      { title: "विषय पर जाएं" },
-                      { title: "डेक को अप्रकाशित करें" },
-                      { title: "डेक हटाएं" },
-                    ],
-                  },
-                },
-              })},,
+          hi: {
+            actionMenu: {
+              content: [
+                { title: "डेक खोलो" },
+                { title: "डेक संपादित करें" },
+                { title: "डेक ऊपर ले जाएँ" },
+                { title: "डेक नीचे ले जाएँ" },
+                { title: "विषय पर जाएं" },
+                { title: "डेक को अप्रकाशित करें" },
+                { title: "डेक हटाएं" },
+              ],
+            },
+          },
+        })},,
             }}
             isDisabled={false}
             isHidden={false}
@@ -302,37 +297,37 @@ const TranslationTemplate = (args) => (
         {
           title: "Open Deck",
           icon: "fas fa-book-open",
-          func: () => {},
+          onClick: () => { },
         },
         {
           title: "Edit Deck",
           icon: "fas fa-edit",
-          func: () => {},
+          onClick: () => { },
         },
         {
           title: "Move Deck Up",
           icon: "fas fa-chevron-up",
-          func: () => {},
+          onClick: () => { },
         },
         {
           title: "Move Deck Down",
           icon: "fas fa-chevron-down",
-          func: () => {},
+          onClick: () => { },
         },
         {
           title: "Move to Topic",
           icon: "fas fa-retweet",
-          func: () => {},
+          onClick: () => { },
         },
         {
           title: "Unpublish Deck",
           icon: "fas fa-eye-slash",
-          func: () => {},
+          onClick: () => { },
         },
         {
           title: "Delete Deck",
           icon: "fas fa-trash-alt",
-          func: () => {},
+          onClick: () => { },
         },
       ]}
       withColor={{
@@ -360,7 +355,7 @@ TranslatedContentTableRow.args = {
 TranslatedContentTableRow.parameters = {
   docs: {
     description: {
-      story: "Use to change the language that the text appears in.",
+      story: "Use to change the language that the text appears in. To make this work for the content table row, add actionMenu: content: [{ title: 'डेक खोलो' }], value to the dictionary."
     },
     source: {
       code: `<ContentTableRow
@@ -378,9 +373,9 @@ TranslatedContentTableRow.parameters = {
           withColor={{
             backgroundColor: "",
             textColor: "",
-            menuIconColor: "",
-            readerIconColor: "",
-            checkIconColor: "",
+            hoverTextColor: "",
+            hoverBackgroundColor: "",
+            accentColor: "",
           }}
           onChange={() => {}}
           onChecked={() => {}}
@@ -392,37 +387,37 @@ TranslatedContentTableRow.parameters = {
               {
                 title: "Open Deck",
                 icon: "fas fa-book-open",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Edit Deck",
                 icon: "fas fa-edit",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Move Deck Up",
                 icon: "fas fa-chevron-up",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Move Deck Down",
                 icon: "fas fa-chevron-down",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Move to Topic",
                 icon: "fas fa-retweet",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Unpublish Deck",
                 icon: "fas fa-eye-slash",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Delete Deck",
                 icon: "fas fa-trash-alt",
-                func: () => {},
+                onClick: () => {},
               },
             ]}
             withColor={{
@@ -439,20 +434,20 @@ TranslatedContentTableRow.parameters = {
               lang: "hi",
               tgt: "actionMenu",
               dictionary: ${JSON.stringify({
-                hi: {
-                  actionMenu: {
-                    content: [
-                      { title: "डेक खोलो" },
-                      { title: "डेक संपादित करें" },
-                      { title: "डेक ऊपर ले जाएँ" },
-                      { title: "डेक नीचे ले जाएँ" },
-                      { title: "विषय पर जाएं" },
-                      { title: "डेक को अप्रकाशित करें" },
-                      { title: "डेक हटाएं" },
-                    ],
-                  },
-                },
-              })},
+        hi: {
+          actionMenu: {
+            content: [
+              { title: "डेक खोलो" },
+              { title: "डेक संपादित करें" },
+              { title: "डेक ऊपर ले जाएँ" },
+              { title: "डेक नीचे ले जाएँ" },
+              { title: "विषय पर जाएं" },
+              { title: "डेक को अप्रकाशित करें" },
+              { title: "डेक हटाएं" },
+            ],
+          },
+        },
+      })},
             }}
           />
         </ContentTableRow>`,
@@ -468,15 +463,15 @@ ColoredContentTableRow.args = {
   withColor: {
     backgroundColor: "#FFBF00",
     textColor: "#222A35",
-    menuIconColor: "#00153E",
-    readerIconColor: "#00153E",
-    checkIconColor: "#00153E",
+    hoverTextColor: "#00153E",
+    hoverBackgroundColor: "#00153E",
+    accentColor: "#00153E",
   },
 };
 ColoredContentTableRow.parameters = {
   docs: {
     description: {
-      story: "Use to change the language that the text appears in.",
+      story: "Use to show the colors passed by withColor props.",
     },
     source: {
       code: `<ContentTableRow
@@ -494,9 +489,9 @@ ColoredContentTableRow.parameters = {
           withColor={{
             backgroundColor: "#FFBF00",
             textColor: "#222A35",
-            menuIconColor: "#00153E",
-            readerIconColor: "#00153E",
-            checkIconColor: "#00153E",
+            hoverTextColor: "#00153E",
+            hoverBackgroundColor: "#00153E",
+            accentColor: "#00153E",
           }}
           onChange={() => {}}
           onChecked={() => {}}
@@ -508,37 +503,37 @@ ColoredContentTableRow.parameters = {
               {
                 title: "Open Deck",
                 icon: "fas fa-book-open",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Edit Deck",
                 icon: "fas fa-edit",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Move Deck Up",
                 icon: "fas fa-chevron-up",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Move Deck Down",
                 icon: "fas fa-chevron-down",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Move to Topic",
                 icon: "fas fa-retweet",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Unpublish Deck",
                 icon: "fas fa-eye-slash",
-                func: () => {},
+                onClick: () => {},
               },
               {
                 title: "Delete Deck",
                 icon: "fas fa-trash-alt",
-                func: () => {},
+                onClick: () => {},
               },
             ]}
             withColor={{
@@ -555,20 +550,20 @@ ColoredContentTableRow.parameters = {
               lang: "en",
               tgt: "actionMenu",
               dictionary: ${JSON.stringify({
-                hi: {
-                  actionMenu: {
-                    content: [
-                      { title: "डेक खोलो" },
-                      { title: "डेक संपादित करें" },
-                      { title: "डेक ऊपर ले जाएँ" },
-                      { title: "डेक नीचे ले जाएँ" },
-                      { title: "विषय पर जाएं" },
-                      { title: "डेक को अप्रकाशित करें" },
-                      { title: "डेक हटाएं" },
-                    ],
-                  },
-                },
-              })},
+        hi: {
+          actionMenu: {
+            content: [
+              { title: "डेक खोलो" },
+              { title: "डेक संपादित करें" },
+              { title: "डेक ऊपर ले जाएँ" },
+              { title: "डेक नीचे ले जाएँ" },
+              { title: "विषय पर जाएं" },
+              { title: "डेक को अप्रकाशित करें" },
+              { title: "डेक हटाएं" },
+            ],
+          },
+        },
+      })},
             }}
             isDisabled={false}
             isHidden={false}
