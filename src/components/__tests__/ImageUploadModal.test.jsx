@@ -176,21 +176,6 @@ describe("ImageUploadModal", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly without throwing error when withColor props is passed", () => {
-    component.setProps({
-      withColor: {
-        arcButtonColor: "#ffffff",
-        arcIconColor: "#ffffff",
-        arcColor: "#ffffff",
-        textColor: "#ffffff",
-        buttonColor: "#ffffff",
-        hoverButtonColor: "#ffffff",
-        sliderColor: "#ffffff",
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly when jpeg or jpg file is uploaded and saved", async () => {
     const file = new File(parts, "name_file.jpeg", {
       size: 643810,
