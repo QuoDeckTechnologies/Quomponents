@@ -86,7 +86,11 @@ export function getTranslation(tObj, key) {
 }
 
 export function getAnimation(props) {
-    let animObj = props.withAnimation || {};
+    let animObj = props.withAnimation || {
+        animation:'static',
+        duration:null,
+        delay:null
+    };
     if (props.zoom) animObj.animation = "zoom";
     else if (props.fade) animObj.animation = "fade";
     else if (props.slideDown) animObj.animation = "slideDown";
@@ -95,79 +99,86 @@ export function getAnimation(props) {
     else if (props.slideRight) animObj.animation = "slideRight";
     else if (props.collapse) animObj.animation = "collapse";
 
-    if (animObj?.animation) {
-        const initialVariants = {
-            zoom: {
-                scale: 0,
-            },
-            fade: {
-                opacity: 0,
-            },
-            slideRight: {
-                opacity: 0,
-                x: -80,
-            },
-            slideDown: {
-                opacity: 0,
-                y: -40,
-            },
-            slideUp: {
-                opacity: 0,
-                y: 40,
-            },
-            slideLeft: {
-                opacity: 0,
-                x: 80,
-            },
-            collapse: {
-                scale: 5,
-                opacity: 0,
-            },
-        };
-        let transitionObj = {
-            duration: animObj?.duration,
-            delay: animObj?.delay,
-        };
-        const animationVariants = {
-            zoom: {
-                scale: 1,
-                transition: transitionObj,
-            },
-            fade: {
-                opacity: 1,
-                transition: transitionObj,
-            },
-            slideRight: {
-                x: 0,
-                opacity: 1,
-                transition: transitionObj,
-            },
-            slideDown: {
-                y: 0,
-                opacity: 1,
-                transition: transitionObj,
-            },
-            slideUp: {
-                y: 0,
-                opacity: 1,
-                transition: transitionObj,
-            },
-            slideLeft: {
-                x: 0,
-                opacity: 1,
-                transition: transitionObj,
-            },
-            collapse: {
-                scale: 1,
-                opacity: 1,
-                transition: transitionObj,
-            },
-        };
-        return {
-            from: initialVariants[animObj.animation],
-            to: animationVariants[animObj.animation],
-        };
-    } else return { from: {}, to: {} };
+    const initialVariants = {
+        zoom: {
+            scale: 0,
+        },
+        fade: {
+            opacity: 0,
+        },
+        slideRight: {
+            opacity: 0,
+            x: -80,
+        },
+        slideDown: {
+            opacity: 0,
+            y: -40,
+        },
+        slideUp: {
+            opacity: 0,
+            y: 40,
+        },
+        slideLeft: {
+            opacity: 0,
+            x: 80,
+        },
+        collapse: {
+            scale: 5,
+            opacity: 0,
+        },
+        static: {
+            scale: 1,
+            opacity: 1,
+        }
+    };
+    let transitionObj = {
+        duration: animObj?.duration,
+        delay: animObj?.delay,
+    };
+    const animationVariants = {
+        zoom: {
+            scale: 1,
+            transition: transitionObj,
+        },
+        fade: {
+            opacity: 1,
+            transition: transitionObj,
+        },
+        slideRight: {
+            x: 0,
+            opacity: 1,
+            transition: transitionObj,
+        },
+        slideDown: {
+            y: 0,
+            opacity: 1,
+            transition: transitionObj,
+        },
+        slideUp: {
+            y: 0,
+            opacity: 1,
+            transition: transitionObj,
+        },
+        slideLeft: {
+            x: 0,
+            opacity: 1,
+            transition: transitionObj,
+        },
+        collapse: {
+            scale: 1,
+            opacity: 1,
+            transition: transitionObj,
+        },
+        static: {
+            scale: 1,
+            opacity: 1,
+            transition: transitionObj,
+        }
+    };
+    return {
+        from: initialVariants[animObj.animation],
+        to: animationVariants[animObj.animation],
+    };
 }
 
 export const resolveImage = (srcImg, imgLibrary) => {
