@@ -1,13 +1,13 @@
 // Import npm packages
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import YouTube from "react-youtube";
+import { Player } from "video-react";
+import Vimeo from "@u-wave/react-vimeo";
 import {
     getQuommons,
 } from "../../common/javascripts/helpers.js";
-import YouTube from "react-youtube";
-import { Player, BigPlayButton } from "video-react";
 import "video-react/dist/video-react.css";
-import Vimeo from "@u-wave/react-vimeo";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./Videobox.scss";
@@ -17,25 +17,15 @@ Videobox.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Use to define url of component
+    Use to define link of component
     */
-    url: PropTypes.string.isRequired,
-    // Quommon props
-    //=======================================
+    link: PropTypes.string.isRequired,
     /**
-    Use to show/hide the component
-    */
-    isHidden: PropTypes.bool,
-    /**
-    Use to play auto the component
+    Use to play video auto 
     */
     autoplay: PropTypes.bool,
 
     loop: PropTypes.bool,
-    /**
-    Use to enable/disable the component
-    */
-    isDisabled: PropTypes.bool,
     /**
     Videobox component must have the onReady function passed as props
     */
@@ -53,17 +43,26 @@ Videobox.propTypes = {
     */
     onEnd: PropTypes.func,
 
+    // Quommon props
+    //=======================================
+    /**
+    Use to show/hide the component
+    */
+    isHidden: PropTypes.bool,
+    /**
+    Use to enable/disable the component
+    */
+    isDisabled: PropTypes.bool,
 };
 
 Videobox.defaultProps = {
     // Component Specific props
     //=======================================
-    url: "https://www.youtube.com/watch?v=NpEaa2P7qZI",
-    // Quommon props
-    //=======================================
+    link: "https://www.youtube.com/watch?v=NpEaa2P7qZI",
     autoplay: true,
     loop: false,
-
+    // Quommon props
+    //=======================================
     isHidden: false,
     isDisabled: false,
 };
@@ -76,7 +75,7 @@ Videobox.defaultProps = {
 **/
 export default function Videobox(props) {
 
-    const { url, autoplay, loop } = props;
+    const { link, autoplay, loop } = props;
 
     const [error, setError] = useState(false);
 
@@ -120,14 +119,14 @@ export default function Videobox(props) {
                 },
             };
 
-            let getVideoId = (url) => {
+            let getVideoId = (link) => {
                 let videoId = "";
-                if (url.indexOf("v=") === -1) {
-                    var video_array = url.split("/");
+                if (link.indexOf("v=") === -1) {
+                    var video_array = link.split("/");
                     videoId = video_array[video_array.length - 1];
                 }
                 else {
-                    videoId = url.split("v=")[1];
+                    videoId = link.split("v=")[1];
                     var ampersandPosition = videoId.indexOf("&");
                     if (ampersandPosition !== -1) {
                         videoId = videoId.substring(0, ampersandPosition);
@@ -136,7 +135,7 @@ export default function Videobox(props) {
                 return videoId;
             };
 
-            if (url.indexOf("vimeo") !== -1) {
+            if (link.indexOf("vimeo") !== -1) {
 
                 return (
                     <div
@@ -144,7 +143,7 @@ export default function Videobox(props) {
                     >
                         <Vimeo
                             className="react-player"
-                            video={url}
+                            video={link}
                             autoplay={props.autoplay}
                             playerOptions={{ width: window.innerWidth }}
                             onReady={onReady}
@@ -155,14 +154,14 @@ export default function Videobox(props) {
                         />
                     </div>
                 );
-            } if (url.indexOf("youtu.be") !== -1 || url.indexOf("youtube") !== -1) {
+            } if (link.indexOf("youtu.be") !== -1 || link.indexOf("youtube") !== -1) {
                 return (
                     <div
                         className="video-responsive"
                     >
                         <YouTube
                             className="react-player"
-                            videoId={getVideoId(url)}
+                            videoId={getVideoId(link)}
                             opts={opts}
                             onReady={onReady}
                             onPlay={onPlay}
@@ -179,11 +178,10 @@ export default function Videobox(props) {
                         className="video-responsive"
                     >
                         <Player
-                            src={url}
+                            src={link}
                             playsInline
                             autoplay={props.autoplay}
                         >
-                            <BigPlayButton position="center" />
                         </Player>
                     </div>
                 );
