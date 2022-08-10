@@ -5,6 +5,7 @@
   border-radius: 0.6em;
   overflow: hidden;
   text-align: center;
+  padding: 0.5em;
   .qui .qui-point-container .qui-point .qui-reward-points {
     max-width: 4.5em;
   }
@@ -101,6 +102,50 @@
   text-align: right;
   display: flex;
   align-items: center;
+  position: relative;
+  .qui-nugget-card-icon-block-copy-container{
+    cursor: pointer;
+  }
+  .qui-nugget-card-icon-block-copy-container:hover {
+    .qui-tooltip-text-copy {
+      visibility: visible;
+    }
+  }
+  .qui-tooltip-text-copy {
+    position: absolute;
+    background-color: #a6a6a6bd;
+    color: #000000;
+    top: -40%;
+    right: -3%;
+    padding: 0.5em;
+    font-size: 0.6em;
+    border-radius: 0.5em;
+    visibility: hidden;
+  }
+  .qui-tooltip-text-copied {
+    position: absolute;
+    background-color: #a6a6a6bd;
+    color: #000000;
+    top: -40%;
+    left: 81%;
+    padding: 0.5em;
+    font-size: 0.6em;
+    border-radius: 0.5em;
+    animation-name: tooltip;
+    animation-duration: 5s;
+  }
+
+  @keyframes tooltip {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 }
 .qui-nugget-card-link {
   color: #666666;

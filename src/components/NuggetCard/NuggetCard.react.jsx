@@ -74,6 +74,7 @@ NuggetCard.propTypes = {
 	tags: PropTypes.arrayOf(PropTypes.string),
 	name: PropTypes.string,
 	description: PropTypes.string,
+	link: PropTypes.string,
 	image: PropTypes.string,
 	points: PropTypes.string,
 	identifier: PropTypes.string,
@@ -136,7 +137,7 @@ export default function NuggetCard(props) {
 	//-------------------------------------------------------------------
 	let link;
 	if (props?.identifier) {
-		link = "https://www.quodeck.com/" + props?.identifier;
+		link = props?.link + props?.identifier;
 	} else {
 		link = "";
 	}
@@ -191,7 +192,14 @@ export default function NuggetCard(props) {
 
 	const [expandTags, setExpandTags] = useState(false);
 	const [itirate, setItirate] = useState(showTags);
+	const [showCopied, setShowCopied] = useState(false);
 
+	const handleCopy = () => {
+		setShowCopied(true)
+		setTimeout(() => {
+			setShowCopied(false);
+		}, 3000);
+	}
 	const handleLessTags = () => {
 		setItirate(minTags);
 		setExpandTags(false);
@@ -350,29 +358,44 @@ export default function NuggetCard(props) {
 							<ShareWidget
 								asSize="small"
 								withColor={{ textColor: "#AAAAAA" }}
-								content={{ label: "Share", url: link }}
+								label="Share"
+								url={link}
 							/>
 						</div>
-						<div className={"qui-nugget-card-link-container"}>
-							<a className={"qui-nugget-card-link qt-utn"} href={link}>
+						<div className={"qui-nugget-card-link-container"}
+						>
+							<p className={"qui-nugget-card-link qt-utn"}>
 								{link}
-							</a>
-							<div className={`qui-nugget-card-copy-icon-container`}>
-								<IconBlock
-									asSize="small"
-									asEmphasis="text"
-									withIcon={{ icon: "fas fa-copy", size: "0.8em" }}
-									withColor={{ accentColor: "#FFBF00" }}
-									asPadded="fitted"
-									onClick={() => {
-										navigator.clipboard.writeText(link);
-									}}
-								/>
+							</p>
+
+							<div
+								className="qui-nugget-card-icon-block-copy-container"
+								onMouseDown={() => handleCopy()}
+								onClick={() => {
+									navigator.clipboard.writeText(link);
+								}}
+							>
+								<div className={`qui-nugget-card-copy-icon-container`}>
+									<IconBlock
+										asSize="small"
+										asEmphasis="text"
+										withIcon={{ icon: "fas fa-copy", size: "0.8em" }}
+										withColor={{ accentColor: "#FFBF00" }}
+										asPadded="fitted"
+										onClick={() => {
+											navigator.clipboard.writeText(link);
+										}}
+									/>
+									{!showCopied && <span className="qui-tooltip-text-copy" >Copy Link</span>}
+								</div>
+								{showCopied &&
+									<span className="qui-tooltip-text-copied" >Copied!</span>
+								}
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
+				</div >
+			</div >
 		);
 	};
 	return (

@@ -118,14 +118,58 @@
   text-align: right;
   display: flex;
   align-items: center;
+  position: relative;
   .qui.qui-icon-block div {
     padding: 0;
   }
+  .qui-course-card-icon-block-copy-container {
+    cursor: pointer;
+  }
+  .qui-course-card-icon-block-copy-container:hover {
+    .qui-tooltip-text-copy {
+      visibility: visible;
+    }
+  }
+  .qui-tooltip-text-copy {
+    position: absolute;
+    background-color: #a6a6a6bd;
+    color: #000000;
+    top: -40%;
+    right: -6%;
+    padding: 0.5em;
+    font-size: 0.6em;
+    border-radius: 0.5em;
+    visibility: hidden;
+  }
+  .qui-tooltip-text-copied {
+    position: absolute;
+    background-color: #a6a6a6bd;
+    color: #000000;
+    top: -40%;
+    left: 85%;
+    padding: 0.5em;
+    font-size: 0.6em;
+    border-radius: 0.5em;
+    animation-name: tooltip;
+    animation-duration: 5s;
+  }
+
+  @keyframes tooltip {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 }
+
 .qui-course-card-link {
   color: #666666;
   text-decoration: none;
-  font-size: 0.7em;
 }
 
 .qui-course-card-reward {
@@ -203,6 +247,14 @@
 @media only screen and (min-width: 320px) and (max-width: 374px) {
   .qui-course-card-container {
     padding-bottom: 0.6em;
+    .qui .qui-arc .qui-arc-menu-button {
+      width: 3em;
+      height: 3em;
+    }
+    .qui-arc {
+      width: 3em;
+      height: 3em;
+    }
   }
   .qui-course-block-styling {
     margin-left: -0.7em;

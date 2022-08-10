@@ -12,6 +12,7 @@ import NuggetBlock from "../NuggetBlock/NuggetBlock.react";
 import Tag from "../Tag/Tag.react";
 import Reward from "../Reward/Reward.react";
 import ShareWidget from "../ShareWidget/ShareWidget.react";
+import IconBlock from "../IconBlock/IconBlock.react"
 import ArcMenu from "../ArcMenu/ArcMenu.react";
 import BannerCard from "../Carousel/BannerCard/BannerCard.react";
 import Nugget_Course from "../../assets/nuggets/nugget_course.png";
@@ -46,6 +47,10 @@ CourseCard.propTypes = {
   Use to set description
   */
   description: PropTypes.string,
+  /**
+  Use to set description
+  */
+  link: PropTypes.string,
   /**
   Use to set image props
   */
@@ -97,6 +102,7 @@ CourseCard.defaultProps = {
   tags: [],
   name: "",
   description: "",
+  link: "",
   image: "",
   points: 0,
   identifier: "",
@@ -137,7 +143,7 @@ export default function CourseCard(props) {
   //-------------------------------------------------------------------
   let link;
   if (props.identifier) {
-    link = "https://www.quodeck.com/" + props.identifier;
+    link = props?.link + props?.identifier;
   } else {
     link = "";
   }
@@ -219,15 +225,16 @@ export default function CourseCard(props) {
   // 12. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
   //-------------------------------------------------------------------
   let truncate;
-  let tag1Length = props.tags?.length > 0 ? props.tags[0]?.length : "";
-  let tag2Length = props.tags?.length > 0 ? props.tags[1]?.length : "";
-  let tag3Length = props.tags?.length > 0 ? props.tags[2]?.length : "";
+  let tagFirstLength = props.tags?.length > 0 ? props.tags[0]?.length : "";
+  let tagSecondLength = props.tags?.length > 0 ? props.tags[1]?.length : "";
+  let tagThirdLength = props.tags?.length > 0 ? props.tags[2]?.length : "";
   let showMoreBtn = false;
   let minTags = 3;
   let maxTags = props.tags?.length;
 
   let showTags = 3;
   const [expandTags, setExpandTags] = useState(false);
+  const [showCopied, setShowCopied] = useState(false);
   const [itirate, setItirate] = useState(showTags);
   const [lessTags] = useState(
     props.tags.slice(0, 3).map((ele) => {
@@ -236,7 +243,12 @@ export default function CourseCard(props) {
       } else return ele;
     })
   );
-
+  const handleCopy = () => {
+    setShowCopied(true)
+    setTimeout(() => {
+      setShowCopied(false);
+    }, 3000);
+  }
   const handleLessTags = () => {
     setItirate(minTags);
     setExpandTags(false);
@@ -246,9 +258,9 @@ export default function CourseCard(props) {
     setExpandTags(true);
   };
   if (
-    tag1Length >= 15 ||
-    tag2Length >= 15 ||
-    tag3Length >= 15 ||
+    tagFirstLength >= 15 ||
+    tagSecondLength >= 15 ||
+    tagThirdLength >= 15 ||
     props.tags?.length > 3
   ) {
     showMoreBtn = true;
@@ -400,14 +412,32 @@ export default function CourseCard(props) {
               <ShareWidget
                 asSize="big"
                 withColor={{ textColor: "#AAAAAA" }}
-                content={{ label: shareLabel, url: link }}
+                label={shareLabel}
+                url={link}
               />
             </div>
             <div className={"qui-course-card-link-container"}>
-              <a className={"qui-course-card-link"} href={link}>
+              <p className={"qui-course-card-link qt-sm"} >
                 {link}
-              </a>
-              <i className="fas fa-copy qui-course-card-link-copy-icon"></i>
+              </p>
+              <div
+                className="qui-course-card-icon-block-copy-container"
+                onMouseDown={() => handleCopy()}
+              >
+                <IconBlock
+                  asSize="small"
+                  asEmphasis="text"
+                  withIcon={{ icon: "fas fa-copy", size: "1em" }}
+                  withColor={{ accentColor: "#FFBF00" }}
+                  asPadded="fitted"
+                  onClick={() => {
+                    navigator.clipboard.writeText(link);
+                  }} />
+                {!showCopied && <span className="qui-tooltip-text-copy" >Copy Link</span>}
+              </div>
+              {showCopied &&
+                <span className="qui-tooltip-text-copied" >Copied!</span>
+              }
             </div>
           </div>
         </div>

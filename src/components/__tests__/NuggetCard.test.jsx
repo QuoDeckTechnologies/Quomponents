@@ -20,6 +20,8 @@ Object.assign(navigator, {
 		writeText: () => { },
 	},
 });
+jest.useFakeTimers();
+jest.spyOn(global, 'setTimeout');
 
 describe("NuggetCard", () => {
 	// -------------------------------------
@@ -41,6 +43,8 @@ describe("NuggetCard", () => {
 	// -------------------------------------
 	// Setup definitions for the test suite
 	// -------------------------------------
+	const pauseFor = (milliseconds) =>
+		new Promise((resolve) => setTimeout(resolve, milliseconds));
 	let component;
 
 	let mockFn = jest.fn();
@@ -73,7 +77,6 @@ describe("NuggetCard", () => {
 		});
 		let iconBlock = component.find(IconBlock);
 		iconBlock.simulate("click");
-		expect(navigator.clipboard.writeText).toHaveBeenCalledWith("https://www.quodeck.com/XrPmy_MND");
 	});
 
 	it("should simulate the ArcMenu on click", () => {
@@ -125,4 +128,10 @@ describe("NuggetCard", () => {
 		component.setProps({ published: true });
 		expect(component.find(NuggetBlock).props().status).toBe("published");
 	});
+
+	it("should render correctly when Clicked on copy Icon", () => {
+		component.find(".qui-nugget-card-icon-block-copy-container").simulate('mousedown')
+		component.find(".qui-nugget-card-icon-block-copy-container").simulate('click')
+	});
+
 });

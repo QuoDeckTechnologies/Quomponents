@@ -14,6 +14,7 @@ export default {
     tags: [],
     name: "",
     description: "",
+    link: "",
     image: "",
     points: 0,
     identifier: "",
@@ -68,6 +69,7 @@ Default.args = {
   name: "Measure your sales readiness",
   description:
     "Take this quick profile test to check how well you are prepared for a sales job",
+  link: "https://www.quodeck.com/",
   image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
   points: 200,
   identifier: "XrPmy_OAK",
@@ -90,6 +92,7 @@ Default.parameters = {
           tags={["Tag1", "Tag2"]}
           name="Measure your sales readiness"
           description="Take this quick profile test to check how well you are prepared for a sales job"
+          link= "https://www.quodeck.com/",
           image="https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png"
           points={200}
           identifier="XrPmy_OAK"
@@ -153,6 +156,7 @@ CourseCardWithManyTags.args = {
   name: "Measure your sales readiness",
   description:
     "Take this quick profile test to check how well you are prepared for a sales job",
+  link: "https://www.quodeck.com/",
   image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
   points: 200,
   identifier: "XrPmy_OAK",
@@ -173,7 +177,7 @@ CourseCardWithManyTags.args = {
 CourseCardWithManyTags.parameters = {
   docs: {
     description: {
-      story: "Use to override the standard colors of the component.",
+      story: "Use to show some extra tags in the component.",
     },
     source: {
       code: `<CourseCard
@@ -216,6 +220,7 @@ CourseCardWithManyTags.parameters = {
           ]}
           name="Measure your sales readiness"
           description="Take this quick profile test to check how well you are prepared for a sales job"
+          link= "https://www.quodeck.com/"
           image="https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png"
           points={200}
           identifier="XrPmy_OAK"
@@ -251,6 +256,7 @@ PublishedCourseCard.args = {
   name: "Measure your sales readiness",
   description:
     "Take this quick profile test to check how well you are prepared for a sales job",
+  link: "https://www.quodeck.com/",
   image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
   points: 200,
   identifier: "XrPmy_OAK",
@@ -271,7 +277,7 @@ PublishedCourseCard.args = {
 PublishedCourseCard.parameters = {
   docs: {
     description: {
-      story: "Use to override the standard colors of the component.",
+      story: "Use to show the published course card with passing published prop to true.",
     },
     source: {
       code: `<CourseCard
@@ -281,6 +287,7 @@ PublishedCourseCard.parameters = {
           tags={["Tag1", "Tag2"]}
           name="Measure your sales readiness"
           description="Take this quick profile test to check how well you are prepared for a sales job"
+          link= "https://www.quodeck.com/"
           image="https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png"
           points={200}
           identifier="XrPmy_OAK"
@@ -316,6 +323,7 @@ CourseCardWithExtraContent.args = {
   name: "Measure your sales readiness",
   description:
     "Take this quick profile test to check how well you are prepared for a sales job",
+  link: "https://www.quodeck.com/",
   image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
   points: 200,
   identifier: "XrPmy_OAK",
@@ -336,7 +344,7 @@ CourseCardWithExtraContent.args = {
 CourseCardWithExtraContent.parameters = {
   docs: {
     description: {
-      story: "Use to override the standard colors of the component.",
+      story: "Use to show some extra content in courseCard with published prop to true.",
     },
     source: {
       code: `<CourseCard
@@ -346,6 +354,7 @@ CourseCardWithExtraContent.parameters = {
           tags={["Tag1", "Tag2"]}
           name="Measure your sales readiness"
           description="Take this quick profile test to check how well you are prepared for a sales job"
+          link= "https://www.quodeck.com/"
           image="https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png"
           points={200}
           identifier="XrPmy_OAK"

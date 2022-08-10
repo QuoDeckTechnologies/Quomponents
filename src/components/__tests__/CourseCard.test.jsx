@@ -2,6 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
+import { act } from "react-dom/test-utils";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -10,6 +11,13 @@ import { hasValid } from "./common";
 // Import Components
 // -------------------------------------
 import CourseCard from "../CourseCard/CourseCard.react";
+import IconBlock from "../IconBlock/IconBlock.react";
+
+Object.assign(navigator, {
+  clipboard: {
+    writeText: () => { },
+  },
+});
 
 describe("CourseCard", () => {
   // -------------------------------------
@@ -19,7 +27,7 @@ describe("CourseCard", () => {
     target: CourseCard,
     required: {
       type: "standard",
-      onClick: () => {},
+      onClick: () => { },
     },
   };
 
@@ -30,6 +38,9 @@ describe("CourseCard", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
+
+  const pauseFor = (milliseconds) =>
+    new Promise((resolve) => setTimeout(resolve, milliseconds));
   let component, content;
   content = {
     published: false,
@@ -39,6 +50,7 @@ describe("CourseCard", () => {
     courseName: "Measure your sales readiness",
     description:
       "Take this quick profile test to check how well you are prepared for a sales job",
+    link: "https://www.quodeck.com/",
     image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
     points: 200,
     identifier: "XrPmy_OAK",
@@ -68,9 +80,6 @@ describe("CourseCard", () => {
           end_date: "2016-03-15 10:34:23",
         }}
         sequential={false}
-        asFloated="inline"
-        isHidden={false}
-        isDisabled={false}
         onClick={mockFn}
       />
     );
@@ -205,4 +214,27 @@ describe("CourseCard", () => {
     });
     expect(component.exists()).toBe(true);
   });
+  it("should render correctly when Clicked on copy Icon", async () => {
+    component.find(".qui-course-card-icon-block-copy-container").simulate('mousedown')
+    await pauseFor(1000);
+  });
+
+  it("should copy the link when clicked on copy icon", () => {
+    component.setProps({
+      identifier: "XrPmy_MND",
+    });
+    let iconBlock = component.find(IconBlock);
+    iconBlock.simulate("click");
+  });
+
+  // it('should pass', () => {
+  //   component.find(".qui-course-card-icon-block-copy-container").simulate('mousedown')
+  //   let copiedPop = component.find('.qui-tooltip-text-copied');
+  //   // expect(component.find('qui-tooltip-text-copied').prop('visible')).toBeTruthy();
+  //   act(() => {
+  //     jest.runOnlyPendingTimers();
+  //   });
+  //   component.update();
+  //   expect(copiedPop.prop('visible')).toBe(false);
+  // });
 });

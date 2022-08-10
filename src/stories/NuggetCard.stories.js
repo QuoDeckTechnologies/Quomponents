@@ -10,6 +10,7 @@ export default {
 		category: "",
 		name: "",
 		description: "",
+		link: "",
 		image: "",
 		points: "",
 		identifier: "",
@@ -70,6 +71,7 @@ Default.args = {
 	name: "Measure your sales readiness",
 	description:
 		"Take this quick profile test to check how well you are prepared for a sales job",
+	link: "https://www.quodeck.com/",
 	image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
 	points: "200",
 	identifier: "XrPmy_OAK",
@@ -98,6 +100,7 @@ Default.parameters = {
 	  name= "Measure your sales readiness"
 	  description=
 		"Take this quick profile test to check how well you are prepared for a sales job"
+	  link="https://www.quodeck.com/"
 	  image= "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png"
 	  points= "200"
 	  identifier= "XrPmy_OAK"
@@ -130,6 +133,7 @@ NuggetCardWithManyTags.args = {
 	category: "profiler",
 	name: "Measure your sales readiness",
 	description: "Take this quick profile test to check how well you are prepared for a sales job",
+	link: "https://www.quodeck.com/",
 	image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
 	points: "200",
 	identifier: "XrPmy_OAK",
@@ -150,6 +154,7 @@ NuggetCardWithManyTags.parameters = {
 			name= "Measure your sales readiness"
 			description=
 			  "Take this quick profile test to check how well you are prepared for a sales job"
+			link= "https://www.quodeck.com/"
 			image= "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png"
 			points= "200"
 			identifier= "XrPmy_OAK"
@@ -181,6 +186,7 @@ PublishedNuggetCard.args = {
 	category: "profiler",
 	name: "Measure your sales readiness",
 	description: "Take this quick profile test to check how well you are prepared for a sales job",
+	link: "https://www.quodeck.com/",
 	image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
 	points: "200",
 	identifier: "XrPmy_OAK",
@@ -201,6 +207,7 @@ PublishedNuggetCard.parameters = {
 			name= "Measure your sales readiness"
 			description=
 			  "Take this quick profile test to check how well you are prepared for a sales job"
+			link="https://www.quodeck.com/"
 			image= "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png"
 			points= "200"
 			identifier= "XrPmy_OAK"
@@ -232,6 +239,7 @@ NuggetCardWithExtraContent.args = {
 	category: "profiler",
 	name: "Measure your sales readiness Measure your sales readiness",
 	description: "Take this quick profile test to check how well you are prepared for a sales job. Take this quick profile test to check how well you are prepared for a sales job",
+	link: "https://www.quodeck.com/",
 	image: "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png",
 	points: "200",
 	identifier: "XrPmy_OAK",
@@ -251,7 +259,9 @@ NuggetCardWithExtraContent.parameters = {
 			category= "profiler"
 			name= "Measure your sales readiness Measure your sales readiness"
 			description=
-			  "Take this quick profile test to check how well you are prepared for a sales job. Take this quick profile test to check how well you are prepared for a sales job"
+			  "Take this quick profile test to check how well you are prepared for a sales job. Take this 
+			  quick profile test to check how well you are prepared for a sales job"
+			link= "https://www.quodeck.com/"
 			image= "https://topkit.org/wp-content/uploads/2018/07/Sample-Course.png"
 			points= "200"
 			identifier= "XrPmy_OAK"
