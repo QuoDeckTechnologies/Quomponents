@@ -433,11 +433,9 @@ export default function CourseCard(props) {
                   onClick={() => {
                     navigator.clipboard.writeText(link);
                   }} />
-                {!showCopied && <span className="qui-tooltip-text-copy" >Copy Link</span>}
+									<span className={`qui-tooltip-text${showCopied ? "-copied" : "-copy"}`} >{showCopied ? "Copied" : "Copy Link"}</span>
               </div>
-              {showCopied &&
-                <span className="qui-tooltip-text-copied" >Copied!</span>
-              }
+             
             </div>
           </div>
         </div>
