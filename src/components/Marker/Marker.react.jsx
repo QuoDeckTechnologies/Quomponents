@@ -166,14 +166,13 @@ export default function Marker(props) {
         }
     };
     let markerBlock = (
-        <div onClick={handleClick} className={"qui-marker-clcik"}>
+        <div className={"qui-marker-click"} onClick={handleClick}>
             <img
                 className={"qui-marker-img"}
                 src={
                     WrapperList[content?.wrapper]?.customMarker
                         ? "assets/courses/" +
                         content?.wrapper +
-                        "/markers/" +
                         status +
                         ".png"
                         : "assets/images/" +
@@ -278,8 +277,8 @@ export default function Marker(props) {
                         </div>
                         <div key={'list-' + Math.random()} style={gameList}>
                             {_.map(content?.node?.contentList, (deck, index) => {
-                                prevComplete = currComplete !== undefined ? currComplete : 0;
                                 currComplete = props.completion[deck._id];
+                                prevComplete = currComplete !== undefined ? currComplete : 0;
                                 return (
                                     <div className="qui-icons-name"
                                         key={`deckitem-${deck._id}`}
@@ -289,7 +288,6 @@ export default function Marker(props) {
                                             background: props.sequential && index !== 0
                                                 ? prevComplete === 100 ? "none" : "#e8e8e8" : "none"
                                         }}
-                                        //onClick={props.onClick}
                                         onClick={props.sequential ? prevComplete > 80 ?
                                             () => props.onOpenDeck(
                                                 {
