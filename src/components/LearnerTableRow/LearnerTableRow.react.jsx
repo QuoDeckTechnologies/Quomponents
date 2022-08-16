@@ -116,7 +116,7 @@ export default function LearnerTableRow(props) {
     let tmp_arr = [];
     enrolledLearners.forEach((item) => {
       if (item.checked) {
-        tmp_arr.push(item.username);
+        tmp_arr.push(item);
       }
     });
     props.onSendMessage(tmp_arr);
@@ -128,7 +128,7 @@ export default function LearnerTableRow(props) {
     let tmp_arr = [];
     enrolledLearners.forEach((item) => {
       if (item.checked) {
-        tmp_arr.push(item.username);
+        tmp_arr.push(item);
       }
     });
     props.onUnenrollLearner(tmp_arr);

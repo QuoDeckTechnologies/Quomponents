@@ -1,9 +1,8 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 import _ from "lodash";
-import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
+import { getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./EnrollmentRuleRow.scss";
