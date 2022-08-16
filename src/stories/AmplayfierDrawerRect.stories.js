@@ -188,42 +188,7 @@ AmplayfierDrawerWithOtherComponent.parameters = {
           isHidden={false}
         >
           <div>
-            <LearnerTableRow
-              content={[
-                {
-                  _id: "",
-                  username: "user one",
-                  first_name: "System",
-                  last_name: "Administrator",
-                },
-              ]}
-              onUnenrollLearner={() => {}}
-              onSendMessage={() => {}}
-            />
-            <LearnerTableRow
-              content={[
-                {
-                  _id: "",
-                  username: "user two",
-                  first_name: "",
-                  last_name: "Manager",
-                },
-              ]}
-              onUnenrollLearner={() => {}}
-              onSendMessage={() => {}}
-            />
-            <LearnerTableRow
-              content={[
-                {
-                  _id: "",
-                  username: "user three",
-                  first_name: "",
-                  last_name: "Learner",
-                },
-              ]}
-              onUnenrollLearner={() => {}}
-              onSendMessage={() => {}}
-            />
+            // childern components
           </div>
         </AmplayfierDrawerRect>`,
     },

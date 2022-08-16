@@ -27,10 +27,8 @@ describe("AmplayfierDrawerRect", () => {
 
   hasValid("defaults", args);
   hasValid("variants", args);
-  hasValid("sizes", args);
   hasValid("positions", args);
   hasValid("padding", args);
-  hasValid("alignment", args);
   hasValid("colors", args);
   hasValid("animations", args);
   hasValid("hidden", args);
