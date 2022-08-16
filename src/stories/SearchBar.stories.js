@@ -162,7 +162,9 @@ Default.parameters = {
                     lang: "en",
                     tgt: "searchBar",
                     dictionary: dictionary,
-                }}/>`,
+                }}
+                onClick={() => {}}
+                />`,
         },
     },
 };
@@ -176,7 +178,7 @@ ClosedSearchBar.parameters = {
     docs: {
         description: {
             story:
-                "Use to change the language that the text appears in. To make this work for the SearchBar, add a SearchBar:{placeholder} value to the dictionary.",
+                "Use to toggle the component having expandable effect or not. To make this work for the SearchBar, add a isClosed={true}.",
         },
         source: {
             code: `<SearchBar 
@@ -199,7 +201,9 @@ ClosedSearchBar.parameters = {
                 lang: "en",
                 tgt: "searchBar",
                 dictionary: dictionary,
-            }}/>`,
+            }}
+            onClick={() => {}}
+            />`,
         },
     },
 };
@@ -238,11 +242,13 @@ TranslatedSearchBar.parameters = {
             isFluid= {false}
             isClosed= {false}
             isHidden= {false}
-            withTranslation= {{
-                lang: "hi",
-                tgt: "searchBar",
-                dictionary: dictionary,
-            }}/>`,
+            withTranslation={{
+                lang: 'hi',
+                tgt: 'searchBar',
+                dictionary: '{"en":{"searchBar":{"placeholder":"Search..."}},"hi":{"searchBar":{"placeholder":"खोजें..."}}}',
+              }}
+            onClick={() => {}}
+            />`,
         },
     },
 };
@@ -276,9 +282,11 @@ export const AllVariants = (args) => {
                 data.map((data) => {
                     return (
                         <SearchBar
+                            withIcon={{ icon: "fas fa-search" }}
                             isClosed={data.isClosed}
                             isAutoSearch={data.isAutoSearch}
                             withTranslation={data.withTranslation}
+                            onClick={() => {}}
                         />
                     )
                 })
@@ -300,6 +308,7 @@ AllVariants.parameters = {
                 tgt: "searchBar",
                 dictionary: dictionary,
             }}
+            onClick={() => {}}
         />`,
         },
     },
