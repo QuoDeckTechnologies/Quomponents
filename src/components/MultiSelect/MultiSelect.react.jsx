@@ -57,6 +57,8 @@ MultiSelect.propTypes = {
     withColor: PropTypes.shape({
         backgroundColor: PropTypes.string,
         textColor: PropTypes.string,
+        hoverBackgroundColor: PropTypes.string,
+        hoverTextColor: PropTypes.string,
     }),
     /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -183,7 +185,8 @@ export default function MultiSelect(props) {
             {<Button {...props}
                 withTranslation={null}
                 content={submitButtonText}
-                onClick={() => handleSubmit()} />}
+                onClick={() => handleSubmit()}
+            />}
         </div>
     )
 }

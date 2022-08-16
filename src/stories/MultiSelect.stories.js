@@ -77,6 +77,8 @@ export default {
         defaultValue: {
           backgroundColor: "",
           textColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -457,19 +459,19 @@ TranslatedMultiSelect.parameters = {
       content= [
         {
           name: "Primary Button",
-          isSelected: {false},
+          isSelected: false,
         },
         {
           name: "Primary Button",
-          isSelected: {false},
+          isSelected: false,
         },
         {
           name: "Primary Button",
-          isSelected: {false},
+          isSelected: false,
         },
         {
           name: "Primary Button",
-          isSelected: {false},
+          isSelected: false,
         },
       ]
       purpose= "quiz"
