@@ -1,5 +1,4 @@
 .qui.qui-marker {
-
   .qui-marker-text {
     position: absolute;
     width: fit-content;
@@ -8,6 +7,10 @@
     transform: translate(1.5em, -2.75em);
     z-index: 1;
     font-weight: bolder;
+  }
+
+  .qui-incomplete-marker {
+    pointer-events: none;
   }
 
   .qui-marker-style {

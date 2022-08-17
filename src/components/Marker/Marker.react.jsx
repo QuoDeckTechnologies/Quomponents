@@ -75,7 +75,7 @@ Marker.propTypes = {
     */
     onClick: PropTypes.func.isRequired,
     /**
-    component must have the onClick function passed as props
+    component must have the onOpenDeck function passed as props
     */
     onOpenDeck: PropTypes.func
 };
@@ -116,7 +116,7 @@ export default function Marker(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
-        if (status === "current" || status === "complete") { setAnchorEl(event.currentTarget) }
+        setAnchorEl(event.currentTarget)
     };
     const handleClose = () => {
         setAnchorEl(null);
@@ -152,8 +152,6 @@ export default function Marker(props) {
                 return "far fa-question-circle";
             case "casestudy":
                 return "fas fa-archive";
-            // case "dialogue":
-            //   return "talking outline";
             case "qdf":
             case "deck":
                 return "far fa-images";
@@ -166,18 +164,15 @@ export default function Marker(props) {
         }
     };
     let markerBlock = (
-        <div className={"qui-marker-click"} onClick={handleClick}>
+        <div
+            className={`${status === "incomplete" ? "qui-incomplete-marker" : "qui-marker-click"}`}
+            onClick={handleClick}
+        >
             <img
                 className={"qui-marker-img"}
-                src={
-                    WrapperList[content?.wrapper]?.customMarker
-                        ? "assets/courses/" +
-                        content?.wrapper +
-                        status +
-                        ".png"
-                        : "assets/images/" +
-                        status +
-                        ".png"
+                src={"assets/images/" +
+                    status +
+                    ".png"
                 }
                 alt="marker"
             />
@@ -188,7 +183,6 @@ export default function Marker(props) {
     );
     let prevComplete = 0;
     let currComplete = 0;
-
     let marker = () => {
         return (
             status === "current" ? (
@@ -265,7 +259,7 @@ export default function Marker(props) {
                                 content?.wrapper +
                                 "/header.jpg"
                             }
-                            alt="ok"
+                            alt="headerimg"
                         />
                         <div className="qui-marker-wellstyle">
                             <h5 className="qui-marker-header">
@@ -277,11 +271,11 @@ export default function Marker(props) {
                         </div>
                         <div key={'list-' + Math.random()} style={gameList}>
                             {_.map(content?.node?.contentList, (deck, index) => {
+                                prevComplete = currComplete ? currComplete : 0;
                                 currComplete = props.completion[deck._id];
-                                prevComplete = currComplete !== undefined ? currComplete : 0;
                                 return (
                                     <div className="qui-icons-name"
-                                        key={`deckitem-${deck._id}`}
+                                        key={index}
                                         style={{
                                             opacity: props.sequential && index !== 0
                                                 ? prevComplete === 100 ? "none" : "0.3" : "none",

@@ -24,7 +24,6 @@ describe("Marker", () => {
             onClick: () => { },
         },
     };
-
     hasValid("defaults", args);
 
     hasValid("sizes", args);
@@ -50,27 +49,25 @@ describe("Marker", () => {
                         name: "First Topic",
                         description: "This is first new topic of this course",
                         contentList: [{
-                            _id: "512",
+                            _id: "110",
                             name: "Assesment format",
                             readerType: "quiz",
-                            sequence: 0,
+                            sequence: 1,
                         }],
-                        sequence: 0,
+                        sequence: 1,
                     }
                 }}
-                completion={{ 512: 0 }}
+                completion={{ 110: null }}
                 sequential={true}
                 status="incomplete"
-
                 asSize="normal"
                 isDisabled={false}
                 isHidden={false}
                 onClick={() => { }}
-                onOpenDeck={() => { }}
             />
         );
     });
-    it("should open popup when click", () => {
+    it("should open popup when click if status is equal to current and sequential is set to true", () => {
         component = mount(<Marker
             content={{
                 wrapper: "carnival",
@@ -79,12 +76,19 @@ describe("Marker", () => {
                     _id: "511",
                     name: "First Topic",
                     description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "xyz",
-                        sequence: 0,
-                    }],
+                    contentList: [
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "xyz",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: null,
+                            sequence: 0,
+                        }],
                     sequence: 0,
                 }
             }}
@@ -96,34 +100,7 @@ describe("Marker", () => {
         component.find(".qui-marker-click").simulate("click");
         expect(component.exists()).toBe(true);
     });
-    it("should open popup when click", () => {
-        component = mount(<Marker
-            content={{
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "xyz",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }}
-            completion={{ 512: 90 }}
-            sequential={false}
-            status="current"
-            onClick={() => { }}
-        />);
-        component.find(".qui-marker-click").simulate("click");
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should open popup when click", () => {
+    it("should open popup when click if status is equal to current and sequential is set to false", () => {
         component = shallow(<Marker
             content={{
                 wrapper: "carnival",
@@ -132,12 +109,14 @@ describe("Marker", () => {
                     _id: "511",
                     name: "First Topic",
                     description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "xyz",
-                        sequence: 0,
-                    }],
+                    contentList: [
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "xyz",
+                            sequence: 0,
+                        },
+                    ],
                     sequence: 0,
                 }
             }}
@@ -150,7 +129,7 @@ describe("Marker", () => {
         component.find(".qui-icons-name").simulate("click");
         expect(component.exists()).toBe(true);
     });
-    it("should open popup when click", () => {
+    it("should open popup when click if status is equal to complete and sequential is set to true", () => {
         component = shallow(<Marker
             content={{
                 wrapper: "carnival",
@@ -159,18 +138,132 @@ describe("Marker", () => {
                     _id: "511",
                     name: "First Topic",
                     description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "xyz",
-                        sequence: 1,
-                    }],
-                    sequence: 1,
+                    contentList: [
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "videck",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "docdeck",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "assessment",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "survey",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "adaptive",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "quiz",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "casestudy",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "deck",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "qdf",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "game",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "certdeck",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "xyz",
+                            sequence: 0,
+                        },
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: null,
+                            sequence: 0,
+                        }],
+                    sequence: 0,
+                }
+            }
+            }
+            completion={{ 512: 100 }}
+            sequential={true}
+            status="complete"
+            onClick={() => { }}
+            onOpenDeck={() => { }}
+        />);
+        component.find(".qui-icons-name").at(0).simulate("click");
+        component.find(".qui-icons-name").at(1).simulate("click");
+        component.find(".qui-icons-name").at(2).simulate("click");
+        component.find(".qui-icons-name").at(3).simulate("click");
+        component.find(".qui-icons-name").at(4).simulate("click");
+        component.find(".qui-icons-name").at(5).simulate("click");
+        component.find(".qui-icons-name").at(6).simulate("click");
+        component.find(".qui-icons-name").at(7).simulate("click");
+        component.find(".qui-icons-name").at(8).simulate("click");
+        component.find(".qui-icons-name").at(9).simulate("click");
+        component.find(".qui-icons-name").at(10).simulate("click");
+        component.find(".qui-icons-name").at(11).simulate("click");
+        expect(component.exists()).toBe(true);
+    });
+    it("should open popup when click if status is equal to current and sequential is set to false", () => {
+        component = shallow(<Marker
+            content={{
+                wrapper: "carnival",
+                inset: 1,
+                node: {
+                    _id: "511",
+                    name: "First Topic",
+                    description: "This is first new topic of this course",
+                    contentList: [
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "xyz",
+                            sequence: 0,
+                        },
+                    ],
+                    sequence: 0,
                 }
             }}
-            completion={{ 512: null }}
+            completion={{ 512: 100 }}
             sequential={false}
-            status="current"
+            status="complete"
             onClick={() => { }}
             onOpenDeck={() => { }}
         />);
@@ -186,12 +279,14 @@ describe("Marker", () => {
                     _id: "511",
                     name: "First Topic",
                     description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "quiz",
-                        sequence: 0,
-                    }],
+                    contentList: [
+                        {
+                            _id: "512",
+                            name: "Assesment format",
+                            readerType: "xyz",
+                            sequence: 0,
+                        },
+                    ],
                     sequence: 0,
                 }
             }}
@@ -203,259 +298,4 @@ describe("Marker", () => {
         component.find("#marker").simulate("close");
         expect(component.exists()).toBe(true);
     });
-
-    it("it should render correctly without throwing an error with diffrent readerType", () => {
-        component.setProps({
-            content: {
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "videck",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("it should render correctly without throwing an error with diffrent readerType", () => {
-        component.setProps({
-            content: {
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "docdeck",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("it should render correctly without throwing an error with diffrent readerType", () => {
-        component.setProps({
-            content: {
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "assessment",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("it should render correctly without throwing an error with diffrent readerType", () => {
-        component.setProps({
-            content: {
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "survey",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("it should render correctly without throwing an error with diffrent readerType", () => {
-        component.setProps({
-            content: {
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "adaptive",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("it should render correctly without throwing an error with diffrent readerType", () => {
-        component.setProps({
-            content: {
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "quiuz",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("it should render correctly without throwing an error with diffrent readerType", () => {
-        component.setProps({
-            content: {
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "casestudy",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("it should render correctly without throwing an error with diffrent readerType", () => {
-        component.setProps({
-            content: {
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "deck",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("it should render correctly without throwing an error with diffrent readerType", () => {
-        component.setProps({
-            content: {
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "game",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("it should render correctly without throwing an error with diffrent readerType", () => {
-        component.setProps({
-            content: {
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "certdeck",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("it should render correctly without throwing an error with diffrent readerType", () => {
-        component.setProps({
-            content: {
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "xyz",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-    it("it should render correctly without throwing an error with diffrent readerType", () => {
-        component.setProps({
-            content: {
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: null,
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
 });
-
-

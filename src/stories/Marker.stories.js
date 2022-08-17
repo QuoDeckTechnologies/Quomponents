@@ -92,7 +92,7 @@ Default.args = {
         }
     },
     completion: { 512: 90 },
-    sequential: true,
+    sequential: false,
     status: "current",
     asSize: "normal",
     isHidden: false,
@@ -101,10 +101,10 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<Marker content = {{
-                wrapper= "carnival"
-                inset= {1}
-                node= {{
+            code: `<Marker content={{
+                wrapper: "carnival",
+                inset: 1,
+                node: {
                     _id: "511",
                     name: "First Topic",
                     description: "This is first new topic of this course",
@@ -115,14 +115,14 @@ Default.parameters = {
                         sequence: 0,
                     }],
                     sequence: 0,
-                }}
+                }
             }}
-            completion= { 512= 50 }
-            sequential= true
-            status= "current"
-            asSize= "normal"
-            isHidden= {false}
-            isDisabled= {false}/>`,
+                completion={{ 512: 50 }}
+                sequential={false}
+                status="current"
+                asSize="normal"
+                isHidden={false}
+                isDisabled={false} />`,
         },
     },
 };
