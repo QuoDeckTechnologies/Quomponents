@@ -241,7 +241,7 @@ describe("Marker", () => {
         component.find(".qui-icons-name").at(11).simulate("click");
         expect(component.exists()).toBe(true);
     });
-    it("should open popup when click if status is equal to current and sequential is set to false", () => {
+    it("should open popup when click if status is equal to complete and sequential is set to false", () => {
         component = shallow(<Marker
             content={{
                 wrapper: "carnival",
