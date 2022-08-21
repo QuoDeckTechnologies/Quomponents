@@ -182,8 +182,8 @@ Default.args = {
   asAligned: "center",
   withLabel: {
     format: "caption",
-    contentOne: "Item1",
-    contentTwo: "Item2",
+    contentOne: "Do not press this button repeatedly...",
+    contentTwo: "Do not press this button repeatedly...",
     textColor: "#000000",
   },
   withColor: {

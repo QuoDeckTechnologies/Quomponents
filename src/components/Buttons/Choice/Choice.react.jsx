@@ -154,7 +154,9 @@ Choice.defaultProps = {
 **/
 
 export default function Choice(props) {
-	let { options } = props;
+	let { options, withLabel } = props;
+	const [popOne, setPopOne] = React.useState(false)
+	const [popTwo, setPopTwo] = React.useState(false)
 	let choiceOneColor = {
 		backgroundColor: props?.withColor?.backgroundColor,
 		hoverBackgroundColor: props?.withColor?.hoverBackgroundColor,
@@ -188,8 +190,8 @@ export default function Choice(props) {
 	//-------------------------------------------------------------------
 	// 2. Translate the text objects in case their is a dictionary provided
 	//-------------------------------------------------------------------
-	let text1 = labelContent?.contentOne;
-	let text2 = labelContent?.contentTwo;
+	let text1 = options[0]?.text;
+	let text2 = options[1]?.text;
 	let tObj = getTranslation(props.withTranslation, "options");
 	if (
 		props.withTranslation &&
@@ -214,10 +216,15 @@ export default function Choice(props) {
 		color: props.withColor?.accentColor,
 	};
 	return (
-		<motion.div initial={animate.from} animate={animate.to} className={`qui ${quommonClasses.parentClasses} `}>
+		<motion.div
+			initial={animate.from}
+			animate={animate.to}
+			className={`qui ${quommonClasses.parentClasses} `}>
 			{props.options && (
 				<div className="qui-choice-container">
-					<div style={{ display: "flex", flexDirection: "column" }}>
+					<div
+						className="qui-choice-container-content-one"
+					>
 						<div className="qui-label qt-lbl" style={labelStyle}>
 							{getLabelOne(labelContent, "label")}
 						</div>
@@ -232,24 +239,35 @@ export default function Choice(props) {
 						<div className="qui-caption qt-lbl" style={labelStyle}>
 							{getLabelOne(labelContent, "caption")}
 						</div>
+						{withLabel?.format === "popover" && <div className={`qui-lable-popover-one size-${props.asSize}`}>
+							{getLabelOne(labelContent, "popover")}
+						</div>
+						}
 					</div>
-					<div className={`qui-or pad-${props.asPadded}`} style={Object.assign({}, orStyle)}>
+					<div className={`qui-or ${props.withLabel?.format === "label" ? "-label" : props.withLabel?.format === "caption" ? "-caption" : ""} pad-${props.asPadded} size-${props.asSize}`} style={Object.assign({}, orStyle)}>
 						OR
 					</div>
-					<div style={{ display: "flex", flexDirection: "column" }}>
+					<div
+						className="qui-choice-container-content-two"
+					>
 						<div className="qui-label qt-lbl" style={labelStyle}>
 							{getLabelTwo(labelContent, "label")}
 						</div>
 						<Button
 							{...props}
-							withColor={choiceTwoColor}
+							withColor={choiceOneColor}
 							isFluid={props.isFluid}
 							content={text2}
 							withTranslation={null}
-							onClick={() => { handleClick(1) }} />
+							withLabel={props.withLabel}
+							onClick={() => { handleClick(0) }} />
 						<div className="qui-caption qt-lbl" style={labelStyle}>
 							{getLabelTwo(labelContent, "caption")}
 						</div>
+						{withLabel?.format === "popover" && <div className={`qui-lable-popover-two size-${props.asSize}`}>
+							{getLabelTwo(labelContent, "popover")}
+						</div>
+						}
 					</div>
 				</div>
 

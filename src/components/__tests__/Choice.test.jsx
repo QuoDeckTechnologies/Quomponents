@@ -84,6 +84,12 @@ describe("Choice", () => {
 		primaryTextColor: "green",
 		secondaryTextColor: "grey",
 	};
+	let labels = {
+		format: "caption",
+		contentOne: "Do not press this button repeatedly...",
+		contentTwo: "Do not press this button repeatedly...",
+		textColor: "#000000",
+	}
 	choice1 = jest.fn();
 	choice2 = jest.fn();
 	beforeEach(() => {
@@ -91,6 +97,7 @@ describe("Choice", () => {
 		component = shallow(
 			<Choice
 				withColor={colors}
+				withLabel={labels}
 				options={options}
 				textSeparator={false}
 				asEmphasis="contained"
@@ -156,5 +163,21 @@ describe("Choice", () => {
 			textSeparator: true,
 		});
 		expect(component.find(".qui-or").props().style.display).toBe("flex");
+	});
+
+	it("should render popover when withLabel format set to popover", () => {
+		component.setProps({
+			withLabel: {
+				format: "popover"
+			},
+		});
+	});
+
+	it("should render label when withLabel format set to label", () => {
+		component.setProps({
+			withLabel: {
+				format: "label"
+			},
+		});
 	});
 });
