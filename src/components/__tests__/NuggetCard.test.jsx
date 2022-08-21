@@ -130,7 +130,10 @@ describe("NuggetCard", () => {
 	});
 
 	it("should render correctly when Clicked on copy Icon", () => {
-		component.find(".qui-nugget-card-icon-block-copy-container").simulate('mousedown')
+		component.find(".qui-nugget-card-copy-icon-container").simulate('mouseleave')
+		component.find(".qui-nugget-card-copy-icon-container").simulate('click')
+	});
+	it("should render correctly when Clicked on copy IconBlock", () => {
 		component.find(".qui-nugget-card-icon-block-copy-container").simulate('click')
 	});
 

@@ -2,7 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-import { act } from "react-dom/test-utils";
+import renderer, { act } from "react-dom/test-utils";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -214,9 +214,9 @@ describe("CourseCard", () => {
     });
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly when Clicked on copy Icon", async () => {
-    component.find(".qui-course-card-icon-block-copy-container").simulate('mousedown')
-    await pauseFor(1000);
+  it("should render correctly when Clicked on copy Icon", () => {
+    component.find(".qui-course-card-icon-block-copy-container").simulate('click')
+    component.find(".qui-course-card-icon-block-copy-container").simulate('mouseleave')
   });
 
   it("should copy the link when clicked on copy icon", () => {
@@ -226,15 +226,4 @@ describe("CourseCard", () => {
     let iconBlock = component.find(IconBlock);
     iconBlock.simulate("click");
   });
-
-  // it('should pass', () => {
-  //   component.find(".qui-course-card-icon-block-copy-container").simulate('mousedown')
-  //   let copiedPop = component.find('.qui-tooltip-text-copied');
-  //   // expect(component.find('qui-tooltip-text-copied').prop('visible')).toBeTruthy();
-  //   act(() => {
-  //     jest.runOnlyPendingTimers();
-  //   });
-  //   component.update();
-  //   expect(copiedPop.prop('visible')).toBe(false);
-  // });
 });

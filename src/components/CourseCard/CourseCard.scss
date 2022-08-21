@@ -127,19 +127,19 @@
   }
   .qui-course-card-icon-block-copy-container:hover {
     .qui-tooltip-text-copy {
-      visibility: visible;
+      display: block;
+      position: absolute;
+      background-color: #a6a6a6bd;
+      color: #000000;
+      top: -40%;
+      right: -6%;
+      padding: 0.5em;
+      font-size: 0.6em;
+      border-radius: 0.5em;
     }
   }
   .qui-tooltip-text-copy {
-    position: absolute;
-    background-color: #a6a6a6bd;
-    color: #000000;
-    top: -40%;
-    right: -6%;
-    padding: 0.5em;
-    font-size: 0.6em;
-    border-radius: 0.5em;
-    visibility: hidden;
+    display: none;
   }
   .qui-tooltip-text-copied {
     position: absolute;
@@ -150,8 +150,7 @@
     padding: 0.5em;
     font-size: 0.6em;
     border-radius: 0.5em;
-    animation-name: tooltip;
-    animation-duration: 5s;
+    animation: tooltip 5s forwards;
   }
 
   @keyframes tooltip {

@@ -243,12 +243,6 @@ export default function CourseCard(props) {
       } else return ele;
     })
   );
-  const handleCopy = () => {
-    setShowCopied(true)
-    setTimeout(() => {
-      setShowCopied(false);
-    }, 3000);
-  }
   const handleLessTags = () => {
     setItirate(minTags);
     setExpandTags(false);
@@ -422,7 +416,8 @@ export default function CourseCard(props) {
               </p>
               <div
                 className="qui-course-card-icon-block-copy-container"
-                onMouseDown={() => handleCopy()}
+                onClick={() => setShowCopied(true)}
+                onMouseLeave={() => setShowCopied(false)}
               >
                 <IconBlock
                   asSize="small"
@@ -433,9 +428,9 @@ export default function CourseCard(props) {
                   onClick={() => {
                     navigator.clipboard.writeText(link);
                   }} />
-									<span className={`qui-tooltip-text${showCopied ? "-copied" : "-copy"}`} >{showCopied ? "Copied" : "Copy Link"}</span>
+                <span className={`qui-tooltip-text${showCopied ? "-copied" : "-copy"}`} >{showCopied ? "Copied" : "Copy Link"}</span>
               </div>
-             
+
             </div>
           </div>
         </div>

@@ -194,12 +194,6 @@ export default function NuggetCard(props) {
 	const [itirate, setItirate] = useState(showTags);
 	const [showCopied, setShowCopied] = useState(false);
 
-	const handleCopy = () => {
-		setShowCopied(true)
-		setTimeout(() => {
-			setShowCopied(false);
-		}, 3000);
-	}
 	const handleLessTags = () => {
 		setItirate(minTags);
 		setExpandTags(false);
@@ -370,12 +364,14 @@ export default function NuggetCard(props) {
 
 							<div
 								className="qui-nugget-card-icon-block-copy-container"
-								onMouseDown={() => handleCopy()}
 								onClick={() => {
 									navigator.clipboard.writeText(link);
 								}}
 							>
-								<div className={`qui-nugget-card-copy-icon-container`}>
+								<div className={`qui-nugget-card-copy-icon-container`}
+									onClick={() => setShowCopied(true)}
+									onMouseLeave={() => setShowCopied(false)}
+								>
 									<IconBlock
 										asSize="small"
 										asEmphasis="text"
