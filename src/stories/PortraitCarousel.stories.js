@@ -32,7 +32,8 @@ export default {
     ),
   ],
   parameters: {
-    componentSubheader: "Displays a portrait carousel using react-slick. add content from prop to add more slides to the carosuel.",
+    componentSubheader:
+      "Displays a portrait carousel using react-slick. add content from prop to add more slides to the carosuel.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 600,
@@ -44,8 +45,8 @@ let dataprops = {
   asVariant: "warning",
   withColor: {
     backgroundColor: "",
-    textColor: ""
-  }
+    textColor: "",
+  },
 };
 // -------------------------------------------------------------
 // Default

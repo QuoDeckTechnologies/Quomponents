@@ -52,16 +52,9 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div>
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div>{story()}</div>],
   parameters: {
-    componentSubtitle:
-      "Default SlideHeader for general purpose use",
+    componentSubtitle: "Default SlideHeader for general purpose use",
     a11y: { disable: true },
     docs: { iframeHeight: 400 },
   },
@@ -73,7 +66,8 @@ const Template = (args) => <SlideHeader {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   title: "Neque porro quisquam est qui dolorem",
-  subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+  subtitle:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
   asVariant: "primary",
   asFloated: "inline",
   asPadded: "normal",
@@ -119,8 +113,7 @@ ColoredSlideHeader.args = {
 ColoredSlideHeader.parameters = {
   docs: {
     description: {
-      story:
-        "Use to override the standard colors of the SliderHeader.",
+      story: "Use to override the standard colors of the SliderHeader.",
     },
     source: {
       code: `<SlideHeader 

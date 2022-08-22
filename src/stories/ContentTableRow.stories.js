@@ -83,13 +83,7 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div>
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div>{story()}</div>],
   parameters: {
     componentSubtitle: "Displays a Content table row",
     a11y: { disable: true },
@@ -109,37 +103,37 @@ const Template = (args) => (
         {
           title: "Open Deck",
           icon: "fas fa-book-open",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Edit Deck",
           icon: "fas fa-edit",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move Deck Up",
           icon: "fas fa-chevron-up",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move Deck Down",
           icon: "fas fa-chevron-down",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move to Topic",
           icon: "fas fa-retweet",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Unpublish Deck",
           icon: "fas fa-eye-slash",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Delete Deck",
           icon: "fas fa-trash-alt",
-          onClick: () => { },
+          onClick: () => {},
         },
       ]}
       withColor={{
@@ -187,8 +181,7 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: (
-        `<ContentTableRow
+      code: `<ContentTableRow
           content={{
             name: "Dummy file-name",
             readerType: "videck",
@@ -264,26 +257,25 @@ Default.parameters = {
               lang: "en",
               tgt: "actionMenu",
               dictionary: ${JSON.stringify({
-          hi: {
-            actionMenu: {
-              content: [
-                { title: "डेक खोलो" },
-                { title: "डेक संपादित करें" },
-                { title: "डेक ऊपर ले जाएँ" },
-                { title: "डेक नीचे ले जाएँ" },
-                { title: "विषय पर जाएं" },
-                { title: "डेक को अप्रकाशित करें" },
-                { title: "डेक हटाएं" },
-              ],
-            },
-          },
-        })},,
+                hi: {
+                  actionMenu: {
+                    content: [
+                      { title: "डेक खोलो" },
+                      { title: "डेक संपादित करें" },
+                      { title: "डेक ऊपर ले जाएँ" },
+                      { title: "डेक नीचे ले जाएँ" },
+                      { title: "विषय पर जाएं" },
+                      { title: "डेक को अप्रकाशित करें" },
+                      { title: "डेक हटाएं" },
+                    ],
+                  },
+                },
+              })},,
             }}
             isDisabled={false}
             isHidden={false}
           />
-        </ContentTableRow>`
-      ),
+        </ContentTableRow>`,
     },
   },
 };
@@ -297,37 +289,37 @@ const TranslationTemplate = (args) => (
         {
           title: "Open Deck",
           icon: "fas fa-book-open",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Edit Deck",
           icon: "fas fa-edit",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move Deck Up",
           icon: "fas fa-chevron-up",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move Deck Down",
           icon: "fas fa-chevron-down",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move to Topic",
           icon: "fas fa-retweet",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Unpublish Deck",
           icon: "fas fa-eye-slash",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Delete Deck",
           icon: "fas fa-trash-alt",
-          onClick: () => { },
+          onClick: () => {},
         },
       ]}
       withColor={{
@@ -355,7 +347,8 @@ TranslatedContentTableRow.args = {
 TranslatedContentTableRow.parameters = {
   docs: {
     description: {
-      story: "Use to change the language that the text appears in. To make this work for the content table row, add actionMenu: content: [{ title: 'डेक खोलो' }], value to the dictionary."
+      story:
+        "Use to change the language that the text appears in. To make this work for the content table row, add actionMenu: content: [{ title: 'डेक खोलो' }], value to the dictionary.",
     },
     source: {
       code: `<ContentTableRow
@@ -434,20 +427,20 @@ TranslatedContentTableRow.parameters = {
               lang: "hi",
               tgt: "actionMenu",
               dictionary: ${JSON.stringify({
-        hi: {
-          actionMenu: {
-            content: [
-              { title: "डेक खोलो" },
-              { title: "डेक संपादित करें" },
-              { title: "डेक ऊपर ले जाएँ" },
-              { title: "डेक नीचे ले जाएँ" },
-              { title: "विषय पर जाएं" },
-              { title: "डेक को अप्रकाशित करें" },
-              { title: "डेक हटाएं" },
-            ],
-          },
-        },
-      })},
+                hi: {
+                  actionMenu: {
+                    content: [
+                      { title: "डेक खोलो" },
+                      { title: "डेक संपादित करें" },
+                      { title: "डेक ऊपर ले जाएँ" },
+                      { title: "डेक नीचे ले जाएँ" },
+                      { title: "विषय पर जाएं" },
+                      { title: "डेक को अप्रकाशित करें" },
+                      { title: "डेक हटाएं" },
+                    ],
+                  },
+                },
+              })},
             }}
           />
         </ContentTableRow>`,
@@ -550,20 +543,20 @@ ColoredContentTableRow.parameters = {
               lang: "en",
               tgt: "actionMenu",
               dictionary: ${JSON.stringify({
-        hi: {
-          actionMenu: {
-            content: [
-              { title: "डेक खोलो" },
-              { title: "डेक संपादित करें" },
-              { title: "डेक ऊपर ले जाएँ" },
-              { title: "डेक नीचे ले जाएँ" },
-              { title: "विषय पर जाएं" },
-              { title: "डेक को अप्रकाशित करें" },
-              { title: "डेक हटाएं" },
-            ],
-          },
-        },
-      })},
+                hi: {
+                  actionMenu: {
+                    content: [
+                      { title: "डेक खोलो" },
+                      { title: "डेक संपादित करें" },
+                      { title: "डेक ऊपर ले जाएँ" },
+                      { title: "डेक नीचे ले जाएँ" },
+                      { title: "विषय पर जाएं" },
+                      { title: "डेक को अप्रकाशित करें" },
+                      { title: "डेक हटाएं" },
+                    ],
+                  },
+                },
+              })},
             }}
             isDisabled={false}
             isHidden={false}

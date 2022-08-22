@@ -3,7 +3,7 @@ import CardTag from "../components/CardTag/CardTag.react";
 
 const dictionary = JSON.stringify({
   hi: {
-    cardTag: { content: "विषय", loading: "लोड हो रहा है...", },
+    cardTag: { content: "विषय", loading: "लोड हो रहा है..." },
   },
 });
 
@@ -115,16 +115,7 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div style={{}}>{story()}</div>],
   parameters: {
     componentSubtitle: "Default CardTag for general purpose use",
     a11y: { disable: true },

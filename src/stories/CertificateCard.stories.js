@@ -8,7 +8,7 @@ const dictionary = JSON.stringify({
         notstarted: "शुरू नही हुआ",
         inprogress: "चालू है",
         completed: "पूरा है",
-      }
+      },
     },
   },
 });
@@ -114,8 +114,7 @@ Default.args = {
     content: "Negotiation Skills 101",
   },
   withIcon: {
-    icon:
-      "https://media.istockphoto.com/vectors/certificate-template-vector-id1097299164",
+    icon: "https://media.istockphoto.com/vectors/certificate-template-vector-id1097299164",
   },
   withColor: {
     accentColor: "#ed6e6e",

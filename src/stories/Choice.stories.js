@@ -8,19 +8,22 @@ const dictionary = JSON.stringify({
       text2: "वस्तु 2",
     },
     loading: "लोड हो रहा है...",
-  }
+  },
 });
 export default {
   title: "Design System/Buttons/Choice",
   component: Choice,
   argTypes: {
-    options: [{
-      correct: "checked",
-      text: "Item 1",
-    }, {
-      correct: "",
-      text: "Item 2",
-    }],
+    options: [
+      {
+        correct: "checked",
+        text: "Item 1",
+      },
+      {
+        correct: "",
+        text: "Item 2",
+      },
+    ],
     textSeparator: {
       table: {
         category: "is-Toggles",
@@ -166,13 +169,16 @@ export default {
 const Template = (args) => <Choice {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  options: [{
-    correct: "checked",
-    text: "Item 1",
-  }, {
-    correct: "",
-    text: "Item 2",
-  }],
+  options: [
+    {
+      correct: "checked",
+      text: "Item 1",
+    },
+    {
+      correct: "",
+      text: "Item 2",
+    },
+  ],
   textSeparator: true,
   asVariant: "primary",
   asEmphasis: "contained",
@@ -211,7 +217,8 @@ Default.args = {
 Default.parameters = {
   docs: {
     description: {
-      story: "Default component shows features like selected ,not selected , animation in the component",
+      story:
+        "Default component shows features like selected ,not selected , animation in the component",
     },
     source: {
       code: `<Choice 
@@ -323,8 +330,7 @@ withoutTextSeparator.args = {
 withoutTextSeparator.parameters = {
   docs: {
     description: {
-      story:
-        "can remove the textSeparator from the component",
+      story: "can remove the textSeparator from the component",
     },
     source: {
       code: `<Choice 

@@ -4,20 +4,20 @@ import MultiSelect from "../components/MultiSelect/MultiSelect.react";
 const dictionary = JSON.stringify({
   en: {
     templateActions: {
-      checkAnswer: 'Check Answer',
-      submitAnswer: 'Submit Answer',
-      thanks: 'Thanks for your response',
-      go: 'Go',
-    }
+      checkAnswer: "Check Answer",
+      submitAnswer: "Submit Answer",
+      thanks: "Thanks for your response",
+      go: "Go",
+    },
   },
   hi: {
     templateActions: {
-      checkAnswer: 'अपना उत्तर जाँच लें',
-      submitAnswer: 'अपना जवाब सबमिट करें',
-      thanks: 'आपके उत्तर के लिए धन्यवाद',
-      go: 'आगे बढ़ें',
-    }
-  }
+      checkAnswer: "अपना उत्तर जाँच लें",
+      submitAnswer: "अपना जवाब सबमिट करें",
+      thanks: "आपके उत्तर के लिए धन्यवाद",
+      go: "आगे बढ़ें",
+    },
+  },
 });
 
 export default {
@@ -136,7 +136,6 @@ export default {
     componentSubtitle: "Displays a MultiSelect Component",
     a11y: { disable: true },
     docs: { iframeHeight: 300 },
-
   },
 };
 
@@ -188,12 +187,13 @@ Default.args = {
     delay: 0,
   },
   isDisabled: false,
-  isHidden: false
+  isHidden: false,
 };
 Default.parameters = {
   docs: {
     description: {
-      story: "Default component shows features like selected ,not selected , animation in the component",
+      story:
+        "Default component shows features like selected ,not selected , animation in the component",
     },
     source: {
       code: `<MultiSelect 
@@ -430,8 +430,7 @@ export const AllVariants = AllVariantTemplate.bind({});
 AllVariants.parameters = {
   docs: {
     description: {
-      story:
-        "5 variants  is supported. Use as per purpose noted here.",
+      story: "5 variants  is supported. Use as per purpose noted here.",
     },
   },
 };
@@ -445,7 +444,7 @@ TranslatedMultiSelect.args = {
   withTranslation: {
     lang: "hi",
     tgt: "templateActions",
-    dictionary: dictionary
+    dictionary: dictionary,
   },
 };
 TranslatedMultiSelect.parameters = {

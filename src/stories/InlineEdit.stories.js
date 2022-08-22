@@ -64,16 +64,9 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div>
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div>{story()}</div>],
   parameters: {
-    componentSubtitle:
-      "Default InlineEdit for general purpose use",
+    componentSubtitle: "Default InlineEdit for general purpose use",
     a11y: { disable: true },
     docs: { iframeHeight: 100 },
   },
@@ -116,7 +109,7 @@ Default.parameters = {
         delay: 0,
       }}
       isHidden={false}
-      isDisabled={false}/>`
+      isDisabled={false}/>`,
     },
   },
 };
@@ -131,8 +124,7 @@ MultiLineEdit.args = {
 MultiLineEdit.parameters = {
   docs: {
     description: {
-      story:
-        "Use to show the multiLine editing state for the InlineEdit.",
+      story: "Use to show the multiLine editing state for the InlineEdit.",
     },
     source: {
       code: `<InlineEdit
@@ -195,8 +187,7 @@ AnimatedInlineEdit.parameters = {
 // -------------------------------------------------------------
 const AllVariantsTemplate = (args) => {
   const baseObj = {
-    ...Object.assign({}, Default.args, args, {
-    }),
+    ...Object.assign({}, Default.args, args, {}),
   };
   return (
     <div>
@@ -205,7 +196,7 @@ const AllVariantsTemplate = (args) => {
           withColor: {
             accentColor: "#ffbf00",
             backgroundColor: "#666666",
-          }
+          },
         })}
       />{" "}
       <br />
@@ -215,7 +206,7 @@ const AllVariantsTemplate = (args) => {
           withColor: {
             accentColor: "#589C48",
             backgroundColor: "#733381",
-          }
+          },
         })}
       />{" "}
     </div>
@@ -233,7 +224,7 @@ AllVariants.parameters = {
       withColor={{
         accentColor: "#589C48",
         backgroundColor: "#733381",
-      }}/>`
+      }}/>`,
     },
   },
 };

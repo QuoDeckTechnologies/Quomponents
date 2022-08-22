@@ -11,7 +11,7 @@ const dictionary = JSON.stringify({
         { title: "विषय पर जाएं" },
         { title: "डेक को अप्रकाशित करें" },
         { title: "डेक हटाएं" },
-      ]
+      ],
     },
   },
 });
@@ -116,43 +116,43 @@ Default.args = {
       title: "Open Deck",
       icon: "fas fa-book-open",
       popover: "Open Deck...",
-      onClick: () => { },
+      onClick: () => {},
     },
     {
       title: "Edit Deck",
       icon: "fas fa-edit",
       popover: "Edit Deck...",
-      onClick: () => { },
+      onClick: () => {},
     },
     {
       title: "Move Deck Up",
       icon: "fas fa-chevron-up",
       popover: "Move Deck Up...",
-      onClick: () => { },
+      onClick: () => {},
     },
     {
       title: "Move Deck Down",
       icon: "fas fa-chevron-down",
       popover: "Move Deck Down...",
-      onClick: () => { },
+      onClick: () => {},
     },
     {
       title: "Move to Topic",
       icon: "fas fa-retweet",
       popover: "Move to Topic...",
-      onClick: () => { },
+      onClick: () => {},
     },
     {
       title: "Unpublish Deck",
       icon: "fas fa-eye-slash",
       popover: "Unpublish Deck...",
-      onClick: () => { },
+      onClick: () => {},
     },
     {
       title: "Delete Deck",
       icon: "fas fa-trash-alt",
       popover: "Delete Deck...",
-      onClick: () => { },
+      onClick: () => {},
     },
   ],
   asPadded: "normal",
@@ -417,8 +417,7 @@ TranslatedActionMenu.args = {
 TranslatedActionMenu.parameters = {
   docs: {
     description: {
-      story:
-        "Use to change the language that the text appears in ActionMenu."
+      story: "Use to change the language that the text appears in ActionMenu.",
     },
     source: {
       code: `<ActionMenu 

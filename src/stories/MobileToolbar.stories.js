@@ -1,112 +1,111 @@
 import React from "react";
 import MobileToolbar from "../components/MobileToolbar/MobileToolbar.react";
 const dictionary = JSON.stringify({
-    hi: {
-        mobileToolbar: {
-            title: "संपादन मोड",
-            content: [
-                { label: "पाठ्यक्रम" },
-                { label: "नगेट्स" },
-                { label: "परीक्षण" },
-                { label: "प्रतियोगिता" },
-                { label: "संदेश" },
-            ]
-        },
+  hi: {
+    mobileToolbar: {
+      title: "संपादन मोड",
+      content: [
+        { label: "पाठ्यक्रम" },
+        { label: "नगेट्स" },
+        { label: "परीक्षण" },
+        { label: "प्रतियोगिता" },
+        { label: "संदेश" },
+      ],
     },
+  },
 });
 export default {
-    title: "Design System/MobileToolbar",
-    component: MobileToolbar,
-    argTypes: {
-        title: "Edit Mode",
-        content: [
-            {
-                icon: "",
-                label: "label1",
-                isActive: false,
-                link: "",
-            },
-        ],
-        asEmphasis: {
-            control: "select",
-            options: ["default", "editing"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        asVariant: {
-            control: "select",
-            options: ["primary", "secondary", "success", "warning", "error"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        withColor: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    textColor: "",
-                    backgroundColor: "",
-                    hoverTextColor: "",
-                },
-            },
-        },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
-                },
-            },
-        },
-        withTranslation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    lang: "",
-                    tgt: "",
-                    dictionary: "",
-                },
-            },
-        },
-        isHidden: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        isDisabled: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        onClick: {
-            table: {
-                category: "Events",
-                defaultValue: null,
-            },
-        },
-    },
-    decorators: [
-        (story) => (
-            <div
-                style={{
-                    textAlign: "center",
-                }}
-            >
-                {story()}
-            </div>
-        ),
+  title: "Design System/MobileToolbar",
+  component: MobileToolbar,
+  argTypes: {
+    title: "Edit Mode",
+    content: [
+      {
+        icon: "",
+        label: "label1",
+        isActive: false,
+        link: "",
+      },
     ],
-    parameters: {
-        componentSubtitle:
-            "Default MobileToolbar for general purpose use",
-        a11y: { disable: true },
-        docs: { iframeHeight: 150 },
+    asEmphasis: {
+      control: "select",
+      options: ["default", "editing"],
+      table: {
+        category: "as-Flags",
+      },
     },
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          textColor: "",
+          backgroundColor: "",
+          hoverTextColor: "",
+        },
+      },
+    },
+    withAnimation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          animation: "",
+          duration: 0,
+          delay: 0,
+        },
+      },
+    },
+    withTranslation: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          lang: "",
+          tgt: "",
+          dictionary: "",
+        },
+      },
+    },
+    isHidden: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
+    isDisabled: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
+    onClick: {
+      table: {
+        category: "Events",
+        defaultValue: null,
+      },
+    },
+  },
+  decorators: [
+    (story) => (
+      <div
+        style={{
+          textAlign: "center",
+        }}
+      >
+        {story()}
+      </div>
+    ),
+  ],
+  parameters: {
+    componentSubtitle: "Default MobileToolbar for general purpose use",
+    a11y: { disable: true },
+    docs: { iframeHeight: 150 },
+  },
 };
 
 // -------------------------------------------------------------
@@ -115,67 +114,68 @@ export default {
 const Template = (args) => <MobileToolbar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    title: "Edit Mode",
-    content: [
-        {
-            icon: "fa fa-receipt",
-            label: "Courses", format: "caption",
-            isActive: false,
-            link: "https://quodeck.com/",
-        },
-        {
-            icon: "fa fa-crown",
-            label: "Nuggets",
-            format: "caption",
-            isActive: false,
-            link: "https://www.google.com/",
-        },
-        {
-            icon: "fa fa-file",
-            label: "Test",
-            format: "caption",
-            isActive: false,
-            link: "https://github.com/",
-        },
-        {
-            icon: "fa fa-trophy",
-            label: "Contest",
-            format: "caption",
-            isActive: false,
-            link: "https://www.youtube.com/",
-        },
-        {
-            icon: "fa fa-envelope-open-text",
-            label: "Post",
-            format: "caption",
-            isActive: false,
-            link: "https://www.whatsapp.com/",
-        },
-    ],
-    asEmphasis: "default",
-    asVariant: "primary",
-    withColor: {
-        textColor: "#ffff00",
-        backgroundColor: "#121212",
-        hoverTextColor: "#ff30ff",
+  title: "Edit Mode",
+  content: [
+    {
+      icon: "fa fa-receipt",
+      label: "Courses",
+      format: "caption",
+      isActive: false,
+      link: "https://quodeck.com/",
     },
-    withAnimation: {
-        animation: "collapse",
-        duration: 0.5,
-        delay: 0,
+    {
+      icon: "fa fa-crown",
+      label: "Nuggets",
+      format: "caption",
+      isActive: false,
+      link: "https://www.google.com/",
     },
-    withTranslation: {
-        lang: "en",
-        tgt: "mobileToolbar",
-        dictionary: dictionary,
+    {
+      icon: "fa fa-file",
+      label: "Test",
+      format: "caption",
+      isActive: false,
+      link: "https://github.com/",
     },
-    isHidden: false,
-    isDisabled: false,
+    {
+      icon: "fa fa-trophy",
+      label: "Contest",
+      format: "caption",
+      isActive: false,
+      link: "https://www.youtube.com/",
+    },
+    {
+      icon: "fa fa-envelope-open-text",
+      label: "Post",
+      format: "caption",
+      isActive: false,
+      link: "https://www.whatsapp.com/",
+    },
+  ],
+  asEmphasis: "default",
+  asVariant: "primary",
+  withColor: {
+    textColor: "#ffff00",
+    backgroundColor: "#121212",
+    hoverTextColor: "#ff30ff",
+  },
+  withAnimation: {
+    animation: "collapse",
+    duration: 0.5,
+    delay: 0,
+  },
+  withTranslation: {
+    lang: "en",
+    tgt: "mobileToolbar",
+    dictionary: dictionary,
+  },
+  isHidden: false,
+  isDisabled: false,
 };
 Default.parameters = {
-    docs: {
-        source: {
-            code: `<MobileToolbar title= "Edit Mode"
+  docs: {
+    source: {
+      code: `<MobileToolbar title= "Edit Mode"
             content={[
                 {
                     icon: "fa fa-receipt",
@@ -227,8 +227,8 @@ Default.parameters = {
             isHidden= {false}
             isDisabled= {false}
             />`,
-        },
     },
+  },
 };
 
 //-------------------------------------------------------------
@@ -236,20 +236,20 @@ Default.parameters = {
 // -------------------------------------------------------------
 export const ColoredToolbar = Template.bind({});
 ColoredToolbar.args = {
-    ...Default.args,
-    withColor: {
-        backgroundColor: "#666666",
-        textColor: "#EB6146",
-        hoverTextColor: "#EB6146",
-    },
+  ...Default.args,
+  withColor: {
+    backgroundColor: "#666666",
+    textColor: "#EB6146",
+    hoverTextColor: "#EB6146",
+  },
 };
 ColoredToolbar.parameters = {
-    docs: {
-        description: {
-            story: "Use to override the standard colors of the component.",
-        },
-        source: {
-            code: `<MobileToolbar <MobileToolbar title= "Edit Mode"
+  docs: {
+    description: {
+      story: "Use to override the standard colors of the component.",
+    },
+    source: {
+      code: `<MobileToolbar <MobileToolbar title= "Edit Mode"
             content={[
                 {
                     icon: "fa fa-receipt",
@@ -301,8 +301,8 @@ ColoredToolbar.parameters = {
             isHidden= {false}
             isDisabled= {false}
             />/>`,
-        },
     },
+  },
 };
 
 //-------------------------------------------------------------
@@ -310,20 +310,20 @@ ColoredToolbar.parameters = {
 // -------------------------------------------------------------
 export const AnimatedToolbar = Template.bind({});
 AnimatedToolbar.args = {
-    ...Default.args,
-    withAnimation: {
-        animation: "slideDown",
-        duration: 1,
-        delay: 0,
-    },
+  ...Default.args,
+  withAnimation: {
+    animation: "slideDown",
+    duration: 1,
+    delay: 0,
+  },
 };
 AnimatedToolbar.parameters = {
-    docs: {
-        description: {
-            story: "We can animate the appearance of MobileToolbar",
-        },
-        source: {
-            code: `<MobileToolbar title= "Edit Mode"
+  docs: {
+    description: {
+      story: "We can animate the appearance of MobileToolbar",
+    },
+    source: {
+      code: `<MobileToolbar title= "Edit Mode"
             content={[
                 {
                     icon: "fa fa-receipt",
@@ -375,8 +375,8 @@ AnimatedToolbar.parameters = {
             isHidden= {false}
             isDisabled= {false}
             />`,
-        },
     },
+  },
 };
 
 // -------------------------------------------------------------
@@ -384,55 +384,55 @@ AnimatedToolbar.parameters = {
 // -------------------------------------------------------------
 export const WithoutLabelMobileToolbar = Template.bind({});
 WithoutLabelMobileToolbar.args = {
-    ...Default.args,
-    label: "",
-    content: [
-        {
-            icon: "fa fa-receipt",
-            label: "",
-            format: "label",
-            isActive: false,
-            link: "https://quodeck.com/",
-        },
-        {
-            icon: "fa fa-crown",
-            label: "",
-            format: "label",
-            isActive: false,
-            link: "https://www.google.com/",
-        },
-        {
-            icon: "fa fa-file",
-            label: "",
-            format: "label",
-            isActive: false,
-            link: "https://github.com/",
-        },
-        {
-            icon: "fa fa-trophy",
-            label: "",
-            format: "label",
-            isActive: false,
-            link: "https://www.youtube.com/",
-        },
-        {
-            icon: "fa fa-envelope-open-text",
-            label: "",
-            format: "label",
-            isActive: false,
-            link: "https://www.whatsapp.com/",
-        },
-    ],
-    asVariant: "warning"
+  ...Default.args,
+  label: "",
+  content: [
+    {
+      icon: "fa fa-receipt",
+      label: "",
+      format: "label",
+      isActive: false,
+      link: "https://quodeck.com/",
+    },
+    {
+      icon: "fa fa-crown",
+      label: "",
+      format: "label",
+      isActive: false,
+      link: "https://www.google.com/",
+    },
+    {
+      icon: "fa fa-file",
+      label: "",
+      format: "label",
+      isActive: false,
+      link: "https://github.com/",
+    },
+    {
+      icon: "fa fa-trophy",
+      label: "",
+      format: "label",
+      isActive: false,
+      link: "https://www.youtube.com/",
+    },
+    {
+      icon: "fa fa-envelope-open-text",
+      label: "",
+      format: "label",
+      isActive: false,
+      link: "https://www.whatsapp.com/",
+    },
+  ],
+  asVariant: "warning",
 };
 WithoutLabelMobileToolbar.parameters = {
-    docs: {
-        description: {
-            story:
-                "Show MobileToolbar component without caption/label with asVarient:'warning'",
-        },
-        source: {
-            code: `<MobileToolbar title= "Edit Mode"
+  docs: {
+    description: {
+      story:
+        "Show MobileToolbar component without caption/label with asVarient:'warning'",
+    },
+    source: {
+      code: `<MobileToolbar title= "Edit Mode"
             content={[
                 {
                     icon: "fa fa-receipt",
@@ -485,8 +485,8 @@ WithoutLabelMobileToolbar.parameters = {
             isHidden= {false}
             isDisabled= {false}
             />`,
-        },
     },
+  },
 };
 
 // -------------------------------------------------------------
@@ -494,50 +494,50 @@ WithoutLabelMobileToolbar.parameters = {
 // -------------------------------------------------------------
 export const IconsWithPopoverFormatMobilteToolbar = Template.bind({});
 IconsWithPopoverFormatMobilteToolbar.args = {
-    ...Default.args,
-    content: [
-        {
-            icon: "fa fa-receipt",
-            label: "Courses",
-            format: "popover",
-            isActive: false,
-            link: "https://quodeck.com/",
-        },
-        {
-            icon: "fa fa-crown",
-            label: "Nuggets",
-            format: "popover",
-            isActive: false,
-            link: "https://www.google.com/",
-        },
-        {
-            icon: "fa fa-file",
-            label: "Test",
-            format: "popover",
-            isActive: false,
-            link: "https://github.com/",
-        },
-        {
-            icon: "fa fa-trophy",
-            label: "Contest",
-            format: "popover",
-            isActive: false,
-            link: "https://www.youtube.com/",
-        },
-        {
-            icon: "fa fa-envelope-open-text",
-            label: "Post",
-            format: "popover",
-            isActive: false,
-            link: "https://www.whatsapp.com/",
-        },
-    ],
-    asEmphasis: "default",
+  ...Default.args,
+  content: [
+    {
+      icon: "fa fa-receipt",
+      label: "Courses",
+      format: "popover",
+      isActive: false,
+      link: "https://quodeck.com/",
+    },
+    {
+      icon: "fa fa-crown",
+      label: "Nuggets",
+      format: "popover",
+      isActive: false,
+      link: "https://www.google.com/",
+    },
+    {
+      icon: "fa fa-file",
+      label: "Test",
+      format: "popover",
+      isActive: false,
+      link: "https://github.com/",
+    },
+    {
+      icon: "fa fa-trophy",
+      label: "Contest",
+      format: "popover",
+      isActive: false,
+      link: "https://www.youtube.com/",
+    },
+    {
+      icon: "fa fa-envelope-open-text",
+      label: "Post",
+      format: "popover",
+      isActive: false,
+      link: "https://www.whatsapp.com/",
+    },
+  ],
+  asEmphasis: "default",
 };
 IconsWithPopoverFormatMobilteToolbar.parameters = {
-    docs: {
-        source: {
-            code: `<MobileToolbar <MobileToolbar title= "Edit Mode"
+  docs: {
+    source: {
+      code: `<MobileToolbar <MobileToolbar title= "Edit Mode"
             content={[
                 {
                     icon: "fa fa-receipt",
@@ -590,8 +590,8 @@ IconsWithPopoverFormatMobilteToolbar.parameters = {
             isHidden= {false}
             isDisabled= {false}
             />/>`,
-        },
     },
+  },
 };
 
 // -------------------------------------------------------------
@@ -599,50 +599,50 @@ IconsWithPopoverFormatMobilteToolbar.parameters = {
 // -------------------------------------------------------------
 export const IconsWithCaptionMobilteToolbar = Template.bind({});
 IconsWithCaptionMobilteToolbar.args = {
-    ...Default.args,
-    content: [
-        {
-            icon: "fa fa-receipt",
-            label: "Courses",
-            format: "label",
-            isActive: false,
-            link: "https://quodeck.com/",
-        },
-        {
-            icon: "fa fa-crown",
-            label: "Nuggets",
-            format: "label",
-            isActive: false,
-            link: "https://www.google.com/",
-        },
-        {
-            icon: "fa fa-file",
-            label: "Test",
-            format: "label",
-            isActive: false,
-            link: "https://github.com/",
-        },
-        {
-            icon: "fa fa-trophy",
-            label: "Contest",
-            format: "label",
-            isActive: false,
-            link: "https://www.youtube.com/",
-        },
-        {
-            icon: "fa fa-envelope-open-text",
-            label: "Post",
-            format: "label",
-            isActive: false,
-            link: "https://www.whatsapp.com/",
-        },
-    ],
-    asEmphasis: "default",
+  ...Default.args,
+  content: [
+    {
+      icon: "fa fa-receipt",
+      label: "Courses",
+      format: "label",
+      isActive: false,
+      link: "https://quodeck.com/",
+    },
+    {
+      icon: "fa fa-crown",
+      label: "Nuggets",
+      format: "label",
+      isActive: false,
+      link: "https://www.google.com/",
+    },
+    {
+      icon: "fa fa-file",
+      label: "Test",
+      format: "label",
+      isActive: false,
+      link: "https://github.com/",
+    },
+    {
+      icon: "fa fa-trophy",
+      label: "Contest",
+      format: "label",
+      isActive: false,
+      link: "https://www.youtube.com/",
+    },
+    {
+      icon: "fa fa-envelope-open-text",
+      label: "Post",
+      format: "label",
+      isActive: false,
+      link: "https://www.whatsapp.com/",
+    },
+  ],
+  asEmphasis: "default",
 };
 IconsWithCaptionMobilteToolbar.parameters = {
-    docs: {
-        source: {
-            code: `<MobileToolbar title= "Edit Mode"
+  docs: {
+    source: {
+      code: `<MobileToolbar title= "Edit Mode"
             content={[
                 {
                     icon: "fa fa-receipt",
@@ -695,44 +695,43 @@ IconsWithCaptionMobilteToolbar.parameters = {
             isHidden= {false}
             isDisabled= {false}
             />`,
-        },
     },
+  },
 };
-
 
 // -------------------------------------------------------------
 // MobileToolbarWithAllVariants
 // -------------------------------------------------------------
 const MobileToolbarWithAllVariantsTemplate = (args) => {
-    const baseObj = {
-        ...Object.assign({}, Default.args, args, {
-        }),
-    };
-    return (
-        <div>
-            <MobileToolbar
-                {...Object.assign({}, baseObj, {
-                    asVariant: "primary",
-                    asEmphasis: "default"
-                })}
-            />
-            <MobileToolbar
-                {...Object.assign({}, baseObj, {
-                    asVariant: "secondary",
-                    asEmphasis: "editing"
-                })}
-            />
-        </div>
-    );
+  const baseObj = {
+    ...Object.assign({}, Default.args, args, {}),
+  };
+  return (
+    <div>
+      <MobileToolbar
+        {...Object.assign({}, baseObj, {
+          asVariant: "primary",
+          asEmphasis: "default",
+        })}
+      />
+      <MobileToolbar
+        {...Object.assign({}, baseObj, {
+          asVariant: "secondary",
+          asEmphasis: "editing",
+        })}
+      />
+    </div>
+  );
 };
-export const MobileToolbarWithAllVariants = MobileToolbarWithAllVariantsTemplate.bind({});
+export const MobileToolbarWithAllVariants =
+  MobileToolbarWithAllVariantsTemplate.bind({});
 MobileToolbarWithAllVariants.parameters = {
-    docs: {
-        description: {
-            story: "all variants are supported in MobileToolbar.",
-        },
-        source: {
-            code: `<MobileToolbar title= "Edit Mode"
+  docs: {
+    description: {
+      story: "all variants are supported in MobileToolbar.",
+    },
+    source: {
+      code: `<MobileToolbar title= "Edit Mode"
             content={[
                 {
                     icon: "fa fa-receipt",
@@ -785,8 +784,8 @@ MobileToolbarWithAllVariants.parameters = {
             isHidden= {false}
             isDisabled= {false}
             />`,
-        },
     },
+  },
 };
 
 // -------------------------------------------------------------
@@ -794,21 +793,21 @@ MobileToolbarWithAllVariants.parameters = {
 // -------------------------------------------------------------
 export const TranslatedMobileToolbar = Template.bind({});
 TranslatedMobileToolbar.args = {
-    ...Default.args,
-    withTranslation: {
-        lang: "hi",
-        tgt: "mobileToolbar",
-        dictionary: dictionary,
-    },
+  ...Default.args,
+  withTranslation: {
+    lang: "hi",
+    tgt: "mobileToolbar",
+    dictionary: dictionary,
+  },
 };
 TranslatedMobileToolbar.parameters = {
-    docs: {
-        description: {
-            story:
-                "Use to change the language that the text appears in MobileToolbar. ",
-        },
-        source: {
-            code: `<MobileToolbar title= "Edit Mode"
+  docs: {
+    description: {
+      story:
+        "Use to change the language that the text appears in MobileToolbar. ",
+    },
+    source: {
+      code: `<MobileToolbar title= "Edit Mode"
             content={[
                 {
                     icon: "fa fa-receipt",
@@ -860,6 +859,6 @@ TranslatedMobileToolbar.parameters = {
             isHidden= {false}
             isDisabled= {false}
             />`,
-        },
     },
+  },
 };

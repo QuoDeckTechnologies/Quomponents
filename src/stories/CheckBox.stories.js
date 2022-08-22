@@ -156,12 +156,12 @@ Default.parameters = {
             lang: "en",
             tgt: "checkBox",
             dictionary: ${JSON.stringify({
-        hi: {
-          checkBox: {
-            label: "डिफ़ॉल्ट चेकबॉक्स",
-          },
-        },
-      })},
+              hi: {
+                checkBox: {
+                  label: "डिफ़ॉल्ट चेकबॉक्स",
+                },
+              },
+            })},
           }}
           isDisabled={false}
           isHidden={false}
@@ -181,7 +181,7 @@ ReadOnlyCheckBox.args = {
   checked: true,
   isDisabled: true,
   isHidden: false,
-  asSize: "massive"
+  asSize: "massive",
 };
 ReadOnlyCheckBox.parameters = {
   docs: {
@@ -497,12 +497,12 @@ TranslatedCheckBox.parameters = {
             lang: "hi",
             tgt: "checkBox",
             dictionary: ${JSON.stringify({
-        hi: {
-          checkBox: {
-            label: "डिफ़ॉल्ट चेकबॉक्स",
-          },
-        },
-      })},
+              hi: {
+                checkBox: {
+                  label: "डिफ़ॉल्ट चेकबॉक्स",
+                },
+              },
+            })},
           }}
           isDisabled={false}
           isHidden={false}

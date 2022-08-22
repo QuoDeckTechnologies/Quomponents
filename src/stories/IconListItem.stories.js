@@ -46,13 +46,7 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div>
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div>{story()}</div>],
   parameters: {
     componentSubtitle:
       "Displays a basic image and title for general-purpose use",
@@ -95,18 +89,20 @@ Default.args = {
     {
       image: { id: "iconlist-image", extention: "" },
       text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
-    }
+    },
   ],
   imageLibrary: [
     {
       id: "iconlist-image",
-      image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
+      image:
+        "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
     },
     {
       id: "iconlistitem",
       image:
         "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
-    }],
+    },
+  ],
   asEmphasis: "conversation",
   asVariant: "primary",
   withColor: {
@@ -122,8 +118,7 @@ Default.args = {
 Default.parameters = {
   docs: {
     description: {
-      story:
-        "Displays a basic IconListItem for general-purpose use'",
+      story: "Displays a basic IconListItem for general-purpose use'",
     },
     source: {
       code: `<IconListItem
@@ -176,8 +171,7 @@ IconListItemAsList.args = {
 IconListItemAsList.parameters = {
   docs: {
     description: {
-      story:
-        "Use to show the list state for the IconListItem.",
+      story: "Use to show the list state for the IconListItem.",
     },
     source: {
       code: `
