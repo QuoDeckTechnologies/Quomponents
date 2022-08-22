@@ -12,13 +12,17 @@
 .qui-landscape-slick-next {
   color: #666666;
 }
-.qui-landscape-carousel-container .qui-landscape-slide-container .qui-slider-card-box {
+.qui-landscape-carousel-container
+  .qui-landscape-slide-container
+  .qui-slider-card-box {
   opacity: 1;
 }
 .qui-landscape-slide-container .qui-banner-card .qui-slider-card-box-header {
   text-align: center;
 }
-.qui-landscape-carousel-container .qui-landscape-slide-container .qui-slider-card-box-header {
+.qui-landscape-carousel-container
+  .qui-landscape-slide-container
+  .qui-slider-card-box-header {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -110,7 +114,9 @@
     margin: auto;
     z-index: 1;
   }
-  .qui-landscape-carousel-container .qui-banner-card .qui-slider-card-box-content {
+  .qui-landscape-carousel-container
+    .qui-banner-card
+    .qui-slider-card-box-content {
     display: none;
   }
 

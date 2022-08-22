@@ -200,8 +200,9 @@ export default function ContentTableRow(props) {
       >
         <div className="qui-content-table-checkbox-container">
           <i
-            className={`${isChecked ? "fas fa-check-square" : "far fa-square"
-              } qui-content-checkbox`}
+            className={`${
+              isChecked ? "fas fa-check-square" : "far fa-square"
+            } qui-content-checkbox`}
             style={{ color: withColor?.accentColor }}
             onClick={() => setIsChecked((prevState) => !prevState)}
           ></i>

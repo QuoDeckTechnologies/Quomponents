@@ -52,40 +52,40 @@ export default function EnrollmentRuleRow(props) {
   // ========================= Render Function =================================
 
   return (
-    <div
-      className={`qui ${quommonClasses.parentClasses}`}
-    >
-      {criteria && <div
-        className="qui-enrollment-list-element"
-        style={{ backgroundColor: props.withColor?.backgroundColor }}
-      >
-        <div className="qui-enrollment-rule-criteria-container">
-          {_.map(criteria && Object.values(criteria), (element, index) => {
-            return (
-              <p
-                className="qui-enrollment-rule"
-                key={index}
-                style={{
-                  backgroundColor: props.withColor?.accentColor,
-                  color: props.withColor?.textColor,
-                }}
-              >
-                {element}
-              </p>
-            );
-          })}
+    <div className={`qui ${quommonClasses.parentClasses}`}>
+      {criteria && (
+        <div
+          className="qui-enrollment-list-element"
+          style={{ backgroundColor: props.withColor?.backgroundColor }}
+        >
+          <div className="qui-enrollment-rule-criteria-container">
+            {_.map(criteria && Object.values(criteria), (element, index) => {
+              return (
+                <p
+                  className="qui-enrollment-rule"
+                  key={index}
+                  style={{
+                    backgroundColor: props.withColor?.accentColor,
+                    color: props.withColor?.textColor,
+                  }}
+                >
+                  {element}
+                </p>
+              );
+            })}
+          </div>
+          <div className="qui-enrollment-icons">
+            <i
+              className="fas fa-play"
+              onClick={(e) => props.onRunRule(criteria)}
+            ></i>
+            <i
+              className="fas fa-times"
+              onClick={(e) => props.onRemoveRule(criteria)}
+            ></i>
+          </div>
         </div>
-        <div className="qui-enrollment-icons">
-          <i
-            className="fas fa-play"
-            onClick={(e) => props.onRunRule(criteria)}
-          ></i>
-          <i
-            className="fas fa-times"
-            onClick={(e) => props.onRemoveRule(criteria)}
-          ></i>
-        </div>
-      </div>}
+      )}
     </div>
   );
 }

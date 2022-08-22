@@ -31,10 +31,17 @@ CheckBox.propTypes = {
   /**
   Use to define component text size in increasing order
   */
-  asSize: PropTypes.oneOf(["tiny", "small", "normal", "big", "huge", "massive"]),
+  asSize: PropTypes.oneOf([
+    "tiny",
+    "small",
+    "normal",
+    "big",
+    "huge",
+    "massive",
+  ]),
   /**
-    Use to define component padding in increasing order
-    */
+  Use to define component padding in increasing order
+  */
   asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
   /**
   Use to float the component in parent container

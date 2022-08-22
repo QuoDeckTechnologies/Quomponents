@@ -16,8 +16,8 @@ SquareWrapperCarousel.propTypes = {
   // Quommon props
   //=======================================
   /**
-    SquareWrapperCarousel data should be passed in content field and it is required field
-    */
+  SquareWrapperCarousel data should be passed in content field and it is required field
+  */
   content: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string,
@@ -36,8 +36,8 @@ SquareWrapperCarousel.propTypes = {
     dictionary: PropTypes.string,
   }),
   /**
-    SquareWrapperCarousel component must have the onClick function passed as props
-    */
+  SquareWrapperCarousel component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 SquareWrapperCarousel.defaultProps = {
@@ -82,7 +82,7 @@ export default function SquareWrapperCarousel(props) {
       if (slide.selected) {
         onClick(slide);
       }
-    })
+    });
   }, [carouselContent, onClick]);
   //-------------------------------------------------------------------
   // 5. Function to handle slide selection
@@ -136,10 +136,15 @@ export default function SquareWrapperCarousel(props) {
             >
               <div className={`qui-square-wrapper-slide `}>
                 {slide.selected && slide?.header && (
-                  <div className={`qui-mid-circle qui-btn variant-${slide.props?.asVariant}`} style={{
-                    backgroundColor: slide.props?.withColor?.backgroundColor ? slide.props?.withColor?.backgroundColor : "#666",
-                    color: slide.props?.withColor?.textColor
-                  }}>
+                  <div
+                    className={`qui-mid-circle qui-btn variant-${slide.props?.asVariant}`}
+                    style={{
+                      backgroundColor: slide.props?.withColor?.backgroundColor
+                        ? slide.props?.withColor?.backgroundColor
+                        : "#666",
+                      color: slide.props?.withColor?.textColor,
+                    }}
+                  >
                     <div className="qui-square-wrapper-checkbox">
                       <i className={"fas fa-check-square"}></i>
                     </div>

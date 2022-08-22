@@ -127,8 +127,9 @@ export default function ClickableImage(props) {
     >
       <img
         src={image ? image : defaultImage}
-        className={`${quommonClasses.childClasses} ${active ? `qui-active-image-click` : `qui-clicked-on-image`
-          } qui-image-clickable qt-shadow`}
+        className={`${quommonClasses.childClasses} ${
+          active ? `qui-active-image-click` : `qui-clicked-on-image`
+        } qui-image-clickable qt-shadow`}
         alt="ClickableImage"
         onClick={(e) => handleClick(e)}
         style={{ borderColor: props.withColor?.borderColor }}

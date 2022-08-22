@@ -2,242 +2,252 @@
 /* DateField Definitions */
 /* ================================================= */
 .qui .qui-date-field-container {
-    width: 15.2em;
+  width: 15.2em;
 }
 
 .qui .qui-date-field {
-    width: 100%;
-    text-align: left;
-    position: relative;
-    padding: 0.8em 1em 0.8em 1em;
-    border-top-left-radius: 1em;
-    border-top-right-radius: 1em;
-    border-bottom: 0.4em solid;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  padding: 0.8em 1em 0.8em 1em;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  border-bottom: 0.4em solid;
 }
 
 .qui .qui-date-field-label {
-    max-width: 27ch;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: left;
-    padding-left: 0.1em;
-    padding-bottom: 0.5em;
+  max-width: 27ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  padding-left: 0.1em;
+  padding-bottom: 0.5em;
 }
 
 .qui .react-datepicker__input-container {
-    width: 75%;
+  width: 75%;
 }
 
 .qui .qui-date-field-date-picker {
-    font-size: 1em;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    // pointer-events: none;
-    // caret-color: transparent;
+  font-size: 1em;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
 .qui .qui-calendar-icon {
-    cursor: pointer;
-    position: absolute;
-    right: 7%;
-    top: 30%;
-    font-size: 2em;
-    -webkit-text-stroke: 0.06em #000000;
+  cursor: pointer;
+  position: absolute;
+  right: 7%;
+  top: 30%;
+  font-size: 2em;
+  -webkit-text-stroke: 0.06em #000000;
 }
 
 .qui .qui-date-field .react-datepicker {
-    .react-datepicker__time-container
-        .react-datepicker__time
-        .react-datepicker__time-box
-        ul.react-datepicker__time-list
-        li.react-datepicker__time-list-item {
-        height: 1.8em;
-        padding: 0;
-    }
-    .react-datepicker__time-container
-        .react-datepicker__time
-        .react-datepicker__time-box
-        ul.react-datepicker__time-list
-        li.react-datepicker__time-list-item--selected {
-        height: 1.5em;
-    }
-    li {
-        margin-bottom: 0em;
-    }
+  .react-datepicker__time-container
+    .react-datepicker__time
+    .react-datepicker__time-box
+    ul.react-datepicker__time-list
+    li.react-datepicker__time-list-item {
+    height: 1.8em;
+    padding: 0;
+  }
+  .react-datepicker__time-container
+    .react-datepicker__time
+    .react-datepicker__time-box
+    ul.react-datepicker__time-list
+    li.react-datepicker__time-list-item--selected {
+    height: 1.5em;
+  }
+  li {
+    margin-bottom: 0em;
+  }
 }
 /* ================================================= */
 /* Sizing Definitions for different resolution */
 /* ================================================= */
 .qui .qui-date-field-container {
-    &.size-tiny {
-        .react-datepicker-popper {
-            margin: -1em;
-            padding-top: 2.25em;
-            .react-datepicker__day-name,
-            .react-datepicker__day,
-            .react-datepicker__time-name {
-                width: 1em;
-            }
-            .react-datepicker__month-container {
-                width: 11.45em;
-                font-size: 0.85em;
-            }
-            .react-datepicker__time-container {
-                width: 3.5em;
-            }
-            .react-datepicker {
-                width: 13.4em;
-            }
-            .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
-                width: 4em;
-                font-size: 0.85em;
-            }
-            .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
-                right: 3em;
-            }
-        }
+  &.size-tiny {
+    .react-datepicker-popper {
+      margin: -1em;
+      padding-top: 2.25em;
+      .react-datepicker__day-name,
+      .react-datepicker__day,
+      .react-datepicker__time-name {
+        width: 1em;
+      }
+      .react-datepicker__month-container {
+        width: 11.45em;
+        font-size: 0.85em;
+      }
+      .react-datepicker__time-container {
+        width: 3.5em;
+      }
+      .react-datepicker {
+        width: 13.4em;
+      }
+      .react-datepicker__time-container
+        .react-datepicker__time
+        .react-datepicker__time-box {
+        width: 4em;
+        font-size: 0.85em;
+      }
+      .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
+        right: 3em;
+      }
     }
+  }
 
-    &.size-small {
-        .react-datepicker-popper {
-            margin: -1.1em;
-            padding-top: 2.4em;
-            .react-datepicker__day-name,
-            .react-datepicker__day,
-            .react-datepicker__time-name {
-                width: 1.2em;
-            }
-            .react-datepicker__month-container {
-                width: 11.6em;
-            }
-            .react-datepicker__time-container {
-                width: 4.5em;
-            }
-            .react-datepicker {
-                width: 16.35em;
-            }
-            .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
-                width: 4.5em;
-            }
-            .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
-                right: 3.9em;
-            }
-        }
+  &.size-small {
+    .react-datepicker-popper {
+      margin: -1.1em;
+      padding-top: 2.4em;
+      .react-datepicker__day-name,
+      .react-datepicker__day,
+      .react-datepicker__time-name {
+        width: 1.2em;
+      }
+      .react-datepicker__month-container {
+        width: 11.6em;
+      }
+      .react-datepicker__time-container {
+        width: 4.5em;
+      }
+      .react-datepicker {
+        width: 16.35em;
+      }
+      .react-datepicker__time-container
+        .react-datepicker__time
+        .react-datepicker__time-box {
+        width: 4.5em;
+      }
+      .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
+        right: 3.9em;
+      }
     }
+  }
 
-    &.size-normal {
-        .react-datepicker-popper {
-            margin: -1em;
-            padding-top: 2.25em;
-            .react-datepicker__day-name,
-            .react-datepicker__day,
-            .react-datepicker__time-name {
-                width: 1.6em;
-            }
-            .react-datepicker__month-container {
-                width: 14.3em;
-            }
-            .react-datepicker__time-container {
-                width: 4.5em;
-            }
-            .react-datepicker {
-                width: 19em;
-            }
-            .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
-                width: 4.7em;
-            }
-            .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
-                right: 4.5em;
-            }
-        }
+  &.size-normal {
+    .react-datepicker-popper {
+      margin: -1em;
+      padding-top: 2.25em;
+      .react-datepicker__day-name,
+      .react-datepicker__day,
+      .react-datepicker__time-name {
+        width: 1.6em;
+      }
+      .react-datepicker__month-container {
+        width: 14.3em;
+      }
+      .react-datepicker__time-container {
+        width: 4.5em;
+      }
+      .react-datepicker {
+        width: 19em;
+      }
+      .react-datepicker__time-container
+        .react-datepicker__time
+        .react-datepicker__time-box {
+        width: 4.7em;
+      }
+      .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
+        right: 4.5em;
+      }
     }
+  }
 
-    &.size-big {
-        .react-datepicker-popper {
-            margin: -1em;
-            padding-top: 2.25em;
-            .react-datepicker__day-name,
-            .react-datepicker__day,
-            .react-datepicker__time-name {
-                width: 1.85em;
-            }
-            .react-datepicker__month-container {
-                width: 16em;
-                font-size: 1.2em;
-            }
-            .react-datepicker__time-container {
-                width: 4.7em;
-            }
-            .react-datepicker {
-                width: 24.15em;
-            }
-            .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
-                width: 3.8em;
-                font-size: 1.2em;
-            }
-            .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
-                right: 4.5em;
-            }
-        }
+  &.size-big {
+    .react-datepicker-popper {
+      margin: -1em;
+      padding-top: 2.25em;
+      .react-datepicker__day-name,
+      .react-datepicker__day,
+      .react-datepicker__time-name {
+        width: 1.85em;
+      }
+      .react-datepicker__month-container {
+        width: 16em;
+        font-size: 1.2em;
+      }
+      .react-datepicker__time-container {
+        width: 4.7em;
+      }
+      .react-datepicker {
+        width: 24.15em;
+      }
+      .react-datepicker__time-container
+        .react-datepicker__time
+        .react-datepicker__time-box {
+        width: 3.8em;
+        font-size: 1.2em;
+      }
+      .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
+        right: 4.5em;
+      }
     }
+  }
 
-    &.size-huge {
-        .react-datepicker-popper {
-            margin: -1em;
-            padding-top: 2.25em;
-            .react-datepicker__day-name,
-            .react-datepicker__day,
-            .react-datepicker__time-name {
-                width: 2em;
-            }
-            .react-datepicker__month-container {
-                width: 17em;
-                font-size: 1.3em;
-            }
-            .react-datepicker__time-container {
-                width: 6em;
-            }
-            .react-datepicker {
-                width: 28.3em;
-            }
-            .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
-                width: 4.7em;
-                font-size: 1.3em;
-            }
-            .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
-                right: 6em;
-            }
-        }
+  &.size-huge {
+    .react-datepicker-popper {
+      margin: -1em;
+      padding-top: 2.25em;
+      .react-datepicker__day-name,
+      .react-datepicker__day,
+      .react-datepicker__time-name {
+        width: 2em;
+      }
+      .react-datepicker__month-container {
+        width: 17em;
+        font-size: 1.3em;
+      }
+      .react-datepicker__time-container {
+        width: 6em;
+      }
+      .react-datepicker {
+        width: 28.3em;
+      }
+      .react-datepicker__time-container
+        .react-datepicker__time
+        .react-datepicker__time-box {
+        width: 4.7em;
+        font-size: 1.3em;
+      }
+      .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
+        right: 6em;
+      }
     }
+  }
 
-    &.size-massive {
-        .react-datepicker-popper {
-            margin: -1em;
-            padding-top: 2.25em;
-            .react-datepicker__day-name,
-            .react-datepicker__day,
-            .react-datepicker__time-name {
-                width: 2.5em;
-            }
-            .react-datepicker__month-container {
-                width: 20em;
-                font-size: 1.5em;
-            }
-            .react-datepicker__time-container {
-                width: 8em;
-            }
-            .react-datepicker {
-                width: 38.2em;
-            }
-            .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
-                width: 5.5em;
-                font-size: 1.5em;
-            }
-            .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
-                right: 8em;
-            }
-        }
+  &.size-massive {
+    .react-datepicker-popper {
+      margin: -1em;
+      padding-top: 2.25em;
+      .react-datepicker__day-name,
+      .react-datepicker__day,
+      .react-datepicker__time-name {
+        width: 2.5em;
+      }
+      .react-datepicker__month-container {
+        width: 20em;
+        font-size: 1.5em;
+      }
+      .react-datepicker__time-container {
+        width: 8em;
+      }
+      .react-datepicker {
+        width: 38.2em;
+      }
+      .react-datepicker__time-container
+        .react-datepicker__time
+        .react-datepicker__time-box {
+        width: 5.5em;
+        font-size: 1.5em;
+      }
+      .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
+        right: 8em;
+      }
     }
+  }
 }

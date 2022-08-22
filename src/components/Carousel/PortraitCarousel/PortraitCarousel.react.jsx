@@ -10,13 +10,14 @@ import "../../../common/stylesheets/common.css";
 import "./PortraitCarousel.scss";
 import "../../../common/stylesheets/overrule.scss";
 import BannerCard from "../BannerCard/BannerCard.react";
+
 PortraitCarousel.propTypes = {
   //=======================================
   // Quommon props
   //=======================================
   /**
-    PortraitCarousel data should be passed in content field and it is required field
-    */
+  PortraitCarousel data should be passed in content field and it is required field
+  */
   content: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string,
@@ -27,12 +28,13 @@ PortraitCarousel.propTypes = {
     })
   ).isRequired,
   /**
-    PortraitCarousel component must have the onClick function passed as props
-    */
+  PortraitCarousel component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
 PortraitCarousel.defaultProps = {
+  //=======================================
   // Component Specific props
   //=======================================
   content: [],
@@ -73,7 +75,7 @@ export default function PortraitCarousel(props) {
       if (slide.selected) {
         onClick(slide);
       }
-    })
+    });
   }, [carouselContent, onClick]);
   //-------------------------------------------------------------------
   // 6. Function to handle slide selection
@@ -122,14 +124,17 @@ export default function PortraitCarousel(props) {
               className="qui-portrait-slide-container"
               key={"slider-" + index + Math.random()}
             >
-              <div
-                className={`qui-portrait-slide`}
-              >
+              <div className={`qui-portrait-slide`}>
                 {slide.selected && slide?.header && (
-                  <div className={`qui-mid-circle qui-btn variant-${slide.props?.asVariant}`} style={{
-                    backgroundColor: slide.props?.withColor?.backgroundColor ? slide.props?.withColor?.backgroundColor : "#666",
-                    color: slide.props?.withColor?.textColor
-                  }}>
+                  <div
+                    className={`qui-mid-circle qui-btn variant-${slide.props?.asVariant}`}
+                    style={{
+                      backgroundColor: slide.props?.withColor?.backgroundColor
+                        ? slide.props?.withColor?.backgroundColor
+                        : "#666",
+                      color: slide.props?.withColor?.textColor,
+                    }}
+                  >
                     <div className="qui-portrait-checkbox">
                       <i className={"fas fa-check-square"}></i>
                     </div>
@@ -138,7 +143,9 @@ export default function PortraitCarousel(props) {
                 <BannerCard
                   {...slide.props}
                   {...slide}
-                  header={slide?.header} image={slide?.image} tag={slide.tag}
+                  header={slide?.header}
+                  image={slide?.image}
+                  tag={slide.tag}
                   onClick={(slideData) => handleSelect(slideData)}
                 />
               </div>

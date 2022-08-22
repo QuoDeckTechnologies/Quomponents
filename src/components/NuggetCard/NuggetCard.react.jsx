@@ -1,10 +1,8 @@
 // Import npm packages
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-
 import { getQuommons } from "../../common/javascripts/helpers.js";
 import _ from "lodash";
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./NuggetCard.scss";
@@ -42,71 +40,71 @@ import Nugget_Webinar from "../../assets/nuggets/nugget_webinar.png";
 import Nugget_Gallery from "../../assets/nuggets/nugget_gallery.png";
 
 NuggetCard.propTypes = {
-	//=======================================
-	// Component Specific props
-	//=======================================
-	/*
-	consist of all the data which are required for Nugget Card component
-	*/
-	published: PropTypes.bool,
-	category: PropTypes.oneOf([
-		"quiz",
-		"assessment",
-		"game",
-		"profiler",
-		"recommendation",
-		"calculator",
-		"survey",
-		"poll",
-		"feedback",
-		"submission",
-		"linklist",
-		"article",
-		"document",
-		"video",
-		"story",
-		"event",
-		"news",
-		"webinar",
-		"gallery",
-		"faq",
-	]),
-	tags: PropTypes.arrayOf(PropTypes.string),
-	name: PropTypes.string,
-	description: PropTypes.string,
-	link: PropTypes.string,
-	image: PropTypes.string,
-	points: PropTypes.string,
-	identifier: PropTypes.string,
-	// Quommon props
-	//=======================================
-	/**
-	Use to float the component in parent container
-	*/
-	asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-	/**
-	Use to show/hide the component
-	*/
-	isHidden: PropTypes.bool,
-	/**
-	Use to enable/disable the component
-	*/
-	isDisabled: PropTypes.bool,
-	/**
-	Component must have the onClick function passed as props
-	*/
-	onClick: PropTypes.func.isRequired,
+  //=======================================
+  // Component Specific props
+  //=======================================
+  /*
+  consist of all the data which are required for Nugget Card component
+  */
+  published: PropTypes.bool,
+  category: PropTypes.oneOf([
+    "quiz",
+    "assessment",
+    "game",
+    "profiler",
+    "recommendation",
+    "calculator",
+    "survey",
+    "poll",
+    "feedback",
+    "submission",
+    "linklist",
+    "article",
+    "document",
+    "video",
+    "story",
+    "event",
+    "news",
+    "webinar",
+    "gallery",
+    "faq",
+  ]),
+  tags: PropTypes.arrayOf(PropTypes.string),
+  name: PropTypes.string,
+  description: PropTypes.string,
+  link: PropTypes.string,
+  image: PropTypes.string,
+  points: PropTypes.string,
+  identifier: PropTypes.string,
+  //=======================================
+  // Quommon props
+  //=======================================
+  /**
+  Use to float the component in parent container
+  */
+  asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+  /**
+  Use to show/hide the component
+  */
+  isHidden: PropTypes.bool,
+  /**
+  Use to enable/disable the component
+  */
+  isDisabled: PropTypes.bool,
+  /**
+  Component must have the onClick function passed as props
+  */
+  onClick: PropTypes.func.isRequired,
 };
 
 NuggetCard.defaultProps = {
-	// Component Specific props
-	//=======================================
-	// Quommon props
-	//=======================================
-	asFloated: "inline",
-	isHidden: false,
-	isDisabled: false,
-	onClick: null,
+  //=======================================
+  // Quommon props
+  //=======================================
+  asFloated: "inline",
+  isHidden: false,
+  isDisabled: false,
+  onClick: null,
 };
 
 /**
@@ -117,283 +115,293 @@ NuggetCard.defaultProps = {
 **/
 
 export default function NuggetCard(props) {
-	//-------------------------------------------------------------------
-	// 1. Set the classes
-	//-------------------------------------------------------------------
-	let quommonClasses = getQuommons(props, "nugget-card");
+  //-------------------------------------------------------------------
+  // 1. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "nugget-card");
+  //-------------------------------------------------------------------
+  // 2. Get the Image
+  //-------------------------------------------------------------------
+  let image = props?.image ? props?.image : defaultImage;
+  //-------------------------------------------------------------------
+  // 3. Get the tag styling
+  //-------------------------------------------------------------------
+  let tagStyle = props?.tags ? "flex" : "none";
+  //-------------------------------------------------------------------
+  // 4. Create link of article, based on the identifier
+  //-------------------------------------------------------------------
+  let link;
+  if (props?.identifier) {
+    link = props?.link + props?.identifier;
+  } else {
+    link = "";
+  }
+  //-------------------------------------------------------------------
+  // 5. Get published status
+  //-------------------------------------------------------------------
+  let status = props?.published === true ? "published" : "none";
+  //-------------------------------------------------------------------
+  // 6. Get the Nugget Image
+  //-------------------------------------------------------------------
+  const nuggetImages = {
+    quiz: Nugget_Quiz,
+    assessment: Nugget_Assessment,
+    game: Nugget_Game,
+    profiler: Nugget_Profiler,
+    recommendation: Nugget_Recco,
+    calculator: Nugget_Calculator,
+    survey: Nugget_Survey,
+    poll: Nugget_Poll,
+    feedback: Nugget_Feedback,
+    submission: Nugget_Submission,
+    linklist: Nugget_Linklist,
+    article: Nugget_Article,
+    document: Nugget_Document,
+    video: Nugget_Video,
+    story: Nugget_Story,
+    event: Nugget_Event,
+    news: Nugget_News,
+    webinar: Nugget_Webinar,
+    gallery: Nugget_Gallery,
+    faq: Nugget_Faq,
+  };
+  //-------------------------------------------------------------------
+  // 7. Capitalize first letter of category text
+  //-------------------------------------------------------------------
+  let category = props?.category
+    ? props?.category?.charAt(0).toUpperCase() + props?.category?.slice(1)
+    : "";
+  //-------------------------------------------------------------------
+  // 8. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
+  //-------------------------------------------------------------------
+  let truncate;
+  let tag1Length = props?.tags?.length > 0 ? props?.tags[0]?.length : "";
+  let tag2Length = props?.tags?.length > 0 ? props?.tags[1]?.length : "";
+  let tag3Length = props?.tags?.length > 0 ? props?.tags[2]?.length : "";
+  let showMoreBtn = false;
+  let minTags = 5;
+  let maxTags = props?.tags?.length;
+  let showTags = 5;
 
-	//-------------------------------------------------------------------
-	// 2. Get the Image
-	//-------------------------------------------------------------------
-	let image = props?.image ? props?.image : defaultImage;
+  const [expandTags, setExpandTags] = useState(false);
+  const [itirate, setItirate] = useState(showTags);
+  const [showCopied, setShowCopied] = useState(false);
 
-	//-------------------------------------------------------------------
-	// 3. Get the tag styling
-	//-------------------------------------------------------------------
-	let tagStyle = props?.tags ? "flex" : "none";
+  const handleLessTags = () => {
+    setItirate(minTags);
+    setExpandTags(false);
+  };
+  const handleMoreTags = () => {
+    setItirate(maxTags);
+    setExpandTags(true);
+  };
+  if (
+    tag1Length >= 15 ||
+    tag2Length >= 15 ||
+    tag3Length >= 15 ||
+    props?.tags?.length > 5
+  ) {
+    showMoreBtn = true;
+    if (expandTags === true) {
+      truncate = "qui-nugget-card-untruncate";
+    } else {
+      truncate = "qui-nugget-card-truncate";
+    }
+  } else {
+    showMoreBtn = false;
+  }
+  //-------------------------------------------------------------------
+  // 9. Get the NuggetCard Component
+  //-------------------------------------------------------------------
+  const nuggetCard = () => {
+    return (
+      <div className={`qui-nugget-card-container`}>
+        <div className="qui-nugget-card-body">
+          <div className={`qui-nugget-card-title-container`}>
+            <div className={`qui-nugget-block-styling`}>
+              <NuggetBlock
+                status={status}
+                image={nuggetImages[props?.category]}
+              />
+            </div>
+            <h5 className={`qui-nugget-card-title`}>{props?.name}</h5>
+          </div>
+          <div className="qui-nugget-card-tag-show-more">
+            <div
+              className={`qui-nugget-card-tag-container qt-lbl`}
+              style={{ display: tagStyle }}
+            >
+              {_.map(props?.tags, (tag, index) => {
+                if (index < itirate) {
+                  return (
+                    <div
+                      key={index}
+                      className={`qui-nugget-card-tag ${truncate}`}
+                    >
+                      <Tag
+                        asPadded="compact"
+                        content={tag}
+                        asSize="tiny"
+                        withColor={{
+                          backgroundColor: "#FFAB00",
+                          textColor: "#000",
+                        }}
+                      />
+                    </div>
+                  );
+                }
+              })}
+              {showMoreBtn && (
+                <div className={`qui-nugget-card-show-more`}>
+                  <button
+                    className={`qui-course-card-show-more`}
+                    onClick={expandTags ? handleLessTags : handleMoreTags}
+                  >
+                    <i
+                      className={
+                        expandTags ? "fas fa-angle-up" : "fas fa-angle-down"
+                      }
+                    />
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+          <BannerCard image={image} onClick={() => {}} />
+          <div className={`qui-nugget-card-description-container`}>
+            <div className={`qui-nugget-card-description`}>
+              {props?.description}
+            </div>
+            <div className={`qui-nugget-card-reward`}>
+              <Reward
+                asSize="small"
+                content={{
+                  label: "Complete to win",
+                  point: props?.points,
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="qui-nugget-card-footer">
+          <div className={`qui-nugget-card-arc-menu`}>
+            <ArcMenu
+              withColor={{
+                backgroundColor: "#666666",
+                textColor: "#FFBF00",
+                hoverBackgroundColor: "#666666",
+                hoverTextColor: "#FFBF00",
+              }}
+              asEmphasis={"menu"}
+              menuContent={props?.menuContent}
+              menuType="menu"
+              arcIcon="menu"
+              position="bottom-left"
+              onClick={props.onClick}
+            >
+              <div className="qui-nugget-card-arc-menu-child-container">
+                <ActionMenu
+                  content={[
+                    {
+                      title: "Edit Details",
+                      popover: "Edit Details...",
+                      onClick: () => {},
+                    },
+                    {
+                      title: "Edit Content",
+                      popover: "Edit Content...",
+                      onClick: () => {},
+                    },
+                    {
+                      title: "Design Nugget",
+                      popover: "Design Nugget...",
+                      onClick: () => {},
+                    },
+                    {
+                      title: "Publish Nugget",
+                      popover: "Publish Nugget...",
+                      onClick: () => {},
+                    },
+                    {
+                      title: "View Analytics",
+                      popover: "View Analytics...",
+                      onClick: () => {},
+                    },
+                    {
+                      title: "Delete Nugget",
+                      popover: "Delete Nugget...",
+                      onClick: () => {},
+                    },
+                  ]}
+                  asPadded="normal"
+                  asAligned="left"
+                  withColor={{
+                    backgroundColor: "#666666",
+                    textColor: "#ffbf00",
+                    accentColor: "",
+                  }}
+                  withAnimation={{
+                    animation: "zoom",
+                    duration: 0.5,
+                    delay: 0,
+                  }}
+                  isHidden={false}
+                />
+              </div>
+            </ArcMenu>
+          </div>
+          <div className={`qui-nugget-card-share-block`}>
+            <div className={`qui-nugget-card-name qt-sm`}>{category}</div>
+            <div className={"qui-nugget-card-share-widget"}>
+              <ShareWidget
+                asSize="small"
+                withColor={{ textColor: "#AAAAAA" }}
+                label="Share"
+                url={link}
+              />
+            </div>
+            <div className={"qui-nugget-card-link-container"}>
+              <p className={"qui-nugget-card-link qt-utn"}>{link}</p>
 
-	//-------------------------------------------------------------------
-	// 4. Create link of article, based on the identifier
-	//-------------------------------------------------------------------
-	let link;
-	if (props?.identifier) {
-		link = props?.link + props?.identifier;
-	} else {
-		link = "";
-	}
-
-	//-------------------------------------------------------------------
-	// 5. Get published status
-	//-------------------------------------------------------------------
-	let status = props?.published === true ? "published" : "none";
-
-	//-------------------------------------------------------------------
-	// 6. Get the Nugget Image
-	//-------------------------------------------------------------------
-	const nuggetImages = {
-		quiz: Nugget_Quiz,
-		assessment: Nugget_Assessment,
-		game: Nugget_Game,
-		profiler: Nugget_Profiler,
-		recommendation: Nugget_Recco,
-		calculator: Nugget_Calculator,
-		survey: Nugget_Survey,
-		poll: Nugget_Poll,
-		feedback: Nugget_Feedback,
-		submission: Nugget_Submission,
-		linklist: Nugget_Linklist,
-		article: Nugget_Article,
-		document: Nugget_Document,
-		video: Nugget_Video,
-		story: Nugget_Story,
-		event: Nugget_Event,
-		news: Nugget_News,
-		webinar: Nugget_Webinar,
-		gallery: Nugget_Gallery,
-		faq: Nugget_Faq,
-	};
-
-	//-------------------------------------------------------------------
-	// 7. Capitalize first letter of category text
-	//-------------------------------------------------------------------
-	let category = props?.category ? props?.category?.charAt(0).toUpperCase() + props?.category?.slice(1) : "";
-
-	//-------------------------------------------------------------------
-	// 8. If number of tags greater than 3 or if the tags contains long text then will display showmore icon
-	//-------------------------------------------------------------------
-	let truncate;
-	let tag1Length = props?.tags?.length > 0 ? props?.tags[0]?.length : "";
-	let tag2Length = props?.tags?.length > 0 ? props?.tags[1]?.length : "";
-	let tag3Length = props?.tags?.length > 0 ? props?.tags[2]?.length : "";
-	let showMoreBtn = false;
-	let minTags = 5;
-	let maxTags = props?.tags?.length;
-	let showTags = 5;
-
-	const [expandTags, setExpandTags] = useState(false);
-	const [itirate, setItirate] = useState(showTags);
-	const [showCopied, setShowCopied] = useState(false);
-
-	const handleLessTags = () => {
-		setItirate(minTags);
-		setExpandTags(false);
-	};
-	const handleMoreTags = () => {
-		setItirate(maxTags);
-		setExpandTags(true);
-	};
-	if (tag1Length >= 15 || tag2Length >= 15 || tag3Length >= 15 || props?.tags?.length > 5) {
-		showMoreBtn = true;
-		if (expandTags === true) {
-			truncate = "qui-nugget-card-untruncate";
-		} else {
-			truncate = "qui-nugget-card-truncate";
-		}
-	} else {
-		showMoreBtn = false;
-	}
-
-	//-------------------------------------------------------------------
-	// 9. Get the NuggetCard Component
-	//-------------------------------------------------------------------
-	const nuggetCard = () => {
-		return (
-			<div className={`qui-nugget-card-container`}>
-				<div className="qui-nugget-card-body">
-					<div className={`qui-nugget-card-title-container`}>
-						<div className={`qui-nugget-block-styling`}>
-							<NuggetBlock
-								status={status}
-								image={nuggetImages[props?.category]}
-							/>
-						</div>
-						<h5 className={`qui-nugget-card-title`}>{props?.name}</h5>
-					</div>
-					<div className="qui-nugget-card-tag-show-more">
-						<div
-							className={`qui-nugget-card-tag-container qt-lbl`}
-							style={{ display: tagStyle }} >
-							{_.map(props?.tags, (tag, index) => {
-								if (index < itirate) {
-									return (
-										<div
-											key={index}
-											className={`qui-nugget-card-tag ${truncate}`}>
-											<Tag
-												asPadded="compact"
-												content={tag}
-												asSize="tiny"
-												withColor={{
-													backgroundColor: "#FFAB00",
-													textColor: "#000",
-												}}
-											/>
-										</div>
-									);
-								}
-							})}
-							{showMoreBtn && (
-								<div className={`qui-nugget-card-show-more`}>
-									<button
-										className={`qui-course-card-show-more`}
-										onClick={expandTags ? handleLessTags : handleMoreTags}>
-										<i className={expandTags ? "fas fa-angle-up" : "fas fa-angle-down"} />
-									</button>
-								</div>
-							)}
-						</div>
-					</div>
-					<BannerCard image={image} onClick={() => { }} />
-					<div className={`qui-nugget-card-description-container`}>
-						<div className={`qui-nugget-card-description`}>
-							{props?.description}
-						</div>
-						<div className={`qui-nugget-card-reward`}>
-							<Reward
-								asSize="small"
-								content={{
-									label: "Complete to win",
-									point: props?.points,
-								}}
-							/>
-						</div>
-					</div>
-				</div>
-				<div className="qui-nugget-card-footer">
-					<div className={`qui-nugget-card-arc-menu`}>
-						<ArcMenu
-							withColor={{
-								backgroundColor: "#666666",
-								textColor: "#FFBF00",
-								hoverBackgroundColor: "#666666",
-								hoverTextColor: "#FFBF00",
-							}}
-							asEmphasis={"menu"}
-							menuContent={props?.menuContent}
-							menuType="menu"
-							arcIcon="menu"
-							position="bottom-left"
-							onClick={props.onClick}
-						>
-							<div className="qui-nugget-card-arc-menu-child-container" >
-								<ActionMenu
-									content={[
-										{
-											title: "Edit Details",
-											popover: "Edit Details...",
-											onClick: () => { },
-										},
-										{
-											title: "Edit Content",
-											popover: "Edit Content...",
-											onClick: () => { },
-										},
-										{
-											title: "Design Nugget",
-											popover: "Design Nugget...",
-											onClick: () => { },
-										},
-										{
-											title: "Publish Nugget",
-											popover: "Publish Nugget...",
-											onClick: () => { },
-										},
-										{
-											title: "View Analytics",
-											popover: "View Analytics...",
-											onClick: () => { },
-										},
-										{
-											title: "Delete Nugget",
-											popover: "Delete Nugget...",
-											onClick: () => { },
-										},
-									]}
-									asPadded="normal"
-									asAligned="left"
-									withColor={{
-										backgroundColor: "#666666",
-										textColor: "#ffbf00",
-										accentColor: "",
-									}}
-									withAnimation={{
-										animation: "zoom",
-										duration: 0.5,
-										delay: 0,
-									}}
-									isHidden={false}
-								/>
-							</div>
-						</ArcMenu>
-					</div>
-					<div className={`qui-nugget-card-share-block`}>
-						<div className={`qui-nugget-card-name qt-sm`}>{category}</div>
-						<div className={"qui-nugget-card-share-widget"}>
-							<ShareWidget
-								asSize="small"
-								withColor={{ textColor: "#AAAAAA" }}
-								label="Share"
-								url={link}
-							/>
-						</div>
-						<div className={"qui-nugget-card-link-container"}
-						>
-							<p className={"qui-nugget-card-link qt-utn"}>
-								{link}
-							</p>
-
-							<div
-								className="qui-nugget-card-icon-block-copy-container"
-								onClick={() => {
-									navigator.clipboard.writeText(link);
-								}}
-							>
-								<div className={`qui-nugget-card-copy-icon-container`}
-									onClick={() => setShowCopied(true)}
-									onMouseLeave={() => setShowCopied(false)}
-								>
-									<IconBlock
-										asSize="small"
-										asEmphasis="text"
-										withIcon={{ icon: "fas fa-copy", size: "0.8em" }}
-										withColor={{ accentColor: "#FFBF00" }}
-										asPadded="fitted"
-										onClick={() => {
-											navigator.clipboard.writeText(link);
-										}}
-									/>
-									<span className={`qui-tooltip-text${showCopied ? "-copied" : "-copy"}`} >{showCopied ? "Copied" : "Copy Link"}</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div >
-			</div >
-		);
-	};
-	return (
-		<div className={`qui ${quommonClasses.parentClasses} qt-shadow`}>
-			<div className={`${quommonClasses.childClasses}`} >{nuggetCard()}</div>
-		</div>
-	);
+              <div
+                className="qui-nugget-card-icon-block-copy-container"
+                onClick={() => {
+                  navigator.clipboard.writeText(link);
+                }}
+              >
+                <div
+                  className={`qui-nugget-card-copy-icon-container`}
+                  onClick={() => setShowCopied(true)}
+                  onMouseLeave={() => setShowCopied(false)}
+                >
+                  <IconBlock
+                    asSize="small"
+                    asEmphasis="text"
+                    withIcon={{ icon: "fas fa-copy", size: "0.8em" }}
+                    withColor={{ accentColor: "#FFBF00" }}
+                    asPadded="fitted"
+                    onClick={() => {
+                      navigator.clipboard.writeText(link);
+                    }}
+                  />
+                  <span
+                    className={`qui-tooltip-text${
+                      showCopied ? "-copied" : "-copy"
+                    }`}
+                  >
+                    {showCopied ? "Copied" : "Copy Link"}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+  return (
+    <div className={`qui ${quommonClasses.parentClasses} qt-shadow`}>
+      <div className={`${quommonClasses.childClasses}`}>{nuggetCard()}</div>
+    </div>
+  );
 }

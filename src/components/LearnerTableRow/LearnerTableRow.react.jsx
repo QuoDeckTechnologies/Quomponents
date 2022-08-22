@@ -12,15 +12,15 @@ LearnerTableRow.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    LearnerTableRow data should be passed in content field and it is a required field
-    */
+  LearnerTableRow data should be passed in content field and it is a required field
+  */
   content: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   //=======================================
   // Quommon props
   //=======================================
   /**
-    Use to define standard component type
-    */
+  Use to define standard component type
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -29,28 +29,28 @@ LearnerTableRow.propTypes = {
     "error",
   ]),
   /**
-    Use to override component colors and behavior
-    */
+  Use to override component colors and behavior
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
   /**
-    Use to enable/disable the component
-    */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    LearnerTableRow component must have the onUnenrollLearner function passed as props
-    */
+  LearnerTableRow component must have the onUnenrollLearner function passed as props
+  */
   onUnenrollLearner: PropTypes.func.isRequired,
   /**
-    LearnerTableRow component must have the onSendMessage function passed as props
-    */
+  LearnerTableRow component must have the onSendMessage function passed as props
+  */
   onSendMessage: PropTypes.func.isRequired,
 };
 

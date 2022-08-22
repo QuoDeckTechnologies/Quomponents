@@ -9,7 +9,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./SquareCarousel.scss";
 import "../../../common/stylesheets/overrule.scss";
-
 import BannerCard from "../BannerCard/BannerCard.react";
 
 SquareCarousel.propTypes = {
@@ -17,8 +16,8 @@ SquareCarousel.propTypes = {
   // Quommon props
   //=======================================
   /**
-    SquareCarousel data should be passed in content field and it is required field
-    */
+  SquareCarousel data should be passed in content field and it is required field
+  */
   content: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string,
@@ -29,8 +28,8 @@ SquareCarousel.propTypes = {
     })
   ).isRequired,
   /**
-    Button component must have the onClick function passed as props
-    */
+  Button component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -52,11 +51,9 @@ export default function SquareCarousel(props) {
   const sliderRef = useRef();
   let { content } = props;
   let quommonClasses = getQuommons(props, "square-carousel");
-
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-
   var settings = {
     dots: true,
     speed: 500,
@@ -73,9 +70,7 @@ export default function SquareCarousel(props) {
   };
   // ========================= Render Function =================================
   return (
-    <div
-      className={`qui ${quommonClasses.parentClasses}`}
-    >
+    <div className={`qui ${quommonClasses.parentClasses}`}>
       <Slider ref={sliderRef} {...settings}>
         {_.map(content, (slide, index) => {
           return (

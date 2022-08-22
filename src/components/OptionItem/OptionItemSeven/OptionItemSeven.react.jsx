@@ -179,9 +179,7 @@ export default function OptionItemSeven(props) {
           />
         </div>
         <InputField
-          name={
-            targetName ? targetName : "default-target-name"
-          }
+          name={targetName ? targetName : "default-target-name"}
           value={value}
           placeholder={tObj?.placeholder || placeholder}
           maxLength={maxLength}
@@ -192,9 +190,7 @@ export default function OptionItemSeven(props) {
         <div className="qui-option-item-seven-close-icon">
           <i
             className="qui-option-item-seven-icon fas fa-times"
-            data-id={
-              targetName ? targetName : "default-target-name"
-            }
+            data-id={targetName ? targetName : "default-target-name"}
             onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>

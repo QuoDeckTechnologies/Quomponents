@@ -12,7 +12,7 @@ import NuggetBlock from "../NuggetBlock/NuggetBlock.react";
 import Tag from "../Tag/Tag.react";
 import Reward from "../Reward/Reward.react";
 import ShareWidget from "../ShareWidget/ShareWidget.react";
-import IconBlock from "../IconBlock/IconBlock.react"
+import IconBlock from "../IconBlock/IconBlock.react";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
 import BannerCard from "../Carousel/BannerCard/BannerCard.react";
 import Nugget_Course from "../../assets/nuggets/nugget_course.png";
@@ -136,8 +136,8 @@ export default function CourseCard(props) {
   let image = props.image
     ? props.image
     : props.wrapper
-      ? "assets/courses/" + props.wrapper + "/play_backdrop.jpg"
-      : defaultImage;
+    ? "assets/courses/" + props.wrapper + "/play_backdrop.jpg"
+    : defaultImage;
   //-------------------------------------------------------------------
   // 3.  Create link of article based on identifier
   //-------------------------------------------------------------------
@@ -326,7 +326,7 @@ export default function CourseCard(props) {
               })}
             </div>
           </div>
-          <BannerCard image={image} header={header} onClick={() => { }} />
+          <BannerCard image={image} header={header} onClick={() => {}} />
           <div className={`qui-course-card-description-container`}>
             <div className={`qui-course-card-description`}>
               {props.description}
@@ -360,27 +360,27 @@ export default function CourseCard(props) {
                     {
                       title: "Edit Deck",
                       popover: "Edit Deck...",
-                      onClick: () => { },
+                      onClick: () => {},
                     },
                     {
                       title: "Edit Content",
                       popover: "Edit Content...",
-                      onClick: () => { },
+                      onClick: () => {},
                     },
                     {
                       title: "Manage Learners",
                       popover: "Manage Learners...",
-                      onClick: () => { },
+                      onClick: () => {},
                     },
                     {
                       title: "View Analytics",
                       popover: "View Analytics...",
-                      onClick: () => { },
+                      onClick: () => {},
                     },
                     {
                       title: "Delete Course",
                       popover: "Delete Course...",
-                      onClick: () => { },
+                      onClick: () => {},
                     },
                   ]}
                   asPadded="normal"
@@ -411,9 +411,7 @@ export default function CourseCard(props) {
               />
             </div>
             <div className={"qui-course-card-link-container"}>
-              <p className={"qui-course-card-link qt-sm"} >
-                {link}
-              </p>
+              <p className={"qui-course-card-link qt-sm"}>{link}</p>
               <div
                 className="qui-course-card-icon-block-copy-container"
                 onClick={() => setShowCopied(true)}
@@ -427,10 +425,16 @@ export default function CourseCard(props) {
                   asPadded="fitted"
                   onClick={() => {
                     navigator.clipboard.writeText(link);
-                  }} />
-                <span className={`qui-tooltip-text${showCopied ? "-copied" : "-copy"}`} >{showCopied ? "Copied" : "Copy Link"}</span>
+                  }}
+                />
+                <span
+                  className={`qui-tooltip-text${
+                    showCopied ? "-copied" : "-copy"
+                  }`}
+                >
+                  {showCopied ? "Copied" : "Copy Link"}
+                </span>
               </div>
-
             </div>
           </div>
         </div>

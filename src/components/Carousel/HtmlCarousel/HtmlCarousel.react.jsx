@@ -4,9 +4,7 @@ import _ from "lodash";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {
-    getQuommons,
-} from "../../../common/javascripts/helpers";
+import { getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./HtmlCarousel.scss";
@@ -14,32 +12,30 @@ import "../../../common/stylesheets/overrule.scss";
 import BannerCard from "../BannerCard/BannerCard.react";
 
 HtmlCarousel.propTypes = {
-    //=======================================
-    // Quommon props
-    //=======================================
-    /**
-    HtmlCarousel data should be passed in content field and it is required field
-    */
-    content: PropTypes.arrayOf(PropTypes.shape({
-        image: PropTypes.string,
-        tag: PropTypes.oneOf([
-            "new",
-            "premium",
-            "restricted",
-            "free"
-        ]),
-        content: PropTypes.string,
-        props: PropTypes.object
-    })).isRequired,
-    /**
-    Button component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
+  //=======================================
+  // Quommon props
+  //=======================================
+  /**
+  HtmlCarousel data should be passed in content field and it is required field
+  */
+  content: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string,
+      tag: PropTypes.oneOf(["new", "premium", "restricted", "free"]),
+      content: PropTypes.string,
+      props: PropTypes.object,
+    })
+  ).isRequired,
+  /**
+  Button component must have the onClick function passed as props
+  */
+  onClick: PropTypes.func.isRequired,
 };
 HtmlCarousel.defaultProps = {
-    // Component Specific props
-    //=======================================
-    content: [],
+  //=======================================
+  // Component Specific props
+  //=======================================
+  content: [],
 };
 /**
 ## Notes
@@ -48,51 +44,61 @@ HtmlCarousel.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function HtmlCarousel(props) {
-    const sliderRef = useRef();
-    let { content } = props;
-    let quommonClasses = getQuommons(props, "html-carousel");
+  const sliderRef = useRef();
+  let { content } = props;
+  let quommonClasses = getQuommons(props, "html-carousel");
 
-    var settings = {
-        dots: true,
-        speed: 500,
-        initialSlide: 1,
-        slidesToScroll: 1,
-        slidesToShow: 1,
-        centerMode: true,
-        arrows: false,
-        infinite: true,
-        autoplay: true,
-        pauseOnHover: true,
-        centerPadding: "0%",
-        swipeToSlide: true,
-    };
-    // ========================= Render Function =================================
-    return (
-        <div
-            className={`qui ${quommonClasses.parentClasses}`}
-        >
-            <Slider ref={sliderRef} {...settings}>
-                {_.map(content, (slide, index) => {
-                    return (
-                        <div className="qui-html-slide-container"
-                            key={"slider-" + index + Math.random()}>
-                            <div className={`qui-html-slide`}>
-                                <BannerCard  {...slide.props} content={slide.content} image={slide.image} tag={slide.tag} onClick={props.onClick} />
-                            </div>
-                        </div>
-                    );
-                })}
-            </Slider>
-            <div className="qui-html-slick-arrows">
-                <div className="qui-html-slick-prev"
-                    onClick={() => sliderRef.current?.slickPrev()}>
-                    <i className="fas fa-arrow-alt-circle-left"></i>
-                </div>
-                <div className="qui-html-slick-next"
-                    onClick={() => sliderRef.current?.slickNext()}>
-                    <i className="fas fa-arrow-alt-circle-right"></i>
-                </div>
+  var settings = {
+    dots: true,
+    speed: 500,
+    initialSlide: 1,
+    slidesToScroll: 1,
+    slidesToShow: 1,
+    centerMode: true,
+    arrows: false,
+    infinite: true,
+    autoplay: true,
+    pauseOnHover: true,
+    centerPadding: "0%",
+    swipeToSlide: true,
+  };
+  // ========================= Render Function =================================
+  return (
+    <div className={`qui ${quommonClasses.parentClasses}`}>
+      <Slider ref={sliderRef} {...settings}>
+        {_.map(content, (slide, index) => {
+          return (
+            <div
+              className="qui-html-slide-container"
+              key={"slider-" + index + Math.random()}
+            >
+              <div className={`qui-html-slide`}>
+                <BannerCard
+                  {...slide.props}
+                  content={slide.content}
+                  image={slide.image}
+                  tag={slide.tag}
+                  onClick={props.onClick}
+                />
+              </div>
             </div>
+          );
+        })}
+      </Slider>
+      <div className="qui-html-slick-arrows">
+        <div
+          className="qui-html-slick-prev"
+          onClick={() => sliderRef.current?.slickPrev()}
+        >
+          <i className="fas fa-arrow-alt-circle-left"></i>
         </div>
-    );
+        <div
+          className="qui-html-slick-next"
+          onClick={() => sliderRef.current?.slickNext()}
+        >
+          <i className="fas fa-arrow-alt-circle-right"></i>
+        </div>
+      </div>
+    </div>
+  );
 }

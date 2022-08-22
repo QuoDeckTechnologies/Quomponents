@@ -20,11 +20,10 @@ EarnCard.propTypes = {
   //=======================================
   /**
     EarnCard data should be passed in content field and it is a required field
-    */
+  */
   image: PropTypes.string,
   tag: PropTypes.oneOf(["new", "premium", "restricted", "free"]),
   header: PropTypes.string,
-  // content: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   icon: PropTypes.string,
@@ -43,8 +42,8 @@ EarnCard.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to define standard component type
-    */
+  Use to define standard component type
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -53,8 +52,8 @@ EarnCard.propTypes = {
     "error",
   ]),
   /**
-    Use to define component size in increasing order
-    */
+  Use to define component size in increasing order
+  */
   asSize: PropTypes.oneOf([
     "tiny",
     "small",
@@ -64,17 +63,16 @@ EarnCard.propTypes = {
     "massive",
   ]),
   /**
-    Use to override component colors and behavior
-    */
+  Use to override component colors and behavior
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
-
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -90,24 +88,24 @@ EarnCard.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-    Use to enable/disable the component
-    */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
-    */
+  Button component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -157,8 +155,7 @@ export default function EarnCard(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content from props
   //-------------------------------------------------------------------
-  let { dates, icon, topics, title, description, image, tag } =
-    props;
+  let { dates, icon, topics, title, description, image, tag } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------

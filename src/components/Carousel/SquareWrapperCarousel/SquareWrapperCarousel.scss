@@ -6,7 +6,9 @@
 .qui-square-wrapper-carousel .qui-square-wrapper-slide {
   position: relative;
 }
-.qui-square-wrapper-carousel-container .qui-square-wrapper-slide-container .qui-slider-card-box {
+.qui-square-wrapper-carousel-container
+  .qui-square-wrapper-slide-container
+  .qui-slider-card-box {
   opacity: 1;
 }
 .qui-square-wrapper-slide-container .qui-slider-card-box-header {
@@ -46,7 +48,9 @@
   color: #666666;
 }
 @media only screen and (min-width: 320px) {
-  .qui-square-wrapper-slide-container .qui-square-wrapper-slide .qui-banner-card {
+  .qui-square-wrapper-slide-container
+    .qui-square-wrapper-slide
+    .qui-banner-card {
     display: inline-block;
     font-size: 0.75em;
     width: 100%;
@@ -71,7 +75,9 @@
     border-top-right-radius: 1em;
     border-bottom-right-radius: 0em;
   }
-  .qui-square-wrapper-slide-container .qui-banner-card .qui-slider-card-box-header {
+  .qui-square-wrapper-slide-container
+    .qui-banner-card
+    .qui-slider-card-box-header {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;
@@ -136,7 +142,9 @@
   }
 }
 @media only screen and (min-width: 481px) {
-  .qui-square-wrapper-slide-container .qui-square-wrapper-slide .qui-banner-card {
+  .qui-square-wrapper-slide-container
+    .qui-square-wrapper-slide
+    .qui-banner-card {
     display: inline-block;
     font-size: 0.75em;
     width: 100%;
@@ -151,7 +159,9 @@
     max-width: 70%;
     height: 2.1em;
   }
-  .qui-square-wrapper-slide-container .qui-banner-card .qui-slider-card-box-header {
+  .qui-square-wrapper-slide-container
+    .qui-banner-card
+    .qui-slider-card-box-header {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;
@@ -214,7 +224,9 @@
   }
 }
 @media only screen and (min-width: 769px) {
-  .qui-square-wrapper-slide-container .qui-square-wrapper-slide .qui-banner-card {
+  .qui-square-wrapper-slide-container
+    .qui-square-wrapper-slide
+    .qui-banner-card {
     display: inline-block;
     font-size: 0.75em;
     width: 100%;
@@ -229,7 +241,9 @@
     max-width: 70%;
     height: 2.5em;
   }
-  .qui-square-wrapper-slide-container .qui-banner-card .qui-slider-card-box-header {
+  .qui-square-wrapper-slide-container
+    .qui-banner-card
+    .qui-slider-card-box-header {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;

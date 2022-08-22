@@ -6,7 +6,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-
 import {
   getQuommons,
   getTranslation,
@@ -26,11 +25,7 @@ AppMenu.propTypes = {
   Use for rounded corners or circular icon button 
   */
   isCircular: PropTypes.bool,
-  menu: PropTypes.shape({
-    icon: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
-  }),
+  menu: PropTypes.arrayOf(PropTypes.shape),
   //=======================================
   // Quommon props
   //=======================================
@@ -123,7 +118,6 @@ AppMenu.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 - props are not being passed to the AppMenu. Please speak to the admin to handle any new prop.
 **/
-
 export default function AppMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -133,7 +127,6 @@ export default function AppMenu(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   //-------------------------------------------------------------------
   // 1. Destructuring withlabel props
   //-------------------------------------------------------------------
@@ -252,11 +245,11 @@ export default function AppMenu(props) {
                 vertical: "bottom",
               }}
             >
-              {props.menu?.map((item) =>
+              {props.menu?.map((item, index) =>
                 item.icon === "divider" ? (
-                  <Divider />
+                  <Divider key={index} />
                 ) : (
-                  <MenuItem onClick={item.onClick}>
+                  <MenuItem onClick={item.onClick} key={index}>
                     <ListItemIcon>
                       <i className={item.icon} />
                     </ListItemIcon>
