@@ -7,7 +7,6 @@ import {
   getTranslation,
   getAnimation,
 } from "../../common/javascripts/helpers";
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ToolbarDark.scss";
@@ -18,10 +17,9 @@ ToolbarDark.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
-
   /**
     Toolbar icons data should be passed in content field and it is required field  
-    */
+  */
   content: PropTypes.arrayOf(
     PropTypes.shape({
       icon: PropTypes.string,
@@ -31,19 +29,24 @@ ToolbarDark.propTypes = {
   ).isRequired,
   /**
     Set action emphasis in increasing order 
-    */
+  */
   asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
   //=======================================
   // Quommon props
   //=======================================
-
   /**
     Use to define standard component type
-    */
-  asVariant: PropTypes.oneOf(["primary", "secondary", "success", "warning", "error"]),
+  */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
   /**
     Use to define component text size in increasing order
-    */
+  */
   asSize: PropTypes.oneOf([
     "tiny",
     "small",
@@ -54,16 +57,15 @@ ToolbarDark.propTypes = {
   ]),
   /**
     Use to define component padding in increasing order
-    */
+  */
   asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
   /**
     Use to align content within the component container
-    */
+  */
   asAligned: PropTypes.oneOf(["left", "right", "center"]),
-
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
@@ -73,7 +75,7 @@ ToolbarDark.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -90,7 +92,7 @@ ToolbarDark.propTypes = {
   }),
   /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
@@ -98,24 +100,23 @@ ToolbarDark.propTypes = {
   }),
   /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
   /**
     Use to enable/disable the component
-    */
+  */
   isDisabled: PropTypes.bool,
   /**
     Use to toggle the component taking the full width of the parent container
-    */
+  */
   isFluid: PropTypes.bool,
   /**
   Use for rounded corners or circular icon button 
   */
   isCircular: PropTypes.bool,
-
   /**
     ToolbarDark component must have the onClick function passed as props
-    */
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -132,12 +133,10 @@ ToolbarDark.defaultProps = {
   asSize: "normal",
   asPadded: "normal",
   asAligned: "center",
-
   withColor: null,
   withIcon: null,
   withAnimation: null,
   withTranslation: null,
-
   isHidden: false,
   isDisabled: false,
   isFluid: false,

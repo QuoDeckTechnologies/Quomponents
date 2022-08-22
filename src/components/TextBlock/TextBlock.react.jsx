@@ -12,15 +12,14 @@ import "../../common/stylesheets/overrule.scss";
 TextBlock.propTypes = {
   //=======================================
   // Component Specific props
-  //======================================
+  //=======================================
   /**
    TextBlock Text has to be in content or passed as string to the component.
-   */
+  */
   content: PropTypes.string,
-
   /**
     Use to toggle position of text-block conversation
-    */
+  */
   position: PropTypes.oneOf([
     "right-top",
     "right-bottom",
@@ -29,26 +28,32 @@ TextBlock.propTypes = {
   ]),
   /**
     toggle the conversation prop to see the component as chat conversation
-    */
+  */
   conversation: PropTypes.bool,
-
+  //=======================================
   // Quommon props
   //=======================================
   /**
     Use to float the component in parent container
-    */
+  */
   asFloated: PropTypes.oneOf(["left", "right", "inline", "none"]),
   /**
     Use to define standard component type
-    */
-  asVariant: PropTypes.oneOf(["primary", "secondary", "success", "warning", "error"]),
+  */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
   /** 
   Use to define component padding in increasing order
   */
   asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
   /**
     Use to define component text size in increasing order
-    */
+  */
   asSize: PropTypes.oneOf([
     "tiny",
     "small",
@@ -59,14 +64,14 @@ TextBlock.propTypes = {
   ]),
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -82,7 +87,7 @@ TextBlock.propTypes = {
   }),
   /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
 };
 
@@ -163,9 +168,9 @@ export default function TextBlock(props) {
           {props.conversation && (
             <div className={`qui-text-block-tringle`}>
               <div
-                className={`qui-text-block-chat-arrow qui-btn variant-${props.asVariant} ${getArrowPosition(
-                  props.position
-                )}`}
+                className={`qui-text-block-chat-arrow qui-btn variant-${
+                  props.asVariant
+                } ${getArrowPosition(props.position)}`}
                 style={{
                   backgroundColor: props.withColor?.backgroundColor,
                 }}

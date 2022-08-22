@@ -22,7 +22,7 @@ Triptych.propTypes = {
   //=======================================
   /**
     Triptych data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -34,25 +34,22 @@ Triptych.propTypes = {
   }),
   /**
     Triptych can set presenter image from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   /**
     Triptych slideId should be passed with props, to specify the slide.
-    */
+  */
   slideId: PropTypes.number,
   /**
   Use to define standard component type
   */
-  layout: PropTypes.oneOf([
-    "side by side split",
-    "side by side full"
-  ]),
+  layout: PropTypes.oneOf(["side by side split", "side by side full"]),
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to define standard component type
-    */
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -62,7 +59,7 @@ Triptych.propTypes = {
   ]),
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     slideHeaderTextColor: PropTypes.string,
     slideHeaderAccentColor: PropTypes.string,
@@ -73,7 +70,7 @@ Triptych.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -94,11 +91,11 @@ Triptych.propTypes = {
   isHidden: PropTypes.bool,
   /**
     Use to enable/disable the component
-    */
+  */
   isDisabled: PropTypes.bool,
   /**
     Triptych component must have the onClick function passed as props
-    */
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -155,44 +152,71 @@ export default function Triptych(props) {
   let slideHeaderColors = {
     textColor: props.withColor?.slideHeaderTextColor,
     accentColor: props.withColor?.slideHeaderAccentColor,
-    backgroundColor: props.withColor?.slideHeaderBackgroundColor
-  }
+    backgroundColor: props.withColor?.slideHeaderBackgroundColor,
+  };
   let textBlockColors = {
     textColor: props.withColor?.textBlockTextColor,
-    backgroundColor: props.withColor?.textBlockBackgroundColor
-  }
+    backgroundColor: props.withColor?.textBlockBackgroundColor,
+  };
   //-------------------------------------------------------------------
   // Function to return a view for Triptych
   //-------------------------------------------------------------------
   const TriptychView = (data) => {
     return (
-      <div className="qui-triptych-card" key={"triptych-slide-" + props.slideId} style={{
-        ...background,
-        backgroundColor: withColor?.backgroundColor,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}>
-        <div className={`${quommonClasses.childClasses}`} key={"triptych-" + props.slideId}>
+      <div
+        className="qui-triptych-card"
+        key={"triptych-slide-" + props.slideId}
+        style={{
+          ...background,
+          backgroundColor: withColor?.backgroundColor,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <div
+          className={`${quommonClasses.childClasses}`}
+          key={"triptych-" + props.slideId}
+        >
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
               title={data?.title}
               subtitle={data?.subtitle}
-              withColor={slideHeaderColors} />
+              withColor={slideHeaderColors}
+            />
           )}
           {data?.image && (
-            <img className="qui-triptych-image qt-shadow" src={resolveImage(data.image.id, imageLibrary)} alt="" />
+            <img
+              className="qui-triptych-image qt-shadow"
+              src={resolveImage(data.image.id, imageLibrary)}
+              alt=""
+            />
           )}
-          <div className={`qui-triptych-clickable-images${props.layout === "side by side split" ? "-split" : "-full"}`}>
+          <div
+            className={`qui-triptych-clickable-images${
+              props.layout === "side by side split" ? "-split" : "-full"
+            }`}
+          >
             {_.map(data?.triptych, (image, index) => {
               return (
-                <div className={`qui-clickable-image-container`} key={"triptych-image" + index}>
-                  <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
+                <div
+                  className={`qui-clickable-image-container`}
+                  key={"triptych-image" + index}
+                >
+                  <ClickableImage
+                    {...props}
+                    content={{ image: resolveImage(image.id, imageLibrary) }}
+                    onClick={() => props.onClick(index)}
+                  />
                 </div>
               );
             })}
           </div>
           <div className="qui qt-sm">
-            <TextBlock {...props} content={data?.caption} withColor={textBlockColors} />
+            <TextBlock
+              {...props}
+              content={data?.caption}
+              withColor={textBlockColors}
+            />
           </div>
         </div>
       </div>
@@ -203,7 +227,8 @@ export default function Triptych(props) {
   //-------------------------------------------------------------------
   const TriptychPresenterView = (data) => {
     return (
-      <div className="qui-triptych-presenter-container"
+      <div
+        className="qui-triptych-presenter-container"
         style={{
           ...background,
           backgroundColor: withColor?.backgroundColor,
@@ -211,34 +236,51 @@ export default function Triptych(props) {
           backgroundSize: "cover",
         }}
       >
-        <div className="qui-triptych-presenter-title" >
-          <TextBlock {...props}
+        <div className="qui-triptych-presenter-title">
+          <TextBlock
+            {...props}
             content={data?.title}
             asFloated="left"
-            withColor={textBlockColors} />
+            withColor={textBlockColors}
+          />
         </div>
         <div className="qui qui-triptych-presenter-sub-title qt-sm">
-          <TextBlock {...props}
+          <TextBlock
+            {...props}
             content={data?.subtitle}
             asFloated="left"
-            withColor={textBlockColors} />
+            withColor={textBlockColors}
+          />
         </div>
-        <div className={`qui-triptych-clickable-images${props.layout === "side by side split" ? "-split" : "-full"}`}>
+        <div
+          className={`qui-triptych-clickable-images${
+            props.layout === "side by side split" ? "-split" : "-full"
+          }`}
+        >
           {_.map(data?.triptych, (image, index) => {
             return (
-              <div className="qui-clickable-image-container" key={"triptych-image" + index}>
-                <ClickableImage {...props} content={{ image: resolveImage(image.id, imageLibrary) }} onClick={() => props.onClick(index)} />
+              <div
+                className="qui-clickable-image-container"
+                key={"triptych-image" + index}
+              >
+                <ClickableImage
+                  {...props}
+                  content={{ image: resolveImage(image.id, imageLibrary) }}
+                  onClick={() => props.onClick(index)}
+                />
               </div>
             );
           })}
         </div>
         <div className="qui qui-triptych-presenter-caption qt-sm">
-          <TextBlock {...props}
+          <TextBlock
+            {...props}
             content={data?.caption}
             asFloated="left"
             conversation={true}
             position="right-bottom"
-            withColor={textBlockColors} />
+            withColor={textBlockColors}
+          />
         </div>
         {hasPresenter && (
           <img
@@ -248,7 +290,6 @@ export default function Triptych(props) {
           />
         )}
       </div>
-
     );
   };
   //-------------------------------------------------------------------
@@ -279,7 +320,9 @@ export default function Triptych(props) {
       };
     }
   };
-  const background = data?.presenter ? getPresenterBackground() : getBackground();
+  const background = data?.presenter
+    ? getPresenterBackground()
+    : getBackground();
 
   // ========================= Render Function =================================
   return (
@@ -288,9 +331,11 @@ export default function Triptych(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses} `}
     >
-      {data && <div>
-        {data?.presenter ? TriptychPresenterView(data) : TriptychView(data)}
-      </div>}
+      {data && (
+        <div>
+          {data?.presenter ? TriptychPresenterView(data) : TriptychView(data)}
+        </div>
+      )}
     </motion.div>
   );
 }

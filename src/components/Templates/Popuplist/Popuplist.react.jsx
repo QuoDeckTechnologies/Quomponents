@@ -20,7 +20,7 @@ Popuplist.propTypes = {
   //=======================================
   /**
     Popuplist data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -31,18 +31,18 @@ Popuplist.propTypes = {
   slideId: PropTypes.number,
   /**
     Popuplist can set image & backgroundImage from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   /**
     Set action emphasis in increasing order 
-    */
+  */
   asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     slideHeaderTextColor: PropTypes.string,
     slideHeaderAccentColor: PropTypes.string,
@@ -55,7 +55,7 @@ Popuplist.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -72,11 +72,11 @@ Popuplist.propTypes = {
   }),
   /**
     Use to enable/disable the component
-    */
+  */
   isDisabled: PropTypes.bool,
   /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
 };
 

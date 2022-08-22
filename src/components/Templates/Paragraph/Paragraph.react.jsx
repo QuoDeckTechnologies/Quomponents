@@ -20,7 +20,7 @@ Paragraph.propTypes = {
   //=======================================
   /**
     Paragraph data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -31,18 +31,18 @@ Paragraph.propTypes = {
   }),
   /**
     Paragraph can set presenter and background image from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to float the component in parent container
-    */
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
@@ -54,7 +54,7 @@ Paragraph.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -71,7 +71,7 @@ Paragraph.propTypes = {
   }),
   /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
 };
 
