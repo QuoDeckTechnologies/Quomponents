@@ -1,203 +1,203 @@
 .qui.qui-choice {
-    text-align: center;
-    &.is-fluid {
-        .qui-choice-container-content-one {
-            width: 50%;
-            margin-right: 0.3em;
-        }
-        .qui-choice-container-content-two {
-            width: 50%;
-            margin-left: 0.3em;
-        }
-        .qui-or {
-            position: relative;
-            left: 0.2%;
-        }
+  text-align: center;
+  &.is-fluid {
+    .qui-choice-container-content-one {
+      width: 50%;
+      margin-right: 0.3em;
     }
-    .qui-button {
-        &.float-inline {
-            display: contents;
-        }
-        &.float-left {
-            margin: 0 0.2em;
-            display: contents;
-        }
-        &.float-right {
-            margin: 0.2em;
-            display: contents;
-        }
-        &.float-none {
-            margin-left: 0.2em;
-            display: contents;
-        }
+    .qui-choice-container-content-two {
+      width: 50%;
+      margin-left: 0.3em;
     }
+    .qui-or {
+      position: relative;
+      left: 0.2%;
+    }
+  }
+  .qui-button {
+    &.float-inline {
+      display: contents;
+    }
+    &.float-left {
+      margin: 0 0.2em;
+      display: contents;
+    }
+    &.float-right {
+      margin: 0.2em;
+      display: contents;
+    }
+    &.float-none {
+      margin-left: 0.2em;
+      display: contents;
+    }
+  }
 }
 
 .qui .qui-choice-container {
-    position: relative;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  Button {
+    margin: 0.2em;
+    &.pad-fitted {
+      padding: 0.7em 1.1em;
+    }
+    &.pad-compact {
+      padding: 1em 1.5em;
+    }
+    &.pad-normal {
+      padding: 1.5em 2em;
+    }
+    &.pad-relaxed {
+      padding: 2.5em 3em;
+    }
+    &.right-aligned {
+      justify-content: flex-start;
+    }
+  }
+  .qui-or {
+    position: absolute;
+    top: 50%;
+    text-transform: uppercase;
+    z-index: 1;
+    align-self: center;
+    background-color: white;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 50%;
+    box-shadow: 0.1em 0.1em 0.3em #696969;
+    border: 1px solid #ffffff;
+    color: #454545;
+    margin: -1.3em;
+    &.-label {
+      position: absolute;
+      top: 55%;
+      text-transform: uppercase;
+      z-index: 1;
+      align-self: center;
+      background-color: white;
+      height: 2.5em;
+      width: 2.5em;
+      border-radius: 50%;
+      box-shadow: 0.1em 0.1em 0.3em #696969;
+      border: 1px solid #ffffff;
+      color: #454545;
+      margin: -1.3em;
+    }
+    &.-caption {
+      position: absolute;
+      top: 45%;
+      text-transform: uppercase;
+      z-index: 1;
+      align-self: center;
+      background-color: white;
+      height: 2.5em;
+      width: 2.5em;
+      border-radius: 50%;
+      box-shadow: 0.1em 0.1em 0.3em #696969;
+      border: 1px solid #ffffff;
+      color: #454545;
+      margin: -1.3em;
+    }
+    &.pad-fitted {
+      font-size: 0.5em;
+      padding: 0.5em;
+    }
+    &.pad-compact {
+      font-size: 0.6em;
+      padding: 0.5em;
+    }
+    &.pad-normal {
+      font-size: 0.8em;
+      padding: 0.5em;
+    }
+    &.pad-relaxed {
+      font-size: 1.1em;
+      padding: 0.5em;
+    }
+    &.size-tiny {
+      font-size: 0.5em;
+    }
+    &.size-small {
+      font-size: 0.6em;
+    }
+    &.size-normal {
+      font-size: 0.8em;
+    }
+    &.size-big {
+      font-size: 1em;
+    }
+    &.size-huge {
+      font-size: 1.2em;
+    }
+    &.size-massive {
+      font-size: 1.4em;
+    }
+  }
+  .qui-choice-container-content-one {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    Button {
-        margin: 0.2em;
-        &.pad-fitted {
-            padding: 0.7em 1.1em;
-        }
-        &.pad-compact {
-            padding: 1em 1.5em;
-        }
-        &.pad-normal {
-            padding: 1.5em 2em;
-        }
-        &.pad-relaxed {
-            padding: 2.5em 3em;
-        }
-        &.right-aligned {
-            justify-content: flex-start;
-        }
+    flex-direction: column;
+    position: relative;
+    width: fit-content;
+    margin-right: 0.2em;
+    .qui-lable-popover-one {
+      position: absolute;
+      left: 50%;
+      bottom: -1em;
+      background-color: #000;
+      border: 0.1em solid #fff;
+      color: #fff;
+      z-index: 11;
+      padding: 0.3em;
+      width: max-content;
+      visibility: hidden;
     }
-    .qui-or {
-        position: absolute;
-        top: 50%;
-        text-transform: uppercase;
-        z-index: 1;
-        align-self: center;
-        background-color: white;
-        height: 2.5em;
-        width: 2.5em;
-        border-radius: 50%;
-        box-shadow: 0.1em 0.1em 0.3em #696969;
-        border: 1px solid #ffffff;
-        color: #454545;
-        margin: -1.3em;
-        &.-label {
-            position: absolute;
-            top: 55%;
-            text-transform: uppercase;
-            z-index: 1;
-            align-self: center;
-            background-color: white;
-            height: 2.5em;
-            width: 2.5em;
-            border-radius: 50%;
-            box-shadow: 0.1em 0.1em 0.3em #696969;
-            border: 1px solid #ffffff;
-            color: #454545;
-            margin: -1.3em;
-        }
-        &.-caption {
-            position: absolute;
-            top: 45%;
-            text-transform: uppercase;
-            z-index: 1;
-            align-self: center;
-            background-color: white;
-            height: 2.5em;
-            width: 2.5em;
-            border-radius: 50%;
-            box-shadow: 0.1em 0.1em 0.3em #696969;
-            border: 1px solid #ffffff;
-            color: #454545;
-            margin: -1.3em;
-        }
-        &.pad-fitted {
-            font-size: 0.5em;
-            padding: 0.5em;
-        }
-        &.pad-compact {
-            font-size: 0.6em;
-            padding: 0.5em;
-        }
-        &.pad-normal {
-            font-size: 0.8em;
-            padding: 0.5em;
-        }
-        &.pad-relaxed {
-            font-size: 1.1em;
-            padding: 0.5em;
-        }
-        &.size-tiny {
-            font-size: 0.5em;
-        }
-        &.size-small {
-            font-size: 0.6em;
-        }
-        &.size-normal {
-            font-size: 0.8em;
-        }
-        &.size-big {
-            font-size: 1em;
-        }
-        &.size-huge {
-            font-size: 1.2em;
-        }
-        &.size-massive {
-            font-size: 1.4em;
-        }
+  }
+  .qui-choice-container-content-two {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: fit-content;
+    margin-left: 0.2em;
+    .qui-lable-popover-two {
+      position: absolute;
+      left: 50%;
+      bottom: -1em;
+      background-color: #000;
+      border: 0.1em solid #fff;
+      color: #fff;
+      z-index: 11;
+      padding: 0.3em;
+      width: max-content;
+      visibility: hidden;
     }
-    .qui-choice-container-content-one {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        width: fit-content;
-        margin-right: 0.2em;
-        .qui-lable-popover-one {
-            position: absolute;
-            left: 50%;
-            bottom: -1em;
-            background-color: #000;
-            border: 0.1em solid #fff;
-            color: #fff;
-            z-index: 11;
-            padding: 0.3em;
-            width: max-content;
-            visibility: hidden;
-        }
+  }
+  .qui-choice-container-content-one:hover {
+    .qui-lable-popover-one {
+      visibility: visible;
     }
-    .qui-choice-container-content-two {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        width: fit-content;
-        margin-left: 0.2em;
-        .qui-lable-popover-two {
-            position: absolute;
-            left: 50%;
-            bottom: -1em;
-            background-color: #000;
-            border: 0.1em solid #fff;
-            color: #fff;
-            z-index: 11;
-            padding: 0.3em;
-            width: max-content;
-            visibility: hidden;
-        }
+  }
+  .qui-choice-container-content-two:hover {
+    .qui-lable-popover-two {
+      visibility: visible;
     }
-    .qui-choice-container-content-one:hover {
-        .qui-lable-popover-one {
-            visibility: visible;
-        }
-    }
-    .qui-choice-container-content-two:hover {
-        .qui-lable-popover-two {
-            visibility: visible;
-        }
-    }
+  }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 374px) {
-    .qui .qui-choices {
-        font-size: 0.8em;
-    }
-    .qui .qui-or {
-        height: 3.3em;
-        width: 3.3em;
-        font-size: 0.5em;
-    }
+  .qui .qui-choices {
+    font-size: 0.8em;
+  }
+  .qui .qui-or {
+    height: 3.3em;
+    width: 3.3em;
+    font-size: 0.5em;
+  }
 }
 @media only screen and (min-width: 540px) {
-    .qui.qui-choice.is-fluid .qui-or {
-        left: 0.5%;
-    }
+  .qui.qui-choice.is-fluid .qui-or {
+    left: 0.5%;
+  }
 }

@@ -6,7 +6,7 @@ import _ from "lodash";
 import {
   getAnimation,
   getTranslation,
-  getQuommons
+  getQuommons,
 } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -166,10 +166,15 @@ export default function ActionMenu(props) {
                 className={`qui-actionmenu-icons ${content?.icon}`}
                 style={colors.accentColors}
               ></i>
-              <span className={`qui-actionmenu-titles qt-sm`} style={colors.textColors}>
+              <span
+                className={`qui-actionmenu-titles qt-sm`}
+                style={colors.textColors}
+              >
                 {tObj ? iconLabel[index]["title"] : content?.title}
               </span>
-              <span className="qui-action-menu-popover">{content?.popover}</span>
+              <span className="qui-action-menu-popover">
+                {content?.popover}
+              </span>
             </div>
           </div>
         );

@@ -176,15 +176,18 @@ function getLabel(labelObj, position) {
 function getColors(colors, emphasis, hovered) {
   let colorStyle = hovered
     ? {
-      background: emphasis !== "contained" ? "transparent" : colors.hoverBackgroundColor,
-      color: colors.hoverTextColor,
-      borderColor: colors.hoverBackgroundColor
-    }
+        background:
+          emphasis !== "contained"
+            ? "transparent"
+            : colors.hoverBackgroundColor,
+        color: colors.hoverTextColor,
+        borderColor: colors.hoverBackgroundColor,
+      }
     : {
-      background:
-        emphasis !== "contained" ? "transparent" : colors.backgroundColor,
-      color: emphasis !== "contained" ? colors.textColor : colors.textColor,
-    };
+        background:
+          emphasis !== "contained" ? "transparent" : colors.backgroundColor,
+        color: emphasis !== "contained" ? colors.textColor : colors.textColor,
+      };
   if (!hovered && emphasis === "outlined")
     colorStyle.borderColor = colors.backgroundColor;
   return colorStyle;
@@ -195,8 +198,8 @@ function getIcon(iconObj, position, iconOnly) {
   let iconMargin = iconOnly
     ? "0"
     : position === "left"
-      ? "0 0.5em 0 0"
-      : "0 0 0 0.5em";
+    ? "0 0.5em 0 0"
+    : "0 0 0 0.5em";
 
   return (
     iconObj?.icon &&
@@ -224,13 +227,16 @@ export default function Button(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "button");
   if (props.isCircular)
-    quommonClasses.childClasses += ` is-circular ${props.content === "" && props.withIcon ? "is-only-icon" : ""
-      }`;
+    quommonClasses.childClasses += ` is-circular ${
+      props.content === "" && props.withIcon ? "is-only-icon" : ""
+    }`;
   quommonClasses.childClasses += ` emp-${props.asEmphasis}`;
   //-------------------------------------------------------------------
   // 2. Set the component colors
   //-------------------------------------------------------------------
-  let colors = props.isDisabled ? "" : props.withColor
+  let colors = props.isDisabled
+    ? ""
+    : props.withColor
     ? getColors(props.withColor, props.asEmphasis, hovered)
     : {};
   //-------------------------------------------------------------------
@@ -239,8 +245,8 @@ export default function Button(props) {
   let buttonText = props.content
     ? props.content
     : props.children
-      ? props.children
-      : "";
+    ? props.children
+    : "";
   let iconOnly = buttonText === "";
   //-------------------------------------------------------------------
   // 4. Set the label/caption/popover and loading text
@@ -293,8 +299,9 @@ export default function Button(props) {
         color={props.asVariant}
         title={getLabel(labelContent, "popover")}
         disabled={props.isDisabled}
-        className={`qui-btn ${props.isDisabled ? "qui-btn-disabled" : ""} ${quommonClasses.childClasses
-          }`}
+        className={`qui-btn ${props.isDisabled ? "qui-btn-disabled" : ""} ${
+          quommonClasses.childClasses
+        }`}
         style={Object.assign({}, colors, props.style)}
         onClick={props.onClick}
       >

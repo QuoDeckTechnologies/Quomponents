@@ -20,7 +20,8 @@ $opened-height: 140px;
 
 .qui-fc-btn {
   position: relative;
-  transition: width $transition-duration $transition-easing, height $transition-duration $transition-easing,
+  transition: width $transition-duration $transition-easing,
+    height $transition-duration $transition-easing,
     transform $transition-duration $bounce-easing;
   transform-style: preserve-3d;
   transform-origin: 50% 50%;
