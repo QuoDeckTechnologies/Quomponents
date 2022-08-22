@@ -21,8 +21,8 @@ Anagram.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    Anagram data should be passed in data field and it is a required field
-    */
+  Anagram data should be passed in data field and it is a required field
+  */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -33,16 +33,16 @@ Anagram.propTypes = {
     purpose: PropTypes.string,
   }).isRequired,
   /**
-    Anagram should have imageLibrary array
-    */
+  Anagram should have imageLibrary array
+  */
   imageLibrary: PropTypes.array,
   slideId: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
   /**
-    Use to define standard component type
-    */
+  Use to define standard component type
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -51,8 +51,8 @@ Anagram.propTypes = {
     "error",
   ]),
   /**
-    Use to override component colors and behavior
-    */
+  Use to override component colors and behavior
+  */
   withColor: PropTypes.shape({
     answerColor: PropTypes.string,
     questionColor: PropTypes.string,
@@ -69,8 +69,8 @@ Anagram.propTypes = {
     backgroundColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -94,16 +94,16 @@ Anagram.propTypes = {
     dictionary: PropTypes.string,
   }),
   /**
-    Use to enable/disable the component
-    */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    Anagram component must have the onClick function passed as props
-    */
+  Anagram component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -132,7 +132,7 @@ Anagram.defaultProps = {
   answer using the input field, typed answer will submitted as it is.
 **/
 export default function Anagram(props) {
-  let { data, withColor, imageLibrary } = props
+  let { data, withColor, imageLibrary } = props;
   //-------------------------------------------------------------------
   // Set the classes
   //-------------------------------------------------------------------
@@ -144,7 +144,7 @@ export default function Anagram(props) {
   const animate = getAnimation(props);
   const [state, setState] = useState();
   function handleSubmit() {
-    props.onClick(state)
+    props.onClick(state);
   }
   //-------------------------------------------------------------------
   // Setting the colors of the imported components
@@ -153,22 +153,22 @@ export default function Anagram(props) {
     textColor: props.withColor?.buttonTextColor,
     backgroundColor: props.withColor?.buttonBackgroundColor,
     hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
-    hoverTextColor: props.withColor?.buttonHoverTextColor
-  }
+    hoverTextColor: props.withColor?.buttonHoverTextColor,
+  };
   let inputFieldColors = {
     textColor: props.withColor?.inputFieldTextColor,
     accentColor: props.withColor?.inputFieldAccentColor,
-    backgroundColor: props.withColor?.inputFieldBackgroundColor
-  }
+    backgroundColor: props.withColor?.inputFieldBackgroundColor,
+  };
   let slideHeaderColors = {
     textColor: props.withColor?.slideHeaderTextColor,
     accentColor: props.withColor?.slideHeaderAccentColor,
-    backgroundColor: props.withColor?.slideHeaderBackgroundColor
-  }
+    backgroundColor: props.withColor?.slideHeaderBackgroundColor,
+  };
   //--------------------------------------------------------------------------
   // Function used to jumble the word which is given as the answer from prop
   //--------------------------------------------------------------------------
-  let jumbledWords = answer => {
+  let jumbledWords = (answer) => {
     if (answer !== "" && answer) {
       return answer
         .toUpperCase()
@@ -176,14 +176,14 @@ export default function Anagram(props) {
         .sort(function () {
           return 0.5 - Math.random();
         })
-        .join("")
+        .join("");
     }
   };
   //-------------------------------------------------------------------
   // Get translation of the component
   //-------------------------------------------------------------------
-  let buttonText = data?.purpose === "quiz" ? "Check Answer" : "Submit Answer"
-  let inputFieldLable = "Input Name"
+  let buttonText = data?.purpose === "quiz" ? "Check Answer" : "Submit Answer";
+  let inputFieldLable = "Input Name";
   let tObj = null;
   if (
     props.withTranslation?.lang &&
@@ -191,18 +191,28 @@ export default function Anagram(props) {
     props.withTranslation.lang !== "en"
   ) {
     tObj = getTranslation(props.withTranslation);
-    inputFieldLable = tObj?.label
-    buttonText = data?.purpose === "quiz" ? tObj?.quizLabel || "Check Answer" : tObj?.nonQuizLabel || "Submit Answer"
+    inputFieldLable = tObj?.label;
+    buttonText =
+      data?.purpose === "quiz"
+        ? tObj?.quizLabel || "Check Answer"
+        : tObj?.nonQuizLabel || "Submit Answer";
   }
   const getBackground = () => {
     return {
-      backgroundImage: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
+      backgroundImage: `url(${resolveImage(
+        data?.backgroundImage.id,
+        imageLibrary
+      )})`,
       backgroundSize: "cover",
     };
   };
   const background = data?.backgroundImage
     ? getBackground()
-    : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
+    : {
+        backgroundColor: withColor?.backgroundColor
+          ? withColor?.backgroundColor
+          : "#fff",
+      };
 
   // ========================= Render Function =================================
   return (
@@ -211,41 +221,51 @@ export default function Anagram(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      {data &&
+      {data && (
         <div className="qui-anagram-card" style={{ ...background }}>
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
               title={data?.title}
               subtitle={data?.subtitle}
-              withColor={slideHeaderColors} />
+              withColor={slideHeaderColors}
+            />
           )}
           {data?.image && (
-            <img className="qui-anagram-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
+            <img
+              className="qui-anagram-image"
+              src={resolveImage(data?.image.id, imageLibrary)}
+              alt=""
+            />
           )}
           <div
             className={`qui-anagram-question variant-${props.asVariant}-text`}
             style={{ color: props.withColor?.questionColor }}
-            key={"anagram-question-" + props.slideId}>
+            key={"anagram-question-" + props.slideId}
+          >
             {props.data?.question}
           </div>
-          <p className="qui-anagram-answer"
-            style={{ color: props.withColor?.answerColor }}>
+          <p
+            className="qui-anagram-answer"
+            style={{ color: props.withColor?.answerColor }}
+          >
             {jumbledWords(data?.answer)}
           </p>
-          <InputField {...props}
+          <InputField
+            {...props}
             label={inputFieldLable}
             withColor={inputFieldColors}
             onSubmit={(name, value) => setState(value)}
             name="anagram-input-field"
-            withTranslation={props.withTranslation} />
+            withTranslation={props.withTranslation}
+          />
           <Button
             content={buttonText}
             withColor={buttonColors}
             asVariant={props.asVariant}
             onClick={() => handleSubmit()}
-          >
-          </Button>
-        </div>}
+          ></Button>
+        </div>
+      )}
     </motion.div>
   );
 }

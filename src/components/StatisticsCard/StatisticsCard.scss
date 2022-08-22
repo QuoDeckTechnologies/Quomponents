@@ -1,81 +1,81 @@
 .qui.qui-statistics-card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: #666666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #666666;
 
-    .qui-segment {
-        padding: 1em;
-        width: 7.5em;
-    }
+  .qui-segment {
+    padding: 1em;
+    width: 7.5em;
+  }
 
-    .qui {
-        overflow: visible;
-    }
+  .qui {
+    overflow: visible;
+  }
 
-    .qui-statistics-card-icon {
-        font-size: 2em;
-        margin-bottom: 0.2em;
-    }
+  .qui-statistics-card-icon {
+    font-size: 2em;
+    margin-bottom: 0.2em;
+  }
 
-    .qui-statistics-card-value {
-        margin: 0;
-        cursor: pointer;
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  .qui-statistics-card-value {
+    margin: 0;
+    cursor: pointer;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-    .qui-statistics-card-label {
-        margin: 0;
-        cursor: pointer;
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  .qui-statistics-card-label {
+    margin: 0;
+    cursor: pointer;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-    .qui-statistics-card-valuetooltip {
-        position: relative;
-        display: block;
-    }
+  .qui-statistics-card-valuetooltip {
+    position: relative;
+    display: block;
+  }
 
-    .qui-statistics-card-valuetooltip .qui-statistics-card-tooltipvalue {
-        visibility: hidden;
-        width: auto;
-        padding: 0.2em;
-        border-radius: 5px;
-        background-color: #121212;
-        color: #ffffff;
-        position: absolute;
-        left: 0;
-        z-index: 1;
-    }
+  .qui-statistics-card-valuetooltip .qui-statistics-card-tooltipvalue {
+    visibility: hidden;
+    width: auto;
+    padding: 0.2em;
+    border-radius: 5px;
+    background-color: #121212;
+    color: #ffffff;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+  }
 
-    .qui-statistics-card-valuetooltip:hover .qui-statistics-card-tooltipvalue {
-        visibility: visible;
-    }
+  .qui-statistics-card-valuetooltip:hover .qui-statistics-card-tooltipvalue {
+    visibility: visible;
+  }
 
-    .qui-statistics-card-labeltooltip {
-        position: relative;
-        display: block;
-    }
+  .qui-statistics-card-labeltooltip {
+    position: relative;
+    display: block;
+  }
 
-    .qui-statistics-card-labeltooltip .qui-statistics-card-tooltiplabel {
-        visibility: hidden;
-        padding: 0.2em;
-        border-radius: 5px;
-        width: auto;
-        background-color: #121212;
-        color: #ffffff;
-        position: absolute;
-        left: 0;
-        z-index: 1;
-    }
+  .qui-statistics-card-labeltooltip .qui-statistics-card-tooltiplabel {
+    visibility: hidden;
+    padding: 0.2em;
+    border-radius: 5px;
+    width: auto;
+    background-color: #121212;
+    color: #ffffff;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+  }
 
-    .qui-statistics-card-labeltooltip:hover .qui-statistics-card-tooltiplabel {
-        visibility: visible;
-    }
+  .qui-statistics-card-labeltooltip:hover .qui-statistics-card-tooltiplabel {
+    visibility: visible;
+  }
 }

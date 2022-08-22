@@ -20,7 +20,7 @@ Image.propTypes = {
   //=======================================
   /**
     Image data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -31,18 +31,18 @@ Image.propTypes = {
   }),
   /**
     Image can set presenter image from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   /**
     Image slideId should be passed with props, to specify the slide.
-    */
+  */
   slideId: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     slideHeaderTextColor: PropTypes.string,
     slideHeaderAccentColor: PropTypes.string,
@@ -53,7 +53,7 @@ Image.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",

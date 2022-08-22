@@ -4,61 +4,57 @@ import {
   getQuommons,
   getTranslation,
 } from "../../../common/javascripts/helpers";
-
 import "../../../common/stylesheets/common.css";
 import "./Ribbon.scss";
 import "../../../common/stylesheets/overrule.scss";
+
 Ribbon.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
-
   /**
-    Ribbon Text has to be in content or passed as children to the component.
-    */
+  Ribbon Text has to be in content or passed as children to the component.
+  */
   asEmphasis: PropTypes.oneOf(["new", "premium", "restricted", "free"]),
-
+  //=======================================
   // Quommon props
   //=======================================
-
   /**
-    Use to float the component in parent container
-    */
+  Use to float the component in parent container
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none"]),
-
   /**
-    Use to override component colors and behavior
-    */
+  Use to override component colors and behavior
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
 };
 
 Ribbon.defaultProps = {
+  //=======================================
   // Component Specific props
   //=======================================
   asEmphasis: "new",
-
+  //=======================================
   // Quommon props
   //=======================================
   asFloated: "none",
-
   withColor: null,
   withTranslation: null,
-
   isHidden: false,
 };
 
@@ -69,17 +65,14 @@ Ribbon.defaultProps = {
 **/
 export default function Ribbon(props) {
   let ribbonText = props.asEmphasis;
-
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "ribbon-container");
-
   //-------------------------------------------------------------------
   // 2. Set the component colors
   //-------------------------------------------------------------------
   let colors = props.withColor;
-
   //-------------------------------------------------------------------
   // 3. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------

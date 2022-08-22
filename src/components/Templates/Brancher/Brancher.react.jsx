@@ -20,7 +20,7 @@ Brancher.propTypes = {
   //=======================================
   /**
     Brancher data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     image: PropTypes.object,
     title: PropTypes.string,
@@ -31,22 +31,22 @@ Brancher.propTypes = {
   }).isRequired,
   /**
     Brancher can set background image from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   /**
     slideId can be used if same template is used continueously for multiple slides in qdf.
-    */
+  */
   slideId: PropTypes.number,
   /**
     Use for rounded corners of buttons 
-    */
+  */
   isCircular: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
@@ -60,7 +60,7 @@ Brancher.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -77,7 +77,7 @@ Brancher.propTypes = {
   }),
   /**
     Use to define standard component type
-    */
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -87,15 +87,15 @@ Brancher.propTypes = {
   ]),
   /**
     Use to float the component in parent container
-    */
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
     Use to enable/disable the component
-    */
+  */
   isDisabled: PropTypes.bool,
   /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
 };
 
@@ -149,7 +149,6 @@ export default function Brancher(props) {
     }
   };
   const background = getBackground();
-
 
   // ========================= Render Function =================================
 

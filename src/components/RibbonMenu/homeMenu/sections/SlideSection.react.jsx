@@ -29,7 +29,6 @@ SlideSection.propTypes = {
   deck: PropTypes.shape({
     content: PropTypes.array,
   }),
-
   //=======================================
   // Quommon props
   //=======================================
@@ -157,7 +156,9 @@ export default function SlideSection(props) {
               </div>
             </div>
           </div>
-          <div className="qui-ribbon-menu-label-file">{slideSection?.slide || "Slide"}</div>
+          <div className="qui-ribbon-menu-label-file">
+            {slideSection?.slide || "Slide"}
+          </div>
         </div>
       </div>
     </div>

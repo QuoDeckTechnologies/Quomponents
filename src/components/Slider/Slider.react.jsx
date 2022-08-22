@@ -15,14 +15,14 @@ Slider.propTypes = {
   //=======================================
   /**
     Use to set initial Value of the slider
-    */
+  */
   initialValue: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
@@ -30,7 +30,7 @@ Slider.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -47,15 +47,15 @@ Slider.propTypes = {
   }),
   /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
   /**
     Use to enable/disable the component
-    */
+  */
   isDisabled: PropTypes.bool,
   /**
     Slider component must have the onClick function passed as props
-    */
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -116,17 +116,23 @@ export default function Slider(props) {
                 : "#FFBF00",
               "&:hover": {
                 boxShadow: `0px 0px 0px 8px ${
-                  withColor?.hoverBackgroundColor ? withColor?.hoverBackgroundColor : "#FFBF0026"
+                  withColor?.hoverBackgroundColor
+                    ? withColor?.hoverBackgroundColor
+                    : "#FFBF0026"
                 }`,
               },
               "&.Mui-focusVisible": {
                 boxShadow: `0px 0px 0px 8px ${
-                  withColor?.hoverBackgroundColor ? withColor?.hoverBackgroundColor : "#FFBF0026"
+                  withColor?.hoverBackgroundColor
+                    ? withColor?.hoverBackgroundColor
+                    : "#FFBF0026"
                 }`,
               },
             },
             "& .MuiSlider-rail": {
-              color: withColor?.accentColor ? withColor?.accentColor : "#FFBF00",
+              color: withColor?.accentColor
+                ? withColor?.accentColor
+                : "#FFBF00",
             },
           }}
           defaultValue={initialValue}

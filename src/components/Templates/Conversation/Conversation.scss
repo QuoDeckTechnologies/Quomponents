@@ -1,50 +1,50 @@
 .qui.qui-conversation {
-    padding: 1.5em;
+  padding: 1.5em;
+  border-radius: 1em;
+  min-height: 30em;
+
+  .qui .qui-title-block {
+    min-width: 12em;
+    min-height: 10em;
+  }
+
+  .qui .qui-title {
+    font-size: 1.5em;
+    padding: 0 0 0.2em 0;
+  }
+
+  .qui .qui-sub-title {
+    font-size: 1em;
+  }
+
+  .qui-conversation-image {
+    width: 100%;
     border-radius: 1em;
-    min-height: 30em;
+    max-height: 15em;
+  }
 
-    .qui .qui-title-block {
-        min-width: 12em;
-        min-height: 10em;
-    }
+  .qui-conversation-text-block {
+    padding: 1em 0 0.5em 0;
+  }
 
-    .qui .qui-title {
-        font-size: 1.5em;
-        padding: 0 0 0.2em 0;
-    }
-
-    .qui .qui-sub-title {
-        font-size: 1em;
-    }
-
-    .qui-conversation-image {
-        width: 100%;
-        border-radius: 1em;
-        max-height: 15em;
-    }
-
-    .qui-conversation-text-block {
-        padding: 1em 0 0.5em 0;
-    }
-
-    .qui-text-block-area {
-        width: fit-content;
-    }
+  .qui-text-block-area {
+    width: fit-content;
+  }
 }
 
 @media only screen and (min-width: 320px) {
-    .qui.qui-conversation {
-        width: auto;
+  .qui.qui-conversation {
+    width: auto;
 
-        .qui-conversion-list {
-            font-size: 1em;
-            width: fit-content;
-        }
+    .qui-conversion-list {
+      font-size: 1em;
+      width: fit-content;
     }
+  }
 }
 
 @media only screen and (min-width: 481px) {
-    .qui.qui-conversation {
-        width: 20em;
-    }
+  .qui.qui-conversation {
+    width: 20em;
+  }
 }
