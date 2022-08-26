@@ -7,7 +7,6 @@ import { shallow, mount } from 'enzyme';
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -25,7 +24,6 @@ describe('LandscapeCarousel', () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: LandscapeCarousel,
         required: {

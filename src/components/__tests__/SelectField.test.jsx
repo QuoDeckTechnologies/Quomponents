@@ -17,7 +17,6 @@ describe("SelectField", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: SelectField,
         required: {
@@ -55,7 +54,6 @@ describe("SelectField", () => {
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component;
     let onClick = jest.fn();
     beforeEach(() => {

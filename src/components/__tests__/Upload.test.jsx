@@ -2,7 +2,7 @@
 // Import from NPM
 // -------------------------------------
 import { shallow, mount } from "enzyme";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------

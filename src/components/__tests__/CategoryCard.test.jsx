@@ -2,7 +2,7 @@ import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -16,7 +16,6 @@ describe("CategoryCard", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: CategoryCard,
         required: {

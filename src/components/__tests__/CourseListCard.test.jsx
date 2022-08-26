@@ -15,7 +15,6 @@ describe("CourseListCard", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: CourseListCard,
     required: {

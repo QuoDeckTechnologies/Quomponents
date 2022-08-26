@@ -13,11 +13,9 @@ import Choice from "../Buttons/Choice/Choice.react";
 import Button from "../Buttons/Button/Button.react";
 
 describe("Choice", () => {
-
 	// -------------------------------------
 	// Run common tests
 	// -------------------------------------
-
 	const args = {
 		target: Choice,
 		required: {

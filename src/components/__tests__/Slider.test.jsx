@@ -15,7 +15,6 @@ describe("Slider", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: Slider,
     required: {
@@ -33,7 +32,6 @@ describe("Slider", () => {
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-
   let component;
 
   beforeEach(() => {

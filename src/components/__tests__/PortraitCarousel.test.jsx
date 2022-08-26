@@ -24,7 +24,6 @@ describe('PortraitCarousel', () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: PortraitCarousel,
         required: {

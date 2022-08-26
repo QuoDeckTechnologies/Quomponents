@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -15,7 +15,6 @@ describe("PageHeader", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: PageHeader,
         required: {
@@ -49,7 +48,6 @@ describe("PageHeader", () => {
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component;
     beforeEach(() => {
         jest.resetAllMocks();

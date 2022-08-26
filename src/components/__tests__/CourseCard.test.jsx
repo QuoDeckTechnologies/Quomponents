@@ -2,7 +2,6 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-import renderer, { act } from "react-dom/test-utils";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------

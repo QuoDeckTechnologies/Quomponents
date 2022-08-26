@@ -65,6 +65,7 @@ describe("Videobox", () => {
     expect(component.find(YouTube).exists()).toBe(true);
     expect(component.exists()).toBe(true);
   });
+
   it("should render a video if link is provided for youtube player with different format", () => {
     component.setProps({
       link: "https://www.youtube.com/watch?v=&Bwx5nqvSTZ0",
@@ -73,6 +74,7 @@ describe("Videobox", () => {
     expect(component.find(YouTube).exists()).toBe(true);
     expect(component.exists()).toBe(true);
   });
+
   it("should render a default video if link not provided", () => {
     component.setProps({
       link: "",
@@ -81,6 +83,7 @@ describe("Videobox", () => {
     expect(component.find(Player).exists()).toBe(true);
     expect(component.exists()).toBe(true);
   });
+
   it("should render a video if vimeo link is provided", () => {
     component.setProps({
       link: "https://vimeo.com/686836566",
@@ -89,6 +92,7 @@ describe("Videobox", () => {
     expect(component.find(Vimeo).exists()).toBe(true);
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly if call onReady", () => {
     component = shallow(<Videobox autoplay={false} onReady={onReady} />);
     component
@@ -96,6 +100,7 @@ describe("Videobox", () => {
       .simulate("ready", { target: { playVideo: () => { } } });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly if call onReady is equal to null", () => {
     component = shallow(<Videobox onReady={null} />);
     component
@@ -103,31 +108,37 @@ describe("Videobox", () => {
       .simulate("ready", { target: { playVideo: () => { } } });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly if call onError", () => {
     component = shallow(<Videobox onError={onError} />);
     component.find(".react-player").simulate("error");
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly if call onPause", () => {
     component = shallow(<Videobox onPause={onPause} />);
     component.find(".react-player").simulate("pause", { target: {} });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly if call onPause is equal to null", () => {
     component = shallow(<Videobox onPause={null} />);
     component.find(".react-player").simulate("pause", { target: {} });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly if call onPlay", () => {
     component = shallow(<Videobox onPlay={onPlay} />);
     component.find(".react-player").simulate("play", { target: {} });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly if call onPlay is equal to null", () => {
     component = shallow(<Videobox onPlay={null} />);
     component.find(".react-player").simulate("play", { target: {} });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly if call onEnd", () => {
     component = shallow(<Videobox loop={true} onEnd={onEnd} />);
     component
@@ -135,6 +146,7 @@ describe("Videobox", () => {
       .simulate("end", { target: { playVideo: () => { } } });
     expect(component.exists()).toBe(true);
   });
+  
   it("should render correctly if call onEnd is equal to null", () => {
     component = shallow(<Videobox onEnd={null} />);
     component

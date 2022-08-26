@@ -17,7 +17,6 @@ describe("SlideSettings", () => {
 	// -------------------------------------
 	// Run common tests
 	// -------------------------------------
-
 	const args = {
 		target: SlideSettings,
 		translations: {
@@ -53,7 +52,6 @@ describe("SlideSettings", () => {
 	// -------------------------------------
 	// Run component specific tests
 	// -------------------------------------
-
 	let component, actions, deck;
 	actions = {
 		changeSlideNav: jest.fn()

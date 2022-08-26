@@ -1,16 +1,8 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from 'enzyme';
-import renderer from 'react-test-renderer';
-import { render, screen, fireEvent } from "@testing-library/react";
-
-
-
-//--------------------------------------
-// Import from Config
-// -------------------------------------
-
+import { shallow } from 'enzyme';
+import { render, fireEvent } from "@testing-library/react";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -46,7 +38,6 @@ describe("FlipConfirm", () => {
 
     },
   });
-
 
   beforeEach(() => {
     jest.resetAllMocks();

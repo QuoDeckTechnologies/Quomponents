@@ -2,9 +2,6 @@
 // Import from NPM
 // -------------------------------------
 import { mount, shallow } from "enzyme";
-import renderer, { act } from "react-test-renderer";
-
-// import { act } from "react-test-renderer";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -18,7 +15,6 @@ describe("OptionalImageField", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: OptionalImageField,
     required: {

@@ -15,7 +15,6 @@ describe("RibbonDesignMenu", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: RibbonDesignMenu,
     translations: {
@@ -62,7 +61,6 @@ describe("RibbonDesignMenu", () => {
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-
   let component;
   beforeEach(() => {
     jest.resetAllMocks();

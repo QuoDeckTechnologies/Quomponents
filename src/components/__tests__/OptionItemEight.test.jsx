@@ -15,7 +15,6 @@ describe("Option Item Eight", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: OptionItemEight,
     required: {

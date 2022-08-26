@@ -6,8 +6,6 @@ import { shallow } from "enzyme";
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -17,7 +15,6 @@ describe("DeckAnalysis", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: DeckAnalysis,
         required: {
@@ -30,7 +27,7 @@ describe("DeckAnalysis", () => {
                 slideCount: 18,
                 status: true,
             },
-            onClick: () => { },
+            onClick: () => {},
         },
         translations: {
             tgt: "deckanalysis",

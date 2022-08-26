@@ -1,10 +1,8 @@
 import { shallow } from "enzyme";
-import renderer, { act } from "react-test-renderer";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -13,7 +11,6 @@ describe("LinkIcon", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: LinkIcon,
         required: {

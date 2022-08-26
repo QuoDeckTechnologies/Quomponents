@@ -15,7 +15,6 @@ describe("RibbonHomeMenu", () => {
 	// -------------------------------------
 	// Run common tests
 	// -------------------------------------
-
 	const args = {
 		target: RibbonHomeMenu,
 		translations: {
@@ -77,7 +76,6 @@ describe("RibbonHomeMenu", () => {
 	// -------------------------------------
 	// Run component specific tests
 	// -------------------------------------
-
 	let component, actions, deck;
 	actions = {
 		addSlide: jest.fn(),

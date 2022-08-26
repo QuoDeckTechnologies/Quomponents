@@ -2,7 +2,7 @@ import React from 'react';
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -13,7 +13,6 @@ import { hasValid } from "./common";
 import Banner from "../Carousel/Banner/Banner.react"
 
 describe("Banner", () => {
-
     // -------------------------------------
     // Run common tests
     // -------------------------------------
@@ -30,7 +29,7 @@ describe("Banner", () => {
                 header: "What is Lorem Ipsum?",
                 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
             }],
-            onClick: () => {},
+            onClick: () => { },
         },
     };
 

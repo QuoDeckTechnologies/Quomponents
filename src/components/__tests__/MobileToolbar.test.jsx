@@ -13,11 +13,9 @@ import MobileToolbar from '../MobileToolbar/MobileToolbar.react'
 import IconLink from '../Buttons/IconLink/IconLink.react'
 
 describe("MobileToolbar", () => {
-
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: MobileToolbar,
         required: {

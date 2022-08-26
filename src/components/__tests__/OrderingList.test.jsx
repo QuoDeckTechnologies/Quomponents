@@ -8,20 +8,14 @@ import { render } from "@testing-library/react";
 // -------------------------------------
 import { hasValid } from "./common";
 //--------------------------------------
-// Import from Config
-// -------------------------------------
-
-//--------------------------------------
 // Import Components
 // -------------------------------------
 import OrderingList from "../OrderingList/OrderingList/OrderingList.react";
-import Button from "../Buttons/Button/Button.react";
 
 describe("OrderingList", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: OrderingList,
     required: {

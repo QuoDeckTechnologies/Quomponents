@@ -16,7 +16,6 @@ describe("Segment", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: Segment,
   };
@@ -29,7 +28,6 @@ describe("Segment", () => {
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-
   let component;
 
   beforeEach(() => {
@@ -44,7 +42,7 @@ describe("Segment", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-      ></Segment>
+      />
     );
   });
 

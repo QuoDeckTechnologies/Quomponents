@@ -15,7 +15,6 @@ describe("Option Item Ten", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: OptionItemTen,
     required: {
@@ -47,7 +46,6 @@ describe("Option Item Ten", () => {
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-
   let component;
 
   const pauseFor = (milliseconds) =>

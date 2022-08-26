@@ -4,16 +4,15 @@ import renderer, { act } from "react-test-renderer";
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import IconLink from '../Buttons/IconLink/IconLink.react'
+import IconLink from '../Buttons/IconLink/IconLink.react';
+
 describe("IconLink", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: IconLink,
         required: {

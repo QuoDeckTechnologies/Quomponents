@@ -17,7 +17,6 @@ describe('SquareWrapperCarousel', () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: SquareWrapperCarousel,
         required: {
@@ -42,11 +41,9 @@ describe('SquareWrapperCarousel', () => {
     };
 
     hasValid("defaults", args);
-
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component, content;
     content = [{
         image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
@@ -72,6 +69,7 @@ describe('SquareWrapperCarousel', () => {
             />
         );
     });
+
     it('should pass conditional true when the slide is selected {true} from the props ', () => {
         component.setProps({
             content: [{
@@ -89,10 +87,12 @@ describe('SquareWrapperCarousel', () => {
             }]
         })
     });
+
     it('should render and handle click event slickPrev on previous arrows', () => {
         const wrapper = shallow(<SquareWrapperCarousel onClick={() => { }} />);
         wrapper.find(".qui-square-wrapper-slick-prev").simulate('click');
     });
+    
     it('should render and handle click event slickNext on next arrow', () => {
         const wrapper = shallow(<SquareWrapperCarousel onClick={() => { }} />);
         wrapper.find(".qui-square-wrapper-slick-next").simulate('click');

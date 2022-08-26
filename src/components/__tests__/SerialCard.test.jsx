@@ -15,7 +15,6 @@ describe("SerialCard", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: SerialCard,
         required: {
@@ -36,7 +35,6 @@ describe("SerialCard", () => {
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component;
     beforeEach(() => {
         jest.resetAllMocks();

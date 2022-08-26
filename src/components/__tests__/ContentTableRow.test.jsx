@@ -17,7 +17,6 @@ describe("ContentTableRow", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: ContentTableRow,
     required: {

@@ -16,7 +16,6 @@ describe("HtmlCarousel", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: HtmlCarousel,
     required: {

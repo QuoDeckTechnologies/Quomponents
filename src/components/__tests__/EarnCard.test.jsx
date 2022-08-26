@@ -12,11 +12,9 @@ import { hasValid } from "./common";
 import EarnCard from "../EarnCard/EarnCard.react";
 
 describe("EarnCard", () => {
-
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: EarnCard,
     required: {

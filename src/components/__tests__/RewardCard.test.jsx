@@ -2,7 +2,7 @@ import React from 'react';
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -19,7 +19,7 @@ describe("RewardCard", () => {
     const args = {
         target: RewardCard,
         required: {
-            onClick: () => {},
+            onClick: () => { },
         },
         translations: {
             tgt: "rewardCard",

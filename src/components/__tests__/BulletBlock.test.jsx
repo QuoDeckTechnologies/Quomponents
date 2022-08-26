@@ -2,27 +2,19 @@
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-import renderer from "react-test-renderer";
-
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-//--------------------------------------
-// Import from Config
-// -------------------------------------
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import BulletBlock from "../BulletBlock/BulletBlock.react";
 
 describe("BulletBlock", () => {
-
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: BulletBlock,
         required: {

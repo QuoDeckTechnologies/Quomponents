@@ -4,12 +4,10 @@
 import { shallow, mount } from "enzyme";
 import { render } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
-
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------

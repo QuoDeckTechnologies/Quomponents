@@ -12,11 +12,9 @@ import { hasValid } from "./common";
 import ClickableImage from "../ClickableImage/ClickableImage.react";
 
 describe("Clickable Image", () => {
-
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: ClickableImage,
     required: {

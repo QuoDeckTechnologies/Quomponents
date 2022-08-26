@@ -15,7 +15,6 @@ describe("StatisticsCard", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: StatisticsCard,
         required: {
@@ -37,7 +36,6 @@ describe("StatisticsCard", () => {
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component;
 
     beforeEach(() => {
@@ -51,7 +49,7 @@ describe("StatisticsCard", () => {
                 withIcon={null}
                 withLabel={null}
                 isHidden={false}
-            ></StatisticsCard>
+            />
         );
     });
 });
