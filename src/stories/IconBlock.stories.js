@@ -121,31 +121,34 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<IconBlock asVariant = "primary"
-            asSize = "normal"
-            asFloated = "inline"
-            asPadded = "normal"
-            asEmphasis = "contained"
-            withColor = {{
-                backgroundColor:"",
-                textColor:"",
-            }}
-            withAnimation = {{
-                animation: "zoom",
-                duration: 0.5,
-                delay: 0,
-            }}
-            withIcon = {{ 
-                icon: "fas fa-book-open" ,
-                size: "1em",
-            }}
-            isDisabled = {false}
-            isHidden = {false}
-        />`,
+      code: `<IconBlock
+          asVariant="primary"
+          asSize="normal"
+          asFloated="inline"
+          asPadded="normal"
+          asEmphasis="contained"
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withIcon={{
+            icon: "fas fa-book-open",
+            size: "1em",
+          }}
+          isDisabled={false}
+          isHidden={false}/>`,
     },
   },
 };
 
+// -------------------------------------------------------------
+// AllVariants
+// -------------------------------------------------------------
 export const AllVariantsTemplate = (args) => {
   const baseObj1 = {
     ...Object.assign({}, Default.args, args, {

@@ -18,7 +18,7 @@ describe("OptionalImageField", () => {
   const args = {
     target: OptionalImageField,
     required: {
-      onUpload: () => { },
+      onUpload: () => {},
     },
   };
 
@@ -55,7 +55,7 @@ describe("OptionalImageField", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onUpload={() => { }}
+        onUpload={() => {}}
       />
     );
   });
@@ -86,7 +86,7 @@ describe("OptionalImageField", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onUpload={() => { }}
+        onUpload={() => {}}
       />
     );
     wrapper
@@ -105,8 +105,14 @@ describe("OptionalImageField", () => {
   });
 
   it("should render correctly when hovered", () => {
-    component.find(".qui-optional-image-field-button").at(0).simulate("mouseenter");
-    component.find(".qui-optional-image-field-button").at(0).simulate("mouseleave");
+    component
+      .find(".qui-optional-image-field-button")
+      .at(0)
+      .simulate("mouseenter");
+    component
+      .find(".qui-optional-image-field-button")
+      .at(0)
+      .simulate("mouseleave");
     expect(component.exists()).toBe(true);
   });
 });

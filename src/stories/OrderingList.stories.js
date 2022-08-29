@@ -66,21 +66,10 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-          fontSize: "1.25em",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div>{story()}</div>],
   parameters: {
     componentSubtitle:
-      "Display Options with up and down buttons to rank/ arrange options and submit the arranged options",
+      "Display Options with up and down buttons to rank/arrange options and submit the arranged options",
     a11y: { disable: true },
     docs: {
       iframeHeight: 550,
@@ -115,71 +104,58 @@ Default.parameters = {
         "Any free fontawesome icon can be used as the OrderingList icon definition. This component is combination of the ordering Button  title component  and orderingList buuton  is clickable and ranking the title",
     },
     source: {
-      code: `<OrderingList 
-            purpose= ""
-            asVariant= "warning"
-            asFloated= "none"
-            asAligned= "center"
-            asPadded= "fitted"
-            content= ["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"]
-            withColor= {{
-                backgroundColor: "",
-                textColor: "",
-                hoverBackgroundColor: "",
-                hoverTextColor: "",
-            }}
-            isDisabled= {false}
-            isHidden= {false}/>`,
+      code: `<OrderingList
+        purpose=""
+        asVariant="warning"
+        asFloated="none"
+        asAligned="center"
+        asPadded="fitted"
+        content={["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"]}
+        withColor={{
+          backgroundColor: "",
+          textColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
+        }}
+        isDisabled={false}
+        isHidden={false}/>`,
     },
   },
 };
 // -------------------------------------------------------------
 // AllVariants
 // -------------------------------------------------------------
-const AllVariantsTemplate = (args) => {
-  const baseObj = {
+export const AllVariantsTemplate = (args) => {
+  const baseObj1 = {
     ...Object.assign({}, Default.args, args, {}),
+    asVariant: "primary",
+    purpose: "quiz",
+  };
+  const baseObj2 = {
+    ...Object.assign({}, Default.args, args, {}),
+    asVariant: "secondary",
+  };
+  const baseObj3 = {
+    ...Object.assign({}, Default.args, args, {}),
+    asVariant: "success",
+  };
+  const baseObj4 = {
+    ...Object.assign({}, Default.args, args, {}),
+    asVariant: "warning",
+  };
+  const baseObj5 = {
+    ...Object.assign({}, Default.args, args, {}),
+    asVariant: "error",
   };
   return (
-    <div>
-      <OrderingList
-        {...Object.assign({}, baseObj, {
-          asVariant: "primary",
-          purpose: "quiz",
-        })}
-      />
-      <OrderingList
-        {...Object.assign({}, baseObj, {
-          asVariant: "secondary",
-          purpose: "",
-        })}
-      />
-      <OrderingList
-        {...Object.assign({}, baseObj, {
-          asVariant: "success",
-        })}
-      />
-      <OrderingList
-        {...Object.assign({}, baseObj, {
-          asVariant: "warning",
-        })}
-      />
-      <OrderingList
-        {...Object.assign({}, baseObj, {
-          asVariant: "error",
-        })}
-      />
-    </div>
+    <>
+      <div>
+        <OrderingList {...Object.assign({}, baseObj1, {})} />
+        <OrderingList {...Object.assign({}, baseObj2, {})} />
+        <OrderingList {...Object.assign({}, baseObj3, {})} />
+        <OrderingList {...Object.assign({}, baseObj4, {})} />
+        <OrderingList {...Object.assign({}, baseObj5, {})} />
+      </div>
+    </>
   );
-};
-export const AllVariants = AllVariantsTemplate.bind({});
-AllVariants.parameters = {
-  docs: {
-    description: {
-      story: "5 variants are supported. Use as per purpose noted here.",
-    },
-    source: {
-      code: `<OrderingList asVariant="primary"/>`,
-    },
-  },
 };

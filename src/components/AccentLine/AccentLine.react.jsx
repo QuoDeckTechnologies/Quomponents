@@ -119,6 +119,7 @@ export default function AccentLine(props) {
         className={`qui-accentline-container ${quommonClasses.childClasses}`}
       >
         <div className="qui-accentline" style={AccentLineColors}></div>
+        
       </div>
     </motion.div>
   );

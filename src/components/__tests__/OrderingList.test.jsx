@@ -19,7 +19,7 @@ describe("OrderingList", () => {
   const args = {
     target: OrderingList,
     required: {
-      onClick: () => { },
+      onClick: () => {},
     },
   };
 
@@ -42,20 +42,20 @@ describe("OrderingList", () => {
       <OrderingList
         content={["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"]}
         purpose="quiz"
-        onClick={() => { }}
+        onClick={() => {}}
       />
     );
   });
   it("should render correctly without throwing error when clicked on Submit button", () => {
     component.setProps({
-      purpose: "quiz"
-    })
+      purpose: "quiz",
+    });
   });
   it("should render correctly without throwing error when component unmounts", () => {
     const { unmount } = render(
       <OrderingList
         content={["PRIMARY BUTTON", "SECONDARY BUTTON", "THIRD BUTTON"]}
-        onClick={() => { }}
+        onClick={() => {}}
       />
     );
     unmount();
@@ -70,13 +70,13 @@ describe("OrderingList", () => {
     component.find(".qui-ordering-btn").at(5).simulate("click");
   });
   it("should render correctly without throwing error when clicked on Submit button", () => {
-    component.find('.qui-btn').at(0).simulate("click");
-    component.find('.qui-btn').at(1).simulate("click");
-    component.find('.qui-btn').at(2).simulate("click");
-    component.find('.qui-btn').at(3).simulate("click");
-    component.find('.qui-btn').at(4).simulate("click");
-    component.find('.qui-btn').at(5).simulate("click");
-    component.find('.qui-btn').at(6).simulate("click");
-    component.find('.qui-btn').at(7).simulate("click");
+    component.find(".qui-btn").at(0).simulate("click");
+    component.find(".qui-btn").at(1).simulate("click");
+    component.find(".qui-btn").at(2).simulate("click");
+    component.find(".qui-btn").at(3).simulate("click");
+    component.find(".qui-btn").at(4).simulate("click");
+    component.find(".qui-btn").at(5).simulate("click");
+    component.find(".qui-btn").at(6).simulate("click");
+    component.find(".qui-btn").at(7).simulate("click");
   });
 });

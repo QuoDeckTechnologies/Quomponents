@@ -76,7 +76,7 @@ export default {
       "Displays a ProgressBar with Buttons & Steps for general-purpose use",
     a11y: { disable: true },
     docs: {
-      iframeHeight: 600,
+      iframeHeight: 200,
     },
   },
 };
@@ -113,24 +113,24 @@ Default.parameters = {
   docs: {
     source: {
       code: `<ProgressBar 
-            leftIcon= "fa fa-arrow-alt-circle-left"
-            rightIcon= "fa fa-arrow-alt-circle-right"
-            totalSlides= {5}
-            activeSlide= {2}
-            enableLeftNavigation= {false}
-            enableRightNavigation= {false}
-            asVariant= "primary"
-            asPadded= "normal"
-            asFloated= "inline"
-            withColor= {{
+            leftIcon="fa fa-arrow-alt-circle-left"
+            rightIcon="fa fa-arrow-alt-circle-right"
+            totalSlides={5}
+            activeSlide={2}
+            enableLeftNavigation={false}
+            enableRightNavigation={false}
+            asVariant="primary"
+            asPadded="normal"
+            asFloated="inline"
+            withColor={{
                 accentColor: "",
                 backgroundColor: "",
                 textColor: "#808080",
                 hoverTextColor: "#E82E19",
             }}
-            isHidden= {false}
-            isDisabled= {false}
-            isFluid= {false}/>`,
+            isHidden={false}
+            isDisabled={false}
+            isFluid={false}/>`,
     },
   },
 };
@@ -154,24 +154,24 @@ ColoredProgressbar.parameters = {
     },
     source: {
       code: `<ProgressBar 
-            leftIcon= "fa fa-arrow-alt-circle-left"
-            rightIcon= "fa fa-arrow-alt-circle-right"
-            totalSlides= {5}
-            activeSlide= {2}
-            enableLeftNavigation= {false}
-            enableRightNavigation= {false}
-            asVariant= "primary"
-            asPadded= "normal"
-            asFloated= "inline"
-            withColor= {{
+            leftIcon="fa fa-arrow-alt-circle-left"
+            rightIcon="fa fa-arrow-alt-circle-right"
+            totalSlides={5}
+            activeSlide={2}
+            enableLeftNavigation={false}
+            enableRightNavigation={false}
+            asVariant="primary"
+            asPadded="normal"
+            asFloated="inline"
+            withColor={{
                 accentColor: "#ffffff",
                 backgroundColor: "#C98787",
                 textColor: "#D3D3D3",
                 hoverTextColor: "#E82E19",
             }}
-            isHidden= {false}
-            isDisabled= {false}
-            isFluid= {false}/>`,
+            isHidden={false}
+            isDisabled={false}
+            isFluid={false}/>`,
     },
   },
 };
@@ -192,68 +192,49 @@ FluidProgressbar.parameters = {
   },
   source: {
     code: `<ProgressBar 
-        leftIcon= "fa fa-arrow-alt-circle-left"
-        rightIcon= "fa fa-arrow-alt-circle-right"
-        totalSlides= {5}
-        activeSlide= {2}
-        enableLeftNavigation= {false}
-        enableRightNavigation= {false}
-        asVariant= "primary"
-        asPadded= "normal"
-        asFloated= "inline"
-        withColor= {{
+        leftIcon="fa fa-arrow-alt-circle-left"
+        rightIcon="fa fa-arrow-alt-circle-right"
+        totalSlides={5}
+        activeSlide={2}
+        enableLeftNavigation={false}
+        enableRightNavigation={false}
+        asVariant="primary"
+        asPadded="normal"
+        asFloated="inline"
+        withColor={{
             accentColor: "#ffffff",
             backgroundColor: "#C98787",
             textColor: "#D3D3D3",
             hoverTextColor: "#E82E19",
         }}
-        isHidden= {false}
-        isDisabled= {false}
-        isFluid= {true}/>`,
+        isHidden={false}
+        isDisabled={false}
+        isFluid={true}/>`,
   },
 };
 // -------------------------------------------------------------
 // AllVariants
 // -------------------------------------------------------------
-const AllVariantsTemplate = (args) => {
-  const baseObj = {
-    ...Object.assign({}, Default.args, args, {}),
+export const AllVariantsTemplate = (args) => {
+  const baseObj1 = {
+    ...Object.assign({}, Default.args, args, {
+      asVariant: "primary",
+    }),
+  };
+  const baseObj2 = {
+    ...Object.assign({}, Default.args, args, {
+      withColor: {
+        accentColor: "#ffffff",
+        backgroundColor: "#C98787",
+        textColor: "#D3D3D3",
+        hoverTextColor: "#E82E19",
+      },
+    }),
   };
   return (
-    <div>
-      <ProgressBar
-        {...Object.assign({}, baseObj, {
-          asVariant: "primary",
-        })}
-      />
-      <ProgressBar
-        {...Object.assign({}, baseObj, {
-          withColor: {
-            accentColor: "#ffffff",
-            backgroundColor: "#C98787",
-            textColor: "#D3D3D3",
-            hoverTextColor: "#E82E19",
-          },
-        })}
-      />
-    </div>
+    <>
+      <ProgressBar {...Object.assign({}, baseObj1, {})} />
+      <ProgressBar {...Object.assign({}, baseObj2, {})} />
+    </>
   );
-};
-export const AllVariants = AllVariantsTemplate.bind({});
-AllVariants.parameters = {
-  docs: {
-    description: {
-      story: "All variants are supported in ProgressBar.",
-    },
-    source: {
-      code: `<ProgressBar 
-            asVariant= "primary"
-            withColor= {{
-                accentColor: "#ffffff",
-                backgroundColor: "#C98787",
-                textColor: "#D3D3D3",
-                hoverTextColor: "#E82E19",
-            }}/>`,
-    },
-  },
 };

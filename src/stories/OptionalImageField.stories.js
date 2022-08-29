@@ -100,7 +100,7 @@ Default.parameters = {
           isDisabled={false}
           isHidden={false}
           isFluid={false}
-          onUpload={()=>{}}
+          onUpload={() => {}}
         />`,
     },
   },
@@ -138,7 +138,7 @@ WithoutActionButton.parameters = {
           isDisabled={false}
           isHidden={false}
           isFluid={false}
-          onUpload={()=>{}}
+          onUpload={() => {}}
         />`,
     },
   },
@@ -175,7 +175,7 @@ WithoutIcon.parameters = {
           isDisabled={false}
           isHidden={false}
           isFluid={false}
-          onUpload={()=>{}}
+          onUpload={() => {}}
         />`,
     },
   },
@@ -213,7 +213,7 @@ WithCustomIcon.parameters = {
           isDisabled={false}
           isHidden={false}
           isFluid={false}
-          onUpload={()=>{}}
+          onUpload={() => {}}
         />`,
     },
   },

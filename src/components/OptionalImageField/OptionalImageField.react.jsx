@@ -157,85 +157,95 @@ export default function OptionalImageField(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      <input
-        type="file"
-        ref={fileRef}
-        accept={type}
-        capture={capture}
-        multiple={multiple}
-        className="qui-image-upload-field"
-        onChange={handleChange}
-        onClick={(e) => (e.target.value = "")}
-        hidden
-      />
-      <table
-        className={`qui-optional-image-field-wrapper ${quommonClasses.childClasses}`}
-        style={{ borderColor: withColor?.accentColor }}
-      >
-        <tbody>
-          <tr>
-            {icon && (
-              <td
-                className="qui-optional-image-field-container"
-                style={{ backgroundColor: withColor?.backgroundColor }}
-                onClick={uploadFile}
-              >
-                {baseFile ? (
-                  <div
-                    className="qui-optional-image-field-image"
-                    style={{
-                      backgroundImage: `url(${baseFile})`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundPosition: "center",
-                      backgroundSize: "cover",
-                    }}
-                  ></div>
-                ) : (
-                  <i className={`qui-optional-image-field-icon ${icon}`}></i>
-                )}
-              </td>
-            )}
-            <td
-              className="qui-optional-image-field-button-container"
-              style={{ borderColor: withColor?.accentColor }}
-            >
-              <Button
-                className="qui-optional-image-field-button"
-                variant="outlined"
-                style={
-                  hovered
-                    ? {
-                        backgroundColor: withColor?.hoverBackgroundColor,
-                        color: withColor?.hoverTextColor,
-                      }
-                    : {
-                        backgroundColor: withColor?.backgroundColor,
-                        color: withColor?.textColor,
-                      }
-                }
-                onClick={uploadFile}
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-              >
-                {title || "Upload"}
-              </Button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      {actionButton && (
-        <div
-          className={`qui-optional-image-field-action-icon ${
-            file ? "qui-uploaded" : ""
-          }`}
-          onClick={() => {
-            setFile(false);
-            setBaseFile("");
-          }}
+        <input
+          type="file"
+          ref={fileRef}
+          accept={type}
+          capture={capture}
+          multiple={multiple}
+          className="qui-image-upload-field"
+          onChange={handleChange}
+          onClick={(e) => (e.target.value = "")}
+          hidden
+        />
+        <table
+          className={`qui-optional-image-field-wrapper ${quommonClasses.childClasses}`}
+          style={{ borderColor: withColor?.accentColor }}
         >
-          <i className={file ? "fas fa-times" : "fas fa-angle-left"}></i>
-        </div>
-      )}
+          <tbody>
+            <tr>
+              {icon && (
+                <td
+                  className="qui-optional-image-field-container"
+                  style={
+                    hovered
+                      ? {
+                          backgroundColor: withColor?.hoverBackgroundColor,
+                        }
+                      : {
+                          backgroundColor: withColor?.backgroundColor,
+                        }
+                  }
+                  onClick={uploadFile}
+                  onMouseEnter={() => setHovered(true)}
+                  onMouseLeave={() => setHovered(false)}
+                >
+                  {baseFile ? (
+                    <div
+                      className="qui-optional-image-field-image"
+                      style={{
+                        backgroundImage: `url(${baseFile})`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                      }}
+                    ></div>
+                  ) : (
+                    <i className={`qui-optional-image-field-icon ${icon}`}></i>
+                  )}
+                </td>
+              )}
+              <td
+                className="qui-optional-image-field-button-container"
+                style={{ borderColor: withColor?.accentColor }}
+              >
+                <Button
+                  className="qui-optional-image-field-button"
+                  variant="outlined"
+                  style={
+                    hovered
+                      ? {
+                          backgroundColor: withColor?.hoverBackgroundColor,
+                          color: withColor?.hoverTextColor,
+                        }
+                      : {
+                          backgroundColor: withColor?.backgroundColor,
+                          color: withColor?.textColor,
+                        }
+                  }
+                  onClick={uploadFile}
+                  onMouseEnter={() => setHovered(true)}
+                  onMouseLeave={() => setHovered(false)}
+                >
+                  {title || "Upload"}
+                </Button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {actionButton && (
+          <div
+            className={`qui-optional-image-field-action-icon ${
+              file ? "qui-uploaded" : ""
+            }`}
+            onClick={() => {
+              setFile(false);
+              setBaseFile("");
+            }}
+          >
+            <i className={file ? "fas fa-times" : "fas fa-angle-left"}></i>
+          </div>
+        )}
     </motion.div>
   );
 }

@@ -1,8 +1,4 @@
 .qui.qui-icon-block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   .pad-fitted {
     padding: 0.7em;
   }
@@ -18,13 +14,7 @@
   .qui-icon-button-container {
     border: 1px solid transparent;
     border-radius: 50%;
-
-    .pad-fitted {
-      padding: 1em;
-    }
-    .pad-normal {
-      padding: 1em;
-    }
+    display: inline-block;
 
     .qui-icon-button-style {
       margin: 0.25em 0.2em;

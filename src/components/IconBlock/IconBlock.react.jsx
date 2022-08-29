@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./IconBlock.scss";
 import "../../common/stylesheets/overrule.scss";
+import OrderingList from "../OrderingList/OrderingList/OrderingList.react"
 
 IconBlock.propTypes = {
   //=======================================
