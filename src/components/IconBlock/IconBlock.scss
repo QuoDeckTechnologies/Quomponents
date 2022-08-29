@@ -1,9 +1,33 @@
 .qui.qui-icon-block {
-  padding: 0.5em;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  .pad-fitted {
+    padding: 0.7em;
+  }
+  .pad-compact {
+    padding: 0.85em;
+  }
+  .pad-normal {
+    padding: 1em;
+  }
+  .pad-relaxed {
+    padding: 1.2em;
+  }
   .qui-icon-button-container {
-    border-radius: 50%;
-    padding: 0.5em 0.55em;
     border: 1px solid transparent;
+    border-radius: 50%;
+
+    .pad-fitted {
+      padding: 1em;
+    }
+    .pad-normal {
+      padding: 1em;
+    }
+
+    .qui-icon-button-style {
+      margin: 0.25em 0.2em;
+    }
   }
 }

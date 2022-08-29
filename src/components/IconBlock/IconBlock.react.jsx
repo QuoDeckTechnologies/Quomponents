@@ -59,7 +59,7 @@ IconBlock.propTypes = {
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
+    textColor: PropTypes.string,
   }),
   /**
   Use to add an icon to the component
@@ -67,7 +67,6 @@ IconBlock.propTypes = {
   withIcon: PropTypes.shape({
     icon: PropTypes.string,
     size: PropTypes.string,
-    position: PropTypes.string,
   }),
   /**
   Use to define component padding in increasing order
@@ -135,20 +134,17 @@ function getColors(colors, emphasis, icon, disable) {
   colorStyle.iconColorHandle =
     emphasis === "text"
       ? {
-          color: disable ? "#666666" : colors?.accentColor,
+          color: disable ? "#666666" : colors?.textColor,
           fontSize: icon?.size,
-          position: icon?.position,
         }
       : emphasis === "outlined"
       ? {
           color: disable ? "#cccccc" : colors?.backgroundColor,
           fontSize: icon?.size,
-          position: icon?.position,
         }
       : {
-          color: disable ? "#666666" : colors?.accentColor,
+          color: disable ? "#666666" : colors?.textColor,
           fontSize: icon?.size,
-          position: icon?.position,
         };
   return colorStyle;
 }
@@ -190,7 +186,7 @@ export default function IconBlock(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div
-        className={`qui-btn qui-icon-button-container ${quommonClasses.childClasses}`}
+        className={`qui-btn qui-icon-button-container ${quommonClasses.childClasses} `}
         style={Object.assign({}, empColors.backgroundHandle)}
         onClick={props.onClick}
       >

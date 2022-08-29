@@ -13,7 +13,13 @@ NuggetBlock.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
+  /**
+  Use to set the image of nuggetblock
+  */
   image: PropTypes.string.isRequired,
+  /**
+  Use to set the status of nuggetblock
+  */
   status: PropTypes.oneOf(["published", "unpublished", "none"]),
   //=======================================
   // Quommon props
@@ -108,12 +114,11 @@ export default function NuggetBlock(props) {
   //-------------------------------------------------------------------
   // 4. Get Nugget Status
   //-------------------------------------------------------------------
-  let status, color, display;
-  status = props.status.toUpperCase();
+  let color, display;
 
-  if (status === "PUBLISHED") {
+  if (props.status === "published") {
     color = "#C1DC9E";
-  } else if (status === "UNPUBLISHED") {
+  } else if (props.status === "unpublished") {
     color = "#B2B4B3";
   } else {
     display = "none";

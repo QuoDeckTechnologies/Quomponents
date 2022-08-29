@@ -45,7 +45,7 @@ export default {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
-          accentColor: "",
+          textColor: "",
         },
       },
     },
@@ -86,21 +86,9 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-          fontSize: "1.25em",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div>{story()}</div>],
   parameters: {
-    componentSubtitle: "Displays a basic button for general-purpose use",
+    componentSubtitle: "Displays a basic IconBlock for general-purpose use",
     a11y: { disable: true },
     docs: { iframeHeight: 200 },
   },
@@ -119,14 +107,14 @@ Default.args = {
   asEmphasis: "contained",
   withColor: {
     backgroundColor: "",
-    accentColor: "",
+    textColor: "",
   },
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
   },
-  withIcon: { icon: "fas fa-book-open", size: "1em", position: "left" },
+  withIcon: { icon: "fas fa-book-open", size: "1em" },
   isDisabled: false,
   isHidden: false,
 };
@@ -134,26 +122,26 @@ Default.parameters = {
   docs: {
     source: {
       code: `<IconBlock asVariant = "primary"
-            asSize= "normal"
-            asFloated= "inline"
-            asPadded= "normal"
-            asEmphasis= "contained"
-            withColor= {{
+            asSize = "normal"
+            asFloated = "inline"
+            asPadded = "normal"
+            asEmphasis = "contained"
+            withColor = {{
                 backgroundColor:"",
-                accentColor:"",
+                textColor:"",
             }}
-            withAnimation= {{
+            withAnimation = {{
                 animation: "zoom",
                 duration: 0.5,
-                delay:0,
+                delay: 0,
             }}
-            withIcon={{ 
+            withIcon = {{ 
                 icon: "fas fa-book-open" ,
-                size:"1em",
-                position: "left" }}
-            isDisabled= {false}
-            isHidden= {false}
-            />`,
+                size: "1em",
+            }}
+            isDisabled = {false}
+            isHidden = {false}
+        />`,
     },
   },
 };
@@ -164,7 +152,7 @@ export const AllVariantsTemplate = (args) => {
       asSize: "tiny",
     }),
     withColor: {
-      accentColor: "#fff",
+      textColor: "#fff",
     },
     asEmphasis: "text",
   };
@@ -183,7 +171,7 @@ export const AllVariantsTemplate = (args) => {
     }),
     withColor: {
       backgroundColor: "#5A9C32",
-      accentColor: "#fff",
+      textColor: "#fff",
     },
     asEmphasis: "contained",
   };
@@ -192,7 +180,7 @@ export const AllVariantsTemplate = (args) => {
       asSize: "big",
     }),
     withColor: {
-      accentColor: "#8B0000",
+      textColor: "#8B0000",
     },
     asEmphasis: "text",
   };
@@ -211,12 +199,12 @@ export const AllVariantsTemplate = (args) => {
     }),
     withColor: {
       backgroundColor: "#D98880",
-      accentColor: "#fff",
+      textColor: "#fff",
     },
     asEmphasis: "contained",
   };
   return (
-    <div>
+    <>
       <div>
         <IconBlock {...Object.assign({}, baseObj1, {})} />
         <IconBlock {...Object.assign({}, baseObj2, {})} />
@@ -227,6 +215,6 @@ export const AllVariantsTemplate = (args) => {
         <IconBlock {...Object.assign({}, baseObj5, {})} />
         <IconBlock {...Object.assign({}, baseObj6, {})} />
       </div>
-    </div>
+    </>
   );
 };
