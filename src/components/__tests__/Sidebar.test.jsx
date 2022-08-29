@@ -15,7 +15,6 @@ describe("Sidebar", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: Sidebar,
         required: {

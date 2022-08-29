@@ -60,8 +60,7 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: (
-        `<EnrollmentRuleRow
+      code: `<EnrollmentRuleRow
           criteria={{
             company: "Microsoft",
             zone: "West",
@@ -71,8 +70,7 @@ Default.parameters = {
           }}
           onRunRule={() => {}}
           onRemoveRule={() => {}}
-        />`
-      ),
+        />`,
     },
   },
 };

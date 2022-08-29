@@ -16,7 +16,6 @@ describe("TodayMenuBtn", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: TodayMenuBtn,
         required: {
@@ -38,7 +37,6 @@ describe("TodayMenuBtn", () => {
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component, onClick;
 
     onClick = jest.fn();

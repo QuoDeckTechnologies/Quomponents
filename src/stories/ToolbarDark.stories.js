@@ -1,7 +1,6 @@
 import React from "react";
 import ToolbarDark from "../components/ToolbarDark/ToolbarDark.react";
 const dictionary = JSON.stringify({
-
   hi: {
     toolbarDark: {
       content: [
@@ -9,7 +8,7 @@ const dictionary = JSON.stringify({
         { label: "बटुआ" },
         { label: "पुरस्कार" },
         { label: "रिपोर्ट" },
-      ]
+      ],
     },
   },
 });
@@ -294,7 +293,7 @@ WithoutLabelToolbardark.args = {
       link: "https://www.youtube.com/",
     },
   ],
-  asVariant: "warning"
+  asVariant: "warning",
 };
 WithoutLabelToolbardark.parameters = {
   docs: {
@@ -493,7 +492,11 @@ IconsWithPopoverFormat.args = {
 IconsWithPopoverFormat.parameters = {
   docs: {
     source: {
-      code: `<ToolbarDark {...${JSON.stringify(IconsWithPopoverFormat.args, null, 2)}}/>`,
+      code: `<ToolbarDark {...${JSON.stringify(
+        IconsWithPopoverFormat.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -560,7 +563,11 @@ IconsWithLabelFormat.args = {
 IconsWithLabelFormat.parameters = {
   docs: {
     source: {
-      code: `<ToolbarDark {...${JSON.stringify(IconsWithLabelFormat.args, null, 2)}}/>`,
+      code: `<ToolbarDark {...${JSON.stringify(
+        IconsWithLabelFormat.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -628,7 +635,11 @@ ContainedIconsToolbar.args = {
 ContainedIconsToolbar.parameters = {
   docs: {
     source: {
-      code: `<ToolbarDark {...${JSON.stringify(ContainedIconsToolbar.args, null, 2)}}/>`,
+      code: `<ToolbarDark {...${JSON.stringify(
+        ContainedIconsToolbar.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -695,7 +706,11 @@ OutlinedIconsToolbar.args = {
 OutlinedIconsToolbar.parameters = {
   docs: {
     source: {
-      code: `<ToolbarDark {...${JSON.stringify(OutlinedIconsToolbar.args, null, 2)}}/>`,
+      code: `<ToolbarDark {...${JSON.stringify(
+        OutlinedIconsToolbar.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -727,4 +742,3 @@ TranslatedToolbardark.parameters = {
     },
   },
 };
-

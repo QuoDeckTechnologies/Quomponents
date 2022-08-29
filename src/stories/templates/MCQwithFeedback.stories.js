@@ -96,10 +96,10 @@ Default.args = {
     icon: "",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     options: [
-      { correct: "checked", content: "Item 1", onClick: () => { } },
-      { correct: "", content: "Item 2", onClick: () => { } },
-      { correct: "", content: "Item 3", onClick: () => { } },
-      { correct: "", content: "Item 4", onClick: () => { } },
+      { correct: "checked", content: "Item 1", onClick: () => {} },
+      { correct: "", content: "Item 2", onClick: () => {} },
+      { correct: "", content: "Item 3", onClick: () => {} },
+      { correct: "", content: "Item 4", onClick: () => {} },
     ],
   },
   imageLibrary: [
@@ -150,10 +150,10 @@ SlideHeaderMcqWithFeedback.args = {
     icon: "",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     options: [
-      { correct: "checked", content: "Item 1", onClick: () => { } },
-      { correct: "", content: "Item 2", onClick: () => { } },
-      { correct: "", content: "Item 3", onClick: () => { } },
-      { correct: "", content: "Item 4", onClick: () => { } },
+      { correct: "checked", content: "Item 1", onClick: () => {} },
+      { correct: "", content: "Item 2", onClick: () => {} },
+      { correct: "", content: "Item 3", onClick: () => {} },
+      { correct: "", content: "Item 4", onClick: () => {} },
     ],
   },
   withColor: {
@@ -196,10 +196,10 @@ McqWithFeedbackAndBackgroundImage.args = {
     icon: "",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     options: [
-      { correct: "checked", content: "Item 1", onClick: () => { } },
-      { correct: "", content: "Item 2", onClick: () => { } },
-      { correct: "", content: "Item 3", onClick: () => { } },
-      { correct: "", content: "Item 4", onClick: () => { } },
+      { correct: "checked", content: "Item 1", onClick: () => {} },
+      { correct: "", content: "Item 2", onClick: () => {} },
+      { correct: "", content: "Item 3", onClick: () => {} },
+      { correct: "", content: "Item 4", onClick: () => {} },
     ],
   },
   imageLibrary: [

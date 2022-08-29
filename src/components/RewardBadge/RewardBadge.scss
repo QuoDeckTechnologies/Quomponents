@@ -2,38 +2,38 @@
 /* AccentLine Container Definitions */
 /* ================================================= */
 .qui .qui-reward-badge-container {
-    width: 13em;
-    min-height: 13em;
-    padding: 1em;
+  width: 13em;
+  min-height: 13em;
+  padding: 1em;
+  border-radius: 0.5em;
+  text-align: center;
+  &.popover {
+    min-width: 11em;
+    min-height: 11em;
+    padding: 1em 0em;
     border-radius: 0.5em;
-    text-align: center;
-    &.popover {
-        min-width: 11em;
-        min-height: 11em;
-        padding: 1em 0em;
-        border-radius: 0.5em;
-        .qui-reward-badge {
-            margin-top: 0.8em;
-        }
-    }
-    .qui-badge-label {
-        margin: auto;
-        width: fit-content;
-        h4 {
-            margin-block-end: 0em;
-            margin-block-start: 0.8em;
-        }
-    }
-    .qui-badge-caption {
-        margin: auto;
-        width: fit-content;
-        h4 {
-            margin-block-start: 0em;
-            margin-block-end: 0.8em;
-        }
-    }
     .qui-reward-badge {
-        width: 6em;
-        height: 6em;
+      margin-top: 0.8em;
     }
+  }
+  .qui-badge-label {
+    margin: auto;
+    width: fit-content;
+    h4 {
+      margin-block-end: 0em;
+      margin-block-start: 0.8em;
+    }
+  }
+  .qui-badge-caption {
+    margin: auto;
+    width: fit-content;
+    h4 {
+      margin-block-start: 0em;
+      margin-block-end: 0.8em;
+    }
+  }
+  .qui-reward-badge {
+    width: 6em;
+    height: 6em;
+  }
 }

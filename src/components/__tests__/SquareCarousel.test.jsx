@@ -15,7 +15,6 @@ describe('SquareCarousel', () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: SquareCarousel,
         required: {
@@ -30,7 +29,6 @@ describe('SquareCarousel', () => {
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component, content;
     content = [{
         image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",

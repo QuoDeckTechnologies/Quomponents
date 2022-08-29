@@ -13,55 +13,51 @@ import SaveExitSection from "./sections/SaveExitSection.react";
 import SaveSection from "./sections/SaveSection.react";
 
 RibbonHtmlMenu.propTypes = {
-	//=======================================
-	// Component Specific props
-	//=======================================
-
-	//=======================================
-	// Quommon props
-	//=======================================
-	/**
-	Use to float the component in parent container
-	*/
-	asFloated: PropTypes.oneOf(["left", "right", "inline"]),
-	/**
-	Use to show a translated version of the component text. Dictionary must be valid JSON. 
-	*/
-	withTranslation: PropTypes.shape({
-		lang: PropTypes.string,
-		tgt: PropTypes.string,
-		dictionary: PropTypes.string,
-	}),
-	/**
-	Use to show/hide the component
-	*/
-	isHidden: PropTypes.bool,
-	/**
-	Use to enable/disable the component
-	*/
-	isDisabled: PropTypes.bool,
-	/**
-	RibbonHtmlMenu component must have the onClick function passed as props
-	*/
-	onClick: PropTypes.func,
+  //=======================================
+  // Quommon props
+  //=======================================
+  /**
+  Use to float the component in parent container
+  */
+  asFloated: PropTypes.oneOf(["left", "right", "inline"]),
+  /**
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
+  Use to show/hide the component
+  */
+  isHidden: PropTypes.bool,
+  /**
+  Use to enable/disable the component
+  */
+  isDisabled: PropTypes.bool,
+  /**
+  RibbonHtmlMenu component must have the onClick function passed as props
+  */
+  onClick: PropTypes.func,
 };
 
 export default function RibbonHtmlMenu(props) {
-	//-------------------------------------------------------------------
-	// 1. Set the classes
-	//-------------------------------------------------------------------
-	let quommonClasses = getQuommons(props, "ribbon-html-menu-parent");
+  //-------------------------------------------------------------------
+  // 1. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "ribbon-html-menu-parent");
 
-	// ========================= Render Function =================================
-	return (
-		<div className={`qui ${quommonClasses.parentClasses}`}>
-			<div className={`${quommonClasses.childClasses}`}>
-				<div className={`qui-ribbon-html-menu-container`}>
-					<SaveExitSection {...props} />
-					<div className="qui-ribbon-menu-parent-vertical-line"></div>
-					<SaveSection {...props} />
-				</div>
-			</div>
-		</div>
-	);
+  // ========================= Render Function =================================
+  return (
+    <div className={`qui ${quommonClasses.parentClasses}`}>
+      <div className={`${quommonClasses.childClasses}`}>
+        <div className={`qui-ribbon-html-menu-container`}>
+          <SaveExitSection {...props} />
+          <div className="qui-ribbon-menu-parent-vertical-line"></div>
+          <SaveSection {...props} />
+        </div>
+      </div>
+    </div>
+  );
 }

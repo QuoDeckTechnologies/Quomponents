@@ -7,7 +7,7 @@ import { render } from "@testing-library/react";
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
+//--------------------------------------
 // Import Components
 // -------------------------------------
 import OverlayMenu from "../OverlayMenu/OverlayMenu.react";
@@ -16,7 +16,6 @@ describe("OverlayMenu", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: OverlayMenu,
     required: {

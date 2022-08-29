@@ -15,7 +15,6 @@ describe("EnrollmentRuleRow", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: EnrollmentRuleRow,
     required: {

@@ -17,7 +17,6 @@ describe("SaveExitSection", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: SaveExitSection,
     translations: {
@@ -48,7 +47,6 @@ describe("SaveExitSection", () => {
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-
   let component;
   beforeEach(() => {
     jest.resetAllMocks();

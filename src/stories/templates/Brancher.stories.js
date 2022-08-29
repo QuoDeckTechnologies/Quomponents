@@ -102,10 +102,10 @@ Default.args = {
     subtitle: "",
     paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     brancher: [
-      { slideLink: 1, content: "Slide 1", onClick: () => { } },
-      { slideLink: 1, content: "Slide 2", onClick: () => { } },
-      { slideLink: 1, content: "Slide 3", onClick: () => { } },
-      { slideLink: 1, content: "Slide 4", onClick: () => { } },
+      { slideLink: 1, content: "Slide 1", onClick: () => {} },
+      { slideLink: 1, content: "Slide 2", onClick: () => {} },
+      { slideLink: 1, content: "Slide 3", onClick: () => {} },
+      { slideLink: 1, content: "Slide 4", onClick: () => {} },
     ],
   },
   imageLibrary: [
@@ -157,10 +157,10 @@ BrancherWithSlideHeader.args = {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     brancher: [
-      { slideLink: 1, content: "Slide 1", onClick: () => { } },
-      { slideLink: 1, content: "Slide 2", onClick: () => { } },
-      { slideLink: 1, content: "Slide 3", onClick: () => { } },
-      { slideLink: 1, content: "Slide 4", onClick: () => { } },
+      { slideLink: 1, content: "Slide 1", onClick: () => {} },
+      { slideLink: 1, content: "Slide 2", onClick: () => {} },
+      { slideLink: 1, content: "Slide 3", onClick: () => {} },
+      { slideLink: 1, content: "Slide 4", onClick: () => {} },
     ],
   },
 };
@@ -192,10 +192,10 @@ BrancherWithBackgroundImage.args = {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     brancher: [
-      { slideLink: 1, content: "Slide 1", onClick: () => { } },
-      { slideLink: 1, content: "Slide 2", onClick: () => { } },
-      { slideLink: 1, content: "Slide 3", onClick: () => { } },
-      { slideLink: 1, content: "Slide 4", onClick: () => { } },
+      { slideLink: 1, content: "Slide 1", onClick: () => {} },
+      { slideLink: 1, content: "Slide 2", onClick: () => {} },
+      { slideLink: 1, content: "Slide 3", onClick: () => {} },
+      { slideLink: 1, content: "Slide 4", onClick: () => {} },
     ],
   },
   imageLibrary: [
@@ -237,10 +237,10 @@ ColoredBrancher.args = {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     brancher: [
-      { slideLink: 1, content: "Slide 1", onClick: () => { } },
-      { slideLink: 1, content: "Slide 2", onClick: () => { } },
-      { slideLink: 1, content: "Slide 3", onClick: () => { } },
-      { slideLink: 1, content: "Slide 4", onClick: () => { } },
+      { slideLink: 1, content: "Slide 1", onClick: () => {} },
+      { slideLink: 1, content: "Slide 2", onClick: () => {} },
+      { slideLink: 1, content: "Slide 3", onClick: () => {} },
+      { slideLink: 1, content: "Slide 4", onClick: () => {} },
     ],
   },
   withColor: {

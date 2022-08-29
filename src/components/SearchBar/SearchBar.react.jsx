@@ -5,103 +5,103 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "../SearchBar/SearchBar.scss";
 import "../../common/stylesheets/overrule.scss";
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
 SearchBar.propTypes = {
-    //=======================================
-    // Component Specific props
-    //=======================================
-    dictionaryOptions: PropTypes.array,
-    /**
+  //=======================================
+  // Component Specific props
+  //=======================================
+  dictionaryOptions: PropTypes.array,
+  /**
     Placeholder value to show the placeholder of input box
-    */
-    placeholder: PropTypes.string.isRequired,
-    /**
+  */
+  placeholder: PropTypes.string.isRequired,
+  /**
     Use to toggle the component having expandable effect or not
-    */
-    isClosed: PropTypes.bool,
-    /**
+  */
+  isClosed: PropTypes.bool,
+  /**
     Use to toggle the component having autocomplete options or not
-    */
-    isAutoSearch: PropTypes.bool,
-    //=======================================
-    // Quommon props
-    //=======================================
-    /**
+  */
+  isAutoSearch: PropTypes.bool,
+  //=======================================
+  // Quommon props
+  //=======================================
+  /**
     Use to float the component in parent container
-    */
-    asFloated: PropTypes.oneOf(["left", "right", "inline", "none"]),
-    /**
+  */
+  asFloated: PropTypes.oneOf(["left", "right", "inline", "none"]),
+  /**
     Use to define component text size in increasing order
-    */
-    asSize: PropTypes.oneOf([
-        "tiny",
-        "small",
-        "normal",
-        "big",
-        "huge",
-        "massive",
-    ]),
-    /**
+  */
+  asSize: PropTypes.oneOf([
+    "tiny",
+    "small",
+    "normal",
+    "big",
+    "huge",
+    "massive",
+  ]),
+  /**
     Use to override component colors and behavior
-    */
-    withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-        textColor: PropTypes.string,
-        accentColor: PropTypes.string,
-    }),
-    /**
+  */
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
+    accentColor: PropTypes.string,
+  }),
+  /**
     Use to add an icon to the component
-    */
-    withIcon: PropTypes.shape({
-        icon: PropTypes.string,
-    }),
-    /**
+  */
+  withIcon: PropTypes.shape({
+    icon: PropTypes.string,
+  }),
+  /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-    withTranslation: PropTypes.shape({
-        lang: PropTypes.string,
-        tgt: PropTypes.string,
-        dictionary: PropTypes.string,
-    }),
-    /**
+  */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
     Use to show/hide the component
-    */
-    isHidden: PropTypes.bool,
-    /**
+  */
+  isHidden: PropTypes.bool,
+  /**
     Use to enable/disable the component
-    */
-    isDisabled: PropTypes.bool,
-    /**
+  */
+  isDisabled: PropTypes.bool,
+  /**
     Use to toggle the component taking the full width of the parent container
-    */
-    isFluid: PropTypes.bool,
-    /**
+  */
+  isFluid: PropTypes.bool,
+  /**
     SearchBar component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
+  */
+  onClick: PropTypes.func.isRequired,
 };
 
 SearchBar.defaultProps = {
-    //=======================================
-    // Component Specific props
-    //=======================================
-    dictionaryOptions: [],
-    placeholder: "Search...",
-    isClosed: false,
-    isAutoSearch: false,
-    //=======================================
-    // Quommon props
-    //=======================================
-    asFloated: "left", //Please do not set it inline for expandle search bar. You can set inline for static search bar.
-    asSize: "normal",
-    withColor: null,
-    withIcon: null,
-    withTranslation: null,
-    isHidden: false,
-    isDisabled: false,
-    isFluid: false,
+  //=======================================
+  // Component Specific props
+  //=======================================
+  dictionaryOptions: [],
+  placeholder: "Search...",
+  isClosed: false,
+  isAutoSearch: false,
+  //=======================================
+  // Quommon props
+  //=======================================
+  asFloated: "left", //Please do not set it inline for expandle search bar. You can set inline for static search bar.
+  asSize: "normal",
+  withColor: null,
+  withIcon: null,
+  withTranslation: null,
+  isHidden: false,
+  isDisabled: false,
+  isFluid: false,
 };
 /**
 ## Notes
@@ -111,144 +111,151 @@ SearchBar.defaultProps = {
 - Pass isClosed props to give closed effect to SearchBar.
 **/
 export default function SearchBar(props) {
-    //-------------------------------------------------------------------
-    // 1. Set the classes
-    //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "search-bar");
-    //-------------------------------------------------------------------
-    // 2. Get translation of the component
-    //-------------------------------------------------------------------
-    let searchPlaceHolder = props.placeholder ? props.placeholder : "Search...";
+  //-------------------------------------------------------------------
+  // 1. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "search-bar");
+  //-------------------------------------------------------------------
+  // 2. Get translation of the component
+  //-------------------------------------------------------------------
+  let searchPlaceHolder = props.placeholder ? props.placeholder : "Search...";
 
-    if (
-        props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
-    ) {
-        let tObj = getTranslation(props.withTranslation);
-        searchPlaceHolder = tObj?.placeholder || "";
+  if (
+    props.withTranslation?.lang &&
+    props.withTranslation.lang !== "" &&
+    props.withTranslation.lang !== "en"
+  ) {
+    let tObj = getTranslation(props.withTranslation);
+    searchPlaceHolder = tObj?.placeholder || "";
+  }
+  //-------------------------------------------------------------------
+  // 3. Handle Enter and Button Press Events
+  //-------------------------------------------------------------------
+  const [value, setValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
+
+  const [expandable, setExpandable] = useState(false);
+  const input = useRef(null);
+  const box = useRef(null);
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleButtonPress();
     }
-    //-------------------------------------------------------------------
-    // 3. Handle Enter and Button Press Events
-    //-------------------------------------------------------------------
-    const [value, setValue] = useState('');
-    const [inputValue, setInputValue] = useState('');
-
-    const [expandable, setExpandable] = useState(false);
-    const input = useRef(null);
-    const box = useRef(null);
-    const handleKeyPress = (event) => {
-        if (event.key === "Enter") {
-            handleButtonPress();
+  };
+  const handleButtonPress = () => {
+    return props.onClick(inputValue);
+  };
+  //-------------------------------------------------------------------
+  // 4. Handle Open and Close Input box
+  //-------------------------------------------------------------------
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      // Function for click event
+      function handleOutsideClick(event) {
+        if (ref.current && !ref.current.contains(event?.target)) {
+          setExpandable(false);
         }
-    };
-    const handleButtonPress = () => {
-        return props.onClick(inputValue);
+      }
+      // Adding click event listener
+      document.addEventListener("click", handleOutsideClick);
+      return () => document.removeEventListener("click", handleOutsideClick);
+    }, [ref]);
+  }
+  useOutsideAlerter(box);
+  //-------------------------------------------------------------------
+  // 5. Get Conditional Styling of Component
+  //-------------------------------------------------------------------
+  function searchBar(isClosed) {
+    let searchBarContainer, searchBarStyle, inputStyle, iconStyle;
+    if (isClosed) {
+      if (expandable === false) {
+        searchBarContainer = "qui-search-bar-container-closed";
+        searchBarStyle = "qui-search-bar-child-container-closed";
+        inputStyle = "qui-search-bar-input-closed";
+        iconStyle = "qui-search-bar-icon-closed";
+      }
     }
-    //-------------------------------------------------------------------
-    // 4. Handle Open and Close Input box
-    //-------------------------------------------------------------------
-    function useOutsideAlerter(ref) {
-        useEffect(() => {
-            // Function for click event
-            function handleOutsideClick(event) {
-                if (ref.current && !ref.current.contains(event?.target)) {
-                    setExpandable(false);
-                }
-            }
-            // Adding click event listener
-            document.addEventListener("click", handleOutsideClick);
-            return () =>
-                document.removeEventListener("click", handleOutsideClick);
-        }, [ref]);
-    }
-    useOutsideAlerter(box);
-    //-------------------------------------------------------------------
-    // 5. Get Conditional Styling of Component
-    //-------------------------------------------------------------------
-    function searchBar(isClosed) {
-        let searchBarContainer, searchBarStyle, inputStyle, iconStyle;
-        if (isClosed) {
-            if (expandable === false) {
-                searchBarContainer = "qui-search-bar-container-closed";
-                searchBarStyle = "qui-search-bar-child-container-closed";
-                inputStyle = "qui-search-bar-input-closed";
-                iconStyle = "qui-search-bar-icon-closed";
-            }
-        }
 
-        return (
-            <div className={`qui-search-bar-container ${searchBarContainer}`}
-                onClick={() => { setExpandable(true) }}
-                ref={box}>
-                <div className={`qui-search-bar-child-container ${searchBarStyle}`}>
-                    <Autocomplete
-                        ref={input}
-                        freeSolo
-                        value={value}
-                        onChange={(event, newValue) => {
-                            setValue(newValue);
-                        }}
-                        inputValue={inputValue}
-                        onInputChange={(event, newInputValue) => {
-                            setInputValue(newInputValue);
-                        }}
-                        onKeyPress={handleKeyPress}
-                        disableClearable
-                        sx={{
-                            width: "100%", minWidth: "200px",
-                            '.MuiOutlinedInput-root .MuiOutlinedInput-input': {
-                                color: props.withColor?.textColor
-                            }
-                        }}
-                        className={`qui-search-bar-input-field ${inputStyle}`}
-                        options={(props.isAutoSearch === true) ? props.dictionaryOptions?.map((option) => option) : []}
-                        renderInput={(params) => (
-                            <TextField
-                                {...params}
-                                placeholder={searchPlaceHolder}
-                                InputProps={{
-                                    ...params.InputProps,
-                                    type: 'search',
-                                }}
-                            />
-                        )}
-                    />
-                    <button
-                        aria-label="Search-Icon"
-                        className={`qui-search-bar-icon ${iconStyle}`}
-                        onClick={handleButtonPress}
-                        style={{ backgroundColor: props.withColor?.backgroundColor }}>
-                        {props.withIcon?.icon &&
-                            <i
-                                style={{ color: props.withColor?.accentColor }}
-                                className={`qui-icon ${props.withIcon?.icon}`}
-                            >
-                            </i>
-                        }
-                    </button>
-                    <div className={`qui-search-bar-expand-effect`}
-                        style={{ display: props.isClosed ? expandable ? "none" : "flex" : "none" }}>
-                    </div>
-                    <div
-                        className={`qui-search-bar-expand-effect`}
-                        style={{
-                            display: props.isClosed
-                                ? expandable
-                                    ? "none"
-                                    : "flex"
-                                : "none",
-                        }}
-                    ></div>
-                </div>
-            </div >
-        )
-    }
     return (
-        <div className={`qui ${quommonClasses.parentClasses}`}>
-            <div className={`${quommonClasses.childClasses}`}>
-                {searchBar(props.isClosed)}
-            </div>
+      <div
+        className={`qui-search-bar-container ${searchBarContainer}`}
+        onClick={() => {
+          setExpandable(true);
+        }}
+        ref={box}
+      >
+        <div className={`qui-search-bar-child-container ${searchBarStyle}`}>
+          <Autocomplete
+            ref={input}
+            freeSolo
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}
+            inputValue={inputValue}
+            onInputChange={(event, newInputValue) => {
+              setInputValue(newInputValue);
+            }}
+            onKeyPress={handleKeyPress}
+            disableClearable
+            sx={{
+              width: "100%",
+              minWidth: "200px",
+              ".MuiOutlinedInput-root .MuiOutlinedInput-input": {
+                color: props.withColor?.textColor,
+              },
+            }}
+            className={`qui-search-bar-input-field ${inputStyle}`}
+            options={
+              props.isAutoSearch === true
+                ? props.dictionaryOptions?.map((option) => option)
+                : []
+            }
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                placeholder={searchPlaceHolder}
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+              />
+            )}
+          />
+          <button
+            aria-label="Search-Icon"
+            className={`qui-search-bar-icon ${iconStyle}`}
+            onClick={handleButtonPress}
+            style={{ backgroundColor: props.withColor?.backgroundColor }}
+          >
+            {props.withIcon?.icon && (
+              <i
+                style={{ color: props.withColor?.accentColor }}
+                className={`qui-icon ${props.withIcon?.icon}`}
+              ></i>
+            )}
+          </button>
+          <div
+            className={`qui-search-bar-expand-effect`}
+            style={{
+              display: props.isClosed ? (expandable ? "none" : "flex") : "none",
+            }}
+          ></div>
+          <div
+            className={`qui-search-bar-expand-effect`}
+            style={{
+              display: props.isClosed ? (expandable ? "none" : "flex") : "none",
+            }}
+          ></div>
         </div>
+      </div>
     );
+  }
+  return (
+    <div className={`qui ${quommonClasses.parentClasses}`}>
+      <div className={`${quommonClasses.childClasses}`}>
+        {searchBar(props.isClosed)}
+      </div>
+    </div>
+  );
 }

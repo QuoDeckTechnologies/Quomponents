@@ -277,7 +277,8 @@ PublishedCourseCard.args = {
 PublishedCourseCard.parameters = {
   docs: {
     description: {
-      story: "Use to show the published course card with passing published prop to true.",
+      story:
+        "Use to show the published course card with passing published prop to true.",
     },
     source: {
       code: `<CourseCard
@@ -344,7 +345,8 @@ CourseCardWithExtraContent.args = {
 CourseCardWithExtraContent.parameters = {
   docs: {
     description: {
-      story: "Use to show some extra content in courseCard with published prop to true.",
+      story:
+        "Use to show some extra content in courseCard with published prop to true.",
     },
     source: {
       code: `<CourseCard

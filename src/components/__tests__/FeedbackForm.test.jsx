@@ -1,13 +1,11 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
-
+import { shallow, mount } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -17,7 +15,6 @@ describe("FeedbackForm", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: FeedbackForm,
         required: {

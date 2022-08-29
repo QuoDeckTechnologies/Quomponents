@@ -14,7 +14,6 @@ import QuoCarousel from '../Carousel/QuoCarousel/QuoCarousel.react';
 import HCard from '../HCard/HCard.react';
 import Slider from "react-slick";
 
-
 describe('QuoCarousel', () => {
     // -------------------------------------
     // Run common tests

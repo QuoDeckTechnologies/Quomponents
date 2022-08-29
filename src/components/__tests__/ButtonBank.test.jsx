@@ -15,7 +15,6 @@ describe("ButtonBank", () => {
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
-
   const args = {
     target: ButtonBank,
     required: {

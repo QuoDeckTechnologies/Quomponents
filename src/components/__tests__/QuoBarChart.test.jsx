@@ -18,18 +18,15 @@ describe("QuoBarChart", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: QuoBarChart,
     };
     hasValid("defaults", args);
     hasValid("colors", args);
     hasValid("hidden", args);
-
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component;
     beforeEach(() => {
         jest.resetAllMocks();

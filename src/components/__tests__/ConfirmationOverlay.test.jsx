@@ -15,7 +15,6 @@ describe("ConfirmationOverlay", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: ConfirmationOverlay,
         required: {

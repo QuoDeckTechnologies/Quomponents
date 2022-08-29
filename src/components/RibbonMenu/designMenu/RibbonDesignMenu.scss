@@ -2,136 +2,136 @@
 /* Ribbon Design Menu Styling Definitions */
 /* ================================================= */
 .qui .qui-ribbon-design-menu-container {
-    width: 1050.05px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 15px 9px 10px 20px;
+  width: 1050.05px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 15px 9px 10px 20px;
 
-    .qui-iconlink {
-        padding: 0;
-    }
+  .qui-iconlink {
+    padding: 0;
+  }
 
-    .qui .tilt {
-        transform: rotate(0deg);
-    }
+  .qui .tilt {
+    transform: rotate(0deg);
+  }
 
-    .qui .qui-iconlink .qui-iconlink-icon:hover {
-        color: #000
-    }
+  .qui .qui-iconlink .qui-iconlink-icon:hover {
+    color: #000;
+  }
 }
 
 .qui.qui-ribbon-design-menu-parent {
-    overflow: visible;
+  overflow: visible;
 }
 
 /* ================================================= */
 /* ColorPallete Section */
 /* ================================================= */
 .qui-ribbon-design-menu-pallete-theme-section-parent {
-    overflow: visible;
-    display: flex;
-    flex-direction: column;
-    height: 4.5em;
-    padding: 0.1em 0.1em;
-    align-items: center;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  height: 4.5em;
+  padding: 0.1em 0.1em;
+  align-items: center;
 }
 
 .qui-ribbon-menu-color-pallete-section {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 
 .qui-ribbon-menu-color-pallete-section-child-container {
-    width: 613.9px;
-    height: 64px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: #f5f5f5;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    padding: 0 5px;
+  width: 613.9px;
+  height: 64px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #f5f5f5;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding: 0 5px;
 }
 
 .qui-ribbon-menu-color-pallete-section-child {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .qui-ribbon-menu-custom-color-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    color: #666666;
-    font-size: 0.8em;
-    height: 64px;
-    width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: #666666;
+  font-size: 0.8em;
+  height: 64px;
+  width: 15%;
 }
 
 .qui-ribbon-menu-pallete-custom-color-section-container {
-    width: 760px;
-    display: flex;
-    justify-content: space-between;
+  width: 760px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .qui-ribbon-design-menu-color-picker-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .qui-ribbon-design-menu-custom-color-title {
-    font-size: 0.6em;
+  font-size: 0.6em;
 }
 
 .qui.qui-custom-color {
-    overflow: visible;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
+  overflow: visible;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
 }
 
 .qui-color-picker-container {
-    width: fit-content;
+  width: fit-content;
 }
 
 .qui .qui-ribbon-design-menu-custom-color-container {
-    position: relative;
+  position: relative;
 }
 
 .qui .qui-ribbon-design-menu-custom-color-button {
-    width: 18px;
-    height: 10px;
-    border: 0.1em solid black;
-    cursor: pointer;
-    margin-right: 1rem;
+  width: 18px;
+  height: 10px;
+  border: 0.1em solid black;
+  cursor: pointer;
+  margin-right: 1rem;
 }
 
 .qui .qui-ribbon-design-menu-button-title-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .qui .qui-ribbon-design-menu-chrome-picker {
-    position: absolute;
-    top: 100%;
-    left: 0%;
-    z-index: 1000;
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  z-index: 1000;
 }
 
 .qui .qui-ribbon-design-menu-custom-color-button {
-    position: relative;
+  position: relative;
 }
 
 .qui.qui-custom-color .qui-ribbon-design-menu-chrome-picker {
-    width: 162px;
+  width: 162px;
 }
 
 /* ================================================= */
@@ -139,75 +139,75 @@
 /* ================================================= */
 .qui-ribbon-design-menu-slide-background-parent,
 .qui-ribbon-design-menu-overlay-background-parent {
-    display: flex;
-    flex-direction: column;
-    height: 4.5em;
-    padding: 0.1em 0.1em;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 4.5em;
+  padding: 0.1em 0.1em;
+  align-items: center;
 }
 
 .qui-ribbon-menu-slide-background-section,
 .qui-ribbon-menu-overlay-background-section {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .qui-ribbon-menu-slide-background-section-child,
 .qui-ribbon-menu-overlay-background-section-child {
-    font-size: 0.6em;
-    padding-left: 15px;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    color: #666666;
+  font-size: 0.6em;
+  padding-left: 15px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  color: #666666;
 }
 
 .qui-ribbon-menu-slide-background-section-child-container,
 .qui-ribbon-menu-overlay-background-section-child-container {
-    height: 64px;
-    display: flex;
-    align-items: center;
-    background: #f5f5f5;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    cursor: pointer;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .qui-ribbon-menu-slide-background-section-child-container,
 .qui-ribbon-menu-overlay-background-section-child-container {
-    width: 104px;
+  width: 104px;
 }
 
 .qui-ribbon-menu-label-set-remove-container {
-    height: 45px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .qui-ribbon-menu-set-remove {
-    width: 25px;
-    height: 37px;
-    background-color: #c4c4c4;
+  width: 25px;
+  height: 37px;
+  background-color: #c4c4c4;
 }
 
 .qui-ribbon-menu-label-set,
 .qui-ribbon-menu-label-remove {
-    margin-left: 5px;
-    display: flex;
-    align-items: center;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .qui-ribbon-menu-label-set:hover,
 .qui-ribbon-menu-label-remove:hover {
-    color: #000;
+  color: #000;
 }
 
 .qui.qui-ribbon-design-menu-image-upload-modal-container {
-    font-size: 0.6em;
+  font-size: 0.6em;
 }
 
 .qui-ribbon-design-menu-slide-background-image {
-    width: 100%;
-    height: "auto"
+  width: 100%;
+  height: "auto";
 }

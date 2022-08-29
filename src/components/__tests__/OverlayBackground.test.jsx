@@ -17,12 +17,10 @@ describe("OverlayBackground", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: OverlayBackground,
     required: {
-
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "overlayBackground",

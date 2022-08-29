@@ -16,8 +16,8 @@ Reward.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    Use to add label,point and image in the Reward
-    */
+  Use to add label,point and image in the Reward
+  */
   content: PropTypes.shape({
     label: PropTypes.string,
     point: PropTypes.string,
@@ -27,8 +27,8 @@ Reward.propTypes = {
   // Quommon props
   //=======================================
   /**
-    Use to define component size in increasing order
-    */
+  Use to define component size in increasing order
+  */
   asSize: PropTypes.oneOf([
     "tiny",
     "small",
@@ -38,15 +38,15 @@ Reward.propTypes = {
     "massive",
   ]),
   /**
-    Use to set Colors for points and label
-    */
+  Use to set Colors for points and label
+  */
   withColor: PropTypes.shape({
     textColor: PropTypes.string,
     accentColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-     */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -62,16 +62,16 @@ Reward.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
 };
 
@@ -86,7 +86,6 @@ Reward.defaultProps = {
   withColor: null,
   withAnimation: null,
   withTranslation: null,
-
   isHidden: false,
 };
 /**

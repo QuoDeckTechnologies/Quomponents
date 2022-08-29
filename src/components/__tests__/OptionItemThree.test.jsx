@@ -43,7 +43,6 @@ describe("Option Item Three", () => {
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-
   let component;
 
   const dictionary = JSON.stringify({

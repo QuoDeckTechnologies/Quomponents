@@ -16,7 +16,6 @@ describe("RadioButton", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: RadioButton,
     required: {

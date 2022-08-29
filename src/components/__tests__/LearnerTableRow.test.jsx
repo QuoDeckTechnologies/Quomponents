@@ -6,7 +6,6 @@ import { shallow } from "enzyme";
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -16,7 +15,6 @@ describe("LearnerTableRow", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: LearnerTableRow,
     required: {

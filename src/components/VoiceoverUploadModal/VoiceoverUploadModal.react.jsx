@@ -16,14 +16,14 @@ VoiceoverUploadModal.propTypes = {
   //=======================================
   /**
     Use to define if modal is open
-    */
+  */
   isOpen: PropTypes.bool.isRequired,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to define standard component type
-    */
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -33,7 +33,7 @@ VoiceoverUploadModal.propTypes = {
   ]),
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
@@ -42,7 +42,7 @@ VoiceoverUploadModal.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -59,7 +59,7 @@ VoiceoverUploadModal.propTypes = {
   }),
   /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
@@ -67,19 +67,19 @@ VoiceoverUploadModal.propTypes = {
   }),
   /**
     Use to enable/disable the component
-    */
+  */
   isDisabled: PropTypes.bool,
   /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
   /**
     VoiceoverUploadModal component can have the onClose function passed as props to return open/close state
-    */
+  */
   onClose: PropTypes.func,
   /**
     VoiceoverUploadModal component must have the onClick function passed as props
-    */
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -196,14 +196,13 @@ export default function VoiceoverUploadModal(props) {
         </div>
 
         <div className="qui-voiceover-text-message">
-          {
-            tObj?.text ||
+          {tObj?.text || (
             <p>
               Create MP3 files for each slide individually and name them as the
               slide numbers they correspond to. e.g. 1.mp3, 2.mp3, etc. You can
               upload voiceovers for one or more slides in this fashion...
             </p>
-          }
+          )}
         </div>
         <div className={`qui-image-cropper ${quommonClasses.childClasses}`}>
           <div className="qui-voiceover-upload-button">

@@ -15,7 +15,6 @@ describe("IconBlock", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: IconBlock,
     required: {
@@ -30,14 +29,12 @@ describe("IconBlock", () => {
   hasValid("padding", args);
   hasValid("alignment", args);
 
-
   hasValid("colors", args);
   hasValid("icons", args);
   hasValid("animations", args);
 
   hasValid("hidden", args);
   hasValid("disabled", args);
-
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------

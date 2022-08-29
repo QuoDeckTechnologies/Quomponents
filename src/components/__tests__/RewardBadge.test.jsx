@@ -15,7 +15,6 @@ describe("RewardBadge", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: RewardBadge, required: { onClick: () => { } }
     };

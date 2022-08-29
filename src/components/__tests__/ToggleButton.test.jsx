@@ -15,7 +15,6 @@ describe("ToggleButton", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: ToggleButton,
     required: {

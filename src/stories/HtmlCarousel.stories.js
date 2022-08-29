@@ -31,7 +31,8 @@ export default {
     ),
   ],
   parameters: {
-    componentSubheader: "Displays a Html carousel using react-slick. add content from prop to add more slides to the carosuel",
+    componentSubheader:
+      "Displays a Html carousel using react-slick. add content from prop to add more slides to the carosuel",
     a11y: { disable: true },
     docs: {
       iframeHeight: 800,
@@ -43,8 +44,8 @@ let dataprops = {
   asVariant: "warning",
   withColor: {
     backgroundColor: "",
-    textColor: ""
-  }
+    textColor: "",
+  },
 };
 // -------------------------------------------------------------
 // Default

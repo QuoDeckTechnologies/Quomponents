@@ -23,47 +23,43 @@ TreeBar.propTypes = {
   // Component Specific props
   //=======================================
   /**
-     TreeBar pass the Page Header.
-   */
+  TreeBar pass the Page Header.
+  */
   pageHeader: PropTypes.string.isRequired,
   /**
-     Page Header Height.
-   */
+  Page Header Height.
+  */
   headerHeight: PropTypes.string,
-
   /**
-    Treebar pass tree folder structure data
-    */
+  Treebar pass tree folder structure data
+  */
   content: PropTypes.shape({}).isRequired,
   //=======================================
   // Quommon props
   //=======================================
-
   /**
     Use to float the component in parent container
-    */
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
-
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    Use to enable/disable the component
-    */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to toggle the component taking the full width of the parent container
-    */
+  Use to toggle the component taking the full width of the parent container
+  */
   isFluid: PropTypes.bool,
 };
 

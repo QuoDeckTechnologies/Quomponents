@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -15,7 +15,6 @@ describe("Reward", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: Reward,
         required: {
@@ -50,11 +49,9 @@ describe("Reward", () => {
     hasValid("translations", args);
 
     hasValid("hidden", args);
-
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component;
     beforeEach(() => {
         jest.resetAllMocks();

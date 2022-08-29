@@ -2,123 +2,123 @@
 /* SelectField Definitions */
 /* ================================================= */
 .qui .qui-select-field-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-top-left-radius: 1em;
-    border-top-right-radius: 1em;
-    border-bottom: 0.4em solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  border-bottom: 0.4em solid;
 }
 
 .qui .qui-select-field {
-    width: 100%;
-    .css-17nr37i-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-        padding-left: 0.2em;
-    }
+  width: 100%;
+  .css-17nr37i-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding-left: 0.2em;
+  }
 }
 
 .qui .qui-select-field-label {
-    padding: 0.5em 0 0 1.2em;
-    width: fit-content;
+  padding: 0.5em 0 0 1.2em;
+  width: fit-content;
 }
 
 .qui .qui-select-field-select {
-    padding: 0 1em 0 0em;
-    width: 100%;
-    height: 2em;
-    font-size: 1.3em;
-    font-weight: 600;
+  padding: 0 1em 0 0em;
+  width: 100%;
+  height: 2em;
+  font-size: 1.3em;
+  font-weight: 600;
 }
 
 .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-    ul {
-        li {
-            font-size: 1.3em;
-        }
+  ul {
+    li {
+      font-size: 1.3em;
     }
+  }
 }
 
 .qui .MuiOutlinedInput-notchedOutline {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 .qui .MuiSelect-icon {
-    font-size: 3em;
+  font-size: 3em;
 }
 
 .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-    width: 100%;
+  width: 100%;
 }
 
 .qui-select-field-menu-item {
-    overflow: hidden;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .css-6hp17o-MuiList-root-MuiMenu-list {
-    height: 100%;
-    max-height: 12em;
+  height: 100%;
+  max-height: 12em;
 }
 
 /* ================================================= */
 /* SelectField font Sizing Definitions */
 /* ================================================= */
 @media only screen and (min-width: 320px) {
-    .qui .qui-select-field-select {
-        font-size: 0.8em;
-    }
+  .qui .qui-select-field-select {
+    font-size: 0.8em;
+  }
 
-    .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-        ul {
-            li {
-                font-size: 0.8em;
-                min-height: 3em;
-            }
-        }
+  .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    ul {
+      li {
+        font-size: 0.8em;
+        min-height: 3em;
+      }
     }
+  }
 }
 
 @media only screen and (min-width: 481px) {
-    .qui .qui-select-field-select {
-        font-size: 0.9em;
-    }
+  .qui .qui-select-field-select {
+    font-size: 0.9em;
+  }
 
-    .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-        ul {
-            li {
-                font-size: 0.9em;
-            }
-        }
+  .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    ul {
+      li {
+        font-size: 0.9em;
+      }
     }
+  }
 }
 
 @media only screen and (min-width: 769px) {
-    .qui .qui-select-field-select {
-        font-size: 1.1em;
-    }
+  .qui .qui-select-field-select {
+    font-size: 1.1em;
+  }
 
-    .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-        ul {
-            li {
-                font-size: 1.1em;
-            }
-        }
+  .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    ul {
+      li {
+        font-size: 1.1em;
+      }
     }
+  }
 }
 
 @media only screen and (min-width: 1024px) {
-    .qui .qui-select-field-select {
-        font-size: 1.3em;
-    }
+  .qui .qui-select-field-select {
+    font-size: 1.3em;
+  }
 
-    .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-        ul {
-            li {
-                font-size: 1.3em;
-            }
-        }
+  .css-v26e56-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    ul {
+      li {
+        font-size: 1.3em;
+      }
     }
+  }
 }

@@ -19,7 +19,7 @@ Splash.propTypes = {
   //=======================================
   /**
     Splash data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     splash: PropTypes.string,
     backgroundImage: PropTypes.object,
@@ -27,18 +27,18 @@ Splash.propTypes = {
   }).isRequired,
   /**
     Splash can set presenter image from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   /**
     slideId can be used if same template is used continueously for multiple slides in qdf.
-    */
+  */
   slideId: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textBlockBackgroundColor: PropTypes.string,
@@ -48,7 +48,7 @@ Splash.propTypes = {
 
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -65,11 +65,11 @@ Splash.propTypes = {
   }),
   /**
     Use to enable/disable the component
-    */
+  */
   isDisabled: PropTypes.bool,
   /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
 };
 

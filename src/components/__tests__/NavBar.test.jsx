@@ -15,7 +15,6 @@ describe("NavBar", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: NavBar,
     required: {

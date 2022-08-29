@@ -137,8 +137,8 @@ export default function OpenAnswer(props) {
   //  Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
-  let inputName = "Input Name"
-  if (tObj && inputName !== "") inputName = tObj.label
+  let inputName = "Input Name";
+  if (tObj && inputName !== "") inputName = tObj.label;
   //-------------------------------------------------------------------
   //  Get animation of the component
   //-------------------------------------------------------------------
@@ -178,10 +178,10 @@ export default function OpenAnswer(props) {
   const background = data?.backgroundImage
     ? getBackground()
     : {
-      backgroundColor: withColor?.backgroundColor
-        ? withColor?.backgroundColor
-        : "#fff",
-    };
+        backgroundColor: withColor?.backgroundColor
+          ? withColor?.backgroundColor
+          : "#fff",
+      };
 
   const [state, setState] = useState();
   function handleSubmit() {

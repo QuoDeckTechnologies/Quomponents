@@ -232,7 +232,10 @@ const SlideTemplate = (args) => {
     <div style={{ display: "flex", width: "fit-content" }}>
       {args?.images.map((image, index) => {
         return (
-          <div style={{ margin: "0 0.1em", flex: 1, width: '6em', height: "6em" }} key={index}>
+          <div
+            style={{ margin: "0 0.1em", flex: 1, width: "6em", height: "6em" }}
+            key={index}
+          >
             <ClickableImage
               image={image}
               onClick={() => args?.onClick(index)}

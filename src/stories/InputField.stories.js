@@ -6,14 +6,14 @@ const dictionary = JSON.stringify({
     inputField: {
       label: "इनपुट नाम",
       placeholder: "विकल्प",
-    }
+    },
   },
   en: {
     inputField: {
       label: "Input Name",
       placeholder: "Options",
-    }
-  }
+    },
+  },
 });
 
 export default {
@@ -90,16 +90,9 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div>
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div>{story()}</div>],
   parameters: {
-    componentSubtitle:
-      "Default InputField for general purpose use",
+    componentSubtitle: "Default InputField for general purpose use",
     a11y: { disable: true },
     docs: { iframeHeight: 100 },
   },
@@ -181,8 +174,7 @@ charLimitedField.args = {
 charLimitedField.parameters = {
   docs: {
     description: {
-      story:
-        "Use to show the charLimited editing state for the InputField.",
+      story: "Use to show the charLimited editing state for the InputField.",
     },
     source: {
       code: `<InputField
@@ -231,8 +223,7 @@ listInputField.args = {
 listInputField.parameters = {
   docs: {
     description: {
-      story:
-        "Use to show the listInput editing state for the InputField.",
+      story: "Use to show the listInput editing state for the InputField.",
     },
     source: {
       code: `<InputField
@@ -277,8 +268,7 @@ ShortFieldField.args = {
 ShortFieldField.parameters = {
   docs: {
     description: {
-      story:
-        "Use to show the shortField editing state for the InputField.",
+      story: "Use to show the shortField editing state for the InputField.",
     },
     source: {
       code: `<InputField
@@ -326,8 +316,7 @@ TranslatedInputField.args = {
 TranslatedInputField.parameters = {
   docs: {
     description: {
-      story:
-        "Use to change the language that the text appears in InputField.",
+      story: "Use to change the language that the text appears in InputField.",
     },
     source: {
       code: `<InputField
@@ -459,6 +448,6 @@ TranslatedListInput.parameters = {
       }}
       isHidden={false}
       isDisabled={false} />`,
-    }
+    },
   },
 };

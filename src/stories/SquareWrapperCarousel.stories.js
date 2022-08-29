@@ -45,8 +45,8 @@ let dataprops = {
   withColor: {
     backgroundColor: "",
     textColor: "",
-    accentColor: ""
-  }
+    accentColor: "",
+  },
 };
 // -------------------------------------------------------------
 // Default

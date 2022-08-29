@@ -6,18 +6,15 @@ import { shallow } from "enzyme";
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import ColorSwatch from "../ColorSwatch/ColorSwatch.react";
 
 describe("ColorSwatch", () => {
-
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: ColorSwatch,
         required: {

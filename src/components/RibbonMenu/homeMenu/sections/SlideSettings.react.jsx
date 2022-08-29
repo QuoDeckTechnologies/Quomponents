@@ -9,7 +9,6 @@ import "../../../../common/stylesheets/common.css";
 import "../../RibbonMenu.scss";
 import "../RibbonHomeMenu.scss";
 import "../../../../common/stylesheets/overrule.scss";
-
 import IconLink from "../../../Buttons/IconLink/IconLink.react";
 
 SlideSettings.propTypes = {
@@ -129,8 +128,9 @@ export default function SlideSettings(props) {
                     hoverTextColor: "#666666",
                   }}
                   withIcon={{
-                    icon: `qui-ribbon-file-right-icons ${isBackChecked ? "far fa-check-square" : "far fa-square"
-                      }`,
+                    icon: `qui-ribbon-file-right-icons ${
+                      isBackChecked ? "far fa-check-square" : "far fa-square"
+                    }`,
                   }}
                   onClick={() => {
                     toggleBackState();
@@ -174,8 +174,9 @@ export default function SlideSettings(props) {
                     hoverTextColor: "#666666",
                   }}
                   withIcon={{
-                    icon: `qui-ribbon-file-right-icons ${isNextChecked ? "far fa-check-square" : "far fa-square"
-                      }`,
+                    icon: `qui-ribbon-file-right-icons ${
+                      isNextChecked ? "far fa-check-square" : "far fa-square"
+                    }`,
                   }}
                   onClick={() => {
                     toggleNextState();

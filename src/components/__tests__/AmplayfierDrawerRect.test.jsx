@@ -6,7 +6,6 @@ import { shallow } from "enzyme";
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -14,11 +13,9 @@ import AmplayfierDrawerRect from "../AmplayfierDrawerRect/AmplayfierDrawerRect.r
 import Button from "../Buttons/Button/Button.react";
 
 describe("AmplayfierDrawerRect", () => {
-
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: AmplayfierDrawerRect,
     required: {

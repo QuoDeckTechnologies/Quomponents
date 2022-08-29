@@ -1,7 +1,6 @@
 import React from "react";
 import { ChromePicker } from "react-color";
 import { render, fireEvent } from "@testing-library/react";
-
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
@@ -19,7 +18,6 @@ describe("PalleteThemeSection", () => {
 	// -------------------------------------
 	// Run common tests
 	// -------------------------------------
-
 	const args = {
 		target: PalleteThemeSection,
 		required: {

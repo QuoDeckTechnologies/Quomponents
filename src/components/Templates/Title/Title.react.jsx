@@ -21,7 +21,7 @@ Title.propTypes = {
   //=======================================
   /**
     Title data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -32,18 +32,18 @@ Title.propTypes = {
   }),
   /**
     Title can set presenter image from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to float the component in parent container
-    */
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
@@ -57,7 +57,7 @@ Title.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -74,7 +74,7 @@ Title.propTypes = {
   }),
   /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
 };
 
@@ -207,14 +207,16 @@ export default function Title(props) {
     >
       <div className={`qui-title-container ${quommonClasses.childClasses}`}>
         <div
-          className={`qui-title-slide-header ${data?.presenter ? "qui-title-slide-header-presenter" : ""
-            }`}
+          className={`qui-title-slide-header ${
+            data?.presenter ? "qui-title-slide-header-presenter" : ""
+          }`}
         >
           {!data?.presenter && getView(data)}
           {data?.icon && data?.title && (
             <div
-              className={`qui-title-icon-block ${data?.presenter ? "qui-title-icon-block-presenter" : ""
-                }`}
+              className={`qui-title-icon-block ${
+                data?.presenter ? "qui-title-icon-block-presenter" : ""
+              }`}
             >
               <IconBlock
                 withColor={{

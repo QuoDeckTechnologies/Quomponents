@@ -1,12 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from 'enzyme';
-
-//--------------------------------------
-// Import from Config
-// -------------------------------------
-
+import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -32,19 +27,17 @@ describe("Badge", () => {
         );
     });
 
-    it("should render correctly without throwing error",
-        () => {
-            expect(component.exists()).toBe(true);
-        });
+    it("should render correctly without throwing error", () => {
+        expect(component.exists()).toBe(true);
+    });
 
-    it("should render correctly if alignvertical is 'top' and alignhorizontal is 'right' ",
-        () => {
-            component.setProps({
-                alignvertical: "top",
-                alignhorizontal: "right"
-            });
-            expect(component.exists()).toBe(true);
+    it("should render correctly if alignvertical is 'top' and alignhorizontal is 'right' ", () => {
+        component.setProps({
+            alignvertical: "top",
+            alignhorizontal: "right"
         });
+        expect(component.exists()).toBe(true);
+    });
 
     it("should render correctly if alignvertical is 'bottom' and alignhorizontal is 'right' ", () => {
         component.setProps({

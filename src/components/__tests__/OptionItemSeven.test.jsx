@@ -15,7 +15,6 @@ describe("Option Item Seven", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: OptionItemSeven,
     required: {
@@ -38,7 +37,6 @@ describe("Option Item Seven", () => {
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-
   let component;
 
   const dictionary = JSON.stringify({

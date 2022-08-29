@@ -1,36 +1,36 @@
 .qui.qui-sidebar {
-    text-align: center;
+  text-align: center;
 }
 .qui .qui-sidebar-block {
-    height: 100vh;
-    background: #ffffff;
-    box-shadow: 1px 0 3px rgba(0, 0, 0, 0.12), 1px 0 2px rgba(0, 0, 0, 0.24);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.12), 1px 0 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .qui .qui-sidebar-block.edit-mode {
-    background: #999999;
+  background: #999999;
 }
 
 .qui .qui-sidebar-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: #454545;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #454545;
 }
 
 .qui .qui-sidebar-logo img {
-    width: 60%;
+  width: 60%;
 }
 
 .qui .qui-sidebar-edit-mode-label {
-    position: absolute;
-    color: #fff;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    bottom: 2.5em;
-    left: -0.5em;
-    text-transform: uppercase;
+  position: absolute;
+  color: #fff;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  bottom: 2.5em;
+  left: -0.5em;
+  text-transform: uppercase;
 }

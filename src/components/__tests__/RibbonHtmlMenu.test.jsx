@@ -12,10 +12,9 @@ import { hasValid } from "./common";
 import RibbonHtmlMenu from "../RibbonMenu/htmlMenu/RibbonHtmlMenu.react";
 
 describe("RibbonHtmlMenu", () => {
-  // -------------------------------------
+    // -------------------------------------
     // Run common tests
     // -------------------------------------
-    
     const args = {
       target: RibbonHtmlMenu,
       translations: {
@@ -53,7 +52,6 @@ describe("RibbonHtmlMenu", () => {
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-
   let component;
   beforeEach(() => {
     jest.resetAllMocks();
