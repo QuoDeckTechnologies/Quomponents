@@ -39,14 +39,11 @@ describe("DateField", () => {
     };
 
     hasValid("defaults", args);
-
     hasValid("sizes", args);
     hasValid("positions", args);
-
     hasValid("colors", args);
     hasValid("animations", args);
     hasValid("translations", args);
-
     hasValid("hidden", args);
     hasValid("disabled", args);
     hasValid("fluid", args);
@@ -88,11 +85,18 @@ describe("DateField", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should prevent Default action when click on DatePicker", () => {
-        let e = {
-            preventDefault: jest.fn()
-        }
-        component.find('.qui-date-field-date-picker').at(1).props().onKeyDown(e)
+    it("should pass the value to the DatePicker", () => {
+        component.setProps({
+            value: "2016-01-04 10:34:23"
+        })
         expect(component.exists()).toBe(true);
     });
+
+    it("should pass the default date value to the DatePicker", () => {
+        component.setProps({
+            value: ""
+        })
+        expect(component.exists()).toBe(true);
+    });
+
 });
