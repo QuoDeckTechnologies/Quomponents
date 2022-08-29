@@ -64,6 +64,11 @@ describe("Option Item One", () => {
     expect(component.exists()).toBe(true);
   });
 
+  it("should render correctly without throwing error when written in input field and clicked outside", () => {
+    component.find("InputField").simulate("blur");
+    expect(component.exists()).toBe(true);
+  });
+
   it("should render correctly without throwing error when clicked on close icon", () => {
     component
       .find(".fa-times")

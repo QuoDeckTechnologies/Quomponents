@@ -148,6 +148,7 @@ export default function OptionItemFive(props) {
           asEmphasis="listInput"
           withColor={props.withColor}
           onSubmit={handleValue}
+          onBlur={handleValue}
         />
         <div className="qui-option-item-five-close-icon">
           <i

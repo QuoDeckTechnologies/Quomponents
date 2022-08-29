@@ -155,6 +155,7 @@ export default function OptionItemEight(props) {
           asEmphasis="listInput"
           withColor={props.withColor}
           onSubmit={handleValue}
+          onBlur={handleValue}
         />
         <div className="qui-option-item-button">
           <Button

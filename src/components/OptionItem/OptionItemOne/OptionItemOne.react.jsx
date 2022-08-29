@@ -110,6 +110,7 @@ export default function OptionItemOne(props) {
           asEmphasis="listInput"
           withColor={props.withColor}
           onSubmit={(name, value) => props.onInput(name, value)}
+          onBlur={(name, value) => props.onInput(name, value)}
         />
         <div className="qui-inline-edit-with-remove-button-close-icon">
           <i

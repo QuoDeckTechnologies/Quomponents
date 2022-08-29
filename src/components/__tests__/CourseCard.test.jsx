@@ -14,7 +14,7 @@ import IconBlock from "../IconBlock/IconBlock.react";
 
 Object.assign(navigator, {
   clipboard: {
-    writeText: () => { },
+    writeText: () => {},
   },
 });
 
@@ -26,7 +26,7 @@ describe("CourseCard", () => {
     target: CourseCard,
     required: {
       type: "standard",
-      onClick: () => { },
+      onClick: () => {},
     },
   };
 
@@ -214,8 +214,12 @@ describe("CourseCard", () => {
     expect(component.exists()).toBe(true);
   });
   it("should render correctly when Clicked on copy Icon", () => {
-    component.find(".qui-course-card-icon-block-copy-container").simulate('click')
-    component.find(".qui-course-card-icon-block-copy-container").simulate('mouseleave')
+    component
+      .find(".qui-course-card-icon-block-copy-container")
+      .simulate("click");
+    component
+      .find(".qui-course-card-icon-block-copy-container")
+      .simulate("mouseleave");
   });
 
   it("should copy the link when clicked on copy icon", () => {

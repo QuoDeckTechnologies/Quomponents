@@ -173,6 +173,7 @@ export default function OptionItemTen(props) {
             asEmphasis="listInput"
             withColor={props.withColor}
             onSubmit={handleValue}
+            onBlur={handleValue}
           />
         </div>
         <div className="qui-option-item-upload-button">
@@ -197,6 +198,7 @@ export default function OptionItemTen(props) {
             asEmphasis="listInput"
             withColor={props.withColor}
             onSubmit={handleHeaderValue}
+            onBlur={handleHeaderValue}
           />
         </div>
         <div className="qui-option-item-ten-close-icon">
@@ -220,6 +222,7 @@ export default function OptionItemTen(props) {
           asEmphasis="listInput"
           withColor={props.withColor}
           onSubmit={handleMessageValue}
+          onBlur={handleMessageValue}
         />
       </div>
     </motion.div>

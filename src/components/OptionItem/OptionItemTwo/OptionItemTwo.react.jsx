@@ -163,6 +163,7 @@ export default function OptionItemTwo(props) {
           asEmphasis="listInput"
           withColor={props.withColor}
           onSubmit={handleValue}
+          onBlur={handleValue}
         />
         <div className="qui-single-select-close-icon">
           <i

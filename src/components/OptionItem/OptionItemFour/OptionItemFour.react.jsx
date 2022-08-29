@@ -161,6 +161,7 @@ export default function OptionItemFour(props) {
           asEmphasis="listInput"
           withColor={props.withColor}
           onSubmit={handleValue}
+          onBlur={handleValue}
         />
         <div className="qui-option-item-four-close-icon">
           <i

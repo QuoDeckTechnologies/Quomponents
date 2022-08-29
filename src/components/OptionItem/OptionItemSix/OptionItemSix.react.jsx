@@ -185,6 +185,7 @@ export default function OptionItemSix(props) {
                 asEmphasis="listInput"
                 withColor={props.withColor}
                 onSubmit={handleValue}
+                onBlur={handleValue}
               />
             </div>
           </div>
@@ -197,6 +198,7 @@ export default function OptionItemSix(props) {
               asEmphasis="listInput"
               withColor={props.withColor}
               onSubmit={handleCaptionValue}
+              onBlur={handleCaptionValue}
             />
           </div>
         </div>

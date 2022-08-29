@@ -142,6 +142,9 @@ export default function OptionItemNine(props) {
                 onSubmit={(name, value) =>
                   props.onShortFieldOneInput(name, value)
                 }
+                onBlur={(name, value) =>
+                  props.onShortFieldOneInput(name, value)
+                }
               />
             </div>
             <div className="qui-short-field-two">
@@ -157,6 +160,9 @@ export default function OptionItemNine(props) {
                 onSubmit={(name, value) =>
                   props.onShortFieldTwoInput(name, value)
                 }
+                onBlur={(name, value) =>
+                  props.onShortFieldTwoInput(name, value)
+                }
               />
             </div>
           </div>
@@ -170,6 +176,7 @@ export default function OptionItemNine(props) {
                 asEmphasis="listInput"
                 withColor={props.withColor}
                 onSubmit={(name, value) => props.onInput(name, value)}
+                onBlur={(name, value) => props.onInput(name, value)}
               />
             </div>
           </div>
