@@ -82,7 +82,7 @@
 
 .qui .qui-reward-card-cost-stock-container-column {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-end;
   justify-content: center;
   padding-top: 0.5em;
@@ -90,6 +90,7 @@
 
 .qui .qui-reward-card-cost {
   flex: 1;
+  margin-top: 0.3em;
 }
 
 .qui .qui-reward-card-stock {
@@ -117,7 +118,7 @@
 }
 
 .qui .qui-blank-reward-card-icon {
-  font-size: 6em;
+  font-size: 7em;
   padding: 0.5em;
   -webkit-text-stroke: 0.1em;
   justify-content: center;
