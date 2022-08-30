@@ -78,18 +78,7 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div style={{}}>{story()}</div>],
   parameters: {
     componentSublabel:
       "Displays a basic StatisticsCard for general-purpose use",
@@ -126,23 +115,24 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<StatisticsCard value="20,539"
-            asVariant="primary"
-            asFloated="none"
-            asPadded="fitted"
-            asAligned="center"
-            withLabel={{
-                content: "PLAYERS",
-            }}
-            withIcon={{ icon: "fas fa-users", size: "1em", position: "left" }}
-            withColor={{
-                backgroundColor: "",
-                accentColor: "",
-                textColor: "",
-            }}
-            isCircular= {true}
-            isHidden= {false}
-            />`,
+      code: `<StatisticsCard
+      value="20,539"
+      asVariant="primary"
+      asFloated="none"
+      asPadded="fitted"
+      asAligned="center"
+      withLabel={{
+        content: "PLAYERS",
+      }}
+      withIcon={{ icon: "fas fa-users", size: "1em", position: "left" }}
+      withColor={{
+        backgroundColor: "",
+        accentColor: "",
+        textColor: "",
+      }}
+      isCircular={true}
+      isHidden={false}
+    />`,
     },
   },
 };
@@ -161,23 +151,24 @@ ColoredStatisticsCard.args = {
 ColoredStatisticsCard.parameters = {
   docs: {
     source: {
-      code: `<StatisticsCard value="20,539"
-            asVariant="primary"
-            asFloated="none"
-            asPadded="fitted"
-            asAligned="center"
-            withLabel={{
-                content: "PLAYERS",
-            }}
-            withIcon={{ icon: "fas fa-users", size: "1em", position: "left" }}
-            withColor={{
-                backgroundColor: "#F3E5F5",
-                accentColor: "#F2A52D",
-                textColor: "#3A8080",
-            }}
-            isCircular= {true}
-            isHidden= {false}
-            />`,
+      code: `<StatisticsCard
+      value="20,539"
+      asVariant="primary"
+      asFloated="none"
+      asPadded="fitted"
+      asAligned="center"
+      withLabel={{
+        content: "PLAYERS",
+      }}
+      withIcon={{ icon: "fas fa-users", size: "1em", position: "left" }}
+      withColor={{
+        backgroundColor: "#F3E5F5",
+        accentColor: "#F2A52D",
+        textColor: "#3A8080",
+      }}
+      isCircular={true}
+      isHidden={false}
+    />`,
     },
   },
 };

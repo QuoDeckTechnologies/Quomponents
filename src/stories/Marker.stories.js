@@ -51,17 +51,7 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div style={{}}>{story()}</div>],
   parameters: {
     componentSubtitle: "Default Marker for general purpose use",
     a11y: { disable: true },
@@ -102,28 +92,32 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<Marker content={{
-                wrapper: "carnival",
-                inset: 1,
-                node: {
-                    _id: "511",
-                    name: "First Topic",
-                    description: "This is first new topic of this course",
-                    contentList: [{
-                        _id: "512",
-                        name: "Assesment format",
-                        readerType: "game",
-                        sequence: 0,
-                    }],
-                    sequence: 0,
-                }
-            }}
-                completion={{ 512: 50 }}
-                sequential={false}
-                status="current"
-                asSize="normal"
-                isHidden={false}
-                isDisabled={false} />`,
+      code: `<Marker
+      content={{
+        wrapper: "carnival",
+        inset: 1,
+        node: {
+          _id: "511",
+          name: "First Topic",
+          description: "This is first new topic of this course",
+          contentList: [
+            {
+              _id: "512",
+              name: "Assesment format",
+              readerType: "game",
+              sequence: 0,
+            },
+          ],
+          sequence: 0,
+        },
+      }}
+      completion={{ 512: 50 }}
+      sequential={false}
+      status="current"
+      asSize="normal"
+      isHidden={false}
+      isDisabled={false}
+    />`,
     },
   },
 };
