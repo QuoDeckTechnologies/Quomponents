@@ -290,7 +290,76 @@ TodayMenu.parameters = {
       story: "TodayMenu contains multiple TodayMenuBtn",
     },
     source: {
-      code: ``,
+      code: (
+       `<div
+          style={{
+            overflowY: "none",
+            display: "flex",
+            overflowX: "auto",
+          }}
+        >
+          <div style={{ margin: "0 0.1em" }}>
+            <TodayMenuBtn
+              {...Object.assign(
+                {},
+                {
+                  content: "",
+                  withIcon: {
+                    icon: "fas fa-home",
+                    size: "1em",
+                    position: "left",
+                  },
+                }
+              )}
+            />
+          </div>
+          <div style={{ margin: "0 0.1em" }}>
+            <TodayMenuBtn
+              {...Object.assign(
+                {},
+                {
+                  content: "Learn",
+                  withIcon: {
+                    icon: "fas fa-certificate",
+                    size: "1em",
+                    position: "left",
+                  },
+                }
+              )}
+            />
+          </div>
+          <div style={{ margin: "0 0.1em" }}>
+            <TodayMenuBtn
+              {...Object.assign(
+                {},
+                {
+                  content: "Play",
+                  withIcon: {
+                    icon: "fas fa-gamepad",
+                    size: "1em",
+                    position: "left",
+                  },
+                }
+              )}
+            />
+          </div>
+          <div style={{ margin: "0 0.1em" }}>
+            <TodayMenuBtn
+              {...Object.assign(
+                {},
+                {
+                  content: "Win",
+                  withIcon: {
+                    icon: "fas fa-trophy",
+                    size: "1em",
+                    position: "left",
+                  },
+                }
+              )}
+            />
+          </div>
+        </div>`
+      ),
     },
   },
 };

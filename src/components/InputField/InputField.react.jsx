@@ -223,7 +223,7 @@ export default function InputField(props) {
     } else if (asEmphasis === "charLimited") {
       return (
         <div className="qui-char-limited-container">
-          {(props.maxLength || props.maxLength >= 0) && (
+          {(props.maxLength || props.maxLength > 0) && (
             <div
               className={
                 props.maxLength >= count
@@ -245,7 +245,7 @@ export default function InputField(props) {
     } else if (asEmphasis === "listInput") {
       return (
         <div className="qui-list-input-container">
-          {(props.maxLength || props.maxLength >= 0) && (
+          {(props.maxLength || props.maxLength > 0) && (
             <div
               className={
                 props.maxLength >= count
