@@ -193,9 +193,9 @@ export default function Sidebar(props) {
                             );
                         })}
                     </div>
-                    <h2 className="qui-sidebar-page-title">
+                    <h3 className="qui-sidebar-page-title">
                         {props.pageTitle}
-                    </h2>
+                    </h3>
                 </div>
             );
         }
