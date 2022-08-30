@@ -185,7 +185,7 @@ export default function Sidebar(props) {
                                         title={section.title}
                                         active={section.active}
                                         width={props.width}
-                                        asSize={props.asSize || "tiny"}
+                                        asSize={props.asSize || "small"}
                                         withColor={props.withColor}
                                         onClick={section.onClick}
                                     />
@@ -193,9 +193,9 @@ export default function Sidebar(props) {
                             );
                         })}
                     </div>
-                    <h3 className="qui-sidebar-page-title">
+                    <h2 className="qui-sidebar-page-title">
                         {props.pageTitle}
-                    </h3>
+                    </h2>
                 </div>
             );
         }
