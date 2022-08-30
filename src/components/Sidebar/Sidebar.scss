@@ -13,12 +13,16 @@
 }
 
 .qui .qui-sidebar-logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-color: #454545;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #ed6e6e;
+    box-shadow: 0 4px 3px -3px #666666;
+    position: relative;
+    z-index: 2;
+    // border-bottom: 2px solid #333333;
 }
 
 .qui .qui-sidebar-logo img {
@@ -33,4 +37,14 @@
   bottom: 2.5em;
   left: -0.5em;
   text-transform: uppercase;
+}
+
+.qui .qui-sidebar-page-title {
+    position: absolute;
+    writing-mode: vertical-rl;
+    color: #333333;
+    transform: rotate(180deg);
+    bottom: 1em;
+    left: -0.5em;
+    text-transform: uppercase;
 }

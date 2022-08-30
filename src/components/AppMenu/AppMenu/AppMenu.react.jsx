@@ -25,7 +25,11 @@ AppMenu.propTypes = {
   Use for rounded corners or circular icon button 
   */
   isCircular: PropTypes.bool,
-  menu: PropTypes.arrayOf(PropTypes.shape),
+  menu: PropTypes.arrayOf({
+    icon: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
+  }),
   //=======================================
   // Quommon props
   //=======================================
@@ -162,6 +166,7 @@ export default function AppMenu(props) {
       className={`qui ${quommonClasses.parentClasses} ${
         props.isCircular ? "qui-app-menu-circular" : ""
       } qt-shadow`}
+      onClick={handleClick}
     >
       <div className="qui-app-menu-container">
         <div
@@ -198,7 +203,6 @@ export default function AppMenu(props) {
               withIcon={{ icon: "fas fa-ellipsis-v" }}
               withLabel={{ content: "" }}
               withTranslation={null}
-              onClick={handleClick}
             />
             <Menu
               id="app-menu"
@@ -245,11 +249,11 @@ export default function AppMenu(props) {
                 vertical: "bottom",
               }}
             >
-              {props.menu?.map((item, index) =>
+              {props.menu?.map((item) =>
                 item.icon === "divider" ? (
-                  <Divider key={index} />
+                  <Divider />
                 ) : (
-                  <MenuItem onClick={item.onClick} key={index}>
+                  <MenuItem onClick={item.onClick}>
                     <ListItemIcon>
                       <i className={item.icon} />
                     </ListItemIcon>

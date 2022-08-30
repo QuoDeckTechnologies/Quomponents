@@ -148,11 +148,13 @@ function getColors(colors, hovered, active) {
 export default function LinkIcon(props) {
   const [tilt, setTilt] = useState(false);
   const [hovered, setHovered] = useState(false);
+
   //-------------------------------------------------------------------
   // 1. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "link-icon");
   if (props.active) quommonClasses.childClasses += ` active`;
+
   //-------------------------------------------------------------------
   // 2. Set the component colors
   //-------------------------------------------------------------------
@@ -203,7 +205,7 @@ export default function LinkIcon(props) {
           ></i>
           <br />
           <div
-            className={`qui-linkicon-caption secfont`}
+            className={`qui-linkicon-caption`}
             style={Object.assign({}, colors.textColor)}
           >
             {props.label}
